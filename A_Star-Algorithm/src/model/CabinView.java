@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Formatter;
 
-class CabinView extends JPanel {
+public class CabinView extends JPanel {
 	private static final int BOX_WIDTH = 640;
 	private static final int BOX_HEIGHT = 480;
 
