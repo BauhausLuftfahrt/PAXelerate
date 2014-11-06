@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/net.bhl.cdt.model.cabin/src" modelPluginID="net.bhl.cdt.model.cabin"
+    modelName="Cabin" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>cabin.ecore</foreignModel>
+  <genPackages prefix="Cabin" basePackage="net.bhl.cdt.model" disposableProviderFactory="true"
+      ecorePackage="cabin.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cabin.ecore#//ClassType">
+      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//ClassType/First"/>
+      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//ClassType/Business"/>
+      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//ClassType/Economy"/>
+    </genEnums>
+    <genClasses ecoreClass="cabin.ecore#//Cabin">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/cabinLength"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/cabinWidth"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/numbSeats"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//Cabin/classes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//Cabin/doors"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/boardingTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/FCperc"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/BCperc"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/numbAisles"/>
+    </genClasses>
+    <genClasses ecoreClass="cabin.ecore#//Row">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//Row/seats"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Row/rowNumber"/>
+    </genClasses>
+    <genClasses ecoreClass="cabin.ecore#//PassengerClass">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//PassengerClass/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//PassengerClass/rows"/>
+    </genClasses>
+    <genClasses ecoreClass="cabin.ecore#//CabinDoors"/>
+    <genClasses ecoreClass="cabin.ecore#//Seat">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Seat/seatNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Seat/seatType"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated cabin -->
+      <package
+            uri="http://bhl.net/cdt/model/cabin/"
+            class="net.bhl.cdt.model.cabin.CabinPackage"
+            genModel="model/cabin.genmodel"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="net.bhl.cdt.model.cabin.handlers.SimulateBoardingHandler"
+            id="net.bhl.cdt.model.cabin.simulateBoarding"
+            name="simulateBoarding">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.emf.ecp.ui.ModelExplorerView">
+         <command
+               commandId="net.bhl.cdt.model.cabin.simulateBoarding"
+               label="Simulate Boarding of this Cabin"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate>
+                  <instanceof
+                        value="net.bhl.cdt.model.cabin.Cabin">
+                  </instanceof>
+               </iterate>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+
+</plugin>
