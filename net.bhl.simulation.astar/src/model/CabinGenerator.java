@@ -31,13 +31,27 @@ public class CabinGenerator {
 	}
 
 	public double[][] generateCabin() {
-		double[][] cabin = new double[(int) this.cabinWidth][(int) this.cabinLength];
+		//double[][] cabin = new double[(int) this.cabinWidth][(int) this.cabinLength];
 	
 		int rowCount=0;
 		int seatCount=0;
 		
+		CabinNode[][] cabin = new CabinNode[(int) this.cabinWidth][(int) this.cabinLength];
+		
 		
 		for (int i = 0; i < this.cabinLength; i++) {
+			for (int j = 0; j <this.cabinWidth; j++) {
+		}
+		
+		
+		
+		}
+		
+		
+		
+		
+		
+		/*for (int i = 0; i < this.cabinLength; i++) {
 				
 			System.out.print("|");
 			
@@ -67,7 +81,7 @@ public class CabinGenerator {
 				System.out.print("|");
 			}
 			System.out.println();
-		}
+		}*/
 
 		return null;
 
