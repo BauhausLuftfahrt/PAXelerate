@@ -82,7 +82,7 @@ public class CabinGenerator {
 		exitIcon = "X";
 		
 		doorIcon = "O";
-		toiletteIcon ="T";
+		toiletteIcon ="W";
 		galleyIcon = "G";
 		blockSeatIcon = "-";
 		stopIcon = "_";
@@ -110,6 +110,8 @@ public class CabinGenerator {
 			//cabin[i][0].isWall = true; ???
 			
 			if (i == 0) {
+				createToilette();
+				System.out.println();
 				createDoor();
 				createBlock();
 			} else if(i<= FCRows) {
@@ -126,6 +128,9 @@ public class CabinGenerator {
 				
 				createEmptyRow();
 				
+			}
+			if (i==FCRows) {
+				createBlock();
 			}
 			
 			if (i==emergencyLocation1) {
@@ -145,6 +150,10 @@ public class CabinGenerator {
 			System.out.println();
 			rowCount ++;
 		}
+		//createBlock();
+		//System.out.println();
+		createToilette();
+		System.out.println();
 		createDoor();
 		System.out.println();
 		createBack();
@@ -335,7 +344,7 @@ public class CabinGenerator {
 	
 	public static void main(String[] args) {
 		// Länge, Breite, Passagiere, davon Business, davon First, Notausgang 
-		CabinGenerator generator = new CabinGenerator(40, 7, 210, 32, 4 ,99);
+		CabinGenerator generator = new CabinGenerator(39, 7, 210, 32, 4 ,99);
 		generator.generateCabin();
 		
 	}
