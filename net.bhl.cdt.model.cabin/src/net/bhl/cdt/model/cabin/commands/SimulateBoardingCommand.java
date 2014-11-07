@@ -1,16 +1,12 @@
 package net.bhl.cdt.model.cabin.commands;
 
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.testing.TestableObject;
+import java.util.List;
 
-import matlabcontrol.MatlabConnectionException;
-import matlabcontrol.MatlabInvocationException;
-import matlabcontrol.MatlabProxy;
-import matlabcontrol.MatlabProxyFactory;
-import matlabcontrol.MatlabProxyFactoryOptions;
-import model.TestAStar;
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.Cabin;
+import net.bhl.cdt.model.cabin.PassengerClass;
+
+import org.eclipse.swt.widgets.Shell;
 
 public class SimulateBoardingCommand extends CDTCommand {
 
@@ -18,16 +14,19 @@ public class SimulateBoardingCommand extends CDTCommand {
 	private static int port = 2100;
 
 	public SimulateBoardingCommand(Shell shell, Cabin cabin) {
-		this.cabin=cabin;
+		this.cabin = cabin;
 	}
-
 
 	@Override
 	protected void doRun() {
-//	TestAStar(obstacleMap, mapWidth, mapHeight, agentID, agentStartX, agentStartY, agentGoalX, agentGoalY).run();
+		List<PassengerClass> passengerClasses = cabin.getClasses();
+		if (!passengerClasses.isEmpty()) {
+			PassengerClass passengerClass = passengerClasses.get(0);
+			passengerClass.getRows();
+			cabin.getDocumentInWikipedia();
+		}
 
+		// TestAStar(obstacleMap, mapWidth, mapHeight, agentID, agentStartX, agentStartY, agentGoalX, agentGoalY).run();
 
-		
 	}
-
 }

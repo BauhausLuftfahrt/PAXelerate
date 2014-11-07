@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getFCperc <em>FCperc</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBCperc <em>BCperc</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getNumbAisles <em>Numb Aisles</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getDocumentInWikipedia <em>Document In Wikipedia</em>}</li>
  * </ul>
  * </p>
  *
@@ -244,4 +245,30 @@ public interface Cabin extends EObject {
 	 * @generated
 	 */
 	void setNumbAisles(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Document In Wikipedia</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Document In Wikipedia</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Document In Wikipedia</em>' attribute.
+	 * @see #setDocumentInWikipedia(String)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_DocumentInWikipedia()
+	 * @model
+	 * @generated
+	 */
+	String getDocumentInWikipedia();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getDocumentInWikipedia <em>Document In Wikipedia</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Document In Wikipedia</em>' attribute.
+	 * @see #getDocumentInWikipedia()
+	 * @generated
+	 */
+	void setDocumentInWikipedia(String value);
 } // Cabin
