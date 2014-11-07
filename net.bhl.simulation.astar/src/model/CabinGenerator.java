@@ -16,6 +16,12 @@ public class CabinGenerator {
 	private int BCpax;
 	private int FCpax;
 	
+	private int totalRows;
+	private int BCRows;
+	private int ECRows;
+	private int FCRows;
+	
+	
 	private int emergencyExitInRow;
 	private int passengerNo;
 	
@@ -61,6 +67,10 @@ public class CabinGenerator {
 		int seatCount=0;
 		int numbRows = 0;
 		int numbRowsBC = 0;
+		int emergencyLocation1 = 0;
+		int emergencyLocation2 = 0;
+		int ECpax = 0;
+		
 		
 		
 		eSeatIcon = "E";
@@ -80,7 +90,7 @@ public class CabinGenerator {
 		
 		CabinNode[][] cabin = new CabinNode[(int) this.cabinWidth][(int) this.cabinLength];
 		
-		
+		ECpax = passengers - BCpax;
 		createFront();
 		System.out.println();	
 		
@@ -89,83 +99,68 @@ public class CabinGenerator {
 		} else if ((int)cabinWidth>=8) {
 			seatsPerRow = (int)cabinWidth-2;	
 		}
-		numbRowsBC = BCpax/(seatsPerRow-2);
-		numbRows = passengers / seatsPerRow;
-		
-		for (int i = 0; i <= numbRows; i++) {
+		FCRows = FCpax/(seatsPerRow-4);
+		BCRows = BCpax/(seatsPerRow-2);
+		ECRows = ECpax / seatsPerRow;
+		totalRows = BCRows + ECRows + FCRows;
+		emergencyLocation1 = FCRows+BCRows;
+		emergencyLocation2 = totalRows - 15;
+		for (int i = 0; i <= cabinLength; i++) {
 			
 			//cabin[i][0].isWall = true; ???
 			
 			if (i == 0) {
 				createDoor();
-				System.out.println();	
 				createBlock();
-			} else if (i == numbRows) {
-				createDoor();
-			} else if (i<= numbRowsBC) {
-				createBCSeatRow();
+			} else if(i<= FCRows) {
+				createFCSeatRow();
 			}
+			else if (i<= (BCRows+FCRows)) {
+				createBCSeatRow();
+			}  
 			
-			else { 
+			else if (i<=totalRows) { 
 				createSeatRow();
 			}
+			else {
+				
+				createEmptyRow();
+				
+			}
 			
+			if (i==emergencyLocation1) {
+				createBlock();
+				System.out.println();
+				createEmergencyExit();
+	
+			}
 			
+			if (i==emergencyLocation2) {
+				System.out.println();
+				createEmergencyExit();
+	
+			}
 			
 			//System.out.print("|");
 			System.out.println();
 			rowCount ++;
 		}
+		createDoor();
+		System.out.println();
 		createBack();
 		System.out.println();
 		System.out.println();
 		System.out.print(passengerNo);
-		System.out.print(" Passengers on board.");
+		System.out.print(" passengers on board.");
 		
-		double test = passengers%seatsPerRow;
-		if ((test != 0)) {
+		//double test = passengerNo%seatsPerRow;
+		if ((passengerNo != passengers)) {
 			System.out.println();
 			System.out.print("Not all passengers could be seated!");
 		} else {
 			System.out.println();
 			System.out.print("All passengers could be seated!");			
 		}
-		
-		
-		
-		
-		
-		/*for (int i = 0; i < this.cabinLength; i++) {
-				
-			System.out.print("|");
-			
-			double a = this.cabinWidth/((2*this.seatsPerRow)+2);
-			if (i == (int)(this.distanceBetweenRows)*rowCount) {
-				
-				
-				for (int j = 0; j <this.cabinWidth/(2*this.seatsPerRow); j++) {
-					if (j*this.seatWidth <= this.rowWidth){
-						System.out.print("X");
-					}
-					else if(j*this.seatWidth >= 2*this.rowWidth+this.aisleWidth) {
-						System.out.print("X");
-					}
-					else {
-						System.out.print(" ");
-					}
-					seatCount++;
-				}
-				System.out.print("|");
-				rowCount++;
-			}
-			else {
-				for (int j = 0; j <this.cabinWidth/(2*this.seatsPerRow); j++){
-					System.out.print(" ");
-				}
-				System.out.print("|");
-			}
-			System.out.println();
-		}*/
 
 		return null;
 
@@ -235,6 +230,33 @@ public class CabinGenerator {
 			}		
     	}
 		System.out.print(wallIcon);
+		
+		
+	}
+	
+	public void createFCSeatRow() {
+		System.out.print(wallIcon);	
+		for (int j = 1; j <= this.cabinWidth; j++) {
+			int middle = 0;
+			
+			if(cabinWidth < 8) {
+				middle = (int)cabinWidth/2+1;
+				if (j != middle) {
+					if((j==2)||(j==6)) {
+						System.out.print(fSeatIcon);
+						passengerNo ++;
+					} else {
+						System.out.print(spaceIcon);
+						
+					}
+				}
+				else {System.out.print(spaceIcon);}		
+				
+			} 	
+    	}
+		System.out.print(wallIcon);
+		
+		
 	}
 	
 	public void createEmptyRow() {
@@ -293,7 +315,7 @@ public class CabinGenerator {
 	}
 	
 	public void createBlock() {
-
+		System.out.println();	
 		System.out.print(wallIcon);	
 		for (int j = 1; j <= this.cabinWidth; j++) {
 			int middle = 0;
@@ -301,30 +323,19 @@ public class CabinGenerator {
 			if(cabinWidth < 8) {
 				middle = (int)cabinWidth/2+1;
 				if (j != middle) {
-					if((j==2)||(j==6)) {
-						System.out.print(blockSeatIcon);
-					} else {
-						System.out.print(bSeatIcon);
-						passengerNo ++;
-					}
+						System.out.print(stopIcon);	
 				}
 				else {System.out.print(spaceIcon);}		
 				
-			} 
-			else {
-					System.out.print(bSeatIcon);
-					passengerNo ++;
-				}		
-	
-			}		
-    	
+			} 		
+		}		
 		System.out.print(wallIcon);
 		
 	}
 	
 	public static void main(String[] args) {
 		// Länge, Breite, Passagiere, davon Business, davon First, Notausgang 
-		CabinGenerator generator = new CabinGenerator(10, 7, 202, 32, 0, 99);
+		CabinGenerator generator = new CabinGenerator(40, 7, 210, 32, 4 ,99);
 		generator.generateCabin();
 		
 	}
