@@ -1,7 +1,5 @@
 package net.bhl.cdt.model.cabin.handlers;
 
-
-
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.commands.SimulateBoardingCommand;
 
@@ -13,17 +11,13 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-
-
 public class SimulateBoardingHandler extends AbstractHandler {
 
 	/**
 	 * Get selected Element.
 	 * 
-	 * @param event
-	 *            Selected Element
-	 * @throws ExecutionException
-	 *             Exception
+	 * @param event Selected Element
+	 * @throws ExecutionException Exception
 	 * @return null
 	 */
 	@Override
@@ -33,13 +27,12 @@ public class SimulateBoardingHandler extends AbstractHandler {
 		IStructuredSelection selection = (IStructuredSelection) sel;
 
 		Object firstElement = selection.getFirstElement();
-		if (firstElement instanceof Cabin){
-			
-			new SimulateBoardingCommand(shell,(Cabin) firstElement).execute();
-			
+		if (firstElement instanceof Cabin) {
+
+			new SimulateBoardingCommand(shell, (Cabin) firstElement).execute();
+
 		}
 
 		return null;
 	}
-
 }

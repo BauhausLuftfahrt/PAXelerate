@@ -49,13 +49,13 @@ public interface CabinFactory extends EFactory {
 	PassengerClass createPassengerClass();
 
 	/**
-	 * Returns a new object of class '<em>Doors</em>'.
+	 * Returns a new object of class '<em>Door</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Doors</em>'.
+	 * @return a new object of class '<em>Door</em>'.
 	 * @generated
 	 */
-	CabinDoors createCabinDoors();
+	CabinDoor createCabinDoor();
 
 	/**
 	 * Returns a new object of class '<em>Seat</em>'.
@@ -74,6 +74,69 @@ public interface CabinFactory extends EFactory {
 	 * @generated
 	 */
 	Passenger createPassenger();
+
+	/**
+	 * Returns a new object of class '<em>Crew Member</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Crew Member</em>'.
+	 * @generated
+	 */
+	CrewMember createCrewMember();
+
+	/**
+	 * Returns a new object of class '<em>Emergency Exit</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Emergency Exit</em>'.
+	 * @generated
+	 */
+	EmergencyExit createEmergencyExit();
+
+	/**
+	 * Returns a new object of class '<em>Toilet</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Toilet</em>'.
+	 * @generated
+	 */
+	Toilet createToilet();
+
+	/**
+	 * Returns a new object of class '<em>Galley</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Galley</em>'.
+	 * @generated
+	 */
+	Galley createGalley();
+
+	/**
+	 * Returns a new object of class '<em>Stairway</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Stairway</em>'.
+	 * @generated
+	 */
+	Stairway createStairway();
+
+	/**
+	 * Returns a new object of class '<em>Curtain</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Curtain</em>'.
+	 * @generated
+	 */
+	Curtain createCurtain();
+
+	/**
+	 * Returns a new object of class '<em>Stowage</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Stowage</em>'.
+	 * @generated
+	 */
+	Stowage createStowage();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link net.bhl.cdt.model.cabin.Row#getSeats <em>Seats</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Row#getRowNumber <em>Row Number</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Row#isOffsetInRow <em>Offset In Row</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Row#isAdditionalLegroom <em>Additional Legroom</em>}</li>
  * </ul>
  * </p>
  *
@@ -65,5 +67,57 @@ public interface Row extends EObject {
 	 * @generated
 	 */
 	void setRowNumber(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Offset In Row</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Offset In Row</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Offset In Row</em>' attribute.
+	 * @see #setOffsetInRow(boolean)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getRow_OffsetInRow()
+	 * @model
+	 * @generated
+	 */
+	boolean isOffsetInRow();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Row#isOffsetInRow <em>Offset In Row</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Offset In Row</em>' attribute.
+	 * @see #isOffsetInRow()
+	 * @generated
+	 */
+	void setOffsetInRow(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Additional Legroom</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Additional Legroom</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Additional Legroom</em>' attribute.
+	 * @see #setAdditionalLegroom(boolean)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getRow_AdditionalLegroom()
+	 * @model
+	 * @generated
+	 */
+	boolean isAdditionalLegroom();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Row#isAdditionalLegroom <em>Additional Legroom</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Additional Legroom</em>' attribute.
+	 * @see #isAdditionalLegroom()
+	 * @generated
+	 */
+	void setAdditionalLegroom(boolean value);
 
 } // Row

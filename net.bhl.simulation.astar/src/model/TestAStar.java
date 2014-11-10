@@ -133,7 +133,7 @@ public class TestAStar {
 	}
 
 	public static TestAStar run() {
-		CabinGenerator generator = new CabinGenerator(45, 8, 15, 2, 2);
+		CabinGenerator generator = new CabinGenerator(45, 8, 15, 2,2, 2);
 		TestAStar simulation = new TestAStar(
 				generator.createObstacleMap(generator.generateCabin()),
 				(int) generator.getCabinWidth(),

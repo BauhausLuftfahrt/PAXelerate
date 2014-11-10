@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerClassImpl#getType <em>Type</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerClassImpl#getAvailableSeats <em>Available Seats</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerClassImpl#getRows <em>Rows</em>}</li>
  * </ul>
  * </p>
@@ -51,6 +52,26 @@ public class PassengerClassImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected ClassType type = TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getAvailableSeats() <em>Available Seats</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAvailableSeats()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int AVAILABLE_SEATS_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getAvailableSeats() <em>Available Seats</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAvailableSeats()
+	 * @generated
+	 * @ordered
+	 */
+	protected int availableSeats = AVAILABLE_SEATS_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getRows() <em>Rows</em>}' containment reference list.
@@ -107,6 +128,27 @@ public class PassengerClassImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getAvailableSeats() {
+		return availableSeats;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAvailableSeats(int newAvailableSeats) {
+		int oldAvailableSeats = availableSeats;
+		availableSeats = newAvailableSeats;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER_CLASS__AVAILABLE_SEATS, oldAvailableSeats, availableSeats));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<Row> getRows() {
 		if (rows == null) {
 			rows = new EObjectContainmentEList<Row>(Row.class, this, CabinPackage.PASSENGER_CLASS__ROWS);
@@ -138,6 +180,8 @@ public class PassengerClassImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case CabinPackage.PASSENGER_CLASS__TYPE:
 				return getType();
+			case CabinPackage.PASSENGER_CLASS__AVAILABLE_SEATS:
+				return getAvailableSeats();
 			case CabinPackage.PASSENGER_CLASS__ROWS:
 				return getRows();
 		}
@@ -155,6 +199,9 @@ public class PassengerClassImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case CabinPackage.PASSENGER_CLASS__TYPE:
 				setType((ClassType)newValue);
+				return;
+			case CabinPackage.PASSENGER_CLASS__AVAILABLE_SEATS:
+				setAvailableSeats((Integer)newValue);
 				return;
 			case CabinPackage.PASSENGER_CLASS__ROWS:
 				getRows().clear();
@@ -175,6 +222,9 @@ public class PassengerClassImpl extends MinimalEObjectImpl.Container implements 
 			case CabinPackage.PASSENGER_CLASS__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
+			case CabinPackage.PASSENGER_CLASS__AVAILABLE_SEATS:
+				setAvailableSeats(AVAILABLE_SEATS_EDEFAULT);
+				return;
 			case CabinPackage.PASSENGER_CLASS__ROWS:
 				getRows().clear();
 				return;
@@ -192,6 +242,8 @@ public class PassengerClassImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case CabinPackage.PASSENGER_CLASS__TYPE:
 				return type != TYPE_EDEFAULT;
+			case CabinPackage.PASSENGER_CLASS__AVAILABLE_SEATS:
+				return availableSeats != AVAILABLE_SEATS_EDEFAULT;
 			case CabinPackage.PASSENGER_CLASS__ROWS:
 				return rows != null && !rows.isEmpty();
 		}
@@ -210,6 +262,8 @@ public class PassengerClassImpl extends MinimalEObjectImpl.Container implements 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (type: ");
 		result.append(type);
+		result.append(", availableSeats: ");
+		result.append(availableSeats);
 		result.append(')');
 		return result.toString();
 	}

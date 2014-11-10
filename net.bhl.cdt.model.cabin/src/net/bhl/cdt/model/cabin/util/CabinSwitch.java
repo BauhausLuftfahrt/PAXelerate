@@ -84,9 +84,9 @@ public class CabinSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CabinPackage.CABIN_DOORS: {
-				CabinDoors cabinDoors = (CabinDoors)theEObject;
-				T result = caseCabinDoors(cabinDoors);
+			case CabinPackage.CABIN_DOOR: {
+				CabinDoor cabinDoor = (CabinDoor)theEObject;
+				T result = caseCabinDoor(cabinDoor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -99,6 +99,48 @@ public class CabinSwitch<T> extends Switch<T> {
 			case CabinPackage.PASSENGER: {
 				Passenger passenger = (Passenger)theEObject;
 				T result = casePassenger(passenger);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CabinPackage.CREW_MEMBER: {
+				CrewMember crewMember = (CrewMember)theEObject;
+				T result = caseCrewMember(crewMember);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CabinPackage.EMERGENCY_EXIT: {
+				EmergencyExit emergencyExit = (EmergencyExit)theEObject;
+				T result = caseEmergencyExit(emergencyExit);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CabinPackage.TOILET: {
+				Toilet toilet = (Toilet)theEObject;
+				T result = caseToilet(toilet);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CabinPackage.GALLEY: {
+				Galley galley = (Galley)theEObject;
+				T result = caseGalley(galley);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CabinPackage.STAIRWAY: {
+				Stairway stairway = (Stairway)theEObject;
+				T result = caseStairway(stairway);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CabinPackage.CURTAIN: {
+				Curtain curtain = (Curtain)theEObject;
+				T result = caseCurtain(curtain);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CabinPackage.STOWAGE: {
+				Stowage stowage = (Stowage)theEObject;
+				T result = caseStowage(stowage);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -152,17 +194,17 @@ public class CabinSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Doors</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Door</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Doors</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Door</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseCabinDoors(CabinDoors object) {
+	public T caseCabinDoor(CabinDoor object) {
 		return null;
 	}
 
@@ -193,6 +235,111 @@ public class CabinSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePassenger(Passenger object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Crew Member</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Crew Member</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCrewMember(CrewMember object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Emergency Exit</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Emergency Exit</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEmergencyExit(EmergencyExit object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Toilet</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Toilet</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseToilet(Toilet object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Galley</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Galley</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGalley(Galley object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Stairway</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Stairway</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStairway(Stairway object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Curtain</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Curtain</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCurtain(Curtain object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Stowage</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Stowage</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStowage(Stowage object) {
 		return null;
 	}
 

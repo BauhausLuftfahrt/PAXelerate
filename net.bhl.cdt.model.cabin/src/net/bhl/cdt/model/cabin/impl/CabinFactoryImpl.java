@@ -60,9 +60,16 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 			case CabinPackage.CABIN: return createCabin();
 			case CabinPackage.ROW: return createRow();
 			case CabinPackage.PASSENGER_CLASS: return createPassengerClass();
-			case CabinPackage.CABIN_DOORS: return createCabinDoors();
+			case CabinPackage.CABIN_DOOR: return createCabinDoor();
 			case CabinPackage.SEAT: return createSeat();
 			case CabinPackage.PASSENGER: return createPassenger();
+			case CabinPackage.CREW_MEMBER: return createCrewMember();
+			case CabinPackage.EMERGENCY_EXIT: return createEmergencyExit();
+			case CabinPackage.TOILET: return createToilet();
+			case CabinPackage.GALLEY: return createGalley();
+			case CabinPackage.STAIRWAY: return createStairway();
+			case CabinPackage.CURTAIN: return createCurtain();
+			case CabinPackage.STOWAGE: return createStowage();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -76,10 +83,14 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case CabinPackage.CLASS_TYPE:
-				return createClassTypeFromString(eDataType, initialValue);
 			case CabinPackage.SEX:
 				return createSexFromString(eDataType, initialValue);
+			case CabinPackage.CLASS_TYPE:
+				return createClassTypeFromString(eDataType, initialValue);
+			case CabinPackage.EXIT_TYPE:
+				return createExitTypeFromString(eDataType, initialValue);
+			case CabinPackage.STAIRWAY_DIRECTION:
+				return createStairwayDirectionFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -93,10 +104,14 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case CabinPackage.CLASS_TYPE:
-				return convertClassTypeToString(eDataType, instanceValue);
 			case CabinPackage.SEX:
 				return convertSexToString(eDataType, instanceValue);
+			case CabinPackage.CLASS_TYPE:
+				return convertClassTypeToString(eDataType, instanceValue);
+			case CabinPackage.EXIT_TYPE:
+				return convertExitTypeToString(eDataType, instanceValue);
+			case CabinPackage.STAIRWAY_DIRECTION:
+				return convertStairwayDirectionToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -137,9 +152,9 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CabinDoors createCabinDoors() {
-		CabinDoorsImpl cabinDoors = new CabinDoorsImpl();
-		return cabinDoors;
+	public CabinDoor createCabinDoor() {
+		CabinDoorImpl cabinDoor = new CabinDoorImpl();
+		return cabinDoor;
 	}
 
 	/**
@@ -167,6 +182,76 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public CrewMember createCrewMember() {
+		CrewMemberImpl crewMember = new CrewMemberImpl();
+		return crewMember;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EmergencyExit createEmergencyExit() {
+		EmergencyExitImpl emergencyExit = new EmergencyExitImpl();
+		return emergencyExit;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Toilet createToilet() {
+		ToiletImpl toilet = new ToiletImpl();
+		return toilet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Galley createGalley() {
+		GalleyImpl galley = new GalleyImpl();
+		return galley;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Stairway createStairway() {
+		StairwayImpl stairway = new StairwayImpl();
+		return stairway;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Curtain createCurtain() {
+		CurtainImpl curtain = new CurtainImpl();
+		return curtain;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Stowage createStowage() {
+		StowageImpl stowage = new StowageImpl();
+		return stowage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ClassType createClassTypeFromString(EDataType eDataType, String initialValue) {
 		ClassType result = ClassType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -179,6 +264,46 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * @generated
 	 */
 	public String convertClassTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExitType createExitTypeFromString(EDataType eDataType, String initialValue) {
+		ExitType result = ExitType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertExitTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StairwayDirection createStairwayDirectionFromString(EDataType eDataType, String initialValue) {
+		StairwayDirection result = StairwayDirection.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertStairwayDirectionToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

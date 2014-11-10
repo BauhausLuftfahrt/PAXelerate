@@ -80,8 +80,8 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 				return createPassengerClassAdapter();
 			}
 			@Override
-			public Adapter caseCabinDoors(CabinDoors object) {
-				return createCabinDoorsAdapter();
+			public Adapter caseCabinDoor(CabinDoor object) {
+				return createCabinDoorAdapter();
 			}
 			@Override
 			public Adapter caseSeat(Seat object) {
@@ -90,6 +90,34 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter casePassenger(Passenger object) {
 				return createPassengerAdapter();
+			}
+			@Override
+			public Adapter caseCrewMember(CrewMember object) {
+				return createCrewMemberAdapter();
+			}
+			@Override
+			public Adapter caseEmergencyExit(EmergencyExit object) {
+				return createEmergencyExitAdapter();
+			}
+			@Override
+			public Adapter caseToilet(Toilet object) {
+				return createToiletAdapter();
+			}
+			@Override
+			public Adapter caseGalley(Galley object) {
+				return createGalleyAdapter();
+			}
+			@Override
+			public Adapter caseStairway(Stairway object) {
+				return createStairwayAdapter();
+			}
+			@Override
+			public Adapter caseCurtain(Curtain object) {
+				return createCurtainAdapter();
+			}
+			@Override
+			public Adapter caseStowage(Stowage object) {
+				return createStowageAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -154,16 +182,16 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.CabinDoors <em>Doors</em>}'.
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.CabinDoor <em>Door</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see net.bhl.cdt.model.cabin.CabinDoors
+	 * @see net.bhl.cdt.model.cabin.CabinDoor
 	 * @generated
 	 */
-	public Adapter createCabinDoorsAdapter() {
+	public Adapter createCabinDoorAdapter() {
 		return null;
 	}
 
@@ -192,6 +220,104 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPassengerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.CrewMember <em>Crew Member</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see net.bhl.cdt.model.cabin.CrewMember
+	 * @generated
+	 */
+	public Adapter createCrewMemberAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.EmergencyExit <em>Emergency Exit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see net.bhl.cdt.model.cabin.EmergencyExit
+	 * @generated
+	 */
+	public Adapter createEmergencyExitAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.Toilet <em>Toilet</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see net.bhl.cdt.model.cabin.Toilet
+	 * @generated
+	 */
+	public Adapter createToiletAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.Galley <em>Galley</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see net.bhl.cdt.model.cabin.Galley
+	 * @generated
+	 */
+	public Adapter createGalleyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.Stairway <em>Stairway</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see net.bhl.cdt.model.cabin.Stairway
+	 * @generated
+	 */
+	public Adapter createStairwayAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.Curtain <em>Curtain</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see net.bhl.cdt.model.cabin.Curtain
+	 * @generated
+	 */
+	public Adapter createCurtainAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.Stowage <em>Stowage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see net.bhl.cdt.model.cabin.Stowage
+	 * @generated
+	 */
+	public Adapter createStowageAdapter() {
 		return null;
 	}
 
