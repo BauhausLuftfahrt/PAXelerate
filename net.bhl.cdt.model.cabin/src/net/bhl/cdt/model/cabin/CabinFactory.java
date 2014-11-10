@@ -85,6 +85,33 @@ public interface CabinFactory extends EFactory {
 	EmergencyExits createEmergencyExits();
 
 	/**
+	 * Returns a new object of class '<em>Toilet</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Toilet</em>'.
+	 * @generated
+	 */
+	Toilet createToilet();
+
+	/**
+	 * Returns a new object of class '<em>Galley</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Galley</em>'.
+	 * @generated
+	 */
+	Galley createGalley();
+
+	/**
+	 * Returns a new object of class '<em>Crew Seat</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Crew Seat</em>'.
+	 * @generated
+	 */
+	CrewSeat createCrewSeat();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -64,6 +64,9 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 			case CabinPackage.SEAT: return createSeat();
 			case CabinPackage.PASSENGER: return createPassenger();
 			case CabinPackage.EMERGENCY_EXITS: return createEmergencyExits();
+			case CabinPackage.TOILET: return createToilet();
+			case CabinPackage.GALLEY: return createGalley();
+			case CabinPackage.CREW_SEAT: return createCrewSeat();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -81,6 +84,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return createClassTypeFromString(eDataType, initialValue);
 			case CabinPackage.SEX:
 				return createSexFromString(eDataType, initialValue);
+			case CabinPackage.BCWITH_BLOCKED_SEAT:
+				return createBCwithBlockedSeatFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -98,6 +103,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return convertClassTypeToString(eDataType, instanceValue);
 			case CabinPackage.SEX:
 				return convertSexToString(eDataType, instanceValue);
+			case CabinPackage.BCWITH_BLOCKED_SEAT:
+				return convertBCwithBlockedSeatToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -178,6 +185,36 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Toilet createToilet() {
+		ToiletImpl toilet = new ToiletImpl();
+		return toilet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Galley createGalley() {
+		GalleyImpl galley = new GalleyImpl();
+		return galley;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CrewSeat createCrewSeat() {
+		CrewSeatImpl crewSeat = new CrewSeatImpl();
+		return crewSeat;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ClassType createClassTypeFromString(EDataType eDataType, String initialValue) {
 		ClassType result = ClassType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -210,6 +247,26 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * @generated
 	 */
 	public String convertSexToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BCwithBlockedSeat createBCwithBlockedSeatFromString(EDataType eDataType, String initialValue) {
+		BCwithBlockedSeat result = BCwithBlockedSeat.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertBCwithBlockedSeatToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

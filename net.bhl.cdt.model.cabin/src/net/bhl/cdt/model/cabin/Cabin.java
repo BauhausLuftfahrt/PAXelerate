@@ -19,10 +19,14 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getClasses <em>Classes</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getDoors <em>Doors</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getExits <em>Exits</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBoardingTime <em>Boarding Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getToilets <em>Toilets</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getGalleys <em>Galleys</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getFCperc <em>FCperc</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBCperc <em>BCperc</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getPECperc <em>PE Cperc</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getNumbAisles <em>Numb Aisles</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBoardingTime <em>Boarding Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBlockedSeatsInBC <em>Blocked Seats In BC</em>}</li>
  * </ul>
  * </p>
  *
@@ -153,10 +157,42 @@ public interface Cabin extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Exits</em>' reference list.
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Exits()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	EList<EmergencyExits> getExits();
+
+	/**
+	 * Returns the value of the '<em><b>Toilets</b></em>' reference list.
+	 * The list contents are of type {@link net.bhl.cdt.model.cabin.Toilet}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Toilets</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Toilets</em>' reference list.
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Toilets()
+	 * @model required="true"
+	 * @generated
+	 */
+	EList<Toilet> getToilets();
+
+	/**
+	 * Returns the value of the '<em><b>Galleys</b></em>' reference list.
+	 * The list contents are of type {@link net.bhl.cdt.model.cabin.Galley}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Galleys</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Galleys</em>' reference list.
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Galleys()
+	 * @model required="true"
+	 * @generated
+	 */
+	EList<Galley> getGalleys();
 
 	/**
 	 * Returns the value of the '<em><b>Boarding Time</b></em>' attribute.
@@ -183,6 +219,35 @@ public interface Cabin extends EObject {
 	 * @generated
 	 */
 	void setBoardingTime(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Blocked Seats In BC</b></em>' attribute.
+	 * The literals are from the enumeration {@link net.bhl.cdt.model.cabin.BCwithBlockedSeat}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Blocked Seats In BC</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Blocked Seats In BC</em>' attribute.
+	 * @see net.bhl.cdt.model.cabin.BCwithBlockedSeat
+	 * @see #setBlockedSeatsInBC(BCwithBlockedSeat)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_BlockedSeatsInBC()
+	 * @model
+	 * @generated
+	 */
+	BCwithBlockedSeat getBlockedSeatsInBC();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getBlockedSeatsInBC <em>Blocked Seats In BC</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Blocked Seats In BC</em>' attribute.
+	 * @see net.bhl.cdt.model.cabin.BCwithBlockedSeat
+	 * @see #getBlockedSeatsInBC()
+	 * @generated
+	 */
+	void setBlockedSeatsInBC(BCwithBlockedSeat value);
 
 	/**
 	 * Returns the value of the '<em><b>FCperc</b></em>' attribute.
@@ -235,6 +300,32 @@ public interface Cabin extends EObject {
 	 * @generated
 	 */
 	void setBCperc(int value);
+
+	/**
+	 * Returns the value of the '<em><b>PE Cperc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>PE Cperc</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>PE Cperc</em>' attribute.
+	 * @see #setPECperc(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_PECperc()
+	 * @model
+	 * @generated
+	 */
+	int getPECperc();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getPECperc <em>PE Cperc</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>PE Cperc</em>' attribute.
+	 * @see #getPECperc()
+	 * @generated
+	 */
+	void setPECperc(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Numb Aisles</b></em>' attribute.

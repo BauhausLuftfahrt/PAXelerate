@@ -46,7 +46,7 @@ public enum ClassType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	PREMIUM_ECONOMY(2, "PremiumEconomy", ""), /**
+	PREMIUM_ECONOMY(2, "PremiumEconomy", "PremiumEconomy"), /**
 	 * The '<em><b>Economy</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -95,7 +95,7 @@ public enum ClassType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #PREMIUM_ECONOMY
-	 * @model name="PremiumEconomy" literal=""
+	 * @model name="PremiumEconomy"
 	 * @generated
 	 * @ordered
 	 */

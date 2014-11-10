@@ -3,12 +3,15 @@
 package net.bhl.cdt.model.cabin.impl;
 
 import java.util.Collection;
+import net.bhl.cdt.model.cabin.BCwithBlockedSeat;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinDoors;
 import net.bhl.cdt.model.cabin.CabinPackage;
 
 import net.bhl.cdt.model.cabin.EmergencyExits;
+import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.PassengerClass;
+import net.bhl.cdt.model.cabin.Toilet;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -34,10 +37,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getClasses <em>Classes</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getDoors <em>Doors</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getExits <em>Exits</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getBoardingTime <em>Boarding Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getToilets <em>Toilets</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getGalleys <em>Galleys</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getFCperc <em>FCperc</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getBCperc <em>BCperc</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getPECperc <em>PE Cperc</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getNumbAisles <em>Numb Aisles</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getBoardingTime <em>Boarding Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getBlockedSeatsInBC <em>Blocked Seats In BC</em>}</li>
  * </ul>
  * </p>
  *
@@ -127,24 +134,23 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 	 */
 	protected EList<EmergencyExits> exits;
 	/**
-	 * The default value of the '{@link #getBoardingTime() <em>Boarding Time</em>}' attribute.
+	 * The cached value of the '{@link #getToilets() <em>Toilets</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBoardingTime()
+	 * @see #getToilets()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double BOARDING_TIME_EDEFAULT = 0.0;
+	protected EList<Toilet> toilets;
 	/**
-	 * The cached value of the '{@link #getBoardingTime() <em>Boarding Time</em>}' attribute.
+	 * The cached value of the '{@link #getGalleys() <em>Galleys</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBoardingTime()
+	 * @see #getGalleys()
 	 * @generated
 	 * @ordered
 	 */
-	protected double boardingTime = BOARDING_TIME_EDEFAULT;
-
+	protected EList<Galley> galleys;
 	/**
 	 * The default value of the '{@link #getFCperc() <em>FCperc</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -182,6 +188,24 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 	 */
 	protected int bCperc = BCPERC_EDEFAULT;
 	/**
+	 * The default value of the '{@link #getPECperc() <em>PE Cperc</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPECperc()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int PE_CPERC_EDEFAULT = 0;
+	/**
+	 * The cached value of the '{@link #getPECperc() <em>PE Cperc</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPECperc()
+	 * @generated
+	 * @ordered
+	 */
+	protected int peCperc = PE_CPERC_EDEFAULT;
+	/**
 	 * The default value of the '{@link #getNumbAisles() <em>Numb Aisles</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -199,6 +223,42 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 	 * @ordered
 	 */
 	protected int numbAisles = NUMB_AISLES_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getBoardingTime() <em>Boarding Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBoardingTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double BOARDING_TIME_EDEFAULT = 0.0;
+	/**
+	 * The cached value of the '{@link #getBoardingTime() <em>Boarding Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBoardingTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected double boardingTime = BOARDING_TIME_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getBlockedSeatsInBC() <em>Blocked Seats In BC</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBlockedSeatsInBC()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final BCwithBlockedSeat BLOCKED_SEATS_IN_BC_EDEFAULT = BCwithBlockedSeat.NO;
+	/**
+	 * The cached value of the '{@link #getBlockedSeatsInBC() <em>Blocked Seats In BC</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBlockedSeatsInBC()
+	 * @generated
+	 * @ordered
+	 */
+	protected BCwithBlockedSeat blockedSeatsInBC = BLOCKED_SEATS_IN_BC_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -323,6 +383,30 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Toilet> getToilets() {
+		if (toilets == null) {
+			toilets = new EObjectResolvingEList<Toilet>(Toilet.class, this, CabinPackage.CABIN__TOILETS);
+		}
+		return toilets;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Galley> getGalleys() {
+		if (galleys == null) {
+			galleys = new EObjectResolvingEList<Galley>(Galley.class, this, CabinPackage.CABIN__GALLEYS);
+		}
+		return galleys;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public double getBoardingTime() {
 		return boardingTime;
 	}
@@ -337,6 +421,27 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 		boardingTime = newBoardingTime;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__BOARDING_TIME, oldBoardingTime, boardingTime));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BCwithBlockedSeat getBlockedSeatsInBC() {
+		return blockedSeatsInBC;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBlockedSeatsInBC(BCwithBlockedSeat newBlockedSeatsInBC) {
+		BCwithBlockedSeat oldBlockedSeatsInBC = blockedSeatsInBC;
+		blockedSeatsInBC = newBlockedSeatsInBC == null ? BLOCKED_SEATS_IN_BC_EDEFAULT : newBlockedSeatsInBC;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__BLOCKED_SEATS_IN_BC, oldBlockedSeatsInBC, blockedSeatsInBC));
 	}
 
 	/**
@@ -379,6 +484,27 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 		bCperc = newBCperc;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__BCPERC, oldBCperc, bCperc));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getPECperc() {
+		return peCperc;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPECperc(int newPECperc) {
+		int oldPECperc = peCperc;
+		peCperc = newPECperc;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__PE_CPERC, oldPECperc, peCperc));
 	}
 
 	/**
@@ -438,14 +564,22 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return getDoors();
 			case CabinPackage.CABIN__EXITS:
 				return getExits();
-			case CabinPackage.CABIN__BOARDING_TIME:
-				return getBoardingTime();
+			case CabinPackage.CABIN__TOILETS:
+				return getToilets();
+			case CabinPackage.CABIN__GALLEYS:
+				return getGalleys();
 			case CabinPackage.CABIN__FCPERC:
 				return getFCperc();
 			case CabinPackage.CABIN__BCPERC:
 				return getBCperc();
+			case CabinPackage.CABIN__PE_CPERC:
+				return getPECperc();
 			case CabinPackage.CABIN__NUMB_AISLES:
 				return getNumbAisles();
+			case CabinPackage.CABIN__BOARDING_TIME:
+				return getBoardingTime();
+			case CabinPackage.CABIN__BLOCKED_SEATS_IN_BC:
+				return getBlockedSeatsInBC();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -480,8 +614,13 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				getExits().clear();
 				getExits().addAll((Collection<? extends EmergencyExits>)newValue);
 				return;
-			case CabinPackage.CABIN__BOARDING_TIME:
-				setBoardingTime((Double)newValue);
+			case CabinPackage.CABIN__TOILETS:
+				getToilets().clear();
+				getToilets().addAll((Collection<? extends Toilet>)newValue);
+				return;
+			case CabinPackage.CABIN__GALLEYS:
+				getGalleys().clear();
+				getGalleys().addAll((Collection<? extends Galley>)newValue);
 				return;
 			case CabinPackage.CABIN__FCPERC:
 				setFCperc((Integer)newValue);
@@ -489,8 +628,17 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 			case CabinPackage.CABIN__BCPERC:
 				setBCperc((Integer)newValue);
 				return;
+			case CabinPackage.CABIN__PE_CPERC:
+				setPECperc((Integer)newValue);
+				return;
 			case CabinPackage.CABIN__NUMB_AISLES:
 				setNumbAisles((Integer)newValue);
+				return;
+			case CabinPackage.CABIN__BOARDING_TIME:
+				setBoardingTime((Double)newValue);
+				return;
+			case CabinPackage.CABIN__BLOCKED_SEATS_IN_BC:
+				setBlockedSeatsInBC((BCwithBlockedSeat)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -522,8 +670,11 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 			case CabinPackage.CABIN__EXITS:
 				getExits().clear();
 				return;
-			case CabinPackage.CABIN__BOARDING_TIME:
-				setBoardingTime(BOARDING_TIME_EDEFAULT);
+			case CabinPackage.CABIN__TOILETS:
+				getToilets().clear();
+				return;
+			case CabinPackage.CABIN__GALLEYS:
+				getGalleys().clear();
 				return;
 			case CabinPackage.CABIN__FCPERC:
 				setFCperc(FCPERC_EDEFAULT);
@@ -531,8 +682,17 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 			case CabinPackage.CABIN__BCPERC:
 				setBCperc(BCPERC_EDEFAULT);
 				return;
+			case CabinPackage.CABIN__PE_CPERC:
+				setPECperc(PE_CPERC_EDEFAULT);
+				return;
 			case CabinPackage.CABIN__NUMB_AISLES:
 				setNumbAisles(NUMB_AISLES_EDEFAULT);
+				return;
+			case CabinPackage.CABIN__BOARDING_TIME:
+				setBoardingTime(BOARDING_TIME_EDEFAULT);
+				return;
+			case CabinPackage.CABIN__BLOCKED_SEATS_IN_BC:
+				setBlockedSeatsInBC(BLOCKED_SEATS_IN_BC_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -558,14 +718,22 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return doors != null && !doors.isEmpty();
 			case CabinPackage.CABIN__EXITS:
 				return exits != null && !exits.isEmpty();
-			case CabinPackage.CABIN__BOARDING_TIME:
-				return boardingTime != BOARDING_TIME_EDEFAULT;
+			case CabinPackage.CABIN__TOILETS:
+				return toilets != null && !toilets.isEmpty();
+			case CabinPackage.CABIN__GALLEYS:
+				return galleys != null && !galleys.isEmpty();
 			case CabinPackage.CABIN__FCPERC:
 				return fCperc != FCPERC_EDEFAULT;
 			case CabinPackage.CABIN__BCPERC:
 				return bCperc != BCPERC_EDEFAULT;
+			case CabinPackage.CABIN__PE_CPERC:
+				return peCperc != PE_CPERC_EDEFAULT;
 			case CabinPackage.CABIN__NUMB_AISLES:
 				return numbAisles != NUMB_AISLES_EDEFAULT;
+			case CabinPackage.CABIN__BOARDING_TIME:
+				return boardingTime != BOARDING_TIME_EDEFAULT;
+			case CabinPackage.CABIN__BLOCKED_SEATS_IN_BC:
+				return blockedSeatsInBC != BLOCKED_SEATS_IN_BC_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -586,14 +754,18 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 		result.append(cabinWidth);
 		result.append(", numbSeats: ");
 		result.append(numbSeats);
-		result.append(", boardingTime: ");
-		result.append(boardingTime);
 		result.append(", FCperc: ");
 		result.append(fCperc);
 		result.append(", BCperc: ");
 		result.append(bCperc);
+		result.append(", PECperc: ");
+		result.append(peCperc);
 		result.append(", numbAisles: ");
 		result.append(numbAisles);
+		result.append(", boardingTime: ");
+		result.append(boardingTime);
+		result.append(", BlockedSeatsInBC: ");
+		result.append(blockedSeatsInBC);
 		result.append(')');
 		return result.toString();
 	}

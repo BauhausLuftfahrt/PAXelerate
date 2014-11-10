@@ -108,6 +108,24 @@ public class CabinSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CabinPackage.TOILET: {
+				Toilet toilet = (Toilet)theEObject;
+				T result = caseToilet(toilet);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CabinPackage.GALLEY: {
+				Galley galley = (Galley)theEObject;
+				T result = caseGalley(galley);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CabinPackage.CREW_SEAT: {
+				CrewSeat crewSeat = (CrewSeat)theEObject;
+				T result = caseCrewSeat(crewSeat);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -214,6 +232,51 @@ public class CabinSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEmergencyExits(EmergencyExits object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Toilet</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Toilet</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseToilet(Toilet object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Galley</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Galley</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGalley(Galley object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Crew Seat</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Crew Seat</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCrewSeat(CrewSeat object) {
 		return null;
 	}
 

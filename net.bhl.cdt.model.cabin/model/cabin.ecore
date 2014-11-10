@@ -9,12 +9,18 @@
         upperBound="-1" eType="#//PassengerClass" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="doors" lowerBound="1" upperBound="-1"
         eType="#//CabinDoors" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="exits" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exits" lowerBound="1" upperBound="-1"
         eType="#//EmergencyExits"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="boardingTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toilets" lowerBound="1"
+        upperBound="-1" eType="#//Toilet"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="galleys" lowerBound="1"
+        upperBound="-1" eType="#//Galley"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="FCperc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="BCperc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="PECperc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numbAisles" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="boardingTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="BlockedSeatsInBC" eType="#//BCwithBlockedSeat"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Row">
     <eStructuralFeatures xsi:type="ecore:EReference" name="seats" lowerBound="1" upperBound="-1"
@@ -37,7 +43,7 @@
   <eClassifiers xsi:type="ecore:EEnum" name="ClassType">
     <eLiterals name="First"/>
     <eLiterals name="Business" value="1"/>
-    <eLiterals name="PremiumEconomy" value="2" literal=""/>
+    <eLiterals name="PremiumEconomy" value="2" literal="PremiumEconomy"/>
     <eLiterals name="Economy" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Passenger">
@@ -51,5 +57,18 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EmergencyExits">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ExitInRow" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Toilet">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ToiletAfterRow" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Galley">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="GalleyAfterRow" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="BCwithBlockedSeat">
+    <eLiterals name="no" literal="no"/>
+    <eLiterals name="yes" value="1" literal="yes"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CrewSeat">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="SeatNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
 </ecore:EPackage>
