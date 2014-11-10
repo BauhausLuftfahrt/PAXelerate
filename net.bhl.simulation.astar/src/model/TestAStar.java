@@ -161,6 +161,5 @@ public class TestAStar {
 
 		runAgent();
 		return simulation;
-
 	}
 }
