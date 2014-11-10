@@ -21,12 +21,12 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getExits <em>Exits</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getToilets <em>Toilets</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getGalleys <em>Galleys</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getFCperc <em>FCperc</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBCperc <em>BCperc</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getPECperc <em>PE Cperc</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getNumbAisles <em>Numb Aisles</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBoardingTime <em>Boarding Time</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBlockedSeatsInBC <em>Blocked Seats In BC</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getTotalPassengers <em>Total Passengers</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getFCpassengers <em>FCpassengers</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBCpassengers <em>BCpassengers</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getPECpassengers <em>PE Cpassengers</em>}</li>
  * </ul>
  * </p>
  *
@@ -132,7 +132,7 @@ public interface Cabin extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Doors</b></em>' containment reference list.
-	 * The list contents are of type {@link net.bhl.cdt.model.cabin.CabinDoors}.
+	 * The list contents are of type {@link net.bhl.cdt.model.cabin.CabinDoor}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Doors</em>' containment reference list isn't clear,
@@ -144,7 +144,7 @@ public interface Cabin extends EObject {
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList<CabinDoors> getDoors();
+	EList<CabinDoor> getDoors();
 
 	/**
 	 * Returns the value of the '<em><b>Exits</b></em>' reference list.
@@ -221,111 +221,108 @@ public interface Cabin extends EObject {
 	void setBoardingTime(double value);
 
 	/**
-	 * Returns the value of the '<em><b>Blocked Seats In BC</b></em>' attribute.
-	 * The literals are from the enumeration {@link net.bhl.cdt.model.cabin.BCwithBlockedSeat}.
+	 * Returns the value of the '<em><b>Total Passengers</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Blocked Seats In BC</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Total Passengers</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Blocked Seats In BC</em>' attribute.
-	 * @see net.bhl.cdt.model.cabin.BCwithBlockedSeat
-	 * @see #setBlockedSeatsInBC(BCwithBlockedSeat)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_BlockedSeatsInBC()
+	 * @return the value of the '<em>Total Passengers</em>' attribute.
+	 * @see #setTotalPassengers(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_TotalPassengers()
 	 * @model
 	 * @generated
 	 */
-	BCwithBlockedSeat getBlockedSeatsInBC();
+	int getTotalPassengers();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getBlockedSeatsInBC <em>Blocked Seats In BC</em>}' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getTotalPassengers <em>Total Passengers</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Blocked Seats In BC</em>' attribute.
-	 * @see net.bhl.cdt.model.cabin.BCwithBlockedSeat
-	 * @see #getBlockedSeatsInBC()
+	 * @param value the new value of the '<em>Total Passengers</em>' attribute.
+	 * @see #getTotalPassengers()
 	 * @generated
 	 */
-	void setBlockedSeatsInBC(BCwithBlockedSeat value);
+	void setTotalPassengers(int value);
 
 	/**
-	 * Returns the value of the '<em><b>FCperc</b></em>' attribute.
+	 * Returns the value of the '<em><b>FCpassengers</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>FCperc</em>' attribute isn't clear,
+	 * If the meaning of the '<em>FCpassengers</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>FCperc</em>' attribute.
-	 * @see #setFCperc(int)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_FCperc()
+	 * @return the value of the '<em>FCpassengers</em>' attribute.
+	 * @see #setFCpassengers(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_FCpassengers()
 	 * @model
 	 * @generated
 	 */
-	int getFCperc();
+	int getFCpassengers();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getFCperc <em>FCperc</em>}' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getFCpassengers <em>FCpassengers</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>FCperc</em>' attribute.
-	 * @see #getFCperc()
+	 * @param value the new value of the '<em>FCpassengers</em>' attribute.
+	 * @see #getFCpassengers()
 	 * @generated
 	 */
-	void setFCperc(int value);
+	void setFCpassengers(int value);
 
 	/**
-	 * Returns the value of the '<em><b>BCperc</b></em>' attribute.
+	 * Returns the value of the '<em><b>BCpassengers</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>BCperc</em>' attribute isn't clear,
+	 * If the meaning of the '<em>BCpassengers</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>BCperc</em>' attribute.
-	 * @see #setBCperc(int)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_BCperc()
+	 * @return the value of the '<em>BCpassengers</em>' attribute.
+	 * @see #setBCpassengers(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_BCpassengers()
 	 * @model
 	 * @generated
 	 */
-	int getBCperc();
+	int getBCpassengers();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getBCperc <em>BCperc</em>}' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getBCpassengers <em>BCpassengers</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>BCperc</em>' attribute.
-	 * @see #getBCperc()
+	 * @param value the new value of the '<em>BCpassengers</em>' attribute.
+	 * @see #getBCpassengers()
 	 * @generated
 	 */
-	void setBCperc(int value);
+	void setBCpassengers(int value);
 
 	/**
-	 * Returns the value of the '<em><b>PE Cperc</b></em>' attribute.
+	 * Returns the value of the '<em><b>PE Cpassengers</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>PE Cperc</em>' attribute isn't clear,
+	 * If the meaning of the '<em>PE Cpassengers</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>PE Cperc</em>' attribute.
-	 * @see #setPECperc(int)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_PECperc()
+	 * @return the value of the '<em>PE Cpassengers</em>' attribute.
+	 * @see #setPECpassengers(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_PECpassengers()
 	 * @model
 	 * @generated
 	 */
-	int getPECperc();
+	int getPECpassengers();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getPECperc <em>PE Cperc</em>}' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getPECpassengers <em>PE Cpassengers</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>PE Cperc</em>' attribute.
-	 * @see #getPECperc()
+	 * @param value the new value of the '<em>PE Cpassengers</em>' attribute.
+	 * @see #getPECpassengers()
 	 * @generated
 	 */
-	void setPECperc(int value);
+	void setPECpassengers(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Numb Aisles</b></em>' attribute.

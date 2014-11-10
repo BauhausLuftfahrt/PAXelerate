@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#getSeatNumber <em>Seat Number</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#getSeatType <em>Seat Type</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#isSeatBlocked <em>Seat Blocked</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#isCrewSeat <em>Crew Seat</em>}</li>
  * </ul>
  * </p>
  *
@@ -66,6 +68,46 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 	 * @ordered
 	 */
 	protected String seatType = SEAT_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isSeatBlocked() <em>Seat Blocked</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSeatBlocked()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean SEAT_BLOCKED_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isSeatBlocked() <em>Seat Blocked</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSeatBlocked()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean seatBlocked = SEAT_BLOCKED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isCrewSeat() <em>Crew Seat</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isCrewSeat()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean CREW_SEAT_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isCrewSeat() <em>Crew Seat</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isCrewSeat()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean crewSeat = CREW_SEAT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -133,6 +175,48 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isSeatBlocked() {
+		return seatBlocked;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatBlocked(boolean newSeatBlocked) {
+		boolean oldSeatBlocked = seatBlocked;
+		seatBlocked = newSeatBlocked;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SEAT__SEAT_BLOCKED, oldSeatBlocked, seatBlocked));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isCrewSeat() {
+		return crewSeat;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCrewSeat(boolean newCrewSeat) {
+		boolean oldCrewSeat = crewSeat;
+		crewSeat = newCrewSeat;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SEAT__CREW_SEAT, oldCrewSeat, crewSeat));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -140,6 +224,10 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 				return getSeatNumber();
 			case CabinPackage.SEAT__SEAT_TYPE:
 				return getSeatType();
+			case CabinPackage.SEAT__SEAT_BLOCKED:
+				return isSeatBlocked();
+			case CabinPackage.SEAT__CREW_SEAT:
+				return isCrewSeat();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -157,6 +245,12 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 				return;
 			case CabinPackage.SEAT__SEAT_TYPE:
 				setSeatType((String)newValue);
+				return;
+			case CabinPackage.SEAT__SEAT_BLOCKED:
+				setSeatBlocked((Boolean)newValue);
+				return;
+			case CabinPackage.SEAT__CREW_SEAT:
+				setCrewSeat((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -176,6 +270,12 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 			case CabinPackage.SEAT__SEAT_TYPE:
 				setSeatType(SEAT_TYPE_EDEFAULT);
 				return;
+			case CabinPackage.SEAT__SEAT_BLOCKED:
+				setSeatBlocked(SEAT_BLOCKED_EDEFAULT);
+				return;
+			case CabinPackage.SEAT__CREW_SEAT:
+				setCrewSeat(CREW_SEAT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -192,6 +292,10 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 				return seatNumber != SEAT_NUMBER_EDEFAULT;
 			case CabinPackage.SEAT__SEAT_TYPE:
 				return SEAT_TYPE_EDEFAULT == null ? seatType != null : !SEAT_TYPE_EDEFAULT.equals(seatType);
+			case CabinPackage.SEAT__SEAT_BLOCKED:
+				return seatBlocked != SEAT_BLOCKED_EDEFAULT;
+			case CabinPackage.SEAT__CREW_SEAT:
+				return crewSeat != CREW_SEAT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -210,6 +314,10 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 		result.append(seatNumber);
 		result.append(", seatType: ");
 		result.append(seatType);
+		result.append(", seatBlocked: ");
+		result.append(seatBlocked);
+		result.append(", crewSeat: ");
+		result.append(crewSeat);
 		result.append(')');
 		return result.toString();
 	}

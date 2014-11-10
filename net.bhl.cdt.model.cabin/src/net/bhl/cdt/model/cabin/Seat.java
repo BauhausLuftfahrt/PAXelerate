@@ -15,6 +15,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#getSeatNumber <em>Seat Number</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#getSeatType <em>Seat Type</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Seat#isSeatBlocked <em>Seat Blocked</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Seat#isCrewSeat <em>Crew Seat</em>}</li>
  * </ul>
  * </p>
  *
@@ -74,5 +76,57 @@ public interface Seat extends EObject {
 	 * @generated
 	 */
 	void setSeatType(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Seat Blocked</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seat Blocked</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seat Blocked</em>' attribute.
+	 * @see #setSeatBlocked(boolean)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSeat_SeatBlocked()
+	 * @model
+	 * @generated
+	 */
+	boolean isSeatBlocked();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Seat#isSeatBlocked <em>Seat Blocked</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seat Blocked</em>' attribute.
+	 * @see #isSeatBlocked()
+	 * @generated
+	 */
+	void setSeatBlocked(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Crew Seat</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Crew Seat</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Crew Seat</em>' attribute.
+	 * @see #setCrewSeat(boolean)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSeat_CrewSeat()
+	 * @model
+	 * @generated
+	 */
+	boolean isCrewSeat();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Seat#isCrewSeat <em>Crew Seat</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Crew Seat</em>' attribute.
+	 * @see #isCrewSeat()
+	 * @generated
+	 */
+	void setCrewSeat(boolean value);
 
 } // Seat

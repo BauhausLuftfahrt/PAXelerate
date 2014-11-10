@@ -49,13 +49,13 @@ public interface CabinFactory extends EFactory {
 	PassengerClass createPassengerClass();
 
 	/**
-	 * Returns a new object of class '<em>Doors</em>'.
+	 * Returns a new object of class '<em>Door</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Doors</em>'.
+	 * @return a new object of class '<em>Door</em>'.
 	 * @generated
 	 */
-	CabinDoors createCabinDoors();
+	CabinDoor createCabinDoor();
 
 	/**
 	 * Returns a new object of class '<em>Seat</em>'.
@@ -74,6 +74,15 @@ public interface CabinFactory extends EFactory {
 	 * @generated
 	 */
 	Passenger createPassenger();
+
+	/**
+	 * Returns a new object of class '<em>Crew Member</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Crew Member</em>'.
+	 * @generated
+	 */
+	CrewMember createCrewMember();
 
 	/**
 	 * Returns a new object of class '<em>Emergency Exits</em>'.
@@ -101,15 +110,6 @@ public interface CabinFactory extends EFactory {
 	 * @generated
 	 */
 	Galley createGalley();
-
-	/**
-	 * Returns a new object of class '<em>Crew Seat</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Crew Seat</em>'.
-	 * @generated
-	 */
-	CrewSeat createCrewSeat();
 
 	/**
 	 * Returns the package supported by this factory.
