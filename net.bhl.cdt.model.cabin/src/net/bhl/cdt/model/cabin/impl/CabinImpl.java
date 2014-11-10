@@ -7,6 +7,7 @@ import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinDoors;
 import net.bhl.cdt.model.cabin.CabinPackage;
 
+import net.bhl.cdt.model.cabin.EmergencyExits;
 import net.bhl.cdt.model.cabin.PassengerClass;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -17,6 +18,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -31,11 +33,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getNumbSeats <em>Numb Seats</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getClasses <em>Classes</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getDoors <em>Doors</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getExits <em>Exits</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getBoardingTime <em>Boarding Time</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getFCperc <em>FCperc</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getBCperc <em>BCperc</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getNumbAisles <em>Numb Aisles</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getDocumentInWikipedia <em>Document In Wikipedia</em>}</li>
  * </ul>
  * </p>
  *
@@ -116,6 +118,15 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 	protected EList<CabinDoors> doors;
 
 	/**
+	 * The cached value of the '{@link #getExits() <em>Exits</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExits()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<EmergencyExits> exits;
+	/**
 	 * The default value of the '{@link #getBoardingTime() <em>Boarding Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -188,25 +199,6 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 	 * @ordered
 	 */
 	protected int numbAisles = NUMB_AISLES_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getDocumentInWikipedia() <em>Document In Wikipedia</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDocumentInWikipedia()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String DOCUMENT_IN_WIKIPEDIA_EDEFAULT = null;
-	/**
-	 * The cached value of the '{@link #getDocumentInWikipedia() <em>Document In Wikipedia</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDocumentInWikipedia()
-	 * @generated
-	 * @ordered
-	 */
-	protected String documentInWikipedia = DOCUMENT_IN_WIKIPEDIA_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -319,6 +311,18 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<EmergencyExits> getExits() {
+		if (exits == null) {
+			exits = new EObjectResolvingEList<EmergencyExits>(EmergencyExits.class, this, CabinPackage.CABIN__EXITS);
+		}
+		return exits;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public double getBoardingTime() {
 		return boardingTime;
 	}
@@ -403,27 +407,6 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getDocumentInWikipedia() {
-		return documentInWikipedia;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDocumentInWikipedia(String newDocumentInWikipedia) {
-		String oldDocumentInWikipedia = documentInWikipedia;
-		documentInWikipedia = newDocumentInWikipedia;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__DOCUMENT_IN_WIKIPEDIA, oldDocumentInWikipedia, documentInWikipedia));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -453,6 +436,8 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return getClasses();
 			case CabinPackage.CABIN__DOORS:
 				return getDoors();
+			case CabinPackage.CABIN__EXITS:
+				return getExits();
 			case CabinPackage.CABIN__BOARDING_TIME:
 				return getBoardingTime();
 			case CabinPackage.CABIN__FCPERC:
@@ -461,8 +446,6 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return getBCperc();
 			case CabinPackage.CABIN__NUMB_AISLES:
 				return getNumbAisles();
-			case CabinPackage.CABIN__DOCUMENT_IN_WIKIPEDIA:
-				return getDocumentInWikipedia();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -493,6 +476,10 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				getDoors().clear();
 				getDoors().addAll((Collection<? extends CabinDoors>)newValue);
 				return;
+			case CabinPackage.CABIN__EXITS:
+				getExits().clear();
+				getExits().addAll((Collection<? extends EmergencyExits>)newValue);
+				return;
 			case CabinPackage.CABIN__BOARDING_TIME:
 				setBoardingTime((Double)newValue);
 				return;
@@ -504,9 +491,6 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return;
 			case CabinPackage.CABIN__NUMB_AISLES:
 				setNumbAisles((Integer)newValue);
-				return;
-			case CabinPackage.CABIN__DOCUMENT_IN_WIKIPEDIA:
-				setDocumentInWikipedia((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -535,6 +519,9 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 			case CabinPackage.CABIN__DOORS:
 				getDoors().clear();
 				return;
+			case CabinPackage.CABIN__EXITS:
+				getExits().clear();
+				return;
 			case CabinPackage.CABIN__BOARDING_TIME:
 				setBoardingTime(BOARDING_TIME_EDEFAULT);
 				return;
@@ -546,9 +533,6 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return;
 			case CabinPackage.CABIN__NUMB_AISLES:
 				setNumbAisles(NUMB_AISLES_EDEFAULT);
-				return;
-			case CabinPackage.CABIN__DOCUMENT_IN_WIKIPEDIA:
-				setDocumentInWikipedia(DOCUMENT_IN_WIKIPEDIA_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -572,6 +556,8 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return classes != null && !classes.isEmpty();
 			case CabinPackage.CABIN__DOORS:
 				return doors != null && !doors.isEmpty();
+			case CabinPackage.CABIN__EXITS:
+				return exits != null && !exits.isEmpty();
 			case CabinPackage.CABIN__BOARDING_TIME:
 				return boardingTime != BOARDING_TIME_EDEFAULT;
 			case CabinPackage.CABIN__FCPERC:
@@ -580,8 +566,6 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return bCperc != BCPERC_EDEFAULT;
 			case CabinPackage.CABIN__NUMB_AISLES:
 				return numbAisles != NUMB_AISLES_EDEFAULT;
-			case CabinPackage.CABIN__DOCUMENT_IN_WIKIPEDIA:
-				return DOCUMENT_IN_WIKIPEDIA_EDEFAULT == null ? documentInWikipedia != null : !DOCUMENT_IN_WIKIPEDIA_EDEFAULT.equals(documentInWikipedia);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -610,8 +594,6 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 		result.append(bCperc);
 		result.append(", numbAisles: ");
 		result.append(numbAisles);
-		result.append(", documentInWikipedia: ");
-		result.append(documentInWikipedia);
 		result.append(')');
 		return result.toString();
 	}

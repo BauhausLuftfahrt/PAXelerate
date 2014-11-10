@@ -18,11 +18,11 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getNumbSeats <em>Numb Seats</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getClasses <em>Classes</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getDoors <em>Doors</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getExits <em>Exits</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBoardingTime <em>Boarding Time</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getFCperc <em>FCperc</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBCperc <em>BCperc</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getNumbAisles <em>Numb Aisles</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getDocumentInWikipedia <em>Document In Wikipedia</em>}</li>
  * </ul>
  * </p>
  *
@@ -143,6 +143,22 @@ public interface Cabin extends EObject {
 	EList<CabinDoors> getDoors();
 
 	/**
+	 * Returns the value of the '<em><b>Exits</b></em>' reference list.
+	 * The list contents are of type {@link net.bhl.cdt.model.cabin.EmergencyExits}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Exits</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Exits</em>' reference list.
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Exits()
+	 * @model
+	 * @generated
+	 */
+	EList<EmergencyExits> getExits();
+
+	/**
 	 * Returns the value of the '<em><b>Boarding Time</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -245,30 +261,4 @@ public interface Cabin extends EObject {
 	 * @generated
 	 */
 	void setNumbAisles(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Document In Wikipedia</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Document In Wikipedia</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Document In Wikipedia</em>' attribute.
-	 * @see #setDocumentInWikipedia(String)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_DocumentInWikipedia()
-	 * @model
-	 * @generated
-	 */
-	String getDocumentInWikipedia();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getDocumentInWikipedia <em>Document In Wikipedia</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Document In Wikipedia</em>' attribute.
-	 * @see #getDocumentInWikipedia()
-	 * @generated
-	 */
-	void setDocumentInWikipedia(String value);
 } // Cabin

@@ -113,13 +113,22 @@ public interface CabinPackage extends EPackage {
 	int CABIN__DOORS = 4;
 
 	/**
+	 * The feature id for the '<em><b>Exits</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN__EXITS = 5;
+
+	/**
 	 * The feature id for the '<em><b>Boarding Time</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__BOARDING_TIME = 5;
+	int CABIN__BOARDING_TIME = 6;
 
 	/**
 	 * The feature id for the '<em><b>FCperc</b></em>' attribute.
@@ -128,7 +137,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__FCPERC = 6;
+	int CABIN__FCPERC = 7;
 
 	/**
 	 * The feature id for the '<em><b>BCperc</b></em>' attribute.
@@ -137,7 +146,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__BCPERC = 7;
+	int CABIN__BCPERC = 8;
 
 	/**
 	 * The feature id for the '<em><b>Numb Aisles</b></em>' attribute.
@@ -146,16 +155,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__NUMB_AISLES = 8;
-
-	/**
-	 * The feature id for the '<em><b>Document In Wikipedia</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CABIN__DOCUMENT_IN_WIKIPEDIA = 9;
+	int CABIN__NUMB_AISLES = 9;
 
 	/**
 	 * The number of structural features of the '<em>Cabin</em>' class.
@@ -417,6 +417,43 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.impl.EmergencyExitsImpl <em>Emergency Exits</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.model.cabin.impl.EmergencyExitsImpl
+	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getEmergencyExits()
+	 * @generated
+	 */
+	int EMERGENCY_EXITS = 6;
+
+	/**
+	 * The feature id for the '<em><b>Exit In Row</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMERGENCY_EXITS__EXIT_IN_ROW = 0;
+
+	/**
+	 * The number of structural features of the '<em>Emergency Exits</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMERGENCY_EXITS_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Emergency Exits</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMERGENCY_EXITS_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.ClassType <em>Class Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -424,7 +461,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getClassType()
 	 * @generated
 	 */
-	int CLASS_TYPE = 6;
+	int CLASS_TYPE = 7;
 
 
 	/**
@@ -435,7 +472,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getSex()
 	 * @generated
 	 */
-	int SEX = 7;
+	int SEX = 8;
 
 
 	/**
@@ -504,6 +541,17 @@ public interface CabinPackage extends EPackage {
 	EReference getCabin_Doors();
 
 	/**
+	 * Returns the meta object for the reference list '{@link net.bhl.cdt.model.cabin.Cabin#getExits <em>Exits</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Exits</em>'.
+	 * @see net.bhl.cdt.model.cabin.Cabin#getExits()
+	 * @see #getCabin()
+	 * @generated
+	 */
+	EReference getCabin_Exits();
+
+	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getBoardingTime <em>Boarding Time</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -546,17 +594,6 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCabin_NumbAisles();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getDocumentInWikipedia <em>Document In Wikipedia</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Document In Wikipedia</em>'.
-	 * @see net.bhl.cdt.model.cabin.Cabin#getDocumentInWikipedia()
-	 * @see #getCabin()
-	 * @generated
-	 */
-	EAttribute getCabin_DocumentInWikipedia();
 
 	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.Row <em>Row</em>}'.
@@ -730,6 +767,27 @@ public interface CabinPackage extends EPackage {
 	EReference getPassenger_Seat();
 
 	/**
+	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.EmergencyExits <em>Emergency Exits</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Emergency Exits</em>'.
+	 * @see net.bhl.cdt.model.cabin.EmergencyExits
+	 * @generated
+	 */
+	EClass getEmergencyExits();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.EmergencyExits#getExitInRow <em>Exit In Row</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Exit In Row</em>'.
+	 * @see net.bhl.cdt.model.cabin.EmergencyExits#getExitInRow()
+	 * @see #getEmergencyExits()
+	 * @generated
+	 */
+	EAttribute getEmergencyExits_ExitInRow();
+
+	/**
 	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.ClassType <em>Class Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -817,6 +875,13 @@ public interface CabinPackage extends EPackage {
 		 */
 		EReference CABIN__DOORS = eINSTANCE.getCabin_Doors();
 		/**
+		 * The meta object literal for the '<em><b>Exits</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CABIN__EXITS = eINSTANCE.getCabin_Exits();
+		/**
 		 * The meta object literal for the '<em><b>Boarding Time</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -844,13 +909,6 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CABIN__NUMB_AISLES = eINSTANCE.getCabin_NumbAisles();
-		/**
-		 * The meta object literal for the '<em><b>Document In Wikipedia</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CABIN__DOCUMENT_IN_WIKIPEDIA = eINSTANCE.getCabin_DocumentInWikipedia();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.RowImpl <em>Row</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -973,6 +1031,22 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PASSENGER__SEAT = eINSTANCE.getPassenger_Seat();
+		/**
+		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.EmergencyExitsImpl <em>Emergency Exits</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.bhl.cdt.model.cabin.impl.EmergencyExitsImpl
+		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getEmergencyExits()
+		 * @generated
+		 */
+		EClass EMERGENCY_EXITS = eINSTANCE.getEmergencyExits();
+		/**
+		 * The meta object literal for the '<em><b>Exit In Row</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EMERGENCY_EXITS__EXIT_IN_ROW = eINSTANCE.getEmergencyExits_ExitInRow();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.ClassType <em>Class Type</em>}' enum.
 		 * <!-- begin-user-doc -->

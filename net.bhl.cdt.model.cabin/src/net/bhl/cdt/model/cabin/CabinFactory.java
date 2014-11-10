@@ -76,6 +76,15 @@ public interface CabinFactory extends EFactory {
 	Passenger createPassenger();
 
 	/**
+	 * Returns a new object of class '<em>Emergency Exits</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Emergency Exits</em>'.
+	 * @generated
+	 */
+	EmergencyExits createEmergencyExits();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

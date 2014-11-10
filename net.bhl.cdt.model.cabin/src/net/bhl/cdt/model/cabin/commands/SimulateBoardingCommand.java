@@ -34,7 +34,6 @@ public class SimulateBoardingCommand extends CDTCommand {
 		if (!passengerClasses.isEmpty()) {
 			PassengerClass passengerClass = passengerClasses.get(0);
 			passengerClass.getRows();
-			cabin.getDocumentInWikipedia();
 		}
 
 		// TestAStar(obstacleMap, mapWidth, mapHeight, agentID, agentStartX, agentStartY, agentGoalX, agentGoalY).run();

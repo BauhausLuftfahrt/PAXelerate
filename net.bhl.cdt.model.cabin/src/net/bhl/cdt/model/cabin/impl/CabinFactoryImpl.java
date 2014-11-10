@@ -63,6 +63,7 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 			case CabinPackage.CABIN_DOORS: return createCabinDoors();
 			case CabinPackage.SEAT: return createSeat();
 			case CabinPackage.PASSENGER: return createPassenger();
+			case CabinPackage.EMERGENCY_EXITS: return createEmergencyExits();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -160,6 +161,16 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	public Passenger createPassenger() {
 		PassengerImpl passenger = new PassengerImpl();
 		return passenger;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EmergencyExits createEmergencyExits() {
+		EmergencyExitsImpl emergencyExits = new EmergencyExitsImpl();
+		return emergencyExits;
 	}
 
 	/**

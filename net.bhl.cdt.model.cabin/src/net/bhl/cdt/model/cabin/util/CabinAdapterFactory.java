@@ -92,6 +92,10 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 				return createPassengerAdapter();
 			}
 			@Override
+			public Adapter caseEmergencyExits(EmergencyExits object) {
+				return createEmergencyExitsAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -192,6 +196,20 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPassengerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.EmergencyExits <em>Emergency Exits</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see net.bhl.cdt.model.cabin.EmergencyExits
+	 * @generated
+	 */
+	public Adapter createEmergencyExitsAdapter() {
 		return null;
 	}
 
