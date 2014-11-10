@@ -135,7 +135,7 @@ public class TestAStar {
 	public static TestAStar run() {
 		CabinGenerator generator = new CabinGenerator(45, 8, 15, 2,2, 2);
 		TestAStar simulation = new TestAStar(
-				generator.createObstacleMap(generator.generateCabin()),
+				generator.createObstacleMap(generator.generateCabin1()),
 				(int) generator.getCabinWidth(),
 				(int) generator.getCabinLength());
 
@@ -151,7 +151,7 @@ public class TestAStar {
 			}
 		});
 
-		obstacleMap = generator.createObstacleMap(generator.generateCabin());
+		obstacleMap = generator.createObstacleMap(generator.generateCabin1());
 
 		Agent T1 = new Agent("Agent - 1", 0, 1, 11, 2);
 		Agent T2 = new Agent("Agent - 2", 0, 2, 8, 5);
