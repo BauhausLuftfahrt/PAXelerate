@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.RowImpl#getRowNumber <em>Row Number</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.RowImpl#isOffsetInRow <em>Offset In Row</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.RowImpl#isAdditionalLegroom <em>Additional Legroom</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.RowImpl#getSeatPitch <em>Seat Pitch</em>}</li>
  * </ul>
  * </p>
  *
@@ -108,6 +109,26 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 	 * @ordered
 	 */
 	protected boolean additionalLegroom = ADDITIONAL_LEGROOM_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSeatPitch() <em>Seat Pitch</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatPitch()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double SEAT_PITCH_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getSeatPitch() <em>Seat Pitch</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatPitch()
+	 * @generated
+	 * @ordered
+	 */
+	protected double seatPitch = SEAT_PITCH_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -208,6 +229,27 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public double getSeatPitch() {
+		return seatPitch;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatPitch(double newSeatPitch) {
+		double oldSeatPitch = seatPitch;
+		seatPitch = newSeatPitch;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.ROW__SEAT_PITCH, oldSeatPitch, seatPitch));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -233,6 +275,8 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 				return isOffsetInRow();
 			case CabinPackage.ROW__ADDITIONAL_LEGROOM:
 				return isAdditionalLegroom();
+			case CabinPackage.ROW__SEAT_PITCH:
+				return getSeatPitch();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -259,6 +303,9 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 			case CabinPackage.ROW__ADDITIONAL_LEGROOM:
 				setAdditionalLegroom((Boolean)newValue);
 				return;
+			case CabinPackage.ROW__SEAT_PITCH:
+				setSeatPitch((Double)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -283,6 +330,9 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 			case CabinPackage.ROW__ADDITIONAL_LEGROOM:
 				setAdditionalLegroom(ADDITIONAL_LEGROOM_EDEFAULT);
 				return;
+			case CabinPackage.ROW__SEAT_PITCH:
+				setSeatPitch(SEAT_PITCH_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -303,6 +353,8 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 				return offsetInRow != OFFSET_IN_ROW_EDEFAULT;
 			case CabinPackage.ROW__ADDITIONAL_LEGROOM:
 				return additionalLegroom != ADDITIONAL_LEGROOM_EDEFAULT;
+			case CabinPackage.ROW__SEAT_PITCH:
+				return seatPitch != SEAT_PITCH_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -323,6 +375,8 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 		result.append(offsetInRow);
 		result.append(", additionalLegroom: ");
 		result.append(additionalLegroom);
+		result.append(", seatPitch: ");
+		result.append(seatPitch);
 		result.append(')');
 		return result.toString();
 	}

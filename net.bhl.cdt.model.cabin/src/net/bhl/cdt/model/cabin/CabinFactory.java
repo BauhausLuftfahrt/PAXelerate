@@ -55,7 +55,7 @@ public interface CabinFactory extends EFactory {
 	 * @return a new object of class '<em>Door</em>'.
 	 * @generated
 	 */
-	CabinDoor createCabinDoor();
+	Door createDoor();
 
 	/**
 	 * Returns a new object of class '<em>Seat</em>'.
@@ -83,15 +83,6 @@ public interface CabinFactory extends EFactory {
 	 * @generated
 	 */
 	CrewMember createCrewMember();
-
-	/**
-	 * Returns a new object of class '<em>Emergency Exit</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Emergency Exit</em>'.
-	 * @generated
-	 */
-	EmergencyExit createEmergencyExit();
 
 	/**
 	 * Returns a new object of class '<em>Toilet</em>'.

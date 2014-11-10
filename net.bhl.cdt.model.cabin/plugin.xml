@@ -20,6 +20,11 @@
             id="net.bhl.cdt.model.cabin.simulateBoarding"
             name="simulateBoarding">
       </command>
+      <command
+            defaultHandler="net.bhl.cdt.model.cabin.handlers.GenerateCabinHandler"
+            id="net.bhl.cdt.model.cabin.generatecabin"
+            name="Generate Cabin">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -29,6 +34,18 @@
          <command
                commandId="net.bhl.cdt.model.cabin.simulateBoarding"
                label="Simulate Boarding of this Cabin"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate>
+                  <instanceof
+                        value="net.bhl.cdt.model.cabin.Cabin">
+                  </instanceof>
+               </iterate>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="net.bhl.cdt.model.cabin.generatecabin"
                style="push">
             <visibleWhen
                   checkEnabled="false">

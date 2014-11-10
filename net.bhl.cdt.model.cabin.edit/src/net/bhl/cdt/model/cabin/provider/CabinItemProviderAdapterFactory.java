@@ -141,26 +141,26 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.CabinDoors} instances.
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.Door} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CabinDoorsItemProvider cabinDoorsItemProvider;
+	protected DoorItemProvider doorItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link net.bhl.cdt.model.cabin.CabinDoors}.
+	 * This creates an adapter for a {@link net.bhl.cdt.model.cabin.Door}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createCabinDoorsAdapter() {
-		if (cabinDoorsItemProvider == null) {
-			cabinDoorsItemProvider = new CabinDoorsItemProvider(this);
+	public Adapter createDoorAdapter() {
+		if (doorItemProvider == null) {
+			doorItemProvider = new DoorItemProvider(this);
 		}
 
-		return cabinDoorsItemProvider;
+		return doorItemProvider;
 	}
 
 	/**
@@ -207,6 +207,144 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 		}
 
 		return passengerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.CrewMember} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CrewMemberItemProvider crewMemberItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link net.bhl.cdt.model.cabin.CrewMember}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCrewMemberAdapter() {
+		if (crewMemberItemProvider == null) {
+			crewMemberItemProvider = new CrewMemberItemProvider(this);
+		}
+
+		return crewMemberItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.Toilet} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ToiletItemProvider toiletItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link net.bhl.cdt.model.cabin.Toilet}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createToiletAdapter() {
+		if (toiletItemProvider == null) {
+			toiletItemProvider = new ToiletItemProvider(this);
+		}
+
+		return toiletItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.Galley} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected GalleyItemProvider galleyItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link net.bhl.cdt.model.cabin.Galley}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createGalleyAdapter() {
+		if (galleyItemProvider == null) {
+			galleyItemProvider = new GalleyItemProvider(this);
+		}
+
+		return galleyItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.Stairway} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StairwayItemProvider stairwayItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link net.bhl.cdt.model.cabin.Stairway}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStairwayAdapter() {
+		if (stairwayItemProvider == null) {
+			stairwayItemProvider = new StairwayItemProvider(this);
+		}
+
+		return stairwayItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.Curtain} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CurtainItemProvider curtainItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link net.bhl.cdt.model.cabin.Curtain}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCurtainAdapter() {
+		if (curtainItemProvider == null) {
+			curtainItemProvider = new CurtainItemProvider(this);
+		}
+
+		return curtainItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.Stowage} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StowageItemProvider stowageItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link net.bhl.cdt.model.cabin.Stowage}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStowageAdapter() {
+		if (stowageItemProvider == null) {
+			stowageItemProvider = new StowageItemProvider(this);
+		}
+
+		return stowageItemProvider;
 	}
 
 	/**
@@ -311,9 +449,15 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 		if (cabinItemProvider != null) cabinItemProvider.dispose();
 		if (rowItemProvider != null) rowItemProvider.dispose();
 		if (passengerClassItemProvider != null) passengerClassItemProvider.dispose();
-		if (cabinDoorsItemProvider != null) cabinDoorsItemProvider.dispose();
+		if (doorItemProvider != null) doorItemProvider.dispose();
 		if (seatItemProvider != null) seatItemProvider.dispose();
 		if (passengerItemProvider != null) passengerItemProvider.dispose();
+		if (crewMemberItemProvider != null) crewMemberItemProvider.dispose();
+		if (toiletItemProvider != null) toiletItemProvider.dispose();
+		if (galleyItemProvider != null) galleyItemProvider.dispose();
+		if (stairwayItemProvider != null) stairwayItemProvider.dispose();
+		if (curtainItemProvider != null) curtainItemProvider.dispose();
+		if (stowageItemProvider != null) stowageItemProvider.dispose();
 	}
 
 }

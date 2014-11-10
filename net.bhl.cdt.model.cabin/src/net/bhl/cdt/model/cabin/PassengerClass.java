@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.PassengerClass#getType <em>Type</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.PassengerClass#getAvailableSeats <em>Available Seats</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.PassengerClass#getRows <em>Rows</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.PassengerClass#getSequence <em>Sequence</em>}</li>
  * </ul>
  * </p>
  *
@@ -95,5 +96,31 @@ public interface PassengerClass extends EObject {
 	 * @generated
 	 */
 	EList<Row> getRows();
+
+	/**
+	 * Returns the value of the '<em><b>Sequence</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Sequence</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Sequence</em>' attribute.
+	 * @see #setSequence(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassengerClass_Sequence()
+	 * @model
+	 * @generated
+	 */
+	int getSequence();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.PassengerClass#getSequence <em>Sequence</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Sequence</em>' attribute.
+	 * @see #getSequence()
+	 * @generated
+	 */
+	void setSequence(int value);
 
 } // PassengerClass

@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerClassImpl#getType <em>Type</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerClassImpl#getAvailableSeats <em>Available Seats</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerClassImpl#getRows <em>Rows</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerClassImpl#getSequence <em>Sequence</em>}</li>
  * </ul>
  * </p>
  *
@@ -82,6 +83,26 @@ public class PassengerClassImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected EList<Row> rows;
+
+	/**
+	 * The default value of the '{@link #getSequence() <em>Sequence</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSequence()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int SEQUENCE_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getSequence() <em>Sequence</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSequence()
+	 * @generated
+	 * @ordered
+	 */
+	protected int sequence = SEQUENCE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -161,6 +182,27 @@ public class PassengerClassImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getSequence() {
+		return sequence;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSequence(int newSequence) {
+		int oldSequence = sequence;
+		sequence = newSequence;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER_CLASS__SEQUENCE, oldSequence, sequence));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -184,6 +226,8 @@ public class PassengerClassImpl extends MinimalEObjectImpl.Container implements 
 				return getAvailableSeats();
 			case CabinPackage.PASSENGER_CLASS__ROWS:
 				return getRows();
+			case CabinPackage.PASSENGER_CLASS__SEQUENCE:
+				return getSequence();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -207,6 +251,9 @@ public class PassengerClassImpl extends MinimalEObjectImpl.Container implements 
 				getRows().clear();
 				getRows().addAll((Collection<? extends Row>)newValue);
 				return;
+			case CabinPackage.PASSENGER_CLASS__SEQUENCE:
+				setSequence((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -228,6 +275,9 @@ public class PassengerClassImpl extends MinimalEObjectImpl.Container implements 
 			case CabinPackage.PASSENGER_CLASS__ROWS:
 				getRows().clear();
 				return;
+			case CabinPackage.PASSENGER_CLASS__SEQUENCE:
+				setSequence(SEQUENCE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -246,6 +296,8 @@ public class PassengerClassImpl extends MinimalEObjectImpl.Container implements 
 				return availableSeats != AVAILABLE_SEATS_EDEFAULT;
 			case CabinPackage.PASSENGER_CLASS__ROWS:
 				return rows != null && !rows.isEmpty();
+			case CabinPackage.PASSENGER_CLASS__SEQUENCE:
+				return sequence != SEQUENCE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -264,6 +316,8 @@ public class PassengerClassImpl extends MinimalEObjectImpl.Container implements 
 		result.append(type);
 		result.append(", availableSeats: ");
 		result.append(availableSeats);
+		result.append(", sequence: ");
+		result.append(sequence);
 		result.append(')');
 		return result.toString();
 	}

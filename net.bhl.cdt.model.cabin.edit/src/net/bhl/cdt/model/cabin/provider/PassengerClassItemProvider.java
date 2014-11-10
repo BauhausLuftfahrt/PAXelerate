@@ -65,6 +65,8 @@ public class PassengerClassItemProvider
 			super.getPropertyDescriptors(object);
 
 			addTypePropertyDescriptor(object);
+			addAvailableSeatsPropertyDescriptor(object);
+			addSequencePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -87,6 +89,50 @@ public class PassengerClassItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Available Seats feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAvailableSeatsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PassengerClass_availableSeats_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PassengerClass_availableSeats_feature", "_UI_PassengerClass_type"),
+				 CabinPackage.Literals.PASSENGER_CLASS__AVAILABLE_SEATS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Sequence feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSequencePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PassengerClass_sequence_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PassengerClass_sequence_feature", "_UI_PassengerClass_type"),
+				 CabinPackage.Literals.PASSENGER_CLASS__SEQUENCE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -160,6 +206,8 @@ public class PassengerClassItemProvider
 
 		switch (notification.getFeatureID(PassengerClass.class)) {
 			case CabinPackage.PASSENGER_CLASS__TYPE:
+			case CabinPackage.PASSENGER_CLASS__AVAILABLE_SEATS:
+			case CabinPackage.PASSENGER_CLASS__SEQUENCE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CabinPackage.PASSENGER_CLASS__ROWS:

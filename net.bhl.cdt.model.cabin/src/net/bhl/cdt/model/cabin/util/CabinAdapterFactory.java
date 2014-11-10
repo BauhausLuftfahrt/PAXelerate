@@ -80,8 +80,8 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 				return createPassengerClassAdapter();
 			}
 			@Override
-			public Adapter caseCabinDoor(CabinDoor object) {
-				return createCabinDoorAdapter();
+			public Adapter caseDoor(Door object) {
+				return createDoorAdapter();
 			}
 			@Override
 			public Adapter caseSeat(Seat object) {
@@ -94,10 +94,6 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseCrewMember(CrewMember object) {
 				return createCrewMemberAdapter();
-			}
-			@Override
-			public Adapter caseEmergencyExit(EmergencyExit object) {
-				return createEmergencyExitAdapter();
 			}
 			@Override
 			public Adapter caseToilet(Toilet object) {
@@ -182,16 +178,16 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.CabinDoor <em>Door</em>}'.
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.Door <em>Door</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see net.bhl.cdt.model.cabin.CabinDoor
+	 * @see net.bhl.cdt.model.cabin.Door
 	 * @generated
 	 */
-	public Adapter createCabinDoorAdapter() {
+	public Adapter createDoorAdapter() {
 		return null;
 	}
 
@@ -234,20 +230,6 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCrewMemberAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.EmergencyExit <em>Emergency Exit</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see net.bhl.cdt.model.cabin.EmergencyExit
-	 * @generated
-	 */
-	public Adapter createEmergencyExitAdapter() {
 		return null;
 	}
 

@@ -3,15 +3,13 @@
 package net.bhl.cdt.model.cabin.impl;
 
 import net.bhl.cdt.model.cabin.CabinPackage;
+import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.Sex;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
@@ -28,6 +26,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getHeight <em>Height</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getAge <em>Age</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getWeight <em>Weight</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getDoor <em>Door</em>}</li>
  * </ul>
  * </p>
  *
@@ -143,6 +142,16 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * @ordered
 	 */
 	protected double weight = WEIGHT_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getDoor() <em>Door</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDoor()
+	 * @generated
+	 * @ordered
+	 */
+	protected Door door;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -311,6 +320,44 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Door getDoor() {
+		if (door != null && door.eIsProxy()) {
+			InternalEObject oldDoor = (InternalEObject)door;
+			door = (Door)eResolveProxy(oldDoor);
+			if (door != oldDoor) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CabinPackage.PASSENGER__DOOR, oldDoor, door));
+			}
+		}
+		return door;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Door basicGetDoor() {
+		return door;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDoor(Door newDoor) {
+		Door oldDoor = door;
+		door = newDoor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__DOOR, oldDoor, door));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -327,6 +374,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return getAge();
 			case CabinPackage.PASSENGER__WEIGHT:
 				return getWeight();
+			case CabinPackage.PASSENGER__DOOR:
+				if (resolve) return getDoor();
+				return basicGetDoor();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -356,6 +406,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return;
 			case CabinPackage.PASSENGER__WEIGHT:
 				setWeight((Double)newValue);
+				return;
+			case CabinPackage.PASSENGER__DOOR:
+				setDoor((Door)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -387,6 +440,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 			case CabinPackage.PASSENGER__WEIGHT:
 				setWeight(WEIGHT_EDEFAULT);
 				return;
+			case CabinPackage.PASSENGER__DOOR:
+				setDoor((Door)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -411,6 +467,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return age != AGE_EDEFAULT;
 			case CabinPackage.PASSENGER__WEIGHT:
 				return weight != WEIGHT_EDEFAULT;
+			case CabinPackage.PASSENGER__DOOR:
+				return door != null;
 		}
 		return super.eIsSet(featureID);
 	}

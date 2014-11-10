@@ -64,11 +64,21 @@ public class CabinItemProvider
 			addCabinLengthPropertyDescriptor(object);
 			addCabinWidthPropertyDescriptor(object);
 			addNumbSeatsPropertyDescriptor(object);
-			addBoardingTimePropertyDescriptor(object);
-			addFCpercPropertyDescriptor(object);
-			addBCpercPropertyDescriptor(object);
+			addRowNonexistentPropertyDescriptor(object);
+			addTotalPassengersPropertyDescriptor(object);
+			addFirstClassPassengersPropertyDescriptor(object);
+			addBusinessClassPassengersPropertyDescriptor(object);
+			addPremiumEconomyClassPassengersPropertyDescriptor(object);
+			addEconomyClassPassengersPropertyDescriptor(object);
 			addNumbAislesPropertyDescriptor(object);
-			addDocumentInWikipediaPropertyDescriptor(object);
+			addAisleWidthPropertyDescriptor(object);
+			addBoardingTimePropertyDescriptor(object);
+			addNumberOfDecksPropertyDescriptor(object);
+			addSeatsPerRowPropertyDescriptor(object);
+			addGalleysPropertyDescriptor(object);
+			addStairsPropertyDescriptor(object);
+			addCurtainPropertyDescriptor(object);
+			addStowagePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -140,6 +150,138 @@ public class CabinItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Galleys feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addGalleysPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_galleys_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_galleys_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__GALLEYS,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Stairs feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addStairsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_stairs_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_stairs_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__STAIRS,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Curtain feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCurtainPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_curtain_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_curtain_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__CURTAIN,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Stowage feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addStowagePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_stowage_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_stowage_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__STOWAGE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Number Of Decks feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNumberOfDecksPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_numberOfDecks_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_numberOfDecks_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__NUMBER_OF_DECKS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Seats Per Row feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatsPerRowPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_seatsPerRow_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_seatsPerRow_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__SEATS_PER_ROW,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Boarding Time feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -162,19 +304,19 @@ public class CabinItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the FCperc feature.
+	 * This adds a property descriptor for the First Class Passengers feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addFCpercPropertyDescriptor(Object object) {
+	protected void addFirstClassPassengersPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Cabin_FCperc_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_FCperc_feature", "_UI_Cabin_type"),
-				 CabinPackage.Literals.CABIN__FCPERC,
+				 getString("_UI_Cabin_FirstClassPassengers_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_FirstClassPassengers_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__FIRST_CLASS_PASSENGERS,
 				 true,
 				 false,
 				 false,
@@ -184,19 +326,107 @@ public class CabinItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the BCperc feature.
+	 * This adds a property descriptor for the Business Class Passengers feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addBCpercPropertyDescriptor(Object object) {
+	protected void addBusinessClassPassengersPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Cabin_BCperc_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_BCperc_feature", "_UI_Cabin_type"),
-				 CabinPackage.Literals.CABIN__BCPERC,
+				 getString("_UI_Cabin_BusinessClassPassengers_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_BusinessClassPassengers_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__BUSINESS_CLASS_PASSENGERS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Premium Economy Class Passengers feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPremiumEconomyClassPassengersPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_PremiumEconomyClassPassengers_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_PremiumEconomyClassPassengers_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__PREMIUM_ECONOMY_CLASS_PASSENGERS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Economy Class Passengers feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEconomyClassPassengersPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_EconomyClassPassengers_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_EconomyClassPassengers_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__ECONOMY_CLASS_PASSENGERS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Total Passengers feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTotalPassengersPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_totalPassengers_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_totalPassengers_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__TOTAL_PASSENGERS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Row Nonexistent feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRowNonexistentPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_rowNonexistent_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_rowNonexistent_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__ROW_NONEXISTENT,
 				 true,
 				 false,
 				 false,
@@ -228,23 +458,23 @@ public class CabinItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Document In Wikipedia feature.
+	 * This adds a property descriptor for the Aisle Width feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addDocumentInWikipediaPropertyDescriptor(Object object) {
+	protected void addAisleWidthPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Cabin_documentInWikipedia_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_documentInWikipedia_feature", "_UI_Cabin_type"),
-				 CabinPackage.Literals.CABIN__DOCUMENT_IN_WIKIPEDIA,
+				 getString("_UI_Cabin_aisleWidth_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_aisleWidth_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__AISLE_WIDTH,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -263,6 +493,7 @@ public class CabinItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(CabinPackage.Literals.CABIN__CLASSES);
 			childrenFeatures.add(CabinPackage.Literals.CABIN__DOORS);
+			childrenFeatures.add(CabinPackage.Literals.CABIN__TOILETS);
 		}
 		return childrenFeatures;
 	}
@@ -318,15 +549,22 @@ public class CabinItemProvider
 			case CabinPackage.CABIN__CABIN_LENGTH:
 			case CabinPackage.CABIN__CABIN_WIDTH:
 			case CabinPackage.CABIN__NUMB_SEATS:
-			case CabinPackage.CABIN__BOARDING_TIME:
-			case CabinPackage.CABIN__FCPERC:
-			case CabinPackage.CABIN__BCPERC:
+			case CabinPackage.CABIN__ROW_NONEXISTENT:
+			case CabinPackage.CABIN__TOTAL_PASSENGERS:
+			case CabinPackage.CABIN__FIRST_CLASS_PASSENGERS:
+			case CabinPackage.CABIN__BUSINESS_CLASS_PASSENGERS:
+			case CabinPackage.CABIN__PREMIUM_ECONOMY_CLASS_PASSENGERS:
+			case CabinPackage.CABIN__ECONOMY_CLASS_PASSENGERS:
 			case CabinPackage.CABIN__NUMB_AISLES:
-			case CabinPackage.CABIN__DOCUMENT_IN_WIKIPEDIA:
+			case CabinPackage.CABIN__AISLE_WIDTH:
+			case CabinPackage.CABIN__BOARDING_TIME:
+			case CabinPackage.CABIN__NUMBER_OF_DECKS:
+			case CabinPackage.CABIN__SEATS_PER_ROW:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CabinPackage.CABIN__CLASSES:
 			case CabinPackage.CABIN__DOORS:
+			case CabinPackage.CABIN__TOILETS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -352,7 +590,12 @@ public class CabinItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(CabinPackage.Literals.CABIN__DOORS,
-				 CabinFactory.eINSTANCE.createCabinDoors()));
+				 CabinFactory.eINSTANCE.createDoor()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CabinPackage.Literals.CABIN__TOILETS,
+				 CabinFactory.eINSTANCE.createToilet()));
 	}
 
 	/**

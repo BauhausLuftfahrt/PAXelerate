@@ -26,7 +26,7 @@ public enum Sex implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	MALE(0, "male", "male"),
+	MALE(1, "male", "male"),
 
 	/**
 	 * The '<em><b>Female</b></em>' literal object.
@@ -51,7 +51,7 @@ public enum Sex implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int MALE_VALUE = 0;
+	public static final int MALE_VALUE = 1;
 
 	/**
 	 * The '<em><b>Female</b></em>' literal value.
@@ -129,6 +129,7 @@ public enum Sex implements Enumerator {
 	public static Sex get(int value) {
 		switch (value) {
 			case MALE_VALUE: return MALE;
+			case FEMALE_VALUE: return FEMALE;
 		}
 		return null;
 	}

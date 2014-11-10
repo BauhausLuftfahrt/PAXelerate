@@ -61,6 +61,10 @@ public class SeatItemProvider
 
 			addSeatNumberPropertyDescriptor(object);
 			addSeatTypePropertyDescriptor(object);
+			addSeatBlockedPropertyDescriptor(object);
+			addCrewSeatPropertyDescriptor(object);
+			addWidthPropertyDescriptor(object);
+			addLengthPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -110,6 +114,94 @@ public class SeatItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Seat Blocked feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatBlockedPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Seat_seatBlocked_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Seat_seatBlocked_feature", "_UI_Seat_type"),
+				 CabinPackage.Literals.SEAT__SEAT_BLOCKED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Crew Seat feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCrewSeatPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Seat_crewSeat_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Seat_crewSeat_feature", "_UI_Seat_type"),
+				 CabinPackage.Literals.SEAT__CREW_SEAT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Width feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addWidthPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Seat_width_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Seat_width_feature", "_UI_Seat_type"),
+				 CabinPackage.Literals.SEAT__WIDTH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Length feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLengthPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Seat_length_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Seat_length_feature", "_UI_Seat_type"),
+				 CabinPackage.Literals.SEAT__LENGTH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Seat.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -146,6 +238,10 @@ public class SeatItemProvider
 		switch (notification.getFeatureID(Seat.class)) {
 			case CabinPackage.SEAT__SEAT_NUMBER:
 			case CabinPackage.SEAT__SEAT_TYPE:
+			case CabinPackage.SEAT__SEAT_BLOCKED:
+			case CabinPackage.SEAT__CREW_SEAT:
+			case CabinPackage.SEAT__WIDTH:
+			case CabinPackage.SEAT__LENGTH:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
