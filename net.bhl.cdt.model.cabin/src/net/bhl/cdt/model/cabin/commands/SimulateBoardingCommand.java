@@ -8,6 +8,7 @@ import matlabcontrol.MatlabInvocationException;
 import matlabcontrol.MatlabProxy;
 import matlabcontrol.MatlabProxyFactory;
 import matlabcontrol.MatlabProxyFactoryOptions;
+import model.CabinGenerator;
 import model.TestAStar;
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.Cabin;
@@ -24,7 +25,12 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 	@Override
 	protected void doRun() {
-//	TestAStar(obstacleMap, mapWidth, mapHeight, agentID, agentStartX, agentStartY, agentGoalX, agentGoalY).run();
+		CabinGenerator generator = new CabinGenerator(45, 8, 15, 2, 2);
+		TestAStar simulation = new TestAStar(
+				generator.createObstacleMap(generator.generateCabin()),
+				(int) generator.getCabinWidth(),
+				(int) generator.getCabinLength()).run();
+	
 
 
 		
