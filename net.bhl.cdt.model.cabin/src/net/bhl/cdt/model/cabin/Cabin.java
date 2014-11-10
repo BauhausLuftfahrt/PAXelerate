@@ -16,21 +16,24 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getCabinLength <em>Cabin Length</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getCabinWidth <em>Cabin Width</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getNumbSeats <em>Numb Seats</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getRowNonexistent <em>Row Nonexistent</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getTotalPassengers <em>Total Passengers</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getFirstClassPassengers <em>First Class Passengers</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBusinessClassPassengers <em>Business Class Passengers</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getPremiumEconomyClassPassengers <em>Premium Economy Class Passengers</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getEconomyClassPassengers <em>Economy Class Passengers</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getNumbAisles <em>Numb Aisles</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getAisleWidth <em>Aisle Width</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBoardingTime <em>Boarding Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getNumberOfDecks <em>Number Of Decks</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatsPerRow <em>Seats Per Row</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getClasses <em>Classes</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getDoors <em>Doors</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getExits <em>Exits</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getToilets <em>Toilets</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getGalleys <em>Galleys</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getStairs <em>Stairs</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getCurtain <em>Curtain</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getStowage <em>Stowage</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getNumbAisles <em>Numb Aisles</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBoardingTime <em>Boarding Time</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getFirstClassPassengers <em>First Class Passengers</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBusinessClassPassengers <em>Business Class Passengers</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getPremiumEconomyClassPassengers <em>Premium Economy Class Passengers</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getTotalPassengers <em>Total Passengers</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getRowNonexistent <em>Row Nonexistent</em>}</li>
  * </ul>
  * </p>
  *
@@ -136,7 +139,7 @@ public interface Cabin extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Doors</b></em>' containment reference list.
-	 * The list contents are of type {@link net.bhl.cdt.model.cabin.CabinDoor}.
+	 * The list contents are of type {@link net.bhl.cdt.model.cabin.Door}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Doors</em>' containment reference list isn't clear,
@@ -148,26 +151,10 @@ public interface Cabin extends EObject {
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList<CabinDoor> getDoors();
+	EList<Door> getDoors();
 
 	/**
-	 * Returns the value of the '<em><b>Exits</b></em>' reference list.
-	 * The list contents are of type {@link net.bhl.cdt.model.cabin.EmergencyExit}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Exits</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Exits</em>' reference list.
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Exits()
-	 * @model required="true"
-	 * @generated
-	 */
-	EList<EmergencyExit> getExits();
-
-	/**
-	 * Returns the value of the '<em><b>Toilets</b></em>' reference list.
+	 * Returns the value of the '<em><b>Toilets</b></em>' containment reference list.
 	 * The list contents are of type {@link net.bhl.cdt.model.cabin.Toilet}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -175,15 +162,15 @@ public interface Cabin extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Toilets</em>' reference list.
+	 * @return the value of the '<em>Toilets</em>' containment reference list.
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Toilets()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	EList<Toilet> getToilets();
 
 	/**
-	 * Returns the value of the '<em><b>Galleys</b></em>' reference list.
+	 * Returns the value of the '<em><b>Galleys</b></em>' containment reference list.
 	 * The list contents are of type {@link net.bhl.cdt.model.cabin.Galley}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -191,15 +178,15 @@ public interface Cabin extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Galleys</em>' reference list.
+	 * @return the value of the '<em>Galleys</em>' containment reference list.
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Galleys()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	EList<Galley> getGalleys();
 
 	/**
-	 * Returns the value of the '<em><b>Stairs</b></em>' reference list.
+	 * Returns the value of the '<em><b>Stairs</b></em>' containment reference list.
 	 * The list contents are of type {@link net.bhl.cdt.model.cabin.Stairway}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -207,15 +194,15 @@ public interface Cabin extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Stairs</em>' reference list.
+	 * @return the value of the '<em>Stairs</em>' containment reference list.
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Stairs()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Stairway> getStairs();
 
 	/**
-	 * Returns the value of the '<em><b>Curtain</b></em>' reference list.
+	 * Returns the value of the '<em><b>Curtain</b></em>' containment reference list.
 	 * The list contents are of type {@link net.bhl.cdt.model.cabin.Curtain}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -223,15 +210,15 @@ public interface Cabin extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Curtain</em>' reference list.
+	 * @return the value of the '<em>Curtain</em>' containment reference list.
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Curtain()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Curtain> getCurtain();
 
 	/**
-	 * Returns the value of the '<em><b>Stowage</b></em>' reference list.
+	 * Returns the value of the '<em><b>Stowage</b></em>' containment reference list.
 	 * The list contents are of type {@link net.bhl.cdt.model.cabin.Stowage}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -239,12 +226,67 @@ public interface Cabin extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Stowage</em>' reference list.
+	 * @return the value of the '<em>Stowage</em>' containment reference list.
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Stowage()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Stowage> getStowage();
+
+	/**
+	 * Returns the value of the '<em><b>Number Of Decks</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Number Of Decks</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Number Of Decks</em>' attribute.
+	 * @see #setNumberOfDecks(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_NumberOfDecks()
+	 * @model
+	 * @generated
+	 */
+	int getNumberOfDecks();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getNumberOfDecks <em>Number Of Decks</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Number Of Decks</em>' attribute.
+	 * @see #getNumberOfDecks()
+	 * @generated
+	 */
+	void setNumberOfDecks(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Seats Per Row</b></em>' attribute.
+	 * The literals are from the enumeration {@link net.bhl.cdt.model.cabin.SeatsPerRow}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seats Per Row</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seats Per Row</em>' attribute.
+	 * @see net.bhl.cdt.model.cabin.SeatsPerRow
+	 * @see #setSeatsPerRow(SeatsPerRow)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatsPerRow()
+	 * @model
+	 * @generated
+	 */
+	SeatsPerRow getSeatsPerRow();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getSeatsPerRow <em>Seats Per Row</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seats Per Row</em>' attribute.
+	 * @see net.bhl.cdt.model.cabin.SeatsPerRow
+	 * @see #getSeatsPerRow()
+	 * @generated
+	 */
+	void setSeatsPerRow(SeatsPerRow value);
 
 	/**
 	 * Returns the value of the '<em><b>Boarding Time</b></em>' attribute.
@@ -351,6 +393,32 @@ public interface Cabin extends EObject {
 	void setPremiumEconomyClassPassengers(int value);
 
 	/**
+	 * Returns the value of the '<em><b>Economy Class Passengers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Economy Class Passengers</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Economy Class Passengers</em>' attribute.
+	 * @see #setEconomyClassPassengers(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_EconomyClassPassengers()
+	 * @model
+	 * @generated
+	 */
+	int getEconomyClassPassengers();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getEconomyClassPassengers <em>Economy Class Passengers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Economy Class Passengers</em>' attribute.
+	 * @see #getEconomyClassPassengers()
+	 * @generated
+	 */
+	void setEconomyClassPassengers(int value);
+
+	/**
 	 * Returns the value of the '<em><b>Total Passengers</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -427,4 +495,30 @@ public interface Cabin extends EObject {
 	 * @generated
 	 */
 	void setNumbAisles(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Aisle Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Aisle Width</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Aisle Width</em>' attribute.
+	 * @see #setAisleWidth(double)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_AisleWidth()
+	 * @model
+	 * @generated
+	 */
+	double getAisleWidth();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getAisleWidth <em>Aisle Width</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Aisle Width</em>' attribute.
+	 * @see #getAisleWidth()
+	 * @generated
+	 */
+	void setAisleWidth(double value);
 } // Cabin

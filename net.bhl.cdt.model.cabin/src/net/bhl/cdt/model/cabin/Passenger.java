@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getHeight <em>Height</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getAge <em>Age</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getWeight <em>Weight</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getDoor <em>Door</em>}</li>
  * </ul>
  * </p>
  *
@@ -184,5 +185,31 @@ public interface Passenger extends EObject {
 	 * @generated
 	 */
 	void setWeight(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Door</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Door</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Door</em>' reference.
+	 * @see #setDoor(Door)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_Door()
+	 * @model required="true"
+	 * @generated
+	 */
+	Door getDoor();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getDoor <em>Door</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Door</em>' reference.
+	 * @see #getDoor()
+	 * @generated
+	 */
+	void setDoor(Door value);
 
 } // Passenger

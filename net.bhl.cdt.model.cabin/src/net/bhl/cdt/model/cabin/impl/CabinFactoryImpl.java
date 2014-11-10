@@ -60,11 +60,10 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 			case CabinPackage.CABIN: return createCabin();
 			case CabinPackage.ROW: return createRow();
 			case CabinPackage.PASSENGER_CLASS: return createPassengerClass();
-			case CabinPackage.CABIN_DOOR: return createCabinDoor();
+			case CabinPackage.DOOR: return createDoor();
 			case CabinPackage.SEAT: return createSeat();
 			case CabinPackage.PASSENGER: return createPassenger();
 			case CabinPackage.CREW_MEMBER: return createCrewMember();
-			case CabinPackage.EMERGENCY_EXIT: return createEmergencyExit();
 			case CabinPackage.TOILET: return createToilet();
 			case CabinPackage.GALLEY: return createGalley();
 			case CabinPackage.STAIRWAY: return createStairway();
@@ -87,10 +86,12 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return createSexFromString(eDataType, initialValue);
 			case CabinPackage.CLASS_TYPE:
 				return createClassTypeFromString(eDataType, initialValue);
-			case CabinPackage.EXIT_TYPE:
-				return createExitTypeFromString(eDataType, initialValue);
+			case CabinPackage.DOOR_TYPE:
+				return createDoorTypeFromString(eDataType, initialValue);
 			case CabinPackage.STAIRWAY_DIRECTION:
 				return createStairwayDirectionFromString(eDataType, initialValue);
+			case CabinPackage.SEATS_PER_ROW:
+				return createSeatsPerRowFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -108,10 +109,12 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return convertSexToString(eDataType, instanceValue);
 			case CabinPackage.CLASS_TYPE:
 				return convertClassTypeToString(eDataType, instanceValue);
-			case CabinPackage.EXIT_TYPE:
-				return convertExitTypeToString(eDataType, instanceValue);
+			case CabinPackage.DOOR_TYPE:
+				return convertDoorTypeToString(eDataType, instanceValue);
 			case CabinPackage.STAIRWAY_DIRECTION:
 				return convertStairwayDirectionToString(eDataType, instanceValue);
+			case CabinPackage.SEATS_PER_ROW:
+				return convertSeatsPerRowToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -152,9 +155,9 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CabinDoor createCabinDoor() {
-		CabinDoorImpl cabinDoor = new CabinDoorImpl();
-		return cabinDoor;
+	public Door createDoor() {
+		DoorImpl door = new DoorImpl();
+		return door;
 	}
 
 	/**
@@ -185,16 +188,6 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	public CrewMember createCrewMember() {
 		CrewMemberImpl crewMember = new CrewMemberImpl();
 		return crewMember;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EmergencyExit createEmergencyExit() {
-		EmergencyExitImpl emergencyExit = new EmergencyExitImpl();
-		return emergencyExit;
 	}
 
 	/**
@@ -272,8 +265,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExitType createExitTypeFromString(EDataType eDataType, String initialValue) {
-		ExitType result = ExitType.get(initialValue);
+	public DoorType createDoorTypeFromString(EDataType eDataType, String initialValue) {
+		DoorType result = DoorType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -283,7 +276,7 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertExitTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertDoorTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -304,6 +297,26 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * @generated
 	 */
 	public String convertStairwayDirectionToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SeatsPerRow createSeatsPerRowFromString(EDataType eDataType, String initialValue) {
+		SeatsPerRow result = SeatsPerRow.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertSeatsPerRowToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

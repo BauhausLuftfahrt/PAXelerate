@@ -63,6 +63,10 @@ public class PassengerItemProvider
 			addIdPropertyDescriptor(object);
 			addSexPropertyDescriptor(object);
 			addSeatPropertyDescriptor(object);
+			addHeightPropertyDescriptor(object);
+			addAgePropertyDescriptor(object);
+			addWeightPropertyDescriptor(object);
+			addDoorPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -134,6 +138,94 @@ public class PassengerItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Height feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addHeightPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_height_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_height_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__HEIGHT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Age feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAgePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_age_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_age_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__AGE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Weight feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addWeightPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_weight_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_weight_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__WEIGHT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Door feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDoorPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_door_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_door_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__DOOR,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Passenger.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -170,6 +262,9 @@ public class PassengerItemProvider
 		switch (notification.getFeatureID(Passenger.class)) {
 			case CabinPackage.PASSENGER__ID:
 			case CabinPackage.PASSENGER__SEX:
+			case CabinPackage.PASSENGER__HEIGHT:
+			case CabinPackage.PASSENGER__AGE:
+			case CabinPackage.PASSENGER__WEIGHT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

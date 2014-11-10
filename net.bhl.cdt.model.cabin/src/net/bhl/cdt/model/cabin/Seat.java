@@ -17,6 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#getSeatType <em>Seat Type</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#isSeatBlocked <em>Seat Blocked</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#isCrewSeat <em>Crew Seat</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Seat#getWidth <em>Width</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Seat#getLength <em>Length</em>}</li>
  * </ul>
  * </p>
  *
@@ -128,5 +130,57 @@ public interface Seat extends EObject {
 	 * @generated
 	 */
 	void setCrewSeat(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Width</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Width</em>' attribute.
+	 * @see #setWidth(double)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSeat_Width()
+	 * @model
+	 * @generated
+	 */
+	double getWidth();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Seat#getWidth <em>Width</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Width</em>' attribute.
+	 * @see #getWidth()
+	 * @generated
+	 */
+	void setWidth(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Length</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Length</em>' attribute.
+	 * @see #setLength(double)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSeat_Length()
+	 * @model
+	 * @generated
+	 */
+	double getLength();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Seat#getLength <em>Length</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Length</em>' attribute.
+	 * @see #getLength()
+	 * @generated
+	 */
+	void setLength(double value);
 
 } // Seat

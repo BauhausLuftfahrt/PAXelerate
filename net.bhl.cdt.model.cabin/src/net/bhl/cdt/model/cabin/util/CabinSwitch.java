@@ -84,9 +84,9 @@ public class CabinSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CabinPackage.CABIN_DOOR: {
-				CabinDoor cabinDoor = (CabinDoor)theEObject;
-				T result = caseCabinDoor(cabinDoor);
+			case CabinPackage.DOOR: {
+				Door door = (Door)theEObject;
+				T result = caseDoor(door);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -105,12 +105,6 @@ public class CabinSwitch<T> extends Switch<T> {
 			case CabinPackage.CREW_MEMBER: {
 				CrewMember crewMember = (CrewMember)theEObject;
 				T result = caseCrewMember(crewMember);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CabinPackage.EMERGENCY_EXIT: {
-				EmergencyExit emergencyExit = (EmergencyExit)theEObject;
-				T result = caseEmergencyExit(emergencyExit);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -204,7 +198,7 @@ public class CabinSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseCabinDoor(CabinDoor object) {
+	public T caseDoor(Door object) {
 		return null;
 	}
 
@@ -250,21 +244,6 @@ public class CabinSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCrewMember(CrewMember object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Emergency Exit</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Emergency Exit</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEmergencyExit(EmergencyExit object) {
 		return null;
 	}
 
