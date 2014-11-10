@@ -112,8 +112,8 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 				return createStairwayAdapter();
 			}
 			@Override
-			public Adapter casePartition(Partition object) {
-				return createPartitionAdapter();
+			public Adapter caseCurtain(Curtain object) {
+				return createCurtainAdapter();
 			}
 			@Override
 			public Adapter caseStowage(Stowage object) {
@@ -294,16 +294,16 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.Partition <em>Partition</em>}'.
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.Curtain <em>Curtain</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see net.bhl.cdt.model.cabin.Partition
+	 * @see net.bhl.cdt.model.cabin.Curtain
 	 * @generated
 	 */
-	public Adapter createPartitionAdapter() {
+	public Adapter createCurtainAdapter() {
 		return null;
 	}
 

@@ -68,7 +68,7 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 			case CabinPackage.TOILET: return createToilet();
 			case CabinPackage.GALLEY: return createGalley();
 			case CabinPackage.STAIRWAY: return createStairway();
-			case CabinPackage.PARTITION: return createPartition();
+			case CabinPackage.CURTAIN: return createCurtain();
 			case CabinPackage.STOWAGE: return createStowage();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -91,8 +91,6 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return createExitTypeFromString(eDataType, initialValue);
 			case CabinPackage.STAIRWAY_DIRECTION:
 				return createStairwayDirectionFromString(eDataType, initialValue);
-			case CabinPackage.PARTITION_TYPE:
-				return createPartitionTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -114,8 +112,6 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return convertExitTypeToString(eDataType, instanceValue);
 			case CabinPackage.STAIRWAY_DIRECTION:
 				return convertStairwayDirectionToString(eDataType, instanceValue);
-			case CabinPackage.PARTITION_TYPE:
-				return convertPartitionTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -236,9 +232,9 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Partition createPartition() {
-		PartitionImpl partition = new PartitionImpl();
-		return partition;
+	public Curtain createCurtain() {
+		CurtainImpl curtain = new CurtainImpl();
+		return curtain;
 	}
 
 	/**
@@ -308,26 +304,6 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * @generated
 	 */
 	public String convertStairwayDirectionToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public PartitionType createPartitionTypeFromString(EDataType eDataType, String initialValue) {
-		PartitionType result = PartitionType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertPartitionTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

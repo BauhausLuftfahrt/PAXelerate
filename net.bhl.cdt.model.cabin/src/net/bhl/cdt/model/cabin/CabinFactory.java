@@ -121,13 +121,13 @@ public interface CabinFactory extends EFactory {
 	Stairway createStairway();
 
 	/**
-	 * Returns a new object of class '<em>Partition</em>'.
+	 * Returns a new object of class '<em>Curtain</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Partition</em>'.
+	 * @return a new object of class '<em>Curtain</em>'.
 	 * @generated
 	 */
-	Partition createPartition();
+	Curtain createCurtain();
 
 	/**
 	 * Returns a new object of class '<em>Stowage</em>'.

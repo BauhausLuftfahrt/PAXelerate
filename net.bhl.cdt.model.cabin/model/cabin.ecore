@@ -17,15 +17,17 @@
         upperBound="-1" eType="#//Galley"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stairs" upperBound="-1"
         eType="#//Stairway"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="partition" upperBound="-1"
-        eType="#//Partition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="curtain" upperBound="-1"
+        eType="#//Curtain"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stowage" upperBound="-1"
         eType="#//Stowage"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numbAisles" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="boardingTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="FCpassengers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="BCpassengers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="PECpassengers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="FirstClassPassengers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="BusinessClassPassengers"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="PremiumEconomyClassPassengers"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="totalPassengers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rowNonexistent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
@@ -89,9 +91,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="yPosition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" eType="#//StairwayDirection"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Partition">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//PartitionType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Curtain">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="postitionAfterRow" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="curtainOpen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Stowage">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="xPosition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
@@ -117,9 +119,5 @@
   <eClassifiers xsi:type="ecore:EEnum" name="StairwayDirection">
     <eLiterals name="up" value="1"/>
     <eLiterals name="down" value="-1"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="PartitionType">
-    <eLiterals name="curtain"/>
-    <eLiterals name="wall" value="1"/>
   </eClassifiers>
 </ecore:EPackage>

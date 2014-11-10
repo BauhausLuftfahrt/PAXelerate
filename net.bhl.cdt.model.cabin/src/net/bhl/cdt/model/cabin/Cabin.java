@@ -22,13 +22,13 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getToilets <em>Toilets</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getGalleys <em>Galleys</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getStairs <em>Stairs</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getPartition <em>Partition</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getCurtain <em>Curtain</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getStowage <em>Stowage</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getNumbAisles <em>Numb Aisles</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBoardingTime <em>Boarding Time</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getFCpassengers <em>FCpassengers</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBCpassengers <em>BCpassengers</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getPECpassengers <em>PE Cpassengers</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getFirstClassPassengers <em>First Class Passengers</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBusinessClassPassengers <em>Business Class Passengers</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getPremiumEconomyClassPassengers <em>Premium Economy Class Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getTotalPassengers <em>Total Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getRowNonexistent <em>Row Nonexistent</em>}</li>
  * </ul>
@@ -215,20 +215,20 @@ public interface Cabin extends EObject {
 	EList<Stairway> getStairs();
 
 	/**
-	 * Returns the value of the '<em><b>Partition</b></em>' reference list.
-	 * The list contents are of type {@link net.bhl.cdt.model.cabin.Partition}.
+	 * Returns the value of the '<em><b>Curtain</b></em>' reference list.
+	 * The list contents are of type {@link net.bhl.cdt.model.cabin.Curtain}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Partition</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Curtain</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Partition</em>' reference list.
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Partition()
+	 * @return the value of the '<em>Curtain</em>' reference list.
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Curtain()
 	 * @model
 	 * @generated
 	 */
-	EList<Partition> getPartition();
+	EList<Curtain> getCurtain();
 
 	/**
 	 * Returns the value of the '<em><b>Stowage</b></em>' reference list.
@@ -271,6 +271,84 @@ public interface Cabin extends EObject {
 	 * @generated
 	 */
 	void setBoardingTime(double value);
+
+	/**
+	 * Returns the value of the '<em><b>First Class Passengers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>First Class Passengers</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>First Class Passengers</em>' attribute.
+	 * @see #setFirstClassPassengers(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_FirstClassPassengers()
+	 * @model
+	 * @generated
+	 */
+	int getFirstClassPassengers();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getFirstClassPassengers <em>First Class Passengers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>First Class Passengers</em>' attribute.
+	 * @see #getFirstClassPassengers()
+	 * @generated
+	 */
+	void setFirstClassPassengers(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Business Class Passengers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Business Class Passengers</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Business Class Passengers</em>' attribute.
+	 * @see #setBusinessClassPassengers(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_BusinessClassPassengers()
+	 * @model
+	 * @generated
+	 */
+	int getBusinessClassPassengers();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getBusinessClassPassengers <em>Business Class Passengers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Business Class Passengers</em>' attribute.
+	 * @see #getBusinessClassPassengers()
+	 * @generated
+	 */
+	void setBusinessClassPassengers(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Premium Economy Class Passengers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Premium Economy Class Passengers</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Premium Economy Class Passengers</em>' attribute.
+	 * @see #setPremiumEconomyClassPassengers(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_PremiumEconomyClassPassengers()
+	 * @model
+	 * @generated
+	 */
+	int getPremiumEconomyClassPassengers();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getPremiumEconomyClassPassengers <em>Premium Economy Class Passengers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Premium Economy Class Passengers</em>' attribute.
+	 * @see #getPremiumEconomyClassPassengers()
+	 * @generated
+	 */
+	void setPremiumEconomyClassPassengers(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Total Passengers</b></em>' attribute.
@@ -323,84 +401,6 @@ public interface Cabin extends EObject {
 	 * @generated
 	 */
 	void setRowNonexistent(int value);
-
-	/**
-	 * Returns the value of the '<em><b>FCpassengers</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>FCpassengers</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>FCpassengers</em>' attribute.
-	 * @see #setFCpassengers(int)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_FCpassengers()
-	 * @model
-	 * @generated
-	 */
-	int getFCpassengers();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getFCpassengers <em>FCpassengers</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>FCpassengers</em>' attribute.
-	 * @see #getFCpassengers()
-	 * @generated
-	 */
-	void setFCpassengers(int value);
-
-	/**
-	 * Returns the value of the '<em><b>BCpassengers</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>BCpassengers</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>BCpassengers</em>' attribute.
-	 * @see #setBCpassengers(int)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_BCpassengers()
-	 * @model
-	 * @generated
-	 */
-	int getBCpassengers();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getBCpassengers <em>BCpassengers</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>BCpassengers</em>' attribute.
-	 * @see #getBCpassengers()
-	 * @generated
-	 */
-	void setBCpassengers(int value);
-
-	/**
-	 * Returns the value of the '<em><b>PE Cpassengers</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>PE Cpassengers</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>PE Cpassengers</em>' attribute.
-	 * @see #setPECpassengers(int)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_PECpassengers()
-	 * @model
-	 * @generated
-	 */
-	int getPECpassengers();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getPECpassengers <em>PE Cpassengers</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>PE Cpassengers</em>' attribute.
-	 * @see #getPECpassengers()
-	 * @generated
-	 */
-	void setPECpassengers(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Numb Aisles</b></em>' attribute.

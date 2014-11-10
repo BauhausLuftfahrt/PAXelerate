@@ -132,9 +132,9 @@ public class CabinSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CabinPackage.PARTITION: {
-				Partition partition = (Partition)theEObject;
-				T result = casePartition(partition);
+			case CabinPackage.CURTAIN: {
+				Curtain curtain = (Curtain)theEObject;
+				T result = caseCurtain(curtain);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -314,17 +314,17 @@ public class CabinSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Partition</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Curtain</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Partition</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Curtain</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePartition(Partition object) {
+	public T caseCurtain(Curtain object) {
 		return null;
 	}
 
