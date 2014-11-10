@@ -68,6 +68,7 @@ public class CabinItemProvider
 			addFCpercPropertyDescriptor(object);
 			addBCpercPropertyDescriptor(object);
 			addNumbAislesPropertyDescriptor(object);
+			addDocumentInWikipediaPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -227,6 +228,28 @@ public class CabinItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Document In Wikipedia feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDocumentInWikipediaPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_documentInWikipedia_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_documentInWikipedia_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__DOCUMENT_IN_WIKIPEDIA,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -299,6 +322,7 @@ public class CabinItemProvider
 			case CabinPackage.CABIN__FCPERC:
 			case CabinPackage.CABIN__BCPERC:
 			case CabinPackage.CABIN__NUMB_AISLES:
+			case CabinPackage.CABIN__DOCUMENT_IN_WIKIPEDIA:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CabinPackage.CABIN__CLASSES:

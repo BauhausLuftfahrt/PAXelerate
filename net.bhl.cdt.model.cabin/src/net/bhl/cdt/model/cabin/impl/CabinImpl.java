@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getFCperc <em>FCperc</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getBCperc <em>BCperc</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getNumbAisles <em>Numb Aisles</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getDocumentInWikipedia <em>Document In Wikipedia</em>}</li>
  * </ul>
  * </p>
  *
@@ -187,6 +188,25 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 	 * @ordered
 	 */
 	protected int numbAisles = NUMB_AISLES_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getDocumentInWikipedia() <em>Document In Wikipedia</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDocumentInWikipedia()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DOCUMENT_IN_WIKIPEDIA_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getDocumentInWikipedia() <em>Document In Wikipedia</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDocumentInWikipedia()
+	 * @generated
+	 * @ordered
+	 */
+	protected String documentInWikipedia = DOCUMENT_IN_WIKIPEDIA_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -383,6 +403,27 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getDocumentInWikipedia() {
+		return documentInWikipedia;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDocumentInWikipedia(String newDocumentInWikipedia) {
+		String oldDocumentInWikipedia = documentInWikipedia;
+		documentInWikipedia = newDocumentInWikipedia;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__DOCUMENT_IN_WIKIPEDIA, oldDocumentInWikipedia, documentInWikipedia));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -420,6 +461,8 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return getBCperc();
 			case CabinPackage.CABIN__NUMB_AISLES:
 				return getNumbAisles();
+			case CabinPackage.CABIN__DOCUMENT_IN_WIKIPEDIA:
+				return getDocumentInWikipedia();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -462,6 +505,9 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 			case CabinPackage.CABIN__NUMB_AISLES:
 				setNumbAisles((Integer)newValue);
 				return;
+			case CabinPackage.CABIN__DOCUMENT_IN_WIKIPEDIA:
+				setDocumentInWikipedia((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -501,6 +547,9 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 			case CabinPackage.CABIN__NUMB_AISLES:
 				setNumbAisles(NUMB_AISLES_EDEFAULT);
 				return;
+			case CabinPackage.CABIN__DOCUMENT_IN_WIKIPEDIA:
+				setDocumentInWikipedia(DOCUMENT_IN_WIKIPEDIA_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -531,6 +580,8 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return bCperc != BCPERC_EDEFAULT;
 			case CabinPackage.CABIN__NUMB_AISLES:
 				return numbAisles != NUMB_AISLES_EDEFAULT;
+			case CabinPackage.CABIN__DOCUMENT_IN_WIKIPEDIA:
+				return DOCUMENT_IN_WIKIPEDIA_EDEFAULT == null ? documentInWikipedia != null : !DOCUMENT_IN_WIKIPEDIA_EDEFAULT.equals(documentInWikipedia);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -559,6 +610,8 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 		result.append(bCperc);
 		result.append(", numbAisles: ");
 		result.append(numbAisles);
+		result.append(", documentInWikipedia: ");
+		result.append(documentInWikipedia);
 		result.append(')');
 		return result.toString();
 	}

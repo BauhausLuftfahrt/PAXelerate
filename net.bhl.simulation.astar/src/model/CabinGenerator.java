@@ -70,6 +70,7 @@ public class CabinGenerator {
 		int emergencyLocation1 = 0;
 		int emergencyLocation2 = 0;
 		int ECpax = 0;
+		int aisles = 0;
 		
 		
 		
@@ -105,6 +106,15 @@ public class CabinGenerator {
 		totalRows = BCRows + ECRows + FCRows;
 		emergencyLocation1 = FCRows+BCRows;
 		emergencyLocation2 = totalRows - 15;
+		
+		if (cabinWidth <= 7) {
+			aisles = 1;	
+		} else if (cabinWidth < 11) {
+			aisles = 2;
+		}
+		
+		
+		
 		for (int i = 0; i <= cabinLength; i++) {
 			
 			//cabin[i][0].isWall = true; ???
@@ -261,7 +271,11 @@ public class CabinGenerator {
 				}
 				else {System.out.print(spaceIcon);}		
 				
-			} 	
+			} else {
+				
+				
+				
+			}
     	}
 		System.out.print(wallIcon);
 		
@@ -344,7 +358,7 @@ public class CabinGenerator {
 	
 	public static void main(String[] args) {
 		// Länge, Breite, Passagiere, davon Business, davon First, Notausgang 
-		CabinGenerator generator = new CabinGenerator(39, 7, 210, 32, 4 ,99);
+		CabinGenerator generator = new CabinGenerator(39, 7, 206, 32, 0 ,99);
 		generator.generateCabin();
 		
 	}

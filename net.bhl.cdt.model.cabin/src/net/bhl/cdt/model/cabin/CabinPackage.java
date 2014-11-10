@@ -149,13 +149,22 @@ public interface CabinPackage extends EPackage {
 	int CABIN__NUMB_AISLES = 8;
 
 	/**
+	 * The feature id for the '<em><b>Document In Wikipedia</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN__DOCUMENT_IN_WIKIPEDIA = 9;
+
+	/**
 	 * The number of structural features of the '<em>Cabin</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_FEATURE_COUNT = 9;
+	int CABIN_FEATURE_COUNT = 10;
 
 	/**
 	 * The number of operations of the '<em>Cabin</em>' class.
@@ -539,6 +548,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getCabin_NumbAisles();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getDocumentInWikipedia <em>Document In Wikipedia</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Document In Wikipedia</em>'.
+	 * @see net.bhl.cdt.model.cabin.Cabin#getDocumentInWikipedia()
+	 * @see #getCabin()
+	 * @generated
+	 */
+	EAttribute getCabin_DocumentInWikipedia();
+
+	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.Row <em>Row</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -824,6 +844,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CABIN__NUMB_AISLES = eINSTANCE.getCabin_NumbAisles();
+		/**
+		 * The meta object literal for the '<em><b>Document In Wikipedia</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN__DOCUMENT_IN_WIKIPEDIA = eINSTANCE.getCabin_DocumentInWikipedia();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.RowImpl <em>Row</em>}' class.
 		 * <!-- begin-user-doc -->
