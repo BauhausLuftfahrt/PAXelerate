@@ -108,9 +108,9 @@ public class CabinSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CabinPackage.EMERGENCY_EXITS: {
-				EmergencyExits emergencyExits = (EmergencyExits)theEObject;
-				T result = caseEmergencyExits(emergencyExits);
+			case CabinPackage.EMERGENCY_EXIT: {
+				EmergencyExit emergencyExit = (EmergencyExit)theEObject;
+				T result = caseEmergencyExit(emergencyExit);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -123,6 +123,18 @@ public class CabinSwitch<T> extends Switch<T> {
 			case CabinPackage.GALLEY: {
 				Galley galley = (Galley)theEObject;
 				T result = caseGalley(galley);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CabinPackage.STAIRWAY: {
+				Stairway stairway = (Stairway)theEObject;
+				T result = caseStairway(stairway);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CabinPackage.PARTITION: {
+				Partition partition = (Partition)theEObject;
+				T result = casePartition(partition);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -236,17 +248,17 @@ public class CabinSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Emergency Exits</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Emergency Exit</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Emergency Exits</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Emergency Exit</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseEmergencyExits(EmergencyExits object) {
+	public T caseEmergencyExit(EmergencyExit object) {
 		return null;
 	}
 
@@ -277,6 +289,36 @@ public class CabinSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseGalley(Galley object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Stairway</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Stairway</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStairway(Stairway object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Partition</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Partition</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePartition(Partition object) {
 		return null;
 	}
 

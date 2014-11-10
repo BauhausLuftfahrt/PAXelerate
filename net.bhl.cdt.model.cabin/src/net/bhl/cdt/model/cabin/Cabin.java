@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getExits <em>Exits</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getToilets <em>Toilets</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getGalleys <em>Galleys</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getStairs <em>Stairs</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getPartition <em>Partition</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getNumbAisles <em>Numb Aisles</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBoardingTime <em>Boarding Time</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getTotalPassengers <em>Total Passengers</em>}</li>
@@ -148,7 +150,7 @@ public interface Cabin extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Exits</b></em>' reference list.
-	 * The list contents are of type {@link net.bhl.cdt.model.cabin.EmergencyExits}.
+	 * The list contents are of type {@link net.bhl.cdt.model.cabin.EmergencyExit}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Exits</em>' reference list isn't clear,
@@ -160,7 +162,7 @@ public interface Cabin extends EObject {
 	 * @model required="true"
 	 * @generated
 	 */
-	EList<EmergencyExits> getExits();
+	EList<EmergencyExit> getExits();
 
 	/**
 	 * Returns the value of the '<em><b>Toilets</b></em>' reference list.
@@ -193,6 +195,38 @@ public interface Cabin extends EObject {
 	 * @generated
 	 */
 	EList<Galley> getGalleys();
+
+	/**
+	 * Returns the value of the '<em><b>Stairs</b></em>' reference list.
+	 * The list contents are of type {@link net.bhl.cdt.model.cabin.Stairway}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Stairs</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Stairs</em>' reference list.
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Stairs()
+	 * @model
+	 * @generated
+	 */
+	EList<Stairway> getStairs();
+
+	/**
+	 * Returns the value of the '<em><b>Partition</b></em>' reference list.
+	 * The list contents are of type {@link net.bhl.cdt.model.cabin.Partition}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Partition</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Partition</em>' reference list.
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Partition()
+	 * @model
+	 * @generated
+	 */
+	EList<Partition> getPartition();
 
 	/**
 	 * Returns the value of the '<em><b>Boarding Time</b></em>' attribute.

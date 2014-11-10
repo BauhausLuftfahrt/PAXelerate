@@ -64,9 +64,11 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 			case CabinPackage.SEAT: return createSeat();
 			case CabinPackage.PASSENGER: return createPassenger();
 			case CabinPackage.CREW_MEMBER: return createCrewMember();
-			case CabinPackage.EMERGENCY_EXITS: return createEmergencyExits();
+			case CabinPackage.EMERGENCY_EXIT: return createEmergencyExit();
 			case CabinPackage.TOILET: return createToilet();
 			case CabinPackage.GALLEY: return createGalley();
+			case CabinPackage.STAIRWAY: return createStairway();
+			case CabinPackage.PARTITION: return createPartition();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -80,10 +82,16 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case CabinPackage.CLASS_TYPE:
-				return createClassTypeFromString(eDataType, initialValue);
 			case CabinPackage.SEX:
 				return createSexFromString(eDataType, initialValue);
+			case CabinPackage.CLASS_TYPE:
+				return createClassTypeFromString(eDataType, initialValue);
+			case CabinPackage.EXIT_TYPE:
+				return createExitTypeFromString(eDataType, initialValue);
+			case CabinPackage.STAIRWAY_DIRECTION:
+				return createStairwayDirectionFromString(eDataType, initialValue);
+			case CabinPackage.PARTITION_TYPE:
+				return createPartitionTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -97,10 +105,16 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case CabinPackage.CLASS_TYPE:
-				return convertClassTypeToString(eDataType, instanceValue);
 			case CabinPackage.SEX:
 				return convertSexToString(eDataType, instanceValue);
+			case CabinPackage.CLASS_TYPE:
+				return convertClassTypeToString(eDataType, instanceValue);
+			case CabinPackage.EXIT_TYPE:
+				return convertExitTypeToString(eDataType, instanceValue);
+			case CabinPackage.STAIRWAY_DIRECTION:
+				return convertStairwayDirectionToString(eDataType, instanceValue);
+			case CabinPackage.PARTITION_TYPE:
+				return convertPartitionTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -181,9 +195,9 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EmergencyExits createEmergencyExits() {
-		EmergencyExitsImpl emergencyExits = new EmergencyExitsImpl();
-		return emergencyExits;
+	public EmergencyExit createEmergencyExit() {
+		EmergencyExitImpl emergencyExit = new EmergencyExitImpl();
+		return emergencyExit;
 	}
 
 	/**
@@ -211,6 +225,26 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Stairway createStairway() {
+		StairwayImpl stairway = new StairwayImpl();
+		return stairway;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Partition createPartition() {
+		PartitionImpl partition = new PartitionImpl();
+		return partition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ClassType createClassTypeFromString(EDataType eDataType, String initialValue) {
 		ClassType result = ClassType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -223,6 +257,66 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * @generated
 	 */
 	public String convertClassTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExitType createExitTypeFromString(EDataType eDataType, String initialValue) {
+		ExitType result = ExitType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertExitTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StairwayDirection createStairwayDirectionFromString(EDataType eDataType, String initialValue) {
+		StairwayDirection result = StairwayDirection.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertStairwayDirectionToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PartitionType createPartitionTypeFromString(EDataType eDataType, String initialValue) {
+		PartitionType result = PartitionType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertPartitionTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

@@ -8,13 +8,18 @@ import net.bhl.cdt.model.cabin.CabinFactory;
 import net.bhl.cdt.model.cabin.CabinPackage;
 import net.bhl.cdt.model.cabin.ClassType;
 import net.bhl.cdt.model.cabin.CrewMember;
-import net.bhl.cdt.model.cabin.EmergencyExits;
+import net.bhl.cdt.model.cabin.EmergencyExit;
+import net.bhl.cdt.model.cabin.ExitType;
 import net.bhl.cdt.model.cabin.Galley;
+import net.bhl.cdt.model.cabin.Partition;
+import net.bhl.cdt.model.cabin.PartitionType;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerClass;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.Sex;
+import net.bhl.cdt.model.cabin.Stairway;
+import net.bhl.cdt.model.cabin.StairwayDirection;
 import net.bhl.cdt.model.cabin.Toilet;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -82,7 +87,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass emergencyExitsEClass = null;
+	private EClass emergencyExitEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -103,7 +108,42 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass stairwayEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass partitionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum classTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum exitTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum stairwayDirectionEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum partitionTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -259,25 +299,25 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getCabin_Stairs() {
+		return (EReference)cabinEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCabin_Partition() {
+		return (EReference)cabinEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getCabin_BoardingTime() {
-		return (EAttribute)cabinEClass.getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCabin_TotalPassengers() {
-		return (EAttribute)cabinEClass.getEStructuralFeatures().get(10);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCabin_FCpassengers() {
 		return (EAttribute)cabinEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -286,7 +326,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCabin_BCpassengers() {
+	public EAttribute getCabin_TotalPassengers() {
 		return (EAttribute)cabinEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -295,7 +335,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCabin_PECpassengers() {
+	public EAttribute getCabin_FCpassengers() {
 		return (EAttribute)cabinEClass.getEStructuralFeatures().get(13);
 	}
 
@@ -304,8 +344,26 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getCabin_BCpassengers() {
+		return (EAttribute)cabinEClass.getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCabin_PECpassengers() {
+		return (EAttribute)cabinEClass.getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getCabin_NumbAisles() {
-		return (EAttribute)cabinEClass.getEStructuralFeatures().get(8);
+		return (EAttribute)cabinEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -333,6 +391,24 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EAttribute getRow_RowNumber() {
 		return (EAttribute)rowEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRow_RowExistance() {
+		return (EAttribute)rowEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRow_OffsetInRow() {
+		return (EAttribute)rowEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -484,6 +560,33 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getPassenger_Height() {
+		return (EAttribute)passengerEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassenger_Age() {
+		return (EAttribute)passengerEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassenger_Weight() {
+		return (EAttribute)passengerEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getCrewMember() {
 		return crewMemberEClass;
 	}
@@ -511,8 +614,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getEmergencyExits() {
-		return emergencyExitsEClass;
+	public EClass getEmergencyExit() {
+		return emergencyExitEClass;
 	}
 
 	/**
@@ -520,8 +623,17 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEmergencyExits_ExitInRow() {
-		return (EAttribute)emergencyExitsEClass.getEStructuralFeatures().get(0);
+	public EAttribute getEmergencyExit_ExitInRow() {
+		return (EAttribute)emergencyExitEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEmergencyExit_Type() {
+		return (EAttribute)emergencyExitEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -565,8 +677,107 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getStairway() {
+		return stairwayEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getStairway_XDimension() {
+		return (EAttribute)stairwayEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getStairway_YDimension() {
+		return (EAttribute)stairwayEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getStairway_XPosition() {
+		return (EAttribute)stairwayEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getStairway_YPosition() {
+		return (EAttribute)stairwayEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getStairway_Direction() {
+		return (EAttribute)stairwayEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPartition() {
+		return partitionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPartition_Type() {
+		return (EAttribute)partitionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getClassType() {
 		return classTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getExitType() {
+		return exitTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getStairwayDirection() {
+		return stairwayDirectionEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getPartitionType() {
+		return partitionTypeEEnum;
 	}
 
 	/**
@@ -615,6 +826,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEReference(cabinEClass, CABIN__EXITS);
 		createEReference(cabinEClass, CABIN__TOILETS);
 		createEReference(cabinEClass, CABIN__GALLEYS);
+		createEReference(cabinEClass, CABIN__STAIRS);
+		createEReference(cabinEClass, CABIN__PARTITION);
 		createEAttribute(cabinEClass, CABIN__NUMB_AISLES);
 		createEAttribute(cabinEClass, CABIN__BOARDING_TIME);
 		createEAttribute(cabinEClass, CABIN__TOTAL_PASSENGERS);
@@ -625,6 +838,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		rowEClass = createEClass(ROW);
 		createEReference(rowEClass, ROW__SEATS);
 		createEAttribute(rowEClass, ROW__ROW_NUMBER);
+		createEAttribute(rowEClass, ROW__ROW_EXISTANCE);
+		createEAttribute(rowEClass, ROW__OFFSET_IN_ROW);
 
 		passengerClassEClass = createEClass(PASSENGER_CLASS);
 		createEAttribute(passengerClassEClass, PASSENGER_CLASS__TYPE);
@@ -645,13 +860,17 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEAttribute(passengerEClass, PASSENGER__ID);
 		createEAttribute(passengerEClass, PASSENGER__SEX);
 		createEReference(passengerEClass, PASSENGER__SEAT);
+		createEAttribute(passengerEClass, PASSENGER__HEIGHT);
+		createEAttribute(passengerEClass, PASSENGER__AGE);
+		createEAttribute(passengerEClass, PASSENGER__WEIGHT);
 
 		crewMemberEClass = createEClass(CREW_MEMBER);
 		createEAttribute(crewMemberEClass, CREW_MEMBER__ID);
 		createEReference(crewMemberEClass, CREW_MEMBER__SEAT);
 
-		emergencyExitsEClass = createEClass(EMERGENCY_EXITS);
-		createEAttribute(emergencyExitsEClass, EMERGENCY_EXITS__EXIT_IN_ROW);
+		emergencyExitEClass = createEClass(EMERGENCY_EXIT);
+		createEAttribute(emergencyExitEClass, EMERGENCY_EXIT__EXIT_IN_ROW);
+		createEAttribute(emergencyExitEClass, EMERGENCY_EXIT__TYPE);
 
 		toiletEClass = createEClass(TOILET);
 		createEAttribute(toiletEClass, TOILET__TOILET_AFTER_ROW);
@@ -659,9 +878,22 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		galleyEClass = createEClass(GALLEY);
 		createEAttribute(galleyEClass, GALLEY__GALLEY_AFTER_ROW);
 
+		stairwayEClass = createEClass(STAIRWAY);
+		createEAttribute(stairwayEClass, STAIRWAY__XDIMENSION);
+		createEAttribute(stairwayEClass, STAIRWAY__YDIMENSION);
+		createEAttribute(stairwayEClass, STAIRWAY__XPOSITION);
+		createEAttribute(stairwayEClass, STAIRWAY__YPOSITION);
+		createEAttribute(stairwayEClass, STAIRWAY__DIRECTION);
+
+		partitionEClass = createEClass(PARTITION);
+		createEAttribute(partitionEClass, PARTITION__TYPE);
+
 		// Create enums
-		classTypeEEnum = createEEnum(CLASS_TYPE);
 		sexEEnum = createEEnum(SEX);
+		classTypeEEnum = createEEnum(CLASS_TYPE);
+		exitTypeEEnum = createEEnum(EXIT_TYPE);
+		stairwayDirectionEEnum = createEEnum(STAIRWAY_DIRECTION);
+		partitionTypeEEnum = createEEnum(PARTITION_TYPE);
 	}
 
 	/**
@@ -700,9 +932,11 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEAttribute(getCabin_NumbSeats(), ecorePackage.getEInt(), "numbSeats", null, 0, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCabin_Classes(), this.getPassengerClass(), null, "classes", null, 1, -1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCabin_Doors(), this.getCabinDoor(), null, "doors", null, 1, -1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCabin_Exits(), this.getEmergencyExits(), null, "exits", null, 1, -1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCabin_Exits(), this.getEmergencyExit(), null, "exits", null, 1, -1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCabin_Toilets(), this.getToilet(), null, "toilets", null, 1, -1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCabin_Galleys(), this.getGalley(), null, "galleys", null, 1, -1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCabin_Stairs(), this.getStairway(), null, "stairs", null, 0, -1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCabin_Partition(), this.getPartition(), null, "partition", null, 0, -1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCabin_NumbAisles(), ecorePackage.getEInt(), "numbAisles", null, 0, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCabin_BoardingTime(), ecorePackage.getEDouble(), "boardingTime", null, 0, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCabin_TotalPassengers(), ecorePackage.getEInt(), "totalPassengers", null, 0, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -713,6 +947,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEClass(rowEClass, Row.class, "Row", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRow_Seats(), this.getSeat(), null, "seats", null, 1, -1, Row.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRow_RowNumber(), ecorePackage.getEInt(), "rowNumber", null, 0, 1, Row.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRow_RowExistance(), ecorePackage.getEBoolean(), "rowExistance", null, 0, 1, Row.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRow_OffsetInRow(), ecorePackage.getEBoolean(), "offsetInRow", null, 0, 1, Row.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(passengerClassEClass, PassengerClass.class, "PassengerClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPassengerClass_Type(), this.getClassType(), "type", null, 0, 1, PassengerClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -733,13 +969,17 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEAttribute(getPassenger_Id(), ecorePackage.getEInt(), "id", null, 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPassenger_Sex(), this.getSex(), "sex", null, 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPassenger_Seat(), this.getSeat(), null, "seat", null, 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPassenger_Height(), ecorePackage.getEDouble(), "height", null, 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPassenger_Age(), ecorePackage.getEInt(), "age", null, 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPassenger_Weight(), ecorePackage.getEDouble(), "weight", null, 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(crewMemberEClass, CrewMember.class, "CrewMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCrewMember_Id(), ecorePackage.getEInt(), "id", null, 0, 1, CrewMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCrewMember_Seat(), this.getSeat(), null, "seat", null, 0, 1, CrewMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(emergencyExitsEClass, EmergencyExits.class, "EmergencyExits", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEmergencyExits_ExitInRow(), ecorePackage.getEInt(), "ExitInRow", null, 0, 1, EmergencyExits.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(emergencyExitEClass, EmergencyExit.class, "EmergencyExit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEmergencyExit_ExitInRow(), ecorePackage.getEInt(), "ExitInRow", null, 0, 1, EmergencyExit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEmergencyExit_Type(), this.getExitType(), "type", null, 0, 1, EmergencyExit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(toiletEClass, Toilet.class, "Toilet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getToilet_ToiletAfterRow(), ecorePackage.getEInt(), "ToiletAfterRow", null, 0, 1, Toilet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -747,16 +987,39 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEClass(galleyEClass, Galley.class, "Galley", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGalley_GalleyAfterRow(), ecorePackage.getEInt(), "GalleyAfterRow", null, 0, 1, Galley.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(stairwayEClass, Stairway.class, "Stairway", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStairway_XDimension(), ecorePackage.getEDouble(), "xDimension", null, 0, 1, Stairway.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStairway_YDimension(), ecorePackage.getEDouble(), "yDimension", null, 0, 1, Stairway.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStairway_XPosition(), ecorePackage.getEDouble(), "xPosition", null, 0, 1, Stairway.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStairway_YPosition(), ecorePackage.getEDouble(), "yPosition", null, 0, 1, Stairway.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStairway_Direction(), this.getStairwayDirection(), "direction", null, 0, 1, Stairway.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(partitionEClass, Partition.class, "Partition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPartition_Type(), this.getPartitionType(), "type", null, 0, 1, Partition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
+		initEEnum(sexEEnum, Sex.class, "Sex");
+		addEEnumLiteral(sexEEnum, Sex.MALE);
+		addEEnumLiteral(sexEEnum, Sex.FEMALE);
+
 		initEEnum(classTypeEEnum, ClassType.class, "ClassType");
 		addEEnumLiteral(classTypeEEnum, ClassType.FIRST);
 		addEEnumLiteral(classTypeEEnum, ClassType.BUSINESS);
 		addEEnumLiteral(classTypeEEnum, ClassType.PREMIUM_ECONOMY);
 		addEEnumLiteral(classTypeEEnum, ClassType.ECONOMY);
 
-		initEEnum(sexEEnum, Sex.class, "Sex");
-		addEEnumLiteral(sexEEnum, Sex.MALE);
-		addEEnumLiteral(sexEEnum, Sex.FEMALE);
+		initEEnum(exitTypeEEnum, ExitType.class, "ExitType");
+		addEEnumLiteral(exitTypeEEnum, ExitType.BEFORE_ROW);
+		addEEnumLiteral(exitTypeEEnum, ExitType.IN_ROW);
+		addEEnumLiteral(exitTypeEEnum, ExitType.BETWEEN_CLASSES);
+
+		initEEnum(stairwayDirectionEEnum, StairwayDirection.class, "StairwayDirection");
+		addEEnumLiteral(stairwayDirectionEEnum, StairwayDirection.UP);
+		addEEnumLiteral(stairwayDirectionEEnum, StairwayDirection.DOWN);
+
+		initEEnum(partitionTypeEEnum, PartitionType.class, "PartitionType");
+		addEEnumLiteral(partitionTypeEEnum, PartitionType.CURTAIN);
+		addEEnumLiteral(partitionTypeEEnum, PartitionType.WALL);
 
 		// Create resource
 		createResource(eNS_URI);

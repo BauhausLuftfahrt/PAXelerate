@@ -85,13 +85,13 @@ public interface CabinFactory extends EFactory {
 	CrewMember createCrewMember();
 
 	/**
-	 * Returns a new object of class '<em>Emergency Exits</em>'.
+	 * Returns a new object of class '<em>Emergency Exit</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Emergency Exits</em>'.
+	 * @return a new object of class '<em>Emergency Exit</em>'.
 	 * @generated
 	 */
-	EmergencyExits createEmergencyExits();
+	EmergencyExit createEmergencyExit();
 
 	/**
 	 * Returns a new object of class '<em>Toilet</em>'.
@@ -110,6 +110,24 @@ public interface CabinFactory extends EFactory {
 	 * @generated
 	 */
 	Galley createGalley();
+
+	/**
+	 * Returns a new object of class '<em>Stairway</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Stairway</em>'.
+	 * @generated
+	 */
+	Stairway createStairway();
+
+	/**
+	 * Returns a new object of class '<em>Partition</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Partition</em>'.
+	 * @generated
+	 */
+	Partition createPartition();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -15,6 +15,9 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getId <em>Id</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getSex <em>Sex</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getSeat <em>Seat</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getHeight <em>Height</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getAge <em>Age</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getWeight <em>Weight</em>}</li>
  * </ul>
  * </p>
  *
@@ -103,5 +106,83 @@ public interface Passenger extends EObject {
 	 * @generated
 	 */
 	void setSeat(Seat value);
+
+	/**
+	 * Returns the value of the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Height</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Height</em>' attribute.
+	 * @see #setHeight(double)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_Height()
+	 * @model
+	 * @generated
+	 */
+	double getHeight();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getHeight <em>Height</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Height</em>' attribute.
+	 * @see #getHeight()
+	 * @generated
+	 */
+	void setHeight(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Age</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Age</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Age</em>' attribute.
+	 * @see #setAge(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_Age()
+	 * @model
+	 * @generated
+	 */
+	int getAge();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getAge <em>Age</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Age</em>' attribute.
+	 * @see #getAge()
+	 * @generated
+	 */
+	void setAge(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Weight</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Weight</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Weight</em>' attribute.
+	 * @see #setWeight(double)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_Weight()
+	 * @model
+	 * @generated
+	 */
+	double getWeight();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getWeight <em>Weight</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Weight</em>' attribute.
+	 * @see #getWeight()
+	 * @generated
+	 */
+	void setWeight(double value);
 
 } // Passenger

@@ -140,13 +140,31 @@ public interface CabinPackage extends EPackage {
 	int CABIN__GALLEYS = 7;
 
 	/**
+	 * The feature id for the '<em><b>Stairs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN__STAIRS = 8;
+
+	/**
+	 * The feature id for the '<em><b>Partition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN__PARTITION = 9;
+
+	/**
 	 * The feature id for the '<em><b>Numb Aisles</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__NUMB_AISLES = 8;
+	int CABIN__NUMB_AISLES = 10;
 
 	/**
 	 * The feature id for the '<em><b>Boarding Time</b></em>' attribute.
@@ -155,7 +173,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__BOARDING_TIME = 9;
+	int CABIN__BOARDING_TIME = 11;
 
 	/**
 	 * The feature id for the '<em><b>Total Passengers</b></em>' attribute.
@@ -164,7 +182,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__TOTAL_PASSENGERS = 10;
+	int CABIN__TOTAL_PASSENGERS = 12;
 
 	/**
 	 * The feature id for the '<em><b>FCpassengers</b></em>' attribute.
@@ -173,7 +191,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__FCPASSENGERS = 11;
+	int CABIN__FCPASSENGERS = 13;
 
 	/**
 	 * The feature id for the '<em><b>BCpassengers</b></em>' attribute.
@@ -182,7 +200,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__BCPASSENGERS = 12;
+	int CABIN__BCPASSENGERS = 14;
 
 	/**
 	 * The feature id for the '<em><b>PE Cpassengers</b></em>' attribute.
@@ -191,7 +209,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__PE_CPASSENGERS = 13;
+	int CABIN__PE_CPASSENGERS = 15;
 
 	/**
 	 * The number of structural features of the '<em>Cabin</em>' class.
@@ -200,7 +218,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_FEATURE_COUNT = 14;
+	int CABIN_FEATURE_COUNT = 16;
 
 	/**
 	 * The number of operations of the '<em>Cabin</em>' class.
@@ -241,13 +259,31 @@ public interface CabinPackage extends EPackage {
 	int ROW__ROW_NUMBER = 1;
 
 	/**
+	 * The feature id for the '<em><b>Row Existance</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROW__ROW_EXISTANCE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Offset In Row</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROW__OFFSET_IN_ROW = 3;
+
+	/**
 	 * The number of structural features of the '<em>Row</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROW_FEATURE_COUNT = 2;
+	int ROW_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Row</em>' class.
@@ -462,13 +498,40 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER__SEAT = 2;
 
 	/**
+	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__HEIGHT = 3;
+
+	/**
+	 * The feature id for the '<em><b>Age</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__AGE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__WEIGHT = 5;
+
+	/**
 	 * The number of structural features of the '<em>Passenger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_FEATURE_COUNT = 3;
+	int PASSENGER_FEATURE_COUNT = 6;
 
 	/**
 	 * The number of operations of the '<em>Passenger</em>' class.
@@ -526,14 +589,14 @@ public interface CabinPackage extends EPackage {
 	int CREW_MEMBER_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.impl.EmergencyExitsImpl <em>Emergency Exits</em>}' class.
+	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.impl.EmergencyExitImpl <em>Emergency Exit</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see net.bhl.cdt.model.cabin.impl.EmergencyExitsImpl
-	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getEmergencyExits()
+	 * @see net.bhl.cdt.model.cabin.impl.EmergencyExitImpl
+	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getEmergencyExit()
 	 * @generated
 	 */
-	int EMERGENCY_EXITS = 7;
+	int EMERGENCY_EXIT = 7;
 
 	/**
 	 * The feature id for the '<em><b>Exit In Row</b></em>' attribute.
@@ -542,25 +605,34 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EMERGENCY_EXITS__EXIT_IN_ROW = 0;
+	int EMERGENCY_EXIT__EXIT_IN_ROW = 0;
 
 	/**
-	 * The number of structural features of the '<em>Emergency Exits</em>' class.
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EMERGENCY_EXITS_FEATURE_COUNT = 1;
+	int EMERGENCY_EXIT__TYPE = 1;
 
 	/**
-	 * The number of operations of the '<em>Emergency Exits</em>' class.
+	 * The number of structural features of the '<em>Emergency Exit</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EMERGENCY_EXITS_OPERATION_COUNT = 0;
+	int EMERGENCY_EXIT_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Emergency Exit</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMERGENCY_EXIT_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.impl.ToiletImpl <em>Toilet</em>}' class.
@@ -637,6 +709,116 @@ public interface CabinPackage extends EPackage {
 	int GALLEY_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.impl.StairwayImpl <em>Stairway</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.model.cabin.impl.StairwayImpl
+	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getStairway()
+	 * @generated
+	 */
+	int STAIRWAY = 10;
+
+	/**
+	 * The feature id for the '<em><b>XDimension</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAIRWAY__XDIMENSION = 0;
+
+	/**
+	 * The feature id for the '<em><b>YDimension</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAIRWAY__YDIMENSION = 1;
+
+	/**
+	 * The feature id for the '<em><b>XPosition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAIRWAY__XPOSITION = 2;
+
+	/**
+	 * The feature id for the '<em><b>YPosition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAIRWAY__YPOSITION = 3;
+
+	/**
+	 * The feature id for the '<em><b>Direction</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAIRWAY__DIRECTION = 4;
+
+	/**
+	 * The number of structural features of the '<em>Stairway</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAIRWAY_FEATURE_COUNT = 5;
+
+	/**
+	 * The number of operations of the '<em>Stairway</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAIRWAY_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.impl.PartitionImpl <em>Partition</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.model.cabin.impl.PartitionImpl
+	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getPartition()
+	 * @generated
+	 */
+	int PARTITION = 11;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARTITION__TYPE = 0;
+
+	/**
+	 * The number of structural features of the '<em>Partition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARTITION_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Partition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARTITION_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.ClassType <em>Class Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -644,8 +826,38 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getClassType()
 	 * @generated
 	 */
-	int CLASS_TYPE = 10;
+	int CLASS_TYPE = 13;
 
+
+	/**
+	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.ExitType <em>Exit Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.model.cabin.ExitType
+	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getExitType()
+	 * @generated
+	 */
+	int EXIT_TYPE = 14;
+
+	/**
+	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.StairwayDirection <em>Stairway Direction</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.model.cabin.StairwayDirection
+	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getStairwayDirection()
+	 * @generated
+	 */
+	int STAIRWAY_DIRECTION = 15;
+
+	/**
+	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.PartitionType <em>Partition Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.model.cabin.PartitionType
+	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getPartitionType()
+	 * @generated
+	 */
+	int PARTITION_TYPE = 16;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}' enum.
@@ -655,7 +867,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getSex()
 	 * @generated
 	 */
-	int SEX = 11;
+	int SEX = 12;
 
 
 	/**
@@ -757,6 +969,28 @@ public interface CabinPackage extends EPackage {
 	EReference getCabin_Galleys();
 
 	/**
+	 * Returns the meta object for the reference list '{@link net.bhl.cdt.model.cabin.Cabin#getStairs <em>Stairs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Stairs</em>'.
+	 * @see net.bhl.cdt.model.cabin.Cabin#getStairs()
+	 * @see #getCabin()
+	 * @generated
+	 */
+	EReference getCabin_Stairs();
+
+	/**
+	 * Returns the meta object for the reference list '{@link net.bhl.cdt.model.cabin.Cabin#getPartition <em>Partition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Partition</em>'.
+	 * @see net.bhl.cdt.model.cabin.Cabin#getPartition()
+	 * @see #getCabin()
+	 * @generated
+	 */
+	EReference getCabin_Partition();
+
+	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getBoardingTime <em>Boarding Time</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -853,6 +1087,28 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getRow_RowNumber();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Row#isRowExistance <em>Row Existance</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Row Existance</em>'.
+	 * @see net.bhl.cdt.model.cabin.Row#isRowExistance()
+	 * @see #getRow()
+	 * @generated
+	 */
+	EAttribute getRow_RowExistance();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Row#isOffsetInRow <em>Offset In Row</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Offset In Row</em>'.
+	 * @see net.bhl.cdt.model.cabin.Row#isOffsetInRow()
+	 * @see #getRow()
+	 * @generated
+	 */
+	EAttribute getRow_OffsetInRow();
 
 	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.PassengerClass <em>Passenger Class</em>}'.
@@ -1027,6 +1283,39 @@ public interface CabinPackage extends EPackage {
 	EReference getPassenger_Seat();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getHeight <em>Height</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Height</em>'.
+	 * @see net.bhl.cdt.model.cabin.Passenger#getHeight()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_Height();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getAge <em>Age</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Age</em>'.
+	 * @see net.bhl.cdt.model.cabin.Passenger#getAge()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_Age();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getWeight <em>Weight</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Weight</em>'.
+	 * @see net.bhl.cdt.model.cabin.Passenger#getWeight()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_Weight();
+
+	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.CrewMember <em>Crew Member</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1059,25 +1348,36 @@ public interface CabinPackage extends EPackage {
 	EReference getCrewMember_Seat();
 
 	/**
-	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.EmergencyExits <em>Emergency Exits</em>}'.
+	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.EmergencyExit <em>Emergency Exit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Emergency Exits</em>'.
-	 * @see net.bhl.cdt.model.cabin.EmergencyExits
+	 * @return the meta object for class '<em>Emergency Exit</em>'.
+	 * @see net.bhl.cdt.model.cabin.EmergencyExit
 	 * @generated
 	 */
-	EClass getEmergencyExits();
+	EClass getEmergencyExit();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.EmergencyExits#getExitInRow <em>Exit In Row</em>}'.
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.EmergencyExit#getExitInRow <em>Exit In Row</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Exit In Row</em>'.
-	 * @see net.bhl.cdt.model.cabin.EmergencyExits#getExitInRow()
-	 * @see #getEmergencyExits()
+	 * @see net.bhl.cdt.model.cabin.EmergencyExit#getExitInRow()
+	 * @see #getEmergencyExit()
 	 * @generated
 	 */
-	EAttribute getEmergencyExits_ExitInRow();
+	EAttribute getEmergencyExit_ExitInRow();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.EmergencyExit#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see net.bhl.cdt.model.cabin.EmergencyExit#getType()
+	 * @see #getEmergencyExit()
+	 * @generated
+	 */
+	EAttribute getEmergencyExit_Type();
 
 	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.Toilet <em>Toilet</em>}'.
@@ -1122,6 +1422,92 @@ public interface CabinPackage extends EPackage {
 	EAttribute getGalley_GalleyAfterRow();
 
 	/**
+	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.Stairway <em>Stairway</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Stairway</em>'.
+	 * @see net.bhl.cdt.model.cabin.Stairway
+	 * @generated
+	 */
+	EClass getStairway();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Stairway#getXDimension <em>XDimension</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>XDimension</em>'.
+	 * @see net.bhl.cdt.model.cabin.Stairway#getXDimension()
+	 * @see #getStairway()
+	 * @generated
+	 */
+	EAttribute getStairway_XDimension();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Stairway#getYDimension <em>YDimension</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>YDimension</em>'.
+	 * @see net.bhl.cdt.model.cabin.Stairway#getYDimension()
+	 * @see #getStairway()
+	 * @generated
+	 */
+	EAttribute getStairway_YDimension();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Stairway#getXPosition <em>XPosition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>XPosition</em>'.
+	 * @see net.bhl.cdt.model.cabin.Stairway#getXPosition()
+	 * @see #getStairway()
+	 * @generated
+	 */
+	EAttribute getStairway_XPosition();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Stairway#getYPosition <em>YPosition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>YPosition</em>'.
+	 * @see net.bhl.cdt.model.cabin.Stairway#getYPosition()
+	 * @see #getStairway()
+	 * @generated
+	 */
+	EAttribute getStairway_YPosition();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Stairway#getDirection <em>Direction</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Direction</em>'.
+	 * @see net.bhl.cdt.model.cabin.Stairway#getDirection()
+	 * @see #getStairway()
+	 * @generated
+	 */
+	EAttribute getStairway_Direction();
+
+	/**
+	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.Partition <em>Partition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Partition</em>'.
+	 * @see net.bhl.cdt.model.cabin.Partition
+	 * @generated
+	 */
+	EClass getPartition();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Partition#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see net.bhl.cdt.model.cabin.Partition#getType()
+	 * @see #getPartition()
+	 * @generated
+	 */
+	EAttribute getPartition_Type();
+
+	/**
 	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.ClassType <em>Class Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1130,6 +1516,36 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getClassType();
+
+	/**
+	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.ExitType <em>Exit Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Exit Type</em>'.
+	 * @see net.bhl.cdt.model.cabin.ExitType
+	 * @generated
+	 */
+	EEnum getExitType();
+
+	/**
+	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.StairwayDirection <em>Stairway Direction</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Stairway Direction</em>'.
+	 * @see net.bhl.cdt.model.cabin.StairwayDirection
+	 * @generated
+	 */
+	EEnum getStairwayDirection();
+
+	/**
+	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.PartitionType <em>Partition Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Partition Type</em>'.
+	 * @see net.bhl.cdt.model.cabin.PartitionType
+	 * @generated
+	 */
+	EEnum getPartitionType();
 
 	/**
 	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}'.
@@ -1230,6 +1646,20 @@ public interface CabinPackage extends EPackage {
 		 */
 		EReference CABIN__GALLEYS = eINSTANCE.getCabin_Galleys();
 		/**
+		 * The meta object literal for the '<em><b>Stairs</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CABIN__STAIRS = eINSTANCE.getCabin_Stairs();
+		/**
+		 * The meta object literal for the '<em><b>Partition</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CABIN__PARTITION = eINSTANCE.getCabin_Partition();
+		/**
 		 * The meta object literal for the '<em><b>Boarding Time</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1294,6 +1724,20 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ROW__ROW_NUMBER = eINSTANCE.getRow_RowNumber();
+		/**
+		 * The meta object literal for the '<em><b>Row Existance</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ROW__ROW_EXISTANCE = eINSTANCE.getRow_RowExistance();
+		/**
+		 * The meta object literal for the '<em><b>Offset In Row</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ROW__OFFSET_IN_ROW = eINSTANCE.getRow_OffsetInRow();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.PassengerClassImpl <em>Passenger Class</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -1415,6 +1859,27 @@ public interface CabinPackage extends EPackage {
 		 */
 		EReference PASSENGER__SEAT = eINSTANCE.getPassenger_Seat();
 		/**
+		 * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__HEIGHT = eINSTANCE.getPassenger_Height();
+		/**
+		 * The meta object literal for the '<em><b>Age</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__AGE = eINSTANCE.getPassenger_Age();
+		/**
+		 * The meta object literal for the '<em><b>Weight</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__WEIGHT = eINSTANCE.getPassenger_Weight();
+		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.CrewMemberImpl <em>Crew Member</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1438,21 +1903,28 @@ public interface CabinPackage extends EPackage {
 		 */
 		EReference CREW_MEMBER__SEAT = eINSTANCE.getCrewMember_Seat();
 		/**
-		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.EmergencyExitsImpl <em>Emergency Exits</em>}' class.
+		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.EmergencyExitImpl <em>Emergency Exit</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see net.bhl.cdt.model.cabin.impl.EmergencyExitsImpl
-		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getEmergencyExits()
+		 * @see net.bhl.cdt.model.cabin.impl.EmergencyExitImpl
+		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getEmergencyExit()
 		 * @generated
 		 */
-		EClass EMERGENCY_EXITS = eINSTANCE.getEmergencyExits();
+		EClass EMERGENCY_EXIT = eINSTANCE.getEmergencyExit();
 		/**
 		 * The meta object literal for the '<em><b>Exit In Row</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute EMERGENCY_EXITS__EXIT_IN_ROW = eINSTANCE.getEmergencyExits_ExitInRow();
+		EAttribute EMERGENCY_EXIT__EXIT_IN_ROW = eINSTANCE.getEmergencyExit_ExitInRow();
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EMERGENCY_EXIT__TYPE = eINSTANCE.getEmergencyExit_Type();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.ToiletImpl <em>Toilet</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -1486,6 +1958,66 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute GALLEY__GALLEY_AFTER_ROW = eINSTANCE.getGalley_GalleyAfterRow();
 		/**
+		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.StairwayImpl <em>Stairway</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.bhl.cdt.model.cabin.impl.StairwayImpl
+		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getStairway()
+		 * @generated
+		 */
+		EClass STAIRWAY = eINSTANCE.getStairway();
+		/**
+		 * The meta object literal for the '<em><b>XDimension</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STAIRWAY__XDIMENSION = eINSTANCE.getStairway_XDimension();
+		/**
+		 * The meta object literal for the '<em><b>YDimension</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STAIRWAY__YDIMENSION = eINSTANCE.getStairway_YDimension();
+		/**
+		 * The meta object literal for the '<em><b>XPosition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STAIRWAY__XPOSITION = eINSTANCE.getStairway_XPosition();
+		/**
+		 * The meta object literal for the '<em><b>YPosition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STAIRWAY__YPOSITION = eINSTANCE.getStairway_YPosition();
+		/**
+		 * The meta object literal for the '<em><b>Direction</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STAIRWAY__DIRECTION = eINSTANCE.getStairway_Direction();
+		/**
+		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.PartitionImpl <em>Partition</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.bhl.cdt.model.cabin.impl.PartitionImpl
+		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getPartition()
+		 * @generated
+		 */
+		EClass PARTITION = eINSTANCE.getPartition();
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARTITION__TYPE = eINSTANCE.getPartition_Type();
+		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.ClassType <em>Class Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1494,6 +2026,33 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum CLASS_TYPE = eINSTANCE.getClassType();
+		/**
+		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.ExitType <em>Exit Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.bhl.cdt.model.cabin.ExitType
+		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getExitType()
+		 * @generated
+		 */
+		EEnum EXIT_TYPE = eINSTANCE.getExitType();
+		/**
+		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.StairwayDirection <em>Stairway Direction</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.bhl.cdt.model.cabin.StairwayDirection
+		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getStairwayDirection()
+		 * @generated
+		 */
+		EEnum STAIRWAY_DIRECTION = eINSTANCE.getStairwayDirection();
+		/**
+		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.PartitionType <em>Partition Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.bhl.cdt.model.cabin.PartitionType
+		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getPartitionType()
+		 * @generated
+		 */
+		EEnum PARTITION_TYPE = eINSTANCE.getPartitionType();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}' enum.
 		 * <!-- begin-user-doc -->

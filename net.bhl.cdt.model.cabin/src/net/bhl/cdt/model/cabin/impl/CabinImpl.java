@@ -6,9 +6,11 @@ import java.util.Collection;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinDoor;
 import net.bhl.cdt.model.cabin.CabinPackage;
-import net.bhl.cdt.model.cabin.EmergencyExits;
+import net.bhl.cdt.model.cabin.EmergencyExit;
 import net.bhl.cdt.model.cabin.Galley;
+import net.bhl.cdt.model.cabin.Partition;
 import net.bhl.cdt.model.cabin.PassengerClass;
+import net.bhl.cdt.model.cabin.Stairway;
 import net.bhl.cdt.model.cabin.Toilet;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -36,6 +38,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getExits <em>Exits</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getToilets <em>Toilets</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getGalleys <em>Galleys</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getStairs <em>Stairs</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getPartition <em>Partition</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getNumbAisles <em>Numb Aisles</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getBoardingTime <em>Boarding Time</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getTotalPassengers <em>Total Passengers</em>}</li>
@@ -129,7 +133,7 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<EmergencyExits> exits;
+	protected EList<EmergencyExit> exits;
 	/**
 	 * The cached value of the '{@link #getToilets() <em>Toilets</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -148,6 +152,24 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 	 * @ordered
 	 */
 	protected EList<Galley> galleys;
+	/**
+	 * The cached value of the '{@link #getStairs() <em>Stairs</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStairs()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Stairway> stairs;
+	/**
+	 * The cached value of the '{@link #getPartition() <em>Partition</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPartition()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Partition> partition;
 	/**
 	 * The default value of the '{@link #getNumbAisles() <em>Numb Aisles</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -367,9 +389,9 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<EmergencyExits> getExits() {
+	public EList<EmergencyExit> getExits() {
 		if (exits == null) {
-			exits = new EObjectResolvingEList<EmergencyExits>(EmergencyExits.class, this, CabinPackage.CABIN__EXITS);
+			exits = new EObjectResolvingEList<EmergencyExit>(EmergencyExit.class, this, CabinPackage.CABIN__EXITS);
 		}
 		return exits;
 	}
@@ -396,6 +418,30 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 			galleys = new EObjectResolvingEList<Galley>(Galley.class, this, CabinPackage.CABIN__GALLEYS);
 		}
 		return galleys;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Stairway> getStairs() {
+		if (stairs == null) {
+			stairs = new EObjectResolvingEList<Stairway>(Stairway.class, this, CabinPackage.CABIN__STAIRS);
+		}
+		return stairs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Partition> getPartition() {
+		if (partition == null) {
+			partition = new EObjectResolvingEList<Partition>(Partition.class, this, CabinPackage.CABIN__PARTITION);
+		}
+		return partition;
 	}
 
 	/**
@@ -564,6 +610,10 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return getToilets();
 			case CabinPackage.CABIN__GALLEYS:
 				return getGalleys();
+			case CabinPackage.CABIN__STAIRS:
+				return getStairs();
+			case CabinPackage.CABIN__PARTITION:
+				return getPartition();
 			case CabinPackage.CABIN__NUMB_AISLES:
 				return getNumbAisles();
 			case CabinPackage.CABIN__BOARDING_TIME:
@@ -608,7 +658,7 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return;
 			case CabinPackage.CABIN__EXITS:
 				getExits().clear();
-				getExits().addAll((Collection<? extends EmergencyExits>)newValue);
+				getExits().addAll((Collection<? extends EmergencyExit>)newValue);
 				return;
 			case CabinPackage.CABIN__TOILETS:
 				getToilets().clear();
@@ -617,6 +667,14 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 			case CabinPackage.CABIN__GALLEYS:
 				getGalleys().clear();
 				getGalleys().addAll((Collection<? extends Galley>)newValue);
+				return;
+			case CabinPackage.CABIN__STAIRS:
+				getStairs().clear();
+				getStairs().addAll((Collection<? extends Stairway>)newValue);
+				return;
+			case CabinPackage.CABIN__PARTITION:
+				getPartition().clear();
+				getPartition().addAll((Collection<? extends Partition>)newValue);
 				return;
 			case CabinPackage.CABIN__NUMB_AISLES:
 				setNumbAisles((Integer)newValue);
@@ -672,6 +730,12 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 			case CabinPackage.CABIN__GALLEYS:
 				getGalleys().clear();
 				return;
+			case CabinPackage.CABIN__STAIRS:
+				getStairs().clear();
+				return;
+			case CabinPackage.CABIN__PARTITION:
+				getPartition().clear();
+				return;
 			case CabinPackage.CABIN__NUMB_AISLES:
 				setNumbAisles(NUMB_AISLES_EDEFAULT);
 				return;
@@ -718,6 +782,10 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return toilets != null && !toilets.isEmpty();
 			case CabinPackage.CABIN__GALLEYS:
 				return galleys != null && !galleys.isEmpty();
+			case CabinPackage.CABIN__STAIRS:
+				return stairs != null && !stairs.isEmpty();
+			case CabinPackage.CABIN__PARTITION:
+				return partition != null && !partition.isEmpty();
 			case CabinPackage.CABIN__NUMB_AISLES:
 				return numbAisles != NUMB_AISLES_EDEFAULT;
 			case CabinPackage.CABIN__BOARDING_TIME:

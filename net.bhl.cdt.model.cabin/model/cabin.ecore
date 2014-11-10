@@ -15,7 +15,10 @@
         upperBound="-1" eType="#//Toilet"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="galleys" lowerBound="1"
         upperBound="-1" eType="#//Galley"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="stairs" eType="#//Stairway"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stairs" upperBound="-1"
+        eType="#//Stairway"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="partition" upperBound="-1"
+        eType="#//Partition"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numbAisles" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="boardingTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="totalPassengers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -75,6 +78,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="yPosition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" eType="#//StairwayDirection"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Partition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//PartitionType"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Sex">
     <eLiterals name="male"/>
     <eLiterals name="female"/>
@@ -86,11 +92,16 @@
     <eLiterals name="Economy" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ExitType">
-    <eLiterals name="onWing"/>
-    <eLiterals name="beforeRow" value="1"/>
+    <eLiterals name="beforeRow"/>
+    <eLiterals name="inRow" value="1"/>
+    <eLiterals name="betweenClasses" value="2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="StairwayDirection">
     <eLiterals name="up" value="1"/>
     <eLiterals name="down" value="-1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PartitionType">
+    <eLiterals name="curtain"/>
+    <eLiterals name="wall" value="1"/>
   </eClassifiers>
 </ecore:EPackage>
