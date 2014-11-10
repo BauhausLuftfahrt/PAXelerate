@@ -11,6 +11,7 @@ import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.Partition;
 import net.bhl.cdt.model.cabin.PassengerClass;
 import net.bhl.cdt.model.cabin.Stairway;
+import net.bhl.cdt.model.cabin.Stowage;
 import net.bhl.cdt.model.cabin.Toilet;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -40,12 +41,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getGalleys <em>Galleys</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getStairs <em>Stairs</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getPartition <em>Partition</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getStowage <em>Stowage</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getNumbAisles <em>Numb Aisles</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getBoardingTime <em>Boarding Time</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getTotalPassengers <em>Total Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getFCpassengers <em>FCpassengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getBCpassengers <em>BCpassengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getPECpassengers <em>PE Cpassengers</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getTotalPassengers <em>Total Passengers</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getRowNonexistent <em>Row Nonexistent</em>}</li>
  * </ul>
  * </p>
  *
@@ -171,6 +174,15 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 	 */
 	protected EList<Partition> partition;
 	/**
+	 * The cached value of the '{@link #getStowage() <em>Stowage</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStowage()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Stowage> stowage;
+	/**
 	 * The default value of the '{@link #getNumbAisles() <em>Numb Aisles</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -206,24 +218,6 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 	 * @ordered
 	 */
 	protected double boardingTime = BOARDING_TIME_EDEFAULT;
-	/**
-	 * The default value of the '{@link #getTotalPassengers() <em>Total Passengers</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTotalPassengers()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int TOTAL_PASSENGERS_EDEFAULT = 0;
-	/**
-	 * The cached value of the '{@link #getTotalPassengers() <em>Total Passengers</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTotalPassengers()
-	 * @generated
-	 * @ordered
-	 */
-	protected int totalPassengers = TOTAL_PASSENGERS_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getFCpassengers() <em>FCpassengers</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -278,6 +272,42 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 	 * @ordered
 	 */
 	protected int peCpassengers = PE_CPASSENGERS_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getTotalPassengers() <em>Total Passengers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTotalPassengers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int TOTAL_PASSENGERS_EDEFAULT = 0;
+	/**
+	 * The cached value of the '{@link #getTotalPassengers() <em>Total Passengers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTotalPassengers()
+	 * @generated
+	 * @ordered
+	 */
+	protected int totalPassengers = TOTAL_PASSENGERS_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getRowNonexistent() <em>Row Nonexistent</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRowNonexistent()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int ROW_NONEXISTENT_EDEFAULT = 0;
+	/**
+	 * The cached value of the '{@link #getRowNonexistent() <em>Row Nonexistent</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRowNonexistent()
+	 * @generated
+	 * @ordered
+	 */
+	protected int rowNonexistent = ROW_NONEXISTENT_EDEFAULT;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -449,6 +479,18 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Stowage> getStowage() {
+		if (stowage == null) {
+			stowage = new EObjectResolvingEList<Stowage>(Stowage.class, this, CabinPackage.CABIN__STOWAGE);
+		}
+		return stowage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public double getBoardingTime() {
 		return boardingTime;
 	}
@@ -484,6 +526,27 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 		totalPassengers = newTotalPassengers;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__TOTAL_PASSENGERS, oldTotalPassengers, totalPassengers));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getRowNonexistent() {
+		return rowNonexistent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRowNonexistent(int newRowNonexistent) {
+		int oldRowNonexistent = rowNonexistent;
+		rowNonexistent = newRowNonexistent;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__ROW_NONEXISTENT, oldRowNonexistent, rowNonexistent));
 	}
 
 	/**
@@ -614,18 +677,22 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return getStairs();
 			case CabinPackage.CABIN__PARTITION:
 				return getPartition();
+			case CabinPackage.CABIN__STOWAGE:
+				return getStowage();
 			case CabinPackage.CABIN__NUMB_AISLES:
 				return getNumbAisles();
 			case CabinPackage.CABIN__BOARDING_TIME:
 				return getBoardingTime();
-			case CabinPackage.CABIN__TOTAL_PASSENGERS:
-				return getTotalPassengers();
 			case CabinPackage.CABIN__FCPASSENGERS:
 				return getFCpassengers();
 			case CabinPackage.CABIN__BCPASSENGERS:
 				return getBCpassengers();
 			case CabinPackage.CABIN__PE_CPASSENGERS:
 				return getPECpassengers();
+			case CabinPackage.CABIN__TOTAL_PASSENGERS:
+				return getTotalPassengers();
+			case CabinPackage.CABIN__ROW_NONEXISTENT:
+				return getRowNonexistent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -676,14 +743,15 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				getPartition().clear();
 				getPartition().addAll((Collection<? extends Partition>)newValue);
 				return;
+			case CabinPackage.CABIN__STOWAGE:
+				getStowage().clear();
+				getStowage().addAll((Collection<? extends Stowage>)newValue);
+				return;
 			case CabinPackage.CABIN__NUMB_AISLES:
 				setNumbAisles((Integer)newValue);
 				return;
 			case CabinPackage.CABIN__BOARDING_TIME:
 				setBoardingTime((Double)newValue);
-				return;
-			case CabinPackage.CABIN__TOTAL_PASSENGERS:
-				setTotalPassengers((Integer)newValue);
 				return;
 			case CabinPackage.CABIN__FCPASSENGERS:
 				setFCpassengers((Integer)newValue);
@@ -693,6 +761,12 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return;
 			case CabinPackage.CABIN__PE_CPASSENGERS:
 				setPECpassengers((Integer)newValue);
+				return;
+			case CabinPackage.CABIN__TOTAL_PASSENGERS:
+				setTotalPassengers((Integer)newValue);
+				return;
+			case CabinPackage.CABIN__ROW_NONEXISTENT:
+				setRowNonexistent((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -736,14 +810,14 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 			case CabinPackage.CABIN__PARTITION:
 				getPartition().clear();
 				return;
+			case CabinPackage.CABIN__STOWAGE:
+				getStowage().clear();
+				return;
 			case CabinPackage.CABIN__NUMB_AISLES:
 				setNumbAisles(NUMB_AISLES_EDEFAULT);
 				return;
 			case CabinPackage.CABIN__BOARDING_TIME:
 				setBoardingTime(BOARDING_TIME_EDEFAULT);
-				return;
-			case CabinPackage.CABIN__TOTAL_PASSENGERS:
-				setTotalPassengers(TOTAL_PASSENGERS_EDEFAULT);
 				return;
 			case CabinPackage.CABIN__FCPASSENGERS:
 				setFCpassengers(FCPASSENGERS_EDEFAULT);
@@ -753,6 +827,12 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return;
 			case CabinPackage.CABIN__PE_CPASSENGERS:
 				setPECpassengers(PE_CPASSENGERS_EDEFAULT);
+				return;
+			case CabinPackage.CABIN__TOTAL_PASSENGERS:
+				setTotalPassengers(TOTAL_PASSENGERS_EDEFAULT);
+				return;
+			case CabinPackage.CABIN__ROW_NONEXISTENT:
+				setRowNonexistent(ROW_NONEXISTENT_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -786,18 +866,22 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return stairs != null && !stairs.isEmpty();
 			case CabinPackage.CABIN__PARTITION:
 				return partition != null && !partition.isEmpty();
+			case CabinPackage.CABIN__STOWAGE:
+				return stowage != null && !stowage.isEmpty();
 			case CabinPackage.CABIN__NUMB_AISLES:
 				return numbAisles != NUMB_AISLES_EDEFAULT;
 			case CabinPackage.CABIN__BOARDING_TIME:
 				return boardingTime != BOARDING_TIME_EDEFAULT;
-			case CabinPackage.CABIN__TOTAL_PASSENGERS:
-				return totalPassengers != TOTAL_PASSENGERS_EDEFAULT;
 			case CabinPackage.CABIN__FCPASSENGERS:
 				return fCpassengers != FCPASSENGERS_EDEFAULT;
 			case CabinPackage.CABIN__BCPASSENGERS:
 				return bCpassengers != BCPASSENGERS_EDEFAULT;
 			case CabinPackage.CABIN__PE_CPASSENGERS:
 				return peCpassengers != PE_CPASSENGERS_EDEFAULT;
+			case CabinPackage.CABIN__TOTAL_PASSENGERS:
+				return totalPassengers != TOTAL_PASSENGERS_EDEFAULT;
+			case CabinPackage.CABIN__ROW_NONEXISTENT:
+				return rowNonexistent != ROW_NONEXISTENT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -822,14 +906,16 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 		result.append(numbAisles);
 		result.append(", boardingTime: ");
 		result.append(boardingTime);
-		result.append(", totalPassengers: ");
-		result.append(totalPassengers);
 		result.append(", FCpassengers: ");
 		result.append(fCpassengers);
 		result.append(", BCpassengers: ");
 		result.append(bCpassengers);
 		result.append(", PECpassengers: ");
 		result.append(peCpassengers);
+		result.append(", totalPassengers: ");
+		result.append(totalPassengers);
+		result.append(", rowNonexistent: ");
+		result.append(rowNonexistent);
 		result.append(')');
 		return result.toString();
 	}

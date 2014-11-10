@@ -116,6 +116,10 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 				return createPartitionAdapter();
 			}
 			@Override
+			public Adapter caseStowage(Stowage object) {
+				return createStowageAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -300,6 +304,20 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPartitionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.Stowage <em>Stowage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see net.bhl.cdt.model.cabin.Stowage
+	 * @generated
+	 */
+	public Adapter createStowageAdapter() {
 		return null;
 	}
 

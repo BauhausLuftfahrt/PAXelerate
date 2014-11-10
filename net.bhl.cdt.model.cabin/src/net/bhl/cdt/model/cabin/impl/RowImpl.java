@@ -31,8 +31,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.RowImpl#getSeats <em>Seats</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.RowImpl#getRowNumber <em>Row Number</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.RowImpl#isRowExistance <em>Row Existance</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.RowImpl#isOffsetInRow <em>Offset In Row</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.RowImpl#isAdditionalLegroom <em>Additional Legroom</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,26 +70,6 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 	protected int rowNumber = ROW_NUMBER_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isRowExistance() <em>Row Existance</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isRowExistance()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean ROW_EXISTANCE_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isRowExistance() <em>Row Existance</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isRowExistance()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean rowExistance = ROW_EXISTANCE_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #isOffsetInRow() <em>Offset In Row</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -108,6 +88,26 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 	 * @ordered
 	 */
 	protected boolean offsetInRow = OFFSET_IN_ROW_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isAdditionalLegroom() <em>Additional Legroom</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isAdditionalLegroom()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ADDITIONAL_LEGROOM_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isAdditionalLegroom() <em>Additional Legroom</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isAdditionalLegroom()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean additionalLegroom = ADDITIONAL_LEGROOM_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -166,27 +166,6 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isRowExistance() {
-		return rowExistance;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setRowExistance(boolean newRowExistance) {
-		boolean oldRowExistance = rowExistance;
-		rowExistance = newRowExistance;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.ROW__ROW_EXISTANCE, oldRowExistance, rowExistance));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean isOffsetInRow() {
 		return offsetInRow;
 	}
@@ -201,6 +180,27 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 		offsetInRow = newOffsetInRow;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.ROW__OFFSET_IN_ROW, oldOffsetInRow, offsetInRow));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isAdditionalLegroom() {
+		return additionalLegroom;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAdditionalLegroom(boolean newAdditionalLegroom) {
+		boolean oldAdditionalLegroom = additionalLegroom;
+		additionalLegroom = newAdditionalLegroom;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.ROW__ADDITIONAL_LEGROOM, oldAdditionalLegroom, additionalLegroom));
 	}
 
 	/**
@@ -229,10 +229,10 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 				return getSeats();
 			case CabinPackage.ROW__ROW_NUMBER:
 				return getRowNumber();
-			case CabinPackage.ROW__ROW_EXISTANCE:
-				return isRowExistance();
 			case CabinPackage.ROW__OFFSET_IN_ROW:
 				return isOffsetInRow();
+			case CabinPackage.ROW__ADDITIONAL_LEGROOM:
+				return isAdditionalLegroom();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -253,11 +253,11 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 			case CabinPackage.ROW__ROW_NUMBER:
 				setRowNumber((Integer)newValue);
 				return;
-			case CabinPackage.ROW__ROW_EXISTANCE:
-				setRowExistance((Boolean)newValue);
-				return;
 			case CabinPackage.ROW__OFFSET_IN_ROW:
 				setOffsetInRow((Boolean)newValue);
+				return;
+			case CabinPackage.ROW__ADDITIONAL_LEGROOM:
+				setAdditionalLegroom((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -277,11 +277,11 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 			case CabinPackage.ROW__ROW_NUMBER:
 				setRowNumber(ROW_NUMBER_EDEFAULT);
 				return;
-			case CabinPackage.ROW__ROW_EXISTANCE:
-				setRowExistance(ROW_EXISTANCE_EDEFAULT);
-				return;
 			case CabinPackage.ROW__OFFSET_IN_ROW:
 				setOffsetInRow(OFFSET_IN_ROW_EDEFAULT);
+				return;
+			case CabinPackage.ROW__ADDITIONAL_LEGROOM:
+				setAdditionalLegroom(ADDITIONAL_LEGROOM_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -299,10 +299,10 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 				return seats != null && !seats.isEmpty();
 			case CabinPackage.ROW__ROW_NUMBER:
 				return rowNumber != ROW_NUMBER_EDEFAULT;
-			case CabinPackage.ROW__ROW_EXISTANCE:
-				return rowExistance != ROW_EXISTANCE_EDEFAULT;
 			case CabinPackage.ROW__OFFSET_IN_ROW:
 				return offsetInRow != OFFSET_IN_ROW_EDEFAULT;
+			case CabinPackage.ROW__ADDITIONAL_LEGROOM:
+				return additionalLegroom != ADDITIONAL_LEGROOM_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -319,10 +319,10 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (rowNumber: ");
 		result.append(rowNumber);
-		result.append(", rowExistance: ");
-		result.append(rowExistance);
 		result.append(", offsetInRow: ");
 		result.append(offsetInRow);
+		result.append(", additionalLegroom: ");
+		result.append(additionalLegroom);
 		result.append(')');
 		return result.toString();
 	}

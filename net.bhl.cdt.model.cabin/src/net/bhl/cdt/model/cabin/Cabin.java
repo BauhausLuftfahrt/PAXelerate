@@ -23,12 +23,14 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getGalleys <em>Galleys</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getStairs <em>Stairs</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getPartition <em>Partition</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getStowage <em>Stowage</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getNumbAisles <em>Numb Aisles</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBoardingTime <em>Boarding Time</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getTotalPassengers <em>Total Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getFCpassengers <em>FCpassengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBCpassengers <em>BCpassengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getPECpassengers <em>PE Cpassengers</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getTotalPassengers <em>Total Passengers</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getRowNonexistent <em>Row Nonexistent</em>}</li>
  * </ul>
  * </p>
  *
@@ -229,6 +231,22 @@ public interface Cabin extends EObject {
 	EList<Partition> getPartition();
 
 	/**
+	 * Returns the value of the '<em><b>Stowage</b></em>' reference list.
+	 * The list contents are of type {@link net.bhl.cdt.model.cabin.Stowage}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Stowage</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Stowage</em>' reference list.
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Stowage()
+	 * @model
+	 * @generated
+	 */
+	EList<Stowage> getStowage();
+
+	/**
 	 * Returns the value of the '<em><b>Boarding Time</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -279,6 +297,32 @@ public interface Cabin extends EObject {
 	 * @generated
 	 */
 	void setTotalPassengers(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Row Nonexistent</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Row Nonexistent</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Row Nonexistent</em>' attribute.
+	 * @see #setRowNonexistent(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_RowNonexistent()
+	 * @model
+	 * @generated
+	 */
+	int getRowNonexistent();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getRowNonexistent <em>Row Nonexistent</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Row Nonexistent</em>' attribute.
+	 * @see #getRowNonexistent()
+	 * @generated
+	 */
+	void setRowNonexistent(int value);
 
 	/**
 	 * Returns the value of the '<em><b>FCpassengers</b></em>' attribute.

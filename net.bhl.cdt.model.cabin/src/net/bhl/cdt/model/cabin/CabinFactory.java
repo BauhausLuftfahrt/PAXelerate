@@ -130,6 +130,15 @@ public interface CabinFactory extends EFactory {
 	Partition createPartition();
 
 	/**
+	 * Returns a new object of class '<em>Stowage</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Stowage</em>'.
+	 * @generated
+	 */
+	Stowage createStowage();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
