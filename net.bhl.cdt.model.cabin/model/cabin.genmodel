@@ -31,6 +31,14 @@
       <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//SeatsPerRow/Business"/>
       <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//SeatsPerRow/First"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cabin.ecore#//SeatLetter">
+      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//SeatLetter/A"/>
+      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//SeatLetter/B"/>
+      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//SeatLetter/C"/>
+      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//SeatLetter/D"/>
+      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//SeatLetter/E"/>
+      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//SeatLetter/F"/>
+    </genEnums>
     <genClasses ecoreClass="cabin.ecore#//Cabin">
       <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/cabinLength"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/cabinWidth"/>
@@ -76,11 +84,11 @@
     </genClasses>
     <genClasses ecoreClass="cabin.ecore#//Seat">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Seat/seatNumber"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Seat/seatType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Seat/seatBlocked"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Seat/crewSeat"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Seat/width"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Seat/length"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Seat/seatId"/>
     </genClasses>
     <genClasses ecoreClass="cabin.ecore#//Passenger">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Passenger/id"/>

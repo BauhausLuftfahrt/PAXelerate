@@ -505,22 +505,13 @@ public interface CabinPackage extends EPackage {
 	int SEAT__SEAT_NUMBER = 0;
 
 	/**
-	 * The feature id for the '<em><b>Seat Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEAT__SEAT_TYPE = 1;
-
-	/**
 	 * The feature id for the '<em><b>Seat Blocked</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEAT__SEAT_BLOCKED = 2;
+	int SEAT__SEAT_BLOCKED = 1;
 
 	/**
 	 * The feature id for the '<em><b>Crew Seat</b></em>' attribute.
@@ -529,7 +520,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEAT__CREW_SEAT = 3;
+	int SEAT__CREW_SEAT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
@@ -538,7 +529,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEAT__WIDTH = 4;
+	int SEAT__WIDTH = 3;
 
 	/**
 	 * The feature id for the '<em><b>Length</b></em>' attribute.
@@ -547,7 +538,16 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEAT__LENGTH = 5;
+	int SEAT__LENGTH = 4;
+
+	/**
+	 * The feature id for the '<em><b>Seat Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEAT__SEAT_ID = 5;
 
 	/**
 	 * The number of structural features of the '<em>Seat</em>' class.
@@ -1058,6 +1058,16 @@ public interface CabinPackage extends EPackage {
 	int SEATS_PER_ROW = 16;
 
 	/**
+	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.SeatLetter <em>Seat Letter</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.model.cabin.SeatLetter
+	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getSeatLetter()
+	 * @generated
+	 */
+	int SEAT_LETTER = 17;
+
+	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1515,17 +1525,6 @@ public interface CabinPackage extends EPackage {
 	EAttribute getSeat_SeatNumber();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Seat#getSeatType <em>Seat Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Seat Type</em>'.
-	 * @see net.bhl.cdt.model.cabin.Seat#getSeatType()
-	 * @see #getSeat()
-	 * @generated
-	 */
-	EAttribute getSeat_SeatType();
-
-	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Seat#isSeatBlocked <em>Seat Blocked</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1568,6 +1567,17 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSeat_Length();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Seat#getSeatId <em>Seat Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seat Id</em>'.
+	 * @see net.bhl.cdt.model.cabin.Seat#getSeatId()
+	 * @see #getSeat()
+	 * @generated
+	 */
+	EAttribute getSeat_SeatId();
 
 	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.Passenger <em>Passenger</em>}'.
@@ -1988,6 +1998,16 @@ public interface CabinPackage extends EPackage {
 	EEnum getSeatsPerRow();
 
 	/**
+	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.SeatLetter <em>Seat Letter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Seat Letter</em>'.
+	 * @see net.bhl.cdt.model.cabin.SeatLetter
+	 * @generated
+	 */
+	EEnum getSeatLetter();
+
+	/**
 	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2318,13 +2338,6 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute SEAT__SEAT_NUMBER = eINSTANCE.getSeat_SeatNumber();
 		/**
-		 * The meta object literal for the '<em><b>Seat Type</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEAT__SEAT_TYPE = eINSTANCE.getSeat_SeatType();
-		/**
 		 * The meta object literal for the '<em><b>Seat Blocked</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2352,6 +2365,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SEAT__LENGTH = eINSTANCE.getSeat_Length();
+		/**
+		 * The meta object literal for the '<em><b>Seat Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SEAT__SEAT_ID = eINSTANCE.getSeat_SeatId();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.PassengerImpl <em>Passenger</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -2647,6 +2667,15 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum SEATS_PER_ROW = eINSTANCE.getSeatsPerRow();
+		/**
+		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.SeatLetter <em>Seat Letter</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.bhl.cdt.model.cabin.SeatLetter
+		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getSeatLetter()
+		 * @generated
+		 */
+		EEnum SEAT_LETTER = eINSTANCE.getSeatLetter();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}' enum.
 		 * <!-- begin-user-doc -->

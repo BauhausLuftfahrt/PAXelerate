@@ -14,11 +14,11 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#getSeatNumber <em>Seat Number</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Seat#getSeatType <em>Seat Type</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#isSeatBlocked <em>Seat Blocked</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#isCrewSeat <em>Crew Seat</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#getWidth <em>Width</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#getLength <em>Length</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Seat#getSeatId <em>Seat Id</em>}</li>
  * </ul>
  * </p>
  *
@@ -52,32 +52,6 @@ public interface Seat extends EObject {
 	 * @generated
 	 */
 	void setSeatNumber(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Seat Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Seat Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Seat Type</em>' attribute.
-	 * @see #setSeatType(String)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSeat_SeatType()
-	 * @model
-	 * @generated
-	 */
-	String getSeatType();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Seat#getSeatType <em>Seat Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Seat Type</em>' attribute.
-	 * @see #getSeatType()
-	 * @generated
-	 */
-	void setSeatType(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Seat Blocked</b></em>' attribute.
@@ -182,5 +156,31 @@ public interface Seat extends EObject {
 	 * @generated
 	 */
 	void setLength(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Seat Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seat Id</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seat Id</em>' attribute.
+	 * @see #setSeatId(String)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSeat_SeatId()
+	 * @model
+	 * @generated
+	 */
+	String getSeatId();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Seat#getSeatId <em>Seat Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seat Id</em>' attribute.
+	 * @see #getSeatId()
+	 * @generated
+	 */
+	void setSeatId(String value);
 
 } // Seat
