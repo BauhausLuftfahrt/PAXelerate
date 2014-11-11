@@ -96,8 +96,8 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 				return createCrewMemberAdapter();
 			}
 			@Override
-			public Adapter caseToilet(Toilet object) {
-				return createToiletAdapter();
+			public Adapter caseLavatory(Lavatory object) {
+				return createLavatoryAdapter();
 			}
 			@Override
 			public Adapter caseGalley(Galley object) {
@@ -234,16 +234,16 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.Toilet <em>Toilet</em>}'.
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.Lavatory <em>Lavatory</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see net.bhl.cdt.model.cabin.Toilet
+	 * @see net.bhl.cdt.model.cabin.Lavatory
 	 * @generated
 	 */
-	public Adapter createToiletAdapter() {
+	public Adapter createLavatoryAdapter() {
 		return null;
 	}
 

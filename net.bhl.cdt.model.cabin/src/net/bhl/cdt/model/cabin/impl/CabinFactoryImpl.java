@@ -64,7 +64,7 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 			case CabinPackage.SEAT: return createSeat();
 			case CabinPackage.PASSENGER: return createPassenger();
 			case CabinPackage.CREW_MEMBER: return createCrewMember();
-			case CabinPackage.TOILET: return createToilet();
+			case CabinPackage.LAVATORY: return createLavatory();
 			case CabinPackage.GALLEY: return createGalley();
 			case CabinPackage.STAIRWAY: return createStairway();
 			case CabinPackage.CURTAIN: return createCurtain();
@@ -92,8 +92,6 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return createStairwayDirectionFromString(eDataType, initialValue);
 			case CabinPackage.SEATS_PER_ROW:
 				return createSeatsPerRowFromString(eDataType, initialValue);
-			case CabinPackage.SEAT_LETTER:
-				return createSeatLetterFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -117,8 +115,6 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return convertStairwayDirectionToString(eDataType, instanceValue);
 			case CabinPackage.SEATS_PER_ROW:
 				return convertSeatsPerRowToString(eDataType, instanceValue);
-			case CabinPackage.SEAT_LETTER:
-				return convertSeatLetterToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -199,9 +195,9 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Toilet createToilet() {
-		ToiletImpl toilet = new ToiletImpl();
-		return toilet;
+	public Lavatory createLavatory() {
+		LavatoryImpl lavatory = new LavatoryImpl();
+		return lavatory;
 	}
 
 	/**
@@ -321,26 +317,6 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * @generated
 	 */
 	public String convertSeatsPerRowToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SeatLetter createSeatLetterFromString(EDataType eDataType, String initialValue) {
-		SeatLetter result = SeatLetter.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertSeatLetterToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

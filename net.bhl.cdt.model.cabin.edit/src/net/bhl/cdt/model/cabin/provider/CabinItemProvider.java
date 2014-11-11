@@ -493,7 +493,7 @@ public class CabinItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(CabinPackage.Literals.CABIN__CLASSES);
 			childrenFeatures.add(CabinPackage.Literals.CABIN__DOORS);
-			childrenFeatures.add(CabinPackage.Literals.CABIN__TOILETS);
+			childrenFeatures.add(CabinPackage.Literals.CABIN__LAVATORIES);
 		}
 		return childrenFeatures;
 	}
@@ -564,7 +564,7 @@ public class CabinItemProvider
 				return;
 			case CabinPackage.CABIN__CLASSES:
 			case CabinPackage.CABIN__DOORS:
-			case CabinPackage.CABIN__TOILETS:
+			case CabinPackage.CABIN__LAVATORIES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -594,8 +594,8 @@ public class CabinItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(CabinPackage.Literals.CABIN__TOILETS,
-				 CabinFactory.eINSTANCE.createToilet()));
+				(CabinPackage.Literals.CABIN__LAVATORIES,
+				 CabinFactory.eINSTANCE.createLavatory()));
 	}
 
 	/**

@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatsPerRow <em>Seats Per Row</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getClasses <em>Classes</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getDoors <em>Doors</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getToilets <em>Toilets</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getLavatories <em>Lavatories</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getGalleys <em>Galleys</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getStairs <em>Stairs</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getCurtain <em>Curtain</em>}</li>
@@ -154,20 +154,20 @@ public interface Cabin extends EObject {
 	EList<Door> getDoors();
 
 	/**
-	 * Returns the value of the '<em><b>Toilets</b></em>' containment reference list.
-	 * The list contents are of type {@link net.bhl.cdt.model.cabin.Toilet}.
+	 * Returns the value of the '<em><b>Lavatories</b></em>' containment reference list.
+	 * The list contents are of type {@link net.bhl.cdt.model.cabin.Lavatory}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Toilets</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Lavatories</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Toilets</em>' containment reference list.
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Toilets()
+	 * @return the value of the '<em>Lavatories</em>' containment reference list.
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Lavatories()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList<Toilet> getToilets();
+	EList<Lavatory> getLavatories();
 
 	/**
 	 * Returns the value of the '<em><b>Galleys</b></em>' containment reference list.

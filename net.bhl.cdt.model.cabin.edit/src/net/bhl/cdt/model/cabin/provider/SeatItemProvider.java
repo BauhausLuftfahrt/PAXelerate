@@ -60,11 +60,11 @@ public class SeatItemProvider
 			super.getPropertyDescriptors(object);
 
 			addSeatNumberPropertyDescriptor(object);
-			addSeatTypePropertyDescriptor(object);
 			addSeatBlockedPropertyDescriptor(object);
 			addCrewSeatPropertyDescriptor(object);
 			addWidthPropertyDescriptor(object);
 			addLengthPropertyDescriptor(object);
+			addSeatIdPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -87,28 +87,6 @@ public class SeatItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Seat Type feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSeatTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Seat_seatType_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Seat_seatType_feature", "_UI_Seat_type"),
-				 CabinPackage.Literals.SEAT__SEAT_TYPE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -202,6 +180,28 @@ public class SeatItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Seat Id feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatIdPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Seat_seatId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Seat_seatId_feature", "_UI_Seat_type"),
+				 CabinPackage.Literals.SEAT__SEAT_ID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Seat.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -237,11 +237,11 @@ public class SeatItemProvider
 
 		switch (notification.getFeatureID(Seat.class)) {
 			case CabinPackage.SEAT__SEAT_NUMBER:
-			case CabinPackage.SEAT__SEAT_TYPE:
 			case CabinPackage.SEAT__SEAT_BLOCKED:
 			case CabinPackage.SEAT__CREW_SEAT:
 			case CabinPackage.SEAT__WIDTH:
 			case CabinPackage.SEAT__LENGTH:
+			case CabinPackage.SEAT__SEAT_ID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

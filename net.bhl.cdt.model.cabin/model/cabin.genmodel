@@ -31,14 +31,6 @@
       <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//SeatsPerRow/Business"/>
       <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//SeatsPerRow/First"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cabin.ecore#//SeatLetter">
-      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//SeatLetter/A"/>
-      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//SeatLetter/B"/>
-      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//SeatLetter/C"/>
-      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//SeatLetter/D"/>
-      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//SeatLetter/E"/>
-      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//SeatLetter/F"/>
-    </genEnums>
     <genClasses ecoreClass="cabin.ecore#//Cabin">
       <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/cabinLength"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/cabinWidth"/>
@@ -56,7 +48,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/seatsPerRow"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//Cabin/classes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//Cabin/doors"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//Cabin/toilets"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//Cabin/lavatories"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cabin.ecore#//Cabin/galleys"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cabin.ecore#//Cabin/stairs"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cabin.ecore#//Cabin/curtain"/>
@@ -103,11 +95,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//CrewMember/id"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cabin.ecore#//CrewMember/seat"/>
     </genClasses>
-    <genClasses ecoreClass="cabin.ecore#//Toilet">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Toilet/xPosition"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Toilet/yPosition"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Toilet/xDimension"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Toilet/yDimension"/>
+    <genClasses ecoreClass="cabin.ecore#//Lavatory">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Lavatory/xPosition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Lavatory/yPosition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Lavatory/xDimension"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Lavatory/yDimension"/>
     </genClasses>
     <genClasses ecoreClass="cabin.ecore#//Galley">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Galley/xPosition"/>

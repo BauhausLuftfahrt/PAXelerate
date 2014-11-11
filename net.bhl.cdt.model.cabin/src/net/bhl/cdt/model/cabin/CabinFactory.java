@@ -85,13 +85,13 @@ public interface CabinFactory extends EFactory {
 	CrewMember createCrewMember();
 
 	/**
-	 * Returns a new object of class '<em>Toilet</em>'.
+	 * Returns a new object of class '<em>Lavatory</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Toilet</em>'.
+	 * @return a new object of class '<em>Lavatory</em>'.
 	 * @generated
 	 */
-	Toilet createToilet();
+	Lavatory createLavatory();
 
 	/**
 	 * Returns a new object of class '<em>Galley</em>'.

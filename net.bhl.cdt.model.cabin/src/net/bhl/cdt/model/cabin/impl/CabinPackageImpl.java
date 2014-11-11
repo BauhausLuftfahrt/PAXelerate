@@ -11,17 +11,16 @@ import net.bhl.cdt.model.cabin.Curtain;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.DoorType;
 import net.bhl.cdt.model.cabin.Galley;
+import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerClass;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
-import net.bhl.cdt.model.cabin.SeatLetter;
 import net.bhl.cdt.model.cabin.SeatsPerRow;
 import net.bhl.cdt.model.cabin.Sex;
 import net.bhl.cdt.model.cabin.Stairway;
 import net.bhl.cdt.model.cabin.StairwayDirection;
 import net.bhl.cdt.model.cabin.Stowage;
-import net.bhl.cdt.model.cabin.Toilet;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -88,7 +87,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass toiletEClass = null;
+	private EClass lavatoryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -145,13 +144,6 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	private EEnum seatsPerRowEEnum = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum seatLetterEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -280,7 +272,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCabin_Toilets() {
+	public EReference getCabin_Lavatories() {
 		return (EReference)cabinEClass.getEStructuralFeatures().get(16);
 	}
 
@@ -739,8 +731,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getToilet() {
-		return toiletEClass;
+	public EClass getLavatory() {
+		return lavatoryEClass;
 	}
 
 	/**
@@ -748,8 +740,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getToilet_XPosition() {
-		return (EAttribute)toiletEClass.getEStructuralFeatures().get(0);
+	public EAttribute getLavatory_XPosition() {
+		return (EAttribute)lavatoryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -757,8 +749,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getToilet_YPosition() {
-		return (EAttribute)toiletEClass.getEStructuralFeatures().get(1);
+	public EAttribute getLavatory_YPosition() {
+		return (EAttribute)lavatoryEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -766,8 +758,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getToilet_XDimension() {
-		return (EAttribute)toiletEClass.getEStructuralFeatures().get(2);
+	public EAttribute getLavatory_XDimension() {
+		return (EAttribute)lavatoryEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -775,8 +767,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getToilet_YDimension() {
-		return (EAttribute)toiletEClass.getEStructuralFeatures().get(3);
+	public EAttribute getLavatory_YDimension() {
+		return (EAttribute)lavatoryEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -991,15 +983,6 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getSeatLetter() {
-		return seatLetterEEnum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EEnum getSex() {
 		return sexEEnum;
 	}
@@ -1049,7 +1032,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEAttribute(cabinEClass, CABIN__SEATS_PER_ROW);
 		createEReference(cabinEClass, CABIN__CLASSES);
 		createEReference(cabinEClass, CABIN__DOORS);
-		createEReference(cabinEClass, CABIN__TOILETS);
+		createEReference(cabinEClass, CABIN__LAVATORIES);
 		createEReference(cabinEClass, CABIN__GALLEYS);
 		createEReference(cabinEClass, CABIN__STAIRS);
 		createEReference(cabinEClass, CABIN__CURTAIN);
@@ -1096,11 +1079,11 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEAttribute(crewMemberEClass, CREW_MEMBER__ID);
 		createEReference(crewMemberEClass, CREW_MEMBER__SEAT);
 
-		toiletEClass = createEClass(TOILET);
-		createEAttribute(toiletEClass, TOILET__XPOSITION);
-		createEAttribute(toiletEClass, TOILET__YPOSITION);
-		createEAttribute(toiletEClass, TOILET__XDIMENSION);
-		createEAttribute(toiletEClass, TOILET__YDIMENSION);
+		lavatoryEClass = createEClass(LAVATORY);
+		createEAttribute(lavatoryEClass, LAVATORY__XPOSITION);
+		createEAttribute(lavatoryEClass, LAVATORY__YPOSITION);
+		createEAttribute(lavatoryEClass, LAVATORY__XDIMENSION);
+		createEAttribute(lavatoryEClass, LAVATORY__YDIMENSION);
 
 		galleyEClass = createEClass(GALLEY);
 		createEAttribute(galleyEClass, GALLEY__XPOSITION);
@@ -1131,7 +1114,6 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		doorTypeEEnum = createEEnum(DOOR_TYPE);
 		stairwayDirectionEEnum = createEEnum(STAIRWAY_DIRECTION);
 		seatsPerRowEEnum = createEEnum(SEATS_PER_ROW);
-		seatLetterEEnum = createEEnum(SEAT_LETTER);
 	}
 
 	/**
@@ -1181,7 +1163,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEAttribute(getCabin_SeatsPerRow(), this.getSeatsPerRow(), "seatsPerRow", null, 0, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCabin_Classes(), this.getPassengerClass(), null, "classes", null, 1, -1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCabin_Doors(), this.getDoor(), null, "doors", null, 1, -1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCabin_Toilets(), this.getToilet(), null, "toilets", null, 1, -1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCabin_Lavatories(), this.getLavatory(), null, "lavatories", null, 1, -1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCabin_Galleys(), this.getGalley(), null, "galleys", null, 1, -1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCabin_Stairs(), this.getStairway(), null, "stairs", null, 0, -1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCabin_Curtain(), this.getCurtain(), null, "curtain", null, 0, -1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1228,11 +1210,11 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEAttribute(getCrewMember_Id(), ecorePackage.getEInt(), "id", null, 0, 1, CrewMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCrewMember_Seat(), this.getSeat(), null, "seat", null, 0, 1, CrewMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(toiletEClass, Toilet.class, "Toilet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getToilet_XPosition(), ecorePackage.getEDouble(), "xPosition", null, 0, 1, Toilet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getToilet_YPosition(), ecorePackage.getEDouble(), "yPosition", null, 0, 1, Toilet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getToilet_XDimension(), ecorePackage.getEDouble(), "xDimension", null, 0, 1, Toilet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getToilet_YDimension(), ecorePackage.getEDouble(), "yDimension", null, 0, 1, Toilet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(lavatoryEClass, Lavatory.class, "Lavatory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLavatory_XPosition(), ecorePackage.getEDouble(), "xPosition", null, 0, 1, Lavatory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLavatory_YPosition(), ecorePackage.getEDouble(), "yPosition", null, 0, 1, Lavatory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLavatory_XDimension(), ecorePackage.getEDouble(), "xDimension", null, 0, 1, Lavatory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLavatory_YDimension(), ecorePackage.getEDouble(), "yDimension", null, 0, 1, Lavatory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(galleyEClass, Galley.class, "Galley", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGalley_XPosition(), ecorePackage.getEDouble(), "xPosition", null, 0, 1, Galley.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1281,14 +1263,6 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		addEEnumLiteral(seatsPerRowEEnum, SeatsPerRow.ECONOMY);
 		addEEnumLiteral(seatsPerRowEEnum, SeatsPerRow.BUSINESS);
 		addEEnumLiteral(seatsPerRowEEnum, SeatsPerRow.FIRST);
-
-		initEEnum(seatLetterEEnum, SeatLetter.class, "SeatLetter");
-		addEEnumLiteral(seatLetterEEnum, SeatLetter.A);
-		addEEnumLiteral(seatLetterEEnum, SeatLetter.B);
-		addEEnumLiteral(seatLetterEEnum, SeatLetter.C);
-		addEEnumLiteral(seatLetterEEnum, SeatLetter.D);
-		addEEnumLiteral(seatLetterEEnum, SeatLetter.E);
-		addEEnumLiteral(seatLetterEEnum, SeatLetter.F);
 
 		// Create resource
 		createResource(eNS_URI);

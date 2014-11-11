@@ -233,26 +233,26 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.Toilet} instances.
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.Lavatory} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ToiletItemProvider toiletItemProvider;
+	protected LavatoryItemProvider lavatoryItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link net.bhl.cdt.model.cabin.Toilet}.
+	 * This creates an adapter for a {@link net.bhl.cdt.model.cabin.Lavatory}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createToiletAdapter() {
-		if (toiletItemProvider == null) {
-			toiletItemProvider = new ToiletItemProvider(this);
+	public Adapter createLavatoryAdapter() {
+		if (lavatoryItemProvider == null) {
+			lavatoryItemProvider = new LavatoryItemProvider(this);
 		}
 
-		return toiletItemProvider;
+		return lavatoryItemProvider;
 	}
 
 	/**
@@ -453,7 +453,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 		if (seatItemProvider != null) seatItemProvider.dispose();
 		if (passengerItemProvider != null) passengerItemProvider.dispose();
 		if (crewMemberItemProvider != null) crewMemberItemProvider.dispose();
-		if (toiletItemProvider != null) toiletItemProvider.dispose();
+		if (lavatoryItemProvider != null) lavatoryItemProvider.dispose();
 		if (galleyItemProvider != null) galleyItemProvider.dispose();
 		if (stairwayItemProvider != null) stairwayItemProvider.dispose();
 		if (curtainItemProvider != null) curtainItemProvider.dispose();

@@ -8,11 +8,11 @@ import net.bhl.cdt.model.cabin.CabinPackage;
 import net.bhl.cdt.model.cabin.Curtain;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Galley;
+import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.PassengerClass;
 import net.bhl.cdt.model.cabin.SeatsPerRow;
 import net.bhl.cdt.model.cabin.Stairway;
 import net.bhl.cdt.model.cabin.Stowage;
-import net.bhl.cdt.model.cabin.Toilet;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -46,7 +46,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatsPerRow <em>Seats Per Row</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getClasses <em>Classes</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getDoors <em>Doors</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getToilets <em>Toilets</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getLavatories <em>Lavatories</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getGalleys <em>Galleys</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getStairs <em>Stairs</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getCurtain <em>Curtain</em>}</li>
@@ -328,14 +328,14 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 	 */
 	protected EList<Door> doors;
 	/**
-	 * The cached value of the '{@link #getToilets() <em>Toilets</em>}' containment reference list.
+	 * The cached value of the '{@link #getLavatories() <em>Lavatories</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getToilets()
+	 * @see #getLavatories()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Toilet> toilets;
+	protected EList<Lavatory> lavatories;
 	/**
 	 * The cached value of the '{@link #getGalleys() <em>Galleys</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -483,11 +483,11 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Toilet> getToilets() {
-		if (toilets == null) {
-			toilets = new EObjectContainmentEList<Toilet>(Toilet.class, this, CabinPackage.CABIN__TOILETS);
+	public EList<Lavatory> getLavatories() {
+		if (lavatories == null) {
+			lavatories = new EObjectContainmentEList<Lavatory>(Lavatory.class, this, CabinPackage.CABIN__LAVATORIES);
 		}
-		return toilets;
+		return lavatories;
 	}
 
 	/**
@@ -781,8 +781,8 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return ((InternalEList<?>)getClasses()).basicRemove(otherEnd, msgs);
 			case CabinPackage.CABIN__DOORS:
 				return ((InternalEList<?>)getDoors()).basicRemove(otherEnd, msgs);
-			case CabinPackage.CABIN__TOILETS:
-				return ((InternalEList<?>)getToilets()).basicRemove(otherEnd, msgs);
+			case CabinPackage.CABIN__LAVATORIES:
+				return ((InternalEList<?>)getLavatories()).basicRemove(otherEnd, msgs);
 			case CabinPackage.CABIN__GALLEYS:
 				return ((InternalEList<?>)getGalleys()).basicRemove(otherEnd, msgs);
 			case CabinPackage.CABIN__STAIRS:
@@ -835,8 +835,8 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return getClasses();
 			case CabinPackage.CABIN__DOORS:
 				return getDoors();
-			case CabinPackage.CABIN__TOILETS:
-				return getToilets();
+			case CabinPackage.CABIN__LAVATORIES:
+				return getLavatories();
 			case CabinPackage.CABIN__GALLEYS:
 				return getGalleys();
 			case CabinPackage.CABIN__STAIRS:
@@ -908,9 +908,9 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				getDoors().clear();
 				getDoors().addAll((Collection<? extends Door>)newValue);
 				return;
-			case CabinPackage.CABIN__TOILETS:
-				getToilets().clear();
-				getToilets().addAll((Collection<? extends Toilet>)newValue);
+			case CabinPackage.CABIN__LAVATORIES:
+				getLavatories().clear();
+				getLavatories().addAll((Collection<? extends Lavatory>)newValue);
 				return;
 			case CabinPackage.CABIN__GALLEYS:
 				getGalleys().clear();
@@ -988,8 +988,8 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 			case CabinPackage.CABIN__DOORS:
 				getDoors().clear();
 				return;
-			case CabinPackage.CABIN__TOILETS:
-				getToilets().clear();
+			case CabinPackage.CABIN__LAVATORIES:
+				getLavatories().clear();
 				return;
 			case CabinPackage.CABIN__GALLEYS:
 				getGalleys().clear();
@@ -1047,8 +1047,8 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return classes != null && !classes.isEmpty();
 			case CabinPackage.CABIN__DOORS:
 				return doors != null && !doors.isEmpty();
-			case CabinPackage.CABIN__TOILETS:
-				return toilets != null && !toilets.isEmpty();
+			case CabinPackage.CABIN__LAVATORIES:
+				return lavatories != null && !lavatories.isEmpty();
 			case CabinPackage.CABIN__GALLEYS:
 				return galleys != null && !galleys.isEmpty();
 			case CabinPackage.CABIN__STAIRS:

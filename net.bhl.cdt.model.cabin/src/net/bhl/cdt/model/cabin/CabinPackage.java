@@ -212,13 +212,13 @@ public interface CabinPackage extends EPackage {
 	int CABIN__DOORS = 15;
 
 	/**
-	 * The feature id for the '<em><b>Toilets</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Lavatories</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__TOILETS = 16;
+	int CABIN__LAVATORIES = 16;
 
 	/**
 	 * The feature id for the '<em><b>Galleys</b></em>' containment reference list.
@@ -706,14 +706,14 @@ public interface CabinPackage extends EPackage {
 	int CREW_MEMBER_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.impl.ToiletImpl <em>Toilet</em>}' class.
+	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.impl.LavatoryImpl <em>Lavatory</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see net.bhl.cdt.model.cabin.impl.ToiletImpl
-	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getToilet()
+	 * @see net.bhl.cdt.model.cabin.impl.LavatoryImpl
+	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getLavatory()
 	 * @generated
 	 */
-	int TOILET = 7;
+	int LAVATORY = 7;
 
 	/**
 	 * The feature id for the '<em><b>XPosition</b></em>' attribute.
@@ -722,7 +722,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TOILET__XPOSITION = 0;
+	int LAVATORY__XPOSITION = 0;
 
 	/**
 	 * The feature id for the '<em><b>YPosition</b></em>' attribute.
@@ -731,7 +731,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TOILET__YPOSITION = 1;
+	int LAVATORY__YPOSITION = 1;
 
 	/**
 	 * The feature id for the '<em><b>XDimension</b></em>' attribute.
@@ -740,7 +740,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TOILET__XDIMENSION = 2;
+	int LAVATORY__XDIMENSION = 2;
 
 	/**
 	 * The feature id for the '<em><b>YDimension</b></em>' attribute.
@@ -749,25 +749,25 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TOILET__YDIMENSION = 3;
+	int LAVATORY__YDIMENSION = 3;
 
 	/**
-	 * The number of structural features of the '<em>Toilet</em>' class.
+	 * The number of structural features of the '<em>Lavatory</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TOILET_FEATURE_COUNT = 4;
+	int LAVATORY_FEATURE_COUNT = 4;
 
 	/**
-	 * The number of operations of the '<em>Toilet</em>' class.
+	 * The number of operations of the '<em>Lavatory</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TOILET_OPERATION_COUNT = 0;
+	int LAVATORY_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.impl.GalleyImpl <em>Galley</em>}' class.
@@ -1058,16 +1058,6 @@ public interface CabinPackage extends EPackage {
 	int SEATS_PER_ROW = 16;
 
 	/**
-	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.SeatLetter <em>Seat Letter</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see net.bhl.cdt.model.cabin.SeatLetter
-	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getSeatLetter()
-	 * @generated
-	 */
-	int SEAT_LETTER = 17;
-
-	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1144,15 +1134,15 @@ public interface CabinPackage extends EPackage {
 	EReference getCabin_Doors();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link net.bhl.cdt.model.cabin.Cabin#getToilets <em>Toilets</em>}'.
+	 * Returns the meta object for the containment reference list '{@link net.bhl.cdt.model.cabin.Cabin#getLavatories <em>Lavatories</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Toilets</em>'.
-	 * @see net.bhl.cdt.model.cabin.Cabin#getToilets()
+	 * @return the meta object for the containment reference list '<em>Lavatories</em>'.
+	 * @see net.bhl.cdt.model.cabin.Cabin#getLavatories()
 	 * @see #getCabin()
 	 * @generated
 	 */
-	EReference getCabin_Toilets();
+	EReference getCabin_Lavatories();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link net.bhl.cdt.model.cabin.Cabin#getGalleys <em>Galleys</em>}'.
@@ -1699,58 +1689,58 @@ public interface CabinPackage extends EPackage {
 	EReference getCrewMember_Seat();
 
 	/**
-	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.Toilet <em>Toilet</em>}'.
+	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.Lavatory <em>Lavatory</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Toilet</em>'.
-	 * @see net.bhl.cdt.model.cabin.Toilet
+	 * @return the meta object for class '<em>Lavatory</em>'.
+	 * @see net.bhl.cdt.model.cabin.Lavatory
 	 * @generated
 	 */
-	EClass getToilet();
+	EClass getLavatory();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Toilet#getXPosition <em>XPosition</em>}'.
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Lavatory#getXPosition <em>XPosition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>XPosition</em>'.
-	 * @see net.bhl.cdt.model.cabin.Toilet#getXPosition()
-	 * @see #getToilet()
+	 * @see net.bhl.cdt.model.cabin.Lavatory#getXPosition()
+	 * @see #getLavatory()
 	 * @generated
 	 */
-	EAttribute getToilet_XPosition();
+	EAttribute getLavatory_XPosition();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Toilet#getYPosition <em>YPosition</em>}'.
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Lavatory#getYPosition <em>YPosition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>YPosition</em>'.
-	 * @see net.bhl.cdt.model.cabin.Toilet#getYPosition()
-	 * @see #getToilet()
+	 * @see net.bhl.cdt.model.cabin.Lavatory#getYPosition()
+	 * @see #getLavatory()
 	 * @generated
 	 */
-	EAttribute getToilet_YPosition();
+	EAttribute getLavatory_YPosition();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Toilet#getXDimension <em>XDimension</em>}'.
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Lavatory#getXDimension <em>XDimension</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>XDimension</em>'.
-	 * @see net.bhl.cdt.model.cabin.Toilet#getXDimension()
-	 * @see #getToilet()
+	 * @see net.bhl.cdt.model.cabin.Lavatory#getXDimension()
+	 * @see #getLavatory()
 	 * @generated
 	 */
-	EAttribute getToilet_XDimension();
+	EAttribute getLavatory_XDimension();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Toilet#getYDimension <em>YDimension</em>}'.
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Lavatory#getYDimension <em>YDimension</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>YDimension</em>'.
-	 * @see net.bhl.cdt.model.cabin.Toilet#getYDimension()
-	 * @see #getToilet()
+	 * @see net.bhl.cdt.model.cabin.Lavatory#getYDimension()
+	 * @see #getLavatory()
 	 * @generated
 	 */
-	EAttribute getToilet_YDimension();
+	EAttribute getLavatory_YDimension();
 
 	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.Galley <em>Galley</em>}'.
@@ -1998,16 +1988,6 @@ public interface CabinPackage extends EPackage {
 	EEnum getSeatsPerRow();
 
 	/**
-	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.SeatLetter <em>Seat Letter</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Seat Letter</em>'.
-	 * @see net.bhl.cdt.model.cabin.SeatLetter
-	 * @generated
-	 */
-	EEnum getSeatLetter();
-
-	/**
 	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2085,12 +2065,12 @@ public interface CabinPackage extends EPackage {
 		 */
 		EReference CABIN__DOORS = eINSTANCE.getCabin_Doors();
 		/**
-		 * The meta object literal for the '<em><b>Toilets</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Lavatories</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CABIN__TOILETS = eINSTANCE.getCabin_Toilets();
+		EReference CABIN__LAVATORIES = eINSTANCE.getCabin_Lavatories();
 		/**
 		 * The meta object literal for the '<em><b>Galleys</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
@@ -2454,42 +2434,42 @@ public interface CabinPackage extends EPackage {
 		 */
 		EReference CREW_MEMBER__SEAT = eINSTANCE.getCrewMember_Seat();
 		/**
-		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.ToiletImpl <em>Toilet</em>}' class.
+		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.LavatoryImpl <em>Lavatory</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see net.bhl.cdt.model.cabin.impl.ToiletImpl
-		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getToilet()
+		 * @see net.bhl.cdt.model.cabin.impl.LavatoryImpl
+		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getLavatory()
 		 * @generated
 		 */
-		EClass TOILET = eINSTANCE.getToilet();
+		EClass LAVATORY = eINSTANCE.getLavatory();
 		/**
 		 * The meta object literal for the '<em><b>XPosition</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TOILET__XPOSITION = eINSTANCE.getToilet_XPosition();
+		EAttribute LAVATORY__XPOSITION = eINSTANCE.getLavatory_XPosition();
 		/**
 		 * The meta object literal for the '<em><b>YPosition</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TOILET__YPOSITION = eINSTANCE.getToilet_YPosition();
+		EAttribute LAVATORY__YPOSITION = eINSTANCE.getLavatory_YPosition();
 		/**
 		 * The meta object literal for the '<em><b>XDimension</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TOILET__XDIMENSION = eINSTANCE.getToilet_XDimension();
+		EAttribute LAVATORY__XDIMENSION = eINSTANCE.getLavatory_XDimension();
 		/**
 		 * The meta object literal for the '<em><b>YDimension</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TOILET__YDIMENSION = eINSTANCE.getToilet_YDimension();
+		EAttribute LAVATORY__YDIMENSION = eINSTANCE.getLavatory_YDimension();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.GalleyImpl <em>Galley</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -2667,15 +2647,6 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum SEATS_PER_ROW = eINSTANCE.getSeatsPerRow();
-		/**
-		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.SeatLetter <em>Seat Letter</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see net.bhl.cdt.model.cabin.SeatLetter
-		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getSeatLetter()
-		 * @generated
-		 */
-		EEnum SEAT_LETTER = eINSTANCE.getSeatLetter();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}' enum.
 		 * <!-- begin-user-doc -->

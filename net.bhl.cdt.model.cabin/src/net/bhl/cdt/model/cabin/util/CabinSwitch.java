@@ -108,9 +108,9 @@ public class CabinSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CabinPackage.TOILET: {
-				Toilet toilet = (Toilet)theEObject;
-				T result = caseToilet(toilet);
+			case CabinPackage.LAVATORY: {
+				Lavatory lavatory = (Lavatory)theEObject;
+				T result = caseLavatory(lavatory);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -248,17 +248,17 @@ public class CabinSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Toilet</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Lavatory</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Toilet</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Lavatory</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseToilet(Toilet object) {
+	public T caseLavatory(Lavatory object) {
 		return null;
 	}
 
