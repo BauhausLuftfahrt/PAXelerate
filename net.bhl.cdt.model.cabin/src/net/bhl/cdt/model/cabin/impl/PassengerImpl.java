@@ -5,7 +5,6 @@ package net.bhl.cdt.model.cabin.impl;
 import net.bhl.cdt.model.cabin.CabinPackage;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
-import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.Sex;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
@@ -22,11 +21,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getId <em>Id</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getSex <em>Sex</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getSeat <em>Seat</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getHeight <em>Height</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getAge <em>Age</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getWeight <em>Weight</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getDoor <em>Door</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getSeat <em>Seat</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -72,16 +72,6 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * @ordered
 	 */
 	protected Sex sex = SEX_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getSeat() <em>Seat</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeat()
-	 * @generated
-	 * @ordered
-	 */
-	protected Seat seat;
 
 	/**
 	 * The default value of the '{@link #getHeight() <em>Height</em>}' attribute.
@@ -154,6 +144,46 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	protected Door door;
 
 	/**
+	 * The default value of the '{@link #getSeat() <em>Seat</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeat()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int SEAT_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getSeat() <em>Seat</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeat()
+	 * @generated
+	 * @ordered
+	 */
+	protected int seat = SEAT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -219,15 +249,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Seat getSeat() {
-		if (seat != null && seat.eIsProxy()) {
-			InternalEObject oldSeat = (InternalEObject)seat;
-			seat = (Seat)eResolveProxy(oldSeat);
-			if (seat != oldSeat) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CabinPackage.PASSENGER__SEAT, oldSeat, seat));
-			}
-		}
+	public int getSeat() {
 		return seat;
 	}
 
@@ -236,20 +258,32 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Seat basicGetSeat() {
-		return seat;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSeat(Seat newSeat) {
-		Seat oldSeat = seat;
+	public void setSeat(int newSeat) {
+		int oldSeat = seat;
 		seat = newSeat;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__SEAT, oldSeat, seat));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__NAME, oldName, name));
 	}
 
 	/**
@@ -365,9 +399,6 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return getId();
 			case CabinPackage.PASSENGER__SEX:
 				return getSex();
-			case CabinPackage.PASSENGER__SEAT:
-				if (resolve) return getSeat();
-				return basicGetSeat();
 			case CabinPackage.PASSENGER__HEIGHT:
 				return getHeight();
 			case CabinPackage.PASSENGER__AGE:
@@ -377,6 +408,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 			case CabinPackage.PASSENGER__DOOR:
 				if (resolve) return getDoor();
 				return basicGetDoor();
+			case CabinPackage.PASSENGER__SEAT:
+				return getSeat();
+			case CabinPackage.PASSENGER__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -395,9 +430,6 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 			case CabinPackage.PASSENGER__SEX:
 				setSex((Sex)newValue);
 				return;
-			case CabinPackage.PASSENGER__SEAT:
-				setSeat((Seat)newValue);
-				return;
 			case CabinPackage.PASSENGER__HEIGHT:
 				setHeight((Double)newValue);
 				return;
@@ -409,6 +441,12 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return;
 			case CabinPackage.PASSENGER__DOOR:
 				setDoor((Door)newValue);
+				return;
+			case CabinPackage.PASSENGER__SEAT:
+				setSeat((Integer)newValue);
+				return;
+			case CabinPackage.PASSENGER__NAME:
+				setName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -428,9 +466,6 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 			case CabinPackage.PASSENGER__SEX:
 				setSex(SEX_EDEFAULT);
 				return;
-			case CabinPackage.PASSENGER__SEAT:
-				setSeat((Seat)null);
-				return;
 			case CabinPackage.PASSENGER__HEIGHT:
 				setHeight(HEIGHT_EDEFAULT);
 				return;
@@ -442,6 +477,12 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return;
 			case CabinPackage.PASSENGER__DOOR:
 				setDoor((Door)null);
+				return;
+			case CabinPackage.PASSENGER__SEAT:
+				setSeat(SEAT_EDEFAULT);
+				return;
+			case CabinPackage.PASSENGER__NAME:
+				setName(NAME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -459,8 +500,6 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return id != ID_EDEFAULT;
 			case CabinPackage.PASSENGER__SEX:
 				return sex != SEX_EDEFAULT;
-			case CabinPackage.PASSENGER__SEAT:
-				return seat != null;
 			case CabinPackage.PASSENGER__HEIGHT:
 				return height != HEIGHT_EDEFAULT;
 			case CabinPackage.PASSENGER__AGE:
@@ -469,6 +508,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return weight != WEIGHT_EDEFAULT;
 			case CabinPackage.PASSENGER__DOOR:
 				return door != null;
+			case CabinPackage.PASSENGER__SEAT:
+				return seat != SEAT_EDEFAULT;
+			case CabinPackage.PASSENGER__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -493,6 +536,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 		result.append(age);
 		result.append(", weight: ");
 		result.append(weight);
+		result.append(", seat: ");
+		result.append(seat);
+		result.append(", Name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}

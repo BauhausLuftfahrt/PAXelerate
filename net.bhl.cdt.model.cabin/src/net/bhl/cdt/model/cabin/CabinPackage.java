@@ -104,22 +104,13 @@ public interface CabinPackage extends EPackage {
 	int CABIN__ROW_NONEXISTENT = 3;
 
 	/**
-	 * The feature id for the '<em><b>Total Passengers</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CABIN__TOTAL_PASSENGERS = 4;
-
-	/**
 	 * The feature id for the '<em><b>First Class Passengers</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__FIRST_CLASS_PASSENGERS = 5;
+	int CABIN__FIRST_CLASS_PASSENGERS = 4;
 
 	/**
 	 * The feature id for the '<em><b>Business Class Passengers</b></em>' attribute.
@@ -128,7 +119,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__BUSINESS_CLASS_PASSENGERS = 6;
+	int CABIN__BUSINESS_CLASS_PASSENGERS = 5;
 
 	/**
 	 * The feature id for the '<em><b>Premium Economy Class Passengers</b></em>' attribute.
@@ -137,7 +128,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__PREMIUM_ECONOMY_CLASS_PASSENGERS = 7;
+	int CABIN__PREMIUM_ECONOMY_CLASS_PASSENGERS = 6;
 
 	/**
 	 * The feature id for the '<em><b>Economy Class Passengers</b></em>' attribute.
@@ -146,7 +137,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__ECONOMY_CLASS_PASSENGERS = 8;
+	int CABIN__ECONOMY_CLASS_PASSENGERS = 7;
 
 	/**
 	 * The feature id for the '<em><b>Numb Aisles</b></em>' attribute.
@@ -155,7 +146,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__NUMB_AISLES = 9;
+	int CABIN__NUMB_AISLES = 8;
 
 	/**
 	 * The feature id for the '<em><b>Aisle Width</b></em>' attribute.
@@ -164,7 +155,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__AISLE_WIDTH = 10;
+	int CABIN__AISLE_WIDTH = 9;
 
 	/**
 	 * The feature id for the '<em><b>Boarding Time</b></em>' attribute.
@@ -173,7 +164,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__BOARDING_TIME = 11;
+	int CABIN__BOARDING_TIME = 10;
 
 	/**
 	 * The feature id for the '<em><b>Number Of Decks</b></em>' attribute.
@@ -182,7 +173,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__NUMBER_OF_DECKS = 12;
+	int CABIN__NUMBER_OF_DECKS = 11;
 
 	/**
 	 * The feature id for the '<em><b>Seats Per Row</b></em>' attribute.
@@ -191,7 +182,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__SEATS_PER_ROW = 13;
+	int CABIN__SEATS_PER_ROW = 12;
 
 	/**
 	 * The feature id for the '<em><b>Classes</b></em>' containment reference list.
@@ -200,7 +191,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__CLASSES = 14;
+	int CABIN__CLASSES = 13;
 
 	/**
 	 * The feature id for the '<em><b>Doors</b></em>' containment reference list.
@@ -209,7 +200,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__DOORS = 15;
+	int CABIN__DOORS = 14;
 
 	/**
 	 * The feature id for the '<em><b>Lavatories</b></em>' containment reference list.
@@ -218,7 +209,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__LAVATORIES = 16;
+	int CABIN__LAVATORIES = 15;
 
 	/**
 	 * The feature id for the '<em><b>Galleys</b></em>' containment reference list.
@@ -227,7 +218,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__GALLEYS = 17;
+	int CABIN__GALLEYS = 16;
 
 	/**
 	 * The feature id for the '<em><b>Stairs</b></em>' containment reference list.
@@ -236,7 +227,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__STAIRS = 18;
+	int CABIN__STAIRS = 17;
 
 	/**
 	 * The feature id for the '<em><b>Curtain</b></em>' containment reference list.
@@ -245,7 +236,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__CURTAIN = 19;
+	int CABIN__CURTAIN = 18;
 
 	/**
 	 * The feature id for the '<em><b>Stowage</b></em>' containment reference list.
@@ -254,7 +245,43 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__STOWAGE = 20;
+	int CABIN__STOWAGE = 19;
+
+	/**
+	 * The feature id for the '<em><b>Seats In Economy Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN__SEATS_IN_ECONOMY_CLASS = 20;
+
+	/**
+	 * The feature id for the '<em><b>Seats In Premium Economy Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN__SEATS_IN_PREMIUM_ECONOMY_CLASS = 21;
+
+	/**
+	 * The feature id for the '<em><b>Seats In Business Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN__SEATS_IN_BUSINESS_CLASS = 22;
+
+	/**
+	 * The feature id for the '<em><b>Seats In First Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN__SEATS_IN_FIRST_CLASS = 23;
 
 	/**
 	 * The number of structural features of the '<em>Cabin</em>' class.
@@ -263,7 +290,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_FEATURE_COUNT = 21;
+	int CABIN_FEATURE_COUNT = 24;
 
 	/**
 	 * The number of operations of the '<em>Cabin</em>' class.
@@ -597,22 +624,13 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER__SEX = 1;
 
 	/**
-	 * The feature id for the '<em><b>Seat</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PASSENGER__SEAT = 2;
-
-	/**
 	 * The feature id for the '<em><b>Height</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__HEIGHT = 3;
+	int PASSENGER__HEIGHT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Age</b></em>' attribute.
@@ -621,7 +639,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__AGE = 4;
+	int PASSENGER__AGE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Weight</b></em>' attribute.
@@ -630,7 +648,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__WEIGHT = 5;
+	int PASSENGER__WEIGHT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Door</b></em>' reference.
@@ -639,7 +657,25 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__DOOR = 6;
+	int PASSENGER__DOOR = 5;
+
+	/**
+	 * The feature id for the '<em><b>Seat</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__SEAT = 6;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__NAME = 7;
 
 	/**
 	 * The number of structural features of the '<em>Passenger</em>' class.
@@ -648,7 +684,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_FEATURE_COUNT = 7;
+	int PASSENGER_FEATURE_COUNT = 8;
 
 	/**
 	 * The number of operations of the '<em>Passenger</em>' class.
@@ -1189,6 +1225,50 @@ public interface CabinPackage extends EPackage {
 	EReference getCabin_Stowage();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getSeatsInEconomyClass <em>Seats In Economy Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seats In Economy Class</em>'.
+	 * @see net.bhl.cdt.model.cabin.Cabin#getSeatsInEconomyClass()
+	 * @see #getCabin()
+	 * @generated
+	 */
+	EAttribute getCabin_SeatsInEconomyClass();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getSeatsInPremiumEconomyClass <em>Seats In Premium Economy Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seats In Premium Economy Class</em>'.
+	 * @see net.bhl.cdt.model.cabin.Cabin#getSeatsInPremiumEconomyClass()
+	 * @see #getCabin()
+	 * @generated
+	 */
+	EAttribute getCabin_SeatsInPremiumEconomyClass();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getSeatsInBusinessClass <em>Seats In Business Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seats In Business Class</em>'.
+	 * @see net.bhl.cdt.model.cabin.Cabin#getSeatsInBusinessClass()
+	 * @see #getCabin()
+	 * @generated
+	 */
+	EAttribute getCabin_SeatsInBusinessClass();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getSeatsInFirstClass <em>Seats In First Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seats In First Class</em>'.
+	 * @see net.bhl.cdt.model.cabin.Cabin#getSeatsInFirstClass()
+	 * @see #getCabin()
+	 * @generated
+	 */
+	EAttribute getCabin_SeatsInFirstClass();
+
+	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getNumberOfDecks <em>Number Of Decks</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1264,17 +1344,6 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCabin_EconomyClassPassengers();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getTotalPassengers <em>Total Passengers</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Total Passengers</em>'.
-	 * @see net.bhl.cdt.model.cabin.Cabin#getTotalPassengers()
-	 * @see #getCabin()
-	 * @generated
-	 */
-	EAttribute getCabin_TotalPassengers();
 
 	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getRowNonexistent <em>Row Nonexistent</em>}'.
@@ -1602,15 +1671,26 @@ public interface CabinPackage extends EPackage {
 	EAttribute getPassenger_Sex();
 
 	/**
-	 * Returns the meta object for the reference '{@link net.bhl.cdt.model.cabin.Passenger#getSeat <em>Seat</em>}'.
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getSeat <em>Seat</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Seat</em>'.
+	 * @return the meta object for the attribute '<em>Seat</em>'.
 	 * @see net.bhl.cdt.model.cabin.Passenger#getSeat()
 	 * @see #getPassenger()
 	 * @generated
 	 */
-	EReference getPassenger_Seat();
+	EAttribute getPassenger_Seat();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see net.bhl.cdt.model.cabin.Passenger#getName()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_Name();
 
 	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getHeight <em>Height</em>}'.
@@ -2100,6 +2180,34 @@ public interface CabinPackage extends EPackage {
 		 */
 		EReference CABIN__STOWAGE = eINSTANCE.getCabin_Stowage();
 		/**
+		 * The meta object literal for the '<em><b>Seats In Economy Class</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN__SEATS_IN_ECONOMY_CLASS = eINSTANCE.getCabin_SeatsInEconomyClass();
+		/**
+		 * The meta object literal for the '<em><b>Seats In Premium Economy Class</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN__SEATS_IN_PREMIUM_ECONOMY_CLASS = eINSTANCE.getCabin_SeatsInPremiumEconomyClass();
+		/**
+		 * The meta object literal for the '<em><b>Seats In Business Class</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN__SEATS_IN_BUSINESS_CLASS = eINSTANCE.getCabin_SeatsInBusinessClass();
+		/**
+		 * The meta object literal for the '<em><b>Seats In First Class</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN__SEATS_IN_FIRST_CLASS = eINSTANCE.getCabin_SeatsInFirstClass();
+		/**
 		 * The meta object literal for the '<em><b>Number Of Decks</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2148,13 +2256,6 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CABIN__ECONOMY_CLASS_PASSENGERS = eINSTANCE.getCabin_EconomyClassPassengers();
-		/**
-		 * The meta object literal for the '<em><b>Total Passengers</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CABIN__TOTAL_PASSENGERS = eINSTANCE.getCabin_TotalPassengers();
 		/**
 		 * The meta object literal for the '<em><b>Row Nonexistent</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -2376,12 +2477,19 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute PASSENGER__SEX = eINSTANCE.getPassenger_Sex();
 		/**
-		 * The meta object literal for the '<em><b>Seat</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Seat</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PASSENGER__SEAT = eINSTANCE.getPassenger_Seat();
+		EAttribute PASSENGER__SEAT = eINSTANCE.getPassenger_Seat();
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__NAME = eINSTANCE.getPassenger_Name();
 		/**
 		 * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->

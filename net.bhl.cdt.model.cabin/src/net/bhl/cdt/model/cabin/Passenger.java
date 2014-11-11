@@ -14,11 +14,12 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getId <em>Id</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getSex <em>Sex</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getSeat <em>Seat</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getHeight <em>Height</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getAge <em>Age</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getWeight <em>Weight</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getDoor <em>Door</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getSeat <em>Seat</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -83,30 +84,56 @@ public interface Passenger extends EObject {
 	void setSex(Sex value);
 
 	/**
-	 * Returns the value of the '<em><b>Seat</b></em>' reference.
+	 * Returns the value of the '<em><b>Seat</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Seat</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Seat</em>' reference.
-	 * @see #setSeat(Seat)
+	 * @return the value of the '<em>Seat</em>' attribute.
+	 * @see #setSeat(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_Seat()
 	 * @model
 	 * @generated
 	 */
-	Seat getSeat();
+	int getSeat();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getSeat <em>Seat</em>}' reference.
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getSeat <em>Seat</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Seat</em>' reference.
+	 * @param value the new value of the '<em>Seat</em>' attribute.
 	 * @see #getSeat()
 	 * @generated
 	 */
-	void setSeat(Seat value);
+	void setSeat(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_Name()
+	 * @model
+	 * @generated
+	 */
+	String getName();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
+	void setName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Height</b></em>' attribute.

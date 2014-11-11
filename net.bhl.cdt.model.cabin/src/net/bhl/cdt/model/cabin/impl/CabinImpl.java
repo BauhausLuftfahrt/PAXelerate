@@ -34,7 +34,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getCabinWidth <em>Cabin Width</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getNumbSeats <em>Numb Seats</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getRowNonexistent <em>Row Nonexistent</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getTotalPassengers <em>Total Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getFirstClassPassengers <em>First Class Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getBusinessClassPassengers <em>Business Class Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getPremiumEconomyClassPassengers <em>Premium Economy Class Passengers</em>}</li>
@@ -51,6 +50,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getStairs <em>Stairs</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getCurtain <em>Curtain</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getStowage <em>Stowage</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatsInEconomyClass <em>Seats In Economy Class</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatsInPremiumEconomyClass <em>Seats In Premium Economy Class</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatsInBusinessClass <em>Seats In Business Class</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatsInFirstClass <em>Seats In First Class</em>}</li>
  * </ul>
  * </p>
  *
@@ -129,24 +132,6 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 	 * @ordered
 	 */
 	protected int rowNonexistent = ROW_NONEXISTENT_EDEFAULT;
-	/**
-	 * The default value of the '{@link #getTotalPassengers() <em>Total Passengers</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTotalPassengers()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int TOTAL_PASSENGERS_EDEFAULT = 0;
-	/**
-	 * The cached value of the '{@link #getTotalPassengers() <em>Total Passengers</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTotalPassengers()
-	 * @generated
-	 * @ordered
-	 */
-	protected int totalPassengers = TOTAL_PASSENGERS_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getFirstClassPassengers() <em>First Class Passengers</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -373,6 +358,78 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 	 */
 	protected EList<Stowage> stowage;
 	/**
+	 * The default value of the '{@link #getSeatsInEconomyClass() <em>Seats In Economy Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatsInEconomyClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int SEATS_IN_ECONOMY_CLASS_EDEFAULT = 0;
+	/**
+	 * The cached value of the '{@link #getSeatsInEconomyClass() <em>Seats In Economy Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatsInEconomyClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected int seatsInEconomyClass = SEATS_IN_ECONOMY_CLASS_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getSeatsInPremiumEconomyClass() <em>Seats In Premium Economy Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatsInPremiumEconomyClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int SEATS_IN_PREMIUM_ECONOMY_CLASS_EDEFAULT = 0;
+	/**
+	 * The cached value of the '{@link #getSeatsInPremiumEconomyClass() <em>Seats In Premium Economy Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatsInPremiumEconomyClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected int seatsInPremiumEconomyClass = SEATS_IN_PREMIUM_ECONOMY_CLASS_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getSeatsInBusinessClass() <em>Seats In Business Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatsInBusinessClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int SEATS_IN_BUSINESS_CLASS_EDEFAULT = 0;
+	/**
+	 * The cached value of the '{@link #getSeatsInBusinessClass() <em>Seats In Business Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatsInBusinessClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected int seatsInBusinessClass = SEATS_IN_BUSINESS_CLASS_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getSeatsInFirstClass() <em>Seats In First Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatsInFirstClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int SEATS_IN_FIRST_CLASS_EDEFAULT = 0;
+	/**
+	 * The cached value of the '{@link #getSeatsInFirstClass() <em>Seats In First Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatsInFirstClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected int seatsInFirstClass = SEATS_IN_FIRST_CLASS_EDEFAULT;
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -543,6 +600,90 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getSeatsInEconomyClass() {
+		return seatsInEconomyClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatsInEconomyClass(int newSeatsInEconomyClass) {
+		int oldSeatsInEconomyClass = seatsInEconomyClass;
+		seatsInEconomyClass = newSeatsInEconomyClass;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SEATS_IN_ECONOMY_CLASS, oldSeatsInEconomyClass, seatsInEconomyClass));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getSeatsInPremiumEconomyClass() {
+		return seatsInPremiumEconomyClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatsInPremiumEconomyClass(int newSeatsInPremiumEconomyClass) {
+		int oldSeatsInPremiumEconomyClass = seatsInPremiumEconomyClass;
+		seatsInPremiumEconomyClass = newSeatsInPremiumEconomyClass;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SEATS_IN_PREMIUM_ECONOMY_CLASS, oldSeatsInPremiumEconomyClass, seatsInPremiumEconomyClass));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getSeatsInBusinessClass() {
+		return seatsInBusinessClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatsInBusinessClass(int newSeatsInBusinessClass) {
+		int oldSeatsInBusinessClass = seatsInBusinessClass;
+		seatsInBusinessClass = newSeatsInBusinessClass;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SEATS_IN_BUSINESS_CLASS, oldSeatsInBusinessClass, seatsInBusinessClass));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getSeatsInFirstClass() {
+		return seatsInFirstClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatsInFirstClass(int newSeatsInFirstClass) {
+		int oldSeatsInFirstClass = seatsInFirstClass;
+		seatsInFirstClass = newSeatsInFirstClass;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SEATS_IN_FIRST_CLASS, oldSeatsInFirstClass, seatsInFirstClass));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public int getNumberOfDecks() {
 		return numberOfDecks;
 	}
@@ -690,27 +831,6 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getTotalPassengers() {
-		return totalPassengers;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTotalPassengers(int newTotalPassengers) {
-		int oldTotalPassengers = totalPassengers;
-		totalPassengers = newTotalPassengers;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__TOTAL_PASSENGERS, oldTotalPassengers, totalPassengers));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public int getRowNonexistent() {
 		return rowNonexistent;
 	}
@@ -811,8 +931,6 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return getNumbSeats();
 			case CabinPackage.CABIN__ROW_NONEXISTENT:
 				return getRowNonexistent();
-			case CabinPackage.CABIN__TOTAL_PASSENGERS:
-				return getTotalPassengers();
 			case CabinPackage.CABIN__FIRST_CLASS_PASSENGERS:
 				return getFirstClassPassengers();
 			case CabinPackage.CABIN__BUSINESS_CLASS_PASSENGERS:
@@ -845,6 +963,14 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return getCurtain();
 			case CabinPackage.CABIN__STOWAGE:
 				return getStowage();
+			case CabinPackage.CABIN__SEATS_IN_ECONOMY_CLASS:
+				return getSeatsInEconomyClass();
+			case CabinPackage.CABIN__SEATS_IN_PREMIUM_ECONOMY_CLASS:
+				return getSeatsInPremiumEconomyClass();
+			case CabinPackage.CABIN__SEATS_IN_BUSINESS_CLASS:
+				return getSeatsInBusinessClass();
+			case CabinPackage.CABIN__SEATS_IN_FIRST_CLASS:
+				return getSeatsInFirstClass();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -869,9 +995,6 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return;
 			case CabinPackage.CABIN__ROW_NONEXISTENT:
 				setRowNonexistent((Integer)newValue);
-				return;
-			case CabinPackage.CABIN__TOTAL_PASSENGERS:
-				setTotalPassengers((Integer)newValue);
 				return;
 			case CabinPackage.CABIN__FIRST_CLASS_PASSENGERS:
 				setFirstClassPassengers((Integer)newValue);
@@ -928,6 +1051,18 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				getStowage().clear();
 				getStowage().addAll((Collection<? extends Stowage>)newValue);
 				return;
+			case CabinPackage.CABIN__SEATS_IN_ECONOMY_CLASS:
+				setSeatsInEconomyClass((Integer)newValue);
+				return;
+			case CabinPackage.CABIN__SEATS_IN_PREMIUM_ECONOMY_CLASS:
+				setSeatsInPremiumEconomyClass((Integer)newValue);
+				return;
+			case CabinPackage.CABIN__SEATS_IN_BUSINESS_CLASS:
+				setSeatsInBusinessClass((Integer)newValue);
+				return;
+			case CabinPackage.CABIN__SEATS_IN_FIRST_CLASS:
+				setSeatsInFirstClass((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -951,9 +1086,6 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return;
 			case CabinPackage.CABIN__ROW_NONEXISTENT:
 				setRowNonexistent(ROW_NONEXISTENT_EDEFAULT);
-				return;
-			case CabinPackage.CABIN__TOTAL_PASSENGERS:
-				setTotalPassengers(TOTAL_PASSENGERS_EDEFAULT);
 				return;
 			case CabinPackage.CABIN__FIRST_CLASS_PASSENGERS:
 				setFirstClassPassengers(FIRST_CLASS_PASSENGERS_EDEFAULT);
@@ -1003,6 +1135,18 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 			case CabinPackage.CABIN__STOWAGE:
 				getStowage().clear();
 				return;
+			case CabinPackage.CABIN__SEATS_IN_ECONOMY_CLASS:
+				setSeatsInEconomyClass(SEATS_IN_ECONOMY_CLASS_EDEFAULT);
+				return;
+			case CabinPackage.CABIN__SEATS_IN_PREMIUM_ECONOMY_CLASS:
+				setSeatsInPremiumEconomyClass(SEATS_IN_PREMIUM_ECONOMY_CLASS_EDEFAULT);
+				return;
+			case CabinPackage.CABIN__SEATS_IN_BUSINESS_CLASS:
+				setSeatsInBusinessClass(SEATS_IN_BUSINESS_CLASS_EDEFAULT);
+				return;
+			case CabinPackage.CABIN__SEATS_IN_FIRST_CLASS:
+				setSeatsInFirstClass(SEATS_IN_FIRST_CLASS_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1023,8 +1167,6 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return numbSeats != NUMB_SEATS_EDEFAULT;
 			case CabinPackage.CABIN__ROW_NONEXISTENT:
 				return rowNonexistent != ROW_NONEXISTENT_EDEFAULT;
-			case CabinPackage.CABIN__TOTAL_PASSENGERS:
-				return totalPassengers != TOTAL_PASSENGERS_EDEFAULT;
 			case CabinPackage.CABIN__FIRST_CLASS_PASSENGERS:
 				return firstClassPassengers != FIRST_CLASS_PASSENGERS_EDEFAULT;
 			case CabinPackage.CABIN__BUSINESS_CLASS_PASSENGERS:
@@ -1057,6 +1199,14 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 				return curtain != null && !curtain.isEmpty();
 			case CabinPackage.CABIN__STOWAGE:
 				return stowage != null && !stowage.isEmpty();
+			case CabinPackage.CABIN__SEATS_IN_ECONOMY_CLASS:
+				return seatsInEconomyClass != SEATS_IN_ECONOMY_CLASS_EDEFAULT;
+			case CabinPackage.CABIN__SEATS_IN_PREMIUM_ECONOMY_CLASS:
+				return seatsInPremiumEconomyClass != SEATS_IN_PREMIUM_ECONOMY_CLASS_EDEFAULT;
+			case CabinPackage.CABIN__SEATS_IN_BUSINESS_CLASS:
+				return seatsInBusinessClass != SEATS_IN_BUSINESS_CLASS_EDEFAULT;
+			case CabinPackage.CABIN__SEATS_IN_FIRST_CLASS:
+				return seatsInFirstClass != SEATS_IN_FIRST_CLASS_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1079,8 +1229,6 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 		result.append(numbSeats);
 		result.append(", rowNonexistent: ");
 		result.append(rowNonexistent);
-		result.append(", totalPassengers: ");
-		result.append(totalPassengers);
 		result.append(", FirstClassPassengers: ");
 		result.append(firstClassPassengers);
 		result.append(", BusinessClassPassengers: ");
@@ -1099,6 +1247,14 @@ public class CabinImpl extends MinimalEObjectImpl.Container implements Cabin {
 		result.append(numberOfDecks);
 		result.append(", seatsPerRow: ");
 		result.append(seatsPerRow);
+		result.append(", SeatsInEconomyClass: ");
+		result.append(seatsInEconomyClass);
+		result.append(", SeatsInPremiumEconomyClass: ");
+		result.append(seatsInPremiumEconomyClass);
+		result.append(", SeatsInBusinessClass: ");
+		result.append(seatsInBusinessClass);
+		result.append(", SeatsInFirstClass: ");
+		result.append(seatsInFirstClass);
 		result.append(')');
 		return result.toString();
 	}
