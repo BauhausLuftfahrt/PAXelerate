@@ -39,14 +39,14 @@ public enum ClassType implements Enumerator {
 	BUSINESS(1, "Business", "Business"),
 
 	/**
-	 * The '<em><b>Premium Economy</b></em>' literal object.
+	 * The '<em><b>Premium Eco</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #PREMIUM_ECONOMY_VALUE
+	 * @see #PREMIUM_ECO_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	PREMIUM_ECONOMY(2, "PremiumEconomy", "PremiumEconomy"), /**
+	PREMIUM_ECO(2, "PremiumEco", "PremiumEconomy"), /**
 	 * The '<em><b>Economy</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -87,19 +87,19 @@ public enum ClassType implements Enumerator {
 	public static final int BUSINESS_VALUE = 1;
 
 	/**
-	 * The '<em><b>Premium Economy</b></em>' literal value.
+	 * The '<em><b>Premium Eco</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Premium Economy</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Premium Eco</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #PREMIUM_ECONOMY
-	 * @model name="PremiumEconomy"
+	 * @see #PREMIUM_ECO
+	 * @model name="PremiumEco" literal="PremiumEconomy"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PREMIUM_ECONOMY_VALUE = 2;
+	public static final int PREMIUM_ECO_VALUE = 2;
 
 	/**
 	 * The '<em><b>Economy</b></em>' literal value.
@@ -126,7 +126,7 @@ public enum ClassType implements Enumerator {
 		new ClassType[] {
 			FIRST,
 			BUSINESS,
-			PREMIUM_ECONOMY,
+			PREMIUM_ECO,
 			ECONOMY,
 		};
 
@@ -180,7 +180,7 @@ public enum ClassType implements Enumerator {
 		switch (value) {
 			case FIRST_VALUE: return FIRST;
 			case BUSINESS_VALUE: return BUSINESS;
-			case PREMIUM_ECONOMY_VALUE: return PREMIUM_ECONOMY;
+			case PREMIUM_ECO_VALUE: return PREMIUM_ECO;
 			case ECONOMY_VALUE: return ECONOMY;
 		}
 		return null;

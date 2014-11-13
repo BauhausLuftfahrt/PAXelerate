@@ -59,12 +59,14 @@ public class SeatItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addSeatIdPropertyDescriptor(object);
 			addSeatNumberPropertyDescriptor(object);
 			addSeatBlockedPropertyDescriptor(object);
 			addCrewSeatPropertyDescriptor(object);
 			addWidthPropertyDescriptor(object);
 			addLengthPropertyDescriptor(object);
-			addSeatIdPropertyDescriptor(object);
+			addXPositionPropertyDescriptor(object);
+			addYPositionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -180,6 +182,50 @@ public class SeatItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the XPosition feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addXPositionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Seat_xPosition_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Seat_xPosition_feature", "_UI_Seat_type"),
+				 CabinPackage.Literals.SEAT__XPOSITION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the YPosition feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addYPositionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Seat_yPosition_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Seat_yPosition_feature", "_UI_Seat_type"),
+				 CabinPackage.Literals.SEAT__YPOSITION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Seat Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -220,8 +266,10 @@ public class SeatItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		Seat seat = (Seat)object;
-		return getString("_UI_Seat_type") + " " + seat.getSeatNumber();
+		String label = ((Seat)object).getSeatId();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Seat_type") :
+			getString("_UI_Seat_type") + " " + label;
 	}
 
 	/**
@@ -236,12 +284,14 @@ public class SeatItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Seat.class)) {
+			case CabinPackage.SEAT__SEAT_ID:
 			case CabinPackage.SEAT__SEAT_NUMBER:
 			case CabinPackage.SEAT__SEAT_BLOCKED:
 			case CabinPackage.SEAT__CREW_SEAT:
 			case CabinPackage.SEAT__WIDTH:
 			case CabinPackage.SEAT__LENGTH:
-			case CabinPackage.SEAT__SEAT_ID:
+			case CabinPackage.SEAT__XPOSITION:
+			case CabinPackage.SEAT__YPOSITION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

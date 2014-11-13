@@ -1,8 +1,8 @@
 package net.bhl.cdt.model.cabin.commands;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.Cabin;
@@ -40,7 +40,7 @@ public class GenerateCabinCommand extends CDTCommand{
 	private int seatCount;
 	private int rowCount;
 	private String seatIdLetter;
-	String[] args;
+	ArrayList<Integer> randomNumberCheck;
 	
 	public GenerateCabinCommand(Cabin cabin) {
 		this.cabin=cabin;
@@ -77,7 +77,7 @@ public class GenerateCabinCommand extends CDTCommand{
 	 * This function creates a ClassType object and populates it with rows and seats. 
 	 * @param typeID describes which ClassType Option will be created
 	 */
-	public void createClass(ClassType typeID) {
+	public void createClass(ClassType typeID, int sequence) {
 		String seatIdString ="";
 		int seats = 0;
 		int seatsInRow = 0;
@@ -88,11 +88,14 @@ public class GenerateCabinCommand extends CDTCommand{
 		boolean moreLegroom = false;
 		boolean offsetInTheRow = false;
 		
+		// how is this used? -> divide all dimensions by scale?
+		double scale = cabin.getScale();
+		
 		
 		
 		//load the settings depending on the ClassType
 		switch (typeID) {
-				case PREMIUM_ECONOMY:
+				case PREMIUM_ECO:
 					seats = cabin.getSeatsInPremiumEconomyClass();
 					seatsInRow = cabin.getSeatsPerRowInPremiumEconomyClass();
 					break;
@@ -116,6 +119,7 @@ public class GenerateCabinCommand extends CDTCommand{
 			PassengerClass newClass = CabinFactory.eINSTANCE.createPassengerClass();
 			cabin.getClasses().add(newClass);
 			newClass.setType(typeID);
+			newClass.setSequence(sequence);
 			
 			for (int i = 1; i <= seats/seatsInRow; i++) {
 				
@@ -141,6 +145,8 @@ public class GenerateCabinCommand extends CDTCommand{
 					seatIdString = rowCount+seatIdLetter;
 					newSeat.setSeatId(seatIdString);
 					newSeat.setLength(seatLength);
+					newSeat.setXPosition(10);
+					newSeat.setYPosition(10);
 					newSeat.setWidth((cabin.getCabinWidth()-cabin.getAisleWidth())/seatsInRow);
 					seatCount ++;	
 				}
@@ -233,17 +239,54 @@ public class GenerateCabinCommand extends CDTCommand{
 	 * This method generates the passengers one by one // DOES NOT WORK, passengers not assigned to cabin.
 	 */
 	public void generatePassengers() {
+		
 		int totalPax = cabin.getEconomyClassPassengers()+cabin.getBusinessClassPassengers()+cabin.getPremiumEconomyClassPassengers()+cabin.getFirstClassPassengers();
 		int totalSeats = cabin.getSeatsInEconomyClass() + cabin.getSeatsInPremiumEconomyClass() + cabin.getSeatsInBusinessClass() + cabin.getSeatsInFirstClass();
-		for (int i = 0; i < totalPax; i++) {
-			
-			Random rand = new Random(); 
-			int randomSeat = rand.nextInt(totalSeats) + 1; 
+		
+		for (int i = 1; i <= totalPax; i++) {
 			
 			Passenger newPassenger = CabinFactory.eINSTANCE.createPassenger();
-			//cabin.getPassengers().add(newPassenger);
+			cabin.getPassengers().add(newPassenger);			
+			Random rand = new Random();
+			int checkForRandomUniqueness = 0;
+			int randomSeat = 0;
+			String helpToDefineTheSeatName = "";
+			
+			while (checkForRandomUniqueness == 0) {
+				randomSeat = rand.nextInt(totalSeats) + 1;
+				if(!randomNumberCheck.contains(randomSeat)) {
+				randomNumberCheck.add(randomSeat);
+				checkForRandomUniqueness = 1;
+				}
+			}
 			newPassenger.setId(i); 
 			newPassenger.setSeat(randomSeat);
+			
+
+			// je nach Sitzplatz die Klasse zuweisen!
+			//Prüfen, in welcher Klasse der Sitzplatz ist!
+			//geht wahrscheinlich viel kürzer!
+			
+			/**
+			 * These for loops iterate through every seat within every row within every class.
+			 * These loops search for the matching seat number of the random seat generated above.
+			 * if the seat was found, the loop knows in which class the seat is and adds the ClassType to the according passenger.
+			 */
+			for (int j = 0; j < cabin.getClasses().size(); j++) {
+				PassengerClass passengerClass = cabin.getClasses().get(j);
+				for (int k = 0; k < passengerClass.getRows().size(); k++) {
+					Row row = passengerClass.getRows().get(k);
+					for (int l = 0; l < row.getSeats().size(); l++) {
+							Seat verifySeat = row.getSeats().get(l);
+								if(verifySeat.getSeatNumber()==newPassenger.getSeat()) {
+										newPassenger.setClass(passengerClass.getType());
+										helpToDefineTheSeatName = verifySeat.getSeatId();				
+								}
+					}
+				}
+			}
+			newPassenger.setName(i+" is at Seat "+helpToDefineTheSeatName);
+			newPassenger.setAge(rand.nextInt(42) + 18);
 		}
 	}
 	
@@ -254,19 +297,21 @@ public class GenerateCabinCommand extends CDTCommand{
 		seatCount = 1;
 		rowCount = 1;
 		
-		createDoor(DoorType.MAIN_DOOR, true, 1, 10.0, 0.0);
-		createClass(ClassType.FIRST);
-		createClass(ClassType.BUSINESS);
-		createClass(ClassType.PREMIUM_ECONOMY);
-		createClass(ClassType.ECONOMY);
-		createDoor(DoorType.MAIN_DOOR, true, 1, 10.0, 0.0);
-		createDoor(DoorType.STANDARD_DOOR, true, 1, 10.0, 0.0);
-		createDoor(DoorType.EMERGENCY_EXIT, true, 1, 10.0, 0.0);
-		createDoor(DoorType.EMERGENCY_EXIT, true, 1, 10.0, 0.0);
-		createStairway(StairwayDirection.UP, 10, 10, 10, 10);
-		createGalley(1, 1, 1, 1);
-		createCurtain(true,5);
-		createLavatory(1, 1, 1, 1);
+	    randomNumberCheck = new ArrayList<Integer>();
+	    
+//		createDoor(DoorType.MAIN_DOOR, true, 1, 10.0, 0.0);
+		createClass(ClassType.FIRST,1);
+		createClass(ClassType.BUSINESS,2);
+		createClass(ClassType.PREMIUM_ECO,3);
+		createClass(ClassType.ECONOMY,4);
+//		createDoor(DoorType.MAIN_DOOR, true, 1, 10.0, 0.0);
+//		createDoor(DoorType.STANDARD_DOOR, true, 1, 10.0, 0.0);
+//		createDoor(DoorType.EMERGENCY_EXIT, true, 1, 10.0, 0.0);
+//		createDoor(DoorType.EMERGENCY_EXIT, true, 1, 10.0, 0.0);
+//		createStairway(StairwayDirection.UP, 10, 10, 10, 10);
+//		createGalley(1, 1, 1, 1);
+//		createCurtain(true,5);
+//		createLavatory(1, 1, 1, 1);
 		
 		generatePassengers();
 		
