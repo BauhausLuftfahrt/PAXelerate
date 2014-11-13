@@ -2,6 +2,7 @@
  */
 package net.bhl.cdt.model.cabin.util;
 
+import net.bhl.cdt.model.NamedElement;
 import net.bhl.cdt.model.cabin.*;
 
 import org.eclipse.emf.ecore.EObject;
@@ -69,6 +70,7 @@ public class CabinSwitch<T> extends Switch<T> {
 			case CabinPackage.CABIN: {
 				Cabin cabin = (Cabin)theEObject;
 				T result = caseCabin(cabin);
+				if (result == null) result = caseNamedElement(cabin);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -319,6 +321,21 @@ public class CabinSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseStowage(Stowage object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNamedElement(NamedElement object) {
 		return null;
 	}
 

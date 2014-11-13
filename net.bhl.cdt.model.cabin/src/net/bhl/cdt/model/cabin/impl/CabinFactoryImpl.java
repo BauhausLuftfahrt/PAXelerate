@@ -90,8 +90,6 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return createDoorTypeFromString(eDataType, initialValue);
 			case CabinPackage.STAIRWAY_DIRECTION:
 				return createStairwayDirectionFromString(eDataType, initialValue);
-			case CabinPackage.SEATS_PER_ROW:
-				return createSeatsPerRowFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -113,8 +111,6 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return convertDoorTypeToString(eDataType, instanceValue);
 			case CabinPackage.STAIRWAY_DIRECTION:
 				return convertStairwayDirectionToString(eDataType, instanceValue);
-			case CabinPackage.SEATS_PER_ROW:
-				return convertSeatsPerRowToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -297,26 +293,6 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * @generated
 	 */
 	public String convertStairwayDirectionToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SeatsPerRow createSeatsPerRowFromString(EDataType eDataType, String initialValue) {
-		SeatsPerRow result = SeatsPerRow.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertSeatsPerRowToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

@@ -2,8 +2,8 @@
  */
 package net.bhl.cdt.model.cabin;
 
+import net.bhl.cdt.model.NamedElement;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getCabinLength <em>Cabin Length</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getCabinWidth <em>Cabin Width</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getNumbSeats <em>Numb Seats</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getRowNonexistent <em>Row Nonexistent</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getFirstClassPassengers <em>First Class Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBusinessClassPassengers <em>Business Class Passengers</em>}</li>
@@ -25,18 +24,21 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getAisleWidth <em>Aisle Width</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBoardingTime <em>Boarding Time</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getNumberOfDecks <em>Number Of Decks</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatsPerRow <em>Seats Per Row</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getClasses <em>Classes</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getDoors <em>Doors</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getLavatories <em>Lavatories</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getGalleys <em>Galleys</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getStairs <em>Stairs</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getCurtain <em>Curtain</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getStowage <em>Stowage</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getStairways <em>Stairways</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getCurtains <em>Curtains</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getStowages <em>Stowages</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatsInEconomyClass <em>Seats In Economy Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatsInPremiumEconomyClass <em>Seats In Premium Economy Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatsInBusinessClass <em>Seats In Business Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatsInFirstClass <em>Seats In First Class</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatsPerRowInEconomyClass <em>Seats Per Row In Economy Class</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatsPerRowInBusinessClass <em>Seats Per Row In Business Class</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatsPerRowInFirstClass <em>Seats Per Row In First Class</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatsPerRowInPremiumEconomyClass <em>Seats Per Row In Premium Economy Class</em>}</li>
  * </ul>
  * </p>
  *
@@ -44,7 +46,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Cabin extends EObject {
+public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Cabin Length</b></em>' attribute.
@@ -97,32 +99,6 @@ public interface Cabin extends EObject {
 	 * @generated
 	 */
 	void setCabinWidth(double value);
-
-	/**
-	 * Returns the value of the '<em><b>Numb Seats</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Numb Seats</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Numb Seats</em>' attribute.
-	 * @see #setNumbSeats(int)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_NumbSeats()
-	 * @model
-	 * @generated
-	 */
-	int getNumbSeats();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getNumbSeats <em>Numb Seats</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Numb Seats</em>' attribute.
-	 * @see #getNumbSeats()
-	 * @generated
-	 */
-	void setNumbSeats(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Classes</b></em>' containment reference list.
@@ -189,52 +165,52 @@ public interface Cabin extends EObject {
 	EList<Galley> getGalleys();
 
 	/**
-	 * Returns the value of the '<em><b>Stairs</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Stairways</b></em>' containment reference list.
 	 * The list contents are of type {@link net.bhl.cdt.model.cabin.Stairway}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Stairs</em>' reference isn't clear,
+	 * If the meaning of the '<em>Stairways</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Stairs</em>' containment reference list.
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Stairs()
+	 * @return the value of the '<em>Stairways</em>' containment reference list.
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Stairways()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Stairway> getStairs();
+	EList<Stairway> getStairways();
 
 	/**
-	 * Returns the value of the '<em><b>Curtain</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Curtains</b></em>' containment reference list.
 	 * The list contents are of type {@link net.bhl.cdt.model.cabin.Curtain}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Curtain</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Curtains</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Curtain</em>' containment reference list.
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Curtain()
+	 * @return the value of the '<em>Curtains</em>' containment reference list.
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Curtains()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Curtain> getCurtain();
+	EList<Curtain> getCurtains();
 
 	/**
-	 * Returns the value of the '<em><b>Stowage</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Stowages</b></em>' containment reference list.
 	 * The list contents are of type {@link net.bhl.cdt.model.cabin.Stowage}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Stowage</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Stowages</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Stowage</em>' containment reference list.
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Stowage()
+	 * @return the value of the '<em>Stowages</em>' containment reference list.
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Stowages()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Stowage> getStowage();
+	EList<Stowage> getStowages();
 
 	/**
 	 * Returns the value of the '<em><b>Seats In Economy Class</b></em>' attribute.
@@ -341,6 +317,110 @@ public interface Cabin extends EObject {
 	void setSeatsInFirstClass(int value);
 
 	/**
+	 * Returns the value of the '<em><b>Seats Per Row In Economy Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seats Per Row In Economy Class</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seats Per Row In Economy Class</em>' attribute.
+	 * @see #setSeatsPerRowInEconomyClass(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatsPerRowInEconomyClass()
+	 * @model
+	 * @generated
+	 */
+	int getSeatsPerRowInEconomyClass();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getSeatsPerRowInEconomyClass <em>Seats Per Row In Economy Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seats Per Row In Economy Class</em>' attribute.
+	 * @see #getSeatsPerRowInEconomyClass()
+	 * @generated
+	 */
+	void setSeatsPerRowInEconomyClass(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Seats Per Row In Business Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seats Per Row In Business Class</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seats Per Row In Business Class</em>' attribute.
+	 * @see #setSeatsPerRowInBusinessClass(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatsPerRowInBusinessClass()
+	 * @model
+	 * @generated
+	 */
+	int getSeatsPerRowInBusinessClass();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getSeatsPerRowInBusinessClass <em>Seats Per Row In Business Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seats Per Row In Business Class</em>' attribute.
+	 * @see #getSeatsPerRowInBusinessClass()
+	 * @generated
+	 */
+	void setSeatsPerRowInBusinessClass(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Seats Per Row In First Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seats Per Row In First Class</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seats Per Row In First Class</em>' attribute.
+	 * @see #setSeatsPerRowInFirstClass(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatsPerRowInFirstClass()
+	 * @model
+	 * @generated
+	 */
+	int getSeatsPerRowInFirstClass();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getSeatsPerRowInFirstClass <em>Seats Per Row In First Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seats Per Row In First Class</em>' attribute.
+	 * @see #getSeatsPerRowInFirstClass()
+	 * @generated
+	 */
+	void setSeatsPerRowInFirstClass(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Seats Per Row In Premium Economy Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seats Per Row In Premium Economy Class</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seats Per Row In Premium Economy Class</em>' attribute.
+	 * @see #setSeatsPerRowInPremiumEconomyClass(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatsPerRowInPremiumEconomyClass()
+	 * @model
+	 * @generated
+	 */
+	int getSeatsPerRowInPremiumEconomyClass();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getSeatsPerRowInPremiumEconomyClass <em>Seats Per Row In Premium Economy Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seats Per Row In Premium Economy Class</em>' attribute.
+	 * @see #getSeatsPerRowInPremiumEconomyClass()
+	 * @generated
+	 */
+	void setSeatsPerRowInPremiumEconomyClass(int value);
+
+	/**
 	 * Returns the value of the '<em><b>Number Of Decks</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -365,35 +445,6 @@ public interface Cabin extends EObject {
 	 * @generated
 	 */
 	void setNumberOfDecks(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Seats Per Row</b></em>' attribute.
-	 * The literals are from the enumeration {@link net.bhl.cdt.model.cabin.SeatsPerRow}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Seats Per Row</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Seats Per Row</em>' attribute.
-	 * @see net.bhl.cdt.model.cabin.SeatsPerRow
-	 * @see #setSeatsPerRow(SeatsPerRow)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatsPerRow()
-	 * @model
-	 * @generated
-	 */
-	SeatsPerRow getSeatsPerRow();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getSeatsPerRow <em>Seats Per Row</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Seats Per Row</em>' attribute.
-	 * @see net.bhl.cdt.model.cabin.SeatsPerRow
-	 * @see #getSeatsPerRow()
-	 * @generated
-	 */
-	void setSeatsPerRow(SeatsPerRow value);
 
 	/**
 	 * Returns the value of the '<em><b>Boarding Time</b></em>' attribute.

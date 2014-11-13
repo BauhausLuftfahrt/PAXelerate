@@ -18,12 +18,17 @@
       <command
             defaultHandler="net.bhl.cdt.model.cabin.handlers.SimulateBoardingHandler"
             id="net.bhl.cdt.model.cabin.simulateBoarding"
-            name="simulateBoarding">
+            name="Simulate Boarding">
       </command>
       <command
             defaultHandler="net.bhl.cdt.model.cabin.handlers.GenerateCabinHandler"
             id="net.bhl.cdt.model.cabin.generatecabin"
             name="Generate Cabin">
+      </command>
+      <command
+            defaultHandler="net.bhl.cdt.model.cabin.handlers.DrawCabinHandler"
+            id="net.bhl.cdt.model.cabin.DrawCabin"
+            name="Draw Cabin">
       </command>
    </extension>
    <extension
@@ -46,6 +51,19 @@
          </command>
          <command
                commandId="net.bhl.cdt.model.cabin.generatecabin"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate>
+                  <instanceof
+                        value="net.bhl.cdt.model.cabin.Cabin">
+                  </instanceof>
+               </iterate>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="net.bhl.cdt.model.cabin.DrawCabin"
+               label="Draw Cabin"
                style="push">
             <visibleWhen
                   checkEnabled="false">

@@ -1,6 +1,8 @@
 package net.bhl.cdt.model.cabin.commands;
 
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.Cabin;
@@ -19,6 +21,8 @@ import net.bhl.cdt.model.cabin.SeatsPerRow;
 import net.bhl.cdt.model.cabin.Stairway;
 import net.bhl.cdt.model.cabin.StairwayDirection;
 
+
+
 /**
  * 
  * This script is used to build up the cabin according to predefined settings.
@@ -36,6 +40,7 @@ public class GenerateCabinCommand extends CDTCommand{
 	private int seatCount;
 	private int rowCount;
 	private String seatIdLetter;
+	String[] args;
 	
 	public GenerateCabinCommand(Cabin cabin) {
 		this.cabin=cabin;
@@ -78,29 +83,30 @@ public class GenerateCabinCommand extends CDTCommand{
 		int seatsInRow = 0;
 		
 		// these parameters should be read out of the initial settings depending on ClassType, implementation here for test purpose only 
-		double seatWidth = 10.0; 
 		double seatLength = 20.0; 
 		double seatPitch = 100.0;
 		boolean moreLegroom = false;
 		boolean offsetInTheRow = false;
 		
+		
+		
 		//load the settings depending on the ClassType
 		switch (typeID) {
 				case PREMIUM_ECONOMY:
 					seats = cabin.getSeatsInPremiumEconomyClass();
-					seatsInRow = SeatsPerRow.ECONOMY_VALUE;	
+					seatsInRow = cabin.getSeatsPerRowInPremiumEconomyClass();
 					break;
 				case BUSINESS:
 					seats = cabin.getSeatsInBusinessClass();
-					seatsInRow = SeatsPerRow.BUSINESS_VALUE; 
+					seatsInRow = cabin.getSeatsPerRowInBusinessClass();	
 				break;	
 				case FIRST:
 					seats = cabin.getSeatsInFirstClass();
-					seatsInRow = SeatsPerRow.FIRST_VALUE;	
+					seatsInRow = cabin.getSeatsPerRowInFirstClass();	
 				break;	
 				default:
 					seats = cabin.getSeatsInEconomyClass();
-					seatsInRow = SeatsPerRow.ECONOMY_VALUE;
+					seatsInRow = cabin.getSeatsPerRowInEconomyClass();	
 				break;	
 		}	
 		
@@ -135,7 +141,7 @@ public class GenerateCabinCommand extends CDTCommand{
 					seatIdString = rowCount+seatIdLetter;
 					newSeat.setSeatId(seatIdString);
 					newSeat.setLength(seatLength);
-					newSeat.setWidth(seatWidth);
+					newSeat.setWidth((cabin.getCabinWidth()-cabin.getAisleWidth())/seatsInRow);
 					seatCount ++;	
 				}
 			rowCount ++;
@@ -168,7 +174,7 @@ public class GenerateCabinCommand extends CDTCommand{
 	 */
 	public void createCurtain(boolean openOrNot, int insertAferRow) {
 		Curtain newCurtain = CabinFactory.eINSTANCE.createCurtain();
-		cabin.getCurtain().add(newCurtain);
+		cabin.getCurtains().add(newCurtain);
 		newCurtain.setCurtainOpen(openOrNot);
 		newCurtain.setPostitionAfterRow(insertAferRow);	
 	}
@@ -199,7 +205,7 @@ public class GenerateCabinCommand extends CDTCommand{
 	 */
 	public void createStairway(StairwayDirection direction,double xPosition, double yPostion, double xDimension, double yDimension) {
 		Stairway newStairway = CabinFactory.eINSTANCE.createStairway();
-		cabin.getStairs().add(newStairway);
+		cabin.getStairways().add(newStairway);
 		newStairway.setXPosition(xPosition);
 		newStairway.setYPosition(yPostion);
 		newStairway.setDirection(direction);
@@ -241,28 +247,28 @@ public class GenerateCabinCommand extends CDTCommand{
 		}
 	}
 	
+	
 	@Override
 	protected void doRun() {
 		
 		seatCount = 1;
 		rowCount = 1;
-		cabin.getSeatsPerRow();
 		
-		//createDoor(DoorType.MAIN_DOOR, true, 1, 10.0, 0.0);
+		createDoor(DoorType.MAIN_DOOR, true, 1, 10.0, 0.0);
 		createClass(ClassType.FIRST);
 		createClass(ClassType.BUSINESS);
 		createClass(ClassType.PREMIUM_ECONOMY);
 		createClass(ClassType.ECONOMY);
-		//createDoor(DoorType.MAIN_DOOR, true, 1, 10.0, 0.0);
-		//createDoor(DoorType.STANDARD_DOOR, true, 1, 10.0, 0.0);
-		//createDoor(DoorType.EMERGENCY_EXIT, true, 1, 10.0, 0.0);
-		//createDoor(DoorType.EMERGENCY_EXIT, true, 1, 10.0, 0.0);
-		//createStairway(StairwayDirection.UP);
-		//createGalley();
-		//createCurtain(true,5);
-		//createLavatory();
+		createDoor(DoorType.MAIN_DOOR, true, 1, 10.0, 0.0);
+		createDoor(DoorType.STANDARD_DOOR, true, 1, 10.0, 0.0);
+		createDoor(DoorType.EMERGENCY_EXIT, true, 1, 10.0, 0.0);
+		createDoor(DoorType.EMERGENCY_EXIT, true, 1, 10.0, 0.0);
+		createStairway(StairwayDirection.UP, 10, 10, 10, 10);
+		createGalley(1, 1, 1, 1);
+		createCurtain(true,5);
+		createLavatory(1, 1, 1, 1);
 		
-		//generatePassengers();
+		generatePassengers();
 		
 	}
 

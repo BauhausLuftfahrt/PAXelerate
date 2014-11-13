@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="cabin" nsURI="http://bhl.net/cdt/model/cabin/" nsPrefix="net.bhl.cdt.model">
-  <eClassifiers xsi:type="ecore:EClass" name="Cabin">
+  <eClassifiers xsi:type="ecore:EClass" name="Cabin" eSuperTypes="../../net.bhl.cdt.model/model/model.ecore#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cabinLength" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cabinWidth" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numbSeats" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rowNonexistent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="FirstClassPassengers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="BusinessClassPassengers"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="firstClassPassengers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="businessClassPassengers"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="PremiumEconomyClassPassengers"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="premiumEconomyClassPassengers"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="EconomyClassPassengers"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="economyClassPassengers"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numbAisles" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="aisleWidth" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="boardingTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfDecks" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatsPerRow" eType="#//SeatsPerRow"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="classes" lowerBound="1"
         upperBound="-1" eType="#//PassengerClass" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="doors" lowerBound="1" upperBound="-1"
@@ -26,17 +24,25 @@
         upperBound="-1" eType="#//Lavatory" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="galleys" lowerBound="1"
         upperBound="-1" eType="#//Galley" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="stairs" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stairways" upperBound="-1"
         eType="#//Stairway" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="curtain" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="curtains" upperBound="-1"
         eType="#//Curtain" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="stowage" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stowages" upperBound="-1"
         eType="#//Stowage" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="SeatsInEconomyClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="SeatsInPremiumEconomyClass"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatsInEconomyClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatsInPremiumEconomyClass"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="SeatsInBusinessClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="SeatsInFirstClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatsInBusinessClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatsInFirstClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatsPerRowInEconomyClass"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatsPerRowInBusinessClass"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatsPerRowInFirstClass"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatsPerRowInPremiumEconomyClass"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Row">
     <eStructuralFeatures xsi:type="ecore:EReference" name="seats" lowerBound="1" upperBound="-1"
@@ -61,12 +67,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="doorType" eType="#//DoorType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Seat">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatBlocked" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="crewSeat" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="length" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="xPosition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="yPosition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Passenger">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -129,10 +137,5 @@
   <eClassifiers xsi:type="ecore:EEnum" name="StairwayDirection">
     <eLiterals name="up" value="1"/>
     <eLiterals name="down" value="-1"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="SeatsPerRow">
-    <eLiterals name="Economy" value="6"/>
-    <eLiterals name="Business" value="4"/>
-    <eLiterals name="First" value="2" literal=""/>
   </eClassifiers>
 </ecore:EPackage>

@@ -2,6 +2,7 @@
  */
 package net.bhl.cdt.model.cabin.util;
 
+import net.bhl.cdt.model.NamedElement;
 import net.bhl.cdt.model.cabin.*;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -114,6 +115,10 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseStowage(Stowage object) {
 				return createStowageAdapter();
+			}
+			@Override
+			public Adapter caseNamedElement(NamedElement object) {
+				return createNamedElementAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -300,6 +305,20 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStowageAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.NamedElement <em>Named Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see net.bhl.cdt.model.NamedElement
+	 * @generated
+	 */
+	public Adapter createNamedElementAdapter() {
 		return null;
 	}
 

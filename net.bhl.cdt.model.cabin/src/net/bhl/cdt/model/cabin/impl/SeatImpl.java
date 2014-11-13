@@ -19,18 +19,40 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#getSeatId <em>Seat Id</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#getSeatNumber <em>Seat Number</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#isSeatBlocked <em>Seat Blocked</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#isCrewSeat <em>Crew Seat</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#getWidth <em>Width</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#getLength <em>Length</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#getSeatId <em>Seat Id</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#getXPosition <em>XPosition</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#getYPosition <em>YPosition</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
+	/**
+	 * The default value of the '{@link #getSeatId() <em>Seat Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SEAT_ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSeatId() <em>Seat Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String seatId = SEAT_ID_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getSeatNumber() <em>Seat Number</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -132,24 +154,44 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 	protected double length = LENGTH_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getSeatId() <em>Seat Id</em>}' attribute.
+	 * The default value of the '{@link #getXPosition() <em>XPosition</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSeatId()
+	 * @see #getXPosition()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SEAT_ID_EDEFAULT = null;
+	protected static final double XPOSITION_EDEFAULT = 0.0;
 
 	/**
-	 * The cached value of the '{@link #getSeatId() <em>Seat Id</em>}' attribute.
+	 * The cached value of the '{@link #getXPosition() <em>XPosition</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSeatId()
+	 * @see #getXPosition()
 	 * @generated
 	 * @ordered
 	 */
-	protected String seatId = SEAT_ID_EDEFAULT;
+	protected double xPosition = XPOSITION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getYPosition() <em>YPosition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getYPosition()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double YPOSITION_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getYPosition() <em>YPosition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getYPosition()
+	 * @generated
+	 * @ordered
+	 */
+	protected double yPosition = YPOSITION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -280,6 +322,48 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public double getXPosition() {
+		return xPosition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setXPosition(double newXPosition) {
+		double oldXPosition = xPosition;
+		xPosition = newXPosition;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SEAT__XPOSITION, oldXPosition, xPosition));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getYPosition() {
+		return yPosition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setYPosition(double newYPosition) {
+		double oldYPosition = yPosition;
+		yPosition = newYPosition;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SEAT__YPOSITION, oldYPosition, yPosition));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getSeatId() {
 		return seatId;
 	}
@@ -304,6 +388,8 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case CabinPackage.SEAT__SEAT_ID:
+				return getSeatId();
 			case CabinPackage.SEAT__SEAT_NUMBER:
 				return getSeatNumber();
 			case CabinPackage.SEAT__SEAT_BLOCKED:
@@ -314,8 +400,10 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 				return getWidth();
 			case CabinPackage.SEAT__LENGTH:
 				return getLength();
-			case CabinPackage.SEAT__SEAT_ID:
-				return getSeatId();
+			case CabinPackage.SEAT__XPOSITION:
+				return getXPosition();
+			case CabinPackage.SEAT__YPOSITION:
+				return getYPosition();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -328,6 +416,9 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case CabinPackage.SEAT__SEAT_ID:
+				setSeatId((String)newValue);
+				return;
 			case CabinPackage.SEAT__SEAT_NUMBER:
 				setSeatNumber((Integer)newValue);
 				return;
@@ -343,8 +434,11 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 			case CabinPackage.SEAT__LENGTH:
 				setLength((Double)newValue);
 				return;
-			case CabinPackage.SEAT__SEAT_ID:
-				setSeatId((String)newValue);
+			case CabinPackage.SEAT__XPOSITION:
+				setXPosition((Double)newValue);
+				return;
+			case CabinPackage.SEAT__YPOSITION:
+				setYPosition((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -358,6 +452,9 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case CabinPackage.SEAT__SEAT_ID:
+				setSeatId(SEAT_ID_EDEFAULT);
+				return;
 			case CabinPackage.SEAT__SEAT_NUMBER:
 				setSeatNumber(SEAT_NUMBER_EDEFAULT);
 				return;
@@ -373,8 +470,11 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 			case CabinPackage.SEAT__LENGTH:
 				setLength(LENGTH_EDEFAULT);
 				return;
-			case CabinPackage.SEAT__SEAT_ID:
-				setSeatId(SEAT_ID_EDEFAULT);
+			case CabinPackage.SEAT__XPOSITION:
+				setXPosition(XPOSITION_EDEFAULT);
+				return;
+			case CabinPackage.SEAT__YPOSITION:
+				setYPosition(YPOSITION_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -388,6 +488,8 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case CabinPackage.SEAT__SEAT_ID:
+				return SEAT_ID_EDEFAULT == null ? seatId != null : !SEAT_ID_EDEFAULT.equals(seatId);
 			case CabinPackage.SEAT__SEAT_NUMBER:
 				return seatNumber != SEAT_NUMBER_EDEFAULT;
 			case CabinPackage.SEAT__SEAT_BLOCKED:
@@ -398,8 +500,10 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 				return width != WIDTH_EDEFAULT;
 			case CabinPackage.SEAT__LENGTH:
 				return length != LENGTH_EDEFAULT;
-			case CabinPackage.SEAT__SEAT_ID:
-				return SEAT_ID_EDEFAULT == null ? seatId != null : !SEAT_ID_EDEFAULT.equals(seatId);
+			case CabinPackage.SEAT__XPOSITION:
+				return xPosition != XPOSITION_EDEFAULT;
+			case CabinPackage.SEAT__YPOSITION:
+				return yPosition != YPOSITION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -414,7 +518,9 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (seatNumber: ");
+		result.append(" (seatId: ");
+		result.append(seatId);
+		result.append(", seatNumber: ");
 		result.append(seatNumber);
 		result.append(", seatBlocked: ");
 		result.append(seatBlocked);
@@ -424,8 +530,10 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 		result.append(width);
 		result.append(", length: ");
 		result.append(length);
-		result.append(", seatId: ");
-		result.append(seatId);
+		result.append(", xPosition: ");
+		result.append(xPosition);
+		result.append(", yPosition: ");
+		result.append(yPosition);
 		result.append(')');
 		return result.toString();
 	}
