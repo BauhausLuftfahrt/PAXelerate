@@ -312,7 +312,7 @@ public interface CabinPackage extends EPackage {
 	int CABIN__STOWAGES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 25;
 
 	/**
-	 * The feature id for the '<em><b>Passengers</b></em>' reference list.
+	 * The feature id for the '<em><b>Passengers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1376,10 +1376,10 @@ public interface CabinPackage extends EPackage {
 	EAttribute getCabin_Scale();
 
 	/**
-	 * Returns the meta object for the reference list '{@link net.bhl.cdt.model.cabin.Cabin#getPassengers <em>Passengers</em>}'.
+	 * Returns the meta object for the containment reference list '{@link net.bhl.cdt.model.cabin.Cabin#getPassengers <em>Passengers</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Passengers</em>'.
+	 * @return the meta object for the containment reference list '<em>Passengers</em>'.
 	 * @see net.bhl.cdt.model.cabin.Cabin#getPassengers()
 	 * @see #getCabin()
 	 * @generated
@@ -2366,7 +2366,7 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute CABIN__SCALE = eINSTANCE.getCabin_Scale();
 		/**
-		 * The meta object literal for the '<em><b>Passengers</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Passengers</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

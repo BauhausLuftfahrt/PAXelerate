@@ -66,7 +66,6 @@ public class CabinItemProvider
 			addAisleWidthPropertyDescriptor(object);
 			addBoardingTimePropertyDescriptor(object);
 			addNumberOfDecksPropertyDescriptor(object);
-			addPassengersPropertyDescriptor(object);
 			addScalePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -315,28 +314,6 @@ public class CabinItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Passengers feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPassengersPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Cabin_passengers_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_passengers_feature", "_UI_Cabin_type"),
-				 CabinPackage.Literals.CABIN__PASSENGERS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Number Of Decks feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -553,6 +530,7 @@ public class CabinItemProvider
 			childrenFeatures.add(CabinPackage.Literals.CABIN__STAIRWAYS);
 			childrenFeatures.add(CabinPackage.Literals.CABIN__CURTAINS);
 			childrenFeatures.add(CabinPackage.Literals.CABIN__STOWAGES);
+			childrenFeatures.add(CabinPackage.Literals.CABIN__PASSENGERS);
 		}
 		return childrenFeatures;
 	}
@@ -636,6 +614,7 @@ public class CabinItemProvider
 			case CabinPackage.CABIN__STAIRWAYS:
 			case CabinPackage.CABIN__CURTAINS:
 			case CabinPackage.CABIN__STOWAGES:
+			case CabinPackage.CABIN__PASSENGERS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -687,6 +666,11 @@ public class CabinItemProvider
 			(createChildParameter
 				(CabinPackage.Literals.CABIN__STOWAGES,
 				 CabinFactory.eINSTANCE.createStowage()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CabinPackage.Literals.CABIN__PASSENGERS,
+				 CabinFactory.eINSTANCE.createPassenger()));
 	}
 
 	/**

@@ -44,7 +44,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="stowages" upperBound="-1"
         eType="#//Stowage" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="passengers" upperBound="-1"
-        eType="#//Passenger"/>
+        eType="#//Passenger" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="scale" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Row">

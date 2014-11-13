@@ -449,7 +449,7 @@ public interface Cabin extends NamedElement {
 	void setScale(double value);
 
 	/**
-	 * Returns the value of the '<em><b>Passengers</b></em>' reference list.
+	 * Returns the value of the '<em><b>Passengers</b></em>' containment reference list.
 	 * The list contents are of type {@link net.bhl.cdt.model.cabin.Passenger}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -457,9 +457,9 @@ public interface Cabin extends NamedElement {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Passengers</em>' reference list.
+	 * @return the value of the '<em>Passengers</em>' containment reference list.
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Passengers()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Passenger> getPassengers();

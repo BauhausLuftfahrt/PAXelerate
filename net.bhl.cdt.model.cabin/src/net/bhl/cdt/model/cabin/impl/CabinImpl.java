@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -471,7 +470,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 */
 	protected EList<Stowage> stowages;
 	/**
-	 * The cached value of the '{@link #getPassengers() <em>Passengers</em>}' reference list.
+	 * The cached value of the '{@link #getPassengers() <em>Passengers</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPassengers()
@@ -838,7 +837,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 */
 	public EList<Passenger> getPassengers() {
 		if (passengers == null) {
-			passengers = new EObjectResolvingEList<Passenger>(Passenger.class, this, CabinPackage.CABIN__PASSENGERS);
+			passengers = new EObjectContainmentEList<Passenger>(Passenger.class, this, CabinPackage.CABIN__PASSENGERS);
 		}
 		return passengers;
 	}
@@ -1054,6 +1053,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return ((InternalEList<?>)getCurtains()).basicRemove(otherEnd, msgs);
 			case CabinPackage.CABIN__STOWAGES:
 				return ((InternalEList<?>)getStowages()).basicRemove(otherEnd, msgs);
+			case CabinPackage.CABIN__PASSENGERS:
+				return ((InternalEList<?>)getPassengers()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

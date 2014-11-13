@@ -1,7 +1,6 @@
 package net.bhl.cdt.model.cabin.commands;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import net.bhl.cdt.commands.CDTCommand;
@@ -17,7 +16,7 @@ import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerClass;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
-import net.bhl.cdt.model.cabin.SeatsPerRow;
+import net.bhl.cdt.model.cabin.Sex;
 import net.bhl.cdt.model.cabin.Stairway;
 import net.bhl.cdt.model.cabin.StairwayDirection;
 
@@ -89,7 +88,7 @@ public class GenerateCabinCommand extends CDTCommand{
 		boolean offsetInTheRow = false;
 		
 		// how is this used? -> divide all dimensions by scale?
-		double scale = cabin.getScale();
+		//double scale = cabin.getScale();
 		
 		
 		
@@ -236,12 +235,16 @@ public class GenerateCabinCommand extends CDTCommand{
 	}
 	
 	/**
-	 * This method generates the passengers one by one // DOES NOT WORK, passengers not assigned to cabin.
+	 * This method generates the passengers one by one 
+	 * 
+	 * MAYBE IMPLEMENT SOMETHING TO GROUP ALL PASSENGERS IN A FOLDER OR SOMETHING
+	 * 
 	 */
 	public void generatePassengers() {
 		
 		int totalPax = cabin.getEconomyClassPassengers()+cabin.getBusinessClassPassengers()+cabin.getPremiumEconomyClassPassengers()+cabin.getFirstClassPassengers();
 		int totalSeats = cabin.getSeatsInEconomyClass() + cabin.getSeatsInPremiumEconomyClass() + cabin.getSeatsInBusinessClass() + cabin.getSeatsInFirstClass();
+		Sex sex = Sex.FEMALE;
 		
 		for (int i = 1; i <= totalPax; i++) {
 			
@@ -268,7 +271,7 @@ public class GenerateCabinCommand extends CDTCommand{
 			//geht wahrscheinlich viel kürzer!
 			
 			/**
-			 * These for loops iterate through every seat within every row within every class.
+			 * These loops iterate through every seat within every row within every class.
 			 * These loops search for the matching seat number of the random seat generated above.
 			 * if the seat was found, the loop knows in which class the seat is and adds the ClassType to the according passenger.
 			 */
@@ -287,6 +290,21 @@ public class GenerateCabinCommand extends CDTCommand{
 			}
 			newPassenger.setName(i+" is at Seat "+helpToDefineTheSeatName);
 			newPassenger.setAge(rand.nextInt(42) + 18);
+			if ((cabin.getDoors().size()!=0)&&(cabin.getDoors().get(0).getDoorType()==DoorType.MAIN_DOOR)) {
+				// The door created first is assigned to the passenger
+				newPassenger.setDoor(cabin.getDoors().get(0));
+			}
+		
+			if (rand.nextInt(2)==1) {
+				sex = Sex.FEMALE;
+			}
+			else {
+				sex = Sex.MALE;
+			}
+			newPassenger.setSex(sex);
+			newPassenger.setHeight(rand.nextInt(50) + 150);
+			newPassenger.setWeight(rand.nextInt(50) + 60);
+			
 		}
 	}
 	
@@ -299,7 +317,7 @@ public class GenerateCabinCommand extends CDTCommand{
 		
 	    randomNumberCheck = new ArrayList<Integer>();
 	    
-//		createDoor(DoorType.MAIN_DOOR, true, 1, 10.0, 0.0);
+		createDoor(DoorType.MAIN_DOOR, true, 1, 10.0, 0.0);
 		createClass(ClassType.FIRST,1);
 		createClass(ClassType.BUSINESS,2);
 		createClass(ClassType.PREMIUM_ECO,3);
