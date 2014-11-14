@@ -1,6 +1,7 @@
 package net.bhl.cdt.model.cabin.commands;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import net.bhl.cdt.commands.CDTCommand;
@@ -19,6 +20,8 @@ import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.Sex;
 import net.bhl.cdt.model.cabin.Stairway;
 import net.bhl.cdt.model.cabin.StairwayDirection;
+import net.bhl.cdt.model.cabin.impl.PassengerImpl;
+import net.bhl.cdt.model.util.ModelHelper;
 
 
 
@@ -234,79 +237,7 @@ public class GenerateCabinCommand extends CDTCommand{
 		newGalley.setYDimension(yDimension);
 	}
 	
-	/**
-	 * This method generates the passengers one by one 
-	 * 
-	 * MAYBE IMPLEMENT SOMETHING TO GROUP ALL PASSENGERS IN A FOLDER OR SOMETHING
-	 * 
-	 */
-	public void generatePassengers() {
-		
-		int totalPax = cabin.getEconomyClassPassengers()+cabin.getBusinessClassPassengers()+cabin.getPremiumEconomyClassPassengers()+cabin.getFirstClassPassengers();
-		int totalSeats = cabin.getSeatsInEconomyClass() + cabin.getSeatsInPremiumEconomyClass() + cabin.getSeatsInBusinessClass() + cabin.getSeatsInFirstClass();
-		Sex sex = Sex.FEMALE;
-		
-		for (int i = 1; i <= totalPax; i++) {
-			
-			Passenger newPassenger = CabinFactory.eINSTANCE.createPassenger();
-			cabin.getPassengers().add(newPassenger);			
-			Random rand = new Random();
-			int checkForRandomUniqueness = 0;
-			int randomSeat = 0;
-			String helpToDefineTheSeatName = "";
-			
-			while (checkForRandomUniqueness == 0) {
-				randomSeat = rand.nextInt(totalSeats) + 1;
-				if(!randomNumberCheck.contains(randomSeat)) {
-				randomNumberCheck.add(randomSeat);
-				checkForRandomUniqueness = 1;
-				}
-			}
-			newPassenger.setId(i); 
-			newPassenger.setSeat(randomSeat);
-			
-
-			// je nach Sitzplatz die Klasse zuweisen!
-			//Prüfen, in welcher Klasse der Sitzplatz ist!
-			//geht wahrscheinlich viel kürzer!
-			
-			/**
-			 * These loops iterate through every seat within every row within every class.
-			 * These loops search for the matching seat number of the random seat generated above.
-			 * if the seat was found, the loop knows in which class the seat is and adds the ClassType to the according passenger.
-			 */
-			for (int j = 0; j < cabin.getClasses().size(); j++) {
-				PassengerClass passengerClass = cabin.getClasses().get(j);
-				for (int k = 0; k < passengerClass.getRows().size(); k++) {
-					Row row = passengerClass.getRows().get(k);
-					for (int l = 0; l < row.getSeats().size(); l++) {
-							Seat verifySeat = row.getSeats().get(l);
-								if(verifySeat.getSeatNumber()==newPassenger.getSeat()) {
-										newPassenger.setClass(passengerClass.getType());
-										helpToDefineTheSeatName = verifySeat.getSeatId();				
-								}
-					}
-				}
-			}
-			newPassenger.setName(i+" is at Seat "+helpToDefineTheSeatName);
-			newPassenger.setAge(rand.nextInt(42) + 18);
-			if ((cabin.getDoors().size()!=0)&&(cabin.getDoors().get(0).getDoorType()==DoorType.MAIN_DOOR)) {
-				// The door created first is assigned to the passenger
-				newPassenger.setDoor(cabin.getDoors().get(0));
-			}
-		
-			if (rand.nextInt(2)==1) {
-				sex = Sex.FEMALE;
-			}
-			else {
-				sex = Sex.MALE;
-			}
-			newPassenger.setSex(sex);
-			newPassenger.setHeight(rand.nextInt(50) + 150);
-			newPassenger.setWeight(rand.nextInt(50) + 60);
-			
-		}
-	}
+	
 	
 	
 	@Override
@@ -315,7 +246,7 @@ public class GenerateCabinCommand extends CDTCommand{
 		seatCount = 1;
 		rowCount = 1;
 		
-	    randomNumberCheck = new ArrayList<Integer>();
+	    
 	    
 		createDoor(DoorType.MAIN_DOOR, true, 1, 10.0, 0.0);
 		createClass(ClassType.FIRST,1);
@@ -330,8 +261,6 @@ public class GenerateCabinCommand extends CDTCommand{
 //		createGalley(1, 1, 1, 1);
 //		createCurtain(true,5);
 //		createLavatory(1, 1, 1, 1);
-		
-		generatePassengers();
 		
 	}
 
