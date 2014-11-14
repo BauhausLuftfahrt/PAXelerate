@@ -85,18 +85,19 @@ public class GeneratePassengersCommand extends CDTCommand{
 				checkForRandomUniqueness = 1;
 				}
 			}
+			
 			int checkForRandomPassengerId = 0;
 			int randomId = 0;
-			
+
 			while (checkForRandomPassengerId == 0) {
-				randomSeat = rand.nextInt(seatsInClass) + seatAreaBegin;
-				if(!randomNumberCheck.contains(randomSeat)){
-				randomNumberCheck.add(randomSeat);
+				randomId = rand.nextInt(totalPax) + 1;
+				if(!randomPassengerId.contains(randomId)){
+					randomPassengerId.add(randomId);
 				checkForRandomPassengerId = 1;
 				}
 			}
 			
-			newPassenger.setId(passengerIdCount); 
+			newPassenger.setId(randomId); 
 			newPassenger.setSeat(randomSeat);
 			
 			/**
@@ -109,7 +110,7 @@ public class GeneratePassengersCommand extends CDTCommand{
 					for (Seat seat:ModelHelper.getChildrenByClass(cabin, Seat.class)){
 						if(!seat.equals(null)) {
 							if(seat.getSeatNumber()==newPassenger.getSeat()) {
-								newPassenger.setName(passengerIdCount+" is at Seat "+seat.getSeatId());			
+								newPassenger.setName(randomId+" is at Seat "+seat.getSeatId());		 //passengerIdCount ordnet nach Klasse!	
 							}
 						}
 					}
