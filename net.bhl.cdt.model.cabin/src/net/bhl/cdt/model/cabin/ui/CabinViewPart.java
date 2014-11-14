@@ -16,6 +16,7 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 
+
 public class CabinViewPart extends ViewPart {
 	public static final String ID = "de.vogella.plugin.adapter.views.SampleView";
 
@@ -39,17 +40,20 @@ public class CabinViewPart extends ViewPart {
 	/** * This is a callback that will allow us to create the viewer and initialize * it. */
 
 	public void createPartControl(Composite parent) {
-		final Image image = new Image(parent.getDisplay(), "./images/lh_a320.PNG");  
+
+		//final Image image = new Image(parent.getDisplay(), is);
+		
+		//final Image image = new Image(parent.getDisplay(), "/net.bhl.cdt.model.cabin/images/lh_a320.PNG");  
 		Canvas canvas = new Canvas(parent, SWT.RESIZE);
 
 		canvas.addPaintListener(new PaintListener() {
 		      public void paintControl(final PaintEvent e) {
-	    
+		    	  Image image = new Image(e.display,"C:\\Users\\Marc.Engelmann\\Desktop\\lh_a320.PNG"); // warum geht das nur mit absolutem Pfad?
 		    	  e.gc.drawImage(image, 0, 0);
 		    	  //e.gc.drawText(testStr, 0, 0);
 		    	  e.gc.drawText("Test Message", 0,0);
-		    	  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_BLACK));
-		    	  e.gc.setAlpha(200);
+		    	  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_GRAY));
+		    	  //e.gc.setAlpha(200);
 		    	  e.gc.fillRectangle(350, 245, 95, 637);
 		    	  //e.gc.drawT     
 		      }
