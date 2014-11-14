@@ -89,7 +89,8 @@ public class GenerateCabinCommand extends CDTCommand{
 		double seatPitch = 100.0;
 		boolean moreLegroom = false;
 		boolean offsetInTheRow = false;
-		
+		double seatDimensionX = 0;
+		double seatDimensionY = 0;
 		// how is this used? -> divide all dimensions by scale?
 		//double scale = cabin.getScale();
 		
@@ -100,18 +101,26 @@ public class GenerateCabinCommand extends CDTCommand{
 				case PREMIUM_ECO:
 					seats = cabin.getSeatsInPremiumEconomyClass();
 					seatsInRow = cabin.getSeatsPerRowInPremiumEconomyClass();
+					seatDimensionX = 60;
+					seatDimensionY = 60;
 					break;
 				case BUSINESS:
 					seats = cabin.getSeatsInBusinessClass();
 					seatsInRow = cabin.getSeatsPerRowInBusinessClass();	
+					seatDimensionX = 80;
+					seatDimensionY = 80;
 				break;	
 				case FIRST:
 					seats = cabin.getSeatsInFirstClass();
-					seatsInRow = cabin.getSeatsPerRowInFirstClass();	
+					seatsInRow = cabin.getSeatsPerRowInFirstClass();
+					seatDimensionX = 100;
+					seatDimensionY = 100;
 				break;	
 				default:
 					seats = cabin.getSeatsInEconomyClass();
 					seatsInRow = cabin.getSeatsPerRowInEconomyClass();	
+					seatDimensionX = 50;
+					seatDimensionY = 50; 
 				break;	
 		}	
 		
@@ -122,6 +131,8 @@ public class GenerateCabinCommand extends CDTCommand{
 			cabin.getClasses().add(newClass);
 			newClass.setType(typeID);
 			newClass.setSequence(sequence);
+			newClass.setSeatDimensionX(seatDimensionX);
+			newClass.setSeatDimensionY(seatDimensionY);
 			
 			for (int i = 1; i <= seats/seatsInRow; i++) {
 				
@@ -146,10 +157,14 @@ public class GenerateCabinCommand extends CDTCommand{
 					switchLetter(j);
 					seatIdString = rowCount+seatIdLetter;
 					newSeat.setSeatId(seatIdString);
-					newSeat.setLength(seatLength);
-					newSeat.setXPosition(10);
-					newSeat.setYPosition(10);
-					newSeat.setWidth((cabin.getCabinWidth()-cabin.getAisleWidth())/seatsInRow);
+					newSeat.setLength(newClass.getSeatDimensionY());
+					newSeat.setWidth(newClass.getSeatDimensionX());
+					
+					//Sitzposition berechnen!
+					newSeat.setXPosition(j * (seatDimensionX+5));
+					newSeat.setYPosition(i * (seatDimensionY+5));
+					
+					
 					seatCount ++;	
 				}
 			rowCount ++;

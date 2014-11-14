@@ -67,6 +67,8 @@ public class PassengerClassItemProvider
 			addTypePropertyDescriptor(object);
 			addAvailableSeatsPropertyDescriptor(object);
 			addSequencePropertyDescriptor(object);
+			addSeatDimensionYPropertyDescriptor(object);
+			addSeatDimensionXPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -133,6 +135,50 @@ public class PassengerClassItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Seat Dimension Y feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatDimensionYPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PassengerClass_seatDimensionY_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PassengerClass_seatDimensionY_feature", "_UI_PassengerClass_type"),
+				 CabinPackage.Literals.PASSENGER_CLASS__SEAT_DIMENSION_Y,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Seat Dimension X feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatDimensionXPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PassengerClass_seatDimensionX_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PassengerClass_seatDimensionX_feature", "_UI_PassengerClass_type"),
+				 CabinPackage.Literals.PASSENGER_CLASS__SEAT_DIMENSION_X,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -208,6 +254,8 @@ public class PassengerClassItemProvider
 			case CabinPackage.PASSENGER_CLASS__TYPE:
 			case CabinPackage.PASSENGER_CLASS__AVAILABLE_SEATS:
 			case CabinPackage.PASSENGER_CLASS__SEQUENCE:
+			case CabinPackage.PASSENGER_CLASS__SEAT_DIMENSION_Y:
+			case CabinPackage.PASSENGER_CLASS__SEAT_DIMENSION_X:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CabinPackage.PASSENGER_CLASS__ROWS:

@@ -468,13 +468,31 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER_CLASS__SEQUENCE = 3;
 
 	/**
+	 * The feature id for the '<em><b>Seat Dimension Y</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_CLASS__SEAT_DIMENSION_Y = 4;
+
+	/**
+	 * The feature id for the '<em><b>Seat Dimension X</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_CLASS__SEAT_DIMENSION_X = 5;
+
+	/**
 	 * The number of structural features of the '<em>Passenger Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_CLASS_FEATURE_COUNT = 4;
+	int PASSENGER_CLASS_FEATURE_COUNT = 6;
 
 	/**
 	 * The number of operations of the '<em>Passenger Class</em>' class.
@@ -1614,6 +1632,28 @@ public interface CabinPackage extends EPackage {
 	EAttribute getPassengerClass_Sequence();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.PassengerClass#getSeatDimensionY <em>Seat Dimension Y</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seat Dimension Y</em>'.
+	 * @see net.bhl.cdt.model.cabin.PassengerClass#getSeatDimensionY()
+	 * @see #getPassengerClass()
+	 * @generated
+	 */
+	EAttribute getPassengerClass_SeatDimensionY();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.PassengerClass#getSeatDimensionX <em>Seat Dimension X</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seat Dimension X</em>'.
+	 * @see net.bhl.cdt.model.cabin.PassengerClass#getSeatDimensionX()
+	 * @see #getPassengerClass()
+	 * @generated
+	 */
+	EAttribute getPassengerClass_SeatDimensionX();
+
+	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.Door <em>Door</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2536,6 +2576,20 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PASSENGER_CLASS__SEQUENCE = eINSTANCE.getPassengerClass_Sequence();
+		/**
+		 * The meta object literal for the '<em><b>Seat Dimension Y</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_CLASS__SEAT_DIMENSION_Y = eINSTANCE.getPassengerClass_SeatDimensionY();
+		/**
+		 * The meta object literal for the '<em><b>Seat Dimension X</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_CLASS__SEAT_DIMENSION_X = eINSTANCE.getPassengerClass_SeatDimensionX();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.DoorImpl <em>Door</em>}' class.
 		 * <!-- begin-user-doc -->

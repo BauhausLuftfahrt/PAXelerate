@@ -18,6 +18,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.PassengerClass#getAvailableSeats <em>Available Seats</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.PassengerClass#getRows <em>Rows</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.PassengerClass#getSequence <em>Sequence</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.PassengerClass#getSeatDimensionY <em>Seat Dimension Y</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.PassengerClass#getSeatDimensionX <em>Seat Dimension X</em>}</li>
  * </ul>
  * </p>
  *
@@ -122,5 +124,57 @@ public interface PassengerClass extends EObject {
 	 * @generated
 	 */
 	void setSequence(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Seat Dimension Y</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seat Dimension Y</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seat Dimension Y</em>' attribute.
+	 * @see #setSeatDimensionY(double)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassengerClass_SeatDimensionY()
+	 * @model
+	 * @generated
+	 */
+	double getSeatDimensionY();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.PassengerClass#getSeatDimensionY <em>Seat Dimension Y</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seat Dimension Y</em>' attribute.
+	 * @see #getSeatDimensionY()
+	 * @generated
+	 */
+	void setSeatDimensionY(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Seat Dimension X</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seat Dimension X</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seat Dimension X</em>' attribute.
+	 * @see #setSeatDimensionX(double)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassengerClass_SeatDimensionX()
+	 * @model
+	 * @generated
+	 */
+	double getSeatDimensionX();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.PassengerClass#getSeatDimensionX <em>Seat Dimension X</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seat Dimension X</em>' attribute.
+	 * @see #getSeatDimensionX()
+	 * @generated
+	 */
+	void setSeatDimensionX(double value);
 
 } // PassengerClass
