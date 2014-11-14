@@ -49,7 +49,7 @@ public class CabinViewPart extends ViewPart {
 		//Door door = CabinFactory.eINSTANCE.createDoor();
 		
 		// warum geht das nur mit absolutem Pfad?
-		final Image image = new Image(parent.getDisplay(),"C:\\Users\\Marc.Engelmann\\Desktop\\lh_a320_cut.PNG"); 
+		final Image image = new Image(parent.getDisplay(),"T:\\Marc Engelmann\\aircraft_images\\lh_a320_cut.PNG"); 
 		// falsch!!!!!!!!!!
 		x_zero = 138;
 		y_zero = 90;

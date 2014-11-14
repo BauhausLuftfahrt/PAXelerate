@@ -91,6 +91,9 @@ public class GenerateCabinCommand extends CDTCommand{
 		boolean offsetInTheRow = false;
 		double seatDimensionX = 0;
 		double seatDimensionY = 0;
+		int globalSeatPositionX = 0;
+		int globalSeatPositionY = 0;
+		
 		// how is this used? -> divide all dimensions by scale?
 		//double scale = cabin.getScale();
 		
@@ -161,13 +164,15 @@ public class GenerateCabinCommand extends CDTCommand{
 					newSeat.setWidth(newClass.getSeatDimensionX());
 					
 					//Sitzposition berechnen!
-					newSeat.setXPosition(j * (seatDimensionX+5));
-					newSeat.setYPosition(i * (seatDimensionY+5));
+					newSeat.setXPosition(globalSeatPositionX * (seatDimensionX+5));
+					newSeat.setYPosition(globalSeatPositionY * (seatDimensionY+5));
 					
 					
 					seatCount ++;	
+					globalSeatPositionX ++;
 				}
 			rowCount ++;
+			globalSeatPositionY ++;
 			}
 			
 		}
