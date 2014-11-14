@@ -18,9 +18,10 @@ import org.eclipse.ui.part.ViewPart;
 
 
 public class CabinViewPart extends ViewPart {
-	public static final String ID = "de.vogella.plugin.adapter.views.SampleView";
-
+	
 	private TableViewer viewer;
+	public int x_zero;
+	public int y_zero;
 
 	class ViewLabelProvider extends LabelProvider implements ITableLabelProvider {
 		public String getColumnText(Object obj, int index) {
@@ -40,21 +41,18 @@ public class CabinViewPart extends ViewPart {
 	/** * This is a callback that will allow us to create the viewer and initialize * it. */
 
 	public void createPartControl(Composite parent) {
-
-		//final Image image = new Image(parent.getDisplay(), is);
-		
-		//final Image image = new Image(parent.getDisplay(), "/net.bhl.cdt.model.cabin/images/lh_a320.PNG");  
+		final Image image = new Image(parent.getDisplay(),"C:\\Users\\Marc.Engelmann\\Desktop\\lh_a320_cut.PNG"); // warum geht das nur mit absolutem Pfad?
+		x_zero = 140;
+		y_zero = 90;
 		Canvas canvas = new Canvas(parent, SWT.RESIZE);
-
 		canvas.addPaintListener(new PaintListener() {
-		      public void paintControl(final PaintEvent e) {
-		    	  Image image = new Image(e.display,"C:\\Users\\Marc.Engelmann\\Desktop\\lh_a320.PNG"); // warum geht das nur mit absolutem Pfad?
+		      public void paintControl(final PaintEvent e) { 
 		    	  e.gc.drawImage(image, 0, 0);
 		    	  //e.gc.drawText(testStr, 0, 0);
-		    	  e.gc.drawText("Test Message", 0,0);
+		    	  //e.gc.drawText("Test Message", 0,0);
 		    	  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_GRAY));
 		    	  //e.gc.setAlpha(200);
-		    	  e.gc.fillRectangle(350, 245, 95, 637);
+		    	  e.gc.fillRectangle(x_zero, y_zero, 93, 636);
 		    	  //e.gc.drawT     
 		      }
 	    });    
@@ -64,7 +62,6 @@ public class CabinViewPart extends ViewPart {
 	private Object getElement() {
 		Cabin newCabin = CabinFactory.eINSTANCE.createCabin();
 		newCabin.setName("MyCabin");
-
 		return newCabin;
 	}
 
