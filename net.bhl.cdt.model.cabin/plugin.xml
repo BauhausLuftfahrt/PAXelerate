@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 
@@ -96,3 +97,104 @@
    </extension>
 
 </plugin>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated cabin -->
+      <package
+            uri="http://bhl.net/cdt/model/cabin/"
+            class="net.bhl.cdt.model.cabin.CabinPackage"
+            genModel="model/cabin.genmodel"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="net.bhl.cdt.model.cabin.handlers.SimulateBoardingHandler"
+            id="net.bhl.cdt.model.cabin.simulateBoarding"
+            name="Simulate Boarding">
+      </command>
+      <command
+            defaultHandler="net.bhl.cdt.model.cabin.handlers.GenerateCabinHandler"
+            id="net.bhl.cdt.model.cabin.generatecabin"
+            name="Generate Cabin">
+      </command>
+      <command
+            defaultHandler="net.bhl.cdt.model.cabin.handlers.DrawCabinHandler"
+            id="net.bhl.cdt.model.cabin.DrawCabin"
+            name="Draw Cabin">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.emf.ecp.ui.ModelExplorerView">
+         <command
+               commandId="net.bhl.cdt.model.cabin.simulateBoarding"
+               label="Simulate Boarding of this Cabin"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate>
+                  <instanceof
+                        value="net.bhl.cdt.model.cabin.Cabin">
+                  </instanceof>
+               </iterate>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="net.bhl.cdt.model.cabin.generatecabin"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate>
+                  <instanceof
+                        value="net.bhl.cdt.model.cabin.Cabin">
+                  </instanceof>
+               </iterate>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="net.bhl.cdt.model.cabin.DrawCabin"
+               label="Draw Cabin"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate>
+                  <instanceof
+                        value="net.bhl.cdt.model.cabin.Cabin">
+                  </instanceof>
+               </iterate>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="net.bhl.cdt.model.cabin.ui.CabinViewPart"
+            id="net.bhl.cdt.model.cabin.CabinView"
+            name="CabinView"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.adapters">
+      <factory
+            adaptableType="net.bhl.cdt.model.cabin.Cabin"
+            class="net.bhl.cdt.model.cabin.adapters.CabinAdapterFactory">
+         <adapter
+               type="org.eclipse.ui.views.properties.IPropertySource">
+         </adapter>
+      </factory>
+   </extension>
+
+</plugin>
+>>>>>>> branch 'master' of file:///T:\Git\boarding-simulation
