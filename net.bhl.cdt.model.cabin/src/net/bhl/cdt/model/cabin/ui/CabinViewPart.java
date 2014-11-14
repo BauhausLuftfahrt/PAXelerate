@@ -39,16 +39,21 @@ public class CabinViewPart extends ViewPart {
 	/** * This is a callback that will allow us to create the viewer and initialize * it. */
 
 	public void createPartControl(Composite parent) {
-
+		final Image image = new Image(parent.getDisplay(), "./images/lh_a320.PNG");  
 		Canvas canvas = new Canvas(parent, SWT.RESIZE);
 
 		canvas.addPaintListener(new PaintListener() {
-			public void paintControl(PaintEvent e) {
-				e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_RED));
-				e.gc.fillRectangle(30, 40, 400, 200);
-
-			}
-		});
+		      public void paintControl(final PaintEvent e) {
+	    
+		    	  e.gc.drawImage(image, 0, 0);
+		    	  //e.gc.drawText(testStr, 0, 0);
+		    	  e.gc.drawText("Test Message", 0,0);
+		    	  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_BLACK));
+		    	  e.gc.setAlpha(200);
+		    	  e.gc.fillRectangle(350, 245, 95, 637);
+		    	  //e.gc.drawT     
+		      }
+	    });    
 
 	}
 
