@@ -51,11 +51,11 @@ public class CabinViewPart extends ViewPart {
 		// warum geht das nur mit absolutem Pfad?
 		final Image image = new Image(parent.getDisplay(),"C:\\Users\\Marc.Engelmann\\Desktop\\lh_a320_cut.PNG"); 
 		// falsch!!!!!!!!!!
-		x_zero = 139;
+		x_zero = 138;
 		y_zero = 90;
-		cabin_x = 94;
+		cabin_x = 96;
 		cabin_y = 636;
-		final int seatWidth = (cabin_x - 16) / 6 - 2;
+		final int seatWidth = (cabin_x - 16) / 6 - 1;
 		final int seatLength = 10;
 		final int seatPitch = 10;
 		final int numbRows = cabin_y / (seatLength+seatPitch);
@@ -73,7 +73,8 @@ public class CabinViewPart extends ViewPart {
 		    		  for (int i = 0; i <= 6; i++) {
 		    			  if (i!=3) {
 		    				  // besser direkt die Koordinaten der Sitze auslesen!
-		    				  e.gc.drawRectangle((x_zero+(seatWidth+2)*i),y_zero +(seatPitch+seatLength)*j + 20,seatWidth,seatLength); 
+		    				  e.gc.fillRectangle((x_zero+(seatWidth+2)*i),y_zero +(seatPitch+seatLength)*j + 20,seatWidth,seatLength); 
+		    				  e.gc.drawText(""+i,(x_zero+(seatWidth+2)*i),y_zero +(seatPitch+seatLength)*j+20);
 		    			  }
 		    		  }
 		    	  }

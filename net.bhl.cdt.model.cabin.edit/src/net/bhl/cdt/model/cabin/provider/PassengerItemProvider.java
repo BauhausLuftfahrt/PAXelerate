@@ -69,6 +69,7 @@ public class PassengerItemProvider
 			addSeatPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 			addClassPropertyDescriptor(object);
+			addBoardingTimePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -179,6 +180,28 @@ public class PassengerItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Boarding Time feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBoardingTimePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_boardingTime_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_boardingTime_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__BOARDING_TIME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -315,6 +338,7 @@ public class PassengerItemProvider
 			case CabinPackage.PASSENGER__WEIGHT:
 			case CabinPackage.PASSENGER__NAME:
 			case CabinPackage.PASSENGER__CLASS:
+			case CabinPackage.PASSENGER__BOARDING_TIME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

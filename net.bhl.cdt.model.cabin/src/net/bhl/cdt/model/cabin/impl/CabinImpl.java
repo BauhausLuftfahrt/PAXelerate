@@ -108,7 +108,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SEATS_IN_FIRST_CLASS_EDEFAULT = 0;
+	protected static final int SEATS_IN_FIRST_CLASS_EDEFAULT = 4;
 	/**
 	 * The cached value of the '{@link #getSeatsInFirstClass() <em>Seats In First Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -144,7 +144,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SEATS_PER_ROW_IN_FIRST_CLASS_EDEFAULT = 0;
+	protected static final int SEATS_PER_ROW_IN_FIRST_CLASS_EDEFAULT = 2;
 	/**
 	 * The cached value of the '{@link #getSeatsPerRowInFirstClass() <em>Seats Per Row In First Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -162,7 +162,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SEATS_IN_BUSINESS_CLASS_EDEFAULT = 0;
+	protected static final int SEATS_IN_BUSINESS_CLASS_EDEFAULT = 4;
 	/**
 	 * The cached value of the '{@link #getSeatsInBusinessClass() <em>Seats In Business Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -198,7 +198,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SEATS_PER_ROW_IN_BUSINESS_CLASS_EDEFAULT = 0;
+	protected static final int SEATS_PER_ROW_IN_BUSINESS_CLASS_EDEFAULT = 4;
 	/**
 	 * The cached value of the '{@link #getSeatsPerRowInBusinessClass() <em>Seats Per Row In Business Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -216,7 +216,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SEATS_IN_PREMIUM_ECONOMY_CLASS_EDEFAULT = 0;
+	protected static final int SEATS_IN_PREMIUM_ECONOMY_CLASS_EDEFAULT = 12;
 	/**
 	 * The cached value of the '{@link #getSeatsInPremiumEconomyClass() <em>Seats In Premium Economy Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -252,7 +252,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SEATS_PER_ROW_IN_PREMIUM_ECONOMY_CLASS_EDEFAULT = 0;
+	protected static final int SEATS_PER_ROW_IN_PREMIUM_ECONOMY_CLASS_EDEFAULT = 6;
 	/**
 	 * The cached value of the '{@link #getSeatsPerRowInPremiumEconomyClass() <em>Seats Per Row In Premium Economy Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -270,7 +270,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SEATS_IN_ECONOMY_CLASS_EDEFAULT = 0;
+	protected static final int SEATS_IN_ECONOMY_CLASS_EDEFAULT = 12;
 	/**
 	 * The cached value of the '{@link #getSeatsInEconomyClass() <em>Seats In Economy Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -306,7 +306,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SEATS_PER_ROW_IN_ECONOMY_CLASS_EDEFAULT = 0;
+	protected static final int SEATS_PER_ROW_IN_ECONOMY_CLASS_EDEFAULT = 6;
 	/**
 	 * The cached value of the '{@link #getSeatsPerRowInEconomyClass() <em>Seats Per Row In Economy Class</em>}' attribute.
 	 * <!-- begin-user-doc -->

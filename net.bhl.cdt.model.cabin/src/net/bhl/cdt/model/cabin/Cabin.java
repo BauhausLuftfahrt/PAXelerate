@@ -216,6 +216,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Seats In Economy Class</b></em>' attribute.
+	 * The default value is <code>"12"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Seats In Economy Class</em>' attribute isn't clear,
@@ -225,7 +226,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Seats In Economy Class</em>' attribute.
 	 * @see #setSeatsInEconomyClass(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatsInEconomyClass()
-	 * @model
+	 * @model default="12"
 	 * @generated
 	 */
 	int getSeatsInEconomyClass();
@@ -242,6 +243,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Seats In Premium Economy Class</b></em>' attribute.
+	 * The default value is <code>"12"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Seats In Premium Economy Class</em>' attribute isn't clear,
@@ -251,7 +253,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Seats In Premium Economy Class</em>' attribute.
 	 * @see #setSeatsInPremiumEconomyClass(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatsInPremiumEconomyClass()
-	 * @model
+	 * @model default="12"
 	 * @generated
 	 */
 	int getSeatsInPremiumEconomyClass();
@@ -268,6 +270,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Seats In Business Class</b></em>' attribute.
+	 * The default value is <code>"4"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Seats In Business Class</em>' attribute isn't clear,
@@ -277,7 +280,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Seats In Business Class</em>' attribute.
 	 * @see #setSeatsInBusinessClass(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatsInBusinessClass()
-	 * @model
+	 * @model default="4"
 	 * @generated
 	 */
 	int getSeatsInBusinessClass();
@@ -294,6 +297,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Seats In First Class</b></em>' attribute.
+	 * The default value is <code>"4"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Seats In First Class</em>' attribute isn't clear,
@@ -303,7 +307,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Seats In First Class</em>' attribute.
 	 * @see #setSeatsInFirstClass(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatsInFirstClass()
-	 * @model
+	 * @model default="4"
 	 * @generated
 	 */
 	int getSeatsInFirstClass();
@@ -320,6 +324,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Seats Per Row In Economy Class</b></em>' attribute.
+	 * The default value is <code>"6"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Seats Per Row In Economy Class</em>' attribute isn't clear,
@@ -329,7 +334,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Seats Per Row In Economy Class</em>' attribute.
 	 * @see #setSeatsPerRowInEconomyClass(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatsPerRowInEconomyClass()
-	 * @model
+	 * @model default="6"
 	 * @generated
 	 */
 	int getSeatsPerRowInEconomyClass();
@@ -346,6 +351,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Seats Per Row In Business Class</b></em>' attribute.
+	 * The default value is <code>"4"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Seats Per Row In Business Class</em>' attribute isn't clear,
@@ -355,7 +361,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Seats Per Row In Business Class</em>' attribute.
 	 * @see #setSeatsPerRowInBusinessClass(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatsPerRowInBusinessClass()
-	 * @model
+	 * @model default="4"
 	 * @generated
 	 */
 	int getSeatsPerRowInBusinessClass();
@@ -372,6 +378,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Seats Per Row In First Class</b></em>' attribute.
+	 * The default value is <code>"2"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Seats Per Row In First Class</em>' attribute isn't clear,
@@ -381,7 +388,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Seats Per Row In First Class</em>' attribute.
 	 * @see #setSeatsPerRowInFirstClass(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatsPerRowInFirstClass()
-	 * @model
+	 * @model default="2"
 	 * @generated
 	 */
 	int getSeatsPerRowInFirstClass();
@@ -398,6 +405,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Seats Per Row In Premium Economy Class</b></em>' attribute.
+	 * The default value is <code>"6"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Seats Per Row In Premium Economy Class</em>' attribute isn't clear,
@@ -407,7 +415,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Seats Per Row In Premium Economy Class</em>' attribute.
 	 * @see #setSeatsPerRowInPremiumEconomyClass(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatsPerRowInPremiumEconomyClass()
-	 * @model
+	 * @model default="6"
 	 * @generated
 	 */
 	int getSeatsPerRowInPremiumEconomyClass();
@@ -518,6 +526,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>First Class Passengers</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>First Class Passengers</em>' attribute isn't clear,
@@ -527,7 +536,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>First Class Passengers</em>' attribute.
 	 * @see #setFirstClassPassengers(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_FirstClassPassengers()
-	 * @model
+	 * @model default="0"
 	 * @generated
 	 */
 	int getFirstClassPassengers();

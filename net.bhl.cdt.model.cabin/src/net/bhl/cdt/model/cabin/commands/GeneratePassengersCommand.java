@@ -6,6 +6,7 @@ import java.util.Random;
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
+import net.bhl.cdt.model.cabin.ClassType;
 import net.bhl.cdt.model.cabin.DoorType;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerClass;
@@ -17,58 +18,104 @@ public class GeneratePassengersCommand extends CDTCommand{
 
 	private Cabin cabin;
 	ArrayList<Integer> randomNumberCheck;
+	ArrayList<Integer> randomPassengerId;
+	int passengerIdCount;
 	
 	public GeneratePassengersCommand(Cabin cabin) {
 		this.cabin = cabin;
 	}
 	
 	/**
-	 * This method generates the passengers one by one 
+	 * This method generates the passengers of a specific class one by one 
 	 * 
 	 * maybe all passengers should be grouped in a folder
 	 * 
 	 */
-	public void generatePassengers() {
+	public void generatePassengers(ClassType classType) {
 		
 		int totalPax = cabin.getEconomyClassPassengers()+cabin.getBusinessClassPassengers()+cabin.getPremiumEconomyClassPassengers()+cabin.getFirstClassPassengers();
 		int totalSeats = cabin.getSeatsInEconomyClass() + cabin.getSeatsInPremiumEconomyClass() + cabin.getSeatsInBusinessClass() + cabin.getSeatsInFirstClass();
 		Sex sex = Sex.FEMALE;
+		int paxInClass;
+		int seatsInClass;
+		int seatAreaBegin;
+		int seatAreaEnd;
 		
-		for (int i = 1; i <= totalPax; i++) {
+		switch (classType) {
+		
+		case BUSINESS:
+			paxInClass = cabin.getBusinessClassPassengers();
+			seatAreaBegin = cabin.getSeatsInFirstClass() +1; // 5
+			seatAreaEnd = cabin.getSeatsInBusinessClass() + cabin.getSeatsInFirstClass(); // 8
+			seatsInClass = cabin.getSeatsInBusinessClass();	
+			break;
+		case FIRST:
+			paxInClass = cabin.getFirstClassPassengers();
+			seatAreaBegin = 1; // 1
+			seatAreaEnd = cabin.getSeatsInFirstClass(); //4
+			seatsInClass = cabin.getSeatsInFirstClass();
+			break;
+		case PREMIUM_ECO:
+			paxInClass = cabin.getPremiumEconomyClassPassengers();
+			seatAreaBegin = cabin.getSeatsInFirstClass() + cabin.getSeatsInBusinessClass() +1;
+			seatAreaEnd = totalSeats - cabin.getSeatsInEconomyClass();
+			seatsInClass = cabin.getSeatsInPremiumEconomyClass();
+			break;
+		default:
+			paxInClass = cabin.getEconomyClassPassengers();
+			seatAreaBegin = totalSeats - cabin.getSeatsInEconomyClass() +1;
+			seatAreaEnd = totalSeats;
+			seatsInClass = cabin.getSeatsInEconomyClass();
+			break;
+			
+		
+		}
+		for (int i = 1; i <= paxInClass; i++) {
 			
 			Passenger newPassenger = CabinFactory.eINSTANCE.createPassenger();
 			cabin.getPassengers().add(newPassenger);			
 			Random rand = new Random();
 			int checkForRandomUniqueness = 0;
 			int randomSeat = 0;
-			
+		
 			while (checkForRandomUniqueness == 0) {
-				randomSeat = rand.nextInt(totalSeats) + 1;
-				if(!randomNumberCheck.contains(randomSeat)) {
+				randomSeat = rand.nextInt(seatsInClass) + seatAreaBegin;
+				if(!randomNumberCheck.contains(randomSeat)){
 				randomNumberCheck.add(randomSeat);
 				checkForRandomUniqueness = 1;
 				}
 			}
-			newPassenger.setId(i); 
+			int checkForRandomPassengerId = 0;
+			int randomId = 0;
+			
+			while (checkForRandomPassengerId == 0) {
+				randomSeat = rand.nextInt(seatsInClass) + seatAreaBegin;
+				if(!randomNumberCheck.contains(randomSeat)){
+				randomNumberCheck.add(randomSeat);
+				checkForRandomPassengerId = 1;
+				}
+			}
+			
+			newPassenger.setId(passengerIdCount); 
 			newPassenger.setSeat(randomSeat);
-
+			
 			/**
 			 * These loops iterate through every seat within every row within every class.
 			 * These loops search for the matching seat number of the random seat generated above.
 			 * if the seat was found, the loop knows in which class the seat is and adds the ClassType to the according passenger.
 			 */
-			for (PassengerClass passengerClass:cabin.getClasses()) {
-				if(!passengerClass.equals(null)) {
-					for (Seat seat:ModelHelper.getChildrenByClass(passengerClass, Seat.class)){
+			//for (PassengerClass passengerClass:cabin.getClasses()) {
+				//if(!passengerClass.equals(null)) {
+					for (Seat seat:ModelHelper.getChildrenByClass(cabin, Seat.class)){
 						if(!seat.equals(null)) {
 							if(seat.getSeatNumber()==newPassenger.getSeat()) {
-								newPassenger.setClass(passengerClass.getType());
-								newPassenger.setName(i+" is at Seat "+seat.getSeatId());			
+								newPassenger.setName(passengerIdCount+" is at Seat "+seat.getSeatId());			
 							}
 						}
 					}
-				}
-			}
+				//}
+			//}
+			newPassenger.setClass(classType);
 			newPassenger.setAge(rand.nextInt(42) + 18);
 			if ((cabin.getDoors().size()!=0)&&(cabin.getDoors().get(0).getDoorType()==DoorType.MAIN_DOOR)) {
 				// The door created first is assigned to the passenger
@@ -84,14 +131,22 @@ public class GeneratePassengersCommand extends CDTCommand{
 			newPassenger.setSex(sex);
 			newPassenger.setHeight(rand.nextInt(50) + 150);
 			newPassenger.setWeight(rand.nextInt(50) + 60);
+			passengerIdCount ++;
+			
 			
 		}
+		randomNumberCheck.clear();
 	}
 	
 	@Override
 	protected void doRun() {
 		randomNumberCheck = new ArrayList<Integer>();
-		generatePassengers();
+		randomPassengerId = new ArrayList<Integer>();
+		passengerIdCount = 1;
+		generatePassengers(ClassType.FIRST);
+		generatePassengers(ClassType.BUSINESS);
+		generatePassengers(ClassType.PREMIUM_ECO);
+		generatePassengers(ClassType.ECONOMY);
 		
 	}
 

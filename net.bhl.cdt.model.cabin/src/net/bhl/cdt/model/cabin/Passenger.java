@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getSeat <em>Seat</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getName <em>Name</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getClass_ <em>Class</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getBoardingTime <em>Boarding Time</em>}</li>
  * </ul>
  * </p>
  *
@@ -164,6 +165,32 @@ public interface Passenger extends EObject {
 	 * @generated
 	 */
 	void setClass(ClassType value);
+
+	/**
+	 * Returns the value of the '<em><b>Boarding Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Boarding Time</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Boarding Time</em>' attribute.
+	 * @see #setBoardingTime(double)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_BoardingTime()
+	 * @model
+	 * @generated
+	 */
+	double getBoardingTime();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getBoardingTime <em>Boarding Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Boarding Time</em>' attribute.
+	 * @see #getBoardingTime()
+	 * @generated
+	 */
+	void setBoardingTime(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Height</b></em>' attribute.

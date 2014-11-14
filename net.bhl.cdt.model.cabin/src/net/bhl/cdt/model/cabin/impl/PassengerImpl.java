@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getSeat <em>Seat</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getName <em>Name</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getClass_ <em>Class</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getBoardingTime <em>Boarding Time</em>}</li>
  * </ul>
  * </p>
  *
@@ -206,6 +207,26 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	protected ClassType class_ = CLASS_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getBoardingTime() <em>Boarding Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBoardingTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double BOARDING_TIME_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getBoardingTime() <em>Boarding Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBoardingTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected double boardingTime = BOARDING_TIME_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -327,6 +348,27 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 		class_ = newClass == null ? CLASS_EDEFAULT : newClass;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__CLASS, oldClass, class_));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getBoardingTime() {
+		return boardingTime;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBoardingTime(double newBoardingTime) {
+		double oldBoardingTime = boardingTime;
+		boardingTime = newBoardingTime;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__BOARDING_TIME, oldBoardingTime, boardingTime));
 	}
 
 	/**
@@ -457,6 +499,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return getName();
 			case CabinPackage.PASSENGER__CLASS:
 				return getClass_();
+			case CabinPackage.PASSENGER__BOARDING_TIME:
+				return getBoardingTime();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -495,6 +539,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return;
 			case CabinPackage.PASSENGER__CLASS:
 				setClass((ClassType)newValue);
+				return;
+			case CabinPackage.PASSENGER__BOARDING_TIME:
+				setBoardingTime((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -535,6 +582,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 			case CabinPackage.PASSENGER__CLASS:
 				setClass(CLASS_EDEFAULT);
 				return;
+			case CabinPackage.PASSENGER__BOARDING_TIME:
+				setBoardingTime(BOARDING_TIME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -565,6 +615,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case CabinPackage.PASSENGER__CLASS:
 				return class_ != CLASS_EDEFAULT;
+			case CabinPackage.PASSENGER__BOARDING_TIME:
+				return boardingTime != BOARDING_TIME_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -595,6 +647,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 		result.append(name);
 		result.append(", class: ");
 		result.append(class_);
+		result.append(", boardingTime: ");
+		result.append(boardingTime);
 		result.append(')');
 		return result.toString();
 	}
