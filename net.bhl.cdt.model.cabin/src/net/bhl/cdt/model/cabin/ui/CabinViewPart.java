@@ -3,6 +3,10 @@ package net.bhl.cdt.model.cabin.ui;
 
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
+import net.bhl.cdt.model.cabin.PassengerClass;
+import net.bhl.cdt.model.cabin.Seat;
+import net.bhl.cdt.model.util.ModelHelper;
+
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
@@ -21,9 +25,10 @@ public class CabinViewPart extends ViewPart {
 	private static TableViewer viewer;
 	public int x_zero;
 	public int y_zero;
-	public Cabin newCabin;
+	public Cabin drawCabin;
 	public int cabin_x;
 	public int cabin_y;
+	public double factor;
 	public String drawString;
 	Composite parentTest;
 	Image image;
@@ -52,8 +57,9 @@ public class CabinViewPart extends ViewPart {
 	/** * This is a callback that will allow us to create the viewer and initialize * it. */
 
 	public void createPartControl(Composite parent) {
+		drawCabin = CabinFactory.eINSTANCE.createCabin();
 		parentTest = parent;
-		getElement();
+		//getElement();
 		//Door door = CabinFactory.eINSTANCE.createDoor();
 		drawString  = "Layout not based\non actual cabin model!";
 		// warum geht das nur mit absolutem Pfad?
@@ -61,7 +67,7 @@ public class CabinViewPart extends ViewPart {
 		// falsch!!!!!!!!!!
 		
 		canvas = new Canvas(parent, SWT.RESIZE);
-		doTheDraw(90,drawString);
+		doTheDraw();
 
 	}
 
@@ -71,17 +77,21 @@ public class CabinViewPart extends ViewPart {
 //		return newCabin;
 //	}
 	
-	public void doTheDraw(int length, String str) {
-		
+	public void submitCabin(Cabin cabin) {
+		drawCabin = cabin;
+		doTheDraw();
+	}
+	
+	public void doTheDraw() {
+		factor = drawCabin.getCabinWidth() / 96;
 		parentTest.redraw();
 		parentTest.update();
 		canvas.redraw();
 		
 		x_zero = 138;
-		y_zero = length; //90
+		y_zero = 90;
 		cabin_x = 96;
 		cabin_y = 636;
-		drawString = str;
 		final int seatWidth = (cabin_x - 16) / 6 - 1;
 		final int seatLength = 10;
 		final int seatPitch = 10;
@@ -91,12 +101,14 @@ public class CabinViewPart extends ViewPart {
 		      public void paintControl(final PaintEvent e) { 
 		    	  e.gc.drawImage(image, 0, 0);
 		    	  //e.gc.drawText(testStr, 0, 0);
-		    	  e.gc.drawText(drawString, 0,0);
+		    	  //e.gc.drawText(drawString, 0,0);
 		    	  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_GRAY));
 		    	  //e.gc.setAlpha(200);
 		    	  e.gc.fillRectangle(x_zero, y_zero, cabin_x, cabin_y);
 		    	  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_DARK_GRAY));
-		    	  for (int j = 0; j<numbRows; j++) {
+		    	  if(drawCabin.getClasses().isEmpty()) {
+		    		  
+		    		  for (int j = 0; j<numbRows; j++) {
 		    		  for (int i = 0; i <= 6; i++) {
 		    			  if (i!=3) {
 		    				  // besser direkt die Koordinaten der Sitze auslesen!
@@ -104,20 +116,47 @@ public class CabinViewPart extends ViewPart {
 		    				  e.gc.drawText(""+i,(x_zero+(seatWidth+2)*i),y_zero +(seatPitch+seatLength)*j+20);
 		    			  }
 		    		  }
+		    		  }
+		    		  
 		    	  }
+		    		  
+		    	  else {
+		    		  for(Seat seat:ModelHelper.getChildrenByClass(drawCabin, Seat.class)) {
+		    			  PassengerClass pasClass =  ModelHelper.getParent(PassengerClass.class,seat);
+		    			  
+		    			  switch(pasClass.getType()) {
+		    			  default:
+		    				  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_DARK_GRAY));
+		    				  break;
+		    			  case BUSINESS:
+		    				  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_BLUE));
+		    				  break;
+		    			  case FIRST:
+		    				  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_RED));
+		    				  break;
+		    			  case PREMIUM_ECO:
+		    				  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_YELLOW));
+		    				  break;
+		    				  
+		    			  }
+		    			  
+		    			  e.gc.fillRectangle((int)(x_zero+seat.getXPosition()/factor),(int)(y_zero +seat.getYPosition()/factor),(int)(seat.getWidth()/factor),(int)(seat.getLength()/factor)); 
+		    			  
+		    		  }
+	    			  
+	    		  }
 		      }
+		      
 	    });    
-		
-		
 	}
 	
 	
-	private void getElement() {
-		newCabin = CabinFactory.eINSTANCE.createCabin();
-		newCabin.setName("MyCabin");
-		//return newCabin;
-		
-	}
+//	private void getElement() {
+//		newCabin = CabinFactory.eINSTANCE.createCabin();
+//		newCabin.setName("MyCabin");
+//		//return newCabin;
+//		
+//	}
 	
 
 	/** * Passing the focus request to the viewer's control. */

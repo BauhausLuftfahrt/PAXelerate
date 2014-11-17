@@ -104,28 +104,30 @@ public class GenerateCabinCommand extends CDTCommand{
 				case PREMIUM_ECO:
 					seats = cabin.getSeatsInPremiumEconomyClass();
 					seatsInRow = cabin.getSeatsPerRowInPremiumEconomyClass();
-					seatDimensionX = 60;
+					
 					seatDimensionY = 60;
 					break;
 				case BUSINESS:
 					seats = cabin.getSeatsInBusinessClass();
 					seatsInRow = cabin.getSeatsPerRowInBusinessClass();	
-					seatDimensionX = 80;
+
 					seatDimensionY = 80;
 				break;	
 				case FIRST:
 					seats = cabin.getSeatsInFirstClass();
 					seatsInRow = cabin.getSeatsPerRowInFirstClass();
-					seatDimensionX = 100;
+
 					seatDimensionY = 100;
 				break;	
 				default:
 					seats = cabin.getSeatsInEconomyClass();
 					seatsInRow = cabin.getSeatsPerRowInEconomyClass();	
-					seatDimensionX = 50;
+
 					seatDimensionY = 50; 
 				break;	
-		}	
+		}
+		
+		seatDimensionX = (cabin.getCabinWidth()-cabin.getAisleWidth())/seatsInRow;
 		
 		if ((seats > 0) && (seatsInRow > 0)) {
 			
@@ -135,7 +137,7 @@ public class GenerateCabinCommand extends CDTCommand{
 			newClass.setType(typeID);
 			newClass.setSequence(sequence);
 			newClass.setSeatDimensionX(seatDimensionX);
-			newClass.setSeatDimensionY(seatDimensionY);
+			newClass.setSeatDimensionY(seatDimensionX); //Y!!
 			
 			for (int i = 1; i <= seats/seatsInRow; i++) {
 				
@@ -164,8 +166,8 @@ public class GenerateCabinCommand extends CDTCommand{
 					newSeat.setWidth(newClass.getSeatDimensionX());
 					
 					//Sitzposition berechnen!
-					newSeat.setXPosition(globalSeatPositionX * (seatDimensionX+5));
-					newSeat.setYPosition(globalSeatPositionY * (seatDimensionY+5));
+					newSeat.setXPosition(globalSeatPositionX * (seatDimensionX));
+					newSeat.setYPosition(globalSeatPositionY * (seatDimensionY));
 					
 					
 					seatCount ++;	
@@ -285,8 +287,8 @@ public class GenerateCabinCommand extends CDTCommand{
 		
 		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 		cabinViewPart = (CabinViewPart) page.findView("net.bhl.cdt.model.cabin.cabinview");
-		System.out.print(cabinViewPart.getTitle());	
-		cabinViewPart.doTheDraw(10, "View is now refreshed!");
+		//System.out.print(cabinViewPart.getTitle());	
+		cabinViewPart.submitCabin(cabin);
 	}
 
 }
