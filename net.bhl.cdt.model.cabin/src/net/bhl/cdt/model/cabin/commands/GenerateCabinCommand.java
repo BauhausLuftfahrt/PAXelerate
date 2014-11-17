@@ -292,7 +292,8 @@ public class GenerateCabinCommand extends CDTCommand{
 //		createStairway(StairwayDirection.UP, 10, 10, 10, 10);
 //		createGalley(1, 1, 1, 1);
 //		createCurtain(true,5);
-//		createLavatory(1, 1, 1, 1);
+		createLavatory(0, cabin.getCabinLength()-200, 425, 200);
+		createLavatory(575, cabin.getCabinLength()-200, 425, 200);
 		
 		//PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().get
 		

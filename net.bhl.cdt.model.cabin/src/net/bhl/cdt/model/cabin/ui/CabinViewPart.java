@@ -3,6 +3,8 @@ package net.bhl.cdt.model.cabin.ui;
 
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
+import net.bhl.cdt.model.cabin.Door;
+import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.PassengerClass;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.util.ModelHelper;
@@ -13,6 +15,7 @@ import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
+import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
@@ -91,7 +94,12 @@ public class CabinViewPart extends ViewPart {
 		x_zero = 138;
 		y_zero = 90;
 		cabin_x = 96;
-		cabin_y = 636;
+		if(drawCabin.getClasses().isEmpty()) {
+			cabin_y = 636;
+		} else {
+			cabin_y = (int)(drawCabin.getCabinLength()/factor);
+		}
+		final int fontsize = 5;
 		final int seatWidth = (cabin_x - 16) / 6 - 1;
 		final int seatLength = 10;
 		final int seatPitch = 10;
@@ -106,8 +114,9 @@ public class CabinViewPart extends ViewPart {
 		    	  //e.gc.setAlpha(200);
 		    	  e.gc.fillRectangle(x_zero, y_zero, cabin_x, cabin_y);
 		    	  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_DARK_GRAY));
+		    	  Font font = new Font(e.display,"arial", fontsize, SWT.NORMAL);
+		    	  e.gc.setFont(font);
 		    	  if(drawCabin.getClasses().isEmpty()) {
-		    		  
 		    		  for (int j = 0; j<numbRows; j++) {
 		    		  for (int i = 0; i <= 6; i++) {
 		    			  if (i!=3) {
@@ -116,8 +125,7 @@ public class CabinViewPart extends ViewPart {
 		    				  e.gc.drawText(""+i,(x_zero+(seatWidth+2)*i),y_zero +(seatPitch+seatLength)*j+20);
 		    			  }
 		    		  }
-		    		  }
-		    		  
+		    		  } 
 		    	  }
 		    		  
 		    	  else {
@@ -142,7 +150,22 @@ public class CabinViewPart extends ViewPart {
 		    			  //e.gc.drawRectangle((int)(x_zero+seat.getXPosition()/factor),(int)(y_zero +seat.getYPosition()/factor),(int)(seat.getWidth()/factor),(int)(seat.getLength()/factor));
 		    			  e.gc.fillRectangle((int)(x_zero+seat.getXPosition()/factor),(int)(y_zero +seat.getYPosition()/factor),(int)(seat.getWidth()/factor),(int)(seat.getLength()/factor)); 
 		    			  
+		    			  e.gc.drawText(seat.getSeatId(), (int)(x_zero-fontsize+(seat.getXPosition()+seat.getWidth()/2)/factor),(int)(y_zero-fontsize +(seat.getYPosition()+seat.getLength()/2)/factor));
 		    		  }
+		    		  
+		    		  for(Door door:ModelHelper.getChildrenByClass(drawCabin, Door.class)) {
+		    			  
+		    			 // e.gc.fillRectangle((int)(x_zero+door.getYPosition()/factor),y_zero,(int)(door.getWidth()/factor),(int)(/factor));
+		    			  
+		    			  
+		    		  }
+		    		  
+		    		  for(Lavatory lavatory:ModelHelper.getChildrenByClass(drawCabin, Lavatory.class)) {
+		    			  	e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_GREEN));
+			    			e.gc.fillRectangle((int)(x_zero+lavatory.getXPosition()/factor),(int)(y_zero+lavatory.getYPosition()/factor),(int)(lavatory.getXDimension()/factor),(int)(lavatory.getYDimension()/factor));
+			    			 e.gc.drawText("WC", (int)(x_zero-fontsize+(lavatory.getXPosition()+lavatory.getXDimension()/2)/factor),(int)(y_zero-fontsize +(lavatory.getYPosition()+lavatory.getYDimension()/2)/factor));
+			    			  
+			    		  }
 	    			  
 	    		  }
 		      }
