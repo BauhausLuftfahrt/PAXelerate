@@ -139,7 +139,7 @@ public class CabinViewPart extends ViewPart {
 		    				  break;
 		    				  
 		    			  }
-		    			  
+		    			  //e.gc.drawRectangle((int)(x_zero+seat.getXPosition()/factor),(int)(y_zero +seat.getYPosition()/factor),(int)(seat.getWidth()/factor),(int)(seat.getLength()/factor));
 		    			  e.gc.fillRectangle((int)(x_zero+seat.getXPosition()/factor),(int)(y_zero +seat.getYPosition()/factor),(int)(seat.getWidth()/factor),(int)(seat.getLength()/factor)); 
 		    			  
 		    		  }

@@ -43,7 +43,10 @@ public class GenerateCabinCommand extends CDTCommand{
 	private int seatCount;
 	private int rowCount;
 	private String seatIdLetter;
+	double globalSeatPositionX;
+	double globalSeatPositionY; 
 	ArrayList<Integer> randomNumberCheck;
+	double spaceBetweenSeats;
 	
 	public GenerateCabinCommand(Cabin cabin) {
 		this.cabin=cabin;
@@ -91,8 +94,7 @@ public class GenerateCabinCommand extends CDTCommand{
 		boolean offsetInTheRow = false;
 		double seatDimensionX = 0;
 		double seatDimensionY = 0;
-		int globalSeatPositionX = 0;
-		int globalSeatPositionY = 0;
+		
 		
 		// how is this used? -> divide all dimensions by scale?
 		//double scale = cabin.getScale();
@@ -127,7 +129,7 @@ public class GenerateCabinCommand extends CDTCommand{
 				break;	
 		}
 		
-		seatDimensionX = (cabin.getCabinWidth()-cabin.getAisleWidth())/seatsInRow;
+		seatDimensionX = (cabin.getCabinWidth()-cabin.getAisleWidth()-((seatsInRow-2)*spaceBetweenSeats))/seatsInRow;
 		
 		if ((seats > 0) && (seatsInRow > 0)) {
 			
@@ -140,7 +142,7 @@ public class GenerateCabinCommand extends CDTCommand{
 			newClass.setSeatDimensionY(seatDimensionX); //Y!!
 			
 			for (int i = 1; i <= seats/seatsInRow; i++) {
-				
+				globalSeatPositionX = 0;
 				if (cabin.getRowNonexistent()==rowCount) {
 					rowCount ++;	
 				}
@@ -166,15 +168,22 @@ public class GenerateCabinCommand extends CDTCommand{
 					newSeat.setWidth(newClass.getSeatDimensionX());
 					
 					//Sitzposition berechnen!
-					newSeat.setXPosition(globalSeatPositionX * (seatDimensionX));
-					newSeat.setYPosition(globalSeatPositionY * (seatDimensionY));
+					newSeat.setXPosition(globalSeatPositionX);
+					newSeat.setYPosition(globalSeatPositionY);
 					
-					
+					double helpSpaceBetweenSeats = 0;
+					if((j!=(seatsInRow/2))&&(j!=seatsInRow)) {
+						helpSpaceBetweenSeats = spaceBetweenSeats;
+					}
+					double aisleSpace = 0;
 					seatCount ++;	
-					globalSeatPositionX ++;
+					if (j==(seatsInRow/2)) {
+					aisleSpace = cabin.getAisleWidth();
+					}
+					globalSeatPositionX  =  globalSeatPositionX + newClass.getSeatDimensionX()+aisleSpace+helpSpaceBetweenSeats;
 				}
 			rowCount ++;
-			globalSeatPositionY ++;
+			globalSeatPositionY = globalSeatPositionY + newClass.getSeatDimensionY() + seatPitch;
 			}
 			
 		}
@@ -262,7 +271,9 @@ public class GenerateCabinCommand extends CDTCommand{
 	@Override
 	protected void doRun() {
 		//ViewPart viewPart = null;
-		
+		spaceBetweenSeats = 10;
+		globalSeatPositionX = 0;
+		globalSeatPositionY = 0;
 		seatCount = 1;
 		rowCount = 1;
 	    
