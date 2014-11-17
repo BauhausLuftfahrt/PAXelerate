@@ -1,9 +1,8 @@
 package net.bhl.cdt.model.cabin.ui;
 
+
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
-import net.bhl.cdt.model.cabin.Door;
-
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
@@ -19,13 +18,16 @@ import org.eclipse.ui.part.ViewPart;
 
 
 public class CabinViewPart extends ViewPart {
-	
-	private TableViewer viewer;
+	private static TableViewer viewer;
 	public int x_zero;
 	public int y_zero;
 	public Cabin newCabin;
 	public int cabin_x;
 	public int cabin_y;
+	public String drawString;
+	Composite parentTest;
+	Image image;
+	Canvas canvas;
 
 	class ViewLabelProvider extends LabelProvider implements ITableLabelProvider {
 		public String getColumnText(Object obj, int index) {
@@ -42,29 +44,54 @@ public class CabinViewPart extends ViewPart {
 		}
 	}
 
+//	  @Inject
+//	  void eventReceived(@UIEventTopic("viewcommunication/*") Cabin cabin) {
+//	    newCabin = cabin;
+//	  }
+	
 	/** * This is a callback that will allow us to create the viewer and initialize * it. */
 
 	public void createPartControl(Composite parent) {
+		parentTest = parent;
 		getElement();
 		//Door door = CabinFactory.eINSTANCE.createDoor();
-		
+		drawString  = "Layout not based\non actual cabin model!";
 		// warum geht das nur mit absolutem Pfad?
-		final Image image = new Image(parent.getDisplay(),"T:\\Marc Engelmann\\aircraft_images\\lh_a320_cut.PNG"); 
+		image = new Image(parent.getDisplay(),"T:\\Marc Engelmann\\aircraft_images\\lh_a320_cut.PNG"); 
 		// falsch!!!!!!!!!!
+		
+		canvas = new Canvas(parent, SWT.RESIZE);
+		doTheDraw(90,drawString);
+
+	}
+
+//	private Object getElement() {
+//		newCabin = CabinFactory.eINSTANCE.createCabin();
+//		newCabin.setName("MyCabin");
+//		return newCabin;
+//	}
+	
+	public void doTheDraw(int length, String str) {
+		
+		parentTest.redraw();
+		parentTest.update();
+		canvas.redraw();
+		
 		x_zero = 138;
-		y_zero = 90;
+		y_zero = length; //90
 		cabin_x = 96;
 		cabin_y = 636;
+		drawString = str;
 		final int seatWidth = (cabin_x - 16) / 6 - 1;
 		final int seatLength = 10;
 		final int seatPitch = 10;
 		final int numbRows = cabin_y / (seatLength+seatPitch);
-		Canvas canvas = new Canvas(parent, SWT.RESIZE);
+		
 		canvas.addPaintListener(new PaintListener() {
 		      public void paintControl(final PaintEvent e) { 
 		    	  e.gc.drawImage(image, 0, 0);
 		    	  //e.gc.drawText(testStr, 0, 0);
-		    	  e.gc.drawText("Layout not based\non actual cabin model!", 0,0);
+		    	  e.gc.drawText(drawString, 0,0);
 		    	  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_GRAY));
 		    	  //e.gc.setAlpha(200);
 		    	  e.gc.fillRectangle(x_zero, y_zero, cabin_x, cabin_y);
@@ -80,25 +107,24 @@ public class CabinViewPart extends ViewPart {
 		    	  }
 		      }
 	    });    
-
+		
+		
 	}
-
-//	private Object getElement() {
-//		newCabin = CabinFactory.eINSTANCE.createCabin();
-//		newCabin.setName("MyCabin");
-//		return newCabin;
-//	}
+	
 	
 	private void getElement() {
 		newCabin = CabinFactory.eINSTANCE.createCabin();
 		newCabin.setName("MyCabin");
 		//return newCabin;
+		
 	}
+	
 
 	/** * Passing the focus request to the viewer's control. */
-
 	public void setFocus() {
 		viewer.getControl().setFocus();
+		parentTest.redraw();
+		parentTest.update();
 	}
 
 }

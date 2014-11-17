@@ -1,8 +1,10 @@
 package net.bhl.cdt.model.cabin.commands;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PlatformUI;
 
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.Cabin;
@@ -13,15 +15,13 @@ import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.DoorType;
 import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.Lavatory;
-import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerClass;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
-import net.bhl.cdt.model.cabin.Sex;
 import net.bhl.cdt.model.cabin.Stairway;
 import net.bhl.cdt.model.cabin.StairwayDirection;
-import net.bhl.cdt.model.cabin.impl.PassengerImpl;
-import net.bhl.cdt.model.util.ModelHelper;
+import net.bhl.cdt.model.cabin.ui.CabinViewPart;
+
 
 
 
@@ -39,6 +39,7 @@ import net.bhl.cdt.model.util.ModelHelper;
 public class GenerateCabinCommand extends CDTCommand{
 
 	private Cabin cabin;
+	CabinViewPart cabinViewPart;
 	private int seatCount;
 	private int rowCount;
 	private String seatIdLetter;
@@ -85,7 +86,6 @@ public class GenerateCabinCommand extends CDTCommand{
 		int seatsInRow = 0;
 		
 		// these parameters should be read out of the initial settings depending on ClassType, implementation here for test purpose only 
-		double seatLength = 20.0; 
 		double seatPitch = 100.0;
 		boolean moreLegroom = false;
 		boolean offsetInTheRow = false;
@@ -257,22 +257,21 @@ public class GenerateCabinCommand extends CDTCommand{
 		newGalley.setYDimension(yDimension);
 	}
 	
-	
-	
-	
 	@Override
 	protected void doRun() {
+		//ViewPart viewPart = null;
 		
 		seatCount = 1;
 		rowCount = 1;
-		
-	    
 	    
 		createDoor(DoorType.MAIN_DOOR, true, 1, 10.0, 0.0);
 		createClass(ClassType.FIRST,1);
 		createClass(ClassType.BUSINESS,2);
 		createClass(ClassType.PREMIUM_ECO,3);
 		createClass(ClassType.ECONOMY,4);
+		
+
+		
 //		createDoor(DoorType.MAIN_DOOR, true, 1, 10.0, 0.0);
 //		createDoor(DoorType.STANDARD_DOOR, true, 1, 10.0, 0.0);
 //		createDoor(DoorType.EMERGENCY_EXIT, true, 1, 10.0, 0.0);
@@ -282,6 +281,12 @@ public class GenerateCabinCommand extends CDTCommand{
 //		createCurtain(true,5);
 //		createLavatory(1, 1, 1, 1);
 		
+		//PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().get
+		
+		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+		cabinViewPart = (CabinViewPart) page.findView("net.bhl.cdt.model.cabin.cabinview");
+		System.out.print(cabinViewPart.getTitle());	
+		cabinViewPart.doTheDraw(10, "View is now refreshed!");
 	}
 
 }
