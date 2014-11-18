@@ -668,13 +668,22 @@ public interface CabinPackage extends EPackage {
 	int SEAT__YPOSITION = 7;
 
 	/**
+	 * The feature id for the '<em><b>Letter</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEAT__LETTER = 8;
+
+	/**
 	 * The number of structural features of the '<em>Seat</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEAT_FEATURE_COUNT = 8;
+	int SEAT_FEATURE_COUNT = 9;
 
 	/**
 	 * The number of operations of the '<em>Seat</em>' class.
@@ -1080,13 +1089,49 @@ public interface CabinPackage extends EPackage {
 	int CURTAIN__CURTAIN_OPEN = 1;
 
 	/**
+	 * The feature id for the '<em><b>XPosition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CURTAIN__XPOSITION = 2;
+
+	/**
+	 * The feature id for the '<em><b>YPosition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CURTAIN__YPOSITION = 3;
+
+	/**
+	 * The feature id for the '<em><b>XDimension</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CURTAIN__XDIMENSION = 4;
+
+	/**
+	 * The feature id for the '<em><b>YDimension</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CURTAIN__YDIMENSION = 5;
+
+	/**
 	 * The number of structural features of the '<em>Curtain</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CURTAIN_FEATURE_COUNT = 2;
+	int CURTAIN_FEATURE_COUNT = 6;
 
 	/**
 	 * The number of operations of the '<em>Curtain</em>' class.
@@ -1826,6 +1871,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getSeat_YPosition();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Seat#getLetter <em>Letter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Letter</em>'.
+	 * @see net.bhl.cdt.model.cabin.Seat#getLetter()
+	 * @see #getSeat()
+	 * @generated
+	 */
+	EAttribute getSeat_Letter();
+
+	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Seat#getSeatId <em>Seat Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2192,6 +2248,50 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCurtain_CurtainOpen();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Curtain#getXPosition <em>XPosition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>XPosition</em>'.
+	 * @see net.bhl.cdt.model.cabin.Curtain#getXPosition()
+	 * @see #getCurtain()
+	 * @generated
+	 */
+	EAttribute getCurtain_XPosition();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Curtain#getYPosition <em>YPosition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>YPosition</em>'.
+	 * @see net.bhl.cdt.model.cabin.Curtain#getYPosition()
+	 * @see #getCurtain()
+	 * @generated
+	 */
+	EAttribute getCurtain_YPosition();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Curtain#getXDimension <em>XDimension</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>XDimension</em>'.
+	 * @see net.bhl.cdt.model.cabin.Curtain#getXDimension()
+	 * @see #getCurtain()
+	 * @generated
+	 */
+	EAttribute getCurtain_XDimension();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Curtain#getYDimension <em>YDimension</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>YDimension</em>'.
+	 * @see net.bhl.cdt.model.cabin.Curtain#getYDimension()
+	 * @see #getCurtain()
+	 * @generated
+	 */
+	EAttribute getCurtain_YDimension();
 
 	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.Stowage <em>Stowage</em>}'.
@@ -2720,6 +2820,13 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute SEAT__YPOSITION = eINSTANCE.getSeat_YPosition();
 		/**
+		 * The meta object literal for the '<em><b>Letter</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SEAT__LETTER = eINSTANCE.getSeat_Letter();
+		/**
 		 * The meta object literal for the '<em><b>Seat Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2969,6 +3076,34 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CURTAIN__CURTAIN_OPEN = eINSTANCE.getCurtain_CurtainOpen();
+		/**
+		 * The meta object literal for the '<em><b>XPosition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CURTAIN__XPOSITION = eINSTANCE.getCurtain_XPosition();
+		/**
+		 * The meta object literal for the '<em><b>YPosition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CURTAIN__YPOSITION = eINSTANCE.getCurtain_YPosition();
+		/**
+		 * The meta object literal for the '<em><b>XDimension</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CURTAIN__XDIMENSION = eINSTANCE.getCurtain_XDimension();
+		/**
+		 * The meta object literal for the '<em><b>YDimension</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CURTAIN__YDIMENSION = eINSTANCE.getCurtain_YDimension();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.StowageImpl <em>Stowage</em>}' class.
 		 * <!-- begin-user-doc -->

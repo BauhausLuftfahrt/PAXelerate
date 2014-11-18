@@ -21,6 +21,10 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CurtainImpl#getPostitionAfterRow <em>Postition After Row</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CurtainImpl#isCurtainOpen <em>Curtain Open</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CurtainImpl#getXPosition <em>XPosition</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CurtainImpl#getYPosition <em>YPosition</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CurtainImpl#getXDimension <em>XDimension</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CurtainImpl#getYDimension <em>YDimension</em>}</li>
  * </ul>
  * </p>
  *
@@ -66,6 +70,86 @@ public class CurtainImpl extends MinimalEObjectImpl.Container implements Curtain
 	 * @ordered
 	 */
 	protected boolean curtainOpen = CURTAIN_OPEN_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getXPosition() <em>XPosition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getXPosition()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double XPOSITION_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getXPosition() <em>XPosition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getXPosition()
+	 * @generated
+	 * @ordered
+	 */
+	protected double xPosition = XPOSITION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getYPosition() <em>YPosition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getYPosition()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double YPOSITION_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getYPosition() <em>YPosition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getYPosition()
+	 * @generated
+	 * @ordered
+	 */
+	protected double yPosition = YPOSITION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getXDimension() <em>XDimension</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getXDimension()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double XDIMENSION_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getXDimension() <em>XDimension</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getXDimension()
+	 * @generated
+	 * @ordered
+	 */
+	protected double xDimension = XDIMENSION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getYDimension() <em>YDimension</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getYDimension()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double YDIMENSION_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getYDimension() <em>YDimension</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getYDimension()
+	 * @generated
+	 * @ordered
+	 */
+	protected double yDimension = YDIMENSION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -133,6 +217,90 @@ public class CurtainImpl extends MinimalEObjectImpl.Container implements Curtain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public double getXPosition() {
+		return xPosition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setXPosition(double newXPosition) {
+		double oldXPosition = xPosition;
+		xPosition = newXPosition;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CURTAIN__XPOSITION, oldXPosition, xPosition));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getYPosition() {
+		return yPosition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setYPosition(double newYPosition) {
+		double oldYPosition = yPosition;
+		yPosition = newYPosition;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CURTAIN__YPOSITION, oldYPosition, yPosition));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getXDimension() {
+		return xDimension;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setXDimension(double newXDimension) {
+		double oldXDimension = xDimension;
+		xDimension = newXDimension;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CURTAIN__XDIMENSION, oldXDimension, xDimension));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getYDimension() {
+		return yDimension;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setYDimension(double newYDimension) {
+		double oldYDimension = yDimension;
+		yDimension = newYDimension;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CURTAIN__YDIMENSION, oldYDimension, yDimension));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -140,6 +308,14 @@ public class CurtainImpl extends MinimalEObjectImpl.Container implements Curtain
 				return getPostitionAfterRow();
 			case CabinPackage.CURTAIN__CURTAIN_OPEN:
 				return isCurtainOpen();
+			case CabinPackage.CURTAIN__XPOSITION:
+				return getXPosition();
+			case CabinPackage.CURTAIN__YPOSITION:
+				return getYPosition();
+			case CabinPackage.CURTAIN__XDIMENSION:
+				return getXDimension();
+			case CabinPackage.CURTAIN__YDIMENSION:
+				return getYDimension();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -157,6 +333,18 @@ public class CurtainImpl extends MinimalEObjectImpl.Container implements Curtain
 				return;
 			case CabinPackage.CURTAIN__CURTAIN_OPEN:
 				setCurtainOpen((Boolean)newValue);
+				return;
+			case CabinPackage.CURTAIN__XPOSITION:
+				setXPosition((Double)newValue);
+				return;
+			case CabinPackage.CURTAIN__YPOSITION:
+				setYPosition((Double)newValue);
+				return;
+			case CabinPackage.CURTAIN__XDIMENSION:
+				setXDimension((Double)newValue);
+				return;
+			case CabinPackage.CURTAIN__YDIMENSION:
+				setYDimension((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -176,6 +364,18 @@ public class CurtainImpl extends MinimalEObjectImpl.Container implements Curtain
 			case CabinPackage.CURTAIN__CURTAIN_OPEN:
 				setCurtainOpen(CURTAIN_OPEN_EDEFAULT);
 				return;
+			case CabinPackage.CURTAIN__XPOSITION:
+				setXPosition(XPOSITION_EDEFAULT);
+				return;
+			case CabinPackage.CURTAIN__YPOSITION:
+				setYPosition(YPOSITION_EDEFAULT);
+				return;
+			case CabinPackage.CURTAIN__XDIMENSION:
+				setXDimension(XDIMENSION_EDEFAULT);
+				return;
+			case CabinPackage.CURTAIN__YDIMENSION:
+				setYDimension(YDIMENSION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -192,6 +392,14 @@ public class CurtainImpl extends MinimalEObjectImpl.Container implements Curtain
 				return postitionAfterRow != POSTITION_AFTER_ROW_EDEFAULT;
 			case CabinPackage.CURTAIN__CURTAIN_OPEN:
 				return curtainOpen != CURTAIN_OPEN_EDEFAULT;
+			case CabinPackage.CURTAIN__XPOSITION:
+				return xPosition != XPOSITION_EDEFAULT;
+			case CabinPackage.CURTAIN__YPOSITION:
+				return yPosition != YPOSITION_EDEFAULT;
+			case CabinPackage.CURTAIN__XDIMENSION:
+				return xDimension != XDIMENSION_EDEFAULT;
+			case CabinPackage.CURTAIN__YDIMENSION:
+				return yDimension != YDIMENSION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -210,6 +418,14 @@ public class CurtainImpl extends MinimalEObjectImpl.Container implements Curtain
 		result.append(postitionAfterRow);
 		result.append(", curtainOpen: ");
 		result.append(curtainOpen);
+		result.append(", xPosition: ");
+		result.append(xPosition);
+		result.append(", yPosition: ");
+		result.append(yPosition);
+		result.append(", xDimension: ");
+		result.append(xDimension);
+		result.append(", yDimension: ");
+		result.append(yDimension);
 		result.append(')');
 		return result.toString();
 	}

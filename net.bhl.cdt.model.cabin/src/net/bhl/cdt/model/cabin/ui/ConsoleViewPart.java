@@ -1,7 +1,10 @@
 package net.bhl.cdt.model.cabin.ui;
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import net.bhl.cdt.model.cabin.Cabin;
@@ -70,7 +73,10 @@ public class ConsoleViewPart extends ViewPart {
 			consoleList.remove(0);
 			cutPrint = true;
 		}
-		consoleList.add(text);
+		DateFormat df = new SimpleDateFormat("HH:mm:ss");
+		Date dateobj = new Date();
+		String str = df.format(dateobj);
+		consoleList.add("["+str+"] "+text);
 		doTheText();
 		
 	}
@@ -80,11 +86,10 @@ public class ConsoleViewPart extends ViewPart {
 		parentTest.redraw();
 		parentTest.update();
 		canvas.redraw();
-		
+		final int fontsize = 8;
 		canvas.addPaintListener(new PaintListener() {
 		      public void paintControl(final PaintEvent e) { 
-		    	  int fontsize = 8;
-		    	  Font font = new Font(e.display,"courier", fontsize, SWT.NORMAL);
+		    	  Font font = new Font(e.display,"Monaco", fontsize, SWT.NORMAL);
 		    	  e.gc.setFont(font);
 		    	  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_BLACK));
 		    	  e.gc.fillRectangle(0, 0, 500, 500);

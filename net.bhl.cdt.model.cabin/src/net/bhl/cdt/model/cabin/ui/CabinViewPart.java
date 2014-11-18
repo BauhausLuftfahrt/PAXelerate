@@ -1,6 +1,8 @@
 package net.bhl.cdt.model.cabin.ui;
 
 
+import java.util.List;
+
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
 import net.bhl.cdt.model.cabin.Door;
@@ -8,6 +10,7 @@ import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.PassengerClass;
 import net.bhl.cdt.model.cabin.Seat;
+import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.util.ModelHelper;
 
 import org.eclipse.jface.viewers.ITableLabelProvider;
@@ -24,6 +27,11 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 
+/**
+ * 
+ * @author marc.engelmann
+ *
+ */
 
 public class CabinViewPart extends ViewPart {
 	private static TableViewer viewer;
@@ -34,6 +42,7 @@ public class CabinViewPart extends ViewPart {
 	public int cabin_y;
 	public double factor;
 	public String drawString;
+	Boolean showSeatLabels = false;
 	Composite parentTest;
 	Image image;
 	Canvas canvas;
@@ -100,38 +109,27 @@ public class CabinViewPart extends ViewPart {
 		} else {
 			cabin_y = (int)(drawCabin.getCabinLength()/factor);
 		}
-		final int fontsize = 5;
-		final int seatWidth = (cabin_x - 16) / 6 - 1;
-		final int seatLength = 10;
-		final int seatPitch = 10;
-		final int numbRows = cabin_y / (seatLength+seatPitch);
-		
+		final int fontsize = 6;
+
 		canvas.addPaintListener(new PaintListener() {
 		      public void paintControl(final PaintEvent e) { 
 		    	  e.gc.drawImage(image, 0, 0);
 		    	  //e.gc.drawText(testStr, 0, 0);
 		    	  //e.gc.drawText(drawString, 0,0);
-		    	  Font font = new Font(e.display,"arial", fontsize, SWT.NORMAL);
-		    	  e.gc.setFont(font);
-		    	  e.gc.drawText("TOTAL PAX:",30,30);
+		    	  Font fontOne = new Font(e.display,"arial", 8, SWT.NORMAL);
+		    	  Font fontTwo = new Font(e.display,"arial", fontsize, SWT.NORMAL);
+		    	  e.gc.setFont(fontOne);
+		    	  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_WHITE));
+		    	  e.gc.drawRectangle(20, 20, 70, 50);
+		    	  List<Seat> seatList =  ModelHelper.getChildrenByClass(drawCabin, Seat.class);
+		    	  List<Row> rowList =  ModelHelper.getChildrenByClass(drawCabin, Row.class);
+		    	  e.gc.drawText("Seats: "+seatList.size()+"\nRows: "+rowList.size()+"\n",30,30);
+		    	  e.gc.setFont(fontTwo);
 		    	  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_GRAY));
-		    	  //e.gc.setAlpha(200);
 		    	  e.gc.fillRectangle(x_zero, y_zero, cabin_x, cabin_y);
 		    	  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_DARK_GRAY));
 		    	  
-		    	  if(drawCabin.getClasses().isEmpty()) {
-		    		  for (int j = 0; j<numbRows; j++) {
-		    		  for (int i = 0; i <= 6; i++) {
-		    			  if (i!=3) {
-		    				  // besser direkt die Koordinaten der Sitze auslesen!
-		    				  e.gc.fillRectangle((x_zero+(seatWidth+2)*i),y_zero +(seatPitch+seatLength)*j + 20,seatWidth,seatLength); 
-		    				  e.gc.drawText(""+i,(x_zero+(seatWidth+2)*i),y_zero +(seatPitch+seatLength)*j+20);
-		    			  }
-		    		  }
-		    		  } 
-		    	  }
-		    		  
-		    	  else {
+		    	  if(!drawCabin.getClasses().isEmpty()) {	  
 		    		  for(Seat seat:ModelHelper.getChildrenByClass(drawCabin, Seat.class)) {
 		    			  PassengerClass pasClass =  ModelHelper.getParent(PassengerClass.class,seat);
 		    			  
@@ -150,10 +148,17 @@ public class CabinViewPart extends ViewPart {
 		    				  break;
 		    				  
 		    			  }
-		    			  //e.gc.drawRectangle((int)(x_zero+seat.getXPosition()/factor),(int)(y_zero +seat.getYPosition()/factor),(int)(seat.getWidth()/factor),(int)(seat.getLength()/factor));
 		    			  e.gc.fillRectangle((int)(x_zero+seat.getXPosition()/factor),(int)(y_zero +seat.getYPosition()/factor),(int)(seat.getWidth()/factor),(int)(seat.getLength()/factor)); 
 		    			  
-		    			  e.gc.drawText(""+seat.getSeatNumber(), (int)(x_zero-fontsize+(seat.getXPosition()+seat.getWidth()/2)/factor),(int)(y_zero-fontsize +(seat.getYPosition()+seat.getLength()/2)/factor));
+		    			  if(showSeatLabels) {
+		    				  e.gc.drawText(""+seat.getLetter(), (int)(x_zero-fontsize+(seat.getXPosition()+seat.getWidth()/2)/factor),(int)(y_zero-fontsize +(seat.getYPosition()+seat.getLength()/2)/factor));
+		    				  if(seat.getXPosition()==0) {
+		    					  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_GRAY));
+		    					  Row row = CabinFactory.eINSTANCE.createRow();
+		    					  row = ModelHelper.getParent(Row.class, seat);
+		    					  e.gc.drawText(""+row.getRowNumber(),(int)(x_zero - 5 + drawCabin.getCabinWidth()/2/factor),(int)(y_zero +seat.getYPosition()/factor));
+		    				  }
+		    			  }
 		    		  }
 		    		  
 		    		  for(Door door:ModelHelper.getChildrenByClass(drawCabin, Door.class)) {
@@ -183,6 +188,12 @@ public class CabinViewPart extends ViewPart {
 			    			  
 			    		  }
 	    			  
+	    		  } else {
+	    			  Font fontThree = new Font(e.display,"arial", 10, SWT.NORMAL);
+			    	  e.gc.setFont(fontThree);
+	    			  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_RED));
+	    			  e.gc.fillRectangle(30, 370, 310, 38);
+	    			  e.gc.drawText("Please reresh cabin view or generate a new cabin!",40, 380);
 	    		  }
 		      }
 		      

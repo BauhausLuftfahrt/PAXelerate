@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#getLength <em>Length</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#getXPosition <em>XPosition</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#getYPosition <em>YPosition</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#getLetter <em>Letter</em>}</li>
  * </ul>
  * </p>
  *
@@ -189,6 +190,26 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 	 * @ordered
 	 */
 	protected double yPosition = YPOSITION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLetter() <em>Letter</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLetter()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String LETTER_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getLetter() <em>Letter</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLetter()
+	 * @generated
+	 * @ordered
+	 */
+	protected String letter = LETTER_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -361,6 +382,27 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getLetter() {
+		return letter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLetter(String newLetter) {
+		String oldLetter = letter;
+		letter = newLetter;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SEAT__LETTER, oldLetter, letter));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getSeatId() {
 		return seatId;
 	}
@@ -401,6 +443,8 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 				return getXPosition();
 			case CabinPackage.SEAT__YPOSITION:
 				return getYPosition();
+			case CabinPackage.SEAT__LETTER:
+				return getLetter();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -436,6 +480,9 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 				return;
 			case CabinPackage.SEAT__YPOSITION:
 				setYPosition((Double)newValue);
+				return;
+			case CabinPackage.SEAT__LETTER:
+				setLetter((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -473,6 +520,9 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 			case CabinPackage.SEAT__YPOSITION:
 				setYPosition(YPOSITION_EDEFAULT);
 				return;
+			case CabinPackage.SEAT__LETTER:
+				setLetter(LETTER_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -501,6 +551,8 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 				return xPosition != XPOSITION_EDEFAULT;
 			case CabinPackage.SEAT__YPOSITION:
 				return yPosition != YPOSITION_EDEFAULT;
+			case CabinPackage.SEAT__LETTER:
+				return LETTER_EDEFAULT == null ? letter != null : !LETTER_EDEFAULT.equals(letter);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -531,6 +583,8 @@ public class SeatImpl extends MinimalEObjectImpl.Container implements Seat {
 		result.append(xPosition);
 		result.append(", yPosition: ");
 		result.append(yPosition);
+		result.append(", letter: ");
+		result.append(letter);
 		result.append(')');
 		return result.toString();
 	}

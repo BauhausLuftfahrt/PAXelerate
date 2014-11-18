@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#getLength <em>Length</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#getXPosition <em>XPosition</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#getYPosition <em>YPosition</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Seat#getLetter <em>Letter</em>}</li>
  * </ul>
  * </p>
  *
@@ -210,6 +211,32 @@ public interface Seat extends EObject {
 	 * @generated
 	 */
 	void setYPosition(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Letter</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Letter</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Letter</em>' attribute.
+	 * @see #setLetter(String)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSeat_Letter()
+	 * @model
+	 * @generated
+	 */
+	String getLetter();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Seat#getLetter <em>Letter</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Letter</em>' attribute.
+	 * @see #getLetter()
+	 * @generated
+	 */
+	void setLetter(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Seat Id</b></em>' attribute.

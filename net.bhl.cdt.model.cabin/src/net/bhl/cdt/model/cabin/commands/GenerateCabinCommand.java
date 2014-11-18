@@ -141,7 +141,7 @@ public class GenerateCabinCommand extends CDTCommand{
 			newClass.setType(typeID);
 			newClass.setSequence(sequence);
 			newClass.setSeatDimensionX(seatDimensionX);
-			newClass.setSeatDimensionY(seatDimensionY); //Y!!
+			newClass.setSeatDimensionY(seatDimensionY);
 			
 			for (int i = 1; i <= seats/seatsInRow; i++) {
 				globalSeatPositionX = 0;
@@ -158,7 +158,11 @@ public class GenerateCabinCommand extends CDTCommand{
 				newRow.setAdditionalLegroom(moreLegroom);
 				newRow.setOffsetInRow(offsetInTheRow);
 				
-				
+				for(Door door:ModelHelper.getChildrenByClass(cabin, Door.class)) {
+					if((((door.getYPosition()+door.getWidth())>(globalSeatPositionY-newClass.getSeatPitch()))&&(door.getYPosition()<globalSeatPositionY))||((door.getYPosition()>globalSeatPositionY)&&(door.getYPosition()<globalSeatPositionY+newClass.getSeatDimensionY()))) {
+						globalSeatPositionY += 2*newClass.getSeatPitch();
+					}
+				}
 				
 				for (int j = 1; j <= seatsInRow; j++) {
 					
@@ -171,7 +175,7 @@ public class GenerateCabinCommand extends CDTCommand{
 					newSeat.setSeatId(seatIdString);
 					newSeat.setLength(newClass.getSeatDimensionY());
 					newSeat.setWidth(newClass.getSeatDimensionX());
-					
+					newSeat.setLetter(seatIdLetter);
 					//Sitzposition berechnen!
 					newSeat.setXPosition(globalSeatPositionX);
 					newSeat.setYPosition(globalSeatPositionY);
@@ -200,18 +204,25 @@ public class GenerateCabinCommand extends CDTCommand{
 	 * @param symmetrical
 	 * @param id
 	 * @param width
-	 * @param yPosition
+	 * @param yPosition set it to -1 to ignore value, only important for emergency exit.
 	 */
-	public void createDoor(DoorType doorType, boolean symmetrical, int id, double width) {
+	public void createDoor(DoorType doorType, boolean symmetrical, int id, double width, double yPosition) {
 		Door newDoor = CabinFactory.eINSTANCE.createDoor();
 		cabin.getDoors().add(newDoor);
 		newDoor.setId(id);
-		newDoor.setYPosition(globalSeatPositionY);
 		newDoor.setOnBothSides(symmetrical);
 		newDoor.setDoorType(doorType);
 		newDoor.setWidth(width);
-		globalSeatPositionY += width;
+		if(doorType != DoorType.EMERGENCY_EXIT) {
+			newDoor.setYPosition(globalSeatPositionY);
+			globalSeatPositionY += width;
+		} else {
+			if(yPosition < 0) {
+				consoleViewPart.printText("Emergency Exit has a illegal yPosition.");
+			}
+			newDoor.setYPosition(yPosition);	
 		}
+	}
 	
 	/**
 	 * 
@@ -295,8 +306,15 @@ public class GenerateCabinCommand extends CDTCommand{
 	@Override
 	/**
 	 * CAUTION! Objects must be generated in the order they appear in the cabin (from front to rear).
+	 * Emergency Exits must be generated at first!
 	 */
 	protected void doRun() {
+		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+		cabinViewPart = (CabinViewPart) page.findView("net.bhl.cdt.model.cabin.cabinview");
+		
+		consoleViewPart = (ConsoleViewPart) page.findView("net.bhl.cdt.model.cabin.consoleview");
+		
+		
 		//ViewPart viewPart = null;
 		cabin.getClasses().clear();
 		cabin.getDoors().clear();
@@ -309,28 +327,29 @@ public class GenerateCabinCommand extends CDTCommand{
 		seatCount = 1;
 		rowCount = 1;
 	    
-		createLavatory(false,true, ((cabin.getCabinWidth()-cabin.getAisleWidth())/2), 200);
-		createLavatory(true,false, ((cabin.getCabinWidth()-cabin.getAisleWidth())/2), 200);
+		/****Always generate emergency exits at first!******/
+		createDoor(DoorType.EMERGENCY_EXIT,true,3,100,2586);
+		createDoor(DoorType.EMERGENCY_EXIT,true,4,100,2850);
+		/***************************************************/
 		
-		createDoor(DoorType.MAIN_DOOR, true, 1, 200.0);
+		createLavatory(false,true, ((cabin.getCabinWidth()-cabin.getAisleWidth())/2), 200);
+		createLavatory(true,false, ((cabin.getCabinWidth()-cabin.getAisleWidth())/2), 200);	
+		createDoor(DoorType.MAIN_DOOR, true, 1, 200.0,-1);
 		createGalley(false,true,((cabin.getCabinWidth()-cabin.getAisleWidth())/2),200);
 		createGalley(true,false,((cabin.getCabinWidth()-cabin.getAisleWidth())/2),200);
-		createClass(ClassType.FIRST,1);
+		//createClass(ClassType.FIRST,1);
 		createClass(ClassType.BUSINESS,2);
-		createClass(ClassType.PREMIUM_ECO,3);
+		createCurtain(true, 20);
+		//createClass(ClassType.PREMIUM_ECO,3);
 		createClass(ClassType.ECONOMY,4);
 		createGalley(false,true,((cabin.getCabinWidth()-cabin.getAisleWidth())/2),200);
 		createGalley(true,false,((cabin.getCabinWidth()-cabin.getAisleWidth())/2),200);
-		createDoor(DoorType.STANDARD_DOOR, true, 2, 200.0);
+		createDoor(DoorType.STANDARD_DOOR, true, 2, 200.0,-1);
 		createLavatory(false,true, ((cabin.getCabinWidth()-cabin.getAisleWidth())/2), 200);
 		createLavatory(true,false, ((cabin.getCabinWidth()-cabin.getAisleWidth())/2), 200);
 		
-		
-		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-		cabinViewPart = (CabinViewPart) page.findView("net.bhl.cdt.model.cabin.cabinview");
-		cabinViewPart.submitCabin(cabin);
-		consoleViewPart = (ConsoleViewPart) page.findView("net.bhl.cdt.model.cabin.consoleview");
 		consoleViewPart.printText("cabin successfully generated");
+		cabinViewPart.submitCabin(cabin);
 	}
 
 }

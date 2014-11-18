@@ -62,6 +62,10 @@ public class CurtainItemProvider
 
 			addPostitionAfterRowPropertyDescriptor(object);
 			addCurtainOpenPropertyDescriptor(object);
+			addXPositionPropertyDescriptor(object);
+			addYPositionPropertyDescriptor(object);
+			addXDimensionPropertyDescriptor(object);
+			addYDimensionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -111,6 +115,94 @@ public class CurtainItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the XPosition feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addXPositionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Curtain_xPosition_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Curtain_xPosition_feature", "_UI_Curtain_type"),
+				 CabinPackage.Literals.CURTAIN__XPOSITION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the YPosition feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addYPositionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Curtain_yPosition_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Curtain_yPosition_feature", "_UI_Curtain_type"),
+				 CabinPackage.Literals.CURTAIN__YPOSITION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the XDimension feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addXDimensionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Curtain_xDimension_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Curtain_xDimension_feature", "_UI_Curtain_type"),
+				 CabinPackage.Literals.CURTAIN__XDIMENSION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the YDimension feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addYDimensionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Curtain_yDimension_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Curtain_yDimension_feature", "_UI_Curtain_type"),
+				 CabinPackage.Literals.CURTAIN__YDIMENSION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Curtain.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -148,6 +240,10 @@ public class CurtainItemProvider
 		switch (notification.getFeatureID(Curtain.class)) {
 			case CabinPackage.CURTAIN__POSTITION_AFTER_ROW:
 			case CabinPackage.CURTAIN__CURTAIN_OPEN:
+			case CabinPackage.CURTAIN__XPOSITION:
+			case CabinPackage.CURTAIN__YPOSITION:
+			case CabinPackage.CURTAIN__XDIMENSION:
+			case CabinPackage.CURTAIN__YDIMENSION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

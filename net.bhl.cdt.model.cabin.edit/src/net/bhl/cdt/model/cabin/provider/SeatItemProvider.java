@@ -67,6 +67,7 @@ public class SeatItemProvider
 			addLengthPropertyDescriptor(object);
 			addXPositionPropertyDescriptor(object);
 			addYPositionPropertyDescriptor(object);
+			addLetterPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -226,6 +227,28 @@ public class SeatItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Letter feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLetterPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Seat_letter_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Seat_letter_feature", "_UI_Seat_type"),
+				 CabinPackage.Literals.SEAT__LETTER,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Seat Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -292,6 +315,7 @@ public class SeatItemProvider
 			case CabinPackage.SEAT__LENGTH:
 			case CabinPackage.SEAT__XPOSITION:
 			case CabinPackage.SEAT__YPOSITION:
+			case CabinPackage.SEAT__LETTER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
