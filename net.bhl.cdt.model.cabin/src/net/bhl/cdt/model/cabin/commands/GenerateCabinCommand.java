@@ -1,11 +1,8 @@
 package net.bhl.cdt.model.cabin.commands;
 
 import java.util.ArrayList;
-
-import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
-
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.ClassType;
@@ -32,8 +29,8 @@ import net.bhl.cdt.model.util.ModelHelper;
  * This script is used to build up the cabin according to predefined settings.
  * 
  * @author marc.engelmann
- * @version 0.1
- * @date 11-11-2014
+ * @version 1.3
+ * @date 18.11.2014
  *
  */
 
@@ -158,8 +155,9 @@ public class GenerateCabinCommand extends CDTCommand{
 				newRow.setAdditionalLegroom(moreLegroom);
 				newRow.setOffsetInRow(offsetInTheRow);
 				
+				// This loop checks if there is an emergency exit on the planned location of a seat. If so, the  seat row is pushed back two times the seat pitch in that specific class.
 				for(Door door:ModelHelper.getChildrenByClass(cabin, Door.class)) {
-					if((((door.getYPosition()+door.getWidth())>(globalSeatPositionY-newClass.getSeatPitch()))&&(door.getYPosition()<globalSeatPositionY))||((door.getYPosition()>globalSeatPositionY)&&(door.getYPosition()<globalSeatPositionY+newClass.getSeatDimensionY()))) {
+					if((((door.getYPosition()+door.getWidth())>(globalSeatPositionY-newClass.getSeatPitch()))&&(door.getYPosition()<globalSeatPositionY))||((door.getYPosition()>globalSeatPositionY)&&(door.getYPosition()<globalSeatPositionY+newClass.getSeatDimensionY())||((door.getYPosition()+door.getWidth()>globalSeatPositionY)&&(door.getYPosition()<globalSeatPositionY)))) {
 						globalSeatPositionY += 2*newClass.getSeatPitch();
 					}
 				}
@@ -229,11 +227,16 @@ public class GenerateCabinCommand extends CDTCommand{
 	 * @param openOrNot
 	 * @param insertAferRow
 	 */
-	public void createCurtain(boolean openOrNot, int insertAferRow) {
+	public void createCurtain(boolean openOrNot, String name) {
 		Curtain newCurtain = CabinFactory.eINSTANCE.createCurtain();
 		cabin.getCurtains().add(newCurtain);
 		newCurtain.setCurtainOpen(openOrNot);
-		newCurtain.setPostitionAfterRow(insertAferRow);	
+		newCurtain.setXPosition(0);
+		newCurtain.setYPosition(globalSeatPositionY + 50);
+		newCurtain.setXDimension((cabin.getCabinWidth()-cabin.getAisleWidth())/2);
+		newCurtain.setYDimension(50);
+		newCurtain.setName(name);
+		globalSeatPositionY = globalSeatPositionY + newCurtain.getYDimension() + 50;		
 	}
 	
 	/**
@@ -311,16 +314,18 @@ public class GenerateCabinCommand extends CDTCommand{
 	protected void doRun() {
 		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 		cabinViewPart = (CabinViewPart) page.findView("net.bhl.cdt.model.cabin.cabinview");
-		
 		consoleViewPart = (ConsoleViewPart) page.findView("net.bhl.cdt.model.cabin.consoleview");
 		
+		consoleViewPart.printText("initialize cabin generation ...");
 		
 		//ViewPart viewPart = null;
 		cabin.getClasses().clear();
 		cabin.getDoors().clear();
-		cabin.getPassengers().clear();
 		cabin.getLavatories().clear();
 		cabin.getGalleys().clear();
+		cabin.getCurtains().clear();
+		cabin.getStairways().clear();
+		cabin.getStowages().clear();
 		spaceBetweenSeats = 10;
 		globalSeatPositionX = 0;
 		globalSeatPositionY = 0;
@@ -328,8 +333,8 @@ public class GenerateCabinCommand extends CDTCommand{
 		rowCount = 1;
 	    
 		/****Always generate emergency exits at first!******/
-		createDoor(DoorType.EMERGENCY_EXIT,true,3,100,2586);
-		createDoor(DoorType.EMERGENCY_EXIT,true,4,100,2850);
+		createDoor(DoorType.EMERGENCY_EXIT,true,3,100,2600);
+		createDoor(DoorType.EMERGENCY_EXIT,true,4,100,3000);
 		/***************************************************/
 		
 		createLavatory(false,true, ((cabin.getCabinWidth()-cabin.getAisleWidth())/2), 200);
@@ -337,10 +342,12 @@ public class GenerateCabinCommand extends CDTCommand{
 		createDoor(DoorType.MAIN_DOOR, true, 1, 200.0,-1);
 		createGalley(false,true,((cabin.getCabinWidth()-cabin.getAisleWidth())/2),200);
 		createGalley(true,false,((cabin.getCabinWidth()-cabin.getAisleWidth())/2),200);
-		//createClass(ClassType.FIRST,1);
+		createClass(ClassType.FIRST,1);
+		createCurtain(true,"First/Business");
 		createClass(ClassType.BUSINESS,2);
-		createCurtain(true, 20);
-		//createClass(ClassType.PREMIUM_ECO,3);
+		createCurtain(true,"Business/PremiumEco");
+		createClass(ClassType.PREMIUM_ECO,3);
+		createCurtain(true,"PremiumEco/Eco");
 		createClass(ClassType.ECONOMY,4);
 		createGalley(false,true,((cabin.getCabinWidth()-cabin.getAisleWidth())/2),200);
 		createGalley(true,false,((cabin.getCabinWidth()-cabin.getAisleWidth())/2),200);
@@ -348,7 +355,7 @@ public class GenerateCabinCommand extends CDTCommand{
 		createLavatory(false,true, ((cabin.getCabinWidth()-cabin.getAisleWidth())/2), 200);
 		createLavatory(true,false, ((cabin.getCabinWidth()-cabin.getAisleWidth())/2), 200);
 		
-		consoleViewPart.printText("cabin successfully generated");
+		consoleViewPart.printText("cabin generation completed");
 		cabinViewPart.submitCabin(cabin);
 	}
 

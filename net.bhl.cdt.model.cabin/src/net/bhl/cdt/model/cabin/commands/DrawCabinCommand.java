@@ -11,6 +11,11 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 
 
+/**
+ * 
+ * @author marc.engelmann
+ *
+ */
 
 public class DrawCabinCommand extends CDTCommand {
 	

@@ -66,6 +66,7 @@ public class CurtainItemProvider
 			addYPositionPropertyDescriptor(object);
 			addXDimensionPropertyDescriptor(object);
 			addYDimensionPropertyDescriptor(object);
+			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -203,6 +204,28 @@ public class CurtainItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Curtain_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Curtain_name_feature", "_UI_Curtain_type"),
+				 CabinPackage.Literals.CURTAIN__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Curtain.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -221,8 +244,10 @@ public class CurtainItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		Curtain curtain = (Curtain)object;
-		return getString("_UI_Curtain_type") + " " + curtain.getPostitionAfterRow();
+		String label = ((Curtain)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Curtain_type") :
+			getString("_UI_Curtain_type") + " " + label;
 	}
 	
 
@@ -244,6 +269,7 @@ public class CurtainItemProvider
 			case CabinPackage.CURTAIN__YPOSITION:
 			case CabinPackage.CURTAIN__XDIMENSION:
 			case CabinPackage.CURTAIN__YDIMENSION:
+			case CabinPackage.CURTAIN__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

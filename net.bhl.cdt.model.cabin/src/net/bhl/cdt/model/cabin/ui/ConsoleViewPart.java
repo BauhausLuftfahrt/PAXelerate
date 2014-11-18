@@ -5,16 +5,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-
 import net.bhl.cdt.model.cabin.Cabin;
-import net.bhl.cdt.model.cabin.CabinFactory;
-import net.bhl.cdt.model.cabin.Door;
-import net.bhl.cdt.model.cabin.Lavatory;
-import net.bhl.cdt.model.cabin.PassengerClass;
-import net.bhl.cdt.model.cabin.Seat;
-import net.bhl.cdt.model.util.ModelHelper;
-
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
@@ -30,8 +21,13 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 
 /**
+ * This Script creates a ConsoleView. You can send new Strings by running the printText function within another script.
  * 
  * @author marc.engelmann
+ * 
+ * @version 1.0
+ * 
+ * @date 18.11.2014
  *
  */
 
@@ -40,6 +36,7 @@ public class ConsoleViewPart extends ViewPart {
 	Composite parentTest;
 	Canvas canvas;
 	ArrayList<String> consoleList;
+	int numberOfItemsVisible = 5;
 	Boolean cutPrint = false;
 
 	class ViewLabelProvider extends LabelProvider implements ITableLabelProvider {
@@ -69,7 +66,7 @@ public class ConsoleViewPart extends ViewPart {
 
 	
 	public void printText(String text) {	
-		if(consoleList.size()>5) {
+		if(consoleList.size()>numberOfItemsVisible) {
 			consoleList.remove(0);
 			cutPrint = true;
 		}

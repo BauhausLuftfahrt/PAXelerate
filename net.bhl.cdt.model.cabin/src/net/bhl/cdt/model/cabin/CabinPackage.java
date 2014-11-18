@@ -1125,13 +1125,22 @@ public interface CabinPackage extends EPackage {
 	int CURTAIN__YDIMENSION = 5;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CURTAIN__NAME = 6;
+
+	/**
 	 * The number of structural features of the '<em>Curtain</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CURTAIN_FEATURE_COUNT = 6;
+	int CURTAIN_FEATURE_COUNT = 7;
 
 	/**
 	 * The number of operations of the '<em>Curtain</em>' class.
@@ -2294,6 +2303,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getCurtain_YDimension();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Curtain#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see net.bhl.cdt.model.cabin.Curtain#getName()
+	 * @see #getCurtain()
+	 * @generated
+	 */
+	EAttribute getCurtain_Name();
+
+	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.Stowage <em>Stowage</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3104,6 +3124,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CURTAIN__YDIMENSION = eINSTANCE.getCurtain_YDimension();
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CURTAIN__NAME = eINSTANCE.getCurtain_Name();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.StowageImpl <em>Stowage</em>}' class.
 		 * <!-- begin-user-doc -->

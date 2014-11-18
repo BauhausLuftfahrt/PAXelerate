@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
+import net.bhl.cdt.model.cabin.Curtain;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.Lavatory;
@@ -30,6 +31,10 @@ import org.eclipse.ui.part.ViewPart;
 /**
  * 
  * @author marc.engelmann
+ * 
+ * @version 1.0
+ * 
+ * @date 18.11.2014
  *
  */
 
@@ -129,6 +134,7 @@ public class CabinViewPart extends ViewPart {
 		    	  e.gc.fillRectangle(x_zero, y_zero, cabin_x, cabin_y);
 		    	  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_DARK_GRAY));
 		    	  
+		    	  
 		    	  if(!drawCabin.getClasses().isEmpty()) {	  
 		    		  for(Seat seat:ModelHelper.getChildrenByClass(drawCabin, Seat.class)) {
 		    			  PassengerClass pasClass =  ModelHelper.getParent(PassengerClass.class,seat);
@@ -156,7 +162,7 @@ public class CabinViewPart extends ViewPart {
 		    					  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_GRAY));
 		    					  Row row = CabinFactory.eINSTANCE.createRow();
 		    					  row = ModelHelper.getParent(Row.class, seat);
-		    					  e.gc.drawText(""+row.getRowNumber(),(int)(x_zero - 5 + drawCabin.getCabinWidth()/2/factor),(int)(y_zero +seat.getYPosition()/factor));
+		    					  e.gc.drawText(""+row.getRowNumber(),(int)(x_zero - 5 + drawCabin.getCabinWidth()/2/factor),(int)(y_zero +(seat.getYPosition())/factor));
 		    				  }
 		    			  }
 		    		  }
@@ -184,16 +190,25 @@ public class CabinViewPart extends ViewPart {
 		    			  	
 		    			  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_CYAN));
 			    			e.gc.fillRectangle((int)(x_zero+galley.getXPosition()/factor),(int)(y_zero+galley.getYPosition()/factor),(int)(galley.getXDimension()/factor),(int)(galley.getYDimension()/factor));
-			    			 e.gc.drawText("GALLEY", (int)(x_zero-fontsize-8+(galley.getXPosition()+galley.getXDimension()/2)/factor),(int)(y_zero-fontsize +(galley.getYPosition()+galley.getYDimension()/2)/factor));
-			    			  
-			    		  }
+			    			 e.gc.drawText("GALLEY", (int)(x_zero-fontsize-8+(galley.getXPosition()+galley.getXDimension()/2)/factor),(int)(y_zero-fontsize +(galley.getYPosition()+galley.getYDimension()/2)/factor));  
+		    		  }
+		    		  for (Curtain curtain:ModelHelper.getChildrenByClass(drawCabin, Curtain.class)) {
+		    			  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_BLACK));
+		    			  if(curtain.isCurtainOpen()) {
+		    				  e.gc.fillRectangle((int)(x_zero+curtain.getXPosition()/factor),(int)(y_zero+curtain.getYPosition()/factor),(int)(curtain.getXDimension()/factor),(int)(curtain.getYDimension()/factor));
+		    				  e.gc.fillRectangle((int)(x_zero+(drawCabin.getCabinWidth()-curtain.getXPosition()-curtain.getXDimension())/factor),(int)(y_zero+curtain.getYPosition()/factor),(int)(curtain.getXDimension()/factor),(int)(curtain.getYDimension()/factor));
+		    			  } else {
+		    			  e.gc.fillRectangle((int)(x_zero+curtain.getXPosition()/factor),(int)(y_zero+curtain.getYPosition()/factor),(int)(drawCabin.getCabinWidth()/factor),(int)(curtain.getYDimension()/factor));
+		    		  
+		    			  }
+		    			  }
 	    			  
 	    		  } else {
 	    			  Font fontThree = new Font(e.display,"arial", 10, SWT.NORMAL);
 			    	  e.gc.setFont(fontThree);
 	    			  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_RED));
 	    			  e.gc.fillRectangle(30, 370, 310, 38);
-	    			  e.gc.drawText("Please reresh cabin view or generate a new cabin!",40, 380);
+	    			  e.gc.drawText("Please refresh cabin view or generate a new cabin!",40, 380);
 	    		  }
 		      }
 		      
