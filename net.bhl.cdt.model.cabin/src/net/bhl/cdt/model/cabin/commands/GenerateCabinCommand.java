@@ -21,6 +21,7 @@ import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.Stairway;
 import net.bhl.cdt.model.cabin.StairwayDirection;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
+import net.bhl.cdt.model.cabin.ui.ConsoleViewPart;
 
 
 
@@ -40,6 +41,7 @@ public class GenerateCabinCommand extends CDTCommand{
 
 	private Cabin cabin;
 	CabinViewPart cabinViewPart;
+	ConsoleViewPart consoleViewPart;
 	private int seatCount;
 	private int rowCount;
 	private String seatIdLetter;
@@ -298,9 +300,12 @@ public class GenerateCabinCommand extends CDTCommand{
 		//PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().get
 		
 		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+		
 		cabinViewPart = (CabinViewPart) page.findView("net.bhl.cdt.model.cabin.cabinview");
-		//System.out.print(cabinViewPart.getTitle());	
 		cabinViewPart.submitCabin(cabin);
+		
+		consoleViewPart = (ConsoleViewPart) page.findView("net.bhl.cdt.model.cabin.consoleview");
+		consoleViewPart.printText("cabin successfully generated");
 	}
 
 }

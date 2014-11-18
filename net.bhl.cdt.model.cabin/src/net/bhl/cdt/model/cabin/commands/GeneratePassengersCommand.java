@@ -3,6 +3,9 @@ package net.bhl.cdt.model.cabin.commands;
 import java.util.ArrayList;
 import java.util.Random;
 
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PlatformUI;
+
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
@@ -12,7 +15,14 @@ import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerClass;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.Sex;
+import net.bhl.cdt.model.cabin.ui.ConsoleViewPart;
 import net.bhl.cdt.model.util.ModelHelper;
+
+/**
+ * 
+ * @author marc.engelmann
+ *
+ */
 
 public class GeneratePassengersCommand extends CDTCommand{
 
@@ -20,6 +30,7 @@ public class GeneratePassengersCommand extends CDTCommand{
 	ArrayList<Integer> randomNumberCheck;
 	ArrayList<Integer> randomPassengerId;
 	int passengerIdCount;
+	ConsoleViewPart consoleViewPart;
 	
 	public GeneratePassengersCommand(Cabin cabin) {
 		this.cabin = cabin;
@@ -148,6 +159,10 @@ public class GeneratePassengersCommand extends CDTCommand{
 		generatePassengers(ClassType.BUSINESS);
 		generatePassengers(ClassType.PREMIUM_ECO);
 		generatePassengers(ClassType.ECONOMY);
+		
+		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+		consoleViewPart = (ConsoleViewPart) page.findView("net.bhl.cdt.model.cabin.consoleview");
+		consoleViewPart.printText("successfully created "+(passengerIdCount-1)+" passengers");
 		
 	}
 

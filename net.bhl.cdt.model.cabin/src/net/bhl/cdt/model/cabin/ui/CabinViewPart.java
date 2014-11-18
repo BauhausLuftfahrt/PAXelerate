@@ -86,7 +86,7 @@ public class CabinViewPart extends ViewPart {
 	}
 	
 	public void doTheDraw() {
-		factor = drawCabin.getCabinWidth() / 96;
+		factor = drawCabin.getCabinWidth() / 96; // 96 is width of cabin image in pixels
 		parentTest.redraw();
 		parentTest.update();
 		canvas.redraw();
