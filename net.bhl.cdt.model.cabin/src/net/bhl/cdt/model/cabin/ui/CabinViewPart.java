@@ -4,6 +4,7 @@ package net.bhl.cdt.model.cabin.ui;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
 import net.bhl.cdt.model.cabin.Door;
+import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.PassengerClass;
 import net.bhl.cdt.model.cabin.Seat;
@@ -110,12 +111,14 @@ public class CabinViewPart extends ViewPart {
 		    	  e.gc.drawImage(image, 0, 0);
 		    	  //e.gc.drawText(testStr, 0, 0);
 		    	  //e.gc.drawText(drawString, 0,0);
+		    	  Font font = new Font(e.display,"arial", fontsize, SWT.NORMAL);
+		    	  e.gc.setFont(font);
+		    	  e.gc.drawText("TOTAL PAX:",30,30);
 		    	  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_GRAY));
 		    	  //e.gc.setAlpha(200);
 		    	  e.gc.fillRectangle(x_zero, y_zero, cabin_x, cabin_y);
 		    	  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_DARK_GRAY));
-		    	  Font font = new Font(e.display,"arial", fontsize, SWT.NORMAL);
-		    	  e.gc.setFont(font);
+		    	  
 		    	  if(drawCabin.getClasses().isEmpty()) {
 		    		  for (int j = 0; j<numbRows; j++) {
 		    		  for (int i = 0; i <= 6; i++) {
@@ -150,20 +153,33 @@ public class CabinViewPart extends ViewPart {
 		    			  //e.gc.drawRectangle((int)(x_zero+seat.getXPosition()/factor),(int)(y_zero +seat.getYPosition()/factor),(int)(seat.getWidth()/factor),(int)(seat.getLength()/factor));
 		    			  e.gc.fillRectangle((int)(x_zero+seat.getXPosition()/factor),(int)(y_zero +seat.getYPosition()/factor),(int)(seat.getWidth()/factor),(int)(seat.getLength()/factor)); 
 		    			  
-		    			  e.gc.drawText(seat.getSeatId(), (int)(x_zero-fontsize+(seat.getXPosition()+seat.getWidth()/2)/factor),(int)(y_zero-fontsize +(seat.getYPosition()+seat.getLength()/2)/factor));
+		    			  e.gc.drawText(""+seat.getSeatNumber(), (int)(x_zero-fontsize+(seat.getXPosition()+seat.getWidth()/2)/factor),(int)(y_zero-fontsize +(seat.getYPosition()+seat.getLength()/2)/factor));
 		    		  }
 		    		  
 		    		  for(Door door:ModelHelper.getChildrenByClass(drawCabin, Door.class)) {
 		    			  
-		    			 // e.gc.fillRectangle((int)(x_zero+door.getYPosition()/factor),y_zero,(int)(door.getWidth()/factor),(int)(/factor));
+		    			  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_BLACK));
+		    			  if(door.isOnBothSides()) {
+		    				  e.gc.fillRectangle((int)(x_zero+(drawCabin.getCabinWidth()-50)/factor),(int)(y_zero+door.getYPosition()/factor),(int)(50/factor),(int)(door.getWidth()/factor));  
+		    			  }
+		    			  e.gc.fillRectangle((int)(x_zero),(int)(y_zero+door.getYPosition()/factor),(int)(50/factor),(int)(door.getWidth()/factor));
 		    			  
 		    			  
 		    		  }
 		    		  
 		    		  for(Lavatory lavatory:ModelHelper.getChildrenByClass(drawCabin, Lavatory.class)) {
-		    			  	e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_GREEN));
+		    			  	
+		    			  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_GREEN));
 			    			e.gc.fillRectangle((int)(x_zero+lavatory.getXPosition()/factor),(int)(y_zero+lavatory.getYPosition()/factor),(int)(lavatory.getXDimension()/factor),(int)(lavatory.getYDimension()/factor));
 			    			 e.gc.drawText("WC", (int)(x_zero-fontsize+(lavatory.getXPosition()+lavatory.getXDimension()/2)/factor),(int)(y_zero-fontsize +(lavatory.getYPosition()+lavatory.getYDimension()/2)/factor));
+			    			  
+			    		  }
+		    		  
+		    		  for(Galley galley:ModelHelper.getChildrenByClass(drawCabin, Galley.class)) {
+		    			  	
+		    			  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_CYAN));
+			    			e.gc.fillRectangle((int)(x_zero+galley.getXPosition()/factor),(int)(y_zero+galley.getYPosition()/factor),(int)(galley.getXDimension()/factor),(int)(galley.getYDimension()/factor));
+			    			 e.gc.drawText("GALLEY", (int)(x_zero-fontsize-8+(galley.getXPosition()+galley.getXDimension()/2)/factor),(int)(y_zero-fontsize +(galley.getYPosition()+galley.getYDimension()/2)/factor));
 			    			  
 			    		  }
 	    			  

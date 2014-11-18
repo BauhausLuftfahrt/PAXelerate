@@ -80,14 +80,15 @@ public class ConsoleViewPart extends ViewPart {
 		parentTest.redraw();
 		parentTest.update();
 		canvas.redraw();
-		final int fontsize = 8;
+		
 		canvas.addPaintListener(new PaintListener() {
 		      public void paintControl(final PaintEvent e) { 
+		    	  int fontsize = 8;
 		    	  Font font = new Font(e.display,"courier", fontsize, SWT.NORMAL);
+		    	  e.gc.setFont(font);
 		    	  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_BLACK));
 		    	  e.gc.fillRectangle(0, 0, 500, 500);
 		    	  e.gc.setForeground(e.display.getSystemColor(SWT.COLOR_WHITE));
-		    	  e.gc.setFont(font); 
 		    	  if(!consoleList.isEmpty()) {  
 		    		  int i = 0;
 		    		  	if(!cutPrint) {

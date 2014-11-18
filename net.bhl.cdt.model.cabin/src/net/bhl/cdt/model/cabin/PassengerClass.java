@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.PassengerClass#getSequence <em>Sequence</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.PassengerClass#getSeatDimensionY <em>Seat Dimension Y</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.PassengerClass#getSeatDimensionX <em>Seat Dimension X</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.PassengerClass#getSeatPitch <em>Seat Pitch</em>}</li>
  * </ul>
  * </p>
  *
@@ -176,5 +177,32 @@ public interface PassengerClass extends EObject {
 	 * @generated
 	 */
 	void setSeatDimensionX(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Seat Pitch</b></em>' attribute.
+	 * The default value is <code>"50"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seat Pitch</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seat Pitch</em>' attribute.
+	 * @see #setSeatPitch(double)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassengerClass_SeatPitch()
+	 * @model default="50"
+	 * @generated
+	 */
+	double getSeatPitch();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.PassengerClass#getSeatPitch <em>Seat Pitch</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seat Pitch</em>' attribute.
+	 * @see #getSeatPitch()
+	 * @generated
+	 */
+	void setSeatPitch(double value);
 
 } // PassengerClass

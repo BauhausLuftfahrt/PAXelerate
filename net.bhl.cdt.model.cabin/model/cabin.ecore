@@ -67,6 +67,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequence" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatDimensionY" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatDimensionX" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatPitch" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="50"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Door">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="yPosition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>

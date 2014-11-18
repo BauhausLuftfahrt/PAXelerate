@@ -69,6 +69,7 @@ public class PassengerClassItemProvider
 			addSequencePropertyDescriptor(object);
 			addSeatDimensionYPropertyDescriptor(object);
 			addSeatDimensionXPropertyDescriptor(object);
+			addSeatPitchPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -184,6 +185,28 @@ public class PassengerClassItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Seat Pitch feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatPitchPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PassengerClass_seatPitch_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PassengerClass_seatPitch_feature", "_UI_PassengerClass_type"),
+				 CabinPackage.Literals.PASSENGER_CLASS__SEAT_PITCH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -256,6 +279,7 @@ public class PassengerClassItemProvider
 			case CabinPackage.PASSENGER_CLASS__SEQUENCE:
 			case CabinPackage.PASSENGER_CLASS__SEAT_DIMENSION_Y:
 			case CabinPackage.PASSENGER_CLASS__SEAT_DIMENSION_X:
+			case CabinPackage.PASSENGER_CLASS__SEAT_PITCH:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CabinPackage.PASSENGER_CLASS__ROWS:
