@@ -342,7 +342,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int NUMB_AISLES_EDEFAULT = 0;
+	protected static final int NUMB_AISLES_EDEFAULT = 1;
 	/**
 	 * The cached value of the '{@link #getNumbAisles() <em>Numb Aisles</em>}' attribute.
 	 * <!-- begin-user-doc -->

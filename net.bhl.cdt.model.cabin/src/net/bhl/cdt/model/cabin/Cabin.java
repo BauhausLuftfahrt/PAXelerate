@@ -657,6 +657,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Numb Aisles</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Numb Aisles</em>' attribute isn't clear,
@@ -666,7 +667,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Numb Aisles</em>' attribute.
 	 * @see #setNumbAisles(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_NumbAisles()
-	 * @model
+	 * @model default="1"
 	 * @generated
 	 */
 	int getNumbAisles();

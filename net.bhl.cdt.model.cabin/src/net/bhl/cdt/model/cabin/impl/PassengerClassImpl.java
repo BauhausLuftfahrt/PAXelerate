@@ -115,7 +115,7 @@ public class PassengerClassImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double SEAT_DIMENSION_Y_EDEFAULT = 0.0;
+	protected static final double SEAT_DIMENSION_Y_EDEFAULT = 130.0;
 
 	/**
 	 * The cached value of the '{@link #getSeatDimensionY() <em>Seat Dimension Y</em>}' attribute.
@@ -135,7 +135,7 @@ public class PassengerClassImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double SEAT_DIMENSION_X_EDEFAULT = 0.0;
+	protected static final double SEAT_DIMENSION_X_EDEFAULT = 130.0;
 
 	/**
 	 * The cached value of the '{@link #getSeatDimensionX() <em>Seat Dimension X</em>}' attribute.

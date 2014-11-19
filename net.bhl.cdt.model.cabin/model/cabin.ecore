@@ -29,7 +29,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatsPerRowInEconomyClass"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="6"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rowNonexistent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numbAisles" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numbAisles" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="1"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="aisleWidth" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="boardingTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfDecks" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -65,8 +66,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="rows" lowerBound="2" upperBound="-1"
         eType="#//Row" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequence" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatDimensionY" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatDimensionX" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatDimensionY" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="130"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatDimensionX" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="130"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatPitch" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         defaultValueLiteral="50"/>
   </eClassifiers>

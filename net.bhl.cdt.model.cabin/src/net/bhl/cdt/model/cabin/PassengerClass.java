@@ -128,6 +128,7 @@ public interface PassengerClass extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Seat Dimension Y</b></em>' attribute.
+	 * The default value is <code>"130"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Seat Dimension Y</em>' attribute isn't clear,
@@ -137,7 +138,7 @@ public interface PassengerClass extends EObject {
 	 * @return the value of the '<em>Seat Dimension Y</em>' attribute.
 	 * @see #setSeatDimensionY(double)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassengerClass_SeatDimensionY()
-	 * @model
+	 * @model default="130"
 	 * @generated
 	 */
 	double getSeatDimensionY();
@@ -154,6 +155,7 @@ public interface PassengerClass extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Seat Dimension X</b></em>' attribute.
+	 * The default value is <code>"130"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Seat Dimension X</em>' attribute isn't clear,
@@ -163,7 +165,7 @@ public interface PassengerClass extends EObject {
 	 * @return the value of the '<em>Seat Dimension X</em>' attribute.
 	 * @see #setSeatDimensionX(double)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassengerClass_SeatDimensionX()
-	 * @model
+	 * @model default="130"
 	 * @generated
 	 */
 	double getSeatDimensionX();
