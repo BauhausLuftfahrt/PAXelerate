@@ -2,6 +2,8 @@ package net.bhl.cdt.model.cabin.ui;
 
 
 import org.eclipse.swt.graphics.Color;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import net.bhl.cdt.model.cabin.Cabin;
@@ -42,10 +44,7 @@ import org.eclipse.ui.part.ViewPart;
 
 public class CabinViewPart extends ViewPart {
 	private static TableViewer viewer;
-	public int x_zero;
-	public int y_zero;
 	public Cabin drawCabin;
-	public int cabin_x;
 	public int cabin_y;
 	public double factor;
 	public String drawString;
@@ -55,6 +54,12 @@ public class CabinViewPart extends ViewPart {
 	public int doorsOutOfCabinPixels = 2;
 	double sizeOfPassengerCircle = 0.75; /*value between 0 and 1. Depending on the seat size*/
 	/*************************************/
+	
+	/*****image-properties*****/
+	int cabin_x = 96; //96 /*width of cabin in the image in pixels*/
+	int x_zero = 138; /*defined left upper point of cabin in pixels*/
+	int y_zero = 90; /*defined left upper point of cabin in pixels*/
+	/**************************/
 	
 	Composite parentTest;
 	Image image;
@@ -96,12 +101,6 @@ public class CabinViewPart extends ViewPart {
 	
 	public void doTheDraw() {
 		
-		/*****image-properties*****/
-		cabin_x = 96; /*width of cabin in the image in pixels*/
-		x_zero = 138; /*defined left upper point of cabin in pixels*/
-		y_zero = 90; /*defined left upper point of cabin in pixels*/
-		/**************************/
-		
 		factor = drawCabin.getCabinWidth() / cabin_x; 
 		
 		parentTest.redraw();
@@ -124,9 +123,11 @@ public class CabinViewPart extends ViewPart {
 		    	  Color gold = new Color(e.display,255,215,0); /*Premium Economy Class Color Code*/
 		    	  Color blue = new Color(e.display,30,144,255); /*Business Class Color Code*/
 		    	  Color red = new Color(e.display,220,20,60); /*First Class Color Code*/
-		    	  Color gray = new Color(e.display,105,105,105); /*Economy Class Color Code*/
+		    	  Color gray = new Color(e.display,169,169,169); /*Economy Class Color Code*/
 		    	  Color salmon = new Color(e.display,250,128,114); /*Lavatory Color Code*/
 		    	  Color green = new Color(e.display,50,205,50); /*Galley Color Code*/
+		    	  Color light_gray = new Color(e.display,220,220,220); /*Background Color Code*/
+		    	  Color dark_gray = new Color(e.display,105,105,105); /*Door Color Code*/
 		    	  
 		    	  Font fontOne = new Font(e.display,"arial", 8, SWT.NORMAL);
 		    	  Font fontTwo = new Font(e.display,"arial", fontsize, SWT.NORMAL); 
@@ -137,14 +138,15 @@ public class CabinViewPart extends ViewPart {
 		    	  e.gc.drawRectangle(20, 20, 70, 60);
 		    	  List<Seat> seatList =  ModelHelper.getChildrenByClass(drawCabin, Seat.class);
 		    	  List<Row> rowList =  ModelHelper.getChildrenByClass(drawCabin, Row.class);
+		    	  ArrayList<Row> rowCountList = new ArrayList<Row>();
 		    	  List<Passenger> paxList = ModelHelper.getChildrenByClass(drawCabin, Passenger.class);
 		    	  e.gc.drawText("Seats "+"\nRows "+"\nPax ",30,30);
 		    	  e.gc.drawText(":\n:\n:",60,30);
 		    	  e.gc.drawText(seatList.size()+"\n"+rowList.size()+"\n"+paxList.size(), 65, 30);
 		    	  e.gc.setFont(fontTwo);
-		    	  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_GRAY));
+		    	  e.gc.setBackground(light_gray);
 		    	  e.gc.fillRectangle(x_zero, y_zero, cabin_x, cabin_y);
-		    	  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_DARK_GRAY));
+		    	  //e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_DARK_GRAY));
 		    	  
 		    	  
 		    	  if(!drawCabin.getClasses().isEmpty()) {	  
@@ -170,18 +172,19 @@ public class CabinViewPart extends ViewPart {
 		    			  
 		    			  if(showSeatLabels) {
 		    				  e.gc.drawText(""+seat.getLetter(), (int)(x_zero-fontsize+(seat.getXPosition()+seat.getWidth()/2)/factor),(int)(y_zero-fontsize +(seat.getYPosition()+seat.getLength()/2)/factor));
-		    				  if(seat.getXPosition()==0) {
-		    					  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_GRAY));
-		    					  Row row = CabinFactory.eINSTANCE.createRow();
-		    					  row = ModelHelper.getParent(Row.class, seat);
-		    					  e.gc.drawText(""+row.getRowNumber(),(int)(x_zero - 5 + drawCabin.getCabinWidth()/2/factor),(int)(y_zero +(seat.getYPosition())/factor));
-		    				  }
+		    				  Row row = CabinFactory.eINSTANCE.createRow();
+	    					  row = ModelHelper.getParent(Row.class, seat);
+	    					  if(!rowCountList.contains(row)) {
+		    					  e.gc.setBackground(light_gray);
+		    					  e.gc.drawText(""+row.getRowNumber(),(int)(x_zero - 5 + drawCabin.getCabinWidth()/2/factor),(int)(y_zero - fontsize +(seat.getYPosition()+seat.getLength()/2)/factor));
+		    					  rowCountList.add(row);
+	    					  }
 		    			  }
 		    		  }
 		    		  
 		    		  for(Door door:ModelHelper.getChildrenByClass(drawCabin, Door.class)) {
 		    			  
-		    			  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_BLACK));
+		    			  e.gc.setBackground(dark_gray);
 		    			  if(door.isOnBothSides()) {
 		    				  e.gc.fillRectangle((int)(x_zero+doorsOutOfCabinPixels+(drawCabin.getCabinWidth()-50)/factor),(int)(y_zero+door.getYPosition()/factor),(int)(50/factor),(int)(door.getWidth()/factor));  
 		    			  }

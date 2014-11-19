@@ -28,9 +28,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerClassImpl#getAvailableSeats <em>Available Seats</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerClassImpl#getRows <em>Rows</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerClassImpl#getSequence <em>Sequence</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerClassImpl#getSeatDimensionY <em>Seat Dimension Y</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerClassImpl#getSeatDimensionX <em>Seat Dimension X</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerClassImpl#getSeatPitch <em>Seat Pitch</em>}</li>
  * </ul>
  * </p>
  *
@@ -106,66 +103,6 @@ public class PassengerClassImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected int sequence = SEQUENCE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getSeatDimensionY() <em>Seat Dimension Y</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatDimensionY()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double SEAT_DIMENSION_Y_EDEFAULT = 130.0;
-
-	/**
-	 * The cached value of the '{@link #getSeatDimensionY() <em>Seat Dimension Y</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatDimensionY()
-	 * @generated
-	 * @ordered
-	 */
-	protected double seatDimensionY = SEAT_DIMENSION_Y_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getSeatDimensionX() <em>Seat Dimension X</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatDimensionX()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double SEAT_DIMENSION_X_EDEFAULT = 130.0;
-
-	/**
-	 * The cached value of the '{@link #getSeatDimensionX() <em>Seat Dimension X</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatDimensionX()
-	 * @generated
-	 * @ordered
-	 */
-	protected double seatDimensionX = SEAT_DIMENSION_X_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getSeatPitch() <em>Seat Pitch</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatPitch()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double SEAT_PITCH_EDEFAULT = 50.0;
-
-	/**
-	 * The cached value of the '{@link #getSeatPitch() <em>Seat Pitch</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatPitch()
-	 * @generated
-	 * @ordered
-	 */
-	protected double seatPitch = SEAT_PITCH_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -266,69 +203,6 @@ public class PassengerClassImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getSeatDimensionY() {
-		return seatDimensionY;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSeatDimensionY(double newSeatDimensionY) {
-		double oldSeatDimensionY = seatDimensionY;
-		seatDimensionY = newSeatDimensionY;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER_CLASS__SEAT_DIMENSION_Y, oldSeatDimensionY, seatDimensionY));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public double getSeatDimensionX() {
-		return seatDimensionX;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSeatDimensionX(double newSeatDimensionX) {
-		double oldSeatDimensionX = seatDimensionX;
-		seatDimensionX = newSeatDimensionX;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER_CLASS__SEAT_DIMENSION_X, oldSeatDimensionX, seatDimensionX));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public double getSeatPitch() {
-		return seatPitch;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSeatPitch(double newSeatPitch) {
-		double oldSeatPitch = seatPitch;
-		seatPitch = newSeatPitch;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER_CLASS__SEAT_PITCH, oldSeatPitch, seatPitch));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -354,12 +228,6 @@ public class PassengerClassImpl extends MinimalEObjectImpl.Container implements 
 				return getRows();
 			case CabinPackage.PASSENGER_CLASS__SEQUENCE:
 				return getSequence();
-			case CabinPackage.PASSENGER_CLASS__SEAT_DIMENSION_Y:
-				return getSeatDimensionY();
-			case CabinPackage.PASSENGER_CLASS__SEAT_DIMENSION_X:
-				return getSeatDimensionX();
-			case CabinPackage.PASSENGER_CLASS__SEAT_PITCH:
-				return getSeatPitch();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -386,15 +254,6 @@ public class PassengerClassImpl extends MinimalEObjectImpl.Container implements 
 			case CabinPackage.PASSENGER_CLASS__SEQUENCE:
 				setSequence((Integer)newValue);
 				return;
-			case CabinPackage.PASSENGER_CLASS__SEAT_DIMENSION_Y:
-				setSeatDimensionY((Double)newValue);
-				return;
-			case CabinPackage.PASSENGER_CLASS__SEAT_DIMENSION_X:
-				setSeatDimensionX((Double)newValue);
-				return;
-			case CabinPackage.PASSENGER_CLASS__SEAT_PITCH:
-				setSeatPitch((Double)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -419,15 +278,6 @@ public class PassengerClassImpl extends MinimalEObjectImpl.Container implements 
 			case CabinPackage.PASSENGER_CLASS__SEQUENCE:
 				setSequence(SEQUENCE_EDEFAULT);
 				return;
-			case CabinPackage.PASSENGER_CLASS__SEAT_DIMENSION_Y:
-				setSeatDimensionY(SEAT_DIMENSION_Y_EDEFAULT);
-				return;
-			case CabinPackage.PASSENGER_CLASS__SEAT_DIMENSION_X:
-				setSeatDimensionX(SEAT_DIMENSION_X_EDEFAULT);
-				return;
-			case CabinPackage.PASSENGER_CLASS__SEAT_PITCH:
-				setSeatPitch(SEAT_PITCH_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -448,12 +298,6 @@ public class PassengerClassImpl extends MinimalEObjectImpl.Container implements 
 				return rows != null && !rows.isEmpty();
 			case CabinPackage.PASSENGER_CLASS__SEQUENCE:
 				return sequence != SEQUENCE_EDEFAULT;
-			case CabinPackage.PASSENGER_CLASS__SEAT_DIMENSION_Y:
-				return seatDimensionY != SEAT_DIMENSION_Y_EDEFAULT;
-			case CabinPackage.PASSENGER_CLASS__SEAT_DIMENSION_X:
-				return seatDimensionX != SEAT_DIMENSION_X_EDEFAULT;
-			case CabinPackage.PASSENGER_CLASS__SEAT_PITCH:
-				return seatPitch != SEAT_PITCH_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -474,12 +318,6 @@ public class PassengerClassImpl extends MinimalEObjectImpl.Container implements 
 		result.append(availableSeats);
 		result.append(", sequence: ");
 		result.append(sequence);
-		result.append(", seatDimensionY: ");
-		result.append(seatDimensionY);
-		result.append(", seatDimensionX: ");
-		result.append(seatDimensionX);
-		result.append(", seatPitch: ");
-		result.append(seatPitch);
 		result.append(')');
 		return result.toString();
 	}

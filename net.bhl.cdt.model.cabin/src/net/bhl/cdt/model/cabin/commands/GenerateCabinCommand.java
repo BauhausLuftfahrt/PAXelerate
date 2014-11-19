@@ -87,46 +87,39 @@ public class GenerateCabinCommand extends CDTCommand{
 		String seatIdString ="";
 		int seats = 0;
 		int seatsInRow = 0;
-		
+		double seatDimensionX = 0;
+		double seatDimensionY = 0;
 		// these parameters should be read out of the initial settings depending on ClassType, implementation here for test purpose only 
 		boolean moreLegroom = false;
 		boolean offsetInTheRow = false;
-		double seatDimensionX = 0;
-		double seatDimensionY = 0;
-		
-		
-		// how is this used? -> divide all dimensions by scale?
-		//double scale = cabin.getScale();
-		
-		
 		
 		//load the settings depending on the ClassType
 		switch (typeID) {
 				case PREMIUM_ECO:
 					seats = cabin.getSeatsInPremiumEconomyClass();
 					seatsInRow = cabin.getSeatsPerRowInPremiumEconomyClass();
-				//	seatDimensionY = 130;
+					seatDimensionX = cabin.getSeatWidthInPremiumEconomy();
+					seatDimensionY = cabin.getSeatLengthInPremiumEconomy();
 					break;
 				case BUSINESS:
 					seats = cabin.getSeatsInBusinessClass();
-					seatsInRow = cabin.getSeatsPerRowInBusinessClass();	
-
-				//	seatDimensionY = 180;
+					seatsInRow = cabin.getSeatsPerRowInBusinessClass();
+					seatDimensionX =cabin.getSeatWidthInBusiness();
+					seatDimensionY = cabin.getSeatLengthInBusiness();
 				break;	
 				case FIRST:
 					seats = cabin.getSeatsInFirstClass();
 					seatsInRow = cabin.getSeatsPerRowInFirstClass();
-
-					//seatDimensionY = 250;
+					seatDimensionX =cabin.getSeatWidthInFirst();
+					seatDimensionY = cabin.getSeatLengthInFirst();
 				break;	
 				default:
 					seats = cabin.getSeatsInEconomyClass();
-					seatsInRow = cabin.getSeatsPerRowInEconomyClass();	
-				//	seatDimensionY = 130; 
+					seatsInRow = cabin.getSeatsPerRowInEconomyClass();
+					seatDimensionX =cabin.getSeatWidthInEconomy();
+					seatDimensionY = cabin.getSeatLengthInEconomy();
 				break;	
 		}
-		
-		//seatDimensionX = (cabin.getCabinWidth()-cabin.getAisleWidth()-((seatsInRow-2)*spaceBetweenSeats))/seatsInRow;
 		
 		if ((seats > 0) && (seatsInRow > 0)) {
 			
@@ -143,16 +136,16 @@ public class GenerateCabinCommand extends CDTCommand{
 			for (int i = 1; i <= seats/seatsInRow; i++) {
 				switch (cabin.getNumbAisles()) {
 				case 1:
-					seatHelper = globalSeatPositionX = ((cabin.getCabinWidth()-cabin.getAisleWidth())/2 - (seatsInRow/2) * newClass.getSeatDimensionX())/(1+seatsInRow/2);
+					seatHelper = globalSeatPositionX = ((cabin.getCabinWidth()-cabin.getAisleWidth())/2 - (seatsInRow/2) * seatDimensionX)/(1+seatsInRow/2);
 					break;	
-				case 2:
-					break;
+//				case 2:
+//					break;
 				default:
-					consoleViewPart.printText("Please redefine the number of aisles.");
+					consoleViewPart.printText("Number of aisles not supported!");
 				break;
 				}
 				
-				globalSeatPositionY += newClass.getSeatPitch();
+				globalSeatPositionY += cabin.getSeatPitch();
 				
  				if (cabin.getRowNonexistent()==rowCount) {
 					rowCount ++;	
@@ -162,13 +155,11 @@ public class GenerateCabinCommand extends CDTCommand{
 				Row newRow = CabinFactory.eINSTANCE.createRow();
 				newClass.getRows().add(newRow);
 				newRow.setRowNumber(rowCount);
-				newRow.setAdditionalLegroom(moreLegroom);
-				newRow.setOffsetInRow(offsetInTheRow);
 				
 				// This loop checks if there is an emergency exit on the planned location of a seat. If so, the  seat row is pushed back two times the seat pitch in that specific class.
 				for(Door door:ModelHelper.getChildrenByClass(cabin, Door.class)) {
-					if((((door.getYPosition()+door.getWidth())>(globalSeatPositionY-newClass.getSeatPitch()))&&(door.getYPosition()<globalSeatPositionY))||((door.getYPosition()>globalSeatPositionY)&&(door.getYPosition()<globalSeatPositionY+newClass.getSeatDimensionY())||((door.getYPosition()+door.getWidth()>globalSeatPositionY)&&(door.getYPosition()<globalSeatPositionY)))) {
-						globalSeatPositionY += 2*newClass.getSeatPitch();
+					if((((door.getYPosition()+door.getWidth())>(globalSeatPositionY-cabin.getSeatPitch()))&&(door.getYPosition()<globalSeatPositionY))||((door.getYPosition()>globalSeatPositionY)&&(door.getYPosition()<globalSeatPositionY+seatDimensionY)||((door.getYPosition()+door.getWidth()>globalSeatPositionY)&&(door.getYPosition()<globalSeatPositionY)))) {
+						globalSeatPositionY += 2*cabin.getSeatPitch();
 					}
 				}
 				
@@ -181,39 +172,20 @@ public class GenerateCabinCommand extends CDTCommand{
 					switchLetter(j);
 					seatIdString = rowCount+seatIdLetter;
 					newSeat.setSeatId(seatIdString);
-					newSeat.setLength(newClass.getSeatDimensionY());
-					newSeat.setWidth(newClass.getSeatDimensionX());
+					newSeat.setLength(seatDimensionY);
+					newSeat.setWidth(seatDimensionX); 
 					newSeat.setLetter(seatIdLetter);
-					//Sitzposition berechnen!
 					newSeat.setXPosition(globalSeatPositionX);
 					newSeat.setYPosition(globalSeatPositionY);
-					
-//					double helpSpaceBetweenSeats = 0;
-//					if((j!=(seatsInRow/2))&&(j!=seatsInRow)) {
-//						helpSpaceBetweenSeats = spaceBetweenSeats;
-//					}
 					double aisleSpace = 0;
 					seatCount ++;	
 					if (j==(seatsInRow/2)) {
 					aisleSpace = cabin.getAisleWidth() + seatHelper;
-					}
-					
-//					switch (seatsInRow) {
-//					case 2:
-//						globalSeatPositionX = globalSeatPositionX + aisleSpace + seatHelper;
-//						break;
-//					case 4:
-//						break;
-//					case 6:
-//						break;
-//					default:
-//						break;	
-//					}
-					//globalSeatPositionX  =  globalSeatPositionX + newClass.getSeatDimensionX()+aisleSpace+helpSpaceBetweenSeats;
-					globalSeatPositionX = globalSeatPositionX + newSeat.getWidth() + aisleSpace + seatHelper;
+					}					
+					globalSeatPositionX = globalSeatPositionX + seatDimensionX + aisleSpace + seatHelper;
 				}
 			rowCount ++;
-			globalSeatPositionY = globalSeatPositionY + newClass.getSeatDimensionY();
+			globalSeatPositionY = globalSeatPositionY + seatDimensionY;
 			}
 		if(typeID != ClassType.ECONOMY) {
 	    createCurtain(true,"after "+newClass.getType().toString()+"Class");

@@ -52,16 +52,25 @@ public class CabinItemProvider
 			addSeatsInFirstClassPropertyDescriptor(object);
 			addFirstClassPassengersPropertyDescriptor(object);
 			addSeatsPerRowInFirstClassPropertyDescriptor(object);
+			addSeatWidthInFirstPropertyDescriptor(object);
+			addSeatLengthInFirstPropertyDescriptor(object);
 			addSeatsInBusinessClassPropertyDescriptor(object);
 			addBusinessClassPassengersPropertyDescriptor(object);
 			addSeatsPerRowInBusinessClassPropertyDescriptor(object);
+			addSeatWidthInBusinessPropertyDescriptor(object);
+			addSeatLengthInBusinessPropertyDescriptor(object);
 			addSeatsInPremiumEconomyClassPropertyDescriptor(object);
 			addPremiumEconomyClassPassengersPropertyDescriptor(object);
 			addSeatsPerRowInPremiumEconomyClassPropertyDescriptor(object);
+			addSeatWidthInPremiumEconomyPropertyDescriptor(object);
+			addSeatLengthInPremiumEconomyPropertyDescriptor(object);
 			addSeatsInEconomyClassPropertyDescriptor(object);
 			addEconomyClassPassengersPropertyDescriptor(object);
 			addSeatsPerRowInEconomyClassPropertyDescriptor(object);
+			addSeatWidthInEconomyPropertyDescriptor(object);
+			addSeatLengthInEconomyPropertyDescriptor(object);
 			addRowNonexistentPropertyDescriptor(object);
+			addSeatPitchPropertyDescriptor(object);
 			addNumbAislesPropertyDescriptor(object);
 			addAisleWidthPropertyDescriptor(object);
 			addBoardingTimePropertyDescriptor(object);
@@ -226,6 +235,50 @@ public class CabinItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Seat Width In Economy feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatWidthInEconomyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_seatWidthInEconomy_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_seatWidthInEconomy_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__SEAT_WIDTH_IN_ECONOMY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Seat Length In Economy feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatLengthInEconomyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_seatLengthInEconomy_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_seatLengthInEconomy_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__SEAT_LENGTH_IN_ECONOMY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Seats Per Row In Business Class feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -243,6 +296,50 @@ public class CabinItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Seat Width In Business feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatWidthInBusinessPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_seatWidthInBusiness_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_seatWidthInBusiness_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__SEAT_WIDTH_IN_BUSINESS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Seat Length In Business feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatLengthInBusinessPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_seatLengthInBusiness_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_seatLengthInBusiness_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__SEAT_LENGTH_IN_BUSINESS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -270,6 +367,50 @@ public class CabinItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Seat Width In First feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatWidthInFirstPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_seatWidthInFirst_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_seatWidthInFirst_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__SEAT_WIDTH_IN_FIRST,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Seat Length In First feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatLengthInFirstPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_seatLengthInFirst_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_seatLengthInFirst_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__SEAT_LENGTH_IN_FIRST,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Seats Per Row In Premium Economy Class feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -287,6 +428,50 @@ public class CabinItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Seat Width In Premium Economy feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatWidthInPremiumEconomyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_seatWidthInPremiumEconomy_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_seatWidthInPremiumEconomy_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__SEAT_WIDTH_IN_PREMIUM_ECONOMY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Seat Length In Premium Economy feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatLengthInPremiumEconomyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_seatLengthInPremiumEconomy_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_seatLengthInPremiumEconomy_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__SEAT_LENGTH_IN_PREMIUM_ECONOMY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -468,6 +653,28 @@ public class CabinItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Seat Pitch feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatPitchPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_seatPitch_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_seatPitch_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__SEAT_PITCH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Numb Aisles feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -590,16 +797,25 @@ public class CabinItemProvider
 			case CabinPackage.CABIN__SEATS_IN_FIRST_CLASS:
 			case CabinPackage.CABIN__FIRST_CLASS_PASSENGERS:
 			case CabinPackage.CABIN__SEATS_PER_ROW_IN_FIRST_CLASS:
+			case CabinPackage.CABIN__SEAT_WIDTH_IN_FIRST:
+			case CabinPackage.CABIN__SEAT_LENGTH_IN_FIRST:
 			case CabinPackage.CABIN__SEATS_IN_BUSINESS_CLASS:
 			case CabinPackage.CABIN__BUSINESS_CLASS_PASSENGERS:
 			case CabinPackage.CABIN__SEATS_PER_ROW_IN_BUSINESS_CLASS:
+			case CabinPackage.CABIN__SEAT_WIDTH_IN_BUSINESS:
+			case CabinPackage.CABIN__SEAT_LENGTH_IN_BUSINESS:
 			case CabinPackage.CABIN__SEATS_IN_PREMIUM_ECONOMY_CLASS:
 			case CabinPackage.CABIN__PREMIUM_ECONOMY_CLASS_PASSENGERS:
 			case CabinPackage.CABIN__SEATS_PER_ROW_IN_PREMIUM_ECONOMY_CLASS:
+			case CabinPackage.CABIN__SEAT_WIDTH_IN_PREMIUM_ECONOMY:
+			case CabinPackage.CABIN__SEAT_LENGTH_IN_PREMIUM_ECONOMY:
 			case CabinPackage.CABIN__SEATS_IN_ECONOMY_CLASS:
 			case CabinPackage.CABIN__ECONOMY_CLASS_PASSENGERS:
 			case CabinPackage.CABIN__SEATS_PER_ROW_IN_ECONOMY_CLASS:
+			case CabinPackage.CABIN__SEAT_WIDTH_IN_ECONOMY:
+			case CabinPackage.CABIN__SEAT_LENGTH_IN_ECONOMY:
 			case CabinPackage.CABIN__ROW_NONEXISTENT:
+			case CabinPackage.CABIN__SEAT_PITCH:
 			case CabinPackage.CABIN__NUMB_AISLES:
 			case CabinPackage.CABIN__AISLE_WIDTH:
 			case CabinPackage.CABIN__BOARDING_TIME:
