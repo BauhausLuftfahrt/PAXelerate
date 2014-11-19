@@ -10,11 +10,12 @@ import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
 import net.bhl.cdt.model.cabin.ClassType;
+import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.DoorType;
 import net.bhl.cdt.model.cabin.Passenger;
-import net.bhl.cdt.model.cabin.PassengerClass;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.Sex;
+import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.ConsoleViewPart;
 import net.bhl.cdt.model.util.ModelHelper;
 
@@ -31,6 +32,7 @@ public class GeneratePassengersCommand extends CDTCommand{
 	ArrayList<Integer> randomPassengerId;
 	int passengerIdCount;
 	ConsoleViewPart consoleViewPart;
+	CabinViewPart cabinViewPart;
 	
 	public GeneratePassengersCommand(Cabin cabin) {
 		this.cabin = cabin;
@@ -121,7 +123,8 @@ public class GeneratePassengersCommand extends CDTCommand{
 					for (Seat seat:ModelHelper.getChildrenByClass(cabin, Seat.class)){
 						if(!seat.equals(null)) {
 							if(seat.getSeatNumber()==newPassenger.getSeat()) {
-								newPassenger.setName(randomId+" is at Seat "+seat.getSeatId());		 //passengerIdCount ordnet nach Klasse!	
+								newPassenger.setName(randomId+" is at Seat "+seat.getSeatId());		 //passengerIdCount ordnet nach Klasse!
+								newPassenger.setSeatRef(seat);
 							}
 						}
 					}
@@ -129,9 +132,13 @@ public class GeneratePassengersCommand extends CDTCommand{
 			//}
 			newPassenger.setClass(classType);
 			newPassenger.setAge(rand.nextInt(42) + 18);
-			if ((cabin.getDoors().size()!=0)&&(cabin.getDoors().get(0).getDoorType()==DoorType.MAIN_DOOR)) {
-				// The door created first is assigned to the passenger
-				newPassenger.setDoor(cabin.getDoors().get(0));
+			if (cabin.getDoors().size()!=0) {
+				for(Door door:ModelHelper.getChildrenByClass(cabin, Door.class)) {
+					// The main door is assigned to the passenger
+					if(door.getDoorType()==DoorType.MAIN_DOOR) {
+						newPassenger.setDoor(door);
+					}
+				}
 			}
 		
 			if (rand.nextInt(2)==1) {
@@ -152,6 +159,7 @@ public class GeneratePassengersCommand extends CDTCommand{
 	
 	@Override
 	protected void doRun() {
+		cabin.getPassengers().clear();
 		randomNumberCheck = new ArrayList<Integer>();
 		randomPassengerId = new ArrayList<Integer>();
 		passengerIdCount = 1;
@@ -162,7 +170,10 @@ public class GeneratePassengersCommand extends CDTCommand{
 		
 		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 		consoleViewPart = (ConsoleViewPart) page.findView("net.bhl.cdt.model.cabin.consoleview");
+		cabinViewPart = (CabinViewPart) page.findView("net.bhl.cdt.model.cabin.cabinview");
 		consoleViewPart.printText("successfully created "+(passengerIdCount-1)+" passengers");
+		
+		cabinViewPart.submitCabin(cabin);
 		
 	}
 

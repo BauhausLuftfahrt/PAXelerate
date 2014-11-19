@@ -70,6 +70,7 @@ public class PassengerItemProvider
 			addNamePropertyDescriptor(object);
 			addClassPropertyDescriptor(object);
 			addBoardingTimePropertyDescriptor(object);
+			addSeatRefPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -202,6 +203,28 @@ public class PassengerItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Seat Ref feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatRefPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_seatRef_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_seatRef_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__SEAT_REF,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

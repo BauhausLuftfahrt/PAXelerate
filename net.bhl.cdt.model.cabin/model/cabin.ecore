@@ -99,6 +99,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="class" eType="#//ClassType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="boardingTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="seatRef" lowerBound="1"
+        eType="#//Seat"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CrewMember">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>

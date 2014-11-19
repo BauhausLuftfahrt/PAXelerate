@@ -796,13 +796,22 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER__BOARDING_TIME = 9;
 
 	/**
+	 * The feature id for the '<em><b>Seat Ref</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__SEAT_REF = 10;
+
+	/**
 	 * The number of structural features of the '<em>Passenger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_FEATURE_COUNT = 10;
+	int PASSENGER_FEATURE_COUNT = 11;
 
 	/**
 	 * The number of operations of the '<em>Passenger</em>' class.
@@ -1978,6 +1987,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getPassenger_BoardingTime();
 
 	/**
+	 * Returns the meta object for the reference '{@link net.bhl.cdt.model.cabin.Passenger#getSeatRef <em>Seat Ref</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Seat Ref</em>'.
+	 * @see net.bhl.cdt.model.cabin.Passenger#getSeatRef()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EReference getPassenger_SeatRef();
+
+	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getHeight <em>Height</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2904,6 +2924,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PASSENGER__BOARDING_TIME = eINSTANCE.getPassenger_BoardingTime();
+		/**
+		 * The meta object literal for the '<em><b>Seat Ref</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PASSENGER__SEAT_REF = eINSTANCE.getPassenger_SeatRef();
 		/**
 		 * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->

@@ -9,6 +9,7 @@ import net.bhl.cdt.model.cabin.Curtain;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.Lavatory;
+import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerClass;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.Row;
@@ -119,6 +120,7 @@ public class CabinViewPart extends ViewPart {
 		canvas.addPaintListener(new PaintListener() {
 		      public void paintControl(final PaintEvent e) { 
 		    	  e.gc.drawImage(image, 0, 0);
+		    	  e.gc.setAlpha(255);
 		    	  //e.gc.drawText(testStr, 0, 0);
 		    	  //e.gc.drawText(drawString, 0,0);
 		    	  Font fontOne = new Font(e.display,"arial", 8, SWT.NORMAL);
@@ -202,6 +204,17 @@ public class CabinViewPart extends ViewPart {
 		    		  
 		    			  }
 		    			  }
+		    		  if(!drawCabin.getPassengers().isEmpty()) {
+		    			  for(Passenger passenger:ModelHelper.getChildrenByClass(drawCabin, Passenger.class)) {
+		    				  Seat passengerSeat = passenger.getSeatRef();
+		    				  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_BLACK));
+		    				  if(passengerSeat.getLength()<passengerSeat.getWidth()) {
+		    					  e.gc.fillOval((int)(x_zero+(passengerSeat.getXPosition()+passengerSeat.getWidth()/2-passengerSeat.getLength()/4)/factor),(int)(y_zero +(passengerSeat.getYPosition()+passengerSeat.getLength()/4)/factor),(int)(0.5*passengerSeat.getLength()/factor),(int)(0.5*passengerSeat.getLength()/factor)); 
+		    				  }else {
+		    					  e.gc.fillOval((int)(x_zero+(passengerSeat.getXPosition()+passengerSeat.getWidth()/4)/factor),(int)(y_zero +(passengerSeat.getYPosition()+passengerSeat.getLength()/2-passengerSeat.getWidth()/4)/factor),(int)(0.5*passengerSeat.getWidth()/factor),(int)(0.5*passengerSeat.getWidth()/factor)); 
+		    				  }
+		    			  }  
+		    		  }
 	    			  
 	    		  } else {
 	    			  Font fontThree = new Font(e.display,"arial", 10, SWT.NORMAL);

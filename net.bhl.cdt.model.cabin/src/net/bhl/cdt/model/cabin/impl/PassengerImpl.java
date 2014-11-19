@@ -6,6 +6,7 @@ import net.bhl.cdt.model.cabin.CabinPackage;
 import net.bhl.cdt.model.cabin.ClassType;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
+import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.Sex;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
@@ -30,6 +31,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getName <em>Name</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getClass_ <em>Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getBoardingTime <em>Boarding Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getSeatRef <em>Seat Ref</em>}</li>
  * </ul>
  * </p>
  *
@@ -227,6 +229,16 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	protected double boardingTime = BOARDING_TIME_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getSeatRef() <em>Seat Ref</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatRef()
+	 * @generated
+	 * @ordered
+	 */
+	protected Seat seatRef;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -376,6 +388,44 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Seat getSeatRef() {
+		if (seatRef != null && seatRef.eIsProxy()) {
+			InternalEObject oldSeatRef = (InternalEObject)seatRef;
+			seatRef = (Seat)eResolveProxy(oldSeatRef);
+			if (seatRef != oldSeatRef) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CabinPackage.PASSENGER__SEAT_REF, oldSeatRef, seatRef));
+			}
+		}
+		return seatRef;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Seat basicGetSeatRef() {
+		return seatRef;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatRef(Seat newSeatRef) {
+		Seat oldSeatRef = seatRef;
+		seatRef = newSeatRef;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__SEAT_REF, oldSeatRef, seatRef));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public double getHeight() {
 		return height;
 	}
@@ -501,6 +551,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return getClass_();
 			case CabinPackage.PASSENGER__BOARDING_TIME:
 				return getBoardingTime();
+			case CabinPackage.PASSENGER__SEAT_REF:
+				if (resolve) return getSeatRef();
+				return basicGetSeatRef();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -542,6 +595,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return;
 			case CabinPackage.PASSENGER__BOARDING_TIME:
 				setBoardingTime((Double)newValue);
+				return;
+			case CabinPackage.PASSENGER__SEAT_REF:
+				setSeatRef((Seat)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -585,6 +641,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 			case CabinPackage.PASSENGER__BOARDING_TIME:
 				setBoardingTime(BOARDING_TIME_EDEFAULT);
 				return;
+			case CabinPackage.PASSENGER__SEAT_REF:
+				setSeatRef((Seat)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -617,6 +676,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return class_ != CLASS_EDEFAULT;
 			case CabinPackage.PASSENGER__BOARDING_TIME:
 				return boardingTime != BOARDING_TIME_EDEFAULT;
+			case CabinPackage.PASSENGER__SEAT_REF:
+				return seatRef != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -808,6 +808,15 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getPassenger_SeatRef() {
+		return (EReference)passengerEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getPassenger_Height() {
 		return (EAttribute)passengerEClass.getEStructuralFeatures().get(2);
 	}
@@ -1266,6 +1275,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEAttribute(passengerEClass, PASSENGER__NAME);
 		createEAttribute(passengerEClass, PASSENGER__CLASS);
 		createEAttribute(passengerEClass, PASSENGER__BOARDING_TIME);
+		createEReference(passengerEClass, PASSENGER__SEAT_REF);
 
 		crewMemberEClass = createEClass(CREW_MEMBER);
 		createEAttribute(crewMemberEClass, CREW_MEMBER__ID);
@@ -1421,6 +1431,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEAttribute(getPassenger_Name(), ecorePackage.getEString(), "Name", null, 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPassenger_Class(), this.getClassType(), "class", null, 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPassenger_BoardingTime(), ecorePackage.getEDouble(), "boardingTime", null, 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPassenger_SeatRef(), this.getSeat(), null, "seatRef", null, 1, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(crewMemberEClass, CrewMember.class, "CrewMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCrewMember_Id(), ecorePackage.getEInt(), "id", null, 0, 1, CrewMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
