@@ -1,6 +1,7 @@
 package net.bhl.cdt.model.cabin.ui;
 
 
+import org.eclipse.swt.graphics.Color;
 import java.util.List;
 
 import net.bhl.cdt.model.cabin.Cabin;
@@ -48,7 +49,13 @@ public class CabinViewPart extends ViewPart {
 	public int cabin_y;
 	public double factor;
 	public String drawString;
-	Boolean showSeatLabels = false;
+	
+	/***********graphics settings*********/
+	Boolean showSeatLabels = true;
+	public int doorsOutOfCabinPixels = 2;
+	double sizeOfPassengerCircle = 0.75; /*value between 0 and 1. Depending on the seat size*/
+	/*************************************/
+	
 	Composite parentTest;
 	Image image;
 	Canvas canvas;
@@ -68,48 +75,39 @@ public class CabinViewPart extends ViewPart {
 		}
 	}
 
-//	  @Inject
-//	  void eventReceived(@UIEventTopic("viewcommunication/*") Cabin cabin) {
-//	    newCabin = cabin;
-//	  }
 	
 	/** * This is a callback that will allow us to create the viewer and initialize * it. */
 
 	public void createPartControl(Composite parent) {
 		drawCabin = CabinFactory.eINSTANCE.createCabin();
 		parentTest = parent;
-		//getElement();
-		//Door door = CabinFactory.eINSTANCE.createDoor();
-		drawString  = "Layout not based\non actual cabin model!";
-		// warum geht das nur mit absolutem Pfad?
 		image = new Image(parent.getDisplay(),"T:\\Marc Engelmann\\aircraft_images\\lh_a320_cut.PNG"); 
-		// falsch!!!!!!!!!!
+
 		
 		canvas = new Canvas(parent, SWT.RESIZE);
 		doTheDraw();
 
 	}
 
-//	private Object getElement() {
-//		newCabin = CabinFactory.eINSTANCE.createCabin();
-//		newCabin.setName("MyCabin");
-//		return newCabin;
-//	}
-	
 	public void submitCabin(Cabin cabin) {
 		drawCabin = cabin;
 		doTheDraw();
 	}
 	
 	public void doTheDraw() {
-		factor = drawCabin.getCabinWidth() / 96; // 96 is width of cabin image in pixels
+		
+		/*****image-properties*****/
+		cabin_x = 96; /*width of cabin in the image in pixels*/
+		x_zero = 138; /*defined left upper point of cabin in pixels*/
+		y_zero = 90; /*defined left upper point of cabin in pixels*/
+		/**************************/
+		
+		factor = drawCabin.getCabinWidth() / cabin_x; 
+		
 		parentTest.redraw();
 		parentTest.update();
 		canvas.redraw();
 		
-		x_zero = 138;
-		y_zero = 90;
-		cabin_x = 96;
 		if(drawCabin.getClasses().isEmpty()) {
 			cabin_y = 636;
 		} else {
@@ -121,16 +119,28 @@ public class CabinViewPart extends ViewPart {
 		      public void paintControl(final PaintEvent e) { 
 		    	  e.gc.drawImage(image, 0, 0);
 		    	  e.gc.setAlpha(255);
-		    	  //e.gc.drawText(testStr, 0, 0);
-		    	  //e.gc.drawText(drawString, 0,0);
+		    	  
+		    	  /**********Create Colors and Fonts here ***********/   
+		    	  Color gold = new Color(e.display,255,215,0); /*Premium Economy Class Color Code*/
+		    	  Color blue = new Color(e.display,30,144,255); /*Business Class Color Code*/
+		    	  Color red = new Color(e.display,220,20,60); /*First Class Color Code*/
+		    	  Color gray = new Color(e.display,105,105,105); /*Economy Class Color Code*/
+		    	  Color salmon = new Color(e.display,250,128,114); /*Lavatory Color Code*/
+		    	  Color green = new Color(e.display,50,205,50); /*Galley Color Code*/
+		    	  
 		    	  Font fontOne = new Font(e.display,"arial", 8, SWT.NORMAL);
-		    	  Font fontTwo = new Font(e.display,"arial", fontsize, SWT.NORMAL);
+		    	  Font fontTwo = new Font(e.display,"arial", fontsize, SWT.NORMAL); 
+		    	  /**************************************************/
+		    	  
 		    	  e.gc.setFont(fontOne);
 		    	  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_WHITE));
-		    	  e.gc.drawRectangle(20, 20, 70, 50);
+		    	  e.gc.drawRectangle(20, 20, 70, 60);
 		    	  List<Seat> seatList =  ModelHelper.getChildrenByClass(drawCabin, Seat.class);
 		    	  List<Row> rowList =  ModelHelper.getChildrenByClass(drawCabin, Row.class);
-		    	  e.gc.drawText("Seats: "+seatList.size()+"\nRows: "+rowList.size()+"\n",30,30);
+		    	  List<Passenger> paxList = ModelHelper.getChildrenByClass(drawCabin, Passenger.class);
+		    	  e.gc.drawText("Seats "+"\nRows "+"\nPax ",30,30);
+		    	  e.gc.drawText(":\n:\n:",60,30);
+		    	  e.gc.drawText(seatList.size()+"\n"+rowList.size()+"\n"+paxList.size(), 65, 30);
 		    	  e.gc.setFont(fontTwo);
 		    	  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_GRAY));
 		    	  e.gc.fillRectangle(x_zero, y_zero, cabin_x, cabin_y);
@@ -143,16 +153,16 @@ public class CabinViewPart extends ViewPart {
 		    			  
 		    			  switch(pasClass.getType()) {
 		    			  default:
-		    				  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_DARK_GRAY));
+		    				  e.gc.setBackground(gray);
 		    				  break;
 		    			  case BUSINESS:
-		    				  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_BLUE));
+		    				  e.gc.setBackground(blue);
 		    				  break;
 		    			  case FIRST:
-		    				  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_RED));
+		    				  e.gc.setBackground(red);
 		    				  break;
 		    			  case PREMIUM_ECO:
-		    				  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_YELLOW));
+		    				  e.gc.setBackground(gold);
 		    				  break;
 		    				  
 		    			  }
@@ -173,16 +183,16 @@ public class CabinViewPart extends ViewPart {
 		    			  
 		    			  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_BLACK));
 		    			  if(door.isOnBothSides()) {
-		    				  e.gc.fillRectangle((int)(x_zero+(drawCabin.getCabinWidth()-50)/factor),(int)(y_zero+door.getYPosition()/factor),(int)(50/factor),(int)(door.getWidth()/factor));  
+		    				  e.gc.fillRectangle((int)(x_zero+doorsOutOfCabinPixels+(drawCabin.getCabinWidth()-50)/factor),(int)(y_zero+door.getYPosition()/factor),(int)(50/factor),(int)(door.getWidth()/factor));  
 		    			  }
-		    			  e.gc.fillRectangle((int)(x_zero),(int)(y_zero+door.getYPosition()/factor),(int)(50/factor),(int)(door.getWidth()/factor));
+		    			  e.gc.fillRectangle((int)(x_zero-doorsOutOfCabinPixels),(int)(y_zero+door.getYPosition()/factor),(int)(50/factor),(int)(door.getWidth()/factor));
 		    			  
 		    			  
 		    		  }
 		    		  
 		    		  for(Lavatory lavatory:ModelHelper.getChildrenByClass(drawCabin, Lavatory.class)) {
 		    			  	
-		    			  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_GREEN));
+		    			  e.gc.setBackground(salmon);
 			    			e.gc.fillRectangle((int)(x_zero+lavatory.getXPosition()/factor),(int)(y_zero+lavatory.getYPosition()/factor),(int)(lavatory.getXDimension()/factor),(int)(lavatory.getYDimension()/factor));
 			    			 e.gc.drawText("WC", (int)(x_zero-fontsize+(lavatory.getXPosition()+lavatory.getXDimension()/2)/factor),(int)(y_zero-fontsize +(lavatory.getYPosition()+lavatory.getYDimension()/2)/factor));
 			    			  
@@ -190,9 +200,9 @@ public class CabinViewPart extends ViewPart {
 		    		  
 		    		  for(Galley galley:ModelHelper.getChildrenByClass(drawCabin, Galley.class)) {
 		    			  	
-		    			  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_CYAN));
+		    			  e.gc.setBackground(green);
 			    			e.gc.fillRectangle((int)(x_zero+galley.getXPosition()/factor),(int)(y_zero+galley.getYPosition()/factor),(int)(galley.getXDimension()/factor),(int)(galley.getYDimension()/factor));
-			    			 e.gc.drawText("GALLEY", (int)(x_zero-fontsize-8+(galley.getXPosition()+galley.getXDimension()/2)/factor),(int)(y_zero-fontsize +(galley.getYPosition()+galley.getYDimension()/2)/factor));  
+			    			 e.gc.drawText("Galley", (int)(x_zero-fontsize-8+(galley.getXPosition()+galley.getXDimension()/2)/factor),(int)(y_zero-fontsize +(galley.getYPosition()+galley.getYDimension()/2)/factor));  
 		    		  }
 		    		  for (Curtain curtain:ModelHelper.getChildrenByClass(drawCabin, Curtain.class)) {
 		    			  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_BLACK));
@@ -207,12 +217,14 @@ public class CabinViewPart extends ViewPart {
 		    		  if(!drawCabin.getPassengers().isEmpty()) {
 		    			  for(Passenger passenger:ModelHelper.getChildrenByClass(drawCabin, Passenger.class)) {
 		    				  Seat passengerSeat = passenger.getSeatRef();
-		    				  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_BLACK));
+		    				  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_WHITE));
 		    				  if(passengerSeat.getLength()<passengerSeat.getWidth()) {
-		    					  e.gc.fillOval((int)(x_zero+(passengerSeat.getXPosition()+passengerSeat.getWidth()/2-passengerSeat.getLength()/4)/factor),(int)(y_zero +(passengerSeat.getYPosition()+passengerSeat.getLength()/4)/factor),(int)(0.5*passengerSeat.getLength()/factor),(int)(0.5*passengerSeat.getLength()/factor)); 
-		    				  }else {
-		    					  e.gc.fillOval((int)(x_zero+(passengerSeat.getXPosition()+passengerSeat.getWidth()/4)/factor),(int)(y_zero +(passengerSeat.getYPosition()+passengerSeat.getLength()/2-passengerSeat.getWidth()/4)/factor),(int)(0.5*passengerSeat.getWidth()/factor),(int)(0.5*passengerSeat.getWidth()/factor)); 
-		    				  }
+		    					  e.gc.fillOval((int)(x_zero+(passengerSeat.getXPosition()+passengerSeat.getWidth()/2-passengerSeat.getLength()*sizeOfPassengerCircle/2)/factor),(int)(y_zero +(passengerSeat.getYPosition()+(1-sizeOfPassengerCircle)*passengerSeat.getLength()/2)/factor),(int)(sizeOfPassengerCircle*passengerSeat.getLength()/factor),(int)(sizeOfPassengerCircle*passengerSeat.getLength()/factor)); 
+		    				      //e.gc.drawOval((int)(x_zero+(passengerSeat.getXPosition()+passengerSeat.getWidth()/2-passengerSeat.getLength()*sizeOfPassengerCircle/2)/factor),(int)(y_zero +(passengerSeat.getYPosition()+(1-sizeOfPassengerCircle)*passengerSeat.getLength()/2)/factor),(int)(sizeOfPassengerCircle*passengerSeat.getLength()/factor),(int)(sizeOfPassengerCircle*passengerSeat.getLength()/factor)); 
+		    					  }else {
+		    					  e.gc.fillOval((int)(x_zero+(passengerSeat.getXPosition()+(1-sizeOfPassengerCircle)*passengerSeat.getWidth()/2)/factor),(int)(y_zero +(passengerSeat.getYPosition()+passengerSeat.getLength()/2-passengerSeat.getWidth()*sizeOfPassengerCircle/2)/factor),(int)(sizeOfPassengerCircle*passengerSeat.getWidth()/factor),(int)(sizeOfPassengerCircle*passengerSeat.getWidth()/factor)); 
+		    				      //e.gc.drawOval((int)(x_zero+(passengerSeat.getXPosition()+(1-sizeOfPassengerCircle)*passengerSeat.getWidth()/2)/factor),(int)(y_zero +(passengerSeat.getYPosition()+passengerSeat.getLength()/2-passengerSeat.getWidth()*sizeOfPassengerCircle/2)/factor),(int)(sizeOfPassengerCircle*passengerSeat.getWidth()/factor),(int)(sizeOfPassengerCircle*passengerSeat.getWidth()/factor)); 
+		    					   }
 		    			  }  
 		    		  }
 	    			  

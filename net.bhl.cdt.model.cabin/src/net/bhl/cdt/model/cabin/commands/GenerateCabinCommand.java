@@ -192,7 +192,9 @@ public class GenerateCabinCommand extends CDTCommand{
 			rowCount ++;
 			globalSeatPositionY = globalSeatPositionY + newClass.getSeatDimensionY();
 			}
-			
+		if(typeID != ClassType.ECONOMY) {
+	    createCurtain(true,"after "+newClass.getType().toString()+"Class");
+		}
 		}
 	}
 	
@@ -205,12 +207,28 @@ public class GenerateCabinCommand extends CDTCommand{
 	 * @param yPosition set it to -1 to ignore value, only important for emergency exit.
 	 */
 	public void createDoor(DoorType doorType, boolean symmetrical, int id, double width, double yPosition) {
+		Boolean mainDoorAlreadyExists = false;
+		if(cabin.getDoors().size()>0) {
+			for(Door testDoor:ModelHelper.getChildrenByClass(cabin, Door.class)) {
+				if((doorType==DoorType.MAIN_DOOR)&&(testDoor.getDoorType()==DoorType.MAIN_DOOR)) {
+					consoleViewPart.printText("You created more than one main door!");
+					mainDoorAlreadyExists = true;
+				}
+			}
+		}
 		Door newDoor = CabinFactory.eINSTANCE.createDoor();
 		cabin.getDoors().add(newDoor);
 		newDoor.setId(id);
 		newDoor.setOnBothSides(symmetrical);
-		newDoor.setDoorType(doorType);
 		newDoor.setWidth(width);
+		
+		if(!mainDoorAlreadyExists) {
+			newDoor.setDoorType(doorType);
+		} else {
+			newDoor.setDoorType(DoorType.STANDARD_DOOR);
+		}
+		
+		
 		if(doorType != DoorType.EMERGENCY_EXIT) {
 			newDoor.setYPosition(globalSeatPositionY);
 			globalSeatPositionY += width;
@@ -326,6 +344,7 @@ public class GenerateCabinCommand extends CDTCommand{
 		cabin.getCurtains().clear();
 		cabin.getStairways().clear();
 		cabin.getStowages().clear();
+		cabin.getPassengers().clear();
 		spaceBetweenSeats = 10;
 		globalSeatPositionX = 0;
 		globalSeatPositionY = 0;
@@ -339,15 +358,19 @@ public class GenerateCabinCommand extends CDTCommand{
 		
 		createLavatory(false,true, ((cabin.getCabinWidth()-cabin.getAisleWidth())/2), 200);
 		createLavatory(true,false, ((cabin.getCabinWidth()-cabin.getAisleWidth())/2), 200);	
+		
+		/******Never create more than one main door!********/
 		createDoor(DoorType.MAIN_DOOR, true, 1, 200.0,-1);
+		/***************************************************/
+		
 		createGalley(false,true,((cabin.getCabinWidth()-cabin.getAisleWidth())/2),200);
 		createGalley(true,false,((cabin.getCabinWidth()-cabin.getAisleWidth())/2),200);
 		createClass(ClassType.FIRST,1);
-		createCurtain(true,"First/Business");
+		
 		createClass(ClassType.BUSINESS,2);
-		createCurtain(true,"Business/PremiumEco");
+		//createCurtain(true,"Business/PremiumEco");
 		createClass(ClassType.PREMIUM_ECO,3);
-		createCurtain(true,"PremiumEco/Eco");
+		//createCurtain(true,"PremiumEco/Eco");
 		createClass(ClassType.ECONOMY,4);
 		createGalley(false,true,((cabin.getCabinWidth()-cabin.getAisleWidth())/2),200);
 		createGalley(true,false,((cabin.getCabinWidth()-cabin.getAisleWidth())/2),200);

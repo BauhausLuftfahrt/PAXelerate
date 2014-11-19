@@ -33,7 +33,9 @@ public class GeneratePassengersCommand extends CDTCommand{
 	int passengerIdCount;
 	ConsoleViewPart consoleViewPart;
 	CabinViewPart cabinViewPart;
-	
+	String classNameString;
+	int totalPax = 0;
+	int totalSeats = 0;
 	public GeneratePassengersCommand(Cabin cabin) {
 		this.cabin = cabin;
 	}
@@ -45,44 +47,43 @@ public class GeneratePassengersCommand extends CDTCommand{
 	 * 
 	 */
 	public void generatePassengers(ClassType classType) {
+
+		classNameString = "";
 		
-		int totalPax = cabin.getEconomyClassPassengers()+cabin.getBusinessClassPassengers()+cabin.getPremiumEconomyClassPassengers()+cabin.getFirstClassPassengers();
-		int totalSeats = cabin.getSeatsInEconomyClass() + cabin.getSeatsInPremiumEconomyClass() + cabin.getSeatsInBusinessClass() + cabin.getSeatsInFirstClass();
 		Sex sex = Sex.FEMALE;
 		int paxInClass;
 		int seatsInClass;
 		int seatAreaBegin;
-		int seatAreaEnd;
-		
+
 		switch (classType) {
 		
 		case BUSINESS:
 			paxInClass = cabin.getBusinessClassPassengers();
 			seatAreaBegin = cabin.getSeatsInFirstClass() +1; // 5
-			seatAreaEnd = cabin.getSeatsInBusinessClass() + cabin.getSeatsInFirstClass(); // 8
 			seatsInClass = cabin.getSeatsInBusinessClass();	
+			classNameString = "business";
 			break;
 		case FIRST:
 			paxInClass = cabin.getFirstClassPassengers();
 			seatAreaBegin = 1; // 1
-			seatAreaEnd = cabin.getSeatsInFirstClass(); //4
 			seatsInClass = cabin.getSeatsInFirstClass();
+			classNameString = "first";
 			break;
 		case PREMIUM_ECO:
 			paxInClass = cabin.getPremiumEconomyClassPassengers();
 			seatAreaBegin = cabin.getSeatsInFirstClass() + cabin.getSeatsInBusinessClass() +1;
-			seatAreaEnd = totalSeats - cabin.getSeatsInEconomyClass();
 			seatsInClass = cabin.getSeatsInPremiumEconomyClass();
+			classNameString = "premium eco";
 			break;
 		default:
 			paxInClass = cabin.getEconomyClassPassengers();
 			seatAreaBegin = totalSeats - cabin.getSeatsInEconomyClass() +1;
-			seatAreaEnd = totalSeats;
 			seatsInClass = cabin.getSeatsInEconomyClass();
+			classNameString = "economy";
 			break;
-			
-		
 		}
+		if(paxInClass<=seatsInClass) { 
+			
 		for (int i = 1; i <= paxInClass; i++) {
 			
 			Passenger newPassenger = CabinFactory.eINSTANCE.createPassenger();
@@ -118,18 +119,15 @@ public class GeneratePassengersCommand extends CDTCommand{
 			 * These loops search for the matching seat number of the random seat generated above.
 			 * if the seat was found, the loop knows in which class the seat is and adds the ClassType to the according passenger.
 			 */
-			//for (PassengerClass passengerClass:cabin.getClasses()) {
-				//if(!passengerClass.equals(null)) {
-					for (Seat seat:ModelHelper.getChildrenByClass(cabin, Seat.class)){
-						if(!seat.equals(null)) {
-							if(seat.getSeatNumber()==newPassenger.getSeat()) {
-								newPassenger.setName(randomId+" is at Seat "+seat.getSeatId());		 //passengerIdCount ordnet nach Klasse!
-								newPassenger.setSeatRef(seat);
-							}
-						}
+
+			for (Seat seat:ModelHelper.getChildrenByClass(cabin, Seat.class)){
+				if(!seat.equals(null)) {
+					if(seat.getSeatNumber()==newPassenger.getSeat()) {
+						newPassenger.setName(randomId+" is at Seat "+seat.getSeatId());		 //passengerIdCount ordnet nach Klasse!
+						newPassenger.setSeatRef(seat);
 					}
-				//}
-			//}
+				}
+			}
 			newPassenger.setClass(classType);
 			newPassenger.setAge(rand.nextInt(42) + 18);
 			if (cabin.getDoors().size()!=0) {
@@ -155,23 +153,37 @@ public class GeneratePassengersCommand extends CDTCommand{
 			
 		}
 		randomNumberCheck.clear();
+		consoleViewPart.printText("successfully created "+(passengerIdCount-1)+" passengers in "+classNameString+" class");
+		} 
+		
+		else {
+			consoleViewPart.printText("Too many passengers in "+classNameString+" class");
+		}
+		 
 	}
 	
 	@Override
 	protected void doRun() {
+		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+		consoleViewPart = (ConsoleViewPart) page.findView("net.bhl.cdt.model.cabin.consoleview");
+		cabinViewPart = (CabinViewPart) page.findView("net.bhl.cdt.model.cabin.cabinview");
 		cabin.getPassengers().clear();
+		totalPax = cabin.getEconomyClassPassengers()+cabin.getBusinessClassPassengers()+cabin.getPremiumEconomyClassPassengers()+cabin.getFirstClassPassengers();
+		totalSeats = cabin.getSeatsInEconomyClass() + cabin.getSeatsInPremiumEconomyClass() + cabin.getSeatsInBusinessClass() + cabin.getSeatsInFirstClass();
+
 		randomNumberCheck = new ArrayList<Integer>();
 		randomPassengerId = new ArrayList<Integer>();
 		passengerIdCount = 1;
+		
+		if(totalPax<=totalSeats) {
 		generatePassengers(ClassType.FIRST);
 		generatePassengers(ClassType.BUSINESS);
 		generatePassengers(ClassType.PREMIUM_ECO);
 		generatePassengers(ClassType.ECONOMY);
+		} else {
+			consoleViewPart.printText("Too many passengers in the cabin! Remove "+(totalPax-totalSeats)+".");
+		}
 		
-		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-		consoleViewPart = (ConsoleViewPart) page.findView("net.bhl.cdt.model.cabin.consoleview");
-		cabinViewPart = (CabinViewPart) page.findView("net.bhl.cdt.model.cabin.cabinview");
-		consoleViewPart.printText("successfully created "+(passengerIdCount-1)+" passengers");
 		
 		cabinViewPart.submitCabin(cabin);
 		
