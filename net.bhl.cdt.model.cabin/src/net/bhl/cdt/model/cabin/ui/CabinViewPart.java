@@ -220,7 +220,7 @@ public class CabinViewPart extends ViewPart {
 		    		  if(!drawCabin.getPassengers().isEmpty()) {
 		    			  for(Passenger passenger:ModelHelper.getChildrenByClass(drawCabin, Passenger.class)) {
 		    				  Seat passengerSeat = passenger.getSeatRef();
-		    				  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_WHITE));
+		    				  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_BLACK));
 		    				  if(passengerSeat.getLength()<passengerSeat.getWidth()) {
 		    					  e.gc.fillOval((int)(x_zero+(passengerSeat.getXPosition()+passengerSeat.getWidth()/2-passengerSeat.getLength()*sizeOfPassengerCircle/2)/factor),(int)(y_zero +(passengerSeat.getYPosition()+(1-sizeOfPassengerCircle)*passengerSeat.getLength()/2)/factor),(int)(sizeOfPassengerCircle*passengerSeat.getLength()/factor),(int)(sizeOfPassengerCircle*passengerSeat.getLength()/factor)); 
 		    				      //e.gc.drawOval((int)(x_zero+(passengerSeat.getXPosition()+passengerSeat.getWidth()/2-passengerSeat.getLength()*sizeOfPassengerCircle/2)/factor),(int)(y_zero +(passengerSeat.getYPosition()+(1-sizeOfPassengerCircle)*passengerSeat.getLength()/2)/factor),(int)(sizeOfPassengerCircle*passengerSeat.getLength()/factor),(int)(sizeOfPassengerCircle*passengerSeat.getLength()/factor)); 
