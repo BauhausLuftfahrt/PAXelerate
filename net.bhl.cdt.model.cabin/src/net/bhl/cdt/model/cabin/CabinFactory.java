@@ -130,6 +130,15 @@ public interface CabinFactory extends EFactory {
 	Stowage createStowage();
 
 	/**
+	 * Returns a new object of class '<em>View Settings</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>View Settings</em>'.
+	 * @generated
+	 */
+	CabinViewSettings createCabinViewSettings();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

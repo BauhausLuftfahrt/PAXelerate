@@ -69,6 +69,7 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 			case CabinPackage.STAIRWAY: return createStairway();
 			case CabinPackage.CURTAIN: return createCurtain();
 			case CabinPackage.STOWAGE: return createStowage();
+			case CabinPackage.CABIN_VIEW_SETTINGS: return createCabinViewSettings();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -234,6 +235,16 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	public Stowage createStowage() {
 		StowageImpl stowage = new StowageImpl();
 		return stowage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CabinViewSettings createCabinViewSettings() {
+		CabinViewSettingsImpl cabinViewSettings = new CabinViewSettingsImpl();
+		return cabinViewSettings;
 	}
 
 	/**

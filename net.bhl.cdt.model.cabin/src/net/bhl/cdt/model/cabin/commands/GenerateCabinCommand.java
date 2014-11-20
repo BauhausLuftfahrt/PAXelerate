@@ -180,7 +180,7 @@ public class GenerateCabinCommand extends CDTCommand{
 					double aisleSpace = 0;
 					seatCount ++;	
 					if (j==(seatsInRow/2)) {
-					aisleSpace = cabin.getAisleWidth() + seatHelper;
+						aisleSpace = cabin.getAisleWidth() + seatHelper;
 					}					
 					globalSeatPositionX = globalSeatPositionX + seatDimensionX + aisleSpace + seatHelper;
 				}
@@ -204,7 +204,7 @@ public class GenerateCabinCommand extends CDTCommand{
 	 * @param width
 	 * @param yPosition set it to -1 to ignore value, only important for emergency exit.
 	 */
-	public void createDoor(DoorType doorType, boolean symmetrical, int id, double width, double yPosition) {
+	public void createDoor(DoorType doorType, boolean symmetrical, int id, double yPosition) {
 		Boolean mainDoorAlreadyExists = false;
 		if(cabin.getDoors().size()>0) {
 			for(Door testDoor:ModelHelper.getChildrenByClass(cabin, Door.class)) {
@@ -218,7 +218,15 @@ public class GenerateCabinCommand extends CDTCommand{
 		cabin.getDoors().add(newDoor);
 		newDoor.setId(id);
 		newDoor.setOnBothSides(symmetrical);
-		newDoor.setWidth(width);
+		
+		switch(doorType) {
+		case EMERGENCY_EXIT:
+			newDoor.setWidth(newDoor.getWidthOfEmergencyExit());
+			break;
+		default:
+			newDoor.setWidth(newDoor.getWidthOfMainDoor());
+			break;
+		}
 		
 		if(!mainDoorAlreadyExists) {
 			newDoor.setDoorType(doorType);
@@ -229,7 +237,7 @@ public class GenerateCabinCommand extends CDTCommand{
 		
 		if(doorType != DoorType.EMERGENCY_EXIT) {
 			newDoor.setYPosition(globalSeatPositionY);
-			globalSeatPositionY += width;
+			globalSeatPositionY += newDoor.getWidthOfMainDoor();
 		} else {
 			if(yPosition < 0) {
 				consoleViewPart.printText("Emergency Exit has a illegal yPosition.");
@@ -248,11 +256,11 @@ public class GenerateCabinCommand extends CDTCommand{
 		cabin.getCurtains().add(newCurtain);
 		newCurtain.setCurtainOpen(openOrNot);
 		newCurtain.setXPosition(0);
-		newCurtain.setYPosition(globalSeatPositionY + 50);
+		newCurtain.setYPosition(globalSeatPositionY + 10);
 		newCurtain.setXDimension((cabin.getCabinWidth()-cabin.getAisleWidth())/2);
-		newCurtain.setYDimension(50);
+		newCurtain.setYDimension(10);
 		newCurtain.setName(name);
-		globalSeatPositionY = globalSeatPositionY + newCurtain.getYDimension() + 50;		
+		globalSeatPositionY = globalSeatPositionY + newCurtain.getYDimension() + 30;		
 	}
 	
 	/**
@@ -262,22 +270,20 @@ public class GenerateCabinCommand extends CDTCommand{
 	 * @param xDimension
 	 * @param yDimension
 	 */
-	public void createLavatory(Boolean isSymmetrical, Boolean symmetricalToNext, double xDimension, double yDimension) {
+	public void createLavatory(Boolean isSymmetricalToLavatoryBefore, double xDimension, double yDimension) {
 		Lavatory newLavatory = CabinFactory.eINSTANCE.createLavatory();
 		cabin.getLavatories().add(newLavatory);
-		if(isSymmetrical) {
+		if(isSymmetricalToLavatoryBefore) {
+			globalSeatPositionY -= yDimension;
 			newLavatory.setXPosition(cabin.getCabinWidth()-xDimension);
 			newLavatory.setYPosition(globalSeatPositionY);
 		} else {
 			newLavatory.setXPosition(0);
 			newLavatory.setYPosition(globalSeatPositionY);
 		}
-		if(!symmetricalToNext) {
-			globalSeatPositionY += yDimension;			
-		} 
+		globalSeatPositionY += yDimension;
 		newLavatory.setXDimension(xDimension);
-		newLavatory.setYDimension(yDimension);
-		
+		newLavatory.setYDimension(yDimension);	
 	}
 	
 	/**
@@ -305,19 +311,18 @@ public class GenerateCabinCommand extends CDTCommand{
 	 * @param xDimension
 	 * @param yDimension
 	 */
-	public void createGalley(Boolean isSymmetrical, Boolean symmetricalToNext, double xDimension, double yDimension) {
+	public void createGalley(Boolean isSymmetricalToGalleyBefore, double xDimension, double yDimension) {
 		Galley newGalley = CabinFactory.eINSTANCE.createGalley();
 		cabin.getGalleys().add(newGalley);
-		if(isSymmetrical) {
+		if(isSymmetricalToGalleyBefore) {
+			globalSeatPositionY -= yDimension;
 			newGalley.setXPosition(cabin.getCabinWidth()-xDimension);
 			newGalley.setYPosition(globalSeatPositionY);
 		} else {
 			newGalley.setXPosition(0);
 			newGalley.setYPosition(globalSeatPositionY);
 		}
-		if(!symmetricalToNext) {
-			globalSeatPositionY += yDimension;			
-		} 
+		globalSeatPositionY += yDimension;
 		newGalley.setXDimension(xDimension);
 		newGalley.setYDimension(yDimension);
 	}
@@ -328,13 +333,16 @@ public class GenerateCabinCommand extends CDTCommand{
 	 * Emergency Exits must be generated at first!
 	 */
 	protected void doRun() {
+		
+		/**********Get CabinView and ConsoleView************/
 		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 		cabinViewPart = (CabinViewPart) page.findView("net.bhl.cdt.model.cabin.cabinview");
 		consoleViewPart = (ConsoleViewPart) page.findView("net.bhl.cdt.model.cabin.consoleview");
+		/***************************************************/
 		
 		consoleViewPart.printText("initialize cabin generation ...");
 		
-		//ViewPart viewPart = null;
+		/*****Clearing all Objects*****/
 		cabin.getClasses().clear();
 		cabin.getDoors().clear();
 		cabin.getLavatories().clear();
@@ -343,6 +351,8 @@ public class GenerateCabinCommand extends CDTCommand{
 		cabin.getStairways().clear();
 		cabin.getStowages().clear();
 		cabin.getPassengers().clear();
+		/******************************/
+		
 		spaceBetweenSeats = 10;
 		globalSeatPositionX = 0;
 		globalSeatPositionY = 0;
@@ -350,31 +360,36 @@ public class GenerateCabinCommand extends CDTCommand{
 		rowCount = 1;
 	    
 		/****Always generate emergency exits at first!******/
-		createDoor(DoorType.EMERGENCY_EXIT,true,3,100,2600);
-		createDoor(DoorType.EMERGENCY_EXIT,true,4,100,3000);
+		createDoor(DoorType.EMERGENCY_EXIT,true,3,935);
+		createDoor(DoorType.EMERGENCY_EXIT,true,4,1228);
 		/***************************************************/
 		
-		createLavatory(false,true, ((cabin.getCabinWidth()-cabin.getAisleWidth())/2), 200);
-		createLavatory(true,false, ((cabin.getCabinWidth()-cabin.getAisleWidth())/2), 200);	
+		createLavatory(false, ((cabin.getCabinWidth()-cabin.getAisleWidth())/2), 100);
+		createLavatory(true, ((cabin.getCabinWidth()-cabin.getAisleWidth())/2), 100);	
 		
 		/******Never create more than one main door!********/
-		createDoor(DoorType.MAIN_DOOR, true, 1, 200.0,-1);
+		createDoor(DoorType.MAIN_DOOR, true,1,-1);
 		/***************************************************/
 		
-		createGalley(false,true,((cabin.getCabinWidth()-cabin.getAisleWidth())/2),200);
-		createGalley(true,false,((cabin.getCabinWidth()-cabin.getAisleWidth())/2),200);
-		createClass(ClassType.FIRST,1);
+		createGalley(false,((cabin.getCabinWidth()-cabin.getAisleWidth())/2),100);
+		createGalley(true,((cabin.getCabinWidth()-cabin.getAisleWidth())/2),100);
 		
+		/******************Create Classes*******************/
+		//createClass(ClassType.FIRST,1);
 		createClass(ClassType.BUSINESS,2);
-		//createCurtain(true,"Business/PremiumEco");
-		createClass(ClassType.PREMIUM_ECO,3);
-		//createCurtain(true,"PremiumEco/Eco");
+		//createClass(ClassType.PREMIUM_ECO,3);
 		createClass(ClassType.ECONOMY,4);
-		createGalley(false,true,((cabin.getCabinWidth()-cabin.getAisleWidth())/2),200);
-		createGalley(true,false,((cabin.getCabinWidth()-cabin.getAisleWidth())/2),200);
-		createDoor(DoorType.STANDARD_DOOR, true, 2, 200.0,-1);
-		createLavatory(false,true, ((cabin.getCabinWidth()-cabin.getAisleWidth())/2), 200);
-		createLavatory(true,false, ((cabin.getCabinWidth()-cabin.getAisleWidth())/2), 200);
+		/***************************************************/
+		
+		createGalley(false,((cabin.getCabinWidth()-cabin.getAisleWidth())/2),100);
+		createGalley(true,((cabin.getCabinWidth()-cabin.getAisleWidth())/2),100);
+		
+		createDoor(DoorType.STANDARD_DOOR, true,2,-1);
+		
+		createLavatory(false, ((cabin.getCabinWidth()-cabin.getAisleWidth())/2), 100);
+		createLavatory(true, ((cabin.getCabinWidth()-cabin.getAisleWidth())/2), 100);
+		
+		//cabin.setGraphicSettings(CabinFactory.eINSTANCE.createCabinViewSettings());
 		
 		consoleViewPart.printText("cabin generation completed");
 		cabinViewPart.submitCabin(cabin);

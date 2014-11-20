@@ -117,6 +117,10 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 				return createStowageAdapter();
 			}
 			@Override
+			public Adapter caseCabinViewSettings(CabinViewSettings object) {
+				return createCabinViewSettingsAdapter();
+			}
+			@Override
 			public Adapter caseNamedElement(NamedElement object) {
 				return createNamedElementAdapter();
 			}
@@ -305,6 +309,20 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStowageAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.CabinViewSettings <em>View Settings</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see net.bhl.cdt.model.cabin.CabinViewSettings
+	 * @generated
+	 */
+	public Adapter createCabinViewSettingsAdapter() {
 		return null;
 	}
 

@@ -25,6 +25,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.DoorImpl#getWidth <em>Width</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.DoorImpl#getId <em>Id</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.DoorImpl#getDoorType <em>Door Type</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.DoorImpl#getWidthOfMainDoor <em>Width Of Main Door</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.DoorImpl#getWidthOfEmergencyExit <em>Width Of Emergency Exit</em>}</li>
  * </ul>
  * </p>
  *
@@ -130,6 +132,46 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	 * @ordered
 	 */
 	protected DoorType doorType = DOOR_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getWidthOfMainDoor() <em>Width Of Main Door</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWidthOfMainDoor()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double WIDTH_OF_MAIN_DOOR_EDEFAULT = 80.0;
+
+	/**
+	 * The cached value of the '{@link #getWidthOfMainDoor() <em>Width Of Main Door</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWidthOfMainDoor()
+	 * @generated
+	 * @ordered
+	 */
+	protected double widthOfMainDoor = WIDTH_OF_MAIN_DOOR_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getWidthOfEmergencyExit() <em>Width Of Emergency Exit</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWidthOfEmergencyExit()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double WIDTH_OF_EMERGENCY_EXIT_EDEFAULT = 50.0;
+
+	/**
+	 * The cached value of the '{@link #getWidthOfEmergencyExit() <em>Width Of Emergency Exit</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWidthOfEmergencyExit()
+	 * @generated
+	 * @ordered
+	 */
+	protected double widthOfEmergencyExit = WIDTH_OF_EMERGENCY_EXIT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -260,6 +302,48 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public double getWidthOfMainDoor() {
+		return widthOfMainDoor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWidthOfMainDoor(double newWidthOfMainDoor) {
+		double oldWidthOfMainDoor = widthOfMainDoor;
+		widthOfMainDoor = newWidthOfMainDoor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.DOOR__WIDTH_OF_MAIN_DOOR, oldWidthOfMainDoor, widthOfMainDoor));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getWidthOfEmergencyExit() {
+		return widthOfEmergencyExit;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWidthOfEmergencyExit(double newWidthOfEmergencyExit) {
+		double oldWidthOfEmergencyExit = widthOfEmergencyExit;
+		widthOfEmergencyExit = newWidthOfEmergencyExit;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.DOOR__WIDTH_OF_EMERGENCY_EXIT, oldWidthOfEmergencyExit, widthOfEmergencyExit));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -273,6 +357,10 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 				return getId();
 			case CabinPackage.DOOR__DOOR_TYPE:
 				return getDoorType();
+			case CabinPackage.DOOR__WIDTH_OF_MAIN_DOOR:
+				return getWidthOfMainDoor();
+			case CabinPackage.DOOR__WIDTH_OF_EMERGENCY_EXIT:
+				return getWidthOfEmergencyExit();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -299,6 +387,12 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 				return;
 			case CabinPackage.DOOR__DOOR_TYPE:
 				setDoorType((DoorType)newValue);
+				return;
+			case CabinPackage.DOOR__WIDTH_OF_MAIN_DOOR:
+				setWidthOfMainDoor((Double)newValue);
+				return;
+			case CabinPackage.DOOR__WIDTH_OF_EMERGENCY_EXIT:
+				setWidthOfEmergencyExit((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -327,6 +421,12 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 			case CabinPackage.DOOR__DOOR_TYPE:
 				setDoorType(DOOR_TYPE_EDEFAULT);
 				return;
+			case CabinPackage.DOOR__WIDTH_OF_MAIN_DOOR:
+				setWidthOfMainDoor(WIDTH_OF_MAIN_DOOR_EDEFAULT);
+				return;
+			case CabinPackage.DOOR__WIDTH_OF_EMERGENCY_EXIT:
+				setWidthOfEmergencyExit(WIDTH_OF_EMERGENCY_EXIT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -349,6 +449,10 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 				return id != ID_EDEFAULT;
 			case CabinPackage.DOOR__DOOR_TYPE:
 				return doorType != DOOR_TYPE_EDEFAULT;
+			case CabinPackage.DOOR__WIDTH_OF_MAIN_DOOR:
+				return widthOfMainDoor != WIDTH_OF_MAIN_DOOR_EDEFAULT;
+			case CabinPackage.DOOR__WIDTH_OF_EMERGENCY_EXIT:
+				return widthOfEmergencyExit != WIDTH_OF_EMERGENCY_EXIT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -373,6 +477,10 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 		result.append(id);
 		result.append(", doorType: ");
 		result.append(doorType);
+		result.append(", widthOfMainDoor: ");
+		result.append(widthOfMainDoor);
+		result.append(", widthOfEmergencyExit: ");
+		result.append(widthOfEmergencyExit);
 		result.append(')');
 		return result.toString();
 	}

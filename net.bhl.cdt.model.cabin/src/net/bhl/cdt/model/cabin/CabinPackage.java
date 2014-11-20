@@ -622,13 +622,31 @@ public interface CabinPackage extends EPackage {
 	int DOOR__DOOR_TYPE = 4;
 
 	/**
+	 * The feature id for the '<em><b>Width Of Main Door</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOOR__WIDTH_OF_MAIN_DOOR = 5;
+
+	/**
+	 * The feature id for the '<em><b>Width Of Emergency Exit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOOR__WIDTH_OF_EMERGENCY_EXIT = 6;
+
+	/**
 	 * The number of structural features of the '<em>Door</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOOR_FEATURE_COUNT = 5;
+	int DOOR_FEATURE_COUNT = 7;
 
 	/**
 	 * The number of operations of the '<em>Door</em>' class.
@@ -1279,6 +1297,160 @@ public interface CabinPackage extends EPackage {
 	int STOWAGE_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.impl.CabinViewSettingsImpl <em>View Settings</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.model.cabin.impl.CabinViewSettingsImpl
+	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getCabinViewSettings()
+	 * @generated
+	 */
+	int CABIN_VIEW_SETTINGS = 12;
+
+	/**
+	 * The feature id for the '<em><b>Show Seatlabels</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN_VIEW_SETTINGS__SHOW_SEATLABELS = 0;
+
+	/**
+	 * The feature id for the '<em><b>Show Row Labels</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN_VIEW_SETTINGS__SHOW_ROW_LABELS = 1;
+
+	/**
+	 * The feature id for the '<em><b>Show Galley And Lavatory Labels</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN_VIEW_SETTINGS__SHOW_GALLEY_AND_LAVATORY_LABELS = 2;
+
+	/**
+	 * The feature id for the '<em><b>Show Curtains</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN_VIEW_SETTINGS__SHOW_CURTAINS = 3;
+
+	/**
+	 * The feature id for the '<em><b>Show Seats</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN_VIEW_SETTINGS__SHOW_SEATS = 4;
+
+	/**
+	 * The feature id for the '<em><b>Show Galleys</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN_VIEW_SETTINGS__SHOW_GALLEYS = 5;
+
+	/**
+	 * The feature id for the '<em><b>Show Lavatories</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN_VIEW_SETTINGS__SHOW_LAVATORIES = 6;
+
+	/**
+	 * The feature id for the '<em><b>Show Doors</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN_VIEW_SETTINGS__SHOW_DOORS = 7;
+
+	/**
+	 * The feature id for the '<em><b>Show Occupied Seats</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN_VIEW_SETTINGS__SHOW_OCCUPIED_SEATS = 8;
+
+	/**
+	 * The feature id for the '<em><b>Size Of Passenger Circle</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN_VIEW_SETTINGS__SIZE_OF_PASSENGER_CIRCLE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Door Off Set In Pixels</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN_VIEW_SETTINGS__DOOR_OFF_SET_IN_PIXELS = 10;
+
+	/**
+	 * The feature id for the '<em><b>XZero In Pixels</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN_VIEW_SETTINGS__XZERO_IN_PIXELS = 11;
+
+	/**
+	 * The feature id for the '<em><b>YZero In Pixels</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN_VIEW_SETTINGS__YZERO_IN_PIXELS = 12;
+
+	/**
+	 * The feature id for the '<em><b>Cabin Width In Pixels</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN_VIEW_SETTINGS__CABIN_WIDTH_IN_PIXELS = 13;
+
+	/**
+	 * The number of structural features of the '<em>View Settings</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN_VIEW_SETTINGS_FEATURE_COUNT = 14;
+
+	/**
+	 * The number of operations of the '<em>View Settings</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN_VIEW_SETTINGS_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.ClassType <em>Class Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1286,7 +1458,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getClassType()
 	 * @generated
 	 */
-	int CLASS_TYPE = 13;
+	int CLASS_TYPE = 14;
 
 
 	/**
@@ -1297,7 +1469,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getDoorType()
 	 * @generated
 	 */
-	int DOOR_TYPE = 14;
+	int DOOR_TYPE = 15;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.StairwayDirection <em>Stairway Direction</em>}' enum.
@@ -1307,7 +1479,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getStairwayDirection()
 	 * @generated
 	 */
-	int STAIRWAY_DIRECTION = 15;
+	int STAIRWAY_DIRECTION = 16;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}' enum.
@@ -1317,7 +1489,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getSex()
 	 * @generated
 	 */
-	int SEX = 12;
+	int SEX = 13;
 
 
 	/**
@@ -1922,6 +2094,28 @@ public interface CabinPackage extends EPackage {
 	EAttribute getDoor_DoorType();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Door#getWidthOfMainDoor <em>Width Of Main Door</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Width Of Main Door</em>'.
+	 * @see net.bhl.cdt.model.cabin.Door#getWidthOfMainDoor()
+	 * @see #getDoor()
+	 * @generated
+	 */
+	EAttribute getDoor_WidthOfMainDoor();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Door#getWidthOfEmergencyExit <em>Width Of Emergency Exit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Width Of Emergency Exit</em>'.
+	 * @see net.bhl.cdt.model.cabin.Door#getWidthOfEmergencyExit()
+	 * @see #getDoor()
+	 * @generated
+	 */
+	EAttribute getDoor_WidthOfEmergencyExit();
+
+	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.Seat <em>Seat</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2508,6 +2702,170 @@ public interface CabinPackage extends EPackage {
 	EAttribute getStowage_YDimension();
 
 	/**
+	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.CabinViewSettings <em>View Settings</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>View Settings</em>'.
+	 * @see net.bhl.cdt.model.cabin.CabinViewSettings
+	 * @generated
+	 */
+	EClass getCabinViewSettings();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#isShowSeatlabels <em>Show Seatlabels</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Show Seatlabels</em>'.
+	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#isShowSeatlabels()
+	 * @see #getCabinViewSettings()
+	 * @generated
+	 */
+	EAttribute getCabinViewSettings_ShowSeatlabels();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#isShowRowLabels <em>Show Row Labels</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Show Row Labels</em>'.
+	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#isShowRowLabels()
+	 * @see #getCabinViewSettings()
+	 * @generated
+	 */
+	EAttribute getCabinViewSettings_ShowRowLabels();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#isShowGalleyAndLavatoryLabels <em>Show Galley And Lavatory Labels</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Show Galley And Lavatory Labels</em>'.
+	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#isShowGalleyAndLavatoryLabels()
+	 * @see #getCabinViewSettings()
+	 * @generated
+	 */
+	EAttribute getCabinViewSettings_ShowGalleyAndLavatoryLabels();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#isShowCurtains <em>Show Curtains</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Show Curtains</em>'.
+	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#isShowCurtains()
+	 * @see #getCabinViewSettings()
+	 * @generated
+	 */
+	EAttribute getCabinViewSettings_ShowCurtains();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#isShowSeats <em>Show Seats</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Show Seats</em>'.
+	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#isShowSeats()
+	 * @see #getCabinViewSettings()
+	 * @generated
+	 */
+	EAttribute getCabinViewSettings_ShowSeats();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#isShowGalleys <em>Show Galleys</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Show Galleys</em>'.
+	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#isShowGalleys()
+	 * @see #getCabinViewSettings()
+	 * @generated
+	 */
+	EAttribute getCabinViewSettings_ShowGalleys();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#isShowLavatories <em>Show Lavatories</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Show Lavatories</em>'.
+	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#isShowLavatories()
+	 * @see #getCabinViewSettings()
+	 * @generated
+	 */
+	EAttribute getCabinViewSettings_ShowLavatories();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#isShowDoors <em>Show Doors</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Show Doors</em>'.
+	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#isShowDoors()
+	 * @see #getCabinViewSettings()
+	 * @generated
+	 */
+	EAttribute getCabinViewSettings_ShowDoors();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#isShowOccupiedSeats <em>Show Occupied Seats</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Show Occupied Seats</em>'.
+	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#isShowOccupiedSeats()
+	 * @see #getCabinViewSettings()
+	 * @generated
+	 */
+	EAttribute getCabinViewSettings_ShowOccupiedSeats();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#getSizeOfPassengerCircle <em>Size Of Passenger Circle</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Size Of Passenger Circle</em>'.
+	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#getSizeOfPassengerCircle()
+	 * @see #getCabinViewSettings()
+	 * @generated
+	 */
+	EAttribute getCabinViewSettings_SizeOfPassengerCircle();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#getDoorOffSetInPixels <em>Door Off Set In Pixels</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Door Off Set In Pixels</em>'.
+	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#getDoorOffSetInPixels()
+	 * @see #getCabinViewSettings()
+	 * @generated
+	 */
+	EAttribute getCabinViewSettings_DoorOffSetInPixels();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#getXZeroInPixels <em>XZero In Pixels</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>XZero In Pixels</em>'.
+	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#getXZeroInPixels()
+	 * @see #getCabinViewSettings()
+	 * @generated
+	 */
+	EAttribute getCabinViewSettings_XZeroInPixels();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#getYZeroInPixels <em>YZero In Pixels</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>YZero In Pixels</em>'.
+	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#getYZeroInPixels()
+	 * @see #getCabinViewSettings()
+	 * @generated
+	 */
+	EAttribute getCabinViewSettings_YZeroInPixels();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#getCabinWidthInPixels <em>Cabin Width In Pixels</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cabin Width In Pixels</em>'.
+	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#getCabinWidthInPixels()
+	 * @see #getCabinViewSettings()
+	 * @generated
+	 */
+	EAttribute getCabinViewSettings_CabinWidthInPixels();
+
+	/**
 	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.ClassType <em>Class Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2964,6 +3322,20 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute DOOR__DOOR_TYPE = eINSTANCE.getDoor_DoorType();
 		/**
+		 * The meta object literal for the '<em><b>Width Of Main Door</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOOR__WIDTH_OF_MAIN_DOOR = eINSTANCE.getDoor_WidthOfMainDoor();
+		/**
+		 * The meta object literal for the '<em><b>Width Of Emergency Exit</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOOR__WIDTH_OF_EMERGENCY_EXIT = eINSTANCE.getDoor_WidthOfEmergencyExit();
+		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.SeatImpl <em>Seat</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3357,6 +3729,113 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute STOWAGE__YDIMENSION = eINSTANCE.getStowage_YDimension();
+		/**
+		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.CabinViewSettingsImpl <em>View Settings</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.bhl.cdt.model.cabin.impl.CabinViewSettingsImpl
+		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getCabinViewSettings()
+		 * @generated
+		 */
+		EClass CABIN_VIEW_SETTINGS = eINSTANCE.getCabinViewSettings();
+		/**
+		 * The meta object literal for the '<em><b>Show Seatlabels</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN_VIEW_SETTINGS__SHOW_SEATLABELS = eINSTANCE.getCabinViewSettings_ShowSeatlabels();
+		/**
+		 * The meta object literal for the '<em><b>Show Row Labels</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN_VIEW_SETTINGS__SHOW_ROW_LABELS = eINSTANCE.getCabinViewSettings_ShowRowLabels();
+		/**
+		 * The meta object literal for the '<em><b>Show Galley And Lavatory Labels</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN_VIEW_SETTINGS__SHOW_GALLEY_AND_LAVATORY_LABELS = eINSTANCE.getCabinViewSettings_ShowGalleyAndLavatoryLabels();
+		/**
+		 * The meta object literal for the '<em><b>Show Curtains</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN_VIEW_SETTINGS__SHOW_CURTAINS = eINSTANCE.getCabinViewSettings_ShowCurtains();
+		/**
+		 * The meta object literal for the '<em><b>Show Seats</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN_VIEW_SETTINGS__SHOW_SEATS = eINSTANCE.getCabinViewSettings_ShowSeats();
+		/**
+		 * The meta object literal for the '<em><b>Show Galleys</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN_VIEW_SETTINGS__SHOW_GALLEYS = eINSTANCE.getCabinViewSettings_ShowGalleys();
+		/**
+		 * The meta object literal for the '<em><b>Show Lavatories</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN_VIEW_SETTINGS__SHOW_LAVATORIES = eINSTANCE.getCabinViewSettings_ShowLavatories();
+		/**
+		 * The meta object literal for the '<em><b>Show Doors</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN_VIEW_SETTINGS__SHOW_DOORS = eINSTANCE.getCabinViewSettings_ShowDoors();
+		/**
+		 * The meta object literal for the '<em><b>Show Occupied Seats</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN_VIEW_SETTINGS__SHOW_OCCUPIED_SEATS = eINSTANCE.getCabinViewSettings_ShowOccupiedSeats();
+		/**
+		 * The meta object literal for the '<em><b>Size Of Passenger Circle</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN_VIEW_SETTINGS__SIZE_OF_PASSENGER_CIRCLE = eINSTANCE.getCabinViewSettings_SizeOfPassengerCircle();
+		/**
+		 * The meta object literal for the '<em><b>Door Off Set In Pixels</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN_VIEW_SETTINGS__DOOR_OFF_SET_IN_PIXELS = eINSTANCE.getCabinViewSettings_DoorOffSetInPixels();
+		/**
+		 * The meta object literal for the '<em><b>XZero In Pixels</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN_VIEW_SETTINGS__XZERO_IN_PIXELS = eINSTANCE.getCabinViewSettings_XZeroInPixels();
+		/**
+		 * The meta object literal for the '<em><b>YZero In Pixels</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN_VIEW_SETTINGS__YZERO_IN_PIXELS = eINSTANCE.getCabinViewSettings_YZeroInPixels();
+		/**
+		 * The meta object literal for the '<em><b>Cabin Width In Pixels</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN_VIEW_SETTINGS__CABIN_WIDTH_IN_PIXELS = eINSTANCE.getCabinViewSettings_CabinWidthInPixels();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.ClassType <em>Class Type</em>}' enum.
 		 * <!-- begin-user-doc -->

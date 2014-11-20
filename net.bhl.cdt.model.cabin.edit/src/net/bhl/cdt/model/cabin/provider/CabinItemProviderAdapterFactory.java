@@ -348,6 +348,29 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.CabinViewSettings} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CabinViewSettingsItemProvider cabinViewSettingsItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link net.bhl.cdt.model.cabin.CabinViewSettings}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCabinViewSettingsAdapter() {
+		if (cabinViewSettingsItemProvider == null) {
+			cabinViewSettingsItemProvider = new CabinViewSettingsItemProvider(this);
+		}
+
+		return cabinViewSettingsItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -458,6 +481,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 		if (stairwayItemProvider != null) stairwayItemProvider.dispose();
 		if (curtainItemProvider != null) curtainItemProvider.dispose();
 		if (stowageItemProvider != null) stowageItemProvider.dispose();
+		if (cabinViewSettingsItemProvider != null) cabinViewSettingsItemProvider.dispose();
 	}
 
 }
