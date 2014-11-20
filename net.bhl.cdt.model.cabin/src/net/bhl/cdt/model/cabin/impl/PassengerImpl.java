@@ -32,6 +32,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getClass_ <em>Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getBoardingTime <em>Boarding Time</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getSeatRef <em>Seat Ref</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getWidth <em>Width</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getDepth <em>Depth</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getOrientationInDegree <em>Orientation In Degree</em>}</li>
  * </ul>
  * </p>
  *
@@ -239,6 +242,66 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	protected Seat seatRef;
 
 	/**
+	 * The default value of the '{@link #getWidth() <em>Width</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWidth()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double WIDTH_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getWidth() <em>Width</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWidth()
+	 * @generated
+	 * @ordered
+	 */
+	protected double width = WIDTH_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getDepth() <em>Depth</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDepth()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double DEPTH_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getDepth() <em>Depth</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDepth()
+	 * @generated
+	 * @ordered
+	 */
+	protected double depth = DEPTH_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getOrientationInDegree() <em>Orientation In Degree</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOrientationInDegree()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double ORIENTATION_IN_DEGREE_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getOrientationInDegree() <em>Orientation In Degree</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOrientationInDegree()
+	 * @generated
+	 * @ordered
+	 */
+	protected double orientationInDegree = ORIENTATION_IN_DEGREE_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -426,6 +489,69 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public double getWidth() {
+		return width;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWidth(double newWidth) {
+		double oldWidth = width;
+		width = newWidth;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__WIDTH, oldWidth, width));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getDepth() {
+		return depth;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDepth(double newDepth) {
+		double oldDepth = depth;
+		depth = newDepth;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__DEPTH, oldDepth, depth));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getOrientationInDegree() {
+		return orientationInDegree;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOrientationInDegree(double newOrientationInDegree) {
+		double oldOrientationInDegree = orientationInDegree;
+		orientationInDegree = newOrientationInDegree;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__ORIENTATION_IN_DEGREE, oldOrientationInDegree, orientationInDegree));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public double getHeight() {
 		return height;
 	}
@@ -554,6 +680,12 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 			case CabinPackage.PASSENGER__SEAT_REF:
 				if (resolve) return getSeatRef();
 				return basicGetSeatRef();
+			case CabinPackage.PASSENGER__WIDTH:
+				return getWidth();
+			case CabinPackage.PASSENGER__DEPTH:
+				return getDepth();
+			case CabinPackage.PASSENGER__ORIENTATION_IN_DEGREE:
+				return getOrientationInDegree();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -598,6 +730,15 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return;
 			case CabinPackage.PASSENGER__SEAT_REF:
 				setSeatRef((Seat)newValue);
+				return;
+			case CabinPackage.PASSENGER__WIDTH:
+				setWidth((Double)newValue);
+				return;
+			case CabinPackage.PASSENGER__DEPTH:
+				setDepth((Double)newValue);
+				return;
+			case CabinPackage.PASSENGER__ORIENTATION_IN_DEGREE:
+				setOrientationInDegree((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -644,6 +785,15 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 			case CabinPackage.PASSENGER__SEAT_REF:
 				setSeatRef((Seat)null);
 				return;
+			case CabinPackage.PASSENGER__WIDTH:
+				setWidth(WIDTH_EDEFAULT);
+				return;
+			case CabinPackage.PASSENGER__DEPTH:
+				setDepth(DEPTH_EDEFAULT);
+				return;
+			case CabinPackage.PASSENGER__ORIENTATION_IN_DEGREE:
+				setOrientationInDegree(ORIENTATION_IN_DEGREE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -678,6 +828,12 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return boardingTime != BOARDING_TIME_EDEFAULT;
 			case CabinPackage.PASSENGER__SEAT_REF:
 				return seatRef != null;
+			case CabinPackage.PASSENGER__WIDTH:
+				return width != WIDTH_EDEFAULT;
+			case CabinPackage.PASSENGER__DEPTH:
+				return depth != DEPTH_EDEFAULT;
+			case CabinPackage.PASSENGER__ORIENTATION_IN_DEGREE:
+				return orientationInDegree != ORIENTATION_IN_DEGREE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -710,6 +866,12 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 		result.append(class_);
 		result.append(", boardingTime: ");
 		result.append(boardingTime);
+		result.append(", width: ");
+		result.append(width);
+		result.append(", depth: ");
+		result.append(depth);
+		result.append(", orientationInDegree: ");
+		result.append(orientationInDegree);
 		result.append(')');
 		return result.toString();
 	}

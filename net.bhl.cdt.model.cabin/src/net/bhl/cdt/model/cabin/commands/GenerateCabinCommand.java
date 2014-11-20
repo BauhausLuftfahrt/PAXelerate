@@ -1,8 +1,10 @@
 package net.bhl.cdt.model.cabin.commands;
 
 import java.util.ArrayList;
+
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
+
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.ClassType;
@@ -404,6 +406,10 @@ public class GenerateCabinCommand extends CDTCommand{
 		
 		consoleViewPart.printText("cabin generation completed");
 		cabinViewPart.submitCabin(cabin);
+		
+		for(int i = 0;i<5;i++) {
+			cabinViewPart.submitPassengerCoordinates(1, i*10, i*10);
+		}
 	}
 
 }

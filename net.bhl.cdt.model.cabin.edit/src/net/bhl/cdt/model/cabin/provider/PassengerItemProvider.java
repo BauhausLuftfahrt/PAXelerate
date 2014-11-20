@@ -71,6 +71,9 @@ public class PassengerItemProvider
 			addClassPropertyDescriptor(object);
 			addBoardingTimePropertyDescriptor(object);
 			addSeatRefPropertyDescriptor(object);
+			addWidthPropertyDescriptor(object);
+			addDepthPropertyDescriptor(object);
+			addOrientationInDegreePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -230,6 +233,72 @@ public class PassengerItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Width feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addWidthPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_width_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_width_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__WIDTH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Depth feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDepthPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_depth_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_depth_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__DEPTH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Orientation In Degree feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOrientationInDegreePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_orientationInDegree_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_orientationInDegree_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__ORIENTATION_IN_DEGREE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Height feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -362,6 +431,9 @@ public class PassengerItemProvider
 			case CabinPackage.PASSENGER__NAME:
 			case CabinPackage.PASSENGER__CLASS:
 			case CabinPackage.PASSENGER__BOARDING_TIME:
+			case CabinPackage.PASSENGER__WIDTH:
+			case CabinPackage.PASSENGER__DEPTH:
+			case CabinPackage.PASSENGER__ORIENTATION_IN_DEGREE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

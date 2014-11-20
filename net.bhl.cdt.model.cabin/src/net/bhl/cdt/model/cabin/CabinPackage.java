@@ -877,13 +877,40 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER__SEAT_REF = 10;
 
 	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__WIDTH = 11;
+
+	/**
+	 * The feature id for the '<em><b>Depth</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__DEPTH = 12;
+
+	/**
+	 * The feature id for the '<em><b>Orientation In Degree</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__ORIENTATION_IN_DEGREE = 13;
+
+	/**
 	 * The number of structural features of the '<em>Passenger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_FEATURE_COUNT = 11;
+	int PASSENGER_FEATURE_COUNT = 14;
 
 	/**
 	 * The number of operations of the '<em>Passenger</em>' class.
@@ -2312,6 +2339,39 @@ public interface CabinPackage extends EPackage {
 	EReference getPassenger_SeatRef();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getWidth <em>Width</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Width</em>'.
+	 * @see net.bhl.cdt.model.cabin.Passenger#getWidth()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_Width();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getDepth <em>Depth</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Depth</em>'.
+	 * @see net.bhl.cdt.model.cabin.Passenger#getDepth()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_Depth();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getOrientationInDegree <em>Orientation In Degree</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Orientation In Degree</em>'.
+	 * @see net.bhl.cdt.model.cabin.Passenger#getOrientationInDegree()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_OrientationInDegree();
+
+	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getHeight <em>Height</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3465,6 +3525,27 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PASSENGER__SEAT_REF = eINSTANCE.getPassenger_SeatRef();
+		/**
+		 * The meta object literal for the '<em><b>Width</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__WIDTH = eINSTANCE.getPassenger_Width();
+		/**
+		 * The meta object literal for the '<em><b>Depth</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__DEPTH = eINSTANCE.getPassenger_Depth();
+		/**
+		 * The meta object literal for the '<em><b>Orientation In Degree</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__ORIENTATION_IN_DEGREE = eINSTANCE.getPassenger_OrientationInDegree();
 		/**
 		 * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->

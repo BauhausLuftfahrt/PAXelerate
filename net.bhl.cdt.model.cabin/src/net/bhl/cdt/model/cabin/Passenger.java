@@ -23,6 +23,9 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getClass_ <em>Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getBoardingTime <em>Boarding Time</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getSeatRef <em>Seat Ref</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getWidth <em>Width</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getDepth <em>Depth</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getOrientationInDegree <em>Orientation In Degree</em>}</li>
  * </ul>
  * </p>
  *
@@ -218,6 +221,84 @@ public interface Passenger extends EObject {
 	 * @generated
 	 */
 	void setSeatRef(Seat value);
+
+	/**
+	 * Returns the value of the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Width</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Width</em>' attribute.
+	 * @see #setWidth(double)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_Width()
+	 * @model
+	 * @generated
+	 */
+	double getWidth();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getWidth <em>Width</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Width</em>' attribute.
+	 * @see #getWidth()
+	 * @generated
+	 */
+	void setWidth(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Depth</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Depth</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Depth</em>' attribute.
+	 * @see #setDepth(double)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_Depth()
+	 * @model
+	 * @generated
+	 */
+	double getDepth();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getDepth <em>Depth</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Depth</em>' attribute.
+	 * @see #getDepth()
+	 * @generated
+	 */
+	void setDepth(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Orientation In Degree</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Orientation In Degree</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Orientation In Degree</em>' attribute.
+	 * @see #setOrientationInDegree(double)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_OrientationInDegree()
+	 * @model
+	 * @generated
+	 */
+	double getOrientationInDegree();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getOrientationInDegree <em>Orientation In Degree</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Orientation In Degree</em>' attribute.
+	 * @see #getOrientationInDegree()
+	 * @generated
+	 */
+	void setOrientationInDegree(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Height</b></em>' attribute.

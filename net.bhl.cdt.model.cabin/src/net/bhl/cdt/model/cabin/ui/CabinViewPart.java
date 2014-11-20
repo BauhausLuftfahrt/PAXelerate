@@ -50,6 +50,10 @@ public class CabinViewPart extends ViewPart {
 	public int cabin_y;
 	public double factor;
 	public String drawString;
+	double xPositionPassenger;
+	double yPositionPassenger;
+	int idPassenger;
+	//ArrayList<double[][][]> PassengerPositions;
 	public Cabin cabinPlaceHolder = CabinFactory.eINSTANCE.createCabin();
 	
 	/***********graphics settings*********/
@@ -118,6 +122,20 @@ public class CabinViewPart extends ViewPart {
 		drawCabin = cabin;
 		oneMeter = (int)(cabin_x*100/drawCabin.getCabinWidth());
 		doTheDraw();
+	}
+	
+	public void submitPassengerCoordinates(int id, final double xPostion, final double yPosition) {
+		
+		//parentTest.redraw();
+		//parentTest.update();
+		//canvas.redraw();
+		
+		canvas.addPaintListener(new PaintListener() {
+		      public void paintControl(final PaintEvent e) { 
+		    	  e.gc.fillRectangle((int)xPostion, (int)yPosition,10,10);
+		      }
+		});
+		
 	}
 	
 	public void doTheDraw() {
@@ -328,9 +346,9 @@ public class CabinViewPart extends ViewPart {
 
 	/** * Passing the focus request to the viewer's control. */
 	public void setFocus() {
-		viewer.getControl().setFocus();
-		parentTest.redraw();
-		parentTest.update();
+		//viewer.getControl().setFocus();
+		//parentTest.redraw();
+		//parentTest.update();
 	}
 
 }
