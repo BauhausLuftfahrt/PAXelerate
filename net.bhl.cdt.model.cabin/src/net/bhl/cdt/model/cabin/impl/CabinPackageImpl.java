@@ -600,24 +600,6 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRow_AdditionalLegroom() {
-		return (EAttribute)rowEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getRow_SeatPitch() {
-		return (EAttribute)rowEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getPassengerClass() {
 		return passengerClassEClass;
 	}
@@ -1485,8 +1467,6 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEReference(rowEClass, ROW__SEATS);
 		createEAttribute(rowEClass, ROW__ROW_NUMBER);
 		createEAttribute(rowEClass, ROW__OFFSET_IN_ROW);
-		createEAttribute(rowEClass, ROW__ADDITIONAL_LEGROOM);
-		createEAttribute(rowEClass, ROW__SEAT_PITCH);
 
 		passengerClassEClass = createEClass(PASSENGER_CLASS);
 		createEAttribute(passengerClassEClass, PASSENGER_CLASS__TYPE);
@@ -1668,8 +1648,6 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEReference(getRow_Seats(), this.getSeat(), null, "seats", null, 1, -1, Row.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRow_RowNumber(), ecorePackage.getEInt(), "rowNumber", null, 0, 1, Row.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRow_OffsetInRow(), ecorePackage.getEBoolean(), "offsetInRow", null, 0, 1, Row.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRow_AdditionalLegroom(), ecorePackage.getEBoolean(), "additionalLegroom", null, 0, 1, Row.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRow_SeatPitch(), ecorePackage.getEDouble(), "seatPitch", null, 0, 1, Row.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(passengerClassEClass, PassengerClass.class, "PassengerClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPassengerClass_Type(), this.getClassType(), "type", null, 0, 1, PassengerClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

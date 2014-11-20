@@ -17,8 +17,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Row#getSeats <em>Seats</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Row#getRowNumber <em>Row Number</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Row#isOffsetInRow <em>Offset In Row</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Row#isAdditionalLegroom <em>Additional Legroom</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Row#getSeatPitch <em>Seat Pitch</em>}</li>
  * </ul>
  * </p>
  *
@@ -94,57 +92,5 @@ public interface Row extends EObject {
 	 * @generated
 	 */
 	void setOffsetInRow(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Additional Legroom</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Additional Legroom</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Additional Legroom</em>' attribute.
-	 * @see #setAdditionalLegroom(boolean)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getRow_AdditionalLegroom()
-	 * @model
-	 * @generated
-	 */
-	boolean isAdditionalLegroom();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Row#isAdditionalLegroom <em>Additional Legroom</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Additional Legroom</em>' attribute.
-	 * @see #isAdditionalLegroom()
-	 * @generated
-	 */
-	void setAdditionalLegroom(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Seat Pitch</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Seat Pitch</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Seat Pitch</em>' attribute.
-	 * @see #setSeatPitch(double)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getRow_SeatPitch()
-	 * @model
-	 * @generated
-	 */
-	double getSeatPitch();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Row#getSeatPitch <em>Seat Pitch</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Seat Pitch</em>' attribute.
-	 * @see #getSeatPitch()
-	 * @generated
-	 */
-	void setSeatPitch(double value);
 
 } // Row

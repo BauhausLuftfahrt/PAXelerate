@@ -467,31 +467,13 @@ public interface CabinPackage extends EPackage {
 	int ROW__OFFSET_IN_ROW = 2;
 
 	/**
-	 * The feature id for the '<em><b>Additional Legroom</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROW__ADDITIONAL_LEGROOM = 3;
-
-	/**
-	 * The feature id for the '<em><b>Seat Pitch</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROW__SEAT_PITCH = 4;
-
-	/**
 	 * The number of structural features of the '<em>Row</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROW_FEATURE_COUNT = 5;
+	int ROW_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Row</em>' class.
@@ -1980,28 +1962,6 @@ public interface CabinPackage extends EPackage {
 	EAttribute getRow_OffsetInRow();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Row#isAdditionalLegroom <em>Additional Legroom</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Additional Legroom</em>'.
-	 * @see net.bhl.cdt.model.cabin.Row#isAdditionalLegroom()
-	 * @see #getRow()
-	 * @generated
-	 */
-	EAttribute getRow_AdditionalLegroom();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Row#getSeatPitch <em>Seat Pitch</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Seat Pitch</em>'.
-	 * @see net.bhl.cdt.model.cabin.Row#getSeatPitch()
-	 * @see #getRow()
-	 * @generated
-	 */
-	EAttribute getRow_SeatPitch();
-
-	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.PassengerClass <em>Passenger Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3286,20 +3246,6 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ROW__OFFSET_IN_ROW = eINSTANCE.getRow_OffsetInRow();
-		/**
-		 * The meta object literal for the '<em><b>Additional Legroom</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ROW__ADDITIONAL_LEGROOM = eINSTANCE.getRow_AdditionalLegroom();
-		/**
-		 * The meta object literal for the '<em><b>Seat Pitch</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ROW__SEAT_PITCH = eINSTANCE.getRow_SeatPitch();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.PassengerClassImpl <em>Passenger Class</em>}' class.
 		 * <!-- begin-user-doc -->

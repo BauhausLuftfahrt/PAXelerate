@@ -65,8 +65,6 @@ public class RowItemProvider
 
 			addRowNumberPropertyDescriptor(object);
 			addOffsetInRowPropertyDescriptor(object);
-			addAdditionalLegroomPropertyDescriptor(object);
-			addSeatPitchPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -111,50 +109,6 @@ public class RowItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Additional Legroom feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addAdditionalLegroomPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Row_additionalLegroom_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Row_additionalLegroom_feature", "_UI_Row_type"),
-				 CabinPackage.Literals.ROW__ADDITIONAL_LEGROOM,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Seat Pitch feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSeatPitchPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Row_seatPitch_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Row_seatPitch_feature", "_UI_Row_type"),
-				 CabinPackage.Literals.ROW__SEAT_PITCH,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -226,8 +180,6 @@ public class RowItemProvider
 		switch (notification.getFeatureID(Row.class)) {
 			case CabinPackage.ROW__ROW_NUMBER:
 			case CabinPackage.ROW__OFFSET_IN_ROW:
-			case CabinPackage.ROW__ADDITIONAL_LEGROOM:
-			case CabinPackage.ROW__SEAT_PITCH:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CabinPackage.ROW__SEATS:

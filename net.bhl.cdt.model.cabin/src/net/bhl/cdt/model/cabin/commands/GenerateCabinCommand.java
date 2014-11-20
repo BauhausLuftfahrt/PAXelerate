@@ -23,9 +23,6 @@ import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.ConsoleViewPart;
 import net.bhl.cdt.model.util.ModelHelper;
 
-
-
-
 /**
  * 
  * This script is used to build up the cabin according to predefined settings.
@@ -35,7 +32,6 @@ import net.bhl.cdt.model.util.ModelHelper;
  * @date 18.11.2014
  *
  */
-
 
 public class GenerateCabinCommand extends CDTCommand{
 
@@ -91,9 +87,6 @@ public class GenerateCabinCommand extends CDTCommand{
 		int seatsInRow = 0;
 		double seatDimensionX = 0;
 		double seatDimensionY = 0;
-		// these parameters should be read out of the initial settings depending on ClassType, implementation here for test purpose only 
-		boolean moreLegroom = false;
-		boolean offsetInTheRow = false;
 		
 		//load the settings depending on the ClassType
 		switch (typeID) {

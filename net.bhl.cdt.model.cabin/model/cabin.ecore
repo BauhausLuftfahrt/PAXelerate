@@ -75,8 +75,6 @@
         eType="#//Seat" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rowNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="offsetInRow" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="additionalLegroom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatPitch" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PassengerClass">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//ClassType"/>
