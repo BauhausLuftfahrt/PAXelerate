@@ -190,7 +190,7 @@ public class CabinViewPart extends ViewPart {
 		    	  int originx = 320;
 		    	  int length = 20;
 		    	  int triangleHeight = 5;
-		    	  int triangleWidth = 10;
+		    	  int triangleWidth = 6;
 		    	  int correctionOfXPosition = 4;
 		    	  int correctionOfYPosition = 7;
 		    	  int distanceOfXToLine = 15;
@@ -236,7 +236,7 @@ public class CabinViewPart extends ViewPart {
 		    			  e.gc.fillRectangle((int)(x_zero+seat.getXPosition()/factor),(int)(y_zero +seat.getYPosition()/factor),(int)(seat.getWidth()/factor),(int)(seat.getLength()/factor)); 
 		    			  
 		    			  //if(drawCabin.getGraphicSettings().isShowSeatlabels()) {
-		    				  e.gc.drawText(""+seat.getLetter(), (int)(x_zero-fontsize+(seat.getXPosition()+seat.getWidth()/2)/factor),(int)(y_zero-fontsize +(seat.getYPosition()+seat.getLength()/2)/factor)); 
+		    				  e.gc.drawText(""+seat.getLetter(), (int)(x_zero-fontsize*0.7+(seat.getXPosition()+seat.getWidth()/2)/factor),(int)(y_zero-0.9*fontsize +(seat.getYPosition()+seat.getLength()/2)/factor)); 
 		    			  //}
 //		    			  if(drawCabin.getGraphicSettings().isShowRowLabels()) {	
 		    				  Row row = CabinFactory.eINSTANCE.createRow();
