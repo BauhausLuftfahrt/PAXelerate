@@ -134,15 +134,26 @@ public class GenerateCabinCommand extends CDTCommand{
 			
 			
 			for (int i = 1; i <= seats/seatsInRow; i++) {
-				switch (cabin.getNumbAisles()) {
-				case 1:
-					seatHelper = globalSeatPositionX = ((cabin.getCabinWidth()-cabin.getAisleWidth())/2 - (seatsInRow/2) * seatDimensionX)/(1+seatsInRow/2);
-					break;	
-//				case 2:
-//					break;
-				default:
-					consoleViewPart.printText("Number of aisles not supported!");
-				break;
+				
+				if((seatsInRow*seatDimensionX+cabin.getAisleWidth())<cabin.getCabinWidth()) {
+					switch (cabin.getNumbAisles()) {
+						case 1:
+							seatHelper = globalSeatPositionX = ((cabin.getCabinWidth()-cabin.getAisleWidth())/2 - (seatsInRow/2) * seatDimensionX)/(1+seatsInRow/2);
+							break;	
+//						case 2:
+//							break;
+						default:
+							consoleViewPart.printText("Number of aisles not supported!");
+							break;
+					}
+				}
+				else {
+					consoleViewPart.printText("Check your x dimensions! Cabin too narrow.");
+					seatHelper = globalSeatPositionX = 0;
+				}
+				if((globalSeatPositionX<0)) {
+					seatHelper = globalSeatPositionX = 0;
+					consoleViewPart.printText("Check seat and cabin dimensions! Cabin too narrow.");
 				}
 				
 				globalSeatPositionY += cabin.getSeatPitch();
