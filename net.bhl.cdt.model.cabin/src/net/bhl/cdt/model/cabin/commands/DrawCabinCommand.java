@@ -17,6 +17,33 @@ import org.eclipse.ui.PlatformUI;
  *
  */
 
+
+/********************How to add a new right click command to openCDT***********************/
+/**                                                                                      **/
+/** (1) Create a new "newCommand.java" in "net.bhl.cdt.model.cabin.commands"             **/
+/**     - Best practice: copy an existing command.                                       **/
+/**     - Be sure to not modify the constructor, "this.cabin = cabin" should stay intact **/
+/**                                                                                      **/
+/** (2) Create a new "newCommandHandler.java" in "net.bhl.cdt.model.cabin.handlers"      **/                                                            
+/**     - Best practice: copy an existing handler file.                        		     **/
+/**     - Tip: Do not modify this file, only check for correct naming         			 **/
+/**                         															 **/
+/** (3) Open "plugin.xml" and go to "org.eclipse.ui.commands"                			 **/
+/**     - Create a new command by right-clicking.                                        **/
+/**     - Fill in the id, name and default handler. (Caution: case sensitive!)           **/
+/**                                                        								 **/
+/** (4) Go to "org.eclipse.ui.menus" in "plugin.xml"                                     **/
+/**     - Expand the "popup:org.eclipse.(...)" entry.                                    **/
+/**     - Add a new command by right-clicking.                                           **/
+/**     - Fill in the correct commandID and your desired label name.                     **/
+/**     - Add a new parameter by right-clicking.                                         **/
+/**     - Set the parameter to "false (visible when)".      							 **/
+/**     - Add a parameter within called "iterate".            						     **/
+/**     - Add a parameter within called "instanceOf" and choose "cabin". 			     **/
+/**                                            											 **/
+/******************************************************************************************/
+
+
 public class DrawCabinCommand extends CDTCommand {
 	
 	private Cabin cabin;

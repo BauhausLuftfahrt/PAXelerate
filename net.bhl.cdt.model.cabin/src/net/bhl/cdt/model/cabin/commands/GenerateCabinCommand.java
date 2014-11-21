@@ -1,10 +1,8 @@
 package net.bhl.cdt.model.cabin.commands;
 
 import java.util.ArrayList;
-
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
-
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.ClassType;
@@ -32,6 +30,31 @@ import net.bhl.cdt.model.util.ModelHelper;
  * @date 18.11.2014
  *
  */
+
+/********************How to add a new right click command to openCDT***********************/
+/**                                                                                      **/
+/** (1) Create a new "newCommand.java" in "net.bhl.cdt.model.cabin.commands"             **/
+/**     - Best practice: copy an existing command.                                       **/
+/**     - Be sure to not modify the constructor, "this.cabin = cabin" should stay intact **/
+/**                                                                                      **/
+/** (2) Create a new "newCommandHandler.java" in "net.bhl.cdt.model.cabin.handlers"      **/                                                            
+/**     - Best practice: copy an existing handler file.                        		     **/
+/**     - Tip: Do not modify this file, only check for correct naming         			 **/
+/**                         															 **/
+/** (3) Open "plugin.xml" and go to "org.eclipse.ui.commands"                			 **/
+/**     - Create a new command by right-clicking.                                        **/
+/**     - Fill in the id, name and default handler. (Caution: case sensitive!)           **/
+/**                                                        								 **/
+/** (4) Go to "org.eclipse.ui.menus" in "plugin.xml"                                     **/
+/**     - Expand the "popup:org.eclipse.(...)" entry.                                    **/
+/**     - Add a new command by right-clicking.                                           **/
+/**     - Fill in the correct commandID and your desired label name.                     **/
+/**     - Add a new parameter by right-clicking.                                         **/
+/**     - Set the parameter to "false (visible when)".      							 **/
+/**     - Add a parameter within called "iterate".            						     **/
+/**     - Add a parameter within called "instanceOf" and choose "cabin". 			     **/
+/**                                            											 **/
+/******************************************************************************************/
 
 public class GenerateCabinCommand extends CDTCommand{
 
@@ -130,7 +153,7 @@ public class GenerateCabinCommand extends CDTCommand{
 			
 			for (int i = 1; i <= seats/seatsInRow; i++) {
 				
-				if((seatsInRow*seatDimensionX+cabin.getAisleWidth())<cabin.getCabinWidth()) {
+				if((seatsInRow*seatDimensionX+cabin.getAisleWidth())<=cabin.getCabinWidth()) {
 					switch (cabin.getNumbAisles()) {
 						case 1:
 							seatHelper = globalSeatPositionX = ((cabin.getCabinWidth()-cabin.getAisleWidth())/2 - (seatsInRow/2) * seatDimensionX)/(1+seatsInRow/2);
@@ -203,7 +226,7 @@ public class GenerateCabinCommand extends CDTCommand{
 	}
 	
 	/**
-	 * This function creates a door
+	 * This function creates a door. 
 	 * @param doorType
 	 * @param symmetrical
 	 * @param id
@@ -397,12 +420,12 @@ public class GenerateCabinCommand extends CDTCommand{
 		
 		//cabin.setGraphicSettings(CabinFactory.eINSTANCE.createCabinViewSettings());
 		
+		if(globalSeatPositionY>cabin.getCabinLength()) {
+			consoleViewPart.printText("Out of bounds! Cabin too short.");
+		}
+		
 		consoleViewPart.printText("cabin generation completed");
 		cabinViewPart.submitCabin(cabin);
-		
-		for(int i = 0;i<5;i++) {
-			cabinViewPart.submitPassengerCoordinates(1, i*10, i*10);
-		}
 	}
 
 }

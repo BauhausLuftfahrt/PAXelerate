@@ -6,6 +6,7 @@ import org.eclipse.swt.graphics.Color;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
@@ -120,7 +121,6 @@ public class CabinViewPart extends ViewPart {
 
 	public void submitCabin(Cabin cabin) {
 		drawCabin = cabin;
-		oneMeter = (int)(cabin_x*100/drawCabin.getCabinWidth());
 		doTheDraw();
 	}
 	
@@ -196,11 +196,20 @@ public class CabinViewPart extends ViewPart {
 		    	  int xbegin = 40;
 		    	  int ybegin = 122;
 		    	  int eckenBreite = 1;
+		    	  int meter = 1;
+		    	  if(!drawCabin.getClasses().isEmpty()) {
+		    		  oneMeter = (int)(cabin_x*100/drawCabin.getCabinWidth());
+		          }
 		    	  e.gc.drawText("1px = "+df.format(drawCabin.getCabinWidth()/cabin_x)+" cm",20,100);
-		    	  e.gc.drawText("1m",20,115);
-		    	  e.gc.drawLine(xbegin,ybegin,xbegin+oneMeter, ybegin);
+		    	  if(oneMeter>20) {
+		    		  meter = 1;
+		    	  } else if(oneMeter>10) {
+		    		  meter = 2;
+		    	  } else { meter = 3; }
+		    	  e.gc.drawText(meter+"m",20,115);
+		    	  e.gc.drawLine(xbegin,ybegin,xbegin+oneMeter*meter, ybegin);
 		    	  e.gc.drawLine(xbegin,ybegin-eckenBreite, xbegin, ybegin+eckenBreite);
-		    	  e.gc.drawLine(xbegin+oneMeter, ybegin-eckenBreite, xbegin+oneMeter, ybegin+eckenBreite);
+		    	  e.gc.drawLine(xbegin+oneMeter*meter, ybegin-eckenBreite, xbegin+oneMeter*meter, ybegin+eckenBreite);
 		    	  /*************************************************************************************/	    	  	  
 		   
 		    	  /*********************************Coordinate Box**************************************/
@@ -312,7 +321,10 @@ public class CabinViewPart extends ViewPart {
 		    		  if(!drawCabin.getPassengers().isEmpty()) { //&&drawCabin.getGraphicSettings().isShowOccupiedSeats()) {
 		    			  for(Passenger passenger:ModelHelper.getChildrenByClass(drawCabin, Passenger.class)) {
 		    				  Seat passengerSeat = passenger.getSeatRef();
-		    				  e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_BLACK));
+		    				  Random rand1 = new Random();
+		    				  Random rand2 = new Random();
+		    				  Random rand3 = new Random();
+		    				  e.gc.setBackground(new Color(e.display,rand1.nextInt(255),rand2.nextInt(255),rand3.nextInt(255))); //e.display.getSystemColor(SWT.COLOR_BLACK));
 		    				  if(passengerSeat.getLength()<passengerSeat.getWidth()) {
 		    					  e.gc.fillOval((int)(x_zero+(passengerSeat.getXPosition()+passengerSeat.getWidth()/2-passengerSeat.getLength()*sizeOfPassengerCircle/2)/factor),(int)(y_zero +(passengerSeat.getYPosition()+(1-sizeOfPassengerCircle)*passengerSeat.getLength()/2)/factor),(int)(sizeOfPassengerCircle*passengerSeat.getLength()/factor),(int)(sizeOfPassengerCircle*passengerSeat.getLength()/factor)); 
 		    				      //e.gc.drawOval((int)(x_zero+(passengerSeat.getXPosition()+passengerSeat.getWidth()/2-passengerSeat.getLength()*sizeOfPassengerCircle/2)/factor),(int)(y_zero +(passengerSeat.getYPosition()+(1-sizeOfPassengerCircle)*passengerSeat.getLength()/2)/factor),(int)(sizeOfPassengerCircle*passengerSeat.getLength()/factor),(int)(sizeOfPassengerCircle*passengerSeat.getLength()/factor)); 

@@ -38,7 +38,10 @@ public class ConsoleViewPart extends ViewPart {
 	ArrayList<String> consoleList;
 	int numberOfItemsVisible = 5;
 	Boolean cutPrint = false;
+	String previousString ="";
+	int repeatCounter = 2;
 
+	
 	class ViewLabelProvider extends LabelProvider implements ITableLabelProvider {
 		public String getColumnText(Object obj, int index) {
 			Cabin todo = (Cabin) obj;
@@ -65,16 +68,34 @@ public class ConsoleViewPart extends ViewPart {
 	}
 
 	
-	public void printText(String text) {	
+	/**
+	 * This method catches the string pushed over by another script and processes it. 
+	 * @param text is the submittet text string
+	 */
+	public void printText(String text) {
+		
+		/*get the current time*/
+		DateFormat df = new SimpleDateFormat("HH:mm:ss");
+		Date dateobj = new Date();
+		String str = df.format(dateobj);
+		
+		/*remove the first item if the list of texts is to long*/
 		if(consoleList.size()>numberOfItemsVisible) {
 			consoleList.remove(0);
 			cutPrint = true;
 		}
-		DateFormat df = new SimpleDateFormat("HH:mm:ss");
-		Date dateobj = new Date();
-		String str = df.format(dateobj);
-		consoleList.add("["+str+"] "+text);
+		
+		/*if  there is the same string several times in a row, add a counter to the string and update the date*/
+		if(text==previousString) {
+				consoleList.set(consoleList.size()-1,"["+str+"] "+ text+" ("+repeatCounter+"x)");
+				repeatCounter ++;
+		} else {
+			consoleList.add("["+str+"] "+text);
+			repeatCounter = 2;
+		}
+		
 		doTheText();
+		previousString = text;
 		
 	}
 	
