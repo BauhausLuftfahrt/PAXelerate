@@ -3,12 +3,8 @@ package net.bhl.cdt.model.cabin.commands;
 
 import java.util.List;
 
-import model.AStar;
-
 import model.CabinGenerator;
-
 import model.TestAStar;
-
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.PassengerClass;
@@ -55,6 +51,7 @@ import org.eclipse.ui.PlatformUI;
 public class SimulateBoardingCommand extends CDTCommand {
 
 	private Cabin cabin;
+	private CabinGenerator generator;
 	private static int port = 2100;
 
 	/**
@@ -75,7 +72,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 		ConsoleViewPart consoleViewPart = (ConsoleViewPart) page.findView("net.bhl.cdt.model.cabin.consoleview");
 		/***************************************************/
 		
-//		CabinGenerator generator = new CabinGenerator(cabin);
+//		generator = new CabinGenerator(cabin);
 //		generator.createObstacleMap();
 //		TestAStar astar = new TestAStar(,(int)(cabin.getCabinWidth()/cabin.getScale()),(int)(cabin.getCabinLength()/cabin.getScale()));
 //		while(astar.)
