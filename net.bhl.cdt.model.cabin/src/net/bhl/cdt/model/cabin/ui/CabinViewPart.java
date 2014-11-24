@@ -124,14 +124,16 @@ public class CabinViewPart extends ViewPart {
 		doTheDraw();
 	}
 	
-	public void submitPassengerCoordinates(int id, final double xPostion, final double yPosition) {
+	public void submitPassengerCoordinates(int id, final int[]coordinates) {
 		
 		parentTest.redraw();
 		parentTest.update();
 		canvas.redraw();
 		canvas.addPaintListener(new PaintListener() {
 		      public void paintControl(final PaintEvent e) { 
-		    	  //e.gc.fillOval(x_zero+(int()), y_zero+(int()),10,10);
+		    	  Color black = new Color(e.display,0,0,0); /*White Color Code*/
+		    	  e.gc.setBackground(black);
+		    	  e.gc.fillOval(x_zero+(int)(coordinates[0]*drawCabin.getScale()/factor), y_zero+(int)(coordinates[1]*drawCabin.getScale()/factor),5,5);
 		      }
 		});
 		
@@ -167,7 +169,7 @@ public class CabinViewPart extends ViewPart {
 		    	  Color light_gray = new Color(e.display,220,220,220); /*Background Color Code*/
 		    	  Color dark_gray = new Color(e.display,105,105,105); /*Door Color Code*/
 		    	  Color white = new Color(e.display,255,255,255); /*White Color Code*/
-		    	  Color black = new Color(e.display,0,0,0); /*White Color Code*/
+		    	  Color black = new Color(e.display,0,0,0); /*Black Color Code*/
 		    	  
 		    	  Font fontOne = new Font(e.display,fontName, 8, SWT.NORMAL);
 		    	  Font fontTwo = new Font(e.display,fontName, fontsize, SWT.NORMAL); 

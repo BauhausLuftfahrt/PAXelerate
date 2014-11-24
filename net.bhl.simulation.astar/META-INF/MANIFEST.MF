@@ -1,8 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: A_Star-Algorithm
-Bundle-SymbolicName: net.bhl.simulation.astar
-Bundle-Version: 1.0.0.qualifier
-Export-Package: model,
- observer,
- view

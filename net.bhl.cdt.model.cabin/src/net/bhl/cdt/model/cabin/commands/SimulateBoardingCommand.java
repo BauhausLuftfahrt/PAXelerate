@@ -71,18 +71,20 @@ public class SimulateBoardingCommand extends CDTCommand {
 		CabinViewPart cabinViewPart = (CabinViewPart) page.findView("net.bhl.cdt.model.cabin.cabinview");
 		ConsoleViewPart consoleViewPart = (ConsoleViewPart) page.findView("net.bhl.cdt.model.cabin.consoleview");
 		/***************************************************/
-		
-//		generator = new CabinGenerator(cabin);
-//		generator.createObstacleMap();
-//		TestAStar astar = new TestAStar(,(int)(cabin.getCabinWidth()/cabin.getScale()),(int)(cabin.getCabinLength()/cabin.getScale()));
-//		while(astar.)
-//		try {
-//			
-//			
-//			Thread.sleep(500);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
+		consoleViewPart.printText("Starting boarding simulation.");
+		generator = new CabinGenerator(cabin);
+		TestAStar astar = new TestAStar(generator.createObstacleMap(),(int)(cabin.getCabinWidth()/cabin.getScale()),(int)(cabin.getCabinLength()/cabin.getScale()),cabin);
+		while(!astar.getSimulationDone()) {
+			try {
+				cabinViewPart.submitPassengerCoordinates(0,astar.getCoordinates());
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		if(astar.simulationDone) {
+			consoleViewPart.printText("Boarding completed!");
+		}
 
 	}
 

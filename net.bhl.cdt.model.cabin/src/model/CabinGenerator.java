@@ -59,24 +59,24 @@ public class CabinGenerator {
 		}
 		/******************************************************/
 		
-		/*****************Lavatories***************************/
-		for (Lavatory lavatory : ModelHelper.getChildrenByClass(cabin, Lavatory.class)) {			
-			int lavWidth = (int)(lavatory.getXDimension()/cabin.getScale());
-			int lavLength = (int)(lavatory.getYDimension()/cabin.getScale());
-			int lavX = (int)(lavatory.getXPosition()/cabin.getScale());
-			int lavY = (int)(lavatory.getYPosition()/cabin.getScale());	
-			obstacleMap[lavX][lavY] = 100000;
-			for (int i = 0; i < lavWidth; i++) {
-				for (int j = 0; j < lavLength; j++) {
-					int foo = lavX + j;
-					int bar = lavY + i;
-					if(foo < width && bar <length) {
-						obstacleMap[foo][bar] = 100000;	
-					}
-				}
-			}
-		}
-		/*****************************************************/
+//		/*****************Lavatories***************************/
+//		for (Lavatory lavatory : ModelHelper.getChildrenByClass(cabin, Lavatory.class)) {			
+//			int lavWidth = (int)(lavatory.getXDimension()/cabin.getScale());
+//			int lavLength = (int)(lavatory.getYDimension()/cabin.getScale());
+//			int lavX = (int)(lavatory.getXPosition()/cabin.getScale());
+//			int lavY = (int)(lavatory.getYPosition()/cabin.getScale());	
+//			obstacleMap[lavX][lavY] = 100000;
+//			for (int i = 0; i < lavWidth; i++) {
+//				for (int j = 0; j < lavLength; j++) {
+//					int foo = lavX + j;
+//					int bar = lavY + i;
+//					if(foo < width && bar <length) {
+//						obstacleMap[foo][bar] = 100000;	
+//					}
+//				}
+//			}
+//		}
+//		/*****************************************************/
 		
 		/*****************Galleys***************************/
 		for (Galley galley : ModelHelper.getChildrenByClass(cabin, Galley.class)) {			

@@ -151,7 +151,7 @@ public class GeneratePassengersCommand extends CDTCommand{
 			for (Seat seat:ModelHelper.getChildrenByClass(cabin, Seat.class)){
 				if(!seat.equals(null)) {
 					if(seat.getSeatNumber()==newPassenger.getSeat()) {
-						newPassenger.setName(randomId+" is at Seat "+seat.getSeatId());		 //passengerIdCount ordnet nach Klasse!
+						newPassenger.setName(randomId+" ("+seat.getSeatId()+")");		 //passengerIdCount ordnet nach Klasse!
 						newPassenger.setSeatRef(seat);
 					}
 				}
