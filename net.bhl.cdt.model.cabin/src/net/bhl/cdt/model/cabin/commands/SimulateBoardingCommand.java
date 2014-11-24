@@ -3,11 +3,21 @@ package net.bhl.cdt.model.cabin.commands;
 
 import java.util.List;
 
+import model.AStar;
+
+import model.CabinGenerator;
+
+import model.TestAStar;
+
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.PassengerClass;
+import net.bhl.cdt.model.cabin.ui.CabinViewPart;
+import net.bhl.cdt.model.cabin.ui.ConsoleViewPart;
 
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * This command starts the cabin boarding simulation.
@@ -59,13 +69,23 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 	@Override
 	protected void doRun() {
-		List<PassengerClass> passengerClasses = cabin.getClasses();
-		if (!passengerClasses.isEmpty()) {
-			PassengerClass passengerClass = passengerClasses.get(0);
-			passengerClass.getRows();
-		}
-
-		// TestAStar(obstacleMap, mapWidth, mapHeight, agentID, agentStartX, agentStartY, agentGoalX, agentGoalY).run();
+		/**********Get CabinView and ConsoleView************/
+		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+		CabinViewPart cabinViewPart = (CabinViewPart) page.findView("net.bhl.cdt.model.cabin.cabinview");
+		ConsoleViewPart consoleViewPart = (ConsoleViewPart) page.findView("net.bhl.cdt.model.cabin.consoleview");
+		/***************************************************/
+		
+//		CabinGenerator generator = new CabinGenerator(cabin);
+//		generator.createObstacleMap();
+//		TestAStar astar = new TestAStar(,(int)(cabin.getCabinWidth()/cabin.getScale()),(int)(cabin.getCabinLength()/cabin.getScale()));
+//		while(astar.)
+//		try {
+//			
+//			
+//			Thread.sleep(500);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
 
 	}
 

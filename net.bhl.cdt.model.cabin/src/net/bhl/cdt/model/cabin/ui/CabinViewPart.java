@@ -126,13 +126,12 @@ public class CabinViewPart extends ViewPart {
 	
 	public void submitPassengerCoordinates(int id, final double xPostion, final double yPosition) {
 		
-		//parentTest.redraw();
-		//parentTest.update();
-		//canvas.redraw();
-		
+		parentTest.redraw();
+		parentTest.update();
+		canvas.redraw();
 		canvas.addPaintListener(new PaintListener() {
 		      public void paintControl(final PaintEvent e) { 
-		    	  e.gc.fillRectangle((int)xPostion, (int)yPosition,10,10);
+		    	  //e.gc.fillOval(x_zero+(int()), y_zero+(int()),10,10);
 		      }
 		});
 		
