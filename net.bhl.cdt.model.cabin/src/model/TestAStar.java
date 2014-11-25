@@ -35,6 +35,8 @@ public class TestAStar {
 
 	public static JFrame frame;
 
+	static ArrayList<Passenger> finishedList = new ArrayList();
+	
 	static Logger log = new Logger();
 	static AreaMap map;
 	static ArrayList<Agent> agents = new ArrayList();
@@ -127,22 +129,36 @@ public class TestAStar {
 	public static Boolean getSimulationDone() {
 		return simulationDone;
 	}
-	
-	public static int[] getCoordinates() {
-		int[] loc = new int[2];
-		int yLoc = 0;
-		int xLoc = 0;
-		for (int x = 0; x < TestAStar.map.getMapWidth(); x++) {
-			for (int y = 0; y < TestAStar.map.getMapHeight(); y++) {
-				if (TestAStar.map.getNode(x, y).isOccupiedByAgent) {	
-					xLoc = x;
-					yLoc = y;
-				}
-			}
+	public static void setPassengerSeated(Passenger passenger) {
+		finishedList.add(passenger);
+		//log.addToLog("Passenger "+passenger.getName() + " is now seated.");
+		if(finishedList.size()==cabin.getPassengers().size()) {
+			//log.addToLog("All passengers are now seated.");	
+			setSimulationDone(true);
 		}
-		loc[0] = xLoc;
-		loc[1] = yLoc;
-		return (loc);
+		
+	}
+	
+//	public static int[] getCoordinates() {
+//		int[] loc = new int[2];
+//		int yLoc = 0;
+//		int xLoc = 0;
+//		for (int x = 0; x < TestAStar.map.getMapWidth(); x++) {
+//			for (int y = 0; y < TestAStar.map.getMapHeight(); y++) {
+//				if (TestAStar.map.getNode(x, y).isOccupiedByAgent) {	
+//					xLoc = x;
+//					yLoc = y;
+//				}
+//			}
+//		}
+//		loc[0] = xLoc;
+//		loc[1] = yLoc;
+//		return (loc);
+//	}
+	public Cabin getPassengerLocations() {
+		
+		return cabin;
+		
 	}
 
 	public static void run() {		
@@ -162,7 +178,7 @@ public class TestAStar {
 		for(Passenger passenger:ModelHelper.getChildrenByClass(cabin, Passenger.class)) {
 			Seat seat = passenger.getSeatRef();
 			Door door = passenger.getDoor();
-			Agent agent = new Agent("Passenger "+passenger.getName(), 5, (int)((door.getYPosition()+door.getWidth()/2)/cabin.getScale()), (int)(seat.getXPosition()/cabin.getScale()),(int)((seat.getYPosition()/cabin.getScale())-1));
+			Agent agent = new Agent("Passenger "+passenger.getName(), passenger, 5, (int)((door.getYPosition()+door.getWidth()/2)/cabin.getScale()), (int)(seat.getXPosition()/cabin.getScale()),(int)((seat.getYPosition()/cabin.getScale())-1),(int)cabin.getScale());
 			addAgentToAgentList(agent);
 		}
 		runAgent();

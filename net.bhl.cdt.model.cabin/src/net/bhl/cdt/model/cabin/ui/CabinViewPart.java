@@ -126,7 +126,7 @@ public class CabinViewPart extends ViewPart {
 		doTheDraw();
 	}
 	
-	public void submitPassengerCoordinates(int id, final int[]coordinates) {
+	public void submitPassengerCoordinates(final Cabin paxCabin) {
 		
 		parentTest.redraw();
 		parentTest.update();
@@ -135,13 +135,11 @@ public class CabinViewPart extends ViewPart {
 		      public void paintControl(final PaintEvent e) { 
 		    	  Color black = new Color(e.display,0,0,0); /*White Color Code*/
 		    	  e.gc.setBackground(black);
-		    	  //(e.gc.drawLine(x_zero + lastPosx,y_zero+ lastPosy, x_zero+(int)(coordinates[0]*drawCabin.getScale()/factor), y_zero+(int)(coordinates[1]*drawCabin.getScale()/factor));
-		    	  e.gc.fillOval(x_zero+(int)(coordinates[0]*drawCabin.getScale()/factor), y_zero+(int)(coordinates[1]*drawCabin.getScale()/factor),5,5);
+		    	  for(Passenger pass:ModelHelper.getChildrenByClass(paxCabin, Passenger.class)) {
+		    		  e.gc.fillOval(x_zero+(int)(pass.getPositionX()/factor), y_zero+(int)(pass.getPositionY()/factor),5,5);
+		    	  }
 		      }
-		});
-		lastPosx = (int)(coordinates[0]*drawCabin.getScale()/factor);
-		lastPosy = (int)(coordinates[1]*drawCabin.getScale()/factor);
-		
+		});	
 	}
 	
 	public void doTheDraw() {

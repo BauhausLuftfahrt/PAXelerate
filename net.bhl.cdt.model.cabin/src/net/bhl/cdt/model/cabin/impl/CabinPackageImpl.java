@@ -915,6 +915,24 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getPassenger_PositionX() {
+		return (EAttribute)passengerEClass.getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassenger_PositionY() {
+		return (EAttribute)passengerEClass.getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getPassenger_Height() {
 		return (EAttribute)passengerEClass.getEStructuralFeatures().get(2);
 	}
@@ -1519,6 +1537,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEAttribute(passengerEClass, PASSENGER__WIDTH);
 		createEAttribute(passengerEClass, PASSENGER__DEPTH);
 		createEAttribute(passengerEClass, PASSENGER__ORIENTATION_IN_DEGREE);
+		createEAttribute(passengerEClass, PASSENGER__POSITION_X);
+		createEAttribute(passengerEClass, PASSENGER__POSITION_Y);
 
 		crewMemberEClass = createEClass(CREW_MEMBER);
 		createEAttribute(crewMemberEClass, CREW_MEMBER__ID);
@@ -1701,6 +1721,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEAttribute(getPassenger_Width(), ecorePackage.getEDouble(), "width", null, 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPassenger_Depth(), ecorePackage.getEDouble(), "depth", null, 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPassenger_OrientationInDegree(), ecorePackage.getEDouble(), "orientationInDegree", null, 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPassenger_PositionX(), ecorePackage.getEDouble(), "positionX", null, 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPassenger_PositionY(), ecorePackage.getEDouble(), "positionY", null, 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(crewMemberEClass, CrewMember.class, "CrewMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCrewMember_Id(), ecorePackage.getEInt(), "id", null, 0, 1, CrewMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

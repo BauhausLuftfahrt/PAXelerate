@@ -895,13 +895,31 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER__ORIENTATION_IN_DEGREE = 13;
 
 	/**
+	 * The feature id for the '<em><b>Position X</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__POSITION_X = 14;
+
+	/**
+	 * The feature id for the '<em><b>Position Y</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__POSITION_Y = 15;
+
+	/**
 	 * The number of structural features of the '<em>Passenger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_FEATURE_COUNT = 14;
+	int PASSENGER_FEATURE_COUNT = 16;
 
 	/**
 	 * The number of operations of the '<em>Passenger</em>' class.
@@ -2352,6 +2370,28 @@ public interface CabinPackage extends EPackage {
 	EAttribute getPassenger_OrientationInDegree();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getPositionX <em>Position X</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Position X</em>'.
+	 * @see net.bhl.cdt.model.cabin.Passenger#getPositionX()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_PositionX();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getPositionY <em>Position Y</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Position Y</em>'.
+	 * @see net.bhl.cdt.model.cabin.Passenger#getPositionY()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_PositionY();
+
+	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getHeight <em>Height</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3519,6 +3559,20 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PASSENGER__ORIENTATION_IN_DEGREE = eINSTANCE.getPassenger_OrientationInDegree();
+		/**
+		 * The meta object literal for the '<em><b>Position X</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__POSITION_X = eINSTANCE.getPassenger_PositionX();
+		/**
+		 * The meta object literal for the '<em><b>Position Y</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__POSITION_Y = eINSTANCE.getPassenger_PositionY();
 		/**
 		 * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->

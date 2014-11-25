@@ -5,6 +5,7 @@ import java.util.*;
 
 import javax.swing.event.EventListenerList;
 
+import net.bhl.cdt.model.cabin.Passenger;
 import observer.Subject;
 import observer.Observer;
 import observer.AgentPosition;
@@ -19,6 +20,8 @@ public class Agent extends Subject implements Runnable {
 	private int goalX;
 	private int goalY;
 	
+	private Passenger passenger;
+	private int scale;
 	
 	private int previousX;
 	private int previousY;
@@ -32,13 +35,14 @@ public class Agent extends Subject implements Runnable {
 
 	 private EventListenerList listeners = new EventListenerList();
 
-	Agent(String name, int startX, int startY, int goalX, int goalY) {
+	Agent(String name, Passenger passenger, int startX, int startY, int goalX, int goalY,int scale) {
+		this.passenger = passenger;
 		this.agentName = name;
 		this.startX = startX;
 		this.startY = startY;
 		this.goalX = goalX;
 		this.goalY = goalY;
-		
+		this.scale = scale;
 		this.currentAgentPosition[0][0] = startX;
 		this.currentAgentPosition[0][1] = startY;
 		
@@ -135,15 +139,16 @@ public class Agent extends Subject implements Runnable {
 					this.currentAgentPosition[i][1] = this.currentY;
 					TestAStar.map.getNode(currentX, currentY).setOccupiedByAgent(true);
 					TestAStar.map.getNode(previousX, previousY).setOccupiedByAgent(false);
-				
-					notifyObservers(i);			
+					notifyObservers(i);
+					
+					passenger.setPositionX(this.currentAgentPosition[i][0]*scale);
+					passenger.setPositionY(this.currentAgentPosition[i][1]*scale);
+					
 					Thread.sleep(20);	
 				}
 			}
-			//System.out.println(this.agentName + " has reached his destination.");
-			TestAStar.setSimulationDone(true);
+			TestAStar.setPassengerSeated(passenger);
 		} catch (Exception e) {
-			log.addToLog("Thread  interrupted.");
 			e.printStackTrace();
 		}
 	}

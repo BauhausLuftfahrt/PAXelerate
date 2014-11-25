@@ -84,7 +84,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 			while (!astar.getSimulationDone()) {
 				try {
-					cabinViewPart.submitPassengerCoordinates(0,astar.getCoordinates());
+					cabinViewPart.submitPassengerCoordinates(astar.getPassengerLocations());
 					Thread.sleep((int)(1000/cabin.getFramesPerSecond()));
 				} catch (InterruptedException e) {
 					consoleViewPart.printText("An error occured during simulation.");
