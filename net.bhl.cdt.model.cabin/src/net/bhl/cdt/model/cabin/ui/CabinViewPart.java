@@ -53,6 +53,8 @@ public class CabinViewPart extends ViewPart {
 	public String drawString;
 	double xPositionPassenger;
 	double yPositionPassenger;
+	int lastPosx = 0;
+	int lastPosy = 0;
 	int idPassenger;
 	//ArrayList<double[][][]> PassengerPositions;
 	public Cabin cabinPlaceHolder = CabinFactory.eINSTANCE.createCabin();
@@ -133,9 +135,12 @@ public class CabinViewPart extends ViewPart {
 		      public void paintControl(final PaintEvent e) { 
 		    	  Color black = new Color(e.display,0,0,0); /*White Color Code*/
 		    	  e.gc.setBackground(black);
+		    	  //(e.gc.drawLine(x_zero + lastPosx,y_zero+ lastPosy, x_zero+(int)(coordinates[0]*drawCabin.getScale()/factor), y_zero+(int)(coordinates[1]*drawCabin.getScale()/factor));
 		    	  e.gc.fillOval(x_zero+(int)(coordinates[0]*drawCabin.getScale()/factor), y_zero+(int)(coordinates[1]*drawCabin.getScale()/factor),5,5);
 		      }
 		});
+		lastPosx = (int)(coordinates[0]*drawCabin.getScale()/factor);
+		lastPosy = (int)(coordinates[1]*drawCabin.getScale()/factor);
 		
 	}
 	

@@ -4,6 +4,7 @@ import javax.swing.event.EventListenerList;
 import java.util.*;
 
 import javax.swing.event.EventListenerList;
+
 import observer.Subject;
 import observer.Observer;
 import observer.AgentPosition;
@@ -24,6 +25,8 @@ public class Agent extends Subject implements Runnable {
 	
 	private int currentX;
 	private int currentY;
+	
+	static Logger log = new Logger();
 	
 	private int[][] currentAgentPosition = new int[1][2];
 
@@ -134,20 +137,20 @@ public class Agent extends Subject implements Runnable {
 					TestAStar.map.getNode(previousX, previousY).setOccupiedByAgent(false);
 				
 					notifyObservers(i);			
-					Thread.sleep(50);	
+					Thread.sleep(20);	
 				}
 			}
 			//System.out.println(this.agentName + " has reached his destination.");
 			TestAStar.setSimulationDone(true);
 		} catch (Exception e) {
-			System.out.println("Thread  interrupted.");
+			log.addToLog("Thread  interrupted.");
 			e.printStackTrace();
 		}
 	}
 
 	// start method calls run
 	public void start() {
-		System.out.println("Starting " + agentName);
+		log.addToLog("Starting " + agentName);
 		if (getT() == null) {
 			setT(new Thread(this, agentName));
 			getT().start();

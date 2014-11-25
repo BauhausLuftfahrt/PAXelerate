@@ -74,9 +74,9 @@ public class TestAStar {
 		//pathFinder.printPath();
 		Path shortestPath = pathFinder.getShortestPath();
 		if (shortestPath.equals(null)) {
-			System.out.println("The path is null");
+			log.addToLog("No path found.");
 		}
-		else System.out.println("We are go.");
+		else log.addToLog("Path found.");
 
 		agent.setPath(getPathCoordinates(pathFinder.getShortestPath()));
 

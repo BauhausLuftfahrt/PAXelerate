@@ -1,4 +1,3 @@
-
 package net.bhl.cdt.model.cabin.commands;
 
 import java.util.List;
@@ -18,9 +17,8 @@ import org.eclipse.ui.PlatformUI;
 /**
  * This command starts the cabin boarding simulation.
  * 
- * @author martin.glas
+ * @author marc.engelmann
  */
-
 
 /********************How to add a new right click command to openCDT***********************/
 /**                                                                                      **/
@@ -28,7 +26,7 @@ import org.eclipse.ui.PlatformUI;
 /**     - Best practice: copy an existing command.                                       **/
 /**     - Be sure to not modify the constructor, "this.cabin = cabin" should stay intact **/
 /**                                                                                      **/
-/** (2) Create a new "newCommandHandler.java" in "net.bhl.cdt.model.cabin.handlers"      **/                                                            
+/** (2) Create a new "newCommandHandler.java" in "net.bhl.cdt.model.cabin.handlers"      **/
 /**     - Best practice: copy an existing handler file.                        		     **/
 /**     - Tip: Do not modify this file, only check for correct naming         			 **/
 /**                         															 **/
@@ -47,7 +45,6 @@ import org.eclipse.ui.PlatformUI;
 /**                                            											 **/
 /******************************************************************************************/
 
-
 public class SimulateBoardingCommand extends CDTCommand {
 
 	private Cabin cabin;
@@ -57,8 +54,10 @@ public class SimulateBoardingCommand extends CDTCommand {
 	/**
 	 * This is the constructor method of the SimulateBoardingCommand.
 	 * 
-	 * @param shell the shell where the command was triggered
-	 * @param cabin the cabin object
+	 * @param shell
+	 *            the shell where the command was triggered
+	 * @param cabin
+	 *            the cabin object
 	 */
 	public SimulateBoardingCommand(Shell shell, Cabin cabin) {
 		this.cabin = cabin;
@@ -66,27 +65,39 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 	@Override
 	protected void doRun() {
-		/**********Get CabinView and ConsoleView************/
-		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-		CabinViewPart cabinViewPart = (CabinViewPart) page.findView("net.bhl.cdt.model.cabin.cabinview");
-		ConsoleViewPart consoleViewPart = (ConsoleViewPart) page.findView("net.bhl.cdt.model.cabin.consoleview");
+		/********** Get CabinView and ConsoleView ************/
+		IWorkbenchPage page = PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getActivePage();
+		CabinViewPart cabinViewPart = (CabinViewPart) page
+				.findView("net.bhl.cdt.model.cabin.cabinview");
+		ConsoleViewPart consoleViewPart = (ConsoleViewPart) page
+				.findView("net.bhl.cdt.model.cabin.consoleview");
 		/***************************************************/
-		consoleViewPart.printText("Starting boarding simulation.");
-		generator = new CabinGenerator(cabin);
-		TestAStar astar = new TestAStar(generator.createObstacleMap(),(int)(cabin.getCabinWidth()/cabin.getScale()),(int)(cabin.getCabinLength()/cabin.getScale()),cabin);
-		while(!astar.getSimulationDone()) {
-			try {
-				cabinViewPart.submitPassengerCoordinates(0,astar.getCoordinates());
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+
+		consoleViewPart.printText("Initializing the boarding simulation...");
+
+		if (!cabin.getPassengers().isEmpty()) {
+			generator = new CabinGenerator(cabin);
+			TestAStar astar = new TestAStar(generator.createObstacleMap(),
+					(int) (cabin.getCabinWidth() / cabin.getScale()),
+					(int) (cabin.getCabinLength() / cabin.getScale()), cabin);
+
+			while (!astar.getSimulationDone()) {
+				try {
+					cabinViewPart.submitPassengerCoordinates(0,astar.getCoordinates());
+					Thread.sleep((int)(1000/cabin.getFramesPerSecond()));
+				} catch (InterruptedException e) {
+					consoleViewPart.printText("An error occured during simulation.");
+					e.printStackTrace();
+				}
 			}
-		}
-		if(astar.simulationDone) {
-			consoleViewPart.printText("Boarding completed!");
+			if (astar.simulationDone) {
+				consoleViewPart.printText("Boarding completed!");
+			}
+		} else {
+			consoleViewPart.printText("No boarding possible! Please create passengers.");
 		}
 
 	}
 
 }
-

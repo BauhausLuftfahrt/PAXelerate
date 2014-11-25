@@ -73,9 +73,10 @@ public class CabinItemProvider
 			addSeatPitchPropertyDescriptor(object);
 			addNumbAislesPropertyDescriptor(object);
 			addAisleWidthPropertyDescriptor(object);
-			addBoardingTimePropertyDescriptor(object);
+			addFramesPerSecondPropertyDescriptor(object);
 			addNumberOfDecksPropertyDescriptor(object);
 			addScalePropertyDescriptor(object);
+			addBoardingTimePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -499,6 +500,28 @@ public class CabinItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Frames Per Second feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addFramesPerSecondPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_framesPerSecond_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_framesPerSecond_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__FRAMES_PER_SECOND,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Number Of Decks feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -818,9 +841,10 @@ public class CabinItemProvider
 			case CabinPackage.CABIN__SEAT_PITCH:
 			case CabinPackage.CABIN__NUMB_AISLES:
 			case CabinPackage.CABIN__AISLE_WIDTH:
-			case CabinPackage.CABIN__BOARDING_TIME:
+			case CabinPackage.CABIN__FRAMES_PER_SECOND:
 			case CabinPackage.CABIN__NUMBER_OF_DECKS:
 			case CabinPackage.CABIN__SCALE:
+			case CabinPackage.CABIN__BOARDING_TIME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CabinPackage.CABIN__CLASSES:

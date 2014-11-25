@@ -22,9 +22,9 @@ public class AreaMap {
                 this.obstacleMap = obstacleMap;
                 
                 createMap();
-                log.addToLog("\tMap Created");
+                log.addToLog("Map Created");
                 registerEdges();
-                log.addToLog("\tMap Node edges registered");
+                log.addToLog("Map Node edges registered");
         }
         private void createMap() {
                 Node node;

@@ -56,7 +56,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatPitch <em>Seat Pitch</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getNumbAisles <em>Numb Aisles</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getAisleWidth <em>Aisle Width</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getBoardingTime <em>Boarding Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getFramesPerSecond <em>Frames Per Second</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getNumberOfDecks <em>Number Of Decks</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getClasses <em>Classes</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getDoors <em>Doors</em>}</li>
@@ -67,6 +67,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getStowages <em>Stowages</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getPassengers <em>Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getScale <em>Scale</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getBoardingTime <em>Boarding Time</em>}</li>
  * </ul>
  * </p>
  *
@@ -542,23 +543,23 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 */
 	protected double aisleWidth = AISLE_WIDTH_EDEFAULT;
 	/**
-	 * The default value of the '{@link #getBoardingTime() <em>Boarding Time</em>}' attribute.
+	 * The default value of the '{@link #getFramesPerSecond() <em>Frames Per Second</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBoardingTime()
+	 * @see #getFramesPerSecond()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double BOARDING_TIME_EDEFAULT = 0.0;
+	protected static final int FRAMES_PER_SECOND_EDEFAULT = 10;
 	/**
-	 * The cached value of the '{@link #getBoardingTime() <em>Boarding Time</em>}' attribute.
+	 * The cached value of the '{@link #getFramesPerSecond() <em>Frames Per Second</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBoardingTime()
+	 * @see #getFramesPerSecond()
 	 * @generated
 	 * @ordered
 	 */
-	protected double boardingTime = BOARDING_TIME_EDEFAULT;
+	protected int framesPerSecond = FRAMES_PER_SECOND_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getNumberOfDecks() <em>Number Of Decks</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -667,6 +668,24 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @ordered
 	 */
 	protected double scale = SCALE_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getBoardingTime() <em>Boarding Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBoardingTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double BOARDING_TIME_EDEFAULT = 0.0;
+	/**
+	 * The cached value of the '{@link #getBoardingTime() <em>Boarding Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBoardingTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected double boardingTime = BOARDING_TIME_EDEFAULT;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1174,6 +1193,27 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getFramesPerSecond() {
+		return framesPerSecond;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFramesPerSecond(int newFramesPerSecond) {
+		int oldFramesPerSecond = framesPerSecond;
+		framesPerSecond = newFramesPerSecond;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__FRAMES_PER_SECOND, oldFramesPerSecond, framesPerSecond));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<Passenger> getPassengers() {
 		if (passengers == null) {
 			passengers = new EObjectContainmentEList<Passenger>(Passenger.class, this, CabinPackage.CABIN__PASSENGERS);
@@ -1479,8 +1519,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return getNumbAisles();
 			case CabinPackage.CABIN__AISLE_WIDTH:
 				return getAisleWidth();
-			case CabinPackage.CABIN__BOARDING_TIME:
-				return getBoardingTime();
+			case CabinPackage.CABIN__FRAMES_PER_SECOND:
+				return getFramesPerSecond();
 			case CabinPackage.CABIN__NUMBER_OF_DECKS:
 				return getNumberOfDecks();
 			case CabinPackage.CABIN__CLASSES:
@@ -1501,6 +1541,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return getPassengers();
 			case CabinPackage.CABIN__SCALE:
 				return getScale();
+			case CabinPackage.CABIN__BOARDING_TIME:
+				return getBoardingTime();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1592,8 +1634,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__AISLE_WIDTH:
 				setAisleWidth((Double)newValue);
 				return;
-			case CabinPackage.CABIN__BOARDING_TIME:
-				setBoardingTime((Double)newValue);
+			case CabinPackage.CABIN__FRAMES_PER_SECOND:
+				setFramesPerSecond((Integer)newValue);
 				return;
 			case CabinPackage.CABIN__NUMBER_OF_DECKS:
 				setNumberOfDecks((Integer)newValue);
@@ -1632,6 +1674,9 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return;
 			case CabinPackage.CABIN__SCALE:
 				setScale((Double)newValue);
+				return;
+			case CabinPackage.CABIN__BOARDING_TIME:
+				setBoardingTime((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1723,8 +1768,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__AISLE_WIDTH:
 				setAisleWidth(AISLE_WIDTH_EDEFAULT);
 				return;
-			case CabinPackage.CABIN__BOARDING_TIME:
-				setBoardingTime(BOARDING_TIME_EDEFAULT);
+			case CabinPackage.CABIN__FRAMES_PER_SECOND:
+				setFramesPerSecond(FRAMES_PER_SECOND_EDEFAULT);
 				return;
 			case CabinPackage.CABIN__NUMBER_OF_DECKS:
 				setNumberOfDecks(NUMBER_OF_DECKS_EDEFAULT);
@@ -1755,6 +1800,9 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return;
 			case CabinPackage.CABIN__SCALE:
 				setScale(SCALE_EDEFAULT);
+				return;
+			case CabinPackage.CABIN__BOARDING_TIME:
+				setBoardingTime(BOARDING_TIME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -1820,8 +1868,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return numbAisles != NUMB_AISLES_EDEFAULT;
 			case CabinPackage.CABIN__AISLE_WIDTH:
 				return aisleWidth != AISLE_WIDTH_EDEFAULT;
-			case CabinPackage.CABIN__BOARDING_TIME:
-				return boardingTime != BOARDING_TIME_EDEFAULT;
+			case CabinPackage.CABIN__FRAMES_PER_SECOND:
+				return framesPerSecond != FRAMES_PER_SECOND_EDEFAULT;
 			case CabinPackage.CABIN__NUMBER_OF_DECKS:
 				return numberOfDecks != NUMBER_OF_DECKS_EDEFAULT;
 			case CabinPackage.CABIN__CLASSES:
@@ -1842,6 +1890,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return passengers != null && !passengers.isEmpty();
 			case CabinPackage.CABIN__SCALE:
 				return scale != SCALE_EDEFAULT;
+			case CabinPackage.CABIN__BOARDING_TIME:
+				return boardingTime != BOARDING_TIME_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1908,12 +1958,14 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		result.append(numbAisles);
 		result.append(", aisleWidth: ");
 		result.append(aisleWidth);
-		result.append(", boardingTime: ");
-		result.append(boardingTime);
+		result.append(", framesPerSecond: ");
+		result.append(framesPerSecond);
 		result.append(", numberOfDecks: ");
 		result.append(numberOfDecks);
 		result.append(", scale: ");
 		result.append(scale);
+		result.append(", boardingTime: ");
+		result.append(boardingTime);
 		result.append(')');
 		return result.toString();
 	}

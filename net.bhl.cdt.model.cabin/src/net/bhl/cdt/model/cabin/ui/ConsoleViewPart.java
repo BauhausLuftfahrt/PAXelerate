@@ -36,7 +36,7 @@ public class ConsoleViewPart extends ViewPart {
 	Composite parentTest;
 	Canvas canvas;
 	ArrayList<String> consoleList;
-	int numberOfItemsVisible = 5;
+	int numberOfItemsVisible = 10;
 	Boolean cutPrint = false;
 	String previousString ="";
 	int repeatCounter = 2;

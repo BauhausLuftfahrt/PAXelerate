@@ -312,13 +312,13 @@ public interface CabinPackage extends EPackage {
 	int CABIN__AISLE_WIDTH = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 25;
 
 	/**
-	 * The feature id for the '<em><b>Boarding Time</b></em>' attribute.
+	 * The feature id for the '<em><b>Frames Per Second</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__BOARDING_TIME = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 26;
+	int CABIN__FRAMES_PER_SECOND = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 26;
 
 	/**
 	 * The feature id for the '<em><b>Number Of Decks</b></em>' attribute.
@@ -411,13 +411,22 @@ public interface CabinPackage extends EPackage {
 	int CABIN__SCALE = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 36;
 
 	/**
+	 * The feature id for the '<em><b>Boarding Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN__BOARDING_TIME = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 37;
+
+	/**
 	 * The number of structural features of the '<em>Cabin</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_FEATURE_COUNT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 37;
+	int CABIN_FEATURE_COUNT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 38;
 
 	/**
 	 * The number of operations of the '<em>Cabin</em>' class.
@@ -1798,6 +1807,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getCabin_Scale();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getFramesPerSecond <em>Frames Per Second</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Frames Per Second</em>'.
+	 * @see net.bhl.cdt.model.cabin.Cabin#getFramesPerSecond()
+	 * @see #getCabin()
+	 * @generated
+	 */
+	EAttribute getCabin_FramesPerSecond();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link net.bhl.cdt.model.cabin.Cabin#getPassengers <em>Passengers</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3139,6 +3159,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CABIN__SCALE = eINSTANCE.getCabin_Scale();
+		/**
+		 * The meta object literal for the '<em><b>Frames Per Second</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN__FRAMES_PER_SECOND = eINSTANCE.getCabin_FramesPerSecond();
 		/**
 		 * The meta object literal for the '<em><b>Passengers</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
