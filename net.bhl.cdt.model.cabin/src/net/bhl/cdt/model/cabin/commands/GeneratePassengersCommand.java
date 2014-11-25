@@ -131,9 +131,10 @@ public class GeneratePassengersCommand extends CDTCommand{
 			
 			int checkForRandomPassengerId = 0;
 			int randomId = 0;
-
+			
+			Random rand2 = new Random();
 			while (checkForRandomPassengerId == 0) {
-				randomId = rand.nextInt(totalPax) + 1;
+				randomId = rand2.nextInt(totalPax) + 1;
 				if(!randomPassengerId.contains(randomId)){
 					randomPassengerId.add(randomId);
 				checkForRandomPassengerId = 1;
@@ -175,8 +176,31 @@ public class GeneratePassengersCommand extends CDTCommand{
 				sex = Sex.MALE;
 			}
 			newPassenger.setSex(sex);
-			newPassenger.setHeight(rand.nextInt(50) + 150);
-			newPassenger.setWeight(rand.nextInt(50) + 60);
+			
+			/*********************Info for random values**********************/
+			/**                                                              */
+			/**    1) Random randX = new Random() creates a new randomly     */
+			/**       chosen value between 0 and 1.                          */
+			/**                                                              */
+			/**    2) object.setProperty(randX.nextInt(A) + B) means the     */
+			/**       following:                                             */
+			/**                                                              */
+			/**       a) nextInt(A) multiplies the random value with A       */
+			/**          Note that the value of A itself is never reached    */
+			/**       b) B is then added to the calculation                  */
+			/**       c) This means you randomly create a value which is     */
+			/**          between B and B + (A-1).                            */
+			/**                                                              */
+			/*****************************************************************/
+			
+			Random rand3 = new Random();
+			newPassenger.setHeight(rand3.nextInt(50) + 150);
+			Random rand4 = new Random();
+			newPassenger.setWeight(rand4.nextInt(50) + 60);
+			Random rand5 = new Random();
+			newPassenger.setDepth(rand5.nextInt(30) + 20 );
+			Random rand6 = new Random();
+			newPassenger.setWidth(rand6.nextInt(30) + 30 );
 			passengerIdCount ++;
 			passengerPerClassCount ++;
 			

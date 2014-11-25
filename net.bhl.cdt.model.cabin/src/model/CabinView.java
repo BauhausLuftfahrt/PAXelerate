@@ -13,7 +13,7 @@ public class CabinView extends JPanel {
 
 	private static final int UPDATE_RATE = 30; // Number of refresh per second
 	private static final int fontScale = 10;
-	private static final int skipScale = 5; //only renders every xth pixel
+	private static final int skipScale = 1; //only renders every xth pixel
 	private static final int frameWidth = TestAStar.map.getMapWidth()
 			* fontScale;
 	private static final int frameHeight = TestAStar.map.getMapHeight()
@@ -46,7 +46,7 @@ public class CabinView extends JPanel {
 		for (int x = 0; x < (int)(TestAStar.map.getMapWidth()/skipScale); x++) {
 			if (x == 0) {
 				for (int i = 0; i <= (int)(TestAStar.map.getMapWidth()/skipScale); i++) {
-					g.drawString("-", x, 0);
+					g.drawString(" ", x, 0);
 
 				}
 			}
@@ -60,7 +60,7 @@ public class CabinView extends JPanel {
 				else if (TestAStar.map.getNode(x, y).isOccupiedByAgent) {
 					g.drawString("¤", y * fontScale, x * fontScale);
 				} else {
-					g.drawString("-", y * fontScale, x * fontScale);
+					g.drawString(" ", y * fontScale, x * fontScale);
 
 				}
 				if (y == (int)(TestAStar.map.getMapHeight()/skipScale))

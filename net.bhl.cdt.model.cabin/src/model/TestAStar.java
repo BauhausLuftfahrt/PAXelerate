@@ -6,9 +6,6 @@ import java.util.List;
 
 import javax.swing.JFrame;
 
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PlatformUI;
 
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Door;
@@ -28,18 +25,15 @@ public class TestAStar {
 	static CabinViewPart cabinViewPart;
 
 	
-	 private static int[][] obstacleMap = {};
+	private static int[][] obstacleMap = {};
 	 
-
-	//private static int[][] obstacleMap;
-
 	public static JFrame frame;
 
-	static ArrayList<Passenger> finishedList = new ArrayList();
+	static ArrayList<Passenger> finishedList = new ArrayList<Passenger>();
 	
 	static Logger console = new Logger();
 	static AreaMap map;
-	static ArrayList<Agent> agents = new ArrayList();
+	static ArrayList<Agent> agents = new ArrayList<Agent>();
 	static StopWatch s = new StopWatch();
 
 	// constructor is called from matlab: initializes the obstacleMap and
@@ -64,21 +58,20 @@ public class TestAStar {
 
 		AStar pathFinder = new AStar(map, heuristic);
 
-		console.addToLog("Calculating shortest path for "+agent.getAgentName()+" ...");
+		console.addToLog("Calculating shortest path..."); //for "+agent.getAgentName()+" ...");
 		pathFinder.calcShortestPath(agent.getStartX(), agent.getStartY(),
 				agent.getGoalX(), agent.getGoalY());
 
 		s.stop();
-		console.addToLog("Time to calculate path in milliseconds: "
-				+ s.getElapsedTime());
+		//console.addToLog("Time to calculate path in milliseconds: "+ s.getElapsedTime());
 
 		//console.addToLog("Printing map of shortest path...");
 		//pathFinder.printPath();
 		Path shortestPath = pathFinder.getShortestPath();
-		if (shortestPath.equals(null)) {
+		if (shortestPath==null) {
 			console.addToLog("No path found.");
 		}
-		else console.addToLog("Path found.");
+		//else console.addToLog("Path found.");
 
 		agent.setPath(getPathCoordinates(pathFinder.getShortestPath()));
 
@@ -149,18 +142,18 @@ public class TestAStar {
 	         public void run() {
 	            // Set up main window (using Swing's Jframe)
 
-	           // frame = new JFrame("Boarding Simulation");
-	          //  frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	           // frame.setContentPane(new CabinView());
-	          //  frame.pack();
-	           // frame.setVisible(true);
+//	            frame = new JFrame("Boarding Simulation");
+//	            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//	            frame.setContentPane(new CabinView());
+//	            frame.pack();
+//	            frame.setVisible(true);
 	         }
 	      });
 
 		for(Passenger passenger:ModelHelper.getChildrenByClass(cabin, Passenger.class)) {
 			Seat seat = passenger.getSeatRef();
 			Door door = passenger.getDoor();
-			Agent agent = new Agent("Passenger "+passenger.getName(), passenger, 5, (int)((door.getYPosition()+door.getWidth()/2)/cabin.getScale()), (int)(seat.getXPosition()/cabin.getScale()),(int)((seat.getYPosition()/cabin.getScale())-1),(int)cabin.getScale(),passenger.getId());
+			Agent agent = new Agent("Passenger "+passenger.getName(), passenger, 5, (int)((door.getYPosition()+door.getWidth()/2)/cabin.getScale()), (int)((seat.getXPosition()+seat.getWidth()/2)/cabin.getScale()),(int)((seat.getYPosition()/cabin.getScale())-1),(int)cabin.getScale(),passenger.getId());
 			addAgentToAgentList(agent);
 		}
 		runAgent();

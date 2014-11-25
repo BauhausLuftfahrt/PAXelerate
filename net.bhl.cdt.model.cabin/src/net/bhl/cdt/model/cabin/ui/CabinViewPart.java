@@ -134,6 +134,7 @@ public class CabinViewPart extends ViewPart {
 
 		canvas = new Canvas(parent, SWT.RESIZE);
 		doTheDraw();
+		
 
 	}
 
@@ -149,17 +150,29 @@ public class CabinViewPart extends ViewPart {
 		canvas.redraw();
 		canvas.addPaintListener(new PaintListener() {
 			public void paintControl(final PaintEvent e) {
-				for (Passenger pass : ModelHelper.getChildrenByClass(paxCabin,
-						Passenger.class)) {
-					if(!((pass.getPositionX()==0)&&(pass.getPositionY()==0))) {
-						int[] color = calculateColor(pass);
-						e.gc.setBackground(new Color(e.display, color[0], color[1], color[2]));
+				for (Passenger pass : ModelHelper.getChildrenByClass(paxCabin,Passenger.class)) {
+					int[] color = calculateColor(pass);
+					e.gc.setBackground(new Color(e.display, color[0], color[1], color[2]));
+					if(!pass.isIsSeated()) {
+						if(!((pass.getPositionX()==0)&&(pass.getPositionY()==0))) {
+							e.gc.fillOval(
+									x_zero + (int) ((pass.getPositionX()-pass.getWidth()/2) / factor),
+									y_zero + (int) ((pass.getPositionY()-pass.getDepth()/2) / factor),
+									(int)(pass.getWidth()/factor), (int)(pass.getDepth()/factor));
+						}
+					}
+					else { 
+						Seat mySeat = pass.getSeatRef();
 						e.gc.fillOval(
-							x_zero + (int) (pass.getPositionX() / factor),
-							y_zero + (int) (pass.getPositionY() / factor), 10, 10);
+					    x_zero + (int) ((mySeat.getXPosition()+mySeat.getWidth()/2-pass.getWidth()/2) / factor),
+						y_zero + (int) ((mySeat.getYPosition()+mySeat.getLength()/2-pass.getDepth()/2) / factor),
+						(int)(pass.getWidth()/factor), (int)(pass.getDepth()/factor));
+						
 					}
 				}
 			}
+				//e.gc.dispose();
+			
 		});
 	}
 
@@ -539,6 +552,7 @@ public class CabinViewPart extends ViewPart {
 							"Please refresh cabin view or generate a new cabin!",
 							50, 380);
 				}
+				//e.gc.dispose();
 			}
 
 		});
