@@ -64,7 +64,7 @@ public class TestAStar {
 
 		AStar pathFinder = new AStar(map, heuristic);
 
-		console.addToLog("Calculating shortest path...");
+		console.addToLog("Calculating shortest path for "+agent.getAgentName()+" ...");
 		pathFinder.calcShortestPath(agent.getStartX(), agent.getStartY(),
 				agent.getGoalX(), agent.getGoalY());
 
@@ -72,7 +72,7 @@ public class TestAStar {
 		console.addToLog("Time to calculate path in milliseconds: "
 				+ s.getElapsedTime());
 
-		console.addToLog("Printing map of shortest path...");
+		//console.addToLog("Printing map of shortest path...");
 		//pathFinder.printPath();
 		Path shortestPath = pathFinder.getShortestPath();
 		if (shortestPath.equals(null)) {
@@ -137,22 +137,6 @@ public class TestAStar {
 		
 	}
 	
-//	public static int[] getCoordinates() {
-//		int[] loc = new int[2];
-//		int yLoc = 0;
-//		int xLoc = 0;
-//		for (int x = 0; x < TestAStar.map.getMapWidth(); x++) {
-//			for (int y = 0; y < TestAStar.map.getMapHeight(); y++) {
-//				if (TestAStar.map.getNode(x, y).isOccupiedByAgent) {	
-//					xLoc = x;
-//					yLoc = y;
-//				}
-//			}
-//		}
-//		loc[0] = xLoc;
-//		loc[1] = yLoc;
-//		return (loc);
-//	}
 	public Cabin getPassengerLocations() {
 		
 		return cabin;
@@ -176,7 +160,7 @@ public class TestAStar {
 		for(Passenger passenger:ModelHelper.getChildrenByClass(cabin, Passenger.class)) {
 			Seat seat = passenger.getSeatRef();
 			Door door = passenger.getDoor();
-			Agent agent = new Agent("Passenger "+passenger.getName(), passenger, 5, (int)((door.getYPosition()+door.getWidth()/2)/cabin.getScale()), (int)(seat.getXPosition()/cabin.getScale()),(int)((seat.getYPosition()/cabin.getScale())-1),(int)cabin.getScale());
+			Agent agent = new Agent("Passenger "+passenger.getName(), passenger, 5, (int)((door.getYPosition()+door.getWidth()/2)/cabin.getScale()), (int)(seat.getXPosition()/cabin.getScale()),(int)((seat.getYPosition()/cabin.getScale())-1),(int)cabin.getScale(),passenger.getId());
 			addAgentToAgentList(agent);
 		}
 		runAgent();

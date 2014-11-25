@@ -5,6 +5,7 @@ import java.util.*;
 
 import javax.swing.event.EventListenerList;
 
+import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Passenger;
 import observer.Subject;
 import observer.Observer;
@@ -26,6 +27,8 @@ public class Agent extends Subject implements Runnable {
 	private int previousX;
 	private int previousY;
 	
+	private int id; 
+	
 	private int currentX;
 	private int currentY;
 	
@@ -35,7 +38,8 @@ public class Agent extends Subject implements Runnable {
 
 	 private EventListenerList listeners = new EventListenerList();
 
-	Agent(String name, Passenger passenger, int startX, int startY, int goalX, int goalY,int scale) {
+	Agent(String name, Passenger passenger, int startX, int startY, int goalX, int goalY,int scale, int id) {
+		this.id = id;
 		this.passenger = passenger;
 		this.agentName = name;
 		this.startX = startX;
@@ -114,6 +118,7 @@ public class Agent extends Subject implements Runnable {
 
 	public void run() {
 		try {
+			Thread.sleep(500*id);
 			this.currentAgentPosition = new int[path.length][2];
 			for (int i = 0; i < path.length; i++) {
 		
@@ -144,7 +149,7 @@ public class Agent extends Subject implements Runnable {
 					passenger.setPositionX(this.currentAgentPosition[i][0]*scale);
 					passenger.setPositionY(this.currentAgentPosition[i][1]*scale);
 					
-					Thread.sleep(20);	
+					Thread.sleep(50);	
 				}
 			}
 			passenger.setIsSeated(true);
@@ -156,7 +161,7 @@ public class Agent extends Subject implements Runnable {
 
 	// start method calls run
 	public void start() {
-		log.addToLog("Starting " + agentName);
+//		log.addToLog("Starting " + agentName);
 		if (getT() == null) {
 			setT(new Thread(this, agentName));
 			getT().start();
