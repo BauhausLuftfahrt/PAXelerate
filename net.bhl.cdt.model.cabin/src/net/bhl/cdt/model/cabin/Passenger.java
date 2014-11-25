@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getOrientationInDegree <em>Orientation In Degree</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getPositionX <em>Position X</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getPositionY <em>Position Y</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Passenger#isIsSeated <em>Is Seated</em>}</li>
  * </ul>
  * </p>
  *
@@ -353,6 +354,33 @@ public interface Passenger extends EObject {
 	 * @generated
 	 */
 	void setPositionY(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Is Seated</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Is Seated</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Is Seated</em>' attribute.
+	 * @see #setIsSeated(boolean)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_IsSeated()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isIsSeated();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#isIsSeated <em>Is Seated</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Is Seated</em>' attribute.
+	 * @see #isIsSeated()
+	 * @generated
+	 */
+	void setIsSeated(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Height</b></em>' attribute.

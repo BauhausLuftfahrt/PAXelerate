@@ -58,6 +58,7 @@ public class GeneratePassengersCommand extends CDTCommand{
 	ArrayList<Integer> randomNumberCheck;
 	ArrayList<Integer> randomPassengerId;
 	int passengerIdCount;
+	int passengerPerClassCount;
 	ConsoleViewPart consoleViewPart;
 	CabinViewPart cabinViewPart;
 	String classNameString;
@@ -177,17 +178,19 @@ public class GeneratePassengersCommand extends CDTCommand{
 			newPassenger.setHeight(rand.nextInt(50) + 150);
 			newPassenger.setWeight(rand.nextInt(50) + 60);
 			passengerIdCount ++;
+			passengerPerClassCount ++;
 			
 			
 		}
 		randomNumberCheck.clear();
-		consoleViewPart.printText("successfully created "+(passengerIdCount-1)+" passengers in "+classNameString+" class");
+		consoleViewPart.printText("successfully created "+(passengerPerClassCount)+" passengers in "+classNameString+" class");
 		} 
 		
 		else {
 			consoleViewPart.printText("Too many passengers in "+classNameString+" class");
 		}
 		}
+		passengerPerClassCount = 0;
 		 
 	}
 	
@@ -203,6 +206,7 @@ public class GeneratePassengersCommand extends CDTCommand{
 		randomNumberCheck = new ArrayList<Integer>();
 		randomPassengerId = new ArrayList<Integer>();
 		passengerIdCount = 1;
+		passengerPerClassCount = 1;
 		
 		if(totalPax<=totalSeats) {
 		generatePassengers(ClassType.FIRST);

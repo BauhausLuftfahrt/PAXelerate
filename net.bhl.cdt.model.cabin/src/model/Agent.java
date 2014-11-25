@@ -147,7 +147,8 @@ public class Agent extends Subject implements Runnable {
 					Thread.sleep(20);	
 				}
 			}
-			TestAStar.setPassengerSeated(passenger);
+			passenger.setIsSeated(true);
+			TestAStar.setPassengerSeated(passenger);		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -76,6 +76,7 @@ public class PassengerItemProvider
 			addOrientationInDegreePropertyDescriptor(object);
 			addPositionXPropertyDescriptor(object);
 			addPositionYPropertyDescriptor(object);
+			addIsSeatedPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -345,6 +346,28 @@ public class PassengerItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Is Seated feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIsSeatedPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_isSeated_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_isSeated_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__IS_SEATED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Height feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -482,6 +505,7 @@ public class PassengerItemProvider
 			case CabinPackage.PASSENGER__ORIENTATION_IN_DEGREE:
 			case CabinPackage.PASSENGER__POSITION_X:
 			case CabinPackage.PASSENGER__POSITION_Y:
+			case CabinPackage.PASSENGER__IS_SEATED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

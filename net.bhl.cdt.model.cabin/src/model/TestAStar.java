@@ -37,7 +37,7 @@ public class TestAStar {
 
 	static ArrayList<Passenger> finishedList = new ArrayList();
 	
-	static Logger log = new Logger();
+	static Logger console = new Logger();
 	static AreaMap map;
 	static ArrayList<Agent> agents = new ArrayList();
 	static StopWatch s = new StopWatch();
@@ -50,7 +50,7 @@ public class TestAStar {
 		this.mapWidth = mapWidth;
 		this.mapHeight = mapHeight;
 
-		log.addToLog("Cabin initializing...");
+		console.addToLog("Cabin initializing...");
 		this.map = new AreaMap(mapWidth, mapHeight, obstacleMap);
 		this.cabin = cabin;
 		run();
@@ -64,21 +64,21 @@ public class TestAStar {
 
 		AStar pathFinder = new AStar(map, heuristic);
 
-		log.addToLog("Calculating shortest path...");
+		console.addToLog("Calculating shortest path...");
 		pathFinder.calcShortestPath(agent.getStartX(), agent.getStartY(),
 				agent.getGoalX(), agent.getGoalY());
 
 		s.stop();
-		log.addToLog("Time to calculate path in milliseconds: "
+		console.addToLog("Time to calculate path in milliseconds: "
 				+ s.getElapsedTime());
 
-		log.addToLog("Printing map of shortest path...");
+		console.addToLog("Printing map of shortest path...");
 		//pathFinder.printPath();
 		Path shortestPath = pathFinder.getShortestPath();
 		if (shortestPath.equals(null)) {
-			log.addToLog("No path found.");
+			console.addToLog("No path found.");
 		}
-		else log.addToLog("Path found.");
+		else console.addToLog("Path found.");
 
 		agent.setPath(getPathCoordinates(pathFinder.getShortestPath()));
 
@@ -131,9 +131,7 @@ public class TestAStar {
 	}
 	public static void setPassengerSeated(Passenger passenger) {
 		finishedList.add(passenger);
-		//log.addToLog("Passenger "+passenger.getName() + " is now seated.");
-		if(finishedList.size()==cabin.getPassengers().size()) {
-			//log.addToLog("All passengers are now seated.");	
+		if(finishedList.size()==cabin.getPassengers().size()) {	
 			setSimulationDone(true);
 		}
 		

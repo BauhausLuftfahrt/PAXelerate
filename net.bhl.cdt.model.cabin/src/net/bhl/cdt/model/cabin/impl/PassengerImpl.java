@@ -37,6 +37,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getOrientationInDegree <em>Orientation In Degree</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getPositionX <em>Position X</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getPositionY <em>Position Y</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#isIsSeated <em>Is Seated</em>}</li>
  * </ul>
  * </p>
  *
@@ -344,6 +345,26 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	protected double positionY = POSITION_Y_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #isIsSeated() <em>Is Seated</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsSeated()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_SEATED_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isIsSeated() <em>Is Seated</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsSeated()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isSeated = IS_SEATED_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -636,6 +657,27 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isIsSeated() {
+		return isSeated;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIsSeated(boolean newIsSeated) {
+		boolean oldIsSeated = isSeated;
+		isSeated = newIsSeated;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__IS_SEATED, oldIsSeated, isSeated));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public double getHeight() {
 		return height;
 	}
@@ -774,6 +816,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return getPositionX();
 			case CabinPackage.PASSENGER__POSITION_Y:
 				return getPositionY();
+			case CabinPackage.PASSENGER__IS_SEATED:
+				return isIsSeated();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -833,6 +877,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return;
 			case CabinPackage.PASSENGER__POSITION_Y:
 				setPositionY((Double)newValue);
+				return;
+			case CabinPackage.PASSENGER__IS_SEATED:
+				setIsSeated((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -894,6 +941,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 			case CabinPackage.PASSENGER__POSITION_Y:
 				setPositionY(POSITION_Y_EDEFAULT);
 				return;
+			case CabinPackage.PASSENGER__IS_SEATED:
+				setIsSeated(IS_SEATED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -938,6 +988,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return positionX != POSITION_X_EDEFAULT;
 			case CabinPackage.PASSENGER__POSITION_Y:
 				return positionY != POSITION_Y_EDEFAULT;
+			case CabinPackage.PASSENGER__IS_SEATED:
+				return isSeated != IS_SEATED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -980,6 +1032,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 		result.append(positionX);
 		result.append(", positionY: ");
 		result.append(positionY);
+		result.append(", isSeated: ");
+		result.append(isSeated);
 		result.append(')');
 		return result.toString();
 	}

@@ -913,13 +913,22 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER__POSITION_Y = 15;
 
 	/**
+	 * The feature id for the '<em><b>Is Seated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__IS_SEATED = 16;
+
+	/**
 	 * The number of structural features of the '<em>Passenger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_FEATURE_COUNT = 16;
+	int PASSENGER_FEATURE_COUNT = 17;
 
 	/**
 	 * The number of operations of the '<em>Passenger</em>' class.
@@ -2392,6 +2401,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getPassenger_PositionY();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#isIsSeated <em>Is Seated</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Seated</em>'.
+	 * @see net.bhl.cdt.model.cabin.Passenger#isIsSeated()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_IsSeated();
+
+	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getHeight <em>Height</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3573,6 +3593,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PASSENGER__POSITION_Y = eINSTANCE.getPassenger_PositionY();
+		/**
+		 * The meta object literal for the '<em><b>Is Seated</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__IS_SEATED = eINSTANCE.getPassenger_IsSeated();
 		/**
 		 * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
