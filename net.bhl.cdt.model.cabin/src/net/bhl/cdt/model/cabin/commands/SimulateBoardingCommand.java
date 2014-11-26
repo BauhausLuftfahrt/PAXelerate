@@ -49,6 +49,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 	private Cabin cabin;
 	private CabinGenerator generator;
 	private ArrayList<Passenger> alreadySeatedList = new ArrayList<Passenger>();
+	private int[][] obstacleMap = null;
 
 	/**
 	 * This is the constructor method of the SimulateBoardingCommand.
@@ -77,7 +78,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 		if (!cabin.getPassengers().isEmpty()) {
 			generator = new CabinGenerator(cabin);
-			TestAStar astar = new TestAStar(generator.createObstacleMap(),
+			obstacleMap = generator.createObstacleMap();
+			TestAStar astar = new TestAStar(obstacleMap,
 					(int) (cabin.getCabinWidth() / cabin.getScale()),
 					(int) (cabin.getCabinLength() / cabin.getScale()), cabin);
 			
@@ -102,6 +104,11 @@ public class SimulateBoardingCommand extends CDTCommand {
 						consoleViewPart.printText("Passenger "+pax.getName()+" is now seated!");
 						alreadySeatedList.add(pax);							
 					}
+				}
+				
+				if(!obstacleMap.equals(null)) {
+					cabinViewPart.submitObstacleMap(obstacleMap);
+					consoleViewPart.printText("Heat map generation succeeded.");
 				}
 				if(!TestAStar.pathList.isEmpty()) {
 					cabinViewPart.submitPath(TestAStar.getPathList());

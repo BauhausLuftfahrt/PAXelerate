@@ -154,7 +154,7 @@ public class Agent extends Subject implements Runnable {
 					//int yWay = this.currentAgentPosition[i][1]-this.currentAgentPosition[i-1][1];
 					
 					//passenger.setOrientationInDegree(xWay);
-					Thread.sleep(50);	
+					Thread.sleep(10);	
 				}
 			}
 			

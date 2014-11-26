@@ -13,8 +13,8 @@ import net.bhl.cdt.model.util.ModelHelper;
 public class CabinGenerator {
 
 	private Cabin cabin;
-	private int width;
-	private int length;
+	public int width;
+	public int length;
 	
 	public CabinGenerator(Cabin cabin) {
 		this.cabin = cabin;

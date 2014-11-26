@@ -145,16 +145,44 @@ public class CabinViewPart extends ViewPart {
 		doTheDraw();
 	}
 	
-	public void submitPath(ArrayList<int[][]> pathList) {
+	public void submitObstacleMap(final int[][] obstacleMap) {
+		
+		parentTest.redraw();
+		parentTest.update();
+		canvas.redraw();		
+		canvas.addPaintListener(new PaintListener() {
+			public void paintControl(final PaintEvent e) {		
+				e.gc.setAlpha(150);
+				Color red = new Color(e.display, 220, 20, 60); 
+				Color green = new Color(e.display, 50, 205, 50);
+				//drawCabin.setScale(20);
+				for(int i = 0;i<(int)(drawCabin.getCabinWidth()/drawCabin.getScale());i++) {
+					for(int j = 0;j<(int)(drawCabin.getCabinLength()/drawCabin.getScale());j++) {
+						if(obstacleMap[i][j]==0) {
+							e.gc.setBackground(green);
+						} else {
+							e.gc.setBackground(red);
+						}	
+						e.gc.fillOval(x_zero+(int)(i*drawCabin.getScale()/factor),y_zero+(int)(j*drawCabin.getScale()/factor),(int)(2*drawCabin.getScale()/factor),(int)(2*drawCabin.getScale()/factor));
+					} 
+				}
+							
+			}			
+		});
+	}
+	
+	
+	public void submitPath(final ArrayList<int[][]> pathList) {
 		parentTest.redraw();
 		parentTest.update();
 		canvas.redraw();
 		
-		for(int l = 0; l<pathList.size();l++) {
-			final int[][] singlePath = pathList.get(l);
-			//System.out.println(l+" -> Length: "+singlePath.length);
-			canvas.addPaintListener(new PaintListener() {
-				public void paintControl(final PaintEvent e) {
+		canvas.addPaintListener(new PaintListener() {
+			public void paintControl(final PaintEvent e) {		
+				e.gc.setLineWidth(2);
+				for(int l = 0; l<pathList.size();l++) {
+					final int[][] singlePath = pathList.get(l);
+					System.out.println(l+" -> Length: "+singlePath.length);		
 					int[] pathPoints = new int[2*singlePath.length];
 					int k = 0;
 					int i = 0;
@@ -168,12 +196,11 @@ public class CabinViewPart extends ViewPart {
 						k = k+2;
 						i++;
 					}
-					e.gc.setLineWidth(2);
-					e.gc.drawPolyline(pathPoints);
-					e.gc.setLineWidth(1);
-				}		
-			});
+					e.gc.drawPolyline(pathPoints);					
+				}
+				e.gc.setLineWidth(1);
 		}
+		});
 	}
 	
 
