@@ -34,6 +34,7 @@ public class TestAStar {
 	static Logger console = new Logger();
 	static AreaMap map;
 	static ArrayList<Agent> agents = new ArrayList<Agent>();
+	public static ArrayList<int[][]> pathList = new ArrayList<int[][]>();
 	static StopWatch s = new StopWatch();
 
 	// constructor is called from matlab: initializes the obstacleMap and
@@ -122,6 +123,14 @@ public class TestAStar {
 	public static Boolean getSimulationDone() {
 		return simulationDone;
 	}
+	public static void submitPath(int[][] path) {
+		pathList.add(path);
+	}
+	
+	public static ArrayList<int[][]> getPathList() {
+		return pathList;
+	}
+	
 	public static void setPassengerSeated(Passenger passenger) {
 		finishedList.add(passenger);
 		if(finishedList.size()==cabin.getPassengers().size()) {	

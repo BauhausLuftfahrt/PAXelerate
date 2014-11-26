@@ -1,18 +1,14 @@
 package net.bhl.cdt.model.cabin.commands;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import model.CabinGenerator;
 import model.TestAStar;
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Passenger;
-import net.bhl.cdt.model.cabin.PassengerClass;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.ConsoleViewPart;
 import net.bhl.cdt.model.util.ModelHelper;
-
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
@@ -52,8 +48,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 	private Cabin cabin;
 	private CabinGenerator generator;
-	private static int port = 2100;
-	private ArrayList<Passenger> alreadySeatedList = new ArrayList();
+	private ArrayList<Passenger> alreadySeatedList = new ArrayList<Passenger>();
 
 	/**
 	 * This is the constructor method of the SimulateBoardingCommand.
@@ -85,8 +80,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 			TestAStar astar = new TestAStar(generator.createObstacleMap(),
 					(int) (cabin.getCabinWidth() / cabin.getScale()),
 					(int) (cabin.getCabinLength() / cabin.getScale()), cabin);
-
-			while (!astar.getSimulationDone()) {
+			
+			while (!TestAStar.getSimulationDone()) {
 				try {
 					for(Passenger pax:ModelHelper.getChildrenByClass(astar.getPassengerLocations(), Passenger.class)) {
 						if(pax.isIsSeated()&&!alreadySeatedList.contains(pax)) {
@@ -101,18 +96,24 @@ public class SimulateBoardingCommand extends CDTCommand {
 					e.printStackTrace();
 				}
 			}
-			if (astar.simulationDone) {
+			if (TestAStar.simulationDone) {
 				for(Passenger pax:ModelHelper.getChildrenByClass(astar.getPassengerLocations(), Passenger.class)) {
 					if(pax.isIsSeated()&&!alreadySeatedList.contains(pax)) {
 						consoleViewPart.printText("Passenger "+pax.getName()+" is now seated!");
 						alreadySeatedList.add(pax);							
 					}
 				}
-				consoleViewPart.printText("Boarding completed!");
+				if(!TestAStar.pathList.isEmpty()) {
+					cabinViewPart.submitPath(TestAStar.getPathList());
+					consoleViewPart.printText("Paths printed successfully.");
+				}
+				consoleViewPart.printText("Boarding completed!");			
 			}
-		} else {
+			
+		} 
+		else {
 			consoleViewPart.printText("No boarding possible! Please create passengers.");
-		}
+		 }
 
 	}
 

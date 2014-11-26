@@ -28,6 +28,8 @@ import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.Path;
+import org.eclipse.swt.graphics.Transform;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.ISharedImages;
@@ -142,6 +144,38 @@ public class CabinViewPart extends ViewPart {
 		drawCabin = cabin;
 		doTheDraw();
 	}
+	
+	public void submitPath(ArrayList<int[][]> pathList) {
+		parentTest.redraw();
+		parentTest.update();
+		canvas.redraw();
+		
+		for(int l = 0; l<pathList.size();l++) {
+			final int[][] singlePath = pathList.get(l);
+			//System.out.println(l+" -> Length: "+singlePath.length);
+			canvas.addPaintListener(new PaintListener() {
+				public void paintControl(final PaintEvent e) {
+					int[] pathPoints = new int[2*singlePath.length];
+					int k = 0;
+					int i = 0;
+					//int[] pathPoints = {0,0,100,100,200,200,200,400,400,200};
+					while(k < 2*singlePath.length) {
+						//System.out.println("k = "+k);
+						pathPoints[k] = x_zero + (int)(singlePath[i][0]*drawCabin.getScale()/factor);
+						//System.out.println("pathPoint(k) = "+pathPoints[k]);
+						pathPoints[k+1] = y_zero + (int)(singlePath[i][1]*drawCabin.getScale()/factor);
+						//System.out.println("pathPoint(k+1) = "+pathPoints[k+1]);
+						k = k+2;
+						i++;
+					}
+					e.gc.setLineWidth(2);
+					e.gc.drawPolyline(pathPoints);
+					e.gc.setLineWidth(1);
+				}		
+			});
+		}
+	}
+	
 
 	public void submitPassengerCoordinates(final Cabin paxCabin) {
 
@@ -150,6 +184,20 @@ public class CabinViewPart extends ViewPart {
 		canvas.redraw();
 		canvas.addPaintListener(new PaintListener() {
 			public void paintControl(final PaintEvent e) {
+				
+//				e.gc.setAdvanced(true);
+//				Transform transform = new Transform(parentTest.getDisplay());
+//				//float cos45 = (float)Math.cos(45);
+//		        float cos45 = (float)Math.cos(Math.PI/4); 
+//		        //float sin45 = (float)Math.sin(45);
+//		        float sin45 = (float)Math.sin(Math.PI/4);
+//		        transform.setElements(cos45, sin45, -sin45, cos45, 0, 0);
+//				transform.rotate(45);
+//				transform.translate(100, - 141);
+//				e.gc.drawText("HALLO!",100,100);
+//				e.gc.setTransform(transform);
+//				e.gc.drawText("HALLO!",100,100);
+//				transform.dispose();
 				for (Passenger pass : ModelHelper.getChildrenByClass(paxCabin,Passenger.class)) {
 					int[] color = calculateColor(pass);
 					e.gc.setBackground(new Color(e.display, color[0], color[1], color[2]));
@@ -170,7 +218,9 @@ public class CabinViewPart extends ViewPart {
 						
 					}
 				}
+				
 			}
+			 
 				//e.gc.dispose();
 			
 		});
