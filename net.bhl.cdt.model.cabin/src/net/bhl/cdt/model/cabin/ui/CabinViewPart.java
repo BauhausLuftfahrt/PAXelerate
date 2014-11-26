@@ -152,7 +152,7 @@ public class CabinViewPart extends ViewPart {
 		canvas.redraw();		
 		canvas.addPaintListener(new PaintListener() {
 			public void paintControl(final PaintEvent e) {		
-				e.gc.setAlpha(150);
+				e.gc.setAlpha(100);
 				Color red = new Color(e.display, 220, 20, 60); 
 				Color green = new Color(e.display, 50, 205, 50);
 				//drawCabin.setScale(20);
@@ -182,7 +182,7 @@ public class CabinViewPart extends ViewPart {
 				e.gc.setLineWidth(2);
 				for(int l = 0; l<pathList.size();l++) {
 					final int[][] singlePath = pathList.get(l);
-					System.out.println(l+" -> Length: "+singlePath.length);		
+					//System.out.println(l+" -> Length: "+singlePath.length);		
 					int[] pathPoints = new int[2*singlePath.length];
 					int k = 0;
 					int i = 0;
