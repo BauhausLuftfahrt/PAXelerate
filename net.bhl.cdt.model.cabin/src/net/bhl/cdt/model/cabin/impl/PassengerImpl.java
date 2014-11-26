@@ -182,7 +182,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = "Mr. Placeholder";
 
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.

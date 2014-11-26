@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatsInFirstClass <em>Seats In First Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getFirstClassPassengers <em>First Class Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatsPerRowInFirstClass <em>Seats Per Row In First Class</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatPitchInFirst <em>Seat Pitch In First</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatWidthInFirst <em>Seat Width In First</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatLengthInFirst <em>Seat Length In First</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatsInBusinessClass <em>Seats In Business Class</em>}</li>
@@ -42,19 +43,20 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatsPerRowInBusinessClass <em>Seats Per Row In Business Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatWidthInBusiness <em>Seat Width In Business</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatLengthInBusiness <em>Seat Length In Business</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatPitchInBusiness <em>Seat Pitch In Business</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatsInPremiumEconomyClass <em>Seats In Premium Economy Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getPremiumEconomyClassPassengers <em>Premium Economy Class Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatsPerRowInPremiumEconomyClass <em>Seats Per Row In Premium Economy Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatWidthInPremiumEconomy <em>Seat Width In Premium Economy</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatLengthInPremiumEconomy <em>Seat Length In Premium Economy</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatPitchInPremiumEco <em>Seat Pitch In Premium Eco</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatsInEconomyClass <em>Seats In Economy Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getEconomyClassPassengers <em>Economy Class Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatsPerRowInEconomyClass <em>Seats Per Row In Economy Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatWidthInEconomy <em>Seat Width In Economy</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatLengthInEconomy <em>Seat Length In Economy</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatPitchInEconomy <em>Seat Pitch In Economy</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getRowNonexistent <em>Row Nonexistent</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSeatPitch <em>Seat Pitch</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getNumbAisles <em>Numb Aisles</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getAisleWidth <em>Aisle Width</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getFramesPerSecond <em>Frames Per Second</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getNumberOfDecks <em>Number Of Decks</em>}</li>
@@ -82,7 +84,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double CABIN_LENGTH_EDEFAULT = 0.0;
+	protected static final double CABIN_LENGTH_EDEFAULT = 2411.5;
 	/**
 	 * The cached value of the '{@link #getCabinLength() <em>Cabin Length</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -100,7 +102,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double CABIN_WIDTH_EDEFAULT = 0.0;
+	protected static final double CABIN_WIDTH_EDEFAULT = 364.0;
 	/**
 	 * The cached value of the '{@link #getCabinWidth() <em>Cabin Width</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -118,7 +120,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SEATS_IN_FIRST_CLASS_EDEFAULT = 4;
+	protected static final int SEATS_IN_FIRST_CLASS_EDEFAULT = 2;
 	/**
 	 * The cached value of the '{@link #getSeatsInFirstClass() <em>Seats In First Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -165,6 +167,24 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 */
 	protected int seatsPerRowInFirstClass = SEATS_PER_ROW_IN_FIRST_CLASS_EDEFAULT;
 	/**
+	 * The default value of the '{@link #getSeatPitchInFirst() <em>Seat Pitch In First</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatPitchInFirst()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double SEAT_PITCH_IN_FIRST_EDEFAULT = 40.0;
+	/**
+	 * The cached value of the '{@link #getSeatPitchInFirst() <em>Seat Pitch In First</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatPitchInFirst()
+	 * @generated
+	 * @ordered
+	 */
+	protected double seatPitchInFirst = SEAT_PITCH_IN_FIRST_EDEFAULT;
+	/**
 	 * The default value of the '{@link #getSeatWidthInFirst() <em>Seat Width In First</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -172,7 +192,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double SEAT_WIDTH_IN_FIRST_EDEFAULT = 230.0;
+	protected static final double SEAT_WIDTH_IN_FIRST_EDEFAULT = 100.0;
 	/**
 	 * The cached value of the '{@link #getSeatWidthInFirst() <em>Seat Width In First</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -190,7 +210,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double SEAT_LENGTH_IN_FIRST_EDEFAULT = 300.0;
+	protected static final double SEAT_LENGTH_IN_FIRST_EDEFAULT = 120.0;
 	/**
 	 * The cached value of the '{@link #getSeatLengthInFirst() <em>Seat Length In First</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -208,7 +228,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SEATS_IN_BUSINESS_CLASS_EDEFAULT = 4;
+	protected static final int SEATS_IN_BUSINESS_CLASS_EDEFAULT = 12;
 	/**
 	 * The cached value of the '{@link #getSeatsInBusinessClass() <em>Seats In Business Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -262,7 +282,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double SEAT_WIDTH_IN_BUSINESS_EDEFAULT = 180.0;
+	protected static final double SEAT_WIDTH_IN_BUSINESS_EDEFAULT = 72.0;
 	/**
 	 * The cached value of the '{@link #getSeatWidthInBusiness() <em>Seat Width In Business</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -280,7 +300,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double SEAT_LENGTH_IN_BUSINESS_EDEFAULT = 210.0;
+	protected static final double SEAT_LENGTH_IN_BUSINESS_EDEFAULT = 80.0;
 	/**
 	 * The cached value of the '{@link #getSeatLengthInBusiness() <em>Seat Length In Business</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -290,6 +310,24 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @ordered
 	 */
 	protected double seatLengthInBusiness = SEAT_LENGTH_IN_BUSINESS_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getSeatPitchInBusiness() <em>Seat Pitch In Business</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatPitchInBusiness()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double SEAT_PITCH_IN_BUSINESS_EDEFAULT = 30.0;
+	/**
+	 * The cached value of the '{@link #getSeatPitchInBusiness() <em>Seat Pitch In Business</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatPitchInBusiness()
+	 * @generated
+	 * @ordered
+	 */
+	protected double seatPitchInBusiness = SEAT_PITCH_IN_BUSINESS_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getSeatsInPremiumEconomyClass() <em>Seats In Premium Economy Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -352,7 +390,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double SEAT_WIDTH_IN_PREMIUM_ECONOMY_EDEFAULT = 130.0;
+	protected static final double SEAT_WIDTH_IN_PREMIUM_ECONOMY_EDEFAULT = 50.0;
 	/**
 	 * The cached value of the '{@link #getSeatWidthInPremiumEconomy() <em>Seat Width In Premium Economy</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -370,7 +408,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double SEAT_LENGTH_IN_PREMIUM_ECONOMY_EDEFAULT = 170.0;
+	protected static final double SEAT_LENGTH_IN_PREMIUM_ECONOMY_EDEFAULT = 70.0;
 	/**
 	 * The cached value of the '{@link #getSeatLengthInPremiumEconomy() <em>Seat Length In Premium Economy</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -381,6 +419,24 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 */
 	protected double seatLengthInPremiumEconomy = SEAT_LENGTH_IN_PREMIUM_ECONOMY_EDEFAULT;
 	/**
+	 * The default value of the '{@link #getSeatPitchInPremiumEco() <em>Seat Pitch In Premium Eco</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatPitchInPremiumEco()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double SEAT_PITCH_IN_PREMIUM_ECO_EDEFAULT = 30.0;
+	/**
+	 * The cached value of the '{@link #getSeatPitchInPremiumEco() <em>Seat Pitch In Premium Eco</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatPitchInPremiumEco()
+	 * @generated
+	 * @ordered
+	 */
+	protected double seatPitchInPremiumEco = SEAT_PITCH_IN_PREMIUM_ECO_EDEFAULT;
+	/**
 	 * The default value of the '{@link #getSeatsInEconomyClass() <em>Seats In Economy Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -388,7 +444,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SEATS_IN_ECONOMY_CLASS_EDEFAULT = 12;
+	protected static final int SEATS_IN_ECONOMY_CLASS_EDEFAULT = 72;
 	/**
 	 * The cached value of the '{@link #getSeatsInEconomyClass() <em>Seats In Economy Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -406,7 +462,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int ECONOMY_CLASS_PASSENGERS_EDEFAULT = 0;
+	protected static final int ECONOMY_CLASS_PASSENGERS_EDEFAULT = 10;
 	/**
 	 * The cached value of the '{@link #getEconomyClassPassengers() <em>Economy Class Passengers</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -442,7 +498,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double SEAT_WIDTH_IN_ECONOMY_EDEFAULT = 130.0;
+	protected static final double SEAT_WIDTH_IN_ECONOMY_EDEFAULT = 50.0;
 	/**
 	 * The cached value of the '{@link #getSeatWidthInEconomy() <em>Seat Width In Economy</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -460,7 +516,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double SEAT_LENGTH_IN_ECONOMY_EDEFAULT = 150.0;
+	protected static final double SEAT_LENGTH_IN_ECONOMY_EDEFAULT = 60.0;
 	/**
 	 * The cached value of the '{@link #getSeatLengthInEconomy() <em>Seat Length In Economy</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -470,6 +526,24 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @ordered
 	 */
 	protected double seatLengthInEconomy = SEAT_LENGTH_IN_ECONOMY_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getSeatPitchInEconomy() <em>Seat Pitch In Economy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatPitchInEconomy()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double SEAT_PITCH_IN_ECONOMY_EDEFAULT = 20.0;
+	/**
+	 * The cached value of the '{@link #getSeatPitchInEconomy() <em>Seat Pitch In Economy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatPitchInEconomy()
+	 * @generated
+	 * @ordered
+	 */
+	protected double seatPitchInEconomy = SEAT_PITCH_IN_ECONOMY_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getRowNonexistent() <em>Row Nonexistent</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -489,42 +563,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 */
 	protected int rowNonexistent = ROW_NONEXISTENT_EDEFAULT;
 	/**
-	 * The default value of the '{@link #getSeatPitch() <em>Seat Pitch</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatPitch()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double SEAT_PITCH_EDEFAULT = 50.0;
-	/**
-	 * The cached value of the '{@link #getSeatPitch() <em>Seat Pitch</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatPitch()
-	 * @generated
-	 * @ordered
-	 */
-	protected double seatPitch = SEAT_PITCH_EDEFAULT;
-	/**
-	 * The default value of the '{@link #getNumbAisles() <em>Numb Aisles</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNumbAisles()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int NUMB_AISLES_EDEFAULT = 1;
-	/**
-	 * The cached value of the '{@link #getNumbAisles() <em>Numb Aisles</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNumbAisles()
-	 * @generated
-	 * @ordered
-	 */
-	protected int numbAisles = NUMB_AISLES_EDEFAULT;
-	/**
 	 * The default value of the '{@link #getAisleWidth() <em>Aisle Width</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -532,7 +570,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double AISLE_WIDTH_EDEFAULT = 0.0;
+	protected static final double AISLE_WIDTH_EDEFAULT = 64.0;
 	/**
 	 * The cached value of the '{@link #getAisleWidth() <em>Aisle Width</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -550,7 +588,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int FRAMES_PER_SECOND_EDEFAULT = 10;
+	protected static final int FRAMES_PER_SECOND_EDEFAULT = 5;
 	/**
 	 * The cached value of the '{@link #getFramesPerSecond() <em>Frames Per Second</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -568,7 +606,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int NUMBER_OF_DECKS_EDEFAULT = 0;
+	protected static final int NUMBER_OF_DECKS_EDEFAULT = 1;
 	/**
 	 * The cached value of the '{@link #getNumberOfDecks() <em>Number Of Decks</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -658,7 +696,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double SCALE_EDEFAULT = 0.0;
+	protected static final double SCALE_EDEFAULT = 4.0;
 	/**
 	 * The cached value of the '{@link #getScale() <em>Scale</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -983,6 +1021,27 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public double getSeatPitchInEconomy() {
+		return seatPitchInEconomy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatPitchInEconomy(double newSeatPitchInEconomy) {
+		double oldSeatPitchInEconomy = seatPitchInEconomy;
+		seatPitchInEconomy = newSeatPitchInEconomy;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SEAT_PITCH_IN_ECONOMY, oldSeatPitchInEconomy, seatPitchInEconomy));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public int getSeatsPerRowInBusinessClass() {
 		return seatsPerRowInBusinessClass;
 	}
@@ -1046,6 +1105,27 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public double getSeatPitchInBusiness() {
+		return seatPitchInBusiness;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatPitchInBusiness(double newSeatPitchInBusiness) {
+		double oldSeatPitchInBusiness = seatPitchInBusiness;
+		seatPitchInBusiness = newSeatPitchInBusiness;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SEAT_PITCH_IN_BUSINESS, oldSeatPitchInBusiness, seatPitchInBusiness));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public int getSeatsPerRowInFirstClass() {
 		return seatsPerRowInFirstClass;
 	}
@@ -1060,6 +1140,27 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		seatsPerRowInFirstClass = newSeatsPerRowInFirstClass;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SEATS_PER_ROW_IN_FIRST_CLASS, oldSeatsPerRowInFirstClass, seatsPerRowInFirstClass));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getSeatPitchInFirst() {
+		return seatPitchInFirst;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatPitchInFirst(double newSeatPitchInFirst) {
+		double oldSeatPitchInFirst = seatPitchInFirst;
+		seatPitchInFirst = newSeatPitchInFirst;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SEAT_PITCH_IN_FIRST, oldSeatPitchInFirst, seatPitchInFirst));
 	}
 
 	/**
@@ -1165,6 +1266,27 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		seatLengthInPremiumEconomy = newSeatLengthInPremiumEconomy;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SEAT_LENGTH_IN_PREMIUM_ECONOMY, oldSeatLengthInPremiumEconomy, seatLengthInPremiumEconomy));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getSeatPitchInPremiumEco() {
+		return seatPitchInPremiumEco;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatPitchInPremiumEco(double newSeatPitchInPremiumEco) {
+		double oldSeatPitchInPremiumEco = seatPitchInPremiumEco;
+		seatPitchInPremiumEco = newSeatPitchInPremiumEco;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SEAT_PITCH_IN_PREMIUM_ECO, oldSeatPitchInPremiumEco, seatPitchInPremiumEco));
 	}
 
 	/**
@@ -1373,48 +1495,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getSeatPitch() {
-		return seatPitch;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSeatPitch(double newSeatPitch) {
-		double oldSeatPitch = seatPitch;
-		seatPitch = newSeatPitch;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SEAT_PITCH, oldSeatPitch, seatPitch));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public int getNumbAisles() {
-		return numbAisles;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setNumbAisles(int newNumbAisles) {
-		int oldNumbAisles = numbAisles;
-		numbAisles = newNumbAisles;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__NUMB_AISLES, oldNumbAisles, numbAisles));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public double getAisleWidth() {
 		return aisleWidth;
 	}
@@ -1477,6 +1557,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return getFirstClassPassengers();
 			case CabinPackage.CABIN__SEATS_PER_ROW_IN_FIRST_CLASS:
 				return getSeatsPerRowInFirstClass();
+			case CabinPackage.CABIN__SEAT_PITCH_IN_FIRST:
+				return getSeatPitchInFirst();
 			case CabinPackage.CABIN__SEAT_WIDTH_IN_FIRST:
 				return getSeatWidthInFirst();
 			case CabinPackage.CABIN__SEAT_LENGTH_IN_FIRST:
@@ -1491,6 +1573,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return getSeatWidthInBusiness();
 			case CabinPackage.CABIN__SEAT_LENGTH_IN_BUSINESS:
 				return getSeatLengthInBusiness();
+			case CabinPackage.CABIN__SEAT_PITCH_IN_BUSINESS:
+				return getSeatPitchInBusiness();
 			case CabinPackage.CABIN__SEATS_IN_PREMIUM_ECONOMY_CLASS:
 				return getSeatsInPremiumEconomyClass();
 			case CabinPackage.CABIN__PREMIUM_ECONOMY_CLASS_PASSENGERS:
@@ -1501,6 +1585,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return getSeatWidthInPremiumEconomy();
 			case CabinPackage.CABIN__SEAT_LENGTH_IN_PREMIUM_ECONOMY:
 				return getSeatLengthInPremiumEconomy();
+			case CabinPackage.CABIN__SEAT_PITCH_IN_PREMIUM_ECO:
+				return getSeatPitchInPremiumEco();
 			case CabinPackage.CABIN__SEATS_IN_ECONOMY_CLASS:
 				return getSeatsInEconomyClass();
 			case CabinPackage.CABIN__ECONOMY_CLASS_PASSENGERS:
@@ -1511,12 +1597,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return getSeatWidthInEconomy();
 			case CabinPackage.CABIN__SEAT_LENGTH_IN_ECONOMY:
 				return getSeatLengthInEconomy();
+			case CabinPackage.CABIN__SEAT_PITCH_IN_ECONOMY:
+				return getSeatPitchInEconomy();
 			case CabinPackage.CABIN__ROW_NONEXISTENT:
 				return getRowNonexistent();
-			case CabinPackage.CABIN__SEAT_PITCH:
-				return getSeatPitch();
-			case CabinPackage.CABIN__NUMB_AISLES:
-				return getNumbAisles();
 			case CabinPackage.CABIN__AISLE_WIDTH:
 				return getAisleWidth();
 			case CabinPackage.CABIN__FRAMES_PER_SECOND:
@@ -1571,6 +1655,9 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__SEATS_PER_ROW_IN_FIRST_CLASS:
 				setSeatsPerRowInFirstClass((Integer)newValue);
 				return;
+			case CabinPackage.CABIN__SEAT_PITCH_IN_FIRST:
+				setSeatPitchInFirst((Double)newValue);
+				return;
 			case CabinPackage.CABIN__SEAT_WIDTH_IN_FIRST:
 				setSeatWidthInFirst((Double)newValue);
 				return;
@@ -1592,6 +1679,9 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__SEAT_LENGTH_IN_BUSINESS:
 				setSeatLengthInBusiness((Double)newValue);
 				return;
+			case CabinPackage.CABIN__SEAT_PITCH_IN_BUSINESS:
+				setSeatPitchInBusiness((Double)newValue);
+				return;
 			case CabinPackage.CABIN__SEATS_IN_PREMIUM_ECONOMY_CLASS:
 				setSeatsInPremiumEconomyClass((Integer)newValue);
 				return;
@@ -1606,6 +1696,9 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return;
 			case CabinPackage.CABIN__SEAT_LENGTH_IN_PREMIUM_ECONOMY:
 				setSeatLengthInPremiumEconomy((Double)newValue);
+				return;
+			case CabinPackage.CABIN__SEAT_PITCH_IN_PREMIUM_ECO:
+				setSeatPitchInPremiumEco((Double)newValue);
 				return;
 			case CabinPackage.CABIN__SEATS_IN_ECONOMY_CLASS:
 				setSeatsInEconomyClass((Integer)newValue);
@@ -1622,14 +1715,11 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__SEAT_LENGTH_IN_ECONOMY:
 				setSeatLengthInEconomy((Double)newValue);
 				return;
+			case CabinPackage.CABIN__SEAT_PITCH_IN_ECONOMY:
+				setSeatPitchInEconomy((Double)newValue);
+				return;
 			case CabinPackage.CABIN__ROW_NONEXISTENT:
 				setRowNonexistent((Integer)newValue);
-				return;
-			case CabinPackage.CABIN__SEAT_PITCH:
-				setSeatPitch((Double)newValue);
-				return;
-			case CabinPackage.CABIN__NUMB_AISLES:
-				setNumbAisles((Integer)newValue);
 				return;
 			case CabinPackage.CABIN__AISLE_WIDTH:
 				setAisleWidth((Double)newValue);
@@ -1705,6 +1795,9 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__SEATS_PER_ROW_IN_FIRST_CLASS:
 				setSeatsPerRowInFirstClass(SEATS_PER_ROW_IN_FIRST_CLASS_EDEFAULT);
 				return;
+			case CabinPackage.CABIN__SEAT_PITCH_IN_FIRST:
+				setSeatPitchInFirst(SEAT_PITCH_IN_FIRST_EDEFAULT);
+				return;
 			case CabinPackage.CABIN__SEAT_WIDTH_IN_FIRST:
 				setSeatWidthInFirst(SEAT_WIDTH_IN_FIRST_EDEFAULT);
 				return;
@@ -1726,6 +1819,9 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__SEAT_LENGTH_IN_BUSINESS:
 				setSeatLengthInBusiness(SEAT_LENGTH_IN_BUSINESS_EDEFAULT);
 				return;
+			case CabinPackage.CABIN__SEAT_PITCH_IN_BUSINESS:
+				setSeatPitchInBusiness(SEAT_PITCH_IN_BUSINESS_EDEFAULT);
+				return;
 			case CabinPackage.CABIN__SEATS_IN_PREMIUM_ECONOMY_CLASS:
 				setSeatsInPremiumEconomyClass(SEATS_IN_PREMIUM_ECONOMY_CLASS_EDEFAULT);
 				return;
@@ -1740,6 +1836,9 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return;
 			case CabinPackage.CABIN__SEAT_LENGTH_IN_PREMIUM_ECONOMY:
 				setSeatLengthInPremiumEconomy(SEAT_LENGTH_IN_PREMIUM_ECONOMY_EDEFAULT);
+				return;
+			case CabinPackage.CABIN__SEAT_PITCH_IN_PREMIUM_ECO:
+				setSeatPitchInPremiumEco(SEAT_PITCH_IN_PREMIUM_ECO_EDEFAULT);
 				return;
 			case CabinPackage.CABIN__SEATS_IN_ECONOMY_CLASS:
 				setSeatsInEconomyClass(SEATS_IN_ECONOMY_CLASS_EDEFAULT);
@@ -1756,14 +1855,11 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__SEAT_LENGTH_IN_ECONOMY:
 				setSeatLengthInEconomy(SEAT_LENGTH_IN_ECONOMY_EDEFAULT);
 				return;
+			case CabinPackage.CABIN__SEAT_PITCH_IN_ECONOMY:
+				setSeatPitchInEconomy(SEAT_PITCH_IN_ECONOMY_EDEFAULT);
+				return;
 			case CabinPackage.CABIN__ROW_NONEXISTENT:
 				setRowNonexistent(ROW_NONEXISTENT_EDEFAULT);
-				return;
-			case CabinPackage.CABIN__SEAT_PITCH:
-				setSeatPitch(SEAT_PITCH_EDEFAULT);
-				return;
-			case CabinPackage.CABIN__NUMB_AISLES:
-				setNumbAisles(NUMB_AISLES_EDEFAULT);
 				return;
 			case CabinPackage.CABIN__AISLE_WIDTH:
 				setAisleWidth(AISLE_WIDTH_EDEFAULT);
@@ -1826,6 +1922,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return firstClassPassengers != FIRST_CLASS_PASSENGERS_EDEFAULT;
 			case CabinPackage.CABIN__SEATS_PER_ROW_IN_FIRST_CLASS:
 				return seatsPerRowInFirstClass != SEATS_PER_ROW_IN_FIRST_CLASS_EDEFAULT;
+			case CabinPackage.CABIN__SEAT_PITCH_IN_FIRST:
+				return seatPitchInFirst != SEAT_PITCH_IN_FIRST_EDEFAULT;
 			case CabinPackage.CABIN__SEAT_WIDTH_IN_FIRST:
 				return seatWidthInFirst != SEAT_WIDTH_IN_FIRST_EDEFAULT;
 			case CabinPackage.CABIN__SEAT_LENGTH_IN_FIRST:
@@ -1840,6 +1938,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return seatWidthInBusiness != SEAT_WIDTH_IN_BUSINESS_EDEFAULT;
 			case CabinPackage.CABIN__SEAT_LENGTH_IN_BUSINESS:
 				return seatLengthInBusiness != SEAT_LENGTH_IN_BUSINESS_EDEFAULT;
+			case CabinPackage.CABIN__SEAT_PITCH_IN_BUSINESS:
+				return seatPitchInBusiness != SEAT_PITCH_IN_BUSINESS_EDEFAULT;
 			case CabinPackage.CABIN__SEATS_IN_PREMIUM_ECONOMY_CLASS:
 				return seatsInPremiumEconomyClass != SEATS_IN_PREMIUM_ECONOMY_CLASS_EDEFAULT;
 			case CabinPackage.CABIN__PREMIUM_ECONOMY_CLASS_PASSENGERS:
@@ -1850,6 +1950,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return seatWidthInPremiumEconomy != SEAT_WIDTH_IN_PREMIUM_ECONOMY_EDEFAULT;
 			case CabinPackage.CABIN__SEAT_LENGTH_IN_PREMIUM_ECONOMY:
 				return seatLengthInPremiumEconomy != SEAT_LENGTH_IN_PREMIUM_ECONOMY_EDEFAULT;
+			case CabinPackage.CABIN__SEAT_PITCH_IN_PREMIUM_ECO:
+				return seatPitchInPremiumEco != SEAT_PITCH_IN_PREMIUM_ECO_EDEFAULT;
 			case CabinPackage.CABIN__SEATS_IN_ECONOMY_CLASS:
 				return seatsInEconomyClass != SEATS_IN_ECONOMY_CLASS_EDEFAULT;
 			case CabinPackage.CABIN__ECONOMY_CLASS_PASSENGERS:
@@ -1860,12 +1962,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return seatWidthInEconomy != SEAT_WIDTH_IN_ECONOMY_EDEFAULT;
 			case CabinPackage.CABIN__SEAT_LENGTH_IN_ECONOMY:
 				return seatLengthInEconomy != SEAT_LENGTH_IN_ECONOMY_EDEFAULT;
+			case CabinPackage.CABIN__SEAT_PITCH_IN_ECONOMY:
+				return seatPitchInEconomy != SEAT_PITCH_IN_ECONOMY_EDEFAULT;
 			case CabinPackage.CABIN__ROW_NONEXISTENT:
 				return rowNonexistent != ROW_NONEXISTENT_EDEFAULT;
-			case CabinPackage.CABIN__SEAT_PITCH:
-				return seatPitch != SEAT_PITCH_EDEFAULT;
-			case CabinPackage.CABIN__NUMB_AISLES:
-				return numbAisles != NUMB_AISLES_EDEFAULT;
 			case CabinPackage.CABIN__AISLE_WIDTH:
 				return aisleWidth != AISLE_WIDTH_EDEFAULT;
 			case CabinPackage.CABIN__FRAMES_PER_SECOND:
@@ -1916,6 +2016,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		result.append(firstClassPassengers);
 		result.append(", seatsPerRowInFirstClass: ");
 		result.append(seatsPerRowInFirstClass);
+		result.append(", seatPitchInFirst: ");
+		result.append(seatPitchInFirst);
 		result.append(", seatWidthInFirst: ");
 		result.append(seatWidthInFirst);
 		result.append(", seatLengthInFirst: ");
@@ -1930,6 +2032,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		result.append(seatWidthInBusiness);
 		result.append(", seatLengthInBusiness: ");
 		result.append(seatLengthInBusiness);
+		result.append(", seatPitchInBusiness: ");
+		result.append(seatPitchInBusiness);
 		result.append(", seatsInPremiumEconomyClass: ");
 		result.append(seatsInPremiumEconomyClass);
 		result.append(", premiumEconomyClassPassengers: ");
@@ -1940,6 +2044,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		result.append(seatWidthInPremiumEconomy);
 		result.append(", seatLengthInPremiumEconomy: ");
 		result.append(seatLengthInPremiumEconomy);
+		result.append(", seatPitchInPremiumEco: ");
+		result.append(seatPitchInPremiumEco);
 		result.append(", seatsInEconomyClass: ");
 		result.append(seatsInEconomyClass);
 		result.append(", economyClassPassengers: ");
@@ -1950,12 +2056,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		result.append(seatWidthInEconomy);
 		result.append(", seatLengthInEconomy: ");
 		result.append(seatLengthInEconomy);
+		result.append(", seatPitchInEconomy: ");
+		result.append(seatPitchInEconomy);
 		result.append(", rowNonexistent: ");
 		result.append(rowNonexistent);
-		result.append(", seatPitch: ");
-		result.append(seatPitch);
-		result.append(", numbAisles: ");
-		result.append(numbAisles);
 		result.append(", aisleWidth: ");
 		result.append(aisleWidth);
 		result.append(", framesPerSecond: ");

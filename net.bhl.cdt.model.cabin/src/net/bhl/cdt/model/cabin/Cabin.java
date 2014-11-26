@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatsInFirstClass <em>Seats In First Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getFirstClassPassengers <em>First Class Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatsPerRowInFirstClass <em>Seats Per Row In First Class</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatPitchInFirst <em>Seat Pitch In First</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatWidthInFirst <em>Seat Width In First</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatLengthInFirst <em>Seat Length In First</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatsInBusinessClass <em>Seats In Business Class</em>}</li>
@@ -25,19 +26,20 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatsPerRowInBusinessClass <em>Seats Per Row In Business Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatWidthInBusiness <em>Seat Width In Business</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatLengthInBusiness <em>Seat Length In Business</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatPitchInBusiness <em>Seat Pitch In Business</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatsInPremiumEconomyClass <em>Seats In Premium Economy Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getPremiumEconomyClassPassengers <em>Premium Economy Class Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatsPerRowInPremiumEconomyClass <em>Seats Per Row In Premium Economy Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatWidthInPremiumEconomy <em>Seat Width In Premium Economy</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatLengthInPremiumEconomy <em>Seat Length In Premium Economy</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatPitchInPremiumEco <em>Seat Pitch In Premium Eco</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatsInEconomyClass <em>Seats In Economy Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getEconomyClassPassengers <em>Economy Class Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatsPerRowInEconomyClass <em>Seats Per Row In Economy Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatWidthInEconomy <em>Seat Width In Economy</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatLengthInEconomy <em>Seat Length In Economy</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatPitchInEconomy <em>Seat Pitch In Economy</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getRowNonexistent <em>Row Nonexistent</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSeatPitch <em>Seat Pitch</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getNumbAisles <em>Numb Aisles</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getAisleWidth <em>Aisle Width</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getFramesPerSecond <em>Frames Per Second</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getNumberOfDecks <em>Number Of Decks</em>}</li>
@@ -62,6 +64,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Cabin Length</b></em>' attribute.
+	 * The default value is <code>"2411.5"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Cabin Length</em>' attribute isn't clear,
@@ -71,7 +74,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Cabin Length</em>' attribute.
 	 * @see #setCabinLength(double)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_CabinLength()
-	 * @model
+	 * @model default="2411.5"
 	 * @generated
 	 */
 	double getCabinLength();
@@ -88,6 +91,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Cabin Width</b></em>' attribute.
+	 * The default value is <code>"364"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Cabin Width</em>' attribute isn't clear,
@@ -97,7 +101,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Cabin Width</em>' attribute.
 	 * @see #setCabinWidth(double)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_CabinWidth()
-	 * @model
+	 * @model default="364"
 	 * @generated
 	 */
 	double getCabinWidth();
@@ -226,7 +230,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Seats In Economy Class</b></em>' attribute.
-	 * The default value is <code>"12"</code>.
+	 * The default value is <code>"72"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Seats In Economy Class</em>' attribute isn't clear,
@@ -236,7 +240,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Seats In Economy Class</em>' attribute.
 	 * @see #setSeatsInEconomyClass(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatsInEconomyClass()
-	 * @model default="12"
+	 * @model default="72"
 	 * @generated
 	 */
 	int getSeatsInEconomyClass();
@@ -280,7 +284,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Seats In Business Class</b></em>' attribute.
-	 * The default value is <code>"4"</code>.
+	 * The default value is <code>"12"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Seats In Business Class</em>' attribute isn't clear,
@@ -290,7 +294,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Seats In Business Class</em>' attribute.
 	 * @see #setSeatsInBusinessClass(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatsInBusinessClass()
-	 * @model default="4"
+	 * @model default="12"
 	 * @generated
 	 */
 	int getSeatsInBusinessClass();
@@ -307,7 +311,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Seats In First Class</b></em>' attribute.
-	 * The default value is <code>"4"</code>.
+	 * The default value is <code>"2"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Seats In First Class</em>' attribute isn't clear,
@@ -317,7 +321,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Seats In First Class</em>' attribute.
 	 * @see #setSeatsInFirstClass(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatsInFirstClass()
-	 * @model default="4"
+	 * @model default="2"
 	 * @generated
 	 */
 	int getSeatsInFirstClass();
@@ -361,7 +365,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Seat Width In Economy</b></em>' attribute.
-	 * The default value is <code>"130"</code>.
+	 * The default value is <code>"50"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Seat Width In Economy</em>' attribute isn't clear,
@@ -371,7 +375,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Seat Width In Economy</em>' attribute.
 	 * @see #setSeatWidthInEconomy(double)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatWidthInEconomy()
-	 * @model default="130"
+	 * @model default="50"
 	 * @generated
 	 */
 	double getSeatWidthInEconomy();
@@ -388,7 +392,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Seat Length In Economy</b></em>' attribute.
-	 * The default value is <code>"150"</code>.
+	 * The default value is <code>"60"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Seat Length In Economy</em>' attribute isn't clear,
@@ -398,7 +402,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Seat Length In Economy</em>' attribute.
 	 * @see #setSeatLengthInEconomy(double)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatLengthInEconomy()
-	 * @model default="150"
+	 * @model default="60"
 	 * @generated
 	 */
 	double getSeatLengthInEconomy();
@@ -412,6 +416,33 @@ public interface Cabin extends NamedElement {
 	 * @generated
 	 */
 	void setSeatLengthInEconomy(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Seat Pitch In Economy</b></em>' attribute.
+	 * The default value is <code>"20"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seat Pitch In Economy</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seat Pitch In Economy</em>' attribute.
+	 * @see #setSeatPitchInEconomy(double)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatPitchInEconomy()
+	 * @model default="20"
+	 * @generated
+	 */
+	double getSeatPitchInEconomy();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getSeatPitchInEconomy <em>Seat Pitch In Economy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seat Pitch In Economy</em>' attribute.
+	 * @see #getSeatPitchInEconomy()
+	 * @generated
+	 */
+	void setSeatPitchInEconomy(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Seats Per Row In Business Class</b></em>' attribute.
@@ -442,7 +473,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Seat Width In Business</b></em>' attribute.
-	 * The default value is <code>"180"</code>.
+	 * The default value is <code>"72"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Seat Width In Business</em>' attribute isn't clear,
@@ -452,7 +483,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Seat Width In Business</em>' attribute.
 	 * @see #setSeatWidthInBusiness(double)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatWidthInBusiness()
-	 * @model default="180"
+	 * @model default="72"
 	 * @generated
 	 */
 	double getSeatWidthInBusiness();
@@ -469,7 +500,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Seat Length In Business</b></em>' attribute.
-	 * The default value is <code>"210"</code>.
+	 * The default value is <code>"80"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Seat Length In Business</em>' attribute isn't clear,
@@ -479,7 +510,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Seat Length In Business</em>' attribute.
 	 * @see #setSeatLengthInBusiness(double)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatLengthInBusiness()
-	 * @model default="210"
+	 * @model default="80"
 	 * @generated
 	 */
 	double getSeatLengthInBusiness();
@@ -493,6 +524,33 @@ public interface Cabin extends NamedElement {
 	 * @generated
 	 */
 	void setSeatLengthInBusiness(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Seat Pitch In Business</b></em>' attribute.
+	 * The default value is <code>"30"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seat Pitch In Business</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seat Pitch In Business</em>' attribute.
+	 * @see #setSeatPitchInBusiness(double)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatPitchInBusiness()
+	 * @model default="30"
+	 * @generated
+	 */
+	double getSeatPitchInBusiness();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getSeatPitchInBusiness <em>Seat Pitch In Business</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seat Pitch In Business</em>' attribute.
+	 * @see #getSeatPitchInBusiness()
+	 * @generated
+	 */
+	void setSeatPitchInBusiness(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Seats Per Row In First Class</b></em>' attribute.
@@ -522,8 +580,35 @@ public interface Cabin extends NamedElement {
 	void setSeatsPerRowInFirstClass(int value);
 
 	/**
+	 * Returns the value of the '<em><b>Seat Pitch In First</b></em>' attribute.
+	 * The default value is <code>"40"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seat Pitch In First</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seat Pitch In First</em>' attribute.
+	 * @see #setSeatPitchInFirst(double)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatPitchInFirst()
+	 * @model default="40"
+	 * @generated
+	 */
+	double getSeatPitchInFirst();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getSeatPitchInFirst <em>Seat Pitch In First</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seat Pitch In First</em>' attribute.
+	 * @see #getSeatPitchInFirst()
+	 * @generated
+	 */
+	void setSeatPitchInFirst(double value);
+
+	/**
 	 * Returns the value of the '<em><b>Seat Width In First</b></em>' attribute.
-	 * The default value is <code>"230"</code>.
+	 * The default value is <code>"100"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Seat Width In First</em>' attribute isn't clear,
@@ -533,7 +618,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Seat Width In First</em>' attribute.
 	 * @see #setSeatWidthInFirst(double)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatWidthInFirst()
-	 * @model default="230"
+	 * @model default="100"
 	 * @generated
 	 */
 	double getSeatWidthInFirst();
@@ -550,7 +635,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Seat Length In First</b></em>' attribute.
-	 * The default value is <code>"300"</code>.
+	 * The default value is <code>"120"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Seat Length In First</em>' attribute isn't clear,
@@ -560,7 +645,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Seat Length In First</em>' attribute.
 	 * @see #setSeatLengthInFirst(double)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatLengthInFirst()
-	 * @model default="300"
+	 * @model default="120"
 	 * @generated
 	 */
 	double getSeatLengthInFirst();
@@ -604,7 +689,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Seat Width In Premium Economy</b></em>' attribute.
-	 * The default value is <code>"130"</code>.
+	 * The default value is <code>"50"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Seat Width In Premium Economy</em>' attribute isn't clear,
@@ -614,7 +699,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Seat Width In Premium Economy</em>' attribute.
 	 * @see #setSeatWidthInPremiumEconomy(double)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatWidthInPremiumEconomy()
-	 * @model default="130"
+	 * @model default="50"
 	 * @generated
 	 */
 	double getSeatWidthInPremiumEconomy();
@@ -631,7 +716,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Seat Length In Premium Economy</b></em>' attribute.
-	 * The default value is <code>"170"</code>.
+	 * The default value is <code>"70"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Seat Length In Premium Economy</em>' attribute isn't clear,
@@ -641,7 +726,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Seat Length In Premium Economy</em>' attribute.
 	 * @see #setSeatLengthInPremiumEconomy(double)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatLengthInPremiumEconomy()
-	 * @model default="170"
+	 * @model default="70"
 	 * @generated
 	 */
 	double getSeatLengthInPremiumEconomy();
@@ -657,7 +742,35 @@ public interface Cabin extends NamedElement {
 	void setSeatLengthInPremiumEconomy(double value);
 
 	/**
+	 * Returns the value of the '<em><b>Seat Pitch In Premium Eco</b></em>' attribute.
+	 * The default value is <code>"30"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seat Pitch In Premium Eco</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seat Pitch In Premium Eco</em>' attribute.
+	 * @see #setSeatPitchInPremiumEco(double)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatPitchInPremiumEco()
+	 * @model default="30"
+	 * @generated
+	 */
+	double getSeatPitchInPremiumEco();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getSeatPitchInPremiumEco <em>Seat Pitch In Premium Eco</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seat Pitch In Premium Eco</em>' attribute.
+	 * @see #getSeatPitchInPremiumEco()
+	 * @generated
+	 */
+	void setSeatPitchInPremiumEco(double value);
+
+	/**
 	 * Returns the value of the '<em><b>Scale</b></em>' attribute.
+	 * The default value is <code>"4"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Scale</em>' attribute isn't clear,
@@ -667,7 +780,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Scale</em>' attribute.
 	 * @see #setScale(double)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Scale()
-	 * @model
+	 * @model default="4"
 	 * @generated
 	 */
 	double getScale();
@@ -684,7 +797,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Frames Per Second</b></em>' attribute.
-	 * The default value is <code>"10"</code>.
+	 * The default value is <code>"5"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Frames Per Second</em>' attribute isn't clear,
@@ -694,7 +807,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Frames Per Second</em>' attribute.
 	 * @see #setFramesPerSecond(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_FramesPerSecond()
-	 * @model default="10"
+	 * @model default="5"
 	 * @generated
 	 */
 	int getFramesPerSecond();
@@ -727,6 +840,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Number Of Decks</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Number Of Decks</em>' attribute isn't clear,
@@ -736,7 +850,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Number Of Decks</em>' attribute.
 	 * @see #setNumberOfDecks(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_NumberOfDecks()
-	 * @model
+	 * @model default="1"
 	 * @generated
 	 */
 	int getNumberOfDecks();
@@ -806,6 +920,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Business Class Passengers</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Business Class Passengers</em>' attribute isn't clear,
@@ -815,7 +930,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Business Class Passengers</em>' attribute.
 	 * @see #setBusinessClassPassengers(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_BusinessClassPassengers()
-	 * @model
+	 * @model default="0"
 	 * @generated
 	 */
 	int getBusinessClassPassengers();
@@ -832,6 +947,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Premium Economy Class Passengers</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Premium Economy Class Passengers</em>' attribute isn't clear,
@@ -841,7 +957,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Premium Economy Class Passengers</em>' attribute.
 	 * @see #setPremiumEconomyClassPassengers(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_PremiumEconomyClassPassengers()
-	 * @model
+	 * @model default="0"
 	 * @generated
 	 */
 	int getPremiumEconomyClassPassengers();
@@ -858,6 +974,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Economy Class Passengers</b></em>' attribute.
+	 * The default value is <code>"10"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Economy Class Passengers</em>' attribute isn't clear,
@@ -867,7 +984,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Economy Class Passengers</em>' attribute.
 	 * @see #setEconomyClassPassengers(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_EconomyClassPassengers()
-	 * @model
+	 * @model default="10"
 	 * @generated
 	 */
 	int getEconomyClassPassengers();
@@ -909,61 +1026,8 @@ public interface Cabin extends NamedElement {
 	void setRowNonexistent(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Seat Pitch</b></em>' attribute.
-	 * The default value is <code>"50"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Seat Pitch</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Seat Pitch</em>' attribute.
-	 * @see #setSeatPitch(double)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SeatPitch()
-	 * @model default="50"
-	 * @generated
-	 */
-	double getSeatPitch();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getSeatPitch <em>Seat Pitch</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Seat Pitch</em>' attribute.
-	 * @see #getSeatPitch()
-	 * @generated
-	 */
-	void setSeatPitch(double value);
-
-	/**
-	 * Returns the value of the '<em><b>Numb Aisles</b></em>' attribute.
-	 * The default value is <code>"1"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Numb Aisles</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Numb Aisles</em>' attribute.
-	 * @see #setNumbAisles(int)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_NumbAisles()
-	 * @model default="1"
-	 * @generated
-	 */
-	int getNumbAisles();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getNumbAisles <em>Numb Aisles</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Numb Aisles</em>' attribute.
-	 * @see #getNumbAisles()
-	 * @generated
-	 */
-	void setNumbAisles(int value);
-
-	/**
 	 * Returns the value of the '<em><b>Aisle Width</b></em>' attribute.
+	 * The default value is <code>"64"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Aisle Width</em>' attribute isn't clear,
@@ -973,7 +1037,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Aisle Width</em>' attribute.
 	 * @see #setAisleWidth(double)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_AisleWidth()
-	 * @model
+	 * @model default="64"
 	 * @generated
 	 */
 	double getAisleWidth();

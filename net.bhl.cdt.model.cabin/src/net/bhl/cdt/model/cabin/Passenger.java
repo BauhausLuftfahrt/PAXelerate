@@ -120,6 +120,7 @@ public interface Passenger extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * The default value is <code>"Mr. Placeholder"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
@@ -129,7 +130,7 @@ public interface Passenger extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_Name()
-	 * @model
+	 * @model default="Mr. Placeholder"
 	 * @generated
 	 */
 	String getName();

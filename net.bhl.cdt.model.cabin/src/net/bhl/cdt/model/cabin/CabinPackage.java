@@ -123,13 +123,22 @@ public interface CabinPackage extends EPackage {
 	int CABIN__SEATS_PER_ROW_IN_FIRST_CLASS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Seat Pitch In First</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN__SEAT_PITCH_IN_FIRST = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
 	 * The feature id for the '<em><b>Seat Width In First</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__SEAT_WIDTH_IN_FIRST = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 5;
+	int CABIN__SEAT_WIDTH_IN_FIRST = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Seat Length In First</b></em>' attribute.
@@ -138,7 +147,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__SEAT_LENGTH_IN_FIRST = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 6;
+	int CABIN__SEAT_LENGTH_IN_FIRST = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Seats In Business Class</b></em>' attribute.
@@ -147,7 +156,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__SEATS_IN_BUSINESS_CLASS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 7;
+	int CABIN__SEATS_IN_BUSINESS_CLASS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Business Class Passengers</b></em>' attribute.
@@ -156,7 +165,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__BUSINESS_CLASS_PASSENGERS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 8;
+	int CABIN__BUSINESS_CLASS_PASSENGERS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Seats Per Row In Business Class</b></em>' attribute.
@@ -165,7 +174,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__SEATS_PER_ROW_IN_BUSINESS_CLASS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 9;
+	int CABIN__SEATS_PER_ROW_IN_BUSINESS_CLASS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Seat Width In Business</b></em>' attribute.
@@ -174,7 +183,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__SEAT_WIDTH_IN_BUSINESS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 10;
+	int CABIN__SEAT_WIDTH_IN_BUSINESS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Seat Length In Business</b></em>' attribute.
@@ -183,7 +192,16 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__SEAT_LENGTH_IN_BUSINESS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 11;
+	int CABIN__SEAT_LENGTH_IN_BUSINESS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 12;
+
+	/**
+	 * The feature id for the '<em><b>Seat Pitch In Business</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN__SEAT_PITCH_IN_BUSINESS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 13;
 
 	/**
 	 * The feature id for the '<em><b>Seats In Premium Economy Class</b></em>' attribute.
@@ -192,7 +210,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__SEATS_IN_PREMIUM_ECONOMY_CLASS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 12;
+	int CABIN__SEATS_IN_PREMIUM_ECONOMY_CLASS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 14;
 
 	/**
 	 * The feature id for the '<em><b>Premium Economy Class Passengers</b></em>' attribute.
@@ -201,7 +219,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__PREMIUM_ECONOMY_CLASS_PASSENGERS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 13;
+	int CABIN__PREMIUM_ECONOMY_CLASS_PASSENGERS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 15;
 
 	/**
 	 * The feature id for the '<em><b>Seats Per Row In Premium Economy Class</b></em>' attribute.
@@ -210,7 +228,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__SEATS_PER_ROW_IN_PREMIUM_ECONOMY_CLASS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 14;
+	int CABIN__SEATS_PER_ROW_IN_PREMIUM_ECONOMY_CLASS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 16;
 
 	/**
 	 * The feature id for the '<em><b>Seat Width In Premium Economy</b></em>' attribute.
@@ -219,7 +237,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__SEAT_WIDTH_IN_PREMIUM_ECONOMY = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 15;
+	int CABIN__SEAT_WIDTH_IN_PREMIUM_ECONOMY = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 17;
 
 	/**
 	 * The feature id for the '<em><b>Seat Length In Premium Economy</b></em>' attribute.
@@ -228,7 +246,16 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__SEAT_LENGTH_IN_PREMIUM_ECONOMY = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 16;
+	int CABIN__SEAT_LENGTH_IN_PREMIUM_ECONOMY = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 18;
+
+	/**
+	 * The feature id for the '<em><b>Seat Pitch In Premium Eco</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN__SEAT_PITCH_IN_PREMIUM_ECO = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 19;
 
 	/**
 	 * The feature id for the '<em><b>Seats In Economy Class</b></em>' attribute.
@@ -237,7 +264,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__SEATS_IN_ECONOMY_CLASS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 17;
+	int CABIN__SEATS_IN_ECONOMY_CLASS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 20;
 
 	/**
 	 * The feature id for the '<em><b>Economy Class Passengers</b></em>' attribute.
@@ -246,7 +273,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__ECONOMY_CLASS_PASSENGERS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 18;
+	int CABIN__ECONOMY_CLASS_PASSENGERS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 21;
 
 	/**
 	 * The feature id for the '<em><b>Seats Per Row In Economy Class</b></em>' attribute.
@@ -255,7 +282,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__SEATS_PER_ROW_IN_ECONOMY_CLASS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 19;
+	int CABIN__SEATS_PER_ROW_IN_ECONOMY_CLASS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 22;
 
 	/**
 	 * The feature id for the '<em><b>Seat Width In Economy</b></em>' attribute.
@@ -264,7 +291,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__SEAT_WIDTH_IN_ECONOMY = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 20;
+	int CABIN__SEAT_WIDTH_IN_ECONOMY = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 23;
 
 	/**
 	 * The feature id for the '<em><b>Seat Length In Economy</b></em>' attribute.
@@ -273,7 +300,16 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__SEAT_LENGTH_IN_ECONOMY = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 21;
+	int CABIN__SEAT_LENGTH_IN_ECONOMY = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 24;
+
+	/**
+	 * The feature id for the '<em><b>Seat Pitch In Economy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN__SEAT_PITCH_IN_ECONOMY = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 25;
 
 	/**
 	 * The feature id for the '<em><b>Row Nonexistent</b></em>' attribute.
@@ -282,25 +318,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__ROW_NONEXISTENT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 22;
-
-	/**
-	 * The feature id for the '<em><b>Seat Pitch</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CABIN__SEAT_PITCH = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 23;
-
-	/**
-	 * The feature id for the '<em><b>Numb Aisles</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CABIN__NUMB_AISLES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 24;
+	int CABIN__ROW_NONEXISTENT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 26;
 
 	/**
 	 * The feature id for the '<em><b>Aisle Width</b></em>' attribute.
@@ -309,7 +327,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__AISLE_WIDTH = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 25;
+	int CABIN__AISLE_WIDTH = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 27;
 
 	/**
 	 * The feature id for the '<em><b>Frames Per Second</b></em>' attribute.
@@ -318,7 +336,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__FRAMES_PER_SECOND = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 26;
+	int CABIN__FRAMES_PER_SECOND = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 28;
 
 	/**
 	 * The feature id for the '<em><b>Number Of Decks</b></em>' attribute.
@@ -327,7 +345,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__NUMBER_OF_DECKS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 27;
+	int CABIN__NUMBER_OF_DECKS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 29;
 
 	/**
 	 * The feature id for the '<em><b>Classes</b></em>' containment reference list.
@@ -336,7 +354,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__CLASSES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 28;
+	int CABIN__CLASSES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 30;
 
 	/**
 	 * The feature id for the '<em><b>Doors</b></em>' containment reference list.
@@ -345,7 +363,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__DOORS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 29;
+	int CABIN__DOORS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 31;
 
 	/**
 	 * The feature id for the '<em><b>Lavatories</b></em>' containment reference list.
@@ -354,7 +372,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__LAVATORIES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 30;
+	int CABIN__LAVATORIES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 32;
 
 	/**
 	 * The feature id for the '<em><b>Galleys</b></em>' containment reference list.
@@ -363,7 +381,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__GALLEYS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 31;
+	int CABIN__GALLEYS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 33;
 
 	/**
 	 * The feature id for the '<em><b>Stairways</b></em>' containment reference list.
@@ -372,7 +390,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__STAIRWAYS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 32;
+	int CABIN__STAIRWAYS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 34;
 
 	/**
 	 * The feature id for the '<em><b>Curtains</b></em>' containment reference list.
@@ -381,7 +399,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__CURTAINS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 33;
+	int CABIN__CURTAINS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 35;
 
 	/**
 	 * The feature id for the '<em><b>Stowages</b></em>' containment reference list.
@@ -390,7 +408,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__STOWAGES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 34;
+	int CABIN__STOWAGES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 36;
 
 	/**
 	 * The feature id for the '<em><b>Passengers</b></em>' containment reference list.
@@ -399,7 +417,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__PASSENGERS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 35;
+	int CABIN__PASSENGERS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 37;
 
 	/**
 	 * The feature id for the '<em><b>Scale</b></em>' attribute.
@@ -408,7 +426,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__SCALE = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 36;
+	int CABIN__SCALE = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 38;
 
 	/**
 	 * The feature id for the '<em><b>Boarding Time</b></em>' attribute.
@@ -417,7 +435,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__BOARDING_TIME = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 37;
+	int CABIN__BOARDING_TIME = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 39;
 
 	/**
 	 * The number of structural features of the '<em>Cabin</em>' class.
@@ -426,7 +444,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_FEATURE_COUNT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 38;
+	int CABIN_FEATURE_COUNT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 40;
 
 	/**
 	 * The number of operations of the '<em>Cabin</em>' class.
@@ -1724,6 +1742,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getCabin_SeatLengthInEconomy();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getSeatPitchInEconomy <em>Seat Pitch In Economy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seat Pitch In Economy</em>'.
+	 * @see net.bhl.cdt.model.cabin.Cabin#getSeatPitchInEconomy()
+	 * @see #getCabin()
+	 * @generated
+	 */
+	EAttribute getCabin_SeatPitchInEconomy();
+
+	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getSeatsPerRowInBusinessClass <em>Seats Per Row In Business Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1757,6 +1786,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getCabin_SeatLengthInBusiness();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getSeatPitchInBusiness <em>Seat Pitch In Business</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seat Pitch In Business</em>'.
+	 * @see net.bhl.cdt.model.cabin.Cabin#getSeatPitchInBusiness()
+	 * @see #getCabin()
+	 * @generated
+	 */
+	EAttribute getCabin_SeatPitchInBusiness();
+
+	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getSeatsPerRowInFirstClass <em>Seats Per Row In First Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1766,6 +1806,17 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCabin_SeatsPerRowInFirstClass();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getSeatPitchInFirst <em>Seat Pitch In First</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seat Pitch In First</em>'.
+	 * @see net.bhl.cdt.model.cabin.Cabin#getSeatPitchInFirst()
+	 * @see #getCabin()
+	 * @generated
+	 */
+	EAttribute getCabin_SeatPitchInFirst();
 
 	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getSeatWidthInFirst <em>Seat Width In First</em>}'.
@@ -1821,6 +1872,17 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCabin_SeatLengthInPremiumEconomy();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getSeatPitchInPremiumEco <em>Seat Pitch In Premium Eco</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seat Pitch In Premium Eco</em>'.
+	 * @see net.bhl.cdt.model.cabin.Cabin#getSeatPitchInPremiumEco()
+	 * @see #getCabin()
+	 * @generated
+	 */
+	EAttribute getCabin_SeatPitchInPremiumEco();
 
 	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getScale <em>Scale</em>}'.
@@ -1931,28 +1993,6 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCabin_RowNonexistent();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getSeatPitch <em>Seat Pitch</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Seat Pitch</em>'.
-	 * @see net.bhl.cdt.model.cabin.Cabin#getSeatPitch()
-	 * @see #getCabin()
-	 * @generated
-	 */
-	EAttribute getCabin_SeatPitch();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getNumbAisles <em>Numb Aisles</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Numb Aisles</em>'.
-	 * @see net.bhl.cdt.model.cabin.Cabin#getNumbAisles()
-	 * @see #getCabin()
-	 * @generated
-	 */
-	EAttribute getCabin_NumbAisles();
 
 	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getAisleWidth <em>Aisle Width</em>}'.
@@ -3150,6 +3190,13 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute CABIN__SEAT_LENGTH_IN_ECONOMY = eINSTANCE.getCabin_SeatLengthInEconomy();
 		/**
+		 * The meta object literal for the '<em><b>Seat Pitch In Economy</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN__SEAT_PITCH_IN_ECONOMY = eINSTANCE.getCabin_SeatPitchInEconomy();
+		/**
 		 * The meta object literal for the '<em><b>Seats Per Row In Business Class</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3171,12 +3218,26 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute CABIN__SEAT_LENGTH_IN_BUSINESS = eINSTANCE.getCabin_SeatLengthInBusiness();
 		/**
+		 * The meta object literal for the '<em><b>Seat Pitch In Business</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN__SEAT_PITCH_IN_BUSINESS = eINSTANCE.getCabin_SeatPitchInBusiness();
+		/**
 		 * The meta object literal for the '<em><b>Seats Per Row In First Class</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute CABIN__SEATS_PER_ROW_IN_FIRST_CLASS = eINSTANCE.getCabin_SeatsPerRowInFirstClass();
+		/**
+		 * The meta object literal for the '<em><b>Seat Pitch In First</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN__SEAT_PITCH_IN_FIRST = eINSTANCE.getCabin_SeatPitchInFirst();
 		/**
 		 * The meta object literal for the '<em><b>Seat Width In First</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -3212,6 +3273,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CABIN__SEAT_LENGTH_IN_PREMIUM_ECONOMY = eINSTANCE.getCabin_SeatLengthInPremiumEconomy();
+		/**
+		 * The meta object literal for the '<em><b>Seat Pitch In Premium Eco</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN__SEAT_PITCH_IN_PREMIUM_ECO = eINSTANCE.getCabin_SeatPitchInPremiumEco();
 		/**
 		 * The meta object literal for the '<em><b>Scale</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -3282,20 +3350,6 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CABIN__ROW_NONEXISTENT = eINSTANCE.getCabin_RowNonexistent();
-		/**
-		 * The meta object literal for the '<em><b>Seat Pitch</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CABIN__SEAT_PITCH = eINSTANCE.getCabin_SeatPitch();
-		/**
-		 * The meta object literal for the '<em><b>Numb Aisles</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CABIN__NUMB_AISLES = eINSTANCE.getCabin_NumbAisles();
 		/**
 		 * The meta object literal for the '<em><b>Aisle Width</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
