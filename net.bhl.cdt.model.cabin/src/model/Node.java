@@ -25,8 +25,18 @@ public class Node implements Comparable<Node> {
         public boolean isOccupiedByAgent;
 		boolean isStart;
         boolean isGoal;
+       private  double cost;
+        
        
-        Node(int x, int y) {
+        public double getCost() {
+		return cost;
+	}
+
+	public void setCost(double cost) {
+		this.cost = cost;
+	}
+
+		Node(int x, int y) {
                 neighborList = new ArrayList<Node>();
                 this.x = x;
                 this.y = y;

@@ -34,9 +34,14 @@ public class AreaMap {
                         for (int y=0; y<mapHeight; y++) {
                                 node = new Node(x,y);
                                 
-                                if (obstacleMap[x][y] == 100000)
+                                if (obstacleMap[x][y] == 100000) {
                                         node.setObstacle(true);
+                                }
+                                else {
+                                	node.setCost(obstacleMap[x][y]);
+                                }
                                 map.get(x).add(node);
+                                
                         }
                 }
         }
@@ -119,12 +124,16 @@ public class AreaMap {
                 return map.get(goalLocationX).get(goalLocationY);
         }
        
+        
+        //TODO find out functionality of this method
         public float getDistanceBetween(Node node1, Node node2) {
+        	
+        		double scalingFactor =  1.4;  // used to 1.7, changed it to 1.4 for testing
                 //if the nodes are on top or next to each other, return 1
                 if (node1.getX() == node2.getX() || node1.getY() == node2.getY()){
                         return 1*(mapHeight+mapWidth);
                 } else { //if they are diagonal to each other return diagonal distance: sqrt(1^2+1^2)
-                        return (float) 1.7*(mapHeight+mapWidth);
+                        return (float) scalingFactor*(mapHeight+mapWidth); //
                 }
         }
        

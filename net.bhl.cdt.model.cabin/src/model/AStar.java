@@ -53,6 +53,8 @@ public class AStar {
 
                         //get the first Node from non-searched Node list, sorted by lowest distance from our goal as guessed by our heuristic
                         Node current = openList.getFirst();
+                        
+                        //TODO analogous method to findFValue in MATLAB AStar implementation (line 52)
 
                         // check if our current Node location is the goal Node. If it is, we are done.
                         if(current.getX() == map.getGoalLocationX() && current.getY() == map.getGoalLocationY()) {
@@ -69,12 +71,16 @@ public class AStar {
 
                                 //if we have already searched this Node, don't bother and continue to the next one
                                 if (closedList.contains(neighbor))
+                                	// continue statement exits the for loop
                                         continue;
 
                                 //also just continue if the neighbor is an obstacle
                                 if (!neighbor.isObstacle) {
 
                                         // calculate how long the path is if we choose this neighbor as the next step in the path
+                                	
+                                		//TODO: instead:    float neighborCosts
+                                		
                                         float neighborDistanceFromStart = (current.getDistanceFromStart() + map.getDistanceBetween(current, neighbor));
 
                                         //add neighbor to the open list if it is not there
@@ -82,6 +88,8 @@ public class AStar {
                                                 openList.add(neighbor);
                                                 neighborIsBetter = true;
                                                 //if neighbor is closer to start it could also be better
+                                                
+                                         // if neighborSumofCostsInCostChart < currentCosts --> neighborIsBetter = true, else neighborIsBetter = false       
                                         } else if(neighborDistanceFromStart < current.getDistanceFromStart()) {
                                                 neighborIsBetter = true;
                                         } else {
