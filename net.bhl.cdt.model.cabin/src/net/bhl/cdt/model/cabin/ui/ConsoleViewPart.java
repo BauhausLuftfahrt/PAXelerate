@@ -8,7 +8,6 @@ import java.util.Date;
 import net.bhl.cdt.model.cabin.Cabin;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
-import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
@@ -32,7 +31,6 @@ import org.eclipse.ui.part.ViewPart;
  */
 
 public class ConsoleViewPart extends ViewPart {
-	private static TableViewer viewer;
 	Composite parentTest;
 	Canvas canvas;
 	ArrayList<String> consoleList;
@@ -135,8 +133,6 @@ public class ConsoleViewPart extends ViewPart {
 	
 	/** * Passing the focus request to the viewer's control. */
 	public void setFocus() {
-		viewer.getControl().setFocus();
-		parentTest.redraw();
 	}
 
 }

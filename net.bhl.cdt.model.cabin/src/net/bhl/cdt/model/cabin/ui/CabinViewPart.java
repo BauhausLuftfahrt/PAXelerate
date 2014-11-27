@@ -5,11 +5,9 @@ import org.eclipse.swt.graphics.Color;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
-import net.bhl.cdt.model.cabin.CabinViewSettings;
 import net.bhl.cdt.model.cabin.Curtain;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Galley;
@@ -22,14 +20,11 @@ import net.bhl.cdt.model.util.ModelHelper;
 
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
-import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.Path;
-import org.eclipse.swt.graphics.Transform;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.ISharedImages;
@@ -47,7 +42,6 @@ import org.eclipse.ui.part.ViewPart;
  */
 
 public class CabinViewPart extends ViewPart {
-	private static TableViewer viewer;
 	public Cabin drawCabin;
 	public int cabin_y;
 	public double factor;
@@ -57,10 +51,11 @@ public class CabinViewPart extends ViewPart {
 	int lastPosx = 0;
 	int lastPosy = 0;
 	int idPassenger;
-	ArrayList<int[]> colorList = new ArrayList();
+	ArrayList<int[]> colorList = new ArrayList<int[]>();
 	// ArrayList<double[][][]> PassengerPositions;
 	public Cabin cabinPlaceHolder = CabinFactory.eINSTANCE.createCabin();
-
+	Composite parent;
+	
 	/*********** graphics settings *********/
 	public int doorsOutOfCabinPixels;
 	double sizeOfPassengerCircle; /*
@@ -79,8 +74,29 @@ public class CabinViewPart extends ViewPart {
 					 */
 	/**************************/
 
+	/**Create Colors and Fonts here*/
+	int fontsize; 
+	String fontName; 
+	Color gold; 
+	Color blue; 
+	Color red; 
+	Color gray; 
+	Color salmon;
+	Color green; 
+	Color light_gray; 
+	Color dark_gray; 
+	Color white; 
+	Color black;
+
+	Font fontOne; 
+	Font fontTwo;
+	Font fontThree; 
+
+	DecimalFormat df;
+	/*******************************/
+
 	int oneMeter;
-	Composite parentTest;
+	
 	Image image;
 	Canvas canvas;
 
@@ -107,15 +123,13 @@ public class CabinViewPart extends ViewPart {
 	 */
 
 	public void createPartControl(Composite parent) {
-
+		this.parent = parent;
 		drawCabin = CabinFactory.eINSTANCE.createCabin();
 		// drawCabin.setGraphicSettings(CabinFactory.eINSTANCE.createCabinViewSettings());
 
 		/*********** graphics settings *********/
 		doorsOutOfCabinPixels = 0; // drawCabin.getGraphicSettings().getDoorOffSetInPixels();
-		sizeOfPassengerCircle = 0.75; // drawCabin.getGraphicSettings().getSizeOfPassengerCircle();
-										// /*value between 0 and 1. Depending on
-										// the seat size*/
+		sizeOfPassengerCircle = 0.75; // drawCabin.getGraphicSettings().getSizeOfPassengerCircle(); // /*value between 0 and 1. Depending on the seat size*/
 		/*************************************/
 
 		/***** image-properties *****/
@@ -129,8 +143,28 @@ public class CabinViewPart extends ViewPart {
 		/**************************/
 
 		oneMeter = 47;
+		
+		/************************* Create Colors and Fonts here *******************************/
+		fontsize = 6;
+		fontName = "Helvetica Neue";
+		gold = new Color(parent.getDisplay(), 255, 215, 0);
+		blue = new Color(parent.getDisplay(), 30, 144, 255);
+		red = new Color(parent.getDisplay(), 220, 20, 60);
+		gray = new Color(parent.getDisplay(), 169, 169, 169);
+		salmon = new Color(parent.getDisplay(), 250, 128, 114);
+		green = new Color(parent.getDisplay(), 50, 205, 50);
+		light_gray = new Color(parent.getDisplay(), 220, 220, 220);
+		dark_gray = new Color(parent.getDisplay(), 105, 105, 105);
+		white = new Color(parent.getDisplay(), 255, 255, 255);
+		black = new Color(parent.getDisplay(), 0, 0, 0);
 
-		parentTest = parent;
+		fontOne = new Font(parent.getDisplay(), fontName, 8, SWT.NORMAL);
+		fontTwo = new Font(parent.getDisplay(), fontName, fontsize, SWT.NORMAL);
+		fontThree = new Font(parent.getDisplay(), fontName, 9, SWT.NORMAL);
+
+		df = new DecimalFormat("####0.00");
+		/*************************************************************************************/
+		
 		image = new Image(parent.getDisplay(),
 				"T:\\Marc Engelmann\\aircraft_images\\lh_a320_cut.PNG");
 
@@ -147,14 +181,12 @@ public class CabinViewPart extends ViewPart {
 	
 	public void submitObstacleMap(final int[][] obstacleMap) {
 		
-		parentTest.redraw();
-		parentTest.update();
+		parent.redraw();
+		parent.update();
 		canvas.redraw();		
 		canvas.addPaintListener(new PaintListener() {
 			public void paintControl(final PaintEvent e) {		
 				e.gc.setAlpha(100);
-				Color red = new Color(e.display, 220, 20, 60); 
-				Color green = new Color(e.display, 50, 205, 50);
 				//drawCabin.setScale(20);
 				for(int i = 0;i<(int)(drawCabin.getCabinWidth()/drawCabin.getScale());i++) {
 					for(int j = 0;j<(int)(drawCabin.getCabinLength()/drawCabin.getScale());j++) {
@@ -162,7 +194,10 @@ public class CabinViewPart extends ViewPart {
 							e.gc.setBackground(green);
 						} else {
 							e.gc.setBackground(red);
-						}	
+						}
+						
+						// Color depiction depending on value 255 -> 0 and vice versa.
+						
 						e.gc.fillOval(x_zero+(int)(i*drawCabin.getScale()/factor),y_zero+(int)(j*drawCabin.getScale()/factor),(int)(2*drawCabin.getScale()/factor),(int)(2*drawCabin.getScale()/factor));
 					} 
 				}
@@ -173,8 +208,8 @@ public class CabinViewPart extends ViewPart {
 	
 	
 	public void submitPath(final ArrayList<int[][]> pathList) {
-		parentTest.redraw();
-		parentTest.update();
+		parent.redraw();
+		parent.update();
 		canvas.redraw();
 		
 		canvas.addPaintListener(new PaintListener() {
@@ -196,7 +231,8 @@ public class CabinViewPart extends ViewPart {
 						k = k+2;
 						i++;
 					}
-					e.gc.drawPolyline(pathPoints);					
+					e.gc.drawPolyline(pathPoints);	
+					pathPoints = null;
 				}
 				e.gc.setLineWidth(1);
 		}
@@ -206,8 +242,8 @@ public class CabinViewPart extends ViewPart {
 
 	public void submitPassengerCoordinates(final Cabin paxCabin) {
 
-		parentTest.redraw();
-		parentTest.update();
+		parent.redraw();
+		parent.update();
 		canvas.redraw();
 		canvas.addPaintListener(new PaintListener() {
 			public void paintControl(final PaintEvent e) {
@@ -257,74 +293,21 @@ public class CabinViewPart extends ViewPart {
 
 		factor = drawCabin.getCabinWidth() / cabin_x;
 
-		parentTest.redraw();
-		parentTest.update();
+		parent.redraw();
+		parent.update();
 		canvas.redraw();
 		if (drawCabin.getClasses().isEmpty()) {
 			cabin_y = 636;
 		} else {
 			cabin_y = (int) (drawCabin.getCabinLength() / factor);
 		}
-		final int fontsize = 6;
 
 		canvas.addPaintListener(new PaintListener() {
 			public void paintControl(final PaintEvent e) {
 				e.gc.drawImage(image, 0, 0);
 				e.gc.setAlpha(255);
 
-				/************************* Create Colors and Fonts here *******************************/
-				String fontName = "Helvetica Neue";
-				Color gold = new Color(e.display, 255, 215, 0); /*
-																 * Premium
-																 * Economy Class
-																 * Color Code
-																 */
-				Color blue = new Color(e.display, 30, 144, 255); /*
-																 * Business
-																 * Class Color
-																 * Code
-																 */
-				Color red = new Color(e.display, 220, 20, 60); /*
-																 * First Class
-																 * Color Code
-																 */
-				Color gray = new Color(e.display, 169, 169, 169); /*
-																 * Economy Class
-																 * Color Code
-																 */
-				Color salmon = new Color(e.display, 250, 128, 114); /*
-																	 * Lavatory
-																	 * Color
-																	 * Code
-																	 */
-				Color green = new Color(e.display, 50, 205, 50); /*
-																 * Galley Color
-																 * Code
-																 */
-				Color light_gray = new Color(e.display, 220, 220, 220); /*
-																		 * Background
-																		 * Color
-																		 * Code
-																		 */
-				Color dark_gray = new Color(e.display, 105, 105, 105); /*
-																		 * Door
-																		 * Color
-																		 * Code
-																		 */
-				Color white = new Color(e.display, 255, 255, 255); /*
-																	 * White
-																	 * Color
-																	 * Code
-																	 */
-				Color black = new Color(e.display, 0, 0, 0); /* Black Color Code */
-
-				Font fontOne = new Font(e.display, fontName, 8, SWT.NORMAL);
-				Font fontTwo = new Font(e.display, fontName, fontsize,
-						SWT.NORMAL);
-				Font fontThree = new Font(e.display, fontName, 9, SWT.NORMAL);
-
-				DecimalFormat df = new DecimalFormat("####0.00");
-				/*************************************************************************************/
+				
 
 				e.gc.setFont(fontOne);
 				e.gc.setBackground(white);
