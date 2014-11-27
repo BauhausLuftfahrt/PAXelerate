@@ -21,16 +21,6 @@ public class CabinGenerator {
 		length = (int)(cabin.getCabinLength()/cabin.getScale());
 	}
 
-	public void printCabin(int[][] ObstacleMap) {
-		for (int i = 0; i <  width; i++) {
-			for (int j = 0; j < length; j++) {
-				if (ObstacleMap[i][j] == maximumObstacleValue) {
-				} else {
-				}
-			}
-		}
-	}
-
 	public int[][] createObstacleMap() {
 
 		int[][] obstacleMap = new int[width][length];
@@ -97,7 +87,7 @@ public class CabinGenerator {
 		}
 		/*****************************************************/
 		
-		/*****************Curtains***************************/
+		/*************************Curtains********************/
 		for (Curtain curtain : ModelHelper.getChildrenByClass(cabin, Curtain.class)) {			
 			int curtainWidth = (int)(curtain.getXDimension()/cabin.getScale());
 			int curtainLength = (int)(curtain.getYDimension()/cabin.getScale());
@@ -110,6 +100,23 @@ public class CabinGenerator {
 					int bar = curtainY + j;
 					if(foo < width && bar <length) {
 						obstacleMap[foo][bar] = maximumObstacleValue;	
+					}
+				}
+			}
+		}
+		/*****************************************************/
+		
+		/********Create potential around obstacles************/
+		int k = 3;
+		int maxPot = 10;
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j <length; j++) {
+				if(obstacleMap[i][j]==maximumObstacleValue) {
+					for(int p = 1; p<k;p++) {
+						if((i-p)>0) {if(obstacleMap[i-p][j]!=100000) {obstacleMap[i-p][j] = maxPot - p;}}
+						if((i+p)<width) {if(obstacleMap[i+p][j]!=100000) {obstacleMap[i+p][j] = maxPot - p;}}
+						if((j-p)>0) {if(obstacleMap[i][j-p]!=100000) {obstacleMap[i][j-p] = maxPot - p;}}
+						if((j+p)<length) {if(obstacleMap[i][j+p]!=100000) {obstacleMap[i][j+p] = maxPot - p;}}
 					}
 				}
 			}

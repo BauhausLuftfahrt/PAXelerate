@@ -87,6 +87,7 @@ public class CabinViewPart extends ViewPart {
 	Color dark_gray; 
 	Color white; 
 	Color black;
+	Color orange;
 
 	Font fontOne; 
 	Font fontTwo;
@@ -157,6 +158,7 @@ public class CabinViewPart extends ViewPart {
 		dark_gray = new Color(parent.getDisplay(), 105, 105, 105);
 		white = new Color(parent.getDisplay(), 255, 255, 255);
 		black = new Color(parent.getDisplay(), 0, 0, 0);
+		orange = new Color(parent.getDisplay(), 255, 127, 0);
 
 		fontOne = new Font(parent.getDisplay(), fontName, 8, SWT.NORMAL);
 		fontTwo = new Font(parent.getDisplay(), fontName, fontsize, SWT.NORMAL);
@@ -192,8 +194,10 @@ public class CabinViewPart extends ViewPart {
 					for(int j = 0;j<(int)(drawCabin.getCabinLength()/drawCabin.getScale());j++) {
 						if(obstacleMap[i][j]==0) {
 							e.gc.setBackground(green);
-						} else {
+						} else if(obstacleMap[i][j]==100000) {
 							e.gc.setBackground(red);
+						} else if(obstacleMap[i][j]<=9&&obstacleMap[i][j]>=1) {
+							e.gc.setBackground(orange);
 						}
 						
 						// Color depiction depending on value 255 -> 0 and vice versa.
@@ -221,7 +225,6 @@ public class CabinViewPart extends ViewPart {
 					int[] pathPoints = new int[2*singlePath.length];
 					int k = 0;
 					int i = 0;
-					//int[] pathPoints = {0,0,100,100,200,200,200,400,400,200};
 					while(k < 2*singlePath.length) {
 						//System.out.println("k = "+k);
 						pathPoints[k] = x_zero + (int)(singlePath[i][0]*drawCabin.getScale()/factor);

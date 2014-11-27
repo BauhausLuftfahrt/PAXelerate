@@ -120,6 +120,7 @@ public class Agent extends Subject implements Runnable {
 		try {
 			Thread.sleep(500*id);
 			this.currentAgentPosition = new int[path.length][2];
+			TestAStar.submitPath(path);
 			for (int i = 0; i < path.length; i++) {
 		
 				
@@ -132,7 +133,7 @@ public class Agent extends Subject implements Runnable {
 				this.currentX = path[i][0];
 				this.currentY = path[i][1];
 				
-				TestAStar.submitPath(path);
+				
 				
 				if(TestAStar.map.getNode(currentX, currentY).isOccupiedByAgent() == true){
 				 Thread.sleep(100);
@@ -154,7 +155,7 @@ public class Agent extends Subject implements Runnable {
 					//int yWay = this.currentAgentPosition[i][1]-this.currentAgentPosition[i-1][1];
 					
 					//passenger.setOrientationInDegree(xWay);
-					Thread.sleep(10);	
+					Thread.sleep(50);	
 				}
 			}
 			

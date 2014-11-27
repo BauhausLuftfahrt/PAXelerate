@@ -79,43 +79,57 @@ public class SimulateBoardingCommand extends CDTCommand {
 		if (!cabin.getPassengers().isEmpty()) {
 			generator = new CabinGenerator(cabin);
 			obstacleMap = generator.createObstacleMap();
-			TestAStar astar = new TestAStar(obstacleMap,
-					(int) (cabin.getCabinWidth() / cabin.getScale()),
-					(int) (cabin.getCabinLength() / cabin.getScale()), cabin);
 			
-			while (!TestAStar.getSimulationDone()) {
-				try {
-					for(Passenger pax:ModelHelper.getChildrenByClass(astar.getPassengerLocations(), Passenger.class)) {
-						if(pax.isIsSeated()&&!alreadySeatedList.contains(pax)) {
-							consoleViewPart.printText("Passenger "+pax.getName()+" is now seated!");
-							alreadySeatedList.add(pax);							
-						}
-					}	
-					cabinViewPart.submitPassengerCoordinates(astar.getPassengerLocations());
-					Thread.sleep((int)(1000/cabin.getFramesPerSecond()));
-				} catch (InterruptedException e) {
-					consoleViewPart.printText("An error occured during simulation.");
-					e.printStackTrace();
-				}
-			}
-			if (TestAStar.simulationDone) {
-				for(Passenger pax:ModelHelper.getChildrenByClass(astar.getPassengerLocations(), Passenger.class)) {
-					if(pax.isIsSeated()&&!alreadySeatedList.contains(pax)) {
-						consoleViewPart.printText("Passenger "+pax.getName()+" is now seated!");
-						alreadySeatedList.add(pax);							
+			for (int i = 0; i<(int) (cabin.getCabinWidth() / cabin.getScale());i++) {
+				for(int j = 0; j <(int) (cabin.getCabinLength() / cabin.getScale()); j++)  {
+					if(obstacleMap[i][j]==100000) {
+						System.out.print("X");
 					}
+					else if(obstacleMap[i][j]==0) {
+						System.out.print("-");
+					}else
+					System.out.print(obstacleMap[i][j]);
 				}
-				
-				if(!obstacleMap.equals(null)) {
-					cabinViewPart.submitObstacleMap(obstacleMap);
-					consoleViewPart.printText("Heat map generation succeeded.");
-				}
-				if(!TestAStar.pathList.isEmpty()) {
-					cabinViewPart.submitPath(TestAStar.getPathList());
-					consoleViewPart.printText("Paths printed successfully.");
-				}
-				consoleViewPart.printText("Boarding completed!");			
+				System.out.println();
 			}
+			
+//			TestAStar astar = new TestAStar(obstacleMap,
+//					(int) (cabin.getCabinWidth() / cabin.getScale()),
+//					(int) (cabin.getCabinLength() / cabin.getScale()), cabin);
+//			
+//			while (!TestAStar.getSimulationDone()) {
+//				try {
+//					for(Passenger pax:ModelHelper.getChildrenByClass(astar.getPassengerLocations(), Passenger.class)) {
+//						if(pax.isIsSeated()&&!alreadySeatedList.contains(pax)) {
+//							consoleViewPart.printText("Passenger "+pax.getName()+" is now seated!");
+//							alreadySeatedList.add(pax);							
+//						}
+//					}	
+//					cabinViewPart.submitPassengerCoordinates(astar.getPassengerLocations());
+//					Thread.sleep((int)(1000/cabin.getFramesPerSecond()));
+//				} catch (InterruptedException e) {
+//					consoleViewPart.printText("An error occured during simulation.");
+//					e.printStackTrace();
+//				}
+//			}
+//			if (TestAStar.simulationDone) {
+//				for(Passenger pax:ModelHelper.getChildrenByClass(astar.getPassengerLocations(), Passenger.class)) {
+//					if(pax.isIsSeated()&&!alreadySeatedList.contains(pax)) {
+//						consoleViewPart.printText("Passenger "+pax.getName()+" is now seated!");
+//						alreadySeatedList.add(pax);							
+//					}
+//				}
+//				
+//				if(!obstacleMap.equals(null)) {
+//					cabinViewPart.submitObstacleMap(obstacleMap);
+//					consoleViewPart.printText("Heat map generation succeeded.");
+//				}
+//				if(!TestAStar.pathList.isEmpty()) {
+//					cabinViewPart.submitPath(TestAStar.getPathList());
+//					consoleViewPart.printText("Paths printed successfully.");
+//				}
+//				consoleViewPart.printText("Boarding completed!");			
+//			}
 			
 		} 
 		else {
