@@ -47,15 +47,17 @@ public class AStar {
                 closedList.clear();
                 openList.clear();
                 openList.add(map.getStartNode());
-
+                
+                CostMap costmap = new CostMap(map.getMapWidth(), map.getMapHeight(), startX, startY, map);
+               // costmap.floodMap();
+                costmap.printMap();
+                
                 //while we haven't reached the goal yet
                 while(openList.size() != 0) {
 
                         //get the first Node from non-searched Node list, sorted by lowest distance from our goal as guessed by our heuristic
-                        Node current = openList.getFirst();
+                        Node current = openList.getFirst();                    
                         
-                        //TODO analogous method to findFValue in MATLAB AStar implementation (line 52)
-
                         // check if our current Node location is the goal Node. If it is, we are done.
                         if(current.getX() == map.getGoalLocationX() && current.getY() == map.getGoalLocationY()) {
                                 return reconstructPath(current);

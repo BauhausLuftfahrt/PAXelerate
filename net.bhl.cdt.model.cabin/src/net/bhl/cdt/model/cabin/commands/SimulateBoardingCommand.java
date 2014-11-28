@@ -1,7 +1,9 @@
 package net.bhl.cdt.model.cabin.commands;
 
 import java.util.ArrayList;
+
 import model.CabinGenerator;
+import model.CostMap;
 import model.TestAStar;
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.Cabin;
@@ -9,6 +11,7 @@ import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.ConsoleViewPart;
 import net.bhl.cdt.model.util.ModelHelper;
+
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
@@ -92,6 +95,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 //				}
 //				System.out.println();
 //			}
+		
 			
 			TestAStar astar = new TestAStar(obstacleMap,
 					(int) (cabin.getCabinWidth() / cabin.getScale()),
