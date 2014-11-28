@@ -192,12 +192,27 @@ public class CabinViewPart extends ViewPart {
 				//drawCabin.setScale(20);
 				for(int i = 0;i<(int)(drawCabin.getCabinWidth()/drawCabin.getScale());i++) {
 					for(int j = 0;j<(int)(drawCabin.getCabinLength()/drawCabin.getScale());j++) {
-						if(obstacleMap[i][j]==0) {
-							e.gc.setBackground(green);
-						} else if(obstacleMap[i][j]==100000) {
+						
+						if(obstacleMap[i][j]<=5) {
+							int colorFactor = obstacleMap[i][j]*50;
+							if (colorFactor > 255) {
+								colorFactor = 255;
+							}
+							e.gc.setBackground(new Color(e.display,colorFactor,255,0));		
+						}
+						else if(obstacleMap[i][j]<=10) {
+							int colorFactor = 255 - obstacleMap[i][j]*50;
+							if (colorFactor < 0) {
+								colorFactor = 0;
+							}
+							e.gc.setBackground(new Color(e.display,255,colorFactor,0));		
+						}
+//						if(obstacleMap[i][j]<1) {
+//							e.gc.setBackground(green);
+//						} else if(obstacleMap[i][j]==100000) {
+//							e.gc.setBackground(red);
+						else  {
 							e.gc.setBackground(red);
-						} else if(obstacleMap[i][j]<=9&&obstacleMap[i][j]>=1) {
-							e.gc.setBackground(orange);
 						}
 						
 						// Color depiction depending on value 255 -> 0 and vice versa.

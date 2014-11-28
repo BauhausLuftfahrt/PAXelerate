@@ -47,7 +47,7 @@ public class AStar {
                 openList.add(map.getStartNode());
                 
                 costmap = new CostMap(map.getMapWidth(), map.getMapHeight(), startX, startY, map);
-                costmap.printMap();
+                //costmap.printMap();
                 
                 //while we haven't reached the goal yet
                 while(openList.size() != 0) {
@@ -80,26 +80,31 @@ public class AStar {
                                 	
                                 		//instead:    float neighborCosts
                                 		
-                                        //float neighborDistanceFromStart = (current.getDistanceFromStart() + map.getDistanceBetween(current, neighbor));
-                                		int neighborCostFromStart = costmap.getCostForCoordinates(neighbor.getX(), neighbor.getY());
+                                        float neighborDistanceFromStart = (current.getDistanceFromStart() + map.getDistanceBetween(current, neighbor));
+                                		int neigborCostFromStart = costmap.getCostForCoordinates(neighbor.getX(), neighbor.getY());
                                 		int currentCostFromStart = costmap.getCostForCoordinates(current.getX(), current.getY());
                                         
                                 		//add neighbor to the open list if it is not there
                                         if(!openList.contains(neighbor)) {
                                                 openList.add(neighbor);
                                                 neighborIsBetter = true;
-                                                //if neighbor is closer to start it could also be better
                                                 
-                                         // if neighborSumofCostsInCostChart < currentCosts --> neighborIsBetter = true, else neighborIsBetter = false       
-                                        } else if(neighborCostFromStart < currentCostFromStart) {
-                                                neighborIsBetter = true;
-                                        } else {
+                                        //if neighbor is closer to start it could also be better
+                                        //if neighborSumofCostsInCostChart < currentCosts --> neighborIsBetter = true, else neighborIsBetter = false       
+                                        }
+                                        else if(neigborCostFromStart < currentCostFromStart) { //REMOVED: else
+                                            neighborIsBetter = true;
+                                        }
+                                        //else if(neighborDistanceFromStart < current.getDistanceFromStart()) {
+                                        //    neighborIsBetter = true;
+                                        //}                                                 
+                                         else {
                                                 neighborIsBetter = false;
                                         }
                                         // set neighbors parameters if it is better
                                         if (neighborIsBetter) {
                                                 neighbor.setPreviousNode(current);
-                                                //neighbor.setDistanceFromStart(neighborDistanceFromStart);
+                                                neighbor.setDistanceFromStart(neighborDistanceFromStart);
                                                 neighbor.setHeuristicDistanceFromGoal(heuristic.getEstimatedDistanceToGoal(neighbor.getX(), neighbor.getY(), map.getGoalLocationX(), map.getGoalLocationY()));
                                         }
                                 }

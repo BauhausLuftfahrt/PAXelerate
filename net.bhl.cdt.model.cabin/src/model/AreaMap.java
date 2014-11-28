@@ -128,12 +128,12 @@ public class AreaMap {
         //TODO find out functionality of this method
         public float getDistanceBetween(Node node1, Node node2) {
         	
-        		double scalingFactor =  1.4;  // used to 1.7, changed it to 1.4 for testing
+        		double scalingFactor =  Math.sqrt(2);  // used to 1.7, changed it to 1.4 for testing
                 //if the nodes are on top or next to each other, return 1
                 if (node1.getX() == node2.getX() || node1.getY() == node2.getY()){
-                        return 1*(mapHeight+mapWidth);
+                        return 1;//*(mapHeight+mapWidth);
                 } else { //if they are diagonal to each other return diagonal distance: sqrt(1^2+1^2)
-                        return (float) scalingFactor*(mapHeight+mapWidth); //
+                        return (float) scalingFactor;//*(mapHeight+mapWidth); //
                 }
         }
        

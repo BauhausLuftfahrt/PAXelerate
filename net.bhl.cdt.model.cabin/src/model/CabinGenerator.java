@@ -10,10 +10,11 @@ import net.bhl.cdt.model.util.ModelHelper;
 public class CabinGenerator {
 
 	private Cabin cabin;
-	public int width;
-	public int length;
+	private int width;
+	private int length;
 	
-	public int maximumObstacleValue = 100000;
+	private int maximumObstacleValue = 100000;
+	private int basicObstacleValue = 5; 
 	
 	public CabinGenerator(Cabin cabin) {
 		this.cabin = cabin;
@@ -26,7 +27,7 @@ public class CabinGenerator {
 		int[][] obstacleMap = new int[width][length];
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j <length; j++) {
-				obstacleMap[i][j] = 1;
+				obstacleMap[i][j] = basicObstacleValue;
 			}
 		}
 		
@@ -106,6 +107,18 @@ public class CabinGenerator {
 		}
 		/*****************************************************/
 		
+		/***********Create potential hole in aisle ***********/
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j <length; j++) {
+				int aisleMin = (int)((cabin.getCabinWidth()-cabin.getAisleWidth())/cabin.getScale()/2)+1;
+			    int aisleMax = (int)(cabin.getCabinWidth()/cabin.getScale()-aisleMin)-1;
+				if(i<aisleMax&&i>aisleMin) {
+					obstacleMap[i][j]= 0;	
+				}
+			}
+		}
+		/*****************************************************/
+		
 		/********Create potential around obstacles************/
 		int k = 3;
 		int maxPot = 10;
@@ -122,6 +135,8 @@ public class CabinGenerator {
 			}
 		}
 		/*****************************************************/
+		
+		
 		
 		return obstacleMap;
 	}
