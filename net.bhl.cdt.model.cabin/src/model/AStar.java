@@ -8,10 +8,8 @@ import java.util.Collections;
 public class AStar {
         private AreaMap map; //equals field in the matlab program
         private AStarHeuristic heuristic;
-        //private int startX;
-        //private int startY;
-        //private int goalX;
-        //private int goalY;
+        private CostMap costmap;
+
         /**
          * closedList The list of Nodes not searched yet, sorted by their distance to the goal as guessed by our heuristic.
          */
@@ -48,8 +46,7 @@ public class AStar {
                 openList.clear();
                 openList.add(map.getStartNode());
                 
-                CostMap costmap = new CostMap(map.getMapWidth(), map.getMapHeight(), startX, startY, map);
-               // costmap.floodMap();
+                costmap = new CostMap(map.getMapWidth(), map.getMapHeight(), startX, startY, map);
                 costmap.printMap();
                 
                 //while we haven't reached the goal yet
@@ -81,18 +78,20 @@ public class AStar {
 
                                         // calculate how long the path is if we choose this neighbor as the next step in the path
                                 	
-                                		//TODO: instead:    float neighborCosts
+                                		//instead:    float neighborCosts
                                 		
-                                        float neighborDistanceFromStart = (current.getDistanceFromStart() + map.getDistanceBetween(current, neighbor));
-
-                                        //add neighbor to the open list if it is not there
+                                        //float neighborDistanceFromStart = (current.getDistanceFromStart() + map.getDistanceBetween(current, neighbor));
+                                		int neighborCostFromStart = costmap.getCostForCoordinates(neighbor.getX(), neighbor.getY());
+                                		int currentCostFromStart = costmap.getCostForCoordinates(current.getX(), current.getY());
+                                        
+                                		//add neighbor to the open list if it is not there
                                         if(!openList.contains(neighbor)) {
                                                 openList.add(neighbor);
                                                 neighborIsBetter = true;
                                                 //if neighbor is closer to start it could also be better
                                                 
                                          // if neighborSumofCostsInCostChart < currentCosts --> neighborIsBetter = true, else neighborIsBetter = false       
-                                        } else if(neighborDistanceFromStart < current.getDistanceFromStart()) {
+                                        } else if(neighborCostFromStart < currentCostFromStart) {
                                                 neighborIsBetter = true;
                                         } else {
                                                 neighborIsBetter = false;
@@ -100,7 +99,7 @@ public class AStar {
                                         // set neighbors parameters if it is better
                                         if (neighborIsBetter) {
                                                 neighbor.setPreviousNode(current);
-                                                neighbor.setDistanceFromStart(neighborDistanceFromStart);
+                                                //neighbor.setDistanceFromStart(neighborDistanceFromStart);
                                                 neighbor.setHeuristicDistanceFromGoal(heuristic.getEstimatedDistanceToGoal(neighbor.getX(), neighbor.getY(), map.getGoalLocationX(), map.getGoalLocationY()));
                                         }
                                 }

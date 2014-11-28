@@ -26,7 +26,7 @@ public class CabinGenerator {
 		int[][] obstacleMap = new int[width][length];
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j <length; j++) {
-				obstacleMap[i][j] = 0;
+				obstacleMap[i][j] = 1;
 			}
 		}
 		

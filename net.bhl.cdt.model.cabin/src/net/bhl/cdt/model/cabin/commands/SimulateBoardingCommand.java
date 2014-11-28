@@ -88,15 +88,19 @@ public class SimulateBoardingCommand extends CDTCommand {
 //					if(obstacleMap[i][j]==100000) {
 //						System.out.print("X");
 //					}
-//					else if(obstacleMap[i][j]==0) {
-//						System.out.print("-");
-//					}else
+//					//else if(obstacleMap[i][j]==0) {
+//						//System.out.print("-");
+//					//}
+//				    else {
 //					System.out.print(obstacleMap[i][j]);
+//				    }
 //				}
 //				System.out.println();
 //			}
 		
-			
+			//CostMap costmap = new CostMap(20, 20, 2,2);
+			//costmap.printMap();
+		
 			TestAStar astar = new TestAStar(obstacleMap,
 					(int) (cabin.getCabinWidth() / cabin.getScale()),
 					(int) (cabin.getCabinLength() / cabin.getScale()), cabin);

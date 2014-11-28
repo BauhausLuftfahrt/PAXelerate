@@ -25,14 +25,14 @@ public class Node implements Comparable<Node> {
         public boolean isOccupiedByAgent;
 		boolean isStart;
         boolean isGoal;
-       private  double cost;
+       private  int cost;
         
        
-        public double getCost() {
+        public int getCost() {
 		return cost;
 	}
 
-	public void setCost(double cost) {
+	public void setCost(int cost) {
 		this.cost = cost;
 	}
 

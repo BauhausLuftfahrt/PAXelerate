@@ -2,10 +2,11 @@ package model;
 
 import java.util.ArrayList;
 
-
 /**
  * 
  * @author marc.engelmann
+ * 
+ * This class creates a map and calculates the costs for a walk to a specific position. 
  *
  */
 
@@ -30,48 +31,45 @@ public class CostMap {
 		this.height=height;
 		this.startX = startX;
 		this.startY = startY;
-		startPoint[0] = startX;
-		startPoint[1] = startY;
+		startPoint[0] = this.startX;
+		startPoint[1] = this.startY;	
 		areamap = areaMap;
-		map = new int[width][height];
+		map = new int[this.width][this.height];
+		
 		for(int i=0;i<this.width;i++) {
 			for(int j=0;j<this.height;j++) {
 				Node node = areamap.getNode(i, j);
 				if(!node.isObstacle) {
-					map[i][j] = (int)node.getCost();
+					map[i][j] = node.getCost();
+					int[] helpPoint = new int[2];
+					helpPoint[0] = i;
+					helpPoint[1] = j;
+					openPoints.add(helpPoint);
 				}
 				else {
 					map[i][j] = -1;
-				}
-				int[] helpPoint = new int[2];
-				helpPoint[0] = i;
-				helpPoint[1] = j;
-				openPoints.add(helpPoint);
+				}			
 			}
 		}
-		map[startX][startY] = 0;
+
+		map[this.startX][this.startY] = 0;
 		
 		visitedPoints.add(startPoint);
-		openPoints.remove(startPoint);
+		removePointFromOpenPointsList(startPoint);
 		floodMap();
 	}
 	
-	public void floodMap() {
+	private void floodMap() {
 		createSurroundingCosts(startPoint);
-		int ppp = 0;
-		// while !openList.isEmpty()
-		while(ppp <20) {
+		while(openPoints.size()>1) {
 			copyPoints();
 			for(int[] newPoint:pointParking) {
 				createSurroundingCosts(newPoint);
 			}
-			ppp ++;
 		}
-		//printList(openPoints);
-		//WARUM GEHT DAS NICHT !?!?!?!?!?!?!?!!?!
 	}
 	
-	public boolean isObstacle(int[] point) {
+	private boolean isObstacle(int[] point) {
 		if(map[point[0]][point[1]] == -1) {
 			return true;
 		}
@@ -80,22 +78,39 @@ public class CostMap {
 		}
 	}
 	
-	public void copyPoints() {
+	private void removePointFromOpenPointsList(int[] point) {
+		for(int count = 0; count<openPoints.size();count++) {
+			int[] helppoint = openPoints.get(count);
+			if(point[0] == helppoint[0]&&point[1] == helppoint[1]) {
+					openPoints.remove(count);
+			}
+		}
+	}
+	
+	private boolean checkForPoint(ArrayList <int[]> list, int[] point) {
+		for(int[] checkPoint:list) {
+			if(checkPoint[0] == point[0] && checkPoint[1] == point[1]) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private void copyPoints() {
 			pointParking.clear();
 			for(int[] copyPoint:pointParkingHelper) {
 				pointParking.add(copyPoint);
 			}
 			pointParkingHelper.clear();			
 	}
-	public void createSurroundingCosts (int[] middlePoint) {
+	private void createSurroundingCosts (int[] middlePoint) {
 		for(int[]point:getSurroundingPoints(middlePoint[0],middlePoint[1])) {
 			if(!(point[0]<0||point[1]<0||point[0]>=width||point[1]>=height)) {
 				if(!isObstacle(point)) {
-					//STIMMT NICHT HIER !!!  SOLLTE ÜBERPRÜFT WERDEN, WIRD ES ABER NICHT!!
-					if((!visitedPoints.contains(point))&&(map[point[0]][point[1]]==getCost(point))) {
-						map[point[0]][point[1]] += (getCost(middlePoint)+1);
+					if(!(checkForPoint(visitedPoints,point))) {
+						map[point[0]][point[1]] += getCost(middlePoint);
 						visitedPoints.add(point);
-						openPoints.remove(point);
+						removePointFromOpenPointsList(point);
 						pointParkingHelper.add(point);
 					}
 				}
@@ -117,19 +132,22 @@ public class CostMap {
 		
 	}
 	
-	public void printList(ArrayList <int[]> list) {
+	private void printList(ArrayList <int[]> list) {
 		for(int[] printPoint:list) {
 			System.out.println("x:"+printPoint[0]+", y:"+printPoint[1]);
 		}
 		System.out.println();
 	}
 	
-	public int getCost(int[] point) {
-		Node costNode = areamap.getNode(point[0], point[1]);
-		return (int)costNode.getCost();
+	private int getCost(int[] point) {
+		return map[point[0]][point[1]];
 	}
 	
-	public int[][] getSurroundingPoints(int pointX, int pointY) {
+	public int getCostForCoordinates(int xCord, int yCord) {
+		return map[xCord][yCord];
+	}
+	
+	private int[][] getSurroundingPoints(int pointX, int pointY) {
 		//begin with north, then continue clockwise
 		int [][] points = new int [8][2];
 		points[0][0] = pointX;
