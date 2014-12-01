@@ -17,7 +17,8 @@ public class Node implements Comparable<Node> {
         ArrayList<Node> neighborList;
         boolean visited;
         float distanceFromStart;
-        float costFromStart;
+        int costFromStart;
+        int costFromGoal; 
         float heuristicDistanceFromGoal;
         Node previousNode;
         int x;
@@ -26,7 +27,7 @@ public class Node implements Comparable<Node> {
         public boolean isOccupiedByAgent;
 		boolean isStart;
         boolean isGoal;
-       private  int cost;
+        private  int cost;
         
        
         public int getCost() {
@@ -257,8 +258,16 @@ public class Node implements Comparable<Node> {
 			return costFromStart;
 		}
 
-		public void setCostFromStart(float costFromStart) {
+		public void setCostFromStart(int costFromStart) {
 			this.costFromStart = costFromStart;
+		}
+		
+		 public float getCostFromGoal() {
+				return costFromGoal;
+			}
+
+		public void setCostFromGoal(int costFromGoal) {
+				this.costFromGoal = costFromGoal;
 		}
 
 		public void setGoal(boolean isGoal) {
@@ -269,16 +278,25 @@ public class Node implements Comparable<Node> {
                 return (node.x == x) && (node.y == y);
         }
 
+        /**EDITED BY MARC.ENGELMANN ON 01-12-2014*/
+        /** modified this function in order to sort nodes by cost, not by distance!
+         * Only if the cost is the same, sort it by the distance! 
+         */ 
         public int compareTo(Node otherNode) {
-                float thisTotalDistanceFromGoal = heuristicDistanceFromGoal + distanceFromStart;
-                float otherTotalDistanceFromGoal = otherNode.getHeuristicDistanceFromGoal() + otherNode.getDistanceFromStart();
                
-                if (thisTotalDistanceFromGoal < otherTotalDistanceFromGoal) {
+                if (costFromStart < otherNode.costFromStart) {
                         return -1;
-                } else if (thisTotalDistanceFromGoal > otherTotalDistanceFromGoal) {
+                } else if (costFromStart > otherNode.costFromStart) {
                         return 1;
                 } else {
+                	if(distanceFromStart < otherNode.distanceFromStart) {
+                		return -1;
+                	}
+                	else if (distanceFromStart > otherNode.distanceFromStart) {
+                		return 1;
+                	} else {
                         return 0;
+                	}
                 }
         }
 }

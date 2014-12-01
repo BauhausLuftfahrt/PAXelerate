@@ -1,12 +1,7 @@
 package model;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.JFrame;
-
-
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
@@ -37,8 +32,6 @@ public class TestAStar {
 	public static ArrayList<int[][]> pathList = new ArrayList<int[][]>();
 	static StopWatch s = new StopWatch();
 
-	// constructor is called from matlab: initializes the obstacleMap and
-	// start/goal position for each PAX list member
 	public TestAStar(int[][] obstacleMap, int mapWidth, int mapHeight, Cabin cabin) {
 		
 		this.obstacleMap = obstacleMap;
@@ -55,9 +48,7 @@ public class TestAStar {
 
 		s.start();
 
-		AStarHeuristic heuristic = new ClosestHeuristic();
-
-		AStar pathFinder = new AStar(map, heuristic);
+		AStar pathFinder = new AStar(map);
 
 		console.addToLog("Calculating shortest path..."); //for "+agent.getAgentName()+" ...");
 		pathFinder.calcShortestPath(agent.getStartX(), agent.getStartY(),

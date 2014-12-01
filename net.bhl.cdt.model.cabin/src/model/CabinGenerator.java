@@ -14,7 +14,7 @@ public class CabinGenerator {
 	private int length;
 	
 	private int maximumObstacleValue = 100000;
-	private int basicObstacleValue = 5; 
+	private int basicObstacleValue = 9; 
 	
 	public CabinGenerator(Cabin cabin) {
 		this.cabin = cabin;
@@ -120,8 +120,8 @@ public class CabinGenerator {
 		/*****************************************************/
 		
 		/********Create potential around obstacles************/
-		int k = 3;
-		int maxPot = 10;
+		int k = 1;
+		int maxPot = 20;
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j <length; j++) {
 				if(obstacleMap[i][j]==maximumObstacleValue) {

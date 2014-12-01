@@ -7,7 +7,6 @@ import java.util.Collections;
 
 public class AStar {
         private AreaMap map; 
-        private AStarHeuristic heuristic;
         private CostMap costmap;
 
         /**
@@ -18,9 +17,8 @@ public class AStar {
         private Path shortestPath;
         Logger log = new Logger();
 
-        AStar(AreaMap map, AStarHeuristic heuristic) {
+        AStar(AreaMap map) {
                 this.map = map;
-                this.heuristic = heuristic;
 
                 closedList = new ArrayList<Node>();
                 openList = new SortedNodeList();
@@ -107,7 +105,7 @@ public class AStar {
                                         if (neighborIsBetter) {
                                                 neighbor.setPreviousNode(current);
                                                 neighbor.setCostFromStart(neighborCostFromStart);
-                                                //neighbor.setDistanceFromStart(neighborDistanceFromStart);
+                                                neighbor.setDistanceFromStart(neighborDistanceFromStart);
                                                 //neighbor.setHeuristicDistanceFromGoal(heuristic.getEstimatedDistanceToGoal(neighbor.getX(), neighbor.getY(), map.getGoalLocationX(), map.getGoalLocationY()));
                                         }
                                 }

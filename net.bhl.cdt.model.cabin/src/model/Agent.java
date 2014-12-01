@@ -1,15 +1,8 @@
 package model;
-import javax.swing.event.EventListenerList;
 
-import java.util.*;
-
-import javax.swing.event.EventListenerList;
-
-import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Passenger;
 import observer.Subject;
-import observer.Observer;
-import observer.AgentPosition;
+
 
 public class Agent extends Subject implements Runnable {
 	private Thread t;
@@ -35,8 +28,6 @@ public class Agent extends Subject implements Runnable {
 	static Logger log = new Logger();
 	
 	private int[][] currentAgentPosition = new int[1][2];
-
-	 private EventListenerList listeners = new EventListenerList();
 
 	Agent(String name, Passenger passenger, int startX, int startY, int goalX, int goalY,int scale, int id) {
 		this.id = id;
