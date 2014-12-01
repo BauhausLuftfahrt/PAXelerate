@@ -227,5 +227,6 @@ public class CostMap {
 		points[7][1] = pointY-1;
 		return points;
 	}
-
 }
+
+

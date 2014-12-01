@@ -77,6 +77,8 @@ public class PassengerItemProvider
 			addPositionXPropertyDescriptor(object);
 			addPositionYPropertyDescriptor(object);
 			addIsSeatedPropertyDescriptor(object);
+			addWalkingSpeedPropertyDescriptor(object);
+			addStartBoardingAfterDelayPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -368,6 +370,50 @@ public class PassengerItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Walking Speed feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addWalkingSpeedPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_walkingSpeed_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_walkingSpeed_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__WALKING_SPEED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Start Boarding After Delay feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addStartBoardingAfterDelayPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_startBoardingAfterDelay_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_startBoardingAfterDelay_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__START_BOARDING_AFTER_DELAY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Height feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -506,6 +552,8 @@ public class PassengerItemProvider
 			case CabinPackage.PASSENGER__POSITION_X:
 			case CabinPackage.PASSENGER__POSITION_Y:
 			case CabinPackage.PASSENGER__IS_SEATED:
+			case CabinPackage.PASSENGER__WALKING_SPEED:
+			case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

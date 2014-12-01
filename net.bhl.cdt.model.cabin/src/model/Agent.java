@@ -17,6 +17,8 @@ public class Agent extends Subject implements Runnable {
 	private Passenger passenger;
 	private int scale;
 	
+	static StopWatch s = new StopWatch();
+	
 	private int previousX;
 	private int previousY;
 	
@@ -102,35 +104,49 @@ public class Agent extends Subject implements Runnable {
 		this.currentAgentPosition = currentAgentPosition;
 	}
 	
+	/**
+	 * Rotation from 0 to 359 degrees. Only 45° steps. North is 0°.
+	 * @param xWay
+	 * @param yWay
+	 * @return
+	 */
+	public int getRotation(int xWay, int yWay) {
+		int deg = 0;
+		if (xWay>0) {
+			if(yWay == 0) {deg = 90;}
+			if(yWay < 0) {deg = 45;}
+			if(yWay > 0) {deg = 135;}	
+		} else if(xWay<0) {
+			
+			if(yWay > 0) {deg = 225;}
+			if(yWay < 0) {deg = 315;}
+		} else if(xWay == 0) {
+			if(yWay == 0) {deg = 0;}
+			if(yWay > 0) {deg = 180;}
+			if(yWay < 0) {deg = 0;}
+		}
+		return deg;
+	}
 	
-	
-
-	
-
 	public void run() {
 		try {
-			Thread.sleep(500*id);
+			Thread.sleep((int)(passenger.getStartBoardingAfterDelay()*1000));
+			s.start();
 			this.currentAgentPosition = new int[path.length][2];
 			TestAStar.submitPath(path);
 			for (int i = 0; i < path.length; i++) {
-		
-				
-				
 				//first step of the agent
 				if(i != 0) {
 					this.previousX = path[i-1][0];
 					this.previousY = path[i-1][1];
 				}
 				this.currentX = path[i][0];
-				this.currentY = path[i][1];
-				
-				
-				
+				this.currentY = path[i][1];	
 				if(TestAStar.map.getNode(currentX, currentY).isOccupiedByAgent() == true){
-				 Thread.sleep(100);
+				 Thread.sleep(200);
+				 // here a new path should be calculated!
 				}
 				else {
-
 					TestAStar.map.getNode(previousX, previousY).setOccupiedByAgent(false);
 					TestAStar.map.getNode(currentX, currentY).setOccupiedByAgent(true);							
 					this.currentAgentPosition[i][0] = this.currentX;
@@ -141,17 +157,14 @@ public class Agent extends Subject implements Runnable {
 					
 					passenger.setPositionX(this.currentAgentPosition[i][0]*scale);
 					passenger.setPositionY(this.currentAgentPosition[i][1]*scale);
-					
-					//int xWay = this.currentAgentPosition[i][0]-this.currentAgentPosition[i-1][0];
-					//int yWay = this.currentAgentPosition[i][1]-this.currentAgentPosition[i-1][1];
-					
-					//passenger.setOrientationInDegree(xWay);
-					Thread.sleep(50);	
+					passenger.setOrientationInDegree(getRotation((currentX - previousX),(currentY - previousY)));
+					Thread.sleep((int)(1000/(passenger.getWalkingSpeed()*100/scale)));	
 				}
 			}
-			
 			passenger.setIsSeated(true);
-			TestAStar.setPassengerSeated(passenger);		
+			TestAStar.setPassengerSeated(passenger);	
+			s.stop();
+			passenger.setBoardingTime(s.getElapsedTime()/1000);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -159,7 +172,6 @@ public class Agent extends Subject implements Runnable {
 
 	// start method calls run
 	public void start() {
-//		log.addToLog("Starting " + agentName);
 		if (getT() == null) {
 			setT(new Thread(this, agentName));
 			getT().start();

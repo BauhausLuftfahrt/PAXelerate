@@ -14,7 +14,7 @@ public class CabinGenerator {
 	private int length;
 	
 	private int maximumObstacleValue = 100000;
-	private int basicObstacleValue = 9; 
+	private int basicObstacleValue = 10; 
 	
 	public CabinGenerator(Cabin cabin) {
 		this.cabin = cabin;

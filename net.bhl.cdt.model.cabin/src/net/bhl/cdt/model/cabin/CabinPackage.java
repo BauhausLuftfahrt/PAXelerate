@@ -940,13 +940,31 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER__IS_SEATED = 16;
 
 	/**
+	 * The feature id for the '<em><b>Walking Speed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__WALKING_SPEED = 17;
+
+	/**
+	 * The feature id for the '<em><b>Start Boarding After Delay</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__START_BOARDING_AFTER_DELAY = 18;
+
+	/**
 	 * The number of structural features of the '<em>Passenger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_FEATURE_COUNT = 17;
+	int PASSENGER_FEATURE_COUNT = 19;
 
 	/**
 	 * The number of operations of the '<em>Passenger</em>' class.
@@ -2452,6 +2470,28 @@ public interface CabinPackage extends EPackage {
 	EAttribute getPassenger_IsSeated();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getWalkingSpeed <em>Walking Speed</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Walking Speed</em>'.
+	 * @see net.bhl.cdt.model.cabin.Passenger#getWalkingSpeed()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_WalkingSpeed();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getStartBoardingAfterDelay <em>Start Boarding After Delay</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Start Boarding After Delay</em>'.
+	 * @see net.bhl.cdt.model.cabin.Passenger#getStartBoardingAfterDelay()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_StartBoardingAfterDelay();
+
+	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getHeight <em>Height</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3654,6 +3694,20 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PASSENGER__IS_SEATED = eINSTANCE.getPassenger_IsSeated();
+		/**
+		 * The meta object literal for the '<em><b>Walking Speed</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__WALKING_SPEED = eINSTANCE.getPassenger_WalkingSpeed();
+		/**
+		 * The meta object literal for the '<em><b>Start Boarding After Delay</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__START_BOARDING_AFTER_DELAY = eINSTANCE.getPassenger_StartBoardingAfterDelay();
 		/**
 		 * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->

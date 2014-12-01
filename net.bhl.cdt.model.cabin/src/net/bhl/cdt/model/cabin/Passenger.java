@@ -29,6 +29,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getPositionX <em>Position X</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getPositionY <em>Position Y</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#isIsSeated <em>Is Seated</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getWalkingSpeed <em>Walking Speed</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getStartBoardingAfterDelay <em>Start Boarding After Delay</em>}</li>
  * </ul>
  * </p>
  *
@@ -382,6 +384,60 @@ public interface Passenger extends EObject {
 	 * @generated
 	 */
 	void setIsSeated(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Walking Speed</b></em>' attribute.
+	 * The default value is <code>"2.0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Walking Speed</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Walking Speed</em>' attribute.
+	 * @see #setWalkingSpeed(double)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_WalkingSpeed()
+	 * @model default="2.0"
+	 * @generated
+	 */
+	double getWalkingSpeed();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getWalkingSpeed <em>Walking Speed</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Walking Speed</em>' attribute.
+	 * @see #getWalkingSpeed()
+	 * @generated
+	 */
+	void setWalkingSpeed(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Start Boarding After Delay</b></em>' attribute.
+	 * The default value is <code>"1.0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Start Boarding After Delay</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Start Boarding After Delay</em>' attribute.
+	 * @see #setStartBoardingAfterDelay(double)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_StartBoardingAfterDelay()
+	 * @model default="1.0"
+	 * @generated
+	 */
+	double getStartBoardingAfterDelay();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getStartBoardingAfterDelay <em>Start Boarding After Delay</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Start Boarding After Delay</em>' attribute.
+	 * @see #getStartBoardingAfterDelay()
+	 * @generated
+	 */
+	void setStartBoardingAfterDelay(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Height</b></em>' attribute.

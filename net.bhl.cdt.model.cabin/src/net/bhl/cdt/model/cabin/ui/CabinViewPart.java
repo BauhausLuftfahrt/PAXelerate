@@ -25,6 +25,7 @@ import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.Transform;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.ISharedImages;
@@ -176,24 +177,26 @@ public class CabinViewPart extends ViewPart {
 	}
 	
 	public void submitObstacleMap(final int[][] obstacleMap) {	
-		canvas.redraw();		
+		//canvas.redraw();		
+		final int overLapOfRect = 2;
 		canvas.addPaintListener(new PaintListener() {
 			public void paintControl(final PaintEvent paintEvent) {		
 				paintEvent.gc.setAlpha(100);
 				for(int i = 0;i<(int)(drawCabin.getCabinWidth()/drawCabin.getScale());i++) {
 					for(int j = 0;j<(int)(drawCabin.getCabinLength()/drawCabin.getScale());j++) {		
-						if(obstacleMap[i][j]<=5) {
-							int colorFactor = obstacleMap[i][j]*50;
+						if(obstacleMap[i][j]<=10) {
+							int colorFactor = obstacleMap[i][j]*25;
 							if (colorFactor > 255) {colorFactor = 255;}
 							paintEvent.gc.setBackground(new Color(paintEvent.display,colorFactor,255,0));		
-						} else if(obstacleMap[i][j]<=10) {
-							int colorFactor = 255 - obstacleMap[i][j]*50;
+						} else if(obstacleMap[i][j]<=20) {
+							int colorFactor = 255 - obstacleMap[i][j]*12 -15;
 							if (colorFactor<0) {colorFactor = 0;}
 							paintEvent.gc.setBackground(new Color(paintEvent.display,255,colorFactor,0));		
 						} else  {paintEvent.gc.setBackground(red);}
-						paintEvent.gc.fillOval(x_zero+(int)(i*drawCabin.getScale()/factor),y_zero+(int)(j*drawCabin.getScale()/factor),(int)(2*drawCabin.getScale()/factor),(int)(2*drawCabin.getScale()/factor));
+						paintEvent.gc.fillRectangle(x_zero+(int)(i*drawCabin.getScale()/factor),y_zero+(int)(j*drawCabin.getScale()/factor),(int)(overLapOfRect*drawCabin.getScale()/factor),(int)(overLapOfRect*drawCabin.getScale()/factor));
 					} 
-				}					
+				}	
+				paintEvent.gc.setAlpha(255);
 			}			
 		});
 	}
@@ -232,51 +235,30 @@ public class CabinViewPart extends ViewPart {
 	
 
 	public void submitPassengerCoordinates(final Cabin paxCabin) {
-
-		parent.redraw();
 		parent.update();
+		parent.redraw();
 		canvas.redraw();
 		canvas.addPaintListener(new PaintListener() {
 			public void paintControl(final PaintEvent e) {
-				
-//				e.gc.setAdvanced(true);
-//				Transform transform = new Transform(parentTest.getDisplay());
-//				//float cos45 = (float)Math.cos(45);
-//		        float cos45 = (float)Math.cos(Math.PI/4); 
-//		        //float sin45 = (float)Math.sin(45);
-//		        float sin45 = (float)Math.sin(Math.PI/4);
-//		        transform.setElements(cos45, sin45, -sin45, cos45, 0, 0);
-//				transform.rotate(45);
-//				transform.translate(100, - 141);
-//				e.gc.drawText("HALLO!",100,100);
-//				e.gc.setTransform(transform);
-//				e.gc.drawText("HALLO!",100,100);
-//				transform.dispose();
 				for (Passenger pass : ModelHelper.getChildrenByClass(paxCabin,Passenger.class)) {
 					int[] color = calculateColor(pass);
 					e.gc.setBackground(new Color(e.display, color[0], color[1], color[2]));
 					if(!pass.isIsSeated()) {
-						if(!((pass.getPositionX()==0)&&(pass.getPositionY()==0))) {
+						if(!((pass.getPositionX()==0)&&(pass.getPositionY()==0))) {	
 							e.gc.fillOval(
 									x_zero + (int) ((pass.getPositionX()-pass.getWidth()/2) / factor),
 									y_zero + (int) ((pass.getPositionY()-pass.getDepth()/2) / factor),
-									(int)(pass.getWidth()/factor), (int)(pass.getDepth()/factor));
+									(int)(pass.getWidth()/factor), (int)(pass.getDepth()/factor));	
 						}
-					}
-					else { 
+					} else { 
 						Seat mySeat = pass.getSeatRef();
 						e.gc.fillOval(
 					    x_zero + (int) ((mySeat.getXPosition()+mySeat.getWidth()/2-pass.getWidth()/2) / factor),
 						y_zero + (int) ((mySeat.getYPosition()+mySeat.getLength()/2-pass.getDepth()/2) / factor),
 						(int)(pass.getWidth()/factor), (int)(pass.getDepth()/factor));
-						
-					}
-				}
-				
-			}
-			 
-				//e.gc.dispose();
-			
+					}	
+				}		
+			}	
 		});
 	}
 

@@ -38,6 +38,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getPositionX <em>Position X</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getPositionY <em>Position Y</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#isIsSeated <em>Is Seated</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getWalkingSpeed <em>Walking Speed</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getStartBoardingAfterDelay <em>Start Boarding After Delay</em>}</li>
  * </ul>
  * </p>
  *
@@ -365,6 +367,46 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	protected boolean isSeated = IS_SEATED_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getWalkingSpeed() <em>Walking Speed</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWalkingSpeed()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double WALKING_SPEED_EDEFAULT = 2.0;
+
+	/**
+	 * The cached value of the '{@link #getWalkingSpeed() <em>Walking Speed</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWalkingSpeed()
+	 * @generated
+	 * @ordered
+	 */
+	protected double walkingSpeed = WALKING_SPEED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getStartBoardingAfterDelay() <em>Start Boarding After Delay</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStartBoardingAfterDelay()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double START_BOARDING_AFTER_DELAY_EDEFAULT = 1.0;
+
+	/**
+	 * The cached value of the '{@link #getStartBoardingAfterDelay() <em>Start Boarding After Delay</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStartBoardingAfterDelay()
+	 * @generated
+	 * @ordered
+	 */
+	protected double startBoardingAfterDelay = START_BOARDING_AFTER_DELAY_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -678,6 +720,48 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public double getWalkingSpeed() {
+		return walkingSpeed;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWalkingSpeed(double newWalkingSpeed) {
+		double oldWalkingSpeed = walkingSpeed;
+		walkingSpeed = newWalkingSpeed;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__WALKING_SPEED, oldWalkingSpeed, walkingSpeed));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getStartBoardingAfterDelay() {
+		return startBoardingAfterDelay;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStartBoardingAfterDelay(double newStartBoardingAfterDelay) {
+		double oldStartBoardingAfterDelay = startBoardingAfterDelay;
+		startBoardingAfterDelay = newStartBoardingAfterDelay;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY, oldStartBoardingAfterDelay, startBoardingAfterDelay));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public double getHeight() {
 		return height;
 	}
@@ -818,6 +902,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return getPositionY();
 			case CabinPackage.PASSENGER__IS_SEATED:
 				return isIsSeated();
+			case CabinPackage.PASSENGER__WALKING_SPEED:
+				return getWalkingSpeed();
+			case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
+				return getStartBoardingAfterDelay();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -880,6 +968,12 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return;
 			case CabinPackage.PASSENGER__IS_SEATED:
 				setIsSeated((Boolean)newValue);
+				return;
+			case CabinPackage.PASSENGER__WALKING_SPEED:
+				setWalkingSpeed((Double)newValue);
+				return;
+			case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
+				setStartBoardingAfterDelay((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -944,6 +1038,12 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 			case CabinPackage.PASSENGER__IS_SEATED:
 				setIsSeated(IS_SEATED_EDEFAULT);
 				return;
+			case CabinPackage.PASSENGER__WALKING_SPEED:
+				setWalkingSpeed(WALKING_SPEED_EDEFAULT);
+				return;
+			case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
+				setStartBoardingAfterDelay(START_BOARDING_AFTER_DELAY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -990,6 +1090,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return positionY != POSITION_Y_EDEFAULT;
 			case CabinPackage.PASSENGER__IS_SEATED:
 				return isSeated != IS_SEATED_EDEFAULT;
+			case CabinPackage.PASSENGER__WALKING_SPEED:
+				return walkingSpeed != WALKING_SPEED_EDEFAULT;
+			case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
+				return startBoardingAfterDelay != START_BOARDING_AFTER_DELAY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1034,6 +1138,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 		result.append(positionY);
 		result.append(", isSeated: ");
 		result.append(isSeated);
+		result.append(", walkingSpeed: ");
+		result.append(walkingSpeed);
+		result.append(", startBoardingAfterDelay: ");
+		result.append(startBoardingAfterDelay);
 		result.append(')');
 		return result.toString();
 	}

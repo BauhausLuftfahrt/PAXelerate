@@ -1,5 +1,6 @@
 package net.bhl.cdt.model.cabin.commands;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -64,6 +65,7 @@ public class GeneratePassengersCommand extends CDTCommand{
 	String classNameString;
 	int totalPax = 0;
 	int totalSeats = 0;
+	DecimalFormat df = new DecimalFormat("####0.00");
 	public GeneratePassengersCommand(Cabin cabin) {
 		this.cabin = cabin;
 	}
@@ -176,6 +178,7 @@ public class GeneratePassengersCommand extends CDTCommand{
 				sex = Sex.MALE;
 			}
 			newPassenger.setSex(sex);
+			newPassenger.setStartBoardingAfterDelay(passengerIdCount);
 			
 			/*********************Info for random values**********************/
 			/**                                                              */
@@ -201,6 +204,8 @@ public class GeneratePassengersCommand extends CDTCommand{
 			newPassenger.setDepth(rand5.nextInt(30) + 20 );
 			Random rand6 = new Random();
 			newPassenger.setWidth(rand6.nextInt(30) + 30 );
+			Random rand7 = new Random();
+			newPassenger.setWalkingSpeed((rand7.nextInt(6))*0.1 + 1.0);
 			passengerIdCount ++;
 			passengerPerClassCount ++;
 			
