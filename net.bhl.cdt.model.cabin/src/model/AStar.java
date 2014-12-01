@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class AStar {
-        private AreaMap map; //equals field in the matlab program
+        private AreaMap map; 
         private AStarHeuristic heuristic;
         private CostMap costmap;
 
@@ -42,12 +42,12 @@ public class AStar {
                 }
 
                 map.getStartNode().setDistanceFromStart(0);
+                map.getStartNode().setCostFromStart(0);
                 closedList.clear();
                 openList.clear();
                 openList.add(map.getStartNode());
                 
                 costmap = new CostMap(map.getMapWidth(), map.getMapHeight(), startX, startY, map);
-                //costmap.printMap();
                 
                 //while we haven't reached the goal yet
                 while(openList.size() != 0) {
@@ -77,11 +77,10 @@ public class AStar {
                                 if (!neighbor.isObstacle) {
 
                                         // calculate how long the path is if we choose this neighbor as the next step in the path
-                                	
-                                		//instead:    float neighborCosts
-                                		
-                                        float neighborDistanceFromStart = (current.getDistanceFromStart() + map.getDistanceBetween(current, neighbor));
-                                		int neigborCostFromStart = costmap.getCostForCoordinates(neighbor.getX(), neighbor.getY());
+                                        float neighborDistanceFromStart = map.getDistanceBetween(map.getStartNode(), current) + map.getDistanceBetween(current, neighbor);
+                                        //(current.getDistanceFromStart() + map.getDistanceBetween(current, neighbor));
+                                		float currentDistanceFromStart = map.getDistanceBetween(map.getStartNode(), current);
+                                        int neighborCostFromStart = costmap.getCostForCoordinates(neighbor.getX(), neighbor.getY());
                                 		int currentCostFromStart = costmap.getCostForCoordinates(current.getX(), current.getY());
                                         
                                 		//add neighbor to the open list if it is not there
@@ -92,20 +91,24 @@ public class AStar {
                                         //if neighbor is closer to start it could also be better
                                         //if neighborSumofCostsInCostChart < currentCosts --> neighborIsBetter = true, else neighborIsBetter = false       
                                         }
-                                        else if(neigborCostFromStart < currentCostFromStart) { //REMOVED: else
+                                        
+                                        else if((neighborCostFromStart<currentCostFromStart)&&(neighborDistanceFromStart<currentDistanceFromStart)) { 
                                             neighborIsBetter = true;
                                         }
-                                        //else if(neighborDistanceFromStart < current.getDistanceFromStart()) {
-                                        //    neighborIsBetter = true;
-                                        //}                                                 
-                                         else {
-                                                neighborIsBetter = false;
+                                        else if(neighborCostFromStart<currentCostFromStart) {
+                                            neighborIsBetter = true;
                                         }
+                                        else if(neighborDistanceFromStart<currentDistanceFromStart) {
+                                            neighborIsBetter = true;
+                                        }                                                 
+                                        else {neighborIsBetter = false;}
+                                        
                                         // set neighbors parameters if it is better
                                         if (neighborIsBetter) {
                                                 neighbor.setPreviousNode(current);
-                                                neighbor.setDistanceFromStart(neighborDistanceFromStart);
-                                                neighbor.setHeuristicDistanceFromGoal(heuristic.getEstimatedDistanceToGoal(neighbor.getX(), neighbor.getY(), map.getGoalLocationX(), map.getGoalLocationY()));
+                                                neighbor.setCostFromStart(neighborCostFromStart);
+                                                //neighbor.setDistanceFromStart(neighborDistanceFromStart);
+                                                //neighbor.setHeuristicDistanceFromGoal(heuristic.getEstimatedDistanceToGoal(neighbor.getX(), neighbor.getY(), map.getGoalLocationX(), map.getGoalLocationY()));
                                         }
                                 }
 
@@ -113,43 +116,6 @@ public class AStar {
 
                 }
                 return null;
-        }
-
-       
-       
-        public void printPath() {
-                Node node;
-                for(int x=0; x<map.getMapWidth(); x++) {
-
-                        if (x==0) {
-                                for (int i=0; i<=map.getMapWidth(); i++)
-                                        System.out.print("-");
-                                System.out.println();  
-                        }
-                        System.out.print("|");
-
-                        for(int y=0; y<map.getMapHeight(); y++) {
-                                node = map.getNode(x, y);
-                                if (node.isObstacle) {
-                                        System.out.print("X");
-                                } else if (node.isStart) {
-                                        System.out.print("s");
-                                } else if (node.isGoal) {
-                                        System.out.print("g");
-                                } else if (getShortestPath().contains(node.getX(), node.getY())) {
-                                        System.out.print("¤");
-                                } else {
-                                        System.out.print(" ");
-                                }
-                                if (y==map.getMapHeight())
-                                        System.out.print("_");
-                        }
-
-                        System.out.print("|");
-                        System.out.println();
-                }
-                for (int i=0; i<=map.getMapWidth(); i++)
-                        System.out.print("-");
         }
 
         private Path reconstructPath(Node node) {

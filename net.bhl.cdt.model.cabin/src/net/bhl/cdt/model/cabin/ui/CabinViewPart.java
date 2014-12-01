@@ -58,26 +58,20 @@ public class CabinViewPart extends ViewPart {
 	
 	/*********** graphics settings *********/
 	public int doorsOutOfCabinPixels;
-	double sizeOfPassengerCircle; /*
-								 * value between 0 and 1. Depending on the seat
-								 * size
-								 */
+	double sizeOfPassengerCircle; /*value between 0 and 1. Depending on the seatsize */
 	/*************************************/
 
 	/***** image-properties *****/
 	int cabin_x;// 96 /*width of cabin in the image in pixels*/
 	int x_zero; // 138 /*defined left upper point of cabin in pixels*/
 	int y_zero;// 90 /*defined left upper point of cabin in pixels*/
-	int doorDepth; /*
-					 * defines the door depth in pixels. Only important for
-					 * graphics
-					 */
+	int doorDepth; /* defines the door depth in pixels. Only important for graphics */
 	/**************************/
 
 	/**Create Colors and Fonts here*/
 	int fontsize; 
 	String fontName; 
-	Color gold; 
+	Color gold;
 	Color blue; 
 	Color red; 
 	Color gray; 
@@ -181,46 +175,25 @@ public class CabinViewPart extends ViewPart {
 		doTheDraw();
 	}
 	
-	public void submitObstacleMap(final int[][] obstacleMap) {
-		
-		parent.redraw();
-		parent.update();
+	public void submitObstacleMap(final int[][] obstacleMap) {	
 		canvas.redraw();		
 		canvas.addPaintListener(new PaintListener() {
-			public void paintControl(final PaintEvent e) {		
-				e.gc.setAlpha(100);
-				//drawCabin.setScale(20);
+			public void paintControl(final PaintEvent paintEvent) {		
+				paintEvent.gc.setAlpha(100);
 				for(int i = 0;i<(int)(drawCabin.getCabinWidth()/drawCabin.getScale());i++) {
-					for(int j = 0;j<(int)(drawCabin.getCabinLength()/drawCabin.getScale());j++) {
-						
+					for(int j = 0;j<(int)(drawCabin.getCabinLength()/drawCabin.getScale());j++) {		
 						if(obstacleMap[i][j]<=5) {
 							int colorFactor = obstacleMap[i][j]*50;
-							if (colorFactor > 255) {
-								colorFactor = 255;
-							}
-							e.gc.setBackground(new Color(e.display,colorFactor,255,0));		
-						}
-						else if(obstacleMap[i][j]<=10) {
+							if (colorFactor > 255) {colorFactor = 255;}
+							paintEvent.gc.setBackground(new Color(paintEvent.display,colorFactor,255,0));		
+						} else if(obstacleMap[i][j]<=10) {
 							int colorFactor = 255 - obstacleMap[i][j]*50;
-							if (colorFactor < 0) {
-								colorFactor = 0;
-							}
-							e.gc.setBackground(new Color(e.display,255,colorFactor,0));		
-						}
-//						if(obstacleMap[i][j]<1) {
-//							e.gc.setBackground(green);
-//						} else if(obstacleMap[i][j]==100000) {
-//							e.gc.setBackground(red);
-						else  {
-							e.gc.setBackground(red);
-						}
-						
-						// Color depiction depending on value 255 -> 0 and vice versa.
-						
-						e.gc.fillOval(x_zero+(int)(i*drawCabin.getScale()/factor),y_zero+(int)(j*drawCabin.getScale()/factor),(int)(2*drawCabin.getScale()/factor),(int)(2*drawCabin.getScale()/factor));
+							if (colorFactor<0) {colorFactor = 0;}
+							paintEvent.gc.setBackground(new Color(paintEvent.display,255,colorFactor,0));		
+						} else  {paintEvent.gc.setBackground(red);}
+						paintEvent.gc.fillOval(x_zero+(int)(i*drawCabin.getScale()/factor),y_zero+(int)(j*drawCabin.getScale()/factor),(int)(2*drawCabin.getScale()/factor),(int)(2*drawCabin.getScale()/factor));
 					} 
-				}
-							
+				}					
 			}			
 		});
 	}

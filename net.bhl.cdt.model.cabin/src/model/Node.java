@@ -17,6 +17,7 @@ public class Node implements Comparable<Node> {
         ArrayList<Node> neighborList;
         boolean visited;
         float distanceFromStart;
+        float costFromStart;
         float heuristicDistanceFromGoal;
         Node previousNode;
         int x;
@@ -42,6 +43,7 @@ public class Node implements Comparable<Node> {
                 this.y = y;
                 this.visited = false;
                 this.distanceFromStart = Integer.MAX_VALUE;
+                this.costFromStart = Integer.MAX_VALUE;
                 this.isObstacle = false;
                 this.isStart = false;
                 this.isGoal = false;
@@ -251,7 +253,15 @@ public class Node implements Comparable<Node> {
                 return isGoal;
         }
 
-        public void setGoal(boolean isGoal) {
+        public float getCostFromStart() {
+			return costFromStart;
+		}
+
+		public void setCostFromStart(float costFromStart) {
+			this.costFromStart = costFromStart;
+		}
+
+		public void setGoal(boolean isGoal) {
                 this.isGoal = isGoal;
         }
 

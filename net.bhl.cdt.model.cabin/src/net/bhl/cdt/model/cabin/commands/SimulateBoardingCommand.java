@@ -3,7 +3,6 @@ package net.bhl.cdt.model.cabin.commands;
 import java.util.ArrayList;
 
 import model.CabinGenerator;
-import model.CostMap;
 import model.TestAStar;
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.Cabin;
@@ -68,6 +67,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 	@Override
 	protected void doRun() {
+		
 		/********** Get CabinView and ConsoleView ************/
 		IWorkbenchPage page = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage();
@@ -103,8 +103,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 		
 			TestAStar astar = new TestAStar(obstacleMap,
 					(int) (cabin.getCabinWidth() / cabin.getScale()),
-					(int) (cabin.getCabinLength() / cabin.getScale()), cabin);
-			
+					(int) (cabin.getCabinLength() / cabin.getScale()), cabin);		
 			while (!TestAStar.getSimulationDone()) {
 				try {
 					for(Passenger pax:ModelHelper.getChildrenByClass(astar.getPassengerLocations(), Passenger.class)) {
@@ -126,24 +125,20 @@ public class SimulateBoardingCommand extends CDTCommand {
 						consoleViewPart.printText("Passenger "+pax.getName()+" is now seated!");
 						alreadySeatedList.add(pax);							
 					}
-				}
-				
+				}				
 				if(!obstacleMap.equals(null)) {
 					cabinViewPart.submitObstacleMap(obstacleMap);
 					consoleViewPart.printText("Heat map generation succeeded.");
-				}
+				}				
 				if(!TestAStar.pathList.isEmpty()) {
 					cabinViewPart.submitPath(TestAStar.getPathList());
 					consoleViewPart.printText("Paths printed successfully.");
 				}
 				consoleViewPart.printText("Boarding completed!");			
-			}
-			
+			}			
 		} 
 		else {
 			consoleViewPart.printText("No boarding possible! Please create passengers.");
 		 }
-
 	}
-
 }

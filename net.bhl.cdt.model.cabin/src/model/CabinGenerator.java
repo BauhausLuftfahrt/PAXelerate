@@ -126,10 +126,17 @@ public class CabinGenerator {
 			for (int j = 0; j <length; j++) {
 				if(obstacleMap[i][j]==maximumObstacleValue) {
 					for(int p = 1; p<k;p++) {
+						/** WEST - EAST - NORTH - SOUTH*/
 						if((i-p)>0) {if(obstacleMap[i-p][j]!=100000) {obstacleMap[i-p][j] = maxPot - p;}}
 						if((i+p)<width) {if(obstacleMap[i+p][j]!=100000) {obstacleMap[i+p][j] = maxPot - p;}}
 						if((j-p)>0) {if(obstacleMap[i][j-p]!=100000) {obstacleMap[i][j-p] = maxPot - p;}}
 						if((j+p)<length) {if(obstacleMap[i][j+p]!=100000) {obstacleMap[i][j+p] = maxPot - p;}}
+						
+						/** NORTHWEST - NORTHEAST - SOUTHEAST - SOUTHWEST*/
+						if(((i-p)>0)&&((j-p)>0)) {if(obstacleMap[i-p][j-p]!=100000) {obstacleMap[i-p][j-p] = maxPot - p;}}
+						if(((i+p)<width)&&((j-p)>0)) {if(obstacleMap[i+p][j-p]!=100000) {obstacleMap[i+p][j-p] = maxPot - p;}}
+						if(((j+p)<length)&&((i+p)<width)) {if(obstacleMap[i+p][j+p]!=100000) {obstacleMap[i+p][j+p] = maxPot - p;}}
+						if(((j+p)<length)&&((i-p)>0)) {if(obstacleMap[i-p][j+p]!=100000) {obstacleMap[i-p][j+p] = maxPot - p;}}
 					}
 				}
 			}
