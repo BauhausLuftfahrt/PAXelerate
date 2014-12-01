@@ -2,6 +2,8 @@ package model;
 
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Curtain;
+import net.bhl.cdt.model.cabin.Door;
+import net.bhl.cdt.model.cabin.DoorType;
 import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.Seat;
@@ -108,10 +110,22 @@ public class CabinGenerator {
 		/*****************************************************/
 		
 		/***********Create potential hole in aisle ***********/
+		int entryMin = 0;
+		int entryMax = 0;
+		for(Door door:ModelHelper.getChildrenByClass(cabin, Door.class)) {
+			if (door.getDoorType()==DoorType.MAIN_DOOR) {
+				entryMin = (int)(door.getYPosition()/cabin.getScale())+2;
+				entryMax = (int)((door.getYPosition()+door.getWidth())/cabin.getScale())-2;
+			}
+		}  
+		int aisleMin = (int)((cabin.getCabinWidth()-cabin.getAisleWidth())/cabin.getScale()/2)+1;
+	    int aisleMax = (int)(cabin.getCabinWidth()/cabin.getScale()-aisleMin)-1;
+	    
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j <length; j++) {
-				int aisleMin = (int)((cabin.getCabinWidth()-cabin.getAisleWidth())/cabin.getScale()/2)+1;
-			    int aisleMax = (int)(cabin.getCabinWidth()/cabin.getScale()-aisleMin)-1;
+				if(j>entryMin&&j<entryMax) {
+					obstacleMap[i][j]= 0;	
+				} 
 				if(i<aisleMax&&i>aisleMin) {
 					obstacleMap[i][j]= 0;	
 				}
