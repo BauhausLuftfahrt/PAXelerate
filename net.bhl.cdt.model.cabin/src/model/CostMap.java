@@ -3,10 +3,16 @@ package model;
 import java.util.ArrayList;
 
 /**
+ * This class creates a cost map by flooding the whole map from a specific point. Every element of the map has its own cost value,
+ * during flooding they are summed up. So every value of the finished cost map represents the total cost to get there from the initial
+ * value. In its current configuration, the cost map is fed with an area map, width, height and the initial starting point. 
+ * 
+ * @see net.bhl.cdt.model.cabin/src/model/AreaMap.java
+ * @see net.bhl.cdt.model.cabin/src/model/Node.java
  * 
  * @author marc.engelmann
- * 
- * This class creates a map and calculates the costs for a walk to a specific position. 
+ * @version 1.0
+ * @date 01.12.2014
  *
  */
 
@@ -20,12 +26,18 @@ public class CostMap {
 	private int[] startPoint = new int[2];
 	private ArrayList <int[]> visitedPoints =  new ArrayList<int[]>();
 	private ArrayList <int[]> openPoints =  new ArrayList<int[]>();
-	
 	private ArrayList <int[]> pointParking = new ArrayList<int[]>();
-	private ArrayList <int[]> pointParkingHelper = new ArrayList<int[]>();
-		
+	private ArrayList <int[]> pointParkingHelper = new ArrayList<int[]>();	
 	private AreaMap areamap;
 	
+	/**
+	 * The cost map is constructed in this function.
+	 * @param width is the width of the map
+	 * @param height is the height of the map
+	 * @param startX is the initial staring point x value
+	 * @param startY is the initial staring point y value
+	 * @param areaMap contains information on the cost of every individual element
+	 */
 	public CostMap(int width, int height,int startX, int startY, AreaMap areaMap) {		
 		this.width=width;
 		this.height=height;
@@ -34,8 +46,7 @@ public class CostMap {
 		startPoint[0] = this.startX;
 		startPoint[1] = this.startY;	
 		areamap = areaMap;
-		map = new int[this.width][this.height];
-		
+		map = new int[this.width][this.height];	
 		for(int i=0;i<this.width;i++) {
 			for(int j=0;j<this.height;j++) {
 				Node node = areamap.getNode(i, j);
@@ -46,19 +57,18 @@ public class CostMap {
 					helpPoint[1] = j;
 					openPoints.add(helpPoint);
 				}
-				else {
-					map[i][j] = -1;
-				}			
+				else { map[i][j] = -1;}			
 			}
 		}
-
 		map[this.startX][this.startY] = 0;
-		
 		visitedPoints.add(startPoint);
 		removePointFromOpenPointsList(startPoint);
 		floodMap();
 	}
 	
+	/**
+	 * This function floods the whole map until no unvisited element is available anymore.
+	 */
 	private void floodMap() {
 		createSurroundingCosts(startPoint);
 		while(openPoints.size()>1) {
@@ -69,6 +79,11 @@ public class CostMap {
 		}
 	}
 	
+	/**
+	 * This function returns whether the requested element is an obstacle or not.
+	 * @param point the requested point
+	 * @return returns the boolean
+	 */
 	private boolean isObstacle(int[] point) {
 		if(map[point[0]][point[1]] == -1) {
 			return true;
@@ -78,6 +93,10 @@ public class CostMap {
 		}
 	}
 	
+	/**
+	 * This function removes a specific point from the list of unvisited points.
+	 * @param point the requested point
+	 */
 	private void removePointFromOpenPointsList(int[] point) {
 		for(int count = 0; count<openPoints.size();count++) {
 			int[] helppoint = openPoints.get(count);
@@ -87,6 +106,12 @@ public class CostMap {
 		}
 	}
 	
+	/**
+	 * This function checks whether there is a specific point in a specific list by scanning through all entries.
+	 * @param list the checked list
+	 * @param point the desired point
+	 * @return is the point in the list?
+	 */
 	private boolean checkForPoint(ArrayList <int[]> list, int[] point) {
 		for(int[] checkPoint:list) {
 			if(checkPoint[0] == point[0] && checkPoint[1] == point[1]) {
@@ -96,6 +121,9 @@ public class CostMap {
 		return false;
 	}
 	
+	/**
+	 * This function moves the points gathered in pointParkingHelper to pointParking.
+	 */
 	private void copyPoints() {
 			pointParking.clear();
 			for(int[] copyPoint:pointParkingHelper) {
@@ -103,6 +131,12 @@ public class CostMap {
 			}
 			pointParkingHelper.clear();			
 	}
+	
+	/**
+	 * This functions calculates the cost for all 8 surrounding elements of one middle element by adding the cost of 
+	 * the middle element to the cost of the specific surrounding element.
+	 * @param middlePoint is the point around which all costs are calculated
+	 */
 	private void createSurroundingCosts (int[] middlePoint) {
 		for(int[]point:getSurroundingPoints(middlePoint[0],middlePoint[1])) {
 			if(!(point[0]<0||point[1]<0||point[0]>=width||point[1]>=height)) {
@@ -118,6 +152,9 @@ public class CostMap {
 		}	
 	}
 	
+	/**
+	 * This method outputs the whole cost map in the console.
+	 */
 	public void printMap() {
 		for(int i=0;i<width;i++) {
 			for(int j=0;j<height;j++) {
@@ -132,6 +169,11 @@ public class CostMap {
 		
 	}
 	
+	/**
+	 * This function outputs a specific list in the console.
+	 * @param list is the ArrayList element (MUST be of type int[]) you want to print out.
+	 */
+	@SuppressWarnings("unused")
 	private void printList(ArrayList <int[]> list) {
 		for(int[] printPoint:list) {
 			System.out.println("x:"+printPoint[0]+", y:"+printPoint[1]);
@@ -139,16 +181,33 @@ public class CostMap {
 		System.out.println();
 	}
 	
+	/**
+	 * This method returns the <b><i>already calculated</i></b> cost of a specific point in the cost map.
+	 * @param point is the point (of dimensionint[2]) of interest 
+	 * @return
+	 */
 	private int getCost(int[] point) {
 		return map[point[0]][point[1]];
 	}
 	
+	/**
+	 * This method returns the <b><i>already calculated</i></b> cost of a specific point in the cost map.
+	 * @param xCord is the x coordinate of the desired point
+	 * @param yCord is the y coordinate of the desired point
+	 * @return
+	 */
 	public int getCostForCoordinates(int xCord, int yCord) {
 		return map[xCord][yCord];
 	}
 	
+	/**
+	 * This method delivers all 8 surrounding points of a specific point in the cost map.
+	 * Starting in the north, all points are collected clockwise.
+	 * @param pointX x coordinate of the middle point
+	 * @param pointY y coordinate of the middle point
+	 * @return
+	 */
 	private int[][] getSurroundingPoints(int pointX, int pointY) {
-		//begin with north, then continue clockwise
 		int [][] points = new int [8][2];
 		points[0][0] = pointX;
 		points[0][1] = pointY-1;
