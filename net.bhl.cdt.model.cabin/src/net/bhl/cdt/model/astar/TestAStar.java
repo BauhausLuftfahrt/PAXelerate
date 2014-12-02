@@ -14,9 +14,9 @@ import net.bhl.cdt.model.util.ModelHelper;
 
 public class TestAStar {
 
-	private static int mapWidth = 20;
+    private static int mapWidth = 20;
 	private static int mapHeight = 20;
-	public static Cabin cabin;
+	private static Cabin cabin;
 	
 	public static Boolean simulationDone = false;
 	static CabinViewPart cabinViewPart;
@@ -34,15 +34,16 @@ public class TestAStar {
 	public static ArrayList<int[][]> pathList = new ArrayList<int[][]>();
 	static StopWatch s = new StopWatch();
 
-	public TestAStar(int[][] obstacleMap, int mapWidth, int mapHeight, Cabin cabin) {
+	public TestAStar(int[][] obstacleMapn, int mapWidthn, int mapHeightn, Cabin cabinn) {
 		
-		this.obstacleMap = obstacleMap;
-		this.mapWidth = mapWidth;
-		this.mapHeight = mapHeight;
+		obstacleMap = obstacleMapn;
+		mapWidth = mapWidthn;
+		mapHeight = mapHeightn;
 
 		console.addToLog("Cabin initializing...");
-		this.map = new AreaMap(mapWidth, mapHeight, obstacleMap);
-		this.cabin = cabin;
+		
+		map = new AreaMap(mapWidth, mapHeight, obstacleMap);
+		cabin = cabinn;
 		run();
 	}
 
@@ -153,7 +154,7 @@ public class TestAStar {
 		for(Passenger passenger:ModelHelper.getChildrenByClass(cabin, Passenger.class)) {
 			Seat seat = passenger.getSeatRef();
 			Door door = passenger.getDoor();
-			Agent agent = new Agent("Passenger "+passenger.getName(), passenger, 5, (int)((door.getYPosition()+door.getWidth()/2)/cabin.getScale()), (int)((seat.getXPosition()+seat.getWidth()/2)/cabin.getScale()),(int)((seat.getYPosition()/cabin.getScale())-1),(int)cabin.getScale());
+			Agent agent = new Agent("Passenger "+passenger.getName(), passenger, 0, (int)((door.getYPosition()+door.getWidth()/2)/cabin.getScale()), (int)((seat.getXPosition()+seat.getWidth()/2)/cabin.getScale()),(int)((seat.getYPosition()/cabin.getScale())-1),(int)cabin.getScale());
 			addAgentToAgentList(agent);
 		}
 		runAgents();

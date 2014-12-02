@@ -25,7 +25,6 @@ import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.Transform;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.ISharedImages;
@@ -243,6 +242,7 @@ public class CabinViewPart extends ViewPart {
 				for (Passenger pass : ModelHelper.getChildrenByClass(paxCabin,Passenger.class)) {
 					int[] color = calculateColor(pass);
 					e.gc.setBackground(new Color(e.display, color[0], color[1], color[2]));
+					//e.gc.setBackground(black);
 					if(!pass.isIsSeated()) {
 						if(!((pass.getPositionX()==0)&&(pass.getPositionY()==0))) {	
 							e.gc.fillOval(
@@ -535,9 +535,8 @@ public class CabinViewPart extends ViewPart {
 								.getChildrenByClass(drawCabin, Passenger.class)) {
 							Seat passengerSeat = passenger.getSeatRef();
 							int[] colorCode = calculateColor(passenger);
-							e.gc.setBackground(new Color(e.display,
-									colorCode[0], colorCode[1], colorCode[2]));
-
+							e.gc.setBackground(new Color(e.display,colorCode[0], colorCode[1], colorCode[2]));
+							//e.gc.setBackground(black);
 							if (passengerSeat.getLength() < passengerSeat
 									.getWidth()) {
 								e.gc.fillOval(

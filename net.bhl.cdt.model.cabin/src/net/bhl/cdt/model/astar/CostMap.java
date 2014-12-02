@@ -7,13 +7,13 @@ import java.util.ArrayList;
  * during flooding they are summed up. So every value of the finished cost map represents the total cost to get there from the initial
  * value. In its current configuration, the cost map is fed with an area map, width, height and the initial starting point. 
  * 
- * @see net.bhl.cdt.model.cabin/src/model/AreaMap.java
- * @see net.bhl.cdt.model.cabin/src/model/Node.java
+ * @see net.bhl.cdt.model.astar/AreaMap.java
+ * @see net.bhl.cdt.model.astar/Node.java
  * 
  * @author marc.engelmann
- * @version 1.0
- * @date 01.12.2014
- *
+ * @version 1.2
+ * @date 02.12.2014
+ * 
  */
 
 public class CostMap {
@@ -27,7 +27,6 @@ public class CostMap {
 	private int goalY;
 	private int[] startPoint = new int[2];
 	private ArrayList <int[]> visitedPoints =  new ArrayList<int[]>();
-	//private ArrayList <int[]> openPoints =  new ArrayList<int[]>();
 	private ArrayList <int[]> pointParking = new ArrayList<int[]>();
 	private ArrayList <int[]> pointParkingHelper = new ArrayList<int[]>();	
 	private AreaMap areamap;
@@ -59,14 +58,12 @@ public class CostMap {
 					int[] helpPoint = new int[2];
 					helpPoint[0] = i;
 					helpPoint[1] = j;
-					//openPoints.add(helpPoint);
 				}
 				else { map[i][j] = -1;}			
 			}
 		}
 		map[this.startX][this.startY] = 0;
 		visitedPoints.add(startPoint);
-		//removePointFromOpenPointsList(startPoint);
 		floodMap();
 	}
 	
@@ -80,7 +77,6 @@ public class CostMap {
 			for(int[] newPoint:pointParking) {
 				createSurroundingCosts(newPoint);
 			}
-			//printMap();
 		}
 		copyPoints();
 		for(int[] newPoint:pointParking) {
@@ -88,6 +84,10 @@ public class CostMap {
 		}
 	}
 	
+	/**
+	 * This method checks if the goal was reached.
+	 * @return returns if the goal was reached.
+	 */
 	private boolean goalReached() {
 		for(int[] point:pointParking) {
 			if(point[0]==goalX&&point[1]==goalY) {
@@ -108,19 +108,6 @@ public class CostMap {
 		}
 		else { return false; }
 	}
-	
-	/**
-	 * This function removes a specific point from the list of unvisited points.
-	 * @param point the requested point
-	 */
-//	private void removePointFromOpenPointsList(int[] point) {
-//		for(int count = 0; count<openPoints.size();count++) {
-//			int[] helppoint = openPoints.get(count);
-//			if(point[0] == helppoint[0]&&point[1] == helppoint[1]) {
-//					openPoints.remove(count);
-//			}
-//		}
-//	}
 	
 	/**
 	 * This function checks whether there is a specific point in a specific list by scanning through all entries.
@@ -160,7 +147,6 @@ public class CostMap {
 					if(!(checkForPoint(visitedPoints,point))) {
 						map[point[0]][point[1]] += getCost(middlePoint);
 						visitedPoints.add(point);
-						//removePointFromOpenPointsList(point);
 						pointParkingHelper.add(point);
 					}
 				}
@@ -199,7 +185,7 @@ public class CostMap {
 	
 	/**
 	 * This method returns the <b><i>already calculated</i></b> cost of a specific point in the cost map.
-	 * @param point is the point (of dimensionint[2]) of interest 
+	 * @param point is the point (of dimension int[2]) of interest 
 	 * @return
 	 */
 	private int getCost(int[] point) {

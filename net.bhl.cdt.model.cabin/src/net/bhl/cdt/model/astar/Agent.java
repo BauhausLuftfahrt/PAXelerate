@@ -135,6 +135,27 @@ public class Agent extends Subject implements Runnable {
 		} else {return false;}
 	}
 	
+	private void occupyArea(int xLoc, int yLoc, boolean occupy) {
+		if(xLoc>3&&yLoc>5)
+		//for (int p = 1; p<=5; p++) {
+			for (int q = 1; q<=3;q++) {
+				TestAStar.map.getNode(xLoc-q, yLoc).setOccupiedByAgent(occupy);
+				TestAStar.map.getNode(xLoc+q, yLoc).setOccupiedByAgent(occupy);
+			}
+		//}
+	}
+	
+	private boolean areaBlocked(int xLoc, int yLoc) {
+		//if(xLoc>3&&yLoc>5) {
+		//	for (int q = 1; q<=3;q++) {
+		//		if(TestAStar.map.getNode(xLoc-q, yLoc).isOccupiedByAgent()) {return true;}
+		//		if(TestAStar.map.getNode(xLoc+q, yLoc).isOccupiedByAgent()) {return true;}
+		//	}
+		//}
+		if(TestAStar.map.getNode(xLoc, yLoc).isOccupiedByAgent()) {return true;}	
+		else {return false;}
+	}
+	
 	
 	public void run() {
 		try {
@@ -153,33 +174,26 @@ public class Agent extends Subject implements Runnable {
 				this.currentX = path[i][0];
 				this.currentY = path[i][1];	
 				
-				if(TestAStar.map.getNode(currentX, currentY).isOccupiedByAgent() == true){
+				if(areaBlocked(currentX,currentY)){
 					Thread.sleep(200);
 					numbOfInterupts ++;
 				}
 				else if(passengerStowsLuggage()&&!alreadyStowed) {
 					TestAStar.map.getNode(previousX, previousY).setOccupiedByAgent(false);
 					TestAStar.map.getNode(currentX, currentY).setOccupiedByAgent(true);	
-					TestAStar.map.getNode(currentX-1, currentY).setOccupiedByAgent(true);
-					TestAStar.map.getNode(currentX+1, currentY).setOccupiedByAgent(true);
-					TestAStar.map.getNode(currentX-2, currentY).setOccupiedByAgent(true);
-					TestAStar.map.getNode(currentX+2, currentY).setOccupiedByAgent(true);
+					occupyArea(currentX,currentY,true);
 					Thread.sleep((int)(passenger.getLuggageStowTime()*1000/2));
-					TestAStar.map.getNode(currentX, currentY).setOccupiedByAgent(false);
-					TestAStar.map.getNode(currentX-1, currentY).setOccupiedByAgent(false);
-					TestAStar.map.getNode(currentX+1, currentY).setOccupiedByAgent(false);
-					TestAStar.map.getNode(currentX-2, currentY).setOccupiedByAgent(false);
-					TestAStar.map.getNode(currentX+2, currentY).setOccupiedByAgent(false);
+					occupyArea(currentX,currentY,false);
 					alreadyStowed = true;
 					i++;				
 				}
 				else {
 					TestAStar.map.getNode(previousX, previousY).setOccupiedByAgent(false);
-					TestAStar.map.getNode(currentX, currentY).setOccupiedByAgent(true);							
+					TestAStar.map.getNode(currentX, currentY).setOccupiedByAgent(true);
+					//occupyArea(previousX,previousY,false);
+					//occupyArea(currentX,currentY,true);
 					this.currentAgentPosition[i][0] = this.currentX;
 					this.currentAgentPosition[i][1] = this.currentY;
-					TestAStar.map.getNode(currentX, currentY).setOccupiedByAgent(true);
-					TestAStar.map.getNode(previousX, previousY).setOccupiedByAgent(false);
 					notifyObservers(i);
 					passenger.setPositionX(this.currentAgentPosition[i][0]*scale);
 					passenger.setPositionY(this.currentAgentPosition[i][1]*scale);

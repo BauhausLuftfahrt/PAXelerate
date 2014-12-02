@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.astar.CabinGenerator;
+import net.bhl.cdt.model.astar.StopWatch;
 import net.bhl.cdt.model.astar.TestAStar;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Passenger;
@@ -52,7 +53,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 	private CabinGenerator generator;
 	private ArrayList<Passenger> alreadySeatedList = new ArrayList<Passenger>();
 	private int[][] obstacleMap = null;
-
+	static StopWatch s = new StopWatch();
+	
 	/**
 	 * This is the constructor method of the SimulateBoardingCommand.
 	 * 
@@ -66,17 +68,14 @@ public class SimulateBoardingCommand extends CDTCommand {
 	@Override
 	protected void doRun() {
 		
-		/********** Get CabinView and ConsoleView ************/
-		IWorkbenchPage page = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage();
-		CabinViewPart cabinViewPart = (CabinViewPart) page
-				.findView("net.bhl.cdt.model.cabin.cabinview");
-		ConsoleViewPart consoleViewPart = (ConsoleViewPart) page
-				.findView("net.bhl.cdt.model.cabin.consoleview");
-		/***************************************************/
+		/********************************** Get CabinView and ConsoleView ***************************************/
+		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+		CabinViewPart cabinViewPart = (CabinViewPart) page.findView("net.bhl.cdt.model.cabin.cabinview");
+		ConsoleViewPart consoleViewPart = (ConsoleViewPart) page.findView("net.bhl.cdt.model.cabin.consoleview");
+		/********************************************************************************************************/
 
 		consoleViewPart.printText("Initializing the boarding simulation...");
-
+		s.start();
 		if (!cabin.getPassengers().isEmpty()) {
 			generator = new CabinGenerator(cabin);
 			obstacleMap = generator.createObstacleMap();
@@ -103,8 +102,11 @@ public class SimulateBoardingCommand extends CDTCommand {
 					if(pax.isIsSeated()&&!alreadySeatedList.contains(pax)) {
 						consoleViewPart.printText("Passenger "+pax.getName()+" is now seated!");
 						alreadySeatedList.add(pax);							
-					}
+					}	
 				}
+				
+				s.stop();
+				consoleViewPart.printText("Elapsed time for boarding: "+s.getElapsedTimeSecs()+" seconds");
 				
 				if(!obstacleMap.equals(null)) {
 					cabinViewPart.submitObstacleMap(obstacleMap);
@@ -118,8 +120,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 				consoleViewPart.printText("Boarding completed!");			
 			}			
 		} 
-		else {
-			consoleViewPart.printText("No boarding possible! Please create passengers.");
-		 }
+		else {consoleViewPart.printText("No boarding possible! Please create passengers.");}
+		
 	}
 }
