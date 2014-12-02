@@ -180,7 +180,7 @@ public class Agent extends Subject implements Runnable {
 					this.currentAgentPosition[i][1] = this.currentY;
 					TestAStar.map.getNode(currentX, currentY).setOccupiedByAgent(true);
 					TestAStar.map.getNode(previousX, previousY).setOccupiedByAgent(false);
-					//notifyObservers(i);
+					notifyObservers(i);
 					passenger.setPositionX(this.currentAgentPosition[i][0]*scale);
 					passenger.setPositionY(this.currentAgentPosition[i][1]*scale);
 					passenger.setOrientationInDegree(getRotation((currentX - previousX),(currentY - previousY)));
@@ -188,6 +188,7 @@ public class Agent extends Subject implements Runnable {
 					i++;
 				}
 			}
+			TestAStar.map.getNode(currentX, currentY).setOccupiedByAgent(false);	
 			passenger.setIsSeated(true);
 			TestAStar.setPassengerSeated(passenger);	
 			s.stop();
