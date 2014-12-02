@@ -1,6 +1,7 @@
 package net.bhl.cdt.model.astar;
 
 import net.bhl.cdt.model.cabin.Passenger;
+import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.observer.Subject;
 
 
@@ -16,6 +17,8 @@ public class Agent extends Subject implements Runnable {
 	
 	private Passenger passenger;
 	private int scale;
+	
+	private boolean alreadyStowed = false;
 	
 	static StopWatch s = new StopWatch();
 	
@@ -125,6 +128,14 @@ public class Agent extends Subject implements Runnable {
 		return deg;
 	}
 	
+	private boolean passengerStowsLuggage() {
+		Seat seat = passenger.getSeatRef();
+		if((passenger.isHasLuggage())&&(currentY==(int)(seat.getYPosition()/scale-5))) {
+			return true;
+		} else {return false;}
+	}
+	
+	
 	public void run() {
 		try {
 			Thread.sleep((int)(passenger.getStartBoardingAfterDelay()*1000));
@@ -132,7 +143,8 @@ public class Agent extends Subject implements Runnable {
 			this.currentAgentPosition = new int[path.length][2];
 			TestAStar.submitPath(path);
 			int numbOfInterupts = 0;
-			for (int i = 0; i < path.length; i++) {
+			int i = 0;
+			while(i < path.length) {
 				//first step of the agent
 				if(i != 0) {
 					this.previousX = path[i-1][0];
@@ -140,10 +152,26 @@ public class Agent extends Subject implements Runnable {
 				}
 				this.currentX = path[i][0];
 				this.currentY = path[i][1];	
+				
 				if(TestAStar.map.getNode(currentX, currentY).isOccupiedByAgent() == true){
-				 Thread.sleep(200);
-				 numbOfInterupts ++;
-				 // here a new path should be calculated!
+					Thread.sleep(200);
+					numbOfInterupts ++;
+				}
+				else if(passengerStowsLuggage()&&!alreadyStowed) {
+					TestAStar.map.getNode(previousX, previousY).setOccupiedByAgent(false);
+					TestAStar.map.getNode(currentX, currentY).setOccupiedByAgent(true);	
+					TestAStar.map.getNode(currentX-1, currentY).setOccupiedByAgent(true);
+					TestAStar.map.getNode(currentX+1, currentY).setOccupiedByAgent(true);
+					TestAStar.map.getNode(currentX-2, currentY).setOccupiedByAgent(true);
+					TestAStar.map.getNode(currentX+2, currentY).setOccupiedByAgent(true);
+					Thread.sleep((int)(passenger.getLuggageStowTime()*1000/2));
+					TestAStar.map.getNode(currentX, currentY).setOccupiedByAgent(false);
+					TestAStar.map.getNode(currentX-1, currentY).setOccupiedByAgent(false);
+					TestAStar.map.getNode(currentX+1, currentY).setOccupiedByAgent(false);
+					TestAStar.map.getNode(currentX-2, currentY).setOccupiedByAgent(false);
+					TestAStar.map.getNode(currentX+2, currentY).setOccupiedByAgent(false);
+					alreadyStowed = true;
+					i++;				
 				}
 				else {
 					TestAStar.map.getNode(previousX, previousY).setOccupiedByAgent(false);
@@ -153,11 +181,11 @@ public class Agent extends Subject implements Runnable {
 					TestAStar.map.getNode(currentX, currentY).setOccupiedByAgent(true);
 					TestAStar.map.getNode(previousX, previousY).setOccupiedByAgent(false);
 					//notifyObservers(i);
-					
 					passenger.setPositionX(this.currentAgentPosition[i][0]*scale);
 					passenger.setPositionY(this.currentAgentPosition[i][1]*scale);
 					passenger.setOrientationInDegree(getRotation((currentX - previousX),(currentY - previousY)));
 					Thread.sleep((int)(1000/(passenger.getWalkingSpeed()*100/scale)));	
+					i++;
 				}
 			}
 			passenger.setIsSeated(true);

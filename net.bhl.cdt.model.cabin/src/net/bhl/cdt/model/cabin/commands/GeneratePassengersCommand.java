@@ -81,6 +81,7 @@ public class GeneratePassengersCommand extends CDTCommand{
 		classNameString = "";
 		
 		Sex sex = Sex.FEMALE;
+		boolean hasLuggage = false;
 		int paxInClass;
 		int seatsInClass;
 		int seatAreaBegin;
@@ -172,11 +173,13 @@ public class GeneratePassengersCommand extends CDTCommand{
 			}
 		
 			if (rand.nextInt(2)==1) {
-				sex = Sex.FEMALE;
-			}
-			else {
 				sex = Sex.MALE;
 			}
+		
+			//if (rand.nextInt(2)==1) {
+				newPassenger.setHasLuggage(true);
+			//}
+			
 			newPassenger.setSex(sex);
 			newPassenger.setStartBoardingAfterDelay(passengerIdCount/10);
 			
@@ -206,6 +209,8 @@ public class GeneratePassengersCommand extends CDTCommand{
 			newPassenger.setWidth(rand6.nextInt(30) + 30 );
 			Random rand7 = new Random();
 			newPassenger.setWalkingSpeed((rand7.nextInt(15))*0.1 + 1.0);
+			Random rand8 = new Random();
+			newPassenger.setLuggageStowTime((rand8.nextInt(5)) + 5.0);
 			passengerIdCount ++;
 			passengerPerClassCount ++;
 			

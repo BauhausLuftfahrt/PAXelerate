@@ -41,6 +41,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getWalkingSpeed <em>Walking Speed</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getStartBoardingAfterDelay <em>Start Boarding After Delay</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getNumberOfWaits <em>Number Of Waits</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#isHasLuggage <em>Has Luggage</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getLuggageStowTime <em>Luggage Stow Time</em>}</li>
  * </ul>
  * </p>
  *
@@ -428,6 +430,46 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	protected int numberOfWaits = NUMBER_OF_WAITS_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #isHasLuggage() <em>Has Luggage</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isHasLuggage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean HAS_LUGGAGE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isHasLuggage() <em>Has Luggage</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isHasLuggage()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean hasLuggage = HAS_LUGGAGE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLuggageStowTime() <em>Luggage Stow Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLuggageStowTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double LUGGAGE_STOW_TIME_EDEFAULT = 1.0;
+
+	/**
+	 * The cached value of the '{@link #getLuggageStowTime() <em>Luggage Stow Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLuggageStowTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected double luggageStowTime = LUGGAGE_STOW_TIME_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -804,6 +846,48 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isHasLuggage() {
+		return hasLuggage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHasLuggage(boolean newHasLuggage) {
+		boolean oldHasLuggage = hasLuggage;
+		hasLuggage = newHasLuggage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__HAS_LUGGAGE, oldHasLuggage, hasLuggage));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getLuggageStowTime() {
+		return luggageStowTime;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLuggageStowTime(double newLuggageStowTime) {
+		double oldLuggageStowTime = luggageStowTime;
+		luggageStowTime = newLuggageStowTime;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__LUGGAGE_STOW_TIME, oldLuggageStowTime, luggageStowTime));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public double getHeight() {
 		return height;
 	}
@@ -950,6 +1034,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return getStartBoardingAfterDelay();
 			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
 				return getNumberOfWaits();
+			case CabinPackage.PASSENGER__HAS_LUGGAGE:
+				return isHasLuggage();
+			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
+				return getLuggageStowTime();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1021,6 +1109,12 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return;
 			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
 				setNumberOfWaits((Integer)newValue);
+				return;
+			case CabinPackage.PASSENGER__HAS_LUGGAGE:
+				setHasLuggage((Boolean)newValue);
+				return;
+			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
+				setLuggageStowTime((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1094,6 +1188,12 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
 				setNumberOfWaits(NUMBER_OF_WAITS_EDEFAULT);
 				return;
+			case CabinPackage.PASSENGER__HAS_LUGGAGE:
+				setHasLuggage(HAS_LUGGAGE_EDEFAULT);
+				return;
+			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
+				setLuggageStowTime(LUGGAGE_STOW_TIME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1146,6 +1246,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return startBoardingAfterDelay != START_BOARDING_AFTER_DELAY_EDEFAULT;
 			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
 				return numberOfWaits != NUMBER_OF_WAITS_EDEFAULT;
+			case CabinPackage.PASSENGER__HAS_LUGGAGE:
+				return hasLuggage != HAS_LUGGAGE_EDEFAULT;
+			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
+				return luggageStowTime != LUGGAGE_STOW_TIME_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1196,6 +1300,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 		result.append(startBoardingAfterDelay);
 		result.append(", numberOfWaits: ");
 		result.append(numberOfWaits);
+		result.append(", hasLuggage: ");
+		result.append(hasLuggage);
+		result.append(", luggageStowTime: ");
+		result.append(luggageStowTime);
 		result.append(')');
 		return result.toString();
 	}

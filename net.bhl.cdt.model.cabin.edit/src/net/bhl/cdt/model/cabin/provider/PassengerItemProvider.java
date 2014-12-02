@@ -80,6 +80,8 @@ public class PassengerItemProvider
 			addWalkingSpeedPropertyDescriptor(object);
 			addStartBoardingAfterDelayPropertyDescriptor(object);
 			addNumberOfWaitsPropertyDescriptor(object);
+			addHasLuggagePropertyDescriptor(object);
+			addLuggageStowTimePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -437,6 +439,50 @@ public class PassengerItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Has Luggage feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addHasLuggagePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_hasLuggage_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_hasLuggage_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__HAS_LUGGAGE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Luggage Stow Time feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLuggageStowTimePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_luggageStowTime_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_luggageStowTime_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__LUGGAGE_STOW_TIME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Height feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -578,6 +624,8 @@ public class PassengerItemProvider
 			case CabinPackage.PASSENGER__WALKING_SPEED:
 			case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
 			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
+			case CabinPackage.PASSENGER__HAS_LUGGAGE:
+			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

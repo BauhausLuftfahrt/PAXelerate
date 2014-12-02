@@ -18,7 +18,6 @@ public class Node implements Comparable<Node> {
         boolean visited;
         float distanceFromStart;
         int costFromStart;
-        int costFromGoal; 
         float heuristicDistanceFromGoal;
         Node previousNode;
         int x;
@@ -28,6 +27,7 @@ public class Node implements Comparable<Node> {
 		boolean isStart;
         boolean isGoal;
         private  int cost;
+        double compareFactor;
         
        
         public int getCost() {
@@ -45,12 +45,21 @@ public class Node implements Comparable<Node> {
                 this.visited = false;
                 this.distanceFromStart = Integer.MAX_VALUE;
                 this.costFromStart = Integer.MAX_VALUE;
+                this.compareFactor = Integer.MAX_VALUE;
                 this.isObstacle = false;
                 this.isStart = false;
                 this.isGoal = false;
         }
        
-        Node (int x, int y, boolean visited, int distanceFromStart, boolean isObstical, boolean isStart, boolean isGoal) {
+        public double getCompareFactor() {
+			return compareFactor;
+		}
+
+		public void setCompareFactor(double compareFactor) {
+			this.compareFactor = compareFactor;
+		}
+
+		Node (int x, int y, boolean visited, int distanceFromStart, boolean isObstical, boolean isStart, boolean isGoal) {
                 neighborList = new ArrayList<Node>();
                 this.x = x;
                 this.y = y;
@@ -262,14 +271,6 @@ public class Node implements Comparable<Node> {
 			this.costFromStart = costFromStart;
 		}
 		
-		 public float getCostFromGoal() {
-				return costFromGoal;
-			}
-
-		public void setCostFromGoal(int costFromGoal) {
-				this.costFromGoal = costFromGoal;
-		}
-
 		public void setGoal(boolean isGoal) {
                 this.isGoal = isGoal;
         }
@@ -277,27 +278,29 @@ public class Node implements Comparable<Node> {
         public boolean equals(Node node) {
                 return (node.x == x) && (node.y == y);
         }
-
+        
         /**EDITED BY MARC.ENGELMANN ON 01-12-2014*/
         /** modified this function in order to sort nodes by cost, not by distance!
          * Only if the cost is the same, sort it by the distance! 
          */ 
         public int compareTo(Node otherNode) {
-               
-                if (costFromStart < otherNode.costFromStart) {
-                        return -1;
-                } else if (costFromStart > otherNode.costFromStart) {
-                        return 1;
-                } else {
-                	if(distanceFromStart < otherNode.distanceFromStart) {
-                		return -1;
-                	}
-                	else if (distanceFromStart > otherNode.distanceFromStart) {
-                		return 1;
-                	} else {
-                        return 0;
-                	}
-                }
+//        		/**better if: cheaper & closer or equally cheap but closer */ 
+//                if(((costFromStart<otherNode.costFromStart)&&(distanceFromStart<otherNode.distanceFromStart))||((costFromStart==otherNode.costFromStart)&&(distanceFromStart<otherNode.distanceFromStart))) {
+//                	return -1;
+//                }
+//                /**worse if: more expensive and further away or equally expensive but further away*/
+//                else if(((costFromStart>otherNode.costFromStart)&&(distanceFromStart>otherNode.distanceFromStart))||((costFromStart==otherNode.costFromStart)&&(distanceFromStart>otherNode.distanceFromStart))) {
+//                	return 1;
+//                	} 
+//                else { 
+//                	return 0;
+//                }
+        	if(compareFactor < otherNode.compareFactor) {
+        		return -1;
+        	}else if(compareFactor > otherNode.compareFactor) {
+        		return 1;	
+        	} 
+        	else {return 0;}
         }
 }
 

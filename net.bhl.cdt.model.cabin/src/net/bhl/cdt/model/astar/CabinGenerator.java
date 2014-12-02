@@ -117,7 +117,7 @@ public class CabinGenerator {
 			}
 		}  
 		int aisleMin = (int)((cabin.getCabinWidth()-cabin.getAisleWidth())/cabin.getScale()/2)+1;
-	    int aisleMax = (int)(cabin.getCabinWidth()/cabin.getScale()-aisleMin)-1;
+	    int aisleMax = (int)(cabin.getCabinWidth()/cabin.getScale()-aisleMin)-2;
 	    
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j <length; j++) {

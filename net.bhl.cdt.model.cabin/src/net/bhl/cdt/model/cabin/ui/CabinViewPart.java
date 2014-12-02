@@ -310,7 +310,7 @@ public class CabinViewPart extends ViewPart {
 					oneMeter = (int) (cabin_x * 100 / drawCabin.getCabinWidth());
 				}
 				e.gc.drawText(
-						"1px = "
+						"1 px = "
 								+ df.format(drawCabin.getCabinWidth() / cabin_x)
 								+ " cm", 20, 100);
 				if (oneMeter > 20) {
@@ -320,12 +320,15 @@ public class CabinViewPart extends ViewPart {
 				} else {
 					meter = 3;
 				}
-				e.gc.drawText(meter + "m", 20, 115);
+				e.gc.drawText(meter + " m", 20, 115);
 				e.gc.drawLine(xbegin, ybegin, xbegin + oneMeter * meter, ybegin);
 				e.gc.drawLine(xbegin, ybegin - eckenBreite, xbegin, ybegin
 						+ eckenBreite);
 				e.gc.drawLine(xbegin + oneMeter * meter, ybegin - eckenBreite,
 						xbegin + oneMeter * meter, ybegin + eckenBreite);
+				
+				e.gc.drawText("1 pt = "+(int)(drawCabin.getScale()/factor)+" px",20,130);
+				//e.gc.drawRectangle(30,130,(int)(drawCabin.getScale()/factor),(int)(drawCabin.getScale()/factor));
 				/*************************************************************************************/
 
 				/********************************* Coordinate Box **************************************/

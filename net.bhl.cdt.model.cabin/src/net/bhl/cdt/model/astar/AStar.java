@@ -41,11 +41,12 @@ public class AStar {
 
                 map.getStartNode().setDistanceFromStart(0);
                 map.getStartNode().setCostFromStart(0);
+                map.getStartNode().setCompareFactor(0);
                 closedList.clear();
                 openList.clear();
                 openList.add(map.getStartNode());
                 
-                costmap = new CostMap(map.getMapWidth(), map.getMapHeight(), startX, startY, map);
+                costmap = new CostMap(map.getMapWidth(), map.getMapHeight(), startX, startY, goalX, goalY, map);
                 
                 //while we haven't reached the goal yet
                 while(openList.size() != 0) {
@@ -106,6 +107,7 @@ public class AStar {
                                                 neighbor.setPreviousNode(current);
                                                 neighbor.setCostFromStart(neighborCostFromStart);
                                                 neighbor.setDistanceFromStart(neighborDistanceFromStart);
+                                                neighbor.setCompareFactor((neighborCostFromStart));//+0.001*neighborDistanceFromStart));
                                                 //neighbor.setHeuristicDistanceFromGoal(heuristic.getEstimatedDistanceToGoal(neighbor.getX(), neighbor.getY(), map.getGoalLocationX(), map.getGoalLocationY()));
                                         }
                                 }

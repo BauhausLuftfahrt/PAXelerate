@@ -23,9 +23,11 @@ public class CostMap {
 	private int height;
 	private int startX;
 	private int startY;
+	private int goalX;
+	private int goalY;
 	private int[] startPoint = new int[2];
 	private ArrayList <int[]> visitedPoints =  new ArrayList<int[]>();
-	private ArrayList <int[]> openPoints =  new ArrayList<int[]>();
+	//private ArrayList <int[]> openPoints =  new ArrayList<int[]>();
 	private ArrayList <int[]> pointParking = new ArrayList<int[]>();
 	private ArrayList <int[]> pointParkingHelper = new ArrayList<int[]>();	
 	private AreaMap areamap;
@@ -38,11 +40,13 @@ public class CostMap {
 	 * @param startY is the initial staring point y value
 	 * @param areaMap contains information on the cost of every individual element
 	 */
-	public CostMap(int width, int height,int startX, int startY, AreaMap areaMap) {		
+	public CostMap(int width, int height,int startX, int startY, int goalX, int goalY, AreaMap areaMap) {		
 		this.width=width;
 		this.height=height;
 		this.startX = startX;
 		this.startY = startY;
+		this.goalX = goalX;
+		this.goalY = goalY;
 		startPoint[0] = this.startX;
 		startPoint[1] = this.startY;	
 		areamap = areaMap;
@@ -55,14 +59,14 @@ public class CostMap {
 					int[] helpPoint = new int[2];
 					helpPoint[0] = i;
 					helpPoint[1] = j;
-					openPoints.add(helpPoint);
+					//openPoints.add(helpPoint);
 				}
 				else { map[i][j] = -1;}			
 			}
 		}
 		map[this.startX][this.startY] = 0;
 		visitedPoints.add(startPoint);
-		removePointFromOpenPointsList(startPoint);
+		//removePointFromOpenPointsList(startPoint);
 		floodMap();
 	}
 	
@@ -71,12 +75,26 @@ public class CostMap {
 	 */
 	private void floodMap() {
 		createSurroundingCosts(startPoint);
-		while(openPoints.size()>1) {
+		while(!goalReached()) {
 			copyPoints();
 			for(int[] newPoint:pointParking) {
 				createSurroundingCosts(newPoint);
 			}
+			//printMap();
 		}
+		copyPoints();
+		for(int[] newPoint:pointParking) {
+			createSurroundingCosts(newPoint);
+		}
+	}
+	
+	private boolean goalReached() {
+		for(int[] point:pointParking) {
+			if(point[0]==goalX&&point[1]==goalY) {
+				return true;
+			}		
+		} 
+		return false;
 	}
 	
 	/**
@@ -88,23 +106,21 @@ public class CostMap {
 		if(map[point[0]][point[1]] == -1) {
 			return true;
 		}
-		else {
-			return false;
-		}
+		else { return false; }
 	}
 	
 	/**
 	 * This function removes a specific point from the list of unvisited points.
 	 * @param point the requested point
 	 */
-	private void removePointFromOpenPointsList(int[] point) {
-		for(int count = 0; count<openPoints.size();count++) {
-			int[] helppoint = openPoints.get(count);
-			if(point[0] == helppoint[0]&&point[1] == helppoint[1]) {
-					openPoints.remove(count);
-			}
-		}
-	}
+//	private void removePointFromOpenPointsList(int[] point) {
+//		for(int count = 0; count<openPoints.size();count++) {
+//			int[] helppoint = openPoints.get(count);
+//			if(point[0] == helppoint[0]&&point[1] == helppoint[1]) {
+//					openPoints.remove(count);
+//			}
+//		}
+//	}
 	
 	/**
 	 * This function checks whether there is a specific point in a specific list by scanning through all entries.
@@ -144,7 +160,7 @@ public class CostMap {
 					if(!(checkForPoint(visitedPoints,point))) {
 						map[point[0]][point[1]] += getCost(middlePoint);
 						visitedPoints.add(point);
-						removePointFromOpenPointsList(point);
+						//removePointFromOpenPointsList(point);
 						pointParkingHelper.add(point);
 					}
 				}

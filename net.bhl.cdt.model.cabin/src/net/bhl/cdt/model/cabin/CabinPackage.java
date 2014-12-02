@@ -967,13 +967,31 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER__NUMBER_OF_WAITS = 19;
 
 	/**
+	 * The feature id for the '<em><b>Has Luggage</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__HAS_LUGGAGE = 20;
+
+	/**
+	 * The feature id for the '<em><b>Luggage Stow Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__LUGGAGE_STOW_TIME = 21;
+
+	/**
 	 * The number of structural features of the '<em>Passenger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_FEATURE_COUNT = 20;
+	int PASSENGER_FEATURE_COUNT = 22;
 
 	/**
 	 * The number of operations of the '<em>Passenger</em>' class.
@@ -2512,6 +2530,28 @@ public interface CabinPackage extends EPackage {
 	EAttribute getPassenger_NumberOfWaits();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#isHasLuggage <em>Has Luggage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Has Luggage</em>'.
+	 * @see net.bhl.cdt.model.cabin.Passenger#isHasLuggage()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_HasLuggage();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getLuggageStowTime <em>Luggage Stow Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Luggage Stow Time</em>'.
+	 * @see net.bhl.cdt.model.cabin.Passenger#getLuggageStowTime()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_LuggageStowTime();
+
+	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getHeight <em>Height</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3735,6 +3775,20 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PASSENGER__NUMBER_OF_WAITS = eINSTANCE.getPassenger_NumberOfWaits();
+		/**
+		 * The meta object literal for the '<em><b>Has Luggage</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__HAS_LUGGAGE = eINSTANCE.getPassenger_HasLuggage();
+		/**
+		 * The meta object literal for the '<em><b>Luggage Stow Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__LUGGAGE_STOW_TIME = eINSTANCE.getPassenger_LuggageStowTime();
 		/**
 		 * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
