@@ -1,4 +1,4 @@
-package observer;
+package net.bhl.cdt.model.observer;
 
 
 import java.util.ArrayList;

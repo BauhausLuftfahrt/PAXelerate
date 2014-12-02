@@ -40,6 +40,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#isIsSeated <em>Is Seated</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getWalkingSpeed <em>Walking Speed</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getStartBoardingAfterDelay <em>Start Boarding After Delay</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getNumberOfWaits <em>Number Of Waits</em>}</li>
  * </ul>
  * </p>
  *
@@ -407,6 +408,26 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	protected double startBoardingAfterDelay = START_BOARDING_AFTER_DELAY_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getNumberOfWaits() <em>Number Of Waits</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNumberOfWaits()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int NUMBER_OF_WAITS_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getNumberOfWaits() <em>Number Of Waits</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNumberOfWaits()
+	 * @generated
+	 * @ordered
+	 */
+	protected int numberOfWaits = NUMBER_OF_WAITS_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -762,6 +783,27 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getNumberOfWaits() {
+		return numberOfWaits;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNumberOfWaits(int newNumberOfWaits) {
+		int oldNumberOfWaits = numberOfWaits;
+		numberOfWaits = newNumberOfWaits;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__NUMBER_OF_WAITS, oldNumberOfWaits, numberOfWaits));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public double getHeight() {
 		return height;
 	}
@@ -906,6 +948,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return getWalkingSpeed();
 			case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
 				return getStartBoardingAfterDelay();
+			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
+				return getNumberOfWaits();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -974,6 +1018,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return;
 			case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
 				setStartBoardingAfterDelay((Double)newValue);
+				return;
+			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
+				setNumberOfWaits((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1044,6 +1091,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 			case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
 				setStartBoardingAfterDelay(START_BOARDING_AFTER_DELAY_EDEFAULT);
 				return;
+			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
+				setNumberOfWaits(NUMBER_OF_WAITS_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1094,6 +1144,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return walkingSpeed != WALKING_SPEED_EDEFAULT;
 			case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
 				return startBoardingAfterDelay != START_BOARDING_AFTER_DELAY_EDEFAULT;
+			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
+				return numberOfWaits != NUMBER_OF_WAITS_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1142,6 +1194,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 		result.append(walkingSpeed);
 		result.append(", startBoardingAfterDelay: ");
 		result.append(startBoardingAfterDelay);
+		result.append(", numberOfWaits: ");
+		result.append(numberOfWaits);
 		result.append(')');
 		return result.toString();
 	}

@@ -1,4 +1,4 @@
-package model;
+package net.bhl.cdt.model.astar;
 
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Curtain;
@@ -14,7 +14,6 @@ public class CabinGenerator {
 	private Cabin cabin;
 	private int width;
 	private int length;
-	
 	private int maximumObstacleValue = 100000;
 	private int basicObstacleValue = 10; 
 	
@@ -25,7 +24,6 @@ public class CabinGenerator {
 	}
 
 	public int[][] createObstacleMap() {
-
 		int[][] obstacleMap = new int[width][length];
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j <length; j++) {
@@ -123,11 +121,13 @@ public class CabinGenerator {
 	    
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j <length; j++) {
-				if(j>entryMin&&j<entryMax) {
-					obstacleMap[i][j]= 0;	
-				} 
-				if(i<aisleMax&&i>aisleMin) {
-					obstacleMap[i][j]= 0;	
+				if(obstacleMap[i][j]!=maximumObstacleValue) {
+					if(j>entryMin&&j<entryMax) {
+						obstacleMap[i][j]= 0;	
+					} 
+					if(i<aisleMax&&i>aisleMin) {
+						obstacleMap[i][j]= 0;	
+					}
 				}
 			}
 		}
@@ -156,8 +156,6 @@ public class CabinGenerator {
 			}
 		}
 		/*****************************************************/
-		
-		
 		
 		return obstacleMap;
 	}

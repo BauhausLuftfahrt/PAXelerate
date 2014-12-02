@@ -2,9 +2,9 @@ package net.bhl.cdt.model.cabin.commands;
 
 import java.util.ArrayList;
 
-import model.CabinGenerator;
-import model.TestAStar;
 import net.bhl.cdt.commands.CDTCommand;
+import net.bhl.cdt.model.astar.CabinGenerator;
+import net.bhl.cdt.model.astar.TestAStar;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
@@ -56,10 +56,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 	/**
 	 * This is the constructor method of the SimulateBoardingCommand.
 	 * 
-	 * @param shell
-	 *            the shell where the command was triggered
-	 * @param cabin
-	 *            the cabin object
+	 * @param shell the shell where the command was triggered
+	 * @param cabin the cabin object
 	 */
 	public SimulateBoardingCommand(Shell shell, Cabin cabin) {
 		this.cabin = cabin;
@@ -82,22 +80,6 @@ public class SimulateBoardingCommand extends CDTCommand {
 		if (!cabin.getPassengers().isEmpty()) {
 			generator = new CabinGenerator(cabin);
 			obstacleMap = generator.createObstacleMap();
-			
-//			for (int i = 0; i<(int) (cabin.getCabinWidth() / cabin.getScale());i++) {
-//				for(int j = 0; j <(int) (cabin.getCabinLength() / cabin.getScale()); j++)  {
-//					if(obstacleMap[i][j]==100000) {
-//						System.out.print("X");
-//					}
-//					//else if(obstacleMap[i][j]==0) {
-//						//System.out.print("-");
-//					//}
-//				    else {
-//					System.out.print(obstacleMap[i][j]);
-//				    }
-//				}
-//				System.out.println();
-//			}
-		
 			TestAStar astar = new TestAStar(obstacleMap,
 					(int) (cabin.getCabinWidth() / cabin.getScale()),
 					(int) (cabin.getCabinLength() / cabin.getScale()), cabin);		

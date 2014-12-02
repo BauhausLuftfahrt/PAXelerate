@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#isIsSeated <em>Is Seated</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getWalkingSpeed <em>Walking Speed</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getStartBoardingAfterDelay <em>Start Boarding After Delay</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getNumberOfWaits <em>Number Of Waits</em>}</li>
  * </ul>
  * </p>
  *
@@ -438,6 +439,33 @@ public interface Passenger extends EObject {
 	 * @generated
 	 */
 	void setStartBoardingAfterDelay(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Number Of Waits</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Number Of Waits</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Number Of Waits</em>' attribute.
+	 * @see #setNumberOfWaits(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_NumberOfWaits()
+	 * @model default="0"
+	 * @generated
+	 */
+	int getNumberOfWaits();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getNumberOfWaits <em>Number Of Waits</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Number Of Waits</em>' attribute.
+	 * @see #getNumberOfWaits()
+	 * @generated
+	 */
+	void setNumberOfWaits(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Height</b></em>' attribute.

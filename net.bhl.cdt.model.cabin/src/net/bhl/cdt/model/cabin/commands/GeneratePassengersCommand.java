@@ -178,7 +178,7 @@ public class GeneratePassengersCommand extends CDTCommand{
 				sex = Sex.MALE;
 			}
 			newPassenger.setSex(sex);
-			newPassenger.setStartBoardingAfterDelay(passengerIdCount);
+			newPassenger.setStartBoardingAfterDelay(passengerIdCount/10);
 			
 			/*********************Info for random values**********************/
 			/**                                                              */
@@ -205,7 +205,7 @@ public class GeneratePassengersCommand extends CDTCommand{
 			Random rand6 = new Random();
 			newPassenger.setWidth(rand6.nextInt(30) + 30 );
 			Random rand7 = new Random();
-			newPassenger.setWalkingSpeed((rand7.nextInt(6))*0.1 + 1.0);
+			newPassenger.setWalkingSpeed((rand7.nextInt(15))*0.1 + 1.0);
 			passengerIdCount ++;
 			passengerPerClassCount ++;
 			

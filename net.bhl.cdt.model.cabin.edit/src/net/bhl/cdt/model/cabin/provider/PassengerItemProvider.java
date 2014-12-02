@@ -79,6 +79,7 @@ public class PassengerItemProvider
 			addIsSeatedPropertyDescriptor(object);
 			addWalkingSpeedPropertyDescriptor(object);
 			addStartBoardingAfterDelayPropertyDescriptor(object);
+			addNumberOfWaitsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -414,6 +415,28 @@ public class PassengerItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Number Of Waits feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNumberOfWaitsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_numberOfWaits_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_numberOfWaits_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__NUMBER_OF_WAITS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Height feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -554,6 +577,7 @@ public class PassengerItemProvider
 			case CabinPackage.PASSENGER__IS_SEATED:
 			case CabinPackage.PASSENGER__WALKING_SPEED:
 			case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
+			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

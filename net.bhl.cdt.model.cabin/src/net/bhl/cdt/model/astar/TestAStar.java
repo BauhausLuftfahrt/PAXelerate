@@ -1,14 +1,16 @@
-package model;
+package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
+
 import javax.swing.JFrame;
+
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
+import net.bhl.cdt.model.observer.AgentPosition;
 import net.bhl.cdt.model.util.ModelHelper;
-import observer.AgentPosition;
 
 public class TestAStar {
 
@@ -96,7 +98,7 @@ public class TestAStar {
 	}
 
 	// observer pattern to update agent's position on map
-	public static int[][] runAgent() {
+	public static int[][] runAgents() {
 
 		for (Agent agent : agents) {
 			getPath(map, agent);
@@ -130,10 +132,8 @@ public class TestAStar {
 		
 	}
 	
-	public Cabin getPassengerLocations() {
-		
+	public Cabin getPassengerLocations() {		
 		return cabin;
-		
 	}
 
 	public static void run() {		
@@ -153,10 +153,11 @@ public class TestAStar {
 		for(Passenger passenger:ModelHelper.getChildrenByClass(cabin, Passenger.class)) {
 			Seat seat = passenger.getSeatRef();
 			Door door = passenger.getDoor();
-			Agent agent = new Agent("Passenger "+passenger.getName(), passenger, 5, (int)((door.getYPosition()+door.getWidth()/2)/cabin.getScale()), (int)((seat.getXPosition()+seat.getWidth()/2)/cabin.getScale()),(int)((seat.getYPosition()/cabin.getScale())-1),(int)cabin.getScale(),passenger.getId());
+			Agent agent = new Agent("Passenger "+passenger.getName(), passenger, 5, (int)((door.getYPosition()+door.getWidth()/2)/cabin.getScale()), (int)((seat.getXPosition()+seat.getWidth()/2)/cabin.getScale()),(int)((seat.getYPosition()/cabin.getScale())-1),(int)cabin.getScale());
 			addAgentToAgentList(agent);
 		}
-		runAgent();
+		runAgents();
+		
 		
 	}
 }

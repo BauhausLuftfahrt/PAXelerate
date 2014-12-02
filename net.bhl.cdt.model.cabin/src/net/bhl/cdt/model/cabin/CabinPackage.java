@@ -958,13 +958,22 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER__START_BOARDING_AFTER_DELAY = 18;
 
 	/**
+	 * The feature id for the '<em><b>Number Of Waits</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__NUMBER_OF_WAITS = 19;
+
+	/**
 	 * The number of structural features of the '<em>Passenger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_FEATURE_COUNT = 19;
+	int PASSENGER_FEATURE_COUNT = 20;
 
 	/**
 	 * The number of operations of the '<em>Passenger</em>' class.
@@ -2492,6 +2501,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getPassenger_StartBoardingAfterDelay();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getNumberOfWaits <em>Number Of Waits</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Number Of Waits</em>'.
+	 * @see net.bhl.cdt.model.cabin.Passenger#getNumberOfWaits()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_NumberOfWaits();
+
+	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getHeight <em>Height</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3708,6 +3728,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PASSENGER__START_BOARDING_AFTER_DELAY = eINSTANCE.getPassenger_StartBoardingAfterDelay();
+		/**
+		 * The meta object literal for the '<em><b>Number Of Waits</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__NUMBER_OF_WAITS = eINSTANCE.getPassenger_NumberOfWaits();
 		/**
 		 * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->

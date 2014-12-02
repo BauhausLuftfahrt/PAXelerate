@@ -1,6 +1,4 @@
-package observer;
-import model.TestAStar;
-
+package net.bhl.cdt.model.observer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,8 +7,8 @@ import javax.swing.JFrame;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 
-import model.Agent;
-import model.TestAStar;
+import net.bhl.cdt.model.astar.Agent;
+import net.bhl.cdt.model.astar.TestAStar;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.ConsoleViewPart;
 

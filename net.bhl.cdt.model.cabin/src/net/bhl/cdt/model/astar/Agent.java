@@ -1,7 +1,7 @@
-package model;
+package net.bhl.cdt.model.astar;
 
 import net.bhl.cdt.model.cabin.Passenger;
-import observer.Subject;
+import net.bhl.cdt.model.observer.Subject;
 
 
 public class Agent extends Subject implements Runnable {
@@ -22,8 +22,6 @@ public class Agent extends Subject implements Runnable {
 	private int previousX;
 	private int previousY;
 	
-	private int id; 
-	
 	private int currentX;
 	private int currentY;
 	
@@ -31,8 +29,7 @@ public class Agent extends Subject implements Runnable {
 	
 	private int[][] currentAgentPosition = new int[1][2];
 
-	Agent(String name, Passenger passenger, int startX, int startY, int goalX, int goalY,int scale, int id) {
-		this.id = id;
+	Agent(String name, Passenger passenger, int startX, int startY, int goalX, int goalY,int scale) {
 		this.passenger = passenger;
 		this.agentName = name;
 		this.startX = startX;
@@ -134,6 +131,7 @@ public class Agent extends Subject implements Runnable {
 			s.start();
 			this.currentAgentPosition = new int[path.length][2];
 			TestAStar.submitPath(path);
+			int numbOfInterupts = 0;
 			for (int i = 0; i < path.length; i++) {
 				//first step of the agent
 				if(i != 0) {
@@ -144,6 +142,7 @@ public class Agent extends Subject implements Runnable {
 				this.currentY = path[i][1];	
 				if(TestAStar.map.getNode(currentX, currentY).isOccupiedByAgent() == true){
 				 Thread.sleep(200);
+				 numbOfInterupts ++;
 				 // here a new path should be calculated!
 				}
 				else {
@@ -153,7 +152,7 @@ public class Agent extends Subject implements Runnable {
 					this.currentAgentPosition[i][1] = this.currentY;
 					TestAStar.map.getNode(currentX, currentY).setOccupiedByAgent(true);
 					TestAStar.map.getNode(previousX, previousY).setOccupiedByAgent(false);
-					notifyObservers(i);
+					//notifyObservers(i);
 					
 					passenger.setPositionX(this.currentAgentPosition[i][0]*scale);
 					passenger.setPositionY(this.currentAgentPosition[i][1]*scale);
@@ -165,6 +164,7 @@ public class Agent extends Subject implements Runnable {
 			TestAStar.setPassengerSeated(passenger);	
 			s.stop();
 			passenger.setBoardingTime(s.getElapsedTime()/1000);
+			passenger.setNumberOfWaits(numbOfInterupts);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

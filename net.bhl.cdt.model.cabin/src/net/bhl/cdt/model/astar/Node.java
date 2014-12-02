@@ -1,4 +1,4 @@
-package model;
+package net.bhl.cdt.model.astar;
 
 
 import java.util.ArrayList;

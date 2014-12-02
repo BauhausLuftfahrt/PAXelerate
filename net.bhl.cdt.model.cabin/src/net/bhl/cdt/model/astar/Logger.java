@@ -1,4 +1,4 @@
-package model;
+package net.bhl.cdt.model.astar;
 
 import net.bhl.cdt.model.cabin.ui.ConsoleViewPart;
 

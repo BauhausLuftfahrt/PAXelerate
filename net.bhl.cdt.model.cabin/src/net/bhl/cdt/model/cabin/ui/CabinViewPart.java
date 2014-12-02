@@ -193,7 +193,7 @@ public class CabinViewPart extends ViewPart {
 							if (colorFactor<0) {colorFactor = 0;}
 							paintEvent.gc.setBackground(new Color(paintEvent.display,255,colorFactor,0));		
 						} else  {paintEvent.gc.setBackground(red);}
-						paintEvent.gc.fillRectangle(x_zero+(int)(i*drawCabin.getScale()/factor),y_zero+(int)(j*drawCabin.getScale()/factor),(int)(overLapOfRect*drawCabin.getScale()/factor),(int)(overLapOfRect*drawCabin.getScale()/factor));
+						paintEvent.gc.fillOval(x_zero+(int)(i*drawCabin.getScale()/factor),y_zero+(int)(j*drawCabin.getScale()/factor),(int)(overLapOfRect*drawCabin.getScale()/factor),(int)(overLapOfRect*drawCabin.getScale()/factor));
 					} 
 				}	
 				paintEvent.gc.setAlpha(255);
