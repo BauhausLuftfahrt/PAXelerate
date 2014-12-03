@@ -2,6 +2,8 @@ package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
 
+//import javax.swing.JFrame;
+
 /**
  * This class creates a cost map by flooding the whole map from a specific point. Every element of the map has its own cost value,
  * during flooding they are summed up. So every value of the finished cost map represents the total cost to get there from the initial
@@ -30,6 +32,7 @@ public class CostMap {
 	private ArrayList <int[]> pointParking = new ArrayList<int[]>();
 	private ArrayList <int[]> pointParkingHelper = new ArrayList<int[]>();	
 	private AreaMap areamap;
+	//public static JFrame frame;
 	
 	/**
 	 * The cost map is constructed in this function.
@@ -37,6 +40,8 @@ public class CostMap {
 	 * @param height is the height of the map
 	 * @param startX is the initial staring point x value
 	 * @param startY is the initial staring point y value
+	 * @param goalX  is the goal point x value
+	 * @param goalY  is the goal point y value
 	 * @param areaMap contains information on the cost of every individual element
 	 */
 	public CostMap(int width, int height,int startX, int startY, int goalX, int goalY, AreaMap areaMap) {		
@@ -64,8 +69,20 @@ public class CostMap {
 		}
 		map[this.startX][this.startY] = 0;
 		visitedPoints.add(startPoint);
+		//createSurroundingCosts(startPoint); //remove!
 		floodMap();
 	}
+	
+	/**
+	 * 
+	 */
+	public void floodMapStep() {	
+		copyPoints();
+		for(int[] newPoint:pointParking) {
+			createSurroundingCosts(newPoint);
+		}
+	}
+	
 	
 	/**
 	 * This function floods the whole map until no unvisited element is available anymore.
@@ -229,6 +246,32 @@ public class CostMap {
 		points[7][1] = pointY-1;
 		return points;
 	}
+
+//	/**
+//	 * 
+//	 */
+//	public static void run() {
+//		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+//			public void run() {
+//				// Set up main window (using Swing's Jframe)
+//				
+//				 frame = new JFrame("Flooding Simulation");
+//				 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//				 frame.setContentPane(new CostMapView());
+//				 frame.pack();
+//				 frame.setVisible(true);
+//			}
+//		});
+//	}
+//	/**
+//	 * 
+//	 * @param args
+//	 */
+//	public static void main(String[] args) {
+//		run();
+//	}
 }
+
+
 
 

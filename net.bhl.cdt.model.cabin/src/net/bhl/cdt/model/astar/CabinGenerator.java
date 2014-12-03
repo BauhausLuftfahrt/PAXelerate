@@ -16,6 +16,7 @@ public class CabinGenerator {
 	private int length;
 	private int maximumObstacleValue = 100000;
 	private static int basicObstacleValue = 10; 
+	private int[][] obstacleMap;
 	
 	public CabinGenerator(Cabin cabin) {
 		this.cabin = cabin;
@@ -29,7 +30,7 @@ public class CabinGenerator {
 	
 
 	public int[][] createObstacleMap() {
-		int[][] obstacleMap = new int[width][length];
+		obstacleMap = new int[width][length];
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j <length; j++) {
 				obstacleMap[i][j] = basicObstacleValue;
@@ -163,5 +164,19 @@ public class CabinGenerator {
 		/*****************************************************/
 		
 		return obstacleMap;
+	}
+	private int getValueAtPoint(int x, int y) {
+		int value = obstacleMap[x][y];
+		return value;
+	}
+	
+	public void printObstacleMap() {
+		for (int i = 0; i<width; i++) {
+			for(int j = 0; j<length; j++) {
+				System.out.print(getValueAtPoint(i, j));
+			}
+			System.out.println();
+		}
+		System.out.println(basicObstacleValue);
 	}
 }
