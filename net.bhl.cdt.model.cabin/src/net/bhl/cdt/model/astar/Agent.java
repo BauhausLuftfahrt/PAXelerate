@@ -137,7 +137,7 @@ public class Agent extends Subject implements Runnable {
 	
 	private void occupyArea(int xLoc, int yLoc, boolean occupy, boolean onlyPoint) {
 		if(!onlyPoint) {
-			int square = 2;
+			int square = 10;
 			for (int x = -square; x<=square; x++) {
 				//	for (int y = -square; y<0; y++) {
 				//		if(!(x==0&&y==0)) {

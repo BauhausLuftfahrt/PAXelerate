@@ -22,7 +22,11 @@ import net.bhl.cdt.model.util.ModelHelper;
 
 /**
  * 
+ * This command creates the passengers.
+ * 
  * @author marc.engelmann
+ * @version 1.0
+ * @date 03.12.2014
  *
  */
 
@@ -73,15 +77,13 @@ public class GeneratePassengersCommand extends CDTCommand{
 	/**
 	 * This method generates the passengers of a specific class one by one 
 	 * 
-	 * maybe all passengers should be grouped in a folder
-	 * 
 	 */
 	public void generatePassengers(ClassType classType) {
 
 		classNameString = "";
 		
 		Sex sex = Sex.FEMALE;
-		boolean hasLuggage = false;
+		boolean hasLuggage = true;
 		int paxInClass;
 		int seatsInClass;
 		int seatAreaBegin;
@@ -176,10 +178,10 @@ public class GeneratePassengersCommand extends CDTCommand{
 				sex = Sex.MALE;
 			}
 		
-			//if (rand.nextInt(2)==1) {
-				newPassenger.setHasLuggage(true);
-			//}
-			
+			if (rand.nextInt(4)==1) {
+				hasLuggage = false;
+			}
+			newPassenger.setHasLuggage(hasLuggage);
 			newPassenger.setSex(sex);
 			newPassenger.setStartBoardingAfterDelay(passengerIdCount/10);
 			
@@ -201,16 +203,22 @@ public class GeneratePassengersCommand extends CDTCommand{
 			
 			Random rand3 = new Random();
 			newPassenger.setHeight(rand3.nextInt(50) + 150);
+			
 			Random rand4 = new Random();
 			newPassenger.setWeight(rand4.nextInt(50) + 60);
+			
 			Random rand5 = new Random();
 			newPassenger.setDepth(rand5.nextInt(30) + 20 );
+			
 			Random rand6 = new Random();
 			newPassenger.setWidth(rand6.nextInt(30) + 30 );
+			
 			Random rand7 = new Random();
-			newPassenger.setWalkingSpeed((rand7.nextInt(15))*0.1 + 1.0);
+			newPassenger.setWalkingSpeed((rand7.nextInt(15))*0.1 + 0.5);
+			
 			Random rand8 = new Random();
 			newPassenger.setLuggageStowTime((rand8.nextInt(5)) + 5.0);
+			
 			passengerIdCount ++;
 			passengerPerClassCount ++;
 			

@@ -161,8 +161,7 @@ public class CabinViewPart extends ViewPart {
 		df = new DecimalFormat("####0.00");
 		/*************************************************************************************/
 		
-		image = new Image(parent.getDisplay(),
-				"T:\\Marc Engelmann\\aircraft_images\\lh_a320_cut.PNG");
+		image = new Image(parent.getDisplay(),"T:\\Marc Engelmann\\aircraft_images\\lh_a320_cut.PNG");
 
 		canvas = new Canvas(parent, SWT.RESIZE);
 		doTheDraw();
@@ -175,8 +174,7 @@ public class CabinViewPart extends ViewPart {
 		doTheDraw();
 	}
 	
-	public void submitObstacleMap(final int[][] obstacleMap) {	
-		//canvas.redraw();		
+	public void submitObstacleMap(final int[][] obstacleMap) {			
 		final int overLapOfRect = 2;
 		canvas.addPaintListener(new PaintListener() {
 			public void paintControl(final PaintEvent paintEvent) {		
@@ -198,6 +196,7 @@ public class CabinViewPart extends ViewPart {
 				paintEvent.gc.setAlpha(255);
 			}			
 		});
+		disposeAll();
 	}
 	
 	
@@ -230,12 +229,13 @@ public class CabinViewPart extends ViewPart {
 				e.gc.setLineWidth(1);
 		}
 		});
+		disposeAll();
 	}
 	
 
 	public void submitPassengerCoordinates(final Cabin paxCabin) {
-		parent.update();
 		parent.redraw();
+		parent.update();
 		canvas.redraw();
 		canvas.addPaintListener(new PaintListener() {
 			public void paintControl(final PaintEvent e) {
@@ -260,12 +260,11 @@ public class CabinViewPart extends ViewPart {
 				}		
 			}	
 		});
+	    disposeAll();
 	}
 
 	public void doTheDraw() {
-
 		factor = drawCabin.getCabinWidth() / cabin_x;
-
 		parent.redraw();
 		parent.update();
 		canvas.redraw();
@@ -274,14 +273,10 @@ public class CabinViewPart extends ViewPart {
 		} else {
 			cabin_y = (int) (drawCabin.getCabinLength() / factor);
 		}
-
 		canvas.addPaintListener(new PaintListener() {
 			public void paintControl(final PaintEvent e) {
 				e.gc.drawImage(image, 0, 0);
 				e.gc.setAlpha(255);
-
-				
-
 				e.gc.setFont(fontOne);
 				e.gc.setBackground(white);
 
@@ -587,10 +582,9 @@ public class CabinViewPart extends ViewPart {
 							"Please refresh cabin view or generate a new cabin!",
 							50, 380);
 				}
-				//e.gc.dispose();
 			}
-
 		});
+		disposeAll();
 	}
 
 	public int[] calculateColor(Passenger pax) {
@@ -640,6 +634,11 @@ public class CabinViewPart extends ViewPart {
 
 	/** * Passing the focus request to the viewer's control. */
 	public void setFocus() {
+	}
+	
+	private void disposeAll() {
+		super.dispose();
+		
 	}
 
 }
