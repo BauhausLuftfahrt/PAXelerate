@@ -26,6 +26,21 @@ public class AreaMap {
                 registerEdges();
                 log.addToLog("Map Node edges registered");
         }
+        
+        public void printMap() {
+        	for(int i=0;i<mapWidth;i++) {
+        		for(int j=0; j< mapHeight;j++) {
+        			if(map.get(i).get(j).isOccupiedByAgent) {
+        				System.out.print("X");
+        			} else {
+        				System.out.print("-");
+        			}
+        		}
+        		System.out.println();
+        	}
+        	
+        }
+        
         private void createMap() {
                 Node node;
                 map = new ArrayList<ArrayList<Node>>();

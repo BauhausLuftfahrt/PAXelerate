@@ -101,10 +101,14 @@ public class TestAStar {
 	// observer pattern to update agent's position on map
 	public static int[][] runAgents() {
 
+		/**First generate all paths ... */
 		for (Agent agent : agents) {
 			getPath(map, agent);
 			AgentPosition pos = new AgentPosition();
 			agent.subscribe(pos);
+		}
+		/** ... then start the simulations simultaneously*/
+		for (Agent agent : agents) {
 			agent.start();
 		}
 		return null;
