@@ -6,6 +6,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.bhl.cdt.model.astar.CabinGenerator;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
 import net.bhl.cdt.model.cabin.Curtain;
@@ -16,6 +17,7 @@ import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerClass;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.Row;
+import net.bhl.cdt.model.astar.CabinGenerator;
 import net.bhl.cdt.model.util.ModelHelper;
 
 import org.eclipse.jface.viewers.ITableLabelProvider;
@@ -181,12 +183,12 @@ public class CabinViewPart extends ViewPart {
 				paintEvent.gc.setAlpha(100);
 				for(int i = 0;i<(int)(drawCabin.getCabinWidth()/drawCabin.getScale());i++) {
 					for(int j = 0;j<(int)(drawCabin.getCabinLength()/drawCabin.getScale());j++) {		
-						if(obstacleMap[i][j]<=10) {
-							int colorFactor = obstacleMap[i][j]*25;
+						if(obstacleMap[i][j]<=CabinGenerator.getBasicObstacleValue()) {
+							int colorFactor = obstacleMap[i][j]*(int)(255/(CabinGenerator.getBasicObstacleValue()));
 							if (colorFactor > 255) {colorFactor = 255;}
 							paintEvent.gc.setBackground(new Color(paintEvent.display,colorFactor,255,0));		
-						} else if(obstacleMap[i][j]<=20) {
-							int colorFactor = 255 - obstacleMap[i][j]*12 -15;
+						} else if(obstacleMap[i][j]<=CabinGenerator.getBasicObstacleValue()*5) {
+							int colorFactor = 255 - obstacleMap[i][j]*(int)(255/CabinGenerator.getBasicObstacleValue()/5);
 							if (colorFactor<0) {colorFactor = 0;}
 							paintEvent.gc.setBackground(new Color(paintEvent.display,255,colorFactor,0));		
 						} else  {paintEvent.gc.setBackground(red);}

@@ -178,9 +178,9 @@ public class GeneratePassengersCommand extends CDTCommand{
 				sex = Sex.MALE;
 			}
 		
-			if (rand.nextInt(4)==1) {
-				hasLuggage = false;
-			}
+//			if (rand.nextInt(4)==1) {
+//				hasLuggage = false;
+//			}
 			newPassenger.setHasLuggage(hasLuggage);
 			newPassenger.setSex(sex);
 			newPassenger.setStartBoardingAfterDelay(passengerIdCount/10);

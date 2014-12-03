@@ -118,6 +118,10 @@ public class TestAStar {
 		simulationDone = bool;	
 	}
 	
+	public static Cabin getCabin() {
+		return cabin;
+	}
+	
 	public static Boolean getSimulationDone() {
 		return simulationDone;
 	}

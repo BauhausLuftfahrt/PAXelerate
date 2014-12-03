@@ -3,6 +3,7 @@ package net.bhl.cdt.model.astar;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.observer.Subject;
+import net.bhl.cdt.model.util.ModelHelper;
 
 
 public class Agent extends Subject implements Runnable {
@@ -17,6 +18,8 @@ public class Agent extends Subject implements Runnable {
 	
 	private Passenger passenger;
 	private int scale;
+	
+	private double firstSeatY;
 	
 	private boolean alreadyStowed = false;
 	
@@ -135,10 +138,11 @@ public class Agent extends Subject implements Runnable {
 		} else {return false;}
 	}
 	
-	private void occupyArea(int xLoc, int yLoc, boolean occupy, boolean onlyPoint) {
-		if(!onlyPoint) {
-			int square = 10;
-			for (int x = -square; x<=square; x++) {
+	private void occupyArea(int xLoc, int yLoc, boolean occupy) {
+		
+		if(yLoc > firstSeatY) {
+			int width = 0;
+			for (int x = -width; x<=width; x++) {
 				//	for (int y = -square; y<0; y++) {
 				//		if(!(x==0&&y==0)) {
 							if((xLoc+x)>0) {//&&(yLoc+y)>0) {
@@ -166,6 +170,8 @@ public class Agent extends Subject implements Runnable {
 		try {
 			Thread.sleep((int)(passenger.getStartBoardingAfterDelay()*1000));
 			s.start();
+			Seat seat = ModelHelper.getChildrenByClass(TestAStar.getCabin(), Seat.class).get(0);
+			firstSeatY = seat.getYPosition()/TestAStar.getCabin().getScale();
 			this.currentAgentPosition = new int[path.length][2];
 			TestAStar.submitPath(path);
 			int numbOfInterupts = 0;
@@ -187,17 +193,17 @@ public class Agent extends Subject implements Runnable {
 				else if(passengerStowsLuggage()&&!alreadyStowed) {
 					TestAStar.map.getNode(previousX, previousY).setOccupiedByAgent(false);
 					TestAStar.map.getNode(currentX, currentY).setOccupiedByAgent(true);	
-					occupyArea(currentX,currentY,true,false);
+					occupyArea(currentX,currentY,true);
 					Thread.sleep((int)(passenger.getLuggageStowTime()*1000/2));
-					occupyArea(currentX,currentY,false,false);
+					occupyArea(currentX,currentY,false);
 					alreadyStowed = true;
 					i++;				
 				}
 				else {
 					TestAStar.map.getNode(previousX, previousY).setOccupiedByAgent(false);
 					TestAStar.map.getNode(currentX, currentY).setOccupiedByAgent(true);
-					occupyArea(previousX,previousY,false,true);
-					occupyArea(currentX,currentY,true,true);
+					occupyArea(previousX,previousY,false);
+					occupyArea(currentX,currentY,true);
 					this.currentAgentPosition[i][0] = this.currentX;
 					this.currentAgentPosition[i][1] = this.currentY;
 					notifyObservers(i);
