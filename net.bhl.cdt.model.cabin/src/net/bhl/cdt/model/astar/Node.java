@@ -1,36 +1,44 @@
+
 package net.bhl.cdt.model.astar;
 
 
 import java.util.ArrayList;
 
+/**
+ * 
+ * @author marc.engelmann
+ *
+ */
 public class Node implements Comparable<Node> {
-        /* Nodes that this is connected to */
-        AreaMap map;
-        Node north;
-        Node northEast;
-        Node east;
-        Node southEast;
-        Node south;
-        Node southWest;
-        Node west;
-        Node northWest;
-        ArrayList<Node> neighborList;
-        boolean visited;
-        float distanceFromStart;
-        int costFromStart;
-        float heuristicDistanceFromGoal;
-        Node previousNode;
-        int x;
-        int y;
-        boolean isObstacle;
+        private AreaMap map;
+        private Node north;
+        private Node northEast;
+        private Node east;
+        private Node southEast;
+        private Node south;
+        private Node southWest;
+        private Node west;
+        private Node northWest;
+        private ArrayList<Node> neighborList;
+        private boolean visited;
+        private float distanceFromStart;
+        private int costFromStart;
+        private float heuristicDistanceFromGoal;
+        private Node previousNode;
+        private int x;
+        private int y;
+        public boolean isObstacle;
         public boolean isOccupiedByAgent;
-		boolean isStart;
-        boolean isGoal;
-        private  int cost;
-        double compareFactor;
+        private boolean isStart;
+        private boolean isGoal;
+        private int cost;
+        private double compareFactor;
         
-       
-        public int getCost() {
+     /**
+     * 
+     * @return
+     */
+    public int getCost() {
 		return cost;
 	}
 
@@ -283,6 +291,10 @@ public class Node implements Comparable<Node> {
         /** modified this function in order to sort nodes by cost, not by distance!
          * Only if the cost is the same, sort it by the distance! 
          */ 
+        
+        /**
+         * 
+         */
         public int compareTo(Node otherNode) {
 //        		/**better if: cheaper & closer or equally cheap but closer */ 
 //                if(((costFromStart<otherNode.costFromStart)&&(distanceFromStart<otherNode.distanceFromStart))||((costFromStart==otherNode.costFromStart)&&(distanceFromStart<otherNode.distanceFromStart))) {

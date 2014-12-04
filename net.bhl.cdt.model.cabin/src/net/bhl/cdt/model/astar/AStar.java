@@ -4,7 +4,11 @@ package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
+/**
+ * 
+ * @author marc.engelmann
+ *
+ */
 public class AStar {
         private AreaMap map; 
         private CostMap costmap;
@@ -15,8 +19,11 @@ public class AStar {
         private ArrayList<Node> closedList;
         private SortedNodeList openList;
         private Path shortestPath;
-        Logger log = new Logger();
 
+        /**
+         * 
+         * @param map
+         */
         AStar(AreaMap map) {
                 this.map = map;
 
@@ -24,11 +31,15 @@ public class AStar {
                 openList = new SortedNodeList();
         }
 
+        /**
+         * 
+         * @param startX
+         * @param startY
+         * @param goalX
+         * @param goalY
+         * @return
+         */
         public Path calcShortestPath(int startX, int startY, int goalX, int goalY) {
-                //this.startX = startX;
-                //this.startY = startY;
-                //this.goalX = goalX;
-                //this.goalY = goalY;
 
                 //mark start and goal node
                 map.setStartLocation(startX, startY);
@@ -68,9 +79,7 @@ public class AStar {
                                 boolean neighborIsBetter;
 
                                 //if we have already searched this Node, don't bother and continue to the next one
-                                if (closedList.contains(neighbor))
-                                	// continue statement exits the for loop
-                                        continue;
+                                if (closedList.contains(neighbor)) { continue; }
 
                                 //also just continue if the neighbor is an obstacle
                                 if (!neighbor.isObstacle) {
@@ -127,15 +136,27 @@ public class AStar {
                 this.setShortestPath(path);
                 return path;
         }
-
+        /**
+         * 
+         * @return
+         */
         public Path getShortestPath() {
 			return shortestPath;
 		}
 
+        /**
+         * 
+         * @param shortestPath
+         */
 		public void setShortestPath(Path shortestPath) {
 			this.shortestPath = shortestPath;
 		}
 
+		/**
+		 * 
+		 * @author marc.engelmann
+		 *
+		 */
 		private class SortedNodeList {
 
                 private ArrayList<Node> list = new ArrayList<Node>();

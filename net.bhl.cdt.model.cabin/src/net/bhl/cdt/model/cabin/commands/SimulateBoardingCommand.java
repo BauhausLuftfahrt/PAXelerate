@@ -1,9 +1,10 @@
+
 package net.bhl.cdt.model.cabin.commands;
 
 import java.util.ArrayList;
 
 import net.bhl.cdt.commands.CDTCommand;
-import net.bhl.cdt.model.astar.CabinGenerator;
+import net.bhl.cdt.model.astar.ObstacleMap;
 import net.bhl.cdt.model.astar.StopWatch;
 import net.bhl.cdt.model.astar.TestAStar;
 import net.bhl.cdt.model.cabin.Cabin;
@@ -50,10 +51,9 @@ import org.eclipse.ui.PlatformUI;
 public class SimulateBoardingCommand extends CDTCommand {
 
 	private Cabin cabin;
-	private CabinGenerator generator;
+	private ObstacleMap generator;
 	private ArrayList<Passenger> alreadySeatedList = new ArrayList<Passenger>();
-	private int[][] obstacleMap = null;
-	static StopWatch s = new StopWatch();
+	private static StopWatch s = new StopWatch();
 	
 	/**
 	 * This is the constructor method of the SimulateBoardingCommand.
@@ -77,9 +77,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 		consoleViewPart.printText("Initializing the boarding simulation...");
 		s.start();
 		if (!cabin.getPassengers().isEmpty()) {
-			generator = new CabinGenerator(cabin);
-			obstacleMap = generator.createObstacleMap();
-			TestAStar astar = new TestAStar(obstacleMap,
+			ObstacleMap map = new ObstacleMap(cabin);
+			TestAStar astar = new TestAStar(map.getMap(),
 					(int) (cabin.getCabinWidth() / cabin.getScale()),
 					(int) (cabin.getCabinLength() / cabin.getScale()), cabin);		
 			while (!TestAStar.getSimulationDone()) {
@@ -108,8 +107,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 				s.stop();
 				consoleViewPart.printText("Elapsed time for boarding: "+s.getElapsedTimeSecs()+" seconds");
 				
-				if(!obstacleMap.equals(null)) {
-					cabinViewPart.submitObstacleMap(obstacleMap);
+				if(!map.equals(null)) {
+					cabinViewPart.submitObstacleMap(map.getMap());
 					consoleViewPart.printText("Heat map generation succeeded.");
 				}
 				

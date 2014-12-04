@@ -74,10 +74,8 @@ public class CostMapView extends JPanel {
 		seat5.setYPosition(100);
 		seat5.setWidth(70);
 		seat5.setLength(2);
-		CabinGenerator generator = new CabinGenerator(cabin);
-		obstaclemap = generator.createObstacleMap();
-		//generator.printObstacleMap();
-		areamap = new AreaMap(BOX_WIDTH, BOX_HEIGHT, obstaclemap);
+		ObstacleMap map = new ObstacleMap(cabin);
+		areamap = new AreaMap(BOX_WIDTH, BOX_HEIGHT, map.getMap());
 		costmap = new CostMap(BOX_WIDTH, BOX_HEIGHT, 3, 3, 60, 70, areamap);
 		Thread gameThread = new Thread() {
 			public void run() {

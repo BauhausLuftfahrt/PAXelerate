@@ -9,31 +9,57 @@ import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.util.ModelHelper;
 
-public class CabinGenerator {
+/**
+ * 
+ * @author marc.engelmann
+ *
+ */
 
+public class ObstacleMap {
 	private Cabin cabin;
 	private int width;
 	private int length;
-	private int maximumObstacleValue = 100000;
-	private static int basicObstacleValue = 10; 
+	private static final int MAX_VALUE = 100000;
+	private static final int BASIC_VALUE = 10; 
 	private int[][] obstacleMap;
 	
-	public CabinGenerator(Cabin cabin) {
+	/**
+	 * 
+	 * @param cabin
+	 */
+	public ObstacleMap(Cabin cabin) {
 		this.cabin = cabin;
 		width = (int)(cabin.getCabinWidth()/cabin.getScale());
 		length = (int)(cabin.getCabinLength()/cabin.getScale());
+		obstacleMap = createObstacleMap();
 	}
 	
+	/**
+	 * This method returns the basic obstacle value.
+	 * @return returns the obstacle value
+	 */
 	public static int getBasicObstacleValue() {
-		return basicObstacleValue;
+		return BASIC_VALUE;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public int[][] getMap() {
+		return obstacleMap;
 	}
 	
 
-	public int[][] createObstacleMap() {
+	/**
+	 * This method generates the obstacle Map.
+	 * @return obstacle map
+	 */
+	private int[][] createObstacleMap() {
 		obstacleMap = new int[width][length];
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j <length; j++) {
-				obstacleMap[i][j] = basicObstacleValue;
+				obstacleMap[i][j] = BASIC_VALUE;
 			}
 		}
 		
@@ -43,13 +69,13 @@ public class CabinGenerator {
 			int seatLength = (int)(seat.getLength()/cabin.getScale());
 			int seatX = (int)(seat.getXPosition()/cabin.getScale());
 			int seatY = (int)(seat.getYPosition()/cabin.getScale());	
-			obstacleMap[seatX][seatY] = maximumObstacleValue;
+			obstacleMap[seatX][seatY] = MAX_VALUE;
 			for (int i = 0; i < seatWidth; i++) {
 				for (int j = 0; j < seatLength; j++) {
 					int foo = seatX + i;
 					int bar = seatY + j;
 					if(foo < width && bar <length) {
-						obstacleMap[foo][bar] = maximumObstacleValue;	
+						obstacleMap[foo][bar] = MAX_VALUE;	
 					}
 				}
 			}
@@ -62,13 +88,13 @@ public class CabinGenerator {
 			int lavLength = (int)(lavatory.getYDimension()/cabin.getScale());
 			int lavX = (int)(lavatory.getXPosition()/cabin.getScale());
 			int lavY = (int)(lavatory.getYPosition()/cabin.getScale());	
-			obstacleMap[lavX][lavY] = maximumObstacleValue;
+			obstacleMap[lavX][lavY] = MAX_VALUE;
 			for (int i = 0; i < lavWidth; i++) {
 				for (int j = 0; j < lavLength; j++) {
 					int foo = lavX + i;
 					int bar = lavY + j;
 					if(foo < width && bar <length) {
-						obstacleMap[foo][bar] = maximumObstacleValue;	
+						obstacleMap[foo][bar] = MAX_VALUE;	
 					}
 				}
 			}
@@ -81,13 +107,13 @@ public class CabinGenerator {
 			int galleyLength = (int)(galley.getYDimension()/cabin.getScale());
 			int galleyX = (int)(galley.getXPosition()/cabin.getScale());
 			int galleyY = (int)(galley.getYPosition()/cabin.getScale());	
-			obstacleMap[galleyX][galleyY] = maximumObstacleValue;
+			obstacleMap[galleyX][galleyY] = MAX_VALUE;
 			for (int i = 0; i < galleyWidth; i++) {
 				for (int j = 0; j < galleyLength; j++) {
 					int foo = galleyX + i;
 					int bar = galleyY + j;
 					if(foo < width && bar <length) {
-						obstacleMap[foo][bar] = maximumObstacleValue;	
+						obstacleMap[foo][bar] = MAX_VALUE;	
 					}
 				}
 			}
@@ -100,13 +126,13 @@ public class CabinGenerator {
 			int curtainLength = (int)(curtain.getYDimension()/cabin.getScale());
 			int curtainX = (int)(curtain.getXPosition()/cabin.getScale());
 			int curtainY = (int)(curtain.getYPosition()/cabin.getScale());	
-			obstacleMap[curtainX][curtainY] = maximumObstacleValue;
+			obstacleMap[curtainX][curtainY] = MAX_VALUE;
 			for (int i = 0; i < curtainWidth; i++) {
 				for (int j = 0; j < curtainLength; j++) {
 					int foo = curtainX + i;
 					int bar = curtainY + j;
 					if(foo < width && bar <length) {
-						obstacleMap[foo][bar] = maximumObstacleValue;	
+						obstacleMap[foo][bar] = MAX_VALUE;	
 					}
 				}
 			}
@@ -127,7 +153,7 @@ public class CabinGenerator {
 	    
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j <length; j++) {
-				if(obstacleMap[i][j]!=maximumObstacleValue) {
+				if(obstacleMap[i][j]!=MAX_VALUE) {
 					if(j>entryMin&&j<entryMax) {
 						obstacleMap[i][j]= 0;	
 					} 
@@ -141,10 +167,10 @@ public class CabinGenerator {
 		
 		/********Create potential around obstacles************/
 		int k = 1;
-		int maxPot = basicObstacleValue*5;
+		int maxPot = BASIC_VALUE*5;
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j <length; j++) {
-				if(obstacleMap[i][j]==maximumObstacleValue) {
+				if(obstacleMap[i][j]==MAX_VALUE) {
 					for(int p = 1; p<k;p++) {
 						/** WEST - EAST - NORTH - SOUTH*/
 						if((i-p)>0) {if(obstacleMap[i-p][j]!=100000) {obstacleMap[i-p][j] = maxPot - p;}}
@@ -170,6 +196,9 @@ public class CabinGenerator {
 		return value;
 	}
 	
+	/**
+	 * 
+	 */
 	public void printObstacleMap() {
 		for (int i = 0; i<width; i++) {
 			for(int j = 0; j<length; j++) {
@@ -177,6 +206,6 @@ public class CabinGenerator {
 			}
 			System.out.println();
 		}
-		System.out.println(basicObstacleValue);
+		System.out.println(BASIC_VALUE);
 	}
 }
