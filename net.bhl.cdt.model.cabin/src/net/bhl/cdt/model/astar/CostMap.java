@@ -1,8 +1,6 @@
+
 package net.bhl.cdt.model.astar;
-
 import java.util.ArrayList;
-
-//import javax.swing.JFrame;
 
 /**
  * This class creates a cost map by flooding the whole map from a specific point. Every element of the map has its own cost value,
@@ -69,12 +67,13 @@ public class CostMap {
 		}
 		map[this.startX][this.startY] = 0;
 		visitedPoints.add(startPoint);
-		//createSurroundingCosts(startPoint); //remove!
 		floodMap();
 	}
 	
 	/**
-	 * 
+	 * This method floods the map only one step. It is for animation purposes. 
+	 * Note that you need to run "createSurroundingCosts(startPoint);" at first before running 
+	 * this method.
 	 */
 	public void floodMapStep() {	
 		copyPoints();
@@ -120,10 +119,7 @@ public class CostMap {
 	 * @return returns the boolean
 	 */
 	private boolean isObstacle(int[] point) {
-		if(map[point[0]][point[1]] == -1) {
-			return true;
-		}
-		else { return false; }
+		return map[point[0]][point[1]] == -1;
 	}
 	
 	/**
@@ -213,7 +209,7 @@ public class CostMap {
 	 * This method returns the <b><i>already calculated</i></b> cost of a specific point in the cost map.
 	 * @param xCord is the x coordinate of the desired point
 	 * @param yCord is the y coordinate of the desired point
-	 * @return
+	 * @return returns the cost for a specific coordinate
 	 */
 	public int getCostForCoordinates(int xCord, int yCord) {
 		return map[xCord][yCord];

@@ -1,3 +1,4 @@
+
 package net.bhl.cdt.model.cabin.commands;
 
 import java.util.ArrayList;
@@ -69,6 +70,10 @@ public class GenerateCabinCommand extends CDTCommand{
 	ArrayList<Integer> randomNumberCheck;
 	double spaceBetweenSeats;
 	
+	/**
+	 * Creates a cabin.
+	 * @param cabin is the input cabin
+	 */
 	public GenerateCabinCommand(Cabin cabin) {
 		this.cabin=cabin;
 	}
@@ -233,10 +238,9 @@ public class GenerateCabinCommand extends CDTCommand{
 	
 	/**
 	 * This function creates a door. 
-	 * @param doorType
-	 * @param symmetrical
-	 * @param id
-	 * @param width
+	 * @param doorType is the type of the door 
+	 * @param symmetrical describes if the door will be generated on both sides
+	 * @param id is the id of the door
 	 * @param yPosition set it to -1 to ignore value, only important for emergency exit.
 	 */
 	public void createDoor(DoorType doorType, boolean symmetrical, int id, double yPosition) {
@@ -282,9 +286,9 @@ public class GenerateCabinCommand extends CDTCommand{
 	}
 	
 	/**
-	 * 
-	 * @param openOrNot
-	 * @param insertAferRow
+	 * This method creates a curtain. Curtains are generated automatically in the class generation.
+	 * @param openOrNot describes whether the curtain is open or not.
+	 * @param name is the name of the door.
 	 */
 	public void createCurtain(boolean openOrNot, String name) {
 		Curtain newCurtainLeft = CabinFactory.eINSTANCE.createCurtain();
