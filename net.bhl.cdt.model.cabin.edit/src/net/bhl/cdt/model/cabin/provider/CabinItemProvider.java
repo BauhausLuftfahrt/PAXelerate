@@ -381,6 +381,16 @@ public class CabinItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
+				(CabinPackage.Literals.CABIN__DOORS,
+				 CabinFactory.eINSTANCE.createEmergencyExit()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CabinPackage.Literals.CABIN__DOORS,
+				 CabinFactory.eINSTANCE.createStandardDoor()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(CabinPackage.Literals.CABIN__LAVATORIES,
 				 CabinFactory.eINSTANCE.createLavatory()));
 

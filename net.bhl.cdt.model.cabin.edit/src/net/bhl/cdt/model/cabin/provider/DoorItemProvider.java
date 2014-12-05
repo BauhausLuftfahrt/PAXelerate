@@ -64,7 +64,6 @@ public class DoorItemProvider
 			addOnBothSidesPropertyDescriptor(object);
 			addWidthPropertyDescriptor(object);
 			addIdPropertyDescriptor(object);
-			addDoorTypePropertyDescriptor(object);
 			addWidthOfMainDoorPropertyDescriptor(object);
 			addWidthOfEmergencyExitPropertyDescriptor(object);
 		}
@@ -160,28 +159,6 @@ public class DoorItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Door Type feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDoorTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Door_doorType_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Door_doorType_feature", "_UI_Door_type"),
-				 CabinPackage.Literals.DOOR__DOOR_TYPE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Width Of Main Door feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -265,7 +242,6 @@ public class DoorItemProvider
 			case CabinPackage.DOOR__ON_BOTH_SIDES:
 			case CabinPackage.DOOR__WIDTH:
 			case CabinPackage.DOOR__ID:
-			case CabinPackage.DOOR__DOOR_TYPE:
 			case CabinPackage.DOOR__WIDTH_OF_MAIN_DOOR:
 			case CabinPackage.DOOR__WIDTH_OF_EMERGENCY_EXIT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

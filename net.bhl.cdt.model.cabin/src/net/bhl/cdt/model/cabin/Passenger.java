@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getDoor <em>Door</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getSeat <em>Seat</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getName <em>Name</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getClass_ <em>Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getBoardingTime <em>Boarding Time</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getSeatRef <em>Seat Ref</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getWidth <em>Width</em>}</li>
@@ -149,35 +148,6 @@ public interface Passenger extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Class</b></em>' attribute.
-	 * The literals are from the enumeration {@link net.bhl.cdt.model.cabin.ClassType}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Class</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Class</em>' attribute.
-	 * @see net.bhl.cdt.model.cabin.ClassType
-	 * @see #setClass(ClassType)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_Class()
-	 * @model
-	 * @generated
-	 */
-	ClassType getClass_();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getClass_ <em>Class</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Class</em>' attribute.
-	 * @see net.bhl.cdt.model.cabin.ClassType
-	 * @see #getClass_()
-	 * @generated
-	 */
-	void setClass(ClassType value);
 
 	/**
 	 * Returns the value of the '<em><b>Boarding Time</b></em>' attribute.

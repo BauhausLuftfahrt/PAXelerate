@@ -8,11 +8,12 @@ import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
 import net.bhl.cdt.model.cabin.Curtain;
 import net.bhl.cdt.model.cabin.Door;
-import net.bhl.cdt.model.cabin.DoorType;
 import net.bhl.cdt.model.cabin.EconomyClass;
+import net.bhl.cdt.model.cabin.EmergencyExit;
 import net.bhl.cdt.model.cabin.FirstClass;
 import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.Lavatory;
+import net.bhl.cdt.model.cabin.MainDoor;
 import net.bhl.cdt.model.cabin.PremiumEconomyClass;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
@@ -220,24 +221,28 @@ public class GenerateCabinCommand extends CDTCommand {
 							.createPremiumEconomyClass();
 					// cabin.getPremiumEconomyClasses().add(subClass);
 					subbClazz = subClass;
+					subbClazz.setPassengers(2);
 				}
 				if (travelSubClass.getSimpleName().equals("EconomyClass")) {
 					EconomyClass subClass = CabinFactory.eINSTANCE
 							.createEconomyClass();
 					// cabin.getEconomyClasses().add(subClass);
 					subbClazz = subClass;
+					subbClazz.setPassengers(10);
 				}
 				if (travelSubClass.getSimpleName().equals("FirstClass")) {
 					FirstClass subClass = CabinFactory.eINSTANCE
 							.createFirstClass();
 					// cabin.getFirstClasses().add(subClass);
 					subbClazz = subClass;
+					subbClazz.setPassengers(2);
 				}
 				if (travelSubClass.getSimpleName().equals("BusinessClass")) {
 					BusinessClass subClass = CabinFactory.eINSTANCE
 							.createBusinessClass();
 					// cabin.getBusinessClasses().add(subClass);
 					subbClazz = subClass;
+					subbClazz.setPassengers(4);
 				}
 				cabin.getClasses().add(subbClazz);
 				subbClazz.setAvailableSeats(seats);
@@ -245,7 +250,7 @@ public class GenerateCabinCommand extends CDTCommand {
 				subbClazz.setSeatsPerRow(seatsInRow);
 				subbClazz.setSeatWidth(seatDimensionX);
 				subbClazz.setSeatLength(seatDimensionY);
-				subbClazz.setPassengers(1);
+
 
 				/**************************************************************************/
 				seatHelper = 0;
@@ -331,50 +336,41 @@ public class GenerateCabinCommand extends CDTCommand {
 	 *            set it to -1 to ignore value, only important for emergency
 	 *            exit.
 	 */
-	private void createDoor(DoorType doorType, boolean symmetrical, int id,
+	private <T extends Door> void createDoor(Class<T> typeDoor,
+			boolean symmetrical, int id,
 			double yPosition) {
 		Boolean mainDoorAlreadyExists = false;
-		if (cabin.getDoors().size() > 0) {
-			for (Door testDoor : ModelHelper.getChildrenByClass(cabin,
-					Door.class)) {
-				if ((doorType == DoorType.MAIN_DOOR)
-						&& (testDoor.getDoorType() == DoorType.MAIN_DOOR)) {
+		if (!mainDoorAlreadyExists) {
+			for (Door testDoor : cabin.getDoors()) {
+				if (typeDoor.getSimpleName().equals("MainDoor")
+						&& (testDoor instanceof MainDoor)) {
 					consoleViewPart
 							.printText("You created more than one main door!");
 					mainDoorAlreadyExists = true;
 				}
 			}
 		}
-		Door newDoor = CabinFactory.eINSTANCE.createDoor();
-		cabin.getDoors().add(newDoor);
-		newDoor.setId(id);
-		newDoor.setOnBothSides(symmetrical);
-
-		switch (doorType) {
-		case EMERGENCY_EXIT:
-			newDoor.setWidth(newDoor.getWidthOfEmergencyExit());
-			break;
-		default:
+		Door newDoor = null;
+		if (typeDoor.getSimpleName().equals("MainDoor")) {
+			MainDoor mainDoor = CabinFactory.eINSTANCE.createMainDoor();
+			newDoor = mainDoor;
 			newDoor.setWidth(newDoor.getWidthOfMainDoor());
-			break;
-		}
-
-		if (!mainDoorAlreadyExists) {
-			newDoor.setDoorType(doorType);
-		} else {
-			newDoor.setDoorType(DoorType.STANDARD_DOOR);
-		}
-
-		if (doorType != DoorType.EMERGENCY_EXIT) {
 			newDoor.setYPosition(globalSeatPositionY);
 			globalSeatPositionY += newDoor.getWidthOfMainDoor();
 		} else {
+			EmergencyExit emergencyExit = CabinFactory.eINSTANCE
+					.createEmergencyExit();
+			newDoor = emergencyExit;
+			newDoor.setWidth(newDoor.getWidthOfEmergencyExit());
+			newDoor.setYPosition(yPosition);
 			if (yPosition < 0) {
 				consoleViewPart
 						.printText("Emergency Exit has a illegal yPosition.");
 			}
-			newDoor.setYPosition(yPosition);
 		}
+		cabin.getDoors().add(newDoor);
+		newDoor.setId(id);
+		newDoor.setOnBothSides(symmetrical);
 	}
 
 	/**
@@ -521,8 +517,8 @@ public class GenerateCabinCommand extends CDTCommand {
 		rowCount = 1;
 
 		/**** Always generate emergency exits at first! ******/
-		createDoor(DoorType.EMERGENCY_EXIT, true, 3, 935);
-		createDoor(DoorType.EMERGENCY_EXIT, true, 4, 1228);
+		createDoor(EmergencyExit.class, true, 3, 935);
+		createDoor(EmergencyExit.class, true, 4, 1228);
 		/***************************************************/
 
 		createLavatory(false,
@@ -531,8 +527,8 @@ public class GenerateCabinCommand extends CDTCommand {
 				((cabin.getCabinWidth() - cabin.getAisleWidth()) / 2), 100);
 
 		/****** Never create more than one main door! ********/
-		createDoor(DoorType.MAIN_DOOR, true, 1, -1);
-		/***************************************************/
+		createDoor(MainDoor.class, true, 1, -1);
+		/*****************************************************/
 
 		createGalley(false,
 				((cabin.getCabinWidth() - cabin.getAisleWidth()) / 2), 100);
@@ -551,7 +547,7 @@ public class GenerateCabinCommand extends CDTCommand {
 		createGalley(true,
 				((cabin.getCabinWidth() - cabin.getAisleWidth()) / 2), 100);
 
-		createDoor(DoorType.STANDARD_DOOR, true, 2, -1);
+		// createDoor(StandardDoor.class, true, 2, -1);
 
 		createLavatory(false,
 				((cabin.getCabinWidth() - cabin.getAisleWidth()) / 2), 100);

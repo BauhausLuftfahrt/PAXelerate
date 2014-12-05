@@ -3,7 +3,6 @@
 package net.bhl.cdt.model.cabin.impl;
 
 import net.bhl.cdt.model.cabin.CabinPackage;
-import net.bhl.cdt.model.cabin.ClassType;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
@@ -29,7 +28,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getDoor <em>Door</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getSeat <em>Seat</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getName <em>Name</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getClass_ <em>Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getBoardingTime <em>Boarding Time</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getSeatRef <em>Seat Ref</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getWidth <em>Width</em>}</li>
@@ -198,26 +196,6 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getClass_() <em>Class</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClass_()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final ClassType CLASS_EDEFAULT = ClassType.FIRST;
-
-	/**
-	 * The cached value of the '{@link #getClass_() <em>Class</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClass_()
-	 * @generated
-	 * @ordered
-	 */
-	protected ClassType class_ = CLASS_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getBoardingTime() <em>Boarding Time</em>}' attribute.
@@ -570,27 +548,6 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 		name = newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ClassType getClass_() {
-		return class_;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setClass(ClassType newClass) {
-		ClassType oldClass = class_;
-		class_ = newClass == null ? CLASS_EDEFAULT : newClass;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__CLASS, oldClass, class_));
 	}
 
 	/**
@@ -1009,8 +966,6 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return getSeat();
 			case CabinPackage.PASSENGER__NAME:
 				return getName();
-			case CabinPackage.PASSENGER__CLASS:
-				return getClass_();
 			case CabinPackage.PASSENGER__BOARDING_TIME:
 				return getBoardingTime();
 			case CabinPackage.PASSENGER__SEAT_REF:
@@ -1073,9 +1028,6 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return;
 			case CabinPackage.PASSENGER__NAME:
 				setName((String)newValue);
-				return;
-			case CabinPackage.PASSENGER__CLASS:
-				setClass((ClassType)newValue);
 				return;
 			case CabinPackage.PASSENGER__BOARDING_TIME:
 				setBoardingTime((Double)newValue);
@@ -1152,9 +1104,6 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 			case CabinPackage.PASSENGER__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case CabinPackage.PASSENGER__CLASS:
-				setClass(CLASS_EDEFAULT);
-				return;
 			case CabinPackage.PASSENGER__BOARDING_TIME:
 				setBoardingTime(BOARDING_TIME_EDEFAULT);
 				return;
@@ -1222,8 +1171,6 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return seat != SEAT_EDEFAULT;
 			case CabinPackage.PASSENGER__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case CabinPackage.PASSENGER__CLASS:
-				return class_ != CLASS_EDEFAULT;
 			case CabinPackage.PASSENGER__BOARDING_TIME:
 				return boardingTime != BOARDING_TIME_EDEFAULT;
 			case CabinPackage.PASSENGER__SEAT_REF:
@@ -1278,8 +1225,6 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 		result.append(seat);
 		result.append(", Name: ");
 		result.append(name);
-		result.append(", class: ");
-		result.append(class_);
 		result.append(", boardingTime: ");
 		result.append(boardingTime);
 		result.append(", width: ");

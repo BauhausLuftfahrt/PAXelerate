@@ -3,9 +3,9 @@ package net.bhl.cdt.model.astar;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Curtain;
 import net.bhl.cdt.model.cabin.Door;
-import net.bhl.cdt.model.cabin.DoorType;
 import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.Lavatory;
+import net.bhl.cdt.model.cabin.MainDoor;
 import net.bhl.cdt.model.cabin.PhysicalObject;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.util.ModelHelper;
@@ -73,12 +73,10 @@ public class ObstacleMap {
 		/*********** Create potential hole in aisle ***********/
 		int entryMin = 0;
 		int entryMax = 0;
-		for (Door door : ModelHelper.getChildrenByClass(cabin, Door.class)) {
-			if (door.getDoorType() == DoorType.MAIN_DOOR) {
+		for (Door door : ModelHelper.getChildrenByClass(cabin, MainDoor.class)) {
 				entryMin = (int) (door.getYPosition() / cabin.getScale()) + 2;
 				entryMax = (int) ((door.getYPosition() + door.getWidth()) / cabin
-						.getScale()) - 2;
-			}
+					.getScale()) - 2;
 		}
 		int aisleMin = (int) ((cabin.getCabinWidth() - cabin.getAisleWidth())
 				/ cabin.getScale() / 2) + 1;

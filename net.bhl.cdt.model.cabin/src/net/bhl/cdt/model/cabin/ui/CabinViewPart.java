@@ -45,6 +45,7 @@ public class CabinViewPart extends ViewPart {
 	private Cabin cabin;
 	private double factor;
 	private Composite parent;
+	private boolean initialBoot = true;
 
 	/*********** graphics settings. *********/
 	private static final int OFFSET_OF_DOOR = 0;
@@ -408,7 +409,7 @@ public class CabinViewPart extends ViewPart {
 				e.gc.fillRectangle(X_ZERO, Y_ZERO, CABIN_WIDTH_IN_PIXELS,
 						cabinY);
 
-				if (!cabin.equals(null)) {
+				if (!initialBoot) {
 					for (Seat seat : ModelHelper.getChildrenByClass(cabin,
 							Seat.class)) {
 						
@@ -616,7 +617,7 @@ public class CabinViewPart extends ViewPart {
 						}
 					}
 				} else {
-
+					initialBoot = false;
 					e.gc.setFont(fontThree);
 					e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_RED));
 					e.gc.fillRectangle(38, 370, 300, 35);

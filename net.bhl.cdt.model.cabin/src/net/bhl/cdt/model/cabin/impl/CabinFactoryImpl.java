@@ -64,18 +64,20 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 			case CabinPackage.FIRST_CLASS: return createFirstClass();
 			case CabinPackage.ECONOMY_CLASS: return createEconomyClass();
 			case CabinPackage.PREMIUM_ECONOMY_CLASS: return createPremiumEconomyClass();
-			case CabinPackage.DOOR: return createDoor();
 			case CabinPackage.SEAT: return createSeat();
 			case CabinPackage.PASSENGER: return createPassenger();
 			case CabinPackage.CREW_MEMBER: return createCrewMember();
+			case CabinPackage.PHYSICAL_OBJECT: return createPhysicalObject();
 			case CabinPackage.LAVATORY: return createLavatory();
 			case CabinPackage.GALLEY: return createGalley();
 			case CabinPackage.STAIRWAY: return createStairway();
 			case CabinPackage.CURTAIN: return createCurtain();
 			case CabinPackage.STOWAGE: return createStowage();
-			case CabinPackage.CABIN_VIEW_SETTINGS: return createCabinViewSettings();
+			case CabinPackage.DOOR: return createDoor();
 			case CabinPackage.MAIN_DOOR: return createMainDoor();
-			case CabinPackage.PHYSICAL_OBJECT: return createPhysicalObject();
+			case CabinPackage.EMERGENCY_EXIT: return createEmergencyExit();
+			case CabinPackage.STANDARD_DOOR: return createStandardDoor();
+			case CabinPackage.CABIN_VIEW_SETTINGS: return createCabinViewSettings();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -91,10 +93,6 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 		switch (eDataType.getClassifierID()) {
 			case CabinPackage.SEX:
 				return createSexFromString(eDataType, initialValue);
-			case CabinPackage.CLASS_TYPE:
-				return createClassTypeFromString(eDataType, initialValue);
-			case CabinPackage.DOOR_TYPE:
-				return createDoorTypeFromString(eDataType, initialValue);
 			case CabinPackage.STAIRWAY_DIRECTION:
 				return createStairwayDirectionFromString(eDataType, initialValue);
 			default:
@@ -112,10 +110,6 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 		switch (eDataType.getClassifierID()) {
 			case CabinPackage.SEX:
 				return convertSexToString(eDataType, instanceValue);
-			case CabinPackage.CLASS_TYPE:
-				return convertClassTypeToString(eDataType, instanceValue);
-			case CabinPackage.DOOR_TYPE:
-				return convertDoorTypeToString(eDataType, instanceValue);
 			case CabinPackage.STAIRWAY_DIRECTION:
 				return convertStairwayDirectionToString(eDataType, instanceValue);
 			default:
@@ -308,49 +302,29 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EmergencyExit createEmergencyExit() {
+		EmergencyExitImpl emergencyExit = new EmergencyExitImpl();
+		return emergencyExit;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StandardDoor createStandardDoor() {
+		StandardDoorImpl standardDoor = new StandardDoorImpl();
+		return standardDoor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public PhysicalObject createPhysicalObject() {
 		PhysicalObjectImpl physicalObject = new PhysicalObjectImpl();
 		return physicalObject;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ClassType createClassTypeFromString(EDataType eDataType, String initialValue) {
-		ClassType result = ClassType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertClassTypeToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public DoorType createDoorTypeFromString(EDataType eDataType, String initialValue) {
-		DoorType result = DoorType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertDoorTypeToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

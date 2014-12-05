@@ -803,88 +803,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getDoor()
 	 * @generated
 	 */
-	int DOOR = 7;
-
-	/**
-	 * The feature id for the '<em><b>YPosition</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOOR__YPOSITION = 0;
-
-	/**
-	 * The feature id for the '<em><b>On Both Sides</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOOR__ON_BOTH_SIDES = 1;
-
-	/**
-	 * The feature id for the '<em><b>Width</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOOR__WIDTH = 2;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOOR__ID = 3;
-
-	/**
-	 * The feature id for the '<em><b>Door Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOOR__DOOR_TYPE = 4;
-
-	/**
-	 * The feature id for the '<em><b>Width Of Main Door</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOOR__WIDTH_OF_MAIN_DOOR = 5;
-
-	/**
-	 * The feature id for the '<em><b>Width Of Emergency Exit</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOOR__WIDTH_OF_EMERGENCY_EXIT = 6;
-
-	/**
-	 * The number of structural features of the '<em>Door</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOOR_FEATURE_COUNT = 7;
-
-	/**
-	 * The number of operations of the '<em>Door</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOOR_OPERATION_COUNT = 0;
+	int DOOR = 16;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.impl.SeatImpl <em>Seat</em>}' class.
@@ -894,7 +813,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getSeat()
 	 * @generated
 	 */
-	int SEAT = 8;
+	int SEAT = 7;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.impl.PassengerImpl <em>Passenger</em>}' class.
@@ -904,7 +823,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getPassenger()
 	 * @generated
 	 */
-	int PASSENGER = 9;
+	int PASSENGER = 8;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.impl.CrewMemberImpl <em>Crew Member</em>}' class.
@@ -914,7 +833,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getCrewMember()
 	 * @generated
 	 */
-	int CREW_MEMBER = 10;
+	int CREW_MEMBER = 9;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.impl.PhysicalObjectImpl <em>Physical Object</em>}' class.
@@ -924,7 +843,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getPhysicalObject()
 	 * @generated
 	 */
-	int PHYSICAL_OBJECT = 18;
+	int PHYSICAL_OBJECT = 10;
 
 	/**
 	 * The feature id for the '<em><b>XPosition</b></em>' attribute.
@@ -1161,22 +1080,13 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER__NAME = 7;
 
 	/**
-	 * The feature id for the '<em><b>Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PASSENGER__CLASS = 8;
-
-	/**
 	 * The feature id for the '<em><b>Boarding Time</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__BOARDING_TIME = 9;
+	int PASSENGER__BOARDING_TIME = 8;
 
 	/**
 	 * The feature id for the '<em><b>Seat Ref</b></em>' reference.
@@ -1185,7 +1095,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__SEAT_REF = 10;
+	int PASSENGER__SEAT_REF = 9;
 
 	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
@@ -1194,7 +1104,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__WIDTH = 11;
+	int PASSENGER__WIDTH = 10;
 
 	/**
 	 * The feature id for the '<em><b>Depth</b></em>' attribute.
@@ -1203,7 +1113,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__DEPTH = 12;
+	int PASSENGER__DEPTH = 11;
 
 	/**
 	 * The feature id for the '<em><b>Orientation In Degree</b></em>' attribute.
@@ -1212,7 +1122,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__ORIENTATION_IN_DEGREE = 13;
+	int PASSENGER__ORIENTATION_IN_DEGREE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Position X</b></em>' attribute.
@@ -1221,7 +1131,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__POSITION_X = 14;
+	int PASSENGER__POSITION_X = 13;
 
 	/**
 	 * The feature id for the '<em><b>Position Y</b></em>' attribute.
@@ -1230,7 +1140,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__POSITION_Y = 15;
+	int PASSENGER__POSITION_Y = 14;
 
 	/**
 	 * The feature id for the '<em><b>Is Seated</b></em>' attribute.
@@ -1239,7 +1149,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__IS_SEATED = 16;
+	int PASSENGER__IS_SEATED = 15;
 
 	/**
 	 * The feature id for the '<em><b>Walking Speed</b></em>' attribute.
@@ -1248,7 +1158,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__WALKING_SPEED = 17;
+	int PASSENGER__WALKING_SPEED = 16;
 
 	/**
 	 * The feature id for the '<em><b>Start Boarding After Delay</b></em>' attribute.
@@ -1257,7 +1167,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__START_BOARDING_AFTER_DELAY = 18;
+	int PASSENGER__START_BOARDING_AFTER_DELAY = 17;
 
 	/**
 	 * The feature id for the '<em><b>Number Of Waits</b></em>' attribute.
@@ -1266,7 +1176,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__NUMBER_OF_WAITS = 19;
+	int PASSENGER__NUMBER_OF_WAITS = 18;
 
 	/**
 	 * The feature id for the '<em><b>Has Luggage</b></em>' attribute.
@@ -1275,7 +1185,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__HAS_LUGGAGE = 20;
+	int PASSENGER__HAS_LUGGAGE = 19;
 
 	/**
 	 * The feature id for the '<em><b>Luggage Stow Time</b></em>' attribute.
@@ -1284,7 +1194,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__LUGGAGE_STOW_TIME = 21;
+	int PASSENGER__LUGGAGE_STOW_TIME = 20;
 
 	/**
 	 * The number of structural features of the '<em>Passenger</em>' class.
@@ -1293,7 +1203,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_FEATURE_COUNT = 22;
+	int PASSENGER_FEATURE_COUNT = 21;
 
 	/**
 	 * The number of operations of the '<em>Passenger</em>' class.
@@ -1697,6 +1607,78 @@ public interface CabinPackage extends EPackage {
 	int STOWAGE_OPERATION_COUNT = PHYSICAL_OBJECT_OPERATION_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>YPosition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOOR__YPOSITION = 0;
+
+	/**
+	 * The feature id for the '<em><b>On Both Sides</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOOR__ON_BOTH_SIDES = 1;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOOR__WIDTH = 2;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOOR__ID = 3;
+
+	/**
+	 * The feature id for the '<em><b>Width Of Main Door</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOOR__WIDTH_OF_MAIN_DOOR = 4;
+
+	/**
+	 * The feature id for the '<em><b>Width Of Emergency Exit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOOR__WIDTH_OF_EMERGENCY_EXIT = 5;
+
+	/**
+	 * The number of structural features of the '<em>Door</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOOR_FEATURE_COUNT = 6;
+
+	/**
+	 * The number of operations of the '<em>Door</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOOR_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.impl.CabinViewSettingsImpl <em>View Settings</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1704,7 +1686,253 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getCabinViewSettings()
 	 * @generated
 	 */
-	int CABIN_VIEW_SETTINGS = 16;
+	int CABIN_VIEW_SETTINGS = 20;
+
+	/**
+	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.impl.MainDoorImpl <em>Main Door</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.model.cabin.impl.MainDoorImpl
+	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getMainDoor()
+	 * @generated
+	 */
+	int MAIN_DOOR = 17;
+
+	/**
+	 * The feature id for the '<em><b>YPosition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAIN_DOOR__YPOSITION = DOOR__YPOSITION;
+
+	/**
+	 * The feature id for the '<em><b>On Both Sides</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAIN_DOOR__ON_BOTH_SIDES = DOOR__ON_BOTH_SIDES;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAIN_DOOR__WIDTH = DOOR__WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAIN_DOOR__ID = DOOR__ID;
+
+	/**
+	 * The feature id for the '<em><b>Width Of Main Door</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAIN_DOOR__WIDTH_OF_MAIN_DOOR = DOOR__WIDTH_OF_MAIN_DOOR;
+
+	/**
+	 * The feature id for the '<em><b>Width Of Emergency Exit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAIN_DOOR__WIDTH_OF_EMERGENCY_EXIT = DOOR__WIDTH_OF_EMERGENCY_EXIT;
+
+	/**
+	 * The number of structural features of the '<em>Main Door</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAIN_DOOR_FEATURE_COUNT = DOOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Main Door</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAIN_DOOR_OPERATION_COUNT = DOOR_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.impl.EmergencyExitImpl <em>Emergency Exit</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.model.cabin.impl.EmergencyExitImpl
+	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getEmergencyExit()
+	 * @generated
+	 */
+	int EMERGENCY_EXIT = 18;
+
+	/**
+	 * The feature id for the '<em><b>YPosition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMERGENCY_EXIT__YPOSITION = DOOR__YPOSITION;
+
+	/**
+	 * The feature id for the '<em><b>On Both Sides</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMERGENCY_EXIT__ON_BOTH_SIDES = DOOR__ON_BOTH_SIDES;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMERGENCY_EXIT__WIDTH = DOOR__WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMERGENCY_EXIT__ID = DOOR__ID;
+
+	/**
+	 * The feature id for the '<em><b>Width Of Main Door</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMERGENCY_EXIT__WIDTH_OF_MAIN_DOOR = DOOR__WIDTH_OF_MAIN_DOOR;
+
+	/**
+	 * The feature id for the '<em><b>Width Of Emergency Exit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMERGENCY_EXIT__WIDTH_OF_EMERGENCY_EXIT = DOOR__WIDTH_OF_EMERGENCY_EXIT;
+
+	/**
+	 * The number of structural features of the '<em>Emergency Exit</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMERGENCY_EXIT_FEATURE_COUNT = DOOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Emergency Exit</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMERGENCY_EXIT_OPERATION_COUNT = DOOR_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.impl.StandardDoorImpl <em>Standard Door</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.model.cabin.impl.StandardDoorImpl
+	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getStandardDoor()
+	 * @generated
+	 */
+	int STANDARD_DOOR = 19;
+
+	/**
+	 * The feature id for the '<em><b>YPosition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STANDARD_DOOR__YPOSITION = DOOR__YPOSITION;
+
+	/**
+	 * The feature id for the '<em><b>On Both Sides</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STANDARD_DOOR__ON_BOTH_SIDES = DOOR__ON_BOTH_SIDES;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STANDARD_DOOR__WIDTH = DOOR__WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STANDARD_DOOR__ID = DOOR__ID;
+
+	/**
+	 * The feature id for the '<em><b>Width Of Main Door</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STANDARD_DOOR__WIDTH_OF_MAIN_DOOR = DOOR__WIDTH_OF_MAIN_DOOR;
+
+	/**
+	 * The feature id for the '<em><b>Width Of Emergency Exit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STANDARD_DOOR__WIDTH_OF_EMERGENCY_EXIT = DOOR__WIDTH_OF_EMERGENCY_EXIT;
+
+	/**
+	 * The number of structural features of the '<em>Standard Door</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STANDARD_DOOR_FEATURE_COUNT = DOOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Standard Door</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STANDARD_DOOR_OPERATION_COUNT = DOOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Show Seatlabels</b></em>' attribute.
@@ -1851,118 +2079,6 @@ public interface CabinPackage extends EPackage {
 	int CABIN_VIEW_SETTINGS_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.impl.MainDoorImpl <em>Main Door</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see net.bhl.cdt.model.cabin.impl.MainDoorImpl
-	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getMainDoor()
-	 * @generated
-	 */
-	int MAIN_DOOR = 17;
-
-	/**
-	 * The feature id for the '<em><b>YPosition</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAIN_DOOR__YPOSITION = DOOR__YPOSITION;
-
-	/**
-	 * The feature id for the '<em><b>On Both Sides</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAIN_DOOR__ON_BOTH_SIDES = DOOR__ON_BOTH_SIDES;
-
-	/**
-	 * The feature id for the '<em><b>Width</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAIN_DOOR__WIDTH = DOOR__WIDTH;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAIN_DOOR__ID = DOOR__ID;
-
-	/**
-	 * The feature id for the '<em><b>Door Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAIN_DOOR__DOOR_TYPE = DOOR__DOOR_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Width Of Main Door</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAIN_DOOR__WIDTH_OF_MAIN_DOOR = DOOR__WIDTH_OF_MAIN_DOOR;
-
-	/**
-	 * The feature id for the '<em><b>Width Of Emergency Exit</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAIN_DOOR__WIDTH_OF_EMERGENCY_EXIT = DOOR__WIDTH_OF_EMERGENCY_EXIT;
-
-	/**
-	 * The number of structural features of the '<em>Main Door</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAIN_DOOR_FEATURE_COUNT = DOOR_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Main Door</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAIN_DOOR_OPERATION_COUNT = DOOR_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.ClassType <em>Class Type</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see net.bhl.cdt.model.cabin.ClassType
-	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getClassType()
-	 * @generated
-	 */
-	int CLASS_TYPE = 20;
-
-
-	/**
-	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.DoorType <em>Door Type</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see net.bhl.cdt.model.cabin.DoorType
-	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getDoorType()
-	 * @generated
-	 */
-	int DOOR_TYPE = 21;
-
-	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.StairwayDirection <em>Stairway Direction</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1980,7 +2096,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getSex()
 	 * @generated
 	 */
-	int SEX = 19;
+	int SEX = 21;
 
 
 	/**
@@ -2405,17 +2521,6 @@ public interface CabinPackage extends EPackage {
 	EAttribute getDoor_Id();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Door#getDoorType <em>Door Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Door Type</em>'.
-	 * @see net.bhl.cdt.model.cabin.Door#getDoorType()
-	 * @see #getDoor()
-	 * @generated
-	 */
-	EAttribute getDoor_DoorType();
-
-	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Door#getWidthOfMainDoor <em>Width Of Main Door</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2566,17 +2671,6 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPassenger_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getClass_ <em>Class</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Class</em>'.
-	 * @see net.bhl.cdt.model.cabin.Passenger#getClass_()
-	 * @see #getPassenger()
-	 * @generated
-	 */
-	EAttribute getPassenger_Class();
 
 	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getBoardingTime <em>Boarding Time</em>}'.
@@ -3066,6 +3160,26 @@ public interface CabinPackage extends EPackage {
 	EClass getMainDoor();
 
 	/**
+	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.EmergencyExit <em>Emergency Exit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Emergency Exit</em>'.
+	 * @see net.bhl.cdt.model.cabin.EmergencyExit
+	 * @generated
+	 */
+	EClass getEmergencyExit();
+
+	/**
+	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.StandardDoor <em>Standard Door</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Standard Door</em>'.
+	 * @see net.bhl.cdt.model.cabin.StandardDoor
+	 * @generated
+	 */
+	EClass getStandardDoor();
+
+	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.PhysicalObject <em>Physical Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3118,26 +3232,6 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPhysicalObject_YDimension();
-
-	/**
-	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.ClassType <em>Class Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Class Type</em>'.
-	 * @see net.bhl.cdt.model.cabin.ClassType
-	 * @generated
-	 */
-	EEnum getClassType();
-
-	/**
-	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.DoorType <em>Door Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Door Type</em>'.
-	 * @see net.bhl.cdt.model.cabin.DoorType
-	 * @generated
-	 */
-	EEnum getDoorType();
 
 	/**
 	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.StairwayDirection <em>Stairway Direction</em>}'.
@@ -3472,13 +3566,6 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute DOOR__ID = eINSTANCE.getDoor_Id();
 		/**
-		 * The meta object literal for the '<em><b>Door Type</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DOOR__DOOR_TYPE = eINSTANCE.getDoor_DoorType();
-		/**
 		 * The meta object literal for the '<em><b>Width Of Main Door</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3580,13 +3667,6 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PASSENGER__NAME = eINSTANCE.getPassenger_Name();
-		/**
-		 * The meta object literal for the '<em><b>Class</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PASSENGER__CLASS = eINSTANCE.getPassenger_Class();
 		/**
 		 * The meta object literal for the '<em><b>Boarding Time</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -3919,6 +3999,24 @@ public interface CabinPackage extends EPackage {
 		 */
 		EClass MAIN_DOOR = eINSTANCE.getMainDoor();
 		/**
+		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.EmergencyExitImpl <em>Emergency Exit</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.bhl.cdt.model.cabin.impl.EmergencyExitImpl
+		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getEmergencyExit()
+		 * @generated
+		 */
+		EClass EMERGENCY_EXIT = eINSTANCE.getEmergencyExit();
+		/**
+		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.StandardDoorImpl <em>Standard Door</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.bhl.cdt.model.cabin.impl.StandardDoorImpl
+		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getStandardDoor()
+		 * @generated
+		 */
+		EClass STANDARD_DOOR = eINSTANCE.getStandardDoor();
+		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.PhysicalObjectImpl <em>Physical Object</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3955,24 +4053,6 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PHYSICAL_OBJECT__YDIMENSION = eINSTANCE.getPhysicalObject_YDimension();
-		/**
-		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.ClassType <em>Class Type</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see net.bhl.cdt.model.cabin.ClassType
-		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getClassType()
-		 * @generated
-		 */
-		EEnum CLASS_TYPE = eINSTANCE.getClassType();
-		/**
-		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.DoorType <em>Door Type</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see net.bhl.cdt.model.cabin.DoorType
-		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getDoorType()
-		 * @generated
-		 */
-		EEnum DOOR_TYPE = eINSTANCE.getDoorType();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.StairwayDirection <em>Stairway Direction</em>}' enum.
 		 * <!-- begin-user-doc -->

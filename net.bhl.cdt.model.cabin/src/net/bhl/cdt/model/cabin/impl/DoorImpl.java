@@ -4,12 +4,8 @@ package net.bhl.cdt.model.cabin.impl;
 
 import net.bhl.cdt.model.cabin.CabinPackage;
 import net.bhl.cdt.model.cabin.Door;
-import net.bhl.cdt.model.cabin.DoorType;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
@@ -24,7 +20,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.DoorImpl#isOnBothSides <em>On Both Sides</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.DoorImpl#getWidth <em>Width</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.DoorImpl#getId <em>Id</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.DoorImpl#getDoorType <em>Door Type</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.DoorImpl#getWidthOfMainDoor <em>Width Of Main Door</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.DoorImpl#getWidthOfEmergencyExit <em>Width Of Emergency Exit</em>}</li>
  * </ul>
@@ -112,26 +107,6 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	 * @ordered
 	 */
 	protected int id = ID_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getDoorType() <em>Door Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDoorType()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final DoorType DOOR_TYPE_EDEFAULT = DoorType.MAIN_DOOR;
-
-	/**
-	 * The cached value of the '{@link #getDoorType() <em>Door Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDoorType()
-	 * @generated
-	 * @ordered
-	 */
-	protected DoorType doorType = DOOR_TYPE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getWidthOfMainDoor() <em>Width Of Main Door</em>}' attribute.
@@ -281,27 +256,6 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DoorType getDoorType() {
-		return doorType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDoorType(DoorType newDoorType) {
-		DoorType oldDoorType = doorType;
-		doorType = newDoorType == null ? DOOR_TYPE_EDEFAULT : newDoorType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.DOOR__DOOR_TYPE, oldDoorType, doorType));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public double getWidthOfMainDoor() {
 		return widthOfMainDoor;
 	}
@@ -355,8 +309,6 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 				return getWidth();
 			case CabinPackage.DOOR__ID:
 				return getId();
-			case CabinPackage.DOOR__DOOR_TYPE:
-				return getDoorType();
 			case CabinPackage.DOOR__WIDTH_OF_MAIN_DOOR:
 				return getWidthOfMainDoor();
 			case CabinPackage.DOOR__WIDTH_OF_EMERGENCY_EXIT:
@@ -384,9 +336,6 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 				return;
 			case CabinPackage.DOOR__ID:
 				setId((Integer)newValue);
-				return;
-			case CabinPackage.DOOR__DOOR_TYPE:
-				setDoorType((DoorType)newValue);
 				return;
 			case CabinPackage.DOOR__WIDTH_OF_MAIN_DOOR:
 				setWidthOfMainDoor((Double)newValue);
@@ -418,9 +367,6 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 			case CabinPackage.DOOR__ID:
 				setId(ID_EDEFAULT);
 				return;
-			case CabinPackage.DOOR__DOOR_TYPE:
-				setDoorType(DOOR_TYPE_EDEFAULT);
-				return;
 			case CabinPackage.DOOR__WIDTH_OF_MAIN_DOOR:
 				setWidthOfMainDoor(WIDTH_OF_MAIN_DOOR_EDEFAULT);
 				return;
@@ -447,8 +393,6 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 				return width != WIDTH_EDEFAULT;
 			case CabinPackage.DOOR__ID:
 				return id != ID_EDEFAULT;
-			case CabinPackage.DOOR__DOOR_TYPE:
-				return doorType != DOOR_TYPE_EDEFAULT;
 			case CabinPackage.DOOR__WIDTH_OF_MAIN_DOOR:
 				return widthOfMainDoor != WIDTH_OF_MAIN_DOOR_EDEFAULT;
 			case CabinPackage.DOOR__WIDTH_OF_EMERGENCY_EXIT:
@@ -475,8 +419,6 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 		result.append(width);
 		result.append(", id: ");
 		result.append(id);
-		result.append(", doorType: ");
-		result.append(doorType);
 		result.append(", widthOfMainDoor: ");
 		result.append(widthOfMainDoor);
 		result.append(", widthOfEmergencyExit: ");
