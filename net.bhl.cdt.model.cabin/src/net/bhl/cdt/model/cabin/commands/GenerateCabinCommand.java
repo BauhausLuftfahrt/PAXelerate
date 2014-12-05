@@ -24,8 +24,13 @@ import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.ConsoleViewPart;
 import net.bhl.cdt.model.util.ModelHelper;
 
+import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
+import org.osgi.framework.Bundle;
 
 /**
  * 
@@ -212,7 +217,6 @@ public class GenerateCabinCommand extends CDTCommand {
 		if ((seats > 0) && (seatsInRow > 0)) {
 			if (seatsInRow % 2 == 0) {
 
-
 				// TODO: Should be done better!!
 				/**************************************************************************/
 				if (travelSubClass.getSimpleName()
@@ -250,7 +254,6 @@ public class GenerateCabinCommand extends CDTCommand {
 				subbClazz.setSeatsPerRow(seatsInRow);
 				subbClazz.setSeatWidth(seatDimensionX);
 				subbClazz.setSeatLength(seatDimensionY);
-
 
 				/**************************************************************************/
 				seatHelper = 0;
@@ -337,8 +340,7 @@ public class GenerateCabinCommand extends CDTCommand {
 	 *            exit.
 	 */
 	private <T extends Door> void createDoor(Class<T> typeDoor,
-			boolean symmetrical, int id,
-			double yPosition) {
+			boolean symmetrical, int id, double yPosition) {
 		Boolean mainDoorAlreadyExists = false;
 		if (!mainDoorAlreadyExists) {
 			for (Door testDoor : cabin.getDoors()) {
@@ -498,6 +500,13 @@ public class GenerateCabinCommand extends CDTCommand {
 		/***************************************************/
 
 		consoleViewPart.printText("initialize cabin generation ...");
+		Bundle bundle = Platform.getBundle("net.bhl.cdt.model.cabin");
+		ILog log = Platform.getLog(bundle);
+
+		IStatus status = new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
+				"Test Cabin logger");
+
+		log.log(status);
 
 		/***** Clearing all Objects *****/
 		cabin.getClasses().clear();
