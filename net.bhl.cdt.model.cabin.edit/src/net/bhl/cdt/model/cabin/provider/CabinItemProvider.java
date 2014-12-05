@@ -247,10 +247,6 @@ public class CabinItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(CabinPackage.Literals.CABIN__FIRST_CLASSES);
-			childrenFeatures.add(CabinPackage.Literals.CABIN__BUSINESS_CLASSES);
-			childrenFeatures.add(CabinPackage.Literals.CABIN__ECONOMY_CLASSES);
-			childrenFeatures.add(CabinPackage.Literals.CABIN__PREMIUM_ECONOMY_CLASSES);
 			childrenFeatures.add(CabinPackage.Literals.CABIN__CLASSES);
 			childrenFeatures.add(CabinPackage.Literals.CABIN__DOORS);
 			childrenFeatures.add(CabinPackage.Literals.CABIN__LAVATORIES);
@@ -323,10 +319,6 @@ public class CabinItemProvider
 			case CabinPackage.CABIN__BOARDING_TIME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case CabinPackage.CABIN__FIRST_CLASSES:
-			case CabinPackage.CABIN__BUSINESS_CLASSES:
-			case CabinPackage.CABIN__ECONOMY_CLASSES:
-			case CabinPackage.CABIN__PREMIUM_ECONOMY_CLASSES:
 			case CabinPackage.CABIN__CLASSES:
 			case CabinPackage.CABIN__DOORS:
 			case CabinPackage.CABIN__LAVATORIES:
@@ -351,26 +343,6 @@ public class CabinItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CabinPackage.Literals.CABIN__FIRST_CLASSES,
-				 CabinFactory.eINSTANCE.createFirstClass()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CabinPackage.Literals.CABIN__BUSINESS_CLASSES,
-				 CabinFactory.eINSTANCE.createBusinessClass()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CabinPackage.Literals.CABIN__ECONOMY_CLASSES,
-				 CabinFactory.eINSTANCE.createEconomyClass()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CabinPackage.Literals.CABIN__PREMIUM_ECONOMY_CLASSES,
-				 CabinFactory.eINSTANCE.createPremiumEconomyClass()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -409,6 +381,16 @@ public class CabinItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
+				(CabinPackage.Literals.CABIN__DOORS,
+				 CabinFactory.eINSTANCE.createEmergencyExit()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CabinPackage.Literals.CABIN__DOORS,
+				 CabinFactory.eINSTANCE.createStandardDoor()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(CabinPackage.Literals.CABIN__LAVATORIES,
 				 CabinFactory.eINSTANCE.createLavatory()));
 
@@ -436,32 +418,6 @@ public class CabinItemProvider
 			(createChildParameter
 				(CabinPackage.Literals.CABIN__PASSENGERS,
 				 CabinFactory.eINSTANCE.createPassenger()));
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify =
-			childFeature == CabinPackage.Literals.CABIN__FIRST_CLASSES ||
-			childFeature == CabinPackage.Literals.CABIN__CLASSES ||
-			childFeature == CabinPackage.Literals.CABIN__BUSINESS_CLASSES ||
-			childFeature == CabinPackage.Literals.CABIN__ECONOMY_CLASSES ||
-			childFeature == CabinPackage.Literals.CABIN__PREMIUM_ECONOMY_CLASSES;
-
-		if (qualify) {
-			return getString
-				("_UI_CreateChild_text2",
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.astar.ObstacleMap;
 import net.bhl.cdt.model.astar.StopWatch;
-import net.bhl.cdt.model.astar.TestAStar;
+import net.bhl.cdt.model.astar.RunAStar;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
@@ -51,7 +51,6 @@ import org.eclipse.ui.PlatformUI;
 public class SimulateBoardingCommand extends CDTCommand {
 
 	private Cabin cabin;
-	private ObstacleMap generator;
 	private ArrayList<Passenger> alreadySeatedList = new ArrayList<Passenger>();
 	private static StopWatch s = new StopWatch();
 	
@@ -78,10 +77,10 @@ public class SimulateBoardingCommand extends CDTCommand {
 		s.start();
 		if (!cabin.getPassengers().isEmpty()) {
 			ObstacleMap map = new ObstacleMap(cabin);
-			TestAStar astar = new TestAStar(map.getMap(),
+			RunAStar astar = new RunAStar(map.getMap(),
 					(int) (cabin.getCabinWidth() / cabin.getScale()),
 					(int) (cabin.getCabinLength() / cabin.getScale()), cabin);		
-			while (!TestAStar.getSimulationDone()) {
+			while (!RunAStar.getSimulationDone()) {
 				try {
 					for(Passenger pax:ModelHelper.getChildrenByClass(astar.getPassengerLocations(), Passenger.class)) {
 						if(pax.isIsSeated()&&!alreadySeatedList.contains(pax)) {
@@ -96,7 +95,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 					e.printStackTrace();
 				}
 			}
-			if (TestAStar.simulationDone) {
+			if (RunAStar.getSimulationDone()) {
 				for(Passenger pax:ModelHelper.getChildrenByClass(astar.getPassengerLocations(), Passenger.class)) {
 					if(pax.isIsSeated()&&!alreadySeatedList.contains(pax)) {
 						consoleViewPart.printText("Passenger "+pax.getName()+" is now seated!");
@@ -112,8 +111,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 					consoleViewPart.printText("Heat map generation succeeded.");
 				}
 				
-				if(!TestAStar.pathList.isEmpty()) {
-					cabinViewPart.submitPath(TestAStar.getPathList());
+				if (!RunAStar.getPathList().isEmpty()) {
+					cabinViewPart.submitPath(RunAStar.getPathList());
 					consoleViewPart.printText("Paths printed successfully.");
 				}						
 				consoleViewPart.printText("Boarding completed!");			

@@ -19,10 +19,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getAisleWidth <em>Aisle Width</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getFramesPerSecond <em>Frames Per Second</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getNumberOfDecks <em>Number Of Decks</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getFirstClasses <em>First Classes</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBusinessClasses <em>Business Classes</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getEconomyClasses <em>Economy Classes</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getPremiumEconomyClasses <em>Premium Economy Classes</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getClasses <em>Classes</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getDoors <em>Doors</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getLavatories <em>Lavatories</em>}</li>
@@ -290,70 +286,6 @@ public interface Cabin extends NamedElement {
 	void setNumberOfDecks(int value);
 
 	/**
-	 * Returns the value of the '<em><b>First Classes</b></em>' containment reference list.
-	 * The list contents are of type {@link net.bhl.cdt.model.cabin.FirstClass}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>First Classes</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>First Classes</em>' containment reference list.
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_FirstClasses()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
-	EList<FirstClass> getFirstClasses();
-
-	/**
-	 * Returns the value of the '<em><b>Business Classes</b></em>' containment reference list.
-	 * The list contents are of type {@link net.bhl.cdt.model.cabin.BusinessClass}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Business Classes</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Business Classes</em>' containment reference list.
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_BusinessClasses()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
-	EList<BusinessClass> getBusinessClasses();
-
-	/**
-	 * Returns the value of the '<em><b>Economy Classes</b></em>' containment reference list.
-	 * The list contents are of type {@link net.bhl.cdt.model.cabin.EconomyClass}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Economy Classes</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Economy Classes</em>' containment reference list.
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_EconomyClasses()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
-	EList<EconomyClass> getEconomyClasses();
-
-	/**
-	 * Returns the value of the '<em><b>Premium Economy Classes</b></em>' containment reference list.
-	 * The list contents are of type {@link net.bhl.cdt.model.cabin.PremiumEconomyClass}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Premium Economy Classes</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Premium Economy Classes</em>' containment reference list.
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_PremiumEconomyClasses()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
-	EList<PremiumEconomyClass> getPremiumEconomyClasses();
-
-	/**
 	 * Returns the value of the '<em><b>Boarding Time</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -380,7 +312,7 @@ public interface Cabin extends NamedElement {
 	void setBoardingTime(double value);
 
 	/**
-	 * Returns the value of the '<em><b>Classes</b></em>' reference list.
+	 * Returns the value of the '<em><b>Classes</b></em>' containment reference list.
 	 * The list contents are of type {@link net.bhl.cdt.model.cabin.TravelClass}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -388,9 +320,9 @@ public interface Cabin extends NamedElement {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Classes</em>' reference list.
+	 * @return the value of the '<em>Classes</em>' containment reference list.
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Classes()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	EList<TravelClass> getClasses();

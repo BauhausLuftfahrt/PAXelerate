@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Door#isOnBothSides <em>On Both Sides</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Door#getWidth <em>Width</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Door#getId <em>Id</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Door#getDoorType <em>Door Type</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Door#getWidthOfMainDoor <em>Width Of Main Door</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Door#getWidthOfEmergencyExit <em>Width Of Emergency Exit</em>}</li>
  * </ul>
@@ -130,35 +129,6 @@ public interface Door extends EObject {
 	 * @generated
 	 */
 	void setId(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Door Type</b></em>' attribute.
-	 * The literals are from the enumeration {@link net.bhl.cdt.model.cabin.DoorType}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Door Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Door Type</em>' attribute.
-	 * @see net.bhl.cdt.model.cabin.DoorType
-	 * @see #setDoorType(DoorType)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getDoor_DoorType()
-	 * @model
-	 * @generated
-	 */
-	DoorType getDoorType();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Door#getDoorType <em>Door Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Door Type</em>' attribute.
-	 * @see net.bhl.cdt.model.cabin.DoorType
-	 * @see #getDoorType()
-	 * @generated
-	 */
-	void setDoorType(DoorType value);
 
 	/**
 	 * Returns the value of the '<em><b>Width Of Main Door</b></em>' attribute.

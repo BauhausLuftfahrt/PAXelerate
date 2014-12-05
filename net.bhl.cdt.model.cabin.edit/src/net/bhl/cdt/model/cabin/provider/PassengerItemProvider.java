@@ -68,7 +68,6 @@ public class PassengerItemProvider
 			addDoorPropertyDescriptor(object);
 			addSeatPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
-			addClassPropertyDescriptor(object);
 			addBoardingTimePropertyDescriptor(object);
 			addSeatRefPropertyDescriptor(object);
 			addWidthPropertyDescriptor(object);
@@ -166,28 +165,6 @@ public class PassengerItemProvider
 				 getString("_UI_Passenger_Name_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_Name_feature", "_UI_Passenger_type"),
 				 CabinPackage.Literals.PASSENGER__NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Class feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addClassPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Passenger_class_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_class_feature", "_UI_Passenger_type"),
-				 CabinPackage.Literals.PASSENGER__CLASS,
 				 true,
 				 false,
 				 false,
@@ -613,7 +590,6 @@ public class PassengerItemProvider
 			case CabinPackage.PASSENGER__AGE:
 			case CabinPackage.PASSENGER__WEIGHT:
 			case CabinPackage.PASSENGER__NAME:
-			case CabinPackage.PASSENGER__CLASS:
 			case CabinPackage.PASSENGER__BOARDING_TIME:
 			case CabinPackage.PASSENGER__WIDTH:
 			case CabinPackage.PASSENGER__DEPTH:

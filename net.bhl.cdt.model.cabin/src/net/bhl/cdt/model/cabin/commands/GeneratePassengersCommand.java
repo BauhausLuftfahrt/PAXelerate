@@ -8,9 +8,9 @@ import net.bhl.cdt.model.cabin.BusinessClass;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
 import net.bhl.cdt.model.cabin.Door;
-import net.bhl.cdt.model.cabin.DoorType;
 import net.bhl.cdt.model.cabin.EconomyClass;
 import net.bhl.cdt.model.cabin.FirstClass;
+import net.bhl.cdt.model.cabin.MainDoor;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PremiumEconomyClass;
 import net.bhl.cdt.model.cabin.Seat;
@@ -139,11 +139,11 @@ public class GeneratePassengersCommand extends CDTCommand {
 	 *            is the passenger to whom the door is assigned to.
 	 */
 	private void applyDoor(Passenger pass) {
-		if (cabin.getDoors().size() != 0) {
-			for (Door door : ModelHelper.getChildrenByClass(cabin, Door.class)) {
-				// The main door is assigned to the passenger
-				if (door.getDoorType() == DoorType.MAIN_DOOR) {
+		if (!cabin.getDoors().isEmpty()) {
+			for (Door door : cabin.getDoors()) {
+				if (door instanceof MainDoor) {
 					pass.setDoor(door);
+					break;
 				}
 			}
 		}
@@ -170,12 +170,12 @@ public class GeneratePassengersCommand extends CDTCommand {
 	 * @param list
 	 *            is the list in which all unique values are stored
 	 */
-	private int uniqueRandom(ArrayList<Integer> list) {
+	private int uniqueRandom(ArrayList<Integer> list, int lowerBound, int range) {
 		boolean checkUniqueness = false;
 		Random rand = new Random();
 		int randomValue = 0;
 		while (!checkUniqueness) {
-			randomValue = rand.nextInt(seatsInClass) + seatAreaBegin;
+			randomValue = rand.nextInt(range) + lowerBound;
 			if (!list.contains(randomValue)) {
 				list.add(randomValue);
 				checkUniqueness = true;
@@ -215,15 +215,18 @@ public class GeneratePassengersCommand extends CDTCommand {
 					Passenger newPassenger = CabinFactory.eINSTANCE
 							.createPassenger();
 					cabin.getPassengers().add(newPassenger);
-					newPassenger.setId(uniqueRandom(randomSeatId));
-					newPassenger.setSeat(uniqueRandom(randomPassengerId));
+					newPassenger.setId(uniqueRandom(randomPassengerId, 1,
+							totalPax + 1));
+					newPassenger.setSeat(uniqueRandom(randomSeatId,
+							seatAreaBegin, seatsInClass));
 					newPassenger.setName(newPassenger.getId() + " ("
 							+ getSeat(newPassenger).getSeatId() + ")");
 					newPassenger.setSeatRef(getSeat(newPassenger));
 					// newPassenger.setClass(classType);
 					applyDoor(newPassenger);
 					newPassenger.setHasLuggage(hasLuggage);
-					newPassenger.setStartBoardingAfterDelay(passengerIdCount
+					newPassenger
+							.setStartBoardingAfterDelay((passengerIdCount - 1)
 							* 60 / passengersPerMinute);
 
 					/******************** random values ***********************/
@@ -284,11 +287,13 @@ public class GeneratePassengersCommand extends CDTCommand {
 		randomSeatId = new ArrayList<Integer>();
 		randomPassengerId = new ArrayList<Integer>();
 		passengerIdCount = 1;
+
 		if (totalPax <= totalSeats) {
 			generatePassengers(FirstClass.class);
 			generatePassengers(BusinessClass.class);
 			generatePassengers(PremiumEconomyClass.class);
 			generatePassengers(EconomyClass.class);
+
 		} else {
 			consoleViewPart
 					.printText("Too many passengers in the cabin! Remove "

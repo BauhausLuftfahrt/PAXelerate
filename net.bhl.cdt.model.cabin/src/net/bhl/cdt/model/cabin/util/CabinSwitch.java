@@ -114,12 +114,6 @@ public class CabinSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CabinPackage.DOOR: {
-				Door door = (Door)theEObject;
-				T result = caseDoor(door);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case CabinPackage.SEAT: {
 				Seat seat = (Seat)theEObject;
 				T result = caseSeat(seat);
@@ -136,6 +130,12 @@ public class CabinSwitch<T> extends Switch<T> {
 			case CabinPackage.CREW_MEMBER: {
 				CrewMember crewMember = (CrewMember)theEObject;
 				T result = caseCrewMember(crewMember);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CabinPackage.PHYSICAL_OBJECT: {
+				PhysicalObject physicalObject = (PhysicalObject)theEObject;
+				T result = casePhysicalObject(physicalObject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -174,9 +174,9 @@ public class CabinSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CabinPackage.CABIN_VIEW_SETTINGS: {
-				CabinViewSettings cabinViewSettings = (CabinViewSettings)theEObject;
-				T result = caseCabinViewSettings(cabinViewSettings);
+			case CabinPackage.DOOR: {
+				Door door = (Door)theEObject;
+				T result = caseDoor(door);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -187,9 +187,23 @@ public class CabinSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CabinPackage.PHYSICAL_OBJECT: {
-				PhysicalObject physicalObject = (PhysicalObject)theEObject;
-				T result = casePhysicalObject(physicalObject);
+			case CabinPackage.EMERGENCY_EXIT: {
+				EmergencyExit emergencyExit = (EmergencyExit)theEObject;
+				T result = caseEmergencyExit(emergencyExit);
+				if (result == null) result = caseDoor(emergencyExit);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CabinPackage.STANDARD_DOOR: {
+				StandardDoor standardDoor = (StandardDoor)theEObject;
+				T result = caseStandardDoor(standardDoor);
+				if (result == null) result = caseDoor(standardDoor);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CabinPackage.CABIN_VIEW_SETTINGS: {
+				CabinViewSettings cabinViewSettings = (CabinViewSettings)theEObject;
+				T result = caseCabinViewSettings(cabinViewSettings);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -464,6 +478,36 @@ public class CabinSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseMainDoor(MainDoor object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Emergency Exit</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Emergency Exit</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEmergencyExit(EmergencyExit object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Standard Door</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Standard Door</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStandardDoor(StandardDoor object) {
 		return null;
 	}
 

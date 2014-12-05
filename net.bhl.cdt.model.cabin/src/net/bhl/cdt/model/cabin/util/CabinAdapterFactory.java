@@ -97,10 +97,6 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 				return createPremiumEconomyClassAdapter();
 			}
 			@Override
-			public Adapter caseDoor(Door object) {
-				return createDoorAdapter();
-			}
-			@Override
 			public Adapter caseSeat(Seat object) {
 				return createSeatAdapter();
 			}
@@ -111,6 +107,10 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseCrewMember(CrewMember object) {
 				return createCrewMemberAdapter();
+			}
+			@Override
+			public Adapter casePhysicalObject(PhysicalObject object) {
+				return createPhysicalObjectAdapter();
 			}
 			@Override
 			public Adapter caseLavatory(Lavatory object) {
@@ -133,16 +133,24 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 				return createStowageAdapter();
 			}
 			@Override
-			public Adapter caseCabinViewSettings(CabinViewSettings object) {
-				return createCabinViewSettingsAdapter();
+			public Adapter caseDoor(Door object) {
+				return createDoorAdapter();
 			}
 			@Override
 			public Adapter caseMainDoor(MainDoor object) {
 				return createMainDoorAdapter();
 			}
 			@Override
-			public Adapter casePhysicalObject(PhysicalObject object) {
-				return createPhysicalObjectAdapter();
+			public Adapter caseEmergencyExit(EmergencyExit object) {
+				return createEmergencyExitAdapter();
+			}
+			@Override
+			public Adapter caseStandardDoor(StandardDoor object) {
+				return createStandardDoorAdapter();
+			}
+			@Override
+			public Adapter caseCabinViewSettings(CabinViewSettings object) {
+				return createCabinViewSettingsAdapter();
 			}
 			@Override
 			public Adapter caseNamedElement(NamedElement object) {
@@ -417,6 +425,34 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createMainDoorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.EmergencyExit <em>Emergency Exit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see net.bhl.cdt.model.cabin.EmergencyExit
+	 * @generated
+	 */
+	public Adapter createEmergencyExitAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.StandardDoor <em>Standard Door</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see net.bhl.cdt.model.cabin.StandardDoor
+	 * @generated
+	 */
+	public Adapter createStandardDoorAdapter() {
 		return null;
 	}
 

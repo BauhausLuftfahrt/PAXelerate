@@ -146,18 +146,20 @@ public class Agent extends Subject implements Runnable {
 				//	for (int y = -square; y<0; y++) {
 				//		if(!(x==0&&y==0)) {
 							if((xLoc+x)>0) {//&&(yLoc+y)>0) {
-								TestAStar.map.getNode(xLoc+x, yLoc).setOccupiedByAgent(occupy);
+					RunAStar.getMap().getNode(xLoc + x, yLoc)
+							.setOccupiedByAgent(
+							occupy);
 							}
 				//		}
 				//	}
 			}
 		} else {
-			TestAStar.map.getNode(xLoc, yLoc).setOccupiedByAgent(occupy);
+			RunAStar.getMap().getNode(xLoc, yLoc).setOccupiedByAgent(occupy);
 		}
 	}
 	
 	private boolean nodeBlocked(int xLoc, int yLoc) {
-		if(TestAStar.map.getNode(xLoc, yLoc).isOccupiedByAgent()) {
+		if (RunAStar.getMap().getNode(xLoc, yLoc).isOccupiedByAgent()) {
 			return true;
 		} 
 		else {
@@ -170,10 +172,10 @@ public class Agent extends Subject implements Runnable {
 		try {
 			Thread.sleep((int)(passenger.getStartBoardingAfterDelay()*1000));
 			s.start();
-			Seat seat = ModelHelper.getChildrenByClass(TestAStar.getCabin(), Seat.class).get(0);
-			firstSeatY = seat.getYPosition()/TestAStar.getCabin().getScale();
+			Seat seat = ModelHelper.getChildrenByClass(RunAStar.getCabin(), Seat.class).get(0);
+			firstSeatY = seat.getYPosition()/RunAStar.getCabin().getScale();
 			this.currentAgentPosition = new int[path.length][2];
-			TestAStar.submitPath(path);
+			RunAStar.submitPath(path);
 			int numbOfInterupts = 0;
 			int i = 0;
 			while(i < path.length) {
@@ -191,8 +193,10 @@ public class Agent extends Subject implements Runnable {
 					numbOfInterupts ++;
 				}
 				else if(passengerStowsLuggage()&&!alreadyStowed) {
-					TestAStar.map.getNode(previousX, previousY).setOccupiedByAgent(false);
-					TestAStar.map.getNode(currentX, currentY).setOccupiedByAgent(true);	
+					RunAStar.getMap().getNode(previousX, previousY)
+							.setOccupiedByAgent(false);
+					RunAStar.getMap().getNode(currentX, currentY)
+							.setOccupiedByAgent(true);
 					occupyArea(currentX,currentY,true);
 					Thread.sleep((int)(passenger.getLuggageStowTime()*1000/2));
 					occupyArea(currentX,currentY,false);
@@ -200,8 +204,10 @@ public class Agent extends Subject implements Runnable {
 					i++;				
 				}
 				else {
-					TestAStar.map.getNode(previousX, previousY).setOccupiedByAgent(false);
-					TestAStar.map.getNode(currentX, currentY).setOccupiedByAgent(true);
+					RunAStar.getMap().getNode(previousX, previousY)
+							.setOccupiedByAgent(false);
+					RunAStar.getMap().getNode(currentX, currentY)
+							.setOccupiedByAgent(true);
 					occupyArea(previousX,previousY,false);
 					occupyArea(currentX,currentY,true);
 					this.currentAgentPosition[i][0] = this.currentX;
@@ -214,9 +220,10 @@ public class Agent extends Subject implements Runnable {
 					i++;
 				}
 			}
-			TestAStar.map.getNode(currentX, currentY).setOccupiedByAgent(false);	
+			RunAStar.getMap().getNode(currentX, currentY)
+					.setOccupiedByAgent(false);
 			passenger.setIsSeated(true);
-			TestAStar.setPassengerSeated(passenger);	
+			RunAStar.setPassengerSeated(passenger);	
 			s.stop();
 			passenger.setBoardingTime(s.getElapsedTime()/1000);
 			passenger.setNumberOfWaits(numbOfInterupts);

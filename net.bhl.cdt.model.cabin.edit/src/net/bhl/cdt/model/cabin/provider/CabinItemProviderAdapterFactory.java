@@ -486,6 +486,52 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.EmergencyExit} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EmergencyExitItemProvider emergencyExitItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link net.bhl.cdt.model.cabin.EmergencyExit}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEmergencyExitAdapter() {
+		if (emergencyExitItemProvider == null) {
+			emergencyExitItemProvider = new EmergencyExitItemProvider(this);
+		}
+
+		return emergencyExitItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.StandardDoor} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StandardDoorItemProvider standardDoorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link net.bhl.cdt.model.cabin.StandardDoor}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStandardDoorAdapter() {
+		if (standardDoorItemProvider == null) {
+			standardDoorItemProvider = new StandardDoorItemProvider(this);
+		}
+
+		return standardDoorItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.PhysicalObject} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -614,18 +660,20 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 		if (firstClassItemProvider != null) firstClassItemProvider.dispose();
 		if (economyClassItemProvider != null) economyClassItemProvider.dispose();
 		if (premiumEconomyClassItemProvider != null) premiumEconomyClassItemProvider.dispose();
-		if (doorItemProvider != null) doorItemProvider.dispose();
 		if (seatItemProvider != null) seatItemProvider.dispose();
 		if (passengerItemProvider != null) passengerItemProvider.dispose();
 		if (crewMemberItemProvider != null) crewMemberItemProvider.dispose();
+		if (physicalObjectItemProvider != null) physicalObjectItemProvider.dispose();
 		if (lavatoryItemProvider != null) lavatoryItemProvider.dispose();
 		if (galleyItemProvider != null) galleyItemProvider.dispose();
 		if (stairwayItemProvider != null) stairwayItemProvider.dispose();
 		if (curtainItemProvider != null) curtainItemProvider.dispose();
 		if (stowageItemProvider != null) stowageItemProvider.dispose();
-		if (cabinViewSettingsItemProvider != null) cabinViewSettingsItemProvider.dispose();
+		if (doorItemProvider != null) doorItemProvider.dispose();
 		if (mainDoorItemProvider != null) mainDoorItemProvider.dispose();
-		if (physicalObjectItemProvider != null) physicalObjectItemProvider.dispose();
+		if (emergencyExitItemProvider != null) emergencyExitItemProvider.dispose();
+		if (standardDoorItemProvider != null) standardDoorItemProvider.dispose();
+		if (cabinViewSettingsItemProvider != null) cabinViewSettingsItemProvider.dispose();
 	}
 
 }

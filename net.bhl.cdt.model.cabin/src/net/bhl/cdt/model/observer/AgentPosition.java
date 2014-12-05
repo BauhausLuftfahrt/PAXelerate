@@ -8,7 +8,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 
 import net.bhl.cdt.model.astar.Agent;
-import net.bhl.cdt.model.astar.TestAStar;
+import net.bhl.cdt.model.astar.RunAStar;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.ConsoleViewPart;
 

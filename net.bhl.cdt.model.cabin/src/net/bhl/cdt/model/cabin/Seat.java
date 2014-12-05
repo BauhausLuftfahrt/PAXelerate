@@ -17,6 +17,7 @@ package net.bhl.cdt.model.cabin;
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#isSeatBlocked <em>Seat Blocked</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#isCrewSeat <em>Crew Seat</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#getLetter <em>Letter</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Seat#getTravelClass <em>Travel Class</em>}</li>
  * </ul>
  * </p>
  *
@@ -128,6 +129,32 @@ public interface Seat extends PhysicalObject {
 	 * @generated
 	 */
 	void setLetter(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Travel Class</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Travel Class</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Travel Class</em>' reference.
+	 * @see #setTravelClass(TravelClass)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSeat_TravelClass()
+	 * @model required="true"
+	 * @generated
+	 */
+	TravelClass getTravelClass();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Seat#getTravelClass <em>Travel Class</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Travel Class</em>' reference.
+	 * @see #getTravelClass()
+	 * @generated
+	 */
+	void setTravelClass(TravelClass value);
 
 	/**
 	 * Returns the value of the '<em><b>Seat Id</b></em>' attribute.
