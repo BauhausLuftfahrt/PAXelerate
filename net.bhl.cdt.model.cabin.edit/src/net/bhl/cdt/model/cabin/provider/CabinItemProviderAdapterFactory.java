@@ -118,26 +118,118 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.PassengerClass} instances.
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.TravelClass} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PassengerClassItemProvider passengerClassItemProvider;
+	protected TravelClassItemProvider travelClassItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link net.bhl.cdt.model.cabin.PassengerClass}.
+	 * This creates an adapter for a {@link net.bhl.cdt.model.cabin.TravelClass}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createPassengerClassAdapter() {
-		if (passengerClassItemProvider == null) {
-			passengerClassItemProvider = new PassengerClassItemProvider(this);
+	public Adapter createTravelClassAdapter() {
+		if (travelClassItemProvider == null) {
+			travelClassItemProvider = new TravelClassItemProvider(this);
 		}
 
-		return passengerClassItemProvider;
+		return travelClassItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.BusinessClass} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected BusinessClassItemProvider businessClassItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link net.bhl.cdt.model.cabin.BusinessClass}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createBusinessClassAdapter() {
+		if (businessClassItemProvider == null) {
+			businessClassItemProvider = new BusinessClassItemProvider(this);
+		}
+
+		return businessClassItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.FirstClass} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FirstClassItemProvider firstClassItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link net.bhl.cdt.model.cabin.FirstClass}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFirstClassAdapter() {
+		if (firstClassItemProvider == null) {
+			firstClassItemProvider = new FirstClassItemProvider(this);
+		}
+
+		return firstClassItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.EconomyClass} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EconomyClassItemProvider economyClassItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link net.bhl.cdt.model.cabin.EconomyClass}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEconomyClassAdapter() {
+		if (economyClassItemProvider == null) {
+			economyClassItemProvider = new EconomyClassItemProvider(this);
+		}
+
+		return economyClassItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.PremiumEconomyClass} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PremiumEconomyClassItemProvider premiumEconomyClassItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link net.bhl.cdt.model.cabin.PremiumEconomyClass}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPremiumEconomyClassAdapter() {
+		if (premiumEconomyClassItemProvider == null) {
+			premiumEconomyClassItemProvider = new PremiumEconomyClassItemProvider(this);
+		}
+
+		return premiumEconomyClassItemProvider;
 	}
 
 	/**
@@ -371,6 +463,52 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.MainDoor} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MainDoorItemProvider mainDoorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link net.bhl.cdt.model.cabin.MainDoor}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMainDoorAdapter() {
+		if (mainDoorItemProvider == null) {
+			mainDoorItemProvider = new MainDoorItemProvider(this);
+		}
+
+		return mainDoorItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.PhysicalObject} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PhysicalObjectItemProvider physicalObjectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link net.bhl.cdt.model.cabin.PhysicalObject}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPhysicalObjectAdapter() {
+		if (physicalObjectItemProvider == null) {
+			physicalObjectItemProvider = new PhysicalObjectItemProvider(this);
+		}
+
+		return physicalObjectItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -471,7 +609,11 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	public void dispose() {
 		if (cabinItemProvider != null) cabinItemProvider.dispose();
 		if (rowItemProvider != null) rowItemProvider.dispose();
-		if (passengerClassItemProvider != null) passengerClassItemProvider.dispose();
+		if (travelClassItemProvider != null) travelClassItemProvider.dispose();
+		if (businessClassItemProvider != null) businessClassItemProvider.dispose();
+		if (firstClassItemProvider != null) firstClassItemProvider.dispose();
+		if (economyClassItemProvider != null) economyClassItemProvider.dispose();
+		if (premiumEconomyClassItemProvider != null) premiumEconomyClassItemProvider.dispose();
 		if (doorItemProvider != null) doorItemProvider.dispose();
 		if (seatItemProvider != null) seatItemProvider.dispose();
 		if (passengerItemProvider != null) passengerItemProvider.dispose();
@@ -482,6 +624,8 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 		if (curtainItemProvider != null) curtainItemProvider.dispose();
 		if (stowageItemProvider != null) stowageItemProvider.dispose();
 		if (cabinViewSettingsItemProvider != null) cabinViewSettingsItemProvider.dispose();
+		if (mainDoorItemProvider != null) mainDoorItemProvider.dispose();
+		if (physicalObjectItemProvider != null) physicalObjectItemProvider.dispose();
 	}
 
 }

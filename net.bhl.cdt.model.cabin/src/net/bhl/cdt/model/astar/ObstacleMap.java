@@ -6,6 +6,7 @@ import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.DoorType;
 import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.Lavatory;
+import net.bhl.cdt.model.cabin.PhysicalObject;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.util.ModelHelper;
 
@@ -20,28 +21,29 @@ public class ObstacleMap {
 	private int width;
 	private int length;
 	private static final int MAX_VALUE = 100000;
-	private static final int BASIC_VALUE = 10; 
+	private static final int BASIC_VALUE = 10;
 	private int[][] obstacleMap;
-	
+
 	/**
 	 * 
 	 * @param cabin
 	 */
 	public ObstacleMap(Cabin cabin) {
 		this.cabin = cabin;
-		width = (int)(cabin.getCabinWidth()/cabin.getScale());
-		length = (int)(cabin.getCabinLength()/cabin.getScale());
+		width = (int) (cabin.getCabinWidth() / cabin.getScale());
+		length = (int) (cabin.getCabinLength() / cabin.getScale());
 		obstacleMap = createObstacleMap();
 	}
-	
+
 	/**
 	 * This method returns the basic obstacle value.
+	 * 
 	 * @return returns the obstacle value
 	 */
 	public static int getBasicObstacleValue() {
 		return BASIC_VALUE;
 	}
-	
+
 	/**
 	 * 
 	 * @return
@@ -49,159 +51,155 @@ public class ObstacleMap {
 	public int[][] getMap() {
 		return obstacleMap;
 	}
-	
 
 	/**
 	 * This method generates the obstacle Map.
+	 * 
 	 * @return obstacle map
 	 */
 	private int[][] createObstacleMap() {
 		obstacleMap = new int[width][length];
 		for (int i = 0; i < width; i++) {
-			for (int j = 0; j <length; j++) {
+			for (int j = 0; j < length; j++) {
 				obstacleMap[i][j] = BASIC_VALUE;
 			}
 		}
-		
-		/*****************Seats *******************************/
-		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {			
-			int seatWidth = (int)(seat.getWidth()/cabin.getScale());
-			int seatLength = (int)(seat.getLength()/cabin.getScale());
-			int seatX = (int)(seat.getXPosition()/cabin.getScale());
-			int seatY = (int)(seat.getYPosition()/cabin.getScale());	
-			obstacleMap[seatX][seatY] = MAX_VALUE;
-			for (int i = 0; i < seatWidth; i++) {
-				for (int j = 0; j < seatLength; j++) {
-					int foo = seatX + i;
-					int bar = seatY + j;
-					if(foo < width && bar <length) {
-						obstacleMap[foo][bar] = MAX_VALUE;	
-					}
-				}
-			}
-		}
-		/******************************************************/
-		
-		/*****************Lavatories***************************/
-		for (Lavatory lavatory : ModelHelper.getChildrenByClass(cabin, Lavatory.class)) {			
-			int lavWidth = (int)(lavatory.getXDimension()/cabin.getScale());
-			int lavLength = (int)(lavatory.getYDimension()/cabin.getScale());
-			int lavX = (int)(lavatory.getXPosition()/cabin.getScale());
-			int lavY = (int)(lavatory.getYPosition()/cabin.getScale());	
-			obstacleMap[lavX][lavY] = MAX_VALUE;
-			for (int i = 0; i < lavWidth; i++) {
-				for (int j = 0; j < lavLength; j++) {
-					int foo = lavX + i;
-					int bar = lavY + j;
-					if(foo < width && bar <length) {
-						obstacleMap[foo][bar] = MAX_VALUE;	
-					}
-				}
-			}
-		}
-		/*****************************************************/
-		
-		/*****************Galleys***************************/
-		for (Galley galley : ModelHelper.getChildrenByClass(cabin, Galley.class)) {			
-			int galleyWidth = (int)(galley.getXDimension()/cabin.getScale());
-			int galleyLength = (int)(galley.getYDimension()/cabin.getScale());
-			int galleyX = (int)(galley.getXPosition()/cabin.getScale());
-			int galleyY = (int)(galley.getYPosition()/cabin.getScale());	
-			obstacleMap[galleyX][galleyY] = MAX_VALUE;
-			for (int i = 0; i < galleyWidth; i++) {
-				for (int j = 0; j < galleyLength; j++) {
-					int foo = galleyX + i;
-					int bar = galleyY + j;
-					if(foo < width && bar <length) {
-						obstacleMap[foo][bar] = MAX_VALUE;	
-					}
-				}
-			}
-		}
-		/*****************************************************/
-		
-		/*************************Curtains********************/
-		for (Curtain curtain : ModelHelper.getChildrenByClass(cabin, Curtain.class)) {			
-			int curtainWidth = (int)(curtain.getXDimension()/cabin.getScale());
-			int curtainLength = (int)(curtain.getYDimension()/cabin.getScale());
-			int curtainX = (int)(curtain.getXPosition()/cabin.getScale());
-			int curtainY = (int)(curtain.getYPosition()/cabin.getScale());	
-			obstacleMap[curtainX][curtainY] = MAX_VALUE;
-			for (int i = 0; i < curtainWidth; i++) {
-				for (int j = 0; j < curtainLength; j++) {
-					int foo = curtainX + i;
-					int bar = curtainY + j;
-					if(foo < width && bar <length) {
-						obstacleMap[foo][bar] = MAX_VALUE;	
-					}
-				}
-			}
-		}
-		/*****************************************************/
-		
-		/***********Create potential hole in aisle ***********/
+
+		generateObstacles(Seat.class);
+		generateObstacles(Lavatory.class);
+		generateObstacles(Galley.class);
+		generateObstacles(Curtain.class);
+
+		/*********** Create potential hole in aisle ***********/
 		int entryMin = 0;
 		int entryMax = 0;
-		for(Door door:ModelHelper.getChildrenByClass(cabin, Door.class)) {
-			if (door.getDoorType()==DoorType.MAIN_DOOR) {
-				entryMin = (int)(door.getYPosition()/cabin.getScale())+2;
-				entryMax = (int)((door.getYPosition()+door.getWidth())/cabin.getScale())-2;
+		for (Door door : ModelHelper.getChildrenByClass(cabin, Door.class)) {
+			if (door.getDoorType() == DoorType.MAIN_DOOR) {
+				entryMin = (int) (door.getYPosition() / cabin.getScale()) + 2;
+				entryMax = (int) ((door.getYPosition() + door.getWidth()) / cabin
+						.getScale()) - 2;
 			}
-		}  
-		int aisleMin = (int)((cabin.getCabinWidth()-cabin.getAisleWidth())/cabin.getScale()/2)+1;
-	    int aisleMax = (int)(cabin.getCabinWidth()/cabin.getScale()-aisleMin)-2;
-	    
+		}
+		int aisleMin = (int) ((cabin.getCabinWidth() - cabin.getAisleWidth())
+				/ cabin.getScale() / 2) + 1;
+		int aisleMax = (int) (cabin.getCabinWidth() / cabin.getScale() - aisleMin) - 2;
+
 		for (int i = 0; i < width; i++) {
-			for (int j = 0; j <length; j++) {
-				if(obstacleMap[i][j]!=MAX_VALUE) {
-					if(j>entryMin&&j<entryMax) {
-						obstacleMap[i][j]= 0;	
-					} 
-					if(i<aisleMax&&i>aisleMin) {
-						obstacleMap[i][j]= 0;	
+			for (int j = 0; j < length; j++) {
+				if (obstacleMap[i][j] != MAX_VALUE) {
+					if (j > entryMin && j < entryMax) {
+						obstacleMap[i][j] = 0;
+					}
+					if (i < aisleMax && i > aisleMin) {
+						obstacleMap[i][j] = 0;
 					}
 				}
 			}
 		}
 		/*****************************************************/
-		
-		/********Create potential around obstacles************/
+
+		/******** Create potential around obstacles ************/
 		int k = 1;
-		int maxPot = BASIC_VALUE*5;
+		int maxPot = BASIC_VALUE * 5;
 		for (int i = 0; i < width; i++) {
-			for (int j = 0; j <length; j++) {
-				if(obstacleMap[i][j]==MAX_VALUE) {
-					for(int p = 1; p<k;p++) {
-						/** WEST - EAST - NORTH - SOUTH*/
-						if((i-p)>0) {if(obstacleMap[i-p][j]!=100000) {obstacleMap[i-p][j] = maxPot - p;}}
-						if((i+p)<width) {if(obstacleMap[i+p][j]!=100000) {obstacleMap[i+p][j] = maxPot - p;}}
-						if((j-p)>0) {if(obstacleMap[i][j-p]!=100000) {obstacleMap[i][j-p] = maxPot - p;}}
-						if((j+p)<length) {if(obstacleMap[i][j+p]!=100000) {obstacleMap[i][j+p] = maxPot - p;}}
-						
-						/** NORTHWEST - NORTHEAST - SOUTHEAST - SOUTHWEST*/
-						if(((i-p)>0)&&((j-p)>0)) {if(obstacleMap[i-p][j-p]!=100000) {obstacleMap[i-p][j-p] = maxPot - p;}}
-						if(((i+p)<width)&&((j-p)>0)) {if(obstacleMap[i+p][j-p]!=100000) {obstacleMap[i+p][j-p] = maxPot - p;}}
-						if(((j+p)<length)&&((i+p)<width)) {if(obstacleMap[i+p][j+p]!=100000) {obstacleMap[i+p][j+p] = maxPot - p;}}
-						if(((j+p)<length)&&((i-p)>0)) {if(obstacleMap[i-p][j+p]!=100000) {obstacleMap[i-p][j+p] = maxPot - p;}}
+			for (int j = 0; j < length; j++) {
+				if (obstacleMap[i][j] == MAX_VALUE) {
+					for (int p = 1; p < k; p++) {
+						/** WEST - EAST - NORTH - SOUTH */
+						if ((i - p) > 0) {
+							if (obstacleMap[i - p][j] != 100000) {
+								obstacleMap[i - p][j] = maxPot - p;
+							}
+						}
+						if ((i + p) < width) {
+							if (obstacleMap[i + p][j] != 100000) {
+								obstacleMap[i + p][j] = maxPot - p;
+							}
+						}
+						if ((j - p) > 0) {
+							if (obstacleMap[i][j - p] != 100000) {
+								obstacleMap[i][j - p] = maxPot - p;
+							}
+						}
+						if ((j + p) < length) {
+							if (obstacleMap[i][j + p] != 100000) {
+								obstacleMap[i][j + p] = maxPot - p;
+							}
+						}
+
+						/** NORTHWEST - NORTHEAST - SOUTHEAST - SOUTHWEST */
+						if (((i - p) > 0) && ((j - p) > 0)) {
+							if (obstacleMap[i - p][j - p] != 100000) {
+								obstacleMap[i - p][j - p] = maxPot - p;
+							}
+						}
+						if (((i + p) < width) && ((j - p) > 0)) {
+							if (obstacleMap[i + p][j - p] != 100000) {
+								obstacleMap[i + p][j - p] = maxPot - p;
+							}
+						}
+						if (((j + p) < length) && ((i + p) < width)) {
+							if (obstacleMap[i + p][j + p] != 100000) {
+								obstacleMap[i + p][j + p] = maxPot - p;
+							}
+						}
+						if (((j + p) < length) && ((i - p) > 0)) {
+							if (obstacleMap[i - p][j + p] != 100000) {
+								obstacleMap[i - p][j + p] = maxPot - p;
+							}
+						}
 					}
 				}
 			}
 		}
 		/*****************************************************/
-		
+
 		return obstacleMap;
 	}
+
+	/**
+	 * This function iterates through all instances of a specific class and
+	 * generates the obstacles.
+	 * 
+	 * @param physicalObjectSubclass
+	 *            is the Class of the object that should be used
+	 */
+	private <T extends PhysicalObject> void generateObstacles(
+			Class<T> physicalObjectSubclass) {
+		for (PhysicalObject physicalObject : ModelHelper.getChildrenByClass(
+				cabin, physicalObjectSubclass)) {
+			int physicalObjectWidth = (int) (physicalObject.getXDimension() / cabin
+					.getScale());
+			int physicalObjectLength = (int) (physicalObject.getYDimension() / cabin
+					.getScale());
+			int physicalObjectXPosition = (int) (physicalObject.getXPosition() / cabin
+					.getScale());
+			int physicalObjectYDimension = (int) (physicalObject.getYPosition() / cabin
+					.getScale());
+			obstacleMap[physicalObjectXPosition][physicalObjectYDimension] = MAX_VALUE;
+			for (int i = 0; i < physicalObjectWidth; i++) {
+				for (int j = 0; j < physicalObjectLength; j++) {
+					int k = physicalObjectXPosition + i;
+					int l = physicalObjectYDimension + j;
+					if (k < width && l < length) {
+						obstacleMap[k][l] = MAX_VALUE;
+					}
+				}
+			}
+		}
+	}
+
 	private int getValueAtPoint(int x, int y) {
 		int value = obstacleMap[x][y];
 		return value;
 	}
-	
+
 	/**
-	 * 
+	 * This method prints the obstacle map to the console.
 	 */
 	public void printObstacleMap() {
-		for (int i = 0; i<width; i++) {
-			for(int j = 0; j<length; j++) {
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j < length; j++) {
 				System.out.print(getValueAtPoint(i, j));
 			}
 			System.out.println();

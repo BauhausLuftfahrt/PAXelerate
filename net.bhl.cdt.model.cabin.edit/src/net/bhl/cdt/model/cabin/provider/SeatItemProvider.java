@@ -5,23 +5,13 @@ package net.bhl.cdt.model.cabin.provider;
 
 import java.util.Collection;
 import java.util.List;
-
 import net.bhl.cdt.model.cabin.CabinPackage;
 import net.bhl.cdt.model.cabin.Seat;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -31,13 +21,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * @generated
  */
 public class SeatItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends PhysicalObjectItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -63,10 +47,6 @@ public class SeatItemProvider
 			addSeatNumberPropertyDescriptor(object);
 			addSeatBlockedPropertyDescriptor(object);
 			addCrewSeatPropertyDescriptor(object);
-			addWidthPropertyDescriptor(object);
-			addLengthPropertyDescriptor(object);
-			addXPositionPropertyDescriptor(object);
-			addYPositionPropertyDescriptor(object);
 			addLetterPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -139,94 +119,6 @@ public class SeatItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Width feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addWidthPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Seat_width_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Seat_width_feature", "_UI_Seat_type"),
-				 CabinPackage.Literals.SEAT__WIDTH,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Length feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addLengthPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Seat_length_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Seat_length_feature", "_UI_Seat_type"),
-				 CabinPackage.Literals.SEAT__LENGTH,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the XPosition feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addXPositionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Seat_xPosition_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Seat_xPosition_feature", "_UI_Seat_type"),
-				 CabinPackage.Literals.SEAT__XPOSITION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the YPosition feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addYPositionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Seat_yPosition_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Seat_yPosition_feature", "_UI_Seat_type"),
-				 CabinPackage.Literals.SEAT__YPOSITION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Letter feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -289,10 +181,8 @@ public class SeatItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Seat)object).getSeatId();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Seat_type") :
-			getString("_UI_Seat_type") + " " + label;
+		Seat seat = (Seat)object;
+		return getString("_UI_Seat_type") + " " + seat.getXPosition();
 	}
 
 	/**
@@ -311,10 +201,6 @@ public class SeatItemProvider
 			case CabinPackage.SEAT__SEAT_NUMBER:
 			case CabinPackage.SEAT__SEAT_BLOCKED:
 			case CabinPackage.SEAT__CREW_SEAT:
-			case CabinPackage.SEAT__WIDTH:
-			case CabinPackage.SEAT__LENGTH:
-			case CabinPackage.SEAT__XPOSITION:
-			case CabinPackage.SEAT__YPOSITION:
 			case CabinPackage.SEAT__LETTER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
@@ -332,17 +218,6 @@ public class SeatItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return CabinEditPlugin.INSTANCE;
 	}
 
 }

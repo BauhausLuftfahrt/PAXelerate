@@ -77,8 +77,24 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 				return createRowAdapter();
 			}
 			@Override
-			public Adapter casePassengerClass(PassengerClass object) {
-				return createPassengerClassAdapter();
+			public Adapter caseTravelClass(TravelClass object) {
+				return createTravelClassAdapter();
+			}
+			@Override
+			public Adapter caseBusinessClass(BusinessClass object) {
+				return createBusinessClassAdapter();
+			}
+			@Override
+			public Adapter caseFirstClass(FirstClass object) {
+				return createFirstClassAdapter();
+			}
+			@Override
+			public Adapter caseEconomyClass(EconomyClass object) {
+				return createEconomyClassAdapter();
+			}
+			@Override
+			public Adapter casePremiumEconomyClass(PremiumEconomyClass object) {
+				return createPremiumEconomyClassAdapter();
 			}
 			@Override
 			public Adapter caseDoor(Door object) {
@@ -119,6 +135,14 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseCabinViewSettings(CabinViewSettings object) {
 				return createCabinViewSettingsAdapter();
+			}
+			@Override
+			public Adapter caseMainDoor(MainDoor object) {
+				return createMainDoorAdapter();
+			}
+			@Override
+			public Adapter casePhysicalObject(PhysicalObject object) {
+				return createPhysicalObjectAdapter();
 			}
 			@Override
 			public Adapter caseNamedElement(NamedElement object) {
@@ -173,16 +197,72 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.PassengerClass <em>Passenger Class</em>}'.
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.TravelClass <em>Travel Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see net.bhl.cdt.model.cabin.PassengerClass
+	 * @see net.bhl.cdt.model.cabin.TravelClass
 	 * @generated
 	 */
-	public Adapter createPassengerClassAdapter() {
+	public Adapter createTravelClassAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.BusinessClass <em>Business Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see net.bhl.cdt.model.cabin.BusinessClass
+	 * @generated
+	 */
+	public Adapter createBusinessClassAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.FirstClass <em>First Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see net.bhl.cdt.model.cabin.FirstClass
+	 * @generated
+	 */
+	public Adapter createFirstClassAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.EconomyClass <em>Economy Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see net.bhl.cdt.model.cabin.EconomyClass
+	 * @generated
+	 */
+	public Adapter createEconomyClassAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.PremiumEconomyClass <em>Premium Economy Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see net.bhl.cdt.model.cabin.PremiumEconomyClass
+	 * @generated
+	 */
+	public Adapter createPremiumEconomyClassAdapter() {
 		return null;
 	}
 
@@ -323,6 +403,34 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCabinViewSettingsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.MainDoor <em>Main Door</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see net.bhl.cdt.model.cabin.MainDoor
+	 * @generated
+	 */
+	public Adapter createMainDoorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.model.cabin.PhysicalObject <em>Physical Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see net.bhl.cdt.model.cabin.PhysicalObject
+	 * @generated
+	 */
+	public Adapter createPhysicalObjectAdapter() {
 		return null;
 	}
 

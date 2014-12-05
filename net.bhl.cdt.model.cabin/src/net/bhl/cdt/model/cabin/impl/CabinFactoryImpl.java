@@ -59,7 +59,11 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 		switch (eClass.getClassifierID()) {
 			case CabinPackage.CABIN: return createCabin();
 			case CabinPackage.ROW: return createRow();
-			case CabinPackage.PASSENGER_CLASS: return createPassengerClass();
+			case CabinPackage.TRAVEL_CLASS: return createTravelClass();
+			case CabinPackage.BUSINESS_CLASS: return createBusinessClass();
+			case CabinPackage.FIRST_CLASS: return createFirstClass();
+			case CabinPackage.ECONOMY_CLASS: return createEconomyClass();
+			case CabinPackage.PREMIUM_ECONOMY_CLASS: return createPremiumEconomyClass();
 			case CabinPackage.DOOR: return createDoor();
 			case CabinPackage.SEAT: return createSeat();
 			case CabinPackage.PASSENGER: return createPassenger();
@@ -70,6 +74,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 			case CabinPackage.CURTAIN: return createCurtain();
 			case CabinPackage.STOWAGE: return createStowage();
 			case CabinPackage.CABIN_VIEW_SETTINGS: return createCabinViewSettings();
+			case CabinPackage.MAIN_DOOR: return createMainDoor();
+			case CabinPackage.PHYSICAL_OBJECT: return createPhysicalObject();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -142,9 +148,49 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PassengerClass createPassengerClass() {
-		PassengerClassImpl passengerClass = new PassengerClassImpl();
-		return passengerClass;
+	public TravelClass createTravelClass() {
+		TravelClassImpl travelClass = new TravelClassImpl();
+		return travelClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BusinessClass createBusinessClass() {
+		BusinessClassImpl businessClass = new BusinessClassImpl();
+		return businessClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FirstClass createFirstClass() {
+		FirstClassImpl firstClass = new FirstClassImpl();
+		return firstClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EconomyClass createEconomyClass() {
+		EconomyClassImpl economyClass = new EconomyClassImpl();
+		return economyClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PremiumEconomyClass createPremiumEconomyClass() {
+		PremiumEconomyClassImpl premiumEconomyClass = new PremiumEconomyClassImpl();
+		return premiumEconomyClass;
 	}
 
 	/**
@@ -245,6 +291,26 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	public CabinViewSettings createCabinViewSettings() {
 		CabinViewSettingsImpl cabinViewSettings = new CabinViewSettingsImpl();
 		return cabinViewSettings;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MainDoor createMainDoor() {
+		MainDoorImpl mainDoor = new MainDoorImpl();
+		return mainDoor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PhysicalObject createPhysicalObject() {
+		PhysicalObjectImpl physicalObject = new PhysicalObjectImpl();
+		return physicalObject;
 	}
 
 	/**

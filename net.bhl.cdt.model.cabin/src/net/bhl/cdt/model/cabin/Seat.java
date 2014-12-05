@@ -2,7 +2,6 @@
  */
 package net.bhl.cdt.model.cabin;
 
-import org.eclipse.emf.ecore.EObject;
 
 
 /**
@@ -17,10 +16,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#getSeatNumber <em>Seat Number</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#isSeatBlocked <em>Seat Blocked</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#isCrewSeat <em>Crew Seat</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Seat#getWidth <em>Width</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Seat#getLength <em>Length</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Seat#getXPosition <em>XPosition</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Seat#getYPosition <em>YPosition</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#getLetter <em>Letter</em>}</li>
  * </ul>
  * </p>
@@ -29,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Seat extends EObject {
+public interface Seat extends PhysicalObject {
 	/**
 	 * Returns the value of the '<em><b>Seat Number</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -107,110 +102,6 @@ public interface Seat extends EObject {
 	 * @generated
 	 */
 	void setCrewSeat(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Width</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Width</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Width</em>' attribute.
-	 * @see #setWidth(double)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSeat_Width()
-	 * @model
-	 * @generated
-	 */
-	double getWidth();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Seat#getWidth <em>Width</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Width</em>' attribute.
-	 * @see #getWidth()
-	 * @generated
-	 */
-	void setWidth(double value);
-
-	/**
-	 * Returns the value of the '<em><b>Length</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Length</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Length</em>' attribute.
-	 * @see #setLength(double)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSeat_Length()
-	 * @model
-	 * @generated
-	 */
-	double getLength();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Seat#getLength <em>Length</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Length</em>' attribute.
-	 * @see #getLength()
-	 * @generated
-	 */
-	void setLength(double value);
-
-	/**
-	 * Returns the value of the '<em><b>XPosition</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>XPosition</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>XPosition</em>' attribute.
-	 * @see #setXPosition(double)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSeat_XPosition()
-	 * @model
-	 * @generated
-	 */
-	double getXPosition();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Seat#getXPosition <em>XPosition</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>XPosition</em>' attribute.
-	 * @see #getXPosition()
-	 * @generated
-	 */
-	void setXPosition(double value);
-
-	/**
-	 * Returns the value of the '<em><b>YPosition</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>YPosition</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>YPosition</em>' attribute.
-	 * @see #setYPosition(double)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSeat_YPosition()
-	 * @model
-	 * @generated
-	 */
-	double getYPosition();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Seat#getYPosition <em>YPosition</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>YPosition</em>' attribute.
-	 * @see #getYPosition()
-	 * @generated
-	 */
-	void setYPosition(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Letter</b></em>' attribute.

@@ -8,8 +8,7 @@ import java.util.List;
 
 import net.bhl.cdt.model.cabin.CabinFactory;
 import net.bhl.cdt.model.cabin.CabinPackage;
-import net.bhl.cdt.model.cabin.ClassType;
-import net.bhl.cdt.model.cabin.PassengerClass;
+import net.bhl.cdt.model.cabin.TravelClass;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -30,12 +29,12 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link net.bhl.cdt.model.cabin.PassengerClass} object.
+ * This is the item provider adapter for a {@link net.bhl.cdt.model.cabin.TravelClass} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class PassengerClassItemProvider
+public class TravelClassItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -49,7 +48,7 @@ public class PassengerClassItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PassengerClassItemProvider(AdapterFactory adapterFactory) {
+	public TravelClassItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -64,31 +63,57 @@ public class PassengerClassItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addTypePropertyDescriptor(object);
-			addAvailableSeatsPropertyDescriptor(object);
 			addSequencePropertyDescriptor(object);
+			addPassengersPropertyDescriptor(object);
+			addAvailableSeatsPropertyDescriptor(object);
+			addSeatPitchPropertyDescriptor(object);
+			addSeatsPerRowPropertyDescriptor(object);
+			addSeatLengthPropertyDescriptor(object);
+			addSeatWidthPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Type feature.
+	 * This adds a property descriptor for the Sequence feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addTypePropertyDescriptor(Object object) {
+	protected void addSequencePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_PassengerClass_type_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PassengerClass_type_feature", "_UI_PassengerClass_type"),
-				 CabinPackage.Literals.PASSENGER_CLASS__TYPE,
+				 getString("_UI_TravelClass_sequence_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TravelClass_sequence_feature", "_UI_TravelClass_type"),
+				 CabinPackage.Literals.TRAVEL_CLASS__SEQUENCE,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Passengers feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPassengersPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TravelClass_passengers_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TravelClass_passengers_feature", "_UI_TravelClass_type"),
+				 CabinPackage.Literals.TRAVEL_CLASS__PASSENGERS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -104,9 +129,9 @@ public class PassengerClassItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_PassengerClass_availableSeats_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PassengerClass_availableSeats_feature", "_UI_PassengerClass_type"),
-				 CabinPackage.Literals.PASSENGER_CLASS__AVAILABLE_SEATS,
+				 getString("_UI_TravelClass_availableSeats_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TravelClass_availableSeats_feature", "_UI_TravelClass_type"),
+				 CabinPackage.Literals.TRAVEL_CLASS__AVAILABLE_SEATS,
 				 true,
 				 false,
 				 false,
@@ -116,23 +141,89 @@ public class PassengerClassItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Sequence feature.
+	 * This adds a property descriptor for the Seat Pitch feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addSequencePropertyDescriptor(Object object) {
+	protected void addSeatPitchPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_PassengerClass_sequence_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PassengerClass_sequence_feature", "_UI_PassengerClass_type"),
-				 CabinPackage.Literals.PASSENGER_CLASS__SEQUENCE,
+				 getString("_UI_TravelClass_seatPitch_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TravelClass_seatPitch_feature", "_UI_TravelClass_type"),
+				 CabinPackage.Literals.TRAVEL_CLASS__SEAT_PITCH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Seats Per Row feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatsPerRowPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TravelClass_seatsPerRow_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TravelClass_seatsPerRow_feature", "_UI_TravelClass_type"),
+				 CabinPackage.Literals.TRAVEL_CLASS__SEATS_PER_ROW,
 				 true,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Seat Length feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatLengthPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TravelClass_seatLength_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TravelClass_seatLength_feature", "_UI_TravelClass_type"),
+				 CabinPackage.Literals.TRAVEL_CLASS__SEAT_LENGTH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Seat Width feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatWidthPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TravelClass_seatWidth_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TravelClass_seatWidth_feature", "_UI_TravelClass_type"),
+				 CabinPackage.Literals.TRAVEL_CLASS__SEAT_WIDTH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -149,7 +240,7 @@ public class PassengerClassItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(CabinPackage.Literals.PASSENGER_CLASS__ROWS);
+			childrenFeatures.add(CabinPackage.Literals.TRAVEL_CLASS__ROWS);
 		}
 		return childrenFeatures;
 	}
@@ -168,14 +259,14 @@ public class PassengerClassItemProvider
 	}
 
 	/**
-	 * This returns PassengerClass.gif.
+	 * This returns TravelClass.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/PassengerClass"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/TravelClass"));
 	}
 
 	/**
@@ -186,12 +277,10 @@ public class PassengerClassItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		ClassType labelValue = ((PassengerClass)object).getType();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_PassengerClass_type") :
-			getString("_UI_PassengerClass_type") + " " + label;
+		TravelClass travelClass = (TravelClass)object;
+		return getString("_UI_TravelClass_type") + " " + travelClass.getSequence();
 	}
+	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -204,13 +293,17 @@ public class PassengerClassItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(PassengerClass.class)) {
-			case CabinPackage.PASSENGER_CLASS__TYPE:
-			case CabinPackage.PASSENGER_CLASS__AVAILABLE_SEATS:
-			case CabinPackage.PASSENGER_CLASS__SEQUENCE:
+		switch (notification.getFeatureID(TravelClass.class)) {
+			case CabinPackage.TRAVEL_CLASS__SEQUENCE:
+			case CabinPackage.TRAVEL_CLASS__PASSENGERS:
+			case CabinPackage.TRAVEL_CLASS__AVAILABLE_SEATS:
+			case CabinPackage.TRAVEL_CLASS__SEAT_PITCH:
+			case CabinPackage.TRAVEL_CLASS__SEATS_PER_ROW:
+			case CabinPackage.TRAVEL_CLASS__SEAT_LENGTH:
+			case CabinPackage.TRAVEL_CLASS__SEAT_WIDTH:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case CabinPackage.PASSENGER_CLASS__ROWS:
+			case CabinPackage.TRAVEL_CLASS__ROWS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -230,7 +323,7 @@ public class PassengerClassItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(CabinPackage.Literals.PASSENGER_CLASS__ROWS,
+				(CabinPackage.Literals.TRAVEL_CLASS__ROWS,
 				 CabinFactory.eINSTANCE.createRow()));
 	}
 

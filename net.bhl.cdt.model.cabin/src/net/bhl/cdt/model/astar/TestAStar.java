@@ -14,34 +14,34 @@ import net.bhl.cdt.model.util.ModelHelper;
 
 public class TestAStar {
 
-    private static int mapWidth = 20;
+	private static int mapWidth = 20;
 	private static int mapHeight = 20;
 	private static Cabin cabin;
-	
+
 	public static Boolean simulationDone = false;
 	static CabinViewPart cabinViewPart;
 
-	
 	private static int[][] obstacleMap = {};
-	 
+
 	public static JFrame frame;
 
 	static ArrayList<Passenger> finishedList = new ArrayList<Passenger>();
-	
+
 	static Logger console = new Logger();
 	static AreaMap map;
 	static ArrayList<Agent> agents = new ArrayList<Agent>();
 	public static ArrayList<int[][]> pathList = new ArrayList<int[][]>();
 	static StopWatch s = new StopWatch();
 
-	public TestAStar(int[][] obstacleMapn, int mapWidthn, int mapHeightn, Cabin cabinn) {
-		
+	public TestAStar(int[][] obstacleMapn, int mapWidthn, int mapHeightn,
+			Cabin cabinn) {
+
 		obstacleMap = obstacleMapn;
 		mapWidth = mapWidthn;
 		mapHeight = mapHeightn;
 
 		console.addToLog("Cabin initializing...");
-		
+
 		map = new AreaMap(mapWidth, mapHeight, obstacleMap);
 		cabin = cabinn;
 		run();
@@ -53,20 +53,23 @@ public class TestAStar {
 
 		AStar pathFinder = new AStar(map);
 
-		console.addToLog("Calculating shortest path..."); //for "+agent.getAgentName()+" ...");
+		console.addToLog("Calculating shortest path..."); // for
+															// "+agent.getAgentName()+"
+															// ...");
 		pathFinder.calcShortestPath(agent.getStartX(), agent.getStartY(),
 				agent.getGoalX(), agent.getGoalY());
 
 		s.stop();
-		//console.addToLog("Time to calculate path in milliseconds: "+ s.getElapsedTime());
+		// console.addToLog("Time to calculate path in milliseconds: "+
+		// s.getElapsedTime());
 
-		//console.addToLog("Printing map of shortest path...");
-		//pathFinder.printPath();
+		// console.addToLog("Printing map of shortest path...");
+		// pathFinder.printPath();
 		Path shortestPath = pathFinder.getShortestPath();
-		if (shortestPath==null) {
+		if (shortestPath == null) {
 			console.addToLog("No path found.");
 		}
-		//else console.addToLog("Path found.");
+		// else console.addToLog("Path found.");
 
 		agent.setPath(getPathCoordinates(pathFinder.getShortestPath()));
 
@@ -77,8 +80,7 @@ public class TestAStar {
 
 	// returns the coordinates of an individual path
 	public static int[][] getPathCoordinates(Path shortestPath) {
-		
-		
+
 		int[][] pathCoordinates = new int[shortestPath.getLength()][2];
 
 		for (int i = 0; i < shortestPath.getLength(); i++) {
@@ -101,72 +103,81 @@ public class TestAStar {
 	// observer pattern to update agent's position on map
 	public static int[][] runAgents() {
 
-		/**First generate all paths ... */
+		/** First generate all paths ... */
 		for (Agent agent : agents) {
 			getPath(map, agent);
 			AgentPosition pos = new AgentPosition();
 			agent.subscribe(pos);
 		}
-		/** ... then start the simulations simultaneously*/
+		/** ... then start the simulations simultaneously */
 		for (Agent agent : agents) {
 			agent.start();
 		}
 		return null;
 	}
-	
+
 	public static void setSimulationDone(Boolean bool) {
-		simulationDone = bool;	
+		simulationDone = bool;
 	}
-	
+
 	public static Cabin getCabin() {
 		return cabin;
 	}
-	
+
 	public static Boolean getSimulationDone() {
 		return simulationDone;
 	}
+
 	public static void submitPath(int[][] path) {
 		pathList.add(path);
 	}
-	
+
 	public static ArrayList<int[][]> getPathList() {
 		return pathList;
 	}
-	
+
 	public static void setPassengerSeated(Passenger passenger) {
 		finishedList.add(passenger);
-		if(finishedList.size()==cabin.getPassengers().size()) {	
+		if (finishedList.size() == cabin.getPassengers().size()) {
 			setSimulationDone(true);
 		}
-		
+
 	}
-	
-	public Cabin getPassengerLocations() {		
+
+	public Cabin getPassengerLocations() {
 		return cabin;
 	}
 
-	public static void run() {		
-		
+	public static void run() {
+
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-	         public void run() {
-	            // Set up main window (using Swing's Jframe)
+			public void run() {
+				// Set up main window (using Swing's Jframe)
 
-//	            frame = new JFrame("Boarding Simulation");
-//	            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//	            frame.setContentPane(new CabinView());
-//	            frame.pack();
-//	            frame.setVisible(true);
-	         }
-	      });
+				// frame = new JFrame("Boarding Simulation");
+				// frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				// frame.setContentPane(new CabinView());
+				// frame.pack();
+				// frame.setVisible(true);
+			}
+		});
 
-		for(Passenger passenger:ModelHelper.getChildrenByClass(cabin, Passenger.class)) {
+		for (Passenger passenger : ModelHelper.getChildrenByClass(cabin,
+				Passenger.class)) {
 			Seat seat = passenger.getSeatRef();
 			Door door = passenger.getDoor();
-			Agent agent = new Agent("Passenger "+passenger.getName(), passenger, 0, (int)((door.getYPosition()+door.getWidth()/2)/cabin.getScale()), (int)((seat.getXPosition()+seat.getWidth()/2)/cabin.getScale()),(int)((seat.getYPosition()/cabin.getScale())-1),(int)cabin.getScale());
+			Agent agent = new Agent(
+					"Passenger " + passenger.getName(),
+					passenger,
+					0,
+					(int) ((door.getYPosition() + door.getWidth() / 2) / cabin
+							.getScale()),
+					(int) ((seat.getXPosition() + seat.getXDimension() / 2) / cabin
+							.getScale()), (int) ((seat.getYPosition() / cabin
+							.getScale()) - 1), (int) cabin.getScale());
 			addAgentToAgentList(agent);
 		}
 		runAgents();
-		
-		
+
 	}
 }
