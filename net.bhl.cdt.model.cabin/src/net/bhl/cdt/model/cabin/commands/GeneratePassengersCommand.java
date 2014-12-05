@@ -223,7 +223,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 					// newPassenger.setClass(classType);
 					applyDoor(newPassenger);
 					newPassenger.setHasLuggage(hasLuggage);
-					newPassenger.setStartBoardingAfterDelay(passengerIdCount
+					newPassenger
+							.setStartBoardingAfterDelay((passengerIdCount - 1)
 							* 60 / passengersPerMinute);
 
 					/******************** random values ***********************/
@@ -284,11 +285,13 @@ public class GeneratePassengersCommand extends CDTCommand {
 		randomSeatId = new ArrayList<Integer>();
 		randomPassengerId = new ArrayList<Integer>();
 		passengerIdCount = 1;
+
 		if (totalPax <= totalSeats) {
 			generatePassengers(FirstClass.class);
 			generatePassengers(BusinessClass.class);
 			generatePassengers(PremiumEconomyClass.class);
 			generatePassengers(EconomyClass.class);
+
 		} else {
 			consoleViewPart
 					.printText("Too many passengers in the cabin! Remove "

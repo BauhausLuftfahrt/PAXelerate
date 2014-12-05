@@ -5,13 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.bhl.cdt.model.astar.ObstacleMap;
+import net.bhl.cdt.model.cabin.BusinessClass;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
 import net.bhl.cdt.model.cabin.Curtain;
 import net.bhl.cdt.model.cabin.Door;
+import net.bhl.cdt.model.cabin.FirstClass;
 import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.Passenger;
+import net.bhl.cdt.model.cabin.PremiumEconomyClass;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.util.ModelHelper;
@@ -408,25 +411,17 @@ public class CabinViewPart extends ViewPart {
 				if (!cabin.equals(null)) {
 					for (Seat seat : ModelHelper.getChildrenByClass(cabin,
 							Seat.class)) {
-						// TravelClass pasClass = ModelHelper.getParent(
-						// TravelClass.class, seat);
+						
+						 if(seat.getTravelClass() instanceof FirstClass) {
+							 e.gc.setBackground(red);
+						} else if (seat.getTravelClass() instanceof BusinessClass) {
+							e.gc.setBackground(blue);
+						} else if (seat.getTravelClass() instanceof PremiumEconomyClass) {
+							e.gc.setBackground(gold);
+						} else {
+							e.gc.setBackground(gray);
+						 }
 
-						// if(pasClass.)
-						// case BUSINESS:
-						// e.gc.setBackground(blue);
-						// break;
-						// case FIRST:
-						// e.gc.setBackground(red);
-						// break;
-						// case PREMIUM_ECO:
-						// e.gc.setBackground(gold);
-						// break;
-						// default:
-						// e.gc.setBackground(gray);
-						// break;
-						//
-						// }
-						e.gc.setBackground(blue);
 						e.gc.fillRectangle((int) (X_ZERO + seat.getXPosition()
 								/ factor), (int) (Y_ZERO + seat.getYPosition()
 								/ factor),

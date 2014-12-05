@@ -81,6 +81,7 @@ public class GenerateCabinCommand extends CDTCommand {
 	private double seatPitch;
 	private String seatIdString;
 	private double seatHelper;
+	private TravelClass subbClazz;
 
 	/**
 	 * Creates a cabin.
@@ -168,6 +169,7 @@ public class GenerateCabinCommand extends CDTCommand {
 		newSeat.setLetter(seatIdLetter);
 		newSeat.setXPosition(globalSeatPositionX);
 		newSeat.setYPosition(globalSeatPositionY);
+		newSeat.setTravelClass(subbClazz);
 		double aisleSpace = 0;
 		seatCount++;
 		if (j == (seatsInRow / 2)) {
@@ -208,39 +210,36 @@ public class GenerateCabinCommand extends CDTCommand {
 		switchSettings(travelSubClass);
 		if ((seats > 0) && (seatsInRow > 0)) {
 			if (seatsInRow % 2 == 0) {
-				TravelClass subbClazz = null;
+
+
+				// TODO: Should be done better!!
 				/**************************************************************************/
 				if (travelSubClass.getSimpleName()
 						.equals("PremiumEconomyClass")) {
 					PremiumEconomyClass subClass = CabinFactory.eINSTANCE
 							.createPremiumEconomyClass();
-					cabin.getPremiumEconomyClasses().add(subClass);
+					// cabin.getPremiumEconomyClasses().add(subClass);
 					subbClazz = subClass;
-
 				}
 				if (travelSubClass.getSimpleName().equals("EconomyClass")) {
-					System.out.println("22222");
 					EconomyClass subClass = CabinFactory.eINSTANCE
 							.createEconomyClass();
-					cabin.getEconomyClasses().add(subClass);
+					// cabin.getEconomyClasses().add(subClass);
 					subbClazz = subClass;
-
 				}
 				if (travelSubClass.getSimpleName().equals("FirstClass")) {
 					FirstClass subClass = CabinFactory.eINSTANCE
 							.createFirstClass();
-					cabin.getFirstClasses().add(subClass);
+					// cabin.getFirstClasses().add(subClass);
 					subbClazz = subClass;
-
 				}
 				if (travelSubClass.getSimpleName().equals("BusinessClass")) {
 					BusinessClass subClass = CabinFactory.eINSTANCE
 							.createBusinessClass();
-					cabin.getBusinessClasses().add(subClass);
+					// cabin.getBusinessClasses().add(subClass);
 					subbClazz = subClass;
-
 				}
-
+				cabin.getClasses().add(subbClazz);
 				subbClazz.setAvailableSeats(seats);
 				subbClazz.setSeatPitch(seatPitch);
 				subbClazz.setSeatsPerRow(seatsInRow);
@@ -285,7 +284,7 @@ public class GenerateCabinCommand extends CDTCommand {
 						rowCount++;
 					}
 
-					createRow(subbClazz);
+					createRows();
 
 					rowCount++;
 					globalSeatPositionY = globalSeatPositionY + seatDimensionY;
@@ -307,9 +306,9 @@ public class GenerateCabinCommand extends CDTCommand {
 	 * @param subClass
 	 *            is the subclass
 	 */
-	public void createRow(TravelClass subClass) {
+	public void createRows() {
 		Row newRow = CabinFactory.eINSTANCE.createRow();
-		subClass.getRows().add(newRow);
+		subbClazz.getRows().add(newRow);
 		newRow.setRowNumber(rowCount);
 
 		checkForDoor();
@@ -505,10 +504,7 @@ public class GenerateCabinCommand extends CDTCommand {
 		consoleViewPart.printText("initialize cabin generation ...");
 
 		/***** Clearing all Objects *****/
-		cabin.getPremiumEconomyClasses().clear();
-		cabin.getFirstClasses().clear();
-		cabin.getBusinessClasses().clear();
-		cabin.getEconomyClasses().clear();
+		cabin.getClasses().clear();
 		cabin.getDoors().clear();
 		cabin.getLavatories().clear();
 		cabin.getGalleys().clear();

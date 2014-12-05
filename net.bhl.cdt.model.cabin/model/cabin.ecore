@@ -13,16 +13,8 @@
         defaultValueLiteral="5"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfDecks" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="1"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="firstClasses" lowerBound="1"
-        upperBound="-1" eType="#//FirstClass" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="businessClasses" lowerBound="1"
-        upperBound="-1" eType="#//BusinessClass" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="economyClasses" lowerBound="1"
-        upperBound="-1" eType="#//EconomyClass" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="premiumEconomyClasses"
-        lowerBound="1" upperBound="-1" eType="#//PremiumEconomyClass" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="classes" lowerBound="1"
-        upperBound="-1" eType="#//TravelClass"/>
+        upperBound="-1" eType="#//TravelClass" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="doors" lowerBound="1" upperBound="-1"
         eType="#//Door" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="lavatories" lowerBound="1"
@@ -85,6 +77,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatBlocked" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="crewSeat" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="letter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="travelClass" lowerBound="1"
+        eType="#//TravelClass"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Passenger">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>

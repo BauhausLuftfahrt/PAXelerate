@@ -39,7 +39,7 @@ public class CostMapView extends JPanel {
 		cabin.setCabinLength(BOX_HEIGHT);
 		cabin.setScale(1);
 		FirstClass pClass = CabinFactory.eINSTANCE.createFirstClass();
-		cabin.getFirstClasses().add(pClass);
+		cabin.getClasses().add(pClass);
 		Row row = CabinFactory.eINSTANCE.createRow();
 		pClass.getRows().add(row);
 		Seat seat = CabinFactory.eINSTANCE.createSeat();

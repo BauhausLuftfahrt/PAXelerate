@@ -132,49 +132,13 @@ public interface CabinPackage extends EPackage {
 	int CABIN__NUMBER_OF_DECKS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
-	 * The feature id for the '<em><b>First Classes</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Classes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__FIRST_CLASSES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 6;
-
-	/**
-	 * The feature id for the '<em><b>Business Classes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CABIN__BUSINESS_CLASSES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 7;
-
-	/**
-	 * The feature id for the '<em><b>Economy Classes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CABIN__ECONOMY_CLASSES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 8;
-
-	/**
-	 * The feature id for the '<em><b>Premium Economy Classes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CABIN__PREMIUM_ECONOMY_CLASSES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 9;
-
-	/**
-	 * The feature id for the '<em><b>Classes</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CABIN__CLASSES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 10;
+	int CABIN__CLASSES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Doors</b></em>' containment reference list.
@@ -183,7 +147,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__DOORS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 11;
+	int CABIN__DOORS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Lavatories</b></em>' containment reference list.
@@ -192,7 +156,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__LAVATORIES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 12;
+	int CABIN__LAVATORIES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Galleys</b></em>' containment reference list.
@@ -201,7 +165,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__GALLEYS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 13;
+	int CABIN__GALLEYS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Stairways</b></em>' containment reference list.
@@ -210,7 +174,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__STAIRWAYS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 14;
+	int CABIN__STAIRWAYS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Curtains</b></em>' containment reference list.
@@ -219,7 +183,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__CURTAINS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 15;
+	int CABIN__CURTAINS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Stowages</b></em>' containment reference list.
@@ -228,7 +192,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__STOWAGES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 16;
+	int CABIN__STOWAGES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Passengers</b></em>' containment reference list.
@@ -237,7 +201,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__PASSENGERS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 17;
+	int CABIN__PASSENGERS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 13;
 
 	/**
 	 * The feature id for the '<em><b>Scale</b></em>' attribute.
@@ -246,7 +210,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__SCALE = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 18;
+	int CABIN__SCALE = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 14;
 
 	/**
 	 * The feature id for the '<em><b>Boarding Time</b></em>' attribute.
@@ -255,7 +219,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__BOARDING_TIME = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 19;
+	int CABIN__BOARDING_TIME = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 15;
 
 	/**
 	 * The number of structural features of the '<em>Cabin</em>' class.
@@ -264,7 +228,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_FEATURE_COUNT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 20;
+	int CABIN_FEATURE_COUNT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 16;
 
 	/**
 	 * The number of operations of the '<em>Cabin</em>' class.
@@ -1098,13 +1062,22 @@ public interface CabinPackage extends EPackage {
 	int SEAT__LETTER = PHYSICAL_OBJECT_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Travel Class</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEAT__TRAVEL_CLASS = PHYSICAL_OBJECT_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Seat</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEAT_FEATURE_COUNT = PHYSICAL_OBJECT_FEATURE_COUNT + 5;
+	int SEAT_FEATURE_COUNT = PHYSICAL_OBJECT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Seat</em>' class.
@@ -2153,50 +2126,6 @@ public interface CabinPackage extends EPackage {
 	EAttribute getCabin_NumberOfDecks();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link net.bhl.cdt.model.cabin.Cabin#getFirstClasses <em>First Classes</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>First Classes</em>'.
-	 * @see net.bhl.cdt.model.cabin.Cabin#getFirstClasses()
-	 * @see #getCabin()
-	 * @generated
-	 */
-	EReference getCabin_FirstClasses();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link net.bhl.cdt.model.cabin.Cabin#getBusinessClasses <em>Business Classes</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Business Classes</em>'.
-	 * @see net.bhl.cdt.model.cabin.Cabin#getBusinessClasses()
-	 * @see #getCabin()
-	 * @generated
-	 */
-	EReference getCabin_BusinessClasses();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link net.bhl.cdt.model.cabin.Cabin#getEconomyClasses <em>Economy Classes</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Economy Classes</em>'.
-	 * @see net.bhl.cdt.model.cabin.Cabin#getEconomyClasses()
-	 * @see #getCabin()
-	 * @generated
-	 */
-	EReference getCabin_EconomyClasses();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link net.bhl.cdt.model.cabin.Cabin#getPremiumEconomyClasses <em>Premium Economy Classes</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Premium Economy Classes</em>'.
-	 * @see net.bhl.cdt.model.cabin.Cabin#getPremiumEconomyClasses()
-	 * @see #getCabin()
-	 * @generated
-	 */
-	EReference getCabin_PremiumEconomyClasses();
-
-	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getBoardingTime <em>Boarding Time</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2208,10 +2137,10 @@ public interface CabinPackage extends EPackage {
 	EAttribute getCabin_BoardingTime();
 
 	/**
-	 * Returns the meta object for the reference list '{@link net.bhl.cdt.model.cabin.Cabin#getClasses <em>Classes</em>}'.
+	 * Returns the meta object for the containment reference list '{@link net.bhl.cdt.model.cabin.Cabin#getClasses <em>Classes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Classes</em>'.
+	 * @return the meta object for the containment reference list '<em>Classes</em>'.
 	 * @see net.bhl.cdt.model.cabin.Cabin#getClasses()
 	 * @see #getCabin()
 	 * @generated
@@ -2561,6 +2490,17 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSeat_Letter();
+
+	/**
+	 * Returns the meta object for the reference '{@link net.bhl.cdt.model.cabin.Seat#getTravelClass <em>Travel Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Travel Class</em>'.
+	 * @see net.bhl.cdt.model.cabin.Seat#getTravelClass()
+	 * @see #getSeat()
+	 * @generated
+	 */
+	EReference getSeat_TravelClass();
 
 	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Seat#getSeatId <em>Seat Id</em>}'.
@@ -3336,34 +3276,6 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute CABIN__NUMBER_OF_DECKS = eINSTANCE.getCabin_NumberOfDecks();
 		/**
-		 * The meta object literal for the '<em><b>First Classes</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CABIN__FIRST_CLASSES = eINSTANCE.getCabin_FirstClasses();
-		/**
-		 * The meta object literal for the '<em><b>Business Classes</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CABIN__BUSINESS_CLASSES = eINSTANCE.getCabin_BusinessClasses();
-		/**
-		 * The meta object literal for the '<em><b>Economy Classes</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CABIN__ECONOMY_CLASSES = eINSTANCE.getCabin_EconomyClasses();
-		/**
-		 * The meta object literal for the '<em><b>Premium Economy Classes</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CABIN__PREMIUM_ECONOMY_CLASSES = eINSTANCE.getCabin_PremiumEconomyClasses();
-		/**
 		 * The meta object literal for the '<em><b>Boarding Time</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3371,7 +3283,7 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute CABIN__BOARDING_TIME = eINSTANCE.getCabin_BoardingTime();
 		/**
-		 * The meta object literal for the '<em><b>Classes</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Classes</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -3617,6 +3529,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SEAT__LETTER = eINSTANCE.getSeat_Letter();
+		/**
+		 * The meta object literal for the '<em><b>Travel Class</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SEAT__TRAVEL_CLASS = eINSTANCE.getSeat_TravelClass();
 		/**
 		 * The meta object literal for the '<em><b>Seat Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->

@@ -3,17 +3,13 @@
 package net.bhl.cdt.model.cabin.impl;
 
 import java.util.Collection;
-import net.bhl.cdt.model.cabin.BusinessClass;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinPackage;
 import net.bhl.cdt.model.cabin.Curtain;
 import net.bhl.cdt.model.cabin.Door;
-import net.bhl.cdt.model.cabin.EconomyClass;
-import net.bhl.cdt.model.cabin.FirstClass;
 import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.Passenger;
-import net.bhl.cdt.model.cabin.PremiumEconomyClass;
 import net.bhl.cdt.model.cabin.Stairway;
 import net.bhl.cdt.model.cabin.Stowage;
 import net.bhl.cdt.model.cabin.TravelClass;
@@ -25,7 +21,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -41,10 +36,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getAisleWidth <em>Aisle Width</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getFramesPerSecond <em>Frames Per Second</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getNumberOfDecks <em>Number Of Decks</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getFirstClasses <em>First Classes</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getBusinessClasses <em>Business Classes</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getEconomyClasses <em>Economy Classes</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getPremiumEconomyClasses <em>Premium Economy Classes</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getClasses <em>Classes</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getDoors <em>Doors</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getLavatories <em>Lavatories</em>}</li>
@@ -170,43 +161,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 */
 	protected int numberOfDecks = NUMBER_OF_DECKS_EDEFAULT;
 	/**
-	 * The cached value of the '{@link #getFirstClasses() <em>First Classes</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFirstClasses()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<FirstClass> firstClasses;
-	/**
-	 * The cached value of the '{@link #getBusinessClasses() <em>Business Classes</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getBusinessClasses()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<BusinessClass> businessClasses;
-	/**
-	 * The cached value of the '{@link #getEconomyClasses() <em>Economy Classes</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEconomyClasses()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<EconomyClass> economyClasses;
-	/**
-	 * The cached value of the '{@link #getPremiumEconomyClasses() <em>Premium Economy Classes</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPremiumEconomyClasses()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<PremiumEconomyClass> premiumEconomyClasses;
-	/**
-	 * The cached value of the '{@link #getClasses() <em>Classes</em>}' reference list.
+	 * The cached value of the '{@link #getClasses() <em>Classes</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getClasses()
@@ -526,54 +481,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<FirstClass> getFirstClasses() {
-		if (firstClasses == null) {
-			firstClasses = new EObjectContainmentEList<FirstClass>(FirstClass.class, this, CabinPackage.CABIN__FIRST_CLASSES);
-		}
-		return firstClasses;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<BusinessClass> getBusinessClasses() {
-		if (businessClasses == null) {
-			businessClasses = new EObjectContainmentEList<BusinessClass>(BusinessClass.class, this, CabinPackage.CABIN__BUSINESS_CLASSES);
-		}
-		return businessClasses;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<EconomyClass> getEconomyClasses() {
-		if (economyClasses == null) {
-			economyClasses = new EObjectContainmentEList<EconomyClass>(EconomyClass.class, this, CabinPackage.CABIN__ECONOMY_CLASSES);
-		}
-		return economyClasses;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<PremiumEconomyClass> getPremiumEconomyClasses() {
-		if (premiumEconomyClasses == null) {
-			premiumEconomyClasses = new EObjectContainmentEList<PremiumEconomyClass>(PremiumEconomyClass.class, this, CabinPackage.CABIN__PREMIUM_ECONOMY_CLASSES);
-		}
-		return premiumEconomyClasses;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public double getBoardingTime() {
 		return boardingTime;
 	}
@@ -597,7 +504,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 */
 	public EList<TravelClass> getClasses() {
 		if (classes == null) {
-			classes = new EObjectResolvingEList<TravelClass>(TravelClass.class, this, CabinPackage.CABIN__CLASSES);
+			classes = new EObjectContainmentEList<TravelClass>(TravelClass.class, this, CabinPackage.CABIN__CLASSES);
 		}
 		return classes;
 	}
@@ -652,14 +559,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CabinPackage.CABIN__FIRST_CLASSES:
-				return ((InternalEList<?>)getFirstClasses()).basicRemove(otherEnd, msgs);
-			case CabinPackage.CABIN__BUSINESS_CLASSES:
-				return ((InternalEList<?>)getBusinessClasses()).basicRemove(otherEnd, msgs);
-			case CabinPackage.CABIN__ECONOMY_CLASSES:
-				return ((InternalEList<?>)getEconomyClasses()).basicRemove(otherEnd, msgs);
-			case CabinPackage.CABIN__PREMIUM_ECONOMY_CLASSES:
-				return ((InternalEList<?>)getPremiumEconomyClasses()).basicRemove(otherEnd, msgs);
+			case CabinPackage.CABIN__CLASSES:
+				return ((InternalEList<?>)getClasses()).basicRemove(otherEnd, msgs);
 			case CabinPackage.CABIN__DOORS:
 				return ((InternalEList<?>)getDoors()).basicRemove(otherEnd, msgs);
 			case CabinPackage.CABIN__LAVATORIES:
@@ -698,14 +599,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return getFramesPerSecond();
 			case CabinPackage.CABIN__NUMBER_OF_DECKS:
 				return getNumberOfDecks();
-			case CabinPackage.CABIN__FIRST_CLASSES:
-				return getFirstClasses();
-			case CabinPackage.CABIN__BUSINESS_CLASSES:
-				return getBusinessClasses();
-			case CabinPackage.CABIN__ECONOMY_CLASSES:
-				return getEconomyClasses();
-			case CabinPackage.CABIN__PREMIUM_ECONOMY_CLASSES:
-				return getPremiumEconomyClasses();
 			case CabinPackage.CABIN__CLASSES:
 				return getClasses();
 			case CabinPackage.CABIN__DOORS:
@@ -756,22 +649,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return;
 			case CabinPackage.CABIN__NUMBER_OF_DECKS:
 				setNumberOfDecks((Integer)newValue);
-				return;
-			case CabinPackage.CABIN__FIRST_CLASSES:
-				getFirstClasses().clear();
-				getFirstClasses().addAll((Collection<? extends FirstClass>)newValue);
-				return;
-			case CabinPackage.CABIN__BUSINESS_CLASSES:
-				getBusinessClasses().clear();
-				getBusinessClasses().addAll((Collection<? extends BusinessClass>)newValue);
-				return;
-			case CabinPackage.CABIN__ECONOMY_CLASSES:
-				getEconomyClasses().clear();
-				getEconomyClasses().addAll((Collection<? extends EconomyClass>)newValue);
-				return;
-			case CabinPackage.CABIN__PREMIUM_ECONOMY_CLASSES:
-				getPremiumEconomyClasses().clear();
-				getPremiumEconomyClasses().addAll((Collection<? extends PremiumEconomyClass>)newValue);
 				return;
 			case CabinPackage.CABIN__CLASSES:
 				getClasses().clear();
@@ -841,18 +718,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__NUMBER_OF_DECKS:
 				setNumberOfDecks(NUMBER_OF_DECKS_EDEFAULT);
 				return;
-			case CabinPackage.CABIN__FIRST_CLASSES:
-				getFirstClasses().clear();
-				return;
-			case CabinPackage.CABIN__BUSINESS_CLASSES:
-				getBusinessClasses().clear();
-				return;
-			case CabinPackage.CABIN__ECONOMY_CLASSES:
-				getEconomyClasses().clear();
-				return;
-			case CabinPackage.CABIN__PREMIUM_ECONOMY_CLASSES:
-				getPremiumEconomyClasses().clear();
-				return;
 			case CabinPackage.CABIN__CLASSES:
 				getClasses().clear();
 				return;
@@ -907,14 +772,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return framesPerSecond != FRAMES_PER_SECOND_EDEFAULT;
 			case CabinPackage.CABIN__NUMBER_OF_DECKS:
 				return numberOfDecks != NUMBER_OF_DECKS_EDEFAULT;
-			case CabinPackage.CABIN__FIRST_CLASSES:
-				return firstClasses != null && !firstClasses.isEmpty();
-			case CabinPackage.CABIN__BUSINESS_CLASSES:
-				return businessClasses != null && !businessClasses.isEmpty();
-			case CabinPackage.CABIN__ECONOMY_CLASSES:
-				return economyClasses != null && !economyClasses.isEmpty();
-			case CabinPackage.CABIN__PREMIUM_ECONOMY_CLASSES:
-				return premiumEconomyClasses != null && !premiumEconomyClasses.isEmpty();
 			case CabinPackage.CABIN__CLASSES:
 				return classes != null && !classes.isEmpty();
 			case CabinPackage.CABIN__DOORS:

@@ -48,6 +48,7 @@ public class SeatItemProvider
 			addSeatBlockedPropertyDescriptor(object);
 			addCrewSeatPropertyDescriptor(object);
 			addLetterPropertyDescriptor(object);
+			addTravelClassPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -136,6 +137,28 @@ public class SeatItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Travel Class feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTravelClassPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Seat_travelClass_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Seat_travelClass_feature", "_UI_Seat_type"),
+				 CabinPackage.Literals.SEAT__TRAVEL_CLASS,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}
