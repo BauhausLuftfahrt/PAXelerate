@@ -146,18 +146,20 @@ public class Agent extends Subject implements Runnable {
 				//	for (int y = -square; y<0; y++) {
 				//		if(!(x==0&&y==0)) {
 							if((xLoc+x)>0) {//&&(yLoc+y)>0) {
-								RunAStar.map.getNode(xLoc+x, yLoc).setOccupiedByAgent(occupy);
+					RunAStar.getMap().getNode(xLoc + x, yLoc)
+							.setOccupiedByAgent(
+							occupy);
 							}
 				//		}
 				//	}
 			}
 		} else {
-			RunAStar.map.getNode(xLoc, yLoc).setOccupiedByAgent(occupy);
+			RunAStar.getMap().getNode(xLoc, yLoc).setOccupiedByAgent(occupy);
 		}
 	}
 	
 	private boolean nodeBlocked(int xLoc, int yLoc) {
-		if(RunAStar.map.getNode(xLoc, yLoc).isOccupiedByAgent()) {
+		if (RunAStar.getMap().getNode(xLoc, yLoc).isOccupiedByAgent()) {
 			return true;
 		} 
 		else {
@@ -191,8 +193,10 @@ public class Agent extends Subject implements Runnable {
 					numbOfInterupts ++;
 				}
 				else if(passengerStowsLuggage()&&!alreadyStowed) {
-					RunAStar.map.getNode(previousX, previousY).setOccupiedByAgent(false);
-					RunAStar.map.getNode(currentX, currentY).setOccupiedByAgent(true);	
+					RunAStar.getMap().getNode(previousX, previousY)
+							.setOccupiedByAgent(false);
+					RunAStar.getMap().getNode(currentX, currentY)
+							.setOccupiedByAgent(true);
 					occupyArea(currentX,currentY,true);
 					Thread.sleep((int)(passenger.getLuggageStowTime()*1000/2));
 					occupyArea(currentX,currentY,false);
@@ -200,8 +204,10 @@ public class Agent extends Subject implements Runnable {
 					i++;				
 				}
 				else {
-					RunAStar.map.getNode(previousX, previousY).setOccupiedByAgent(false);
-					RunAStar.map.getNode(currentX, currentY).setOccupiedByAgent(true);
+					RunAStar.getMap().getNode(previousX, previousY)
+							.setOccupiedByAgent(false);
+					RunAStar.getMap().getNode(currentX, currentY)
+							.setOccupiedByAgent(true);
 					occupyArea(previousX,previousY,false);
 					occupyArea(currentX,currentY,true);
 					this.currentAgentPosition[i][0] = this.currentX;
@@ -214,7 +220,8 @@ public class Agent extends Subject implements Runnable {
 					i++;
 				}
 			}
-			RunAStar.map.getNode(currentX, currentY).setOccupiedByAgent(false);	
+			RunAStar.getMap().getNode(currentX, currentY)
+					.setOccupiedByAgent(false);
 			passenger.setIsSeated(true);
 			RunAStar.setPassengerSeated(passenger);	
 			s.stop();

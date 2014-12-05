@@ -21,7 +21,7 @@ public class RunAStar {
 	private static JFrame frame;
 	private static ArrayList<Passenger> finishedList = new ArrayList<Passenger>();
 	private static Logger console = new Logger();
-	public static AreaMap map;
+	private static AreaMap map;
 	private static ArrayList<Agent> agents = new ArrayList<Agent>();
 	private static ArrayList<int[][]> pathList = new ArrayList<int[][]>();
 	private static StopWatch s = new StopWatch();
@@ -45,6 +45,10 @@ public class RunAStar {
 		map = new AreaMap(mapWidth, mapHeight, obstacleMap);
 		cabin = cabinn;
 		run();
+	}
+
+	public static void setMap(AreaMap map) {
+		RunAStar.map = map;
 	}
 
 	/**
