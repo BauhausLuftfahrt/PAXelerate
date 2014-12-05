@@ -14,35 +14,35 @@ public class Frame extends JFrame {
 	public void paint(Graphics g) {
 		super.paint(g);
 		Node node;
-		for (int x = 0; x < TestAStar.map.getMapWidth(); x++) {
+		for (int x = 0; x < RunAStar.map.getMapWidth(); x++) {
 			if (x == 0) {
-				for (int i = 0; i <= TestAStar.map.getMapWidth(); i++) {
+				for (int i = 0; i <= RunAStar.map.getMapWidth(); i++) {
 					System.out.print("-");
 				}
 			}
 			System.out.print("|");
 
-			for (int y = 0; y < TestAStar.map.getMapHeight(); y++) {
-				node = TestAStar.map.getNode(x, y);
+			for (int y = 0; y < RunAStar.map.getMapHeight(); y++) {
+				node = RunAStar.map.getNode(x, y);
 				if (node.isObstacle) {
 				
 					System.out.print("X");
 				}
 
-				else if (TestAStar.map.getNode(x, y).isOccupiedByAgent) {
+				else if (RunAStar.map.getNode(x, y).isOccupiedByAgent) {
 					g.drawString("¤", x, y);
 					System.out.print("¤");
 				} else {
 					System.out.print(" ");
 				}
-				if (y == TestAStar.map.getMapHeight())
+				if (y == RunAStar.map.getMapHeight())
 					System.out.print("_");
 			}
 
 			System.out.print("|");
 			System.out.println();
 		}
-		for (int i = 0; i <= TestAStar.map.getMapWidth(); i++)
+		for (int i = 0; i <= RunAStar.map.getMapWidth(); i++)
 			System.out.print("-");
 
 	}

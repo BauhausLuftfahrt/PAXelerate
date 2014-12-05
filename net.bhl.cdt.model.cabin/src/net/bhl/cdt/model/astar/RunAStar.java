@@ -8,32 +8,32 @@ import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
-import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.observer.AgentPosition;
 import net.bhl.cdt.model.util.ModelHelper;
 
-public class TestAStar {
+public class RunAStar {
 
 	private static int mapWidth = 20;
 	private static int mapHeight = 20;
 	private static Cabin cabin;
-
-	public static Boolean simulationDone = false;
-	static CabinViewPart cabinViewPart;
-
+	private static Boolean simulationDone = false;
 	private static int[][] obstacleMap = {};
+	private static JFrame frame;
+	private static ArrayList<Passenger> finishedList = new ArrayList<Passenger>();
+	private static Logger console = new Logger();
+	public static AreaMap map;
+	private static ArrayList<Agent> agents = new ArrayList<Agent>();
+	private static ArrayList<int[][]> pathList = new ArrayList<int[][]>();
+	private static StopWatch s = new StopWatch();
 
-	public static JFrame frame;
-
-	static ArrayList<Passenger> finishedList = new ArrayList<Passenger>();
-
-	static Logger console = new Logger();
-	static AreaMap map;
-	static ArrayList<Agent> agents = new ArrayList<Agent>();
-	public static ArrayList<int[][]> pathList = new ArrayList<int[][]>();
-	static StopWatch s = new StopWatch();
-
-	public TestAStar(int[][] obstacleMapn, int mapWidthn, int mapHeightn,
+	/**
+	 * 
+	 * @param obstacleMapn
+	 * @param mapWidthn
+	 * @param mapHeightn
+	 * @param cabinn
+	 */
+	public RunAStar(int[][] obstacleMapn, int mapWidthn, int mapHeightn,
 			Cabin cabinn) {
 
 		obstacleMap = obstacleMapn;
@@ -47,6 +47,12 @@ public class TestAStar {
 		run();
 	}
 
+	/**
+	 * 
+	 * @param map
+	 * @param agent
+	 * @return
+	 */
 	public static int[][] getPath(AreaMap map, Agent agent) {
 
 		s.start();
@@ -78,7 +84,11 @@ public class TestAStar {
 
 	}
 
-	// returns the coordinates of an individual path
+	/**
+	 * 
+	 * @param shortestPath
+	 * @return
+	 */
 	public static int[][] getPathCoordinates(Path shortestPath) {
 
 		int[][] pathCoordinates = new int[shortestPath.getLength()][2];
@@ -92,15 +102,25 @@ public class TestAStar {
 
 	}
 
+	/**
+	 *
+	 */
 	public static AreaMap getMap() {
 		return map;
 	}
 
+	/**
+	 * 
+	 * @param agent
+	 */
 	public static void addAgentToAgentList(Agent agent) {
 		agents.add(agent);
 	}
 
-	// observer pattern to update agent's position on map
+	/**
+	 * 
+	 * @return
+	 */
 	public static int[][] runAgents() {
 
 		/** First generate all paths ... */
@@ -132,6 +152,10 @@ public class TestAStar {
 		pathList.add(path);
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public static ArrayList<int[][]> getPathList() {
 		return pathList;
 	}
