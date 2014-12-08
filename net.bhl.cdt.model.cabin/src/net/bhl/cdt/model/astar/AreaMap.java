@@ -38,7 +38,7 @@ public class AreaMap {
 	public void printMap() {
 		for (int i = 0; i < mapWidth; i++) {
 			for (int j = 0; j < mapHeight; j++) {
-				if (map.get(i).get(j).isOccupiedByAgent) {
+				if (map.get(i).get(j).isOccupiedByAgent()) {
 					System.out.print("X");
 				} else {
 					System.out.print("-");

@@ -56,7 +56,7 @@ public class CostMap {
 		for(int i=0;i<this.width;i++) {
 			for(int j=0;j<this.height;j++) {
 				Node node = areamap.getNode(i, j);
-				if(!node.isObstacle) {
+				if (!node.isObstacle()) {
 					map[i][j] = node.getCost();
 					int[] helpPoint = new int[2];
 					helpPoint[0] = i;
