@@ -17,10 +17,13 @@ import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.Sex;
 import net.bhl.cdt.model.cabin.TravelClass;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
-import net.bhl.cdt.model.cabin.ui.ConsoleViewPart;
 import net.bhl.cdt.model.cabin.util.FunctionLibrary;
 import net.bhl.cdt.model.util.ModelHelper;
 
+import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 
@@ -66,7 +69,6 @@ public class GeneratePassengersCommand extends CDTCommand {
 	private ArrayList<Integer> randomPassengerId;
 	private int passengerIdCount;
 	private int passengerPerClassCount;
-	private ConsoleViewPart consoleViewPart;
 	private CabinViewPart cabinViewPart;
 	private String classNameString;
 	private int totalPax;
@@ -74,6 +76,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 	private int paxInClass;
 	private int seatsInClass;
 	private int seatAreaBegin;
+	private ILog logger;
 
 	/**
 	 * This method submits the cabin to be used in the file.
@@ -83,6 +86,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 	 */
 	public GeneratePassengersCommand(Cabin cabin) {
 		this.cabin = cabin;
+		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
 	}
 
 	/**
@@ -188,7 +192,9 @@ public class GeneratePassengersCommand extends CDTCommand {
 				return seat;
 			}
 		}
-		consoleViewPart.printText("No seat found!");
+		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
+				"No seat found!"));
+
 		Seat emptySeat = null;
 		return emptySeat;
 	}
@@ -224,7 +230,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 					newPassenger.setHasLuggage(hasLuggage);
 					newPassenger
 							.setStartBoardingAfterDelay((passengerIdCount - 1)
-							* 60 / passengersPerMinute);
+									* 60 / passengersPerMinute);
 
 					/******************** random values ***********************/
 					if (randomValue(0, 2) == 1) {
@@ -243,12 +249,14 @@ public class GeneratePassengersCommand extends CDTCommand {
 					passengerPerClassCount++;
 				}
 				randomSeatId.clear();
-				consoleViewPart.printText("successfully created "
-						+ (passengerPerClassCount) + " passengers in "
-						+ classNameString);
+
+				logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
+						"successfully created " + (passengerPerClassCount)
+								+ " passengers in " + classNameString));
 			} else {
-				consoleViewPart.printText("Too many passengers in "
-						+ classNameString);
+
+				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
+						"Too many passengers in " + classNameString));
 			}
 		}
 	}
@@ -258,8 +266,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 		/************************* get the views ***********************/
 		IWorkbenchPage page = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage();
-		consoleViewPart = (ConsoleViewPart) page
-				.findView("net.bhl.cdt.model.cabin.consoleview");
+
 		cabinViewPart = (CabinViewPart) page
 				.findView("net.bhl.cdt.model.cabin.cabinview");
 		/**************************************************************/
@@ -276,9 +283,10 @@ public class GeneratePassengersCommand extends CDTCommand {
 		totalSeats = ModelHelper.getChildrenByClass(cabin, FirstClass.class)
 				.get(0).getAvailableSeats()
 				+ ModelHelper.getChildrenByClass(cabin, BusinessClass.class)
-				.get(0).getAvailableSeats()
-				+ ModelHelper.getChildrenByClass(cabin, PremiumEconomyClass.class)
-				.get(0).getAvailableSeats()
+						.get(0).getAvailableSeats()
+				+ ModelHelper
+						.getChildrenByClass(cabin, PremiumEconomyClass.class)
+						.get(0).getAvailableSeats()
 				+ ModelHelper.getChildrenByClass(cabin, EconomyClass.class)
 						.get(0).getAvailableSeats();
 		randomSeatId = new ArrayList<Integer>();
@@ -292,9 +300,9 @@ public class GeneratePassengersCommand extends CDTCommand {
 			generatePassengers(EconomyClass.class);
 
 		} else {
-			consoleViewPart
-					.printText("Too many passengers in the cabin! Remove "
-							+ (totalPax - totalSeats) + ".");
+			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
+					"Too many passengers in the cabin! Remove "
+							+ (totalPax - totalSeats) + "!"));
 		}
 		cabinViewPart.submitCabin(cabin);
 	}
