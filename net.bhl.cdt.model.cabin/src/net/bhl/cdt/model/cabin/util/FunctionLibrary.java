@@ -24,4 +24,20 @@ public class FunctionLibrary {
 				"(?<=[A-Z])(?=[A-Z][a-z])", "(?<=[^A-Z])(?=[A-Z])",
 				"(?<=[A-Za-z])(?=[^A-Za-z])"), " ");
 	}
+
+	/**
+	 * This method transforms 2 coordinates to a point.
+	 * 
+	 * @param xLocation
+	 *            is the x location
+	 * @param yLocation
+	 *            is the y location
+	 * @return returns the point
+	 */
+	public static int[] transformCoordinatesToPoint(int xLocation, int yLocation) {
+		int[] point = new int[2];
+		point[0] = xLocation;
+		point[1] = yLocation;
+		return point;
+	}
 }

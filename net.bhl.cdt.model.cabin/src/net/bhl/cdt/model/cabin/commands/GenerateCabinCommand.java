@@ -225,7 +225,7 @@ public class GenerateCabinCommand extends CDTCommand {
 							.createPremiumEconomyClass();
 					// cabin.getPremiumEconomyClasses().add(subClass);
 					subbClazz = subClass;
-					subbClazz.setPassengers(2);
+					subbClazz.setPassengers(0);
 				}
 				if (travelSubClass.getSimpleName().equals("EconomyClass")) {
 					EconomyClass subClass = CabinFactory.eINSTANCE
@@ -239,14 +239,14 @@ public class GenerateCabinCommand extends CDTCommand {
 							.createFirstClass();
 					// cabin.getFirstClasses().add(subClass);
 					subbClazz = subClass;
-					subbClazz.setPassengers(2);
+					subbClazz.setPassengers(0);
 				}
 				if (travelSubClass.getSimpleName().equals("BusinessClass")) {
 					BusinessClass subClass = CabinFactory.eINSTANCE
 							.createBusinessClass();
 					// cabin.getBusinessClasses().add(subClass);
 					subbClazz = subClass;
-					subbClazz.setPassengers(4);
+					subbClazz.setPassengers(0);
 				}
 				cabin.getClasses().add(subbClazz);
 				subbClazz.setAvailableSeats(seats);

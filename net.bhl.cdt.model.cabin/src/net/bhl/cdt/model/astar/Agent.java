@@ -2,6 +2,7 @@ package net.bhl.cdt.model.astar;
 
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
+import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.observer.Subject;
 import net.bhl.cdt.model.util.ModelHelper;
 
@@ -11,22 +12,20 @@ import net.bhl.cdt.model.util.ModelHelper;
  *
  */
 public class Agent extends Subject implements Runnable {
-	private Thread t;
+	private Thread thread;
 	private String agentName;
 	private int[][] path;
-	private int startX;
-	private int startY;
-	private int goalX;
-	private int goalY;
+
+	private Vector startPoint = new Vector();
+	private Vector goalPoint = new Vector();
+	private Vector previousPoint = new Vector();
+	private Vector currentPoint = new Vector();
+
 	private Passenger passenger;
 	private int scale;
 	private double firstSeatY;
-	private boolean alreadyStowed = false;
-	private static StopWatch s = new StopWatch();
-	private int previousX;
-	private int previousY;
-	private int currentX;
-	private int currentY;
+	private boolean alreadyStowed;
+	private static StopWatch stopwatch = new StopWatch();
 	private int[][] currentAgentPosition = new int[1][2];
 
 	/**
@@ -47,73 +46,110 @@ public class Agent extends Subject implements Runnable {
 	 * @param scale
 	 *            is the scale of the simulation
 	 */
-	Agent(String name, Passenger passenger, int startX, int startY, int goalX, int goalY,int scale) {
+	Agent(String name, Passenger passenger, Vector start, Vector goal, int scale) {
 		this.passenger = passenger;
 		this.agentName = name;
-		this.startX = startX;
-		this.startY = startY;
-		this.goalX = goalX;
-		this.goalY = goalY;
+		startPoint.setPointFromPoint(start.getPoint());
+		goalPoint.setPointFromPoint(goal.getPoint());
 		this.scale = scale;
-		this.currentAgentPosition[0][0] = startX;
-		this.currentAgentPosition[0][1] = startY;
+		this.currentAgentPosition[0] = start.getPoint();
 		
 
 	}
 
-
+	/**
+	 * This method returns the agent name.
+	 * 
+	 * @return the agent name
+	 */
 	public String getAgentName() {
 		return agentName;
 	}
 
+	/**
+	 * This method sets the agent name.
+	 * 
+	 * @param agentName
+	 *            is the name
+	 */
 	public void setAgentName(String agentName) {
 		this.agentName = agentName;
 	}
 
+	/**
+	 * This method returns the path of the agent.
+	 * 
+	 * @return returns the path
+	 */
 	public int[][] getPath() {
 		return path;
 	}
 
-	public int getStartX() {
-		return startX;
+	/**
+	 * This method returns the coordinate of the starting point.
+	 * 
+	 * @return the point
+	 */
+	public Vector getStart() {
+		return startPoint;
 	}
 
-	public void setStartX(int startX) {
-		this.startX = startX;
+	/**
+	 * This method sets the coordinate of the starting point.
+	 * 
+	 * @param point
+	 *            the the point
+	 */
+	public void setStart(int[] point) {
+		startPoint.setPointFromPoint(point);
 	}
 
-	public int getStartY() {
-		return startY;
+
+	/**
+	 * This method returns the coordinate of the goal point.
+	 * 
+	 * @return the x value
+	 */
+	public Vector getGoal() {
+		return goalPoint;
 	}
 
-	public void setStartY(int startY) {
-		this.startY = startY;
+	/**
+	 * This method sets the coordinate of the goal point.
+	 * 
+	 * @param point
+	 *            the point
+	 */
+	public void setGoal(int[] point) {
+		goalPoint.setPointFromPoint(point);
 	}
 
-	public int getGoalX() {
-		return goalX;
-	}
 
-	public void setGoalX(int goalX) {
-		this.goalX = goalX;
-	}
-
-	public int getGoalY() {
-		return goalY;
-	}
-
-	public void setGoalY(int goalY) {
-		this.goalY = goalY;
-	}
-
+	/**
+	 * This method sets the path for the agent.
+	 * 
+	 * @param path
+	 *            the path
+	 */
 	public void setPath(int[][] path) {
 		this.path = path;
 	}
 	
+	/**
+	 * This method returns the coordinates of the agents current location.
+	 * 
+	 * @return the current location
+	 */
 	public int[][] getCurrentAgentPosition() {
 		return currentAgentPosition;
 	}
 
+	/**
+	 * This method sets the coordinates of the agents current location.
+	 * 
+	 * @param currentAgentPosition
+	 *            the current location
+	 */
 	public void setCurrentAgentPosition(int[][] currentAgentPosition) {
 		this.currentAgentPosition = currentAgentPosition;
 	}
@@ -121,13 +157,16 @@ public class Agent extends Subject implements Runnable {
 	/**
 	 * Rotation from 0 to 359 degrees. Only 45° steps. North is 0°.
 	 * 
-	 * @param xWay
-	 *            is the current step in x direction
-	 * @param yWay
-	 *            is the current step in y direction
-	 * @return returns the rotation in degree
+	 * @param point1
+	 *            is the first point
+	 * @param point2
+	 *            is the second point
+	 * @return returns the orientation in degree
 	 */
-	public int getRotation(int xWay, int yWay) {
+
+	public int getRotation(int[] point1, int[] point2) {
+		int xWay = point2[0] - point1[0];
+		int yWay = point2[1] - point1[1];
 		int deg = 0;
 		if (xWay>0) {
 			if(yWay == 0) {deg = 90;}
@@ -148,18 +187,20 @@ public class Agent extends Subject implements Runnable {
 	private boolean passengerStowsLuggage() {
 		Seat seat = passenger.getSeatRef();
 		return (passenger.isHasLuggage())
-				&& (currentY == (int) (seat.getYPosition() / scale - 5));
+				&& (currentPoint.getY() == (int) (seat.getYPosition()
+						/ scale - 5));
 	}
 	
-	private void occupyArea(int xLoc, int yLoc, boolean occupy) {
+	private void occupyArea(int[] point, boolean occupy) {
 		
-		if(yLoc > firstSeatY) {
+		if (point[1] > firstSeatY) {
 			int width = 0;
 			for (int x = -width; x<=width; x++) {
 				//	for (int y = -square; y<0; y++) {
 				//		if(!(x==0&&y==0)) {
-							if((xLoc+x)>0) {//&&(yLoc+y)>0) {
-					RunAStar.getMap().getNode(xLoc + x, yLoc)
+				if ((point[0] + x) > 0) {// &&(yLoc+y)>0) {
+					RunAStar.getMap()
+							.getNodeByCoordinate(point[0] + x, point[1])
 							.setOccupiedByAgent(
 							occupy);
 							}
@@ -167,7 +208,8 @@ public class Agent extends Subject implements Runnable {
 				//	}
 			}
 		} else {
-			RunAStar.getMap().getNode(xLoc, yLoc).setOccupiedByAgent(occupy);
+			RunAStar.getMap().getNodeByPoint(point)
+					.setOccupiedByAgent(occupy);
 		}
 	}
 	
@@ -177,8 +219,9 @@ public class Agent extends Subject implements Runnable {
 	 * @param yLoc
 	 * @return
 	 */
-	private boolean nodeBlocked(int xLoc, int yLoc) {
-		return RunAStar.getMap().getNode(xLoc, yLoc).isOccupiedByAgent();
+	private boolean nodeBlocked(Vector position) {
+		return RunAStar.getMap().getNode(position)
+				.isOccupiedByAgent();
 	}
 	
 	/**
@@ -187,60 +230,59 @@ public class Agent extends Subject implements Runnable {
 	public void run() {
 		try {
 			Thread.sleep((int)(passenger.getStartBoardingAfterDelay()*1000));
-			s.start();
+			stopwatch.start();
 			Seat seat = ModelHelper.getChildrenByClass(RunAStar.getCabin(), Seat.class).get(0);
-			firstSeatY = seat.getYPosition()/RunAStar.getCabin().getScale();
+			firstSeatY = seat.getYPosition() / RunAStar.getCabin().getScale();
 			this.currentAgentPosition = new int[path.length][2];
 			RunAStar.submitPath(path);
 			int numbOfInterupts = 0;
+			alreadyStowed = false;
 			int i = 0;
 			while(i < path.length) {
 
 				if(i != 0) {
-					this.previousX = path[i-1][0];
-					this.previousY = path[i-1][1];
+					currentPoint.setPointFromPoint(path[i - 1]);
 				}
-				this.currentX = path[i][0];
-				this.currentY = path[i][1];	
+				currentPoint.setPointFromPoint(path[i]);
 
-				if(nodeBlocked(currentX,currentY)){
+				if (nodeBlocked(currentPoint)) {
 					Thread.sleep(200);
 					numbOfInterupts ++;
 				}
 				else if(passengerStowsLuggage()&&!alreadyStowed) {
-					RunAStar.getMap().getNode(previousX, previousY)
+					RunAStar.getMap().getNodeByPoint(previousPoint.getPoint())
 							.setOccupiedByAgent(false);
-					RunAStar.getMap().getNode(currentX, currentY)
+					RunAStar.getMap().getNodeByPoint(currentPoint.getPoint())
 							.setOccupiedByAgent(true);
-					occupyArea(currentX,currentY,true);
+					occupyArea(currentPoint.getPoint(), true);
 					Thread.sleep((int)(passenger.getLuggageStowTime()*1000/2));
-					occupyArea(currentX,currentY,false);
+					occupyArea(currentPoint.getPoint(), false);
 					alreadyStowed = true;
 					i++;				
 				}
 				else {
-					RunAStar.getMap().getNode(previousX, previousY)
+					RunAStar.getMap().getNodeByPoint(previousPoint.getPoint())
 							.setOccupiedByAgent(false);
-					RunAStar.getMap().getNode(currentX, currentY)
+					RunAStar.getMap().getNodeByPoint(currentPoint.getPoint())
 							.setOccupiedByAgent(true);
-					occupyArea(previousX,previousY,false);
-					occupyArea(currentX,currentY,true);
-					this.currentAgentPosition[i][0] = this.currentX;
-					this.currentAgentPosition[i][1] = this.currentY;
+					occupyArea(previousPoint.getPoint(), false);
+					occupyArea(currentPoint.getPoint(), true);
+					this.currentAgentPosition[i] = currentPoint.getPoint();
 					notifyObservers(i);
 					passenger.setPositionX(this.currentAgentPosition[i][0]*scale);
 					passenger.setPositionY(this.currentAgentPosition[i][1]*scale);
-					passenger.setOrientationInDegree(getRotation((currentX - previousX),(currentY - previousY)));
+					passenger.setOrientationInDegree(getRotation(
+							currentPoint.getPoint(), previousPoint.getPoint()));
 					Thread.sleep((int)(1000/(passenger.getWalkingSpeed()*100/scale)));	
 					i++;
 				}
 			}
-			RunAStar.getMap().getNode(currentX, currentY)
+			RunAStar.getMap().getNodeByPoint(currentPoint.getPoint())
 					.setOccupiedByAgent(false);
 			passenger.setIsSeated(true);
 			RunAStar.setPassengerSeated(passenger);	
-			s.stop();
-			passenger.setBoardingTime(s.getElapsedTime()/1000);
+			stopwatch.stop();
+			passenger.setBoardingTime(stopwatch.getElapsedTime()/1000);
 			passenger.setNumberOfWaits(numbOfInterupts);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -258,19 +300,22 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
+	 * This method returns the current thread.
 	 * 
-	 * @return
+	 * @return the thread
 	 */
 	public Thread getT() {
-		return t;
+		return thread;
 	}
 
 	/**
+	 * This method sets the current thread.
 	 * 
-	 * @param t
+	 * @param thread
+	 *            the thread
 	 */
-	public void setT(Thread t) {
-		this.t = t;
+	public void setT(Thread thread) {
+		this.thread = thread;
 	}
 
 }

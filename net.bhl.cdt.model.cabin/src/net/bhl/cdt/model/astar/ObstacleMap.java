@@ -8,6 +8,7 @@ import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.MainDoor;
 import net.bhl.cdt.model.cabin.PhysicalObject;
 import net.bhl.cdt.model.cabin.Seat;
+import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.util.ModelHelper;
 
 /**
@@ -18,8 +19,7 @@ import net.bhl.cdt.model.util.ModelHelper;
 
 public class ObstacleMap {
 	private Cabin cabin;
-	private int width;
-	private int length;
+	private Vector dimensions = new Vector();
 	private static final int MAX_VALUE = 100000;
 	private static final int BASIC_VALUE = 10;
 	private int[][] obstacleMap;
@@ -30,8 +30,9 @@ public class ObstacleMap {
 	 */
 	public ObstacleMap(Cabin cabin) {
 		this.cabin = cabin;
-		width = (int) (cabin.getCabinWidth() / cabin.getScale());
-		length = (int) (cabin.getCabinLength() / cabin.getScale());
+		dimensions.setPointFromCoordinates(
+				(int) (cabin.getCabinWidth() / cabin.getScale()),
+				(int) (cabin.getCabinLength() / cabin.getScale()));
 		obstacleMap = createObstacleMap();
 	}
 
@@ -59,9 +60,9 @@ public class ObstacleMap {
 	 * @return obstacle map
 	 */
 	private int[][] createObstacleMap() {
-		obstacleMap = new int[width][length];
-		for (int i = 0; i < width; i++) {
-			for (int j = 0; j < length; j++) {
+		obstacleMap = new int[dimensions.getX()][dimensions.getY()];
+		for (int i = 0; i < dimensions.getX(); i++) {
+			for (int j = 0; j < dimensions.getY(); j++) {
 				obstacleMap[i][j] = BASIC_VALUE;
 			}
 		}
@@ -83,8 +84,8 @@ public class ObstacleMap {
 				/ cabin.getScale() / 2) + 1;
 		int aisleMax = (int) (cabin.getCabinWidth() / cabin.getScale() - aisleMin) - 2;
 
-		for (int i = 0; i < width; i++) {
-			for (int j = 0; j < length; j++) {
+		for (int i = 0; i < dimensions.getX(); i++) {
+			for (int j = 0; j < dimensions.getY(); j++) {
 				if (obstacleMap[i][j] != MAX_VALUE) {
 					if (j > entryMin && j < entryMax) {
 						obstacleMap[i][j] = 0;
@@ -100,8 +101,8 @@ public class ObstacleMap {
 		/******** Create potential around obstacles ************/
 		int k = 1;
 		int maxPot = BASIC_VALUE * 5;
-		for (int i = 0; i < width; i++) {
-			for (int j = 0; j < length; j++) {
+		for (int i = 0; i < dimensions.getX(); i++) {
+			for (int j = 0; j < dimensions.getY(); j++) {
 				if (obstacleMap[i][j] == MAX_VALUE) {
 					for (int p = 1; p < k; p++) {
 						/** WEST - EAST - NORTH - SOUTH */
@@ -110,7 +111,7 @@ public class ObstacleMap {
 								obstacleMap[i - p][j] = maxPot - p;
 							}
 						}
-						if ((i + p) < width) {
+						if ((i + p) < dimensions.getX()) {
 							if (obstacleMap[i + p][j] != 100000) {
 								obstacleMap[i + p][j] = maxPot - p;
 							}
@@ -120,7 +121,7 @@ public class ObstacleMap {
 								obstacleMap[i][j - p] = maxPot - p;
 							}
 						}
-						if ((j + p) < length) {
+						if ((j + p) < dimensions.getY()) {
 							if (obstacleMap[i][j + p] != 100000) {
 								obstacleMap[i][j + p] = maxPot - p;
 							}
@@ -132,17 +133,18 @@ public class ObstacleMap {
 								obstacleMap[i - p][j - p] = maxPot - p;
 							}
 						}
-						if (((i + p) < width) && ((j - p) > 0)) {
+						if (((i + p) < dimensions.getX()) && ((j - p) > 0)) {
 							if (obstacleMap[i + p][j - p] != 100000) {
 								obstacleMap[i + p][j - p] = maxPot - p;
 							}
 						}
-						if (((j + p) < length) && ((i + p) < width)) {
+						if (((j + p) < dimensions.getY())
+								&& ((i + p) < dimensions.getX())) {
 							if (obstacleMap[i + p][j + p] != 100000) {
 								obstacleMap[i + p][j + p] = maxPot - p;
 							}
 						}
-						if (((j + p) < length) && ((i - p) > 0)) {
+						if (((j + p) < dimensions.getY()) && ((i - p) > 0)) {
 							if (obstacleMap[i - p][j + p] != 100000) {
 								obstacleMap[i - p][j + p] = maxPot - p;
 							}
@@ -180,7 +182,7 @@ public class ObstacleMap {
 				for (int j = 0; j < physicalObjectLength; j++) {
 					int k = physicalObjectXPosition + i;
 					int l = physicalObjectYDimension + j;
-					if (k < width && l < length) {
+					if (k < dimensions.getX() && l < dimensions.getY()) {
 						obstacleMap[k][l] = MAX_VALUE;
 					}
 				}
@@ -197,8 +199,8 @@ public class ObstacleMap {
 	 * This method prints the obstacle map to the console.
 	 */
 	public void printObstacleMap() {
-		for (int i = 0; i < width; i++) {
-			for (int j = 0; j < length; j++) {
+		for (int i = 0; i < dimensions.getX(); i++) {
+			for (int j = 0; j < dimensions.getY(); j++) {
 				System.out.print(getValueAtPoint(i, j));
 			}
 			System.out.println();

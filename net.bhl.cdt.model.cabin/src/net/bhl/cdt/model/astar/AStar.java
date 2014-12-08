@@ -3,6 +3,8 @@ package net.bhl.cdt.model.astar;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import net.bhl.cdt.model.cabin.util.Vector;
+
 /**
  * 
  * @author marc.engelmann
@@ -11,6 +13,9 @@ import java.util.Collections;
 public class AStar {
 	private AreaMap map;
 	private CostMap costmap;
+	private Vector dimensions = new Vector();
+	private Vector start = new Vector();
+	private Vector goal = new Vector();
 
 	/**
 	 * closedList The list of Nodes not searched yet, sorted by their distance
@@ -37,16 +42,22 @@ public class AStar {
 	 * @param goalX
 	 * @param goalY
 	 * @return
+	 * 
 	 */
-	public Path calcShortestPath(int startX, int startY, int goalX, int goalY) {
+	public Path calcShortestPath(Vector startV, Vector goalV) {
+
+		dimensions = map.getDimensions();
+		start.setPointFromPoint(startV.getPoint());
+		goal.setPointFromPoint(goalV.getPoint());
 
 		// mark start and goal node
-		map.setStartLocation(startX, startY);
-		map.setGoalLocation(goalX, goalY);
+		map.setStartLocation(start);
+		map.setGoalLocation(goal);
 
 		// Check if the goal node is blocked (if it is, it is impossible to find
 		// a path there)
-		if (map.getNode(goalX, goalY).isObstacle()) {
+		if (map.getNode(goal).isObstacle()) {
+			System.out.println("Goal Point is obstacle!");
 			return null;
 		}
 
@@ -57,8 +68,7 @@ public class AStar {
 		openList.clear();
 		openList.add(map.getStartNode());
 
-		costmap = new CostMap(map.getMapWidth(), map.getMapHeight(), startX,
-				startY, goalX, goalY, map);
+		costmap = new CostMap(dimensions, start, goal, map);
 
 		// while we haven't reached the goal yet
 		while (openList.size() != 0) {

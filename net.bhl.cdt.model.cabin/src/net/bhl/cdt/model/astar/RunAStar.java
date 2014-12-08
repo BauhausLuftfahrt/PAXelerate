@@ -6,13 +6,13 @@ import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
+import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.observer.AgentPosition;
 import net.bhl.cdt.model.util.ModelHelper;
 
 public class RunAStar {
 
-	private static int mapWidth = 20;
-	private static int mapHeight = 20;
+	private static Vector mapDimensions = new Vector();
 	private static Cabin cabin;
 	private static Boolean simulationDone = false;
 	private static int[][] obstacleMap = {};
@@ -29,14 +29,13 @@ public class RunAStar {
 	 * @param mapHeightn
 	 * @param cabinn
 	 */
-	public RunAStar(int[][] obstacleMapn, int mapWidthn, int mapHeightn,
+	public RunAStar(int[][] obstacleMapn, int mapWidth, int mapHeight,
 			Cabin cabinn) {
 
 		obstacleMap = obstacleMapn;
-		mapWidth = mapWidthn;
-		mapHeight = mapHeightn;
+		mapDimensions.setPointFromCoordinates(mapWidth, mapHeight);
 		console.addToLog("Cabin initializing...");
-		map = new AreaMap(mapWidth, mapHeight, obstacleMap);
+		map = new AreaMap(mapDimensions, obstacleMap);
 		cabin = cabinn;
 		run();
 	}
@@ -54,8 +53,7 @@ public class RunAStar {
 	public static int[][] getPath(AreaMap map, Agent agent) {
 		AStar pathFinder = new AStar(map);
 		console.addToLog("Calculating shortest path...");
-		pathFinder.calcShortestPath(agent.getStartX(), agent.getStartY(),
-				agent.getGoalX(), agent.getGoalY());
+		pathFinder.calcShortestPath(agent.getStart(), agent.getGoal());
 		Path shortestPath = pathFinder.getShortestPath();
 		if (shortestPath == null) {
 			console.addToLog("No path found.");
@@ -70,6 +68,7 @@ public class RunAStar {
 	 * @return
 	 */
 	public static int[][] getPathCoordinates(Path shortestPath) {
+		System.out.println("length: " + shortestPath.getLength());
 		int[][] pathCoordinates = new int[shortestPath.getLength()][2];
 		for (int i = 0; i < shortestPath.getLength(); i++) {
 			pathCoordinates[i][0] = shortestPath.getWayPoint(i).getX();
@@ -154,15 +153,15 @@ public class RunAStar {
 				Passenger.class)) {
 			Seat seat = passenger.getSeatRef();
 			Door door = passenger.getDoor();
-			Agent agent = new Agent(
-					"Passenger " + passenger.getName(),
-					passenger,
-					0,
+			Vector start = new Vector(1,
 					(int) ((door.getYPosition() + door.getWidth() / 2) / cabin
-							.getScale()),
-					(int) ((seat.getXPosition() + seat.getXDimension() / 2) / cabin
-							.getScale()), (int) ((seat.getYPosition() / cabin
-							.getScale()) - 1), (int) cabin.getScale());
+							.getScale()));
+			Vector goal = new Vector((int) ((seat
+					.getXPosition() + seat.getXDimension() / 2) / cabin
+					.getScale()), (int) ((seat.getYPosition() / cabin
+					.getScale()) - 1));
+			Agent agent = new Agent("Passenger " + passenger.getName(),
+					passenger, start, goal, (int) cabin.getScale());
 			addAgentToAgentList(agent);
 		}
 		runAgents();
