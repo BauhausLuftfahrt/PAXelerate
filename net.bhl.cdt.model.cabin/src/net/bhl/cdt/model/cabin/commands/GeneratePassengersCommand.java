@@ -18,6 +18,7 @@ import net.bhl.cdt.model.cabin.Sex;
 import net.bhl.cdt.model.cabin.TravelClass;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.ConsoleViewPart;
+import net.bhl.cdt.model.cabin.util.FunctionLibrary;
 import net.bhl.cdt.model.util.ModelHelper;
 
 import org.eclipse.ui.IWorkbenchPage;
@@ -84,11 +85,6 @@ public class GeneratePassengersCommand extends CDTCommand {
 		this.cabin = cabin;
 	}
 
-	private static String splitCamelCase(String s) {
-		return s.replaceAll(String.format("%s|%s|%s",
-				"(?<=[A-Z])(?=[A-Z][a-z])", "(?<=[^A-Z])(?=[A-Z])",
-				"(?<=[A-Za-z])(?=[^A-Za-z])"), " ");
-	}
 	/**
 	 * This method generates the parameters for a specific class.
 	 * 
@@ -128,7 +124,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 		}
 		paxInClass = ModelHelper.getChildrenByClass(cabin, travelSubClass)
 				.get(0).getPassengers();
-		classNameString = splitCamelCase(travelSubClass.getSimpleName());
+		classNameString = FunctionLibrary.splitCamelCase(travelSubClass
+				.getSimpleName());
 	}
 
 	/**

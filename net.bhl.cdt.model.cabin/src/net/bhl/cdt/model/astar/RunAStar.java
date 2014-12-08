@@ -2,8 +2,6 @@ package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
-
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
@@ -18,13 +16,11 @@ public class RunAStar {
 	private static Cabin cabin;
 	private static Boolean simulationDone = false;
 	private static int[][] obstacleMap = {};
-	private static JFrame frame;
 	private static ArrayList<Passenger> finishedList = new ArrayList<Passenger>();
 	private static Logger console = new Logger();
 	private static AreaMap map;
 	private static ArrayList<Agent> agents = new ArrayList<Agent>();
 	private static ArrayList<int[][]> pathList = new ArrayList<int[][]>();
-	private static StopWatch s = new StopWatch();
 
 	/**
 	 * 
@@ -39,9 +35,7 @@ public class RunAStar {
 		obstacleMap = obstacleMapn;
 		mapWidth = mapWidthn;
 		mapHeight = mapHeightn;
-
 		console.addToLog("Cabin initializing...");
-
 		map = new AreaMap(mapWidth, mapHeight, obstacleMap);
 		cabin = cabinn;
 		run();
@@ -58,34 +52,16 @@ public class RunAStar {
 	 * @return
 	 */
 	public static int[][] getPath(AreaMap map, Agent agent) {
-
-		s.start();
-
 		AStar pathFinder = new AStar(map);
-
-		console.addToLog("Calculating shortest path..."); // for
-															// "+agent.getAgentName()+"
-															// ...");
+		console.addToLog("Calculating shortest path...");
 		pathFinder.calcShortestPath(agent.getStartX(), agent.getStartY(),
 				agent.getGoalX(), agent.getGoalY());
-
-		s.stop();
-		// console.addToLog("Time to calculate path in milliseconds: "+
-		// s.getElapsedTime());
-
-		// console.addToLog("Printing map of shortest path...");
-		// pathFinder.printPath();
 		Path shortestPath = pathFinder.getShortestPath();
 		if (shortestPath == null) {
 			console.addToLog("No path found.");
 		}
-		// else console.addToLog("Path found.");
-
 		agent.setPath(getPathCoordinates(pathFinder.getShortestPath()));
-
-		// get the path coordinates of the shortest path
 		return getPathCoordinates(pathFinder.getShortestPath());
-
 	}
 
 	/**
@@ -94,20 +70,19 @@ public class RunAStar {
 	 * @return
 	 */
 	public static int[][] getPathCoordinates(Path shortestPath) {
-
 		int[][] pathCoordinates = new int[shortestPath.getLength()][2];
-
 		for (int i = 0; i < shortestPath.getLength(); i++) {
 			pathCoordinates[i][0] = shortestPath.getWayPoint(i).getX();
 			pathCoordinates[i][1] = shortestPath.getWayPoint(i).getY();
 		}
-
 		return pathCoordinates;
 
 	}
 
 	/**
-	 *
+	 * returns the current area map.
+	 * 
+	 * @return returns the area map
 	 */
 	public static AreaMap getMap() {
 		return map;
@@ -125,8 +100,7 @@ public class RunAStar {
 	 * 
 	 * @return
 	 */
-	public static int[][] runAgents() {
-
+	public static void runAgents() {
 		/** First generate all paths ... */
 		for (Agent agent : agents) {
 			getPath(map, agent);
@@ -137,7 +111,6 @@ public class RunAStar {
 		for (Agent agent : agents) {
 			agent.start();
 		}
-		return null;
 	}
 
 	public static void setSimulationDone(Boolean bool) {
@@ -177,19 +150,6 @@ public class RunAStar {
 	}
 
 	public static void run() {
-
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				// Set up main window (using Swing's Jframe)
-
-				// frame = new JFrame("Boarding Simulation");
-				// frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				// frame.setContentPane(new CabinView());
-				// frame.pack();
-				// frame.setVisible(true);
-			}
-		});
-
 		for (Passenger passenger : ModelHelper.getChildrenByClass(cabin,
 				Passenger.class)) {
 			Seat seat = passenger.getSeatRef();

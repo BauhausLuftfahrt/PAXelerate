@@ -5,36 +5,48 @@ import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.observer.Subject;
 import net.bhl.cdt.model.util.ModelHelper;
 
-
+/**
+ * 
+ * @author marc.engelmann
+ *
+ */
 public class Agent extends Subject implements Runnable {
 	private Thread t;
 	private String agentName;
 	private int[][] path;
-
 	private int startX;
 	private int startY;
 	private int goalX;
 	private int goalY;
-	
 	private Passenger passenger;
 	private int scale;
-	
 	private double firstSeatY;
-	
 	private boolean alreadyStowed = false;
-	
-	static StopWatch s = new StopWatch();
-	
+	private static StopWatch s = new StopWatch();
 	private int previousX;
 	private int previousY;
-	
 	private int currentX;
 	private int currentY;
-	
-	static Logger log = new Logger();
-	
 	private int[][] currentAgentPosition = new int[1][2];
 
+	/**
+	 * This method generates an agent object.
+	 * 
+	 * @param name
+	 *            is the name of the agent
+	 * @param passenger
+	 *            is the corresponding passenger object
+	 * @param startX
+	 *            is the start point x dimension
+	 * @param startY
+	 *            is the start point y dimension
+	 * @param goalX
+	 *            is the goal point x dimension
+	 * @param goalY
+	 *            is the goal point y dimension
+	 * @param scale
+	 *            is the scale of the simulation
+	 */
 	Agent(String name, Passenger passenger, int startX, int startY, int goalX, int goalY,int scale) {
 		this.passenger = passenger;
 		this.agentName = name;
@@ -49,7 +61,6 @@ public class Agent extends Subject implements Runnable {
 
 	}
 
-	// getters and setters for agent's starting position, goal position and path
 
 	public String getAgentName() {
 		return agentName;
@@ -109,9 +120,12 @@ public class Agent extends Subject implements Runnable {
 	
 	/**
 	 * Rotation from 0 to 359 degrees. Only 45° steps. North is 0°.
+	 * 
 	 * @param xWay
+	 *            is the current step in x direction
 	 * @param yWay
-	 * @return
+	 *            is the current step in y direction
+	 * @return returns the rotation in degree
 	 */
 	public int getRotation(int xWay, int yWay) {
 		int deg = 0;
@@ -133,9 +147,8 @@ public class Agent extends Subject implements Runnable {
 	
 	private boolean passengerStowsLuggage() {
 		Seat seat = passenger.getSeatRef();
-		if((passenger.isHasLuggage())&&(currentY==(int)(seat.getYPosition()/scale-5))) {
-			return true;
-		} else {return false;}
+		return (passenger.isHasLuggage())
+				&& (currentY == (int) (seat.getYPosition() / scale - 5));
 	}
 	
 	private void occupyArea(int xLoc, int yLoc, boolean occupy) {
@@ -158,16 +171,19 @@ public class Agent extends Subject implements Runnable {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param xLoc
+	 * @param yLoc
+	 * @return
+	 */
 	private boolean nodeBlocked(int xLoc, int yLoc) {
-		if (RunAStar.getMap().getNode(xLoc, yLoc).isOccupiedByAgent()) {
-			return true;
-		} 
-		else {
-			return false;
-		}
+		return RunAStar.getMap().getNode(xLoc, yLoc).isOccupiedByAgent();
 	}
 	
-	
+	/**
+	 * This method runs the agent simulation.
+	 */
 	public void run() {
 		try {
 			Thread.sleep((int)(passenger.getStartBoardingAfterDelay()*1000));
@@ -179,15 +195,14 @@ public class Agent extends Subject implements Runnable {
 			int numbOfInterupts = 0;
 			int i = 0;
 			while(i < path.length) {
-				//TestAStar.map.printMap();
-				//first step of the agent
+
 				if(i != 0) {
 					this.previousX = path[i-1][0];
 					this.previousY = path[i-1][1];
 				}
 				this.currentX = path[i][0];
 				this.currentY = path[i][1];	
-				
+
 				if(nodeBlocked(currentX,currentY)){
 					Thread.sleep(200);
 					numbOfInterupts ++;
@@ -232,7 +247,9 @@ public class Agent extends Subject implements Runnable {
 		}
 	}
 
-	// start method calls run
+	/**
+	 * This method starts the thread.
+	 */
 	public void start() {
 		if (getT() == null) {
 			setT(new Thread(this, agentName));
@@ -240,10 +257,18 @@ public class Agent extends Subject implements Runnable {
 		}
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public Thread getT() {
 		return t;
 	}
 
+	/**
+	 * 
+	 * @param t
+	 */
 	public void setT(Thread t) {
 		this.t = t;
 	}
