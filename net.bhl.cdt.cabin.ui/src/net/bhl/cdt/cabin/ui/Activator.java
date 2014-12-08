@@ -1,10 +1,5 @@
 package net.bhl.cdt.cabin.ui;
 
-import org.eclipse.core.runtime.ILogListener;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.ui.console.ConsolePlugin;
-import org.eclipse.ui.console.IConsole;
 import org.eclipse.ui.console.MessageConsole;
 import org.eclipse.ui.console.MessageConsoleStream;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -37,22 +32,6 @@ public class Activator extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-		cabinConsole = new MessageConsole("My Console", null);
-		ConsolePlugin.getDefault().getConsoleManager().addConsoles(new IConsole[] { cabinConsole });
-		cabinMessageStream = cabinConsole.newMessageStream();
-		Platform.addLogListener(new ILogListener() {
-
-			@Override
-			public void logging(IStatus status, String plugin) {
-				if (status.getPlugin().equals(("net.bhl.cdt.model.cabin"))) {
-					java.util.Date date = new java.util.Date();
-
-					cabinMessageStream.println("[" + date.getTime() + "] OpenCDT " + ": " + status.getMessage());
-
-				}
-
-			}
-		});
 	}
 
 	/*

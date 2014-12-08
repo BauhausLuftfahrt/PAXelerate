@@ -519,7 +519,7 @@ public class GenerateCabinCommand extends CDTCommand {
 		// get platform logger
 
 		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
-				"initialize cabin generation ..."));
+				"Initializing cabin generation ..."));
 
 		/***** Clearing all Objects *****/
 		cabin.getClasses().clear();
