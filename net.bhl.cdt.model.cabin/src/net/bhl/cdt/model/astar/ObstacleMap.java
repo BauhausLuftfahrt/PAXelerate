@@ -45,8 +45,9 @@ public class ObstacleMap {
 	}
 
 	/**
+	 * This function returns the obstacle map.
 	 * 
-	 * @return
+	 * @return the obstacle map
 	 */
 	public int[][] getMap() {
 		return obstacleMap;

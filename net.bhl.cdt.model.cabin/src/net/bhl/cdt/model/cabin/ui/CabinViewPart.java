@@ -47,7 +47,7 @@ public class CabinViewPart extends ViewPart {
 	private Composite parent;
 	private boolean initialBoot = true;
 
-	/*********** graphics settings. *********/
+	/********************* graphical settings. *************************/
 	private static final int OFFSET_OF_DOOR = 0;
 	private static final double PASSENGER_CIRCLE_SIZE = 0.75;
 
@@ -56,9 +56,9 @@ public class CabinViewPart extends ViewPart {
 	private static final int X_ZERO = 138;
 	private static final int Y_ZERO = 90;
 	private static final int DOOR_DEPTH = 2;
-	/**************************/
+	/*******************************************************************/
 
-	/** Create Colors and Fonts here. */
+	/************* Create Colors and Fonts here. ***********************/
 	private static int fontsize;
 	private static String fontName;
 	private static Color gold;
@@ -76,7 +76,7 @@ public class CabinViewPart extends ViewPart {
 	private static Font fontTwo;
 	private static Font fontThree;
 	private static DecimalFormat df;
-	/*******************************/
+	/********************************************************************/
 
 	private int oneMeter;
 	private Image image;

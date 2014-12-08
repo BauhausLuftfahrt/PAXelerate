@@ -70,20 +70,19 @@ public class RunAStar {
 	 * @return
 	 */
 	public static int[][] getPathCoordinates(Path shortestPath) {
-
 		int[][] pathCoordinates = new int[shortestPath.getLength()][2];
-
 		for (int i = 0; i < shortestPath.getLength(); i++) {
 			pathCoordinates[i][0] = shortestPath.getWayPoint(i).getX();
 			pathCoordinates[i][1] = shortestPath.getWayPoint(i).getY();
 		}
-
 		return pathCoordinates;
 
 	}
 
 	/**
-	 *
+	 * returns the current area map.
+	 * 
+	 * @return returns the area map
 	 */
 	public static AreaMap getMap() {
 		return map;

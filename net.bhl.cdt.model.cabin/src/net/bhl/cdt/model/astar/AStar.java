@@ -26,7 +26,6 @@ public class AStar {
          */
         AStar(AreaMap map) {
                 this.map = map;
-
                 closedList = new ArrayList<Node>();
                 openList = new SortedNodeList();
         }
@@ -86,7 +85,6 @@ public class AStar {
 
                                         // calculate how long the path is if we choose this neighbor as the next step in the path
                                         float neighborDistanceFromStart = map.getDistanceBetween(map.getStartNode(), current) + map.getDistanceBetween(current, neighbor);
-                                        //(current.getDistanceFromStart() + map.getDistanceBetween(current, neighbor));
                                 		float currentDistanceFromStart = map.getDistanceBetween(map.getStartNode(), current);
                                         int neighborCostFromStart = costmap.getCostForCoordinates(neighbor.getX(), neighbor.getY());
                                 		int currentCostFromStart = costmap.getCostForCoordinates(current.getX(), current.getY());
@@ -94,10 +92,7 @@ public class AStar {
                                 		//add neighbor to the open list if it is not there
                                         if(!openList.contains(neighbor)) {
                                                 openList.add(neighbor);
-                                                neighborIsBetter = true;
-                                                
-                                        //if neighbor is closer to start it could also be better
-                                        //if neighborSumofCostsInCostChart < currentCosts --> neighborIsBetter = true, else neighborIsBetter = false       
+						neighborIsBetter = true;
                                         }
                                         
                                         else if((neighborCostFromStart<currentCostFromStart)&&(neighborDistanceFromStart<currentDistanceFromStart)) { 
@@ -117,7 +112,7 @@ public class AStar {
                                                 neighbor.setCostFromStart(neighborCostFromStart);
                                                 neighbor.setDistanceFromStart(neighborDistanceFromStart);
                                                 neighbor.setCompareFactor((neighborCostFromStart));//+0.001*neighborDistanceFromStart));
-                                                //neighbor.setHeuristicDistanceFromGoal(heuristic.getEstimatedDistanceToGoal(neighbor.getX(), neighbor.getY(), map.getGoalLocationX(), map.getGoalLocationY()));
+
                                         }
                                 }
 
