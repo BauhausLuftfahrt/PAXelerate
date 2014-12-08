@@ -11,16 +11,15 @@ import net.bhl.cdt.model.cabin.util.Vector;
  */
 public class AreaMap {
 
-	private Vector dimensions = new Vector();
+	private Vector dimensions = new Vector(0, 0);
 	private ArrayList<ArrayList<Node>> map;
-	private Vector start = new Vector();
-	private Vector goal = new Vector();
+	private Vector start = new Vector(0, 0);
+	private Vector goal = new Vector(0, 0);
 	private int[][] obstacleMap;
 
 	/**
 	 * 
-	 * @param mapWidth
-	 * @param mapHeight
+	 * @param mapDimensions
 	 * @param obstacleMap
 	 */
 	AreaMap(Vector mapDimensions, int[][] obstacleMap) {

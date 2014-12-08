@@ -25,21 +25,25 @@ public class RunAStar {
 	/**
 	 * 
 	 * @param obstacleMapn
-	 * @param mapWidthn
-	 * @param mapHeightn
+	 * @param mapWidth
+	 * @param mapHeight
 	 * @param cabinn
 	 */
-	public RunAStar(int[][] obstacleMapn, int mapWidth, int mapHeight,
-			Cabin cabinn) {
+	public RunAStar(int[][] obstaclemap, int mapWidth, int mapHeight,
+			Cabin cabinHelp) {
 
-		obstacleMap = obstacleMapn;
+		obstacleMap = obstaclemap;
 		mapDimensions.setPointFromCoordinates(mapWidth, mapHeight);
 		console.addToLog("Cabin initializing...");
 		map = new AreaMap(mapDimensions, obstacleMap);
-		cabin = cabinn;
+		cabin = cabinHelp;
 		run();
 	}
 
+	/**
+	 * 
+	 * @param map
+	 */
 	public static void setMap(AreaMap map) {
 		RunAStar.map = map;
 	}

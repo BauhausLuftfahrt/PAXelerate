@@ -49,10 +49,10 @@ public class Agent extends Subject implements Runnable {
 	Agent(String name, Passenger passenger, Vector start, Vector goal, int scale) {
 		this.passenger = passenger;
 		this.agentName = name;
-		startPoint.setPointFromPoint(start.getPoint());
-		goalPoint.setPointFromPoint(goal.getPoint());
+		startPoint = start;
+		goalPoint = goal;
 		this.scale = scale;
-		this.currentAgentPosition[0] = start.getPoint();
+		this.currentAgentPosition[0] = start.getValue();
 		
 
 	}
@@ -100,8 +100,8 @@ public class Agent extends Subject implements Runnable {
 	 * @param point
 	 *            the the point
 	 */
-	public void setStart(int[] point) {
-		startPoint.setPointFromPoint(point);
+	public void setStart(Vector point) {
+		startPoint = point;
 	}
 
 
@@ -120,8 +120,8 @@ public class Agent extends Subject implements Runnable {
 	 * @param point
 	 *            the point
 	 */
-	public void setGoal(int[] point) {
-		goalPoint.setPointFromPoint(point);
+	public void setGoal(Vector point) {
+		goalPoint = point;
 	}
 
 
@@ -164,9 +164,9 @@ public class Agent extends Subject implements Runnable {
 	 * @return returns the orientation in degree
 	 */
 
-	public int getRotation(int[] point1, int[] point2) {
-		int xWay = point2[0] - point1[0];
-		int yWay = point2[1] - point1[1];
+	public int getRotation() {
+		int xWay = currentPoint.getX() - previousPoint.getX();
+		int yWay = currentPoint.getY() - previousPoint.getY();
 		int deg = 0;
 		if (xWay>0) {
 			if(yWay == 0) {deg = 90;}
@@ -191,16 +191,16 @@ public class Agent extends Subject implements Runnable {
 						/ scale - 5));
 	}
 	
-	private void occupyArea(int[] point, boolean occupy) {
+	private void occupyArea(Vector point, boolean occupy) {
 		
-		if (point[1] > firstSeatY) {
+		if (point.getY() > firstSeatY) {
 			int width = 0;
 			for (int x = -width; x<=width; x++) {
 				//	for (int y = -square; y<0; y++) {
 				//		if(!(x==0&&y==0)) {
-				if ((point[0] + x) > 0) {// &&(yLoc+y)>0) {
+				if ((point.getX() + x) > 0) {// &&(yLoc+y)>0) {
 					RunAStar.getMap()
-							.getNodeByCoordinate(point[0] + x, point[1])
+							.getNodeByCoordinate(point.getX() + x, point.getY())
 							.setOccupiedByAgent(
 							occupy);
 							}
@@ -208,7 +208,7 @@ public class Agent extends Subject implements Runnable {
 				//	}
 			}
 		} else {
-			RunAStar.getMap().getNodeByPoint(point)
+			RunAStar.getMap().getNodeByPoint(point.getValue())
 					.setOccupiedByAgent(occupy);
 		}
 	}
@@ -250,34 +250,33 @@ public class Agent extends Subject implements Runnable {
 					numbOfInterupts ++;
 				}
 				else if(passengerStowsLuggage()&&!alreadyStowed) {
-					RunAStar.getMap().getNodeByPoint(previousPoint.getPoint())
+					RunAStar.getMap().getNodeByPoint(previousPoint.getValue())
 							.setOccupiedByAgent(false);
-					RunAStar.getMap().getNodeByPoint(currentPoint.getPoint())
+					RunAStar.getMap().getNodeByPoint(currentPoint.getValue())
 							.setOccupiedByAgent(true);
-					occupyArea(currentPoint.getPoint(), true);
+					occupyArea(currentPoint, true);
 					Thread.sleep((int)(passenger.getLuggageStowTime()*1000/2));
-					occupyArea(currentPoint.getPoint(), false);
+					occupyArea(currentPoint, false);
 					alreadyStowed = true;
 					i++;				
 				}
 				else {
-					RunAStar.getMap().getNodeByPoint(previousPoint.getPoint())
+					RunAStar.getMap().getNodeByPoint(previousPoint.getValue())
 							.setOccupiedByAgent(false);
-					RunAStar.getMap().getNodeByPoint(currentPoint.getPoint())
+					RunAStar.getMap().getNodeByPoint(currentPoint.getValue())
 							.setOccupiedByAgent(true);
-					occupyArea(previousPoint.getPoint(), false);
-					occupyArea(currentPoint.getPoint(), true);
-					this.currentAgentPosition[i] = currentPoint.getPoint();
+					occupyArea(previousPoint, false);
+					occupyArea(currentPoint, true);
+					this.currentAgentPosition[i] = currentPoint.getValue();
 					notifyObservers(i);
 					passenger.setPositionX(this.currentAgentPosition[i][0]*scale);
 					passenger.setPositionY(this.currentAgentPosition[i][1]*scale);
-					passenger.setOrientationInDegree(getRotation(
-							currentPoint.getPoint(), previousPoint.getPoint()));
+					passenger.setOrientationInDegree(getRotation());
 					Thread.sleep((int)(1000/(passenger.getWalkingSpeed()*100/scale)));	
 					i++;
 				}
 			}
-			RunAStar.getMap().getNodeByPoint(currentPoint.getPoint())
+			RunAStar.getMap().getNodeByPoint(currentPoint.getValue())
 					.setOccupiedByAgent(false);
 			passenger.setIsSeated(true);
 			RunAStar.setPassengerSeated(passenger);	

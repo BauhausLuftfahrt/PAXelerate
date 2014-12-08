@@ -52,9 +52,9 @@ public class CostMap {
 	 *            contains information on the cost of every individual element
 	 */
 	public CostMap(Vector dimension, Vector start, Vector goal, AreaMap areaMap) {
-		dimensions.setPointFromPoint(dimension.getPoint());
-		startPoint.setPointFromPoint(start.getPoint());
-		goalPoint.setPointFromPoint(goal.getPoint());
+		dimensions.setPointFromPoint(dimension.getValue());
+		startPoint.setPointFromPoint(start.getValue());
+		goalPoint.setPointFromPoint(goal.getValue());
 		areamap = areaMap;
 		map = new int[dimensions.getX()][dimensions.getY()];
 		for (int i = 0; i < dimensions.getX(); i++) {
@@ -71,7 +71,7 @@ public class CostMap {
 			}
 		}
 		map[startPoint.getX()][startPoint.getY()] = 0;
-		visitedPoints.add(startPoint.getPoint());
+		visitedPoints.add(startPoint.getValue());
 		floodMap();
 	}
 
@@ -79,7 +79,7 @@ public class CostMap {
 	 * This function floods the whole map until the goal is reached.
 	 */
 	private void floodMap() {
-		createSurroundingCosts(startPoint.getPoint());
+		createSurroundingCosts(startPoint.getValue());
 		while (!goalReached()) {
 			copyPoints();
 			for (int[] newPoint : pointParking) {
