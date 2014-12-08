@@ -47,7 +47,7 @@ public class Activator extends AbstractUIPlugin {
 				if (status.getPlugin().equals(("net.bhl.cdt.model.cabin"))) {
 					java.util.Date date = new java.util.Date();
 
-					cabinMessageStream.println("[" + date.getTime() + "] Cabin " + ": " + status.getMessage());
+					cabinMessageStream.println("[" + date.getTime() + "] OpenCDT " + ": " + status.getMessage());
 
 				}
 
