@@ -6,12 +6,12 @@
 package net.bhl.cdt.model.cabin.util;
 
 /**
- * This class represents a point consisting of 2 coordinates. It is easily
+ * This class represents a vector consisting of 2 coordinates. It is easily
  * possible to expand this vector to 3 coordinates.
+ * It can represent both a specific point as well as lengths or other values with several dimensions.
  * 
  * @author marc.engelmann
  * @version 1.0
- *
  */
 public class Vector {
 	private static final int DIMENSIONS = 2;
@@ -19,9 +19,7 @@ public class Vector {
 	private int yValue;
 
 	/**
-	 * 
-	 * @param x
-	 * @param y
+	 * This method constructs the Vector object with zeros.
 	 */
 	public Vector() {
 		xValue = 0;
@@ -51,26 +49,54 @@ public class Vector {
 		yValue = y;
 	}
 
+	/**
+	 * This method sets the vector values from integers.
+	 * 
+	 * @param x
+	 *            is the first value
+	 * @param y
+	 *            is the second value
+	 */
 	public void setVectorFromCoordinates(int x, int y) {
 		xValue = x;
 		yValue = y;
 	}
 
+	/**
+	 * This method sets the vector from an int[] if the dimension 2.
+	 * 
+	 * @param point
+	 *            is the point that is submitted
+	 */
 	public void setVectorFromPoint(int[] point) {
-		xValue = point[0];
-		yValue = point[1];
+		if (point.length >= DIMENSIONS) {
+			xValue = point[0];
+			yValue = point[1];
+		}
 	}
 
+	/**
+	 * This method returns the x value.
+	 * @return the x value
+	 */
 	public int getX() {
 		return xValue;
 	}
 
+	/**
+	 * This method returns the y value.
+	 * @return the y value
+	 */
 	public int getY() {
 		return yValue;
 	}
 
+	/**
+	 * This method returns the vector in form of an int[] of the dimensions DIMENSIONS. 
+	 * @return the value in int[DIMENSIONS] form
+	 */
 	public int[] getValue() {
-		int[] value = new int[2];
+		int[] value = new int[DIMENSIONS];
 		value[0] = xValue;
 		value[1] = yValue;
 		return value;

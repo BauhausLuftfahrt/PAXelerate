@@ -82,7 +82,7 @@ public class RunAStar {
 	}
 
 	/**
-	 * returns the current area map.
+	 * This method returns the current area map.
 	 * 
 	 * @return returns the area map
 	 */
@@ -110,6 +110,7 @@ public class RunAStar {
 			agent.subscribe(pos);
 		}
 		console.addToLog("All paths calculated successfully.");
+		
 		/** ... then start the simulations simultaneously */
 		for (Agent agent : agents) {
 			agent.start();
@@ -157,7 +158,7 @@ public class RunAStar {
 				Passenger.class)) {
 			Seat seat = passenger.getSeatRef();
 			Door door = passenger.getDoor();
-			Vector start = new Vector(1,
+			Vector start = new Vector(0,
 					(int) ((door.getYPosition() + door.getWidth() / 2) / cabin
 							.getScale()));
 			Vector goal = new Vector((int) ((seat
