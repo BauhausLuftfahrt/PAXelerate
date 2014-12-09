@@ -1,4 +1,8 @@
-
+/*******************************************************************************
+ * <copyright> Copyright (c) 2009-2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
+ *******************************************************************************/
 package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
@@ -18,7 +22,6 @@ import net.bhl.cdt.model.cabin.util.Vector;
  * 
  * @author marc.engelmann
  * @version 1.3
- * @date 08.12.2014
  * 
  */
 
@@ -28,26 +31,17 @@ public class CostMap {
 	private Vector dimensions = new Vector();
 	private Vector startPoint = new Vector();
 	private Vector goalPoint = new Vector();
-	private ArrayList<int[]> visitedPoints = new ArrayList<int[]>();
-	private ArrayList<int[]> pointParking = new ArrayList<int[]>();
-	private ArrayList<int[]> pointParkingHelper = new ArrayList<int[]>();
+	private ArrayList<Vector> visitedPoints = new ArrayList<Vector>();
+	private ArrayList<Vector> pointParking = new ArrayList<Vector>();
+	private ArrayList<Vector> pointParkingHelper = new ArrayList<Vector>();
 	private AreaMap areamap;
 
 	/**
 	 * The cost map is constructed in this function.
 	 * 
-	 * @param width
-	 *            is the width of the map
-	 * @param height
-	 *            is the height of the map
-	 * @param startX
-	 *            is the initial staring point x value
-	 * @param startY
-	 *            is the initial staring point y value
-	 * @param goalX
-	 *            is the goal point x value
-	 * @param goalY
-	 *            is the goal point y value
+	 * @param dimension is the dimension vector
+	 * @param start is the start vector 
+	 * @param goal is the goal vector
 	 * @param areaMap
 	 *            contains information on the cost of every individual element
 	 */
@@ -62,16 +56,13 @@ public class CostMap {
 				Node node = areamap.getNodeByCoordinate(i, j);
 				if (!node.isObstacle()) {
 					map[i][j] = node.getCost();
-					int[] helpPoint = new int[2];
-					helpPoint[0] = i;
-					helpPoint[1] = j;
 				} else {
 					map[i][j] = -1;
 				}
 			}
 		}
 		map[startPoint.getX()][startPoint.getY()] = 0;
-		visitedPoints.add(startPoint.getValue());
+		visitedPoints.add(startPoint);
 		floodMap();
 	}
 
@@ -79,15 +70,15 @@ public class CostMap {
 	 * This function floods the whole map until the goal is reached.
 	 */
 	private void floodMap() {
-		createSurroundingCosts(startPoint.getValue());
+		createSurroundingCosts(startPoint);
 		while (!goalReached()) {
 			copyPoints();
-			for (int[] newPoint : pointParking) {
+			for (Vector newPoint : pointParking) {
 				createSurroundingCosts(newPoint);
 			}
 		}
 		copyPoints();
-		for (int[] newPoint : pointParking) {
+		for (Vector newPoint : pointParking) {
 			createSurroundingCosts(newPoint);
 		}
 	}
@@ -98,8 +89,8 @@ public class CostMap {
 	 * @return returns if the goal was reached.
 	 */
 	private boolean goalReached() {
-		for (int[] point : pointParking) {
-			if (point[0] == goalPoint.getX() && point[1] == goalPoint.getY()) {
+		for (Vector point : pointParking) {
+			if (point.getX() == goalPoint.getX() && point.getY() == goalPoint.getY()) {
 				return true;
 			}
 		}
@@ -114,8 +105,8 @@ public class CostMap {
 	 *            the requested point
 	 * @return returns the boolean
 	 */
-	private boolean isObstacle(int[] point) {
-		return map[point[0]][point[1]] == -1;
+	private boolean isObstacle(Vector point) {
+		return map[point.getX()][point.getY()] == -1;
 	}
 
 	/**
@@ -128,9 +119,9 @@ public class CostMap {
 	 *            the desired point
 	 * @return is the point in the list?
 	 */
-	private boolean checkForPoint(ArrayList<int[]> list, int[] point) {
-		for (int[] checkPoint : list) {
-			if (checkPoint[0] == point[0] && checkPoint[1] == point[1]) {
+	private boolean checkForPoint(ArrayList<Vector> list, Vector point) {
+		for (Vector checkPoint : list) {
+			if (checkPoint.getX() == point.getX() && checkPoint.getY() == point.getY()) {
 				return true;
 			}
 		}
@@ -143,7 +134,7 @@ public class CostMap {
 	 */
 	private void copyPoints() {
 		pointParking.clear();
-		for (int[] copyPoint : pointParkingHelper) {
+		for (Vector copyPoint : pointParkingHelper) {
 			pointParking.add(copyPoint);
 		}
 		pointParkingHelper.clear();
@@ -157,13 +148,13 @@ public class CostMap {
 	 * @param middlePoint
 	 *            is the point around which all costs are calculated
 	 */
-	private void createSurroundingCosts(int[] middlePoint) {
-		for (int[] point : getSurroundingPoints(middlePoint[0], middlePoint[1])) {
-			if (!(point[0] < 0 || point[1] < 0 || point[0] >= dimensions.getX() || point[1] >= dimensions
+	private void createSurroundingCosts(Vector middlePoint) {
+		for (Vector point : getSurroundingPoints(middlePoint.getX(), middlePoint.getY())) {
+			if (!(point.getX() < 0 || point.getY() < 0 || point.getX() >= dimensions.getX() || point.getY() >= dimensions
 					.getY())) {
 				if (!isObstacle(point)) {
 					if (!(checkForPoint(visitedPoints, point))) {
-						map[point[0]][point[1]] += getCost(middlePoint);
+						map[point.getX()][point.getY()] += getCost(middlePoint);
 						visitedPoints.add(point);
 						pointParkingHelper.add(point);
 					}
@@ -197,9 +188,9 @@ public class CostMap {
 	 *            print out.
 	 */
 	@SuppressWarnings("unused")
-	private void printList(ArrayList<int[]> list) {
-		for (int[] printPoint : list) {
-			System.out.println("x:" + printPoint[0] + ", y:" + printPoint[1]);
+	private void printList(ArrayList<Vector> list) {
+		for (Vector printPoint : list) {
+			System.out.println("x:" + printPoint.getX() + ", y:" + printPoint.getY());
 		}
 		System.out.println();
 	}
@@ -212,8 +203,8 @@ public class CostMap {
 	 *            is the point (of dimension int[2]) of interest
 	 * @return
 	 */
-	private int getCost(int[] point) {
-		return map[point[0]][point[1]];
+	private int getCost(Vector point) {
+		return map[point.getX()][point.getY()];
 	}
 
 	/**
@@ -240,24 +231,24 @@ public class CostMap {
 	 *            y coordinate of the middle point
 	 * @return returns the point vector
 	 */
-	private int[][] getSurroundingPoints(int pointX, int pointY) {
-		int[][] points = new int[8][2];
-		points[0][0] = pointX;
-		points[0][1] = pointY - 1;
-		points[1][0] = pointX + 1;
-		points[1][1] = pointY - 1;
-		points[2][0] = pointX + 1;
-		points[2][1] = pointY;
-		points[3][0] = pointX + 1;
-		points[3][1] = pointY + 1;
-		points[4][0] = pointX;
-		points[4][1] = pointY + 1;
-		points[5][0] = pointX - 1;
-		points[5][1] = pointY + 1;
-		points[6][0] = pointX - 1;
-		points[6][1] = pointY;
-		points[7][0] = pointX - 1;
-		points[7][1] = pointY - 1;
-		return points;
+	private ArrayList<Vector> getSurroundingPoints(int pointX, int pointY) {
+		ArrayList <Vector> surroundingPoints  = new ArrayList<Vector>();	
+		Vector vector0 = new Vector(pointX,pointY - 1);
+		surroundingPoints.add(vector0);
+		Vector vector1 = new Vector(pointX+1,pointY - 1);
+		surroundingPoints.add(vector1);
+		Vector vector2 = new Vector(pointX+1,pointY);
+		surroundingPoints.add(vector2);
+		Vector vector3 = new Vector(pointX+1,pointY + 1);
+		surroundingPoints.add(vector3);
+		Vector vector4 = new Vector(pointX,pointY + 1);
+		surroundingPoints.add(vector4);
+		Vector vector5 = new Vector(pointX-1,pointY + 1);
+		surroundingPoints.add(vector5);
+		Vector vector6 = new Vector(pointX-1,pointY);
+		surroundingPoints.add(vector6);
+		Vector vector7 = new Vector(pointX-1,pointY - 1);
+		surroundingPoints.add(vector7);
+		return surroundingPoints;
 	}
 }
