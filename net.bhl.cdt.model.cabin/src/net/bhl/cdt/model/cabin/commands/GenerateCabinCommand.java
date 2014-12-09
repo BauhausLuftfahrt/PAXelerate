@@ -21,7 +21,6 @@ import net.bhl.cdt.model.cabin.Stairway;
 import net.bhl.cdt.model.cabin.StairwayDirection;
 import net.bhl.cdt.model.cabin.TravelClass;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
-import net.bhl.cdt.model.cabin.ui.ConsoleViewPart;
 import net.bhl.cdt.model.util.ModelHelper;
 
 import org.eclipse.core.runtime.ILog;
@@ -30,7 +29,6 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
-import org.osgi.framework.Bundle;
 
 /**
  * 
@@ -71,7 +69,7 @@ public class GenerateCabinCommand extends CDTCommand {
 
 	private Cabin cabin;
 	private CabinViewPart cabinViewPart;
-	private ConsoleViewPart consoleViewPart;
+	// private ConsoleViewPart consoleViewPart;
 	private int seatCount;
 	private int rowCount;
 	private String seatIdLetter;
@@ -88,6 +86,7 @@ public class GenerateCabinCommand extends CDTCommand {
 	private String seatIdString;
 	private double seatHelper;
 	private TravelClass subbClazz;
+	private ILog logger;
 
 	/**
 	 * Creates a cabin.
@@ -97,6 +96,7 @@ public class GenerateCabinCommand extends CDTCommand {
 	 */
 	public GenerateCabinCommand(Cabin cabin) {
 		this.cabin = cabin;
+		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
 	}
 
 	/**
@@ -269,21 +269,30 @@ public class GenerateCabinCommand extends CDTCommand {
 									/ (1 + seatsInRow / 2);
 							break;
 						default:
-							consoleViewPart
-									.printText("Number of aisles not supported!");
+							// consoleViewPart
+							// .printText("Number of aisles not supported!");
+							logger.log(new Status(IStatus.ERROR,
+									"net.bhl.cdt.model.cabin",
+									"Number of aisles not supported!"));
 							break;
 						}
 					} else {
-						consoleViewPart
-								.printText("Check your x dimensions! Cabin too narrow.");
+						// consoleViewPart
+						// .printText("Check your x dimensions! Cabin too narrow.");
+						logger.log(new Status(IStatus.ERROR,
+								"net.bhl.cdt.model.cabin",
+								"Check your x dimensions! Cabin too narrow."));
 						seatHelper = 0;
 						globalSeatPositionX = 0;
 					}
 					if ((globalSeatPositionX < 0)) {
 						seatHelper = 0;
 						globalSeatPositionX = 0;
-						consoleViewPart
-								.printText("Check seat and cabin dimensions! Cabin too narrow.");
+						// consoleViewPart
+						// .printText("Check seat and cabin dimensions! Cabin too narrow.");
+						logger.log(new Status(IStatus.ERROR,
+								"net.bhl.cdt.model.cabin",
+								"Check seat and cabin dimensions! Cabin too narrow."));
 					}
 
 					globalSeatPositionY += seatPitch;
@@ -302,8 +311,10 @@ public class GenerateCabinCommand extends CDTCommand {
 							"after " + travelSubClass.getSimpleName());
 				}
 			} else {
-				consoleViewPart
-						.printText("Please choose an even number for SeatsPerRow");
+				// consoleViewPart
+				// .printText("Please choose an even number for SeatsPerRow");
+				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
+						"Please choose an even number for SeatsPerRow"));
 			}
 		}
 	}
@@ -346,8 +357,11 @@ public class GenerateCabinCommand extends CDTCommand {
 			for (Door testDoor : cabin.getDoors()) {
 				if (typeDoor.getSimpleName().equals("MainDoor")
 						&& (testDoor instanceof MainDoor)) {
-					consoleViewPart
-							.printText("You created more than one main door!");
+					// consoleViewPart
+					// .printText("You created more than one main door!");
+					logger.log(new Status(IStatus.ERROR,
+							"net.bhl.cdt.model.cabin",
+							"You created more than one main door!"));
 					mainDoorAlreadyExists = true;
 				}
 			}
@@ -366,8 +380,10 @@ public class GenerateCabinCommand extends CDTCommand {
 			newDoor.setWidth(newDoor.getWidthOfEmergencyExit());
 			newDoor.setYPosition(yPosition);
 			if (yPosition < 0) {
-				consoleViewPart
-						.printText("Emergency Exit has a illegal yPosition.");
+				// consoleViewPart
+				// .printText("Emergency Exit has a illegal yPosition.");
+				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
+						"Emergency Exit has a illegal yPosition."));
 			}
 		}
 		cabin.getDoors().add(newDoor);
@@ -495,18 +511,15 @@ public class GenerateCabinCommand extends CDTCommand {
 				.getActiveWorkbenchWindow().getActivePage();
 		cabinViewPart = (CabinViewPart) page
 				.findView("net.bhl.cdt.model.cabin.cabinview");
-		consoleViewPart = (ConsoleViewPart) page
-				.findView("net.bhl.cdt.model.cabin.consoleview");
+		// consoleViewPart = (ConsoleViewPart) page
+		// .findView("net.bhl.cdt.model.cabin.consoleview");
 		/***************************************************/
 
-		consoleViewPart.printText("initialize cabin generation ...");
-		Bundle bundle = Platform.getBundle("net.bhl.cdt.model.cabin");
-		ILog log = Platform.getLog(bundle);
+		// consoleViewPart.printText("initialize cabin generation ...");
+		// get platform logger
 
-		IStatus status = new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
-				"Test Cabin logger");
-
-		log.log(status);
+		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
+				"Initializing cabin generation ..."));
 
 		/***** Clearing all Objects *****/
 		cabin.getClasses().clear();
@@ -566,13 +579,16 @@ public class GenerateCabinCommand extends CDTCommand {
 		// cabin.setGraphicSettings(CabinFactory.eINSTANCE.createCabinViewSettings());
 
 		if (globalSeatPositionY > cabin.getCabinLength()) {
-			consoleViewPart.printText("Out of bounds! Cabin too short.");
+			// consoleViewPart.printText("Out of bounds! Cabin too short.");
+			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
+					"Out of bounds! Cabin too short."));
 		}
 
-		consoleViewPart.printText("cabin generation completed");
+		// consoleViewPart.printText("cabin generation completed");
+		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
+				"Cabin generation completed"));
 		if (!cabin.equals(null)) {
 			cabinViewPart.submitCabin(cabin);
 		}
 	}
-
 }

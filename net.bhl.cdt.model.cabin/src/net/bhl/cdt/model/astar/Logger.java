@@ -1,9 +1,9 @@
 package net.bhl.cdt.model.astar;
 
-import net.bhl.cdt.model.cabin.ui.ConsoleViewPart;
-
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.PlatformUI;
+import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 
 /**
  * 
@@ -18,12 +18,8 @@ public class Logger {
 	 *            is the string which is submitted to the log
 	 */
 	public void addToLog(String s) {
-		/********** Get CabinView and ConsoleView ************/
-		IWorkbenchPage page = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage();
-		ConsoleViewPart consoleViewPart = (ConsoleViewPart) page
-				.findView("net.bhl.cdt.model.cabin.consoleview");
-		/***************************************************/
-		consoleViewPart.printText(s);
+		ILog logger = Platform.getLog(Platform
+				.getBundle("net.bhl.cdt.model.cabin"));
+		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin", s));
 	}
 }
