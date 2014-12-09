@@ -1,3 +1,8 @@
+/*******************************************************************************
+ * <copyright> Copyright (c) 2009-2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
+ *******************************************************************************/
 package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
@@ -26,8 +31,8 @@ public class AStar {
 	private Path shortestPath;
 
 	/**
-	 * 
-	 * @param map
+	 *  This is the AStar constructor.
+	 * @param map is the map which is needed for the path finding
 	 */
 	AStar(AreaMap map) {
 		this.map = map;
@@ -36,13 +41,10 @@ public class AStar {
 	}
 
 	/**
-	 * 
-	 * @param startX
-	 * @param startY
-	 * @param goalX
-	 * @param goalY
-	 * @return
-	 * 
+	 * This method calculates the shortest path.
+	 * @param startV is the start vector
+	 * @param goalV is the goal vector
+	 * @return returns the shortest path
 	 */
 	public Path calcShortestPath(Vector startV, Vector goalV) {
 

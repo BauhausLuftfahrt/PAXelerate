@@ -72,7 +72,6 @@ public class RunAStar {
 	 * @return
 	 */
 	public static int[][] getPathCoordinates(Path shortestPath) {
-		System.out.println("length: " + shortestPath.getLength());
 		int[][] pathCoordinates = new int[shortestPath.getLength()][2];
 		for (int i = 0; i < shortestPath.getLength(); i++) {
 			pathCoordinates[i][0] = shortestPath.getWayPoint(i).getX();
@@ -110,6 +109,7 @@ public class RunAStar {
 			AgentPosition pos = new AgentPosition();
 			agent.subscribe(pos);
 		}
+		console.addToLog("All paths calculated successfully.");
 		/** ... then start the simulations simultaneously */
 		for (Agent agent : agents) {
 			agent.start();

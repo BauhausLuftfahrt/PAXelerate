@@ -1,3 +1,8 @@
+/*******************************************************************************
+ * <copyright> Copyright (c) 2009-2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
+ *******************************************************************************/
 package net.bhl.cdt.model.cabin.util;
 
 /**
@@ -6,12 +11,12 @@ package net.bhl.cdt.model.cabin.util;
  * 
  * @author marc.engelmann
  * @version 1.0
- * @date 08.12.2014
  *
  */
 public class Vector {
 	private static final int DIMENSIONS = 2;
-	private int[] pointVector = new int[DIMENSIONS];
+	private int xValue;
+	private int yValue;
 
 	/**
 	 * 
@@ -19,8 +24,8 @@ public class Vector {
 	 * @param y
 	 */
 	public Vector() {
-		pointVector[0] = 0;
-		pointVector[1] = 0;
+		xValue = 0;
+		yValue = 0;
 
 	}
 
@@ -42,28 +47,32 @@ public class Vector {
 	 *            is the second value
 	 */
 	public Vector(int x, int y) {
-		pointVector[0] = x;
-		pointVector[1] = y;
+		xValue = x;
+		yValue = y;
 	}
 
 	public void setVectorFromCoordinates(int x, int y) {
-		pointVector[0] = x;
-		pointVector[1] = y;
+		xValue = x;
+		yValue = y;
 	}
 
 	public void setVectorFromPoint(int[] point) {
-		pointVector = point;
+		xValue = point[0];
+		yValue = point[1];
 	}
 
 	public int getX() {
-		return pointVector[0];
+		return xValue;
 	}
 
 	public int getY() {
-		return pointVector[1];
+		return yValue;
 	}
 
 	public int[] getValue() {
-		return pointVector;
+		int[] value = new int[2];
+		value[0] = xValue;
+		value[1] = yValue;
+		return value;
 	}
 }
