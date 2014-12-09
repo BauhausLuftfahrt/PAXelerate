@@ -304,6 +304,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 					"Too many passengers in the cabin! Remove "
 							+ (totalPax - totalSeats) + "!"));
 		}
-		cabinViewPart.submitCabin(cabin);
+		if(!cabinViewPart.equals(null)){
+			cabinViewPart.submitCabin(cabin);
+		}
 	}
 }

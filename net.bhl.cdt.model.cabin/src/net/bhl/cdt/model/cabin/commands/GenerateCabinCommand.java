@@ -69,7 +69,6 @@ public class GenerateCabinCommand extends CDTCommand {
 
 	private Cabin cabin;
 	private CabinViewPart cabinViewPart;
-	// private ConsoleViewPart consoleViewPart;
 	private int seatCount;
 	private int rowCount;
 	private String seatIdLetter;
@@ -506,17 +505,10 @@ public class GenerateCabinCommand extends CDTCommand {
 	 */
 	protected void doRun() {
 
-		/********** Get CabinView and ConsoleView ************/
-		IWorkbenchPage page = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage();
-		cabinViewPart = (CabinViewPart) page
-				.findView("net.bhl.cdt.model.cabin.cabinview");
-		// consoleViewPart = (ConsoleViewPart) page
-		// .findView("net.bhl.cdt.model.cabin.consoleview");
-		/***************************************************/
-
-		// consoleViewPart.printText("initialize cabin generation ...");
-		// get platform logger
+		/********************************** Get the CabinView *************************************/
+		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+		cabinViewPart = (CabinViewPart) page.findView("net.bhl.cdt.model.cabin.cabinview");
+		/******************************************************************************************/
 
 		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 				"Initializing cabin generation ..."));
@@ -579,16 +571,17 @@ public class GenerateCabinCommand extends CDTCommand {
 		// cabin.setGraphicSettings(CabinFactory.eINSTANCE.createCabinViewSettings());
 
 		if (globalSeatPositionY > cabin.getCabinLength()) {
-			// consoleViewPart.printText("Out of bounds! Cabin too short.");
 			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 					"Out of bounds! Cabin too short."));
 		}
 
-		// consoleViewPart.printText("cabin generation completed");
 		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 				"Cabin generation completed"));
-		if (!cabin.equals(null)) {
+		if (!cabin.equals(null)&&!cabinViewPart.equals(null)) {
 			cabinViewPart.submitCabin(cabin);
+		} else if(cabinViewPart.equals(null)) {
+			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
+				"The cabin view is not visible, please add it before trying again!"));
 		}
 	}
 }

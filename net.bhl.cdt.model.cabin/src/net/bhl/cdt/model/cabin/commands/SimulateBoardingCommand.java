@@ -74,11 +74,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 	protected void doRun() {
 
 		/********************************** Get CabinView and ConsoleView ***************************************/
-		IWorkbenchPage page = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage();
-		CabinViewPart cabinViewPart = (CabinViewPart) page
-				.findView("net.bhl.cdt.model.cabin.cabinview");
-
+		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+		CabinViewPart cabinViewPart = (CabinViewPart) page.findView("net.bhl.cdt.model.cabin.cabinview");
 		/********************************************************************************************************/
 
 		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
