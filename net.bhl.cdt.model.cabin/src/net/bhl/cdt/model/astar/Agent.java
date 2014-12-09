@@ -241,9 +241,9 @@ public class Agent extends Subject implements Runnable {
 			while(i < path.length) {
 
 				if(i != 0) {
-					currentPoint.setPointFromPoint(path[i - 1]);
+					currentPoint.setVectorFromPoint(path[i - 1]);
 				}
-				currentPoint.setPointFromPoint(path[i]);
+				currentPoint.setVectorFromPoint(path[i]);
 
 				if (nodeBlocked(currentPoint)) {
 					Thread.sleep(200);

@@ -24,21 +24,34 @@ public class Vector {
 
 	}
 
-	public int getDimensions() {
+	/**
+	 * This method returns the number of dimensions that the vector has.
+	 * 
+	 * @return number of dimensions
+	 */
+	public int getNumberOfDimensions() {
 		return DIMENSIONS;
 	}
 
+	/**
+	 * This method constructs the Vector object.
+	 * 
+	 * @param x
+	 *            is the first value
+	 * @param y
+	 *            is the second value
+	 */
 	public Vector(int x, int y) {
 		pointVector[0] = x;
 		pointVector[1] = y;
 	}
 
-	public void setPointFromCoordinates(int x, int y) {
+	public void setVectorFromCoordinates(int x, int y) {
 		pointVector[0] = x;
 		pointVector[1] = y;
 	}
 
-	public void setPointFromPoint(int[] point) {
+	public void setVectorFromPoint(int[] point) {
 		pointVector = point;
 	}
 

@@ -178,8 +178,8 @@ public class AreaMap {
 	}
 
 	public void clear() {
-		start.setPointFromCoordinates(0, 0);
-		goal.setPointFromCoordinates(0, 0);
+		start.setVectorFromCoordinates(0, 0);
+		goal.setVectorFromCoordinates(0, 0);
 		createMap();
 		registerEdges();
 	}

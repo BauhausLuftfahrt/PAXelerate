@@ -24,7 +24,7 @@ public class RunAStar {
 
 	/**
 	 * 
-	 * @param obstacleMapn
+	 * @param obstaclemap
 	 * @param mapWidth
 	 * @param mapHeight
 	 * @param cabinn
@@ -33,7 +33,7 @@ public class RunAStar {
 			Cabin cabinHelp) {
 
 		obstacleMap = obstaclemap;
-		mapDimensions.setPointFromCoordinates(mapWidth, mapHeight);
+		mapDimensions.setVectorFromCoordinates(mapWidth, mapHeight);
 		console.addToLog("Cabin initializing...");
 		map = new AreaMap(mapDimensions, obstacleMap);
 		cabin = cabinHelp;

@@ -47,8 +47,8 @@ public class AStar {
 	public Path calcShortestPath(Vector startV, Vector goalV) {
 
 		dimensions = map.getDimensions();
-		start.setPointFromPoint(startV.getValue());
-		goal.setPointFromPoint(goalV.getValue());
+		start.setVectorFromPoint(startV.getValue());
+		goal.setVectorFromPoint(goalV.getValue());
 
 		// mark start and goal node
 		map.setStartLocation(start);

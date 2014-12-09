@@ -30,7 +30,7 @@ public class ObstacleMap {
 	 */
 	public ObstacleMap(Cabin cabin) {
 		this.cabin = cabin;
-		dimensions.setPointFromCoordinates(
+		dimensions.setVectorFromCoordinates(
 				(int) (cabin.getCabinWidth() / cabin.getScale()),
 				(int) (cabin.getCabinLength() / cabin.getScale()));
 		obstacleMap = createObstacleMap();
