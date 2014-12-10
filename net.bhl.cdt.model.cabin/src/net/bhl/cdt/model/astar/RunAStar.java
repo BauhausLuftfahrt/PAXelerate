@@ -1,3 +1,8 @@
+/*******************************************************************************
+ * <copyright> Copyright (c) 2009-2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
+ *******************************************************************************/
 package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
@@ -56,45 +61,17 @@ public class RunAStar {
 	 * @return
 	 */
 	public static int[][] getPath(AreaMap map, Agent agent) {
-		// start the stop watch for individual agent path calculation
 		s.start();
-
-		// create a new instance of the AStar class
 		AStar pathFinder = new AStar(map);
-
-		console.addToLog("Calculating shortest path..."); // for
-															// "+agent.getAgentName()+"
-															// ...");
-
-		// calculate shortest path for the individual agent
-		pathFinder.calcShortestPath(new Vector(agent.getStartX(), agent.getStartY()),
-				new Vector(agent.getGoalX(), agent.getGoalY()));
-
+		console.addToLog("Calculating shortest path..."); 
+		pathFinder.calcShortestPath(agent.getStart(),agent.getGoal());
 		s.stop();
-		// console.addToLog("Time to calculate path in milliseconds: "+
-		// s.getElapsedTime());
-
-		// console.addToLog("Printing map of shortest path...");
-		// pathFinder.printPath();
-
-		// set instance of the Path class to the shortest path calculated by
-		// AStar instance
 		Path shortestPath = pathFinder.getShortestPath();
 		if (shortestPath == null) {
 			console.addToLog("No path found.");
 		}
-		// else console.addToLog("Path found.");
-
-		// set the agent's path variable to the calculated shortest path.
-
-		// getPathCoordinates() creates an integer array from the path's
-		// waypoints because the agent's path coordinates are stored in an
-		// integer array.
 		agent.setPath(getPathCoordinates(pathFinder.getShortestPath()));
-
-		// return the path coordinates of the shortest path
 		return getPathCoordinates(pathFinder.getShortestPath());
-
 	}
 
 	/**

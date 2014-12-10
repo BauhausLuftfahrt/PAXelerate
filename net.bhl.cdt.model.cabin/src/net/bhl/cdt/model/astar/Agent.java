@@ -1,54 +1,63 @@
+/*******************************************************************************
+ * <copyright> Copyright (c) 2009-2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
+ *******************************************************************************/
+
 package net.bhl.cdt.model.astar;
 
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
+import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.observer.Subject;
 import net.bhl.cdt.model.util.ModelHelper;
 
+/**
+ * 
+ * @author marc.engelmann
+ *
+ */
 public class Agent extends Subject implements Runnable {
 	private Thread t;
 	private String agentName;
 	private int[][] path;
 
-	private int startX;
-	private int startY;
-	private int goalX;
-	private int goalY;
+	private Vector start = new Vector(0, 0);
+	private Vector goal = new Vector(0, 0);
+	private Vector current = new Vector();
+	private Vector previous = new Vector();
 
 	private Passenger passenger;
 	private int scale;
-
 	private double firstSeatY;
+	private boolean alreadyStowed;
+	private static StopWatch s = new StopWatch();
 
-	private boolean alreadyStowed = false;
-
-	static StopWatch s = new StopWatch();
-
-	private int previousX;
-	private int previousY;
-
-	private int currentX;
-	private int currentY;
-
-	static Logger log = new Logger();
+	private static Logger log = new Logger();
 
 	private int[][] currentAgentPosition = new int[1][2];
 
+	/**
+	 * 
+	 * @param name
+	 * @param passenger
+	 * @param startX
+	 * @param startY
+	 * @param goalX
+	 * @param goalY
+	 * @param scale
+	 */
 	Agent(String name, Passenger passenger, int startX, int startY, int goalX,
 			int goalY, int scale) {
 		this.passenger = passenger;
 		this.agentName = name;
-		this.startX = startX;
-		this.startY = startY;
-		this.goalX = goalX;
-		this.goalY = goalY;
+		start.set(startX, startY);
+		goal.set(goalX, goalY);
 		this.scale = scale;
 		this.currentAgentPosition[0][0] = startX;
 		this.currentAgentPosition[0][1] = startY;
 
 	}
-
-	// getters and setters for agent's starting position, goal position and path
 
 	public String getAgentName() {
 		return agentName;
@@ -62,36 +71,12 @@ public class Agent extends Subject implements Runnable {
 		return path;
 	}
 
-	public int getStartX() {
-		return startX;
+	public Vector getStart() {
+		return start;
 	}
 
-	public void setStartX(int startX) {
-		this.startX = startX;
-	}
-
-	public int getStartY() {
-		return startY;
-	}
-
-	public void setStartY(int startY) {
-		this.startY = startY;
-	}
-
-	public int getGoalX() {
-		return goalX;
-	}
-
-	public void setGoalX(int goalX) {
-		this.goalX = goalX;
-	}
-
-	public int getGoalY() {
-		return goalY;
-	}
-
-	public void setGoalY(int goalY) {
-		this.goalY = goalY;
+	public Vector getGoal() {
+		return goal;
 	}
 
 	public void setPath(int[][] path) {
@@ -149,12 +134,8 @@ public class Agent extends Subject implements Runnable {
 
 	private boolean passengerStowsLuggage() {
 		Seat seat = passenger.getSeatRef();
-		if ((passenger.isHasLuggage())
-				&& (currentY == (int) (seat.getYPosition() / scale - 5))) {
-			return true;
-		} else {
-			return false;
-		}
+		return (passenger.isHasLuggage())
+				&& (current.getY() == (int) (seat.getYPosition() / scale - 5));
 	}
 
 	private void occupyArea(int xLoc, int yLoc, boolean occupy) {
@@ -172,7 +153,8 @@ public class Agent extends Subject implements Runnable {
 				// }
 			}
 		} else {
-			RunAStar.getMap().getNodeByCoordinate(xLoc, yLoc).setOccupiedByAgent(occupy);
+			RunAStar.getMap().getNodeByCoordinate(xLoc, yLoc)
+					.setOccupiedByAgent(occupy);
 		}
 	}
 
@@ -189,17 +171,14 @@ public class Agent extends Subject implements Runnable {
 		// who is blocking the path
 	}
 
-
 	private boolean nodeBlocked(int xLoc, int yLoc) {
-		if (RunAStar.getMap().getNodeByCoordinate(xLoc, yLoc).isOccupiedByAgent()) {
-			return true;
-		} else {
-			return false;
-		}
+		return RunAStar.getMap().getNodeByCoordinate(xLoc, yLoc)
+				.isOccupiedByAgent();
 	}
 
 	public void run() {
 		try {
+			alreadyStowed = false;
 			Thread.sleep((int) (passenger.getStartBoardingAfterDelay() * 1000));
 			s.start();
 			Seat seat = ModelHelper.getChildrenByClass(RunAStar.getCabin(),
@@ -220,14 +199,12 @@ public class Agent extends Subject implements Runnable {
 				if (i != 0) {
 					// if agent already has taken his first step --> has a
 					// previous position
-					this.previousX = path[i - 1][0];
-					this.previousY = path[i - 1][1];
+					this.previous.set(path[i - 1][0], path[i - 1][1]);
 				}
 				// update the current position of the agent
-				this.currentX = path[i][0];
-				this.currentY = path[i][1];
+				this.current.set(path[i][0], path[i][1]);
 
-				if (nodeBlocked(currentX, currentY)) {
+				if (nodeBlocked(current.getX(), current.getY())) {
 
 					// this.waitUntilPathIsClear()
 					// or
@@ -236,29 +213,27 @@ public class Agent extends Subject implements Runnable {
 					Thread.sleep(200);
 					numbOfInterupts++;
 				} else if (passengerStowsLuggage() && !alreadyStowed) {
-					RunAStar.getMap().getNodeByCoordinate(previousX, previousY)
+					RunAStar.getMap().getNode(previous)
 							.setOccupiedByAgent(false);
-					RunAStar.getMap().getNodeByCoordinate(currentX, currentY)
-							.setOccupiedByAgent(true);
-					occupyArea(currentX, currentY, true);
+					RunAStar.getMap().getNode(current).setOccupiedByAgent(true);
+					occupyArea(current.getX(), current.getY(), true);
 					Thread.sleep((int) (passenger.getLuggageStowTime() * 1000 / 2));
-					occupyArea(currentX, currentY, false);
+					occupyArea(current.getX(), current.getY(), false);
 					alreadyStowed = true;
 					i++;
 				} else {
 
 					// if the agent's path is not blocked, move forward
-					RunAStar.getMap().getNodeByCoordinate(previousX, previousY)
+					RunAStar.getMap().getNode(previous)
 							.setOccupiedByAgent(false);
-					RunAStar.getMap().getNodeByCoordinate(currentX, currentY)
-							.setOccupiedByAgent(true);
-					occupyArea(previousX, previousY, false);
-					occupyArea(currentX, currentY, true);
+					RunAStar.getMap().getNode(current).setOccupiedByAgent(true);
+					occupyArea(previous.getX(), previous.getY(), false);
+					occupyArea(current.getX(), current.getY(), true);
 
 					// store the respective x and y coordinate of the agent into
 					// the currentAgentPosition array
-					this.currentAgentPosition[i][0] = this.currentX;
-					this.currentAgentPosition[i][1] = this.currentY;
+					this.currentAgentPosition[i][0] = this.current.getX();
+					this.currentAgentPosition[i][1] = this.current.getY();
 
 					// send notification to agent's observers that the agent has
 					// changed his position
@@ -269,12 +244,14 @@ public class Agent extends Subject implements Runnable {
 					passenger.setPositionY(this.currentAgentPosition[i][1]
 							* scale);
 					passenger.setOrientationInDegree(getRotation(
-							(currentX - previousX), (currentY - previousY)));
+							(current.getX() - previous.getX()),
+							(current.getY() - previous.getY())));
 					Thread.sleep((int) (1000 / (passenger.getWalkingSpeed() * 100 / scale)));
 					i++;
 				}
 			}
-			RunAStar.getMap().getNodeByCoordinate(currentX, currentY)
+			RunAStar.getMap()
+					.getNode(current)
 					.setOccupiedByAgent(false);
 			passenger.setIsSeated(true);
 			RunAStar.setPassengerSeated(passenger);
