@@ -43,7 +43,7 @@ public class RunAStar {
 
 		console.addToLog("Cabin initializing...");
 
-		map = new AreaMap(new Vector(mapWidth, mapHeight), obstacleMap);
+		map = new AreaMap(mapWidth, mapHeight, obstacleMap);
 		cabin = cabinn;
 		run();
 	}

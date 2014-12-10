@@ -44,8 +44,8 @@ public class AStar {
         public Path calcShortestPath(int startX, int startY, int goalX, int goalY) {
 
                 //mark start and goal node
-                map.setStartLocation(new Vector(startX, startY));
-                map.setGoalLocation(new Vector(goalX, goalY));
+                map.setStartLocation(startX, startY);
+                map.setGoalLocation(goalX, goalY);
 
                 //Check if the goal node is blocked (if it is, it is impossible to find a path there)
                 if (map.getNodeByCoordinate(goalX, goalY).isObstacle) {

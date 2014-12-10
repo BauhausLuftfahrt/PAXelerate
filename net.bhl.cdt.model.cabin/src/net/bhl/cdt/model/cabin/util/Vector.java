@@ -82,6 +82,10 @@ public class Vector {
 	public int getX() {
 		return xValue;
 	}
+	
+	public void setX(int x) {
+		xValue = x;
+	}
 
 	/**
 	 * This method returns the y value.
@@ -89,6 +93,10 @@ public class Vector {
 	 */
 	public int getY() {
 		return yValue;
+	}
+	
+	public void setY(int y)  {
+	yValue = y;
 	}
 
 	/**
