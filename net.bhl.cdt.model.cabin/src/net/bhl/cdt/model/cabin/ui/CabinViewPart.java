@@ -46,6 +46,7 @@ public class CabinViewPart extends ViewPart {
 	private double factor;
 	private Composite parent;
 	private boolean initialBoot = true;
+	private boolean drawObstacleMap = true;
 
 	/********************* graphical settings. *************************/
 	private static final int OFFSET_OF_DOOR = 0;
@@ -147,6 +148,7 @@ public class CabinViewPart extends ViewPart {
 	 *            is the catched cabin
 	 */
 	public void submitCabin(Cabin cabin) {
+		initialBoot = false;
 		this.cabin = cabin;
 		doTheDraw();
 	}
@@ -158,49 +160,58 @@ public class CabinViewPart extends ViewPart {
 	 *            is the obstacle map
 	 */
 	public void submitObstacleMap(final int[][] obstacleMap) {
-		final int overLapOfRect = 2;
-		canvas.addPaintListener(new PaintListener() {
-			public void paintControl(final PaintEvent paintEvent) {
-				paintEvent.gc.setAlpha(100);
-				for (int i = 0; i < (int) (cabin.getCabinWidth() / cabin
-						.getScale()); i++) {
-					for (int j = 0; j < (int) (cabin.getCabinLength() / cabin
-							.getScale()); j++) {
-						if (obstacleMap[i][j] <= ObstacleMap
-								.getBasicObstacleValue()) {
-							int colorFactor = obstacleMap[i][j]
-									* (int) (255 / (ObstacleMap
-											.getBasicObstacleValue()));
-							if (colorFactor > 255) {
-								colorFactor = 255;
+		if (drawObstacleMap) {
+			final int overLapOfRect = 2;
+			canvas.addPaintListener(new PaintListener() {
+				public void paintControl(final PaintEvent paintEvent) {
+					paintEvent.gc.setAlpha(100);
+					for (int i = 0; i < (int) (cabin.getCabinWidth() / cabin
+							.getScale()); i++) {
+						for (int j = 0; j < (int) (cabin.getCabinLength() / cabin
+								.getScale()); j++) {
+							if (obstacleMap[i][j] <= ObstacleMap
+									.getBasicObstacleValue()) {
+								int colorFactor = obstacleMap[i][j]
+										* (int) (255 / (ObstacleMap
+												.getBasicObstacleValue()));
+								if (colorFactor > 255) {
+									colorFactor = 255;
+								}
+								paintEvent.gc
+										.setBackground(new Color(
+												paintEvent.display,
+												colorFactor, 255, 0));
+							} else if (obstacleMap[i][j] <= ObstacleMap
+									.getBasicObstacleValue() * 5) {
+								int colorFactor = 255
+										- obstacleMap[i][j]
+										* (int) (255 / ObstacleMap
+												.getBasicObstacleValue() / 5);
+								if (colorFactor < 0) {
+									colorFactor = 0;
+								}
+								paintEvent.gc
+										.setBackground(new Color(
+												paintEvent.display, 255,
+												colorFactor, 0));
+							} else {
+								paintEvent.gc.setBackground(red);
 							}
-							paintEvent.gc.setBackground(new Color(
-									paintEvent.display, colorFactor, 255, 0));
-						} else if (obstacleMap[i][j] <= ObstacleMap
-								.getBasicObstacleValue() * 5) {
-							int colorFactor = 255
-									- obstacleMap[i][j]
-									* (int) (255 / ObstacleMap
-											.getBasicObstacleValue() / 5);
-							if (colorFactor < 0) {
-								colorFactor = 0;
-							}
-							paintEvent.gc.setBackground(new Color(
-									paintEvent.display, 255, colorFactor, 0));
-						} else {
-							paintEvent.gc.setBackground(red);
+							paintEvent.gc.fillOval(
+									X_ZERO
+											+ (int) (i * cabin.getScale() / factor),
+									Y_ZERO
+											+ (int) (j * cabin.getScale() / factor),
+									(int) (overLapOfRect * cabin.getScale() / factor),
+									(int) (overLapOfRect * cabin.getScale() / factor));
 						}
-						paintEvent.gc.fillOval(
-								X_ZERO + (int) (i * cabin.getScale() / factor),
-								Y_ZERO + (int) (j * cabin.getScale() / factor),
-								(int) (overLapOfRect * cabin.getScale() / factor),
-								(int) (overLapOfRect * cabin.getScale() / factor));
 					}
+					paintEvent.gc.setAlpha(255);
 				}
-				paintEvent.gc.setAlpha(255);
-			}
-		});
-		disposeAll();
+			});
+			disposeAll();
+			drawObstacleMap = false;
+		}
 	}
 
 	/**
@@ -412,16 +423,16 @@ public class CabinViewPart extends ViewPart {
 				if (!initialBoot) {
 					for (Seat seat : ModelHelper.getChildrenByClass(cabin,
 							Seat.class)) {
-						
-						 if(seat.getTravelClass() instanceof FirstClass) {
-							 e.gc.setBackground(red);
+
+						if (seat.getTravelClass() instanceof FirstClass) {
+							e.gc.setBackground(red);
 						} else if (seat.getTravelClass() instanceof BusinessClass) {
 							e.gc.setBackground(blue);
 						} else if (seat.getTravelClass() instanceof PremiumEconomyClass) {
 							e.gc.setBackground(gold);
 						} else {
 							e.gc.setBackground(gray);
-						 }
+						}
 
 						e.gc.fillRectangle((int) (X_ZERO + seat.getXPosition()
 								/ factor), (int) (Y_ZERO + seat.getYPosition()
@@ -617,7 +628,7 @@ public class CabinViewPart extends ViewPart {
 						}
 					}
 				} else {
-					initialBoot = false;
+
 					e.gc.setFont(fontThree);
 					e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_RED));
 					e.gc.fillRectangle(38, 370, 300, 35);

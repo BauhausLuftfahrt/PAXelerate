@@ -190,7 +190,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Scale</b></em>' attribute.
-	 * The default value is <code>"4"</code>.
+	 * The default value is <code>"10"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Scale</em>' attribute isn't clear,
@@ -198,12 +198,12 @@ public interface Cabin extends NamedElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Scale</em>' attribute.
-	 * @see #setScale(double)
+	 * @see #setScale(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_Scale()
-	 * @model default="4"
+	 * @model default="10"
 	 * @generated
 	 */
-	double getScale();
+	int getScale();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getScale <em>Scale</em>}' attribute.
@@ -213,7 +213,7 @@ public interface Cabin extends NamedElement {
 	 * @see #getScale()
 	 * @generated
 	 */
-	void setScale(double value);
+	void setScale(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Frames Per Second</b></em>' attribute.

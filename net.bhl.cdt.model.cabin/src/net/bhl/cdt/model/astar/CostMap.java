@@ -6,7 +6,6 @@
 package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
-
 import net.bhl.cdt.model.cabin.util.Vector;
 
 /**

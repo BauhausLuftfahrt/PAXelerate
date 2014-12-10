@@ -240,7 +240,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double SCALE_EDEFAULT = 4.0;
+	protected static final int SCALE_EDEFAULT = 10;
 	/**
 	 * The cached value of the '{@link #getScale() <em>Scale</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -249,7 +249,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected double scale = SCALE_EDEFAULT;
+	protected int scale = SCALE_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getBoardingTime() <em>Boarding Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -406,7 +406,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getScale() {
+	public int getScale() {
 		return scale;
 	}
 
@@ -415,8 +415,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setScale(double newScale) {
-		double oldScale = scale;
+	public void setScale(int newScale) {
+		int oldScale = scale;
 		scale = newScale;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SCALE, oldScale, scale));
@@ -683,7 +683,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				getPassengers().addAll((Collection<? extends Passenger>)newValue);
 				return;
 			case CabinPackage.CABIN__SCALE:
-				setScale((Double)newValue);
+				setScale((Integer)newValue);
 				return;
 			case CabinPackage.CABIN__BOARDING_TIME:
 				setBoardingTime((Double)newValue);

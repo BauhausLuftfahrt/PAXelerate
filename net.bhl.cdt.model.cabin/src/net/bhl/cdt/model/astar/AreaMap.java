@@ -3,10 +3,11 @@ package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
 
+import net.bhl.cdt.model.cabin.util.Vector;
+
 public class AreaMap {
 
-        private int mapWidth;
-        private int mapHeight;
+        private Vector dimensions = new Vector();
         private ArrayList<ArrayList<Node>> map;
         private int startLocationX = 0;
         private int startLocationY = 0;
@@ -17,19 +18,18 @@ public class AreaMap {
         private Logger log = new Logger();
        
         AreaMap(int mapWidth, int mapHeight, int[][] obstacleMap) {
-                this.mapWidth = mapWidth;
-                this.mapHeight = mapHeight;
+        	dimensions.setVectorFromCoordinates(mapWidth, mapHeight);
                 this.obstacleMap = obstacleMap;
                 
                 createMap();
-                //log.addToLog("Map Created");
+                log.addToLog("Map Created");
                 registerEdges();
-                //log.addToLog("Map Node edges registered");
+                log.addToLog("Map Node edges registered");
         }
         
         public void printMap() {
-        	for(int i=0;i<mapWidth;i++) {
-        		for(int j=0; j< mapHeight;j++) {
+        	for(int i=0;i<dimensions.getX();i++) {
+        		for(int j=0; j< dimensions.getY();j++) {
         			if(map.get(i).get(j).isOccupiedByAgent) {
         				System.out.print("X");
         			} else {
@@ -44,9 +44,9 @@ public class AreaMap {
         private void createMap() {
                 Node node;
                 map = new ArrayList<ArrayList<Node>>();
-                for (int x=0; x<mapWidth; x++) {
+                for (int x=0; x<dimensions.getX(); x++) {
                         map.add(new ArrayList<Node>());
-                        for (int y=0; y<mapHeight; y++) {
+                        for (int y=0; y<dimensions.getY(); y++) {
                                 node = new Node(x,y);
                                 
                                 if (obstacleMap[x][y] == 100000) {
@@ -65,20 +65,20 @@ public class AreaMap {
          * Registers the nodes edges (connections to its neighbors).
          */
         private void registerEdges() {
-                for ( int x = 0; x < mapWidth-1; x++ ) {
-                        for ( int y = 0; y < mapHeight-1; y++ ) {
+                for ( int x = 0; x < dimensions.getX()-1; x++ ) {
+                        for ( int y = 0; y < dimensions.getY()-1; y++ ) {
                                 Node node = map.get(x).get(y);
                                 if (!(y==0))
                                         node.setNorth(map.get(x).get(y-1));
-                                if (!(y==0) && !(x==mapWidth))
+                                if (!(y==0) && !(x==dimensions.getX()))
                                         node.setNorthEast(map.get(x+1).get(y-1));
-                                if (!(x==mapWidth))
+                                if (!(x==dimensions.getX()))
                                         node.setEast(map.get(x+1).get(y));
-                                if (!(x==mapWidth) && !(y==mapHeight))
+                                if (!(x==dimensions.getX()) && !(y==dimensions.getY()))
                                         node.setSouthEast(map.get(x+1).get(y+1));
-                                if (!(y==mapHeight))
+                                if (!(y==dimensions.getY()))
                                         node.setSouth(map.get(x).get(y+1));
-                                if (!(x==0) && !(y==mapHeight))
+                                if (!(x==0) && !(y==dimensions.getY()))
                                         node.setSouthWest(map.get(x-1).get(y+1));
                                 if (!(x==0))
                                         node.setWest(map.get(x-1).get(y));
@@ -151,10 +151,10 @@ public class AreaMap {
         }
        
         public int getMapWidth() {
-                return mapWidth;
+                return dimensions.getX();
         }
         public int getMapHeight() {
-                return mapHeight;
+                return dimensions.getY();
         }
         public void clear() {
                 startLocationX = 0;
