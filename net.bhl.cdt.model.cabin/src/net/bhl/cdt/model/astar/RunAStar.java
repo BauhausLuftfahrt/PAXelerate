@@ -140,31 +140,15 @@ public class RunAStar {
 	public static int[][] runAgents() {
 
 		sw.start();
+		
 		/** First generate all paths ... */
-
-		// iterate through agent list, calculate shortest path and assign
-		// shortest path to agent, subscribe an observer to each agent
-
 		for (Agent agent : agents) {
-
-			// calculate the shortest path for each agent.
 			getPath(map, agent);
-
-			// AgentPosition is created as an observer for the agent
-			// Based on the observer pattern, the agent sends a notification to
-			// AgentPosition when he
-			// updates his position
-
-			// AgentPosition pos = new AgentPosition();
-			// agent.subscribe(pos);
 		}
 		sw.stop();
-		System.out.println("Berechnungsdauer für Pfade: "
-				+ sw.getElapsedTime()+" milliseconds");
+		System.out.println("Calculations completed in: "+ sw.getElapsedTime()+" ms");
+		
 		/** ... then start the simulations simultaneously */
-
-		// iterate through the agent list and start threads for individual
-		// agents
 		for (Agent agent : agents) {
 			agent.start();
 		}

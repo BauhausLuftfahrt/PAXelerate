@@ -45,7 +45,7 @@ public class AreaMap {
 			for (int y = 0; y < dimensions.getY(); y++) {
 				node = new Node(x, y);
 
-				if (obstacleMap.getValueAtPoint(x, y) == 100000) {
+				if (obstacleMap.getValueAtPoint(x, y) == ObstacleMap.getObstacleValue()) {
 					node.setObstacle(true);
 				} else {
 					node.setCost(obstacleMap.getValueAtPoint(x, y));
@@ -63,22 +63,30 @@ public class AreaMap {
 		for (int x = 0; x < dimensions.getX() - 1; x++) {
 			for (int y = 0; y < dimensions.getY() - 1; y++) {
 				Node node = map.get(x).get(y);
-				if (!(y == 0))
+				if (!(y == 0)) {
 					node.setNorth(map.get(x).get(y - 1));
-				if (!(y == 0) && !(x == dimensions.getX()))
+				}
+				if (!(y == 0) && !(x == dimensions.getX())) {
 					node.setNorthEast(map.get(x + 1).get(y - 1));
-				if (!(x == dimensions.getX()))
+				}
+				if (!(x == dimensions.getX())) {
 					node.setEast(map.get(x + 1).get(y));
-				if (!(x == dimensions.getX()) && !(y == dimensions.getY()))
+				}
+				if (!(x == dimensions.getX()) && !(y == dimensions.getY())) {
 					node.setSouthEast(map.get(x + 1).get(y + 1));
-				if (!(y == dimensions.getY()))
+				}
+				if (!(y == dimensions.getY())) {
 					node.setSouth(map.get(x).get(y + 1));
-				if (!(x == 0) && !(y == dimensions.getY()))
+				}
+				if (!(x == 0) && !(y == dimensions.getY())) {
 					node.setSouthWest(map.get(x - 1).get(y + 1));
-				if (!(x == 0))
+				}
+				if (!(x == 0)) {
 					node.setWest(map.get(x - 1).get(y));
-				if (!(x == 0) && !(y == 0))
+				}
+				if (!(x == 0) && !(y == 0)) {
 					node.setNorthWest(map.get(x - 1).get(y - 1));
+				}
 			}
 		}
 	}
@@ -94,7 +102,7 @@ public class AreaMap {
 	public Node getNodeByCoordinate(int x, int y) {
 		return map.get(x).get(y);
 	}
-	
+
 	public Node getNode(Vector vector) {
 		return map.get(vector.getX()).get(vector.getY());
 	}
@@ -111,24 +119,8 @@ public class AreaMap {
 		goalLocation = goal;
 	}
 
-	public int getStartLocationX() {
-		return startLocation.getX();
-	}
-
-	public int getStartLocationY() {
-		return startLocation.getY();
-	}
-
 	public Node getStartNode() {
 		return map.get(startLocation.getX()).get(startLocation.getY());
-	}
-
-	public int getGoalLocationX() {
-		return goalLocation.getX();
-	}
-
-	public int getGoalLocationY() {
-		return goalLocation.getY();
 	}
 
 	public Node getGoalLocation() {
@@ -137,25 +129,18 @@ public class AreaMap {
 
 	/**
 	 * EDITED BY MARC.ENGELMANN ON 01-12-2014 seemed to be very restrictive, as
-	 * only usable for neighboring nodes - added support for distance calculations
-	 * independent of location. Original functionality is not affected.
+	 * only usable for neighboring nodes - added support for distance
+	 * calculations independent of location. Original functionality is not
+	 * affected.
 	 */
 	public float getDistanceBetween(Node node1, Node node2) {
 		float calc = (float) Math.sqrt((node2.getX() - node1.getX()) ^ 2
 				+ (node2.getY() - node1.getY()) ^ 2);
 		return calc;
 	}
-	
+
 	public Vector getDimensions() {
 		return dimensions;
-	}
-
-	public int getMapWidth() {
-		return dimensions.getX();
-	}
-
-	public int getMapHeight() {
-		return dimensions.getY();
 	}
 
 	public void clear() {

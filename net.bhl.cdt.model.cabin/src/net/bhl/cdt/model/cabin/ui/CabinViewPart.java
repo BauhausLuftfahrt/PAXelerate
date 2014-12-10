@@ -170,10 +170,10 @@ public class CabinViewPart extends ViewPart {
 						for (int j = 0; j < (int) (cabin.getCabinLength() / cabin
 								.getScale()); j++) {
 							if (obstacleMap[i][j] <= ObstacleMap
-									.getBasicObstacleValue()) {
+									.getBasicValue()) {
 								int colorFactor = obstacleMap[i][j]
 										* (int) (255 / (ObstacleMap
-												.getBasicObstacleValue()));
+												.getBasicValue()));
 								if (colorFactor > 255) {
 									colorFactor = 255;
 								}
@@ -182,11 +182,11 @@ public class CabinViewPart extends ViewPart {
 												paintEvent.display,
 												colorFactor, 255, 0));
 							} else if (obstacleMap[i][j] <= ObstacleMap
-									.getBasicObstacleValue() * 5) {
+									.getBasicValue() * 5) {
 								int colorFactor = 255
 										- obstacleMap[i][j]
 										* (int) (255 / ObstacleMap
-												.getBasicObstacleValue() / 5);
+												.getBasicValue() / 5);
 								if (colorFactor < 0) {
 									colorFactor = 0;
 								}

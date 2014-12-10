@@ -46,8 +46,16 @@ public class ObstacleMap {
 	 * 
 	 * @return returns the obstacle value
 	 */
-	public static int getBasicObstacleValue() {
+	public static int getBasicValue() {
 		return BASIC_VALUE;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public static int getObstacleValue() {
+		return MAX_VALUE;
 	}
 
 	/**
