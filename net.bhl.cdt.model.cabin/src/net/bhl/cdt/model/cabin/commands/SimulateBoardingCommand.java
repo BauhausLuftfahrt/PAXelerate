@@ -88,8 +88,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 				"Initializing the boarding simulation ..."));
 		s.start();
 		if (!cabin.getPassengers().isEmpty()) {
-			ObstacleMap map = new ObstacleMap(cabin);
-			RunAStar astar = new RunAStar(map.getMap(),
+			ObstacleMap obstaclemap = new ObstacleMap(cabin);
+			RunAStar astar = new RunAStar(obstaclemap,
 					(int) (cabin.getCabinWidth() / cabin.getScale()),
 					(int) (cabin.getCabinLength() / cabin.getScale()), cabin);
 			while (!RunAStar.getSimulationDone()) {
@@ -131,8 +131,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 						"Elapsed time for boarding: " + s.getElapsedTimeSecs()
 								+ " seconds"));
 
-				if (!map.equals(null)) {
-					cabinViewPart.submitObstacleMap(map.getMap());
+				if (!obstaclemap.equals(null)) {
+					cabinViewPart.submitObstacleMap(obstaclemap.getMap());
 					logger.log(new Status(IStatus.INFO,
 							"net.bhl.cdt.model.cabin",
 							"Heat map generation succeeded"));

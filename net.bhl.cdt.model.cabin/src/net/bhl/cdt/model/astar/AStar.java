@@ -28,27 +28,24 @@ public class AStar {
          */
         AStar(AreaMap map) {
                 this.map = map;
-
                 closedList = new ArrayList<Node>();
                 openList = new SortedNodeList();
         }
 
         /**
-         * 
-         * @param startX
-         * @param startY
-         * @param goalX
-         * @param goalY
-         * @return
+         * This method calculates the shortest path.
+         * @param start is the start vector
+         * @param goal is the goal vector
+         * @return returns the shortest path
          */
-        public Path calcShortestPath(int startX, int startY, int goalX, int goalY) {
+        public Path calcShortestPath(Vector start, Vector goal) {
 
                 //mark start and goal node
-                map.setStartLocation(startX, startY);
-                map.setGoalLocation(goalX, goalY);
+                map.setStartLocation(start);
+                map.setGoalLocation(goal);
 
                 //Check if the goal node is blocked (if it is, it is impossible to find a path there)
-                if (map.getNodeByCoordinate(goalX, goalY).isObstacle) {
+                if (map.getNode(goal).isObstacle) {
                         return null;
                 }
 
@@ -59,7 +56,7 @@ public class AStar {
                 openList.clear();
                 openList.add(map.getStartNode());
                 
-                costmap = new CostMap(new Vector(map.getMapWidth(), map.getMapHeight()), new Vector(startX, startY), new Vector(goalX, goalY), map);
+                costmap = new CostMap(map.getDimensions(), start, goal, map);
                 
                 //while we haven't reached the goal yet
                 while(openList.size() != 0) {

@@ -13,12 +13,10 @@ import net.bhl.cdt.model.util.ModelHelper;
 
 public class RunAStar {
 
-	private static int mapWidth = 20;
-	private static int mapHeight = 20;
+	private Vector dimensions = new Vector();
 	private static Cabin cabin;
 	private static Boolean simulationDone = false;
-	private static int[][] obstacleMap = {};
-	private static JFrame frame;
+	private ObstacleMap obstacleMap;
 	private static ArrayList<Passenger> finishedList = new ArrayList<Passenger>();
 	private static Logger console = new Logger();
 	private static AreaMap map;
@@ -30,20 +28,19 @@ public class RunAStar {
 	/**
 	 * 
 	 * @param obstacleMapn
-	 * @param mapWidthn
-	 * @param mapHeightn
+	 * @param mapWidth
+	 * @param mapHeight
 	 * @param cabinn
 	 */
-	public RunAStar(int[][] obstacleMapn, int mapWidthn, int mapHeightn,
+	public RunAStar(ObstacleMap obstaclemap, int mapWidth, int mapHeight,
 			Cabin cabinn) {
 
-		obstacleMap = obstacleMapn;
-		mapWidth = mapWidthn;
-		mapHeight = mapHeightn;
+		this.obstacleMap = obstaclemap;
+		dimensions.set(mapWidth, mapHeight);
 
 		console.addToLog("Cabin initializing...");
 
-		map = new AreaMap(mapWidth, mapHeight, obstacleMap);
+		map = new AreaMap(dimensions, obstacleMap);
 		cabin = cabinn;
 		run();
 	}
@@ -70,8 +67,8 @@ public class RunAStar {
 															// ...");
 
 		// calculate shortest path for the individual agent
-		pathFinder.calcShortestPath(agent.getStartX(), agent.getStartY(),
-				agent.getGoalX(), agent.getGoalY());
+		pathFinder.calcShortestPath(new Vector(agent.getStartX(), agent.getStartY()),
+				new Vector(agent.getGoalX(), agent.getGoalY()));
 
 		s.stop();
 		// console.addToLog("Time to calculate path in milliseconds: "+
@@ -163,7 +160,7 @@ public class RunAStar {
 		}
 		sw.stop();
 		System.out.println("Berechnungsdauer für Pfade: "
-				+ sw.getElapsedTimeSecs());
+				+ sw.getElapsedTime()+" milliseconds");
 		/** ... then start the simulations simultaneously */
 
 		// iterate through the agent list and start threads for individual
@@ -211,20 +208,6 @@ public class RunAStar {
 	}
 
 	public static void run() {
-
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-
-				// obsolete functionality: used to draw cabin model into JFrame
-
-				// Set up main window (using Swing's Jframe)
-				// frame = new JFrame("Boarding Simulation");
-				// frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				// frame.setContentPane(new CabinView());
-				// frame.pack();
-				// frame.setVisible(true);
-			}
-		});
 
 		// iterate through the openCDT passenger list and create agents based on
 		// passenger information

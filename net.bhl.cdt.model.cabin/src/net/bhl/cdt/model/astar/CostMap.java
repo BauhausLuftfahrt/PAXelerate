@@ -48,9 +48,9 @@ public class CostMap {
 	 *            contains information on the cost of every individual element
 	 */
 	public CostMap(Vector dimension, Vector start, Vector goal, AreaMap areaMap) {
-		dimensions.setVectorFromPoint(dimension.getValue());
-		startPoint.setVectorFromPoint(start.getValue());
-		goalPoint.setVectorFromPoint(goal.getValue());
+		dimensions.setFromPoint(dimension.getValue());
+		startPoint.setFromPoint(start.getValue());
+		goalPoint.setFromPoint(goal.getValue());
 		areamap = areaMap;
 		map = new int[dimensions.getX()][dimensions.getY()];
 		for (int i = 0; i < dimensions.getX(); i++) {

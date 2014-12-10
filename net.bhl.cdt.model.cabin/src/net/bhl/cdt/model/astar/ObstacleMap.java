@@ -35,7 +35,7 @@ public class ObstacleMap {
 	 */
 	public ObstacleMap(Cabin cabin) {
 		this.cabin = cabin;
-		dimensions.setVectorFromCoordinates(
+		dimensions.set(
 				(int) (cabin.getCabinWidth() / cabin.getScale()),
 				(int) (cabin.getCabinLength() / cabin.getScale()));
 		obstacleMap = createObstacleMap();
@@ -195,9 +195,8 @@ public class ObstacleMap {
 		}
 	}
 
-	private int getValueAtPoint(int x, int y) {
-		int value = obstacleMap[x][y];
-		return value;
+	public int getValueAtPoint(int x, int y) {
+		return obstacleMap[x][y];
 	}
 
 	/**

@@ -57,7 +57,7 @@ public class Vector {
 	 * @param y
 	 *            is the second value
 	 */
-	public void setVectorFromCoordinates(int x, int y) {
+	public void set(int x, int y) {
 		xValue = x;
 		yValue = y;
 	}
@@ -68,7 +68,7 @@ public class Vector {
 	 * @param point
 	 *            is the point that is submitted
 	 */
-	public void setVectorFromPoint(int[] point) {
+	public void setFromPoint(int[] point) {
 		if (point.length >= DIMENSIONS) {
 			xValue = point[0];
 			yValue = point[1];
