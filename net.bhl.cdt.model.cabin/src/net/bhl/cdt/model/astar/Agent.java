@@ -1,166 +1,119 @@
-/*******************************************************************************
- * <copyright> Copyright (c) 2009-2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
- * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
- * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
- *******************************************************************************/
 package net.bhl.cdt.model.astar;
 
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
-import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.observer.Subject;
 import net.bhl.cdt.model.util.ModelHelper;
 
-/**
- * 
- * @author marc.engelmann
- *
- */
 public class Agent extends Subject implements Runnable {
-	private Thread thread;
+	private Thread t;
 	private String agentName;
 	private int[][] path;
 
-	private Vector startPoint = new Vector();
-	private Vector goalPoint = new Vector();
-	private Vector previousPoint = new Vector();
-	private Vector currentPoint = new Vector();
+	private int startX;
+	private int startY;
+	private int goalX;
+	private int goalY;
 
 	private Passenger passenger;
 	private int scale;
+
 	private double firstSeatY;
-	private boolean alreadyStowed;
-	private static StopWatch stopwatch = new StopWatch();
+
+	private boolean alreadyStowed = false;
+
+	static StopWatch s = new StopWatch();
+
+	private int previousX;
+	private int previousY;
+
+	private int currentX;
+	private int currentY;
+
+	static Logger log = new Logger();
+
 	private int[][] currentAgentPosition = new int[1][2];
 
-	/**
-	 * This method generates an agent object.
-	 * 
-	 * @param name
-	 *            is the name of the agent
-	 * @param passenger
-	 *            is the corresponding passenger object
-	 * @param start
-	 *            is the start vector
-	 * @param goal
-	 *            is the goal vector
-	 * @param scale
-	 *            is the scale of the simulation
-	 */
-	Agent(String name, Passenger passenger, Vector start, Vector goal, int scale) {
+	Agent(String name, Passenger passenger, int startX, int startY, int goalX,
+			int goalY, int scale) {
 		this.passenger = passenger;
 		this.agentName = name;
-		startPoint = start;
-		goalPoint = goal;
+		this.startX = startX;
+		this.startY = startY;
+		this.goalX = goalX;
+		this.goalY = goalY;
 		this.scale = scale;
-		this.currentAgentPosition[0] = start.getValue();
+		this.currentAgentPosition[0][0] = startX;
+		this.currentAgentPosition[0][1] = startY;
 
 	}
 
-	/**
-	 * This method returns the agent name.
-	 * 
-	 * @return the agent name
-	 */
+	// getters and setters for agent's starting position, goal position and path
+
 	public String getAgentName() {
 		return agentName;
 	}
 
-	/**
-	 * This method sets the agent name.
-	 * 
-	 * @param agentName
-	 *            is the name
-	 */
 	public void setAgentName(String agentName) {
 		this.agentName = agentName;
 	}
 
-	/**
-	 * This method returns the path of the agent.
-	 * 
-	 * @return returns the path
-	 */
 	public int[][] getPath() {
 		return path;
 	}
 
-	/**
-	 * This method returns the coordinate of the starting point.
-	 * 
-	 * @return the point
-	 */
-	public Vector getStart() {
-		return startPoint;
+	public int getStartX() {
+		return startX;
 	}
 
-	/**
-	 * This method sets the coordinate of the starting point.
-	 * 
-	 * @param point
-	 *            the the point
-	 */
-	public void setStart(Vector point) {
-		startPoint = point;
+	public void setStartX(int startX) {
+		this.startX = startX;
 	}
 
-	/**
-	 * This method returns the coordinate of the goal point.
-	 * 
-	 * @return the x value
-	 */
-	public Vector getGoal() {
-		return goalPoint;
+	public int getStartY() {
+		return startY;
 	}
 
-	/**
-	 * This method sets the coordinate of the goal point.
-	 * 
-	 * @param point
-	 *            the point
-	 */
-	public void setGoal(Vector point) {
-		goalPoint = point;
+	public void setStartY(int startY) {
+		this.startY = startY;
 	}
 
-	/**
-	 * This method sets the path for the agent.
-	 * 
-	 * @param path
-	 *            the path
-	 */
+	public int getGoalX() {
+		return goalX;
+	}
+
+	public void setGoalX(int goalX) {
+		this.goalX = goalX;
+	}
+
+	public int getGoalY() {
+		return goalY;
+	}
+
+	public void setGoalY(int goalY) {
+		this.goalY = goalY;
+	}
+
 	public void setPath(int[][] path) {
 		this.path = path;
 	}
 
-	/**
-	 * This method returns the coordinates of the agents current location.
-	 * 
-	 * @return the current location
-	 */
 	public int[][] getCurrentAgentPosition() {
 		return currentAgentPosition;
 	}
 
-	/**
-	 * This method sets the coordinates of the agents current location.
-	 * 
-	 * @param currentAgentPosition
-	 *            the current location
-	 */
 	public void setCurrentAgentPosition(int[][] currentAgentPosition) {
 		this.currentAgentPosition = currentAgentPosition;
 	}
 
 	/**
 	 * Rotation from 0 to 359 degrees. Only 45° steps. North is 0°.
-
-	 * @return returns the orientation in degree
+	 * 
+	 * @param xWay
+	 * @param yWay
+	 * @return
 	 */
-
-	public int getRotation() {
-		int xWay = currentPoint.getX() - previousPoint.getX();
-		int yWay = currentPoint.getY() - previousPoint.getY();
+	public int getRotation(int xWay, int yWay) {
 		int deg = 0;
 		if (xWay > 0) {
 			if (yWay == 0) {
@@ -196,109 +149,144 @@ public class Agent extends Subject implements Runnable {
 
 	private boolean passengerStowsLuggage() {
 		Seat seat = passenger.getSeatRef();
-		return (passenger.isHasLuggage())
-				&& (currentPoint.getY() == (int) (seat.getYPosition() / scale - 5));
+		if ((passenger.isHasLuggage())
+				&& (currentY == (int) (seat.getYPosition() / scale - 5))) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
-	private void occupyArea(Vector point, boolean occupy) {
+	private void occupyArea(int xLoc, int yLoc, boolean occupy) {
 
-		if (point.getY() > firstSeatY) {
+		if (yLoc > firstSeatY) {
 			int width = 0;
 			for (int x = -width; x <= width; x++) {
 				// for (int y = -square; y<0; y++) {
 				// if(!(x==0&&y==0)) {
-				if ((point.getX() + x) > 0) {// &&(yLoc+y)>0) {
-					RunAStar.getMap()
-							.getNodeByCoordinate(point.getX() + x, point.getY())
+				if ((xLoc + x) > 0) {// &&(yLoc+y)>0) {
+					RunAStar.getMap().getNodeByCoordinate(xLoc + x, yLoc)
 							.setOccupiedByAgent(occupy);
 				}
 				// }
 				// }
 			}
 		} else {
-			RunAStar.getMap().getNodeByPoint(point.getValue())
-					.setOccupiedByAgent(occupy);
+			RunAStar.getMap().getNodeByCoordinate(xLoc, yLoc).setOccupiedByAgent(occupy);
 		}
 	}
 
-	/**
-	 * 
-	 * @param xLoc
-	 * @param yLoc
-	 * @return
-	 */
-	private boolean nodeBlocked(Vector position) {
-		return RunAStar.getMap().getNode(position).isOccupiedByAgent();
+	public void waitUntilPathIsClear() {
+
+		// TODO: implement functionality to wait until e.g. passenger who is
+		// blocking
+		// path has cleared the path
 	}
 
-	/**
-	 * This method runs the agent simulation.
-	 */
+	public void findWayAroundObstacle() {
+
+		// TODO: implement functionality to find a way around e.g. the passenger
+		// who is blocking the path
+	}
+
+
+	private boolean nodeBlocked(int xLoc, int yLoc) {
+		if (RunAStar.getMap().getNodeByCoordinate(xLoc, yLoc).isOccupiedByAgent()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public void run() {
 		try {
 			Thread.sleep((int) (passenger.getStartBoardingAfterDelay() * 1000));
-			stopwatch.start();
+			s.start();
 			Seat seat = ModelHelper.getChildrenByClass(RunAStar.getCabin(),
 					Seat.class).get(0);
 			firstSeatY = seat.getYPosition() / RunAStar.getCabin().getScale();
 			this.currentAgentPosition = new int[path.length][2];
 			RunAStar.submitPath(path);
 			int numbOfInterupts = 0;
-			alreadyStowed = false;
 			int i = 0;
+
+			// each agent has an integer array of path coordinates of the
+			// shortest path calculated by the aStar algorithm, and updates his
+			// position
+			// according to these coordinates
 			while (i < path.length) {
-
+				// TestAStar.map.printMap();
+				// first step of the agent --> has no previous position
 				if (i != 0) {
-					currentPoint.setVectorFromPoint(path[i - 1]);
+					// if agent already has taken his first step --> has a
+					// previous position
+					this.previousX = path[i - 1][0];
+					this.previousY = path[i - 1][1];
 				}
-				currentPoint.setVectorFromPoint(path[i]);
+				// update the current position of the agent
+				this.currentX = path[i][0];
+				this.currentY = path[i][1];
 
-				if (nodeBlocked(currentPoint)) {
+				if (nodeBlocked(currentX, currentY)) {
+
+					// this.waitUntilPathIsClear()
+					// or
+					// this.findWayAroundObstacle()
+
 					Thread.sleep(200);
 					numbOfInterupts++;
 				} else if (passengerStowsLuggage() && !alreadyStowed) {
-					RunAStar.getMap().getNodeByVector(previousPoint)
+					RunAStar.getMap().getNodeByCoordinate(previousX, previousY)
 							.setOccupiedByAgent(false);
-					RunAStar.getMap().getNodeByVector(currentPoint)
+					RunAStar.getMap().getNodeByCoordinate(currentX, currentY)
 							.setOccupiedByAgent(true);
-					occupyArea(currentPoint, true);
+					occupyArea(currentX, currentY, true);
 					Thread.sleep((int) (passenger.getLuggageStowTime() * 1000 / 2));
-					occupyArea(currentPoint, false);
+					occupyArea(currentX, currentY, false);
 					alreadyStowed = true;
 					i++;
 				} else {
-					RunAStar.getMap().getNodeByVector(previousPoint)
+
+					// if the agent's path is not blocked, move forward
+					RunAStar.getMap().getNodeByCoordinate(previousX, previousY)
 							.setOccupiedByAgent(false);
-					RunAStar.getMap().getNodeByVector(currentPoint)
+					RunAStar.getMap().getNodeByCoordinate(currentX, currentY)
 							.setOccupiedByAgent(true);
-					occupyArea(previousPoint, false);
-					occupyArea(currentPoint, true);
-					this.currentAgentPosition[i] = currentPoint.getValue();
+					occupyArea(previousX, previousY, false);
+					occupyArea(currentX, currentY, true);
+
+					// store the respective x and y coordinate of the agent into
+					// the currentAgentPosition array
+					this.currentAgentPosition[i][0] = this.currentX;
+					this.currentAgentPosition[i][1] = this.currentY;
+
+					// send notification to agent's observers that the agent has
+					// changed his position
 					notifyObservers(i);
+
 					passenger.setPositionX(this.currentAgentPosition[i][0]
 							* scale);
 					passenger.setPositionY(this.currentAgentPosition[i][1]
 							* scale);
-					passenger.setOrientationInDegree(getRotation());
+					passenger.setOrientationInDegree(getRotation(
+							(currentX - previousX), (currentY - previousY)));
 					Thread.sleep((int) (1000 / (passenger.getWalkingSpeed() * 100 / scale)));
 					i++;
 				}
 			}
-			RunAStar.getMap().getNodeByVector(currentPoint)
+			RunAStar.getMap().getNodeByCoordinate(currentX, currentY)
 					.setOccupiedByAgent(false);
 			passenger.setIsSeated(true);
 			RunAStar.setPassengerSeated(passenger);
-			stopwatch.stop();
-			passenger.setBoardingTime(stopwatch.getElapsedTime() / 1000);
+			s.stop();
+			passenger.setBoardingTime(s.getElapsedTime() / 1000);
 			passenger.setNumberOfWaits(numbOfInterupts);
-		} catch (InterruptedException exception) {
-			exception.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
-	/**
-	 * This method starts the thread.
-	 */
+	// start method calls run
 	public void start() {
 		if (getT() == null) {
 			setT(new Thread(this, agentName));
@@ -306,23 +294,12 @@ public class Agent extends Subject implements Runnable {
 		}
 	}
 
-	/**
-	 * This method returns the current thread.
-	 * 
-	 * @return the thread
-	 */
 	public Thread getT() {
-		return thread;
+		return t;
 	}
 
-	/**
-	 * This method sets the current thread.
-	 * 
-	 * @param thread
-	 *            the thread
-	 */
-	public void setT(Thread thread) {
-		this.thread = thread;
+	public void setT(Thread t) {
+		this.t = t;
 	}
 
 }
