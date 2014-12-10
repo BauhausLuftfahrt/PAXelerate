@@ -18,14 +18,13 @@ import net.bhl.cdt.model.cabin.util.Vector;
 public class AStar {
 	private AreaMap areamap;
 	private CostMap costmap;
-	private Logger logger;
 
 	/**
 	 * closedList The list of Nodes not searched yet, sorted by their distance
 	 * to the goal as guessed by our heuristic.
 	 */
-	private ArrayList<Node> closedList;
-	private SortedNodeList openList;
+	private ArrayList<Node> closedList= new ArrayList<Node>();
+	private SortedNodeList openList= new SortedNodeList();;
 	private Path shortestPath;
 	private Vector dimensions = new Vector();
 
@@ -35,8 +34,6 @@ public class AStar {
 	 */
 	AStar(AreaMap map) {
 		areamap = map;
-		closedList = new ArrayList<Node>();
-		openList = new SortedNodeList();
 	}
 
 	/**

@@ -39,9 +39,12 @@ public class CostMap {
 	/**
 	 * The cost map is constructed in this function.
 	 * 
-	 * @param dimension is the dimension vector
-	 * @param start is the start vector 
-	 * @param goal is the goal vector
+	 * @param dimension
+	 *            is the dimension vector
+	 * @param start
+	 *            is the start vector
+	 * @param goal
+	 *            is the goal vector
 	 * @param areaMap
 	 *            contains information on the cost of every individual element
 	 */
@@ -65,7 +68,7 @@ public class CostMap {
 		visitedPoints.add(startPoint);
 		floodMap();
 	}
-	
+
 	/**
 	 * This method prints the cost map without the values.
 	 */
@@ -74,12 +77,11 @@ public class CostMap {
 			for (int j = 0; j < dimensions.getY(); j++) {
 				if (map[i][j] == -1) {
 					System.out.print("X");
-				} else if(i==goalPoint.getX()&&j==goalPoint.getY()) {
+				} else if (i == goalPoint.getX() && j == goalPoint.getY()) {
 					System.out.print("O");
-				} else if(i==startPoint.getX()&&j==startPoint.getY()) {
+				} else if (i == startPoint.getX() && j == startPoint.getY()) {
 					System.out.print("O");
-				}
-				else {
+				} else {
 					System.out.print("-");
 				}
 			}
@@ -111,7 +113,8 @@ public class CostMap {
 	 */
 	private boolean goalReached() {
 		for (Vector point : pointParking) {
-			if (point.getX() == goalPoint.getX() && point.getY() == goalPoint.getY()) {
+			if (point.getX() == goalPoint.getX()
+					&& point.getY() == goalPoint.getY()) {
 				return true;
 			}
 		}
@@ -142,7 +145,8 @@ public class CostMap {
 	 */
 	private boolean checkForPoint(ArrayList<Vector> list, Vector point) {
 		for (Vector checkPoint : list) {
-			if (checkPoint.getX() == point.getX() && checkPoint.getY() == point.getY()) {
+			if (checkPoint.getX() == point.getX()
+					&& checkPoint.getY() == point.getY()) {
 				return true;
 			}
 		}
@@ -170,8 +174,10 @@ public class CostMap {
 	 *            is the point around which all costs are calculated
 	 */
 	private void createSurroundingCosts(Vector middlePoint) {
-		for (Vector point : getSurroundingPoints(middlePoint.getX(), middlePoint.getY())) {
-			if (!(point.getX() < 0 || point.getY() < 0 || point.getX() >= dimensions.getX() || point.getY() >= dimensions
+		for (Vector point : getSurroundingPoints(middlePoint.getX(),
+				middlePoint.getY())) {
+			if (!(point.getX() < 0 || point.getY() < 0
+					|| point.getX() >= dimensions.getX() || point.getY() >= dimensions
 					.getY())) {
 				if (!isObstacle(point)) {
 					if (!(checkForPoint(visitedPoints, point))) {
@@ -211,7 +217,8 @@ public class CostMap {
 	@SuppressWarnings("unused")
 	private void printList(ArrayList<Vector> list) {
 		for (Vector printPoint : list) {
-			System.out.println("x:" + printPoint.getX() + ", y:" + printPoint.getY());
+			System.out.println("x:" + printPoint.getX() + ", y:"
+					+ printPoint.getY());
 		}
 		System.out.println();
 	}
@@ -253,23 +260,15 @@ public class CostMap {
 	 * @return returns the point vector
 	 */
 	private ArrayList<Vector> getSurroundingPoints(int pointX, int pointY) {
-		ArrayList <Vector> surroundingPoints  = new ArrayList<Vector>();	
-		Vector vector0 = new Vector(pointX,pointY - 1);
-		surroundingPoints.add(vector0);
-		Vector vector1 = new Vector(pointX+1,pointY - 1);
-		surroundingPoints.add(vector1);
-		Vector vector2 = new Vector(pointX+1,pointY);
-		surroundingPoints.add(vector2);
-		Vector vector3 = new Vector(pointX+1,pointY + 1);
-		surroundingPoints.add(vector3);
-		Vector vector4 = new Vector(pointX,pointY + 1);
-		surroundingPoints.add(vector4);
-		Vector vector5 = new Vector(pointX-1,pointY + 1);
-		surroundingPoints.add(vector5);
-		Vector vector6 = new Vector(pointX-1,pointY);
-		surroundingPoints.add(vector6);
-		Vector vector7 = new Vector(pointX-1,pointY - 1);
-		surroundingPoints.add(vector7);
+		ArrayList<Vector> surroundingPoints = new ArrayList<Vector>();
+		surroundingPoints.add(new Vector(pointX, pointY - 1));
+		surroundingPoints.add(new Vector(pointX + 1, pointY - 1));
+		surroundingPoints.add(new Vector(pointX + 1, pointY));
+		surroundingPoints.add(new Vector(pointX + 1, pointY + 1));
+		surroundingPoints.add(new Vector(pointX, pointY + 1));
+		surroundingPoints.add(new Vector(pointX - 1, pointY + 1));
+		surroundingPoints.add(new Vector(pointX - 1, pointY));
+		surroundingPoints.add(new Vector(pointX - 1, pointY - 1));
 		return surroundingPoints;
 	}
 }
