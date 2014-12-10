@@ -54,8 +54,7 @@ public class Agent extends Subject implements Runnable {
 		start.set(startX, startY);
 		goal.set(goalX, goalY);
 		this.scale = scale;
-		this.currentAgentPosition[0][0] = startX;
-		this.currentAgentPosition[0][1] = startY;
+		this.currentAgentPosition[0] = start.getValue();
 
 	}
 
@@ -98,38 +97,40 @@ public class Agent extends Subject implements Runnable {
 	 * @param yWay
 	 * @return
 	 */
-	public int getRotation(int xWay, int yWay) {
-		int deg = 0;
+	public int getRotation() {
+
+		int xWay = (current.getX() - previous.getX());
+		int yWay = (current.getY() - previous.getY());
 		if (xWay > 0) {
 			if (yWay == 0) {
-				deg = 90;
+				return 90;
 			}
 			if (yWay < 0) {
-				deg = 45;
+				return 45;
 			}
 			if (yWay > 0) {
-				deg = 135;
+				return 135;
 			}
 		} else if (xWay < 0) {
 
 			if (yWay > 0) {
-				deg = 225;
+				return 225;
 			}
 			if (yWay < 0) {
-				deg = 315;
+				return 315;
 			}
 		} else if (xWay == 0) {
 			if (yWay == 0) {
-				deg = 0;
+				return 0;
 			}
 			if (yWay > 0) {
-				deg = 180;
+				return 180;
 			}
 			if (yWay < 0) {
-				deg = 0;
+				return 0;
 			}
-		}
-		return deg;
+		} 
+		return 0;
 	}
 
 	private boolean passengerStowsLuggage() {
@@ -138,26 +139,30 @@ public class Agent extends Subject implements Runnable {
 				&& (current.getY() == (int) (seat.getYPosition() / scale - 5));
 	}
 
-	private void occupyArea(int xLoc, int yLoc, boolean occupy) {
-
-		if (yLoc > firstSeatY) {
+	private void occupyArea(Vector vector, boolean occupy) {
+		Seat seat = ModelHelper.getChildrenByClass(RunAStar.getCabin(),
+				Seat.class).get(0);
+		if (vector.getY() > (seat.getYPosition() / RunAStar.getCabin().getScale())) {
 			int width = 0;
 			for (int x = -width; x <= width; x++) {
 				// for (int y = -square; y<0; y++) {
 				// if(!(x==0&&y==0)) {
-				if ((xLoc + x) > 0) {// &&(yLoc+y)>0) {
-					RunAStar.getMap().getNodeByCoordinate(xLoc + x, yLoc)
-							.setOccupiedByAgent(occupy);
+				if ((vector.getX() + x) > 0) {// &&(yLoc+y)>0) {
+					RunAStar.getMap()
+							.getNodeByCoordinate(vector.getX() + x,
+									vector.getY()).setOccupiedByAgent(occupy);
 				}
 				// }
 				// }
 			}
 		} else {
-			RunAStar.getMap().getNodeByCoordinate(xLoc, yLoc)
-					.setOccupiedByAgent(occupy);
+			RunAStar.getMap().getNode(vector).setOccupiedByAgent(occupy);
 		}
 	}
 
+	/**
+	 * 
+	 */
 	public void waitUntilPathIsClear() {
 
 		// TODO: implement functionality to wait until e.g. passenger who is
@@ -165,46 +170,40 @@ public class Agent extends Subject implements Runnable {
 		// path has cleared the path
 	}
 
+	/**
+	 * 
+	 */
 	public void findWayAroundObstacle() {
 
 		// TODO: implement functionality to find a way around e.g. the passenger
 		// who is blocking the path
 	}
 
-	private boolean nodeBlocked(int xLoc, int yLoc) {
-		return RunAStar.getMap().getNodeByCoordinate(xLoc, yLoc)
-				.isOccupiedByAgent();
+	private boolean nodeBlocked(Vector vector) {
+		return RunAStar.getMap().getNode(vector).isOccupiedByAgent();
 	}
 
+	/**
+	 * 
+	 */
 	public void run() {
 		try {
 			alreadyStowed = false;
 			Thread.sleep((int) (passenger.getStartBoardingAfterDelay() * 1000));
 			s.start();
-			Seat seat = ModelHelper.getChildrenByClass(RunAStar.getCabin(),
-					Seat.class).get(0);
-			firstSeatY = seat.getYPosition() / RunAStar.getCabin().getScale();
 			this.currentAgentPosition = new int[path.length][2];
 			RunAStar.submitPath(path);
+			
 			int numbOfInterupts = 0;
 			int i = 0;
-
-			// each agent has an integer array of path coordinates of the
-			// shortest path calculated by the aStar algorithm, and updates his
-			// position
-			// according to these coordinates
+			
 			while (i < path.length) {
-				// TestAStar.map.printMap();
-				// first step of the agent --> has no previous position
 				if (i != 0) {
-					// if agent already has taken his first step --> has a
-					// previous position
-					this.previous.set(path[i - 1][0], path[i - 1][1]);
+					this.previous.setFromPoint(path[i - 1]);
 				}
-				// update the current position of the agent
-				this.current.set(path[i][0], path[i][1]);
+				this.current.setFromPoint(path[i]);
 
-				if (nodeBlocked(current.getX(), current.getY())) {
+				if (nodeBlocked(current)) {
 
 					// this.waitUntilPathIsClear()
 					// or
@@ -216,9 +215,9 @@ public class Agent extends Subject implements Runnable {
 					RunAStar.getMap().getNode(previous)
 							.setOccupiedByAgent(false);
 					RunAStar.getMap().getNode(current).setOccupiedByAgent(true);
-					occupyArea(current.getX(), current.getY(), true);
+					occupyArea(current, true);
 					Thread.sleep((int) (passenger.getLuggageStowTime() * 1000 / 2));
-					occupyArea(current.getX(), current.getY(), false);
+					occupyArea(current, false);
 					alreadyStowed = true;
 					i++;
 				} else {
@@ -227,43 +226,33 @@ public class Agent extends Subject implements Runnable {
 					RunAStar.getMap().getNode(previous)
 							.setOccupiedByAgent(false);
 					RunAStar.getMap().getNode(current).setOccupiedByAgent(true);
-					occupyArea(previous.getX(), previous.getY(), false);
-					occupyArea(current.getX(), current.getY(), true);
-
-					// store the respective x and y coordinate of the agent into
-					// the currentAgentPosition array
-					this.currentAgentPosition[i][0] = this.current.getX();
-					this.currentAgentPosition[i][1] = this.current.getY();
-
-					// send notification to agent's observers that the agent has
-					// changed his position
-					notifyObservers(i);
+					occupyArea(previous, false);
+					occupyArea(current, true);
+					this.currentAgentPosition[i] = this.current.getValue();
 
 					passenger.setPositionX(this.currentAgentPosition[i][0]
 							* scale);
 					passenger.setPositionY(this.currentAgentPosition[i][1]
 							* scale);
-					passenger.setOrientationInDegree(getRotation(
-							(current.getX() - previous.getX()),
-							(current.getY() - previous.getY())));
+					passenger.setOrientationInDegree(getRotation());
 					Thread.sleep((int) (1000 / (passenger.getWalkingSpeed() * 100 / scale)));
 					i++;
 				}
 			}
-			RunAStar.getMap()
-					.getNode(current)
-					.setOccupiedByAgent(false);
+			RunAStar.getMap().getNode(current).setOccupiedByAgent(false);
 			passenger.setIsSeated(true);
 			RunAStar.setPassengerSeated(passenger);
 			s.stop();
 			passenger.setBoardingTime(s.getElapsedTime() / 1000);
 			passenger.setNumberOfWaits(numbOfInterupts);
-		} catch (Exception e) {
+		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
 
-	// start method calls run
+	/**
+	 * 
+	 */
 	public void start() {
 		if (getT() == null) {
 			setT(new Thread(this, agentName));
@@ -271,10 +260,18 @@ public class Agent extends Subject implements Runnable {
 		}
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public Thread getT() {
 		return t;
 	}
 
+	/**
+	 * 
+	 * @param t
+	 */
 	public void setT(Thread t) {
 		this.t = t;
 	}
