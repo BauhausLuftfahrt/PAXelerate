@@ -1,3 +1,8 @@
+/*******************************************************************************
+ * <copyright> Copyright (c) 2009-2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
+ *******************************************************************************/
 package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
@@ -112,6 +117,10 @@ public class AreaMap {
 
 	public Node getNodeByPoint(int[] point) {
 		return map.get(point[0]).get(point[1]);
+	}
+	
+	public Node getNodeByVector(Vector vector) {
+		return map.get(vector.getX()).get(vector.getY());
 	}
 
 	public void setStartLocation(Vector startV) {

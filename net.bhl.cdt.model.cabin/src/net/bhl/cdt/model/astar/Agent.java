@@ -257,9 +257,9 @@ public class Agent extends Subject implements Runnable {
 					Thread.sleep(200);
 					numbOfInterupts++;
 				} else if (passengerStowsLuggage() && !alreadyStowed) {
-					RunAStar.getMap().getNodeByPoint(previousPoint.getValue())
+					RunAStar.getMap().getNodeByVector(previousPoint)
 							.setOccupiedByAgent(false);
-					RunAStar.getMap().getNodeByPoint(currentPoint.getValue())
+					RunAStar.getMap().getNodeByVector(currentPoint)
 							.setOccupiedByAgent(true);
 					occupyArea(currentPoint, true);
 					Thread.sleep((int) (passenger.getLuggageStowTime() * 1000 / 2));
@@ -267,9 +267,9 @@ public class Agent extends Subject implements Runnable {
 					alreadyStowed = true;
 					i++;
 				} else {
-					RunAStar.getMap().getNodeByPoint(previousPoint.getValue())
+					RunAStar.getMap().getNodeByVector(previousPoint)
 							.setOccupiedByAgent(false);
-					RunAStar.getMap().getNodeByPoint(currentPoint.getValue())
+					RunAStar.getMap().getNodeByVector(currentPoint)
 							.setOccupiedByAgent(true);
 					occupyArea(previousPoint, false);
 					occupyArea(currentPoint, true);
@@ -284,15 +284,15 @@ public class Agent extends Subject implements Runnable {
 					i++;
 				}
 			}
-			RunAStar.getMap().getNodeByPoint(currentPoint.getValue())
+			RunAStar.getMap().getNodeByVector(currentPoint)
 					.setOccupiedByAgent(false);
 			passenger.setIsSeated(true);
 			RunAStar.setPassengerSeated(passenger);
 			stopwatch.stop();
 			passenger.setBoardingTime(stopwatch.getElapsedTime() / 1000);
 			passenger.setNumberOfWaits(numbOfInterupts);
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (InterruptedException exception) {
+			exception.printStackTrace();
 		}
 	}
 

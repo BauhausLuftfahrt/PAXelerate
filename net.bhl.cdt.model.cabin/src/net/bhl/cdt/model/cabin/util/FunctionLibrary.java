@@ -1,18 +1,27 @@
+/*******************************************************************************
+ * <copyright> Copyright (c) 2009-2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
+ *******************************************************************************/
 
 package net.bhl.cdt.model.cabin.util;
+
+import java.util.ArrayList;
 
 
 /**
  * This class is used for general caluclations and methods.
- * 
  * @author marc.engelmann
  * @version 0.1
- * @date 08.12.2014
  *
  */
 
 
-public class FunctionLibrary {
+public final class FunctionLibrary {
+	
+	private FunctionLibrary() {
+		
+	}
 	
 	/**
 	 * This method splits camel case strings into normal strings with spaces.
@@ -39,5 +48,15 @@ public class FunctionLibrary {
 		point[0] = xLocation;
 		point[1] = yLocation;
 		return point;
+	}
+	
+	/**
+	 * This method prints an array list to the log.
+	 * @param list is the list
+	 */
+	public static void printListToLog(ArrayList <Object> list) {
+		for(Object object:list) {
+			System.out.println(object);
+		}
 	}
 }

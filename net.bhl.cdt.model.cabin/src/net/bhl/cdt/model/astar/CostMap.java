@@ -65,6 +65,27 @@ public class CostMap {
 		visitedPoints.add(startPoint);
 		floodMap();
 	}
+	
+	/**
+	 * This method prints the cost map without the values.
+	 */
+	public void printMapWithoutValues() {
+		for (int i = 0; i < dimensions.getX(); i++) {
+			for (int j = 0; j < dimensions.getY(); j++) {
+				if (map[i][j] == -1) {
+					System.out.print("X");
+				} else if(i==goalPoint.getX()&&j==goalPoint.getY()) {
+					System.out.print("O");
+				} else if(i==startPoint.getX()&&j==startPoint.getY()) {
+					System.out.print("O");
+				}
+				else {
+					System.out.print("-");
+				}
+			}
+			System.out.println();
+		}
+	}
 
 	/**
 	 * This function floods the whole map until the goal is reached.

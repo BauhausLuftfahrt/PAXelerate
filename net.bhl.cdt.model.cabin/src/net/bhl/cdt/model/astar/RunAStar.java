@@ -1,3 +1,8 @@
+/*******************************************************************************
+ * <copyright> Copyright (c) 2009-2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
+ *******************************************************************************/
 package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
@@ -10,8 +15,12 @@ import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.observer.AgentPosition;
 import net.bhl.cdt.model.util.ModelHelper;
 
+/**
+ * 
+ * @author marc.engelmann
+ *
+ */
 public class RunAStar {
-
 	private static Vector mapDimensions = new Vector();
 	private static Cabin cabin;
 	private static Boolean simulationDone = false;
@@ -23,11 +32,11 @@ public class RunAStar {
 	private static ArrayList<int[][]> pathList = new ArrayList<int[][]>();
 
 	/**
-	 * 
-	 * @param obstaclemap
-	 * @param mapWidth
-	 * @param mapHeight
-	 * @param cabinn
+	 * This is the RunAStar constructor.
+	 * @param obstaclemap is the obstacle map
+	 * @param mapWidth is the map width
+	 * @param mapHeight is the map height
+	 * @param cabinHelp is the cabin that is submitted
 	 */
 	public RunAStar(int[][] obstaclemap, int mapWidth, int mapHeight,
 			Cabin cabinHelp) {

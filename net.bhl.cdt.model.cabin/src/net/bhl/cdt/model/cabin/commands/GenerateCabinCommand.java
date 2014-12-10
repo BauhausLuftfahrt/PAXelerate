@@ -1,3 +1,9 @@
+/*******************************************************************************
+ * <copyright> Copyright (c) 2009-2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
+ *******************************************************************************/
+
 package net.bhl.cdt.model.cabin.commands;
 
 import java.util.ArrayList;
@@ -21,6 +27,7 @@ import net.bhl.cdt.model.cabin.Stairway;
 import net.bhl.cdt.model.cabin.StairwayDirection;
 import net.bhl.cdt.model.cabin.TravelClass;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
+import net.bhl.cdt.model.cabin.util.FunctionLibrary;
 import net.bhl.cdt.model.util.ModelHelper;
 
 import org.eclipse.core.runtime.ILog;
@@ -305,13 +312,11 @@ public class GenerateCabinCommand extends CDTCommand {
 					rowCount++;
 					globalSeatPositionY = globalSeatPositionY + seatDimensionY;
 				}
-				if (!travelSubClass.isInstance(EconomyClass.class)) {
+				if (!travelSubClass.getSimpleName().equals("EconomyClass")) {
 					createCurtain(true,
-							"after " + travelSubClass.getSimpleName());
+							"after " + FunctionLibrary.splitCamelCase(travelSubClass.getSimpleName()));
 				}
 			} else {
-				// consoleViewPart
-				// .printText("Please choose an even number for SeatsPerRow");
 				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 						"Please choose an even number for SeatsPerRow"));
 			}
