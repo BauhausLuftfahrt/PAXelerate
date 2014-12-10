@@ -18,7 +18,7 @@ import net.bhl.cdt.model.util.ModelHelper;
  *
  */
 public class Agent extends Subject implements Runnable {
-	private Thread t;
+	private Thread thread;
 	private String agentName;
 	private int[][] path;
 
@@ -29,30 +29,23 @@ public class Agent extends Subject implements Runnable {
 
 	private Passenger passenger;
 	private int scale;
-	private double firstSeatY;
 	private boolean alreadyStowed;
-	private static StopWatch s = new StopWatch();
-
-	private static Logger log = new Logger();
-
+	private static StopWatch stopwatch = new StopWatch();
 	private int[][] currentAgentPosition = new int[1][2];
 
 	/**
 	 * 
 	 * @param name
 	 * @param passenger
-	 * @param startX
-	 * @param startY
-	 * @param goalX
-	 * @param goalY
+	 * @param start
+	 * @param goal
 	 * @param scale
 	 */
-	Agent(String name, Passenger passenger, int startX, int startY, int goalX,
-			int goalY, int scale) {
+	Agent(String name, Passenger passenger, Vector start, Vector goal, int scale) {
 		this.passenger = passenger;
 		this.agentName = name;
-		start.set(startX, startY);
-		goal.set(goalX, goalY);
+		this.start = start;
+		this.goal = goal;
 		this.scale = scale;
 		this.currentAgentPosition[0] = start.getValue();
 
@@ -190,7 +183,7 @@ public class Agent extends Subject implements Runnable {
 		try {
 			alreadyStowed = false;
 			Thread.sleep((int) (passenger.getStartBoardingAfterDelay() * 1000));
-			s.start();
+			stopwatch.start();
 			this.currentAgentPosition = new int[path.length][2];
 			RunAStar.submitPath(path);
 			
@@ -242,8 +235,8 @@ public class Agent extends Subject implements Runnable {
 			RunAStar.getMap().getNode(current).setOccupiedByAgent(false);
 			passenger.setIsSeated(true);
 			RunAStar.setPassengerSeated(passenger);
-			s.stop();
-			passenger.setBoardingTime(s.getElapsedTime() / 1000);
+			stopwatch.stop();
+			passenger.setBoardingTime(stopwatch.getElapsedTime() / 1000);
 			passenger.setNumberOfWaits(numbOfInterupts);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -265,7 +258,7 @@ public class Agent extends Subject implements Runnable {
 	 * @return
 	 */
 	public Thread getT() {
-		return t;
+		return thread;
 	}
 
 	/**
@@ -273,7 +266,7 @@ public class Agent extends Subject implements Runnable {
 	 * @param t
 	 */
 	public void setT(Thread t) {
-		this.t = t;
+		this.thread = t;
 	}
 
 }

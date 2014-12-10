@@ -15,6 +15,7 @@ import net.bhl.cdt.model.astar.StopWatch;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
+import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.util.ModelHelper;
 
 import org.eclipse.core.runtime.ILog;
@@ -80,8 +81,10 @@ public class SimulateBoardingCommand extends CDTCommand {
 	protected void doRun() {
 
 		/********************************** Get CabinView and ConsoleView ***************************************/
-		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-		CabinViewPart cabinViewPart = (CabinViewPart) page.findView("net.bhl.cdt.model.cabin.cabinview");
+		IWorkbenchPage page = PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getActivePage();
+		CabinViewPart cabinViewPart = (CabinViewPart) page
+				.findView("net.bhl.cdt.model.cabin.cabinview");
 		/********************************************************************************************************/
 
 		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
@@ -89,9 +92,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 		s.start();
 		if (!cabin.getPassengers().isEmpty()) {
 			ObstacleMap obstaclemap = new ObstacleMap(cabin);
-			RunAStar astar = new RunAStar(obstaclemap,
+			RunAStar astar = new RunAStar(obstaclemap, new Vector(
 					(int) (cabin.getCabinWidth() / cabin.getScale()),
-					(int) (cabin.getCabinLength() / cabin.getScale()), cabin);
+					(int) (cabin.getCabinLength() / cabin.getScale())), cabin);
 			while (!RunAStar.getSimulationDone()) {
 				try {
 					for (Passenger pax : ModelHelper.getChildrenByClass(
