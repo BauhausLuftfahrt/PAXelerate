@@ -1,11 +1,14 @@
-
+/*******************************************************************************
+ * <copyright> Copyright (c) 2009-2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
+ *******************************************************************************/
 package net.bhl.cdt.model.astar;
-
 
 import java.util.ArrayList;
 
 /**
- * 
+ * This class represents a node object which has several properties important for the path finding algorithm.
  * @author marc.engelmann
  *
  */
@@ -27,8 +30,8 @@ public class Node implements Comparable<Node> {
         private Node previousNode;
         private int x;
         private int y;
-        public boolean isObstacle;
-        public boolean isOccupiedByAgent;
+        private boolean isObstacle;
+        private boolean isOccupiedByAgent;
         private boolean isStart;
         private boolean isGoal;
         private int cost;
@@ -287,26 +290,14 @@ public class Node implements Comparable<Node> {
                 return (node.x == x) && (node.y == y);
         }
         
-        /**EDITED BY MARC.ENGELMANN ON 01-12-2014*/
-        /** modified this function in order to sort nodes by cost, not by distance!
-         * Only if the cost is the same, sort it by the distance! 
-         */ 
-        
         /**
-         * 
-         */
+	 * This method compares two nodes.
+	 * 
+	 * @param otherNode
+	 *            the other node
+	 * @return returns the better node value
+	 */ 
         public int compareTo(Node otherNode) {
-//        		/**better if: cheaper & closer or equally cheap but closer */ 
-//                if(((costFromStart<otherNode.costFromStart)&&(distanceFromStart<otherNode.distanceFromStart))||((costFromStart==otherNode.costFromStart)&&(distanceFromStart<otherNode.distanceFromStart))) {
-//                	return -1;
-//                }
-//                /**worse if: more expensive and further away or equally expensive but further away*/
-//                else if(((costFromStart>otherNode.costFromStart)&&(distanceFromStart>otherNode.distanceFromStart))||((costFromStart==otherNode.costFromStart)&&(distanceFromStart>otherNode.distanceFromStart))) {
-//                	return 1;
-//                	} 
-//                else { 
-//                	return 0;
-//                }
         	if(compareFactor < otherNode.compareFactor) {
         		return -1;
         	}else if(compareFactor > otherNode.compareFactor) {

@@ -14,7 +14,7 @@ import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.util.ModelHelper;
 
 /**
- * 
+ * This class runs and handles the a star algorithm an simulation.
  * @author marc.engelmann
  *
  */
@@ -117,30 +117,60 @@ public class RunAStar {
 		}
 	}
 
+	/**
+	 * This method sets the value for simulationDone.
+	 * 
+	 * @param bool
+	 *            is the boolean
+	 */
 	public static void setSimulationDone(Boolean bool) {
 		simulationDone = bool;
 	}
-	
+
+	/**
+	 * This method submits the whole cabin.
+	 * 
+	 * @return the cabin
+	 */
 	public static Cabin getCabin() {
 		return cabin;
 	}
 
+	/**
+	 * This method returns whether the simulation is already completed or not.
+	 * 
+	 * @return simulationDone
+	 */
 	public static Boolean getSimulationDone() {
 		return simulationDone;
 	}
 
+	/**
+	 * This method saves the path object to the pathList element.
+	 * 
+	 * @param path
+	 *            the specific path
+	 */
 	public static void submitPath(int[][] path) {
 		pathList.add(path);
 	}
 
 	/**
 	 * This method returns an array of the path list.
+	 * 
 	 * @return the paths in a list
 	 */
 	public static ArrayList<int[][]> getPathList() {
 		return pathList;
 	}
 
+	/**
+	 * This method signals that a passengers has found his seat. This is done by
+	 * adding him to the finishedList ArrayList element.
+	 * 
+	 * @param passenger
+	 *            is the passenger
+	 */
 	public static void setPassengerSeated(Passenger passenger) {
 		finishedList.add(passenger);
 		if (finishedList.size() == cabin.getPassengers().size()) {
@@ -176,8 +206,7 @@ public class RunAStar {
 					(int) ((seat.getXPosition() + seat.getXDimension() / 2) / cabin
 							.getScale()), (int) ((seat.getYPosition() / cabin
 							.getScale()) - 1));
-			Agent agent = new Agent("Passenger " + passenger.getName(),
-					passenger, start, goal, (int) cabin.getScale());
+			Agent agent = new Agent(passenger, start, goal, (int) cabin.getScale());
 			// list of all agents
 			agents.add(agent);
 		}

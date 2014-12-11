@@ -32,7 +32,7 @@ public class Vector {
 	}
 
 	/**
-	 * This method constructs the Vector object.
+	 * This method constructs the two dimensional Vector object.
 	 * 
 	 * @param x
 	 *            is the first value
@@ -45,6 +45,16 @@ public class Vector {
 		yValue = y;
 	}
 
+	/**
+	 * This method constructs the three dimensional Vector object.
+	 * 
+	 * @param x
+	 *            is the first value
+	 * @param y
+	 *            is the second value
+	 * @param z
+	 *            is the third value
+	 */
 	public Vector(int x, int y, int z) {
 		dimensions = 3;
 		xValue = x;
@@ -71,10 +81,14 @@ public class Vector {
 	}
 
 	/**
+	 * This method sets the vector values from integers.
 	 * 
 	 * @param x
+	 *            is the first value
 	 * @param y
+	 *            is the second value
 	 * @param z
+	 *            is the third value
 	 */
 	public void setThreeDimensional(int x, int y, int z) {
 		if (dimensions == 3) {
@@ -102,10 +116,11 @@ public class Vector {
 			zValue = point[2];
 		}
 	}
-	
+
 	/**
+	 * This method generates a color out of the three values.
 	 * 
-	 * @return
+	 * @return returns the Color
 	 */
 	public Color getTheColor() {
 		return new Color(xValue, yValue, zValue);
@@ -120,6 +135,12 @@ public class Vector {
 		return xValue;
 	}
 
+	/**
+	 * This method sets the x value.
+	 * 
+	 * @param x
+	 *            the x value
+	 */
 	public void setX(int x) {
 		xValue = x;
 	}
@@ -133,14 +154,31 @@ public class Vector {
 		return yValue;
 	}
 
+	/**
+	 * This method sets the y value.
+	 * 
+	 * @param y
+	 *            the y value
+	 */
 	public void setY(int y) {
 		yValue = y;
 	}
 
+	/**
+	 * This method returns the z Value.
+	 * 
+	 * @return the z value
+	 */
 	public int getZ() {
 		return zValue;
 	}
 
+	/**
+	 * This method sets the z value.
+	 * 
+	 * @param z
+	 *            the z value
+	 */
 	public void setZ(int z) {
 		yValue = z;
 	}

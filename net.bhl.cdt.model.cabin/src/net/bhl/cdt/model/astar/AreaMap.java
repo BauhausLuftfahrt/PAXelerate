@@ -10,15 +10,25 @@ import java.util.ArrayList;
 
 import net.bhl.cdt.model.cabin.util.Vector;
 
+/**
+ * 
+ * @author marc.engelmann
+ *
+ */
 public class AreaMap {
 
-	private Vector dimensions = new Vector(0,0);
+	private Vector dimensions = new Vector(0, 0);
 	private Vector startLocation = new Vector(0, 0);
 	private Vector goalLocation = new Vector(0, 0);
 	private ArrayList<ArrayList<Node>> map;
 	private ObstacleMap obstacleMap;
 	private Logger log = new Logger();
 
+	/**
+	 * This is the area map constructor.
+	 * @param dimensions the dimensions of the map
+	 * @param obstacleMap the obstacle map
+	 */
 	AreaMap(Vector dimensions, ObstacleMap obstacleMap) {
 		this.dimensions = dimensions;
 		this.obstacleMap = obstacleMap;
@@ -29,10 +39,13 @@ public class AreaMap {
 		log.addToLog("Map Node edges registered");
 	}
 
+	/**
+	 * This method prints the map to the console.
+	 */
 	public void printMap() {
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
-				if (map.get(i).get(j).isOccupiedByAgent) {
+				if (map.get(i).get(j).isOccupiedByAgent()) {
 					System.out.print("X");
 				} else {
 					System.out.print("-");
@@ -51,7 +64,8 @@ public class AreaMap {
 			for (int y = 0; y < dimensions.getY(); y++) {
 				node = new Node(x, y);
 
-				if (obstacleMap.getValueAtPoint(x, y) == ObstacleMap.getObstacleValue()) {
+				if (obstacleMap.getValueAtPoint(x, y) == ObstacleMap
+						.getObstacleValue()) {
 					node.setObstacle(true);
 				} else {
 					node.setCost(obstacleMap.getValueAtPoint(x, y));
@@ -97,58 +111,102 @@ public class AreaMap {
 		}
 	}
 
+	/**
+	 * This method returns the area map.
+	 * @return the area map
+	 */
 	public ArrayList<ArrayList<Node>> getNodes() {
 		return map;
 	}
 
+	/**
+	 * This method sets a node an obstacle.
+	 * @param x is the x value
+	 * @param y is the y value
+	 * @param isObstacle set yes or no
+	 */
 	public void setObstacle(int x, int y, boolean isObstacle) {
 		map.get(x).get(y).setObstacle(isObstacle);
 	}
 
+	/**
+	 * This method returns a node at a specific point.
+	 * @param x the x value
+	 * @param y the y value
+	 * @return the node
+	 */
 	public Node getNodeByCoordinate(int x, int y) {
 		return map.get(x).get(y);
 	}
 
+	/**
+	 * This method returns a specific node at a vector point.
+	 * @param vector the vector describing the position of the node
+	 * @return the node
+	 */
 	public Node getNode(Vector vector) {
 		return map.get(vector.getX()).get(vector.getY());
 	}
 
+	/**
+	 * This method sets the start location.
+	 * @param start the start location vector
+	 */
 	public void setStartLocation(Vector start) {
 		map.get(startLocation.getX()).get(startLocation.getY()).setStart(false);
 		map.get(start.getX()).get(start.getY()).setStart(true);
 		startLocation = start;
 	}
 
+	/**
+	 * This method sets the goal location.
+	 * @param goal the goal location vector.
+	 */
 	public void setGoalLocation(Vector goal) {
 		map.get(goalLocation.getX()).get(goalLocation.getY()).setGoal(false);
 		map.get(goal.getX()).get(goal.getY()).setGoal(true);
 		goalLocation = goal;
 	}
 
+	/**
+	 * This method returns the start node.
+	 * @return the start node
+	 */
 	public Node getStartNode() {
 		return map.get(startLocation.getX()).get(startLocation.getY());
 	}
 
+	/**
+	 * This method returns the goal node.
+	 * @return the goal node
+	 */
 	public Node getGoalLocation() {
 		return map.get(goalLocation.getX()).get(goalLocation.getY());
 	}
 
 	/**
-	 * EDITED BY MARC.ENGELMANN ON 01-12-2014 seemed to be very restrictive, as
-	 * only usable for neighboring nodes - added support for distance
-	 * calculations independent of location. Original functionality is not
-	 * affected.
+	 * This method calculates the distance between two nodes.
+	 * @param node1 the first node
+	 * @param node2 the second node
+	 * @return the distance between the nodes
 	 */
 	public float getDistanceBetween(Node node1, Node node2) {
-		float calc = (float) Math.sqrt((node2.getX() - node1.getX()) ^ 2
+		return (float) Math.sqrt((node2.getX() - node1.getX()) ^ 2
 				+ (node2.getY() - node1.getY()) ^ 2);
-		return calc;
+		
 	}
 
+	/**
+	 * This method returns the dimensions of the map.
+	 * @return the dimensions stored in a vector
+	 */
 	public Vector getDimensions() {
 		return dimensions;
 	}
 
+	/**
+	 * This method clears the area map.
+	 */
 	public void clear() {
 		startLocation.setTwoDimensional(0, 0);
 		goalLocation.setTwoDimensional(0, 0);

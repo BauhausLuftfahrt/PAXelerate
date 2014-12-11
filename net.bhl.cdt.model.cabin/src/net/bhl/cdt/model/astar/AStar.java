@@ -29,7 +29,9 @@ public class AStar {
 
 	/**
 	 * This method constructs the AStar.
-	 * @param map is the AreaMap that is fed into the algorithm
+	 * 
+	 * @param map
+	 *            is the AreaMap that is fed into the algorithm
 	 */
 	AStar(AreaMap map) {
 		this.map = map;
@@ -54,7 +56,7 @@ public class AStar {
 
 		// Check if the goal node is blocked (if it is, it is impossible to find
 		// a path there)
-		if (map.getNode(goal).isObstacle) {
+		if (map.getNode(goal).isObstacle()) {
 			return null;
 		}
 
@@ -97,7 +99,7 @@ public class AStar {
 				}
 
 				// also just continue if the neighbor is an obstacle
-				if (!neighbor.isObstacle) {
+				if (!neighbor.isObstacle()) {
 
 					// calculate how long the path is if we choose this neighbor
 					// as the next step in the path
@@ -163,16 +165,19 @@ public class AStar {
 	}
 
 	/**
+	 * This method returns the shortest path.
 	 * 
-	 * @return
+	 * @return the shortest path
 	 */
 	public Path getShortestPath() {
 		return shortestPath;
 	}
 
 	/**
+	 * This method sets the shortest path.
 	 * 
 	 * @param shortestPath
+	 *            the shortest path
 	 */
 	public void setShortestPath(Path shortestPath) {
 		this.shortestPath = shortestPath;
