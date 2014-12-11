@@ -17,6 +17,7 @@ import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PremiumEconomyClass;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
+import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.util.ModelHelper;
 
 import org.eclipse.jface.viewers.ITableLabelProvider;
@@ -264,13 +265,14 @@ public class CabinViewPart extends ViewPart {
 			public void paintControl(final PaintEvent e) {
 				for (Passenger pass : ModelHelper.getChildrenByClass(paxCabin,
 						Passenger.class)) {
-					int[] color = calculateColor(pass);
-					e.gc.setBackground(new Color(e.display, color[0], color[1],
-							color[2]));
+					Vector color = calculateColor(pass);
+					e.gc.setBackground(new Color(e.display, color.getX(), color.getY(),
+							color.getZ()));
 					// e.gc.setBackground(black);
 					if (!pass.isIsSeated()) {
 						if (!((pass.getPositionX() == 0) && (pass
 								.getPositionY() == 0))) {
+							Vector vector = getDirectionVector(pass);
 							e.gc.fillOval(
 									X_ZERO
 											+ (int) ((pass.getPositionX() - pass
@@ -280,6 +282,17 @@ public class CabinViewPart extends ViewPart {
 													.getDepth() / 2) / factor),
 									(int) (pass.getWidth() / factor),
 									(int) (pass.getDepth() / factor));
+							
+							int lineLength = 3;
+							e.gc.drawLine(
+									X_ZERO
+											+ (int) (pass.getPositionX() / factor),
+									Y_ZERO
+											+ (int) (pass.getPositionY() / factor),
+									X_ZERO
+											+ (int) (pass.getPositionX() / factor) + lineLength*(vector.getX()/5),
+									Y_ZERO
+											+ (int) (pass.getPositionY() / factor) + lineLength*(vector.getY()/5));
 						}
 					} else {
 						Seat mySeat = pass.getSeatRef();
@@ -579,9 +592,8 @@ public class CabinViewPart extends ViewPart {
 						for (Passenger passenger : ModelHelper
 								.getChildrenByClass(cabin, Passenger.class)) {
 							Seat passengerSeat = passenger.getSeatRef();
-							int[] colorCode = calculateColor(passenger);
-							e.gc.setBackground(new Color(e.display,
-									colorCode[0], colorCode[1], colorCode[2]));
+							Vector color = calculateColor(passenger);
+							e.gc.setBackground(new Color(e.display,color.getX(),color.getY(),color.getZ()));
 							// e.gc.setBackground(black);
 							if (passengerSeat.getYDimension() < passengerSeat
 									.getXDimension()) {
@@ -642,53 +654,60 @@ public class CabinViewPart extends ViewPart {
 	}
 
 	/**
+	 * NOTE: FACTORS ARE SCALED BY 100, YOU NEED TO DIVIDE IT BY 100 IN ORDER TO
+	 * GET THE REAL FACTORS
+	 * 
+	 * @param passenger
+	 * @return
+	 */
+	private Vector getDirectionVector(Passenger passenger) {
+		int rotation = (int) passenger.getOrientationInDegree();
+		int factor = 5;
+		if(rotation == 0) {
+			return new Vector(0, -10);
+		} else if (rotation <=45) {
+			return new Vector(factor, -factor);
+		} else if (rotation <=90) {
+			return new Vector(10, 0);
+		} else if (rotation <=135) {
+			return new Vector(factor, factor);
+		} else if (rotation <=180) {
+			return new Vector(0, 10);
+		} else if (rotation <=225) {
+			return new Vector(-factor, factor);
+		} else if (rotation <=270) {
+			return new Vector(-10, 0);
+		} else if (rotation <=315) {
+			return new Vector(-factor, -factor);
+		} else {
+			return new Vector(0, 0);
+		}
+	}
+
+	/**
 	 * 
 	 * @param pax
 	 * @return
 	 */
-	private int[] calculateColor(Passenger pax) {
-		int[] color = new int[3];
+	private Vector calculateColor(Passenger pax) {
 		int randInt = pax.getId() % 6;
 		int colorDefine = (pax.getId() % 13) * 20 + 15;
 		switch (randInt) {
 		case 0:
-			color[0] = 255;
-			color[1] = 0;
-			color[2] = colorDefine;
-			break;
+			return new Vector(255, 0,colorDefine);
 		case 1:
-			color[0] = 255;
-			color[1] = colorDefine;
-			color[2] = 0;
-			break;
+			return new Vector(255,colorDefine,0);
 		case 2:
-			color[0] = 0;
-			color[1] = 255;
-			color[2] = colorDefine;
-			break;
+			return new Vector(0,255,colorDefine);
 		case 3:
-			color[0] = colorDefine;
-			color[1] = 255;
-			color[2] = 0;
-			break;
+			return new Vector(colorDefine,255,0);
 		case 4:
-			color[0] = 0;
-			color[1] = colorDefine;
-			color[2] = 255;
-			break;
+			return new Vector(0,colorDefine,255);
 		case 5:
-			color[0] = colorDefine;
-			color[1] = 0;
-			color[2] = 255;
-			break;
+			return new Vector(colorDefine,0,255);
 		default:
-			color[0] = 255;
-			color[1] = 255;
-			color[2] = 255;
-			break;
+			return new Vector(255,255,255);
 		}
-
-		return color;
 	}
 
 	/** * Passing the focus request to the viewer's control. */

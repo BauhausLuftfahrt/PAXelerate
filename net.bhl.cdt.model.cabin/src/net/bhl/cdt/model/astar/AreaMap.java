@@ -12,7 +12,7 @@ import net.bhl.cdt.model.cabin.util.Vector;
 
 public class AreaMap {
 
-	private Vector dimensions = new Vector();
+	private Vector dimensions = new Vector(0,0);
 	private Vector startLocation = new Vector(0, 0);
 	private Vector goalLocation = new Vector(0, 0);
 	private ArrayList<ArrayList<Node>> map;
@@ -150,8 +150,8 @@ public class AreaMap {
 	}
 
 	public void clear() {
-		startLocation.set(0, 0);
-		goalLocation.set(0, 0);
+		startLocation.setTwoDimensional(0, 0);
+		goalLocation.setTwoDimensional(0, 0);
 		createMap();
 		registerEdges();
 	}

@@ -24,8 +24,8 @@ public class Agent extends Subject implements Runnable {
 
 	private Vector start = new Vector(0, 0);
 	private Vector goal = new Vector(0, 0);
-	private Vector current = new Vector();
-	private Vector previous = new Vector();
+	private Vector current = new Vector(0,0);
+	private Vector previous = new Vector(0,0);
 
 	private Passenger passenger;
 	private int scale;

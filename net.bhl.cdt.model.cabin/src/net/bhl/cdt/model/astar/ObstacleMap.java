@@ -24,7 +24,7 @@ import net.bhl.cdt.model.util.ModelHelper;
 
 public class ObstacleMap {
 	private Cabin cabin;
-	private Vector dimensions = new Vector();
+	private Vector dimensions = new Vector(0,0);
 	private static final int MAX_VALUE = 100000;
 	private static final int BASIC_VALUE = 10;
 	private int[][] obstacleMap;
@@ -35,7 +35,7 @@ public class ObstacleMap {
 	 */
 	public ObstacleMap(Cabin cabin) {
 		this.cabin = cabin;
-		dimensions.set(
+		dimensions.setTwoDimensional(
 				(int) (cabin.getCabinWidth() / cabin.getScale()),
 				(int) (cabin.getCabinLength() / cabin.getScale()));
 		obstacleMap = createObstacleMap();

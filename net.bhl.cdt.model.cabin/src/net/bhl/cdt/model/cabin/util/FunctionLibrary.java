@@ -6,6 +6,7 @@
 
 package net.bhl.cdt.model.cabin.util;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 
@@ -59,4 +60,16 @@ public final class FunctionLibrary {
 			System.out.println(object);
 		}
 	}
+	
+	 /**
+     * Creates an awt color instance to match the rgb values
+     * of the specified swt color.
+     *
+     * @param color The swt color to match.
+     * @return an awt color abject.
+     */
+    public static java.awt.Color toAwtColor(Color color) {
+        return new java.awt.Color(color.getRed(), color.getGreen(),
+                color.getBlue());
+    }
 }
