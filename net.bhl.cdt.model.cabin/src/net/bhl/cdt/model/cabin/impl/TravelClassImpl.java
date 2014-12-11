@@ -37,6 +37,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.TravelClassImpl#getSeatsPerRow <em>Seats Per Row</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.TravelClassImpl#getSeatLength <em>Seat Length</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.TravelClassImpl#getSeatWidth <em>Seat Width</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.TravelClassImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -192,6 +193,26 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	 * @ordered
 	 */
 	protected double seatWidth = SEAT_WIDTH_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -376,6 +397,27 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.TRAVEL_CLASS__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -409,6 +451,8 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 				return getSeatLength();
 			case CabinPackage.TRAVEL_CLASS__SEAT_WIDTH:
 				return getSeatWidth();
+			case CabinPackage.TRAVEL_CLASS__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -447,6 +491,9 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 			case CabinPackage.TRAVEL_CLASS__SEAT_WIDTH:
 				setSeatWidth((Double)newValue);
 				return;
+			case CabinPackage.TRAVEL_CLASS__NAME:
+				setName((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -483,6 +530,9 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 			case CabinPackage.TRAVEL_CLASS__SEAT_WIDTH:
 				setSeatWidth(SEAT_WIDTH_EDEFAULT);
 				return;
+			case CabinPackage.TRAVEL_CLASS__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -511,6 +561,8 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 				return seatLength != SEAT_LENGTH_EDEFAULT;
 			case CabinPackage.TRAVEL_CLASS__SEAT_WIDTH:
 				return seatWidth != SEAT_WIDTH_EDEFAULT;
+			case CabinPackage.TRAVEL_CLASS__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -539,6 +591,8 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 		result.append(seatLength);
 		result.append(", seatWidth: ");
 		result.append(seatWidth);
+		result.append(", name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}

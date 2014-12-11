@@ -18,6 +18,7 @@ package net.bhl.cdt.model.cabin;
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#isCrewSeat <em>Crew Seat</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#getLetter <em>Letter</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#getTravelClass <em>Travel Class</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Seat#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -155,6 +156,33 @@ public interface Seat extends PhysicalObject {
 	 * @generated
 	 */
 	void setTravelClass(TravelClass value);
+
+	/**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * The default value is <code>"Placeholder Seat"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSeat_Name()
+	 * @model default="Placeholder Seat"
+	 * @generated
+	 */
+	String getName();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Seat#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
+	void setName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Seat Id</b></em>' attribute.

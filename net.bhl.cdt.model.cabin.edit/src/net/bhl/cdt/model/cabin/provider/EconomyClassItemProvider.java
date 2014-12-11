@@ -64,8 +64,10 @@ public class EconomyClassItemProvider extends TravelClassItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		EconomyClass economyClass = (EconomyClass)object;
-		return getString("_UI_EconomyClass_type") + " " + economyClass.getSequence();
+		String label = ((EconomyClass)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_EconomyClass_type") :
+			getString("_UI_EconomyClass_type") + " " + label;
 	}
 	
 
