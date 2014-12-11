@@ -6,8 +6,6 @@
 
 package net.bhl.cdt.model.cabin.commands;
 
-import java.util.ArrayList;
-
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.BusinessClass;
 import net.bhl.cdt.model.cabin.Cabin;
@@ -81,8 +79,6 @@ public class GenerateCabinCommand extends CDTCommand {
 	private String seatIdLetter;
 	private double globalSeatPositionX;
 	private double globalSeatPositionY;
-	private ArrayList<Integer> randomNumberCheck;
-	private double spaceBetweenSeats;
 	private int seats;
 	private int seatsInRow;
 	private int numbAisles;
@@ -177,8 +173,8 @@ public class GenerateCabinCommand extends CDTCommand {
 		seatIdString = rowCount + seatIdLetter;
 		newSeat.setSeatId(seatIdString);
 		newSeat.setName(seatIdString);
-		newSeat.setXDimension(seatDimensionY);
-		newSeat.setYDimension(seatDimensionX);
+		newSeat.setXDimension(seatDimensionX);
+		newSeat.setYDimension(seatDimensionY);
 		newSeat.setLetter(seatIdLetter);
 		newSeat.setXPosition(globalSeatPositionX);
 		newSeat.setYPosition(globalSeatPositionY);
@@ -277,16 +273,12 @@ public class GenerateCabinCommand extends CDTCommand {
 									/ (1 + seatsInRow / 2);
 							break;
 						default:
-							// consoleViewPart
-							// .printText("Number of aisles not supported!");
 							logger.log(new Status(IStatus.ERROR,
 									"net.bhl.cdt.model.cabin",
 									"Number of aisles not supported!"));
 							break;
 						}
 					} else {
-						// consoleViewPart
-						// .printText("Check your x dimensions! Cabin too narrow.");
 						logger.log(new Status(IStatus.ERROR,
 								"net.bhl.cdt.model.cabin",
 								"Check your x dimensions! Cabin too narrow."));
@@ -296,8 +288,6 @@ public class GenerateCabinCommand extends CDTCommand {
 					if ((globalSeatPositionX < 0)) {
 						seatHelper = 0;
 						globalSeatPositionX = 0;
-						// consoleViewPart
-						// .printText("Check seat and cabin dimensions! Cabin too narrow.");
 						logger.log(new Status(IStatus.ERROR,
 								"net.bhl.cdt.model.cabin",
 								"Check seat and cabin dimensions! Cabin too narrow."));
@@ -363,8 +353,6 @@ public class GenerateCabinCommand extends CDTCommand {
 			for (Door testDoor : cabin.getDoors()) {
 				if (typeDoor.getSimpleName().equals("MainDoor")
 						&& (testDoor instanceof MainDoor)) {
-					// consoleViewPart
-					// .printText("You created more than one main door!");
 					logger.log(new Status(IStatus.ERROR,
 							"net.bhl.cdt.model.cabin",
 							"You created more than one main door!"));
@@ -386,8 +374,6 @@ public class GenerateCabinCommand extends CDTCommand {
 			newDoor.setWidth(newDoor.getWidthOfEmergencyExit());
 			newDoor.setYPosition(yPosition);
 			if (yPosition < 0) {
-				// consoleViewPart
-				// .printText("Emergency Exit has a illegal yPosition.");
 				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 						"Emergency Exit has a illegal yPosition."));
 			}
@@ -470,6 +456,7 @@ public class GenerateCabinCommand extends CDTCommand {
 	 * @param xDimension
 	 * @param yDimension
 	 */
+	@SuppressWarnings("unused")
 	private void createStairway(StairwayDirection direction, double xPosition,
 			double yPostion, double xDimension, double yDimension) {
 		Stairway newStairway = CabinFactory.eINSTANCE.createStairway();
@@ -530,8 +517,7 @@ public class GenerateCabinCommand extends CDTCommand {
 		cabin.getStowages().clear();
 		cabin.getPassengers().clear();
 		/******************************/
-
-		spaceBetweenSeats = 10;
+		
 		globalSeatPositionX = 0;
 		globalSeatPositionY = 0;
 		seatCount = 1;

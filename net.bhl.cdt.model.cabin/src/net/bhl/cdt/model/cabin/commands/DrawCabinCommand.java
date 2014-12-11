@@ -1,3 +1,8 @@
+/*******************************************************************************
+ * <copyright> Copyright (c) 2009-2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
+ *******************************************************************************/
 package net.bhl.cdt.model.cabin.commands;
 
 import net.bhl.cdt.commands.CDTCommand;
@@ -46,14 +51,21 @@ public class DrawCabinCommand extends CDTCommand {
 
 	private Cabin cabin;
 	private ILog logger;
-	CabinViewPart cabinViewPart;
+	private CabinViewPart cabinViewPart;
 
+	/**
+	 * This method is the command constructor.
+	 * @param cabin is the cabin element
+	 */
 	public DrawCabinCommand(Cabin cabin) {
 		this.cabin = cabin;
 		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
 
 	}
 
+	/**
+	 * This method runs the command.
+	 */
 	@Override
 	protected void doRun() {
 

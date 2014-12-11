@@ -81,8 +81,7 @@ public class RunAStar {
 	public static int[][] getPathCoordinates(Path shortestPath) {
 		int[][] pathCoordinates = new int[shortestPath.getLength()][2];
 		for (int i = 0; i < shortestPath.getLength(); i++) {
-			pathCoordinates[i][0] = shortestPath.getWayPoint(i).getX();
-			pathCoordinates[i][1] = shortestPath.getWayPoint(i).getY();
+			pathCoordinates[i] = shortestPath.getWayPoint(i).getPosition().getValue();		
 		}
 		return pathCoordinates;
 	}

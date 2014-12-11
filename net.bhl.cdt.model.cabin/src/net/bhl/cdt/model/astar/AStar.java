@@ -78,8 +78,8 @@ public class AStar {
 
 			// check if our current Node location is the goal Node. If it is, we
 			// are done.
-			if (current.getX() == map.getGoalLocation().getX()
-					&& current.getY() == map.getGoalLocation().getY()) {
+			if (current.getPosition().getX() == map.getGoalLocation().getPosition().getX()
+					&& current.getPosition().getY() == map.getGoalLocation().getPosition().getY()) {
 				return reconstructPath(current);
 			}
 
@@ -109,9 +109,9 @@ public class AStar {
 					float currentDistanceFromStart = map.getDistanceBetween(
 							map.getStartNode(), current);
 					int neighborCostFromStart = costmap.getCostForCoordinates(
-							neighbor.getX(), neighbor.getY());
+							neighbor.getPosition().getX(), neighbor.getPosition().getY());
 					int currentCostFromStart = costmap.getCostForCoordinates(
-							current.getX(), current.getY());
+							current.getPosition().getX(), current.getPosition().getY());
 
 					// add neighbor to the open list if it is not there
 					if (!openList.contains(neighbor)) {

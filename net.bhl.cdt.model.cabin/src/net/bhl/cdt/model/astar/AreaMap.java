@@ -62,7 +62,7 @@ public class AreaMap {
 		for (int x = 0; x < dimensions.getX(); x++) {
 			map.add(new ArrayList<Node>());
 			for (int y = 0; y < dimensions.getY(); y++) {
-				node = new Node(x, y);
+				node = new Node(new Vector(x,y));
 
 				if (obstacleMap.getValueAtPoint(x, y) == ObstacleMap
 						.getObstacleValue()) {
@@ -191,8 +191,8 @@ public class AreaMap {
 	 * @return the distance between the nodes
 	 */
 	public float getDistanceBetween(Node node1, Node node2) {
-		return (float) Math.sqrt((node2.getX() - node1.getX()) ^ 2
-				+ (node2.getY() - node1.getY()) ^ 2);
+		return (float) Math.sqrt((node2.getPosition().getX() - node1.getPosition().getX()) ^ 2
+				+ (node2.getPosition().getY() - node1.getPosition().getY()) ^ 2);
 		
 	}
 

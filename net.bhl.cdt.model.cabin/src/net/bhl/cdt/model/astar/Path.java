@@ -8,6 +8,8 @@ package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
 
+import net.bhl.cdt.model.cabin.util.Vector;
+
 /**
  * Path is a list of nodes which represent the calculated shortest path.
  * 
@@ -65,26 +67,17 @@ public class Path {
 	}
 
 	/**
-	 * Get the x-coordinate for the waypoiny at the given index.
+	 * Get the x-coordinate for the waypoint at the given index.
 	 *
 	 * @param index
 	 *            The index of the waypoint to get the x-coordinate of.
 	 * @return The x coordinate at the waypoint.
 	 */
-	public int getX(int index) {
-		return getWayPoint(index).getX();
+	public Vector getPosition(int index) {
+		return getWayPoint(index).getPosition();
 	}
 
-	/**
-	 * Get the y-coordinate for the waypoint at the given index.
-	 *
-	 * @param index
-	 *            The index of the waypoint to get the y-coordinate of.
-	 * @return The y coordinate at the waypoint.
-	 */
-	public int getY(int index) {
-		return getWayPoint(index).getY();
-	}
+
 
 	/**
 	 * Append a waypoint to the end of the path.
@@ -118,7 +111,7 @@ public class Path {
 	 */
 	public boolean contains(int x, int y) {
 		for (Node node : waypoints) {
-			if (node.getX() == x && node.getY() == y) {
+			if (node.getPosition().getX() == x && node.getPosition().getY() == y) {
 				return true;
 			}
 		}
