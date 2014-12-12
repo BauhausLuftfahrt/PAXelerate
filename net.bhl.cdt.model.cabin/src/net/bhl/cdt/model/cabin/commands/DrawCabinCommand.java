@@ -62,7 +62,7 @@ public class DrawCabinCommand extends CDTCommand {
 		cabinViewPart = (CabinViewPart) page
 				.findView("net.bhl.cdt.model.cabin.cabinview");
 		// System.out.print(cabinViewPart.getTitle());
-		cabinViewPart.submitCabin(cabin);
+		cabinViewPart.setCabin(cabin);
 
 		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 				"Cabin view updated"));

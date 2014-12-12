@@ -12,7 +12,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  net.bhl.cdt.model;visibility:=reexport,
  net.bhl.cdt.ui;bundle-version="0.9.1",
- javax.inject
+ javax.inject,
+ org.eclipse.emf.ecp.explorereditorbridge,
+ org.eclipse.emf.ecp.editor.e3
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: net.bhl.cdt.model.cabin,
  net.bhl.cdt.model.cabin.impl,

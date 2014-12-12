@@ -19,6 +19,9 @@ import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.util.ModelHelper;
 
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.SWT;
@@ -147,9 +150,17 @@ public class CabinViewPart extends ViewPart {
 	 * @param cabin
 	 *            is the catched cabin
 	 */
-	public void submitCabin(Cabin cabin) {
+	public void setCabin(Cabin cabin) {
 		initialBoot = false;
 		this.cabin = cabin;
+		Adapter adapter = new AdapterImpl() {
+			public void notifyChanged(Notification notification) {
+				if (!notification.isTouch()) {
+					doTheDraw();
+				}
+			}
+		};
+		cabin.eAdapters().add(adapter);
 		doTheDraw();
 	}
 

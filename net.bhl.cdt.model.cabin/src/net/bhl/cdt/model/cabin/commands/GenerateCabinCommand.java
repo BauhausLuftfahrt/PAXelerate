@@ -583,7 +583,7 @@ public class GenerateCabinCommand extends CDTCommand {
 		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 				"Cabin generation completed"));
 		if (!cabin.equals(null)&&!cabinViewPart.equals(null)) {
-			cabinViewPart.submitCabin(cabin);
+			cabinViewPart.setCabin(cabin);
 		} else if(cabinViewPart.equals(null)) {
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 				"The cabin view is not visible, please add it before trying again!"));

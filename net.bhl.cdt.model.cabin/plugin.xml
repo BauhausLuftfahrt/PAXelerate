@@ -109,5 +109,15 @@
             restorable="true">
       </view>
    </extension>
+   <extension
+         point="org.eclipse.emf.ecp.ui.modelElementOpener">
+      <modelElementOpener
+            class="net.bhl.cdt.model.cabin.ui.CabinOpener">
+         <staticTester
+               modelElement="net.bhl.cdt.model.cabin.Cabin"
+               priority="2">
+         </staticTester>
+      </modelElementOpener>
+   </extension>
 
 </plugin>

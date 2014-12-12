@@ -305,7 +305,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 							+ (totalPax - totalSeats) + "!"));
 		}
 		if(!cabinViewPart.equals(null)){
-			cabinViewPart.submitCabin(cabin);
+			cabinViewPart.setCabin(cabin);
 		}
 	}
 }
