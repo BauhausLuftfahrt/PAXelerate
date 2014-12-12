@@ -269,6 +269,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 		cabinViewPart = (CabinViewPart) page
 				.findView("net.bhl.cdt.model.cabin.cabinview");
+		cabinViewPart.unsyncViewer();
 		/**************************************************************/
 		cabin.getPassengers().clear();
 		totalPax = ModelHelper.getChildrenByClass(cabin, FirstClass.class)
@@ -304,8 +305,9 @@ public class GeneratePassengersCommand extends CDTCommand {
 					"Too many passengers in the cabin! Remove "
 							+ (totalPax - totalSeats) + "!"));
 		}
-		if(!cabinViewPart.equals(null)){
+		if (!cabinViewPart.equals(null)) {
 			cabinViewPart.setCabin(cabin);
 		}
+		cabinViewPart.syncViewer();
 	}
 }

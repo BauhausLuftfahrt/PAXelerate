@@ -85,6 +85,7 @@ public class CabinViewPart extends ViewPart {
 	private int oneMeter;
 	private Image image;
 	private Canvas canvas;
+	private Adapter cabinAdapter;
 
 	/**
 	 * 
@@ -153,15 +154,29 @@ public class CabinViewPart extends ViewPart {
 	public void setCabin(Cabin cabin) {
 		initialBoot = false;
 		this.cabin = cabin;
-		Adapter adapter = new AdapterImpl() {
+		cabinAdapter = new AdapterImpl() {
 			public void notifyChanged(Notification notification) {
 				if (!notification.isTouch()) {
 					doTheDraw();
 				}
 			}
 		};
-		cabin.eAdapters().add(adapter);
+		syncViewer();
 		doTheDraw();
+	}
+
+	public void syncViewer() {
+		if (cabin.eAdapters().contains(cabinAdapter)) {
+			cabin.eAdapters().add(cabinAdapter);
+		}
+
+	}
+
+	public void unsyncViewer() {
+		if (cabin.eAdapters().contains(cabinAdapter)) {
+
+			cabin.eAdapters().remove(cabinAdapter);
+		}
 	}
 
 	/**

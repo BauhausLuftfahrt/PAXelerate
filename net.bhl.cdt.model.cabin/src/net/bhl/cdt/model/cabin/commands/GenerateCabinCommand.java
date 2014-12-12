@@ -313,8 +313,12 @@ public class GenerateCabinCommand extends CDTCommand {
 					globalSeatPositionY = globalSeatPositionY + seatDimensionY;
 				}
 				if (!travelSubClass.getSimpleName().equals("EconomyClass")) {
-					createCurtain(true,
-							"after " + FunctionLibrary.splitCamelCase(travelSubClass.getSimpleName()));
+					createCurtain(
+							true,
+							"after "
+									+ FunctionLibrary
+											.splitCamelCase(travelSubClass
+													.getSimpleName()));
 				}
 			} else {
 				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
@@ -511,8 +515,11 @@ public class GenerateCabinCommand extends CDTCommand {
 	protected void doRun() {
 
 		/********************************** Get the CabinView *************************************/
-		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-		cabinViewPart = (CabinViewPart) page.findView("net.bhl.cdt.model.cabin.cabinview");
+		IWorkbenchPage page = PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getActivePage();
+		cabinViewPart = (CabinViewPart) page
+				.findView("net.bhl.cdt.model.cabin.cabinview");
+		cabinViewPart.unsyncViewer();
 		/******************************************************************************************/
 
 		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
@@ -582,11 +589,13 @@ public class GenerateCabinCommand extends CDTCommand {
 
 		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 				"Cabin generation completed"));
-		if (!cabin.equals(null)&&!cabinViewPart.equals(null)) {
+		if (!cabin.equals(null) && !cabinViewPart.equals(null)) {
 			cabinViewPart.setCabin(cabin);
-		} else if(cabinViewPart.equals(null)) {
+		} else if (cabinViewPart.equals(null)) {
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
-				"The cabin view is not visible, please add it before trying again!"));
+					"The cabin view is not visible, please add it before trying again!"));
 		}
+		cabinViewPart.syncViewer();
 	}
+
 }
