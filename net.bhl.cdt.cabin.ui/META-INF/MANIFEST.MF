@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Ui
-Bundle-SymbolicName: net.bhl.cdt.cabin.ui
+Bundle-SymbolicName: net.bhl.cdt.cabin.ui;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: net.bhl.cdt.cabin.ui.Activator
 Require-Bundle: org.eclipse.ui,
