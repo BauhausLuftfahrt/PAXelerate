@@ -7,5 +7,5 @@ Bundle-Activator: net.bhl.cdt.cabin.ui.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  net.bhl.cdt.ui;bundle-version="0.9.1"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
