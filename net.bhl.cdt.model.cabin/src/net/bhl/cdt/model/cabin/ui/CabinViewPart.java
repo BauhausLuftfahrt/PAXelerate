@@ -171,14 +171,14 @@ public class CabinViewPart extends ViewPart {
 	 */
 	public void syncViewer() {
 		if ((cabinAdapter != null)
-				&& (cabin.eAdapters().contains(cabinAdapter))) {
+				&& (!cabin.eAdapters().contains(cabinAdapter))) {
 			cabin.eAdapters().add(cabinAdapter);
 		}
 
 	}
 
 	/**
-	 * This method unsyncs the Cabin view tith the cabin object by removing the
+	 * This method unsyncs the Cabin view with the cabin object by removing the
 	 * event listener form the cabin object.
 	 */
 	public void unsyncViewer() {
