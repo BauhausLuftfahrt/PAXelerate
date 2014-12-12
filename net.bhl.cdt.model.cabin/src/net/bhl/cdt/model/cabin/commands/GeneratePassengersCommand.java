@@ -269,6 +269,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 		cabinViewPart = (CabinViewPart) page
 				.findView("net.bhl.cdt.model.cabin.cabinview");
+		// Unsync the cabin view during the execution of the command.
 		cabinViewPart.unsyncViewer();
 		/**************************************************************/
 		cabin.getPassengers().clear();
@@ -308,6 +309,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 		if (!cabinViewPart.equals(null)) {
 			cabinViewPart.setCabin(cabin);
 		}
+		// Resync the CabinView with the cabin object
 		cabinViewPart.syncViewer();
 	}
 }
