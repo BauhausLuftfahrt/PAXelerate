@@ -64,8 +64,10 @@ public class PremiumEconomyClassItemProvider extends TravelClassItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		PremiumEconomyClass premiumEconomyClass = (PremiumEconomyClass)object;
-		return getString("_UI_PremiumEconomyClass_type") + " " + premiumEconomyClass.getSequence();
+		String label = ((PremiumEconomyClass)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_PremiumEconomyClass_type") :
+			getString("_UI_PremiumEconomyClass_type") + " " + label;
 	}
 	
 

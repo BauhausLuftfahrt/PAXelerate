@@ -64,8 +64,10 @@ public class FirstClassItemProvider extends TravelClassItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		FirstClass firstClass = (FirstClass)object;
-		return getString("_UI_FirstClass_type") + " " + firstClass.getSequence();
+		String label = ((FirstClass)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_FirstClass_type") :
+			getString("_UI_FirstClass_type") + " " + label;
 	}
 	
 

@@ -64,8 +64,10 @@ public class BusinessClassItemProvider extends TravelClassItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		BusinessClass businessClass = (BusinessClass)object;
-		return getString("_UI_BusinessClass_type") + " " + businessClass.getSequence();
+		String label = ((BusinessClass)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_BusinessClass_type") :
+			getString("_UI_BusinessClass_type") + " " + label;
 	}
 	
 

@@ -173,8 +173,8 @@ public class GenerateCabinCommand extends CDTCommand {
 		seatIdString = rowCount + seatIdLetter;
 		newSeat.setSeatId(seatIdString);
 		newSeat.setName(seatIdString);
-		newSeat.setXDimension(seatDimensionY);
-		newSeat.setYDimension(seatDimensionX);
+		newSeat.setXDimension(seatDimensionX);
+		newSeat.setYDimension(seatDimensionY);
 		newSeat.setLetter(seatIdLetter);
 		newSeat.setXPosition(globalSeatPositionX);
 		newSeat.setYPosition(globalSeatPositionY);
@@ -257,6 +257,7 @@ public class GenerateCabinCommand extends CDTCommand {
 				subbClazz.setSeatsPerRow(seatsInRow);
 				subbClazz.setSeatWidth(seatDimensionX);
 				subbClazz.setSeatLength(seatDimensionY);
+				subbClazz.setName("");
 
 				/**************************************************************************/
 				seatHelper = 0;
