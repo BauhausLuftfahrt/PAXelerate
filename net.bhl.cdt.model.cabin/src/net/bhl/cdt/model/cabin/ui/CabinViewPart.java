@@ -143,7 +143,7 @@ public class CabinViewPart extends ViewPart {
 				"T:\\Marc Engelmann\\aircraft_images\\lh_a320_cut.PNG");
 		canvas = new Canvas(parent, SWT.RESIZE);
 
-		drawDescriptions();
+		
 		doTheDraw();
 
 	}
@@ -688,6 +688,7 @@ public class CabinViewPart extends ViewPart {
 				}
 			}
 		});
+		drawDescriptions();
 		disposeAll();
 	}
 

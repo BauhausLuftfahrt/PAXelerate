@@ -23,6 +23,7 @@ import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.Stairway;
 import net.bhl.cdt.model.cabin.StairwayDirection;
+import net.bhl.cdt.model.cabin.StandardDoor;
 import net.bhl.cdt.model.cabin.TravelClass;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.util.FunctionLibrary;
@@ -107,7 +108,7 @@ public class GenerateCabinCommand extends CDTCommand {
 	 */
 	private <T extends TravelClass> void switchSettings(Class<T> travelSubClass) {
 		if (travelSubClass.getSimpleName().equals("PremiumEconomyClass")) {
-			seats = 12; // cabin.getSeatsInPremiumEconomyClass();
+			seats = 24; // cabin.getSeatsInPremiumEconomyClass();
 			seatsInRow = 6; // cabin.getSeatsPerRowInPremiumEconomyClass();
 			seatDimensions.setTwoDimensional(50, 60);
 			seatPitch = 20; // cabin.getSeatPitchInPremiumEco();
@@ -328,7 +329,14 @@ public class GenerateCabinCommand extends CDTCommand {
 			newDoor.setWidth(newDoor.getWidthOfMainDoor());
 			newDoor.setYPosition(globalSeatPositionY);
 			globalSeatPositionY += newDoor.getWidthOfMainDoor();
-		} else {
+		} else if(typeDoor.getSimpleName().equals("StandardDoor")) {
+			StandardDoor standardDoor = CabinFactory.eINSTANCE.createStandardDoor();
+			newDoor = standardDoor;
+			newDoor.setWidth(newDoor.getWidthOfMainDoor());
+			newDoor.setYPosition(globalSeatPositionY);
+			globalSeatPositionY += newDoor.getWidthOfMainDoor();
+		}
+		else {
 			EmergencyExit emergencyExit = CabinFactory.eINSTANCE
 					.createEmergencyExit();
 			newDoor = emergencyExit;
@@ -518,7 +526,7 @@ public class GenerateCabinCommand extends CDTCommand {
 		createGalley(true,
 				((cabin.getCabinWidth() - cabin.getAisleWidth()) / 2), 100);
 
-		// createDoor(StandardDoor.class, true, 2, -1);
+		createDoor(StandardDoor.class, true, 2, -1);
 
 		createLavatory(false,
 				((cabin.getCabinWidth() - cabin.getAisleWidth()) / 2), 100);

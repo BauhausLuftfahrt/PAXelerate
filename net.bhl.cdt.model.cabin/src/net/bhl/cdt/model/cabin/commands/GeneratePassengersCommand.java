@@ -8,6 +8,7 @@ package net.bhl.cdt.model.cabin.commands;
 import java.util.ArrayList;
 
 import net.bhl.cdt.commands.CDTCommand;
+//import net.bhl.cdt.cabin.ui.Activator;
 import net.bhl.cdt.model.cabin.BusinessClass;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
@@ -80,6 +81,10 @@ public class GeneratePassengersCommand extends CDTCommand {
 	private int seatsInClass;
 	private int seatAreaBegin;
 	private ILog logger;
+	
+	//int cabinViewFPS = Activator.getDefault().getPreferenceStore()
+	//        .getString("CabinViewFPS");
+
 
 	/**
 	 * This method submits the cabin to be used in the file.
