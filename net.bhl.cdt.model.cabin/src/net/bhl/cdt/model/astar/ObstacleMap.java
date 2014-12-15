@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2009-2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+s * <copyright> Copyright (c) 2009-2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  *******************************************************************************/
@@ -17,6 +17,8 @@ import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.util.ModelHelper;
 
 /**
+ * This class represents an obstacle map. Every point in the two dimensional
+ * array has a specific value which represents the strength of the obstacle.
  * 
  * @author marc.engelmann
  *
@@ -24,18 +26,20 @@ import net.bhl.cdt.model.util.ModelHelper;
 
 public class ObstacleMap {
 	private Cabin cabin;
-	private Vector dimensions = new Vector();
+	private Vector dimensions = new Vector(0, 0);
 	private static final int MAX_VALUE = 100000;
 	private static final int BASIC_VALUE = 10;
 	private int[][] obstacleMap;
 
 	/**
 	 * This method constructs the obstacle map.
-	 * @param cabin is the input cabin
+	 * 
+	 * @param cabin
+	 *            is the input cabin
 	 */
 	public ObstacleMap(Cabin cabin) {
 		this.cabin = cabin;
-		dimensions.set(
+		dimensions.setTwoDimensional(
 				(int) (cabin.getCabinWidth() / cabin.getScale()),
 				(int) (cabin.getCabinLength() / cabin.getScale()));
 		obstacleMap = createObstacleMap();
@@ -49,10 +53,11 @@ public class ObstacleMap {
 	public static int getBasicValue() {
 		return BASIC_VALUE;
 	}
-	
+
 	/**
+	 * This method returns the obstacle value.
 	 * 
-	 * @return
+	 * @return the obstacle value
 	 */
 	public static int getObstacleValue() {
 		return MAX_VALUE;
@@ -70,7 +75,7 @@ public class ObstacleMap {
 	/**
 	 * This method generates the obstacle Map.
 	 * 
-	 * @return obstacle map
+	 * @return obstaclemap is the obstacle map two dimensional array
 	 */
 	private int[][] createObstacleMap() {
 		obstacleMap = new int[dimensions.getX()][dimensions.getY()];
@@ -85,12 +90,84 @@ public class ObstacleMap {
 		generateObstacles(Galley.class);
 		generateObstacles(Curtain.class);
 
-		/*********** Create potential hole in aisle ***********/
+		generateAisleHole();
+		generatePotentialGradient();
+
+		/******** Create potential around obstacles ************/
+
+		/*****************************************************/
+
+		return obstacleMap;
+	}
+
+	/**
+	 * This method creates the potential gradient around obstacle.
+	 */
+	private void generatePotentialGradient() {
+		int k = 1;
+		int maxPot = BASIC_VALUE * 5;
+		for (int i = 0; i < dimensions.getX(); i++) {
+			for (int j = 0; j < dimensions.getY(); j++) {
+				if (obstacleMap[i][j] == MAX_VALUE) {
+					for (int p = 1; p < k; p++) {
+						/** WEST - EAST - NORTH - SOUTH */
+						if (((i - p) > 0)
+								&& (obstacleMap[i - p][j] != MAX_VALUE)) {
+							obstacleMap[i - p][j] = maxPot - p;
+						}
+						if (((i + p) < dimensions.getX())
+								&& (obstacleMap[i + p][j] != MAX_VALUE)) {
+							obstacleMap[i + p][j] = maxPot - p;
+						}
+
+						if (((j - p) > 0)
+								&& (obstacleMap[i][j - p] != MAX_VALUE)) {
+							obstacleMap[i][j - p] = maxPot - p;
+
+						}
+						if (((j + p) < dimensions.getY())
+								&& (obstacleMap[i][j + p] != MAX_VALUE)) {
+							obstacleMap[i][j + p] = maxPot - p;
+
+						}
+
+						/** NORTHWEST - NORTHEAST - SOUTHEAST - SOUTHWEST */
+						if ((((i - p) > 0) && ((j - p) > 0))
+								&& (obstacleMap[i - p][j - p] != MAX_VALUE)) {
+							obstacleMap[i - p][j - p] = maxPot - p;
+
+						}
+						if ((((i + p) < dimensions.getX()) && ((j - p) > 0))
+								&& (obstacleMap[i + p][j - p] != MAX_VALUE)) {
+							obstacleMap[i + p][j - p] = maxPot - p;
+
+						}
+						if ((((j + p) < dimensions.getY()) && ((i + p) < dimensions
+								.getX()))
+								&& (obstacleMap[i + p][j + p] != MAX_VALUE)) {
+							obstacleMap[i + p][j + p] = maxPot - p;
+
+						}
+						if ((((j + p) < dimensions.getY()) && ((i - p) > 0))
+								&& (obstacleMap[i - p][j + p] != MAX_VALUE)) {
+							obstacleMap[i - p][j + p] = maxPot - p;
+
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * This method generates the obstacle hole in the aisle.
+	 */
+	private void generateAisleHole() {
 		int entryMin = 0;
 		int entryMax = 0;
 		for (Door door : ModelHelper.getChildrenByClass(cabin, MainDoor.class)) {
-				entryMin = (int) (door.getYPosition() / cabin.getScale()) + 2;
-				entryMax = (int) ((door.getYPosition() + door.getWidth()) / cabin
+			entryMin = (int) (door.getYPosition() / cabin.getScale()) + 2;
+			entryMax = (int) ((door.getYPosition() + door.getWidth()) / cabin
 					.getScale()) - 2;
 		}
 		int aisleMin = (int) ((cabin.getCabinWidth() - cabin.getAisleWidth())
@@ -109,66 +186,6 @@ public class ObstacleMap {
 				}
 			}
 		}
-		/*****************************************************/
-
-		/******** Create potential around obstacles ************/
-		int k = 1;
-		int maxPot = BASIC_VALUE * 5;
-		for (int i = 0; i < dimensions.getX(); i++) {
-			for (int j = 0; j < dimensions.getY(); j++) {
-				if (obstacleMap[i][j] == MAX_VALUE) {
-					for (int p = 1; p < k; p++) {
-						/** WEST - EAST - NORTH - SOUTH */
-						if ((i - p) > 0) {
-							if (obstacleMap[i - p][j] != 100000) {
-								obstacleMap[i - p][j] = maxPot - p;
-							}
-						}
-						if ((i + p) < dimensions.getX()) {
-							if (obstacleMap[i + p][j] != 100000) {
-								obstacleMap[i + p][j] = maxPot - p;
-							}
-						}
-						if ((j - p) > 0) {
-							if (obstacleMap[i][j - p] != 100000) {
-								obstacleMap[i][j - p] = maxPot - p;
-							}
-						}
-						if ((j + p) < dimensions.getY()) {
-							if (obstacleMap[i][j + p] != 100000) {
-								obstacleMap[i][j + p] = maxPot - p;
-							}
-						}
-
-						/** NORTHWEST - NORTHEAST - SOUTHEAST - SOUTHWEST */
-						if (((i - p) > 0) && ((j - p) > 0)) {
-							if (obstacleMap[i - p][j - p] != 100000) {
-								obstacleMap[i - p][j - p] = maxPot - p;
-							}
-						}
-						if (((i + p) < dimensions.getX()) && ((j - p) > 0)) {
-							if (obstacleMap[i + p][j - p] != 100000) {
-								obstacleMap[i + p][j - p] = maxPot - p;
-							}
-						}
-						if (((j + p) < dimensions.getY())
-								&& ((i + p) < dimensions.getX())) {
-							if (obstacleMap[i + p][j + p] != 100000) {
-								obstacleMap[i + p][j + p] = maxPot - p;
-							}
-						}
-						if (((j + p) < dimensions.getY()) && ((i - p) > 0)) {
-							if (obstacleMap[i - p][j + p] != 100000) {
-								obstacleMap[i - p][j + p] = maxPot - p;
-							}
-						}
-					}
-				}
-			}
-		}
-		/*****************************************************/
-
-		return obstacleMap;
 	}
 
 	/**
@@ -203,6 +220,15 @@ public class ObstacleMap {
 		}
 	}
 
+	/**
+	 * This method returns the value of the obstacle map at a specific point.
+	 * 
+	 * @param x
+	 *            the x value of the point
+	 * @param y
+	 *            the y value of the point
+	 * @return the value at the specific point
+	 */
 	public int getValueAtPoint(int x, int y) {
 		return obstacleMap[x][y];
 	}

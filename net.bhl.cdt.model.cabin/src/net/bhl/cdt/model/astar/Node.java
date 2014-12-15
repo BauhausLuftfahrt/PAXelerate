@@ -1,320 +1,381 @@
-
+/*******************************************************************************
+ * <copyright> Copyright (c) 2009-2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
+ *******************************************************************************/
 package net.bhl.cdt.model.astar;
-
 
 import java.util.ArrayList;
 
+import net.bhl.cdt.model.cabin.util.Vector;
+
 /**
+ * This class represents a node object which has several properties important
+ * for the path finding algorithm.
  * 
  * @author marc.engelmann
  *
  */
 public class Node implements Comparable<Node> {
-        private AreaMap map;
-        private Node north;
-        private Node northEast;
-        private Node east;
-        private Node southEast;
-        private Node south;
-        private Node southWest;
-        private Node west;
-        private Node northWest;
-        private ArrayList<Node> neighborList;
-        private boolean visited;
-        private float distanceFromStart;
-        private int costFromStart;
-        private float heuristicDistanceFromGoal;
-        private Node previousNode;
-        private int x;
-        private int y;
-        public boolean isObstacle;
-        public boolean isOccupiedByAgent;
-        private boolean isStart;
-        private boolean isGoal;
-        private int cost;
-        private double compareFactor;
-        
-     /**
-     * 
-     * @return
-     */
-    public int getCost() {
+	private Node north;
+	private Node northEast;
+	private Node east;
+	private Node southEast;
+	private Node south;
+	private Node southWest;
+	private Node west;
+	private Node northWest;
+	private ArrayList<Node> neighborList;
+	private float distanceFromStart;
+	@SuppressWarnings("unused")
+	private int costFromStart;
+	private Node previousNode;
+	private Vector position = new Vector(0, 0);
+	private boolean isObstacle;
+	private boolean isOccupiedByAgent;
+	@SuppressWarnings("unused")
+	private boolean isStart;
+	@SuppressWarnings("unused")
+	private boolean isGoal;
+	private int cost;
+	private double compareFactor;
+
+	/**
+	 * this method constructs the Node.
+	 * 
+	 * @param vector
+	 *            is the position vector
+	 */
+	Node(Vector vector) {
+		neighborList = new ArrayList<Node>();
+		position = vector;
+		this.distanceFromStart = Integer.MAX_VALUE;
+		this.costFromStart = Integer.MAX_VALUE;
+		this.compareFactor = Integer.MAX_VALUE;
+		this.isObstacle = false;
+	}
+
+	/**
+	 * This method returns the cost of the node.
+	 * 
+	 * @return the cost
+	 */
+	public int getCost() {
 		return cost;
 	}
 
+	/**
+	 * This method sets the cost of the node.
+	 * 
+	 * @param cost
+	 *            the cost
+	 */
 	public void setCost(int cost) {
 		this.cost = cost;
 	}
 
-		Node(int x, int y) {
-                neighborList = new ArrayList<Node>();
-                this.x = x;
-                this.y = y;
-                this.visited = false;
-                this.distanceFromStart = Integer.MAX_VALUE;
-                this.costFromStart = Integer.MAX_VALUE;
-                this.compareFactor = Integer.MAX_VALUE;
-                this.isObstacle = false;
-                this.isStart = false;
-                this.isGoal = false;
-        }
-       
-        public double getCompareFactor() {
-			return compareFactor;
+	/**
+	 * This method returns the compare factor.
+	 * 
+	 * @return the compare factor
+	 */
+	public double getCompareFactor() {
+		return compareFactor;
+	}
+
+	/**
+	 * This method sets the compare factor.
+	 * 
+	 * @param compareFactor
+	 *            the compare factor
+	 */
+	public void setCompareFactor(double compareFactor) {
+		this.compareFactor = compareFactor;
+	}
+
+	/**
+	 * This method sets the corresponding node.
+	 * 
+	 * @param north
+	 *            is the node
+	 */
+	public void setNorth(Node north) {
+		// replace the old Node with the new one in the neighborList
+		if (neighborList.contains(this.north)) {
+			neighborList.remove(this.north);
 		}
+		neighborList.add(north);
 
-		public void setCompareFactor(double compareFactor) {
-			this.compareFactor = compareFactor;
+		// set the new Node
+		this.north = north;
+	}
+
+	/**
+	 * This method sets the corresponding node.
+	 * 
+	 * @param northEast
+	 *            is the node
+	 */
+	public void setNorthEast(Node northEast) {
+		// replace the old Node with the new one in the neighborList
+		if (neighborList.contains(this.northEast)) {
+			neighborList.remove(this.northEast);
 		}
+		neighborList.add(northEast);
 
-		Node (int x, int y, boolean visited, int distanceFromStart, boolean isObstical, boolean isStart, boolean isGoal) {
-                neighborList = new ArrayList<Node>();
-                this.x = x;
-                this.y = y;
-                this.visited = visited;
-                this.distanceFromStart = distanceFromStart;
-                this.isObstacle = isObstical;
-                this.isStart = isStart;
-                this.isGoal = isGoal;
-        }
-       
-        public Node getNorth() {
-                return north;
-        }
+		// set the new Node
+		this.northEast = northEast;
+	}
 
-        public void setNorth(Node north) {
-                //replace the old Node with the new one in the neighborList
-                if (neighborList.contains(this.north))
-                        neighborList.remove(this.north);
-                neighborList.add(north);
-               
-                //set the new Node
-                this.north = north;
-        }
-
-        public Node getNorthEast() {
-                return northEast;
-        }
-
-        public void setNorthEast(Node northEast) {
-                //replace the old Node with the new one in the neighborList
-                if (neighborList.contains(this.northEast))
-                        neighborList.remove(this.northEast);
-                neighborList.add(northEast);
-               
-                //set the new Node
-                this.northEast = northEast;
-        }
-
-        public Node getEast() {
-                return east;
-        }
-
-        public void setEast(Node east) {
-                //replace the old Node with the new one in the neighborList
-                if (neighborList.contains(this.east))
-                        neighborList.remove(this.east);
-                neighborList.add(east);
-               
-                //set the new Node
-                this.east = east;
-        }
-
-        public Node getSouthEast() {
-                return southEast;
-        }
-
-        public void setSouthEast(Node southEast) {
-                //replace the old Node with the new one in the neighborList
-                if (neighborList.contains(this.southEast))
-                        neighborList.remove(this.southEast);
-                neighborList.add(southEast);
-               
-                //set the new Node
-                this.southEast = southEast;
-        }
-
-        public Node getSouth() {
-                return south;
-        }
-
-        public void setSouth(Node south) {
-                //replace the old Node with the new one in the neighborList
-                if (neighborList.contains(this.south))
-                        neighborList.remove(this.south);
-                neighborList.add(south);
-               
-                //set the new Node
-                this.south = south;
-        }
-
-        public Node getSouthWest() {
-                return southWest;
-        }
-
-        public void setSouthWest(Node southWest) {
-                //replace the old Node with the new one in the neighborList
-                if (neighborList.contains(this.southWest))
-                        neighborList.remove(this.southWest);
-                neighborList.add(southWest);
-               
-                //set the new Node
-                this.southWest = southWest;
-        }
-
-        public Node getWest() {
-                return west;
-        }
-
-        public void setWest(Node west) {
-                //replace the old Node with the new one in the neighborList
-                if (neighborList.contains(this.west))
-                        neighborList.remove(this.west);
-                neighborList.add(west);
-               
-                //set the new Node
-                this.west = west;
-        }
-
-        public Node getNorthWest() {
-                return northWest;
-        }
-
-        public void setNorthWest(Node northWest) {
-                //replace the old Node with the new one in the neighborList
-                if (neighborList.contains(this.northWest))
-                        neighborList.remove(this.northWest);
-                neighborList.add(northWest);
-               
-                //set the new Node
-                this.northWest = northWest;
-        }
-       
-        public ArrayList<Node> getNeighborList() {
-                return neighborList;
-        }
-
-        public boolean isVisited() {
-                return visited;
-        }
-
-        public void setVisited(boolean visited) {
-                this.visited = visited;
-        }
-
-        public float getDistanceFromStart() {
-                return distanceFromStart;
-        }
-
-        public void setDistanceFromStart(float f) {
-                this.distanceFromStart = f;
-        }
-
-        public Node getPreviousNode() {
-                return previousNode;
-        }
-
-        public void setPreviousNode(Node previousNode) {
-                this.previousNode = previousNode;
-        }
-       
-        public float getHeuristicDistanceFromGoal() {
-                return heuristicDistanceFromGoal;
-        }
-
-        public void setHeuristicDistanceFromGoal(float heuristicDistanceFromGoal) {
-                this.heuristicDistanceFromGoal = heuristicDistanceFromGoal;
-        }
-
-        public int getX() {
-                return x;
-        }
-
-        public void setX(int x) {
-                this.x = x;
-        }
-
-        public int getY() {
-                return y;
-        }
-
-        public void setY(int y) {
-                this.y = y;
-        }
-       
-        public boolean isObstacle() {
-                return isObstacle;
-        }
-
-        public void setObstacle(boolean isObstacle) {
-                this.isObstacle = isObstacle;
-        }
-        
-        public synchronized boolean isOccupiedByAgent() {
-   			return isOccupiedByAgent;
-   		}
-
-   		public synchronized void setOccupiedByAgent(boolean isOccupiedByAgent) {
-   			this.isOccupiedByAgent = isOccupiedByAgent;
-   		}
-
-
-        public boolean isStart() {
-                return isStart;
-        }
-
-        public void setStart(boolean isStart) {
-                this.isStart = isStart;
-        }
-
-        public boolean isGoal() {
-                return isGoal;
-        }
-
-        public float getCostFromStart() {
-			return costFromStart;
+	/**
+	 * This method sets the corresponding node.
+	 * 
+	 * @param east
+	 *            is the node
+	 */
+	public void setEast(Node east) {
+		// replace the old Node with the new one in the neighborList
+		if (neighborList.contains(this.east)) {
+			neighborList.remove(this.east);
 		}
+		neighborList.add(east);
 
-		public void setCostFromStart(int costFromStart) {
-			this.costFromStart = costFromStart;
+		// set the new Node
+		this.east = east;
+	}
+
+	/**
+	 * This method sets the corresponding node.
+	 * 
+	 * @param southEast
+	 *            is the node
+	 */
+	public void setSouthEast(Node southEast) {
+		// replace the old Node with the new one in the neighborList
+		if (neighborList.contains(this.southEast)) {
+			neighborList.remove(this.southEast);
 		}
-		
-		public void setGoal(boolean isGoal) {
-                this.isGoal = isGoal;
-        }
+		neighborList.add(southEast);
 
-        public boolean equals(Node node) {
-                return (node.x == x) && (node.y == y);
-        }
-        
-        /**EDITED BY MARC.ENGELMANN ON 01-12-2014*/
-        /** modified this function in order to sort nodes by cost, not by distance!
-         * Only if the cost is the same, sort it by the distance! 
-         */ 
-        
-        /**
-         * 
-         */
-        public int compareTo(Node otherNode) {
-//        		/**better if: cheaper & closer or equally cheap but closer */ 
-//                if(((costFromStart<otherNode.costFromStart)&&(distanceFromStart<otherNode.distanceFromStart))||((costFromStart==otherNode.costFromStart)&&(distanceFromStart<otherNode.distanceFromStart))) {
-//                	return -1;
-//                }
-//                /**worse if: more expensive and further away or equally expensive but further away*/
-//                else if(((costFromStart>otherNode.costFromStart)&&(distanceFromStart>otherNode.distanceFromStart))||((costFromStart==otherNode.costFromStart)&&(distanceFromStart>otherNode.distanceFromStart))) {
-//                	return 1;
-//                	} 
-//                else { 
-//                	return 0;
-//                }
-        	if(compareFactor < otherNode.compareFactor) {
-        		return -1;
-        	}else if(compareFactor > otherNode.compareFactor) {
-        		return 1;	
-        	} 
-        	else {return 0;}
-        }
+		// set the new Node
+		this.southEast = southEast;
+	}
+
+	/**
+	 * This method sets the corresponding node.
+	 * 
+	 * @param south
+	 *            is the node
+	 */
+	public void setSouth(Node south) {
+		// replace the old Node with the new one in the neighborList
+		if (neighborList.contains(this.south)) {
+			neighborList.remove(this.south);
+		}
+		neighborList.add(south);
+
+		// set the new Node
+		this.south = south;
+	}
+
+	/**
+	 * This method sets the corresponding node.
+	 * 
+	 * @param southWest
+	 *            is the node
+	 */
+	public void setSouthWest(Node southWest) {
+		if (neighborList.contains(this.southWest)) {
+			neighborList.remove(this.southWest);
+		}
+		neighborList.add(southWest);
+		this.southWest = southWest;
+	}
+
+	/**
+	 * This method sets the corresponding node.
+	 * 
+	 * @param west
+	 *            is the node
+	 */
+	public void setWest(Node west) {
+		// replace the old Node with the new one in the neighborList
+		if (neighborList.contains(this.west)) {
+			neighborList.remove(this.west);
+		}
+		neighborList.add(west);
+
+		// set the new Node
+		this.west = west;
+	}
+
+	/**
+	 * This method sets the corresponding node.
+	 * 
+	 * @param northWest
+	 *            is the node.
+	 */
+	public void setNorthWest(Node northWest) {
+		// replace the old Node with the new one in the neighborList
+		if (neighborList.contains(this.northWest)) {
+			neighborList.remove(this.northWest);
+		}
+		neighborList.add(northWest);
+
+		// set the new Node
+		this.northWest = northWest;
+	}
+
+	/**
+	 * This method returns the list of neighbors.
+	 * 
+	 * @return the list
+	 */
+	public ArrayList<Node> getNeighborList() {
+		return neighborList;
+	}
+
+	/**
+	 * This method returns the distance from start.
+	 * 
+	 * @return the distance from start
+	 */
+	public float getDistanceFromStart() {
+		return distanceFromStart;
+	}
+
+	/**
+	 * This method sets the distance to the start.
+	 * 
+	 * @param f
+	 *            the distance
+	 */
+	public void setDistanceFromStart(float f) {
+		this.distanceFromStart = f;
+	}
+
+	/**
+	 * This method returns the previous node.
+	 * 
+	 * @return the node
+	 */
+	public Node getPreviousNode() {
+		return previousNode;
+	}
+
+	/**
+	 * This method sets the previous node.
+	 * 
+	 * @param previousNode
+	 *            the previous node
+	 */
+	public void setPreviousNode(Node previousNode) {
+		this.previousNode = previousNode;
+	}
+
+	/**
+	 * This method returns the position of the node.
+	 * 
+	 * @return the position
+	 */
+	public Vector getPosition() {
+		return position;
+	}
+
+	/**
+	 * This method returns if the node is an obstacle.
+	 * 
+	 * @return obstacle or not
+	 */
+	public boolean isObstacle() {
+		return isObstacle;
+	}
+
+	/**
+	 * This method sets the node an obstacle.
+	 * 
+	 * @param isObstacle
+	 *            yes or no
+	 */
+	public void setObstacle(boolean isObstacle) {
+		this.isObstacle = isObstacle;
+	}
+
+	/**
+	 * This method returns if the node is occupied by an agent.
+	 * 
+	 * @return yes or no
+	 */
+	public boolean isOccupiedByAgent() {
+		return isOccupiedByAgent;
+	}
+
+	/**
+	 * This method sets the node occupied by an agent.
+	 * 
+	 * @param isOccupiedByAgent
+	 *            yes or no
+	 */
+	public void setOccupiedByAgent(boolean isOccupiedByAgent) {
+		this.isOccupiedByAgent = isOccupiedByAgent;
+	}
+
+	/**
+	 * This method sets if the node is the start.
+	 * 
+	 * @param isStart
+	 *            yes or no
+	 */
+	public void setStart(boolean isStart) {
+		this.isStart = isStart;
+	}
+
+	/**
+	 * This method returns the cost from the start.
+	 * 
+	 * @param costFromStart
+	 *            is the cost from the start
+	 */
+	public void setCostFromStart(int costFromStart) {
+		this.costFromStart = costFromStart;
+	}
+
+	/**
+	 * This method checks if the node is the goal.
+	 * 
+	 * @param isGoal
+	 *            yes or no
+	 */
+	public void setGoal(boolean isGoal) {
+		this.isGoal = isGoal;
+	}
+
+	/**
+	 * This method checks for equality with another node.
+	 * 
+	 * @param node
+	 *            the other node
+	 * @return returns yes or no
+	 */
+	public boolean equalsOtherNode(Node node) {
+		return (node.getPosition().getX() == position.getX())
+				&& (node.getPosition().getY() == position.getY());
+	}
+
+	/**
+	 * This method compares two nodes.
+	 * 
+	 * @param otherNode
+	 *            the other node
+	 * @return returns the better node value
+	 */
+	public int compareTo(Node otherNode) {
+		if (compareFactor < otherNode.compareFactor) {
+			return -1;
+		} else if (compareFactor > otherNode.compareFactor) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
 }
-
-
-
