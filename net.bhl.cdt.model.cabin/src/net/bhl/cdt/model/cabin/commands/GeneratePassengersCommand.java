@@ -6,7 +6,6 @@
 package net.bhl.cdt.model.cabin.commands;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.BusinessClass;
@@ -152,41 +151,6 @@ public class GeneratePassengersCommand extends CDTCommand {
 		}
 	}
 
-	/**
-	 * This method generates a random value.
-	 * 
-	 * @param lowerBound
-	 *            defines the lower end of the random number.
-	 * @param upperBound
-	 *            defines the upper end. <b><i>Note that the upper bound itself
-	 *            is never reached!</i></b>
-	 * @return returns the random double generated from the parameters above.
-	 */
-	private double randomValue(int lowerBound, int upperBound) {
-		Random rand = new Random();
-		return (rand.nextInt(upperBound - lowerBound) + lowerBound);
-	}
-
-	/**
-	 * This method generates a unique random number for a specific list.
-	 * 
-	 * @param list
-	 *            is the list in which all unique values are stored
-	 */
-	private int uniqueRandom(ArrayList<Integer> list, int lowerBound, int range) {
-		boolean checkUniqueness = false;
-		Random rand = new Random();
-		int randomValue = 0;
-		while (!checkUniqueness) {
-			randomValue = rand.nextInt(range) + lowerBound;
-			if (!list.contains(randomValue)) {
-				list.add(randomValue);
-				checkUniqueness = true;
-			}
-		}
-		return randomValue;
-	}
-
 	private Seat getSeat(Passenger passenger) {
 		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
 			if ((!seat.equals(null))
@@ -220,10 +184,10 @@ public class GeneratePassengersCommand extends CDTCommand {
 					Passenger newPassenger = CabinFactory.eINSTANCE
 							.createPassenger();
 					cabin.getPassengers().add(newPassenger);
-					newPassenger.setId(uniqueRandom(randomPassengerId, 1,
-							totalPax + 1));
-					newPassenger.setSeat(uniqueRandom(randomSeatId,
-							seatAreaBegin, seatsInClass));
+					newPassenger.setId(FunctionLibrary.uniqueRandom(
+							randomPassengerId, 1, totalPax + 1));
+					newPassenger.setSeat(FunctionLibrary.uniqueRandom(
+							randomSeatId, seatAreaBegin, seatsInClass));
 					newPassenger.setName(newPassenger.getId() + " ("
 							+ getSeat(newPassenger).getSeatId() + ")");
 					newPassenger.setSeatRef(getSeat(newPassenger));
@@ -235,17 +199,29 @@ public class GeneratePassengersCommand extends CDTCommand {
 									* 60 / passengersPerMinute);
 
 					/******************** random values ***********************/
-					if (randomValue(0, 2) == 1) {
+
+					/*
+					 * note that the 2 integers have the following meaning:
+					 * first integer: lower bound second integer: the range The
+					 * upper bound is never reached!
+					 */
+
+					if (FunctionLibrary.randomValue(0, 2) == 1) {
 						sex = Sex.MALE;
 					}
 					newPassenger.setSex(sex);
-					newPassenger.setAge((int) randomValue(18, 70));
-					newPassenger.setHeight(randomValue(150, 200));
-					newPassenger.setWeight(randomValue(60, 110));
-					newPassenger.setDepth(randomValue(20, 50));
-					newPassenger.setWidth(randomValue(30, 60));
-					newPassenger.setWalkingSpeed(randomValue(5, 15) / 10);
-					newPassenger.setLuggageStowTime(randomValue(5, 10));
+					newPassenger.setAge((int) FunctionLibrary.randomValue(18,
+							70));
+					newPassenger.setHeight(FunctionLibrary
+							.randomValue(150, 200));
+					newPassenger
+							.setWeight(FunctionLibrary.randomValue(60, 110));
+					newPassenger.setDepth(FunctionLibrary.randomValue(20, 50));
+					newPassenger.setWidth(FunctionLibrary.randomValue(30, 60));
+					newPassenger.setWalkingSpeed(FunctionLibrary.randomValue(5,
+							15) / 10);
+					newPassenger.setLuggageStowTime(FunctionLibrary
+							.randomValue(5, 10));
 					/********************************************************/
 					passengerIdCount++;
 					passengerPerClassCount++;
@@ -253,14 +229,17 @@ public class GeneratePassengersCommand extends CDTCommand {
 				randomSeatId.clear();
 
 				logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
-						"successfully created " + (passengerPerClassCount)
-								+ " passengers in " + FunctionLibrary.splitCamelCase(travelSubClass
+						"successfully created "
+								+ (passengerPerClassCount)
+								+ " passengers in "
+								+ FunctionLibrary.splitCamelCase(travelSubClass
 										.getSimpleName())));
 			} else {
 
 				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-						"Too many passengers in " + FunctionLibrary.splitCamelCase(travelSubClass
-								.getSimpleName())));
+						"Too many passengers in "
+								+ FunctionLibrary.splitCamelCase(travelSubClass
+										.getSimpleName())));
 			}
 		}
 	}

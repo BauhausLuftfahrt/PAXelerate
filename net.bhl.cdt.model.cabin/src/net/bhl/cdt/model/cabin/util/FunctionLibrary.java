@@ -7,6 +7,7 @@
 package net.bhl.cdt.model.cabin.util;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * This class is used for general calculations and methods.
@@ -36,6 +37,21 @@ public final class FunctionLibrary {
 	}
 
 	/**
+	 * This method generates a random value.
+	 * 
+	 * @param lowerBound
+	 *            defines the lower end of the random number.
+	 * @param range
+	 *            defines the range. <b><i>Note that the upper bound itself is
+	 *            never reached!</i></b>
+	 * @return returns the random double generated from the parameters above.
+	 */
+	public static double randomValue(int lowerBound, int range) {
+		Random rand = new Random();
+		return (rand.nextInt(range) + lowerBound);
+	}
+
+	/**
 	 * This method returns a letter for a integer in the alphabet.
 	 * 
 	 * @param i
@@ -60,6 +76,33 @@ public final class FunctionLibrary {
 		point[0] = xLocation;
 		point[1] = yLocation;
 		return point;
+	}
+
+	/**
+	 * This method generates a unique random number for a specific list.
+	 * 
+	 * @param list
+	 *            is the array list that is checked for uniqueness
+	 * @param lowerBound
+	 *            is the lower bound of the integer
+	 * @param upperBound
+	 *            is the upper bound of the integer <b><i>Note that the upper bound
+	 *            itself is never reached!</i></b>
+	 * @return returns a random value
+	 */
+	public static int uniqueRandom(ArrayList<Integer> list, int lowerBound,
+			int upperBound) {
+		boolean checkUniqueness = false;
+		Random rand = new Random();
+		int randomValue = 0;
+		while (!checkUniqueness) {
+			randomValue = rand.nextInt(upperBound-lowerBound) + lowerBound;
+			if (!list.contains(randomValue)) {
+				list.add(randomValue);
+				checkUniqueness = true;
+			}
+		}
+		return randomValue;
 	}
 
 	/**
