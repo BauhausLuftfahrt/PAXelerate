@@ -6,8 +6,6 @@
 
 package net.bhl.cdt.model.cabin.commands;
 
-import java.util.ArrayList;
-
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.BusinessClass;
 import net.bhl.cdt.model.cabin.Cabin;
@@ -81,8 +79,6 @@ public class GenerateCabinCommand extends CDTCommand {
 	private String seatIdLetter;
 	private double globalSeatPositionX;
 	private double globalSeatPositionY;
-	private ArrayList<Integer> randomNumberCheck;
-	private double spaceBetweenSeats;
 	private int seats;
 	private int seatsInRow;
 	private int numbAisles;
@@ -176,6 +172,7 @@ public class GenerateCabinCommand extends CDTCommand {
 		switchLetter(j);
 		seatIdString = rowCount + seatIdLetter;
 		newSeat.setSeatId(seatIdString);
+		newSeat.setName(seatIdString);
 		newSeat.setXDimension(seatDimensionY);
 		newSeat.setYDimension(seatDimensionX);
 		newSeat.setLetter(seatIdLetter);
@@ -472,6 +469,7 @@ public class GenerateCabinCommand extends CDTCommand {
 	 * @param xDimension
 	 * @param yDimension
 	 */
+	@SuppressWarnings("unused")
 	private void createStairway(StairwayDirection direction, double xPosition,
 			double yPostion, double xDimension, double yDimension) {
 		Stairway newStairway = CabinFactory.eINSTANCE.createStairway();
@@ -536,7 +534,6 @@ public class GenerateCabinCommand extends CDTCommand {
 		cabin.getPassengers().clear();
 		/******************************/
 
-		spaceBetweenSeats = 10;
 		globalSeatPositionX = 0;
 		globalSeatPositionY = 0;
 		seatCount = 1;

@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#isCrewSeat <em>Crew Seat</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#getLetter <em>Letter</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#getTravelClass <em>Travel Class</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -138,6 +139,26 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 	 * @ordered
 	 */
 	protected TravelClass travelClass;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = "Placeholder";
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -285,6 +306,27 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SEAT__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getSeatId() {
 		return seatId;
 	}
@@ -322,6 +364,8 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 			case CabinPackage.SEAT__TRAVEL_CLASS:
 				if (resolve) return getTravelClass();
 				return basicGetTravelClass();
+			case CabinPackage.SEAT__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -351,6 +395,9 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 				return;
 			case CabinPackage.SEAT__TRAVEL_CLASS:
 				setTravelClass((TravelClass)newValue);
+				return;
+			case CabinPackage.SEAT__NAME:
+				setName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -382,6 +429,9 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 			case CabinPackage.SEAT__TRAVEL_CLASS:
 				setTravelClass((TravelClass)null);
 				return;
+			case CabinPackage.SEAT__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -406,6 +456,8 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 				return LETTER_EDEFAULT == null ? letter != null : !LETTER_EDEFAULT.equals(letter);
 			case CabinPackage.SEAT__TRAVEL_CLASS:
 				return travelClass != null;
+			case CabinPackage.SEAT__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -430,6 +482,8 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 		result.append(crewSeat);
 		result.append(", letter: ");
 		result.append(letter);
+		result.append(", name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}

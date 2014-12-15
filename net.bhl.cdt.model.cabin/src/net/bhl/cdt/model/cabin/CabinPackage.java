@@ -990,13 +990,22 @@ public interface CabinPackage extends EPackage {
 	int SEAT__TRAVEL_CLASS = PHYSICAL_OBJECT_FEATURE_COUNT + 5;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEAT__NAME = PHYSICAL_OBJECT_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Seat</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEAT_FEATURE_COUNT = PHYSICAL_OBJECT_FEATURE_COUNT + 6;
+	int SEAT_FEATURE_COUNT = PHYSICAL_OBJECT_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of operations of the '<em>Seat</em>' class.
@@ -2608,6 +2617,17 @@ public interface CabinPackage extends EPackage {
 	EReference getSeat_TravelClass();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Seat#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see net.bhl.cdt.model.cabin.Seat#getName()
+	 * @see #getSeat()
+	 * @generated
+	 */
+	EAttribute getSeat_Name();
+
+	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Seat#getSeatId <em>Seat Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3623,6 +3643,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SEAT__TRAVEL_CLASS = eINSTANCE.getSeat_TravelClass();
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SEAT__NAME = eINSTANCE.getSeat_Name();
 		/**
 		 * The meta object literal for the '<em><b>Seat Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
