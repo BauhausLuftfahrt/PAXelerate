@@ -8,30 +8,42 @@ package net.bhl.cdt.model.cabin.util;
 
 import java.util.ArrayList;
 
-
 /**
- * This class is used for general caluclations and methods.
+ * This class is used for general calculations and methods.
+ * 
  * @author marc.engelmann
  * @version 0.1
  *
  */
 
-
 public final class FunctionLibrary {
-	
+
 	private FunctionLibrary() {
-		
+
 	}
-	
+
 	/**
 	 * This method splits camel case strings into normal strings with spaces.
-	 * @param s is the string that should be transformed.
+	 * 
+	 * @param s
+	 *            is the string that should be transformed.
 	 * @return returns the transformed string
 	 */
 	public static String splitCamelCase(String s) {
 		return s.replaceAll(String.format("%s|%s|%s",
 				"(?<=[A-Z])(?=[A-Z][a-z])", "(?<=[^A-Z])(?=[A-Z])",
 				"(?<=[A-Za-z])(?=[^A-Za-z])"), " ");
+	}
+
+	/**
+	 * This method returns a letter for a integer in the alphabet.
+	 * 
+	 * @param i
+	 *            the integer
+	 * @return the letter which represents the number.
+	 */
+	public static String getCharForNumber(int i) {
+		return i > 0 && i < 27 ? String.valueOf((char) (i + 'A' - 1)) : null;
 	}
 
 	/**
@@ -49,13 +61,15 @@ public final class FunctionLibrary {
 		point[1] = yLocation;
 		return point;
 	}
-	
+
 	/**
 	 * This method prints an array list to the log.
-	 * @param list is the list
+	 * 
+	 * @param list
+	 *            is the list
 	 */
-	public static void printListToLog(ArrayList <Object> list) {
-		for(Object object:list) {
+	public static void printListToLog(ArrayList<Object> list) {
+		for (Object object : list) {
 			System.out.println(object);
 		}
 	}

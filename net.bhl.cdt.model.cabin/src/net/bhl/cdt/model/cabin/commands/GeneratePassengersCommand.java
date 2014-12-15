@@ -75,7 +75,6 @@ public class GeneratePassengersCommand extends CDTCommand {
 	private int passengerIdCount;
 	private int passengerPerClassCount;
 	private CabinViewPart cabinViewPart;
-	private String classNameString;
 	private int totalPax;
 	private int totalSeats;
 	private int paxInClass;
@@ -133,8 +132,6 @@ public class GeneratePassengersCommand extends CDTCommand {
 		}
 		paxInClass = ModelHelper.getChildrenByClass(cabin, travelSubClass)
 				.get(0).getPassengers();
-		classNameString = FunctionLibrary.splitCamelCase(travelSubClass
-				.getSimpleName());
 	}
 
 	/**
@@ -257,11 +254,13 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 				logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 						"successfully created " + (passengerPerClassCount)
-								+ " passengers in " + classNameString));
+								+ " passengers in " + FunctionLibrary.splitCamelCase(travelSubClass
+										.getSimpleName())));
 			} else {
 
 				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-						"Too many passengers in " + classNameString));
+						"Too many passengers in " + FunctionLibrary.splitCamelCase(travelSubClass
+								.getSimpleName())));
 			}
 		}
 	}
