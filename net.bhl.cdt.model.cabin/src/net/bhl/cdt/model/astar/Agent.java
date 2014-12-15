@@ -13,19 +13,20 @@ import net.bhl.cdt.model.observer.Subject;
 import net.bhl.cdt.model.util.ModelHelper;
 
 /**
+ * This class is an agent object. It walks a specific calculated path and reacts
+ * to obstacles occurring on the go.
  * 
  * @author marc.engelmann
  *
  */
 public class Agent extends Subject implements Runnable {
 	private Thread thread;
-	private String agentName;
 	private int[][] path;
 
 	private Vector start = new Vector(0, 0);
 	private Vector goal = new Vector(0, 0);
-	private Vector current = new Vector();
-	private Vector previous = new Vector();
+	private Vector current = new Vector(0, 0);
+	private Vector previous = new Vector(0, 0);
 
 	private Passenger passenger;
 	private int scale;
@@ -34,16 +35,14 @@ public class Agent extends Subject implements Runnable {
 	private int[][] currentAgentPosition = new int[1][2];
 
 	/**
-	 * 
-	 * @param name
-	 * @param passenger
-	 * @param start
-	 * @param goal
-	 * @param scale
+	 * This method constructs an agent.
+	 * @param passenger the passenger which is represented by the agent
+	 * @param start the starting vector 
+	 * @param goal the goal vector
+	 * @param scale the scale of the simulation
 	 */
-	Agent(String name, Passenger passenger, Vector start, Vector goal, int scale) {
+	Agent(Passenger passenger, Vector start, Vector goal, int scale) {
 		this.passenger = passenger;
-		this.agentName = name;
 		this.start = start;
 		this.goal = goal;
 		this.scale = scale;
@@ -51,44 +50,34 @@ public class Agent extends Subject implements Runnable {
 
 	}
 
-	public String getAgentName() {
-		return agentName;
-	}
-
-	public void setAgentName(String agentName) {
-		this.agentName = agentName;
-	}
-
-	public int[][] getPath() {
-		return path;
-	}
-
+	/**
+	 * This method returns the starting point vector.
+	 * @return the start vector
+	 */
 	public Vector getStart() {
 		return start;
 	}
 
+	/**
+	 * This method returns the goal point.
+	 * @return the goal point vector
+	 */
 	public Vector getGoal() {
 		return goal;
 	}
 
+	/**
+	 * This method sets the path of the agent.
+	 * @param path the path
+	 */
 	public void setPath(int[][] path) {
 		this.path = path;
-	}
-
-	public int[][] getCurrentAgentPosition() {
-		return currentAgentPosition;
-	}
-
-	public void setCurrentAgentPosition(int[][] currentAgentPosition) {
-		this.currentAgentPosition = currentAgentPosition;
 	}
 
 	/**
 	 * Rotation from 0 to 359 degrees. Only 45° steps. North is 0°.
 	 * 
-	 * @param xWay
-	 * @param yWay
-	 * @return
+	 * @return the rotation in degrees.
 	 */
 	public int getRotation() {
 
@@ -122,20 +111,32 @@ public class Agent extends Subject implements Runnable {
 			if (yWay < 0) {
 				return 0;
 			}
-		} 
+		}
 		return 0;
 	}
 
+	/**
+	 * 
+	 */
 	private boolean passengerStowsLuggage() {
 		Seat seat = passenger.getSeatRef();
 		return (passenger.isHasLuggage())
 				&& (current.getY() == (int) (seat.getYPosition() / scale - 5));
 	}
 
+	/**
+	 * This method occupies a specific area whithin the area map.
+	 * 
+	 * @param vector
+	 *            the vector with the location
+	 * @param occupy
+	 *            boolean which decides if the area will be blocked or unblocked
+	 */
 	private void occupyArea(Vector vector, boolean occupy) {
 		Seat seat = ModelHelper.getChildrenByClass(RunAStar.getCabin(),
 				Seat.class).get(0);
-		if (vector.getY() > (seat.getYPosition() / RunAStar.getCabin().getScale())) {
+		if (vector.getY() > (seat.getYPosition() / RunAStar.getCabin()
+				.getScale())) {
 			int width = 0;
 			for (int x = -width; x <= width; x++) {
 				// for (int y = -square; y<0; y++) {
@@ -154,7 +155,7 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * 
+	 * This method waits untin the path is clear.
 	 */
 	public void waitUntilPathIsClear() {
 
@@ -164,7 +165,7 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * 
+	 * This method finds the way around an obstacle.
 	 */
 	public void findWayAroundObstacle() {
 
@@ -177,7 +178,7 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * 
+	 * This method runs the agents walking simulation.
 	 */
 	public void run() {
 		try {
@@ -186,10 +187,10 @@ public class Agent extends Subject implements Runnable {
 			stopwatch.start();
 			this.currentAgentPosition = new int[path.length][2];
 			RunAStar.submitPath(path);
-			
+
 			int numbOfInterupts = 0;
 			int i = 0;
-			
+
 			while (i < path.length) {
 				if (i != 0) {
 					this.previous.setFromPoint(path[i - 1]);
@@ -244,29 +245,32 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * 
+	 * This method starts the agent.
 	 */
 	public void start() {
-		if (getT() == null) {
-			setT(new Thread(this, agentName));
-			getT().start();
+		if (getThread() == null) {
+			setThread(new Thread(this, passenger.getName()));
+			getThread().start();
 		}
 	}
 
 	/**
+	 * This method returns the thread.
 	 * 
-	 * @return
+	 * @return the thread
 	 */
-	public Thread getT() {
+	public Thread getThread() {
 		return thread;
 	}
 
 	/**
+	 * This method sets the thread.
 	 * 
-	 * @param t
+	 * @param thread
+	 *            the thread
 	 */
-	public void setT(Thread t) {
-		this.thread = t;
+	public void setThread(Thread thread) {
+		this.thread = thread;
 	}
 
 }
