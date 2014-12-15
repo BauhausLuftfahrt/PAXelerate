@@ -87,7 +87,7 @@ public class CabinViewPart extends ViewPart {
 	/********************************************************************/
 
 	private int oneMeter;
-	private Image image;
+	private Image aircraft;
 	private Canvas canvas;
 	private Adapter cabinAdapter;
 
@@ -132,15 +132,15 @@ public class CabinViewPart extends ViewPart {
 		lightGray = new Color(parent.getDisplay(), 220, 220, 220);
 		darkGray = new Color(parent.getDisplay(), 105, 105, 105);
 		white = new Color(parent.getDisplay(), 255, 255, 255);
-		black = new Color(parent.getDisplay(), 0, 0, 0);
+		black = new Color(parent.getDisplay(), 0, 0, 0);	
 		fontOne = new Font(parent.getDisplay(), fontName, 8, SWT.NORMAL);
 		fontTwo = new Font(parent.getDisplay(), fontName, fontsize, SWT.NORMAL);
 		fontThree = new Font(parent.getDisplay(), fontName, 9, SWT.NORMAL);
 		df = new DecimalFormat("####0.00");
 		/*************************************************************************************/
 
-		image = new Image(parent.getDisplay(),
-				"T:\\Marc Engelmann\\aircraft_images\\lh_a320_cut.PNG");
+		aircraft = new Image(parent.getDisplay(),
+				"T:\\Marc Engelmann\\aircraft_images\\lh_a320_cut_seats_with_floor.png");
 		canvas = new Canvas(parent, SWT.RESIZE);
 
 		
@@ -368,7 +368,12 @@ public class CabinViewPart extends ViewPart {
 				e.gc.setFont(fontOne);
 				e.gc.setBackground(white);
 				/*********************************** Info Box ******************************************/
-				e.gc.drawRectangle(20, 20, 70, 60);
+				int boxX = 15;
+				int boxY = 15;
+				int boxWidth = 80;
+				int boxLength = 140;
+				e.gc.fillRectangle(boxX, boxY, boxWidth, boxLength);
+				e.gc.drawRectangle(boxX, boxY, boxWidth, boxLength);
 				e.gc.drawText("Seats " + "\nRows " + "\nPax ", 30, 30);
 				e.gc.drawText(":\n:\n:", 60, 30);
 				e.gc.drawText(seatList.size() + "\n" + rowList.size() + "\n"
@@ -409,7 +414,10 @@ public class CabinViewPart extends ViewPart {
 				/*************************************************************************************/
 
 				/********************************* Coordinate Box **************************************/
-				int originy = 20;
+				
+				
+				
+				int originy = 32;
 				int originx = 320;
 				int length = 20;
 				int triangleHeight = 5;
@@ -426,6 +434,11 @@ public class CabinViewPart extends ViewPart {
 						originx - (int) (triangleWidth / 2), originy + length,
 						originx + (int) (triangleWidth / 2), originy + length };
 
+				int boxWidthCo = 50;
+				int boxOffset = 18;
+				e.gc.fillRectangle(originx-boxOffset, originy-boxOffset, boxWidthCo, boxWidthCo);
+				e.gc.drawRectangle(originx-boxOffset, originy-boxOffset, boxWidthCo, boxWidthCo);
+				
 				e.gc.setBackground(black);
 				e.gc.drawLine(originx, originy, originx, originy + length);
 				e.gc.drawLine(originx, originy, originx + length, originy);
@@ -459,7 +472,7 @@ public class CabinViewPart extends ViewPart {
 		}
 		canvas.addPaintListener(new PaintListener() {
 			public void paintControl(final PaintEvent e) {
-				e.gc.drawImage(image, 0, 0);
+				e.gc.drawImage(aircraft, 0, 0);
 				e.gc.setAlpha(255);
 				e.gc.setFont(fontOne);
 				e.gc.setBackground(white);
