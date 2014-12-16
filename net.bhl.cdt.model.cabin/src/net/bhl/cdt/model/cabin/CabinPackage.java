@@ -1251,13 +1251,22 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER__LUGGAGE_STOW_TIME = 20;
 
 	/**
+	 * The feature id for the '<em><b>Travel Class</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__TRAVEL_CLASS = 21;
+
+	/**
 	 * The number of structural features of the '<em>Passenger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_FEATURE_COUNT = 21;
+	int PASSENGER_FEATURE_COUNT = 22;
 
 	/**
 	 * The number of operations of the '<em>Passenger</em>' class.
@@ -2892,6 +2901,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getPassenger_LuggageStowTime();
 
 	/**
+	 * Returns the meta object for the reference '{@link net.bhl.cdt.model.cabin.Passenger#getTravelClass <em>Travel Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Travel Class</em>'.
+	 * @see net.bhl.cdt.model.cabin.Passenger#getTravelClass()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EReference getPassenger_TravelClass();
+
+	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getHeight <em>Height</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3848,6 +3868,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PASSENGER__LUGGAGE_STOW_TIME = eINSTANCE.getPassenger_LuggageStowTime();
+		/**
+		 * The meta object literal for the '<em><b>Travel Class</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PASSENGER__TRAVEL_CLASS = eINSTANCE.getPassenger_TravelClass();
 		/**
 		 * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->

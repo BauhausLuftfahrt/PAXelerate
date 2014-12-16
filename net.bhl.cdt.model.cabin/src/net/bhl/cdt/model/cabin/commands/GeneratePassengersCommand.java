@@ -22,6 +22,7 @@ import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.Sex;
 import net.bhl.cdt.model.cabin.TravelClass;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
+import net.bhl.cdt.model.cabin.ui.InfoViewPart;
 import net.bhl.cdt.model.cabin.util.FunctionLibrary;
 import net.bhl.cdt.model.util.ModelHelper;
 
@@ -81,10 +82,9 @@ public class GeneratePassengersCommand extends CDTCommand {
 	private int seatsInClass;
 	private int seatAreaBegin;
 	private ILog logger;
-	
-	//int cabinViewFPS = Activator.getDefault().getPreferenceStore()
-	//        .getString("CabinViewFPS");
 
+	// int cabinViewFPS = Activator.getDefault().getPreferenceStore()
+	// .getString("CabinViewFPS");
 
 	/**
 	 * This method submits the cabin to be used in the file.
@@ -181,7 +181,11 @@ public class GeneratePassengersCommand extends CDTCommand {
 		passengerPerClassCount = 0;
 		Sex sex = Sex.FEMALE;
 		boolean hasLuggage = true;
-		double passengersPerMinute = 18;
+
+		/** Define The number of passengers boarding per minute **/
+		double passengersPerMinute = 30;
+		/********************************************************/
+
 		switchClass(travelSubClass);
 		if (paxInClass != 0) {
 			if (paxInClass <= seatsInClass) {
@@ -196,7 +200,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 					newPassenger.setName(newPassenger.getId() + " ("
 							+ getSeat(newPassenger).getSeatId() + ")");
 					newPassenger.setSeatRef(getSeat(newPassenger));
-					// newPassenger.setClass(classType);
+					newPassenger.setTravelClass(newPassenger.getSeatRef()
+							.getTravelClass());
 					applyDoor(newPassenger);
 					newPassenger.setHasLuggage(hasLuggage);
 					newPassenger
@@ -207,8 +212,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 					/*
 					 * note that the 2 integers have the following meaning:
-					 * first integer: lower bound second integer: the range The
-					 * upper bound is never reached!
+					 * first integer: lower bound second integer: the upper
+					 * bound The upper bound is never reached!
 					 */
 
 					if (FunctionLibrary.randomValue(0, 2) == 1) {
@@ -257,6 +262,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 		cabinViewPart = (CabinViewPart) page
 				.findView("net.bhl.cdt.model.cabin.cabinview");
+		InfoViewPart infoViewPart = (InfoViewPart) page
+				.findView("net.bhl.cdt.model.cabin.infoview");
 		// Unsync the cabin view during the execution of the command.
 		cabinViewPart.unsyncViewer();
 		/**************************************************************/
@@ -297,6 +304,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 		if (!cabinViewPart.equals(null)) {
 			cabinViewPart.setCabin(cabin);
 		}
+		infoViewPart.update(cabin);
 		// Resync the CabinView with the cabin object
 		cabinViewPart.syncViewer();
 	}

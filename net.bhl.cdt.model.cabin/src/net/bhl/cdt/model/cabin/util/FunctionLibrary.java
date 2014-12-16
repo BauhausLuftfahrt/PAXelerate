@@ -41,14 +41,14 @@ public final class FunctionLibrary {
 	 * 
 	 * @param lowerBound
 	 *            defines the lower end of the random number.
-	 * @param range
-	 *            defines the range. <b><i>Note that the upper bound itself is
+	 * @param upperBound
+	 *            defines the upper bound. <b><i>Note that the upper bound itself is
 	 *            never reached!</i></b>
 	 * @return returns the random double generated from the parameters above.
 	 */
-	public static double randomValue(int lowerBound, int range) {
+	public static double randomValue(int lowerBound, int upperBound) {
 		Random rand = new Random();
-		return (rand.nextInt(range) + lowerBound);
+		return (rand.nextInt(upperBound-lowerBound) + lowerBound);
 	}
 
 	/**
@@ -85,18 +85,18 @@ public final class FunctionLibrary {
 	 *            is the array list that is checked for uniqueness
 	 * @param lowerBound
 	 *            is the lower bound of the integer
-	 * @param upperBound
-	 *            is the upper bound of the integer <b><i>Note that the upper bound
+	 * @param range
+	 *            is the range of the integer <b><i>Note that the upper bound
 	 *            itself is never reached!</i></b>
 	 * @return returns a random value
 	 */
 	public static int uniqueRandom(ArrayList<Integer> list, int lowerBound,
-			int upperBound) {
+			int range) {
 		boolean checkUniqueness = false;
 		Random rand = new Random();
 		int randomValue = 0;
 		while (!checkUniqueness) {
-			randomValue = rand.nextInt(upperBound-lowerBound) + lowerBound;
+			randomValue = rand.nextInt(range) + lowerBound;
 			if (!list.contains(randomValue)) {
 				list.add(randomValue);
 				checkUniqueness = true;

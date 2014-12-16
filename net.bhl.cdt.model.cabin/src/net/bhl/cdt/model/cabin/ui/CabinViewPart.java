@@ -5,6 +5,8 @@
  *******************************************************************************/
 package net.bhl.cdt.model.cabin.ui;
 
+import org.eclipse.swt.widgets.Button;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +24,12 @@ import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PremiumEconomyClass;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
+import net.bhl.cdt.model.cabin.commands.SimulateBoardingCommand;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.util.ModelHelper;
 //import net.bhl.cdt.cabin.ui.Activator;
+
+
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
@@ -36,6 +41,7 @@ import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
@@ -89,8 +95,12 @@ public class CabinViewPart extends ViewPart {
 
 	private int oneMeter;
 	private Image aircraft;
+	private Image economySeat;
+	private Image businessSeat;
+	private Image firstSeat;
 	private Canvas canvas;
 	private Adapter cabinAdapter;
+
 
 	/**
 	 * 
@@ -133,21 +143,50 @@ public class CabinViewPart extends ViewPart {
 		lightGray = new Color(parent.getDisplay(), 220, 220, 220);
 		darkGray = new Color(parent.getDisplay(), 105, 105, 105);
 		white = new Color(parent.getDisplay(), 255, 255, 255);
-		black = new Color(parent.getDisplay(), 0, 0, 0);	
+		black = new Color(parent.getDisplay(), 0, 0, 0);
 		fontOne = new Font(parent.getDisplay(), fontName, 8, SWT.NORMAL);
 		fontTwo = new Font(parent.getDisplay(), fontName, fontsize, SWT.NORMAL);
 		fontThree = new Font(parent.getDisplay(), fontName, 9, SWT.NORMAL);
 		df = new DecimalFormat("####0.00");
 		/*************************************************************************************/
 
+		factor = 364 / CABIN_WIDTH_IN_PIXELS;
+		
 		aircraft = new Image(parent.getDisplay(),
 				"T:\\Marc Engelmann\\aircraft_images\\bhl_with_ground.png");
+		economySeat = new Image(parent.getDisplay(),
+				"T:\\Marc Engelmann\\aircraft_images\\economy_seat.png");
+		businessSeat = new Image(parent.getDisplay(),
+				"T:\\Marc Engelmann\\aircraft_images\\business_seat.png");
+		firstSeat = new Image(parent.getDisplay(),
+				"T:\\Marc Engelmann\\aircraft_images\\first_seat.png");
+		int x =(int)( 40/factor);
+		int y = (int)( 50 / factor);
+		int z =(int)( 90/factor);
+		int a = (int)( 110 / factor);
+		int b =(int)( 60/factor);
+		int c = (int)( 70 / factor);
+		firstSeat = resize(firstSeat,z,a);	
+		businessSeat = resize(businessSeat,b,c);
+		economySeat = resize(economySeat,x,y);//economySeat, cabin.getClasses().get(3).getSeatWidth(), cabin.getClasses().get(3).getSeatWidth());
 		canvas = new Canvas(parent, SWT.RESIZE);
 
-		
 		doTheDraw();
 
 	}
+	
+	private Image resize(Image image, int width, int height) {
+		Image scaled = new Image(parent.getDisplay(), width, height);
+		GC gc = new GC(scaled);
+		gc.setAntialias(SWT.ON);
+		gc.setInterpolation(SWT.HIGH);
+		gc.drawImage(image, 0, 0,
+		image.getBounds().width, image.getBounds().height,
+		0, 0, width,height);
+		gc.dispose();
+		image.dispose(); // don't forget about me!
+		return scaled;
+		}
 
 	/**
 	 * This method catches a cabin.
@@ -294,7 +333,9 @@ public class CabinViewPart extends ViewPart {
 
 	/**
 	 * This method generates the passenger circles.
-	 * @param paxCabin the cabin object
+	 * 
+	 * @param paxCabin
+	 *            the cabin object
 	 */
 	public void submitPassengerCoordinates(final Cabin paxCabin) {
 		parent.redraw();
@@ -305,8 +346,8 @@ public class CabinViewPart extends ViewPart {
 				for (Passenger pass : ModelHelper.getChildrenByClass(paxCabin,
 						Passenger.class)) {
 					Vector color = calculateColor(pass);
-					e.gc.setBackground(new Color(e.display, color.getX(), color.getY(),
-							color.getZ()));
+					e.gc.setBackground(new Color(e.display, color.getX(), color
+							.getY(), color.getZ()));
 					// e.gc.setBackground(black);
 					if (!pass.isIsSeated()) {
 						if (!((pass.getPositionX() == 0) && (pass
@@ -321,7 +362,7 @@ public class CabinViewPart extends ViewPart {
 													.getDepth() / 2) / factor),
 									(int) (pass.getWidth() / factor),
 									(int) (pass.getDepth() / factor));
-							
+
 							int lineLength = 3;
 							e.gc.drawLine(
 									X_ZERO
@@ -329,9 +370,11 @@ public class CabinViewPart extends ViewPart {
 									Y_ZERO
 											+ (int) (pass.getPositionY() / factor),
 									X_ZERO
-											+ (int) (pass.getPositionX() / factor) + lineLength*(vector.getX()/5),
+											+ (int) (pass.getPositionX() / factor)
+											+ lineLength * (vector.getX() / 5),
 									Y_ZERO
-											+ (int) (pass.getPositionY() / factor) + lineLength*(vector.getY()/5));
+											+ (int) (pass.getPositionY() / factor)
+											+ lineLength * (vector.getY() / 5));
 						}
 					} else {
 						Seat mySeat = pass.getSeatRef();
@@ -356,109 +399,112 @@ public class CabinViewPart extends ViewPart {
 	/**
 	 * 
 	 */
-	private void drawDescriptions() {
-		final List<Seat> seatList = ModelHelper.getChildrenByClass(cabin,
-				Seat.class);
-		final List<Row> rowList = ModelHelper.getChildrenByClass(cabin,
-				Row.class);
-		final List<Passenger> paxList = ModelHelper.getChildrenByClass(cabin,
-				Passenger.class);
-
-		canvas.addPaintListener(new PaintListener() {
-			public void paintControl(final PaintEvent e) {
-				e.gc.setFont(fontOne);
-				e.gc.setBackground(white);
-				/*********************************** Info Box ******************************************/
-				int boxX = 15;
-				int boxY = 15;
-				int boxWidth = 80;
-				int boxLength = 140;
-				e.gc.fillRectangle(boxX, boxY, boxWidth, boxLength);
-				e.gc.drawRectangle(boxX, boxY, boxWidth, boxLength);
-				e.gc.drawText("Seats " + "\nRows " + "\nPax ", 30, 30);
-				e.gc.drawText(":\n:\n:", 60, 30);
-				e.gc.drawText(seatList.size() + "\n" + rowList.size() + "\n"
-						+ paxList.size(), 65, 30);
-				/*************************************************************************************/
-
-				/*********************************** Scale Box *****************************************/
-				int xbegin = 40;
-				int ybegin = 122;
-				int eckenBreite = 1;
-				int meter = 1;
-				if (!cabin.getClasses().isEmpty()) {
-					oneMeter = (int) (CABIN_WIDTH_IN_PIXELS * 100 / cabin
-							.getCabinWidth());
-				}
-				e.gc.drawText(
-						"1 px = "
-								+ df.format(cabin.getCabinWidth()
-										/ CABIN_WIDTH_IN_PIXELS) + " cm", 20,
-						100);
-				if (oneMeter > 20) {
-					meter = 1;
-				} else if (oneMeter > 10) {
-					meter = 2;
-				} else {
-					meter = 3;
-				}
-				e.gc.drawText(meter + " m", 20, 115);
-				e.gc.drawLine(xbegin, ybegin, xbegin + oneMeter * meter, ybegin);
-				e.gc.drawLine(xbegin, ybegin - eckenBreite, xbegin, ybegin
-						+ eckenBreite);
-				e.gc.drawLine(xbegin + oneMeter * meter, ybegin - eckenBreite,
-						xbegin + oneMeter * meter, ybegin + eckenBreite);
-
-				e.gc.drawText("1 pt = " + (int) (cabin.getScale() / factor)
-						+ " px", 20, 130);
-				// e.gc.drawRectangle(30,130,(int)(drawCabin.getScale()/factor),(int)(drawCabin.getScale()/factor));
-				/*************************************************************************************/
-
-				/********************************* Coordinate Box **************************************/
-				
-				//int cabinViewFPS = Activator.getDefault().getPreferenceStore()
-				 //       .getString("CabinViewFPS");
-
-				
-				int originy = 32;
-				int originx = 320;
-				int length = 20;
-				int triangleHeight = 5;
-				int triangleWidth = 6;
-				int correctionOfXPosition = 4;
-				int correctionOfYPosition = 7;
-				int distanceOfXToLine = 15;
-				int distanceOfYToLine = 10;
-				int radiusOfZAxisCircle = 4;
-				int[] xTriangle = { originx + length + triangleHeight, originy,
-						originx + length, originy - (int) (triangleWidth / 2),
-						originx + length, originy + (int) (triangleWidth / 2) };
-				int[] yTriangle = { originx, originy + length + triangleHeight,
-						originx - (int) (triangleWidth / 2), originy + length,
-						originx + (int) (triangleWidth / 2), originy + length };
-
-				int boxWidthCo = 50;
-				int boxOffset = 18;
-				e.gc.fillRectangle(originx-boxOffset, originy-boxOffset, boxWidthCo, boxWidthCo);
-				e.gc.drawRectangle(originx-boxOffset, originy-boxOffset, boxWidthCo, boxWidthCo);
-				
-				e.gc.setBackground(black);
-				e.gc.drawLine(originx, originy, originx, originy + length);
-				e.gc.drawLine(originx, originy, originx + length, originy);
-				e.gc.fillPolygon(xTriangle);
-				e.gc.fillPolygon(yTriangle);
-				e.gc.drawOval(originx - (int) (radiusOfZAxisCircle / 2),
-						originy - (int) (radiusOfZAxisCircle / 2),
-						radiusOfZAxisCircle, radiusOfZAxisCircle);
-				e.gc.setBackground(white);
-				e.gc.drawText("x", originx + (int) (length / 2)
-						- correctionOfXPosition, originy - distanceOfXToLine);
-				e.gc.drawText("y", originx - distanceOfYToLine, originy
-						+ (int) (length / 2) - correctionOfYPosition);
-				/*************************************************************************************/
-			}
-		});
-	}
+//	private void drawDescriptions() {
+//		final List<Seat> seatList = ModelHelper.getChildrenByClass(cabin,
+//				Seat.class);
+//		final List<Row> rowList = ModelHelper.getChildrenByClass(cabin,
+//				Row.class);
+//		final List<Passenger> paxList = ModelHelper.getChildrenByClass(cabin,
+//				Passenger.class);
+//
+//		canvas.addPaintListener(new PaintListener() {
+//			public void paintControl(final PaintEvent e) {
+//				e.gc.setFont(fontOne);
+//				e.gc.setBackground(white);
+//				/*********************************** Info Box ******************************************/
+//				int boxX = 15;
+//				int boxY = 15;
+//				int boxWidth = 80;
+//				int boxLength = 140;
+//				e.gc.fillRectangle(boxX, boxY, boxWidth, boxLength);
+//				e.gc.drawRectangle(boxX, boxY, boxWidth, boxLength);
+//				e.gc.drawText("Seats " + "\nRows " + "\n\nPax "+ "\nSeated ", 25, 30);
+//				e.gc.drawText(":\n:\n\n:\n:", 60, 30);
+//				e.gc.drawText(seatList.size() + "\n" + rowList.size() + "\n\n"
+//						+ paxList.size()+"\n"+SimulateBoardingCommand.getSeatedPassengers().size(), 65, 30);
+//				/*************************************************************************************/
+//
+//				/*********************************** Scale Box *****************************************/
+//				int xbegin = 40;
+//				int ybegin = 122;
+//				int eckenBreite = 1;
+//				int meter = 1;
+//				if (!cabin.getClasses().isEmpty()) {
+//					oneMeter = (int) (CABIN_WIDTH_IN_PIXELS * 100 / cabin
+//							.getCabinWidth());
+//				}
+//				e.gc.drawText(
+//						"1 px = "
+//								+ df.format(cabin.getCabinWidth()
+//										/ CABIN_WIDTH_IN_PIXELS) + " cm", 20,
+//						100);
+//				if (oneMeter > 20) {
+//					meter = 1;
+//				} else if (oneMeter > 10) {
+//					meter = 2;
+//				} else {
+//					meter = 3;
+//				}
+//				e.gc.drawText(meter + " m", 20, 115);
+//				e.gc.drawLine(xbegin, ybegin, xbegin + oneMeter * meter, ybegin);
+//				e.gc.drawLine(xbegin, ybegin - eckenBreite, xbegin, ybegin
+//						+ eckenBreite);
+//				e.gc.drawLine(xbegin + oneMeter * meter, ybegin - eckenBreite,
+//						xbegin + oneMeter * meter, ybegin + eckenBreite);
+//
+//				e.gc.drawText("1 pt = " + (int) (cabin.getScale() / factor)
+//						+ " px", 20, 130);
+//				// e.gc.drawRectangle(30,130,(int)(drawCabin.getScale()/factor),(int)(drawCabin.getScale()/factor));
+//				/*************************************************************************************/
+//
+////				/********************************* Coordinate Box **************************************/
+////
+////				// int cabinViewFPS =
+////				// Activator.getDefault().getPreferenceStore()
+////				// .getString("CabinViewFPS");
+////
+////				int originy = 32;
+////				int originx = 320;
+////				int length = 20;
+////				int triangleHeight = 5;
+////				int triangleWidth = 6;
+////				int correctionOfXPosition = 4;
+////				int correctionOfYPosition = 7;
+////				int distanceOfXToLine = 15;
+////				int distanceOfYToLine = 10;
+////				int radiusOfZAxisCircle = 4;
+////				int[] xTriangle = { originx + length + triangleHeight, originy,
+////						originx + length, originy - (int) (triangleWidth / 2),
+////						originx + length, originy + (int) (triangleWidth / 2) };
+////				int[] yTriangle = { originx, originy + length + triangleHeight,
+////						originx - (int) (triangleWidth / 2), originy + length,
+////						originx + (int) (triangleWidth / 2), originy + length };
+////
+////				int boxWidthCo = 50;
+////				int boxOffset = 18;
+////				e.gc.fillRectangle(originx - boxOffset, originy - boxOffset,
+////						boxWidthCo, boxWidthCo);
+////				e.gc.drawRectangle(originx - boxOffset, originy - boxOffset,
+////						boxWidthCo, boxWidthCo);
+////
+////				e.gc.setBackground(black);
+////				e.gc.drawLine(originx, originy, originx, originy + length);
+////				e.gc.drawLine(originx, originy, originx + length, originy);
+////				e.gc.fillPolygon(xTriangle);
+////				e.gc.fillPolygon(yTriangle);
+////				e.gc.drawOval(originx - (int) (radiusOfZAxisCircle / 2),
+////						originy - (int) (radiusOfZAxisCircle / 2),
+////						radiusOfZAxisCircle, radiusOfZAxisCircle);
+////				e.gc.setBackground(white);
+////				e.gc.drawText("x", originx + (int) (length / 2)
+////						- correctionOfXPosition, originy - distanceOfXToLine);
+////				e.gc.drawText("y", originx - distanceOfYToLine, originy
+////						+ (int) (length / 2) - correctionOfYPosition);
+////				/*************************************************************************************/
+//
+//			}
+//		});
+//	}
 
 	/**
 	 * 
@@ -479,61 +525,73 @@ public class CabinViewPart extends ViewPart {
 				e.gc.setAlpha(255);
 				e.gc.setFont(fontOne);
 				e.gc.setBackground(white);
+				
+				
+				//gc.setAntialias(SWT.ON);
+				//gc.setInterpolation(SWT.HIGH);
 
 				ArrayList<Row> rowCountList = new ArrayList<Row>();
 
 				e.gc.setFont(fontTwo);
-				e.gc.setBackground(lightGray);
-				e.gc.fillRectangle(X_ZERO, Y_ZERO, CABIN_WIDTH_IN_PIXELS,
-						cabinY);
+				e.gc.setBackground(black);
+				// e.gc.fillRectangle(X_ZERO, Y_ZERO, CABIN_WIDTH_IN_PIXELS,
+				// cabinY);
 
 				if (!initialBoot) {
 					for (Seat seat : ModelHelper.getChildrenByClass(cabin,
 							Seat.class)) {
 
+						
+						
 						if (seat.getTravelClass() instanceof FirstClass) {
-							e.gc.setBackground(red);
+							e.gc.drawImage(firstSeat, (int) (X_ZERO + seat.getXPosition()
+									/ factor), (int) (Y_ZERO + seat.getYPosition() / factor)); 
+							//e.gc.setBackground(red);
 						} else if (seat.getTravelClass() instanceof BusinessClass) {
-							e.gc.setBackground(blue);
-						} else if (seat.getTravelClass() instanceof PremiumEconomyClass) {
-							e.gc.setBackground(gold);
-						} else {
-							e.gc.setBackground(gray);
+							e.gc.drawImage(businessSeat, (int) (X_ZERO + seat.getXPosition()
+									/ factor), (int) (Y_ZERO + seat.getYPosition() / factor)); 
+							//e.gc.setBackground(blue);
+						} else { //if (seat.getTravelClass() instanceof PremiumEconomyClass) {
+							//e.gc.setBackground(gold);
+							e.gc.drawImage(economySeat, (int) (X_ZERO + seat.getXPosition()
+									/ factor), (int) (Y_ZERO + seat.getYPosition() / factor)); 
+						//} else {
+							//e.gc.setBackground(gray);
 						}
-
-						e.gc.fillRectangle((int) (X_ZERO + seat.getXPosition()
-								/ factor), (int) (Y_ZERO + seat.getYPosition()
-								/ factor),
-								(int) (seat.getXDimension() / factor),
-								(int) (seat.getYDimension() / factor));
-
-						// if(drawCabin.getGraphicSettings().isShowSeatlabels())
-						// {
-						e.gc.drawText(
-								"" + seat.getLetter(),
-								(int) (X_ZERO - fontsize * 0.7 + (seat
-										.getXPosition() + seat.getXDimension() / 2)
-										/ factor),
-								(int) (Y_ZERO - 0.9 * fontsize + (seat
-										.getYPosition() + seat.getYDimension() / 2)
-										/ factor));
-						// }
-						// if(drawCabin.getGraphicSettings().isShowRowLabels())
-						// {
-						Row row = CabinFactory.eINSTANCE.createRow();
-						row = ModelHelper.getParent(Row.class, seat);
-						if (!rowCountList.contains(row)) {
-							e.gc.setBackground(lightGray);
-							e.gc.drawText(
-									"" + row.getRowNumber(),
-									(int) (X_ZERO - 5 + cabin.getCabinWidth()
-											/ 2 / factor),
-									(int) (Y_ZERO - fontsize + (seat
-											.getYPosition() + seat
-											.getYDimension() / 2)
-											/ factor));
-							rowCountList.add(row);
-						}
+//
+//						e.gc.fillRectangle((int) (X_ZERO + seat.getXPosition()
+//								/ factor), (int) (Y_ZERO + seat.getYPosition()
+//								/ factor),
+//								(int) (seat.getXDimension() / factor),
+//								(int) (seat.getYDimension() / factor));
+//
+//						// if(drawCabin.getGraphicSettings().isShowSeatlabels())
+//						// {
+//						e.gc.drawText(
+//								"" + seat.getLetter(),
+//								(int) (X_ZERO - fontsize * 0.7 + (seat
+//										.getXPosition() + seat.getXDimension() / 2)
+//										/ factor),
+//								(int) (Y_ZERO - 0.9 * fontsize + (seat
+//										.getYPosition() + seat.getYDimension() / 2)
+//										/ factor));
+//						// }
+//						// if(drawCabin.getGraphicSettings().isShowRowLabels())
+//						// {
+//						Row row = CabinFactory.eINSTANCE.createRow();
+//						row = ModelHelper.getParent(Row.class, seat);
+//						if (!rowCountList.contains(row)) {
+//							e.gc.setBackground(lightGray);
+//							e.gc.drawText(
+//									"" + row.getRowNumber(),
+//									(int) (X_ZERO - 5 + cabin.getCabinWidth()
+//											/ 2 / factor),
+//									(int) (Y_ZERO - fontsize + (seat
+//											.getYPosition() + seat
+//											.getYDimension() / 2)
+//											/ factor));
+//							rowCountList.add(row);
+//						}
 						// }
 					}
 
@@ -647,7 +705,8 @@ public class CabinViewPart extends ViewPart {
 								.getChildrenByClass(cabin, Passenger.class)) {
 							Seat passengerSeat = passenger.getSeatRef();
 							Vector color = calculateColor(passenger);
-							e.gc.setBackground(new Color(e.display,color.getX(),color.getY(),color.getZ()));
+							e.gc.setBackground(new Color(e.display, color
+									.getX(), color.getY(), color.getZ()));
 							// e.gc.setBackground(black);
 							if (passengerSeat.getYDimension() < passengerSeat
 									.getXDimension()) {
@@ -704,7 +763,7 @@ public class CabinViewPart extends ViewPart {
 				}
 			}
 		});
-		drawDescriptions();
+		//drawDescriptions();
 		disposeAll();
 	}
 
@@ -718,21 +777,21 @@ public class CabinViewPart extends ViewPart {
 	private Vector getDirectionVector(Passenger passenger) {
 		int rotation = (int) passenger.getOrientationInDegree();
 		int factor = 5;
-		if(rotation == 0) {
+		if (rotation == 0) {
 			return new Vector(0, -10);
-		} else if (rotation <=45) {
+		} else if (rotation <= 45) {
 			return new Vector(factor, -factor);
-		} else if (rotation <=90) {
+		} else if (rotation <= 90) {
 			return new Vector(10, 0);
-		} else if (rotation <=135) {
+		} else if (rotation <= 135) {
 			return new Vector(factor, factor);
-		} else if (rotation <=180) {
+		} else if (rotation <= 180) {
 			return new Vector(0, 10);
-		} else if (rotation <=225) {
+		} else if (rotation <= 225) {
 			return new Vector(-factor, factor);
-		} else if (rotation <=270) {
+		} else if (rotation <= 270) {
 			return new Vector(-10, 0);
-		} else if (rotation <=315) {
+		} else if (rotation <= 315) {
 			return new Vector(-factor, -factor);
 		} else {
 			return new Vector(0, 0);
@@ -749,19 +808,19 @@ public class CabinViewPart extends ViewPart {
 		int colorDefine = (pax.getId() % 13) * 20 + 15;
 		switch (randInt) {
 		case 0:
-			return new Vector(255, 0,colorDefine);
+			return new Vector(255, 0, colorDefine);
 		case 1:
-			return new Vector(255,colorDefine,0);
+			return new Vector(255, colorDefine, 0);
 		case 2:
-			return new Vector(0,255,colorDefine);
+			return new Vector(0, 255, colorDefine);
 		case 3:
-			return new Vector(colorDefine,255,0);
+			return new Vector(colorDefine, 255, 0);
 		case 4:
-			return new Vector(0,colorDefine,255);
+			return new Vector(0, colorDefine, 255);
 		case 5:
-			return new Vector(colorDefine,0,255);
+			return new Vector(colorDefine, 0, 255);
 		default:
-			return new Vector(255,255,255);
+			return new Vector(255, 255, 255);
 		}
 	}
 

@@ -81,6 +81,7 @@ public class PassengerItemProvider
 			addNumberOfWaitsPropertyDescriptor(object);
 			addHasLuggagePropertyDescriptor(object);
 			addLuggageStowTimePropertyDescriptor(object);
+			addTravelClassPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -455,6 +456,28 @@ public class PassengerItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Travel Class feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTravelClassPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_travelClass_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_travelClass_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__TRAVEL_CLASS,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getNumberOfWaits <em>Number Of Waits</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#isHasLuggage <em>Has Luggage</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getLuggageStowTime <em>Luggage Stow Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getTravelClass <em>Travel Class</em>}</li>
  * </ul>
  * </p>
  *
@@ -492,6 +493,32 @@ public interface Passenger extends EObject {
 	 * @generated
 	 */
 	void setLuggageStowTime(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Travel Class</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Travel Class</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Travel Class</em>' reference.
+	 * @see #setTravelClass(TravelClass)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_TravelClass()
+	 * @model required="true"
+	 * @generated
+	 */
+	TravelClass getTravelClass();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getTravelClass <em>Travel Class</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Travel Class</em>' reference.
+	 * @see #getTravelClass()
+	 * @generated
+	 */
+	void setTravelClass(TravelClass value);
 
 	/**
 	 * Returns the value of the '<em><b>Height</b></em>' attribute.

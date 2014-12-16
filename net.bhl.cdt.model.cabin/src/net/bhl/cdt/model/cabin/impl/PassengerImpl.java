@@ -7,6 +7,7 @@ import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.Sex;
+import net.bhl.cdt.model.cabin.TravelClass;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -41,6 +42,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getNumberOfWaits <em>Number Of Waits</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#isHasLuggage <em>Has Luggage</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getLuggageStowTime <em>Luggage Stow Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getTravelClass <em>Travel Class</em>}</li>
  * </ul>
  * </p>
  *
@@ -448,6 +450,16 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	protected double luggageStowTime = LUGGAGE_STOW_TIME_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getTravelClass() <em>Travel Class</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTravelClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected TravelClass travelClass;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -845,6 +857,44 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public TravelClass getTravelClass() {
+		if (travelClass != null && travelClass.eIsProxy()) {
+			InternalEObject oldTravelClass = (InternalEObject)travelClass;
+			travelClass = (TravelClass)eResolveProxy(oldTravelClass);
+			if (travelClass != oldTravelClass) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CabinPackage.PASSENGER__TRAVEL_CLASS, oldTravelClass, travelClass));
+			}
+		}
+		return travelClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TravelClass basicGetTravelClass() {
+		return travelClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTravelClass(TravelClass newTravelClass) {
+		TravelClass oldTravelClass = travelClass;
+		travelClass = newTravelClass;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__TRAVEL_CLASS, oldTravelClass, travelClass));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public double getHeight() {
 		return height;
 	}
@@ -993,6 +1043,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return isHasLuggage();
 			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
 				return getLuggageStowTime();
+			case CabinPackage.PASSENGER__TRAVEL_CLASS:
+				if (resolve) return getTravelClass();
+				return basicGetTravelClass();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1067,6 +1120,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return;
 			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
 				setLuggageStowTime((Double)newValue);
+				return;
+			case CabinPackage.PASSENGER__TRAVEL_CLASS:
+				setTravelClass((TravelClass)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1143,6 +1199,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
 				setLuggageStowTime(LUGGAGE_STOW_TIME_EDEFAULT);
 				return;
+			case CabinPackage.PASSENGER__TRAVEL_CLASS:
+				setTravelClass((TravelClass)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1197,6 +1256,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return hasLuggage != HAS_LUGGAGE_EDEFAULT;
 			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
 				return luggageStowTime != LUGGAGE_STOW_TIME_EDEFAULT;
+			case CabinPackage.PASSENGER__TRAVEL_CLASS:
+				return travelClass != null;
 		}
 		return super.eIsSet(featureID);
 	}

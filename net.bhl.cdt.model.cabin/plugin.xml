@@ -103,9 +103,9 @@
             restorable="true">
       </view>
       <view
-            class="net.bhl.cdt.model.cabin.ui.ConsoleViewPart"
-            id="net.bhl.cdt.model.cabin.consoleview"
-            name="Console View"
+            class="net.bhl.cdt.model.cabin.ui.InfoViewPart"
+            id="net.bhl.cdt.model.cabin.infoview"
+            name="Info View"
             restorable="true">
       </view>
    </extension>

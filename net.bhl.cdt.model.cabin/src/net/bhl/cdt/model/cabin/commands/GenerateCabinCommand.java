@@ -26,6 +26,7 @@ import net.bhl.cdt.model.cabin.StairwayDirection;
 import net.bhl.cdt.model.cabin.StandardDoor;
 import net.bhl.cdt.model.cabin.TravelClass;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
+import net.bhl.cdt.model.cabin.ui.InfoViewPart;
 import net.bhl.cdt.model.cabin.util.FunctionLibrary;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.util.ModelHelper;
@@ -329,14 +330,14 @@ public class GenerateCabinCommand extends CDTCommand {
 			newDoor.setWidth(newDoor.getWidthOfMainDoor());
 			newDoor.setYPosition(globalSeatPositionY);
 			globalSeatPositionY += newDoor.getWidthOfMainDoor();
-		} else if(typeDoor.getSimpleName().equals("StandardDoor")) {
-			StandardDoor standardDoor = CabinFactory.eINSTANCE.createStandardDoor();
+		} else if (typeDoor.getSimpleName().equals("StandardDoor")) {
+			StandardDoor standardDoor = CabinFactory.eINSTANCE
+					.createStandardDoor();
 			newDoor = standardDoor;
 			newDoor.setWidth(newDoor.getWidthOfMainDoor());
 			newDoor.setYPosition(globalSeatPositionY);
 			globalSeatPositionY += newDoor.getWidthOfMainDoor();
-		}
-		else {
+		} else {
 			EmergencyExit emergencyExit = CabinFactory.eINSTANCE
 					.createEmergencyExit();
 			newDoor = emergencyExit;
@@ -473,6 +474,8 @@ public class GenerateCabinCommand extends CDTCommand {
 				.getActiveWorkbenchWindow().getActivePage();
 		cabinViewPart = (CabinViewPart) page
 				.findView("net.bhl.cdt.model.cabin.cabinview");
+		InfoViewPart infoViewPart = (InfoViewPart) page
+				.findView("net.bhl.cdt.model.cabin.infoview");
 		cabinViewPart.unsyncViewer();
 		/******************************************************************************************/
 
@@ -546,6 +549,7 @@ public class GenerateCabinCommand extends CDTCommand {
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 					"The cabin view is not visible, please add it before trying again!"));
 		}
+		infoViewPart.update(cabin);
 		cabinViewPart.syncViewer();
 	}
 

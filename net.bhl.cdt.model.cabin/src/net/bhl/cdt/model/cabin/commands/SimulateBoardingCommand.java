@@ -15,6 +15,7 @@ import net.bhl.cdt.model.astar.StopWatch;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
+import net.bhl.cdt.model.cabin.ui.InfoViewPart;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.util.ModelHelper;
 
@@ -60,7 +61,7 @@ import org.eclipse.ui.PlatformUI;
 public class SimulateBoardingCommand extends CDTCommand {
 
 	private Cabin cabin;
-	private ArrayList<Passenger> alreadySeatedList = new ArrayList<Passenger>();
+	private static ArrayList<Passenger> alreadySeatedList = new ArrayList<Passenger>();
 	private static StopWatch s = new StopWatch();
 	private ILog logger;
 
@@ -76,6 +77,14 @@ public class SimulateBoardingCommand extends CDTCommand {
 		this.cabin = cabin;
 		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
 	}
+	
+	/**
+	 * Returns the list with seated passengers.
+	 * @return the passenger list
+	 */
+	public static ArrayList<Passenger> getSeatedPassengers() {
+		return alreadySeatedList;
+	}
 
 	@Override
 	protected void doRun() {
@@ -85,6 +94,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 				.getActiveWorkbenchWindow().getActivePage();
 		CabinViewPart cabinViewPart = (CabinViewPart) page
 				.findView("net.bhl.cdt.model.cabin.cabinview");
+		InfoViewPart infoViewPart = (InfoViewPart) page
+				.findView("net.bhl.cdt.model.cabin.infoview");
 		/********************************************************************************************************/
 
 		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
@@ -109,6 +120,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 					}
 					cabinViewPart.submitPassengerCoordinates(astar
 							.getPassengerLocations());
+					infoViewPart.update(cabin);
 					Thread.sleep((int) (1000 / cabin.getFramesPerSecond()));
 				} catch (InterruptedException e) {
 					logger.log(new Status(IStatus.ERROR,
