@@ -24,6 +24,7 @@ import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.util.ModelHelper;
+//import net.bhl.cdt.cabin.ui.Activator;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
@@ -140,7 +141,7 @@ public class CabinViewPart extends ViewPart {
 		/*************************************************************************************/
 
 		aircraft = new Image(parent.getDisplay(),
-				"T:\\Marc Engelmann\\aircraft_images\\lh_a320_cut_seats_with_floor.png");
+				"T:\\Marc Engelmann\\aircraft_images\\bhl_with_ground.png");
 		canvas = new Canvas(parent, SWT.RESIZE);
 
 		
@@ -415,7 +416,9 @@ public class CabinViewPart extends ViewPart {
 
 				/********************************* Coordinate Box **************************************/
 				
-				
+				//int cabinViewFPS = Activator.getDefault().getPreferenceStore()
+				 //       .getString("CabinViewFPS");
+
 				
 				int originy = 32;
 				int originx = 320;
