@@ -494,8 +494,8 @@ public class CabinViewPart extends ViewPart {
 		canvas.redraw();
 		canvas.addPaintListener(new PaintListener() {
 			public void paintControl(final PaintEvent e) {
-				e.gc.setAntialias(SWT.ON);
-				e.gc.setInterpolation(SWT.HIGH);
+//				e.gc.setAntialias(SWT.ON);
+//				e.gc.setInterpolation(SWT.HIGH);
 				for (Passenger pass : ModelHelper.getChildrenByClass(paxCabin,
 						Passenger.class)) {
 					Vector color = calculateColor(pass);
