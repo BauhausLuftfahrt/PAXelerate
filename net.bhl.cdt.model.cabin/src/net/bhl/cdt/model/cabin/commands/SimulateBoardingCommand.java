@@ -23,6 +23,7 @@ import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
@@ -89,6 +90,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 	@Override
 	protected void doRun() {
 
+		cabin.setFramesPerSecond(10);
+		
 		/********************************** Get CabinView and ConsoleView ***************************************/
 		IWorkbenchPage page = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage();
@@ -148,6 +151,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 				if (!obstaclemap.equals(null)) {
 					cabinViewPart.submitObstacleMap(obstaclemap.getMap());
+					
 					logger.log(new Status(IStatus.INFO,
 							"net.bhl.cdt.model.cabin",
 							"Heat map generation succeeded"));
