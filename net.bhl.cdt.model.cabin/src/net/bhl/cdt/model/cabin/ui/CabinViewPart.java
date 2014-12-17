@@ -53,8 +53,7 @@ public class CabinViewPart extends ViewPart {
 	private Cabin cabin;
 	private double factor;
 	private Composite parent;
-	public static boolean initialBoot = true;
-	private boolean ObstacleMapSubmitted = true;
+	private static boolean initialBoot = true;
 
 	/********************* graphical settings. *************************/
 	private static final int OFFSET_OF_DOOR = 0;
@@ -115,6 +114,10 @@ public class CabinViewPart extends ViewPart {
 			return PlatformUI.getWorkbench().getSharedImages()
 					.getImage(ISharedImages.IMG_OBJ_ELEMENT);
 		}
+	}
+	
+	public Boolean isInitialBoot() {
+		return initialBoot;
 	}
 
 	private Image createImage() {
