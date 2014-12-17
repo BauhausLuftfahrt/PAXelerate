@@ -109,7 +109,7 @@ public class GenerateCabinCommand extends CDTCommand {
 	 */
 	private <T extends TravelClass> void switchSettings(Class<T> travelSubClass) {
 		if (travelSubClass.getSimpleName().equals("PremiumEconomyClass")) {
-			seats = 24; // cabin.getSeatsInPremiumEconomyClass();
+			seats = 24;
 			seatsInRow = 6; // cabin.getSeatsPerRowInPremiumEconomyClass();
 			seatDimensions.setTwoDimensional(50, 60);
 			seatPitch = 20; // cabin.getSeatPitchInPremiumEco();
@@ -198,7 +198,7 @@ public class GenerateCabinCommand extends CDTCommand {
 					EconomyClass subClass = CabinFactory.eINSTANCE
 							.createEconomyClass();
 					subbClazz = subClass;
-					subbClazz.setPassengers(10);
+					subbClazz.setPassengers(30);
 				} else if (travelSubClass.getSimpleName().equals("FirstClass")) {
 					FirstClass subClass = CabinFactory.eINSTANCE
 							.createFirstClass();

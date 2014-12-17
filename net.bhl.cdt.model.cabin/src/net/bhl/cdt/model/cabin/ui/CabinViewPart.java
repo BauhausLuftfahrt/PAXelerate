@@ -5,11 +5,8 @@
  *******************************************************************************/
 package net.bhl.cdt.model.cabin.ui;
 
-import org.eclipse.swt.widgets.Button;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 import net.bhl.cdt.model.astar.ObstacleMap;
 import net.bhl.cdt.model.cabin.BusinessClass;
@@ -21,13 +18,9 @@ import net.bhl.cdt.model.cabin.FirstClass;
 import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.Passenger;
-import net.bhl.cdt.model.cabin.PremiumEconomyClass;
-import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
-import net.bhl.cdt.model.cabin.commands.SimulateBoardingCommand;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.util.ModelHelper;
-//import net.bhl.cdt.cabin.ui.Activator;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
@@ -317,19 +310,16 @@ public class CabinViewPart extends ViewPart {
 				"T:\\Marc Engelmann\\aircraft_images\\business_seat.png");
 		firstSeat = new Image(parent.getDisplay(),
 				"T:\\Marc Engelmann\\aircraft_images\\first_seat.png");
-		int x = (int) (40 / factor);
-		int y = (int) (50 / factor);
-		int z = (int) (90 / factor);
-		int a = (int) (110 / factor);
-		int b = (int) (60 / factor);
-		int c = (int) (70 / factor);
-		firstSeat = resize(firstSeat, z, a);
-		businessSeat = resize(businessSeat, b, c);
-		economySeat = resize(economySeat, x, y);// economySeat,
-												// cabin.getClasses().get(3).getSeatWidth(),
-												// cabin.getClasses().get(3).getSeatWidth());
+		
+
+		
 		canvas = new Canvas(parent, SWT.RESIZE);
 		doTheDraw();
+
+		// int cabinViewFPS = Activator.getDefault().getPreferenceStore()
+		// .getString("CabinViewFPS");
+		//
+
 	}
 
 	private Image resize(Image image, int width, int height) {
@@ -340,7 +330,7 @@ public class CabinViewPart extends ViewPart {
 		gc.drawImage(image, 0, 0, image.getBounds().width,
 				image.getBounds().height, 0, 0, width, height);
 		gc.dispose();
-		image.dispose(); 
+		image.dispose();
 		return scaled;
 	}
 
@@ -353,6 +343,18 @@ public class CabinViewPart extends ViewPart {
 	public void setCabin(Cabin cabin) {
 		initialBoot = false;
 		this.cabin = cabin;
+		
+		factor = cabin.getCabinWidth()  / CABIN_WIDTH_IN_PIXELS;
+		firstSeat = resize(firstSeat, (int) (cabin.getClasses().get(0)
+				.getSeatWidth() / factor), (int) (cabin.getClasses().get(0)
+				.getSeatLength() / factor));
+		businessSeat = resize(businessSeat, (int) (cabin.getClasses()
+				.get(1).getSeatWidth() / factor), (int) (cabin.getClasses()
+				.get(1).getSeatLength() / factor));
+		economySeat = resize(economySeat, (int) (cabin.getClasses().get(3)
+				.getSeatWidth() / factor), (int) (cabin.getClasses().get(3)
+				.getSeatLength() / factor));
+		
 		cabinAdapter = new AdapterImpl() {
 			public void notifyChanged(Notification notification) {
 				if (!notification.isTouch()) {
@@ -435,8 +437,7 @@ public class CabinViewPart extends ViewPart {
 		graphicsControl.dispose();
 		loader = new ImageLoader();
 		loader.data = new ImageData[] { image.getImageData() };
-		loader.save(
-				"T:\\Marc Engelmann\\aircraft_images\\obstaclemap.png",
+		loader.save("T:\\Marc Engelmann\\aircraft_images\\obstaclemap.png",
 				SWT.IMAGE_PNG);
 		disposeAll();
 		return image;
@@ -494,8 +495,8 @@ public class CabinViewPart extends ViewPart {
 		canvas.redraw();
 		canvas.addPaintListener(new PaintListener() {
 			public void paintControl(final PaintEvent e) {
-//				e.gc.setAntialias(SWT.ON);
-//				e.gc.setInterpolation(SWT.HIGH);
+				// e.gc.setAntialias(SWT.ON);
+				// e.gc.setInterpolation(SWT.HIGH);
 				for (Passenger pass : ModelHelper.getChildrenByClass(paxCabin,
 						Passenger.class)) {
 					Vector color = calculateColor(pass);
@@ -553,6 +554,8 @@ public class CabinViewPart extends ViewPart {
 	 * 
 	 */
 	private void doTheDraw() {
+		
+		
 		factor = cabin.getCabinWidth() / CABIN_WIDTH_IN_PIXELS;
 		parent.redraw();
 		parent.update();
