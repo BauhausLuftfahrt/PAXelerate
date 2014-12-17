@@ -150,7 +150,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 								+ " seconds"));
 
 				if (!obstaclemap.equals(null)) {
-					cabinViewPart.submitObstacleMap(obstaclemap.getMap());
+					Image image = cabinViewPart.submitObstacleMap(obstaclemap.getMap());
+					cabinViewPart.printObstacleMap(image);
 					
 					logger.log(new Status(IStatus.INFO,
 							"net.bhl.cdt.model.cabin",

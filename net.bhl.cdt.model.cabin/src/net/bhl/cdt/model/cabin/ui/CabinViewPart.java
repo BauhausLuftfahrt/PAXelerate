@@ -53,7 +53,7 @@ public class CabinViewPart extends ViewPart {
 	private Cabin cabin;
 	private double factor;
 	private Composite parent;
-	private boolean initialBoot = true;
+	public static boolean initialBoot = true;
 	private boolean ObstacleMapSubmitted = true;
 
 	/********************* graphical settings. *************************/
@@ -403,6 +403,7 @@ public class CabinViewPart extends ViewPart {
 		GC graphicsControl = new GC(image);
 		graphicsControl.setAntialias(SWT.ON);
 		graphicsControl.setInterpolation(SWT.HIGH);
+		graphicsControl.drawImage(img, 0, 0);
 		graphicsControl.setAlpha(100);
 		for (int i = 0; i < (int) (cabin.getCabinWidth() / cabin.getScale()); i++) {
 			for (int j = 0; j < (int) (cabin.getCabinLength() / cabin
@@ -545,6 +546,21 @@ public class CabinViewPart extends ViewPart {
 								(int) (pass.getDepth() / factor));
 					}
 				}
+			}
+		});
+		disposeAll();
+	}
+	
+	/**
+	 * 
+	 */
+	public void printObstacleMap(final Image obstacleImage) {
+		parent.redraw();
+		parent.update();
+		canvas.redraw();	
+		canvas.addPaintListener(new PaintListener() {
+			public void paintControl(final PaintEvent e) {
+			e.gc.drawImage(obstacleImage, 0, 0);		
 			}
 		});
 		disposeAll();
