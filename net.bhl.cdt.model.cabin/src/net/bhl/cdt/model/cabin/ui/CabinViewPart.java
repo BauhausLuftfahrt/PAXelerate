@@ -115,10 +115,6 @@ public class CabinViewPart extends ViewPart {
 					.getImage(ISharedImages.IMG_OBJ_ELEMENT);
 		}
 	}
-	
-	public Boolean isInitialBoot() {
-		return initialBoot;
-	}
 
 	private Image createImage() {
 		Image image = new Image(parent.getDisplay(), 373, 885);
