@@ -6,6 +6,6 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: net.bhl.cdt.cabin.ui.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- net.bhl.cdt.ui;bundle-version="0.9.1"
+ net.bhl.cdt.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

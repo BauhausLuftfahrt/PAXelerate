@@ -11,7 +11,7 @@ Bundle-Activator: net.bhl.cdt.model.cabin.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  net.bhl.cdt.model;visibility:=reexport,
- net.bhl.cdt.ui;bundle-version="0.9.1",
+ net.bhl.cdt.ui;bundle-version="0.1.0",
  javax.inject,
  org.eclipse.emf.ecp.explorereditorbridge,
  org.eclipse.emf.ecp.editor.e3
