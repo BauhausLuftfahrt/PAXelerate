@@ -108,53 +108,57 @@ public class GenerateCabinCommand extends CDTCommand {
 	 *            is a specific class type
 	 */
 	private <T extends TravelClass> void switchSettings(Class<T> travelSubClass) {
-//		if (CabinViewPart.initialBoot) {
-			if (travelSubClass.getSimpleName().equals("PremiumEconomyClass")) {
-				seats = 24;
-				seatsInRow = 6; 
-				seatDimensions.setTwoDimensional(50, 60);
-				seatPitch = 20; 
-			} else if (travelSubClass.getSimpleName().equals("BusinessClass")) {
-				seats = 8;
-				seatsInRow = 4;
-				seatDimensions.setTwoDimensional(72, 80);
-				seatPitch = 30;
-			} else if (travelSubClass.getSimpleName().equals("FirstClass")) {
-				seats = 2;
-				seatsInRow = 2;
-				seatDimensions.setTwoDimensional(100, 120);
-				seatPitch = 40;
-			} else {
-				seats = 72;
-				seatsInRow = 6;
-				seatDimensions.setTwoDimensional(50, 60);
-				seatPitch = 20;
-			}
-//		} else {
-//			if (travelSubClass.getSimpleName().equals("PremiumEconomyClass")) {
-//				seats = cabin.getClasses().get(2).getAvailableSeats();
-//				seatsInRow = cabin.getClasses().get(2).getSeatsPerRow();
-//				seatDimensions.setTwoDimensional((int)cabin.getClasses().get(2).getSeatWidth(),(int) cabin.getClasses().get(2).getSeatLength());
-//				seatPitch = cabin.getClasses().get(2).getSeatPitch();
-//			} else if (travelSubClass.getSimpleName().equals("BusinessClass")) {
-//				seats = cabin.getClasses().get(1).getAvailableSeats();
-//				seatsInRow = cabin.getClasses().get(1).getSeatsPerRow();
-//				seatDimensions.setTwoDimensional((int)cabin.getClasses().get(1).getSeatWidth(),(int) cabin.getClasses().get(1).getSeatLength());
-//				seatPitch = cabin.getClasses().get(1).getSeatPitch();
-//			} else if (travelSubClass.getSimpleName().equals("FirstClass")) {
-//				seats = cabin.getClasses().get(0).getAvailableSeats();
-//				seatsInRow = cabin.getClasses().get(0).getSeatsPerRow();
-//				seatDimensions.setTwoDimensional((int)cabin.getClasses().get(0).getSeatWidth(),(int) cabin.getClasses().get(0).getSeatLength());
-//				seatPitch = cabin.getClasses().get(0).getSeatPitch();
-//			} else {
-//				seats = cabin.getClasses().get(3).getAvailableSeats();
-//				seatsInRow = cabin.getClasses().get(3).getSeatsPerRow();
-//				seatDimensions.setTwoDimensional((int)cabin.getClasses().get(3).getSeatWidth(),(int) cabin.getClasses().get(3).getSeatLength());
-//				seatPitch = cabin.getClasses().get(3).getSeatPitch();
-//			}
-//			
-//			
-//		}
+		// if (CabinViewPart.initialBoot) {
+		if (travelSubClass.getSimpleName().equals("PremiumEconomyClass")) {
+			seats = 24;
+			seatsInRow = 6;
+			seatDimensions.setTwoDimensional(50, 60);
+			seatPitch = 20;
+		} else if (travelSubClass.getSimpleName().equals("BusinessClass")) {
+			seats = 8;
+			seatsInRow = 4;
+			seatDimensions.setTwoDimensional(72, 80);
+			seatPitch = 30;
+		} else if (travelSubClass.getSimpleName().equals("FirstClass")) {
+			seats = 2;
+			seatsInRow = 2;
+			seatDimensions.setTwoDimensional(100, 120);
+			seatPitch = 40;
+		} else {
+			seats = 72;
+			seatsInRow = 6;
+			seatDimensions.setTwoDimensional(50, 60);
+			seatPitch = 20;
+		}
+		// } else {
+		// if (travelSubClass.getSimpleName().equals("PremiumEconomyClass")) {
+		// seats = cabin.getClasses().get(2).getAvailableSeats();
+		// seatsInRow = cabin.getClasses().get(2).getSeatsPerRow();
+		// seatDimensions.setTwoDimensional((int)cabin.getClasses().get(2).getSeatWidth(),(int)
+		// cabin.getClasses().get(2).getSeatLength());
+		// seatPitch = cabin.getClasses().get(2).getSeatPitch();
+		// } else if (travelSubClass.getSimpleName().equals("BusinessClass")) {
+		// seats = cabin.getClasses().get(1).getAvailableSeats();
+		// seatsInRow = cabin.getClasses().get(1).getSeatsPerRow();
+		// seatDimensions.setTwoDimensional((int)cabin.getClasses().get(1).getSeatWidth(),(int)
+		// cabin.getClasses().get(1).getSeatLength());
+		// seatPitch = cabin.getClasses().get(1).getSeatPitch();
+		// } else if (travelSubClass.getSimpleName().equals("FirstClass")) {
+		// seats = cabin.getClasses().get(0).getAvailableSeats();
+		// seatsInRow = cabin.getClasses().get(0).getSeatsPerRow();
+		// seatDimensions.setTwoDimensional((int)cabin.getClasses().get(0).getSeatWidth(),(int)
+		// cabin.getClasses().get(0).getSeatLength());
+		// seatPitch = cabin.getClasses().get(0).getSeatPitch();
+		// } else {
+		// seats = cabin.getClasses().get(3).getAvailableSeats();
+		// seatsInRow = cabin.getClasses().get(3).getSeatsPerRow();
+		// seatDimensions.setTwoDimensional((int)cabin.getClasses().get(3).getSeatWidth(),(int)
+		// cabin.getClasses().get(3).getSeatLength());
+		// seatPitch = cabin.getClasses().get(3).getSeatPitch();
+		// }
+		//
+		//
+		// }
 	}
 
 	private void createSeat(Row row, int j) {
@@ -566,15 +570,15 @@ public class GenerateCabinCommand extends CDTCommand {
 			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 					"Out of bounds! Cabin too short."));
 		}
-
 		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 				"Cabin generation completed"));
-		if (!cabin.equals(null) && !cabinViewPart.equals(null)) {
-			cabinViewPart.setCabin(cabin);
-		} else if (cabinViewPart.equals(null)) {
+		try {
+				cabinViewPart.setCabin(cabin);
+		} catch (NullPointerException e) {
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
-					"The cabin view is not visible, please add it before trying again!"));
+					"The cabin view is not visible or you did not generate one."));
 		}
+
 		infoViewPart.update(cabin);
 		cabinViewPart.syncViewer();
 	}

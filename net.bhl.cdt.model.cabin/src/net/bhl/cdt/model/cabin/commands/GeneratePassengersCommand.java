@@ -301,11 +301,14 @@ public class GeneratePassengersCommand extends CDTCommand {
 					"Too many passengers in the cabin! Remove "
 							+ (totalPax - totalSeats) + "!"));
 		}
-		if (!cabinViewPart.equals(null)) {
+		try {
 			cabinViewPart.setCabin(cabin);
+			infoViewPart.update(cabin);
+			cabinViewPart.syncViewer();
+		} catch (NullPointerException e) {
+			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
+					"Cabin View or Info view not visible!"));
 		}
-		infoViewPart.update(cabin);
-		// Resync the CabinView with the cabin object
-		cabinViewPart.syncViewer();
+
 	}
 }

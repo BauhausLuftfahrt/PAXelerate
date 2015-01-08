@@ -121,9 +121,15 @@ public class SimulateBoardingCommand extends CDTCommand {
 							alreadySeatedList.add(pax);
 						}
 					}
+					try {
 					cabinViewPart.submitPassengerCoordinates(astar
 							.getPassengerLocations());
 					infoViewPart.update(cabin);
+					} catch(NullPointerException e) {
+						logger.log(new Status(IStatus.ERROR,
+								"net.bhl.cdt.model.cabin",
+								"Please check if cabin view and info view are visible."));
+					}
 					Thread.sleep((int) (1000 / cabin.getFramesPerSecond()));
 				} catch (InterruptedException e) {
 					logger.log(new Status(IStatus.ERROR,
