@@ -19,6 +19,7 @@ import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
+import net.bhl.cdt.model.cabin.util.SWTResourceManager;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.util.ModelHelper;
 
@@ -123,7 +124,6 @@ public class CabinViewPart extends ViewPart {
 		graphicsControl.setAntialias(SWT.ON);
 		graphicsControl.setInterpolation(SWT.HIGH);
 		graphicsControl.drawImage(aircraft, 0, 0);
-		graphicsControl.drawText("this image is rendered!", 0, 0);
 		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
 
 			if (seat.getTravelClass() instanceof FirstClass) {
@@ -301,14 +301,10 @@ public class CabinViewPart extends ViewPart {
 
 		factor = 364 / CABIN_WIDTH_IN_PIXELS;
 
-		aircraft = new Image(parent.getDisplay(),
-				"T:\\Marc Engelmann\\aircraft_images\\bhl_with_ground.png");
-		economySeat = new Image(parent.getDisplay(),
-				"T:\\Marc Engelmann\\aircraft_images\\economy_seat.png");
-		businessSeat = new Image(parent.getDisplay(),
-				"T:\\Marc Engelmann\\aircraft_images\\business_seat.png");
-		firstSeat = new Image(parent.getDisplay(),
-				"T:\\Marc Engelmann\\aircraft_images\\first_seat.png");
+		aircraft =  SWTResourceManager.getImage(InfoViewPart.class, "bhl_with_ground.png");
+		economySeat = SWTResourceManager.getImage(InfoViewPart.class, "economy_seat.png");
+		businessSeat = SWTResourceManager.getImage(InfoViewPart.class, "business_seat.png");
+		firstSeat = SWTResourceManager.getImage(InfoViewPart.class, "first_seat.png");
 		
 
 		
