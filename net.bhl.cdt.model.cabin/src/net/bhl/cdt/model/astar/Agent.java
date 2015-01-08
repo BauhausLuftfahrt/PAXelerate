@@ -13,7 +13,7 @@ import net.bhl.cdt.model.observer.Subject;
 import net.bhl.cdt.model.util.ModelHelper;
 
 /**
- * This class is an agent object. It walks a specific calculated path and reacts
+ * This class is the agent object. It walks a specific calculated path and reacts
  * to obstacles occurring on the go.
  * 
  * @author marc.engelmann
