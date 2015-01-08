@@ -46,6 +46,7 @@ public class Node implements Comparable<Node> {
 	 * @param vector
 	 *            is the position vector
 	 */
+	//TODO public or private missing?
 	Node(Vector vector) {
 		neighborList = new ArrayList<Node>();
 		position = vector;

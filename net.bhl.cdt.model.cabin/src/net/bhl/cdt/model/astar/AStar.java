@@ -11,7 +11,7 @@ import java.util.Collections;
 import net.bhl.cdt.model.cabin.util.Vector;
 
 /**
- * 
+ * TODO Description
  * @author marc.engelmann
  *
  */
@@ -153,7 +153,9 @@ public class AStar {
 		}
 		return null;
 	}
-
+	/**
+	 * TODO Description
+	 */
 	private Path reconstructPath(Node node) {
 		Path path = new Path();
 		while (!(node.getPreviousNode() == null)) {
@@ -184,35 +186,53 @@ public class AStar {
 	}
 
 	/**
-	 * 
+	 * TODO Description
 	 * @author marc.engelmann
 	 *
 	 */
 	private class SortedNodeList {
 
 		private ArrayList<Node> list = new ArrayList<Node>();
-
+		
+		/**
+		 * TODO Description
+		 */
 		public Node getFirst() {
 			return list.get(0);
 		}
-
+		
+		/**
+		 * TODO Description
+		 */
 		public void clear() {
 			list.clear();
 		}
-
+		
+		/**
+		 * TODO Description
+		 */
 		public void add(Node node) {
 			list.add(node);
 			Collections.sort(list);
 		}
-
+		
+		/**
+		 * TODO Description
+		 */
 		public void remove(Node n) {
 			list.remove(n);
 		}
 
+		/**
+		 * TODO Description
+		 */
 		public int size() {
 			return list.size();
 		}
 
+		/**
+		 * TODO Description
+		 */
 		public boolean contains(Node n) {
 			return list.contains(n);
 		}

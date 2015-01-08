@@ -75,7 +75,7 @@ public class ObstacleMap {
 	/**
 	 * This method generates the obstacle Map.
 	 * 
-	 * @return obstaclemap is the obstacle map two dimensional array
+	 * @return obstacleMap is the obstacle map two dimensional array
 	 */
 	private int[][] createObstacleMap() {
 		obstacleMap = new int[dimensions.getX()][dimensions.getY()];
@@ -161,6 +161,7 @@ public class ObstacleMap {
 
 	/**
 	 * This method generates the obstacle hole in the aisle.
+	 * TODO: what is this?
 	 */
 	private void generateAisleHole() {
 		int entryMin = 0;

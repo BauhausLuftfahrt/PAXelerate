@@ -2,12 +2,18 @@ package net.bhl.cdt.model.observer;
 
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 
+/**
+ * TODO: Description
+ */
 public class AgentPosition extends Observer {
 
 	int[][] newPosition;
 	int[] submitPosition;
 	CabinViewPart cabinViewPart;
-
+	
+	/**
+	 * TODO: Description
+	 */
 	@Override
 	public void update(int i) {
 

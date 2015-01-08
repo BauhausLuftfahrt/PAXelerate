@@ -42,6 +42,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 
 /**
+ * TODO: Description
  * 
  * @author marc.engelmann
  * @version 1.0
@@ -89,7 +90,7 @@ public class CabinViewPart extends ViewPart {
 	private static final String FILEPATH = System.getProperty("user.home")+"/Documents/";
 
 	/**
-	 * 
+	 * TODO: Description
 	 */
 	class ViewLabelProvider extends LabelProvider implements
 			ITableLabelProvider {
@@ -267,6 +268,9 @@ public class CabinViewPart extends ViewPart {
 	}
 
 	/**
+	 * 
+	 * TODO: Description
+	 *
 	 * @param parent
 	 *            is the parent element
 	 */
@@ -534,6 +538,8 @@ public class CabinViewPart extends ViewPart {
 
 	/**
 	 * 
+	 * TODO: Description
+	 *
 	 * @param obstacleImage
 	 */
 	public void printObstacleMap(final Image obstacleImage) {
@@ -549,7 +555,7 @@ public class CabinViewPart extends ViewPart {
 	}
 
 	/**
-	 * 
+	 * TODO: Description
 	 */
 	private void doTheDraw() {
 
@@ -618,6 +624,7 @@ public class CabinViewPart extends ViewPart {
 	}
 
 	/**
+	 * TODO: Description
 	 * 
 	 * @param pax
 	 * @return

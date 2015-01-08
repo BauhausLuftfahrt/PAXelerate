@@ -50,12 +50,12 @@ public class InfoViewPart extends ViewPart {
 	private Canvas canvas;
 
 	/**
-	 * 
+	 * TODO: Description
 	 */
 	class ViewLabelProvider extends LabelProvider implements
 			ITableLabelProvider {
 		/**
-		 * 
+		 * TODO: Description
 		 */
 		public String getColumnText(Object obj, int index) {
 			Cabin todo = (Cabin) obj;
@@ -63,14 +63,14 @@ public class InfoViewPart extends ViewPart {
 		}
 
 		/**
-		 * 
+		 * TODO: Description
 		 */
 		public Image getColumnImage(Object obj, int index) {
 			return getImage(obj);
 		}
 
 		/**
-		 * 
+		 * TODO: Description
 		 */
 		public Image getImage(Object obj) {
 			return PlatformUI.getWorkbench().getSharedImages()
@@ -79,6 +79,7 @@ public class InfoViewPart extends ViewPart {
 	}
 
 	/**
+	 * TODO: Description
 	 * @param parent
 	 *            is the parent element
 	 */
@@ -90,12 +91,16 @@ public class InfoViewPart extends ViewPart {
 		canvas = new Canvas(parent, SWT.RESIZE);
 		drawIt();
 	}
-
+	/**
+	 * TODO: Description
+	 */
 	public void update(Cabin cabin) {
 		this.cabin = cabin;
 		drawIt();
 	}
-
+	/**
+	 * TODO: Description
+	 */
 	private void drawIt() {
 		parent.redraw();
 		parent.update();
@@ -148,7 +153,9 @@ public class InfoViewPart extends ViewPart {
 	/** * Passing the focus request to the viewer's control. */
 	public void setFocus() {
 	}
-
+	/**
+	 * TODO: Description
+	 */
 	private void disposeAll() {
 		super.dispose();
 

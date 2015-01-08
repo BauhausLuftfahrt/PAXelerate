@@ -56,6 +56,9 @@ public class AreaMap {
 
 	}
 
+	/**
+	 * TODO Description
+	 */
 	private void createMap() {
 		Node node;
 		map = new ArrayList<ArrayList<Node>>();
