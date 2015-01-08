@@ -5,9 +5,7 @@
  *******************************************************************************/
 package net.bhl.cdt.model.cabin.ui;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-
 import net.bhl.cdt.model.astar.ObstacleMap;
 import net.bhl.cdt.model.cabin.BusinessClass;
 import net.bhl.cdt.model.cabin.Cabin;
@@ -60,7 +58,6 @@ public class CabinViewPart extends ViewPart {
 	private static final int OFFSET_OF_DOOR = 0;
 	private static final double PASSENGER_CIRCLE_SIZE = 0.75;
 
-	private int cabinY;
 	private static final int CABIN_WIDTH_IN_PIXELS = 96;
 	private static final int X_ZERO = 138;
 	private static final int Y_ZERO = 90;
@@ -70,23 +67,17 @@ public class CabinViewPart extends ViewPart {
 	/************* Create Colors and Fonts here. ***********************/
 	private static int fontsize;
 	private static String fontName;
-	private static Color gold;
-	private static Color blue;
 	private static Color red;
-	private static Color gray;
 	private static Color salmon;
 	private static Color green;
-	private static Color lightGray;
 	private static Color darkGray;
 	private static Color white;
 	private static Color black;
 	private static Font fontOne;
 	private static Font fontTwo;
 	private static Font fontThree;
-	private static DecimalFormat df;
 	/********************************************************************/
 
-	private int oneMeter;
 	private Image aircraft;
 	private Image economySeat;
 	private Image businessSeat;
@@ -95,6 +86,7 @@ public class CabinViewPart extends ViewPart {
 	private Adapter cabinAdapter;
 	private ImageLoader loader;
 	private static Image img;
+	private static final String FILEPATH = System.getProperty("user.home")+"/Documents/";
 
 	/**
 	 * 
@@ -117,6 +109,11 @@ public class CabinViewPart extends ViewPart {
 		}
 	}
 
+	/**
+	 * This method creates the background image.
+	 * 
+	 * @return the background image
+	 */
 	private Image createImage() {
 		Image image = new Image(parent.getDisplay(), 373, 885);
 		GC graphicsControl = new GC(image);
@@ -261,14 +258,11 @@ public class CabinViewPart extends ViewPart {
 				}
 			}
 		}
-
 		graphicsControl.dispose();
 		loader = new ImageLoader();
 		loader.data = new ImageData[] { image.getImageData() };
-		loader.save(
-				"T:\\Marc Engelmann\\aircraft_images\\aircraft_rendered.png",
-				SWT.IMAGE_PNG);
-		System.out.println("Image generated!");
+		
+		loader.save(FILEPATH+"aircraft_rendered.png", SWT.IMAGE_PNG);
 		return image;
 	}
 
@@ -279,35 +273,31 @@ public class CabinViewPart extends ViewPart {
 	public void createPartControl(Composite parent) {
 		this.parent = parent;
 		cabin = CabinFactory.eINSTANCE.createCabin();
-		oneMeter = 47;
 		/************************* Create Colors and Fonts here *******************************/
 		fontsize = 6;
 		fontName = "Helvetica Neue";
-		gold = new Color(parent.getDisplay(), 255, 215, 0);
-		blue = new Color(parent.getDisplay(), 30, 144, 255);
 		red = new Color(parent.getDisplay(), 220, 20, 60);
-		gray = new Color(parent.getDisplay(), 169, 169, 169);
 		salmon = new Color(parent.getDisplay(), 250, 128, 114);
 		green = new Color(parent.getDisplay(), 50, 205, 50);
-		lightGray = new Color(parent.getDisplay(), 220, 220, 220);
 		darkGray = new Color(parent.getDisplay(), 105, 105, 105);
 		white = new Color(parent.getDisplay(), 255, 255, 255);
 		black = new Color(parent.getDisplay(), 0, 0, 0);
 		fontOne = new Font(parent.getDisplay(), fontName, 8, SWT.NORMAL);
 		fontTwo = new Font(parent.getDisplay(), fontName, fontsize, SWT.NORMAL);
 		fontThree = new Font(parent.getDisplay(), fontName, 9, SWT.NORMAL);
-		df = new DecimalFormat("####0.00");
 		/*************************************************************************************/
 
 		factor = 364 / CABIN_WIDTH_IN_PIXELS;
 
-		aircraft =  SWTResourceManager.getImage(InfoViewPart.class, "bhl_with_ground.png");
-		economySeat = SWTResourceManager.getImage(InfoViewPart.class, "economy_seat.png");
-		businessSeat = SWTResourceManager.getImage(InfoViewPart.class, "business_seat.png");
-		firstSeat = SWTResourceManager.getImage(InfoViewPart.class, "first_seat.png");
-		
+		aircraft = SWTResourceManager.getImage(InfoViewPart.class,
+				"bhl_with_ground.png");
+		economySeat = SWTResourceManager.getImage(InfoViewPart.class,
+				"economy_seat.png");
+		businessSeat = SWTResourceManager.getImage(InfoViewPart.class,
+				"business_seat.png");
+		firstSeat = SWTResourceManager.getImage(InfoViewPart.class,
+				"first_seat.png");
 
-		
 		canvas = new Canvas(parent, SWT.RESIZE);
 		doTheDraw();
 
@@ -338,18 +328,18 @@ public class CabinViewPart extends ViewPart {
 	public void setCabin(Cabin cabin) {
 		initialBoot = false;
 		this.cabin = cabin;
-		
-		factor = cabin.getCabinWidth()  / CABIN_WIDTH_IN_PIXELS;
+
+		factor = cabin.getCabinWidth() / CABIN_WIDTH_IN_PIXELS;
 		firstSeat = resize(firstSeat, (int) (cabin.getClasses().get(0)
 				.getSeatWidth() / factor), (int) (cabin.getClasses().get(0)
 				.getSeatLength() / factor));
-		businessSeat = resize(businessSeat, (int) (cabin.getClasses()
-				.get(1).getSeatWidth() / factor), (int) (cabin.getClasses()
-				.get(1).getSeatLength() / factor));
+		businessSeat = resize(businessSeat, (int) (cabin.getClasses().get(1)
+				.getSeatWidth() / factor), (int) (cabin.getClasses().get(1)
+				.getSeatLength() / factor));
 		economySeat = resize(economySeat, (int) (cabin.getClasses().get(3)
 				.getSeatWidth() / factor), (int) (cabin.getClasses().get(3)
 				.getSeatLength() / factor));
-		
+
 		cabinAdapter = new AdapterImpl() {
 			public void notifyChanged(Notification notification) {
 				if (!notification.isTouch()) {
@@ -391,6 +381,7 @@ public class CabinViewPart extends ViewPart {
 	 * 
 	 * @param obstacleMap
 	 *            is the obstacle map
+	 * @return returns the obstacle map as an image
 	 */
 	public Image submitObstacleMap(final int[][] obstacleMap) {
 		Image image = new Image(parent.getDisplay(), 373, 885);
@@ -433,15 +424,17 @@ public class CabinViewPart extends ViewPart {
 		graphicsControl.dispose();
 		loader = new ImageLoader();
 		loader.data = new ImageData[] { image.getImageData() };
-		loader.save("T:\\Marc Engelmann\\aircraft_images\\obstaclemap.png",
+		loader.save(FILEPATH+"obstaclemap.png",
 				SWT.IMAGE_PNG);
 		disposeAll();
 		return image;
 	}
 
 	/**
+	 * This method gets the paths.
 	 * 
 	 * @param pathList
+	 *            the list of paths
 	 */
 	public void submitPath(final ArrayList<int[][]> pathList) {
 		parent.redraw();
@@ -455,18 +448,14 @@ public class CabinViewPart extends ViewPart {
 				e.gc.setLineWidth(2);
 				for (int l = 0; l < pathList.size(); l++) {
 					final int[][] singlePath = pathList.get(l);
-					// System.out.println(l+" -> Length: "+singlePath.length);
 					int[] pathPoints = new int[2 * singlePath.length];
 					int k = 0;
 					int i = 0;
 					while (k < 2 * singlePath.length) {
-						// System.out.println("k = "+k);
 						pathPoints[k] = X_ZERO
 								+ (int) (singlePath[i][0] * cabin.getScale() / factor);
-						// System.out.println("pathPoint(k) = "+pathPoints[k]);
 						pathPoints[k + 1] = Y_ZERO
 								+ (int) (singlePath[i][1] * cabin.getScale() / factor);
-						// System.out.println("pathPoint(k+1) = "+pathPoints[k+1]);
 						k = k + 2;
 						i++;
 					}
@@ -491,14 +480,11 @@ public class CabinViewPart extends ViewPart {
 		canvas.redraw();
 		canvas.addPaintListener(new PaintListener() {
 			public void paintControl(final PaintEvent e) {
-				// e.gc.setAntialias(SWT.ON);
-				// e.gc.setInterpolation(SWT.HIGH);
 				for (Passenger pass : ModelHelper.getChildrenByClass(paxCabin,
 						Passenger.class)) {
 					Vector color = calculateColor(pass);
 					e.gc.setBackground(new Color(e.display, color.getX(), color
 							.getY(), color.getZ()));
-					// e.gc.setBackground(black);
 					if (!pass.isIsSeated()) {
 						if (!((pass.getPositionX() == 0) && (pass
 								.getPositionY() == 0))) {
@@ -545,17 +531,18 @@ public class CabinViewPart extends ViewPart {
 		});
 		disposeAll();
 	}
-	
+
 	/**
 	 * 
+	 * @param obstacleImage
 	 */
 	public void printObstacleMap(final Image obstacleImage) {
 		parent.redraw();
 		parent.update();
-		canvas.redraw();	
+		canvas.redraw();
 		canvas.addPaintListener(new PaintListener() {
 			public void paintControl(final PaintEvent e) {
-			e.gc.drawImage(obstacleImage, 0, 0);		
+				e.gc.drawImage(obstacleImage, 0, 0);
 			}
 		});
 		disposeAll();
@@ -565,17 +552,11 @@ public class CabinViewPart extends ViewPart {
 	 * 
 	 */
 	private void doTheDraw() {
-		
-		
+
 		factor = cabin.getCabinWidth() / CABIN_WIDTH_IN_PIXELS;
 		parent.redraw();
 		parent.update();
 		canvas.redraw();
-		if (cabin.getClasses().isEmpty()) {
-			cabinY = 636;
-		} else {
-			cabinY = (int) (cabin.getCabinLength() / factor);
-		}
 		canvas.addPaintListener(new PaintListener() {
 			public void paintControl(final PaintEvent e) {
 
