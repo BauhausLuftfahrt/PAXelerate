@@ -15,6 +15,9 @@ import net.bhl.cdt.model.cabin.Cabin;
 public class ConstructionLibrary {
 	private Cabin cabin; 
 	
+	/**
+	 * Constructs the class object
+	 */
 	public void constructClass() {
 		
 	}
