@@ -57,7 +57,7 @@ public class AreaMap {
 	}
 
 	/**
-	 * TODO Description
+	 * This method creates the area map.
 	 */
 	private void createMap() {
 		Node node;

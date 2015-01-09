@@ -6,6 +6,7 @@
 package net.bhl.cdt.model.cabin.ui;
 
 import java.util.ArrayList;
+
 import net.bhl.cdt.model.astar.ObstacleMap;
 import net.bhl.cdt.model.cabin.BusinessClass;
 import net.bhl.cdt.model.cabin.Cabin;
@@ -21,11 +22,13 @@ import net.bhl.cdt.model.cabin.util.SWTResourceManager;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.util.ModelHelper;
 
+import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
-import org.eclipse.jface.viewers.ITableLabelProvider;
-import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
@@ -37,12 +40,10 @@ import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.ImageLoader;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.ISharedImages;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 
 /**
- * TODO: Description
+ * This class represents the cabin view. All graphics generation is done here.
  * 
  * @author marc.engelmann
  * @version 1.0
@@ -79,6 +80,7 @@ public class CabinViewPart extends ViewPart {
 	private static Font fontThree;
 	/********************************************************************/
 
+	private static ILog logger;
 	private Image aircraft;
 	private Image economySeat;
 	private Image businessSeat;
@@ -87,28 +89,27 @@ public class CabinViewPart extends ViewPart {
 	private Adapter cabinAdapter;
 	private ImageLoader loader;
 	private static Image img;
-	private static final String FILEPATH = System.getProperty("user.home")+"/Documents/";
+	private static final String FILEPATH = System.getProperty("user.home")
+			+ "/Documents/";
 
-	/**
-	 * TODO: Description
-	 */
-	class ViewLabelProvider extends LabelProvider implements
-			ITableLabelProvider {
-
-		public String getColumnText(Object obj, int index) {
-			Cabin todo = (Cabin) obj;
-			return todo.getName();
-		}
-
-		public Image getColumnImage(Object obj, int index) {
-			return getImage(obj);
-		}
-
-		public Image getImage(Object obj) {
-			return PlatformUI.getWorkbench().getSharedImages()
-					.getImage(ISharedImages.IMG_OBJ_ELEMENT);
-		}
-	}
+	//
+	// class ViewLabelProvider extends LabelProvider implements
+	// ITableLabelProvider {
+	//
+	// public String getColumnText(Object obj, int index) {
+	// Cabin todo = (Cabin) obj;
+	// return todo.getName();
+	// }
+	//
+	// public Image getColumnImage(Object obj, int index) {
+	// return getImage(obj);
+	// }
+	//
+	// public Image getImage(Object obj) {
+	// return PlatformUI.getWorkbench().getSharedImages()
+	// .getImage(ISharedImages.IMG_OBJ_ELEMENT);
+	// }
+	// }
 
 	/**
 	 * This method creates the background image.
@@ -262,14 +263,18 @@ public class CabinViewPart extends ViewPart {
 		graphicsControl.dispose();
 		loader = new ImageLoader();
 		loader.data = new ImageData[] { image.getImageData() };
-		
-		loader.save(FILEPATH+"aircraft_rendered.png", SWT.IMAGE_PNG);
+		try {
+			loader.save(FILEPATH + "aircraft_rendered.png", SWT.IMAGE_PNG);
+		} catch (Exception e) {
+			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
+					"The background image could not be saved! Directory problem."));
+		}
 		return image;
 	}
 
 	/**
 	 * 
-	 * TODO: Description
+	 * This method initializes all necessary parameters and images.
 	 *
 	 * @param parent
 	 *            is the parent element
@@ -277,6 +282,7 @@ public class CabinViewPart extends ViewPart {
 	public void createPartControl(Composite parent) {
 		this.parent = parent;
 		cabin = CabinFactory.eINSTANCE.createCabin();
+		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
 		/************************* Create Colors and Fonts here *******************************/
 		fontsize = 6;
 		fontName = "Helvetica Neue";
@@ -428,8 +434,12 @@ public class CabinViewPart extends ViewPart {
 		graphicsControl.dispose();
 		loader = new ImageLoader();
 		loader.data = new ImageData[] { image.getImageData() };
-		loader.save(FILEPATH+"obstaclemap.png",
-				SWT.IMAGE_PNG);
+		try {
+			loader.save(FILEPATH + "obstaclemap.png", SWT.IMAGE_PNG);
+		} catch (Exception e) {
+			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
+					"The obstacle map could not be saved! Directory problem."));
+		}
 		disposeAll();
 		return image;
 	}
@@ -537,10 +547,10 @@ public class CabinViewPart extends ViewPart {
 	}
 
 	/**
+	 * This method draws the obstacle map image to the canvas.
 	 * 
-	 * TODO: Description
-	 *
 	 * @param obstacleImage
+	 *            the obstacle map image
 	 */
 	public void printObstacleMap(final Image obstacleImage) {
 		parent.redraw();
@@ -555,7 +565,7 @@ public class CabinViewPart extends ViewPart {
 	}
 
 	/**
-	 * TODO: Description
+	 * This method runs the complete draw of the view.
 	 */
 	private void doTheDraw() {
 
@@ -624,10 +634,12 @@ public class CabinViewPart extends ViewPart {
 	}
 
 	/**
-	 * TODO: Description
+	 * This method calculates the color of the passenger and seat. It is
+	 * calculated by a formula and the passenger id.
 	 * 
 	 * @param pax
-	 * @return
+	 *            the passenger
+	 * @return the color code represented by a three dimensional vector
 	 */
 	private Vector calculateColor(Passenger pax) {
 		int randInt = pax.getId() % 6;

@@ -17,7 +17,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 
 /**
- * TODO: Description
+ * This class refreshed the cabin view without modifying anything.
  * @author marc.engelmann
  *
  */
@@ -40,7 +40,7 @@ public class DrawCabinCommand extends CDTCommand {
 
 	
 	/**
-	 * TODO: Description
+	 *This method executed the right click command. The cabin view is updated.
 	 */
 	@Override
 	protected void doRun() {

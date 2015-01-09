@@ -44,10 +44,8 @@ import org.eclipse.ui.PlatformUI;
  * 
  * @author marc.engelmann
  * @version 1.3
- * @date 18.11.2014
  *
  */
-
 
 public class GenerateCabinCommand extends CDTCommand {
 
@@ -136,9 +134,14 @@ public class GenerateCabinCommand extends CDTCommand {
 		//
 		// }
 	}
-	
+
 	/**
-	 * TODO: Description
+	 * This method creates a new seat.
+	 * 
+	 * @param row
+	 *            is the row in which the seat should be generated
+	 * @param j
+	 *            is the number of the seat in the row
 	 */
 	private void createSeat(Row row, int j) {
 		// Create new instance of Seat
@@ -163,7 +166,8 @@ public class GenerateCabinCommand extends CDTCommand {
 	}
 
 	/**
-	 * TODO: Description
+	 * This method checks if there is a door at the current y position. If so,
+	 * the y position is increased.
 	 */
 	private void checkForDoor() {
 		double seatPitchMultiplicator = 1.5;
@@ -552,14 +556,14 @@ public class GenerateCabinCommand extends CDTCommand {
 		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 				"Cabin generation completed"));
 		try {
-				cabinViewPart.setCabin(cabin);
+			cabinViewPart.setCabin(cabin);
+			infoViewPart.update(cabin);
+			cabinViewPart.syncViewer();
 		} catch (NullPointerException e) {
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 					"The cabin view is not visible or you did not generate one."));
 		}
 
-		infoViewPart.update(cabin);
-		cabinViewPart.syncViewer();
 	}
 
 }

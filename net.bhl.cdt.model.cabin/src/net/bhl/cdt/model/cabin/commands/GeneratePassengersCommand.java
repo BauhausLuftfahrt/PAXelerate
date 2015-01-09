@@ -39,7 +39,6 @@ import org.eclipse.ui.PlatformUI;
  * 
  * @author marc.engelmann
  * @version 1.0
- * @date 03.12.2014
  *
  */
 
@@ -132,7 +131,9 @@ public class GeneratePassengersCommand extends CDTCommand {
 	}
 	
 	/**
-	 * TODO: Description
+	 * This method gets the seat which is connected to a specific passenger.
+	 * @param passenger the passenger
+	 * @return the seat which is linked to the passenger
 	 */
 	private Seat getSeat(Passenger passenger) {
 		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
@@ -233,7 +234,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 	}
 	
 	/**
-	 * TODO: Description
+	 * This method runs the passenger generation command.
 	 */
 	@Override
 	protected void doRun() {

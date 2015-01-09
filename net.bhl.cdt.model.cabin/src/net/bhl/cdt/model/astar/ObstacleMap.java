@@ -1,5 +1,5 @@
 /*******************************************************************************
-s * <copyright> Copyright (c) 2009-2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) 2009-2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  *******************************************************************************/
@@ -160,8 +160,9 @@ public class ObstacleMap {
 	}
 
 	/**
-	 * This method generates the obstacle hole in the aisle.
-	 * TODO: what is this?
+	 * This method generates the obstacle hole in the aisle. This means that in
+	 * the aisle, the obstacle value is set to zero. This makes the passengers
+	 * consider the aisle as the preferred path.
 	 */
 	private void generateAisleHole() {
 		int entryMin = 0;

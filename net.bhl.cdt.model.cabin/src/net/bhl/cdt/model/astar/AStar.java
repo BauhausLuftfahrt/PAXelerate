@@ -11,7 +11,7 @@ import java.util.Collections;
 import net.bhl.cdt.model.cabin.util.Vector;
 
 /**
- * TODO Description
+ * This class is the A* algorithm.
  * @author marc.engelmann
  *
  */
@@ -154,7 +154,9 @@ public class AStar {
 		return null;
 	}
 	/**
-	 * TODO Description
+	 * This method reconstructs the path.
+	 * @param node the specific node
+	 * @return the path
 	 */
 	private Path reconstructPath(Node node) {
 		Path path = new Path();
@@ -186,7 +188,7 @@ public class AStar {
 	}
 
 	/**
-	 * TODO Description
+	 * This class is a sorted node list.
 	 * @author marc.engelmann
 	 *
 	 */
@@ -195,21 +197,23 @@ public class AStar {
 		private ArrayList<Node> list = new ArrayList<Node>();
 		
 		/**
-		 * TODO Description
+		 * This method returns the first list entry.
+		 * @return the first element
 		 */
 		public Node getFirst() {
 			return list.get(0);
 		}
 		
 		/**
-		 * TODO Description
+		 * This method clears the list.
 		 */
 		public void clear() {
 			list.clear();
 		}
 		
 		/**
-		 * TODO Description
+		 * This method adds a node to the list.
+		 * @param node the specific node
 		 */
 		public void add(Node node) {
 			list.add(node);
@@ -217,21 +221,24 @@ public class AStar {
 		}
 		
 		/**
-		 * TODO Description
+		 * This method removes a specific node from the list.
+		 * @param n the node
 		 */
 		public void remove(Node n) {
 			list.remove(n);
 		}
 
 		/**
-		 * TODO Description
+		 * This method returns the size of the list.
+		 * @return the size
 		 */
 		public int size() {
 			return list.size();
 		}
 
 		/**
-		 * TODO Description
+		 * This method checks if a specific node is already in the list.
+		 * @param n the node which is checked
 		 */
 		public boolean contains(Node n) {
 			return list.contains(n);

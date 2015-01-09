@@ -5,9 +5,7 @@
  *******************************************************************************/
 package net.bhl.cdt.model.cabin.ui;
 
-import java.text.DecimalFormat;
 import java.util.List;
-
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
 import net.bhl.cdt.model.cabin.Passenger;
@@ -15,14 +13,11 @@ import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.commands.SimulateBoardingCommand;
 import net.bhl.cdt.model.util.ModelHelper;
-
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Canvas;
@@ -49,37 +44,37 @@ public class InfoViewPart extends ViewPart {
 
 	private Canvas canvas;
 
+//	/**
+//	 * TODO: Description
+//	 */
+//	class ViewLabelProvider extends LabelProvider implements
+//			ITableLabelProvider {
+//		/**
+//		 * TODO: Description
+//		 */
+//		public String getColumnText(Object obj, int index) {
+//			Cabin todo = (Cabin) obj;
+//			return todo.getName();
+//		}
+//
+//		/**
+//		 * TODO: Description
+//		 */
+//		public Image getColumnImage(Object obj, int index) {
+//			return getImage(obj);
+//		}
+//
+//		/**
+//		 * TODO: Description
+//		 */
+//		public Image getImage(Object obj) {
+//			return PlatformUI.getWorkbench().getSharedImages()
+//					.getImage(ISharedImages.IMG_OBJ_ELEMENT);
+//		}
+//	}
+
 	/**
-	 * TODO: Description
-	 */
-	class ViewLabelProvider extends LabelProvider implements
-			ITableLabelProvider {
-		/**
-		 * TODO: Description
-		 */
-		public String getColumnText(Object obj, int index) {
-			Cabin todo = (Cabin) obj;
-			return todo.getName();
-		}
-
-		/**
-		 * TODO: Description
-		 */
-		public Image getColumnImage(Object obj, int index) {
-			return getImage(obj);
-		}
-
-		/**
-		 * TODO: Description
-		 */
-		public Image getImage(Object obj) {
-			return PlatformUI.getWorkbench().getSharedImages()
-					.getImage(ISharedImages.IMG_OBJ_ELEMENT);
-		}
-	}
-
-	/**
-	 * TODO: Description
+	 * This method initializes the class elements.
 	 * @param parent
 	 *            is the parent element
 	 */
@@ -92,14 +87,15 @@ public class InfoViewPart extends ViewPart {
 		drawIt();
 	}
 	/**
-	 * TODO: Description
+	 * This method updates the cabin.
+	 * @param cabin is the submitted cabin
 	 */
 	public void update(Cabin cabin) {
 		this.cabin = cabin;
 		drawIt();
 	}
 	/**
-	 * TODO: Description
+	 * This method draws the information on the canvas.
 	 */
 	private void drawIt() {
 		parent.redraw();
@@ -154,7 +150,7 @@ public class InfoViewPart extends ViewPart {
 	public void setFocus() {
 	}
 	/**
-	 * TODO: Description
+	 * This method disposes everyting.
 	 */
 	private void disposeAll() {
 		super.dispose();

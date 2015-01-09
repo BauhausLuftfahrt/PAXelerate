@@ -63,7 +63,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 	}
 
 	/**
-	 * TODO: Description
+	 * This method runs the simulate boarding command.
 	 */
 	@Override
 	protected void doRun() {
