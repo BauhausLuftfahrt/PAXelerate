@@ -5,7 +5,7 @@ This README explains the purpose of this repository.
 ### What is this repository for? ###
 
 * This repository hosts the code of the boarding Simulation.
-* Version 0.1
+* Current version 0.1
 
 ### How do I get set up? ###
 
