@@ -57,6 +57,8 @@
         defaultValueLiteral="0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="Placeholder String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatsPerRowString" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="3-3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BusinessClass" eSuperTypes="#//TravelClass"/>
   <eClassifiers xsi:type="ecore:EClass" name="FirstClass" eSuperTypes="#//TravelClass"/>

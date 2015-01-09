@@ -53,9 +53,10 @@ public class SimulateBoardingCommand extends CDTCommand {
 		this.cabin = cabin;
 		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
 	}
-	
+
 	/**
 	 * Returns the list with seated passengers.
+	 * 
 	 * @return the passenger list
 	 */
 	public static ArrayList<Passenger> getSeatedPassengers() {
@@ -69,7 +70,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 	protected void doRun() {
 
 		cabin.setFramesPerSecond(10);
-		
+
 		/********************************** Get CabinView and ConsoleView ***************************************/
 		IWorkbenchPage page = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage();
@@ -93,20 +94,27 @@ public class SimulateBoardingCommand extends CDTCommand {
 							astar.getPassengerLocations(), Passenger.class)) {
 						if (pax.isIsSeated()
 								&& !alreadySeatedList.contains(pax)) {
+
 							logger.log(new Status(IStatus.INFO,
 									"net.bhl.cdt.model.cabin", "Passenger "
 											+ pax.getName() + " is now seated!"));
 							alreadySeatedList.add(pax);
+							try {
+								infoViewPart.update(cabin);
+							} catch (NullPointerException e) {
+								logger.log(new Status(IStatus.ERROR,
+										"net.bhl.cdt.model.cabin",
+										"Info view is not visible."));
+							}
 						}
 					}
 					try {
-					cabinViewPart.submitPassengerCoordinates(astar
-							.getPassengerLocations());
-					infoViewPart.update(cabin);
-					} catch(NullPointerException e) {
+						cabinViewPart.submitPassengerCoordinates(astar
+								.getPassengerLocations());
+					} catch (NullPointerException e) {
 						logger.log(new Status(IStatus.ERROR,
 								"net.bhl.cdt.model.cabin",
-								"Please check if cabin view and info view are visible."));
+								"cabin view is not visible."));
 					}
 					Thread.sleep((int) (1000 / cabin.getFramesPerSecond()));
 				} catch (InterruptedException e) {
@@ -125,6 +133,13 @@ public class SimulateBoardingCommand extends CDTCommand {
 								"net.bhl.cdt.model.cabin", "Passenger "
 										+ pax.getName() + " is now seated!"));
 						alreadySeatedList.add(pax);
+						try {
+							infoViewPart.update(cabin);
+						} catch (NullPointerException e) {
+							logger.log(new Status(IStatus.ERROR,
+									"net.bhl.cdt.model.cabin",
+									"Info view is not visible."));
+						}
 					}
 				}
 
@@ -134,9 +149,10 @@ public class SimulateBoardingCommand extends CDTCommand {
 								+ " seconds"));
 
 				if (!obstaclemap.equals(null)) {
-					Image image = cabinViewPart.submitObstacleMap(obstaclemap.getMap());
+					Image image = cabinViewPart.submitObstacleMap(obstaclemap
+							.getMap());
 					cabinViewPart.printObstacleMap(image);
-					
+
 					logger.log(new Status(IStatus.INFO,
 							"net.bhl.cdt.model.cabin",
 							"Heat map generation succeeded"));

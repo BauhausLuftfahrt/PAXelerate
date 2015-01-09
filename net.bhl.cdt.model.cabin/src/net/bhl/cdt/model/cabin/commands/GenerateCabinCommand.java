@@ -31,6 +31,7 @@ import net.bhl.cdt.model.cabin.util.FunctionLibrary;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.util.ModelHelper;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
@@ -57,6 +58,7 @@ public class GenerateCabinCommand extends CDTCommand {
 	private double globalSeatPositionY;
 	private int seats;
 	private int seatsInRow;
+	private String seatsInRowString = "";
 	private int numbAisles;
 	private Vector seatDimensions = new Vector(0, 0);
 	private double seatPitch;
@@ -82,57 +84,52 @@ public class GenerateCabinCommand extends CDTCommand {
 	 *            is a specific class type
 	 */
 	private <T extends TravelClass> void switchSettings(Class<T> travelSubClass) {
-		// if (CabinViewPart.initialBoot) {
 		if (travelSubClass.getSimpleName().equals("PremiumEconomyClass")) {
-			seats = 24;
-			seatsInRow = 6;
-			seatDimensions.setTwoDimensional(50, 60);
-			seatPitch = 20;
+			//if (!ModelHelper.getChildrenByClass(cabin,
+			//		PremiumEconomyClass.class).isEmpty()) {		
+		//	} else {
+				seats = 24;
+				seatsInRowString = "3-3";
+				seatDimensions.setTwoDimensional(50, 60);
+				seatPitch = 20;
+		//	}
 		} else if (travelSubClass.getSimpleName().equals("BusinessClass")) {
 			seats = 8;
-			seatsInRow = 4;
+			seatsInRowString = "2-2";
 			seatDimensions.setTwoDimensional(72, 80);
 			seatPitch = 30;
 		} else if (travelSubClass.getSimpleName().equals("FirstClass")) {
 			seats = 2;
-			seatsInRow = 2;
+			seatsInRowString = "1-1";
 			seatDimensions.setTwoDimensional(100, 120);
 			seatPitch = 40;
 		} else {
 			seats = 72;
-			seatsInRow = 6;
+			seatsInRowString = "3-3";
 			seatDimensions.setTwoDimensional(50, 60);
 			seatPitch = 20;
 		}
-		// } else {
-		// if (travelSubClass.getSimpleName().equals("PremiumEconomyClass")) {
-		// seats = cabin.getClasses().get(2).getAvailableSeats();
-		// seatsInRow = cabin.getClasses().get(2).getSeatsPerRow();
-		// seatDimensions.setTwoDimensional((int)cabin.getClasses().get(2).getSeatWidth(),(int)
-		// cabin.getClasses().get(2).getSeatLength());
-		// seatPitch = cabin.getClasses().get(2).getSeatPitch();
-		// } else if (travelSubClass.getSimpleName().equals("BusinessClass")) {
-		// seats = cabin.getClasses().get(1).getAvailableSeats();
-		// seatsInRow = cabin.getClasses().get(1).getSeatsPerRow();
-		// seatDimensions.setTwoDimensional((int)cabin.getClasses().get(1).getSeatWidth(),(int)
-		// cabin.getClasses().get(1).getSeatLength());
-		// seatPitch = cabin.getClasses().get(1).getSeatPitch();
-		// } else if (travelSubClass.getSimpleName().equals("FirstClass")) {
-		// seats = cabin.getClasses().get(0).getAvailableSeats();
-		// seatsInRow = cabin.getClasses().get(0).getSeatsPerRow();
-		// seatDimensions.setTwoDimensional((int)cabin.getClasses().get(0).getSeatWidth(),(int)
-		// cabin.getClasses().get(0).getSeatLength());
-		// seatPitch = cabin.getClasses().get(0).getSeatPitch();
-		// } else {
-		// seats = cabin.getClasses().get(3).getAvailableSeats();
-		// seatsInRow = cabin.getClasses().get(3).getSeatsPerRow();
-		// seatDimensions.setTwoDimensional((int)cabin.getClasses().get(3).getSeatWidth(),(int)
-		// cabin.getClasses().get(3).getSeatLength());
-		// seatPitch = cabin.getClasses().get(3).getSeatPitch();
-		// }
-		//
-		//
-		// }
+		seatsInRow = 6;	
+	}
+
+	/**
+	 * This method splits the String into parts and reads out the information in
+	 * it. This string has the form X-X and it is separated by the "-" operator.
+	 * 
+	 * @param seatString
+	 *            is the string
+	 */
+	private void splitSeatString(String seatString) {
+		numbAisles = StringUtils.countMatches(seatString, "-");
+		seatsInRow = 0;
+		if (numbAisles != 0) {
+			String[] rowParts = seatString.split("-");
+			for (String str : rowParts) {
+				seatsInRow += Integer.parseInt(str);
+			}
+		} else {
+			// RETURN ERROR!
+		}
 	}
 
 	/**
@@ -225,6 +222,7 @@ public class GenerateCabinCommand extends CDTCommand {
 					subbClazz.setPassengers(1);
 				}
 				cabin.getClasses().add(subbClazz);
+				splitSeatString(seatsInRowString);
 				subbClazz.setAvailableSeats(seats);
 				subbClazz.setSeatPitch(seatPitch);
 				subbClazz.setSeatsPerRow(seatsInRow);
@@ -301,9 +299,7 @@ public class GenerateCabinCommand extends CDTCommand {
 		Row newRow = CabinFactory.eINSTANCE.createRow();
 		subbClazz.getRows().add(newRow);
 		newRow.setRowNumber(rowCount);
-
 		checkForDoor();
-
 		for (int j = 1; j <= seatsInRow; j++) {
 			createSeat(newRow, j);
 		}

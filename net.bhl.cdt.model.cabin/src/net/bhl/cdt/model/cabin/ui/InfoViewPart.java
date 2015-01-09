@@ -13,17 +13,12 @@ import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.commands.SimulateBoardingCommand;
 import net.bhl.cdt.model.util.ModelHelper;
-import org.eclipse.jface.viewers.ITableLabelProvider;
-import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.graphics.Font;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.ISharedImages;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 
 /**
@@ -43,35 +38,6 @@ public class InfoViewPart extends ViewPart {
 	/********************************************************************/
 
 	private Canvas canvas;
-
-//	/**
-//	 * TODO: Description
-//	 */
-//	class ViewLabelProvider extends LabelProvider implements
-//			ITableLabelProvider {
-//		/**
-//		 * TODO: Description
-//		 */
-//		public String getColumnText(Object obj, int index) {
-//			Cabin todo = (Cabin) obj;
-//			return todo.getName();
-//		}
-//
-//		/**
-//		 * TODO: Description
-//		 */
-//		public Image getColumnImage(Object obj, int index) {
-//			return getImage(obj);
-//		}
-//
-//		/**
-//		 * TODO: Description
-//		 */
-//		public Image getImage(Object obj) {
-//			return PlatformUI.getWorkbench().getSharedImages()
-//					.getImage(ISharedImages.IMG_OBJ_ELEMENT);
-//		}
-//	}
 
 	/**
 	 * This method initializes the class elements.

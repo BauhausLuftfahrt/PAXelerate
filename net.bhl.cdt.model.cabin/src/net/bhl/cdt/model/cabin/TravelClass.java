@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.TravelClass#getSeatLength <em>Seat Length</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.TravelClass#getSeatWidth <em>Seat Width</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.TravelClass#getName <em>Name</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.TravelClass#getSeatsPerRowString <em>Seats Per Row String</em>}</li>
  * </ul>
  * </p>
  *
@@ -261,5 +262,32 @@ public interface TravelClass extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Seats Per Row String</b></em>' attribute.
+	 * The default value is <code>"3-3"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seats Per Row String</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seats Per Row String</em>' attribute.
+	 * @see #setSeatsPerRowString(String)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getTravelClass_SeatsPerRowString()
+	 * @model default="3-3"
+	 * @generated
+	 */
+	String getSeatsPerRowString();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.TravelClass#getSeatsPerRowString <em>Seats Per Row String</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seats Per Row String</em>' attribute.
+	 * @see #getSeatsPerRowString()
+	 * @generated
+	 */
+	void setSeatsPerRowString(String value);
 
 } // TravelClass

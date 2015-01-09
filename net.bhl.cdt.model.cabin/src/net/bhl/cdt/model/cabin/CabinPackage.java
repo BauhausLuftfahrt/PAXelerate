@@ -387,13 +387,22 @@ public interface CabinPackage extends EPackage {
 	int TRAVEL_CLASS__NAME = 8;
 
 	/**
+	 * The feature id for the '<em><b>Seats Per Row String</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRAVEL_CLASS__SEATS_PER_ROW_STRING = 9;
+
+	/**
 	 * The number of structural features of the '<em>Travel Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRAVEL_CLASS_FEATURE_COUNT = 9;
+	int TRAVEL_CLASS_FEATURE_COUNT = 10;
 
 	/**
 	 * The number of operations of the '<em>Travel Class</em>' class.
@@ -494,6 +503,15 @@ public interface CabinPackage extends EPackage {
 	 * @ordered
 	 */
 	int BUSINESS_CLASS__NAME = TRAVEL_CLASS__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Seats Per Row String</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUSINESS_CLASS__SEATS_PER_ROW_STRING = TRAVEL_CLASS__SEATS_PER_ROW_STRING;
 
 	/**
 	 * The number of structural features of the '<em>Business Class</em>' class.
@@ -605,6 +623,15 @@ public interface CabinPackage extends EPackage {
 	int FIRST_CLASS__NAME = TRAVEL_CLASS__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Seats Per Row String</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIRST_CLASS__SEATS_PER_ROW_STRING = TRAVEL_CLASS__SEATS_PER_ROW_STRING;
+
+	/**
 	 * The number of structural features of the '<em>First Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -714,6 +741,15 @@ public interface CabinPackage extends EPackage {
 	int ECONOMY_CLASS__NAME = TRAVEL_CLASS__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Seats Per Row String</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECONOMY_CLASS__SEATS_PER_ROW_STRING = TRAVEL_CLASS__SEATS_PER_ROW_STRING;
+
+	/**
 	 * The number of structural features of the '<em>Economy Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -821,6 +857,15 @@ public interface CabinPackage extends EPackage {
 	 * @ordered
 	 */
 	int PREMIUM_ECONOMY_CLASS__NAME = TRAVEL_CLASS__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Seats Per Row String</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PREMIUM_ECONOMY_CLASS__SEATS_PER_ROW_STRING = TRAVEL_CLASS__SEATS_PER_ROW_STRING;
 
 	/**
 	 * The number of structural features of the '<em>Premium Economy Class</em>' class.
@@ -2501,6 +2546,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getTravelClass_Name();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.TravelClass#getSeatsPerRowString <em>Seats Per Row String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seats Per Row String</em>'.
+	 * @see net.bhl.cdt.model.cabin.TravelClass#getSeatsPerRowString()
+	 * @see #getTravelClass()
+	 * @generated
+	 */
+	EAttribute getTravelClass_SeatsPerRowString();
+
+	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.BusinessClass <em>Business Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3595,6 +3651,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TRAVEL_CLASS__NAME = eINSTANCE.getTravelClass_Name();
+		/**
+		 * The meta object literal for the '<em><b>Seats Per Row String</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRAVEL_CLASS__SEATS_PER_ROW_STRING = eINSTANCE.getTravelClass_SeatsPerRowString();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.BusinessClassImpl <em>Business Class</em>}' class.
 		 * <!-- begin-user-doc -->

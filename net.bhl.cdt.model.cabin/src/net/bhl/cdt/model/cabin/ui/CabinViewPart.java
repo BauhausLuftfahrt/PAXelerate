@@ -13,6 +13,7 @@ import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
 import net.bhl.cdt.model.cabin.Curtain;
 import net.bhl.cdt.model.cabin.Door;
+import net.bhl.cdt.model.cabin.EconomyClass;
 import net.bhl.cdt.model.cabin.FirstClass;
 import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.Lavatory;
@@ -91,25 +92,6 @@ public class CabinViewPart extends ViewPart {
 	private static Image img;
 	private static final String FILEPATH = System.getProperty("user.home")
 			+ "/Documents/";
-
-	//
-	// class ViewLabelProvider extends LabelProvider implements
-	// ITableLabelProvider {
-	//
-	// public String getColumnText(Object obj, int index) {
-	// Cabin todo = (Cabin) obj;
-	// return todo.getName();
-	// }
-	//
-	// public Image getColumnImage(Object obj, int index) {
-	// return getImage(obj);
-	// }
-	//
-	// public Image getImage(Object obj) {
-	// return PlatformUI.getWorkbench().getSharedImages()
-	// .getImage(ISharedImages.IMG_OBJ_ELEMENT);
-	// }
-	// }
 
 	/**
 	 * This method creates the background image.
@@ -273,6 +255,15 @@ public class CabinViewPart extends ViewPart {
 	}
 
 	/**
+	 * This method returns, if the image is generated for the first time or not.
+	 * 
+	 * @return true or false
+	 */
+	public boolean isInitialBoot() {
+		return initialBoot;
+	}
+
+	/**
 	 * 
 	 * This method initializes all necessary parameters and images.
 	 *
@@ -317,39 +308,60 @@ public class CabinViewPart extends ViewPart {
 
 	}
 
+	/**
+	 * This method resizes an image.
+	 * @param image the image
+	 * @param width the desired width
+	 * @param height the desired height
+	 * @return the scaled image
+	 */
 	private Image resize(Image image, int width, int height) {
-		Image scaled = new Image(parent.getDisplay(), width, height);
-		GC gc = new GC(scaled);
+		Image scaledImage = new Image(parent.getDisplay(), width, height);
+		GC gc = new GC(scaledImage);
 		gc.setAntialias(SWT.ON);
 		gc.setInterpolation(SWT.HIGH);
 		gc.drawImage(image, 0, 0, image.getBounds().width,
 				image.getBounds().height, 0, 0, width, height);
 		gc.dispose();
 		image.dispose();
-		return scaled;
+		return scaledImage;
 	}
 
 	/**
 	 * This method catches a cabin.
 	 * 
 	 * @param cabin
-	 *            is the catched cabin
+	 *            is the caught cabin
 	 */
 	public void setCabin(Cabin cabin) {
 		initialBoot = false;
 		this.cabin = cabin;
-
 		factor = cabin.getCabinWidth() / CABIN_WIDTH_IN_PIXELS;
-		firstSeat = resize(firstSeat, (int) (cabin.getClasses().get(0)
-				.getSeatWidth() / factor), (int) (cabin.getClasses().get(0)
-				.getSeatLength() / factor));
-		businessSeat = resize(businessSeat, (int) (cabin.getClasses().get(1)
-				.getSeatWidth() / factor), (int) (cabin.getClasses().get(1)
-				.getSeatLength() / factor));
-		economySeat = resize(economySeat, (int) (cabin.getClasses().get(3)
-				.getSeatWidth() / factor), (int) (cabin.getClasses().get(3)
-				.getSeatLength() / factor));
 
+		/**
+		 * NOTE: if there is more than one subclass of the same type, only the
+		 * dimensions of the first element are used for scaling
+		 **/
+		try {
+			firstSeat = resize(firstSeat, (int) (ModelHelper
+					.getChildrenByClass(cabin, FirstClass.class).get(0)
+					.getSeatWidth() / factor), (int) (ModelHelper
+					.getChildrenByClass(cabin, FirstClass.class).get(0)
+					.getSeatLength() / factor));
+			businessSeat = resize(businessSeat, (int) (ModelHelper
+					.getChildrenByClass(cabin, BusinessClass.class).get(0)
+					.getSeatWidth() / factor), (int) (ModelHelper
+					.getChildrenByClass(cabin, BusinessClass.class).get(0)
+					.getSeatLength() / factor));
+			economySeat = resize(economySeat, (int) (ModelHelper
+					.getChildrenByClass(cabin, EconomyClass.class).get(0)
+					.getSeatWidth() / factor), (int) (ModelHelper
+					.getChildrenByClass(cabin, EconomyClass.class).get(0)
+					.getSeatLength() / factor));
+		} catch (IndexOutOfBoundsException e) {
+			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
+					"Error scaling seat images. A class is missing."));
+		}
 		cabinAdapter = new AdapterImpl() {
 			public void notifyChanged(Notification notification) {
 				if (!notification.isTouch()) {

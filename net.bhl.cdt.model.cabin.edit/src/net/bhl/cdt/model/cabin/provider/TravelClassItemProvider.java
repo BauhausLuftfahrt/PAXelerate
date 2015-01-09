@@ -71,6 +71,7 @@ public class TravelClassItemProvider
 			addSeatLengthPropertyDescriptor(object);
 			addSeatWidthPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
+			addSeatsPerRowStringPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -252,6 +253,28 @@ public class TravelClassItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Seats Per Row String feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatsPerRowStringPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TravelClass_seatsPerRowString_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TravelClass_seatsPerRowString_feature", "_UI_TravelClass_type"),
+				 CabinPackage.Literals.TRAVEL_CLASS__SEATS_PER_ROW_STRING,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -327,6 +350,7 @@ public class TravelClassItemProvider
 			case CabinPackage.TRAVEL_CLASS__SEAT_LENGTH:
 			case CabinPackage.TRAVEL_CLASS__SEAT_WIDTH:
 			case CabinPackage.TRAVEL_CLASS__NAME:
+			case CabinPackage.TRAVEL_CLASS__SEATS_PER_ROW_STRING:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CabinPackage.TRAVEL_CLASS__ROWS:
