@@ -62,7 +62,7 @@ public class GenerateCabinCommand extends CDTCommand {
 				"Initializing cabin generation ..."));
 		
 		constructor = new ConstructionLibrary(cabin);
-		constructor.clearCabin();
+		constructor.clearCabin(); //clear the old cabin
 
 		/*************** Get the CabinView *******************/
 		IWorkbenchPage page = PlatformUI.getWorkbench()
