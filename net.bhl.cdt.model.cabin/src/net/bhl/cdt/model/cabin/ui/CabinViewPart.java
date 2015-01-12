@@ -288,7 +288,7 @@ public class CabinViewPart extends ViewPart {
 		fontThree = new Font(parent.getDisplay(), fontName, 9, SWT.NORMAL);
 		/*************************************************************************************/
 
-		factor = 364 / CABIN_WIDTH_IN_PIXELS;
+		factor = cabin.getCabinWidth() / CABIN_WIDTH_IN_PIXELS;
 
 		aircraft = SWTResourceManager.getImage(InfoViewPart.class,
 				"bhl_with_ground.png");
