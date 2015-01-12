@@ -34,11 +34,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.TravelClassImpl#getPassengers <em>Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.TravelClassImpl#getAvailableSeats <em>Available Seats</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.TravelClassImpl#getSeatPitch <em>Seat Pitch</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.TravelClassImpl#getSeatsPerRow <em>Seats Per Row</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.TravelClassImpl#getSeatLength <em>Seat Length</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.TravelClassImpl#getSeatWidth <em>Seat Width</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.TravelClassImpl#getName <em>Name</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.TravelClassImpl#getSeatsPerRowString <em>Seats Per Row String</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.TravelClassImpl#getRowStructure <em>Row Structure</em>}</li>
  * </ul>
  * </p>
  *
@@ -136,26 +135,6 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	protected double seatPitch = SEAT_PITCH_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getSeatsPerRow() <em>Seats Per Row</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatsPerRow()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int SEATS_PER_ROW_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getSeatsPerRow() <em>Seats Per Row</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatsPerRow()
-	 * @generated
-	 * @ordered
-	 */
-	protected int seatsPerRow = SEATS_PER_ROW_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getSeatLength() <em>Seat Length</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -216,24 +195,24 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getSeatsPerRowString() <em>Seats Per Row String</em>}' attribute.
+	 * The default value of the '{@link #getRowStructure() <em>Row Structure</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSeatsPerRowString()
+	 * @see #getRowStructure()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SEATS_PER_ROW_STRING_EDEFAULT = "3-3";
+	protected static final String ROW_STRUCTURE_EDEFAULT = "3-3";
 
 	/**
-	 * The cached value of the '{@link #getSeatsPerRowString() <em>Seats Per Row String</em>}' attribute.
+	 * The cached value of the '{@link #getRowStructure() <em>Row Structure</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSeatsPerRowString()
+	 * @see #getRowStructure()
 	 * @generated
 	 * @ordered
 	 */
-	protected String seatsPerRowString = SEATS_PER_ROW_STRING_EDEFAULT;
+	protected String rowStructure = ROW_STRUCTURE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -355,27 +334,6 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getSeatsPerRow() {
-		return seatsPerRow;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSeatsPerRow(int newSeatsPerRow) {
-		int oldSeatsPerRow = seatsPerRow;
-		seatsPerRow = newSeatsPerRow;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.TRAVEL_CLASS__SEATS_PER_ROW, oldSeatsPerRow, seatsPerRow));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public double getSeatLength() {
 		return seatLength;
 	}
@@ -439,8 +397,8 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getSeatsPerRowString() {
-		return seatsPerRowString;
+	public String getRowStructure() {
+		return rowStructure;
 	}
 
 	/**
@@ -448,11 +406,11 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSeatsPerRowString(String newSeatsPerRowString) {
-		String oldSeatsPerRowString = seatsPerRowString;
-		seatsPerRowString = newSeatsPerRowString;
+	public void setRowStructure(String newRowStructure) {
+		String oldRowStructure = rowStructure;
+		rowStructure = newRowStructure;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.TRAVEL_CLASS__SEATS_PER_ROW_STRING, oldSeatsPerRowString, seatsPerRowString));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.TRAVEL_CLASS__ROW_STRUCTURE, oldRowStructure, rowStructure));
 	}
 
 	/**
@@ -487,16 +445,14 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 				return getAvailableSeats();
 			case CabinPackage.TRAVEL_CLASS__SEAT_PITCH:
 				return getSeatPitch();
-			case CabinPackage.TRAVEL_CLASS__SEATS_PER_ROW:
-				return getSeatsPerRow();
 			case CabinPackage.TRAVEL_CLASS__SEAT_LENGTH:
 				return getSeatLength();
 			case CabinPackage.TRAVEL_CLASS__SEAT_WIDTH:
 				return getSeatWidth();
 			case CabinPackage.TRAVEL_CLASS__NAME:
 				return getName();
-			case CabinPackage.TRAVEL_CLASS__SEATS_PER_ROW_STRING:
-				return getSeatsPerRowString();
+			case CabinPackage.TRAVEL_CLASS__ROW_STRUCTURE:
+				return getRowStructure();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -526,9 +482,6 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 			case CabinPackage.TRAVEL_CLASS__SEAT_PITCH:
 				setSeatPitch((Double)newValue);
 				return;
-			case CabinPackage.TRAVEL_CLASS__SEATS_PER_ROW:
-				setSeatsPerRow((Integer)newValue);
-				return;
 			case CabinPackage.TRAVEL_CLASS__SEAT_LENGTH:
 				setSeatLength((Double)newValue);
 				return;
@@ -538,8 +491,8 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 			case CabinPackage.TRAVEL_CLASS__NAME:
 				setName((String)newValue);
 				return;
-			case CabinPackage.TRAVEL_CLASS__SEATS_PER_ROW_STRING:
-				setSeatsPerRowString((String)newValue);
+			case CabinPackage.TRAVEL_CLASS__ROW_STRUCTURE:
+				setRowStructure((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -568,9 +521,6 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 			case CabinPackage.TRAVEL_CLASS__SEAT_PITCH:
 				setSeatPitch(SEAT_PITCH_EDEFAULT);
 				return;
-			case CabinPackage.TRAVEL_CLASS__SEATS_PER_ROW:
-				setSeatsPerRow(SEATS_PER_ROW_EDEFAULT);
-				return;
 			case CabinPackage.TRAVEL_CLASS__SEAT_LENGTH:
 				setSeatLength(SEAT_LENGTH_EDEFAULT);
 				return;
@@ -580,8 +530,8 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 			case CabinPackage.TRAVEL_CLASS__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case CabinPackage.TRAVEL_CLASS__SEATS_PER_ROW_STRING:
-				setSeatsPerRowString(SEATS_PER_ROW_STRING_EDEFAULT);
+			case CabinPackage.TRAVEL_CLASS__ROW_STRUCTURE:
+				setRowStructure(ROW_STRUCTURE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -605,16 +555,14 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 				return availableSeats != AVAILABLE_SEATS_EDEFAULT;
 			case CabinPackage.TRAVEL_CLASS__SEAT_PITCH:
 				return seatPitch != SEAT_PITCH_EDEFAULT;
-			case CabinPackage.TRAVEL_CLASS__SEATS_PER_ROW:
-				return seatsPerRow != SEATS_PER_ROW_EDEFAULT;
 			case CabinPackage.TRAVEL_CLASS__SEAT_LENGTH:
 				return seatLength != SEAT_LENGTH_EDEFAULT;
 			case CabinPackage.TRAVEL_CLASS__SEAT_WIDTH:
 				return seatWidth != SEAT_WIDTH_EDEFAULT;
 			case CabinPackage.TRAVEL_CLASS__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case CabinPackage.TRAVEL_CLASS__SEATS_PER_ROW_STRING:
-				return SEATS_PER_ROW_STRING_EDEFAULT == null ? seatsPerRowString != null : !SEATS_PER_ROW_STRING_EDEFAULT.equals(seatsPerRowString);
+			case CabinPackage.TRAVEL_CLASS__ROW_STRUCTURE:
+				return ROW_STRUCTURE_EDEFAULT == null ? rowStructure != null : !ROW_STRUCTURE_EDEFAULT.equals(rowStructure);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -637,16 +585,14 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 		result.append(availableSeats);
 		result.append(", seatPitch: ");
 		result.append(seatPitch);
-		result.append(", seatsPerRow: ");
-		result.append(seatsPerRow);
 		result.append(", seatLength: ");
 		result.append(seatLength);
 		result.append(", seatWidth: ");
 		result.append(seatWidth);
 		result.append(", name: ");
 		result.append(name);
-		result.append(", seatsPerRowString: ");
-		result.append(seatsPerRowString);
+		result.append(", rowStructure: ");
+		result.append(rowStructure);
 		result.append(')');
 		return result.toString();
 	}

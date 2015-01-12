@@ -19,11 +19,10 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.TravelClass#getPassengers <em>Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.TravelClass#getAvailableSeats <em>Available Seats</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.TravelClass#getSeatPitch <em>Seat Pitch</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.TravelClass#getSeatsPerRow <em>Seats Per Row</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.TravelClass#getSeatLength <em>Seat Length</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.TravelClass#getSeatWidth <em>Seat Width</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.TravelClass#getName <em>Name</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.TravelClass#getSeatsPerRowString <em>Seats Per Row String</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.TravelClass#getRowStructure <em>Row Structure</em>}</li>
  * </ul>
  * </p>
  *
@@ -156,33 +155,6 @@ public interface TravelClass extends EObject {
 	void setSeatPitch(double value);
 
 	/**
-	 * Returns the value of the '<em><b>Seats Per Row</b></em>' attribute.
-	 * The default value is <code>"0"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Seats Per Row</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Seats Per Row</em>' attribute.
-	 * @see #setSeatsPerRow(int)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getTravelClass_SeatsPerRow()
-	 * @model default="0"
-	 * @generated
-	 */
-	int getSeatsPerRow();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.TravelClass#getSeatsPerRow <em>Seats Per Row</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Seats Per Row</em>' attribute.
-	 * @see #getSeatsPerRow()
-	 * @generated
-	 */
-	void setSeatsPerRow(int value);
-
-	/**
 	 * Returns the value of the '<em><b>Seat Length</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
@@ -264,30 +236,30 @@ public interface TravelClass extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Seats Per Row String</b></em>' attribute.
+	 * Returns the value of the '<em><b>Row Structure</b></em>' attribute.
 	 * The default value is <code>"3-3"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Seats Per Row String</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Row Structure</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Seats Per Row String</em>' attribute.
-	 * @see #setSeatsPerRowString(String)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getTravelClass_SeatsPerRowString()
+	 * @return the value of the '<em>Row Structure</em>' attribute.
+	 * @see #setRowStructure(String)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getTravelClass_RowStructure()
 	 * @model default="3-3"
 	 * @generated
 	 */
-	String getSeatsPerRowString();
+	String getRowStructure();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.TravelClass#getSeatsPerRowString <em>Seats Per Row String</em>}' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.TravelClass#getRowStructure <em>Row Structure</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Seats Per Row String</em>' attribute.
-	 * @see #getSeatsPerRowString()
+	 * @param value the new value of the '<em>Row Structure</em>' attribute.
+	 * @see #getRowStructure()
 	 * @generated
 	 */
-	void setSeatsPerRowString(String value);
+	void setRowStructure(String value);
 
 } // TravelClass

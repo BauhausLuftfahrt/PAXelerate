@@ -51,7 +51,7 @@ public class ConstructionLibrary {
 	private double seatPitch;
 	private double seatHelper;
 	private int passengers;
-	private TravelClass subbClazz;
+	private TravelClass passengerClass;
 	private ILog logger;
 	private String[] rowParts;
 
@@ -123,7 +123,7 @@ public class ConstructionLibrary {
 				PremiumEconomyClass subclass = ModelHelper.getChildrenByClass(
 						cabin, PremiumEconomyClass.class).get(0);
 				seats = subclass.getAvailableSeats();
-				seatsInRowString = subclass.getSeatsPerRowString();
+				seatsInRowString = subclass.getRowStructure();
 				seatDimensions.setTwoDimensional((int) subclass.getSeatWidth(),
 						(int) subclass.getSeatLength());
 				seatPitch = subclass.getSeatPitch();
@@ -136,13 +136,16 @@ public class ConstructionLibrary {
 				seatPitch = 20;
 				passengers = 1;
 			}
+			PremiumEconomyClass peClass = CabinFactory.eINSTANCE
+					.createPremiumEconomyClass();
+			passengerClass = peClass;
 			break;
 		case "BusinessClass":
 			try {
 				BusinessClass subclass = ModelHelper.getChildrenByClass(cabin,
 						BusinessClass.class).get(0);
 				seats = subclass.getAvailableSeats();
-				seatsInRowString = subclass.getSeatsPerRowString();
+				seatsInRowString = subclass.getRowStructure();
 				seatDimensions.setTwoDimensional((int) subclass.getSeatWidth(),
 						(int) subclass.getSeatLength());
 				seatPitch = subclass.getSeatPitch();
@@ -154,14 +157,18 @@ public class ConstructionLibrary {
 				seatDimensions.setTwoDimensional(72, 80);
 				seatPitch = 30;
 				passengers = 1;
+
 			}
+			BusinessClass bClass = CabinFactory.eINSTANCE
+					.createBusinessClass();
+			passengerClass = bClass;
 			break;
 		case "FirstClass":
 			try {
 				FirstClass subclass = ModelHelper.getChildrenByClass(cabin,
 						FirstClass.class).get(0);
 				seats = subclass.getAvailableSeats();
-				seatsInRowString = subclass.getSeatsPerRowString();
+				seatsInRowString = subclass.getRowStructure();
 				seatDimensions.setTwoDimensional((int) subclass.getSeatWidth(),
 						(int) subclass.getSeatLength());
 				seatPitch = subclass.getSeatPitch();
@@ -174,13 +181,15 @@ public class ConstructionLibrary {
 				seatPitch = 40;
 				passengers = 1;
 			}
+			FirstClass fClass = CabinFactory.eINSTANCE.createFirstClass();
+			passengerClass = fClass;
 			break;
 		default:
 			try {
 				EconomyClass subclass = ModelHelper.getChildrenByClass(cabin,
 						EconomyClass.class).get(0);
 				seats = subclass.getAvailableSeats();
-				seatsInRowString = subclass.getSeatsPerRowString();
+				seatsInRowString = subclass.getRowStructure();
 				seatDimensions.setTwoDimensional((int) subclass.getSeatWidth(),
 						(int) subclass.getSeatLength());
 				seatPitch = subclass.getSeatPitch();
@@ -193,6 +202,8 @@ public class ConstructionLibrary {
 				seatPitch = 20;
 				passengers = 11;
 			}
+			EconomyClass eClass = CabinFactory.eINSTANCE.createEconomyClass();
+			passengerClass = eClass;
 			break;
 		}
 	}
@@ -236,7 +247,7 @@ public class ConstructionLibrary {
 		newSeat.setLetter(FunctionLibrary.getCharForNumber(j));
 		newSeat.setXPosition(globalSeatPositionX);
 		newSeat.setYPosition(globalSeatPositionY);
-		newSeat.setTravelClass(subbClazz);
+		newSeat.setTravelClass(passengerClass);
 		double aisleSpace = 0;
 		seatCount++;
 		if (j == (seatsInRow / 2)) {
@@ -274,42 +285,19 @@ public class ConstructionLibrary {
 	 *            is a helper class
 	 */
 	public <T extends TravelClass> void createClass(Class<T> travelSubClass) {
+		passengerClass = null;
 		switchSettings(travelSubClass);
 		if (seats > 0) {
 
-			/**************************************************************************/
-			switch (travelSubClass.getSimpleName()) {
-			case "PremiumEconomyClass":
-				PremiumEconomyClass pecClass = CabinFactory.eINSTANCE
-						.createPremiumEconomyClass();
-				subbClazz = pecClass;
-				break;
-			case "FirstClass":
-				FirstClass fClass = CabinFactory.eINSTANCE.createFirstClass();
-				subbClazz = fClass;
-				break;
-			case "BusinessClass":
-				BusinessClass bClass = CabinFactory.eINSTANCE
-						.createBusinessClass();
-				subbClazz = bClass;
-				break;
-			default:
-				EconomyClass eClass = CabinFactory.eINSTANCE
-						.createEconomyClass();
-				subbClazz = eClass;
-				break;
-			}
-			cabin.getClasses().add(subbClazz);
+			cabin.getClasses().add(passengerClass);
 			splitSeatString(seatsInRowString);
-			subbClazz.setPassengers(passengers);
-			subbClazz.setAvailableSeats(seats);
-			subbClazz.setSeatsPerRowString(seatsInRowString);
-			subbClazz.setSeatPitch(seatPitch);
-			subbClazz.setSeatsPerRow(seatsInRow);
-			subbClazz.setSeatWidth(seatDimensions.getX());
-			subbClazz.setSeatLength(seatDimensions.getY());
-			subbClazz.setName("");
-			/**************************************************************************/
+			passengerClass.setPassengers(passengers);
+			passengerClass.setAvailableSeats(seats);
+			passengerClass.setRowStructure(seatsInRowString);
+			passengerClass.setSeatPitch(seatPitch);
+			passengerClass.setSeatWidth(seatDimensions.getX());
+			passengerClass.setSeatLength(seatDimensions.getY());
+			passengerClass.setName("");
 
 			seatHelper = 0;
 			for (int i = 1; i <= seats / seatsInRow; i++) {
@@ -374,7 +362,7 @@ public class ConstructionLibrary {
 	 */
 	public void createRows() {
 		Row newRow = CabinFactory.eINSTANCE.createRow();
-		subbClazz.getRows().add(newRow);
+		passengerClass.getRows().add(newRow);
 		newRow.setRowNumber(rowCount);
 		checkForDoor();
 		for (int j = 1; j <= seatsInRow; j++) {

@@ -67,11 +67,10 @@ public class TravelClassItemProvider
 			addPassengersPropertyDescriptor(object);
 			addAvailableSeatsPropertyDescriptor(object);
 			addSeatPitchPropertyDescriptor(object);
-			addSeatsPerRowPropertyDescriptor(object);
 			addSeatLengthPropertyDescriptor(object);
 			addSeatWidthPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
-			addSeatsPerRowStringPropertyDescriptor(object);
+			addRowStructurePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -165,28 +164,6 @@ public class TravelClassItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Seats Per Row feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSeatsPerRowPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_TravelClass_seatsPerRow_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_TravelClass_seatsPerRow_feature", "_UI_TravelClass_type"),
-				 CabinPackage.Literals.TRAVEL_CLASS__SEATS_PER_ROW,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Seat Length feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -253,19 +230,19 @@ public class TravelClassItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Seats Per Row String feature.
+	 * This adds a property descriptor for the Row Structure feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addSeatsPerRowStringPropertyDescriptor(Object object) {
+	protected void addRowStructurePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_TravelClass_seatsPerRowString_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_TravelClass_seatsPerRowString_feature", "_UI_TravelClass_type"),
-				 CabinPackage.Literals.TRAVEL_CLASS__SEATS_PER_ROW_STRING,
+				 getString("_UI_TravelClass_rowStructure_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TravelClass_rowStructure_feature", "_UI_TravelClass_type"),
+				 CabinPackage.Literals.TRAVEL_CLASS__ROW_STRUCTURE,
 				 true,
 				 false,
 				 false,
@@ -346,11 +323,10 @@ public class TravelClassItemProvider
 			case CabinPackage.TRAVEL_CLASS__PASSENGERS:
 			case CabinPackage.TRAVEL_CLASS__AVAILABLE_SEATS:
 			case CabinPackage.TRAVEL_CLASS__SEAT_PITCH:
-			case CabinPackage.TRAVEL_CLASS__SEATS_PER_ROW:
 			case CabinPackage.TRAVEL_CLASS__SEAT_LENGTH:
 			case CabinPackage.TRAVEL_CLASS__SEAT_WIDTH:
 			case CabinPackage.TRAVEL_CLASS__NAME:
-			case CabinPackage.TRAVEL_CLASS__SEATS_PER_ROW_STRING:
+			case CabinPackage.TRAVEL_CLASS__ROW_STRUCTURE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CabinPackage.TRAVEL_CLASS__ROWS:
