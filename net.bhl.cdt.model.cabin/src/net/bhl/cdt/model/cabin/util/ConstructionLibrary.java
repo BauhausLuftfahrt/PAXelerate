@@ -35,6 +35,8 @@ import net.bhl.cdt.model.util.ModelHelper;
 
 /**
  * This class contains all constructors for the different elements of the cabin.
+ * You can construct every single part of cabin on its own.
+ * @see GenerateCabinCommand.java for implementation reference.
  * 
  * @author marc.engelmann
  *
