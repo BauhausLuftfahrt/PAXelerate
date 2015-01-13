@@ -97,13 +97,17 @@
    <extension
          point="org.eclipse.ui.views">
       <view
+            allowMultiple="false"
             class="net.bhl.cdt.model.cabin.ui.CabinViewPart"
+            icon="images/Cabin.gif"
             id="net.bhl.cdt.model.cabin.cabinview"
             name="Cabin View"
             restorable="true">
       </view>
       <view
+            allowMultiple="false"
             class="net.bhl.cdt.model.cabin.ui.InfoViewPart"
+            icon="images/Passenger.png"
             id="net.bhl.cdt.model.cabin.infoview"
             name="Info View"
             restorable="true">

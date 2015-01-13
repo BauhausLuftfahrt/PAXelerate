@@ -59,7 +59,7 @@ public class CabinViewPart extends ViewPart {
 
 	/********************* graphical settings. *************************/
 	private static final int OFFSET_OF_DOOR = 0;
-	private static final double PASSENGER_CIRCLE_SIZE = 0.75;
+	private static final double PASSENGER_CIRCLE_SIZE = 0.5;
 
 	private static final int CABIN_WIDTH_IN_PIXELS = 96;
 	private static final int X_ZERO = 138;
@@ -86,6 +86,8 @@ public class CabinViewPart extends ViewPart {
 	private Image economySeat;
 	private Image businessSeat;
 	private Image firstSeat;
+	private Image coffeeIcon;
+	private Image lavatoryIcon;
 	private Canvas canvas;
 	private Adapter cabinAdapter;
 	private ImageLoader loader;
@@ -144,13 +146,9 @@ public class CabinViewPart extends ViewPart {
 					(int) (Y_ZERO + lavatory.getYPosition() / factor),
 					(int) (lavatory.getXDimension() / factor),
 					(int) (lavatory.getYDimension() / factor));
-			graphicsControl
-					.drawText(
-							"WC",
-							(int) (X_ZERO - fontsize + (lavatory.getXPosition() + lavatory
-									.getXDimension() / 2) / factor),
-							(int) (Y_ZERO - fontsize + (lavatory.getYPosition() + lavatory
-									.getYDimension() / 2) / factor));
+			graphicsControl.drawImage(lavatoryIcon,
+					(int) (X_ZERO + (lavatory.getXPosition()+lavatory.getXDimension()/2-lavatory.getYDimension()*PASSENGER_CIRCLE_SIZE/2) / factor),
+					(int) (Y_ZERO + (lavatory.getYPosition()+lavatory.getYDimension()/2-lavatory.getYDimension()*PASSENGER_CIRCLE_SIZE/2) / factor));
 
 		}
 
@@ -161,14 +159,9 @@ public class CabinViewPart extends ViewPart {
 					/ factor), (int) (Y_ZERO + galley.getYPosition() / factor),
 					(int) (galley.getXDimension() / factor),
 					(int) (galley.getYDimension() / factor));
-			graphicsControl
-					.drawText(
-							"G",
-							(int) (X_ZERO - fontsize + (galley
-									.getXPosition() + galley.getXDimension() / 2)
-									/ factor),
-							(int) (Y_ZERO - fontsize + (galley.getYPosition() + galley
-									.getYDimension() / 2) / factor));
+			graphicsControl.drawImage(coffeeIcon,
+					(int) (X_ZERO + (galley.getXPosition()+galley.getXDimension()/2-galley.getYDimension()/4) / factor),
+					(int) (Y_ZERO + (galley.getYPosition()+galley.getYDimension()/2-galley.getYDimension()/4) / factor));
 		}
 
 		for (Curtain curtain : ModelHelper.getChildrenByClass(cabin,
@@ -298,6 +291,10 @@ public class CabinViewPart extends ViewPart {
 				"business_seat.png");
 		firstSeat = SWTResourceManager.getImage(InfoViewPart.class,
 				"first_seat.png");
+		coffeeIcon = SWTResourceManager.getImage(InfoViewPart.class,
+				"coffee.png");
+		lavatoryIcon = SWTResourceManager.getImage(InfoViewPart.class,
+				"Lavatory.png");
 
 		canvas = new Canvas(parent, SWT.RESIZE);
 		doTheDraw();
@@ -375,6 +372,31 @@ public class CabinViewPart extends ViewPart {
 		} catch (IndexOutOfBoundsException e) {
 			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 					"Error scaling seat images. No economy class found."));
+		}
+		try {
+			coffeeIcon = resize(coffeeIcon, (int) (ModelHelper
+					.getChildrenByClass(cabin, Galley.class).get(0)
+					.getYDimension()
+					/ factor / 2),
+					(int) (ModelHelper.getChildrenByClass(cabin, Galley.class)
+							.get(0).getYDimension()
+							/ factor *PASSENGER_CIRCLE_SIZE));
+		} catch (IndexOutOfBoundsException e) {
+			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
+					"Error scaling seat images. No galley found."));
+		}
+		try {
+			lavatoryIcon = resize(lavatoryIcon, (int) (ModelHelper
+					.getChildrenByClass(cabin, Lavatory.class).get(0)
+					.getYDimension()
+					/ factor / 2),
+					(int) (ModelHelper
+							.getChildrenByClass(cabin, Lavatory.class).get(0)
+							.getYDimension()
+							/ factor * PASSENGER_CIRCLE_SIZE));
+		} catch (IndexOutOfBoundsException e) {
+			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
+					"Error scaling seat images. No lavatory found."));
 		}
 		cabinAdapter = new AdapterImpl() {
 			public void notifyChanged(Notification notification) {

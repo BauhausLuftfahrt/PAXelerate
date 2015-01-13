@@ -56,12 +56,7 @@ public class GenerateCabinCommand extends CDTCommand {
 	/**
 	 * This method generates the cabin structure with the help 
 	 * of the construction library. This is  the main function 
-	 * of the generate cabin command. Please note the following:
-	 * 
-	 *  - Emergency Exits must be generated at first.
-	 *  - Only create one main door.
-	 *  - Create all other objects in the order they appear within
-	 *    the cabin (from front to rear).
+	 * of the generate cabin command.
 	 */
 	protected void doRun() {
 		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
@@ -77,9 +72,9 @@ public class GenerateCabinCommand extends CDTCommand {
 		cabinViewPart.unsyncViewer();
 		/*****************************************************/
 
-		/* ------------------------------- */
-		/* Cabin Construction starts here! */
-		/* ------------------------------- */
+		/* ------------------------------------------------- */
+		/* ------- Cabin Construction starts here! --------- */
+		/* ------------------------------------------------- */
 		constructor = new ConstructionLibrary(cabin);
 		constructor.clearCabin(); // clear the predecessor cabin (if existent)
 		constructor.createDoor(EmergencyExit.class, true, 3, 935);
@@ -94,10 +89,10 @@ public class GenerateCabinCommand extends CDTCommand {
 		constructor.createGalley(100);
 		constructor.createDoor(StandardDoor.class, true, 2, -1);
 		constructor.createLavatory(100);
-		cabin = constructor.getCabin(); // sync cabin with constructed cabin
-		/* ----------------------------- */
-		/* Cabin Construction ends here! */
-		/* ----------------------------- */
+		cabin = constructor.getCabin(); // sync cabins
+		/* ------------------------------------------------- */
+		/* ------- Cabin Construction ends here! ----------- */ 
+		/* ------------------------------------------------- */
 
 		if (constructor.getGlobalSeatPositionY() > cabin.getCabinLength()) {
 			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
@@ -112,7 +107,7 @@ public class GenerateCabinCommand extends CDTCommand {
 			cabinViewPart.syncViewer();
 		} catch (NullPointerException e) {
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
-					"The cabin view is not visible or you did not generate one."));
+					"The cabin or info view is not visible."));
 		}
 
 	}

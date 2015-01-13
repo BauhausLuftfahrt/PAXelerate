@@ -165,6 +165,7 @@ public class ObstacleMap {
 	 * the aisle, the obstacle value is set to zero. This makes the passengers
 	 * consider the aisle as their preferred path.
 	 */
+	@SuppressWarnings("unused")
 	private void generateAisleHole() {
 		int entryMin = 0;
 		int entryMax = 0;
