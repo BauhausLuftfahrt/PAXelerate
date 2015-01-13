@@ -17,10 +17,10 @@ Welcome to the repository of the Bauhaus Luftfahrt Boarding Simulation!
 
 ### Contributors ###
 
-* Marc Engelmann **(active)**
-* Tobias Brügge-Zobel **(active)**
+* Marc Engelmann ***(active)***
+* Tobias Brügge-Zobel ***(active)***
 * Martin Glas
-* Michael Schmidt **(active)**
+* Michael Schmidt ***(active)***
 * Stefan Weber
 * Pedro Martinez
 * Philipp Osterrieder
