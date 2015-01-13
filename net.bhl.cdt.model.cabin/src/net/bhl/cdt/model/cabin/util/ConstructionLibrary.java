@@ -59,6 +59,7 @@ public class ConstructionLibrary {
 	private TravelClass passengerClass;
 	private ILog logger;
 	private ArrayList<Integer> rowPartsInt;
+	private Boolean doItOnce = true;
 
 	/**
 	 * This method is the constructor of this class.
@@ -456,31 +457,37 @@ public class ConstructionLibrary {
 	}
 
 	/**
-	 * This function creates a Lavatory.
+	 * This function creates a row of lavatories.
 	 * 
-	 * @param isSymmetricalToLavatoryBefore
-	 *            describes if the lavatory is meant to be placed on the same
-	 *            y-coordinate, symmetrical to the galley created before.
-	 * @param xDimension
-	 *            is the x dimension
 	 * @param yDimension
-	 *            is the y dimension
+	 *            is the y dimension of the lavatory
 	 */
-	public void createLavatory(Boolean isSymmetricalToLavatoryBefore,
-			double xDimension, double yDimension) {
-		Lavatory newLavatory = CabinFactory.eINSTANCE.createLavatory();
-		cabin.getLavatories().add(newLavatory);
-		if (isSymmetricalToLavatoryBefore) {
-			globalSeatPositionY -= yDimension;
-			newLavatory.setXPosition(cabin.getCabinWidth() - xDimension);
+	public void createLavatory(int yDimension) {
+		int currentLavatoryPosition = 0;
+		splitSeatString(seatStructure);
+		if (seatStructure == "emptyString") {
+			rowPartsInt.add(3);
+			rowPartsInt.add(3);
+		}
+		for (int k = 0; k < rowPartsInt.size(); k++) {
+			Lavatory newLavatory = CabinFactory.eINSTANCE.createLavatory();
+			cabin.getLavatories().add(newLavatory);
+			newLavatory.setYDimension(yDimension);
 			newLavatory.setYPosition(globalSeatPositionY);
-		} else {
-			newLavatory.setXPosition(0);
-			newLavatory.setYPosition(globalSeatPositionY);
+			try {
+				newLavatory.setXDimension(rowPartsInt.get(k)
+						* (passengerClass.getSeatWidth() + seatHelper)
+						+ seatHelper);
+			} catch (NullPointerException e) {
+				newLavatory.setXDimension((cabin.getCabinWidth() - cabin
+						.getAisleWidth()) / 2);
+			}
+			newLavatory.setXPosition(currentLavatoryPosition);
+			currentLavatoryPosition = currentLavatoryPosition
+					+ (int) (newLavatory.getXDimension() + cabin
+							.getAisleWidth());
 		}
 		globalSeatPositionY += yDimension;
-		newLavatory.setXDimension(xDimension);
-		newLavatory.setYDimension(yDimension);
 	}
 
 	/**
@@ -511,12 +518,21 @@ public class ConstructionLibrary {
 
 	/**
 	 * This method generates a complete row of galleys!
-	 * @param yDimension is the y dimension of the galleys
+	 * 
+	 * @param yDimension
+	 *            is the y dimension of the galleys
 	 */
 	public void createGalley(int yDimension) {
 		int currentGalleyPosition = 0;
+		if (doItOnce) {
+			try {
+				seatStructure = cabin.getClasses().get(0).getRowStructure();
+			} catch (IndexOutOfBoundsException e) {
+			}
+		}
+		doItOnce = false;
 		splitSeatString(seatStructure);
-		if(seatStructure=="emptyString") {
+		if (seatStructure == "emptyString") {
 			rowPartsInt.add(3);
 			rowPartsInt.add(3);
 		}
@@ -525,12 +541,13 @@ public class ConstructionLibrary {
 			cabin.getGalleys().add(newGalley);
 			newGalley.setYDimension(yDimension);
 			newGalley.setYPosition(globalSeatPositionY);
-			try{
+			try {
 				newGalley.setXDimension(rowPartsInt.get(k)
-							* (passengerClass.getSeatWidth() + seatHelper)
-							+ seatHelper);
-			} catch(NullPointerException e) {
-				newGalley.setXDimension((cabin.getCabinWidth()-cabin.getAisleWidth())/2);
+						* (passengerClass.getSeatWidth() + seatHelper)
+						+ seatHelper);
+			} catch (NullPointerException e) {
+				newGalley.setXDimension((cabin.getCabinWidth() - numbAisles*cabin
+						.getAisleWidth())/(numbAisles+1));
 			}
 			newGalley.setXPosition(currentGalleyPosition);
 			currentGalleyPosition = currentGalleyPosition

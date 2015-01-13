@@ -84,7 +84,7 @@ public class GenerateCabinCommand extends CDTCommand {
 		constructor.clearCabin(); // clear the predecessor cabin (if existent)
 		constructor.createDoor(EmergencyExit.class, true, 3, 935);
 		constructor.createDoor(EmergencyExit.class, true, 4, 1228);
-		//constructor.createLavatory(100);
+		constructor.createLavatory(100);
 		constructor.createDoor(MainDoor.class, true, 1, -1);
 		constructor.createGalley(100);
 		constructor.createClass(FirstClass.class);
@@ -93,7 +93,7 @@ public class GenerateCabinCommand extends CDTCommand {
 		constructor.createClass(EconomyClass.class);
 		constructor.createGalley(100);
 		constructor.createDoor(StandardDoor.class, true, 2, -1);
-		//constructor.createLavatory(100);
+		constructor.createLavatory(100);
 		cabin = constructor.getCabin(); // sync cabin with constructed cabin
 		/* ----------------------------- */
 		/* Cabin Construction ends here! */

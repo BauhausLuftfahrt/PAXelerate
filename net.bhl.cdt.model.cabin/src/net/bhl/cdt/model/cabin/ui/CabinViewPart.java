@@ -163,8 +163,8 @@ public class CabinViewPart extends ViewPart {
 					(int) (galley.getYDimension() / factor));
 			graphicsControl
 					.drawText(
-							"Galley",
-							(int) (X_ZERO - fontsize - 8 + (galley
+							"G",
+							(int) (X_ZERO - fontsize + (galley
 									.getXPosition() + galley.getXDimension() / 2)
 									/ factor),
 							(int) (Y_ZERO - fontsize + (galley.getYPosition() + galley
