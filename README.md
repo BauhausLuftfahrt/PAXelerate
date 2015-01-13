@@ -5,7 +5,7 @@ Welcome to the repository of the Bauhaus Luftfahrt Boarding Simulation!
 ### What is this repository for? ###
 
 * This repository hosts the code of our boarding simulation
-* The current version is **alpha 0.1**
+* The current version is *alpha 0.1*
 * Work on the implementation in java began in November 2014
 
 ### How do I get set up? ###
