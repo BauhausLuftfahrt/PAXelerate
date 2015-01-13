@@ -302,8 +302,8 @@ public class ConstructionLibrary {
 				globalSeatPositionX = 0;
 
 				/** Calculate the gap between the seats **/
-				if ((seatsInRow * seatDimensions.getX() + cabin.getAisleWidth()) <= cabin
-						.getCabinWidth()) {
+				if ((seatsInRow * seatDimensions.getX() + numbAisles
+						* cabin.getAisleWidth()) <= cabin.getCabinWidth()) {
 					globalSeatPositionX = ((cabin.getCabinWidth() - numbAisles
 							* cabin.getAisleWidth() - seatsInRow
 							* seatDimensions.getX()) / (seatsInRow + numbAisles + 1));
@@ -433,31 +433,26 @@ public class ConstructionLibrary {
 	 *            describes whether the curtain is open or not.
 	 * @param name
 	 *            is the name of the door.
+	 * 
 	 */
 	public void createCurtain(boolean openOrNot, String name) {
-		Curtain newCurtainLeft = CabinFactory.eINSTANCE.createCurtain();
-		Curtain newCurtainRight = CabinFactory.eINSTANCE.createCurtain();
-		cabin.getCurtains().add(newCurtainLeft);
-		cabin.getCurtains().add(newCurtainRight);
-		newCurtainLeft.setCurtainOpen(openOrNot);
-		newCurtainRight.setCurtainOpen(openOrNot);
-		newCurtainLeft.setXPosition(0);
-		newCurtainLeft.setYPosition(globalSeatPositionY + 10);
-		newCurtainLeft.setXDimension((cabin.getCabinWidth() - cabin
-				.getAisleWidth()) / 2);
-		newCurtainLeft.setYDimension(10);
-		newCurtainLeft.setName(name + " (left)");
-
-		newCurtainRight.setXPosition(cabin.getCabinWidth()
-				- newCurtainLeft.getXDimension());
-		newCurtainRight.setYPosition(newCurtainLeft.getYPosition());
-		newCurtainRight.setXDimension(newCurtainLeft.getXDimension());
-		newCurtainRight.setYDimension(newCurtainLeft.getYDimension());
-		newCurtainRight.setName(name + " (right)");
-
-		globalSeatPositionY = globalSeatPositionY
-				+ newCurtainLeft.getYDimension() + 30;
-
+		int currentCurtainPosition = 0;
+		for (int k = 0; k < rowPartsInt.size(); k++) {
+			Curtain newCurtain = CabinFactory.eINSTANCE.createCurtain();
+			cabin.getCurtains().add(newCurtain);
+			newCurtain.setCurtainOpen(openOrNot);
+			newCurtain.setName(name + " (Part " + (k + 1) + ")");
+			newCurtain.setYDimension(10);
+			newCurtain.setYPosition(globalSeatPositionY + 10);
+			newCurtain
+					.setXDimension(rowPartsInt.get(k)
+							* (passengerClass.getSeatWidth() + seatHelper)
+							+ seatHelper);
+			newCurtain.setXPosition(currentCurtainPosition);
+			currentCurtainPosition = currentCurtainPosition
+					+ (int) (newCurtain.getXDimension() + cabin.getAisleWidth());
+		}
+		globalSeatPositionY += 40;
 	}
 
 	/**
@@ -515,31 +510,33 @@ public class ConstructionLibrary {
 	}
 
 	/**
-	 * This method creates a galley.
-	 * 
-	 * @param isSymmetricalToGalleyBefore
-	 *            check if the galley created is the symmtrical element of the
-	 *            galley created before.
-	 * @param xDimension
-	 *            is the x dimension of the galley
-	 * @param yDimension
-	 *            is the y dimension of the galley
+	 * This method generates a complete row of galleys!
+	 * @param yDimension is the y dimension of the galleys
 	 */
-	public void createGalley(Boolean isSymmetricalToGalleyBefore,
-			double xDimension, double yDimension) {
-		Galley newGalley = CabinFactory.eINSTANCE.createGalley();
-		cabin.getGalleys().add(newGalley);
-		if (isSymmetricalToGalleyBefore) {
-			globalSeatPositionY -= yDimension;
-			newGalley.setXPosition(cabin.getCabinWidth() - xDimension);
+	public void createGalley(int yDimension) {
+		int currentGalleyPosition = 0;
+		splitSeatString(seatStructure);
+		if(seatStructure=="emptyString") {
+			rowPartsInt.add(3);
+			rowPartsInt.add(3);
+		}
+		for (int k = 0; k < rowPartsInt.size(); k++) {
+			Galley newGalley = CabinFactory.eINSTANCE.createGalley();
+			cabin.getGalleys().add(newGalley);
+			newGalley.setYDimension(yDimension);
 			newGalley.setYPosition(globalSeatPositionY);
-		} else {
-			newGalley.setXPosition(0);
-			newGalley.setYPosition(globalSeatPositionY);
+			try{
+				newGalley.setXDimension(rowPartsInt.get(k)
+							* (passengerClass.getSeatWidth() + seatHelper)
+							+ seatHelper);
+			} catch(NullPointerException e) {
+				newGalley.setXDimension((cabin.getCabinWidth()-cabin.getAisleWidth())/2);
+			}
+			newGalley.setXPosition(currentGalleyPosition);
+			currentGalleyPosition = currentGalleyPosition
+					+ (int) (newGalley.getXDimension() + cabin.getAisleWidth());
 		}
 		globalSeatPositionY += yDimension;
-		newGalley.setXDimension(xDimension);
-		newGalley.setYDimension(yDimension);
 	}
 
 }

@@ -6,6 +6,7 @@
 package net.bhl.cdt.model.cabin.ui;
 
 import java.util.List;
+
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
 import net.bhl.cdt.model.cabin.Passenger;
@@ -13,9 +14,11 @@ import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.commands.SimulateBoardingCommand;
 import net.bhl.cdt.model.util.ModelHelper;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
@@ -106,6 +109,9 @@ public class InfoViewPart extends ViewPart {
 					e.gc.drawText("0\n0\n0\n0",
 							boxTwoX - 20, margin);
 				}
+				
+//				e.gc.setForeground(new Color(parent.getDisplay(), 220, 20, 60));
+//				e.gc.drawText("Existing Cabin Layout Errors:", x, y);
 			}
 
 		});
@@ -116,7 +122,7 @@ public class InfoViewPart extends ViewPart {
 	public void setFocus() {
 	}
 	/**
-	 * This method disposes everyting.
+	 * This method disposes everything.
 	 */
 	private void disposeAll() {
 		super.dispose();

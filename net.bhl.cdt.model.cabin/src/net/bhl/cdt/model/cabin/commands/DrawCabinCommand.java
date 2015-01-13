@@ -17,7 +17,9 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 
 /**
- * This class refreshed the cabin view without modifying anything.
+ * This class refreshed the cabin view without modifying anything. It checks the
+ * layout of the cabin and warns the user.
+ * 
  * @author marc.engelmann
  *
  */
@@ -30,17 +32,17 @@ public class DrawCabinCommand extends CDTCommand {
 
 	/**
 	 * This method is the constructor.
-	 * @param cabin the cabin
+	 * 
+	 * @param cabin
+	 *            the cabin
 	 */
 	public DrawCabinCommand(Cabin cabin) {
 		this.cabin = cabin;
 		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
-
 	}
 
-	
 	/**
-	 *This method executed the right click command. The cabin view is updated.
+	 * This method executed the right click command. The cabin view is updated.
 	 */
 	@Override
 	protected void doRun() {
@@ -49,15 +51,21 @@ public class DrawCabinCommand extends CDTCommand {
 				.getActiveWorkbenchWindow().getActivePage();
 		cabinViewPart = (CabinViewPart) page
 				.findView("net.bhl.cdt.model.cabin.cabinview");
+
+		checkForConstructionErrors();
 		
 		try {
-		cabinViewPart.setCabin(cabin);
-		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
-				"Cabin view updated"));
-		} 
-		catch(NullPointerException e) {
+			cabinViewPart.setCabin(cabin);
+			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
+					"Cabin view checked and updated"));
+		} catch (NullPointerException e) {
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 					"No cabin view is visible!"));
 		}
+	}
+
+	private void checkForConstructionErrors() {
+		// TODO Create error detection algorithm.
+		
 	}
 }

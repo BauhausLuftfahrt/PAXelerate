@@ -34,4 +34,4 @@ Welcome to the repository of the Bauhaus Luftfahrt Boarding Simulation!
 
 ### About ###
 
-© Bauhaus Luftfahrt e.V. 2014 - 2015
+(c) Bauhaus Luftfahrt e.V. 2014 - 2015

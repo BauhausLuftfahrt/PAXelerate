@@ -28,7 +28,7 @@
       <command
             defaultHandler="net.bhl.cdt.model.cabin.handlers.DrawCabinHandler"
             id="net.bhl.cdt.model.cabin.DrawCabin"
-            name="Refresh Cabin View">
+            name="Check and Refresh">
       </command>
       <command
             defaultHandler="net.bhl.cdt.model.cabin.handlers.GeneratePassengersHandler"
@@ -68,7 +68,7 @@
          </command>
          <command
                commandId="net.bhl.cdt.model.cabin.DrawCabin"
-               label="Refresh Cabin View"
+               label="Check and Refresh"
                style="push">
             <visibleWhen
                   checkEnabled="false">
