@@ -57,9 +57,6 @@ public class GeneratePassengersCommand extends CDTCommand {
 	private int seatAreaBegin;
 	private ILog logger;
 
-	// int cabinViewFPS = Activator.getDefault().getPreferenceStore()
-	// .getString("CabinViewFPS");
-
 	/**
 	 * This method submits the cabin to be used in the file.
 	 * 

@@ -417,8 +417,12 @@ public class CabinViewPart extends ViewPart {
 			for (int j = 0; j < (int) (cabin.getCabinLength() / cabin
 					.getScale()); j++) {
 				if (obstacleMap[i][j] <= ObstacleMap.getBasicValue()) {
-					int colorFactor = obstacleMap[i][j]
-							* (int) (255 / (ObstacleMap.getBasicValue()));
+					int colorFactor;
+					try {
+						colorFactor = obstacleMap[i][j] * (int) (255 / (ObstacleMap.getBasicValue()));
+					} catch(ArithmeticException e) {
+						colorFactor = obstacleMap[i][j] * 255;
+					}
 					if (colorFactor > 255) {
 						colorFactor = 255;
 					}

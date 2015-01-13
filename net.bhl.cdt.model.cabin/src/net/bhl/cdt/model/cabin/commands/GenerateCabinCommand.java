@@ -54,15 +54,19 @@ public class GenerateCabinCommand extends CDTCommand {
 
 	@Override
 	/**
-	 * CAUTION! Objects must be generated in the order they appear in the cabin (from front to rear).
-	 * Emergency Exits must be generated at first!
+	 * This method generates the cabin structure with the help 
+	 * of the construction library. This is  the main function 
+	 * of the generate cabin command. Please note the following:
+	 * 
+	 *  - Emergency Exits must be generated at first.
+	 *  - Only create one main door.
+	 *  - Create all other objects in the order they appear within
+	 *    the cabin (from front to rear).
 	 */
+	
 	protected void doRun() {
 		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 				"Initializing cabin generation ..."));
-		
-		constructor = new ConstructionLibrary(cabin);
-		constructor.clearCabin(); //clear the old cabin
 
 		/*************** Get the CabinView *******************/
 		IWorkbenchPage page = PlatformUI.getWorkbench()
@@ -74,45 +78,39 @@ public class GenerateCabinCommand extends CDTCommand {
 		cabinViewPart.unsyncViewer();
 		/*****************************************************/
 
-		/**** Always generate emergency exits at first! ****/
+		/* ------------------------------- */
+		/* Cabin Construction starts here! */
+		/* ------------------------------- */
+		constructor = new ConstructionLibrary(cabin);
+		constructor.clearCabin(); // clear the predecessor cabin (if existent)
 		constructor.createDoor(EmergencyExit.class, true, 3, 935);
 		constructor.createDoor(EmergencyExit.class, true, 4, 1228);
-		/***************************************************/
-
 		constructor.createLavatory(false,
 				((cabin.getCabinWidth() - cabin.getAisleWidth()) / 2), 100);
 		constructor.createLavatory(true,
 				((cabin.getCabinWidth() - cabin.getAisleWidth()) / 2), 100);
-
-		/****** Never create more than one main door! ********/
 		constructor.createDoor(MainDoor.class, true, 1, -1);
-		/*****************************************************/
-
 		constructor.createGalley(false,
 				((cabin.getCabinWidth() - cabin.getAisleWidth()) / 2), 100);
 		constructor.createGalley(true,
 				((cabin.getCabinWidth() - cabin.getAisleWidth()) / 2), 100);
-
-		/****************** Create Classes *****************/
 		constructor.createClass(FirstClass.class);
 		constructor.createClass(BusinessClass.class);
 		constructor.createClass(PremiumEconomyClass.class);
 		constructor.createClass(EconomyClass.class);
-		/***************************************************/
-
 		constructor.createGalley(false,
 				((cabin.getCabinWidth() - cabin.getAisleWidth()) / 2), 100);
 		constructor.createGalley(true,
 				((cabin.getCabinWidth() - cabin.getAisleWidth()) / 2), 100);
-
 		constructor.createDoor(StandardDoor.class, true, 2, -1);
-
 		constructor.createLavatory(false,
 				((cabin.getCabinWidth() - cabin.getAisleWidth()) / 2), 100);
 		constructor.createLavatory(true,
 				((cabin.getCabinWidth() - cabin.getAisleWidth()) / 2), 100);
-
-		cabin = constructor.getCabin();
+		cabin = constructor.getCabin(); // sync cabin with constructed cabin
+		/* ----------------------------- */
+		/* Cabin Construction ends here! */
+		/* ----------------------------- */
 
 		if (constructor.getGlobalSeatPositionY() > cabin.getCabinLength()) {
 			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",

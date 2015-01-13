@@ -28,7 +28,8 @@ public class ObstacleMap {
 	private Cabin cabin;
 	private Vector dimensions = new Vector(0, 0);
 	private static final int MAX_VALUE = 100000;
-	private static final int BASIC_VALUE = 10;
+	private static final int BASIC_VALUE = 0;
+	private static final int OBSTACLE_RANGE = 3;
 	private int[][] obstacleMap;
 
 	/**
@@ -90,7 +91,7 @@ public class ObstacleMap {
 		generateObstacles(Galley.class);
 		generateObstacles(Curtain.class);
 
-		generateAisleHole();
+		//generateAisleHole();
 		generatePotentialGradient();
 
 		/******** Create potential around obstacles ************/
@@ -104,12 +105,12 @@ public class ObstacleMap {
 	 * This method creates the potential gradient around obstacle.
 	 */
 	private void generatePotentialGradient() {
-		int k = 1;
-		int maxPot = BASIC_VALUE * 5;
+		
+		int maxPot = BASIC_VALUE * 4 + 10;
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
 				if (obstacleMap[i][j] == MAX_VALUE) {
-					for (int p = 1; p < k; p++) {
+					for (int p = 1; p < OBSTACLE_RANGE; p++) {
 						/** WEST - EAST - NORTH - SOUTH */
 						if (((i - p) > 0)
 								&& (obstacleMap[i - p][j] != MAX_VALUE)) {
@@ -162,7 +163,7 @@ public class ObstacleMap {
 	/**
 	 * This method generates the obstacle hole in the aisle. This means that in
 	 * the aisle, the obstacle value is set to zero. This makes the passengers
-	 * consider the aisle as the preferred path.
+	 * consider the aisle as their preferred path.
 	 */
 	private void generateAisleHole() {
 		int entryMin = 0;

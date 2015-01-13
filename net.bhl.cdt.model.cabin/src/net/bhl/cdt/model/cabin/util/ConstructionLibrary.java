@@ -36,7 +36,8 @@ import net.bhl.cdt.model.util.ModelHelper;
 /**
  * This class contains all constructors for the different elements of the cabin.
  * You can construct every single part of cabin on its own.
- * @see GenerateCabinCommand.java for implementation reference.
+ * 
+ * @see GenerateCabinCommand.java for implementation example.
  * 
  * @author marc.engelmann
  *
@@ -161,7 +162,6 @@ public class ConstructionLibrary {
 				seatDimensions.setTwoDimensional(72, 80);
 				seatPitch = 30;
 				passengers = 1;
-
 			}
 			BusinessClass bClass = CabinFactory.eINSTANCE.createBusinessClass();
 			passengerClass = bClass;
@@ -361,7 +361,8 @@ public class ConstructionLibrary {
 						+ seatDimensions.getX() + seatHelper;
 				seatCount++;
 			}
-			globalSeatPositionX = cabin.getAisleWidth() + globalSeatPositionX + seatHelper;
+			globalSeatPositionX = cabin.getAisleWidth() + globalSeatPositionX
+					+ seatHelper;
 		}
 	}
 

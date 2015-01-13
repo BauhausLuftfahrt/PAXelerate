@@ -1,11 +1,12 @@
-# README #
+# paxSIM README #
 
-This README explains the purpose of this repository.
+Welcome to the repository of the Bauhaus Luftfahrt Boarding Simulation! 
 
 ### What is this repository for? ###
 
-* This repository hosts the code of the boarding Simulation.
-* Current version 0.1
+* This repository hosts the code of our boarding simulation
+* The current version is alpha 0.1
+* Work on the implementation in java began in November 2014
 
 ### How do I get set up? ###
 
@@ -13,12 +14,20 @@ This README explains the purpose of this repository.
 * Install checkstyle plguin
 * install the Boarding Simulation plugin 
 
-### Contribution guidelines ###
 
-* Writing tests
-* Code review
+### Contributors ###
 
+* Marc Engelmann
+* Tobias Brügge-Zobel
+* Martin Glas
+* Michael Schmidt
+* Stefan Weber
+* Pedro Martinez
+* Philipp Osterrieder
 
-### Who do I talk to? ###
+### What is the future plan? ###
 
-* Bauhaus Luftfahrt e.V.
+* Bauhaus Luftfahrt e.V. wants to release this as open source some time in the future.
+* We want to handle future conceptual aircraft designs
+* We want to validate the tool 
+* ...
