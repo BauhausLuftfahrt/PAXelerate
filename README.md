@@ -1,4 +1,4 @@
-# paxSIM README #
+# README #
 
 Welcome to the repository of the Bauhaus Luftfahrt Boarding Simulation! 
 
@@ -17,10 +17,10 @@ Welcome to the repository of the Bauhaus Luftfahrt Boarding Simulation!
 
 ### Contributors ###
 
-* Marc Engelmann
-* Tobias Brügge-Zobel
+* Marc Engelmann (active)
+* Tobias Brügge-Zobel (active)
 * Martin Glas
-* Michael Schmidt
+* Michael Schmidt (active)
 * Stefan Weber
 * Pedro Martinez
 * Philipp Osterrieder
@@ -31,3 +31,7 @@ Welcome to the repository of the Bauhaus Luftfahrt Boarding Simulation!
 * We want to handle future conceptual aircraft designs
 * We want to validate the tool 
 * ...
+
+### About ###
+
+© Bauhaus Luftfahrt e.V. 2014 - 2015

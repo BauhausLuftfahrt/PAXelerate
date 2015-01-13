@@ -310,9 +310,13 @@ public class CabinViewPart extends ViewPart {
 
 	/**
 	 * This method resizes an image.
-	 * @param image the image
-	 * @param width the desired width
-	 * @param height the desired height
+	 * 
+	 * @param image
+	 *            the image
+	 * @param width
+	 *            the desired width
+	 * @param height
+	 *            the desired height
 	 * @return the scaled image
 	 */
 	private Image resize(Image image, int width, int height) {
@@ -348,11 +352,21 @@ public class CabinViewPart extends ViewPart {
 					.getSeatWidth() / factor), (int) (ModelHelper
 					.getChildrenByClass(cabin, FirstClass.class).get(0)
 					.getSeatLength() / factor));
+		} catch (IndexOutOfBoundsException e) {
+			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
+					"Error scaling seat image. No first class found."));
+		}
+		try {
 			businessSeat = resize(businessSeat, (int) (ModelHelper
 					.getChildrenByClass(cabin, BusinessClass.class).get(0)
 					.getSeatWidth() / factor), (int) (ModelHelper
 					.getChildrenByClass(cabin, BusinessClass.class).get(0)
 					.getSeatLength() / factor));
+		} catch (IndexOutOfBoundsException e) {
+			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
+					"Error scaling seat images. No business class found."));
+		}
+		try {
 			economySeat = resize(economySeat, (int) (ModelHelper
 					.getChildrenByClass(cabin, EconomyClass.class).get(0)
 					.getSeatWidth() / factor), (int) (ModelHelper
@@ -360,7 +374,7 @@ public class CabinViewPart extends ViewPart {
 					.getSeatLength() / factor));
 		} catch (IndexOutOfBoundsException e) {
 			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-					"Error scaling seat images. A class is missing."));
+					"Error scaling seat images. No economy class found."));
 		}
 		cabinAdapter = new AdapterImpl() {
 			public void notifyChanged(Notification notification) {
@@ -419,9 +433,11 @@ public class CabinViewPart extends ViewPart {
 				if (obstacleMap[i][j] <= ObstacleMap.getBasicValue()) {
 					int colorFactor;
 					try {
-						colorFactor = obstacleMap[i][j] * (int) (255 / (ObstacleMap.getBasicValue()));
-					} catch(ArithmeticException e) {
-						colorFactor = obstacleMap[i][j] * 255;
+						colorFactor = obstacleMap[i][j]
+								* (int) (255 / (ObstacleMap.getBasicValue()));
+					} catch (ArithmeticException e) {
+						colorFactor = obstacleMap[i][j] * 255; // if basic value
+																// is zero!
 					}
 					if (colorFactor > 255) {
 						colorFactor = 255;

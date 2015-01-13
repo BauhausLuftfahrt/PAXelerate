@@ -63,7 +63,6 @@ public class GenerateCabinCommand extends CDTCommand {
 	 *  - Create all other objects in the order they appear within
 	 *    the cabin (from front to rear).
 	 */
-	
 	protected void doRun() {
 		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 				"Initializing cabin generation ..."));
