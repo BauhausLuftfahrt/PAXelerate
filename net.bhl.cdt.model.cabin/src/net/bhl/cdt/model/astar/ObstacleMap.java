@@ -5,6 +5,14 @@
  *******************************************************************************/
 package net.bhl.cdt.model.astar;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
+import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
+
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Curtain;
 import net.bhl.cdt.model.cabin.Door;
@@ -13,6 +21,8 @@ import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.MainDoor;
 import net.bhl.cdt.model.cabin.PhysicalObject;
 import net.bhl.cdt.model.cabin.Seat;
+import net.bhl.cdt.model.cabin.ui.CabinViewPart;
+import net.bhl.cdt.model.cabin.util.FunctionLibrary;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.util.ModelHelper;
 
@@ -28,9 +38,11 @@ public class ObstacleMap {
 	private Cabin cabin;
 	private Vector dimensions = new Vector(0, 0);
 	private static final int MAX_VALUE = 100000;
-	private static final int BASIC_VALUE = 0;
-	private static final int OBSTACLE_RANGE = 3;
+	private static final int BASIC_VALUE = 10;
+	private static final int OBSTACLE_RANGE_IN_CM = 20;
+	private static final int POTENTIAL_AROUND_OBSTACLE_MAXIMUM = 1000;
 	private int[][] obstacleMap;
+	private ILog logger;
 
 	/**
 	 * This method constructs the obstacle map.
@@ -44,6 +56,7 @@ public class ObstacleMap {
 				(int) (cabin.getCabinWidth() / cabin.getScale()),
 				(int) (cabin.getCabinLength() / cabin.getScale()));
 		obstacleMap = createObstacleMap();
+		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
 	}
 
 	/**
@@ -91,7 +104,7 @@ public class ObstacleMap {
 		generateObstacles(Galley.class);
 		generateObstacles(Curtain.class);
 
-		//generateAisleHole();
+		generateAisleHole();
 		generatePotentialGradient();
 
 		/******** Create potential around obstacles ************/
@@ -105,53 +118,61 @@ public class ObstacleMap {
 	 * This method creates the potential gradient around obstacle.
 	 */
 	private void generatePotentialGradient() {
-		
-		int maxPot = BASIC_VALUE * 4 + 10;
+
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
 				if (obstacleMap[i][j] == MAX_VALUE) {
-					for (int p = 1; p < OBSTACLE_RANGE; p++) {
+					for (int p = 1; p < (int) (OBSTACLE_RANGE_IN_CM / cabin
+							.getScale()); p++) {
 						/** WEST - EAST - NORTH - SOUTH */
 						if (((i - p) > 0)
 								&& (obstacleMap[i - p][j] != MAX_VALUE)) {
-							obstacleMap[i - p][j] = maxPot - p;
+							obstacleMap[i - p][j] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
+									- p;
 						}
 						if (((i + p) < dimensions.getX())
 								&& (obstacleMap[i + p][j] != MAX_VALUE)) {
-							obstacleMap[i + p][j] = maxPot - p;
+							obstacleMap[i + p][j] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
+									- p;
 						}
 
 						if (((j - p) > 0)
 								&& (obstacleMap[i][j - p] != MAX_VALUE)) {
-							obstacleMap[i][j - p] = maxPot - p;
+							obstacleMap[i][j - p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
+									- p;
 
 						}
 						if (((j + p) < dimensions.getY())
 								&& (obstacleMap[i][j + p] != MAX_VALUE)) {
-							obstacleMap[i][j + p] = maxPot - p;
+							obstacleMap[i][j + p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
+									- p;
 
 						}
 
 						/** NORTHWEST - NORTHEAST - SOUTHEAST - SOUTHWEST */
 						if ((((i - p) > 0) && ((j - p) > 0))
 								&& (obstacleMap[i - p][j - p] != MAX_VALUE)) {
-							obstacleMap[i - p][j - p] = maxPot - p;
+							obstacleMap[i - p][j - p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
+									- p;
 
 						}
 						if ((((i + p) < dimensions.getX()) && ((j - p) > 0))
 								&& (obstacleMap[i + p][j - p] != MAX_VALUE)) {
-							obstacleMap[i + p][j - p] = maxPot - p;
+							obstacleMap[i + p][j - p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
+									- p;
 
 						}
 						if ((((j + p) < dimensions.getY()) && ((i + p) < dimensions
 								.getX()))
 								&& (obstacleMap[i + p][j + p] != MAX_VALUE)) {
-							obstacleMap[i + p][j + p] = maxPot - p;
+							obstacleMap[i + p][j + p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
+									- p;
 
 						}
 						if ((((j + p) < dimensions.getY()) && ((i - p) > 0))
 								&& (obstacleMap[i - p][j + p] != MAX_VALUE)) {
-							obstacleMap[i - p][j + p] = maxPot - p;
+							obstacleMap[i - p][j + p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
+									- p;
 
 						}
 					}
@@ -165,7 +186,6 @@ public class ObstacleMap {
 	 * the aisle, the obstacle value is set to zero. This makes the passengers
 	 * consider the aisle as their preferred path.
 	 */
-	@SuppressWarnings("unused")
 	private void generateAisleHole() {
 		int entryMin = 0;
 		int entryMax = 0;
@@ -176,7 +196,7 @@ public class ObstacleMap {
 		}
 		int aisleMin = (int) ((cabin.getCabinWidth() - cabin.getAisleWidth())
 				/ cabin.getScale() / 2) + 1;
-		int aisleMax = (int) (cabin.getCabinWidth() / cabin.getScale() - aisleMin) - 2;
+		int aisleMax = (int) (cabin.getCabinWidth() / cabin.getScale() - aisleMin) - 1;
 
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
@@ -241,12 +261,21 @@ public class ObstacleMap {
 	 * This method prints the obstacle map to the console.
 	 */
 	public void printObstacleMap() {
-		for (int i = 0; i < dimensions.getX(); i++) {
-			for (int j = 0; j < dimensions.getY(); j++) {
-				System.out.print(getValueAtPoint(i, j));
+		try {
+			PrintWriter printToFile = new PrintWriter(CabinViewPart.FILEPATH
+					+ "obstaclemap.txt");
+
+			for (int i = 0; i < dimensions.getY(); i++) {
+				for (int j = 0; j < dimensions.getX(); j++) {
+					printToFile.print(getValueAtPoint(j, i) + "\t");
+				}
+				printToFile.println();
 			}
-			System.out.println();
+			printToFile.close();
+			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
+					"Saved obstacle map to file."));
+		} catch (FileNotFoundException e) {
 		}
-		System.out.println(BASIC_VALUE);
+
 	}
 }

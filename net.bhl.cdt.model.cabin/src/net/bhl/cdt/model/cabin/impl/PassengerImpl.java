@@ -297,7 +297,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int POSITION_X_EDEFAULT = 0;
+	protected static final double POSITION_X_EDEFAULT = 0.0;
 
 	/**
 	 * The cached value of the '{@link #getPositionX() <em>Position X</em>}' attribute.
@@ -307,7 +307,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * @generated
 	 * @ordered
 	 */
-	protected int positionX = POSITION_X_EDEFAULT;
+	protected double positionX = POSITION_X_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getPositionY() <em>Position Y</em>}' attribute.
@@ -317,7 +317,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int POSITION_Y_EDEFAULT = 0;
+	protected static final double POSITION_Y_EDEFAULT = 0.0;
 
 	/**
 	 * The cached value of the '{@link #getPositionY() <em>Position Y</em>}' attribute.
@@ -327,7 +327,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * @generated
 	 * @ordered
 	 */
-	protected int positionY = POSITION_Y_EDEFAULT;
+	protected double positionY = POSITION_Y_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isIsSeated() <em>Is Seated</em>}' attribute.
@@ -689,7 +689,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getPositionX() {
+	public double getPositionX() {
 		return positionX;
 	}
 
@@ -698,8 +698,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPositionX(int newPositionX) {
-		int oldPositionX = positionX;
+	public void setPositionX(double newPositionX) {
+		double oldPositionX = positionX;
 		positionX = newPositionX;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__POSITION_X, oldPositionX, positionX));
@@ -710,7 +710,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getPositionY() {
+	public double getPositionY() {
 		return positionY;
 	}
 
@@ -719,8 +719,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPositionY(int newPositionY) {
-		int oldPositionY = positionY;
+	public void setPositionY(double newPositionY) {
+		double oldPositionY = positionY;
 		positionY = newPositionY;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__POSITION_Y, oldPositionY, positionY));
@@ -1098,10 +1098,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				setOrientationInDegree((Double)newValue);
 				return;
 			case CabinPackage.PASSENGER__POSITION_X:
-				setPositionX((Integer)newValue);
+				setPositionX((Double)newValue);
 				return;
 			case CabinPackage.PASSENGER__POSITION_Y:
-				setPositionY((Integer)newValue);
+				setPositionY((Double)newValue);
 				return;
 			case CabinPackage.PASSENGER__IS_SEATED:
 				setIsSeated((Boolean)newValue);

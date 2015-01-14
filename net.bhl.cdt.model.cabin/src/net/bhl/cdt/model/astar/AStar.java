@@ -68,6 +68,7 @@ public class AStar {
 		openList.add(map.getStartNode());
 
 		costmap = new CostMap(map.getDimensions(), start, goal, map);
+		costmap.printMap();
 
 		// while we haven't reached the goal yet
 		while (openList.size() != 0) {

@@ -289,12 +289,12 @@ public interface Passenger extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Position X</em>' attribute.
-	 * @see #setPositionX(int)
+	 * @see #setPositionX(double)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_PositionX()
 	 * @model
 	 * @generated
 	 */
-	int getPositionX();
+	double getPositionX();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getPositionX <em>Position X</em>}' attribute.
@@ -304,7 +304,7 @@ public interface Passenger extends EObject {
 	 * @see #getPositionX()
 	 * @generated
 	 */
-	void setPositionX(int value);
+	void setPositionX(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Position Y</b></em>' attribute.
@@ -315,12 +315,12 @@ public interface Passenger extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Position Y</em>' attribute.
-	 * @see #setPositionY(int)
+	 * @see #setPositionY(double)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_PositionY()
 	 * @model
 	 * @generated
 	 */
-	int getPositionY();
+	double getPositionY();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getPositionY <em>Position Y</em>}' attribute.
@@ -330,7 +330,7 @@ public interface Passenger extends EObject {
 	 * @see #getPositionY()
 	 * @generated
 	 */
-	void setPositionY(int value);
+	void setPositionY(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Is Seated</b></em>' attribute.

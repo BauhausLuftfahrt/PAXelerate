@@ -151,6 +151,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 				if (!obstaclemap.equals(null)) {
 					Image image = cabinViewPart.submitObstacleMap(obstaclemap
 							.getMap());
+					obstaclemap.printObstacleMap();
 					cabinViewPart.printObstacleMap(image);
 
 					logger.log(new Status(IStatus.INFO,
@@ -171,6 +172,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 					"No boarding possible! Please create passengers!"));
 		}
+		
+		
 
 	}
 }

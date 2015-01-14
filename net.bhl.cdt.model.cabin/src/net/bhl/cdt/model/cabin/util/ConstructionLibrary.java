@@ -204,7 +204,7 @@ public class ConstructionLibrary {
 				seatStructure = "3-3";
 				seatDimensions.setTwoDimensional(50, 60);
 				seatPitch = 20;
-				passengers = 11;
+				passengers = 1;
 			}
 			EconomyClass eClass = CabinFactory.eINSTANCE.createEconomyClass();
 			passengerClass = eClass;

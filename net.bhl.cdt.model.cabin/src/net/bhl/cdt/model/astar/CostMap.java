@@ -5,7 +5,16 @@
  *******************************************************************************/
 package net.bhl.cdt.model.astar;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+
+import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
+
+import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.util.Vector;
 
 /**
@@ -34,6 +43,7 @@ public class CostMap {
 	private ArrayList<Vector> pointParking = new ArrayList<Vector>();
 	private ArrayList<Vector> pointParkingHelper = new ArrayList<Vector>();
 	private AreaMap areamap;
+	private ILog logger;
 
 	/**
 	 * The cost map is constructed in this function.
@@ -52,6 +62,7 @@ public class CostMap {
 		startPoint.setFromPoint(start.getValue());
 		goalPoint.setFromPoint(goal.getValue());
 		areamap = areaMap;
+		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
 		map = new int[dimensions.getX()][dimensions.getY()];
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
@@ -193,17 +204,25 @@ public class CostMap {
 	 * This method outputs the whole cost map in the console.
 	 */
 	public void printMap() {
-		for (int i = 0; i < dimensions.getX(); i++) {
-			for (int j = 0; j < dimensions.getY(); j++) {
-				if (map[i][j] == -1) {
-					System.out.print("X");
-				} else {
-					System.out.print(map[i][j]);
-				}
-			}
-			System.out.println();
-		}
+		try {
+			PrintWriter printToFile = new PrintWriter(CabinViewPart.FILEPATH
+					+ "costmap.txt");
 
+			for (int i = 0; i < dimensions.getY(); i++) {
+				for (int j = 0; j < dimensions.getX(); j++) {
+					if (map[j][i] == -1) {
+						printToFile.print("X\t");
+					} else {
+						printToFile.print(map[j][i] + "\t");
+					}
+				}
+				printToFile.println();
+			}
+			printToFile.close();
+			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
+					"Saved cost map to file."));
+		} catch (FileNotFoundException e) {
+		}
 	}
 
 	/**

@@ -95,7 +95,7 @@ public class CabinViewPart extends ViewPart {
 	private Adapter cabinAdapter;
 	private ImageLoader loader;
 	private static Image img;
-	private static final String FILEPATH = System.getProperty("user.home")
+	public static final String FILEPATH = System.getProperty("user.home")
 			+ "/Documents/";
 	private double  canvasHeight;
 	private String aircraftString = "";
@@ -395,7 +395,7 @@ public class CabinViewPart extends ViewPart {
 			aircraft = resize(aircraft, (int)(imageX*canvasHeight/imageY),(int)(imageY*canvasHeight/imageY));
 		} catch (IndexOutOfBoundsException e) {
 			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-					"Error scaling seat image. No first class found."));
+					"Error scaling aircraft image. No image found."));
 		}
 		try {
 			firstSeat = resize(firstSeat, (int) (ModelHelper
