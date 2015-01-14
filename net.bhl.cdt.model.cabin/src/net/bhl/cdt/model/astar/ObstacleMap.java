@@ -98,19 +98,12 @@ public class ObstacleMap {
 				obstacleMap[i][j] = BASIC_VALUE;
 			}
 		}
-
 		generateObstacles(Seat.class);
 		generateObstacles(Lavatory.class);
 		generateObstacles(Galley.class);
 		generateObstacles(Curtain.class);
-
 		generateAisleHole();
 		generatePotentialGradient();
-
-		/******** Create potential around obstacles ************/
-
-		/*****************************************************/
-
 		return obstacleMap;
 	}
 
@@ -258,14 +251,14 @@ public class ObstacleMap {
 	}
 
 	/**
-	 * This method prints the obstacle map to the console.
+	 * This method saves the obstacle map in a text file to the documents
+	 * folder.
 	 */
 	public void printObstacleMap() {
 		PrintWriter printToFile = null;
 		try {
 			printToFile = new PrintWriter(CabinViewPart.FILEPATH
 					+ "obstaclemap.txt");
-
 			for (int i = 0; i < dimensions.getY(); i++) {
 				for (int j = 0; j < dimensions.getX(); j++) {
 					printToFile.print(getValueAtPoint(j, i) + "\t");
@@ -277,10 +270,8 @@ public class ObstacleMap {
 		} catch (FileNotFoundException e) {
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 					"Could not save obstacle map to file."));
-		}
-		finally {
+		} finally {
 			printToFile.close();
 		}
-
 	}
 }
