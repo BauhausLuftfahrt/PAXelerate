@@ -261,8 +261,9 @@ public class ObstacleMap {
 	 * This method prints the obstacle map to the console.
 	 */
 	public void printObstacleMap() {
+		PrintWriter printToFile = null;
 		try {
-			PrintWriter printToFile = new PrintWriter(CabinViewPart.FILEPATH
+			printToFile = new PrintWriter(CabinViewPart.FILEPATH
 					+ "obstaclemap.txt");
 
 			for (int i = 0; i < dimensions.getY(); i++) {
@@ -271,10 +272,14 @@ public class ObstacleMap {
 				}
 				printToFile.println();
 			}
-			printToFile.close();
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 					"Saved obstacle map to file."));
 		} catch (FileNotFoundException e) {
+			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
+					"Could not save obstacle map to file."));
+		}
+		finally {
+			printToFile.close();
 		}
 
 	}

@@ -204,8 +204,9 @@ public class CostMap {
 	 * This method outputs the whole cost map in the console.
 	 */
 	public void printMap() {
+		PrintWriter printToFile = null;
 		try {
-			PrintWriter printToFile = new PrintWriter(CabinViewPart.FILEPATH
+			printToFile = new PrintWriter(CabinViewPart.FILEPATH
 					+ "costmap.txt");
 
 			for (int i = 0; i < dimensions.getY(); i++) {
@@ -218,10 +219,15 @@ public class CostMap {
 				}
 				printToFile.println();
 			}
-			printToFile.close();
+			
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 					"Saved cost map to file."));
 		} catch (FileNotFoundException e) {
+			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
+					"Could not save cost map to file."));
+		}
+		finally {
+			printToFile.close();
 		}
 	}
 
