@@ -62,9 +62,12 @@ public class CabinViewPart extends ViewPart {
 	private static final double PASSENGER_CIRCLE_SIZE = 0.5;
 
 	private static final int CABIN_WIDTH_IN_PIXELS = 96;
-	private static final int X_ZERO = 138;
-	private static final int Y_ZERO = 90;
+	private static int xZero = 138;
+	private static int yZero = 90;
 	private static final int DOOR_DEPTH = 2;
+	private static int imageX = 373;
+	private static int imageY = 885;
+	
 	/*******************************************************************/
 
 	/************* Create Colors and Fonts here. ***********************/
@@ -94,6 +97,8 @@ public class CabinViewPart extends ViewPart {
 	private static Image img;
 	private static final String FILEPATH = System.getProperty("user.home")
 			+ "/Documents/";
+	private double  canvasHeight;
+	private String aircraftString = "";
 
 	/**
 	 * This method creates the background image.
@@ -101,40 +106,44 @@ public class CabinViewPart extends ViewPart {
 	 * @return the background image
 	 */
 	private Image createImage() {
-		Image image = new Image(parent.getDisplay(), 373, 885);
+		Image image = new Image(parent.getDisplay(), imageX, imageY);
 		GC graphicsControl = new GC(image);
 		graphicsControl.setFont(fontTwo);
 		graphicsControl.setAntialias(SWT.ON);
 		graphicsControl.setInterpolation(SWT.HIGH);
 		graphicsControl.drawImage(aircraft, 0, 0);
+		graphicsControl.drawLine(xZero, yZero
+				+ (int) (cabin.getCabinLength() / factor), xZero
+				+ (int) (cabin.getCabinWidth() / factor),
+				yZero + (int) (cabin.getCabinLength() / factor));
 		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
 
 			if (seat.getTravelClass() instanceof FirstClass) {
 				graphicsControl.drawImage(firstSeat,
-						(int) (X_ZERO + seat.getXPosition() / factor),
-						(int) (Y_ZERO + seat.getYPosition() / factor));
+						(int) (xZero + seat.getXPosition() / factor),
+						(int) (yZero + seat.getYPosition() / factor));
 			} else if (seat.getTravelClass() instanceof BusinessClass) {
 				graphicsControl.drawImage(businessSeat,
-						(int) (X_ZERO + seat.getXPosition() / factor),
-						(int) (Y_ZERO + seat.getYPosition() / factor));
+						(int) (xZero + seat.getXPosition() / factor),
+						(int) (yZero + seat.getYPosition() / factor));
 
 			} else {
 				graphicsControl.drawImage(economySeat,
-						(int) (X_ZERO + seat.getXPosition() / factor),
-						(int) (Y_ZERO + seat.getYPosition() / factor));
+						(int) (xZero + seat.getXPosition() / factor),
+						(int) (yZero + seat.getYPosition() / factor));
 			}
 		}
 
 		for (Door door : ModelHelper.getChildrenByClass(cabin, Door.class)) {
 			graphicsControl.setBackground(darkGray);
 			if (door.isOnBothSides()) {
-				graphicsControl.fillRectangle((int) (X_ZERO + OFFSET_OF_DOOR
+				graphicsControl.fillRectangle((int) (xZero + OFFSET_OF_DOOR
 						- DOOR_DEPTH + (cabin.getCabinWidth()) / factor),
-						(int) (Y_ZERO + door.getYPosition() / factor),
+						(int) (yZero + door.getYPosition() / factor),
 						(int) (DOOR_DEPTH), (int) (door.getWidth() / factor));
 			}
-			graphicsControl.fillRectangle((int) (X_ZERO - OFFSET_OF_DOOR),
-					(int) (Y_ZERO + door.getYPosition() / factor),
+			graphicsControl.fillRectangle((int) (xZero - OFFSET_OF_DOOR),
+					(int) (yZero + door.getYPosition() / factor),
 					(int) (DOOR_DEPTH), (int) (door.getWidth() / factor));
 		}
 
@@ -142,26 +151,38 @@ public class CabinViewPart extends ViewPart {
 				Lavatory.class)) {
 			graphicsControl.setBackground(salmon);
 			graphicsControl.fillRectangle(
-					(int) (X_ZERO + lavatory.getXPosition() / factor),
-					(int) (Y_ZERO + lavatory.getYPosition() / factor),
+					(int) (xZero + lavatory.getXPosition() / factor),
+					(int) (yZero + lavatory.getYPosition() / factor),
 					(int) (lavatory.getXDimension() / factor),
 					(int) (lavatory.getYDimension() / factor));
-			graphicsControl.drawImage(lavatoryIcon,
-					(int) (X_ZERO + (lavatory.getXPosition()+lavatory.getXDimension()/2-lavatory.getYDimension()*PASSENGER_CIRCLE_SIZE/2) / factor),
-					(int) (Y_ZERO + (lavatory.getYPosition()+lavatory.getYDimension()/2-lavatory.getYDimension()*PASSENGER_CIRCLE_SIZE/2) / factor));
+			graphicsControl.drawImage(
+					lavatoryIcon,
+					(int) (xZero + (lavatory.getXPosition()
+							+ lavatory.getXDimension() / 2 - lavatory
+							.getYDimension() * PASSENGER_CIRCLE_SIZE / 2)
+							/ factor),
+					(int) (yZero + (lavatory.getYPosition()
+							+ lavatory.getYDimension() / 2 - lavatory
+							.getYDimension() * PASSENGER_CIRCLE_SIZE / 2)
+							/ factor));
 
 		}
 
 		for (Galley galley : ModelHelper
 				.getChildrenByClass(cabin, Galley.class)) {
 			graphicsControl.setBackground(green);
-			graphicsControl.fillRectangle((int) (X_ZERO + galley.getXPosition()
-					/ factor), (int) (Y_ZERO + galley.getYPosition() / factor),
+			graphicsControl.fillRectangle((int) (xZero + galley.getXPosition()
+					/ factor), (int) (yZero + galley.getYPosition() / factor),
 					(int) (galley.getXDimension() / factor),
 					(int) (galley.getYDimension() / factor));
-			graphicsControl.drawImage(coffeeIcon,
-					(int) (X_ZERO + (galley.getXPosition()+galley.getXDimension()/2-galley.getYDimension()/4) / factor),
-					(int) (Y_ZERO + (galley.getYPosition()+galley.getYDimension()/2-galley.getYDimension()/4) / factor));
+			graphicsControl.drawImage(
+					coffeeIcon,
+					(int) (xZero + (galley.getXPosition()
+							+ galley.getXDimension() / 2 - galley
+							.getYDimension() / 4) / factor),
+					(int) (yZero + (galley.getYPosition()
+							+ galley.getYDimension() / 2 - galley
+							.getYDimension() / 4) / factor));
 		}
 
 		for (Curtain curtain : ModelHelper.getChildrenByClass(cabin,
@@ -169,21 +190,21 @@ public class CabinViewPart extends ViewPart {
 			graphicsControl.setBackground(black);
 			if (curtain.isCurtainOpen()) {
 				graphicsControl.fillRectangle(
-						(int) (X_ZERO + curtain.getXPosition() / factor),
-						(int) (Y_ZERO + curtain.getYPosition() / factor),
+						(int) (xZero + curtain.getXPosition() / factor),
+						(int) (yZero + curtain.getYPosition() / factor),
 						(int) (curtain.getXDimension() / factor),
 						(int) (curtain.getYDimension() / factor));
 				graphicsControl.fillRectangle(
-						(int) (X_ZERO + (cabin.getCabinWidth()
+						(int) (xZero + (cabin.getCabinWidth()
 								- curtain.getXPosition() - curtain
 									.getXDimension()) / factor),
-						(int) (Y_ZERO + curtain.getYPosition() / factor),
+						(int) (yZero + curtain.getYPosition() / factor),
 						(int) (curtain.getXDimension() / factor),
 						(int) (curtain.getYDimension() / factor));
 			} else {
 				graphicsControl.fillRectangle(
-						(int) (X_ZERO + curtain.getXPosition() / factor),
-						(int) (Y_ZERO + curtain.getYPosition() / factor),
+						(int) (xZero + curtain.getXPosition() / factor),
+						(int) (yZero + curtain.getYPosition() / factor),
 						(int) (cabin.getCabinWidth() / factor),
 						(int) (curtain.getYDimension() / factor));
 			}
@@ -201,13 +222,13 @@ public class CabinViewPart extends ViewPart {
 						.getXDimension()) {
 					graphicsControl
 							.fillOval(
-									(int) (X_ZERO + (passengerSeat
+									(int) (xZero + (passengerSeat
 											.getXPosition()
 											+ passengerSeat.getXDimension() / 2 - passengerSeat
 											.getYDimension()
 											* PASSENGER_CIRCLE_SIZE / 2)
 											/ factor),
-									(int) (Y_ZERO + (passengerSeat
+									(int) (yZero + (passengerSeat
 											.getYPosition() + (1 - PASSENGER_CIRCLE_SIZE)
 											* passengerSeat.getYDimension() / 2)
 											/ factor),
@@ -218,11 +239,11 @@ public class CabinViewPart extends ViewPart {
 				} else {
 					graphicsControl
 							.fillOval(
-									(int) (X_ZERO + (passengerSeat
+									(int) (xZero + (passengerSeat
 											.getXPosition() + (1 - PASSENGER_CIRCLE_SIZE)
 											* passengerSeat.getXDimension() / 2)
 											/ factor),
-									(int) (Y_ZERO + (passengerSeat
+									(int) (yZero + (passengerSeat
 											.getYPosition()
 											+ passengerSeat.getYDimension() / 2 - passengerSeat
 											.getXDimension()
@@ -281,10 +302,27 @@ public class CabinViewPart extends ViewPart {
 		fontThree = new Font(parent.getDisplay(), fontName, 9, SWT.NORMAL);
 		/*************************************************************************************/
 
-		factor = cabin.getCabinWidth() / CABIN_WIDTH_IN_PIXELS;
+		factor = (double) cabin.getCabinWidth()
+				/ (double) CABIN_WIDTH_IN_PIXELS;
 
+		switch (cabin.getAircraftType()) {
+		case REGIONAL: 
+			aircraftString = "bhl_with_ground.png";
+			break;
+		case INTERCONTINENTAL: 
+			aircraftString = "bhl_with_ground.png";
+			break;
+		case CONTINENTAL: 
+			aircraftString = "bhl_with_ground.png";
+			break;
+		default: 
+			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
+					"There is a problem with the aircraft type definition."));
+			break;
+		}
+		
 		aircraft = SWTResourceManager.getImage(InfoViewPart.class,
-				"bhl_with_ground.png");
+				aircraftString);
 		economySeat = SWTResourceManager.getImage(InfoViewPart.class,
 				"economy_seat.png");
 		businessSeat = SWTResourceManager.getImage(InfoViewPart.class,
@@ -297,6 +335,8 @@ public class CabinViewPart extends ViewPart {
 				"Lavatory.png");
 
 		canvas = new Canvas(parent, SWT.RESIZE);
+		canvas.setBounds(0, 0, 1000, 1000);
+	
 		doTheDraw();
 
 		// int cabinViewFPS = Activator.getDefault().getPreferenceStore()
@@ -337,12 +377,26 @@ public class CabinViewPart extends ViewPart {
 	public void setCabin(Cabin cabin) {
 		initialBoot = false;
 		this.cabin = cabin;
-		factor = cabin.getCabinWidth() / CABIN_WIDTH_IN_PIXELS;
-
+		xZero = 138;
+		yZero = 90;
+		canvasHeight = 0;
+		canvasHeight = canvas.getBounds().height;
+		factor = (double) cabin.getCabinWidth()
+				/ (double) CABIN_WIDTH_IN_PIXELS / (double)(canvasHeight/imageY);
+		xZero = (int)(xZero * (canvasHeight/imageY));
+		yZero = (int)(yZero * (canvasHeight/imageY));
 		/**
 		 * NOTE: if there is more than one subclass of the same type, only the
 		 * dimensions of the first element are used for scaling
 		 **/
+		//aircraft = SWTResourceManager.getImage(InfoViewPart.class,
+		//		aircraftString);
+		try {	
+			aircraft = resize(aircraft, (int)(imageX*canvasHeight/imageY),(int)(imageY*canvasHeight/imageY));
+		} catch (IndexOutOfBoundsException e) {
+			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
+					"Error scaling seat image. No first class found."));
+		}
 		try {
 			firstSeat = resize(firstSeat, (int) (ModelHelper
 					.getChildrenByClass(cabin, FirstClass.class).get(0)
@@ -380,7 +434,7 @@ public class CabinViewPart extends ViewPart {
 					/ factor / 2),
 					(int) (ModelHelper.getChildrenByClass(cabin, Galley.class)
 							.get(0).getYDimension()
-							/ factor *PASSENGER_CIRCLE_SIZE));
+							/ factor * PASSENGER_CIRCLE_SIZE));
 		} catch (IndexOutOfBoundsException e) {
 			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 					"Error scaling seat images. No galley found."));
@@ -442,7 +496,7 @@ public class CabinViewPart extends ViewPart {
 	 * @return returns the obstacle map as an image
 	 */
 	public Image submitObstacleMap(final int[][] obstacleMap) {
-		Image image = new Image(parent.getDisplay(), 373, 885);
+		Image image = new Image(parent.getDisplay(), imageX, imageY);
 		final int overLapOfRect = 2;
 		GC graphicsControl = new GC(image);
 		graphicsControl.setAntialias(SWT.ON);
@@ -477,8 +531,8 @@ public class CabinViewPart extends ViewPart {
 				} else {
 					graphicsControl.setBackground(red);
 				}
-				graphicsControl.fillOval(X_ZERO
-						+ (int) (i * cabin.getScale() / factor), Y_ZERO
+				graphicsControl.fillOval(xZero
+						+ (int) (i * cabin.getScale() / factor), yZero
 						+ (int) (j * cabin.getScale() / factor),
 						(int) (overLapOfRect * cabin.getScale() / factor),
 						(int) (overLapOfRect * cabin.getScale() / factor));
@@ -520,9 +574,9 @@ public class CabinViewPart extends ViewPart {
 					int k = 0;
 					int i = 0;
 					while (k < 2 * singlePath.length) {
-						pathPoints[k] = X_ZERO
+						pathPoints[k] = xZero
 								+ (int) (singlePath[i][0] * cabin.getScale() / factor);
-						pathPoints[k + 1] = Y_ZERO
+						pathPoints[k + 1] = yZero
 								+ (int) (singlePath[i][1] * cabin.getScale() / factor);
 						k = k + 2;
 						i++;
@@ -558,10 +612,10 @@ public class CabinViewPart extends ViewPart {
 								.getPositionY() == 0))) {
 							Vector vector = getDirectionVector(pass);
 							e.gc.fillOval(
-									X_ZERO
+									xZero
 											+ (int) ((pass.getPositionX() - pass
 													.getWidth() / 2) / factor),
-									Y_ZERO
+									yZero
 											+ (int) ((pass.getPositionY() - pass
 													.getDepth() / 2) / factor),
 									(int) (pass.getWidth() / factor),
@@ -569,25 +623,25 @@ public class CabinViewPart extends ViewPart {
 
 							int lineLength = 3;
 							e.gc.drawLine(
-									X_ZERO
+									xZero
 											+ (int) (pass.getPositionX() / factor),
-									Y_ZERO
+									yZero
 											+ (int) (pass.getPositionY() / factor),
-									X_ZERO
+									xZero
 											+ (int) (pass.getPositionX() / factor)
 											+ lineLength * (vector.getX() / 5),
-									Y_ZERO
+									yZero
 											+ (int) (pass.getPositionY() / factor)
 											+ lineLength * (vector.getY() / 5));
 						}
 					} else {
 						Seat mySeat = pass.getSeatRef();
 						e.gc.fillOval(
-								X_ZERO
+								xZero
 										+ (int) ((mySeat.getXPosition()
 												+ mySeat.getXDimension() / 2 - pass
 												.getWidth() / 2) / factor),
-								Y_ZERO
+								yZero
 										+ (int) ((mySeat.getYPosition()
 												+ mySeat.getYDimension() / 2 - pass
 												.getDepth() / 2) / factor),
@@ -623,7 +677,7 @@ public class CabinViewPart extends ViewPart {
 	 */
 	private void doTheDraw() {
 
-		factor = cabin.getCabinWidth() / CABIN_WIDTH_IN_PIXELS;
+		//factor = cabin.getCabinWidth() / CABIN_WIDTH_IN_PIXELS;
 		parent.redraw();
 		parent.update();
 		canvas.redraw();
@@ -651,8 +705,6 @@ public class CabinViewPart extends ViewPart {
 				}
 			}
 		});
-
-		// drawDescriptions();
 		disposeAll();
 	}
 

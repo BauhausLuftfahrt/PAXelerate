@@ -137,12 +137,12 @@ public interface TravelClass extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Seat Pitch</em>' attribute.
-	 * @see #setSeatPitch(double)
+	 * @see #setSeatPitch(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getTravelClass_SeatPitch()
 	 * @model default="0"
 	 * @generated
 	 */
-	double getSeatPitch();
+	int getSeatPitch();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.TravelClass#getSeatPitch <em>Seat Pitch</em>}' attribute.
@@ -152,7 +152,7 @@ public interface TravelClass extends EObject {
 	 * @see #getSeatPitch()
 	 * @generated
 	 */
-	void setSeatPitch(double value);
+	void setSeatPitch(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Seat Length</b></em>' attribute.
@@ -164,12 +164,12 @@ public interface TravelClass extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Seat Length</em>' attribute.
-	 * @see #setSeatLength(double)
+	 * @see #setSeatLength(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getTravelClass_SeatLength()
 	 * @model default="0"
 	 * @generated
 	 */
-	double getSeatLength();
+	int getSeatLength();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.TravelClass#getSeatLength <em>Seat Length</em>}' attribute.
@@ -179,7 +179,7 @@ public interface TravelClass extends EObject {
 	 * @see #getSeatLength()
 	 * @generated
 	 */
-	void setSeatLength(double value);
+	void setSeatLength(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Seat Width</b></em>' attribute.
@@ -191,12 +191,12 @@ public interface TravelClass extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Seat Width</em>' attribute.
-	 * @see #setSeatWidth(double)
+	 * @see #setSeatWidth(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getTravelClass_SeatWidth()
 	 * @model default="0"
 	 * @generated
 	 */
-	double getSeatWidth();
+	int getSeatWidth();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.TravelClass#getSeatWidth <em>Seat Width</em>}' attribute.
@@ -206,7 +206,7 @@ public interface TravelClass extends EObject {
 	 * @see #getSeatWidth()
 	 * @generated
 	 */
-	void setSeatWidth(double value);
+	void setSeatWidth(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.

@@ -97,7 +97,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double HEIGHT_EDEFAULT = 0.0;
+	protected static final int HEIGHT_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute.
@@ -107,7 +107,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * @generated
 	 * @ordered
 	 */
-	protected double height = HEIGHT_EDEFAULT;
+	protected int height = HEIGHT_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getAge() <em>Age</em>}' attribute.
@@ -137,7 +137,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double WEIGHT_EDEFAULT = 0.0;
+	protected static final int WEIGHT_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getWeight() <em>Weight</em>}' attribute.
@@ -147,7 +147,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * @generated
 	 * @ordered
 	 */
-	protected double weight = WEIGHT_EDEFAULT;
+	protected int weight = WEIGHT_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getDoor() <em>Door</em>}' reference.
@@ -207,7 +207,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double BOARDING_TIME_EDEFAULT = 0.0;
+	protected static final int BOARDING_TIME_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getBoardingTime() <em>Boarding Time</em>}' attribute.
@@ -217,7 +217,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * @generated
 	 * @ordered
 	 */
-	protected double boardingTime = BOARDING_TIME_EDEFAULT;
+	protected int boardingTime = BOARDING_TIME_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getSeatRef() <em>Seat Ref</em>}' reference.
@@ -237,7 +237,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double WIDTH_EDEFAULT = 0.0;
+	protected static final int WIDTH_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getWidth() <em>Width</em>}' attribute.
@@ -247,7 +247,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * @generated
 	 * @ordered
 	 */
-	protected double width = WIDTH_EDEFAULT;
+	protected int width = WIDTH_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getDepth() <em>Depth</em>}' attribute.
@@ -257,7 +257,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double DEPTH_EDEFAULT = 0.0;
+	protected static final int DEPTH_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getDepth() <em>Depth</em>}' attribute.
@@ -267,7 +267,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * @generated
 	 * @ordered
 	 */
-	protected double depth = DEPTH_EDEFAULT;
+	protected int depth = DEPTH_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getOrientationInDegree() <em>Orientation In Degree</em>}' attribute.
@@ -297,7 +297,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double POSITION_X_EDEFAULT = 0.0;
+	protected static final int POSITION_X_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getPositionX() <em>Position X</em>}' attribute.
@@ -307,7 +307,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * @generated
 	 * @ordered
 	 */
-	protected double positionX = POSITION_X_EDEFAULT;
+	protected int positionX = POSITION_X_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getPositionY() <em>Position Y</em>}' attribute.
@@ -317,7 +317,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double POSITION_Y_EDEFAULT = 0.0;
+	protected static final int POSITION_Y_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getPositionY() <em>Position Y</em>}' attribute.
@@ -327,7 +327,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * @generated
 	 * @ordered
 	 */
-	protected double positionY = POSITION_Y_EDEFAULT;
+	protected int positionY = POSITION_Y_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isIsSeated() <em>Is Seated</em>}' attribute.
@@ -567,7 +567,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getBoardingTime() {
+	public int getBoardingTime() {
 		return boardingTime;
 	}
 
@@ -576,8 +576,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setBoardingTime(double newBoardingTime) {
-		double oldBoardingTime = boardingTime;
+	public void setBoardingTime(int newBoardingTime) {
+		int oldBoardingTime = boardingTime;
 		boardingTime = newBoardingTime;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__BOARDING_TIME, oldBoardingTime, boardingTime));
@@ -626,7 +626,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getWidth() {
+	public int getWidth() {
 		return width;
 	}
 
@@ -635,8 +635,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setWidth(double newWidth) {
-		double oldWidth = width;
+	public void setWidth(int newWidth) {
+		int oldWidth = width;
 		width = newWidth;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__WIDTH, oldWidth, width));
@@ -647,7 +647,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getDepth() {
+	public int getDepth() {
 		return depth;
 	}
 
@@ -656,8 +656,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDepth(double newDepth) {
-		double oldDepth = depth;
+	public void setDepth(int newDepth) {
+		int oldDepth = depth;
 		depth = newDepth;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__DEPTH, oldDepth, depth));
@@ -689,7 +689,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getPositionX() {
+	public int getPositionX() {
 		return positionX;
 	}
 
@@ -698,8 +698,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPositionX(double newPositionX) {
-		double oldPositionX = positionX;
+	public void setPositionX(int newPositionX) {
+		int oldPositionX = positionX;
 		positionX = newPositionX;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__POSITION_X, oldPositionX, positionX));
@@ -710,7 +710,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getPositionY() {
+	public int getPositionY() {
 		return positionY;
 	}
 
@@ -719,8 +719,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPositionY(double newPositionY) {
-		double oldPositionY = positionY;
+	public void setPositionY(int newPositionY) {
+		int oldPositionY = positionY;
 		positionY = newPositionY;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__POSITION_Y, oldPositionY, positionY));
@@ -895,7 +895,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getHeight() {
+	public int getHeight() {
 		return height;
 	}
 
@@ -904,8 +904,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setHeight(double newHeight) {
-		double oldHeight = height;
+	public void setHeight(int newHeight) {
+		int oldHeight = height;
 		height = newHeight;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__HEIGHT, oldHeight, height));
@@ -937,7 +937,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getWeight() {
+	public int getWeight() {
 		return weight;
 	}
 
@@ -946,8 +946,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setWeight(double newWeight) {
-		double oldWeight = weight;
+	public void setWeight(int newWeight) {
+		int oldWeight = weight;
 		weight = newWeight;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__WEIGHT, oldWeight, weight));
@@ -1065,13 +1065,13 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				setSex((Sex)newValue);
 				return;
 			case CabinPackage.PASSENGER__HEIGHT:
-				setHeight((Double)newValue);
+				setHeight((Integer)newValue);
 				return;
 			case CabinPackage.PASSENGER__AGE:
 				setAge((Integer)newValue);
 				return;
 			case CabinPackage.PASSENGER__WEIGHT:
-				setWeight((Double)newValue);
+				setWeight((Integer)newValue);
 				return;
 			case CabinPackage.PASSENGER__DOOR:
 				setDoor((Door)newValue);
@@ -1083,25 +1083,25 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				setName((String)newValue);
 				return;
 			case CabinPackage.PASSENGER__BOARDING_TIME:
-				setBoardingTime((Double)newValue);
+				setBoardingTime((Integer)newValue);
 				return;
 			case CabinPackage.PASSENGER__SEAT_REF:
 				setSeatRef((Seat)newValue);
 				return;
 			case CabinPackage.PASSENGER__WIDTH:
-				setWidth((Double)newValue);
+				setWidth((Integer)newValue);
 				return;
 			case CabinPackage.PASSENGER__DEPTH:
-				setDepth((Double)newValue);
+				setDepth((Integer)newValue);
 				return;
 			case CabinPackage.PASSENGER__ORIENTATION_IN_DEGREE:
 				setOrientationInDegree((Double)newValue);
 				return;
 			case CabinPackage.PASSENGER__POSITION_X:
-				setPositionX((Double)newValue);
+				setPositionX((Integer)newValue);
 				return;
 			case CabinPackage.PASSENGER__POSITION_Y:
-				setPositionY((Double)newValue);
+				setPositionY((Integer)newValue);
 				return;
 			case CabinPackage.PASSENGER__IS_SEATED:
 				setIsSeated((Boolean)newValue);

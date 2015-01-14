@@ -29,6 +29,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getPassengers <em>Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getScale <em>Scale</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBoardingTime <em>Boarding Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getAircraftType <em>Aircraft Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -40,7 +41,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Cabin Length</b></em>' attribute.
-	 * The default value is <code>"2411.5"</code>.
+	 * The default value is <code>"2412"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Cabin Length</em>' attribute isn't clear,
@@ -48,12 +49,12 @@ public interface Cabin extends NamedElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Cabin Length</em>' attribute.
-	 * @see #setCabinLength(double)
+	 * @see #setCabinLength(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_CabinLength()
-	 * @model default="2411.5"
+	 * @model default="2412"
 	 * @generated
 	 */
-	double getCabinLength();
+	int getCabinLength();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getCabinLength <em>Cabin Length</em>}' attribute.
@@ -63,7 +64,7 @@ public interface Cabin extends NamedElement {
 	 * @see #getCabinLength()
 	 * @generated
 	 */
-	void setCabinLength(double value);
+	void setCabinLength(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Cabin Width</b></em>' attribute.
@@ -75,12 +76,12 @@ public interface Cabin extends NamedElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Cabin Width</em>' attribute.
-	 * @see #setCabinWidth(double)
+	 * @see #setCabinWidth(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_CabinWidth()
 	 * @model default="364"
 	 * @generated
 	 */
-	double getCabinWidth();
+	int getCabinWidth();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getCabinWidth <em>Cabin Width</em>}' attribute.
@@ -90,7 +91,7 @@ public interface Cabin extends NamedElement {
 	 * @see #getCabinWidth()
 	 * @generated
 	 */
-	void setCabinWidth(double value);
+	void setCabinWidth(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Doors</b></em>' containment reference list.
@@ -294,12 +295,12 @@ public interface Cabin extends NamedElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Boarding Time</em>' attribute.
-	 * @see #setBoardingTime(double)
+	 * @see #setBoardingTime(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_BoardingTime()
 	 * @model
 	 * @generated
 	 */
-	double getBoardingTime();
+	int getBoardingTime();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getBoardingTime <em>Boarding Time</em>}' attribute.
@@ -309,7 +310,36 @@ public interface Cabin extends NamedElement {
 	 * @see #getBoardingTime()
 	 * @generated
 	 */
-	void setBoardingTime(double value);
+	void setBoardingTime(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Aircraft Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link net.bhl.cdt.model.cabin.AircraftType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Aircraft Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Aircraft Type</em>' attribute.
+	 * @see net.bhl.cdt.model.cabin.AircraftType
+	 * @see #setAircraftType(AircraftType)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_AircraftType()
+	 * @model
+	 * @generated
+	 */
+	AircraftType getAircraftType();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getAircraftType <em>Aircraft Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Aircraft Type</em>' attribute.
+	 * @see net.bhl.cdt.model.cabin.AircraftType
+	 * @see #getAircraftType()
+	 * @generated
+	 */
+	void setAircraftType(AircraftType value);
 
 	/**
 	 * Returns the value of the '<em><b>Classes</b></em>' containment reference list.
@@ -363,12 +393,12 @@ public interface Cabin extends NamedElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Aisle Width</em>' attribute.
-	 * @see #setAisleWidth(double)
+	 * @see #setAisleWidth(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_AisleWidth()
 	 * @model default="64"
 	 * @generated
 	 */
-	double getAisleWidth();
+	int getAisleWidth();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getAisleWidth <em>Aisle Width</em>}' attribute.
@@ -378,5 +408,5 @@ public interface Cabin extends NamedElement {
 	 * @see #getAisleWidth()
 	 * @generated
 	 */
-	void setAisleWidth(double value);
+	void setAisleWidth(int value);
 } // Cabin

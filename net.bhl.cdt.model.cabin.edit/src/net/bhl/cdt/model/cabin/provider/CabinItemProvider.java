@@ -55,6 +55,7 @@ public class CabinItemProvider
 			addNumberOfDecksPropertyDescriptor(object);
 			addScalePropertyDescriptor(object);
 			addBoardingTimePropertyDescriptor(object);
+			addAircraftTypePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -76,7 +77,7 @@ public class CabinItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -98,7 +99,7 @@ public class CabinItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -186,7 +187,29 @@ public class CabinItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Aircraft Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAircraftTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_aircraftType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_aircraftType_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__AIRCRAFT_TYPE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -230,7 +253,7 @@ public class CabinItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -317,6 +340,7 @@ public class CabinItemProvider
 			case CabinPackage.CABIN__NUMBER_OF_DECKS:
 			case CabinPackage.CABIN__SCALE:
 			case CabinPackage.CABIN__BOARDING_TIME:
+			case CabinPackage.CABIN__AIRCRAFT_TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CabinPackage.CABIN__CLASSES:

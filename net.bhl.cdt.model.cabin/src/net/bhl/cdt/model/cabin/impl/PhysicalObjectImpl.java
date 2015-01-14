@@ -37,7 +37,7 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double XPOSITION_EDEFAULT = 0.0;
+	protected static final int XPOSITION_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getXPosition() <em>XPosition</em>}' attribute.
@@ -47,7 +47,7 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 * @ordered
 	 */
-	protected double xPosition = XPOSITION_EDEFAULT;
+	protected int xPosition = XPOSITION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getYPosition() <em>YPosition</em>}' attribute.
@@ -57,7 +57,7 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double YPOSITION_EDEFAULT = 0.0;
+	protected static final int YPOSITION_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getYPosition() <em>YPosition</em>}' attribute.
@@ -67,7 +67,7 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 * @ordered
 	 */
-	protected double yPosition = YPOSITION_EDEFAULT;
+	protected int yPosition = YPOSITION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getXDimension() <em>XDimension</em>}' attribute.
@@ -77,7 +77,7 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double XDIMENSION_EDEFAULT = 0.0;
+	protected static final int XDIMENSION_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getXDimension() <em>XDimension</em>}' attribute.
@@ -87,7 +87,7 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 * @ordered
 	 */
-	protected double xDimension = XDIMENSION_EDEFAULT;
+	protected int xDimension = XDIMENSION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getYDimension() <em>YDimension</em>}' attribute.
@@ -97,7 +97,7 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double YDIMENSION_EDEFAULT = 0.0;
+	protected static final int YDIMENSION_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getYDimension() <em>YDimension</em>}' attribute.
@@ -107,7 +107,7 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 * @ordered
 	 */
-	protected double yDimension = YDIMENSION_EDEFAULT;
+	protected int yDimension = YDIMENSION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -133,7 +133,7 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getXPosition() {
+	public int getXPosition() {
 		return xPosition;
 	}
 
@@ -142,8 +142,8 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setXPosition(double newXPosition) {
-		double oldXPosition = xPosition;
+	public void setXPosition(int newXPosition) {
+		int oldXPosition = xPosition;
 		xPosition = newXPosition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PHYSICAL_OBJECT__XPOSITION, oldXPosition, xPosition));
@@ -154,7 +154,7 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getYPosition() {
+	public int getYPosition() {
 		return yPosition;
 	}
 
@@ -163,8 +163,8 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setYPosition(double newYPosition) {
-		double oldYPosition = yPosition;
+	public void setYPosition(int newYPosition) {
+		int oldYPosition = yPosition;
 		yPosition = newYPosition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PHYSICAL_OBJECT__YPOSITION, oldYPosition, yPosition));
@@ -175,7 +175,7 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getXDimension() {
+	public int getXDimension() {
 		return xDimension;
 	}
 
@@ -184,8 +184,8 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setXDimension(double newXDimension) {
-		double oldXDimension = xDimension;
+	public void setXDimension(int newXDimension) {
+		int oldXDimension = xDimension;
 		xDimension = newXDimension;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PHYSICAL_OBJECT__XDIMENSION, oldXDimension, xDimension));
@@ -196,7 +196,7 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getYDimension() {
+	public int getYDimension() {
 		return yDimension;
 	}
 
@@ -205,8 +205,8 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setYDimension(double newYDimension) {
-		double oldYDimension = yDimension;
+	public void setYDimension(int newYDimension) {
+		int oldYDimension = yDimension;
 		yDimension = newYDimension;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PHYSICAL_OBJECT__YDIMENSION, oldYDimension, yDimension));
@@ -241,16 +241,16 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements 
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CabinPackage.PHYSICAL_OBJECT__XPOSITION:
-				setXPosition((Double)newValue);
+				setXPosition((Integer)newValue);
 				return;
 			case CabinPackage.PHYSICAL_OBJECT__YPOSITION:
-				setYPosition((Double)newValue);
+				setYPosition((Integer)newValue);
 				return;
 			case CabinPackage.PHYSICAL_OBJECT__XDIMENSION:
-				setXDimension((Double)newValue);
+				setXDimension((Integer)newValue);
 				return;
 			case CabinPackage.PHYSICAL_OBJECT__YDIMENSION:
-				setYDimension((Double)newValue);
+				setYDimension((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

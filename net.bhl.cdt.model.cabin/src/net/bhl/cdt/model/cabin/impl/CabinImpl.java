@@ -3,6 +3,7 @@
 package net.bhl.cdt.model.cabin.impl;
 
 import java.util.Collection;
+import net.bhl.cdt.model.cabin.AircraftType;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinPackage;
 import net.bhl.cdt.model.cabin.Curtain;
@@ -46,6 +47,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getPassengers <em>Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getScale <em>Scale</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getBoardingTime <em>Boarding Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getAircraftType <em>Aircraft Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -60,7 +62,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double CABIN_LENGTH_EDEFAULT = 2411.5;
+	protected static final int CABIN_LENGTH_EDEFAULT = 2412;
 	/**
 	 * The cached value of the '{@link #getCabinLength() <em>Cabin Length</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -69,7 +71,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected double cabinLength = CABIN_LENGTH_EDEFAULT;
+	protected int cabinLength = CABIN_LENGTH_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getCabinWidth() <em>Cabin Width</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -78,7 +80,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double CABIN_WIDTH_EDEFAULT = 364.0;
+	protected static final int CABIN_WIDTH_EDEFAULT = 364;
 	/**
 	 * The cached value of the '{@link #getCabinWidth() <em>Cabin Width</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -87,7 +89,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected double cabinWidth = CABIN_WIDTH_EDEFAULT;
+	protected int cabinWidth = CABIN_WIDTH_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getRowNonexistent() <em>Row Nonexistent</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -114,7 +116,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double AISLE_WIDTH_EDEFAULT = 64.0;
+	protected static final int AISLE_WIDTH_EDEFAULT = 64;
 	/**
 	 * The cached value of the '{@link #getAisleWidth() <em>Aisle Width</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -123,7 +125,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected double aisleWidth = AISLE_WIDTH_EDEFAULT;
+	protected int aisleWidth = AISLE_WIDTH_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getFramesPerSecond() <em>Frames Per Second</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -258,7 +260,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double BOARDING_TIME_EDEFAULT = 0.0;
+	protected static final int BOARDING_TIME_EDEFAULT = 0;
 	/**
 	 * The cached value of the '{@link #getBoardingTime() <em>Boarding Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -267,7 +269,25 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected double boardingTime = BOARDING_TIME_EDEFAULT;
+	protected int boardingTime = BOARDING_TIME_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getAircraftType() <em>Aircraft Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAircraftType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final AircraftType AIRCRAFT_TYPE_EDEFAULT = AircraftType.REGIONAL;
+	/**
+	 * The cached value of the '{@link #getAircraftType() <em>Aircraft Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAircraftType()
+	 * @generated
+	 * @ordered
+	 */
+	protected AircraftType aircraftType = AIRCRAFT_TYPE_EDEFAULT;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -292,7 +312,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getCabinLength() {
+	public int getCabinLength() {
 		return cabinLength;
 	}
 
@@ -301,8 +321,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCabinLength(double newCabinLength) {
-		double oldCabinLength = cabinLength;
+	public void setCabinLength(int newCabinLength) {
+		int oldCabinLength = cabinLength;
 		cabinLength = newCabinLength;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__CABIN_LENGTH, oldCabinLength, cabinLength));
@@ -313,7 +333,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getCabinWidth() {
+	public int getCabinWidth() {
 		return cabinWidth;
 	}
 
@@ -322,8 +342,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCabinWidth(double newCabinWidth) {
-		double oldCabinWidth = cabinWidth;
+	public void setCabinWidth(int newCabinWidth) {
+		int oldCabinWidth = cabinWidth;
 		cabinWidth = newCabinWidth;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__CABIN_WIDTH, oldCabinWidth, cabinWidth));
@@ -481,7 +501,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getBoardingTime() {
+	public int getBoardingTime() {
 		return boardingTime;
 	}
 
@@ -490,11 +510,32 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setBoardingTime(double newBoardingTime) {
-		double oldBoardingTime = boardingTime;
+	public void setBoardingTime(int newBoardingTime) {
+		int oldBoardingTime = boardingTime;
 		boardingTime = newBoardingTime;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__BOARDING_TIME, oldBoardingTime, boardingTime));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AircraftType getAircraftType() {
+		return aircraftType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAircraftType(AircraftType newAircraftType) {
+		AircraftType oldAircraftType = aircraftType;
+		aircraftType = newAircraftType == null ? AIRCRAFT_TYPE_EDEFAULT : newAircraftType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__AIRCRAFT_TYPE, oldAircraftType, aircraftType));
 	}
 
 	/**
@@ -535,7 +576,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getAisleWidth() {
+	public int getAisleWidth() {
 		return aisleWidth;
 	}
 
@@ -544,8 +585,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setAisleWidth(double newAisleWidth) {
-		double oldAisleWidth = aisleWidth;
+	public void setAisleWidth(int newAisleWidth) {
+		int oldAisleWidth = aisleWidth;
 		aisleWidth = newAisleWidth;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__AISLE_WIDTH, oldAisleWidth, aisleWidth));
@@ -619,6 +660,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return getScale();
 			case CabinPackage.CABIN__BOARDING_TIME:
 				return getBoardingTime();
+			case CabinPackage.CABIN__AIRCRAFT_TYPE:
+				return getAircraftType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -633,16 +676,16 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CabinPackage.CABIN__CABIN_LENGTH:
-				setCabinLength((Double)newValue);
+				setCabinLength((Integer)newValue);
 				return;
 			case CabinPackage.CABIN__CABIN_WIDTH:
-				setCabinWidth((Double)newValue);
+				setCabinWidth((Integer)newValue);
 				return;
 			case CabinPackage.CABIN__ROW_NONEXISTENT:
 				setRowNonexistent((Integer)newValue);
 				return;
 			case CabinPackage.CABIN__AISLE_WIDTH:
-				setAisleWidth((Double)newValue);
+				setAisleWidth((Integer)newValue);
 				return;
 			case CabinPackage.CABIN__FRAMES_PER_SECOND:
 				setFramesPerSecond((Integer)newValue);
@@ -686,7 +729,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				setScale((Integer)newValue);
 				return;
 			case CabinPackage.CABIN__BOARDING_TIME:
-				setBoardingTime((Double)newValue);
+				setBoardingTime((Integer)newValue);
+				return;
+			case CabinPackage.CABIN__AIRCRAFT_TYPE:
+				setAircraftType((AircraftType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -748,6 +794,9 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__BOARDING_TIME:
 				setBoardingTime(BOARDING_TIME_EDEFAULT);
 				return;
+			case CabinPackage.CABIN__AIRCRAFT_TYPE:
+				setAircraftType(AIRCRAFT_TYPE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -792,6 +841,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return scale != SCALE_EDEFAULT;
 			case CabinPackage.CABIN__BOARDING_TIME:
 				return boardingTime != BOARDING_TIME_EDEFAULT;
+			case CabinPackage.CABIN__AIRCRAFT_TYPE:
+				return aircraftType != AIRCRAFT_TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -822,6 +873,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		result.append(scale);
 		result.append(", boardingTime: ");
 		result.append(boardingTime);
+		result.append(", aircraftType: ");
+		result.append(aircraftType);
 		result.append(')');
 		return result.toString();
 	}

@@ -46,7 +46,7 @@ public final class FunctionLibrary {
 	 *            never reached!</i></b>
 	 * @return returns the random double generated from the parameters above.
 	 */
-	public static double randomValue(int lowerBound, int upperBound) {
+	public static int randomValue(int lowerBound, int upperBound) {
 		Random rand = new Random();
 		return (rand.nextInt(upperBound-lowerBound) + lowerBound);
 	}

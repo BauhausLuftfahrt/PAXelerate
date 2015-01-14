@@ -126,10 +126,12 @@ public class GeneratePassengersCommand extends CDTCommand {
 			}
 		}
 	}
-	
+
 	/**
 	 * This method gets the seat which is connected to a specific passenger.
-	 * @param passenger the passenger
+	 * 
+	 * @param passenger
+	 *            the passenger
 	 * @return the seat which is linked to the passenger
 	 */
 	private Seat getSeat(Passenger passenger) {
@@ -196,8 +198,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 						sex = Sex.MALE;
 					}
 					newPassenger.setSex(sex);
-					newPassenger.setAge((int) FunctionLibrary.randomValue(18,
-							70));
+					newPassenger.setAge(FunctionLibrary.randomValue(18, 70));
 					newPassenger.setHeight(FunctionLibrary
 							.randomValue(150, 200));
 					newPassenger
@@ -229,7 +230,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 			}
 		}
 	}
-	
+
 	/**
 	 * This method runs the passenger generation command.
 	 */

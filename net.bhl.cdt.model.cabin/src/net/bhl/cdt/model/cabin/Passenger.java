@@ -159,12 +159,12 @@ public interface Passenger extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Boarding Time</em>' attribute.
-	 * @see #setBoardingTime(double)
+	 * @see #setBoardingTime(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_BoardingTime()
 	 * @model
 	 * @generated
 	 */
-	double getBoardingTime();
+	int getBoardingTime();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getBoardingTime <em>Boarding Time</em>}' attribute.
@@ -174,7 +174,7 @@ public interface Passenger extends EObject {
 	 * @see #getBoardingTime()
 	 * @generated
 	 */
-	void setBoardingTime(double value);
+	void setBoardingTime(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Seat Ref</b></em>' reference.
@@ -211,12 +211,12 @@ public interface Passenger extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Width</em>' attribute.
-	 * @see #setWidth(double)
+	 * @see #setWidth(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_Width()
 	 * @model
 	 * @generated
 	 */
-	double getWidth();
+	int getWidth();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getWidth <em>Width</em>}' attribute.
@@ -226,7 +226,7 @@ public interface Passenger extends EObject {
 	 * @see #getWidth()
 	 * @generated
 	 */
-	void setWidth(double value);
+	void setWidth(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Depth</b></em>' attribute.
@@ -237,12 +237,12 @@ public interface Passenger extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Depth</em>' attribute.
-	 * @see #setDepth(double)
+	 * @see #setDepth(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_Depth()
 	 * @model
 	 * @generated
 	 */
-	double getDepth();
+	int getDepth();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getDepth <em>Depth</em>}' attribute.
@@ -252,7 +252,7 @@ public interface Passenger extends EObject {
 	 * @see #getDepth()
 	 * @generated
 	 */
-	void setDepth(double value);
+	void setDepth(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Orientation In Degree</b></em>' attribute.
@@ -289,12 +289,12 @@ public interface Passenger extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Position X</em>' attribute.
-	 * @see #setPositionX(double)
+	 * @see #setPositionX(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_PositionX()
 	 * @model
 	 * @generated
 	 */
-	double getPositionX();
+	int getPositionX();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getPositionX <em>Position X</em>}' attribute.
@@ -304,7 +304,7 @@ public interface Passenger extends EObject {
 	 * @see #getPositionX()
 	 * @generated
 	 */
-	void setPositionX(double value);
+	void setPositionX(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Position Y</b></em>' attribute.
@@ -315,12 +315,12 @@ public interface Passenger extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Position Y</em>' attribute.
-	 * @see #setPositionY(double)
+	 * @see #setPositionY(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_PositionY()
 	 * @model
 	 * @generated
 	 */
-	double getPositionY();
+	int getPositionY();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getPositionY <em>Position Y</em>}' attribute.
@@ -330,7 +330,7 @@ public interface Passenger extends EObject {
 	 * @see #getPositionY()
 	 * @generated
 	 */
-	void setPositionY(double value);
+	void setPositionY(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Is Seated</b></em>' attribute.
@@ -529,12 +529,12 @@ public interface Passenger extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Height</em>' attribute.
-	 * @see #setHeight(double)
+	 * @see #setHeight(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_Height()
 	 * @model
 	 * @generated
 	 */
-	double getHeight();
+	int getHeight();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getHeight <em>Height</em>}' attribute.
@@ -544,7 +544,7 @@ public interface Passenger extends EObject {
 	 * @see #getHeight()
 	 * @generated
 	 */
-	void setHeight(double value);
+	void setHeight(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Age</b></em>' attribute.
@@ -581,12 +581,12 @@ public interface Passenger extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Weight</em>' attribute.
-	 * @see #setWeight(double)
+	 * @see #setWeight(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_Weight()
 	 * @model
 	 * @generated
 	 */
-	double getWeight();
+	int getWeight();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getWeight <em>Weight</em>}' attribute.
@@ -596,7 +596,7 @@ public interface Passenger extends EObject {
 	 * @see #getWeight()
 	 * @generated
 	 */
-	void setWeight(double value);
+	void setWeight(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Door</b></em>' reference.

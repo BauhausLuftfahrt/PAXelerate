@@ -222,13 +222,22 @@ public interface CabinPackage extends EPackage {
 	int CABIN__BOARDING_TIME = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 15;
 
 	/**
+	 * The feature id for the '<em><b>Aircraft Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN__AIRCRAFT_TYPE = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 16;
+
+	/**
 	 * The number of structural features of the '<em>Cabin</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_FEATURE_COUNT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 16;
+	int CABIN_FEATURE_COUNT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 17;
 
 	/**
 	 * The number of operations of the '<em>Cabin</em>' class.
@@ -2152,6 +2161,16 @@ public interface CabinPackage extends EPackage {
 	int STAIRWAY_DIRECTION = 22;
 
 	/**
+	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.AircraftType <em>Aircraft Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.model.cabin.AircraftType
+	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getAircraftType()
+	 * @generated
+	 */
+	int AIRCRAFT_TYPE = 23;
+
+	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2314,6 +2333,17 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCabin_BoardingTime();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getAircraftType <em>Aircraft Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Aircraft Type</em>'.
+	 * @see net.bhl.cdt.model.cabin.Cabin#getAircraftType()
+	 * @see #getCabin()
+	 * @generated
+	 */
+	EAttribute getCabin_AircraftType();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link net.bhl.cdt.model.cabin.Cabin#getClasses <em>Classes</em>}'.
@@ -3340,6 +3370,16 @@ public interface CabinPackage extends EPackage {
 	EEnum getStairwayDirection();
 
 	/**
+	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.AircraftType <em>Aircraft Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Aircraft Type</em>'.
+	 * @see net.bhl.cdt.model.cabin.AircraftType
+	 * @generated
+	 */
+	EEnum getAircraftType();
+
+	/**
 	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3472,6 +3512,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CABIN__BOARDING_TIME = eINSTANCE.getCabin_BoardingTime();
+		/**
+		 * The meta object literal for the '<em><b>Aircraft Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN__AIRCRAFT_TYPE = eINSTANCE.getCabin_AircraftType();
 		/**
 		 * The meta object literal for the '<em><b>Classes</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
@@ -4179,6 +4226,15 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum STAIRWAY_DIRECTION = eINSTANCE.getStairwayDirection();
+		/**
+		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.AircraftType <em>Aircraft Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.bhl.cdt.model.cabin.AircraftType
+		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getAircraftType()
+		 * @generated
+		 */
+		EEnum AIRCRAFT_TYPE = eINSTANCE.getAircraftType();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}' enum.
 		 * <!-- begin-user-doc -->

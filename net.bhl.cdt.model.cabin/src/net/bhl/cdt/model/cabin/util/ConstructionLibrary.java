@@ -46,15 +46,15 @@ public class ConstructionLibrary {
 	private Cabin cabin;
 	private int seatCount;
 	private int rowCount;
-	private double globalSeatPositionX;
-	private double globalSeatPositionY;
+	private int globalSeatPositionX;
+	private int globalSeatPositionY;
 	private int seats;
 	private int seatsInRow;
 	private String seatStructure;
 	private int numbAisles;
 	private Vector seatDimensions = new Vector(0, 0);
-	private double seatPitch;
-	private double seatHelper;
+	private int seatPitch;
+	private int seatHelper;
 	private int passengers;
 	private TravelClass passengerClass;
 	private ILog logger;
@@ -130,8 +130,8 @@ public class ConstructionLibrary {
 						cabin, PremiumEconomyClass.class).get(0);
 				seats = subclass.getAvailableSeats();
 				seatStructure = subclass.getRowStructure();
-				seatDimensions.setTwoDimensional((int) subclass.getSeatWidth(),
-						(int) subclass.getSeatLength());
+				seatDimensions.setTwoDimensional(subclass.getSeatWidth(),
+						subclass.getSeatLength());
 				seatPitch = subclass.getSeatPitch();
 				passengers = subclass.getPassengers();
 				cabin.getClasses().remove(subclass);
@@ -152,8 +152,8 @@ public class ConstructionLibrary {
 						BusinessClass.class).get(0);
 				seats = subclass.getAvailableSeats();
 				seatStructure = subclass.getRowStructure();
-				seatDimensions.setTwoDimensional((int) subclass.getSeatWidth(),
-						(int) subclass.getSeatLength());
+				seatDimensions.setTwoDimensional(subclass.getSeatWidth(),
+						subclass.getSeatLength());
 				seatPitch = subclass.getSeatPitch();
 				passengers = subclass.getPassengers();
 				cabin.getClasses().remove(subclass);
@@ -173,8 +173,8 @@ public class ConstructionLibrary {
 						FirstClass.class).get(0);
 				seats = subclass.getAvailableSeats();
 				seatStructure = subclass.getRowStructure();
-				seatDimensions.setTwoDimensional((int) subclass.getSeatWidth(),
-						(int) subclass.getSeatLength());
+				seatDimensions.setTwoDimensional(subclass.getSeatWidth(),
+						subclass.getSeatLength());
 				seatPitch = subclass.getSeatPitch();
 				passengers = subclass.getPassengers();
 				cabin.getClasses().remove(subclass);
@@ -194,8 +194,8 @@ public class ConstructionLibrary {
 						EconomyClass.class).get(0);
 				seats = subclass.getAvailableSeats();
 				seatStructure = subclass.getRowStructure();
-				seatDimensions.setTwoDimensional((int) subclass.getSeatWidth(),
-						(int) subclass.getSeatLength());
+				seatDimensions.setTwoDimensional(subclass.getSeatWidth(),
+						subclass.getSeatLength());
 				seatPitch = subclass.getSeatPitch();
 				passengers = subclass.getPassengers();
 				cabin.getClasses().remove(subclass);
@@ -299,6 +299,13 @@ public class ConstructionLibrary {
 			passengerClass.setName("");
 
 			seatHelper = 0;
+			if ((seats % seatsInRow) != 0) {
+				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
+						"Check your number of seats in "
+								+ FunctionLibrary.splitCamelCase(travelSubClass
+										.getSimpleName())
+								+ ". Could not fill all rows."));
+			}
 			for (int i = 1; i <= seats / seatsInRow; i++) {
 				globalSeatPositionX = 0;
 
@@ -311,8 +318,8 @@ public class ConstructionLibrary {
 					seatHelper = globalSeatPositionX;
 				} else {
 					logger.log(new Status(IStatus.ERROR,
-							"net.bhl.cdt.model.cabin",
-							"Check your x dimensions! Cabin too narrow."));
+							"net.bhl.cdt.model.cabin", "The seats in row " + i
+									+ " do not fit into the cabin!"));
 					seatHelper = 0;
 					globalSeatPositionX = 0;
 				}
@@ -322,8 +329,8 @@ public class ConstructionLibrary {
 					seatHelper = 0;
 					globalSeatPositionX = 0;
 					logger.log(new Status(IStatus.ERROR,
-							"net.bhl.cdt.model.cabin",
-							"Check seat and cabin dimensions! Cabin too narrow."));
+							"net.bhl.cdt.model.cabin", "The seats in row " + i
+									+ " do not fit into the cabin!"));
 				}
 				globalSeatPositionY += seatPitch;
 
@@ -383,7 +390,7 @@ public class ConstructionLibrary {
 	 *            is a helper class
 	 */
 	public <T extends Door> void createDoor(Class<T> typeDoor,
-			boolean symmetrical, int id, double yPosition) {
+			boolean symmetrical, int id, int yPosition) {
 		Boolean mainDoorAlreadyExists = false;
 		if (!mainDoorAlreadyExists) {
 			for (Door testDoor : cabin.getDoors()) {
@@ -451,7 +458,7 @@ public class ConstructionLibrary {
 							+ seatHelper);
 			newCurtain.setXPosition(currentCurtainPosition);
 			currentCurtainPosition = currentCurtainPosition
-					+ (int) (newCurtain.getXDimension() + cabin.getAisleWidth());
+					+ newCurtain.getXDimension() + cabin.getAisleWidth();
 		}
 		globalSeatPositionY += 40;
 	}
@@ -484,8 +491,7 @@ public class ConstructionLibrary {
 			}
 			newLavatory.setXPosition(currentLavatoryPosition);
 			currentLavatoryPosition = currentLavatoryPosition
-					+ (int) (newLavatory.getXDimension() + cabin
-							.getAisleWidth());
+					+ newLavatory.getXDimension() + cabin.getAisleWidth();
 		}
 		globalSeatPositionY += yDimension;
 	}
@@ -505,8 +511,8 @@ public class ConstructionLibrary {
 	 *            is the y dimension of the stairway
 	 */
 
-	public void createStairway(StairwayDirection direction, double xPosition,
-			double yPostion, double xDimension, double yDimension) {
+	public void createStairway(StairwayDirection direction, int xPosition,
+			int yPostion, int xDimension, int yDimension) {
 		Stairway newStairway = CabinFactory.eINSTANCE.createStairway();
 		cabin.getStairways().add(newStairway);
 		newStairway.setXPosition(xPosition);
@@ -546,12 +552,13 @@ public class ConstructionLibrary {
 						* (passengerClass.getSeatWidth() + seatHelper)
 						+ seatHelper);
 			} catch (NullPointerException e) {
-				newGalley.setXDimension((cabin.getCabinWidth() - numbAisles*cabin
-						.getAisleWidth())/(numbAisles+1));
+				newGalley.setXDimension((cabin.getCabinWidth() - numbAisles
+						* cabin.getAisleWidth())
+						/ (numbAisles + 1));
 			}
 			newGalley.setXPosition(currentGalleyPosition);
 			currentGalleyPosition = currentGalleyPosition
-					+ (int) (newGalley.getXDimension() + cabin.getAisleWidth());
+					+ newGalley.getXDimension() + cabin.getAisleWidth();
 		}
 		globalSeatPositionY += yDimension;
 	}

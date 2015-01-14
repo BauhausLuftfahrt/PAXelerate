@@ -33,12 +33,12 @@ public interface PhysicalObject extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>XPosition</em>' attribute.
-	 * @see #setXPosition(double)
+	 * @see #setXPosition(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPhysicalObject_XPosition()
 	 * @model
 	 * @generated
 	 */
-	double getXPosition();
+	int getXPosition();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.PhysicalObject#getXPosition <em>XPosition</em>}' attribute.
@@ -48,7 +48,7 @@ public interface PhysicalObject extends EObject {
 	 * @see #getXPosition()
 	 * @generated
 	 */
-	void setXPosition(double value);
+	void setXPosition(int value);
 
 	/**
 	 * Returns the value of the '<em><b>YPosition</b></em>' attribute.
@@ -59,12 +59,12 @@ public interface PhysicalObject extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>YPosition</em>' attribute.
-	 * @see #setYPosition(double)
+	 * @see #setYPosition(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPhysicalObject_YPosition()
 	 * @model
 	 * @generated
 	 */
-	double getYPosition();
+	int getYPosition();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.PhysicalObject#getYPosition <em>YPosition</em>}' attribute.
@@ -74,7 +74,7 @@ public interface PhysicalObject extends EObject {
 	 * @see #getYPosition()
 	 * @generated
 	 */
-	void setYPosition(double value);
+	void setYPosition(int value);
 
 	/**
 	 * Returns the value of the '<em><b>XDimension</b></em>' attribute.
@@ -85,12 +85,12 @@ public interface PhysicalObject extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>XDimension</em>' attribute.
-	 * @see #setXDimension(double)
+	 * @see #setXDimension(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPhysicalObject_XDimension()
 	 * @model
 	 * @generated
 	 */
-	double getXDimension();
+	int getXDimension();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.PhysicalObject#getXDimension <em>XDimension</em>}' attribute.
@@ -100,7 +100,7 @@ public interface PhysicalObject extends EObject {
 	 * @see #getXDimension()
 	 * @generated
 	 */
-	void setXDimension(double value);
+	void setXDimension(int value);
 
 	/**
 	 * Returns the value of the '<em><b>YDimension</b></em>' attribute.
@@ -111,12 +111,12 @@ public interface PhysicalObject extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>YDimension</em>' attribute.
-	 * @see #setYDimension(double)
+	 * @see #setYDimension(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPhysicalObject_YDimension()
 	 * @model
 	 * @generated
 	 */
-	double getYDimension();
+	int getYDimension();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.PhysicalObject#getYDimension <em>YDimension</em>}' attribute.
@@ -126,6 +126,6 @@ public interface PhysicalObject extends EObject {
 	 * @see #getYDimension()
 	 * @generated
 	 */
-	void setYDimension(double value);
+	void setYDimension(int value);
 
 } // PhysicalObject

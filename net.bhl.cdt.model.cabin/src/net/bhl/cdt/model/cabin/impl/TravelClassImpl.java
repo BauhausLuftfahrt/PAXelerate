@@ -122,7 +122,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double SEAT_PITCH_EDEFAULT = 0.0;
+	protected static final int SEAT_PITCH_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getSeatPitch() <em>Seat Pitch</em>}' attribute.
@@ -132,7 +132,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	 * @generated
 	 * @ordered
 	 */
-	protected double seatPitch = SEAT_PITCH_EDEFAULT;
+	protected int seatPitch = SEAT_PITCH_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getSeatLength() <em>Seat Length</em>}' attribute.
@@ -142,7 +142,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double SEAT_LENGTH_EDEFAULT = 0.0;
+	protected static final int SEAT_LENGTH_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getSeatLength() <em>Seat Length</em>}' attribute.
@@ -152,7 +152,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	 * @generated
 	 * @ordered
 	 */
-	protected double seatLength = SEAT_LENGTH_EDEFAULT;
+	protected int seatLength = SEAT_LENGTH_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getSeatWidth() <em>Seat Width</em>}' attribute.
@@ -162,7 +162,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double SEAT_WIDTH_EDEFAULT = 0.0;
+	protected static final int SEAT_WIDTH_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getSeatWidth() <em>Seat Width</em>}' attribute.
@@ -172,7 +172,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	 * @generated
 	 * @ordered
 	 */
-	protected double seatWidth = SEAT_WIDTH_EDEFAULT;
+	protected int seatWidth = SEAT_WIDTH_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -313,7 +313,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getSeatPitch() {
+	public int getSeatPitch() {
 		return seatPitch;
 	}
 
@@ -322,8 +322,8 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSeatPitch(double newSeatPitch) {
-		double oldSeatPitch = seatPitch;
+	public void setSeatPitch(int newSeatPitch) {
+		int oldSeatPitch = seatPitch;
 		seatPitch = newSeatPitch;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.TRAVEL_CLASS__SEAT_PITCH, oldSeatPitch, seatPitch));
@@ -334,7 +334,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getSeatLength() {
+	public int getSeatLength() {
 		return seatLength;
 	}
 
@@ -343,8 +343,8 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSeatLength(double newSeatLength) {
-		double oldSeatLength = seatLength;
+	public void setSeatLength(int newSeatLength) {
+		int oldSeatLength = seatLength;
 		seatLength = newSeatLength;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.TRAVEL_CLASS__SEAT_LENGTH, oldSeatLength, seatLength));
@@ -355,7 +355,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getSeatWidth() {
+	public int getSeatWidth() {
 		return seatWidth;
 	}
 
@@ -364,8 +364,8 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSeatWidth(double newSeatWidth) {
-		double oldSeatWidth = seatWidth;
+	public void setSeatWidth(int newSeatWidth) {
+		int oldSeatWidth = seatWidth;
 		seatWidth = newSeatWidth;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.TRAVEL_CLASS__SEAT_WIDTH, oldSeatWidth, seatWidth));
@@ -480,13 +480,13 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 				setAvailableSeats((Integer)newValue);
 				return;
 			case CabinPackage.TRAVEL_CLASS__SEAT_PITCH:
-				setSeatPitch((Double)newValue);
+				setSeatPitch((Integer)newValue);
 				return;
 			case CabinPackage.TRAVEL_CLASS__SEAT_LENGTH:
-				setSeatLength((Double)newValue);
+				setSeatLength((Integer)newValue);
 				return;
 			case CabinPackage.TRAVEL_CLASS__SEAT_WIDTH:
-				setSeatWidth((Double)newValue);
+				setSeatWidth((Integer)newValue);
 				return;
 			case CabinPackage.TRAVEL_CLASS__NAME:
 				setName((String)newValue);

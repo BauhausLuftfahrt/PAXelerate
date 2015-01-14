@@ -237,7 +237,7 @@ public class Agent extends Subject implements Runnable {
 			passenger.setIsSeated(true);
 			RunAStar.setPassengerSeated(passenger);
 			stopwatch.stop();
-			passenger.setBoardingTime(stopwatch.getElapsedTime() / 1000);
+			passenger.setBoardingTime((int)(stopwatch.getElapsedTime() / 1000));
 			passenger.setNumberOfWaits(numbOfInterupts);
 		} catch (InterruptedException e) {
 			e.printStackTrace();

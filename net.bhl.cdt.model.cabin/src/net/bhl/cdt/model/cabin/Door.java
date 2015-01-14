@@ -35,12 +35,12 @@ public interface Door extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>YPosition</em>' attribute.
-	 * @see #setYPosition(double)
+	 * @see #setYPosition(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getDoor_YPosition()
 	 * @model
 	 * @generated
 	 */
-	double getYPosition();
+	int getYPosition();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Door#getYPosition <em>YPosition</em>}' attribute.
@@ -50,7 +50,7 @@ public interface Door extends EObject {
 	 * @see #getYPosition()
 	 * @generated
 	 */
-	void setYPosition(double value);
+	void setYPosition(int value);
 
 	/**
 	 * Returns the value of the '<em><b>On Both Sides</b></em>' attribute.
@@ -87,12 +87,12 @@ public interface Door extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Width</em>' attribute.
-	 * @see #setWidth(double)
+	 * @see #setWidth(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getDoor_Width()
 	 * @model
 	 * @generated
 	 */
-	double getWidth();
+	int getWidth();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Door#getWidth <em>Width</em>}' attribute.
@@ -102,7 +102,7 @@ public interface Door extends EObject {
 	 * @see #getWidth()
 	 * @generated
 	 */
-	void setWidth(double value);
+	void setWidth(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.
@@ -140,12 +140,12 @@ public interface Door extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Width Of Main Door</em>' attribute.
-	 * @see #setWidthOfMainDoor(double)
+	 * @see #setWidthOfMainDoor(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getDoor_WidthOfMainDoor()
 	 * @model default="80"
 	 * @generated
 	 */
-	double getWidthOfMainDoor();
+	int getWidthOfMainDoor();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Door#getWidthOfMainDoor <em>Width Of Main Door</em>}' attribute.
@@ -155,7 +155,7 @@ public interface Door extends EObject {
 	 * @see #getWidthOfMainDoor()
 	 * @generated
 	 */
-	void setWidthOfMainDoor(double value);
+	void setWidthOfMainDoor(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Width Of Emergency Exit</b></em>' attribute.
@@ -167,12 +167,12 @@ public interface Door extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Width Of Emergency Exit</em>' attribute.
-	 * @see #setWidthOfEmergencyExit(double)
+	 * @see #setWidthOfEmergencyExit(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getDoor_WidthOfEmergencyExit()
 	 * @model default="50"
 	 * @generated
 	 */
-	double getWidthOfEmergencyExit();
+	int getWidthOfEmergencyExit();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Door#getWidthOfEmergencyExit <em>Width Of Emergency Exit</em>}' attribute.
@@ -182,6 +182,6 @@ public interface Door extends EObject {
 	 * @see #getWidthOfEmergencyExit()
 	 * @generated
 	 */
-	void setWidthOfEmergencyExit(double value);
+	void setWidthOfEmergencyExit(int value);
 
 } // Door
