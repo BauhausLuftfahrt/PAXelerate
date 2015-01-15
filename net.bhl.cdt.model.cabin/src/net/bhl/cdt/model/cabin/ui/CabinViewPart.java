@@ -61,13 +61,13 @@ public class CabinViewPart extends ViewPart {
 	private static final int OFFSET_OF_DOOR = 0;
 	private static final double PASSENGER_CIRCLE_SIZE = 0.5;
 
-	private static final int CABIN_WIDTH_IN_PIXELS = 96;
-	private static int xZero = 138;
-	private static int yZero = 90;
+	private static final int CABIN_WIDTH_IN_PIXELS = 124;
+	private static int xZero = 139;
+	private static int yZero = 75;
 	private static final int DOOR_DEPTH = 2;
-	private static int imageX = 373;
-	private static int imageY = 885;
-	
+	private static int imageX = 400;
+	private static int imageY = 1000;
+
 	/*******************************************************************/
 
 	/************* Create Colors and Fonts here. ***********************/
@@ -85,7 +85,11 @@ public class CabinViewPart extends ViewPart {
 	/********************************************************************/
 
 	private static ILog logger;
-	private Image aircraft;
+
+	private Image regional;
+	private Image continental;
+	private Image intercontinental;
+
 	private Image economySeat;
 	private Image businessSeat;
 	private Image firstSeat;
@@ -97,8 +101,7 @@ public class CabinViewPart extends ViewPart {
 	private static Image img;
 	public static final String FILEPATH = System.getProperty("user.home")
 			+ "/Documents/";
-	private double  canvasHeight;
-	private String aircraftString = "";
+	private double canvasHeight;
 
 	/**
 	 * This method creates the background image.
@@ -107,15 +110,16 @@ public class CabinViewPart extends ViewPart {
 	 */
 	private Image createImage() {
 		Image image = new Image(parent.getDisplay(), imageX, imageY);
+		Image newAircraft = tryAircraftSwitch();
 		GC graphicsControl = new GC(image);
 		graphicsControl.setFont(fontTwo);
 		graphicsControl.setAntialias(SWT.ON);
 		graphicsControl.setInterpolation(SWT.HIGH);
-		graphicsControl.drawImage(aircraft, 0, 0);
+		graphicsControl.drawImage(newAircraft, 0, 0);
 		graphicsControl.drawLine(xZero, yZero
-				+ (int) (cabin.getCabinLength() / factor), xZero
-				+ (int) (cabin.getCabinWidth() / factor),
-				yZero + (int) (cabin.getCabinLength() / factor));
+				+ (int) (cabin.getCabinLength() / factor),
+				xZero + (int) (cabin.getCabinWidth() / factor), yZero
+						+ (int) (cabin.getCabinLength() / factor));
 		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
 
 			if (seat.getTravelClass() instanceof FirstClass) {
@@ -305,24 +309,6 @@ public class CabinViewPart extends ViewPart {
 		factor = (double) cabin.getCabinWidth()
 				/ (double) CABIN_WIDTH_IN_PIXELS;
 
-		switch (cabin.getAircraftType()) {
-		case REGIONAL: 
-			aircraftString = "bhl_with_ground.png";
-			break;
-		case INTERCONTINENTAL: 
-			aircraftString = "bhl_with_ground.png";
-			break;
-		case CONTINENTAL: 
-			aircraftString = "bhl_with_ground.png";
-			break;
-		default: 
-			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-					"There is a problem with the aircraft type definition."));
-			break;
-		}
-		
-		aircraft = SWTResourceManager.getImage(InfoViewPart.class,
-				aircraftString);
 		economySeat = SWTResourceManager.getImage(InfoViewPart.class,
 				"economy_seat.png");
 		businessSeat = SWTResourceManager.getImage(InfoViewPart.class,
@@ -336,13 +322,33 @@ public class CabinViewPart extends ViewPart {
 
 		canvas = new Canvas(parent, SWT.RESIZE);
 		canvas.setBounds(0, 0, 1000, 1000);
-	
+
 		doTheDraw();
 
 		// int cabinViewFPS = Activator.getDefault().getPreferenceStore()
 		// .getString("CabinViewFPS");
 		//
 
+	}
+
+	private Image switchAircraftImage() {
+		switch (cabin.getAircraftType()) {
+		case REGIONAL:
+			return SWTResourceManager.getImage(InfoViewPart.class,
+					"regional.png");
+
+		case INTERCONTINENTAL:
+			return SWTResourceManager.getImage(InfoViewPart.class,
+					"intercontinental.png");
+
+		case CONTINENTAL:
+			return SWTResourceManager.getImage(InfoViewPart.class,
+					"continental.png");
+		default:
+			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
+					"There is a problem with the aircraft type definition."));
+			return null;
+		}
 	}
 
 	/**
@@ -368,6 +374,29 @@ public class CabinViewPart extends ViewPart {
 		return scaledImage;
 	}
 
+	private Image resizeAC(int width, int height) {
+		Image scaledImage = new Image(parent.getDisplay(), width, height);
+		GC gc = new GC(scaledImage);
+		gc.setAntialias(SWT.ON);
+		gc.setInterpolation(SWT.HIGH);
+		gc.drawImage(switchAircraftImage(), 0, 0, switchAircraftImage()
+				.getBounds().width, switchAircraftImage().getBounds().height,
+				0, 0, width, height);
+		gc.dispose();
+		return scaledImage;
+	}
+
+	private Image tryAircraftSwitch() {
+		try {
+			return resizeAC((int) (imageX * canvasHeight / imageY),
+					(int) (imageY * canvasHeight / imageY));
+		} catch (IndexOutOfBoundsException e) {
+			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
+					"Error scaling aircraft image. No image found."));
+			return null;
+		}
+	}
+
 	/**
 	 * This method catches a cabin.
 	 * 
@@ -377,26 +406,21 @@ public class CabinViewPart extends ViewPart {
 	public void setCabin(Cabin cabin) {
 		initialBoot = false;
 		this.cabin = cabin;
-		xZero = 138;
-		yZero = 90;
+		xZero = 139;
+		yZero = 75;
 		canvasHeight = 0;
 		canvasHeight = canvas.getBounds().height;
 		factor = (double) cabin.getCabinWidth()
-				/ (double) CABIN_WIDTH_IN_PIXELS / (double)(canvasHeight/imageY);
-		xZero = (int)(xZero * (canvasHeight/imageY));
-		yZero = (int)(yZero * (canvasHeight/imageY));
+				/ (double) CABIN_WIDTH_IN_PIXELS
+				/ (double) (canvasHeight / imageY);
+		xZero = (int) (xZero * (canvasHeight / imageY));
+		yZero = (int) (yZero * (canvasHeight / imageY));
+
 		/**
 		 * NOTE: if there is more than one subclass of the same type, only the
 		 * dimensions of the first element are used for scaling
 		 **/
-		//aircraft = SWTResourceManager.getImage(InfoViewPart.class,
-		//		aircraftString);
-		try {	
-			aircraft = resize(aircraft, (int)(imageX*canvasHeight/imageY),(int)(imageY*canvasHeight/imageY));
-		} catch (IndexOutOfBoundsException e) {
-			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-					"Error scaling aircraft image. No image found."));
-		}
+
 		try {
 			firstSeat = resize(firstSeat, (int) (ModelHelper
 					.getChildrenByClass(cabin, FirstClass.class).get(0)
@@ -677,7 +701,7 @@ public class CabinViewPart extends ViewPart {
 	 */
 	private void doTheDraw() {
 
-		//factor = cabin.getCabinWidth() / CABIN_WIDTH_IN_PIXELS;
+		// factor = cabin.getCabinWidth() / CABIN_WIDTH_IN_PIXELS;
 		parent.redraw();
 		parent.update();
 		canvas.redraw();
@@ -695,7 +719,9 @@ public class CabinViewPart extends ViewPart {
 					e.gc.drawImage(img, 0, 0);
 
 				} else {
-					e.gc.drawImage(aircraft, 0, 0);
+					Image image = SWTResourceManager.getImage(
+							InfoViewPart.class, "regional.png");
+					e.gc.drawImage(image, 0, 0);
 					e.gc.setFont(fontThree);
 					e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_RED));
 					e.gc.fillRectangle(38, 370, 300, 35);
