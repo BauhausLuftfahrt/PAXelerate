@@ -61,7 +61,7 @@ public class CabinViewPart extends ViewPart {
 	private static final int OFFSET_OF_DOOR = 0;
 	private static final double PASSENGER_CIRCLE_SIZE = 0.5;
 
-	private static final int CABIN_WIDTH_IN_PIXELS = 124;
+	private static final int CABIN_WIDTH_IN_PIXELS = 123;
 	private static int xZero = 139;
 	private static int yZero = 75;
 	private static final int DOOR_DEPTH = 2;
@@ -82,6 +82,7 @@ public class CabinViewPart extends ViewPart {
 	private static Font fontOne;
 	private static Font fontTwo;
 	private static Font fontThree;
+	private static Color aircraftBackground;
 	/********************************************************************/
 
 	private static ILog logger;
@@ -116,6 +117,10 @@ public class CabinViewPart extends ViewPart {
 		graphicsControl.setAntialias(SWT.ON);
 		graphicsControl.setInterpolation(SWT.HIGH);
 		graphicsControl.drawImage(newAircraft, 0, 0);
+		graphicsControl.setBackground(aircraftBackground);
+		graphicsControl.fillRectangle(xZero, yZero,
+				(int) (cabin.getCabinWidth() / factor),
+				(int) (cabin.getCabinLength() / factor));
 		graphicsControl.drawLine(xZero, yZero
 				+ (int) (cabin.getCabinLength() / factor),
 				xZero + (int) (cabin.getCabinWidth() / factor), yZero
@@ -301,6 +306,7 @@ public class CabinViewPart extends ViewPart {
 		darkGray = new Color(parent.getDisplay(), 105, 105, 105);
 		white = new Color(parent.getDisplay(), 255, 255, 255);
 		black = new Color(parent.getDisplay(), 0, 0, 0);
+		aircraftBackground = new Color(parent.getDisplay(), 237, 243, 245);
 		fontOne = new Font(parent.getDisplay(), fontName, 8, SWT.NORMAL);
 		fontTwo = new Font(parent.getDisplay(), fontName, fontsize, SWT.NORMAL);
 		fontThree = new Font(parent.getDisplay(), fontName, 9, SWT.NORMAL);
