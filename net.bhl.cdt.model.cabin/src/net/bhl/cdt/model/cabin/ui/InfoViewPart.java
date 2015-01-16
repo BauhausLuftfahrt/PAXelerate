@@ -7,9 +7,13 @@ package net.bhl.cdt.model.cabin.ui;
 
 import java.util.List;
 
+import net.bhl.cdt.model.cabin.BusinessClass;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
+import net.bhl.cdt.model.cabin.EconomyClass;
+import net.bhl.cdt.model.cabin.FirstClass;
 import net.bhl.cdt.model.cabin.Passenger;
+import net.bhl.cdt.model.cabin.PremiumEconomyClass;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.commands.SimulateBoardingCommand;
@@ -44,6 +48,7 @@ public class InfoViewPart extends ViewPart {
 
 	/**
 	 * This method initializes the class elements.
+	 * 
 	 * @param parent
 	 *            is the parent element
 	 */
@@ -55,14 +60,18 @@ public class InfoViewPart extends ViewPart {
 		canvas = new Canvas(parent, SWT.RESIZE);
 		drawIt();
 	}
+
 	/**
 	 * This method updates the cabin.
-	 * @param cabin is the submitted cabin
+	 * 
+	 * @param cabin
+	 *            is the submitted cabin
 	 */
 	public void update(Cabin cabin) {
 		this.cabin = cabin;
 		drawIt();
 	}
+
 	/**
 	 * This method draws the information on the canvas.
 	 */
@@ -72,6 +81,32 @@ public class InfoViewPart extends ViewPart {
 		canvas.redraw();
 		final int margin = 10;
 		final int boxTwoX = 200;
+		final int[] pax = new int[4];
+		try {
+			pax[0] = ModelHelper.getChildrenByClass(cabin, FirstClass.class)
+					.get(0).getAvailableSeats();
+		} catch (IndexOutOfBoundsException ioobe) {
+			pax[0] = 0;
+		}
+		try {
+			pax[1] = ModelHelper.getChildrenByClass(cabin, BusinessClass.class)
+					.get(0).getAvailableSeats();
+		} catch (IndexOutOfBoundsException ioobe) {
+			pax[1] = 0;
+		}
+		try {
+			pax[2] = ModelHelper
+					.getChildrenByClass(cabin, PremiumEconomyClass.class)
+					.get(0).getAvailableSeats();
+		} catch (IndexOutOfBoundsException ioobe) {
+			pax[2] = 0;
+		}
+		try {
+			pax[3] = ModelHelper.getChildrenByClass(cabin, EconomyClass.class)
+					.get(0).getAvailableSeats();
+		} catch (IndexOutOfBoundsException ioobe) {
+			pax[3] = 0;
+		}
 		final List<Seat> seatList = ModelHelper.getChildrenByClass(cabin,
 				Seat.class);
 		final List<Row> rowList = ModelHelper.getChildrenByClass(cabin,
@@ -83,7 +118,10 @@ public class InfoViewPart extends ViewPart {
 			public void paintControl(final PaintEvent e) {
 				e.gc.setAntialias(SWT.ON);
 				e.gc.setInterpolation(SWT.HIGH);
-				e.gc.setFont(new Font(parent.getDisplay(), fontName, fontsize, SWT.NONE));
+				e.gc.setFont(new Font(parent.getDisplay(), fontName, fontsize,
+						SWT.NONE));
+				
+				e.gc.fillRectangle(0, 0, canvas.getBounds().width, canvas.getBounds().height);
 				e.gc.drawText("total seats: " + "\ntotal rows: "
 						+ "\n\npassengers: " + "\nalready seated: ", margin,
 						margin);
@@ -97,21 +135,19 @@ public class InfoViewPart extends ViewPart {
 						+ "\nseats in premium economy class"
 						+ "\nseats in economy class", boxTwoX, margin);
 				if (!cabin.getClasses().isEmpty()) {
-					e.gc.drawText(cabin.getClasses().get(0).getAvailableSeats()
-							+ "\n"
-							+ cabin.getClasses().get(1).getAvailableSeats()
-							+ "\n"
-							+ cabin.getClasses().get(2).getAvailableSeats()
-							+ "\n"
-							+ cabin.getClasses().get(3).getAvailableSeats(),
-							boxTwoX - 20, margin);
+					try {
+						e.gc.drawText(pax[0] + "\n" + pax[1] + "\n" + pax[2]
+								+ "\n" + pax[3], boxTwoX - 20, margin);
+					} catch (IndexOutOfBoundsException indexExeption) {
+						e.gc.drawText("#\n#\n#\n#\n\nERROR!", boxTwoX - 20,
+								margin);
+					}
 				} else {
-					e.gc.drawText("0\n0\n0\n0",
-							boxTwoX - 20, margin);
+					e.gc.drawText("0\n0\n0\n0", boxTwoX - 20, margin);
 				}
-				
-//				e.gc.setForeground(new Color(parent.getDisplay(), 220, 20, 60));
-//				e.gc.drawText("Existing Cabin Layout Errors:", x, y);
+				// e.gc.setForeground(new Color(parent.getDisplay(), 220, 20,
+				// 60));
+				// e.gc.drawText("Existing Cabin Layout Errors:", x, y);
 			}
 
 		});
@@ -121,6 +157,7 @@ public class InfoViewPart extends ViewPart {
 	/** * Passing the focus request to the viewer's control. */
 	public void setFocus() {
 	}
+
 	/**
 	 * This method disposes everything.
 	 */

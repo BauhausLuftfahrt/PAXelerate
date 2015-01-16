@@ -60,6 +60,7 @@ public class ConstructionLibrary {
 	private ILog logger;
 	private ArrayList<Integer> rowPartsInt;
 	private Boolean doItOnce = true;
+	private Boolean usePresetValues = false;
 
 	/**
 	 * This method is the constructor of this class.
@@ -84,6 +85,16 @@ public class ConstructionLibrary {
 	 */
 	public Cabin getCabin() {
 		return cabin;
+	}
+
+	/**
+	 * This method defines the use of preset values.
+	 * 
+	 * @param set
+	 *            the value
+	 */
+	public void setPreset(Boolean set) {
+		usePresetValues = set;
 	}
 
 	/**
@@ -123,6 +134,7 @@ public class ConstructionLibrary {
 	 *            is a helper Class
 	 */
 	public <T extends TravelClass> void switchSettings(Class<T> travelSubClass) {
+		// TODO implement preset settings loading.
 		switch (travelSubClass.getSimpleName()) {
 		case "PremiumEconomyClass":
 			try {
@@ -286,18 +298,16 @@ public class ConstructionLibrary {
 	public <T extends TravelClass> void createClass(Class<T> travelSubClass) {
 		passengerClass = null;
 		switchSettings(travelSubClass);
+		cabin.getClasses().add(passengerClass);
+		splitSeatString(seatStructure);
+		passengerClass.setPassengers(passengers);
+		passengerClass.setAvailableSeats(seats);
+		passengerClass.setRowStructure(seatStructure);
+		passengerClass.setSeatPitch(seatPitch);
+		passengerClass.setSeatWidth(seatDimensions.getX());
+		passengerClass.setSeatLength(seatDimensions.getY());
+		passengerClass.setName("");
 		if (seats > 0) {
-
-			cabin.getClasses().add(passengerClass);
-			splitSeatString(seatStructure);
-			passengerClass.setPassengers(passengers);
-			passengerClass.setAvailableSeats(seats);
-			passengerClass.setRowStructure(seatStructure);
-			passengerClass.setSeatPitch(seatPitch);
-			passengerClass.setSeatWidth(seatDimensions.getX());
-			passengerClass.setSeatLength(seatDimensions.getY());
-			passengerClass.setName("");
-
 			seatHelper = 0;
 			if ((seats % seatsInRow) != 0) {
 				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",

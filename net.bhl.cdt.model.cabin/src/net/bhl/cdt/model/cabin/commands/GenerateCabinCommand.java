@@ -40,6 +40,7 @@ public class GenerateCabinCommand extends CDTCommand {
 	private CabinViewPart cabinViewPart;
 	private ILog logger;
 	private ConstructionLibrary constructor;
+	private Boolean usePresetValues = false;
 
 	/**
 	 * Creates a cabin.
@@ -50,6 +51,30 @@ public class GenerateCabinCommand extends CDTCommand {
 	public GenerateCabinCommand(Cabin cabin) {
 		this.cabin = cabin;
 		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
+		/*
+		 * The cabin width only adapts to the preset aircraft type if the user
+		 * has not entered a custom width value
+		 */
+		if ((cabin.getCabinWidth() == 280) || (cabin.getCabinWidth() == 364)
+				|| (cabin.getCabinWidth() == 500)) {
+			usePresetValues = true;
+			switch (cabin.getAircraftType()) {
+			case REGIONAL:
+				cabin.setCabinWidth(364);
+				break;
+			case CONTINENTAL:
+				cabin.setCabinWidth(364);
+				break;
+			case INTERCONTINENTAL:
+				cabin.setCabinWidth(500);
+				break;
+			default:
+				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
+						"Error defining aircraft width."));
+				break;
+			}
+		}
+
 	}
 
 	@Override
@@ -77,6 +102,7 @@ public class GenerateCabinCommand extends CDTCommand {
 		/* ------------------------------------------------- */
 		constructor = new ConstructionLibrary(cabin);
 		constructor.clearCabin(); // clear the predecessor cabin (if existent)
+		constructor.setPreset(usePresetValues);
 		constructor.createDoor(EmergencyExit.class, true, 3, 935);
 		constructor.createDoor(EmergencyExit.class, true, 4, 1228);
 		constructor.createLavatory(100);
@@ -91,7 +117,7 @@ public class GenerateCabinCommand extends CDTCommand {
 		constructor.createLavatory(100);
 		cabin = constructor.getCabin(); // sync cabins
 		/* ------------------------------------------------- */
-		/* ------- Cabin Construction ends here! ----------- */ 
+		/* ------- Cabin Construction ends here! ----------- */
 		/* ------------------------------------------------- */
 
 		if (constructor.getGlobalSeatPositionY() > cabin.getCabinLength()) {

@@ -87,10 +87,6 @@ public class CabinViewPart extends ViewPart {
 
 	private static ILog logger;
 
-	private Image regional;
-	private Image continental;
-	private Image intercontinental;
-
 	private Image economySeat;
 	private Image businessSeat;
 	private Image firstSeat;
