@@ -6,6 +6,9 @@
 
 package net.bhl.cdt.model.cabin.commands;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.BusinessClass;
 import net.bhl.cdt.model.cabin.Cabin;
@@ -18,6 +21,8 @@ import net.bhl.cdt.model.cabin.StandardDoor;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.InfoViewPart;
 import net.bhl.cdt.model.cabin.util.ConstructionLibrary;
+
+import org.apache.commons.lang.ArrayUtils;
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
@@ -55,18 +60,18 @@ public class GenerateCabinCommand extends CDTCommand {
 		 * The cabin width only adapts to the preset aircraft type if the user
 		 * has not entered a custom width value
 		 */
-		if ((cabin.getCabinWidth() == 280) || (cabin.getCabinWidth() == 364)
-				|| (cabin.getCabinWidth() == 500)) {
+		int[] presets = { 364, 364, 500 };
+		if (ArrayUtils.contains(presets, cabin.getCabinWidth())) {
 			usePresetValues = true;
 			switch (cabin.getAircraftType()) {
 			case REGIONAL:
-				cabin.setCabinWidth(364);
+				cabin.setCabinWidth(presets[0]);
 				break;
 			case CONTINENTAL:
-				cabin.setCabinWidth(364);
+				cabin.setCabinWidth(presets[1]);
 				break;
 			case INTERCONTINENTAL:
-				cabin.setCabinWidth(500);
+				cabin.setCabinWidth(presets[2]);
 				break;
 			default:
 				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
