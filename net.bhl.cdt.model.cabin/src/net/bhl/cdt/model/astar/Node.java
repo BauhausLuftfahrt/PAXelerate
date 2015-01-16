@@ -376,7 +376,13 @@ public class Node implements Comparable<Node> {
 		} else if (compareFactor > otherNode.compareFactor) {
 			return 1;
 		} else {
-			return 0;
+//			if ((int)distanceFromStart < (int)otherNode.getDistanceFromStart()) {
+//				return -1;
+//			} else if ((int)distanceFromStart > (int)otherNode.getDistanceFromStart()) {
+//				return 1;
+//			} else {
+				return 0;
+//			}
 		}
 	}
 }

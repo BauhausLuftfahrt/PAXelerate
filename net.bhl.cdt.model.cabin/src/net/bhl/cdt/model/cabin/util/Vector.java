@@ -16,7 +16,7 @@ import java.awt.Color;
  * @author marc.engelmann
  * @version 1.0
  */
-public class Vector {
+public class Vector implements Comparable<Vector> {
 	private int dimensions;
 	private int xValue;
 	private int yValue;
@@ -197,5 +197,31 @@ public class Vector {
 			value[2] = zValue;
 		}
 		return value;
+	}
+
+	/**
+	 * This method compares two nodes.
+	 * 
+	 * @param otherNode
+	 *            the other node
+	 * @return returns the better node value
+	 */
+	public int compareTo(Vector vector) {
+		int BEFORE = -1;
+		int EQUAL = 0;
+		int AFTER = 1;
+		if (zValue < vector.getZ()) {
+			return BEFORE;
+		} else if (zValue > vector.getZ()) {
+			return AFTER;
+		} else {
+//			 if (yValue > vector.getY()) {
+//			 return BEFORE;
+//			 } else if (yValue < vector.getY()) {
+//			 return AFTER;
+//			 } else {
+			return EQUAL;
+//			 }
+		}
 	}
 }

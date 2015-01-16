@@ -39,7 +39,7 @@ public class ObstacleMap {
 	private Vector dimensions = new Vector(0, 0);
 	private static final int MAX_VALUE = 100000;
 	private static final int BASIC_VALUE = 10;
-	private static final int OBSTACLE_RANGE_IN_CM = 20;
+	private static final int OBSTACLE_RANGE_IN_CM = 10;
 	private static final int POTENTIAL_AROUND_OBSTACLE_MAXIMUM = 1000;
 	private int[][] obstacleMap;
 	private ILog logger;
