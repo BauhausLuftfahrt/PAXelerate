@@ -6,8 +6,7 @@
 
 package net.bhl.cdt.model.cabin.commands;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+
 
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.BusinessClass;
@@ -22,7 +21,6 @@ import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.InfoViewPart;
 import net.bhl.cdt.model.cabin.util.ConstructionLibrary;
 
-import org.apache.commons.lang.ArrayUtils;
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
@@ -45,7 +43,6 @@ public class GenerateCabinCommand extends CDTCommand {
 	private CabinViewPart cabinViewPart;
 	private ILog logger;
 	private ConstructionLibrary constructor;
-	private Boolean usePresetValues = false;
 
 	/**
 	 * Creates a cabin.
@@ -60,18 +57,16 @@ public class GenerateCabinCommand extends CDTCommand {
 		 * The cabin width only adapts to the preset aircraft type if the user
 		 * has not entered a custom width value
 		 */
-		int[] presets = { 364, 364, 500 };
-		if (ArrayUtils.contains(presets, cabin.getCabinWidth())) {
-			usePresetValues = true;
+		if (cabin.isUsePresetSettings()) {
 			switch (cabin.getAircraftType()) {
 			case REGIONAL:
-				cabin.setCabinWidth(presets[0]);
+				cabin.setCabinWidth(300);
 				break;
 			case CONTINENTAL:
-				cabin.setCabinWidth(presets[1]);
+				cabin.setCabinWidth(364);
 				break;
 			case INTERCONTINENTAL:
-				cabin.setCabinWidth(presets[2]);
+				cabin.setCabinWidth(650);
 				break;
 			default:
 				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
@@ -107,7 +102,6 @@ public class GenerateCabinCommand extends CDTCommand {
 		/* ------------------------------------------------- */
 		constructor = new ConstructionLibrary(cabin);
 		constructor.clearCabin(); // clear the predecessor cabin (if existent)
-		constructor.setPreset(usePresetValues);
 		constructor.createDoor(EmergencyExit.class, true, 3, 935);
 		constructor.createDoor(EmergencyExit.class, true, 4, 1228);
 		constructor.createLavatory(100);

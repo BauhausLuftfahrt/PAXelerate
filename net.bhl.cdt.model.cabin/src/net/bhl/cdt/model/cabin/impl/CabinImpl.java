@@ -48,6 +48,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getScale <em>Scale</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getBoardingTime <em>Boarding Time</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getAircraftType <em>Aircraft Type</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#isUsePresetSettings <em>Use Preset Settings</em>}</li>
  * </ul>
  * </p>
  *
@@ -288,6 +289,24 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @ordered
 	 */
 	protected AircraftType aircraftType = AIRCRAFT_TYPE_EDEFAULT;
+	/**
+	 * The default value of the '{@link #isUsePresetSettings() <em>Use Preset Settings</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isUsePresetSettings()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean USE_PRESET_SETTINGS_EDEFAULT = false;
+	/**
+	 * The cached value of the '{@link #isUsePresetSettings() <em>Use Preset Settings</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isUsePresetSettings()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean usePresetSettings = USE_PRESET_SETTINGS_EDEFAULT;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -543,6 +562,27 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isUsePresetSettings() {
+		return usePresetSettings;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUsePresetSettings(boolean newUsePresetSettings) {
+		boolean oldUsePresetSettings = usePresetSettings;
+		usePresetSettings = newUsePresetSettings;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__USE_PRESET_SETTINGS, oldUsePresetSettings, usePresetSettings));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<TravelClass> getClasses() {
 		if (classes == null) {
 			classes = new EObjectContainmentEList<TravelClass>(TravelClass.class, this, CabinPackage.CABIN__CLASSES);
@@ -662,6 +702,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return getBoardingTime();
 			case CabinPackage.CABIN__AIRCRAFT_TYPE:
 				return getAircraftType();
+			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
+				return isUsePresetSettings();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -734,6 +776,9 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__AIRCRAFT_TYPE:
 				setAircraftType((AircraftType)newValue);
 				return;
+			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
+				setUsePresetSettings((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -797,6 +842,9 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__AIRCRAFT_TYPE:
 				setAircraftType(AIRCRAFT_TYPE_EDEFAULT);
 				return;
+			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
+				setUsePresetSettings(USE_PRESET_SETTINGS_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -843,6 +891,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return boardingTime != BOARDING_TIME_EDEFAULT;
 			case CabinPackage.CABIN__AIRCRAFT_TYPE:
 				return aircraftType != AIRCRAFT_TYPE_EDEFAULT;
+			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
+				return usePresetSettings != USE_PRESET_SETTINGS_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -875,6 +925,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		result.append(boardingTime);
 		result.append(", aircraftType: ");
 		result.append(aircraftType);
+		result.append(", usePresetSettings: ");
+		result.append(usePresetSettings);
 		result.append(')');
 		return result.toString();
 	}

@@ -30,6 +30,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getScale <em>Scale</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBoardingTime <em>Boarding Time</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getAircraftType <em>Aircraft Type</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#isUsePresetSettings <em>Use Preset Settings</em>}</li>
  * </ul>
  * </p>
  *
@@ -340,6 +341,33 @@ public interface Cabin extends NamedElement {
 	 * @generated
 	 */
 	void setAircraftType(AircraftType value);
+
+	/**
+	 * Returns the value of the '<em><b>Use Preset Settings</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Use Preset Settings</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Use Preset Settings</em>' attribute.
+	 * @see #setUsePresetSettings(boolean)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_UsePresetSettings()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isUsePresetSettings();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#isUsePresetSettings <em>Use Preset Settings</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Use Preset Settings</em>' attribute.
+	 * @see #isUsePresetSettings()
+	 * @generated
+	 */
+	void setUsePresetSettings(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Classes</b></em>' containment reference list.
