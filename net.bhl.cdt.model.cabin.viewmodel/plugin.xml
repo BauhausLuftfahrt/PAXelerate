@@ -3,6 +3,14 @@
 <plugin>
    <extension
          point="org.eclipse.emf.ecp.view.model.provider.xmi.file">
+<file filePath="viewmodels/Seat.view"/>
+
+<file filePath="viewmodels/Lavatory.view"/>
+
+<file filePath="viewmodels/Galley.view"/>
+
+<file filePath="viewmodels/Curtain.view"/>
+
 <file filePath="viewmodels/Passenger.view"/>
 
 <file filePath="viewmodels/Cabin.view"/>
