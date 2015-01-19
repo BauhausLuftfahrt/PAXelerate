@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//model/cabin.ecore=UTF-8
 encoding//model/cabin.ecorediag=UTF-8
+encoding//src/net/bhl/cdt/model/astar/HelpView.java=UTF-8
 encoding//src/net/bhl/cdt/model/cabin/ui/CabinViewPart.java=UTF-8
 encoding//src/net/bhl/cdt/model/cabin/ui/InfoViewPart.java=UTF-8

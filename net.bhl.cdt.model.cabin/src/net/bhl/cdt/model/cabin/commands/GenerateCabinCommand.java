@@ -61,12 +61,15 @@ public class GenerateCabinCommand extends CDTCommand {
 			switch (cabin.getAircraftType()) {
 			case REGIONAL:
 				cabin.setCabinWidth(300);
+				cabin.setCabinLength(2000);
 				break;
 			case CONTINENTAL:
 				cabin.setCabinWidth(364);
+				cabin.setCabinLength(2460);
 				break;
 			case INTERCONTINENTAL:
 				cabin.setCabinWidth(650);
+				cabin.setCabinLength(3000);
 				break;
 			default:
 				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",

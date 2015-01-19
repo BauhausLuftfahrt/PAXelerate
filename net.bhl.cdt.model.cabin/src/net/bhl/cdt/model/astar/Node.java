@@ -26,8 +26,7 @@ public class Node implements Comparable<Node> {
 	private Node west;
 	private Node northWest;
 	private ArrayList<Node> neighborList;
-	private float distanceFromStart;
-	@SuppressWarnings("unused")
+	private int distanceFromStart;
 	private int costFromStart;
 	private Node previousNode;
 	private Vector position = new Vector(0, 0);
@@ -46,8 +45,7 @@ public class Node implements Comparable<Node> {
 	 * @param vector
 	 *            is the position vector
 	 */
-	//TODO public or private missing?
-	Node(Vector vector) {
+	public Node(Vector vector) {
 		neighborList = new ArrayList<Node>();
 		position = vector;
 		this.distanceFromStart = Integer.MAX_VALUE;
@@ -251,7 +249,7 @@ public class Node implements Comparable<Node> {
 	 * @param f
 	 *            the distance
 	 */
-	public void setDistanceFromStart(float f) {
+	public void setDistanceFromStart(int f) {
 		this.distanceFromStart = f;
 	}
 
@@ -371,18 +369,21 @@ public class Node implements Comparable<Node> {
 	 * @return returns the better node value
 	 */
 	public int compareTo(Node otherNode) {
-		if (compareFactor < otherNode.compareFactor) {
-			return -1;
-		} else if (compareFactor > otherNode.compareFactor) {
-			return 1;
+		int BEFORE = -1;
+		int EQUAL = 0;
+		int AFTER = 1;
+		if (costFromStart < otherNode.costFromStart) {
+			return BEFORE;
+		} else if (costFromStart > otherNode.costFromStart) {
+			return AFTER;
 		} else {
-//			if ((int)distanceFromStart < (int)otherNode.getDistanceFromStart()) {
-//				return -1;
-//			} else if ((int)distanceFromStart > (int)otherNode.getDistanceFromStart()) {
-//				return 1;
+//			if (distanceFromStart < otherNode.distanceFromStart) {
+//				return BEFORE;
+//			} else if (distanceFromStart > otherNode.distanceFromStart) {
+//				return AFTER;
 //			} else {
-				return 0;
-//			}
+				return EQUAL;
+//	/		}
 		}
 	}
 }

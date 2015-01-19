@@ -12,6 +12,7 @@ import net.bhl.cdt.model.cabin.util.Vector;
 
 /**
  * This class is the A* algorithm.
+ * 
  * @author marc.engelmann
  *
  */
@@ -33,8 +34,9 @@ public class AStar {
 	 * @param map
 	 *            is the AreaMap that is fed into the algorithm
 	 */
-	AStar(AreaMap map) {
+	AStar(AreaMap map, CostMap costmap) {
 		this.map = map;
+		this.costmap = costmap;
 		closedList = new ArrayList<Node>();
 		openList = new SortedNodeList();
 	}
@@ -67,9 +69,6 @@ public class AStar {
 		openList.clear();
 		openList.add(map.getStartNode());
 
-		costmap = new CostMap(map.getDimensions(), start, goal, map);
-		costmap.printMap();
-
 		// while we haven't reached the goal yet
 		while (openList.size() != 0) {
 
@@ -79,8 +78,10 @@ public class AStar {
 
 			// check if our current Node location is the goal Node. If it is, we
 			// are done.
-			if (current.getPosition().getX() == map.getGoalLocation().getPosition().getX()
-					&& current.getPosition().getY() == map.getGoalLocation().getPosition().getY()) {
+			if (current.getPosition().getX() == map.getGoalLocation()
+					.getPosition().getX()
+					&& current.getPosition().getY() == map.getGoalLocation()
+							.getPosition().getY()) {
 				return reconstructPath(current);
 			}
 
@@ -104,29 +105,22 @@ public class AStar {
 
 					// calculate how long the path is if we choose this neighbor
 					// as the next step in the path
-					float neighborDistanceFromStart = map.getDistanceBetween(
-							map.getStartNode(), current)
-							+ map.getDistanceBetween(current, neighbor);
-					float currentDistanceFromStart = map.getDistanceBetween(
-							map.getStartNode(), current);
+					int neighborDistanceFromStart = (int) map
+							.getDistanceBetween(map.getStartNode(), neighbor);
+					int currentDistanceFromStart = (int) map
+							.getDistanceBetween(map.getStartNode(), current);
 					int neighborCostFromStart = costmap.getCostForCoordinates(
-							neighbor.getPosition().getX(), neighbor.getPosition().getY());
+							neighbor.getPosition().getX(), neighbor
+									.getPosition().getY());
 					int currentCostFromStart = costmap.getCostForCoordinates(
-							current.getPosition().getX(), current.getPosition().getY());
+							current.getPosition().getX(), current.getPosition()
+									.getY());
 
 					// add neighbor to the open list if it is not there
 					if (!openList.contains(neighbor)) {
 						openList.add(neighbor);
 						neighborIsBetter = true;
-
-						// if neighbor is closer to start it could also be
-						// better
-						// if neighborSumofCostsInCostChart < currentCosts -->
-						// neighborIsBetter = true, else neighborIsBetter =
-						// false
-					}
-
-					else if ((neighborCostFromStart < currentCostFromStart)
+					} else if ((neighborCostFromStart < currentCostFromStart)
 							&& (neighborDistanceFromStart < currentDistanceFromStart)) {
 						neighborIsBetter = true;
 					} else if (neighborCostFromStart < currentCostFromStart) {
@@ -142,7 +136,8 @@ public class AStar {
 						neighbor.setPreviousNode(current);
 						neighbor.setCostFromStart(neighborCostFromStart);
 						neighbor.setDistanceFromStart(neighborDistanceFromStart);
-						neighbor.setCompareFactor((neighborCostFromStart));// +0.001*neighborDistanceFromStart));
+						// int compareFactor
+						neighbor.setCompareFactor(neighborCostFromStart);// +0.001*neighborDistanceFromStart));
 						// neighbor.setHeuristicDistanceFromGoal(heuristic.getEstimatedDistanceToGoal(neighbor.getX(),
 						// neighbor.getY(), map.getGoalLocationX(),
 						// map.getGoalLocationY()));
@@ -154,9 +149,12 @@ public class AStar {
 		}
 		return null;
 	}
+
 	/**
 	 * This method reconstructs the path.
-	 * @param node the specific node
+	 * 
+	 * @param node
+	 *            the specific node
 	 * @return the path
 	 */
 	private Path reconstructPath(Node node) {
@@ -190,40 +188,46 @@ public class AStar {
 
 	/**
 	 * This class is a sorted node list.
+	 * 
 	 * @author marc.engelmann
 	 *
 	 */
 	private class SortedNodeList {
 
 		private ArrayList<Node> list = new ArrayList<Node>();
-		
+
 		/**
 		 * This method returns the first list entry.
+		 * 
 		 * @return the first element
 		 */
 		public Node getFirst() {
 			return list.get(0);
 		}
-		
+
 		/**
 		 * This method clears the list.
 		 */
 		public void clear() {
 			list.clear();
 		}
-		
+
 		/**
 		 * This method adds a node to the list.
-		 * @param node the specific node
+		 * 
+		 * @param node
+		 *            the specific node
 		 */
 		public void add(Node node) {
 			list.add(node);
 			Collections.sort(list);
 		}
-		
+
 		/**
 		 * This method removes a specific node from the list.
-		 * @param n the node
+		 * 
+		 * @param n
+		 *            the node
 		 */
 		public void remove(Node n) {
 			list.remove(n);
@@ -231,6 +235,7 @@ public class AStar {
 
 		/**
 		 * This method returns the size of the list.
+		 * 
 		 * @return the size
 		 */
 		public int size() {
@@ -239,7 +244,9 @@ public class AStar {
 
 		/**
 		 * This method checks if a specific node is already in the list.
-		 * @param n the node which is checked
+		 * 
+		 * @param n
+		 *            the node which is checked
 		 */
 		public boolean contains(Node n) {
 			return list.contains(n);

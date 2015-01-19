@@ -721,9 +721,9 @@ public class CabinViewPart extends ViewPart {
 					e.gc.drawImage(img, 0, 0);
 
 				} else {
-					Image image = SWTResourceManager.getImage(
-							InfoViewPart.class, "regional.png");
-					e.gc.drawImage(image, 0, 0);
+//					Image image = SWTResourceManager.getImage(
+//							InfoViewPart.class, "regional.png");
+					e.gc.drawImage(resizeAC(canvas.getBounds().width,canvas.getBounds().height), 0, 0);
 					e.gc.setFont(fontThree);
 					e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_RED));
 					e.gc.fillRectangle(38, 370, 300, 35);

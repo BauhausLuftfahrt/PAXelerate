@@ -10,6 +10,8 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import javax.swing.JFrame;
+
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
@@ -46,6 +48,7 @@ public class CostMap {
 	private ArrayList<Vector> pointParkingHelper = new ArrayList<Vector>();
 	private AreaMap areamap;
 	private ILog logger;
+	private static JFrame frame;
 
 	/**
 	 * The cost map is constructed in this function.
@@ -62,8 +65,52 @@ public class CostMap {
 	public CostMap(Vector dimension, Vector start, Vector goal, AreaMap areaMap) {
 		dimensions.setFromPoint(dimension.getValue());
 		startPoint.setFromPoint(start.getValue());
-		//goalPoint.setFromPoint(goal.getValue());
-		goalPoint.setTwoDimensional((int)dimension.getX()/2, dimension.getY()-1);
+		// goalPoint.setFromPoint(goal.getValue());
+		goalPoint.setTwoDimensional((int) dimension.getX() / 2,
+				dimension.getY() - 1);
+		areamap = areaMap;
+		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
+		map = new int[dimensions.getX()][dimensions.getY()];
+		for (int i = 0; i < dimensions.getX(); i++) {
+			for (int j = 0; j < dimensions.getY(); j++) {
+				Node node = areamap.getNodeByCoordinate(i, j);
+				if (!node.isObstacle()) {
+					map[i][j] = node.getCost();
+				} else {
+					map[i][j] = -1;
+				}
+			}
+		}
+		map[startPoint.getX()][startPoint.getY()] = 0;
+		visitedPoints.add(startPoint);
+		floodMap();
+	}
+
+	public void runIt() {
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				// Set up main window (using Swing's Jframe)
+				frame = new JFrame("Boarding Simulation");
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.setContentPane(new HelpView());
+				frame.pack();
+				frame.setVisible(true);
+			}
+		});
+
+	}
+
+	/**
+	 * 
+	 * @param dimension
+	 * @param areaMap
+	 */
+	public CostMap(Vector dimension, Vector start, AreaMap areaMap) {
+		dimensions.setFromPoint(dimension.getValue());
+		startPoint.setFromPoint(start.getValue());
+		// goalPoint.setFromPoint(goal.getValue());
+		goalPoint.setTwoDimensional((int) dimension.getX() / 2,
+				dimension.getY() - 1);
 		areamap = areaMap;
 		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
 		map = new int[dimensions.getX()][dimensions.getY()];
@@ -187,8 +234,8 @@ public class CostMap {
 	 *            is the point around which all costs are calculated
 	 */
 	private void createSurroundingCosts(Vector middlePoint) {
-		for (Vector point : sortTheList(getSurroundingPoints(middlePoint.getX(),
-				middlePoint.getY()))) {
+		for (Vector point : sortTheList(getSurroundingPoints(
+				middlePoint.getX(), middlePoint.getY()))) {
 			if (!(point.getX() < 0 || point.getY() < 0
 					|| point.getX() >= dimensions.getX() || point.getY() >= dimensions
 					.getY())) {
@@ -271,9 +318,9 @@ public class CostMap {
 	 * @return returns the cost for a specific coordinate
 	 */
 	public int getCostForCoordinates(int xCord, int yCord) {
-		try{
-		return map[xCord][yCord];
-		} catch(ArrayIndexOutOfBoundsException e) {
+		try {
+			return map[xCord][yCord];
+		} catch (ArrayIndexOutOfBoundsException e) {
 			return Integer.MAX_VALUE;
 		}
 	}
@@ -295,14 +342,22 @@ public class CostMap {
 	 */
 	private ArrayList<Vector> getSurroundingPoints(int pointX, int pointY) {
 		ArrayList<Vector> surroundingPoints = new ArrayList<Vector>();
-		surroundingPoints.add(new Vector(pointX, pointY - 1,getCostForCoordinates(pointX, pointY - 1)));
-		surroundingPoints.add(new Vector(pointX + 1, pointY - 1,getCostForCoordinates(pointX + 1, pointY - 1)));
-		surroundingPoints.add(new Vector(pointX + 1, pointY,getCostForCoordinates(pointX + 1, pointY)));
-		surroundingPoints.add(new Vector(pointX + 1, pointY + 1,getCostForCoordinates(pointX + 1, pointY + 1)));
-		surroundingPoints.add(new Vector(pointX, pointY + 1,getCostForCoordinates(pointX, pointY + 1)));
-		surroundingPoints.add(new Vector(pointX - 1, pointY + 1,getCostForCoordinates(pointX - 1, pointY + 1)));
-		surroundingPoints.add(new Vector(pointX - 1, pointY,getCostForCoordinates(pointX - 1, pointY)));
-		surroundingPoints.add(new Vector(pointX - 1, pointY - 1,getCostForCoordinates(pointX - 1, pointY - 1)));
+		surroundingPoints.add(new Vector(pointX, pointY - 1,
+				getCostForCoordinates(pointX, pointY - 1)));
+		surroundingPoints.add(new Vector(pointX + 1, pointY - 1,
+				getCostForCoordinates(pointX + 1, pointY - 1)));
+		surroundingPoints.add(new Vector(pointX + 1, pointY,
+				getCostForCoordinates(pointX + 1, pointY)));
+		surroundingPoints.add(new Vector(pointX + 1, pointY + 1,
+				getCostForCoordinates(pointX + 1, pointY + 1)));
+		surroundingPoints.add(new Vector(pointX, pointY + 1,
+				getCostForCoordinates(pointX, pointY + 1)));
+		surroundingPoints.add(new Vector(pointX - 1, pointY + 1,
+				getCostForCoordinates(pointX - 1, pointY + 1)));
+		surroundingPoints.add(new Vector(pointX - 1, pointY,
+				getCostForCoordinates(pointX - 1, pointY)));
+		surroundingPoints.add(new Vector(pointX - 1, pointY - 1,
+				getCostForCoordinates(pointX - 1, pointY - 1)));
 		return surroundingPoints;
 	}
 }

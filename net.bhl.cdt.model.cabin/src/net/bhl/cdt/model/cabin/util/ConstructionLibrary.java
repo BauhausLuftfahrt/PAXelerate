@@ -157,7 +157,7 @@ public class ConstructionLibrary {
 			try {
 				PremiumEconomyClass subclass = ModelHelper.getChildrenByClass(
 						cabin, PremiumEconomyClass.class).get(0);
-				seats = (int) tryPreset(0, 24, 40, subclass.getAvailableSeats());
+				seats = (int) tryPreset(0, 18, 40, subclass.getAvailableSeats());
 				seatStructure = (String) tryPreset("2-2", "3-3", "3-4-3",
 						subclass.getRowStructure());
 				seatDimensions.setTwoDimensional(subclass.getSeatWidth(),
@@ -202,7 +202,7 @@ public class ConstructionLibrary {
 			try {
 				FirstClass subclass = ModelHelper.getChildrenByClass(cabin,
 						FirstClass.class).get(0);
-				seats = (int) tryPreset(0, 0, 0, subclass.getAvailableSeats());
+				seats = (int) tryPreset(2, 2, 4, subclass.getAvailableSeats());
 				seatStructure = (String) tryPreset("1-1", "1-1", "1-2-1",
 						subclass.getRowStructure());
 				seatDimensions.setTwoDimensional(subclass.getSeatWidth(),

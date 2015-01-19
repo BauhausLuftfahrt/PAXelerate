@@ -22,7 +22,6 @@ import net.bhl.cdt.model.cabin.MainDoor;
 import net.bhl.cdt.model.cabin.PhysicalObject;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
-import net.bhl.cdt.model.cabin.util.FunctionLibrary;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.util.ModelHelper;
 
@@ -39,7 +38,7 @@ public class ObstacleMap {
 	private Vector dimensions = new Vector(0, 0);
 	private static final int MAX_VALUE = 100000;
 	private static final int BASIC_VALUE = 10;
-	private static final int OBSTACLE_RANGE_IN_CM = 10;
+	private static final int OBSTACLE_RANGE_IN_CM = 20;
 	private static final int POTENTIAL_AROUND_OBSTACLE_MAXIMUM = 1000;
 	private int[][] obstacleMap;
 	private ILog logger;
@@ -182,14 +181,16 @@ public class ObstacleMap {
 	private void generateAisleHole() {
 		int entryMin = 0;
 		int entryMax = 0;
-		for (Door door : ModelHelper.getChildrenByClass(cabin, MainDoor.class)) {
-			entryMin = (int) (door.getYPosition() / cabin.getScale()) + 2;
-			entryMax = (int) ((door.getYPosition() + door.getWidth()) / cabin
-					.getScale()) - 2;
-		}
-		int aisleMin = (int) ((cabin.getCabinWidth() - cabin.getAisleWidth())
-				/ cabin.getScale() / 2) + 1;
-		int aisleMax = (int) (cabin.getCabinWidth() / cabin.getScale() - aisleMin) - 1;
+		
+		/* x: begin and end; y: begin and end; */
+		int[] firstClassAisleValues = new int[4];
+
+		/* Create the door path */
+		Door mainDoor = ModelHelper.getChildrenByClass(cabin, MainDoor.class)
+				.get(0);
+		entryMin = (int) (mainDoor.getYPosition() / cabin.getScale()) + 2;
+		entryMax = (int) ((mainDoor.getYPosition() + mainDoor.getWidth()) / cabin
+				.getScale()) - 2;
 
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
@@ -197,7 +198,7 @@ public class ObstacleMap {
 					if (j > entryMin && j < entryMax) {
 						obstacleMap[i][j] = 0;
 					}
-					if (i < aisleMax && i > aisleMin) {
+					if (i < 19 && i > 16) {
 						obstacleMap[i][j] = 0;
 					}
 				}

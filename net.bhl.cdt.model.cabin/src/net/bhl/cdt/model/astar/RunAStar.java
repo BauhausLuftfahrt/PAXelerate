@@ -21,14 +21,18 @@ import net.bhl.cdt.model.util.ModelHelper;
 public class RunAStar {
 	private static Cabin cabin;
 	private static Boolean simulationDone = false;
-	private ObstacleMap obstacleMap;
+	private ObstacleMap obstaclemap;
 	private static ArrayList<Passenger> finishedList = new ArrayList<Passenger>();
 	private static Logger console = new Logger();
-	private static AreaMap map;
+	private static AreaMap areamap;
+	private CostMap costmap;
 	private static ArrayList<Agent> agents = new ArrayList<Agent>();
 	private static ArrayList<int[][]> pathList = new ArrayList<int[][]>();
 	private static StopWatch stopwatch = new StopWatch();
 	private static StopWatch anotherStopwatch = new StopWatch();
+	private Vector initialStart;
+	private Vector dimensions;
+	
 
 	/**
 	 * This method constructs the RunAStar algorithm.
@@ -41,9 +45,10 @@ public class RunAStar {
 	 *            is the cabin
 	 */
 	public RunAStar(ObstacleMap obstaclemap, Vector dimensions, Cabin cabin) {
-		this.obstacleMap = obstaclemap;
+		this.obstaclemap = obstaclemap;
+		this.dimensions = dimensions;
 		console.addToLog("Cabin initializing...");
-		map = new AreaMap(dimensions, obstacleMap);
+		areamap = new AreaMap(dimensions, obstaclemap);
 		RunAStar.cabin = cabin;
 		run();
 	}
@@ -57,9 +62,9 @@ public class RunAStar {
 	 *            is the specific agent
 	 * @return returns the shortest path
 	 */
-	public static int[][] getPath(AreaMap areamap, Agent agent) {
+	public int[][] getPath(AreaMap areamap, Agent agent) {
 		stopwatch.start();
-		AStar pathFinder = new AStar(areamap);
+		AStar pathFinder = new AStar(areamap,costmap);
 		console.addToLog("Calculating shortest path...");
 		pathFinder.calcShortestPath(agent.getStart(), agent.getGoal());
 		stopwatch.stop();
@@ -92,19 +97,19 @@ public class RunAStar {
 	 * @return the area map
 	 */
 	public static AreaMap getMap() {
-		return map;
+		return areamap;
 	}
 
 	/**
 	 * This method runs the agents.
 	 */
-	public static void runAgents() {
+	public  void runAgents() {
 
 		anotherStopwatch.start();
 
 		/** First generate all paths ... */
 		for (Agent agent : agents) {
-			getPath(map, agent);
+			getPath(areamap, agent);
 		}
 		anotherStopwatch.stop();
 		System.out.println("Calculations completed in: "
@@ -190,10 +195,11 @@ public class RunAStar {
 	/**
 	 * This method executes the path finding simulation of the agents.
 	 */
-	public static void run() {
+	public void run() {
 
 		// iterate through the openCDT passenger list and create agents based on
 		// passenger information
+		Boolean doItOnce = true;
 		for (Passenger passenger : ModelHelper.getChildrenByClass(cabin,
 				Passenger.class)) {
 			Seat seat = passenger.getSeatRef();
@@ -205,11 +211,18 @@ public class RunAStar {
 					(int) ((seat.getXPosition() + seat.getXDimension() / 2) / cabin
 							.getScale()), (int) ((seat.getYPosition() / cabin
 							.getScale()) - 1));
+			if(doItOnce) {
+				initialStart = start;
+				doItOnce = false;
+			}
 			Agent agent = new Agent(passenger, start, goal, (int) cabin.getScale());
 			// list of all agents
 			agents.add(agent);
 		}
 
+		costmap = new CostMap(dimensions, initialStart, areamap);
+		costmap.printMap(); 
+		
 		// iterate through the list of all agents, calculate each agent's path,
 		// then start the thread of each agent.
 		runAgents();
