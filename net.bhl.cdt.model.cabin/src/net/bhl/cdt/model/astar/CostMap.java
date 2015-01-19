@@ -86,7 +86,11 @@ public class CostMap {
 		floodMap();
 	}
 
-	public void runIt() {
+	/**
+	 * Main method.
+	 * @param args the arguments
+	 */
+	public static void main(String[] args) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				// Set up main window (using Swing's Jframe)
@@ -97,7 +101,6 @@ public class CostMap {
 				frame.setVisible(true);
 			}
 		});
-
 	}
 
 	/**

@@ -76,6 +76,7 @@ public class GenerateCabinCommand extends CDTCommand {
 						"Error defining aircraft width."));
 				break;
 			}
+			cabin.setUsePresetSettings(false);
 		}
 
 	}
