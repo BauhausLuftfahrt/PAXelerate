@@ -215,9 +215,9 @@ public class Vector implements Comparable<Vector> {
 		} else if (zValue > vector.getZ()) {
 			return AFTER;
 		} else {
-			 if (xValue > vector.getX()) {
+			 if (yValue > vector.getY()) {
 			 return BEFORE;
-			 } else if (xValue < vector.getX()) {
+			 } else if (yValue < vector.getY()) {
 			 return AFTER;
 			 } else {
 			return EQUAL;

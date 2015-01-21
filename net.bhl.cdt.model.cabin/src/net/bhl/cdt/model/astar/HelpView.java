@@ -55,12 +55,10 @@ public class HelpView extends JPanel {
 							costmap.createSurroundingCosts(newPoint);
 							newPointHelp = newPoint;
 							repaint();
-							Thread.sleep(500);
+							Thread.sleep(300);
 						}				
 						pointspace.clear();
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-
 						e.printStackTrace();
 					}
 				}
@@ -78,8 +76,8 @@ public class HelpView extends JPanel {
 		super.paintComponent(g); // Paint background
 		g.setColor(Color.BLACK);
 		g.setFont(new Font("Courier New", Font.PLAIN, 12));
-		for (int x = 0; x < 25; x++) {
-			for (int y = 0; y < 20; y++) {
+		for (int x = 0; x < 24; x++) {
+			for (int y = 0; y < 24; y++) {
 				g.setColor(Color.BLACK);
 				for(Vector point: pointspace) {
 					if(point.getX() == x && point.getY() == y ) {
@@ -100,7 +98,5 @@ public class HelpView extends JPanel {
 						y * 25);
 			}
 		}
-
 	}
-
 }
