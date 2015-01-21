@@ -37,9 +37,9 @@ public class ObstacleMap {
 	private Cabin cabin;
 	private Vector dimensions = new Vector(0, 0);
 	private static final int MAX_VALUE = 100000;
-	private static final int BASIC_VALUE = 10;
+	private static final int BASIC_VALUE = 1;
 	private static final int OBSTACLE_RANGE_IN_CM = 20;
-	private static final int POTENTIAL_AROUND_OBSTACLE_MAXIMUM = 1000;
+	private static final int POTENTIAL_AROUND_OBSTACLE_MAXIMUM = 20;
 	private int[][] obstacleMap;
 	private ILog logger;
 
@@ -101,7 +101,7 @@ public class ObstacleMap {
 		generateObstacles(Lavatory.class);
 		generateObstacles(Galley.class);
 		generateObstacles(Curtain.class);
-		generateAisleHole();
+		//generateAisleHole();
 		generatePotentialGradient();
 		return obstacleMap;
 	}
@@ -181,7 +181,7 @@ public class ObstacleMap {
 	private void generateAisleHole() {
 		int entryMin = 0;
 		int entryMax = 0;
-		
+
 		/* x: begin and end; y: begin and end; */
 		int[] firstClassAisleValues = new int[4];
 

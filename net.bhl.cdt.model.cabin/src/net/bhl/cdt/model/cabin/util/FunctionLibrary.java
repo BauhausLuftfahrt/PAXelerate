@@ -116,4 +116,14 @@ public final class FunctionLibrary {
 			System.out.println(object);
 		}
 	}
+	
+	public static void printVectorListToLog(ArrayList<Vector> list) {
+		int i = 1;
+		for (Vector vector : list) {
+			System.out.println("#"+i+" -> x: "+vector.getX()+", y: "+vector.getY()+", z: "+vector.getZ());
+			i++;
+		}
+		System.out.println("######################################################################");
+	}
+	
 }

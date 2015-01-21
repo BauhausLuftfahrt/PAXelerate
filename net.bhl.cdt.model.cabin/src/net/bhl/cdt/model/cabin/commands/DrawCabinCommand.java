@@ -5,9 +5,16 @@
  *******************************************************************************/
 package net.bhl.cdt.model.cabin.commands;
 
+import javax.swing.JFrame;
+
 import net.bhl.cdt.commands.CDTCommand;
+import net.bhl.cdt.model.astar.AreaMap;
+import net.bhl.cdt.model.astar.CostMap;
+import net.bhl.cdt.model.astar.HelpView;
+import net.bhl.cdt.model.astar.ObstacleMap;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
+import net.bhl.cdt.model.cabin.util.Vector;
 
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
@@ -29,6 +36,7 @@ public class DrawCabinCommand extends CDTCommand {
 	private Cabin cabin;
 	private ILog logger;
 	private CabinViewPart cabinViewPart;
+	private static JFrame frame;
 
 	/**
 	 * This method is the constructor.
@@ -47,13 +55,33 @@ public class DrawCabinCommand extends CDTCommand {
 	@Override
 	protected void doRun() {
 
+		/**
+		 * Main method.
+		 * 
+		 * @param args
+		 *            the arguments
+		 */
+		final Vector dimensions = new Vector(cabin.getCabinWidth()/cabin.getScale(),cabin.getCabinLength()/cabin.getScale());
+		ObstacleMap obstaclemap = new ObstacleMap(cabin);
+		final AreaMap areamap = new AreaMap(dimensions,obstaclemap);
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				// Set up main window (using Swing's Jframe)
+				frame = new JFrame("Cost Map Flooding Animation");
+				//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.setContentPane(new HelpView(areamap, dimensions));
+				frame.pack();
+				frame.setVisible(true);
+			}
+		});
+
 		IWorkbenchPage page = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage();
 		cabinViewPart = (CabinViewPart) page
 				.findView("net.bhl.cdt.model.cabin.cabinview");
 
 		checkForConstructionErrors();
-		
+
 		try {
 			cabinViewPart.setCabin(cabin);
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
@@ -66,6 +94,6 @@ public class DrawCabinCommand extends CDTCommand {
 
 	private void checkForConstructionErrors() {
 		// TODO Create error detection algorithm.
-		
+
 	}
 }

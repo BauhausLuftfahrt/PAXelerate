@@ -43,12 +43,10 @@ public class CostMap {
 	private Vector startPoint = new Vector(0, 0);
 	private Vector goalPoint = new Vector(0, 0);
 	private ArrayList<Vector> visitedPoints = new ArrayList<Vector>();
-	private ArrayList<Vector> openPoints = new ArrayList<Vector>();
-	private ArrayList<Vector> pointParking = new ArrayList<Vector>();
-	private ArrayList<Vector> pointParkingHelper = new ArrayList<Vector>();
+	public ArrayList<Vector> pointParking = new ArrayList<Vector>();
+	public ArrayList<Vector> pointParkingHelper = new ArrayList<Vector>();
 	private AreaMap areamap;
 	private ILog logger;
-	private static JFrame frame;
 
 	/**
 	 * The cost map is constructed in this function.
@@ -62,7 +60,8 @@ public class CostMap {
 	 * @param areaMap
 	 *            contains information on the cost of every individual element
 	 */
-	public CostMap(Vector dimension, Vector start, Vector goal, AreaMap areaMap) {
+	public CostMap(Vector dimension, Vector start, Vector goal,
+			AreaMap areaMap, Boolean inSteps) {
 		dimensions.setFromPoint(dimension.getValue());
 		startPoint.setFromPoint(start.getValue());
 		// goalPoint.setFromPoint(goal.getValue());
@@ -83,24 +82,19 @@ public class CostMap {
 		}
 		map[startPoint.getX()][startPoint.getY()] = 0;
 		visitedPoints.add(startPoint);
-		floodMap();
+		if (!inSteps) {
+			floodMap();
+		}
+		else {
+			createSurroundingCosts(startPoint);
+		}
 	}
 
-	/**
-	 * Main method.
-	 * @param args the arguments
-	 */
-	public static void main(String[] args) {
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				// Set up main window (using Swing's Jframe)
-				frame = new JFrame("Boarding Simulation");
-				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				frame.setContentPane(new HelpView());
-				frame.pack();
-				frame.setVisible(true);
-			}
-		});
+	public void floodMapStep() {
+		copyPoints();
+		for (Vector newPoint : pointParking) {
+			createSurroundingCosts(newPoint);
+		}
 	}
 
 	/**
@@ -108,7 +102,8 @@ public class CostMap {
 	 * @param dimension
 	 * @param areaMap
 	 */
-	public CostMap(Vector dimension, Vector start, AreaMap areaMap) {
+	public CostMap(Vector dimension, Vector start, AreaMap areaMap,
+			Boolean inSteps) {
 		dimensions.setFromPoint(dimension.getValue());
 		startPoint.setFromPoint(start.getValue());
 		// goalPoint.setFromPoint(goal.getValue());
@@ -129,7 +124,12 @@ public class CostMap {
 		}
 		map[startPoint.getX()][startPoint.getY()] = 0;
 		visitedPoints.add(startPoint);
-		floodMap();
+		if (!inSteps) {
+			floodMap();
+		}
+		else {
+			createSurroundingCosts(startPoint);
+		}
 	}
 
 	/**
@@ -220,12 +220,13 @@ public class CostMap {
 	 * This function moves the points gathered in pointParkingHelper to
 	 * pointParking.
 	 */
-	private void copyPoints() {
+	public void copyPoints() {
 		pointParking.clear();
 		for (Vector copyPoint : pointParkingHelper) {
 			pointParking.add(copyPoint);
 		}
 		pointParkingHelper.clear();
+		sortTheList(pointParking);
 	}
 
 	/**
@@ -236,7 +237,7 @@ public class CostMap {
 	 * @param middlePoint
 	 *            is the point around which all costs are calculated
 	 */
-	private void createSurroundingCosts(Vector middlePoint) {
+	public void createSurroundingCosts(Vector middlePoint) {
 		for (Vector point : sortTheList(getSurroundingPoints(
 				middlePoint.getX(), middlePoint.getY()))) {
 			if (!(point.getX() < 0 || point.getY() < 0

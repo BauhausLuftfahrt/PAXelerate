@@ -220,7 +220,7 @@ public class RunAStar {
 			agents.add(agent);
 		}
 
-		costmap = new CostMap(dimensions, initialStart, areamap);
+		costmap = new CostMap(dimensions, initialStart, areamap,false);
 		costmap.printMap(); 
 		
 		// iterate through the list of all agents, calculate each agent's path,

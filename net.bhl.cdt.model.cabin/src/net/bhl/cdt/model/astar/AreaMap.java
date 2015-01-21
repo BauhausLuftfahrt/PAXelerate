@@ -29,7 +29,7 @@ public class AreaMap {
 	 * @param dimensions the dimensions of the map
 	 * @param obstacleMap the obstacle map
 	 */
-	AreaMap(Vector dimensions, ObstacleMap obstacleMap) {
+	public AreaMap(Vector dimensions, ObstacleMap obstacleMap) {
 		this.dimensions = dimensions;
 		this.obstacleMap = obstacleMap;
 

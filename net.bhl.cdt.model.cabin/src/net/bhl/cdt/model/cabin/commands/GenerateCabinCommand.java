@@ -78,7 +78,6 @@ public class GenerateCabinCommand extends CDTCommand {
 			}
 			cabin.setUsePresetSettings(false);
 		}
-
 	}
 
 	@Override
