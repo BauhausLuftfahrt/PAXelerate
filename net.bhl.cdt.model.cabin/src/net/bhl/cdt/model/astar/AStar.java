@@ -120,13 +120,13 @@ public class AStar {
 					if (!openList.contains(neighbor)) {
 						openList.add(neighbor);
 						neighborIsBetter = true;
-					} else if ((neighborCostFromStart < currentCostFromStart)
-							&& (neighborDistanceFromStart < currentDistanceFromStart)) {
-						neighborIsBetter = true;
+//					} else if ((neighborCostFromStart < currentCostFromStart)
+//							&& (neighborDistanceFromStart < currentDistanceFromStart)) {
+//						neighborIsBetter = true;
 					} else if (neighborCostFromStart < currentCostFromStart) {
 						neighborIsBetter = true;
-					} else if (neighborDistanceFromStart < currentDistanceFromStart) {
-						neighborIsBetter = true;
+//					} else if (neighborDistanceFromStart < currentDistanceFromStart) {
+//						neighborIsBetter = true;
 					} else {
 						neighborIsBetter = false;
 					}
@@ -136,16 +136,10 @@ public class AStar {
 						neighbor.setPreviousNode(current);
 						neighbor.setCostFromStart(neighborCostFromStart);
 						neighbor.setDistanceFromStart(neighborDistanceFromStart);
-						// int compareFactor
 						neighbor.setCompareFactor(neighborCostFromStart);// +0.001*neighborDistanceFromStart));
-						// neighbor.setHeuristicDistanceFromGoal(heuristic.getEstimatedDistanceToGoal(neighbor.getX(),
-						// neighbor.getY(), map.getGoalLocationX(),
-						// map.getGoalLocationY()));
 					}
 				}
-
 			}
-
 		}
 		return null;
 	}

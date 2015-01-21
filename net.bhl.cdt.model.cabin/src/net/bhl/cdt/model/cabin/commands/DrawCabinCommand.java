@@ -10,10 +10,10 @@ import javax.swing.JFrame;
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.astar.AreaMap;
 import net.bhl.cdt.model.astar.CostMap;
-import net.bhl.cdt.model.astar.HelpView;
 import net.bhl.cdt.model.astar.ObstacleMap;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
+import net.bhl.cdt.model.cabin.ui.HelpView;
 import net.bhl.cdt.model.cabin.util.Vector;
 
 import org.eclipse.core.runtime.ILog;
@@ -54,6 +54,14 @@ public class DrawCabinCommand extends CDTCommand {
 	 */
 	@Override
 	protected void doRun() {
+
+//		GetInput dialog = new GetInput(shell);
+//		dialog.create();
+//		if (dialog.open() == Window.OK) {
+//		  System.out.println(dialog.getFirstName());
+//		  System.out.println(dialog.getLastName());
+//		} 
+
 
 		/**
 		 * Main method.
