@@ -49,7 +49,7 @@ public class HelpView extends JPanel {
 							costmap.createSurroundingCosts(newPoint);
 							newPointHelp = newPoint;
 							repaint();
-							Thread.sleep(300);
+							Thread.sleep(50);
 						}
 						pointspace.clear();
 					} catch (InterruptedException e) {

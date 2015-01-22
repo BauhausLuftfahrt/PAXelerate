@@ -38,7 +38,7 @@ import net.bhl.cdt.model.cabin.util.Vector;
 
 public class CostMap {
 
-	private int[][] map;
+	private static int[][] map;
 	private Vector dimensions = new Vector(0, 0);
 	private Vector startPoint = new Vector(0, 0);
 	private Vector goalPoint = new Vector(0, 0);
@@ -312,7 +312,7 @@ public class CostMap {
 	 *            is the point (of dimension int[2]) of interest
 	 * @return
 	 */
-	private int getCost(Vector point) {
+	public int getCost(Vector point) {
 		return map[point.getX()][point.getY()];
 	}
 
@@ -326,7 +326,7 @@ public class CostMap {
 	 *            is the y coordinate of the desired point
 	 * @return returns the cost for a specific coordinate
 	 */
-	public int getCostForCoordinates(int xCord, int yCord) {
+	public static int getCostForCoordinates(int xCord, int yCord) {
 		try {
 			return map[xCord][yCord];
 		} catch (ArrayIndexOutOfBoundsException e) {
