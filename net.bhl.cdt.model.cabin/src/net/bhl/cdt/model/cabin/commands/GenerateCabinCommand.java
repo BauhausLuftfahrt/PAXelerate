@@ -76,7 +76,6 @@ public class GenerateCabinCommand extends CDTCommand {
 						"Error defining aircraft width."));
 				break;
 			}
-			cabin.setUsePresetSettings(false);
 		}
 	}
 
@@ -118,6 +117,7 @@ public class GenerateCabinCommand extends CDTCommand {
 		constructor.createDoor(StandardDoor.class, true, 2, -1);
 		constructor.createLavatory(100);
 		cabin = constructor.getCabin(); // sync cabins
+		cabin.setUsePresetSettings(false);
 		/* ------------------------------------------------- */
 		/* ------- Cabin Construction ends here! ----------- */
 		/* ------------------------------------------------- */

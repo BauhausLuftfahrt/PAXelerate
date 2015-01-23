@@ -24,6 +24,38 @@ public final class FunctionLibrary {
 	}
 
 	/**
+	 * Check if a string is numeric or not.
+	 * 
+	 * @param str
+	 *            the string
+	 * @return yes or no
+	 */
+	public static boolean isNumeric(String str) {
+		for (char c : str.toCharArray()) {
+			if (!Character.isDigit(c)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * Check if there are two of the same characters directly after each other, 
+	 * like in <i>balloon</i>.
+	 * @param str the string
+	 * @return a character is repeating
+	 */
+	public static boolean checkForDoubleCharacter(String str) {
+		
+		for (int i = 1; i < str.length(); i++) {
+			if (str.charAt(i - 1) != str.charAt(i)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
 	 * This method splits camel case strings into normal strings with spaces.
 	 * 
 	 * @param s
@@ -42,13 +74,13 @@ public final class FunctionLibrary {
 	 * @param lowerBound
 	 *            defines the lower end of the random number.
 	 * @param upperBound
-	 *            defines the upper bound. <b><i>Note that the upper bound itself is
-	 *            never reached!</i></b>
+	 *            defines the upper bound. <b><i>Note that the upper bound
+	 *            itself is never reached!</i></b>
 	 * @return returns the random double generated from the parameters above.
 	 */
 	public static int randomValue(int lowerBound, int upperBound) {
 		Random rand = new Random();
-		return (rand.nextInt(upperBound-lowerBound) + lowerBound);
+		return (rand.nextInt(upperBound - lowerBound) + lowerBound);
 	}
 
 	/**
@@ -116,14 +148,16 @@ public final class FunctionLibrary {
 			System.out.println(object);
 		}
 	}
-	
+
 	public static void printVectorListToLog(ArrayList<Vector> list) {
 		int i = 1;
 		for (Vector vector : list) {
-			System.out.println("#"+i+" -> x: "+vector.getX()+", y: "+vector.getY()+", z: "+vector.getZ());
+			System.out.println("#" + i + " -> x: " + vector.getX() + ", y: "
+					+ vector.getY() + ", z: " + vector.getZ());
 			i++;
 		}
-		System.out.println("######################################################################");
+		System.out
+				.println("######################################################################");
 	}
-	
+
 }

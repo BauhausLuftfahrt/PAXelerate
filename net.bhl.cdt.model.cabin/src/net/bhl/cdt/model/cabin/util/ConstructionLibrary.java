@@ -254,17 +254,20 @@ public class ConstructionLibrary {
 	 *            is the string
 	 */
 	public void splitSeatString(String seatString) {
+
+		/*
+		 * This method checks the user input for errors and automatically
+		 * corrects it!
+		 */
+		seatString = InputChecker.checkStructureString(seatString);
+
 		rowPartsInt = new ArrayList<Integer>();
 		numbAisles = StringUtils.countMatches(seatString, "-");
 		seatsInRow = 0;
-		if (numbAisles != 0) {
-			String[] rowParts = seatString.split("-");
-			for (String str : rowParts) {
-				seatsInRow += Integer.parseInt(str);
-				rowPartsInt.add(Integer.parseInt(str));
-			}
-		} else {
-			// RETURN ERROR!
+		String[] rowParts = seatString.split("-");
+		for (String str : rowParts) {
+			seatsInRow += Integer.parseInt(str);
+			rowPartsInt.add(Integer.parseInt(str));
 		}
 	}
 

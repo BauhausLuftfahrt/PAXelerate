@@ -40,7 +40,7 @@ public class ObstacleMap {
 	private static final int BASIC_VALUE = 2;
 	private static final int OBSTACLE_RANGE_IN_CM = 20;
 	private static final int POTENTIAL_AROUND_OBSTACLE_MAXIMUM = 10;
-	private static final int HOLE_VALUE = 1; // DO NOT PUT THIS TO ZERO!
+	private static final int HOLE_VALUE = 1; // DO NOT SET THIS TO ZERO!
 	private static int[][] obstacleMap;
 	private ILog logger;
 
