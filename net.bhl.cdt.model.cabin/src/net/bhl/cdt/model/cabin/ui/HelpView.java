@@ -32,7 +32,7 @@ public class HelpView extends JPanel {
 	private int squareDimension = 20;
 	ArrayList<Vector> pointspace = new ArrayList<Vector>();
 
-	public HelpView(AreaMap areamap, Vector dimensions) {
+	public HelpView(AreaMap areamap, Vector dimensions, final int refresh) {
 		this.dimensions = dimensions;
 		this.setPreferredSize(new Dimension(BOX_WIDTH, BOX_HEIGHT));
 
@@ -58,7 +58,7 @@ public class HelpView extends JPanel {
 							costmap.createSurroundingCosts(newPoint);
 							newPointHelp = newPoint;
 							repaint();
-							Thread.sleep(10);
+							Thread.sleep(refresh);
 						}
 						pointspace.clear();
 					} catch (InterruptedException e) {

@@ -22,7 +22,7 @@ public class InputChecker {
 	 * 
 	 * @param str
 	 *            is the string
-	 * @return the corrected string;
+	 * @return the corrected string
 	 */
 	public static String checkStructureString(String str) {
 

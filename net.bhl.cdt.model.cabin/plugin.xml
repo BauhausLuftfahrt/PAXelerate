@@ -28,12 +28,17 @@
       <command
             defaultHandler="net.bhl.cdt.model.cabin.handlers.DrawCabinHandler"
             id="net.bhl.cdt.model.cabin.DrawCabin"
-            name="Run Flooding Demo">
+            name="Refresh Cabin View">
       </command>
       <command
             defaultHandler="net.bhl.cdt.model.cabin.handlers.GeneratePassengersHandler"
             id="net.bhl.cdt.model.cabin.GeneratePassengers"
             name="Generate Passengers">
+      </command>
+      <command
+            defaultHandler="net.bhl.cdt.model.cabin.handlers.FloodCabinHandler"
+            id="net.bhl.cdt.model.cabin.FloodCabin"
+            name="Cabin Flood Demo">
       </command>
    </extension>
    <extension
@@ -68,7 +73,7 @@
          </command>
          <command
                commandId="net.bhl.cdt.model.cabin.DrawCabin"
-               label="Run Flooding Demo"
+               label="Refresh Cabin View"
                style="push">
             <visibleWhen
                   checkEnabled="false">
@@ -82,6 +87,19 @@
          <command
                commandId="net.bhl.cdt.model.cabin.GeneratePassengers"
                label="Generate Passengers"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate>
+                  <instanceof
+                        value="net.bhl.cdt.model.cabin.Cabin">
+                  </instanceof>
+               </iterate>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="net.bhl.cdt.model.cabin.FloodCabin"
+               label="Run Flooding Demo"
                style="push">
             <visibleWhen
                   checkEnabled="false">

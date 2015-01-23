@@ -87,7 +87,7 @@
       </children>
     </children>
     <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout">
-      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" name="Results">
+      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" name="Results" readonly="true">
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control boardingTime">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Passenger/boardingTime"/>
@@ -116,7 +116,7 @@
       </children>
     </children>
   </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" name="Live Data">
+  <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" name="Live Data" readonly="true">
     <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control orientationInDegree">
       <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
         <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Passenger/orientationInDegree"/>
