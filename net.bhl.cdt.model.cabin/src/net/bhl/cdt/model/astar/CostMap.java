@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
+import net.bhl.cdt.model.cabin.util.FunctionLibrary;
 import net.bhl.cdt.model.cabin.util.Vector;
 
 /**
@@ -45,6 +46,7 @@ public class CostMap {
 	private ArrayList<Vector> visitedPoints = new ArrayList<Vector>();
 	public ArrayList<Vector> pointParking = new ArrayList<Vector>();
 	public ArrayList<Vector> pointParkingHelper = new ArrayList<Vector>();
+	private ArrayList<Vector> onHoldList = new ArrayList<Vector>();
 	private AreaMap areamap;
 	private ILog logger;
 	private int lowestCost;
@@ -224,11 +226,27 @@ public class CostMap {
 	 * pointParking.
 	 */
 	public void copyPoints() {
+		lowestCost = Integer.MAX_VALUE;
 		pointParking.clear();
+
+		for(Vector transferPoint:onHoldList) {
+			pointParkingHelper.add(transferPoint);
+		}
+		onHoldList.clear();
+		/* At first, check all stored points for the lowest cost. */
+		for (Vector costPoint : pointParkingHelper) {
+			checkLowestCost(costPoint);
+		}
 		for (Vector copyPoint : pointParkingHelper) {
-			pointParking.add(copyPoint);
+			if (getCost(copyPoint) == lowestCost) {
+				pointParking.add(copyPoint);
+			}
+			else {
+				onHoldList.add(copyPoint);
+			}
 		}
 		pointParkingHelper.clear();
+		FunctionLibrary.printVectorListToLog(onHoldList);
 		sortTheList(pointParking);
 	}
 
@@ -241,14 +259,12 @@ public class CostMap {
 	 *            is the point around which all costs are calculated
 	 */
 	public void createSurroundingCosts(Vector middlePoint) {
-		lowestCost = 1000;
 		for (Vector point : sortTheList(getSurroundingPoints(
 				middlePoint.getX(), middlePoint.getY()))) {
 			if (!(point.getX() < 0 || point.getY() < 0
 					|| point.getX() >= dimensions.getX() || point.getY() >= dimensions
 					.getY())) {
-				checkLowestCost(point);
-				if (!isObstacle(point)) { //&& isLowestPossibleCost(point)) {
+				if (!isObstacle(point)) {
 					if (!(checkForPoint(visitedPoints, point))) {
 						map[point.getX()][point.getY()] += getCost(middlePoint);
 						visitedPoints.add(point);

@@ -37,9 +37,10 @@ public class ObstacleMap {
 	private Cabin cabin;
 	private Vector dimensions = new Vector(0, 0);
 	private static final int MAX_VALUE = 100000;
-	private static final int BASIC_VALUE = 3;
+	private static final int BASIC_VALUE = 2;
 	private static final int OBSTACLE_RANGE_IN_CM = 20;
-	private static final int POTENTIAL_AROUND_OBSTACLE_MAXIMUM = 100;
+	private static final int POTENTIAL_AROUND_OBSTACLE_MAXIMUM = 10;
+	private static final int HOLE_VALUE = 1;
 	private int[][] obstacleMap;
 	private ILog logger;
 
@@ -196,10 +197,10 @@ public class ObstacleMap {
 			for (int j = 0; j < dimensions.getY(); j++) {
 				if (obstacleMap[i][j] != MAX_VALUE) {
 					if (j > entryMin && j < entryMax) {
-						obstacleMap[i][j] = 1;
+						obstacleMap[i][j] = HOLE_VALUE;
 					}
 					if (i < 19 && i > 16) {
-						obstacleMap[i][j] = 1;
+						obstacleMap[i][j] = HOLE_VALUE;
 					}
 				}
 			}

@@ -23,7 +23,7 @@ import java.util.Formatter;
 
 public class HelpView extends JPanel {
 	private static final int BOX_WIDTH = 600;
-	private static final int BOX_HEIGHT = 600;
+	private static final int BOX_HEIGHT = 1000;
 	private CostMap costmap;
 	private CostMap comparemap;
 	private Vector dimensions;
@@ -49,7 +49,7 @@ public class HelpView extends JPanel {
 							costmap.createSurroundingCosts(newPoint);
 							newPointHelp = newPoint;
 							repaint();
-							Thread.sleep(50);
+							Thread.sleep(30);
 						}
 						pointspace.clear();
 					} catch (InterruptedException e) {
@@ -73,7 +73,7 @@ public class HelpView extends JPanel {
 		super.paintComponent(g); // Paint background
 		g.setFont(new Font("Courier New", Font.PLAIN, 12));
 		for (int x = 0; x < 24; x++) {
-			for (int y = 0; y < 24; y++) {
+			for (int y = 0; y < 40; y++) {
 				g.setColor(Color.LIGHT_GRAY);
 				for (Vector point : pointspace) {
 					if (point.getX() == x && point.getY() == y) {
