@@ -46,9 +46,8 @@ public final class FunctionLibrary {
 	 * @return a character is repeating
 	 */
 	public static boolean checkForDoubleCharacter(String str) {
-		
 		for (int i = 1; i < str.length(); i++) {
-			if (str.charAt(i - 1) != str.charAt(i)) {
+			if (str.charAt(i - 1) == str.charAt(i)) {
 				return true;
 			}
 		}

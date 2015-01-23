@@ -15,6 +15,8 @@ import org.apache.commons.lang.StringUtils;
  */
 public class InputChecker {
 
+	private static final boolean DEVELOPER_MODE = false;
+
 	/**
 	 * This method checks the string for user input errors and corrects them.
 	 * 
@@ -24,12 +26,12 @@ public class InputChecker {
 	 */
 	public static String checkStructureString(String str) {
 
-		System.out.println(str);
-
 		/* remove all spaces and invisible pieces */
 		if (str.contains(" ")) {
 			str = str.replaceAll("\\s+", "");
-			System.out.println("spaces detected and removed!");
+			if (DEVELOPER_MODE) {
+				System.out.println("spaces detected and removed!");
+			}
 		}
 
 		/* for cleaning purposes, the dashes are temporarily removed */
@@ -41,7 +43,10 @@ public class InputChecker {
 		 */
 		if (!FunctionLibrary.isNumeric(stringWithoutDashes)) {
 			str = str.replaceAll("[^0-9-]+", "");
-			System.out.println("non-numeric characters detected and removed!");
+			if (DEVELOPER_MODE) {
+				System.out
+						.println("non-numeric characters detected and removed!");
+			}
 		}
 
 		/* Now this string only contains numbers! */
@@ -53,7 +58,9 @@ public class InputChecker {
 		 */
 		if (StringUtils.countMatches(str, "-") == 0) {
 			int numbcount = stringWithoutDashes.length();
-			System.out.println("no dash detected, inserted in the middle!");
+			if (DEVELOPER_MODE) {
+				System.out.println("no dash detected, inserted in the middle!");
+			}
 			str = str.substring(0, (int) (numbcount / 2)) + "-"
 					+ str.substring((int) (numbcount / 2));
 		}
@@ -72,8 +79,10 @@ public class InputChecker {
 		 * for one.
 		 */
 		if (FunctionLibrary.checkForDoubleCharacter(str)) {
-			System.out
-					.println("several dashes in a row detected and corrected");
+			if (DEVELOPER_MODE) {
+				System.out
+						.println("several dashes in a row detected and corrected");
+			}
 			String helperString = "";
 			for (int i = 0; i < str.length(); i++) {
 				if (i == 0) {
@@ -86,7 +95,6 @@ public class InputChecker {
 			}
 			str = helperString;
 		}
-
 		return str;
 	}
 }

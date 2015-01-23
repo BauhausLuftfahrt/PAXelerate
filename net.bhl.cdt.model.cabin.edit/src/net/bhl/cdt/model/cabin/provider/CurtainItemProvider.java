@@ -45,7 +45,6 @@ public class CurtainItemProvider
 
 			addPostitionAfterRowPropertyDescriptor(object);
 			addCurtainOpenPropertyDescriptor(object);
-			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -95,28 +94,6 @@ public class CurtainItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Curtain_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Curtain_name_feature", "_UI_Curtain_type"),
-				 CabinPackage.Literals.CURTAIN__NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This returns Curtain.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -156,7 +133,6 @@ public class CurtainItemProvider
 		switch (notification.getFeatureID(Curtain.class)) {
 			case CabinPackage.CURTAIN__POSTITION_AFTER_ROW:
 			case CabinPackage.CURTAIN__CURTAIN_OPEN:
-			case CabinPackage.CURTAIN__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

@@ -50,7 +50,7 @@ public class ConstructionLibrary {
 	private int globalSeatPositionY;
 	private int seats;
 	private int seatsInRow;
-	private String seatStructure;
+	private String seatStructure = "1-1";
 	private int numbAisles;
 	private Vector seatDimensions = new Vector(0, 0);
 	private int seatPitch;
@@ -74,7 +74,7 @@ public class ConstructionLibrary {
 		this.cabin = cabin;
 		globalSeatPositionX = 0;
 		globalSeatPositionY = 0;
-		seatStructure = "emptyString";
+		seatStructure = "3-3";
 		seatCount = 1;
 		rowCount = 1;
 	}
@@ -327,7 +327,7 @@ public class ConstructionLibrary {
 		splitSeatString(seatStructure);
 		passengerClass.setPassengers(passengers);
 		passengerClass.setAvailableSeats(seats);
-		passengerClass.setRowStructure(seatStructure);
+		passengerClass.setRowStructure(InputChecker.checkStructureString(seatStructure));
 		passengerClass.setSeatPitch(seatPitch);
 		passengerClass.setSeatWidth(seatDimensions.getX());
 		passengerClass.setSeatLength(seatDimensions.getY());
