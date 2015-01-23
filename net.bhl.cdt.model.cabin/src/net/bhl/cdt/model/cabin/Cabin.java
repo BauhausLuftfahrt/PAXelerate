@@ -31,6 +31,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBoardingTime <em>Boarding Time</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getAircraftType <em>Aircraft Type</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#isUsePresetSettings <em>Use Preset Settings</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSpeedFactor <em>Speed Factor</em>}</li>
  * </ul>
  * </p>
  *
@@ -368,6 +369,33 @@ public interface Cabin extends NamedElement {
 	 * @generated
 	 */
 	void setUsePresetSettings(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Speed Factor</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Speed Factor</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Speed Factor</em>' attribute.
+	 * @see #setSpeedFactor(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SpeedFactor()
+	 * @model default="1"
+	 * @generated
+	 */
+	int getSpeedFactor();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getSpeedFactor <em>Speed Factor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Speed Factor</em>' attribute.
+	 * @see #getSpeedFactor()
+	 * @generated
+	 */
+	void setSpeedFactor(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Classes</b></em>' containment reference list.

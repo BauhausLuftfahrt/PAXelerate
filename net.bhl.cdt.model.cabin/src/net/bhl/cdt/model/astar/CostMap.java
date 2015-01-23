@@ -92,13 +92,6 @@ public class CostMap {
 		}
 	}
 
-	public void floodMapStep() {
-		copyPoints();
-		for (Vector newPoint : pointParking) {
-			createSurroundingCosts(newPoint);
-		}
-	}
-
 	/**
 	 * 
 	 * @param dimension
@@ -217,10 +210,6 @@ public class CostMap {
 		return false;
 	}
 
-	private Boolean isLowestPossibleCost(Vector point) {
-		return getCost(point) == lowestCost;
-	}
-
 	/**
 	 * This function moves the points gathered in pointParkingHelper to
 	 * pointParking.
@@ -229,7 +218,7 @@ public class CostMap {
 		lowestCost = Integer.MAX_VALUE;
 		pointParking.clear();
 
-		for(Vector transferPoint:onHoldList) {
+		for (Vector transferPoint : onHoldList) {
 			pointParkingHelper.add(transferPoint);
 		}
 		onHoldList.clear();
@@ -238,15 +227,13 @@ public class CostMap {
 			checkLowestCost(costPoint);
 		}
 		for (Vector copyPoint : pointParkingHelper) {
-			if (getCost(copyPoint) == lowestCost) {
+			if (getCost(copyPoint) <= lowestCost) {
 				pointParking.add(copyPoint);
-			}
-			else {
+			} else {
 				onHoldList.add(copyPoint);
 			}
 		}
 		pointParkingHelper.clear();
-		FunctionLibrary.printVectorListToLog(onHoldList);
 		sortTheList(pointParking);
 	}
 
@@ -326,7 +313,7 @@ public class CostMap {
 	 * 
 	 * @param point
 	 *            is the point (of dimension int[2]) of interest
-	 * @return
+	 * @return the cost at the specific point
 	 */
 	public int getCost(Vector point) {
 		return map[point.getX()][point.getY()];

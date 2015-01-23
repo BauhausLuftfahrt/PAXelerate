@@ -29,6 +29,11 @@
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Cabin/aisleWidth"/>
           </domainModelReference>
         </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control numberOfDecks">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Cabin/numberOfDecks"/>
+          </domainModelReference>
+        </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control aircraftType">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Cabin/aircraftType"/>
@@ -38,7 +43,7 @@
     </children>
     <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout">
       <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" name="Preferences">
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control boardingTime">
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control boardingTime" readonly="true">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Cabin/boardingTime"/>
           </domainModelReference>
@@ -48,9 +53,9 @@
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Cabin/framesPerSecond"/>
           </domainModelReference>
         </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control numberOfDecks">
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control speedFactor">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Cabin/numberOfDecks"/>
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Cabin/speedFactor"/>
           </domainModelReference>
         </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control usePresetSettings">

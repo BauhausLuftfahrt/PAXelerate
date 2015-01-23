@@ -15,6 +15,7 @@ import net.bhl.cdt.model.util.ModelHelper;
 
 /**
  * This class runs and handles the a star algorithm an simulation.
+ * 
  * @author marc.engelmann
  *
  */
@@ -32,7 +33,6 @@ public class RunAStar {
 	private static StopWatch anotherStopwatch = new StopWatch();
 	private Vector initialStart;
 	private Vector dimensions;
-	
 
 	/**
 	 * This method constructs the RunAStar algorithm.
@@ -64,7 +64,7 @@ public class RunAStar {
 	 */
 	public int[][] getPath(AreaMap areamap, Agent agent) {
 		stopwatch.start();
-		AStar pathFinder = new AStar(areamap,costmap);
+		AStar pathFinder = new AStar(areamap, costmap);
 		console.addToLog("Calculating shortest path...");
 		pathFinder.calcShortestPath(agent.getStart(), agent.getGoal());
 		stopwatch.stop();
@@ -86,7 +86,8 @@ public class RunAStar {
 	public static int[][] getPathCoordinates(Path shortestPath) {
 		int[][] pathCoordinates = new int[shortestPath.getLength()][2];
 		for (int i = 0; i < shortestPath.getLength(); i++) {
-			pathCoordinates[i] = shortestPath.getWayPoint(i).getPosition().getValue();		
+			pathCoordinates[i] = shortestPath.getWayPoint(i).getPosition()
+					.getValue();
 		}
 		return pathCoordinates;
 	}
@@ -103,7 +104,7 @@ public class RunAStar {
 	/**
 	 * This method runs the agents.
 	 */
-	public  void runAgents() {
+	public void runAgents() {
 
 		anotherStopwatch.start();
 
@@ -211,18 +212,19 @@ public class RunAStar {
 					(int) ((seat.getXPosition() + seat.getXDimension() / 2) / cabin
 							.getScale()), (int) ((seat.getYPosition() / cabin
 							.getScale()) - 1));
-			if(doItOnce) {
+			if (doItOnce) {
 				initialStart = start;
 				doItOnce = false;
 			}
-			Agent agent = new Agent(passenger, start, goal, (int) cabin.getScale());
+			Agent agent = new Agent(passenger, start, goal, cabin.getScale(),
+					cabin.getSpeedFactor());
 			// list of all agents
 			agents.add(agent);
 		}
 
-		costmap = new CostMap(dimensions, initialStart, areamap,false);
-		costmap.printMap(); 
-		
+		costmap = new CostMap(dimensions, initialStart, areamap, false);
+		costmap.printMap();
+
 		// iterate through the list of all agents, calculate each agent's path,
 		// then start the thread of each agent.
 		runAgents();
