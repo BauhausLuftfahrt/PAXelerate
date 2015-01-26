@@ -15,12 +15,16 @@ import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.HelpView;
 import net.bhl.cdt.model.cabin.util.GetInput;
+import net.bhl.cdt.model.cabin.util.GetInput.WindowType;
 import net.bhl.cdt.model.cabin.util.Vector;
 
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.window.Window;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 
@@ -55,9 +59,9 @@ public class FloodCabinCommand extends CDTCommand {
 	 */
 	@Override
 	protected void doRun() {
-
-//		final GetInput input = new GetInput();
-
+		
+		final GetInput dialog = new GetInput(WindowType.GET_INTEGER, "Get integer", "put integer", "0", IMessageProvider.INFORMATION);
+		 
 		/**
 		 * Main method.
 		 * 
@@ -72,8 +76,7 @@ public class FloodCabinCommand extends CDTCommand {
 			public void run() {
 				// Set up main window (using Swing's Jframe)
 				frame = new JFrame("Cost Map Flooding Animation");
-				// frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				frame.setContentPane(new HelpView(areamap, dimensions,10));
+				frame.setContentPane(new HelpView(areamap, dimensions,dialog.getIntegerValue()));
 				frame.pack();
 				frame.setVisible(true);
 			}

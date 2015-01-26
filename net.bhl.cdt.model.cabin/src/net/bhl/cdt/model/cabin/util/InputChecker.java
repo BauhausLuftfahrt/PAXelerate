@@ -17,6 +17,19 @@ public class InputChecker {
 
 	private static final boolean DEVELOPER_MODE = false;
 
+
+	/**
+	 * This method removes all non-integer values from a string.
+	 * @param str is the string to be cleaned
+	 * @return the cleaned string
+	 */
+	public static String checkIntegersOnly(String str) {
+		if (DEVELOPER_MODE) {
+			System.out.println("non-numeric characters detected and removed!");
+		}
+		return str.replaceAll("[^0-9-]+", "");
+	}
+
 	/**
 	 * This method checks the string for user input errors and corrects them.
 	 * 
@@ -38,8 +51,8 @@ public class InputChecker {
 		String stringWithoutDashes = str.replace("-", "");
 
 		/*
-		 * if there are other characters than digits inside the string, this is
-		 * not good either. Define the standard string again.
+		 * if there are other characters than digits inside the string, remove
+		 * them.
 		 */
 		if (!FunctionLibrary.isNumeric(stringWithoutDashes)) {
 			str = str.replaceAll("[^0-9-]+", "");

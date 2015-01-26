@@ -1,23 +1,136 @@
 package net.bhl.cdt.model.cabin.util;
 
-import javax.swing.*;
+import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.dialogs.TitleAreaDialog;
+import org.eclipse.jface.window.Window;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Text;
 
+/**
+ * This class generates a dialog which can get various parameters or give output
+ * to the user. You decide.
+ * 
+ * @author marc.engelmann
+ *
+ */
+public class GetInput extends TitleAreaDialog {
 
-public class GetInput {
-	private int value = 0;
-	
-	public GetInput() {
-		run();
+	public enum WindowType {
+		INFORMATION, GET_STRING, GET_INTEGER, WARNING, OPTIONS
+	}
+
+	private WindowType windowType;
+	private String presetText;
+	private Text text;
+	private String stringValue = null;
+	private int integerValue = 0;
+
+	/**
+	 * This method generates the input dialog.
+	 * @param windowType is the type of the dialog. USE WindowType.(...)
+	 * @param title is the title of the dialog
+	 * @param message is the message of the dialog
+	 * @param presetText is the preset text of the dialog
+	 * @param messageType is the message type. USE IMessageProvider.(...)
+	 */
+	public GetInput(WindowType windowType, String title, String message,
+			String presetText, int messageType) {
+		super(null);
+		this.windowType = windowType;
+		this.presetText = presetText;
+		super.create();
+		setTitle(title);
+		setMessage(message, messageType);
+		
+		if (this.open() == Window.OK) {
+			/* This if clause somehow needs to be there, but does not have any use. */
+		}
+	}
+
+	@Override
+	protected Control createDialogArea(Composite parent) {
+		Composite area = (Composite) super.createDialogArea(parent);
+		Composite container = new Composite(area, SWT.NONE);
+		container.setLayoutData(new GridData(GridData.FILL_BOTH));
+		GridLayout layout = new GridLayout(1, false);
+		container.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+		container.setLayout(layout);
+
+		switch (windowType) {
+		case GET_INTEGER:
+			createIntegerField(container);
+			break;
+		case GET_STRING:
+			createTextField(container);
+			break;
+		default:
+
+			break;
+		}
+		return area;
+	}
+
+	private void createIntegerField(Composite container) {
+		Label label = new Label(container, SWT.NONE);
+		label.setText(presetText);
+
+		GridData gridData = new GridData();
+		gridData.grabExcessHorizontalSpace = true;
+		gridData.horizontalAlignment = GridData.FILL;
+
+		text = new Text(container, SWT.BORDER);
+		text.setLayoutData(gridData);
+	}
+
+	private void createTextField(Composite container) {
+		Label label = new Label(container, SWT.NONE);
+		label.setText(presetText);
+
+		GridData gridData = new GridData();
+		gridData.grabExcessHorizontalSpace = true;
+		gridData.horizontalAlignment = GridData.FILL;
+		text = new Text(container, SWT.BORDER);
+		text.setLayoutData(gridData);
+	}
+
+	@Override
+	protected boolean isResizable() {
+		return false;
+	}
+
+	// save content of the Text fields because they get disposed
+	// as soon as the Dialog closes
+	private void saveInput() {
+		String validateString = text.getText();
+		switch (windowType) {
+		case GET_INTEGER:
+			integerValue = Integer.parseInt(InputChecker.checkIntegersOnly(validateString));
+			break;
+		case GET_STRING:
+			stringValue = validateString;
+			break;
+		default:
+
+			break;
+		}
 	}
 	
-	private  void run() {
-		JFrame frame = new JFrame("user input required.");
-
-		// prompt the user to enter their name
-		value = Integer.parseInt(JOptionPane.showInputDialog(frame, "Enter the speed in milliseconds!","100"));
+	public int getIntegerValue() {
+		return integerValue;
 	}
 	
-	public int getValue() {
-		return value;
+	public String getStringValue() {
+		return stringValue;
+	}
+
+	@Override
+	protected void okPressed() {
+		saveInput();
+		super.okPressed();
 	}
 }
