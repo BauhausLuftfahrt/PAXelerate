@@ -71,7 +71,7 @@ public class MoveRowCommand extends CDTCommand {
 		for(Row compareRow:ModelHelper.getChildrenByClass(cabin, Row.class)) {
 			if(row.getRowNumber()==compareRow.getRowNumber()) {
 				for(Seat seat:compareRow.getSeats()) {
-					//TODO: Here you can edit the seats as you wish!
+					seat.setYPosition(seat.getYPosition()+rowOffset);
 				}
 			}
 		}
