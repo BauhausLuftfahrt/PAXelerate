@@ -1,5 +1,7 @@
 package net.bhl.cdt.model.cabin.handlers;
 
+import java.util.ArrayList;
+
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.commands.MoveRowCommand;
@@ -28,13 +30,22 @@ public class MoveRowHandler extends AbstractHandler {
 		// Shell shell = HandlerUtil.getActiveShell(event);
 		ISelection sel = HandlerUtil.getActiveMenuSelection(event);
 		IStructuredSelection selection = (IStructuredSelection) sel;
-
+		
+		ArrayList<Row> rowList = null;
+		
+		for(Object object:selection.toList()) {
+			if(object instanceof Row) {
+				rowList.add((Row) object);
+			}
+		}
+	
 		Object firstElement = selection.getFirstElement();
 		Row row = (Row) firstElement;
 		Cabin cabin = ModelHelper.getParent(Cabin.class, row);
+		
 		// if (firstElement instanceof Cabin) {
 
-		new MoveRowCommand(row, cabin).execute();
+		new MoveRowCommand(row, cabin, rowList).execute();
 
 		// }
 

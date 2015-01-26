@@ -5,6 +5,8 @@
  *******************************************************************************/
 package net.bhl.cdt.model.cabin.commands;
 
+import java.util.ArrayList;
+
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Row;
@@ -37,6 +39,7 @@ public class MoveRowCommand extends CDTCommand {
 	private ILog logger;
 	private CabinViewPart cabinViewPart;
 	private int rowOffset;
+	ArrayList<Row> rowList = null;
 
 	/**
 	 * This method is the constructor.
@@ -44,7 +47,8 @@ public class MoveRowCommand extends CDTCommand {
 	 * @param cabin
 	 *            the cabin
 	 */
-	public MoveRowCommand(Row row, Cabin cabin) {
+	public MoveRowCommand(Row row, Cabin cabin, ArrayList<Row> rowList) {
+		this.rowList = rowList;
 		this.row = row;
 		this.cabin = cabin;
 		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
@@ -63,19 +67,23 @@ public class MoveRowCommand extends CDTCommand {
 		 *            the arguments
 		 */
 
-		GetInput input = new GetInput(WindowType.GET_INTEGER,
-				"Please enter the row movement value", "value to move the row (in cm)",
-				IMessageProvider.INFORMATION);
+		GetInput input = new GetInput(
+				WindowType.GET_INTEGER,
+				"You decided to move row #"
+						+ row.getRowNumber()
+						+ " . Therefore, please enter the translation value. All seats in the row are then moved accordingly.",
+				"Please enter digits only. The unit of the value is cm", IMessageProvider.INFORMATION);
 		rowOffset = input.getIntegerValue();
-		
-		for(Row compareRow:ModelHelper.getChildrenByClass(cabin, Row.class)) {
-			if(row.getRowNumber()==compareRow.getRowNumber()) {
-				for(Seat seat:compareRow.getSeats()) {
-					seat.setYPosition(seat.getYPosition()+rowOffset);
+
+		for (Row compareRow : ModelHelper.getChildrenByClass(cabin, Row.class)) {
+			//for(Row compare2Row)
+			if (row.getRowNumber() == compareRow.getRowNumber()) {
+				for (Seat seat : compareRow.getSeats()) {
+					seat.setYPosition(seat.getYPosition() + rowOffset);
 				}
 			}
 		}
-		
+
 		IWorkbenchPage page = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage();
 		cabinViewPart = (CabinViewPart) page
