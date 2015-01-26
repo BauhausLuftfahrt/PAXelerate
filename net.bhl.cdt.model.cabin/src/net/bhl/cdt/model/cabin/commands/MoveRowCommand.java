@@ -12,6 +12,7 @@ import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
+import net.bhl.cdt.model.cabin.util.FunctionLibrary;
 import net.bhl.cdt.model.cabin.util.GetInput;
 import net.bhl.cdt.model.cabin.util.GetInput.WindowType;
 import net.bhl.cdt.model.util.ModelHelper;
@@ -35,7 +36,6 @@ import org.eclipse.ui.PlatformUI;
 public class MoveRowCommand extends CDTCommand {
 
 	private Cabin cabin;
-	private Row row;
 	private ILog logger;
 	private CabinViewPart cabinViewPart;
 	private int rowOffset;
@@ -47,9 +47,8 @@ public class MoveRowCommand extends CDTCommand {
 	 * @param cabin
 	 *            the cabin
 	 */
-	public MoveRowCommand(Row row, Cabin cabin, ArrayList<Row> rowList) {
+	public MoveRowCommand(Cabin cabin, ArrayList<Row> rowList) {
 		this.rowList = rowList;
-		this.row = row;
 		this.cabin = cabin;
 		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
 	}
@@ -67,23 +66,44 @@ public class MoveRowCommand extends CDTCommand {
 		 *            the arguments
 		 */
 
+		String rowString = "";
+		if (rowList.size() > 1) {
+			rowString = "s ";
+		}
+		int i = 1;
+		for (Row row : rowList) {
+			if (i == rowList.size()) {
+				if (rowList.size() == 1) {
+					rowString += " ";
+				}
+				rowString += row.getRowNumber();
+			} else if (i == rowList.size() - 1) {
+				rowString = rowString + row.getRowNumber() + " and ";
+			} else {
+				rowString = rowString + row.getRowNumber() + ", ";
+			}
+			i++;
+		}
+
 		GetInput input = new GetInput(
 				WindowType.GET_INTEGER,
-				"You decided to move row #"
-						+ row.getRowNumber()
-						+ " . Therefore, please enter the translation value. All seats in the row are then moved accordingly.",
-				"Please enter digits only. The unit of the value is cm", IMessageProvider.INFORMATION);
+				"You decided to move row"
+						+ rowString
+						+ ". Therefore, please enter the translation value. All seats are then moved accordingly.",
+				"Please enter digits only. The unit of the value is in centimeters.",
+				IMessageProvider.INFORMATION);
 		rowOffset = input.getIntegerValue();
 
-		for (Row compareRow : ModelHelper.getChildrenByClass(cabin, Row.class)) {
-			//for(Row compare2Row)
-			if (row.getRowNumber() == compareRow.getRowNumber()) {
-				for (Seat seat : compareRow.getSeats()) {
-					seat.setYPosition(seat.getYPosition() + rowOffset);
+		for (Row row : rowList) {
+			for (Row compareRow : ModelHelper.getChildrenByClass(cabin,
+					Row.class)) {
+				if (row.getRowNumber() == compareRow.getRowNumber()) {
+					for (Seat seat : compareRow.getSeats()) {
+						seat.setYPosition(seat.getYPosition() + rowOffset);
+					}
 				}
 			}
 		}
-
 		IWorkbenchPage page = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage();
 		cabinViewPart = (CabinViewPart) page
