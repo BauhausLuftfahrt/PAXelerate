@@ -5,21 +5,22 @@
  *******************************************************************************/
 package net.bhl.cdt.model.cabin.commands;
 
-import javax.swing.JFrame;
+import java.util.ArrayList;
 
 import net.bhl.cdt.commands.CDTCommand;
-import net.bhl.cdt.model.astar.AreaMap;
-import net.bhl.cdt.model.astar.CostMap;
-import net.bhl.cdt.model.astar.ObstacleMap;
 import net.bhl.cdt.model.cabin.Cabin;
+import net.bhl.cdt.model.cabin.Row;
+import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
-import net.bhl.cdt.model.cabin.ui.HelpView;
-import net.bhl.cdt.model.cabin.util.Vector;
+import net.bhl.cdt.model.cabin.util.GetInput;
+import net.bhl.cdt.model.cabin.util.GetInput.WindowType;
+import net.bhl.cdt.model.util.ModelHelper;
 
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 
@@ -31,12 +32,14 @@ import org.eclipse.ui.PlatformUI;
  *
  */
 
-public class DrawCabinCommand extends CDTCommand {
+public class MoveRowCommand extends CDTCommand {
 
 	private Cabin cabin;
+	private Row row;
 	private ILog logger;
 	private CabinViewPart cabinViewPart;
-	private static JFrame frame;
+	private int rowOffset;
+	ArrayList<Row> rowList = null;
 
 	/**
 	 * This method is the constructor.
@@ -44,7 +47,9 @@ public class DrawCabinCommand extends CDTCommand {
 	 * @param cabin
 	 *            the cabin
 	 */
-	public DrawCabinCommand(Cabin cabin) {
+	public MoveRowCommand(Row row, Cabin cabin, ArrayList<Row> rowList) {
+		this.rowList = rowList;
+		this.row = row;
 		this.cabin = cabin;
 		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
 	}
@@ -54,7 +59,7 @@ public class DrawCabinCommand extends CDTCommand {
 	 */
 	@Override
 	protected void doRun() {
-		
+
 		/**
 		 * Main method.
 		 * 
@@ -62,12 +67,27 @@ public class DrawCabinCommand extends CDTCommand {
 		 *            the arguments
 		 */
 
+		GetInput input = new GetInput(
+				WindowType.GET_INTEGER,
+				"You decided to move row #"
+						+ row.getRowNumber()
+						+ " . Therefore, please enter the translation value. All seats in the row are then moved accordingly.",
+				"Please enter digits only. The unit of the value is cm", IMessageProvider.INFORMATION);
+		rowOffset = input.getIntegerValue();
+
+		for (Row compareRow : ModelHelper.getChildrenByClass(cabin, Row.class)) {
+			//for(Row compare2Row)
+			if (row.getRowNumber() == compareRow.getRowNumber()) {
+				for (Seat seat : compareRow.getSeats()) {
+					seat.setYPosition(seat.getYPosition() + rowOffset);
+				}
+			}
+		}
+
 		IWorkbenchPage page = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage();
 		cabinViewPart = (CabinViewPart) page
 				.findView("net.bhl.cdt.model.cabin.cabinview");
-
-		checkForConstructionErrors();
 
 		try {
 			cabinViewPart.setCabin(cabin);
@@ -77,10 +97,5 @@ public class DrawCabinCommand extends CDTCommand {
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 					"No cabin view is visible!"));
 		}
-	}
-
-	private void checkForConstructionErrors() {
-		// TODO Create error detection algorithm.
-
 	}
 }

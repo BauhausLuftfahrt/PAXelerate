@@ -49,7 +49,6 @@ public class SeatItemProvider
 			addCrewSeatPropertyDescriptor(object);
 			addLetterPropertyDescriptor(object);
 			addTravelClassPropertyDescriptor(object);
-			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -165,28 +164,6 @@ public class SeatItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Seat_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Seat_name_feature", "_UI_Seat_type"),
-				 CabinPackage.Literals.SEAT__NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Seat Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -250,7 +227,6 @@ public class SeatItemProvider
 			case CabinPackage.SEAT__SEAT_BLOCKED:
 			case CabinPackage.SEAT__CREW_SEAT:
 			case CabinPackage.SEAT__LETTER:
-			case CabinPackage.SEAT__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

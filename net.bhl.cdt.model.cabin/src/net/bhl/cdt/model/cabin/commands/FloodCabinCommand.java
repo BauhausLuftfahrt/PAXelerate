@@ -14,12 +14,17 @@ import net.bhl.cdt.model.astar.ObstacleMap;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.HelpView;
+import net.bhl.cdt.model.cabin.util.GetInput;
+import net.bhl.cdt.model.cabin.util.GetInput.WindowType;
 import net.bhl.cdt.model.cabin.util.Vector;
 
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.window.Window;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 
@@ -31,7 +36,7 @@ import org.eclipse.ui.PlatformUI;
  *
  */
 
-public class DrawCabinCommand extends CDTCommand {
+public class FloodCabinCommand extends CDTCommand {
 
 	private Cabin cabin;
 	private ILog logger;
@@ -44,7 +49,7 @@ public class DrawCabinCommand extends CDTCommand {
 	 * @param cabin
 	 *            the cabin
 	 */
-	public DrawCabinCommand(Cabin cabin) {
+	public FloodCabinCommand(Cabin cabin) {
 		this.cabin = cabin;
 		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
 	}
@@ -54,29 +59,32 @@ public class DrawCabinCommand extends CDTCommand {
 	 */
 	@Override
 	protected void doRun() {
-		
+
+		final GetInput dialog = new GetInput(WindowType.GET_INTEGER,
+				"please enter the execution speed in milliseconds", "speed in milliseconds",
+				IMessageProvider.INFORMATION);
+
 		/**
 		 * Main method.
 		 * 
 		 * @param args
 		 *            the arguments
 		 */
+		final Vector dimensions = new Vector(cabin.getCabinWidth()
+				/ cabin.getScale(), cabin.getCabinLength() / cabin.getScale());
+		ObstacleMap obstaclemap = new ObstacleMap(cabin);
+		final AreaMap areamap = new AreaMap(dimensions, obstaclemap);
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				// Set up main window (using Swing's Jframe)
+				frame = new JFrame("Cost Map Flooding Animation");
+				frame.setContentPane(new HelpView(areamap, dimensions, dialog
+						.getIntegerValue()));
+				frame.pack();
+				frame.setVisible(true);
+			}
+		});
 
-		IWorkbenchPage page = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage();
-		cabinViewPart = (CabinViewPart) page
-				.findView("net.bhl.cdt.model.cabin.cabinview");
-
-		checkForConstructionErrors();
-
-		try {
-			cabinViewPart.setCabin(cabin);
-			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
-					"Cabin view checked and updated"));
-		} catch (NullPointerException e) {
-			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
-					"No cabin view is visible!"));
-		}
 	}
 
 	private void checkForConstructionErrors() {

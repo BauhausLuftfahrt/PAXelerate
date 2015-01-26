@@ -89,8 +89,10 @@ public class StairwayItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		Stairway stairway = (Stairway)object;
-		return getString("_UI_Stairway_type") + " " + stairway.getXPosition();
+		String label = ((Stairway)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Stairway_type") :
+			getString("_UI_Stairway_type") + " " + label;
 	}
 	
 

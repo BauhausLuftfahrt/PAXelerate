@@ -206,7 +206,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 					newPassenger.setDepth(FunctionLibrary.randomValue(20, 50));
 					newPassenger.setWidth(FunctionLibrary.randomValue(30, 60));
 					newPassenger.setWalkingSpeed((double)FunctionLibrary.randomValue(5,
-							15) / 1);
+							15) / 20);
 					newPassenger.setLuggageStowTime(FunctionLibrary
 							.randomValue(5, 10));
 					/********************************************************/

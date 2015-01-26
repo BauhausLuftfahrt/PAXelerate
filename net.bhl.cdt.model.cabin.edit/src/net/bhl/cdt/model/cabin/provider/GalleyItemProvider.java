@@ -62,8 +62,10 @@ public class GalleyItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		Galley galley = (Galley)object;
-		return getString("_UI_Galley_type") + " " + galley.getXPosition();
+		String label = ((Galley)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Galley_type") :
+			getString("_UI_Galley_type") + " " + label;
 	}
 	
 

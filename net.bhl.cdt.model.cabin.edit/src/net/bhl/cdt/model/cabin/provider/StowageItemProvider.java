@@ -62,8 +62,10 @@ public class StowageItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		Stowage stowage = (Stowage)object;
-		return getString("_UI_Stowage_type") + " " + stowage.getXPosition();
+		String label = ((Stowage)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Stowage_type") :
+			getString("_UI_Stowage_type") + " " + label;
 	}
 	
 

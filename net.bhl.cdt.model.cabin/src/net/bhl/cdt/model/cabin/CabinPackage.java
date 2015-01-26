@@ -240,13 +240,22 @@ public interface CabinPackage extends EPackage {
 	int CABIN__USE_PRESET_SETTINGS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 17;
 
 	/**
+	 * The feature id for the '<em><b>Speed Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN__SPEED_FACTOR = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 18;
+
+	/**
 	 * The number of structural features of the '<em>Cabin</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_FEATURE_COUNT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 18;
+	int CABIN_FEATURE_COUNT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 19;
 
 	/**
 	 * The number of operations of the '<em>Cabin</em>' class.
@@ -945,13 +954,22 @@ public interface CabinPackage extends EPackage {
 	int PHYSICAL_OBJECT__YDIMENSION = 3;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHYSICAL_OBJECT__NAME = 4;
+
+	/**
 	 * The number of structural features of the '<em>Physical Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PHYSICAL_OBJECT_FEATURE_COUNT = 4;
+	int PHYSICAL_OBJECT_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Physical Object</em>' class.
@@ -997,6 +1015,15 @@ public interface CabinPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEAT__YDIMENSION = PHYSICAL_OBJECT__YDIMENSION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEAT__NAME = PHYSICAL_OBJECT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Seat Id</b></em>' attribute.
@@ -1053,22 +1080,13 @@ public interface CabinPackage extends EPackage {
 	int SEAT__TRAVEL_CLASS = PHYSICAL_OBJECT_FEATURE_COUNT + 5;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEAT__NAME = PHYSICAL_OBJECT_FEATURE_COUNT + 6;
-
-	/**
 	 * The number of structural features of the '<em>Seat</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEAT_FEATURE_COUNT = PHYSICAL_OBJECT_FEATURE_COUNT + 7;
+	int SEAT_FEATURE_COUNT = PHYSICAL_OBJECT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Seat</em>' class.
@@ -1378,6 +1396,15 @@ public interface CabinPackage extends EPackage {
 	int LAVATORY__YDIMENSION = PHYSICAL_OBJECT__YDIMENSION;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAVATORY__NAME = PHYSICAL_OBJECT__NAME;
+
+	/**
 	 * The number of structural features of the '<em>Lavatory</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1442,6 +1469,15 @@ public interface CabinPackage extends EPackage {
 	int GALLEY__YDIMENSION = PHYSICAL_OBJECT__YDIMENSION;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GALLEY__NAME = PHYSICAL_OBJECT__NAME;
+
+	/**
 	 * The number of structural features of the '<em>Galley</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1504,6 +1540,15 @@ public interface CabinPackage extends EPackage {
 	 * @ordered
 	 */
 	int STAIRWAY__YDIMENSION = PHYSICAL_OBJECT__YDIMENSION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAIRWAY__NAME = PHYSICAL_OBJECT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Direction</b></em>' attribute.
@@ -1579,6 +1624,15 @@ public interface CabinPackage extends EPackage {
 	int CURTAIN__YDIMENSION = PHYSICAL_OBJECT__YDIMENSION;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CURTAIN__NAME = PHYSICAL_OBJECT__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Postition After Row</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1597,22 +1651,13 @@ public interface CabinPackage extends EPackage {
 	int CURTAIN__CURTAIN_OPEN = PHYSICAL_OBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CURTAIN__NAME = PHYSICAL_OBJECT_FEATURE_COUNT + 2;
-
-	/**
 	 * The number of structural features of the '<em>Curtain</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CURTAIN_FEATURE_COUNT = PHYSICAL_OBJECT_FEATURE_COUNT + 3;
+	int CURTAIN_FEATURE_COUNT = PHYSICAL_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Curtain</em>' class.
@@ -1668,6 +1713,15 @@ public interface CabinPackage extends EPackage {
 	 * @ordered
 	 */
 	int STOWAGE__YDIMENSION = PHYSICAL_OBJECT__YDIMENSION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STOWAGE__NAME = PHYSICAL_OBJECT__NAME;
 
 	/**
 	 * The number of structural features of the '<em>Stowage</em>' class.
@@ -2366,6 +2420,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getCabin_UsePresetSettings();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getSpeedFactor <em>Speed Factor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Speed Factor</em>'.
+	 * @see net.bhl.cdt.model.cabin.Cabin#getSpeedFactor()
+	 * @see #getCabin()
+	 * @generated
+	 */
+	EAttribute getCabin_SpeedFactor();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link net.bhl.cdt.model.cabin.Cabin#getClasses <em>Classes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2730,17 +2795,6 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSeat_TravelClass();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Seat#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see net.bhl.cdt.model.cabin.Seat#getName()
-	 * @see #getSeat()
-	 * @generated
-	 */
-	EAttribute getSeat_Name();
 
 	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Seat#getSeatId <em>Seat Id</em>}'.
@@ -3111,17 +3165,6 @@ public interface CabinPackage extends EPackage {
 	EAttribute getCurtain_CurtainOpen();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Curtain#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see net.bhl.cdt.model.cabin.Curtain#getName()
-	 * @see #getCurtain()
-	 * @generated
-	 */
-	EAttribute getCurtain_Name();
-
-	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.Stowage <em>Stowage</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3380,6 +3423,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getPhysicalObject_YDimension();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.PhysicalObject#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see net.bhl.cdt.model.cabin.PhysicalObject#getName()
+	 * @see #getPhysicalObject()
+	 * @generated
+	 */
+	EAttribute getPhysicalObject_Name();
+
+	/**
 	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.StairwayDirection <em>Stairway Direction</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3546,6 +3600,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CABIN__USE_PRESET_SETTINGS = eINSTANCE.getCabin_UsePresetSettings();
+		/**
+		 * The meta object literal for the '<em><b>Speed Factor</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN__SPEED_FACTOR = eINSTANCE.getCabin_SpeedFactor();
 		/**
 		 * The meta object literal for the '<em><b>Classes</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
@@ -3801,13 +3862,6 @@ public interface CabinPackage extends EPackage {
 		 */
 		EReference SEAT__TRAVEL_CLASS = eINSTANCE.getSeat_TravelClass();
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEAT__NAME = eINSTANCE.getSeat_Name();
-		/**
 		 * The meta object literal for the '<em><b>Seat Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4058,13 +4112,6 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute CURTAIN__CURTAIN_OPEN = eINSTANCE.getCurtain_CurtainOpen();
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CURTAIN__NAME = eINSTANCE.getCurtain_Name();
-		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.StowageImpl <em>Stowage</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4244,6 +4291,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PHYSICAL_OBJECT__YDIMENSION = eINSTANCE.getPhysicalObject_YDimension();
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PHYSICAL_OBJECT__NAME = eINSTANCE.getPhysicalObject_Name();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.StairwayDirection <em>Stairway Direction</em>}' enum.
 		 * <!-- begin-user-doc -->

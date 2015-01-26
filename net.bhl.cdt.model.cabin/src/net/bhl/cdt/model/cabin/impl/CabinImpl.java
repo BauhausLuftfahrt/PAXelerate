@@ -49,6 +49,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getBoardingTime <em>Boarding Time</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getAircraftType <em>Aircraft Type</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#isUsePresetSettings <em>Use Preset Settings</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSpeedFactor <em>Speed Factor</em>}</li>
  * </ul>
  * </p>
  *
@@ -307,6 +308,24 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @ordered
 	 */
 	protected boolean usePresetSettings = USE_PRESET_SETTINGS_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getSpeedFactor() <em>Speed Factor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSpeedFactor()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int SPEED_FACTOR_EDEFAULT = 1;
+	/**
+	 * The cached value of the '{@link #getSpeedFactor() <em>Speed Factor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSpeedFactor()
+	 * @generated
+	 * @ordered
+	 */
+	protected int speedFactor = SPEED_FACTOR_EDEFAULT;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -583,6 +602,27 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getSpeedFactor() {
+		return speedFactor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSpeedFactor(int newSpeedFactor) {
+		int oldSpeedFactor = speedFactor;
+		speedFactor = newSpeedFactor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SPEED_FACTOR, oldSpeedFactor, speedFactor));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<TravelClass> getClasses() {
 		if (classes == null) {
 			classes = new EObjectContainmentEList<TravelClass>(TravelClass.class, this, CabinPackage.CABIN__CLASSES);
@@ -704,6 +744,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return getAircraftType();
 			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
 				return isUsePresetSettings();
+			case CabinPackage.CABIN__SPEED_FACTOR:
+				return getSpeedFactor();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -779,6 +821,9 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
 				setUsePresetSettings((Boolean)newValue);
 				return;
+			case CabinPackage.CABIN__SPEED_FACTOR:
+				setSpeedFactor((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -845,6 +890,9 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
 				setUsePresetSettings(USE_PRESET_SETTINGS_EDEFAULT);
 				return;
+			case CabinPackage.CABIN__SPEED_FACTOR:
+				setSpeedFactor(SPEED_FACTOR_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -893,6 +941,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return aircraftType != AIRCRAFT_TYPE_EDEFAULT;
 			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
 				return usePresetSettings != USE_PRESET_SETTINGS_EDEFAULT;
+			case CabinPackage.CABIN__SPEED_FACTOR:
+				return speedFactor != SPEED_FACTOR_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -927,6 +977,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		result.append(aircraftType);
 		result.append(", usePresetSettings: ");
 		result.append(usePresetSettings);
+		result.append(", speedFactor: ");
+		result.append(speedFactor);
 		result.append(')');
 		return result.toString();
 	}

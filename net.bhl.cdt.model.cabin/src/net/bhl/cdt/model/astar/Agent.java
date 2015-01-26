@@ -30,6 +30,7 @@ public class Agent extends Subject implements Runnable {
 
 	private Passenger passenger;
 	private int scale;
+	private int speedfactor;
 	private boolean alreadyStowed;
 	private static StopWatch stopwatch = new StopWatch();
 	private int[][] currentAgentPosition = new int[1][2];
@@ -41,7 +42,8 @@ public class Agent extends Subject implements Runnable {
 	 * @param goal the goal vector
 	 * @param scale the scale of the simulation
 	 */
-	Agent(Passenger passenger, Vector start, Vector goal, int scale) {
+	Agent(Passenger passenger, Vector start, Vector goal, int scale, int speedFactor) {
+		this.speedfactor = speedFactor;
 		this.passenger = passenger;
 		this.start = start;
 		this.goal = goal;
@@ -75,7 +77,7 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * Rotation from 0 to 359 degrees. Only 45° steps. North is 0°.
+	 * Rotation from 0 to 359 degrees. Only 45ï¿½ steps. North is 0ï¿½.
 	 * 
 	 * @return the rotation in degrees.
 	 */
@@ -183,7 +185,7 @@ public class Agent extends Subject implements Runnable {
 	public void run() {
 		try {
 			alreadyStowed = false;
-			Thread.sleep((int) (passenger.getStartBoardingAfterDelay() * 1000));
+			Thread.sleep((int) (passenger.getStartBoardingAfterDelay() * 1000 / speedfactor));
 			stopwatch.start();
 			this.currentAgentPosition = new int[path.length][2];
 			RunAStar.submitPath(path);
@@ -203,14 +205,14 @@ public class Agent extends Subject implements Runnable {
 					// or
 					// this.findWayAroundObstacle()
 
-					Thread.sleep(200);
+					Thread.sleep(200 / speedfactor);
 					numbOfInterupts++;
 				} else if (passengerStowsLuggage() && !alreadyStowed) {
 					RunAStar.getMap().getNode(previous)
 							.setOccupiedByAgent(false);
 					RunAStar.getMap().getNode(current).setOccupiedByAgent(true);
 					occupyArea(current, true);
-					Thread.sleep((int) (passenger.getLuggageStowTime() * 1000 / 2));
+					Thread.sleep((int) (passenger.getLuggageStowTime() * 1000 / 2 / speedfactor));
 					occupyArea(current, false);
 					alreadyStowed = true;
 					i++;
@@ -229,7 +231,7 @@ public class Agent extends Subject implements Runnable {
 					passenger.setPositionY(this.currentAgentPosition[i][1]
 							* scale);
 					passenger.setOrientationInDegree(getRotation());
-					Thread.sleep((int) (1000 / (passenger.getWalkingSpeed() * 100 / scale)));
+					Thread.sleep((int) (1000/ speedfactor / (passenger.getWalkingSpeed() * 100 / scale )));
 					i++;
 				}
 			}

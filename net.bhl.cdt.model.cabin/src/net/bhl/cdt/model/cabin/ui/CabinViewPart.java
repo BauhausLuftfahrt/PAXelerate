@@ -532,29 +532,35 @@ public class CabinViewPart extends ViewPart {
 		for (int i = 0; i < (int) (cabin.getCabinWidth() / cabin.getScale()); i++) {
 			for (int j = 0; j < (int) (cabin.getCabinLength() / cabin
 					.getScale()); j++) {
-				if (obstacleMap[i][j] <= ObstacleMap.getBasicValue()) {
-					int colorFactor;
-					try {
-						colorFactor = obstacleMap[i][j]
-								* (int) (255 / (ObstacleMap.getBasicValue()));
-					} catch (ArithmeticException e) {
-						colorFactor = obstacleMap[i][j] * 255; // if basic value
-																// is zero!
-					}
-					if (colorFactor > 255) {
-						colorFactor = 255;
-					}
+
+				if (obstacleMap[i][j] <= ObstacleMap.getHoleValue()) {
+					/*
+					 * set the hole color in the aisles to green
+					 */
 					graphicsControl.setBackground(new Color(
-							parent.getDisplay(), colorFactor, 255, 0));
-				} else if (obstacleMap[i][j] <= ObstacleMap.getBasicValue() * 5) {
-					int colorFactor = 255 - obstacleMap[i][j]
-							* (int) (255 / ObstacleMap.getBasicValue() / 5);
-					if (colorFactor < 0) {
-						colorFactor = 0;
-					}
+							parent.getDisplay(), 0, 255, 0));
+				} else if (obstacleMap[i][j] <= ObstacleMap.getBasicValue()) {
+					/*
+					 * set the color of the basic value to a lighter green
+					 */
 					graphicsControl.setBackground(new Color(
-							parent.getDisplay(), 255, colorFactor, 0));
+							parent.getDisplay(), 122, 255, 0));
+				} else if (obstacleMap[i][j] < ObstacleMap.getPotentialValue()) {
+					/*
+					 * set the color of the potential gradient to yellow
+					 */
+					graphicsControl.setBackground(new Color(
+							parent.getDisplay(), 255, 255, 0));
+				} else if (obstacleMap[i][j] == ObstacleMap.getPotentialValue()) {
+					/*
+					 * set the color of the potential maximum to orange
+					 */
+					graphicsControl.setBackground(new Color(
+							parent.getDisplay(), 255, 122, 0));
 				} else {
+					/*
+					 * set the color of obstacles to red
+					 */
 					graphicsControl.setBackground(red);
 				}
 				graphicsControl.fillOval(xZero
@@ -721,9 +727,11 @@ public class CabinViewPart extends ViewPart {
 					e.gc.drawImage(img, 0, 0);
 
 				} else {
-//					Image image = SWTResourceManager.getImage(
-//							InfoViewPart.class, "regional.png");
-					e.gc.drawImage(resizeAC(canvas.getBounds().width,canvas.getBounds().height), 0, 0);
+					// Image image = SWTResourceManager.getImage(
+					// InfoViewPart.class, "regional.png");
+					e.gc.drawImage(
+							resizeAC(canvas.getBounds().width,
+									canvas.getBounds().height), 0, 0);
 					e.gc.setFont(fontThree);
 					e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_RED));
 					e.gc.fillRectangle(38, 370, 300, 35);

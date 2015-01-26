@@ -1,6 +1,5 @@
 package net.bhl.cdt.model.cabin.util;
 
-import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -8,92 +7,142 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+/**
+ * This class generates a dialog which can get various parameters or give output
+ * to the user. You decide.
+ * 
+ * @author marc.engelmann
+ *
+ */
 public class GetInput extends TitleAreaDialog {
 
-  private Text txtFirstName;
-  private Text lastNameText;
+	public enum WindowType {
+		INFORMATION, GET_STRING, GET_INTEGER, WARNING, OPTIONS
+	}
 
-  private String firstName;
-  private String lastName;
+	private WindowType windowType;
+	private String descriptionText;
+	private Text text;
+	private String stringValue = null;
+	private int integerValue = 0;
 
-  public GetInput(Shell parentShell) {
-    super(parentShell);
-  }
+	/**
+	 * This method generates the input dialog.
+	 * 
+	 * @param windowType
+	 *            is the type of the dialog. USE WindowType.(...)
+	 * @param title
+	 *            is the title of the dialog
+	 * @param message
+	 *            is the message of the dialog
+	 * @param descriptionText
+	 *            is the description text of the dialog
+	 * @param messageType
+	 *            is the message type. USE IMessageProvider.(...)
+	 */
+	public GetInput(WindowType windowType, String message, String descriptionText,
+			int messageType) {
+		super(null);
+		this.windowType = windowType;
+		this.descriptionText = descriptionText;
+		super.create();
+		switch (windowType) {
+		case GET_INTEGER:
+			setTitle("Integer Input Required!");
+			break;
+		case GET_STRING:
+			setTitle("Text Input Required!");
+			break;
+		default:
+			setTitle("empty title ...");
+			break;
+		}
+		setMessage(message, messageType);
+		this.open();
+	}
 
-  @Override
-  public void create() {
-    super.create();
-    setTitle("This is my first custom dialog");
-    setMessage("This is a TitleAreaDialog", IMessageProvider.INFORMATION);
-  }
+	@Override
+	protected Control createDialogArea(Composite parent) {
+		Composite area = (Composite) super.createDialogArea(parent);
+		Composite container = new Composite(area, SWT.NONE);
+		container.setLayoutData(new GridData(GridData.FILL_BOTH));
+		GridLayout layout = new GridLayout(1, false);
+		container.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+		container.setLayout(layout);
 
-  @Override
-  protected Control createDialogArea(Composite parent) {
-    Composite area = (Composite) super.createDialogArea(parent);
-    Composite container = new Composite(area, SWT.NONE);
-    container.setLayoutData(new GridData(GridData.FILL_BOTH));
-    GridLayout layout = new GridLayout(2, false);
-    container.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-    container.setLayout(layout);
+		switch (windowType) {
+		case GET_INTEGER:
+			createIntegerField(container);
+			break;
+		case GET_STRING:
+			createTextField(container);
+			break;
+		default:
 
-    createFirstName(container);
-    createLastName(container);
+			break;
+		}
+		return area;
+	}
 
-    return area;
-  }
+	private void createIntegerField(Composite container) {
+		Label label = new Label(container, SWT.NONE);
+		label.setText(descriptionText);
 
-  private void createFirstName(Composite container) {
-    Label lbtFirstName = new Label(container, SWT.NONE);
-    lbtFirstName.setText("First Name");
+		GridData gridData = new GridData();
+		gridData.grabExcessHorizontalSpace = true;
+		gridData.horizontalAlignment = GridData.FILL;
 
-    GridData dataFirstName = new GridData();
-    dataFirstName.grabExcessHorizontalSpace = true;
-    dataFirstName.horizontalAlignment = GridData.FILL;
+		text = new Text(container, SWT.BORDER);
+		text.setLayoutData(gridData);
+	}
 
-    txtFirstName = new Text(container, SWT.BORDER);
-    txtFirstName.setLayoutData(dataFirstName);
-  }
-  
-  private void createLastName(Composite container) {
-    Label lbtLastName = new Label(container, SWT.NONE);
-    lbtLastName.setText("Last Name");
-    
-    GridData dataLastName = new GridData();
-    dataLastName.grabExcessHorizontalSpace = true;
-    dataLastName.horizontalAlignment = GridData.FILL;
-    lastNameText = new Text(container, SWT.BORDER);
-    lastNameText.setLayoutData(dataLastName);
-  }
+	private void createTextField(Composite container) {
+		Label label = new Label(container, SWT.NONE);
+		label.setText(descriptionText);
 
+		GridData gridData = new GridData();
+		gridData.grabExcessHorizontalSpace = true;
+		gridData.horizontalAlignment = GridData.FILL;
+		text = new Text(container, SWT.BORDER);
+		text.setLayoutData(gridData);
+	}
 
+	@Override
+	protected boolean isResizable() {
+		return false;
+	}
 
-  @Override
-  protected boolean isResizable() {
-    return true;
-  }
+	// save content of the Text fields because they get disposed
+	// as soon as the Dialog closes
+	private void saveInput() {
+		String validateString = text.getText();
+		switch (windowType) {
+		case GET_INTEGER:
+			integerValue = Integer.parseInt(InputChecker
+					.checkIntegersOnly(validateString));
+			break;
+		case GET_STRING:
+			stringValue = validateString;
+			break;
+		default:
 
-  // save content of the Text fields because they get disposed
-  // as soon as the Dialog closes
-  private void saveInput() {
-    firstName = txtFirstName.getText();
-    lastName = lastNameText.getText();
+			break;
+		}
+	}
 
-  }
+	public int getIntegerValue() {
+		return integerValue;
+	}
 
-  @Override
-  protected void okPressed() {
-    saveInput();
-    super.okPressed();
-  }
+	public String getStringValue() {
+		return stringValue;
+	}
 
-  public String getFirstName() {
-    return firstName;
-  }
-
-  public String getLastName() {
-    return lastName;
-  }
-} 
+	@Override
+	protected void okPressed() {
+		saveInput();
+		super.okPressed();
+	}
+}

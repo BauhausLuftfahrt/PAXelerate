@@ -7,6 +7,8 @@ package net.bhl.cdt.model.cabin.util;
 
 import java.awt.Color;
 
+import net.bhl.cdt.model.astar.CostMap;
+
 /**
  * This class represents a vector consisting of 2 coordinates. It is easily
  * possible to expand this vector to 3 coordinates. It can represent both a
@@ -210,17 +212,23 @@ public class Vector implements Comparable<Vector> {
 		int BEFORE = -1;
 		int EQUAL = 0;
 		int AFTER = 1;
-		if (zValue < vector.getZ()) {
+		if (CostMap.getCostForCoordinates(xValue,yValue) <CostMap.getCostForCoordinates(vector.getX(),vector.getY())) {
 			return BEFORE;
-		} else if (zValue > vector.getZ()) {
+		} else if (CostMap.getCostForCoordinates(xValue,yValue) > CostMap.getCostForCoordinates(vector.getX(),vector.getY())) {
 			return AFTER;
 		} else {
-			 if (yValue > vector.getY()) {
+			 if (yValue < vector.getY()) {
 			 return BEFORE;
-			 } else if (yValue < vector.getY()) {
+			 } else if (yValue > vector.getY()) {
 			 return AFTER;
 			 } else {
-			return EQUAL;
+				 if (xValue < vector.getX()) {
+					 return BEFORE;
+					 } else if (xValue > vector.getX()) {
+					 return AFTER;
+					 } else {
+					return EQUAL;
+					 }
 			 }
 		}
 	}

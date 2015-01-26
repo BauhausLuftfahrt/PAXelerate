@@ -35,6 +35,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="aircraftType" eType="#//AircraftType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="usePresetSettings" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="speedFactor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Row">
     <eStructuralFeatures xsi:type="ecore:EReference" name="seats" lowerBound="1" upperBound="-1"
@@ -73,8 +75,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="letter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="travelClass" lowerBound="1"
         eType="#//TravelClass"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="Placeholder"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Passenger">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -118,6 +118,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="yPosition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="xDimension" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="yDimension" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Lavatory" eSuperTypes="#//PhysicalObject"/>
   <eClassifiers xsi:type="ecore:EClass" name="Galley" eSuperTypes="#//PhysicalObject"/>
@@ -127,7 +128,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="Curtain" eSuperTypes="#//PhysicalObject">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="postitionAfterRow" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="curtainOpen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Stowage" eSuperTypes="#//PhysicalObject"/>
   <eClassifiers xsi:type="ecore:EClass" name="Door">

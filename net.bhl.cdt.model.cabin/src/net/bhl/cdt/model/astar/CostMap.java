@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
+import net.bhl.cdt.model.cabin.util.FunctionLibrary;
 import net.bhl.cdt.model.cabin.util.Vector;
 
 /**
@@ -38,13 +39,14 @@ import net.bhl.cdt.model.cabin.util.Vector;
 
 public class CostMap {
 
-	private int[][] map;
+	private static int[][] map;
 	private Vector dimensions = new Vector(0, 0);
 	private Vector startPoint = new Vector(0, 0);
 	private Vector goalPoint = new Vector(0, 0);
 	private ArrayList<Vector> visitedPoints = new ArrayList<Vector>();
 	public ArrayList<Vector> pointParking = new ArrayList<Vector>();
 	public ArrayList<Vector> pointParkingHelper = new ArrayList<Vector>();
+	private ArrayList<Vector> onHoldList = new ArrayList<Vector>();
 	private AreaMap areamap;
 	private ILog logger;
 	private int lowestCost;
@@ -87,13 +89,6 @@ public class CostMap {
 			floodMap();
 		} else {
 			createSurroundingCosts(startPoint);
-		}
-	}
-
-	public void floodMapStep() {
-		copyPoints();
-		for (Vector newPoint : pointParking) {
-			createSurroundingCosts(newPoint);
 		}
 	}
 
@@ -215,18 +210,28 @@ public class CostMap {
 		return false;
 	}
 
-	private Boolean isLowestPossibleCost(Vector point) {
-		return getCost(point) == lowestCost;
-	}
-
 	/**
 	 * This function moves the points gathered in pointParkingHelper to
 	 * pointParking.
 	 */
 	public void copyPoints() {
+		lowestCost = Integer.MAX_VALUE;
 		pointParking.clear();
+
+		for (Vector transferPoint : onHoldList) {
+			pointParkingHelper.add(transferPoint);
+		}
+		onHoldList.clear();
+		/* At first, check all stored points for the lowest cost. */
+		for (Vector costPoint : pointParkingHelper) {
+			checkLowestCost(costPoint);
+		}
 		for (Vector copyPoint : pointParkingHelper) {
-			pointParking.add(copyPoint);
+			if (getCost(copyPoint) <= lowestCost) {
+				pointParking.add(copyPoint);
+			} else {
+				onHoldList.add(copyPoint);
+			}
 		}
 		pointParkingHelper.clear();
 		sortTheList(pointParking);
@@ -241,14 +246,12 @@ public class CostMap {
 	 *            is the point around which all costs are calculated
 	 */
 	public void createSurroundingCosts(Vector middlePoint) {
-		lowestCost = 1000;
 		for (Vector point : sortTheList(getSurroundingPoints(
 				middlePoint.getX(), middlePoint.getY()))) {
 			if (!(point.getX() < 0 || point.getY() < 0
 					|| point.getX() >= dimensions.getX() || point.getY() >= dimensions
 					.getY())) {
-				checkLowestCost(point);
-				if (!isObstacle(point)) { //&& isLowestPossibleCost(point)) {
+				if (!isObstacle(point)) {
 					if (!(checkForPoint(visitedPoints, point))) {
 						map[point.getX()][point.getY()] += getCost(middlePoint);
 						visitedPoints.add(point);
@@ -310,9 +313,9 @@ public class CostMap {
 	 * 
 	 * @param point
 	 *            is the point (of dimension int[2]) of interest
-	 * @return
+	 * @return the cost at the specific point
 	 */
-	private int getCost(Vector point) {
+	public int getCost(Vector point) {
 		return map[point.getX()][point.getY()];
 	}
 
@@ -326,7 +329,7 @@ public class CostMap {
 	 *            is the y coordinate of the desired point
 	 * @return returns the cost for a specific coordinate
 	 */
-	public int getCostForCoordinates(int xCord, int yCord) {
+	public static int getCostForCoordinates(int xCord, int yCord) {
 		try {
 			return map[xCord][yCord];
 		} catch (ArrayIndexOutOfBoundsException e) {

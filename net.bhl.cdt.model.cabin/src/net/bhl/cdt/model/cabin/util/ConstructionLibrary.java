@@ -50,7 +50,7 @@ public class ConstructionLibrary {
 	private int globalSeatPositionY;
 	private int seats;
 	private int seatsInRow;
-	private String seatStructure;
+	private String seatStructure = "1-1";
 	private int numbAisles;
 	private Vector seatDimensions = new Vector(0, 0);
 	private int seatPitch;
@@ -60,6 +60,7 @@ public class ConstructionLibrary {
 	private ILog logger;
 	private ArrayList<Integer> rowPartsInt;
 	private Boolean doItOnce = true;
+	private ArrayList<int[]> aisleCoordinates = new ArrayList<int[]>();
 
 	// TODO: Maybe use an int array for all values together!
 
@@ -74,7 +75,7 @@ public class ConstructionLibrary {
 		this.cabin = cabin;
 		globalSeatPositionX = 0;
 		globalSeatPositionY = 0;
-		seatStructure = "emptyString";
+		seatStructure = "3-3";
 		seatCount = 1;
 		rowCount = 1;
 	}
@@ -180,13 +181,13 @@ public class ConstructionLibrary {
 			try {
 				BusinessClass subclass = ModelHelper.getChildrenByClass(cabin,
 						BusinessClass.class).get(0);
-				seats = (int) tryPreset(4, 12, 20, subclass.getAvailableSeats());
-				seatStructure = (String) tryPreset("1-1", "2-2", "2-2-2",
+				seats = (int) tryPreset(4, 12, 35, subclass.getAvailableSeats());
+				seatStructure = (String) tryPreset("1-1", "2-2", "2-3-2",
 						subclass.getRowStructure());
 				seatDimensions.setTwoDimensional(subclass.getSeatWidth(),
 						subclass.getSeatLength());
 				seatPitch = subclass.getSeatPitch();
-				passengers = (int) tryPreset(0, 0, 0, subclass.getPassengers());
+				passengers = (int) tryPreset(1, 1, 1, subclass.getPassengers());
 				cabin.getClasses().remove(subclass);
 			} catch (IndexOutOfBoundsException e) {
 				seats = 8;
@@ -202,7 +203,7 @@ public class ConstructionLibrary {
 			try {
 				FirstClass subclass = ModelHelper.getChildrenByClass(cabin,
 						FirstClass.class).get(0);
-				seats = (int) tryPreset(2, 2, 4, subclass.getAvailableSeats());
+				seats = (int) tryPreset(2, 2, 8, subclass.getAvailableSeats());
 				seatStructure = (String) tryPreset("1-1", "1-1", "1-2-1",
 						subclass.getRowStructure());
 				seatDimensions.setTwoDimensional(subclass.getSeatWidth(),
@@ -224,7 +225,7 @@ public class ConstructionLibrary {
 			try {
 				EconomyClass subclass = ModelHelper.getChildrenByClass(cabin,
 						EconomyClass.class).get(0);
-				seats = (int) tryPreset(20, 72, 144,
+				seats = (int) tryPreset(20, 72, 280,
 						subclass.getAvailableSeats());
 				seatStructure = (String) tryPreset("2-2", "3-3", "3-4-3",
 						subclass.getRowStructure());
@@ -254,17 +255,20 @@ public class ConstructionLibrary {
 	 *            is the string
 	 */
 	public void splitSeatString(String seatString) {
+
+		/*
+		 * This method checks the user input for errors and automatically
+		 * corrects it!
+		 */
+		seatString = InputChecker.checkStructureString(seatString);
+
 		rowPartsInt = new ArrayList<Integer>();
 		numbAisles = StringUtils.countMatches(seatString, "-");
 		seatsInRow = 0;
-		if (numbAisles != 0) {
-			String[] rowParts = seatString.split("-");
-			for (String str : rowParts) {
-				seatsInRow += Integer.parseInt(str);
-				rowPartsInt.add(Integer.parseInt(str));
-			}
-		} else {
-			// RETURN ERROR!
+		String[] rowParts = seatString.split("-");
+		for (String str : rowParts) {
+			seatsInRow += Integer.parseInt(str);
+			rowPartsInt.add(Integer.parseInt(str));
 		}
 	}
 
@@ -324,7 +328,7 @@ public class ConstructionLibrary {
 		splitSeatString(seatStructure);
 		passengerClass.setPassengers(passengers);
 		passengerClass.setAvailableSeats(seats);
-		passengerClass.setRowStructure(seatStructure);
+		passengerClass.setRowStructure(InputChecker.checkStructureString(seatStructure));
 		passengerClass.setSeatPitch(seatPitch);
 		passengerClass.setSeatWidth(seatDimensions.getX());
 		passengerClass.setSeatLength(seatDimensions.getY());

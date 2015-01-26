@@ -62,8 +62,10 @@ public class LavatoryItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		Lavatory lavatory = (Lavatory)object;
-		return getString("_UI_Lavatory_type") + " " + lavatory.getXPosition();
+		String label = ((Lavatory)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Lavatory_type") :
+			getString("_UI_Lavatory_type") + " " + label;
 	}
 	
 

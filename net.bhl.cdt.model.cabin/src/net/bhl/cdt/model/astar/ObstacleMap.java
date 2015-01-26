@@ -37,10 +37,11 @@ public class ObstacleMap {
 	private Cabin cabin;
 	private Vector dimensions = new Vector(0, 0);
 	private static final int MAX_VALUE = 100000;
-	private static final int BASIC_VALUE = 3;
+	private static final int BASIC_VALUE = 2;
 	private static final int OBSTACLE_RANGE_IN_CM = 20;
-	private static final int POTENTIAL_AROUND_OBSTACLE_MAXIMUM = 100;
-	private int[][] obstacleMap;
+	private static final int POTENTIAL_AROUND_OBSTACLE_MAXIMUM = 10;
+	private static final int HOLE_VALUE = 1; // DO NEVER SET THIS TO ZERO!
+	private static int[][] obstacleMap;
 	private ILog logger;
 
 	/**
@@ -65,6 +66,14 @@ public class ObstacleMap {
 	 */
 	public static int getBasicValue() {
 		return BASIC_VALUE;
+	}
+
+	public static int getPotentialValue() {
+		return POTENTIAL_AROUND_OBSTACLE_MAXIMUM;
+	}
+
+	public static int getHoleValue() {
+		return HOLE_VALUE;
 	}
 
 	/**
@@ -110,12 +119,11 @@ public class ObstacleMap {
 	 * This method creates the potential gradient around obstacle.
 	 */
 	private void generatePotentialGradient() {
-
+		int range = (int) (OBSTACLE_RANGE_IN_CM / cabin.getScale());
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
 				if (obstacleMap[i][j] == MAX_VALUE) {
-					for (int p = 1; p < (int) (OBSTACLE_RANGE_IN_CM / cabin
-							.getScale()); p++) {
+					for (int p = 1; p < range; p++) {
 						/** WEST - EAST - NORTH - SOUTH */
 						if (((i - p) > 0)
 								&& (obstacleMap[i - p][j] != MAX_VALUE)) {
@@ -132,40 +140,40 @@ public class ObstacleMap {
 								&& (obstacleMap[i][j - p] != MAX_VALUE)) {
 							obstacleMap[i][j - p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
 									- p;
-
 						}
 						if (((j + p) < dimensions.getY())
 								&& (obstacleMap[i][j + p] != MAX_VALUE)) {
 							obstacleMap[i][j + p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
 									- p;
-
 						}
-
-						/** NORTHWEST - NORTHEAST - SOUTHEAST - SOUTHWEST */
-						if ((((i - p) > 0) && ((j - p) > 0))
-								&& (obstacleMap[i - p][j - p] != MAX_VALUE)) {
-							obstacleMap[i - p][j - p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
-									- p;
-
-						}
-						if ((((i + p) < dimensions.getX()) && ((j - p) > 0))
-								&& (obstacleMap[i + p][j - p] != MAX_VALUE)) {
-							obstacleMap[i + p][j - p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
-									- p;
-
-						}
-						if ((((j + p) < dimensions.getY()) && ((i + p) < dimensions
-								.getX()))
-								&& (obstacleMap[i + p][j + p] != MAX_VALUE)) {
-							obstacleMap[i + p][j + p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
-									- p;
-
-						}
-						if ((((j + p) < dimensions.getY()) && ((i - p) > 0))
-								&& (obstacleMap[i - p][j + p] != MAX_VALUE)) {
-							obstacleMap[i - p][j + p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
-									- p;
-
+						/*
+						 * In order to create some kind of rounded shape around
+						 * the obstacle, the corners are left out on the last
+						 * loop of the gradient generation.
+						 */
+						if (p < (range - 1)) {
+							/** NORTHWEST - NORTHEAST - SOUTHEAST - SOUTHWEST */
+							if ((((i - p) > 0) && ((j - p) > 0))
+									&& (obstacleMap[i - p][j - p] != MAX_VALUE)) {
+								obstacleMap[i - p][j - p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
+										- p;
+							}
+							if ((((i + p) < dimensions.getX()) && ((j - p) > 0))
+									&& (obstacleMap[i + p][j - p] != MAX_VALUE)) {
+								obstacleMap[i + p][j - p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
+										- p;
+							}
+							if ((((j + p) < dimensions.getY()) && ((i + p) < dimensions
+									.getX()))
+									&& (obstacleMap[i + p][j + p] != MAX_VALUE)) {
+								obstacleMap[i + p][j + p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
+										- p;
+							}
+							if ((((j + p) < dimensions.getY()) && ((i - p) > 0))
+									&& (obstacleMap[i - p][j + p] != MAX_VALUE)) {
+								obstacleMap[i - p][j + p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
+										- p;
+							}
 						}
 					}
 				}
@@ -175,17 +183,21 @@ public class ObstacleMap {
 
 	/**
 	 * This method generates the obstacle hole in the aisle. This means that in
-	 * the aisle, the obstacle value is set to zero. This makes the passengers
-	 * consider the aisle as their preferred path.
+	 * the aisle, the obstacle value is set to HOLE_VALUE. This makes the passengers
+	 * use the aisle as their preferred path.
 	 */
 	private void generateAisleHole() {
 		int entryMin = 0;
 		int entryMax = 0;
 
-		/* x: begin and end; y: begin and end; */
+		/* 
+		 * x: begin and end; y: begin and end; 
+		 */
 		int[] firstClassAisleValues = new int[4];
 
-		/* Create the door path */
+		/* 
+		 * Create the door path 
+		 */
 		Door mainDoor = ModelHelper.getChildrenByClass(cabin, MainDoor.class)
 				.get(0);
 		entryMin = (int) (mainDoor.getYPosition() / cabin.getScale()) + 2;
@@ -196,10 +208,10 @@ public class ObstacleMap {
 			for (int j = 0; j < dimensions.getY(); j++) {
 				if (obstacleMap[i][j] != MAX_VALUE) {
 					if (j > entryMin && j < entryMax) {
-						obstacleMap[i][j] = 1;
+						obstacleMap[i][j] = HOLE_VALUE;
 					}
 					if (i < 19 && i > 16) {
-						obstacleMap[i][j] = 1;
+						obstacleMap[i][j] = HOLE_VALUE;
 					}
 				}
 			}
@@ -247,7 +259,7 @@ public class ObstacleMap {
 	 *            the y value of the point
 	 * @return the value at the specific point
 	 */
-	public int getValueAtPoint(int x, int y) {
+	public static int getValueAtPoint(int x, int y) {
 		return obstacleMap[x][y];
 	}
 

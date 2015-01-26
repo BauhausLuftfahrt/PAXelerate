@@ -64,6 +64,7 @@ public class PhysicalObjectItemProvider
 			addYPositionPropertyDescriptor(object);
 			addXDimensionPropertyDescriptor(object);
 			addYDimensionPropertyDescriptor(object);
+			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -157,6 +158,28 @@ public class PhysicalObjectItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PhysicalObject_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PhysicalObject_name_feature", "_UI_PhysicalObject_type"),
+				 CabinPackage.Literals.PHYSICAL_OBJECT__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns PhysicalObject.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -175,8 +198,10 @@ public class PhysicalObjectItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		PhysicalObject physicalObject = (PhysicalObject)object;
-		return getString("_UI_PhysicalObject_type") + " " + physicalObject.getXPosition();
+		String label = ((PhysicalObject)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_PhysicalObject_type") :
+			getString("_UI_PhysicalObject_type") + " " + label;
 	}
 	
 
@@ -196,6 +221,7 @@ public class PhysicalObjectItemProvider
 			case CabinPackage.PHYSICAL_OBJECT__YPOSITION:
 			case CabinPackage.PHYSICAL_OBJECT__XDIMENSION:
 			case CabinPackage.PHYSICAL_OBJECT__YDIMENSION:
+			case CabinPackage.PHYSICAL_OBJECT__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

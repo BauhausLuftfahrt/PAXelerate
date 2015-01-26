@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CurtainImpl#getPostitionAfterRow <em>Postition After Row</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CurtainImpl#isCurtainOpen <em>Curtain Open</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.CurtainImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -63,26 +62,6 @@ public class CurtainImpl extends PhysicalObjectImpl implements Curtain {
 	 * @ordered
 	 */
 	protected boolean curtainOpen = CURTAIN_OPEN_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -150,27 +129,6 @@ public class CurtainImpl extends PhysicalObjectImpl implements Curtain {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CURTAIN__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -178,8 +136,6 @@ public class CurtainImpl extends PhysicalObjectImpl implements Curtain {
 				return getPostitionAfterRow();
 			case CabinPackage.CURTAIN__CURTAIN_OPEN:
 				return isCurtainOpen();
-			case CabinPackage.CURTAIN__NAME:
-				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -197,9 +153,6 @@ public class CurtainImpl extends PhysicalObjectImpl implements Curtain {
 				return;
 			case CabinPackage.CURTAIN__CURTAIN_OPEN:
 				setCurtainOpen((Boolean)newValue);
-				return;
-			case CabinPackage.CURTAIN__NAME:
-				setName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -219,9 +172,6 @@ public class CurtainImpl extends PhysicalObjectImpl implements Curtain {
 			case CabinPackage.CURTAIN__CURTAIN_OPEN:
 				setCurtainOpen(CURTAIN_OPEN_EDEFAULT);
 				return;
-			case CabinPackage.CURTAIN__NAME:
-				setName(NAME_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -238,8 +188,6 @@ public class CurtainImpl extends PhysicalObjectImpl implements Curtain {
 				return postitionAfterRow != POSTITION_AFTER_ROW_EDEFAULT;
 			case CabinPackage.CURTAIN__CURTAIN_OPEN:
 				return curtainOpen != CURTAIN_OPEN_EDEFAULT;
-			case CabinPackage.CURTAIN__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -258,8 +206,6 @@ public class CurtainImpl extends PhysicalObjectImpl implements Curtain {
 		result.append(postitionAfterRow);
 		result.append(", curtainOpen: ");
 		result.append(curtainOpen);
-		result.append(", name: ");
-		result.append(name);
 		result.append(')');
 		return result.toString();
 	}

@@ -28,12 +28,22 @@
       <command
             defaultHandler="net.bhl.cdt.model.cabin.handlers.DrawCabinHandler"
             id="net.bhl.cdt.model.cabin.DrawCabin"
-            name="Run Flooding Demo">
+            name="Refresh Cabin View">
       </command>
       <command
             defaultHandler="net.bhl.cdt.model.cabin.handlers.GeneratePassengersHandler"
             id="net.bhl.cdt.model.cabin.GeneratePassengers"
             name="Generate Passengers">
+      </command>
+      <command
+            defaultHandler="net.bhl.cdt.model.cabin.handlers.FloodCabinHandler"
+            id="net.bhl.cdt.model.cabin.FloodCabin"
+            name="Cabin Flood Demo">
+      </command>
+      <command
+            defaultHandler="net.bhl.cdt.model.cabin.handlers.MoveRowHandler"
+            id="net.bhl.cdt.model.cabin.MoveRow"
+            name="Move The Row">
       </command>
    </extension>
    <extension
@@ -68,7 +78,7 @@
          </command>
          <command
                commandId="net.bhl.cdt.model.cabin.DrawCabin"
-               label="Run Flooding Demo"
+               label="Refresh Cabin View"
                style="push">
             <visibleWhen
                   checkEnabled="false">
@@ -88,6 +98,32 @@
                <iterate>
                   <instanceof
                         value="net.bhl.cdt.model.cabin.Cabin">
+                  </instanceof>
+               </iterate>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="net.bhl.cdt.model.cabin.FloodCabin"
+               label="Run Flooding Demo"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate>
+                  <instanceof
+                        value="net.bhl.cdt.model.cabin.Cabin">
+                  </instanceof>
+               </iterate>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="net.bhl.cdt.model.cabin.MoveRow"
+               label="Move The Row"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate>
+                  <instanceof
+                        value="net.bhl.cdt.model.cabin.Row">
                   </instanceof>
                </iterate>
             </visibleWhen>
