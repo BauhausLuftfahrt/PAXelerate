@@ -29,4 +29,51 @@
             name="CS - 25: Cabin Regulation">
       </cheatsheet>
    </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.eclipse.ui.main.menu">
+         <menu
+               label="Cabin">
+            <command
+                  commandId="net.bhl.cdt.cabin.ui.command4"
+                  label="Generate Cabin"
+                  style="push">
+            </command>
+            <command
+                  commandId="net.bhl.cdt.cabin.ui.command5"
+                  label="Generate Passengers"
+                  style="push">
+            </command>
+            <command
+                  commandId="net.bhl.cdt.cabin.ui.command6"
+                  label="Run Simulation"
+                  style="push">
+            </command>
+            <separator
+                  name="net.bhl.cdt.cabin.ui.separator1"
+                  visible="true">
+            </separator>
+            <command
+                  commandId="net.bhl.cdt.cabin.ui.command7"
+                  label="Refresh Cabin View"
+                  style="push">
+            </command>
+         </menu>
+         <menu
+               label="Help">
+            <command
+                  commandId="net.bhl.cdt.cabin.ui.command3"
+                  label="Help"
+                  style="push">
+            </command>
+            <command
+                  commandId="net.bhl.cdt.cabin.ui.command1"
+                  label="About"
+                  style="push">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
 </plugin>
