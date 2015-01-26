@@ -27,28 +27,16 @@ public class MoveRowHandler extends AbstractHandler {
 	 */
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		// Shell shell = HandlerUtil.getActiveShell(event);
 		ISelection sel = HandlerUtil.getActiveMenuSelection(event);
-		IStructuredSelection selection = (IStructuredSelection) sel;
-		
-		ArrayList<Row> rowList = null;
-		
+		IStructuredSelection selection = (IStructuredSelection) sel;	
+		ArrayList<Row> rowList = new ArrayList<Row>();
 		for(Object object:selection.toList()) {
 			if(object instanceof Row) {
-				rowList.add((Row) object);
+				rowList.add((Row)object);
 			}
 		}
-	
-		Object firstElement = selection.getFirstElement();
-		Row row = (Row) firstElement;
-		Cabin cabin = ModelHelper.getParent(Cabin.class, row);
-		
-		// if (firstElement instanceof Cabin) {
-
-		new MoveRowCommand(row, cabin, rowList).execute();
-
-		// }
-
+		Cabin cabin = ModelHelper.getParent(Cabin.class, (Row) selection.getFirstElement());
+		new MoveRowCommand(cabin, rowList).execute();
 		return null;
 	}
 }
