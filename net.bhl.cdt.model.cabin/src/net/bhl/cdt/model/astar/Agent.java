@@ -77,7 +77,7 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * Rotation from 0 to 359 degrees. Only 45° steps. North is 0°.
+	 * Rotation from 0 to 359 degrees. Only 45ï¿½ steps. North is 0ï¿½.
 	 * 
 	 * @return the rotation in degrees.
 	 */
@@ -231,7 +231,7 @@ public class Agent extends Subject implements Runnable {
 					passenger.setPositionY(this.currentAgentPosition[i][1]
 							* scale);
 					passenger.setOrientationInDegree(getRotation());
-					Thread.sleep((int) (1000 / (passenger.getWalkingSpeed() * 100 / scale / speedfactor)));
+					Thread.sleep((int) (1000/ speedfactor / (passenger.getWalkingSpeed() * 100 / scale )));
 					i++;
 				}
 			}

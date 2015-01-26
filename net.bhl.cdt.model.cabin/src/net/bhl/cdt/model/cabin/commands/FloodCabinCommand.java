@@ -56,7 +56,7 @@ public class FloodCabinCommand extends CDTCommand {
 	@Override
 	protected void doRun() {
 
-		final GetInput input = new GetInput();
+//		final GetInput input = new GetInput();
 
 		/**
 		 * Main method.
@@ -73,7 +73,7 @@ public class FloodCabinCommand extends CDTCommand {
 				// Set up main window (using Swing's Jframe)
 				frame = new JFrame("Cost Map Flooding Animation");
 				// frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				frame.setContentPane(new HelpView(areamap, dimensions,input.getValue()));
+				frame.setContentPane(new HelpView(areamap, dimensions,10));
 				frame.pack();
 				frame.setVisible(true);
 			}

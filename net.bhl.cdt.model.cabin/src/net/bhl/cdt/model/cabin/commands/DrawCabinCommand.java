@@ -54,34 +54,13 @@ public class DrawCabinCommand extends CDTCommand {
 	 */
 	@Override
 	protected void doRun() {
-
-//		GetInput dialog = new GetInput(shell);
-//		dialog.create();
-//		if (dialog.open() == Window.OK) {
-//		  System.out.println(dialog.getFirstName());
-//		  System.out.println(dialog.getLastName());
-//		} 
-
-
+		
 		/**
 		 * Main method.
 		 * 
 		 * @param args
 		 *            the arguments
 		 */
-//		final Vector dimensions = new Vector(cabin.getCabinWidth()/cabin.getScale(),cabin.getCabinLength()/cabin.getScale());
-//		ObstacleMap obstaclemap = new ObstacleMap(cabin);
-//		final AreaMap areamap = new AreaMap(dimensions,obstaclemap);
-//		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-//			public void run() {
-//				// Set up main window (using Swing's Jframe)
-//				frame = new JFrame("Cost Map Flooding Animation");
-//				//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//				frame.setContentPane(new HelpView(areamap, dimensions));
-//				frame.pack();
-//				frame.setVisible(true);
-//			}
-//		});
 
 		IWorkbenchPage page = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage();

@@ -67,6 +67,14 @@ public class ObstacleMap {
 	public static int getBasicValue() {
 		return BASIC_VALUE;
 	}
+	
+	public static int getPotentialValue() {
+		return POTENTIAL_AROUND_OBSTACLE_MAXIMUM;
+	}
+	
+	public static int getHoleValue() {
+		return HOLE_VALUE;
+	}
 
 	/**
 	 * This method returns the obstacle value.
