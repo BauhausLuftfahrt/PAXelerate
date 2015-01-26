@@ -69,7 +69,7 @@ public class GenerateCabinCommand extends CDTCommand {
 				break;
 			case INTERCONTINENTAL:
 				cabin.setCabinWidth(650);
-				cabin.setCabinLength(3000);
+				cabin.setCabinLength(4440);
 				break;
 			default:
 				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",

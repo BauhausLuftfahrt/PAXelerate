@@ -60,6 +60,7 @@ public class ConstructionLibrary {
 	private ILog logger;
 	private ArrayList<Integer> rowPartsInt;
 	private Boolean doItOnce = true;
+	private ArrayList<int[]> aisleCoordinates = new ArrayList<int[]>();
 
 	// TODO: Maybe use an int array for all values together!
 
@@ -180,13 +181,13 @@ public class ConstructionLibrary {
 			try {
 				BusinessClass subclass = ModelHelper.getChildrenByClass(cabin,
 						BusinessClass.class).get(0);
-				seats = (int) tryPreset(4, 12, 20, subclass.getAvailableSeats());
-				seatStructure = (String) tryPreset("1-1", "2-2", "2-2-2",
+				seats = (int) tryPreset(4, 12, 35, subclass.getAvailableSeats());
+				seatStructure = (String) tryPreset("1-1", "2-2", "2-3-2",
 						subclass.getRowStructure());
 				seatDimensions.setTwoDimensional(subclass.getSeatWidth(),
 						subclass.getSeatLength());
 				seatPitch = subclass.getSeatPitch();
-				passengers = (int) tryPreset(0, 0, 0, subclass.getPassengers());
+				passengers = (int) tryPreset(1, 1, 1, subclass.getPassengers());
 				cabin.getClasses().remove(subclass);
 			} catch (IndexOutOfBoundsException e) {
 				seats = 8;
@@ -202,7 +203,7 @@ public class ConstructionLibrary {
 			try {
 				FirstClass subclass = ModelHelper.getChildrenByClass(cabin,
 						FirstClass.class).get(0);
-				seats = (int) tryPreset(2, 2, 4, subclass.getAvailableSeats());
+				seats = (int) tryPreset(2, 2, 8, subclass.getAvailableSeats());
 				seatStructure = (String) tryPreset("1-1", "1-1", "1-2-1",
 						subclass.getRowStructure());
 				seatDimensions.setTwoDimensional(subclass.getSeatWidth(),
@@ -224,7 +225,7 @@ public class ConstructionLibrary {
 			try {
 				EconomyClass subclass = ModelHelper.getChildrenByClass(cabin,
 						EconomyClass.class).get(0);
-				seats = (int) tryPreset(20, 72, 144,
+				seats = (int) tryPreset(20, 72, 280,
 						subclass.getAvailableSeats());
 				seatStructure = (String) tryPreset("2-2", "3-3", "3-4-3",
 						subclass.getRowStructure());
