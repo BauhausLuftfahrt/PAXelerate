@@ -15,4 +15,18 @@
             class="net.bhl.cdt.model.cabin.ui.CabinViewInitializer">
       </initializer>
    </extension>
+   <extension
+         point="org.eclipse.ui.cheatsheets.cheatSheetContent">
+      <category
+            id="net.bhl.cdt.cabin.ui.cheats"
+            name="Help Cheats">
+      </category>
+      <cheatsheet
+            category="net.bhl.cdt.cabin.ui.cheats"
+            composite="false"
+            contentFile="src/net/bhl/cdt/model/cabin/ui/CabinRegulationCheats.xml"
+            id="net.bhl.cdt.cabin.ui.cheats.cabin"
+            name="CS - 25: Cabin Regulation">
+      </cheatsheet>
+   </extension>
 </plugin>
