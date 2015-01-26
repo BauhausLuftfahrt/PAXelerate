@@ -1,8 +1,6 @@
 package net.bhl.cdt.model.cabin.util;
 
-import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
-import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -25,31 +23,44 @@ public class GetInput extends TitleAreaDialog {
 	}
 
 	private WindowType windowType;
-	private String presetText;
+	private String descriptionText;
 	private Text text;
 	private String stringValue = null;
 	private int integerValue = 0;
 
 	/**
 	 * This method generates the input dialog.
-	 * @param windowType is the type of the dialog. USE WindowType.(...)
-	 * @param title is the title of the dialog
-	 * @param message is the message of the dialog
-	 * @param presetText is the preset text of the dialog
-	 * @param messageType is the message type. USE IMessageProvider.(...)
+	 * 
+	 * @param windowType
+	 *            is the type of the dialog. USE WindowType.(...)
+	 * @param title
+	 *            is the title of the dialog
+	 * @param message
+	 *            is the message of the dialog
+	 * @param descriptionText
+	 *            is the description text of the dialog
+	 * @param messageType
+	 *            is the message type. USE IMessageProvider.(...)
 	 */
-	public GetInput(WindowType windowType, String title, String message,
-			String presetText, int messageType) {
+	public GetInput(WindowType windowType, String message, String descriptionText,
+			int messageType) {
 		super(null);
 		this.windowType = windowType;
-		this.presetText = presetText;
+		this.descriptionText = descriptionText;
 		super.create();
-		setTitle(title);
-		setMessage(message, messageType);
-		
-		if (this.open() == Window.OK) {
-			/* This if clause somehow needs to be there, but does not have any use. */
+		switch (windowType) {
+		case GET_INTEGER:
+			setTitle("Integer Input Required!");
+			break;
+		case GET_STRING:
+			setTitle("Text Input Required!");
+			break;
+		default:
+			setTitle("empty title ...");
+			break;
 		}
+		setMessage(message, messageType);
+		this.open();
 	}
 
 	@Override
@@ -77,7 +88,7 @@ public class GetInput extends TitleAreaDialog {
 
 	private void createIntegerField(Composite container) {
 		Label label = new Label(container, SWT.NONE);
-		label.setText(presetText);
+		label.setText(descriptionText);
 
 		GridData gridData = new GridData();
 		gridData.grabExcessHorizontalSpace = true;
@@ -89,7 +100,7 @@ public class GetInput extends TitleAreaDialog {
 
 	private void createTextField(Composite container) {
 		Label label = new Label(container, SWT.NONE);
-		label.setText(presetText);
+		label.setText(descriptionText);
 
 		GridData gridData = new GridData();
 		gridData.grabExcessHorizontalSpace = true;
@@ -109,7 +120,8 @@ public class GetInput extends TitleAreaDialog {
 		String validateString = text.getText();
 		switch (windowType) {
 		case GET_INTEGER:
-			integerValue = Integer.parseInt(InputChecker.checkIntegersOnly(validateString));
+			integerValue = Integer.parseInt(InputChecker
+					.checkIntegersOnly(validateString));
 			break;
 		case GET_STRING:
 			stringValue = validateString;
@@ -119,11 +131,11 @@ public class GetInput extends TitleAreaDialog {
 			break;
 		}
 	}
-	
+
 	public int getIntegerValue() {
 		return integerValue;
 	}
-	
+
 	public String getStringValue() {
 		return stringValue;
 	}

@@ -40,6 +40,11 @@
             id="net.bhl.cdt.model.cabin.FloodCabin"
             name="Cabin Flood Demo">
       </command>
+      <command
+            defaultHandler="net.bhl.cdt.model.cabin.handlers.MoveRowHandler"
+            id="net.bhl.cdt.model.cabin.MoveRow"
+            name="Move The Row">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -106,6 +111,19 @@
                <iterate>
                   <instanceof
                         value="net.bhl.cdt.model.cabin.Cabin">
+                  </instanceof>
+               </iterate>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="net.bhl.cdt.model.cabin.MoveRow"
+               label="Move The Row"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate>
+                  <instanceof
+                        value="net.bhl.cdt.model.cabin.Row">
                   </instanceof>
                </iterate>
             </visibleWhen>
