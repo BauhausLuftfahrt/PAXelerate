@@ -117,13 +117,26 @@
          </command>
          <command
                commandId="net.bhl.cdt.model.cabin.MoveRow"
-               label="Move Object"
+               label="Reposition ..."
                style="push">
             <visibleWhen
                   checkEnabled="false">
                <iterate>
                   <instanceof
                         value="net.bhl.cdt.model.cabin.PhysicalObject">
+                  </instanceof>
+               </iterate>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="net.bhl.cdt.model.cabin.MoveRow"
+               label="Reposition Row ..."
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate>
+                  <instanceof
+                        value="net.bhl.cdt.model.cabin.Row">
                   </instanceof>
                </iterate>
             </visibleWhen>
