@@ -64,8 +64,6 @@ public class DoorItemProvider
 			addOnBothSidesPropertyDescriptor(object);
 			addWidthPropertyDescriptor(object);
 			addIdPropertyDescriptor(object);
-			addWidthOfMainDoorPropertyDescriptor(object);
-			addWidthOfEmergencyExitPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -159,50 +157,6 @@ public class DoorItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Width Of Main Door feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addWidthOfMainDoorPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Door_widthOfMainDoor_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Door_widthOfMainDoor_feature", "_UI_Door_type"),
-				 CabinPackage.Literals.DOOR__WIDTH_OF_MAIN_DOOR,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Width Of Emergency Exit feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addWidthOfEmergencyExitPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Door_widthOfEmergencyExit_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Door_widthOfEmergencyExit_feature", "_UI_Door_type"),
-				 CabinPackage.Literals.DOOR__WIDTH_OF_EMERGENCY_EXIT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This returns Door.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -242,8 +196,6 @@ public class DoorItemProvider
 			case CabinPackage.DOOR__ON_BOTH_SIDES:
 			case CabinPackage.DOOR__WIDTH:
 			case CabinPackage.DOOR__ID:
-			case CabinPackage.DOOR__WIDTH_OF_MAIN_DOOR:
-			case CabinPackage.DOOR__WIDTH_OF_EMERGENCY_EXIT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

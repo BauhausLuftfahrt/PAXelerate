@@ -16,8 +16,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Door#isOnBothSides <em>On Both Sides</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Door#getWidth <em>Width</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Door#getId <em>Id</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Door#getWidthOfMainDoor <em>Width Of Main Door</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Door#getWidthOfEmergencyExit <em>Width Of Emergency Exit</em>}</li>
  * </ul>
  * </p>
  *
@@ -129,59 +127,5 @@ public interface Door extends EObject {
 	 * @generated
 	 */
 	void setId(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Width Of Main Door</b></em>' attribute.
-	 * The default value is <code>"80"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Width Of Main Door</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Width Of Main Door</em>' attribute.
-	 * @see #setWidthOfMainDoor(int)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getDoor_WidthOfMainDoor()
-	 * @model default="80"
-	 * @generated
-	 */
-	int getWidthOfMainDoor();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Door#getWidthOfMainDoor <em>Width Of Main Door</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Width Of Main Door</em>' attribute.
-	 * @see #getWidthOfMainDoor()
-	 * @generated
-	 */
-	void setWidthOfMainDoor(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Width Of Emergency Exit</b></em>' attribute.
-	 * The default value is <code>"50"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Width Of Emergency Exit</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Width Of Emergency Exit</em>' attribute.
-	 * @see #setWidthOfEmergencyExit(int)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getDoor_WidthOfEmergencyExit()
-	 * @model default="50"
-	 * @generated
-	 */
-	int getWidthOfEmergencyExit();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Door#getWidthOfEmergencyExit <em>Width Of Emergency Exit</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Width Of Emergency Exit</em>' attribute.
-	 * @see #getWidthOfEmergencyExit()
-	 * @generated
-	 */
-	void setWidthOfEmergencyExit(int value);
 
 } // Door

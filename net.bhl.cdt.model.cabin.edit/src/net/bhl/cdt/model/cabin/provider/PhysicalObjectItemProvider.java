@@ -65,6 +65,7 @@ public class PhysicalObjectItemProvider
 			addXDimensionPropertyDescriptor(object);
 			addYDimensionPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
+			addIdPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -180,6 +181,28 @@ public class PhysicalObjectItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Id feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIdPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PhysicalObject_id_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PhysicalObject_id_feature", "_UI_PhysicalObject_type"),
+				 CabinPackage.Literals.PHYSICAL_OBJECT__ID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns PhysicalObject.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -222,6 +245,7 @@ public class PhysicalObjectItemProvider
 			case CabinPackage.PHYSICAL_OBJECT__XDIMENSION:
 			case CabinPackage.PHYSICAL_OBJECT__YDIMENSION:
 			case CabinPackage.PHYSICAL_OBJECT__NAME:
+			case CabinPackage.PHYSICAL_OBJECT__ID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

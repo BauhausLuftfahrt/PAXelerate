@@ -3,7 +3,11 @@ package net.bhl.cdt.model.cabin.handlers;
 import java.util.ArrayList;
 
 import net.bhl.cdt.model.cabin.Cabin;
+import net.bhl.cdt.model.cabin.Curtain;
+import net.bhl.cdt.model.cabin.Galley;
+import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.Row;
+import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.commands.MoveRowCommand;
 import net.bhl.cdt.model.util.ModelHelper;
 
@@ -25,18 +29,54 @@ public class MoveRowHandler extends AbstractHandler {
 	 *             Exception
 	 * @return null
 	 */
+	private Cabin cabin;
+	private ArrayList<Row> rowlist = new ArrayList<Row>();
+	private ArrayList<Seat> seatlist = new ArrayList<Seat>();
+	private ArrayList<Galley> galleylist = new ArrayList<Galley>();
+	private ArrayList<Lavatory> lavatorylist = new ArrayList<Lavatory>();
+	private ArrayList<Curtain> curtainlist = new ArrayList<Curtain>();
+
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		ISelection sel = HandlerUtil.getActiveMenuSelection(event);
-		IStructuredSelection selection = (IStructuredSelection) sel;	
-		ArrayList<Row> rowList = new ArrayList<Row>();
-		for(Object object:selection.toList()) {
-			if(object instanceof Row) {
-				rowList.add((Row)object);
+		IStructuredSelection selection = (IStructuredSelection) sel;
+
+		for (Object object : selection.toList()) {
+			if (object instanceof Row) {
+				rowlist.add((Row) object);
+			} else if (object instanceof Seat) {
+				seatlist.add((Seat) object);
+			} else if (object instanceof Galley) {
+				galleylist.add((Galley) object);
+			} else if (object instanceof Lavatory) {
+				lavatorylist.add((Lavatory) object);
+			} else if (object instanceof Curtain) {
+				curtainlist.add((Curtain) object);
+			} else {
+				/* ignore other objects */
 			}
 		}
-		Cabin cabin = ModelHelper.getParent(Cabin.class, (Row) selection.getFirstElement());
-		new MoveRowCommand(cabin, rowList).execute();
+		if (!rowlist.isEmpty()) {
+			cabin = ModelHelper.getParent(Cabin.class,
+					rowlist.get(0));
+		} else if (!seatlist.isEmpty()) {
+			cabin = ModelHelper.getParent(Cabin.class,
+					seatlist.get(0));
+		} else if (!galleylist.isEmpty()) {
+			cabin = ModelHelper.getParent(Cabin.class,
+					galleylist.get(0));
+		} else if (!lavatorylist.isEmpty()) {
+			cabin = ModelHelper.getParent(Cabin.class,
+					lavatorylist.get(0));
+		} else if (!curtainlist.isEmpty()) {
+			cabin = ModelHelper.getParent(Cabin.class,
+					curtainlist.get(0));
+		} else {
+			cabin = null;
+		}
+
+		new MoveRowCommand(cabin, rowlist, seatlist, galleylist, lavatorylist,
+				curtainlist).execute();
 		return null;
 	}
 }

@@ -666,24 +666,6 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDoor_WidthOfMainDoor() {
-		return (EAttribute)doorEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getDoor_WidthOfEmergencyExit() {
-		return (EAttribute)doorEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getSeat() {
 		return seatEClass;
 	}
@@ -693,17 +675,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSeat_SeatNumber() {
-		return (EAttribute)seatEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getSeat_SeatBlocked() {
-		return (EAttribute)seatEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)seatEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -712,7 +685,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getSeat_CrewSeat() {
-		return (EAttribute)seatEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)seatEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -721,7 +694,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getSeat_Letter() {
-		return (EAttribute)seatEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)seatEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -730,16 +703,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EReference getSeat_TravelClass() {
-		return (EReference)seatEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSeat_SeatId() {
-		return (EAttribute)seatEClass.getEStructuralFeatures().get(0);
+		return (EReference)seatEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1269,6 +1233,15 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getPhysicalObject_Id() {
+		return (EAttribute)physicalObjectEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getStairwayDirection() {
 		return stairwayDirectionEEnum;
 	}
@@ -1365,8 +1338,6 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		premiumEconomyClassEClass = createEClass(PREMIUM_ECONOMY_CLASS);
 
 		seatEClass = createEClass(SEAT);
-		createEAttribute(seatEClass, SEAT__SEAT_ID);
-		createEAttribute(seatEClass, SEAT__SEAT_NUMBER);
 		createEAttribute(seatEClass, SEAT__SEAT_BLOCKED);
 		createEAttribute(seatEClass, SEAT__CREW_SEAT);
 		createEAttribute(seatEClass, SEAT__LETTER);
@@ -1406,6 +1377,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEAttribute(physicalObjectEClass, PHYSICAL_OBJECT__XDIMENSION);
 		createEAttribute(physicalObjectEClass, PHYSICAL_OBJECT__YDIMENSION);
 		createEAttribute(physicalObjectEClass, PHYSICAL_OBJECT__NAME);
+		createEAttribute(physicalObjectEClass, PHYSICAL_OBJECT__ID);
 
 		lavatoryEClass = createEClass(LAVATORY);
 
@@ -1425,8 +1397,6 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEAttribute(doorEClass, DOOR__ON_BOTH_SIDES);
 		createEAttribute(doorEClass, DOOR__WIDTH);
 		createEAttribute(doorEClass, DOOR__ID);
-		createEAttribute(doorEClass, DOOR__WIDTH_OF_MAIN_DOOR);
-		createEAttribute(doorEClass, DOOR__WIDTH_OF_EMERGENCY_EXIT);
 
 		mainDoorEClass = createEClass(MAIN_DOOR);
 
@@ -1549,8 +1519,6 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEClass(premiumEconomyClassEClass, PremiumEconomyClass.class, "PremiumEconomyClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(seatEClass, Seat.class, "Seat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSeat_SeatId(), ecorePackage.getEString(), "seatId", null, 0, 1, Seat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSeat_SeatNumber(), ecorePackage.getEInt(), "seatNumber", null, 0, 1, Seat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSeat_SeatBlocked(), ecorePackage.getEBoolean(), "seatBlocked", null, 0, 1, Seat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSeat_CrewSeat(), ecorePackage.getEBoolean(), "crewSeat", null, 0, 1, Seat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSeat_Letter(), ecorePackage.getEString(), "letter", null, 0, 1, Seat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1590,6 +1558,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEAttribute(getPhysicalObject_XDimension(), ecorePackage.getEInt(), "xDimension", null, 0, 1, PhysicalObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPhysicalObject_YDimension(), ecorePackage.getEInt(), "yDimension", null, 0, 1, PhysicalObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPhysicalObject_Name(), ecorePackage.getEString(), "name", null, 0, 1, PhysicalObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPhysicalObject_Id(), ecorePackage.getEInt(), "id", "0", 0, 1, PhysicalObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lavatoryEClass, Lavatory.class, "Lavatory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1609,8 +1578,6 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEAttribute(getDoor_OnBothSides(), ecorePackage.getEBoolean(), "onBothSides", null, 0, 1, Door.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDoor_Width(), ecorePackage.getEInt(), "width", null, 0, 1, Door.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDoor_Id(), ecorePackage.getEInt(), "id", null, 0, 1, Door.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDoor_WidthOfMainDoor(), ecorePackage.getEInt(), "widthOfMainDoor", "80", 0, 1, Door.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDoor_WidthOfEmergencyExit(), ecorePackage.getEInt(), "widthOfEmergencyExit", "50", 0, 1, Door.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(mainDoorEClass, MainDoor.class, "MainDoor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

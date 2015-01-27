@@ -61,7 +61,7 @@ public class FloodCabinCommand extends CDTCommand {
 	protected void doRun() {
 
 		final GetInput dialog = new GetInput(WindowType.GET_INTEGER,
-				"please enter the execution speed in milliseconds", "speed in milliseconds",
+				"please enter the execution speed in milliseconds",
 				IMessageProvider.INFORMATION);
 
 		/**

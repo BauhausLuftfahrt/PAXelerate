@@ -43,7 +43,7 @@
       <command
             defaultHandler="net.bhl.cdt.model.cabin.handlers.MoveRowHandler"
             id="net.bhl.cdt.model.cabin.MoveRow"
-            name="Move The Row">
+            name="Move Object">
       </command>
    </extension>
    <extension
@@ -117,13 +117,13 @@
          </command>
          <command
                commandId="net.bhl.cdt.model.cabin.MoveRow"
-               label="Move The Row"
+               label="Move Object"
                style="push">
             <visibleWhen
                   checkEnabled="false">
                <iterate>
                   <instanceof
-                        value="net.bhl.cdt.model.cabin.Row">
+                        value="net.bhl.cdt.model.cabin.PhysicalObject">
                   </instanceof>
                </iterate>
             </visibleWhen>

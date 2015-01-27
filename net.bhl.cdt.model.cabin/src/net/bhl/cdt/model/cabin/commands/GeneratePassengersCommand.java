@@ -137,7 +137,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 	private Seat getSeat(Passenger passenger) {
 		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
 			if ((!seat.equals(null))
-					&& (seat.getSeatNumber() == passenger.getSeat())) {
+					&& (seat.getId() == passenger.getSeat())) {
 				return seat;
 			}
 		}
@@ -176,7 +176,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 					newPassenger.setSeat(FunctionLibrary.uniqueRandom(
 							randomSeatId, seatAreaBegin, seatsInClass));
 					newPassenger.setName(newPassenger.getId() + " ("
-							+ getSeat(newPassenger).getSeatId() + ")");
+							+ getSeat(newPassenger).getName() + ")");
 					newPassenger.setSeatRef(getSeat(newPassenger));
 					newPassenger.setTravelClass(newPassenger.getSeatRef()
 							.getTravelClass());

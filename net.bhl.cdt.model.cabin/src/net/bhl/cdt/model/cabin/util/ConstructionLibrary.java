@@ -60,9 +60,9 @@ public class ConstructionLibrary {
 	private ILog logger;
 	private ArrayList<Integer> rowPartsInt;
 	private Boolean doItOnce = true;
-	private ArrayList<int[]> aisleCoordinates = new ArrayList<int[]>();
-
-	// TODO: Maybe use an int array for all values together!
+	private int galleyCount = 1;
+	private int lavatoryCount = 1;
+	private int curtainCount = 1;
 
 	/**
 	 * This method is the constructor of this class.
@@ -283,8 +283,7 @@ public class ConstructionLibrary {
 	public void createSeat(Row row, int j) {
 		Seat newSeat = CabinFactory.eINSTANCE.createSeat();
 		row.getSeats().add(newSeat);
-		newSeat.setSeatNumber(seatCount);
-		newSeat.setSeatId(rowCount + FunctionLibrary.getCharForNumber(j));
+		newSeat.setId(seatCount);
 		newSeat.setName(rowCount + FunctionLibrary.getCharForNumber(j));
 		newSeat.setXDimension(seatDimensions.getX());
 		newSeat.setYDimension(seatDimensions.getY());
@@ -443,21 +442,21 @@ public class ConstructionLibrary {
 		if (typeDoor.getSimpleName().equals("MainDoor")) {
 			MainDoor mainDoor = CabinFactory.eINSTANCE.createMainDoor();
 			newDoor = mainDoor;
-			newDoor.setWidth(newDoor.getWidthOfMainDoor());
+			newDoor.setWidth(80);
 			newDoor.setYPosition(globalSeatPositionY);
-			globalSeatPositionY += newDoor.getWidthOfMainDoor();
+			globalSeatPositionY += 80;
 		} else if (typeDoor.getSimpleName().equals("StandardDoor")) {
 			StandardDoor standardDoor = CabinFactory.eINSTANCE
 					.createStandardDoor();
 			newDoor = standardDoor;
-			newDoor.setWidth(newDoor.getWidthOfMainDoor());
+			newDoor.setWidth(80);
 			newDoor.setYPosition(globalSeatPositionY);
-			globalSeatPositionY += newDoor.getWidthOfMainDoor();
+			globalSeatPositionY += 80;
 		} else {
 			EmergencyExit emergencyExit = CabinFactory.eINSTANCE
 					.createEmergencyExit();
 			newDoor = emergencyExit;
-			newDoor.setWidth(newDoor.getWidthOfEmergencyExit());
+			newDoor.setWidth(50);
 			newDoor.setYPosition(yPosition);
 			if (yPosition < 0) {
 				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
@@ -487,6 +486,7 @@ public class ConstructionLibrary {
 			newCurtain.setCurtainOpen(openOrNot);
 			newCurtain.setName(name + " (Part " + (k + 1) + ")");
 			newCurtain.setYDimension(10);
+			newCurtain.setId(curtainCount);
 			newCurtain.setYPosition(globalSeatPositionY + 10);
 			newCurtain
 					.setXDimension(rowPartsInt.get(k)
@@ -495,6 +495,7 @@ public class ConstructionLibrary {
 			newCurtain.setXPosition(currentCurtainPosition);
 			currentCurtainPosition = currentCurtainPosition
 					+ newCurtain.getXDimension() + cabin.getAisleWidth();
+			curtainCount ++;
 		}
 		globalSeatPositionY += 40;
 	}
@@ -516,6 +517,7 @@ public class ConstructionLibrary {
 			Lavatory newLavatory = CabinFactory.eINSTANCE.createLavatory();
 			cabin.getLavatories().add(newLavatory);
 			newLavatory.setYDimension(yDimension);
+			newLavatory.setId(lavatoryCount);
 			newLavatory.setYPosition(globalSeatPositionY);
 			try {
 				newLavatory.setXDimension(rowPartsInt.get(k)
@@ -528,6 +530,7 @@ public class ConstructionLibrary {
 			newLavatory.setXPosition(currentLavatoryPosition);
 			currentLavatoryPosition = currentLavatoryPosition
 					+ newLavatory.getXDimension() + cabin.getAisleWidth();
+			lavatoryCount ++;
 		}
 		globalSeatPositionY += yDimension;
 	}
@@ -582,6 +585,7 @@ public class ConstructionLibrary {
 			Galley newGalley = CabinFactory.eINSTANCE.createGalley();
 			cabin.getGalleys().add(newGalley);
 			newGalley.setYDimension(yDimension);
+			newGalley.setId(galleyCount);
 			newGalley.setYPosition(globalSeatPositionY);
 			try {
 				newGalley.setXDimension(rowPartsInt.get(k)
@@ -595,6 +599,7 @@ public class ConstructionLibrary {
 			newGalley.setXPosition(currentGalleyPosition);
 			currentGalleyPosition = currentGalleyPosition
 					+ newGalley.getXDimension() + cabin.getAisleWidth();
+			galleyCount++;
 		}
 		globalSeatPositionY += yDimension;
 	}

@@ -193,26 +193,10 @@ public class CabinViewPart extends ViewPart {
 		for (Curtain curtain : ModelHelper.getChildrenByClass(cabin,
 				Curtain.class)) {
 			graphicsControl.setBackground(black);
-			if (curtain.isCurtainOpen()) {
-				graphicsControl.fillRectangle(
-						(int) (xZero + curtain.getXPosition() / factor),
-						(int) (yZero + curtain.getYPosition() / factor),
-						(int) (curtain.getXDimension() / factor),
-						(int) (curtain.getYDimension() / factor));
-				graphicsControl.fillRectangle(
-						(int) (xZero + (cabin.getCabinWidth()
-								- curtain.getXPosition() - curtain
-									.getXDimension()) / factor),
-						(int) (yZero + curtain.getYPosition() / factor),
-						(int) (curtain.getXDimension() / factor),
-						(int) (curtain.getYDimension() / factor));
-			} else {
-				graphicsControl.fillRectangle(
-						(int) (xZero + curtain.getXPosition() / factor),
-						(int) (yZero + curtain.getYPosition() / factor),
-						(int) (cabin.getCabinWidth() / factor),
-						(int) (curtain.getYDimension() / factor));
-			}
+			graphicsControl.fillRectangle((int) (xZero + curtain.getXPosition()
+					/ factor), (int) (yZero + curtain.getYPosition() / factor),
+					(int) (curtain.getXDimension() / factor),
+					(int) (curtain.getYDimension() / factor));
 		}
 		if (!cabin.getPassengers().isEmpty()) { // &&drawCabin.getGraphicSettings().isShowOccupiedSeats())
 			// {

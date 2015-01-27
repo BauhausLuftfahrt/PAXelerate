@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PhysicalObjectImpl#getXDimension <em>XDimension</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PhysicalObjectImpl#getYDimension <em>YDimension</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PhysicalObjectImpl#getName <em>Name</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.PhysicalObjectImpl#getId <em>Id</em>}</li>
  * </ul>
  * </p>
  *
@@ -129,6 +130,26 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int ID_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected int id = ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -259,6 +280,27 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setId(int newId) {
+		int oldId = id;
+		id = newId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PHYSICAL_OBJECT__ID, oldId, id));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -272,6 +314,8 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements 
 				return getYDimension();
 			case CabinPackage.PHYSICAL_OBJECT__NAME:
 				return getName();
+			case CabinPackage.PHYSICAL_OBJECT__ID:
+				return getId();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -298,6 +342,9 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements 
 				return;
 			case CabinPackage.PHYSICAL_OBJECT__NAME:
 				setName((String)newValue);
+				return;
+			case CabinPackage.PHYSICAL_OBJECT__ID:
+				setId((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -326,6 +373,9 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements 
 			case CabinPackage.PHYSICAL_OBJECT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case CabinPackage.PHYSICAL_OBJECT__ID:
+				setId(ID_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -348,6 +398,8 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements 
 				return yDimension != YDIMENSION_EDEFAULT;
 			case CabinPackage.PHYSICAL_OBJECT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case CabinPackage.PHYSICAL_OBJECT__ID:
+				return id != ID_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -372,6 +424,8 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements 
 		result.append(yDimension);
 		result.append(", name: ");
 		result.append(name);
+		result.append(", id: ");
+		result.append(id);
 		result.append(')');
 		return result.toString();
 	}

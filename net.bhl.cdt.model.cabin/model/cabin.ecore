@@ -68,8 +68,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="EconomyClass" eSuperTypes="#//TravelClass"/>
   <eClassifiers xsi:type="ecore:EClass" name="PremiumEconomyClass" eSuperTypes="#//TravelClass"/>
   <eClassifiers xsi:type="ecore:EClass" name="Seat" eSuperTypes="#//PhysicalObject">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatBlocked" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="crewSeat" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="letter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -119,6 +117,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="xDimension" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="yDimension" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Lavatory" eSuperTypes="#//PhysicalObject"/>
   <eClassifiers xsi:type="ecore:EClass" name="Galley" eSuperTypes="#//PhysicalObject"/>
@@ -135,10 +135,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="onBothSides" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="widthOfMainDoor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        defaultValueLiteral="80"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="widthOfEmergencyExit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        defaultValueLiteral="50"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MainDoor" eSuperTypes="#//Door"/>
   <eClassifiers xsi:type="ecore:EClass" name="EmergencyExit" eSuperTypes="#//Door"/>

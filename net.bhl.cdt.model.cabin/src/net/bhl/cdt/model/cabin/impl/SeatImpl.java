@@ -17,8 +17,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#getSeatId <em>Seat Id</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#getSeatNumber <em>Seat Number</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#isSeatBlocked <em>Seat Blocked</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#isCrewSeat <em>Crew Seat</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#getLetter <em>Letter</em>}</li>
@@ -29,46 +27,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class SeatImpl extends PhysicalObjectImpl implements Seat {
-	/**
-	 * The default value of the '{@link #getSeatId() <em>Seat Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatId()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String SEAT_ID_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getSeatId() <em>Seat Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatId()
-	 * @generated
-	 * @ordered
-	 */
-	protected String seatId = SEAT_ID_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getSeatNumber() <em>Seat Number</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatNumber()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int SEAT_NUMBER_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getSeatNumber() <em>Seat Number</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatNumber()
-	 * @generated
-	 * @ordered
-	 */
-	protected int seatNumber = SEAT_NUMBER_EDEFAULT;
-
 	/**
 	 * The default value of the '{@link #isSeatBlocked() <em>Seat Blocked</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -156,27 +114,6 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 	@Override
 	protected EClass eStaticClass() {
 		return CabinPackage.Literals.SEAT;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public int getSeatNumber() {
-		return seatNumber;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSeatNumber(int newSeatNumber) {
-		int oldSeatNumber = seatNumber;
-		seatNumber = newSeatNumber;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SEAT__SEAT_NUMBER, oldSeatNumber, seatNumber));
 	}
 
 	/**
@@ -285,34 +222,9 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getSeatId() {
-		return seatId;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSeatId(String newSeatId) {
-		String oldSeatId = seatId;
-		seatId = newSeatId;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SEAT__SEAT_ID, oldSeatId, seatId));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CabinPackage.SEAT__SEAT_ID:
-				return getSeatId();
-			case CabinPackage.SEAT__SEAT_NUMBER:
-				return getSeatNumber();
 			case CabinPackage.SEAT__SEAT_BLOCKED:
 				return isSeatBlocked();
 			case CabinPackage.SEAT__CREW_SEAT:
@@ -334,12 +246,6 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CabinPackage.SEAT__SEAT_ID:
-				setSeatId((String)newValue);
-				return;
-			case CabinPackage.SEAT__SEAT_NUMBER:
-				setSeatNumber((Integer)newValue);
-				return;
 			case CabinPackage.SEAT__SEAT_BLOCKED:
 				setSeatBlocked((Boolean)newValue);
 				return;
@@ -364,12 +270,6 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CabinPackage.SEAT__SEAT_ID:
-				setSeatId(SEAT_ID_EDEFAULT);
-				return;
-			case CabinPackage.SEAT__SEAT_NUMBER:
-				setSeatNumber(SEAT_NUMBER_EDEFAULT);
-				return;
 			case CabinPackage.SEAT__SEAT_BLOCKED:
 				setSeatBlocked(SEAT_BLOCKED_EDEFAULT);
 				return;
@@ -394,10 +294,6 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CabinPackage.SEAT__SEAT_ID:
-				return SEAT_ID_EDEFAULT == null ? seatId != null : !SEAT_ID_EDEFAULT.equals(seatId);
-			case CabinPackage.SEAT__SEAT_NUMBER:
-				return seatNumber != SEAT_NUMBER_EDEFAULT;
 			case CabinPackage.SEAT__SEAT_BLOCKED:
 				return seatBlocked != SEAT_BLOCKED_EDEFAULT;
 			case CabinPackage.SEAT__CREW_SEAT:
@@ -420,11 +316,7 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (seatId: ");
-		result.append(seatId);
-		result.append(", seatNumber: ");
-		result.append(seatNumber);
-		result.append(", seatBlocked: ");
+		result.append(" (seatBlocked: ");
 		result.append(seatBlocked);
 		result.append(", crewSeat: ");
 		result.append(crewSeat);
