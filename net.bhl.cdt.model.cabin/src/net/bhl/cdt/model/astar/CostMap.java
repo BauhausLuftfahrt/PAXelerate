@@ -269,7 +269,8 @@ public class CostMap {
 	public void printMap() {
 		PrintWriter printToFile = null;
 		try {
-			printToFile = new PrintWriter(CabinViewPart.FILEPATH
+			CabinViewPart.makeDirectory();
+			printToFile = new PrintWriter(CabinViewPart.getFilePath()
 					+ "costmap.txt");
 			for (int i = 0; i < dimensions.getY(); i++) {
 				for (int j = 0; j < dimensions.getX(); j++) {
@@ -280,14 +281,16 @@ public class CostMap {
 					}
 				}
 				printToFile.println();
+				printToFile.close();
 			}
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 					"Saved cost map to file."));
 		} catch (FileNotFoundException e) {
 			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 					"Could not save cost map to file."));
-		} finally {
-			printToFile.close();
+		} catch (NullPointerException e) {
+			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
+					"The file path is not available."));
 		}
 	}
 

@@ -183,20 +183,20 @@ public class ObstacleMap {
 
 	/**
 	 * This method generates the obstacle hole in the aisle. This means that in
-	 * the aisle, the obstacle value is set to HOLE_VALUE. This makes the passengers
-	 * use the aisle as their preferred path.
+	 * the aisle, the obstacle value is set to HOLE_VALUE. This makes the
+	 * passengers use the aisle as their preferred path.
 	 */
 	private void generateAisleHole() {
 		int entryMin = 0;
 		int entryMax = 0;
 
-		/* 
-		 * x: begin and end; y: begin and end; 
+		/*
+		 * x: begin and end; y: begin and end;
 		 */
 		int[] firstClassAisleValues = new int[4];
 
-		/* 
-		 * Create the door path 
+		/*
+		 * Create the door path
 		 */
 		Door mainDoor = ModelHelper.getChildrenByClass(cabin, MainDoor.class)
 				.get(0);
@@ -270,21 +270,21 @@ public class ObstacleMap {
 	public void printObstacleMap() {
 		PrintWriter printToFile = null;
 		try {
-			printToFile = new PrintWriter(CabinViewPart.FILEPATH
+			CabinViewPart.makeDirectory();
+			printToFile = new PrintWriter(CabinViewPart.getFilePath()
 					+ "obstaclemap.txt");
 			for (int i = 0; i < dimensions.getY(); i++) {
 				for (int j = 0; j < dimensions.getX(); j++) {
 					printToFile.print(getValueAtPoint(j, i) + "\t");
 				}
 				printToFile.println();
+				printToFile.close();
 			}
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 					"Saved obstacle map to file."));
 		} catch (FileNotFoundException e) {
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 					"Could not save obstacle map to file."));
-		} finally {
-			printToFile.close();
 		}
 	}
 }

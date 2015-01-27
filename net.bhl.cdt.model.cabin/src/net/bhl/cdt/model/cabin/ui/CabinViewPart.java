@@ -5,6 +5,7 @@
  *******************************************************************************/
 package net.bhl.cdt.model.cabin.ui;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import net.bhl.cdt.model.astar.ObstacleMap;
@@ -96,9 +97,31 @@ public class CabinViewPart extends ViewPart {
 	private Adapter cabinAdapter;
 	private ImageLoader loader;
 	private static Image img;
-	public static final String FILEPATH = System.getProperty("user.home")
-			+ "/Documents/";
+	private static final String FOLDER_NAME = "paxsim";
+	private static final String FILE_PATH = System.getProperty("user.home")
+			+ "/Documents/"+FOLDER_NAME+"/";
+	private static File storageFolder = new File(FILE_PATH);
 	private double canvasHeight;
+
+	/**
+	 * 
+	 * @return
+	 */
+	public static String getFilePath() {
+		return FILE_PATH;
+	}
+	
+	/**
+	 * 
+	 */
+	public static void makeDirectory() {
+		if (!storageFolder.exists()) {
+			try {
+				storageFolder.mkdir();
+			} catch (SecurityException se) {
+			}
+		}
+	}
 
 	/**
 	 * This method creates the background image.
@@ -249,7 +272,7 @@ public class CabinViewPart extends ViewPart {
 		loader = new ImageLoader();
 		loader.data = new ImageData[] { image.getImageData() };
 		try {
-			loader.save(FILEPATH + "aircraft_rendered.png", SWT.IMAGE_PNG);
+			loader.save(FILE_PATH + "aircraft_rendered.png", SWT.IMAGE_PNG);
 		} catch (Exception e) {
 			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 					"The background image could not be saved! Directory problem."));
@@ -559,7 +582,7 @@ public class CabinViewPart extends ViewPart {
 		loader = new ImageLoader();
 		loader.data = new ImageData[] { image.getImageData() };
 		try {
-			loader.save(FILEPATH + "obstaclemap.png", SWT.IMAGE_PNG);
+			loader.save(FILE_PATH + "obstaclemap.png", SWT.IMAGE_PNG);
 		} catch (Exception e) {
 			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 					"The obstacle map could not be saved! Directory problem."));

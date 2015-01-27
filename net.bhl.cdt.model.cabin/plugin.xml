@@ -121,7 +121,9 @@
                style="push">
             <visibleWhen
                   checkEnabled="false">
-               <iterate>
+               <iterate
+                     ifEmpty="false"
+                     operator="or">
                   <instanceof
                         value="net.bhl.cdt.model.cabin.PhysicalObject">
                   </instanceof>

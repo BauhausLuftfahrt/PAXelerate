@@ -9,24 +9,14 @@ import javax.swing.JFrame;
 
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.astar.AreaMap;
-import net.bhl.cdt.model.astar.CostMap;
 import net.bhl.cdt.model.astar.ObstacleMap;
 import net.bhl.cdt.model.cabin.Cabin;
-import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.HelpView;
 import net.bhl.cdt.model.cabin.util.GetInput;
 import net.bhl.cdt.model.cabin.util.GetInput.WindowType;
 import net.bhl.cdt.model.cabin.util.Vector;
-
-import org.eclipse.core.runtime.ILog;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.IMessageProvider;
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.window.Window;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.PlatformUI;
+
 
 /**
  * This class refreshed the cabin view without modifying anything. It checks the
@@ -39,8 +29,6 @@ import org.eclipse.ui.PlatformUI;
 public class FloodCabinCommand extends CDTCommand {
 
 	private Cabin cabin;
-	private ILog logger;
-	private CabinViewPart cabinViewPart;
 	private static JFrame frame;
 
 	/**
@@ -51,7 +39,6 @@ public class FloodCabinCommand extends CDTCommand {
 	 */
 	public FloodCabinCommand(Cabin cabin) {
 		this.cabin = cabin;
-		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
 	}
 
 	/**
@@ -76,7 +63,6 @@ public class FloodCabinCommand extends CDTCommand {
 		final AreaMap areamap = new AreaMap(dimensions, obstaclemap);
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				// Set up main window (using Swing's Jframe)
 				frame = new JFrame("Cost Map Flooding Animation");
 				frame.setContentPane(new HelpView(areamap, dimensions, dialog
 						.getIntegerValue()));
@@ -84,11 +70,5 @@ public class FloodCabinCommand extends CDTCommand {
 				frame.setVisible(true);
 			}
 		});
-
-	}
-
-	private void checkForConstructionErrors() {
-		// TODO Create error detection algorithm.
-
 	}
 }
