@@ -518,6 +518,7 @@ public class ConstructionLibrary {
 			cabin.getLavatories().add(newLavatory);
 			newLavatory.setYDimension(yDimension);
 			newLavatory.setId(lavatoryCount);
+			newLavatory.setName(" "+lavatoryCount);
 			newLavatory.setYPosition(globalSeatPositionY);
 			try {
 				newLavatory.setXDimension(rowPartsInt.get(k)
@@ -586,6 +587,7 @@ public class ConstructionLibrary {
 			cabin.getGalleys().add(newGalley);
 			newGalley.setYDimension(yDimension);
 			newGalley.setId(galleyCount);
+			newGalley.setName(" "+galleyCount);
 			newGalley.setYPosition(globalSeatPositionY);
 			try {
 				newGalley.setXDimension(rowPartsInt.get(k)
