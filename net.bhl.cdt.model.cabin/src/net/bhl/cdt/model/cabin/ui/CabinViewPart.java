@@ -103,16 +103,20 @@ public class CabinViewPart extends ViewPart {
 	private static File storageFolder = new File(FILE_PATH);
 	private double canvasHeight;
 
+//	IPreferenceStore preferenceStore = Activator.getDefault()
+//	        .getPreferenceStore();
+//	    String string = preferenceStore.getString("MySTRING1");
+	
 	/**
-	 * 
-	 * @return
+	 * This method returns the defined file path.
+	 * @return the file path
 	 */
 	public static String getFilePath() {
 		return FILE_PATH;
 	}
 	
 	/**
-	 * 
+	 * This method creates a new directors if it does not exist yet.
 	 */
 	public static void makeDirectory() {
 		if (!storageFolder.exists()) {
