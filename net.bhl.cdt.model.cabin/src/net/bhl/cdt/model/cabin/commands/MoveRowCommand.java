@@ -93,7 +93,7 @@ public class MoveRowCommand extends CDTCommand {
 
 		GetInput input = new GetInput(
 				WindowType.GET_VECTOR,
-				"You decided to move objects. Therefore, please enter the translation values. All obejcts are then moved accordingly. All values are required to be in centimeters.",
+				"All values must be entered in [cm]. Please use digits only.",
 				IMessageProvider.INFORMATION);
 
 		movementVector = input.getVectorValue();

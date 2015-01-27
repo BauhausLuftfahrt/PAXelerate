@@ -1,7 +1,10 @@
 package net.bhl.cdt.model.cabin.util;
 
+import java.awt.Color;
+
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -40,6 +43,8 @@ public class GetInput extends TitleAreaDialog {
 	private String stringValue;
 	private int integerValue;
 	private Vector vectorValue;
+	private Composite container;
+	private Label warningLabel;
 
 	/**
 	 * This method generates the input dialog.
@@ -59,16 +64,16 @@ public class GetInput extends TitleAreaDialog {
 		switch (windowType) {
 		case GET_INTEGER:
 			titleString = "Integer Input Required!";
-			descriptionText = "Input the value here:";
+			descriptionText = "value:";
 			break;
 		case GET_VECTOR:
 			titleString = "Vector Input Required!";
-			descriptionText = "Input the x value here:";
-			descriptionText2 = "Input the y value here:";
+			descriptionText = "X dimension:";
+			descriptionText2 = "Y dimension:";
 			break;
 		case GET_STRING:
 			titleString = "Text Input Required!";
-			descriptionText = "Input the text here:";
+			descriptionText = "text:";
 			break;
 		default:
 			titleString = "empty title ...";
@@ -84,15 +89,19 @@ public class GetInput extends TitleAreaDialog {
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		Composite area = (Composite) super.createDialogArea(parent);
-		Composite container = new Composite(area, SWT.NONE);
+		container = new Composite(area, SWT.NONE);
 		container.setLayoutData(new GridData(GridData.FILL_BOTH));
 		GridLayout layout = new GridLayout(2, false);
+		layout.marginWidth = 10;
+		layout.verticalSpacing = 10;
+		layout.marginHeight = 10;
 		container.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		container.setLayout(layout);
 		createInputField(container);
 		if (windowType == WindowType.GET_VECTOR) {
 			createAnotherInputField(container);
 		}
+		createWarningLabel(container);
 		return area;
 	}
 
@@ -103,7 +112,9 @@ public class GetInput extends TitleAreaDialog {
 		gridData.grabExcessHorizontalSpace = true;
 		gridData.horizontalAlignment = GridData.FILL;
 		text = new Text(container, SWT.BORDER);
+		text.setText("0");
 		text.setLayoutData(gridData);
+
 	}
 
 	private void createAnotherInputField(Composite container) {
@@ -113,7 +124,21 @@ public class GetInput extends TitleAreaDialog {
 		gridData.grabExcessHorizontalSpace = true;
 		gridData.horizontalAlignment = GridData.FILL;
 		text2 = new Text(container, SWT.BORDER);
+		text2.setText("0");
 		text2.setLayoutData(gridData);
+	}
+
+	private void createWarningLabel(Composite container) {
+		warningLabel = new Label(container, SWT.NONE);
+		warningLabel.setText("You entered a character that is not allowed here.");
+		warningLabel.setVisible(false);
+		warningLabel.setForeground(new org.eclipse.swt.graphics.Color(null,
+				255, 0, 0));
+	}
+
+	@Override
+	protected Point getInitialSize() {
+		return new Point(450, 250);
 	}
 
 	@Override
@@ -126,34 +151,18 @@ public class GetInput extends TitleAreaDialog {
 	 * Dialog closes.
 	 */
 	private void saveInput() {
-		String validateString = text.getText();
-		String validateString2 = text2.getText();
-
 		switch (windowType) {
 		case GET_INTEGER:
-			integerValue = Integer.parseInt(InputChecker
-					.checkIntegersOnly(validateString));
+			integerValue = Integer.parseInt(text.getText());
 			break;
 		case GET_STRING:
-			stringValue = validateString;
+			stringValue = text.getText();
 			break;
 		case GET_VECTOR:
-			int xValue = 0;
-			int yValue = 0;
-			try {
-				xValue = Integer.parseInt(validateString);
-			} catch (NumberFormatException e) {
-				xValue = 0;
-			}
-			try {
-				yValue = Integer.parseInt(validateString2);
-			} catch (NumberFormatException e) {
-				yValue = 0;
-			}
-			vectorValue.setTwoDimensional(xValue, yValue);
+			vectorValue.setTwoDimensional(Integer.parseInt(text.getText()),
+					Integer.parseInt(text2.getText()));
 			break;
 		default:
-
 			break;
 		}
 	}
@@ -185,9 +194,62 @@ public class GetInput extends TitleAreaDialog {
 		return stringValue;
 	}
 
+	/**
+	 * This method checks if the input is ok.
+	 * 
+	 * @return returns if input is ok
+	 */
+	public boolean inputCheckOK() {
+		switch (windowType) {
+		case GET_INTEGER:
+			if (text.getText() != "") {
+				if (FunctionLibrary.isNumeric(text.getText())) {
+					return true;
+				} else {
+					warningLabel
+							.setText("You entered a character that is not a digit.");
+					warningLabel.setVisible(true);
+					return false;
+				}
+			} else {
+				warningLabel.setText("Please enter a digit.");
+				warningLabel.setVisible(true);
+				return false;
+			}
+		case GET_STRING:
+			if (text.getText() != "") {
+				return true;
+			} else {
+				warningLabel.setText("Please enter a string.");
+				warningLabel.setVisible(true);
+				return false;
+			}
+		case GET_VECTOR:
+			if (text.getText() != "" && text2.getText() != "") {
+				if (FunctionLibrary.isNumeric(text.getText())
+						&& FunctionLibrary.isNumeric(text2.getText())) {
+					return true;
+				} else {
+					warningLabel
+							.setText("One of the two values is not a digit.");
+					warningLabel.setVisible(true);
+					return false;
+				}
+			} else {
+				warningLabel.setText("Please enter a digit in every field.");
+				warningLabel.setVisible(true);
+				return false;
+			}
+		default:
+			return true;
+		}
+	}
+
 	@Override
 	protected void okPressed() {
-		saveInput();
-		super.okPressed();
+		if (inputCheckOK()) {
+			saveInput();
+			super.okPressed();
+		}
 	}
 }

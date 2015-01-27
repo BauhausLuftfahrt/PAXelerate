@@ -23,7 +23,7 @@ public class InputChecker {
 	 * @param str is the string to be cleaned
 	 * @return the cleaned string
 	 */
-	public static String checkIntegersOnly(String str) {
+	public static String removeNonInteger(String str) {
 		if (DEVELOPER_MODE) {
 			System.out.println("non-numeric characters detected and removed!");
 		}
