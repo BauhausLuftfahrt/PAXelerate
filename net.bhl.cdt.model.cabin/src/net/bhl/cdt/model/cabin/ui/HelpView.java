@@ -40,7 +40,7 @@ public class HelpView extends JPanel {
 			}
 		});
 		this.add(button);
-		costmap = new CostMap(dimensions, new Vector(0, 14), areamap, true);
+		costmap = new CostMap(dimensions, new Vector(0, 14), areamap, true,null);
 		Thread gameThread = new Thread() {
 
 			public void run() {

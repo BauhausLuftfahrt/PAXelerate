@@ -145,7 +145,8 @@ public class Agent extends Subject implements Runnable {
 	 *            boolean which decides if the area will be blocked or unblocked
 	 */
 	private void occupyArea(Vector vector, boolean occupy) {
-		RunAStar.getMap().getNodeByCoordinate(vector.getX(), vector.getY());
+		RunAStar.getMap().getNodeByCoordinate(vector.getX(), vector.getY())
+				.setOccupiedByAgent(occupy);
 	}
 
 	/**
@@ -159,15 +160,23 @@ public class Agent extends Subject implements Runnable {
 		}
 	}
 
+
 	/**
 	 * This method finds the way around an obstacle.
 	 */
 	public void findWayAroundObstacle() {
-		CostMap costmap = new CostMap(RunAStar.getMap().getDimensions(), current,RunAStar.getMap(),false);
+		CostMap costmap = new CostMap(RunAStar.getMap().getDimensions(),
+				current, RunAStar.getMap(), false,this);
 		costmap.printMapToConsole();
-		this.setPath(RunAStar.getPathCoordinates(new AStar(RunAStar.getMap(), costmap).getShortestPath()));
+		occupyArea(current, false);
+		start.setTwoDimensional(current.getX(), current.getY());
+		RunAStar.getPath(RunAStar.getMap(), this);
 		this.run();
 
+	}
+	
+	public Vector getPosition() {
+		return current;
 	}
 
 	private boolean willingToTakeDetour() {
@@ -201,8 +210,8 @@ public class Agent extends Subject implements Runnable {
 				if (nodeBlocked(current)) {
 					if (willingToTakeDetour()) {
 						findWayAroundObstacle();
-					}
-					else {
+						break;
+					} else {
 						waitUntilPathIsClear();
 					}
 

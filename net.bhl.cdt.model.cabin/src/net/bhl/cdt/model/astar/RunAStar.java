@@ -26,7 +26,7 @@ public class RunAStar {
 	private static ArrayList<Passenger> finishedList = new ArrayList<Passenger>();
 	private static Logger console = new Logger();
 	private static AreaMap areamap;
-	private CostMap costmap;
+	private static CostMap costmap;
 	private static ArrayList<Agent> agents = new ArrayList<Agent>();
 	private static ArrayList<int[][]> pathList = new ArrayList<int[][]>();
 	private static StopWatch stopwatch = new StopWatch();
@@ -62,11 +62,11 @@ public class RunAStar {
 	 *            is the specific agent
 	 * @return returns the shortest path
 	 */
-	public int[][] getPath(AreaMap areamap, Agent agent) {
+	public static int[][] getPath(AreaMap areamap, Agent agent) {
 		stopwatch.start();
 		AStar pathFinder = new AStar(areamap, costmap);
 		console.addToLog("Calculating shortest path...");
-		pathFinder.calcShortestPath(agent.getStart(), agent.getGoal());
+		pathFinder.calculateShortestPath(agent.getStart(), agent.getGoal());
 		stopwatch.stop();
 		Path shortestPath = pathFinder.getShortestPath();
 		if (shortestPath == null) {
@@ -227,7 +227,7 @@ public class RunAStar {
 			agents.add(agent);
 		}
 
-		costmap = new CostMap(dimensions, initialStart, areamap, false);
+		costmap = new CostMap(dimensions, initialStart, areamap, false,null);
 		costmap.printMap();
 
 		// iterate through the list of all agents, calculate each agent's path,

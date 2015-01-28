@@ -57,7 +57,7 @@ public class CostMap {
 	 * @param areaMap
 	 */
 	public CostMap(Vector dimension, Vector start, AreaMap areaMap,
-			Boolean inSteps) {
+			Boolean inSteps, Agent agent) {
 		dimensions.setFromPoint(dimension.getValue());
 		startPoint.setFromPoint(start.getValue());
 		// goalPoint.setFromPoint(goal.getValue());
@@ -71,18 +71,27 @@ public class CostMap {
 				Node node = areamap.getNodeByCoordinate(i, j);
 				if (node.isObstacle()) {
 					map[i][j] = -1;
-				} else if (node.isOccupiedByAgent()) {
-					map[i][j] = 500;
-					map[i-1][j] = 500;
-					map[i][j-1] = 500;
-					map[i-1][j-1] = 500;
-					map[i+1][j] = 500;
-					map[i][j+1] = 500;
-					map[i+1][j+1] = 500;
-					map[i+1][j-1] = 500;
-					map[i-1][j+1] = 500;
 				} else {
 					map[i][j] = node.getCost();
+				}
+			}
+		}
+		if (agent != null) {
+			for (int i = 0; i < dimensions.getX(); i++) {
+				for (int j = 0; j < dimensions.getY(); j++) {
+					Node node = areamap.getNodeByCoordinate(i, j);
+					// TODO: DONT BLOCK IT AROUND YOURSELF !
+					if (node.isOccupiedByAgent()&&node.getPosition()!=agent.getPosition()) {
+						map[i][j] = 500;
+						map[i - 1][j] = 500;
+						map[i][j - 1] = 500;
+						map[i - 1][j - 1] = 500;
+						map[i + 1][j] = 500;
+						map[i][j + 1] = 500;
+						map[i + 1][j + 1] = 500;
+						map[i + 1][j - 1] = 500;
+						map[i - 1][j + 1] = 500;
+					}
 				}
 			}
 		}

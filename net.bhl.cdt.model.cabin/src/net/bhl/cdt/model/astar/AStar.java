@@ -50,7 +50,7 @@ public class AStar {
 	 *            is the goal vector
 	 * @return returns the shortest path
 	 */
-	public Path calcShortestPath(Vector start, Vector goal) {
+	public Path calculateShortestPath(Vector start, Vector goal) {
 
 		// mark start and goal node
 		map.setStartLocation(start);
