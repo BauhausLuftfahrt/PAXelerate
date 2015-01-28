@@ -163,9 +163,15 @@ public class Agent extends Subject implements Runnable {
 	 * This method finds the way around an obstacle.
 	 */
 	public void findWayAroundObstacle() {
-		
-		CostMap costmap = new CostMap(RunAStar.getMap().getDimensions(), start, areaMap, inSteps)
+		CostMap costmap = new CostMap(RunAStar.getMap().getDimensions(), current,RunAStar.getMap(),false);
+		costmap.printMapToConsole();
+		this.setPath(RunAStar.getPathCoordinates(new AStar(RunAStar.getMap(), costmap).getShortestPath()));
+		this.run();
 
+	}
+
+	private boolean willingToTakeDetour() {
+		return true;
 	}
 
 	private boolean nodeBlocked(Vector vector) {
@@ -193,7 +199,13 @@ public class Agent extends Subject implements Runnable {
 				this.current.setFromPoint(path[i]);
 
 				if (nodeBlocked(current)) {
-					waitUntilPathIsClear(); // or go around obstacle
+					if (willingToTakeDetour()) {
+						findWayAroundObstacle();
+					}
+					else {
+						waitUntilPathIsClear();
+					}
+
 					numbOfInterupts++;
 				} else if (passengerStowsLuggage() && !alreadyStowed) {
 					RunAStar.getMap().getNode(previous)

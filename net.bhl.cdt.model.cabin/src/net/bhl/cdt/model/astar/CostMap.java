@@ -52,47 +52,6 @@ public class CostMap {
 	private int lowestCost;
 
 	/**
-	 * The cost map is constructed in this function.
-	 * 
-	 * @param dimension
-	 *            is the dimension vector
-	 * @param start
-	 *            is the start vector
-	 * @param goal
-	 *            is the goal vector
-	 * @param areaMap
-	 *            contains information on the cost of every individual element
-	 */
-	public CostMap(Vector dimension, Vector start, Vector goal,
-			AreaMap areaMap, Boolean inSteps) {
-		dimensions.setFromPoint(dimension.getValue());
-		startPoint.setFromPoint(start.getValue());
-		// goalPoint.setFromPoint(goal.getValue());
-		goalPoint.setTwoDimensional((int) dimension.getX() / 2,
-				dimension.getY() - 1);
-		areamap = areaMap;
-		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
-		map = new int[dimensions.getX()][dimensions.getY()];
-		for (int i = 0; i < dimensions.getX(); i++) {
-			for (int j = 0; j < dimensions.getY(); j++) {
-				Node node = areamap.getNodeByCoordinate(i, j);
-				if (!node.isObstacle()) {
-					map[i][j] = node.getCost();
-				} else {
-					map[i][j] = -1;
-				}
-			}
-		}
-		map[startPoint.getX()][startPoint.getY()] = 0;
-		visitedPoints.add(startPoint);
-		if (!inSteps) {
-			floodMap();
-		} else {
-			createSurroundingCosts(startPoint);
-		}
-	}
-
-	/**
 	 * 
 	 * @param dimension
 	 * @param areaMap
@@ -110,10 +69,20 @@ public class CostMap {
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
 				Node node = areamap.getNodeByCoordinate(i, j);
-				if (!node.isObstacle()) {
-					map[i][j] = node.getCost();
-				} else {
+				if (node.isObstacle()) {
 					map[i][j] = -1;
+				} else if (node.isOccupiedByAgent()) {
+					map[i][j] = 500;
+					map[i-1][j] = 500;
+					map[i][j-1] = 500;
+					map[i-1][j-1] = 500;
+					map[i+1][j] = 500;
+					map[i][j+1] = 500;
+					map[i+1][j+1] = 500;
+					map[i+1][j-1] = 500;
+					map[i-1][j+1] = 500;
+				} else {
+					map[i][j] = node.getCost();
 				}
 			}
 		}
@@ -126,20 +95,28 @@ public class CostMap {
 		}
 	}
 
+	public int[][] getMap() {
+		return map;
+	}
+
+	public void setCost(int x, int y, int value) {
+		map[x][y] = value;
+	}
+
 	/**
 	 * This method prints the cost map without the values.
 	 */
-	public void printMapWithoutValues() {
+	public void printMapToConsole() {
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
 				if (map[i][j] == -1) {
-					System.out.print("X");
+					System.out.print("X\t");
 				} else if (i == goalPoint.getX() && j == goalPoint.getY()) {
-					System.out.print("O");
+					System.out.print("G\t");
 				} else if (i == startPoint.getX() && j == startPoint.getY()) {
-					System.out.print("O");
+					System.out.print("S\t");
 				} else {
-					System.out.print("-");
+					System.out.print(getCostForCoordinates(i, j) + "\t");
 				}
 			}
 			System.out.println();

@@ -22,7 +22,7 @@ import net.bhl.cdt.model.util.ModelHelper;
 public class RunAStar {
 	private static Cabin cabin;
 	private static Boolean simulationDone = false;
-	private ObstacleMap obstaclemap;
+	private static ObstacleMap obstaclemap;
 	private static ArrayList<Passenger> finishedList = new ArrayList<Passenger>();
 	private static Logger console = new Logger();
 	private static AreaMap areamap;
@@ -99,6 +99,10 @@ public class RunAStar {
 	 */
 	public static AreaMap getMap() {
 		return areamap;
+	}
+	
+	public static ObstacleMap getObstacleMap() {
+		return obstaclemap;
 	}
 
 	/**
