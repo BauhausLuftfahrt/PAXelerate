@@ -57,6 +57,7 @@ public class GenerateCabinCommand extends CDTCommand {
 		 * The cabin width only adapts to the preset aircraft type if the user
 		 * has not entered a custom width value
 		 */
+		cabin.setSpeedFactor(10);
 		if (cabin.isUsePresetSettings()) {
 			switch (cabin.getAircraftType()) {
 			case REGIONAL:

@@ -145,20 +145,9 @@ public class Agent extends Subject implements Runnable {
 	 *            boolean which decides if the area will be blocked or unblocked
 	 */
 	private void occupyArea(Vector vector, boolean occupy) {
-		// TODO: Passenger Dimensions
-		int width = 3;
-		for (int x = -width; x <= width; x++) {
-			for (int y = -width; y <= width; y++) {
-				if(!((y==1&x==1)||(y==-1&x==-1)||(y==1&x==-1)||(y==-1&x==1)||(y==0&x==1)||(y==0&x==-1)||(y==-1&x==0)||(y==1&x==0))) {
-				if ((vector.getX() + x) > 0 && (vector.getY() + y) > 0) {
 					RunAStar.getMap()
-							.getNodeByCoordinate(vector.getX() + x,
-									vector.getY() + y)
-							.setOccupiedByAgent(occupy);
-				}
-			}
-			}
-		}
+							.getNodeByCoordinate(vector.getX(),
+									vector.getY());
 	}
 
 	/**
@@ -204,7 +193,7 @@ public class Agent extends Subject implements Runnable {
 				}
 				this.current.setFromPoint(path[i]);
 
-				RunAStar.getMap().printMap();
+//				RunAStar.getMap().printMap();
 
 				if (nodeBlocked(current)) {
 

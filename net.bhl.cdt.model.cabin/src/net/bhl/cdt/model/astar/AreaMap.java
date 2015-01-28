@@ -70,11 +70,11 @@ public class AreaMap {
 			for (int y = 0; y < dimensions.getY(); y++) {
 				node = new Node(new Vector(x,y));
 
-				if (obstacleMap.getValueAtPoint(x, y) == ObstacleMap
+				if (ObstacleMap.getValueAtPoint(x, y) == ObstacleMap
 						.getObstacleValue()) {
 					node.setObstacle(true);
 				} else {
-					node.setCost(obstacleMap.getValueAtPoint(x, y));
+					node.setCost(ObstacleMap.getValueAtPoint(x, y));
 				}
 				map.get(x).add(node);
 

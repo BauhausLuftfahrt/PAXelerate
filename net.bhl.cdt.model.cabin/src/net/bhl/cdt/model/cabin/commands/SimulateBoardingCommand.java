@@ -70,6 +70,11 @@ public class SimulateBoardingCommand extends CDTCommand {
 	protected void doRun() {
 
 		cabin.setFramesPerSecond(10);
+		
+		for(Passenger passenger:cabin.getPassengers()) {
+			passenger.setIsSeated(false);
+			passenger.setBoardingTime(0);
+		}
 
 		/********************************** Get CabinView and ConsoleView ***************************************/
 		IWorkbenchPage page = PlatformUI.getWorkbench()

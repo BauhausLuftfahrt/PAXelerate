@@ -121,12 +121,15 @@
                style="push">
             <visibleWhen
                   checkEnabled="false">
-               <iterate
-                     ifEmpty="false"
-                     operator="or">
-                  <instanceof
-                        value="net.bhl.cdt.model.cabin.PhysicalObject">
-                  </instanceof>
+               <iterate>
+                  <or>
+                     <instanceof
+                           value="net.bhl.cdt.model.cabin.PhysicalObject">
+                     </instanceof>
+                     <instanceof
+                           value="net.bhl.cdt.model.cabin.Row">
+                     </instanceof>
+                  </or>
                </iterate>
             </visibleWhen>
          </command>

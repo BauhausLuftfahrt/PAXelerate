@@ -78,10 +78,7 @@ public class AStar {
 
 			// check if our current Node location is the goal Node. If it is, we
 			// are done.
-			if (current.getPosition().getX() == map.getGoalLocation()
-					.getPosition().getX()
-					&& current.getPosition().getY() == map.getGoalLocation()
-							.getPosition().getY()) {
+			if (current.getPosition() == map.getGoalLocation().getPosition()) {
 				return reconstructPath(current);
 			}
 
@@ -107,12 +104,10 @@ public class AStar {
 					// as the next step in the path
 					int neighborDistanceFromStart = (int) map
 							.getDistanceBetween(map.getStartNode(), neighbor);
-					int currentDistanceFromStart = (int) map
-							.getDistanceBetween(map.getStartNode(), current);
-					int neighborCostFromStart = costmap.getCostForCoordinates(
+					int neighborCostFromStart = CostMap.getCostForCoordinates(
 							neighbor.getPosition().getX(), neighbor
 									.getPosition().getY());
-					int currentCostFromStart = costmap.getCostForCoordinates(
+					int currentCostFromStart = CostMap.getCostForCoordinates(
 							current.getPosition().getX(), current.getPosition()
 									.getY());
 
@@ -120,13 +115,8 @@ public class AStar {
 					if (!openList.contains(neighbor)) {
 						openList.add(neighbor);
 						neighborIsBetter = true;
-//					} else if ((neighborCostFromStart < currentCostFromStart)
-//							&& (neighborDistanceFromStart < currentDistanceFromStart)) {
-//						neighborIsBetter = true;
 					} else if (neighborCostFromStart < currentCostFromStart) {
 						neighborIsBetter = true;
-//					} else if (neighborDistanceFromStart < currentDistanceFromStart) {
-//						neighborIsBetter = true;
 					} else {
 						neighborIsBetter = false;
 					}
@@ -138,7 +128,7 @@ public class AStar {
 						neighbor.setPreviousNode(current);
 						neighbor.setCostFromStart(neighborCostFromStart);
 						neighbor.setDistanceFromStart(neighborDistanceFromStart);
-						neighbor.setCompareFactor(neighborCostFromStart);// +0.001*neighborDistanceFromStart));
+						neighbor.setCompareFactor(neighborCostFromStart);
 					}
 				}
 			}

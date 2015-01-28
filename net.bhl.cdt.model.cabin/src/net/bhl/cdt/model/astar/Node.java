@@ -32,9 +32,7 @@ public class Node implements Comparable<Node> {
 	private Vector position = new Vector(0, 0);
 	private boolean isObstacle;
 	private boolean isOccupiedByAgent;
-	@SuppressWarnings("unused")
 	private boolean isStart;
-	@SuppressWarnings("unused")
 	private boolean isGoal;
 	private int cost;
 	private double compareFactor;
@@ -369,21 +367,15 @@ public class Node implements Comparable<Node> {
 	 * @return returns the better node value
 	 */
 	public int compareTo(Node otherNode) {
-		int BEFORE = -1;
-		int EQUAL = 0;
-		int AFTER = 1;
+		int better = -1;
+		int equal = 0;
+		int worse = 1;
 		if (costFromStart < otherNode.costFromStart) {
-			return BEFORE;
+			return better;
 		} else if (costFromStart > otherNode.costFromStart) {
-			return AFTER;
+			return worse;
 		} else {
-//			if (distanceFromStart < otherNode.distanceFromStart) {
-//				return BEFORE;
-//			} else if (distanceFromStart > otherNode.distanceFromStart) {
-//				return AFTER;
-//			} else {
-				return EQUAL;
-//	/		}
+			return equal;
 		}
 	}
 }

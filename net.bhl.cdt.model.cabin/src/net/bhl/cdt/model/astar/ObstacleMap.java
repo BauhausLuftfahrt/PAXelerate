@@ -37,9 +37,9 @@ public class ObstacleMap {
 	private Cabin cabin;
 	private Vector dimensions = new Vector(0, 0);
 	private static final int MAX_VALUE = 100000;
-	private static final int BASIC_VALUE = 2;
+	private static final int BASIC_VALUE = 3;
 	private static final int OBSTACLE_RANGE_IN_CM = 20;
-	private static final int POTENTIAL_AROUND_OBSTACLE_MAXIMUM = 10;
+	private static final int POTENTIAL_AROUND_OBSTACLE_MAXIMUM = 100;
 	private static final int HOLE_VALUE = 1; // DO NEVER SET THIS TO ZERO!
 	private static int[][] obstacleMap;
 	private ILog logger;
@@ -68,10 +68,18 @@ public class ObstacleMap {
 		return BASIC_VALUE;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public static int getPotentialValue() {
 		return POTENTIAL_AROUND_OBSTACLE_MAXIMUM;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public static int getHoleValue() {
 		return HOLE_VALUE;
 	}
@@ -210,6 +218,8 @@ public class ObstacleMap {
 					if (j > entryMin && j < entryMax) {
 						obstacleMap[i][j] = HOLE_VALUE;
 					}
+					
+					//TODO: clear out the aisles and set them to HOLE_VALUE
 					if (i < 19 && i > 16) {
 						obstacleMap[i][j] = HOLE_VALUE;
 					}
