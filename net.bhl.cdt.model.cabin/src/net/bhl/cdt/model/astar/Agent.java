@@ -145,28 +145,27 @@ public class Agent extends Subject implements Runnable {
 	 *            boolean which decides if the area will be blocked or unblocked
 	 */
 	private void occupyArea(Vector vector, boolean occupy) {
-					RunAStar.getMap()
-							.getNodeByCoordinate(vector.getX(),
-									vector.getY());
+		RunAStar.getMap().getNodeByCoordinate(vector.getX(), vector.getY());
 	}
 
 	/**
-	 * This method waits untin the path is clear.
+	 * This method waits until the path is clear.
 	 */
 	public void waitUntilPathIsClear() {
-
-		// TODO: implement functionality to wait until e.g. passenger who is
-		// blocking
-		// path has cleared the path
+		try {
+			Thread.sleep(1);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
 	 * This method finds the way around an obstacle.
 	 */
 	public void findWayAroundObstacle() {
+		
+		CostMap costmap = new CostMap(RunAStar.getMap().getDimensions(), start, areaMap, inSteps)
 
-		// TODO: implement functionality to find a way around e.g. the passenger
-		// who is blocking the path
 	}
 
 	private boolean nodeBlocked(Vector vector) {
@@ -193,15 +192,8 @@ public class Agent extends Subject implements Runnable {
 				}
 				this.current.setFromPoint(path[i]);
 
-//				RunAStar.getMap().printMap();
-
 				if (nodeBlocked(current)) {
-
-					// this.waitUntilPathIsClear()
-					// or
-					// this.findWayAroundObstacle()
-
-					Thread.sleep(200 / speedfactor);
+					waitUntilPathIsClear(); // or go around obstacle
 					numbOfInterupts++;
 				} else if (passengerStowsLuggage() && !alreadyStowed) {
 					RunAStar.getMap().getNode(previous)
