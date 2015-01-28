@@ -56,7 +56,7 @@
                   visible="true">
             </separator>
             <command
-                  commandId="net.bhl.cdt.cabin.ui.command7"
+                  commandId="net.bhl.cdt.model.cabin.DrawCabin"
                   label="Refresh Cabin View"
                   style="push">
             </command>

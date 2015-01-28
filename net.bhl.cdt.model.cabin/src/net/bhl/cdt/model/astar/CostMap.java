@@ -281,7 +281,6 @@ public class CostMap {
 					}
 				}
 				printToFile.println();
-				printToFile.close();
 			}
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 					"Saved cost map to file."));
@@ -291,6 +290,8 @@ public class CostMap {
 		} catch (NullPointerException e) {
 			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 					"The file path is not available."));
+		} finally {
+			printToFile.close();
 		}
 	}
 

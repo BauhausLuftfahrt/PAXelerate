@@ -46,8 +46,11 @@ public class AreaMap {
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
 				if (map.get(i).get(j).isOccupiedByAgent()) {
+					System.out.print("O");
+				} else if((map.get(i).get(j).isObstacle())) {
 					System.out.print("X");
-				} else {
+				}
+				else {
 					System.out.print("-");
 				}
 			}

@@ -130,6 +130,8 @@ public class AStar {
 					} else {
 						neighborIsBetter = false;
 					}
+					
+					//TODO: check if passenger dimensions allow this specific node.
 
 					// set neighbors parameters if it is better
 					if (neighborIsBetter) {

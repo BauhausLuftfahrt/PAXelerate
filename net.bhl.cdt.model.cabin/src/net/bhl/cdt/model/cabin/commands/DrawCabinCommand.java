@@ -5,20 +5,11 @@
  *******************************************************************************/
 package net.bhl.cdt.model.cabin.commands;
 
-import javax.swing.JFrame;
-
 import net.bhl.cdt.commands.CDTCommand;
-import net.bhl.cdt.model.astar.AreaMap;
-import net.bhl.cdt.model.astar.CostMap;
-import net.bhl.cdt.model.astar.ObstacleMap;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
-import net.bhl.cdt.model.cabin.ui.HelpView;
-import net.bhl.cdt.model.cabin.util.Vector;
-import net.bhl.cdt.model.util.ModelHelper;
-
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
@@ -39,7 +30,6 @@ public class DrawCabinCommand extends CDTCommand {
 	private Cabin cabin;
 	private ILog logger;
 	private CabinViewPart cabinViewPart;
-	private static JFrame frame;
 
 	/**
 	 * This method is the constructor.

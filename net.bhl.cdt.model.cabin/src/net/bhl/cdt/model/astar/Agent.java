@@ -13,8 +13,8 @@ import net.bhl.cdt.model.observer.Subject;
 import net.bhl.cdt.model.util.ModelHelper;
 
 /**
- * This class is the agent object. It walks a specific calculated path and reacts
- * to obstacles occurring on the go.
+ * This class is the agent object. It walks a specific calculated path and
+ * reacts to obstacles occurring on the go.
  * 
  * @author marc.engelmann
  *
@@ -37,12 +37,18 @@ public class Agent extends Subject implements Runnable {
 
 	/**
 	 * This method constructs an agent.
-	 * @param passenger the passenger which is represented by the agent
-	 * @param start the starting vector 
-	 * @param goal the goal vector
-	 * @param scale the scale of the simulation
+	 * 
+	 * @param passenger
+	 *            the passenger which is represented by the agent
+	 * @param start
+	 *            the starting vector
+	 * @param goal
+	 *            the goal vector
+	 * @param scale
+	 *            the scale of the simulation
 	 */
-	Agent(Passenger passenger, Vector start, Vector goal, int scale, int speedFactor) {
+	Agent(Passenger passenger, Vector start, Vector goal, int scale,
+			int speedFactor) {
 		this.speedfactor = speedFactor;
 		this.passenger = passenger;
 		this.start = start;
@@ -54,6 +60,7 @@ public class Agent extends Subject implements Runnable {
 
 	/**
 	 * This method returns the starting point vector.
+	 * 
 	 * @return the start vector
 	 */
 	public Vector getStart() {
@@ -62,6 +69,7 @@ public class Agent extends Subject implements Runnable {
 
 	/**
 	 * This method returns the goal point.
+	 * 
 	 * @return the goal point vector
 	 */
 	public Vector getGoal() {
@@ -70,7 +78,9 @@ public class Agent extends Subject implements Runnable {
 
 	/**
 	 * This method sets the path of the agent.
-	 * @param path the path
+	 * 
+	 * @param path
+	 *            the path
 	 */
 	public void setPath(int[][] path) {
 		this.path = path;
@@ -135,24 +145,19 @@ public class Agent extends Subject implements Runnable {
 	 *            boolean which decides if the area will be blocked or unblocked
 	 */
 	private void occupyArea(Vector vector, boolean occupy) {
-		Seat seat = ModelHelper.getChildrenByClass(RunAStar.getCabin(),
-				Seat.class).get(0);
-		if (vector.getY() > (seat.getYPosition() / RunAStar.getCabin()
-				.getScale())) {
-			int width = 0;
-			for (int x = -width; x <= width; x++) {
-				// for (int y = -square; y<0; y++) {
-				// if(!(x==0&&y==0)) {
-				if ((vector.getX() + x) > 0) {// &&(yLoc+y)>0) {
+		// TODO: Passenger Dimensions
+		int width = 3;
+		for (int x = -width; x <= width; x++) {
+			for (int y = -width; y <= width; y++) {
+				if(!((y==1&x==1)||(y==-1&x==-1)||(y==1&x==-1)||(y==-1&x==1)||(y==0&x==1)||(y==0&x==-1)||(y==-1&x==0)||(y==1&x==0))) {
+				if ((vector.getX() + x) > 0 && (vector.getY() + y) > 0) {
 					RunAStar.getMap()
 							.getNodeByCoordinate(vector.getX() + x,
-									vector.getY()).setOccupiedByAgent(occupy);
+									vector.getY() + y)
+							.setOccupiedByAgent(occupy);
 				}
-				// }
-				// }
 			}
-		} else {
-			RunAStar.getMap().getNode(vector).setOccupiedByAgent(occupy);
+			}
 		}
 	}
 
@@ -199,6 +204,8 @@ public class Agent extends Subject implements Runnable {
 				}
 				this.current.setFromPoint(path[i]);
 
+				RunAStar.getMap().printMap();
+
 				if (nodeBlocked(current)) {
 
 					// this.waitUntilPathIsClear()
@@ -231,27 +238,28 @@ public class Agent extends Subject implements Runnable {
 					passenger.setPositionY(this.currentAgentPosition[i][1]
 							* scale);
 					passenger.setOrientationInDegree(getRotation());
-					Thread.sleep((int) (1000/ speedfactor / (passenger.getWalkingSpeed() * 100 / scale )));
+					Thread.sleep((int) (1000 / speedfactor / (passenger
+							.getWalkingSpeed() * 100 / scale)));
 					i++;
 				}
 			}
 			RunAStar.getMap().getNode(current).setOccupiedByAgent(false);
 			passenger.setIsSeated(true);
-			RunAStar.setPassengerSeated(passenger,this);
 			stopwatch.stop();
-			passenger.setBoardingTime((int)(stopwatch.getElapsedTime() / 1000));
+			passenger
+					.setBoardingTime((int) (stopwatch.getElapsedTime() / 1000 * speedfactor));
 			passenger.setNumberOfWaits(numbOfInterupts);
+			RunAStar.setPassengerSeated(passenger, this);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
-	 * This method ends the thread.
+	 * This method interrupts the thread.
 	 */
-	
-	public void end() {
-		if(getThread() != null) {
+	public void interrupt() {
+		if (getThread() != null) {
 			getThread().interrupt();
 		}
 	}

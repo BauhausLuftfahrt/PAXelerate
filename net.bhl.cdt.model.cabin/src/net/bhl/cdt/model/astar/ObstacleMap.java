@@ -278,13 +278,14 @@ public class ObstacleMap {
 					printToFile.print(getValueAtPoint(j, i) + "\t");
 				}
 				printToFile.println();
-				printToFile.close();
 			}
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 					"Saved obstacle map to file."));
 		} catch (FileNotFoundException e) {
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 					"Could not save obstacle map to file."));
+		} finally {
+			printToFile.close();
 		}
 	}
 }
