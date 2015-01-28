@@ -12,9 +12,12 @@ import net.bhl.cdt.model.astar.AreaMap;
 import net.bhl.cdt.model.astar.CostMap;
 import net.bhl.cdt.model.astar.ObstacleMap;
 import net.bhl.cdt.model.cabin.Cabin;
+import net.bhl.cdt.model.cabin.Passenger;
+import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.HelpView;
 import net.bhl.cdt.model.cabin.util.Vector;
+import net.bhl.cdt.model.util.ModelHelper;
 
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
@@ -68,6 +71,7 @@ public class DrawCabinCommand extends CDTCommand {
 				.findView("net.bhl.cdt.model.cabin.cabinview");
 
 		checkForConstructionErrors();
+		checkPassengerAssignments();
 
 		try {
 			cabinViewPart.setCabin(cabin);
@@ -76,6 +80,17 @@ public class DrawCabinCommand extends CDTCommand {
 		} catch (NullPointerException e) {
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 					"No cabin view is visible!"));
+		}
+	}
+	
+	private void checkPassengerAssignments() {
+		for(Passenger passenger:cabin.getPassengers()) {
+			Seat seat = passenger.getSeatRef();
+			if(passenger.getSeat()!=seat.getId()) {
+				passenger.setSeat(seat.getId());
+				passenger.setName(passenger.getId() + " ("
+							+ seat.getName() + ")");
+			}
 		}
 	}
 

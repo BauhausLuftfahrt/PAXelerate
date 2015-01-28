@@ -237,12 +237,22 @@ public class Agent extends Subject implements Runnable {
 			}
 			RunAStar.getMap().getNode(current).setOccupiedByAgent(false);
 			passenger.setIsSeated(true);
-			RunAStar.setPassengerSeated(passenger);
+			RunAStar.setPassengerSeated(passenger,this);
 			stopwatch.stop();
 			passenger.setBoardingTime((int)(stopwatch.getElapsedTime() / 1000));
 			passenger.setNumberOfWaits(numbOfInterupts);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * This method ends the thread.
+	 */
+	
+	public void end() {
+		if(getThread() != null) {
+			getThread().interrupt();
 		}
 	}
 

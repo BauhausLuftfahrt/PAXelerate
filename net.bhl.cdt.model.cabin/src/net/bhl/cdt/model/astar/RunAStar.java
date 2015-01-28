@@ -176,8 +176,9 @@ public class RunAStar {
 	 * @param passenger
 	 *            is the passenger
 	 */
-	public static void setPassengerSeated(Passenger passenger) {
+	public static void setPassengerSeated(Passenger passenger, Agent agent) {
 		finishedList.add(passenger);
+		agent.end();
 		if (finishedList.size() == cabin.getPassengers().size()) {
 			setSimulationDone(true);
 		}
