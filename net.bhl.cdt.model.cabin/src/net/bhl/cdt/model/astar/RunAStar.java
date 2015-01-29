@@ -22,14 +22,11 @@ import net.bhl.cdt.model.util.ModelHelper;
 public class RunAStar {
 	private static Cabin cabin;
 	private static Boolean simulationDone = false;
-	private static ObstacleMap obstaclemap;
 	private static ArrayList<Passenger> finishedList = new ArrayList<Passenger>();
 	private static Logger console = new Logger();
 	private static AreaMap areamap;
 	private static CostMap costmap;
-	private static ArrayList<Agent> agents = new ArrayList<Agent>();
-	private static ArrayList<int[][]> pathList = new ArrayList<int[][]>();
-	private static StopWatch stopwatch = new StopWatch();
+	private static ArrayList<Agent> agentList = new ArrayList<Agent>();
 	private static StopWatch anotherStopwatch = new StopWatch();
 	private Vector initialStart;
 	private Vector dimensions;
@@ -45,7 +42,6 @@ public class RunAStar {
 	 *            is the cabin
 	 */
 	public RunAStar(ObstacleMap obstaclemap, Vector dimensions, Cabin cabin) {
-		this.obstaclemap = obstaclemap;
 		this.dimensions = dimensions;
 		console.addToLog("Cabin initializing...");
 		areamap = new AreaMap(dimensions, obstaclemap);
@@ -53,44 +49,6 @@ public class RunAStar {
 		run();
 	}
 
-	/**
-	 * This method gets the calculated shortest path.
-	 * 
-	 * @param areamap
-	 *            is the area map
-	 * @param agent
-	 *            is the specific agent
-	 * @return returns the shortest path
-	 */
-	public static int[][] getPath(AreaMap areamap, Agent agent) {
-		stopwatch.start();
-		AStar pathFinder = new AStar(areamap, costmap);
-		console.addToLog("Calculating shortest path...");
-		pathFinder.calculateShortestPath(agent.getStart(), agent.getGoal());
-		stopwatch.stop();
-		Path shortestPath = pathFinder.getShortestPath();
-		if (shortestPath == null) {
-			console.addToLog("No path found.");
-		}
-		agent.setPath(getPathCoordinates(pathFinder.getShortestPath()));
-		return getPathCoordinates(pathFinder.getShortestPath());
-	}
-
-	/**
-	 * This method transforms the shortest path into coordinates.
-	 * 
-	 * @param shortestPath
-	 *            is the shortest path
-	 * @return returns the coordinates of the path
-	 */
-	public static int[][] getPathCoordinates(Path shortestPath) {
-		int[][] pathCoordinates = new int[shortestPath.getLength()][2];
-		for (int i = 0; i < shortestPath.getLength(); i++) {
-			pathCoordinates[i] = shortestPath.getWayPoint(i).getPosition()
-					.getValue();
-		}
-		return pathCoordinates;
-	}
 
 	/**
 	 * This method returns the area map.
@@ -117,18 +75,14 @@ public class RunAStar {
 	 * 
 	 * @return simulationDone
 	 */
-	public static Boolean getSimulationDone() {
+	public static Boolean isSimulationDone() {
 		return simulationDone;
 	}
-
-	/**
-	 * This method returns an array of the path list.
-	 * 
-	 * @return the paths in a list
-	 */
-	public static ArrayList<int[][]> getPathList() {
-		return pathList;
+	
+	public static ArrayList<Agent> getAgentList() {
+		return agentList;
 	}
+
 
 	/**
 	 * This method signals that a passengers has found his seat. This is done by
@@ -179,7 +133,7 @@ public class RunAStar {
 			Agent agent = new Agent(passenger, start, goal, cabin.getScale(),
 					cabin.getSpeedFactor());
 			// list of all agents
-			agents.add(agent);
+			agentList.add(agent);
 		}
 
 		costmap = new CostMap(dimensions, initialStart, areamap, false, null);
@@ -188,15 +142,15 @@ public class RunAStar {
 		anotherStopwatch.start();
 
 		/** First generate all paths ... */
-		for (Agent agent : agents) {
-			pathList.add(getPath(areamap, agent));
+		for (Agent agent : agentList) {
+			agent.findNewPath(costmap);
 		}
 		anotherStopwatch.stop();
 		System.out.println("Calculations completed in: "
 				+ anotherStopwatch.getElapsedTime() + " ms");
 
 		/** ... then start the simulations simultaneously */
-		for (Agent agent : agents) {
+		for (Agent agent : agentList) {
 			agent.start();
 		}
 

@@ -107,7 +107,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 			RunAStar astar = new RunAStar(obstaclemap, new Vector(
 					(int) (cabin.getCabinWidth() / cabin.getScale()),
 					(int) (cabin.getCabinLength() / cabin.getScale())), cabin);
-			while (!RunAStar.getSimulationDone()) {
+			while (!RunAStar.isSimulationDone()) {
 				try {
 					for (Passenger pax : ModelHelper.getChildrenByClass(
 							astar.getPassengerLocations(), Passenger.class)) {
@@ -143,7 +143,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 					e.printStackTrace();
 				}
 			}
-			if (RunAStar.getSimulationDone()) {
+			if (RunAStar.isSimulationDone()) {
 				for (Passenger pax : ModelHelper.getChildrenByClass(
 						astar.getPassengerLocations(), Passenger.class)) {
 					if (pax.isIsSeated() && !alreadySeatedList.contains(pax)) {
@@ -178,8 +178,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 							"Heat map generation succeeded"));
 				}
 
-				if (!RunAStar.getPathList().isEmpty()) {
-					cabinViewPart.submitPath(RunAStar.getPathList());
+				if (!RunAStar.getAgentList().isEmpty()) {
+					cabinViewPart.submitAgents(RunAStar.getAgentList());
 					logger.log(new Status(IStatus.INFO,
 							"net.bhl.cdt.model.cabin",
 							"Paths printed successfully"));

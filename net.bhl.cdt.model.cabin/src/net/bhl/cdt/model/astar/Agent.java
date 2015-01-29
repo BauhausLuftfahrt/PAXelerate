@@ -23,11 +23,10 @@ public class Agent extends Subject implements Runnable {
 	private Thread thread;
 	private int[][] path;
 
-	private Vector start = new Vector(0, 0);
-	private Vector goal = new Vector(0, 0);
-	private Vector current = new Vector(0, 0);
-	private Vector previous = new Vector(0, 0);
-
+	private Vector start;
+	private Vector goal;
+	private Vector current;
+	private Vector previous;
 	private Passenger passenger;
 	private int scale;
 	private int speedfactor;
@@ -72,16 +71,6 @@ public class Agent extends Subject implements Runnable {
 	 */
 	public Vector getGoal() {
 		return goal;
-	}
-
-	/**
-	 * This method sets the path of the agent.
-	 * 
-	 * @param path
-	 *            the path
-	 */
-	public void setPath(int[][] path) {
-		this.path = path;
 	}
 
 	/**
@@ -141,37 +130,36 @@ public class Agent extends Subject implements Runnable {
 	 * This method finds the way around an obstacle.
 	 */
 	private void findWayAroundObstacle() {
-		findNewPath();
+		findNewPath(null);
 	}
 
-	private void findNewPath() {
-		CostMap costmap = new CostMap(RunAStar.getMap().getDimensions(),
-				current, RunAStar.getMap(), false, this);
-		costmap.printMapToConsole();
-		occupyArea(current, false);
-		start.setTwoDimensional(current.getX(), current.getY());
-		current.setTwoDimensional(0, 0);
-		previous.setTwoDimensional(0, 0);
+	public void findNewPath(CostMap costmap) {
+		if (costmap == null) {
+			CostMap newCostmap = new CostMap(RunAStar.getMap().getDimensions(),
+					current, RunAStar.getMap(), false, this);
+			newCostmap.printMapToConsole();
+			costmap = newCostmap;
+			start = current;
+		}
 		
 		AStar pathFinder = new AStar(RunAStar.getMap(), costmap);
-		pathFinder.calculateShortestPath(start, goal);
-	    setPath(getPathCoordinates(pathFinder.getShortestPath()));
-	    
-	}
-	
-	private static int[][] getPathCoordinates(Path shortestPath) {
-		int[][] pathCoordinates = new int[shortestPath.getLength()][2];
+		Path shortestPath = pathFinder.calculateShortestPath(start, goal);
+		path = new int[shortestPath.getLength()][2];
 		for (int i = 0; i < shortestPath.getLength(); i++) {
-			pathCoordinates[i] = shortestPath.getWayPoint(i).getPosition()
-					.getValue();
-		}
-		return pathCoordinates;
+			path[i] = shortestPath.getWayPoint(i).getPosition().getValue();
+		}		
+		current = new Vector(path[0][0], path[0][1]);
+		previous = new Vector(0, 0);
 	}
-	
+
+	public int[][] getPath() {
+		return path;
+	}
+
 	public Vector getPosition() {
 		return current;
 	}
-	
+
 	private boolean goalReached() {
 		return FunctionLibrary.vectorsAreEqual(current, goal);
 	}
@@ -189,10 +177,9 @@ public class Agent extends Subject implements Runnable {
 			int i = 0;
 			while (i < path.length) {
 				if (i != 0) {
-					this.previous.setFromPoint(path[i - 1]);
+					previous.setFromPoint(path[i - 1]);
 				}
-				this.current.setFromPoint(path[i]);
-
+				current.setFromPoint(path[i]);
 				if (nodeBlocked(current)) {
 					numbOfInterupts++;
 					// if (willingToTakeDetour()) {
@@ -240,11 +227,9 @@ public class Agent extends Subject implements Runnable {
 			Thread.sleep((int) (passenger.getStartBoardingAfterDelay() * 1000 / speedfactor));
 			stopwatch.start();
 			numbOfInterupts = 0;
-
-			while(!goalReached()) {
-			followPath();
+			while (!goalReached()) {
+				followPath();
 			}
-
 			RunAStar.getMap().getNode(current).setOccupiedByAgent(false);
 			passenger.setIsSeated(true);
 			stopwatch.stop();

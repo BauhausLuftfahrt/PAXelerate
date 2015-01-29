@@ -8,6 +8,7 @@ package net.bhl.cdt.model.cabin.ui;
 import java.io.File;
 import java.util.ArrayList;
 
+import net.bhl.cdt.model.astar.Agent;
 import net.bhl.cdt.model.astar.ObstacleMap;
 import net.bhl.cdt.model.cabin.BusinessClass;
 import net.bhl.cdt.model.cabin.Cabin;
@@ -601,7 +602,7 @@ public class CabinViewPart extends ViewPart {
 	 * @param pathList
 	 *            the list of paths
 	 */
-	public void submitPath(final ArrayList<int[][]> pathList) {
+	public void submitAgents(final ArrayList<Agent> agentList) {
 		parent.redraw();
 		parent.update();
 		canvas.redraw();
@@ -611,8 +612,8 @@ public class CabinViewPart extends ViewPart {
 				e.gc.setAntialias(SWT.ON);
 				e.gc.setInterpolation(SWT.HIGH);
 				e.gc.setLineWidth(2);
-				for (int l = 0; l < pathList.size(); l++) {
-					final int[][] singlePath = pathList.get(l);
+				for (int l = 0; l < agentList.size(); l++) {
+					final int[][] singlePath = agentList.get(l).getPath();
 					int[] pathPoints = new int[2 * singlePath.length];
 					int k = 0;
 					int i = 0;
