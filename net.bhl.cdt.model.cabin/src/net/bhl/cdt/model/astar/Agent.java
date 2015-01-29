@@ -32,7 +32,8 @@ public class Agent extends Subject implements Runnable {
 	private int speedfactor;
 	private int numbOfInterupts;
 	private boolean alreadyStowed;
-	private static StopWatch stopwatch = new StopWatch();
+	private AreaMap areamapCopy;
+	private StopWatch stopwatch = new StopWatch();
 
 	/**
 	 * This method constructs an agent.
@@ -110,7 +111,7 @@ public class Agent extends Subject implements Runnable {
 	 * @param occupy
 	 *            boolean which decides if the area will be blocked or unblocked
 	 */
-	private void occupyArea(Vector vector, boolean occupy) {
+	private void occupyNode(Vector vector, boolean occupy) {
 		RunAStar.getMap().getNodeByCoordinate(vector.getX(), vector.getY())
 				.setOccupiedByAgent(occupy);
 	}
@@ -134,20 +135,36 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	public void findNewPath(CostMap costmap) {
+		AStar pathFinder = null;
 		if (costmap == null) {
-			CostMap newCostmap = new CostMap(RunAStar.getMap().getDimensions(),
-					current, RunAStar.getMap(), false, this);
+			CostMap newCostmap = new CostMap(areamapCopy.getDimensions(),
+					previous, areamapCopy, false, this);
 			newCostmap.printMapToConsole();
 			costmap = newCostmap;
-			start = current;
+			// TODO for Tobi: sobald der startpunkt geändert wird, funktioniert
+			// es nicht mehr. ich weiß nicht, warum das so ist.
+			// start.setTwoDimensional(18,15);//previous.getX(),
+			// previous.getY()-1);
+			System.out.println("no costmap detected - new cost map mode");
+			pathFinder = new AStar(areamapCopy, costmap);
+			pathFinder.calculateShortestPath(this);
+			// TODO: dieser Punkt wird nie erreicht. Das hat was mit dem Ändern
+			// des Startpunkts zu tun. Ich weiß aber nicht was.
+			System.out.println("Found new path ..");
+		} else {
+			pathFinder = new AStar(RunAStar.getMap(), costmap);
+			pathFinder.calculateShortestPath(this);
+			System.out.println("Found initial path ..");
 		}
-		
-		AStar pathFinder = new AStar(RunAStar.getMap(), costmap);
-		Path shortestPath = pathFinder.calculateShortestPath(start, goal);
+
+		Path shortestPath = pathFinder.getShortestPath();
+
 		path = new int[shortestPath.getLength()][2];
+		System.out.println("here i am");
 		for (int i = 0; i < shortestPath.getLength(); i++) {
 			path[i] = shortestPath.getWayPoint(i).getPosition().getValue();
-		}		
+		}
+		System.out.println("Found new path.");
 		current = new Vector(path[0][0], path[0][1]);
 		previous = new Vector(0, 0);
 	}
@@ -157,7 +174,7 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	public Vector getPosition() {
-		return current;
+		return previous;
 	}
 
 	private boolean goalReached() {
@@ -173,7 +190,7 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	private void followPath() {
-		try {
+		mainloop: try {
 			int i = 0;
 			while (i < path.length) {
 				if (i != 0) {
@@ -183,17 +200,25 @@ public class Agent extends Subject implements Runnable {
 				if (nodeBlocked(current)) {
 					numbOfInterupts++;
 					// if (willingToTakeDetour()) {
-					findWayAroundObstacle();
-					break;
+					System.out.println("Way is blocked! I, "
+							+ passenger.getName()
+							+ " will search for a new way!");
+					areamapCopy = RunAStar.getMap();
+					findNewPath(null);
+					System.out.println("WHY DO I NOT REACH THIS POINT!?????!");
+					occupyNode(previous, false);
+					occupyNode(current, false);
+					i = Integer.MAX_VALUE;
+					break mainloop;
 					// } else {
 					// waitUntilPathIsClear();
 				} else if (passengerStowsLuggage() && !alreadyStowed) {
 					RunAStar.getMap().getNode(previous)
 							.setOccupiedByAgent(false);
 					RunAStar.getMap().getNode(current).setOccupiedByAgent(true);
-					occupyArea(current, true);
+					occupyNode(current, true);
 					Thread.sleep((int) (passenger.getLuggageStowTime() * 1000 / 2 / speedfactor));
-					occupyArea(current, false);
+					occupyNode(current, false);
 					alreadyStowed = true;
 					i++;
 				} else {
@@ -201,8 +226,8 @@ public class Agent extends Subject implements Runnable {
 					RunAStar.getMap().getNode(previous)
 							.setOccupiedByAgent(false);
 					RunAStar.getMap().getNode(current).setOccupiedByAgent(true);
-					occupyArea(previous, false);
-					occupyArea(current, true);
+					occupyNode(previous, false);
+					occupyNode(current, true);
 
 					passenger.setPositionX(current.getX() * scale);
 					passenger.setPositionY(current.getY() * scale);
@@ -213,7 +238,7 @@ public class Agent extends Subject implements Runnable {
 				}
 			}
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			System.out.println("Task is somehow interrupted");
 		}
 	}
 
@@ -228,8 +253,11 @@ public class Agent extends Subject implements Runnable {
 			stopwatch.start();
 			numbOfInterupts = 0;
 			while (!goalReached()) {
+				System.out.println("Following new path now");
 				followPath();
+				System.out.println("reached end of path following.");
 			}
+
 			RunAStar.getMap().getNode(current).setOccupiedByAgent(false);
 			passenger.setIsSeated(true);
 			stopwatch.stop();
@@ -239,15 +267,7 @@ public class Agent extends Subject implements Runnable {
 			RunAStar.setPassengerSeated(passenger, this);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * This method interrupts the thread.
-	 */
-	public void interrupt() {
-		if (getThread() != null) {
-			getThread().interrupt();
+			System.out.println("HERE IS SOME ERROR!");
 		}
 	}
 

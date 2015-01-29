@@ -26,17 +26,25 @@ public final class FunctionLibrary {
 	public static boolean vectorsAreEqual(Vector vector1, Vector vector2) {
 		if (vector1.getX() == vector2.getX()
 				&& vector1.getY() == vector2.getY()) {
-			if(vector1.getNumberOfDimensions()==vector2.getNumberOfDimensions()) {
-				if(vector1.getNumberOfDimensions() == 2) {
+			if (vector1.getNumberOfDimensions() == vector2
+					.getNumberOfDimensions()) {
+				if (vector1.getNumberOfDimensions() == 2) {
 					return true;
 				} else if (vector1.getNumberOfDimensions() == 3) {
-					if(vector1.getZ() == vector2.getZ()) {
+					if (vector1.getZ() == vector2.getZ()) {
 						return true;
+					} else {
+						return false;
 					}
+				} else {
+					return false;
 				}
+			} else {
+				return false;
 			}
+		} else {
+			return false;
 		}
-		return false;
 	}
 
 	/**

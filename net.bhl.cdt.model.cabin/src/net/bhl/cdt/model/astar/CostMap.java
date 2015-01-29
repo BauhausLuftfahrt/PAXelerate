@@ -60,7 +60,6 @@ public class CostMap {
 			Boolean inSteps, Agent agent) {
 		dimensions.setFromPoint(dimension.getValue());
 		startPoint.setFromPoint(start.getValue());
-		// goalPoint.setFromPoint(goal.getValue());
 		goalPoint.setTwoDimensional((int) dimension.getX() / 2,
 				dimension.getY() - 1);
 		areamap = areaMap;
@@ -318,7 +317,25 @@ public class CostMap {
 	 *            is the y coordinate of the desired point
 	 * @return returns the cost for a specific coordinate
 	 */
-	public static int getCostForCoordinates(int xCord, int yCord) {
+	public int getCostForCoordinates(int xCord, int yCord) {
+		try {
+			return map[xCord][yCord];
+		} catch (ArrayIndexOutOfBoundsException e) {
+			return Integer.MAX_VALUE;
+		}
+	}
+	
+	/**
+	 * This method returns the <b><i>already calculated</i></b> cost of a
+	 * specific point in the cost map.
+	 * 
+	 * @param xCord
+	 *            is the x coordinate of the desired point
+	 * @param yCord
+	 *            is the y coordinate of the desired point
+	 * @return returns the cost for a specific coordinate
+	 */
+	public static int getStaticCostForCoordinates(int xCord, int yCord) {
 		try {
 			return map[xCord][yCord];
 		} catch (ArrayIndexOutOfBoundsException e) {

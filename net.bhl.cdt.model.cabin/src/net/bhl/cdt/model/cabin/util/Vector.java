@@ -212,9 +212,9 @@ public class Vector implements Comparable<Vector> {
 		int BEFORE = -1;
 		int EQUAL = 0;
 		int AFTER = 1;
-		if (CostMap.getCostForCoordinates(xValue,yValue) <CostMap.getCostForCoordinates(vector.getX(),vector.getY())) {
+		if (CostMap.getStaticCostForCoordinates(xValue,yValue) < CostMap.getStaticCostForCoordinates(vector.getX(),vector.getY())) {
 			return BEFORE;
-		} else if (CostMap.getCostForCoordinates(xValue,yValue) > CostMap.getCostForCoordinates(vector.getX(),vector.getY())) {
+		} else if (CostMap.getStaticCostForCoordinates(xValue,yValue) > CostMap.getStaticCostForCoordinates(vector.getX(),vector.getY())) {
 			return AFTER;
 		} else {
 			 if (yValue < vector.getY()) {

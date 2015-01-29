@@ -93,7 +93,6 @@ public class RunAStar {
 	 */
 	public static void setPassengerSeated(Passenger passenger, Agent agent) {
 		finishedList.add(passenger);
-		agent.interrupt();
 		if (finishedList.size() == cabin.getPassengers().size()) {
 			setSimulationDone(true);
 		}

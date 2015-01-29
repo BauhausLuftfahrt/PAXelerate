@@ -8,6 +8,7 @@ package net.bhl.cdt.model.astar;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import net.bhl.cdt.model.cabin.util.FunctionLibrary;
 import net.bhl.cdt.model.cabin.util.Vector;
 
 /**
@@ -50,15 +51,15 @@ public class AStar {
 	 *            is the goal vector
 	 * @return returns the shortest path
 	 */
-	public Path calculateShortestPath(Vector start, Vector goal) {
+	public Path calculateShortestPath(Agent agent) {
 
 		// mark start and goal node
-		map.setStartLocation(start);
-		map.setGoalLocation(goal);
+		map.setStartLocation(agent.getStart());
+		map.setGoalLocation(agent.getGoal());
 
 		// Check if the goal node is blocked (if it is, it is impossible to find
 		// a path there)
-		if (map.getNode(goal).isObstacle()) {
+		if (map.getNode(agent.getGoal()).isObstacle()) {
 			return null;
 		}
 
@@ -67,7 +68,7 @@ public class AStar {
 		map.getStartNode().setCompareFactor(0);
 		closedList.clear();
 		openList.clear();
-		openList.add(map.getStartNode());
+		openList.add(map.getNode(agent.getStart()));
 
 		// while we haven't reached the goal yet
 		while (openList.size() != 0) {
@@ -75,11 +76,12 @@ public class AStar {
 			// get the first Node from non-searched Node list, sorted by lowest
 			// distance from our goal as guessed by our heuristic
 			Node current = openList.getFirst();
-
 			// check if our current Node location is the goal Node. If it is, we
 			// are done.
-			if (current.getPosition() == map.getGoalLocation().getPosition()) {
+			if (FunctionLibrary.vectorsAreEqual(current.getPosition(), agent.getGoal())) {
+				System.out.println("astar - path found!");
 				return reconstructPath(current);
+
 			}
 
 			// move current Node to the closed (already searched) list
@@ -103,13 +105,12 @@ public class AStar {
 					// calculate how long the path is if we choose this neighbor
 					// as the next step in the path
 					int neighborDistanceFromStart = (int) map
-							.getDistanceBetween(map.getStartNode(), neighbor);
-					int neighborCostFromStart = CostMap.getCostForCoordinates(
-							neighbor.getPosition().getX(), neighbor
-									.getPosition().getY());
-					int currentCostFromStart = CostMap.getCostForCoordinates(
-							current.getPosition().getX(), current.getPosition()
-									.getY());
+							.getDistanceBetween(map.getNode(agent.getStart()),
+									neighbor);
+					int neighborCostFromStart = costmap.getCost(neighbor
+							.getPosition());
+					int currentCostFromStart = costmap.getCost(current
+							.getPosition());
 
 					// add neighbor to the open list if it is not there
 					if (!openList.contains(neighbor)) {
@@ -120,8 +121,9 @@ public class AStar {
 					} else {
 						neighborIsBetter = false;
 					}
-					
-					//TODO: check if passenger dimensions allow this specific node.
+
+					// TODO: check if passenger dimensions allow this specific
+					// node.
 
 					// set neighbors parameters if it is better
 					if (neighborIsBetter) {

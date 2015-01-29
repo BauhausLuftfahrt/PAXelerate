@@ -97,7 +97,7 @@ public class HelpView extends JPanel {
 					g.setColor(Color.RED);
 				}
 				
-				if (CostMap.getCostForCoordinates(x, y) == -1) {
+				if (costmap.getCostForCoordinates(x, y) == -1) {
 					g.setColor(Color.DARK_GRAY);
 					g.fillRect(x * squareDimension - squareCorrectX, y
 							* squareDimension - squareCorrectY,
@@ -108,7 +108,7 @@ public class HelpView extends JPanel {
 							* squareDimension - squareCorrectY,
 							squareDimension, squareDimension);
 					g.setColor(Color.BLACK);
-					g.drawString(CostMap.getCostForCoordinates(x, y) + "", x
+					g.drawString(costmap.getCostForCoordinates(x, y) + "", x
 							* squareDimension, y * squareDimension);
 
 				}
