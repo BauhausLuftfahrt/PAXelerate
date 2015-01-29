@@ -22,7 +22,6 @@ import net.bhl.cdt.model.observer.Subject;
 public class Agent extends Subject implements Runnable {
 	private Thread thread;
 	private int[][] path;
-
 	private Vector start;
 	private Vector goal;
 	private Vector current;
@@ -116,23 +115,23 @@ public class Agent extends Subject implements Runnable {
 				.setOccupiedByAgent(occupy);
 	}
 
-	/**
-	 * This method waits until the path is clear.
-	 */
-	private void waitUntilPathIsClear() {
-		try {
-			Thread.sleep(1);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
+	// /**
+	// * This method waits until the path is clear.
+	// */
+	// private void waitUntilPathIsClear() {
+	// try {
+	// Thread.sleep(1);
+	// } catch (InterruptedException e) {
+	// e.printStackTrace();
+	// }
+	// }
 
-	/**
-	 * This method finds the way around an obstacle.
-	 */
-	private void findWayAroundObstacle() {
-		findNewPath(null);
-	}
+	// /**
+	// * This method finds the way around an obstacle.
+	// */
+	// private void findWayAroundObstacle() {
+	// findNewPath(null);
+	// }
 
 	public void findNewPath(CostMap costmap) {
 		AStar pathFinder = null;
@@ -143,22 +142,27 @@ public class Agent extends Subject implements Runnable {
 			costmap = newCostmap;
 			// TODO for Tobi: sobald der startpunkt geändert wird, funktioniert
 			// es nicht mehr. ich weiß nicht, warum das so ist.
-			// start.setTwoDimensional(18,15);//previous.getX(),
-			// previous.getY()-1);
+			//start.setTwoDimensional(previous.getX(), previous.getY());
+			System.out.println("x = " + start.getX() + ",y = " + start.getY());
 			System.out.println("no costmap detected - new cost map mode");
 			pathFinder = new AStar(areamapCopy, costmap);
+			/*
+			 * Es funktioniert genau bis zu diesem Punkt. Alles ab hier
+			 * funktioniert nicht. innnerhalb der folgenden Funktion liegt der
+			 * Fehler.
+			 */
 			pathFinder.calculateShortestPath(this);
 			// TODO: dieser Punkt wird nie erreicht. Das hat was mit dem Ändern
 			// des Startpunkts zu tun. Ich weiß aber nicht was.
 			System.out.println("Found new path ..");
 		} else {
+			/* at first launch, the path is begins at the door */
 			pathFinder = new AStar(RunAStar.getMap(), costmap);
 			pathFinder.calculateShortestPath(this);
 			System.out.println("Found initial path ..");
 		}
 
 		Path shortestPath = pathFinder.getShortestPath();
-
 		path = new int[shortestPath.getLength()][2];
 		System.out.println("here i am");
 		for (int i = 0; i < shortestPath.getLength(); i++) {
@@ -181,9 +185,9 @@ public class Agent extends Subject implements Runnable {
 		return FunctionLibrary.vectorsAreEqual(current, goal);
 	}
 
-	private boolean willingToTakeDetour() {
-		return true;
-	}
+	// private boolean willingToTakeDetour() {
+	// return true;
+	// }
 
 	private boolean nodeBlocked(Vector vector) {
 		return RunAStar.getMap().getNode(vector).isOccupiedByAgent();
@@ -198,20 +202,14 @@ public class Agent extends Subject implements Runnable {
 				}
 				current.setFromPoint(path[i]);
 				if (nodeBlocked(current)) {
+					/* bisher: calculate new path every time the path is blocked */
 					numbOfInterupts++;
-					// if (willingToTakeDetour()) {
-					System.out.println("Way is blocked! I, "
-							+ passenger.getName()
-							+ " will search for a new way!");
 					areamapCopy = RunAStar.getMap();
-					findNewPath(null);
-					System.out.println("WHY DO I NOT REACH THIS POINT!?????!");
 					occupyNode(previous, false);
 					occupyNode(current, false);
+					findNewPath(null);
 					i = Integer.MAX_VALUE;
 					break mainloop;
-					// } else {
-					// waitUntilPathIsClear();
 				} else if (passengerStowsLuggage() && !alreadyStowed) {
 					RunAStar.getMap().getNode(previous)
 							.setOccupiedByAgent(false);
@@ -238,7 +236,6 @@ public class Agent extends Subject implements Runnable {
 				}
 			}
 		} catch (InterruptedException e) {
-			System.out.println("Task is somehow interrupted");
 		}
 	}
 
@@ -267,7 +264,6 @@ public class Agent extends Subject implements Runnable {
 			RunAStar.setPassengerSeated(passenger, this);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-			System.out.println("HERE IS SOME ERROR!");
 		}
 	}
 
