@@ -8,6 +8,7 @@ package net.bhl.cdt.model.astar;
 
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
+import net.bhl.cdt.model.cabin.util.FunctionLibrary;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.observer.Subject;
 
@@ -33,7 +34,6 @@ public class Agent extends Subject implements Runnable {
 	private int numbOfInterupts;
 	private boolean alreadyStowed;
 	private static StopWatch stopwatch = new StopWatch();
-	private int[][] currentAgentPosition = new int[1][2];
 
 	/**
 	 * This method constructs an agent.
@@ -47,15 +47,13 @@ public class Agent extends Subject implements Runnable {
 	 * @param scale
 	 *            the scale of the simulation
 	 */
-	Agent(Passenger passenger, Vector start, Vector goal, int scale,
+	public Agent(Passenger passenger, Vector start, Vector goal, int scale,
 			int speedFactor) {
 		this.speedfactor = speedFactor;
 		this.passenger = passenger;
 		this.start = start;
 		this.goal = goal;
 		this.scale = scale;
-		this.currentAgentPosition[0] = start.getValue();
-
 	}
 
 	/**
@@ -87,44 +85,23 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * Rotation from 0 to 359 degrees. Only 45� steps. North is 0�.
+	 * Rotation from 0 to 359 degrees. Only 45 degree steps. North is zero.
 	 * 
 	 * @return the rotation in degrees.
 	 */
-	public int getRotation() {
-
-		int xWay = (current.getX() - previous.getX());
-		int yWay = (current.getY() - previous.getY());
-		if (xWay > 0) {
-			if (yWay == 0) {
-				return 90;
-			}
-			if (yWay < 0) {
-				return 45;
-			}
-			if (yWay > 0) {
-				return 135;
-			}
-		} else if (xWay < 0) {
-
-			if (yWay > 0) {
-				return 225;
-			}
-			if (yWay < 0) {
-				return 315;
-			}
-		} else if (xWay == 0) {
-			if (yWay == 0) {
-				return 0;
-			}
-			if (yWay > 0) {
-				return 180;
-			}
-			if (yWay < 0) {
-				return 0;
-			}
+	private int getRotation() {
+		/* get the angle in radian from -Pi to Pi, so zero is EAST */
+		double theta = Math.atan2(current.getY() - previous.getY(),
+				current.getX() - previous.getX());
+		/* rotate the angle by 90 degrees so that zero is NORTH */
+		theta += Math.PI / 2.0;
+		/* transform from radian to degree */
+		int angle = (int) Math.toDegrees(theta);
+		/* if degree is smaller than 0, convert it */
+		if (angle < 0) {
+			angle += 360;
 		}
-		return 0;
+		return angle;
 	}
 
 	/**
@@ -152,7 +129,7 @@ public class Agent extends Subject implements Runnable {
 	/**
 	 * This method waits until the path is clear.
 	 */
-	public void waitUntilPathIsClear() {
+	private void waitUntilPathIsClear() {
 		try {
 			Thread.sleep(1);
 		} catch (InterruptedException e) {
@@ -163,19 +140,40 @@ public class Agent extends Subject implements Runnable {
 	/**
 	 * This method finds the way around an obstacle.
 	 */
-	public void findWayAroundObstacle() {
+	private void findWayAroundObstacle() {
+		findNewPath();
+	}
+
+	private void findNewPath() {
 		CostMap costmap = new CostMap(RunAStar.getMap().getDimensions(),
 				current, RunAStar.getMap(), false, this);
 		costmap.printMapToConsole();
 		occupyArea(current, false);
 		start.setTwoDimensional(current.getX(), current.getY());
-		RunAStar.getPath(RunAStar.getMap(), this);
-		this.run();
-
+		current.setTwoDimensional(0, 0);
+		previous.setTwoDimensional(0, 0);
+		
+		AStar pathFinder = new AStar(RunAStar.getMap(), costmap);
+		pathFinder.calculateShortestPath(start, goal);
+	    setPath(getPathCoordinates(pathFinder.getShortestPath()));
+	    
 	}
-
+	
+	private static int[][] getPathCoordinates(Path shortestPath) {
+		int[][] pathCoordinates = new int[shortestPath.getLength()][2];
+		for (int i = 0; i < shortestPath.getLength(); i++) {
+			pathCoordinates[i] = shortestPath.getWayPoint(i).getPosition()
+					.getValue();
+		}
+		return pathCoordinates;
+	}
+	
 	public Vector getPosition() {
 		return current;
+	}
+	
+	private boolean goalReached() {
+		return FunctionLibrary.vectorsAreEqual(current, goal);
 	}
 
 	private boolean willingToTakeDetour() {
@@ -196,14 +194,12 @@ public class Agent extends Subject implements Runnable {
 				this.current.setFromPoint(path[i]);
 
 				if (nodeBlocked(current)) {
-					// if (willingToTakeDetour()) {
-					// findWayAroundObstacle();
-					// break;
-					// } else {
-					waitUntilPathIsClear();
-					// }
-
 					numbOfInterupts++;
+					// if (willingToTakeDetour()) {
+					findWayAroundObstacle();
+					break;
+					// } else {
+					// waitUntilPathIsClear();
 				} else if (passengerStowsLuggage() && !alreadyStowed) {
 					RunAStar.getMap().getNode(previous)
 							.setOccupiedByAgent(false);
@@ -220,12 +216,9 @@ public class Agent extends Subject implements Runnable {
 					RunAStar.getMap().getNode(current).setOccupiedByAgent(true);
 					occupyArea(previous, false);
 					occupyArea(current, true);
-					this.currentAgentPosition[i] = this.current.getValue();
 
-					passenger.setPositionX(this.currentAgentPosition[i][0]
-							* scale);
-					passenger.setPositionY(this.currentAgentPosition[i][1]
-							* scale);
+					passenger.setPositionX(current.getX() * scale);
+					passenger.setPositionY(current.getY() * scale);
 					passenger.setOrientationInDegree(getRotation());
 					Thread.sleep((int) (1000 / speedfactor / (passenger
 							.getWalkingSpeed() * 100 / scale)));
@@ -242,13 +235,16 @@ public class Agent extends Subject implements Runnable {
 	 */
 	public void run() {
 		try {
-			
+
 			alreadyStowed = false;
 			Thread.sleep((int) (passenger.getStartBoardingAfterDelay() * 1000 / speedfactor));
 			stopwatch.start();
-			this.currentAgentPosition = new int[path.length][2];
 			numbOfInterupts = 0;
+
+			while(!goalReached()) {
 			followPath();
+			}
+
 			RunAStar.getMap().getNode(current).setOccupiedByAgent(false);
 			passenger.setIsSeated(true);
 			stopwatch.stop();

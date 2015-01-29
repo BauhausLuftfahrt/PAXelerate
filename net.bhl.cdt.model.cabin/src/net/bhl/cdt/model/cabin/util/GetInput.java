@@ -69,7 +69,7 @@ public class GetInput extends TitleAreaDialog {
 			descriptionText = "value:";
 			break;
 		case GET_BOOLEAN:
-			titleString = "Boolean Input Required!";
+			titleString = "Please confirm the following task!";
 			descriptionText = "this should actually not be seen!";
 			break;
 		case GET_VECTOR:
@@ -147,7 +147,13 @@ public class GetInput extends TitleAreaDialog {
 
 	@Override
 	protected Point getInitialSize() {
-		return new Point(450, 250);
+		switch(windowType) {
+		case GET_BOOLEAN:
+			return new Point(450, 150);
+		default:
+			return new Point(450, 250);
+		}
+		
 	}
 
 	@Override

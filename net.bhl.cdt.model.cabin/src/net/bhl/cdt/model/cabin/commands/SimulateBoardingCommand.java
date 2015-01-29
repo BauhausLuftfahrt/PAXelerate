@@ -94,10 +94,12 @@ public class SimulateBoardingCommand extends CDTCommand {
 		if (cabin.getPassengers().isEmpty()) {
 			GetInput input = new GetInput(
 					WindowType.GET_BOOLEAN,
-					"You did not create any passengers. Do you want to create them now?",
-					IMessageProvider.WARNING);
+					"You did not create any passengers. Random passeners are now created.",
+					IMessageProvider.ERROR);
 			if(input.getBooleanValue()) {
-				
+				GeneratePassengersCommand pax = new GeneratePassengersCommand(cabin);
+				pax.doRun();
+				System.out.println("PAX created!");
 			}
 		}
 		if (!cabin.getPassengers().isEmpty()) {

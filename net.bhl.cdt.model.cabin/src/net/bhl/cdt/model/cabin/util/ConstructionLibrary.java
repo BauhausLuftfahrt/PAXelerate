@@ -187,7 +187,7 @@ public class ConstructionLibrary {
 				seatDimensions.setTwoDimensional(subclass.getSeatWidth(),
 						subclass.getSeatLength());
 				seatPitch = subclass.getSeatPitch();
-				passengers = (int) tryPreset(1, 1, 1, subclass.getPassengers());
+				passengers = (int) tryPreset(0, 0, 0, subclass.getPassengers());
 				cabin.getClasses().remove(subclass);
 			} catch (IndexOutOfBoundsException e) {
 				seats = 8;
@@ -209,7 +209,7 @@ public class ConstructionLibrary {
 				seatDimensions.setTwoDimensional(subclass.getSeatWidth(),
 						subclass.getSeatLength());
 				seatPitch = subclass.getSeatPitch();
-				passengers = (int) tryPreset(1, 1, 1, subclass.getPassengers());
+				passengers = (int) tryPreset(0, 0, 0, subclass.getPassengers());
 				cabin.getClasses().remove(subclass);
 			} catch (IndexOutOfBoundsException e) {
 				seats = 2;
@@ -232,7 +232,7 @@ public class ConstructionLibrary {
 				seatDimensions.setTwoDimensional(subclass.getSeatWidth(),
 						subclass.getSeatLength());
 				seatPitch = subclass.getSeatPitch();
-				passengers = (int) tryPreset(1, 1, 1, subclass.getPassengers());
+				passengers = (int) tryPreset(2, 2, 2, subclass.getPassengers());
 				cabin.getClasses().remove(subclass);
 			} catch (IndexOutOfBoundsException e) {
 				seats = 72;
