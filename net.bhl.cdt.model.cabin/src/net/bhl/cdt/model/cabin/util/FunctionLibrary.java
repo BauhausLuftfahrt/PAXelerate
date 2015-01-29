@@ -23,6 +23,22 @@ public final class FunctionLibrary {
 
 	}
 
+	public static boolean vectorsAreEqual(Vector vector1, Vector vector2) {
+		if (vector1.getX() == vector2.getX()
+				&& vector1.getY() == vector2.getY()) {
+			if(vector1.getNumberOfDimensions()==vector2.getNumberOfDimensions()) {
+				if(vector1.getNumberOfDimensions() == 2) {
+					return true;
+				} else if (vector1.getNumberOfDimensions() == 3) {
+					if(vector1.getZ() == vector2.getZ()) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+
 	/**
 	 * Check if a string is numeric or not.
 	 * 
@@ -40,9 +56,11 @@ public final class FunctionLibrary {
 	}
 
 	/**
-	 * Check if there are two of the same characters directly after each other, 
+	 * Check if there are two of the same characters directly after each other,
 	 * like in <i>balloon</i>.
-	 * @param str the string
+	 * 
+	 * @param str
+	 *            the string
 	 * @return a character is repeating
 	 */
 	public static boolean checkForDoubleCharacter(String str) {

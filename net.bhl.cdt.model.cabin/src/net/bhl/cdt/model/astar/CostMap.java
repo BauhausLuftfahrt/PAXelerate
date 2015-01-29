@@ -70,9 +70,9 @@ public class CostMap {
 			for (int j = 0; j < dimensions.getY(); j++) {
 				Node node = areamap.getNodeByCoordinate(i, j);
 				if (node.isObstacle()) {
-					map[i][j] = -1;
+					setCost(i, j, -1);
 				} else {
-					map[i][j] = node.getCost();
+					setCost(i, j, node.getCost());
 				}
 			}
 		}
@@ -80,17 +80,15 @@ public class CostMap {
 			for (int i = 0; i < dimensions.getX(); i++) {
 				for (int j = 0; j < dimensions.getY(); j++) {
 					Node node = areamap.getNodeByCoordinate(i, j);
-					// TODO: DONT BLOCK IT AROUND YOURSELF !
-					if (node.isOccupiedByAgent()&&node.getPosition()!=agent.getPosition()) {
-						map[i][j] = 500;
-						map[i - 1][j] = 500;
-						map[i][j - 1] = 500;
-						map[i - 1][j - 1] = 500;
-						map[i + 1][j] = 500;
-						map[i][j + 1] = 500;
-						map[i + 1][j + 1] = 500;
-						map[i + 1][j - 1] = 500;
-						map[i - 1][j + 1] = 500;
+					if (node.isOccupiedByAgent()) {
+						if (!FunctionLibrary.vectorsAreEqual(node.getPosition(), agent.getPosition())) {
+							for (Vector point : getSurroundingPoints(i, j)) {
+								if (!isObstacle(point)) {
+									setCost(point.getX(), point.getY(), 500);
+								}
+							}
+							setCost(i,j,500);
+						}
 					}
 				}
 			}
@@ -239,7 +237,8 @@ public class CostMap {
 					.getY())) {
 				if (!isObstacle(point)) {
 					if (!(checkForPoint(visitedPoints, point))) {
-						map[point.getX()][point.getY()] += getCost(middlePoint);
+						setCost(point.getX(), point.getY(),
+								getCost(middlePoint) + getCost(point));
 						visitedPoints.add(point);
 						pointParkingHelper.add(point);
 					}
@@ -252,7 +251,7 @@ public class CostMap {
 	 * This method saves the whole cost map in a text file to the documents
 	 * folder.
 	 */
-	public void printMap() {
+	public void saveMapToFile() {
 		PrintWriter printToFile = null;
 		try {
 			CabinViewPart.makeDirectory();

@@ -100,31 +100,7 @@ public class RunAStar {
 	public static AreaMap getMap() {
 		return areamap;
 	}
-	
-	public static ObstacleMap getObstacleMap() {
-		return obstaclemap;
-	}
 
-	/**
-	 * This method runs the agents.
-	 */
-	public void runAgents() {
-
-		anotherStopwatch.start();
-
-		/** First generate all paths ... */
-		for (Agent agent : agents) {
-			getPath(areamap, agent);
-		}
-		anotherStopwatch.stop();
-		System.out.println("Calculations completed in: "
-				+ anotherStopwatch.getElapsedTime() + " ms");
-
-		/** ... then start the simulations simultaneously */
-		for (Agent agent : agents) {
-			agent.start();
-		}
-	}
 
 	/**
 	 * This method sets the value for simulationDone.
@@ -137,31 +113,12 @@ public class RunAStar {
 	}
 
 	/**
-	 * This method submits the whole cabin.
-	 * 
-	 * @return the cabin
-	 */
-	public static Cabin getCabin() {
-		return cabin;
-	}
-
-	/**
 	 * This method returns whether the simulation is already completed or not.
 	 * 
 	 * @return simulationDone
 	 */
 	public static Boolean getSimulationDone() {
 		return simulationDone;
-	}
-
-	/**
-	 * This method saves the path object to the pathList element.
-	 * 
-	 * @param path
-	 *            the specific path
-	 */
-	public static void submitPath(int[][] path) {
-		pathList.add(path);
 	}
 
 	/**
@@ -203,8 +160,6 @@ public class RunAStar {
 	 */
 	public void run() {
 
-		// iterate through the openCDT passenger list and create agents based on
-		// passenger information
 		Boolean doItOnce = true;
 		for (Passenger passenger : ModelHelper.getChildrenByClass(cabin,
 				Passenger.class)) {
@@ -227,12 +182,23 @@ public class RunAStar {
 			agents.add(agent);
 		}
 
-		costmap = new CostMap(dimensions, initialStart, areamap, false,null);
-		costmap.printMap();
+		costmap = new CostMap(dimensions, initialStart, areamap, false, null);
+		costmap.saveMapToFile();
 
-		// iterate through the list of all agents, calculate each agent's path,
-		// then start the thread of each agent.
-		runAgents();
+		anotherStopwatch.start();
+
+		/** First generate all paths ... */
+		for (Agent agent : agents) {
+			pathList.add(getPath(areamap, agent));
+		}
+		anotherStopwatch.stop();
+		System.out.println("Calculations completed in: "
+				+ anotherStopwatch.getElapsedTime() + " ms");
+
+		/** ... then start the simulations simultaneously */
+		for (Agent agent : agents) {
+			agent.start();
+		}
 
 	}
 }

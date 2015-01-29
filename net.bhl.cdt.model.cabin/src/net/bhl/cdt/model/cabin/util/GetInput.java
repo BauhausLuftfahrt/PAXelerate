@@ -31,7 +31,7 @@ public class GetInput extends TitleAreaDialog {
 		/**
 		 * Access the different types using WindowType.CHOOSE_TYPE.
 		 */
-		INFORMATION, GET_STRING, GET_INTEGER, GET_VECTOR, WARNING, OPTIONS
+		INFORMATION, GET_STRING, GET_INTEGER, GET_VECTOR, WARNING, OPTIONS, GET_BOOLEAN
 	}
 
 	private WindowType windowType;
@@ -43,6 +43,7 @@ public class GetInput extends TitleAreaDialog {
 	private String stringValue;
 	private int integerValue;
 	private Vector vectorValue;
+	private Boolean booleanValue;
 	private Composite container;
 	private Label warningLabel;
 
@@ -60,11 +61,16 @@ public class GetInput extends TitleAreaDialog {
 		super(null);
 		integerValue = 0;
 		vectorValue = new Vector(0, 0);
+		booleanValue = false;
 		stringValue = "";
 		switch (windowType) {
 		case GET_INTEGER:
 			titleString = "Integer Input Required!";
 			descriptionText = "value:";
+			break;
+		case GET_BOOLEAN:
+			titleString = "Boolean Input Required!";
+			descriptionText = "this should actually not be seen!";
 			break;
 		case GET_VECTOR:
 			titleString = "Vector Input Required!";
@@ -97,9 +103,11 @@ public class GetInput extends TitleAreaDialog {
 		layout.marginHeight = 10;
 		container.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		container.setLayout(layout);
-		createInputField(container);
-		if (windowType == WindowType.GET_VECTOR) {
-			createAnotherInputField(container);
+		if (windowType != WindowType.GET_BOOLEAN) {
+			createInputField(container);
+			if (windowType == WindowType.GET_VECTOR) {
+				createAnotherInputField(container);
+			}
 		}
 		createWarningLabel(container);
 		return area;
@@ -130,7 +138,8 @@ public class GetInput extends TitleAreaDialog {
 
 	private void createWarningLabel(Composite container) {
 		warningLabel = new Label(container, SWT.NONE);
-		warningLabel.setText("You entered a character that is not allowed here.");
+		warningLabel
+				.setText("You entered a character that is not allowed here.");
 		warningLabel.setVisible(false);
 		warningLabel.setForeground(new org.eclipse.swt.graphics.Color(null,
 				255, 0, 0));
@@ -162,6 +171,8 @@ public class GetInput extends TitleAreaDialog {
 			vectorValue.setTwoDimensional(Integer.parseInt(text.getText()),
 					Integer.parseInt(text2.getText()));
 			break;
+		case GET_BOOLEAN:
+			booleanValue = true;
 		default:
 			break;
 		}
@@ -185,6 +196,9 @@ public class GetInput extends TitleAreaDialog {
 		return integerValue;
 	}
 
+	public boolean getBooleanValue() {
+		return booleanValue;
+	}
 	/**
 	 * This method returns the stored string value.
 	 * 
@@ -240,6 +254,8 @@ public class GetInput extends TitleAreaDialog {
 				warningLabel.setVisible(true);
 				return false;
 			}
+		case GET_BOOLEAN:
+			return true;
 		default:
 			return true;
 		}

@@ -10,7 +10,6 @@ import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.observer.Subject;
-import net.bhl.cdt.model.util.ModelHelper;
 
 /**
  * This class is the agent object. It walks a specific calculated path and
@@ -31,6 +30,7 @@ public class Agent extends Subject implements Runnable {
 	private Passenger passenger;
 	private int scale;
 	private int speedfactor;
+	private int numbOfInterupts;
 	private boolean alreadyStowed;
 	private static StopWatch stopwatch = new StopWatch();
 	private int[][] currentAgentPosition = new int[1][2];
@@ -160,13 +160,12 @@ public class Agent extends Subject implements Runnable {
 		}
 	}
 
-
 	/**
 	 * This method finds the way around an obstacle.
 	 */
 	public void findWayAroundObstacle() {
 		CostMap costmap = new CostMap(RunAStar.getMap().getDimensions(),
-				current, RunAStar.getMap(), false,this);
+				current, RunAStar.getMap(), false, this);
 		costmap.printMapToConsole();
 		occupyArea(current, false);
 		start.setTwoDimensional(current.getX(), current.getY());
@@ -174,7 +173,7 @@ public class Agent extends Subject implements Runnable {
 		this.run();
 
 	}
-	
+
 	public Vector getPosition() {
 		return current;
 	}
@@ -187,20 +186,9 @@ public class Agent extends Subject implements Runnable {
 		return RunAStar.getMap().getNode(vector).isOccupiedByAgent();
 	}
 
-	/**
-	 * This method runs the agents walking simulation.
-	 */
-	public void run() {
+	private void followPath() {
 		try {
-			alreadyStowed = false;
-			Thread.sleep((int) (passenger.getStartBoardingAfterDelay() * 1000 / speedfactor));
-			stopwatch.start();
-			this.currentAgentPosition = new int[path.length][2];
-			RunAStar.submitPath(path);
-
-			int numbOfInterupts = 0;
 			int i = 0;
-
 			while (i < path.length) {
 				if (i != 0) {
 					this.previous.setFromPoint(path[i - 1]);
@@ -208,12 +196,12 @@ public class Agent extends Subject implements Runnable {
 				this.current.setFromPoint(path[i]);
 
 				if (nodeBlocked(current)) {
-					if (willingToTakeDetour()) {
-						findWayAroundObstacle();
-						break;
-					} else {
-						waitUntilPathIsClear();
-					}
+					// if (willingToTakeDetour()) {
+					// findWayAroundObstacle();
+					// break;
+					// } else {
+					waitUntilPathIsClear();
+					// }
 
 					numbOfInterupts++;
 				} else if (passengerStowsLuggage() && !alreadyStowed) {
@@ -226,8 +214,7 @@ public class Agent extends Subject implements Runnable {
 					alreadyStowed = true;
 					i++;
 				} else {
-
-					// if the agent's path is not blocked, move forward
+					/* if the agent's path is not blocked, move forward */
 					RunAStar.getMap().getNode(previous)
 							.setOccupiedByAgent(false);
 					RunAStar.getMap().getNode(current).setOccupiedByAgent(true);
@@ -245,6 +232,23 @@ public class Agent extends Subject implements Runnable {
 					i++;
 				}
 			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * This method runs the agents walking simulation.
+	 */
+	public void run() {
+		try {
+			
+			alreadyStowed = false;
+			Thread.sleep((int) (passenger.getStartBoardingAfterDelay() * 1000 / speedfactor));
+			stopwatch.start();
+			this.currentAgentPosition = new int[path.length][2];
+			numbOfInterupts = 0;
+			followPath();
 			RunAStar.getMap().getNode(current).setOccupiedByAgent(false);
 			passenger.setIsSeated(true);
 			stopwatch.stop();

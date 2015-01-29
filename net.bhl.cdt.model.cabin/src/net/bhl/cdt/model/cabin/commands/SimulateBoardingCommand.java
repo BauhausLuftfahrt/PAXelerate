@@ -16,13 +16,16 @@ import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.InfoViewPart;
+import net.bhl.cdt.model.cabin.util.GetInput;
 import net.bhl.cdt.model.cabin.util.Vector;
+import net.bhl.cdt.model.cabin.util.GetInput.WindowType;
 import net.bhl.cdt.model.util.ModelHelper;
 
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPage;
@@ -70,8 +73,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 	protected void doRun() {
 
 		cabin.setFramesPerSecond(10);
-		
-		for(Passenger passenger:cabin.getPassengers()) {
+
+		for (Passenger passenger : cabin.getPassengers()) {
 			passenger.setIsSeated(false);
 			passenger.setBoardingTime(0);
 		}
@@ -88,6 +91,15 @@ public class SimulateBoardingCommand extends CDTCommand {
 		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 				"Initializing the boarding simulation ..."));
 		s.start();
+		if (cabin.getPassengers().isEmpty()) {
+			GetInput input = new GetInput(
+					WindowType.GET_BOOLEAN,
+					"You did not create any passengers. Do you want to create them now?",
+					IMessageProvider.WARNING);
+			if(input.getBooleanValue()) {
+				
+			}
+		}
 		if (!cabin.getPassengers().isEmpty()) {
 			ObstacleMap obstaclemap = new ObstacleMap(cabin);
 			RunAStar astar = new RunAStar(obstaclemap, new Vector(
@@ -177,8 +189,6 @@ public class SimulateBoardingCommand extends CDTCommand {
 			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 					"No boarding possible! Please create passengers!"));
 		}
-		
-		
 
 	}
 }
