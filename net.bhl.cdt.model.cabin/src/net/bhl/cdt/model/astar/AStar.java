@@ -56,6 +56,8 @@ public class AStar {
 		// mark start and goal node
 		map.setStartLocation(agent.getStart());
 		map.setGoalLocation(agent.getGoal());
+		
+		System.out.println("xStart is " +  agent.getStart().getX() + ", yStart is " + agent.getStart().getY());
 
 		// Check if the goal node is blocked (if it is, it is impossible to find
 		// a path there)
@@ -79,7 +81,7 @@ public class AStar {
 			// check if our current Node location is the goal Node. If it is, we
 			// are done.
 			if (FunctionLibrary.vectorsAreEqual(current.getPosition(), agent.getGoal())) {
-				System.out.println("astar - path found!");
+				System.out.println("astar - path found! Current Position and goal are identical.");
 				return reconstructPath(current);
 
 			}

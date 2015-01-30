@@ -111,8 +111,12 @@ public class Agent extends Subject implements Runnable {
 	 *            boolean which decides if the area will be blocked or unblocked
 	 */
 	private void occupyNode(Vector vector, boolean occupy) {
+		
+		// use monitor so that only one thread can occupy a node at a time
+		synchronized(vector){
 		RunAStar.getMap().getNodeByCoordinate(vector.getX(), vector.getY())
 				.setOccupiedByAgent(occupy);
+		}
 	}
 
 	// /**
@@ -142,8 +146,12 @@ public class Agent extends Subject implements Runnable {
 			costmap = newCostmap;
 			// TODO for Tobi: sobald der startpunkt ge‰ndert wird, funktioniert
 			// es nicht mehr. ich weiﬂ nicht, warum das so ist.
-			//start.setTwoDimensional(previous.getX(), previous.getY());
-			System.out.println("x = " + start.getX() + ",y = " + start.getY());
+			
+			this.start.setTwoDimensional(previous.getX(), previous.getY());
+			//this.goal.setX(this.goal.getX());
+		
+//			System.out.println("new startX of agent " + this.passenger.getName() + " is " + start.getX() + 
+//					",new startY of agent " + this.passenger.getName() + " is " + start.getY());
 			System.out.println("no costmap detected - new cost map mode");
 			pathFinder = new AStar(areamapCopy, costmap);
 			/*
@@ -164,7 +172,6 @@ public class Agent extends Subject implements Runnable {
 
 		Path shortestPath = pathFinder.getShortestPath();
 		path = new int[shortestPath.getLength()][2];
-		System.out.println("here i am");
 		for (int i = 0; i < shortestPath.getLength(); i++) {
 			path[i] = shortestPath.getWayPoint(i).getPosition().getValue();
 		}
@@ -205,8 +212,12 @@ public class Agent extends Subject implements Runnable {
 					/* bisher: calculate new path every time the path is blocked */
 					numbOfInterupts++;
 					areamapCopy = RunAStar.getMap();
+					
+					//TODO: Warum wird hier previous auf false gesetzt? Eigentlich bleibt der Agenten
+					//bei einer Blockade auf previous stehen
 					occupyNode(previous, false);
 					occupyNode(current, false);
+					
 					findNewPath(null);
 					i = Integer.MAX_VALUE;
 					break mainloop;
