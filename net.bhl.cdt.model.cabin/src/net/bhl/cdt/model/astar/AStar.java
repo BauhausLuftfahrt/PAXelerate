@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import net.bhl.cdt.model.cabin.util.FunctionLibrary;
-import net.bhl.cdt.model.cabin.util.Vector;
 
 /**
  * This class is the A* algorithm.
@@ -20,14 +19,9 @@ import net.bhl.cdt.model.cabin.util.Vector;
 public class AStar {
 	private AreaMap map;
 	private CostMap costmap;
-
-	/**
-	 * closedList The list of Nodes not searched yet, sorted by their distance
-	 * to the goal as guessed by our heuristic.
-	 */
+	private Path bestPath;
 	private ArrayList<Node> closedList;
 	private SortedNodeList openList;
-	private Path shortestPath;
 	private Agent agent;
 
 	/**
@@ -53,15 +47,17 @@ public class AStar {
 	 *            is the goal vector
 	 * @return returns the shortest path
 	 */
-	public Path calculateShortestPath() {
+	public void calculateShortestPath() {
 
 		// mark start and goal node
 		map.setStartLocation(agent.getStart());
 		map.setGoalLocation(agent.getGoal());
 
-		/* If the goal node is blocked, no path is existent */ 
+		/* If the goal node is blocked, no path is existent */
 		if (map.getGoalNode().isObstacle()) {
-			return null;
+			bestPath = null;
+			System.out.println("goal node is obstacle!");
+			return;
 		}
 
 		map.getStartNode().setDistanceFromStart(0);
@@ -70,8 +66,9 @@ public class AStar {
 		closedList.clear();
 		openList.clear();
 		openList.add(map.getNode(agent.getStart()));
-		
-		System.out.println("xStart is " +  map.getStartNode().getPosition().getX() + ", yStart is " + map.getStartNode().getPosition().getY());
+
+		FunctionLibrary.printVectorToLog(map.getStartNode().getPosition(),
+				"start");
 
 		// while we haven't reached the goal yet
 		while (openList.size() != 0) {
@@ -81,13 +78,17 @@ public class AStar {
 			Node current = openList.getFirst();
 			// check if our current Node location is the goal Node. If it is, we
 			// are done.
-			if (FunctionLibrary.vectorsAreEqual(current.getPosition(), agent.getGoal())) {
-				System.out.println("astar - path found! Current Position and goal are identical.");
-				FunctionLibrary.printVectorToLog(map.getStartNode().getPosition(),"start");
-				FunctionLibrary.printVectorToLog(map.getGoalNode().getPosition(),"goal");
-				printPath(reconstructPath(current));
-				return reconstructPath(current);
-
+			if (FunctionLibrary.vectorsAreEqual(current.getPosition(),
+					agent.getGoal())) {
+				System.out.println("astar - finished path calculations.");
+				FunctionLibrary.printVectorToLog(map.getStartNode()
+						.getPosition(), "start");
+				FunctionLibrary.printVectorToLog(current.getPosition(),
+						"current");
+				FunctionLibrary.printVectorToLog(map.getGoalNode()
+						.getPosition(), "goal");
+				bestPath = reconstructPath(current);
+				return;
 			}
 
 			// move current Node to the closed (already searched) list
@@ -111,8 +112,7 @@ public class AStar {
 					// calculate how long the path is if we choose this neighbor
 					// as the next step in the path
 					int neighborDistanceFromStart = (int) map
-							.getDistanceBetween(map.getStartNode(),
-									neighbor);
+							.getDistanceBetween(map.getStartNode(), neighbor);
 					int neighborCostFromStart = costmap.getCost(neighbor
 							.getPosition());
 					int currentCostFromStart = costmap.getCost(current
@@ -141,13 +141,19 @@ public class AStar {
 				}
 			}
 		}
-		return null;
+		bestPath = null;
+		System.out.println("error finding best path");
+		return;
 	}
-	
+
 	public void printPath(Path path) {
-		for(Node node:path.getWaypoints()) {
-			FunctionLibrary.printVectorToLog(node.getPosition(),"pos");
+		for (Node node : path.getWaypoints()) {
+			FunctionLibrary.printVectorToLog(node.getPosition(), "pos");
 		}
+	}
+
+	public Path getBestPath() {
+		return bestPath;
 	}
 
 	/**
@@ -163,18 +169,7 @@ public class AStar {
 			path.prependWayPoint(node);
 			node = node.getPreviousNode();
 		}
-		this.setShortestPath(path);
 		return path;
-	}
-
-	/**
-	 * This method sets the shortest path.
-	 * 
-	 * @param shortestPath
-	 *            the shortest path
-	 */
-	public void setShortestPath(Path shortestPath) {
-		this.shortestPath = shortestPath;
 	}
 
 	/**

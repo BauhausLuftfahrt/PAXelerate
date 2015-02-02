@@ -175,7 +175,11 @@ public final class FunctionLibrary {
 	}
 	
 	public static void printVectorToLog(Vector vector, String name) {
-			System.out.println(name+" ->\tx: "+vector.getX()+"\ty: "+vector.getY()+"\tz: "+vector.getZ());
+		if(vector.getNumberOfDimensions()==3) {
+			System.out.println(name+"\t->\tx: "+vector.getX()+"\ty: "+vector.getY()+"\tz: "+vector.getZ());
+		} else {
+			System.out.println(name+"\t->\tx: "+vector.getX()+"\ty: "+vector.getY());
+		}
 	}
 
 	public static void printVectorListToLog(ArrayList<Vector> list) {

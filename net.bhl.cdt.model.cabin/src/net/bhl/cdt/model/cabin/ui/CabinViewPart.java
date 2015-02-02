@@ -101,22 +101,23 @@ public class CabinViewPart extends ViewPart {
 	private static Image img;
 	private static final String FOLDER_NAME = "paxsim";
 	private static final String FILE_PATH = System.getProperty("user.home")
-			+ "/Documents/"+FOLDER_NAME+"/";
+			+ "/Documents/" + FOLDER_NAME + "/";
 	private static File storageFolder = new File(FILE_PATH);
 	private double canvasHeight;
 
-//	IPreferenceStore preferenceStore = Activator.getDefault()
-//	        .getPreferenceStore();
-//	    String string = preferenceStore.getString("MySTRING1");
-	
+	// IPreferenceStore preferenceStore = Activator.getDefault()
+	// .getPreferenceStore();
+	// String string = preferenceStore.getString("MySTRING1");
+
 	/**
 	 * This method returns the defined file path.
+	 * 
 	 * @return the file path
 	 */
 	public static String getFilePath() {
 		return FILE_PATH;
 	}
-	
+
 	/**
 	 * This method creates a new directors if it does not exist yet.
 	 */
@@ -620,9 +621,11 @@ public class CabinViewPart extends ViewPart {
 					int i = 0;
 					while (k < 2 * singlePath.getLength()) {
 						pathPoints[k] = xZero
-								+ (int) (singlePath.get(i).getPosition().getX() * cabin.getScale() / factor);
+								+ (int) (singlePath.get(i).getPosition().getX()
+										* cabin.getScale() / factor);
 						pathPoints[k + 1] = yZero
-								+ (int) (singlePath.get(i).getPosition().getY() * cabin.getScale() / factor);
+								+ (int) (singlePath.get(i).getPosition().getY()
+										* cabin.getScale() / factor);
 						k = k + 2;
 						i++;
 					}

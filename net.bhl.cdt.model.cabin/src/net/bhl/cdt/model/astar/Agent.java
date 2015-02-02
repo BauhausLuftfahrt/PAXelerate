@@ -141,32 +141,28 @@ public class Agent extends Subject implements Runnable {
 
 	public void findNewPath(CostMap costmap) {
 		AStar astar = null;
-		Path bestPath = null;
 		if (costmap == null) {
 			CostMap newCostmap = new CostMap(areamapCopy.getDimensions(),
 					previousPosition, areamapCopy, false, this);
 			newCostmap.printMapToConsole();
 			costmap = newCostmap;
 
-			//this.start = previousPosition;
+			this.start = previousPosition;
 			// this.goal.setX(this.goal.getX());
-
 			System.out.println("no costmap detected - new cost map mode");
-			astar = new AStar(areamapCopy, costmap,this);
-
+			astar = new AStar(areamapCopy, costmap, this);
+			System.out.println("---------------");
 			/* error in following code line */
-			bestPath = astar.calculateShortestPath();
-
+			System.out.println("path calculation completed");
 			System.out.println("Found new path ..");
 		} else {
 			/* at first launch, the path begins at the door */
-			astar = new AStar(RunAStar.getMap(), costmap,this);
-			bestPath = astar.calculateShortestPath();
+			astar = new AStar(RunAStar.getMap(), costmap, this);
 			System.out.println("Found initial path ..");
 		}
-
-		path = bestPath;
-		System.out.println("Found new path.");
+		astar.calculateShortestPath();
+		path = astar.getBestPath();
+		System.out.println("path assigned");
 		currentPosition = path.get(0).getPosition();
 		previousPosition = new Vector(0, 0);
 	}
@@ -186,7 +182,7 @@ public class Agent extends Subject implements Runnable {
 	private boolean nodeBlocked(Vector vector) {
 		return RunAStar.getMap().getNode(vector).isOccupiedByAgent();
 	}
-	
+
 	public Path getPath() {
 		return path;
 	}
@@ -196,7 +192,7 @@ public class Agent extends Subject implements Runnable {
 			int i = 0;
 			while (i < path.getLength()) {
 				if (i != 0) {
-					previousPosition = path.get(i-1).getPosition();
+					previousPosition = path.get(i - 1).getPosition();
 				}
 				currentPosition = path.get(i).getPosition();
 				if (nodeBlocked(currentPosition)) {
