@@ -21,7 +21,7 @@ import net.bhl.cdt.model.observer.Subject;
  */
 public class Agent extends Subject implements Runnable {
 	private Thread thread;
-	private int[][] path;
+	private Path path;
 	private Vector start;
 	private Vector goal;
 	private Vector currentPosition;
@@ -148,7 +148,7 @@ public class Agent extends Subject implements Runnable {
 			newCostmap.printMapToConsole();
 			costmap = newCostmap;
 
-			this.start = previousPosition;
+			//this.start = previousPosition;
 			// this.goal.setX(this.goal.getX());
 
 			System.out.println("no costmap detected - new cost map mode");
@@ -165,29 +165,10 @@ public class Agent extends Subject implements Runnable {
 			System.out.println("Found initial path ..");
 		}
 
-		path = convertPathToCoordinates(bestPath);
+		path = bestPath;
 		System.out.println("Found new path.");
-		currentPosition = new Vector(path[0][0], path[0][1]);
+		currentPosition = path.get(0).getPosition();
 		previousPosition = new Vector(0, 0);
-	}
-
-	/**
-	 * This method transforms a path from nodes to coordinates.
-	 * 
-	 * @param path
-	 *            is the path in nodes.
-	 * @return the path in coordinates.
-	 */
-	private int[][] convertPathToCoordinates(Path path) {
-		int[][] transformedPath = new int[path.getLength()][2];
-		for (int i = 0; i < path.getLength(); i++) {
-			transformedPath[i] = path.getWayPoint(i).getPosition().getValue();
-		}
-		return transformedPath;
-	}
-
-	public int[][] getPath() {
-		return path;
 	}
 
 	public Vector getPosition() {
@@ -205,15 +186,19 @@ public class Agent extends Subject implements Runnable {
 	private boolean nodeBlocked(Vector vector) {
 		return RunAStar.getMap().getNode(vector).isOccupiedByAgent();
 	}
+	
+	public Path getPath() {
+		return path;
+	}
 
 	private void followPath() {
 		mainloop: try {
 			int i = 0;
-			while (i < path.length) {
+			while (i < path.getLength()) {
 				if (i != 0) {
-					previousPosition.setFromPoint(path[i - 1]);
+					previousPosition = path.get(i-1).getPosition();
 				}
-				currentPosition.setFromPoint(path[i]);
+				currentPosition = path.get(i).getPosition();
 				if (nodeBlocked(currentPosition)) {
 					/* bisher: calculate new path every time the path is blocked */
 					numbOfInterupts++;

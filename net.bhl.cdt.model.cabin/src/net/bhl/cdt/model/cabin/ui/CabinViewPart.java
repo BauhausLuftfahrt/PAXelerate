@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import net.bhl.cdt.model.astar.Agent;
 import net.bhl.cdt.model.astar.ObstacleMap;
+import net.bhl.cdt.model.astar.Path;
 import net.bhl.cdt.model.cabin.BusinessClass;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
@@ -613,15 +614,15 @@ public class CabinViewPart extends ViewPart {
 				e.gc.setInterpolation(SWT.HIGH);
 				e.gc.setLineWidth(2);
 				for (int l = 0; l < agentList.size(); l++) {
-					final int[][] singlePath = agentList.get(l).getPath();
-					int[] pathPoints = new int[2 * singlePath.length];
+					final Path singlePath = agentList.get(l).getPath();
+					int[] pathPoints = new int[2 * singlePath.getLength()];
 					int k = 0;
 					int i = 0;
-					while (k < 2 * singlePath.length) {
+					while (k < 2 * singlePath.getLength()) {
 						pathPoints[k] = xZero
-								+ (int) (singlePath[i][0] * cabin.getScale() / factor);
+								+ (int) (singlePath.get(i).getPosition().getX() * cabin.getScale() / factor);
 						pathPoints[k + 1] = yZero
-								+ (int) (singlePath[i][1] * cabin.getScale() / factor);
+								+ (int) (singlePath.get(i).getPosition().getY() * cabin.getScale() / factor);
 						k = k + 2;
 						i++;
 					}

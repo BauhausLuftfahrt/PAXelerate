@@ -62,7 +62,7 @@ public class Path {
 	 *            the index of a specific node
 	 * @return the node at a specific index
 	 */
-	public Node getWayPoint(int index) {
+	public Node get(int index) {
 		return waypoints.get(index);
 	}
 
@@ -74,7 +74,7 @@ public class Path {
 	 * @return The x coordinate at the waypoint.
 	 */
 	public Vector getPosition(int index) {
-		return getWayPoint(index).getPosition();
+		return get(index).getPosition();
 	}
 
 
