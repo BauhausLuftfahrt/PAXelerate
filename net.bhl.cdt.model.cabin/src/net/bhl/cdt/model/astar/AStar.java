@@ -28,6 +28,7 @@ public class AStar {
 	private ArrayList<Node> closedList;
 	private SortedNodeList openList;
 	private Path shortestPath;
+	private Agent agent;
 
 	/**
 	 * This method constructs the AStar.
@@ -35,8 +36,9 @@ public class AStar {
 	 * @param map
 	 *            is the AreaMap that is fed into the algorithm
 	 */
-	AStar(AreaMap map, CostMap costmap) {
+	public AStar(AreaMap map, CostMap costmap, Agent agent) {
 		this.map = map;
+		this.agent = agent;
 		this.costmap = costmap;
 		closedList = new ArrayList<Node>();
 		openList = new SortedNodeList();
@@ -51,17 +53,14 @@ public class AStar {
 	 *            is the goal vector
 	 * @return returns the shortest path
 	 */
-	public Path calculateShortestPath(Agent agent) {
+	public Path calculateShortestPath() {
 
 		// mark start and goal node
 		map.setStartLocation(agent.getStart());
 		map.setGoalLocation(agent.getGoal());
-		
-		System.out.println("xStart is " +  agent.getStart().getX() + ", yStart is " + agent.getStart().getY());
 
-		// Check if the goal node is blocked (if it is, it is impossible to find
-		// a path there)
-		if (map.getNode(agent.getGoal()).isObstacle()) {
+		/* If the goal node is blocked, no path is existent */ 
+		if (map.getGoalNode().isObstacle()) {
 			return null;
 		}
 
@@ -71,6 +70,8 @@ public class AStar {
 		closedList.clear();
 		openList.clear();
 		openList.add(map.getNode(agent.getStart()));
+		
+		System.out.println("xStart is " +  map.getStartNode().getPosition().getX() + ", yStart is " + map.getStartNode().getPosition().getY());
 
 		// while we haven't reached the goal yet
 		while (openList.size() != 0) {
@@ -82,6 +83,9 @@ public class AStar {
 			// are done.
 			if (FunctionLibrary.vectorsAreEqual(current.getPosition(), agent.getGoal())) {
 				System.out.println("astar - path found! Current Position and goal are identical.");
+				FunctionLibrary.printVectorToLog(map.getStartNode().getPosition(),"start");
+				FunctionLibrary.printVectorToLog(map.getGoalNode().getPosition(),"goal");
+				printPath(reconstructPath(current));
 				return reconstructPath(current);
 
 			}
@@ -107,7 +111,7 @@ public class AStar {
 					// calculate how long the path is if we choose this neighbor
 					// as the next step in the path
 					int neighborDistanceFromStart = (int) map
-							.getDistanceBetween(map.getNode(agent.getStart()),
+							.getDistanceBetween(map.getStartNode(),
 									neighbor);
 					int neighborCostFromStart = costmap.getCost(neighbor
 							.getPosition());
@@ -139,6 +143,12 @@ public class AStar {
 		}
 		return null;
 	}
+	
+	public void printPath(Path path) {
+		for(Node node:path.getWaypoints()) {
+			FunctionLibrary.printVectorToLog(node.getPosition(),"pos");
+		}
+	}
 
 	/**
 	 * This method reconstructs the path.
@@ -155,15 +165,6 @@ public class AStar {
 		}
 		this.setShortestPath(path);
 		return path;
-	}
-
-	/**
-	 * This method returns the shortest path.
-	 * 
-	 * @return the shortest path
-	 */
-	public Path getShortestPath() {
-		return shortestPath;
 	}
 
 	/**

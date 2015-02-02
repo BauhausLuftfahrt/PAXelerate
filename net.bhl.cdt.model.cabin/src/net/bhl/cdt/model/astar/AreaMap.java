@@ -181,14 +181,15 @@ public class AreaMap {
 	public Node getStartNode() {
 		return map.get(startLocation.getX()).get(startLocation.getY());
 	}
-
+	
 	/**
 	 * This method returns the goal node.
 	 * @return the goal node
 	 */
-	public Node getGoalLocation() {
+	public Node getGoalNode() {
 		return map.get(goalLocation.getX()).get(goalLocation.getY());
 	}
+
 
 	/**
 	 * This method calculates the distance between two nodes.

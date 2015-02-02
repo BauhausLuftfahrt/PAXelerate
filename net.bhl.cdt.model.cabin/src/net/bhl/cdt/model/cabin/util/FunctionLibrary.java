@@ -173,6 +173,10 @@ public final class FunctionLibrary {
 			System.out.println(object);
 		}
 	}
+	
+	public static void printVectorToLog(Vector vector, String name) {
+			System.out.println(name+" ->\tx: "+vector.getX()+"\ty: "+vector.getY()+"\tz: "+vector.getZ());
+	}
 
 	public static void printVectorListToLog(ArrayList<Vector> list) {
 		int i = 1;
