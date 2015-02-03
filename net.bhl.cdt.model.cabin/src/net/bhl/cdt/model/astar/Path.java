@@ -122,13 +122,13 @@ public class Path {
 		/* get the last node */
 		Path newPath = new Path();
 		int i = 0;
-		boolean theend = false;
-		while (theend) {
+		while (true) {
 			Node node = waypoints.get(i);
 			newPath.prependWayPoint(node);
-			if (FunctionLibrary.vectorsAreEqual(point, node.getPosition())) {
-				theend = true;
+			if (FunctionLibrary.vectorsAreEqual(node.getPosition(), point)) {
+				break;
 			}
+			i++;
 		}
 		return newPath;
 	}

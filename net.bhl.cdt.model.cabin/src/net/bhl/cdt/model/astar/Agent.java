@@ -146,10 +146,10 @@ public class Agent extends Subject implements Runnable {
 		AStar astar = null;
 		if (previousPosition != null) {
 			start = previousPosition;
-			// Path path2 = pathlist.get(pathlist.size());
-			// pathlist.remove(pathlist.size());
-			// path2 = path2.cutToPoint(path2,previousPosition);
-			// pathlist.add(path2);
+			 Path pathhelper = pathlist.get(pathlist.size()-1);
+			 pathlist.remove(pathhelper);
+			 pathhelper = pathhelper.cutToPoint(pathhelper,start);
+			 pathlist.add(pathhelper);
 		}
 		CostMap costmap = new CostMap(RunAStar.getMap().getDimensions(), start,
 				RunAStar.getMap(), false, this);
