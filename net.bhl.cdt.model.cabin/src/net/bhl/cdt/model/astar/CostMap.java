@@ -39,7 +39,7 @@ import net.bhl.cdt.model.cabin.util.Vector;
 
 public class CostMap {
 
-	private static int[][] map;
+	private int[][] map;
 	private Vector dimensions = new Vector(0, 0);
 	private Vector startPoint = new Vector(0, 0);
 	private Vector goalPoint = new Vector(0, 0);
@@ -80,13 +80,14 @@ public class CostMap {
 				for (int j = 0; j < dimensions.getY(); j++) {
 					Node node = areamap.getNodeByCoordinate(i, j);
 					if (node.isOccupiedByAgent()) {
-						if (!FunctionLibrary.vectorsAreEqual(node.getPosition(), agent.getPosition())) {
+						if (!FunctionLibrary.vectorsAreEqual(
+								node.getPosition(), agent.getPosition())) {
 							for (Vector point : getSurroundingPoints(i, j)) {
 								if (!isObstacle(point)) {
 									setCost(point.getX(), point.getY(), 500);
 								}
 							}
-							setCost(i,j,500);
+							setCost(i, j, 500);
 						}
 					}
 				}
@@ -304,7 +305,12 @@ public class CostMap {
 	 * @return the cost at the specific point
 	 */
 	public int getCost(Vector point) {
-		return map[point.getX()][point.getY()];
+		try {
+			return map[point.getX()][point.getY()];
+		} catch (ArrayIndexOutOfBoundsException e) {
+			return Integer.MAX_VALUE;
+		}
+		
 	}
 
 	/**
@@ -318,24 +324,6 @@ public class CostMap {
 	 * @return returns the cost for a specific coordinate
 	 */
 	public int getCostForCoordinates(int xCord, int yCord) {
-		try {
-			return map[xCord][yCord];
-		} catch (ArrayIndexOutOfBoundsException e) {
-			return Integer.MAX_VALUE;
-		}
-	}
-	
-	/**
-	 * This method returns the <b><i>already calculated</i></b> cost of a
-	 * specific point in the cost map.
-	 * 
-	 * @param xCord
-	 *            is the x coordinate of the desired point
-	 * @param yCord
-	 *            is the y coordinate of the desired point
-	 * @return returns the cost for a specific coordinate
-	 */
-	public static int getStaticCostForCoordinates(int xCord, int yCord) {
 		try {
 			return map[xCord][yCord];
 		} catch (ArrayIndexOutOfBoundsException e) {

@@ -112,7 +112,7 @@ public class RunAStar {
 	 * This method executes the path finding simulation of the agents.
 	 */
 	public void run() {
-
+		costmap = null;
 		Boolean doItOnce = true;
 		for (Passenger passenger : ModelHelper.getChildrenByClass(cabin,
 				Passenger.class)) {
@@ -125,12 +125,13 @@ public class RunAStar {
 					(int) ((seat.getXPosition() + seat.getXDimension() / 2) / cabin
 							.getScale()), (int) ((seat.getYPosition() / cabin
 							.getScale()) - 1));
+
 			if (doItOnce) {
 				initialStart = start;
 				doItOnce = false;
 			}
 			Agent agent = new Agent(passenger, start, goal, cabin.getScale(),
-					cabin.getSpeedFactor());
+					cabin.getSpeedFactor(),dimensions,cabin);
 			// list of all agents
 			agentList.add(agent);
 		}
@@ -142,7 +143,7 @@ public class RunAStar {
 
 		/** First generate all paths ... */
 		for (Agent agent : agentList) {
-			agent.findNewPath(costmap);
+			agent.findNewPath(null);
 		}
 		anotherStopwatch.stop();
 		System.out.println("Calculations completed in: "

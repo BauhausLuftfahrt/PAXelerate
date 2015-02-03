@@ -326,6 +326,10 @@ public class Node implements Comparable<Node> {
 	public void setStart(boolean isStart) {
 		this.isStart = isStart;
 	}
+	
+	public boolean isStart() {
+		return isStart;
+	}
 
 	/**
 	 * This method returns the cost from the start.

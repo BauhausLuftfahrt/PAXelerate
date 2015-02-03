@@ -50,6 +50,9 @@ public class AreaMap {
 				} else if((map.get(i).get(j).isObstacle())) {
 					System.out.print("X");
 				}
+				else if((map.get(i).get(j).isStart())) {
+					System.out.print("X");
+				}
 				else {
 					System.out.print("-");
 				}

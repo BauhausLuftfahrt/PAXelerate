@@ -36,6 +36,7 @@ public class AStar {
 		this.costmap = costmap;
 		closedList = new ArrayList<Node>();
 		openList = new SortedNodeList();
+		calculateShortestPath();
 	}
 
 	/**
@@ -47,7 +48,7 @@ public class AStar {
 	 *            is the goal vector
 	 * @return returns the shortest path
 	 */
-	public void calculateShortestPath() {
+	private void calculateShortestPath() {
 
 		// mark start and goal node
 		map.setStartLocation(agent.getStart());
@@ -56,7 +57,6 @@ public class AStar {
 		/* If the goal node is blocked, no path is existent */
 		if (map.getGoalNode().isObstacle()) {
 			bestPath = null;
-			System.out.println("goal node is obstacle!");
 			return;
 		}
 
@@ -66,9 +66,6 @@ public class AStar {
 		closedList.clear();
 		openList.clear();
 		openList.add(map.getNode(agent.getStart()));
-
-		FunctionLibrary.printVectorToLog(map.getStartNode().getPosition(),
-				"start");
 
 		// while we haven't reached the goal yet
 		while (openList.size() != 0) {
@@ -80,14 +77,10 @@ public class AStar {
 			// are done.
 			if (FunctionLibrary.vectorsAreEqual(current.getPosition(),
 					agent.getGoal())) {
-				System.out.println("astar - finished path calculations.");
-				FunctionLibrary.printVectorToLog(map.getStartNode()
-						.getPosition(), "start");
-				FunctionLibrary.printVectorToLog(current.getPosition(),
-						"current");
-				FunctionLibrary.printVectorToLog(map.getGoalNode()
-						.getPosition(), "goal");
-				bestPath = reconstructPath(current);
+				map.getStartNode().setPreviousNode(null);
+				if (reconstructPath(current)!=null) {
+					bestPath = reconstructPath(current);
+				} 
 				return;
 			}
 
@@ -142,13 +135,14 @@ public class AStar {
 			}
 		}
 		bestPath = null;
-		System.out.println("error finding best path");
+		System.out.println("astar - error finding best path");
 		return;
 	}
 
 	public void printPath(Path path) {
+		System.out.println("astar - now printing the best path");
 		for (Node node : path.getWaypoints()) {
-			FunctionLibrary.printVectorToLog(node.getPosition(), "pos");
+			FunctionLibrary.printVectorToLog(node.getPosition(), "position");
 		}
 	}
 
@@ -164,10 +158,14 @@ public class AStar {
 	 * @return the path
 	 */
 	private Path reconstructPath(Node node) {
+		System.out.println("astar - reconstructing path now ...");
 		Path path = new Path();
-		while (!(node.getPreviousNode() == null)) {
+		System.out.println("astar - new path created");
+		while (node.getPreviousNode() != null) {
 			path.prependWayPoint(node);
+			//System.out.println("astar - waypoint prepended");
 			node = node.getPreviousNode();
+			//printPath(path);
 		}
 		return path;
 	}

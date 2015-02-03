@@ -209,27 +209,27 @@ public class Vector implements Comparable<Vector> {
 	 * @return returns the better node value
 	 */
 	public int compareTo(Vector vector) {
-		int BEFORE = -1;
-		int EQUAL = 0;
-		int AFTER = 1;
-		if (CostMap.getStaticCostForCoordinates(xValue,yValue) < CostMap.getStaticCostForCoordinates(vector.getX(),vector.getY())) {
-			return BEFORE;
-		} else if (CostMap.getStaticCostForCoordinates(xValue,yValue) > CostMap.getStaticCostForCoordinates(vector.getX(),vector.getY())) {
-			return AFTER;
+		int better = -1;
+		int equal = 0;
+		int worse = 1;
+		if (zValue < vector.getZ()) {
+			return better;
+		} else if (zValue > vector.getZ()) {
+			return worse;
 		} else {
-			 if (yValue < vector.getY()) {
-			 return BEFORE;
-			 } else if (yValue > vector.getY()) {
-			 return AFTER;
-			 } else {
-				 if (xValue < vector.getX()) {
-					 return BEFORE;
-					 } else if (xValue > vector.getX()) {
-					 return AFTER;
-					 } else {
-					return EQUAL;
-					 }
-			 }
+			if (yValue < vector.getY()) {
+				return better;
+			} else if (yValue > vector.getY()) {
+				return worse;
+			} else {
+				if (xValue < vector.getX()) {
+					return better;
+				} else if (xValue > vector.getX()) {
+					return worse;
+				} else {
+					return equal;
+				}
+			}
 		}
 	}
 }

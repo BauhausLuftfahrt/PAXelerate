@@ -6,6 +6,7 @@
 
 package net.bhl.cdt.model.astar;
 
+import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.util.FunctionLibrary;
@@ -31,8 +32,11 @@ public class Agent extends Subject implements Runnable {
 	private int speedfactor;
 	private int numbOfInterupts;
 	private boolean alreadyStowed;
-	private AreaMap areamapCopy;
+	// private AreaMap areamapCopy;
 	private StopWatch stopwatch = new StopWatch();
+	// private CostMap costmap;
+	private Cabin cabin;
+	private Vector dimensions;
 
 	/**
 	 * This method constructs an agent.
@@ -47,12 +51,14 @@ public class Agent extends Subject implements Runnable {
 	 *            the scale of the simulation
 	 */
 	public Agent(Passenger passenger, Vector start, Vector goal, int scale,
-			int speedFactor) {
+			int speedFactor, Vector dimensions, Cabin cabin) {
 		this.speedfactor = speedFactor;
 		this.passenger = passenger;
 		this.start = start;
 		this.goal = goal;
 		this.scale = scale;
+		this.dimensions = dimensions;
+		this.cabin = cabin;
 	}
 
 	/**
@@ -139,30 +145,47 @@ public class Agent extends Subject implements Runnable {
 	// findNewPath(null);
 	// }
 
-	public void findNewPath(CostMap costmap) {
+	public void findNewPath(CostMap costmapp) {
+		// this.costmap = costmapp;
 		AStar astar = null;
-		if (costmap == null) {
-			CostMap newCostmap = new CostMap(areamapCopy.getDimensions(),
-					previousPosition, areamapCopy, false, this);
-			newCostmap.printMapToConsole();
-			costmap = newCostmap;
-
-			this.start = previousPosition;
-			// this.goal.setX(this.goal.getX());
-			System.out.println("no costmap detected - new cost map mode");
-			astar = new AStar(areamapCopy, costmap, this);
-			System.out.println("---------------");
-			/* error in following code line */
-			System.out.println("path calculation completed");
-			System.out.println("Found new path ..");
-		} else {
-			/* at first launch, the path begins at the door */
-			astar = new AStar(RunAStar.getMap(), costmap, this);
-			System.out.println("Found initial path ..");
+		AreaMap areamapNow = null;
+		// if (costmapp == null) {
+		// CostMap newCostmap = new CostMap(areamapCopy.getDimensions(),
+		// previousPosition, areamapCopy, false, this);
+		// newCostmap.printMapToConsole();
+		// costmap = newCostmap;
+		//
+		// this.start = previousPosition;
+		// FunctionLibrary.printVectorToLog(start, "start");
+		// FunctionLibrary.printVectorToLog(goal, "goal");
+		// System.out.println("agent " + passenger.getName()
+		// + " - no costmap detected - new cost map mode");
+		// areamapNow = areamapCopy;
+		// System.out.println("---------------");
+		// System.out.println("agent " + passenger.getName()
+		// + " - area map assigned");
+		// } else {
+		if (previousPosition != null) {
+			start = previousPosition;
 		}
-		astar.calculateShortestPath();
+		//ObstacleMap obstaclemap = new ObstacleMap(cabin);
+		//areamapNow = new AreaMap(dimensions, obstaclemap);// RunAStar.getMap();
+		CostMap costmap = new CostMap(dimensions, start, RunAStar.getMap(), false, this);
+
+		// }
+		 if (previousPosition != null) {
+			 System.out.println("agent " + passenger.getName()
+						+ " - initializing path finding ...");
+		 }
+		
+		astar = new AStar( RunAStar.getMap(), costmap, this);
+		System.out.println("agent " + passenger.getName()
+				+ " - initializing path calculations");
+		// astar.calculateShortestPath();
+		System.out.println("agent " + passenger.getName()
+				+ " - path calculation completed");
 		path = astar.getBestPath();
-		System.out.println("path assigned");
+		System.out.println("agent " + passenger.getName() + " - path assigned");
 		currentPosition = path.get(0).getPosition();
 		previousPosition = new Vector(0, 0);
 	}
@@ -198,9 +221,9 @@ public class Agent extends Subject implements Runnable {
 				if (nodeBlocked(currentPosition)) {
 					/* bisher: calculate new path every time the path is blocked */
 					numbOfInterupts++;
-					areamapCopy = RunAStar.getMap();
+					//areamapCopy = RunAStar.getMap();
 					occupyNode(previousPosition, false);
-					occupyNode(currentPosition, false);
+					// occupyNode(currentPosition, false);
 
 					findNewPath(null);
 
@@ -231,6 +254,9 @@ public class Agent extends Subject implements Runnable {
 					Thread.sleep((int) (1000 / speedfactor / (passenger
 							.getWalkingSpeed() * 100 / scale)));
 					i++;
+					FunctionLibrary.printVectorToLog(currentPosition, "current " + passenger.getName());
+					FunctionLibrary.printVectorToLog(previousPosition, "previous " + passenger.getName());
+					
 				}
 			}
 		} catch (InterruptedException e) {
@@ -242,17 +268,18 @@ public class Agent extends Subject implements Runnable {
 	 */
 	public void run() {
 		try {
-
+			previousPosition = start;
 			alreadyStowed = false;
 			Thread.sleep((int) (passenger.getStartBoardingAfterDelay() * 1000 / speedfactor));
 			stopwatch.start();
 			numbOfInterupts = 0;
 			while (!goalReached()) {
-				System.out.println("Following new path now");
+				System.out.println("agent " + passenger.getName()
+						+ " - Following new path now");
 				followPath();
-				System.out.println("reached end of path following.");
+				System.out.println("agent " + passenger.getName()
+						+ " - reached end of path following.");
 			}
-
 			RunAStar.getMap().getNode(currentPosition)
 					.setOccupiedByAgent(false);
 			passenger.setIsSeated(true);
