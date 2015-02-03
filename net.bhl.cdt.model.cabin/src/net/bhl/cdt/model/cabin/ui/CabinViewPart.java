@@ -615,22 +615,25 @@ public class CabinViewPart extends ViewPart {
 				e.gc.setInterpolation(SWT.HIGH);
 				e.gc.setLineWidth(2);
 				for (int l = 0; l < agentList.size(); l++) {
-					final Path singlePath = agentList.get(l).getPath();
-					int[] pathPoints = new int[2 * singlePath.getLength()];
-					int k = 0;
-					int i = 0;
-					while (k < 2 * singlePath.getLength()) {
-						pathPoints[k] = xZero
-								+ (int) (singlePath.get(i).getPosition().getX()
-										* cabin.getScale() / factor);
-						pathPoints[k + 1] = yZero
-								+ (int) (singlePath.get(i).getPosition().getY()
-										* cabin.getScale() / factor);
-						k = k + 2;
-						i++;
+					for (Path singlePath : agentList.get(l).getPathList()) {
+						int[] pathPoints = new int[2 * singlePath.getLength()];
+						int k = 0;
+						int i = 0;
+						while (k < 2 * singlePath.getLength()) {
+							pathPoints[k] = xZero
+									+ (int) (singlePath.get(i).getPosition()
+											.getX()
+											* cabin.getScale() / factor);
+							pathPoints[k + 1] = yZero
+									+ (int) (singlePath.get(i).getPosition()
+											.getY()
+											* cabin.getScale() / factor);
+							k = k + 2;
+							i++;
+						}
+						e.gc.drawPolyline(pathPoints);
+						pathPoints = null;
 					}
-					e.gc.drawPolyline(pathPoints);
-					pathPoints = null;
 				}
 				e.gc.setLineWidth(1);
 			}

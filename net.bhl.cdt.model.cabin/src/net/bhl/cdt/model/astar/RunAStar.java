@@ -131,7 +131,7 @@ public class RunAStar {
 				doItOnce = false;
 			}
 			Agent agent = new Agent(passenger, start, goal, cabin.getScale(),
-					cabin.getSpeedFactor(),dimensions,cabin);
+					cabin.getSpeedFactor());
 			// list of all agents
 			agentList.add(agent);
 		}

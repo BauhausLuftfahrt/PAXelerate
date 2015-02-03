@@ -8,6 +8,7 @@ package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
 
+import net.bhl.cdt.model.cabin.util.FunctionLibrary;
 import net.bhl.cdt.model.cabin.util.Vector;
 
 /**
@@ -77,8 +78,6 @@ public class Path {
 		return get(index).getPosition();
 	}
 
-
-
 	/**
 	 * Append a waypoint to the end of the path.
 	 * 
@@ -111,11 +110,27 @@ public class Path {
 	 */
 	public boolean contains(int x, int y) {
 		for (Node node : waypoints) {
-			if (node.getPosition().getX() == x && node.getPosition().getY() == y) {
+			if (node.getPosition().getX() == x
+					&& node.getPosition().getY() == y) {
 				return true;
 			}
 		}
 		return false;
+	}
+
+	public Path cutToPoint(Path path, Vector point) {
+		/* get the last node */
+		Path newPath = new Path();
+		int i = 0;
+		boolean theend = false;
+		while (theend) {
+			Node node = waypoints.get(i);
+			newPath.prependWayPoint(node);
+			if (FunctionLibrary.vectorsAreEqual(point, node.getPosition())) {
+				theend = true;
+			}
+		}
+		return newPath;
 	}
 
 }

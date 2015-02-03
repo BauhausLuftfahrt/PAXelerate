@@ -78,9 +78,9 @@ public class AStar {
 			if (FunctionLibrary.vectorsAreEqual(current.getPosition(),
 					agent.getGoal())) {
 				map.getStartNode().setPreviousNode(null);
-				if (reconstructPath(current)!=null) {
+				if (reconstructPath(current) != null) {
 					bestPath = reconstructPath(current);
-				} 
+				}
 				return;
 			}
 
@@ -135,12 +135,10 @@ public class AStar {
 			}
 		}
 		bestPath = null;
-		System.out.println("astar - error finding best path");
 		return;
 	}
 
 	public void printPath(Path path) {
-		System.out.println("astar - now printing the best path");
 		for (Node node : path.getWaypoints()) {
 			FunctionLibrary.printVectorToLog(node.getPosition(), "position");
 		}
@@ -158,14 +156,10 @@ public class AStar {
 	 * @return the path
 	 */
 	private Path reconstructPath(Node node) {
-		System.out.println("astar - reconstructing path now ...");
 		Path path = new Path();
-		System.out.println("astar - new path created");
 		while (node.getPreviousNode() != null) {
 			path.prependWayPoint(node);
-			//System.out.println("astar - waypoint prepended");
 			node = node.getPreviousNode();
-			//printPath(path);
 		}
 		return path;
 	}
