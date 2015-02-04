@@ -8,6 +8,7 @@ package net.bhl.cdt.model.astar;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.cabin.util.FunctionLibrary;
 
 /**

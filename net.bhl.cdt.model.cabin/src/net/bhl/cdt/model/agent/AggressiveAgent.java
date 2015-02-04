@@ -1,4 +1,4 @@
-package net.bhl.cdt.model.astar;
+package net.bhl.cdt.model.agent;
 
 import net.bhl.cdt.model.cabin.util.Vector;
 

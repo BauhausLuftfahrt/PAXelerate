@@ -4,10 +4,15 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  *******************************************************************************/
 
-package net.bhl.cdt.model.astar;
+package net.bhl.cdt.model.agent;
 
 import java.util.ArrayList;
 
+import net.bhl.cdt.model.astar.AStar;
+import net.bhl.cdt.model.astar.CostMap;
+import net.bhl.cdt.model.astar.Path;
+import net.bhl.cdt.model.astar.RunAStar;
+import net.bhl.cdt.model.astar.StopWatch;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;

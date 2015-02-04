@@ -6,6 +6,8 @@
 package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
+
+import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;

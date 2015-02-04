@@ -8,7 +8,7 @@ package net.bhl.cdt.model.cabin.ui;
 import java.io.File;
 import java.util.ArrayList;
 
-import net.bhl.cdt.model.astar.Agent;
+import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.astar.ObstacleMap;
 import net.bhl.cdt.model.astar.Path;
 import net.bhl.cdt.model.cabin.BusinessClass;
