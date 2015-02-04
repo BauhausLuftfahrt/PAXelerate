@@ -31,18 +31,23 @@ public class GetInput extends TitleAreaDialog {
 		/**
 		 * Access the different types using WindowType.CHOOSE_TYPE.
 		 */
-		INFORMATION, GET_STRING, GET_INTEGER, GET_VECTOR, WARNING, OPTIONS, GET_BOOLEAN
+		INFORMATION, GET_STRING, GET_INTEGER, GET_VECTOR, WARNING, OPTIONS, GET_BOOLEAN, GET_TWO_VECTORS
 	}
 
 	private WindowType windowType;
 	private String descriptionText;
 	private String descriptionText2;
+	private String descriptionText3;
+	private String descriptionText4;
 	private String titleString;
 	private Text text;
 	private Text text2;
+	private Text text3;
+	private Text text4;
 	private String stringValue;
 	private int integerValue;
 	private Vector vectorValue;
+	private Vector vectorValue2;
 	private Boolean booleanValue;
 	private Composite container;
 	private Label warningLabel;
@@ -61,6 +66,7 @@ public class GetInput extends TitleAreaDialog {
 		super(null);
 		integerValue = 0;
 		vectorValue = new Vector(0, 0);
+		vectorValue2 = new Vector(0, 0);
 		booleanValue = false;
 		stringValue = "";
 		switch (windowType) {
@@ -76,6 +82,13 @@ public class GetInput extends TitleAreaDialog {
 			titleString = "Vector Input Required!";
 			descriptionText = "X dimension:";
 			descriptionText2 = "Y dimension:";
+			break;
+		case GET_TWO_VECTORS:
+			titleString = "Vector Input Required!";
+			descriptionText = "X position:";
+			descriptionText2 = "Y position:";
+			descriptionText3 = "width:";
+			descriptionText4 = "height:";
 			break;
 		case GET_STRING:
 			titleString = "Text Input Required!";
@@ -108,6 +121,11 @@ public class GetInput extends TitleAreaDialog {
 			if (windowType == WindowType.GET_VECTOR) {
 				createAnotherInputField(container);
 			}
+			if (windowType == WindowType.GET_TWO_VECTORS) {
+				createAnotherInputField(container);
+				createThirdInputField(container);
+				createFourthInputField(container);
+			}
 		}
 		createWarningLabel(container);
 		return area;
@@ -136,6 +154,28 @@ public class GetInput extends TitleAreaDialog {
 		text2.setLayoutData(gridData);
 	}
 
+	private void createThirdInputField(Composite container) {
+		Label label = new Label(container, SWT.NONE);
+		label.setText(descriptionText3);
+		GridData gridData = new GridData();
+		gridData.grabExcessHorizontalSpace = true;
+		gridData.horizontalAlignment = GridData.FILL;
+		text3 = new Text(container, SWT.BORDER);
+		text3.setText("0");
+		text3.setLayoutData(gridData);
+	}
+
+	private void createFourthInputField(Composite container) {
+		Label label = new Label(container, SWT.NONE);
+		label.setText(descriptionText4);
+		GridData gridData = new GridData();
+		gridData.grabExcessHorizontalSpace = true;
+		gridData.horizontalAlignment = GridData.FILL;
+		text4 = new Text(container, SWT.BORDER);
+		text4.setText("0");
+		text4.setLayoutData(gridData);
+	}
+
 	private void createWarningLabel(Composite container) {
 		warningLabel = new Label(container, SWT.NONE);
 		warningLabel
@@ -147,13 +187,15 @@ public class GetInput extends TitleAreaDialog {
 
 	@Override
 	protected Point getInitialSize() {
-		switch(windowType) {
+		switch (windowType) {
 		case GET_BOOLEAN:
 			return new Point(450, 150);
+		case GET_TWO_VECTORS:
+			return new Point(450, 350);
 		default:
 			return new Point(450, 250);
 		}
-		
+
 	}
 
 	@Override
@@ -177,6 +219,12 @@ public class GetInput extends TitleAreaDialog {
 			vectorValue.setTwoDimensional(Integer.parseInt(text.getText()),
 					Integer.parseInt(text2.getText()));
 			break;
+		case GET_TWO_VECTORS:
+			vectorValue.setTwoDimensional(Integer.parseInt(text.getText()),
+					Integer.parseInt(text2.getText()));
+			vectorValue2.setTwoDimensional(Integer.parseInt(text3.getText()),
+					Integer.parseInt(text4.getText()));
+			break;
 		case GET_BOOLEAN:
 			booleanValue = true;
 		default:
@@ -194,6 +242,15 @@ public class GetInput extends TitleAreaDialog {
 	}
 
 	/**
+	 * This method returns the stored vector.
+	 * 
+	 * @return the vector
+	 */
+	public Vector getSecondVectorValue() {
+		return vectorValue2;
+	}
+
+	/**
 	 * This method returns the stored integer value.
 	 * 
 	 * @return the integer value
@@ -205,6 +262,7 @@ public class GetInput extends TitleAreaDialog {
 	public boolean getBooleanValue() {
 		return booleanValue;
 	}
+
 	/**
 	 * This method returns the stored string value.
 	 * 
@@ -248,6 +306,25 @@ public class GetInput extends TitleAreaDialog {
 			if (text.getText() != "" && text2.getText() != "") {
 				if (FunctionLibrary.isNumeric(text.getText())
 						&& FunctionLibrary.isNumeric(text2.getText())) {
+					return true;
+				} else {
+					warningLabel
+							.setText("One of the two values is not a digit.");
+					warningLabel.setVisible(true);
+					return false;
+				}
+			} else {
+				warningLabel.setText("Please enter a digit in every field.");
+				warningLabel.setVisible(true);
+				return false;
+			}
+		case GET_TWO_VECTORS:
+			if (text.getText() != "" && text2.getText() != ""
+					&& text3.getText() != "" && text4.getText() != "") {
+				if (FunctionLibrary.isNumeric(text.getText())
+						&& FunctionLibrary.isNumeric(text2.getText())
+						&& FunctionLibrary.isNumeric(text3.getText())
+						&& FunctionLibrary.isNumeric(text4.getText())) {
 					return true;
 				} else {
 					warningLabel

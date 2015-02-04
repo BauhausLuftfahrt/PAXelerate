@@ -9,14 +9,10 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
-
-import javax.swing.JFrame;
-
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
-
 import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.util.FunctionLibrary;
@@ -59,12 +55,13 @@ public class CostMap {
 	 */
 	public CostMap(Vector dimension, Vector start, AreaMap areaMap,
 			Boolean inSteps, Agent agent) {
-		dimensions.setFromPoint(dimension.getValue());
-		startPoint.setFromPoint(start.getValue());
-		goalPoint.setTwoDimensional((int) dimension.getX() / 2,
+		this.dimensions.setFromPoint(dimension.getValue());
+		this.startPoint.setFromPoint(start.getValue());
+		this.goalPoint.setTwoDimensional((int) dimension.getX() / 2,
 				dimension.getY() - 1);
-		areamap = areaMap;
-		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
+		this.areamap = areaMap;
+		this.logger = Platform.getLog(Platform
+				.getBundle("net.bhl.cdt.model.cabin"));
 		map = new int[dimensions.getX()][dimensions.getY()];
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
@@ -76,6 +73,8 @@ public class CostMap {
 				}
 			}
 		}
+
+		/* create the cost around an agent */
 		if (agent != null) {
 			for (int i = 0; i < dimensions.getX(); i++) {
 				for (int j = 0; j < dimensions.getY(); j++) {
@@ -311,7 +310,7 @@ public class CostMap {
 		} catch (ArrayIndexOutOfBoundsException e) {
 			return Integer.MAX_VALUE;
 		}
-		
+
 	}
 
 	/**

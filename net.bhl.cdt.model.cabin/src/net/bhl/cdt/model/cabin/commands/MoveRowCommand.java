@@ -91,8 +91,7 @@ public class MoveRowCommand extends CDTCommand {
 		 *            the arguments
 		 */
 
-		GetInput input = new GetInput(
-				WindowType.GET_VECTOR,
+		GetInput input = new GetInput(WindowType.GET_TWO_VECTORS,
 				"All values must be entered in [cm]. Please use digits only.",
 				IMessageProvider.INFORMATION);
 
