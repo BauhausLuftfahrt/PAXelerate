@@ -12,7 +12,7 @@ Welcome to the repository of the Bauhaus Luftfahrt Boarding Simulation!
 
 * Install openCDT plugin according to [this tutorial](http://sourceforge.net/p/opencdt/wiki/Eclipse%20Developer%20Installation/)
 * Install checkstyle plguin according to  [this tutorial](http://sourceforge.net/p/opencdt/wiki/Eclipse%20Developer%20Installation/)
-* install the Boarding Simulation plugin according to [this tutorial](input-dialog)
+* install the Boarding Simulation plugin according to [this tutorial](https://bitbucket.org/michele_muc/paxsim/wiki/boardingsim-installation)
 
 
 
