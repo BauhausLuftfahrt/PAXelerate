@@ -133,7 +133,7 @@ public class Vector implements Comparable<Vector> {
 	 * 
 	 * @return the x value
 	 */
-	public int getX() {
+	public synchronized int getX() {
 		return xValue;
 	}
 
@@ -143,7 +143,7 @@ public class Vector implements Comparable<Vector> {
 	 * @param x
 	 *            the x value
 	 */
-	public void setX(int x) {
+	public synchronized void setX(int x) {
 		xValue = x;
 	}
 
@@ -152,7 +152,7 @@ public class Vector implements Comparable<Vector> {
 	 * 
 	 * @return the y value
 	 */
-	public int getY() {
+	public synchronized int getY() {
 		return yValue;
 	}
 
@@ -162,7 +162,7 @@ public class Vector implements Comparable<Vector> {
 	 * @param y
 	 *            the y value
 	 */
-	public void setY(int y) {
+	public synchronized void setY(int y) {
 		yValue = y;
 	}
 
@@ -171,7 +171,7 @@ public class Vector implements Comparable<Vector> {
 	 * 
 	 * @return the z value
 	 */
-	public int getZ() {
+	public synchronized int getZ() {
 		return zValue;
 	}
 
@@ -181,7 +181,7 @@ public class Vector implements Comparable<Vector> {
 	 * @param z
 	 *            the z value
 	 */
-	public void setZ(int z) {
+	public synchronized void setZ(int z) {
 		yValue = z;
 	}
 

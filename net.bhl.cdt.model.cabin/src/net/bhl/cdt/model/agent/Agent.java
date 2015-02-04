@@ -167,7 +167,7 @@ public class Agent extends Subject implements Runnable {
 			start = previousPosition;
 			Path pathhelper = pathlist.get(pathlist.size() - 1);
 			pathlist.remove(pathhelper);
-			pathhelper = pathhelper.cutToPoint(pathhelper, start);
+			pathhelper = pathhelper.cutToPoint(pathhelper, previousPosition);
 			pathlist.add(pathhelper);
 		}
 		CostMap costmap = new CostMap(RunAStar.getMap().getDimensions(), start,
@@ -205,6 +205,9 @@ public class Agent extends Subject implements Runnable {
 			while (i < path.getLength()) {
 				if (i != 0) {
 					previousPosition = path.get(i - 1).getPosition();
+				}
+				if (numbOfInterupts > 5) {
+					agentMood = new AggressiveMood(this);
 				}
 				currentPosition = path.get(i).getPosition();
 				if (nodeBlocked(currentPosition)) {
@@ -250,6 +253,8 @@ public class Agent extends Subject implements Runnable {
 				}
 			}
 		} catch (InterruptedException e) {
+			this.getThread().interrupt();
+			System.out.println("thread is now interrupted");
 		}
 	}
 

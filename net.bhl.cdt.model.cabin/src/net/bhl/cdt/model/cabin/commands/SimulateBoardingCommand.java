@@ -37,8 +37,9 @@ import org.eclipse.ui.PlatformUI;
  * @author marc.engelmann
  */
 
-public class SimulateBoardingCommand extends CDTCommand {
+public class SimulateBoardingCommand extends CDTCommand implements Runnable {
 
+	private Thread thread;
 	private Cabin cabin;
 	private static ArrayList<Passenger> alreadySeatedList = new ArrayList<Passenger>();
 	private static StopWatch s = new StopWatch();
@@ -71,7 +72,12 @@ public class SimulateBoardingCommand extends CDTCommand {
 	 */
 	@Override
 	protected void doRun() {
+		// start();
+		run();
+	}
 
+	@Override
+	public void run() {
 		cabin.setFramesPerSecond(10);
 
 		for (Passenger passenger : cabin.getPassengers()) {
@@ -96,8 +102,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 					WindowType.GET_BOOLEAN,
 					"You did not create any passengers. Random passeners are now created.",
 					IMessageProvider.ERROR);
-			if(input.getBooleanValue()) {
-				GeneratePassengersCommand pax = new GeneratePassengersCommand(cabin);
+			if (input.getBooleanValue()) {
+				GeneratePassengersCommand pax = new GeneratePassengersCommand(
+						cabin);
 				pax.doRun();
 				System.out.println("PAX created!");
 			}
@@ -192,5 +199,34 @@ public class SimulateBoardingCommand extends CDTCommand {
 					"No boarding possible! Please create passengers!"));
 		}
 
+	}
+
+	/**
+	 * This method starts the agent.
+	 */
+	public void start() {
+		if (getThread() == null) {
+			setThread(new Thread(this, "Simulation"));
+			getThread().start();
+		}
+	}
+
+	/**
+	 * This method returns the thread.
+	 * 
+	 * @return the thread
+	 */
+	public Thread getThread() {
+		return thread;
+	}
+
+	/**
+	 * This method sets the thread.
+	 * 
+	 * @param thread
+	 *            the thread
+	 */
+	public void setThread(Thread thread) {
+		this.thread = thread;
 	}
 }

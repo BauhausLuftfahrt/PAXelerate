@@ -6,8 +6,6 @@
 
 package net.bhl.cdt.model.cabin.commands;
 
-
-
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.BusinessClass;
 import net.bhl.cdt.model.cabin.Cabin;
@@ -57,7 +55,7 @@ public class GenerateCabinCommand extends CDTCommand {
 		 * The cabin width only adapts to the preset aircraft type if the user
 		 * has not entered a custom width value
 		 */
-		cabin.setSpeedFactor(10);
+		cabin.setSpeedFactor(1);
 		if (cabin.isUsePresetSettings()) {
 			switch (cabin.getAircraftType()) {
 			case REGIONAL:

@@ -123,12 +123,16 @@ public class Path {
 		Path newPath = new Path();
 		int i = 0;
 		while (true) {
-			Node node = waypoints.get(i);
-			newPath.prependWayPoint(node);
-			if (FunctionLibrary.vectorsAreEqual(node.getPosition(), point)) {
+			try {
+				Node node = waypoints.get(i);
+				newPath.prependWayPoint(node);
+				if (FunctionLibrary.vectorsAreEqual(node.getPosition(), point)) {
+					break;
+				}
+				i++;
+			} catch (IndexOutOfBoundsException e) {
 				break;
 			}
-			i++;
 		}
 		return newPath;
 	}

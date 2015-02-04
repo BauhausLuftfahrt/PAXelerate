@@ -199,7 +199,11 @@ public class AStar {
 		 */
 		public void add(Node node) {
 			list.add(node);
-			Collections.sort(list);
+			try {
+				Collections.sort(list);
+			} catch (IllegalArgumentException e) {
+				System.out.println("List could not be sorted!");
+			}
 		}
 
 		/**

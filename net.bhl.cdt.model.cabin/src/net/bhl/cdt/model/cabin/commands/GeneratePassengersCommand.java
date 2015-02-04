@@ -198,11 +198,11 @@ public class GeneratePassengersCommand extends CDTCommand {
 						sex = Sex.MALE;
 					}
 
-					if (FunctionLibrary.randomValue(0, 2) == 1) {
-						newPassenger.setPassengerMood(PassengerMood.AGRESSIVE);
-					} else {
-						newPassenger.setPassengerMood(PassengerMood.PASSIVE);
-					}
+					// if (FunctionLibrary.randomValue(0, 2) == 1) {
+					newPassenger.setPassengerMood(PassengerMood.AGRESSIVE);
+					// } else {
+					// newPassenger.setPassengerMood(PassengerMood.PASSIVE);
+					// }
 					newPassenger.setSex(sex);
 					newPassenger.setAge(FunctionLibrary.randomValue(18, 70));
 					newPassenger.setHeight(FunctionLibrary
@@ -211,9 +211,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 							.setWeight(FunctionLibrary.randomValue(60, 110));
 					newPassenger.setDepth(FunctionLibrary.randomValue(20, 50));
 					newPassenger.setWidth(FunctionLibrary.randomValue(30, 60));
-					newPassenger.setWalkingSpeed(i * 0.5);
-					// (double)FunctionLibrary.randomValue(5,
-					// 15) / 20);
+					newPassenger.setWalkingSpeed((double) FunctionLibrary
+							.randomValue(5, 15) / 20);
 					newPassenger.setLuggageStowTime(FunctionLibrary
 							.randomValue(5, 10));
 					/********************************************************/
