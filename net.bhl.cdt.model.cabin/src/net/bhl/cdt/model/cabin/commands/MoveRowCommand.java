@@ -42,11 +42,13 @@ public class MoveRowCommand extends CDTCommand {
 	private ILog logger;
 	private CabinViewPart cabinViewPart;
 	private Vector movementVector;
+	private Vector scaleVector;
 	private ArrayList<Row> rowlist = new ArrayList<Row>();
 	private ArrayList<Seat> seatlist = new ArrayList<Seat>();
 	private ArrayList<Galley> galleylist = new ArrayList<Galley>();
 	private ArrayList<Lavatory> lavatorylist = new ArrayList<Lavatory>();
 	private ArrayList<Curtain> curtainlist = new ArrayList<Curtain>();
+	private boolean scalingDesired = false;
 
 	/**
 	 * This command gets all physical object elements that are selected by the
@@ -96,7 +98,10 @@ public class MoveRowCommand extends CDTCommand {
 				IMessageProvider.INFORMATION);
 
 		movementVector = input.getVectorValue();
-
+		scaleVector = input.getSecondVectorValue();
+		if (scaleVector.getX() != 0 && scaleVector.getY() != 0) {
+			scalingDesired = true;
+		}
 		if (!rowlist.isEmpty()) {
 			for (Row row : rowlist) {
 				for (Row compareRow : ModelHelper.getChildrenByClass(cabin,
@@ -107,6 +112,11 @@ public class MoveRowCommand extends CDTCommand {
 									+ movementVector.getX());
 							seat.setYPosition(seat.getYPosition()
 									+ movementVector.getY());
+							if (scalingDesired) {
+								seat.setXDimension(scaleVector.getX());
+								seat.setYDimension(scaleVector.getY());
+							}
+
 						}
 					}
 				}
@@ -121,6 +131,10 @@ public class MoveRowCommand extends CDTCommand {
 								+ movementVector.getX());
 						compareSeat.setYPosition(compareSeat.getYPosition()
 								+ movementVector.getY());
+						if (scalingDesired) {
+							compareSeat.setXDimension(scaleVector.getX());
+							compareSeat.setYDimension(scaleVector.getY());
+						}
 					}
 				}
 			}
@@ -134,6 +148,10 @@ public class MoveRowCommand extends CDTCommand {
 								+ movementVector.getX());
 						galley.setYPosition(galley.getYPosition()
 								+ movementVector.getY());
+						if (scalingDesired) {
+							galley.setXDimension(scaleVector.getX());
+							galley.setYDimension(scaleVector.getY());
+						}
 					}
 				}
 			}
@@ -147,6 +165,10 @@ public class MoveRowCommand extends CDTCommand {
 								.getXPosition() + movementVector.getX());
 						compareLavatory.setYPosition(compareLavatory
 								.getYPosition() + movementVector.getY());
+						if (scalingDesired) {
+							compareLavatory.setXDimension(scaleVector.getX());
+							compareLavatory.setYDimension(scaleVector.getY());
+						}
 					}
 				}
 			}
@@ -160,6 +182,10 @@ public class MoveRowCommand extends CDTCommand {
 								.getXPosition() + movementVector.getX());
 						compareCurtain.setYPosition(compareCurtain
 								.getYPosition() + movementVector.getY());
+						if (scalingDesired) {
+							compareCurtain.setXDimension(scaleVector.getX());
+							compareCurtain.setYDimension(scaleVector.getY());
+						}
 					}
 				}
 			}

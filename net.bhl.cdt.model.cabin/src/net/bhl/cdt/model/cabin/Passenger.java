@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#isHasLuggage <em>Has Luggage</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getLuggageStowTime <em>Luggage Stow Time</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getTravelClass <em>Travel Class</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getPassengerMood <em>Passenger Mood</em>}</li>
  * </ul>
  * </p>
  *
@@ -519,6 +520,35 @@ public interface Passenger extends EObject {
 	 * @generated
 	 */
 	void setTravelClass(TravelClass value);
+
+	/**
+	 * Returns the value of the '<em><b>Passenger Mood</b></em>' attribute.
+	 * The literals are from the enumeration {@link net.bhl.cdt.model.cabin.PassengerMood}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Passenger Mood</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Passenger Mood</em>' attribute.
+	 * @see net.bhl.cdt.model.cabin.PassengerMood
+	 * @see #setPassengerMood(PassengerMood)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_PassengerMood()
+	 * @model required="true"
+	 * @generated
+	 */
+	PassengerMood getPassengerMood();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getPassengerMood <em>Passenger Mood</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Passenger Mood</em>' attribute.
+	 * @see net.bhl.cdt.model.cabin.PassengerMood
+	 * @see #getPassengerMood()
+	 * @generated
+	 */
+	void setPassengerMood(PassengerMood value);
 
 	/**
 	 * Returns the value of the '<em><b>Height</b></em>' attribute.

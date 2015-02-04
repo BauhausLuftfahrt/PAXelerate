@@ -1296,13 +1296,22 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER__TRAVEL_CLASS = 21;
 
 	/**
+	 * The feature id for the '<em><b>Passenger Mood</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__PASSENGER_MOOD = 22;
+
+	/**
 	 * The number of structural features of the '<em>Passenger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_FEATURE_COUNT = 22;
+	int PASSENGER_FEATURE_COUNT = 23;
 
 	/**
 	 * The number of operations of the '<em>Passenger</em>' class.
@@ -2207,6 +2216,16 @@ public interface CabinPackage extends EPackage {
 	int AIRCRAFT_TYPE = 23;
 
 	/**
+	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.PassengerMood <em>Passenger Mood</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.model.cabin.PassengerMood
+	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getPassengerMood()
+	 * @generated
+	 */
+	int PASSENGER_MOOD = 24;
+
+	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2945,6 +2964,17 @@ public interface CabinPackage extends EPackage {
 	EReference getPassenger_TravelClass();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getPassengerMood <em>Passenger Mood</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Mood</em>'.
+	 * @see net.bhl.cdt.model.cabin.Passenger#getPassengerMood()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_PassengerMood();
+
+	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getHeight <em>Height</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3392,6 +3422,16 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getAircraftType();
+
+	/**
+	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.PassengerMood <em>Passenger Mood</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Passenger Mood</em>'.
+	 * @see net.bhl.cdt.model.cabin.PassengerMood
+	 * @generated
+	 */
+	EEnum getPassengerMood();
 
 	/**
 	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}'.
@@ -3916,6 +3956,13 @@ public interface CabinPackage extends EPackage {
 		 */
 		EReference PASSENGER__TRAVEL_CLASS = eINSTANCE.getPassenger_TravelClass();
 		/**
+		 * The meta object literal for the '<em><b>Passenger Mood</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__PASSENGER_MOOD = eINSTANCE.getPassenger_PassengerMood();
+		/**
 		 * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4235,6 +4282,15 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum AIRCRAFT_TYPE = eINSTANCE.getAircraftType();
+		/**
+		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.PassengerMood <em>Passenger Mood</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.bhl.cdt.model.cabin.PassengerMood
+		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getPassengerMood()
+		 * @generated
+		 */
+		EEnum PASSENGER_MOOD = eINSTANCE.getPassengerMood();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}' enum.
 		 * <!-- begin-user-doc -->

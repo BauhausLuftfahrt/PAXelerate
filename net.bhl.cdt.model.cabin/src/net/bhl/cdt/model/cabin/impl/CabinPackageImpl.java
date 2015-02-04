@@ -19,6 +19,7 @@ import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.MainDoor;
 import net.bhl.cdt.model.cabin.Passenger;
+import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.PhysicalObject;
 import net.bhl.cdt.model.cabin.PremiumEconomyClass;
 import net.bhl.cdt.model.cabin.Row;
@@ -202,6 +203,13 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	private EEnum aircraftTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum passengerMoodEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -882,6 +890,15 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getPassenger_PassengerMood() {
+		return (EAttribute)passengerEClass.getEStructuralFeatures().get(22);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getPassenger_Height() {
 		return (EAttribute)passengerEClass.getEStructuralFeatures().get(2);
 	}
@@ -1260,6 +1277,15 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getPassengerMood() {
+		return passengerMoodEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getSex() {
 		return sexEEnum;
 	}
@@ -1366,6 +1392,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEAttribute(passengerEClass, PASSENGER__HAS_LUGGAGE);
 		createEAttribute(passengerEClass, PASSENGER__LUGGAGE_STOW_TIME);
 		createEReference(passengerEClass, PASSENGER__TRAVEL_CLASS);
+		createEAttribute(passengerEClass, PASSENGER__PASSENGER_MOOD);
 
 		crewMemberEClass = createEClass(CREW_MEMBER);
 		createEAttribute(crewMemberEClass, CREW_MEMBER__ID);
@@ -1424,6 +1451,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		sexEEnum = createEEnum(SEX);
 		stairwayDirectionEEnum = createEEnum(STAIRWAY_DIRECTION);
 		aircraftTypeEEnum = createEEnum(AIRCRAFT_TYPE);
+		passengerMoodEEnum = createEEnum(PASSENGER_MOOD);
 	}
 
 	/**
@@ -1547,6 +1575,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEAttribute(getPassenger_HasLuggage(), ecorePackage.getEBoolean(), "hasLuggage", "false", 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPassenger_LuggageStowTime(), ecorePackage.getEDouble(), "luggageStowTime", "1.0", 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPassenger_TravelClass(), this.getTravelClass(), null, "travelClass", null, 1, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPassenger_PassengerMood(), this.getPassengerMood(), "passengerMood", null, 1, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(crewMemberEClass, CrewMember.class, "CrewMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCrewMember_Id(), ecorePackage.getEInt(), "id", null, 0, 1, CrewMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1614,6 +1643,10 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		addEEnumLiteral(aircraftTypeEEnum, AircraftType.REGIONAL);
 		addEEnumLiteral(aircraftTypeEEnum, AircraftType.CONTINENTAL);
 		addEEnumLiteral(aircraftTypeEEnum, AircraftType.INTERCONTINENTAL);
+
+		initEEnum(passengerMoodEEnum, PassengerMood.class, "PassengerMood");
+		addEEnumLiteral(passengerMoodEEnum, PassengerMood.AGRESSIVE);
+		addEEnumLiteral(passengerMoodEEnum, PassengerMood.PASSIVE);
 
 		// Create resource
 		createResource(eNS_URI);

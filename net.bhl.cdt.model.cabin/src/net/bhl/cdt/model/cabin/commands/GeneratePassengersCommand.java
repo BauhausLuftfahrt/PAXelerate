@@ -17,6 +17,7 @@ import net.bhl.cdt.model.cabin.EconomyClass;
 import net.bhl.cdt.model.cabin.FirstClass;
 import net.bhl.cdt.model.cabin.MainDoor;
 import net.bhl.cdt.model.cabin.Passenger;
+import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.PremiumEconomyClass;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.Sex;
@@ -136,8 +137,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 	 */
 	private Seat getSeat(Passenger passenger) {
 		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
-			if ((!seat.equals(null))
-					&& (seat.getId() == passenger.getSeat())) {
+			if ((!seat.equals(null)) && (seat.getId() == passenger.getSeat())) {
 				return seat;
 			}
 		}
@@ -197,6 +197,12 @@ public class GeneratePassengersCommand extends CDTCommand {
 					if (FunctionLibrary.randomValue(0, 2) == 1) {
 						sex = Sex.MALE;
 					}
+
+					if (FunctionLibrary.randomValue(0, 2) == 1) {
+						newPassenger.setPassengerMood(PassengerMood.AGRESSIVE);
+					} else {
+						newPassenger.setPassengerMood(PassengerMood.PASSIVE);
+					}
 					newPassenger.setSex(sex);
 					newPassenger.setAge(FunctionLibrary.randomValue(18, 70));
 					newPassenger.setHeight(FunctionLibrary
@@ -205,9 +211,9 @@ public class GeneratePassengersCommand extends CDTCommand {
 							.setWeight(FunctionLibrary.randomValue(60, 110));
 					newPassenger.setDepth(FunctionLibrary.randomValue(20, 50));
 					newPassenger.setWidth(FunctionLibrary.randomValue(30, 60));
-					newPassenger.setWalkingSpeed(i*0.5);
-							//(double)FunctionLibrary.randomValue(5,
-							//15) / 20);
+					newPassenger.setWalkingSpeed(i * 0.5);
+					// (double)FunctionLibrary.randomValue(5,
+					// 15) / 20);
 					newPassenger.setLuggageStowTime(FunctionLibrary
 							.randomValue(5, 10));
 					/********************************************************/

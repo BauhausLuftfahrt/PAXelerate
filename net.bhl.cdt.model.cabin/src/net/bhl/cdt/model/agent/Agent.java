@@ -9,12 +9,15 @@ package net.bhl.cdt.model.agent;
 import java.util.ArrayList;
 
 import net.bhl.cdt.model.astar.AStar;
+import net.bhl.cdt.model.agent.AggressiveMood;
 import net.bhl.cdt.model.astar.CostMap;
+import net.bhl.cdt.model.agent.PassiveMood;
 import net.bhl.cdt.model.astar.Path;
 import net.bhl.cdt.model.astar.RunAStar;
 import net.bhl.cdt.model.astar.StopWatch;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Passenger;
+import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.util.FunctionLibrary;
 import net.bhl.cdt.model.cabin.util.Vector;
@@ -42,6 +45,8 @@ public class Agent extends Subject implements Runnable {
 	private StopWatch stopwatch = new StopWatch();
 	private ArrayList<Path> pathlist = new ArrayList<Path>();
 
+	private AgentMood agentMood;
+
 	/**
 	 * This method constructs an agent.
 	 * 
@@ -61,6 +66,13 @@ public class Agent extends Subject implements Runnable {
 		this.start = start;
 		this.goal = goal;
 		this.scale = scale;
+
+		if (passenger.getPassengerMood() == PassengerMood.AGRESSIVE) {
+			this.agentMood = new AggressiveMood();
+		} else if (passenger.getPassengerMood() == PassengerMood.PASSIVE) {
+			this.agentMood = new PassiveMood();
+		}
+		// li
 	}
 
 	/**
@@ -151,10 +163,10 @@ public class Agent extends Subject implements Runnable {
 		AStar astar = null;
 		if (previousPosition != null) {
 			start = previousPosition;
-			 Path pathhelper = pathlist.get(pathlist.size()-1);
-			 pathlist.remove(pathhelper);
-			 pathhelper = pathhelper.cutToPoint(pathhelper,start);
-			 pathlist.add(pathhelper);
+			Path pathhelper = pathlist.get(pathlist.size() - 1);
+			pathlist.remove(pathhelper);
+			pathhelper = pathhelper.cutToPoint(pathhelper, start);
+			pathlist.add(pathhelper);
 		}
 		CostMap costmap = new CostMap(RunAStar.getMap().getDimensions(), start,
 				RunAStar.getMap(), false, this);
@@ -199,9 +211,8 @@ public class Agent extends Subject implements Runnable {
 					occupyNode(previousPosition, false);
 					occupyNode(currentPosition, false);
 
-					// AggressiveAgent aa = new AggressiveAgent();
-					// Situation s = new Situation(aa);
-					// s.reactoToCollision();
+					Situation collision = new Situation(agentMood);
+					collision.handleCollision();
 
 					findNewPath(null);
 

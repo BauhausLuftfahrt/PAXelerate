@@ -11,6 +11,7 @@ import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
+import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.util.ModelHelper;
@@ -51,7 +52,6 @@ public class RunAStar {
 		run();
 	}
 
-
 	/**
 	 * This method returns the area map.
 	 *
@@ -60,7 +60,6 @@ public class RunAStar {
 	public static AreaMap getMap() {
 		return areamap;
 	}
-
 
 	/**
 	 * This method sets the value for simulationDone.
@@ -80,11 +79,10 @@ public class RunAStar {
 	public static Boolean isSimulationDone() {
 		return simulationDone;
 	}
-	
+
 	public static ArrayList<Agent> getAgentList() {
 		return agentList;
 	}
-
 
 	/**
 	 * This method signals that a passengers has found his seat. This is done by
@@ -132,8 +130,10 @@ public class RunAStar {
 				initialStart = start;
 				doItOnce = false;
 			}
+
 			Agent agent = new Agent(passenger, start, goal, cabin.getScale(),
 					cabin.getSpeedFactor());
+
 			// list of all agents
 			agentList.add(agent);
 		}

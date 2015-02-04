@@ -5,6 +5,7 @@ package net.bhl.cdt.model.cabin.impl;
 import net.bhl.cdt.model.cabin.CabinPackage;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
+import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.Sex;
 import net.bhl.cdt.model.cabin.TravelClass;
@@ -43,6 +44,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#isHasLuggage <em>Has Luggage</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getLuggageStowTime <em>Luggage Stow Time</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getTravelClass <em>Travel Class</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getPassengerMood <em>Passenger Mood</em>}</li>
  * </ul>
  * </p>
  *
@@ -458,6 +460,26 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * @ordered
 	 */
 	protected TravelClass travelClass;
+
+	/**
+	 * The default value of the '{@link #getPassengerMood() <em>Passenger Mood</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassengerMood()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final PassengerMood PASSENGER_MOOD_EDEFAULT = PassengerMood.AGRESSIVE;
+
+	/**
+	 * The cached value of the '{@link #getPassengerMood() <em>Passenger Mood</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassengerMood()
+	 * @generated
+	 * @ordered
+	 */
+	protected PassengerMood passengerMood = PASSENGER_MOOD_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -895,6 +917,27 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public PassengerMood getPassengerMood() {
+		return passengerMood;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPassengerMood(PassengerMood newPassengerMood) {
+		PassengerMood oldPassengerMood = passengerMood;
+		passengerMood = newPassengerMood == null ? PASSENGER_MOOD_EDEFAULT : newPassengerMood;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__PASSENGER_MOOD, oldPassengerMood, passengerMood));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public int getHeight() {
 		return height;
 	}
@@ -1046,6 +1089,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 			case CabinPackage.PASSENGER__TRAVEL_CLASS:
 				if (resolve) return getTravelClass();
 				return basicGetTravelClass();
+			case CabinPackage.PASSENGER__PASSENGER_MOOD:
+				return getPassengerMood();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1123,6 +1168,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return;
 			case CabinPackage.PASSENGER__TRAVEL_CLASS:
 				setTravelClass((TravelClass)newValue);
+				return;
+			case CabinPackage.PASSENGER__PASSENGER_MOOD:
+				setPassengerMood((PassengerMood)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1202,6 +1250,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 			case CabinPackage.PASSENGER__TRAVEL_CLASS:
 				setTravelClass((TravelClass)null);
 				return;
+			case CabinPackage.PASSENGER__PASSENGER_MOOD:
+				setPassengerMood(PASSENGER_MOOD_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1258,6 +1309,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 				return luggageStowTime != LUGGAGE_STOW_TIME_EDEFAULT;
 			case CabinPackage.PASSENGER__TRAVEL_CLASS:
 				return travelClass != null;
+			case CabinPackage.PASSENGER__PASSENGER_MOOD:
+				return passengerMood != PASSENGER_MOOD_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1310,6 +1363,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 		result.append(hasLuggage);
 		result.append(", luggageStowTime: ");
 		result.append(luggageStowTime);
+		result.append(", passengerMood: ");
+		result.append(passengerMood);
 		result.append(')');
 		return result.toString();
 	}
