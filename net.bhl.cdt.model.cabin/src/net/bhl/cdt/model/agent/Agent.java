@@ -47,6 +47,8 @@ public class Agent extends Subject implements Runnable {
 
 	private AgentMood agentMood;
 
+	private boolean exitPathLoop = false;
+
 	/**
 	 * This method constructs an agent.
 	 * 
@@ -68,9 +70,9 @@ public class Agent extends Subject implements Runnable {
 		this.scale = scale;
 
 		if (passenger.getPassengerMood() == PassengerMood.AGRESSIVE) {
-			this.agentMood = new AggressiveMood();
+			this.agentMood = new AggressiveMood(this);
 		} else if (passenger.getPassengerMood() == PassengerMood.PASSIVE) {
-			this.agentMood = new PassiveMood();
+			this.agentMood = new PassiveMood(this);
 		}
 		// li
 	}
@@ -212,12 +214,14 @@ public class Agent extends Subject implements Runnable {
 					occupyNode(currentPosition, false);
 
 					Situation collision = new Situation(agentMood);
+
 					collision.handleCollision();
 
-					findNewPath(null);
+					// findNewPath(null);
+					if (exitPathLoop) {
+						break mainloop;
+					}
 
-					i = Integer.MAX_VALUE;
-					break mainloop;
 				} else if (passengerStowsLuggage() && !alreadyStowed) {
 					RunAStar.getMap().getNode(previousPosition)
 							.setOccupiedByAgent(false);
@@ -247,6 +251,14 @@ public class Agent extends Subject implements Runnable {
 			}
 		} catch (InterruptedException e) {
 		}
+	}
+
+	public boolean isExitPathLoop() {
+		return exitPathLoop;
+	}
+
+	public void setExitPathLoop(boolean exitPathLoop) {
+		this.exitPathLoop = exitPathLoop;
 	}
 
 	/**
