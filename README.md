@@ -10,9 +10,10 @@ Welcome to the repository of the Bauhaus Luftfahrt Boarding Simulation!
 
 ### How do I get set up? ###
 
-* Install openCDT plugin 
-* Install checkstyle plguin
-* install the Boarding Simulation plugin 
+* Install openCDT plugin according to this tutorial 
+* Install checkstyle plguin according to this tutorial
+* install the Boarding Simulation plugin according to this tutorial
+
 
 
 ### Contributors ###
