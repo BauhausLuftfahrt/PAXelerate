@@ -12,6 +12,8 @@ import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.EconomyClass;
 import net.bhl.cdt.model.cabin.EmergencyExit;
 import net.bhl.cdt.model.cabin.FirstClass;
+import net.bhl.cdt.model.cabin.Galley;
+import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.MainDoor;
 import net.bhl.cdt.model.cabin.PremiumEconomyClass;
 import net.bhl.cdt.model.cabin.StandardDoor;
@@ -105,16 +107,16 @@ public class GenerateCabinCommand extends CDTCommand {
 		constructor.clearCabin(); // clear the predecessor cabin (if existent)
 		constructor.createDoor(EmergencyExit.class, true, 3, 935);
 		constructor.createDoor(EmergencyExit.class, true, 4, 1228);
-		constructor.createLavatory(100);
+		constructor.createPhysicalObject(Lavatory.class, 100);
 		constructor.createDoor(MainDoor.class, true, 1, -1);
-		constructor.createGalley(100);
+		constructor.createPhysicalObject(Galley.class, 100);
 		constructor.createClass(FirstClass.class);
 		constructor.createClass(BusinessClass.class);
 		constructor.createClass(PremiumEconomyClass.class);
 		constructor.createClass(EconomyClass.class);
-		constructor.createGalley(100);
+		constructor.createPhysicalObject(Galley.class, 100);
 		constructor.createDoor(StandardDoor.class, true, 2, -1);
-		constructor.createLavatory(100);
+		constructor.createPhysicalObject(Lavatory.class, 100);
 		cabin = constructor.getCabin(); // sync cabins
 		cabin.setUsePresetSettings(false);
 		/* ------------------------------------------------- */

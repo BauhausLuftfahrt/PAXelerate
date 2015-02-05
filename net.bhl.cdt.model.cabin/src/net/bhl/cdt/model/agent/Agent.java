@@ -74,7 +74,6 @@ public class Agent extends Subject implements Runnable {
 		} else if (passenger.getPassengerMood() == PassengerMood.PASSIVE) {
 			this.agentMood = new PassiveMood(this);
 		}
-		// li
 	}
 
 	/**
@@ -138,40 +137,34 @@ public class Agent extends Subject implements Runnable {
 
 		// use monitor so that only one thread can occupy a node at a time
 		synchronized (vector) {
-			RunAStar.getMap().getNodeByCoordinate(vector.getX(), vector.getY())
-					.setOccupiedByAgent(occupy);
+			int expansion = 2;
+			for (int x = -expansion; x <= 0; x++) {
+				// for (int y = -expansion; y <= expansion; y++) {
+				if (x > expansion) { // && y > expansion) {
+					RunAStar.getMap()
+							.getNodeByCoordinate(vector.getX() + x,
+									vector.getY()) // + y)
+							.setOccupiedByAgent(occupy);
+				}
+			}
 		}
 	}
 
-	// /**
-	// * This method waits until the path is clear.
-	// */
-	// private void waitUntilPathIsClear() {
-	// try {
-	// Thread.sleep(1);
-	// } catch (InterruptedException e) {
-	// e.printStackTrace();
-	// }
-	// }
-
-	// /**
-	// * This method finds the way around an obstacle.
-	// */
-	// private void findWayAroundObstacle() {
-	// findNewPath(null);
-	// }
-
-	public void findNewPath(CostMap costmapp) {
+	public void findNewPath() {
 		AStar astar = null;
+		CostMap costmap = null;
 		if (previousPosition != null) {
 			start = previousPosition;
 			Path pathhelper = pathlist.get(pathlist.size() - 1);
 			pathlist.remove(pathhelper);
 			pathhelper = pathhelper.cutToPoint(pathhelper, previousPosition);
 			pathlist.add(pathhelper);
+			costmap = new CostMap(RunAStar.getMap().getDimensions(), start,
+					RunAStar.getMap(), false, this);
+			costmap.printMapToConsole();
 		}
-		CostMap costmap = new CostMap(RunAStar.getMap().getDimensions(), start,
-				RunAStar.getMap(), false, this);
+		costmap = new CostMap(RunAStar.getMap().getDimensions(), start,
+				RunAStar.getMap(), false, null);
 		astar = new AStar(RunAStar.getMap(), costmap, this);
 		path = astar.getBestPath();
 		pathlist.add(path);
@@ -243,10 +236,10 @@ public class Agent extends Subject implements Runnable {
 							.setOccupiedByAgent(true);
 					occupyNode(previousPosition, false);
 					occupyNode(currentPosition, true);
-
 					passenger.setPositionX(currentPosition.getX() * scale);
 					passenger.setPositionY(currentPosition.getY() * scale);
 					passenger.setOrientationInDegree(getRotation());
+
 					Thread.sleep((int) (1000 / speedfactor / (passenger
 							.getWalkingSpeed() * 100 / scale)));
 					i++;

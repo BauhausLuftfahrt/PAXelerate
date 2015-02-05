@@ -74,25 +74,25 @@ public class CostMap {
 			}
 		}
 
-		/* create the cost around an agent */
+		/* create the cost around the agents */
 		if (agent != null) {
-			for (int i = 0; i < dimensions.getX(); i++) {
-				for (int j = 0; j < dimensions.getY(); j++) {
-					Node node = areamap.getNodeByCoordinate(i, j);
+			/* scan for other agents in this radius */
+			int size = 5;
+			for (int i = -size; i <= size; i++) {
+				for (int j = -size; j <= size; j++) {
+					Node node = areamap.getNodeByCoordinate(agent.getPosition()
+							.getX() + i, agent.getPosition().getY() + j);
 					if (node.isOccupiedByAgent()) {
 						if (!FunctionLibrary.vectorsAreEqual(
 								node.getPosition(), agent.getPosition())) {
-							for (Vector point : getSurroundingPoints(i, j)) {
-								if (!isObstacle(point)) {
-									setCost(point.getX(), point.getY(), 500);
-								}
-							}
-							setCost(i, j, 500);
+							setCost(node.getPosition().getX(), node
+									.getPosition().getY(), 500);
 						}
 					}
 				}
 			}
 		}
+
 		map[startPoint.getX()][startPoint.getY()] = 0;
 		visitedPoints.add(startPoint);
 		if (!inSteps) {

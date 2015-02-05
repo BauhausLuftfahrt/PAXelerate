@@ -201,7 +201,6 @@ public class ObstacleMap {
 		/*
 		 * x: begin and end; y: begin and end;
 		 */
-		int[] firstClassAisleValues = new int[4];
 
 		/*
 		 * Create the door path
@@ -218,8 +217,8 @@ public class ObstacleMap {
 					if (j > entryMin && j < entryMax) {
 						obstacleMap[i][j] = HOLE_VALUE;
 					}
-					
-					//TODO: clear out the aisles and set them to HOLE_VALUE
+
+					// TODO: clear out the aisles and set them to HOLE_VALUE
 					if (i < 19 && i > 16) {
 						obstacleMap[i][j] = HOLE_VALUE;
 					}

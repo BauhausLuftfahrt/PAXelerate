@@ -144,8 +144,12 @@ public class RunAStar {
 		anotherStopwatch.start();
 
 		/** First generate all paths ... */
+		int i = 1;
 		for (Agent agent : agentList) {
-			agent.findNewPath(null);
+			console.addToLog("path calculation (" + i + "/" + agentList.size()
+					+ ")");
+			agent.findNewPath();
+			i++;
 		}
 		anotherStopwatch.stop();
 		System.out.println("Calculations completed in: "

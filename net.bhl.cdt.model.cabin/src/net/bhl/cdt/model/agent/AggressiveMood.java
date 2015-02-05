@@ -12,7 +12,7 @@ public class AggressiveMood extends AgentMood implements Strategy {
 	@Override
 	public void reactToCollision() {
 
-		super.getAgent().findNewPath(null);
+		super.getAgent().findNewPath();
 		super.getAgent().setExitPathLoop(true);
 	}
 }

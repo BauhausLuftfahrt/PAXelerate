@@ -6,6 +6,7 @@
 package net.bhl.cdt.model.cabin.util;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.ILog;
@@ -24,6 +25,7 @@ import net.bhl.cdt.model.cabin.FirstClass;
 import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.MainDoor;
+import net.bhl.cdt.model.cabin.PhysicalObject;
 import net.bhl.cdt.model.cabin.PremiumEconomyClass;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
@@ -59,10 +61,10 @@ public class ConstructionLibrary {
 	private TravelClass passengerClass;
 	private ILog logger;
 	private ArrayList<Integer> rowPartsInt;
-	private Boolean doItOnce = true;
 	private int galleyCount = 1;
 	private int lavatoryCount = 1;
 	private int curtainCount = 1;
+	boolean doItOnce = true;
 
 	/**
 	 * This method is the constructor of this class.
@@ -73,6 +75,7 @@ public class ConstructionLibrary {
 	public ConstructionLibrary(Cabin cabin) {
 		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
 		this.cabin = cabin;
+		rowPartsInt = new ArrayList<Integer>();
 		globalSeatPositionX = 0;
 		globalSeatPositionY = 0;
 		seatStructure = "3-3";
@@ -126,7 +129,7 @@ public class ConstructionLibrary {
 
 	/**
 	 * This method clears all objects from the cabin object <b>excluding the
-	 * passenger classes</b>.
+	 * passenger classes</b>. These are removed in a later step.
 	 */
 	public void clearCabin() {
 		cabin.getDoors().clear();
@@ -152,7 +155,6 @@ public class ConstructionLibrary {
 	 *            is a helper Class
 	 */
 	public <T extends TravelClass> void switchSettings(Class<T> travelSubClass) {
-		// TODO implement preset settings loading.
 		switch (travelSubClass.getSimpleName()) {
 		case "PremiumEconomyClass":
 			try {
@@ -173,9 +175,7 @@ public class ConstructionLibrary {
 				seatPitch = 20;
 				passengers = 1;
 			}
-			PremiumEconomyClass peClass = CabinFactory.eINSTANCE
-					.createPremiumEconomyClass();
-			passengerClass = peClass;
+			passengerClass = CabinFactory.eINSTANCE.createPremiumEconomyClass();
 			break;
 		case "BusinessClass":
 			try {
@@ -196,8 +196,7 @@ public class ConstructionLibrary {
 				seatPitch = 30;
 				passengers = 1;
 			}
-			BusinessClass bClass = CabinFactory.eINSTANCE.createBusinessClass();
-			passengerClass = bClass;
+			passengerClass = CabinFactory.eINSTANCE.createBusinessClass();
 			break;
 		case "FirstClass":
 			try {
@@ -218,10 +217,9 @@ public class ConstructionLibrary {
 				seatPitch = 40;
 				passengers = 1;
 			}
-			FirstClass fClass = CabinFactory.eINSTANCE.createFirstClass();
-			passengerClass = fClass;
+			passengerClass = CabinFactory.eINSTANCE.createFirstClass();
 			break;
-		default:
+		case "EconomyClass":
 			try {
 				EconomyClass subclass = ModelHelper.getChildrenByClass(cabin,
 						EconomyClass.class).get(0);
@@ -241,8 +239,7 @@ public class ConstructionLibrary {
 				seatPitch = 20;
 				passengers = 1;
 			}
-			EconomyClass eClass = CabinFactory.eINSTANCE.createEconomyClass();
-			passengerClass = eClass;
+			passengerClass = CabinFactory.eINSTANCE.createEconomyClass();
 			break;
 		}
 	}
@@ -270,6 +267,64 @@ public class ConstructionLibrary {
 			seatsInRow += Integer.parseInt(str);
 			rowPartsInt.add(Integer.parseInt(str));
 		}
+	}
+
+	/**
+	 * This method creates the physical objects except for seats!
+	 * 
+	 * @param physicalObjectClass
+	 * @param yDimension
+	 */
+	public <P extends PhysicalObject> void createPhysicalObject(
+			Class<P> physicalObjectClass, int yDimension) {
+		int currentPosition = 0;
+		splitSeatString(seatStructure);
+		if (doItOnce) {
+			try {
+				seatStructure = cabin.getClasses().get(0).getRowStructure();
+				splitSeatString(seatStructure);
+			} catch (IndexOutOfBoundsException e) {
+				rowPartsInt.clear();
+				rowPartsInt.addAll(Arrays.asList(3, 3));
+			}
+			doItOnce = false;
+		}
+
+		for (int k = 0; k < rowPartsInt.size(); k++) {
+			PhysicalObject physialObject = null;
+			switch (physicalObjectClass.getSimpleName()) {
+			case "Lavatory":
+				physialObject = CabinFactory.eINSTANCE.createLavatory();
+				cabin.getLavatories().add((Lavatory) physialObject);
+				physialObject.setName(" " + lavatoryCount);
+				physialObject.setId(lavatoryCount);
+				lavatoryCount++;
+				break;
+			case "Galley":
+				physialObject = CabinFactory.eINSTANCE.createGalley();
+				cabin.getGalleys().add((Galley) physialObject);
+				physialObject.setName(" " + galleyCount);
+				physialObject.setId(galleyCount);
+				galleyCount++;
+				break;
+			}
+			physialObject.setYDimension(yDimension);
+			physialObject.setYPosition(globalSeatPositionY);
+			try {
+				physialObject.setXDimension(rowPartsInt.get(k)
+						* (passengerClass.getSeatWidth() + seatHelper)
+						+ seatHelper);
+			} catch (NullPointerException e) {
+				physialObject.setXDimension((cabin.getCabinWidth() - numbAisles
+						* cabin.getAisleWidth())
+						/ (numbAisles + 1));
+			}
+			physialObject.setXPosition(currentPosition);
+			currentPosition = currentPosition + physialObject.getXDimension()
+					+ cabin.getAisleWidth();
+
+		}
+		globalSeatPositionY += yDimension;
 	}
 
 	/**
@@ -327,7 +382,8 @@ public class ConstructionLibrary {
 		splitSeatString(seatStructure);
 		passengerClass.setPassengers(passengers);
 		passengerClass.setAvailableSeats(seats);
-		passengerClass.setRowStructure(InputChecker.checkStructureString(seatStructure));
+		passengerClass.setRowStructure(InputChecker
+				.checkStructureString(seatStructure));
 		passengerClass.setSeatPitch(seatPitch);
 		passengerClass.setSeatWidth(seatDimensions.getX());
 		passengerClass.setSeatLength(seatDimensions.getY());
@@ -377,7 +433,7 @@ public class ConstructionLibrary {
 				globalSeatPositionY = globalSeatPositionY
 						+ seatDimensions.getY();
 			}
-			if (!travelSubClass.getSimpleName().equals("EconomyClass")) {
+			if (!(passengerClass instanceof EconomyClass)) {
 				createCurtain(
 						true,
 						"after "
@@ -495,45 +551,9 @@ public class ConstructionLibrary {
 			newCurtain.setXPosition(currentCurtainPosition);
 			currentCurtainPosition = currentCurtainPosition
 					+ newCurtain.getXDimension() + cabin.getAisleWidth();
-			curtainCount ++;
+			curtainCount++;
 		}
 		globalSeatPositionY += 40;
-	}
-
-	/**
-	 * This function creates a row of lavatories.
-	 * 
-	 * @param yDimension
-	 *            is the y dimension of the lavatory
-	 */
-	public void createLavatory(int yDimension) {
-		int currentLavatoryPosition = 0;
-		splitSeatString(seatStructure);
-		if (seatStructure == "emptyString") {
-			rowPartsInt.add(3);
-			rowPartsInt.add(3);
-		}
-		for (int k = 0; k < rowPartsInt.size(); k++) {
-			Lavatory newLavatory = CabinFactory.eINSTANCE.createLavatory();
-			cabin.getLavatories().add(newLavatory);
-			newLavatory.setYDimension(yDimension);
-			newLavatory.setId(lavatoryCount);
-			newLavatory.setName(" "+lavatoryCount);
-			newLavatory.setYPosition(globalSeatPositionY);
-			try {
-				newLavatory.setXDimension(rowPartsInt.get(k)
-						* (passengerClass.getSeatWidth() + seatHelper)
-						+ seatHelper);
-			} catch (NullPointerException e) {
-				newLavatory.setXDimension((cabin.getCabinWidth() - cabin
-						.getAisleWidth()) / 2);
-			}
-			newLavatory.setXPosition(currentLavatoryPosition);
-			currentLavatoryPosition = currentLavatoryPosition
-					+ newLavatory.getXDimension() + cabin.getAisleWidth();
-			lavatoryCount ++;
-		}
-		globalSeatPositionY += yDimension;
 	}
 
 	/**
@@ -560,50 +580,6 @@ public class ConstructionLibrary {
 		newStairway.setDirection(direction);
 		newStairway.setXDimension(xDimension);
 		newStairway.setYDimension(yDimension);
-	}
-
-	/**
-	 * This method generates a complete row of galleys!
-	 * 
-	 * @param yDimension
-	 *            is the y dimension of the galleys
-	 */
-	public void createGalley(int yDimension) {
-		int currentGalleyPosition = 0;
-		if (doItOnce) {
-			try {
-				seatStructure = cabin.getClasses().get(0).getRowStructure();
-			} catch (IndexOutOfBoundsException e) {
-			}
-		}
-		doItOnce = false;
-		splitSeatString(seatStructure);
-		if (seatStructure == "emptyString") {
-			rowPartsInt.add(3);
-			rowPartsInt.add(3);
-		}
-		for (int k = 0; k < rowPartsInt.size(); k++) {
-			Galley newGalley = CabinFactory.eINSTANCE.createGalley();
-			cabin.getGalleys().add(newGalley);
-			newGalley.setYDimension(yDimension);
-			newGalley.setId(galleyCount);
-			newGalley.setName(" "+galleyCount);
-			newGalley.setYPosition(globalSeatPositionY);
-			try {
-				newGalley.setXDimension(rowPartsInt.get(k)
-						* (passengerClass.getSeatWidth() + seatHelper)
-						+ seatHelper);
-			} catch (NullPointerException e) {
-				newGalley.setXDimension((cabin.getCabinWidth() - numbAisles
-						* cabin.getAisleWidth())
-						/ (numbAisles + 1));
-			}
-			newGalley.setXPosition(currentGalleyPosition);
-			currentGalleyPosition = currentGalleyPosition
-					+ newGalley.getXDimension() + cabin.getAisleWidth();
-			galleyCount++;
-		}
-		globalSeatPositionY += yDimension;
 	}
 
 }
