@@ -78,15 +78,20 @@ public class CostMap {
 		if (agent != null) {
 			/* scan for other agents in this radius */
 			int size = 5;
-			for (int i = -size; i <= size; i++) {
-				for (int j = -size; j <= size; j++) {
+			for (int a = -size; a <= size; a++) {
+				for (int b = -size; b <= size; b++) {
 					Node node = areamap.getNodeByCoordinate(agent.getPosition()
-							.getX() + i, agent.getPosition().getY() + j);
+							.getX() + a, agent.getPosition().getY() + b);
 					if (node.isOccupiedByAgent()) {
 						if (!FunctionLibrary.vectorsAreEqual(
 								node.getPosition(), agent.getPosition())) {
-							setCost(node.getPosition().getX(), node
-									.getPosition().getY(), 500);
+							for (Vector point : getSurroundingPoints(node
+									.getPosition().getX(), node.getPosition()
+									.getY())) {
+								setCost(point.getX(), point.getY(), 500);
+								setCost(node.getPosition().getX(), node
+										.getPosition().getY(), 500);
+							}
 						}
 					}
 				}
