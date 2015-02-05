@@ -685,20 +685,21 @@ public class CabinViewPart extends ViewPart {
 											+ (int) (pass.getPositionY() / factor)
 											+ lineLength * (vector.getY() / 5));
 						}
-					} else {
-						Seat mySeat = pass.getSeatRef();
-						e.gc.fillOval(
-								xZero
-										+ (int) ((mySeat.getXPosition()
-												+ mySeat.getXDimension() / 2 - pass
-												.getWidth() / 2) / factor),
-								yZero
-										+ (int) ((mySeat.getYPosition()
-												+ mySeat.getYDimension() / 2 - pass
-												.getDepth() / 2) / factor),
-								(int) (pass.getWidth() / factor),
-								(int) (pass.getDepth() / factor));
 					}
+					// } else {
+					// Seat mySeat = pass.getSeatRef();
+					// e.gc.fillOval(
+					// xZero
+					// + (int) ((mySeat.getXPosition()
+					// + mySeat.getXDimension() / 2 - pass
+					// .getWidth() / 2) / factor),
+					// yZero
+					// + (int) ((mySeat.getYPosition()
+					// + mySeat.getYDimension() / 2 - pass
+					// .getDepth() / 2) / factor),
+					// (int) (pass.getWidth() / factor),
+					// (int) (pass.getDepth() / factor));
+					// }
 				}
 			}
 		});

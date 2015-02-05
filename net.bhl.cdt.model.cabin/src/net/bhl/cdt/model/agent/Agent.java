@@ -136,41 +136,39 @@ public class Agent extends Subject implements Runnable {
 
 		// use monitor so that only one thread can occupy a node at a time
 		synchronized (vector) {
-			int expansion = 2;
-			for (int x = -expansion; x <= expansion; x++) {
-				for (int y = -expansion; y <= 0; y++) {
-					if (x > expansion && y > expansion) {
-						RunAStar.getMap()
-								.getNodeByCoordinate(vector.getX() + x,
-										vector.getY() + y)
-								.setOccupiedByAgent(occupy);
-					}
-				}
-			}
+			RunAStar.getMap().getNode(vector).setOccupiedByAgent(occupy);
 		}
 	}
 
-	public void findNewPath() {
+	public void redefinePathLayout() {
+		Path pathhelper = pathlist.get(pathlist.size() - 1);
+		pathlist.remove(pathhelper);
+		pathhelper = pathhelper.cutToPoint(pathhelper, previousPosition);
+		pathlist.add(pathhelper);
+		pathlist.add(path);
+	}
+
+	public void findNewPath(CostMap costtmapp) {
+		stopwatch.start();
 		AStar astar = null;
 		CostMap costmap = null;
-		if (previousPosition != null) {
+		if (costtmapp == null) {
 			start = previousPosition;
-			Path pathhelper = pathlist.get(pathlist.size() - 1);
-			pathlist.remove(pathhelper);
-			pathhelper = pathhelper.cutToPoint(pathhelper, previousPosition);
-			pathlist.add(pathhelper);
+			// TODO do not create a new one, just add an agent obstacle to the
+			// old one!
 			costmap = new CostMap(RunAStar.getMap().getDimensions(), start,
-					RunAStar.getMap(), false, this);
+					RunAStar.getMap(), false, this, true);
 			costmap.printMapToConsole();
 		} else {
-			costmap = new CostMap(RunAStar.getMap().getDimensions(), start,
-					RunAStar.getMap(), false, null);
+			costmap = costtmapp;
 		}
 		astar = new AStar(RunAStar.getMap(), costmap, this);
 		path = astar.getBestPath();
-		pathlist.add(path);
 		currentPosition = path.get(0).getPosition();
 		previousPosition = new Vector(0, 0);
+		stopwatch.stop();
+		System.out.println("it took " + stopwatch.getElapsedTime()
+				+ " milliseconds to find a new path.");
 	}
 
 	public Vector getPosition() {
@@ -180,10 +178,6 @@ public class Agent extends Subject implements Runnable {
 	private boolean goalReached() {
 		return FunctionLibrary.vectorsAreEqual(currentPosition, goal);
 	}
-
-	// private boolean willingToTakeDetour() {
-	// return true;
-	// }
 
 	private boolean nodeBlocked(Vector vector) {
 		return RunAStar.getMap().getNode(vector).isOccupiedByAgent();
@@ -207,21 +201,16 @@ public class Agent extends Subject implements Runnable {
 				}
 				currentPosition = path.get(i).getPosition();
 				if (nodeBlocked(currentPosition)) {
-					/* bisher: calculate new path every time the path is blocked */
 					numbOfInterupts++;
 					occupyNode(previousPosition, false);
 					occupyNode(currentPosition, false);
-
 					Situation collision = new Situation(agentMood);
-
 					collision.handleCollision();
-
-					// findNewPath(null);
 					if (exitTheMainLoop) {
 						System.out.println("searching for new path ...");
+						redefinePathLayout();
 						break mainloop;
 					}
-
 				} else if (passengerStowsLuggage() && !alreadyStowed) {
 					RunAStar.getMap().getNode(previousPosition)
 							.setOccupiedByAgent(false);

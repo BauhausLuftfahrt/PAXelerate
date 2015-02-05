@@ -40,7 +40,8 @@ public class HelpView extends JPanel {
 			}
 		});
 		this.add(button);
-		costmap = new CostMap(dimensions, new Vector(0, 14), areamap, true,null);
+		costmap = new CostMap(dimensions, new Vector(0, 14), areamap, true,
+				null, false);
 		Thread gameThread = new Thread() {
 
 			public void run() {
@@ -76,12 +77,12 @@ public class HelpView extends JPanel {
 		for (int x = 0; x < (int) (BOX_WIDTH / squareDimension); x++) {
 			for (int y = 0; y < (int) (BOX_HEIGHT / squareDimension); y++) {
 				g.setColor(Color.LIGHT_GRAY);
-//				if (x < 36 && y < 100) {
-//					if (CostMap.getCostForCoordinates(x, y) != ObstacleMap
-//							.getValueAtPoint(x, y)) {
-//						g.setColor(Color.ORANGE);
-//					}
-//				}
+				// if (x < 36 && y < 100) {
+				// if (CostMap.getCostForCoordinates(x, y) != ObstacleMap
+				// .getValueAtPoint(x, y)) {
+				// g.setColor(Color.ORANGE);
+				// }
+				// }
 				for (Vector point : pointspace) {
 					if (point.getX() == x && point.getY() == y) {
 						g.setColor(Color.BLUE);
@@ -96,7 +97,7 @@ public class HelpView extends JPanel {
 				if (newPointHelp.getX() == x && newPointHelp.getY() == y) {
 					g.setColor(Color.RED);
 				}
-				
+
 				if (costmap.getCostForCoordinates(x, y) == -1) {
 					g.setColor(Color.DARK_GRAY);
 					g.fillRect(x * squareDimension - squareCorrectX, y

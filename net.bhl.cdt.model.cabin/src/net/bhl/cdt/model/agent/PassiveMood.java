@@ -11,7 +11,7 @@ public class PassiveMood extends AgentMood implements Strategy {
 	public void reactToCollision() {
 		// TODO Auto-generated method stub
 		try {
-			super.getAgent().getThread().sleep(10);
+			Thread.sleep(100);
 			super.getAgent().setExitPathLoop(false);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block

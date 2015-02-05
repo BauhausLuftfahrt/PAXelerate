@@ -1,7 +1,5 @@
 package net.bhl.cdt.model.agent;
 
-import net.bhl.cdt.model.cabin.util.Vector;
-
 public class AggressiveMood extends AgentMood implements Strategy {
 
 	public AggressiveMood(Agent agent) {
@@ -12,7 +10,7 @@ public class AggressiveMood extends AgentMood implements Strategy {
 	@Override
 	public void reactToCollision() {
 
-		super.getAgent().findNewPath();
+		super.getAgent().findNewPath(null);
 		super.getAgent().setExitPathLoop(true);
 	}
 }

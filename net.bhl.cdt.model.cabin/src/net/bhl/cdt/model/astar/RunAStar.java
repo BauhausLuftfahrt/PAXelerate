@@ -138,7 +138,8 @@ public class RunAStar {
 			agentList.add(agent);
 		}
 
-		costmap = new CostMap(dimensions, initialStart, areamap, false, null);
+		costmap = new CostMap(dimensions, initialStart, areamap, false, null,
+				false);
 		costmap.saveMapToFile();
 
 		anotherStopwatch.start();
@@ -148,7 +149,7 @@ public class RunAStar {
 		for (Agent agent : agentList) {
 			console.addToLog("path calculation (" + i + "/" + agentList.size()
 					+ ")");
-			agent.findNewPath();
+			agent.findNewPath(costmap);
 			i++;
 		}
 		anotherStopwatch.stop();

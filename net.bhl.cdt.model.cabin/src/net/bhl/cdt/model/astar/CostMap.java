@@ -54,11 +54,15 @@ public class CostMap {
 	 * @param areaMap
 	 */
 	public CostMap(Vector dimension, Vector start, AreaMap areaMap,
-			Boolean inSteps, Agent agent) {
-		this.dimensions.setFromPoint(dimension.getValue());
-		this.startPoint.setFromPoint(start.getValue());
-		this.goalPoint.setTwoDimensional((int) dimension.getX() / 2,
-				dimension.getY() - 1);
+			Boolean inSteps, Agent agent, boolean OnlyFloodToSeat) {
+		this.dimensions = dimension;
+		this.startPoint = start;
+		if (OnlyFloodToSeat) {
+			this.goalPoint = agent.getGoal();
+		} else {
+			this.goalPoint.setTwoDimensional((int) dimensions.getX() / 2,
+					dimensions.getY() - 1);
+		}
 		this.areamap = areaMap;
 		this.logger = Platform.getLog(Platform
 				.getBundle("net.bhl.cdt.model.cabin"));
@@ -80,7 +84,7 @@ public class CostMap {
 			 * Scan for other agents in this radius. Go "size" steps in every
 			 * direction.
 			 */
-			int size = 5;
+			int size = 10;
 			for (int a = -size; a <= size; a++) {
 				for (int b = -size; b <= size; b++) {
 					try {
@@ -100,9 +104,10 @@ public class CostMap {
 							}
 						}
 					} catch (ArrayIndexOutOfBoundsException e) {
-
+						System.out
+								.println("costmap - array index is out of bounds!");
 					} catch (IndexOutOfBoundsException e) {
-
+						System.out.println("costmap - index is out of bounds!");
 					}
 				}
 			}
