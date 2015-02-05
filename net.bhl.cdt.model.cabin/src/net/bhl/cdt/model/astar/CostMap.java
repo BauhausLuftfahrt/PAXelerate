@@ -126,20 +126,19 @@ public class CostMap {
 	 */
 	public CostMap getAgentModifiedMap(CostMap costmap,
 			AreaMap modifiedAreamap, Agent agent) {
-		if (agent != null) {
-			for (int a = 0; a < dimensions.getX(); a++) {
-				for (int b = 0; b < dimensions.getY(); b++) {
-					Node node = modifiedAreamap.getNodeByCoordinate(a, b);
-					if (node.isOccupiedByAgent()) {
-						if (!FunctionLibrary.vectorsAreEqual(
-								node.getPosition(), agent.getPosition())) {
-							for (Vector agentSurroundingPoint : getSurroundingPoints(
-									a, b)) {
-								setCost(agentSurroundingPoint.getX(),
-										agentSurroundingPoint.getY(), 500);
-							}
-							setCost(a, b, 500);
+		for (int a = 0; a < dimensions.getX(); a++) {
+			for (int b = 0; b < dimensions.getY(); b++) {
+				if (modifiedAreamap.getNodeByCoordinate(a, b)
+						.isOccupiedByAgent()) {
+					if (!FunctionLibrary.vectorsAreEqual(modifiedAreamap
+							.getNodeByCoordinate(a, b).getPosition(), agent
+							.getPosition())) {
+						for (Vector agentSurroundingPoint : getSurroundingPoints(
+								a, b)) {
+							setCost(agentSurroundingPoint.getX(),
+									agentSurroundingPoint.getY(), 500);
 						}
+						setCost(a, b, 500);
 					}
 				}
 			}

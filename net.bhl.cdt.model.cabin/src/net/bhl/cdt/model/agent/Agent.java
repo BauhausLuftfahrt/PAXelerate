@@ -151,18 +151,13 @@ public class Agent extends Subject implements Runnable {
 
 	public void findNewPath(CostMap costtmapp) {
 		stopwatch.start();
-		AStar astar = null;
 		if (previousPosition != null) {
 			start = previousPosition;
-			// TODO do not create a new one, just add an agent obstacle to the
-			// old one!
-			// costmap = new CostMap(RunAStar.getMap().getDimensions(), start,
-			// RunAStar.getMap(), false, this, true);
 			costtmapp = costtmapp.getAgentModifiedMap(costtmapp,
 					RunAStar.getMap(), this);
 			costtmapp.printMapToConsole();
 		}
-		astar = new AStar(RunAStar.getMap(), costtmapp, this);
+		AStar astar = new AStar(RunAStar.getMap(), costtmapp, this);
 		path = astar.getBestPath();
 		currentPosition = path.get(0).getPosition();
 		previousPosition = new Vector(0, 0);
