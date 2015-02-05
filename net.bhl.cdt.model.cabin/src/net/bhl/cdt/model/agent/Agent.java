@@ -141,6 +141,7 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	public void redefinePathLayout() {
+
 		Path pathhelper = pathlist.get(pathlist.size() - 1);
 		pathlist.remove(pathhelper);
 		pathhelper = pathhelper.cutToPoint(pathhelper, previousPosition);
@@ -151,18 +152,17 @@ public class Agent extends Subject implements Runnable {
 	public void findNewPath(CostMap costtmapp) {
 		stopwatch.start();
 		AStar astar = null;
-		CostMap costmap = null;
-		if (costtmapp == null) {
+		if (previousPosition != null) {
 			start = previousPosition;
 			// TODO do not create a new one, just add an agent obstacle to the
 			// old one!
-			costmap = new CostMap(RunAStar.getMap().getDimensions(), start,
-					RunAStar.getMap(), false, this, true);
-			costmap.printMapToConsole();
-		} else {
-			costmap = costtmapp;
+			// costmap = new CostMap(RunAStar.getMap().getDimensions(), start,
+			// RunAStar.getMap(), false, this, true);
+			costtmapp = costtmapp.getAgentModifiedMap(costtmapp,
+					RunAStar.getMap(), this);
+			costtmapp.printMapToConsole();
 		}
-		astar = new AStar(RunAStar.getMap(), costmap, this);
+		astar = new AStar(RunAStar.getMap(), costtmapp, this);
 		path = astar.getBestPath();
 		currentPosition = path.get(0).getPosition();
 		previousPosition = new Vector(0, 0);
@@ -264,6 +264,7 @@ public class Agent extends Subject implements Runnable {
 		try {
 			previousPosition = start;
 			alreadyStowed = false;
+			pathlist.add(path);
 			Thread.sleep((int) (passenger.getStartBoardingAfterDelay() * 1000 / speedfactor));
 			stopwatch.start();
 			numbOfInterupts = 0;

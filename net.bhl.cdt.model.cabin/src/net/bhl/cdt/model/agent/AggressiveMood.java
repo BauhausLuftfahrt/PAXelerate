@@ -1,5 +1,7 @@
 package net.bhl.cdt.model.agent;
 
+import net.bhl.cdt.model.astar.RunAStar;
+
 public class AggressiveMood extends AgentMood implements Strategy {
 
 	public AggressiveMood(Agent agent) {
@@ -10,7 +12,7 @@ public class AggressiveMood extends AgentMood implements Strategy {
 	@Override
 	public void reactToCollision() {
 
-		super.getAgent().findNewPath(null);
+		super.getAgent().findNewPath(RunAStar.getCostMap());
 		super.getAgent().setExitPathLoop(true);
 	}
 }

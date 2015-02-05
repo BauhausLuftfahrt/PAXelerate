@@ -162,4 +162,8 @@ public class RunAStar {
 		}
 
 	}
+
+	public static CostMap getCostMap() {
+		return costmap;
+	}
 }

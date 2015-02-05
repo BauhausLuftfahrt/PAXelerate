@@ -79,39 +79,34 @@ public class CostMap {
 		}
 
 		/* create the cost around the agents */
-		if (agent != null) {
-			/*
-			 * Scan for other agents in this radius. Go "size" steps in every
-			 * direction.
-			 */
-			int size = 10;
-			for (int a = -size; a <= size; a++) {
-				for (int b = -size; b <= size; b++) {
-					try {
-						Node node = areamap.getNodeByCoordinate(agent
-								.getPosition().getX() + a, agent.getPosition()
-								.getY() + b);
-						if (node.isOccupiedByAgent()) {
-							if (!FunctionLibrary.vectorsAreEqual(
-									node.getPosition(), agent.getPosition())) {
-								for (Vector point : getSurroundingPoints(node
-										.getPosition().getX(), node
-										.getPosition().getY())) {
-									setCost(point.getX(), point.getY(), 500);
-									setCost(node.getPosition().getX(), node
-											.getPosition().getY(), 500);
-								}
-							}
-						}
-					} catch (ArrayIndexOutOfBoundsException e) {
-						System.out
-								.println("costmap - array index is out of bounds!");
-					} catch (IndexOutOfBoundsException e) {
-						System.out.println("costmap - index is out of bounds!");
-					}
-				}
-			}
-		}
+
+		// int size = 10;
+		// for (int a = -size; a <= size; a++) {
+		// for (int b = -size; b <= size; b++) {
+		// try {
+		// Node node = areamap.getNodeByCoordinate(agent
+		// .getPosition().getX() + a, agent.getPosition()
+		// .getY() + b);
+		// if (node.isOccupiedByAgent()) {
+		// if (!FunctionLibrary.vectorsAreEqual(
+		// node.getPosition(), agent.getPosition())) {
+		// for (Vector point : getSurroundingPoints(node
+		// .getPosition().getX(), node
+		// .getPosition().getY())) {
+		// setCost(point.getX(), point.getY(), 500);
+		// setCost(node.getPosition().getX(), node
+		// .getPosition().getY(), 500);
+		// }
+		// }
+		// }
+		// } catch (ArrayIndexOutOfBoundsException e) {
+		// System.out
+		// .println("costmap - array index is out of bounds!");
+		// } catch (IndexOutOfBoundsException e) {
+		// System.out.println("costmap - index is out of bounds!");
+		// }
+		// }
+		// }
 
 		map[startPoint.getX()][startPoint.getY()] = 0;
 		visitedPoints.add(startPoint);
@@ -120,6 +115,37 @@ public class CostMap {
 		} else {
 			createSurroundingCosts(startPoint);
 		}
+	}
+
+	/**
+	 * 
+	 * @param costmap
+	 * @param modifiedAreamap
+	 * @param agent
+	 * @return
+	 */
+	public CostMap getAgentModifiedMap(CostMap costmap,
+			AreaMap modifiedAreamap, Agent agent) {
+		if (agent != null) {
+			for (int a = 0; a < dimensions.getX(); a++) {
+				for (int b = 0; b < dimensions.getY(); b++) {
+					Node node = modifiedAreamap.getNodeByCoordinate(a, b);
+					if (node.isOccupiedByAgent()) {
+						if (!FunctionLibrary.vectorsAreEqual(
+								node.getPosition(), agent.getPosition())) {
+							for (Vector agentSurroundingPoint : getSurroundingPoints(
+									a, b)) {
+								setCost(agentSurroundingPoint.getX(),
+										agentSurroundingPoint.getY(), 500);
+							}
+							setCost(a, b, 500);
+						}
+					}
+				}
+			}
+		}
+		return this;
+
 	}
 
 	public int[][] getMap() {
