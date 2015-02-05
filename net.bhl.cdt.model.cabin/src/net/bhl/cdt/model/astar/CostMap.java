@@ -76,23 +76,33 @@ public class CostMap {
 
 		/* create the cost around the agents */
 		if (agent != null) {
-			/* scan for other agents in this radius */
+			/*
+			 * Scan for other agents in this radius. Go "size" steps in every
+			 * direction.
+			 */
 			int size = 5;
 			for (int a = -size; a <= size; a++) {
 				for (int b = -size; b <= size; b++) {
-					Node node = areamap.getNodeByCoordinate(agent.getPosition()
-							.getX() + a, agent.getPosition().getY() + b);
-					if (node.isOccupiedByAgent()) {
-						if (!FunctionLibrary.vectorsAreEqual(
-								node.getPosition(), agent.getPosition())) {
-							for (Vector point : getSurroundingPoints(node
-									.getPosition().getX(), node.getPosition()
-									.getY())) {
-								setCost(point.getX(), point.getY(), 500);
-								setCost(node.getPosition().getX(), node
-										.getPosition().getY(), 500);
+					try {
+						Node node = areamap.getNodeByCoordinate(agent
+								.getPosition().getX() + a, agent.getPosition()
+								.getY() + b);
+						if (node.isOccupiedByAgent()) {
+							if (!FunctionLibrary.vectorsAreEqual(
+									node.getPosition(), agent.getPosition())) {
+								for (Vector point : getSurroundingPoints(node
+										.getPosition().getX(), node
+										.getPosition().getY())) {
+									setCost(point.getX(), point.getY(), 500);
+									setCost(node.getPosition().getX(), node
+											.getPosition().getY(), 500);
+								}
 							}
 						}
+					} catch (ArrayIndexOutOfBoundsException e) {
+
+					} catch (IndexOutOfBoundsException e) {
+
 					}
 				}
 			}

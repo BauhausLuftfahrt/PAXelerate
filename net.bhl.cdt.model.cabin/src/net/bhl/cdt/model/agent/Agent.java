@@ -7,6 +7,7 @@
 package net.bhl.cdt.model.agent;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 
 import net.bhl.cdt.model.astar.AStar;
 import net.bhl.cdt.model.agent.AggressiveMood;
@@ -15,7 +16,6 @@ import net.bhl.cdt.model.agent.PassiveMood;
 import net.bhl.cdt.model.astar.Path;
 import net.bhl.cdt.model.astar.RunAStar;
 import net.bhl.cdt.model.astar.StopWatch;
-import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.Seat;
@@ -46,8 +46,7 @@ public class Agent extends Subject implements Runnable {
 	private ArrayList<Path> pathlist = new ArrayList<Path>();
 
 	private AgentMood agentMood;
-
-	private boolean exitPathLoop = false;
+	private boolean exitTheMainLoop = false;
 
 	/**
 	 * This method constructs an agent.
@@ -138,13 +137,14 @@ public class Agent extends Subject implements Runnable {
 		// use monitor so that only one thread can occupy a node at a time
 		synchronized (vector) {
 			int expansion = 2;
-			for (int x = -expansion; x <= 0; x++) {
-				// for (int y = -expansion; y <= expansion; y++) {
-				if (x > expansion) { // && y > expansion) {
-					RunAStar.getMap()
-							.getNodeByCoordinate(vector.getX() + x,
-									vector.getY()) // + y)
-							.setOccupiedByAgent(occupy);
+			for (int x = -expansion; x <= expansion; x++) {
+				for (int y = -expansion; y <= 0; y++) {
+					if (x > expansion && y > expansion) {
+						RunAStar.getMap()
+								.getNodeByCoordinate(vector.getX() + x,
+										vector.getY() + y)
+								.setOccupiedByAgent(occupy);
+					}
 				}
 			}
 		}
@@ -162,9 +162,10 @@ public class Agent extends Subject implements Runnable {
 			costmap = new CostMap(RunAStar.getMap().getDimensions(), start,
 					RunAStar.getMap(), false, this);
 			costmap.printMapToConsole();
+		} else {
+			costmap = new CostMap(RunAStar.getMap().getDimensions(), start,
+					RunAStar.getMap(), false, null);
 		}
-		costmap = new CostMap(RunAStar.getMap().getDimensions(), start,
-				RunAStar.getMap(), false, null);
 		astar = new AStar(RunAStar.getMap(), costmap, this);
 		path = astar.getBestPath();
 		pathlist.add(path);
@@ -199,8 +200,10 @@ public class Agent extends Subject implements Runnable {
 				if (i != 0) {
 					previousPosition = path.get(i - 1).getPosition();
 				}
-				if (numbOfInterupts > 5) {
+
+				if (numbOfInterupts > 20 && agentMood instanceof PassiveMood) {
 					agentMood = new AggressiveMood(this);
+					System.out.println("NOW I AM ANGRY!");
 				}
 				currentPosition = path.get(i).getPosition();
 				if (nodeBlocked(currentPosition)) {
@@ -214,7 +217,8 @@ public class Agent extends Subject implements Runnable {
 					collision.handleCollision();
 
 					// findNewPath(null);
-					if (exitPathLoop) {
+					if (exitTheMainLoop) {
+						System.out.println("searching for new path ...");
 						break mainloop;
 					}
 
@@ -236,9 +240,14 @@ public class Agent extends Subject implements Runnable {
 							.setOccupiedByAgent(true);
 					occupyNode(previousPosition, false);
 					occupyNode(currentPosition, true);
-					passenger.setPositionX(currentPosition.getX() * scale);
-					passenger.setPositionY(currentPosition.getY() * scale);
-					passenger.setOrientationInDegree(getRotation());
+					try {
+						passenger.setPositionX(currentPosition.getX() * scale);
+						passenger.setPositionY(currentPosition.getY() * scale);
+						passenger.setOrientationInDegree(getRotation());
+					} catch (ConcurrentModificationException e) {
+						System.out
+								.println("Concurrent modification exception occured!");
+					}
 
 					Thread.sleep((int) (1000 / speedfactor / (passenger
 							.getWalkingSpeed() * 100 / scale)));
@@ -252,11 +261,11 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	public boolean isExitPathLoop() {
-		return exitPathLoop;
+		return exitTheMainLoop;
 	}
 
 	public void setExitPathLoop(boolean exitPathLoop) {
-		this.exitPathLoop = exitPathLoop;
+		this.exitTheMainLoop = exitPathLoop;
 	}
 
 	/**
@@ -282,6 +291,7 @@ public class Agent extends Subject implements Runnable {
 			RunAStar.setPassengerSeated(passenger, this);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+			System.out.println("thread got an error");
 		}
 	}
 
