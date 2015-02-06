@@ -217,6 +217,7 @@ public class SimulateBoardingCommand extends CDTCommand implements Runnable {
 						logger.log(new Status(IStatus.INFO,
 								"net.bhl.cdt.model.cabin",
 								"Boarding simulation completed"));
+						cabinViewPart.clearCache();
 					}
 				} else {
 					logger.log(new Status(IStatus.ERROR,

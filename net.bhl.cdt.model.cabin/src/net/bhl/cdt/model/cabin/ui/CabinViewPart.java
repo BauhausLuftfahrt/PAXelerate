@@ -58,6 +58,7 @@ public class CabinViewPart extends ViewPart {
 	private Cabin cabin;
 	private double factor;
 	private Composite parent;
+
 	private static boolean initialBoot = true;
 
 	/********************* graphical settings. *************************/
@@ -307,24 +308,24 @@ public class CabinViewPart extends ViewPart {
 		this.parent = parent;
 		cabin = CabinFactory.eINSTANCE.createCabin();
 		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
-		/************************* Create Colors and Fonts here *******************************/
+
+		/********** Create Colors and Fonts here ************/
 		fontsize = 6;
 		fontName = "Helvetica Neue";
-		red = new Color(parent.getDisplay(), 220, 20, 60);
-		salmon = new Color(parent.getDisplay(), 250, 128, 114);
-		green = new Color(parent.getDisplay(), 50, 205, 50);
-		darkGray = new Color(parent.getDisplay(), 105, 105, 105);
-		white = new Color(parent.getDisplay(), 255, 255, 255);
-		black = new Color(parent.getDisplay(), 0, 0, 0);
-		aircraftBackground = new Color(parent.getDisplay(), 237, 243, 245);
-		fontOne = new Font(parent.getDisplay(), fontName, 8, SWT.NORMAL);
-		fontTwo = new Font(parent.getDisplay(), fontName, fontsize, SWT.NORMAL);
-		fontThree = new Font(parent.getDisplay(), fontName, 9, SWT.NORMAL);
-		/*************************************************************************************/
+		red = SWTResourceManager.getColor(220, 20, 60);
+		salmon = SWTResourceManager.getColor(250, 128, 114);
+		green = SWTResourceManager.getColor(50, 205, 50);
+		darkGray = SWTResourceManager.getColor(105, 105, 105);
+		white = SWTResourceManager.getColor(255, 255, 255);
+		black = SWTResourceManager.getColor(0, 0, 0);
+		aircraftBackground = SWTResourceManager.getColor(237, 243, 245);
+		fontOne = SWTResourceManager.getFont(fontName, 8, SWT.NORMAL);
+		fontTwo = SWTResourceManager.getFont(fontName, fontsize, SWT.NORMAL);
+		fontThree = SWTResourceManager.getFont(fontName, 9, SWT.NORMAL);
+		/***************************************************/
 
 		factor = (double) cabin.getCabinWidth()
 				/ (double) CABIN_WIDTH_IN_PIXELS;
-
 		economySeat = SWTResourceManager.getImage(InfoViewPart.class,
 				"economy_seat.png");
 		businessSeat = SWTResourceManager.getImage(InfoViewPart.class,
@@ -335,16 +336,9 @@ public class CabinViewPart extends ViewPart {
 				"coffee.png");
 		lavatoryIcon = SWTResourceManager.getImage(InfoViewPart.class,
 				"Lavatory.png");
-
 		canvas = new Canvas(parent, SWT.RESIZE);
 		canvas.setBounds(0, 0, 1000, 1000);
-
 		doTheDraw();
-
-		// int cabinViewFPS = Activator.getDefault().getPreferenceStore()
-		// .getString("CabinViewFPS");
-		//
-
 	}
 
 	private Image switchAircraftImage() {
@@ -831,6 +825,13 @@ public class CabinViewPart extends ViewPart {
 	private void disposeAll() {
 		super.dispose();
 
+	}
+
+	/**
+	 * This method disposes all SWT objects created with SWTResourceManager.
+	 */
+	public void clearCache() {
+		SWTResourceManager.dispose();
 	}
 
 }

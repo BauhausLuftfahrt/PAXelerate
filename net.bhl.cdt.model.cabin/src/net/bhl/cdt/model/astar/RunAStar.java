@@ -11,7 +11,6 @@ import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
-import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.util.ModelHelper;
@@ -31,7 +30,6 @@ public class RunAStar {
 	private static CostMap costmap;
 	private static ArrayList<Agent> agentList = new ArrayList<Agent>();
 	private static StopWatch anotherStopwatch = new StopWatch();
-	private Vector initialStart;
 	private Vector dimensions;
 
 	/**
@@ -114,6 +112,7 @@ public class RunAStar {
 	public void run() {
 		costmap = null;
 		Boolean doItOnce = true;
+
 		for (Passenger passenger : ModelHelper.getChildrenByClass(cabin,
 				Passenger.class)) {
 			Seat seat = passenger.getSeatRef();
@@ -127,29 +126,26 @@ public class RunAStar {
 							.getScale()) - 1));
 
 			if (doItOnce) {
-				initialStart = start;
+				/* This line generates a costmap which is used for all agents */
+				costmap = new CostMap(dimensions, start, areamap, false, null,
+						false);
+				costmap.saveMapToFile();
 				doItOnce = false;
 			}
 
 			Agent agent = new Agent(passenger, start, goal, cabin.getScale(),
-					cabin.getSpeedFactor());
+					cabin.getSpeedFactor(), costmap);
 
 			// list of all agents
 			agentList.add(agent);
 		}
-
-		costmap = new CostMap(dimensions, initialStart, areamap, false, null,
-				false);
-		costmap.saveMapToFile();
-
 		anotherStopwatch.start();
-
 		/** First generate all paths ... */
 		int i = 1;
 		for (Agent agent : agentList) {
 			console.addToLog("path calculation (" + i + "/" + agentList.size()
 					+ ")");
-			agent.findNewPath(costmap);
+			agent.findNewPath();
 			i++;
 		}
 		anotherStopwatch.stop();

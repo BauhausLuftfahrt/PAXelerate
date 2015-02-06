@@ -118,32 +118,38 @@ public class CostMap {
 	}
 
 	/**
+	 * This method takes a cost map and adds a huge cost to the location and the
+	 * area around agents. The agent triggering this method is ignored.
 	 * 
 	 * @param costmap
+	 *            is the costmap
 	 * @param modifiedAreamap
+	 *            is the area map with agents positions
 	 * @param agent
-	 * @return
+	 *            is the agent triggering this method
+	 * @return the modified cost map
 	 */
 	public CostMap getAgentModifiedMap(CostMap costmap,
 			AreaMap modifiedAreamap, Agent agent) {
-		for (int a = 0; a < dimensions.getX(); a++) {
-			for (int b = 0; b < dimensions.getY(); b++) {
+		for (int a = 0; a < modifiedAreamap.getDimensions().getX(); a++) {
+			for (int b = 0; b < modifiedAreamap.getDimensions().getY(); b++) {
 				if (modifiedAreamap.getNodeByCoordinate(a, b)
 						.isOccupiedByAgent()) {
 					if (!FunctionLibrary.vectorsAreEqual(modifiedAreamap
 							.getNodeByCoordinate(a, b).getPosition(), agent
 							.getPosition())) {
-						for (Vector agentSurroundingPoint : getSurroundingPoints(
-								a, b)) {
-							setCost(agentSurroundingPoint.getX(),
-									agentSurroundingPoint.getY(), 500);
-						}
-						setCost(a, b, 500);
+						// for (Vector agentSurroundingPoint :
+						// getSurroundingPoints(
+						// a, b)) {
+						// costmap.setCost(agentSurroundingPoint.getX(),
+						// agentSurroundingPoint.getY(), 5000);
+						// }
+						costmap.setCost(a, b, 5000);
 					}
 				}
 			}
 		}
-		return this;
+		return costmap;
 
 	}
 
@@ -156,12 +162,44 @@ public class CostMap {
 	}
 
 	/**
-	 * This method prints the cost map without the values.
+	 * This method prints the cost map with values.
 	 */
 	public void printMapToConsole() {
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
 				if (map[i][j] == -1) {
+					System.out.print("X\t");
+				} else if (i == goalPoint.getX() && j == goalPoint.getY()) {
+					System.out.print("G\t");
+				} else if (i == startPoint.getX() && j == startPoint.getY()) {
+					System.out.print("S\t");
+				} else {
+					System.out.print(getCostForCoordinates(i, j) + "\t");
+				}
+			}
+			System.out.println();
+		}
+	}
+
+	/**
+	 * This method prints the cost map with a path to the console.
+	 */
+	public void printMapWithPathToConsole(Path path) {
+		for (int i = 0; i < dimensions.getX(); i++) {
+			for (int j = 0; j < dimensions.getY(); j++) {
+				boolean foundNode = false;
+
+				// TODO: check if there is a node at a specific point.
+				for (Node node : path.getWaypoints()) {
+					if (FunctionLibrary.vectorsAreEqual(node.getPosition(),
+							new Vector(i, j))) {
+						foundNode = true;
+					}
+				}
+				if (foundNode) {
+					System.out.print("-\t");
+
+				} else if (map[i][j] == -1) {
 					System.out.print("X\t");
 				} else if (i == goalPoint.getX() && j == goalPoint.getY()) {
 					System.out.print("G\t");

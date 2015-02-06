@@ -13,6 +13,7 @@ import net.bhl.cdt.model.astar.AStar;
 import net.bhl.cdt.model.agent.AggressiveMood;
 import net.bhl.cdt.model.astar.CostMap;
 import net.bhl.cdt.model.agent.PassiveMood;
+import net.bhl.cdt.model.astar.AreaMap;
 import net.bhl.cdt.model.astar.Path;
 import net.bhl.cdt.model.astar.RunAStar;
 import net.bhl.cdt.model.astar.StopWatch;
@@ -38,6 +39,7 @@ public class Agent extends Subject implements Runnable {
 	private Vector currentPosition;
 	private Vector previousPosition;
 	private Passenger passenger;
+	private final CostMap finalCostmap;
 	private int scale;
 	private int speedfactor;
 	private int numbOfInterupts;
@@ -61,12 +63,13 @@ public class Agent extends Subject implements Runnable {
 	 *            the scale of the simulation
 	 */
 	public Agent(Passenger passenger, Vector start, Vector goal, int scale,
-			int speedFactor) {
+			int speedFactor, CostMap costmap) {
 		this.speedfactor = speedFactor;
 		this.passenger = passenger;
 		this.start = start;
 		this.goal = goal;
 		this.scale = scale;
+		finalCostmap = costmap;
 
 		if (passenger.getPassengerMood() == PassengerMood.AGRESSIVE) {
 			this.agentMood = new AggressiveMood(this);
@@ -140,8 +143,12 @@ public class Agent extends Subject implements Runnable {
 		}
 	}
 
+	/**
+	 * When there is a new path found, this method cuts the old path up to the
+	 * current point so that there is no overlapping with the new path but
+	 * instead a matching complete path.
+	 */
 	public void redefinePathLayout() {
-
 		Path pathhelper = pathlist.get(pathlist.size() - 1);
 		pathlist.remove(pathhelper);
 		pathhelper = pathhelper.cutToPoint(pathhelper, previousPosition);
@@ -149,19 +156,35 @@ public class Agent extends Subject implements Runnable {
 		pathlist.add(path);
 	}
 
-	public void findNewPath(CostMap costtmapp) {
+	/**
+	 * This method finds a new path. The <b>finalCostmap</b> is needed so that
+	 * there is no overlapping of different agent positions over time. The cost
+	 * map is always modified based on the non-editable final cost map
+	 * calculated at the beginning.
+	 */
+	public void findNewPath() {
 		stopwatch.start();
+		CostMap costmap = finalCostmap;
+		/*
+		 * this copy is used because the area map could change during the path
+		 * calculation process and thereby falsify the path layout.
+		 */
+		AreaMap areamapCopy = RunAStar.getMap();
 		if (previousPosition != null) {
 			start = previousPosition;
-			costtmapp = costtmapp.getAgentModifiedMap(costtmapp,
-					RunAStar.getMap(), this);
-			costtmapp.printMapToConsole();
+			costmap = costmap.getAgentModifiedMap(costmap, areamapCopy, this);
 		}
-		AStar astar = new AStar(RunAStar.getMap(), costtmapp, this);
+		AStar astar = new AStar(areamapCopy, costmap, this);
 		path = astar.getBestPath();
+
+		if (previousPosition != null) {
+			costmap.printMapWithPathToConsole(path);
+		}
 		currentPosition = path.get(0).getPosition();
 		previousPosition = new Vector(0, 0);
 		stopwatch.stop();
+
+		costmap = null;
 		System.out.println("it took " + stopwatch.getElapsedTime()
 				+ " milliseconds to find a new path.");
 	}
