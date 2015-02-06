@@ -37,6 +37,12 @@ public class Node implements Comparable<Node> {
 	private int cost;
 	private double compareFactor;
 
+	// TODO implement that!
+	/* This declares the type of the node */
+	public enum property {
+		OBSTACLE, AGENT, COST_NODE // could easily be extended!
+	}
+
 	/**
 	 * this method constructs the Node.
 	 * 
@@ -326,7 +332,7 @@ public class Node implements Comparable<Node> {
 	public void setStart(boolean isStart) {
 		this.isStart = isStart;
 	}
-	
+
 	public boolean isStart() {
 		return isStart;
 	}

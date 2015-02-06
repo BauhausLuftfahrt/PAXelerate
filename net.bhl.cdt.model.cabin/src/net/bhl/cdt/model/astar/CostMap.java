@@ -17,7 +17,7 @@ import org.eclipse.core.runtime.Status;
 
 import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
-import net.bhl.cdt.model.cabin.util.FunctionLibrary;
+import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Vector;
 
 /**
@@ -120,7 +120,7 @@ public class CostMap {
 	/**
 	 * This method prints the cost map with a path to the console.
 	 */
-	public void printMapWithPathToConsole(Path path, AreaMap areamap,
+	public void printMapPathToConsole(Path path, AreaMap areamap,
 			Agent agent) {
 		System.out.println("This is the cost map:");
 		for (int i = 0; i < dimensions.getX(); i++) {
@@ -129,7 +129,7 @@ public class CostMap {
 				// TODO: check if there is a node at a specific point.
 				if (path != null) {
 					for (Node node : path.getWaypoints()) {
-						if (FunctionLibrary.vectorsAreEqual(node.getPosition(),
+						if (FuncLib.vectorsAreEqual(node.getPosition(),
 								new Vector(i, j))) {
 							foundNode = true;
 						}

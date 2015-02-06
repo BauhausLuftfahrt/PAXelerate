@@ -54,7 +54,7 @@ public class InputChecker {
 		 * if there are other characters than digits inside the string, remove
 		 * them.
 		 */
-		if (!FunctionLibrary.isNumeric(stringWithoutDashes)) {
+		if (!FuncLib.isNumeric(stringWithoutDashes)) {
 			str = str.replaceAll("[^0-9-]+", "");
 			if (DEVELOPER_MODE) {
 				System.out
@@ -91,7 +91,7 @@ public class InputChecker {
 		 * if there are 2 or more dashes following on another, remove all except
 		 * for one.
 		 */
-		if (FunctionLibrary.checkForDoubleCharacter(str)) {
+		if (FuncLib.checkForDoubleCharacter(str)) {
 			if (DEVELOPER_MODE) {
 				System.out
 						.println("several dashes in a row detected and corrected");

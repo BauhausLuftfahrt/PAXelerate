@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import net.bhl.cdt.model.agent.Agent;
-import net.bhl.cdt.model.cabin.util.FunctionLibrary;
+import net.bhl.cdt.model.cabin.util.FuncLib;
 
 /**
  * This class is the A* algorithm.
@@ -76,7 +76,7 @@ public class AStar {
 			Node current = openList.getFirst();
 			// check if our current Node location is the goal Node. If it is, we
 			// are done.
-			if (FunctionLibrary.vectorsAreEqual(current.getPosition(),
+			if (FuncLib.vectorsAreEqual(current.getPosition(),
 					agent.getGoal())) {
 				map.getStartNode().setPreviousNode(null);
 				if (reconstructPath(current) != null) {
@@ -141,7 +141,7 @@ public class AStar {
 
 	public void printPath(Path path) {
 		for (Node node : path.getWaypoints()) {
-			FunctionLibrary.printVectorToLog(node.getPosition(), "position");
+			FuncLib.printVectorToLog(node.getPosition(), "position");
 		}
 	}
 

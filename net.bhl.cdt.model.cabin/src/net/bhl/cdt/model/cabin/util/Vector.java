@@ -19,6 +19,8 @@ import net.bhl.cdt.model.astar.CostMap;
  * @version 1.0
  */
 public class Vector implements Comparable<Vector> {
+
+	// TODO: Create 2 subclasses called 2 dimensional & 3dimensional vector
 	private int dimensions;
 	private int xValue;
 	private int yValue;

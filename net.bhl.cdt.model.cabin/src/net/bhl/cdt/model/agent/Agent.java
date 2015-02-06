@@ -20,7 +20,7 @@ import net.bhl.cdt.model.astar.StopWatch;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.Seat;
-import net.bhl.cdt.model.cabin.util.FunctionLibrary;
+import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.observer.Subject;
 
@@ -36,7 +36,7 @@ public class Agent extends Subject implements Runnable {
 	private Path path;
 	private Vector start;
 	private Vector goal;
-	private Vector futurePosition;
+	private Vector desiredPosition;
 	private Vector currentPosition;
 	private Passenger passenger;
 	private final CostMap finalCostmap;
@@ -106,8 +106,8 @@ public class Agent extends Subject implements Runnable {
 	private int getRotation() {
 		/* get the angle in radian from -Pi to Pi, so zero is EAST */
 		double theta = Math.atan2(
-				futurePosition.getY() - currentPosition.getY(),
-				futurePosition.getX() - currentPosition.getX());
+				desiredPosition.getY() - currentPosition.getY(),
+				desiredPosition.getX() - currentPosition.getX());
 		/* rotate the angle by 90 degrees so that zero is NORTH */
 		theta += Math.PI / 2.0;
 		/* transform from radian to degree */
@@ -125,7 +125,7 @@ public class Agent extends Subject implements Runnable {
 	private boolean passengerStowsLuggage() {
 		Seat seat = passenger.getSeatRef();
 		return (passenger.isHasLuggage())
-				&& (futurePosition.getY() == (int) (seat.getYPosition()
+				&& (desiredPosition.getY() == (int) (seat.getYPosition()
 						/ scale - 5));
 	}
 
@@ -178,17 +178,16 @@ public class Agent extends Subject implements Runnable {
 					// if (!FunctionLibrary.vectorsAreEqual(modifiedAreamap
 					// .getNodeByCoordinate(a, b).getPosition(), agent
 					// .getPosition())) {
-					// for (Vector agentSurroundingPoint : costmap
-					// .getSurroundingPoints(a, b)) {
-					// costmap.setCost(agentSurroundingPoint.getX(),
-					// agentSurroundingPoint.getY(), 5000);
-					// }
+					for (Vector point : mutableCostMap.getSurroundingPoints(a,
+							b)) {
+						mutableCostMap
+								.setCost(point.getX(), point.getY(), 5000);
+					}
 					mutableCostMap.setCost(a, b, 5000);
 					// }
 				}
 			}
 		}
-
 	}
 
 	/**
@@ -198,12 +197,16 @@ public class Agent extends Subject implements Runnable {
 	 * calculated at the beginning.
 	 */
 	public void findNewPath() {
+
+		/* starts the StopWatch - used for performance testing */
 		stopwatch.start();
 
-		/* reset the mutable CostMap to the blank cost map */
+		/* reset the mutable CostMap to the original cost map */
+		mutableCostMap = null;
 		mutableCostMap = finalCostmap;
 
 		/* save a "screenshot" of the AreaMap for further calculations */
+		mutableAreaMap = null;
 		mutableAreaMap = RunAStar.getMap();
 
 		if (currentPosition != null) {
@@ -216,18 +219,24 @@ public class Agent extends Subject implements Runnable {
 			/* this declares the area around agents as high cost terrain */
 			updateCostmap();
 		}
+
+		/* run the path finding algorithm */
 		AStar astar = new AStar(mutableAreaMap, mutableCostMap, this);
+
+		/* retrieve the path information */
 		path = astar.getBestPath();
 
 		if (currentPosition != null) {
-			mutableCostMap
-					.printMapWithPathToConsole(path, mutableAreaMap, this);
+			mutableCostMap.printMapPathToConsole(path, mutableAreaMap, this);
 		}
-		futurePosition = path.get(0).getPosition();
+
+		/* setting the new desired and current positions */
+		desiredPosition = path.get(0).getPosition();
 		currentPosition = new Vector(0, 0);
+
+		/* ends the stop watch performance logging */
 		stopwatch.stop();
-		System.out.println("it took " + stopwatch.getElapsedTime()
-				+ " milliseconds to find a new path.");
+		System.out.println(stopwatch.getElapsedTime() + " ms for pathfinding");
 	}
 
 	/**
@@ -243,7 +252,7 @@ public class Agent extends Subject implements Runnable {
 	 * @return
 	 */
 	private boolean goalReached() {
-		return FunctionLibrary.vectorsAreEqual(futurePosition, goal);
+		return FuncLib.vectorsAreEqual(desiredPosition, goal);
 	}
 
 	/**
@@ -279,11 +288,11 @@ public class Agent extends Subject implements Runnable {
 				// agentMood = new AggressiveMood(this);
 				// System.out.println("NOW I AM ANGRY!");
 				// }
-				futurePosition = path.get(i).getPosition();
-				if (nodeBlocked(futurePosition)) {
+				desiredPosition = path.get(i).getPosition();
+				if (nodeBlocked(desiredPosition)) {
 					numbOfInterupts++;
 					occupyNode(currentPosition, false);
-					occupyNode(futurePosition, false);
+					occupyNode(desiredPosition, false);
 					Situation collision = new Situation(agentMood);
 					collision.handleCollision();
 					if (exitTheMainLoop) {
@@ -295,28 +304,28 @@ public class Agent extends Subject implements Runnable {
 				} else if (passengerStowsLuggage() && !alreadyStowed) {
 					RunAStar.getMap().getNode(currentPosition)
 							.setOccupiedByAgent(false);
-					RunAStar.getMap().getNode(futurePosition)
+					RunAStar.getMap().getNode(desiredPosition)
 							.setOccupiedByAgent(true);
-					occupyNode(futurePosition, true);
+					occupyNode(desiredPosition, true);
 					Thread.sleep((int) (passenger.getLuggageStowTime() * 1000 / 2 / speedfactor));
-					occupyNode(futurePosition, false);
+					occupyNode(desiredPosition, false);
 					alreadyStowed = true;
 					i++;
 				} else {
 					/* if the agent's path is not blocked, move forward */
 					RunAStar.getMap().getNode(currentPosition)
 							.setOccupiedByAgent(false);
-					RunAStar.getMap().getNode(futurePosition)
+					RunAStar.getMap().getNode(desiredPosition)
 							.setOccupiedByAgent(true);
 					occupyNode(currentPosition, false);
-					occupyNode(futurePosition, true);
+					occupyNode(desiredPosition, true);
 					try {
-						passenger.setPositionX(futurePosition.getX() * scale);
-						passenger.setPositionY(futurePosition.getY() * scale);
+						passenger.setPositionX(desiredPosition.getX() * scale);
+						passenger.setPositionY(desiredPosition.getY() * scale);
 						passenger.setOrientationInDegree(getRotation());
 					} catch (ConcurrentModificationException e) {
 						System.out
-								.println("Concurrent modification exception occured!");
+								.println("Concurrent modification exception!");
 					}
 
 					Thread.sleep((int) (1000 / speedfactor / (passenger
@@ -363,7 +372,7 @@ public class Agent extends Subject implements Runnable {
 			while (!goalReached()) {
 				followPath();
 			}
-			occupyNode(futurePosition, false);
+			occupyNode(desiredPosition, false);
 			passenger.setIsSeated(true);
 			stopwatch.stop();
 			passenger

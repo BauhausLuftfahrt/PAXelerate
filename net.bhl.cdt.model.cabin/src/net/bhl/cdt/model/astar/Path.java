@@ -8,7 +8,7 @@ package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
 
-import net.bhl.cdt.model.cabin.util.FunctionLibrary;
+import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Vector;
 
 /**
@@ -126,7 +126,7 @@ public class Path {
 			try {
 				Node node = waypoints.get(i);
 				newPath.prependWayPoint(node);
-				if (FunctionLibrary.vectorsAreEqual(node.getPosition(), point)) {
+				if (FuncLib.vectorsAreEqual(node.getPosition(), point)) {
 					break;
 				}
 				i++;

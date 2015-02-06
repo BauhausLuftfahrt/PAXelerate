@@ -13,38 +13,33 @@ import java.util.Random;
  * This class is used for general calculations and methods.
  * 
  * @author marc.engelmann
- * @version 0.1
  *
  */
 
-public final class FunctionLibrary {
+public abstract class FuncLib {
 
-	private FunctionLibrary() {
-
-	}
-
-	public static boolean vectorsAreEqual(Vector vector1, Vector vector2) {
-		if (vector1.getX() == vector2.getX()
-				&& vector1.getY() == vector2.getY()) {
-			if (vector1.getNumberOfDimensions() == vector2
-					.getNumberOfDimensions()) {
-				if (vector1.getNumberOfDimensions() == 2) {
+	/**
+	 * This method checks whether the two input vectors are equal
+	 * 
+	 * @param v1
+	 *            is the first vector
+	 * @param v2
+	 *            is the second vector
+	 * @return returns if the vectors are equal or not
+	 */
+	public static boolean vectorsAreEqual(Vector v1, Vector v2) {
+		if (v1.getX() == v2.getX() && v1.getY() == v2.getY()) {
+			if (v1.getNumberOfDimensions() == v2.getNumberOfDimensions()) {
+				if (v1.getNumberOfDimensions() == 2) {
 					return true;
-				} else if (vector1.getNumberOfDimensions() == 3) {
-					if (vector1.getZ() == vector2.getZ()) {
+				} else if (v1.getNumberOfDimensions() == 3) {
+					if (v1.getZ() == v2.getZ()) {
 						return true;
-					} else {
-						return false;
 					}
-				} else {
-					return false;
 				}
-			} else {
-				return false;
 			}
-		} else {
-			return false;
 		}
+		return false;
 	}
 
 	/**
@@ -173,15 +168,31 @@ public final class FunctionLibrary {
 			System.out.println(object);
 		}
 	}
-	
+
+	/**
+	 * This method prints a vector to the log.
+	 * 
+	 * @param vector
+	 *            is the vector
+	 * @param name
+	 *            that should be displayed in the log
+	 */
 	public static void printVectorToLog(Vector vector, String name) {
-		if(vector.getNumberOfDimensions()==3) {
-			System.out.println(name+"\t->\tx: "+vector.getX()+"\ty: "+vector.getY()+"\tz: "+vector.getZ());
+		if (vector.getNumberOfDimensions() == 3) {
+			System.out.println(name + "\t->\tx: " + vector.getX() + "\ty: "
+					+ vector.getY() + "\tz: " + vector.getZ());
 		} else {
-			System.out.println(name+"\t->\tx: "+vector.getX()+"\ty: "+vector.getY());
+			System.out.println(name + "\t->\tx: " + vector.getX() + "\ty: "
+					+ vector.getY());
 		}
 	}
 
+	/**
+	 * This method prints a list consisting of vectors to the log.
+	 * 
+	 * @param list
+	 *            is the specific list.
+	 */
 	public static void printVectorListToLog(ArrayList<Vector> list) {
 		int i = 1;
 		for (Vector vector : list) {
@@ -189,8 +200,6 @@ public final class FunctionLibrary {
 					+ vector.getY() + ", z: " + vector.getZ());
 			i++;
 		}
-		System.out
-				.println("######################################################################");
+		System.out.println("#########################################");
 	}
-
 }

@@ -25,11 +25,11 @@ public class RunAStar {
 	private static Cabin cabin;
 	private static Boolean simulationDone = false;
 	private static ArrayList<Passenger> finishedList = new ArrayList<Passenger>();
-	private static Logger console = new Logger();
+	private Logger console = new Logger();
 	private static AreaMap areamap;
-	private static CostMap costmap;
+	private CostMap costmap;
 	private static ArrayList<Agent> agentList = new ArrayList<Agent>();
-	private static StopWatch anotherStopwatch = new StopWatch();
+	private StopWatch anotherStopwatch = new StopWatch();
 	private Vector dimensions;
 
 	/**
@@ -140,7 +140,7 @@ public class RunAStar {
 			agentList.add(agent);
 		}
 		anotherStopwatch.start();
-		/** First generate all paths ... */
+		/* First generate all paths ... */
 		int i = 1;
 		for (Agent agent : agentList) {
 			console.addToLog("path calculation (" + i + "/" + agentList.size()
@@ -152,14 +152,9 @@ public class RunAStar {
 		System.out.println("Calculations completed in: "
 				+ anotherStopwatch.getElapsedTime() + " ms");
 
-		/** ... then start the simulations simultaneously */
+		/* ... then start the simulations simultaneously */
 		for (Agent agent : agentList) {
 			agent.start();
 		}
-
-	}
-
-	public static CostMap getCostMap() {
-		return costmap;
 	}
 }

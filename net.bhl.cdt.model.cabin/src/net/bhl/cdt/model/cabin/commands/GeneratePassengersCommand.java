@@ -24,7 +24,7 @@ import net.bhl.cdt.model.cabin.Sex;
 import net.bhl.cdt.model.cabin.TravelClass;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.InfoViewPart;
-import net.bhl.cdt.model.cabin.util.FunctionLibrary;
+import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.util.ModelHelper;
 
 import org.eclipse.core.runtime.ILog;
@@ -171,9 +171,9 @@ public class GeneratePassengersCommand extends CDTCommand {
 					Passenger newPassenger = CabinFactory.eINSTANCE
 							.createPassenger();
 					cabin.getPassengers().add(newPassenger);
-					newPassenger.setId(FunctionLibrary.uniqueRandom(
+					newPassenger.setId(FuncLib.uniqueRandom(
 							randomPassengerId, 1, totalPax + 1));
-					newPassenger.setSeat(FunctionLibrary.uniqueRandom(
+					newPassenger.setSeat(FuncLib.uniqueRandom(
 							randomSeatId, seatAreaBegin, seatsInClass));
 					newPassenger.setName(newPassenger.getId() + " ("
 							+ getSeat(newPassenger).getName() + ")");
@@ -194,26 +194,26 @@ public class GeneratePassengersCommand extends CDTCommand {
 					 * bound The upper bound is never reached!
 					 */
 
-					if (FunctionLibrary.randomValue(0, 2) == 1) {
+					if (FuncLib.randomValue(0, 2) == 1) {
 						sex = Sex.MALE;
 					}
 
-					if (FunctionLibrary.randomValue(0, 2) == 1) {
+					if (FuncLib.randomValue(0, 2) == 1) {
 						newPassenger.setPassengerMood(PassengerMood.AGRESSIVE);
 					} else {
 						newPassenger.setPassengerMood(PassengerMood.PASSIVE);
 					}
 					newPassenger.setSex(sex);
-					newPassenger.setAge(FunctionLibrary.randomValue(18, 70));
-					newPassenger.setHeight(FunctionLibrary
+					newPassenger.setAge(FuncLib.randomValue(18, 70));
+					newPassenger.setHeight(FuncLib
 							.randomValue(150, 200));
 					newPassenger
-							.setWeight(FunctionLibrary.randomValue(60, 110));
-					newPassenger.setDepth(FunctionLibrary.randomValue(20, 50));
-					newPassenger.setWidth(FunctionLibrary.randomValue(30, 60));
-					newPassenger.setWalkingSpeed((double) FunctionLibrary
+							.setWeight(FuncLib.randomValue(60, 110));
+					newPassenger.setDepth(FuncLib.randomValue(20, 50));
+					newPassenger.setWidth(FuncLib.randomValue(30, 60));
+					newPassenger.setWalkingSpeed((double) FuncLib
 							.randomValue(5, 15) / 20);
-					newPassenger.setLuggageStowTime(FunctionLibrary
+					newPassenger.setLuggageStowTime(FuncLib
 							.randomValue(5, 10));
 					/********************************************************/
 					passengerIdCount++;
@@ -225,13 +225,13 @@ public class GeneratePassengersCommand extends CDTCommand {
 						"successfully created "
 								+ (passengerPerClassCount)
 								+ " passengers in "
-								+ FunctionLibrary.splitCamelCase(travelSubClass
+								+ FuncLib.splitCamelCase(travelSubClass
 										.getSimpleName())));
 			} else {
 
 				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 						"Too many passengers in "
-								+ FunctionLibrary.splitCamelCase(travelSubClass
+								+ FuncLib.splitCamelCase(travelSubClass
 										.getSimpleName())));
 			}
 		}
