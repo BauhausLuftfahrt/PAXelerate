@@ -69,7 +69,7 @@ public class Agent extends Subject implements Runnable {
 		this.start = start;
 		this.goal = goal;
 		this.scale = scale;
-		finalCostmap = costmap;
+		this.finalCostmap = costmap;
 
 		if (passenger.getPassengerMood() == PassengerMood.AGRESSIVE) {
 			this.agentMood = new AggressiveMood(this);
@@ -157,6 +157,41 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
+	 * This method takes a cost map and adds a huge cost to the location and the
+	 * area around agents. The agent triggering this method is ignored.
+	 * 
+	 * @param costmap
+	 *            is the costmap
+	 * @param areammapWithAgentPositions
+	 *            is the area map with agents positions
+	 * @param agent
+	 *            is the agent triggering this method
+	 * @return the modified cost map
+	 */
+	private CostMap getModifiedCostmap(AreaMap areammapWithAgentPositions) {
+		CostMap modifiedCostmap = finalCostmap;
+		for (int a = 0; a < areammapWithAgentPositions.getDimensions().getX(); a++) {
+			for (int b = 0; b < areammapWithAgentPositions.getDimensions()
+					.getY(); b++) {
+				if (areammapWithAgentPositions.getNodeByCoordinate(a, b)
+						.isOccupiedByAgent()) {
+					// if (!FunctionLibrary.vectorsAreEqual(modifiedAreamap
+					// .getNodeByCoordinate(a, b).getPosition(), agent
+					// .getPosition())) {
+					// for (Vector agentSurroundingPoint : costmap
+					// .getSurroundingPoints(a, b)) {
+					// costmap.setCost(agentSurroundingPoint.getX(),
+					// agentSurroundingPoint.getY(), 5000);
+					// }
+					modifiedCostmap.setCost(a, b, 5000);
+					// }
+				}
+			}
+		}
+		return modifiedCostmap;
+	}
+
+	/**
 	 * This method finds a new path. The <b>finalCostmap</b> is needed so that
 	 * there is no overlapping of different agent positions over time. The cost
 	 * map is always modified based on the non-editable final cost map
@@ -164,21 +199,25 @@ public class Agent extends Subject implements Runnable {
 	 */
 	public void findNewPath() {
 		stopwatch.start();
-		CostMap costmap = finalCostmap;
+		// TODO: IS THIS A POINTER????
+		CostMap costmap = null;
 		/*
 		 * this copy is used because the area map could change during the path
 		 * calculation process and thereby falsify the path layout.
 		 */
+		// TODO: IS THIS A POINTER????
 		AreaMap areamapCopy = RunAStar.getMap();
 		if (previousPosition != null) {
 			start = previousPosition;
-			costmap = costmap.getAgentModifiedMap(costmap, areamapCopy, this);
+			costmap = getModifiedCostmap(areamapCopy);
+		} else {
+			costmap = finalCostmap;
 		}
 		AStar astar = new AStar(areamapCopy, costmap, this);
 		path = astar.getBestPath();
 
 		if (previousPosition != null) {
-			costmap.printMapWithPathToConsole(path);
+			costmap.printMapWithPathToConsole(path, areamapCopy, this);
 		}
 		currentPosition = path.get(0).getPosition();
 		previousPosition = new Vector(0, 0);
@@ -189,22 +228,42 @@ public class Agent extends Subject implements Runnable {
 				+ " milliseconds to find a new path.");
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public Vector getPosition() {
 		return previousPosition;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	private boolean goalReached() {
 		return FunctionLibrary.vectorsAreEqual(currentPosition, goal);
 	}
 
+	/**
+	 * 
+	 * @param vector
+	 * @return
+	 */
 	private boolean nodeBlocked(Vector vector) {
 		return RunAStar.getMap().getNode(vector).isOccupiedByAgent();
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public ArrayList<Path> getPathList() {
 		return pathlist;
 	}
 
+	/**
+	 * 
+	 */
 	private void followPath() {
 		mainloop: try {
 			int i = 0;
@@ -213,10 +272,11 @@ public class Agent extends Subject implements Runnable {
 					previousPosition = path.get(i - 1).getPosition();
 				}
 
-				if (numbOfInterupts > 20 && agentMood instanceof PassiveMood) {
-					agentMood = new AggressiveMood(this);
-					System.out.println("NOW I AM ANGRY!");
-				}
+				// if (numbOfInterupts > 20 && agentMood instanceof PassiveMood)
+				// {
+				// agentMood = new AggressiveMood(this);
+				// System.out.println("NOW I AM ANGRY!");
+				// }
 				currentPosition = path.get(i).getPosition();
 				if (nodeBlocked(currentPosition)) {
 					numbOfInterupts++;
@@ -225,7 +285,8 @@ public class Agent extends Subject implements Runnable {
 					Situation collision = new Situation(agentMood);
 					collision.handleCollision();
 					if (exitTheMainLoop) {
-						System.out.println("searching for new path ...");
+						System.out.println(passenger.getName()
+								+ " searching for new path ...");
 						redefinePathLayout();
 						break mainloop;
 					}
@@ -267,10 +328,18 @@ public class Agent extends Subject implements Runnable {
 		}
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean isExitPathLoop() {
 		return exitTheMainLoop;
 	}
 
+	/**
+	 * 
+	 * @param exitPathLoop
+	 */
 	public void setExitPathLoop(boolean exitPathLoop) {
 		this.exitTheMainLoop = exitPathLoop;
 	}
@@ -280,6 +349,9 @@ public class Agent extends Subject implements Runnable {
 	 */
 	public void run() {
 		try {
+			/* TODO: Attention! This needs to be removed again!!!!! */
+			agentMood = new AggressiveMood(this);
+			/* **************************************************** */
 			previousPosition = start;
 			alreadyStowed = false;
 			pathlist.add(path);
@@ -289,8 +361,7 @@ public class Agent extends Subject implements Runnable {
 			while (!goalReached()) {
 				followPath();
 			}
-			RunAStar.getMap().getNode(currentPosition)
-					.setOccupiedByAgent(false);
+			occupyNode(currentPosition, false);
 			passenger.setIsSeated(true);
 			stopwatch.stop();
 			passenger

@@ -78,36 +78,6 @@ public class CostMap {
 			}
 		}
 
-		/* create the cost around the agents */
-
-		// int size = 10;
-		// for (int a = -size; a <= size; a++) {
-		// for (int b = -size; b <= size; b++) {
-		// try {
-		// Node node = areamap.getNodeByCoordinate(agent
-		// .getPosition().getX() + a, agent.getPosition()
-		// .getY() + b);
-		// if (node.isOccupiedByAgent()) {
-		// if (!FunctionLibrary.vectorsAreEqual(
-		// node.getPosition(), agent.getPosition())) {
-		// for (Vector point : getSurroundingPoints(node
-		// .getPosition().getX(), node
-		// .getPosition().getY())) {
-		// setCost(point.getX(), point.getY(), 500);
-		// setCost(node.getPosition().getX(), node
-		// .getPosition().getY(), 500);
-		// }
-		// }
-		// }
-		// } catch (ArrayIndexOutOfBoundsException e) {
-		// System.out
-		// .println("costmap - array index is out of bounds!");
-		// } catch (IndexOutOfBoundsException e) {
-		// System.out.println("costmap - index is out of bounds!");
-		// }
-		// }
-		// }
-
 		map[startPoint.getX()][startPoint.getY()] = 0;
 		visitedPoints.add(startPoint);
 		if (!inSteps) {
@@ -115,42 +85,6 @@ public class CostMap {
 		} else {
 			createSurroundingCosts(startPoint);
 		}
-	}
-
-	/**
-	 * This method takes a cost map and adds a huge cost to the location and the
-	 * area around agents. The agent triggering this method is ignored.
-	 * 
-	 * @param costmap
-	 *            is the costmap
-	 * @param modifiedAreamap
-	 *            is the area map with agents positions
-	 * @param agent
-	 *            is the agent triggering this method
-	 * @return the modified cost map
-	 */
-	public CostMap getAgentModifiedMap(CostMap costmap,
-			AreaMap modifiedAreamap, Agent agent) {
-		for (int a = 0; a < modifiedAreamap.getDimensions().getX(); a++) {
-			for (int b = 0; b < modifiedAreamap.getDimensions().getY(); b++) {
-				if (modifiedAreamap.getNodeByCoordinate(a, b)
-						.isOccupiedByAgent()) {
-					if (!FunctionLibrary.vectorsAreEqual(modifiedAreamap
-							.getNodeByCoordinate(a, b).getPosition(), agent
-							.getPosition())) {
-						// for (Vector agentSurroundingPoint :
-						// getSurroundingPoints(
-						// a, b)) {
-						// costmap.setCost(agentSurroundingPoint.getX(),
-						// agentSurroundingPoint.getY(), 5000);
-						// }
-						costmap.setCost(a, b, 5000);
-					}
-				}
-			}
-		}
-		return costmap;
-
 	}
 
 	public int[][] getMap() {
@@ -184,27 +118,34 @@ public class CostMap {
 	/**
 	 * This method prints the cost map with a path to the console.
 	 */
-	public void printMapWithPathToConsole(Path path) {
+	public void printMapWithPathToConsole(Path path, AreaMap areamap,
+			Agent agent) {
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
 				boolean foundNode = false;
-
 				// TODO: check if there is a node at a specific point.
-				for (Node node : path.getWaypoints()) {
-					if (FunctionLibrary.vectorsAreEqual(node.getPosition(),
-							new Vector(i, j))) {
-						foundNode = true;
+				if (path != null) {
+					for (Node node : path.getWaypoints()) {
+						if (FunctionLibrary.vectorsAreEqual(node.getPosition(),
+								new Vector(i, j))) {
+							foundNode = true;
+						}
 					}
 				}
-				if (foundNode) {
+				if (i == agent.getPosition().getX()
+						&& j == agent.getPosition().getY()) {
+					System.out.print("HEREIAM\t");
+				} else if (areamap.getNodeByCoordinate(i, j)
+						.isOccupiedByAgent()) {
+					System.out.print("Agent\t");
+				} else if (foundNode) {
 					System.out.print("-\t");
-
 				} else if (map[i][j] == -1) {
 					System.out.print("X\t");
 				} else if (i == goalPoint.getX() && j == goalPoint.getY()) {
-					System.out.print("G\t");
+					System.out.print("Goal\t");
 				} else if (i == startPoint.getX() && j == startPoint.getY()) {
-					System.out.print("S\t");
+					System.out.print("Start\t");
 				} else {
 					System.out.print(getCostForCoordinates(i, j) + "\t");
 				}
@@ -437,7 +378,7 @@ public class CostMap {
 	 *            y coordinate of the middle point
 	 * @return returns the point vector
 	 */
-	private ArrayList<Vector> getSurroundingPoints(int pointX, int pointY) {
+	public ArrayList<Vector> getSurroundingPoints(int pointX, int pointY) {
 		ArrayList<Vector> surroundingPoints = new ArrayList<Vector>();
 		surroundingPoints.add(new Vector(pointX, pointY - 1,
 				getCostForCoordinates(pointX, pointY - 1)));
