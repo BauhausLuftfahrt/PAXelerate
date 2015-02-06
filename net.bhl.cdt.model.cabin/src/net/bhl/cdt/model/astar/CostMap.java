@@ -9,10 +9,12 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
+
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+
 import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.util.FunctionLibrary;
@@ -120,6 +122,7 @@ public class CostMap {
 	 */
 	public void printMapWithPathToConsole(Path path, AreaMap areamap,
 			Agent agent) {
+		System.out.println("This is the cost map:");
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
 				boolean foundNode = false;
@@ -134,24 +137,29 @@ public class CostMap {
 				}
 				if (i == agent.getPosition().getX()
 						&& j == agent.getPosition().getY()) {
-					System.out.print("HEREIAM\t");
+					System.out.print("I");
 				} else if (areamap.getNodeByCoordinate(i, j)
 						.isOccupiedByAgent()) {
-					System.out.print("Agent\t");
+					System.out.print("A");
 				} else if (foundNode) {
-					System.out.print("-\t");
+					System.out.print(">");
 				} else if (map[i][j] == -1) {
-					System.out.print("X\t");
+					System.out.print("X");
+				} else if (map[i][j] >= 5000) {
+					System.out.print("O");
 				} else if (i == goalPoint.getX() && j == goalPoint.getY()) {
-					System.out.print("Goal\t");
+					System.out.print("G");
 				} else if (i == startPoint.getX() && j == startPoint.getY()) {
-					System.out.print("Start\t");
+					System.out.print("S");
 				} else {
-					System.out.print(getCostForCoordinates(i, j) + "\t");
+					System.out.print("-");// getCostForCoordinates(i, j) +
+											// "\t");
 				}
 			}
 			System.out.println();
 		}
+		System.out.println();
+		System.out.println();
 	}
 
 	/**

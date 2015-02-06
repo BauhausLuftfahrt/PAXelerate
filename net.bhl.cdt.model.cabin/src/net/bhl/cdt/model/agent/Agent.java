@@ -36,10 +36,12 @@ public class Agent extends Subject implements Runnable {
 	private Path path;
 	private Vector start;
 	private Vector goal;
+	private Vector futurePosition;
 	private Vector currentPosition;
-	private Vector previousPosition;
 	private Passenger passenger;
 	private final CostMap finalCostmap;
+	private CostMap mutableCostMap;
+	private AreaMap mutableAreaMap;
 	private int scale;
 	private int speedfactor;
 	private int numbOfInterupts;
@@ -104,8 +106,8 @@ public class Agent extends Subject implements Runnable {
 	private int getRotation() {
 		/* get the angle in radian from -Pi to Pi, so zero is EAST */
 		double theta = Math.atan2(
-				currentPosition.getY() - previousPosition.getY(),
-				currentPosition.getX() - previousPosition.getX());
+				futurePosition.getY() - currentPosition.getY(),
+				futurePosition.getX() - currentPosition.getX());
 		/* rotate the angle by 90 degrees so that zero is NORTH */
 		theta += Math.PI / 2.0;
 		/* transform from radian to degree */
@@ -123,7 +125,7 @@ public class Agent extends Subject implements Runnable {
 	private boolean passengerStowsLuggage() {
 		Seat seat = passenger.getSeatRef();
 		return (passenger.isHasLuggage())
-				&& (currentPosition.getY() == (int) (seat.getYPosition()
+				&& (futurePosition.getY() == (int) (seat.getYPosition()
 						/ scale - 5));
 	}
 
@@ -151,7 +153,7 @@ public class Agent extends Subject implements Runnable {
 	public void redefinePathLayout() {
 		Path pathhelper = pathlist.get(pathlist.size() - 1);
 		pathlist.remove(pathhelper);
-		pathhelper = pathhelper.cutToPoint(pathhelper, previousPosition);
+		pathhelper = pathhelper.cutToPoint(pathhelper, currentPosition);
 		pathlist.add(pathhelper);
 		pathlist.add(path);
 	}
@@ -168,12 +170,10 @@ public class Agent extends Subject implements Runnable {
 	 *            is the agent triggering this method
 	 * @return the modified cost map
 	 */
-	private CostMap getModifiedCostmap(AreaMap areammapWithAgentPositions) {
-		CostMap modifiedCostmap = finalCostmap;
-		for (int a = 0; a < areammapWithAgentPositions.getDimensions().getX(); a++) {
-			for (int b = 0; b < areammapWithAgentPositions.getDimensions()
-					.getY(); b++) {
-				if (areammapWithAgentPositions.getNodeByCoordinate(a, b)
+	private void updateCostmap() {
+		for (int a = 0; a < mutableAreaMap.getDimensions().getX(); a++) {
+			for (int b = 0; b < mutableAreaMap.getDimensions().getY(); b++) {
+				if (mutableAreaMap.getNodeByCoordinate(a, b)
 						.isOccupiedByAgent()) {
 					// if (!FunctionLibrary.vectorsAreEqual(modifiedAreamap
 					// .getNodeByCoordinate(a, b).getPosition(), agent
@@ -183,12 +183,12 @@ public class Agent extends Subject implements Runnable {
 					// costmap.setCost(agentSurroundingPoint.getX(),
 					// agentSurroundingPoint.getY(), 5000);
 					// }
-					modifiedCostmap.setCost(a, b, 5000);
+					mutableCostMap.setCost(a, b, 5000);
 					// }
 				}
 			}
 		}
-		return modifiedCostmap;
+
 	}
 
 	/**
@@ -199,31 +199,33 @@ public class Agent extends Subject implements Runnable {
 	 */
 	public void findNewPath() {
 		stopwatch.start();
-		// TODO: IS THIS A POINTER????
-		CostMap costmap = null;
-		/*
-		 * this copy is used because the area map could change during the path
-		 * calculation process and thereby falsify the path layout.
-		 */
-		// TODO: IS THIS A POINTER????
-		AreaMap areamapCopy = RunAStar.getMap();
-		if (previousPosition != null) {
-			start = previousPosition;
-			costmap = getModifiedCostmap(areamapCopy);
-		} else {
-			costmap = finalCostmap;
+
+		/* reset the mutable CostMap to the blank cost map */
+		mutableCostMap = finalCostmap;
+
+		/* save a "screenshot" of the AreaMap for further calculations */
+		mutableAreaMap = RunAStar.getMap();
+
+		if (currentPosition != null) {
+			/* this is only run if its not the initial path finding process */
+			mutableAreaMap.printMap();
+
+			/* this sets the new start of the A* to the current position */
+			start = currentPosition;
+
+			/* this declares the area around agents as high cost terrain */
+			updateCostmap();
 		}
-		AStar astar = new AStar(areamapCopy, costmap, this);
+		AStar astar = new AStar(mutableAreaMap, mutableCostMap, this);
 		path = astar.getBestPath();
 
-		if (previousPosition != null) {
-			costmap.printMapWithPathToConsole(path, areamapCopy, this);
+		if (currentPosition != null) {
+			mutableCostMap
+					.printMapWithPathToConsole(path, mutableAreaMap, this);
 		}
-		currentPosition = path.get(0).getPosition();
-		previousPosition = new Vector(0, 0);
+		futurePosition = path.get(0).getPosition();
+		currentPosition = new Vector(0, 0);
 		stopwatch.stop();
-
-		costmap = null;
 		System.out.println("it took " + stopwatch.getElapsedTime()
 				+ " milliseconds to find a new path.");
 	}
@@ -233,7 +235,7 @@ public class Agent extends Subject implements Runnable {
 	 * @return
 	 */
 	public Vector getPosition() {
-		return previousPosition;
+		return currentPosition;
 	}
 
 	/**
@@ -241,7 +243,7 @@ public class Agent extends Subject implements Runnable {
 	 * @return
 	 */
 	private boolean goalReached() {
-		return FunctionLibrary.vectorsAreEqual(currentPosition, goal);
+		return FunctionLibrary.vectorsAreEqual(futurePosition, goal);
 	}
 
 	/**
@@ -269,7 +271,7 @@ public class Agent extends Subject implements Runnable {
 			int i = 0;
 			while (i < path.getLength()) {
 				if (i != 0) {
-					previousPosition = path.get(i - 1).getPosition();
+					currentPosition = path.get(i - 1).getPosition();
 				}
 
 				// if (numbOfInterupts > 20 && agentMood instanceof PassiveMood)
@@ -277,11 +279,11 @@ public class Agent extends Subject implements Runnable {
 				// agentMood = new AggressiveMood(this);
 				// System.out.println("NOW I AM ANGRY!");
 				// }
-				currentPosition = path.get(i).getPosition();
-				if (nodeBlocked(currentPosition)) {
+				futurePosition = path.get(i).getPosition();
+				if (nodeBlocked(futurePosition)) {
 					numbOfInterupts++;
-					occupyNode(previousPosition, false);
 					occupyNode(currentPosition, false);
+					occupyNode(futurePosition, false);
 					Situation collision = new Situation(agentMood);
 					collision.handleCollision();
 					if (exitTheMainLoop) {
@@ -291,26 +293,26 @@ public class Agent extends Subject implements Runnable {
 						break mainloop;
 					}
 				} else if (passengerStowsLuggage() && !alreadyStowed) {
-					RunAStar.getMap().getNode(previousPosition)
-							.setOccupiedByAgent(false);
 					RunAStar.getMap().getNode(currentPosition)
+							.setOccupiedByAgent(false);
+					RunAStar.getMap().getNode(futurePosition)
 							.setOccupiedByAgent(true);
-					occupyNode(currentPosition, true);
+					occupyNode(futurePosition, true);
 					Thread.sleep((int) (passenger.getLuggageStowTime() * 1000 / 2 / speedfactor));
-					occupyNode(currentPosition, false);
+					occupyNode(futurePosition, false);
 					alreadyStowed = true;
 					i++;
 				} else {
 					/* if the agent's path is not blocked, move forward */
-					RunAStar.getMap().getNode(previousPosition)
-							.setOccupiedByAgent(false);
 					RunAStar.getMap().getNode(currentPosition)
+							.setOccupiedByAgent(false);
+					RunAStar.getMap().getNode(futurePosition)
 							.setOccupiedByAgent(true);
-					occupyNode(previousPosition, false);
-					occupyNode(currentPosition, true);
+					occupyNode(currentPosition, false);
+					occupyNode(futurePosition, true);
 					try {
-						passenger.setPositionX(currentPosition.getX() * scale);
-						passenger.setPositionY(currentPosition.getY() * scale);
+						passenger.setPositionX(futurePosition.getX() * scale);
+						passenger.setPositionY(futurePosition.getY() * scale);
 						passenger.setOrientationInDegree(getRotation());
 					} catch (ConcurrentModificationException e) {
 						System.out
@@ -349,10 +351,10 @@ public class Agent extends Subject implements Runnable {
 	 */
 	public void run() {
 		try {
-			/* TODO: Attention! This needs to be removed again!!!!! */
+			/* TODO: CAUTION! This needs to be removed again!!!!! */
 			agentMood = new AggressiveMood(this);
 			/* **************************************************** */
-			previousPosition = start;
+			currentPosition = start;
 			alreadyStowed = false;
 			pathlist.add(path);
 			Thread.sleep((int) (passenger.getStartBoardingAfterDelay() * 1000 / speedfactor));
@@ -361,7 +363,7 @@ public class Agent extends Subject implements Runnable {
 			while (!goalReached()) {
 				followPath();
 			}
-			occupyNode(currentPosition, false);
+			occupyNode(futurePosition, false);
 			passenger.setIsSeated(true);
 			stopwatch.stop();
 			passenger

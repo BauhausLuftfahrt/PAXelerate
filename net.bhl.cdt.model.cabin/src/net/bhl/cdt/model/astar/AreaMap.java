@@ -26,8 +26,11 @@ public class AreaMap {
 
 	/**
 	 * This is the area map constructor.
-	 * @param dimensions the dimensions of the map
-	 * @param obstacleMap the obstacle map
+	 * 
+	 * @param dimensions
+	 *            the dimensions of the map
+	 * @param obstacleMap
+	 *            the obstacle map
 	 */
 	public AreaMap(Vector dimensions, ObstacleMap obstacleMap) {
 		this.dimensions = dimensions;
@@ -43,23 +46,23 @@ public class AreaMap {
 	 * This method prints the map to the console.
 	 */
 	public void printMap() {
+		System.out.println("This is the area map:");
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
 				if (map.get(i).get(j).isOccupiedByAgent()) {
 					System.out.print("O");
-				} else if((map.get(i).get(j).isObstacle())) {
+				} else if ((map.get(i).get(j).isObstacle())) {
 					System.out.print("X");
-				}
-				else if((map.get(i).get(j).isStart())) {
+				} else if ((map.get(i).get(j).isStart())) {
 					System.out.print("X");
-				}
-				else {
+				} else {
 					System.out.print("-");
 				}
 			}
 			System.out.println();
 		}
-
+		System.out.println();
+		System.out.println();
 	}
 
 	/**
@@ -71,7 +74,7 @@ public class AreaMap {
 		for (int x = 0; x < dimensions.getX(); x++) {
 			map.add(new ArrayList<Node>());
 			for (int y = 0; y < dimensions.getY(); y++) {
-				node = new Node(new Vector(x,y));
+				node = new Node(new Vector(x, y));
 
 				if (ObstacleMap.getValueAtPoint(x, y) == ObstacleMap
 						.getObstacleValue()) {
@@ -122,6 +125,7 @@ public class AreaMap {
 
 	/**
 	 * This method returns the area map.
+	 * 
 	 * @return the area map
 	 */
 	public ArrayList<ArrayList<Node>> getNodes() {
@@ -130,9 +134,13 @@ public class AreaMap {
 
 	/**
 	 * This method sets a node an obstacle.
-	 * @param x is the x value
-	 * @param y is the y value
-	 * @param isObstacle set yes or no
+	 * 
+	 * @param x
+	 *            is the x value
+	 * @param y
+	 *            is the y value
+	 * @param isObstacle
+	 *            set yes or no
 	 */
 	public void setObstacle(int x, int y, boolean isObstacle) {
 		map.get(x).get(y).setObstacle(isObstacle);
@@ -140,8 +148,11 @@ public class AreaMap {
 
 	/**
 	 * This method returns a node at a specific point.
-	 * @param x the x value
-	 * @param y the y value
+	 * 
+	 * @param x
+	 *            the x value
+	 * @param y
+	 *            the y value
 	 * @return the node
 	 */
 	public Node getNodeByCoordinate(int x, int y) {
@@ -150,7 +161,9 @@ public class AreaMap {
 
 	/**
 	 * This method returns a specific node at a vector point.
-	 * @param vector the vector describing the position of the node
+	 * 
+	 * @param vector
+	 *            the vector describing the position of the node
 	 * @return the node
 	 */
 	public Node getNode(Vector vector) {
@@ -159,7 +172,9 @@ public class AreaMap {
 
 	/**
 	 * This method sets the start location.
-	 * @param start the start location vector
+	 * 
+	 * @param start
+	 *            the start location vector
 	 */
 	public void setStartLocation(Vector start) {
 		map.get(startLocation.getX()).get(startLocation.getY()).setStart(false);
@@ -169,7 +184,9 @@ public class AreaMap {
 
 	/**
 	 * This method sets the goal location.
-	 * @param goal the goal location vector.
+	 * 
+	 * @param goal
+	 *            the goal location vector.
 	 */
 	public void setGoalLocation(Vector goal) {
 		map.get(goalLocation.getX()).get(goalLocation.getY()).setGoal(false);
@@ -179,35 +196,43 @@ public class AreaMap {
 
 	/**
 	 * This method returns the start node.
+	 * 
 	 * @return the start node
 	 */
 	public Node getStartNode() {
 		return map.get(startLocation.getX()).get(startLocation.getY());
 	}
-	
+
 	/**
 	 * This method returns the goal node.
+	 * 
 	 * @return the goal node
 	 */
 	public Node getGoalNode() {
 		return map.get(goalLocation.getX()).get(goalLocation.getY());
 	}
 
-
 	/**
 	 * This method calculates the distance between two nodes.
-	 * @param node1 the first node
-	 * @param node2 the second node
+	 * 
+	 * @param node1
+	 *            the first node
+	 * @param node2
+	 *            the second node
 	 * @return the distance between the nodes
 	 */
 	public float getDistanceBetween(Node node1, Node node2) {
-		return (float) Math.sqrt((node2.getPosition().getX() - node1.getPosition().getX()) ^ 2
-				+ (node2.getPosition().getY() - node1.getPosition().getY()) ^ 2);
-		
+		return (float) Math
+				.sqrt((node2.getPosition().getX() - node1.getPosition().getX())
+						^ 2
+						+ (node2.getPosition().getY() - node1.getPosition()
+								.getY()) ^ 2);
+
 	}
 
 	/**
 	 * This method returns the dimensions of the map.
+	 * 
 	 * @return the dimensions stored in a vector
 	 */
 	public Vector getDimensions() {
