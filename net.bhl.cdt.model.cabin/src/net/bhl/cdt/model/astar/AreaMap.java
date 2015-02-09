@@ -9,6 +9,7 @@ package net.bhl.cdt.model.astar;
 import java.util.ArrayList;
 
 import net.bhl.cdt.model.cabin.util.Vector;
+import net.bhl.cdt.model.cabin.util.Vector2D;
 
 /**
  * 
@@ -17,9 +18,9 @@ import net.bhl.cdt.model.cabin.util.Vector;
  */
 public class AreaMap {
 
-	private Vector dimensions = new Vector(0, 0);
-	private Vector startLocation = new Vector(0, 0);
-	private Vector goalLocation = new Vector(0, 0);
+	private Vector dimensions = new Vector2D(0, 0);
+	private Vector startLocation = new Vector2D(0, 0);
+	private Vector goalLocation = new Vector2D(0, 0);
 	private ArrayList<ArrayList<Node>> map;
 	private ObstacleMap obstacleMap;
 	private Logger log = new Logger();
@@ -74,7 +75,7 @@ public class AreaMap {
 		for (int x = 0; x < dimensions.getX(); x++) {
 			map.add(new ArrayList<Node>());
 			for (int y = 0; y < dimensions.getY(); y++) {
-				node = new Node(new Vector(x, y));
+				node = new Node(new Vector2D(x, y));
 
 				if (ObstacleMap.getValueAtPoint(x, y) == ObstacleMap
 						.getObstacleValue()) {
@@ -243,8 +244,8 @@ public class AreaMap {
 	 * This method clears the area map.
 	 */
 	public void clear() {
-		startLocation.setTwoDimensional(0, 0);
-		goalLocation.setTwoDimensional(0, 0);
+		((Vector2D) startLocation).set(0, 0);
+		((Vector2D) goalLocation).set(0, 0);
 		createMap();
 		registerEdges();
 	}

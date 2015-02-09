@@ -8,6 +8,7 @@ package net.bhl.cdt.model.astar;
 import java.util.ArrayList;
 
 import net.bhl.cdt.model.cabin.util.Vector;
+import net.bhl.cdt.model.cabin.util.Vector2D;
 
 /**
  * This class represents a node object which has several properties important
@@ -29,7 +30,7 @@ public class Node implements Comparable<Node> {
 	private int distanceFromStart;
 	private int costFromStart;
 	private Node previousNode;
-	private Vector position = new Vector(0, 0);
+	private Vector position = new Vector2D(0, 0);
 	private boolean isObstacle;
 	private boolean isOccupiedByAgent;
 	private boolean isStart;

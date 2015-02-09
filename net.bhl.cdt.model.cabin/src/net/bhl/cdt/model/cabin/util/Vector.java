@@ -7,8 +7,6 @@ package net.bhl.cdt.model.cabin.util;
 
 import java.awt.Color;
 
-import net.bhl.cdt.model.astar.CostMap;
-
 /**
  * This class represents a vector consisting of 2 coordinates. It is easily
  * possible to expand this vector to 3 coordinates. It can represent both a
@@ -18,13 +16,12 @@ import net.bhl.cdt.model.astar.CostMap;
  * @author marc.engelmann
  * @version 1.0
  */
-public class Vector implements Comparable<Vector> {
+public abstract class Vector implements Comparable<Vector> {
 
-	// TODO: Create 2 subclasses called 2 dimensional & 3dimensional vector
-	private int dimensions;
-	private int xValue;
-	private int yValue;
-	private int zValue;
+	protected int dimensions;
+	protected int xValue;
+	protected int yValue;
+	protected int zValue;
 
 	/**
 	 * This method returns the number of dimensions that the vector has.
@@ -44,7 +41,6 @@ public class Vector implements Comparable<Vector> {
 	 *            is the second value
 	 */
 	public Vector(int x, int y) {
-		dimensions = 2;
 		xValue = x;
 		yValue = y;
 	}
@@ -60,65 +56,9 @@ public class Vector implements Comparable<Vector> {
 	 *            is the third value
 	 */
 	public Vector(int x, int y, int z) {
-		dimensions = 3;
 		xValue = x;
 		yValue = y;
 		zValue = z;
-	}
-
-	/**
-	 * This method sets the vector values from integers.
-	 * 
-	 * @param x
-	 *            is the first value
-	 * @param y
-	 *            is the second value
-	 */
-	public void setTwoDimensional(int x, int y) {
-		if (dimensions == 2) {
-			xValue = x;
-			yValue = y;
-		} else {
-			System.out
-					.println("Dimensions not matching! Use other set function!");
-		}
-	}
-
-	/**
-	 * This method sets the vector values from integers.
-	 * 
-	 * @param x
-	 *            is the first value
-	 * @param y
-	 *            is the second value
-	 * @param z
-	 *            is the third value
-	 */
-	public void setThreeDimensional(int x, int y, int z) {
-		if (dimensions == 3) {
-			xValue = x;
-			yValue = y;
-			zValue = z;
-		} else {
-			System.out
-					.println("Dimensions not matching! Use other set function!");
-		}
-	}
-
-	/**
-	 * This method sets the vector from an int[] if the dimension 2.
-	 * 
-	 * @param point
-	 *            is the point that is submitted
-	 */
-	public void setFromPoint(int[] point) {
-		if (point.length >= dimensions) {
-			xValue = point[0];
-			yValue = point[1];
-		}
-		if (point.length == 3) {
-			zValue = point[2];
-		}
 	}
 
 	/**
@@ -185,22 +125,6 @@ public class Vector implements Comparable<Vector> {
 	 */
 	public synchronized void setZ(int z) {
 		yValue = z;
-	}
-
-	/**
-	 * This method returns the vector in form of an int[] of the dimensions
-	 * DIMENSIONS.
-	 * 
-	 * @return the value in int[DIMENSIONS] form
-	 */
-	public int[] getValue() {
-		int[] value = new int[dimensions];
-		value[0] = xValue;
-		value[1] = yValue;
-		if (dimensions == 3) {
-			value[2] = zValue;
-		}
-		return value;
 	}
 
 	/**

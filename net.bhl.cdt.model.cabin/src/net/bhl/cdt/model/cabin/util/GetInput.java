@@ -65,8 +65,8 @@ public class GetInput extends TitleAreaDialog {
 	public GetInput(WindowType windowType, String message, int messageType) {
 		super(null);
 		integerValue = 0;
-		vectorValue = new Vector(0, 0);
-		vectorValue2 = new Vector(0, 0);
+		vectorValue = new Vector2D(0, 0);
+		vectorValue2 = new Vector2D(0, 0);
 		booleanValue = false;
 		stringValue = "";
 		switch (windowType) {
@@ -216,13 +216,13 @@ public class GetInput extends TitleAreaDialog {
 			stringValue = text.getText();
 			break;
 		case GET_VECTOR:
-			vectorValue.setTwoDimensional(Integer.parseInt(text.getText()),
+			((Vector2D) vectorValue).set(Integer.parseInt(text.getText()),
 					Integer.parseInt(text2.getText()));
 			break;
 		case GET_TWO_VECTORS:
-			vectorValue.setTwoDimensional(Integer.parseInt(text.getText()),
+			((Vector2D) vectorValue).set(Integer.parseInt(text.getText()),
 					Integer.parseInt(text2.getText()));
-			vectorValue2.setTwoDimensional(Integer.parseInt(text3.getText()),
+			((Vector2D) vectorValue2).set(Integer.parseInt(text3.getText()),
 					Integer.parseInt(text4.getText()));
 			break;
 		case GET_BOOLEAN:

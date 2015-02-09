@@ -22,6 +22,7 @@ import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Vector;
+import net.bhl.cdt.model.cabin.util.Vector2D;
 import net.bhl.cdt.model.observer.Subject;
 
 /**
@@ -232,7 +233,7 @@ public class Agent extends Subject implements Runnable {
 
 		/* setting the new desired and current positions */
 		desiredPosition = path.get(0).getPosition();
-		currentPosition = new Vector(0, 0);
+		currentPosition = new Vector2D(0,0);
 
 		/* ends the stop watch performance logging */
 		stopwatch.stop();

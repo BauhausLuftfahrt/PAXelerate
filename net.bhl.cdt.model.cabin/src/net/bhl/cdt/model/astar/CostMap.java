@@ -19,6 +19,8 @@ import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Vector;
+import net.bhl.cdt.model.cabin.util.Vector2D;
+import net.bhl.cdt.model.cabin.util.Vector3D;
 
 /**
  * This class creates a cost map by flooding the whole map from a specific
@@ -39,9 +41,9 @@ import net.bhl.cdt.model.cabin.util.Vector;
 public class CostMap {
 
 	private int[][] map;
-	private Vector dimensions = new Vector(0, 0);
-	private Vector startPoint = new Vector(0, 0);
-	private Vector goalPoint = new Vector(0, 0);
+	private Vector dimensions = new Vector2D(0, 0);
+	private Vector startPoint = new Vector2D(0, 0);
+	private Vector goalPoint = new Vector2D(0, 0);
 	private ArrayList<Vector> visitedPoints = new ArrayList<Vector>();
 	public ArrayList<Vector> pointParking = new ArrayList<Vector>();
 	public ArrayList<Vector> pointParkingHelper = new ArrayList<Vector>();
@@ -62,7 +64,7 @@ public class CostMap {
 		if (OnlyFloodToSeat) {
 			this.goalPoint = agent.getGoal();
 		} else {
-			this.goalPoint.setTwoDimensional((int) dimensions.getX() / 2,
+			((Vector2D) this.goalPoint).set((int) dimensions.getX() / 2,
 					dimensions.getY() - 1);
 		}
 		this.areamap = areaMap;
@@ -130,7 +132,7 @@ public class CostMap {
 				if (path != null) {
 					for (Node node : path.getWaypoints()) {
 						if (FuncLib.vectorsAreEqual(node.getPosition(),
-								new Vector(i, j))) {
+								new Vector2D(i, j))) {
 							foundNode = true;
 						}
 					}
@@ -388,21 +390,21 @@ public class CostMap {
 	 */
 	public ArrayList<Vector> getSurroundingPoints(int pointX, int pointY) {
 		ArrayList<Vector> surroundingPoints = new ArrayList<Vector>();
-		surroundingPoints.add(new Vector(pointX, pointY - 1,
+		surroundingPoints.add(new Vector3D(pointX, pointY - 1,
 				getCostForCoordinates(pointX, pointY - 1)));
-		surroundingPoints.add(new Vector(pointX + 1, pointY - 1,
+		surroundingPoints.add(new Vector3D(pointX + 1, pointY - 1,
 				getCostForCoordinates(pointX + 1, pointY - 1)));
-		surroundingPoints.add(new Vector(pointX + 1, pointY,
+		surroundingPoints.add(new Vector3D(pointX + 1, pointY,
 				getCostForCoordinates(pointX + 1, pointY)));
-		surroundingPoints.add(new Vector(pointX + 1, pointY + 1,
+		surroundingPoints.add(new Vector3D(pointX + 1, pointY + 1,
 				getCostForCoordinates(pointX + 1, pointY + 1)));
-		surroundingPoints.add(new Vector(pointX, pointY + 1,
+		surroundingPoints.add(new Vector3D(pointX, pointY + 1,
 				getCostForCoordinates(pointX, pointY + 1)));
-		surroundingPoints.add(new Vector(pointX - 1, pointY + 1,
+		surroundingPoints.add(new Vector3D(pointX - 1, pointY + 1,
 				getCostForCoordinates(pointX - 1, pointY + 1)));
-		surroundingPoints.add(new Vector(pointX - 1, pointY,
+		surroundingPoints.add(new Vector3D(pointX - 1, pointY,
 				getCostForCoordinates(pointX - 1, pointY)));
-		surroundingPoints.add(new Vector(pointX - 1, pointY - 1,
+		surroundingPoints.add(new Vector3D(pointX - 1, pointY - 1,
 				getCostForCoordinates(pointX - 1, pointY - 1)));
 		return surroundingPoints;
 	}

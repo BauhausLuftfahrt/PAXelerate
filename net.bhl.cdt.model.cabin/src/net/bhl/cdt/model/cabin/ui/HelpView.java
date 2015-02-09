@@ -4,8 +4,8 @@ import javax.swing.*;
 
 import net.bhl.cdt.model.astar.AreaMap;
 import net.bhl.cdt.model.astar.CostMap;
-
 import net.bhl.cdt.model.cabin.util.Vector;
+import net.bhl.cdt.model.cabin.util.Vector2D;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -40,7 +40,7 @@ public class HelpView extends JPanel {
 			}
 		});
 		this.add(button);
-		costmap = new CostMap(dimensions, new Vector(0, 14), areamap, true,
+		costmap = new CostMap(dimensions, new Vector2D(0, 14), areamap, true,
 				null, false);
 		Thread gameThread = new Thread() {
 

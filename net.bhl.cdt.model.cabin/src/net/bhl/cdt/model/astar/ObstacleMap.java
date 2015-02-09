@@ -23,6 +23,7 @@ import net.bhl.cdt.model.cabin.PhysicalObject;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.util.Vector;
+import net.bhl.cdt.model.cabin.util.Vector2D;
 import net.bhl.cdt.model.util.ModelHelper;
 
 /**
@@ -35,7 +36,7 @@ import net.bhl.cdt.model.util.ModelHelper;
 
 public class ObstacleMap {
 	private Cabin cabin;
-	private Vector dimensions = new Vector(0, 0);
+	private Vector dimensions = new Vector2D(0, 0);
 	private static final int MAX_VALUE = 100000;
 	private static final int BASIC_VALUE = 3;
 	private static final int OBSTACLE_RANGE_IN_CM = 20;
@@ -52,7 +53,7 @@ public class ObstacleMap {
 	 */
 	public ObstacleMap(Cabin cabin) {
 		this.cabin = cabin;
-		dimensions.setTwoDimensional(
+		((Vector2D) dimensions).set(
 				(int) (cabin.getCabinWidth() / cabin.getScale()),
 				(int) (cabin.getCabinLength() / cabin.getScale()));
 		obstacleMap = createObstacleMap();

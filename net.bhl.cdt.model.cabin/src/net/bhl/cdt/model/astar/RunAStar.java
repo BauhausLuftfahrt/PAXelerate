@@ -13,6 +13,7 @@ import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.util.Vector;
+import net.bhl.cdt.model.cabin.util.Vector2D;
 import net.bhl.cdt.model.util.ModelHelper;
 
 /**
@@ -117,10 +118,10 @@ public class RunAStar {
 				Passenger.class)) {
 			Seat seat = passenger.getSeatRef();
 			Door door = passenger.getDoor();
-			Vector start = new Vector(0,
+			Vector start = new Vector2D(0,
 					(int) ((door.getYPosition() + door.getWidth() / 2) / cabin
 							.getScale()));
-			Vector goal = new Vector(
+			Vector goal = new Vector2D(
 					(int) ((seat.getXPosition() + seat.getXDimension() / 2) / cabin
 							.getScale()), (int) ((seat.getYPosition() / cabin
 							.getScale()) - 1));

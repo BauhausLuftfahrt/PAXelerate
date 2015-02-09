@@ -19,6 +19,7 @@ import net.bhl.cdt.model.cabin.ui.InfoViewPart;
 import net.bhl.cdt.model.cabin.util.GetInput;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.cabin.util.GetInput.WindowType;
+import net.bhl.cdt.model.cabin.util.Vector2D;
 import net.bhl.cdt.model.util.ModelHelper;
 
 import org.eclipse.core.runtime.ILog;
@@ -75,8 +76,8 @@ public class SimulateBoardingCommand extends CDTCommand implements Runnable {
 	 */
 	@Override
 	protected void doRun() {
-		start();
-		// run();
+		//start();
+		run();
 	}
 
 	@Override
@@ -126,7 +127,7 @@ public class SimulateBoardingCommand extends CDTCommand implements Runnable {
 				}
 				if (!cabin.getPassengers().isEmpty()) {
 					ObstacleMap obstaclemap = new ObstacleMap(cabin);
-					RunAStar astar = new RunAStar(obstaclemap, new Vector(
+					RunAStar astar = new RunAStar(obstaclemap, new Vector2D(
 							(int) (cabin.getCabinWidth() / cabin.getScale()),
 							(int) (cabin.getCabinLength() / cabin.getScale())),
 							cabin);

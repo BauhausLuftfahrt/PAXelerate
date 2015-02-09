@@ -15,6 +15,8 @@ import net.bhl.cdt.model.cabin.ui.HelpView;
 import net.bhl.cdt.model.cabin.util.GetInput;
 import net.bhl.cdt.model.cabin.util.GetInput.WindowType;
 import net.bhl.cdt.model.cabin.util.Vector;
+import net.bhl.cdt.model.cabin.util.Vector2D;
+
 import org.eclipse.jface.dialogs.IMessageProvider;
 
 
@@ -57,7 +59,7 @@ public class FloodCabinCommand extends CDTCommand {
 		 * @param args
 		 *            the arguments
 		 */
-		final Vector dimensions = new Vector(cabin.getCabinWidth()
+		final Vector dimensions = new Vector2D(cabin.getCabinWidth()
 				/ cabin.getScale(), cabin.getCabinLength() / cabin.getScale());
 		ObstacleMap obstaclemap = new ObstacleMap(cabin);
 		final AreaMap areamap = new AreaMap(dimensions, obstaclemap);

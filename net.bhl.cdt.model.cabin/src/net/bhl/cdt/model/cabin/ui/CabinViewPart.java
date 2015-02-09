@@ -24,6 +24,8 @@ import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.util.SWTResourceManager;
 import net.bhl.cdt.model.cabin.util.Vector;
+import net.bhl.cdt.model.cabin.util.Vector2D;
+import net.bhl.cdt.model.cabin.util.Vector3D;
 import net.bhl.cdt.model.util.ModelHelper;
 
 import org.eclipse.core.runtime.ILog;
@@ -769,23 +771,23 @@ public class CabinViewPart extends ViewPart {
 		int rotation = (int) passenger.getOrientationInDegree();
 		int factor = 5;
 		if (rotation == 0) {
-			return new Vector(0, -10);
+			return new Vector2D(0, -10);
 		} else if (rotation <= 45) {
-			return new Vector(factor, -factor);
+			return new Vector2D(factor, -factor);
 		} else if (rotation <= 90) {
-			return new Vector(10, 0);
+			return new Vector2D(10, 0);
 		} else if (rotation <= 135) {
-			return new Vector(factor, factor);
+			return new Vector2D(factor, factor);
 		} else if (rotation <= 180) {
-			return new Vector(0, 10);
+			return new Vector2D(0, 10);
 		} else if (rotation <= 225) {
-			return new Vector(-factor, factor);
+			return new Vector2D(-factor, factor);
 		} else if (rotation <= 270) {
-			return new Vector(-10, 0);
+			return new Vector2D(-10, 0);
 		} else if (rotation <= 315) {
-			return new Vector(-factor, -factor);
+			return new Vector2D(-factor, -factor);
 		} else {
-			return new Vector(0, 0);
+			return new Vector2D(0, 0);
 		}
 	}
 
@@ -802,19 +804,19 @@ public class CabinViewPart extends ViewPart {
 		int colorDefine = (pax.getId() % 13) * 20 + 15;
 		switch (randInt) {
 		case 0:
-			return new Vector(255, 0, colorDefine);
+			return new Vector3D(255, 0, colorDefine);
 		case 1:
-			return new Vector(255, colorDefine, 0);
+			return new Vector3D(255, colorDefine, 0);
 		case 2:
-			return new Vector(0, 255, colorDefine);
+			return new Vector3D(0, 255, colorDefine);
 		case 3:
-			return new Vector(colorDefine, 255, 0);
+			return new Vector3D(colorDefine, 255, 0);
 		case 4:
-			return new Vector(0, colorDefine, 255);
+			return new Vector3D(0, colorDefine, 255);
 		case 5:
-			return new Vector(colorDefine, 0, 255);
+			return new Vector3D(colorDefine, 0, 255);
 		default:
-			return new Vector(255, 255, 255);
+			return new Vector3D(255, 255, 255);
 		}
 	}
 
