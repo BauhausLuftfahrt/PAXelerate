@@ -37,11 +37,13 @@ public class Node implements Comparable<Node> {
 	private boolean isGoal;
 	private int cost;
 	private double compareFactor;
+	private Property property;
+
 
 	// TODO implement that!
 	/* This declares the type of the node */
-	public enum property {
-		OBSTACLE, AGENT, COST_NODE // could easily be extended!
+	public enum Property {
+		OBSTACLE, AGENT, DEFAULT, EMPTY // could easily be extended!
 	}
 
 	/**
@@ -66,6 +68,14 @@ public class Node implements Comparable<Node> {
 	 */
 	public int getCost() {
 		return cost;
+	}
+	
+	public Property getProperty() {
+		return property;
+	}
+
+	public void setProperty(Property property) {
+		this.property = property;
 	}
 
 	/**

@@ -39,5 +39,4 @@ public class Vector2D extends Vector {
 		value[1] = yValue;
 		return value;
 	}
-
 }
