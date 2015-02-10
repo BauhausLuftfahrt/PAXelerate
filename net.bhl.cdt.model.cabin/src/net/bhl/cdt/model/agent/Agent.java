@@ -53,6 +53,8 @@ public class Agent extends Subject implements Runnable {
 	private AgentMood agentMood;
 	private boolean exitTheMainLoop = false;
 
+	private static final Boolean DEVELOPER_MODE = false;
+
 	/**
 	 * This method constructs an agent.
 	 * 
@@ -105,14 +107,18 @@ public class Agent extends Subject implements Runnable {
 	 * @return the rotation in degrees.
 	 */
 	private int getRotation() {
+
 		/* get the angle in radian from -Pi to Pi, so zero is EAST */
 		double theta = Math.atan2(
 				desiredPosition.getY() - currentPosition.getY(),
 				desiredPosition.getX() - currentPosition.getX());
+
 		/* rotate the angle by 90 degrees so that zero is NORTH */
 		theta += Math.PI / 2.0;
+
 		/* transform from radian to degree */
 		int angle = (int) Math.toDegrees(theta);
+
 		/* if degree is smaller than 0, convert it */
 		if (angle < 0) {
 			angle += 360;
@@ -121,10 +127,19 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
+	 * This method returns if the passenger is ready to stow his luggage
 	 * 
+	 * @return if the passenger is ready to stow luggage
 	 */
 	private boolean passengerStowsLuggage() {
+
+		/* get the passengers seat */
 		Seat seat = passenger.getSeatRef();
+
+		/*
+		 * return true if the passenger does have luggage and if he is near his
+		 * seat
+		 */
 		return (passenger.isHasLuggage())
 				&& (desiredPosition.getY() == (int) (seat.getYPosition()
 						/ scale - 5));
@@ -140,7 +155,7 @@ public class Agent extends Subject implements Runnable {
 	 */
 	private void occupyNode(Vector vector, boolean occupy) {
 
-		// use monitor so that only one thread can occupy a node at a time
+		/* use monitor so that only one thread can occupy a node at a time */
 		synchronized (vector) {
 			RunAStar.getMap().getNode(vector).setOccupiedByAgent(occupy);
 		}
@@ -152,10 +167,20 @@ public class Agent extends Subject implements Runnable {
 	 * instead a matching complete path.
 	 */
 	public void redefinePathLayout() {
+
+		/* get the path used by the agent before finding a new one. */
 		Path pathhelper = pathlist.get(pathlist.size() - 1);
+
+		/* then remove that path */
 		pathlist.remove(pathhelper);
+
+		/* cut the path up to the current location */
 		pathhelper = pathhelper.cutToPoint(pathhelper, currentPosition);
+
+		/* add the path back to the list */
 		pathlist.add(pathhelper);
+
+		/* add the newly calculated path as well */
 		pathlist.add(path);
 	}
 
@@ -172,37 +197,49 @@ public class Agent extends Subject implements Runnable {
 		/* the cost map is then assigned to the mutable global cost map */
 		mutableCostMap = costmap;
 
+		/*
+		 * define the square dimension around the passenger that should be
+		 * scanned. This is the dimension in each direction from the middle!
+		 */
+
+		int squareDimension = 10;
+
 		/* then there is cost assigned to an area around the other agents */
-		for (int xCoordinate = 0; xCoordinate < mutableAreaMap.getDimensions()
-				.getX(); xCoordinate++) {
-			for (int yCoordinate = 0; yCoordinate < mutableAreaMap
-					.getDimensions().getY(); yCoordinate++) {
+		for (int xCoordinate = currentPosition.getX() - squareDimension; xCoordinate < currentPosition
+				.getX() + squareDimension; xCoordinate++) {
+			for (int yCoordinate = currentPosition.getY() - squareDimension; yCoordinate < currentPosition
+					.getY() + squareDimension; yCoordinate++) {
 
-				/* find all nodes occupied by agents */
-				if (mutableAreaMap
-						.getNodeByCoordinate(xCoordinate, yCoordinate)
-						.isOccupiedByAgent()) {
+				/* prevent out of bounds exceptions */
+				if (xCoordinate > 0 && yCoordinate > 0) {
 
-					/*
-					 * additionally to the surrounding points of the agents,
-					 * there is also cost generated in the area in front of an
-					 * agent. This is used to make the agent overtake easier
-					 */
-					for (int stepsAhead = 0; stepsAhead < 6; stepsAhead++) {
+					/* find all nodes occupied by agents */
+					if (mutableAreaMap.getNodeByCoordinate(xCoordinate,
+							yCoordinate).isOccupiedByAgent()) {
 
-						/* the current agents position is excluded here! */
-						if (!FuncLib.vectorsAreEqual(mutableAreaMap
-								.getNodeByCoordinate(xCoordinate, yCoordinate)
-								.getPosition(), currentPosition)) {
+						/*
+						 * additionally to the surrounding points of the agents,
+						 * there is also cost generated in the area in front of
+						 * an agent. This is used to make the agent overtake
+						 * easier
+						 */
+						for (int stepsAhead = 0; stepsAhead < 6; stepsAhead++) {
 
-							/* the surrounding points are calculated */
-							for (Vector point : mutableCostMap
-									.getSurroundingPoints(xCoordinate,
-											yCoordinate + stepsAhead)) {
+							/* the current agents position is excluded here! */
+							if (!FuncLib.vectorsAreEqual(
+									mutableAreaMap.getNodeByCoordinate(
+											xCoordinate, yCoordinate)
+											.getPosition(), currentPosition)) {
 
-								/* the surrounding costs are assigned */
-								mutableCostMap.setCost(point.getX(),
-										point.getY(), 5000);
+								/* the surrounding points are calculated */
+								for (Vector point : mutableCostMap
+										.getSurroundingPoints(xCoordinate,
+												yCoordinate + stepsAhead)) {
+
+									/* the surrounding costs are assigned */
+									mutableCostMap.setPublicCost(point.getX(),
+											point.getY(), 5000);
+								}
 							}
 						}
 					}
@@ -228,9 +265,13 @@ public class Agent extends Subject implements Runnable {
 		/* save a "screenshot" of the AreaMap for further calculations */
 		mutableAreaMap = RunAStar.getMap();
 
+		/* this is only run if its not the initial path finding process */
 		if (currentPosition != null) {
-			/* this is only run if its not the initial path finding process */
-			mutableAreaMap.printMap();
+
+			/* print out the area map when in developer mode */
+			if (DEVELOPER_MODE) {
+				mutableAreaMap.printMap();
+			}
 
 			/* this sets the new start of the A* to the current position */
 			start = currentPosition;
@@ -245,7 +286,11 @@ public class Agent extends Subject implements Runnable {
 		/* retrieve the path information */
 		path = astar.getBestPath();
 
-		if (currentPosition != null) {
+		/*
+		 * print the newly generated cost map including the path when in
+		 * developer mode
+		 */
+		if (currentPosition != null && DEVELOPER_MODE) {
 			mutableCostMap.printMapPathToConsole(path, mutableAreaMap, this);
 		}
 

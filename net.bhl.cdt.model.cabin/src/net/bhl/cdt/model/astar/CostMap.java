@@ -95,7 +95,11 @@ public class CostMap {
 		return map;
 	}
 
-	public void setCost(int x, int y, int value) {
+	private void setCost(int x, int y, int value) {
+		map[x][y] = value;
+	}
+
+	public void setPublicCost(int x, int y, int value) {
 		if (!areamap.getNodeByCoordinate(x, y).isObstacle()) {
 			map[x][y] = value;
 		}

@@ -724,40 +724,45 @@ public class CabinViewPart extends ViewPart {
 	 * This method runs the complete draw of the view.
 	 */
 	private void doTheDraw() {
+		try {
+			// factor = cabin.getCabinWidth() / CABIN_WIDTH_IN_PIXELS;
+			parent.redraw();
+			parent.update();
+			canvas.redraw();
+			canvas.addPaintListener(new PaintListener() {
+				public void paintControl(final PaintEvent e) {
 
-		// factor = cabin.getCabinWidth() / CABIN_WIDTH_IN_PIXELS;
-		parent.redraw();
-		parent.update();
-		canvas.redraw();
-		canvas.addPaintListener(new PaintListener() {
-			public void paintControl(final PaintEvent e) {
+					e.gc.setAlpha(255);
+					e.gc.setFont(fontOne);
+					e.gc.setBackground(white);
 
-				e.gc.setAlpha(255);
-				e.gc.setFont(fontOne);
-				e.gc.setBackground(white);
+					e.gc.setFont(fontTwo);
+					e.gc.setBackground(black);
 
-				e.gc.setFont(fontTwo);
-				e.gc.setBackground(black);
+					if (!initialBoot) {
+						e.gc.drawImage(img, 0, 0);
 
-				if (!initialBoot) {
-					e.gc.drawImage(img, 0, 0);
-
-				} else {
-					// Image image = SWTResourceManager.getImage(
-					// InfoViewPart.class, "regional.png");
-					e.gc.drawImage(
-							resizeAC(canvas.getBounds().width,
-									canvas.getBounds().height), 0, 0);
-					e.gc.setFont(fontThree);
-					e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_RED));
-					e.gc.fillRectangle(38, 370, 300, 35);
-					e.gc.drawText(
-							"Please refresh cabin view or generate a new cabin!",
-							50, 380);
+					} else {
+						// Image image = SWTResourceManager.getImage(
+						// InfoViewPart.class, "regional.png");
+						e.gc.drawImage(
+								resizeAC(canvas.getBounds().width,
+										canvas.getBounds().height), 0, 0);
+						e.gc.setFont(fontThree);
+						e.gc.setBackground(e.display
+								.getSystemColor(SWT.COLOR_RED));
+						e.gc.fillRectangle(38, 370, 300, 35);
+						e.gc.drawText(
+								"Please refresh cabin view or generate a new cabin!",
+								50, 380);
+					}
 				}
-			}
-		});
-		disposeAll();
+			});
+			disposeAll();
+		} catch (IllegalArgumentException e) {
+			System.out.println("illegal argument exception!");
+
+		}
 	}
 
 	/**
