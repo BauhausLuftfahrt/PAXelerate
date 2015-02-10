@@ -53,10 +53,6 @@ public class GenerateCabinCommand extends CDTCommand {
 	public GenerateCabinCommand(Cabin cabin) {
 		this.cabin = cabin;
 		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
-		/*
-		 * The cabin width only adapts to the preset aircraft type if the user
-		 * has not entered a custom width value
-		 */
 		cabin.setSpeedFactor(1);
 		if (cabin.isUsePresetSettings()) {
 			switch (cabin.getAircraftType()) {
@@ -80,12 +76,12 @@ public class GenerateCabinCommand extends CDTCommand {
 		}
 	}
 
-	@Override
 	/**
-	 * This method generates the cabin structure with the help 
-	 * of the construction library. This is  the main function 
-	 * of the generate cabin command.
+	 * This method generates the cabin structure with the help of the
+	 * construction library. This is the main function of the generate cabin
+	 * command.
 	 */
+	@Override
 	protected void doRun() {
 		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 				"Initializing cabin generation ..."));
@@ -122,11 +118,6 @@ public class GenerateCabinCommand extends CDTCommand {
 		/* ------------------------------------------------- */
 		/* ------- Cabin Construction ends here! ----------- */
 		/* ------------------------------------------------- */
-
-		if (constructor.getGlobalSeatPositionY() > cabin.getCabinLength()) {
-			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-					"Out of bounds! Cabin too short."));
-		}
 
 		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 				"Cabin generation completed"));

@@ -269,7 +269,7 @@ public class ObstacleMap {
 	 *            the y value of the point
 	 * @return the value at the specific point
 	 */
-	public static int getValueAtPoint(int x, int y) {
+	public int getValueAtPoint(int x, int y) {
 		return obstacleMap[x][y];
 	}
 

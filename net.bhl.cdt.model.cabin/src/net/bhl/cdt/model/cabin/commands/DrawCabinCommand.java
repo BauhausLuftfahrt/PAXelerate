@@ -8,8 +8,11 @@ package net.bhl.cdt.model.cabin.commands;
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Passenger;
+import net.bhl.cdt.model.cabin.PhysicalObject;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
+import net.bhl.cdt.model.util.ModelHelper;
+
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
@@ -47,7 +50,7 @@ public class DrawCabinCommand extends CDTCommand {
 	 */
 	@Override
 	protected void doRun() {
-		
+
 		/**
 		 * Main method.
 		 * 
@@ -60,7 +63,9 @@ public class DrawCabinCommand extends CDTCommand {
 		cabinViewPart = (CabinViewPart) page
 				.findView("net.bhl.cdt.model.cabin.cabinview");
 
-		checkForConstructionErrors();
+		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
+				checkForConstructionErrors()));
+
 		checkPassengerAssignments();
 
 		try {
@@ -72,20 +77,40 @@ public class DrawCabinCommand extends CDTCommand {
 					"No cabin view is visible!"));
 		}
 	}
-	
+
 	private void checkPassengerAssignments() {
-		for(Passenger passenger:cabin.getPassengers()) {
+		for (Passenger passenger : cabin.getPassengers()) {
 			Seat seat = passenger.getSeatRef();
-			if(passenger.getSeat()!=seat.getId()) {
+			if (passenger.getSeat() != seat.getId()) {
 				passenger.setSeat(seat.getId());
-				passenger.setName(passenger.getId() + " ("
-							+ seat.getName() + ")");
+				passenger.setName(passenger.getId() + " (" + seat.getName()
+						+ ")");
 			}
 		}
 	}
 
-	private void checkForConstructionErrors() {
-		// TODO Create error detection algorithm.
+	private Boolean checkCabinOutOfBounds() {
+		for (PhysicalObject object : ModelHelper.getChildrenByClass(cabin,
+				PhysicalObject.class)) {
+			if (object.getXPosition() < 0
+					|| object.getYPosition() < 0
+					|| (object.getXPosition() + object.getXDimension()) > cabin
+							.getCabinWidth()
+					|| (object.getYPosition() + object.getYDimension()) > cabin
+							.getCabinLength()) {
+				return true;
+			}
+		}
+		return false;
+	}
 
+	private String checkForConstructionErrors() {
+		String errorString = "No issues detected!";
+
+		if (checkCabinOutOfBounds()) {
+			errorString = "Cabin out of bounds!";
+		}
+
+		return errorString;
 	}
 }

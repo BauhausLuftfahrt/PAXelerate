@@ -31,17 +31,12 @@ public class Node implements Comparable<Node> {
 	private int costFromStart;
 	private Node previousNode;
 	private Vector position = new Vector2D(0, 0);
-	private boolean isStart;
-	private boolean isGoal;
 	private int cost;
-	private double compareFactor;
 	private Property property;
 
-	// TODO implement that!
 	/* This declares the type of the node */
 	public enum Property {
-		OBSTACLE, AGENT, DEFAULT, EMPTY, START, GOAl // could easily be
-														// extended!
+		OBSTACLE, AGENT, DEFAULT, START, GOAL
 	}
 
 	/**
@@ -55,7 +50,6 @@ public class Node implements Comparable<Node> {
 		position = vector;
 		this.distanceFromStart = Integer.MAX_VALUE;
 		this.costFromStart = Integer.MAX_VALUE;
-		this.compareFactor = Integer.MAX_VALUE;
 		property = Property.DEFAULT;
 	}
 
@@ -84,25 +78,6 @@ public class Node implements Comparable<Node> {
 	 */
 	public void setCost(int cost) {
 		this.cost = cost;
-	}
-
-	/**
-	 * This method returns the compare factor.
-	 * 
-	 * @return the compare factor
-	 */
-	public double getCompareFactor() {
-		return compareFactor;
-	}
-
-	/**
-	 * This method sets the compare factor.
-	 * 
-	 * @param compareFactor
-	 *            the compare factor
-	 */
-	public void setCompareFactor(double compareFactor) {
-		this.compareFactor = compareFactor;
 	}
 
 	/**
@@ -295,66 +270,6 @@ public class Node implements Comparable<Node> {
 	}
 
 	/**
-	 * This method returns if the node is an obstacle.
-	 * 
-	 * @return obstacle or not
-	 */
-	public boolean isObstacle() {
-		return (property == Property.OBSTACLE);
-	}
-
-	/**
-	 * This method sets the node an obstacle.
-	 * 
-	 * @param isObstacle
-	 *            yes or no
-	 */
-	public void setObstacle(boolean isObstacle) {
-		if (isObstacle) {
-			property = Property.OBSTACLE;
-		} else {
-			property = Property.DEFAULT;
-		}
-	}
-
-	/**
-	 * This method returns if the node is occupied by an agent.
-	 * 
-	 * @return yes or no
-	 */
-	public boolean isOccupiedByAgent() {
-		return (property == Property.AGENT);
-	}
-
-	/**
-	 * This method sets the node occupied by an agent.
-	 * 
-	 * @param isOccupiedByAgent
-	 *            yes or no
-	 */
-	public void setOccupiedByAgent(boolean isOccupiedByAgent) {
-		if (isOccupiedByAgent) {
-			property = Property.AGENT;
-		} else {
-			property = Property.DEFAULT;
-		}
-	}
-
-	/**
-	 * This method sets if the node is the start.
-	 * 
-	 * @param isStart
-	 *            yes or no
-	 */
-	public void setStart(boolean isStart) {
-		this.isStart = isStart;
-	}
-
-	public boolean isStart() {
-		return isStart;
-	}
-
-	/**
 	 * This method returns the cost from the start.
 	 * 
 	 * @param costFromStart
@@ -362,16 +277,6 @@ public class Node implements Comparable<Node> {
 	 */
 	public void setCostFromStart(int costFromStart) {
 		this.costFromStart = costFromStart;
-	}
-
-	/**
-	 * This method checks if the node is the goal.
-	 * 
-	 * @param isGoal
-	 *            yes or no
-	 */
-	public void setGoal(boolean isGoal) {
-		this.isGoal = isGoal;
 	}
 
 	/**

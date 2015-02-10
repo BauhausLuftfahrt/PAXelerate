@@ -93,15 +93,6 @@ public class ConstructionLibrary {
 	}
 
 	/**
-	 * This method returns the globalSeatPositionY.
-	 * 
-	 * @return the globalSeatPositionY
-	 */
-	public double getGlobalSeatPositionY() {
-		return globalSeatPositionY;
-	}
-
-	/**
 	 * 
 	 * @param presetValueA
 	 * @param presetValueB

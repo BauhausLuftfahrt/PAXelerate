@@ -8,6 +8,7 @@ package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
 
+import net.bhl.cdt.model.astar.Node.Property;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.cabin.util.Vector2D;
 
@@ -19,9 +20,8 @@ import net.bhl.cdt.model.cabin.util.Vector2D;
 public class AreaMap {
 
 	private Vector dimensions = new Vector2D(0, 0);
-	private Vector startLocation = new Vector2D(0, 0);
-	private Vector goalLocation = new Vector2D(0, 0);
 	private ArrayList<ArrayList<Node>> map;
+	private ArrayList<Node> nodeList = new ArrayList<Node>();
 	private ObstacleMap obstacleMap;
 	private Logger log = new Logger();
 
@@ -50,11 +50,11 @@ public class AreaMap {
 		System.out.println("This is the area map:");
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
-				if (map.get(i).get(j).isOccupiedByAgent()) {
+				if (map.get(i).get(j).getProperty() == Property.AGENT) {
 					System.out.print("O");
-				} else if ((map.get(i).get(j).isObstacle())) {
+				} else if ((map.get(i).get(j).getProperty() == Property.OBSTACLE)) {
 					System.out.print("X");
-				} else if ((map.get(i).get(j).isStart())) {
+				} else if ((map.get(i).get(j).getProperty() == Property.START)) {
 					System.out.print("X");
 				} else {
 					System.out.print("-");
@@ -77,13 +77,15 @@ public class AreaMap {
 			for (int y = 0; y < dimensions.getY(); y++) {
 				node = new Node(new Vector2D(x, y));
 
-				if (ObstacleMap.getValueAtPoint(x, y) == ObstacleMap
+				if (obstacleMap.getValueAtPoint(x, y) == ObstacleMap
 						.getObstacleValue()) {
-					node.setObstacle(true);
+					node.setProperty(Property.OBSTACLE);
 				} else {
-					node.setCost(ObstacleMap.getValueAtPoint(x, y));
+					node.setCost(obstacleMap.getValueAtPoint(x, y));
 				}
 				map.get(x).add(node);
+
+				nodeList.add(node);
 
 			}
 		}
@@ -134,20 +136,6 @@ public class AreaMap {
 	}
 
 	/**
-	 * This method sets a node an obstacle.
-	 * 
-	 * @param x
-	 *            is the x value
-	 * @param y
-	 *            is the y value
-	 * @param isObstacle
-	 *            set yes or no
-	 */
-	public void setObstacle(int x, int y, boolean isObstacle) {
-		map.get(x).get(y).setObstacle(isObstacle);
-	}
-
-	/**
 	 * This method returns a node at a specific point.
 	 * 
 	 * @param x
@@ -178,9 +166,14 @@ public class AreaMap {
 	 *            the start location vector
 	 */
 	public void setStartLocation(Vector start) {
-		map.get(startLocation.getX()).get(startLocation.getY()).setStart(false);
-		map.get(start.getX()).get(start.getY()).setStart(true);
-		startLocation = start;
+		if (getNode(start).getProperty() != Property.OBSTACLE) {
+			if (getNodeByProperty(Property.START) != null) {
+				getNodeByProperty(Property.START).setProperty(Property.DEFAULT);
+			}
+			getNode(start).setProperty(Property.START);
+		} else {
+			System.out.println("start node already labeled as obstacle!");
+		}
 	}
 
 	/**
@@ -190,27 +183,34 @@ public class AreaMap {
 	 *            the goal location vector.
 	 */
 	public void setGoalLocation(Vector goal) {
-		map.get(goalLocation.getX()).get(goalLocation.getY()).setGoal(false);
-		map.get(goal.getX()).get(goal.getY()).setGoal(true);
-		goalLocation = goal;
+		if (getNode(goal).getProperty() != Property.OBSTACLE) {
+			if (getNodeByProperty(Property.GOAL) != null) {
+				getNodeByProperty(Property.GOAL).setProperty(Property.DEFAULT);
+			}
+			getNode(goal).setProperty(Property.GOAL);
+		} else {
+			System.out.println("goal node already labeled as obstacle!");
+		}
 	}
 
 	/**
-	 * This method returns the start node.
-	 * 
-	 * @return the start node
+	 * Caution! This method only returns the first node with the property. Only
+	 * use this method which properties that are assigned once!
+	 *
+	 * @param property
+	 *            is the property
+	 * @return the node with the correct property
 	 */
-	public Node getStartNode() {
-		return map.get(startLocation.getX()).get(startLocation.getY());
-	}
+	public Node getNodeByProperty(Property property) {
 
-	/**
-	 * This method returns the goal node.
-	 * 
-	 * @return the goal node
-	 */
-	public Node getGoalNode() {
-		return map.get(goalLocation.getX()).get(goalLocation.getY());
+		for (Node node : nodeList) {
+			if (node.getProperty() == property) {
+				return node;
+			}
+		}
+		System.out.println("no matching node found for property '"
+				+ property.toString() + "'.");
+		return null;
 	}
 
 	/**
@@ -222,13 +222,17 @@ public class AreaMap {
 	 *            the second node
 	 * @return the distance between the nodes
 	 */
-	public float getDistanceBetween(Node node1, Node node2) {
-		return (float) Math
-				.sqrt((node2.getPosition().getX() - node1.getPosition().getX())
-						^ 2
-						+ (node2.getPosition().getY() - node1.getPosition()
-								.getY()) ^ 2);
-
+	public double getDistanceBetween(Node node1, Node node2) {
+		try {
+			int exponent = 2;
+			double first = Math.pow((node2.getPosition().getX() - node1
+					.getPosition().getX()), exponent);
+			double second = Math.pow((node2.getPosition().getY() - node1
+					.getPosition().getY()), exponent);
+			return Math.sqrt(first + second);
+		} catch (NullPointerException e) {
+			return Double.MAX_VALUE;
+		}
 	}
 
 	/**
@@ -244,8 +248,6 @@ public class AreaMap {
 	 * This method clears the area map.
 	 */
 	public void clear() {
-		((Vector2D) startLocation).set(0, 0);
-		((Vector2D) goalLocation).set(0, 0);
 		createMap();
 		registerEdges();
 	}

@@ -14,6 +14,7 @@ import net.bhl.cdt.model.agent.AggressiveMood;
 import net.bhl.cdt.model.astar.CostMap;
 import net.bhl.cdt.model.agent.PassiveMood;
 import net.bhl.cdt.model.astar.AreaMap;
+import net.bhl.cdt.model.astar.Node.Property;
 import net.bhl.cdt.model.astar.Path;
 import net.bhl.cdt.model.astar.RunAStar;
 import net.bhl.cdt.model.astar.StopWatch;
@@ -42,8 +43,8 @@ public class Agent extends Subject implements Runnable {
 	private CostMap mutableCostMap;
 	private AreaMap mutableAreaMap;
 
-	private int numbOfInterupts;
-	private boolean alreadyStowed;
+	private int numbOfInterupts = 0;
+	private boolean alreadyStowed = false;
 	private StopWatch stopwatch = new StopWatch();
 	private ArrayList<Path> pathlist = new ArrayList<Path>();
 
@@ -157,9 +158,16 @@ public class Agent extends Subject implements Runnable {
 	 */
 	private void occupyNode(Vector vector, boolean occupy) {
 
+		// TODO: you should only be allowed to unblock a node if you blocked it
+		// yourself!
+
 		/* use monitor so that only one thread can occupy a node at a time */
 		synchronized (vector) {
-			RunAStar.getMap().getNode(vector).setOccupiedByAgent(occupy);
+			if (occupy) {
+				RunAStar.getMap().getNode(vector).setProperty(Property.AGENT);
+			} else {
+				RunAStar.getMap().getNode(vector).setProperty(Property.DEFAULT);
+			}
 		}
 	}
 
@@ -217,7 +225,7 @@ public class Agent extends Subject implements Runnable {
 
 					/* find all nodes occupied by agents */
 					if (mutableAreaMap.getNodeByCoordinate(xCoordinate,
-							yCoordinate).isOccupiedByAgent()) {
+							yCoordinate).getProperty() == Property.AGENT) {
 
 						/*
 						 * additionally to the surrounding points of the agents,
@@ -328,7 +336,7 @@ public class Agent extends Subject implements Runnable {
 	 * @return
 	 */
 	private boolean nodeBlocked(Vector vector) {
-		return RunAStar.getMap().getNode(vector).isOccupiedByAgent();
+		return (RunAStar.getMap().getNode(vector).getProperty() == Property.AGENT);
 	}
 
 	/**
@@ -340,67 +348,116 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * 
+	 * This method is the main path folling loop for the agent.
 	 */
 	private void followPath() {
+
+		/* define the try catch loop as main loop */
 		mainloop: try {
+
+			/*
+			 * i represents the number of steps taken as well as the current
+			 * step count. The actual position is one step behind i, so i is the
+			 * desired step.
+			 */
 			int i = 0;
+
+			/* run the path up to its end */
 			while (i < path.getLength()) {
+
+				/*
+				 * at the first step, there is no current location but only a
+				 * desired first location. So ignore this at the first loop.
+				 */
 				if (i != 0) {
+
+					/* the current position is the last taken step in the path */
 					currentPosition = path.get(i - 1).getPosition();
 				}
 
-				// if (numbOfInterupts > 20 && agentMood instanceof PassiveMood)
-				// {
-				// agentMood = new AggressiveMood(this);
-				// System.out.println("NOW I AM ANGRY!");
-				// }
+				/* the new planned location is current step in the path */
 				desiredPosition = path.get(i).getPosition();
+
+				/* check if the desired next step is blocked */
 				if (nodeBlocked(desiredPosition)) {
+
+					/* raise the interrupts counter up by one */
 					numbOfInterupts++;
-					occupyNode(currentPosition, false);
-					occupyNode(desiredPosition, false);
+
+					/* get the correct behavior for an obstacle avoidance */
 					Situation collision = new Situation(agentMood);
+
+					/* Perform the correct behavior */
 					collision.handleCollision();
+
+					/* the main loop is quit, if there is a new path calculated */
 					if (exitTheMainLoop) {
-						System.out.println(passenger.getName()
-								+ " searching for new path ...");
+
+						if (DEVELOPER_MODE) {
+							System.out.println("searching for new path ...");
+						}
+
+						/* cut the old path and add the new one to the list */
 						redefinePathLayout();
+
+						/* exit this loop */
 						break mainloop;
 					}
+
+					/*
+					 * if there is no obstacle in the way, check if the luggage
+					 * should be stowed now next
+					 */
 				} else if (passengerStowsLuggage() && !alreadyStowed) {
-					RunAStar.getMap().getNode(currentPosition)
-							.setOccupiedByAgent(false);
-					RunAStar.getMap().getNode(desiredPosition)
-							.setOccupiedByAgent(true);
-					occupyNode(desiredPosition, true);
+
+					/* sleep the thread as long as the luggage is stowed */
 					Thread.sleep((int) (passenger.getLuggageStowTime() * 1000 / 2 / speedfactor));
-					occupyNode(desiredPosition, false);
+
+					/* notify everyone that the luggage is now stowed */
 					alreadyStowed = true;
-					i++;
+
+					/*
+					 * if there is no obstacle or luggage stowing required, run
+					 * the default step
+					 */
 				} else {
-					/* if the agent's path is not blocked, move forward */
-					RunAStar.getMap().getNode(currentPosition)
-							.setOccupiedByAgent(false);
-					RunAStar.getMap().getNode(desiredPosition)
-							.setOccupiedByAgent(true);
+
+					/*
+					 * Go one step ahead. Do this by unblocking the current
+					 * position and blocking the next position.
+					 */
 					occupyNode(currentPosition, false);
 					occupyNode(desiredPosition, true);
+
+					/* then perform the step */
+					i++;
+
+					/* try to submit the properties back to the passenger */
 					try {
+
+						/* submit the agents position */
 						passenger.setPositionX(desiredPosition.getX() * scale);
 						passenger.setPositionY(desiredPosition.getY() * scale);
+
+						/* submit the agents orientation */
 						passenger.setOrientationInDegree(getRotation());
+
+						/* catch possible errors */
 					} catch (ConcurrentModificationException e) {
 						System.out
 								.println("Concurrent modification exception!");
 					}
 
+					/* sleep as long as one step takes */
 					Thread.sleep((int) (1000 / speedfactor / (passenger
 							.getWalkingSpeed() * 100 / scale)));
-					i++;
 				}
 			}
+
+			/* catch possible interruptions */
 		} catch (InterruptedException e) {
+
+			/* end this thread */
 			this.getThread().interrupt();
 			System.out.println("thread is now interrupted");
 		}
@@ -427,27 +484,45 @@ public class Agent extends Subject implements Runnable {
 	 */
 	public void run() {
 		try {
-			/* TODO: CAUTION! This needs to be removed again!!!!! */
-			agentMood = new AggressiveMood(this);
-			/* **************************************************** */
+
+			/* set the current position to the starting point */
 			currentPosition = start;
-			alreadyStowed = false;
+
+			/* add the path to the list of paths */
 			pathlist.add(path);
+
+			/* sleep the thread as long as the boarding delay requires it */
 			Thread.sleep((int) (passenger.getStartBoardingAfterDelay() * 1000 / speedfactor));
+
+			/* start counting the elapsed time for boarding */
 			stopwatch.start();
-			numbOfInterupts = 0;
+
+			/* run path following as long as the goal is not reached yet */
 			while (!goalReached()) {
+
+				/* this is run again if the agent detects obstacles in his path */
 				followPath();
 			}
-			occupyNode(desiredPosition, false);
+
+			/* when the goal is reached, the passenger is defined seated */
 			passenger.setIsSeated(true);
+
+			/* the stop watch is then interrupted */
 			stopwatch.stop();
+
+			/* the boarding time is then submitted back to the passenger */
 			passenger
 					.setBoardingTime((int) (stopwatch.getElapsedTime() / 1000 * speedfactor));
+
+			/* the number of interrupts is submitted to the passenger */
 			passenger.setNumberOfWaits(numbOfInterupts);
+
+			/* RunAStar is notified that a passenger is seated now */
 			RunAStar.setPassengerSeated(passenger, this);
+
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+
+			/* This loop is run if there was an unspecific error during runtime */
 			System.out.println("thread got an error");
 		}
 	}

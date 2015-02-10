@@ -6,9 +6,8 @@
 package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
-import java.util.Collections;
-
 import net.bhl.cdt.model.agent.Agent;
+import net.bhl.cdt.model.astar.Node.Property;
 import net.bhl.cdt.model.cabin.util.FuncLib;
 
 /**
@@ -51,68 +50,75 @@ public class AStar {
 	 */
 	private void calculateShortestPath() {
 
-		// mark start and goal node
+		/* mark start and goal node */
 		map.setStartLocation(agent.getStart());
 		map.setGoalLocation(agent.getGoal());
 
-		/* If the goal node is blocked, no path is existent */
-		if (map.getGoalNode().isObstacle()) {
-			bestPath = null;
-			return;
-		}
-
-		map.getStartNode().setDistanceFromStart(0);
-		map.getStartNode().setCostFromStart(0);
-		map.getStartNode().setCompareFactor(0);
+		map.getNodeByProperty(Property.START).setDistanceFromStart(0);
+		map.getNodeByProperty(Property.GOAL).setCostFromStart(0);
 		closedList.clear();
 		openList.clear();
 		openList.add(map.getNode(agent.getStart()));
 
-		// while we haven't reached the goal yet
+		/* while we haven't reached the goal yet */
 		while (openList.size() != 0) {
 
-			// get the first Node from non-searched Node list, sorted by lowest
-			// distance from our goal as guessed by our heuristic
+			/*
+			 * get the first Node from non-searched Node list, sorted by lowest
+			 * distance from our goal as guessed by our heuristic
+			 */
 			Node current = openList.getFirst();
-			// check if our current Node location is the goal Node. If it is, we
-			// are done.
-			if (FuncLib.vectorsAreEqual(current.getPosition(),
-					agent.getGoal())) {
-				map.getStartNode().setPreviousNode(null);
+
+			/*
+			 * check if our current Node location is the goal Node. If it is, we
+			 * are done.
+			 */
+			if (FuncLib.vectorsAreEqual(current.getPosition(), agent.getGoal())) {
+				if (map.getNodeByProperty(Property.START) != null) {
+					map.getNodeByProperty(Property.START).setPreviousNode(null);
+				}
 				if (reconstructPath(current) != null) {
 					bestPath = reconstructPath(current);
 				}
 				return;
 			}
 
-			// move current Node to the closed (already searched) list
+			/* move current Node to the closed (already searched) list */
 			openList.remove(current);
 			closedList.add(current);
 
-			// go through all the current Nodes neighbors and calculate if one
-			// should be our next step
+			/*
+			 * go through all the current Nodes neighbors and calculate if one
+			 * should be our next step
+			 */
 			for (Node neighbor : current.getNeighborList()) {
 				boolean neighborIsBetter;
 
-				// if we have already searched this Node, don't bother and
-				// continue to the next one
+				/*
+				 * if we have already searched this Node, don't bother and
+				 * continue to the next one
+				 */
 				if (closedList.contains(neighbor)) {
 					continue;
 				}
 
-				// also just continue if the neighbor is an obstacle
-				if (!neighbor.isObstacle()) {
+				/* also just continue if the neighbor is an obstacle */
+				if (neighbor.getProperty() != Property.OBSTACLE) {
 
-					// calculate how long the path is if we choose this neighbor
-					// as the next step in the path
+					/*
+					 * calculate how long the path is if we choose this neighbor
+					 * as the next step in the path
+					 */
 					int neighborDistanceFromStart = (int) map
-							.getDistanceBetween(map.getStartNode(), neighbor);
+							.getDistanceBetween(
+									map.getNodeByProperty(Property.START),
+									neighbor);
 					int neighborCostFromStart = costmap.getCost(neighbor
 							.getPosition());
 					int currentCostFromStart = costmap.getCost(current
 							.getPosition());
 
-					// add neighbor to the open list if it is not there
+					/* add neighbor to the open list if it is not there */
 					if (!openList.contains(neighbor)) {
 						openList.add(neighbor);
 						neighborIsBetter = true;
@@ -122,15 +128,16 @@ public class AStar {
 						neighborIsBetter = false;
 					}
 
-					// TODO: check if passenger dimensions allow this specific
-					// node.
+					/*
+					 * TODO: check if passenger dimensions allow this specific
+					 * node.
+					 */
 
-					// set neighbors parameters if it is better
+					/* set neighbors parameters if it is better */
 					if (neighborIsBetter) {
 						neighbor.setPreviousNode(current);
 						neighbor.setCostFromStart(neighborCostFromStart);
 						neighbor.setDistanceFromStart(neighborDistanceFromStart);
-						neighbor.setCompareFactor(neighborCostFromStart);
 					}
 				}
 			}
@@ -139,12 +146,23 @@ public class AStar {
 		return;
 	}
 
+	/**
+	 * This method prints the path to the console.
+	 * 
+	 * @param path
+	 *            the path to be printed
+	 */
 	public void printPath(Path path) {
 		for (Node node : path.getWaypoints()) {
 			FuncLib.printVectorToLog(node.getPosition(), "position");
 		}
 	}
 
+	/**
+	 * This method returns the best path.
+	 * 
+	 * @return the best path
+	 */
 	public Path getBestPath() {
 		return bestPath;
 	}
@@ -164,76 +182,4 @@ public class AStar {
 		}
 		return path;
 	}
-
-	/**
-	 * This class is a sorted node list.
-	 * 
-	 * @author marc.engelmann
-	 *
-	 */
-	private class SortedNodeList {
-
-		private ArrayList<Node> list = new ArrayList<Node>();
-
-		/**
-		 * This method returns the first list entry.
-		 * 
-		 * @return the first element
-		 */
-		public Node getFirst() {
-			return list.get(0);
-		}
-
-		/**
-		 * This method clears the list.
-		 */
-		public void clear() {
-			list.clear();
-		}
-
-		/**
-		 * This method adds a node to the list.
-		 * 
-		 * @param node
-		 *            the specific node
-		 */
-		public void add(Node node) {
-			list.add(node);
-			try {
-				Collections.sort(list);
-			} catch (IllegalArgumentException e) {
-				System.out.println("List could not be sorted!");
-			}
-		}
-
-		/**
-		 * This method removes a specific node from the list.
-		 * 
-		 * @param n
-		 *            the node
-		 */
-		public void remove(Node n) {
-			list.remove(n);
-		}
-
-		/**
-		 * This method returns the size of the list.
-		 * 
-		 * @return the size
-		 */
-		public int size() {
-			return list.size();
-		}
-
-		/**
-		 * This method checks if a specific node is already in the list.
-		 * 
-		 * @param n
-		 *            the node which is checked
-		 */
-		public boolean contains(Node n) {
-			return list.contains(n);
-		}
-	}
-
 }

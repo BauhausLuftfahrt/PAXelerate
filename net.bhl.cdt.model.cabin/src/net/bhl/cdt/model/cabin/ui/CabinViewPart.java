@@ -21,6 +21,7 @@ import net.bhl.cdt.model.cabin.FirstClass;
 import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.Passenger;
+import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.util.SWTResourceManager;
 import net.bhl.cdt.model.cabin.util.Vector;
@@ -35,6 +36,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
+import org.eclipse.emf.ecp.view.internal.swt.SWTRendererFactoryImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
@@ -66,6 +68,7 @@ public class CabinViewPart extends ViewPart {
 	/********************* graphical settings. *************************/
 	private static final int OFFSET_OF_DOOR = 0;
 	private static final double PASSENGER_CIRCLE_SIZE = 0.5;
+	private static final boolean MATCH_PASSENGER_COLORS_TO_MOOD = true;
 
 	private static final int CABIN_WIDTH_IN_PIXELS = 123;
 	private static int xZero = 139;
@@ -236,9 +239,23 @@ public class CabinViewPart extends ViewPart {
 			for (Passenger passenger : ModelHelper.getChildrenByClass(cabin,
 					Passenger.class)) {
 				Seat passengerSeat = passenger.getSeatRef();
-				Vector color = calculateColor(passenger);
-				graphicsControl.setBackground(new Color(parent.getDisplay(),
-						color.getX(), color.getY(), color.getZ()));
+
+				if (MATCH_PASSENGER_COLORS_TO_MOOD) {
+					switch (passenger.getPassengerMood()) {
+					case AGRESSIVE:
+						graphicsControl.setBackground(red);
+						break;
+					case PASSIVE:
+						graphicsControl.setBackground(green);
+						break;
+					}
+				} else {
+					Vector colorVector = calculateColor(passenger);
+					graphicsControl.setBackground(SWTResourceManager.getColor(
+							colorVector.getX(), colorVector.getY(),
+							colorVector.getZ()));
+				}
+
 				// e.gc.setBackground(black);
 				if (passengerSeat.getYDimension() < passengerSeat
 						.getXDimension()) {
@@ -651,9 +668,21 @@ public class CabinViewPart extends ViewPart {
 			public void paintControl(final PaintEvent e) {
 				for (Passenger pass : ModelHelper.getChildrenByClass(paxCabin,
 						Passenger.class)) {
-					Vector color = calculateColor(pass);
-					e.gc.setBackground(new Color(e.display, color.getX(), color
-							.getY(), color.getZ()));
+					if (MATCH_PASSENGER_COLORS_TO_MOOD) {
+						switch (pass.getPassengerMood()) {
+						case AGRESSIVE:
+							e.gc.setBackground(red);
+							break;
+						case PASSIVE:
+							e.gc.setBackground(green);
+							break;
+						}
+					} else {
+						Vector colorVector = calculateColor(pass);
+						e.gc.setBackground(SWTResourceManager.getColor(
+								colorVector.getX(), colorVector.getY(),
+								colorVector.getZ()));
+					}
 					if (!pass.isIsSeated()) {
 						if (!((pass.getPositionX() == 0) && (pass
 								.getPositionY() == 0))) {
@@ -838,7 +867,7 @@ public class CabinViewPart extends ViewPart {
 	 * This method disposes all SWT objects created with SWTResourceManager.
 	 */
 	public void clearCache() {
-		SWTResourceManager.dispose();
+		System.out.println("clearing cache now");
+		// SWTResourceManager.dispose();
 	}
-
 }

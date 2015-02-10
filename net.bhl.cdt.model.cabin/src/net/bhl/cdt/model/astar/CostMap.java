@@ -16,6 +16,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 
 import net.bhl.cdt.model.agent.Agent;
+import net.bhl.cdt.model.astar.Node.Property;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Vector;
@@ -74,7 +75,7 @@ public class CostMap {
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
 				Node node = areamap.getNodeByCoordinate(i, j);
-				if (node.isObstacle()) {
+				if (node.getProperty() == Property.OBSTACLE) {
 					setCost(i, j, -1);
 				} else {
 					setCost(i, j, node.getCost());
@@ -100,7 +101,7 @@ public class CostMap {
 	}
 
 	public void setPublicCost(int x, int y, int value) {
-		if (!areamap.getNodeByCoordinate(x, y).isObstacle()) {
+		if (areamap.getNodeByCoordinate(x, y).getProperty() != Property.OBSTACLE) {
 			map[x][y] = value;
 		}
 	}
@@ -145,8 +146,7 @@ public class CostMap {
 				if (i == agent.getPosition().getX()
 						&& j == agent.getPosition().getY()) {
 					System.out.print("I");
-				} else if (areamap.getNodeByCoordinate(i, j)
-						.isOccupiedByAgent()) {
+				} else if (areamap.getNodeByCoordinate(i, j).getProperty() == Property.AGENT) {
 					System.out.print("A");
 				} else if (foundNode) {
 					System.out.print(">");
