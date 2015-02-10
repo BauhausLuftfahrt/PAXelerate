@@ -162,30 +162,50 @@ public class Agent extends Subject implements Runnable {
 	/**
 	 * This method takes a cost map and adds a huge cost to the location and the
 	 * area around agents. The agent triggering this method is ignored.
-	 * 
-	 * @param costmap
-	 *            is the costmap
-	 * @param areammapWithAgentPositions
-	 *            is the area map with agents positions
-	 * @param agent
-	 *            is the agent triggering this method
-	 * @return the modified cost map
 	 */
 	private void updateCostmap() {
-		for (int a = 0; a < mutableAreaMap.getDimensions().getX(); a++) {
-			for (int b = 0; b < mutableAreaMap.getDimensions().getY(); b++) {
-				if (mutableAreaMap.getNodeByCoordinate(a, b)
+
+		/* The cost map is flooded from the agents current location to his seat */
+		CostMap costmap = new CostMap(mutableAreaMap.getDimensions(), start,
+				mutableAreaMap, false, this, true);
+
+		/* the cost map is then assigned to the mutable global cost map */
+		mutableCostMap = costmap;
+
+		/* then there is cost assigned to an area around the other agents */
+		for (int xCoordinate = 0; xCoordinate < mutableAreaMap.getDimensions()
+				.getX(); xCoordinate++) {
+			for (int yCoordinate = 0; yCoordinate < mutableAreaMap
+					.getDimensions().getY(); yCoordinate++) {
+
+				/* find all nodes occupied by agents */
+				if (mutableAreaMap
+						.getNodeByCoordinate(xCoordinate, yCoordinate)
 						.isOccupiedByAgent()) {
-					// if (!FunctionLibrary.vectorsAreEqual(modifiedAreamap
-					// .getNodeByCoordinate(a, b).getPosition(), agent
-					// .getPosition())) {
-					for (Vector point : mutableCostMap.getSurroundingPoints(a,
-							b)) {
-						mutableCostMap
-								.setCost(point.getX(), point.getY(), 5000);
+
+					/*
+					 * additionally to the surrounding points of the agents,
+					 * there is also cost generated in the area in front of an
+					 * agent. This is used to make the agent overtake easier
+					 */
+					for (int stepsAhead = 0; stepsAhead < 6; stepsAhead++) {
+
+						/* the current agents position is excluded here! */
+						if (!FuncLib.vectorsAreEqual(mutableAreaMap
+								.getNodeByCoordinate(xCoordinate, yCoordinate)
+								.getPosition(), currentPosition)) {
+
+							/* the surrounding points are calculated */
+							for (Vector point : mutableCostMap
+									.getSurroundingPoints(xCoordinate,
+											yCoordinate + stepsAhead)) {
+
+								/* the surrounding costs are assigned */
+								mutableCostMap.setCost(point.getX(),
+										point.getY(), 5000);
+							}
+						}
 					}
-					mutableCostMap.setCost(a, b, 5000);
-					// }
 				}
 			}
 		}
@@ -203,11 +223,9 @@ public class Agent extends Subject implements Runnable {
 		stopwatch.start();
 
 		/* reset the mutable CostMap to the original cost map */
-		mutableCostMap = null;
 		mutableCostMap = finalCostmap;
 
 		/* save a "screenshot" of the AreaMap for further calculations */
-		mutableAreaMap = null;
 		mutableAreaMap = RunAStar.getMap();
 
 		if (currentPosition != null) {
@@ -233,7 +251,7 @@ public class Agent extends Subject implements Runnable {
 
 		/* setting the new desired and current positions */
 		desiredPosition = path.get(0).getPosition();
-		currentPosition = new Vector2D(0,0);
+		currentPosition = new Vector2D(0, 0);
 
 		/* ends the stop watch performance logging */
 		stopwatch.stop();
@@ -241,8 +259,9 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
+	 * This method returns the current position of the agent
 	 * 
-	 * @return
+	 * @return the current position
 	 */
 	public Vector getPosition() {
 		return currentPosition;

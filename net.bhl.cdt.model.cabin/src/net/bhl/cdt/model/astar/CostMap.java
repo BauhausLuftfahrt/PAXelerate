@@ -96,7 +96,9 @@ public class CostMap {
 	}
 
 	public void setCost(int x, int y, int value) {
-		map[x][y] = value;
+		if (!areamap.getNodeByCoordinate(x, y).isObstacle()) {
+			map[x][y] = value;
+		}
 	}
 
 	/**
@@ -122,8 +124,7 @@ public class CostMap {
 	/**
 	 * This method prints the cost map with a path to the console.
 	 */
-	public void printMapPathToConsole(Path path, AreaMap areamap,
-			Agent agent) {
+	public void printMapPathToConsole(Path path, AreaMap areamap, Agent agent) {
 		System.out.println("This is the cost map:");
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
