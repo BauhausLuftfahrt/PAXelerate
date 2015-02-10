@@ -19,7 +19,6 @@ import net.bhl.cdt.model.cabin.util.Vector2D;
 
 import org.eclipse.jface.dialogs.IMessageProvider;
 
-
 /**
  * This class refreshed the cabin view without modifying anything. It checks the
  * layout of the cabin and warns the user.

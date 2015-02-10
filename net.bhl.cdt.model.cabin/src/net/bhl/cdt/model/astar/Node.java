@@ -31,19 +31,17 @@ public class Node implements Comparable<Node> {
 	private int costFromStart;
 	private Node previousNode;
 	private Vector position = new Vector2D(0, 0);
-	private boolean isObstacle;
-	private boolean isOccupiedByAgent;
 	private boolean isStart;
 	private boolean isGoal;
 	private int cost;
 	private double compareFactor;
 	private Property property;
 
-
 	// TODO implement that!
 	/* This declares the type of the node */
 	public enum Property {
-		OBSTACLE, AGENT, DEFAULT, EMPTY // could easily be extended!
+		OBSTACLE, AGENT, DEFAULT, EMPTY, START, GOAl // could easily be
+														// extended!
 	}
 
 	/**
@@ -58,7 +56,7 @@ public class Node implements Comparable<Node> {
 		this.distanceFromStart = Integer.MAX_VALUE;
 		this.costFromStart = Integer.MAX_VALUE;
 		this.compareFactor = Integer.MAX_VALUE;
-		this.isObstacle = false;
+		property = Property.DEFAULT;
 	}
 
 	/**
@@ -69,7 +67,7 @@ public class Node implements Comparable<Node> {
 	public int getCost() {
 		return cost;
 	}
-	
+
 	public Property getProperty() {
 		return property;
 	}
@@ -302,7 +300,7 @@ public class Node implements Comparable<Node> {
 	 * @return obstacle or not
 	 */
 	public boolean isObstacle() {
-		return isObstacle;
+		return (property == Property.OBSTACLE);
 	}
 
 	/**
@@ -312,7 +310,11 @@ public class Node implements Comparable<Node> {
 	 *            yes or no
 	 */
 	public void setObstacle(boolean isObstacle) {
-		this.isObstacle = isObstacle;
+		if (isObstacle) {
+			property = Property.OBSTACLE;
+		} else {
+			property = Property.DEFAULT;
+		}
 	}
 
 	/**
@@ -321,7 +323,7 @@ public class Node implements Comparable<Node> {
 	 * @return yes or no
 	 */
 	public boolean isOccupiedByAgent() {
-		return isOccupiedByAgent;
+		return (property == Property.AGENT);
 	}
 
 	/**
@@ -331,7 +333,11 @@ public class Node implements Comparable<Node> {
 	 *            yes or no
 	 */
 	public void setOccupiedByAgent(boolean isOccupiedByAgent) {
-		this.isOccupiedByAgent = isOccupiedByAgent;
+		if (isOccupiedByAgent) {
+			property = Property.AGENT;
+		} else {
+			property = Property.DEFAULT;
+		}
 	}
 
 	/**

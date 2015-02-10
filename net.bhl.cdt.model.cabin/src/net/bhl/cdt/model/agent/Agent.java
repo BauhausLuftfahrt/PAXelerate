@@ -39,12 +39,9 @@ public class Agent extends Subject implements Runnable {
 	private Vector goal;
 	private Vector desiredPosition;
 	private Vector currentPosition;
-	private Passenger passenger;
-	private final CostMap finalCostmap;
 	private CostMap mutableCostMap;
 	private AreaMap mutableAreaMap;
-	private int scale;
-	private int speedfactor;
+
 	private int numbOfInterupts;
 	private boolean alreadyStowed;
 	private StopWatch stopwatch = new StopWatch();
@@ -53,6 +50,11 @@ public class Agent extends Subject implements Runnable {
 	private AgentMood agentMood;
 	private boolean exitTheMainLoop = false;
 
+	/* constant values */
+	private final CostMap finalCostmap;
+	private final Passenger passenger;
+	private final int scale;
+	private final int speedfactor;
 	private static final Boolean DEVELOPER_MODE = false;
 
 	/**
