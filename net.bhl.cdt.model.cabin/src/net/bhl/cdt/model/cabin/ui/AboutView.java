@@ -26,10 +26,11 @@ public class AboutView extends JPanel {
 	public void paintComponent(Graphics g) {
 
 		super.paintComponent(g); // Paint background
-		g.setFont(new Font("Courier New", Font.PLAIN, fontHeight));
-		g.setColor(Color.DARK_GRAY);
+		g.setFont(new Font("Helvetica Neue", Font.PLAIN, fontHeight));
 		g.setColor(Color.BLACK);
-		g.drawString("HELLO!", 10, 10);
+		g.drawString("© Bauhaus Luftfahrt e.V.", 10, 20);
+		g.drawString("2009 - 2015", 10, 40);
+		g.drawString("visit our website: www.bla.com", 10, 60);
 
 	}
 }

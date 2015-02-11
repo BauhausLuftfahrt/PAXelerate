@@ -149,7 +149,7 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * This method occupies a specific area whithin the area map.
+	 * This method occupies a specific area within the area map.
 	 * 
 	 * @param vector
 	 *            the vector with the location
@@ -157,9 +157,6 @@ public class Agent extends Subject implements Runnable {
 	 *            boolean which decides if the area will be blocked or unblocked
 	 */
 	private void occupyNode(Vector vector, boolean occupy) {
-
-		// TODO: you should only be allowed to unblock a node if you blocked it
-		// yourself!
 
 		/* use monitor so that only one thread can occupy a node at a time */
 		synchronized (vector) {
@@ -170,20 +167,23 @@ public class Agent extends Subject implements Runnable {
 				property = Property.AGENT;
 			}
 
-			/* block all nodes surrounding the vector! */
-			// for (Vector victor :
-			// CostMap.getSurroundingPointsViaStaticCommand(
-			// vector.getX(), vector.getY())) {
-			// try {
-			// RunAStar.getMap().getNode(victor)
-			// .setProperty(property, this);
-			// } catch (ArrayIndexOutOfBoundsException e) {
-			// /* do nothing */
-			// }
-			// }
+			/*
+			 * check the possibility that the node is already blocked by an
+			 * agent. Normally this should never happen.
+			 */
+			if (RunAStar.getMap().getNode(vector).getProperty() == Property.AGENT
+					&& occupy) {
+				System.out.println("Node already blocked. Error!");
+			}
 
-			/* and then the vector itself! */
-			RunAStar.getMap().getNode(vector).setProperty(property, this);
+			// TODO: am besten einen Schweif hinter sich blocken!!
+
+			/* and then block the nodes! */
+			for (int i = 0; i < 3; i++) {
+				RunAStar.getMap()
+						.getNodeByCoordinate(vector.getX(), vector.getY() - i)
+						.setProperty(property, this);
+			}
 		}
 	}
 
@@ -303,6 +303,7 @@ public class Agent extends Subject implements Runnable {
 	 * map is always modified based on the non-editable final cost map
 	 * calculated at the beginning.
 	 */
+	@SuppressWarnings("unused")
 	public void findNewPath() {
 
 		/* starts the StopWatch - used for performance testing */
@@ -318,9 +319,9 @@ public class Agent extends Subject implements Runnable {
 		if (currentPosition != null) {
 
 			/* print out the area map when in developer mode */
-			// if (RunAStar.DEVELOPER_MODE) {
-			mutableAreaMap.printMap();
-			// }
+			if (RunAStar.DEVELOPER_MODE) {
+				mutableAreaMap.printMap();
+			}
 
 			/* this sets the new start of the A* to the current position */
 			start = currentPosition;
@@ -538,6 +539,9 @@ public class Agent extends Subject implements Runnable {
 	 */
 	public void run() {
 		try {
+
+			// TODO:!??!?!!??!?
+			agentMood = new PassiveMood(this);
 
 			/* set the current position to the starting point */
 			currentPosition = start;
