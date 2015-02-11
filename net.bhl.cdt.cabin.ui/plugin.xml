@@ -69,7 +69,7 @@
                   style="push">
             </command>
             <command
-                  commandId="net.bhl.cdt.cabin.ui.command1"
+                  commandId="net.bhl.cdt.model.cabin.AboutView"
                   label="About"
                   style="push">
             </command>

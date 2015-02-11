@@ -45,6 +45,11 @@
             id="net.bhl.cdt.model.cabin.MoveRow"
             name="Move Object">
       </command>
+      <command
+            defaultHandler="net.bhl.cdt.model.cabin.handlers.AboutViewHandler"
+            id="net.bhl.cdt.model.cabin.AboutView"
+            name="Show About View">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
