@@ -156,8 +156,10 @@ public class Agent extends Subject implements Runnable {
 	 * @param occupy
 	 *            boolean which decides if the area will be blocked or unblocked
 	 */
+
 	private void occupyNode(Vector vector, boolean occupy) {
 
+		occupyloop:
 		/* use monitor so that only one thread can occupy a node at a time */
 		synchronized (vector) {
 
@@ -176,13 +178,36 @@ public class Agent extends Subject implements Runnable {
 				System.out.println("Node already blocked. Error!");
 			}
 
+			/* defines in which direction the nodes are blocked behind the agent */
+			int[][] valuesNorth = { { 0, 1 }, { 0, 2 }, { 0, 3 } };
+			int[][] valuesWest = { { 1, 0 }, { 2, 0 }, { 3, 0 } };
 			// TODO: am besten einen Schweif hinter sich blocken!!
+			int[][] values = { { 0, 0 }, { 0, 0 }, { 0, 0 } };
+			switch (getRotation()) {
+			case 180:
+				values = valuesNorth;
+				break;
+			case 90:
+				values = valuesWest;
+			default:
+				RunAStar.getMap()
+						.getNodeByCoordinate(vector.getX(), vector.getY())
+						.setProperty(property, this);
+				break occupyloop;
+			}
 
 			/* and then block the nodes! */
 			for (int i = 0; i < 3; i++) {
-				RunAStar.getMap()
-						.getNodeByCoordinate(vector.getX(), vector.getY() - i)
-						.setProperty(property, this);
+				try {
+					RunAStar.getMap()
+							.getNodeByCoordinate(vector.getX() - values[i][0],
+									vector.getY() - values[i][1])
+							.setProperty(property, this);
+				} catch (ArrayIndexOutOfBoundsException e) {
+					System.out
+							.println("###### !ArrayIndexOutOfBoundsException ERROR! ###### !AGENT - occupyNode()! ######");
+					/* the node is out of the cabin bounds */
+				}
 			}
 		}
 	}
@@ -501,6 +526,8 @@ public class Agent extends Subject implements Runnable {
 					} catch (ConcurrentModificationException e) {
 						System.out
 								.println("Concurrent modification exception!");
+						System.out
+								.println("###### !ArrayIndexOutOfBoundsException ERROR! ###### !AGENT - setPosition()! ######");
 					}
 
 					/* sleep as long as one step takes */
@@ -511,7 +538,8 @@ public class Agent extends Subject implements Runnable {
 
 			/* catch possible interruptions */
 		} catch (InterruptedException e) {
-
+			System.out
+					.println("###### !ArrayIndexOutOfBoundsException ERROR! ###### !AGENT - followPath()! ######");
 			/* end this thread */
 			this.getThread().interrupt();
 			System.out.println("thread is now interrupted");
@@ -539,9 +567,6 @@ public class Agent extends Subject implements Runnable {
 	 */
 	public void run() {
 		try {
-
-			// TODO:!??!?!!??!?
-			agentMood = new PassiveMood(this);
 
 			/* set the current position to the starting point */
 			currentPosition = start;

@@ -58,7 +58,7 @@ import org.eclipse.ui.part.ViewPart;
  *
  */
 
-public class CabinViewPart extends ViewPart {
+public class CabinViewPart extends ViewPart implements Runnable {
 	private Cabin cabin;
 	private double factor;
 	private Composite parent;
@@ -108,6 +108,7 @@ public class CabinViewPart extends ViewPart {
 	private static final String FOLDER_NAME = "paxsim";
 	private static final String FILE_PATH = System.getProperty("user.home")
 			+ "/Documents/" + FOLDER_NAME + "/";
+	private static Thread thread = null;
 	private static File storageFolder = new File(FILE_PATH);
 	private double canvasHeight;
 
@@ -869,5 +870,40 @@ public class CabinViewPart extends ViewPart {
 	public void clearCache() {
 		System.out.println("clearing cache now");
 		// SWTResourceManager.dispose();
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+
+	}
+
+	/**
+	 * This method starts the agent.
+	 */
+	public void start() {
+		if (getThread() == null) {
+			setThread(new Thread(this, "Simulation"));
+			getThread().start();
+		}
+	}
+
+	/**
+	 * This method returns the thread.
+	 * 
+	 * @return the thread
+	 */
+	public Thread getThread() {
+		return thread;
+	}
+
+	/**
+	 * This method sets the thread.
+	 * 
+	 * @param thread
+	 *            the thread
+	 */
+	public void setThread(Thread thread) {
+		this.thread = thread;
 	}
 }

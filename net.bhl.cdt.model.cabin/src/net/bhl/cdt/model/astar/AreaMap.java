@@ -235,6 +235,7 @@ public class AreaMap {
 					.getPosition().getY()), exponent);
 			return Math.sqrt(first + second);
 		} catch (NullPointerException e) {
+			System.out.println("###### !NullPointerException ERROR! ######");
 			return Double.MAX_VALUE;
 		}
 	}

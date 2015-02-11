@@ -347,6 +347,8 @@ public class CostMap {
 		try {
 			return map[point.getX()][point.getY()];
 		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out
+					.println("###### !ArrayIndexOutOfBoundsException ERROR! ###### !COSTMAP - getCost()! ######");
 			return Integer.MAX_VALUE;
 		}
 
@@ -366,6 +368,8 @@ public class CostMap {
 		try {
 			return map[xCord][yCord];
 		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out
+					.println("###### !ArrayIndexOutOfBoundsException ERROR! ###### !COSTMAP - getCostForCoordinate()! ######");
 			return Integer.MAX_VALUE;
 		}
 	}
