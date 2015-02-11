@@ -179,36 +179,35 @@ public class Agent extends Subject implements Runnable {
 			}
 
 			/* defines in which direction the nodes are blocked behind the agent */
-			int[][] valuesNorth = { { 0, 1 }, { 0, 2 }, { 0, 3 } };
-			int[][] valuesWest = { { 1, 0 }, { 2, 0 }, { 3, 0 } };
-			// TODO: am besten einen Schweif hinter sich blocken!!
-			int[][] values = { { 0, 0 }, { 0, 0 }, { 0, 0 } };
-			switch (getRotation()) {
-			case 180:
-				values = valuesNorth;
-				break;
-			case 90:
-				values = valuesWest;
-			default:
-				RunAStar.getMap()
-						.getNodeByCoordinate(vector.getX(), vector.getY())
-						.setProperty(property, this);
-				break occupyloop;
-			}
+			// int[][] valuesNorth = { { 0, 1 }, { 0, 2 }, { 0, 3 } };
+			// int[][] valuesWest = { { 1, 0 }, { 2, 0 }, { 3, 0 } };
+			// // TODO: am besten einen Schweif hinter sich blocken!!
+			// int[][] values = { { 0, 0 }, { 0, 0 }, { 0, 0 } };
+			// switch (getRotation()) {
+			// case 180:
+			// values = valuesNorth;
+			// break;
+			// case 90:
+			// values = valuesWest;
+			// default:
+			RunAStar.getMap().getNodeByCoordinate(vector.getX(), vector.getY())
+					.setProperty(property, this);
+			// break occupyloop;
+			// }
 
-			/* and then block the nodes! */
-			for (int i = 0; i < 3; i++) {
-				try {
-					RunAStar.getMap()
-							.getNodeByCoordinate(vector.getX() - values[i][0],
-									vector.getY() - values[i][1])
-							.setProperty(property, this);
-				} catch (ArrayIndexOutOfBoundsException e) {
-					System.out
-							.println("###### !ArrayIndexOutOfBoundsException ERROR! ###### !AGENT - occupyNode()! ######");
-					/* the node is out of the cabin bounds */
-				}
-			}
+			// /* and then block the nodes! */
+			// for (int i = 0; i < 3; i++) {
+			// try {
+			// RunAStar.getMap()
+			// .getNodeByCoordinate(vector.getX() - values[i][0],
+			// vector.getY() - values[i][1])
+			// .setProperty(property, this);
+			// } catch (ArrayIndexOutOfBoundsException e) {
+			// System.out
+			// .println("###### !ArrayIndexOutOfBoundsException ERROR! ###### !AGENT - occupyNode()! ######");
+			// /* the node is out of the cabin bounds */
+			// }
+			// }
 		}
 	}
 

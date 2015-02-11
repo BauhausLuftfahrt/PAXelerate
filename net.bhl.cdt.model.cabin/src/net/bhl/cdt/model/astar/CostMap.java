@@ -366,7 +366,11 @@ public class CostMap {
 	 */
 	public int getCostForCoordinates(int xCord, int yCord) {
 		try {
-			return map[xCord][yCord];
+			if (xCord >= 0 && yCord >= 0 && xCord < dimensions.getX()
+					&& yCord < dimensions.getY()) {
+				return map[xCord][yCord];
+			}
+			return Integer.MAX_VALUE;
 		} catch (ArrayIndexOutOfBoundsException e) {
 			System.out
 					.println("###### !ArrayIndexOutOfBoundsException ERROR! ###### !COSTMAP - getCostForCoordinate()! ######");
