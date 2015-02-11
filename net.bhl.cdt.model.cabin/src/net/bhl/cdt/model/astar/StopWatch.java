@@ -6,14 +6,9 @@
 package net.bhl.cdt.model.astar;
 
 /**
- * This class represents a stopwatch.
- * @author marc.engelmann
+ * This class represents a stop watch.
  * 
- *         originally created by Corey Goldberg StopWatch.java is free software;
- *         you can redistribute it and/or modify it under the terms of the GNU
- *         General Public License as published by the Free Software Foundation;
- *         either version 2 of the License, or (at your option) any later
- *         version.
+ * @author marc.engelmann
  */
 
 public class StopWatch {

@@ -79,7 +79,7 @@ public class AreaMap {
 
 				if (obstacleMap.getValueAtPoint(x, y) == ObstacleMap
 						.getObstacleValue()) {
-					node.setProperty(Property.OBSTACLE);
+					node.setProperty(Property.OBSTACLE, null);
 				} else {
 					node.setCost(obstacleMap.getValueAtPoint(x, y));
 				}
@@ -168,9 +168,10 @@ public class AreaMap {
 	public void setStartLocation(Vector start) {
 		if (getNode(start).getProperty() != Property.OBSTACLE) {
 			if (getNodeByProperty(Property.START) != null) {
-				getNodeByProperty(Property.START).setProperty(Property.DEFAULT);
+				getNodeByProperty(Property.START).setProperty(Property.DEFAULT,
+						null);
 			}
-			getNode(start).setProperty(Property.START);
+			getNode(start).setProperty(Property.START, null);
 		} else {
 			System.out.println("start node already labeled as obstacle!");
 		}
@@ -185,9 +186,10 @@ public class AreaMap {
 	public void setGoalLocation(Vector goal) {
 		if (getNode(goal).getProperty() != Property.OBSTACLE) {
 			if (getNodeByProperty(Property.GOAL) != null) {
-				getNodeByProperty(Property.GOAL).setProperty(Property.DEFAULT);
+				getNodeByProperty(Property.GOAL).setProperty(Property.DEFAULT,
+						null);
 			}
-			getNode(goal).setProperty(Property.GOAL);
+			getNode(goal).setProperty(Property.GOAL, null);
 		} else {
 			System.out.println("goal node already labeled as obstacle!");
 		}
@@ -208,8 +210,10 @@ public class AreaMap {
 				return node;
 			}
 		}
-		System.out.println("no matching node found for property '"
-				+ property.toString() + "'.");
+		if (RunAStar.DEVELOPER_MODE) {
+			System.out.println("no matching node found for property '"
+					+ property.toString() + "'.");
+		}
 		return null;
 	}
 

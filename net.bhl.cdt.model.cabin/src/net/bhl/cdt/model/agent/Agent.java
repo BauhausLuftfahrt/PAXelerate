@@ -14,6 +14,7 @@ import net.bhl.cdt.model.agent.AggressiveMood;
 import net.bhl.cdt.model.astar.CostMap;
 import net.bhl.cdt.model.agent.PassiveMood;
 import net.bhl.cdt.model.astar.AreaMap;
+import net.bhl.cdt.model.astar.Node;
 import net.bhl.cdt.model.astar.Node.Property;
 import net.bhl.cdt.model.astar.Path;
 import net.bhl.cdt.model.astar.RunAStar;
@@ -56,7 +57,6 @@ public class Agent extends Subject implements Runnable {
 	private final Passenger passenger;
 	private final int scale;
 	private final int speedfactor;
-	private static final Boolean DEVELOPER_MODE = false;
 
 	/**
 	 * This method constructs an agent.
@@ -163,11 +163,27 @@ public class Agent extends Subject implements Runnable {
 
 		/* use monitor so that only one thread can occupy a node at a time */
 		synchronized (vector) {
+
+			Property property = Property.DEFAULT;
+
 			if (occupy) {
-				RunAStar.getMap().getNode(vector).setProperty(Property.AGENT);
-			} else {
-				RunAStar.getMap().getNode(vector).setProperty(Property.DEFAULT);
+				property = Property.AGENT;
 			}
+
+			/* block all nodes surrounding the vector! */
+			// for (Vector victor :
+			// CostMap.getSurroundingPointsViaStaticCommand(
+			// vector.getX(), vector.getY())) {
+			// try {
+			// RunAStar.getMap().getNode(victor)
+			// .setProperty(property, this);
+			// } catch (ArrayIndexOutOfBoundsException e) {
+			// /* do nothing */
+			// }
+			// }
+
+			/* and then the vector itself! */
+			RunAStar.getMap().getNode(vector).setProperty(property, this);
 		}
 	}
 
@@ -209,16 +225,39 @@ public class Agent extends Subject implements Runnable {
 
 		/*
 		 * define the square dimension around the passenger that should be
-		 * scanned. This is the dimension in each direction from the middle!
+		 * scanned. This is the default dimension in each direction from the
+		 * center!
 		 */
-
 		int squareDimension = 10;
 
+		/* this is the expansion in the x Direction */
+		Vector xVector = new Vector2D(currentPosition.getX() - squareDimension,
+				currentPosition.getX() + squareDimension);
+
+		/* this is the expansion in the x Direction */
+		Vector yVector = new Vector2D(currentPosition.getY() - squareDimension,
+				currentPosition.getY() + squareDimension);
+
+		/*
+		 * The first value of the vectors above represents the beginning of the
+		 * area being checked, the second value the end.
+		 */
+
+		// /* this manipulates the vectors depending on the rotation of the
+		// agent */
+		// switch (getRotation()) {
+		// case 90:
+		// xVector.setX(currentPosition.getX());
+		// case 180:
+		// yVector.setX(currentPosition.getY());
+		// break;
+		// default:
+		// break;
+		// }
+
 		/* then there is cost assigned to an area around the other agents */
-		for (int xCoordinate = currentPosition.getX() - squareDimension; xCoordinate < currentPosition
-				.getX() + squareDimension; xCoordinate++) {
-			for (int yCoordinate = currentPosition.getY() - squareDimension; yCoordinate < currentPosition
-					.getY() + squareDimension; yCoordinate++) {
+		for (int xCoordinate = xVector.getX(); xCoordinate < xVector.getY(); xCoordinate++) {
+			for (int yCoordinate = yVector.getX(); yCoordinate < yVector.getY(); yCoordinate++) {
 
 				/* prevent out of bounds exceptions */
 				if (xCoordinate > 0 && yCoordinate > 0) {
@@ -279,9 +318,9 @@ public class Agent extends Subject implements Runnable {
 		if (currentPosition != null) {
 
 			/* print out the area map when in developer mode */
-			if (DEVELOPER_MODE) {
-				mutableAreaMap.printMap();
-			}
+			// if (RunAStar.DEVELOPER_MODE) {
+			mutableAreaMap.printMap();
+			// }
 
 			/* this sets the new start of the A* to the current position */
 			start = currentPosition;
@@ -300,7 +339,7 @@ public class Agent extends Subject implements Runnable {
 		 * print the newly generated cost map including the path when in
 		 * developer mode
 		 */
-		if (currentPosition != null && DEVELOPER_MODE) {
+		if (currentPosition != null && RunAStar.DEVELOPER_MODE) {
 			mutableCostMap.printMapPathToConsole(path, mutableAreaMap, this);
 		}
 
@@ -331,12 +370,27 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
+	 * This method check if the node is blocked and if so, if the node was
+	 * blocked by someone else or this agent.
 	 * 
 	 * @param vector
-	 * @return
+	 *            the specific vector
+	 * @return if the node is blocked by someone else
 	 */
-	private boolean nodeBlocked(Vector vector) {
-		return (RunAStar.getMap().getNode(vector).getProperty() == Property.AGENT);
+	private boolean nodeBlockedBySomeoneElse(Vector vector) {
+
+		/* get the node at the location */
+		Node checkNode = RunAStar.getMap().getNode(vector);
+
+		/* check if it is blocked */
+		if (checkNode.getProperty() == Property.AGENT) {
+
+			/* check if its was not this agent who blocked it */
+			if (checkNode.getLinkedAgent() != this) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -348,7 +402,7 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * This method is the main path folling loop for the agent.
+	 * This method is the main path following loop for the agent.
 	 */
 	private void followPath() {
 
@@ -378,8 +432,8 @@ public class Agent extends Subject implements Runnable {
 				/* the new planned location is current step in the path */
 				desiredPosition = path.get(i).getPosition();
 
-				/* check if the desired next step is blocked */
-				if (nodeBlocked(desiredPosition)) {
+				/* check if the desired next step is blocked by someone else */
+				if (nodeBlockedBySomeoneElse(desiredPosition)) {
 
 					/* raise the interrupts counter up by one */
 					numbOfInterupts++;
@@ -393,7 +447,7 @@ public class Agent extends Subject implements Runnable {
 					/* the main loop is quit, if there is a new path calculated */
 					if (exitTheMainLoop) {
 
-						if (DEVELOPER_MODE) {
+						if (RunAStar.DEVELOPER_MODE) {
 							System.out.println("searching for new path ...");
 						}
 
@@ -517,12 +571,15 @@ public class Agent extends Subject implements Runnable {
 			/* the number of interrupts is submitted to the passenger */
 			passenger.setNumberOfWaits(numbOfInterupts);
 
+			/* clear the current position of the agent */
+			occupyNode(currentPosition, false);
+
 			/* RunAStar is notified that a passenger is seated now */
 			RunAStar.setPassengerSeated(passenger, this);
 
 		} catch (InterruptedException e) {
 
-			/* This loop is run if there was an unspecific error during runtime */
+			/* This loop is run if there was an unknown error during runtime */
 			System.out.println("thread got an error");
 		}
 	}

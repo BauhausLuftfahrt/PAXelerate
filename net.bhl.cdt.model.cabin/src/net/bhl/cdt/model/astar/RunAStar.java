@@ -32,6 +32,7 @@ public class RunAStar {
 	private static ArrayList<Agent> agentList = new ArrayList<Agent>();
 	private StopWatch anotherStopwatch = new StopWatch();
 	private Vector dimensions;
+	public static final boolean DEVELOPER_MODE = false;
 
 	/**
 	 * This method constructs the RunAStar algorithm.

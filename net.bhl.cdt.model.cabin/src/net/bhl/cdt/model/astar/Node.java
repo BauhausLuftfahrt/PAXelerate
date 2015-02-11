@@ -7,6 +7,7 @@ package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
 
+import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.cabin.util.Vector2D;
 
@@ -33,6 +34,7 @@ public class Node implements Comparable<Node> {
 	private Vector position = new Vector2D(0, 0);
 	private int cost;
 	private Property property;
+	private Agent linkedAgent;
 
 	/* This declares the type of the node */
 	public enum Property {
@@ -66,8 +68,13 @@ public class Node implements Comparable<Node> {
 		return property;
 	}
 
-	public void setProperty(Property property) {
+	public Agent getLinkedAgent() {
+		return linkedAgent;
+	}
+
+	public void setProperty(Property property, Agent agent) {
 		this.property = property;
+		linkedAgent = agent;
 	}
 
 	/**

@@ -54,8 +54,11 @@ public class AStar {
 		map.setStartLocation(agent.getStart());
 		map.setGoalLocation(agent.getGoal());
 
+		/* reset the properties of the start node */
 		map.getNodeByProperty(Property.START).setDistanceFromStart(0);
-		map.getNodeByProperty(Property.GOAL).setCostFromStart(0);
+		map.getNodeByProperty(Property.START).setCostFromStart(0);
+
+		/* reset the lists */
 		closedList.clear();
 		openList.clear();
 		openList.add(map.getNode(agent.getStart()));
@@ -74,9 +77,13 @@ public class AStar {
 			 * are done.
 			 */
 			if (FuncLib.vectorsAreEqual(current.getPosition(), agent.getGoal())) {
+
+				/* the start node does never have a previous node! */
 				if (map.getNodeByProperty(Property.START) != null) {
 					map.getNodeByProperty(Property.START).setPreviousNode(null);
 				}
+
+				/* if there is a path found, reconstruct it */
 				if (reconstructPath(current) != null) {
 					bestPath = reconstructPath(current);
 				}
@@ -105,16 +112,17 @@ public class AStar {
 				/* also just continue if the neighbor is an obstacle */
 				if (neighbor.getProperty() != Property.OBSTACLE) {
 
-					/*
-					 * calculate how long the path is if we choose this neighbor
-					 * as the next step in the path
-					 */
+					/* calculate the neighbors distance from start */
 					int neighborDistanceFromStart = (int) map
 							.getDistanceBetween(
 									map.getNodeByProperty(Property.START),
 									neighbor);
+
+					/* calculate the neighbors cost from start */
 					int neighborCostFromStart = costmap.getCost(neighbor
 							.getPosition());
+
+					/* calculate the current cost from start for comparison */
 					int currentCostFromStart = costmap.getCost(current
 							.getPosition());
 
@@ -122,6 +130,8 @@ public class AStar {
 					if (!openList.contains(neighbor)) {
 						openList.add(neighbor);
 						neighborIsBetter = true;
+
+						/* it is better if the other node is cheaper */
 					} else if (neighborCostFromStart < currentCostFromStart) {
 						neighborIsBetter = true;
 					} else {

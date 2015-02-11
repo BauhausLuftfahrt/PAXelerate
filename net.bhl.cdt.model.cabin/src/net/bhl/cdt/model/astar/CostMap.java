@@ -413,4 +413,44 @@ public class CostMap {
 				getCostForCoordinates(pointX - 1, pointY - 1)));
 		return surroundingPoints;
 	}
+
+	/**
+	 * This method delivers all 8 surrounding points of a specific point in the
+	 * cost map. Starting in the north, all points are collected clockwise.
+	 * 
+	 * @param pointX
+	 *            x coordinate of the middle point
+	 * @param pointY
+	 *            y coordinate of the middle point
+	 * @return returns the point vector
+	 */
+	public static ArrayList<Vector> getSurroundingPointsViaStaticCommand(
+			int pointX, int pointY) {
+		ArrayList<Vector> surroundingPoints = new ArrayList<Vector>();
+		/* north */
+		surroundingPoints.add(new Vector2D(pointX, pointY - 1));
+
+		/* north - east */
+		// surroundingPoints.add(new Vector2D(pointX + 1, pointY - 1));
+
+		/* east */
+		surroundingPoints.add(new Vector2D(pointX + 1, pointY));
+
+		/* south - east */
+		// surroundingPoints.add(new Vector2D(pointX + 1, pointY + 1));
+
+		/* south */
+		surroundingPoints.add(new Vector2D(pointX, pointY + 1));
+
+		/* south - west */
+		// surroundingPoints.add(new Vector2D(pointX - 1, pointY + 1));
+
+		/* west */
+		surroundingPoints.add(new Vector2D(pointX - 1, pointY));
+
+		/* north - west */
+		// surroundingPoints.add(new Vector2D(pointX - 1, pointY - 1));
+
+		return surroundingPoints;
+	}
 }
