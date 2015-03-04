@@ -86,6 +86,10 @@ public class SimulateBoardingCommand extends CDTCommand implements Runnable {
 
 		DrawCabinCommand drawCom = new DrawCabinCommand(cabin);
 		drawCom.doRun();
+		//
+		// GeneratePassengersCommand paxCom = new
+		// GeneratePassengersCommand(cabin);
+		// paxCom.doRun();
 
 		for (Passenger passenger : cabin.getPassengers()) {
 			passenger.setIsSeated(false);

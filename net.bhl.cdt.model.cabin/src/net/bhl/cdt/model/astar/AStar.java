@@ -54,6 +54,9 @@ public class AStar {
 		map.setStartLocation(agent.getStart());
 		map.setGoalLocation(agent.getGoal());
 
+		FuncLib.printVectorToLog(map.getNodeByProperty(Property.START)
+				.getPosition(), "start");
+
 		/* reset the properties of the start node */
 		map.getNodeByProperty(Property.START).setDistanceFromStart(0);
 		map.getNodeByProperty(Property.START).setCostFromStart(0);
@@ -81,6 +84,7 @@ public class AStar {
 				/* the start node does never have a previous node! */
 				if (map.getNodeByProperty(Property.START) != null) {
 					map.getNodeByProperty(Property.START).setPreviousNode(null);
+					System.out.println("node is set to zero");
 				}
 
 				/* if there is a path found, reconstruct it */
@@ -113,6 +117,10 @@ public class AStar {
 				if (neighbor.getProperty() != Property.OBSTACLE) {
 
 					/* calculate the neighbors distance from start */
+					if (map.getNodeByProperty(Property.START) == null) {
+						System.out.println("start ist null");
+					}
+
 					int neighborDistanceFromStart = (int) map
 							.getDistanceBetween(
 									map.getNodeByProperty(Property.START),
@@ -187,6 +195,8 @@ public class AStar {
 	private Path reconstructPath(Node node) {
 		Path path = new Path();
 		while (node.getPreviousNode() != null) {
+			// while (!FuncLib.vectorsAreEqual(node.getPosition(),
+			// agent.getStart())) {
 			path.prependWayPoint(node);
 			node = node.getPreviousNode();
 		}

@@ -72,6 +72,8 @@ public class Agent extends Subject implements Runnable {
 	 */
 	public Agent(Passenger passenger, Vector start, Vector goal, int scale,
 			int speedFactor, CostMap costmap) {
+
+		/* assign the initializer values to the objects values */
 		this.speedfactor = speedFactor;
 		this.passenger = passenger;
 		this.start = start;
@@ -79,6 +81,7 @@ public class Agent extends Subject implements Runnable {
 		this.scale = scale;
 		this.finalCostmap = costmap;
 
+		/* generate a mood for the passenger depending on his presets */
 		if (passenger.getPassengerMood() == PassengerMood.AGRESSIVE) {
 			this.agentMood = new AggressiveMood(this);
 		} else if (passenger.getPassengerMood() == PassengerMood.PASSIVE) {
@@ -192,7 +195,7 @@ public class Agent extends Subject implements Runnable {
 			// default:
 			RunAStar.getMap().getNodeByCoordinate(vector.getX(), vector.getY())
 					.setProperty(property, this);
-			// break occupyloop;
+			break occupyloop;
 			// }
 
 			// /* and then block the nodes! */

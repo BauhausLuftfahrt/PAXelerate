@@ -165,12 +165,12 @@ public class AreaMap {
 	 * @param start
 	 *            the start location vector
 	 */
-	public void setStartLocation(Vector start) {
+	public synchronized void setStartLocation(Vector start) {
 		if (getNode(start).getProperty() != Property.OBSTACLE) {
-			if (getNodeByProperty(Property.START) != null) {
-				getNodeByProperty(Property.START).setProperty(Property.DEFAULT,
-						null);
-			}
+			// if (getNodeByProperty(Property.START) != null) {
+			// getNodeByProperty(Property.START).setProperty(Property.DEFAULT,
+			// null);
+			// }
 			getNode(start).setProperty(Property.START, null);
 		} else {
 			System.out.println("start node already labeled as obstacle!");
@@ -214,6 +214,7 @@ public class AreaMap {
 			System.out.println("no matching node found for property '"
 					+ property.toString() + "'.");
 		}
+		System.out.println("getNodeByProperty() returns null!");
 		return null;
 	}
 
@@ -235,8 +236,8 @@ public class AreaMap {
 					.getPosition().getY()), exponent);
 			return Math.sqrt(first + second);
 		} catch (NullPointerException e) {
-			System.out
-					.println("###### !NullPointerException ERROR! ###### !AreaMap - getDistanceBetween()! ######");
+			// System.out
+			// .println("###### !NullPointerException ERROR! ###### !AreaMap - getDistanceBetween()! ######");
 			return Double.MAX_VALUE;
 		}
 	}
