@@ -34,7 +34,16 @@ public class Node implements Comparable<Node> {
 	private Vector position = new Vector2D(0, 0);
 	private int cost;
 	private Property property;
-	private Agent linkedAgent;
+	private int linkedAgentID;
+	private ArrayList<NodeProperty> startList = new ArrayList<NodeProperty>();
+
+	public ArrayList<NodeProperty> getStartList() {
+		return startList;
+	}
+
+	public void setStartList(ArrayList<NodeProperty> startList) {
+		this.startList = startList;
+	}
 
 	/* This declares the type of the node */
 	public enum Property {
@@ -68,13 +77,24 @@ public class Node implements Comparable<Node> {
 		return property;
 	}
 
-	public Agent getLinkedAgent() {
-		return linkedAgent;
+	public int getLinkedAgentID() {
+		return linkedAgentID;
 	}
 
-	public void setProperty(Property property, Agent agent) {
+	public synchronized void setProperty(Property property, int agentID) {
 		this.property = property;
-		linkedAgent = agent;
+		linkedAgentID = agentID;
+	}
+
+	public synchronized void removeItemById(int id) {
+		NodeProperty theCulprit = null;
+		for (NodeProperty property : startList) {
+			if (property.getAgentID() == id) {
+				theCulprit = property;
+			}
+		}
+
+		startList.remove(theCulprit);
 	}
 
 	/**
@@ -226,6 +246,7 @@ public class Node implements Comparable<Node> {
 	 * @return the list
 	 */
 	public ArrayList<Node> getNeighborList() {
+
 		return neighborList;
 	}
 

@@ -8,6 +8,7 @@ package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
 
+import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.astar.Node.Property;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.cabin.util.Vector2D;
@@ -22,8 +23,14 @@ public class AreaMap {
 	private Vector dimensions = new Vector2D(0, 0);
 	private ArrayList<ArrayList<Node>> map;
 	private ArrayList<Node> nodeList = new ArrayList<Node>();
+
+	public ArrayList<Node> getNodeList() {
+		return nodeList;
+	}
+
 	private ObstacleMap obstacleMap;
 	private Logger log = new Logger();
+	public static final int UNDEFINED = -1;
 
 	/**
 	 * This is the area map constructor.
@@ -41,6 +48,10 @@ public class AreaMap {
 		log.addToLog("Map Created");
 		registerEdges();
 		log.addToLog("Map Node edges registered");
+	}
+
+	public ObstacleMap getObstacleMap() {
+		return obstacleMap;
 	}
 
 	/**
@@ -79,7 +90,7 @@ public class AreaMap {
 
 				if (obstacleMap.getValueAtPoint(x, y) == ObstacleMap
 						.getObstacleValue()) {
-					node.setProperty(Property.OBSTACLE, null);
+					node.setProperty(Property.OBSTACLE, UNDEFINED);
 				} else {
 					node.setCost(obstacleMap.getValueAtPoint(x, y));
 				}
@@ -160,42 +171,6 @@ public class AreaMap {
 	}
 
 	/**
-	 * This method sets the start location.
-	 * 
-	 * @param start
-	 *            the start location vector
-	 */
-	public synchronized void setStartLocation(Vector start) {
-		if (getNode(start).getProperty() != Property.OBSTACLE) {
-			// if (getNodeByProperty(Property.START) != null) {
-			// getNodeByProperty(Property.START).setProperty(Property.DEFAULT,
-			// null);
-			// }
-			getNode(start).setProperty(Property.START, null);
-		} else {
-			System.out.println("start node already labeled as obstacle!");
-		}
-	}
-
-	/**
-	 * This method sets the goal location.
-	 * 
-	 * @param goal
-	 *            the goal location vector.
-	 */
-	public void setGoalLocation(Vector goal) {
-		if (getNode(goal).getProperty() != Property.OBSTACLE) {
-			if (getNodeByProperty(Property.GOAL) != null) {
-				getNodeByProperty(Property.GOAL).setProperty(Property.DEFAULT,
-						null);
-			}
-			getNode(goal).setProperty(Property.GOAL, null);
-		} else {
-			System.out.println("goal node already labeled as obstacle!");
-		}
-	}
-
-	/**
 	 * Caution! This method only returns the first node with the property. Only
 	 * use this method which properties that are assigned once!
 	 *
@@ -203,10 +178,12 @@ public class AreaMap {
 	 *            is the property
 	 * @return the node with the correct property
 	 */
-	public Node getNodeByProperty(Property property) {
+	public Node getNodeByProperty(Property property, Agent agent) {
 
 		for (Node node : nodeList) {
-			if (node.getProperty() == property) {
+
+			if (node.getProperty().equals(property)
+					&& node.getLinkedAgentID() == agent.getPassenger().getId()) {
 				return node;
 			}
 		}
@@ -214,8 +191,24 @@ public class AreaMap {
 			System.out.println("no matching node found for property '"
 					+ property.toString() + "'.");
 		}
-		System.out.println("getNodeByProperty() returns null!");
+		// System.out.println("getNodeByProperty() returns null!");
 		return null;
+	}
+
+	public synchronized void setStartLocation(Vector position, Agent agent) {
+
+		if (position == null) {
+			getNode(agent.getStart()).getStartList().add(
+					new NodeProperty(agent.getPassenger().getId(),
+							Property.START));
+		} else {
+			Node oldStartLocation = this.getNode(agent.getStart());
+			oldStartLocation.removeItemById(agent.getPassenger().getId());
+			getNode(position).getStartList().add(
+					new NodeProperty(agent.getPassenger().getId(),
+							Property.START));
+		}
+		// if (oldStartLocation != null &&
 	}
 
 	/**

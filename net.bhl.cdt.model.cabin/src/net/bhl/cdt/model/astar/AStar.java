@@ -51,15 +51,18 @@ public class AStar {
 	private void calculateShortestPath() {
 
 		/* mark start and goal node */
-		map.setStartLocation(agent.getStart());
-		map.setGoalLocation(agent.getGoal());
+		// map.setStartLocation(agent.getStart());
+		// map.getNode(agent.getStart()).setProperty(Property.START,
+		// agent.getPassenger().getId());
+		map.getNode(agent.getGoal()).setProperty(Property.GOAL,
+				agent.getPassenger().getId());
 
-		FuncLib.printVectorToLog(map.getNodeByProperty(Property.START)
-				.getPosition(), "start");
+		FuncLib.printVectorToLog(map.getNode(agent.getStart()).getPosition(),
+				"start");
 
 		/* reset the properties of the start node */
-		map.getNodeByProperty(Property.START).setDistanceFromStart(0);
-		map.getNodeByProperty(Property.START).setCostFromStart(0);
+		map.getNode(agent.getStart()).setDistanceFromStart(0);
+		map.getNode(agent.getStart()).setCostFromStart(0);
 
 		/* reset the lists */
 		closedList.clear();
@@ -68,6 +71,8 @@ public class AStar {
 
 		/* while we haven't reached the goal yet */
 		while (openList.size() != 0) {
+			// System.out.println(map.getNode(agent.getStart()).getProperty()
+			// .toString());
 
 			/*
 			 * get the first Node from non-searched Node list, sorted by lowest
@@ -82,9 +87,9 @@ public class AStar {
 			if (FuncLib.vectorsAreEqual(current.getPosition(), agent.getGoal())) {
 
 				/* the start node does never have a previous node! */
-				if (map.getNodeByProperty(Property.START) != null) {
-					map.getNodeByProperty(Property.START).setPreviousNode(null);
-					System.out.println("node is set to zero");
+				if (map.getNode(agent.getStart()) != null) {
+					map.getNode(agent.getStart()).setPreviousNode(null);
+					System.out.println("AStar - node is set to zero");
 				}
 
 				/* if there is a path found, reconstruct it */
@@ -117,13 +122,12 @@ public class AStar {
 				if (neighbor.getProperty() != Property.OBSTACLE) {
 
 					/* calculate the neighbors distance from start */
-					if (map.getNodeByProperty(Property.START) == null) {
-						System.out.println("start ist null");
+					if (map.getNode(agent.getStart()) == null) {
+						// System.out.println("start ist null");
 					}
 
 					int neighborDistanceFromStart = (int) map
-							.getDistanceBetween(
-									map.getNodeByProperty(Property.START),
+							.getDistanceBetween(map.getNode(agent.getStart()),
 									neighbor);
 
 					/* calculate the neighbors cost from start */

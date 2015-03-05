@@ -42,7 +42,6 @@ public class Agent extends Subject implements Runnable {
 	private Vector desiredPosition;
 	private Vector currentPosition;
 	private CostMap mutableCostMap;
-	private AreaMap mutableAreaMap;
 
 	private int numbOfInterupts = 0;
 	private boolean alreadyStowed = false;
@@ -57,6 +56,10 @@ public class Agent extends Subject implements Runnable {
 	private final Passenger passenger;
 	private final int scale;
 	private final int speedfactor;
+
+	public Passenger getPassenger() {
+		return passenger;
+	}
 
 	/**
 	 * This method constructs an agent.
@@ -193,8 +196,8 @@ public class Agent extends Subject implements Runnable {
 			// case 90:
 			// values = valuesWest;
 			// default:
-			RunAStar.getMap().getNodeByCoordinate(vector.getX(), vector.getY())
-					.setProperty(property, this);
+			RunAStar.getMap().getNode(vector)
+					.setProperty(property, this.passenger.getId());
 			break occupyloop;
 			// }
 
@@ -244,8 +247,8 @@ public class Agent extends Subject implements Runnable {
 	private void updateCostmap() {
 
 		/* The cost map is flooded from the agents current location to his seat */
-		CostMap costmap = new CostMap(mutableAreaMap.getDimensions(), start,
-				mutableAreaMap, false, this, true);
+		CostMap costmap = new CostMap(RunAStar.getMap().getDimensions(), start,
+				RunAStar.getMap(), false, this, true);
 
 		/* the cost map is then assigned to the mutable global cost map */
 		mutableCostMap = costmap;
@@ -290,8 +293,9 @@ public class Agent extends Subject implements Runnable {
 				if (xCoordinate > 0 && yCoordinate > 0) {
 
 					/* find all nodes occupied by agents */
-					if (mutableAreaMap.getNodeByCoordinate(xCoordinate,
-							yCoordinate).getProperty() == Property.AGENT) {
+					if (RunAStar.getMap()
+							.getNodeByCoordinate(xCoordinate, yCoordinate)
+							.getProperty() == Property.AGENT) {
 
 						/*
 						 * additionally to the surrounding points of the agents,
@@ -303,9 +307,10 @@ public class Agent extends Subject implements Runnable {
 
 							/* the current agents position is excluded here! */
 							if (!FuncLib.vectorsAreEqual(
-									mutableAreaMap.getNodeByCoordinate(
-											xCoordinate, yCoordinate)
-											.getPosition(), currentPosition)) {
+									RunAStar.getMap()
+											.getNodeByCoordinate(xCoordinate,
+													yCoordinate).getPosition(),
+									currentPosition)) {
 
 								/* the surrounding points are calculated */
 								for (Vector point : mutableCostMap
@@ -330,7 +335,6 @@ public class Agent extends Subject implements Runnable {
 	 * map is always modified based on the non-editable final cost map
 	 * calculated at the beginning.
 	 */
-	@SuppressWarnings("unused")
 	public void findNewPath() {
 
 		/* starts the StopWatch - used for performance testing */
@@ -339,26 +343,27 @@ public class Agent extends Subject implements Runnable {
 		/* reset the mutable CostMap to the original cost map */
 		mutableCostMap = finalCostmap;
 
-		/* save a "screenshot" of the AreaMap for further calculations */
-		mutableAreaMap = RunAStar.getMap();
+		RunAStar.getMap().setStartLocation(currentPosition, this);
 
 		/* this is only run if its not the initial path finding process */
 		if (currentPosition != null) {
 
 			/* print out the area map when in developer mode */
-			if (RunAStar.DEVELOPER_MODE) {
-				mutableAreaMap.printMap();
-			}
+			// if (RunAStar.DEVELOPER_MODE) {
+			RunAStar.getMap().printMap();
+			// }
 
 			/* this sets the new start of the A* to the current position */
 			start = currentPosition;
+
+			// mutableAreaMap.getNode(start).setProperty(Property.START, null);
 
 			/* this declares the area around agents as high cost terrain */
 			updateCostmap();
 		}
 
 		/* run the path finding algorithm */
-		AStar astar = new AStar(mutableAreaMap, mutableCostMap, this);
+		AStar astar = new AStar(RunAStar.getMap(), mutableCostMap, this);
 
 		/* retrieve the path information */
 		path = astar.getBestPath();
@@ -367,9 +372,9 @@ public class Agent extends Subject implements Runnable {
 		 * print the newly generated cost map including the path when in
 		 * developer mode
 		 */
-		if (currentPosition != null && RunAStar.DEVELOPER_MODE) {
-			mutableCostMap.printMapPathToConsole(path, mutableAreaMap, this);
-		}
+		// if (currentPosition != null && RunAStar.DEVELOPER_MODE) {
+		// mutableCostMap.printMapPathToConsole(path, mutableAreaMap, this);
+		// }
 
 		/* setting the new desired and current positions */
 		desiredPosition = path.get(0).getPosition();
@@ -414,7 +419,7 @@ public class Agent extends Subject implements Runnable {
 		if (checkNode.getProperty() == Property.AGENT) {
 
 			/* check if its was not this agent who blocked it */
-			if (checkNode.getLinkedAgent() != this) {
+			if (checkNode.getLinkedAgentID() != this.passenger.getId()) {
 				return true;
 			}
 		}
