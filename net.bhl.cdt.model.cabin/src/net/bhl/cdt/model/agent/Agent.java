@@ -9,6 +9,8 @@ package net.bhl.cdt.model.agent;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 
+import javax.sql.rowset.spi.SyncResolver;
+
 import net.bhl.cdt.model.astar.AStar;
 import net.bhl.cdt.model.agent.AggressiveMood;
 import net.bhl.cdt.model.astar.CostMap;
@@ -163,7 +165,7 @@ public class Agent extends Subject implements Runnable {
 	 *            boolean which decides if the area will be blocked or unblocked
 	 */
 
-	private void occupyNode(Vector vector, boolean occupy) {
+	private synchronized void occupyNode(Vector vector, boolean occupy) {
 
 		occupyloop:
 		/* use monitor so that only one thread can occupy a node at a time */
@@ -349,9 +351,9 @@ public class Agent extends Subject implements Runnable {
 		if (currentPosition != null) {
 
 			/* print out the area map when in developer mode */
-			// if (RunAStar.DEVELOPER_MODE) {
-			RunAStar.getMap().printMap();
-			// }
+			if (RunAStar.DEVELOPER_MODE) {
+				RunAStar.getMap().printMap();
+			}
 
 			/* this sets the new start of the A* to the current position */
 			start = currentPosition;
@@ -513,8 +515,7 @@ public class Agent extends Subject implements Runnable {
 					 * Go one step ahead. Do this by unblocking the current
 					 * position and blocking the next position.
 					 */
-					occupyNode(currentPosition, false);
-					occupyNode(desiredPosition, true);
+					occupyOneStepAhead();
 
 					/* then perform the step */
 					i++;
@@ -551,6 +552,11 @@ public class Agent extends Subject implements Runnable {
 			this.getThread().interrupt();
 			System.out.println("thread is now interrupted");
 		}
+	}
+
+	private synchronized void occupyOneStepAhead() {
+		occupyNode(currentPosition, false);
+		occupyNode(desiredPosition, true);
 	}
 
 	/**
