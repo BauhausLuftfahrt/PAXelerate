@@ -350,6 +350,8 @@ public class Agent extends Subject implements Runnable {
 		/* this is only run if its not the initial path finding process */
 		if (currentPosition != null) {
 
+			occupyNode(currentPosition, false);
+
 			/* print out the area map when in developer mode */
 			if (RunAStar.DEVELOPER_MODE) {
 				RunAStar.getMap().printMap();
@@ -533,9 +535,11 @@ public class Agent extends Subject implements Runnable {
 						/* catch possible errors */
 					} catch (ConcurrentModificationException e) {
 						System.out
-								.println("Concurrent modification exception!");
+								.println("###### !ConcurrentModificationException ERROR! ###### !AGENT - setPosition()! ######");
+					} catch (ArrayIndexOutOfBoundsException a) {
 						System.out
 								.println("###### !ArrayIndexOutOfBoundsException ERROR! ###### !AGENT - setPosition()! ######");
+
 					}
 
 					/* sleep as long as one step takes */

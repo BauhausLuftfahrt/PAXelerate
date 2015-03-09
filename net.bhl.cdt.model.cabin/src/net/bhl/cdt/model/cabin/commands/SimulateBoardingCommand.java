@@ -87,9 +87,8 @@ public class SimulateBoardingCommand extends CDTCommand implements Runnable {
 		DrawCabinCommand drawCom = new DrawCabinCommand(cabin);
 		drawCom.doRun();
 		//
-		// GeneratePassengersCommand paxCom = new
-		// GeneratePassengersCommand(cabin);
-		// paxCom.doRun();
+		GeneratePassengersCommand paxCom = new GeneratePassengersCommand(cabin);
+		paxCom.doRun();
 
 		for (Passenger passenger : cabin.getPassengers()) {
 			passenger.setIsSeated(false);
@@ -175,9 +174,9 @@ public class SimulateBoardingCommand extends CDTCommand implements Runnable {
 						astar.getPassengerLocations(), Passenger.class)) {
 					if (pax.isIsSeated() && !alreadySeatedList.contains(pax)) {
 
-						logger.log(new Status(IStatus.INFO,
-								"net.bhl.cdt.model.cabin", "Passenger "
-										+ pax.getName() + " is now seated!"));
+						// logger.log(new Status(IStatus.INFO,
+						// "net.bhl.cdt.model.cabin", "Passenger "
+						// + pax.getName() + " is now seated!"));
 						alreadySeatedList.add(pax);
 						try {
 							infoViewPart.update(cabin);

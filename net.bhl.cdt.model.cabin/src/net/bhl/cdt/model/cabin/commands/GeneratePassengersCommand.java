@@ -171,10 +171,10 @@ public class GeneratePassengersCommand extends CDTCommand {
 					Passenger newPassenger = CabinFactory.eINSTANCE
 							.createPassenger();
 					cabin.getPassengers().add(newPassenger);
-					newPassenger.setId(FuncLib.uniqueRandom(
-							randomPassengerId, 1, totalPax + 1));
-					newPassenger.setSeat(FuncLib.uniqueRandom(
-							randomSeatId, seatAreaBegin, seatsInClass));
+					newPassenger.setId(FuncLib.uniqueRandom(randomPassengerId,
+							1, totalPax + 1));
+					newPassenger.setSeat(FuncLib.uniqueRandom(randomSeatId,
+							seatAreaBegin, seatsInClass));
 					newPassenger.setName(newPassenger.getId() + " ("
 							+ getSeat(newPassenger).getName() + ")");
 					newPassenger.setSeatRef(getSeat(newPassenger));
@@ -198,23 +198,20 @@ public class GeneratePassengersCommand extends CDTCommand {
 						sex = Sex.MALE;
 					}
 
-					if (FuncLib.randomValue(0, 2) == 1) {
-						newPassenger.setPassengerMood(PassengerMood.AGRESSIVE);
-					} else {
-						newPassenger.setPassengerMood(PassengerMood.PASSIVE);
-					}
+					// if (FuncLib.randomValue(0, 2) == 1) {
+					// newPassenger.setPassengerMood(PassengerMood.AGRESSIVE);
+					// } else {
+					newPassenger.setPassengerMood(PassengerMood.PASSIVE);
+					// }
 					newPassenger.setSex(sex);
 					newPassenger.setAge(FuncLib.randomValue(18, 70));
-					newPassenger.setHeight(FuncLib
-							.randomValue(150, 200));
-					newPassenger
-							.setWeight(FuncLib.randomValue(60, 110));
+					newPassenger.setHeight(FuncLib.randomValue(150, 200));
+					newPassenger.setWeight(FuncLib.randomValue(60, 110));
 					newPassenger.setDepth(FuncLib.randomValue(20, 50));
 					newPassenger.setWidth(FuncLib.randomValue(30, 60));
-					newPassenger.setWalkingSpeed((double) FuncLib
-							.randomValue(5, 15) / 20);
-					newPassenger.setLuggageStowTime(FuncLib
-							.randomValue(5, 10));
+					newPassenger.setWalkingSpeed((double) FuncLib.randomValue(
+							5, 15) / 20);
+					newPassenger.setLuggageStowTime(FuncLib.randomValue(5, 10));
 					/********************************************************/
 					passengerIdCount++;
 					passengerPerClassCount++;

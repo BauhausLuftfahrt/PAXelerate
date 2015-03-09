@@ -95,7 +95,7 @@ public class Path {
 	 * @param n
 	 *            the node
 	 */
-	public void prependWayPoint(Node n) {
+	public synchronized void prependWayPoint(Node n) {
 		waypoints.add(0, n);
 	}
 

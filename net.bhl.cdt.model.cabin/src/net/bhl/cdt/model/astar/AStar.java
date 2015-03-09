@@ -6,6 +6,7 @@
 package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
+
 import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.astar.Node.Property;
 import net.bhl.cdt.model.cabin.util.FuncLib;
@@ -51,14 +52,8 @@ public class AStar {
 	private void calculateShortestPath() {
 
 		/* mark start and goal node */
-		// map.setStartLocation(agent.getStart());
-		// map.getNode(agent.getStart()).setProperty(Property.START,
-		// agent.getPassenger().getId());
 		map.getNode(agent.getGoal()).setProperty(Property.GOAL,
 				agent.getPassenger().getId());
-
-		FuncLib.printVectorToLog(map.getNode(agent.getStart()).getPosition(),
-				"start");
 
 		/* reset the properties of the start node */
 		map.getNode(agent.getStart()).setDistanceFromStart(0);
@@ -89,7 +84,6 @@ public class AStar {
 				/* the start node does never have a previous node! */
 				if (map.getNode(agent.getStart()) != null) {
 					map.getNode(agent.getStart()).setPreviousNode(null);
-					System.out.println("AStar - node is set to zero");
 				}
 
 				/* if there is a path found, reconstruct it */
@@ -196,13 +190,25 @@ public class AStar {
 	 *            the specific node
 	 * @return the path
 	 */
-	private Path reconstructPath(Node node) {
+	private synchronized Path reconstructPath(Node node) {
+
 		Path path = new Path();
-		while (node.getPreviousNode() != null) {
-			// while (!FuncLib.vectorsAreEqual(node.getPosition(),
-			// agent.getStart())) {
-			path.prependWayPoint(node);
-			node = node.getPreviousNode();
+		try {
+
+			while (node.getPreviousNode() != null && node != null) {
+
+				if (node != null) {
+					path.prependWayPoint(node);
+				}
+				if (node.getPreviousNode() != null) {
+					node = node.getPreviousNode();
+				}
+
+			}
+		} catch (NullPointerException e) {
+			System.out
+					.println("###### !NullPointerException ERROR! ###### !AStar - reconstructPath()! ######");
+			e.printStackTrace();
 		}
 		return path;
 	}

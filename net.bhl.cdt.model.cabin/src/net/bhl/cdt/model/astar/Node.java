@@ -107,6 +107,19 @@ public class Node implements Comparable<Node> {
 		this.cost = cost;
 	}
 
+	public String getTypeForPrinting() {
+		switch (property) {
+		case OBSTACLE:
+			return "X";
+		case AGENT:
+			return "O";
+		case DEFAULT:
+			return " ";
+		default:
+			return "?";
+		}
+	}
+
 	/**
 	 * This method sets the corresponding node.
 	 * 
@@ -274,7 +287,7 @@ public class Node implements Comparable<Node> {
 	 * 
 	 * @return the node
 	 */
-	public Node getPreviousNode() {
+	public synchronized Node getPreviousNode() {
 		return previousNode;
 	}
 

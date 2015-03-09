@@ -7,11 +7,14 @@ package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+
 import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
+import net.bhl.cdt.model.cabin.ui.AboutView;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.cabin.util.Vector2D;
 import net.bhl.cdt.model.util.ModelHelper;
@@ -33,6 +36,8 @@ public class RunAStar {
 	private StopWatch anotherStopwatch = new StopWatch();
 	private Vector dimensions;
 	public static final boolean DEVELOPER_MODE = false;
+
+	private static JFrame frame;
 
 	/**
 	 * This method constructs the RunAStar algorithm.
@@ -158,5 +163,38 @@ public class RunAStar {
 		for (Agent agent : agentList) {
 			agent.start();
 		}
+
+		// runAreaMapWindow();
+	}
+
+	private void runAreaMapWindow() {
+
+		final AboutView view = new AboutView();
+
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				frame = new JFrame("Area Map Rendering");
+				frame.setContentPane(view);
+				frame.pack();
+				frame.setVisible(true);
+			}
+		});
+
+		final Thread gameThread = new Thread() {
+
+			public void run() {
+				while (true) {
+					try {
+						view.setAreamap(areamap);
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		};
+		gameThread.start(); // Callback run()
+
 	}
 }
