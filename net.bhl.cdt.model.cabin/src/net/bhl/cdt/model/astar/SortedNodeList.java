@@ -40,7 +40,8 @@ public class SortedNodeList {
 		try {
 			Collections.sort(list);
 		} catch (IllegalArgumentException e) {
-			System.out.println("List could not be sorted!");
+			System.out
+					.println("###### !IllegalArgumentException ERROR! ###### !SortedNodeList - add()! ######");
 		}
 	}
 

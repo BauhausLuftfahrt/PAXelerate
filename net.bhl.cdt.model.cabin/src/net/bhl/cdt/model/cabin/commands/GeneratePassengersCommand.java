@@ -199,9 +199,9 @@ public class GeneratePassengersCommand extends CDTCommand {
 					}
 
 					// if (FuncLib.randomValue(0, 2) == 1) {
-					// newPassenger.setPassengerMood(PassengerMood.AGRESSIVE);
+					newPassenger.setPassengerMood(PassengerMood.AGRESSIVE);
 					// } else {
-					newPassenger.setPassengerMood(PassengerMood.PASSIVE);
+					// newPassenger.setPassengerMood(PassengerMood.PASSIVE);
 					// }
 					newPassenger.setSex(sex);
 					newPassenger.setAge(FuncLib.randomValue(18, 70));

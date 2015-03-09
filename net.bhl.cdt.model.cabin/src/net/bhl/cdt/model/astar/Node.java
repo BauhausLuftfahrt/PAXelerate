@@ -339,7 +339,7 @@ public class Node implements Comparable<Node> {
 	 *            the other node
 	 * @return returns the better node value
 	 */
-	public int compareTo(Node otherNode) {
+	public synchronized int compareTo(Node otherNode) {
 		int better = -1;
 		int equal = 0;
 		int worse = 1;

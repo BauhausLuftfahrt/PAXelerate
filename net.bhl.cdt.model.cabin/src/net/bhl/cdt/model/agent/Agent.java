@@ -619,6 +619,7 @@ public class Agent extends Subject implements Runnable {
 
 			/* clear the current position of the agent */
 			occupyNode(currentPosition, false);
+			occupyNode(desiredPosition, false);
 
 			/* RunAStar is notified that a passenger is seated now */
 			RunAStar.setPassengerSeated(passenger, this);
