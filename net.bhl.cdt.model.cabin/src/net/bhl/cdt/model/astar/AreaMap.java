@@ -156,7 +156,13 @@ public class AreaMap {
 	 * @return the node
 	 */
 	public Node getNodeByCoordinate(int x, int y) {
-		return map.get(x).get(y);
+		try {
+			return map.get(x).get(y);
+		} catch (ArrayIndexOutOfBoundsException e) {
+			return null;
+		} catch (NullPointerException e) {
+			return null;
+		}
 	}
 
 	/**

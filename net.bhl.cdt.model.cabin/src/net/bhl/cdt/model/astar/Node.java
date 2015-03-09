@@ -34,7 +34,9 @@ public class Node implements Comparable<Node> {
 	private Vector position = new Vector2D(0, 0);
 	private int cost;
 	private Property property;
+
 	private int linkedAgentID;
+
 	private ArrayList<NodeProperty> startList = new ArrayList<NodeProperty>();
 
 	public ArrayList<NodeProperty> getStartList() {
@@ -83,7 +85,7 @@ public class Node implements Comparable<Node> {
 
 	public synchronized void setProperty(Property property, int agentID) {
 		this.property = property;
-		linkedAgentID = agentID;
+		this.linkedAgentID = agentID;
 	}
 
 	public synchronized void removeItemById(int id) {

@@ -164,7 +164,7 @@ public class RunAStar {
 			agent.start();
 		}
 
-		// runAreaMapWindow();
+		runAreaMapWindow();
 	}
 
 	private void runAreaMapWindow() {

@@ -53,6 +53,9 @@ public class Agent extends Subject implements Runnable {
 	private AgentMood agentMood;
 	private boolean exitTheMainLoop = false;
 
+	private int depth;
+	private int width;
+
 	/* constant values */
 	private final CostMap finalCostmap;
 	private final Passenger passenger;
@@ -92,6 +95,12 @@ public class Agent extends Subject implements Runnable {
 		} else if (passenger.getPassengerMood() == PassengerMood.PASSIVE) {
 			this.agentMood = new PassiveMood(this);
 		}
+
+		this.depth = Math.max(
+				this.getPassenger().getDepth() / (this.scale * 2), 1);
+		this.width = Math.max(
+				this.getPassenger().getWidth() / (this.scale * 2), 1);
+
 	}
 
 	/**
@@ -167,7 +176,6 @@ public class Agent extends Subject implements Runnable {
 
 	private synchronized void occupyNode(Vector vector, boolean occupy) {
 
-		occupyloop:
 		/* use monitor so that only one thread can occupy a node at a time */
 		synchronized (vector) {
 
@@ -186,36 +194,36 @@ public class Agent extends Subject implements Runnable {
 				System.out.println("Node already blocked. Error!");
 			}
 
-			/* defines in which direction the nodes are blocked behind the agent */
-			// int[][] valuesNorth = { { 0, 1 }, { 0, 2 }, { 0, 3 } };
-			// int[][] valuesWest = { { 1, 0 }, { 2, 0 }, { 3, 0 } };
-			// // TODO: am besten einen Schweif hinter sich blocken!!
-			// int[][] values = { { 0, 0 }, { 0, 0 }, { 0, 0 } };
-			// switch (getRotation()) {
-			// case 180:
-			// values = valuesNorth;
-			// break;
-			// case 90:
-			// values = valuesWest;
-			// default:
-			RunAStar.getMap().getNode(vector)
-					.setProperty(property, this.passenger.getId());
-			break occupyloop;
-			// }
+			for (int x = -width; x <= width; x++) {
+				for (int y = -depth; y <= depth; y++) {
 
-			// /* and then block the nodes! */
-			// for (int i = 0; i < 3; i++) {
-			// try {
-			// RunAStar.getMap()
-			// .getNodeByCoordinate(vector.getX() - values[i][0],
-			// vector.getY() - values[i][1])
-			// .setProperty(property, this);
-			// } catch (ArrayIndexOutOfBoundsException e) {
-			// System.out
-			// .println("###### !ArrayIndexOutOfBoundsException ERROR! ###### !AGENT - occupyNode()! ######");
-			// /* the node is out of the cabin bounds */
-			// }
-			// }
+					if (RunAStar.getMap().getNodeByCoordinate(
+							vector.getX() + x, vector.getY() + y) != null) {
+						if (RunAStar
+								.getMap()
+								.getNodeByCoordinate(vector.getX() + x,
+										vector.getY() + y).getLinkedAgentID() == this.passenger
+								.getId()
+								|| RunAStar
+										.getMap()
+										.getNodeByCoordinate(vector.getX() + x,
+												vector.getY() + y)
+										.getProperty() != Property.AGENT) {
+
+							if (RunAStar
+									.getMap()
+									.getNodeByCoordinate(vector.getX() + x,
+											vector.getY() + y).getProperty() != Property.OBSTACLE) {
+								RunAStar.getMap()
+										.getNodeByCoordinate(vector.getX() + x,
+												vector.getY() + y)
+										.setProperty(property,
+												this.passenger.getId());
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 
@@ -417,17 +425,25 @@ public class Agent extends Subject implements Runnable {
 	private boolean nodeBlockedBySomeoneElse(Vector vector) {
 
 		/* get the node at the location */
-		Node checkNode = RunAStar.getMap().getNode(vector);
 
 		/* check if it is blocked */
-		if (checkNode.getProperty() == Property.AGENT) {
+		for (int x = -this.width; x <= this.width; x++) {
+			for (int y = -this.depth; y <= this.depth; y++) {
 
-			/* check if its was not this agent who blocked it */
-			if (checkNode.getLinkedAgentID() != this.passenger.getId()) {
-				return true;
+				Node checkNode = RunAStar.getMap().getNodeByCoordinate(
+						vector.getX() + x, vector.getY() + y);
+				if (checkNode.getProperty() == Property.AGENT) {
+
+					/* check if its was not this agent who blocked it */
+					if (checkNode.getLinkedAgentID() != this.passenger.getId()) {
+						return true;
+					}
+				}
 			}
+
 		}
 		return false;
+
 	}
 
 	/**
