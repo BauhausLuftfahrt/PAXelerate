@@ -208,7 +208,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 					newPassenger.setAge(FuncLib.randomValue(18, 70));
 					newPassenger.setHeight(FuncLib.randomValue(150, 200));
 					newPassenger.setWeight(FuncLib.randomValue(60, 110));
-					newPassenger.setDepth(FuncLib.randomValue(10, 30));
+					newPassenger.setDepth(FuncLib.randomValue(10, 20));
 					newPassenger.setWidth(FuncLib.randomValue(40, 60));
 					newPassenger.setWalkingSpeed((double) FuncLib.randomValue(
 							5, 15) / 20);

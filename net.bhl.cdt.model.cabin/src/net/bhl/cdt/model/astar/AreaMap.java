@@ -162,6 +162,8 @@ public class AreaMap {
 			return null;
 		} catch (NullPointerException e) {
 			return null;
+		} catch (IndexOutOfBoundsException e) {
+			return null;
 		}
 	}
 

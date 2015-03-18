@@ -97,12 +97,12 @@ public class Agent extends Subject implements Runnable {
 		}
 
 		this.depth = Math.max(
-				this.getPassenger().getDepth() / (this.scale * 2), 1);
+				(int) (this.getPassenger().getDepth() / (this.scale * 2)), 1);
 		this.width = Math.max(
-				this.getPassenger().getWidth() / (this.scale * 2), 1);
+				(int) (this.getPassenger().getWidth() / (this.scale * 2)), 1);
 
-		widthSwitch = width;
-		depthSwitch = depth;
+		this.widthSwitch = this.width;
+		this.depthSwitch = this.depth;
 
 	}
 
