@@ -432,15 +432,17 @@ public class Agent extends Subject implements Runnable {
 
 				Node checkNode = RunAStar.getMap().getNodeByCoordinate(
 						vector.getX() + x, vector.getY() + y);
-				if (checkNode.getProperty() == Property.AGENT) {
+				if (checkNode != null) {
+					if (checkNode.getProperty() == Property.AGENT) {
 
-					/* check if its was not this agent who blocked it */
-					if (checkNode.getLinkedAgentID() != this.passenger.getId()) {
-						return true;
+						/* check if its was not this agent who blocked it */
+						if (checkNode.getLinkedAgentID() != this.passenger
+								.getId()) {
+							return true;
+						}
 					}
 				}
 			}
-
 		}
 		return false;
 

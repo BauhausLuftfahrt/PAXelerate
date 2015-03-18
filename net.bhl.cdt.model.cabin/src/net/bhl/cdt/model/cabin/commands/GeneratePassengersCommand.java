@@ -189,9 +189,10 @@ public class GeneratePassengersCommand extends CDTCommand {
 					/******************** random values ***********************/
 
 					/*
-					 * note that the 2 integers have the following meaning:
-					 * first integer: lower bound second integer: the upper
-					 * bound The upper bound is never reached!
+					 * note that the 2 integer values have the following
+					 * meanings: first integer is the lower bound, second
+					 * integer is the upper bound. The upper bound is never
+					 * reached! Result is part of: [l,u[
 					 */
 
 					if (FuncLib.randomValue(0, 2) == 1) {
@@ -207,8 +208,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 					newPassenger.setAge(FuncLib.randomValue(18, 70));
 					newPassenger.setHeight(FuncLib.randomValue(150, 200));
 					newPassenger.setWeight(FuncLib.randomValue(60, 110));
-					newPassenger.setDepth(FuncLib.randomValue(20, 50));
-					newPassenger.setWidth(FuncLib.randomValue(30, 60));
+					newPassenger.setDepth(FuncLib.randomValue(10, 30));
+					newPassenger.setWidth(FuncLib.randomValue(40, 60));
 					newPassenger.setWalkingSpeed((double) FuncLib.randomValue(
 							5, 15) / 20);
 					newPassenger.setLuggageStowTime(FuncLib.randomValue(5, 10));
