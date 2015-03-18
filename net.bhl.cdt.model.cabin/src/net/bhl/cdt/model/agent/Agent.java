@@ -9,13 +9,10 @@ package net.bhl.cdt.model.agent;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 
-import javax.sql.rowset.spi.SyncResolver;
-
 import net.bhl.cdt.model.astar.AStar;
 import net.bhl.cdt.model.agent.AggressiveMood;
 import net.bhl.cdt.model.astar.CostMap;
 import net.bhl.cdt.model.agent.PassiveMood;
-import net.bhl.cdt.model.astar.AreaMap;
 import net.bhl.cdt.model.astar.Node;
 import net.bhl.cdt.model.astar.Node.Property;
 import net.bhl.cdt.model.astar.Path;
@@ -62,6 +59,9 @@ public class Agent extends Subject implements Runnable {
 	private final int scale;
 	private final int speedfactor;
 
+	private int widthSwitch;
+	private int depthSwitch;
+
 	public Passenger getPassenger() {
 		return passenger;
 	}
@@ -100,6 +100,9 @@ public class Agent extends Subject implements Runnable {
 				this.getPassenger().getDepth() / (this.scale * 2), 1);
 		this.width = Math.max(
 				this.getPassenger().getWidth() / (this.scale * 2), 1);
+
+		widthSwitch = width;
+		depthSwitch = depth;
 
 	}
 
@@ -165,6 +168,16 @@ public class Agent extends Subject implements Runnable {
 						/ scale - 5));
 	}
 
+	private void rotateRectangular() {
+		if (getRotation() == 270 || getRotation() == 90) {
+			widthSwitch = depth;
+			depthSwitch = width;
+		} else if (getRotation() == 0 || getRotation() == 180) {
+			widthSwitch = width;
+			depthSwitch = depth;
+		}
+	}
+
 	/**
 	 * This method occupies a specific area within the area map.
 	 * 
@@ -194,8 +207,12 @@ public class Agent extends Subject implements Runnable {
 				System.out.println("Node already blocked. Error!");
 			}
 
-			for (int x = -width; x <= width; x++) {
-				for (int y = -depth; y <= depth; y++) {
+			if (occupy && FuncLib.rectangular(getRotation())) {
+				rotateRectangular();
+			}
+
+			for (int x = -widthSwitch; x <= widthSwitch; x++) {
+				for (int y = -depthSwitch; y <= depthSwitch; y++) {
 
 					if (RunAStar.getMap().getNodeByCoordinate(
 							vector.getX() + x, vector.getY() + y) != null) {

@@ -187,16 +187,14 @@ public abstract class FuncLib {
 		}
 	}
 
-	public static int[][] rotateClockwise(int[][] mat) {
-		final int M = mat.length;
-		final int N = mat[0].length;
-		int[][] ret = new int[N][M];
-		for (int r = 0; r < M; r++) {
-			for (int c = 0; c < N; c++) {
-				ret[c][M - 1 - r] = mat[r][c];
-			}
+	public static boolean rectangular(double rot) {
+		if (rot == 0) {
+			return true;
 		}
-		return ret;
+		if (rot % 90 == 0) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
