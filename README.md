@@ -5,16 +5,13 @@ Welcome to the repository of the Bauhaus Luftfahrt Boarding Simulation!
 ### What is this repository for? ###
 
 * This repository hosts the code of our boarding simulation
-* The current version is *alpha 0.1*
+* The current version uner development is *alpha 0.2*
 * Work on the implementation in java began in November 2014
 
 ### How do I get set up? ###
 
-* Install openCDT plugin according to [this tutorial](http://sourceforge.net/p/opencdt/wiki/Eclipse%20Developer%20Installation/)
-* Install checkstyle plguin according to  [this tutorial](http://sourceforge.net/p/opencdt/wiki/Eclipse%20Developer%20Installation/)
-* install the Boarding Simulation plugin according to [this tutorial](https://bitbucket.org/michele_muc/paxsim/wiki/boardingsim-installation)
-
-
+* Install openCDT and Boarding Simulation plugin using [this tutorial](https://bitbucket.org/michele_muc/paxsim/wiki/installation)
+* Get started with [Git repositoy](https://bitbucket.org/michele_muc/paxsim/wiki/git) handling
 
 ### Contributors ###
 
@@ -28,7 +25,7 @@ Welcome to the repository of the Bauhaus Luftfahrt Boarding Simulation!
 
 ### What is the future plan? ###
 
-* Bauhaus Luftfahrt e.V. wants to release this as open source some time in the future.
+* Bauhaus Luftfahrt e.V. wants to release this as open source mid 2015.
 * We want to handle future conceptual aircraft designs
 * We want to validate the tool 
 * ...
