@@ -62,6 +62,8 @@ public class Agent extends Subject implements Runnable {
 	private int widthSwitch;
 	private int depthSwitch;
 
+	private int[][] passengerArea;
+
 	public Passenger getPassenger() {
 		return passenger;
 	}
@@ -100,6 +102,9 @@ public class Agent extends Subject implements Runnable {
 				(int) (this.getPassenger().getDepth() / (this.scale * 2)), 1);
 		this.width = Math.max(
 				(int) (this.getPassenger().getWidth() / (this.scale * 2)), 1);
+
+		passengerArea = new int[(int) (this.getPassenger().getDepth() / (this.scale))][(int) (this
+				.getPassenger().getWidth() / (this.scale))];
 
 		this.widthSwitch = this.width;
 		this.depthSwitch = this.depth;
@@ -168,55 +173,44 @@ public class Agent extends Subject implements Runnable {
 						/ scale - 5));
 	}
 
-	private void blockDiagonal(Vector vector, boolean occupy, Property property) {
-		for (int x = -widthSwitch; x <= widthSwitch; x++) {
-			for (int y = -depthSwitch; y <= depthSwitch; y++) {
-
-				if (RunAStar.getMap().getNodeByCoordinate(vector.getX() + x,
-						vector.getY() + y) != null) {
-					if (RunAStar
-							.getMap()
-							.getNodeByCoordinate(vector.getX() + x,
-									vector.getY() + y).getLinkedAgentID() == this.passenger
-							.getId()
-							|| RunAStar
-									.getMap()
-									.getNodeByCoordinate(vector.getX() + x,
-											vector.getY() + y).getProperty() != Property.AGENT) {
-
-						if (RunAStar
-								.getMap()
-								.getNodeByCoordinate(vector.getX() + x,
-										vector.getY() + y).getProperty() != Property.OBSTACLE) {
-							RunAStar.getMap()
-									.getNodeByCoordinate(vector.getX() + x,
-											vector.getY() + y)
-									.setProperty(property,
-											this.passenger.getId());
-						}
-					}
-				}
-			}
-		}
-	}
-
+	/**
+	 * This method blocks the agents position if the rotation is rectangular.
+	 * 
+	 * @param vector
+	 *            is the vector of the agents position
+	 * @param occupy
+	 *            occupy or deoccupy the node
+	 * @param property
+	 *            set the property of the node
+	 */
 	private void blockRectangular(Vector vector, boolean occupy,
 			Property property) {
+
+		/* only change rotation when blocking a new node */
 		if (occupy) {
 			if (getRotation() == 270 || getRotation() == 90) {
+
+				/* switch width and depth */
 				widthSwitch = depth;
 				depthSwitch = width;
+
 			} else if (getRotation() == 0 || getRotation() == 180) {
+
+				/* switch width and depth */
 				widthSwitch = width;
 				depthSwitch = depth;
 			}
 		}
 
+		/* loop through the body of the agent */
 		for (int x = -widthSwitch; x <= widthSwitch; x++) {
 			for (int y = -depthSwitch; y <= depthSwitch; y++) {
 
+				/* check if the desired node is out of bounds */
 				if (RunAStar.getMap().getNodeByCoordinate(vector.getX() + x,
 						vector.getY() + y) != null) {
+
+					/* check if the agent itself blocked the node */
 					if (RunAStar
 							.getMap()
 							.getNodeByCoordinate(vector.getX() + x,
@@ -227,10 +221,16 @@ public class Agent extends Subject implements Runnable {
 									.getNodeByCoordinate(vector.getX() + x,
 											vector.getY() + y).getProperty() != Property.AGENT) {
 
+						/* check if the node is no obstacle */
 						if (RunAStar
 								.getMap()
 								.getNodeByCoordinate(vector.getX() + x,
 										vector.getY() + y).getProperty() != Property.OBSTACLE) {
+
+							/*
+							 * set the node to the desired property and link the
+							 * agent id
+							 */
 							RunAStar.getMap()
 									.getNodeByCoordinate(vector.getX() + x,
 											vector.getY() + y)
@@ -260,6 +260,14 @@ public class Agent extends Subject implements Runnable {
 			property = Property.AGENT;
 		}
 
+		int counter = getRotation() % 45;
+
+		for (int i = 0; i < getRotation() % 45; i++) {
+			FuncLib.Rotate45(passengerArea);
+		}
+
+		FuncLib.printArray(passengerArea);
+
 		/*
 		 * check the possibility that the node is already blocked by an agent.
 		 * Normally this should never happen.
@@ -269,10 +277,11 @@ public class Agent extends Subject implements Runnable {
 			System.out.println("Node already blocked. Error!");
 		}
 
+		/* block the agents position depending on the rotation */
 		if (FuncLib.rectangular(getRotation())) {
 			blockRectangular(vector, occupy, property);
 		} else {
-			blockDiagonal(vector, occupy, property);
+			// blockDiagonal(vector, occupy, property);
 		}
 	}
 
@@ -459,7 +468,7 @@ public class Agent extends Subject implements Runnable {
 	 *            the specific vector
 	 * @return if the node is blocked by someone else
 	 */
-	private boolean nodeBlockedBySomeoneElse(Vector vector) {
+	private boolean nodeBlockedBySomeoneElseOrObstacle(Vector vector) {
 
 		/* get the node at the location */
 
@@ -477,6 +486,11 @@ public class Agent extends Subject implements Runnable {
 								.getId()) {
 							return true;
 						}
+					}
+					if (checkNode.getProperty() == Property.OBSTACLE) {
+						System.out
+								.println("###### !OVERLAPPING OF AGENT AND OBSTACLE! ###### !AGENT - nodeBlockedBySomeoneElseOrObstacle()! ######");
+						// return true;
 					}
 				}
 			}
@@ -525,7 +539,7 @@ public class Agent extends Subject implements Runnable {
 				desiredPosition = path.get(i).getPosition();
 
 				/* check if the desired next step is blocked by someone else */
-				if (nodeBlockedBySomeoneElse(desiredPosition)) {
+				if (nodeBlockedBySomeoneElseOrObstacle(desiredPosition)) {
 
 					/* raise the interrupts counter up by one */
 					numbOfInterupts++;
