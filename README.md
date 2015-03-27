@@ -11,7 +11,7 @@ Welcome to the repository of the Bauhaus Luftfahrt Boarding Simulation!
 ### How do I get set up? ###
 
 * Install openCDT and Boarding Simulation plugin using [this tutorial](https://bitbucket.org/michele_muc/paxsim/wiki/installation)
-* Get started with [Git repositoy](https://bitbucket.org/michele_muc/paxsim/wiki/git) handling
+* Get started with [Git repository](https://bitbucket.org/michele_muc/paxsim/wiki/git) handling
 
 ### Contributors ###
 
