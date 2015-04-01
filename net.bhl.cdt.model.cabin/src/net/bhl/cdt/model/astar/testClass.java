@@ -29,7 +29,7 @@ public class testClass {
 		if (backgroundarray != null) {
 			FuncLib.printArray(backgroundarray);
 		} else {
-			System.out.println("Something went wrong!");
+			System.out.println("Something went very wrong!");
 		}
 
 	}
