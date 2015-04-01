@@ -217,11 +217,16 @@ public abstract class FuncLib {
 
 	public static void printArray(int[][] array) {
 
-		for (int i = 0; i < array[0].length; i++) {
-			for (int j = 0; j < array.length; j++) {
-				System.out.print(array[i][j]);
+		for (int i = 0; i < array.length; i++) {
+			for (int j = 0; j < array[0].length; j++) {
+				if (array[i][j] != 0) {
+					System.out.print(array[i][j]);
+				} else {
+					System.out.print("-");
+				}
 			}
 			System.out.println();
 		}
+		System.out.println();
 	}
 }
