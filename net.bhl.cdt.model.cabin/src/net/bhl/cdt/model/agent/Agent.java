@@ -22,6 +22,7 @@ import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.util.FuncLib;
+import net.bhl.cdt.model.cabin.util.Rotator;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.cabin.util.Vector2D;
 import net.bhl.cdt.model.observer.Subject;
@@ -263,7 +264,7 @@ public class Agent extends Subject implements Runnable {
 		int counter = getRotation() % 45;
 
 		for (int i = 0; i < getRotation() % 45; i++) {
-			FuncLib.Rotate45(passengerArea);
+			Rotator.rotate45(passengerArea);
 		}
 
 		FuncLib.printArray(passengerArea);
