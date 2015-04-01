@@ -264,7 +264,7 @@ public class Agent extends Subject implements Runnable {
 		int counter = getRotation() % 45;
 
 		for (int i = 0; i < getRotation() % 45; i++) {
-			Rotator.rotate45(passengerArea);
+			Rotator.rotate(45, passengerArea);
 		}
 
 		FuncLib.printArray(passengerArea);

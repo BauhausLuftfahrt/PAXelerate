@@ -1,5 +1,6 @@
 package net.bhl.cdt.model.cabin.util;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Arrays;
  */
 public class Rotator {
 
-	public static Vector RoundIndexToPoint(int index, int radius) {
+	private static Vector RoundIndexToPoint(int index, int radius) {
 		if (radius == 0)
 			return new Vector2D(0, 0);
 		Vector2D result = new Vector2D(-radius, -radius);
@@ -37,9 +38,86 @@ public class Rotator {
 		return result;
 	}
 
-	public static int[][] rotate45(int[][] array) {
+	private static int[][] removeEmptyRows(int[][] array) {
+		ArrayList<Integer> storageX = new ArrayList<Integer>();
+		for (int x = 0; x < array.length; x++) {
+			boolean onlyZeros = true;
+			int xStor = 0;
+			forloop: for (int y = 0; y < array[0].length; y++) {
+				if (array[x][y] != 0) {
+					onlyZeros = false;
 
-		int dim = Math.max(array[1].length, array.length);
+					break forloop;
+				}
+
+			}
+			if (onlyZeros) {
+				xStor = x;
+				storageX.add(xStor);
+			}
+		}
+
+		ArrayList<Integer> storageY = new ArrayList<Integer>();
+		for (int y = 0; y < array[0].length; y++) {
+			boolean onlyZeros = true;
+			int yStor = 0;
+			forloop: for (int x = 0; x < array.length; x++) {
+				if (array[x][y] != 0) {
+					onlyZeros = false;
+					break forloop;
+				}
+			}
+			if (onlyZeros) {
+				yStor = y;
+				storageY.add(yStor);
+			}
+		}
+
+		FuncLib.printIntegerListToLog(storageX);
+		FuncLib.printIntegerListToLog(storageY);
+
+		int[][] newArray = new int[array.length - storageX.size()][array[0].length
+				- storageY.size()];
+
+		System.out.println("xDim: " + newArray.length);
+		System.out.println("yDim: " + newArray[0].length);
+
+		System.out.println("xStorage: " + storageX.size());
+		System.out.println("yStorage: " + storageY.size());
+
+		System.out.println();
+
+		for (int x = 0, a = 0; x < newArray.length; x++, a++) {
+			for (int y = 0, b = 0; y < newArray[0].length; y++, b++) {
+				if (containsValue(storageX, x)) {
+					b++;
+					break;
+
+					// TODO: falscher Ausschnitt wird geladen.
+				}
+				newArray[x][y] = array[a][b];
+			}
+		}
+
+		return newArray;
+	}
+
+	private static boolean containsValue(ArrayList<Integer> list, int value) {
+		for (int a : list) {
+			if (a == value) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private static int[][] rotate45(int[][] array) {
+
+		int dim = Math.max(array[0].length, array.length);
+
+		if (dim % 2 == 0) {
+			dim += 1;
+		}
 
 		int[][] result = new int[dim][dim];
 
@@ -63,69 +141,19 @@ public class Rotator {
 				}
 			}
 		}
+
 		return result;
 	}
 
-	public static int[][] cutArrayFront(int[][] array, int xCut, int yCut) {
-
-		int[][] newArray = new int[array.length - xCut][array[0].length - yCut];
-
-		for (int i = 0; i < newArray.length; i++) {
-			for (int j = 0; j < newArray[0].length; j++) {
-				newArray[i][j] = array[xCut + i][yCut + j];
-			}
-		}
-
-		return newArray;
-
-	}
-
-	public static int[][] cutArrayBack(int[][] array, int xCut, int yCut) {
-
-		int[][] newArray = new int[array.length - xCut][array[0].length - yCut];
-
-		for (int i = 0; i < newArray.length; i++) {
-			for (int j = 0; j < newArray[0].length; j++) {
-				newArray[i][j] = array[i][j];
-			}
-		}
-
-		return newArray;
-
-	}
-
-	public static int[][] RotatePart(int degrees, int[][] array, Vector start,
-			Vector dimensions) {
-
-		if (degrees == 0) {
+	public static int[][] rotate(int degrees, int[][] array) {
+		if (degrees == 0 || degrees % 45 != 0) {
 			return null;
 		}
-
-		int rest = degrees % 45;
-		int times = degrees / 45;
-		if (rest != 0) {
-			return null;
+		for (int i = 0; i < (degrees / 45); i++) {
+			array = rotate45(array);
+			FuncLib.printArray(array);
 		}
-		int[][] rotatingArea = new int[dimensions.getX()][dimensions.getY()];
-		for (int i = 0; i < dimensions.getX(); i++) {
-			rotatingArea[i] = Arrays.copyOfRange(array[i + start.getX()],
-					start.getY(), start.getY() + dimensions.getY());
-		}
-
-		FuncLib.printArray(rotatingArea);
-
-		for (int j = 0; j < times; j++) {
-			rotatingArea = rotate45(rotatingArea);
-		}
-
-		FuncLib.printArray(rotatingArea);
-
-		for (int i = 0; i < dimensions.getX(); i++) {
-			for (int j = 0; j < dimensions.getY(); j++) {
-				array[start.getX() + i][start.getY() + j] = rotatingArea[i][j];
-			}
-		}
-
+		array = removeEmptyRows(array);
 		return array;
 	}
 }

@@ -171,6 +171,17 @@ public abstract class FuncLib {
 		}
 	}
 
+	public static void printIntegerListToLog(ArrayList<Integer> list) {
+		for (Integer object : list) {
+			System.out.print(object);
+			if (!object.equals(list.get(list.size() - 1))) {
+				System.out.print(",");
+			}
+		}
+		System.out.println();
+		System.out.println();
+	}
+
 	/**
 	 * This method prints a vector to the log.
 	 * 
