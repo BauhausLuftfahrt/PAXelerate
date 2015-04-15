@@ -237,8 +237,10 @@ public class Agent extends Subject implements Runnable {
 		}
 
 		/* rotate the 2d int array which has stored the layout of the agent */
-		passengerAreaModifier = Rotator.rotate(getRotation(), passengerArea);
-
+		if (occupy) {
+			passengerAreaModifier = Rotator
+					.rotate(getRotation(), passengerArea);
+		}
 		/* if no rotation is needed or possible, skip the rotation process */
 		if (passengerAreaModifier == null) {
 			passengerAreaModifier = passengerArea;
