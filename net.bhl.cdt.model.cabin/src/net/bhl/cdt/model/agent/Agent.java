@@ -220,6 +220,7 @@ public class Agent extends Subject implements Runnable {
 
 	private synchronized void occupyNodeArea(Vector vector, boolean occupy) {
 
+		/* switch the property depending on whether a node is blocked or release */
 		Property property = Property.DEFAULT;
 
 		if (occupy) {
@@ -235,21 +236,27 @@ public class Agent extends Subject implements Runnable {
 			System.out.println("Node already blocked. Error!");
 		}
 
+		/* rotate the 2d int array which has stored the layout of the agent */
 		passengerAreaModifier = Rotator.rotate(getRotation(), passengerArea);
+
+		/* if no rotation is needed or possible, skip the rotation process */
 		if (passengerAreaModifier == null) {
 			passengerAreaModifier = passengerArea;
 		}
-		FuncLib.printArray(passengerAreaModifier);
 
 		double dimension = Math.max(passengerAreaModifier.length,
 				passengerAreaModifier[1].length);
-		System.out.println("the dimension equals " + dimension);
+
+		int addIt = 0;
+		/* if the dimension is odd */
+		if (dimension % 2 == 0) {
+			addIt = 0;
+		}
 
 		int dim = (int) (dimension / 2);
 
-		System.out.println("half of this is " + dim);
-		for (int x = -dim; x <= dim; x++) {
-			for (int y = -dim; y <= dim; y++) {
+		for (int x = -dim; x <= dim - addIt; x++) {
+			for (int y = -dim; y <= dim - addIt; y++) {
 				Vector location = new Vector2D(vector.getX() + x, vector.getY()
 						+ y);
 
