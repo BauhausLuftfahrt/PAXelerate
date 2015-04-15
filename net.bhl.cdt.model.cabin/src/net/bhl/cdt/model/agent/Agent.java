@@ -209,6 +209,62 @@ public class Agent extends Subject implements Runnable {
 		}
 	}
 
+	private synchronized void occupyNodeAreaRotateOnly(Vector vector,
+			boolean occupy) {
+
+		/* switch the property depending on whether a node is blocked or release */
+		Property property = Property.DEFAULT;
+
+		if (occupy) {
+			property = Property.AGENT;
+		}
+
+		/*
+		 * check the possibility that the node is already blocked by an agent.
+		 * Normally this should never happen.
+		 */
+		if (RunAStar.getMap().getNode(vector).getProperty() == Property.AGENT
+				&& occupy) {
+			System.out.println("Node already blocked. Error!");
+		}
+
+		/* rotate the 2d int array which has stored the layout of the agent */
+		if (occupy) {
+			passengerAreaModifier = Rotator.rotate(90, passengerArea);
+		}
+		/* if no rotation is needed or possible, skip the rotation process */
+		if (passengerAreaModifier == null) {
+			passengerAreaModifier = passengerArea;
+		}
+
+		double dimension = Math.max(passengerAreaModifier.length,
+				passengerAreaModifier[1].length);
+
+		int addIt = 0;
+
+		/* if the dimension is odd */
+		// TODO: check if there is a problem with even / odd dimensions.
+		if (dimension % 2 == 0) {
+			addIt = 0;
+		}
+
+		int dim = (int) (dimension / 2);
+
+		for (int x = -dim; x <= dim - addIt; x++) {
+			for (int y = -dim; y <= dim - addIt; y++) {
+				Vector location = new Vector2D(vector.getX() + x, vector.getY()
+						+ y);
+
+				if (x + dim < passengerAreaModifier.length
+						&& y + dim < passengerAreaModifier[0].length) {
+					if (passengerAreaModifier[x + dim][y + dim] == 1) {
+						blockNode(location, occupy, property);
+					}
+				}
+			}
+		}
+	}
+
 	/**
 	 * This method occupies a specific area within the area map.
 	 * 
@@ -250,7 +306,9 @@ public class Agent extends Subject implements Runnable {
 				passengerAreaModifier[1].length);
 
 		int addIt = 0;
+
 		/* if the dimension is odd */
+		// TODO: check if there is a problem with even / odd dimensions.
 		if (dimension % 2 == 0) {
 			addIt = 0;
 		}
@@ -556,6 +614,9 @@ public class Agent extends Subject implements Runnable {
 					 * should be stowed now next
 					 */
 				} else if (passengerStowsLuggage() && !alreadyStowed) {
+
+					occupyNodeArea(currentPosition, false);
+					occupyNodeAreaRotateOnly(currentPosition, true);
 
 					/* sleep the thread as long as the luggage is stowed */
 					Thread.sleep((int) (passenger.getLuggageStowTime() * 1000 / 2 / speedfactor));
