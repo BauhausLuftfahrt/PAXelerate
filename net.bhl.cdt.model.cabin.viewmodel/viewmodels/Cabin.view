@@ -43,11 +43,6 @@
     </children>
     <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout">
       <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" name="Preferences">
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control boardingTime" readonly="true">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Cabin/boardingTime"/>
-          </domainModelReference>
-        </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control framesPerSecond">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Cabin/framesPerSecond"/>
@@ -63,6 +58,20 @@
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Cabin/usePresetSettings"/>
           </domainModelReference>
         </children>
+      </children>
+    </children>
+  </children>
+  <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout">
+    <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" name="Simulation Results" readonly="true">
+      <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Real Elapsed Time" readonly="true">
+        <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Cabin/realElapsedTime"/>
+        </domainModelReference>
+      </children>
+      <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Estimated Simulation Time" readonly="true">
+        <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Cabin/EstimatedSimulationTime"/>
+        </domainModelReference>
       </children>
     </children>
   </children>

@@ -28,10 +28,11 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getStowages <em>Stowages</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getPassengers <em>Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getScale <em>Scale</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getBoardingTime <em>Boarding Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getRealElapsedTime <em>Real Elapsed Time</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getAircraftType <em>Aircraft Type</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#isUsePresetSettings <em>Use Preset Settings</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSpeedFactor <em>Speed Factor</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getEstimatedSimulationTime <em>Estimated Simulation Time</em>}</li>
  * </ul>
  * </p>
  *
@@ -219,6 +220,32 @@ public interface Cabin extends NamedElement {
 	void setScale(int value);
 
 	/**
+	 * Returns the value of the '<em><b>Real Elapsed Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Real Elapsed Time</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Real Elapsed Time</em>' attribute.
+	 * @see #setRealElapsedTime(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_RealElapsedTime()
+	 * @model
+	 * @generated
+	 */
+	int getRealElapsedTime();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getRealElapsedTime <em>Real Elapsed Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Real Elapsed Time</em>' attribute.
+	 * @see #getRealElapsedTime()
+	 * @generated
+	 */
+	void setRealElapsedTime(int value);
+
+	/**
 	 * Returns the value of the '<em><b>Frames Per Second</b></em>' attribute.
 	 * The default value is <code>"5"</code>.
 	 * <!-- begin-user-doc -->
@@ -287,32 +314,6 @@ public interface Cabin extends NamedElement {
 	 * @generated
 	 */
 	void setNumberOfDecks(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Boarding Time</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Boarding Time</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Boarding Time</em>' attribute.
-	 * @see #setBoardingTime(int)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_BoardingTime()
-	 * @model
-	 * @generated
-	 */
-	int getBoardingTime();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getBoardingTime <em>Boarding Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Boarding Time</em>' attribute.
-	 * @see #getBoardingTime()
-	 * @generated
-	 */
-	void setBoardingTime(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Aircraft Type</b></em>' attribute.
@@ -396,6 +397,32 @@ public interface Cabin extends NamedElement {
 	 * @generated
 	 */
 	void setSpeedFactor(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Estimated Simulation Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Estimated Simulation Time</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Estimated Simulation Time</em>' attribute.
+	 * @see #setEstimatedSimulationTime(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_EstimatedSimulationTime()
+	 * @model
+	 * @generated
+	 */
+	int getEstimatedSimulationTime();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getEstimatedSimulationTime <em>Estimated Simulation Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Estimated Simulation Time</em>' attribute.
+	 * @see #getEstimatedSimulationTime()
+	 * @generated
+	 */
+	void setEstimatedSimulationTime(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Classes</b></em>' containment reference list.

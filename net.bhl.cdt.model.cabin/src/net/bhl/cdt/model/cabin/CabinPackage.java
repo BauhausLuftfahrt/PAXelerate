@@ -213,13 +213,13 @@ public interface CabinPackage extends EPackage {
 	int CABIN__SCALE = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 14;
 
 	/**
-	 * The feature id for the '<em><b>Boarding Time</b></em>' attribute.
+	 * The feature id for the '<em><b>Real Elapsed Time</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__BOARDING_TIME = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 15;
+	int CABIN__REAL_ELAPSED_TIME = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 15;
 
 	/**
 	 * The feature id for the '<em><b>Aircraft Type</b></em>' attribute.
@@ -249,13 +249,22 @@ public interface CabinPackage extends EPackage {
 	int CABIN__SPEED_FACTOR = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 18;
 
 	/**
+	 * The feature id for the '<em><b>Estimated Simulation Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN__ESTIMATED_SIMULATION_TIME = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 19;
+
+	/**
 	 * The number of structural features of the '<em>Cabin</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_FEATURE_COUNT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 19;
+	int CABIN_FEATURE_COUNT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 20;
 
 	/**
 	 * The number of operations of the '<em>Cabin</em>' class.
@@ -2346,6 +2355,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getCabin_Scale();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getRealElapsedTime <em>Real Elapsed Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Real Elapsed Time</em>'.
+	 * @see net.bhl.cdt.model.cabin.Cabin#getRealElapsedTime()
+	 * @see #getCabin()
+	 * @generated
+	 */
+	EAttribute getCabin_RealElapsedTime();
+
+	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getFramesPerSecond <em>Frames Per Second</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2379,17 +2399,6 @@ public interface CabinPackage extends EPackage {
 	EAttribute getCabin_NumberOfDecks();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getBoardingTime <em>Boarding Time</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Boarding Time</em>'.
-	 * @see net.bhl.cdt.model.cabin.Cabin#getBoardingTime()
-	 * @see #getCabin()
-	 * @generated
-	 */
-	EAttribute getCabin_BoardingTime();
-
-	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getAircraftType <em>Aircraft Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2421,6 +2430,17 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCabin_SpeedFactor();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getEstimatedSimulationTime <em>Estimated Simulation Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Estimated Simulation Time</em>'.
+	 * @see net.bhl.cdt.model.cabin.Cabin#getEstimatedSimulationTime()
+	 * @see #getCabin()
+	 * @generated
+	 */
+	EAttribute getCabin_EstimatedSimulationTime();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link net.bhl.cdt.model.cabin.Cabin#getClasses <em>Classes</em>}'.
@@ -3539,6 +3559,13 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute CABIN__SCALE = eINSTANCE.getCabin_Scale();
 		/**
+		 * The meta object literal for the '<em><b>Real Elapsed Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN__REAL_ELAPSED_TIME = eINSTANCE.getCabin_RealElapsedTime();
+		/**
 		 * The meta object literal for the '<em><b>Frames Per Second</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3560,13 +3587,6 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute CABIN__NUMBER_OF_DECKS = eINSTANCE.getCabin_NumberOfDecks();
 		/**
-		 * The meta object literal for the '<em><b>Boarding Time</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CABIN__BOARDING_TIME = eINSTANCE.getCabin_BoardingTime();
-		/**
 		 * The meta object literal for the '<em><b>Aircraft Type</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3587,6 +3607,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CABIN__SPEED_FACTOR = eINSTANCE.getCabin_SpeedFactor();
+		/**
+		 * The meta object literal for the '<em><b>Estimated Simulation Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN__ESTIMATED_SIMULATION_TIME = eINSTANCE.getCabin_EstimatedSimulationTime();
 		/**
 		 * The meta object literal for the '<em><b>Classes</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->

@@ -190,9 +190,9 @@ public class SimulateBoardingCommand extends CDTCommand implements Runnable {
 				}
 
 				s.stop();
-				logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
-						"Elapsed time for boarding: " + s.getElapsedTimeSecs()
-								+ " seconds"));
+				cabin.setEstimatedSimulationTime(s.getElapsedTimeSecs()
+						* cabin.getSpeedFactor());
+				cabin.setRealElapsedTime(s.getElapsedTimeSecs());
 
 				if (!obstaclemap.equals(null)) {
 					Image image = cabinViewPart.submitObstacleMap(obstaclemap

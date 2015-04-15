@@ -54,10 +54,11 @@ public class CabinItemProvider
 			addFramesPerSecondPropertyDescriptor(object);
 			addNumberOfDecksPropertyDescriptor(object);
 			addScalePropertyDescriptor(object);
-			addBoardingTimePropertyDescriptor(object);
+			addRealElapsedTimePropertyDescriptor(object);
 			addAircraftTypePropertyDescriptor(object);
 			addUsePresetSettingsPropertyDescriptor(object);
 			addSpeedFactorPropertyDescriptor(object);
+			addEstimatedSimulationTimePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -129,6 +130,28 @@ public class CabinItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Real Elapsed Time feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRealElapsedTimePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_realElapsedTime_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_realElapsedTime_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__REAL_ELAPSED_TIME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Frames Per Second feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -164,28 +187,6 @@ public class CabinItemProvider
 				 getString("_UI_Cabin_numberOfDecks_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_numberOfDecks_feature", "_UI_Cabin_type"),
 				 CabinPackage.Literals.CABIN__NUMBER_OF_DECKS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Boarding Time feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addBoardingTimePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Cabin_boardingTime_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_boardingTime_feature", "_UI_Cabin_type"),
-				 CabinPackage.Literals.CABIN__BOARDING_TIME,
 				 true,
 				 false,
 				 false,
@@ -252,6 +253,28 @@ public class CabinItemProvider
 				 getString("_UI_Cabin_speedFactor_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_speedFactor_feature", "_UI_Cabin_type"),
 				 CabinPackage.Literals.CABIN__SPEED_FACTOR,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Estimated Simulation Time feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEstimatedSimulationTimePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_EstimatedSimulationTime_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_EstimatedSimulationTime_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__ESTIMATED_SIMULATION_TIME,
 				 true,
 				 false,
 				 false,
@@ -385,10 +408,11 @@ public class CabinItemProvider
 			case CabinPackage.CABIN__FRAMES_PER_SECOND:
 			case CabinPackage.CABIN__NUMBER_OF_DECKS:
 			case CabinPackage.CABIN__SCALE:
-			case CabinPackage.CABIN__BOARDING_TIME:
+			case CabinPackage.CABIN__REAL_ELAPSED_TIME:
 			case CabinPackage.CABIN__AIRCRAFT_TYPE:
 			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
 			case CabinPackage.CABIN__SPEED_FACTOR:
+			case CabinPackage.CABIN__ESTIMATED_SIMULATION_TIME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CabinPackage.CABIN__CLASSES:
