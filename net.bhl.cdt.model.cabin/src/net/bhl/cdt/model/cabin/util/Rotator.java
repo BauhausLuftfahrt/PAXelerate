@@ -38,78 +38,80 @@ public class Rotator {
 		return result;
 	}
 
-	private static int[][] removeEmptyRows(int[][] array) {
-		ArrayList<Integer> storageX = new ArrayList<Integer>();
-		for (int x = 0; x < array.length; x++) {
-			boolean onlyZeros = true;
-			int xStor = 0;
-			forloop: for (int y = 0; y < array[0].length; y++) {
-				if (array[x][y] != 0) {
-					onlyZeros = false;
-
-					break forloop;
-				}
-
-			}
-			if (onlyZeros) {
-				xStor = x;
-				storageX.add(xStor);
-			}
-		}
-
-		ArrayList<Integer> storageY = new ArrayList<Integer>();
-		for (int y = 0; y < array[0].length; y++) {
-			boolean onlyZeros = true;
-			int yStor = 0;
-			forloop: for (int x = 0; x < array.length; x++) {
-				if (array[x][y] != 0) {
-					onlyZeros = false;
-					break forloop;
-				}
-			}
-			if (onlyZeros) {
-				yStor = y;
-				storageY.add(yStor);
-			}
-		}
-
-		FuncLib.printIntegerListToLog(storageX);
-		FuncLib.printIntegerListToLog(storageY);
-
-		int[][] newArray = new int[array.length - storageX.size()][array[0].length
-				- storageY.size()];
-
-		System.out.println("xDim: " + newArray.length);
-		System.out.println("yDim: " + newArray[0].length);
-
-		System.out.println("xStorage: " + storageX.size());
-		System.out.println("yStorage: " + storageY.size());
-
-		System.out.println();
-
-		for (int x = 0, a = 0; x < newArray.length; x++, a++) {
-			for (int y = 0, b = 0; y < newArray[0].length; y++, b++) {
-				if (containsValue(storageX, x)) {
-					b++;
-					break;
-
-					// TODO: falscher Ausschnitt wird geladen.
-				}
-				newArray[x][y] = array[a][b];
-			}
-		}
-
-		return newArray;
-	}
-
-	private static boolean containsValue(ArrayList<Integer> list, int value) {
-		for (int a : list) {
-			if (a == value) {
-				return true;
-			}
-		}
-		return false;
-	}
+	// private static int[][] removeEmptyRows(int[][] array) {
+	// ArrayList<Integer> storageX = new ArrayList<Integer>();
+	// for (int x = 0; x < array.length; x++) {
+	// boolean onlyZeros = true;
+	// int xStor = 0;
+	// forloop: for (int y = 0; y < array[0].length; y++) {
+	// if (array[x][y] != 0) {
+	// onlyZeros = false;
+	//
+	// break forloop;
+	// }
+	//
+	// }
+	// if (onlyZeros) {
+	// xStor = x;
+	// storageX.add(xStor);
+	// }
+	// }
+	//
+	// ArrayList<Integer> storageY = new ArrayList<Integer>();
+	// for (int y = 0; y < array[0].length; y++) {
+	// boolean onlyZeros = true;
+	// int yStor = 0;
+	// forloop: for (int x = 0; x < array.length; x++) {
+	// if (array[x][y] != 0) {
+	// onlyZeros = false;
+	// break forloop;
+	// }
+	// }
+	// if (onlyZeros) {
+	// yStor = y;
+	// storageY.add(yStor);
+	// }
+	// }
+	//
+	// FuncLib.printIntegerListToLog(storageX);
+	// FuncLib.printIntegerListToLog(storageY);
+	//
+	// int[][] newArray = new int[array.length -
+	// storageX.size()][array[0].length
+	// - storageY.size()];
+	//
+	// System.out.println("xDim: " + newArray.length);
+	// System.out.println("yDim: " + newArray[0].length);
+	//
+	// System.out.println("xStorage: " + storageX.size());
+	// System.out.println("yStorage: " + storageY.size());
+	//
+	// System.out.println();
+	//
+	// for (int x = 0, a = 0; x < newArray.length; x++, a++) {
+	// for (int y = 0, b = 0; y < newArray[0].length; y++, b++) {
+	// if (containsValue(storageX, x)) {
+	// b++;
+	// break;
+	//
+	// // TODO: falscher Ausschnitt wird geladen.
+	// }
+	// newArray[x][y] = array[a][b];
+	// }
+	// }
+	//
+	// return newArray;
+	// }
+	//
+	// private static boolean containsValue(ArrayList<Integer> list, int value)
+	// {
+	// for (int a : list) {
+	// if (a == value) {
+	// return true;
+	// }
+	// }
+	// return false;
+	// }
 
 	private static int[][] rotate45(int[][] array) {
 
@@ -151,9 +153,7 @@ public class Rotator {
 		}
 		for (int i = 0; i < (degrees / 45); i++) {
 			array = rotate45(array);
-			FuncLib.printArray(array);
 		}
-		array = removeEmptyRows(array);
 		return array;
 	}
 }
