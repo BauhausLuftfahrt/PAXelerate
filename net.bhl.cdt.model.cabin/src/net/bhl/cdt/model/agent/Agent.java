@@ -665,8 +665,8 @@ public class Agent extends Subject implements Runnable {
 			stopwatch.stop();
 
 			/* the boarding time is then submitted back to the passenger */
-			passenger.setBoardingTime(stopwatch.getElapsedTimeSecs()
-					* speedfactor);
+			passenger
+					.setBoardingTime((int) (stopwatch.getElapsedTimeSecs() * speedfactor));
 
 			/* the number of interrupts is submitted to the passenger */
 			passenger.setNumberOfWaits(numbOfInterupts);

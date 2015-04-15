@@ -6,6 +6,7 @@
 
 package net.bhl.cdt.model.cabin.commands;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import net.bhl.cdt.commands.CDTCommand;
@@ -16,6 +17,7 @@ import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.InfoViewPart;
+import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.GetInput;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.cabin.util.GetInput.WindowType;
@@ -190,9 +192,11 @@ public class SimulateBoardingCommand extends CDTCommand implements Runnable {
 				}
 
 				s.stop();
-				cabin.setEstimatedSimulationTime(s.getElapsedTimeSecs()
-						* cabin.getSpeedFactor());
-				cabin.setRealElapsedTime(s.getElapsedTimeSecs());
+				cabin.setEstimatedSimulationTime(FuncLib.round((s
+						.getElapsedTime() / 1000.0 * (double) cabin
+						.getSpeedFactor()), 2));
+				cabin.setRealElapsedTime(FuncLib.round(
+						(s.getElapsedTime() / 1000.0), 2));
 
 				if (!obstaclemap.equals(null)) {
 					Image image = cabinViewPart.submitObstacleMap(obstaclemap

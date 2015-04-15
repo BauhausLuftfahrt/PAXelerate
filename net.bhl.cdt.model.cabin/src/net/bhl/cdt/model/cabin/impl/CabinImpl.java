@@ -263,7 +263,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int REAL_ELAPSED_TIME_EDEFAULT = 0;
+	protected static final double REAL_ELAPSED_TIME_EDEFAULT = 0.0;
 	/**
 	 * The cached value of the '{@link #getRealElapsedTime() <em>Real Elapsed Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -272,7 +272,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected int realElapsedTime = REAL_ELAPSED_TIME_EDEFAULT;
+	protected double realElapsedTime = REAL_ELAPSED_TIME_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getAircraftType() <em>Aircraft Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -335,7 +335,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int ESTIMATED_SIMULATION_TIME_EDEFAULT = 0;
+	protected static final double ESTIMATED_SIMULATION_TIME_EDEFAULT = 0.0;
 	/**
 	 * The cached value of the '{@link #getEstimatedSimulationTime() <em>Estimated Simulation Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -344,7 +344,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected int estimatedSimulationTime = ESTIMATED_SIMULATION_TIME_EDEFAULT;
+	protected double estimatedSimulationTime = ESTIMATED_SIMULATION_TIME_EDEFAULT;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -504,7 +504,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getRealElapsedTime() {
+	public double getRealElapsedTime() {
 		return realElapsedTime;
 	}
 
@@ -513,8 +513,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRealElapsedTime(int newRealElapsedTime) {
-		int oldRealElapsedTime = realElapsedTime;
+	public void setRealElapsedTime(double newRealElapsedTime) {
+		double oldRealElapsedTime = realElapsedTime;
 		realElapsedTime = newRealElapsedTime;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__REAL_ELAPSED_TIME, oldRealElapsedTime, realElapsedTime));
@@ -642,7 +642,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getEstimatedSimulationTime() {
+	public double getEstimatedSimulationTime() {
 		return estimatedSimulationTime;
 	}
 
@@ -651,8 +651,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setEstimatedSimulationTime(int newEstimatedSimulationTime) {
-		int oldEstimatedSimulationTime = estimatedSimulationTime;
+	public void setEstimatedSimulationTime(double newEstimatedSimulationTime) {
+		double oldEstimatedSimulationTime = estimatedSimulationTime;
 		estimatedSimulationTime = newEstimatedSimulationTime;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__ESTIMATED_SIMULATION_TIME, oldEstimatedSimulationTime, estimatedSimulationTime));
@@ -855,7 +855,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				setScale((Integer)newValue);
 				return;
 			case CabinPackage.CABIN__REAL_ELAPSED_TIME:
-				setRealElapsedTime((Integer)newValue);
+				setRealElapsedTime((Double)newValue);
 				return;
 			case CabinPackage.CABIN__AIRCRAFT_TYPE:
 				setAircraftType((AircraftType)newValue);
@@ -867,7 +867,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				setSpeedFactor((Integer)newValue);
 				return;
 			case CabinPackage.CABIN__ESTIMATED_SIMULATION_TIME:
-				setEstimatedSimulationTime((Integer)newValue);
+				setEstimatedSimulationTime((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

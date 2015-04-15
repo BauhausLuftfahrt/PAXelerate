@@ -228,12 +228,12 @@ public interface Cabin extends NamedElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Real Elapsed Time</em>' attribute.
-	 * @see #setRealElapsedTime(int)
+	 * @see #setRealElapsedTime(double)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_RealElapsedTime()
 	 * @model
 	 * @generated
 	 */
-	int getRealElapsedTime();
+	double getRealElapsedTime();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getRealElapsedTime <em>Real Elapsed Time</em>}' attribute.
@@ -243,7 +243,7 @@ public interface Cabin extends NamedElement {
 	 * @see #getRealElapsedTime()
 	 * @generated
 	 */
-	void setRealElapsedTime(int value);
+	void setRealElapsedTime(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Frames Per Second</b></em>' attribute.
@@ -407,12 +407,12 @@ public interface Cabin extends NamedElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Estimated Simulation Time</em>' attribute.
-	 * @see #setEstimatedSimulationTime(int)
+	 * @see #setEstimatedSimulationTime(double)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_EstimatedSimulationTime()
 	 * @model
 	 * @generated
 	 */
-	int getEstimatedSimulationTime();
+	double getEstimatedSimulationTime();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getEstimatedSimulationTime <em>Estimated Simulation Time</em>}' attribute.
@@ -422,7 +422,7 @@ public interface Cabin extends NamedElement {
 	 * @see #getEstimatedSimulationTime()
 	 * @generated
 	 */
-	void setEstimatedSimulationTime(int value);
+	void setEstimatedSimulationTime(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Classes</b></em>' containment reference list.
