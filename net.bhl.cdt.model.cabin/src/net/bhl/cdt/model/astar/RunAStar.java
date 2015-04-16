@@ -13,6 +13,7 @@ import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
+import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.AboutView;
 import net.bhl.cdt.model.cabin.util.Vector;
@@ -74,6 +75,10 @@ public class RunAStar {
 	 */
 	public static void setSimulationDone(Boolean bool) {
 		simulationDone = bool;
+	}
+
+	public static Cabin getCabin() {
+		return cabin;
 	}
 
 	/**

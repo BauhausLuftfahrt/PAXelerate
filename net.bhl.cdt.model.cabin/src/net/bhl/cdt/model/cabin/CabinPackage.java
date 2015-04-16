@@ -1089,13 +1089,31 @@ public interface CabinPackage extends EPackage {
 	int SEAT__TRAVEL_CLASS = PHYSICAL_OBJECT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Row</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEAT__ROW = PHYSICAL_OBJECT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Occupied</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEAT__OCCUPIED = PHYSICAL_OBJECT_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Seat</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEAT_FEATURE_COUNT = PHYSICAL_OBJECT_FEATURE_COUNT + 4;
+	int SEAT_FEATURE_COUNT = PHYSICAL_OBJECT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Seat</em>' class.
@@ -2776,6 +2794,28 @@ public interface CabinPackage extends EPackage {
 	EReference getSeat_TravelClass();
 
 	/**
+	 * Returns the meta object for the reference '{@link net.bhl.cdt.model.cabin.Seat#getRow <em>Row</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Row</em>'.
+	 * @see net.bhl.cdt.model.cabin.Seat#getRow()
+	 * @see #getSeat()
+	 * @generated
+	 */
+	EReference getSeat_Row();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Seat#isOccupied <em>Occupied</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Occupied</em>'.
+	 * @see net.bhl.cdt.model.cabin.Seat#isOccupied()
+	 * @see #getSeat()
+	 * @generated
+	 */
+	EAttribute getSeat_Occupied();
+
+	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.Passenger <em>Passenger</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3847,6 +3887,20 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SEAT__TRAVEL_CLASS = eINSTANCE.getSeat_TravelClass();
+		/**
+		 * The meta object literal for the '<em><b>Row</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SEAT__ROW = eINSTANCE.getSeat_Row();
+		/**
+		 * The meta object literal for the '<em><b>Occupied</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SEAT__OCCUPIED = eINSTANCE.getSeat_Occupied();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.PassengerImpl <em>Passenger</em>}' class.
 		 * <!-- begin-user-doc -->

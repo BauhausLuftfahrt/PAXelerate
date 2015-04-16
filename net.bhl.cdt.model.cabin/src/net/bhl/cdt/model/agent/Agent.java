@@ -20,6 +20,7 @@ import net.bhl.cdt.model.astar.RunAStar;
 import net.bhl.cdt.model.astar.StopWatch;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerMood;
+import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Rotator;
@@ -608,6 +609,12 @@ public class Agent extends Subject implements Runnable {
 					 * if there is no obstacle or luggage stowing required, run
 					 * the default step
 					 */
+				} else if (waitingForClearingOfRow()) {
+
+					Thread.sleep((int) (100));
+
+					System.out.println("Someone is already in that row! :(");
+
 				} else {
 
 					/*
@@ -653,6 +660,19 @@ public class Agent extends Subject implements Runnable {
 			this.getThread().interrupt();
 			System.out.println("thread is now interrupted");
 		}
+	}
+
+	private boolean waitingForClearingOfRow() {
+
+		Seat mySeat = passenger.getSeatRef();
+
+		if (desiredPosition.getY() == (int) (mySeat.getYPosition() / scale - 4)) {
+			if (someoneAlreadyInThisPartOfTheRow(mySeat)) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	private synchronized void occupyOneStepAhead() {
@@ -704,6 +724,9 @@ public class Agent extends Subject implements Runnable {
 			/* when the goal is reached, the passenger is defined seated */
 			passenger.setIsSeated(true);
 
+			/* then the assigned seat is declared occupied */
+			passenger.getSeatRef().setOccupied(true);
+
 			/* the stop watch is then interrupted */
 			stopwatch.stop();
 
@@ -726,6 +749,39 @@ public class Agent extends Subject implements Runnable {
 			/* This loop is run if there was an unknown error during runtime */
 			System.out.println("thread got an error");
 		}
+	}
+
+	private boolean someoneAlreadyInThisPartOfTheRow(Seat mySeat) {
+		Row row = mySeat.getRow();
+		for (Seat checkSeat : row.getSeats()) {
+			if (checkSeat.isOccupied()) {
+				if (sameSideOfAisle(checkSeat, mySeat))
+					return true;
+			}
+		}
+		return false;
+	}
+
+	/* TODO: VERY BAD STYLE!!! // ONLY APPLICABLE FOR 3-3 CONFIGURATIONS! */
+	private boolean sameSideOfAisle(Seat checkSeat, Seat mySeat) {
+
+		if (mySeat.getLetter().equals("A") || mySeat.getLetter().equals("B")
+				|| mySeat.getLetter().equals("C")) {
+			if (checkSeat.getLetter().equals("A")
+					|| checkSeat.getLetter().equals("B")
+					|| checkSeat.getLetter().equals("C")) {
+				return true;
+			}
+		}
+		if (mySeat.getLetter().equals("D") || mySeat.getLetter().equals("E")
+				|| mySeat.getLetter().equals("F")) {
+			if (checkSeat.getLetter().equals("D")
+					|| checkSeat.getLetter().equals("E")
+					|| checkSeat.getLetter().equals("F")) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**

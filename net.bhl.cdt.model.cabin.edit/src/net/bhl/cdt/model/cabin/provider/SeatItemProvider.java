@@ -47,6 +47,8 @@ public class SeatItemProvider
 			addCrewSeatPropertyDescriptor(object);
 			addLetterPropertyDescriptor(object);
 			addTravelClassPropertyDescriptor(object);
+			addRowPropertyDescriptor(object);
+			addOccupiedPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -140,6 +142,50 @@ public class SeatItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Row feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRowPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Seat_row_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Seat_row_feature", "_UI_Seat_type"),
+				 CabinPackage.Literals.SEAT__ROW,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Occupied feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOccupiedPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Seat_occupied_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Seat_occupied_feature", "_UI_Seat_type"),
+				 CabinPackage.Literals.SEAT__OCCUPIED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Seat.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -179,6 +225,7 @@ public class SeatItemProvider
 			case CabinPackage.SEAT__SEAT_BLOCKED:
 			case CabinPackage.SEAT__CREW_SEAT:
 			case CabinPackage.SEAT__LETTER:
+			case CabinPackage.SEAT__OCCUPIED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

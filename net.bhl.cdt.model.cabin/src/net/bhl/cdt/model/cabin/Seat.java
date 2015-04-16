@@ -16,6 +16,8 @@ package net.bhl.cdt.model.cabin;
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#isCrewSeat <em>Crew Seat</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#getLetter <em>Letter</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#getTravelClass <em>Travel Class</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Seat#getRow <em>Row</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Seat#isOccupied <em>Occupied</em>}</li>
  * </ul>
  * </p>
  *
@@ -127,5 +129,57 @@ public interface Seat extends PhysicalObject {
 	 * @generated
 	 */
 	void setTravelClass(TravelClass value);
+
+	/**
+	 * Returns the value of the '<em><b>Row</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Row</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Row</em>' reference.
+	 * @see #setRow(Row)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSeat_Row()
+	 * @model required="true"
+	 * @generated
+	 */
+	Row getRow();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Seat#getRow <em>Row</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Row</em>' reference.
+	 * @see #getRow()
+	 * @generated
+	 */
+	void setRow(Row value);
+
+	/**
+	 * Returns the value of the '<em><b>Occupied</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Occupied</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Occupied</em>' attribute.
+	 * @see #setOccupied(boolean)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSeat_Occupied()
+	 * @model
+	 * @generated
+	 */
+	boolean isOccupied();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Seat#isOccupied <em>Occupied</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Occupied</em>' attribute.
+	 * @see #isOccupied()
+	 * @generated
+	 */
+	void setOccupied(boolean value);
 
 } // Seat

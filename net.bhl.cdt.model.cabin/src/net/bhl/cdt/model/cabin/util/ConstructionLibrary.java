@@ -337,6 +337,7 @@ public class ConstructionLibrary {
 		newSeat.setXPosition(globalSeatPositionX);
 		newSeat.setYPosition(globalSeatPositionY);
 		newSeat.setTravelClass(passengerClass);
+		newSeat.setRow(row);
 	}
 
 	/**
