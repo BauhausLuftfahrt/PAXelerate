@@ -60,8 +60,8 @@ public class Agent extends Subject implements Runnable {
 	private final int scale;
 	private final int speedfactor;
 
-	private int[][] passengerArea;
-	private int[][] passengerAreaModifier;
+	private int[][] defaultPassengerArea;
+	private int[][] adaptedPassengerArea;
 
 	public Passenger getPassenger() {
 		return passenger;
@@ -97,11 +97,11 @@ public class Agent extends Subject implements Runnable {
 			this.agentMood = new PassiveMood(this);
 		}
 
-		passengerArea = new int[(int) (this.getPassenger().getWidth() / (this.scale))][(int) (this
+		defaultPassengerArea = new int[(int) (this.getPassenger().getWidth() / (this.scale))][(int) (this
 				.getPassenger().getDepth() / (this.scale))];
 		for (int i = 0; i < (int) (this.getPassenger().getWidth() / (this.scale)); i++) {
 			for (int j = 0; j < (int) (this.getPassenger().getDepth() / (this.scale)); j++) {
-				passengerArea[i][j] = 1;
+				defaultPassengerArea[i][j] = 1;
 			}
 		}
 
@@ -209,62 +209,6 @@ public class Agent extends Subject implements Runnable {
 		}
 	}
 
-	private synchronized void occupyNodeAreaRotateOnly(Vector vector,
-			boolean occupy) {
-
-		/* switch the property depending on whether a node is blocked or release */
-		Property property = Property.DEFAULT;
-
-		if (occupy) {
-			property = Property.AGENT;
-		}
-
-		/*
-		 * check the possibility that the node is already blocked by an agent.
-		 * Normally this should never happen.
-		 */
-		if (RunAStar.getMap().getNode(vector).getProperty() == Property.AGENT
-				&& occupy) {
-			System.out.println("Node already blocked. Error!");
-		}
-
-		/* rotate the 2d int array which has stored the layout of the agent */
-		if (occupy) {
-			passengerAreaModifier = Rotator.rotate(90, passengerArea);
-		}
-		/* if no rotation is needed or possible, skip the rotation process */
-		if (passengerAreaModifier == null) {
-			passengerAreaModifier = passengerArea;
-		}
-
-		double dimension = Math.max(passengerAreaModifier.length,
-				passengerAreaModifier[1].length);
-
-		int addIt = 0;
-
-		/* if the dimension is odd */
-		// TODO: check if there is a problem with even / odd dimensions.
-		if (dimension % 2 == 0) {
-			addIt = 0;
-		}
-
-		int dim = (int) (dimension / 2);
-
-		for (int x = -dim; x <= dim - addIt; x++) {
-			for (int y = -dim; y <= dim - addIt; y++) {
-				Vector location = new Vector2D(vector.getX() + x, vector.getY()
-						+ y);
-
-				if (x + dim < passengerAreaModifier.length
-						&& y + dim < passengerAreaModifier[0].length) {
-					if (passengerAreaModifier[x + dim][y + dim] == 1) {
-						blockNode(location, occupy, property);
-					}
-				}
-			}
-		}
-	}
-
 	/**
 	 * This method occupies a specific area within the area map.
 	 * 
@@ -272,9 +216,14 @@ public class Agent extends Subject implements Runnable {
 	 *            the vector with the location
 	 * @param occupy
 	 *            boolean which decides if the area will be blocked or unblocked
+	 * @param rotateOnly
+	 *            set to true if you want to rotate the object a specific angle
+	 * @param rotation
+	 *            is the specific angle
 	 */
 
-	private synchronized void occupyNodeArea(Vector vector, boolean occupy) {
+	private synchronized void occupyNodeArea(Vector vector, boolean occupy,
+			boolean rotateOnly, Integer rotation) {
 
 		/* switch the property depending on whether a node is blocked or release */
 		Property property = Property.DEFAULT;
@@ -289,40 +238,71 @@ public class Agent extends Subject implements Runnable {
 		 */
 		if (RunAStar.getMap().getNode(vector).getProperty() == Property.AGENT
 				&& occupy) {
+
+			/* Print out if there is an overlap */
 			System.out.println("Node already blocked. Error!");
 		}
 
-		/* rotate the 2d int array which has stored the layout of the agent */
+		/*
+		 * Rotate the 2d integer array which has stored the layout of the agent.
+		 * Note that this method is only accessed when occupying, not when
+		 * releasing. This prevents the code from forgetting to release certain
+		 * nodes during rotation procedures.
+		 */
 		if (occupy) {
-			passengerAreaModifier = Rotator
-					.rotate(getRotation(), passengerArea);
-		}
-		/* if no rotation is needed or possible, skip the rotation process */
-		if (passengerAreaModifier == null) {
-			passengerAreaModifier = passengerArea;
-		}
 
-		double dimension = Math.max(passengerAreaModifier.length,
-				passengerAreaModifier[1].length);
+			/* if you want to rotate only, you can specify the rotation angle */
+			if (rotateOnly) {
+				adaptedPassengerArea = Rotator.rotate(rotation,
+						defaultPassengerArea);
 
-		int addIt = 0;
-
-		/* if the dimension is odd */
-		// TODO: check if there is a problem with even / odd dimensions.
-		if (dimension % 2 == 0) {
-			addIt = 0;
+				/* if you want to do auto rotation, this method is called. */
+			} else {
+				adaptedPassengerArea = Rotator.rotate(getRotation(),
+						defaultPassengerArea);
+			}
 		}
 
+		/*
+		 * if no rotation is needed or possible, skip the rotation process and
+		 * assign the basic layout to the object.
+		 */
+		if (adaptedPassengerArea == null) {
+			adaptedPassengerArea = defaultPassengerArea;
+		}
+
+		/*
+		 * get the square dimension. This is the maximum of the two following
+		 * values.
+		 */
+		double dimension = Math.max(adaptedPassengerArea.length,
+				adaptedPassengerArea[1].length);
+
+		/*
+		 * this is the dimension you need to go in every direction from the
+		 * starting point
+		 */
 		int dim = (int) (dimension / 2);
 
-		for (int x = -dim; x <= dim - addIt; x++) {
-			for (int y = -dim; y <= dim - addIt; y++) {
+		/* loop through the whole passenger area in the whole area map */
+		for (int x = -dim; x <= dim; x++) {
+			for (int y = -dim; y <= dim; y++) {
+
+				/* the location currently under investigation */
 				Vector location = new Vector2D(vector.getX() + x, vector.getY()
 						+ y);
 
-				if (x + dim < passengerAreaModifier.length
-						&& y + dim < passengerAreaModifier[0].length) {
-					if (passengerAreaModifier[x + dim][y + dim] == 1) {
+				/* if the point is within the bounds of the passenger area */
+				if (x + dim < adaptedPassengerArea.length
+						&& y + dim < adaptedPassengerArea[0].length) {
+
+					/*
+					 * if the passenger area has a passenger located on this
+					 * specific node
+					 */
+					if (adaptedPassengerArea[x + dim][y + dim] == 1) {
+
+						/* block or deblock the specific node */
 						blockNode(location, occupy, property);
 					}
 				}
@@ -449,7 +429,7 @@ public class Agent extends Subject implements Runnable {
 		/* this is only run if its not the initial path finding process */
 		if (currentPosition != null) {
 
-			occupyNodeArea(currentPosition, false);
+			occupyNodeArea(currentPosition, false, false, null);
 
 			/* print out the area map when in developer mode */
 			if (RunAStar.DEVELOPER_MODE) {
@@ -615,8 +595,8 @@ public class Agent extends Subject implements Runnable {
 					 */
 				} else if (passengerStowsLuggage() && !alreadyStowed) {
 
-					occupyNodeArea(currentPosition, false);
-					occupyNodeAreaRotateOnly(currentPosition, true);
+					occupyNodeArea(currentPosition, false, false, null);
+					occupyNodeArea(currentPosition, true, true, 90);
 
 					/* sleep the thread as long as the luggage is stowed */
 					Thread.sleep((int) (passenger.getLuggageStowTime() * 1000 / 2 / speedfactor));
@@ -676,8 +656,8 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	private synchronized void occupyOneStepAhead() {
-		occupyNodeArea(currentPosition, false);
-		occupyNodeArea(desiredPosition, true);
+		occupyNodeArea(currentPosition, false, false, null);
+		occupyNodeArea(desiredPosition, true, false, null);
 	}
 
 	/**
@@ -735,8 +715,8 @@ public class Agent extends Subject implements Runnable {
 			passenger.setNumberOfWaits(numbOfInterupts);
 
 			/* clear the current position of the agent */
-			occupyNodeArea(currentPosition, false);
-			occupyNodeArea(desiredPosition, false);
+			occupyNodeArea(currentPosition, false, false, null);
+			occupyNodeArea(desiredPosition, false, false, null);
 
 			/* RunAStar is notified that a passenger is seated now */
 			RunAStar.setPassengerSeated(passenger, this);
