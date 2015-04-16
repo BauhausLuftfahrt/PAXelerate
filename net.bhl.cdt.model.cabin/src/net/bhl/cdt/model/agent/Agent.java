@@ -46,6 +46,7 @@ public class Agent extends Subject implements Runnable {
 
 	private int numbOfInterupts = 0;
 	private boolean alreadyStowed = false;
+	private boolean waitingCompleted = false;
 	private StopWatch stopwatch = new StopWatch();
 	private ArrayList<Path> pathlist = new ArrayList<Path>();
 
@@ -609,9 +610,15 @@ public class Agent extends Subject implements Runnable {
 					 * if there is no obstacle or luggage stowing required, run
 					 * the default step
 					 */
-				} else if (waitingForClearingOfRow()) {
+				} else if (waitingForClearingOfRow() && !waitingCompleted) {
 
-					Thread.sleep((int) (100));
+					// Agent makeWayAgent = new Agent(this.passenger, start,
+					// goal,
+					// 0, 1, null);
+
+					Thread.sleep((int) (2000));
+
+					waitingCompleted = true;
 
 					System.out.println("Someone is already in that row! :(");
 
