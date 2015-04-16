@@ -53,9 +53,6 @@ public class Agent extends Subject implements Runnable {
 	private AgentMood agentMood;
 	private boolean exitTheMainLoop = false;
 
-	private int depth;
-	private int width;
-
 	/* constant values */
 	private final CostMap finalCostmap;
 	private final Passenger passenger;
@@ -64,6 +61,10 @@ public class Agent extends Subject implements Runnable {
 
 	private int[][] defaultPassengerArea;
 	private int[][] adaptedPassengerArea;
+
+	// TODO: Das ist eine Stellschraube, genauso wie die Funktion
+	// "nodeAlreadyBlockedBySomeoneElse!". Darin wird der Fehler liegen!
+	private int dim = 2;
 
 	public Passenger getPassenger() {
 		return passenger;
@@ -284,7 +285,7 @@ public class Agent extends Subject implements Runnable {
 		 * this is the dimension you need to go in every direction from the
 		 * starting point
 		 */
-		int dim = (int) (dimension / 2);
+		dim = (int) (dimension / 2);
 
 		/* loop through the whole passenger area in the whole area map */
 		for (int x = -dim; x <= dim; x++) {
@@ -499,9 +500,13 @@ public class Agent extends Subject implements Runnable {
 
 		/* get the node at the location */
 
+		// TODO This only works if the rotation is rectangular. When the area is
+		// rotated, it should be used a square with the dimension of the larger
+		// of the two properties.
+
 		/* check if it is blocked */
-		for (int x = -this.width; x <= this.width; x++) {
-			for (int y = -this.depth; y <= this.depth; y++) {
+		for (int x = -dim; x <= dim; x++) {
+			for (int y = dim; y <= dim; y++) {
 
 				Node checkNode = RunAStar.getMap().getNodeByCoordinate(
 						vector.getX() + x, vector.getY() + y);
@@ -511,12 +516,25 @@ public class Agent extends Subject implements Runnable {
 						/* check if its was not this agent who blocked it */
 						if (checkNode.getLinkedAgentID() != this.passenger
 								.getId()) {
+
+							// if (x + dim < adaptedPassengerArea.length
+							// && y + dim < adaptedPassengerArea[0].length) {
+							//
+							// /*
+							// * if the passenger area has a passenger located
+							// * on this specific node
+							// */
+							// if (adaptedPassengerArea[x + dim][y + dim] == 1)
+							// {
 							return true;
+							// }
+							// }
+
 						}
 					}
 					if (checkNode.getProperty() == Property.OBSTACLE) {
-						System.out
-								.println("###### !OVERLAPPING OF AGENT AND OBSTACLE! ###### !AGENT - nodeBlockedBySomeoneElseOrObstacle()! ######");
+						// System.out
+						// .println("###### !OVERLAPPING OF AGENT AND OBSTACLE! ###### !AGENT - nodeBlockedBySomeoneElseOrObstacle()! ######");
 						// return true;
 					}
 				}
