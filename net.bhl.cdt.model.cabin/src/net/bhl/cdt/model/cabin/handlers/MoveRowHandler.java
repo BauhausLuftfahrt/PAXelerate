@@ -77,6 +77,13 @@ public class MoveRowHandler extends AbstractHandler {
 
 		new MoveRowCommand(cabin, rowlist, seatlist, galleylist, lavatorylist,
 				curtainlist).execute();
+		
+		rowlist.clear();
+		seatlist.clear();
+		galleylist.clear();
+		lavatorylist.clear();
+		curtainlist.clear();
+		
 		return null;
 	}
 }
