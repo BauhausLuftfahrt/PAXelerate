@@ -78,6 +78,7 @@ public class MoveRowHandler extends AbstractHandler {
 		new MoveRowCommand(cabin, rowlist, seatlist, galleylist, lavatorylist,
 				curtainlist).execute();
 		
+		/* clear all lists in order to prevent the unintentioal movement of several items edited before */
 		rowlist.clear();
 		seatlist.clear();
 		galleylist.clear();
