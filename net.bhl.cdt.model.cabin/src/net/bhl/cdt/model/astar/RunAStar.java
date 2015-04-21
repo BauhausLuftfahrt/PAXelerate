@@ -176,6 +176,7 @@ public class RunAStar {
 		/* ... then start the simulations simultaneously */
 		for (Agent agent : agentList) {
 			agent.start();
+			agent.setInitialized(true);
 		}
 
 		runAreaMapWindow();

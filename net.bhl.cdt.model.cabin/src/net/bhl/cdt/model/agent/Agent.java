@@ -38,7 +38,7 @@ import net.bhl.cdt.model.observer.Subject;
 public class Agent extends Subject implements Runnable {
 	private Thread thread;
 	private Path path;
-	private boolean initialized;
+	private boolean initialized = false;
 	
 	private Vector start;
 	private Vector goal;
@@ -488,8 +488,11 @@ public class Agent extends Subject implements Runnable {
 
 		/* setting the new desired and current positions */
 		desiredPosition = path.get(0).getPosition();
+		
+		if(!initialized) {
 		currentPosition = new Vector2D(0, 0);
 
+		}
 		/* ends the stop watch performance logging */
 		stopwatch.stop();
 		System.out.println(stopwatch.getElapsedTime() + " ms for pathfinding");
