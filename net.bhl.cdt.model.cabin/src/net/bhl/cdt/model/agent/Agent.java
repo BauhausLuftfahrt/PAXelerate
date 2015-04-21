@@ -38,6 +38,8 @@ import net.bhl.cdt.model.observer.Subject;
 public class Agent extends Subject implements Runnable {
 	private Thread thread;
 	private Path path;
+	private boolean initialized;
+	
 	private Vector start;
 	private Vector goal;
 	private Vector desiredPosition;
@@ -113,6 +115,14 @@ public class Agent extends Subject implements Runnable {
 	
 	
 	
+
+	public boolean isInitialized() {
+		return initialized;
+	}
+
+	public void setInitialized(boolean initialized) {
+		this.initialized = initialized;
+	}
 
 	public Agent getBlockingAgent() {
 		return blockingAgent;
