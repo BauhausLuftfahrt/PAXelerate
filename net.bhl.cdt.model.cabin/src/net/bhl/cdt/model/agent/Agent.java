@@ -52,6 +52,7 @@ public class Agent extends Subject implements Runnable {
 
 	private AgentMood agentMood;
 	private boolean exitTheMainLoop = false;
+	private Agent blockingAgent;
 
 	/* constant values */
 	private final CostMap finalCostmap;
@@ -109,6 +110,19 @@ public class Agent extends Subject implements Runnable {
 		}
 
 	}
+	
+	
+	
+
+	public Agent getBlockingAgent() {
+		return blockingAgent;
+	}
+
+	public void setBlockingAgent(Agent blockingAgent) {
+		this.blockingAgent = blockingAgent;
+	}
+	
+	
 
 	/**
 	 * This method returns the starting point vector.
@@ -158,16 +172,16 @@ public class Agent extends Subject implements Runnable {
 	 * 
 	 * @return if the passenger is ready to stow luggage
 	 */
-	private boolean passengerStowsLuggage() {
+	public boolean passengerStowsLuggage() {
 
 		/* get the passengers seat */
-		Seat seat = passenger.getSeatRef();
+		Seat seat = this.passenger.getSeatRef();
 
 		/*
 		 * return true if the passenger does have luggage and if he is near his
 		 * seat
 		 */
-		return (passenger.isHasLuggage())
+		return (this.passenger.isHasLuggage())
 				&& (desiredPosition.getY() == (int) (seat.getYPosition()
 						/ scale - 5));
 	}
@@ -516,6 +530,15 @@ public class Agent extends Subject implements Runnable {
 						/* check if its was not this agent who blocked it */
 						if (checkNode.getLinkedAgentID() != this.passenger
 								.getId()) {
+							
+							
+							for (Agent agent: RunAStar.getAgentList()) {
+								
+								if(agent.getPassenger().getId() == checkNode.getLinkedAgentID()) {
+									this.blockingAgent = agent;
+								}
+								
+							}
 
 							// if (x + dim < adaptedPassengerArea.length
 							// && y + dim < adaptedPassengerArea[0].length) {

@@ -175,6 +175,7 @@ public class CostMap {
 	private void floodMap() {
 		createSurroundingCosts(startPoint);
 		while (!goalReached()) {
+			System.out.println("We are in floodMap()");
 			copyPoints();
 			for (Vector newPoint : pointParking) {
 				createSurroundingCosts(newPoint);

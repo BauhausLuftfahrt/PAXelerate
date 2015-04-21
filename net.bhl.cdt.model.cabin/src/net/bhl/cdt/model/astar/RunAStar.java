@@ -117,6 +117,15 @@ public class RunAStar {
 	public Cabin getPassengerLocations() {
 		return cabin;
 	}
+	
+	
+	
+
+	public static void setAgentList(ArrayList<Agent> agentList) {
+		RunAStar.agentList = agentList;
+	}
+	
+	
 
 	/**
 	 * This method executes the path finding simulation of the agents.
