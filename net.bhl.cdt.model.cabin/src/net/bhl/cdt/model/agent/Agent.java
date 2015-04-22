@@ -661,19 +661,16 @@ public class Agent extends Subject implements Runnable {
 					 */
 				} else if (waitingForClearingOfRow() && !waitingCompleted) {
 
-					// Passenger pax =
-					// RunAStar.getCabin().getPassengers().get(0);
-					//
-					// Agent standUpAndClearRowAgent = new Agent(
-					// pax,
-					// new Vector2D(
-					// (int) (pax.getSeatRef().getXPosition() / scale),
-					// (int) (pax.getSeatRef().getYPosition() / scale)),
-					// new Vector2D(5, 18), RunAStar.getCostMap());
-					// standUpAndClearRowAgent.start();
-					// Agent makeWayAgent = new Agent(this.passenger, start,
-					// goal,
-					// 0, 1, null);
+					Passenger pax = RunAStar.getCabin().getPassengers().get(0);
+
+					Agent standUpAndClearRowAgent = new Agent(
+							pax,
+							new Vector2D(
+									(int) (pax.getSeatRef().getXPosition() / scale),
+									(int) (pax.getSeatRef().getYPosition() / scale)),
+							new Vector2D(5, 18), RunAStar.getCostMap());
+					standUpAndClearRowAgent.findNewPath();
+					standUpAndClearRowAgent.start();
 
 					Thread.sleep((int) (2000));
 

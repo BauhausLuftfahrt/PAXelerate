@@ -5,6 +5,8 @@
  *******************************************************************************/
 package net.bhl.cdt.model.cabin.commands;
 
+import java.util.ArrayList;
+
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.BusinessClass;
 import net.bhl.cdt.model.cabin.Cabin;
@@ -17,8 +19,10 @@ import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.util.FuncLib;
+import net.bhl.cdt.model.cabin.util.InputChecker;
 import net.bhl.cdt.model.util.ModelHelper;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
@@ -72,9 +76,8 @@ public class DrawCabinCommand extends CDTCommand {
 		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 				checkForConstructionErrors()));
 
-		checkPassengerAssignments();
-
 		repairSeatAssignments();
+		checkPassengerAssignments();
 
 		try {
 			cabinViewPart.setCabin(cabin);
@@ -98,32 +101,40 @@ public class DrawCabinCommand extends CDTCommand {
 	}
 
 	private void repairSeatAssignments() {
-		int i = 1;
+
+		int seatCount = 1;
+		int rowCount = 1;
+
+		int seatInRowCount = 1;
+
+		// TODO: DO IT FOR EVERY TRAVEL CLASS SEPARATELY, OTHERWISE THERE ARE
+		// ISSUES WITH THE NAME DISTRIBUTION
+
 		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
-
-			seat.setId(i);
-			int seatnumber = i % 6;
-			if (seatnumber == 0) {
-				seatnumber = 6;
-			}
-
-			int rownumber = ((int) ((i - 1) / 6) + 1);
-
-			seat.setName(rownumber + FuncLib.getCharForNumber(seatnumber));
-
-			Row row = ModelHelper.getChildrenByClass(cabin, Row.class).get(
-					rownumber - 1);
-			seat.setRow(row);
 
 			int xDim = 0;
 			int yDim = 0;
+
+			String seatString = InputChecker.checkStructureString(seat
+					.getTravelClass().getRowStructure());
+
+			int seatsInRow = 0;
+			String[] rowParts = seatString.split("-");
+			for (String str : rowParts) {
+				seatsInRow += Integer.parseInt(str);
+			}
+
+			seat.setId(seatCount);
+
 			switch (seat.getTravelClass().getClass().getSimpleName()) {
 			case "FirstClass":
 				xDim = ModelHelper.getChildrenByClass(cabin, FirstClass.class)
 						.get(0).getSeatWidth();
 				yDim = ModelHelper.getChildrenByClass(cabin, FirstClass.class)
 						.get(0).getSeatLength();
+
 			case "BusinessClass":
+
 				xDim = ModelHelper
 						.getChildrenByClass(cabin, BusinessClass.class).get(0)
 						.getSeatWidth();
@@ -146,10 +157,30 @@ public class DrawCabinCommand extends CDTCommand {
 						.getSeatLength();
 
 			}
+
+			// int seatnumber = seatCount % seatsInRow;
+			// if (seatnumber == 0) {
+			// seatnumber = seatsInRow;
+			// }
+			//
+			// int rownumber = ((int) ((seatCount - 1) / seatsInRow) + 1);
+
+			seat.setName(rowCount + FuncLib.getCharForNumber(seatCount));
+
+			Row row = ModelHelper.getChildrenByClass(cabin, Row.class).get(
+					rowCount - 1);
+
+			if (seatCount % seatsInRow == 0) {
+				rowCount++;
+			}
+
+			seat.setRow(row);
+
 			seat.setXDimension(xDim);
 			seat.setYDimension(yDim);
 
-			i++;
+			seatCount++;
+			seatInRowCount++;
 		}
 
 		System.out.println("Seat IDs reassigned.");
