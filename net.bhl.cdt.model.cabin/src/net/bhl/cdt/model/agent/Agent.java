@@ -86,15 +86,14 @@ public class Agent extends Subject implements Runnable {
 	 * @param scale
 	 *            the scale of the simulation
 	 */
-	public Agent(Passenger passenger, Vector start, Vector goal, int scale,
-			int speedFactor, CostMap costmap) {
+	public Agent(Passenger passenger, Vector start, Vector goal, CostMap costmap) {
 
 		/* assign the initializer values to the objects values */
-		this.speedfactor = speedFactor;
+		this.speedfactor = RunAStar.getCabin().getSpeedFactor();
 		this.passenger = passenger;
 		this.start = start;
 		this.goal = goal;
-		this.scale = scale;
+		this.scale = RunAStar.getCabin().getScale();
 		this.finalCostmap = costmap;
 
 		/* generate a mood for the passenger depending on his presets */
@@ -662,6 +661,16 @@ public class Agent extends Subject implements Runnable {
 					 */
 				} else if (waitingForClearingOfRow() && !waitingCompleted) {
 
+					// Passenger pax =
+					// RunAStar.getCabin().getPassengers().get(0);
+					//
+					// Agent standUpAndClearRowAgent = new Agent(
+					// pax,
+					// new Vector2D(
+					// (int) (pax.getSeatRef().getXPosition() / scale),
+					// (int) (pax.getSeatRef().getYPosition() / scale)),
+					// new Vector2D(5, 18), RunAStar.getCostMap());
+					// standUpAndClearRowAgent.start();
 					// Agent makeWayAgent = new Agent(this.passenger, start,
 					// goal,
 					// 0, 1, null);

@@ -14,9 +14,9 @@ import java.awt.*;
 public class AboutView extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private static final int BOX_WIDTH = 300;
-	private static final int BOX_HEIGHT = 1000;
-	private static final int FONT_SIZE = 6;
+	private static final int BOX_WIDTH = 1500;
+	private static final int BOX_HEIGHT = 300;
+	private static final int FONT_SIZE = 8;
 	private AreaMap areamap;
 
 	/**
@@ -52,7 +52,7 @@ public class AboutView extends JPanel {
 			for (int y = 0; y < areamap.getDimensions().getX(); y++) {
 				g.setColor(Color.LIGHT_GRAY);
 				g.drawString(areamap.getNodeByCoordinate(y, x)
-						.getTypeForPrinting(), y * FONT_SIZE, x * FONT_SIZE);
+						.getTypeForPrinting(), x * FONT_SIZE, y * FONT_SIZE);
 			}
 		}
 	}
