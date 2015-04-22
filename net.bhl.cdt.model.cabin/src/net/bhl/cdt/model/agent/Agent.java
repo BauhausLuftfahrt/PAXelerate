@@ -18,6 +18,7 @@ import net.bhl.cdt.model.astar.Node.Property;
 import net.bhl.cdt.model.astar.Path;
 import net.bhl.cdt.model.astar.RunAStar;
 import net.bhl.cdt.model.astar.StopWatch;
+import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.Row;
@@ -39,7 +40,7 @@ public class Agent extends Subject implements Runnable {
 	private Thread thread;
 	private Path path;
 	private boolean initialized = false;
-	
+
 	private Vector start;
 	private Vector goal;
 	private Vector desiredPosition;
@@ -112,9 +113,6 @@ public class Agent extends Subject implements Runnable {
 		}
 
 	}
-	
-	
-	
 
 	public boolean isInitialized() {
 		return initialized;
@@ -131,8 +129,6 @@ public class Agent extends Subject implements Runnable {
 	public void setBlockingAgent(Agent blockingAgent) {
 		this.blockingAgent = blockingAgent;
 	}
-	
-	
 
 	/**
 	 * This method returns the starting point vector.
@@ -488,9 +484,9 @@ public class Agent extends Subject implements Runnable {
 
 		/* setting the new desired and current positions */
 		desiredPosition = path.get(0).getPosition();
-		
-		if(!initialized) {
-		currentPosition = new Vector2D(0, 0);
+
+		if (!initialized) {
+			currentPosition = new Vector2D(0, 0);
 
 		}
 		/* ends the stop watch performance logging */
@@ -543,14 +539,14 @@ public class Agent extends Subject implements Runnable {
 						/* check if its was not this agent who blocked it */
 						if (checkNode.getLinkedAgentID() != this.passenger
 								.getId()) {
-							
-							
-							for (Agent agent: RunAStar.getAgentList()) {
-								
-								if(agent.getPassenger().getId() == checkNode.getLinkedAgentID()) {
+
+							for (Agent agent : RunAStar.getAgentList()) {
+
+								if (agent.getPassenger().getId() == checkNode
+										.getLinkedAgentID()) {
 									this.blockingAgent = agent;
 								}
-								
+
 							}
 
 							// if (x + dim < adaptedPassengerArea.length
@@ -749,6 +745,23 @@ public class Agent extends Subject implements Runnable {
 		return exitTheMainLoop;
 	}
 
+	private boolean doorwayBlocked() {
+		Door door = passenger.getDoor();
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < (int) (door.getWidth() / scale); j++) {
+				Node node = RunAStar.getMap().getNodeByCoordinate(i,
+						(int) (door.getYPosition() / scale) + j);
+				if (node.getProperty() == Property.AGENT) {
+					if (node.getLinkedAgentID() != passenger.getId()) {
+						return true;
+					}
+				}
+			}
+		}
+		System.out.println("Doorway clear!");
+		return false;
+	}
+
 	/**
 	 * 
 	 * @param exitPathLoop
@@ -771,6 +784,14 @@ public class Agent extends Subject implements Runnable {
 
 			/* sleep the thread as long as the boarding delay requires it */
 			Thread.sleep((int) (passenger.getStartBoardingAfterDelay() * 1000 / speedfactor));
+
+			/*
+			 * then try to spawn the passenger but check if there is enough
+			 * space in front of the cabin door
+			 */
+			while (doorwayBlocked()) {
+				Thread.sleep(100);
+			}
 
 			/* start counting the elapsed time for boarding */
 			stopwatch.start();
