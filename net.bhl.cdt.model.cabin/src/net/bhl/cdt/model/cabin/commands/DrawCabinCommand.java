@@ -68,6 +68,8 @@ public class DrawCabinCommand extends CDTCommand {
 
 		checkPassengerAssignments();
 
+		reassignSeatIds();
+
 		try {
 			cabinViewPart.setCabin(cabin);
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
@@ -87,6 +89,16 @@ public class DrawCabinCommand extends CDTCommand {
 						+ ")");
 			}
 		}
+	}
+
+	private void reassignSeatIds() {
+		int i = 1;
+		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
+			seat.setId(i);
+			i++;
+		}
+
+		System.out.println("Seat IDs reassigned.");
 	}
 
 	private Boolean checkCabinOutOfBounds() {

@@ -36,7 +36,7 @@ public class RunAStar {
 	private static ArrayList<Passenger> finishedList = new ArrayList<Passenger>();
 	private Logger console = new Logger();
 	private static AreaMap areamap;
-	private CostMap costmap;
+	private static CostMap costmap;
 	private static ArrayList<Agent> agentList = new ArrayList<Agent>();
 	private static Map<Agent, Integer> grantedAccessList = new HashMap<Agent, Integer>();
 	private static StopWatch anotherStopwatch = new StopWatch();
@@ -84,6 +84,10 @@ public class RunAStar {
 
 	public static Cabin getCabin() {
 		return cabin;
+	}
+
+	public static CostMap getCostMap() {
+		return costmap;
 	}
 
 	/**
@@ -173,8 +177,7 @@ public class RunAStar {
 				doItOnce = false;
 			}
 
-			Agent agent = new Agent(passenger, start, goal, cabin.getScale(),
-					cabin.getSpeedFactor(), costmap);
+			Agent agent = new Agent(passenger, start, goal, costmap);
 
 			// list of all agents
 			agentList.add(agent);
