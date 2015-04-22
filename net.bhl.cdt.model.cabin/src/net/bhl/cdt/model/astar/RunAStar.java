@@ -6,6 +6,10 @@
 package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.swing.JFrame;
 
@@ -34,7 +38,8 @@ public class RunAStar {
 	private static AreaMap areamap;
 	private CostMap costmap;
 	private static ArrayList<Agent> agentList = new ArrayList<Agent>();
-	private StopWatch anotherStopwatch = new StopWatch();
+	private static Map<Agent, Integer> grantedAccessList = new HashMap<Agent, Integer>();
+	private static StopWatch anotherStopwatch = new StopWatch();
 	private Vector dimensions;
 	public static final boolean DEVELOPER_MODE = false;
 
@@ -117,20 +122,34 @@ public class RunAStar {
 	public Cabin getPassengerLocations() {
 		return cabin;
 	}
-	
-	
-	
 
 	public static void setAgentList(ArrayList<Agent> agentList) {
 		RunAStar.agentList = agentList;
 	}
-	
-	
+
+	public static boolean CabinAccessGranted(Agent agent) {
+		try {
+			for (Entry<Agent, Integer> entry : grantedAccessList.entrySet()) {
+				int timeKey = entry.getValue();
+				if (Math.abs(timeKey
+						- (int) anotherStopwatch.getElapsedTimeSecs()) < 2) {
+					return false;
+				}
+			}
+			grantedAccessList.put(agent,
+					(int) anotherStopwatch.getElapsedTimeSecs());
+			System.out.println("Agent added to access list.");
+			return true;
+		} catch (ConcurrentModificationException ce) {
+			return false;
+		}
+	}
 
 	/**
 	 * This method executes the path finding simulation of the agents.
 	 */
 	public void run() {
+		anotherStopwatch.start();
 		costmap = null;
 		Boolean doItOnce = true;
 
@@ -160,7 +179,7 @@ public class RunAStar {
 			// list of all agents
 			agentList.add(agent);
 		}
-		anotherStopwatch.start();
+
 		/* First generate all paths ... */
 		int i = 1;
 		for (Agent agent : agentList) {
@@ -169,9 +188,6 @@ public class RunAStar {
 			agent.findNewPath();
 			i++;
 		}
-		anotherStopwatch.stop();
-		System.out.println("Calculations completed in: "
-				+ anotherStopwatch.getElapsedTime() + " ms");
 
 		/* ... then start the simulations simultaneously */
 		for (Agent agent : agentList) {

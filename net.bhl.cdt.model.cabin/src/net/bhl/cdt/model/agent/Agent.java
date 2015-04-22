@@ -793,6 +793,10 @@ public class Agent extends Subject implements Runnable {
 				Thread.sleep(100);
 			}
 
+			while (!RunAStar.CabinAccessGranted(this)) {
+				Thread.sleep(100);
+			}
+
 			/* start counting the elapsed time for boarding */
 			stopwatch.start();
 
