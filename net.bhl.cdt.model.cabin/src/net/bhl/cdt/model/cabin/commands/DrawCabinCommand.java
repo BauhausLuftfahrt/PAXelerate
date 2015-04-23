@@ -11,12 +11,14 @@ import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PhysicalObject;
+import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.TravelClass;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.InputChecker;
 import net.bhl.cdt.model.util.ModelHelper;
+
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
@@ -37,6 +39,7 @@ public class DrawCabinCommand extends CDTCommand {
 	private Cabin cabin;
 	private ILog logger;
 	private CabinViewPart cabinViewPart;
+	private ArrayList<String> errorStrings = new ArrayList<String>();
 
 	/**
 	 * This method is the constructor.
@@ -67,11 +70,14 @@ public class DrawCabinCommand extends CDTCommand {
 		cabinViewPart = (CabinViewPart) page
 				.findView("net.bhl.cdt.model.cabin.cabinview");
 
-		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
-				checkForConstructionErrors()));
-
+		repairRowAssignments();
 		repairSeatAssignments();
 		checkPassengerAssignments();
+		checkForConstructionErrors();
+
+		for (String str : errorStrings) {
+			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin", str));
+		}
 
 		try {
 			cabinViewPart.setCabin(cabin);
@@ -80,6 +86,15 @@ public class DrawCabinCommand extends CDTCommand {
 		} catch (NullPointerException e) {
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 					"No cabin view is visible!"));
+		}
+	}
+
+	private void repairRowAssignments() {
+		int i = 1;
+		for (Row row : ModelHelper.getChildrenByClass(cabin, Row.class)) {
+
+			row.setRowNumber(i);
+			i++;
 		}
 	}
 
@@ -107,7 +122,11 @@ public class DrawCabinCommand extends CDTCommand {
 
 			seat.setId(seatCount);
 
-			TravelClass tc = seat.getTravelClass();
+			TravelClass tc = ModelHelper.getParent(TravelClass.class, seat);
+
+			// TravelClass tc = seat.getTravelClass();
+
+			seat.setTravelClass(tc);
 
 			String seatString = InputChecker.checkStructureString(tc
 					.getRowStructure());
@@ -151,13 +170,43 @@ public class DrawCabinCommand extends CDTCommand {
 		return false;
 	}
 
-	private String checkForConstructionErrors() {
-		String errorString = "No issues detected!";
+	private ArrayList<Integer> checkTooManySeatsInRow() {
+		ArrayList<Integer> badRows = new ArrayList<Integer>();
+		for (Row row : ModelHelper.getChildrenByClass(cabin, Row.class)) {
+			int numberOfSeats = row.getSeats().size();
+
+			String rowString = row.getSeats().get(0).getTravelClass()
+					.getRowStructure();
+
+			int seatsPerRow = 0;
+
+			String[] rowParts = rowString.split("-");
+			for (String str : rowParts) {
+				seatsPerRow += Integer.parseInt(str);
+			}
+
+			if (numberOfSeats != seatsPerRow) {
+				badRows.add(row.getRowNumber());
+			}
+
+		}
+		return badRows;
+	}
+
+	private void checkForConstructionErrors() {
 
 		if (checkCabinOutOfBounds()) {
-			errorString = "Cabin out of bounds!";
+			errorStrings.add("Cabin out of bounds!");
 		}
 
-		return errorString;
+		ArrayList<Integer> rowFail = checkTooManySeatsInRow();
+		for (Integer rowFailValue : rowFail) {
+			errorStrings.add("There are too many seats in row #" + rowFailValue
+					+ "!");
+		}
+
+		if (errorStrings.isEmpty()) {
+			errorStrings.add("No issues detected!");
+		}
 	}
 }
