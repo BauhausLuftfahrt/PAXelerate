@@ -50,6 +50,11 @@
             id="net.bhl.cdt.model.cabin.AboutView"
             name="Show About View">
       </command>
+      <command
+            defaultHandler="net.bhl.cdt.model.cabin.handlers.SortPassengersHandler"
+            id="net.bhl.cdt.model.cabin.sortPassengers"
+            name="Sort Passengers">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -133,6 +138,24 @@
                      </instanceof>
                      <instanceof
                            value="net.bhl.cdt.model.cabin.Row">
+                     </instanceof>
+                  </or>
+               </iterate>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="net.bhl.cdt.model.cabin.sortPassengers"
+               label="Sort Passengers ..."
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate>
+                  <or>
+                     <instanceof
+                           value="net.bhl.cdt.model.cabin.Cabin">
+                     </instanceof>
+                     <instanceof
+                           value="net.bhl.cdt.model.cabin.Passenger">
                      </instanceof>
                   </or>
                </iterate>

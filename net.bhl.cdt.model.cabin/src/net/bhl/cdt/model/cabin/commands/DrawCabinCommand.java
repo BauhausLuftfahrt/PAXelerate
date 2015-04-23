@@ -91,6 +91,7 @@ public class DrawCabinCommand extends CDTCommand {
 				passenger.setName(passenger.getId() + " (" + seat.getName()
 						+ ")");
 			}
+			passenger.setTravelClass(seat.getTravelClass());
 		}
 	}
 

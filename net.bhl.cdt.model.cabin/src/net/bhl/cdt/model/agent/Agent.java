@@ -835,14 +835,20 @@ public class Agent extends Subject implements Runnable {
 		Row row = mySeat.getRow();
 		for (Seat checkSeat : row.getSeats()) {
 			if (checkSeat.isOccupied()) {
-				if (sameSideOfAisle(checkSeat, mySeat))
-					return true;
+				if (sameSideOfAisle(checkSeat, mySeat)) {
+					if (closerToAisle()) {
+						return true;
+					}
+				}
 			}
 		}
 		return false;
 	}
 
-	/* TODO: VERY BAD STYLE!!! // ONLY APPLICABLE FOR 3-3 CONFIGURATIONS! */
+	/*
+	 * TODO: VERY BAD STYLE!!! // ONLY APPLICABLE FOR 3-3 CONFIGURATIONS OR
+	 * BELOW!
+	 */
 	private boolean sameSideOfAisle(Seat checkSeat, Seat mySeat) {
 
 		if (mySeat.getLetter().equals("A") || mySeat.getLetter().equals("B")
@@ -861,6 +867,10 @@ public class Agent extends Subject implements Runnable {
 				return true;
 			}
 		}
+		return false;
+	}
+
+	private boolean closerToAisle() {
 		return false;
 	}
 
