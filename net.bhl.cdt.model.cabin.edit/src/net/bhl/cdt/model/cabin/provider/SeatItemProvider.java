@@ -49,6 +49,7 @@ public class SeatItemProvider
 			addTravelClassPropertyDescriptor(object);
 			addRowPropertyDescriptor(object);
 			addOccupiedPropertyDescriptor(object);
+			addPassengerPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -181,6 +182,28 @@ public class SeatItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Passenger feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPassengerPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Seat_passenger_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Seat_passenger_feature", "_UI_Seat_type"),
+				 CabinPackage.Literals.SEAT__PASSENGER,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

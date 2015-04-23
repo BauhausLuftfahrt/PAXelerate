@@ -18,6 +18,7 @@ package net.bhl.cdt.model.cabin;
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#getTravelClass <em>Travel Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#getRow <em>Row</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#isOccupied <em>Occupied</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Seat#getPassenger <em>Passenger</em>}</li>
  * </ul>
  * </p>
  *
@@ -181,5 +182,31 @@ public interface Seat extends PhysicalObject {
 	 * @generated
 	 */
 	void setOccupied(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Passenger</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Passenger</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Passenger</em>' reference.
+	 * @see #setPassenger(Passenger)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSeat_Passenger()
+	 * @model required="true"
+	 * @generated
+	 */
+	Passenger getPassenger();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Seat#getPassenger <em>Passenger</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Passenger</em>' reference.
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	void setPassenger(Passenger value);
 
 } // Seat

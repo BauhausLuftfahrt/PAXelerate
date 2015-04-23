@@ -66,6 +66,8 @@ public class Agent extends Subject implements Runnable {
 	private int[][] defaultPassengerArea;
 	private int[][] adaptedPassengerArea;
 
+	private ArrayList<Passenger> otherPassengersInRowBlockingMe = new ArrayList<Passenger>();
+
 	// TODO: Das ist eine Stellschraube, genauso wie die Funktion
 	// "nodeAlreadyBlockedBySomeoneElse!". Darin wird der Fehler liegen!
 	private int dim = 2;
@@ -648,17 +650,24 @@ public class Agent extends Subject implements Runnable {
 				} else if (waitingForClearingOfRow() && !waitingCompleted) {
 
 					// TODO: get the right passenger here!
-					Passenger pax = RunAStar.getCabin().getPassengers().get(0);
-					Vector goal = new Vector2D(5, 18);
+					for (Passenger pax : otherPassengersInRowBlockingMe) {
 
-					Agent standUpAndClearRowAgent = new Agent(
-							pax,
-							new Vector2D(
-									(int) (pax.getSeatRef().getXPosition() / scale),
-									(int) (pax.getSeatRef().getYPosition() / scale)),
-							goal, RunAStar.getCostMap());
-					standUpAndClearRowAgent.findNewPath();
-					standUpAndClearRowAgent.start();
+						Seat seat = pax.getSeatRef();
+
+						Vector goal = new Vector2D((int) (RunAStar.getCabin()
+								.getCabinWidth() / scale / 2.0),
+								(int) (seat.getYPosition() / scale) + 4);
+
+						Agent standUpAndClearRowAgent = new Agent(
+								pax,
+								new Vector2D(
+										(int) ((seat.getXPosition() + (seat
+												.getXDimension() / 2.0)) / scale),
+										(int) (seat.getYPosition() / scale) - 1),
+								goal, RunAStar.getCostMap());
+						standUpAndClearRowAgent.findNewPath();
+						standUpAndClearRowAgent.start();
+					}
 
 					Thread.sleep((int) (2000));
 
@@ -836,7 +845,9 @@ public class Agent extends Subject implements Runnable {
 		for (Seat checkSeat : row.getSeats()) {
 			if (checkSeat.isOccupied()) {
 				if (sameSideOfAisle(checkSeat, mySeat)) {
-					if (closerToAisle()) {
+					if (OtherSeatCloserToAisle(checkSeat, mySeat)) {
+						otherPassengersInRowBlockingMe.add(checkSeat
+								.getPassenger());
 						return true;
 					}
 				}
@@ -846,31 +857,37 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/*
-	 * TODO: VERY BAD STYLE!!! // ONLY APPLICABLE FOR 3-3 CONFIGURATIONS OR
-	 * BELOW!
+	 * TODO: ONLY APPLICABLE FOR 3-3 CONFIGURATIONS OR BELOW!
 	 */
 	private boolean sameSideOfAisle(Seat checkSeat, Seat mySeat) {
 
-		if (mySeat.getLetter().equals("A") || mySeat.getLetter().equals("B")
-				|| mySeat.getLetter().equals("C")) {
-			if (checkSeat.getLetter().equals("A")
-					|| checkSeat.getLetter().equals("B")
-					|| checkSeat.getLetter().equals("C")) {
+		if ("ABC".contains(mySeat.getLetter())) {
+			if ("ABC".contains(mySeat.getLetter())) {
 				return true;
 			}
 		}
-		if (mySeat.getLetter().equals("D") || mySeat.getLetter().equals("E")
-				|| mySeat.getLetter().equals("F")) {
-			if (checkSeat.getLetter().equals("D")
-					|| checkSeat.getLetter().equals("E")
-					|| checkSeat.getLetter().equals("F")) {
+		if ("DEF".contains(mySeat.getLetter())) {
+			if ("DEF".contains(mySeat.getLetter())) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	private boolean closerToAisle() {
+	// TODO: this only works for a ONE AISLE configuration!
+	private boolean OtherSeatCloserToAisle(Seat checkSeat, Seat mySeat) {
+
+		int middleOfCabinX = (int) (RunAStar.getCabin().getCabinWidth() / 2.0 / scale);
+
+		int checkSeatToAisleDistanceX = Math.abs(checkSeat.getXPosition()
+				/ scale - middleOfCabinX);
+
+		int mySeatToAisleDistanceX = Math.abs(mySeat.getXPosition() / scale
+				- middleOfCabinX);
+
+		if (checkSeatToAisleDistanceX < mySeatToAisleDistanceX) {
+			return true;
+		}
 		return false;
 	}
 

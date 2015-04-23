@@ -86,6 +86,9 @@ public class DrawCabinCommand extends CDTCommand {
 	private void checkPassengerAssignments() {
 		for (Passenger passenger : cabin.getPassengers()) {
 			Seat seat = passenger.getSeatRef();
+
+			seat.setPassenger(passenger);
+
 			if (passenger.getSeat() != seat.getId()) {
 				passenger.setSeat(seat.getId());
 				passenger.setName(passenger.getId() + " (" + seat.getName()

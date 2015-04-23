@@ -3,6 +3,7 @@
 package net.bhl.cdt.model.cabin.impl;
 
 import net.bhl.cdt.model.cabin.CabinPackage;
+import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.TravelClass;
@@ -24,6 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#getTravelClass <em>Travel Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#getRow <em>Row</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#isOccupied <em>Occupied</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#getPassenger <em>Passenger</em>}</li>
  * </ul>
  * </p>
  *
@@ -129,6 +131,16 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 	 * @ordered
 	 */
 	protected boolean occupied = OCCUPIED_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getPassenger() <em>Passenger</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassenger()
+	 * @generated
+	 * @ordered
+	 */
+	protected Passenger passenger;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -314,6 +326,44 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Passenger getPassenger() {
+		if (passenger != null && passenger.eIsProxy()) {
+			InternalEObject oldPassenger = (InternalEObject)passenger;
+			passenger = (Passenger)eResolveProxy(oldPassenger);
+			if (passenger != oldPassenger) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CabinPackage.SEAT__PASSENGER, oldPassenger, passenger));
+			}
+		}
+		return passenger;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Passenger basicGetPassenger() {
+		return passenger;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPassenger(Passenger newPassenger) {
+		Passenger oldPassenger = passenger;
+		passenger = newPassenger;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SEAT__PASSENGER, oldPassenger, passenger));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -331,6 +381,9 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 				return basicGetRow();
 			case CabinPackage.SEAT__OCCUPIED:
 				return isOccupied();
+			case CabinPackage.SEAT__PASSENGER:
+				if (resolve) return getPassenger();
+				return basicGetPassenger();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -360,6 +413,9 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 				return;
 			case CabinPackage.SEAT__OCCUPIED:
 				setOccupied((Boolean)newValue);
+				return;
+			case CabinPackage.SEAT__PASSENGER:
+				setPassenger((Passenger)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -391,6 +447,9 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 			case CabinPackage.SEAT__OCCUPIED:
 				setOccupied(OCCUPIED_EDEFAULT);
 				return;
+			case CabinPackage.SEAT__PASSENGER:
+				setPassenger((Passenger)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -415,6 +474,8 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 				return row != null;
 			case CabinPackage.SEAT__OCCUPIED:
 				return occupied != OCCUPIED_EDEFAULT;
+			case CabinPackage.SEAT__PASSENGER:
+				return passenger != null;
 		}
 		return super.eIsSet(featureID);
 	}
