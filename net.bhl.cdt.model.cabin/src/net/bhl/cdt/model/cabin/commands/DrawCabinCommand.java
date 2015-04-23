@@ -17,6 +17,7 @@ import net.bhl.cdt.model.cabin.PhysicalObject;
 import net.bhl.cdt.model.cabin.PremiumEconomyClass;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
+import net.bhl.cdt.model.cabin.TravelClass;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.InputChecker;
@@ -103,8 +104,6 @@ public class DrawCabinCommand extends CDTCommand {
 	private void repairSeatAssignments() {
 
 		int seatCount = 1;
-		int rowCount = 1;
-
 		int seatInRowCount = 1;
 
 		// TODO: DO IT FOR EVERY TRAVEL CLASS SEPARATELY, OTHERWISE THERE ARE
@@ -112,72 +111,29 @@ public class DrawCabinCommand extends CDTCommand {
 
 		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
 
-			int xDim = 0;
-			int yDim = 0;
-
-			String seatString = InputChecker.checkStructureString(seat
-					.getTravelClass().getRowStructure());
-
-			int seatsInRow = 0;
-			String[] rowParts = seatString.split("-");
-			for (String str : rowParts) {
-				seatsInRow += Integer.parseInt(str);
-			}
-
 			seat.setId(seatCount);
 
-			switch (seat.getTravelClass().getClass().getSimpleName()) {
-			case "FirstClass":
-				xDim = ModelHelper.getChildrenByClass(cabin, FirstClass.class)
-						.get(0).getSeatWidth();
-				yDim = ModelHelper.getChildrenByClass(cabin, FirstClass.class)
-						.get(0).getSeatLength();
+			TravelClass tc = seat.getTravelClass();
 
-			case "BusinessClass":
+			String seatString = InputChecker.checkStructureString(tc
+					.getRowStructure());
 
-				xDim = ModelHelper
-						.getChildrenByClass(cabin, BusinessClass.class).get(0)
-						.getSeatWidth();
-				yDim = ModelHelper
-						.getChildrenByClass(cabin, BusinessClass.class).get(0)
-						.getSeatLength();
-			case "PremiumEconomyClass":
-				xDim = ModelHelper
-						.getChildrenByClass(cabin, PremiumEconomyClass.class)
-						.get(0).getSeatWidth();
-				yDim = ModelHelper
-						.getChildrenByClass(cabin, PremiumEconomyClass.class)
-						.get(0).getSeatLength();
-			default:
-				xDim = ModelHelper
-						.getChildrenByClass(cabin, EconomyClass.class).get(0)
-						.getSeatWidth();
-				yDim = ModelHelper
-						.getChildrenByClass(cabin, EconomyClass.class).get(0)
-						.getSeatLength();
+			int seatsPerRow = 0;
 
+			String[] rowParts = seatString.split("-");
+			for (String str : rowParts) {
+				seatsPerRow += Integer.parseInt(str);
 			}
 
-			// int seatnumber = seatCount % seatsInRow;
-			// if (seatnumber == 0) {
-			// seatnumber = seatsInRow;
-			// }
-			//
-			// int rownumber = ((int) ((seatCount - 1) / seatsInRow) + 1);
+			seat.setName(seat.getRow().getRowNumber()
+					+ FuncLib.getCharForNumber(seatInRowCount));
 
-			seat.setName(rowCount + FuncLib.getCharForNumber(seatCount));
+			seat.setXDimension(tc.getSeatWidth());
+			seat.setYDimension(tc.getSeatLength());
 
-			Row row = ModelHelper.getChildrenByClass(cabin, Row.class).get(
-					rowCount - 1);
-
-			if (seatCount % seatsInRow == 0) {
-				rowCount++;
+			if (seatInRowCount == seatsPerRow) {
+				seatInRowCount = 0;
 			}
-
-			seat.setRow(row);
-
-			seat.setXDimension(xDim);
-			seat.setYDimension(yDim);
 
 			seatCount++;
 			seatInRowCount++;
