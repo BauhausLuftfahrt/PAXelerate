@@ -123,10 +123,12 @@ public class DrawCabinCommand extends CDTCommand {
 			seat.setId(seatCount);
 
 			TravelClass tc = ModelHelper.getParent(TravelClass.class, seat);
+			Row row = ModelHelper.getParent(Row.class, seat);
 
 			// TravelClass tc = seat.getTravelClass();
 
 			seat.setTravelClass(tc);
+			seat.setRow(row);
 
 			String seatString = InputChecker.checkStructureString(tc
 					.getRowStructure());
@@ -170,8 +172,8 @@ public class DrawCabinCommand extends CDTCommand {
 		return false;
 	}
 
-	private ArrayList<Integer> checkTooManySeatsInRow() {
-		ArrayList<Integer> badRows = new ArrayList<Integer>();
+	private void checkTooManySeatsInRow() {
+
 		for (Row row : ModelHelper.getChildrenByClass(cabin, Row.class)) {
 			int numberOfSeats = row.getSeats().size();
 
@@ -185,12 +187,15 @@ public class DrawCabinCommand extends CDTCommand {
 				seatsPerRow += Integer.parseInt(str);
 			}
 
-			if (numberOfSeats != seatsPerRow) {
-				badRows.add(row.getRowNumber());
+			if (numberOfSeats > seatsPerRow) {
+				errorStrings.add("There are too many seats in row #"
+						+ row.getRowNumber() + "!");
 			}
-
+			if (numberOfSeats < seatsPerRow) {
+				errorStrings.add("There are too few seats in row #"
+						+ row.getRowNumber() + "!");
+			}
 		}
-		return badRows;
 	}
 
 	private void checkForConstructionErrors() {
@@ -199,11 +204,7 @@ public class DrawCabinCommand extends CDTCommand {
 			errorStrings.add("Cabin out of bounds!");
 		}
 
-		ArrayList<Integer> rowFail = checkTooManySeatsInRow();
-		for (Integer rowFailValue : rowFail) {
-			errorStrings.add("There are too many seats in row #" + rowFailValue
-					+ "!");
-		}
+		checkTooManySeatsInRow();
 
 		if (errorStrings.isEmpty()) {
 			errorStrings.add("No issues detected!");
