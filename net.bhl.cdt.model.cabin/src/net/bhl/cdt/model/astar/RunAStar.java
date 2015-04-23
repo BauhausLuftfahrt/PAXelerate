@@ -20,6 +20,7 @@ import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.AboutView;
+import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.cabin.util.Vector2D;
 import net.bhl.cdt.model.util.ModelHelper;
@@ -125,6 +126,23 @@ public class RunAStar {
 	 */
 	public Cabin getPassengerLocations() {
 		return cabin;
+	}
+
+	public static void launchWaymakingAgent(Passenger pax) {
+		Seat seat = pax.getSeatRef();
+
+		Vector goal = new Vector2D((int) (RunAStar.getCabin().getCabinWidth()
+				/ cabin.getScale() / 2.0),
+				(int) (seat.getYPosition() / cabin.getScale()) + 10);
+
+		Agent agent = new Agent(pax,
+				new Vector2D((int) ((seat.getXPosition() + (seat
+						.getXDimension() / 2.0)) / cabin.getScale()),
+						(int) (seat.getYPosition() / cabin.getScale()) - 1),
+				goal, RunAStar.getCostMap());
+		agent.findNewPath();
+		agent.setSkipDelay(true);
+		agent.start();
 	}
 
 	public static void setAgentList(ArrayList<Agent> agentList) {

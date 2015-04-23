@@ -41,6 +41,9 @@ public class Agent extends Subject implements Runnable {
 	private Path path;
 	private boolean initialized = false;
 
+	private final static int PIXELS_FOR_LUGGAGE = 10;
+	private final static int PIXELS_FOR_WAY = 7;
+
 	private Vector start;
 	private Vector goal;
 	private Vector desiredPosition;
@@ -62,6 +65,8 @@ public class Agent extends Subject implements Runnable {
 	private final Passenger passenger;
 	private final int scale;
 	private final int speedfactor;
+
+	private boolean skipDelay = false;
 
 	private int[][] defaultPassengerArea;
 	private int[][] adaptedPassengerArea;
@@ -113,6 +118,10 @@ public class Agent extends Subject implements Runnable {
 			}
 		}
 
+	}
+
+	public void setSkipDelay(boolean skipIt) {
+		this.skipDelay = skipIt;
 	}
 
 	public boolean isInitialized() {
@@ -190,7 +199,7 @@ public class Agent extends Subject implements Runnable {
 		 */
 		return (this.passenger.isHasLuggage())
 				&& (desiredPosition.getY() == (int) (seat.getYPosition()
-						/ scale - 5));
+						/ scale - PIXELS_FOR_LUGGAGE));
 	}
 
 	/**
@@ -493,6 +502,8 @@ public class Agent extends Subject implements Runnable {
 		/* ends the stop watch performance logging */
 		stopwatch.stop();
 		System.out.println(stopwatch.getElapsedTime() + " ms for pathfinding");
+
+		astar.printPath(path);
 	}
 
 	/**
@@ -652,21 +663,8 @@ public class Agent extends Subject implements Runnable {
 					// TODO: get the right passenger here!
 					for (Passenger pax : otherPassengersInRowBlockingMe) {
 
-						Seat seat = pax.getSeatRef();
+						RunAStar.launchWaymakingAgent(pax);
 
-						Vector goal = new Vector2D((int) (RunAStar.getCabin()
-								.getCabinWidth() / scale / 2.0),
-								(int) (seat.getYPosition() / scale) + 4);
-
-						Agent standUpAndClearRowAgent = new Agent(
-								pax,
-								new Vector2D(
-										(int) ((seat.getXPosition() + (seat
-												.getXDimension() / 2.0)) / scale),
-										(int) (seat.getYPosition() / scale) - 1),
-								goal, RunAStar.getCostMap());
-						standUpAndClearRowAgent.findNewPath();
-						standUpAndClearRowAgent.start();
 					}
 
 					Thread.sleep((int) (2000));
@@ -726,7 +724,7 @@ public class Agent extends Subject implements Runnable {
 
 		Seat mySeat = passenger.getSeatRef();
 
-		if (desiredPosition.getY() == (int) (mySeat.getYPosition() / scale - 4)) {
+		if (desiredPosition.getY() == (int) (mySeat.getYPosition() / scale - PIXELS_FOR_WAY)) {
 			if (someoneAlreadyInThisPartOfTheRow(mySeat)) {
 				return true;
 			}
@@ -785,19 +783,22 @@ public class Agent extends Subject implements Runnable {
 			/* add the path to the list of paths */
 			pathlist.add(path);
 
-			/* sleep the thread as long as the boarding delay requires it */
-			Thread.sleep((int) (passenger.getStartBoardingAfterDelay() * 1000 / speedfactor));
+			if (!skipDelay) {
+				/* sleep the thread as long as the boarding delay requires it */
+				Thread.sleep((int) (passenger.getStartBoardingAfterDelay() * 1000 / speedfactor));
 
-			/*
-			 * then try to spawn the passenger but check if there is enough
-			 * space in front of the cabin door
-			 */
-			while (doorwayBlocked()) {
-				Thread.sleep(100);
-			}
+				/*
+				 * then try to spawn the passenger but check if there is enough
+				 * space in front of the cabin door
+				 */
+				while (doorwayBlocked()) {
+					Thread.sleep(100);
+				}
 
-			while (!RunAStar.CabinAccessGranted(this)) {
-				Thread.sleep(100);
+				while (!RunAStar.CabinAccessGranted(this)) {
+					Thread.sleep(100);
+				}
+
 			}
 
 			/* start counting the elapsed time for boarding */

@@ -70,6 +70,7 @@ public class DrawCabinCommand extends CDTCommand {
 		cabinViewPart = (CabinViewPart) page
 				.findView("net.bhl.cdt.model.cabin.cabinview");
 
+		repairBoardingClassAssignments();
 		repairRowAssignments();
 		repairSeatAssignments();
 		checkPassengerAssignments();
@@ -86,6 +87,14 @@ public class DrawCabinCommand extends CDTCommand {
 		} catch (NullPointerException e) {
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 					"No cabin view is visible!"));
+		}
+	}
+
+	private void repairBoardingClassAssignments() {
+		int i = 1;
+		for (TravelClass tc : cabin.getClasses()) {
+			tc.setSequence(i);
+			i++;
 		}
 	}
 
@@ -109,7 +118,8 @@ public class DrawCabinCommand extends CDTCommand {
 				passenger.setName(passenger.getId() + " (" + seat.getName()
 						+ ")");
 			}
-			passenger.setTravelClass(seat.getTravelClass());
+			passenger.setTravelClass(ModelHelper.getParent(TravelClass.class,
+					seat));
 		}
 	}
 
