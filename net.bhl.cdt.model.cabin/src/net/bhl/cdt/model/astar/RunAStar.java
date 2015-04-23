@@ -142,7 +142,7 @@ public class RunAStar {
 			}
 			grantedAccessList.put(agent,
 					(int) anotherStopwatch.getElapsedTimeSecs());
-			System.out.println("Agent added to access list.");
+			// System.out.println("Agent added to access list.");
 			return true;
 		} catch (ConcurrentModificationException ce) {
 			return false;

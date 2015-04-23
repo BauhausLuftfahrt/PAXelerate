@@ -545,22 +545,8 @@ public class Agent extends Subject implements Runnable {
 										.getLinkedAgentID()) {
 									this.blockingAgent = agent;
 								}
-
 							}
-
-							// if (x + dim < adaptedPassengerArea.length
-							// && y + dim < adaptedPassengerArea[0].length) {
-							//
-							// /*
-							// * if the passenger area has a passenger located
-							// * on this specific node
-							// */
-							// if (adaptedPassengerArea[x + dim][y + dim] == 1)
-							// {
 							return true;
-							// }
-							// }
-
 						}
 					}
 					if (checkNode.getProperty() == Property.OBSTACLE) {
@@ -661,14 +647,16 @@ public class Agent extends Subject implements Runnable {
 					 */
 				} else if (waitingForClearingOfRow() && !waitingCompleted) {
 
+					// TODO: get the right passenger here!
 					Passenger pax = RunAStar.getCabin().getPassengers().get(0);
+					Vector goal = new Vector2D(5, 18);
 
 					Agent standUpAndClearRowAgent = new Agent(
 							pax,
 							new Vector2D(
 									(int) (pax.getSeatRef().getXPosition() / scale),
 									(int) (pax.getSeatRef().getYPosition() / scale)),
-							new Vector2D(5, 18), RunAStar.getCostMap());
+							goal, RunAStar.getCostMap());
 					standUpAndClearRowAgent.findNewPath();
 					standUpAndClearRowAgent.start();
 

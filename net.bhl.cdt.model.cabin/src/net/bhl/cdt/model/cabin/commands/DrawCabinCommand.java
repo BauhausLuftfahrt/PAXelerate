@@ -8,22 +8,15 @@ package net.bhl.cdt.model.cabin.commands;
 import java.util.ArrayList;
 
 import net.bhl.cdt.commands.CDTCommand;
-import net.bhl.cdt.model.cabin.BusinessClass;
 import net.bhl.cdt.model.cabin.Cabin;
-import net.bhl.cdt.model.cabin.EconomyClass;
-import net.bhl.cdt.model.cabin.FirstClass;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PhysicalObject;
-import net.bhl.cdt.model.cabin.PremiumEconomyClass;
-import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.TravelClass;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.InputChecker;
 import net.bhl.cdt.model.util.ModelHelper;
-
-import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
@@ -105,9 +98,6 @@ public class DrawCabinCommand extends CDTCommand {
 
 		int seatCount = 1;
 		int seatInRowCount = 1;
-
-		// TODO: DO IT FOR EVERY TRAVEL CLASS SEPARATELY, OTHERWISE THERE ARE
-		// ISSUES WITH THE NAME DISTRIBUTION
 
 		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
 
