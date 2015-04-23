@@ -139,7 +139,7 @@ public class RunAStar {
 				new Vector2D((int) ((seat.getXPosition() + (seat
 						.getXDimension() / 2.0)) / cabin.getScale()),
 						(int) (seat.getYPosition() / cabin.getScale()) - 1),
-				goal, RunAStar.getCostMap());
+				goal, RunAStar.getCostMap(), Agent.agentMode.MAKE_WAY);
 		agent.findNewPath();
 		agent.setSkipDelay(true);
 		agent.start();
@@ -195,7 +195,8 @@ public class RunAStar {
 				doItOnce = false;
 			}
 
-			Agent agent = new Agent(passenger, start, goal, costmap);
+			Agent agent = new Agent(passenger, start, goal, costmap,
+					Agent.agentMode.GO_TO_SEAT);
 
 			// list of all agents
 			agentList.add(agent);

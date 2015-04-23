@@ -65,6 +65,11 @@ public class Agent extends Subject implements Runnable {
 	private final Passenger passenger;
 	private final int scale;
 	private final int speedfactor;
+	private agentMode mode;
+
+	public static enum agentMode {
+		GO_TO_SEAT, MAKE_WAY
+	}
 
 	private boolean skipDelay = false;
 
@@ -93,10 +98,12 @@ public class Agent extends Subject implements Runnable {
 	 * @param scale
 	 *            the scale of the simulation
 	 */
-	public Agent(Passenger passenger, Vector start, Vector goal, CostMap costmap) {
+	public Agent(Passenger passenger, Vector start, Vector goal,
+			CostMap costmap, agentMode mode) {
 
 		/* assign the initializer values to the objects values */
 		this.speedfactor = RunAStar.getCabin().getSpeedFactor();
+		this.mode = mode;
 		this.passenger = passenger;
 		this.start = start;
 		this.goal = goal;
@@ -810,6 +817,9 @@ public class Agent extends Subject implements Runnable {
 				/* this is run again if the agent detects obstacles in his path */
 				followPath();
 			}
+
+			// TODO: IF THE PASSENGER IS IN MAKE_WAY MODE, MAKE HIM RETURN TO
+			// HIS SEAT WHEN HE REACHES HIS GOAL AGAIN!
 
 			/* when the goal is reached, the passenger is defined seated */
 			passenger.setIsSeated(true);
