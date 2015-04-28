@@ -41,41 +41,10 @@ public class SortPassengersCommand extends CDTCommand {
 	private Cabin cabin;
 	private ILog logger;
 	private CabinViewPart cabinViewPart;
-	private Vector movementVector;
-	private Vector scaleVector;
-	private ArrayList<Row> rowlist = new ArrayList<Row>();
-	private ArrayList<Seat> seatlist = new ArrayList<Seat>();
-	private ArrayList<Galley> galleylist = new ArrayList<Galley>();
-	private ArrayList<Lavatory> lavatorylist = new ArrayList<Lavatory>();
-	private ArrayList<Curtain> curtainlist = new ArrayList<Curtain>();
-	private boolean scalingDesired = false;
 
-	/**
-	 * This command gets all physical object elements that are selected by the
-	 * user, submits it via lists and performs the manipulation of the
-	 * corresponding object inside the cabin element.
-	 * 
-	 * @param cabin
-	 *            is the cabin
-	 * @param rowlist
-	 *            is the list of row objects
-	 * @param seatlist
-	 *            is the list of seat objects
-	 * @param galleylist
-	 *            is the list of galley objects
-	 * @param lavatorylist
-	 *            is the list of lavatory objects
-	 * @param curtainlist
-	 *            is the list of curtain objects
-	 */
-	public SortPassengersCommand(Cabin cabin, ArrayList<Row> rowlist,
-			ArrayList<Seat> seatlist, ArrayList<Galley> galleylist,
-			ArrayList<Lavatory> lavatorylist, ArrayList<Curtain> curtainlist) {
-		this.rowlist = rowlist;
-		this.seatlist = seatlist;
-		this.galleylist = galleylist;
-		this.lavatorylist = lavatorylist;
-		this.curtainlist = curtainlist;
+
+	public SortPassengersCommand(Cabin cabin) {
+
 		this.cabin = cabin;
 		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
 	}
@@ -86,123 +55,25 @@ public class SortPassengersCommand extends CDTCommand {
 	@Override
 	protected void doRun() {
 
-		// /**
-		// * Main method.
-		// *
-		// * @param args
-		// * the arguments
-		// */
-		//
-		// GetInput input = new GetInput(WindowType.GET_TWO_VECTORS,
-		// "All values must be entered in [cm]. Please use digits only.",
-		// IMessageProvider.INFORMATION);
-		//
-		// movementVector = input.getVectorValue();
-		// scaleVector = input.getSecondVectorValue();
-		// if (scaleVector.getX() != 0 && scaleVector.getY() != 0) {
-		// scalingDesired = true;
-		// }
-		// if (!rowlist.isEmpty()) {
-		// for (Row row : rowlist) {
-		// for (Row compareRow : ModelHelper.getChildrenByClass(cabin,
-		// Row.class)) {
-		// if (row.getRowNumber() == compareRow.getRowNumber()) {
-		// for (Seat seat : compareRow.getSeats()) {
-		// seat.setXPosition(seat.getXPosition()
-		// + movementVector.getX());
-		// seat.setYPosition(seat.getYPosition()
-		// + movementVector.getY());
-		// if (scalingDesired) {
-		// seat.setXDimension(scaleVector.getX());
-		// seat.setYDimension(scaleVector.getY());
-		// }
-		//
-		// }
-		// }
-		// }
-		// }
-		// }
-		// if (!seatlist.isEmpty()) {
-		// for (Seat seat : seatlist) {
-		// for (Seat compareSeat : ModelHelper.getChildrenByClass(cabin,
-		// Seat.class)) {
-		// if (seat.getId() == compareSeat.getId()) {
-		// compareSeat.setXPosition(compareSeat.getXPosition()
-		// + movementVector.getX());
-		// compareSeat.setYPosition(compareSeat.getYPosition()
-		// + movementVector.getY());
-		// if (scalingDesired) {
-		// compareSeat.setXDimension(scaleVector.getX());
-		// compareSeat.setYDimension(scaleVector.getY());
-		// }
-		// }
-		// }
-		// }
-		// }
-		// if (!galleylist.isEmpty()) {
-		// for (Galley galley : galleylist) {
-		// for (Galley compareGalley : ModelHelper.getChildrenByClass(
-		// cabin, Galley.class)) {
-		// if (galley.getId() == compareGalley.getId()) {
-		// galley.setXPosition(galley.getXPosition()
-		// + movementVector.getX());
-		// galley.setYPosition(galley.getYPosition()
-		// + movementVector.getY());
-		// if (scalingDesired) {
-		// galley.setXDimension(scaleVector.getX());
-		// galley.setYDimension(scaleVector.getY());
-		// }
-		// }
-		// }
-		// }
-		// }
-		// if (!lavatorylist.isEmpty()) {
-		// for (Lavatory lavatory : lavatorylist) {
-		// for (Lavatory compareLavatory : ModelHelper.getChildrenByClass(
-		// cabin, Lavatory.class)) {
-		// if (lavatory.getId() == compareLavatory.getId()) {
-		// compareLavatory.setXPosition(compareLavatory
-		// .getXPosition() + movementVector.getX());
-		// compareLavatory.setYPosition(compareLavatory
-		// .getYPosition() + movementVector.getY());
-		// if (scalingDesired) {
-		// compareLavatory.setXDimension(scaleVector.getX());
-		// compareLavatory.setYDimension(scaleVector.getY());
-		// }
-		// }
-		// }
-		// }
-		// }
-		// if (!curtainlist.isEmpty()) {
-		// for (Curtain curtain : curtainlist) {
-		// for (Curtain compareCurtain : ModelHelper.getChildrenByClass(
-		// cabin, Curtain.class)) {
-		// if (curtain.getId() == compareCurtain.getId()) {
-		// compareCurtain.setXPosition(compareCurtain
-		// .getXPosition() + movementVector.getX());
-		// compareCurtain.setYPosition(compareCurtain
-		// .getYPosition() + movementVector.getY());
-		// if (scalingDesired) {
-		// compareCurtain.setXDimension(scaleVector.getX());
-		// compareCurtain.setYDimension(scaleVector.getY());
-		// }
-		// }
-		// }
-		// }
-		// }
-		//
-		// IWorkbenchPage page = PlatformUI.getWorkbench()
-		// .getActiveWorkbenchWindow().getActivePage();
-		// cabinViewPart = (CabinViewPart) page
-		// .findView("net.bhl.cdt.model.cabin.cabinview");
-		//
-		// try {
-		// cabinViewPart.setCabin(cabin);
-		// logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
-		// "Cabin view checked and updated"));
-		// } catch (NullPointerException e) {
-		// logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
-		// "No cabin view is visible!"));
-		// }
+		
+		 GetInput input = new GetInput(WindowType.OPTIONS,
+		 "Please choose a sorting algorithm.",
+		 IMessageProvider.INFORMATION);
+		
+
+		 
+		 IWorkbenchPage page = PlatformUI.getWorkbench()
+		 .getActiveWorkbenchWindow().getActivePage();
+		 cabinViewPart = (CabinViewPart) page
+		 .findView("net.bhl.cdt.model.cabin.cabinview");
+		
+		 try {
+		 cabinViewPart.setCabin(cabin);
+		 logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
+		 "Cabin view checked and updated"));
+		 } catch (NullPointerException e) {
+		 logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
+		 "No cabin view is visible!"));
+		 }
 	}
 }

@@ -64,11 +64,13 @@ public class GetInput extends TitleAreaDialog {
 	 */
 	public GetInput(WindowType windowType, String message, int messageType) {
 		super(null);
+		
 		integerValue = 0;
 		vectorValue = new Vector2D(0, 0);
 		vectorValue2 = new Vector2D(0, 0);
 		booleanValue = false;
 		stringValue = "";
+		
 		switch (windowType) {
 		case GET_INTEGER:
 			titleString = "Integer Input Required!";
@@ -94,8 +96,15 @@ public class GetInput extends TitleAreaDialog {
 			titleString = "Text Input Required!";
 			descriptionText = "text:";
 			break;
+			
+		case OPTIONS:
+			titleString = "Please choose one of the following options!";
+			descriptionText = "Options:";
+			break;
+			
 		default:
 			titleString = "empty title ...";
+			descriptionText = "empty description";
 			break;
 		}
 		this.windowType = windowType;
