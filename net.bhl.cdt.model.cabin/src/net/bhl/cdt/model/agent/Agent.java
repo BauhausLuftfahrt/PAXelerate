@@ -71,8 +71,6 @@ public class Agent extends Subject implements Runnable {
 		GO_TO_SEAT, MAKE_WAY
 	}
 
-	private boolean skipDelay = false;
-
 	private int[][] defaultPassengerArea;
 	private int[][] adaptedPassengerArea;
 
@@ -125,10 +123,6 @@ public class Agent extends Subject implements Runnable {
 			}
 		}
 
-	}
-
-	public void setSkipDelay(boolean skipIt) {
-		this.skipDelay = skipIt;
 	}
 
 	public boolean isInitialized() {
@@ -769,6 +763,23 @@ public class Agent extends Subject implements Runnable {
 		System.out.println("Doorway clear!");
 		return false;
 	}
+	
+	private void defineSeated(boolean isSeated) {
+		
+		/* when the goal is reached, the passenger is defined seated */
+		passenger.setIsSeated(isSeated);
+
+		/* then the assigned seat is declared occupied */
+		passenger.getSeatRef().setOccupied(isSeated);
+	}
+	
+	private boolean inDefaultBoardingMode() {
+		if (mode == agentMode.MAKE_WAY) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 
 	/**
 	 * 
@@ -783,6 +794,12 @@ public class Agent extends Subject implements Runnable {
 	 */
 	public void run() {
 		try {
+			
+			if(!inDefaultBoardingMode()) {
+				
+				/* if the agent should clear the row for a passenger, unblock the seat */
+				defineSeated(false);
+			}
 
 			/* set the current position to the starting point */
 			currentPosition = start;
@@ -790,7 +807,7 @@ public class Agent extends Subject implements Runnable {
 			/* add the path to the list of paths */
 			pathlist.add(path);
 
-			if (!skipDelay) {
+			if (inDefaultBoardingMode()) {
 				/* sleep the thread as long as the boarding delay requires it */
 				Thread.sleep((int) (passenger.getStartBoardingAfterDelay() * 1000 / speedfactor));
 
@@ -818,31 +835,33 @@ public class Agent extends Subject implements Runnable {
 				followPath();
 			}
 
-			// TODO: IF THE PASSENGER IS IN MAKE_WAY MODE, MAKE HIM RETURN TO
-			// HIS SEAT WHEN HE REACHES HIS GOAL AGAIN!
 
-			/* when the goal is reached, the passenger is defined seated */
-			passenger.setIsSeated(true);
-
-			/* then the assigned seat is declared occupied */
-			passenger.getSeatRef().setOccupied(true);
-
-			/* the stop watch is then interrupted */
-			stopwatch.stop();
-
-			/* the boarding time is then submitted back to the passenger */
-			passenger
-					.setBoardingTime((int) (stopwatch.getElapsedTimeSecs() * speedfactor));
-
-			/* the number of interrupts is submitted to the passenger */
-			passenger.setNumberOfWaits(numbOfInterupts);
-
-			/* clear the current position of the agent */
-			occupyNodeArea(currentPosition, false, false, null);
-			occupyNodeArea(desiredPosition, false, false, null);
-
-			/* RunAStar is notified that a passenger is seated now */
-			RunAStar.setPassengerSeated(passenger, this);
+			/*if it is the normal boarding mode, the passenger will sit down after reaching his seat and do the sitting down procedure.*/
+			if(inDefaultBoardingMode()) {
+				defineSeated(true);
+	
+				/* the stop watch is then interrupted */
+				stopwatch.stop();
+	
+				/* the boarding time is then submitted back to the passenger */
+				passenger
+						.setBoardingTime((int) (stopwatch.getElapsedTimeSecs() * speedfactor));
+	
+				/* the number of interrupts is submitted to the passenger */
+				passenger.setNumberOfWaits(numbOfInterupts);
+	
+				/* clear the current position of the agent */
+				occupyNodeArea(currentPosition, false, false, null);
+				occupyNodeArea(desiredPosition, false, false, null);
+	
+				/* RunAStar is notified that a passenger is seated now */
+				RunAStar.setPassengerSeated(passenger, this);
+			} else {
+				/* if the passenger is clearing the path and reached his goal, he should return to his seat afterwards! */
+				
+				// TODO: IF THE PASSENGER IS IN MAKE_WAY MODE, MAKE HIM RETURN TO
+				// HIS SEAT WHEN HE REACHES HIS GOAL AGAIN!
+			}
 
 		} catch (InterruptedException e) {
 

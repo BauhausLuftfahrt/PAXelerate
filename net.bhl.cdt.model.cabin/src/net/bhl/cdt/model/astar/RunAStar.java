@@ -141,7 +141,6 @@ public class RunAStar {
 						(int) (seat.getYPosition() / cabin.getScale()) - 1),
 				goal, RunAStar.getCostMap(), Agent.agentMode.MAKE_WAY);
 		agent.findNewPath();
-		agent.setSkipDelay(true);
 		agent.start();
 	}
 
