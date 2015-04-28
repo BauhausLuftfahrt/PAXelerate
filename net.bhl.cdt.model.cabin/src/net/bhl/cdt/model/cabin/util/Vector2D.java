@@ -8,6 +8,12 @@ public class Vector2D extends Vector {
 		super.dimensions = 2;
 	}
 	
+	public Vector2D(Vector vector) {
+		super(vector.getX(),vector.getY());
+		super.dimensions = 2;
+		
+	}
+	
 	
 	public void set(int x, int y) {
 		super.xValue  = x;

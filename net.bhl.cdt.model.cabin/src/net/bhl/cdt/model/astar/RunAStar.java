@@ -139,7 +139,7 @@ public class RunAStar {
 				new Vector2D((int) ((seat.getXPosition() + (seat
 						.getXDimension() / 2.0)) / cabin.getScale()),
 						(int) (seat.getYPosition() / cabin.getScale()) - 1),
-				goal, RunAStar.getCostMap(), Agent.agentMode.MAKE_WAY);
+				goal, RunAStar.getCostMap(), Agent.agentMode.GO_TO_SEAT);
 		agent.findNewPath();
 		agent.start();
 	}

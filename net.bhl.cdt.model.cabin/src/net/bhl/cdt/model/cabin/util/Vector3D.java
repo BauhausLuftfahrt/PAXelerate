@@ -6,6 +6,11 @@ public class Vector3D extends Vector {
 		super(x, y, z);
 		dimensions = 3;
 	}
+	
+	public Vector3D(Vector vector) {
+		super(vector.getX(),vector.getY());
+		super.dimensions = 3;
+	}
 
 	public void set(int x, int y, int z) {
 		super.xValue  = x;

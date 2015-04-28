@@ -859,8 +859,30 @@ public class Agent extends Subject implements Runnable {
 			} else {
 				/* if the passenger is clearing the path and reached his goal, he should return to his seat afterwards! */
 				
-				// TODO: IF THE PASSENGER IS IN MAKE_WAY MODE, MAKE HIM RETURN TO
-				// HIS SEAT WHEN HE REACHES HIS GOAL AGAIN!
+				
+				//TODO: The whole aisle should be blocked during this procedure as the way making passenger could otherwise not return to his seat.
+				
+				
+				//TODO: sleep until the other passenger has seated!
+				
+				Thread.sleep(200);
+				
+				//TODO: invert the path.
+				// path = Path.invert(path);
+				
+				/* new helper vector stores the start */
+				Vector helper = new Vector2D(start);
+				
+				/* swap goal and start position */
+				start = new Vector2D(goal);
+				goal = helper;
+				
+				/* go back to the start */
+				while (!goalReached()) {
+
+					/* this is run again if the agent detects obstacles in his path */
+					followPath();
+				}
 			}
 
 		} catch (InterruptedException e) {
