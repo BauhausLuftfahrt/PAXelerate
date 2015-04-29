@@ -19,7 +19,7 @@ import org.eclipse.swt.widgets.Text;
  * @author marc.engelmann
  *
  */
-public class GetInput extends TitleAreaDialog {
+public class Input extends TitleAreaDialog {
 
 	/**
 	 * This class defines the different input dialog types.
@@ -62,15 +62,15 @@ public class GetInput extends TitleAreaDialog {
 	 * @param messageType
 	 *            is the message type. USE IMessageProvider.(...)
 	 */
-	public GetInput(WindowType windowType, String message, int messageType) {
+	public Input(WindowType windowType, String message, int messageType) {
 		super(null);
-		
+
 		integerValue = 0;
 		vectorValue = new Vector2D(0, 0);
 		vectorValue2 = new Vector2D(0, 0);
 		booleanValue = false;
 		stringValue = "";
-		
+
 		switch (windowType) {
 		case GET_INTEGER:
 			titleString = "Integer Input Required!";
@@ -96,12 +96,12 @@ public class GetInput extends TitleAreaDialog {
 			titleString = "Text Input Required!";
 			descriptionText = "text:";
 			break;
-			
+
 		case OPTIONS:
 			titleString = "Please choose one of the following options!";
 			descriptionText = "Options:";
 			break;
-			
+
 		default:
 			titleString = "empty title ...";
 			descriptionText = "empty description";
@@ -221,6 +221,9 @@ public class GetInput extends TitleAreaDialog {
 		case GET_INTEGER:
 			integerValue = Integer.parseInt(text.getText());
 			break;
+		case OPTIONS:
+			integerValue = Integer.parseInt(text.getText());
+			break;
 		case GET_STRING:
 			stringValue = text.getText();
 			break;
@@ -289,6 +292,21 @@ public class GetInput extends TitleAreaDialog {
 	public boolean inputCheckOK() {
 		switch (windowType) {
 		case GET_INTEGER:
+			if (text.getText() != "") {
+				if (FuncLib.isNumeric(text.getText())) {
+					return true;
+				} else {
+					warningLabel
+							.setText("You entered a character that is not a digit.");
+					warningLabel.setVisible(true);
+					return false;
+				}
+			} else {
+				warningLabel.setText("Please enter a digit.");
+				warningLabel.setVisible(true);
+				return false;
+			}
+		case OPTIONS:
 			if (text.getText() != "") {
 				if (FuncLib.isNumeric(text.getText())) {
 					return true;

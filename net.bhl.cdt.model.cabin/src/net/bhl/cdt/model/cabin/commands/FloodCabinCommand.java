@@ -12,8 +12,8 @@ import net.bhl.cdt.model.astar.AreaMap;
 import net.bhl.cdt.model.astar.ObstacleMap;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.ui.HelpView;
-import net.bhl.cdt.model.cabin.util.GetInput;
-import net.bhl.cdt.model.cabin.util.GetInput.WindowType;
+import net.bhl.cdt.model.cabin.util.Input;
+import net.bhl.cdt.model.cabin.util.Input.WindowType;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.cabin.util.Vector2D;
 
@@ -48,7 +48,7 @@ public class FloodCabinCommand extends CDTCommand {
 	@Override
 	protected void doRun() {
 
-		final GetInput dialog = new GetInput(WindowType.GET_INTEGER,
+		final Input dialog = new Input(WindowType.GET_INTEGER,
 				"please enter the execution speed in milliseconds",
 				IMessageProvider.INFORMATION);
 

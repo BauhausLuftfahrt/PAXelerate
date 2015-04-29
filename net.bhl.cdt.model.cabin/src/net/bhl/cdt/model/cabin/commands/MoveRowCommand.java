@@ -15,8 +15,8 @@ import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
-import net.bhl.cdt.model.cabin.util.GetInput;
-import net.bhl.cdt.model.cabin.util.GetInput.WindowType;
+import net.bhl.cdt.model.cabin.util.Input;
+import net.bhl.cdt.model.cabin.util.Input.WindowType;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.util.ModelHelper;
 
@@ -93,7 +93,7 @@ public class MoveRowCommand extends CDTCommand {
 		 *            the arguments
 		 */
 
-		GetInput input = new GetInput(WindowType.GET_TWO_VECTORS,
+		Input input = new Input(WindowType.GET_TWO_VECTORS,
 				"All values must be entered in [cm]. Please use digits only.",
 				IMessageProvider.INFORMATION);
 

@@ -12,11 +12,12 @@ import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Curtain;
 import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.Lavatory;
+import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
-import net.bhl.cdt.model.cabin.util.GetInput;
-import net.bhl.cdt.model.cabin.util.GetInput.WindowType;
+import net.bhl.cdt.model.cabin.util.Input;
+import net.bhl.cdt.model.cabin.util.Input.WindowType;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.util.ModelHelper;
 
@@ -24,6 +25,7 @@ import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
@@ -42,7 +44,6 @@ public class SortPassengersCommand extends CDTCommand {
 	private ILog logger;
 	private CabinViewPart cabinViewPart;
 
-
 	public SortPassengersCommand(Cabin cabin) {
 
 		this.cabin = cabin;
@@ -55,25 +56,47 @@ public class SortPassengersCommand extends CDTCommand {
 	@Override
 	protected void doRun() {
 
-		
-		 GetInput input = new GetInput(WindowType.OPTIONS,
-		 "Please choose a sorting algorithm.",
-		 IMessageProvider.INFORMATION);
-		
+		Input input = new Input(
+				WindowType.OPTIONS,
+				"Please choose a sorting algorithm. [0]: Random, [1]: back to Front, [2]: Window to aisle",
+				IMessageProvider.INFORMATION);
 
-		 
-		 IWorkbenchPage page = PlatformUI.getWorkbench()
-		 .getActiveWorkbenchWindow().getActivePage();
-		 cabinViewPart = (CabinViewPart) page
-		 .findView("net.bhl.cdt.model.cabin.cabinview");
-		
-		 try {
-		 cabinViewPart.setCabin(cabin);
-		 logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
-		 "Cabin view checked and updated"));
-		 } catch (NullPointerException e) {
-		 logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
-		 "No cabin view is visible!"));
-		 }
+		EList<Passenger> paxList = cabin.getPassengers();
+
+		switch (input.getIntegerValue()) {
+
+		case 1:
+			break;
+		case 2:
+			for (int j = 0; j < paxList.size(); j++) {
+				for (int i = 0; i < paxList.size() - 1; i++) {
+					Passenger pax1 = paxList.get(i);
+					Passenger pax2 = paxList.get(i + 1);
+					if (pax1.getSeatRef().getYPosition() < pax2.getSeatRef()
+							.getYPosition()) {
+						paxList.move(i, pax2);
+					}
+				}
+			}
+			break;
+
+		default:
+			break;
+
+		}
+
+		IWorkbenchPage page = PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getActivePage();
+		cabinViewPart = (CabinViewPart) page
+				.findView("net.bhl.cdt.model.cabin.cabinview");
+
+		try {
+			cabinViewPart.setCabin(cabin);
+			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
+					"Cabin view checked and updated"));
+		} catch (NullPointerException e) {
+			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
+					"No cabin view is visible!"));
+		}
 	}
 }

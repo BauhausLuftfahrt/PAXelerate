@@ -18,9 +18,9 @@ import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.InfoViewPart;
 import net.bhl.cdt.model.cabin.util.FuncLib;
-import net.bhl.cdt.model.cabin.util.GetInput;
+import net.bhl.cdt.model.cabin.util.Input;
 import net.bhl.cdt.model.cabin.util.Vector;
-import net.bhl.cdt.model.cabin.util.GetInput.WindowType;
+import net.bhl.cdt.model.cabin.util.Input.WindowType;
 import net.bhl.cdt.model.cabin.util.Vector2D;
 import net.bhl.cdt.model.util.ModelHelper;
 
@@ -120,7 +120,7 @@ public class SimulateBoardingCommand extends CDTCommand implements Runnable {
 				"Initializing the boarding simulation ..."));
 		s.start();
 		if (cabin.getPassengers().isEmpty()) {
-			GetInput input = new GetInput(
+			Input input = new Input(
 					WindowType.GET_BOOLEAN,
 					"You did not create any passengers. Random passeners are now created.",
 					IMessageProvider.ERROR);
