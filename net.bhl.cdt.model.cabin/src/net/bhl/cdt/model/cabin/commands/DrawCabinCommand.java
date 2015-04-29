@@ -108,6 +108,8 @@ public class DrawCabinCommand extends CDTCommand {
 	}
 
 	private void checkPassengerAssignments() {
+		double passengersPerMinute = 30;
+		int i = 0;
 		for (Passenger passenger : cabin.getPassengers()) {
 			Seat seat = passenger.getSeatRef();
 
@@ -120,6 +122,8 @@ public class DrawCabinCommand extends CDTCommand {
 			}
 			passenger.setTravelClass(ModelHelper.getParent(TravelClass.class,
 					seat));
+			passenger.setStartBoardingAfterDelay(i * 60 / passengersPerMinute);
+			i++;
 		}
 	}
 

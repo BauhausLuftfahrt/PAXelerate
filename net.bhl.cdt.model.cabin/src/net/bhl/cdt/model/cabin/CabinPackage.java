@@ -1341,13 +1341,22 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER__PASSENGER_MOOD = 22;
 
 	/**
+	 * The feature id for the '<em><b>Number Of Make Way Operations</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS = 23;
+
+	/**
 	 * The number of structural features of the '<em>Passenger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_FEATURE_COUNT = 23;
+	int PASSENGER_FEATURE_COUNT = 24;
 
 	/**
 	 * The number of operations of the '<em>Passenger</em>' class.
@@ -3055,6 +3064,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getPassenger_PassengerMood();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getNumberOfMakeWayOperations <em>Number Of Make Way Operations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Number Of Make Way Operations</em>'.
+	 * @see net.bhl.cdt.model.cabin.Passenger#getNumberOfMakeWayOperations()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_NumberOfMakeWayOperations();
+
+	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getHeight <em>Height</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4070,6 +4090,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PASSENGER__PASSENGER_MOOD = eINSTANCE.getPassenger_PassengerMood();
+		/**
+		 * The meta object literal for the '<em><b>Number Of Make Way Operations</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS = eINSTANCE.getPassenger_NumberOfMakeWayOperations();
 		/**
 		 * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->

@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getLuggageStowTime <em>Luggage Stow Time</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getTravelClass <em>Travel Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getPassengerMood <em>Passenger Mood</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getNumberOfMakeWayOperations <em>Number Of Make Way Operations</em>}</li>
  * </ul>
  * </p>
  *
@@ -549,6 +550,33 @@ public interface Passenger extends EObject {
 	 * @generated
 	 */
 	void setPassengerMood(PassengerMood value);
+
+	/**
+	 * Returns the value of the '<em><b>Number Of Make Way Operations</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Number Of Make Way Operations</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Number Of Make Way Operations</em>' attribute.
+	 * @see #setNumberOfMakeWayOperations(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_NumberOfMakeWayOperations()
+	 * @model default="0"
+	 * @generated
+	 */
+	int getNumberOfMakeWayOperations();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getNumberOfMakeWayOperations <em>Number Of Make Way Operations</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Number Of Make Way Operations</em>' attribute.
+	 * @see #getNumberOfMakeWayOperations()
+	 * @generated
+	 */
+	void setNumberOfMakeWayOperations(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Height</b></em>' attribute.

@@ -132,7 +132,7 @@ public class RunAStar {
 		return cabin;
 	}
 
-	public static void launchWaymakingAgent(Passenger pax) {
+	public static void launchWaymakingAgent(Passenger pax, Passenger myself) {
 		Seat seat = pax.getSeatRef();
 
 		Vector goal = new Vector2D((int) (cabin.getCabinWidth()
@@ -145,9 +145,10 @@ public class RunAStar {
 				(int) ((seat.getYPosition() / cabin.getScale()) - 2));
 
 		Agent agent = new Agent(pax, start, goal, RunAStar.getCostMap(),
-				Agent.agentMode.MAKE_WAY);
+				Agent.agentMode.MAKE_WAY, myself);
 		agent.findNewPath();
 		agent.start();
+		pax.setNumberOfMakeWayOperations(pax.getNumberOfMakeWayOperations() + 1);
 	}
 
 	public static void setAgentList(ArrayList<Agent> agentList) {
@@ -200,7 +201,7 @@ public class RunAStar {
 			}
 
 			Agent agent = new Agent(passenger, start, goal, costmap,
-					Agent.agentMode.GO_TO_SEAT);
+					Agent.agentMode.GO_TO_SEAT, null);
 
 			// list of all agents
 			agentList.add(agent);

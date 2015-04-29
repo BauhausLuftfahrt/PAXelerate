@@ -44,6 +44,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getLuggageStowTime <em>Luggage Stow Time</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getTravelClass <em>Travel Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getPassengerMood <em>Passenger Mood</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getNumberOfMakeWayOperations <em>Number Of Make Way Operations</em>}</li>
  * </ul>
  * </p>
  *
@@ -459,6 +460,26 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected PassengerMood passengerMood = PASSENGER_MOOD_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getNumberOfMakeWayOperations() <em>Number Of Make Way Operations</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNumberOfMakeWayOperations()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int NUMBER_OF_MAKE_WAY_OPERATIONS_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getNumberOfMakeWayOperations() <em>Number Of Make Way Operations</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNumberOfMakeWayOperations()
+	 * @generated
+	 * @ordered
+	 */
+	protected int numberOfMakeWayOperations = NUMBER_OF_MAKE_WAY_OPERATIONS_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -870,6 +891,27 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getNumberOfMakeWayOperations() {
+		return numberOfMakeWayOperations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNumberOfMakeWayOperations(int newNumberOfMakeWayOperations) {
+		int oldNumberOfMakeWayOperations = numberOfMakeWayOperations;
+		numberOfMakeWayOperations = newNumberOfMakeWayOperations;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS, oldNumberOfMakeWayOperations, numberOfMakeWayOperations));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1017,6 +1059,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 				return basicGetTravelClass();
 			case CabinPackage.PASSENGER__PASSENGER_MOOD:
 				return getPassengerMood();
+			case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
+				return getNumberOfMakeWayOperations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1096,6 +1140,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 				return;
 			case CabinPackage.PASSENGER__PASSENGER_MOOD:
 				setPassengerMood((PassengerMood)newValue);
+				return;
+			case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
+				setNumberOfMakeWayOperations((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1177,6 +1224,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 			case CabinPackage.PASSENGER__PASSENGER_MOOD:
 				setPassengerMood(PASSENGER_MOOD_EDEFAULT);
 				return;
+			case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
+				setNumberOfMakeWayOperations(NUMBER_OF_MAKE_WAY_OPERATIONS_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1234,6 +1284,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 				return travelClass != null;
 			case CabinPackage.PASSENGER__PASSENGER_MOOD:
 				return passengerMood != PASSENGER_MOOD_EDEFAULT;
+			case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
+				return numberOfMakeWayOperations != NUMBER_OF_MAKE_WAY_OPERATIONS_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1287,6 +1339,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 		result.append(luggageStowTime);
 		result.append(", passengerMood: ");
 		result.append(passengerMood);
+		result.append(", numberOfMakeWayOperations: ");
+		result.append(numberOfMakeWayOperations);
 		result.append(')');
 		return result.toString();
 	}

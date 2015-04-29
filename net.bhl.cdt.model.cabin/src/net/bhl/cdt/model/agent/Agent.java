@@ -64,7 +64,9 @@ public class Agent extends Subject implements Runnable {
 	private final Passenger passenger;
 	private final int scale;
 	private final int speedfactor;
-	private agentMode mode;
+	private final agentMode mode;
+
+	private Passenger thePassengerILetInTheRow;
 
 	public static enum agentMode {
 		GO_TO_SEAT, MAKE_WAY
@@ -96,9 +98,10 @@ public class Agent extends Subject implements Runnable {
 	 *            the scale of the simulation
 	 */
 	public Agent(Passenger passenger, Vector start, Vector goal,
-			CostMap costmap, agentMode mode) {
+			CostMap costmap, agentMode mode, Passenger thePassengerILetInTheRow) {
 
 		/* assign the initializer values to the objects values */
+
 		this.speedfactor = RunAStar.getCabin().getSpeedFactor();
 		this.mode = mode;
 		this.passenger = passenger;
@@ -106,6 +109,7 @@ public class Agent extends Subject implements Runnable {
 		this.goal = goal;
 		this.scale = RunAStar.getCabin().getScale();
 		this.finalCostmap = costmap;
+		this.thePassengerILetInTheRow = thePassengerILetInTheRow;
 
 		/* generate a mood for the passenger depending on his presets */
 		if (passenger.getPassengerMood() == PassengerMood.AGRESSIVE) {
@@ -483,8 +487,6 @@ public class Agent extends Subject implements Runnable {
 	 * @return
 	 */
 	private boolean goalReached() {
-		FuncLib.printVectorToLog(goal, "goal");
-		FuncLib.printVectorToLog(desiredPosition, "desiredPosition");
 		return FuncLib.vectorsAreEqual(desiredPosition, goal);
 	}
 
@@ -628,7 +630,7 @@ public class Agent extends Subject implements Runnable {
 					// TODO: get the right passenger here!
 					for (Passenger pax : otherPassengersInRowBlockingMe) {
 
-						RunAStar.launchWaymakingAgent(pax);
+						RunAStar.launchWaymakingAgent(pax, this.passenger);
 
 					}
 
@@ -837,13 +839,20 @@ public class Agent extends Subject implements Runnable {
 				 * he should return to his seat afterwards!
 				 */
 
-				// TODO: The whole aisle should be blocked during this procedure
-				// as the way making passenger could otherwise not return to his
-				// seat.
+				/*
+				 * The whole aisle should be blocked during this procedure as
+				 * the way making passenger could otherwise not return to his
+				 * seat.
+				 */
 
-				// TODO: sleep until the other passenger has seated!
+				// TODO: BLOCK AISLE
 
-				Thread.sleep(100);
+				/* sleep until the other passenger has seated! */
+				while (!thePassengerILetInTheRow.isIsSeated()) {
+					Thread.sleep(10);
+				}
+
+				// TODO: DEBLOCK AISLE
 
 				/* new helper vector stores the start */
 				Vector helper = new Vector2D(start);
@@ -862,7 +871,6 @@ public class Agent extends Subject implements Runnable {
 					 * this is run again if the agent detects obstacles in his
 					 * path
 					 */
-					System.out.println("Following path now!");
 					followPath();
 
 				}

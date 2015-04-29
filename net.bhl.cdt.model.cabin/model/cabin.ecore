@@ -114,6 +114,8 @@
         eType="#//TravelClass"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerMood" lowerBound="1"
         eType="#//PassengerMood"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfMakeWayOperations"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CrewMember">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>

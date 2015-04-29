@@ -83,6 +83,7 @@ public class PassengerItemProvider
 			addLuggageStowTimePropertyDescriptor(object);
 			addTravelClassPropertyDescriptor(object);
 			addPassengerMoodPropertyDescriptor(object);
+			addNumberOfMakeWayOperationsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -506,6 +507,28 @@ public class PassengerItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Number Of Make Way Operations feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNumberOfMakeWayOperationsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_numberOfMakeWayOperations_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_numberOfMakeWayOperations_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Height feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -649,6 +672,7 @@ public class PassengerItemProvider
 			case CabinPackage.PASSENGER__HAS_LUGGAGE:
 			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
 			case CabinPackage.PASSENGER__PASSENGER_MOOD:
+			case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
