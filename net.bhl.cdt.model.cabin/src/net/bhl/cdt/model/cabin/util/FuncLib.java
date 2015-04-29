@@ -179,6 +179,8 @@ public abstract class FuncLib {
 	public static void printListToLog(ArrayList<Object> list) {
 		for (Object object : list) {
 			System.out.println(object);
+			System.out.println();
+			System.out.println();
 		}
 	}
 
@@ -209,6 +211,7 @@ public abstract class FuncLib {
 			System.out.println(name + "\t->\tx: " + vector.getX() + "\ty: "
 					+ vector.getY());
 		}
+		System.out.println();
 	}
 
 	public static boolean rectangular(double rot) {

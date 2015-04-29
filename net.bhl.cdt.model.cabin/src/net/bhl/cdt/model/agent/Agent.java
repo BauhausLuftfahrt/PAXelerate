@@ -21,7 +21,6 @@ import net.bhl.cdt.model.astar.StopWatch;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerMood;
-import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Rotator;
@@ -74,7 +73,7 @@ public class Agent extends Subject implements Runnable {
 	private int[][] defaultPassengerArea;
 	private int[][] adaptedPassengerArea;
 
-	private ArrayList<Passenger> otherPassengersInRowBlockingMe = new ArrayList<Passenger>();
+	public ArrayList<Passenger> otherPassengersInRowBlockingMe = new ArrayList<Passenger>();
 
 	// TODO: Das ist eine Stellschraube, genauso wie die Funktion
 	// "nodeAlreadyBlockedBySomeoneElse!". Darin wird der Fehler liegen!
@@ -141,47 +140,20 @@ public class Agent extends Subject implements Runnable {
 		this.blockingAgent = blockingAgent;
 	}
 
-	/**
-	 * This method returns the starting point vector.
-	 * 
-	 * @return the start vector
-	 */
 	public Vector getStart() {
 		return start;
 	}
 
-	/**
-	 * This method returns the goal point.
-	 * 
-	 * @return the goal point vector
-	 */
-	public Vector getGoal() {
-		return goal;
+	public Vector getCurrentPosition() {
+		return currentPosition;
 	}
 
-	/**
-	 * Rotation from 0 to 359 degrees. Only 45 degree steps. North is zero.
-	 * 
-	 * @return the rotation in degrees.
-	 */
-	private int getRotation() {
+	public Vector getDesiredPosition() {
+		return desiredPosition;
+	}
 
-		/* get the angle in radian from -Pi to Pi, so zero is EAST */
-		double theta = Math.atan2(
-				desiredPosition.getY() - currentPosition.getY(),
-				desiredPosition.getX() - currentPosition.getX());
-
-		/* rotate the angle by 90 degrees so that zero is NORTH */
-		theta += Math.PI / 2.0;
-
-		/* transform from radian to degree */
-		int angle = (int) Math.toDegrees(theta);
-
-		/* if degree is smaller than 0, convert it */
-		if (angle < 0) {
-			angle += 360;
-		}
-		return angle;
+	public Vector getGoal() {
+		return goal;
 	}
 
 	/**
@@ -292,8 +264,8 @@ public class Agent extends Subject implements Runnable {
 
 				/* if you want to do auto rotation, this method is called. */
 			} else {
-				adaptedPassengerArea = Rotator.rotate(getRotation(),
-						defaultPassengerArea);
+				adaptedPassengerArea = Rotator.rotate(
+						AgentHelper.getRotation(this), defaultPassengerArea);
 			}
 		}
 
@@ -485,14 +457,6 @@ public class Agent extends Subject implements Runnable {
 		/* retrieve the path information */
 		path = astar.getBestPath();
 
-		/*
-		 * print the newly generated cost map including the path when in
-		 * developer mode
-		 */
-		// if (currentPosition != null && RunAStar.DEVELOPER_MODE) {
-		// mutableCostMap.printMapPathToConsole(path, mutableAreaMap, this);
-		// }
-
 		/* setting the new desired and current positions */
 		desiredPosition = path.get(0).getPosition();
 
@@ -503,8 +467,6 @@ public class Agent extends Subject implements Runnable {
 		/* ends the stop watch performance logging */
 		stopwatch.stop();
 		System.out.println(stopwatch.getElapsedTime() + " ms for pathfinding");
-
-		astar.printPath(path);
 	}
 
 	/**
@@ -521,6 +483,8 @@ public class Agent extends Subject implements Runnable {
 	 * @return
 	 */
 	private boolean goalReached() {
+		FuncLib.printVectorToLog(goal, "goal");
+		FuncLib.printVectorToLog(desiredPosition, "desiredPosition");
 		return FuncLib.vectorsAreEqual(desiredPosition, goal);
 	}
 
@@ -668,7 +632,7 @@ public class Agent extends Subject implements Runnable {
 
 					}
 
-					Thread.sleep((int) (2000));
+					Thread.sleep((int) (3000));
 
 					waitingCompleted = true;
 
@@ -693,7 +657,8 @@ public class Agent extends Subject implements Runnable {
 						passenger.setPositionY(desiredPosition.getY() * scale);
 
 						/* submit the agents orientation */
-						passenger.setOrientationInDegree(getRotation());
+						passenger.setOrientationInDegree(AgentHelper
+								.getRotation(this));
 
 						/* catch possible errors */
 					} catch (ConcurrentModificationException e) {
@@ -726,7 +691,7 @@ public class Agent extends Subject implements Runnable {
 		Seat mySeat = passenger.getSeatRef();
 
 		if (desiredPosition.getY() == (int) (mySeat.getYPosition() / scale - PIXELS_FOR_WAY)) {
-			if (someoneAlreadyInThisPartOfTheRow(mySeat)) {
+			if (AgentHelper.someoneAlreadyInThisPartOfTheRow(mySeat, this)) {
 				return true;
 			}
 		}
@@ -763,16 +728,19 @@ public class Agent extends Subject implements Runnable {
 		System.out.println("Doorway clear!");
 		return false;
 	}
-	
+
 	private void defineSeated(boolean isSeated) {
-		
+
 		/* when the goal is reached, the passenger is defined seated */
 		passenger.setIsSeated(isSeated);
 
 		/* then the assigned seat is declared occupied */
 		passenger.getSeatRef().setOccupied(isSeated);
+
+		/* RunAStar is notified that a passenger is seated now */
+		RunAStar.setPassengerSeated(passenger, isSeated);
 	}
-	
+
 	private boolean inDefaultBoardingMode() {
 		if (mode == agentMode.MAKE_WAY) {
 			return false;
@@ -789,15 +757,38 @@ public class Agent extends Subject implements Runnable {
 		this.exitTheMainLoop = exitPathLoop;
 	}
 
+	public void performFinalElements() {
+
+		defineSeated(true);
+
+		/* the stop watch is then interrupted */
+		stopwatch.stop();
+
+		/* the boarding time is then submitted back to the passenger */
+		passenger
+				.setBoardingTime((int) (stopwatch.getElapsedTimeSecs() * speedfactor));
+
+		/* the number of interrupts is submitted to the passenger */
+		passenger.setNumberOfWaits(numbOfInterupts);
+
+		/* clear the current position of the agent */
+		occupyNodeArea(currentPosition, false, false, null);
+		occupyNodeArea(desiredPosition, false, false, null);
+
+	}
+
 	/**
 	 * This method runs the agents walking simulation.
 	 */
 	public void run() {
 		try {
-			
-			if(!inDefaultBoardingMode()) {
-				
-				/* if the agent should clear the row for a passenger, unblock the seat */
+
+			if (!inDefaultBoardingMode()) {
+
+				/*
+				 * if the agent should clear the row for a passenger, unblock
+				 * the seat
+				 */
 				defineSeated(false);
 			}
 
@@ -835,112 +826,55 @@ public class Agent extends Subject implements Runnable {
 				followPath();
 			}
 
+			/*
+			 * if it is the normal boarding mode, the passenger will sit down
+			 * after reaching his seat and do the sitting down procedure.
+			 */
+			if (!inDefaultBoardingMode()) {
 
-			/*if it is the normal boarding mode, the passenger will sit down after reaching his seat and do the sitting down procedure.*/
-			if(inDefaultBoardingMode()) {
-				defineSeated(true);
-	
-				/* the stop watch is then interrupted */
-				stopwatch.stop();
-	
-				/* the boarding time is then submitted back to the passenger */
-				passenger
-						.setBoardingTime((int) (stopwatch.getElapsedTimeSecs() * speedfactor));
-	
-				/* the number of interrupts is submitted to the passenger */
-				passenger.setNumberOfWaits(numbOfInterupts);
-	
-				/* clear the current position of the agent */
-				occupyNodeArea(currentPosition, false, false, null);
-				occupyNodeArea(desiredPosition, false, false, null);
-	
-				/* RunAStar is notified that a passenger is seated now */
-				RunAStar.setPassengerSeated(passenger, this);
-			} else {
-				/* if the passenger is clearing the path and reached his goal, he should return to his seat afterwards! */
-				
-				
-				//TODO: The whole aisle should be blocked during this procedure as the way making passenger could otherwise not return to his seat.
-				
-				
-				//TODO: sleep until the other passenger has seated!
-				
-				Thread.sleep(200);
-				
-				//TODO: invert the path.
-				// path = Path.invert(path);
-				
+				/*
+				 * if the passenger is clearing the path and reached his goal,
+				 * he should return to his seat afterwards!
+				 */
+
+				// TODO: The whole aisle should be blocked during this procedure
+				// as the way making passenger could otherwise not return to his
+				// seat.
+
+				// TODO: sleep until the other passenger has seated!
+
+				Thread.sleep(100);
+
 				/* new helper vector stores the start */
 				Vector helper = new Vector2D(start);
-				
+
 				/* swap goal and start position */
 				start = new Vector2D(goal);
-				goal = helper;
-				
+				goal = new Vector2D(helper);
+
+				path.invert();
+				path.appendWayPoint(RunAStar.getMap().getNode(goal));
+
 				/* go back to the start */
 				while (!goalReached()) {
 
-					/* this is run again if the agent detects obstacles in his path */
+					/*
+					 * this is run again if the agent detects obstacles in his
+					 * path
+					 */
+					System.out.println("Following path now!");
 					followPath();
+
 				}
 			}
+
+			performFinalElements();
 
 		} catch (InterruptedException e) {
 
 			/* This loop is run if there was an unknown error during runtime */
 			System.out.println("thread got an error");
 		}
-	}
-
-	private boolean someoneAlreadyInThisPartOfTheRow(Seat mySeat) {
-		Row row = mySeat.getRow();
-		for (Seat checkSeat : row.getSeats()) {
-			if (checkSeat.isOccupied()) {
-				if (sameSideOfAisle(checkSeat, mySeat)) {
-					if (OtherSeatCloserToAisle(checkSeat, mySeat)) {
-						otherPassengersInRowBlockingMe.add(checkSeat
-								.getPassenger());
-						return true;
-					}
-				}
-			}
-		}
-		return false;
-	}
-
-	/*
-	 * TODO: ONLY APPLICABLE FOR 3-3 CONFIGURATIONS OR BELOW!
-	 */
-	private boolean sameSideOfAisle(Seat checkSeat, Seat mySeat) {
-
-		if ("ABC".contains(mySeat.getLetter())) {
-			if ("ABC".contains(mySeat.getLetter())) {
-				return true;
-			}
-		}
-		if ("DEF".contains(mySeat.getLetter())) {
-			if ("DEF".contains(mySeat.getLetter())) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	// TODO: this only works for a ONE AISLE configuration!
-	private boolean OtherSeatCloserToAisle(Seat checkSeat, Seat mySeat) {
-
-		int middleOfCabinX = (int) (RunAStar.getCabin().getCabinWidth() / 2.0 / scale);
-
-		int checkSeatToAisleDistanceX = Math.abs(checkSeat.getXPosition()
-				/ scale - middleOfCabinX);
-
-		int mySeatToAisleDistanceX = Math.abs(mySeat.getXPosition() / scale
-				- middleOfCabinX);
-
-		if (checkSeatToAisleDistanceX < mySeatToAisleDistanceX) {
-			return true;
-		}
-		return false;
 	}
 
 	/**

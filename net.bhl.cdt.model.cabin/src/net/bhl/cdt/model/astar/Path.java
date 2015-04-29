@@ -118,6 +118,35 @@ public class Path {
 		return false;
 	}
 
+	public void invert() {
+
+		ArrayList<Node> waypointStorage = new ArrayList<Node>();
+		for (Node node : waypoints) {
+			waypointStorage.add(node);
+		}
+
+		waypoints.clear();
+
+		for (Node node : waypointStorage) {
+			waypoints.add(0, node);
+		}
+
+		waypointStorage.clear();
+
+	}
+
+	/**
+	 * This method prints the path to the console.
+	 * 
+	 * @param path
+	 *            the path to be printed
+	 */
+	public void print() {
+		for (Node node : getWaypoints()) {
+			FuncLib.printVectorToLog(node.getPosition(), "position");
+		}
+	}
+
 	public Path cutToPoint(Path path, Vector point) {
 		/* get the last node */
 		Path newPath = new Path();

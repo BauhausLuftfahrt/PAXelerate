@@ -54,6 +54,8 @@ public class AStar {
 		/* mark start and goal node */
 		map.getNode(agent.getGoal()).setProperty(Property.GOAL,
 				agent.getPassenger().getId());
+		map.getNode(agent.getStart()).setProperty(Property.START,
+				agent.getPassenger().getId());
 
 		/* reset the properties of the start node */
 		map.getNode(agent.getStart()).setDistanceFromStart(0);
@@ -160,18 +162,6 @@ public class AStar {
 		}
 		bestPath = null;
 		return;
-	}
-
-	/**
-	 * This method prints the path to the console.
-	 * 
-	 * @param path
-	 *            the path to be printed
-	 */
-	public void printPath(Path path) {
-		for (Node node : path.getWaypoints()) {
-			FuncLib.printVectorToLog(node.getPosition(), "position");
-		}
 	}
 
 	/**

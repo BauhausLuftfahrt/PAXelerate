@@ -117,6 +117,10 @@ public class Node implements Comparable<Node> {
 			return "O";
 		case DEFAULT:
 			return " ";
+		case GOAL:
+			return "G";
+		case START:
+			return "S";
 		default:
 			return "?";
 		}

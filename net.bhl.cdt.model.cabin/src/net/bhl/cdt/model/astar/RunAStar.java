@@ -111,8 +111,12 @@ public class RunAStar {
 	 * @param passenger
 	 *            is the passenger
 	 */
-	public static void setPassengerSeated(Passenger passenger, Agent agent) {
-		finishedList.add(passenger);
+	public static void setPassengerSeated(Passenger passenger, boolean setSeated) {
+		if (setSeated) {
+			finishedList.add(passenger);
+		} else {
+			finishedList.remove(passenger);
+		}
 		if (finishedList.size() == cabin.getPassengers().size()) {
 			setSimulationDone(true);
 		}
@@ -131,15 +135,17 @@ public class RunAStar {
 	public static void launchWaymakingAgent(Passenger pax) {
 		Seat seat = pax.getSeatRef();
 
-		Vector goal = new Vector2D((int) (RunAStar.getCabin().getCabinWidth()
+		Vector goal = new Vector2D((int) (cabin.getCabinWidth()
 				/ cabin.getScale() / 2.0),
-				(int) (seat.getYPosition() / cabin.getScale()) + 10);
+				(int) (seat.getYPosition() / cabin.getScale()) + 5);
 
-		Agent agent = new Agent(pax,
-				new Vector2D((int) ((seat.getXPosition() + (seat
-						.getXDimension() / 2.0)) / cabin.getScale()),
-						(int) (seat.getYPosition() / cabin.getScale()) - 1),
-				goal, RunAStar.getCostMap(), Agent.agentMode.GO_TO_SEAT);
+		Vector start = new Vector2D(
+				(int) ((seat.getXPosition() + seat.getXDimension() / 2) / cabin
+						.getScale()),
+				(int) ((seat.getYPosition() / cabin.getScale()) - 2));
+
+		Agent agent = new Agent(pax, start, goal, RunAStar.getCostMap(),
+				Agent.agentMode.MAKE_WAY);
 		agent.findNewPath();
 		agent.start();
 	}
@@ -174,8 +180,7 @@ public class RunAStar {
 		costmap = null;
 		Boolean doItOnce = true;
 
-		for (Passenger passenger : ModelHelper.getChildrenByClass(cabin,
-				Passenger.class)) {
+		for (Passenger passenger : cabin.getPassengers()) {
 			Seat seat = passenger.getSeatRef();
 			Door door = passenger.getDoor();
 			Vector start = new Vector2D(0,

@@ -8,6 +8,7 @@ package net.bhl.cdt.model.cabin.commands;
 import java.util.ArrayList;
 
 import net.bhl.cdt.commands.CDTCommand;
+import net.bhl.cdt.model.agent.AgentHelper;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Curtain;
 import net.bhl.cdt.model.cabin.Galley;
@@ -16,6 +17,7 @@ import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
+import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Input;
 import net.bhl.cdt.model.cabin.util.Input.WindowType;
 import net.bhl.cdt.model.cabin.util.Vector;
@@ -50,30 +52,59 @@ public class SortPassengersCommand extends CDTCommand {
 		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
 	}
 
-	/**
-	 * This method executed the right click command. The cabin view is updated.
-	 */
 	@Override
 	protected void doRun() {
 
 		Input input = new Input(
 				WindowType.OPTIONS,
-				"Please choose a sorting algorithm. [0]: Random, [1]: back to Front, [2]: Window to aisle",
+				"Please choose a sorting algorithm. [0]: Random, [1]: back to front, [2]: front to back, [3]: Window to aisle",
 				IMessageProvider.INFORMATION);
 
 		EList<Passenger> paxList = cabin.getPassengers();
 
 		switch (input.getIntegerValue()) {
 
-		case 1:
+		case 0:
+			for (int j = 0; j < paxList.size(); j++) {
+				for (int i = 0; i < paxList.size(); i++) {
+					Passenger pax = paxList.get(i);
+
+					paxList.move(FuncLib.randomValue(0, paxList.size()), pax);
+				}
+			}
 			break;
 		case 2:
 			for (int j = 0; j < paxList.size(); j++) {
 				for (int i = 0; i < paxList.size() - 1; i++) {
 					Passenger pax1 = paxList.get(i);
 					Passenger pax2 = paxList.get(i + 1);
+					if (pax1.getSeatRef().getYPosition() > pax2.getSeatRef()
+							.getYPosition()) {
+						paxList.move(i, pax2);
+					}
+				}
+			}
+			break;
+		case 1:
+			for (int j = 0; j < paxList.size(); j++) {
+				for (int i = 0; i < paxList.size() - 1; i++) {
+					Passenger pax1 = paxList.get(i);
+					Passenger pax2 = paxList.get(i + 1);
 					if (pax1.getSeatRef().getYPosition() < pax2.getSeatRef()
 							.getYPosition()) {
+						paxList.move(i, pax2);
+					}
+				}
+			}
+			break;
+
+		case 3:
+			for (int j = 0; j < paxList.size(); j++) {
+				for (int i = 0; i < paxList.size() - 1; i++) {
+					Passenger pax1 = paxList.get(i);
+					Passenger pax2 = paxList.get(i + 1);
+					if (AgentHelper.otherSeatCloserToAisle(pax1.getSeatRef(),
+							pax2.getSeatRef())) {
 						paxList.move(i, pax2);
 					}
 				}
