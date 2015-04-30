@@ -46,18 +46,15 @@ public class AgentHelper {
 	// TODO: this only works for a ONE AISLE configuration!
 	public static boolean otherSeatCloserToAisle(Seat otherSeat, Seat thisSeat) {
 
-		int scale = ModelHelper.getParent(Cabin.class, thisSeat).getScale();
-
 		int middleOfCabinX = (int) (ModelHelper
-				.getParent(Cabin.class, thisSeat).getCabinWidth() / 2.0 / scale);
+				.getParent(Cabin.class, thisSeat).getCabinWidth() / 2.0);
 
-		int checkSeatToAisleDistanceX = Math.abs(otherSeat.getXPosition()
-				/ scale - middleOfCabinX);
+		int otherSeatToAisleDistanceX = Math.abs(otherSeat.getXPosition() + otherSeat.getXDimension() / 2 - middleOfCabinX);
 
-		int mySeatToAisleDistanceX = Math.abs(thisSeat.getXPosition() / scale
+		int mySeatToAisleDistanceX = Math.abs(thisSeat.getXPosition() + thisSeat.getXDimension() / 2
 				- middleOfCabinX);
 
-		if (checkSeatToAisleDistanceX < mySeatToAisleDistanceX) {
+		if (otherSeatToAisleDistanceX < mySeatToAisleDistanceX) {
 			return true;
 		}
 		return false;
