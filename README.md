@@ -12,7 +12,7 @@ Welcome to the repository of the Bauhaus Luftfahrt Boarding Simulation!
 
 * Install openCDT and Boarding Simulation plugin using [this tutorial](https://bitbucket.org/michele_muc/paxsim/wiki/installation)
 * Get started with [Git repository](https://bitbucket.org/michele_muc/paxsim/wiki/git) handling
-* [Trouble shooting] (https://bitbucket.org/michele_muc/paxsim/wiki/error-framework)
+* [Trouble shooting](https://bitbucket.org/michele_muc/paxsim/wiki/error-framework)
 
 ### Contributors ###
 
