@@ -57,7 +57,7 @@ public class SortPassengersCommand extends CDTCommand {
 
 		Input input = new Input(
 				WindowType.OPTIONS,
-				"Please choose a sorting algorithm. [0]: Random, [1]: back to front, [2]: front to back, [3]: Window to aisle",
+				"Please choose a sorting algorithm. [0]: Random, [1]: R->F, [2]: F->R, [3]: Window to aisle & R->F, [4]: Window to aisle & F->R",
 				IMessageProvider.INFORMATION);
 
 		EList<Passenger> paxList = cabin.getPassengers();
@@ -99,13 +99,15 @@ public class SortPassengersCommand extends CDTCommand {
 			break;
 
 		case 3:
-			for (int j = 0; j < paxList.size(); j++) {
+			for (int j = 0; j < 3 * paxList.size(); j++) {
 				for (int i = 0; i < paxList.size() - 1; i++) {
-					Passenger pax1 = paxList.get(i);
-					Passenger pax2 = paxList.get(i + 1);
-					if (AgentHelper.otherSeatCloserToAisle(pax1.getSeatRef(),
-							pax2.getSeatRef())) {
-						paxList.move(i, pax2);
+					Passenger thisPax = paxList.get(i);
+					Passenger otherPax = paxList.get(i + 1);
+					if (AgentHelper.otherSeatCloserToAisle(thisPax.getSeatRef(),otherPax.getSeatRef())) {
+						if (thisPax.getSeatRef().getYPosition() < otherPax.getSeatRef()
+								.getYPosition()) {
+						paxList.move(i, otherPax);
+						}
 					}
 				}
 			}
@@ -113,9 +115,17 @@ public class SortPassengersCommand extends CDTCommand {
 
 		default:
 			break;
-
+		}
+		
+		double passengersPerMinute = 30;
+		int i = 0;
+		for(Passenger pax:cabin.getPassengers()) {
+			pax.setStartBoardingAfterDelay(i * 60 / passengersPerMinute);
+			i++;
 		}
 
+		
+		
 		IWorkbenchPage page = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage();
 		cabinViewPart = (CabinViewPart) page

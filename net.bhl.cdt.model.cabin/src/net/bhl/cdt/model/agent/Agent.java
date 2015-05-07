@@ -62,6 +62,7 @@ public class Agent extends Subject implements Runnable {
 	/* constant values */
 	private final CostMap finalCostmap;
 	private final Passenger passenger;
+	
 	private final int scale;
 	private final int speedfactor;
 	private final agentMode mode;
@@ -110,6 +111,7 @@ public class Agent extends Subject implements Runnable {
 		this.scale = RunAStar.getCabin().getScale();
 		this.finalCostmap = costmap;
 		this.thePassengerILetInTheRow = thePassengerILetInTheRow;
+
 
 		/* generate a mood for the passenger depending on his presets */
 		if (passenger.getPassengerMood() == PassengerMood.AGRESSIVE) {
@@ -548,6 +550,16 @@ public class Agent extends Subject implements Runnable {
 	public ArrayList<Path> getPathList() {
 		return pathlist;
 	}
+	
+	/* check if there is still on passenger seated */
+	private boolean otherPassengerStoodUp() {
+		for(Passenger pax: otherPassengersInRowBlockingMe) {
+			if(pax.isIsSeated()) {
+				return false;
+			}
+		}
+		return true;
+	}
 
 	/**
 	 * This method is the main path following loop for the agent.
@@ -634,6 +646,11 @@ public class Agent extends Subject implements Runnable {
 
 					}
 
+					while(!otherPassengerStoodUp()) {
+					Thread.sleep((int) (10));
+					}
+					
+					//TODO: calculate the waiting time!
 					Thread.sleep((int) (3000));
 
 					waitingCompleted = true;
