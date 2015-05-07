@@ -290,7 +290,7 @@ public class Agent extends Subject implements Runnable {
 
 		/*
 		 * this is the dimension you need to go in every direction from the
-		 * starting point
+		 * starting point. It is half the way back in every dimension.
 		 */
 		dim = (int) (dimension / 2);
 

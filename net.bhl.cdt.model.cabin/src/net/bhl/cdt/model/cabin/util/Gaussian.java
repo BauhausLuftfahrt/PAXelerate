@@ -18,7 +18,7 @@ package net.bhl.cdt.model.cabin.util;
  *
  *************************************************************************/
 
-public class Gauss {
+public class Gaussian {
 
 	// return phi(x) = standard Gaussian pdf
 	public static double phi(double x) {
@@ -68,12 +68,12 @@ public class Gauss {
 
 	// test client
 	public static void main(String[] args) {
-		double z = Double.parseDouble(args[0]);
-		double mu = Double.parseDouble(args[1]);
-		double sigma = Double.parseDouble(args[2]);
+		double z = 0; // point at axis
+		double mu = 0; // offset of y axis
+		double sigma = 1;
 		System.out.println(Phi(z, mu, sigma));
-		double y = Phi(z);
-		System.out.println(PhiInverse(y));
+		// double y = Phi(z);
+		// System.out.println(PhiInverse(y));
 	}
 
 }
