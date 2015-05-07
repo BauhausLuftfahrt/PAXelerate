@@ -62,7 +62,7 @@ public class Agent extends Subject implements Runnable {
 	/* constant values */
 	private final CostMap finalCostmap;
 	private final Passenger passenger;
-	
+
 	private final int scale;
 	private final int speedfactor;
 	private final agentMode mode;
@@ -111,7 +111,6 @@ public class Agent extends Subject implements Runnable {
 		this.scale = RunAStar.getCabin().getScale();
 		this.finalCostmap = costmap;
 		this.thePassengerILetInTheRow = thePassengerILetInTheRow;
-
 
 		/* generate a mood for the passenger depending on his presets */
 		if (passenger.getPassengerMood() == PassengerMood.AGRESSIVE) {
@@ -182,46 +181,6 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * This method blocks the agents position if the rotation is rectangular.
-	 * 
-	 * @param vector
-	 *            is the vector of the agents position
-	 * @param occupy
-	 *            occupy or deoccupy the node
-	 * @param property
-	 *            set the property of the node
-	 */
-	private void blockNode(Vector vector, boolean occupy, Property property) {
-
-		/* check if the desired node is out of bounds */
-		if (RunAStar.getMap().getNodeByCoordinate(vector.getX(), vector.getY()) != null) {
-
-			/* check if the agent itself blocked the node */
-			if (RunAStar.getMap()
-					.getNodeByCoordinate(vector.getX(), vector.getY())
-					.getLinkedAgentID() == this.passenger.getId()
-					|| RunAStar.getMap()
-							.getNodeByCoordinate(vector.getX(), vector.getY())
-							.getProperty() != Property.AGENT) {
-
-				/* check if the node is no obstacle */
-				if (RunAStar.getMap()
-						.getNodeByCoordinate(vector.getX(), vector.getY())
-						.getProperty() != Property.OBSTACLE) {
-
-					/*
-					 * set the node to the desired property and link the agent
-					 * id
-					 */
-					RunAStar.getMap()
-							.getNodeByCoordinate(vector.getX(), vector.getY())
-							.setProperty(property, this.passenger.getId());
-				}
-			}
-		}
-	}
-
-	/**
 	 * This method occupies a specific area within the area map.
 	 * 
 	 * @param vector
@@ -271,7 +230,7 @@ public class Agent extends Subject implements Runnable {
 				/* if you want to do auto rotation, this method is called. */
 			} else {
 				adaptedPassengerArea = Rotator.rotate(
-						AgentHelper.getRotation(this), defaultPassengerArea);
+						AgentFunctions.getRotation(this), defaultPassengerArea);
 			}
 		}
 
@@ -315,7 +274,8 @@ public class Agent extends Subject implements Runnable {
 					if (adaptedPassengerArea[x + dim][y + dim] == 1) {
 
 						/* block or deblock the specific node */
-						blockNode(location, occupy, property);
+						AgentMover.blockNode(location, occupy, property,
+								this.passenger);
 					}
 				}
 			}
@@ -550,11 +510,11 @@ public class Agent extends Subject implements Runnable {
 	public ArrayList<Path> getPathList() {
 		return pathlist;
 	}
-	
+
 	/* check if there is still on passenger seated */
 	private boolean otherPassengerStoodUp() {
-		for(Passenger pax: otherPassengersInRowBlockingMe) {
-			if(pax.isIsSeated()) {
+		for (Passenger pax : otherPassengersInRowBlockingMe) {
+			if (pax.isIsSeated()) {
 				return false;
 			}
 		}
@@ -646,11 +606,11 @@ public class Agent extends Subject implements Runnable {
 
 					}
 
-					while(!otherPassengerStoodUp()) {
-					Thread.sleep((int) (10));
+					while (!otherPassengerStoodUp()) {
+						Thread.sleep((int) (10));
 					}
-					
-					//TODO: calculate the waiting time!
+
+					// TODO: calculate the waiting time!
 					Thread.sleep((int) (3000));
 
 					waitingCompleted = true;
@@ -676,7 +636,7 @@ public class Agent extends Subject implements Runnable {
 						passenger.setPositionY(desiredPosition.getY() * scale);
 
 						/* submit the agents orientation */
-						passenger.setOrientationInDegree(AgentHelper
+						passenger.setOrientationInDegree(AgentFunctions
 								.getRotation(this));
 
 						/* catch possible errors */
@@ -710,7 +670,7 @@ public class Agent extends Subject implements Runnable {
 		Seat mySeat = passenger.getSeatRef();
 
 		if (desiredPosition.getY() == (int) (mySeat.getYPosition() / scale - PIXELS_FOR_WAY)) {
-			if (AgentHelper.someoneAlreadyInThisPartOfTheRow(mySeat, this)) {
+			if (AgentFunctions.someoneAlreadyInThisPartOfTheRow(mySeat, this)) {
 				return true;
 			}
 		}
@@ -774,6 +734,16 @@ public class Agent extends Subject implements Runnable {
 	 */
 	public void setExitPathLoop(boolean exitPathLoop) {
 		this.exitTheMainLoop = exitPathLoop;
+	}
+
+	public void interruptAgent(int duration) {
+		try {
+			Thread.sleep(duration);
+			System.out.println("Sleeping!");
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+			System.out.println("Sleeping not possible!");
+		}
 	}
 
 	public void performFinalElements() {
@@ -856,17 +826,23 @@ public class Agent extends Subject implements Runnable {
 				 * he should return to his seat afterwards!
 				 */
 
-				/*
-				 * The whole aisle should be blocked during this procedure as
-				 * the way making passenger could otherwise not return to his
-				 * seat.
-				 */
+				// TODO: SLEEP PASSENGER WHO IS NEXT IN THE LIST UNTIL I AM
+				// SEATED AGAIN!
 
-				// TODO: BLOCK AISLE
+				Passenger pas = RunAStar
+						.getCabin()
+						.getPassengers()
+						.get(RunAStar.getCabin().getPassengers()
+								.indexOf(thePassengerILetInTheRow) + 1);
+
+				RunAStar.sleepAgent(1000, pas);
+				// TODO: DOES NOT WORK!!! Why can this thread not be
+				// interrupted?
 
 				/* sleep until the other passenger has seated! */
 				while (!thePassengerILetInTheRow.isIsSeated()) {
 					Thread.sleep(10);
+
 				}
 
 				// TODO: DEBLOCK AISLE

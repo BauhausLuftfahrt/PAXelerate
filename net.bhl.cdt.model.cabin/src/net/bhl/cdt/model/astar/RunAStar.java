@@ -173,6 +173,19 @@ public class RunAStar {
 		}
 	}
 
+	private static Agent getAgentByPassengerID(int id) {
+		for (Agent agentWhoIsIt : agentList) {
+			if (agentWhoIsIt.getPassenger().getId() == id) {
+				return agentWhoIsIt;
+			}
+		}
+		return null;
+	}
+
+	public static void sleepAgent(int duration, Passenger passenger) {
+		getAgentByPassengerID(passenger.getId()).interruptAgent(duration);
+	}
+
 	/**
 	 * This method executes the path finding simulation of the agents.
 	 */
@@ -235,6 +248,7 @@ public class RunAStar {
 				frame.setContentPane(view);
 				frame.pack();
 				frame.setVisible(true);
+				frame.setResizable(false);
 			}
 		});
 

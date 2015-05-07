@@ -62,6 +62,11 @@ public abstract class FuncLib {
 		return true;
 	}
 
+	public static int GetScreenWorkingWidth() {
+		return java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment()
+				.getMaximumWindowBounds().width;
+	}
+
 	/**
 	 * Check if there are two of the same characters directly after each other,
 	 * like in <i>balloon</i>.
@@ -105,6 +110,11 @@ public abstract class FuncLib {
 	public static int randomValue(int lowerBound, int upperBound) {
 		Random rand = new Random();
 		return (rand.nextInt(upperBound - lowerBound) + lowerBound);
+	}
+
+	public static double gaussianRandom(double mean, double variance) {
+		Random rand = new Random();
+		return (rand.nextGaussian() * variance + mean);
 	}
 
 	/**

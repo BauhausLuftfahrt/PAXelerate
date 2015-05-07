@@ -5,6 +5,8 @@
  *******************************************************************************/
 package net.bhl.cdt.model.cabin.ui;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -58,7 +60,7 @@ import org.eclipse.ui.part.ViewPart;
  *
  */
 
-public class CabinViewPart extends ViewPart implements Runnable {
+public class CabinViewPart extends ViewPart implements Runnable, MouseListener {
 	private Cabin cabin;
 	private double factor;
 	private Composite parent;
@@ -358,6 +360,7 @@ public class CabinViewPart extends ViewPart implements Runnable {
 				"Lavatory.png");
 		canvas = new Canvas(parent, SWT.RESIZE);
 		canvas.setBounds(0, 0, 1000, 1000);
+
 		doTheDraw();
 	}
 
@@ -905,5 +908,35 @@ public class CabinViewPart extends ViewPart implements Runnable {
 	 */
 	public void setThread(Thread thread) {
 		this.thread = thread;
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		System.out.println("x: " + e.getX() + ", y:" + e.getY());
+
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		System.out.println("x: " + e.getX() + ", y:" + e.getY());
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		System.out.println("x: " + e.getX() + ", y:" + e.getY());
+
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		System.out.println("x: " + e.getX() + ", y:" + e.getY());
+
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		System.out.println("x: " + e.getX() + ", y:" + e.getY());
+
 	}
 }

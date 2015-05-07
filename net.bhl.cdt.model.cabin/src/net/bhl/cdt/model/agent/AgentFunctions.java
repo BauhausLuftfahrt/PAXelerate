@@ -1,12 +1,11 @@
 package net.bhl.cdt.model.agent;
 
-import net.bhl.cdt.model.astar.RunAStar;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.util.ModelHelper;
 
-public class AgentHelper {
+public class AgentFunctions {
 
 	public static boolean someoneAlreadyInThisPartOfTheRow(Seat mySeat,
 			Agent agent) {
@@ -49,10 +48,11 @@ public class AgentHelper {
 		int middleOfCabinX = (int) (ModelHelper
 				.getParent(Cabin.class, thisSeat).getCabinWidth() / 2.0);
 
-		int otherSeatToAisleDistanceX = Math.abs(otherSeat.getXPosition() + otherSeat.getXDimension() / 2 - middleOfCabinX);
+		int otherSeatToAisleDistanceX = Math.abs(otherSeat.getXPosition()
+				+ otherSeat.getXDimension() / 2 - middleOfCabinX);
 
-		int mySeatToAisleDistanceX = Math.abs(thisSeat.getXPosition() + thisSeat.getXDimension() / 2
-				- middleOfCabinX);
+		int mySeatToAisleDistanceX = Math.abs(thisSeat.getXPosition()
+				+ thisSeat.getXDimension() / 2 - middleOfCabinX);
 
 		if (otherSeatToAisleDistanceX < mySeatToAisleDistanceX) {
 			return true;

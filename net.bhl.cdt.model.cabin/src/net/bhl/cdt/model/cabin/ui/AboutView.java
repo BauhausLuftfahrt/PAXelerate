@@ -3,6 +3,7 @@ package net.bhl.cdt.model.cabin.ui;
 import javax.swing.*;
 
 import net.bhl.cdt.model.astar.AreaMap;
+import net.bhl.cdt.model.cabin.util.FuncLib;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -16,13 +17,14 @@ import java.awt.event.ActionListener;
 public class AboutView extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private static final int BOX_WIDTH = 1500;
-	private static final int BOX_HEIGHT = 300;
+	private static final int BOX_WIDTH = FuncLib.GetScreenWorkingWidth() - 40;
+	private static final int BOX_HEIGHT = 275;
 	private static final int FONT_SIZE = 8;
 	private AreaMap areamap;
 	private final Button leftButton;
 	private final Button rightButton;
 	private int pointZero = 0;
+	private static final int STEP_SIZE = 2;
 
 	/**
 	 * 
@@ -46,13 +48,16 @@ public class AboutView extends JPanel {
 		leftButton = new Button();
 		rightButton = new Button();
 
+		leftButton.setFocusable(false);
+		rightButton.setFocusable(false);
+
 		leftButton.setLabel("<");
 		leftButton.setEnabled(true);
 		leftButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (pointZero > 0) {
-					pointZero--;
+				if (pointZero >= STEP_SIZE) {
+					pointZero -= STEP_SIZE;
 				}
 			}
 		});
@@ -63,8 +68,9 @@ public class AboutView extends JPanel {
 		rightButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (pointZero < 40) {
-					pointZero++;
+				if (pointZero < areamap.getDimensions().getY()
+						- (BOX_WIDTH / FONT_SIZE) - STEP_SIZE) {
+					pointZero += STEP_SIZE;
 				}
 			}
 		});

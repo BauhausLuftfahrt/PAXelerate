@@ -8,7 +8,7 @@ package net.bhl.cdt.model.cabin.commands;
 import java.util.ArrayList;
 
 import net.bhl.cdt.commands.CDTCommand;
-import net.bhl.cdt.model.agent.AgentHelper;
+import net.bhl.cdt.model.agent.AgentFunctions;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Curtain;
 import net.bhl.cdt.model.cabin.Galley;
@@ -103,7 +103,7 @@ public class SortPassengersCommand extends CDTCommand {
 				for (int i = 0; i < paxList.size() - 1; i++) {
 					Passenger thisPax = paxList.get(i);
 					Passenger otherPax = paxList.get(i + 1);
-					if (AgentHelper.otherSeatCloserToAisle(thisPax.getSeatRef(),otherPax.getSeatRef())) {
+					if (AgentFunctions.otherSeatCloserToAisle(thisPax.getSeatRef(),otherPax.getSeatRef())) {
 						if (thisPax.getSeatRef().getYPosition() < otherPax.getSeatRef()
 								.getYPosition()) {
 						paxList.move(i, otherPax);
