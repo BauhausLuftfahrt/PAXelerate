@@ -5,11 +5,8 @@
  *******************************************************************************/
 package net.bhl.cdt.model.cabin.ui;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.File;
 import java.util.ArrayList;
-
 import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.astar.ObstacleMap;
 import net.bhl.cdt.model.astar.Path;
@@ -23,7 +20,6 @@ import net.bhl.cdt.model.cabin.FirstClass;
 import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.Passenger;
-import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.util.SWTResourceManager;
 import net.bhl.cdt.model.cabin.util.Vector;
@@ -38,7 +34,6 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
-import org.eclipse.emf.ecp.view.internal.swt.SWTRendererFactoryImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
@@ -60,7 +55,7 @@ import org.eclipse.ui.part.ViewPart;
  *
  */
 
-public class CabinViewPart extends ViewPart implements Runnable, MouseListener {
+public class CabinViewPart extends ViewPart implements Runnable {
 	private Cabin cabin;
 	private double factor;
 	private Composite parent;
@@ -362,6 +357,10 @@ public class CabinViewPart extends ViewPart implements Runnable, MouseListener {
 		canvas.setBounds(0, 0, 1000, 1000);
 
 		doTheDraw();
+		
+	//	JButton button = new JButton();
+		//canvas.add(button);
+		
 	}
 
 	private Image switchAircraftImage() {
@@ -908,35 +907,5 @@ public class CabinViewPart extends ViewPart implements Runnable, MouseListener {
 	 */
 	public void setThread(Thread thread) {
 		this.thread = thread;
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		System.out.println("x: " + e.getX() + ", y:" + e.getY());
-
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		System.out.println("x: " + e.getX() + ", y:" + e.getY());
-
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		System.out.println("x: " + e.getX() + ", y:" + e.getY());
-
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		System.out.println("x: " + e.getX() + ", y:" + e.getY());
-
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		System.out.println("x: " + e.getX() + ", y:" + e.getY());
-
 	}
 }

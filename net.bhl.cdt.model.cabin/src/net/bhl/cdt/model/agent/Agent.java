@@ -281,6 +281,15 @@ public class Agent extends Subject implements Runnable {
 			}
 		}
 	}
+	
+	/**
+	 * This method is used to rotate the agent!
+	 * @param degrees is the rotation in degrees
+	 */
+	private void rotateAgent(int degrees) {
+		occupyNodeArea(currentPosition, false, false, null);
+		occupyNodeArea(currentPosition, true, true, degrees);
+	}
 
 	/**
 	 * When there is a new path found, this method cuts the old path up to the
@@ -584,8 +593,7 @@ public class Agent extends Subject implements Runnable {
 					 */
 				} else if (passengerStowsLuggage() && !alreadyStowed) {
 
-					occupyNodeArea(currentPosition, false, false, null);
-					occupyNodeArea(currentPosition, true, true, 90);
+					rotateAgent(90);
 
 					/* sleep the thread as long as the luggage is stowed */
 					Thread.sleep((int) (passenger.getLuggageStowTime() * 1000 / 2 / speedfactor));

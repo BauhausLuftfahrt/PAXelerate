@@ -17,13 +17,10 @@ import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
-import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.AboutView;
-import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.cabin.util.Vector2D;
-import net.bhl.cdt.model.util.ModelHelper;
 
 /**
  * This class runs and handles the a star algorithm an simulation.
