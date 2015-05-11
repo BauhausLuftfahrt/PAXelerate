@@ -7,16 +7,12 @@
 package net.bhl.cdt.model.cabin.commands;
 
 import java.util.ArrayList;
-
-import javax.swing.JFrame;
-
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.astar.ObstacleMap;
 import net.bhl.cdt.model.astar.RunAStar;
 import net.bhl.cdt.model.astar.StopWatch;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Passenger;
-import net.bhl.cdt.model.cabin.ui.AboutView;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.InfoViewPart;
 import net.bhl.cdt.model.cabin.util.FuncLib;
@@ -43,13 +39,12 @@ import org.eclipse.ui.PlatformUI;
 
 public class SimulateBoardingCommand extends CDTCommand {
 
-	private Thread thread;
-	private Cabin cabin;
+private Cabin cabin;
 	private static ArrayList<Passenger> alreadySeatedList = new ArrayList<Passenger>();
 	private static StopWatch s = new StopWatch();
 	private ILog logger;
 
-	private static JFrame frame;
+
 
 	/**
 	 * This is the constructor method of the SimulateBoardingCommand.
@@ -72,38 +67,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 	public static ArrayList<Passenger> getSeatedPassengers() {
 		return alreadySeatedList;
 	}
-	
-	private void runAreaMapWindow() {
 
-		final AboutView view = new AboutView();
-
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				frame = new JFrame("Area Map Rendering");
-				frame.setContentPane(view);
-				frame.pack();
-				frame.setVisible(true);
-				frame.setResizable(false);
-			}
-		});
-
-		final Thread gameThread = new Thread() {
-
-			public void run() {
-				while (true) {
-					try {
-						view.setAreamap(RunAStar.getMap());
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-			}
-		};
-		gameThread.start(); // Callback run()
-
-	}
 
 	/**
 	 * This method runs the simulate boarding command.
@@ -146,8 +110,6 @@ public class SimulateBoardingCommand extends CDTCommand {
 		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 				"Initializing the boarding simulation ..."));
 		s.start();
-		
-		runAreaMapWindow();
 		
 		if (cabin.getPassengers().isEmpty()) {
 			Input input = new Input(
