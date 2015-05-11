@@ -471,13 +471,6 @@ public class Agent extends Subject implements Runnable {
 	 */
 	private boolean nodeBlockedBySomeoneElseOrObstacle(Vector vector) {
 
-		/* get the node at the location */
-
-		// TODO This only works if the rotation is rectangular. When the area is
-		// rotated, it should be used a square with the dimension of the larger
-		// of the two properties.
-
-		/* check if it is blocked */
 		for (int x = -dim; x <= dim; x++) {
 			for (int y = dim; y <= dim; y++) {
 
@@ -699,22 +692,7 @@ public class Agent extends Subject implements Runnable {
 		return exitTheMainLoop;
 	}
 
-	private boolean doorwayBlocked() {
-		Door door = passenger.getDoor();
-		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < (int) (door.getWidth() / scale); j++) {
-				Node node = RunAStar.getMap().getNodeByCoordinate(i,
-						(int) (door.getYPosition() / scale) + j);
-				if (node.getProperty() == Property.AGENT) {
-					if (node.getLinkedAgentID() != passenger.getId()) {
-						return true;
-					}
-				}
-			}
-		}
-		System.out.println("Doorway clear!");
-		return false;
-	}
+	
 
 	private void defineSeated(boolean isSeated) {
 
@@ -803,7 +781,7 @@ public class Agent extends Subject implements Runnable {
 				 * then try to spawn the passenger but check if there is enough
 				 * space in front of the cabin door
 				 */
-				while (doorwayBlocked()) {
+				while (AgentFunctions.doorwayBlocked(passenger)) {
 					Thread.sleep(100);
 				}
 

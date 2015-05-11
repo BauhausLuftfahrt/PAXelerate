@@ -6,8 +6,9 @@
 
 package net.bhl.cdt.model.cabin.commands;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
+
+import javax.swing.JFrame;
 
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.astar.ObstacleMap;
@@ -15,25 +16,22 @@ import net.bhl.cdt.model.astar.RunAStar;
 import net.bhl.cdt.model.astar.StopWatch;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Passenger;
+import net.bhl.cdt.model.cabin.ui.AboutView;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.InfoViewPart;
 import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Input;
-import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.cabin.util.Input.WindowType;
 import net.bhl.cdt.model.cabin.util.Vector2D;
 import net.bhl.cdt.model.util.ModelHelper;
-
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 
@@ -43,13 +41,15 @@ import org.eclipse.ui.PlatformUI;
  * @author marc.engelmann
  */
 
-public class SimulateBoardingCommand extends CDTCommand implements Runnable {
+public class SimulateBoardingCommand extends CDTCommand {
 
 	private Thread thread;
 	private Cabin cabin;
 	private static ArrayList<Passenger> alreadySeatedList = new ArrayList<Passenger>();
 	private static StopWatch s = new StopWatch();
 	private ILog logger;
+
+	private static JFrame frame;
 
 	/**
 	 * This is the constructor method of the SimulateBoardingCommand.
@@ -72,18 +72,45 @@ public class SimulateBoardingCommand extends CDTCommand implements Runnable {
 	public static ArrayList<Passenger> getSeatedPassengers() {
 		return alreadySeatedList;
 	}
+	
+	private void runAreaMapWindow() {
+
+		final AboutView view = new AboutView();
+
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				frame = new JFrame("Area Map Rendering");
+				frame.setContentPane(view);
+				frame.pack();
+				frame.setVisible(true);
+				frame.setResizable(false);
+			}
+		});
+
+		final Thread gameThread = new Thread() {
+
+			public void run() {
+				while (true) {
+					try {
+						view.setAreamap(RunAStar.getMap());
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		};
+		gameThread.start(); // Callback run()
+
+	}
 
 	/**
 	 * This method runs the simulate boarding command.
 	 */
 	@Override
 	protected void doRun() {
-		// start();
-		run();
-	}
-
-	@Override
-	public void run() {
+	
 		cabin.setFramesPerSecond(10);
 
 		DrawCabinCommand drawCom = new DrawCabinCommand(cabin);
@@ -119,6 +146,9 @@ public class SimulateBoardingCommand extends CDTCommand implements Runnable {
 		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 				"Initializing the boarding simulation ..."));
 		s.start();
+		
+		runAreaMapWindow();
+		
 		if (cabin.getPassengers().isEmpty()) {
 			Input input = new Input(
 					WindowType.GET_BOOLEAN,
@@ -133,9 +163,13 @@ public class SimulateBoardingCommand extends CDTCommand implements Runnable {
 		}
 		if (!cabin.getPassengers().isEmpty()) {
 			ObstacleMap obstaclemap = new ObstacleMap(cabin);
+			
 			RunAStar astar = new RunAStar(obstaclemap, new Vector2D(
 					(int) (cabin.getCabinWidth() / cabin.getScale()),
 					(int) (cabin.getCabinLength() / cabin.getScale())), cabin);
+			
+			
+			
 			while (!RunAStar.isSimulationDone()) {
 				try {
 					for (Passenger pax : ModelHelper.getChildrenByClass(
@@ -223,35 +257,5 @@ public class SimulateBoardingCommand extends CDTCommand implements Runnable {
 			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 					"No boarding possible! Please create passengers!"));
 		}
-	}
-
-	// TODO: run this as a separate thread!
-	/**
-	 * This method starts the agent.
-	 */
-	public void start() {
-		if (getThread() == null) {
-			setThread(new Thread(this, "Simulation"));
-			getThread().start();
-		}
-	}
-
-	/**
-	 * This method returns the thread.
-	 * 
-	 * @return the thread
-	 */
-	public Thread getThread() {
-		return thread;
-	}
-
-	/**
-	 * This method sets the thread.
-	 * 
-	 * @param thread
-	 *            the thread
-	 */
-	public void setThread(Thread thread) {
-		this.thread = thread;
 	}
 }

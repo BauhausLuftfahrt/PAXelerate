@@ -41,7 +41,6 @@ public class RunAStar {
 	private Vector dimensions;
 	public static final boolean DEVELOPER_MODE = false;
 
-	private static JFrame frame;
 
 	/**
 	 * This method constructs the RunAStar algorithm.
@@ -231,39 +230,7 @@ public class RunAStar {
 			agent.start();
 			agent.setInitialized(true);
 		}
-
-		runAreaMapWindow();
 	}
 
-	private void runAreaMapWindow() {
-
-		final AboutView view = new AboutView();
-
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				frame = new JFrame("Area Map Rendering");
-				frame.setContentPane(view);
-				frame.pack();
-				frame.setVisible(true);
-				frame.setResizable(false);
-			}
-		});
-
-		final Thread gameThread = new Thread() {
-
-			public void run() {
-				while (true) {
-					try {
-						view.setAreamap(areamap);
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-			}
-		};
-		gameThread.start(); // Callback run()
-
-	}
+	
 }
