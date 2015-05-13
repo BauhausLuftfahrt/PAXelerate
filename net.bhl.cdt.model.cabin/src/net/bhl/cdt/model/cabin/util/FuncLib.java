@@ -121,9 +121,22 @@ public abstract class FuncLib {
 		return (rand.nextInt(upperBound - lowerBound) + lowerBound);
 	}
 
-	public static double gaussianRandom(double mean, double variance) {
+	/**
+	 * Use this function to generate a value according to gaussian normal
+	 * distribution.
+	 * 
+	 * @param average
+	 *            is the average value of the distribution
+	 * @param gauss
+	 *            is the option you want to choose.
+	 * @param deviation
+	 *            is the deviation at the chosen option.
+	 * @return
+	 */
+	public static double gaussianRandom(double average, GaussOptions gauss,
+			double deviation) {
 		Random rand = new Random();
-		return (rand.nextGaussian() * variance + mean);
+		return (rand.nextGaussian() * (deviation / gauss.sigma) + average);
 	}
 
 	/**
@@ -272,5 +285,21 @@ public abstract class FuncLib {
 			System.out.println();
 		}
 		System.out.println();
+	}
+
+	public enum GaussOptions {
+
+		PERCENT_99(2.576), PERCENT_95(1.960), PERCENT_90(1.645), PERCENT_50(
+				0.675);
+
+		private final double sigma;
+
+		GaussOptions(double sigma) {
+			this.sigma = sigma;
+		}
+
+		public double sigma() {
+			return sigma;
+		}
 	}
 }
