@@ -64,7 +64,6 @@ public class Agent extends Subject implements Runnable {
 	private final Passenger passenger;
 
 	private final int scale;
-	private final int speedfactor;
 	private final agentMode mode;
 
 	private Passenger thePassengerILetInTheRow;
@@ -102,8 +101,6 @@ public class Agent extends Subject implements Runnable {
 			CostMap costmap, agentMode mode, Passenger thePassengerILetInTheRow) {
 
 		/* assign the initializer values to the objects values */
-
-		this.speedfactor = RunAStar.getCabin().getSpeedFactor();
 		this.mode = mode;
 		this.passenger = passenger;
 		this.start = start;
@@ -229,8 +226,14 @@ public class Agent extends Subject implements Runnable {
 
 				/* if you want to do auto rotation, this method is called. */
 			} else {
-				adaptedPassengerArea = Rotator.rotate(
-						AgentFunctions.getRotation(this), defaultPassengerArea);
+				if (rotationAllowed()) {
+					adaptedPassengerArea = Rotator.rotate(
+							AgentFunctions.getRotation(this),
+							defaultPassengerArea);
+				} else {
+					adaptedPassengerArea = null;
+				}
+
 			}
 		}
 
@@ -281,14 +284,22 @@ public class Agent extends Subject implements Runnable {
 			}
 		}
 	}
-	
+
 	/**
 	 * This method is used to rotate the agent!
-	 * @param degrees is the rotation in degrees
+	 * 
+	 * @param degrees
+	 *            is the rotation in degrees
 	 */
 	private void rotateAgent(int degrees) {
-		occupyNodeArea(currentPosition, false, false, null);
-		occupyNodeArea(currentPosition, true, true, degrees);
+		if (rotationAllowed()) {
+			occupyNodeArea(currentPosition, false, false, null);
+			occupyNodeArea(currentPosition, true, true, degrees);
+		}
+	}
+
+	private boolean rotationAllowed() {
+		return false;
 	}
 
 	/**
@@ -589,7 +600,8 @@ public class Agent extends Subject implements Runnable {
 					rotateAgent(90);
 
 					/* sleep the thread as long as the luggage is stowed */
-					Thread.sleep((int) (passenger.getLuggageStowTime() * 1000 / 2 / speedfactor));
+					Thread.sleep(FuncLib.transformTime(passenger
+							.getLuggageStowTime()));
 
 					/* notify everyone that the luggage is now stowed */
 					alreadyStowed = true;
@@ -651,8 +663,8 @@ public class Agent extends Subject implements Runnable {
 					}
 
 					/* sleep as long as one step takes */
-					Thread.sleep((int) (1000 / speedfactor / (passenger
-							.getWalkingSpeed() * 100 / scale)));
+					Thread.sleep((int) (1000 / RunAStar.getCabin()
+							.getSpeedFactor() / (passenger.getWalkingSpeed() * 100 / scale)));
 				}
 			}
 
@@ -691,8 +703,6 @@ public class Agent extends Subject implements Runnable {
 	public boolean isExitPathLoop() {
 		return exitTheMainLoop;
 	}
-
-	
 
 	private void defineSeated(boolean isSeated) {
 
@@ -741,7 +751,8 @@ public class Agent extends Subject implements Runnable {
 
 		/* the boarding time is then submitted back to the passenger */
 		passenger
-				.setBoardingTime((int) (stopwatch.getElapsedTimeSecs() * speedfactor));
+				.setBoardingTime((int) (stopwatch.getElapsedTimeSecs() * RunAStar
+						.getCabin().getSpeedFactor()));
 
 		/* the number of interrupts is submitted to the passenger */
 		passenger.setNumberOfWaits(numbOfInterupts);
@@ -775,7 +786,8 @@ public class Agent extends Subject implements Runnable {
 
 			if (inDefaultBoardingMode()) {
 				/* sleep the thread as long as the boarding delay requires it */
-				Thread.sleep((int) (passenger.getStartBoardingAfterDelay() * 1000 / speedfactor));
+				Thread.sleep(FuncLib.transformTime(passenger
+						.getStartBoardingAfterDelay()));
 
 				/*
 				 * then try to spawn the passenger but check if there is enough
