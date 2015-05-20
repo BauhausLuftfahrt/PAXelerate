@@ -233,7 +233,7 @@ public class RunAStar {
 			agent.setInitialized(true);
 		}
 		
-		runAreaMapWindow();
+//		runAreaMapWindow();
 	}
 	
 	private void runAreaMapWindow() {

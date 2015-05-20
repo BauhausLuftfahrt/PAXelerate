@@ -794,11 +794,11 @@ public class Agent extends Subject implements Runnable {
 				 * space in front of the cabin door
 				 */
 				while (AgentFunctions.doorwayBlocked(passenger)) {
-					Thread.sleep(100);
+					Thread.sleep(10);
 				}
 
 				while (!RunAStar.CabinAccessGranted(this)) {
-					Thread.sleep(100);
+					Thread.sleep(10);
 				}
 
 			}
@@ -827,15 +827,15 @@ public class Agent extends Subject implements Runnable {
 				// TODO: SLEEP PASSENGER WHO IS NEXT IN THE LIST UNTIL I AM
 				// SEATED AGAIN!
 
-				Passenger pas = RunAStar
-						.getCabin()
-						.getPassengers()
-						.get(RunAStar.getCabin().getPassengers()
-								.indexOf(thePassengerILetInTheRow) + 1);
+//				Passenger pas = RunAStar
+//						.getCabin()
+//						.getPassengers()
+//						.get(RunAStar.getCabin().getPassengers()
+//								.indexOf(thePassengerILetInTheRow) + 1);
 
-				RunAStar.sleepAgent(1000, pas);
-				// TODO: DOES NOT WORK!!! Why can this thread not be
-				// interrupted?
+//				RunAStar.sleepAgent(1000, pas);
+//				// TODO: DOES NOT WORK!!! Why can this thread not be
+//				// interrupted?
 
 				/* sleep until the other passenger has seated! */
 				while (!thePassengerILetInTheRow.isIsSeated()) {

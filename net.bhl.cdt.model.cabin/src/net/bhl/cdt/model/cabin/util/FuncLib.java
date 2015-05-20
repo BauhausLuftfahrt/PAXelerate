@@ -136,7 +136,11 @@ public abstract class FuncLib {
 	public static double gaussianRandom(double average, GaussOptions gauss,
 			double deviation) {
 		Random rand = new Random();
-		return (rand.nextGaussian() * (deviation / gauss.sigma) + average);
+		double result = (rand.nextGaussian() * (deviation / gauss.sigma) + average);
+		if(result <0) {
+			return 0;
+		}
+		return result;
 	}
 
 	/**

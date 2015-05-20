@@ -25,6 +25,7 @@ import net.bhl.cdt.model.cabin.TravelClass;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.InfoViewPart;
 import net.bhl.cdt.model.cabin.util.FuncLib;
+import net.bhl.cdt.model.cabin.util.FuncLib.GaussOptions;
 import net.bhl.cdt.model.util.ModelHelper;
 
 import org.eclipse.core.runtime.ILog;
@@ -57,6 +58,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 	private int seatsInClass;
 	private int seatAreaBegin;
 	private ILog logger;
+
 
 	private int firstpax = 0;
 	private int businesspax = 0;
@@ -202,14 +204,19 @@ public class GeneratePassengersCommand extends CDTCommand {
 					// newPassenger.setPassengerMood(PassengerMood.PASSIVE);
 					// }
 					newPassenger.setSex(sex);
-					newPassenger.setAge(FuncLib.randomValue(18, 70));
-					newPassenger.setHeight(FuncLib.randomValue(150, 200));
-					newPassenger.setWeight(FuncLib.randomValue(60, 110));
-					newPassenger.setDepth(FuncLib.randomValue(20, 40));
-					newPassenger.setWidth(FuncLib.randomValue(40, 60));
-					newPassenger.setWalkingSpeed((double) FuncLib.randomValue(
-							5, 15) / 20);
-					newPassenger.setLuggageStowTime(FuncLib.randomValue(5, 10));
+					
+					
+					newPassenger.setAge((int)FuncLib.gaussianRandom(40, GaussOptions.PERCENT_95, 20));
+					newPassenger.setHeight((int)FuncLib.gaussianRandom(170, GaussOptions.PERCENT_95, 20));
+					newPassenger.setWeight((int)FuncLib.gaussianRandom(80, GaussOptions.PERCENT_95, 30));
+					newPassenger.setDepth((int)FuncLib.gaussianRandom(30, GaussOptions.PERCENT_95, 10));
+					newPassenger.setWidth((int)FuncLib.gaussianRandom(60, GaussOptions.PERCENT_95, 30));
+					
+					
+					newPassenger.setWalkingSpeed(FuncLib.gaussianRandom(1, GaussOptions.PERCENT_95, 0.2));
+					newPassenger.setLuggageStowTime(FuncLib.gaussianRandom(5, GaussOptions.PERCENT_95, 2));
+					
+					
 					/********************************************************/
 					passengerIdCount++;
 					passengerPerClassCount++;
