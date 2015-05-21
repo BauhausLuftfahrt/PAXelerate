@@ -9,18 +9,19 @@ public class ProbabilityMachine {
 	 * selected (on average) 200, 150, 600 and 50 times, respectively. In good
 	 * agreement with exemplary run.
 	 */
+	
+	private static double[][] array = {{1,2},{2,3},{4,5},{3,7}};
 
 	// TODO: IMPLEMENT THAT CORRECTLY!!
 	public static void main(String[] args) {
-		int n = 4;
+		int n = array.length;
 		double[] weight = new double[n];
-		weight[0] = 0.5;
-		weight[1] = 0.125;
-		weight[2] = 0.25;
-		weight[3] = 0.125;
+		for(double[] tuple:array) {
+			//weight.addOneOfTHeValuesDependingOnSex/();
+		}
 		double max_weight = maximum(weight);
 		int[] counter = new int[n];
-		int n_select = 10000;
+		int n_select = 1;
 		int index = 0;
 		boolean notaccepted;
 		for (int i = 0; i < n_select; i++) {
@@ -34,8 +35,7 @@ public class ProbabilityMachine {
 			counter[index]++;
 		}
 		for (int i = 0; i < n; i++) {
-			System.out.println("counter[" + i + "]=" + counter[i]
-					/ (double) n_select + "%");
+			System.out.println("counter[" + i + "]=" + counter[i]);
 		}
 
 		/*
@@ -53,8 +53,6 @@ public class ProbabilityMachine {
 				max = values[i];
 			}
 		}
-
-		System.out.println(max);
 		return max;
 
 	}
