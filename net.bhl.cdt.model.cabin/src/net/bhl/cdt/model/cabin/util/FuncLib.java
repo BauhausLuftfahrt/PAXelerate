@@ -111,6 +111,14 @@ public abstract class FuncLib {
 				"(?<=[A-Za-z])(?=[^A-Za-z])"), " ");
 	}
 
+	public static int roundToFive(int num) {
+		int temp = num % 5;
+		if (temp < 3)
+			return num - temp;
+		else
+			return num + 5 - temp;
+	}
+
 	/**
 	 * Note that the 2 integer values have the following meanings: first integer
 	 * is the lower bound, second integer is the upper bound. The upper bound is
