@@ -76,6 +76,11 @@ public abstract class FuncLib {
 				.getMaximumWindowBounds().width;
 	}
 
+	public static int GetScreenWorkingHeight() {
+		return java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment()
+				.getMaximumWindowBounds().height;
+	}
+
 	/**
 	 * Check if there are two of the same characters directly after each other,
 	 * like in <i>balloon</i>.
@@ -107,7 +112,10 @@ public abstract class FuncLib {
 	}
 
 	/**
-	 * This method generates a random value.
+	 * Note that the 2 integer values have the following meanings: first integer
+	 * is the lower bound, second integer is the upper bound. The upper bound is
+	 * never reached! Result is part of: [l,u[
+	 * 
 	 * 
 	 * @param lowerBound
 	 *            defines the lower end of the random number.
@@ -137,7 +145,7 @@ public abstract class FuncLib {
 			double deviation) {
 		Random rand = new Random();
 		double result = (rand.nextGaussian() * (deviation / gauss.sigma) + average);
-		if(result <0) {
+		if (result < 0) {
 			return 0;
 		}
 		return result;

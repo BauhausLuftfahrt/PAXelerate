@@ -39,10 +39,12 @@ public class RunAStar {
 	private static Map<Agent, Integer> grantedAccessList = new HashMap<Agent, Integer>();
 	private static StopWatch anotherStopwatch = new StopWatch();
 	private Vector dimensions;
-	public static final boolean DEVELOPER_MODE = false;
-	
-	private static JFrame frame;
 
+	public static final boolean DEVELOPER_MODE = false;
+
+	public static final boolean SHOW_AREAMAP_ANIMATION = true;
+
+	private static JFrame frame;
 
 	/**
 	 * This method constructs the RunAStar algorithm.
@@ -232,21 +234,22 @@ public class RunAStar {
 			agent.start();
 			agent.setInitialized(true);
 		}
-		
-//		runAreaMapWindow();
+
+		if (SHOW_AREAMAP_ANIMATION) {
+			runAreaMapWindow();
+		}
 	}
-	
+
 	private void runAreaMapWindow() {
-
-		final AboutView view = new AboutView();
-
+		final AboutView view = new AboutView(frame);
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				frame = new JFrame("Area Map Rendering");
+				// view
 				frame.setContentPane(view);
 				frame.pack();
 				frame.setVisible(true);
-				frame.setResizable(false);
+				// frame.setResizable(false);
 			}
 		});
 
@@ -255,7 +258,7 @@ public class RunAStar {
 			public void run() {
 				while (true) {
 					try {
-						view.setAreamap(RunAStar.getMap());
+						// view.setAreamap(RunAStar.getMap());
 						Thread.sleep(100);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
@@ -268,5 +271,4 @@ public class RunAStar {
 
 	}
 
-	
 }

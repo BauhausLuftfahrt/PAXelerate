@@ -25,6 +25,7 @@ import net.bhl.cdt.model.cabin.TravelClass;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.InfoViewPart;
 import net.bhl.cdt.model.cabin.util.FuncLib;
+import net.bhl.cdt.model.cabin.util.PassengerPropertyGenerator;
 import net.bhl.cdt.model.cabin.util.FuncLib.GaussOptions;
 import net.bhl.cdt.model.util.ModelHelper;
 
@@ -58,7 +59,6 @@ public class GeneratePassengersCommand extends CDTCommand {
 	private int seatsInClass;
 	private int seatAreaBegin;
 	private ILog logger;
-
 
 	private int firstpax = 0;
 	private int businesspax = 0;
@@ -155,7 +155,6 @@ public class GeneratePassengersCommand extends CDTCommand {
 	private <T extends TravelClass> void generatePassengers(
 			Class<T> travelSubClass) {
 		passengerPerClassCount = 0;
-		Sex sex = Sex.FEMALE;
 		boolean hasLuggage = true;
 
 		/** Define The number of passengers boarding per minute **/
@@ -185,39 +184,14 @@ public class GeneratePassengersCommand extends CDTCommand {
 							.setStartBoardingAfterDelay((passengerIdCount - 1)
 									* 60 / passengersPerMinute);
 
-					/******************** random values ***********************/
+					/************************ random values ***************************/
 
-					/*
-					 * note that the 2 integer values have the following
-					 * meanings: first integer is the lower bound, second
-					 * integer is the upper bound. The upper bound is never
-					 * reached! Result is part of: [l,u[
-					 */
+					PassengerPropertyGenerator generator = new PassengerPropertyGenerator(
+							newPassenger);
+					newPassenger = generator.getPassenger();
 
-					if (FuncLib.randomValue(0, 2) == 1) {
-						sex = Sex.MALE;
-					}
+					/********************************************************************/
 
-					// if (FuncLib.randomValue(0, 2) == 1) {
-					newPassenger.setPassengerMood(PassengerMood.PASSIVE);
-					// } else {
-					// newPassenger.setPassengerMood(PassengerMood.PASSIVE);
-					// }
-					newPassenger.setSex(sex);
-					
-					
-					newPassenger.setAge((int)FuncLib.gaussianRandom(40, GaussOptions.PERCENT_95, 20));
-					newPassenger.setHeight((int)FuncLib.gaussianRandom(170, GaussOptions.PERCENT_95, 20));
-					newPassenger.setWeight((int)FuncLib.gaussianRandom(80, GaussOptions.PERCENT_95, 30));
-					newPassenger.setDepth((int)FuncLib.gaussianRandom(30, GaussOptions.PERCENT_95, 10));
-					newPassenger.setWidth((int)FuncLib.gaussianRandom(60, GaussOptions.PERCENT_95, 30));
-					
-					
-					newPassenger.setWalkingSpeed(FuncLib.gaussianRandom(1, GaussOptions.PERCENT_95, 0.2));
-					newPassenger.setLuggageStowTime(FuncLib.gaussianRandom(5, GaussOptions.PERCENT_95, 2));
-					
-					
-					/********************************************************/
 					passengerIdCount++;
 					passengerPerClassCount++;
 				}

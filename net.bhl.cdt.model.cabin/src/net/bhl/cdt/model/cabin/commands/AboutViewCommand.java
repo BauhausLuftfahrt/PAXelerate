@@ -48,7 +48,7 @@ public class AboutViewCommand extends CDTCommand {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				frame = new JFrame("About this application");
-				frame.setContentPane(new AboutView());
+				frame.setContentPane(new AboutView(frame));
 				frame.pack();
 				frame.setVisible(true);
 			}
