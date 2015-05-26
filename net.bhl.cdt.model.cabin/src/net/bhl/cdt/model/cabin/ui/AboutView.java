@@ -4,8 +4,8 @@ import javax.swing.*;
 
 import net.bhl.cdt.model.astar.AreaMap;
 import net.bhl.cdt.model.astar.SimulationHandler;
-import net.bhl.cdt.model.astar.StopWatch;
 import net.bhl.cdt.model.cabin.util.FuncLib;
+import net.bhl.cdt.model.cabin.util.StopWatch;
 import net.bhl.cdt.model.cabin.util.Vector2D;
 
 import java.awt.*;

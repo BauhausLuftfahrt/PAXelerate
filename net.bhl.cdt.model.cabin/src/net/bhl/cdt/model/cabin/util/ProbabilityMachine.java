@@ -2,15 +2,15 @@ package net.bhl.cdt.model.cabin.util;
 
 import net.bhl.cdt.model.cabin.Sex;
 
+/**
+ * This method returns a random value depending on the distribution probability
+ * of each value.
+ * 
+ * @author marc.engelmann
+ *
+ */
 public class ProbabilityMachine {
 
-	/*
-	 * program n_select=1000 times selects one of n=4 elements with weights
-	 * weight[i]. Selections are summed up in counter[i]. For the weights as
-	 * given in the example below one expects that elements 0,1,2 and 3 will be
-	 * selected (on average) 200, 150, 600 and 50 times, respectively. In good
-	 * agreement with exemplary run.
-	 */
 	private static double[][] model;
 	private int lowerBound = 0;
 	private int upperBound = Integer.MAX_VALUE;
@@ -73,18 +73,16 @@ public class ProbabilityMachine {
 			}
 		}
 		return index + lowerBound_index;
-
-		// for (int i = 0; i < n; i++) {
-		// System.out.println("Between " + (i * 5) + " and " + (i * 5 + 5)
-		// + ": " + counter[i] + " persons.");
-		// }
-
-		/*
-		 * The program uses stochastic acceptance instead of linear (or binary)
-		 * search. More on http://arxiv.org/abs/1109.3627
-		 */
 	}
 
+	/**
+	 * This method detects and returns the maximum value out of an array of
+	 * values.
+	 * 
+	 * @param values
+	 *            the array of values.
+	 * @return the maximum value.
+	 */
 	private static double maximum(double[] values) {
 
 		double max = 0;

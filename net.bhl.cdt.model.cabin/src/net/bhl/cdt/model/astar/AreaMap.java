@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.astar.Node.Property;
+import net.bhl.cdt.model.cabin.util.Logger;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.cabin.util.Vector2D;
 

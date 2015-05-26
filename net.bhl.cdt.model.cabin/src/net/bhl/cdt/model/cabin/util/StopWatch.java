@@ -3,11 +3,7 @@
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  *******************************************************************************/
-package net.bhl.cdt.model.astar;
-
-import java.text.DecimalFormat;
-
-import net.bhl.cdt.model.cabin.util.FuncLib;
+package net.bhl.cdt.model.cabin.util;
 
 /**
  * This class represents a stop watch.
@@ -19,7 +15,6 @@ public class StopWatch {
 	private long startTime;
 	private long stopTime;
 	private boolean running;
-	private DecimalFormat df = new DecimalFormat("#.##");
 
 	/**
 	 * This method constructs the StopWatch and initializes the parameters.

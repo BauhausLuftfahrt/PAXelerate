@@ -19,6 +19,8 @@ import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.AboutView;
+import net.bhl.cdt.model.cabin.util.Logger;
+import net.bhl.cdt.model.cabin.util.StopWatch;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.cabin.util.Vector2D;
 

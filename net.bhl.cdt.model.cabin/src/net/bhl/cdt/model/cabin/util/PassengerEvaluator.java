@@ -6,6 +6,13 @@ import net.bhl.cdt.model.cabin.Passenger;
 
 import org.eclipse.emf.common.util.EList;
 
+/**
+ * This class is used to handle passenger data and to analyze and export it.
+ * 
+ * @author marc.engelmann
+ *
+ */
+
 public class PassengerEvaluator {
 
 	private int totalPax;
@@ -17,6 +24,7 @@ public class PassengerEvaluator {
 	public PassengerEvaluator(EList<Passenger> paxList) {
 
 		this.paxList = paxList;
+
 		// TODO: here it could be possible to evaluate the distributions of
 		// passengers, their waiting times, their boarding times, their number
 		// of interrupts, ...

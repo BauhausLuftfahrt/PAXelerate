@@ -7,19 +7,21 @@
 package net.bhl.cdt.model.cabin.commands;
 
 import java.util.ArrayList;
+
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.astar.ObstacleMap;
 import net.bhl.cdt.model.astar.SimulationHandler;
-import net.bhl.cdt.model.astar.StopWatch;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.InfoViewPart;
 import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Input;
+import net.bhl.cdt.model.cabin.util.StopWatch;
 import net.bhl.cdt.model.cabin.util.Input.WindowType;
 import net.bhl.cdt.model.cabin.util.Vector2D;
 import net.bhl.cdt.model.util.ModelHelper;
+
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
@@ -32,19 +34,17 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 
 /**
- * This command starts the cabin boarding simulation.
+ * This command starts the boarding simulation.
  * 
  * @author marc.engelmann
  */
 
 public class SimulateBoardingCommand extends CDTCommand {
 
-private Cabin cabin;
+	private Cabin cabin;
 	private static ArrayList<Passenger> alreadySeatedList = new ArrayList<Passenger>();
 	private static StopWatch s = new StopWatch();
 	private ILog logger;
-
-
 
 	/**
 	 * This is the constructor method of the SimulateBoardingCommand.
@@ -68,28 +68,23 @@ private Cabin cabin;
 		return alreadySeatedList;
 	}
 
-
 	/**
 	 * This method runs the simulate boarding command.
 	 */
 	@Override
 	protected void doRun() {
-	
+
 		cabin.setFramesPerSecond(10);
 
 		DrawCabinCommand drawCom = new DrawCabinCommand(cabin);
 		drawCom.doRun();
-
-		// GeneratePassengersCommand paxCom = new
-		// GeneratePassengersCommand(cabin);
-		// paxCom.doRun();
 
 		for (Passenger passenger : cabin.getPassengers()) {
 			passenger.setIsSeated(false);
 			passenger.setBoardingTime(0);
 		}
 
-		/********************************** Get CabinView and ConsoleView ***************************************/
+		/**************** Get CabinView and ConsoleView ***************************/
 		IWorkbenchWindow window = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow();
 		IWorkbenchPage page = window.getActivePage();
@@ -97,20 +92,12 @@ private Cabin cabin;
 				.findView("net.bhl.cdt.model.cabin.cabinview");
 		InfoViewPart infoViewPart = (InfoViewPart) page
 				.findView("net.bhl.cdt.model.cabin.infoview");
-
-		// IWorkbenchPage page = window.getActivePage();
-		// IWorkbenchPage page = PlatformUI.getWorkbench()
-		// .getActiveWorkbenchWindow().getActivePage();
-		// CabinViewPart cabinViewPart = (CabinViewPart) page
-		// .findView("net.bhl.cdt.model.cabin.cabinview");
-		// InfoViewPart infoViewPart = (InfoViewPart) page
-		// .findView("net.bhl.cdt.model.cabin.infoview");
-		/********************************************************************************************************/
+		/**************************************************************************/
 
 		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 				"Initializing the boarding simulation ..."));
 		s.start();
-		
+
 		if (cabin.getPassengers().isEmpty()) {
 			Input input = new Input(
 					WindowType.GET_BOOLEAN,
@@ -125,17 +112,17 @@ private Cabin cabin;
 		}
 		if (!cabin.getPassengers().isEmpty()) {
 			ObstacleMap obstaclemap = new ObstacleMap(cabin);
-			
-			SimulationHandler astar = new SimulationHandler(obstaclemap, new Vector2D(
-					(int) (cabin.getCabinWidth() / cabin.getScale()),
-					(int) (cabin.getCabinLength() / cabin.getScale())), cabin);
-			
-			
-			
+
+			SimulationHandler handler = new SimulationHandler(obstaclemap,
+					new Vector2D((int) (cabin.getCabinWidth() / cabin
+							.getScale()), (int) (cabin.getCabinLength() / cabin
+							.getScale())),
+					cabin);
+
 			while (!SimulationHandler.isSimulationDone()) {
 				try {
 					for (Passenger pax : ModelHelper.getChildrenByClass(
-							astar.getPassengerLocations(), Passenger.class)) {
+							handler.getPassengerLocations(), Passenger.class)) {
 						if (pax.isIsSeated()
 								&& !alreadySeatedList.contains(pax)) {
 
@@ -153,7 +140,7 @@ private Cabin cabin;
 						}
 					}
 					try {
-						cabinViewPart.submitPassengerCoordinates(astar
+						cabinViewPart.submitPassengerCoordinates(handler
 								.getPassengerLocations());
 					} catch (NullPointerException e) {
 						logger.log(new Status(IStatus.ERROR,
@@ -170,12 +157,8 @@ private Cabin cabin;
 			}
 			if (SimulationHandler.isSimulationDone()) {
 				for (Passenger pax : ModelHelper.getChildrenByClass(
-						astar.getPassengerLocations(), Passenger.class)) {
+						handler.getPassengerLocations(), Passenger.class)) {
 					if (pax.isIsSeated() && !alreadySeatedList.contains(pax)) {
-
-						// logger.log(new Status(IStatus.INFO,
-						// "net.bhl.cdt.model.cabin", "Passenger "
-						// + pax.getName() + " is now seated!"));
 						alreadySeatedList.add(pax);
 						try {
 							infoViewPart.update(cabin);
@@ -206,7 +189,8 @@ private Cabin cabin;
 				}
 
 				if (!SimulationHandler.getAgentList().isEmpty()) {
-					cabinViewPart.submitAgents(SimulationHandler.getAgentList());
+					cabinViewPart
+							.submitAgents(SimulationHandler.getAgentList());
 					logger.log(new Status(IStatus.INFO,
 							"net.bhl.cdt.model.cabin",
 							"Paths printed successfully"));
