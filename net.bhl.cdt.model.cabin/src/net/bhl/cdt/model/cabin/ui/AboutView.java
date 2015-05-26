@@ -3,6 +3,8 @@ package net.bhl.cdt.model.cabin.ui;
 import javax.swing.*;
 
 import net.bhl.cdt.model.astar.AreaMap;
+import net.bhl.cdt.model.astar.RunAStar;
+import net.bhl.cdt.model.astar.StopWatch;
 import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Vector2D;
 
@@ -26,6 +28,7 @@ public class AboutView extends JPanel {
 	private final Button rightButton;
 	private int pointZero = 0;
 	private static final int STEP_SIZE = 2;
+	private static StopWatch watch;
 
 	/**
 	 * 
@@ -44,6 +47,8 @@ public class AboutView extends JPanel {
 			}
 		};
 		gameThread.start(); // Callback run()
+		watch = new StopWatch();
+		watch.start();
 
 		leftButton = new Button();
 		rightButton = new Button();
@@ -95,5 +100,10 @@ public class AboutView extends JPanel {
 						* FONT_SIZE);
 			}
 		}
+		g.setColor(Color.BLACK);
+		g.setFont(new Font("Courier New", Font.PLAIN, 14));
+		g.drawString("real time: " + watch.getElapsedTimeTens(), 10, 20);
+		g.drawString("sim. time: " + watch.getElapsedTimeTens()
+				* RunAStar.getCabin().getSpeedFactor(), 10, 40);
 	}
 }

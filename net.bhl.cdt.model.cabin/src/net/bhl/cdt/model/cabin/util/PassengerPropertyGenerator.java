@@ -31,7 +31,7 @@ public class PassengerPropertyGenerator {
 		passenger.setPassengerMood(PassengerMood.PASSIVE);
 
 		/** Define the age according to age distribution **/
-		passenger.setAge((int) adaptAge());
+		passenger.setAge(adaptAge());
 
 		/** Define the height according to normal distribution **/
 		passenger.setHeight((int) adapt(177.5, 11.1, 164.5, 11.5));
@@ -49,7 +49,7 @@ public class PassengerPropertyGenerator {
 		passenger.setWalkingSpeed(adaptSpeed());
 
 		/** Define the luggage stow time randomly **/
-		passenger.setLuggageStowTime(FuncLib.gaussianRandom(15,
+		passenger.setLuggageStowTime((int) FuncLib.gaussianRandom(15,
 				GaussOptions.PERCENT_95, 7));
 	}
 
@@ -67,20 +67,22 @@ public class PassengerPropertyGenerator {
 	}
 
 	// TODO: ADAPT THIS PROPERLY ACCORDING TO FUCTION!
-	private double adaptAge() {
+	private int adaptAge() {
 		ProbabilityMachine machine = new ProbabilityMachine(agemodel, 5);
 
-		// Define the lower bound of the age model.
+		/* Define the lower bound of the age model. */
 		machine.setLowerBound(20);
 
-		// Define the upper bound of the age model.
+		/* Define the upper bound of the age model. */
 		machine.setUpperBound(80);
 
-		// This returns the index of the object in the age model.
+		/* This returns the index of the object in the age model. */
 		int index = machine.getProbabilityValue(passenger.getSex());
 
-		// To translate this to an age, multiply it with 5, because each element
-		// stands for 5 years.
+		/*
+		 * To translate this to an age, multiply it with 5, because each element
+		 * stands for a 5 year range.
+		 */
 		int age = index * 5;
 		if (age < 5) {
 			age = 5;

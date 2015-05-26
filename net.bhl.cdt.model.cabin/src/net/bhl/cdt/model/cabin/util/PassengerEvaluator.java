@@ -54,7 +54,8 @@ public class PassengerEvaluator {
 	public void printResults() {
 		System.out.println();
 		System.out.println();
-		System.out.println("~~~~~~~~~~~~ Results ~~~~~~~~~~~~~");
+		System.out
+				.println("~~~~~~~~~~~~ Passenger Evaluation (Pre-Boarding) ~~~~~~~~~~~~~");
 		System.out.println();
 		System.out.println("Average age of all " + totalPax + " passengers: "
 				+ df.format(average_age) + " years.");
@@ -64,7 +65,8 @@ public class PassengerEvaluator {
 		System.out.println("Oldest passenger: " + ageLimits.getY() + " years.");
 
 		System.out.println();
-		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		System.out
+				.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
 	}
 }

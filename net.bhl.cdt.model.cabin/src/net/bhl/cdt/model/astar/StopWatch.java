@@ -5,6 +5,10 @@
  *******************************************************************************/
 package net.bhl.cdt.model.astar;
 
+import java.text.DecimalFormat;
+
+import net.bhl.cdt.model.cabin.util.FuncLib;
+
 /**
  * This class represents a stop watch.
  * 
@@ -15,6 +19,7 @@ public class StopWatch {
 	private long startTime;
 	private long stopTime;
 	private boolean running;
+	private DecimalFormat df = new DecimalFormat("#.##");
 
 	/**
 	 * This method constructs the StopWatch and initializes the parameters.
@@ -54,6 +59,11 @@ public class StopWatch {
 			elapsed = (stopTime - startTime);
 		}
 		return elapsed;
+	}
+
+	public double getElapsedTimeTens() {
+		double value = getElapsedTime() / 1000.0;
+		return FuncLib.round(value, 1);
 	}
 
 	/**

@@ -300,7 +300,7 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	private boolean rotationAllowed() {
-		return false;
+		return true;
 	}
 
 	/**
