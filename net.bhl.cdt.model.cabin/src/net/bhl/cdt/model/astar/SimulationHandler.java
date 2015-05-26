@@ -28,7 +28,7 @@ import net.bhl.cdt.model.cabin.util.Vector2D;
  * @author marc.engelmann
  *
  */
-public class RunAStar {
+public class SimulationHandler {
 	private static Cabin cabin;
 	private static Boolean simulationDone = false;
 	private static ArrayList<Passenger> finishedList = new ArrayList<Passenger>();
@@ -56,11 +56,11 @@ public class RunAStar {
 	 * @param cabin
 	 *            is the cabin
 	 */
-	public RunAStar(ObstacleMap obstaclemap, Vector dimensions, Cabin cabin) {
+	public SimulationHandler(ObstacleMap obstaclemap, Vector dimensions, Cabin cabin) {
 		this.dimensions = dimensions;
 		console.addToLog("Cabin initializing...");
 		areamap = new AreaMap(dimensions, obstaclemap);
-		RunAStar.cabin = cabin;
+		SimulationHandler.cabin = cabin;
 		run();
 	}
 
@@ -144,7 +144,7 @@ public class RunAStar {
 						.getScale()),
 				(int) ((seat.getYPosition() / cabin.getScale()) - 2));
 
-		Agent agent = new Agent(pax, start, goal, RunAStar.getCostMap(),
+		Agent agent = new Agent(pax, start, goal, SimulationHandler.getCostMap(),
 				Agent.agentMode.MAKE_WAY, myself);
 		agent.findNewPath();
 		agent.start();
@@ -152,7 +152,7 @@ public class RunAStar {
 	}
 
 	public static void setAgentList(ArrayList<Agent> agentList) {
-		RunAStar.agentList = agentList;
+		SimulationHandler.agentList = agentList;
 	}
 
 	public static boolean CabinAccessGranted(Agent agent) {

@@ -9,7 +9,7 @@ package net.bhl.cdt.model.cabin.commands;
 import java.util.ArrayList;
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.astar.ObstacleMap;
-import net.bhl.cdt.model.astar.RunAStar;
+import net.bhl.cdt.model.astar.SimulationHandler;
 import net.bhl.cdt.model.astar.StopWatch;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Passenger;
@@ -126,13 +126,13 @@ private Cabin cabin;
 		if (!cabin.getPassengers().isEmpty()) {
 			ObstacleMap obstaclemap = new ObstacleMap(cabin);
 			
-			RunAStar astar = new RunAStar(obstaclemap, new Vector2D(
+			SimulationHandler astar = new SimulationHandler(obstaclemap, new Vector2D(
 					(int) (cabin.getCabinWidth() / cabin.getScale()),
 					(int) (cabin.getCabinLength() / cabin.getScale())), cabin);
 			
 			
 			
-			while (!RunAStar.isSimulationDone()) {
+			while (!SimulationHandler.isSimulationDone()) {
 				try {
 					for (Passenger pax : ModelHelper.getChildrenByClass(
 							astar.getPassengerLocations(), Passenger.class)) {
@@ -168,7 +168,7 @@ private Cabin cabin;
 					e.printStackTrace();
 				}
 			}
-			if (RunAStar.isSimulationDone()) {
+			if (SimulationHandler.isSimulationDone()) {
 				for (Passenger pax : ModelHelper.getChildrenByClass(
 						astar.getPassengerLocations(), Passenger.class)) {
 					if (pax.isIsSeated() && !alreadySeatedList.contains(pax)) {
@@ -205,8 +205,8 @@ private Cabin cabin;
 							"Heat map generation succeeded"));
 				}
 
-				if (!RunAStar.getAgentList().isEmpty()) {
-					cabinViewPart.submitAgents(RunAStar.getAgentList());
+				if (!SimulationHandler.getAgentList().isEmpty()) {
+					cabinViewPart.submitAgents(SimulationHandler.getAgentList());
 					logger.log(new Status(IStatus.INFO,
 							"net.bhl.cdt.model.cabin",
 							"Paths printed successfully"));

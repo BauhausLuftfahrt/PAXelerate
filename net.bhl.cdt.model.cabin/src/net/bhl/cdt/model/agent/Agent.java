@@ -16,7 +16,7 @@ import net.bhl.cdt.model.agent.PassiveMood;
 import net.bhl.cdt.model.astar.Node;
 import net.bhl.cdt.model.astar.Node.Property;
 import net.bhl.cdt.model.astar.Path;
-import net.bhl.cdt.model.astar.RunAStar;
+import net.bhl.cdt.model.astar.SimulationHandler;
 import net.bhl.cdt.model.astar.StopWatch;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
@@ -105,7 +105,7 @@ public class Agent extends Subject implements Runnable {
 		this.passenger = passenger;
 		this.start = start;
 		this.goal = goal;
-		this.scale = RunAStar.getCabin().getScale();
+		this.scale = SimulationHandler.getCabin().getScale();
 		this.finalCostmap = costmap;
 		this.thePassengerILetInTheRow = thePassengerILetInTheRow;
 
@@ -204,7 +204,7 @@ public class Agent extends Subject implements Runnable {
 		 * check the possibility that the node is already blocked by an agent.
 		 * Normally this should never happen.
 		 */
-		if (RunAStar.getMap().getNode(vector).getProperty() == Property.AGENT
+		if (SimulationHandler.getMap().getNode(vector).getProperty() == Property.AGENT
 				&& occupy) {
 
 			/* Print out if there is an overlap */
@@ -333,8 +333,8 @@ public class Agent extends Subject implements Runnable {
 	private void updateCostmap() {
 
 		/* The cost map is flooded from the agents current location to his seat */
-		CostMap costmap = new CostMap(RunAStar.getMap().getDimensions(), start,
-				RunAStar.getMap(), false, this, true);
+		CostMap costmap = new CostMap(SimulationHandler.getMap().getDimensions(), start,
+				SimulationHandler.getMap(), false, this, true);
 
 		/* the cost map is then assigned to the mutable global cost map */
 		mutableCostMap = costmap;
@@ -367,7 +367,7 @@ public class Agent extends Subject implements Runnable {
 				if (xCoordinate > 0 && yCoordinate > 0) {
 
 					/* find all nodes occupied by agents */
-					if (RunAStar.getMap()
+					if (SimulationHandler.getMap()
 							.getNodeByCoordinate(xCoordinate, yCoordinate)
 							.getProperty() == Property.AGENT) {
 
@@ -381,7 +381,7 @@ public class Agent extends Subject implements Runnable {
 
 							/* the current agents position is excluded here! */
 							if (!FuncLib.vectorsAreEqual(
-									RunAStar.getMap()
+									SimulationHandler.getMap()
 											.getNodeByCoordinate(xCoordinate,
 													yCoordinate).getPosition(),
 									currentPosition)) {
@@ -417,7 +417,7 @@ public class Agent extends Subject implements Runnable {
 		/* reset the mutable CostMap to the original cost map */
 		mutableCostMap = finalCostmap;
 
-		RunAStar.getMap().setStartLocation(currentPosition, this);
+		SimulationHandler.getMap().setStartLocation(currentPosition, this);
 
 		/* this is only run if its not the initial path finding process */
 		if (currentPosition != null) {
@@ -425,8 +425,8 @@ public class Agent extends Subject implements Runnable {
 			occupyNodeArea(currentPosition, false, false, null);
 
 			/* print out the area map when in developer mode */
-			if (RunAStar.DEVELOPER_MODE) {
-				RunAStar.getMap().printMap();
+			if (SimulationHandler.DEVELOPER_MODE) {
+				SimulationHandler.getMap().printMap();
 			}
 
 			/* this sets the new start of the A* to the current position */
@@ -439,7 +439,7 @@ public class Agent extends Subject implements Runnable {
 		}
 
 		/* run the path finding algorithm */
-		AStar astar = new AStar(RunAStar.getMap(), mutableCostMap, this);
+		AStar astar = new AStar(SimulationHandler.getMap(), mutableCostMap, this);
 
 		/* retrieve the path information */
 		path = astar.getBestPath();
@@ -486,7 +486,7 @@ public class Agent extends Subject implements Runnable {
 		for (int x = -dim; x <= dim; x++) {
 			for (int y = dim; y <= dim; y++) {
 
-				Node checkNode = RunAStar.getMap().getNodeByCoordinate(
+				Node checkNode = SimulationHandler.getMap().getNodeByCoordinate(
 						vector.getX() + x, vector.getY() + y);
 				if (checkNode != null) {
 					if (checkNode.getProperty() == Property.AGENT) {
@@ -495,7 +495,7 @@ public class Agent extends Subject implements Runnable {
 						if (checkNode.getLinkedAgentID() != this.passenger
 								.getId()) {
 
-							for (Agent agent : RunAStar.getAgentList()) {
+							for (Agent agent : SimulationHandler.getAgentList()) {
 
 								if (agent.getPassenger().getId() == checkNode
 										.getLinkedAgentID()) {
@@ -581,7 +581,7 @@ public class Agent extends Subject implements Runnable {
 					/* the main loop is quit, if there is a new path calculated */
 					if (exitTheMainLoop) {
 
-						if (RunAStar.DEVELOPER_MODE) {
+						if (SimulationHandler.DEVELOPER_MODE) {
 							System.out.println("searching for new path ...");
 						}
 
@@ -616,7 +616,7 @@ public class Agent extends Subject implements Runnable {
 					// TODO: get the right passenger here!
 					for (Passenger pax : otherPassengersInRowBlockingMe) {
 
-						RunAStar.launchWaymakingAgent(pax, this.passenger);
+						SimulationHandler.launchWaymakingAgent(pax, this.passenger);
 
 					}
 
@@ -664,7 +664,7 @@ public class Agent extends Subject implements Runnable {
 					}
 
 					/* sleep as long as one step takes */
-					Thread.sleep((int) (1000 / RunAStar.getCabin()
+					Thread.sleep((int) (1000 / SimulationHandler.getCabin()
 							.getSpeedFactor() / (passenger.getWalkingSpeed() * 100 / scale)));
 				}
 			}
@@ -714,7 +714,7 @@ public class Agent extends Subject implements Runnable {
 		passenger.getSeatRef().setOccupied(isSeated);
 
 		/* RunAStar is notified that a passenger is seated now */
-		RunAStar.setPassengerSeated(passenger, isSeated);
+		SimulationHandler.setPassengerSeated(passenger, isSeated);
 	}
 
 	private boolean inDefaultBoardingMode() {
@@ -752,7 +752,7 @@ public class Agent extends Subject implements Runnable {
 
 		/* the boarding time is then submitted back to the passenger */
 		passenger
-				.setBoardingTime((int) (stopwatch.getElapsedTimeSecs() * RunAStar
+				.setBoardingTime((int) (stopwatch.getElapsedTimeSecs() * SimulationHandler
 						.getCabin().getSpeedFactor()));
 
 		/* the number of interrupts is submitted to the passenger */
@@ -798,7 +798,7 @@ public class Agent extends Subject implements Runnable {
 					Thread.sleep(10);
 				}
 
-				while (!RunAStar.CabinAccessGranted(this)) {
+				while (!SimulationHandler.CabinAccessGranted(this)) {
 					Thread.sleep(10);
 				}
 
@@ -854,7 +854,7 @@ public class Agent extends Subject implements Runnable {
 				goal = new Vector2D(helper);
 
 				path.invert();
-				path.appendWayPoint(RunAStar.getMap().getNode(goal));
+				path.appendWayPoint(SimulationHandler.getMap().getNode(goal));
 
 				/* go back to the start */
 				while (!goalReached()) {

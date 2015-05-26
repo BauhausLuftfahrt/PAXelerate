@@ -1,7 +1,7 @@
 package net.bhl.cdt.model.agent;
 
 import net.bhl.cdt.model.astar.Node;
-import net.bhl.cdt.model.astar.RunAStar;
+import net.bhl.cdt.model.astar.SimulationHandler;
 import net.bhl.cdt.model.astar.Node.Property;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Door;
@@ -93,9 +93,9 @@ public class AgentFunctions {
 	public static boolean doorwayBlocked(Passenger passenger) {
 		Door door = passenger.getDoor();
 		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < (int) (door.getWidth() / RunAStar.getCabin().getScale()); j++) {
-				Node node = RunAStar.getMap().getNodeByCoordinate(i,
-						(int) (door.getYPosition() / RunAStar.getCabin().getScale()) + j);
+			for (int j = 0; j < (int) (door.getWidth() / SimulationHandler.getCabin().getScale()); j++) {
+				Node node = SimulationHandler.getMap().getNodeByCoordinate(i,
+						(int) (door.getYPosition() / SimulationHandler.getCabin().getScale()) + j);
 				if (node.getProperty() == Property.AGENT) {
 					if (node.getLinkedAgentID() != passenger.getId()) {
 						return true;

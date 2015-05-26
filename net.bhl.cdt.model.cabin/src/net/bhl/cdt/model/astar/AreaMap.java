@@ -195,7 +195,7 @@ public class AreaMap {
 				return node;
 			}
 		}
-		if (RunAStar.DEVELOPER_MODE) {
+		if (SimulationHandler.DEVELOPER_MODE) {
 			System.out.println("no matching node found for property '"
 					+ property.toString() + "'.");
 		}

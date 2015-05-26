@@ -3,7 +3,7 @@ package net.bhl.cdt.model.cabin.ui;
 import javax.swing.*;
 
 import net.bhl.cdt.model.astar.AreaMap;
-import net.bhl.cdt.model.astar.RunAStar;
+import net.bhl.cdt.model.astar.SimulationHandler;
 import net.bhl.cdt.model.astar.StopWatch;
 import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Vector2D;
@@ -104,6 +104,6 @@ public class AboutView extends JPanel {
 		g.setFont(new Font("Courier New", Font.PLAIN, 14));
 		g.drawString("real time: " + watch.getElapsedTimeTens(), 10, 20);
 		g.drawString("sim. time: " + watch.getElapsedTimeTens()
-				* RunAStar.getCabin().getSpeedFactor(), 10, 40);
+				* SimulationHandler.getCabin().getSpeedFactor(), 10, 40);
 	}
 }

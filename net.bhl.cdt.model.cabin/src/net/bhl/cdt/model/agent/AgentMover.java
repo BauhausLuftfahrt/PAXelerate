@@ -1,6 +1,6 @@
 package net.bhl.cdt.model.agent;
 
-import net.bhl.cdt.model.astar.RunAStar;
+import net.bhl.cdt.model.astar.SimulationHandler;
 import net.bhl.cdt.model.astar.Node.Property;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.util.Vector;
@@ -20,18 +20,18 @@ public class AgentMover {
 			Property property, Passenger passenger) {
 
 		/* check if the desired node is out of bounds */
-		if (RunAStar.getMap().getNodeByCoordinate(vector.getX(), vector.getY()) != null) {
+		if (SimulationHandler.getMap().getNodeByCoordinate(vector.getX(), vector.getY()) != null) {
 
 			/* check if the agent itself blocked the node */
-			if (RunAStar.getMap()
+			if (SimulationHandler.getMap()
 					.getNodeByCoordinate(vector.getX(), vector.getY())
 					.getLinkedAgentID() == passenger.getId()
-					|| RunAStar.getMap()
+					|| SimulationHandler.getMap()
 							.getNodeByCoordinate(vector.getX(), vector.getY())
 							.getProperty() != Property.AGENT) {
 
 				/* check if the node is no obstacle */
-				if (RunAStar.getMap()
+				if (SimulationHandler.getMap()
 						.getNodeByCoordinate(vector.getX(), vector.getY())
 						.getProperty() != Property.OBSTACLE) {
 
@@ -39,7 +39,7 @@ public class AgentMover {
 					 * set the node to the desired property and link the agent
 					 * id
 					 */
-					RunAStar.getMap()
+					SimulationHandler.getMap()
 							.getNodeByCoordinate(vector.getX(), vector.getY())
 							.setProperty(property, passenger.getId());
 				}

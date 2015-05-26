@@ -11,7 +11,7 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Random;
 
-import net.bhl.cdt.model.astar.RunAStar;
+import net.bhl.cdt.model.astar.SimulationHandler;
 
 /**
  * This class is used for general calculations and methods.
@@ -68,7 +68,7 @@ public abstract class FuncLib {
 	 * Returns the transformed time in milliseconds!
 	 */
 	public static long transformTime(double time) {
-		return (long) (time * 1000.0 / RunAStar.getCabin().getSpeedFactor());
+		return (long) (time * 1000.0 / SimulationHandler.getCabin().getSpeedFactor());
 	}
 
 	public static int GetScreenWorkingWidth() {
