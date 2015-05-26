@@ -300,7 +300,7 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	private boolean rotationAllowed() {
-		return true;
+		return false;
 	}
 
 	/**
@@ -333,8 +333,9 @@ public class Agent extends Subject implements Runnable {
 	private void updateCostmap() {
 
 		/* The cost map is flooded from the agents current location to his seat */
-		CostMap costmap = new CostMap(SimulationHandler.getMap().getDimensions(), start,
-				SimulationHandler.getMap(), false, this, true);
+		CostMap costmap = new CostMap(SimulationHandler.getMap()
+				.getDimensions(), start, SimulationHandler.getMap(), false,
+				this, true);
 
 		/* the cost map is then assigned to the mutable global cost map */
 		mutableCostMap = costmap;
@@ -381,7 +382,8 @@ public class Agent extends Subject implements Runnable {
 
 							/* the current agents position is excluded here! */
 							if (!FuncLib.vectorsAreEqual(
-									SimulationHandler.getMap()
+									SimulationHandler
+											.getMap()
 											.getNodeByCoordinate(xCoordinate,
 													yCoordinate).getPosition(),
 									currentPosition)) {
@@ -439,7 +441,8 @@ public class Agent extends Subject implements Runnable {
 		}
 
 		/* run the path finding algorithm */
-		AStar astar = new AStar(SimulationHandler.getMap(), mutableCostMap, this);
+		AStar astar = new AStar(SimulationHandler.getMap(), mutableCostMap,
+				this);
 
 		/* retrieve the path information */
 		path = astar.getBestPath();
@@ -486,8 +489,9 @@ public class Agent extends Subject implements Runnable {
 		for (int x = -dim; x <= dim; x++) {
 			for (int y = dim; y <= dim; y++) {
 
-				Node checkNode = SimulationHandler.getMap().getNodeByCoordinate(
-						vector.getX() + x, vector.getY() + y);
+				Node checkNode = SimulationHandler.getMap()
+						.getNodeByCoordinate(vector.getX() + x,
+								vector.getY() + y);
 				if (checkNode != null) {
 					if (checkNode.getProperty() == Property.AGENT) {
 
@@ -616,7 +620,8 @@ public class Agent extends Subject implements Runnable {
 					// TODO: get the right passenger here!
 					for (Passenger pax : otherPassengersInRowBlockingMe) {
 
-						SimulationHandler.launchWaymakingAgent(pax, this.passenger);
+						SimulationHandler.launchWaymakingAgent(pax,
+								this.passenger);
 
 					}
 

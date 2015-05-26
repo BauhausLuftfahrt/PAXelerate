@@ -56,7 +56,8 @@ public class SimulationHandler {
 	 * @param cabin
 	 *            is the cabin
 	 */
-	public SimulationHandler(ObstacleMap obstaclemap, Vector dimensions, Cabin cabin) {
+	public SimulationHandler(ObstacleMap obstaclemap, Vector dimensions,
+			Cabin cabin) {
 		this.dimensions = dimensions;
 		console.addToLog("Cabin initializing...");
 		areamap = new AreaMap(dimensions, obstaclemap);
@@ -119,6 +120,7 @@ public class SimulationHandler {
 		}
 		if (finishedList.size() == cabin.getPassengers().size()) {
 			setSimulationDone(true);
+			frame.dispose();
 		}
 
 	}
@@ -144,8 +146,9 @@ public class SimulationHandler {
 						.getScale()),
 				(int) ((seat.getYPosition() / cabin.getScale()) - 2));
 
-		Agent agent = new Agent(pax, start, goal, SimulationHandler.getCostMap(),
-				Agent.agentMode.MAKE_WAY, myself);
+		Agent agent = new Agent(pax, start, goal,
+				SimulationHandler.getCostMap(), Agent.agentMode.MAKE_WAY,
+				myself);
 		agent.findNewPath();
 		agent.start();
 		pax.setNumberOfMakeWayOperations(pax.getNumberOfMakeWayOperations() + 1);

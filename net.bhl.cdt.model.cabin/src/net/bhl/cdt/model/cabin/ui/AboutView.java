@@ -11,6 +11,8 @@ import net.bhl.cdt.model.cabin.util.Vector2D;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 
@@ -101,7 +103,7 @@ public class AboutView extends JPanel {
 			}
 		}
 		g.setColor(Color.BLACK);
-		g.setFont(new Font("Courier New", Font.PLAIN, 14));
+		g.setFont(new Font("Courier New", Font.PLAIN, 12));
 		g.drawString("real time: " + watch.getElapsedTimeTens(), 10, 20);
 		g.drawString("sim. time: " + watch.getElapsedTimeTens()
 				* SimulationHandler.getCabin().getSpeedFactor(), 10, 40);
