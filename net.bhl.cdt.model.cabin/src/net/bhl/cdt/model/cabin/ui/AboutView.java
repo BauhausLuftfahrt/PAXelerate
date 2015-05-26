@@ -104,8 +104,14 @@ public class AboutView extends JPanel {
 		}
 		g.setColor(Color.BLACK);
 		g.setFont(new Font("Courier New", Font.PLAIN, 12));
-		g.drawString("real time: " + watch.getElapsedTimeTens(), 10, 20);
-		g.drawString("sim. time: " + watch.getElapsedTimeTens()
+		g.drawString("Real Time: " + watch.getElapsedTimeTens(), 10, 20);
+		g.drawString("Sim. Time: " + watch.getElapsedTimeTens()
 				* SimulationHandler.getCabin().getSpeedFactor(), 10, 40);
+		g.drawString(
+				"Passengers: "
+						+ SimulationHandler.getNumberOfSeatedPassengers()
+						+ " / "
+						+ SimulationHandler.getCabin().getPassengers().size(),
+				10, 60);
 	}
 }

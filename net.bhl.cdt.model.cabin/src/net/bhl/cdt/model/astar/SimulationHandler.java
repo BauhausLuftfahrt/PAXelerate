@@ -67,6 +67,10 @@ public class SimulationHandler {
 		run();
 	}
 
+	public static int getNumberOfSeatedPassengers() {
+		return finishedList.size();
+	}
+
 	/**
 	 * This method returns the area map.
 	 *
