@@ -20,7 +20,7 @@ public class PassengerPropertyGenerator {
 			{ 0.0395, 0.0402 }, { 0.0351, 0.0363 }, { 0.0306, 0.0319 },
 			{ 0.0231, 0.0247 }, { 0.0183, 0.0201 }, { 0.0156, 0.0182 },
 			{ 0.0139, 0.0176 }, { 0.0108, 0.0155 }, { 0.0065, 0.0111 },
-			{ 0.0044, 0, 0107 } };
+			{ 0.0044, 0.0107 } };
 
 	public PassengerPropertyGenerator(Passenger pax) {
 		this.passenger = pax;
@@ -68,14 +68,31 @@ public class PassengerPropertyGenerator {
 
 	// TODO: ADAPT THIS PROPERLY ACCORDING TO FUCTION!
 	private double adaptAge() {
-		if (passenger.getSex() == Sex.FEMALE) {
-			return agemodel[0][1];
+		ProbabilityMachine machine = new ProbabilityMachine(agemodel, 5);
+
+		// Define the lower bound of the age model.
+		machine.setLowerBound(20);
+
+		// Define the upper bound of the age model.
+		machine.setUpperBound(80);
+
+		// This returns the index of the object in the age model.
+		int index = machine.getProbabilityValue(passenger.getSex());
+
+		// To translate this to an age, multiply it with 5, because each element
+		// stands for 5 years.
+		int age = index * 5;
+		if (age < 5) {
+			age = 5;
 		}
-		return 50;
+
+		// Then create a random number within the 5 year range.
+		return FuncLib.randomValue(age - 5, age);
+
 	}
 
 	private double adapt(double one, double two, double three, double four) {
-		return getGauss95(applySwitch(one, two), applySwitch(three, four));
+		return getGauss95(applySwitch(one, three), applySwitch(two, four));
 	}
 
 	private Sex switchRandomSex(int percentageOfWomen) {

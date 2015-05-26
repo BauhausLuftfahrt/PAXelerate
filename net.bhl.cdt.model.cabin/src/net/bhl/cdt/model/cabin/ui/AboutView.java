@@ -18,7 +18,7 @@ import java.awt.event.ActionListener;
 public class AboutView extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private static final int BOX_WIDTH = FuncLib.GetScreenWorkingWidth() - 40;
+	private static final int BOX_WIDTH = 1000;
 	private static final int BOX_HEIGHT = 275;
 	private int FONT_SIZE = 8;
 	private AreaMap areamap;
@@ -26,7 +26,6 @@ public class AboutView extends JPanel {
 	private final Button rightButton;
 	private int pointZero = 0;
 	private static final int STEP_SIZE = 2;
-	private JFrame frame;
 
 	/**
 	 * 
@@ -34,9 +33,8 @@ public class AboutView extends JPanel {
 	 * @param dimensions
 	 * @param refresh
 	 */
-	public AboutView(final JFrame frame) {
+	public AboutView() {
 		this.setPreferredSize(new Dimension(BOX_WIDTH, BOX_HEIGHT));
-		this.frame = frame;
 		Thread gameThread = new Thread() {
 
 			public void run() {
@@ -86,8 +84,6 @@ public class AboutView extends JPanel {
 
 	@Override
 	public void paintComponent(Graphics g) {
-
-		System.out.println(frame.getHeight());
 
 		super.paintComponent(g); // Paint background
 		g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE));

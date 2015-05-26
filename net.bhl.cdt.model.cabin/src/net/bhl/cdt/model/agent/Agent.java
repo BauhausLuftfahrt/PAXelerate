@@ -116,10 +116,10 @@ public class Agent extends Subject implements Runnable {
 			this.agentMood = new PassiveMood(this);
 		}
 
-		defaultPassengerArea = new int[(int) (this.getPassenger().getWidth() / (this.scale))][(int) (this
-				.getPassenger().getDepth() / (this.scale))];
-		for (int i = 0; i < (int) (this.getPassenger().getWidth() / (this.scale)); i++) {
-			for (int j = 0; j < (int) (this.getPassenger().getDepth() / (this.scale)); j++) {
+		defaultPassengerArea = new int[(int) (passenger.getWidth() / scale)][(int) (passenger
+				.getDepth() / scale)];
+		for (int i = 0; i < (int) (passenger.getWidth() / scale); i++) {
+			for (int j = 0; j < (int) (passenger.getDepth() / scale); j++) {
 				defaultPassengerArea[i][j] = 1;
 			}
 		}
@@ -249,6 +249,7 @@ public class Agent extends Subject implements Runnable {
 		 * get the square dimension. This is the maximum of the two following
 		 * values.
 		 */
+
 		double dimension = Math.max(adaptedPassengerArea.length,
 				adaptedPassengerArea[1].length);
 
@@ -827,15 +828,15 @@ public class Agent extends Subject implements Runnable {
 				// TODO: SLEEP PASSENGER WHO IS NEXT IN THE LIST UNTIL I AM
 				// SEATED AGAIN!
 
-//				Passenger pas = RunAStar
-//						.getCabin()
-//						.getPassengers()
-//						.get(RunAStar.getCabin().getPassengers()
-//								.indexOf(thePassengerILetInTheRow) + 1);
+				// Passenger pas = RunAStar
+				// .getCabin()
+				// .getPassengers()
+				// .get(RunAStar.getCabin().getPassengers()
+				// .indexOf(thePassengerILetInTheRow) + 1);
 
-//				RunAStar.sleepAgent(1000, pas);
-//				// TODO: DOES NOT WORK!!! Why can this thread not be
-//				// interrupted?
+				// RunAStar.sleepAgent(1000, pas);
+				// // TODO: DOES NOT WORK!!! Why can this thread not be
+				// // interrupted?
 
 				/* sleep until the other passenger has seated! */
 				while (!thePassengerILetInTheRow.isIsSeated()) {

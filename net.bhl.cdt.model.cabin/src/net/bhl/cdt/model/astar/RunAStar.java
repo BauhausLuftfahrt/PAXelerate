@@ -241,11 +241,14 @@ public class RunAStar {
 	}
 
 	private void runAreaMapWindow() {
-		final AboutView view = new AboutView(frame);
+
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
+
+				AboutView view = new AboutView();
+				view.setAreamap(areamap);
+
 				frame = new JFrame("Area Map Rendering");
-				// view
 				frame.setContentPane(view);
 				frame.pack();
 				frame.setVisible(true);
