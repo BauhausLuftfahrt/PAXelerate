@@ -2,6 +2,8 @@
  */
 package net.bhl.cdt.model.cabin;
 
+import java.util.Map;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -182,5 +184,13 @@ public interface PhysicalObject extends EObject {
 	 * @generated
 	 */
 	void setId(int value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean outOfBounds(DiagnosticChain chain, Map<?, ?> context);
 
 } // PhysicalObject

@@ -268,31 +268,13 @@ public interface CabinPackage extends EPackage {
 	int CABIN_FEATURE_COUNT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 20;
 
 	/**
-	 * The operation id for the '<em>Cabin Too Short</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CABIN___CABIN_TOO_SHORT__DIAGNOSTICCHAIN_MAP = ModelPackage.NAMED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Cabin Too Narrow</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CABIN___CABIN_TOO_NARROW__DIAGNOSTICCHAIN_MAP = ModelPackage.NAMED_ELEMENT_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Cabin</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_OPERATION_COUNT = ModelPackage.NAMED_ELEMENT_OPERATION_COUNT + 2;
+	int CABIN_OPERATION_COUNT = ModelPackage.NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 
 	/**
@@ -1054,13 +1036,22 @@ public interface CabinPackage extends EPackage {
 	int PHYSICAL_OBJECT_FEATURE_COUNT = 6;
 
 	/**
+	 * The operation id for the '<em>Out Of Bounds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHYSICAL_OBJECT___OUT_OF_BOUNDS__DIAGNOSTICCHAIN_MAP = 0;
+
+	/**
 	 * The number of operations of the '<em>Physical Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PHYSICAL_OBJECT_OPERATION_COUNT = 0;
+	int PHYSICAL_OBJECT_OPERATION_COUNT = 1;
 
 	/**
 	 * The feature id for the '<em><b>XPosition</b></em>' attribute.
@@ -1187,6 +1178,15 @@ public interface CabinPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEAT_FEATURE_COUNT = PHYSICAL_OBJECT_FEATURE_COUNT + 7;
+
+	/**
+	 * The operation id for the '<em>Out Of Bounds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEAT___OUT_OF_BOUNDS__DIAGNOSTICCHAIN_MAP = PHYSICAL_OBJECT___OUT_OF_BOUNDS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Seat</em>' class.
@@ -1541,6 +1541,15 @@ public interface CabinPackage extends EPackage {
 	int LAVATORY_FEATURE_COUNT = PHYSICAL_OBJECT_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Out Of Bounds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAVATORY___OUT_OF_BOUNDS__DIAGNOSTICCHAIN_MAP = PHYSICAL_OBJECT___OUT_OF_BOUNDS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Lavatory</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1621,6 +1630,15 @@ public interface CabinPackage extends EPackage {
 	 * @ordered
 	 */
 	int GALLEY_FEATURE_COUNT = PHYSICAL_OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Out Of Bounds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GALLEY___OUT_OF_BOUNDS__DIAGNOSTICCHAIN_MAP = PHYSICAL_OBJECT___OUT_OF_BOUNDS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Galley</em>' class.
@@ -1712,6 +1730,15 @@ public interface CabinPackage extends EPackage {
 	 * @ordered
 	 */
 	int STAIRWAY_FEATURE_COUNT = PHYSICAL_OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Out Of Bounds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAIRWAY___OUT_OF_BOUNDS__DIAGNOSTICCHAIN_MAP = PHYSICAL_OBJECT___OUT_OF_BOUNDS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Stairway</em>' class.
@@ -1814,6 +1841,15 @@ public interface CabinPackage extends EPackage {
 	int CURTAIN_FEATURE_COUNT = PHYSICAL_OBJECT_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Out Of Bounds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CURTAIN___OUT_OF_BOUNDS__DIAGNOSTICCHAIN_MAP = PHYSICAL_OBJECT___OUT_OF_BOUNDS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Curtain</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1894,6 +1930,15 @@ public interface CabinPackage extends EPackage {
 	 * @ordered
 	 */
 	int STOWAGE_FEATURE_COUNT = PHYSICAL_OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Out Of Bounds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STOWAGE___OUT_OF_BOUNDS__DIAGNOSTICCHAIN_MAP = PHYSICAL_OBJECT___OUT_OF_BOUNDS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Stowage</em>' class.
@@ -2541,26 +2586,6 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCabin_EstimatedSimulationTime();
-
-	/**
-	 * Returns the meta object for the '{@link net.bhl.cdt.model.cabin.Cabin#cabinTooShort(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Cabin Too Short</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Cabin Too Short</em>' operation.
-	 * @see net.bhl.cdt.model.cabin.Cabin#cabinTooShort(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getCabin__CabinTooShort__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link net.bhl.cdt.model.cabin.Cabin#cabinTooNarrow(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Cabin Too Narrow</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Cabin Too Narrow</em>' operation.
-	 * @see net.bhl.cdt.model.cabin.Cabin#cabinTooNarrow(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getCabin__CabinTooNarrow__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link net.bhl.cdt.model.cabin.Cabin#getClasses <em>Classes</em>}'.
@@ -3598,6 +3623,16 @@ public interface CabinPackage extends EPackage {
 	EAttribute getPhysicalObject_Id();
 
 	/**
+	 * Returns the meta object for the '{@link net.bhl.cdt.model.cabin.PhysicalObject#outOfBounds(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Out Of Bounds</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Out Of Bounds</em>' operation.
+	 * @see net.bhl.cdt.model.cabin.PhysicalObject#outOfBounds(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getPhysicalObject__OutOfBounds__DiagnosticChain_Map();
+
+	/**
 	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.StairwayDirection <em>Stairway Direction</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3788,20 +3823,6 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CABIN__ESTIMATED_SIMULATION_TIME = eINSTANCE.getCabin_EstimatedSimulationTime();
-		/**
-		 * The meta object literal for the '<em><b>Cabin Too Short</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation CABIN___CABIN_TOO_SHORT__DIAGNOSTICCHAIN_MAP = eINSTANCE.getCabin__CabinTooShort__DiagnosticChain_Map();
-		/**
-		 * The meta object literal for the '<em><b>Cabin Too Narrow</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation CABIN___CABIN_TOO_NARROW__DIAGNOSTICCHAIN_MAP = eINSTANCE.getCabin__CabinTooNarrow__DiagnosticChain_Map();
 		/**
 		 * The meta object literal for the '<em><b>Classes</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
@@ -4514,6 +4535,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PHYSICAL_OBJECT__ID = eINSTANCE.getPhysicalObject_Id();
+		/**
+		 * The meta object literal for the '<em><b>Out Of Bounds</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PHYSICAL_OBJECT___OUT_OF_BOUNDS__DIAGNOSTICCHAIN_MAP = eINSTANCE.getPhysicalObject__OutOfBounds__DiagnosticChain_Map();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.StairwayDirection <em>Stairway Direction</em>}' enum.
 		 * <!-- begin-user-doc -->

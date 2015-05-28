@@ -194,7 +194,7 @@ public interface Seat extends PhysicalObject {
 	 * @return the value of the '<em>Passenger</em>' reference.
 	 * @see #setPassenger(Passenger)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSeat_Passenger()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	Passenger getPassenger();

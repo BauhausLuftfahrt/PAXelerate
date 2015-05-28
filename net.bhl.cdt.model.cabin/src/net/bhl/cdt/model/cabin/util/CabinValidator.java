@@ -40,28 +40,20 @@ public class CabinValidator extends EObjectValidator {
 	public static final String DIAGNOSTIC_SOURCE = "net.bhl.cdt.model.cabin";
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Cabin Too Short' of 'Cabin'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int CABIN__CABIN_TOO_SHORT = 1;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Cabin Too Narrow' of 'Cabin'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int CABIN__CABIN_TOO_NARROW = 2;
-
-	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Too Many Passengers' of 'Travel Class'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TRAVEL_CLASS__TOO_MANY_PASSENGERS = 3;
+	public static final int TRAVEL_CLASS__TOO_MANY_PASSENGERS = 1;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Out Of Bounds' of 'Physical Object'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int PHYSICAL_OBJECT__OUT_OF_BOUNDS = 2;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants.
@@ -69,7 +61,7 @@ public class CabinValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 3;
+	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 2;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants in a derived class.
@@ -170,38 +162,7 @@ public class CabinValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateCabin(Cabin cabin, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(cabin, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(cabin, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(cabin, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(cabin, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(cabin, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(cabin, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(cabin, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(cabin, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(cabin, diagnostics, context);
-		if (result || diagnostics != null) result &= validateCabin_cabinTooShort(cabin, diagnostics, context);
-		if (result || diagnostics != null) result &= validateCabin_cabinTooNarrow(cabin, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * Validates the cabinTooShort constraint of '<em>Cabin</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateCabin_cabinTooShort(Cabin cabin, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return cabin.cabinTooShort(diagnostics, context);
-	}
-
-	/**
-	 * Validates the cabinTooNarrow constraint of '<em>Cabin</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateCabin_cabinTooNarrow(Cabin cabin, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return cabin.cabinTooNarrow(diagnostics, context);
+		return validate_EveryDefaultConstraint(cabin, diagnostics, context);
 	}
 
 	/**
@@ -324,7 +285,17 @@ public class CabinValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateSeat(Seat seat, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(seat, diagnostics, context);
+		if (!validate_NoCircularContainment(seat, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(seat, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(seat, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(seat, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(seat, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(seat, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(seat, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(seat, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(seat, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePhysicalObject_outOfBounds(seat, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -351,7 +322,27 @@ public class CabinValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validatePhysicalObject(PhysicalObject physicalObject, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(physicalObject, diagnostics, context);
+		if (!validate_NoCircularContainment(physicalObject, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(physicalObject, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(physicalObject, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(physicalObject, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(physicalObject, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(physicalObject, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(physicalObject, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(physicalObject, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(physicalObject, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePhysicalObject_outOfBounds(physicalObject, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the outOfBounds constraint of '<em>Physical Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePhysicalObject_outOfBounds(PhysicalObject physicalObject, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return physicalObject.outOfBounds(diagnostics, context);
 	}
 
 	/**
@@ -360,7 +351,17 @@ public class CabinValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateLavatory(Lavatory lavatory, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(lavatory, diagnostics, context);
+		if (!validate_NoCircularContainment(lavatory, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(lavatory, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(lavatory, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(lavatory, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(lavatory, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(lavatory, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(lavatory, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(lavatory, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(lavatory, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePhysicalObject_outOfBounds(lavatory, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -369,7 +370,17 @@ public class CabinValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateGalley(Galley galley, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(galley, diagnostics, context);
+		if (!validate_NoCircularContainment(galley, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(galley, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(galley, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(galley, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(galley, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(galley, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(galley, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(galley, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(galley, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePhysicalObject_outOfBounds(galley, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -378,7 +389,17 @@ public class CabinValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateStairway(Stairway stairway, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(stairway, diagnostics, context);
+		if (!validate_NoCircularContainment(stairway, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(stairway, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(stairway, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(stairway, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(stairway, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(stairway, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(stairway, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(stairway, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(stairway, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePhysicalObject_outOfBounds(stairway, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -387,7 +408,17 @@ public class CabinValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateCurtain(Curtain curtain, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(curtain, diagnostics, context);
+		if (!validate_NoCircularContainment(curtain, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(curtain, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(curtain, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(curtain, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(curtain, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(curtain, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(curtain, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(curtain, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(curtain, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePhysicalObject_outOfBounds(curtain, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -396,7 +427,17 @@ public class CabinValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateStowage(Stowage stowage, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(stowage, diagnostics, context);
+		if (!validate_NoCircularContainment(stowage, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(stowage, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(stowage, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(stowage, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(stowage, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(stowage, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(stowage, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(stowage, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(stowage, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePhysicalObject_outOfBounds(stowage, diagnostics, context);
+		return result;
 	}
 
 	/**
