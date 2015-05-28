@@ -2,30 +2,29 @@
  */
 package net.bhl.cdt.model.cabin.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
-
+import java.util.Map;
 import net.bhl.cdt.model.cabin.CabinPackage;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.TravelClass;
-
+import net.bhl.cdt.model.cabin.util.CabinValidator;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Travel Class</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Travel Class</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -43,11 +42,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class TravelClassImpl extends MinimalEObjectImpl.Container implements TravelClass {
+public class TravelClassImpl extends MinimalEObjectImpl.Container implements
+		TravelClass {
 	/**
 	 * The cached value of the '{@link #getRows() <em>Rows</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getRows()
 	 * @generated
 	 * @ordered
@@ -56,8 +55,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 
 	/**
 	 * The default value of the '{@link #getSequence() <em>Sequence</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getSequence()
 	 * @generated
 	 * @ordered
@@ -66,8 +64,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 
 	/**
 	 * The cached value of the '{@link #getSequence() <em>Sequence</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getSequence()
 	 * @generated
 	 * @ordered
@@ -76,8 +73,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 
 	/**
 	 * The default value of the '{@link #getPassengers() <em>Passengers</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getPassengers()
 	 * @generated
 	 * @ordered
@@ -86,8 +82,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 
 	/**
 	 * The cached value of the '{@link #getPassengers() <em>Passengers</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getPassengers()
 	 * @generated
 	 * @ordered
@@ -96,8 +91,8 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 
 	/**
 	 * The default value of the '{@link #getAvailableSeats() <em>Available Seats</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getAvailableSeats()
 	 * @generated
 	 * @ordered
@@ -106,8 +101,8 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 
 	/**
 	 * The cached value of the '{@link #getAvailableSeats() <em>Available Seats</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getAvailableSeats()
 	 * @generated
 	 * @ordered
@@ -116,8 +111,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 
 	/**
 	 * The default value of the '{@link #getSeatPitch() <em>Seat Pitch</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getSeatPitch()
 	 * @generated
 	 * @ordered
@@ -126,8 +120,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 
 	/**
 	 * The cached value of the '{@link #getSeatPitch() <em>Seat Pitch</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getSeatPitch()
 	 * @generated
 	 * @ordered
@@ -136,8 +129,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 
 	/**
 	 * The default value of the '{@link #getSeatLength() <em>Seat Length</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getSeatLength()
 	 * @generated
 	 * @ordered
@@ -146,8 +138,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 
 	/**
 	 * The cached value of the '{@link #getSeatLength() <em>Seat Length</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getSeatLength()
 	 * @generated
 	 * @ordered
@@ -156,8 +147,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 
 	/**
 	 * The default value of the '{@link #getSeatWidth() <em>Seat Width</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getSeatWidth()
 	 * @generated
 	 * @ordered
@@ -166,8 +156,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 
 	/**
 	 * The cached value of the '{@link #getSeatWidth() <em>Seat Width</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getSeatWidth()
 	 * @generated
 	 * @ordered
@@ -176,8 +165,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -186,8 +174,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -196,8 +183,8 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 
 	/**
 	 * The default value of the '{@link #getRowStructure() <em>Row Structure</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getRowStructure()
 	 * @generated
 	 * @ordered
@@ -206,8 +193,8 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 
 	/**
 	 * The cached value of the '{@link #getRowStructure() <em>Row Structure</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getRowStructure()
 	 * @generated
 	 * @ordered
@@ -215,8 +202,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	protected String rowStructure = ROW_STRUCTURE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected TravelClassImpl() {
@@ -224,8 +210,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -234,8 +219,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<Row> getRows() {
@@ -246,8 +230,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getSequence() {
@@ -255,8 +238,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setSequence(int newSequence) {
@@ -267,8 +249,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getPassengers() {
@@ -276,8 +257,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setPassengers(int newPassengers) {
@@ -288,8 +268,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getAvailableSeats() {
@@ -297,8 +276,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setAvailableSeats(int newAvailableSeats) {
@@ -309,8 +287,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getSeatPitch() {
@@ -318,8 +295,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setSeatPitch(int newSeatPitch) {
@@ -330,8 +306,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getSeatLength() {
@@ -339,8 +314,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setSeatLength(int newSeatLength) {
@@ -351,8 +325,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getSeatWidth() {
@@ -360,8 +333,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setSeatWidth(int newSeatWidth) {
@@ -372,8 +344,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getName() {
@@ -381,8 +352,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setName(String newName) {
@@ -393,8 +363,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getRowStructure() {
@@ -402,8 +371,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setRowStructure(String newRowStructure) {
@@ -414,12 +382,40 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
+	 */
+	public boolean tooManyPassengers(DiagnosticChain chain, Map<?, ?> context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and
+		// message
+		// Ensure that you remove @generated or mark it @generated NOT
+
+		if (getAvailableSeats() < getPassengers()) {
+			if (chain != null) {
+				chain.add(new BasicDiagnostic(Diagnostic.ERROR,
+						CabinValidator.DIAGNOSTIC_SOURCE,
+						CabinValidator.TRAVEL_CLASS__TOO_MANY_PASSENGERS,
+						"Too many passengers for the available seats",
+						new Object[] {
+								this,
+								CabinPackage.eINSTANCE
+										.getTravelClass_Passengers() }));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case CabinPackage.TRAVEL_CLASS__ROWS:
 				return ((InternalEList<?>)getRows()).basicRemove(otherEnd, msgs);
@@ -428,8 +424,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -458,8 +453,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -499,8 +493,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -538,8 +531,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -568,8 +560,21 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments)
+			throws InvocationTargetException {
+		switch (operationID) {
+			case CabinPackage.TRAVEL_CLASS___TOO_MANY_PASSENGERS__DIAGNOSTICCHAIN_MAP:
+				return tooManyPassengers((DiagnosticChain)arguments.get(0), (Map<?, ?>)arguments.get(1));
+		}
+		return super.eInvoke(operationID, arguments);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -597,4 +602,4 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements Tra
 		return result.toString();
 	}
 
-} //TravelClassImpl
+} // TravelClassImpl

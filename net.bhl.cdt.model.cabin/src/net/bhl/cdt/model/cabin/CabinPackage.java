@@ -6,6 +6,7 @@ import net.bhl.cdt.model.ModelPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -267,13 +268,31 @@ public interface CabinPackage extends EPackage {
 	int CABIN_FEATURE_COUNT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 20;
 
 	/**
+	 * The operation id for the '<em>Cabin Too Short</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN___CABIN_TOO_SHORT__DIAGNOSTICCHAIN_MAP = ModelPackage.NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Cabin Too Narrow</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN___CABIN_TOO_NARROW__DIAGNOSTICCHAIN_MAP = ModelPackage.NAMED_ELEMENT_OPERATION_COUNT + 1;
+
+	/**
 	 * The number of operations of the '<em>Cabin</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_OPERATION_COUNT = ModelPackage.NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int CABIN_OPERATION_COUNT = ModelPackage.NAMED_ELEMENT_OPERATION_COUNT + 2;
 
 
 	/**
@@ -432,13 +451,22 @@ public interface CabinPackage extends EPackage {
 	int TRAVEL_CLASS_FEATURE_COUNT = 9;
 
 	/**
+	 * The operation id for the '<em>Too Many Passengers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRAVEL_CLASS___TOO_MANY_PASSENGERS__DIAGNOSTICCHAIN_MAP = 0;
+
+	/**
 	 * The number of operations of the '<em>Travel Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRAVEL_CLASS_OPERATION_COUNT = 0;
+	int TRAVEL_CLASS_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.impl.BusinessClassImpl <em>Business Class</em>}' class.
@@ -539,6 +567,15 @@ public interface CabinPackage extends EPackage {
 	 * @ordered
 	 */
 	int BUSINESS_CLASS_FEATURE_COUNT = TRAVEL_CLASS_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Too Many Passengers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUSINESS_CLASS___TOO_MANY_PASSENGERS__DIAGNOSTICCHAIN_MAP = TRAVEL_CLASS___TOO_MANY_PASSENGERS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Business Class</em>' class.
@@ -650,6 +687,15 @@ public interface CabinPackage extends EPackage {
 	int FIRST_CLASS_FEATURE_COUNT = TRAVEL_CLASS_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Too Many Passengers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIRST_CLASS___TOO_MANY_PASSENGERS__DIAGNOSTICCHAIN_MAP = TRAVEL_CLASS___TOO_MANY_PASSENGERS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>First Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -759,6 +805,15 @@ public interface CabinPackage extends EPackage {
 	int ECONOMY_CLASS_FEATURE_COUNT = TRAVEL_CLASS_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Too Many Passengers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECONOMY_CLASS___TOO_MANY_PASSENGERS__DIAGNOSTICCHAIN_MAP = TRAVEL_CLASS___TOO_MANY_PASSENGERS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Economy Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -866,6 +921,15 @@ public interface CabinPackage extends EPackage {
 	 * @ordered
 	 */
 	int PREMIUM_ECONOMY_CLASS_FEATURE_COUNT = TRAVEL_CLASS_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Too Many Passengers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PREMIUM_ECONOMY_CLASS___TOO_MANY_PASSENGERS__DIAGNOSTICCHAIN_MAP = TRAVEL_CLASS___TOO_MANY_PASSENGERS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Premium Economy Class</em>' class.
@@ -2479,6 +2543,26 @@ public interface CabinPackage extends EPackage {
 	EAttribute getCabin_EstimatedSimulationTime();
 
 	/**
+	 * Returns the meta object for the '{@link net.bhl.cdt.model.cabin.Cabin#cabinTooShort(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Cabin Too Short</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Cabin Too Short</em>' operation.
+	 * @see net.bhl.cdt.model.cabin.Cabin#cabinTooShort(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getCabin__CabinTooShort__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link net.bhl.cdt.model.cabin.Cabin#cabinTooNarrow(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Cabin Too Narrow</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Cabin Too Narrow</em>' operation.
+	 * @see net.bhl.cdt.model.cabin.Cabin#cabinTooNarrow(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getCabin__CabinTooNarrow__DiagnosticChain_Map();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link net.bhl.cdt.model.cabin.Cabin#getClasses <em>Classes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2662,6 +2746,16 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTravelClass_RowStructure();
+
+	/**
+	 * Returns the meta object for the '{@link net.bhl.cdt.model.cabin.TravelClass#tooManyPassengers(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Too Many Passengers</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Too Many Passengers</em>' operation.
+	 * @see net.bhl.cdt.model.cabin.TravelClass#tooManyPassengers(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getTravelClass__TooManyPassengers__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.BusinessClass <em>Business Class</em>}'.
@@ -3695,6 +3789,20 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute CABIN__ESTIMATED_SIMULATION_TIME = eINSTANCE.getCabin_EstimatedSimulationTime();
 		/**
+		 * The meta object literal for the '<em><b>Cabin Too Short</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CABIN___CABIN_TOO_SHORT__DIAGNOSTICCHAIN_MAP = eINSTANCE.getCabin__CabinTooShort__DiagnosticChain_Map();
+		/**
+		 * The meta object literal for the '<em><b>Cabin Too Narrow</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CABIN___CABIN_TOO_NARROW__DIAGNOSTICCHAIN_MAP = eINSTANCE.getCabin__CabinTooNarrow__DiagnosticChain_Map();
+		/**
 		 * The meta object literal for the '<em><b>Classes</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3817,6 +3925,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TRAVEL_CLASS__ROW_STRUCTURE = eINSTANCE.getTravelClass_RowStructure();
+		/**
+		 * The meta object literal for the '<em><b>Too Many Passengers</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation TRAVEL_CLASS___TOO_MANY_PASSENGERS__DIAGNOSTICCHAIN_MAP = eINSTANCE.getTravelClass__TooManyPassengers__DiagnosticChain_Map();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.BusinessClassImpl <em>Business Class</em>}' class.
 		 * <!-- begin-user-doc -->

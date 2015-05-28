@@ -2,7 +2,6 @@
  */
 package net.bhl.cdt.model.cabin.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 import net.bhl.cdt.model.cabin.Cabin;
@@ -20,16 +19,14 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
  * This is the item provider adapter for a {@link net.bhl.cdt.model.cabin.Cabin} object.
- * <!-- begin-user-doc -->
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
  * @generated
  */
-public class CabinItemProvider
-	extends NamedElementItemProvider {
+public class CabinItemProvider extends NamedElementItemProvider {
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This constructs an instance from a factory and a notifier. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CabinItemProvider(AdapterFactory adapterFactory) {
@@ -37,9 +34,9 @@ public class CabinItemProvider
 	}
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This returns the property descriptors for the adapted class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -64,9 +61,9 @@ public class CabinItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Cabin Length feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds a property descriptor for the Cabin Length feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addCabinLengthPropertyDescriptor(Object object) {
@@ -86,9 +83,9 @@ public class CabinItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Cabin Width feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds a property descriptor for the Cabin Width feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addCabinWidthPropertyDescriptor(Object object) {
@@ -108,9 +105,9 @@ public class CabinItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Scale feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds a property descriptor for the Scale feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addScalePropertyDescriptor(Object object) {
@@ -130,9 +127,9 @@ public class CabinItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Real Elapsed Time feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds a property descriptor for the Real Elapsed Time feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addRealElapsedTimePropertyDescriptor(Object object) {
@@ -152,9 +149,9 @@ public class CabinItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Frames Per Second feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds a property descriptor for the Frames Per Second feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addFramesPerSecondPropertyDescriptor(Object object) {
@@ -174,9 +171,9 @@ public class CabinItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Number Of Decks feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds a property descriptor for the Number Of Decks feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addNumberOfDecksPropertyDescriptor(Object object) {
@@ -196,9 +193,9 @@ public class CabinItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Aircraft Type feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds a property descriptor for the Aircraft Type feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addAircraftTypePropertyDescriptor(Object object) {
@@ -218,9 +215,9 @@ public class CabinItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Use Preset Settings feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds a property descriptor for the Use Preset Settings feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addUsePresetSettingsPropertyDescriptor(Object object) {
@@ -240,9 +237,9 @@ public class CabinItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Speed Factor feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds a property descriptor for the Speed Factor feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addSpeedFactorPropertyDescriptor(Object object) {
@@ -263,8 +260,7 @@ public class CabinItemProvider
 
 	/**
 	 * This adds a property descriptor for the Estimated Simulation Time feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addEstimatedSimulationTimePropertyDescriptor(Object object) {
@@ -284,9 +280,9 @@ public class CabinItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Row Nonexistent feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds a property descriptor for the Row Nonexistent feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addRowNonexistentPropertyDescriptor(Object object) {
@@ -306,9 +302,9 @@ public class CabinItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Aisle Width feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds a property descriptor for the Aisle Width feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addAisleWidthPropertyDescriptor(Object object) {
@@ -331,12 +327,12 @@ public class CabinItemProvider
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(
+			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(CabinPackage.Literals.CABIN__CLASSES);
@@ -352,8 +348,7 @@ public class CabinItemProvider
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -377,8 +372,8 @@ public class CabinItemProvider
 
 	/**
 	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -392,8 +387,8 @@ public class CabinItemProvider
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -430,14 +425,15 @@ public class CabinItemProvider
 	}
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
+	 * describing the children that can be created under this object. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
@@ -517,9 +513,9 @@ public class CabinItemProvider
 	}
 
 	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Return the resource locator for this item provider's resources. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

@@ -2,7 +2,9 @@
  */
 package net.bhl.cdt.model.cabin;
 
+import java.util.Map;
 import net.bhl.cdt.model.NamedElement;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -423,6 +425,22 @@ public interface Cabin extends NamedElement {
 	 * @generated
 	 */
 	void setEstimatedSimulationTime(double value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean cabinTooShort(DiagnosticChain chain, Map<?, ?> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean cabinTooNarrow(DiagnosticChain chain, Map<?, ?> context);
 
 	/**
 	 * Returns the value of the '<em><b>Classes</b></em>' containment reference list.

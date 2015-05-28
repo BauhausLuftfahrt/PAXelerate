@@ -2,7 +2,9 @@
  */
 package net.bhl.cdt.model.cabin.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
+import java.util.Map;
 import net.bhl.cdt.model.cabin.AircraftType;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinPackage;
@@ -11,12 +13,19 @@ import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.Passenger;
+import net.bhl.cdt.model.cabin.PhysicalObject;
+import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.Stairway;
 import net.bhl.cdt.model.cabin.Stowage;
 import net.bhl.cdt.model.cabin.TravelClass;
+import net.bhl.cdt.model.cabin.util.CabinValidator;
 import net.bhl.cdt.model.impl.NamedElementImpl;
+import net.bhl.cdt.model.util.ModelHelper;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -25,9 +34,8 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Cabin</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Cabin</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -59,8 +67,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class CabinImpl extends NamedElementImpl implements Cabin {
 	/**
 	 * The default value of the '{@link #getCabinLength() <em>Cabin Length</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getCabinLength()
 	 * @generated
 	 * @ordered
@@ -68,8 +75,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected static final int CABIN_LENGTH_EDEFAULT = 2412;
 	/**
 	 * The cached value of the '{@link #getCabinLength() <em>Cabin Length</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getCabinLength()
 	 * @generated
 	 * @ordered
@@ -77,8 +83,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected int cabinLength = CABIN_LENGTH_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getCabinWidth() <em>Cabin Width</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getCabinWidth()
 	 * @generated
 	 * @ordered
@@ -86,8 +91,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected static final int CABIN_WIDTH_EDEFAULT = 364;
 	/**
 	 * The cached value of the '{@link #getCabinWidth() <em>Cabin Width</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getCabinWidth()
 	 * @generated
 	 * @ordered
@@ -95,8 +99,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected int cabinWidth = CABIN_WIDTH_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getRowNonexistent() <em>Row Nonexistent</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getRowNonexistent()
 	 * @generated
 	 * @ordered
@@ -104,8 +108,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected static final int ROW_NONEXISTENT_EDEFAULT = 0;
 	/**
 	 * The cached value of the '{@link #getRowNonexistent() <em>Row Nonexistent</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getRowNonexistent()
 	 * @generated
 	 * @ordered
@@ -113,8 +117,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected int rowNonexistent = ROW_NONEXISTENT_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getAisleWidth() <em>Aisle Width</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getAisleWidth()
 	 * @generated
 	 * @ordered
@@ -122,8 +125,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected static final int AISLE_WIDTH_EDEFAULT = 64;
 	/**
 	 * The cached value of the '{@link #getAisleWidth() <em>Aisle Width</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getAisleWidth()
 	 * @generated
 	 * @ordered
@@ -131,8 +133,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected int aisleWidth = AISLE_WIDTH_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getFramesPerSecond() <em>Frames Per Second</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getFramesPerSecond()
 	 * @generated
 	 * @ordered
@@ -140,8 +142,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected static final int FRAMES_PER_SECOND_EDEFAULT = 5;
 	/**
 	 * The cached value of the '{@link #getFramesPerSecond() <em>Frames Per Second</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getFramesPerSecond()
 	 * @generated
 	 * @ordered
@@ -149,8 +151,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected int framesPerSecond = FRAMES_PER_SECOND_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getNumberOfDecks() <em>Number Of Decks</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getNumberOfDecks()
 	 * @generated
 	 * @ordered
@@ -158,8 +160,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected static final int NUMBER_OF_DECKS_EDEFAULT = 1;
 	/**
 	 * The cached value of the '{@link #getNumberOfDecks() <em>Number Of Decks</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getNumberOfDecks()
 	 * @generated
 	 * @ordered
@@ -167,8 +169,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected int numberOfDecks = NUMBER_OF_DECKS_EDEFAULT;
 	/**
 	 * The cached value of the '{@link #getClasses() <em>Classes</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getClasses()
 	 * @generated
 	 * @ordered
@@ -176,8 +177,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected EList<TravelClass> classes;
 	/**
 	 * The cached value of the '{@link #getDoors() <em>Doors</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getDoors()
 	 * @generated
 	 * @ordered
@@ -185,8 +185,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected EList<Door> doors;
 	/**
 	 * The cached value of the '{@link #getLavatories() <em>Lavatories</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getLavatories()
 	 * @generated
 	 * @ordered
@@ -194,8 +193,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected EList<Lavatory> lavatories;
 	/**
 	 * The cached value of the '{@link #getGalleys() <em>Galleys</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getGalleys()
 	 * @generated
 	 * @ordered
@@ -203,8 +201,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected EList<Galley> galleys;
 	/**
 	 * The cached value of the '{@link #getStairways() <em>Stairways</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getStairways()
 	 * @generated
 	 * @ordered
@@ -212,8 +209,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected EList<Stairway> stairways;
 	/**
 	 * The cached value of the '{@link #getCurtains() <em>Curtains</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getCurtains()
 	 * @generated
 	 * @ordered
@@ -221,8 +217,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected EList<Curtain> curtains;
 	/**
 	 * The cached value of the '{@link #getStowages() <em>Stowages</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getStowages()
 	 * @generated
 	 * @ordered
@@ -230,8 +225,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected EList<Stowage> stowages;
 	/**
 	 * The cached value of the '{@link #getPassengers() <em>Passengers</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getPassengers()
 	 * @generated
 	 * @ordered
@@ -239,8 +233,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected EList<Passenger> passengers;
 	/**
 	 * The default value of the '{@link #getScale() <em>Scale</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getScale()
 	 * @generated
 	 * @ordered
@@ -248,8 +241,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected static final int SCALE_EDEFAULT = 10;
 	/**
 	 * The cached value of the '{@link #getScale() <em>Scale</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getScale()
 	 * @generated
 	 * @ordered
@@ -257,8 +249,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected int scale = SCALE_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getRealElapsedTime() <em>Real Elapsed Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getRealElapsedTime()
 	 * @generated
 	 * @ordered
@@ -266,8 +258,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected static final double REAL_ELAPSED_TIME_EDEFAULT = 0.0;
 	/**
 	 * The cached value of the '{@link #getRealElapsedTime() <em>Real Elapsed Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getRealElapsedTime()
 	 * @generated
 	 * @ordered
@@ -275,8 +267,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected double realElapsedTime = REAL_ELAPSED_TIME_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getAircraftType() <em>Aircraft Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getAircraftType()
 	 * @generated
 	 * @ordered
@@ -284,8 +276,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected static final AircraftType AIRCRAFT_TYPE_EDEFAULT = AircraftType.REGIONAL;
 	/**
 	 * The cached value of the '{@link #getAircraftType() <em>Aircraft Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getAircraftType()
 	 * @generated
 	 * @ordered
@@ -293,8 +285,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected AircraftType aircraftType = AIRCRAFT_TYPE_EDEFAULT;
 	/**
 	 * The default value of the '{@link #isUsePresetSettings() <em>Use Preset Settings</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #isUsePresetSettings()
 	 * @generated
 	 * @ordered
@@ -302,8 +294,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected static final boolean USE_PRESET_SETTINGS_EDEFAULT = false;
 	/**
 	 * The cached value of the '{@link #isUsePresetSettings() <em>Use Preset Settings</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #isUsePresetSettings()
 	 * @generated
 	 * @ordered
@@ -311,8 +303,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected boolean usePresetSettings = USE_PRESET_SETTINGS_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getSpeedFactor() <em>Speed Factor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getSpeedFactor()
 	 * @generated
 	 * @ordered
@@ -320,8 +311,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected static final int SPEED_FACTOR_EDEFAULT = 1;
 	/**
 	 * The cached value of the '{@link #getSpeedFactor() <em>Speed Factor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getSpeedFactor()
 	 * @generated
 	 * @ordered
@@ -345,9 +335,9 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @ordered
 	 */
 	protected double estimatedSimulationTime = ESTIMATED_SIMULATION_TIME_EDEFAULT;
+
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected CabinImpl() {
@@ -355,8 +345,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -365,8 +354,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getCabinLength() {
@@ -374,8 +362,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setCabinLength(int newCabinLength) {
@@ -386,8 +373,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getCabinWidth() {
@@ -395,8 +381,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setCabinWidth(int newCabinWidth) {
@@ -407,8 +392,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<Door> getDoors() {
@@ -419,8 +403,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<Lavatory> getLavatories() {
@@ -431,8 +414,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<Galley> getGalleys() {
@@ -443,8 +425,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<Stairway> getStairways() {
@@ -455,8 +436,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<Curtain> getCurtains() {
@@ -467,8 +447,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<Stowage> getStowages() {
@@ -479,8 +458,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getScale() {
@@ -488,8 +466,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setScale(int newScale) {
@@ -500,8 +477,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public double getRealElapsedTime() {
@@ -509,8 +485,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setRealElapsedTime(double newRealElapsedTime) {
@@ -521,8 +496,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getFramesPerSecond() {
@@ -530,8 +504,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setFramesPerSecond(int newFramesPerSecond) {
@@ -542,8 +515,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<Passenger> getPassengers() {
@@ -554,8 +526,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getNumberOfDecks() {
@@ -563,8 +534,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setNumberOfDecks(int newNumberOfDecks) {
@@ -575,8 +545,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public AircraftType getAircraftType() {
@@ -584,8 +553,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setAircraftType(AircraftType newAircraftType) {
@@ -596,8 +564,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean isUsePresetSettings() {
@@ -605,8 +572,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setUsePresetSettings(boolean newUsePresetSettings) {
@@ -617,8 +583,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getSpeedFactor() {
@@ -626,8 +591,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setSpeedFactor(int newSpeedFactor) {
@@ -638,8 +602,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public double getEstimatedSimulationTime() {
@@ -647,8 +610,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setEstimatedSimulationTime(double newEstimatedSimulationTime) {
@@ -659,8 +621,100 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
+	 */
+	public boolean cabinTooShort(DiagnosticChain chain, Map<?, ?> context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and
+		// message
+		// Ensure that you remove @generated or mark it @generated NOT
+
+		if (cabinOutOfBounds_Length()) {
+			if (chain != null) {
+				chain.add(new BasicDiagnostic(Diagnostic.ERROR,
+						CabinValidator.DIAGNOSTIC_SOURCE,
+						CabinValidator.CABIN__CABIN_TOO_SHORT,
+						"Cabin is too short!", new Object[] { this,
+								CabinPackage.eINSTANCE.getCabin_CabinLength() }));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
+	 */
+	public boolean cabinTooNarrow(DiagnosticChain chain, Map<?, ?> context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and
+		// message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (cabinOutOfBounds_Width()) {
+			if (chain != null) {
+				chain.add(new BasicDiagnostic(Diagnostic.ERROR,
+						CabinValidator.DIAGNOSTIC_SOURCE,
+						CabinValidator.CABIN__CABIN_TOO_NARROW,
+						"Cabin is too narrow!", new Object[] { this,
+								CabinPackage.eINSTANCE.getCabin_CabinWidth() }));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	private Boolean cabinOutOfBounds_Length() {
+		for (Lavatory object : getLavatories()) {
+			if ((object.getYPosition() + object.getYDimension()) > getCabinLength()) {
+				return true;
+			}
+		}
+		for (Galley object : getGalleys()) {
+			if ((object.getYPosition() + object.getYDimension()) > getCabinLength()) {
+				return true;
+			}
+		}
+		for (TravelClass tc : getClasses()) {
+			for (PhysicalObject object : ModelHelper.getChildrenByClass(tc,
+					Seat.class)) {
+				if ((object.getYPosition() + object.getYDimension()) > getCabinLength()) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	private Boolean cabinOutOfBounds_Width() {
+		for (Lavatory object : getLavatories()) {
+			if ((object.getXPosition() + object.getXDimension()) > getCabinWidth()) {
+				return true;
+			}
+		}
+		for (Galley object : getGalleys()) {
+			if ((object.getXPosition() + object.getXDimension()) > getCabinWidth()) {
+				return true;
+			}
+		}
+		for (TravelClass tc : getClasses()) {
+			for (PhysicalObject object : ModelHelper.getChildrenByClass(tc,
+					Seat.class)) {
+				if ((object.getXPosition() + object.getXDimension()) > getCabinWidth()) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<TravelClass> getClasses() {
@@ -671,8 +725,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getRowNonexistent() {
@@ -680,8 +733,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setRowNonexistent(int newRowNonexistent) {
@@ -692,8 +744,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getAisleWidth() {
@@ -701,8 +752,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setAisleWidth(int newAisleWidth) {
@@ -713,12 +763,12 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case CabinPackage.CABIN__CLASSES:
 				return ((InternalEList<?>)getClasses()).basicRemove(otherEnd, msgs);
@@ -741,8 +791,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -793,8 +842,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -874,8 +922,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -946,8 +993,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -998,8 +1044,23 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments)
+			throws InvocationTargetException {
+		switch (operationID) {
+			case CabinPackage.CABIN___CABIN_TOO_SHORT__DIAGNOSTICCHAIN_MAP:
+				return cabinTooShort((DiagnosticChain)arguments.get(0), (Map<?, ?>)arguments.get(1));
+			case CabinPackage.CABIN___CABIN_TOO_NARROW__DIAGNOSTICCHAIN_MAP:
+				return cabinTooNarrow((DiagnosticChain)arguments.get(0), (Map<?, ?>)arguments.get(1));
+		}
+		return super.eInvoke(operationID, arguments);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -1035,4 +1096,4 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		return result.toString();
 	}
 
-} //CabinImpl
+} // CabinImpl

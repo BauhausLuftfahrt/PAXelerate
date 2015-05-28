@@ -30,11 +30,15 @@ import net.bhl.cdt.model.cabin.StairwayDirection;
 import net.bhl.cdt.model.cabin.StandardDoor;
 import net.bhl.cdt.model.cabin.Stowage;
 import net.bhl.cdt.model.cabin.TravelClass;
+import net.bhl.cdt.model.cabin.util.CabinValidator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EGenericType;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -273,6 +277,15 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		// Initialize created meta-data
 		theCabinPackage.initializePackageContents();
 
+		// Register package validator
+		EValidator.Registry.INSTANCE.put
+			(theCabinPackage, 
+			 new EValidator.Descriptor() {
+				 public EValidator getEValidator() {
+					 return CabinValidator.INSTANCE;
+				 }
+			 });
+
 		// Mark meta-data to indicate it can't be changed
 		theCabinPackage.freeze();
 
@@ -449,6 +462,24 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getCabin__CabinTooShort__DiagnosticChain_Map() {
+		return cabinEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getCabin__CabinTooNarrow__DiagnosticChain_Map() {
+		return cabinEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getCabin_Classes() {
 		return (EReference)cabinEClass.getEStructuralFeatures().get(6);
 	}
@@ -595,6 +626,15 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EAttribute getTravelClass_RowStructure() {
 		return (EAttribute)travelClassEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getTravelClass__TooManyPassengers__DiagnosticChain_Map() {
+		return travelClassEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -1384,6 +1424,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEAttribute(cabinEClass, CABIN__USE_PRESET_SETTINGS);
 		createEAttribute(cabinEClass, CABIN__SPEED_FACTOR);
 		createEAttribute(cabinEClass, CABIN__ESTIMATED_SIMULATION_TIME);
+		createEOperation(cabinEClass, CABIN___CABIN_TOO_SHORT__DIAGNOSTICCHAIN_MAP);
+		createEOperation(cabinEClass, CABIN___CABIN_TOO_NARROW__DIAGNOSTICCHAIN_MAP);
 
 		rowEClass = createEClass(ROW);
 		createEReference(rowEClass, ROW__SEATS);
@@ -1400,6 +1442,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEAttribute(travelClassEClass, TRAVEL_CLASS__SEAT_WIDTH);
 		createEAttribute(travelClassEClass, TRAVEL_CLASS__NAME);
 		createEAttribute(travelClassEClass, TRAVEL_CLASS__ROW_STRUCTURE);
+		createEOperation(travelClassEClass, TRAVEL_CLASS___TOO_MANY_PASSENGERS__DIAGNOSTICCHAIN_MAP);
 
 		businessClassEClass = createEClass(BUSINESS_CLASS);
 
@@ -1573,6 +1616,24 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEAttribute(getCabin_SpeedFactor(), ecorePackage.getEInt(), "speedFactor", "1", 0, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCabin_EstimatedSimulationTime(), ecorePackage.getEDouble(), "EstimatedSimulationTime", null, 0, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		EOperation op = initEOperation(getCabin__CabinTooShort__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "cabinTooShort", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "chain", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EGenericType g1 = createEGenericType(ecorePackage.getEMap());
+		EGenericType g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getCabin__CabinTooNarrow__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "cabinTooNarrow", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "chain", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(rowEClass, Row.class, "Row", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRow_Seats(), this.getSeat(), null, "seats", null, 1, -1, Row.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRow_RowNumber(), ecorePackage.getEInt(), "rowNumber", null, 0, 1, Row.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1588,6 +1649,15 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEAttribute(getTravelClass_SeatWidth(), ecorePackage.getEInt(), "seatWidth", "0", 0, 1, TravelClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTravelClass_Name(), ecorePackage.getEString(), "name", "Placeholder String", 0, 1, TravelClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTravelClass_RowStructure(), ecorePackage.getEString(), "rowStructure", "3-3", 0, 1, TravelClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getTravelClass__TooManyPassengers__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "tooManyPassengers", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "chain", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(businessClassEClass, BusinessClass.class, "BusinessClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
