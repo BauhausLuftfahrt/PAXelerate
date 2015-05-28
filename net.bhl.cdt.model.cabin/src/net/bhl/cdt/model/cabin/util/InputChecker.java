@@ -17,10 +17,30 @@ public class InputChecker {
 
 	private static final boolean DEVELOPER_MODE = false;
 
+	public static boolean noIssuesDetected(String structure) {
+		if (structure.contains(" ")) {
+			return false;
+		}
+		if (!FuncLib.isNumeric(structure.replace("-", ""))) {
+			return false;
+		}
+		if (StringUtils.countMatches(structure, "-") == 0) {
+			return false;
+		}
+		if (FuncLib.checkForDoubleCharacter(structure)) {
+			return false;
+		}
+		if (structure.endsWith("-")) {
+			return false;
+		}
+		return true;
+	}
 
 	/**
 	 * This method removes all non-integer values from a string.
-	 * @param str is the string to be cleaned
+	 * 
+	 * @param str
+	 *            is the string to be cleaned
 	 * @return the cleaned string
 	 */
 	public static String removeNonInteger(String str) {

@@ -48,12 +48,20 @@ public class CabinValidator extends EObjectValidator {
 	public static final int TRAVEL_CLASS__TOO_MANY_PASSENGERS = 1;
 
 	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Wrong Row Structure' of 'Travel Class'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int TRAVEL_CLASS__WRONG_ROW_STRUCTURE = 2;
+
+	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Out Of Bounds' of 'Physical Object'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PHYSICAL_OBJECT__OUT_OF_BOUNDS = 2;
+	public static final int PHYSICAL_OBJECT__OUT_OF_BOUNDS = 3;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants.
@@ -61,7 +69,7 @@ public class CabinValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 2;
+	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 3;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants in a derived class.
@@ -190,6 +198,7 @@ public class CabinValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(travelClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(travelClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validateTravelClass_tooManyPassengers(travelClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTravelClass_wrongRowStructure(travelClass, diagnostics, context);
 		return result;
 	}
 
@@ -201,6 +210,16 @@ public class CabinValidator extends EObjectValidator {
 	 */
 	public boolean validateTravelClass_tooManyPassengers(TravelClass travelClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return travelClass.tooManyPassengers(diagnostics, context);
+	}
+
+	/**
+	 * Validates the wrongRowStructure constraint of '<em>Travel Class</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTravelClass_wrongRowStructure(TravelClass travelClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return travelClass.wrongRowStructure(diagnostics, context);
 	}
 
 	/**
@@ -219,6 +238,7 @@ public class CabinValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(businessClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(businessClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validateTravelClass_tooManyPassengers(businessClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTravelClass_wrongRowStructure(businessClass, diagnostics, context);
 		return result;
 	}
 
@@ -238,6 +258,7 @@ public class CabinValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(firstClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(firstClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validateTravelClass_tooManyPassengers(firstClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTravelClass_wrongRowStructure(firstClass, diagnostics, context);
 		return result;
 	}
 
@@ -257,6 +278,7 @@ public class CabinValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(economyClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(economyClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validateTravelClass_tooManyPassengers(economyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTravelClass_wrongRowStructure(economyClass, diagnostics, context);
 		return result;
 	}
 
@@ -276,6 +298,7 @@ public class CabinValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(premiumEconomyClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(premiumEconomyClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validateTravelClass_tooManyPassengers(premiumEconomyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTravelClass_wrongRowStructure(premiumEconomyClass, diagnostics, context);
 		return result;
 	}
 

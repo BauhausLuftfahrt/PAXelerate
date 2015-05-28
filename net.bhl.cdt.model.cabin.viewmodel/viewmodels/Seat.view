@@ -51,12 +51,12 @@
     </children>
     <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout">
       <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" name="Properties">
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control xDimension">
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control xDimension" readonly="true">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//PhysicalObject/xDimension"/>
           </domainModelReference>
         </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control yDimension">
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control yDimension" readonly="true">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//PhysicalObject/yDimension"/>
           </domainModelReference>

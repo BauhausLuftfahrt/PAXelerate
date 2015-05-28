@@ -134,6 +134,10 @@ public class CabinViewPart extends ViewPart implements Runnable {
 		}
 	}
 
+	public Cabin getCabin() {
+		return cabin;
+	}
+
 	/**
 	 * This method creates the background image.
 	 * 
@@ -357,10 +361,10 @@ public class CabinViewPart extends ViewPart implements Runnable {
 		canvas.setBounds(0, 0, 1000, 1000);
 
 		doTheDraw();
-		
-	//	JButton button = new JButton();
-		//canvas.add(button);
-		
+
+		// JButton button = new JButton();
+		// canvas.add(button);
+
 	}
 
 	private Image switchAircraftImage() {

@@ -272,4 +272,12 @@ public interface TravelClass extends EObject {
 	 */
 	boolean tooManyPassengers(DiagnosticChain chain, Map<?, ?> context);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean wrongRowStructure(DiagnosticChain chain, Map<?, ?> context);
+
 } // TravelClass

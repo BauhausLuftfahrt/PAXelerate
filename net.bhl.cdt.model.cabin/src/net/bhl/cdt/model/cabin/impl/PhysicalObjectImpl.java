@@ -6,11 +6,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
 import net.bhl.cdt.model.cabin.Cabin;
-import net.bhl.cdt.model.cabin.CabinFactory;
 import net.bhl.cdt.model.cabin.CabinPackage;
 import net.bhl.cdt.model.cabin.PhysicalObject;
+import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.util.CabinValidator;
-import net.bhl.cdt.model.util.ModelHelper;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -20,8 +19,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.ecore.util.EObjectValidator;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -335,9 +334,26 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements
 		// message
 		// Ensure that you remove @generated or mark it @generated NOT
 
+		int width = 10000;
+		int length = 50000;
+
+		try {
+			IWorkbenchPage page = PlatformUI.getWorkbench()
+					.getActiveWorkbenchWindow().getActivePage();
+			CabinViewPart cabinViewPart = (CabinViewPart) page
+					.findView("net.bhl.cdt.model.cabin.cabinview");
+
+			width = cabinViewPart.getCabin().getCabinWidth();
+			length = cabinViewPart.getCabin().getCabinLength();
+		} catch (NullPointerException e) {
+			// BLA BLA
+		}
+
 		boolean xError = false;
 		boolean yError = false;
-		if ((getXPosition() < 0) || (364 < (getXPosition() + getXDimension()))) {
+
+		if ((getXPosition() < 0)
+				|| (width < (getXPosition() + getXDimension()))) {
 			if (chain != null) {
 				chain.add(new BasicDiagnostic(Diagnostic.ERROR,
 						CabinValidator.DIAGNOSTIC_SOURCE,
@@ -351,7 +367,8 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements
 			}
 		}
 
-		if ((getYPosition() < 0) || (2412 < (getYPosition() + getYDimension()))) {
+		if ((getYPosition() < 0)
+				|| (length < (getYPosition() + getYDimension()))) {
 			if (chain != null) {
 				chain.add(new BasicDiagnostic(Diagnostic.ERROR,
 						CabinValidator.DIAGNOSTIC_SOURCE,

@@ -624,6 +624,15 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getTravelClass__WrongRowStructure__DiagnosticChain_Map() {
+		return travelClassEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getBusinessClass() {
 		return businessClassEClass;
 	}
@@ -1432,6 +1441,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEAttribute(travelClassEClass, TRAVEL_CLASS__NAME);
 		createEAttribute(travelClassEClass, TRAVEL_CLASS__ROW_STRUCTURE);
 		createEOperation(travelClassEClass, TRAVEL_CLASS___TOO_MANY_PASSENGERS__DIAGNOSTICCHAIN_MAP);
+		createEOperation(travelClassEClass, TRAVEL_CLASS___WRONG_ROW_STRUCTURE__DIAGNOSTICCHAIN_MAP);
 
 		businessClassEClass = createEClass(BUSINESS_CLASS);
 
@@ -1626,6 +1636,15 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		addEParameter(op, ecorePackage.getEDiagnosticChain(), "chain", 0, 1, IS_UNIQUE, IS_ORDERED);
 		EGenericType g1 = createEGenericType(ecorePackage.getEMap());
 		EGenericType g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getTravelClass__WrongRowStructure__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "wrongRowStructure", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "chain", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?eclipse version="3.4"?><plugin>
    <extension point="org.eclipse.emf.ecp.view.model.provider.xmi.file">
+<file filePath="viewmodels/Row.view"/>
+
+<file filePath="viewmodels/TravelClass.view"/>
+
 <file filePath="viewmodels/StandardDoor.view"/>
 
 <file filePath="viewmodels/EmergencyExit.view"/>
