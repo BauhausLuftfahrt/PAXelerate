@@ -64,6 +64,7 @@ public class Node implements Comparable<Node> {
 		this.distanceFromStart = Integer.MAX_VALUE;
 		this.costFromStart = Integer.MAX_VALUE;
 		property = Property.DEFAULT;
+		linkedAgentID = 0;
 	}
 
 	/**

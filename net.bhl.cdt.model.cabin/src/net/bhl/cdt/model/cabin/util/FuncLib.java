@@ -123,9 +123,11 @@ public abstract class FuncLib {
 
 	public static boolean PassengerAlreadyInList(Passenger pax,
 			ArrayList<Passenger> list) {
-		for (Passenger pass : list) {
-			if (pass.getId() == pax.getId()) {
-				return true;
+		if (list != null) {
+			for (Passenger pass : list) {
+				if (pass.getId() == pax.getId()) {
+					return true;
+				}
 			}
 		}
 		return false;

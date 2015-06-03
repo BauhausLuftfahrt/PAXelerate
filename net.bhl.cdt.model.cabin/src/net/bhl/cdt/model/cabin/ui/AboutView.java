@@ -3,6 +3,7 @@ package net.bhl.cdt.model.cabin.ui;
 import javax.swing.*;
 
 import net.bhl.cdt.model.astar.AreaMap;
+import net.bhl.cdt.model.astar.Node.Property;
 import net.bhl.cdt.model.astar.SimulationHandler;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.util.FuncLib;
@@ -136,5 +137,28 @@ public class AboutView extends JPanel {
 						+ " / "
 						+ SimulationHandler.getCabin().getPassengers().size(),
 				10, 60);
+		Point mousePos = getMousePosition();
+
+		if (mousePos != null) {
+			int id = 0;
+			int a = 0;
+			int b = 0;
+			try {
+				a = (int) (mousePos.x / FONT_SIZE);
+				b = (int) (mousePos.y / FONT_SIZE);
+				if (areamap.getNodeByCoordinate(b, a).getProperty() == Property.AGENT) {
+					id = areamap.getNodeByCoordinate(b, a).getLinkedAgentID();
+				}
+			} catch (NullPointerException e) {
+
+			}
+			if (areamap.getNodeByCoordinate(b, a).getProperty() == Property.AGENT) {
+				g.setColor(Color.LIGHT_GRAY);
+				g.fillRect(mousePos.x + 10, mousePos.y + 10, 200, 30);
+				g.setColor(Color.BLACK);
+				g.drawString("Passenger: " + id + ", x: " + b + ", y: " + a,
+						mousePos.x + 20, mousePos.y + 20);
+			}
+		}
 	}
 }

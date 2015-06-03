@@ -40,7 +40,7 @@ public class Agent extends Subject implements Runnable {
 	private Path path;
 	private boolean initialized = false;
 
-	private final static int PIXELS_FOR_LUGGAGE = 10;
+	private final static int PIXELS_FOR_LUGGAGE = 8;
 	private final static int PIXELS_FOR_WAY = 7;
 
 	private Vector start;
@@ -208,7 +208,7 @@ public class Agent extends Subject implements Runnable {
 				&& occupy) {
 
 			/* Print out if there is an overlap */
-			System.out.println("Node already blocked. Error!");
+			// System.out.println("Node already blocked. Error!");
 		}
 
 		/*
