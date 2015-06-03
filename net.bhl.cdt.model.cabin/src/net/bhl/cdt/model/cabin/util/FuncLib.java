@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import net.bhl.cdt.model.astar.SimulationHandler;
+import net.bhl.cdt.model.cabin.Passenger;
 
 /**
  * This class is used for general calculations and methods.
@@ -68,7 +69,8 @@ public abstract class FuncLib {
 	 * Returns the transformed time in milliseconds!
 	 */
 	public static long transformTime(double time) {
-		return (long) (time * 1000.0 / SimulationHandler.getCabin().getSpeedFactor());
+		return (long) (time * 1000.0 / SimulationHandler.getCabin()
+				.getSpeedFactor());
 	}
 
 	public static int GetScreenWorkingWidth() {
@@ -117,6 +119,26 @@ public abstract class FuncLib {
 			return num - temp;
 		else
 			return num + 5 - temp;
+	}
+
+	public static boolean PassengerAlreadyInList(Passenger pax,
+			ArrayList<Passenger> list) {
+		for (Passenger pass : list) {
+			if (pass.getId() == pax.getId()) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public static boolean PassengerIdAlreadyInList(int id,
+			ArrayList<Integer> list) {
+		for (int value : list) {
+			if (value == id) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**

@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import net.bhl.cdt.model.astar.AreaMap;
 import net.bhl.cdt.model.astar.SimulationHandler;
+import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.StopWatch;
 import net.bhl.cdt.model.cabin.util.Vector2D;
@@ -12,6 +13,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -23,14 +25,16 @@ public class AboutView extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private static final int BOX_WIDTH = 1000;
-	private static final int BOX_HEIGHT = 275;
-	private int FONT_SIZE = 8;
+	private static final int BOX_HEIGHT = 360;
+	private int FONT_SIZE = 10;
 	private AreaMap areamap;
 	private final Button leftButton;
 	private final Button rightButton;
 	private int pointZero = 0;
 	private static final int STEP_SIZE = 2;
 	private static StopWatch watch;
+
+	private static double cabinWidth;
 
 	/**
 	 * 
@@ -40,6 +44,10 @@ public class AboutView extends JPanel {
 	 */
 	public AboutView() {
 		this.setPreferredSize(new Dimension(BOX_WIDTH, BOX_HEIGHT));
+
+		cabinWidth = SimulationHandler.getCabin().getCabinWidth()
+				/ (double) SimulationHandler.getCabin().getScale();
+
 		Thread gameThread = new Thread() {
 
 			public void run() {
@@ -92,14 +100,27 @@ public class AboutView extends JPanel {
 	@Override
 	public void paintComponent(Graphics g) {
 
+		FONT_SIZE = (int) (getSize().height / cabinWidth);
+
 		super.paintComponent(g); // Paint background
 		g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE));
 		for (int x = pointZero; x < areamap.getDimensions().getY(); x++) {
 			for (int y = 0; y < areamap.getDimensions().getX(); y++) {
 				g.setColor(Color.LIGHT_GRAY);
-				g.drawString(areamap.getNodeByCoordinate(y, x)
-						.getTypeForPrinting(), (x - pointZero) * FONT_SIZE, y
-						* FONT_SIZE);
+				if (areamap.getNodeByCoordinate(y, x).getTypeForPrinting() == "O") {
+					g.setColor(Color.DARK_GRAY);
+					g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE - 1));
+					g.drawString(""
+							+ areamap.getNodeByCoordinate(y, x)
+									.getLinkedAgentID(), (x - pointZero)
+							* FONT_SIZE, y * FONT_SIZE);
+				} else {
+					g.setColor(Color.LIGHT_GRAY);
+					g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE));
+					g.drawString(areamap.getNodeByCoordinate(y, x)
+							.getTypeForPrinting(), (x - pointZero) * FONT_SIZE,
+							y * FONT_SIZE);
+				}
 			}
 		}
 		g.setColor(Color.BLACK);
@@ -110,6 +131,8 @@ public class AboutView extends JPanel {
 		g.drawString(
 				"Passengers: "
 						+ SimulationHandler.getNumberOfSeatedPassengers()
+						+ " / "
+						+ SimulationHandler.getNumberOfPassengersInCabin()
 						+ " / "
 						+ SimulationHandler.getCabin().getPassengers().size(),
 				10, 60);

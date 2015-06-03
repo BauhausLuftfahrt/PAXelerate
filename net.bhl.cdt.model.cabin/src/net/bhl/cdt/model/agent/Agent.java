@@ -300,7 +300,10 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	private boolean rotationAllowed() {
-		return false;
+		if (currentPosition.getX() < 5) {
+			return false;
+		}
+		return true;
 	}
 
 	/**
@@ -767,6 +770,9 @@ public class Agent extends Subject implements Runnable {
 		occupyNodeArea(currentPosition, false, false, null);
 		occupyNodeArea(desiredPosition, false, false, null);
 
+		SimulationHandler.getMap().getNode(getGoal())
+				.setProperty(Property.DEFAULT, getPassenger().getId());
+
 	}
 
 	/**
@@ -812,7 +818,15 @@ public class Agent extends Subject implements Runnable {
 			/* start counting the elapsed time for boarding */
 			stopwatch.start();
 
-			/* run path following as long as the goal is not reached yet */
+			/*
+			 * tell the handler that the passengers now enters the cabin
+			 */
+
+			SimulationHandler.setPassengerActive(this.passenger);
+
+			/*
+			 * run path following as long as the goal is not reached yet
+			 */
 			while (!goalReached()) {
 
 				/* this is run again if the agent detects obstacles in his path */

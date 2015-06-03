@@ -457,35 +457,28 @@ public class CabinViewPart extends ViewPart implements Runnable {
 		 * dimensions of the first element are used for scaling
 		 **/
 
-		try {
+		if (!ModelHelper.getChildrenByClass(cabin, FirstClass.class).isEmpty()) {
 			firstSeat = resize(firstSeat, (int) (ModelHelper
 					.getChildrenByClass(cabin, FirstClass.class).get(0)
 					.getSeatWidth() / factor), (int) (ModelHelper
 					.getChildrenByClass(cabin, FirstClass.class).get(0)
 					.getSeatLength() / factor));
-		} catch (IndexOutOfBoundsException e) {
-			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-					"Error scaling seat image. No first class found."));
 		}
-		try {
+		if (!ModelHelper.getChildrenByClass(cabin, BusinessClass.class)
+				.isEmpty()) {
 			businessSeat = resize(businessSeat, (int) (ModelHelper
 					.getChildrenByClass(cabin, BusinessClass.class).get(0)
 					.getSeatWidth() / factor), (int) (ModelHelper
 					.getChildrenByClass(cabin, BusinessClass.class).get(0)
 					.getSeatLength() / factor));
-		} catch (IndexOutOfBoundsException e) {
-			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-					"Error scaling seat images. No business class found."));
 		}
-		try {
+		if (!ModelHelper.getChildrenByClass(cabin, EconomyClass.class)
+				.isEmpty()) {
 			economySeat = resize(economySeat, (int) (ModelHelper
 					.getChildrenByClass(cabin, EconomyClass.class).get(0)
 					.getSeatWidth() / factor), (int) (ModelHelper
 					.getChildrenByClass(cabin, EconomyClass.class).get(0)
 					.getSeatLength() / factor));
-		} catch (IndexOutOfBoundsException e) {
-			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-					"Error scaling seat images. No economy class found."));
 		}
 		try {
 			coffeeIcon = resize(coffeeIcon, (int) (ModelHelper

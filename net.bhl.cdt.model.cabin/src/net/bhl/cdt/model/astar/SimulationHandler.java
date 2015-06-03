@@ -19,6 +19,7 @@ import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.AboutView;
+import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Logger;
 import net.bhl.cdt.model.cabin.util.StopWatch;
 import net.bhl.cdt.model.cabin.util.Vector;
@@ -34,6 +35,8 @@ public class SimulationHandler {
 	private static Cabin cabin;
 	private static Boolean simulationDone = false;
 	private static ArrayList<Passenger> finishedList = new ArrayList<Passenger>();
+	private static ArrayList<Passenger> activeList = new ArrayList<Passenger>();
+
 	private Logger console = new Logger();
 	private static AreaMap areamap;
 	private static CostMap costmap;
@@ -164,6 +167,10 @@ public class SimulationHandler {
 		SimulationHandler.agentList = agentList;
 	}
 
+	public static int getNumberOfPassengersInCabin() {
+		return activeList.size();
+	}
+
 	public static boolean CabinAccessGranted(Agent agent) {
 		try {
 			for (Entry<Agent, Integer> entry : grantedAccessList.entrySet()) {
@@ -189,6 +196,13 @@ public class SimulationHandler {
 			}
 		}
 		return null;
+	}
+
+	public static void setPassengerActive(Passenger pax) {
+
+		if (!FuncLib.PassengerAlreadyInList(pax, activeList)) {
+			activeList.add(pax);
+		}
 	}
 
 	public static void sleepAgent(int duration, Passenger passenger) {
