@@ -21,6 +21,7 @@ import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.AboutView;
+import net.bhl.cdt.model.cabin.ui.ProgressHandler;
 import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Logger;
 import net.bhl.cdt.model.cabin.util.StopWatch;
@@ -53,8 +54,10 @@ public class SimulationHandler {
 	public static final boolean SHOW_AREAMAP_ANIMATION = true;
 
 	private static JFrame frame;
+	private static ProgressHandler progress;
+	private int progressValue = 0;
 
-	private static int grantedCounter = 0;
+	// private static int grantedCounter = 0;
 
 	/**
 	 * This method constructs the RunAStar algorithm.
@@ -187,22 +190,23 @@ public class SimulationHandler {
 		if (FuncLib.lowestValueInHashMap(pax, accessPending)) {
 
 			// check if the neccessary time has passed.
-			if (accessPending.get(pax) < anotherStopwatch.getElapsedTime() - 500) {
+			if (Math.abs(accessPending.get(pax)
+					- anotherStopwatch.getElapsedTime()) > 100) {
 
 				// check if doorway is clear.
 				if (!AgentFunctions.doorwayBlocked(pax)) {
 
-					if (Math.abs(latestSpawnTime - System.currentTimeMillis()) > 1000) {
+					if (Math.abs(latestSpawnTime - System.currentTimeMillis()) > 300) {
 
-						FuncLib.printHashMap(accessPending);
+						// FuncLib.printHashMap(accessPending);
 
 						accessPending.remove(pax);
-						grantedCounter++;
+						// grantedCounter++;
 
-						System.out.println("#" + grantedCounter
-								+ " - Access for agent " + pax.getId()
-								+ " was granted at "
-								+ FuncLib.getCurrentTimeStamp() + ".");
+						// System.out.println("#" + grantedCounter+
+						// " - Access for agent " + pax.getId()+
+						// " was granted at "+ FuncLib.getCurrentTimeStamp() +
+						// ".");
 						latestSpawnTime = System.currentTimeMillis();
 						return true;
 					}
@@ -285,15 +289,28 @@ public class SimulationHandler {
 			agentList.add(agent);
 		}
 
-		/* First generate all paths ... */
-		int i = 1;
-		for (Agent agent : agentList) {
-			console.addToLog("path calculation (" + i + "/" + agentList.size()
-					+ ")");
-			agent.findNewPath();
-			i++;
-		}
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				progress = new ProgressHandler(agentList.size());
+				while (progressValue < agentList.size() - 1) {
+					progress.reportProgress(progressValue);
+				}
+				progress.done();
 
+			}
+		});
+
+		/* First generate all paths ... */
+		// int i = 1;
+		for (Agent agent : agentList) {
+			// console.addToLog("path calculation (" + i + "/" +
+			// agentList.size()
+			// + ")");
+			agent.findNewPath();
+			// i++;
+			progressValue++;
+
+		}
 		/* ... then start the simulations simultaneously */
 		for (Agent agent : agentList) {
 			agent.start();
@@ -321,21 +338,21 @@ public class SimulationHandler {
 			}
 		});
 
-		final Thread gameThread = new Thread() {
-
-			public void run() {
-				while (true) {
-					try {
-						// view.setAreamap(RunAStar.getMap());
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-			}
-		};
-		gameThread.start(); // Callback run()
+		// final Thread gameThread = new Thread() {
+		//
+		// public void run() {
+		// while (true) {
+		// try {
+		// // view.setAreamap(RunAStar.getMap());
+		// Thread.sleep(100);
+		// } catch (InterruptedException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		// }
+		// }
+		// };
+		// gameThread.start(); // Callback run()
 
 	}
 

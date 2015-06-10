@@ -128,7 +128,8 @@ public class AboutView extends JPanel {
 		g.setFont(new Font("Courier New", Font.PLAIN, 12));
 		g.drawString("Real Time: " + watch.getElapsedTimeTens(), 10, 20);
 		g.drawString("Sim. Time: " + watch.getElapsedTimeTens()
-				* SimulationHandler.getCabin().getSpeedFactor(), 10, 40);
+				* SimulationHandler.getCabin().getSpeedFactor() + " >> "
+				+ SimulationHandler.getCabin().getSpeedFactor() + "x", 10, 40);
 		g.drawString(
 				"Passengers: "
 						+ SimulationHandler.getNumberOfSeatedPassengers()
@@ -155,18 +156,18 @@ public class AboutView extends JPanel {
 
 			}
 			g.setColor(Color.LIGHT_GRAY);
-			g.fillRect(mousePos.x + 10, mousePos.y + 10, 200, 60);
+			g.fillRect(mousePos.x + 10, mousePos.y + 10, 250, 60);
 			g.setColor(Color.BLACK);
 			if (areamap.getNodeByCoordinate(b, a) != null && pax != null) {
 				if (areamap.getNodeByCoordinate(b, a).getProperty() == Property.AGENT) {
 					g.drawString("Passenger: " + pax.getId() + ", x: " + b
-							+ ", y: " + a, mousePos.x + 20, mousePos.y + 20);
-					g.drawString("Goal: Seat " + pax.getSeatRef().getName(),
-							mousePos.x + 20, mousePos.y + 40);
+							+ ", y: " + a, mousePos.x + 30, mousePos.y + 30);
+					g.drawString("Seat " + pax.getSeatRef().getName(),
+							mousePos.x + 30, mousePos.y + 50);
 				}
 			} else if (prop != null) {
 				g.drawString("Property: " + prop.toString() + ", x: " + b
-						+ ", y: " + a, mousePos.x + 20, mousePos.y + 20);
+						+ ", y: " + a, mousePos.x + 30, mousePos.y + 30);
 			}
 		}
 	}

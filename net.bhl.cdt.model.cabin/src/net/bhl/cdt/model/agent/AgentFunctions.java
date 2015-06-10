@@ -12,6 +12,8 @@ import net.bhl.cdt.model.util.ModelHelper;
 
 public class AgentFunctions {
 
+	public static final int PIXELS_FOR_SCANNING_AT_DOOR = 3;
+
 	public static boolean someoneAlreadyInThisPartOfTheRow(Seat mySeat,
 			Agent agent) {
 		Row row = mySeat.getRow();
@@ -92,9 +94,8 @@ public class AgentFunctions {
 
 	public synchronized static boolean doorwayBlocked(Passenger passenger) {
 		boolean detectedBlocker = false;
-		int scanDoorWayWidth = 10; // in pixels!
 		Door door = passenger.getDoor();
-		for (int i = 0; i <= scanDoorWayWidth; i++) {
+		for (int i = 0; i <= PIXELS_FOR_SCANNING_AT_DOOR; i++) {
 			for (int j = 0; j < (int) (door.getWidth() / SimulationHandler
 					.getCabin().getScale()); j++) {
 				Node node = SimulationHandler.getMap().getNodeByCoordinate(
@@ -111,7 +112,7 @@ public class AgentFunctions {
 		if (detectedBlocker) {
 			return true;
 		} else {
-			System.out.println("Doorway is now clear.");
+			// System.out.println("Doorway is now clear.");
 			return false;
 		}
 	}

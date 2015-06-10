@@ -74,8 +74,12 @@ public abstract class FuncLib {
 	 * Returns the transformed time in milliseconds!
 	 */
 	public static long transformTime(double time) {
-		return (long) (time * 1000.0 / SimulationHandler.getCabin()
-				.getSpeedFactor());
+		double value = time * 1000.0
+				/ SimulationHandler.getCabin().getSpeedFactor();
+		if (value < 1) {
+			value = 1;
+		}
+		return (long) value;
 	}
 
 	public static int GetScreenWorkingWidth() {

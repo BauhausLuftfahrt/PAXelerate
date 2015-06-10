@@ -459,7 +459,8 @@ public class Agent extends Subject implements Runnable {
 		}
 		/* ends the stop watch performance logging */
 		stopwatch.stop();
-		System.out.println(stopwatch.getElapsedTime() + " ms for pathfinding");
+		// System.out.println(stopwatch.getElapsedTime() +
+		// " ms for pathfinding");
 	}
 
 	/**
