@@ -112,9 +112,9 @@ public class AboutView extends JPanel {
 					g.setColor(Color.DARK_GRAY);
 					g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE - 1));
 					g.drawString(""
-							+ areamap.getNodeByCoordinate(y, x)
-									.getLinkedAgentID(), (x - pointZero)
-							* FONT_SIZE, y * FONT_SIZE);
+							+ areamap.getNodeByCoordinate(y, x).getPassenger()
+									.getId(), (x - pointZero) * FONT_SIZE, y
+							* FONT_SIZE);
 				} else {
 					g.setColor(Color.LIGHT_GRAY);
 					g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE));
@@ -140,30 +140,33 @@ public class AboutView extends JPanel {
 		Point mousePos = getMousePosition();
 
 		if (mousePos != null) {
-			int id = 0;
+			Passenger pax = null;
+			Property prop = null;
 			int a = 0;
 			int b = 0;
 			try {
 				a = (int) (mousePos.x / FONT_SIZE);
 				b = (int) (mousePos.y / FONT_SIZE);
+				prop = areamap.getNodeByCoordinate(b, a).getProperty();
 				if (areamap.getNodeByCoordinate(b, a).getProperty() == Property.AGENT) {
-					id = areamap.getNodeByCoordinate(b, a).getLinkedAgentID();
+					pax = areamap.getNodeByCoordinate(b, a).getPassenger();
 				}
 			} catch (NullPointerException e) {
 
 			}
-			if (areamap.getNodeByCoordinate(b, a) != null) {
+			g.setColor(Color.LIGHT_GRAY);
+			g.fillRect(mousePos.x + 10, mousePos.y + 10, 200, 60);
+			g.setColor(Color.BLACK);
+			if (areamap.getNodeByCoordinate(b, a) != null && pax != null) {
 				if (areamap.getNodeByCoordinate(b, a).getProperty() == Property.AGENT) {
-					g.setColor(Color.LIGHT_GRAY);
-					g.fillRect(mousePos.x + 10, mousePos.y + 10, 200, 30);
-					g.setColor(Color.BLACK);
-					g.drawString(
-							"Passenger: " + id + ", x: " + b + ", y: " + a,
-							mousePos.x + 20, mousePos.y + 20);
-					g.drawString(
-							"Passenger: " + id + ", x: " + b + ", y: " + a,
-							mousePos.x + 20, mousePos.y + 20);
+					g.drawString("Passenger: " + pax.getId() + ", x: " + b
+							+ ", y: " + a, mousePos.x + 20, mousePos.y + 20);
+					g.drawString("Goal: Seat " + pax.getSeatRef().getName(),
+							mousePos.x + 20, mousePos.y + 40);
 				}
+			} else if (prop != null) {
+				g.drawString("Property: " + prop.toString() + ", x: " + b
+						+ ", y: " + a, mousePos.x + 20, mousePos.y + 20);
 			}
 		}
 	}

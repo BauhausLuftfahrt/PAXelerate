@@ -15,6 +15,7 @@ import java.util.Map.Entry;
 import javax.swing.JFrame;
 
 import net.bhl.cdt.model.agent.Agent;
+import net.bhl.cdt.model.agent.AgentFunctions;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
@@ -42,15 +43,18 @@ public class SimulationHandler {
 	private static AreaMap areamap;
 	private static CostMap costmap;
 	private static ArrayList<Agent> agentList = new ArrayList<Agent>();
-	private static ArrayList<Integer> grantedAccess = new ArrayList<Integer>();
+	private static HashMap<Passenger, Integer> accessPending = new HashMap<Passenger, Integer>();
 	private static StopWatch anotherStopwatch = new StopWatch();
 	private Vector dimensions;
+	private static long latestSpawnTime = 0;
 
 	public static final boolean DEVELOPER_MODE = false;
 
 	public static final boolean SHOW_AREAMAP_ANIMATION = true;
 
 	private static JFrame frame;
+
+	private static int grantedCounter = 0;
 
 	/**
 	 * This method constructs the RunAStar algorithm.
@@ -172,22 +176,59 @@ public class SimulationHandler {
 		return activeList.size();
 	}
 
-	public synchronized static boolean CabinAccessGranted(Agent agent) {
-		if (!grantedAccess.isEmpty()) {
-			if (grantedAccess.get(grantedAccess.size() - 1) < anotherStopwatch
-					.getElapsedTime() - 2000) {
-				// System.out.println(anotherStopwatch.getElapsedTime() - 2000
-				// + " > " + grantedAccess.get(grantedAccess.size() - 1)
-				// + " ?");
-			} else {
-				return false;
+	public synchronized static boolean CabinAccessGranted(Passenger pax) {
+
+		/* register the passengers who want to enter the cabin */
+		if (!accessPending.containsKey(pax)) {
+			accessPending.put(pax, (int) anotherStopwatch.getElapsedTime());
+		}
+
+		// check if the requesting passenger is the longest waiting passenger.
+		if (FuncLib.lowestValueInHashMap(pax, accessPending)) {
+
+			// check if the neccessary time has passed.
+			if (accessPending.get(pax) < anotherStopwatch.getElapsedTime() - 500) {
+
+				// check if doorway is clear.
+				if (!AgentFunctions.doorwayBlocked(pax)) {
+
+					if (Math.abs(latestSpawnTime - System.currentTimeMillis()) > 1000) {
+
+						FuncLib.printHashMap(accessPending);
+
+						accessPending.remove(pax);
+						grantedCounter++;
+
+						System.out.println("#" + grantedCounter
+								+ " - Access for agent " + pax.getId()
+								+ " was granted at "
+								+ FuncLib.getCurrentTimeStamp() + ".");
+						latestSpawnTime = System.currentTimeMillis();
+						return true;
+					}
+				}
 			}
 		}
-		grantedAccess.add((int) anotherStopwatch.getElapsedTime());
-		// FuncLib.printIntegerListToLog(grantedAccess);
-		System.out.println("Access for agent " + agent.getPassenger().getId()
-				+ " was granted at " + FuncLib.getCurrentTimeStamp() + ".");
-		return true;
+		return false;
+
+		// if (!grantedAccess.isEmpty()) {
+		// if (grantedAccess.get(grantedAccess.size() - 1) < anotherStopwatch
+		// .getElapsedTime() - 2000) {
+		// } else {
+		// return false;
+		// }
+		// }
+		//
+		// grantedCounter++;
+		// // FuncLib.printIntegerListToLog(grantedAccess);
+		// System.out.println("#" + grantedCounter + " - Access for agent "
+		// + pax.getId() + " was granted at "
+		// + FuncLib.getCurrentTimeStamp() + ".");
+		// if (AgentFunctions.doorwayBlocked(pax)) {
+		// return false;
+		// } else {
+		// return true;
+		// }
 	}
 
 	private static Agent getAgentByPassengerID(int id) {

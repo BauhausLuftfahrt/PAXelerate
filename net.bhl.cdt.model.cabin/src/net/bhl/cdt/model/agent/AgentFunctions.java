@@ -91,8 +91,10 @@ public class AgentFunctions {
 	}
 
 	public synchronized static boolean doorwayBlocked(Passenger passenger) {
+		boolean detectedBlocker = false;
+		int scanDoorWayWidth = 10; // in pixels!
 		Door door = passenger.getDoor();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i <= scanDoorWayWidth; i++) {
 			for (int j = 0; j < (int) (door.getWidth() / SimulationHandler
 					.getCabin().getScale()); j++) {
 				Node node = SimulationHandler.getMap().getNodeByCoordinate(
@@ -100,14 +102,17 @@ public class AgentFunctions {
 						(int) (door.getYPosition() / SimulationHandler
 								.getCabin().getScale()) + j);
 				if (node.getProperty() == Property.AGENT) {
-					if (node.getLinkedAgentID() != passenger.getId()) {
-						return true;
+					if (node.getPassenger().getId() != passenger.getId()) {
+						detectedBlocker = true;
 					}
 				}
 			}
 		}
-		System.out.println("Doorway clear!");
-		return false;
+		if (detectedBlocker) {
+			return true;
+		} else {
+			System.out.println("Doorway is now clear.");
+			return false;
+		}
 	}
-
 }

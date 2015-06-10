@@ -31,7 +31,6 @@ public class AreaMap {
 
 	private ObstacleMap obstacleMap;
 	private Logger log = new Logger();
-	public static final int UNDEFINED = -1;
 
 	/**
 	 * This is the area map constructor.
@@ -91,7 +90,7 @@ public class AreaMap {
 
 				if (obstacleMap.getValueAtPoint(x, y) == ObstacleMap
 						.getObstacleValue()) {
-					node.setProperty(Property.OBSTACLE, UNDEFINED);
+					node.setProperty(Property.OBSTACLE, null);
 				} else {
 					node.setCost(obstacleMap.getValueAtPoint(x, y));
 				}
@@ -192,7 +191,8 @@ public class AreaMap {
 		for (Node node : nodeList) {
 
 			if (node.getProperty().equals(property)
-					&& node.getLinkedAgentID() == agent.getPassenger().getId()) {
+					&& node.getPassenger().getId() == agent.getPassenger()
+							.getId()) {
 				return node;
 			}
 		}

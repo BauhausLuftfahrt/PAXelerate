@@ -8,6 +8,8 @@ package net.bhl.cdt.model.astar;
 import java.util.ArrayList;
 
 import net.bhl.cdt.model.agent.Agent;
+import net.bhl.cdt.model.cabin.CabinFactory;
+import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.cabin.util.Vector2D;
 
@@ -35,7 +37,7 @@ public class Node implements Comparable<Node> {
 	private int cost;
 	private Property property;
 
-	private int linkedAgentID;
+	private Passenger linkedPassenger;
 
 	private ArrayList<NodeProperty> startList = new ArrayList<NodeProperty>();
 
@@ -64,7 +66,8 @@ public class Node implements Comparable<Node> {
 		this.distanceFromStart = Integer.MAX_VALUE;
 		this.costFromStart = Integer.MAX_VALUE;
 		property = Property.DEFAULT;
-		linkedAgentID = 0;
+		linkedPassenger = CabinFactory.eINSTANCE.createPassenger();
+		linkedPassenger.setId(Integer.MAX_VALUE);
 	}
 
 	/**
@@ -80,13 +83,13 @@ public class Node implements Comparable<Node> {
 		return property;
 	}
 
-	public int getLinkedAgentID() {
-		return linkedAgentID;
+	public Passenger getPassenger() {
+		return linkedPassenger;
 	}
 
-	public synchronized void setProperty(Property property, int agentID) {
+	public synchronized void setProperty(Property property, Passenger agentID) {
 		this.property = property;
-		this.linkedAgentID = agentID;
+		this.linkedPassenger = agentID;
 	}
 
 	public synchronized void removeItemById(int id) {

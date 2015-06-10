@@ -20,12 +20,16 @@ public class AgentMover {
 			Property property, Passenger passenger) {
 
 		/* check if the desired node is out of bounds */
-		if (SimulationHandler.getMap().getNodeByCoordinate(vector.getX(), vector.getY()) != null) {
+		if (SimulationHandler.getMap().getNodeByCoordinate(vector.getX(),
+				vector.getY()) != null
+				&& SimulationHandler.getMap()
+						.getNodeByCoordinate(vector.getX(), vector.getY())
+						.getPassenger() != null) {
 
 			/* check if the agent itself blocked the node */
 			if (SimulationHandler.getMap()
 					.getNodeByCoordinate(vector.getX(), vector.getY())
-					.getLinkedAgentID() == passenger.getId()
+					.getPassenger().getId() == passenger.getId()
 					|| SimulationHandler.getMap()
 							.getNodeByCoordinate(vector.getX(), vector.getY())
 							.getProperty() != Property.AGENT) {
@@ -41,7 +45,7 @@ public class AgentMover {
 					 */
 					SimulationHandler.getMap()
 							.getNodeByCoordinate(vector.getX(), vector.getY())
-							.setProperty(property, passenger.getId());
+							.setProperty(property, passenger);
 				}
 			}
 		}

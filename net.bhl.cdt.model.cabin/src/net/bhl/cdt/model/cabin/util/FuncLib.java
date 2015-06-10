@@ -11,6 +11,9 @@ import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Random;
 
 import net.bhl.cdt.model.astar.SimulationHandler;
@@ -128,6 +131,34 @@ public abstract class FuncLib {
 			return num - temp;
 		else
 			return num + 5 - temp;
+	}
+
+	public static boolean lowestValueInHashMap(Passenger pax,
+			HashMap<Passenger, Integer> hashmap) {
+		int lowestValue = Integer.MAX_VALUE;
+		Passenger lowestPax = null;
+		for (Entry<Passenger, Integer> entry : hashmap.entrySet()) {
+			if (lowestValue > entry.getValue()) {
+				lowestValue = entry.getValue();
+				lowestPax = entry.getKey();
+			}
+		}
+
+		if (pax.getId() == lowestPax.getId()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public static void printHashMap(HashMap<Passenger, Integer> accessPending) {
+		int i = 1;
+		for (Entry<Passenger, Integer> entry : accessPending.entrySet()) {
+			System.out.println("#" + i + " Pax: " + entry.getKey().getId()
+					+ " Time: " + entry.getValue());
+			i++;
+		}
+		System.out.println();
 	}
 
 	public synchronized static boolean PassengerAlreadyInList(Passenger pax,

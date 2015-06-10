@@ -53,9 +53,9 @@ public class AStar {
 
 		/* mark start and goal node */
 		map.getNode(agent.getGoal()).setProperty(Property.GOAL,
-				agent.getPassenger().getId());
+				agent.getPassenger());
 		map.getNode(agent.getStart()).setProperty(Property.START,
-				agent.getPassenger().getId());
+				agent.getPassenger());
 
 		/* reset the properties of the start node */
 		map.getNode(agent.getStart()).setDistanceFromStart(0);

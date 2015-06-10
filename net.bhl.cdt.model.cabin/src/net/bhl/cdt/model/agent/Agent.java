@@ -300,9 +300,9 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	private boolean rotationAllowed() {
-		if (currentPosition.getX() < 5) {
-			return false;
-		}
+		// if (currentPosition.getX() < 5) {
+		// return false;
+		// }
 		return true;
 	}
 
@@ -499,13 +499,13 @@ public class Agent extends Subject implements Runnable {
 					if (checkNode.getProperty() == Property.AGENT) {
 
 						/* check if its was not this agent who blocked it */
-						if (checkNode.getLinkedAgentID() != this.passenger
+						if (checkNode.getPassenger().getId() != this.passenger
 								.getId()) {
 
 							for (Agent agent : SimulationHandler.getAgentList()) {
 
 								if (agent.getPassenger().getId() == checkNode
-										.getLinkedAgentID()) {
+										.getPassenger().getId()) {
 									this.blockingAgent = agent;
 								}
 							}
@@ -771,7 +771,7 @@ public class Agent extends Subject implements Runnable {
 		occupyNodeArea(desiredPosition, false, false, null);
 
 		SimulationHandler.getMap().getNode(getGoal())
-				.setProperty(Property.DEFAULT, getPassenger().getId());
+				.setProperty(Property.DEFAULT, getPassenger());
 
 	}
 
@@ -805,14 +805,10 @@ public class Agent extends Subject implements Runnable {
 				 * then try to spawn the passenger but check if there is enough
 				 * space in front of the cabin door
 				 */
-				while (AgentFunctions.doorwayBlocked(passenger)) {
-					Thread.sleep(100);
-				}
 
-				while (!SimulationHandler.CabinAccessGranted(this)) {
-					Thread.sleep(100);
+				while (SimulationHandler.CabinAccessGranted(passenger) == false) {
+					Thread.sleep(10);
 				}
-
 			}
 
 			/* start counting the elapsed time for boarding */
