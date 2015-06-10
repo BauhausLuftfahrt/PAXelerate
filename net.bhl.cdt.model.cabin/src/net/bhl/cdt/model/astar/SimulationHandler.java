@@ -7,6 +7,7 @@ package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -41,7 +42,7 @@ public class SimulationHandler {
 	private static AreaMap areamap;
 	private static CostMap costmap;
 	private static ArrayList<Agent> agentList = new ArrayList<Agent>();
-	private static Map<Agent, Integer> grantedAccessList = new HashMap<Agent, Integer>();
+	private static ArrayList<Integer> grantedAccess = new ArrayList<Integer>();
 	private static StopWatch anotherStopwatch = new StopWatch();
 	private Vector dimensions;
 
@@ -171,22 +172,22 @@ public class SimulationHandler {
 		return activeList.size();
 	}
 
-	public static boolean CabinAccessGranted(Agent agent) {
-		try {
-			for (Entry<Agent, Integer> entry : grantedAccessList.entrySet()) {
-				int timeKey = entry.getValue();
-				if (Math.abs(timeKey
-						- (int) anotherStopwatch.getElapsedTimeSecs()) < 2) {
-					return false;
-				}
+	public synchronized static boolean CabinAccessGranted(Agent agent) {
+		if (!grantedAccess.isEmpty()) {
+			if (grantedAccess.get(grantedAccess.size() - 1) < anotherStopwatch
+					.getElapsedTime() - 2000) {
+				// System.out.println(anotherStopwatch.getElapsedTime() - 2000
+				// + " > " + grantedAccess.get(grantedAccess.size() - 1)
+				// + " ?");
+			} else {
+				return false;
 			}
-			grantedAccessList.put(agent,
-					(int) anotherStopwatch.getElapsedTimeSecs());
-			// System.out.println("Agent added to access list.");
-			return true;
-		} catch (ConcurrentModificationException ce) {
-			return false;
 		}
+		grantedAccess.add((int) anotherStopwatch.getElapsedTime());
+		// FuncLib.printIntegerListToLog(grantedAccess);
+		System.out.println("Access for agent " + agent.getPassenger().getId()
+				+ " was granted at " + FuncLib.getCurrentTimeStamp() + ".");
+		return true;
 	}
 
 	private static Agent getAgentByPassengerID(int id) {
@@ -198,7 +199,7 @@ public class SimulationHandler {
 		return null;
 	}
 
-	public static void setPassengerActive(Passenger pax) {
+	public synchronized static void setPassengerActive(Passenger pax) {
 
 		if (!FuncLib.PassengerAlreadyInList(pax, activeList)) {
 			activeList.add(pax);

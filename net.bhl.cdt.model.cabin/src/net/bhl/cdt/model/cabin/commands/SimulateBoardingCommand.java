@@ -126,9 +126,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 						if (pax.isIsSeated()
 								&& !alreadySeatedList.contains(pax)) {
 
-							logger.log(new Status(IStatus.INFO,
-									"net.bhl.cdt.model.cabin", "Passenger "
-											+ pax.getName() + " is now seated!"));
+							// logger.log(new Status(IStatus.INFO,
+							// "net.bhl.cdt.model.cabin", "Passenger "
+							// + pax.getName() + " is now seated!"));
 							alreadySeatedList.add(pax);
 							try {
 								infoViewPart.update(cabin);

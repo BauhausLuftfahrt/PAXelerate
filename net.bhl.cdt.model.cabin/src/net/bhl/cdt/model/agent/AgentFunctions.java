@@ -89,13 +89,16 @@ public class AgentFunctions {
 		}
 		return angle;
 	}
-	
-	public static boolean doorwayBlocked(Passenger passenger) {
+
+	public synchronized static boolean doorwayBlocked(Passenger passenger) {
 		Door door = passenger.getDoor();
 		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < (int) (door.getWidth() / SimulationHandler.getCabin().getScale()); j++) {
-				Node node = SimulationHandler.getMap().getNodeByCoordinate(i,
-						(int) (door.getYPosition() / SimulationHandler.getCabin().getScale()) + j);
+			for (int j = 0; j < (int) (door.getWidth() / SimulationHandler
+					.getCabin().getScale()); j++) {
+				Node node = SimulationHandler.getMap().getNodeByCoordinate(
+						i,
+						(int) (door.getYPosition() / SimulationHandler
+								.getCabin().getScale()) + j);
 				if (node.getProperty() == Property.AGENT) {
 					if (node.getLinkedAgentID() != passenger.getId()) {
 						return true;

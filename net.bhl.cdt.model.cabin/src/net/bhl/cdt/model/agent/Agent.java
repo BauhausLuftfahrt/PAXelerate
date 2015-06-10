@@ -806,11 +806,11 @@ public class Agent extends Subject implements Runnable {
 				 * space in front of the cabin door
 				 */
 				while (AgentFunctions.doorwayBlocked(passenger)) {
-					Thread.sleep(10);
+					Thread.sleep(100);
 				}
 
 				while (!SimulationHandler.CabinAccessGranted(this)) {
-					Thread.sleep(10);
+					Thread.sleep(100);
 				}
 
 			}

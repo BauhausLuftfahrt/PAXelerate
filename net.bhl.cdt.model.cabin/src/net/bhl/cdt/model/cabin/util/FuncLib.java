@@ -8,7 +8,9 @@ package net.bhl.cdt.model.cabin.util;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 
 import net.bhl.cdt.model.astar.SimulationHandler;
@@ -113,6 +115,13 @@ public abstract class FuncLib {
 				"(?<=[A-Za-z])(?=[^A-Za-z])"), " ");
 	}
 
+	public static String getCurrentTimeStamp() {
+		SimpleDateFormat sdfDate = new SimpleDateFormat("HH:mm:ss.SSS");
+		Date now = new Date();
+		String strDate = sdfDate.format(now);
+		return strDate;
+	}
+
 	public static int roundToFive(int num) {
 		int temp = num % 5;
 		if (temp < 3)
@@ -121,7 +130,7 @@ public abstract class FuncLib {
 			return num + 5 - temp;
 	}
 
-	public static boolean PassengerAlreadyInList(Passenger pax,
+	public synchronized static boolean PassengerAlreadyInList(Passenger pax,
 			ArrayList<Passenger> list) {
 		if (list != null) {
 			for (Passenger pass : list) {

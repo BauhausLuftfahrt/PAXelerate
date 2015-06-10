@@ -152,12 +152,18 @@ public class AboutView extends JPanel {
 			} catch (NullPointerException e) {
 
 			}
-			if (areamap.getNodeByCoordinate(b, a).getProperty() == Property.AGENT) {
-				g.setColor(Color.LIGHT_GRAY);
-				g.fillRect(mousePos.x + 10, mousePos.y + 10, 200, 30);
-				g.setColor(Color.BLACK);
-				g.drawString("Passenger: " + id + ", x: " + b + ", y: " + a,
-						mousePos.x + 20, mousePos.y + 20);
+			if (areamap.getNodeByCoordinate(b, a) != null) {
+				if (areamap.getNodeByCoordinate(b, a).getProperty() == Property.AGENT) {
+					g.setColor(Color.LIGHT_GRAY);
+					g.fillRect(mousePos.x + 10, mousePos.y + 10, 200, 30);
+					g.setColor(Color.BLACK);
+					g.drawString(
+							"Passenger: " + id + ", x: " + b + ", y: " + a,
+							mousePos.x + 20, mousePos.y + 20);
+					g.drawString(
+							"Passenger: " + id + ", x: " + b + ", y: " + a,
+							mousePos.x + 20, mousePos.y + 20);
+				}
 			}
 		}
 	}
