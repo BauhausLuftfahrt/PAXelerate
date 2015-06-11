@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.DoorImpl#isOnBothSides <em>On Both Sides</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.DoorImpl#getWidth <em>Width</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.DoorImpl#getId <em>Id</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.DoorImpl#getNumberOfSimultaneousPassengers <em>Number Of Simultaneous Passengers</em>}</li>
  * </ul>
  * </p>
  *
@@ -105,6 +106,26 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	 * @ordered
 	 */
 	protected int id = ID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getNumberOfSimultaneousPassengers() <em>Number Of Simultaneous Passengers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNumberOfSimultaneousPassengers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int NUMBER_OF_SIMULTANEOUS_PASSENGERS_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getNumberOfSimultaneousPassengers() <em>Number Of Simultaneous Passengers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNumberOfSimultaneousPassengers()
+	 * @generated
+	 * @ordered
+	 */
+	protected int numberOfSimultaneousPassengers = NUMBER_OF_SIMULTANEOUS_PASSENGERS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -214,6 +235,27 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getNumberOfSimultaneousPassengers() {
+		return numberOfSimultaneousPassengers;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNumberOfSimultaneousPassengers(int newNumberOfSimultaneousPassengers) {
+		int oldNumberOfSimultaneousPassengers = numberOfSimultaneousPassengers;
+		numberOfSimultaneousPassengers = newNumberOfSimultaneousPassengers;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS, oldNumberOfSimultaneousPassengers, numberOfSimultaneousPassengers));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -225,6 +267,8 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 				return getWidth();
 			case CabinPackage.DOOR__ID:
 				return getId();
+			case CabinPackage.DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS:
+				return getNumberOfSimultaneousPassengers();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -248,6 +292,9 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 				return;
 			case CabinPackage.DOOR__ID:
 				setId((Integer)newValue);
+				return;
+			case CabinPackage.DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS:
+				setNumberOfSimultaneousPassengers((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -273,6 +320,9 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 			case CabinPackage.DOOR__ID:
 				setId(ID_EDEFAULT);
 				return;
+			case CabinPackage.DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS:
+				setNumberOfSimultaneousPassengers(NUMBER_OF_SIMULTANEOUS_PASSENGERS_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -293,6 +343,8 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 				return width != WIDTH_EDEFAULT;
 			case CabinPackage.DOOR__ID:
 				return id != ID_EDEFAULT;
+			case CabinPackage.DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS:
+				return numberOfSimultaneousPassengers != NUMBER_OF_SIMULTANEOUS_PASSENGERS_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -315,6 +367,8 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 		result.append(width);
 		result.append(", id: ");
 		result.append(id);
+		result.append(", numberOfSimultaneousPassengers: ");
+		result.append(numberOfSimultaneousPassengers);
 		result.append(')');
 		return result.toString();
 	}

@@ -56,6 +56,7 @@ public class CabinItemProvider extends NamedElementItemProvider {
 			addUsePresetSettingsPropertyDescriptor(object);
 			addSpeedFactorPropertyDescriptor(object);
 			addEstimatedSimulationTimePropertyDescriptor(object);
+			addPassengersBoardingPerMinutePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -280,6 +281,28 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Passengers Boarding Per Minute feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPassengersBoardingPerMinutePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_passengersBoardingPerMinute_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_passengersBoardingPerMinute_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__PASSENGERS_BOARDING_PER_MINUTE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Row Nonexistent feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -408,6 +431,7 @@ public class CabinItemProvider extends NamedElementItemProvider {
 			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
 			case CabinPackage.CABIN__SPEED_FACTOR:
 			case CabinPackage.CABIN__ESTIMATED_SIMULATION_TIME:
+			case CabinPackage.CABIN__PASSENGERS_BOARDING_PER_MINUTE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CabinPackage.CABIN__CLASSES:

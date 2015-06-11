@@ -158,8 +158,6 @@ public class GeneratePassengersCommand extends CDTCommand {
 		passengerPerClassCount = 0;
 		boolean hasLuggage = true;
 
-		/** Define The number of passengers boarding per minute **/
-		double passengersPerMinute = 30;
 		/********************************************************/
 
 		switchClass(travelSubClass);
@@ -183,7 +181,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 					newPassenger.setHasLuggage(hasLuggage);
 					newPassenger
 							.setStartBoardingAfterDelay((passengerIdCount - 1)
-									* 60 / passengersPerMinute);
+									* 60.0
+									/ cabin.getPassengersBoardingPerMinute());
 
 					/************************ random values ***************************/
 

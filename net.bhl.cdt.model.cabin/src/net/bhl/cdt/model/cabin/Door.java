@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Door#isOnBothSides <em>On Both Sides</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Door#getWidth <em>Width</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Door#getId <em>Id</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Door#getNumberOfSimultaneousPassengers <em>Number Of Simultaneous Passengers</em>}</li>
  * </ul>
  * </p>
  *
@@ -127,5 +128,31 @@ public interface Door extends EObject {
 	 * @generated
 	 */
 	void setId(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Number Of Simultaneous Passengers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Number Of Simultaneous Passengers</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Number Of Simultaneous Passengers</em>' attribute.
+	 * @see #setNumberOfSimultaneousPassengers(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getDoor_NumberOfSimultaneousPassengers()
+	 * @model
+	 * @generated
+	 */
+	int getNumberOfSimultaneousPassengers();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Door#getNumberOfSimultaneousPassengers <em>Number Of Simultaneous Passengers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Number Of Simultaneous Passengers</em>' attribute.
+	 * @see #getNumberOfSimultaneousPassengers()
+	 * @generated
+	 */
+	void setNumberOfSimultaneousPassengers(int value);
 
 } // Door

@@ -259,13 +259,22 @@ public interface CabinPackage extends EPackage {
 	int CABIN__ESTIMATED_SIMULATION_TIME = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 19;
 
 	/**
+	 * The feature id for the '<em><b>Passengers Boarding Per Minute</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN__PASSENGERS_BOARDING_PER_MINUTE = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 20;
+
+	/**
 	 * The number of structural features of the '<em>Cabin</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_FEATURE_COUNT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 20;
+	int CABIN_FEATURE_COUNT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 21;
 
 	/**
 	 * The number of operations of the '<em>Cabin</em>' class.
@@ -2031,13 +2040,22 @@ public interface CabinPackage extends EPackage {
 	int DOOR__ID = 3;
 
 	/**
+	 * The feature id for the '<em><b>Number Of Simultaneous Passengers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS = 4;
+
+	/**
 	 * The number of structural features of the '<em>Door</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOOR_FEATURE_COUNT = 4;
+	int DOOR_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Door</em>' class.
@@ -2105,6 +2123,15 @@ public interface CabinPackage extends EPackage {
 	int MAIN_DOOR__ID = DOOR__ID;
 
 	/**
+	 * The feature id for the '<em><b>Number Of Simultaneous Passengers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAIN_DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS = DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS;
+
+	/**
 	 * The number of structural features of the '<em>Main Door</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2169,6 +2196,15 @@ public interface CabinPackage extends EPackage {
 	int EMERGENCY_EXIT__ID = DOOR__ID;
 
 	/**
+	 * The feature id for the '<em><b>Number Of Simultaneous Passengers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMERGENCY_EXIT__NUMBER_OF_SIMULTANEOUS_PASSENGERS = DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS;
+
+	/**
 	 * The number of structural features of the '<em>Emergency Exit</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2231,6 +2267,15 @@ public interface CabinPackage extends EPackage {
 	 * @ordered
 	 */
 	int STANDARD_DOOR__ID = DOOR__ID;
+
+	/**
+	 * The feature id for the '<em><b>Number Of Simultaneous Passengers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STANDARD_DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS = DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS;
 
 	/**
 	 * The number of structural features of the '<em>Standard Door</em>' class.
@@ -2633,6 +2678,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getCabin_EstimatedSimulationTime();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passengers Boarding Per Minute</em>'.
+	 * @see net.bhl.cdt.model.cabin.Cabin#getPassengersBoardingPerMinute()
+	 * @see #getCabin()
+	 * @generated
+	 */
+	EAttribute getCabin_PassengersBoardingPerMinute();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link net.bhl.cdt.model.cabin.Cabin#getClasses <em>Classes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2930,6 +2986,17 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDoor_Id();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Door#getNumberOfSimultaneousPassengers <em>Number Of Simultaneous Passengers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Number Of Simultaneous Passengers</em>'.
+	 * @see net.bhl.cdt.model.cabin.Door#getNumberOfSimultaneousPassengers()
+	 * @see #getDoor()
+	 * @generated
+	 */
+	EAttribute getDoor_NumberOfSimultaneousPassengers();
 
 	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.Seat <em>Seat</em>}'.
@@ -3879,6 +3946,13 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute CABIN__ESTIMATED_SIMULATION_TIME = eINSTANCE.getCabin_EstimatedSimulationTime();
 		/**
+		 * The meta object literal for the '<em><b>Passengers Boarding Per Minute</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN__PASSENGERS_BOARDING_PER_MINUTE = eINSTANCE.getCabin_PassengersBoardingPerMinute();
+		/**
 		 * The meta object literal for the '<em><b>Classes</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4088,6 +4162,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DOOR__ID = eINSTANCE.getDoor_Id();
+		/**
+		 * The meta object literal for the '<em><b>Number Of Simultaneous Passengers</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS = eINSTANCE.getDoor_NumberOfSimultaneousPassengers();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.SeatImpl <em>Seat</em>}' class.
 		 * <!-- begin-user-doc -->

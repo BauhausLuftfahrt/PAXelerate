@@ -184,7 +184,7 @@ public class SimulationHandler {
 
 		Vector goal = new Vector2D((int) (cabin.getCabinWidth()
 				/ cabin.getScale() / 2.0),
-				(int) (seat.getYPosition() / cabin.getScale()) + 3);
+				(int) (seat.getYPosition() / cabin.getScale()) + 5);
 
 		Vector start = new Vector2D(
 				(int) ((seat.getXPosition() + seat.getXDimension() / 2) / cabin

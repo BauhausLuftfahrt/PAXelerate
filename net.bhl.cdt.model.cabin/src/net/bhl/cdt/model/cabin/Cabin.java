@@ -33,6 +33,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#isUsePresetSettings <em>Use Preset Settings</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSpeedFactor <em>Speed Factor</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getEstimatedSimulationTime <em>Estimated Simulation Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}</li>
  * </ul>
  * </p>
  *
@@ -423,6 +424,33 @@ public interface Cabin extends NamedElement {
 	 * @generated
 	 */
 	void setEstimatedSimulationTime(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Passengers Boarding Per Minute</b></em>' attribute.
+	 * The default value is <code>"18"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Passengers Boarding Per Minute</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Passengers Boarding Per Minute</em>' attribute.
+	 * @see #setPassengersBoardingPerMinute(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_PassengersBoardingPerMinute()
+	 * @model default="18" required="true"
+	 * @generated
+	 */
+	int getPassengersBoardingPerMinute();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Passengers Boarding Per Minute</em>' attribute.
+	 * @see #getPassengersBoardingPerMinute()
+	 * @generated
+	 */
+	void setPassengersBoardingPerMinute(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Classes</b></em>' containment reference list.

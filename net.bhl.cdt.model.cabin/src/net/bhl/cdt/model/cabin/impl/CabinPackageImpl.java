@@ -462,6 +462,15 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getCabin_PassengersBoardingPerMinute() {
+		return (EAttribute)cabinEClass.getEStructuralFeatures().get(20);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getCabin_Classes() {
 		return (EReference)cabinEClass.getEStructuralFeatures().get(6);
 	}
@@ -707,6 +716,15 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EAttribute getDoor_Id() {
 		return (EAttribute)doorEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDoor_NumberOfSimultaneousPassengers() {
+		return (EAttribute)doorEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1424,6 +1442,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEAttribute(cabinEClass, CABIN__USE_PRESET_SETTINGS);
 		createEAttribute(cabinEClass, CABIN__SPEED_FACTOR);
 		createEAttribute(cabinEClass, CABIN__ESTIMATED_SIMULATION_TIME);
+		createEAttribute(cabinEClass, CABIN__PASSENGERS_BOARDING_PER_MINUTE);
 
 		rowEClass = createEClass(ROW);
 		createEReference(rowEClass, ROW__SEATS);
@@ -1517,6 +1536,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEAttribute(doorEClass, DOOR__ON_BOTH_SIDES);
 		createEAttribute(doorEClass, DOOR__WIDTH);
 		createEAttribute(doorEClass, DOOR__ID);
+		createEAttribute(doorEClass, DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS);
 
 		mainDoorEClass = createEClass(MAIN_DOOR);
 
@@ -1615,6 +1635,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEAttribute(getCabin_UsePresetSettings(), ecorePackage.getEBoolean(), "usePresetSettings", "false", 0, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCabin_SpeedFactor(), ecorePackage.getEInt(), "speedFactor", "1", 0, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCabin_EstimatedSimulationTime(), ecorePackage.getEDouble(), "EstimatedSimulationTime", null, 0, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCabin_PassengersBoardingPerMinute(), ecorePackage.getEInt(), "passengersBoardingPerMinute", "18", 1, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(rowEClass, Row.class, "Row", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRow_Seats(), this.getSeat(), null, "seats", null, 1, -1, Row.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1732,6 +1753,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEAttribute(getDoor_OnBothSides(), ecorePackage.getEBoolean(), "onBothSides", null, 0, 1, Door.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDoor_Width(), ecorePackage.getEInt(), "width", null, 0, 1, Door.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDoor_Id(), ecorePackage.getEInt(), "id", null, 0, 1, Door.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDoor_NumberOfSimultaneousPassengers(), ecorePackage.getEInt(), "numberOfSimultaneousPassengers", null, 0, 1, Door.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(mainDoorEClass, MainDoor.class, "MainDoor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

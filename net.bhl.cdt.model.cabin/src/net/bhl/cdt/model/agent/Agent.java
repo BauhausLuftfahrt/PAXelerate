@@ -640,7 +640,8 @@ public class Agent extends Subject implements Runnable {
 
 					setCurrentState(State.WAITING_FOR_ROW_CLEARING);
 
-					// TODO: get the right passenger here!
+					// TODO: only one passenger is detected, even if there are 2
+					// already in the row!
 					for (Passenger pax : otherPassengersInRowBlockingMe) {
 
 						SimulationHandler.launchWaymakingAgent(pax,
@@ -648,8 +649,14 @@ public class Agent extends Subject implements Runnable {
 
 					}
 
+					System.out.println(passenger.getSeat() + " "
+							+ otherPassengersInRowBlockingMe.get(0).getSeat()
+							+ " ");
+
 					while (!otherPassengerStoodUp()) {
-						Thread.sleep((int) (10));
+						Thread.sleep(10);
+						System.out
+								.println("Other pax did not stand up yet. Still waiting!!");
 					}
 
 					// TODO: calculate the waiting time!
@@ -657,7 +664,7 @@ public class Agent extends Subject implements Runnable {
 
 					waitingCompleted = true;
 
-					// System.out.println("Someone is already in that row! :(");
+					System.out.println("Waiting completed!");
 
 				} else {
 

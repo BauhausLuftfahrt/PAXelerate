@@ -50,6 +50,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#isUsePresetSettings <em>Use Preset Settings</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSpeedFactor <em>Speed Factor</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getEstimatedSimulationTime <em>Estimated Simulation Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}</li>
  * </ul>
  * </p>
  *
@@ -326,6 +327,25 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @ordered
 	 */
 	protected double estimatedSimulationTime = ESTIMATED_SIMULATION_TIME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPassengersBoardingPerMinute() <em>Passengers Boarding Per Minute</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassengersBoardingPerMinute()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT = 18;
+	/**
+	 * The cached value of the '{@link #getPassengersBoardingPerMinute() <em>Passengers Boarding Per Minute</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassengersBoardingPerMinute()
+	 * @generated
+	 * @ordered
+	 */
+	protected int passengersBoardingPerMinute = PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -612,6 +632,27 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getPassengersBoardingPerMinute() {
+		return passengersBoardingPerMinute;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPassengersBoardingPerMinute(int newPassengersBoardingPerMinute) {
+		int oldPassengersBoardingPerMinute = passengersBoardingPerMinute;
+		passengersBoardingPerMinute = newPassengersBoardingPerMinute;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__PASSENGERS_BOARDING_PER_MINUTE, oldPassengersBoardingPerMinute, passengersBoardingPerMinute));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -735,6 +776,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return getSpeedFactor();
 			case CabinPackage.CABIN__ESTIMATED_SIMULATION_TIME:
 				return getEstimatedSimulationTime();
+			case CabinPackage.CABIN__PASSENGERS_BOARDING_PER_MINUTE:
+				return getPassengersBoardingPerMinute();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -815,6 +858,9 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__ESTIMATED_SIMULATION_TIME:
 				setEstimatedSimulationTime((Double)newValue);
 				return;
+			case CabinPackage.CABIN__PASSENGERS_BOARDING_PER_MINUTE:
+				setPassengersBoardingPerMinute((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -886,6 +932,9 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__ESTIMATED_SIMULATION_TIME:
 				setEstimatedSimulationTime(ESTIMATED_SIMULATION_TIME_EDEFAULT);
 				return;
+			case CabinPackage.CABIN__PASSENGERS_BOARDING_PER_MINUTE:
+				setPassengersBoardingPerMinute(PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -937,6 +986,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return speedFactor != SPEED_FACTOR_EDEFAULT;
 			case CabinPackage.CABIN__ESTIMATED_SIMULATION_TIME:
 				return estimatedSimulationTime != ESTIMATED_SIMULATION_TIME_EDEFAULT;
+			case CabinPackage.CABIN__PASSENGERS_BOARDING_PER_MINUTE:
+				return passengersBoardingPerMinute != PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -974,6 +1025,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		result.append(speedFactor);
 		result.append(", EstimatedSimulationTime: ");
 		result.append(estimatedSimulationTime);
+		result.append(", passengersBoardingPerMinute: ");
+		result.append(passengersBoardingPerMinute);
 		result.append(')');
 		return result.toString();
 	}

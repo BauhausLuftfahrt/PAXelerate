@@ -101,6 +101,8 @@ public class SimulationView extends JPanel implements MouseListener {
 			public void actionPerformed(ActionEvent e) {
 				if (speedPosition < possibleSpeeds.length) {
 					speedPosition++;
+					SimulationHandler.getCabin().setSpeedFactor(
+							possibleSpeeds[speedPosition]);
 				}
 			}
 		});
@@ -112,6 +114,8 @@ public class SimulationView extends JPanel implements MouseListener {
 			public void actionPerformed(ActionEvent e) {
 				if (speedPosition > 0) {
 					speedPosition--;
+					SimulationHandler.getCabin().setSpeedFactor(
+							possibleSpeeds[speedPosition]);
 				}
 			}
 		});
@@ -171,9 +175,6 @@ public class SimulationView extends JPanel implements MouseListener {
 	public void paintComponent(Graphics g) {
 
 		FONT_SIZE = (int) (getSize().height / cabinWidth);
-
-		SimulationHandler.getCabin().setSpeedFactor(
-				possibleSpeeds[speedPosition]);
 
 		super.paintComponent(g); // Paint background
 		g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE));
