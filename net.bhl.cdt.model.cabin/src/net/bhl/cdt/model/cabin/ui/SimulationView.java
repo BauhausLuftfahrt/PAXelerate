@@ -22,7 +22,7 @@ import java.util.Date;
  * @author marc.engelmann
  *
  */
-public class AboutView extends JPanel {
+public class SimulationView extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private static final int BOX_WIDTH = 1000;
@@ -43,7 +43,7 @@ public class AboutView extends JPanel {
 	 * @param dimensions
 	 * @param refresh
 	 */
-	public AboutView() {
+	public SimulationView() {
 		this.setPreferredSize(new Dimension(BOX_WIDTH, BOX_HEIGHT));
 
 		cabinWidth = SimulationHandler.getCabin().getCabinWidth()
@@ -111,10 +111,10 @@ public class AboutView extends JPanel {
 				if (areamap.getNodeByCoordinate(y, x).getTypeForPrinting() == "O") {
 					g.setColor(Color.DARK_GRAY);
 					g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE - 1));
-					g.drawString(""
-							+ areamap.getNodeByCoordinate(y, x).getPassenger()
-									.getId(), (x - pointZero) * FONT_SIZE, y
-							* FONT_SIZE);
+					g.drawString("O"
+					// + areamap.getNodeByCoordinate(y,
+					// x).getPassenger().getId()
+							, (x - pointZero) * FONT_SIZE, y * FONT_SIZE);
 				} else {
 					g.setColor(Color.LIGHT_GRAY);
 					g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE));
@@ -156,7 +156,7 @@ public class AboutView extends JPanel {
 
 			}
 			g.setColor(Color.LIGHT_GRAY);
-			g.fillRect(mousePos.x + 10, mousePos.y + 10, 250, 60);
+			g.fillRect(mousePos.x + 10, mousePos.y + 10, 250, 80);
 			g.setColor(Color.BLACK);
 			if (areamap.getNodeByCoordinate(b, a) != null && pax != null) {
 				if (areamap.getNodeByCoordinate(b, a).getProperty() == Property.AGENT) {
@@ -164,6 +164,10 @@ public class AboutView extends JPanel {
 							+ ", y: " + a, mousePos.x + 30, mousePos.y + 30);
 					g.drawString("Seat " + pax.getSeatRef().getName(),
 							mousePos.x + 30, mousePos.y + 50);
+					g.drawString("State: "
+							+ SimulationHandler.getAgentByPassenger(pax)
+									.getCurrentState().toString(),
+							mousePos.x + 30, mousePos.y + 70);
 				}
 			} else if (prop != null) {
 				g.drawString("Property: " + prop.toString() + ", x: " + b

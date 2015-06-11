@@ -120,7 +120,7 @@ public class Node implements Comparable<Node> {
 		case AGENT:
 			return "O";
 		case DEFAULT:
-			return " ";
+			return null;
 		case GOAL:
 			return "G";
 		case START:

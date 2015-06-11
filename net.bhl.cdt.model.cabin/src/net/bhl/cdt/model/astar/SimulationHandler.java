@@ -6,11 +6,7 @@
 package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.swing.JFrame;
 
@@ -20,7 +16,7 @@ import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
-import net.bhl.cdt.model.cabin.ui.AboutView;
+import net.bhl.cdt.model.cabin.ui.SimulationView;
 import net.bhl.cdt.model.cabin.ui.ProgressHandler;
 import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Logger;
@@ -56,6 +52,7 @@ public class SimulationHandler {
 	private static JFrame frame;
 	private static ProgressHandler progress;
 	private int progressValue = 0;
+	private int percent = 0;
 
 	// private static int grantedCounter = 0;
 
@@ -89,6 +86,15 @@ public class SimulationHandler {
 	 */
 	public static AreaMap getMap() {
 		return areamap;
+	}
+
+	public static Agent getAgentByPassenger(Passenger pax) {
+		for (Agent agent : agentList) {
+			if (agent.getPassenger().getId() == pax.getId()) {
+				return agent;
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -164,7 +170,7 @@ public class SimulationHandler {
 				(int) ((seat.getYPosition() / cabin.getScale()) - 2));
 
 		Agent agent = new Agent(pax, start, goal,
-				SimulationHandler.getCostMap(), Agent.agentMode.MAKE_WAY,
+				SimulationHandler.getCostMap(), Agent.AgentMode.MAKE_WAY,
 				myself);
 		agent.findNewPath();
 		agent.start();
@@ -214,25 +220,6 @@ public class SimulationHandler {
 			}
 		}
 		return false;
-
-		// if (!grantedAccess.isEmpty()) {
-		// if (grantedAccess.get(grantedAccess.size() - 1) < anotherStopwatch
-		// .getElapsedTime() - 2000) {
-		// } else {
-		// return false;
-		// }
-		// }
-		//
-		// grantedCounter++;
-		// // FuncLib.printIntegerListToLog(grantedAccess);
-		// System.out.println("#" + grantedCounter + " - Access for agent "
-		// + pax.getId() + " was granted at "
-		// + FuncLib.getCurrentTimeStamp() + ".");
-		// if (AgentFunctions.doorwayBlocked(pax)) {
-		// return false;
-		// } else {
-		// return true;
-		// }
 	}
 
 	private static Agent getAgentByPassengerID(int id) {
@@ -283,7 +270,7 @@ public class SimulationHandler {
 			}
 
 			Agent agent = new Agent(passenger, start, goal, costmap,
-					Agent.agentMode.GO_TO_SEAT, null);
+					Agent.AgentMode.GO_TO_SEAT, null);
 
 			// list of all agents
 			agentList.add(agent);
@@ -294,6 +281,20 @@ public class SimulationHandler {
 				progress = new ProgressHandler(agentList.size());
 				while (progressValue < agentList.size() - 1) {
 					progress.reportProgress(progressValue);
+					percent = percentage(progressValue, agentList.size());
+
+					// TODO: real progress indications for calculation of cost
+					// map could be implemented!
+
+					if (percent <= 10) {
+						progress.updateText("Initializing Path finding algorithms ...");
+					} else if (percent <= 30) {
+						progress.updateText("Creating the agent objects ...");
+					} else if (percent <= 90) {
+						progress.updateText("Calculating the paths for every passenger ...");
+					} else {
+						progress.updateText("Finishing calculations ...");
+					}
 				}
 				progress.done();
 
@@ -322,12 +323,16 @@ public class SimulationHandler {
 		}
 	}
 
+	private int percentage(double now, double max) {
+		return (int) ((now / max) * 100.0);
+	}
+
 	private void runAreaMapWindow() {
 
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 
-				AboutView view = new AboutView();
+				SimulationView view = new SimulationView();
 				view.setAreamap(areamap);
 
 				frame = new JFrame("Area Map Rendering");

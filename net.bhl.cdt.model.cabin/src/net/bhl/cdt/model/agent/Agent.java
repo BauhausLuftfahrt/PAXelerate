@@ -64,12 +64,18 @@ public class Agent extends Subject implements Runnable {
 	private final Passenger passenger;
 
 	private final int scale;
-	private final agentMode mode;
+	private final AgentMode mode;
+
+	private State currentState;
 
 	private Passenger thePassengerILetInTheRow;
 
-	public static enum agentMode {
+	public static enum AgentMode {
 		GO_TO_SEAT, MAKE_WAY
+	}
+
+	public static enum State {
+		FOLLOWING_PATH, WAITING_FOR_ROW_CLEARING, CLEARING_ROW, STOWING_LUGGAGE, PREPARING, QUEUEING_UP, WAITING_FOR_OTHER_PASSENGER_TO_SEAT;
 	}
 
 	private int[][] defaultPassengerArea;
@@ -85,6 +91,14 @@ public class Agent extends Subject implements Runnable {
 		return passenger;
 	}
 
+	public void setCurrentState(State status) {
+		this.currentState = status;
+	}
+
+	public State getCurrentState() {
+		return currentState;
+	}
+
 	/**
 	 * This method constructs an agent.
 	 * 
@@ -98,7 +112,7 @@ public class Agent extends Subject implements Runnable {
 	 *            the scale of the simulation
 	 */
 	public Agent(Passenger passenger, Vector start, Vector goal,
-			CostMap costmap, agentMode mode, Passenger thePassengerILetInTheRow) {
+			CostMap costmap, AgentMode mode, Passenger thePassengerILetInTheRow) {
 
 		/* assign the initializer values to the objects values */
 		this.mode = mode;
@@ -300,9 +314,9 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	private boolean rotationAllowed() {
-		// if (currentPosition.getX() < 5) {
-		// return false;
-		// }
+		if (currentPosition.getX() < 3) {
+			return false;
+		}
 		return true;
 	}
 
@@ -577,6 +591,8 @@ public class Agent extends Subject implements Runnable {
 				/* check if the desired next step is blocked by someone else */
 				if (nodeBlockedBySomeoneElseOrObstacle(desiredPosition)) {
 
+					setCurrentState(State.QUEUEING_UP);
+
 					/* raise the interrupts counter up by one */
 					numbOfInterupts++;
 
@@ -606,6 +622,7 @@ public class Agent extends Subject implements Runnable {
 					 */
 				} else if (passengerStowsLuggage() && !alreadyStowed) {
 
+					setCurrentState(State.STOWING_LUGGAGE);
 					rotateAgent(90);
 
 					/* sleep the thread as long as the luggage is stowed */
@@ -621,6 +638,8 @@ public class Agent extends Subject implements Runnable {
 					 */
 				} else if (waitingForClearingOfRow() && !waitingCompleted) {
 
+					setCurrentState(State.WAITING_FOR_ROW_CLEARING);
+
 					// TODO: get the right passenger here!
 					for (Passenger pax : otherPassengersInRowBlockingMe) {
 
@@ -634,13 +653,15 @@ public class Agent extends Subject implements Runnable {
 					}
 
 					// TODO: calculate the waiting time!
-					Thread.sleep((int) (3000));
+					Thread.sleep((int) ((3000)));
 
 					waitingCompleted = true;
 
-					System.out.println("Someone is already in that row! :(");
+					// System.out.println("Someone is already in that row! :(");
 
 				} else {
+
+					setCurrentState(State.FOLLOWING_PATH);
 
 					/*
 					 * Go one step ahead. Do this by unblocking the current
@@ -727,7 +748,7 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	private boolean inDefaultBoardingMode() {
-		if (mode == agentMode.MAKE_WAY) {
+		if (mode == AgentMode.MAKE_WAY) {
 			return false;
 		} else {
 			return true;
@@ -782,6 +803,8 @@ public class Agent extends Subject implements Runnable {
 	public void run() {
 		try {
 
+			setCurrentState(State.PREPARING);
+
 			if (!inDefaultBoardingMode()) {
 
 				/*
@@ -821,6 +844,7 @@ public class Agent extends Subject implements Runnable {
 
 			SimulationHandler.setPassengerActive(this.passenger);
 
+			setCurrentState(State.FOLLOWING_PATH);
 			/*
 			 * run path following as long as the goal is not reached yet
 			 */
@@ -855,12 +879,15 @@ public class Agent extends Subject implements Runnable {
 				// // interrupted?
 
 				/* sleep until the other passenger has seated! */
+				setCurrentState(State.WAITING_FOR_OTHER_PASSENGER_TO_SEAT);
 				while (!thePassengerILetInTheRow.isIsSeated()) {
 					Thread.sleep(10);
 
 				}
 
 				// TODO: DEBLOCK AISLE
+
+				setCurrentState(State.PREPARING);
 
 				/* new helper vector stores the start */
 				Vector helper = new Vector2D(start);
@@ -871,6 +898,8 @@ public class Agent extends Subject implements Runnable {
 
 				path.invert();
 				path.appendWayPoint(SimulationHandler.getMap().getNode(goal));
+
+				setCurrentState(State.FOLLOWING_PATH);
 
 				/* go back to the start */
 				while (!goalReached()) {

@@ -8,7 +8,7 @@ package net.bhl.cdt.model.cabin.commands;
 import javax.swing.JFrame;
 
 import net.bhl.cdt.commands.CDTCommand;
-import net.bhl.cdt.model.cabin.ui.AboutView;
+import net.bhl.cdt.model.cabin.ui.SimulationView;
 
 /**
  * This class refreshed the cabin view without modifying anything. It checks the
@@ -48,7 +48,7 @@ public class AboutViewCommand extends CDTCommand {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				frame = new JFrame("About this application");
-				frame.setContentPane(new AboutView());
+				frame.setContentPane(new SimulationView());
 				frame.pack();
 				frame.setVisible(true);
 			}

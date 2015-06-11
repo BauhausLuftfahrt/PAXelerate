@@ -6,6 +6,9 @@
 
 package net.bhl.cdt.model.cabin.util;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.Window;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
@@ -15,6 +18,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
+
+import org.eclipse.swt.widgets.Shell;
 
 import net.bhl.cdt.model.astar.SimulationHandler;
 import net.bhl.cdt.model.cabin.Passenger;
@@ -50,6 +55,13 @@ public abstract class FuncLib {
 			}
 		}
 		return false;
+	}
+
+	public static void centreWindow(Shell frame) {
+		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+		int x = (int) ((dimension.getWidth() - frame.getSize().x) / 2);
+		int y = (int) ((dimension.getHeight() - frame.getSize().y) / 2);
+		frame.setLocation(x, y);
 	}
 
 	/**

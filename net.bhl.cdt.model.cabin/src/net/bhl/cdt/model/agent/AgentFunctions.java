@@ -36,12 +36,12 @@ public class AgentFunctions {
 	 */
 	private static boolean sameSideOfAisle(Seat checkSeat, Seat mySeat) {
 
-		if ("ABC".contains(mySeat.getLetter())) {
+		if ("ABC".contains(checkSeat.getLetter())) {
 			if ("ABC".contains(mySeat.getLetter())) {
 				return true;
 			}
 		}
-		if ("DEF".contains(mySeat.getLetter())) {
+		if ("DEF".contains(checkSeat.getLetter())) {
 			if ("DEF".contains(mySeat.getLetter())) {
 				return true;
 			}

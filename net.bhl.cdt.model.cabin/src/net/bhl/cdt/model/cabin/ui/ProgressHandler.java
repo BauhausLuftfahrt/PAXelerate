@@ -11,6 +11,8 @@ package net.bhl.cdt.model.cabin.ui;
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
 
+import net.bhl.cdt.model.cabin.util.FuncLib;
+
 import org.eclipse.jface.dialogs.ProgressIndicator;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -31,6 +33,7 @@ public class ProgressHandler {
 	private Shell shell;
 	private ProgressIndicator indicator;
 	private int current;
+	private Label label;
 
 	public void reportProgress(int value) {
 		indicator.worked(result(value));
@@ -51,6 +54,10 @@ public class ProgressHandler {
 		display.dispose();
 	}
 
+	public void updateText(String text) {
+		label.setText(text);
+	}
+
 	public ProgressHandler(int max) {
 
 		current = 0;
@@ -59,7 +66,7 @@ public class ProgressHandler {
 		shell = new Shell(display);
 		shell.setLayout(new GridLayout());
 		shell.setSize(500, 100);
-		shell.setText("Calculation in progress.");
+		shell.setText("Boarding Simulation - Preparations in Progress.");
 
 		indicator = new ProgressIndicator(shell, SWT.HORIZONTAL);
 		indicator.setLayoutData(new GridData(SWT.FILL, SWT.NONE, true, false));
@@ -67,10 +74,11 @@ public class ProgressHandler {
 				SWT.COLOR_CYAN));
 
 		// Create a label
-		new Label(shell, SWT.NONE)
-				.setText("The boarding paths for the passengers are being calculated ...");
+		label = new Label(shell, SWT.NONE);
+		label.setText("The boarding paths for the passengers are being calculated ...");
 
 		shell.open();
+		FuncLib.centreWindow(shell);
 		indicator.beginTask(max);
 		indicator.showNormal();
 		// spin(display);
