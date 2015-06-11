@@ -46,6 +46,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 	private static StopWatch s = new StopWatch();
 	private ILog logger;
 
+	private boolean simulateWithoutUI = false;
+	private int numberOfSimulationRuns = 1;
+
 	/**
 	 * This is the constructor method of the SimulateBoardingCommand.
 	 * 
@@ -78,6 +81,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 		DrawCabinCommand drawCom = new DrawCabinCommand(cabin);
 		drawCom.doRun();
+
+		SimulationHandler.reset();
 
 		for (Passenger passenger : cabin.getPassengers()) {
 			passenger.setIsSeated(false);
@@ -203,5 +208,6 @@ public class SimulateBoardingCommand extends CDTCommand {
 			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 					"No boarding possible! Please create passengers!"));
 		}
+		SimulationHandler.reset();
 	}
 }

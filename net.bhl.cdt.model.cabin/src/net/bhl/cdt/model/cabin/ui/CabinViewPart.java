@@ -5,8 +5,12 @@
  *******************************************************************************/
 package net.bhl.cdt.model.cabin.ui;
 
+import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.io.File;
 import java.util.ArrayList;
+
 import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.astar.ObstacleMap;
 import net.bhl.cdt.model.astar.Path;
@@ -55,7 +59,8 @@ import org.eclipse.ui.part.ViewPart;
  *
  */
 
-public class CabinViewPart extends ViewPart implements Runnable {
+public class CabinViewPart extends ViewPart implements Runnable,
+		MouseMotionListener {
 	private Cabin cabin;
 	private double factor;
 	private Composite parent;
@@ -611,6 +616,13 @@ public class CabinViewPart extends ViewPart implements Runnable {
 		return image;
 	}
 
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		java.awt.Point point = e.getPoint();
+		System.out.println(point);
+
+	}
+
 	/**
 	 * This method gets the paths.
 	 * 
@@ -904,5 +916,11 @@ public class CabinViewPart extends ViewPart implements Runnable {
 	 */
 	public void setThread(Thread thread) {
 		this.thread = thread;
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
 	}
 }

@@ -25,6 +25,12 @@ public class StopWatch {
 		running = false;
 	}
 
+	public void reset() {
+		startTime = 0;
+		stopTime = 0;
+		running = false;
+	}
+
 	/**
 	 * This method starts the time stopping.
 	 */

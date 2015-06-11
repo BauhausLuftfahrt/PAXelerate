@@ -2,6 +2,7 @@ package net.bhl.cdt.model.cabin.ui;
 
 import javax.swing.*;
 
+import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.astar.AreaMap;
 import net.bhl.cdt.model.astar.Node.Property;
 import net.bhl.cdt.model.astar.SimulationHandler;
@@ -98,6 +99,21 @@ public class SimulationView extends JPanel {
 		this.areamap = areamap;
 	}
 
+	public Color switchColor(Agent.State state) {
+		switch (state) {
+		case FOLLOWING_PATH:
+			return Color.BLUE;
+		case QUEUEING_UP:
+			return Color.RED;
+		case CLEARING_ROW:
+			return Color.GREEN;
+		case WAITING_FOR_ROW_CLEARING:
+			return Color.YELLOW;
+		default:
+			return Color.DARK_GRAY;
+		}
+	}
+
 	@Override
 	public void paintComponent(Graphics g) {
 
@@ -108,19 +124,26 @@ public class SimulationView extends JPanel {
 		for (int x = pointZero; x < areamap.getDimensions().getY(); x++) {
 			for (int y = 0; y < areamap.getDimensions().getX(); y++) {
 				g.setColor(Color.LIGHT_GRAY);
-				if (areamap.getNodeByCoordinate(y, x).getTypeForPrinting() == "O") {
-					g.setColor(Color.DARK_GRAY);
-					g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE - 1));
-					g.drawString("O"
-					// + areamap.getNodeByCoordinate(y,
-					// x).getPassenger().getId()
-							, (x - pointZero) * FONT_SIZE, y * FONT_SIZE);
-				} else {
-					g.setColor(Color.LIGHT_GRAY);
-					g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE));
-					g.drawString(areamap.getNodeByCoordinate(y, x)
-							.getTypeForPrinting(), (x - pointZero) * FONT_SIZE,
-							y * FONT_SIZE);
+				if (areamap.getNodeByCoordinate(y, x).getTypeForPrinting() != null) {
+					if (areamap.getNodeByCoordinate(y, x).getTypeForPrinting() == "O") {
+						g.setColor(switchColor(SimulationHandler
+								.getAgentByPassenger(
+										areamap.getNodeByCoordinate(y, x)
+												.getPassenger())
+								.getCurrentState()));
+						g.setFont(new Font("Courier New", Font.PLAIN,
+								FONT_SIZE - 1));
+						g.drawString("O"
+						// + areamap.getNodeByCoordinate(y,
+						// x).getPassenger().getId()
+								, (x - pointZero) * FONT_SIZE, y * FONT_SIZE);
+					} else {
+						g.setColor(Color.LIGHT_GRAY);
+						g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE));
+						g.drawString(areamap.getNodeByCoordinate(y, x)
+								.getTypeForPrinting(), (x - pointZero)
+								* FONT_SIZE, y * FONT_SIZE);
+					}
 				}
 			}
 		}

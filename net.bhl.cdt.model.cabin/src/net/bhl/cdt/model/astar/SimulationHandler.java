@@ -42,7 +42,7 @@ public class SimulationHandler {
 	private static ArrayList<Agent> agentList = new ArrayList<Agent>();
 	private static HashMap<Passenger, Integer> accessPending = new HashMap<Passenger, Integer>();
 	private static StopWatch anotherStopwatch = new StopWatch();
-	private Vector dimensions;
+	private static Vector dimensions;
 	private static long latestSpawnTime = 0;
 
 	public static final boolean DEVELOPER_MODE = false;
@@ -51,8 +51,8 @@ public class SimulationHandler {
 
 	private static JFrame frame;
 	private static ProgressHandler progress;
-	private int progressValue = 0;
-	private int percent = 0;
+	private static int progressValue = 0;
+	private static int percent = 0;
 
 	// private static int grantedCounter = 0;
 
@@ -126,6 +126,28 @@ public class SimulationHandler {
 
 	public static ArrayList<Agent> getAgentList() {
 		return agentList;
+	}
+
+	public static void reset() {
+		cabin = null;
+		simulationDone = false;
+		finishedList.clear();
+		activeList.clear();
+
+		areamap = null;
+		costmap = null;
+		agentList.clear();
+		accessPending.clear();
+		anotherStopwatch.reset();
+
+		dimensions = null;
+		latestSpawnTime = 0;
+		frame = null;
+		progress = null;
+
+		progressValue = 0;
+		percent = 0;
+		System.out.println("Simulation Handler resetted!");
 	}
 
 	/**
