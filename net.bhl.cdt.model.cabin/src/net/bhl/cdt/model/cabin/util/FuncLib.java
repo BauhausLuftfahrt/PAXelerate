@@ -82,11 +82,16 @@ public abstract class FuncLib {
 		return true;
 	}
 
-	/*
-	 * Returns the transformed time in milliseconds!
+	/**
+	 * This method transforms the time for use in "Thread.sleep()" according to
+	 * the speed factor. CAUTION! Time input in seconds only!
+	 * 
+	 * @param timeInSeconds
+	 *            time in seconds
+	 * @return transformed time in milliseconds
 	 */
-	public static long transformTime(double time) {
-		double value = time * 1000.0
+	public static long transformTime(double timeInSeconds) {
+		double value = timeInSeconds * 1000.0
 				/ SimulationHandler.getCabin().getSpeedFactor();
 		if (value < 1) {
 			value = 1;

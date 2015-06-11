@@ -82,6 +82,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 		DrawCabinCommand drawCom = new DrawCabinCommand(cabin);
 		drawCom.doRun();
 
+		// reset simulation in case of previous exsiting objects.
 		SimulationHandler.reset();
 
 		for (Passenger passenger : cabin.getPassengers()) {
@@ -208,6 +209,5 @@ public class SimulateBoardingCommand extends CDTCommand {
 			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 					"No boarding possible! Please create passengers!"));
 		}
-		SimulationHandler.reset();
 	}
 }

@@ -653,7 +653,7 @@ public class Agent extends Subject implements Runnable {
 					}
 
 					// TODO: calculate the waiting time!
-					Thread.sleep((int) ((3000)));
+					Thread.sleep(FuncLib.transformTime(3));
 
 					waitingCompleted = true;
 

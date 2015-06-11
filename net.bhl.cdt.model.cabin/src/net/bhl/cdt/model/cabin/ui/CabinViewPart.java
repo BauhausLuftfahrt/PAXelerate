@@ -513,7 +513,8 @@ public class CabinViewPart extends ViewPart implements Runnable,
 		cabinAdapter = new AdapterImpl() {
 			public void notifyChanged(Notification notification) {
 				if (!notification.isTouch()) {
-					doTheDraw();
+					// TODO: I DEACTIVATED THIS!
+					// doTheDraw();
 				}
 			}
 		};

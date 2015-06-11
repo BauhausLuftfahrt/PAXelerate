@@ -184,7 +184,7 @@ public class SimulationHandler {
 
 		Vector goal = new Vector2D((int) (cabin.getCabinWidth()
 				/ cabin.getScale() / 2.0),
-				(int) (seat.getYPosition() / cabin.getScale()) + 5);
+				(int) (seat.getYPosition() / cabin.getScale()) + 3);
 
 		Vector start = new Vector2D(
 				(int) ((seat.getXPosition() + seat.getXDimension() / 2) / cabin
@@ -219,22 +219,15 @@ public class SimulationHandler {
 
 			// check if the neccessary time has passed.
 			if (Math.abs(accessPending.get(pax)
-					- anotherStopwatch.getElapsedTime()) > 100) {
+					- anotherStopwatch.getElapsedTime()) > FuncLib
+					.transformTime(0.1)) {
 
 				// check if doorway is clear.
 				if (!AgentFunctions.doorwayBlocked(pax)) {
 
-					if (Math.abs(latestSpawnTime - System.currentTimeMillis()) > 300) {
-
-						// FuncLib.printHashMap(accessPending);
-
+					if (Math.abs(latestSpawnTime - System.currentTimeMillis()) > FuncLib
+							.transformTime(0.3)) {
 						accessPending.remove(pax);
-						// grantedCounter++;
-
-						// System.out.println("#" + grantedCounter+
-						// " - Access for agent " + pax.getId()+
-						// " was granted at "+ FuncLib.getCurrentTimeStamp() +
-						// ".");
 						latestSpawnTime = System.currentTimeMillis();
 						return true;
 					}

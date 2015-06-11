@@ -14,6 +14,8 @@ import net.bhl.cdt.model.cabin.util.Vector2D;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,7 +25,7 @@ import java.util.Date;
  * @author marc.engelmann
  *
  */
-public class SimulationView extends JPanel {
+public class SimulationView extends JPanel implements MouseListener {
 
 	private static final long serialVersionUID = 1L;
 	private static final int BOX_WIDTH = 1000;
@@ -32,9 +34,17 @@ public class SimulationView extends JPanel {
 	private AreaMap areamap;
 	private final Button leftButton;
 	private final Button rightButton;
+
+	private final Button faster;
+	private final Button slower;
+
+	private int speedPosition = 2;
+
 	private int pointZero = 0;
 	private static final int STEP_SIZE = 2;
 	private static StopWatch watch;
+
+	private int[] possibleSpeeds = { 1, 2, 5, 10, 20, 50, 100 };
 
 	private static double cabinWidth;
 
@@ -65,10 +75,51 @@ public class SimulationView extends JPanel {
 		leftButton = new Button();
 		rightButton = new Button();
 
+		faster = new Button();
+		slower = new Button();
+
+		int j = 0;
+		for (int i : possibleSpeeds) {
+			if (i == SimulationHandler.getCabin().getSpeedFactor()) {
+				speedPosition = j;
+				break;
+			}
+			j++;
+		}
+
+		addMouseListener(this);
+
 		leftButton.setFocusable(false);
 		rightButton.setFocusable(false);
+		faster.setFocusable(false);
+		slower.setFocusable(false);
 
-		leftButton.setLabel("<");
+		faster.setLabel("faster");
+		faster.setEnabled(true);
+		faster.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (speedPosition < possibleSpeeds.length) {
+					speedPosition++;
+				}
+			}
+		});
+
+		slower.setLabel("slower");
+		slower.setEnabled(true);
+		slower.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (speedPosition > 0) {
+					speedPosition--;
+				}
+			}
+		});
+
+		this.add(slower);
+		this.add(faster);
+
+		leftButton.setLabel("<-");
 		leftButton.setEnabled(true);
 		leftButton.addActionListener(new ActionListener() {
 			@Override
@@ -80,7 +131,7 @@ public class SimulationView extends JPanel {
 		});
 		this.add(leftButton);
 
-		rightButton.setLabel(">");
+		rightButton.setLabel("->");
 		rightButton.setEnabled(true);
 		rightButton.addActionListener(new ActionListener() {
 			@Override
@@ -102,13 +153,15 @@ public class SimulationView extends JPanel {
 	public Color switchColor(Agent.State state) {
 		switch (state) {
 		case FOLLOWING_PATH:
-			return Color.BLUE;
+			return Color.DARK_GRAY;
 		case QUEUEING_UP:
-			return Color.RED;
+			return Color.BLUE;
 		case CLEARING_ROW:
 			return Color.GREEN;
 		case WAITING_FOR_ROW_CLEARING:
-			return Color.YELLOW;
+			return Color.RED;
+		case STOWING_LUGGAGE:
+			return Color.CYAN;
 		default:
 			return Color.DARK_GRAY;
 		}
@@ -118,6 +171,9 @@ public class SimulationView extends JPanel {
 	public void paintComponent(Graphics g) {
 
 		FONT_SIZE = (int) (getSize().height / cabinWidth);
+
+		SimulationHandler.getCabin().setSpeedFactor(
+				possibleSpeeds[speedPosition]);
 
 		super.paintComponent(g); // Paint background
 		g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE));
@@ -197,5 +253,35 @@ public class SimulationView extends JPanel {
 						+ ", y: " + a, mousePos.x + 30, mousePos.y + 30);
 			}
 		}
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		System.out.println("Clicked!");
+
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+
 	}
 }
