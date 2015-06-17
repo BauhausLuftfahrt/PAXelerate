@@ -1,9 +1,12 @@
 package net.bhl.cdt.model.cabin.util;
 
+import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.Sex;
+import net.bhl.cdt.model.cabin.SimulationProperties;
 import net.bhl.cdt.model.cabin.util.FuncLib.GaussOptions;
+import net.bhl.cdt.model.util.ModelHelper;
 
 /**
  * This class is used to generate the passenger properties for each passenger
@@ -17,8 +20,8 @@ public class PassengerPropertyGenerator {
 	/* The current passenger */
 	private Passenger passenger;
 
-	/* amount of women in percent */
-	private static final int PROBABILITY_OF_WOMEN = 50;
+	/* the settings */
+	private SimulationProperties props;
 
 	/*
 	 * This array contains two values, first the age of the passenger and second
@@ -46,8 +49,11 @@ public class PassengerPropertyGenerator {
 
 		this.passenger = pax;
 
+		this.props = ModelHelper.getParent(Cabin.class, pax)
+				.getSimulationSettings();
+
 		/** At first. decide for the sex. **/
-		passenger.setSex(switchRandomSex(PROBABILITY_OF_WOMEN));
+		passenger.setSex(switchRandomSex(props.getPercentageOfWomen()));
 
 		/** Define the mood of the passenger **/
 		passenger.setPassengerMood(PassengerMood.PASSIVE);
@@ -56,23 +62,37 @@ public class PassengerPropertyGenerator {
 		passenger.setAge(adaptAge());
 
 		/** Define the height according to normal distribution **/
-		passenger.setHeight((int) adapt(177.5, 11.1, 164.5, 11.5));
+		passenger.setHeight((int) adapt(props.getPassengerHeightMeanMale(),
+				props.getPassengerHeightDeviationMale(),
+				props.getPassengerHeightMeanFemale(),
+				props.getPassengerHeightDeviationFemale()));
 
 		/** Define the weight according to normal distribution **/
-		passenger.setWeight((int) adapt(90, 20, 60, 15));
+		passenger.setWeight((int) adapt(props.getPassengerWeightMeanMale(),
+				props.getPassengerWeightDeviationMale(),
+				props.getPassengerWeightMeanFemale(),
+				props.getPassengerWeightDeviationFemale()));
 
 		/** Define the depth according to normal distribution **/
-		passenger.setDepth((int) adapt(30, 5, 27, 3));
+		passenger.setDepth((int) adapt(props.getPassengerDepthMeanMale(),
+				props.getPassengerDepthDeviationMale(),
+				props.getPassengerDepthMeanFemale(),
+				props.getPassengerDepthDeviationFemale()));
 
 		/** Define the width according to normal distribution **/
-		passenger.setWidth((int) adapt(47, 2.8, 41.4, 2.8));
+		passenger.setWidth((int) adapt(props.getPassengerWidthMeanMale(),
+				props.getPassengerWidthDeviationMale(),
+				props.getPassengerWidthMeanFemale(),
+				props.getPassengerWidthDeviationFemale()));
 
 		/** Define the walking speed according to age **/
 		passenger.setWalkingSpeed(adaptSpeed());
 
 		/** Define the luggage stow time randomly **/
-		passenger.setLuggageStowTime((int) FuncLib.gaussianRandom(15,
-				GaussOptions.PERCENT_95, 7));
+		passenger.setLuggageStowTime((int) FuncLib.gaussianRandom(
+				props.getPassengerLuggageStowTimeMean(),
+				GaussOptions.PERCENT_95,
+				props.getPassengerLuggageStowTimeDeviation()));
 	}
 
 	/**
@@ -161,7 +181,7 @@ public class PassengerPropertyGenerator {
 	 * @return returns the sex.
 	 */
 
-	private Sex switchRandomSex(int percentageOfWomen) {
+	private Sex switchRandomSex(double percentageOfWomen) {
 		if (FuncLib.randomValue(0, 100) < percentageOfWomen) {
 			return Sex.FEMALE;
 		}

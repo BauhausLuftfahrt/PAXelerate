@@ -7,16 +7,15 @@ public class AggressiveMood extends AgentMood implements Strategy {
 		// TODO Auto-generated constructor stub
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
 	public void reactToCollision() {
-		
-		
 
-		if(super.getAgent().getBlockingAgent().passengerStowsLuggage()) {
+		if (super.getAgent().getBlockingAgent().passengerStowsLuggage()) {
 			super.getAgent().findNewPath();
 			super.getAgent().setExitPathLoop(true);
 		}
-		
+
 		else {
 			try {
 				super.getAgent().getThread().sleep(10);

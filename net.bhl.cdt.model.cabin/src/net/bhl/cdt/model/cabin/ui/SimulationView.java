@@ -207,9 +207,19 @@ public class SimulationView extends JPanel implements MouseListener {
 		g.setColor(Color.BLACK);
 		g.setFont(new Font("Courier New", Font.PLAIN, 12));
 		g.drawString("Real Time: " + watch.getElapsedTimeTens(), 10, 20);
-		g.drawString("Sim. Time: " + watch.getElapsedTimeTens()
-				* SimulationHandler.getCabin().getSpeedFactor() + " >> "
-				+ SimulationHandler.getCabin().getSpeedFactor() + "x", 10, 40);
+
+		double tens = watch.getElapsedTimeTens()
+				* SimulationHandler.getCabin().getSpeedFactor();
+		int minutes = (int) (tens / 60);
+		double seconds = tens % 60.0;
+		String secs = "" + seconds;
+		if (seconds < 10) {
+			secs = "0" + secs;
+		}
+
+		g.drawString("Sim. Time: " + minutes + ":" + secs.replace(".", ":")
+				+ " >> " + SimulationHandler.getCabin().getSpeedFactor() + "x",
+				10, 40);
 		g.drawString(
 				"Passengers: "
 						+ SimulationHandler.getNumberOfSeatedPassengers()

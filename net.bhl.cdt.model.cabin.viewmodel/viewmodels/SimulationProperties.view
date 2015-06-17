@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="ASCII"?>
+<org.eclipse.emf.ecp.view.model:View xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.emf.ecp.view.group.model="http://org/eclipse/emf/ecp/view/group/model" xmlns:org.eclipse.emf.ecp.view.horizontal.model="http://org/eclipse/emf/ecp/view/horizontal/model" xmlns:org.eclipse.emf.ecp.view.label.model="http://org/eclipse/emf/ecp/view/label/model" xmlns:org.eclipse.emf.ecp.view.model="http://org/eclipse/emf/ecp/view/model" xmlns:org.eclipse.emf.ecp.view.vertical.model="http://org/eclipse/emf/ecp/view/vertical/model" ecorePath="/net.bhl.cdt.model.cabin/model/cabin.ecore">
+  <rootEClass href="http://bhl.net/cdt/model/cabin/#//SimulationProperties"/>
+  <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout">
+    <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout">
+      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" name="General">
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control passengersBoardingPerMinute">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/passengersBoardingPerMinute"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control percentageOfWomen">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/percentageOfWomen"/>
+          </domainModelReference>
+        </children>
+      </children>
+    </children>
+    <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout">
+      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" name="Luggage Stowing">
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control passengerLuggageStowTimeMean">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/passengerLuggageStowTimeMean"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control passengerLuggageStowTimeDeviation">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/passengerLuggageStowTimeDeviation"/>
+          </domainModelReference>
+        </children>
+      </children>
+    </children>
+  </children>
+  <children xsi:type="org.eclipse.emf.ecp.view.label.model:Label"/>
+  <children xsi:type="org.eclipse.emf.ecp.view.label.model:Label" name="These are the Gaussian Normal Distribution values! " readonly="true"/>
+  <children xsi:type="org.eclipse.emf.ecp.view.label.model:Label" name="The deviation values refer to the 5 and 95 percent values."/>
+  <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout">
+    <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" name="Male Properties">
+      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" name="Male Properties">
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control passengerWidthMeanFemale">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/passengerWidthMeanFemale"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control passengerWidthDeviationFemale">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/passengerWidthDeviationFemale"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control passengerWeightMeanFemale">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/passengerWeightMeanFemale"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control passengerWeightDeviationFemale">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/passengerWeightDeviationFemale"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control passengerHeightMeanFemale">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/passengerHeightMeanFemale"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control passengerHeightDeviationFemale">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/passengerHeightDeviationFemale"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control passengerDepthMeanFemale">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/passengerDepthMeanFemale"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control passengerDepthDeviationFemale">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/passengerDepthDeviationFemale"/>
+          </domainModelReference>
+        </children>
+      </children>
+    </children>
+    <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout">
+      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" name="Female Properties">
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control passengerWidthMeanMale">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/passengerWidthMeanMale"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control passengerWidthDeviationMale">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/passengerWidthDeviationMale"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control passengerWeightMeanMale">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/passengerWeightMeanMale"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control passengerWeightDeviationMale">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/passengerWeightDeviationMale"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control passengerHeightMeanMale">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/passengerHeightMeanMale"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control passengerHeightDeviationMale">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/passengerHeightDeviationMale"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control passengerDepthMeanMale">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/passengerDepthMeanMale"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control passengerDepthDeviationMale">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/passengerDepthDeviationMale"/>
+          </domainModelReference>
+        </children>
+      </children>
+    </children>
+  </children>
+</org.eclipse.emf.ecp.view.model:View>

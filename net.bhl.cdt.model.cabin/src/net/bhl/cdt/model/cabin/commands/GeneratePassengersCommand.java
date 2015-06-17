@@ -182,7 +182,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 					newPassenger
 							.setStartBoardingAfterDelay((passengerIdCount - 1)
 									* 60.0
-									/ cabin.getPassengersBoardingPerMinute());
+									/ cabin.getSimulationSettings()
+											.getPassengersBoardingPerMinute());
 
 					/************************ random values ***************************/
 

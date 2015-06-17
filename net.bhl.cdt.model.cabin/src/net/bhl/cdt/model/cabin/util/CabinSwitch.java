@@ -201,9 +201,9 @@ public class CabinSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CabinPackage.CABIN_VIEW_SETTINGS: {
-				CabinViewSettings cabinViewSettings = (CabinViewSettings)theEObject;
-				T result = caseCabinViewSettings(cabinViewSettings);
+			case CabinPackage.SIMULATION_PROPERTIES: {
+				SimulationProperties simulationProperties = (SimulationProperties)theEObject;
+				T result = caseSimulationProperties(simulationProperties);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -452,21 +452,6 @@ public class CabinSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>View Settings</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>View Settings</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCabinViewSettings(CabinViewSettings object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Main Door</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -508,6 +493,21 @@ public class CabinSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseStandardDoor(StandardDoor object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Simulation Properties</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Simulation Properties</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSimulationProperties(SimulationProperties object) {
 		return null;
 	}
 

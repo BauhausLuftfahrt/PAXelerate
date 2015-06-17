@@ -440,29 +440,6 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.CabinViewSettings} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CabinViewSettingsItemProvider cabinViewSettingsItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link net.bhl.cdt.model.cabin.CabinViewSettings}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createCabinViewSettingsAdapter() {
-		if (cabinViewSettingsItemProvider == null) {
-			cabinViewSettingsItemProvider = new CabinViewSettingsItemProvider(this);
-		}
-
-		return cabinViewSettingsItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.MainDoor} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -529,6 +506,29 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 		}
 
 		return standardDoorItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.SimulationProperties} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SimulationPropertiesItemProvider simulationPropertiesItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link net.bhl.cdt.model.cabin.SimulationProperties}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSimulationPropertiesAdapter() {
+		if (simulationPropertiesItemProvider == null) {
+			simulationPropertiesItemProvider = new SimulationPropertiesItemProvider(this);
+		}
+
+		return simulationPropertiesItemProvider;
 	}
 
 	/**
@@ -673,7 +673,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 		if (mainDoorItemProvider != null) mainDoorItemProvider.dispose();
 		if (emergencyExitItemProvider != null) emergencyExitItemProvider.dispose();
 		if (standardDoorItemProvider != null) standardDoorItemProvider.dispose();
-		if (cabinViewSettingsItemProvider != null) cabinViewSettingsItemProvider.dispose();
+		if (simulationPropertiesItemProvider != null) simulationPropertiesItemProvider.dispose();
 	}
 
 }

@@ -166,15 +166,6 @@ public interface CabinFactory extends EFactory {
 	Stowage createStowage();
 
 	/**
-	 * Returns a new object of class '<em>View Settings</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>View Settings</em>'.
-	 * @generated
-	 */
-	CabinViewSettings createCabinViewSettings();
-
-	/**
 	 * Returns a new object of class '<em>Main Door</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -200,6 +191,15 @@ public interface CabinFactory extends EFactory {
 	 * @generated
 	 */
 	StandardDoor createStandardDoor();
+
+	/**
+	 * Returns a new object of class '<em>Simulation Properties</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Simulation Properties</em>'.
+	 * @generated
+	 */
+	SimulationProperties createSimulationProperties();
 
 	/**
 	 * Returns a new object of class '<em>Physical Object</em>'.

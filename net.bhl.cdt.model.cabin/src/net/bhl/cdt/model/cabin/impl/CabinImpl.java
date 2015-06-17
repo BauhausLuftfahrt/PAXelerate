@@ -11,6 +11,7 @@ import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.Passenger;
+import net.bhl.cdt.model.cabin.SimulationProperties;
 import net.bhl.cdt.model.cabin.Stairway;
 import net.bhl.cdt.model.cabin.Stowage;
 import net.bhl.cdt.model.cabin.TravelClass;
@@ -50,7 +51,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#isUsePresetSettings <em>Use Preset Settings</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSpeedFactor <em>Speed Factor</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getEstimatedSimulationTime <em>Estimated Simulation Time</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSimulationSettings <em>Simulation Settings</em>}</li>
  * </ul>
  * </p>
  *
@@ -329,24 +330,14 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected double estimatedSimulationTime = ESTIMATED_SIMULATION_TIME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getPassengersBoardingPerMinute() <em>Passengers Boarding Per Minute</em>}' attribute.
+	 * The cached value of the '{@link #getSimulationSettings() <em>Simulation Settings</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPassengersBoardingPerMinute()
+	 * @see #getSimulationSettings()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT = 18;
-	/**
-	 * The cached value of the '{@link #getPassengersBoardingPerMinute() <em>Passengers Boarding Per Minute</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPassengersBoardingPerMinute()
-	 * @generated
-	 * @ordered
-	 */
-	protected int passengersBoardingPerMinute = PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT;
-
+	protected SimulationProperties simulationSettings;
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -636,8 +627,16 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getPassengersBoardingPerMinute() {
-		return passengersBoardingPerMinute;
+	public SimulationProperties getSimulationSettings() {
+		if (simulationSettings != null && simulationSettings.eIsProxy()) {
+			InternalEObject oldSimulationSettings = (InternalEObject)simulationSettings;
+			simulationSettings = (SimulationProperties)eResolveProxy(oldSimulationSettings);
+			if (simulationSettings != oldSimulationSettings) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CabinPackage.CABIN__SIMULATION_SETTINGS, oldSimulationSettings, simulationSettings));
+			}
+		}
+		return simulationSettings;
 	}
 
 	/**
@@ -645,11 +644,20 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPassengersBoardingPerMinute(int newPassengersBoardingPerMinute) {
-		int oldPassengersBoardingPerMinute = passengersBoardingPerMinute;
-		passengersBoardingPerMinute = newPassengersBoardingPerMinute;
+	public SimulationProperties basicGetSimulationSettings() {
+		return simulationSettings;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSimulationSettings(SimulationProperties newSimulationSettings) {
+		SimulationProperties oldSimulationSettings = simulationSettings;
+		simulationSettings = newSimulationSettings;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__PASSENGERS_BOARDING_PER_MINUTE, oldPassengersBoardingPerMinute, passengersBoardingPerMinute));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SIMULATION_SETTINGS, oldSimulationSettings, simulationSettings));
 	}
 
 	/**
@@ -776,8 +784,9 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return getSpeedFactor();
 			case CabinPackage.CABIN__ESTIMATED_SIMULATION_TIME:
 				return getEstimatedSimulationTime();
-			case CabinPackage.CABIN__PASSENGERS_BOARDING_PER_MINUTE:
-				return getPassengersBoardingPerMinute();
+			case CabinPackage.CABIN__SIMULATION_SETTINGS:
+				if (resolve) return getSimulationSettings();
+				return basicGetSimulationSettings();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -858,8 +867,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__ESTIMATED_SIMULATION_TIME:
 				setEstimatedSimulationTime((Double)newValue);
 				return;
-			case CabinPackage.CABIN__PASSENGERS_BOARDING_PER_MINUTE:
-				setPassengersBoardingPerMinute((Integer)newValue);
+			case CabinPackage.CABIN__SIMULATION_SETTINGS:
+				setSimulationSettings((SimulationProperties)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -932,8 +941,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__ESTIMATED_SIMULATION_TIME:
 				setEstimatedSimulationTime(ESTIMATED_SIMULATION_TIME_EDEFAULT);
 				return;
-			case CabinPackage.CABIN__PASSENGERS_BOARDING_PER_MINUTE:
-				setPassengersBoardingPerMinute(PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT);
+			case CabinPackage.CABIN__SIMULATION_SETTINGS:
+				setSimulationSettings((SimulationProperties)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -986,8 +995,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return speedFactor != SPEED_FACTOR_EDEFAULT;
 			case CabinPackage.CABIN__ESTIMATED_SIMULATION_TIME:
 				return estimatedSimulationTime != ESTIMATED_SIMULATION_TIME_EDEFAULT;
-			case CabinPackage.CABIN__PASSENGERS_BOARDING_PER_MINUTE:
-				return passengersBoardingPerMinute != PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT;
+			case CabinPackage.CABIN__SIMULATION_SETTINGS:
+				return simulationSettings != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1025,8 +1034,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		result.append(speedFactor);
 		result.append(", EstimatedSimulationTime: ");
 		result.append(estimatedSimulationTime);
-		result.append(", passengersBoardingPerMinute: ");
-		result.append(passengersBoardingPerMinute);
 		result.append(')');
 		return result.toString();
 	}

@@ -8,7 +8,6 @@ import net.bhl.cdt.model.cabin.BusinessClass;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
 import net.bhl.cdt.model.cabin.CabinPackage;
-import net.bhl.cdt.model.cabin.CabinViewSettings;
 import net.bhl.cdt.model.cabin.CrewMember;
 import net.bhl.cdt.model.cabin.Curtain;
 import net.bhl.cdt.model.cabin.Door;
@@ -25,6 +24,7 @@ import net.bhl.cdt.model.cabin.PremiumEconomyClass;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.Sex;
+import net.bhl.cdt.model.cabin.SimulationProperties;
 import net.bhl.cdt.model.cabin.Stairway;
 import net.bhl.cdt.model.cabin.StairwayDirection;
 import net.bhl.cdt.model.cabin.StandardDoor;
@@ -164,13 +164,6 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass cabinViewSettingsEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass mainDoorEClass = null;
 
 	/**
@@ -186,6 +179,13 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	private EClass standardDoorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass simulationPropertiesEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -462,8 +462,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCabin_PassengersBoardingPerMinute() {
-		return (EAttribute)cabinEClass.getEStructuralFeatures().get(20);
+	public EReference getCabin_SimulationSettings() {
+		return (EReference)cabinEClass.getEStructuralFeatures().get(20);
 	}
 
 	/**
@@ -1128,141 +1128,6 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getCabinViewSettings() {
-		return cabinViewSettingsEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCabinViewSettings_ShowSeatlabels() {
-		return (EAttribute)cabinViewSettingsEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCabinViewSettings_ShowRowLabels() {
-		return (EAttribute)cabinViewSettingsEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCabinViewSettings_ShowGalleyAndLavatoryLabels() {
-		return (EAttribute)cabinViewSettingsEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCabinViewSettings_ShowCurtains() {
-		return (EAttribute)cabinViewSettingsEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCabinViewSettings_ShowSeats() {
-		return (EAttribute)cabinViewSettingsEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCabinViewSettings_ShowGalleys() {
-		return (EAttribute)cabinViewSettingsEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCabinViewSettings_ShowLavatories() {
-		return (EAttribute)cabinViewSettingsEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCabinViewSettings_ShowDoors() {
-		return (EAttribute)cabinViewSettingsEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCabinViewSettings_ShowOccupiedSeats() {
-		return (EAttribute)cabinViewSettingsEClass.getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCabinViewSettings_SizeOfPassengerCircle() {
-		return (EAttribute)cabinViewSettingsEClass.getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCabinViewSettings_DoorOffSetInPixels() {
-		return (EAttribute)cabinViewSettingsEClass.getEStructuralFeatures().get(10);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCabinViewSettings_XZeroInPixels() {
-		return (EAttribute)cabinViewSettingsEClass.getEStructuralFeatures().get(11);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCabinViewSettings_YZeroInPixels() {
-		return (EAttribute)cabinViewSettingsEClass.getEStructuralFeatures().get(12);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCabinViewSettings_CabinWidthInPixels() {
-		return (EAttribute)cabinViewSettingsEClass.getEStructuralFeatures().get(13);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getMainDoor() {
 		return mainDoorEClass;
 	}
@@ -1283,6 +1148,195 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EClass getStandardDoor() {
 		return standardDoorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSimulationProperties() {
+		return simulationPropertiesEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PassengersBoardingPerMinute() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PassengerWidthMeanMale() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PassengerWidthDeviationMale() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PassengerWeightMeanMale() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PassengerWeightDeviationMale() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PassengerHeightMeanMale() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PassengerHeightDeviationMale() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PassengerDepthMeanMale() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PassengerDepthDeviationMale() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PercentageOfWomen() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PassengerLuggageStowTimeMean() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PassengerLuggageStowTimeDeviation() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PassengerWidthMeanFemale() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PassengerWidthDeviationFemale() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PassengerWeightMeanFemale() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PassengerWeightDeviationFemale() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PassengerHeightMeanFemale() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(16);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PassengerHeightDeviationFemale() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(17);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PassengerDepthMeanFemale() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(18);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PassengerDepthDeviationFemale() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(19);
 	}
 
 	/**
@@ -1442,7 +1496,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEAttribute(cabinEClass, CABIN__USE_PRESET_SETTINGS);
 		createEAttribute(cabinEClass, CABIN__SPEED_FACTOR);
 		createEAttribute(cabinEClass, CABIN__ESTIMATED_SIMULATION_TIME);
-		createEAttribute(cabinEClass, CABIN__PASSENGERS_BOARDING_PER_MINUTE);
+		createEReference(cabinEClass, CABIN__SIMULATION_SETTINGS);
 
 		rowEClass = createEClass(ROW);
 		createEReference(rowEClass, ROW__SEATS);
@@ -1544,21 +1598,27 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 
 		standardDoorEClass = createEClass(STANDARD_DOOR);
 
-		cabinViewSettingsEClass = createEClass(CABIN_VIEW_SETTINGS);
-		createEAttribute(cabinViewSettingsEClass, CABIN_VIEW_SETTINGS__SHOW_SEATLABELS);
-		createEAttribute(cabinViewSettingsEClass, CABIN_VIEW_SETTINGS__SHOW_ROW_LABELS);
-		createEAttribute(cabinViewSettingsEClass, CABIN_VIEW_SETTINGS__SHOW_GALLEY_AND_LAVATORY_LABELS);
-		createEAttribute(cabinViewSettingsEClass, CABIN_VIEW_SETTINGS__SHOW_CURTAINS);
-		createEAttribute(cabinViewSettingsEClass, CABIN_VIEW_SETTINGS__SHOW_SEATS);
-		createEAttribute(cabinViewSettingsEClass, CABIN_VIEW_SETTINGS__SHOW_GALLEYS);
-		createEAttribute(cabinViewSettingsEClass, CABIN_VIEW_SETTINGS__SHOW_LAVATORIES);
-		createEAttribute(cabinViewSettingsEClass, CABIN_VIEW_SETTINGS__SHOW_DOORS);
-		createEAttribute(cabinViewSettingsEClass, CABIN_VIEW_SETTINGS__SHOW_OCCUPIED_SEATS);
-		createEAttribute(cabinViewSettingsEClass, CABIN_VIEW_SETTINGS__SIZE_OF_PASSENGER_CIRCLE);
-		createEAttribute(cabinViewSettingsEClass, CABIN_VIEW_SETTINGS__DOOR_OFF_SET_IN_PIXELS);
-		createEAttribute(cabinViewSettingsEClass, CABIN_VIEW_SETTINGS__XZERO_IN_PIXELS);
-		createEAttribute(cabinViewSettingsEClass, CABIN_VIEW_SETTINGS__YZERO_IN_PIXELS);
-		createEAttribute(cabinViewSettingsEClass, CABIN_VIEW_SETTINGS__CABIN_WIDTH_IN_PIXELS);
+		simulationPropertiesEClass = createEClass(SIMULATION_PROPERTIES);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_MALE);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_MALE);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGER_WEIGHT_MEAN_MALE);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_MALE);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGER_HEIGHT_MEAN_MALE);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_MALE);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_MALE);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_MALE);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PERCENTAGE_OF_WOMEN);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_MEAN);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_DEVIATION);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_FEMALE);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_FEMALE);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGER_WEIGHT_MEAN_FEMALE);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_FEMALE);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGER_HEIGHT_MEAN_FEMALE);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_FEMALE);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_FEMALE);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE);
 
 		// Create enums
 		sexEEnum = createEEnum(SEX);
@@ -1635,7 +1695,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEAttribute(getCabin_UsePresetSettings(), ecorePackage.getEBoolean(), "usePresetSettings", "false", 0, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCabin_SpeedFactor(), ecorePackage.getEInt(), "speedFactor", "1", 0, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCabin_EstimatedSimulationTime(), ecorePackage.getEDouble(), "EstimatedSimulationTime", null, 0, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCabin_PassengersBoardingPerMinute(), ecorePackage.getEInt(), "passengersBoardingPerMinute", "18", 1, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCabin_SimulationSettings(), this.getSimulationProperties(), null, "simulationSettings", null, 1, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(rowEClass, Row.class, "Row", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRow_Seats(), this.getSeat(), null, "seats", null, 1, -1, Row.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1761,21 +1821,27 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 
 		initEClass(standardDoorEClass, StandardDoor.class, "StandardDoor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(cabinViewSettingsEClass, CabinViewSettings.class, "CabinViewSettings", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCabinViewSettings_ShowSeatlabels(), ecorePackage.getEBoolean(), "showSeatlabels", "true", 0, 1, CabinViewSettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCabinViewSettings_ShowRowLabels(), ecorePackage.getEBoolean(), "showRowLabels", "true", 0, 1, CabinViewSettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCabinViewSettings_ShowGalleyAndLavatoryLabels(), ecorePackage.getEBoolean(), "showGalleyAndLavatoryLabels", "true", 0, 1, CabinViewSettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCabinViewSettings_ShowCurtains(), ecorePackage.getEBoolean(), "showCurtains", "true", 0, 1, CabinViewSettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCabinViewSettings_ShowSeats(), ecorePackage.getEBoolean(), "showSeats", "true", 0, 1, CabinViewSettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCabinViewSettings_ShowGalleys(), ecorePackage.getEBoolean(), "showGalleys", "true", 0, 1, CabinViewSettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCabinViewSettings_ShowLavatories(), ecorePackage.getEBoolean(), "showLavatories", "true", 0, 1, CabinViewSettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCabinViewSettings_ShowDoors(), ecorePackage.getEBoolean(), "showDoors", "true", 0, 1, CabinViewSettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCabinViewSettings_ShowOccupiedSeats(), ecorePackage.getEBoolean(), "showOccupiedSeats", "true", 0, 1, CabinViewSettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCabinViewSettings_SizeOfPassengerCircle(), ecorePackage.getEDouble(), "sizeOfPassengerCircle", "0.75", 0, 1, CabinViewSettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCabinViewSettings_DoorOffSetInPixels(), ecorePackage.getEInt(), "doorOffSetInPixels", "2", 0, 1, CabinViewSettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCabinViewSettings_XZeroInPixels(), ecorePackage.getEInt(), "xZeroInPixels", "138", 0, 1, CabinViewSettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCabinViewSettings_YZeroInPixels(), ecorePackage.getEInt(), "yZeroInPixels", "90", 0, 1, CabinViewSettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCabinViewSettings_CabinWidthInPixels(), ecorePackage.getEInt(), "cabinWidthInPixels", "96", 0, 1, CabinViewSettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(simulationPropertiesEClass, SimulationProperties.class, "SimulationProperties", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSimulationProperties_PassengersBoardingPerMinute(), ecorePackage.getEDouble(), "passengersBoardingPerMinute", "18", 1, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_PassengerWidthMeanMale(), ecorePackage.getEDouble(), "passengerWidthMeanMale", "47", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_PassengerWidthDeviationMale(), ecorePackage.getEDouble(), "passengerWidthDeviationMale", "2.8", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_PassengerWeightMeanMale(), ecorePackage.getEDouble(), "passengerWeightMeanMale", "90", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_PassengerWeightDeviationMale(), ecorePackage.getEDouble(), "passengerWeightDeviationMale", "20", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_PassengerHeightMeanMale(), ecorePackage.getEDouble(), "passengerHeightMeanMale", "177.5", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_PassengerHeightDeviationMale(), ecorePackage.getEDouble(), "passengerHeightDeviationMale", "11.1", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_PassengerDepthMeanMale(), ecorePackage.getEDouble(), "passengerDepthMeanMale", "30", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_PassengerDepthDeviationMale(), ecorePackage.getEDouble(), "passengerDepthDeviationMale", "5", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_PercentageOfWomen(), ecorePackage.getEDouble(), "percentageOfWomen", "50", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_PassengerLuggageStowTimeMean(), ecorePackage.getEDouble(), "passengerLuggageStowTimeMean", "15", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_PassengerLuggageStowTimeDeviation(), ecorePackage.getEDouble(), "passengerLuggageStowTimeDeviation", "7", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_PassengerWidthMeanFemale(), ecorePackage.getEDouble(), "passengerWidthMeanFemale", "41.4", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_PassengerWidthDeviationFemale(), ecorePackage.getEDouble(), "passengerWidthDeviationFemale", "2.8", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_PassengerWeightMeanFemale(), ecorePackage.getEDouble(), "passengerWeightMeanFemale", "60", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_PassengerWeightDeviationFemale(), ecorePackage.getEDouble(), "passengerWeightDeviationFemale", "15", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_PassengerHeightMeanFemale(), ecorePackage.getEDouble(), "passengerHeightMeanFemale", "164.5", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_PassengerHeightDeviationFemale(), ecorePackage.getEDouble(), "passengerHeightDeviationFemale", "11.5", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_PassengerDepthMeanFemale(), ecorePackage.getEDouble(), "passengerDepthMeanFemale", "27", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_PassengerDepthDeviationFemale(), ecorePackage.getEDouble(), "passengerDepthDeviationFemale", "3", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(sexEEnum, Sex.class, "Sex");

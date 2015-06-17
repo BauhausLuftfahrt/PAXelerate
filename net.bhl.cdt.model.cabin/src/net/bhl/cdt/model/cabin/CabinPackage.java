@@ -259,13 +259,13 @@ public interface CabinPackage extends EPackage {
 	int CABIN__ESTIMATED_SIMULATION_TIME = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 19;
 
 	/**
-	 * The feature id for the '<em><b>Passengers Boarding Per Minute</b></em>' attribute.
+	 * The feature id for the '<em><b>Simulation Settings</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__PASSENGERS_BOARDING_PER_MINUTE = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 20;
+	int CABIN__SIMULATION_SETTINGS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 20;
 
 	/**
 	 * The number of structural features of the '<em>Cabin</em>' class.
@@ -2067,16 +2067,6 @@ public interface CabinPackage extends EPackage {
 	int DOOR_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.impl.CabinViewSettingsImpl <em>View Settings</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see net.bhl.cdt.model.cabin.impl.CabinViewSettingsImpl
-	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getCabinViewSettings()
-	 * @generated
-	 */
-	int CABIN_VIEW_SETTINGS = 20;
-
-	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.impl.MainDoorImpl <em>Main Door</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2296,148 +2286,212 @@ public interface CabinPackage extends EPackage {
 	int STANDARD_DOOR_OPERATION_COUNT = DOOR_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Show Seatlabels</b></em>' attribute.
+	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl <em>Simulation Properties</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl
+	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getSimulationProperties()
 	 * @generated
-	 * @ordered
 	 */
-	int CABIN_VIEW_SETTINGS__SHOW_SEATLABELS = 0;
+	int SIMULATION_PROPERTIES = 20;
 
 	/**
-	 * The feature id for the '<em><b>Show Row Labels</b></em>' attribute.
+	 * The feature id for the '<em><b>Passengers Boarding Per Minute</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_VIEW_SETTINGS__SHOW_ROW_LABELS = 1;
+	int SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Show Galley And Lavatory Labels</b></em>' attribute.
+	 * The feature id for the '<em><b>Passenger Width Mean Male</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_VIEW_SETTINGS__SHOW_GALLEY_AND_LAVATORY_LABELS = 2;
+	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_MALE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Show Curtains</b></em>' attribute.
+	 * The feature id for the '<em><b>Passenger Width Deviation Male</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_VIEW_SETTINGS__SHOW_CURTAINS = 3;
+	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_MALE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Show Seats</b></em>' attribute.
+	 * The feature id for the '<em><b>Passenger Weight Mean Male</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_VIEW_SETTINGS__SHOW_SEATS = 4;
+	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_MEAN_MALE = 3;
 
 	/**
-	 * The feature id for the '<em><b>Show Galleys</b></em>' attribute.
+	 * The feature id for the '<em><b>Passenger Weight Deviation Male</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_VIEW_SETTINGS__SHOW_GALLEYS = 5;
+	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_MALE = 4;
 
 	/**
-	 * The feature id for the '<em><b>Show Lavatories</b></em>' attribute.
+	 * The feature id for the '<em><b>Passenger Height Mean Male</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_VIEW_SETTINGS__SHOW_LAVATORIES = 6;
+	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_MEAN_MALE = 5;
 
 	/**
-	 * The feature id for the '<em><b>Show Doors</b></em>' attribute.
+	 * The feature id for the '<em><b>Passenger Height Deviation Male</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_VIEW_SETTINGS__SHOW_DOORS = 7;
+	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_MALE = 6;
 
 	/**
-	 * The feature id for the '<em><b>Show Occupied Seats</b></em>' attribute.
+	 * The feature id for the '<em><b>Passenger Depth Mean Male</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_VIEW_SETTINGS__SHOW_OCCUPIED_SEATS = 8;
+	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_MALE = 7;
 
 	/**
-	 * The feature id for the '<em><b>Size Of Passenger Circle</b></em>' attribute.
+	 * The feature id for the '<em><b>Passenger Depth Deviation Male</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_VIEW_SETTINGS__SIZE_OF_PASSENGER_CIRCLE = 9;
+	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_MALE = 8;
 
 	/**
-	 * The feature id for the '<em><b>Door Off Set In Pixels</b></em>' attribute.
+	 * The feature id for the '<em><b>Percentage Of Women</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_VIEW_SETTINGS__DOOR_OFF_SET_IN_PIXELS = 10;
+	int SIMULATION_PROPERTIES__PERCENTAGE_OF_WOMEN = 9;
 
 	/**
-	 * The feature id for the '<em><b>XZero In Pixels</b></em>' attribute.
+	 * The feature id for the '<em><b>Passenger Luggage Stow Time Mean</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_VIEW_SETTINGS__XZERO_IN_PIXELS = 11;
+	int SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_MEAN = 10;
 
 	/**
-	 * The feature id for the '<em><b>YZero In Pixels</b></em>' attribute.
+	 * The feature id for the '<em><b>Passenger Luggage Stow Time Deviation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_VIEW_SETTINGS__YZERO_IN_PIXELS = 12;
+	int SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_DEVIATION = 11;
 
 	/**
-	 * The feature id for the '<em><b>Cabin Width In Pixels</b></em>' attribute.
+	 * The feature id for the '<em><b>Passenger Width Mean Female</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_VIEW_SETTINGS__CABIN_WIDTH_IN_PIXELS = 13;
+	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_FEMALE = 12;
 
 	/**
-	 * The number of structural features of the '<em>View Settings</em>' class.
+	 * The feature id for the '<em><b>Passenger Width Deviation Female</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_VIEW_SETTINGS_FEATURE_COUNT = 14;
+	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_FEMALE = 13;
 
 	/**
-	 * The number of operations of the '<em>View Settings</em>' class.
+	 * The feature id for the '<em><b>Passenger Weight Mean Female</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_VIEW_SETTINGS_OPERATION_COUNT = 0;
+	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_MEAN_FEMALE = 14;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Weight Deviation Female</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_FEMALE = 15;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Height Mean Female</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_MEAN_FEMALE = 16;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Height Deviation Female</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_FEMALE = 17;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Depth Mean Female</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_FEMALE = 18;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Depth Deviation Female</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE = 19;
+
+	/**
+	 * The number of structural features of the '<em>Simulation Properties</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES_FEATURE_COUNT = 20;
+
+	/**
+	 * The number of operations of the '<em>Simulation Properties</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.StairwayDirection <em>Stairway Direction</em>}' enum.
@@ -2678,15 +2732,15 @@ public interface CabinPackage extends EPackage {
 	EAttribute getCabin_EstimatedSimulationTime();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}'.
+	 * Returns the meta object for the reference '{@link net.bhl.cdt.model.cabin.Cabin#getSimulationSettings <em>Simulation Settings</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Passengers Boarding Per Minute</em>'.
-	 * @see net.bhl.cdt.model.cabin.Cabin#getPassengersBoardingPerMinute()
+	 * @return the meta object for the reference '<em>Simulation Settings</em>'.
+	 * @see net.bhl.cdt.model.cabin.Cabin#getSimulationSettings()
 	 * @see #getCabin()
 	 * @generated
 	 */
-	EAttribute getCabin_PassengersBoardingPerMinute();
+	EReference getCabin_SimulationSettings();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link net.bhl.cdt.model.cabin.Cabin#getClasses <em>Classes</em>}'.
@@ -3475,170 +3529,6 @@ public interface CabinPackage extends EPackage {
 	EClass getStowage();
 
 	/**
-	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.CabinViewSettings <em>View Settings</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>View Settings</em>'.
-	 * @see net.bhl.cdt.model.cabin.CabinViewSettings
-	 * @generated
-	 */
-	EClass getCabinViewSettings();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#isShowSeatlabels <em>Show Seatlabels</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Show Seatlabels</em>'.
-	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#isShowSeatlabels()
-	 * @see #getCabinViewSettings()
-	 * @generated
-	 */
-	EAttribute getCabinViewSettings_ShowSeatlabels();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#isShowRowLabels <em>Show Row Labels</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Show Row Labels</em>'.
-	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#isShowRowLabels()
-	 * @see #getCabinViewSettings()
-	 * @generated
-	 */
-	EAttribute getCabinViewSettings_ShowRowLabels();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#isShowGalleyAndLavatoryLabels <em>Show Galley And Lavatory Labels</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Show Galley And Lavatory Labels</em>'.
-	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#isShowGalleyAndLavatoryLabels()
-	 * @see #getCabinViewSettings()
-	 * @generated
-	 */
-	EAttribute getCabinViewSettings_ShowGalleyAndLavatoryLabels();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#isShowCurtains <em>Show Curtains</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Show Curtains</em>'.
-	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#isShowCurtains()
-	 * @see #getCabinViewSettings()
-	 * @generated
-	 */
-	EAttribute getCabinViewSettings_ShowCurtains();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#isShowSeats <em>Show Seats</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Show Seats</em>'.
-	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#isShowSeats()
-	 * @see #getCabinViewSettings()
-	 * @generated
-	 */
-	EAttribute getCabinViewSettings_ShowSeats();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#isShowGalleys <em>Show Galleys</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Show Galleys</em>'.
-	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#isShowGalleys()
-	 * @see #getCabinViewSettings()
-	 * @generated
-	 */
-	EAttribute getCabinViewSettings_ShowGalleys();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#isShowLavatories <em>Show Lavatories</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Show Lavatories</em>'.
-	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#isShowLavatories()
-	 * @see #getCabinViewSettings()
-	 * @generated
-	 */
-	EAttribute getCabinViewSettings_ShowLavatories();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#isShowDoors <em>Show Doors</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Show Doors</em>'.
-	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#isShowDoors()
-	 * @see #getCabinViewSettings()
-	 * @generated
-	 */
-	EAttribute getCabinViewSettings_ShowDoors();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#isShowOccupiedSeats <em>Show Occupied Seats</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Show Occupied Seats</em>'.
-	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#isShowOccupiedSeats()
-	 * @see #getCabinViewSettings()
-	 * @generated
-	 */
-	EAttribute getCabinViewSettings_ShowOccupiedSeats();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#getSizeOfPassengerCircle <em>Size Of Passenger Circle</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Size Of Passenger Circle</em>'.
-	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#getSizeOfPassengerCircle()
-	 * @see #getCabinViewSettings()
-	 * @generated
-	 */
-	EAttribute getCabinViewSettings_SizeOfPassengerCircle();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#getDoorOffSetInPixels <em>Door Off Set In Pixels</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Door Off Set In Pixels</em>'.
-	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#getDoorOffSetInPixels()
-	 * @see #getCabinViewSettings()
-	 * @generated
-	 */
-	EAttribute getCabinViewSettings_DoorOffSetInPixels();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#getXZeroInPixels <em>XZero In Pixels</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>XZero In Pixels</em>'.
-	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#getXZeroInPixels()
-	 * @see #getCabinViewSettings()
-	 * @generated
-	 */
-	EAttribute getCabinViewSettings_XZeroInPixels();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#getYZeroInPixels <em>YZero In Pixels</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>YZero In Pixels</em>'.
-	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#getYZeroInPixels()
-	 * @see #getCabinViewSettings()
-	 * @generated
-	 */
-	EAttribute getCabinViewSettings_YZeroInPixels();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.CabinViewSettings#getCabinWidthInPixels <em>Cabin Width In Pixels</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Cabin Width In Pixels</em>'.
-	 * @see net.bhl.cdt.model.cabin.CabinViewSettings#getCabinWidthInPixels()
-	 * @see #getCabinViewSettings()
-	 * @generated
-	 */
-	EAttribute getCabinViewSettings_CabinWidthInPixels();
-
-	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.MainDoor <em>Main Door</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3667,6 +3557,236 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getStandardDoor();
+
+	/**
+	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.SimulationProperties <em>Simulation Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Simulation Properties</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties
+	 * @generated
+	 */
+	EClass getSimulationProperties();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passengers Boarding Per Minute</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getPassengersBoardingPerMinute()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PassengersBoardingPerMinute();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerWidthMeanMale <em>Passenger Width Mean Male</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Width Mean Male</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getPassengerWidthMeanMale()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PassengerWidthMeanMale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerWidthDeviationMale <em>Passenger Width Deviation Male</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Width Deviation Male</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getPassengerWidthDeviationMale()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PassengerWidthDeviationMale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerWeightMeanMale <em>Passenger Weight Mean Male</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Weight Mean Male</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getPassengerWeightMeanMale()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PassengerWeightMeanMale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerWeightDeviationMale <em>Passenger Weight Deviation Male</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Weight Deviation Male</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getPassengerWeightDeviationMale()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PassengerWeightDeviationMale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerHeightMeanMale <em>Passenger Height Mean Male</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Height Mean Male</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getPassengerHeightMeanMale()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PassengerHeightMeanMale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerHeightDeviationMale <em>Passenger Height Deviation Male</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Height Deviation Male</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getPassengerHeightDeviationMale()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PassengerHeightDeviationMale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerDepthMeanMale <em>Passenger Depth Mean Male</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Depth Mean Male</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getPassengerDepthMeanMale()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PassengerDepthMeanMale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerDepthDeviationMale <em>Passenger Depth Deviation Male</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Depth Deviation Male</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getPassengerDepthDeviationMale()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PassengerDepthDeviationMale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPercentageOfWomen <em>Percentage Of Women</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Percentage Of Women</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getPercentageOfWomen()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PercentageOfWomen();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerLuggageStowTimeMean <em>Passenger Luggage Stow Time Mean</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Luggage Stow Time Mean</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getPassengerLuggageStowTimeMean()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PassengerLuggageStowTimeMean();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerLuggageStowTimeDeviation <em>Passenger Luggage Stow Time Deviation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Luggage Stow Time Deviation</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getPassengerLuggageStowTimeDeviation()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PassengerLuggageStowTimeDeviation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerWidthMeanFemale <em>Passenger Width Mean Female</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Width Mean Female</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getPassengerWidthMeanFemale()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PassengerWidthMeanFemale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerWidthDeviationFemale <em>Passenger Width Deviation Female</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Width Deviation Female</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getPassengerWidthDeviationFemale()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PassengerWidthDeviationFemale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerWeightMeanFemale <em>Passenger Weight Mean Female</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Weight Mean Female</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getPassengerWeightMeanFemale()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PassengerWeightMeanFemale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerWeightDeviationFemale <em>Passenger Weight Deviation Female</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Weight Deviation Female</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getPassengerWeightDeviationFemale()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PassengerWeightDeviationFemale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerHeightMeanFemale <em>Passenger Height Mean Female</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Height Mean Female</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getPassengerHeightMeanFemale()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PassengerHeightMeanFemale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerHeightDeviationFemale <em>Passenger Height Deviation Female</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Height Deviation Female</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getPassengerHeightDeviationFemale()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PassengerHeightDeviationFemale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerDepthMeanFemale <em>Passenger Depth Mean Female</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Depth Mean Female</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getPassengerDepthMeanFemale()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PassengerDepthMeanFemale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerDepthDeviationFemale <em>Passenger Depth Deviation Female</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Depth Deviation Female</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getPassengerDepthDeviationFemale()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PassengerDepthDeviationFemale();
 
 	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.PhysicalObject <em>Physical Object</em>}'.
@@ -3946,12 +4066,12 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute CABIN__ESTIMATED_SIMULATION_TIME = eINSTANCE.getCabin_EstimatedSimulationTime();
 		/**
-		 * The meta object literal for the '<em><b>Passengers Boarding Per Minute</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Simulation Settings</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CABIN__PASSENGERS_BOARDING_PER_MINUTE = eINSTANCE.getCabin_PassengersBoardingPerMinute();
+		EReference CABIN__SIMULATION_SETTINGS = eINSTANCE.getCabin_SimulationSettings();
 		/**
 		 * The meta object literal for the '<em><b>Classes</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
@@ -4494,113 +4614,6 @@ public interface CabinPackage extends EPackage {
 		 */
 		EClass STOWAGE = eINSTANCE.getStowage();
 		/**
-		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.CabinViewSettingsImpl <em>View Settings</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see net.bhl.cdt.model.cabin.impl.CabinViewSettingsImpl
-		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getCabinViewSettings()
-		 * @generated
-		 */
-		EClass CABIN_VIEW_SETTINGS = eINSTANCE.getCabinViewSettings();
-		/**
-		 * The meta object literal for the '<em><b>Show Seatlabels</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CABIN_VIEW_SETTINGS__SHOW_SEATLABELS = eINSTANCE.getCabinViewSettings_ShowSeatlabels();
-		/**
-		 * The meta object literal for the '<em><b>Show Row Labels</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CABIN_VIEW_SETTINGS__SHOW_ROW_LABELS = eINSTANCE.getCabinViewSettings_ShowRowLabels();
-		/**
-		 * The meta object literal for the '<em><b>Show Galley And Lavatory Labels</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CABIN_VIEW_SETTINGS__SHOW_GALLEY_AND_LAVATORY_LABELS = eINSTANCE.getCabinViewSettings_ShowGalleyAndLavatoryLabels();
-		/**
-		 * The meta object literal for the '<em><b>Show Curtains</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CABIN_VIEW_SETTINGS__SHOW_CURTAINS = eINSTANCE.getCabinViewSettings_ShowCurtains();
-		/**
-		 * The meta object literal for the '<em><b>Show Seats</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CABIN_VIEW_SETTINGS__SHOW_SEATS = eINSTANCE.getCabinViewSettings_ShowSeats();
-		/**
-		 * The meta object literal for the '<em><b>Show Galleys</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CABIN_VIEW_SETTINGS__SHOW_GALLEYS = eINSTANCE.getCabinViewSettings_ShowGalleys();
-		/**
-		 * The meta object literal for the '<em><b>Show Lavatories</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CABIN_VIEW_SETTINGS__SHOW_LAVATORIES = eINSTANCE.getCabinViewSettings_ShowLavatories();
-		/**
-		 * The meta object literal for the '<em><b>Show Doors</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CABIN_VIEW_SETTINGS__SHOW_DOORS = eINSTANCE.getCabinViewSettings_ShowDoors();
-		/**
-		 * The meta object literal for the '<em><b>Show Occupied Seats</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CABIN_VIEW_SETTINGS__SHOW_OCCUPIED_SEATS = eINSTANCE.getCabinViewSettings_ShowOccupiedSeats();
-		/**
-		 * The meta object literal for the '<em><b>Size Of Passenger Circle</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CABIN_VIEW_SETTINGS__SIZE_OF_PASSENGER_CIRCLE = eINSTANCE.getCabinViewSettings_SizeOfPassengerCircle();
-		/**
-		 * The meta object literal for the '<em><b>Door Off Set In Pixels</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CABIN_VIEW_SETTINGS__DOOR_OFF_SET_IN_PIXELS = eINSTANCE.getCabinViewSettings_DoorOffSetInPixels();
-		/**
-		 * The meta object literal for the '<em><b>XZero In Pixels</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CABIN_VIEW_SETTINGS__XZERO_IN_PIXELS = eINSTANCE.getCabinViewSettings_XZeroInPixels();
-		/**
-		 * The meta object literal for the '<em><b>YZero In Pixels</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CABIN_VIEW_SETTINGS__YZERO_IN_PIXELS = eINSTANCE.getCabinViewSettings_YZeroInPixels();
-		/**
-		 * The meta object literal for the '<em><b>Cabin Width In Pixels</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CABIN_VIEW_SETTINGS__CABIN_WIDTH_IN_PIXELS = eINSTANCE.getCabinViewSettings_CabinWidthInPixels();
-		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.MainDoorImpl <em>Main Door</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4627,6 +4640,155 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EClass STANDARD_DOOR = eINSTANCE.getStandardDoor();
+		/**
+		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl <em>Simulation Properties</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl
+		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getSimulationProperties()
+		 * @generated
+		 */
+		EClass SIMULATION_PROPERTIES = eINSTANCE.getSimulationProperties();
+		/**
+		 * The meta object literal for the '<em><b>Passengers Boarding Per Minute</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = eINSTANCE.getSimulationProperties_PassengersBoardingPerMinute();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Width Mean Male</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_MALE = eINSTANCE.getSimulationProperties_PassengerWidthMeanMale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Width Deviation Male</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_MALE = eINSTANCE.getSimulationProperties_PassengerWidthDeviationMale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Weight Mean Male</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PASSENGER_WEIGHT_MEAN_MALE = eINSTANCE.getSimulationProperties_PassengerWeightMeanMale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Weight Deviation Male</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_MALE = eINSTANCE.getSimulationProperties_PassengerWeightDeviationMale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Height Mean Male</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PASSENGER_HEIGHT_MEAN_MALE = eINSTANCE.getSimulationProperties_PassengerHeightMeanMale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Height Deviation Male</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_MALE = eINSTANCE.getSimulationProperties_PassengerHeightDeviationMale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Depth Mean Male</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_MALE = eINSTANCE.getSimulationProperties_PassengerDepthMeanMale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Depth Deviation Male</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_MALE = eINSTANCE.getSimulationProperties_PassengerDepthDeviationMale();
+		/**
+		 * The meta object literal for the '<em><b>Percentage Of Women</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PERCENTAGE_OF_WOMEN = eINSTANCE.getSimulationProperties_PercentageOfWomen();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Luggage Stow Time Mean</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_MEAN = eINSTANCE.getSimulationProperties_PassengerLuggageStowTimeMean();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Luggage Stow Time Deviation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_DEVIATION = eINSTANCE.getSimulationProperties_PassengerLuggageStowTimeDeviation();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Width Mean Female</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_FEMALE = eINSTANCE.getSimulationProperties_PassengerWidthMeanFemale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Width Deviation Female</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_FEMALE = eINSTANCE.getSimulationProperties_PassengerWidthDeviationFemale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Weight Mean Female</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PASSENGER_WEIGHT_MEAN_FEMALE = eINSTANCE.getSimulationProperties_PassengerWeightMeanFemale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Weight Deviation Female</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_FEMALE = eINSTANCE.getSimulationProperties_PassengerWeightDeviationFemale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Height Mean Female</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PASSENGER_HEIGHT_MEAN_FEMALE = eINSTANCE.getSimulationProperties_PassengerHeightMeanFemale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Height Deviation Female</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_FEMALE = eINSTANCE.getSimulationProperties_PassengerHeightDeviationFemale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Depth Mean Female</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_FEMALE = eINSTANCE.getSimulationProperties_PassengerDepthMeanFemale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Depth Deviation Female</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE = eINSTANCE.getSimulationProperties_PassengerDepthDeviationFemale();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.PhysicalObjectImpl <em>Physical Object</em>}' class.
 		 * <!-- begin-user-doc -->

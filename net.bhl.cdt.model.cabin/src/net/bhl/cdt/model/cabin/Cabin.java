@@ -33,7 +33,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#isUsePresetSettings <em>Use Preset Settings</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSpeedFactor <em>Speed Factor</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getEstimatedSimulationTime <em>Estimated Simulation Time</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSimulationSettings <em>Simulation Settings</em>}</li>
  * </ul>
  * </p>
  *
@@ -426,31 +426,30 @@ public interface Cabin extends NamedElement {
 	void setEstimatedSimulationTime(double value);
 
 	/**
-	 * Returns the value of the '<em><b>Passengers Boarding Per Minute</b></em>' attribute.
-	 * The default value is <code>"18"</code>.
+	 * Returns the value of the '<em><b>Simulation Settings</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Passengers Boarding Per Minute</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Simulation Settings</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Passengers Boarding Per Minute</em>' attribute.
-	 * @see #setPassengersBoardingPerMinute(int)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_PassengersBoardingPerMinute()
-	 * @model default="18" required="true"
+	 * @return the value of the '<em>Simulation Settings</em>' reference.
+	 * @see #setSimulationSettings(SimulationProperties)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SimulationSettings()
+	 * @model required="true"
 	 * @generated
 	 */
-	int getPassengersBoardingPerMinute();
+	SimulationProperties getSimulationSettings();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Cabin#getSimulationSettings <em>Simulation Settings</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Passengers Boarding Per Minute</em>' attribute.
-	 * @see #getPassengersBoardingPerMinute()
+	 * @param value the new value of the '<em>Simulation Settings</em>' reference.
+	 * @see #getSimulationSettings()
 	 * @generated
 	 */
-	void setPassengersBoardingPerMinute(int value);
+	void setSimulationSettings(SimulationProperties value);
 
 	/**
 	 * Returns the value of the '<em><b>Classes</b></em>' containment reference list.

@@ -9,10 +9,12 @@ import java.util.ArrayList;
 
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.Cabin;
+import net.bhl.cdt.model.cabin.CabinFactory;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PhysicalObject;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
+import net.bhl.cdt.model.cabin.SimulationProperties;
 import net.bhl.cdt.model.cabin.TravelClass;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.util.FuncLib;
@@ -64,6 +66,12 @@ public class DrawCabinCommand extends CDTCommand {
 		 * @param args
 		 *            the arguments
 		 */
+
+		if (cabin.getSimulationSettings() == null) {
+			SimulationProperties props = CabinFactory.eINSTANCE
+					.createSimulationProperties();
+			cabin.setSimulationSettings(props);
+		}
 
 		IWorkbenchPage page = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage();
