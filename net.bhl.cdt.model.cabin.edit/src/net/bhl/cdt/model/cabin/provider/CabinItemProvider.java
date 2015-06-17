@@ -50,13 +50,13 @@ public class CabinItemProvider extends NamedElementItemProvider {
 			addAisleWidthPropertyDescriptor(object);
 			addFramesPerSecondPropertyDescriptor(object);
 			addNumberOfDecksPropertyDescriptor(object);
+			addSimulationSettingsPropertyDescriptor(object);
 			addScalePropertyDescriptor(object);
 			addRealElapsedTimePropertyDescriptor(object);
 			addAircraftTypePropertyDescriptor(object);
 			addUsePresetSettingsPropertyDescriptor(object);
 			addSpeedFactorPropertyDescriptor(object);
 			addEstimatedSimulationTimePropertyDescriptor(object);
-			addSimulationSettingsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}

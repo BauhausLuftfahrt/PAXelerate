@@ -2,7 +2,6 @@
  */
 package net.bhl.cdt.model.cabin.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -26,23 +25,19 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link net.bhl.cdt.model.cabin.SimulationProperties} object.
- * <!-- begin-user-doc -->
- * <!-- end-user-doc -->
+ * This is the item provider adapter for a
+ * {@link net.bhl.cdt.model.cabin.SimulationProperties} object. <!--
+ * begin-user-doc --> <!-- end-user-doc -->
+ * 
  * @generated
  */
-public class SimulationPropertiesItemProvider 
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+public class SimulationPropertiesItemProvider extends ItemProviderAdapter
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This constructs an instance from a factory and a notifier. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SimulationPropertiesItemProvider(AdapterFactory adapterFactory) {
@@ -50,9 +45,9 @@ public class SimulationPropertiesItemProvider
 	}
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This returns the property descriptors for the adapted class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -60,6 +55,9 @@ public class SimulationPropertiesItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addSimulateWithoutUIPropertyDescriptor(object);
+			addNumberOfSimulationLoopsPropertyDescriptor(object);
+			addRandomSortBetweenLoopsPropertyDescriptor(object);
 			addPassengersBoardingPerMinutePropertyDescriptor(object);
 			addPassengerWidthMeanMalePropertyDescriptor(object);
 			addPassengerWidthDeviationMalePropertyDescriptor(object);
@@ -85,12 +83,78 @@ public class SimulationPropertiesItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Passengers Boarding Per Minute feature.
+	 * This adds a property descriptor for the Simulate Without UI feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPassengersBoardingPerMinutePropertyDescriptor(Object object) {
+	protected void addSimulateWithoutUIPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_simulateWithoutUI_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_simulateWithoutUI_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Number Of Simulation Loops feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNumberOfSimulationLoopsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_numberOfSimulationLoops_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_numberOfSimulationLoops_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Random Sort Between Loops feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRandomSortBetweenLoopsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_randomSortBetweenLoops_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_randomSortBetweenLoops_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Passengers Boarding Per Minute feature.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPassengersBoardingPerMinutePropertyDescriptor(
+			Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -108,8 +172,7 @@ public class SimulationPropertiesItemProvider
 
 	/**
 	 * This adds a property descriptor for the Passenger Width Mean Male feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addPassengerWidthMeanMalePropertyDescriptor(Object object) {
@@ -130,11 +193,11 @@ public class SimulationPropertiesItemProvider
 
 	/**
 	 * This adds a property descriptor for the Passenger Width Deviation Male feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPassengerWidthDeviationMalePropertyDescriptor(Object object) {
+	protected void addPassengerWidthDeviationMalePropertyDescriptor(
+			Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -152,8 +215,7 @@ public class SimulationPropertiesItemProvider
 
 	/**
 	 * This adds a property descriptor for the Passenger Weight Mean Male feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addPassengerWeightMeanMalePropertyDescriptor(Object object) {
@@ -174,11 +236,11 @@ public class SimulationPropertiesItemProvider
 
 	/**
 	 * This adds a property descriptor for the Passenger Weight Deviation Male feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPassengerWeightDeviationMalePropertyDescriptor(Object object) {
+	protected void addPassengerWeightDeviationMalePropertyDescriptor(
+			Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -196,8 +258,7 @@ public class SimulationPropertiesItemProvider
 
 	/**
 	 * This adds a property descriptor for the Passenger Height Mean Male feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addPassengerHeightMeanMalePropertyDescriptor(Object object) {
@@ -218,11 +279,11 @@ public class SimulationPropertiesItemProvider
 
 	/**
 	 * This adds a property descriptor for the Passenger Height Deviation Male feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPassengerHeightDeviationMalePropertyDescriptor(Object object) {
+	protected void addPassengerHeightDeviationMalePropertyDescriptor(
+			Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -240,8 +301,7 @@ public class SimulationPropertiesItemProvider
 
 	/**
 	 * This adds a property descriptor for the Passenger Depth Mean Male feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addPassengerDepthMeanMalePropertyDescriptor(Object object) {
@@ -262,11 +322,11 @@ public class SimulationPropertiesItemProvider
 
 	/**
 	 * This adds a property descriptor for the Passenger Depth Deviation Male feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPassengerDepthDeviationMalePropertyDescriptor(Object object) {
+	protected void addPassengerDepthDeviationMalePropertyDescriptor(
+			Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -283,9 +343,9 @@ public class SimulationPropertiesItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Percentage Of Women feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds a property descriptor for the Percentage Of Women feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addPercentageOfWomenPropertyDescriptor(Object object) {
@@ -306,11 +366,11 @@ public class SimulationPropertiesItemProvider
 
 	/**
 	 * This adds a property descriptor for the Passenger Luggage Stow Time Mean feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPassengerLuggageStowTimeMeanPropertyDescriptor(Object object) {
+	protected void addPassengerLuggageStowTimeMeanPropertyDescriptor(
+			Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -328,11 +388,11 @@ public class SimulationPropertiesItemProvider
 
 	/**
 	 * This adds a property descriptor for the Passenger Luggage Stow Time Deviation feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPassengerLuggageStowTimeDeviationPropertyDescriptor(Object object) {
+	protected void addPassengerLuggageStowTimeDeviationPropertyDescriptor(
+			Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -350,8 +410,7 @@ public class SimulationPropertiesItemProvider
 
 	/**
 	 * This adds a property descriptor for the Passenger Width Mean Female feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addPassengerWidthMeanFemalePropertyDescriptor(Object object) {
@@ -372,11 +431,11 @@ public class SimulationPropertiesItemProvider
 
 	/**
 	 * This adds a property descriptor for the Passenger Width Deviation Female feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPassengerWidthDeviationFemalePropertyDescriptor(Object object) {
+	protected void addPassengerWidthDeviationFemalePropertyDescriptor(
+			Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -394,8 +453,7 @@ public class SimulationPropertiesItemProvider
 
 	/**
 	 * This adds a property descriptor for the Passenger Weight Mean Female feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addPassengerWeightMeanFemalePropertyDescriptor(Object object) {
@@ -416,11 +474,11 @@ public class SimulationPropertiesItemProvider
 
 	/**
 	 * This adds a property descriptor for the Passenger Weight Deviation Female feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPassengerWeightDeviationFemalePropertyDescriptor(Object object) {
+	protected void addPassengerWeightDeviationFemalePropertyDescriptor(
+			Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -438,8 +496,7 @@ public class SimulationPropertiesItemProvider
 
 	/**
 	 * This adds a property descriptor for the Passenger Height Mean Female feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addPassengerHeightMeanFemalePropertyDescriptor(Object object) {
@@ -460,11 +517,11 @@ public class SimulationPropertiesItemProvider
 
 	/**
 	 * This adds a property descriptor for the Passenger Height Deviation Female feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPassengerHeightDeviationFemalePropertyDescriptor(Object object) {
+	protected void addPassengerHeightDeviationFemalePropertyDescriptor(
+			Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -482,8 +539,7 @@ public class SimulationPropertiesItemProvider
 
 	/**
 	 * This adds a property descriptor for the Passenger Depth Mean Female feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addPassengerDepthMeanFemalePropertyDescriptor(Object object) {
@@ -504,11 +560,11 @@ public class SimulationPropertiesItemProvider
 
 	/**
 	 * This adds a property descriptor for the Passenger Depth Deviation Female feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPassengerDepthDeviationFemalePropertyDescriptor(Object object) {
+	protected void addPassengerDepthDeviationFemalePropertyDescriptor(
+			Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -526,8 +582,8 @@ public class SimulationPropertiesItemProvider
 
 	/**
 	 * This returns SimulationProperties.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -536,23 +592,22 @@ public class SimulationPropertiesItemProvider
 	}
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This returns the label text for the adapted class. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		SimulationProperties simulationProperties = (SimulationProperties)object;
-		return getString("_UI_SimulationProperties_type") + " " + simulationProperties.getPassengersBoardingPerMinute();
+		SimulationProperties simulationProperties = (SimulationProperties) object;
+		return getString("_UI_SimulationProperties_type");
 	}
-	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -560,6 +615,9 @@ public class SimulationPropertiesItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SimulationProperties.class)) {
+			case CabinPackage.SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI:
+			case CabinPackage.SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS:
+			case CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS:
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_MALE:
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_MALE:
@@ -587,21 +645,22 @@ public class SimulationPropertiesItemProvider
 	}
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
+	 * describing the children that can be created under this object. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
 	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Return the resource locator for this item provider's resources. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

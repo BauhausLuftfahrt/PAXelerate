@@ -30,6 +30,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 
 /**
@@ -45,6 +46,8 @@ public class SortPassengersCommand extends CDTCommand {
 	private Cabin cabin;
 	private ILog logger;
 	private CabinViewPart cabinViewPart;
+	private boolean showDialog = true;
+	private int value = 0;
 
 	public SortPassengersCommand(Cabin cabin) {
 
@@ -52,17 +55,27 @@ public class SortPassengersCommand extends CDTCommand {
 		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
 	}
 
+	public void setPropertiesManually(boolean showDialog, int value) {
+		this.showDialog = showDialog;
+		this.value = value;
+	}
+
 	@Override
 	protected void doRun() {
 
-		Input input = new Input(
-				WindowType.OPTIONS,
-				"Please choose a sorting algorithm. [0]: Random, [1]: R->F, [2]: F->R, [3]: Window to aisle & R->F, [4]: Window to aisle & F->R",
-				IMessageProvider.INFORMATION);
+		if (showDialog) {
+			Input input = new Input(
+					WindowType.OPTIONS,
+					"Please choose a sorting algorithm. [0]: Random, [1]: R->F, [2]: F->R, [3]: Window to aisle & R->F, [4]: Window to aisle & F->R",
+					IMessageProvider.INFORMATION);
 
+			value = input.getIntegerValue();
+		}
 		EList<Passenger> paxList = cabin.getPassengers();
 
-		switch (input.getIntegerValue()) {
+		System.out.println("Sorting passengers ...");
+
+		switch (value) {
 
 		case 0:
 			for (int j = 0; j < paxList.size(); j++) {
@@ -103,10 +116,11 @@ public class SortPassengersCommand extends CDTCommand {
 				for (int i = 0; i < paxList.size() - 1; i++) {
 					Passenger thisPax = paxList.get(i);
 					Passenger otherPax = paxList.get(i + 1);
-					if (AgentFunctions.otherSeatCloserToAisle(thisPax.getSeatRef(),otherPax.getSeatRef())) {
-						if (thisPax.getSeatRef().getYPosition() < otherPax.getSeatRef()
-								.getYPosition()) {
-						paxList.move(i, otherPax);
+					if (AgentFunctions.otherSeatCloserToAisle(
+							thisPax.getSeatRef(), otherPax.getSeatRef())) {
+						if (thisPax.getSeatRef().getYPosition() < otherPax
+								.getSeatRef().getYPosition()) {
+							paxList.move(i, otherPax);
 						}
 					}
 				}
@@ -116,16 +130,16 @@ public class SortPassengersCommand extends CDTCommand {
 		default:
 			break;
 		}
-		
+
+		System.out.println("Sorting completed.");
+
 		double passengersPerMinute = 30;
 		int i = 0;
-		for(Passenger pax:cabin.getPassengers()) {
+		for (Passenger pax : cabin.getPassengers()) {
 			pax.setStartBoardingAfterDelay(i * 60 / passengersPerMinute);
 			i++;
 		}
 
-		
-		
 		IWorkbenchPage page = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage();
 		cabinViewPart = (CabinViewPart) page

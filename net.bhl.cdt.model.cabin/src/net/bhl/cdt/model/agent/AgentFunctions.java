@@ -1,5 +1,6 @@
 package net.bhl.cdt.model.agent;
 
+import net.bhl.cdt.model.astar.CostMap;
 import net.bhl.cdt.model.astar.Node;
 import net.bhl.cdt.model.astar.SimulationHandler;
 import net.bhl.cdt.model.astar.Node.Property;
@@ -8,6 +9,9 @@ import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
+import net.bhl.cdt.model.cabin.util.FuncLib;
+import net.bhl.cdt.model.cabin.util.Vector;
+import net.bhl.cdt.model.cabin.util.Vector2D;
 import net.bhl.cdt.model.util.ModelHelper;
 
 public class AgentFunctions {
@@ -115,5 +119,84 @@ public class AgentFunctions {
 			// System.out.println("Doorway is now clear.");
 			return false;
 		}
+	}
+
+	/**
+	 * This method takes a cost map and adds a huge cost to the location and the
+	 * area around agents. The agent triggering this method is ignored.
+	 */
+	public static CostMap updateCostmap(Agent agent) {
+
+		/* The cost map is flooded from the agents current location to his seat */
+		CostMap costmap = new CostMap(SimulationHandler.getMap()
+				.getDimensions(), agent.getStart(), SimulationHandler.getMap(),
+				false, agent, true);
+
+		/*
+		 * define the square dimension around the passenger that should be
+		 * scanned. This is the default dimension in each direction from the
+		 * center!
+		 */
+		int squareDimension = 10;
+
+		/* this is the expansion in the x Direction */
+		Vector xVector = new Vector2D(agent.getCurrentPosition().getX()
+				- squareDimension, agent.getCurrentPosition().getX()
+				+ squareDimension);
+
+		/* this is the expansion in the x Direction */
+		Vector yVector = new Vector2D(agent.getCurrentPosition().getY()
+				- squareDimension, agent.getCurrentPosition().getY()
+				+ squareDimension);
+
+		/*
+		 * The first value of the vectors above represents the beginning of the
+		 * area being checked, the second value the end.
+		 */
+
+		/* then there is cost assigned to an area around the other agents */
+		for (int xCoordinate = xVector.getX(); xCoordinate < xVector.getY(); xCoordinate++) {
+			for (int yCoordinate = yVector.getX(); yCoordinate < yVector.getY(); yCoordinate++) {
+
+				/* prevent out of bounds exceptions */
+				if (xCoordinate > 0 && yCoordinate > 0) {
+
+					/* find all nodes occupied by agents */
+					if (SimulationHandler.getMap()
+							.getNodeByCoordinate(xCoordinate, yCoordinate)
+							.getProperty() == Property.AGENT) {
+
+						/*
+						 * additionally to the surrounding points of the agents,
+						 * there is also cost generated in the area in front of
+						 * an agent. This is used to make the agent overtake
+						 * easier
+						 */
+						for (int stepsAhead = 0; stepsAhead < 6; stepsAhead++) {
+
+							/* the current agents position is excluded here! */
+							if (!FuncLib.vectorsAreEqual(
+									SimulationHandler
+											.getMap()
+											.getNodeByCoordinate(xCoordinate,
+													yCoordinate).getPosition(),
+									agent.getCurrentPosition())) {
+
+								/* the surrounding points are calculated */
+								for (Vector point : costmap
+										.getSurroundingPoints(xCoordinate,
+												yCoordinate + stepsAhead)) {
+
+									/* the surrounding costs are assigned */
+									costmap.setPublicCost(point.getX(),
+											point.getY(), 5000);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		return costmap;
 	}
 }

@@ -14,6 +14,21 @@
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/percentageOfWomen"/>
           </domainModelReference>
         </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/simulateWithoutUI"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/randomSortBetweenLoops"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/numberOfSimulationLoops"/>
+          </domainModelReference>
+        </children>
       </children>
     </children>
     <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout">

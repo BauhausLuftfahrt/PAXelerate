@@ -25,7 +25,7 @@ import net.bhl.cdt.model.cabin.TravelClass;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.InfoViewPart;
 import net.bhl.cdt.model.cabin.util.FuncLib;
-import net.bhl.cdt.model.cabin.util.PassengerEvaluator;
+import net.bhl.cdt.model.cabin.util.SimulationResultLogger;
 import net.bhl.cdt.model.cabin.util.PassengerPropertyGenerator;
 import net.bhl.cdt.model.cabin.util.FuncLib.GaussOptions;
 import net.bhl.cdt.model.util.ModelHelper;
@@ -322,10 +322,5 @@ public class GeneratePassengersCommand extends CDTCommand {
 			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 					"Cabin View or Info view not visible!"));
 		}
-
-		PassengerEvaluator evaluator = new PassengerEvaluator(
-				cabin.getPassengers());
-		evaluator.printResults();
-
 	}
 }

@@ -19,6 +19,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#isSimulateWithoutUI <em>Simulate Without UI</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#getNumberOfSimulationLoops <em>Number Of Simulation Loops</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#isRandomSortBetweenLoops <em>Random Sort Between Loops</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#getPassengerWidthMeanMale <em>Passenger Width Mean Male</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#getPassengerWidthDeviationMale <em>Passenger Width Deviation Male</em>}</li>
@@ -45,6 +48,66 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * @generated
  */
 public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container implements SimulationProperties {
+	/**
+	 * The default value of the '{@link #isSimulateWithoutUI() <em>Simulate Without UI</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSimulateWithoutUI()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean SIMULATE_WITHOUT_UI_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isSimulateWithoutUI() <em>Simulate Without UI</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSimulateWithoutUI()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean simulateWithoutUI = SIMULATE_WITHOUT_UI_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getNumberOfSimulationLoops() <em>Number Of Simulation Loops</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNumberOfSimulationLoops()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int NUMBER_OF_SIMULATION_LOOPS_EDEFAULT = 1;
+
+	/**
+	 * The cached value of the '{@link #getNumberOfSimulationLoops() <em>Number Of Simulation Loops</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNumberOfSimulationLoops()
+	 * @generated
+	 * @ordered
+	 */
+	protected int numberOfSimulationLoops = NUMBER_OF_SIMULATION_LOOPS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isRandomSortBetweenLoops() <em>Random Sort Between Loops</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRandomSortBetweenLoops()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean RANDOM_SORT_BETWEEN_LOOPS_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isRandomSortBetweenLoops() <em>Random Sort Between Loops</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRandomSortBetweenLoops()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean randomSortBetweenLoops = RANDOM_SORT_BETWEEN_LOOPS_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getPassengersBoardingPerMinute() <em>Passengers Boarding Per Minute</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -462,6 +525,69 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	protected EClass eStaticClass() {
 		return CabinPackage.Literals.SIMULATION_PROPERTIES;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSimulateWithoutUI() {
+		return simulateWithoutUI;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSimulateWithoutUI(boolean newSimulateWithoutUI) {
+		boolean oldSimulateWithoutUI = simulateWithoutUI;
+		simulateWithoutUI = newSimulateWithoutUI;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI, oldSimulateWithoutUI, simulateWithoutUI));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getNumberOfSimulationLoops() {
+		return numberOfSimulationLoops;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNumberOfSimulationLoops(int newNumberOfSimulationLoops) {
+		int oldNumberOfSimulationLoops = numberOfSimulationLoops;
+		numberOfSimulationLoops = newNumberOfSimulationLoops;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS, oldNumberOfSimulationLoops, numberOfSimulationLoops));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isRandomSortBetweenLoops() {
+		return randomSortBetweenLoops;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRandomSortBetweenLoops(boolean newRandomSortBetweenLoops) {
+		boolean oldRandomSortBetweenLoops = randomSortBetweenLoops;
+		randomSortBetweenLoops = newRandomSortBetweenLoops;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS, oldRandomSortBetweenLoops, randomSortBetweenLoops));
 	}
 
 	/**
@@ -892,6 +1018,12 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case CabinPackage.SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI:
+				return isSimulateWithoutUI();
+			case CabinPackage.SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS:
+				return getNumberOfSimulationLoops();
+			case CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS:
+				return isRandomSortBetweenLoops();
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				return getPassengersBoardingPerMinute();
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_MALE:
@@ -944,6 +1076,15 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case CabinPackage.SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI:
+				setSimulateWithoutUI((Boolean)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS:
+				setNumberOfSimulationLoops((Integer)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS:
+				setRandomSortBetweenLoops((Boolean)newValue);
+				return;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				setPassengersBoardingPerMinute((Double)newValue);
 				return;
@@ -1016,6 +1157,15 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case CabinPackage.SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI:
+				setSimulateWithoutUI(SIMULATE_WITHOUT_UI_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS:
+				setNumberOfSimulationLoops(NUMBER_OF_SIMULATION_LOOPS_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS:
+				setRandomSortBetweenLoops(RANDOM_SORT_BETWEEN_LOOPS_EDEFAULT);
+				return;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				setPassengersBoardingPerMinute(PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT);
 				return;
@@ -1088,6 +1238,12 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case CabinPackage.SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI:
+				return simulateWithoutUI != SIMULATE_WITHOUT_UI_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS:
+				return numberOfSimulationLoops != NUMBER_OF_SIMULATION_LOOPS_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS:
+				return randomSortBetweenLoops != RANDOM_SORT_BETWEEN_LOOPS_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				return passengersBoardingPerMinute != PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_MALE:
@@ -1142,7 +1298,13 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (passengersBoardingPerMinute: ");
+		result.append(" (simulateWithoutUI: ");
+		result.append(simulateWithoutUI);
+		result.append(", numberOfSimulationLoops: ");
+		result.append(numberOfSimulationLoops);
+		result.append(", randomSortBetweenLoops: ");
+		result.append(randomSortBetweenLoops);
+		result.append(", passengersBoardingPerMinute: ");
 		result.append(passengersBoardingPerMinute);
 		result.append(", passengerWidthMeanMale: ");
 		result.append(passengerWidthMeanMale);

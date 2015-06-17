@@ -37,6 +37,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getAisleWidth <em>Aisle Width</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getFramesPerSecond <em>Frames Per Second</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getNumberOfDecks <em>Number Of Decks</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSimulationSettings <em>Simulation Settings</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getClasses <em>Classes</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getDoors <em>Doors</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getLavatories <em>Lavatories</em>}</li>
@@ -51,7 +52,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#isUsePresetSettings <em>Use Preset Settings</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSpeedFactor <em>Speed Factor</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getEstimatedSimulationTime <em>Estimated Simulation Time</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSimulationSettings <em>Simulation Settings</em>}</li>
  * </ul>
  * </p>
  *
@@ -160,6 +160,15 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @ordered
 	 */
 	protected int numberOfDecks = NUMBER_OF_DECKS_EDEFAULT;
+	/**
+	 * The cached value of the '{@link #getSimulationSettings() <em>Simulation Settings</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimulationSettings()
+	 * @generated
+	 * @ordered
+	 */
+	protected SimulationProperties simulationSettings;
 	/**
 	 * The cached value of the '{@link #getClasses() <em>Classes</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -328,16 +337,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @ordered
 	 */
 	protected double estimatedSimulationTime = ESTIMATED_SIMULATION_TIME_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getSimulationSettings() <em>Simulation Settings</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSimulationSettings()
-	 * @generated
-	 * @ordered
-	 */
-	protected SimulationProperties simulationSettings;
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -756,6 +755,9 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return getFramesPerSecond();
 			case CabinPackage.CABIN__NUMBER_OF_DECKS:
 				return getNumberOfDecks();
+			case CabinPackage.CABIN__SIMULATION_SETTINGS:
+				if (resolve) return getSimulationSettings();
+				return basicGetSimulationSettings();
 			case CabinPackage.CABIN__CLASSES:
 				return getClasses();
 			case CabinPackage.CABIN__DOORS:
@@ -784,9 +786,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return getSpeedFactor();
 			case CabinPackage.CABIN__ESTIMATED_SIMULATION_TIME:
 				return getEstimatedSimulationTime();
-			case CabinPackage.CABIN__SIMULATION_SETTINGS:
-				if (resolve) return getSimulationSettings();
-				return basicGetSimulationSettings();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -816,6 +815,9 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return;
 			case CabinPackage.CABIN__NUMBER_OF_DECKS:
 				setNumberOfDecks((Integer)newValue);
+				return;
+			case CabinPackage.CABIN__SIMULATION_SETTINGS:
+				setSimulationSettings((SimulationProperties)newValue);
 				return;
 			case CabinPackage.CABIN__CLASSES:
 				getClasses().clear();
@@ -867,9 +869,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__ESTIMATED_SIMULATION_TIME:
 				setEstimatedSimulationTime((Double)newValue);
 				return;
-			case CabinPackage.CABIN__SIMULATION_SETTINGS:
-				setSimulationSettings((SimulationProperties)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -898,6 +897,9 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return;
 			case CabinPackage.CABIN__NUMBER_OF_DECKS:
 				setNumberOfDecks(NUMBER_OF_DECKS_EDEFAULT);
+				return;
+			case CabinPackage.CABIN__SIMULATION_SETTINGS:
+				setSimulationSettings((SimulationProperties)null);
 				return;
 			case CabinPackage.CABIN__CLASSES:
 				getClasses().clear();
@@ -941,9 +943,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__ESTIMATED_SIMULATION_TIME:
 				setEstimatedSimulationTime(ESTIMATED_SIMULATION_TIME_EDEFAULT);
 				return;
-			case CabinPackage.CABIN__SIMULATION_SETTINGS:
-				setSimulationSettings((SimulationProperties)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -967,6 +966,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return framesPerSecond != FRAMES_PER_SECOND_EDEFAULT;
 			case CabinPackage.CABIN__NUMBER_OF_DECKS:
 				return numberOfDecks != NUMBER_OF_DECKS_EDEFAULT;
+			case CabinPackage.CABIN__SIMULATION_SETTINGS:
+				return simulationSettings != null;
 			case CabinPackage.CABIN__CLASSES:
 				return classes != null && !classes.isEmpty();
 			case CabinPackage.CABIN__DOORS:
@@ -995,8 +996,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return speedFactor != SPEED_FACTOR_EDEFAULT;
 			case CabinPackage.CABIN__ESTIMATED_SIMULATION_TIME:
 				return estimatedSimulationTime != ESTIMATED_SIMULATION_TIME_EDEFAULT;
-			case CabinPackage.CABIN__SIMULATION_SETTINGS:
-				return simulationSettings != null;
 		}
 		return super.eIsSet(featureID);
 	}

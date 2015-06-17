@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getAisleWidth <em>Aisle Width</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getFramesPerSecond <em>Frames Per Second</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getNumberOfDecks <em>Number Of Decks</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSimulationSettings <em>Simulation Settings</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getClasses <em>Classes</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getDoors <em>Doors</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getLavatories <em>Lavatories</em>}</li>
@@ -33,7 +34,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#isUsePresetSettings <em>Use Preset Settings</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSpeedFactor <em>Speed Factor</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getEstimatedSimulationTime <em>Estimated Simulation Time</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Cabin#getSimulationSettings <em>Simulation Settings</em>}</li>
  * </ul>
  * </p>
  *

@@ -12,6 +12,9 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#isSimulateWithoutUI <em>Simulate Without UI</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#getNumberOfSimulationLoops <em>Number Of Simulation Loops</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#isRandomSortBetweenLoops <em>Random Sort Between Loops</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerWidthMeanMale <em>Passenger Width Mean Male</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerWidthDeviationMale <em>Passenger Width Deviation Male</em>}</li>
@@ -40,6 +43,87 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface SimulationProperties extends EObject {
+	/**
+	 * Returns the value of the '<em><b>Simulate Without UI</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Simulate Without UI</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Simulate Without UI</em>' attribute.
+	 * @see #setSimulateWithoutUI(boolean)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSimulationProperties_SimulateWithoutUI()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isSimulateWithoutUI();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.SimulationProperties#isSimulateWithoutUI <em>Simulate Without UI</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Simulate Without UI</em>' attribute.
+	 * @see #isSimulateWithoutUI()
+	 * @generated
+	 */
+	void setSimulateWithoutUI(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Number Of Simulation Loops</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Number Of Simulation Loops</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Number Of Simulation Loops</em>' attribute.
+	 * @see #setNumberOfSimulationLoops(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSimulationProperties_NumberOfSimulationLoops()
+	 * @model default="1"
+	 * @generated
+	 */
+	int getNumberOfSimulationLoops();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.SimulationProperties#getNumberOfSimulationLoops <em>Number Of Simulation Loops</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Number Of Simulation Loops</em>' attribute.
+	 * @see #getNumberOfSimulationLoops()
+	 * @generated
+	 */
+	void setNumberOfSimulationLoops(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Random Sort Between Loops</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Random Sort Between Loops</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Random Sort Between Loops</em>' attribute.
+	 * @see #setRandomSortBetweenLoops(boolean)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSimulationProperties_RandomSortBetweenLoops()
+	 * @model default="true"
+	 * @generated
+	 */
+	boolean isRandomSortBetweenLoops();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.SimulationProperties#isRandomSortBetweenLoops <em>Random Sort Between Loops</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Random Sort Between Loops</em>' attribute.
+	 * @see #isRandomSortBetweenLoops()
+	 * @generated
+	 */
+	void setRandomSortBetweenLoops(boolean value);
+
 	/**
 	 * Returns the value of the '<em><b>Passengers Boarding Per Minute</b></em>' attribute.
 	 * The default value is <code>"18"</code>.

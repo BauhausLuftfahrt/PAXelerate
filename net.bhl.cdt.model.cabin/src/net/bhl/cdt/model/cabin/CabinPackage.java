@@ -133,13 +133,22 @@ public interface CabinPackage extends EPackage {
 	int CABIN__NUMBER_OF_DECKS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
+	 * The feature id for the '<em><b>Simulation Settings</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN__SIMULATION_SETTINGS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
 	 * The feature id for the '<em><b>Classes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__CLASSES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 6;
+	int CABIN__CLASSES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Doors</b></em>' containment reference list.
@@ -148,7 +157,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__DOORS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 7;
+	int CABIN__DOORS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Lavatories</b></em>' containment reference list.
@@ -157,7 +166,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__LAVATORIES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 8;
+	int CABIN__LAVATORIES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Galleys</b></em>' containment reference list.
@@ -166,7 +175,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__GALLEYS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 9;
+	int CABIN__GALLEYS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Stairways</b></em>' containment reference list.
@@ -175,7 +184,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__STAIRWAYS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 10;
+	int CABIN__STAIRWAYS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Curtains</b></em>' containment reference list.
@@ -184,7 +193,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__CURTAINS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 11;
+	int CABIN__CURTAINS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Stowages</b></em>' containment reference list.
@@ -193,7 +202,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__STOWAGES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 12;
+	int CABIN__STOWAGES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 13;
 
 	/**
 	 * The feature id for the '<em><b>Passengers</b></em>' containment reference list.
@@ -202,7 +211,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__PASSENGERS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 13;
+	int CABIN__PASSENGERS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 14;
 
 	/**
 	 * The feature id for the '<em><b>Scale</b></em>' attribute.
@@ -211,7 +220,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__SCALE = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 14;
+	int CABIN__SCALE = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 15;
 
 	/**
 	 * The feature id for the '<em><b>Real Elapsed Time</b></em>' attribute.
@@ -220,7 +229,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__REAL_ELAPSED_TIME = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 15;
+	int CABIN__REAL_ELAPSED_TIME = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 16;
 
 	/**
 	 * The feature id for the '<em><b>Aircraft Type</b></em>' attribute.
@@ -229,7 +238,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__AIRCRAFT_TYPE = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 16;
+	int CABIN__AIRCRAFT_TYPE = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 17;
 
 	/**
 	 * The feature id for the '<em><b>Use Preset Settings</b></em>' attribute.
@@ -238,7 +247,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__USE_PRESET_SETTINGS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 17;
+	int CABIN__USE_PRESET_SETTINGS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 18;
 
 	/**
 	 * The feature id for the '<em><b>Speed Factor</b></em>' attribute.
@@ -247,7 +256,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__SPEED_FACTOR = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 18;
+	int CABIN__SPEED_FACTOR = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 19;
 
 	/**
 	 * The feature id for the '<em><b>Estimated Simulation Time</b></em>' attribute.
@@ -256,16 +265,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__ESTIMATED_SIMULATION_TIME = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 19;
-
-	/**
-	 * The feature id for the '<em><b>Simulation Settings</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CABIN__SIMULATION_SETTINGS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 20;
+	int CABIN__ESTIMATED_SIMULATION_TIME = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 20;
 
 	/**
 	 * The number of structural features of the '<em>Cabin</em>' class.
@@ -2296,13 +2296,40 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_PROPERTIES = 20;
 
 	/**
+	 * The feature id for the '<em><b>Simulate Without UI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI = 0;
+
+	/**
+	 * The feature id for the '<em><b>Number Of Simulation Loops</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS = 1;
+
+	/**
+	 * The feature id for the '<em><b>Random Sort Between Loops</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS = 2;
+
+	/**
 	 * The feature id for the '<em><b>Passengers Boarding Per Minute</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = 0;
+	int SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Width Mean Male</b></em>' attribute.
@@ -2311,7 +2338,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_MALE = 1;
+	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_MALE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Width Deviation Male</b></em>' attribute.
@@ -2320,7 +2347,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_MALE = 2;
+	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_MALE = 5;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Weight Mean Male</b></em>' attribute.
@@ -2329,7 +2356,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_MEAN_MALE = 3;
+	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_MEAN_MALE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Weight Deviation Male</b></em>' attribute.
@@ -2338,7 +2365,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_MALE = 4;
+	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_MALE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Height Mean Male</b></em>' attribute.
@@ -2347,7 +2374,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_MEAN_MALE = 5;
+	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_MEAN_MALE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Height Deviation Male</b></em>' attribute.
@@ -2356,7 +2383,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_MALE = 6;
+	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_MALE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Depth Mean Male</b></em>' attribute.
@@ -2365,7 +2392,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_MALE = 7;
+	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_MALE = 10;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Depth Deviation Male</b></em>' attribute.
@@ -2374,7 +2401,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_MALE = 8;
+	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_MALE = 11;
 
 	/**
 	 * The feature id for the '<em><b>Percentage Of Women</b></em>' attribute.
@@ -2383,7 +2410,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PERCENTAGE_OF_WOMEN = 9;
+	int SIMULATION_PROPERTIES__PERCENTAGE_OF_WOMEN = 12;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Luggage Stow Time Mean</b></em>' attribute.
@@ -2392,7 +2419,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_MEAN = 10;
+	int SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_MEAN = 13;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Luggage Stow Time Deviation</b></em>' attribute.
@@ -2401,7 +2428,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_DEVIATION = 11;
+	int SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_DEVIATION = 14;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Width Mean Female</b></em>' attribute.
@@ -2410,7 +2437,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_FEMALE = 12;
+	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_FEMALE = 15;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Width Deviation Female</b></em>' attribute.
@@ -2419,7 +2446,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_FEMALE = 13;
+	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_FEMALE = 16;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Weight Mean Female</b></em>' attribute.
@@ -2428,7 +2455,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_MEAN_FEMALE = 14;
+	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_MEAN_FEMALE = 17;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Weight Deviation Female</b></em>' attribute.
@@ -2437,7 +2464,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_FEMALE = 15;
+	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_FEMALE = 18;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Height Mean Female</b></em>' attribute.
@@ -2446,7 +2473,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_MEAN_FEMALE = 16;
+	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_MEAN_FEMALE = 19;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Height Deviation Female</b></em>' attribute.
@@ -2455,7 +2482,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_FEMALE = 17;
+	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_FEMALE = 20;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Depth Mean Female</b></em>' attribute.
@@ -2464,7 +2491,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_FEMALE = 18;
+	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_FEMALE = 21;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Depth Deviation Female</b></em>' attribute.
@@ -2473,7 +2500,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE = 19;
+	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE = 22;
 
 	/**
 	 * The number of structural features of the '<em>Simulation Properties</em>' class.
@@ -2482,7 +2509,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES_FEATURE_COUNT = 20;
+	int SIMULATION_PROPERTIES_FEATURE_COUNT = 23;
 
 	/**
 	 * The number of operations of the '<em>Simulation Properties</em>' class.
@@ -3569,6 +3596,39 @@ public interface CabinPackage extends EPackage {
 	EClass getSimulationProperties();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#isSimulateWithoutUI <em>Simulate Without UI</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Simulate Without UI</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#isSimulateWithoutUI()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_SimulateWithoutUI();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getNumberOfSimulationLoops <em>Number Of Simulation Loops</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Number Of Simulation Loops</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getNumberOfSimulationLoops()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_NumberOfSimulationLoops();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#isRandomSortBetweenLoops <em>Random Sort Between Loops</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Random Sort Between Loops</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#isRandomSortBetweenLoops()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_RandomSortBetweenLoops();
+
+	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4649,6 +4709,27 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EClass SIMULATION_PROPERTIES = eINSTANCE.getSimulationProperties();
+		/**
+		 * The meta object literal for the '<em><b>Simulate Without UI</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI = eINSTANCE.getSimulationProperties_SimulateWithoutUI();
+		/**
+		 * The meta object literal for the '<em><b>Number Of Simulation Loops</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS = eINSTANCE.getSimulationProperties_NumberOfSimulationLoops();
+		/**
+		 * The meta object literal for the '<em><b>Random Sort Between Loops</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS = eINSTANCE.getSimulationProperties_RandomSortBetweenLoops();
 		/**
 		 * The meta object literal for the '<em><b>Passengers Boarding Per Minute</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->

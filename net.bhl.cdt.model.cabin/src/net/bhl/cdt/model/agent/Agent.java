@@ -74,8 +74,14 @@ public class Agent extends Subject implements Runnable {
 		GO_TO_SEAT, MAKE_WAY
 	}
 
+	public void remove() {
+		performFinalElements();
+		System.out.println("Passenger " + passenger.getId()
+				+ " is now force-seated!");
+	}
+
 	public static enum State {
-		FOLLOWING_PATH, WAITING_FOR_ROW_CLEARING, CLEARING_ROW, STOWING_LUGGAGE, PREPARING, QUEUEING_UP, WAITING_FOR_OTHER_PASSENGER_TO_SEAT;
+		FOLLOWING_PATH, WAITING_FOR_ROW_CLEARING, CLEARING_ROW, STOWING_LUGGAGE, PREPARING, QUEUEING_UP, WAITING_FOR_OTHER_PASSENGER_TO_SEAT, RETURNING_TO_SEAT;
 	}
 
 	private int[][] defaultPassengerArea;
@@ -97,6 +103,10 @@ public class Agent extends Subject implements Runnable {
 
 	public State getCurrentState() {
 		return currentState;
+	}
+
+	public AgentMode getAgentMode() {
+		return mode;
 	}
 
 	/**
@@ -344,85 +354,6 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * This method takes a cost map and adds a huge cost to the location and the
-	 * area around agents. The agent triggering this method is ignored.
-	 */
-	private void updateCostmap() {
-
-		/* The cost map is flooded from the agents current location to his seat */
-		CostMap costmap = new CostMap(SimulationHandler.getMap()
-				.getDimensions(), start, SimulationHandler.getMap(), false,
-				this, true);
-
-		/* the cost map is then assigned to the mutable global cost map */
-		mutableCostMap = costmap;
-
-		/*
-		 * define the square dimension around the passenger that should be
-		 * scanned. This is the default dimension in each direction from the
-		 * center!
-		 */
-		int squareDimension = 10;
-
-		/* this is the expansion in the x Direction */
-		Vector xVector = new Vector2D(currentPosition.getX() - squareDimension,
-				currentPosition.getX() + squareDimension);
-
-		/* this is the expansion in the x Direction */
-		Vector yVector = new Vector2D(currentPosition.getY() - squareDimension,
-				currentPosition.getY() + squareDimension);
-
-		/*
-		 * The first value of the vectors above represents the beginning of the
-		 * area being checked, the second value the end.
-		 */
-
-		/* then there is cost assigned to an area around the other agents */
-		for (int xCoordinate = xVector.getX(); xCoordinate < xVector.getY(); xCoordinate++) {
-			for (int yCoordinate = yVector.getX(); yCoordinate < yVector.getY(); yCoordinate++) {
-
-				/* prevent out of bounds exceptions */
-				if (xCoordinate > 0 && yCoordinate > 0) {
-
-					/* find all nodes occupied by agents */
-					if (SimulationHandler.getMap()
-							.getNodeByCoordinate(xCoordinate, yCoordinate)
-							.getProperty() == Property.AGENT) {
-
-						/*
-						 * additionally to the surrounding points of the agents,
-						 * there is also cost generated in the area in front of
-						 * an agent. This is used to make the agent overtake
-						 * easier
-						 */
-						for (int stepsAhead = 0; stepsAhead < 6; stepsAhead++) {
-
-							/* the current agents position is excluded here! */
-							if (!FuncLib.vectorsAreEqual(
-									SimulationHandler
-											.getMap()
-											.getNodeByCoordinate(xCoordinate,
-													yCoordinate).getPosition(),
-									currentPosition)) {
-
-								/* the surrounding points are calculated */
-								for (Vector point : mutableCostMap
-										.getSurroundingPoints(xCoordinate,
-												yCoordinate + stepsAhead)) {
-
-									/* the surrounding costs are assigned */
-									mutableCostMap.setPublicCost(point.getX(),
-											point.getY(), 5000);
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
-	/**
 	 * This method finds a new path. The <b>finalCostmap</b> is needed so that
 	 * there is no overlapping of different agent positions over time. The cost
 	 * map is always modified based on the non-editable final cost map
@@ -454,7 +385,7 @@ public class Agent extends Subject implements Runnable {
 			// mutableAreaMap.getNode(start).setProperty(Property.START, null);
 
 			/* this declares the area around agents as high cost terrain */
-			updateCostmap();
+			mutableCostMap = AgentFunctions.updateCostmap(this);
 		}
 
 		/* run the path finding algorithm */
@@ -649,22 +580,14 @@ public class Agent extends Subject implements Runnable {
 
 					}
 
-					System.out.println(passenger.getSeat() + " "
-							+ otherPassengersInRowBlockingMe.get(0).getSeat()
-							+ " ");
-
 					while (!otherPassengerStoodUp()) {
 						Thread.sleep(10);
-						System.out
-								.println("Other pax did not stand up yet. Still waiting!!");
 					}
 
 					// TODO: calculate the waiting time!
 					Thread.sleep(FuncLib.transformTime(3));
 
 					waitingCompleted = true;
-
-					System.out.println("Waiting completed!");
 
 				} else {
 
@@ -906,7 +829,7 @@ public class Agent extends Subject implements Runnable {
 				path.invert();
 				path.appendWayPoint(SimulationHandler.getMap().getNode(goal));
 
-				setCurrentState(State.FOLLOWING_PATH);
+				setCurrentState(State.RETURNING_TO_SEAT);
 
 				/* go back to the start */
 				while (!goalReached()) {

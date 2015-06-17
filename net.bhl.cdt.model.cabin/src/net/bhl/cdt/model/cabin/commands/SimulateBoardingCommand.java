@@ -17,6 +17,7 @@ import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.InfoViewPart;
 import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Input;
+import net.bhl.cdt.model.cabin.util.SimulationResultLogger;
 import net.bhl.cdt.model.cabin.util.StopWatch;
 import net.bhl.cdt.model.cabin.util.Input.WindowType;
 import net.bhl.cdt.model.cabin.util.Vector2D;
@@ -45,9 +46,6 @@ public class SimulateBoardingCommand extends CDTCommand {
 	private static ArrayList<Passenger> alreadySeatedList = new ArrayList<Passenger>();
 	private static StopWatch s = new StopWatch();
 	private ILog logger;
-
-	private boolean simulateWithoutUI = false;
-	private int numberOfSimulationRuns = 1;
 
 	/**
 	 * This is the constructor method of the SimulateBoardingCommand.
@@ -79,16 +77,10 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 		cabin.setFramesPerSecond(10);
 
+		SimulationResultLogger results = new SimulationResultLogger();
+
 		DrawCabinCommand drawCom = new DrawCabinCommand(cabin);
 		drawCom.doRun();
-
-		// reset simulation in case of previous exsiting objects.
-		SimulationHandler.reset();
-
-		for (Passenger passenger : cabin.getPassengers()) {
-			passenger.setIsSeated(false);
-			passenger.setBoardingTime(0);
-		}
 
 		/**************** Get CabinView and ConsoleView ***************************/
 		IWorkbenchWindow window = PlatformUI.getWorkbench()
@@ -98,43 +90,88 @@ public class SimulateBoardingCommand extends CDTCommand {
 				.findView("net.bhl.cdt.model.cabin.cabinview");
 		InfoViewPart infoViewPart = (InfoViewPart) page
 				.findView("net.bhl.cdt.model.cabin.infoview");
-		/**************************************************************************/
 
-		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
-				"Initializing the boarding simulation ..."));
-		s.start();
+		for (int i = 0; i < cabin.getSimulationSettings()
+				.getNumberOfSimulationLoops(); i++) {
 
-		if (cabin.getPassengers().isEmpty()) {
-			Input input = new Input(
-					WindowType.GET_BOOLEAN,
-					"You did not create any passengers. Random passeners are now created.",
-					IMessageProvider.ERROR);
-			if (input.getBooleanValue()) {
-				GeneratePassengersCommand pax = new GeneratePassengersCommand(
-						cabin);
-				pax.doRun();
-				System.out.println("PAX created!");
+			if (cabin.getSimulationSettings().isRandomSortBetweenLoops()) {
+				SortPassengersCommand sort = new SortPassengersCommand(cabin);
+				sort.setPropertiesManually(false, 0);
+				sort.doRun();
 			}
-		}
-		if (!cabin.getPassengers().isEmpty()) {
-			ObstacleMap obstaclemap = new ObstacleMap(cabin);
 
-			SimulationHandler handler = new SimulationHandler(obstaclemap,
-					new Vector2D((int) (cabin.getCabinWidth() / cabin
-							.getScale()), (int) (cabin.getCabinLength() / cabin
-							.getScale())),
-					cabin);
+			// reset simulation in case of previous exsiting objects.
+			SimulationHandler.reset();
 
-			while (!SimulationHandler.isSimulationDone()) {
-				try {
+			// reset the passenger properties.
+			for (Passenger passenger : cabin.getPassengers()) {
+				passenger.setIsSeated(false);
+				passenger.setBoardingTime(0);
+			}
+
+			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
+					"Initializing new boarding simulation ..."));
+			s.start();
+
+			if (cabin.getPassengers().isEmpty()) {
+				Input input = new Input(
+						WindowType.GET_BOOLEAN,
+						"You did not create any passengers. Random passeners are now created.",
+						IMessageProvider.ERROR);
+				if (input.getBooleanValue()) {
+					GeneratePassengersCommand pax = new GeneratePassengersCommand(
+							cabin);
+					pax.doRun();
+					System.out.println("PAX created!");
+				}
+			}
+			if (!cabin.getPassengers().isEmpty()) {
+				ObstacleMap obstaclemap = new ObstacleMap(cabin);
+
+				SimulationHandler handler = new SimulationHandler(obstaclemap,
+						new Vector2D((int) (cabin.getCabinWidth() / cabin
+								.getScale()),
+								(int) (cabin.getCabinLength() / cabin
+										.getScale())), cabin);
+
+				while (!SimulationHandler.isSimulationDone()) {
+					try {
+						for (Passenger pax : ModelHelper.getChildrenByClass(
+								handler.getPassengerLocations(),
+								Passenger.class)) {
+							if (pax.isIsSeated()
+									&& !alreadySeatedList.contains(pax)) {
+								alreadySeatedList.add(pax);
+								try {
+									infoViewPart.update(cabin);
+								} catch (NullPointerException e) {
+									logger.log(new Status(IStatus.ERROR,
+											"net.bhl.cdt.model.cabin",
+											"Info view is not visible."));
+								}
+							}
+						}
+						try {
+							cabinViewPart.submitPassengerCoordinates(handler
+									.getPassengerLocations());
+						} catch (NullPointerException e) {
+							logger.log(new Status(IStatus.ERROR,
+									"net.bhl.cdt.model.cabin",
+									"cabin view is not visible."));
+						}
+						Thread.sleep((int) (1000 / cabin.getFramesPerSecond()));
+					} catch (InterruptedException e) {
+						logger.log(new Status(IStatus.ERROR,
+								"net.bhl.cdt.model.cabin",
+								"An error occured during simulation."));
+						e.printStackTrace();
+					}
+				}
+				if (SimulationHandler.isSimulationDone()) {
 					for (Passenger pax : ModelHelper.getChildrenByClass(
 							handler.getPassengerLocations(), Passenger.class)) {
 						if (pax.isIsSeated()
 								&& !alreadySeatedList.contains(pax)) {
-
-							// logger.log(new Status(IStatus.INFO,
-							// "net.bhl.cdt.model.cabin", "Passenger "
-							// + pax.getName() + " is now seated!"));
 							alreadySeatedList.add(pax);
 							try {
 								infoViewPart.update(cabin);
@@ -145,69 +182,43 @@ public class SimulateBoardingCommand extends CDTCommand {
 							}
 						}
 					}
-					try {
-						cabinViewPart.submitPassengerCoordinates(handler
-								.getPassengerLocations());
-					} catch (NullPointerException e) {
-						logger.log(new Status(IStatus.ERROR,
+
+					s.stop();
+					cabin.setEstimatedSimulationTime(FuncLib.round((s
+							.getElapsedTime() / 1000.0 * (double) cabin
+							.getSpeedFactor()), 2));
+					cabin.setRealElapsedTime(FuncLib.round(
+							(s.getElapsedTime() / 1000.0), 2));
+
+					if (!obstaclemap.equals(null)) {
+						Image image = cabinViewPart
+								.submitObstacleMap(obstaclemap.getMap());
+						obstaclemap.printObstacleMap();
+						cabinViewPart.printObstacleMap(image);
+
+						logger.log(new Status(IStatus.INFO,
 								"net.bhl.cdt.model.cabin",
-								"cabin view is not visible."));
+								"Heat map generation succeeded"));
 					}
-					Thread.sleep((int) (1000 / cabin.getFramesPerSecond()));
-				} catch (InterruptedException e) {
-					logger.log(new Status(IStatus.ERROR,
-							"net.bhl.cdt.model.cabin",
-							"An error occured during simulation."));
-					e.printStackTrace();
-				}
-			}
-			if (SimulationHandler.isSimulationDone()) {
-				for (Passenger pax : ModelHelper.getChildrenByClass(
-						handler.getPassengerLocations(), Passenger.class)) {
-					if (pax.isIsSeated() && !alreadySeatedList.contains(pax)) {
-						alreadySeatedList.add(pax);
-						try {
-							infoViewPart.update(cabin);
-						} catch (NullPointerException e) {
-							logger.log(new Status(IStatus.ERROR,
-									"net.bhl.cdt.model.cabin",
-									"Info view is not visible."));
-						}
+
+					if (!SimulationHandler.getAgentList().isEmpty()) {
+						cabinViewPart.submitAgents(SimulationHandler
+								.getAgentList());
+						logger.log(new Status(IStatus.INFO,
+								"net.bhl.cdt.model.cabin",
+								"Paths printed successfully"));
 					}
-				}
-
-				s.stop();
-				cabin.setEstimatedSimulationTime(FuncLib.round((s
-						.getElapsedTime() / 1000.0 * (double) cabin
-						.getSpeedFactor()), 2));
-				cabin.setRealElapsedTime(FuncLib.round(
-						(s.getElapsedTime() / 1000.0), 2));
-
-				if (!obstaclemap.equals(null)) {
-					Image image = cabinViewPart.submitObstacleMap(obstaclemap
-							.getMap());
-					obstaclemap.printObstacleMap();
-					cabinViewPart.printObstacleMap(image);
-
 					logger.log(new Status(IStatus.INFO,
 							"net.bhl.cdt.model.cabin",
-							"Heat map generation succeeded"));
+							"Boarding simulation completed"));
+					cabinViewPart.clearCache();
 				}
-
-				if (!SimulationHandler.getAgentList().isEmpty()) {
-					cabinViewPart
-							.submitAgents(SimulationHandler.getAgentList());
-					logger.log(new Status(IStatus.INFO,
-							"net.bhl.cdt.model.cabin",
-							"Paths printed successfully"));
-				}
-				logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
-						"Boarding simulation completed"));
-				cabinViewPart.clearCache();
+			} else {
+				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
+						"No boarding possible! Please create passengers!"));
 			}
-		} else {
-			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-					"No boarding possible! Please create passengers!"));
+			results.getSimulationData(cabin, i + 1);
 		}
+		results.printSimulationData();
 	}
 }

@@ -115,6 +115,11 @@ public class SimulationHandler {
 		return costmap;
 	}
 
+	public static void removePassenger(Passenger pax) {
+		Agent agent = getAgentByPassenger(pax);
+		agent.remove();
+	}
+
 	/**
 	 * This method returns whether the simulation is already completed or not.
 	 * 
@@ -197,6 +202,9 @@ public class SimulationHandler {
 		agent.findNewPath();
 		agent.start();
 		pax.setNumberOfMakeWayOperations(pax.getNumberOfMakeWayOperations() + 1);
+
+		System.out.println(pax.getSeatRef().getName() + " "
+				+ myself.getSeatRef().getName());
 	}
 
 	public static void setAgentList(ArrayList<Agent> agentList) {
@@ -350,30 +358,12 @@ public class SimulationHandler {
 				SimulationView view = new SimulationView();
 				view.setAreamap(areamap);
 
-				frame = new JFrame("Area Map Rendering");
+				frame = new JFrame("Simulation View");
 				frame.setContentPane(view);
 				frame.pack();
 				frame.setVisible(true);
-				// frame.setResizable(false);
 			}
 		});
-
-		// final Thread gameThread = new Thread() {
-		//
-		// public void run() {
-		// while (true) {
-		// try {
-		// // view.setAreamap(RunAStar.getMap());
-		// Thread.sleep(100);
-		// } catch (InterruptedException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// }
-		// }
-		// };
-		// gameThread.start(); // Callback run()
-
 	}
 
 }
