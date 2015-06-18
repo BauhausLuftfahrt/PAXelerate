@@ -212,8 +212,9 @@ public class SimulationHandler {
 		agent.start();
 		pax.setNumberOfMakeWayOperations(pax.getNumberOfMakeWayOperations() + 1);
 
-		// System.out.println(pax.getSeatRef().getName() + " "
-		// + myself.getSeatRef().getName());
+		System.out.println("Launching passenger " + pax.getId() + " from x:"
+				+ start.getX() + ", y:" + start.getY() + " to x:" + goal.getX()
+				+ ", y:" + goal.getY() + ".");
 	}
 
 	public static void setAgentList(ArrayList<Agent> agentList) {

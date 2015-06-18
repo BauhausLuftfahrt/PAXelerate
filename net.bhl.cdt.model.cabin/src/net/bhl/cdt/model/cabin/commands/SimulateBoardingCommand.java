@@ -16,6 +16,7 @@ import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.InfoViewPart;
+import net.bhl.cdt.model.cabin.ui.SimulationView;
 import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Input;
 import net.bhl.cdt.model.cabin.util.SimulationResultLogger;
@@ -45,7 +46,6 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 	private Cabin cabin;
 	private static ArrayList<Passenger> alreadySeatedList = new ArrayList<Passenger>();
-	private static StopWatch s = new StopWatch();
 	private ILog logger;
 
 	/**
@@ -116,7 +116,6 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 					"Initializing new boarding simulation ..."));
-			s.start();
 
 			if (cabin.getPassengers().isEmpty()) {
 				Input input = new Input(
@@ -188,12 +187,13 @@ public class SimulateBoardingCommand extends CDTCommand {
 						}
 					}
 
-					s.stop();
-					cabin.setEstimatedSimulationTime(FuncLib.round((s
-							.getElapsedTime() / 1000.0 * (double) cabin
-							.getSpeedFactor()), 2));
-					cabin.setRealElapsedTime(FuncLib.round(
-							(s.getElapsedTime() / 1000.0), 2));
+					SimulationView.getWatch().stop();
+					cabin.setEstimatedSimulationTime(FuncLib
+							.round((SimulationView.getWatch()
+									.getElapsedTimeSecs() * (double) cabin
+									.getSpeedFactor()), 2));
+					cabin.setRealElapsedTime(SimulationView.getWatch()
+							.getElapsedTimeSecs());
 
 					if (!obstaclemap.equals(null)) {
 						Image image = cabinViewPart

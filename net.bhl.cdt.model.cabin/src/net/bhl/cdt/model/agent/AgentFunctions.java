@@ -28,8 +28,8 @@ public class AgentFunctions {
 							.getSeatRef())) {
 						agent.otherPassengersInRowBlockingMe.add(checkSeat
 								.getPassenger());
-						System.out.println("SomeOne in Row "
-								+ row.getRowNumber());
+						// System.out.println("SomeOne in Row "
+						// + row.getRowNumber());
 						return true;
 					}
 				}

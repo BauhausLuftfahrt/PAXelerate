@@ -50,6 +50,10 @@ public class SimulationView extends JPanel implements MouseListener {
 
 	private static double cabinWidth;
 
+	public static StopWatch getWatch() {
+		return watch;
+	}
+
 	/**
 	 * 
 	 * @param areamap
