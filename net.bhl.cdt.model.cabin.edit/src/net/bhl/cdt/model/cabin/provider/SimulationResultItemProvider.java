@@ -65,6 +65,8 @@ public class SimulationResultItemProvider
 			addNamePropertyDescriptor(object);
 			addIdPropertyDescriptor(object);
 			addDatePropertyDescriptor(object);
+			addTestObjectPropertyDescriptor(object);
+			addTestObject2PropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -180,6 +182,50 @@ public class SimulationResultItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Test Object feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTestObjectPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationResult_testObject_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_testObject_feature", "_UI_SimulationResult_type"),
+				 CabinPackage.Literals.SIMULATION_RESULT__TEST_OBJECT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Test Object2 feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTestObject2PropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationResult_testObject2_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_testObject2_feature", "_UI_SimulationResult_type"),
+				 CabinPackage.Literals.SIMULATION_RESULT__TEST_OBJECT2,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns SimulationResult.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -222,6 +268,8 @@ public class SimulationResultItemProvider
 			case CabinPackage.SIMULATION_RESULT__NAME:
 			case CabinPackage.SIMULATION_RESULT__ID:
 			case CabinPackage.SIMULATION_RESULT__DATE:
+			case CabinPackage.SIMULATION_RESULT__TEST_OBJECT:
+			case CabinPackage.SIMULATION_RESULT__TEST_OBJECT2:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

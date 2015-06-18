@@ -118,7 +118,11 @@ public class Node implements Comparable<Node> {
 		case OBSTACLE:
 			return "X";
 		case AGENT:
-			return "O";
+			if (linkedPassenger.getId() == Integer.MAX_VALUE) {
+				return "B";
+			} else {
+				return "O";
+			}
 		case DEFAULT:
 			return null;
 		case GOAL:

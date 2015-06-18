@@ -13,6 +13,7 @@ import net.bhl.cdt.model.astar.ObstacleMap;
 import net.bhl.cdt.model.astar.SimulationHandler;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Passenger;
+import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.InfoViewPart;
 import net.bhl.cdt.model.cabin.util.FuncLib;
@@ -94,9 +95,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 		for (int i = 0; i < cabin.getSimulationSettings()
 				.getNumberOfSimulationLoops(); i++) {
 
-			/* don't do it in the first loop! */
-			if (cabin.getSimulationSettings().isRandomSortBetweenLoops()
-					&& i != 0) {
+			if (cabin.getSimulationSettings().isRandomSortBetweenLoops()) {
 				SortPassengersCommand sort = new SortPassengersCommand(cabin);
 				sort.setPropertiesManually(false, 0);
 				sort.doRun();
@@ -109,6 +108,10 @@ public class SimulateBoardingCommand extends CDTCommand {
 			for (Passenger passenger : cabin.getPassengers()) {
 				passenger.setIsSeated(false);
 				passenger.setBoardingTime(0);
+			}
+
+			for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
+				seat.setOccupied(false);
 			}
 
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",

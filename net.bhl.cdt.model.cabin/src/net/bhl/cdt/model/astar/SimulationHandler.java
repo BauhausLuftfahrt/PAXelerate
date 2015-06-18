@@ -164,7 +164,9 @@ public class SimulationHandler {
 	 */
 	public static void setPassengerSeated(Passenger passenger, boolean setSeated) {
 		if (setSeated) {
-			finishedList.add(passenger);
+			if (!finishedList.contains(passenger)) {
+				finishedList.add(passenger);
+			}
 		} else {
 			finishedList.remove(passenger);
 		}
@@ -187,14 +189,21 @@ public class SimulationHandler {
 	public static void launchWaymakingAgent(Passenger pax, Passenger myself) {
 		Seat seat = pax.getSeatRef();
 
+		// System.out
+		// .println("launching " + pax.getId() + ", " + pax.getSeatRef());
+
 		Vector goal = new Vector2D((int) (cabin.getCabinWidth()
 				/ cabin.getScale() / 2.0),
 				(int) (seat.getYPosition() / cabin.getScale()) + 5);
+
+		// FuncLib.printVectorToLog(goal, "goal");
 
 		Vector start = new Vector2D(
 				(int) ((seat.getXPosition() + seat.getXDimension() / 2) / cabin
 						.getScale()),
 				(int) ((seat.getYPosition() / cabin.getScale()) - 2));
+
+		// FuncLib.printVectorToLog(start, "start");
 
 		Agent agent = new Agent(pax, start, goal,
 				SimulationHandler.getCostMap(), Agent.AgentMode.MAKE_WAY,
@@ -203,8 +212,8 @@ public class SimulationHandler {
 		agent.start();
 		pax.setNumberOfMakeWayOperations(pax.getNumberOfMakeWayOperations() + 1);
 
-		System.out.println(pax.getSeatRef().getName() + " "
-				+ myself.getSeatRef().getName());
+		// System.out.println(pax.getSeatRef().getName() + " "
+		// + myself.getSeatRef().getName());
 	}
 
 	public static void setAgentList(ArrayList<Agent> agentList) {

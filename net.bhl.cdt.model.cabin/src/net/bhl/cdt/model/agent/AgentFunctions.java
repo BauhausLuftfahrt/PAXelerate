@@ -18,15 +18,18 @@ public class AgentFunctions {
 
 	public static final int PIXELS_FOR_SCANNING_AT_DOOR = 3;
 
-	public static boolean someoneAlreadyInThisPartOfTheRow(Seat mySeat,
-			Agent agent) {
-		Row row = mySeat.getRow();
+	public static boolean someoneAlreadyInThisPartOfTheRow(Agent agent) {
+		Row row = agent.getPassenger().getSeatRef().getRow();
 		for (Seat checkSeat : row.getSeats()) {
 			if (checkSeat.isOccupied()) {
-				if (sameSideOfAisle(checkSeat, mySeat)) {
-					if (otherSeatCloserToAisle(checkSeat, mySeat)) {
+				if (sameSideOfAisle(checkSeat, agent.getPassenger()
+						.getSeatRef())) {
+					if (otherSeatCloserToAisle(checkSeat, agent.getPassenger()
+							.getSeatRef())) {
 						agent.otherPassengersInRowBlockingMe.add(checkSeat
 								.getPassenger());
+						System.out.println("SomeOne in Row "
+								+ row.getRowNumber());
 						return true;
 					}
 				}

@@ -17,7 +17,8 @@ import net.bhl.cdt.model.astar.Node;
 import net.bhl.cdt.model.astar.Node.Property;
 import net.bhl.cdt.model.astar.Path;
 import net.bhl.cdt.model.astar.SimulationHandler;
-import net.bhl.cdt.model.cabin.Door;
+import net.bhl.cdt.model.cabin.Cabin;
+import net.bhl.cdt.model.cabin.CabinFactory;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.Seat;
@@ -38,6 +39,7 @@ import net.bhl.cdt.model.observer.Subject;
 public class Agent extends Subject implements Runnable {
 	private Thread thread;
 	private Path path;
+
 	private boolean initialized = false;
 
 	private final static int PIXELS_FOR_LUGGAGE = 8;
@@ -79,9 +81,12 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	public void remove() {
-		performFinalElements();
-		System.out.println("Passenger " + passenger.getId()
-				+ " is now force-seated!");
+		if (performFinalElements() == true) {
+			System.out.println("Passenger " + passenger.getId()
+					+ " is now force-seated!");
+		} else {
+			System.out.println("Passenger is already seated!");
+		}
 	}
 
 	public static enum State {
@@ -94,15 +99,13 @@ public class Agent extends Subject implements Runnable {
 	public ArrayList<Passenger> otherPassengersInRowBlockingMe = new ArrayList<Passenger>();
 
 	public Passenger getOtherPassengersInRowBlockingMe() {
-		if (otherPassengersInRowBlockingMe != null) {
+		if (!otherPassengersInRowBlockingMe.isEmpty()) {
 			return otherPassengersInRowBlockingMe.get(0);
 		} else {
 			return null;
 		}
 	}
 
-	// TODO: Das ist eine Stellschraube, genauso wie die Funktion
-	// "nodeAlreadyBlockedBySomeoneElse!". Darin wird der Fehler liegen!
 	private int dim = 2;
 
 	public Passenger getPassenger() {
@@ -653,10 +656,9 @@ public class Agent extends Subject implements Runnable {
 
 	private boolean waitingForClearingOfRow() {
 
-		Seat mySeat = passenger.getSeatRef();
-
-		if (desiredPosition.getY() == (int) (mySeat.getYPosition() / scale - PIXELS_FOR_WAY)) {
-			if (AgentFunctions.someoneAlreadyInThisPartOfTheRow(mySeat, this)) {
+		if (desiredPosition.getY() == (int) (passenger.getSeatRef()
+				.getYPosition() / scale - PIXELS_FOR_WAY)) {
+			if (AgentFunctions.someoneAlreadyInThisPartOfTheRow(this)) {
 				return true;
 			}
 		}
@@ -715,27 +717,34 @@ public class Agent extends Subject implements Runnable {
 		}
 	}
 
-	public void performFinalElements() {
+	public boolean performFinalElements() {
 
-		defineSeated(true);
+		if (!passenger.getSeatRef().isOccupied()) {
 
-		/* the stop watch is then interrupted */
-		stopwatch.stop();
+			defineSeated(true);
 
-		/* the boarding time is then submitted back to the passenger */
-		passenger
-				.setBoardingTime((int) (stopwatch.getElapsedTimeSecs() * SimulationHandler
-						.getCabin().getSpeedFactor()));
+			/* the stop watch is then interrupted */
+			stopwatch.stop();
 
-		/* the number of interrupts is submitted to the passenger */
-		passenger.setNumberOfWaits(numbOfInterupts);
+			/* the boarding time is then submitted back to the passenger */
+			passenger
+					.setBoardingTime((int) (stopwatch.getElapsedTimeSecs() * SimulationHandler
+							.getCabin().getSpeedFactor()));
 
-		/* clear the current position of the agent */
-		occupyNodeArea(currentPosition, false, false, null);
-		occupyNodeArea(desiredPosition, false, false, null);
+			/* the number of interrupts is submitted to the passenger */
+			passenger.setNumberOfWaits(numbOfInterupts);
 
-		SimulationHandler.getMap().getNode(getGoal())
-				.setProperty(Property.DEFAULT, getPassenger());
+			/* clear the current position of the agent */
+			occupyNodeArea(currentPosition, false, false, null);
+			occupyNodeArea(desiredPosition, false, false, null);
+
+			SimulationHandler.getMap().getNode(getGoal())
+					.setProperty(Property.DEFAULT, getPassenger());
+
+			return true;
+		} else {
+			return false;
+		}
 
 	}
 
@@ -807,18 +816,29 @@ public class Agent extends Subject implements Runnable {
 				 * he should return to his seat afterwards!
 				 */
 
-				// TODO: SLEEP PASSENGER WHO IS NEXT IN THE LIST UNTIL I AM
-				// SEATED AGAIN!
+				int offset = 0;
+				double position = thePassengerILetInTheRow.getPositionY();
+				Cabin cabinBlocker = SimulationHandler.getCabin();
+				Passenger dummyPax = CabinFactory.eINSTANCE.createPassenger();
+				dummyPax.setId(Integer.MAX_VALUE);
 
-				// Passenger pas = RunAStar
-				// .getCabin()
-				// .getPassengers()
-				// .get(RunAStar.getCabin().getPassengers()
-				// .indexOf(thePassengerILetInTheRow) + 1);
-
-				// RunAStar.sleepAgent(1000, pas);
-				// // TODO: DOES NOT WORK!!! Why can this thread not be
-				// // interrupted?
+				for (int i = 0; i < cabinBlocker.getCabinWidth()
+						/ cabinBlocker.getScale(); i++) {
+					if (SimulationHandler
+							.getMap()
+							.getNodeByCoordinate(
+									i,
+									(int) (position / cabinBlocker.getScale())
+											- offset).getProperty() != Property.OBSTACLE) {
+						SimulationHandler
+								.getMap()
+								.getNodeByCoordinate(
+										i,
+										(int) (position / cabinBlocker
+												.getScale()) - offset)
+								.setProperty(Property.AGENT, passenger);
+					}
+				}
 
 				/* sleep until the other passenger has seated! */
 				setCurrentState(State.WAITING_FOR_OTHER_PASSENGER_TO_SEAT);
@@ -853,6 +873,25 @@ public class Agent extends Subject implements Runnable {
 					followPath();
 
 				}
+
+				for (int i = 0; i < cabinBlocker.getCabinWidth()
+						/ cabinBlocker.getScale(); i++) {
+					if (SimulationHandler
+							.getMap()
+							.getNodeByCoordinate(
+									i,
+									(int) (position / cabinBlocker.getScale())
+											- offset).getProperty() != Property.OBSTACLE) {
+						SimulationHandler
+								.getMap()
+								.getNodeByCoordinate(
+										i,
+										(int) (position / cabinBlocker
+												.getScale()) - offset)
+								.setProperty(Property.DEFAULT, passenger);
+					}
+				}
+
 			}
 
 			performFinalElements();

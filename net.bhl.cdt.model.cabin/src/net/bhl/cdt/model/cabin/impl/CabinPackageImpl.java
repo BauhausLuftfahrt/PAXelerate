@@ -32,6 +32,7 @@ import net.bhl.cdt.model.cabin.StandardDoor;
 import net.bhl.cdt.model.cabin.Stowage;
 import net.bhl.cdt.model.cabin.TravelClass;
 import net.bhl.cdt.model.cabin.util.CabinValidator;
+import net.bhl.cdt.model.units.UnitsPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -1442,6 +1443,24 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getSimulationResult_TestObject() {
+		return (EAttribute)simulationResultEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationResult_TestObject2() {
+		return (EAttribute)simulationResultEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPhysicalObject() {
 		return physicalObjectEClass;
 	}
@@ -1728,6 +1747,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEAttribute(simulationResultEClass, SIMULATION_RESULT__NAME);
 		createEAttribute(simulationResultEClass, SIMULATION_RESULT__ID);
 		createEAttribute(simulationResultEClass, SIMULATION_RESULT__DATE);
+		createEAttribute(simulationResultEClass, SIMULATION_RESULT__TEST_OBJECT);
+		createEAttribute(simulationResultEClass, SIMULATION_RESULT__TEST_OBJECT2);
 
 		// Create enums
 		sexEEnum = createEEnum(SEX);
@@ -1761,6 +1782,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 
 		// Obtain other dependent packages
 		ModelPackage theModelPackage = (ModelPackage)EPackage.Registry.INSTANCE.getEPackage(ModelPackage.eNS_URI);
+		UnitsPackage theUnitsPackage = (UnitsPackage)EPackage.Registry.INSTANCE.getEPackage(UnitsPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -1962,6 +1984,11 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEAttribute(getSimulationResult_Name(), ecorePackage.getEString(), "name", null, 0, 1, SimulationResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimulationResult_Id(), ecorePackage.getEInt(), "id", null, 0, 1, SimulationResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimulationResult_Date(), ecorePackage.getEDate(), "date", null, 0, 1, SimulationResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		g1 = createEGenericType(theUnitsPackage.getUnit());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		initEAttribute(getSimulationResult_TestObject(), g1, "testObject", null, 0, 1, SimulationResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationResult_TestObject2(), theUnitsPackage.getQuantity(), "testObject2", null, 0, 1, SimulationResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(sexEEnum, Sex.class, "Sex");

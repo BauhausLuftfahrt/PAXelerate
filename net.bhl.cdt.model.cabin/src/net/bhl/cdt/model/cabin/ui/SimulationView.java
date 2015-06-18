@@ -4,7 +4,9 @@ import javax.swing.*;
 
 import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.astar.AreaMap;
+import net.bhl.cdt.model.astar.Node;
 import net.bhl.cdt.model.astar.Node.Property;
+import net.bhl.cdt.model.astar.Path;
 import net.bhl.cdt.model.astar.SimulationHandler;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.util.FuncLib;
@@ -185,7 +187,9 @@ public class SimulationView extends JPanel implements MouseListener {
 			for (int y = 0; y < areamap.getDimensions().getX(); y++) {
 				g.setColor(Color.LIGHT_GRAY);
 				if (areamap.getNodeByCoordinate(y, x).getTypeForPrinting() != null) {
-					if (areamap.getNodeByCoordinate(y, x).getTypeForPrinting() == "O") {
+					if (areamap.getNodeByCoordinate(y, x).getTypeForPrinting() == "O"
+							|| areamap.getNodeByCoordinate(y, x)
+									.getTypeForPrinting() == " ") {
 						g.setColor(switchColor(SimulationHandler
 								.getAgentByPassenger(
 										areamap.getNodeByCoordinate(y, x)
@@ -193,10 +197,8 @@ public class SimulationView extends JPanel implements MouseListener {
 								.getCurrentState()));
 						g.setFont(new Font("Courier New", Font.PLAIN,
 								FONT_SIZE - 1));
-						g.drawString("O"
-						// + areamap.getNodeByCoordinate(y,
-						// x).getPassenger().getId()
-								, (x - pointZero) * FONT_SIZE, y * FONT_SIZE);
+						g.drawString("O", (x - pointZero) * FONT_SIZE, y
+								* FONT_SIZE);
 					} else {
 						g.setColor(Color.LIGHT_GRAY);
 						g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE));
@@ -259,17 +261,32 @@ public class SimulationView extends JPanel implements MouseListener {
 							+ SimulationHandler.getAgentByPassenger(pax)
 									.getAgentMode().toString(),
 							mousePos.x + 30, mousePos.y + 90);
-					g.drawString("Waiting for passenger "
-							+ SimulationHandler.getAgentByPassenger(pax)
-									.getOtherPassengersInRowBlockingMe()
-									.getId()
-							+ " on seat "
-							+ SimulationHandler.getAgentByPassenger(pax)
-									.getOtherPassengersInRowBlockingMe()
-									.getSeatRef().getName(), mousePos.x + 30,
-							mousePos.y + 110);
+					try {
+						g.drawString("Waiting for passenger "
+								+ SimulationHandler.getAgentByPassenger(pax)
+										.getOtherPassengersInRowBlockingMe()
+										.getId()
+								+ " on seat "
+								+ SimulationHandler.getAgentByPassenger(pax)
+										.getOtherPassengersInRowBlockingMe()
+										.getSeatRef().getName(),
+								mousePos.x + 30, mousePos.y + 110);
+					} catch (NullPointerException e) {
+						//
+					}
+					g.setColor(Color.GRAY);
+					for (Path path : SimulationHandler.getAgentByPassenger(pax)
+							.getPathList()) {
+						for (Node node : path.getWaypoints()) {
+							g.drawString("•",
+									(node.getPosition().getY() - pointZero)
+											* FONT_SIZE, node.getPosition()
+											.getX() * FONT_SIZE);
+						}
+					}
 				}
 			} else if (prop != null) {
+				g.setColor(Color.BLACK);
 				g.drawString("Property: " + prop.toString() + ", x: " + b
 						+ ", y: " + a, mousePos.x + 30, mousePos.y + 30);
 			}

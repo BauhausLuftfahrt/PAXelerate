@@ -3,6 +3,8 @@
 package net.bhl.cdt.model.cabin;
 
 import java.util.Date;
+import javax.measure.quantity.Quantity;
+import javax.measure.unit.Unit;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -18,6 +20,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.SimulationResult#getName <em>Name</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.SimulationResult#getId <em>Id</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.SimulationResult#getDate <em>Date</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.SimulationResult#getTestObject <em>Test Object</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.SimulationResult#getTestObject2 <em>Test Object2</em>}</li>
  * </ul>
  * </p>
  *
@@ -155,5 +159,57 @@ public interface SimulationResult extends EObject {
 	 * @generated
 	 */
 	void setDate(Date value);
+
+	/**
+	 * Returns the value of the '<em><b>Test Object</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Test Object</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Test Object</em>' attribute.
+	 * @see #setTestObject(Unit)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSimulationResult_TestObject()
+	 * @model dataType="net.bhl.cdt.model.units.Unit<?>"
+	 * @generated
+	 */
+	Unit<?> getTestObject();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.SimulationResult#getTestObject <em>Test Object</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Test Object</em>' attribute.
+	 * @see #getTestObject()
+	 * @generated
+	 */
+	void setTestObject(Unit<?> value);
+
+	/**
+	 * Returns the value of the '<em><b>Test Object2</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Test Object2</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Test Object2</em>' attribute.
+	 * @see #setTestObject2(Quantity)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSimulationResult_TestObject2()
+	 * @model dataType="net.bhl.cdt.model.units.Quantity"
+	 * @generated
+	 */
+	Quantity getTestObject2();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.SimulationResult#getTestObject2 <em>Test Object2</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Test Object2</em>' attribute.
+	 * @see #getTestObject2()
+	 * @generated
+	 */
+	void setTestObject2(Quantity value);
 
 } // SimulationResult

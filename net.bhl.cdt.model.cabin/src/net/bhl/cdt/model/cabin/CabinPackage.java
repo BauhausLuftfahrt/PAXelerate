@@ -2585,13 +2585,31 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_RESULT__DATE = 4;
 
 	/**
+	 * The feature id for the '<em><b>Test Object</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_RESULT__TEST_OBJECT = 5;
+
+	/**
+	 * The feature id for the '<em><b>Test Object2</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_RESULT__TEST_OBJECT2 = 6;
+
+	/**
 	 * The number of structural features of the '<em>Simulation Result</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_RESULT_FEATURE_COUNT = 5;
+	int SIMULATION_RESULT_FEATURE_COUNT = 7;
 
 	/**
 	 * The number of operations of the '<em>Simulation Result</em>' class.
@@ -4007,6 +4025,28 @@ public interface CabinPackage extends EPackage {
 	EAttribute getSimulationResult_Date();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationResult#getTestObject <em>Test Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Test Object</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationResult#getTestObject()
+	 * @see #getSimulationResult()
+	 * @generated
+	 */
+	EAttribute getSimulationResult_TestObject();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationResult#getTestObject2 <em>Test Object2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Test Object2</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationResult#getTestObject2()
+	 * @see #getSimulationResult()
+	 * @generated
+	 */
+	EAttribute getSimulationResult_TestObject2();
+
+	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.PhysicalObject <em>Physical Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5079,6 +5119,20 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SIMULATION_RESULT__DATE = eINSTANCE.getSimulationResult_Date();
+		/**
+		 * The meta object literal for the '<em><b>Test Object</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_RESULT__TEST_OBJECT = eINSTANCE.getSimulationResult_TestObject();
+		/**
+		 * The meta object literal for the '<em><b>Test Object2</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_RESULT__TEST_OBJECT2 = eINSTANCE.getSimulationResult_TestObject2();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.PhysicalObjectImpl <em>Physical Object</em>}' class.
 		 * <!-- begin-user-doc -->
