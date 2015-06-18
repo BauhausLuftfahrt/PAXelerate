@@ -78,6 +78,7 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 			case CabinPackage.EMERGENCY_EXIT: return createEmergencyExit();
 			case CabinPackage.STANDARD_DOOR: return createStandardDoor();
 			case CabinPackage.SIMULATION_PROPERTIES: return createSimulationProperties();
+			case CabinPackage.SIMULATION_RESULT: return createSimulationResult();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -323,6 +324,16 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	public SimulationProperties createSimulationProperties() {
 		SimulationPropertiesImpl simulationProperties = new SimulationPropertiesImpl();
 		return simulationProperties;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SimulationResult createSimulationResult() {
+		SimulationResultImpl simulationResult = new SimulationResultImpl();
+		return simulationResult;
 	}
 
 	/**

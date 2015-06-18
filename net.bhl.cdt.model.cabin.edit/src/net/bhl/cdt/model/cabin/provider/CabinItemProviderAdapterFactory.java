@@ -532,6 +532,29 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.SimulationResult} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SimulationResultItemProvider simulationResultItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link net.bhl.cdt.model.cabin.SimulationResult}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSimulationResultAdapter() {
+		if (simulationResultItemProvider == null) {
+			simulationResultItemProvider = new SimulationResultItemProvider(this);
+		}
+
+		return simulationResultItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.model.cabin.PhysicalObject} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -674,6 +697,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 		if (emergencyExitItemProvider != null) emergencyExitItemProvider.dispose();
 		if (standardDoorItemProvider != null) standardDoorItemProvider.dispose();
 		if (simulationPropertiesItemProvider != null) simulationPropertiesItemProvider.dispose();
+		if (simulationResultItemProvider != null) simulationResultItemProvider.dispose();
 	}
 
 }

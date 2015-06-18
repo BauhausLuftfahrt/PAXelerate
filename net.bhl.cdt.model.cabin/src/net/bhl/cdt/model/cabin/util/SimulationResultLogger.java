@@ -2,9 +2,13 @@ package net.bhl.cdt.model.cabin.util;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
+import net.bhl.cdt.model.astar.SimulationHandler;
 import net.bhl.cdt.model.cabin.Cabin;
+import net.bhl.cdt.model.cabin.CabinFactory;
 import net.bhl.cdt.model.cabin.Passenger;
+import net.bhl.cdt.model.cabin.SimulationResult;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -22,16 +26,24 @@ public class SimulationResultLogger {
 	private DecimalFormat df = new DecimalFormat("#.##");
 	private EList<Passenger> paxList;
 	private Vector2D ageLimits;
-	private ArrayList<Result> results = new ArrayList<Result>();
 
 	public SimulationResultLogger() {
 
 	}
 
 	public void getSimulationData(Cabin cabin, int runNumber) {
-		results.add(new Result(cabin.getPassengers().size(), cabin
-				.getEstimatedSimulationTime(), runNumber));
-		System.out.println("Result " + runNumber + " saved!");
+		SimulationResult result = CabinFactory.eINSTANCE
+				.createSimulationResult();
+
+		result.setPassengers(cabin.getPassengers().size());
+		result.setBoardingTime(cabin.getEstimatedSimulationTime());
+		result.setId(runNumber);
+		result.setName("#"
+				+ (SimulationHandler.getCabin().getSimulationSettings()
+						.getResults().size() + 1));
+		result.setDate(new Date());
+		SimulationHandler.getCabin().getSimulationSettings().getResults()
+				.add(result);
 	}
 
 	public void getPassengerData(EList<Passenger> paxList) {
@@ -41,7 +53,7 @@ public class SimulationResultLogger {
 		// passengers, their waiting times, their boarding times, their number
 		// of interrupts, ...
 
-		// TODO: the data could be output to an excel file.
+		// TODO: the data could be output to a text file.
 
 		totalPax = paxList.size();
 
@@ -91,13 +103,16 @@ public class SimulationResultLogger {
 	public void printSimulationData() {
 		System.out.println("~~~~~~~~~~ Simulation Results ~~~~~~~~~~~");
 		System.out.println();
-		System.out.println("Number of Loops: " + results.size());
+		System.out.println("Number of Loops: "
+				+ SimulationHandler.getCabin().getSimulationSettings()
+						.getResults().size());
 		System.out.println();
-		for (Result result : results) {
+		for (SimulationResult result : SimulationHandler.getCabin()
+				.getSimulationSettings().getResults()) {
 			System.out.println(result.getPassengers()
-					+ " passengers simulated in run #" + result.getRunNumber()
+					+ " passengers simulated in run #" + result.getId()
 					+ " within "
-					+ FuncLib.transformToTimeString(result.getSimulationTime())
+					+ FuncLib.transformToTimeString(result.getBoardingTime())
 					+ ".");
 			System.out.println();
 		}
@@ -113,10 +128,13 @@ public class SimulationResultLogger {
 
 		double time = 0;
 
-		for (Result result : results) {
-			time += result.getSimulationTime();
+		for (SimulationResult result : SimulationHandler.getCabin()
+				.getSimulationSettings().getResults()) {
+			time += result.getBoardingTime();
 		}
-		return time / results.size();
+		return time
+				/ SimulationHandler.getCabin().getSimulationSettings()
+						.getResults().size();
 
 	}
 }

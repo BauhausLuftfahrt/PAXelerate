@@ -151,6 +151,8 @@ public class CabinValidator extends EObjectValidator {
 				return validateStandardDoor((StandardDoor)value, diagnostics, context);
 			case CabinPackage.SIMULATION_PROPERTIES:
 				return validateSimulationProperties((SimulationProperties)value, diagnostics, context);
+			case CabinPackage.SIMULATION_RESULT:
+				return validateSimulationResult((SimulationResult)value, diagnostics, context);
 			case CabinPackage.SEX:
 				return validateSex((Sex)value, diagnostics, context);
 			case CabinPackage.STAIRWAY_DIRECTION:
@@ -506,6 +508,15 @@ public class CabinValidator extends EObjectValidator {
 	 */
 	public boolean validateSimulationProperties(SimulationProperties simulationProperties, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(simulationProperties, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateSimulationResult(SimulationResult simulationResult, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(simulationResult, diagnostics, context);
 	}
 
 	/**

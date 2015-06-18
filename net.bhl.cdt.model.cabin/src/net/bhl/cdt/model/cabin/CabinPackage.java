@@ -2503,13 +2503,22 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE = 22;
 
 	/**
+	 * The feature id for the '<em><b>Results</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__RESULTS = 23;
+
+	/**
 	 * The number of structural features of the '<em>Simulation Properties</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES_FEATURE_COUNT = 23;
+	int SIMULATION_PROPERTIES_FEATURE_COUNT = 24;
 
 	/**
 	 * The number of operations of the '<em>Simulation Properties</em>' class.
@@ -2521,6 +2530,79 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_PROPERTIES_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.impl.SimulationResultImpl <em>Simulation Result</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.model.cabin.impl.SimulationResultImpl
+	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getSimulationResult()
+	 * @generated
+	 */
+	int SIMULATION_RESULT = 21;
+
+	/**
+	 * The feature id for the '<em><b>Boarding Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_RESULT__BOARDING_TIME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Passengers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_RESULT__PASSENGERS = 1;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_RESULT__NAME = 2;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_RESULT__ID = 3;
+
+	/**
+	 * The feature id for the '<em><b>Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_RESULT__DATE = 4;
+
+	/**
+	 * The number of structural features of the '<em>Simulation Result</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_RESULT_FEATURE_COUNT = 5;
+
+	/**
+	 * The number of operations of the '<em>Simulation Result</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_RESULT_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.StairwayDirection <em>Stairway Direction</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2528,7 +2610,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getStairwayDirection()
 	 * @generated
 	 */
-	int STAIRWAY_DIRECTION = 22;
+	int STAIRWAY_DIRECTION = 23;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.AircraftType <em>Aircraft Type</em>}' enum.
@@ -2538,7 +2620,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getAircraftType()
 	 * @generated
 	 */
-	int AIRCRAFT_TYPE = 23;
+	int AIRCRAFT_TYPE = 24;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.PassengerMood <em>Passenger Mood</em>}' enum.
@@ -2548,7 +2630,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getPassengerMood()
 	 * @generated
 	 */
-	int PASSENGER_MOOD = 24;
+	int PASSENGER_MOOD = 25;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}' enum.
@@ -2558,7 +2640,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getSex()
 	 * @generated
 	 */
-	int SEX = 21;
+	int SEX = 22;
 
 
 	/**
@@ -3849,6 +3931,82 @@ public interface CabinPackage extends EPackage {
 	EAttribute getSimulationProperties_PassengerDepthDeviationFemale();
 
 	/**
+	 * Returns the meta object for the reference list '{@link net.bhl.cdt.model.cabin.SimulationProperties#getResults <em>Results</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Results</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getResults()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EReference getSimulationProperties_Results();
+
+	/**
+	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.SimulationResult <em>Simulation Result</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Simulation Result</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationResult
+	 * @generated
+	 */
+	EClass getSimulationResult();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationResult#getBoardingTime <em>Boarding Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Boarding Time</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationResult#getBoardingTime()
+	 * @see #getSimulationResult()
+	 * @generated
+	 */
+	EAttribute getSimulationResult_BoardingTime();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationResult#getPassengers <em>Passengers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passengers</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationResult#getPassengers()
+	 * @see #getSimulationResult()
+	 * @generated
+	 */
+	EAttribute getSimulationResult_Passengers();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationResult#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationResult#getName()
+	 * @see #getSimulationResult()
+	 * @generated
+	 */
+	EAttribute getSimulationResult_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationResult#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationResult#getId()
+	 * @see #getSimulationResult()
+	 * @generated
+	 */
+	EAttribute getSimulationResult_Id();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationResult#getDate <em>Date</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Date</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationResult#getDate()
+	 * @see #getSimulationResult()
+	 * @generated
+	 */
+	EAttribute getSimulationResult_Date();
+
+	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.PhysicalObject <em>Physical Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4870,6 +5028,57 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE = eINSTANCE.getSimulationProperties_PassengerDepthDeviationFemale();
+		/**
+		 * The meta object literal for the '<em><b>Results</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SIMULATION_PROPERTIES__RESULTS = eINSTANCE.getSimulationProperties_Results();
+		/**
+		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.SimulationResultImpl <em>Simulation Result</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.bhl.cdt.model.cabin.impl.SimulationResultImpl
+		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getSimulationResult()
+		 * @generated
+		 */
+		EClass SIMULATION_RESULT = eINSTANCE.getSimulationResult();
+		/**
+		 * The meta object literal for the '<em><b>Boarding Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_RESULT__BOARDING_TIME = eINSTANCE.getSimulationResult_BoardingTime();
+		/**
+		 * The meta object literal for the '<em><b>Passengers</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_RESULT__PASSENGERS = eINSTANCE.getSimulationResult_Passengers();
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_RESULT__NAME = eINSTANCE.getSimulationResult_Name();
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_RESULT__ID = eINSTANCE.getSimulationResult_Id();
+		/**
+		 * The meta object literal for the '<em><b>Date</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_RESULT__DATE = eINSTANCE.getSimulationResult_Date();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.PhysicalObjectImpl <em>Physical Object</em>}' class.
 		 * <!-- begin-user-doc -->

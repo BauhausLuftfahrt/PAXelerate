@@ -202,6 +202,15 @@ public interface CabinFactory extends EFactory {
 	SimulationProperties createSimulationProperties();
 
 	/**
+	 * Returns a new object of class '<em>Simulation Result</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Simulation Result</em>'.
+	 * @generated
+	 */
+	SimulationResult createSimulationResult();
+
+	/**
 	 * Returns a new object of class '<em>Physical Object</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

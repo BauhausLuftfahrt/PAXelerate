@@ -2,6 +2,7 @@
  */
 package net.bhl.cdt.model.cabin;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -35,6 +36,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerHeightDeviationFemale <em>Passenger Height Deviation Female</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerDepthMeanFemale <em>Passenger Depth Mean Female</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerDepthDeviationFemale <em>Passenger Depth Deviation Female</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#getResults <em>Results</em>}</li>
  * </ul>
  * </p>
  *
@@ -620,12 +622,12 @@ public interface SimulationProperties extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Passenger Depth Mean Female</em>' attribute.
-	 * @see #setPassengerDepthMeanFemale(double)
+	 * @see #setPassengerDepthMeanFemale(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSimulationProperties_PassengerDepthMeanFemale()
 	 * @model default="27"
 	 * @generated
 	 */
-	double getPassengerDepthMeanFemale();
+	int getPassengerDepthMeanFemale();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerDepthMeanFemale <em>Passenger Depth Mean Female</em>}' attribute.
@@ -635,7 +637,7 @@ public interface SimulationProperties extends EObject {
 	 * @see #getPassengerDepthMeanFemale()
 	 * @generated
 	 */
-	void setPassengerDepthMeanFemale(double value);
+	void setPassengerDepthMeanFemale(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Passenger Depth Deviation Female</b></em>' attribute.
@@ -663,5 +665,21 @@ public interface SimulationProperties extends EObject {
 	 * @generated
 	 */
 	void setPassengerDepthDeviationFemale(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Results</b></em>' reference list.
+	 * The list contents are of type {@link net.bhl.cdt.model.cabin.SimulationResult}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Results</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Results</em>' reference list.
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSimulationProperties_Results()
+	 * @model
+	 * @generated
+	 */
+	EList<SimulationResult> getResults();
 
 } // SimulationProperties

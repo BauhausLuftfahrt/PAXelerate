@@ -2,15 +2,16 @@
  */
 package net.bhl.cdt.model.cabin.impl;
 
+import java.util.Collection;
 import net.bhl.cdt.model.cabin.CabinPackage;
 import net.bhl.cdt.model.cabin.SimulationProperties;
-
+import net.bhl.cdt.model.cabin.SimulationResult;
 import org.eclipse.emf.common.notify.Notification;
-
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,6 +43,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#getPassengerHeightDeviationFemale <em>Passenger Height Deviation Female</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#getPassengerDepthMeanFemale <em>Passenger Depth Mean Female</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#getPassengerDepthDeviationFemale <em>Passenger Depth Deviation Female</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#getResults <em>Results</em>}</li>
  * </ul>
  * </p>
  *
@@ -476,7 +478,7 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double PASSENGER_DEPTH_MEAN_FEMALE_EDEFAULT = 27.0;
+	protected static final int PASSENGER_DEPTH_MEAN_FEMALE_EDEFAULT = 27;
 
 	/**
 	 * The cached value of the '{@link #getPassengerDepthMeanFemale() <em>Passenger Depth Mean Female</em>}' attribute.
@@ -486,7 +488,7 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * @generated
 	 * @ordered
 	 */
-	protected double passengerDepthMeanFemale = PASSENGER_DEPTH_MEAN_FEMALE_EDEFAULT;
+	protected int passengerDepthMeanFemale = PASSENGER_DEPTH_MEAN_FEMALE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getPassengerDepthDeviationFemale() <em>Passenger Depth Deviation Female</em>}' attribute.
@@ -507,6 +509,16 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * @ordered
 	 */
 	protected double passengerDepthDeviationFemale = PASSENGER_DEPTH_DEVIATION_FEMALE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getResults() <em>Results</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResults()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<SimulationResult> results;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -973,7 +985,7 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getPassengerDepthMeanFemale() {
+	public int getPassengerDepthMeanFemale() {
 		return passengerDepthMeanFemale;
 	}
 
@@ -982,8 +994,8 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPassengerDepthMeanFemale(double newPassengerDepthMeanFemale) {
-		double oldPassengerDepthMeanFemale = passengerDepthMeanFemale;
+	public void setPassengerDepthMeanFemale(int newPassengerDepthMeanFemale) {
+		int oldPassengerDepthMeanFemale = passengerDepthMeanFemale;
 		passengerDepthMeanFemale = newPassengerDepthMeanFemale;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_FEMALE, oldPassengerDepthMeanFemale, passengerDepthMeanFemale));
@@ -1008,6 +1020,18 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 		passengerDepthDeviationFemale = newPassengerDepthDeviationFemale;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE, oldPassengerDepthDeviationFemale, passengerDepthDeviationFemale));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<SimulationResult> getResults() {
+		if (results == null) {
+			results = new EObjectResolvingEList<SimulationResult>(SimulationResult.class, this, CabinPackage.SIMULATION_PROPERTIES__RESULTS);
+		}
+		return results;
 	}
 
 	/**
@@ -1064,6 +1088,8 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return getPassengerDepthMeanFemale();
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE:
 				return getPassengerDepthDeviationFemale();
+			case CabinPackage.SIMULATION_PROPERTIES__RESULTS:
+				return getResults();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1073,6 +1099,7 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -1140,10 +1167,14 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				setPassengerHeightDeviationFemale((Double)newValue);
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_FEMALE:
-				setPassengerDepthMeanFemale((Double)newValue);
+				setPassengerDepthMeanFemale((Integer)newValue);
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE:
 				setPassengerDepthDeviationFemale((Double)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__RESULTS:
+				getResults().clear();
+				getResults().addAll((Collection<? extends SimulationResult>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1226,6 +1257,9 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE:
 				setPassengerDepthDeviationFemale(PASSENGER_DEPTH_DEVIATION_FEMALE_EDEFAULT);
 				return;
+			case CabinPackage.SIMULATION_PROPERTIES__RESULTS:
+				getResults().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1284,6 +1318,8 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return passengerDepthMeanFemale != PASSENGER_DEPTH_MEAN_FEMALE_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE:
 				return passengerDepthDeviationFemale != PASSENGER_DEPTH_DEVIATION_FEMALE_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__RESULTS:
+				return results != null && !results.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

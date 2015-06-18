@@ -78,6 +78,7 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 			addPassengerHeightDeviationFemalePropertyDescriptor(object);
 			addPassengerDepthMeanFemalePropertyDescriptor(object);
 			addPassengerDepthDeviationFemalePropertyDescriptor(object);
+			addResultsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -553,7 +554,7 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -576,6 +577,28 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 				 false,
 				 false,
 				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Results feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addResultsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_results_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_results_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__RESULTS,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

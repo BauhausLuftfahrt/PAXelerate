@@ -25,6 +25,7 @@ import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.Sex;
 import net.bhl.cdt.model.cabin.SimulationProperties;
+import net.bhl.cdt.model.cabin.SimulationResult;
 import net.bhl.cdt.model.cabin.Stairway;
 import net.bhl.cdt.model.cabin.StairwayDirection;
 import net.bhl.cdt.model.cabin.StandardDoor;
@@ -186,6 +187,13 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	private EClass simulationPropertiesEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass simulationResultEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1371,6 +1379,69 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getSimulationProperties_Results() {
+		return (EReference)simulationPropertiesEClass.getEStructuralFeatures().get(23);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSimulationResult() {
+		return simulationResultEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationResult_BoardingTime() {
+		return (EAttribute)simulationResultEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationResult_Passengers() {
+		return (EAttribute)simulationResultEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationResult_Name() {
+		return (EAttribute)simulationResultEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationResult_Id() {
+		return (EAttribute)simulationResultEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationResult_Date() {
+		return (EAttribute)simulationResultEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPhysicalObject() {
 		return physicalObjectEClass;
 	}
@@ -1649,6 +1720,14 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_FEMALE);
 		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_FEMALE);
 		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE);
+		createEReference(simulationPropertiesEClass, SIMULATION_PROPERTIES__RESULTS);
+
+		simulationResultEClass = createEClass(SIMULATION_RESULT);
+		createEAttribute(simulationResultEClass, SIMULATION_RESULT__BOARDING_TIME);
+		createEAttribute(simulationResultEClass, SIMULATION_RESULT__PASSENGERS);
+		createEAttribute(simulationResultEClass, SIMULATION_RESULT__NAME);
+		createEAttribute(simulationResultEClass, SIMULATION_RESULT__ID);
+		createEAttribute(simulationResultEClass, SIMULATION_RESULT__DATE);
 
 		// Create enums
 		sexEEnum = createEEnum(SEX);
@@ -1873,8 +1952,16 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEAttribute(getSimulationProperties_PassengerWeightDeviationFemale(), ecorePackage.getEDouble(), "passengerWeightDeviationFemale", "15", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimulationProperties_PassengerHeightMeanFemale(), ecorePackage.getEDouble(), "passengerHeightMeanFemale", "164.5", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimulationProperties_PassengerHeightDeviationFemale(), ecorePackage.getEDouble(), "passengerHeightDeviationFemale", "11.5", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimulationProperties_PassengerDepthMeanFemale(), ecorePackage.getEDouble(), "passengerDepthMeanFemale", "27", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_PassengerDepthMeanFemale(), ecorePackage.getEInt(), "passengerDepthMeanFemale", "27", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimulationProperties_PassengerDepthDeviationFemale(), ecorePackage.getEDouble(), "passengerDepthDeviationFemale", "3", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSimulationProperties_Results(), this.getSimulationResult(), null, "results", null, 0, -1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(simulationResultEClass, SimulationResult.class, "SimulationResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSimulationResult_BoardingTime(), ecorePackage.getEDouble(), "BoardingTime", null, 0, 1, SimulationResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationResult_Passengers(), ecorePackage.getEInt(), "Passengers", null, 0, 1, SimulationResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationResult_Name(), ecorePackage.getEString(), "name", null, 0, 1, SimulationResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationResult_Id(), ecorePackage.getEInt(), "id", null, 0, 1, SimulationResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationResult_Date(), ecorePackage.getEDate(), "date", null, 0, 1, SimulationResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(sexEEnum, Sex.class, "Sex");

@@ -243,7 +243,7 @@ public class SimulationView extends JPanel implements MouseListener {
 
 			}
 			g.setColor(Color.LIGHT_GRAY);
-			g.fillRect(mousePos.x + 10, mousePos.y + 10, 250, 100);
+			g.fillRect(mousePos.x + 10, mousePos.y + 10, 250, 120);
 			g.setColor(Color.BLACK);
 			if (areamap.getNodeByCoordinate(b, a) != null && pax != null) {
 				if (areamap.getNodeByCoordinate(b, a).getProperty() == Property.AGENT) {
@@ -259,6 +259,15 @@ public class SimulationView extends JPanel implements MouseListener {
 							+ SimulationHandler.getAgentByPassenger(pax)
 									.getAgentMode().toString(),
 							mousePos.x + 30, mousePos.y + 90);
+					g.drawString("Waiting for passenger "
+							+ SimulationHandler.getAgentByPassenger(pax)
+									.getOtherPassengersInRowBlockingMe()
+									.getId()
+							+ " on seat "
+							+ SimulationHandler.getAgentByPassenger(pax)
+									.getOtherPassengersInRowBlockingMe()
+									.getSeatRef().getName(), mousePos.x + 30,
+							mousePos.y + 110);
 				}
 			} else if (prop != null) {
 				g.drawString("Property: " + prop.toString() + ", x: " + b

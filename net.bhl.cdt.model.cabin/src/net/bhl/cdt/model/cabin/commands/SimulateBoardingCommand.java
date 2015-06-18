@@ -94,13 +94,15 @@ public class SimulateBoardingCommand extends CDTCommand {
 		for (int i = 0; i < cabin.getSimulationSettings()
 				.getNumberOfSimulationLoops(); i++) {
 
-			if (cabin.getSimulationSettings().isRandomSortBetweenLoops()) {
+			/* don't do it in the first loop! */
+			if (cabin.getSimulationSettings().isRandomSortBetweenLoops()
+					&& i != 0) {
 				SortPassengersCommand sort = new SortPassengersCommand(cabin);
 				sort.setPropertiesManually(false, 0);
 				sort.doRun();
 			}
 
-			// reset simulation in case of previous exsiting objects.
+			// reset simulation in case of previous existing objects.
 			SimulationHandler.reset();
 
 			// reset the passenger properties.

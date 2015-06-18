@@ -70,6 +70,10 @@ public class Agent extends Subject implements Runnable {
 
 	private Passenger thePassengerILetInTheRow;
 
+	public Passenger getThePassengerILetInTheRow() {
+		return thePassengerILetInTheRow;
+	}
+
 	public static enum AgentMode {
 		GO_TO_SEAT, MAKE_WAY
 	}
@@ -88,6 +92,14 @@ public class Agent extends Subject implements Runnable {
 	private int[][] adaptedPassengerArea;
 
 	public ArrayList<Passenger> otherPassengersInRowBlockingMe = new ArrayList<Passenger>();
+
+	public Passenger getOtherPassengersInRowBlockingMe() {
+		if (otherPassengersInRowBlockingMe != null) {
+			return otherPassengersInRowBlockingMe.get(0);
+		} else {
+			return null;
+		}
+	}
 
 	// TODO: Das ist eine Stellschraube, genauso wie die Funktion
 	// "nodeAlreadyBlockedBySomeoneElse!". Darin wird der Fehler liegen!
