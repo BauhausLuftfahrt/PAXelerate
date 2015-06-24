@@ -52,11 +52,9 @@ public class CabinItemProvider extends NamedElementItemProvider {
 			addNumberOfDecksPropertyDescriptor(object);
 			addSimulationSettingsPropertyDescriptor(object);
 			addScalePropertyDescriptor(object);
-			addRealElapsedTimePropertyDescriptor(object);
 			addAircraftTypePropertyDescriptor(object);
 			addUsePresetSettingsPropertyDescriptor(object);
 			addSpeedFactorPropertyDescriptor(object);
-			addEstimatedSimulationTimePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -123,28 +121,6 @@ public class CabinItemProvider extends NamedElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Real Elapsed Time feature. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	protected void addRealElapsedTimePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Cabin_realElapsedTime_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_realElapsedTime_feature", "_UI_Cabin_type"),
-				 CabinPackage.Literals.CABIN__REAL_ELAPSED_TIME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -255,27 +231,6 @@ public class CabinItemProvider extends NamedElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Estimated Simulation Time feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addEstimatedSimulationTimePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Cabin_EstimatedSimulationTime_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_EstimatedSimulationTime_feature", "_UI_Cabin_type"),
-				 CabinPackage.Literals.CABIN__ESTIMATED_SIMULATION_TIME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -426,11 +381,9 @@ public class CabinItemProvider extends NamedElementItemProvider {
 			case CabinPackage.CABIN__FRAMES_PER_SECOND:
 			case CabinPackage.CABIN__NUMBER_OF_DECKS:
 			case CabinPackage.CABIN__SCALE:
-			case CabinPackage.CABIN__REAL_ELAPSED_TIME:
 			case CabinPackage.CABIN__AIRCRAFT_TYPE:
 			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
 			case CabinPackage.CABIN__SPEED_FACTOR:
-			case CabinPackage.CABIN__ESTIMATED_SIMULATION_TIME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CabinPackage.CABIN__CLASSES:

@@ -31,8 +31,8 @@ import net.bhl.cdt.model.cabin.StairwayDirection;
 import net.bhl.cdt.model.cabin.StandardDoor;
 import net.bhl.cdt.model.cabin.Stowage;
 import net.bhl.cdt.model.cabin.TravelClass;
+import net.bhl.cdt.model.cabin.luggageType;
 import net.bhl.cdt.model.cabin.util.CabinValidator;
-import net.bhl.cdt.model.units.UnitsPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -229,6 +229,13 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EEnum luggageTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum sexEEnum = null;
 
 	/**
@@ -399,15 +406,6 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCabin_RealElapsedTime() {
-		return (EAttribute)cabinEClass.getEStructuralFeatures().get(16);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getCabin_FramesPerSecond() {
 		return (EAttribute)cabinEClass.getEStructuralFeatures().get(4);
 	}
@@ -436,7 +434,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getCabin_AircraftType() {
-		return (EAttribute)cabinEClass.getEStructuralFeatures().get(17);
+		return (EAttribute)cabinEClass.getEStructuralFeatures().get(16);
 	}
 
 	/**
@@ -445,7 +443,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getCabin_UsePresetSettings() {
-		return (EAttribute)cabinEClass.getEStructuralFeatures().get(18);
+		return (EAttribute)cabinEClass.getEStructuralFeatures().get(17);
 	}
 
 	/**
@@ -454,16 +452,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getCabin_SpeedFactor() {
-		return (EAttribute)cabinEClass.getEStructuralFeatures().get(19);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCabin_EstimatedSimulationTime() {
-		return (EAttribute)cabinEClass.getEStructuralFeatures().get(20);
+		return (EAttribute)cabinEClass.getEStructuralFeatures().get(18);
 	}
 
 	/**
@@ -957,7 +946,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPassenger_HasLuggage() {
+	public EAttribute getPassenger_LuggageStowTime() {
 		return (EAttribute)passengerEClass.getEStructuralFeatures().get(19);
 	}
 
@@ -966,17 +955,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPassenger_LuggageStowTime() {
-		return (EAttribute)passengerEClass.getEStructuralFeatures().get(20);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getPassenger_TravelClass() {
-		return (EReference)passengerEClass.getEStructuralFeatures().get(21);
+		return (EReference)passengerEClass.getEStructuralFeatures().get(20);
 	}
 
 	/**
@@ -985,7 +965,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getPassenger_PassengerMood() {
-		return (EAttribute)passengerEClass.getEStructuralFeatures().get(22);
+		return (EAttribute)passengerEClass.getEStructuralFeatures().get(21);
 	}
 
 	/**
@@ -994,6 +974,15 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getPassenger_NumberOfMakeWayOperations() {
+		return (EAttribute)passengerEClass.getEStructuralFeatures().get(22);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassenger_Luggage() {
 		return (EAttribute)passengerEClass.getEStructuralFeatures().get(23);
 	}
 
@@ -1389,6 +1378,42 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getSimulationProperties_PercentageOfPassengersWithNoLuggage() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(24);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PercentageOfPassengersWithSmallLuggage() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(25);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PercentageOfPassengersWithMediumLuggage() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(26);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PercentageOfPassengersWithBigLuggage() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(27);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSimulationResult() {
 		return simulationResultEClass;
 	}
@@ -1436,24 +1461,6 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EAttribute getSimulationResult_Date() {
 		return (EAttribute)simulationResultEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationResult_TestObject() {
-		return (EAttribute)simulationResultEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationResult_TestObject2() {
-		return (EAttribute)simulationResultEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -1560,6 +1567,15 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getluggageType() {
+		return luggageTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getSex() {
 		return sexEEnum;
 	}
@@ -1609,11 +1625,9 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEReference(cabinEClass, CABIN__STOWAGES);
 		createEReference(cabinEClass, CABIN__PASSENGERS);
 		createEAttribute(cabinEClass, CABIN__SCALE);
-		createEAttribute(cabinEClass, CABIN__REAL_ELAPSED_TIME);
 		createEAttribute(cabinEClass, CABIN__AIRCRAFT_TYPE);
 		createEAttribute(cabinEClass, CABIN__USE_PRESET_SETTINGS);
 		createEAttribute(cabinEClass, CABIN__SPEED_FACTOR);
-		createEAttribute(cabinEClass, CABIN__ESTIMATED_SIMULATION_TIME);
 
 		rowEClass = createEClass(ROW);
 		createEReference(rowEClass, ROW__SEATS);
@@ -1670,11 +1684,11 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEAttribute(passengerEClass, PASSENGER__WALKING_SPEED);
 		createEAttribute(passengerEClass, PASSENGER__START_BOARDING_AFTER_DELAY);
 		createEAttribute(passengerEClass, PASSENGER__NUMBER_OF_WAITS);
-		createEAttribute(passengerEClass, PASSENGER__HAS_LUGGAGE);
 		createEAttribute(passengerEClass, PASSENGER__LUGGAGE_STOW_TIME);
 		createEReference(passengerEClass, PASSENGER__TRAVEL_CLASS);
 		createEAttribute(passengerEClass, PASSENGER__PASSENGER_MOOD);
 		createEAttribute(passengerEClass, PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS);
+		createEAttribute(passengerEClass, PASSENGER__LUGGAGE);
 
 		crewMemberEClass = createEClass(CREW_MEMBER);
 		createEAttribute(crewMemberEClass, CREW_MEMBER__ID);
@@ -1740,6 +1754,10 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_FEMALE);
 		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE);
 		createEReference(simulationPropertiesEClass, SIMULATION_PROPERTIES__RESULTS);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE);
 
 		simulationResultEClass = createEClass(SIMULATION_RESULT);
 		createEAttribute(simulationResultEClass, SIMULATION_RESULT__BOARDING_TIME);
@@ -1747,14 +1765,13 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEAttribute(simulationResultEClass, SIMULATION_RESULT__NAME);
 		createEAttribute(simulationResultEClass, SIMULATION_RESULT__ID);
 		createEAttribute(simulationResultEClass, SIMULATION_RESULT__DATE);
-		createEAttribute(simulationResultEClass, SIMULATION_RESULT__TEST_OBJECT);
-		createEAttribute(simulationResultEClass, SIMULATION_RESULT__TEST_OBJECT2);
 
 		// Create enums
 		sexEEnum = createEEnum(SEX);
 		stairwayDirectionEEnum = createEEnum(STAIRWAY_DIRECTION);
 		aircraftTypeEEnum = createEEnum(AIRCRAFT_TYPE);
 		passengerMoodEEnum = createEEnum(PASSENGER_MOOD);
+		luggageTypeEEnum = createEEnum(LUGGAGE_TYPE);
 	}
 
 	/**
@@ -1782,7 +1799,6 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 
 		// Obtain other dependent packages
 		ModelPackage theModelPackage = (ModelPackage)EPackage.Registry.INSTANCE.getEPackage(ModelPackage.eNS_URI);
-		UnitsPackage theUnitsPackage = (UnitsPackage)EPackage.Registry.INSTANCE.getEPackage(UnitsPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -1822,11 +1838,9 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEReference(getCabin_Stowages(), this.getStowage(), null, "stowages", null, 0, -1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCabin_Passengers(), this.getPassenger(), null, "passengers", null, 0, -1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCabin_Scale(), ecorePackage.getEInt(), "scale", "10", 0, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCabin_RealElapsedTime(), ecorePackage.getEDouble(), "realElapsedTime", null, 0, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCabin_AircraftType(), this.getAircraftType(), "aircraftType", null, 0, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCabin_UsePresetSettings(), ecorePackage.getEBoolean(), "usePresetSettings", "false", 0, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCabin_SpeedFactor(), ecorePackage.getEInt(), "speedFactor", "1", 0, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCabin_EstimatedSimulationTime(), ecorePackage.getEDouble(), "EstimatedSimulationTime", null, 0, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(rowEClass, Row.class, "Row", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRow_Seats(), this.getSeat(), null, "seats", null, 1, -1, Row.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1899,11 +1913,11 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEAttribute(getPassenger_WalkingSpeed(), ecorePackage.getEDouble(), "walkingSpeed", "2.0", 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPassenger_StartBoardingAfterDelay(), ecorePackage.getEDouble(), "startBoardingAfterDelay", "1.0", 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPassenger_NumberOfWaits(), ecorePackage.getEInt(), "numberOfWaits", "0", 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPassenger_HasLuggage(), ecorePackage.getEBoolean(), "hasLuggage", "false", 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPassenger_LuggageStowTime(), ecorePackage.getEDouble(), "luggageStowTime", "1.0", 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPassenger_TravelClass(), this.getTravelClass(), null, "travelClass", null, 1, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPassenger_PassengerMood(), this.getPassengerMood(), "passengerMood", null, 1, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPassenger_NumberOfMakeWayOperations(), ecorePackage.getEInt(), "numberOfMakeWayOperations", "0", 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPassenger_Luggage(), this.getluggageType(), "luggage", null, 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(crewMemberEClass, CrewMember.class, "CrewMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCrewMember_Id(), ecorePackage.getEInt(), "id", null, 0, 1, CrewMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1977,18 +1991,17 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEAttribute(getSimulationProperties_PassengerDepthMeanFemale(), ecorePackage.getEInt(), "passengerDepthMeanFemale", "27", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimulationProperties_PassengerDepthDeviationFemale(), ecorePackage.getEDouble(), "passengerDepthDeviationFemale", "3", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSimulationProperties_Results(), this.getSimulationResult(), null, "results", null, 0, -1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_PercentageOfPassengersWithNoLuggage(), ecorePackage.getEDouble(), "percentageOfPassengersWithNoLuggage", null, 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_PercentageOfPassengersWithSmallLuggage(), ecorePackage.getEDouble(), "percentageOfPassengersWithSmallLuggage", null, 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_PercentageOfPassengersWithMediumLuggage(), ecorePackage.getEDouble(), "percentageOfPassengersWithMediumLuggage", null, 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_PercentageOfPassengersWithBigLuggage(), ecorePackage.getEDouble(), "percentageOfPassengersWithBigLuggage", null, 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(simulationResultEClass, SimulationResult.class, "SimulationResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSimulationResult_BoardingTime(), ecorePackage.getEDouble(), "BoardingTime", null, 0, 1, SimulationResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimulationResult_Passengers(), ecorePackage.getEInt(), "Passengers", null, 0, 1, SimulationResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationResult_BoardingTime(), ecorePackage.getEDouble(), "boardingTime", null, 0, 1, SimulationResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationResult_Passengers(), ecorePackage.getEInt(), "passengers", null, 0, 1, SimulationResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimulationResult_Name(), ecorePackage.getEString(), "name", null, 0, 1, SimulationResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimulationResult_Id(), ecorePackage.getEInt(), "id", null, 0, 1, SimulationResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimulationResult_Date(), ecorePackage.getEDate(), "date", null, 0, 1, SimulationResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		g1 = createEGenericType(theUnitsPackage.getUnit());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		initEAttribute(getSimulationResult_TestObject(), g1, "testObject", null, 0, 1, SimulationResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimulationResult_TestObject2(), theUnitsPackage.getQuantity(), "testObject2", null, 0, 1, SimulationResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationResult_Date(), ecorePackage.getEDate(), "date", null, 1, 1, SimulationResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(sexEEnum, Sex.class, "Sex");
@@ -2007,6 +2020,12 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEEnum(passengerMoodEEnum, PassengerMood.class, "PassengerMood");
 		addEEnumLiteral(passengerMoodEEnum, PassengerMood.AGRESSIVE);
 		addEEnumLiteral(passengerMoodEEnum, PassengerMood.PASSIVE);
+
+		initEEnum(luggageTypeEEnum, luggageType.class, "luggageType");
+		addEEnumLiteral(luggageTypeEEnum, luggageType.SMALL);
+		addEEnumLiteral(luggageTypeEEnum, luggageType.MEDIUM);
+		addEEnumLiteral(luggageTypeEEnum, luggageType.BIG);
+		addEEnumLiteral(luggageTypeEEnum, luggageType.NONE);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -161,6 +161,8 @@ public class CabinValidator extends EObjectValidator {
 				return validateAircraftType((AircraftType)value, diagnostics, context);
 			case CabinPackage.PASSENGER_MOOD:
 				return validatePassengerMood((PassengerMood)value, diagnostics, context);
+			case CabinPackage.LUGGAGE_TYPE:
+				return validateluggageType((luggageType)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -552,6 +554,15 @@ public class CabinValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validatePassengerMood(PassengerMood passengerMood, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateluggageType(luggageType luggageType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

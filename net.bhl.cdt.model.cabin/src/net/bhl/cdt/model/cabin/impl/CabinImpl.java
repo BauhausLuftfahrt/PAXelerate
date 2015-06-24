@@ -47,11 +47,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getStowages <em>Stowages</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getPassengers <em>Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getScale <em>Scale</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getRealElapsedTime <em>Real Elapsed Time</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getAircraftType <em>Aircraft Type</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#isUsePresetSettings <em>Use Preset Settings</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getSpeedFactor <em>Speed Factor</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.CabinImpl#getEstimatedSimulationTime <em>Estimated Simulation Time</em>}</li>
  * </ul>
  * </p>
  *
@@ -250,24 +248,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 */
 	protected int scale = SCALE_EDEFAULT;
 	/**
-	 * The default value of the '{@link #getRealElapsedTime() <em>Real Elapsed Time</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @see #getRealElapsedTime()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double REAL_ELAPSED_TIME_EDEFAULT = 0.0;
-	/**
-	 * The cached value of the '{@link #getRealElapsedTime() <em>Real Elapsed Time</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @see #getRealElapsedTime()
-	 * @generated
-	 * @ordered
-	 */
-	protected double realElapsedTime = REAL_ELAPSED_TIME_EDEFAULT;
-	/**
 	 * The default value of the '{@link #getAircraftType() <em>Aircraft Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -319,24 +299,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @ordered
 	 */
 	protected int speedFactor = SPEED_FACTOR_EDEFAULT;
-	/**
-	 * The default value of the '{@link #getEstimatedSimulationTime() <em>Estimated Simulation Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEstimatedSimulationTime()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double ESTIMATED_SIMULATION_TIME_EDEFAULT = 0.0;
-	/**
-	 * The cached value of the '{@link #getEstimatedSimulationTime() <em>Estimated Simulation Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEstimatedSimulationTime()
-	 * @generated
-	 * @ordered
-	 */
-	protected double estimatedSimulationTime = ESTIMATED_SIMULATION_TIME_EDEFAULT;
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -481,25 +443,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getRealElapsedTime() {
-		return realElapsedTime;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setRealElapsedTime(double newRealElapsedTime) {
-		double oldRealElapsedTime = realElapsedTime;
-		realElapsedTime = newRealElapsedTime;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__REAL_ELAPSED_TIME, oldRealElapsedTime, realElapsedTime));
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
 	public int getFramesPerSecond() {
 		return framesPerSecond;
 	}
@@ -600,25 +543,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		speedFactor = newSpeedFactor;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SPEED_FACTOR, oldSpeedFactor, speedFactor));
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public double getEstimatedSimulationTime() {
-		return estimatedSimulationTime;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEstimatedSimulationTime(double newEstimatedSimulationTime) {
-		double oldEstimatedSimulationTime = estimatedSimulationTime;
-		estimatedSimulationTime = newEstimatedSimulationTime;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__ESTIMATED_SIMULATION_TIME, oldEstimatedSimulationTime, estimatedSimulationTime));
 	}
 
 	/**
@@ -776,16 +700,12 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return getPassengers();
 			case CabinPackage.CABIN__SCALE:
 				return getScale();
-			case CabinPackage.CABIN__REAL_ELAPSED_TIME:
-				return getRealElapsedTime();
 			case CabinPackage.CABIN__AIRCRAFT_TYPE:
 				return getAircraftType();
 			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
 				return isUsePresetSettings();
 			case CabinPackage.CABIN__SPEED_FACTOR:
 				return getSpeedFactor();
-			case CabinPackage.CABIN__ESTIMATED_SIMULATION_TIME:
-				return getEstimatedSimulationTime();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -854,9 +774,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__SCALE:
 				setScale((Integer)newValue);
 				return;
-			case CabinPackage.CABIN__REAL_ELAPSED_TIME:
-				setRealElapsedTime((Double)newValue);
-				return;
 			case CabinPackage.CABIN__AIRCRAFT_TYPE:
 				setAircraftType((AircraftType)newValue);
 				return;
@@ -865,9 +782,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return;
 			case CabinPackage.CABIN__SPEED_FACTOR:
 				setSpeedFactor((Integer)newValue);
-				return;
-			case CabinPackage.CABIN__ESTIMATED_SIMULATION_TIME:
-				setEstimatedSimulationTime((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -928,9 +842,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__SCALE:
 				setScale(SCALE_EDEFAULT);
 				return;
-			case CabinPackage.CABIN__REAL_ELAPSED_TIME:
-				setRealElapsedTime(REAL_ELAPSED_TIME_EDEFAULT);
-				return;
 			case CabinPackage.CABIN__AIRCRAFT_TYPE:
 				setAircraftType(AIRCRAFT_TYPE_EDEFAULT);
 				return;
@@ -939,9 +850,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return;
 			case CabinPackage.CABIN__SPEED_FACTOR:
 				setSpeedFactor(SPEED_FACTOR_EDEFAULT);
-				return;
-			case CabinPackage.CABIN__ESTIMATED_SIMULATION_TIME:
-				setEstimatedSimulationTime(ESTIMATED_SIMULATION_TIME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -986,16 +894,12 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return passengers != null && !passengers.isEmpty();
 			case CabinPackage.CABIN__SCALE:
 				return scale != SCALE_EDEFAULT;
-			case CabinPackage.CABIN__REAL_ELAPSED_TIME:
-				return realElapsedTime != REAL_ELAPSED_TIME_EDEFAULT;
 			case CabinPackage.CABIN__AIRCRAFT_TYPE:
 				return aircraftType != AIRCRAFT_TYPE_EDEFAULT;
 			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
 				return usePresetSettings != USE_PRESET_SETTINGS_EDEFAULT;
 			case CabinPackage.CABIN__SPEED_FACTOR:
 				return speedFactor != SPEED_FACTOR_EDEFAULT;
-			case CabinPackage.CABIN__ESTIMATED_SIMULATION_TIME:
-				return estimatedSimulationTime != ESTIMATED_SIMULATION_TIME_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1023,16 +927,12 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		result.append(numberOfDecks);
 		result.append(", scale: ");
 		result.append(scale);
-		result.append(", realElapsedTime: ");
-		result.append(realElapsedTime);
 		result.append(", aircraftType: ");
 		result.append(aircraftType);
 		result.append(", usePresetSettings: ");
 		result.append(usePresetSettings);
 		result.append(", speedFactor: ");
 		result.append(speedFactor);
-		result.append(", EstimatedSimulationTime: ");
-		result.append(estimatedSimulationTime);
 		result.append(')');
 		return result.toString();
 	}

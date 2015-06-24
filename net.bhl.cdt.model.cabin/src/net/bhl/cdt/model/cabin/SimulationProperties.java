@@ -37,6 +37,10 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerDepthMeanFemale <em>Passenger Depth Mean Female</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerDepthDeviationFemale <em>Passenger Depth Deviation Female</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#getResults <em>Results</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#getPercentageOfPassengersWithNoLuggage <em>Percentage Of Passengers With No Luggage</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#getPercentageOfPassengersWithSmallLuggage <em>Percentage Of Passengers With Small Luggage</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#getPercentageOfPassengersWithMediumLuggage <em>Percentage Of Passengers With Medium Luggage</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#getPercentageOfPassengersWithBigLuggage <em>Percentage Of Passengers With Big Luggage</em>}</li>
  * </ul>
  * </p>
  *
@@ -681,5 +685,109 @@ public interface SimulationProperties extends EObject {
 	 * @generated
 	 */
 	EList<SimulationResult> getResults();
+
+	/**
+	 * Returns the value of the '<em><b>Percentage Of Passengers With No Luggage</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Percentage Of Passengers With No Luggage</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Percentage Of Passengers With No Luggage</em>' attribute.
+	 * @see #setPercentageOfPassengersWithNoLuggage(double)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSimulationProperties_PercentageOfPassengersWithNoLuggage()
+	 * @model
+	 * @generated
+	 */
+	double getPercentageOfPassengersWithNoLuggage();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPercentageOfPassengersWithNoLuggage <em>Percentage Of Passengers With No Luggage</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Percentage Of Passengers With No Luggage</em>' attribute.
+	 * @see #getPercentageOfPassengersWithNoLuggage()
+	 * @generated
+	 */
+	void setPercentageOfPassengersWithNoLuggage(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Percentage Of Passengers With Small Luggage</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Percentage Of Passengers With Small Luggage</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Percentage Of Passengers With Small Luggage</em>' attribute.
+	 * @see #setPercentageOfPassengersWithSmallLuggage(double)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSimulationProperties_PercentageOfPassengersWithSmallLuggage()
+	 * @model
+	 * @generated
+	 */
+	double getPercentageOfPassengersWithSmallLuggage();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPercentageOfPassengersWithSmallLuggage <em>Percentage Of Passengers With Small Luggage</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Percentage Of Passengers With Small Luggage</em>' attribute.
+	 * @see #getPercentageOfPassengersWithSmallLuggage()
+	 * @generated
+	 */
+	void setPercentageOfPassengersWithSmallLuggage(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Percentage Of Passengers With Medium Luggage</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Percentage Of Passengers With Medium Luggage</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Percentage Of Passengers With Medium Luggage</em>' attribute.
+	 * @see #setPercentageOfPassengersWithMediumLuggage(double)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSimulationProperties_PercentageOfPassengersWithMediumLuggage()
+	 * @model
+	 * @generated
+	 */
+	double getPercentageOfPassengersWithMediumLuggage();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPercentageOfPassengersWithMediumLuggage <em>Percentage Of Passengers With Medium Luggage</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Percentage Of Passengers With Medium Luggage</em>' attribute.
+	 * @see #getPercentageOfPassengersWithMediumLuggage()
+	 * @generated
+	 */
+	void setPercentageOfPassengersWithMediumLuggage(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Percentage Of Passengers With Big Luggage</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Percentage Of Passengers With Big Luggage</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Percentage Of Passengers With Big Luggage</em>' attribute.
+	 * @see #setPercentageOfPassengersWithBigLuggage(double)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSimulationProperties_PercentageOfPassengersWithBigLuggage()
+	 * @model
+	 * @generated
+	 */
+	double getPercentageOfPassengersWithBigLuggage();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPercentageOfPassengersWithBigLuggage <em>Percentage Of Passengers With Big Luggage</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Percentage Of Passengers With Big Luggage</em>' attribute.
+	 * @see #getPercentageOfPassengersWithBigLuggage()
+	 * @generated
+	 */
+	void setPercentageOfPassengersWithBigLuggage(double value);
 
 } // SimulationProperties

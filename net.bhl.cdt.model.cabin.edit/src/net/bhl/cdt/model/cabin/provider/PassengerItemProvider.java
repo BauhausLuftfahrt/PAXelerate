@@ -79,11 +79,11 @@ public class PassengerItemProvider
 			addWalkingSpeedPropertyDescriptor(object);
 			addStartBoardingAfterDelayPropertyDescriptor(object);
 			addNumberOfWaitsPropertyDescriptor(object);
-			addHasLuggagePropertyDescriptor(object);
 			addLuggageStowTimePropertyDescriptor(object);
 			addTravelClassPropertyDescriptor(object);
 			addPassengerMoodPropertyDescriptor(object);
 			addNumberOfMakeWayOperationsPropertyDescriptor(object);
+			addLuggagePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -419,28 +419,6 @@ public class PassengerItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Has Luggage feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addHasLuggagePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Passenger_hasLuggage_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_hasLuggage_feature", "_UI_Passenger_type"),
-				 CabinPackage.Literals.PASSENGER__HAS_LUGGAGE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Luggage Stow Time feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -524,6 +502,28 @@ public class PassengerItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Luggage feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLuggagePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_luggage_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_luggage_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__LUGGAGE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -669,10 +669,10 @@ public class PassengerItemProvider
 			case CabinPackage.PASSENGER__WALKING_SPEED:
 			case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
 			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
-			case CabinPackage.PASSENGER__HAS_LUGGAGE:
 			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
 			case CabinPackage.PASSENGER__PASSENGER_MOOD:
 			case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
+			case CabinPackage.PASSENGER__LUGGAGE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

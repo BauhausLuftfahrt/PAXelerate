@@ -22,6 +22,7 @@ import net.bhl.cdt.model.cabin.CabinFactory;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.Seat;
+import net.bhl.cdt.model.cabin.luggageType;
 import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Rotator;
 import net.bhl.cdt.model.cabin.util.StopWatch;
@@ -211,9 +212,12 @@ public class Agent extends Subject implements Runnable {
 		 * return true if the passenger does have luggage and if he is near his
 		 * seat
 		 */
-		return (this.passenger.isHasLuggage())
-				&& (desiredPosition.getY() == (int) (seat.getYPosition()
-						/ scale - PIXELS_FOR_LUGGAGE));
+		return (hasLuggage() && (desiredPosition.getY() == (int) (seat
+				.getYPosition() / scale - PIXELS_FOR_LUGGAGE)));
+	}
+
+	private boolean hasLuggage() {
+		return (passenger.getLuggage() == luggageType.NONE);
 	}
 
 	/**

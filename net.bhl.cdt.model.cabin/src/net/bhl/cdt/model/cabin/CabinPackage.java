@@ -223,22 +223,13 @@ public interface CabinPackage extends EPackage {
 	int CABIN__SCALE = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 15;
 
 	/**
-	 * The feature id for the '<em><b>Real Elapsed Time</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CABIN__REAL_ELAPSED_TIME = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 16;
-
-	/**
 	 * The feature id for the '<em><b>Aircraft Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__AIRCRAFT_TYPE = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 17;
+	int CABIN__AIRCRAFT_TYPE = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 16;
 
 	/**
 	 * The feature id for the '<em><b>Use Preset Settings</b></em>' attribute.
@@ -247,7 +238,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__USE_PRESET_SETTINGS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 18;
+	int CABIN__USE_PRESET_SETTINGS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 17;
 
 	/**
 	 * The feature id for the '<em><b>Speed Factor</b></em>' attribute.
@@ -256,16 +247,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__SPEED_FACTOR = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 19;
-
-	/**
-	 * The feature id for the '<em><b>Estimated Simulation Time</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CABIN__ESTIMATED_SIMULATION_TIME = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 20;
+	int CABIN__SPEED_FACTOR = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 18;
 
 	/**
 	 * The number of structural features of the '<em>Cabin</em>' class.
@@ -274,7 +256,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_FEATURE_COUNT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 21;
+	int CABIN_FEATURE_COUNT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 19;
 
 	/**
 	 * The number of operations of the '<em>Cabin</em>' class.
@@ -1423,22 +1405,13 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER__NUMBER_OF_WAITS = 18;
 
 	/**
-	 * The feature id for the '<em><b>Has Luggage</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PASSENGER__HAS_LUGGAGE = 19;
-
-	/**
 	 * The feature id for the '<em><b>Luggage Stow Time</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__LUGGAGE_STOW_TIME = 20;
+	int PASSENGER__LUGGAGE_STOW_TIME = 19;
 
 	/**
 	 * The feature id for the '<em><b>Travel Class</b></em>' reference.
@@ -1447,7 +1420,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__TRAVEL_CLASS = 21;
+	int PASSENGER__TRAVEL_CLASS = 20;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Mood</b></em>' attribute.
@@ -1456,7 +1429,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__PASSENGER_MOOD = 22;
+	int PASSENGER__PASSENGER_MOOD = 21;
 
 	/**
 	 * The feature id for the '<em><b>Number Of Make Way Operations</b></em>' attribute.
@@ -1465,7 +1438,16 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS = 23;
+	int PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS = 22;
+
+	/**
+	 * The feature id for the '<em><b>Luggage</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__LUGGAGE = 23;
 
 	/**
 	 * The number of structural features of the '<em>Passenger</em>' class.
@@ -2512,13 +2494,49 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_PROPERTIES__RESULTS = 23;
 
 	/**
+	 * The feature id for the '<em><b>Percentage Of Passengers With No Luggage</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE = 24;
+
+	/**
+	 * The feature id for the '<em><b>Percentage Of Passengers With Small Luggage</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE = 25;
+
+	/**
+	 * The feature id for the '<em><b>Percentage Of Passengers With Medium Luggage</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE = 26;
+
+	/**
+	 * The feature id for the '<em><b>Percentage Of Passengers With Big Luggage</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE = 27;
+
+	/**
 	 * The number of structural features of the '<em>Simulation Properties</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES_FEATURE_COUNT = 24;
+	int SIMULATION_PROPERTIES_FEATURE_COUNT = 28;
 
 	/**
 	 * The number of operations of the '<em>Simulation Properties</em>' class.
@@ -2585,31 +2603,13 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_RESULT__DATE = 4;
 
 	/**
-	 * The feature id for the '<em><b>Test Object</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_RESULT__TEST_OBJECT = 5;
-
-	/**
-	 * The feature id for the '<em><b>Test Object2</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_RESULT__TEST_OBJECT2 = 6;
-
-	/**
 	 * The number of structural features of the '<em>Simulation Result</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_RESULT_FEATURE_COUNT = 7;
+	int SIMULATION_RESULT_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Simulation Result</em>' class.
@@ -2649,6 +2649,16 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	int PASSENGER_MOOD = 25;
+
+	/**
+	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.luggageType <em>luggage Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.model.cabin.luggageType
+	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getluggageType()
+	 * @generated
+	 */
+	int LUGGAGE_TYPE = 26;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}' enum.
@@ -2771,17 +2781,6 @@ public interface CabinPackage extends EPackage {
 	EAttribute getCabin_Scale();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getRealElapsedTime <em>Real Elapsed Time</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Real Elapsed Time</em>'.
-	 * @see net.bhl.cdt.model.cabin.Cabin#getRealElapsedTime()
-	 * @see #getCabin()
-	 * @generated
-	 */
-	EAttribute getCabin_RealElapsedTime();
-
-	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getFramesPerSecond <em>Frames Per Second</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2846,17 +2845,6 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCabin_SpeedFactor();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Cabin#getEstimatedSimulationTime <em>Estimated Simulation Time</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Estimated Simulation Time</em>'.
-	 * @see net.bhl.cdt.model.cabin.Cabin#getEstimatedSimulationTime()
-	 * @see #getCabin()
-	 * @generated
-	 */
-	EAttribute getCabin_EstimatedSimulationTime();
 
 	/**
 	 * Returns the meta object for the reference '{@link net.bhl.cdt.model.cabin.Cabin#getSimulationSettings <em>Simulation Settings</em>}'.
@@ -3442,17 +3430,6 @@ public interface CabinPackage extends EPackage {
 	EAttribute getPassenger_NumberOfWaits();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#isHasLuggage <em>Has Luggage</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Has Luggage</em>'.
-	 * @see net.bhl.cdt.model.cabin.Passenger#isHasLuggage()
-	 * @see #getPassenger()
-	 * @generated
-	 */
-	EAttribute getPassenger_HasLuggage();
-
-	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getLuggageStowTime <em>Luggage Stow Time</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3495,6 +3472,17 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPassenger_NumberOfMakeWayOperations();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getLuggage <em>Luggage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Luggage</em>'.
+	 * @see net.bhl.cdt.model.cabin.Passenger#getLuggage()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_Luggage();
 
 	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Passenger#getHeight <em>Height</em>}'.
@@ -3960,6 +3948,50 @@ public interface CabinPackage extends EPackage {
 	EReference getSimulationProperties_Results();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPercentageOfPassengersWithNoLuggage <em>Percentage Of Passengers With No Luggage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Percentage Of Passengers With No Luggage</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getPercentageOfPassengersWithNoLuggage()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PercentageOfPassengersWithNoLuggage();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPercentageOfPassengersWithSmallLuggage <em>Percentage Of Passengers With Small Luggage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Percentage Of Passengers With Small Luggage</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getPercentageOfPassengersWithSmallLuggage()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PercentageOfPassengersWithSmallLuggage();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPercentageOfPassengersWithMediumLuggage <em>Percentage Of Passengers With Medium Luggage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Percentage Of Passengers With Medium Luggage</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getPercentageOfPassengersWithMediumLuggage()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PercentageOfPassengersWithMediumLuggage();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPercentageOfPassengersWithBigLuggage <em>Percentage Of Passengers With Big Luggage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Percentage Of Passengers With Big Luggage</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getPercentageOfPassengersWithBigLuggage()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PercentageOfPassengersWithBigLuggage();
+
+	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.SimulationResult <em>Simulation Result</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4023,28 +4055,6 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSimulationResult_Date();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationResult#getTestObject <em>Test Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Test Object</em>'.
-	 * @see net.bhl.cdt.model.cabin.SimulationResult#getTestObject()
-	 * @see #getSimulationResult()
-	 * @generated
-	 */
-	EAttribute getSimulationResult_TestObject();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationResult#getTestObject2 <em>Test Object2</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Test Object2</em>'.
-	 * @see net.bhl.cdt.model.cabin.SimulationResult#getTestObject2()
-	 * @see #getSimulationResult()
-	 * @generated
-	 */
-	EAttribute getSimulationResult_TestObject2();
 
 	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.PhysicalObject <em>Physical Object</em>}'.
@@ -4163,6 +4173,16 @@ public interface CabinPackage extends EPackage {
 	EEnum getPassengerMood();
 
 	/**
+	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.luggageType <em>luggage Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>luggage Type</em>'.
+	 * @see net.bhl.cdt.model.cabin.luggageType
+	 * @generated
+	 */
+	EEnum getluggageType();
+
+	/**
 	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4268,13 +4288,6 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute CABIN__SCALE = eINSTANCE.getCabin_Scale();
 		/**
-		 * The meta object literal for the '<em><b>Real Elapsed Time</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CABIN__REAL_ELAPSED_TIME = eINSTANCE.getCabin_RealElapsedTime();
-		/**
 		 * The meta object literal for the '<em><b>Frames Per Second</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4316,13 +4329,6 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CABIN__SPEED_FACTOR = eINSTANCE.getCabin_SpeedFactor();
-		/**
-		 * The meta object literal for the '<em><b>Estimated Simulation Time</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CABIN__ESTIMATED_SIMULATION_TIME = eINSTANCE.getCabin_EstimatedSimulationTime();
 		/**
 		 * The meta object literal for the '<em><b>Simulation Settings</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
@@ -4720,13 +4726,6 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute PASSENGER__NUMBER_OF_WAITS = eINSTANCE.getPassenger_NumberOfWaits();
 		/**
-		 * The meta object literal for the '<em><b>Has Luggage</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PASSENGER__HAS_LUGGAGE = eINSTANCE.getPassenger_HasLuggage();
-		/**
 		 * The meta object literal for the '<em><b>Luggage Stow Time</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4754,6 +4753,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS = eINSTANCE.getPassenger_NumberOfMakeWayOperations();
+		/**
+		 * The meta object literal for the '<em><b>Luggage</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__LUGGAGE = eINSTANCE.getPassenger_Luggage();
 		/**
 		 * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -5076,6 +5082,34 @@ public interface CabinPackage extends EPackage {
 		 */
 		EReference SIMULATION_PROPERTIES__RESULTS = eINSTANCE.getSimulationProperties_Results();
 		/**
+		 * The meta object literal for the '<em><b>Percentage Of Passengers With No Luggage</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE = eINSTANCE.getSimulationProperties_PercentageOfPassengersWithNoLuggage();
+		/**
+		 * The meta object literal for the '<em><b>Percentage Of Passengers With Small Luggage</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE = eINSTANCE.getSimulationProperties_PercentageOfPassengersWithSmallLuggage();
+		/**
+		 * The meta object literal for the '<em><b>Percentage Of Passengers With Medium Luggage</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE = eINSTANCE.getSimulationProperties_PercentageOfPassengersWithMediumLuggage();
+		/**
+		 * The meta object literal for the '<em><b>Percentage Of Passengers With Big Luggage</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE = eINSTANCE.getSimulationProperties_PercentageOfPassengersWithBigLuggage();
+		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.SimulationResultImpl <em>Simulation Result</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5119,20 +5153,6 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SIMULATION_RESULT__DATE = eINSTANCE.getSimulationResult_Date();
-		/**
-		 * The meta object literal for the '<em><b>Test Object</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_RESULT__TEST_OBJECT = eINSTANCE.getSimulationResult_TestObject();
-		/**
-		 * The meta object literal for the '<em><b>Test Object2</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_RESULT__TEST_OBJECT2 = eINSTANCE.getSimulationResult_TestObject2();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.PhysicalObjectImpl <em>Physical Object</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -5218,6 +5238,15 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum PASSENGER_MOOD = eINSTANCE.getPassengerMood();
+		/**
+		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.luggageType <em>luggage Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.bhl.cdt.model.cabin.luggageType
+		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getluggageType()
+		 * @generated
+		 */
+		EEnum LUGGAGE_TYPE = eINSTANCE.getluggageType();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}' enum.
 		 * <!-- begin-user-doc -->

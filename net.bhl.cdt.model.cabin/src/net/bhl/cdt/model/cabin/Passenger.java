@@ -31,11 +31,11 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getWalkingSpeed <em>Walking Speed</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getStartBoardingAfterDelay <em>Start Boarding After Delay</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getNumberOfWaits <em>Number Of Waits</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.Passenger#isHasLuggage <em>Has Luggage</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getLuggageStowTime <em>Luggage Stow Time</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getTravelClass <em>Travel Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getPassengerMood <em>Passenger Mood</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getNumberOfMakeWayOperations <em>Number Of Make Way Operations</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Passenger#getLuggage <em>Luggage</em>}</li>
  * </ul>
  * </p>
  *
@@ -443,33 +443,6 @@ public interface Passenger extends EObject {
 	void setNumberOfWaits(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Has Luggage</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Has Luggage</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Has Luggage</em>' attribute.
-	 * @see #setHasLuggage(boolean)
-	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_HasLuggage()
-	 * @model default="false"
-	 * @generated
-	 */
-	boolean isHasLuggage();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#isHasLuggage <em>Has Luggage</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Has Luggage</em>' attribute.
-	 * @see #isHasLuggage()
-	 * @generated
-	 */
-	void setHasLuggage(boolean value);
-
-	/**
 	 * Returns the value of the '<em><b>Luggage Stow Time</b></em>' attribute.
 	 * The default value is <code>"1.0"</code>.
 	 * <!-- begin-user-doc -->
@@ -577,6 +550,35 @@ public interface Passenger extends EObject {
 	 * @generated
 	 */
 	void setNumberOfMakeWayOperations(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Luggage</b></em>' attribute.
+	 * The literals are from the enumeration {@link net.bhl.cdt.model.cabin.luggageType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Luggage</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Luggage</em>' attribute.
+	 * @see net.bhl.cdt.model.cabin.luggageType
+	 * @see #setLuggage(luggageType)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_Luggage()
+	 * @model
+	 * @generated
+	 */
+	luggageType getLuggage();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getLuggage <em>Luggage</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Luggage</em>' attribute.
+	 * @see net.bhl.cdt.model.cabin.luggageType
+	 * @see #getLuggage()
+	 * @generated
+	 */
+	void setLuggage(luggageType value);
 
 	/**
 	 * Returns the value of the '<em><b>Height</b></em>' attribute.

@@ -2,7 +2,6 @@
  */
 package net.bhl.cdt.model.cabin.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -27,22 +26,17 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
  * This is the item provider adapter for a {@link net.bhl.cdt.model.cabin.SimulationResult} object.
- * <!-- begin-user-doc -->
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc
+ * --> <!-- end-user-doc -->
  * @generated
  */
-public class SimulationResultItemProvider 
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+public class SimulationResultItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This constructs an instance from a factory and a notifier. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SimulationResultItemProvider(AdapterFactory adapterFactory) {
@@ -50,9 +44,9 @@ public class SimulationResultItemProvider
 	}
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This returns the property descriptors for the adapted class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -65,16 +59,14 @@ public class SimulationResultItemProvider
 			addNamePropertyDescriptor(object);
 			addIdPropertyDescriptor(object);
 			addDatePropertyDescriptor(object);
-			addTestObjectPropertyDescriptor(object);
-			addTestObject2PropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Boarding Time feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds a property descriptor for the Boarding Time feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addBoardingTimePropertyDescriptor(Object object) {
@@ -82,8 +74,8 @@ public class SimulationResultItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_SimulationResult_BoardingTime_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_BoardingTime_feature", "_UI_SimulationResult_type"),
+				 getString("_UI_SimulationResult_boardingTime_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_boardingTime_feature", "_UI_SimulationResult_type"),
 				 CabinPackage.Literals.SIMULATION_RESULT__BOARDING_TIME,
 				 true,
 				 false,
@@ -94,9 +86,9 @@ public class SimulationResultItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Passengers feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds a property descriptor for the Passengers feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addPassengersPropertyDescriptor(Object object) {
@@ -104,8 +96,8 @@ public class SimulationResultItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_SimulationResult_Passengers_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_Passengers_feature", "_UI_SimulationResult_type"),
+				 getString("_UI_SimulationResult_passengers_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_passengers_feature", "_UI_SimulationResult_type"),
 				 CabinPackage.Literals.SIMULATION_RESULT__PASSENGERS,
 				 true,
 				 false,
@@ -117,8 +109,8 @@ public class SimulationResultItemProvider
 
 	/**
 	 * This adds a property descriptor for the Name feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
@@ -139,8 +131,8 @@ public class SimulationResultItemProvider
 
 	/**
 	 * This adds a property descriptor for the Id feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addIdPropertyDescriptor(Object object) {
@@ -161,8 +153,8 @@ public class SimulationResultItemProvider
 
 	/**
 	 * This adds a property descriptor for the Date feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addDatePropertyDescriptor(Object object) {
@@ -182,53 +174,9 @@ public class SimulationResultItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Test Object feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTestObjectPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationResult_testObject_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_testObject_feature", "_UI_SimulationResult_type"),
-				 CabinPackage.Literals.SIMULATION_RESULT__TEST_OBJECT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Test Object2 feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTestObject2PropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationResult_testObject2_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_testObject2_feature", "_UI_SimulationResult_type"),
-				 CabinPackage.Literals.SIMULATION_RESULT__TEST_OBJECT2,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This returns SimulationResult.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -237,25 +185,23 @@ public class SimulationResultItemProvider
 	}
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This returns the label text for the adapted class. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((SimulationResult)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_SimulationResult_type") :
-			getString("_UI_SimulationResult_type") + " " + label;
+		String label = ((SimulationResult) object).getName();
+		return label == null || label.length() == 0 ? "Result" : "Result" + " "
+				+ label;
 	}
-	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -268,8 +214,6 @@ public class SimulationResultItemProvider
 			case CabinPackage.SIMULATION_RESULT__NAME:
 			case CabinPackage.SIMULATION_RESULT__ID:
 			case CabinPackage.SIMULATION_RESULT__DATE:
-			case CabinPackage.SIMULATION_RESULT__TEST_OBJECT:
-			case CabinPackage.SIMULATION_RESULT__TEST_OBJECT2:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
@@ -277,21 +221,22 @@ public class SimulationResultItemProvider
 	}
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
+	 * describing the children that can be created under this object. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
 	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Return the resource locator for this item provider's resources. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

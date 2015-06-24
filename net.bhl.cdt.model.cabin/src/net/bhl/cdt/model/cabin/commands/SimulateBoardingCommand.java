@@ -188,12 +188,6 @@ public class SimulateBoardingCommand extends CDTCommand {
 					}
 
 					SimulationView.getWatch().stop();
-					cabin.setEstimatedSimulationTime(FuncLib
-							.round((SimulationView.getWatch()
-									.getElapsedTimeSecs() * (double) cabin
-									.getSpeedFactor()), 2));
-					cabin.setRealElapsedTime(SimulationView.getWatch()
-							.getElapsedTimeSecs());
 
 					if (!obstaclemap.equals(null)) {
 						Image image = cabinViewPart
@@ -222,7 +216,12 @@ public class SimulateBoardingCommand extends CDTCommand {
 				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 						"No boarding possible! Please create passengers!"));
 			}
-			results.getSimulationData(cabin, i + 1);
+			results.getSimulationData(
+					cabin,
+					i + 1,
+					FuncLib.round((SimulationView.getWatch()
+							.getElapsedTimeSecs() * (double) cabin
+							.getSpeedFactor()), 2));
 		}
 		results.printSimulationData();
 	}

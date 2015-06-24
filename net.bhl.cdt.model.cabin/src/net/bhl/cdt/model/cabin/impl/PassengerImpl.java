@@ -9,6 +9,7 @@ import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.Sex;
 import net.bhl.cdt.model.cabin.TravelClass;
+import net.bhl.cdt.model.cabin.luggageType;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -40,11 +41,11 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getWalkingSpeed <em>Walking Speed</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getStartBoardingAfterDelay <em>Start Boarding After Delay</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getNumberOfWaits <em>Number Of Waits</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#isHasLuggage <em>Has Luggage</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getLuggageStowTime <em>Luggage Stow Time</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getTravelClass <em>Travel Class</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getPassengerMood <em>Passenger Mood</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getNumberOfMakeWayOperations <em>Number Of Make Way Operations</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.PassengerImpl#getLuggage <em>Luggage</em>}</li>
  * </ul>
  * </p>
  *
@@ -393,24 +394,6 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected int numberOfWaits = NUMBER_OF_WAITS_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isHasLuggage() <em>Has Luggage</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #isHasLuggage()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean HAS_LUGGAGE_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isHasLuggage() <em>Has Luggage</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #isHasLuggage()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean hasLuggage = HAS_LUGGAGE_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getLuggageStowTime() <em>Luggage Stow Time</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -478,6 +461,26 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	 * @ordered
 	 */
 	protected int numberOfMakeWayOperations = NUMBER_OF_MAKE_WAY_OPERATIONS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLuggage() <em>Luggage</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLuggage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final luggageType LUGGAGE_EDEFAULT = luggageType.SMALL;
+
+	/**
+	 * The cached value of the '{@link #getLuggage() <em>Luggage</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLuggage()
+	 * @generated
+	 * @ordered
+	 */
+	protected luggageType luggage = LUGGAGE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -802,25 +805,6 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isHasLuggage() {
-		return hasLuggage;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setHasLuggage(boolean newHasLuggage) {
-		boolean oldHasLuggage = hasLuggage;
-		hasLuggage = newHasLuggage;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__HAS_LUGGAGE, oldHasLuggage, hasLuggage));
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
 	public double getLuggageStowTime() {
 		return luggageStowTime;
 	}
@@ -909,6 +893,27 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 		numberOfMakeWayOperations = newNumberOfMakeWayOperations;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS, oldNumberOfMakeWayOperations, numberOfMakeWayOperations));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public luggageType getLuggage() {
+		return luggage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLuggage(luggageType newLuggage) {
+		luggageType oldLuggage = luggage;
+		luggage = newLuggage == null ? LUGGAGE_EDEFAULT : newLuggage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__LUGGAGE, oldLuggage, luggage));
 	}
 
 	/**
@@ -1050,8 +1055,6 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 				return getStartBoardingAfterDelay();
 			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
 				return getNumberOfWaits();
-			case CabinPackage.PASSENGER__HAS_LUGGAGE:
-				return isHasLuggage();
 			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
 				return getLuggageStowTime();
 			case CabinPackage.PASSENGER__TRAVEL_CLASS:
@@ -1061,6 +1064,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 				return getPassengerMood();
 			case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
 				return getNumberOfMakeWayOperations();
+			case CabinPackage.PASSENGER__LUGGAGE:
+				return getLuggage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1129,9 +1134,6 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
 				setNumberOfWaits((Integer)newValue);
 				return;
-			case CabinPackage.PASSENGER__HAS_LUGGAGE:
-				setHasLuggage((Boolean)newValue);
-				return;
 			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
 				setLuggageStowTime((Double)newValue);
 				return;
@@ -1143,6 +1145,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 				return;
 			case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
 				setNumberOfMakeWayOperations((Integer)newValue);
+				return;
+			case CabinPackage.PASSENGER__LUGGAGE:
+				setLuggage((luggageType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1212,9 +1217,6 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
 				setNumberOfWaits(NUMBER_OF_WAITS_EDEFAULT);
 				return;
-			case CabinPackage.PASSENGER__HAS_LUGGAGE:
-				setHasLuggage(HAS_LUGGAGE_EDEFAULT);
-				return;
 			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
 				setLuggageStowTime(LUGGAGE_STOW_TIME_EDEFAULT);
 				return;
@@ -1226,6 +1228,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 				return;
 			case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
 				setNumberOfMakeWayOperations(NUMBER_OF_MAKE_WAY_OPERATIONS_EDEFAULT);
+				return;
+			case CabinPackage.PASSENGER__LUGGAGE:
+				setLuggage(LUGGAGE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -1276,8 +1281,6 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 				return startBoardingAfterDelay != START_BOARDING_AFTER_DELAY_EDEFAULT;
 			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
 				return numberOfWaits != NUMBER_OF_WAITS_EDEFAULT;
-			case CabinPackage.PASSENGER__HAS_LUGGAGE:
-				return hasLuggage != HAS_LUGGAGE_EDEFAULT;
 			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
 				return luggageStowTime != LUGGAGE_STOW_TIME_EDEFAULT;
 			case CabinPackage.PASSENGER__TRAVEL_CLASS:
@@ -1286,6 +1289,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 				return passengerMood != PASSENGER_MOOD_EDEFAULT;
 			case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
 				return numberOfMakeWayOperations != NUMBER_OF_MAKE_WAY_OPERATIONS_EDEFAULT;
+			case CabinPackage.PASSENGER__LUGGAGE:
+				return luggage != LUGGAGE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1333,14 +1338,14 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 		result.append(startBoardingAfterDelay);
 		result.append(", numberOfWaits: ");
 		result.append(numberOfWaits);
-		result.append(", hasLuggage: ");
-		result.append(hasLuggage);
 		result.append(", luggageStowTime: ");
 		result.append(luggageStowTime);
 		result.append(", passengerMood: ");
 		result.append(passengerMood);
 		result.append(", numberOfMakeWayOperations: ");
 		result.append(numberOfMakeWayOperations);
+		result.append(", luggage: ");
+		result.append(luggage);
 		result.append(')');
 		return result.toString();
 	}

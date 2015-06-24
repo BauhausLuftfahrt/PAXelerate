@@ -3,15 +3,10 @@
 package net.bhl.cdt.model.cabin.impl;
 
 import java.util.Date;
-import javax.measure.quantity.Quantity;
-import javax.measure.unit.Unit;
 import net.bhl.cdt.model.cabin.CabinPackage;
 import net.bhl.cdt.model.cabin.SimulationResult;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
@@ -27,8 +22,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationResultImpl#getName <em>Name</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationResultImpl#getId <em>Id</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationResultImpl#getDate <em>Date</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationResultImpl#getTestObject <em>Test Object</em>}</li>
- *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationResultImpl#getTestObject2 <em>Test Object2</em>}</li>
  * </ul>
  * </p>
  *
@@ -134,36 +127,6 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected Date date = DATE_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getTestObject() <em>Test Object</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTestObject()
-	 * @generated
-	 * @ordered
-	 */
-	protected Unit<?> testObject;
-
-	/**
-	 * The default value of the '{@link #getTestObject2() <em>Test Object2</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTestObject2()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final Quantity TEST_OBJECT2_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getTestObject2() <em>Test Object2</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTestObject2()
-	 * @generated
-	 * @ordered
-	 */
-	protected Quantity testObject2 = TEST_OBJECT2_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -294,48 +257,6 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Unit<?> getTestObject() {
-		return testObject;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTestObject(Unit<?> newTestObject) {
-		Unit<?> oldTestObject = testObject;
-		testObject = newTestObject;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_RESULT__TEST_OBJECT, oldTestObject, testObject));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Quantity getTestObject2() {
-		return testObject2;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTestObject2(Quantity newTestObject2) {
-		Quantity oldTestObject2 = testObject2;
-		testObject2 = newTestObject2;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_RESULT__TEST_OBJECT2, oldTestObject2, testObject2));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -349,10 +270,6 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 				return getId();
 			case CabinPackage.SIMULATION_RESULT__DATE:
 				return getDate();
-			case CabinPackage.SIMULATION_RESULT__TEST_OBJECT:
-				return getTestObject();
-			case CabinPackage.SIMULATION_RESULT__TEST_OBJECT2:
-				return getTestObject2();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -379,12 +296,6 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 				return;
 			case CabinPackage.SIMULATION_RESULT__DATE:
 				setDate((Date)newValue);
-				return;
-			case CabinPackage.SIMULATION_RESULT__TEST_OBJECT:
-				setTestObject((Unit<?>)newValue);
-				return;
-			case CabinPackage.SIMULATION_RESULT__TEST_OBJECT2:
-				setTestObject2((Quantity)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -413,12 +324,6 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 			case CabinPackage.SIMULATION_RESULT__DATE:
 				setDate(DATE_EDEFAULT);
 				return;
-			case CabinPackage.SIMULATION_RESULT__TEST_OBJECT:
-				setTestObject((Unit<?>)null);
-				return;
-			case CabinPackage.SIMULATION_RESULT__TEST_OBJECT2:
-				setTestObject2(TEST_OBJECT2_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -441,10 +346,6 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 				return id != ID_EDEFAULT;
 			case CabinPackage.SIMULATION_RESULT__DATE:
 				return DATE_EDEFAULT == null ? date != null : !DATE_EDEFAULT.equals(date);
-			case CabinPackage.SIMULATION_RESULT__TEST_OBJECT:
-				return testObject != null;
-			case CabinPackage.SIMULATION_RESULT__TEST_OBJECT2:
-				return TEST_OBJECT2_EDEFAULT == null ? testObject2 != null : !TEST_OBJECT2_EDEFAULT.equals(testObject2);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -459,9 +360,9 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (BoardingTime: ");
+		result.append(" (boardingTime: ");
 		result.append(boardingTime);
-		result.append(", Passengers: ");
+		result.append(", passengers: ");
 		result.append(passengers);
 		result.append(", name: ");
 		result.append(name);
@@ -469,10 +370,6 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 		result.append(id);
 		result.append(", date: ");
 		result.append(date);
-		result.append(", testObject: ");
-		result.append(testObject);
-		result.append(", testObject2: ");
-		result.append(testObject2);
 		result.append(')');
 		return result.toString();
 	}

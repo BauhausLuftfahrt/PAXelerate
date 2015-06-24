@@ -44,6 +44,10 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#getPassengerDepthMeanFemale <em>Passenger Depth Mean Female</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#getPassengerDepthDeviationFemale <em>Passenger Depth Deviation Female</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#getResults <em>Results</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#getPercentageOfPassengersWithNoLuggage <em>Percentage Of Passengers With No Luggage</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#getPercentageOfPassengersWithSmallLuggage <em>Percentage Of Passengers With Small Luggage</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#getPercentageOfPassengersWithMediumLuggage <em>Percentage Of Passengers With Medium Luggage</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#getPercentageOfPassengersWithBigLuggage <em>Percentage Of Passengers With Big Luggage</em>}</li>
  * </ul>
  * </p>
  *
@@ -519,6 +523,86 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * @ordered
 	 */
 	protected EList<SimulationResult> results;
+
+	/**
+	 * The default value of the '{@link #getPercentageOfPassengersWithNoLuggage() <em>Percentage Of Passengers With No Luggage</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPercentageOfPassengersWithNoLuggage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getPercentageOfPassengersWithNoLuggage() <em>Percentage Of Passengers With No Luggage</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPercentageOfPassengersWithNoLuggage()
+	 * @generated
+	 * @ordered
+	 */
+	protected double percentageOfPassengersWithNoLuggage = PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPercentageOfPassengersWithSmallLuggage() <em>Percentage Of Passengers With Small Luggage</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPercentageOfPassengersWithSmallLuggage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getPercentageOfPassengersWithSmallLuggage() <em>Percentage Of Passengers With Small Luggage</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPercentageOfPassengersWithSmallLuggage()
+	 * @generated
+	 * @ordered
+	 */
+	protected double percentageOfPassengersWithSmallLuggage = PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPercentageOfPassengersWithMediumLuggage() <em>Percentage Of Passengers With Medium Luggage</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPercentageOfPassengersWithMediumLuggage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getPercentageOfPassengersWithMediumLuggage() <em>Percentage Of Passengers With Medium Luggage</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPercentageOfPassengersWithMediumLuggage()
+	 * @generated
+	 * @ordered
+	 */
+	protected double percentageOfPassengersWithMediumLuggage = PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPercentageOfPassengersWithBigLuggage() <em>Percentage Of Passengers With Big Luggage</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPercentageOfPassengersWithBigLuggage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getPercentageOfPassengersWithBigLuggage() <em>Percentage Of Passengers With Big Luggage</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPercentageOfPassengersWithBigLuggage()
+	 * @generated
+	 * @ordered
+	 */
+	protected double percentageOfPassengersWithBigLuggage = PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1039,6 +1123,90 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public double getPercentageOfPassengersWithNoLuggage() {
+		return percentageOfPassengersWithNoLuggage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPercentageOfPassengersWithNoLuggage(double newPercentageOfPassengersWithNoLuggage) {
+		double oldPercentageOfPassengersWithNoLuggage = percentageOfPassengersWithNoLuggage;
+		percentageOfPassengersWithNoLuggage = newPercentageOfPassengersWithNoLuggage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE, oldPercentageOfPassengersWithNoLuggage, percentageOfPassengersWithNoLuggage));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getPercentageOfPassengersWithSmallLuggage() {
+		return percentageOfPassengersWithSmallLuggage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPercentageOfPassengersWithSmallLuggage(double newPercentageOfPassengersWithSmallLuggage) {
+		double oldPercentageOfPassengersWithSmallLuggage = percentageOfPassengersWithSmallLuggage;
+		percentageOfPassengersWithSmallLuggage = newPercentageOfPassengersWithSmallLuggage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE, oldPercentageOfPassengersWithSmallLuggage, percentageOfPassengersWithSmallLuggage));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getPercentageOfPassengersWithMediumLuggage() {
+		return percentageOfPassengersWithMediumLuggage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPercentageOfPassengersWithMediumLuggage(double newPercentageOfPassengersWithMediumLuggage) {
+		double oldPercentageOfPassengersWithMediumLuggage = percentageOfPassengersWithMediumLuggage;
+		percentageOfPassengersWithMediumLuggage = newPercentageOfPassengersWithMediumLuggage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE, oldPercentageOfPassengersWithMediumLuggage, percentageOfPassengersWithMediumLuggage));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getPercentageOfPassengersWithBigLuggage() {
+		return percentageOfPassengersWithBigLuggage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPercentageOfPassengersWithBigLuggage(double newPercentageOfPassengersWithBigLuggage) {
+		double oldPercentageOfPassengersWithBigLuggage = percentageOfPassengersWithBigLuggage;
+		percentageOfPassengersWithBigLuggage = newPercentageOfPassengersWithBigLuggage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE, oldPercentageOfPassengersWithBigLuggage, percentageOfPassengersWithBigLuggage));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -1090,6 +1258,14 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return getPassengerDepthDeviationFemale();
 			case CabinPackage.SIMULATION_PROPERTIES__RESULTS:
 				return getResults();
+			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE:
+				return getPercentageOfPassengersWithNoLuggage();
+			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE:
+				return getPercentageOfPassengersWithSmallLuggage();
+			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE:
+				return getPercentageOfPassengersWithMediumLuggage();
+			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE:
+				return getPercentageOfPassengersWithBigLuggage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1176,6 +1352,18 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				getResults().clear();
 				getResults().addAll((Collection<? extends SimulationResult>)newValue);
 				return;
+			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE:
+				setPercentageOfPassengersWithNoLuggage((Double)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE:
+				setPercentageOfPassengersWithSmallLuggage((Double)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE:
+				setPercentageOfPassengersWithMediumLuggage((Double)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE:
+				setPercentageOfPassengersWithBigLuggage((Double)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1260,6 +1448,18 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.SIMULATION_PROPERTIES__RESULTS:
 				getResults().clear();
 				return;
+			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE:
+				setPercentageOfPassengersWithNoLuggage(PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE:
+				setPercentageOfPassengersWithSmallLuggage(PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE:
+				setPercentageOfPassengersWithMediumLuggage(PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE:
+				setPercentageOfPassengersWithBigLuggage(PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1320,6 +1520,14 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return passengerDepthDeviationFemale != PASSENGER_DEPTH_DEVIATION_FEMALE_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__RESULTS:
 				return results != null && !results.isEmpty();
+			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE:
+				return percentageOfPassengersWithNoLuggage != PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE:
+				return percentageOfPassengersWithSmallLuggage != PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE:
+				return percentageOfPassengersWithMediumLuggage != PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE:
+				return percentageOfPassengersWithBigLuggage != PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1380,6 +1588,14 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 		result.append(passengerDepthMeanFemale);
 		result.append(", passengerDepthDeviationFemale: ");
 		result.append(passengerDepthDeviationFemale);
+		result.append(", percentageOfPassengersWithNoLuggage: ");
+		result.append(percentageOfPassengersWithNoLuggage);
+		result.append(", percentageOfPassengersWithSmallLuggage: ");
+		result.append(percentageOfPassengersWithSmallLuggage);
+		result.append(", percentageOfPassengersWithMediumLuggage: ");
+		result.append(percentageOfPassengersWithMediumLuggage);
+		result.append(", percentageOfPassengersWithBigLuggage: ");
+		result.append(percentageOfPassengersWithBigLuggage);
 		result.append(')');
 		return result.toString();
 	}

@@ -1,6 +1,7 @@
 package net.bhl.cdt.model.cabin.util;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -31,17 +32,19 @@ public class SimulationResultLogger {
 
 	}
 
-	public void getSimulationData(Cabin cabin, int runNumber) {
+	public void getSimulationData(Cabin cabin, int runNumber, double time) {
 		SimulationResult result = CabinFactory.eINSTANCE
 				.createSimulationResult();
 
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM, hh:mm");
+		Date date = new Date();
+
 		result.setPassengers(cabin.getPassengers().size());
-		result.setBoardingTime(cabin.getEstimatedSimulationTime());
-		result.setId(runNumber);
-		result.setName("#"
-				+ (SimulationHandler.getCabin().getSimulationSettings()
-						.getResults().size() + 1));
-		result.setDate(new Date());
+		result.setBoardingTime(time);
+		result.setId(SimulationHandler.getCabin().getSimulationSettings()
+				.getResults().size() + 1);
+		result.setName(dateFormat.format(date));
+		result.setDate(date);
 		SimulationHandler.getCabin().getSimulationSettings().getResults()
 				.add(result);
 	}

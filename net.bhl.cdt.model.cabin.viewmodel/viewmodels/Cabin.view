@@ -66,18 +66,4 @@
       </children>
     </children>
   </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout">
-    <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" name="Simulation Results" readonly="true">
-      <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Real Elapsed Time" readonly="true">
-        <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
-          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Cabin/realElapsedTime"/>
-        </domainModelReference>
-      </children>
-      <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Estimated Simulation Time" readonly="true">
-        <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
-          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Cabin/EstimatedSimulationTime"/>
-        </domainModelReference>
-      </children>
-    </children>
-  </children>
 </org.eclipse.emf.ecp.view.model:View>

@@ -22,6 +22,7 @@ import net.bhl.cdt.model.cabin.PremiumEconomyClass;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.Sex;
 import net.bhl.cdt.model.cabin.TravelClass;
+import net.bhl.cdt.model.cabin.luggageType;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.InfoViewPart;
 import net.bhl.cdt.model.cabin.util.FuncLib;
@@ -178,7 +179,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 					newPassenger.setTravelClass(newPassenger.getSeatRef()
 							.getTravelClass());
 					applyDoor(newPassenger);
-					newPassenger.setHasLuggage(hasLuggage);
+					newPassenger.setLuggage(luggageType.MEDIUM);
 					newPassenger
 							.setStartBoardingAfterDelay((passengerIdCount - 1)
 									* 60.0
