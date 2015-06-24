@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <org.eclipse.emf.ecp.view.model:View xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.emf.ecp.view.group.model="http://org/eclipse/emf/ecp/view/group/model" xmlns:org.eclipse.emf.ecp.view.horizontal.model="http://org/eclipse/emf/ecp/view/horizontal/model" xmlns:org.eclipse.emf.ecp.view.label.model="http://org/eclipse/emf/ecp/view/label/model" xmlns:org.eclipse.emf.ecp.view.model="http://org/eclipse/emf/ecp/view/model" xmlns:org.eclipse.emf.ecp.view.vertical.model="http://org/eclipse/emf/ecp/view/vertical/model" ecorePath="/net.bhl.cdt.model.cabin/model/cabin.ecore">
   <rootEClass href="http://bhl.net/cdt/model/cabin/#//SimulationProperties"/>
+  <children xsi:type="org.eclipse.emf.ecp.view.label.model:Label" name="Be sure to recreate all passengers when editing this values!" readonly="true"/>
   <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout">
     <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout">
       <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" name="General">
@@ -44,6 +45,34 @@
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control passengerLuggageStowTimeDeviation">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/passengerLuggageStowTimeDeviation"/>
+          </domainModelReference>
+        </children>
+      </children>
+    </children>
+  </children>
+  <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" name="Luggage Properties">
+    <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout">
+      <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout">
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/percentageOfPassengersWithNoLuggage"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/percentageOfPassengersWithSmallLuggage"/>
+          </domainModelReference>
+        </children>
+      </children>
+      <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout">
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/percentageOfPassengersWithMediumLuggage"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationProperties/percentageOfPassengersWithBigLuggage"/>
           </domainModelReference>
         </children>
       </children>

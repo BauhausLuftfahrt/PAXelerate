@@ -2,7 +2,6 @@ package net.bhl.cdt.model.cabin.util;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 import net.bhl.cdt.model.astar.SimulationHandler;
@@ -36,7 +35,7 @@ public class SimulationResultLogger {
 		SimulationResult result = CabinFactory.eINSTANCE
 				.createSimulationResult();
 
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM, hh:mm");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM, HH:mm");
 		Date date = new Date();
 
 		result.setPassengers(cabin.getPassengers().size());

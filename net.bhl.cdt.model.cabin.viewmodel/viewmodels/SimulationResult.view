@@ -22,12 +22,12 @@
     <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" name="Results" readonly="true">
       <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control BoardingTime" readonly="true">
         <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
-          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationResult/BoardingTime"/>
+          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationResult/boardingTime"/>
         </domainModelReference>
       </children>
       <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control Passengers" readonly="true">
         <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
-          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationResult/Passengers"/>
+          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//SimulationResult/passengers"/>
         </domainModelReference>
       </children>
     </children>

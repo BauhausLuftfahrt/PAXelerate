@@ -212,12 +212,16 @@ public class Agent extends Subject implements Runnable {
 		 * return true if the passenger does have luggage and if he is near his
 		 * seat
 		 */
-		return (hasLuggage() && (desiredPosition.getY() == (int) (seat
-				.getYPosition() / scale - PIXELS_FOR_LUGGAGE)));
+		return (hasLuggage() && isYPositionMatch(seat.getYPosition() / scale
+				- PIXELS_FOR_LUGGAGE));
+	}
+
+	private boolean isYPositionMatch(int check) {
+		return (desiredPosition.getY() == check);
 	}
 
 	private boolean hasLuggage() {
-		return (passenger.getLuggage() == luggageType.NONE);
+		return (passenger.getLuggage() != luggageType.NONE);
 	}
 
 	/**
@@ -660,8 +664,8 @@ public class Agent extends Subject implements Runnable {
 
 	private boolean waitingForClearingOfRow() {
 
-		if (desiredPosition.getY() == (int) (passenger.getSeatRef()
-				.getYPosition() / scale - PIXELS_FOR_WAY)) {
+		if (isYPositionMatch(passenger.getSeatRef().getYPosition() / scale
+				- PIXELS_FOR_WAY)) {
 			if (AgentFunctions.someoneAlreadyInThisPartOfTheRow(this)) {
 				return true;
 			}

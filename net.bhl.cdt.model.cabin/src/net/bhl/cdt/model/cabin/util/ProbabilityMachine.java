@@ -11,14 +11,20 @@ import net.bhl.cdt.model.cabin.Sex;
  */
 public class ProbabilityMachine {
 
-	private static double[][] model;
+	private double[][] model;
+	private double[] model2;
 	private int lowerBound = 0;
 	private int upperBound = Integer.MAX_VALUE;
 	private int valueOfAStep;
 
 	public ProbabilityMachine(double[][] datamodel, int stepValues) {
-		model = datamodel;
-		valueOfAStep = stepValues;
+		this.model = datamodel;
+		this.valueOfAStep = stepValues;
+	}
+
+	public ProbabilityMachine(double[] datamodel2) {
+		this.model2 = datamodel2;
+		this.valueOfAStep = 1;
 	}
 
 	public void setLowerBound(int value) {
@@ -27,6 +33,31 @@ public class ProbabilityMachine {
 
 	public void setUpperBound(int value) {
 		upperBound = value;
+	}
+
+	public int getProbabilityValue() {
+		int n = model2.length;
+
+		double[] weight = new double[n];
+		int k = 0;
+		for (double value : model2) {
+			weight[k] = value;
+			k++;
+		}
+
+		double max_weight = maximum(weight);
+
+		int index = 0;
+		boolean notaccepted;
+
+		notaccepted = true;
+		while (notaccepted) {
+			index = (int) (n * Math.random());
+			if (Math.random() < weight[index] / max_weight) {
+				notaccepted = false;
+			}
+		}
+		return index;
 	}
 
 	public int getProbabilityValue(Sex sex) {

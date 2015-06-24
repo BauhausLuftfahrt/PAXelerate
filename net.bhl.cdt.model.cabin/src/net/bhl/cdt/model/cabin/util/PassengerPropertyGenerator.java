@@ -5,6 +5,7 @@ import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.Sex;
 import net.bhl.cdt.model.cabin.SimulationProperties;
+import net.bhl.cdt.model.cabin.luggageType;
 import net.bhl.cdt.model.cabin.util.FuncLib.GaussOptions;
 import net.bhl.cdt.model.util.ModelHelper;
 
@@ -21,7 +22,7 @@ public class PassengerPropertyGenerator {
 	private Passenger passenger;
 
 	/* the settings */
-	private SimulationProperties props;
+	private SimulationProperties settings;
 
 	/*
 	 * This array contains two values, first the age of the passenger and second
@@ -49,11 +50,11 @@ public class PassengerPropertyGenerator {
 
 		this.passenger = pax;
 
-		this.props = ModelHelper.getParent(Cabin.class, pax)
+		this.settings = ModelHelper.getParent(Cabin.class, pax)
 				.getSimulationSettings();
 
 		/** At first. decide for the sex. **/
-		passenger.setSex(switchRandomSex(props.getPercentageOfWomen()));
+		passenger.setSex(switchRandomSex(settings.getPercentageOfWomen()));
 
 		/** Define the mood of the passenger **/
 		passenger.setPassengerMood(PassengerMood.PASSIVE);
@@ -62,37 +63,37 @@ public class PassengerPropertyGenerator {
 		passenger.setAge(adaptAge());
 
 		/** Define the height according to normal distribution **/
-		passenger.setHeight((int) adapt(props.getPassengerHeightMeanMale(),
-				props.getPassengerHeightDeviationMale(),
-				props.getPassengerHeightMeanFemale(),
-				props.getPassengerHeightDeviationFemale()));
+		passenger.setHeight((int) adapt(settings.getPassengerHeightMeanMale(),
+				settings.getPassengerHeightDeviationMale(),
+				settings.getPassengerHeightMeanFemale(),
+				settings.getPassengerHeightDeviationFemale()));
 
 		/** Define the weight according to normal distribution **/
-		passenger.setWeight((int) adapt(props.getPassengerWeightMeanMale(),
-				props.getPassengerWeightDeviationMale(),
-				props.getPassengerWeightMeanFemale(),
-				props.getPassengerWeightDeviationFemale()));
+		passenger.setWeight((int) adapt(settings.getPassengerWeightMeanMale(),
+				settings.getPassengerWeightDeviationMale(),
+				settings.getPassengerWeightMeanFemale(),
+				settings.getPassengerWeightDeviationFemale()));
 
 		/** Define the depth according to normal distribution **/
-		passenger.setDepth((int) adapt(props.getPassengerDepthMeanMale(),
-				props.getPassengerDepthDeviationMale(),
-				props.getPassengerDepthMeanFemale(),
-				props.getPassengerDepthDeviationFemale()));
+		passenger.setDepth((int) adapt(settings.getPassengerDepthMeanMale(),
+				settings.getPassengerDepthDeviationMale(),
+				settings.getPassengerDepthMeanFemale(),
+				settings.getPassengerDepthDeviationFemale()));
 
 		/** Define the width according to normal distribution **/
-		passenger.setWidth((int) adapt(props.getPassengerWidthMeanMale(),
-				props.getPassengerWidthDeviationMale(),
-				props.getPassengerWidthMeanFemale(),
-				props.getPassengerWidthDeviationFemale()));
+		passenger.setWidth((int) adapt(settings.getPassengerWidthMeanMale(),
+				settings.getPassengerWidthDeviationMale(),
+				settings.getPassengerWidthMeanFemale(),
+				settings.getPassengerWidthDeviationFemale()));
 
 		/** Define the walking speed according to age **/
 		passenger.setWalkingSpeed(adaptSpeed());
 
+		/* Define the type of luggage */
+		passenger.setLuggage(adaptLuggage());
+
 		/** Define the luggage stow time randomly **/
-		passenger.setLuggageStowTime((int) FuncLib.gaussianRandom(
-				props.getPassengerLuggageStowTimeMean(),
-				GaussOptions.PERCENT_95,
-				props.getPassengerLuggageStowTimeDeviation()));
+		passenger.setLuggageStowTime(FuncLib.round(adaptLuggageStowTime(), 2));
 	}
 
 	/**
@@ -117,6 +118,56 @@ public class PassengerPropertyGenerator {
 			index = 1;
 		}
 		return speedmodel[index - 1][1];
+	}
+
+	private luggageType adaptLuggage() {
+
+		double[] luggagemodel = {
+				this.settings.getPercentageOfPassengersWithNoLuggage(),
+				this.settings.getPercentageOfPassengersWithSmallLuggage(),
+				this.settings.getPercentageOfPassengersWithMediumLuggage(),
+				this.settings.getPercentageOfPassengersWithBigLuggage() };
+
+		ProbabilityMachine machine = new ProbabilityMachine(luggagemodel);
+
+		switch (machine.getProbabilityValue()) {
+		case 0:
+			return luggageType.NONE;
+		case 1:
+			return luggageType.SMALL;
+		case 2:
+			return luggageType.MEDIUM;
+		case 3:
+			return luggageType.BIG;
+		default:
+			return luggageType.NONE;
+		}
+	}
+
+	private double adaptLuggageStowTime() {
+
+		switch (passenger.getLuggage()) {
+		case NONE:
+			return 0;
+		case SMALL:
+			return 0.6 * FuncLib.gaussianRandom(
+					settings.getPassengerLuggageStowTimeMean(),
+					GaussOptions.PERCENT_95,
+					settings.getPassengerLuggageStowTimeDeviation());
+		case MEDIUM:
+			return 0.8 * FuncLib.gaussianRandom(
+					settings.getPassengerLuggageStowTimeMean(),
+					GaussOptions.PERCENT_95,
+					settings.getPassengerLuggageStowTimeDeviation());
+		case BIG:
+			return FuncLib.gaussianRandom(
+					settings.getPassengerLuggageStowTimeMean(),
+					GaussOptions.PERCENT_95,
+					settings.getPassengerLuggageStowTimeDeviation());
+		default:
+			return 0;
+		}
+
 	}
 
 	/**

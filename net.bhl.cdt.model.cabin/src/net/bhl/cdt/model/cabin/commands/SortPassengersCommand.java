@@ -5,23 +5,15 @@
  *******************************************************************************/
 package net.bhl.cdt.model.cabin.commands;
 
-import java.util.ArrayList;
-
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.agent.AgentFunctions;
 import net.bhl.cdt.model.cabin.Cabin;
-import net.bhl.cdt.model.cabin.Curtain;
-import net.bhl.cdt.model.cabin.Galley;
-import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.Passenger;
-import net.bhl.cdt.model.cabin.Row;
-import net.bhl.cdt.model.cabin.Seat;
+
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Input;
 import net.bhl.cdt.model.cabin.util.Input.WindowType;
-import net.bhl.cdt.model.cabin.util.Vector;
-import net.bhl.cdt.model.util.ModelHelper;
 
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
@@ -30,7 +22,6 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 
 /**
@@ -60,6 +51,10 @@ public class SortPassengersCommand extends CDTCommand {
 		this.value = value;
 	}
 
+	public Cabin returnCabin() {
+		return cabin;
+	}
+
 	@Override
 	protected void doRun() {
 
@@ -78,7 +73,7 @@ public class SortPassengersCommand extends CDTCommand {
 		switch (value) {
 
 		case 0:
-			for (int j = 0; j < paxList.size(); j++) {
+			for (int j = 0; j < paxList.size() / 10; j++) {
 				for (int i = 0; i < paxList.size(); i++) {
 					Passenger pax = paxList.get(i);
 

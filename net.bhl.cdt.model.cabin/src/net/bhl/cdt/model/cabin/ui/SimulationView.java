@@ -11,16 +11,12 @@ import net.bhl.cdt.model.astar.SimulationHandler;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.StopWatch;
-import net.bhl.cdt.model.cabin.util.Vector2D;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * 
@@ -206,9 +202,12 @@ public class SimulationView extends JPanel implements MouseListener {
 					} else {
 						g.setColor(Color.LIGHT_GRAY);
 						g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE));
-						g.drawString(areamap.getNodeByCoordinate(y, x)
-								.getTypeForPrinting(), (x - pointZero)
-								* FONT_SIZE, y * FONT_SIZE);
+						if (areamap.getNodeByCoordinate(y, x)
+								.getTypeForPrinting() != null) {
+							g.drawString(areamap.getNodeByCoordinate(y, x)
+									.getTypeForPrinting(), (x - pointZero)
+									* FONT_SIZE, y * FONT_SIZE);
+						}
 					}
 				}
 			}

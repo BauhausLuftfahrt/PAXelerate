@@ -179,7 +179,6 @@ public class GeneratePassengersCommand extends CDTCommand {
 					newPassenger.setTravelClass(newPassenger.getSeatRef()
 							.getTravelClass());
 					applyDoor(newPassenger);
-					newPassenger.setLuggage(luggageType.MEDIUM);
 					newPassenger
 							.setStartBoardingAfterDelay((passengerIdCount - 1)
 									* 60.0

@@ -20,7 +20,6 @@ import net.bhl.cdt.model.cabin.ui.SimulationView;
 import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Input;
 import net.bhl.cdt.model.cabin.util.SimulationResultLogger;
-import net.bhl.cdt.model.cabin.util.StopWatch;
 import net.bhl.cdt.model.cabin.util.Input.WindowType;
 import net.bhl.cdt.model.cabin.util.Vector2D;
 import net.bhl.cdt.model.util.ModelHelper;
@@ -99,6 +98,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 				SortPassengersCommand sort = new SortPassengersCommand(cabin);
 				sort.setPropertiesManually(false, 0);
 				sort.doRun();
+				cabin = sort.returnCabin();
 			}
 
 			// reset simulation in case of previous existing objects.
@@ -139,37 +139,36 @@ public class SimulateBoardingCommand extends CDTCommand {
 										.getScale())), cabin);
 
 				while (!SimulationHandler.isSimulationDone()) {
-					try {
-						for (Passenger pax : ModelHelper.getChildrenByClass(
-								handler.getPassengerLocations(),
-								Passenger.class)) {
-							if (pax.isIsSeated()
-									&& !alreadySeatedList.contains(pax)) {
-								alreadySeatedList.add(pax);
-								try {
-									infoViewPart.update(cabin);
-								} catch (NullPointerException e) {
-									logger.log(new Status(IStatus.ERROR,
-											"net.bhl.cdt.model.cabin",
-											"Info view is not visible."));
-								}
-							}
+					// try {
+					for (Passenger pax : ModelHelper.getChildrenByClass(
+							handler.getPassengerLocations(), Passenger.class)) {
+						if (pax.isIsSeated()
+								&& !alreadySeatedList.contains(pax)) {
+							alreadySeatedList.add(pax);
+							// try {
+							// infoViewPart.update(cabin);
+							// } catch (NullPointerException e) {
+							// logger.log(new Status(IStatus.ERROR,
+							// "net.bhl.cdt.model.cabin",
+							// "Info view is not visible."));
+							// }
 						}
-						try {
-							cabinViewPart.submitPassengerCoordinates(handler
-									.getPassengerLocations());
-						} catch (NullPointerException e) {
-							logger.log(new Status(IStatus.ERROR,
-									"net.bhl.cdt.model.cabin",
-									"cabin view is not visible."));
-						}
-						Thread.sleep((int) (1000 / cabin.getFramesPerSecond()));
-					} catch (InterruptedException e) {
-						logger.log(new Status(IStatus.ERROR,
-								"net.bhl.cdt.model.cabin",
-								"An error occured during simulation."));
-						e.printStackTrace();
 					}
+					// try {
+					// cabinViewPart.submitPassengerCoordinates(handler
+					// .getPassengerLocations());
+					// } catch (NullPointerException e) {
+					// logger.log(new Status(IStatus.ERROR,
+					// "net.bhl.cdt.model.cabin",
+					// "cabin view is not visible."));
+					// }
+					// Thread.sleep((int) (1000 / cabin.getFramesPerSecond()));
+					// } catch (InterruptedException e) {
+					// logger.log(new Status(IStatus.ERROR,
+					// "net.bhl.cdt.model.cabin",
+					// "An error occured during simulation."));
+					// e.printStackTrace();
+					// }
 				}
 				if (SimulationHandler.isSimulationDone()) {
 					for (Passenger pax : ModelHelper.getChildrenByClass(
@@ -210,19 +209,19 @@ public class SimulateBoardingCommand extends CDTCommand {
 					logger.log(new Status(IStatus.INFO,
 							"net.bhl.cdt.model.cabin",
 							"Boarding simulation completed"));
-					cabinViewPart.clearCache();
 				}
 			} else {
 				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 						"No boarding possible! Please create passengers!"));
 			}
 			results.getSimulationData(
-					cabin,
+					SimulationHandler.getCabin(),
 					i + 1,
 					FuncLib.round((SimulationView.getWatch()
 							.getElapsedTimeSecs() * (double) cabin
 							.getSpeedFactor()), 2));
 		}
 		results.printSimulationData();
+		cabinViewPart.clearCache();
 	}
 }
