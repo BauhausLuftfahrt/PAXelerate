@@ -1,6 +1,7 @@
 package net.bhl.cdt.model.cabin.util;
 
 import net.bhl.cdt.model.cabin.Cabin;
+import net.bhl.cdt.model.cabin.LuggageSize;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.Sex;
@@ -120,7 +121,7 @@ public class PassengerPropertyGenerator {
 		return speedmodel[index - 1][1];
 	}
 
-	private luggageType adaptLuggage() {
+	private LuggageSize adaptLuggage() {
 
 		double[] luggagemodel = {
 				this.settings.getPercentageOfPassengersWithNoLuggage(),
@@ -132,15 +133,15 @@ public class PassengerPropertyGenerator {
 
 		switch (machine.getProbabilityValue()) {
 		case 0:
-			return luggageType.NONE;
+			return LuggageSize.NONE;
 		case 1:
-			return luggageType.SMALL;
+			return LuggageSize.SMALL;
 		case 2:
-			return luggageType.MEDIUM;
+			return LuggageSize.MEDIUM;
 		case 3:
-			return luggageType.BIG;
+			return LuggageSize.BIG;
 		default:
-			return luggageType.NONE;
+			return LuggageSize.NONE;
 		}
 	}
 
@@ -150,12 +151,12 @@ public class PassengerPropertyGenerator {
 		case NONE:
 			return 0;
 		case SMALL:
-			return 0.6 * FuncLib.gaussianRandom(
+			return 0.8 * FuncLib.gaussianRandom(
 					settings.getPassengerLuggageStowTimeMean(),
 					GaussOptions.PERCENT_95,
 					settings.getPassengerLuggageStowTimeDeviation());
 		case MEDIUM:
-			return 0.8 * FuncLib.gaussianRandom(
+			return 0.9 * FuncLib.gaussianRandom(
 					settings.getPassengerLuggageStowTimeMean(),
 					GaussOptions.PERCENT_95,
 					settings.getPassengerLuggageStowTimeDeviation());

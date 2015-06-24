@@ -4,12 +4,12 @@ package net.bhl.cdt.model.cabin.impl;
 
 import net.bhl.cdt.model.cabin.CabinPackage;
 import net.bhl.cdt.model.cabin.Door;
+import net.bhl.cdt.model.cabin.LuggageSize;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.Sex;
 import net.bhl.cdt.model.cabin.TravelClass;
-import net.bhl.cdt.model.cabin.luggageType;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -470,7 +470,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 * @ordered
 	 */
-	protected static final luggageType LUGGAGE_EDEFAULT = luggageType.SMALL;
+	protected static final LuggageSize LUGGAGE_EDEFAULT = LuggageSize.SMALL;
 
 	/**
 	 * The cached value of the '{@link #getLuggage() <em>Luggage</em>}' attribute.
@@ -480,7 +480,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 * @ordered
 	 */
-	protected luggageType luggage = LUGGAGE_EDEFAULT;
+	protected LuggageSize luggage = LUGGAGE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -900,7 +900,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public luggageType getLuggage() {
+	public LuggageSize getLuggage() {
 		return luggage;
 	}
 
@@ -909,8 +909,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLuggage(luggageType newLuggage) {
-		luggageType oldLuggage = luggage;
+	public void setLuggage(LuggageSize newLuggage) {
+		LuggageSize oldLuggage = luggage;
 		luggage = newLuggage == null ? LUGGAGE_EDEFAULT : newLuggage;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__LUGGAGE, oldLuggage, luggage));
@@ -1147,7 +1147,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 				setNumberOfMakeWayOperations((Integer)newValue);
 				return;
 			case CabinPackage.PASSENGER__LUGGAGE:
-				setLuggage((luggageType)newValue);
+				setLuggage((LuggageSize)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

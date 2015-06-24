@@ -100,8 +100,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return createAircraftTypeFromString(eDataType, initialValue);
 			case CabinPackage.PASSENGER_MOOD:
 				return createPassengerMoodFromString(eDataType, initialValue);
-			case CabinPackage.LUGGAGE_TYPE:
-				return createluggageTypeFromString(eDataType, initialValue);
+			case CabinPackage.LUGGAGE_SIZE:
+				return createLuggageSizeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -123,8 +123,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return convertAircraftTypeToString(eDataType, instanceValue);
 			case CabinPackage.PASSENGER_MOOD:
 				return convertPassengerMoodToString(eDataType, instanceValue);
-			case CabinPackage.LUGGAGE_TYPE:
-				return convertluggageTypeToString(eDataType, instanceValue);
+			case CabinPackage.LUGGAGE_SIZE:
+				return convertLuggageSizeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -415,8 +415,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public luggageType createluggageTypeFromString(EDataType eDataType, String initialValue) {
-		luggageType result = luggageType.get(initialValue);
+	public LuggageSize createLuggageSizeFromString(EDataType eDataType, String initialValue) {
+		LuggageSize result = LuggageSize.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -426,7 +426,7 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertluggageTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertLuggageSizeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

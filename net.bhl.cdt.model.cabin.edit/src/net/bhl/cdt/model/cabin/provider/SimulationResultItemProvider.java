@@ -59,6 +59,7 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 			addNamePropertyDescriptor(object);
 			addIdPropertyDescriptor(object);
 			addDatePropertyDescriptor(object);
+			addBoardingTimeStringPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -174,6 +175,28 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 	}
 
 	/**
+	 * This adds a property descriptor for the Boarding Time String feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBoardingTimeStringPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationResult_boardingTimeString_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_boardingTimeString_feature", "_UI_SimulationResult_type"),
+				 CabinPackage.Literals.SIMULATION_RESULT__BOARDING_TIME_STRING,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns SimulationResult.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -214,6 +237,7 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 			case CabinPackage.SIMULATION_RESULT__NAME:
 			case CabinPackage.SIMULATION_RESULT__ID:
 			case CabinPackage.SIMULATION_RESULT__DATE:
+			case CabinPackage.SIMULATION_RESULT__BOARDING_TIME_STRING:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

@@ -553,7 +553,7 @@ public interface Passenger extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Luggage</b></em>' attribute.
-	 * The literals are from the enumeration {@link net.bhl.cdt.model.cabin.luggageType}.
+	 * The literals are from the enumeration {@link net.bhl.cdt.model.cabin.LuggageSize}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Luggage</em>' attribute isn't clear,
@@ -561,24 +561,24 @@ public interface Passenger extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Luggage</em>' attribute.
-	 * @see net.bhl.cdt.model.cabin.luggageType
-	 * @see #setLuggage(luggageType)
+	 * @see net.bhl.cdt.model.cabin.LuggageSize
+	 * @see #setLuggage(LuggageSize)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getPassenger_Luggage()
 	 * @model
 	 * @generated
 	 */
-	luggageType getLuggage();
+	LuggageSize getLuggage();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Passenger#getLuggage <em>Luggage</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Luggage</em>' attribute.
-	 * @see net.bhl.cdt.model.cabin.luggageType
+	 * @see net.bhl.cdt.model.cabin.LuggageSize
 	 * @see #getLuggage()
 	 * @generated
 	 */
-	void setLuggage(luggageType value);
+	void setLuggage(LuggageSize value);
 
 	/**
 	 * Returns the value of the '<em><b>Height</b></em>' attribute.

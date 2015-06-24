@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.SimulationResult#getName <em>Name</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.SimulationResult#getId <em>Id</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.SimulationResult#getDate <em>Date</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.SimulationResult#getBoardingTimeString <em>Boarding Time String</em>}</li>
  * </ul>
  * </p>
  *
@@ -155,5 +156,31 @@ public interface SimulationResult extends EObject {
 	 * @generated
 	 */
 	void setDate(Date value);
+
+	/**
+	 * Returns the value of the '<em><b>Boarding Time String</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Boarding Time String</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Boarding Time String</em>' attribute.
+	 * @see #setBoardingTimeString(String)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSimulationResult_BoardingTimeString()
+	 * @model
+	 * @generated
+	 */
+	String getBoardingTimeString();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.SimulationResult#getBoardingTimeString <em>Boarding Time String</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Boarding Time String</em>' attribute.
+	 * @see #getBoardingTimeString()
+	 * @generated
+	 */
+	void setBoardingTimeString(String value);
 
 } // SimulationResult

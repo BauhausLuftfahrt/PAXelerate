@@ -19,10 +19,10 @@ import net.bhl.cdt.model.astar.Path;
 import net.bhl.cdt.model.astar.SimulationHandler;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
+import net.bhl.cdt.model.cabin.LuggageSize;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.Seat;
-import net.bhl.cdt.model.cabin.luggageType;
 import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Rotator;
 import net.bhl.cdt.model.cabin.util.StopWatch;
@@ -221,7 +221,7 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	private boolean hasLuggage() {
-		return (passenger.getLuggage() != luggageType.NONE);
+		return (passenger.getLuggage() != LuggageSize.NONE);
 	}
 
 	/**

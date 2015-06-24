@@ -44,6 +44,7 @@ public class SimulationResultLogger {
 				.getResults().size() + 1);
 		result.setName(dateFormat.format(date));
 		result.setDate(date);
+		result.setBoardingTimeString(FuncLib.transformToTimeString(time));
 		SimulationHandler.getCabin().getSimulationSettings().getResults()
 				.add(result);
 	}

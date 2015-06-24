@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationResultImpl#getName <em>Name</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationResultImpl#getId <em>Id</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationResultImpl#getDate <em>Date</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationResultImpl#getBoardingTimeString <em>Boarding Time String</em>}</li>
  * </ul>
  * </p>
  *
@@ -127,6 +128,26 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected Date date = DATE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getBoardingTimeString() <em>Boarding Time String</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBoardingTimeString()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String BOARDING_TIME_STRING_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getBoardingTimeString() <em>Boarding Time String</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBoardingTimeString()
+	 * @generated
+	 * @ordered
+	 */
+	protected String boardingTimeString = BOARDING_TIME_STRING_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -257,6 +278,27 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getBoardingTimeString() {
+		return boardingTimeString;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBoardingTimeString(String newBoardingTimeString) {
+		String oldBoardingTimeString = boardingTimeString;
+		boardingTimeString = newBoardingTimeString;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_RESULT__BOARDING_TIME_STRING, oldBoardingTimeString, boardingTimeString));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -270,6 +312,8 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 				return getId();
 			case CabinPackage.SIMULATION_RESULT__DATE:
 				return getDate();
+			case CabinPackage.SIMULATION_RESULT__BOARDING_TIME_STRING:
+				return getBoardingTimeString();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -296,6 +340,9 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 				return;
 			case CabinPackage.SIMULATION_RESULT__DATE:
 				setDate((Date)newValue);
+				return;
+			case CabinPackage.SIMULATION_RESULT__BOARDING_TIME_STRING:
+				setBoardingTimeString((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -324,6 +371,9 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 			case CabinPackage.SIMULATION_RESULT__DATE:
 				setDate(DATE_EDEFAULT);
 				return;
+			case CabinPackage.SIMULATION_RESULT__BOARDING_TIME_STRING:
+				setBoardingTimeString(BOARDING_TIME_STRING_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -346,6 +396,8 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 				return id != ID_EDEFAULT;
 			case CabinPackage.SIMULATION_RESULT__DATE:
 				return DATE_EDEFAULT == null ? date != null : !DATE_EDEFAULT.equals(date);
+			case CabinPackage.SIMULATION_RESULT__BOARDING_TIME_STRING:
+				return BOARDING_TIME_STRING_EDEFAULT == null ? boardingTimeString != null : !BOARDING_TIME_STRING_EDEFAULT.equals(boardingTimeString);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -370,6 +422,8 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 		result.append(id);
 		result.append(", date: ");
 		result.append(date);
+		result.append(", boardingTimeString: ");
+		result.append(boardingTimeString);
 		result.append(')');
 		return result.toString();
 	}

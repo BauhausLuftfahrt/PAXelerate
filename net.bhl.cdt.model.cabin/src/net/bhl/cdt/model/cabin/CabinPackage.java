@@ -2603,13 +2603,22 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_RESULT__DATE = 4;
 
 	/**
+	 * The feature id for the '<em><b>Boarding Time String</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_RESULT__BOARDING_TIME_STRING = 5;
+
+	/**
 	 * The number of structural features of the '<em>Simulation Result</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_RESULT_FEATURE_COUNT = 5;
+	int SIMULATION_RESULT_FEATURE_COUNT = 6;
 
 	/**
 	 * The number of operations of the '<em>Simulation Result</em>' class.
@@ -2651,14 +2660,14 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER_MOOD = 25;
 
 	/**
-	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.luggageType <em>luggage Type</em>}' enum.
+	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.LuggageSize <em>Luggage Size</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see net.bhl.cdt.model.cabin.luggageType
-	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getluggageType()
+	 * @see net.bhl.cdt.model.cabin.LuggageSize
+	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getLuggageSize()
 	 * @generated
 	 */
-	int LUGGAGE_TYPE = 26;
+	int LUGGAGE_SIZE = 26;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}' enum.
@@ -4057,6 +4066,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getSimulationResult_Date();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationResult#getBoardingTimeString <em>Boarding Time String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Boarding Time String</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationResult#getBoardingTimeString()
+	 * @see #getSimulationResult()
+	 * @generated
+	 */
+	EAttribute getSimulationResult_BoardingTimeString();
+
+	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.PhysicalObject <em>Physical Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4173,14 +4193,14 @@ public interface CabinPackage extends EPackage {
 	EEnum getPassengerMood();
 
 	/**
-	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.luggageType <em>luggage Type</em>}'.
+	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.LuggageSize <em>Luggage Size</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>luggage Type</em>'.
-	 * @see net.bhl.cdt.model.cabin.luggageType
+	 * @return the meta object for enum '<em>Luggage Size</em>'.
+	 * @see net.bhl.cdt.model.cabin.LuggageSize
 	 * @generated
 	 */
-	EEnum getluggageType();
+	EEnum getLuggageSize();
 
 	/**
 	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}'.
@@ -5154,6 +5174,13 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute SIMULATION_RESULT__DATE = eINSTANCE.getSimulationResult_Date();
 		/**
+		 * The meta object literal for the '<em><b>Boarding Time String</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_RESULT__BOARDING_TIME_STRING = eINSTANCE.getSimulationResult_BoardingTimeString();
+		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.PhysicalObjectImpl <em>Physical Object</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5239,14 +5266,14 @@ public interface CabinPackage extends EPackage {
 		 */
 		EEnum PASSENGER_MOOD = eINSTANCE.getPassengerMood();
 		/**
-		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.luggageType <em>luggage Type</em>}' enum.
+		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.LuggageSize <em>Luggage Size</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see net.bhl.cdt.model.cabin.luggageType
-		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getluggageType()
+		 * @see net.bhl.cdt.model.cabin.LuggageSize
+		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getLuggageSize()
 		 * @generated
 		 */
-		EEnum LUGGAGE_TYPE = eINSTANCE.getluggageType();
+		EEnum LUGGAGE_SIZE = eINSTANCE.getLuggageSize();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}' enum.
 		 * <!-- begin-user-doc -->

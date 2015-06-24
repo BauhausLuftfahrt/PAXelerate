@@ -36,10 +36,15 @@ Martin Glas, Sebastian Höcht, Michael Kagel, Stephan Leutenmayr, Sami Mkhazni, 
 
    <windowImages i16="icons/16cdt.gif" i32="icons/32cdt.gif" i48="icons/48cdt.gif"/>
 
-   <splash
-      startupProgressRect="5,275,445,15"
-      startupMessageRect="7,252,445,20"
-      startupForegroundColor="000000" />
+
+   <launcher>
+      <solaris/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+
    <vm>
       <windows include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7</windows>
    </vm>
