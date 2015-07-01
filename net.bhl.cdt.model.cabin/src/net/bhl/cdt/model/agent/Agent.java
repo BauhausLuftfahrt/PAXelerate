@@ -81,21 +81,53 @@ public class Agent extends Subject implements Runnable {
 		GO_TO_SEAT, MAKE_WAY
 	}
 
-	public void remove() {
-		if (performFinalElements() == true) {
-			System.out.println("Passenger " + passenger.getId()
-					+ " is now force-seated!");
-		} else {
-			System.out.println("Passenger is already seated!");
-		}
-	}
-
 	public static enum State {
 		FOLLOWING_PATH, WAITING_FOR_ROW_CLEARING, CLEARING_ROW, STOWING_LUGGAGE, PREPARING, QUEUEING_UP, WAITING_FOR_OTHER_PASSENGER_TO_SEAT, RETURNING_TO_SEAT;
 	}
 
 	private int[][] defaultPassengerArea;
 	private int[][] adaptedPassengerArea;
+
+	/**
+	 * This method constructs an agent.
+	 * 
+	 * @param passenger
+	 *            the passenger which is represented by the agent
+	 * @param start
+	 *            the starting vector
+	 * @param goal
+	 *            the goal vector
+	 * @param scale
+	 *            the scale of the simulation
+	 */
+	public Agent(Passenger passenger, Vector start, Vector goal,
+			CostMap costmap, AgentMode mode, Passenger thePassengerILetInTheRow) {
+	
+		/* assign the initializer values to the objects values */
+		this.mode = mode;
+		this.passenger = passenger;
+		this.start = start;
+		this.goal = goal;
+		this.scale = SimulationHandler.getCabin().getScale();
+		this.finalCostmap = costmap;
+		this.thePassengerILetInTheRow = thePassengerILetInTheRow;
+	
+		/* generate a mood for the passenger depending on his presets */
+		if (passenger.getPassengerMood() == PassengerMood.AGRESSIVE) {
+			this.agentMood = new AggressiveMood(this);
+		} else if (passenger.getPassengerMood() == PassengerMood.PASSIVE) {
+			this.agentMood = new PassiveMood(this);
+		}
+	
+		defaultPassengerArea = new int[(int) (passenger.getWidth() / scale)][(int) (passenger
+				.getDepth() / scale)];
+		for (int i = 0; i < (int) (passenger.getWidth() / scale); i++) {
+			for (int j = 0; j < (int) (passenger.getDepth() / scale); j++) {
+				defaultPassengerArea[i][j] = 1;
+			}
+		}
+	
+	}
 
 	public ArrayList<Passenger> otherPassengersInRowBlockingMe = new ArrayList<Passenger>();
 
@@ -125,45 +157,8 @@ public class Agent extends Subject implements Runnable {
 		return mode;
 	}
 
-	/**
-	 * This method constructs an agent.
-	 * 
-	 * @param passenger
-	 *            the passenger which is represented by the agent
-	 * @param start
-	 *            the starting vector
-	 * @param goal
-	 *            the goal vector
-	 * @param scale
-	 *            the scale of the simulation
-	 */
-	public Agent(Passenger passenger, Vector start, Vector goal,
-			CostMap costmap, AgentMode mode, Passenger thePassengerILetInTheRow) {
-
-		/* assign the initializer values to the objects values */
-		this.mode = mode;
-		this.passenger = passenger;
-		this.start = start;
-		this.goal = goal;
-		this.scale = SimulationHandler.getCabin().getScale();
-		this.finalCostmap = costmap;
-		this.thePassengerILetInTheRow = thePassengerILetInTheRow;
-
-		/* generate a mood for the passenger depending on his presets */
-		if (passenger.getPassengerMood() == PassengerMood.AGRESSIVE) {
-			this.agentMood = new AggressiveMood(this);
-		} else if (passenger.getPassengerMood() == PassengerMood.PASSIVE) {
-			this.agentMood = new PassiveMood(this);
-		}
-
-		defaultPassengerArea = new int[(int) (passenger.getWidth() / scale)][(int) (passenger
-				.getDepth() / scale)];
-		for (int i = 0; i < (int) (passenger.getWidth() / scale); i++) {
-			for (int j = 0; j < (int) (passenger.getDepth() / scale); j++) {
-				defaultPassengerArea[i][j] = 1;
-			}
-		}
-
+	public Agent getBlockingAgent() {
+		return blockingAgent;
 	}
 
 	public boolean isInitialized() {
@@ -172,10 +167,6 @@ public class Agent extends Subject implements Runnable {
 
 	public void setInitialized(boolean initialized) {
 		this.initialized = initialized;
-	}
-
-	public Agent getBlockingAgent() {
-		return blockingAgent;
 	}
 
 	public void setBlockingAgent(Agent blockingAgent) {
@@ -953,6 +944,15 @@ public class Agent extends Subject implements Runnable {
 	 */
 	public void setThread(Thread thread) {
 		this.thread = thread;
+	}
+
+	public void remove() {
+		if (performFinalElements() == true) {
+			System.out.println("Passenger " + passenger.getId()
+					+ " is now force-seated!");
+		} else {
+			System.out.println("Passenger is already seated!");
+		}
 	}
 
 }

@@ -244,6 +244,14 @@ public class SimulationView extends JPanel implements MouseListener {
 			}
 		}
 		g.setColor(Color.BLACK);
+		g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE + 2));
+		for (Passenger pax : SimulationHandler.getCabin().getPassengers()) {
+			Agent agent = SimulationHandler.getAgentByPassenger(pax);
+			g.drawString("#", (agent.getDesiredPosition().getY() - pointZero)
+					* FONT_SIZE, agent.getDesiredPosition().getX() * FONT_SIZE);
+		}
+
+		g.setColor(Color.BLACK);
 		g.setFont(new Font("Courier New", Font.PLAIN, 12));
 		g.drawString("Real Time: " + watch.getElapsedTimeTens(), 10, 20);
 
