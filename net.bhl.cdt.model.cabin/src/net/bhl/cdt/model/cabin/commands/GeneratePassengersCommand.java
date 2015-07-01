@@ -110,21 +110,34 @@ public class GeneratePassengersCommand extends CDTCommand {
 	}
 
 	/**
-	 * This method applies a door to a passenger. In this implementation, the
-	 * main door is always chosen as the assigned door.
+	 * This method applies a door to a passenger.
 	 * 
 	 * @param pass
 	 *            is the passenger to whom the door is assigned to.
 	 */
-	private void applyDoor(Passenger pass) {
-		if (!cabin.getDoors().isEmpty()) {
-			for (Door door : cabin.getDoors()) {
-				if (door instanceof MainDoor) {
-					pass.setDoor(door);
-					break;
-				}
+	private Door getDoor(Passenger pass) {
+
+		ArrayList<Door> sdoorage = new ArrayList<Door>();
+
+		for (Door door : cabin.getDoors()) {
+			if (door.isIsActive()) {
+				sdoorage.add(door);
 			}
 		}
+
+		int seatPos = pass.getSeatRef().getYPosition();
+
+		int current = Integer.MAX_VALUE;
+		Door bestDoor = null;
+
+		for (Door door : sdoorage) {
+			int diff = Math.abs(door.getYPosition() - seatPos);
+			if (diff < current) {
+				current = diff;
+				bestDoor = door;
+			}
+		}
+		return bestDoor;
 	}
 
 	/**
@@ -178,7 +191,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 					newPassenger.setSeatRef(getSeat(newPassenger));
 					newPassenger.setTravelClass(newPassenger.getSeatRef()
 							.getTravelClass());
-					applyDoor(newPassenger);
+					newPassenger.setDoor(getDoor(newPassenger));
 					newPassenger
 							.setStartBoardingAfterDelay((passengerIdCount - 1)
 									* 60.0

@@ -42,7 +42,7 @@ public class SimulationHandler {
 	private static ArrayList<Agent> agentList = new ArrayList<Agent>();
 	private static HashMap<Passenger, Integer> accessPending = new HashMap<Passenger, Integer>();
 	private static StopWatch anotherStopwatch = new StopWatch();
-	private static Vector dimensions;
+	private Vector dimensions;
 	private static long latestSpawnTime = 0;
 
 	public static final boolean DEVELOPER_MODE = false;
@@ -70,7 +70,7 @@ public class SimulationHandler {
 			Cabin cabin) {
 		this.dimensions = dimensions;
 		console.addToLog("Cabin initializing...");
-		areamap = new AreaMap(dimensions, obstaclemap);
+		areamap = new AreaMap(this.dimensions, obstaclemap);
 		SimulationHandler.cabin = cabin;
 		run();
 	}
@@ -88,7 +88,7 @@ public class SimulationHandler {
 		return areamap;
 	}
 
-	public static Agent getAgentByPassenger(Passenger pax) {
+	public static synchronized Agent getAgentByPassenger(Passenger pax) {
 		for (Agent agent : agentList) {
 			if (agent.getPassenger().getId() == pax.getId()) {
 				return agent;
@@ -115,7 +115,7 @@ public class SimulationHandler {
 		return costmap;
 	}
 
-	public static void removePassenger(Passenger pax) {
+	public static synchronized void removePassenger(Passenger pax) {
 		Agent agent = getAgentByPassenger(pax);
 		agent.remove();
 	}
@@ -133,7 +133,7 @@ public class SimulationHandler {
 		return agentList;
 	}
 
-	public static void reset() {
+	public static synchronized void reset() {
 		cabin = null;
 		simulationDone = false;
 		finishedList.clear();
@@ -145,7 +145,7 @@ public class SimulationHandler {
 		accessPending.clear();
 		anotherStopwatch.reset();
 
-		dimensions = null;
+		// dimensions = null;
 		latestSpawnTime = 0;
 		frame = null;
 		progress = null;
@@ -162,7 +162,8 @@ public class SimulationHandler {
 	 * @param passenger
 	 *            is the passenger
 	 */
-	public static void setPassengerSeated(Passenger passenger, boolean setSeated) {
+	public static synchronized void setPassengerSeated(Passenger passenger,
+			boolean setSeated) {
 		if (setSeated) {
 			if (!finishedList.contains(passenger)) {
 				finishedList.add(passenger);
@@ -182,11 +183,12 @@ public class SimulationHandler {
 	 * 
 	 * @return This is done by submitting the whole cabin.
 	 */
-	public Cabin getPassengerLocations() {
+	public synchronized Cabin getPassengerLocations() {
 		return cabin;
 	}
 
-	public static void launchWaymakingAgent(Passenger pax, Passenger myself) {
+	public static synchronized void launchWaymakingAgent(Passenger pax,
+			Passenger myself) {
 		Seat seat = pax.getSeatRef();
 
 		// System.out
@@ -217,11 +219,11 @@ public class SimulationHandler {
 				+ ", y:" + goal.getY() + ".");
 	}
 
-	public static void setAgentList(ArrayList<Agent> agentList) {
+	public static synchronized void setAgentList(ArrayList<Agent> agentList) {
 		SimulationHandler.agentList = agentList;
 	}
 
-	public static int getNumberOfPassengersInCabin() {
+	public static synchronized int getNumberOfPassengersInCabin() {
 		return activeList.size();
 	}
 
@@ -255,7 +257,7 @@ public class SimulationHandler {
 		return false;
 	}
 
-	private static Agent getAgentByPassengerID(int id) {
+	private static synchronized Agent getAgentByPassengerID(int id) {
 		for (Agent agentWhoIsIt : agentList) {
 			if (agentWhoIsIt.getPassenger().getId() == id) {
 				return agentWhoIsIt;
@@ -271,7 +273,7 @@ public class SimulationHandler {
 		}
 	}
 
-	public static void sleepAgent(int duration, Passenger passenger) {
+	public static synchronized void sleepAgent(int duration, Passenger passenger) {
 		getAgentByPassengerID(passenger.getId()).interruptAgent(duration);
 	}
 

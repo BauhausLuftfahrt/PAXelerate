@@ -65,6 +65,7 @@ public class DoorItemProvider
 			addWidthPropertyDescriptor(object);
 			addIdPropertyDescriptor(object);
 			addNumberOfSimultaneousPassengersPropertyDescriptor(object);
+			addIsActivePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -180,6 +181,28 @@ public class DoorItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Is Active feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIsActivePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Door_isActive_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Door_isActive_feature", "_UI_Door_type"),
+				 CabinPackage.Literals.DOOR__IS_ACTIVE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Door.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -220,6 +243,7 @@ public class DoorItemProvider
 			case CabinPackage.DOOR__WIDTH:
 			case CabinPackage.DOOR__ID:
 			case CabinPackage.DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS:
+			case CabinPackage.DOOR__IS_ACTIVE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

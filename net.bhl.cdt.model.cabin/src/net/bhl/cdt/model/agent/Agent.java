@@ -212,12 +212,15 @@ public class Agent extends Subject implements Runnable {
 		 * return true if the passenger does have luggage and if he is near his
 		 * seat
 		 */
-		return (hasLuggage() && isYPositionMatch(seat.getYPosition() / scale
-				- PIXELS_FOR_LUGGAGE));
+		return (hasLuggage() && isInYRange(seat.getYPosition(),
+				PIXELS_FOR_LUGGAGE));
 	}
 
-	private boolean isYPositionMatch(int check) {
-		return (desiredPosition.getY() == check);
+	private boolean isInYRange(int position, int range) {
+		if ((int) Math.abs(desiredPosition.getY() - position / scale) == range) {
+			return true;
+		}
+		return false;
 	}
 
 	private boolean hasLuggage() {
@@ -516,6 +519,13 @@ public class Agent extends Subject implements Runnable {
 	 */
 	private void followPath() {
 
+		System.out.println(passenger.getId());
+		System.out.println(start);
+		System.out.println(goal);
+		if (goal.getY() < start.getY()) {
+			System.out.println("ERROR!!!");
+		}
+
 		/* define the try catch loop as main loop */
 		mainloop: try {
 
@@ -664,8 +674,7 @@ public class Agent extends Subject implements Runnable {
 
 	private boolean waitingForClearingOfRow() {
 
-		if (isYPositionMatch(passenger.getSeatRef().getYPosition() / scale
-				- PIXELS_FOR_WAY)) {
+		if (isInYRange(passenger.getSeatRef().getYPosition(), PIXELS_FOR_WAY)) {
 			if (AgentFunctions.someoneAlreadyInThisPartOfTheRow(this)) {
 				return true;
 			}

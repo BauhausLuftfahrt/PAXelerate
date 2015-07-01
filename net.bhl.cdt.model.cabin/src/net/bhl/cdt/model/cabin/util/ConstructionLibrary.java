@@ -506,6 +506,7 @@ public class ConstructionLibrary {
 			newDoor = emergencyExit;
 			newDoor.setWidth(50);
 			newDoor.setYPosition(yPosition);
+			newDoor.setIsActive(false);
 			if (yPosition < 0) {
 				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 						"Emergency Exit has a illegal yPosition."));

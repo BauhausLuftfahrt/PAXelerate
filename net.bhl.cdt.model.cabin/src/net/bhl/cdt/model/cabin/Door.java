@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Door#getWidth <em>Width</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Door#getId <em>Id</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Door#getNumberOfSimultaneousPassengers <em>Number Of Simultaneous Passengers</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Door#isIsActive <em>Is Active</em>}</li>
  * </ul>
  * </p>
  *
@@ -154,5 +155,32 @@ public interface Door extends EObject {
 	 * @generated
 	 */
 	void setNumberOfSimultaneousPassengers(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Is Active</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Is Active</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Is Active</em>' attribute.
+	 * @see #setIsActive(boolean)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getDoor_IsActive()
+	 * @model default="true"
+	 * @generated
+	 */
+	boolean isIsActive();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Door#isIsActive <em>Is Active</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Is Active</em>' attribute.
+	 * @see #isIsActive()
+	 * @generated
+	 */
+	void setIsActive(boolean value);
 
 } // Door

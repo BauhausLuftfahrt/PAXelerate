@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.DoorImpl#getWidth <em>Width</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.DoorImpl#getId <em>Id</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.DoorImpl#getNumberOfSimultaneousPassengers <em>Number Of Simultaneous Passengers</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.DoorImpl#isIsActive <em>Is Active</em>}</li>
  * </ul>
  * </p>
  *
@@ -126,6 +127,26 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	 * @ordered
 	 */
 	protected int numberOfSimultaneousPassengers = NUMBER_OF_SIMULTANEOUS_PASSENGERS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isIsActive() <em>Is Active</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsActive()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_ACTIVE_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isIsActive() <em>Is Active</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsActive()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isActive = IS_ACTIVE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -256,6 +277,27 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isIsActive() {
+		return isActive;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIsActive(boolean newIsActive) {
+		boolean oldIsActive = isActive;
+		isActive = newIsActive;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.DOOR__IS_ACTIVE, oldIsActive, isActive));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -269,6 +311,8 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 				return getId();
 			case CabinPackage.DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS:
 				return getNumberOfSimultaneousPassengers();
+			case CabinPackage.DOOR__IS_ACTIVE:
+				return isIsActive();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -295,6 +339,9 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 				return;
 			case CabinPackage.DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS:
 				setNumberOfSimultaneousPassengers((Integer)newValue);
+				return;
+			case CabinPackage.DOOR__IS_ACTIVE:
+				setIsActive((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -323,6 +370,9 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 			case CabinPackage.DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS:
 				setNumberOfSimultaneousPassengers(NUMBER_OF_SIMULTANEOUS_PASSENGERS_EDEFAULT);
 				return;
+			case CabinPackage.DOOR__IS_ACTIVE:
+				setIsActive(IS_ACTIVE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -345,6 +395,8 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 				return id != ID_EDEFAULT;
 			case CabinPackage.DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS:
 				return numberOfSimultaneousPassengers != NUMBER_OF_SIMULTANEOUS_PASSENGERS_EDEFAULT;
+			case CabinPackage.DOOR__IS_ACTIVE:
+				return isActive != IS_ACTIVE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -369,6 +421,8 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 		result.append(id);
 		result.append(", numberOfSimultaneousPassengers: ");
 		result.append(numberOfSimultaneousPassengers);
+		result.append(", isActive: ");
+		result.append(isActive);
 		result.append(')');
 		return result.toString();
 	}

@@ -2031,13 +2031,22 @@ public interface CabinPackage extends EPackage {
 	int DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS = 4;
 
 	/**
+	 * The feature id for the '<em><b>Is Active</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOOR__IS_ACTIVE = 5;
+
+	/**
 	 * The number of structural features of the '<em>Door</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOOR_FEATURE_COUNT = 5;
+	int DOOR_FEATURE_COUNT = 6;
 
 	/**
 	 * The number of operations of the '<em>Door</em>' class.
@@ -2102,6 +2111,15 @@ public interface CabinPackage extends EPackage {
 	 * @ordered
 	 */
 	int MAIN_DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS = DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS;
+
+	/**
+	 * The feature id for the '<em><b>Is Active</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAIN_DOOR__IS_ACTIVE = DOOR__IS_ACTIVE;
 
 	/**
 	 * The number of structural features of the '<em>Main Door</em>' class.
@@ -2177,6 +2195,15 @@ public interface CabinPackage extends EPackage {
 	int EMERGENCY_EXIT__NUMBER_OF_SIMULTANEOUS_PASSENGERS = DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS;
 
 	/**
+	 * The feature id for the '<em><b>Is Active</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMERGENCY_EXIT__IS_ACTIVE = DOOR__IS_ACTIVE;
+
+	/**
 	 * The number of structural features of the '<em>Emergency Exit</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2248,6 +2275,15 @@ public interface CabinPackage extends EPackage {
 	 * @ordered
 	 */
 	int STANDARD_DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS = DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS;
+
+	/**
+	 * The feature id for the '<em><b>Is Active</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STANDARD_DOOR__IS_ACTIVE = DOOR__IS_ACTIVE;
 
 	/**
 	 * The number of structural features of the '<em>Standard Door</em>' class.
@@ -3175,6 +3211,17 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDoor_NumberOfSimultaneousPassengers();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Door#isIsActive <em>Is Active</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Active</em>'.
+	 * @see net.bhl.cdt.model.cabin.Door#isIsActive()
+	 * @see #getDoor()
+	 * @generated
+	 */
+	EAttribute getDoor_IsActive();
 
 	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.Seat <em>Seat</em>}'.
@@ -4573,6 +4620,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS = eINSTANCE.getDoor_NumberOfSimultaneousPassengers();
+		/**
+		 * The meta object literal for the '<em><b>Is Active</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOOR__IS_ACTIVE = eINSTANCE.getDoor_IsActive();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.SeatImpl <em>Seat</em>}' class.
 		 * <!-- begin-user-doc -->

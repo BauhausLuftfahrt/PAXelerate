@@ -730,6 +730,15 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getDoor_IsActive() {
+		return (EAttribute)doorEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSeat() {
 		return seatEClass;
 	}
@@ -1731,6 +1740,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEAttribute(doorEClass, DOOR__WIDTH);
 		createEAttribute(doorEClass, DOOR__ID);
 		createEAttribute(doorEClass, DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS);
+		createEAttribute(doorEClass, DOOR__IS_ACTIVE);
 
 		mainDoorEClass = createEClass(MAIN_DOOR);
 
@@ -1969,6 +1979,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEAttribute(getDoor_Width(), ecorePackage.getEInt(), "width", null, 0, 1, Door.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDoor_Id(), ecorePackage.getEInt(), "id", null, 0, 1, Door.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDoor_NumberOfSimultaneousPassengers(), ecorePackage.getEInt(), "numberOfSimultaneousPassengers", null, 0, 1, Door.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDoor_IsActive(), ecorePackage.getEBoolean(), "isActive", "true", 0, 1, Door.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(mainDoorEClass, MainDoor.class, "MainDoor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
