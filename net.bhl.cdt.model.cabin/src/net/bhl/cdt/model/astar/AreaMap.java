@@ -50,6 +50,13 @@ public class AreaMap {
 		log.addToLog("Map Node edges registered");
 	}
 
+	public AreaMap(AreaMap copy) {
+		this.map = copy.map;
+		this.dimensions = copy.dimensions;
+		this.obstacleMap = copy.obstacleMap;
+		this.nodeList = copy.nodeList;
+	}
+
 	public ObstacleMap getObstacleMap() {
 		return obstacleMap;
 	}

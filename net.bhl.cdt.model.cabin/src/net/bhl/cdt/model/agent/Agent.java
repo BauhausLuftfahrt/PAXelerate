@@ -9,7 +9,7 @@ package net.bhl.cdt.model.agent;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 
-import net.bhl.cdt.model.astar.AStar;
+import net.bhl.cdt.model.astar.Core;
 import net.bhl.cdt.model.agent.AggressiveMood;
 import net.bhl.cdt.model.astar.CostMap;
 import net.bhl.cdt.model.agent.PassiveMood;
@@ -240,7 +240,7 @@ public class Agent extends Subject implements Runnable {
 	 *            is the specific angle
 	 */
 
-	private synchronized void occupyNodeArea(Vector vector, boolean occupy,
+	private synchronized void blockArea(Vector vector, boolean occupy,
 			boolean rotateOnly, Integer rotation) {
 
 		/* switch the property depending on whether a node is blocked or release */
@@ -344,13 +344,13 @@ public class Agent extends Subject implements Runnable {
 	 */
 	private void rotateAgent(int degrees) {
 		if (rotationAllowed()) {
-			occupyNodeArea(currentPosition, false, false, null);
-			occupyNodeArea(currentPosition, true, true, degrees);
+			blockArea(currentPosition, false, false, null);
+			blockArea(currentPosition, true, true, degrees);
 		}
 	}
 
 	private boolean rotationAllowed() {
-		if (currentPosition.getX() < 3) {
+		if (currentPosition.getX() < 1) {
 			return false;
 		}
 		return true;
@@ -398,7 +398,7 @@ public class Agent extends Subject implements Runnable {
 		/* this is only run if its not the initial path finding process */
 		if (currentPosition != null) {
 
-			occupyNodeArea(currentPosition, false, false, null);
+			blockArea(currentPosition, false, false, null);
 
 			/* print out the area map when in developer mode */
 			if (SimulationHandler.DEVELOPER_MODE) {
@@ -415,8 +415,7 @@ public class Agent extends Subject implements Runnable {
 		}
 
 		/* run the path finding algorithm */
-		AStar astar = new AStar(SimulationHandler.getMap(), mutableCostMap,
-				this);
+		Core astar = new Core(SimulationHandler.getMap(), mutableCostMap, this);
 
 		/* retrieve the path information */
 		path = astar.getBestPath();
@@ -459,7 +458,14 @@ public class Agent extends Subject implements Runnable {
 	 *            the specific vector
 	 * @return if the node is blocked by someone else
 	 */
-	private boolean nodeBlockedBySomeoneElseOrObstacle(Vector vector) {
+	private boolean nodeBlocked(Vector vector) {
+
+		// dim is defined as 2
+
+		//
+		// if (desiredPosition.getY() < currentPosition.getY()) {
+		// System.out.println("Checking back!");
+		// }
 
 		for (int x = -dim; x <= dim; x++) {
 			for (int y = dim; y <= dim; y++) {
@@ -519,12 +525,12 @@ public class Agent extends Subject implements Runnable {
 	 */
 	private void followPath() {
 
-		System.out.println(passenger.getId());
-		System.out.println(start);
-		System.out.println(goal);
-		if (goal.getY() < start.getY()) {
-			System.out.println("ERROR!!!");
-		}
+		// System.out.println(passenger.getId());
+		// System.out.println(start);
+		// System.out.println(goal);
+		// if (goal.getY() < start.getY()) {
+		// System.out.println("ERROR!!!");
+		// }
 
 		/* define the try catch loop as main loop */
 		mainloop: try {
@@ -553,7 +559,7 @@ public class Agent extends Subject implements Runnable {
 				desiredPosition = path.get(i).getPosition();
 
 				/* check if the desired next step is blocked by someone else */
-				if (nodeBlockedBySomeoneElseOrObstacle(desiredPosition)) {
+				if (nodeBlocked(desiredPosition)) {
 
 					setCurrentState(State.QUEUEING_UP);
 
@@ -564,7 +570,7 @@ public class Agent extends Subject implements Runnable {
 					Situation collision = new Situation(agentMood);
 
 					/* Perform the correct behavior */
-					collision.handleCollision();
+					collision.handle();
 
 					/* the main loop is quit, if there is a new path calculated */
 					if (exitTheMainLoop) {
@@ -684,8 +690,8 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	private synchronized void occupyOneStepAhead() {
-		occupyNodeArea(currentPosition, false, false, null);
-		occupyNodeArea(desiredPosition, true, false, null);
+		blockArea(currentPosition, false, false, null);
+		blockArea(desiredPosition, true, false, null);
 	}
 
 	/**
@@ -752,8 +758,8 @@ public class Agent extends Subject implements Runnable {
 			passenger.setNumberOfWaits(numbOfInterupts);
 
 			/* clear the current position of the agent */
-			occupyNodeArea(currentPosition, false, false, null);
-			occupyNodeArea(desiredPosition, false, false, null);
+			blockArea(currentPosition, false, false, null);
+			blockArea(desiredPosition, false, false, null);
 
 			SimulationHandler.getMap().getNode(getGoal())
 					.setProperty(Property.DEFAULT, getPassenger());

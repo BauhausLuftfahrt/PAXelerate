@@ -36,6 +36,8 @@ public class SimulationView extends JPanel implements MouseListener {
 	private final Button faster;
 	private final Button slower;
 
+	private final Button stop;
+
 	private int speedPosition = 2;
 
 	private int pointZero = 0;
@@ -45,6 +47,10 @@ public class SimulationView extends JPanel implements MouseListener {
 	private int[] possibleSpeeds = { 1, 2, 5, 10, 20, 50, 100 };
 
 	private static double cabinWidth;
+
+	private boolean once = true;
+
+	private boolean interrupted = false;
 
 	public static StopWatch getWatch() {
 		return watch;
@@ -81,6 +87,8 @@ public class SimulationView extends JPanel implements MouseListener {
 		faster = new Button();
 		slower = new Button();
 
+		stop = new Button();
+
 		int j = 0;
 		for (int i : possibleSpeeds) {
 			if (i == SimulationHandler.getCabin().getSpeedFactor()) {
@@ -96,6 +104,7 @@ public class SimulationView extends JPanel implements MouseListener {
 		rightButton.setFocusable(false);
 		faster.setFocusable(false);
 		slower.setFocusable(false);
+		stop.setFocusable(false);
 
 		faster.setLabel("faster");
 		faster.setEnabled(true);
@@ -123,8 +132,19 @@ public class SimulationView extends JPanel implements MouseListener {
 			}
 		});
 
+		stop.setLabel("STOP");
+		stop.setEnabled(true);
+		stop.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				interrupted = true;
+			}
+		});
+
 		this.add(slower);
 		this.add(faster);
+
+		this.add(stop);
 
 		leftButton.setLabel("<-");
 		leftButton.setEnabled(true);
@@ -176,8 +196,19 @@ public class SimulationView extends JPanel implements MouseListener {
 		}
 	}
 
+	private void performInterupt() {
+		if (interrupted && once) {
+			AreaMap areamapcopy = new AreaMap(areamap);
+			areamap = areamapcopy;
+			once = false;
+			stop.setEnabled(false);
+		}
+	}
+
 	@Override
 	public void paintComponent(Graphics g) {
+
+		// performInterupt();
 
 		FONT_SIZE = (int) (getSize().height / cabinWidth);
 
@@ -252,8 +283,15 @@ public class SimulationView extends JPanel implements MouseListener {
 			g.setColor(Color.BLACK);
 			if (areamap.getNodeByCoordinate(b, a) != null && pax != null) {
 				if (areamap.getNodeByCoordinate(b, a).getProperty() == Property.AGENT) {
-					g.drawString("Passenger: " + pax.getId() + ", x: " + b
-							+ ", y: " + a, mousePos.x + 30, mousePos.y + 30);
+					g.drawString("Passenger: "
+							+ pax.getId()
+							+ ", x: "
+							+ SimulationHandler.getAgentByPassenger(pax)
+									.getCurrentPosition().getX()
+							+ ", y: "
+							+ SimulationHandler.getAgentByPassenger(pax)
+									.getCurrentPosition().getY(),
+							mousePos.x + 30, mousePos.y + 30);
 					g.drawString("Seat " + pax.getSeatRef().getName(),
 							mousePos.x + 30, mousePos.y + 50);
 					g.drawString("State: "

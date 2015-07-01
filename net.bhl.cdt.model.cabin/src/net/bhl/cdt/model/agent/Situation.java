@@ -8,7 +8,7 @@ public class Situation {
 		this.strategy = strategy;
 	}
 
-	public void handleCollision() {
+	public void handle() {
 		this.strategy.reactToCollision();
 	}
 }

@@ -17,7 +17,7 @@ import net.bhl.cdt.model.cabin.util.FuncLib;
  * @author marc.engelmann
  *
  */
-public class AStar {
+public class Core {
 	private AreaMap map;
 	private CostMap costmap;
 	private Path bestPath;
@@ -26,12 +26,12 @@ public class AStar {
 	private Agent agent;
 
 	/**
-	 * This method constructs the AStar.
+	 * This method constructs the Core.
 	 * 
 	 * @param map
 	 *            is the AreaMap that is fed into the algorithm
 	 */
-	public AStar(AreaMap map, CostMap costmap, Agent agent) {
+	public Core(AreaMap map, CostMap costmap, Agent agent) {
 		this.map = map;
 		this.agent = agent;
 		this.costmap = costmap;
@@ -197,7 +197,7 @@ public class AStar {
 			}
 		} catch (NullPointerException e) {
 			System.out
-					.println("###### !NullPointerException ERROR! ###### !AStar - reconstructPath()! ######");
+					.println("###### !NullPointerException ERROR! ###### !Core - reconstructPath()! ######");
 			e.printStackTrace();
 		}
 		return path;
