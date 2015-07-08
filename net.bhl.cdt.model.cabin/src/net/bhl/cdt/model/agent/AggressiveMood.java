@@ -10,12 +10,12 @@ public class AggressiveMood extends AgentMood implements Strategy {
 	@SuppressWarnings("static-access")
 	@Override
 	public void reactToCollision() {
-
+		// only pass if other passenger is stowing luggage
 		if (super.getAgent().getBlockingAgent().passengerStowsLuggage()) {
 			super.getAgent().findNewPath();
 			super.getAgent().setExitPathLoop(true);
 		}
-
+		// other wise if blocked act as passive agent
 		else {
 			try {
 				super.getAgent().getThread().sleep(10);

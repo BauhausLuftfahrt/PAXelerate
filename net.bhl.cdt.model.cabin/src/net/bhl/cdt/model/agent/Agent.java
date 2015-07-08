@@ -102,7 +102,7 @@ public class Agent extends Subject implements Runnable {
 	 */
 	public Agent(Passenger passenger, Vector start, Vector goal,
 			CostMap costmap, AgentMode mode, Passenger thePassengerILetInTheRow) {
-	
+
 		/* assign the initializer values to the objects values */
 		this.mode = mode;
 		this.passenger = passenger;
@@ -111,14 +111,14 @@ public class Agent extends Subject implements Runnable {
 		this.scale = SimulationHandler.getCabin().getScale();
 		this.finalCostmap = costmap;
 		this.thePassengerILetInTheRow = thePassengerILetInTheRow;
-	
+
 		/* generate a mood for the passenger depending on his presets */
 		if (passenger.getPassengerMood() == PassengerMood.AGRESSIVE) {
 			this.agentMood = new AggressiveMood(this);
 		} else if (passenger.getPassengerMood() == PassengerMood.PASSIVE) {
 			this.agentMood = new PassiveMood(this);
 		}
-	
+
 		defaultPassengerArea = new int[(int) (passenger.getWidth() / scale)][(int) (passenger
 				.getDepth() / scale)];
 		for (int i = 0; i < (int) (passenger.getWidth() / scale); i++) {
@@ -126,7 +126,7 @@ public class Agent extends Subject implements Runnable {
 				defaultPassengerArea[i][j] = 1;
 			}
 		}
-	
+
 	}
 
 	public ArrayList<Passenger> otherPassengersInRowBlockingMe = new ArrayList<Passenger>();
@@ -340,6 +340,11 @@ public class Agent extends Subject implements Runnable {
 		}
 	}
 
+	/**
+	 * This method defines whether rotation is allowed or not.
+	 * 
+	 * @return allowed or not
+	 */
 	private boolean rotationAllowed() {
 		if (currentPosition.getX() < 1) {
 			return false;
@@ -399,8 +404,6 @@ public class Agent extends Subject implements Runnable {
 			/* this sets the new start of the A* to the current position */
 			start = currentPosition;
 
-			// mutableAreaMap.getNode(start).setProperty(Property.START, null);
-
 			/* this declares the area around agents as high cost terrain */
 			mutableCostMap = AgentFunctions.updateCostmap(this);
 		}
@@ -420,8 +423,6 @@ public class Agent extends Subject implements Runnable {
 		}
 		/* ends the stop watch performance logging */
 		stopwatch.stop();
-		// System.out.println(stopwatch.getElapsedTime() +
-		// " ms for pathfinding");
 	}
 
 	/**
@@ -451,43 +452,42 @@ public class Agent extends Subject implements Runnable {
 	 */
 	private boolean nodeBlocked(Vector vector) {
 
-		// dim is defined as 2
-
-		//
-		// if (desiredPosition.getY() < currentPosition.getY()) {
-		// System.out.println("Checking back!");
-		// }
-
 		for (int x = -dim; x <= dim; x++) {
-			for (int y = dim; y <= dim; y++) {
 
-				Node checkNode = SimulationHandler.getMap()
-						.getNodeByCoordinate(vector.getX() + x,
-								vector.getY() + y);
-				if (checkNode != null) {
-					if (checkNode.getProperty() == Property.AGENT) {
+			// ersetzt wurde: for (int y = dim; y <= dim; y++) {
+			int y = dim;
 
-						/* check if its was not this agent who blocked it */
-						if (checkNode.getPassenger().getId() != this.passenger
-								.getId()) {
+			if (passenger.getSeatRef().getYPosition() < passenger.getDoor()
+					.getYPosition()) {
+				y = -(y + 1);
+			}
 
-							for (Agent agent : SimulationHandler.getAgentList()) {
+			Node checkNode = SimulationHandler.getMap().getNodeByCoordinate(
+					vector.getX() + x, vector.getY() + y);
+			if (checkNode != null) {
+				if (checkNode.getProperty() == Property.AGENT) {
 
-								if (agent.getPassenger().getId() == checkNode
-										.getPassenger().getId()) {
-									this.blockingAgent = agent;
-								}
+					/* check if its was not this agent who blocked it */
+					if (checkNode.getPassenger().getId() != this.passenger
+							.getId()) {
+
+						for (Agent agent : SimulationHandler.getAgentList()) {
+
+							if (agent.getPassenger().getId() == checkNode
+									.getPassenger().getId()) {
+								this.blockingAgent = agent;
 							}
-							return true;
 						}
-					}
-					if (checkNode.getProperty() == Property.OBSTACLE) {
-						// System.out
-						// .println("###### !OVERLAPPING OF AGENT AND OBSTACLE! ###### !AGENT - nodeBlockedBySomeoneElseOrObstacle()! ######");
-						// return true;
+						return true;
 					}
 				}
+				if (checkNode.getProperty() == Property.OBSTACLE) {
+					// System.out
+					// .println("###### !OVERLAPPING OF AGENT AND OBSTACLE! ###### !AGENT - nodeBlockedBySomeoneElseOrObstacle()! ######");
+					// return true;
+				}
 			}
+			// }
 		}
 		return false;
 
@@ -838,19 +838,14 @@ public class Agent extends Subject implements Runnable {
 
 				for (int i = 0; i < cabinBlocker.getCabinWidth()
 						/ cabinBlocker.getScale(); i++) {
-					if (SimulationHandler
-							.getMap()
+					Node node = SimulationHandler.getMap()
 							.getNodeByCoordinate(
 									i,
 									(int) (position / cabinBlocker.getScale())
-											- offset).getProperty() != Property.OBSTACLE) {
-						SimulationHandler
-								.getMap()
-								.getNodeByCoordinate(
-										i,
-										(int) (position / cabinBlocker
-												.getScale()) - offset)
-								.setProperty(Property.AGENT, passenger);
+											- offset);
+					if (node.getProperty() != Property.OBSTACLE) {
+						node.setProperty(Property.AGENT, passenger);
+						// node.setHidden();
 					}
 				}
 
@@ -860,8 +855,6 @@ public class Agent extends Subject implements Runnable {
 					Thread.sleep(10);
 
 				}
-
-				// TODO: DEBLOCK AISLE
 
 				setCurrentState(State.PREPARING);
 
@@ -890,19 +883,14 @@ public class Agent extends Subject implements Runnable {
 
 				for (int i = 0; i < cabinBlocker.getCabinWidth()
 						/ cabinBlocker.getScale(); i++) {
-					if (SimulationHandler
-							.getMap()
+
+					Node node = SimulationHandler.getMap()
 							.getNodeByCoordinate(
 									i,
 									(int) (position / cabinBlocker.getScale())
-											- offset).getProperty() != Property.OBSTACLE) {
-						SimulationHandler
-								.getMap()
-								.getNodeByCoordinate(
-										i,
-										(int) (position / cabinBlocker
-												.getScale()) - offset)
-								.setProperty(Property.DEFAULT, passenger);
+											- offset);
+					if (node.getProperty() != Property.OBSTACLE) {
+						node.setProperty(Property.DEFAULT, passenger);
 					}
 				}
 

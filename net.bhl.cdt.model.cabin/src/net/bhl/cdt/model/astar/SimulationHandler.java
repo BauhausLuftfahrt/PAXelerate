@@ -191,21 +191,21 @@ public class SimulationHandler {
 			Passenger myself) {
 		Seat seat = pax.getSeatRef();
 
-		// System.out
-		// .println("launching " + pax.getId() + ", " + pax.getSeatRef());
-
-		Vector goal = new Vector2D((int) (cabin.getCabinWidth()
-				/ cabin.getScale() / 2.0),
-				(int) (seat.getYPosition() / cabin.getScale()) + 5);
-
-		// FuncLib.printVectorToLog(goal, "goal");
+		int offset = 5;
 
 		Vector start = new Vector2D(
 				(int) ((seat.getXPosition() + seat.getXDimension() / 2) / cabin
 						.getScale()),
 				(int) ((seat.getYPosition() / cabin.getScale()) - 2));
 
-		// FuncLib.printVectorToLog(start, "start");
+		if (pax.getSeatRef().getYPosition() < pax.getDoor().getYPosition()) {
+			offset = -(offset + 2);
+			System.out.println("offset mirrored");
+		}
+
+		Vector goal = new Vector2D((int) (cabin.getCabinWidth()
+				/ cabin.getScale() / 2.0),
+				(int) (seat.getYPosition() / cabin.getScale()) + offset);
 
 		Agent agent = new Agent(pax, start, goal,
 				SimulationHandler.getCostMap(), Agent.AgentMode.MAKE_WAY,

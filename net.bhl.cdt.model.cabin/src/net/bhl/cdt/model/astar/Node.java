@@ -36,6 +36,15 @@ public class Node implements Comparable<Node> {
 	private Vector position = new Vector2D(0, 0);
 	private int cost;
 	private Property property;
+	private boolean hidden = false;
+
+	public boolean isHidden() {
+		return this.hidden;
+	}
+
+	public void setHidden() {
+		this.hidden = true;
+	}
 
 	private Passenger linkedPassenger;
 

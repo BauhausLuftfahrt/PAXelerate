@@ -216,40 +216,39 @@ public class SimulationView extends JPanel implements MouseListener {
 		g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE));
 		for (int x = pointZero; x < areamap.getDimensions().getY(); x++) {
 			for (int y = 0; y < areamap.getDimensions().getX(); y++) {
+
+				Node node = areamap.getNodeByCoordinate(y, x);
 				g.setColor(Color.LIGHT_GRAY);
-				if (areamap.getNodeByCoordinate(y, x).getTypeForPrinting() != null) {
-					if (areamap.getNodeByCoordinate(y, x).getTypeForPrinting() == "O"
-							|| areamap.getNodeByCoordinate(y, x)
-									.getTypeForPrinting() == " ") {
+				if (node.getTypeForPrinting() != null) {
+					if (node.getTypeForPrinting().equals("O")
+							|| node.getTypeForPrinting().equals(" ")) {
 						g.setColor(switchColor(SimulationHandler
-								.getAgentByPassenger(
-										areamap.getNodeByCoordinate(y, x)
-												.getPassenger())
+								.getAgentByPassenger(node.getPassenger())
 								.getCurrentState()));
 						g.setFont(new Font("Courier New", Font.PLAIN,
 								FONT_SIZE - 1));
-						g.drawString("O", (x - pointZero) * FONT_SIZE, y
-								* FONT_SIZE);
+						if (!node.isHidden()) {
+							g.drawString("O", (x - pointZero) * FONT_SIZE, y
+									* FONT_SIZE);
+						}
 					} else {
 						g.setColor(Color.LIGHT_GRAY);
 						g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE));
-						if (areamap.getNodeByCoordinate(y, x)
-								.getTypeForPrinting() != null) {
-							g.drawString(areamap.getNodeByCoordinate(y, x)
-									.getTypeForPrinting(), (x - pointZero)
-									* FONT_SIZE, y * FONT_SIZE);
+						if (node.getTypeForPrinting() != null) {
+							g.drawString(node.getTypeForPrinting(),
+									(x - pointZero) * FONT_SIZE, y * FONT_SIZE);
 						}
 					}
 				}
 			}
 		}
-		g.setColor(Color.BLACK);
-		g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE + 2));
-		for (Passenger pax : SimulationHandler.getCabin().getPassengers()) {
-			Agent agent = SimulationHandler.getAgentByPassenger(pax);
-			g.drawString("#", (agent.getDesiredPosition().getY() - pointZero)
-					* FONT_SIZE, agent.getDesiredPosition().getX() * FONT_SIZE);
-		}
+		// g.setColor(Color.BLACK);
+		// g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE + 2));
+		// for (Passenger pax : SimulationHandler.getCabin().getPassengers()) {
+		// Agent agent = SimulationHandler.getAgentByPassenger(pax);
+		// g.drawString("#", (agent.getDesiredPosition().getY() - pointZero)
+		// * FONT_SIZE, agent.getDesiredPosition().getX() * FONT_SIZE);
+		// }
 
 		g.setColor(Color.BLACK);
 		g.setFont(new Font("Courier New", Font.PLAIN, 12));
