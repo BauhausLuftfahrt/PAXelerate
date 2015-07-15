@@ -36,7 +36,7 @@ import org.eclipse.ui.PlatformUI;
  *
  */
 
-public class MoveRowCommand extends CDTCommand {
+public class MoveObjectCommand extends CDTCommand {
 
 	private Cabin cabin;
 	private ILog logger;
@@ -68,7 +68,7 @@ public class MoveRowCommand extends CDTCommand {
 	 * @param curtainlist
 	 *            is the list of curtain objects
 	 */
-	public MoveRowCommand(Cabin cabin, ArrayList<Row> rowlist,
+	public MoveObjectCommand(Cabin cabin, ArrayList<Row> rowlist,
 			ArrayList<Seat> seatlist, ArrayList<Galley> galleylist,
 			ArrayList<Lavatory> lavatorylist, ArrayList<Curtain> curtainlist) {
 		this.rowlist = rowlist;
@@ -141,8 +141,7 @@ public class MoveRowCommand extends CDTCommand {
 		}
 		if (!galleylist.isEmpty()) {
 			for (Galley galley : galleylist) {
-				for (Galley compareGalley : ModelHelper.getChildrenByClass(
-						cabin, Galley.class)) {
+				for (Galley compareGalley : cabin.getGalleys()) {
 					if (galley.getId() == compareGalley.getId()) {
 						galley.setXPosition(galley.getXPosition()
 								+ movementVector.getX());
@@ -158,8 +157,7 @@ public class MoveRowCommand extends CDTCommand {
 		}
 		if (!lavatorylist.isEmpty()) {
 			for (Lavatory lavatory : lavatorylist) {
-				for (Lavatory compareLavatory : ModelHelper.getChildrenByClass(
-						cabin, Lavatory.class)) {
+				for (Lavatory compareLavatory : cabin.getLavatories()) {
 					if (lavatory.getId() == compareLavatory.getId()) {
 						compareLavatory.setXPosition(compareLavatory
 								.getXPosition() + movementVector.getX());
@@ -175,8 +173,7 @@ public class MoveRowCommand extends CDTCommand {
 		}
 		if (!curtainlist.isEmpty()) {
 			for (Curtain curtain : curtainlist) {
-				for (Curtain compareCurtain : ModelHelper.getChildrenByClass(
-						cabin, Curtain.class)) {
+				for (Curtain compareCurtain : cabin.getCurtains()) {
 					if (curtain.getId() == compareCurtain.getId()) {
 						compareCurtain.setXPosition(compareCurtain
 								.getXPosition() + movementVector.getX());

@@ -8,7 +8,7 @@ import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
-import net.bhl.cdt.model.cabin.commands.MoveRowCommand;
+import net.bhl.cdt.model.cabin.commands.MoveObjectCommand;
 import net.bhl.cdt.model.util.ModelHelper;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -75,7 +75,7 @@ public class MoveRowHandler extends AbstractHandler {
 			cabin = null;
 		}
 
-		new MoveRowCommand(cabin, rowlist, seatlist, galleylist, lavatorylist,
+		new MoveObjectCommand(cabin, rowlist, seatlist, galleylist, lavatorylist,
 				curtainlist).execute();
 		
 		/* clear all lists in order to prevent the unintentioal movement of several items edited before */

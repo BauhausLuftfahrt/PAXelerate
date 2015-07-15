@@ -241,10 +241,8 @@ public class CabinViewPart extends ViewPart implements Runnable,
 					(int) (curtain.getXDimension() / factor),
 					(int) (curtain.getYDimension() / factor));
 		}
-		if (!cabin.getPassengers().isEmpty()) { // &&drawCabin.getGraphicSettings().isShowOccupiedSeats())
-			// {
-			for (Passenger passenger : ModelHelper.getChildrenByClass(cabin,
-					Passenger.class)) {
+		if (!cabin.getPassengers().isEmpty()) {
+			for (Passenger passenger : cabin.getPassengers()) {
 				Seat passengerSeat = passenger.getSeatRef();
 
 				if (MATCH_PASSENGER_COLORS_TO_MOOD) {
@@ -263,7 +261,6 @@ public class CabinViewPart extends ViewPart implements Runnable,
 							colorVector.getZ()));
 				}
 
-				// e.gc.setBackground(black);
 				if (passengerSeat.getYDimension() < passengerSeat
 						.getXDimension()) {
 					graphicsControl
