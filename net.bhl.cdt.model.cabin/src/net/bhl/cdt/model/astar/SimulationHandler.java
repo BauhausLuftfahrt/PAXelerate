@@ -35,6 +35,7 @@ public class SimulationHandler {
 	private static Boolean simulationDone = false;
 	private static ArrayList<Passenger> finishedList = new ArrayList<Passenger>();
 	private static ArrayList<Passenger> activeList = new ArrayList<Passenger>();
+	private static ArrayList<Passenger> waymakingList = new ArrayList<Passenger>();
 
 	private Logger console = new Logger();
 	private static AreaMap areamap;
@@ -77,6 +78,26 @@ public class SimulationHandler {
 
 	public static int getNumberOfSeatedPassengers() {
 		return finishedList.size();
+	}
+
+	public static void addToWaymakingList(Passenger pax) {
+		System.out.println(pax.getId() + " added.");
+		waymakingList.add(pax);
+	}
+
+	public static void removeFromWaymakingList(Passenger pax) {
+		System.out.println(pax.getId() + " removed.");
+		waymakingList.remove(pax);
+	}
+
+	public static boolean waymakingInRange(Passenger pax) {
+		for (Passenger pass : waymakingList) {
+			if (Math.abs(pass.getPositionY() - pax.getPositionY()) < 10) {
+				System.out.println("Positive!");
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**

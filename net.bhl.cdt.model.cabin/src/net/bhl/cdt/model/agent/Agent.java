@@ -4,7 +4,6 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ***************************************************************************************/
 
-
 package net.bhl.cdt.model.agent;
 
 import java.util.ArrayList;
@@ -71,6 +70,8 @@ public class Agent extends Subject implements Runnable {
 	private final AgentMode mode;
 
 	private State currentState;
+
+	private int waycounter = 0;
 
 	private Passenger thePassengerILetInTheRow;
 
@@ -604,6 +605,11 @@ public class Agent extends Subject implements Runnable {
 
 					// TODO: only one passenger is detected, even if there are 2
 					// already in the row!
+
+					while (waymakingAllowed() == false) {
+						Thread.sleep(10);
+					}
+
 					for (Passenger pax : otherPassengersInRowBlockingMe) {
 
 						SimulationHandler.launchWaymakingAgent(pax,
@@ -668,6 +674,18 @@ public class Agent extends Subject implements Runnable {
 			this.getThread().interrupt();
 			System.out.println("thread is now interrupted");
 		}
+	}
+
+	private boolean waymakingAllowed() {
+		if (SimulationHandler.waymakingInRange(passenger)) {
+			waycounter++;
+			if (waycounter < 30) {
+				return false;
+			} else {
+				return true;
+			}
+		}
+		return true;
 	}
 
 	private boolean waitingForClearingOfRow() {
@@ -777,6 +795,9 @@ public class Agent extends Subject implements Runnable {
 				 * if the agent should clear the row for a passenger, unblock
 				 * the seat
 				 */
+
+				SimulationHandler.addToWaymakingList(passenger);
+
 				defineSeated(false);
 			}
 
@@ -895,6 +916,10 @@ public class Agent extends Subject implements Runnable {
 					}
 				}
 
+			}
+
+			if (!inDefaultBoardingMode()) {
+				SimulationHandler.removeFromWaymakingList(passenger);
 			}
 
 			performFinalElements();
