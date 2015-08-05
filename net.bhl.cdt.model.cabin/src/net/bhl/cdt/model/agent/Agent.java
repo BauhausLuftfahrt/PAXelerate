@@ -786,7 +786,6 @@ public class Agent extends Subject implements Runnable {
 	 */
 	public void run() {
 		try {
-			System.out.println("a");
 			setCurrentState(State.PREPARING);
 
 			if (!inDefaultBoardingMode()) {
@@ -797,7 +796,6 @@ public class Agent extends Subject implements Runnable {
 				 */
 
 				SimulationHandler.addToWaymakingList(passenger);
-				System.out.println("b");
 				defineSeated(false);
 			}
 
@@ -806,7 +804,6 @@ public class Agent extends Subject implements Runnable {
 
 			/* add the path to the list of paths */
 			pathlist.add(path);
-			System.out.println("c");
 			if (inDefaultBoardingMode()) {
 				/* sleep the thread as long as the boarding delay requires it */
 				Thread.sleep(FuncLib.transformTime(passenger
@@ -818,7 +815,6 @@ public class Agent extends Subject implements Runnable {
 				 */
 
 				while (SimulationHandler.CabinAccessGranted(passenger) == false) {
-					System.out.println("d");
 					Thread.sleep(10);
 				}
 			}

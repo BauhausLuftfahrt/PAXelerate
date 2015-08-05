@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.EList;
 
 import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.agent.AgentFunctions;
+import net.bhl.cdt.model.agent.IssueScanner;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
@@ -46,7 +47,6 @@ public class SimulationHandler {
 	private static HashMap<Passenger, Integer> accessPending = new HashMap<Passenger, Integer>();
 	private static StopWatch anotherStopwatch = new StopWatch();
 	private Vector dimensions;
-	private static long latestSpawnTime = 0;
 
 	public static final boolean DEVELOPER_MODE = false;
 
@@ -56,8 +56,6 @@ public class SimulationHandler {
 	private static ProgressHandler progress;
 	private static int progressValue = 0;
 	private static int percent = 0;
-
-	// private static int grantedCounter = 0;
 
 	/**
 	 * This method constructs the RunAStar algorithm.
@@ -83,19 +81,16 @@ public class SimulationHandler {
 	}
 
 	public static void addToWaymakingList(Passenger pax) {
-		System.out.println(pax.getId() + " added.");
 		waymakingList.add(pax);
 	}
 
 	public static void removeFromWaymakingList(Passenger pax) {
-		System.out.println(pax.getId() + " removed.");
 		waymakingList.remove(pax);
 	}
 
 	public static boolean waymakingInRange(Passenger pax) {
 		for (Passenger pass : waymakingList) {
 			if (Math.abs(pass.getPositionY() - pax.getPositionY()) < 10) {
-				System.out.println("Positive!");
 				return true;
 			}
 		}
@@ -168,8 +163,6 @@ public class SimulationHandler {
 		accessPending.clear();
 		anotherStopwatch.reset();
 
-		// dimensions = null;
-		latestSpawnTime = 0;
 		frame = null;
 		progress = null;
 
@@ -361,11 +354,15 @@ public class SimulationHandler {
 			progressValue++;
 
 		}
+
 		/* ... then start the simulations simultaneously */
 		for (Agent agent : agentList) {
 			agent.start();
 			agent.setInitialized(true);
 		}
+
+		IssueScanner scanner = new IssueScanner();
+		scanner.start();
 
 		if (SHOW_AREAMAP_ANIMATION) {
 			runAreaMapWindow();
