@@ -139,6 +139,7 @@ public class DrawCabinCommand extends CDTCommand {
 
 		int seatCount = 1;
 		int seatInRowCount = 1;
+		int currentRow = 0;
 
 		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
 
@@ -147,30 +148,17 @@ public class DrawCabinCommand extends CDTCommand {
 			TravelClass tc = ModelHelper.getParent(TravelClass.class, seat);
 			Row row = ModelHelper.getParent(Row.class, seat);
 
-			// TravelClass tc = seat.getTravelClass();
+			if (row.getRowNumber() != currentRow) {
+				seatInRowCount = 1;
+				currentRow = row.getRowNumber();
+			}
 
 			seat.setTravelClass(tc);
 			seat.setRow(row);
-
-			String seatString = InputChecker.checkStructureString(tc
-					.getRowStructure());
-
-			int seatsPerRow = 0;
-
-			String[] rowParts = seatString.split("-");
-			for (String str : rowParts) {
-				seatsPerRow += Integer.parseInt(str);
-			}
-
 			seat.setName(seat.getRow().getRowNumber()
 					+ FuncLib.getCharForNumber(seatInRowCount));
-
 			seat.setXDimension(tc.getSeatWidth());
 			seat.setYDimension(tc.getSeatLength());
-
-			if (seatInRowCount == seatsPerRow) {
-				seatInRowCount = 0;
-			}
 
 			seatCount++;
 			seatInRowCount++;
