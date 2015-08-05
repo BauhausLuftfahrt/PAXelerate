@@ -8,8 +8,8 @@ package net.bhl.cdt.model.cabin.commands;
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.agent.AgentFunctions;
 import net.bhl.cdt.model.cabin.Cabin;
+import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
-
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Input;
@@ -128,11 +128,12 @@ public class SortPassengersCommand extends CDTCommand {
 
 		System.out.println("Sorting completed.");
 
-		double passengersPerMinute = 30;
-		int i = 0;
 		for (Passenger pax : cabin.getPassengers()) {
-			pax.setStartBoardingAfterDelay(i * 60 / passengersPerMinute);
-			i++;
+			pax.setStartBoardingAfterDelay(calculateDelay(pax));
+		}
+
+		for (Door door : cabin.getDoors()) {
+			door.getWaitingPassengers().clear();
 		}
 
 		IWorkbenchPage page = PlatformUI.getWorkbench()
@@ -148,5 +149,18 @@ public class SortPassengersCommand extends CDTCommand {
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
 					"No cabin view is visible!"));
 		}
+	}
+
+	private double calculateDelay(Passenger pax) {
+		double delay = 0;
+		double clocking = cabin.getSimulationSettings()
+				.getPassengersBoardingPerMinute();
+
+		pax.getDoor().getWaitingPassengers().add(pax);
+
+		delay = (pax.getDoor().getWaitingPassengers().size() - 1) * 60.0
+				/ (double) clocking;
+
+		return delay;
 	}
 }

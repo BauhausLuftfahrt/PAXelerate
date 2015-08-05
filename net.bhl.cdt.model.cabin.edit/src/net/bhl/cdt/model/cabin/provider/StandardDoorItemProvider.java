@@ -4,19 +4,15 @@ package net.bhl.cdt.model.cabin.provider;
 
 import java.util.Collection;
 import java.util.List;
-
-import net.bhl.cdt.model.cabin.MainDoor;
 import net.bhl.cdt.model.cabin.StandardDoor;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
- * This is the item provider adapter for a
- * {@link net.bhl.cdt.model.cabin.StandardDoor} object. <!-- begin-user-doc -->
+ * This is the item provider adapter for a {@link net.bhl.cdt.model.cabin.StandardDoor} object.
+ * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class StandardDoorItemProvider extends DoorItemProvider {
@@ -53,8 +49,7 @@ public class StandardDoorItemProvider extends DoorItemProvider {
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/StandardDoor"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/StandardDoor"));
 	}
 
 	/**
@@ -75,11 +70,10 @@ public class StandardDoorItemProvider extends DoorItemProvider {
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to
-	 * update any cached children and by creating a viewer notification, which
-	 * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

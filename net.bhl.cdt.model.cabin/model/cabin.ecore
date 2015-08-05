@@ -173,6 +173,8 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isActive" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="waitingPassengers" upperBound="-1"
+        eType="#//Passenger"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MainDoor" eSuperTypes="#//Door"/>
   <eClassifiers xsi:type="ecore:EClass" name="EmergencyExit" eSuperTypes="#//Door"/>

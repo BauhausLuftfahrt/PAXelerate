@@ -2,6 +2,7 @@
  */
 package net.bhl.cdt.model.cabin;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -18,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.Door#getId <em>Id</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Door#getNumberOfSimultaneousPassengers <em>Number Of Simultaneous Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Door#isIsActive <em>Is Active</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Door#getWaitingPassengers <em>Waiting Passengers</em>}</li>
  * </ul>
  * </p>
  *
@@ -182,5 +184,21 @@ public interface Door extends EObject {
 	 * @generated
 	 */
 	void setIsActive(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Waiting Passengers</b></em>' reference list.
+	 * The list contents are of type {@link net.bhl.cdt.model.cabin.Passenger}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Waiting Passengers</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Waiting Passengers</em>' reference list.
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getDoor_WaitingPassengers()
+	 * @model
+	 * @generated
+	 */
+	EList<Passenger> getWaitingPassengers();
 
 } // Door

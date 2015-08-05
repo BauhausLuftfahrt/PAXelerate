@@ -10,6 +10,8 @@ import java.util.HashMap;
 
 import javax.swing.JFrame;
 
+import org.eclipse.emf.common.util.EList;
+
 import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.agent.AgentFunctions;
 import net.bhl.cdt.model.cabin.Cabin;
@@ -250,31 +252,22 @@ public class SimulationHandler {
 
 	public synchronized static boolean CabinAccessGranted(Passenger pax) {
 
-		/* register the passengers who want to enter the cabin */
-		if (!accessPending.containsKey(pax)) {
-			accessPending.put(pax, (int) anotherStopwatch.getElapsedTime());
+		EList<Passenger> waitingList = pax.getDoor().getWaitingPassengers();
+
+		/* add the passenger to the waiting list of the specific door */
+		if (!waitingList.contains(pax)) {
+			pax.getDoor().getWaitingPassengers().add(pax);
 		}
 
-		// check if the requesting passenger is the longest waiting passenger.
-		if (FuncLib.lowestValueInHashMap(pax, accessPending)) {
-
-			// check if the neccessary time has passed.
-			if (Math.abs(accessPending.get(pax)
-					- anotherStopwatch.getElapsedTime()) > FuncLib
-					.transformTime(0.1)) {
-
-				// check if doorway is clear.
-				if (!AgentFunctions.doorwayBlocked(pax)) {
-
-					if (Math.abs(latestSpawnTime - System.currentTimeMillis()) > FuncLib
-							.transformTime(0.3)) {
-						accessPending.remove(pax);
-						latestSpawnTime = System.currentTimeMillis();
-						return true;
-					}
-				}
+		if (pax.getId() == waitingList.get(0).getId()) {
+			// check if doorway is clear.
+			if (!AgentFunctions.doorwayBlocked(pax)) {
+				waitingList.remove(pax);
+				return true;
 			}
 		}
+
+		// TODO: insert minimum delays between launches!
 		return false;
 	}
 

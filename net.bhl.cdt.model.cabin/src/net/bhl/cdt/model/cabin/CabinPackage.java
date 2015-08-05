@@ -2040,13 +2040,22 @@ public interface CabinPackage extends EPackage {
 	int DOOR__IS_ACTIVE = 5;
 
 	/**
+	 * The feature id for the '<em><b>Waiting Passengers</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOOR__WAITING_PASSENGERS = 6;
+
+	/**
 	 * The number of structural features of the '<em>Door</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOOR_FEATURE_COUNT = 6;
+	int DOOR_FEATURE_COUNT = 7;
 
 	/**
 	 * The number of operations of the '<em>Door</em>' class.
@@ -2120,6 +2129,15 @@ public interface CabinPackage extends EPackage {
 	 * @ordered
 	 */
 	int MAIN_DOOR__IS_ACTIVE = DOOR__IS_ACTIVE;
+
+	/**
+	 * The feature id for the '<em><b>Waiting Passengers</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAIN_DOOR__WAITING_PASSENGERS = DOOR__WAITING_PASSENGERS;
 
 	/**
 	 * The number of structural features of the '<em>Main Door</em>' class.
@@ -2204,6 +2222,15 @@ public interface CabinPackage extends EPackage {
 	int EMERGENCY_EXIT__IS_ACTIVE = DOOR__IS_ACTIVE;
 
 	/**
+	 * The feature id for the '<em><b>Waiting Passengers</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMERGENCY_EXIT__WAITING_PASSENGERS = DOOR__WAITING_PASSENGERS;
+
+	/**
 	 * The number of structural features of the '<em>Emergency Exit</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2284,6 +2311,15 @@ public interface CabinPackage extends EPackage {
 	 * @ordered
 	 */
 	int STANDARD_DOOR__IS_ACTIVE = DOOR__IS_ACTIVE;
+
+	/**
+	 * The feature id for the '<em><b>Waiting Passengers</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STANDARD_DOOR__WAITING_PASSENGERS = DOOR__WAITING_PASSENGERS;
 
 	/**
 	 * The number of structural features of the '<em>Standard Door</em>' class.
@@ -3222,6 +3258,17 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDoor_IsActive();
+
+	/**
+	 * Returns the meta object for the reference list '{@link net.bhl.cdt.model.cabin.Door#getWaitingPassengers <em>Waiting Passengers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Waiting Passengers</em>'.
+	 * @see net.bhl.cdt.model.cabin.Door#getWaitingPassengers()
+	 * @see #getDoor()
+	 * @generated
+	 */
+	EReference getDoor_WaitingPassengers();
 
 	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.Seat <em>Seat</em>}'.
@@ -4627,6 +4674,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DOOR__IS_ACTIVE = eINSTANCE.getDoor_IsActive();
+		/**
+		 * The meta object literal for the '<em><b>Waiting Passengers</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOOR__WAITING_PASSENGERS = eINSTANCE.getDoor_WaitingPassengers();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.SeatImpl <em>Seat</em>}' class.
 		 * <!-- begin-user-doc -->

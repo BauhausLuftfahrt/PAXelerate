@@ -2,12 +2,16 @@
  */
 package net.bhl.cdt.model.cabin.impl;
 
+import java.util.Collection;
 import net.bhl.cdt.model.cabin.CabinPackage;
 import net.bhl.cdt.model.cabin.Door;
+import net.bhl.cdt.model.cabin.Passenger;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,6 +26,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.DoorImpl#getId <em>Id</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.DoorImpl#getNumberOfSimultaneousPassengers <em>Number Of Simultaneous Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.DoorImpl#isIsActive <em>Is Active</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.DoorImpl#getWaitingPassengers <em>Waiting Passengers</em>}</li>
  * </ul>
  * </p>
  *
@@ -147,6 +152,16 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	 * @ordered
 	 */
 	protected boolean isActive = IS_ACTIVE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getWaitingPassengers() <em>Waiting Passengers</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWaitingPassengers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Passenger> waitingPassengers;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -298,6 +313,18 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Passenger> getWaitingPassengers() {
+		if (waitingPassengers == null) {
+			waitingPassengers = new EObjectResolvingEList<Passenger>(Passenger.class, this, CabinPackage.DOOR__WAITING_PASSENGERS);
+		}
+		return waitingPassengers;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -313,6 +340,8 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 				return getNumberOfSimultaneousPassengers();
 			case CabinPackage.DOOR__IS_ACTIVE:
 				return isIsActive();
+			case CabinPackage.DOOR__WAITING_PASSENGERS:
+				return getWaitingPassengers();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -322,6 +351,7 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -342,6 +372,10 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 				return;
 			case CabinPackage.DOOR__IS_ACTIVE:
 				setIsActive((Boolean)newValue);
+				return;
+			case CabinPackage.DOOR__WAITING_PASSENGERS:
+				getWaitingPassengers().clear();
+				getWaitingPassengers().addAll((Collection<? extends Passenger>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -373,6 +407,9 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 			case CabinPackage.DOOR__IS_ACTIVE:
 				setIsActive(IS_ACTIVE_EDEFAULT);
 				return;
+			case CabinPackage.DOOR__WAITING_PASSENGERS:
+				getWaitingPassengers().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -397,6 +434,8 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 				return numberOfSimultaneousPassengers != NUMBER_OF_SIMULTANEOUS_PASSENGERS_EDEFAULT;
 			case CabinPackage.DOOR__IS_ACTIVE:
 				return isActive != IS_ACTIVE_EDEFAULT;
+			case CabinPackage.DOOR__WAITING_PASSENGERS:
+				return waitingPassengers != null && !waitingPassengers.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

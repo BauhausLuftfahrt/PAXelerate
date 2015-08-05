@@ -8,14 +8,12 @@ package net.bhl.cdt.model.cabin.util;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.awt.Window;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 

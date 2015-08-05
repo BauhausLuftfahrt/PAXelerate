@@ -66,6 +66,7 @@ public class DoorItemProvider
 			addIdPropertyDescriptor(object);
 			addNumberOfSimultaneousPassengersPropertyDescriptor(object);
 			addIsActivePropertyDescriptor(object);
+			addWaitingPassengersPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -198,6 +199,28 @@ public class DoorItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Waiting Passengers feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addWaitingPassengersPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Door_waitingPassengers_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Door_waitingPassengers_feature", "_UI_Door_type"),
+				 CabinPackage.Literals.DOOR__WAITING_PASSENGERS,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

@@ -13,10 +13,9 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
- * This is the item provider adapter for a
- * {@link net.bhl.cdt.model.cabin.MainDoor} object. <!-- begin-user-doc --> <!--
+ * This is the item provider adapter for a {@link net.bhl.cdt.model.cabin.MainDoor} object.
+ * <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
  * @generated
  */
 public class MainDoorItemProvider extends DoorItemProvider {
@@ -46,14 +45,13 @@ public class MainDoorItemProvider extends DoorItemProvider {
 	}
 
 	/**
-	 * This returns MainDoor.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * This returns MainDoor.gif.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/MainDoor"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/MainDoor"));
 	}
 
 	/**
@@ -74,11 +72,10 @@ public class MainDoorItemProvider extends DoorItemProvider {
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to
-	 * update any cached children and by creating a viewer notification, which
-	 * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
