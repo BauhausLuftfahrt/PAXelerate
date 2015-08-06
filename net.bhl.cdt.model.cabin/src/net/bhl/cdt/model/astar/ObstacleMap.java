@@ -58,6 +58,7 @@ public class ObstacleMap {
 				(int) (cabin.getCabinLength() / cabin.getScale()));
 		obstacleMap = createObstacleMap();
 		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
+		printObstacleMap();
 	}
 
 	/**
@@ -200,28 +201,25 @@ public class ObstacleMap {
 		int entryMax = 0;
 
 		/*
-		 * x: begin and end; y: begin and end;
-		 */
-
-		/*
 		 * Create the door path
 		 */
-		Door mainDoor = ModelHelper.getChildrenByClass(cabin, MainDoor.class)
-				.get(0);
-		entryMin = (int) (mainDoor.getYPosition() / cabin.getScale()) + 2;
-		entryMax = (int) ((mainDoor.getYPosition() + mainDoor.getWidth()) / cabin
-				.getScale()) - 2;
 
-		for (int i = 0; i < dimensions.getX(); i++) {
-			for (int j = 0; j < dimensions.getY(); j++) {
-				if (obstacleMap[i][j] != MAX_VALUE) {
-					if (j > entryMin && j < entryMax) {
-						obstacleMap[i][j] = HOLE_VALUE;
-					}
+		for (Door door : cabin.getDoors()) {
+			entryMin = (int) (door.getYPosition() / cabin.getScale()) + 2;
+			entryMax = (int) ((door.getYPosition() + door.getWidth()) / cabin
+					.getScale()) - 2;
 
-					// TODO: clear out the aisles and set them to HOLE_VALUE
-					if (i < 19 && i > 16) {
-						obstacleMap[i][j] = HOLE_VALUE;
+			for (int i = 0; i < dimensions.getX(); i++) {
+				for (int j = 0; j < dimensions.getY(); j++) {
+					if (obstacleMap[i][j] != MAX_VALUE) {
+						if (j > entryMin && j < entryMax) {
+							obstacleMap[i][j] = HOLE_VALUE;
+						}
+
+						// TODO: clear out the aisles and set them to HOLE_VALUE
+						if (i < 19 && i > 16) {
+							obstacleMap[i][j] = HOLE_VALUE;
+						}
 					}
 				}
 			}

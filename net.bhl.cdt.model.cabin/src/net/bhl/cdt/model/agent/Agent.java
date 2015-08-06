@@ -212,10 +212,14 @@ public class Agent extends Subject implements Runnable {
 		 * seat
 		 */
 		return (hasLuggage() && isInYRange(seat.getYPosition(),
-				PIXELS_FOR_LUGGAGE));
+				PIXELS_FOR_LUGGAGE, false));
 	}
 
-	private boolean isInYRange(int position, int range) {
+	private boolean isInYRange(int position, int range, boolean print) {
+		// if (print) {
+		// System.out.println("pos: " + position / scale + ", range: " + range
+		// + ", my:" + desiredPosition.getY());
+		// }
 		if ((int) Math.abs(desiredPosition.getY() - position / scale) == range) {
 			return true;
 		}
@@ -610,6 +614,7 @@ public class Agent extends Subject implements Runnable {
 					 * if there is no obstacle or luggage stowing required, run
 					 * the default step
 					 */
+
 				} else if (waitingForClearingOfRow() && !waitingCompleted) {
 
 					setCurrentState(State.WAITING_FOR_ROW_CLEARING);
@@ -621,21 +626,32 @@ public class Agent extends Subject implements Runnable {
 						Thread.sleep(10);
 					}
 
-					for (Passenger pax : otherPassengersInRowBlockingMe) {
-
-						SimulationHandler.launchWaymakingAgent(pax,
-								this.passenger);
-
+					if (anyoneNearMe()) {
+						System.out
+								.println("waymaking skipped. Delay simulated!");
+						Thread.sleep(FuncLib.transformTime(5));
+						waitingCompleted = true;
+						continue;
 					}
 
-					while (!otherPassengerStoodUp()) {
-						Thread.sleep(10);
+					if (!waitingCompleted) {
+
+						for (Passenger pax : otherPassengersInRowBlockingMe) {
+
+							SimulationHandler.launchWaymakingAgent(pax,
+									this.passenger);
+
+						}
+
+						while (!otherPassengerStoodUp()) {
+							Thread.sleep(10);
+						}
+
+						// TODO: calculate the waiting time!
+						Thread.sleep(FuncLib.transformTime(3));
+
+						waitingCompleted = true;
 					}
-
-					// TODO: calculate the waiting time!
-					Thread.sleep(FuncLib.transformTime(3));
-
-					waitingCompleted = true;
 
 				} else {
 
@@ -687,6 +703,19 @@ public class Agent extends Subject implements Runnable {
 		}
 	}
 
+	private boolean anyoneNearMe() {
+		for (Passenger pax : SimulationHandler.getCabin().getPassengers()) {
+			if (!pax.isIsSeated()) {
+				if (isInYRange(
+						(int) (SimulationHandler.getAgentByPassenger(pax)
+								.getCurrentPosition().getY() * scale), 10, true)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 	private boolean waymakingAllowed() {
 		if (SimulationHandler.waymakingInRange(passenger)) {
 			waycounter++;
@@ -701,7 +730,8 @@ public class Agent extends Subject implements Runnable {
 
 	private boolean waitingForClearingOfRow() {
 
-		if (isInYRange(passenger.getSeatRef().getYPosition(), PIXELS_FOR_WAY)) {
+		if (isInYRange(passenger.getSeatRef().getYPosition(), PIXELS_FOR_WAY,
+				false)) {
 			if (AgentFunctions.someoneAlreadyInThisPartOfTheRow(this)) {
 				return true;
 			}
