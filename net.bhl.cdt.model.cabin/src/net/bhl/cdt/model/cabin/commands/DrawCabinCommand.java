@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
+import net.bhl.cdt.model.cabin.EconomyClass;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PhysicalObject;
 import net.bhl.cdt.model.cabin.Row;
@@ -84,6 +85,8 @@ public class DrawCabinCommand extends CDTCommand {
 		checkPassengerAssignments();
 		checkForConstructionErrors();
 
+		updateTravelClassProperties();
+
 		for (String str : errorStrings) {
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin", str));
 		}
@@ -103,6 +106,13 @@ public class DrawCabinCommand extends CDTCommand {
 		for (TravelClass tc : cabin.getClasses()) {
 			tc.setSequence(i);
 			i++;
+		}
+	}
+
+	private void updateTravelClassProperties() {
+		for (TravelClass tc : cabin.getClasses()) {
+			int number = ModelHelper.getChildrenByClass(tc, Seat.class).size();
+			tc.setAvailableSeats(number);
 		}
 	}
 
