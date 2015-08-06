@@ -40,12 +40,14 @@ public class SimulationHandler {
 	private static ArrayList<Passenger> activeList = new ArrayList<Passenger>();
 	private static ArrayList<Passenger> waymakingList = new ArrayList<Passenger>();
 
+	private static HashMap<Door, Double> lastDoorRelease = new HashMap<Door, Double>();
+
 	private Logger console = new Logger();
 	private static AreaMap areamap;
 	private static CostMap costmap;
 	private static ArrayList<Agent> agentList = new ArrayList<Agent>();
 	private static HashMap<Passenger, Integer> accessPending = new HashMap<Passenger, Integer>();
-	private static StopWatch anotherStopwatch = new StopWatch();
+	private static StopWatch watch = new StopWatch();
 	private Vector dimensions;
 
 	public static final boolean DEVELOPER_MODE = false;
@@ -161,7 +163,7 @@ public class SimulationHandler {
 		costmap = null;
 		agentList.clear();
 		accessPending.clear();
-		anotherStopwatch.reset();
+		watch.reset();
 
 		frame = null;
 		progress = null;
@@ -253,14 +255,36 @@ public class SimulationHandler {
 		}
 
 		if (pax.getId() == waitingList.get(0).getId()) {
-			// check if doorway is clear.
+
+			/* check if doorway is clear. */
 			if (!AgentFunctions.doorwayBlocked(pax)) {
-				waitingList.remove(pax);
-				return true;
+
+				/* check if time has passed since releasing last one */
+				if (enoughTimePassed(pax)) {
+					waitingList.remove(pax);
+					return true;
+				}
 			}
 		}
 
 		// TODO: insert minimum delays between launches!
+		return false;
+	}
+
+	private static boolean enoughTimePassed(Passenger pax) {
+		Door door = pax.getDoor();
+		if (!lastDoorRelease.containsKey(door)) {
+			lastDoorRelease.put(door, 0.0);
+			return true;
+		}
+
+		// TODO: Do not use a static time stamp but consider the simulation
+		// speed!
+		double time = watch.getElapsedTimeTens();
+		if (Math.abs(lastDoorRelease.get(door) - time) > 0.3) {
+			lastDoorRelease.put(door, time);
+			return true;
+		}
 		return false;
 	}
 
@@ -288,7 +312,7 @@ public class SimulationHandler {
 	 * This method executes the path finding simulation of the agents.
 	 */
 	public void run() {
-		anotherStopwatch.start();
+		watch.start();
 		costmap = null;
 		Boolean doItOnce = true;
 
@@ -361,8 +385,8 @@ public class SimulationHandler {
 			agent.setInitialized(true);
 		}
 
-		IssueScanner scanner = new IssueScanner();
-		scanner.start();
+		// IssueScanner scanner = new IssueScanner();
+		// scanner.start();
 
 		if (SHOW_AREAMAP_ANIMATION) {
 			runAreaMapWindow();

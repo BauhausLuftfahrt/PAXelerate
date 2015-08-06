@@ -69,6 +69,8 @@ public class Agent extends Subject implements Runnable {
 	private final int scale;
 	private final AgentMode mode;
 
+	private boolean movedOnce = false;
+
 	private State currentState;
 
 	private int waycounter = 0;
@@ -189,6 +191,10 @@ public class Agent extends Subject implements Runnable {
 
 	public Vector getGoal() {
 		return goal;
+	}
+
+	public boolean didMoveOnce() {
+		return movedOnce;
 	}
 
 	/**
@@ -546,6 +552,11 @@ public class Agent extends Subject implements Runnable {
 
 					/* the current position is the last taken step in the path */
 					currentPosition = path.get(i - 1).getPosition();
+
+				}
+
+				if (i == 2) {
+					movedOnce = true;
 				}
 
 				/* the new planned location is current step in the path */

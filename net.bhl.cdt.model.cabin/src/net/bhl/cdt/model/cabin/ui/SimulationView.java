@@ -220,24 +220,30 @@ public class SimulationView extends JPanel implements MouseListener {
 				Node node = areamap.getNodeByCoordinate(y, x);
 				g.setColor(Color.LIGHT_GRAY);
 				if (node.getTypeForPrinting() != null) {
-					if (node.getTypeForPrinting().equals("O")
-							|| node.getTypeForPrinting().equals(" ")) {
-						g.setColor(switchColor(SimulationHandler
-								.getAgentByPassenger(node.getPassenger())
-								.getCurrentState()));
-						g.setFont(new Font("Courier New", Font.PLAIN,
-								FONT_SIZE - 1));
-						if (!node.isHidden()) {
-							g.drawString("O", (x - pointZero) * FONT_SIZE, y
-									* FONT_SIZE);
+					try {
+						if (node.getTypeForPrinting().equals("O")
+								|| node.getTypeForPrinting().equals(" ")) {
+							g.setColor(switchColor(SimulationHandler
+									.getAgentByPassenger(node.getPassenger())
+									.getCurrentState()));
+							g.setFont(new Font("Courier New", Font.PLAIN,
+									FONT_SIZE - 1));
+							if (!node.isHidden()) {
+								g.drawString("O", (x - pointZero) * FONT_SIZE,
+										y * FONT_SIZE);
+							}
+						} else {
+							g.setColor(Color.LIGHT_GRAY);
+							g.setFont(new Font("Courier New", Font.PLAIN,
+									FONT_SIZE));
+							if (node.getTypeForPrinting() != null) {
+								g.drawString(node.getTypeForPrinting(),
+										(x - pointZero) * FONT_SIZE, y
+												* FONT_SIZE);
+							}
 						}
-					} else {
-						g.setColor(Color.LIGHT_GRAY);
-						g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE));
-						if (node.getTypeForPrinting() != null) {
-							g.drawString(node.getTypeForPrinting(),
-									(x - pointZero) * FONT_SIZE, y * FONT_SIZE);
-						}
+					} catch (NullPointerException e) {
+						// Should not happen!
 					}
 				}
 			}

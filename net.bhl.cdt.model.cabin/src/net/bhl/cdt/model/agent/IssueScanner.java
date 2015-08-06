@@ -2,6 +2,7 @@ package net.bhl.cdt.model.agent;
 
 import java.util.HashMap;
 
+import net.bhl.cdt.model.agent.Agent.State;
 import net.bhl.cdt.model.astar.SimulationHandler;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.util.StopWatch;
@@ -28,8 +29,15 @@ public class IssueScanner extends Subject implements Runnable {
 			try {
 				for (Passenger pax : SimulationHandler.getCabin()
 						.getPassengers()) {
-					checkMovement(pax);
+					Agent agent = (SimulationHandler.getAgentByPassenger(pax));
+					if (agent.getCurrentState() != State.QUEUEING_UP) {
+						if (agent.didMoveOnce()) {
+							checkMovement(pax);
+						}
+					}
 				}
+
+				System.out.println("~~~~~~~~~~~~~~~~~~~~");
 				updateMap();
 
 				Thread.sleep(200);
@@ -42,8 +50,9 @@ public class IssueScanner extends Subject implements Runnable {
 	private void checkMovement(Passenger pax) {
 		Vector3D data = positionTracker.get(pax.getId());
 		if (noMovementDetected(pax)) {
-			if (Math.abs(watch.getElapsedTime() - data.getZ()) > 5) {
-				System.out.println(pax.getId() + " NOT MOVING!");
+			if (Math.abs(watch.getElapsedTimeSecs() - data.getZ()) > 5) {
+				System.out.println(pax.getId() + " NOT MOVING! Time: "
+						+ data.getZ());
 			}
 		}
 	}
