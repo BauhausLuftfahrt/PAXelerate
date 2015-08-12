@@ -211,16 +211,27 @@ public class Agent extends Subject implements Runnable {
 		 * return true if the passenger does have luggage and if he is near his
 		 * seat
 		 */
-		return (hasLuggage() && isInYRange(seat.getYPosition(),
+		return (hasLuggage() && isInYRangeEqual(seat.getYPosition(),
 				PIXELS_FOR_LUGGAGE, false));
 	}
 
-	private boolean isInYRange(int position, int range, boolean print) {
+	private boolean isInYRangeEqual(int position, int range, boolean print) {
 		// if (print) {
 		// System.out.println("pos: " + position / scale + ", range: " + range
 		// + ", my:" + desiredPosition.getY());
 		// }
 		if ((int) Math.abs(desiredPosition.getY() - position / scale) == range) {
+			return true;
+		}
+		return false;
+	}
+
+	private boolean isInYRangeSmaller(int position, int range, boolean print) {
+		// if (print) {
+		// System.out.println("pos: " + position / scale + ", range: " + range
+		// + ", my:" + desiredPosition.getY());
+		// }
+		if ((int) Math.abs(desiredPosition.getY() - position / scale) < range) {
 			return true;
 		}
 		return false;
@@ -629,7 +640,7 @@ public class Agent extends Subject implements Runnable {
 					if (anyoneNearMe()) {
 						System.out
 								.println("waymaking skipped. Delay simulated!");
-						Thread.sleep(FuncLib.transformTime(5));
+						Thread.sleep(FuncLib.transformTime(7));
 						waitingCompleted = true;
 						continue;
 					}
@@ -706,10 +717,12 @@ public class Agent extends Subject implements Runnable {
 	private boolean anyoneNearMe() {
 		for (Passenger pax : SimulationHandler.getCabin().getPassengers()) {
 			if (!pax.isIsSeated()) {
-				if (isInYRange(
-						(int) (SimulationHandler.getAgentByPassenger(pax)
-								.getCurrentPosition().getY() * scale), 10, true)) {
-					return true;
+				if (pax.getId() != passenger.getId()) {
+					if (isInYRangeSmaller((int) (SimulationHandler
+							.getAgentByPassenger(pax).getCurrentPosition()
+							.getY() * scale), 10, true)) {
+						return true;
+					}
 				}
 			}
 		}
@@ -730,8 +743,8 @@ public class Agent extends Subject implements Runnable {
 
 	private boolean waitingForClearingOfRow() {
 
-		if (isInYRange(passenger.getSeatRef().getYPosition(), PIXELS_FOR_WAY,
-				false)) {
+		if (isInYRangeEqual(passenger.getSeatRef().getYPosition(),
+				PIXELS_FOR_WAY, false)) {
 			if (AgentFunctions.someoneAlreadyInThisPartOfTheRow(this)) {
 				return true;
 			}

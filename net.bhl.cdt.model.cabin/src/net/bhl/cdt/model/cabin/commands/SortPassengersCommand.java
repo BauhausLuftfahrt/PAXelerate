@@ -61,7 +61,7 @@ public class SortPassengersCommand extends CDTCommand {
 		if (showDialog) {
 			Input input = new Input(
 					WindowType.OPTIONS,
-					"Please choose a sorting algorithm. [0]: Random, [1]: R->F, [2]: F->R, [3]: Window to aisle & R->F, [4]: Window to aisle & F->R",
+					"Please choose a sorting algorithm. [0]: Random, [1]: RTF, [2]: FTR, [3]: WTA, [4]: WTA & RTF, [5]: WTA & FTR",
 					IMessageProvider.INFORMATION);
 
 			value = input.getIntegerValue();
@@ -107,6 +107,19 @@ public class SortPassengersCommand extends CDTCommand {
 			break;
 
 		case 3:
+			for (int j = 0; j < 3 * paxList.size(); j++) {
+				for (int i = 0; i < paxList.size() - 1; i++) {
+					Passenger thisPax = paxList.get(i);
+					Passenger otherPax = paxList.get(i + 1);
+					if (AgentFunctions.otherSeatCloserToAisle(
+							thisPax.getSeatRef(), otherPax.getSeatRef())) {
+						paxList.move(i, otherPax);
+					}
+				}
+			}
+			break;
+
+		case 4:
 			for (int j = 0; j < 3 * paxList.size(); j++) {
 				for (int i = 0; i < paxList.size() - 1; i++) {
 					Passenger thisPax = paxList.get(i);
