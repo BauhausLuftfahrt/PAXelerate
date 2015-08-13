@@ -102,6 +102,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return createPassengerMoodFromString(eDataType, initialValue);
 			case CabinPackage.LUGGAGE_SIZE:
 				return createLuggageSizeFromString(eDataType, initialValue);
+			case CabinPackage.SORTING_STYLE:
+				return createSortingStyleFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -125,6 +127,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return convertPassengerMoodToString(eDataType, instanceValue);
 			case CabinPackage.LUGGAGE_SIZE:
 				return convertLuggageSizeToString(eDataType, instanceValue);
+			case CabinPackage.SORTING_STYLE:
+				return convertSortingStyleToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -427,6 +431,26 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * @generated
 	 */
 	public String convertLuggageSizeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SortingStyle createSortingStyleFromString(EDataType eDataType, String initialValue) {
+		SortingStyle result = SortingStyle.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertSortingStyleToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

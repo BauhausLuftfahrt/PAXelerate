@@ -27,6 +27,7 @@ import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.Sex;
 import net.bhl.cdt.model.cabin.SimulationProperties;
 import net.bhl.cdt.model.cabin.SimulationResult;
+import net.bhl.cdt.model.cabin.SortingStyle;
 import net.bhl.cdt.model.cabin.Stairway;
 import net.bhl.cdt.model.cabin.StairwayDirection;
 import net.bhl.cdt.model.cabin.StandardDoor;
@@ -230,6 +231,13 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	private EEnum luggageSizeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum sortingStyleEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -820,6 +828,15 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getSeat_CurrentlyFolded() {
+		return (EAttribute)seatEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPassenger() {
 		return passengerEClass;
 	}
@@ -1207,7 +1224,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_PassengersBoardingPerMinute() {
+	public EAttribute getSimulationProperties_UseFoldableSeats() {
 		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -1216,7 +1233,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_PassengerWidthMeanMale() {
+	public EAttribute getSimulationProperties_BringYourOwnSeat() {
 		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -1225,7 +1242,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_PassengerWidthDeviationMale() {
+	public EAttribute getSimulationProperties_PassengersBoardingPerMinute() {
 		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -1234,7 +1251,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_PassengerWeightMeanMale() {
+	public EAttribute getSimulationProperties_PassengerWidthMeanMale() {
 		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -1243,7 +1260,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_PassengerWeightDeviationMale() {
+	public EAttribute getSimulationProperties_PassengerWidthDeviationMale() {
 		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -1252,7 +1269,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_PassengerHeightMeanMale() {
+	public EAttribute getSimulationProperties_PassengerWeightMeanMale() {
 		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -1261,7 +1278,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_PassengerHeightDeviationMale() {
+	public EAttribute getSimulationProperties_PassengerWeightDeviationMale() {
 		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -1270,7 +1287,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_PassengerDepthMeanMale() {
+	public EAttribute getSimulationProperties_PassengerHeightMeanMale() {
 		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -1279,7 +1296,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_PassengerDepthDeviationMale() {
+	public EAttribute getSimulationProperties_PassengerHeightDeviationMale() {
 		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -1288,7 +1305,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_PercentageOfWomen() {
+	public EAttribute getSimulationProperties_PassengerDepthMeanMale() {
 		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -1297,7 +1314,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_PassengerLuggageStowTimeMean() {
+	public EAttribute getSimulationProperties_PassengerDepthDeviationMale() {
 		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(13);
 	}
 
@@ -1306,7 +1323,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_PassengerLuggageStowTimeDeviation() {
+	public EAttribute getSimulationProperties_PercentageOfWomen() {
 		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(14);
 	}
 
@@ -1315,7 +1332,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_PassengerWidthMeanFemale() {
+	public EAttribute getSimulationProperties_PassengerLuggageStowTimeMean() {
 		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(15);
 	}
 
@@ -1324,7 +1341,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_PassengerWidthDeviationFemale() {
+	public EAttribute getSimulationProperties_PassengerLuggageStowTimeDeviation() {
 		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(16);
 	}
 
@@ -1333,7 +1350,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_PassengerWeightMeanFemale() {
+	public EAttribute getSimulationProperties_PassengerWidthMeanFemale() {
 		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(17);
 	}
 
@@ -1342,7 +1359,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_PassengerWeightDeviationFemale() {
+	public EAttribute getSimulationProperties_PassengerWidthDeviationFemale() {
 		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(18);
 	}
 
@@ -1351,7 +1368,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_PassengerHeightMeanFemale() {
+	public EAttribute getSimulationProperties_PassengerWeightMeanFemale() {
 		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(19);
 	}
 
@@ -1360,7 +1377,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_PassengerHeightDeviationFemale() {
+	public EAttribute getSimulationProperties_PassengerWeightDeviationFemale() {
 		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(20);
 	}
 
@@ -1369,7 +1386,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_PassengerDepthMeanFemale() {
+	public EAttribute getSimulationProperties_PassengerHeightMeanFemale() {
 		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(21);
 	}
 
@@ -1378,7 +1395,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_PassengerDepthDeviationFemale() {
+	public EAttribute getSimulationProperties_PassengerHeightDeviationFemale() {
 		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(22);
 	}
 
@@ -1387,8 +1404,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSimulationProperties_Results() {
-		return (EReference)simulationPropertiesEClass.getEStructuralFeatures().get(23);
+	public EAttribute getSimulationProperties_PassengerDepthMeanFemale() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(23);
 	}
 
 	/**
@@ -1396,7 +1413,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_PercentageOfPassengersWithNoLuggage() {
+	public EAttribute getSimulationProperties_PassengerDepthDeviationFemale() {
 		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(24);
 	}
 
@@ -1405,8 +1422,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_PercentageOfPassengersWithSmallLuggage() {
-		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(25);
+	public EReference getSimulationProperties_Results() {
+		return (EReference)simulationPropertiesEClass.getEStructuralFeatures().get(25);
 	}
 
 	/**
@@ -1414,7 +1431,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_PercentageOfPassengersWithMediumLuggage() {
+	public EAttribute getSimulationProperties_PercentageOfPassengersWithNoLuggage() {
 		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(26);
 	}
 
@@ -1423,8 +1440,44 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_PercentageOfPassengersWithBigLuggage() {
+	public EAttribute getSimulationProperties_PercentageOfPassengersWithSmallLuggage() {
 		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(27);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PercentageOfPassengersWithMediumLuggage() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(28);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PercentageOfPassengersWithBigLuggage() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(29);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_Sorting() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(30);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_SimulationSpeedFactor() {
+		return (EAttribute)simulationPropertiesEClass.getEStructuralFeatures().get(31);
 	}
 
 	/**
@@ -1603,6 +1656,15 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getSortingStyle() {
+		return sortingStyleEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getSex() {
 		return sexEEnum;
 	}
@@ -1690,6 +1752,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEReference(seatEClass, SEAT__ROW);
 		createEAttribute(seatEClass, SEAT__OCCUPIED);
 		createEReference(seatEClass, SEAT__PASSENGER);
+		createEAttribute(seatEClass, SEAT__CURRENTLY_FOLDED);
 
 		passengerEClass = createEClass(PASSENGER);
 		createEAttribute(passengerEClass, PASSENGER__ID);
@@ -1762,6 +1825,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI);
 		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS);
 		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__USE_FOLDABLE_SEATS);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT);
 		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE);
 		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_MALE);
 		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_MALE);
@@ -1787,6 +1852,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE);
 		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE);
 		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__SORTING);
+		createEAttribute(simulationPropertiesEClass, SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR);
 
 		simulationResultEClass = createEClass(SIMULATION_RESULT);
 		createEAttribute(simulationResultEClass, SIMULATION_RESULT__BOARDING_TIME);
@@ -1802,6 +1869,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		aircraftTypeEEnum = createEEnum(AIRCRAFT_TYPE);
 		passengerMoodEEnum = createEEnum(PASSENGER_MOOD);
 		luggageSizeEEnum = createEEnum(LUGGAGE_SIZE);
+		sortingStyleEEnum = createEEnum(SORTING_STYLE);
 	}
 
 	/**
@@ -1870,7 +1938,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEAttribute(getCabin_Scale(), ecorePackage.getEInt(), "scale", "10", 0, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCabin_AircraftType(), this.getAircraftType(), "aircraftType", null, 0, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCabin_UsePresetSettings(), ecorePackage.getEBoolean(), "usePresetSettings", "false", 0, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCabin_SpeedFactor(), ecorePackage.getEInt(), "speedFactor", "1", 0, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCabin_SpeedFactor(), ecorePackage.getEInt(), "speedFactor", null, 0, 1, Cabin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(rowEClass, Row.class, "Row", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRow_Seats(), this.getSeat(), null, "seats", null, 1, -1, Row.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1922,6 +1990,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEReference(getSeat_Row(), this.getRow(), null, "row", null, 1, 1, Seat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSeat_Occupied(), ecorePackage.getEBoolean(), "occupied", null, 0, 1, Seat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSeat_Passenger(), this.getPassenger(), null, "passenger", null, 0, 1, Seat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSeat_CurrentlyFolded(), ecorePackage.getEBoolean(), "currentlyFolded", "false", 0, 1, Seat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(passengerEClass, Passenger.class, "Passenger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPassenger_Id(), ecorePackage.getEInt(), "id", null, 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2002,6 +2071,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEAttribute(getSimulationProperties_SimulateWithoutUI(), ecorePackage.getEBoolean(), "simulateWithoutUI", "false", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimulationProperties_NumberOfSimulationLoops(), ecorePackage.getEInt(), "numberOfSimulationLoops", "1", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimulationProperties_RandomSortBetweenLoops(), ecorePackage.getEBoolean(), "randomSortBetweenLoops", "true", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_UseFoldableSeats(), ecorePackage.getEBoolean(), "useFoldableSeats", "false", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_BringYourOwnSeat(), ecorePackage.getEBoolean(), "bringYourOwnSeat", "false", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimulationProperties_PassengersBoardingPerMinute(), ecorePackage.getEDouble(), "passengersBoardingPerMinute", "18", 1, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimulationProperties_PassengerWidthMeanMale(), ecorePackage.getEDouble(), "passengerWidthMeanMale", "47", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimulationProperties_PassengerWidthDeviationMale(), ecorePackage.getEDouble(), "passengerWidthDeviationMale", "2.8", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2027,6 +2098,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEAttribute(getSimulationProperties_PercentageOfPassengersWithSmallLuggage(), ecorePackage.getEDouble(), "percentageOfPassengersWithSmallLuggage", null, 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimulationProperties_PercentageOfPassengersWithMediumLuggage(), ecorePackage.getEDouble(), "percentageOfPassengersWithMediumLuggage", null, 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimulationProperties_PercentageOfPassengersWithBigLuggage(), ecorePackage.getEDouble(), "percentageOfPassengersWithBigLuggage", null, 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_Sorting(), this.getSortingStyle(), "sorting", null, 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationProperties_SimulationSpeedFactor(), ecorePackage.getEInt(), "simulationSpeedFactor", "10", 0, 1, SimulationProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(simulationResultEClass, SimulationResult.class, "SimulationResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSimulationResult_BoardingTime(), ecorePackage.getEDouble(), "boardingTime", null, 0, 1, SimulationResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2059,6 +2132,11 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		addEEnumLiteral(luggageSizeEEnum, LuggageSize.MEDIUM);
 		addEEnumLiteral(luggageSizeEEnum, LuggageSize.BIG);
 		addEEnumLiteral(luggageSizeEEnum, LuggageSize.NONE);
+
+		initEEnum(sortingStyleEEnum, SortingStyle.class, "SortingStyle");
+		addEEnumLiteral(sortingStyleEEnum, SortingStyle.RANDOM);
+		addEEnumLiteral(sortingStyleEEnum, SortingStyle.WINDOW_TO_AISLE);
+		addEEnumLiteral(sortingStyleEEnum, SortingStyle.REAR_TO_FRONT);
 
 		// Create resource
 		createResource(eNS_URI);

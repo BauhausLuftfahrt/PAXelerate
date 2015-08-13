@@ -99,6 +99,22 @@ public class SimulateBoardingCommand extends CDTCommand {
 				sort.setPropertiesManually(false, 0);
 				sort.doRun();
 				cabin = sort.returnCabin();
+
+				SortPassengersCommand sort2 = new SortPassengersCommand(cabin);
+				int value = 0;
+				switch (cabin.getSimulationSettings().getSorting()) {
+				case RANDOM:
+					value = 0;
+				case WINDOW_TO_AISLE:
+					value = 3;
+				case REAR_TO_FRONT:
+					value = 1;
+				}
+				if (value != 0) {
+					sort2.setPropertiesManually(false, value);
+					sort2.doRun();
+					cabin = sort2.returnCabin();
+				}
 			}
 
 			// reset simulation in case of previous existing objects.
@@ -145,30 +161,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 						if (pax.isIsSeated()
 								&& !alreadySeatedList.contains(pax)) {
 							alreadySeatedList.add(pax);
-							// try {
-							// infoViewPart.update(cabin);
-							// } catch (NullPointerException e) {
-							// logger.log(new Status(IStatus.ERROR,
-							// "net.bhl.cdt.model.cabin",
-							// "Info view is not visible."));
-							// }
 						}
 					}
-					// try {
-					// cabinViewPart.submitPassengerCoordinates(handler
-					// .getPassengerLocations());
-					// } catch (NullPointerException e) {
-					// logger.log(new Status(IStatus.ERROR,
-					// "net.bhl.cdt.model.cabin",
-					// "cabin view is not visible."));
-					// }
-					// Thread.sleep((int) (1000 / cabin.getFramesPerSecond()));
-					// } catch (InterruptedException e) {
-					// logger.log(new Status(IStatus.ERROR,
-					// "net.bhl.cdt.model.cabin",
-					// "An error occured during simulation."));
-					// e.printStackTrace();
-					// }
 				}
 				if (SimulationHandler.isSimulationDone()) {
 					for (Passenger pax : ModelHelper.getChildrenByClass(
@@ -217,9 +211,10 @@ public class SimulateBoardingCommand extends CDTCommand {
 			results.getSimulationData(
 					SimulationHandler.getCabin(),
 					i + 1,
-					FuncLib.round((SimulationView.getWatch()
-							.getElapsedTimeSecs() * (double) cabin
-							.getSpeedFactor()), 2));
+					FuncLib.round(
+							(SimulationView.getWatch().getElapsedTimeSecs() * (double) cabin
+									.getSimulationSettings()
+									.getSimulationSpeedFactor()), 2));
 		}
 		results.printSimulationData();
 		cabinViewPart.clearCache();

@@ -53,7 +53,7 @@ public class GenerateCabinCommand extends CDTCommand {
 	public GenerateCabinCommand(Cabin cabin) {
 		this.cabin = cabin;
 		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
-		cabin.setSpeedFactor(1);
+		cabin.getSimulationSettings().setSimulationSpeedFactor(1);
 		if (cabin.isUsePresetSettings()) {
 			switch (cabin.getAircraftType()) {
 			case REGIONAL:

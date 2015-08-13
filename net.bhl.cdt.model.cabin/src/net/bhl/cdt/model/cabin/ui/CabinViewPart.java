@@ -107,7 +107,7 @@ public class CabinViewPart extends ViewPart implements Runnable,
 	private Adapter cabinAdapter;
 	private ImageLoader loader;
 	private static Image img;
-	private static final String FOLDER_NAME = "paxcelerate";
+	private static final String FOLDER_NAME = "paxelerate";
 	private static final String FILE_PATH = System.getProperty("user.home")
 			+ "/Documents/" + FOLDER_NAME + "/";
 	private static Thread thread = null;

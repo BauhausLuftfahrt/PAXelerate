@@ -285,15 +285,17 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	protected boolean usePresetSettings = USE_PRESET_SETTINGS_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getSpeedFactor() <em>Speed Factor</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getSpeedFactor()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SPEED_FACTOR_EDEFAULT = 1;
+	protected static final int SPEED_FACTOR_EDEFAULT = 0;
 	/**
 	 * The cached value of the '{@link #getSpeedFactor() <em>Speed Factor</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getSpeedFactor()
 	 * @generated
 	 * @ordered
@@ -527,7 +529,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getSpeedFactor() {
@@ -535,7 +538,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setSpeedFactor(int newSpeedFactor) {

@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#isSimulateWithoutUI <em>Simulate Without UI</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#getNumberOfSimulationLoops <em>Number Of Simulation Loops</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#isRandomSortBetweenLoops <em>Random Sort Between Loops</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#isUseFoldableSeats <em>Use Foldable Seats</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#isBringYourOwnSeat <em>Bring Your Own Seat</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerWidthMeanMale <em>Passenger Width Mean Male</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengerWidthDeviationMale <em>Passenger Width Deviation Male</em>}</li>
@@ -41,6 +43,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#getPercentageOfPassengersWithSmallLuggage <em>Percentage Of Passengers With Small Luggage</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#getPercentageOfPassengersWithMediumLuggage <em>Percentage Of Passengers With Medium Luggage</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#getPercentageOfPassengersWithBigLuggage <em>Percentage Of Passengers With Big Luggage</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#getSorting <em>Sorting</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.SimulationProperties#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}</li>
  * </ul>
  * </p>
  *
@@ -129,6 +133,60 @@ public interface SimulationProperties extends EObject {
 	 * @generated
 	 */
 	void setRandomSortBetweenLoops(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Use Foldable Seats</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Use Foldable Seats</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Use Foldable Seats</em>' attribute.
+	 * @see #setUseFoldableSeats(boolean)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSimulationProperties_UseFoldableSeats()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isUseFoldableSeats();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.SimulationProperties#isUseFoldableSeats <em>Use Foldable Seats</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Use Foldable Seats</em>' attribute.
+	 * @see #isUseFoldableSeats()
+	 * @generated
+	 */
+	void setUseFoldableSeats(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Bring Your Own Seat</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Bring Your Own Seat</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Bring Your Own Seat</em>' attribute.
+	 * @see #setBringYourOwnSeat(boolean)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSimulationProperties_BringYourOwnSeat()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isBringYourOwnSeat();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.SimulationProperties#isBringYourOwnSeat <em>Bring Your Own Seat</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Bring Your Own Seat</em>' attribute.
+	 * @see #isBringYourOwnSeat()
+	 * @generated
+	 */
+	void setBringYourOwnSeat(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Passengers Boarding Per Minute</b></em>' attribute.
@@ -789,5 +847,61 @@ public interface SimulationProperties extends EObject {
 	 * @generated
 	 */
 	void setPercentageOfPassengersWithBigLuggage(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Sorting</b></em>' attribute.
+	 * The literals are from the enumeration {@link net.bhl.cdt.model.cabin.SortingStyle}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Sorting</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Sorting</em>' attribute.
+	 * @see net.bhl.cdt.model.cabin.SortingStyle
+	 * @see #setSorting(SortingStyle)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSimulationProperties_Sorting()
+	 * @model
+	 * @generated
+	 */
+	SortingStyle getSorting();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.SimulationProperties#getSorting <em>Sorting</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Sorting</em>' attribute.
+	 * @see net.bhl.cdt.model.cabin.SortingStyle
+	 * @see #getSorting()
+	 * @generated
+	 */
+	void setSorting(SortingStyle value);
+
+	/**
+	 * Returns the value of the '<em><b>Simulation Speed Factor</b></em>' attribute.
+	 * The default value is <code>"10"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Simulation Speed Factor</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Simulation Speed Factor</em>' attribute.
+	 * @see #setSimulationSpeedFactor(int)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSimulationProperties_SimulationSpeedFactor()
+	 * @model default="10"
+	 * @generated
+	 */
+	int getSimulationSpeedFactor();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.SimulationProperties#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Simulation Speed Factor</em>' attribute.
+	 * @see #getSimulationSpeedFactor()
+	 * @generated
+	 */
+	void setSimulationSpeedFactor(int value);
 
 } // SimulationProperties

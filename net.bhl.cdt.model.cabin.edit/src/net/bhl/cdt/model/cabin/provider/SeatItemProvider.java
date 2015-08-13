@@ -50,6 +50,7 @@ public class SeatItemProvider
 			addRowPropertyDescriptor(object);
 			addOccupiedPropertyDescriptor(object);
 			addPassengerPropertyDescriptor(object);
+			addCurrentlyFoldedPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -209,6 +210,28 @@ public class SeatItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Currently Folded feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCurrentlyFoldedPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Seat_currentlyFolded_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Seat_currentlyFolded_feature", "_UI_Seat_type"),
+				 CabinPackage.Literals.SEAT__CURRENTLY_FOLDED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Seat.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -249,6 +272,7 @@ public class SeatItemProvider
 			case CabinPackage.SEAT__CREW_SEAT:
 			case CabinPackage.SEAT__LETTER:
 			case CabinPackage.SEAT__OCCUPIED:
+			case CabinPackage.SEAT__CURRENTLY_FOLDED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

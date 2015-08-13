@@ -19,6 +19,7 @@ package net.bhl.cdt.model.cabin;
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#getRow <em>Row</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#isOccupied <em>Occupied</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.Seat#getPassenger <em>Passenger</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.Seat#isCurrentlyFolded <em>Currently Folded</em>}</li>
  * </ul>
  * </p>
  *
@@ -208,5 +209,32 @@ public interface Seat extends PhysicalObject {
 	 * @generated
 	 */
 	void setPassenger(Passenger value);
+
+	/**
+	 * Returns the value of the '<em><b>Currently Folded</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Currently Folded</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Currently Folded</em>' attribute.
+	 * @see #setCurrentlyFolded(boolean)
+	 * @see net.bhl.cdt.model.cabin.CabinPackage#getSeat_CurrentlyFolded()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isCurrentlyFolded();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.model.cabin.Seat#isCurrentlyFolded <em>Currently Folded</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Currently Folded</em>' attribute.
+	 * @see #isCurrentlyFolded()
+	 * @generated
+	 */
+	void setCurrentlyFolded(boolean value);
 
 } // Seat

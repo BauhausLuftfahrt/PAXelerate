@@ -58,6 +58,8 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 			addSimulateWithoutUIPropertyDescriptor(object);
 			addNumberOfSimulationLoopsPropertyDescriptor(object);
 			addRandomSortBetweenLoopsPropertyDescriptor(object);
+			addUseFoldableSeatsPropertyDescriptor(object);
+			addBringYourOwnSeatPropertyDescriptor(object);
 			addPassengersBoardingPerMinutePropertyDescriptor(object);
 			addPassengerWidthMeanMalePropertyDescriptor(object);
 			addPassengerWidthDeviationMalePropertyDescriptor(object);
@@ -83,6 +85,8 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 			addPercentageOfPassengersWithSmallLuggagePropertyDescriptor(object);
 			addPercentageOfPassengersWithMediumLuggagePropertyDescriptor(object);
 			addPercentageOfPassengersWithBigLuggagePropertyDescriptor(object);
+			addSortingPropertyDescriptor(object);
+			addSimulationSpeedFactorPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -145,6 +149,50 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 				 getString("_UI_SimulationProperties_randomSortBetweenLoops_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_randomSortBetweenLoops_feature", "_UI_SimulationProperties_type"),
 				 CabinPackage.Literals.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Use Foldable Seats feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUseFoldableSeatsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_useFoldableSeats_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_useFoldableSeats_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__USE_FOLDABLE_SEATS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Bring Your Own Seat feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBringYourOwnSeatPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_bringYourOwnSeat_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_bringYourOwnSeat_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT,
 				 true,
 				 false,
 				 false,
@@ -696,6 +744,50 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	}
 
 	/**
+	 * This adds a property descriptor for the Sorting feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSortingPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_sorting_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_sorting_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__SORTING,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Simulation Speed Factor feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSimulationSpeedFactorPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_simulationSpeedFactor_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_simulationSpeedFactor_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns SimulationProperties.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -733,6 +825,8 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 			case CabinPackage.SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI:
 			case CabinPackage.SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS:
 			case CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS:
+			case CabinPackage.SIMULATION_PROPERTIES__USE_FOLDABLE_SEATS:
+			case CabinPackage.SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT:
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_MALE:
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_MALE:
@@ -757,6 +851,8 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE:
 			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE:
 			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE:
+			case CabinPackage.SIMULATION_PROPERTIES__SORTING:
+			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

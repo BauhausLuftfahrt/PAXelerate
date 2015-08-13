@@ -700,7 +700,8 @@ public class Agent extends Subject implements Runnable {
 
 					/* sleep as long as one step takes */
 					Thread.sleep((int) (1000 / SimulationHandler.getCabin()
-							.getSpeedFactor() / (passenger.getWalkingSpeed() * 100 / scale)));
+							.getSimulationSettings().getSimulationSpeedFactor() / (passenger
+							.getWalkingSpeed() * 100 / scale)));
 				}
 			}
 
@@ -816,7 +817,8 @@ public class Agent extends Subject implements Runnable {
 			/* the boarding time is then submitted back to the passenger */
 			passenger
 					.setBoardingTime((int) (stopwatch.getElapsedTimeSecs() * SimulationHandler
-							.getCabin().getSpeedFactor()));
+							.getCabin().getSimulationSettings()
+							.getSimulationSpeedFactor()));
 
 			/* the number of interrupts is submitted to the passenger */
 			passenger.setNumberOfWaits(numbOfInterupts);
@@ -824,6 +826,8 @@ public class Agent extends Subject implements Runnable {
 			/* clear the current position of the agent */
 			blockArea(currentPosition, false, false, null);
 			blockArea(desiredPosition, false, false, null);
+
+			unfoldSeat();
 
 			SimulationHandler.getMap().getNode(getGoal())
 					.setProperty(Property.DEFAULT, getPassenger());
@@ -833,6 +837,30 @@ public class Agent extends Subject implements Runnable {
 			return false;
 		}
 
+	}
+
+	private void unfoldSeat() {
+		Seat seat = passenger.getSeatRef();
+		seat.setCurrentlyFolded(false);
+
+		int physicalObjectWidth = (int) (seat.getXDimension() / scale);
+		int physicalObjectLength = (int) (seat.getYDimension() / scale);
+		int physicalObjectXPosition = (int) (seat.getXPosition() / scale);
+		int physicalObjectYDimension = (int) (seat.getYPosition() / scale);
+
+		for (int i = 0; i < physicalObjectWidth; i++) {
+			for (int j = 0; j < physicalObjectLength; j++) {
+				int k = physicalObjectXPosition + i;
+				int l = physicalObjectYDimension + j;
+				if (k < SimulationHandler.getMap().getDimensions().getX()
+						&& l < SimulationHandler.getMap().getDimensions()
+								.getY()) {
+					SimulationHandler.getMap().getNodeByCoordinate(k, l)
+							.setProperty(Property.OBSTACLE, null);
+				}
+			}
+
+		}
 	}
 
 	/**

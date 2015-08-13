@@ -1207,13 +1207,22 @@ public interface CabinPackage extends EPackage {
 	int SEAT__PASSENGER = PHYSICAL_OBJECT_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Currently Folded</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEAT__CURRENTLY_FOLDED = PHYSICAL_OBJECT_FEATURE_COUNT + 7;
+
+	/**
 	 * The number of structural features of the '<em>Seat</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEAT_FEATURE_COUNT = PHYSICAL_OBJECT_FEATURE_COUNT + 7;
+	int SEAT_FEATURE_COUNT = PHYSICAL_OBJECT_FEATURE_COUNT + 8;
 
 	/**
 	 * The operation id for the '<em>Out Of Bounds</em>' operation.
@@ -2377,13 +2386,31 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS = 2;
 
 	/**
+	 * The feature id for the '<em><b>Use Foldable Seats</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__USE_FOLDABLE_SEATS = 3;
+
+	/**
+	 * The feature id for the '<em><b>Bring Your Own Seat</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT = 4;
+
+	/**
 	 * The feature id for the '<em><b>Passengers Boarding Per Minute</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = 3;
+	int SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = 5;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Width Mean Male</b></em>' attribute.
@@ -2392,7 +2419,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_MALE = 4;
+	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_MALE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Width Deviation Male</b></em>' attribute.
@@ -2401,7 +2428,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_MALE = 5;
+	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_MALE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Weight Mean Male</b></em>' attribute.
@@ -2410,7 +2437,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_MEAN_MALE = 6;
+	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_MEAN_MALE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Weight Deviation Male</b></em>' attribute.
@@ -2419,7 +2446,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_MALE = 7;
+	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_MALE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Height Mean Male</b></em>' attribute.
@@ -2428,7 +2455,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_MEAN_MALE = 8;
+	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_MEAN_MALE = 10;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Height Deviation Male</b></em>' attribute.
@@ -2437,7 +2464,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_MALE = 9;
+	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_MALE = 11;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Depth Mean Male</b></em>' attribute.
@@ -2446,7 +2473,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_MALE = 10;
+	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_MALE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Depth Deviation Male</b></em>' attribute.
@@ -2455,7 +2482,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_MALE = 11;
+	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_MALE = 13;
 
 	/**
 	 * The feature id for the '<em><b>Percentage Of Women</b></em>' attribute.
@@ -2464,7 +2491,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PERCENTAGE_OF_WOMEN = 12;
+	int SIMULATION_PROPERTIES__PERCENTAGE_OF_WOMEN = 14;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Luggage Stow Time Mean</b></em>' attribute.
@@ -2473,7 +2500,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_MEAN = 13;
+	int SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_MEAN = 15;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Luggage Stow Time Deviation</b></em>' attribute.
@@ -2482,7 +2509,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_DEVIATION = 14;
+	int SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_DEVIATION = 16;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Width Mean Female</b></em>' attribute.
@@ -2491,7 +2518,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_FEMALE = 15;
+	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_FEMALE = 17;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Width Deviation Female</b></em>' attribute.
@@ -2500,7 +2527,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_FEMALE = 16;
+	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_FEMALE = 18;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Weight Mean Female</b></em>' attribute.
@@ -2509,7 +2536,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_MEAN_FEMALE = 17;
+	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_MEAN_FEMALE = 19;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Weight Deviation Female</b></em>' attribute.
@@ -2518,7 +2545,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_FEMALE = 18;
+	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_FEMALE = 20;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Height Mean Female</b></em>' attribute.
@@ -2527,7 +2554,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_MEAN_FEMALE = 19;
+	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_MEAN_FEMALE = 21;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Height Deviation Female</b></em>' attribute.
@@ -2536,7 +2563,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_FEMALE = 20;
+	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_FEMALE = 22;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Depth Mean Female</b></em>' attribute.
@@ -2545,7 +2572,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_FEMALE = 21;
+	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_FEMALE = 23;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Depth Deviation Female</b></em>' attribute.
@@ -2554,7 +2581,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE = 22;
+	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE = 24;
 
 	/**
 	 * The feature id for the '<em><b>Results</b></em>' reference list.
@@ -2563,7 +2590,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__RESULTS = 23;
+	int SIMULATION_PROPERTIES__RESULTS = 25;
 
 	/**
 	 * The feature id for the '<em><b>Percentage Of Passengers With No Luggage</b></em>' attribute.
@@ -2572,7 +2599,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE = 24;
+	int SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE = 26;
 
 	/**
 	 * The feature id for the '<em><b>Percentage Of Passengers With Small Luggage</b></em>' attribute.
@@ -2581,7 +2608,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE = 25;
+	int SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE = 27;
 
 	/**
 	 * The feature id for the '<em><b>Percentage Of Passengers With Medium Luggage</b></em>' attribute.
@@ -2590,7 +2617,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE = 26;
+	int SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE = 28;
 
 	/**
 	 * The feature id for the '<em><b>Percentage Of Passengers With Big Luggage</b></em>' attribute.
@@ -2599,7 +2626,25 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE = 27;
+	int SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE = 29;
+
+	/**
+	 * The feature id for the '<em><b>Sorting</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__SORTING = 30;
+
+	/**
+	 * The feature id for the '<em><b>Simulation Speed Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR = 31;
 
 	/**
 	 * The number of structural features of the '<em>Simulation Properties</em>' class.
@@ -2608,7 +2653,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES_FEATURE_COUNT = 28;
+	int SIMULATION_PROPERTIES_FEATURE_COUNT = 32;
 
 	/**
 	 * The number of operations of the '<em>Simulation Properties</em>' class.
@@ -2740,6 +2785,16 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	int LUGGAGE_SIZE = 26;
+
+	/**
+	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.SortingStyle <em>Sorting Style</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.model.cabin.SortingStyle
+	 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getSortingStyle()
+	 * @generated
+	 */
+	int SORTING_STYLE = 27;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}' enum.
@@ -3358,6 +3413,17 @@ public interface CabinPackage extends EPackage {
 	EReference getSeat_Passenger();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.Seat#isCurrentlyFolded <em>Currently Folded</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Currently Folded</em>'.
+	 * @see net.bhl.cdt.model.cabin.Seat#isCurrentlyFolded()
+	 * @see #getSeat()
+	 * @generated
+	 */
+	EAttribute getSeat_CurrentlyFolded();
+
+	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.Passenger <em>Passenger</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3820,6 +3886,28 @@ public interface CabinPackage extends EPackage {
 	EAttribute getSimulationProperties_RandomSortBetweenLoops();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#isUseFoldableSeats <em>Use Foldable Seats</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Use Foldable Seats</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#isUseFoldableSeats()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_UseFoldableSeats();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#isBringYourOwnSeat <em>Bring Your Own Seat</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Bring Your Own Seat</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#isBringYourOwnSeat()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_BringYourOwnSeat();
+
+	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4095,6 +4183,28 @@ public interface CabinPackage extends EPackage {
 	EAttribute getSimulationProperties_PercentageOfPassengersWithBigLuggage();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getSorting <em>Sorting</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Sorting</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getSorting()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_Sorting();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.model.cabin.SimulationProperties#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Simulation Speed Factor</em>'.
+	 * @see net.bhl.cdt.model.cabin.SimulationProperties#getSimulationSpeedFactor()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_SimulationSpeedFactor();
+
+	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.model.cabin.SimulationResult <em>Simulation Result</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4295,6 +4405,16 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getLuggageSize();
+
+	/**
+	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.SortingStyle <em>Sorting Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Sorting Style</em>'.
+	 * @see net.bhl.cdt.model.cabin.SortingStyle
+	 * @generated
+	 */
+	EEnum getSortingStyle();
 
 	/**
 	 * Returns the meta object for enum '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}'.
@@ -4740,6 +4860,13 @@ public interface CabinPackage extends EPackage {
 		 */
 		EReference SEAT__PASSENGER = eINSTANCE.getSeat_Passenger();
 		/**
+		 * The meta object literal for the '<em><b>Currently Folded</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SEAT__CURRENTLY_FOLDED = eINSTANCE.getSeat_CurrentlyFolded();
+		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.PassengerImpl <em>Passenger</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5063,6 +5190,20 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS = eINSTANCE.getSimulationProperties_RandomSortBetweenLoops();
 		/**
+		 * The meta object literal for the '<em><b>Use Foldable Seats</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__USE_FOLDABLE_SEATS = eINSTANCE.getSimulationProperties_UseFoldableSeats();
+		/**
+		 * The meta object literal for the '<em><b>Bring Your Own Seat</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT = eINSTANCE.getSimulationProperties_BringYourOwnSeat();
+		/**
 		 * The meta object literal for the '<em><b>Passengers Boarding Per Minute</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5238,6 +5379,20 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE = eINSTANCE.getSimulationProperties_PercentageOfPassengersWithBigLuggage();
 		/**
+		 * The meta object literal for the '<em><b>Sorting</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__SORTING = eINSTANCE.getSimulationProperties_Sorting();
+		/**
+		 * The meta object literal for the '<em><b>Simulation Speed Factor</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR = eINSTANCE.getSimulationProperties_SimulationSpeedFactor();
+		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.impl.SimulationResultImpl <em>Simulation Result</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5382,6 +5537,15 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum LUGGAGE_SIZE = eINSTANCE.getLuggageSize();
+		/**
+		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.SortingStyle <em>Sorting Style</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.bhl.cdt.model.cabin.SortingStyle
+		 * @see net.bhl.cdt.model.cabin.impl.CabinPackageImpl#getSortingStyle()
+		 * @generated
+		 */
+		EEnum SORTING_STYLE = eINSTANCE.getSortingStyle();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.model.cabin.Sex <em>Sex</em>}' enum.
 		 * <!-- begin-user-doc -->

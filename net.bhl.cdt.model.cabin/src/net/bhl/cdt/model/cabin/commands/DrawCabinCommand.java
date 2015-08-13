@@ -84,7 +84,7 @@ public class DrawCabinCommand extends CDTCommand {
 		repairSeatAssignments();
 		checkPassengerAssignments();
 		checkForConstructionErrors();
-
+		checkFoldableSeats();
 		updateTravelClassProperties();
 
 		for (String str : errorStrings) {
@@ -106,6 +106,22 @@ public class DrawCabinCommand extends CDTCommand {
 		for (TravelClass tc : cabin.getClasses()) {
 			tc.setSequence(i);
 			i++;
+		}
+	}
+
+	private void checkFoldableSeats() {
+		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
+			if (cabin.getSimulationSettings().isBringYourOwnSeat()) {
+				seat.setCurrentlyFolded(true);
+			} else if (cabin.getSimulationSettings().isUseFoldableSeats()) {
+				if (seat.getLetter().contains("D")) {
+					seat.setCurrentlyFolded(true);
+				} else {
+					seat.setCurrentlyFolded(false);
+				}
+			} else {
+				seat.setCurrentlyFolded(false);
+			}
 		}
 	}
 

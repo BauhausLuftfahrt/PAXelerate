@@ -89,8 +89,10 @@ public abstract class FuncLib {
 	 * @return transformed time in milliseconds
 	 */
 	public static long transformTime(double timeInSeconds) {
-		double value = timeInSeconds * 1000.0
-				/ SimulationHandler.getCabin().getSpeedFactor();
+		double value = timeInSeconds
+				* 1000.0
+				/ SimulationHandler.getCabin().getSimulationSettings()
+						.getSimulationSpeedFactor();
 		if (value < 1) {
 			value = 1;
 		}

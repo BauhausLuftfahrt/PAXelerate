@@ -6,6 +6,7 @@ import java.util.Collection;
 import net.bhl.cdt.model.cabin.CabinPackage;
 import net.bhl.cdt.model.cabin.SimulationProperties;
 import net.bhl.cdt.model.cabin.SimulationResult;
+import net.bhl.cdt.model.cabin.SortingStyle;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -23,6 +24,8 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#isSimulateWithoutUI <em>Simulate Without UI</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#getNumberOfSimulationLoops <em>Number Of Simulation Loops</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#isRandomSortBetweenLoops <em>Random Sort Between Loops</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#isUseFoldableSeats <em>Use Foldable Seats</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#isBringYourOwnSeat <em>Bring Your Own Seat</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#getPassengerWidthMeanMale <em>Passenger Width Mean Male</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#getPassengerWidthDeviationMale <em>Passenger Width Deviation Male</em>}</li>
@@ -48,6 +51,8 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#getPercentageOfPassengersWithSmallLuggage <em>Percentage Of Passengers With Small Luggage</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#getPercentageOfPassengersWithMediumLuggage <em>Percentage Of Passengers With Medium Luggage</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#getPercentageOfPassengersWithBigLuggage <em>Percentage Of Passengers With Big Luggage</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#getSorting <em>Sorting</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.SimulationPropertiesImpl#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}</li>
  * </ul>
  * </p>
  *
@@ -113,6 +118,46 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * @ordered
 	 */
 	protected boolean randomSortBetweenLoops = RANDOM_SORT_BETWEEN_LOOPS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isUseFoldableSeats() <em>Use Foldable Seats</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isUseFoldableSeats()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean USE_FOLDABLE_SEATS_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isUseFoldableSeats() <em>Use Foldable Seats</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isUseFoldableSeats()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean useFoldableSeats = USE_FOLDABLE_SEATS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isBringYourOwnSeat() <em>Bring Your Own Seat</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isBringYourOwnSeat()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean BRING_YOUR_OWN_SEAT_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isBringYourOwnSeat() <em>Bring Your Own Seat</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isBringYourOwnSeat()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean bringYourOwnSeat = BRING_YOUR_OWN_SEAT_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getPassengersBoardingPerMinute() <em>Passengers Boarding Per Minute</em>}' attribute.
@@ -605,6 +650,46 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	protected double percentageOfPassengersWithBigLuggage = PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getSorting() <em>Sorting</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSorting()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final SortingStyle SORTING_EDEFAULT = SortingStyle.RANDOM;
+
+	/**
+	 * The cached value of the '{@link #getSorting() <em>Sorting</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSorting()
+	 * @generated
+	 * @ordered
+	 */
+	protected SortingStyle sorting = SORTING_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSimulationSpeedFactor() <em>Simulation Speed Factor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimulationSpeedFactor()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int SIMULATION_SPEED_FACTOR_EDEFAULT = 10;
+
+	/**
+	 * The cached value of the '{@link #getSimulationSpeedFactor() <em>Simulation Speed Factor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimulationSpeedFactor()
+	 * @generated
+	 * @ordered
+	 */
+	protected int simulationSpeedFactor = SIMULATION_SPEED_FACTOR_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -684,6 +769,48 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 		randomSortBetweenLoops = newRandomSortBetweenLoops;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS, oldRandomSortBetweenLoops, randomSortBetweenLoops));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isUseFoldableSeats() {
+		return useFoldableSeats;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUseFoldableSeats(boolean newUseFoldableSeats) {
+		boolean oldUseFoldableSeats = useFoldableSeats;
+		useFoldableSeats = newUseFoldableSeats;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__USE_FOLDABLE_SEATS, oldUseFoldableSeats, useFoldableSeats));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isBringYourOwnSeat() {
+		return bringYourOwnSeat;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBringYourOwnSeat(boolean newBringYourOwnSeat) {
+		boolean oldBringYourOwnSeat = bringYourOwnSeat;
+		bringYourOwnSeat = newBringYourOwnSeat;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT, oldBringYourOwnSeat, bringYourOwnSeat));
 	}
 
 	/**
@@ -1207,6 +1334,48 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public SortingStyle getSorting() {
+		return sorting;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSorting(SortingStyle newSorting) {
+		SortingStyle oldSorting = sorting;
+		sorting = newSorting == null ? SORTING_EDEFAULT : newSorting;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SORTING, oldSorting, sorting));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getSimulationSpeedFactor() {
+		return simulationSpeedFactor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSimulationSpeedFactor(int newSimulationSpeedFactor) {
+		int oldSimulationSpeedFactor = simulationSpeedFactor;
+		simulationSpeedFactor = newSimulationSpeedFactor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR, oldSimulationSpeedFactor, simulationSpeedFactor));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -1216,6 +1385,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return getNumberOfSimulationLoops();
 			case CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS:
 				return isRandomSortBetweenLoops();
+			case CabinPackage.SIMULATION_PROPERTIES__USE_FOLDABLE_SEATS:
+				return isUseFoldableSeats();
+			case CabinPackage.SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT:
+				return isBringYourOwnSeat();
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				return getPassengersBoardingPerMinute();
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_MALE:
@@ -1266,6 +1439,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return getPercentageOfPassengersWithMediumLuggage();
 			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE:
 				return getPercentageOfPassengersWithBigLuggage();
+			case CabinPackage.SIMULATION_PROPERTIES__SORTING:
+				return getSorting();
+			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
+				return getSimulationSpeedFactor();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1287,6 +1464,12 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS:
 				setRandomSortBetweenLoops((Boolean)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__USE_FOLDABLE_SEATS:
+				setUseFoldableSeats((Boolean)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT:
+				setBringYourOwnSeat((Boolean)newValue);
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				setPassengersBoardingPerMinute((Double)newValue);
@@ -1364,6 +1547,12 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE:
 				setPercentageOfPassengersWithBigLuggage((Double)newValue);
 				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SORTING:
+				setSorting((SortingStyle)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
+				setSimulationSpeedFactor((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1384,6 +1573,12 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS:
 				setRandomSortBetweenLoops(RANDOM_SORT_BETWEEN_LOOPS_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__USE_FOLDABLE_SEATS:
+				setUseFoldableSeats(USE_FOLDABLE_SEATS_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT:
+				setBringYourOwnSeat(BRING_YOUR_OWN_SEAT_EDEFAULT);
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				setPassengersBoardingPerMinute(PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT);
@@ -1460,6 +1655,12 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE:
 				setPercentageOfPassengersWithBigLuggage(PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE_EDEFAULT);
 				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SORTING:
+				setSorting(SORTING_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
+				setSimulationSpeedFactor(SIMULATION_SPEED_FACTOR_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1478,6 +1679,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return numberOfSimulationLoops != NUMBER_OF_SIMULATION_LOOPS_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS:
 				return randomSortBetweenLoops != RANDOM_SORT_BETWEEN_LOOPS_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__USE_FOLDABLE_SEATS:
+				return useFoldableSeats != USE_FOLDABLE_SEATS_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT:
+				return bringYourOwnSeat != BRING_YOUR_OWN_SEAT_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				return passengersBoardingPerMinute != PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_MALE:
@@ -1528,6 +1733,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return percentageOfPassengersWithMediumLuggage != PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE:
 				return percentageOfPassengersWithBigLuggage != PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__SORTING:
+				return sorting != SORTING_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
+				return simulationSpeedFactor != SIMULATION_SPEED_FACTOR_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1548,6 +1757,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 		result.append(numberOfSimulationLoops);
 		result.append(", randomSortBetweenLoops: ");
 		result.append(randomSortBetweenLoops);
+		result.append(", useFoldableSeats: ");
+		result.append(useFoldableSeats);
+		result.append(", bringYourOwnSeat: ");
+		result.append(bringYourOwnSeat);
 		result.append(", passengersBoardingPerMinute: ");
 		result.append(passengersBoardingPerMinute);
 		result.append(", passengerWidthMeanMale: ");
@@ -1596,6 +1809,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 		result.append(percentageOfPassengersWithMediumLuggage);
 		result.append(", percentageOfPassengersWithBigLuggage: ");
 		result.append(percentageOfPassengersWithBigLuggage);
+		result.append(", sorting: ");
+		result.append(sorting);
+		result.append(", simulationSpeedFactor: ");
+		result.append(simulationSpeedFactor);
 		result.append(')');
 		return result.toString();
 	}

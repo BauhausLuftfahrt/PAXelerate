@@ -346,7 +346,6 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Speed Factor</b></em>' attribute.
-	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Speed Factor</em>' attribute isn't clear,
@@ -356,7 +355,7 @@ public interface Cabin extends NamedElement {
 	 * @return the value of the '<em>Speed Factor</em>' attribute.
 	 * @see #setSpeedFactor(int)
 	 * @see net.bhl.cdt.model.cabin.CabinPackage#getCabin_SpeedFactor()
-	 * @model default="1"
+	 * @model
 	 * @generated
 	 */
 	int getSpeedFactor();

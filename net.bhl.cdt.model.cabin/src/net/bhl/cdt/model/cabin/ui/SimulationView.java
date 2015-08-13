@@ -91,7 +91,8 @@ public class SimulationView extends JPanel implements MouseListener {
 
 		int j = 0;
 		for (int i : possibleSpeeds) {
-			if (i == SimulationHandler.getCabin().getSpeedFactor()) {
+			if (i == SimulationHandler.getCabin().getSimulationSettings()
+					.getSimulationSpeedFactor()) {
 				speedPosition = j;
 				break;
 			}
@@ -113,8 +114,11 @@ public class SimulationView extends JPanel implements MouseListener {
 			public void actionPerformed(ActionEvent e) {
 				if (speedPosition < possibleSpeeds.length) {
 					speedPosition++;
-					SimulationHandler.getCabin().setSpeedFactor(
-							possibleSpeeds[speedPosition]);
+					SimulationHandler
+							.getCabin()
+							.getSimulationSettings()
+							.setSimulationSpeedFactor(
+									possibleSpeeds[speedPosition]);
 				}
 			}
 		});
@@ -126,8 +130,11 @@ public class SimulationView extends JPanel implements MouseListener {
 			public void actionPerformed(ActionEvent e) {
 				if (speedPosition > 0) {
 					speedPosition--;
-					SimulationHandler.getCabin().setSpeedFactor(
-							possibleSpeeds[speedPosition]);
+					SimulationHandler
+							.getCabin()
+							.getSimulationSettings()
+							.setSimulationSpeedFactor(
+									possibleSpeeds[speedPosition]);
 				}
 			}
 		});
@@ -261,11 +268,14 @@ public class SimulationView extends JPanel implements MouseListener {
 		g.drawString("Real Time: " + watch.getElapsedTimeTens(), 10, 20);
 
 		double tens = watch.getElapsedTimeTens()
-				* SimulationHandler.getCabin().getSpeedFactor();
+				* SimulationHandler.getCabin().getSimulationSettings()
+						.getSimulationSpeedFactor();
 
-		g.drawString("Sim. Time: " + FuncLib.transformToTimeString(tens)
-				+ " >> " + SimulationHandler.getCabin().getSpeedFactor() + "x",
-				10, 40);
+		g.drawString("Sim. Time: "
+				+ FuncLib.transformToTimeString(tens)
+				+ " >> "
+				+ SimulationHandler.getCabin().getSimulationSettings()
+						.getSimulationSpeedFactor() + "x", 10, 40);
 		g.drawString(
 				"Passengers: "
 						+ SimulationHandler.getNumberOfSeatedPassengers()

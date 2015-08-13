@@ -237,22 +237,35 @@ public class ObstacleMap {
 			Class<T> physicalObjectSubclass) {
 		for (PhysicalObject physicalObject : ModelHelper.getChildrenByClass(
 				cabin, physicalObjectSubclass)) {
-			int physicalObjectWidth = (int) (physicalObject.getXDimension() / cabin
-					.getScale());
-			int physicalObjectLength = (int) (physicalObject.getYDimension() / cabin
-					.getScale());
-			int physicalObjectXPosition = (int) (physicalObject.getXPosition() / cabin
-					.getScale());
-			int physicalObjectYDimension = (int) (physicalObject.getYPosition() / cabin
-					.getScale());
-			obstacleMap[physicalObjectXPosition][physicalObjectYDimension] = MAX_VALUE;
-			for (int i = 0; i < physicalObjectWidth; i++) {
-				for (int j = 0; j < physicalObjectLength; j++) {
-					int k = physicalObjectXPosition + i;
-					int l = physicalObjectYDimension + j;
-					if (k < dimensions.getX() && l < dimensions.getY()) {
-						obstacleMap[k][l] = MAX_VALUE;
+
+			boolean value;
+			try {
+				value = ((Seat) physicalObject).isCurrentlyFolded();
+			} catch (ClassCastException e) {
+				value = false;
+			}
+
+			if (!(cabin.getSimulationSettings().isUseFoldableSeats() && value)) {
+
+				int physicalObjectWidth = (int) (physicalObject.getXDimension() / cabin
+						.getScale());
+				int physicalObjectLength = (int) (physicalObject
+						.getYDimension() / cabin.getScale());
+				int physicalObjectXPosition = (int) (physicalObject
+						.getXPosition() / cabin.getScale());
+				int physicalObjectYDimension = (int) (physicalObject
+						.getYPosition() / cabin.getScale());
+				// obstacleMap[physicalObjectXPosition][physicalObjectYDimension]
+				// = MAX_VALUE;
+				for (int i = 0; i < physicalObjectWidth; i++) {
+					for (int j = 0; j < physicalObjectLength; j++) {
+						int k = physicalObjectXPosition + i;
+						int l = physicalObjectYDimension + j;
+						if (k < dimensions.getX() && l < dimensions.getY()) {
+							obstacleMap[k][l] = MAX_VALUE;
+						}
 					}
+
 				}
 			}
 		}

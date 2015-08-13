@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#getRow <em>Row</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#isOccupied <em>Occupied</em>}</li>
  *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#getPassenger <em>Passenger</em>}</li>
+ *   <li>{@link net.bhl.cdt.model.cabin.impl.SeatImpl#isCurrentlyFolded <em>Currently Folded</em>}</li>
  * </ul>
  * </p>
  *
@@ -141,6 +142,26 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 	 * @ordered
 	 */
 	protected Passenger passenger;
+
+	/**
+	 * The default value of the '{@link #isCurrentlyFolded() <em>Currently Folded</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isCurrentlyFolded()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean CURRENTLY_FOLDED_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isCurrentlyFolded() <em>Currently Folded</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isCurrentlyFolded()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean currentlyFolded = CURRENTLY_FOLDED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -364,6 +385,27 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isCurrentlyFolded() {
+		return currentlyFolded;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCurrentlyFolded(boolean newCurrentlyFolded) {
+		boolean oldCurrentlyFolded = currentlyFolded;
+		currentlyFolded = newCurrentlyFolded;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SEAT__CURRENTLY_FOLDED, oldCurrentlyFolded, currentlyFolded));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -384,6 +426,8 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 			case CabinPackage.SEAT__PASSENGER:
 				if (resolve) return getPassenger();
 				return basicGetPassenger();
+			case CabinPackage.SEAT__CURRENTLY_FOLDED:
+				return isCurrentlyFolded();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -416,6 +460,9 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 				return;
 			case CabinPackage.SEAT__PASSENGER:
 				setPassenger((Passenger)newValue);
+				return;
+			case CabinPackage.SEAT__CURRENTLY_FOLDED:
+				setCurrentlyFolded((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -450,6 +497,9 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 			case CabinPackage.SEAT__PASSENGER:
 				setPassenger((Passenger)null);
 				return;
+			case CabinPackage.SEAT__CURRENTLY_FOLDED:
+				setCurrentlyFolded(CURRENTLY_FOLDED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -476,6 +526,8 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 				return occupied != OCCUPIED_EDEFAULT;
 			case CabinPackage.SEAT__PASSENGER:
 				return passenger != null;
+			case CabinPackage.SEAT__CURRENTLY_FOLDED:
+				return currentlyFolded != CURRENTLY_FOLDED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -498,6 +550,8 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 		result.append(letter);
 		result.append(", occupied: ");
 		result.append(occupied);
+		result.append(", currentlyFolded: ");
+		result.append(currentlyFolded);
 		result.append(')');
 		return result.toString();
 	}
