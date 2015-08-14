@@ -216,8 +216,7 @@ public class ObstacleMap {
 							obstacleMap[i][j] = HOLE_VALUE;
 						}
 
-						// TODO: clear out the aisles and set them to HOLE_VALUE
-						if (i < 19 && i > 16) {
+						if (i < 23 && i > 16) {
 							obstacleMap[i][j] = HOLE_VALUE;
 						}
 					}

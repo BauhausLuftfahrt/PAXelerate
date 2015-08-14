@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 
 import net.bhl.cdt.model.astar.Core;
-import net.bhl.cdt.model.agent.AggressiveMood;
+import net.bhl.cdt.model.agent.AgressiveMood;
 import net.bhl.cdt.model.astar.CostMap;
 import net.bhl.cdt.model.agent.PassiveMood;
 import net.bhl.cdt.model.astar.Node;
@@ -118,10 +118,12 @@ public class Agent extends Subject implements Runnable {
 
 		/* generate a mood for the passenger depending on his presets */
 		if (passenger.getPassengerMood() == PassengerMood.AGRESSIVE) {
-			this.agentMood = new AggressiveMood(this);
+			this.agentMood = new AgressiveMood(this);
 		} else if (passenger.getPassengerMood() == PassengerMood.PASSIVE) {
 			this.agentMood = new PassiveMood(this);
 		}
+
+		this.agentMood = new AgressiveMood(this);
 
 		defaultPassengerArea = new int[(int) (passenger.getWidth() / scale)][(int) (passenger
 				.getDepth() / scale)];
@@ -473,7 +475,7 @@ public class Agent extends Subject implements Runnable {
 	 *            the specific vector
 	 * @return if the node is blocked by someone else
 	 */
-	private boolean nodeBlocked(Vector vector) {
+	private Property nodeBlocked(Vector vector) {
 
 		for (int x = -dim; x <= dim; x++) {
 
@@ -501,18 +503,23 @@ public class Agent extends Subject implements Runnable {
 								this.blockingAgent = agent;
 							}
 						}
-						return true;
+						return Property.AGENT;
 					}
 				}
 				if (checkNode.getProperty() == Property.OBSTACLE) {
 					// System.out
 					// .println("###### !OVERLAPPING OF AGENT AND OBSTACLE! ###### !AGENT - nodeBlockedBySomeoneElseOrObstacle()! ######");
-					// return true;
+					if (isInYRangeSmaller(
+							passenger.getSeatRef().getYPosition(), 5, false)) {
+						return null;
+					} else {
+						return Property.OBSTACLE;
+					}
 				}
 			}
 			// }
 		}
-		return false;
+		return null;
 
 	}
 
@@ -578,7 +585,8 @@ public class Agent extends Subject implements Runnable {
 				desiredPosition = path.get(i).getPosition();
 
 				/* check if the desired next step is blocked by someone else */
-				if (nodeBlocked(desiredPosition)) {
+				Property property = nodeBlocked(desiredPosition);
+				if (property != null) {
 
 					setCurrentState(State.QUEUEING_UP);
 
@@ -586,7 +594,7 @@ public class Agent extends Subject implements Runnable {
 					numbOfInterupts++;
 
 					/* get the correct behavior for an obstacle avoidance */
-					Situation collision = new Situation(agentMood);
+					Situation collision = new Situation(agentMood, property);
 
 					/* Perform the correct behavior */
 					collision.handle();
@@ -827,7 +835,9 @@ public class Agent extends Subject implements Runnable {
 			blockArea(currentPosition, false, false, null);
 			blockArea(desiredPosition, false, false, null);
 
-			unfoldSeat();
+			if (passenger.getSeatRef().isCurrentlyFolded()) {
+				unfoldSeat();
+			}
 
 			SimulationHandler.getMap().getNode(getGoal())
 					.setProperty(Property.DEFAULT, getPassenger());

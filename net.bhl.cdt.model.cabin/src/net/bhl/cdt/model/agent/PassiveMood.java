@@ -1,5 +1,6 @@
 package net.bhl.cdt.model.agent;
 
+import net.bhl.cdt.model.astar.Node.Property;
 import net.bhl.cdt.model.cabin.util.FuncLib;
 
 public class PassiveMood extends AgentMood implements Strategy {
@@ -10,7 +11,7 @@ public class PassiveMood extends AgentMood implements Strategy {
 
 	@SuppressWarnings("static-access")
 	@Override
-	public void reactToCollision() {
+	public void reactToCollision(Property property) {
 
 		try {
 			super.getAgent().getThread().sleep(FuncLib.transformTime(1));
