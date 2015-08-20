@@ -419,7 +419,7 @@ public class Agent extends Subject implements Runnable {
 		/* this is only run if its not the initial path finding process */
 		if (currentPosition != null) {
 
-			// blockArea(currentPosition, false, false, null);
+			blockArea(currentPosition, false, false, null);
 
 			/* print out the area map when in developer mode */
 			if (SimulationHandler.DEVELOPER_MODE) {
@@ -448,13 +448,6 @@ public class Agent extends Subject implements Runnable {
 		}
 		/* ends the stop watch performance logging */
 		stopwatch.stop();
-
-		System.out.println(stopwatch.getElapsedTimeSecs()
-				+ " seconds for path finding.");
-
-		if (currentPosition != null) {
-			blockArea(currentPosition, false, false, null);
-		}
 	}
 
 	/**
@@ -516,12 +509,12 @@ public class Agent extends Subject implements Runnable {
 				if (checkNode.getProperty() == Property.OBSTACLE) {
 					// System.out
 					// .println("###### !OVERLAPPING OF AGENT AND OBSTACLE! ###### !AGENT - nodeBlockedBySomeoneElseOrObstacle()! ######");
-					if (isInYRangeSmaller(
-							passenger.getSeatRef().getYPosition(), 5, false)) {
-						return null;
-					} else {
-						return Property.OBSTACLE;
-					}
+					// if (isInYRangeSmaller(
+					// passenger.getSeatRef().getYPosition(), 5, false)) {
+					return null;
+					// } else {
+					// return Property.OBSTACLE;
+					// }
 				}
 			}
 			// }
@@ -630,8 +623,7 @@ public class Agent extends Subject implements Runnable {
 					rotateAgent(90);
 
 					/* sleep the thread as long as the luggage is stowed */
-					Thread.sleep(Func.transformTime(passenger
-							.getLuggageStowTime()));
+					Thread.sleep(Func.time(passenger.getLuggageStowTime()));
 
 					/* notify everyone that the luggage is now stowed */
 					alreadyStowed = true;
@@ -655,7 +647,7 @@ public class Agent extends Subject implements Runnable {
 					if (anyoneNearMe()) {
 						System.out
 								.println("waymaking skipped. Delay simulated!");
-						Thread.sleep(Func.transformTime(7));
+						Thread.sleep(Func.time(7));
 						waitingCompleted = true;
 						continue;
 					}
@@ -674,7 +666,7 @@ public class Agent extends Subject implements Runnable {
 						}
 
 						// TODO: calculate the waiting time!
-						Thread.sleep(Func.transformTime(3));
+						Thread.sleep(Func.time(3));
 
 						waitingCompleted = true;
 					}
@@ -861,7 +853,7 @@ public class Agent extends Subject implements Runnable {
 		int defoldingTime = 5;
 
 		try {
-			Thread.sleep(Func.transformTime(defoldingTime));
+			Thread.sleep(Func.time(defoldingTime));
 		} catch (InterruptedException e) {
 			//
 		}
@@ -913,8 +905,7 @@ public class Agent extends Subject implements Runnable {
 			pathlist.add(path);
 			if (inDefaultBoardingMode()) {
 				/* sleep the thread as long as the boarding delay requires it */
-				Thread.sleep(Func.transformTime(passenger
-						.getStartBoardingAfterDelay()));
+				Thread.sleep(Func.time(passenger.getStartBoardingAfterDelay()));
 
 				/*
 				 * then try to spawn the passenger but check if there is enough

@@ -82,14 +82,10 @@ public class SimulateBoardingCommand extends CDTCommand {
 		DrawCabinCommand drawCom = new DrawCabinCommand(cabin);
 		drawCom.doRun();
 
-		/**************** Get CabinView and ConsoleView ***************************/
-		IWorkbenchWindow window = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow();
-		IWorkbenchPage page = window.getActivePage();
-		CabinViewPart cabinViewPart = (CabinViewPart) page
-				.findView("net.bhl.cdt.model.cabin.cabinview");
-		InfoViewPart infoViewPart = (InfoViewPart) page
-				.findView("net.bhl.cdt.model.cabin.infoview");
+		/********** Get CabinView and ConsoleView ***************/
+
+		CabinViewPart cabinViewPart = Func.getCabinView();
+		/********************************************************/
 
 		for (int i = 0; i < cabin.getSimulationSettings()
 				.getNumberOfSimulationLoops(); i++) {
@@ -171,7 +167,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 								&& !alreadySeatedList.contains(pax)) {
 							alreadySeatedList.add(pax);
 							try {
-								infoViewPart.update(cabin);
+								// infoViewPart.update(cabin);
 							} catch (NullPointerException e) {
 								logger.log(new Status(IStatus.ERROR,
 										"net.bhl.cdt.model.cabin",

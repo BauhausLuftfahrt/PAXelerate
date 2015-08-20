@@ -69,8 +69,8 @@ public class ObstacleMap {
 	 */
 	public ObstacleMap(Cabin cabin) {
 		this.cabin = cabin;
-		((Vector2D) dimensions).set(Func.ts(cabin.getCabinWidth()),
-				Func.ts(cabin.getCabinLength()));
+		((Vector2D) dimensions).set(Func.size(cabin.getCabinWidth()),
+				Func.size(cabin.getCabinLength()));
 		obstacleMap = createObstacleMap();
 		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
 		printObstacleMap();
@@ -147,7 +147,7 @@ public class ObstacleMap {
 	 * This method creates the potential gradient around obstacle.
 	 */
 	private void generatePotentialGradient() {
-		int range = Func.ts(OBSTACLE_RANGE_IN_CM);
+		int range = Func.size(OBSTACLE_RANGE_IN_CM);
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
 				if (obstacleMap[i][j] == MAX_VALUE) {
@@ -223,8 +223,8 @@ public class ObstacleMap {
 		 */
 
 		for (Door door : cabin.getDoors()) {
-			entryMin = Func.ts(door.getYPosition()) + 2;
-			entryMax = Func.ts(door.getYPosition() + door.getWidth()) - 2;
+			entryMin = Func.size(door.getYPosition()) + 2;
+			entryMax = Func.size(door.getYPosition() + door.getWidth()) - 2;
 
 			for (int i = 0; i < dimensions.getX(); i++) {
 				for (int j = 0; j < dimensions.getY(); j++) {
@@ -237,7 +237,10 @@ public class ObstacleMap {
 							obstacleMap[i][j] = HOLE_VALUE;
 						}
 
-						if (j > Func.ts(door.getYPosition())) {
+						if (j > Func.size(door.getYPosition())) {
+							if (i > 19 && i < 22) {
+								obstacleMap[i][j] = HOLE_VALUE;
+							}
 
 						}
 					}
@@ -267,10 +270,10 @@ public class ObstacleMap {
 
 			if (!(cabin.getSimulationSettings().isUseFoldableSeats() && value)) {
 
-				int width = Func.ts(physicalObject.getXDimension());
-				int length = Func.ts(physicalObject.getYDimension());
-				int xPosition = Func.ts(physicalObject.getXPosition());
-				int yPosition = Func.ts(physicalObject.getYPosition());
+				int width = Func.size(physicalObject.getXDimension());
+				int length = Func.size(physicalObject.getYDimension());
+				int xPosition = Func.size(physicalObject.getXPosition());
+				int yPosition = Func.size(physicalObject.getYPosition());
 
 				for (int i = 0; i < width; i++) {
 					for (int j = 0; j < length; j++) {

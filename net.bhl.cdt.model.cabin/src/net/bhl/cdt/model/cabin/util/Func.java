@@ -18,9 +18,14 @@ import java.util.Map.Entry;
 import java.util.Random;
 
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
 
 import net.bhl.cdt.model.astar.SimulationHandler;
 import net.bhl.cdt.model.cabin.Passenger;
+import net.bhl.cdt.model.cabin.ui.CabinViewPart;
+import net.bhl.cdt.model.cabin.ui.InfoViewPart;
 
 /**
  * This class is used for general calculations and methods.
@@ -30,6 +35,14 @@ import net.bhl.cdt.model.cabin.Passenger;
  */
 
 public abstract class Func {
+
+	public static CabinViewPart getCabinView() {
+		IWorkbenchWindow window = PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow();
+		IWorkbenchPage page = window.getActivePage();
+		return (CabinViewPart) page
+				.findView("net.bhl.cdt.model.cabin.cabinview");
+	}
 
 	/**
 	 * This method checks whether the two input vectors are equal
@@ -88,7 +101,7 @@ public abstract class Func {
 	 *            time in seconds
 	 * @return transformed time in milliseconds
 	 */
-	public static long transformTime(double timeInSeconds) {
+	public static long time(double timeInSeconds) {
 		double value = timeInSeconds
 				* 1000.0
 				/ SimulationHandler.getCabin().getSimulationSettings()
@@ -99,8 +112,12 @@ public abstract class Func {
 		return (long) value;
 	}
 
-	public static int ts(double size) {
-		return (int) (size / SimulationHandler.getCabin().getScale());
+	public static int size(double size) {
+		try {
+			return (int) (size / SimulationHandler.getCabin().getScale());
+		} catch (NullPointerException e) {
+			return (int) (size / getCabinView().getCabin().getScale());
+		}
 	}
 
 	public static int GetScreenWorkingWidth() {

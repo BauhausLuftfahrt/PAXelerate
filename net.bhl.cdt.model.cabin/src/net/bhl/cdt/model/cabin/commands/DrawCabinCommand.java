@@ -74,10 +74,7 @@ public class DrawCabinCommand extends CDTCommand {
 			cabin.setSimulationSettings(props);
 		}
 
-		IWorkbenchPage page = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage();
-		cabinViewPart = (CabinViewPart) page
-				.findView("net.bhl.cdt.model.cabin.cabinview");
+		cabinViewPart = Func.getCabinView();
 
 		repairBoardingClassAssignments();
 		repairRowAssignments();
