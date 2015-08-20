@@ -9,7 +9,7 @@ import net.bhl.cdt.model.astar.Node.Property;
 import net.bhl.cdt.model.astar.Path;
 import net.bhl.cdt.model.astar.SimulationHandler;
 import net.bhl.cdt.model.cabin.Passenger;
-import net.bhl.cdt.model.cabin.util.FuncLib;
+import net.bhl.cdt.model.cabin.util.Func;
 import net.bhl.cdt.model.cabin.util.StopWatch;
 
 import java.awt.*;
@@ -64,7 +64,7 @@ public class SimulationView extends JPanel implements MouseListener {
 	 */
 	public SimulationView() {
 		this.setPreferredSize(new Dimension(
-				FuncLib.GetScreenWorkingWidth() - 20, BOX_HEIGHT));
+				Func.GetScreenWorkingWidth() - 20, BOX_HEIGHT));
 
 		cabinWidth = SimulationHandler.getCabin().getCabinWidth()
 				/ (double) SimulationHandler.getCabin().getScale();
@@ -272,7 +272,7 @@ public class SimulationView extends JPanel implements MouseListener {
 						.getSimulationSpeedFactor();
 
 		g.drawString("Sim. Time: "
-				+ FuncLib.transformToTimeString(tens)
+				+ Func.transformToTimeString(tens)
 				+ " >> "
 				+ SimulationHandler.getCabin().getSimulationSettings()
 						.getSimulationSpeedFactor() + "x", 10, 40);

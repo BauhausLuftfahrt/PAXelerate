@@ -21,7 +21,7 @@ import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.TravelClass;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.InfoViewPart;
-import net.bhl.cdt.model.cabin.util.FuncLib;
+import net.bhl.cdt.model.cabin.util.Func;
 import net.bhl.cdt.model.cabin.util.PassengerPropertyGenerator;
 import net.bhl.cdt.model.util.ModelHelper;
 
@@ -190,10 +190,10 @@ public class GeneratePassengersCommand extends CDTCommand {
 					Passenger newPassenger = CabinFactory.eINSTANCE
 							.createPassenger();
 					cabin.getPassengers().add(newPassenger);
-					newPassenger.setId(FuncLib.uniqueRandom(randomPassengerId,
+					newPassenger.setId(Func.uniqueRandom(randomPassengerId,
 							1, totalPax + 1));
 
-					newPassenger.setSeat(FuncLib.uniqueRandom(randomSeatId,
+					newPassenger.setSeat(Func.uniqueRandom(randomSeatId,
 							seatAreaBegin, seatsInClass));
 					newPassenger.setName(newPassenger.getId() + " ("
 							+ getSeat(newPassenger).getName() + ")");
@@ -222,13 +222,13 @@ public class GeneratePassengersCommand extends CDTCommand {
 						"successfully created "
 								+ (passengerPerClassCount)
 								+ " passengers in "
-								+ FuncLib.splitCamelCase(travelSubClass
+								+ Func.splitCamelCase(travelSubClass
 										.getSimpleName())));
 			} else {
 
 				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 						"Too many passengers in "
-								+ FuncLib.splitCamelCase(travelSubClass
+								+ Func.splitCamelCase(travelSubClass
 										.getSimpleName())));
 			}
 		}

@@ -64,7 +64,7 @@ public class StopWatch {
 
 	public double getElapsedTimeTens() {
 		double value = getElapsedTime() / 1000.0;
-		return FuncLib.round(value, 1);
+		return Func.round(value, 1);
 	}
 
 	/**

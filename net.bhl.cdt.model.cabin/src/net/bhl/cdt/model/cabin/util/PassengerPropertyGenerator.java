@@ -7,7 +7,7 @@ import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.Sex;
 import net.bhl.cdt.model.cabin.SimulationProperties;
 import net.bhl.cdt.model.cabin.luggageType;
-import net.bhl.cdt.model.cabin.util.FuncLib.GaussOptions;
+import net.bhl.cdt.model.cabin.util.Func.GaussOptions;
 import net.bhl.cdt.model.util.ModelHelper;
 
 /**
@@ -94,7 +94,7 @@ public class PassengerPropertyGenerator {
 		passenger.setLuggage(adaptLuggage());
 
 		/** Define the luggage stow time randomly **/
-		passenger.setLuggageStowTime(FuncLib.round(adaptLuggageStowTime(), 2));
+		passenger.setLuggageStowTime(Func.round(adaptLuggageStowTime(), 2));
 	}
 
 	/**
@@ -113,7 +113,7 @@ public class PassengerPropertyGenerator {
 	 * @return the speed in meters per second
 	 */
 	private double adaptSpeed() {
-		int value = FuncLib.roundToFive(passenger.getAge());
+		int value = Func.roundToFive(passenger.getAge());
 		int index = value % 5;
 		if (index <= 0) {
 			index = 1;
@@ -151,17 +151,17 @@ public class PassengerPropertyGenerator {
 		case NONE:
 			return 0;
 		case SMALL:
-			return 0.8 * FuncLib.gaussianRandom(
+			return 0.8 * Func.gaussianRandom(
 					settings.getPassengerLuggageStowTimeMean(),
 					GaussOptions.PERCENT_95,
 					settings.getPassengerLuggageStowTimeDeviation());
 		case MEDIUM:
-			return 0.9 * FuncLib.gaussianRandom(
+			return 0.9 * Func.gaussianRandom(
 					settings.getPassengerLuggageStowTimeMean(),
 					GaussOptions.PERCENT_95,
 					settings.getPassengerLuggageStowTimeDeviation());
 		case BIG:
-			return FuncLib.gaussianRandom(
+			return Func.gaussianRandom(
 					settings.getPassengerLuggageStowTimeMean(),
 					GaussOptions.PERCENT_95,
 					settings.getPassengerLuggageStowTimeDeviation());
@@ -202,7 +202,7 @@ public class PassengerPropertyGenerator {
 		}
 
 		/* Then create a random number within the 5 year range. */
-		return FuncLib.randomValue(age - 5, age);
+		return Func.randomValue(age - 5, age);
 
 	}
 
@@ -234,7 +234,7 @@ public class PassengerPropertyGenerator {
 	 */
 
 	private Sex switchRandomSex(double percentageOfWomen) {
-		if (FuncLib.randomValue(0, 100) < percentageOfWomen) {
+		if (Func.randomValue(0, 100) < percentageOfWomen) {
 			return Sex.FEMALE;
 		}
 		return Sex.MALE;
@@ -252,7 +252,7 @@ public class PassengerPropertyGenerator {
 	 * @return a random gauss value
 	 */
 	private double getGauss95(double mean, double deviation) {
-		return FuncLib.gaussianRandom(mean, GaussOptions.PERCENT_95, deviation);
+		return Func.gaussianRandom(mean, GaussOptions.PERCENT_95, deviation);
 	}
 
 	/**

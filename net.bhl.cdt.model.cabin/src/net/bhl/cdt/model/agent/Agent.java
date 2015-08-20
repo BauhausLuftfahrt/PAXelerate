@@ -23,7 +23,7 @@ import net.bhl.cdt.model.cabin.LuggageSize;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.Seat;
-import net.bhl.cdt.model.cabin.util.FuncLib;
+import net.bhl.cdt.model.cabin.util.Func;
 import net.bhl.cdt.model.cabin.util.Rotator;
 import net.bhl.cdt.model.cabin.util.StopWatch;
 import net.bhl.cdt.model.cabin.util.Vector;
@@ -123,7 +123,7 @@ public class Agent extends Subject implements Runnable {
 			this.agentMood = new PassiveMood(this);
 		}
 
-		this.agentMood = new AgressiveMood(this);
+		// this.agentMood = new AgressiveMood(this);
 
 		defaultPassengerArea = new int[(int) (passenger.getWidth() / scale)][(int) (passenger
 				.getDepth() / scale)];
@@ -419,7 +419,7 @@ public class Agent extends Subject implements Runnable {
 		/* this is only run if its not the initial path finding process */
 		if (currentPosition != null) {
 
-			blockArea(currentPosition, false, false, null);
+			// blockArea(currentPosition, false, false, null);
 
 			/* print out the area map when in developer mode */
 			if (SimulationHandler.DEVELOPER_MODE) {
@@ -448,6 +448,13 @@ public class Agent extends Subject implements Runnable {
 		}
 		/* ends the stop watch performance logging */
 		stopwatch.stop();
+
+		System.out.println(stopwatch.getElapsedTimeSecs()
+				+ " seconds for path finding.");
+
+		if (currentPosition != null) {
+			blockArea(currentPosition, false, false, null);
+		}
 	}
 
 	/**
@@ -464,7 +471,7 @@ public class Agent extends Subject implements Runnable {
 	 * @return
 	 */
 	private boolean goalReached() {
-		return FuncLib.vectorsAreEqual(desiredPosition, goal);
+		return Func.vectorsAreEqual(desiredPosition, goal);
 	}
 
 	/**
@@ -623,7 +630,7 @@ public class Agent extends Subject implements Runnable {
 					rotateAgent(90);
 
 					/* sleep the thread as long as the luggage is stowed */
-					Thread.sleep(FuncLib.transformTime(passenger
+					Thread.sleep(Func.transformTime(passenger
 							.getLuggageStowTime()));
 
 					/* notify everyone that the luggage is now stowed */
@@ -648,7 +655,7 @@ public class Agent extends Subject implements Runnable {
 					if (anyoneNearMe()) {
 						System.out
 								.println("waymaking skipped. Delay simulated!");
-						Thread.sleep(FuncLib.transformTime(7));
+						Thread.sleep(Func.transformTime(7));
 						waitingCompleted = true;
 						continue;
 					}
@@ -667,7 +674,7 @@ public class Agent extends Subject implements Runnable {
 						}
 
 						// TODO: calculate the waiting time!
-						Thread.sleep(FuncLib.transformTime(3));
+						Thread.sleep(Func.transformTime(3));
 
 						waitingCompleted = true;
 					}
@@ -850,6 +857,15 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	private void unfoldSeat() {
+
+		int defoldingTime = 5;
+
+		try {
+			Thread.sleep(Func.transformTime(defoldingTime));
+		} catch (InterruptedException e) {
+			//
+		}
+
 		Seat seat = passenger.getSeatRef();
 		seat.setCurrentlyFolded(false);
 
@@ -869,7 +885,6 @@ public class Agent extends Subject implements Runnable {
 							.setProperty(Property.OBSTACLE, null);
 				}
 			}
-
 		}
 	}
 
@@ -898,7 +913,7 @@ public class Agent extends Subject implements Runnable {
 			pathlist.add(path);
 			if (inDefaultBoardingMode()) {
 				/* sleep the thread as long as the boarding delay requires it */
-				Thread.sleep(FuncLib.transformTime(passenger
+				Thread.sleep(Func.transformTime(passenger
 						.getStartBoardingAfterDelay()));
 
 				/*

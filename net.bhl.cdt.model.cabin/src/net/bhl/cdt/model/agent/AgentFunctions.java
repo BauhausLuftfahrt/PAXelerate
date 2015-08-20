@@ -9,7 +9,7 @@ import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
-import net.bhl.cdt.model.cabin.util.FuncLib;
+import net.bhl.cdt.model.cabin.util.Func;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.cabin.util.Vector2D;
 import net.bhl.cdt.model.util.ModelHelper;
@@ -178,7 +178,7 @@ public class AgentFunctions {
 						for (int stepsAhead = 0; stepsAhead < 6; stepsAhead++) {
 
 							/* the current agents position is excluded here! */
-							if (!FuncLib.vectorsAreEqual(
+							if (!Func.vectorsAreEqual(
 									SimulationHandler
 											.getMap()
 											.getNodeByCoordinate(xCoordinate,

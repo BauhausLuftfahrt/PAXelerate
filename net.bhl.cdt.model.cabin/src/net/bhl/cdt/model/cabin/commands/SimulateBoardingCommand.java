@@ -17,7 +17,7 @@ import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.InfoViewPart;
 import net.bhl.cdt.model.cabin.ui.SimulationView;
-import net.bhl.cdt.model.cabin.util.FuncLib;
+import net.bhl.cdt.model.cabin.util.Func;
 import net.bhl.cdt.model.cabin.util.Input;
 import net.bhl.cdt.model.cabin.util.SimulationResultLogger;
 import net.bhl.cdt.model.cabin.util.Input.WindowType;
@@ -211,7 +211,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 			results.getSimulationData(
 					SimulationHandler.getCabin(),
 					i + 1,
-					FuncLib.round(
+					Func.round(
 							(SimulationView.getWatch().getElapsedTimeSecs() * (double) cabin
 									.getSimulationSettings()
 									.getSimulationSpeedFactor()), 2));

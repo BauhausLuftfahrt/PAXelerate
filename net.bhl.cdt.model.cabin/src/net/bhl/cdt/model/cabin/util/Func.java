@@ -29,7 +29,7 @@ import net.bhl.cdt.model.cabin.Passenger;
  *
  */
 
-public abstract class FuncLib {
+public abstract class Func {
 
 	/**
 	 * This method checks whether the two input vectors are equal
@@ -97,6 +97,10 @@ public abstract class FuncLib {
 			value = 1;
 		}
 		return (long) value;
+	}
+
+	public static int ts(double size) {
+		return (int) (size / SimulationHandler.getCabin().getScale());
 	}
 
 	public static int GetScreenWorkingWidth() {

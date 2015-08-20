@@ -18,7 +18,7 @@ import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.SimulationProperties;
 import net.bhl.cdt.model.cabin.TravelClass;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
-import net.bhl.cdt.model.cabin.util.FuncLib;
+import net.bhl.cdt.model.cabin.util.Func;
 import net.bhl.cdt.model.cabin.util.InputChecker;
 import net.bhl.cdt.model.util.ModelHelper;
 
@@ -182,7 +182,7 @@ public class DrawCabinCommand extends CDTCommand {
 			seat.setTravelClass(tc);
 			seat.setRow(row);
 			seat.setName(seat.getRow().getRowNumber()
-					+ FuncLib.getCharForNumber(seatInRowCount));
+					+ Func.getCharForNumber(seatInRowCount));
 			seat.setXDimension(tc.getSeatWidth());
 			seat.setYDimension(tc.getSeatLength());
 

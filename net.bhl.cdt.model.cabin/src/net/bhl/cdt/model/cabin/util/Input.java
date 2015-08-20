@@ -293,7 +293,7 @@ public class Input extends TitleAreaDialog {
 		switch (windowType) {
 		case GET_INTEGER:
 			if (text.getText() != "") {
-				if (FuncLib.isNumeric(text.getText())) {
+				if (Func.isNumeric(text.getText())) {
 					return true;
 				} else {
 					warningLabel
@@ -308,7 +308,7 @@ public class Input extends TitleAreaDialog {
 			}
 		case OPTIONS:
 			if (text.getText() != "") {
-				if (FuncLib.isNumeric(text.getText())) {
+				if (Func.isNumeric(text.getText())) {
 					return true;
 				} else {
 					warningLabel
@@ -331,8 +331,8 @@ public class Input extends TitleAreaDialog {
 			}
 		case GET_VECTOR:
 			if (text.getText() != "" && text2.getText() != "") {
-				if (FuncLib.isNumeric(text.getText())
-						&& FuncLib.isNumeric(text2.getText())) {
+				if (Func.isNumeric(text.getText())
+						&& Func.isNumeric(text2.getText())) {
 					return true;
 				} else {
 					warningLabel
@@ -348,10 +348,10 @@ public class Input extends TitleAreaDialog {
 		case GET_TWO_VECTORS:
 			if (text.getText() != "" && text2.getText() != ""
 					&& text3.getText() != "" && text4.getText() != "") {
-				if (FuncLib.isNumeric(text.getText())
-						&& FuncLib.isNumeric(text2.getText())
-						&& FuncLib.isNumeric(text3.getText())
-						&& FuncLib.isNumeric(text4.getText())) {
+				if (Func.isNumeric(text.getText())
+						&& Func.isNumeric(text2.getText())
+						&& Func.isNumeric(text3.getText())
+						&& Func.isNumeric(text4.getText())) {
 					return true;
 				} else {
 					warningLabel

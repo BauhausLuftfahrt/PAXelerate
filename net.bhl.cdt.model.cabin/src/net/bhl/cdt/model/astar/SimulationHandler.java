@@ -21,7 +21,7 @@ import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.SimulationView;
 import net.bhl.cdt.model.cabin.ui.ProgressHandler;
-import net.bhl.cdt.model.cabin.util.FuncLib;
+import net.bhl.cdt.model.cabin.util.Func;
 import net.bhl.cdt.model.cabin.util.Logger;
 import net.bhl.cdt.model.cabin.util.StopWatch;
 import net.bhl.cdt.model.cabin.util.Vector;
@@ -281,7 +281,7 @@ public class SimulationHandler {
 		// TODO: Do not use a static time stamp but consider the simulation
 		// speed!
 		double time = watch.getElapsedTimeTens();
-		if (Math.abs(lastDoorRelease.get(door) - time) > (FuncLib
+		if (Math.abs(lastDoorRelease.get(door) - time) > (Func
 				.transformTime(0.3) / 1000.0)) {
 			lastDoorRelease.put(door, time);
 			return true;
@@ -300,7 +300,7 @@ public class SimulationHandler {
 
 	public synchronized static void setPassengerActive(Passenger pax) {
 
-		if (!FuncLib.PassengerAlreadyInList(pax, activeList)) {
+		if (!Func.PassengerAlreadyInList(pax, activeList)) {
 			activeList.add(pax);
 		}
 	}
