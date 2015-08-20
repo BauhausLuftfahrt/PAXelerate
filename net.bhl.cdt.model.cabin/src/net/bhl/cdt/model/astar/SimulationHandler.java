@@ -211,19 +211,16 @@ public class SimulationHandler {
 
 		int offset = 5;
 
-		Vector start = new Vector2D(
-				(int) ((seat.getXPosition() + seat.getXDimension() / 2) / cabin
-						.getScale()),
-				(int) ((seat.getYPosition() / cabin.getScale()) - 2));
+		Vector start = new Vector2D(Func.size((seat.getXPosition() + seat
+				.getXDimension() / 2)), Func.size((seat.getYPosition()) - 2));
 
 		if (pax.getSeatRef().getYPosition() < pax.getDoor().getYPosition()) {
 			offset = -(offset + 2);
 			System.out.println("offset mirrored");
 		}
 
-		Vector goal = new Vector2D((int) (cabin.getCabinWidth()
-				/ cabin.getScale() / 2.0),
-				(int) (seat.getYPosition() / cabin.getScale()) + offset);
+		Vector goal = new Vector2D(Func.size(cabin.getCabinWidth() / 2.0),
+				Func.size(seat.getYPosition()) + offset);
 
 		Agent agent = new Agent(pax, start, goal,
 				SimulationHandler.getCostMap(), Agent.AgentMode.MAKE_WAY,
@@ -320,12 +317,10 @@ public class SimulationHandler {
 			Seat seat = passenger.getSeatRef();
 			Door door = passenger.getDoor();
 			Vector start = new Vector2D(0,
-					(int) ((door.getYPosition() + door.getWidth() / 2) / cabin
-							.getScale()));
-			Vector goal = new Vector2D(
-					(int) ((seat.getXPosition() + seat.getXDimension() / 2) / cabin
-							.getScale()), (int) ((seat.getYPosition() / cabin
-							.getScale()) - 1));
+					Func.size((door.getYPosition() + door.getWidth() / 2)));
+			Vector goal = new Vector2D(Func.size((seat.getXPosition() + seat
+					.getXDimension() / 2)),
+					Func.size((seat.getYPosition()) - 1));
 
 			if (doItOnce) {
 				/* This line generates a costmap which is used for all agents */
@@ -352,11 +347,11 @@ public class SimulationHandler {
 					// TODO: real progress indications for calculation of cost
 					// map could be implemented!
 
-					if (percent <= 10) {
+					if (percent < 10) {
 						progress.updateText("Initializing Path finding algorithms ...");
-					} else if (percent <= 30) {
+					} else if (percent < 30) {
 						progress.updateText("Creating the agent objects ...");
-					} else if (percent <= 90) {
+					} else if (percent < 90) {
 						progress.updateText("Calculating the paths for every passenger ...");
 					} else {
 						progress.updateText("Finishing calculations ...");
