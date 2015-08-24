@@ -233,15 +233,31 @@ public class ObstacleMap {
 							obstacleMap[i][j] = HOLE_VALUE;
 						}
 
-						if (i < 19 && i > 16) {
-							obstacleMap[i][j] = HOLE_VALUE;
-						}
-
-						if (j > Func.size(door.getYPosition())) {
-							if (i > 19 && i < 22) {
+						if (!cabin.getSimulationSettings().isBringYourOwnSeat()
+								&& !cabin.getSimulationSettings()
+										.isUseFoldableSeats()) {
+							if (i < 19 && i > 16) {
 								obstacleMap[i][j] = HOLE_VALUE;
 							}
-
+						} else if (cabin.getSimulationSettings()
+								.isUseFoldableSeats()
+								&& !cabin.getSimulationSettings()
+										.isBringYourOwnSeat()) {
+							if (i < 21 && i > 16) {
+								obstacleMap[i][j] = HOLE_VALUE;
+							}
+							if (j > 20) {
+								if (i == 19) {
+									obstacleMap[i][j] = 900;
+								}
+							}
+						} else {
+							if (j > 20) {
+								if (i == 5 || i == 10 || i == 15 || i == 31
+										|| i == 26 || i == 21) {
+									obstacleMap[i][j] = 900;
+								}
+							}
 						}
 					}
 				}

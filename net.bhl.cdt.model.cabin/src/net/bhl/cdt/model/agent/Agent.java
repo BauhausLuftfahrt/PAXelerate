@@ -816,6 +816,14 @@ public class Agent extends Subject implements Runnable {
 
 		if (!passenger.getSeatRef().isOccupied()) {
 
+			/* clear the current position of the agent */
+			blockArea(currentPosition, false, false, null);
+			blockArea(desiredPosition, false, false, null);
+
+			if (passenger.getSeatRef().isCurrentlyFolded()) {
+				unfoldSeat();
+			}
+
 			defineSeated(true);
 
 			/* the stop watch is then interrupted */
@@ -829,14 +837,6 @@ public class Agent extends Subject implements Runnable {
 
 			/* the number of interrupts is submitted to the passenger */
 			passenger.setNumberOfWaits(numbOfInterupts);
-
-			/* clear the current position of the agent */
-			blockArea(currentPosition, false, false, null);
-			blockArea(desiredPosition, false, false, null);
-
-			if (passenger.getSeatRef().isCurrentlyFolded()) {
-				unfoldSeat();
-			}
 
 			SimulationHandler.getMap().getNode(getGoal())
 					.setProperty(Property.DEFAULT, getPassenger());
@@ -852,24 +852,18 @@ public class Agent extends Subject implements Runnable {
 
 		int defoldingTime = 5;
 
-		try {
-			Thread.sleep(Func.time(defoldingTime));
-		} catch (InterruptedException e) {
-			//
-		}
-
 		Seat seat = passenger.getSeatRef();
 		seat.setCurrentlyFolded(false);
 
-		int physicalObjectWidth = (int) (seat.getXDimension() / scale);
-		int physicalObjectLength = (int) (seat.getYDimension() / scale);
-		int physicalObjectXPosition = (int) (seat.getXPosition() / scale);
-		int physicalObjectYDimension = (int) (seat.getYPosition() / scale);
+		int width = (int) (seat.getXDimension() / scale);
+		int length = (int) (seat.getYDimension() / scale);
+		int xPosition = (int) (seat.getXPosition() / scale);
+		int yPosition = (int) (seat.getYPosition() / scale);
 
-		for (int i = 0; i < physicalObjectWidth; i++) {
-			for (int j = 0; j < physicalObjectLength; j++) {
-				int k = physicalObjectXPosition + i;
-				int l = physicalObjectYDimension + j;
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j < length; j++) {
+				int k = xPosition + i;
+				int l = yPosition + j;
 				if (k < SimulationHandler.getMap().getDimensions().getX()
 						&& l < SimulationHandler.getMap().getDimensions()
 								.getY()) {
@@ -877,6 +871,12 @@ public class Agent extends Subject implements Runnable {
 							.setProperty(Property.OBSTACLE, null);
 				}
 			}
+		}
+
+		try {
+			Thread.sleep(Func.time(defoldingTime));
+		} catch (InterruptedException e) {
+			//
 		}
 	}
 
