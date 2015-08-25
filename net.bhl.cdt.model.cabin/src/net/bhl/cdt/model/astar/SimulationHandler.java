@@ -278,7 +278,7 @@ public class SimulationHandler {
 		// TODO: Do not use a static time stamp but consider the simulation
 		// speed!
 		double time = watch.getElapsedTimeTens();
-		if (Math.abs(lastDoorRelease.get(door) - time) > (Func.time(0.3) / 1000.0)) {
+		if (Math.abs(lastDoorRelease.get(door) - time) > (Func.time(0.15) / 1000.0)) {
 			lastDoorRelease.put(door, time);
 			return true;
 		}
