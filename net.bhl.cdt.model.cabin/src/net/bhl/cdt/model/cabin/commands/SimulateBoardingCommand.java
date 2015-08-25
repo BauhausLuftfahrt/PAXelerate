@@ -18,6 +18,7 @@ import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.SimulationView;
 import net.bhl.cdt.model.cabin.util.Func;
 import net.bhl.cdt.model.cabin.util.Input;
+import net.bhl.cdt.model.cabin.util.OS;
 import net.bhl.cdt.model.cabin.util.SimulationResultLogger;
 import net.bhl.cdt.model.cabin.util.Input.WindowType;
 import net.bhl.cdt.model.cabin.util.Vector2D;
@@ -73,6 +74,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 	protected void doRun() {
 
 		cabin.setFramesPerSecond(10);
+		cabin.getSimulationSettings().setRandomSortBetweenLoops(false);
 
 		SimulationResultLogger results = new SimulationResultLogger();
 
@@ -156,6 +158,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 							alreadySeatedList.add(pax);
 						}
 					}
+					if(OS.isMac()) {
+					cabinViewPart.submitPassengerCoordinates(cabin);
+					}
 				}
 				if (SimulationHandler.isSimulationDone()) {
 					for (Passenger pax : ModelHelper.getChildrenByClass(
@@ -164,7 +169,6 @@ public class SimulateBoardingCommand extends CDTCommand {
 								&& !alreadySeatedList.contains(pax)) {
 							alreadySeatedList.add(pax);
 							try {
-								// infoViewPart.update(cabin);
 							} catch (NullPointerException e) {
 								logger.log(new Status(IStatus.ERROR,
 										"net.bhl.cdt.model.cabin",

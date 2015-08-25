@@ -385,7 +385,7 @@ public class SimulationHandler {
 		// IssueScanner scanner = new IssueScanner();
 		// scanner.start();
 
-		if (SHOW_AREAMAP_ANIMATION) {
+		if (SHOW_AREAMAP_ANIMATION && OS.isWindows()) {
 			runAreaMapWindow();
 		}
 	}

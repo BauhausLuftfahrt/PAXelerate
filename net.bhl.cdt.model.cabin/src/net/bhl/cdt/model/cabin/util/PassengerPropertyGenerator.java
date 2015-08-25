@@ -138,10 +138,10 @@ public class PassengerPropertyGenerator {
 			luggagemodel = luggagemodel1;
 		} else {
 			double[] luggagemodel2 = {
-				7.5,
-				52,
-				36.5,
-				4};
+				100,
+				0,
+				0,
+				0};
 			luggagemodel = luggagemodel2;
 		}
 		ProbabilityMachine machine = new ProbabilityMachine(luggagemodel);
@@ -150,7 +150,7 @@ public class PassengerPropertyGenerator {
 
 		switch (machine.getProbabilityValue()) {
 		case 0:
-			 
+		
 			return LuggageSize.NONE;
 		case 1:
 			 
