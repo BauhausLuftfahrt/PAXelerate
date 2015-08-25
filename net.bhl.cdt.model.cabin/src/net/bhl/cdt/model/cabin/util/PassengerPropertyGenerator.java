@@ -6,7 +6,6 @@ import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.Sex;
 import net.bhl.cdt.model.cabin.SimulationProperties;
-import net.bhl.cdt.model.cabin.luggageType;
 import net.bhl.cdt.model.cabin.util.Func.GaussOptions;
 import net.bhl.cdt.model.util.ModelHelper;
 
@@ -49,7 +48,10 @@ public class PassengerPropertyGenerator {
 
 	public PassengerPropertyGenerator(Passenger pax) {
 
+		 
 		this.passenger = pax;
+		
+		
 
 		this.settings = ModelHelper.getParent(Cabin.class, pax)
 				.getSimulationSettings();
@@ -57,44 +59,47 @@ public class PassengerPropertyGenerator {
 		/** At first. decide for the sex. **/
 		passenger.setSex(switchRandomSex(settings.getPercentageOfWomen()));
 
+		 
+		
 		/** Define the mood of the passenger **/
 		passenger.setPassengerMood(PassengerMood.PASSIVE);
-
+		 
 		/** Define the age according to age distribution **/
 		passenger.setAge(adaptAge());
-
+		 
 		/** Define the height according to normal distribution **/
 		passenger.setHeight((int) adapt(settings.getPassengerHeightMeanMale(),
 				settings.getPassengerHeightDeviationMale(),
 				settings.getPassengerHeightMeanFemale(),
 				settings.getPassengerHeightDeviationFemale()));
-
+		 
 		/** Define the weight according to normal distribution **/
 		passenger.setWeight((int) adapt(settings.getPassengerWeightMeanMale(),
 				settings.getPassengerWeightDeviationMale(),
 				settings.getPassengerWeightMeanFemale(),
 				settings.getPassengerWeightDeviationFemale()));
-
+		 
 		/** Define the depth according to normal distribution **/
 		passenger.setDepth((int) adapt(settings.getPassengerDepthMeanMale(),
 				settings.getPassengerDepthDeviationMale(),
 				settings.getPassengerDepthMeanFemale(),
 				settings.getPassengerDepthDeviationFemale()));
-
+		 
 		/** Define the width according to normal distribution **/
 		passenger.setWidth((int) adapt(settings.getPassengerWidthMeanMale(),
 				settings.getPassengerWidthDeviationMale(),
 				settings.getPassengerWidthMeanFemale(),
 				settings.getPassengerWidthDeviationFemale()));
-
+		 
 		/** Define the walking speed according to age **/
 		passenger.setWalkingSpeed(adaptSpeed());
-
+		 
 		/* Define the type of luggage */
 		passenger.setLuggage(adaptLuggage());
-
+		 
 		/** Define the luggage stow time randomly **/
 		passenger.setLuggageStowTime(Func.round(adaptLuggageStowTime(), 2));
+		 
 	}
 
 	/**
@@ -122,25 +127,42 @@ public class PassengerPropertyGenerator {
 	}
 
 	private LuggageSize adaptLuggage() {
-
-		double[] luggagemodel = {
+		double[] luggagemodel;
+		 
+		if(!OS.isMac()) {
+			double[] luggagemodel1 = {
 				this.settings.getPercentageOfPassengersWithNoLuggage(),
 				this.settings.getPercentageOfPassengersWithSmallLuggage(),
 				this.settings.getPercentageOfPassengersWithMediumLuggage(),
 				this.settings.getPercentageOfPassengersWithBigLuggage() };
-
+			luggagemodel = luggagemodel1;
+		} else {
+			double[] luggagemodel2 = {
+				7.5,
+				52,
+				36.5,
+				4};
+			luggagemodel = luggagemodel2;
+		}
 		ProbabilityMachine machine = new ProbabilityMachine(luggagemodel);
+		
+		
 
 		switch (machine.getProbabilityValue()) {
 		case 0:
+			 
 			return LuggageSize.NONE;
 		case 1:
+			 
 			return LuggageSize.SMALL;
 		case 2:
+			 
 			return LuggageSize.MEDIUM;
 		case 3:
+			 
 			return LuggageSize.BIG;
 		default:
+			 
 			return LuggageSize.NONE;
 		}
 	}

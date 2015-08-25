@@ -6,6 +6,7 @@
 package net.bhl.cdt.model.cabin.commands;
 
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.astar.AreaMap;
@@ -41,6 +42,21 @@ public class FloodCabinCommand extends CDTCommand {
 	public FloodCabinCommand(Cabin cabin) {
 		this.cabin = cabin;
 	}
+	
+	public void runFrame(final int value) {
+		final Vector dimensions = new Vector2D(cabin.getCabinWidth()
+				/ cabin.getScale(), cabin.getCabinLength() / cabin.getScale());
+		ObstacleMap obstaclemap = new ObstacleMap(cabin);
+		final AreaMap areamap = new AreaMap(dimensions, obstaclemap);
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				frame = new JFrame("Cost Map Flooding Animation");
+				frame.setContentPane(new HelpView(areamap, dimensions, value));
+				frame.pack();
+				frame.setVisible(true);
+			}
+		});
+	}
 
 	/**
 	 * This method executed the right click command. The cabin view is updated.
@@ -58,18 +74,6 @@ public class FloodCabinCommand extends CDTCommand {
 		 * @param args
 		 *            the arguments
 		 */
-		final Vector dimensions = new Vector2D(cabin.getCabinWidth()
-				/ cabin.getScale(), cabin.getCabinLength() / cabin.getScale());
-		ObstacleMap obstaclemap = new ObstacleMap(cabin);
-		final AreaMap areamap = new AreaMap(dimensions, obstaclemap);
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				frame = new JFrame("Cost Map Flooding Animation");
-				frame.setContentPane(new HelpView(areamap, dimensions, dialog
-						.getIntegerValue()));
-				frame.pack();
-				frame.setVisible(true);
-			}
-		});
+		runFrame(dialog.getIntegerValue());
 	}
 }

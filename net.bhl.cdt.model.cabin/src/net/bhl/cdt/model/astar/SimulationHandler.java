@@ -9,12 +9,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 import org.eclipse.emf.common.util.EList;
 
 import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.agent.AgentFunctions;
-import net.bhl.cdt.model.agent.IssueScanner;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
@@ -23,6 +23,7 @@ import net.bhl.cdt.model.cabin.ui.SimulationView;
 import net.bhl.cdt.model.cabin.ui.ProgressHandler;
 import net.bhl.cdt.model.cabin.util.Func;
 import net.bhl.cdt.model.cabin.util.Logger;
+import net.bhl.cdt.model.cabin.util.OS;
 import net.bhl.cdt.model.cabin.util.StopWatch;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.cabin.util.Vector2D;
@@ -54,7 +55,7 @@ public class SimulationHandler {
 
 	public static final boolean SHOW_AREAMAP_ANIMATION = true;
 
-	private static JFrame frame;
+	private static JFrame simulationFrame;
 	private static ProgressHandler progress;
 	private static int progressValue = 0;
 	private static int percent = 0;
@@ -165,7 +166,7 @@ public class SimulationHandler {
 		accessPending.clear();
 		watch.reset();
 
-		frame = null;
+		simulationFrame = null;
 		progress = null;
 
 		progressValue = 0;
@@ -191,7 +192,7 @@ public class SimulationHandler {
 		}
 		if (finishedList.size() >= (cabin.getPassengers().size() - 1)) {
 			setSimulationDone(true);
-			frame.dispose();
+			simulationFrame.dispose();
 		}
 
 	}
@@ -337,6 +338,7 @@ public class SimulationHandler {
 			agentList.add(agent);
 		}
 
+		if(!OS.isMac()) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				progress = new ProgressHandler(agentList.size());
@@ -358,9 +360,9 @@ public class SimulationHandler {
 					}
 				}
 				progress.done();
-
 			}
 		});
+		}
 
 		/* First generate all paths ... */
 		// int i = 1;
@@ -393,17 +395,14 @@ public class SimulationHandler {
 	}
 
 	private void runAreaMapWindow() {
-
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-
-				SimulationView view = new SimulationView();
-				view.setAreamap(areamap);
-
-				frame = new JFrame("Simulation View");
-				frame.setContentPane(view);
-				frame.pack();
-				frame.setVisible(true);
+				simulationFrame = new JFrame("Simulation Detail View");
+				SimulationView simulationView = new SimulationView();
+				simulationView.setAreamap(areamap);
+				simulationFrame.setContentPane(simulationView);
+				simulationFrame.pack();
+				simulationFrame.setVisible(true);
 			}
 		});
 	}

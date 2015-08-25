@@ -16,7 +16,7 @@ import net.bhl.cdt.model.util.ModelHelper;
 
 public class AgentFunctions {
 
-	public static final int PIXELS_FOR_SCANNING_AT_DOOR = 3;
+	public static final int PIXELS_FOR_SCANNING_AT_DOOR = 1;
 
 	public static boolean someoneAlreadyInThisPartOfTheRow(Agent agent) {
 		Row row = agent.getPassenger().getSeatRef().getRow();

@@ -15,7 +15,6 @@ import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
-import net.bhl.cdt.model.cabin.ui.InfoViewPart;
 import net.bhl.cdt.model.cabin.ui.SimulationView;
 import net.bhl.cdt.model.cabin.util.Func;
 import net.bhl.cdt.model.cabin.util.Input;
@@ -31,9 +30,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PlatformUI;
+
 
 /**
  * This command starts the boarding simulation.
@@ -76,6 +73,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 	protected void doRun() {
 
 		cabin.setFramesPerSecond(10);
+		cabin.getSimulationSettings().setSimulationSpeedFactor(10);
 
 		SimulationResultLogger results = new SimulationResultLogger();
 

@@ -25,7 +25,6 @@ import org.eclipse.ui.PlatformUI;
 import net.bhl.cdt.model.astar.SimulationHandler;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
-import net.bhl.cdt.model.cabin.ui.InfoViewPart;
 
 /**
  * This class is used for general calculations and methods.
@@ -42,6 +41,10 @@ public abstract class Func {
 		IWorkbenchPage page = window.getActivePage();
 		return (CabinViewPart) page
 				.findView("net.bhl.cdt.model.cabin.cabinview");
+	}
+	
+	public static int getLineNumber() {
+	    return Thread.currentThread().getStackTrace()[2].getLineNumber();
 	}
 
 	/**

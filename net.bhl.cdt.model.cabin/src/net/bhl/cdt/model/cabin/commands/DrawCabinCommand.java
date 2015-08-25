@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
-import net.bhl.cdt.model.cabin.EconomyClass;
+
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PhysicalObject;
 import net.bhl.cdt.model.cabin.Row;
@@ -19,16 +19,12 @@ import net.bhl.cdt.model.cabin.SimulationProperties;
 import net.bhl.cdt.model.cabin.TravelClass;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.util.Func;
-import net.bhl.cdt.model.cabin.util.InputChecker;
 import net.bhl.cdt.model.util.ModelHelper;
 
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.PlatformUI;
-
 /**
  * This class refreshed the cabin view without modifying anything. It checks the
  * layout of the cabin and warns the user.
