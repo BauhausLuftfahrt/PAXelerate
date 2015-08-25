@@ -73,7 +73,6 @@ public class SimulateBoardingCommand extends CDTCommand {
 	protected void doRun() {
 
 		cabin.setFramesPerSecond(10);
-		cabin.getSimulationSettings().setSimulationSpeedFactor(10);
 
 		SimulationResultLogger results = new SimulationResultLogger();
 
