@@ -127,26 +127,20 @@ public class PassengerPropertyGenerator {
 	}
 
 	private LuggageSize adaptLuggage() {
-		double[] luggagemodel;
 		 
-		if(!OS.isMac()) {
-			double[] luggagemodel1 = {
+		double[] luggagemodel = {
 				this.settings.getPercentageOfPassengersWithNoLuggage(),
 				this.settings.getPercentageOfPassengersWithSmallLuggage(),
 				this.settings.getPercentageOfPassengersWithMediumLuggage(),
 				this.settings.getPercentageOfPassengersWithBigLuggage() };
-			luggagemodel = luggagemodel1;
-		} else {
-			double[] luggagemodel2 = {
-				100,
-				0,
-				0,
-				0};
-			luggagemodel = luggagemodel2;
+			
+		if((luggagemodel[0]+luggagemodel[1]+luggagemodel[2]+luggagemodel[3]) == 0) {
+			luggagemodel[0] = 100;
+
+			System.out.println("CAUTION, ERROR IN LUGGAGE DISTRIBUTION.");
 		}
+			
 		ProbabilityMachine machine = new ProbabilityMachine(luggagemodel);
-		
-		
 
 		switch (machine.getProbabilityValue()) {
 		case 0:

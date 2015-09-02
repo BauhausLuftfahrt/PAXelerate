@@ -19,6 +19,7 @@ import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
+import net.bhl.cdt.model.cabin.ui.HelpView;
 import net.bhl.cdt.model.cabin.ui.SimulationView;
 import net.bhl.cdt.model.cabin.ui.ProgressHandler;
 import net.bhl.cdt.model.cabin.util.Func;
@@ -385,7 +386,7 @@ public class SimulationHandler {
 		// IssueScanner scanner = new IssueScanner();
 		// scanner.start();
 
-		if (SHOW_AREAMAP_ANIMATION && OS.isWindows()) {
+		if (SHOW_AREAMAP_ANIMATION) {  //&& OS.isWindows()) {
 			runAreaMapWindow();
 		}
 	}
@@ -395,16 +396,30 @@ public class SimulationHandler {
 	}
 
 	private void runAreaMapWindow() {
+		
+		final Vector dimensions = new Vector2D(cabin.getCabinWidth()
+				/ cabin.getScale(), cabin.getCabinLength() / cabin.getScale());
+		ObstacleMap obstaclemap = new ObstacleMap(cabin);
+		final AreaMap areamap = new AreaMap(dimensions, obstaclemap);
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				simulationFrame = new JFrame("Simulation Detail View");
-				SimulationView simulationView = new SimulationView();
-				simulationView.setAreamap(areamap);
-				simulationFrame.setContentPane(simulationView);
+				simulationFrame = new JFrame("Cost Map Flooding Animation");
+				simulationFrame.setContentPane(new HelpView(areamap, dimensions, 5));
 				simulationFrame.pack();
 				simulationFrame.setVisible(true);
 			}
 		});
+		
+//		SwingUtilities.invokeLater(new Runnable() {
+//			public void run() {
+//				simulationFrame = new JFrame("Simulation Detail View");
+//				SimulationView simulationView = new SimulationView();
+//				simulationView.setAreamap(areamap);
+//				simulationFrame.setContentPane(simulationView);
+//				simulationFrame.pack();
+//				simulationFrame.setVisible(true);
+//			}
+//		});
 	}
 
 }
