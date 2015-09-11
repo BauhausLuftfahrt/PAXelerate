@@ -20,7 +20,8 @@ import net.bhl.cdt.model.cabin.PremiumEconomyClass;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.TravelClass;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
-import net.bhl.cdt.model.cabin.util.Func;
+import net.bhl.cdt.model.cabin.ui.InfoViewPart;
+import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.PassengerPropertyGenerator;
 import net.bhl.cdt.model.util.ModelHelper;
 
@@ -28,7 +29,8 @@ import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
-
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * 
@@ -44,6 +46,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 	private Cabin cabin;
 	private ArrayList<Integer> randomSeatId;
 	private ArrayList<Integer> randomPassengerId;
+	private int passengerIdCount;
 	private int passengerPerClassCount;
 	private CabinViewPart cabinViewPart;
 	private int totalPax;
@@ -62,6 +65,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 	private int premiumecoseats = 0;
 	private int ecoseats = 0;
 
+	private int door1count = 0;
+	private int door2count = 0;
 
 	/**
 	 * This method submits the cabin to be used in the file.
@@ -143,7 +148,6 @@ public class GeneratePassengersCommand extends CDTCommand {
 		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
 			if ((!seat.equals(null)) && (seat.getId() == passenger.getSeat())) {
 				seat.setPassenger(passenger);
-				 
 				return seat;
 			}
 		}
@@ -151,7 +155,6 @@ public class GeneratePassengersCommand extends CDTCommand {
 				"No seat found!"));
 
 		Seat emptySeat = null;
-		 
 		return emptySeat;
 	}
 
@@ -159,12 +162,12 @@ public class GeneratePassengersCommand extends CDTCommand {
 		double delay = 0;
 		double clocking = cabin.getSimulationSettings()
 				.getPassengersBoardingPerMinute();
-		 
+
 		pax.getDoor().getWaitingPassengers().add(pax);
 
 		delay = (pax.getDoor().getWaitingPassengers().size() - 1) * 60.0
 				/ (double) clocking;
-		 
+
 		return delay;
 	}
 
@@ -175,39 +178,32 @@ public class GeneratePassengersCommand extends CDTCommand {
 	 *            specifies in which class the passengers are generated
 	 */
 	private <T extends TravelClass> void generatePassengers(
-			
 			Class<T> travelSubClass) {
 		passengerPerClassCount = 0;
-		 
+
 		/********************************************************/
 
 		switchClass(travelSubClass);
 		if (paxInClass != 0) {
 			if (paxInClass <= seatsInClass) {
 				for (int i = 1; i <= paxInClass; i++) {
-					 
 					Passenger newPassenger = CabinFactory.eINSTANCE
 							.createPassenger();
 					cabin.getPassengers().add(newPassenger);
-					newPassenger.setId(Func.uniqueRandom(randomPassengerId,
+					newPassenger.setId(FuncLib.uniqueRandom(randomPassengerId,
 							1, totalPax + 1));
 
-					newPassenger.setSeat(Func.uniqueRandom(randomSeatId,
+					newPassenger.setSeat(FuncLib.uniqueRandom(randomSeatId,
 							seatAreaBegin, seatsInClass));
-					 
 					newPassenger.setName(newPassenger.getId() + " ("
 							+ getSeat(newPassenger).getName() + ")");
-					 
 					newPassenger.setSeatRef(getSeat(newPassenger));
-					 
 					newPassenger.setTravelClass(newPassenger.getSeatRef()
 							.getTravelClass());
-					 
 					newPassenger.setDoor(getDoor(newPassenger));
-					 
+
 					newPassenger
 							.setStartBoardingAfterDelay(calculateDelay(newPassenger));
-					 
 
 					/************************ random values ***************************/
 
@@ -216,7 +212,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 					newPassenger = generator.getPassenger();
 
 					/********************************************************************/
-					 
+
+					passengerIdCount++;
 					passengerPerClassCount++;
 				}
 				randomSeatId.clear();
@@ -225,13 +222,13 @@ public class GeneratePassengersCommand extends CDTCommand {
 						"successfully created "
 								+ (passengerPerClassCount)
 								+ " passengers in "
-								+ Func.splitCamelCase(travelSubClass
+								+ FuncLib.splitCamelCase(travelSubClass
 										.getSimpleName())));
 			} else {
 
 				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 						"Too many passengers in "
-								+ Func.splitCamelCase(travelSubClass
+								+ FuncLib.splitCamelCase(travelSubClass
 										.getSimpleName())));
 			}
 		}
@@ -242,18 +239,18 @@ public class GeneratePassengersCommand extends CDTCommand {
 	 */
 	@Override
 	protected void doRun() {
-		
-		 
-		
 		/************************* get the views ***********************/
-		cabinViewPart = Func.getCabinView();
-		
+		IWorkbenchPage page = PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getActivePage();
+
+		cabinViewPart = (CabinViewPart) page
+				.findView("net.bhl.cdt.model.cabin.cabinview");
+		InfoViewPart infoViewPart = (InfoViewPart) page
+				.findView("net.bhl.cdt.model.cabin.infoview");
 		// Unsync the cabin view during the execution of the command.
 		cabinViewPart.unsyncViewer();
 		/**************************************************************/
 		cabin.getPassengers().clear();
-		
-		 
 
 		try {
 			firstpax = ModelHelper.getChildrenByClass(cabin, FirstClass.class)
@@ -281,7 +278,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 		} catch (IndexOutOfBoundsException e) {
 			// ...
 		}
-		  
+
 		totalPax = firstpax + businesspax + premiumecopax + ecopax;
 
 		try {
@@ -312,10 +309,11 @@ public class GeneratePassengersCommand extends CDTCommand {
 		} catch (IndexOutOfBoundsException e) {
 			// ...
 		}
-		 
+
 		totalSeats = firstseats + businessseats + premiumecoseats + ecoseats;
 		randomSeatId = new ArrayList<Integer>();
 		randomPassengerId = new ArrayList<Integer>();
+		passengerIdCount = 1;
 
 		if (totalPax <= totalSeats) {
 			if (firstpax > 0) {
@@ -336,13 +334,14 @@ public class GeneratePassengersCommand extends CDTCommand {
 					"Too many passengers in the cabin! Remove "
 							+ (totalPax - totalSeats) + "!"));
 		}
-		 
+
 		for (Door door : cabin.getDoors()) {
 			door.getWaitingPassengers().clear();
 		}
-		 
+
 		try {
 			cabinViewPart.setCabin(cabin);
+			infoViewPart.update(cabin);
 			cabinViewPart.syncViewer();
 		} catch (NullPointerException e) {
 			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",

@@ -9,7 +9,7 @@ import net.bhl.cdt.model.astar.Node.Property;
 import net.bhl.cdt.model.astar.Path;
 import net.bhl.cdt.model.astar.SimulationHandler;
 import net.bhl.cdt.model.cabin.Passenger;
-import net.bhl.cdt.model.cabin.util.Func;
+import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.StopWatch;
 
 import java.awt.*;
@@ -25,7 +25,7 @@ import java.awt.event.MouseListener;
  */
 public class SimulationView extends JPanel implements MouseListener {
 
-	private static final long serialVersionUID = 2L;
+	private static final long serialVersionUID = 1L;
 	private static final int BOX_WIDTH = 1000;
 	private static final int BOX_HEIGHT = 300;
 	private int FONT_SIZE = 10;
@@ -56,15 +56,19 @@ public class SimulationView extends JPanel implements MouseListener {
 		return watch;
 	}
 
-	
+	/**
+	 * 
+	 * @param areamap
+	 * @param dimensions
+	 * @param refresh
+	 */
 	public SimulationView() {
-		System.out.println(Func.getLineNumber());
 		this.setPreferredSize(new Dimension(
-				Func.GetScreenWorkingWidth() - 20, BOX_HEIGHT));
-		System.out.println(Func.getLineNumber());
+				FuncLib.GetScreenWorkingWidth() - 20, BOX_HEIGHT));
+
 		cabinWidth = SimulationHandler.getCabin().getCabinWidth()
 				/ (double) SimulationHandler.getCabin().getScale();
-		System.out.println(Func.getLineNumber());
+
 		Thread gameThread = new Thread() {
 
 			public void run() {
@@ -73,11 +77,10 @@ public class SimulationView extends JPanel implements MouseListener {
 				}
 			}
 		};
-		System.out.println(Func.getLineNumber());
 		gameThread.start(); // Callback run()
 		watch = new StopWatch();
 		watch.start();
-		System.out.println(Func.getLineNumber());
+
 		leftButton = new Button();
 		rightButton = new Button();
 
@@ -95,7 +98,7 @@ public class SimulationView extends JPanel implements MouseListener {
 			}
 			j++;
 		}
-		System.out.println(Func.getLineNumber());
+
 		addMouseListener(this);
 
 		leftButton.setFocusable(false);
@@ -103,7 +106,7 @@ public class SimulationView extends JPanel implements MouseListener {
 		faster.setFocusable(false);
 		slower.setFocusable(false);
 		stop.setFocusable(false);
-		System.out.println(Func.getLineNumber());
+
 		faster.setLabel("faster");
 		faster.setEnabled(true);
 		faster.addActionListener(new ActionListener() {
@@ -119,7 +122,7 @@ public class SimulationView extends JPanel implements MouseListener {
 				}
 			}
 		});
-		System.out.println(Func.getLineNumber());
+
 		slower.setLabel("slower");
 		slower.setEnabled(true);
 		slower.addActionListener(new ActionListener() {
@@ -135,7 +138,7 @@ public class SimulationView extends JPanel implements MouseListener {
 				}
 			}
 		});
-		System.out.println(Func.getLineNumber());
+
 		stop.setLabel("STOP");
 		stop.setEnabled(true);
 		stop.addActionListener(new ActionListener() {
@@ -144,7 +147,7 @@ public class SimulationView extends JPanel implements MouseListener {
 				interrupted = true;
 			}
 		});
-		System.out.println(Func.getLineNumber());
+
 		this.add(slower);
 		this.add(faster);
 
@@ -174,13 +177,11 @@ public class SimulationView extends JPanel implements MouseListener {
 			}
 		});
 		this.add(rightButton);
-		System.out.println(Func.getLineNumber());
 
 	}
 
 	public void setAreamap(AreaMap areamap) {
 		this.areamap = areamap;
-		System.out.println(Func.getLineNumber());
 	}
 
 	public Color switchColor(Agent.State state) {
@@ -271,7 +272,7 @@ public class SimulationView extends JPanel implements MouseListener {
 						.getSimulationSpeedFactor();
 
 		g.drawString("Sim. Time: "
-				+ Func.transformToTimeString(tens)
+				+ FuncLib.transformToTimeString(tens)
 				+ " >> "
 				+ SimulationHandler.getCabin().getSimulationSettings()
 						.getSimulationSpeedFactor() + "x", 10, 40);

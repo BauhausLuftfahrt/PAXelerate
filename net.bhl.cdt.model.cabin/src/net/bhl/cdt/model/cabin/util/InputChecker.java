@@ -21,13 +21,13 @@ public class InputChecker {
 		if (structure.contains(" ")) {
 			return false;
 		}
-		if (!Func.isNumeric(structure.replace("-", ""))) {
+		if (!FuncLib.isNumeric(structure.replace("-", ""))) {
 			return false;
 		}
 		if (StringUtils.countMatches(structure, "-") == 0) {
 			return false;
 		}
-		if (Func.checkForDoubleCharacter(structure)) {
+		if (FuncLib.checkForDoubleCharacter(structure)) {
 			return false;
 		}
 		if (structure.endsWith("-")) {
@@ -74,7 +74,7 @@ public class InputChecker {
 		 * if there are other characters than digits inside the string, remove
 		 * them.
 		 */
-		if (!Func.isNumeric(stringWithoutDashes)) {
+		if (!FuncLib.isNumeric(stringWithoutDashes)) {
 			str = str.replaceAll("[^0-9-]+", "");
 			if (DEVELOPER_MODE) {
 				System.out
@@ -111,7 +111,7 @@ public class InputChecker {
 		 * if there are 2 or more dashes following on another, remove all except
 		 * for one.
 		 */
-		if (Func.checkForDoubleCharacter(str)) {
+		if (FuncLib.checkForDoubleCharacter(str)) {
 			if (DEVELOPER_MODE) {
 				System.out
 						.println("several dashes in a row detected and corrected");

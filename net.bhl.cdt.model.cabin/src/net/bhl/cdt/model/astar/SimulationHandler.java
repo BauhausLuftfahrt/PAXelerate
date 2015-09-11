@@ -9,22 +9,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 
 import org.eclipse.emf.common.util.EList;
 
 import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.agent.AgentFunctions;
+import net.bhl.cdt.model.agent.IssueScanner;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
-import net.bhl.cdt.model.cabin.ui.HelpView;
 import net.bhl.cdt.model.cabin.ui.SimulationView;
 import net.bhl.cdt.model.cabin.ui.ProgressHandler;
-import net.bhl.cdt.model.cabin.util.Func;
+import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Logger;
-import net.bhl.cdt.model.cabin.util.OS;
 import net.bhl.cdt.model.cabin.util.StopWatch;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.cabin.util.Vector2D;
@@ -56,7 +54,7 @@ public class SimulationHandler {
 
 	public static final boolean SHOW_AREAMAP_ANIMATION = true;
 
-	private static JFrame simulationFrame;
+	private static JFrame frame;
 	private static ProgressHandler progress;
 	private static int progressValue = 0;
 	private static int percent = 0;
@@ -167,7 +165,7 @@ public class SimulationHandler {
 		accessPending.clear();
 		watch.reset();
 
-		simulationFrame = null;
+		frame = null;
 		progress = null;
 
 		progressValue = 0;
@@ -191,9 +189,9 @@ public class SimulationHandler {
 		} else {
 			finishedList.remove(passenger);
 		}
-		if (finishedList.size() >= (cabin.getPassengers().size() - 1)) {
+		if (finishedList.size() == cabin.getPassengers().size()) {
 			setSimulationDone(true);
-			simulationFrame.dispose();
+			frame.dispose();
 		}
 
 	}
@@ -213,16 +211,19 @@ public class SimulationHandler {
 
 		int offset = 5;
 
-		Vector start = new Vector2D(Func.size((seat.getXPosition() + seat
-				.getXDimension() / 2)), Func.size((seat.getYPosition()) - 2));
+		Vector start = new Vector2D(
+				(int) ((seat.getXPosition() + seat.getXDimension() / 2) / cabin
+						.getScale()),
+				(int) ((seat.getYPosition() / cabin.getScale()) - 2));
 
 		if (pax.getSeatRef().getYPosition() < pax.getDoor().getYPosition()) {
 			offset = -(offset + 2);
 			System.out.println("offset mirrored");
 		}
 
-		Vector goal = new Vector2D(Func.size(cabin.getCabinWidth() / 2.0),
-				Func.size(seat.getYPosition()) + offset);
+		Vector goal = new Vector2D((int) (cabin.getCabinWidth()
+				/ cabin.getScale() / 2.0),
+				(int) (seat.getYPosition() / cabin.getScale()) + offset);
 
 		Agent agent = new Agent(pax, start, goal,
 				SimulationHandler.getCostMap(), Agent.AgentMode.MAKE_WAY,
@@ -280,7 +281,8 @@ public class SimulationHandler {
 		// TODO: Do not use a static time stamp but consider the simulation
 		// speed!
 		double time = watch.getElapsedTimeTens();
-		if (Math.abs(lastDoorRelease.get(door) - time) > (Func.time(0.15) / 1000.0)) {
+		if (Math.abs(lastDoorRelease.get(door) - time) > (FuncLib
+				.transformTime(0.3) / 1000.0)) {
 			lastDoorRelease.put(door, time);
 			return true;
 		}
@@ -298,7 +300,7 @@ public class SimulationHandler {
 
 	public synchronized static void setPassengerActive(Passenger pax) {
 
-		if (!Func.PassengerAlreadyInList(pax, activeList)) {
+		if (!FuncLib.PassengerAlreadyInList(pax, activeList)) {
 			activeList.add(pax);
 		}
 	}
@@ -319,10 +321,12 @@ public class SimulationHandler {
 			Seat seat = passenger.getSeatRef();
 			Door door = passenger.getDoor();
 			Vector start = new Vector2D(0,
-					Func.size((door.getYPosition() + door.getWidth() / 2)));
-			Vector goal = new Vector2D(Func.size((seat.getXPosition() + seat
-					.getXDimension() / 2)),
-					Func.size((seat.getYPosition()) - 1));
+					(int) ((door.getYPosition() + door.getWidth() / 2) / cabin
+							.getScale()));
+			Vector goal = new Vector2D(
+					(int) ((seat.getXPosition() + seat.getXDimension() / 2) / cabin
+							.getScale()), (int) ((seat.getYPosition() / cabin
+							.getScale()) - 1));
 
 			if (doItOnce) {
 				/* This line generates a costmap which is used for all agents */
@@ -339,7 +343,6 @@ public class SimulationHandler {
 			agentList.add(agent);
 		}
 
-		if(!OS.isMac()) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				progress = new ProgressHandler(agentList.size());
@@ -350,20 +353,20 @@ public class SimulationHandler {
 					// TODO: real progress indications for calculation of cost
 					// map could be implemented!
 
-					if (percent < 10) {
+					if (percent <= 10) {
 						progress.updateText("Initializing Path finding algorithms ...");
-					} else if (percent < 30) {
+					} else if (percent <= 30) {
 						progress.updateText("Creating the agent objects ...");
-					} else if (percent < 90) {
+					} else if (percent <= 90) {
 						progress.updateText("Calculating the paths for every passenger ...");
 					} else {
 						progress.updateText("Finishing calculations ...");
 					}
 				}
 				progress.done();
+
 			}
 		});
-		}
 
 		/* First generate all paths ... */
 		// int i = 1;
@@ -386,7 +389,7 @@ public class SimulationHandler {
 		// IssueScanner scanner = new IssueScanner();
 		// scanner.start();
 
-		if (SHOW_AREAMAP_ANIMATION) {  //&& OS.isWindows()) {
+		if (SHOW_AREAMAP_ANIMATION) {
 			runAreaMapWindow();
 		}
 	}
@@ -396,30 +399,19 @@ public class SimulationHandler {
 	}
 
 	private void runAreaMapWindow() {
-		
-		final Vector dimensions = new Vector2D(cabin.getCabinWidth()
-				/ cabin.getScale(), cabin.getCabinLength() / cabin.getScale());
-		ObstacleMap obstaclemap = new ObstacleMap(cabin);
-		final AreaMap areamap = new AreaMap(dimensions, obstaclemap);
-		SwingUtilities.invokeLater(new Runnable() {
+
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				simulationFrame = new JFrame("Cost Map Flooding Animation");
-				simulationFrame.setContentPane(new HelpView(areamap, dimensions, 5));
-				simulationFrame.pack();
-				simulationFrame.setVisible(true);
+
+				SimulationView view = new SimulationView();
+				view.setAreamap(areamap);
+
+				frame = new JFrame("Simulation View");
+				frame.setContentPane(view);
+				frame.pack();
+				frame.setVisible(true);
 			}
 		});
-		
-//		SwingUtilities.invokeLater(new Runnable() {
-//			public void run() {
-//				simulationFrame = new JFrame("Simulation Detail View");
-//				SimulationView simulationView = new SimulationView();
-//				simulationView.setAreamap(areamap);
-//				simulationFrame.setContentPane(simulationView);
-//				simulationFrame.pack();
-//				simulationFrame.setVisible(true);
-//			}
-//		});
 	}
 
 }

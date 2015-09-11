@@ -7,7 +7,6 @@ package net.bhl.cdt.model.astar;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
@@ -19,10 +18,10 @@ import net.bhl.cdt.model.cabin.Curtain;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.Lavatory;
+import net.bhl.cdt.model.cabin.MainDoor;
 import net.bhl.cdt.model.cabin.PhysicalObject;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
-import net.bhl.cdt.model.cabin.util.Func;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.cabin.util.Vector2D;
 import net.bhl.cdt.model.util.ModelHelper;
@@ -46,21 +45,6 @@ public class ObstacleMap {
 	private static int[][] obstacleMap;
 	private ILog logger;
 
-	ArrayList<Class<? extends PhysicalObject>> classes = new ArrayList<Class<? extends PhysicalObject>>() {
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
-
-		{
-			add(Seat.class);
-			add(Galley.class);
-			add(Curtain.class);
-			add(Lavatory.class);
-
-		}
-	};
-
 	/**
 	 * This method constructs the obstacle map.
 	 * 
@@ -69,8 +53,9 @@ public class ObstacleMap {
 	 */
 	public ObstacleMap(Cabin cabin) {
 		this.cabin = cabin;
-		((Vector2D) dimensions).set(Func.size(cabin.getCabinWidth()),
-				Func.size(cabin.getCabinLength()));
+		((Vector2D) dimensions).set(
+				(int) (cabin.getCabinWidth() / cabin.getScale()),
+				(int) (cabin.getCabinLength() / cabin.getScale()));
 		obstacleMap = createObstacleMap();
 		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
 		printObstacleMap();
@@ -122,8 +107,6 @@ public class ObstacleMap {
 	/**
 	 * This method generates the obstacle Map.
 	 * 
-	 * @param <T>
-	 * 
 	 * @return obstacleMap is the obstacle map two dimensional array
 	 */
 	private int[][] createObstacleMap() {
@@ -133,11 +116,10 @@ public class ObstacleMap {
 				obstacleMap[i][j] = BASIC_VALUE;
 			}
 		}
-
-		for (Class<? extends PhysicalObject> className : classes) {
-			generateObstacles(className);
-		}
-
+		generateObstacles(Seat.class);
+		generateObstacles(Lavatory.class);
+		generateObstacles(Galley.class);
+		generateObstacles(Curtain.class);
 		generateAisleHole();
 		generatePotentialGradient();
 		return obstacleMap;
@@ -147,7 +129,7 @@ public class ObstacleMap {
 	 * This method creates the potential gradient around obstacle.
 	 */
 	private void generatePotentialGradient() {
-		int range = Func.size(OBSTACLE_RANGE_IN_CM);
+		int range = (int) (OBSTACLE_RANGE_IN_CM / cabin.getScale());
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
 				if (obstacleMap[i][j] == MAX_VALUE) {
@@ -223,8 +205,9 @@ public class ObstacleMap {
 		 */
 
 		for (Door door : cabin.getDoors()) {
-			entryMin = Func.size(door.getYPosition()) + 2;
-			entryMax = Func.size(door.getYPosition() + door.getWidth()) - 2;
+			entryMin = (int) (door.getYPosition() / cabin.getScale()) + 2;
+			entryMax = (int) ((door.getYPosition() + door.getWidth()) / cabin
+					.getScale()) - 2;
 
 			for (int i = 0; i < dimensions.getX(); i++) {
 				for (int j = 0; j < dimensions.getY(); j++) {
@@ -233,31 +216,8 @@ public class ObstacleMap {
 							obstacleMap[i][j] = HOLE_VALUE;
 						}
 
-						if (!cabin.getSimulationSettings().isBringYourOwnSeat()
-								&& !cabin.getSimulationSettings()
-										.isUseFoldableSeats()) {
-							if (i < 19 && i > 16) {
-								obstacleMap[i][j] = HOLE_VALUE;
-							}
-						} else if (cabin.getSimulationSettings()
-								.isUseFoldableSeats()
-								&& !cabin.getSimulationSettings()
-										.isBringYourOwnSeat()) {
-							if (i < 21 && i > 16) {
-								obstacleMap[i][j] = HOLE_VALUE;
-							}
-							if (j > 20) {
-								if (i == 19) {
-									obstacleMap[i][j] = 900;
-								}
-							}
-						} else {
-							if (j > 20) {
-								if (i == 5 || i == 10 || i == 15 || i == 31
-										|| i == 26 || i == 21) {
-									obstacleMap[i][j] = 900;
-								}
-							}
+						if (i < 23 && i > 16) {
+							obstacleMap[i][j] = HOLE_VALUE;
 						}
 					}
 				}
@@ -286,15 +246,20 @@ public class ObstacleMap {
 
 			if (!(cabin.getSimulationSettings().isUseFoldableSeats() && value)) {
 
-				int width = Func.size(physicalObject.getXDimension());
-				int length = Func.size(physicalObject.getYDimension());
-				int xPosition = Func.size(physicalObject.getXPosition());
-				int yPosition = Func.size(physicalObject.getYPosition());
-
-				for (int i = 0; i < width; i++) {
-					for (int j = 0; j < length; j++) {
-						int k = xPosition + i;
-						int l = yPosition + j;
+				int physicalObjectWidth = (int) (physicalObject.getXDimension() / cabin
+						.getScale());
+				int physicalObjectLength = (int) (physicalObject
+						.getYDimension() / cabin.getScale());
+				int physicalObjectXPosition = (int) (physicalObject
+						.getXPosition() / cabin.getScale());
+				int physicalObjectYDimension = (int) (physicalObject
+						.getYPosition() / cabin.getScale());
+				// obstacleMap[physicalObjectXPosition][physicalObjectYDimension]
+				// = MAX_VALUE;
+				for (int i = 0; i < physicalObjectWidth; i++) {
+					for (int j = 0; j < physicalObjectLength; j++) {
+						int k = physicalObjectXPosition + i;
+						int l = physicalObjectYDimension + j;
 						if (k < dimensions.getX() && l < dimensions.getY()) {
 							obstacleMap[k][l] = MAX_VALUE;
 						}

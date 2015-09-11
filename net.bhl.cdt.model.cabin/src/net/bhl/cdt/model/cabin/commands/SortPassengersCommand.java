@@ -11,7 +11,7 @@ import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
-import net.bhl.cdt.model.cabin.util.Func;
+import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Input;
 import net.bhl.cdt.model.cabin.util.Input.WindowType;
 
@@ -77,7 +77,7 @@ public class SortPassengersCommand extends CDTCommand {
 				for (int i = 0; i < paxList.size(); i++) {
 					Passenger pax = paxList.get(i);
 
-					paxList.move(Func.randomValue(0, paxList.size()), pax);
+					paxList.move(FuncLib.randomValue(0, paxList.size()), pax);
 				}
 			}
 			break;

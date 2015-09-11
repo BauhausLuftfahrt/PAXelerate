@@ -1,7 +1,7 @@
 package net.bhl.cdt.model.agent;
 
 import net.bhl.cdt.model.astar.Node.Property;
-import net.bhl.cdt.model.cabin.util.Func;
+import net.bhl.cdt.model.cabin.util.FuncLib;
 
 public class AgressiveMood extends AgentMood implements Strategy {
 
@@ -22,7 +22,7 @@ public class AgressiveMood extends AgentMood implements Strategy {
 		// other wise if blocked act as passive agent
 		else {
 			try {
-				super.getAgent().getThread().sleep(Func.time(1));
+				super.getAgent().getThread().sleep(FuncLib.transformTime(1));
 			} catch (InterruptedException e) {
 			}
 			super.getAgent().setExitPathLoop(false);

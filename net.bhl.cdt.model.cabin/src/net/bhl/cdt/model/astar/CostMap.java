@@ -18,7 +18,7 @@ import org.eclipse.core.runtime.Status;
 import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.astar.Node.Property;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
-import net.bhl.cdt.model.cabin.util.Func;
+import net.bhl.cdt.model.cabin.util.FuncLib;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.cabin.util.Vector2D;
 import net.bhl.cdt.model.cabin.util.Vector3D;
@@ -137,7 +137,7 @@ public class CostMap {
 				// TODO: check if there is a node at a specific point.
 				if (path != null) {
 					for (Node node : path.getWaypoints()) {
-						if (Func.vectorsAreEqual(node.getPosition(),
+						if (FuncLib.vectorsAreEqual(node.getPosition(),
 								new Vector2D(i, j))) {
 							foundNode = true;
 						}

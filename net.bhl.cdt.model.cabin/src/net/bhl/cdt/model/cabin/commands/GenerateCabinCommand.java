@@ -20,7 +20,6 @@ import net.bhl.cdt.model.cabin.StandardDoor;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.InfoViewPart;
 import net.bhl.cdt.model.cabin.util.ConstructionLibrary;
-import net.bhl.cdt.model.cabin.util.Func;
 
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
@@ -88,7 +87,12 @@ public class GenerateCabinCommand extends CDTCommand {
 				"Initializing cabin generation ..."));
 
 		/*************** Get the CabinView *******************/
-		cabinViewPart = Func.getCabinView();
+		IWorkbenchPage page = PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getActivePage();
+		cabinViewPart = (CabinViewPart) page
+				.findView("net.bhl.cdt.model.cabin.cabinview");
+		InfoViewPart infoViewPart = (InfoViewPart) page
+				.findView("net.bhl.cdt.model.cabin.infoview");
 		cabinViewPart.unsyncViewer();
 		/*****************************************************/
 
@@ -119,7 +123,7 @@ public class GenerateCabinCommand extends CDTCommand {
 				"Cabin generation completed"));
 		try {
 			cabinViewPart.setCabin(cabin);
-			// infoViewPart.update(cabin);
+			infoViewPart.update(cabin);
 			cabinViewPart.syncViewer();
 		} catch (NullPointerException e) {
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",

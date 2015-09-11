@@ -330,10 +330,10 @@ public class ConstructionLibrary {
 		Seat newSeat = CabinFactory.eINSTANCE.createSeat();
 		row.getSeats().add(newSeat);
 		newSeat.setId(seatCount);
-		newSeat.setName(rowCount + Func.getCharForNumber(j));
+		newSeat.setName(rowCount + FuncLib.getCharForNumber(j));
 		newSeat.setXDimension(seatDimensions.getX());
 		newSeat.setYDimension(seatDimensions.getY());
-		newSeat.setLetter(Func.getCharForNumber(j));
+		newSeat.setLetter(FuncLib.getCharForNumber(j));
 		newSeat.setXPosition(globalSeatPositionX);
 		newSeat.setYPosition(globalSeatPositionY);
 		newSeat.setTravelClass(passengerClass);
@@ -385,7 +385,7 @@ public class ConstructionLibrary {
 			if ((seats % seatsInRow) != 0) {
 				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 						"Check your number of seats in "
-								+ Func.splitCamelCase(travelSubClass
+								+ FuncLib.splitCamelCase(travelSubClass
 										.getSimpleName())
 								+ ". Could not fill all rows."));
 			}
@@ -429,7 +429,7 @@ public class ConstructionLibrary {
 				createCurtain(
 						true,
 						"after "
-								+ Func.splitCamelCase(travelSubClass
+								+ FuncLib.splitCamelCase(travelSubClass
 										.getSimpleName()));
 			}
 		}

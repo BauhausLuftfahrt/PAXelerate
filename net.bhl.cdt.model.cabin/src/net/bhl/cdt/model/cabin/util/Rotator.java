@@ -73,8 +73,8 @@ public class Rotator {
 	// }
 	// }
 	//
-	// Func.printIntegerListToLog(storageX);
-	// Func.printIntegerListToLog(storageY);
+	// FuncLib.printIntegerListToLog(storageX);
+	// FuncLib.printIntegerListToLog(storageY);
 	//
 	// int[][] newArray = new int[array.length -
 	// storageX.size()][array[0].length

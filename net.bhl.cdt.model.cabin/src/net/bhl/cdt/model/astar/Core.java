@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.astar.Node.Property;
-import net.bhl.cdt.model.cabin.util.Func;
+import net.bhl.cdt.model.cabin.util.FuncLib;
 
 /**
  * This class is the A* algorithm.
@@ -81,7 +81,7 @@ public class Core {
 			 * check if our current Node location is the goal Node. If it is, we
 			 * are done.
 			 */
-			if (Func.vectorsAreEqual(current.getPosition(), agent.getGoal())) {
+			if (FuncLib.vectorsAreEqual(current.getPosition(), agent.getGoal())) {
 
 				/* the start node does never have a previous node! */
 				if (map.getNode(agent.getStart()) != null) {
