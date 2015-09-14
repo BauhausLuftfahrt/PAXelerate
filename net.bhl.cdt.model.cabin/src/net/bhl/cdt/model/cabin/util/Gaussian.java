@@ -2,7 +2,7 @@ package net.bhl.cdt.model.cabin.util;
 
 import java.util.ArrayList;
 
-import net.bhl.cdt.model.cabin.util.FuncLib.GaussOptions;
+import net.bhl.cdt.model.cabin.util.Func.GaussOptions;
 
 public class Gaussian {
 
@@ -26,7 +26,7 @@ public class Gaussian {
 
 	private static void loop() {
 		for (int i = 1; i <= ITERATIONS; i++) {
-			list.add(FuncLib.gaussianRandom(100, GaussOptions.PERCENT_99, 5));
+			list.add(Func.gaussianRandom(100, GaussOptions.PERCENT_99, 5));
 		}
 		double value = average(list);
 		System.out.println("Average: " + value);

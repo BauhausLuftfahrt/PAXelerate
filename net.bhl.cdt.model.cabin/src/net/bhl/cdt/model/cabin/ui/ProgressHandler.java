@@ -11,7 +11,7 @@ package net.bhl.cdt.model.cabin.ui;
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
 
-import net.bhl.cdt.model.cabin.util.FuncLib;
+import net.bhl.cdt.model.cabin.util.Func;
 
 import org.eclipse.jface.dialogs.ProgressIndicator;
 import org.eclipse.swt.SWT;
@@ -78,7 +78,7 @@ public class ProgressHandler {
 		label.setText("The boarding paths for the passengers are being calculated ...");
 
 		shell.open();
-		FuncLib.centreWindow(shell);
+		Func.centreWindow(shell);
 		indicator.beginTask(max);
 		indicator.showNormal();
 		// spin(display);

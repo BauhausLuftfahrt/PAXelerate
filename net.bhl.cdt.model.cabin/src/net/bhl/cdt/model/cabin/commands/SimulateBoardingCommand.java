@@ -15,10 +15,10 @@ import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
-import net.bhl.cdt.model.cabin.ui.InfoViewPart;
 import net.bhl.cdt.model.cabin.ui.SimulationView;
-import net.bhl.cdt.model.cabin.util.FuncLib;
+import net.bhl.cdt.model.cabin.util.Func;
 import net.bhl.cdt.model.cabin.util.Input;
+import net.bhl.cdt.model.cabin.util.OS;
 import net.bhl.cdt.model.cabin.util.SimulationResultLogger;
 import net.bhl.cdt.model.cabin.util.Input.WindowType;
 import net.bhl.cdt.model.cabin.util.Vector2D;
@@ -31,9 +31,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PlatformUI;
+
 
 /**
  * This command starts the boarding simulation.
@@ -76,20 +74,17 @@ public class SimulateBoardingCommand extends CDTCommand {
 	protected void doRun() {
 
 		cabin.setFramesPerSecond(10);
+		cabin.getSimulationSettings().setRandomSortBetweenLoops(false);
 
 		SimulationResultLogger results = new SimulationResultLogger();
 
 		DrawCabinCommand drawCom = new DrawCabinCommand(cabin);
 		drawCom.doRun();
 
-		/**************** Get CabinView and ConsoleView ***************************/
-		IWorkbenchWindow window = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow();
-		IWorkbenchPage page = window.getActivePage();
-		CabinViewPart cabinViewPart = (CabinViewPart) page
-				.findView("net.bhl.cdt.model.cabin.cabinview");
-		InfoViewPart infoViewPart = (InfoViewPart) page
-				.findView("net.bhl.cdt.model.cabin.infoview");
+		/********** Get CabinView and ConsoleView ***************/
+
+		CabinViewPart cabinViewPart = Func.getCabinView();
+		/********************************************************/
 
 		for (int i = 0; i < cabin.getSimulationSettings()
 				.getNumberOfSimulationLoops(); i++) {
@@ -163,6 +158,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 							alreadySeatedList.add(pax);
 						}
 					}
+					if(OS.isMac()) {
+					cabinViewPart.submitPassengerCoordinates(cabin);
+					}
 				}
 				if (SimulationHandler.isSimulationDone()) {
 					for (Passenger pax : ModelHelper.getChildrenByClass(
@@ -171,7 +169,6 @@ public class SimulateBoardingCommand extends CDTCommand {
 								&& !alreadySeatedList.contains(pax)) {
 							alreadySeatedList.add(pax);
 							try {
-								infoViewPart.update(cabin);
 							} catch (NullPointerException e) {
 								logger.log(new Status(IStatus.ERROR,
 										"net.bhl.cdt.model.cabin",
@@ -211,7 +208,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 			results.getSimulationData(
 					SimulationHandler.getCabin(),
 					i + 1,
-					FuncLib.round(
+					Func.round(
 							(SimulationView.getWatch().getElapsedTimeSecs() * (double) cabin
 									.getSimulationSettings()
 									.getSimulationSpeedFactor()), 2));

@@ -44,7 +44,7 @@ public class SimulationResultLogger {
 				.getResults().size() + 1);
 		result.setName(dateFormat.format(date));
 		result.setDate(date);
-		result.setBoardingTimeString(FuncLib.transformToTimeString(time));
+		result.setBoardingTimeString(Func.transformToTimeString(time));
 		SimulationHandler.getCabin().getSimulationSettings().getResults()
 				.add(result);
 	}
@@ -115,12 +115,12 @@ public class SimulationResultLogger {
 			System.out.println(result.getPassengers()
 					+ " passengers simulated in run #" + result.getId()
 					+ " within "
-					+ FuncLib.transformToTimeString(result.getBoardingTime())
+					+ Func.transformToTimeString(result.getBoardingTime())
 					+ ".");
 			System.out.println();
 		}
 		System.out.println("Average boarding time: "
-				+ FuncLib.transformToTimeString(getAverageBoardingTime())
+				+ Func.transformToTimeString(getAverageBoardingTime())
 				+ " seconds.");
 		System.out.println();
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");

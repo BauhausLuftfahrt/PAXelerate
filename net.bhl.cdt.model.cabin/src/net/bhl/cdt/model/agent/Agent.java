@@ -23,7 +23,7 @@ import net.bhl.cdt.model.cabin.LuggageSize;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.Seat;
-import net.bhl.cdt.model.cabin.util.FuncLib;
+import net.bhl.cdt.model.cabin.util.Func;
 import net.bhl.cdt.model.cabin.util.Rotator;
 import net.bhl.cdt.model.cabin.util.StopWatch;
 import net.bhl.cdt.model.cabin.util.Vector;
@@ -123,7 +123,7 @@ public class Agent extends Subject implements Runnable {
 			this.agentMood = new PassiveMood(this);
 		}
 
-		this.agentMood = new AgressiveMood(this);
+		// this.agentMood = new AgressiveMood(this);
 
 		defaultPassengerArea = new int[(int) (passenger.getWidth() / scale)][(int) (passenger
 				.getDepth() / scale)];
@@ -464,7 +464,7 @@ public class Agent extends Subject implements Runnable {
 	 * @return
 	 */
 	private boolean goalReached() {
-		return FuncLib.vectorsAreEqual(desiredPosition, goal);
+		return Func.vectorsAreEqual(desiredPosition, goal);
 	}
 
 	/**
@@ -509,12 +509,12 @@ public class Agent extends Subject implements Runnable {
 				if (checkNode.getProperty() == Property.OBSTACLE) {
 					// System.out
 					// .println("###### !OVERLAPPING OF AGENT AND OBSTACLE! ###### !AGENT - nodeBlockedBySomeoneElseOrObstacle()! ######");
-					if (isInYRangeSmaller(
-							passenger.getSeatRef().getYPosition(), 5, false)) {
-						return null;
-					} else {
-						return Property.OBSTACLE;
-					}
+					// if (isInYRangeSmaller(
+					// passenger.getSeatRef().getYPosition(), 5, false)) {
+					return null;
+					// } else {
+					// return Property.OBSTACLE;
+					// }
 				}
 			}
 			// }
@@ -623,8 +623,7 @@ public class Agent extends Subject implements Runnable {
 					rotateAgent(90);
 
 					/* sleep the thread as long as the luggage is stowed */
-					Thread.sleep(FuncLib.transformTime(passenger
-							.getLuggageStowTime()));
+					Thread.sleep(Func.time(passenger.getLuggageStowTime()));
 
 					/* notify everyone that the luggage is now stowed */
 					alreadyStowed = true;
@@ -648,7 +647,7 @@ public class Agent extends Subject implements Runnable {
 					if (anyoneNearMe()) {
 						System.out
 								.println("waymaking skipped. Delay simulated!");
-						Thread.sleep(FuncLib.transformTime(7));
+						Thread.sleep(Func.time(7));
 						waitingCompleted = true;
 						continue;
 					}
@@ -667,7 +666,7 @@ public class Agent extends Subject implements Runnable {
 						}
 
 						// TODO: calculate the waiting time!
-						Thread.sleep(FuncLib.transformTime(3));
+						Thread.sleep(Func.time(3));
 
 						waitingCompleted = true;
 					}
@@ -817,6 +816,14 @@ public class Agent extends Subject implements Runnable {
 
 		if (!passenger.getSeatRef().isOccupied()) {
 
+			/* clear the current position of the agent */
+			blockArea(currentPosition, false, false, null);
+			blockArea(desiredPosition, false, false, null);
+
+			if (passenger.getSeatRef().isCurrentlyFolded()) {
+				unfoldSeat();
+			}
+
 			defineSeated(true);
 
 			/* the stop watch is then interrupted */
@@ -831,14 +838,6 @@ public class Agent extends Subject implements Runnable {
 			/* the number of interrupts is submitted to the passenger */
 			passenger.setNumberOfWaits(numbOfInterupts);
 
-			/* clear the current position of the agent */
-			blockArea(currentPosition, false, false, null);
-			blockArea(desiredPosition, false, false, null);
-
-			if (passenger.getSeatRef().isCurrentlyFolded()) {
-				unfoldSeat();
-			}
-
 			SimulationHandler.getMap().getNode(getGoal())
 					.setProperty(Property.DEFAULT, getPassenger());
 
@@ -850,18 +849,21 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	private void unfoldSeat() {
+
+		int defoldingTime = 5;
+
 		Seat seat = passenger.getSeatRef();
 		seat.setCurrentlyFolded(false);
 
-		int physicalObjectWidth = (int) (seat.getXDimension() / scale);
-		int physicalObjectLength = (int) (seat.getYDimension() / scale);
-		int physicalObjectXPosition = (int) (seat.getXPosition() / scale);
-		int physicalObjectYDimension = (int) (seat.getYPosition() / scale);
+		int width = (int) (seat.getXDimension() / scale);
+		int length = (int) (seat.getYDimension() / scale);
+		int xPosition = (int) (seat.getXPosition() / scale);
+		int yPosition = (int) (seat.getYPosition() / scale);
 
-		for (int i = 0; i < physicalObjectWidth; i++) {
-			for (int j = 0; j < physicalObjectLength; j++) {
-				int k = physicalObjectXPosition + i;
-				int l = physicalObjectYDimension + j;
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j < length; j++) {
+				int k = xPosition + i;
+				int l = yPosition + j;
 				if (k < SimulationHandler.getMap().getDimensions().getX()
 						&& l < SimulationHandler.getMap().getDimensions()
 								.getY()) {
@@ -869,7 +871,12 @@ public class Agent extends Subject implements Runnable {
 							.setProperty(Property.OBSTACLE, null);
 				}
 			}
+		}
 
+		try {
+			Thread.sleep(Func.time(defoldingTime));
+		} catch (InterruptedException e) {
+			//
 		}
 	}
 
@@ -898,8 +905,7 @@ public class Agent extends Subject implements Runnable {
 			pathlist.add(path);
 			if (inDefaultBoardingMode()) {
 				/* sleep the thread as long as the boarding delay requires it */
-				Thread.sleep(FuncLib.transformTime(passenger
-						.getStartBoardingAfterDelay()));
+				Thread.sleep(Func.time(passenger.getStartBoardingAfterDelay()));
 
 				/*
 				 * then try to spawn the passenger but check if there is enough
