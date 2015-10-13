@@ -187,7 +187,7 @@ public class CabinViewPart extends ViewPart implements Runnable,
 		for (Row row : ModelHelper.getChildrenByClass(cabin, Row.class)) {
 			int positionY = (int)((row.getSeats().get(0).getYPosition())/factor);
 			int positionX = (int)((cabin.getCabinWidth()/2)/factor);
-			graphicsControl.drawText(row.getRowNumber()+"", xZero +positionX-3, yZero + positionY+4 );
+			graphicsControl.drawText(row.getRowNumber()+"", xZero +positionX-3, yZero + positionY+ 4);
 		}
 		
 		for (Door door : ModelHelper.getChildrenByClass(cabin, Door.class)) {
