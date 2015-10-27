@@ -12,8 +12,7 @@ package net.bhl.cdt.model.cabin.util;
  */
 
 public class StopWatch {
-	private long startTime;
-	private long stopTime;
+	private long startTime, stopTime;
 	private boolean running;
 
 	/**

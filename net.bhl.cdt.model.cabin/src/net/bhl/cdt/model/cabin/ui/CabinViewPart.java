@@ -70,48 +70,33 @@ public class CabinViewPart extends ViewPart implements Runnable,
 	private static boolean initialBoot = true;
 
 	/********************* graphical settings. *************************/
-	private static final int OFFSET_OF_DOOR = 0;
+	private static final int OFFSET_OF_DOOR = 0, CABIN_WIDTH_IN_PIXELS = 123,
+			DOOR_DEPTH = 2;
 	private static final double PASSENGER_CIRCLE_SIZE = 0.5;
 	private static final boolean MATCH_PASSENGER_COLORS_TO_MOOD = true;
 
-	private static final int CABIN_WIDTH_IN_PIXELS = 123;
-	private static int xZero = 139;
-	private static int yZero = 75;
-	private static final int DOOR_DEPTH = 2;
-	private static int imageX = 400;
-	private static int imageY = 1000;
+	private static int xZero = 139, yZero = 75, imageX = 400, imageY = 1000;
 
 	/*******************************************************************/
 
 	/************* Create Colors and Fonts here. ***********************/
 	private static int fontsize;
 	private static String fontName;
-	private static Color red;
-	private static Color salmon;
-	private static Color green;
-	private static Color darkGray;
-	private static Color white;
-	private static Color black;
-	private static Font fontOne;
-	private static Font fontTwo;
-	private static Font fontThree;
-	private static Color aircraftBackground;
+	private static Color red, salmon, green, darkGray, white, black,
+			aircraftBackground;
+	private static Font fontOne, fontTwo, fontThree;
 	/********************************************************************/
 
 	private static ILog logger;
 
-	private Image economySeat;
-	private Image businessSeat;
-	private Image firstSeat;
-	private Image coffeeIcon;
-	private Image lavatoryIcon;
+	private Image economySeat, businessSeat, firstSeat, coffeeIcon,
+			lavatoryIcon;
 	private Canvas canvas;
 	private Adapter cabinAdapter;
 	private ImageLoader loader;
 	private static Image img;
-	private static final String FOLDER_NAME = "paxelerate";
-	private static final String FILE_PATH = System.getProperty("user.home")
-			+ "/Documents/" + FOLDER_NAME + "/";
+	private static final String FOLDER_NAME = "paxelerate", FILE_PATH = System
+			.getProperty("user.home") + "/Documents/" + FOLDER_NAME + "/";
 	private static Thread thread = null;
 	private static File storageFolder = new File(FILE_PATH);
 	private double canvasHeight;
@@ -185,11 +170,12 @@ public class CabinViewPart extends ViewPart implements Runnable,
 		}
 
 		for (Row row : ModelHelper.getChildrenByClass(cabin, Row.class)) {
-			int positionY = (int)((row.getSeats().get(0).getYPosition())/factor);
-			int positionX = (int)((cabin.getCabinWidth()/2)/factor);
-			graphicsControl.drawText(row.getRowNumber()+"", xZero +positionX-3, yZero + positionY+ 4);
+			int positionY = (int) ((row.getSeats().get(0).getYPosition()) / factor);
+			int positionX = (int) ((cabin.getCabinWidth() / 2) / factor);
+			graphicsControl.drawText(row.getRowNumber() + "", xZero + positionX
+					- 3, yZero + positionY + 4);
 		}
-		
+
 		for (Door door : ModelHelper.getChildrenByClass(cabin, Door.class)) {
 			graphicsControl.setBackground(darkGray);
 			if (door.isOnBothSides()) {

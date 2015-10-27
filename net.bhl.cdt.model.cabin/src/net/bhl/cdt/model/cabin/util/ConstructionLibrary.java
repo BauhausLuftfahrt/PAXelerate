@@ -46,25 +46,19 @@ import net.bhl.cdt.model.util.ModelHelper;
  */
 public class ConstructionLibrary {
 	private Cabin cabin;
-	private int seatCount;
-	private int rowCount;
-	private int globalSeatPositionX;
-	private int globalSeatPositionY;
-	private int seats;
-	private int seatsInRow;
-	private String seatStructure = "1-1";
-	private int numbAisles;
+
+	private int seatCount, rowCount, globalSeatPositionX, globalSeatPositionY,
+			seats, seatsInRow, seatPitch, seatHelper, passengers, numbAisles,
+			galleyCount = 1, lavatoryCount = 1, curtainCount = 1;
+
 	private Vector seatDimensions = new Vector2D(0, 0);
-	private int seatPitch;
-	private int seatHelper;
-	private int passengers;
+
 	private TravelClass passengerClass;
 	private ILog logger;
 	private ArrayList<Integer> rowPartsInt;
-	private int galleyCount = 1;
-	private int lavatoryCount = 1;
-	private int curtainCount = 1;
+
 	boolean doItOnce = true;
+	private String seatStructure = "1-1";
 
 	/**
 	 * This method is the constructor of this class.

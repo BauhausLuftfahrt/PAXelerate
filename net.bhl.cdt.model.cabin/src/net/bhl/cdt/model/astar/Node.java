@@ -21,20 +21,11 @@ import net.bhl.cdt.model.cabin.util.Vector2D;
  *
  */
 public class Node implements Comparable<Node> {
-	private Node north;
-	private Node northEast;
-	private Node east;
-	private Node southEast;
-	private Node south;
-	private Node southWest;
-	private Node west;
-	private Node northWest;
+	private Node north, northEast, east, southEast, south, southWest, west,
+			northWest, previousNode;
 	private ArrayList<Node> neighborList;
-	private int distanceFromStart;
-	private int costFromStart;
-	private Node previousNode;
+	private int distanceFromStart, costFromStart, cost;
 	private Vector position = new Vector2D(0, 0);
-	private int cost;
 	private Property property;
 	private boolean hidden = false;
 

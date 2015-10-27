@@ -38,9 +38,9 @@ import net.bhl.cdt.model.cabin.util.Vector2D;
 public class SimulationHandler {
 	private static Cabin cabin;
 	private static Boolean simulationDone = false;
-	private static ArrayList<Passenger> finishedList = new ArrayList<Passenger>();
-	private static ArrayList<Passenger> activeList = new ArrayList<Passenger>();
-	private static ArrayList<Passenger> waymakingList = new ArrayList<Passenger>();
+	private static ArrayList<Passenger> finishedList = new ArrayList<Passenger>(),
+			activeList = new ArrayList<Passenger>(),
+			waymakingList = new ArrayList<Passenger>();
 
 	private static HashMap<Door, Double> lastDoorRelease = new HashMap<Door, Double>();
 
@@ -52,9 +52,8 @@ public class SimulationHandler {
 	private static StopWatch watch = new StopWatch();
 	private Vector dimensions;
 
-	public static final boolean DEVELOPER_MODE = false;
-
-	public static final boolean SHOW_AREAMAP_ANIMATION = true;
+	public static final boolean DEVELOPER_MODE = false,
+			SHOW_AREAMAP_ANIMATION = true;
 
 	private static JFrame simulationFrame;
 	private static ProgressHandler progress;
@@ -339,30 +338,31 @@ public class SimulationHandler {
 			agentList.add(agent);
 		}
 
-		if(!OS.isMac()) {
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				progress = new ProgressHandler(agentList.size());
-				while (progressValue < agentList.size() - 1) {
-					progress.reportProgress(progressValue);
-					percent = percentage(progressValue, agentList.size());
+		if (!OS.isMac()) {
+			javax.swing.SwingUtilities.invokeLater(new Runnable() {
+				public void run() {
+					progress = new ProgressHandler(agentList.size());
+					while (progressValue < agentList.size() - 1) {
+						progress.reportProgress(progressValue);
+						percent = percentage(progressValue, agentList.size());
 
-					// TODO: real progress indications for calculation of cost
-					// map could be implemented!
+						// TODO: real progress indications for calculation of
+						// cost
+						// map could be implemented!
 
-					if (percent < 10) {
-						progress.updateText("Initializing Path finding algorithms ...");
-					} else if (percent < 30) {
-						progress.updateText("Creating the agent objects ...");
-					} else if (percent < 90) {
-						progress.updateText("Calculating the paths for every passenger ...");
-					} else {
-						progress.updateText("Finishing calculations ...");
+						if (percent < 10) {
+							progress.updateText("Initializing Path finding algorithms ...");
+						} else if (percent < 30) {
+							progress.updateText("Creating the agent objects ...");
+						} else if (percent < 90) {
+							progress.updateText("Calculating the paths for every passenger ...");
+						} else {
+							progress.updateText("Finishing calculations ...");
+						}
 					}
+					progress.done();
 				}
-				progress.done();
-			}
-		});
+			});
 		}
 
 		/* First generate all paths ... */
@@ -386,7 +386,7 @@ public class SimulationHandler {
 		// IssueScanner scanner = new IssueScanner();
 		// scanner.start();
 
-		if (SHOW_AREAMAP_ANIMATION) {  //&& OS.isWindows()) {
+		if (SHOW_AREAMAP_ANIMATION) { // && OS.isWindows()) {
 			runAreaMapWindow();
 		}
 	}
@@ -396,7 +396,7 @@ public class SimulationHandler {
 	}
 
 	private void runAreaMapWindow() {
-		
+
 		final Vector dimensions = new Vector2D(cabin.getCabinWidth()
 				/ cabin.getScale(), cabin.getCabinLength() / cabin.getScale());
 		ObstacleMap obstaclemap = new ObstacleMap(cabin);
@@ -404,22 +404,23 @@ public class SimulationHandler {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				simulationFrame = new JFrame("Cost Map Flooding Animation");
-				simulationFrame.setContentPane(new HelpView(areamap, dimensions, 5));
+				simulationFrame.setContentPane(new HelpView(areamap,
+						dimensions, 5));
 				simulationFrame.pack();
 				simulationFrame.setVisible(true);
 			}
 		});
-		
-//		SwingUtilities.invokeLater(new Runnable() {
-//			public void run() {
-//				simulationFrame = new JFrame("Simulation Detail View");
-//				SimulationView simulationView = new SimulationView();
-//				simulationView.setAreamap(areamap);
-//				simulationFrame.setContentPane(simulationView);
-//				simulationFrame.pack();
-//				simulationFrame.setVisible(true);
-//			}
-//		});
+
+		// SwingUtilities.invokeLater(new Runnable() {
+		// public void run() {
+		// simulationFrame = new JFrame("Simulation Detail View");
+		// SimulationView simulationView = new SimulationView();
+		// simulationView.setAreamap(areamap);
+		// simulationFrame.setContentPane(simulationView);
+		// simulationFrame.pack();
+		// simulationFrame.setVisible(true);
+		// }
+		// });
 	}
 
 }

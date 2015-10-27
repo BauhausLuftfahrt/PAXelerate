@@ -12,9 +12,8 @@ public class Gaussian {
 
 	private static final int ITERATIONS = 10 ^ 9;
 
-	static ArrayList<Double> list = new ArrayList<Double>();
-
-	static ArrayList<Double> avlist = new ArrayList<Double>();
+	static ArrayList<Double> list = new ArrayList<Double>(),
+			avlist = new ArrayList<Double>();
 
 	private static double sumUp(ArrayList<Double> listlist) {
 		double counter = 0;

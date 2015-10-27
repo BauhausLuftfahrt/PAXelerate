@@ -18,10 +18,7 @@ import java.awt.Color;
  */
 public abstract class Vector implements Comparable<Vector> {
 
-	protected int dimensions;
-	protected int xValue;
-	protected int yValue;
-	protected int zValue;
+	protected int dimensions, xValue, yValue, zValue;
 
 	/**
 	 * This method returns the number of dimensions that the vector has.

@@ -41,8 +41,7 @@ public class MoveObjectCommand extends CDTCommand {
 	private Cabin cabin;
 	private ILog logger;
 	private CabinViewPart cabinViewPart;
-	private Vector movementVector;
-	private Vector scaleVector;
+	private Vector movementVector, scaleVector;
 	private ArrayList<Row> rowlist = new ArrayList<Row>();
 	private ArrayList<Seat> seatlist = new ArrayList<Seat>();
 	private ArrayList<Galley> galleylist = new ArrayList<Galley>();

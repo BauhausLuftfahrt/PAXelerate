@@ -1,7 +1,5 @@
 package net.bhl.cdt.model.cabin.util;
 
-import java.awt.Color;
-
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Point;
@@ -35,19 +33,11 @@ public class Input extends TitleAreaDialog {
 	}
 
 	private WindowType windowType;
-	private String descriptionText;
-	private String descriptionText2;
-	private String descriptionText3;
-	private String descriptionText4;
-	private String titleString;
-	private Text text;
-	private Text text2;
-	private Text text3;
-	private Text text4;
-	private String stringValue;
+	private String descriptionText, descriptionText2, descriptionText3,
+			descriptionText4, titleString, stringValue;
+	private Text text, text2, text3, text4;
 	private int integerValue;
-	private Vector vectorValue;
-	private Vector vectorValue2;
+	private Vector vectorValue, vectorValue2;
 	private Boolean booleanValue;
 	private Composite container;
 	private Label warningLabel;

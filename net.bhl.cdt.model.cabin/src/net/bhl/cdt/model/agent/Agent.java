@@ -41,25 +41,20 @@ public class Agent extends Subject implements Runnable {
 	private Thread thread;
 	private Path path;
 
-	private boolean initialized = false;
+	private final static int PIXELS_FOR_LUGGAGE = 8, PIXELS_FOR_WAY = 7;
 
-	private final static int PIXELS_FOR_LUGGAGE = 8;
-	private final static int PIXELS_FOR_WAY = 7;
-
-	private Vector start;
-	private Vector goal;
-	private Vector desiredPosition;
-	private Vector currentPosition;
+	private Vector start, goal, desiredPosition, currentPosition;
 	private CostMap mutableCostMap;
 
-	private int numbOfInterupts = 0;
-	private boolean alreadyStowed = false;
-	private boolean waitingCompleted = false;
+	private int numbOfInterupts = 0, waycounter = 0;
+
+	private boolean alreadyStowed = false, waitingCompleted = false,
+			initialized = false, exitTheMainLoop = false, movedOnce = false;;
+
 	private StopWatch stopwatch = new StopWatch();
 	private ArrayList<Path> pathlist = new ArrayList<Path>();
 
 	private AgentMood agentMood;
-	private boolean exitTheMainLoop = false;
 	private Agent blockingAgent;
 
 	/* constant values */
@@ -69,11 +64,7 @@ public class Agent extends Subject implements Runnable {
 	private final int scale;
 	private final AgentMode mode;
 
-	private boolean movedOnce = false;
-
 	private State currentState;
-
-	private int waycounter = 0;
 
 	private Passenger thePassengerILetInTheRow;
 

@@ -31,41 +31,27 @@ import java.awt.event.MouseListener;
 public class SimulationView extends JPanel implements MouseListener {
 
 	private static final long serialVersionUID = 2L;
-	private static final int BOX_WIDTH = 1000;
-	private static final int BOX_HEIGHT = 300;
-	private int FONT_SIZE = 10;
+	private static final int BOX_WIDTH = 1000, BOX_HEIGHT = 300, STEP_SIZE = 2;
 	private AreaMap areamap;
-	private final Button leftButton;
-	private final Button rightButton;
+	private final Button leftButton, rightButton, faster, slower, stop;
 
-	private final Button faster;
-	private final Button slower;
-
-	private final Button stop;
-
-	private int speedPosition = 2;
-
-	private int pointZero = 0;
-	private static final int STEP_SIZE = 2;
+	private int speedPosition = 2, pointZero = 0, FONT_SIZE = 10;
 	private static StopWatch watch;
 
 	private int[] possibleSpeeds = { 1, 2, 5, 10, 20, 50, 100 };
 
 	private static double cabinWidth;
 
-	private boolean once = true;
-
-	private boolean interrupted = false;
+	private boolean once = true, interrupted = false;
 
 	public static StopWatch getWatch() {
 		return watch;
 	}
 
-	
 	public SimulationView() {
 		System.out.println(Func.getLineNumber());
-		this.setPreferredSize(new Dimension(
-				Func.GetScreenWorkingWidth() - 20, BOX_HEIGHT));
+		this.setPreferredSize(new Dimension(Func.GetScreenWorkingWidth() - 20,
+				BOX_HEIGHT));
 		System.out.println(Func.getLineNumber());
 		cabinWidth = SimulationHandler.getCabin().getCabinWidth()
 				/ (double) SimulationHandler.getCabin().getScale();

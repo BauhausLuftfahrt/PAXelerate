@@ -18,12 +18,10 @@ import java.util.ArrayList;
 
 public class HelpView extends JPanel {
 	private static final long serialVersionUID = 1L;
-	private static final int BOX_WIDTH = 720;
-	private static final int BOX_HEIGHT = 1000;
+	private static final int BOX_WIDTH = 720, BOX_HEIGHT = 1000;
 	private CostMap costmap;
 	private Vector newPointHelp;
-	private int fontHeight = 10;
-	private int squareDimension = 20;
+	private int fontHeight = 10, squareDimension = 20;
 	private ArrayList<Vector> pointspace = new ArrayList<Vector>();
 
 	/**
@@ -53,7 +51,7 @@ public class HelpView extends JPanel {
 				while (button.isEnabled()) {
 					try {
 						costmap.copyPoints();
-						for (Vector newPoint : costmap.pointParking) {
+						for (Vector newPoint : costmap.getPointParking()) {
 							pointspace.add(newPoint);
 							costmap.createSurroundingCosts(newPoint);
 							newPointHelp = newPoint;
@@ -93,7 +91,7 @@ public class HelpView extends JPanel {
 						g.setColor(Color.BLUE);
 					}
 				}
-				for (Vector point : costmap.pointParkingHelper) {
+				for (Vector point : costmap.getPointParkingHelper()) {
 					if (point.getX() == x && point.getY() == y) {
 						g.setColor(Color.GREEN);
 					}

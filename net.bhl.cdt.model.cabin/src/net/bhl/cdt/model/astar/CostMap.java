@@ -42,13 +42,14 @@ import net.bhl.cdt.model.cabin.util.Vector3D;
 public class CostMap {
 
 	private int[][] map;
-	private Vector dimensions = new Vector2D(0, 0);
-	private Vector startPoint = new Vector2D(0, 0);
-	private Vector goalPoint = new Vector2D(0, 0);
-	private ArrayList<Vector> visitedPoints = new ArrayList<Vector>();
-	public ArrayList<Vector> pointParking = new ArrayList<Vector>();
-	public ArrayList<Vector> pointParkingHelper = new ArrayList<Vector>();
-	private ArrayList<Vector> onHoldList = new ArrayList<Vector>();
+	private Vector dimensions = new Vector2D(0, 0), startPoint = new Vector2D(
+			0, 0), goalPoint = new Vector2D(0, 0);
+
+	private ArrayList<Vector> visitedPoints = new ArrayList<Vector>(),
+			pointParkingHelper = new ArrayList<Vector>(),
+			onHoldList = new ArrayList<Vector>(),
+			pointParking = new ArrayList<Vector>();
+
 	private AreaMap areamap;
 	private ILog logger;
 	private int lowestCost;
@@ -176,12 +177,12 @@ public class CostMap {
 		createSurroundingCosts(startPoint);
 		while (!goalReached()) {
 			copyPoints();
-			for (Vector newPoint : pointParking) {
+			for (Vector newPoint : getPointParking()) {
 				createSurroundingCosts(newPoint);
 			}
 		}
 		copyPoints();
-		for (Vector newPoint : pointParking) {
+		for (Vector newPoint : getPointParking()) {
 			createSurroundingCosts(newPoint);
 		}
 	}
@@ -192,7 +193,7 @@ public class CostMap {
 	 * @return returns if the goal was reached.
 	 */
 	private boolean goalReached() {
-		for (Vector point : pointParking) {
+		for (Vector point : getPointParking()) {
 			if (point.getX() == goalPoint.getX()
 					&& point.getY() == goalPoint.getY()) {
 				return true;
@@ -239,25 +240,25 @@ public class CostMap {
 	 */
 	public void copyPoints() {
 		lowestCost = Integer.MAX_VALUE;
-		pointParking.clear();
+		getPointParking().clear();
 
 		for (Vector transferPoint : onHoldList) {
-			pointParkingHelper.add(transferPoint);
+			getPointParkingHelper().add(transferPoint);
 		}
 		onHoldList.clear();
 		/* At first, check all stored points for the lowest cost. */
-		for (Vector costPoint : pointParkingHelper) {
+		for (Vector costPoint : getPointParkingHelper()) {
 			checkLowestCost(costPoint);
 		}
-		for (Vector copyPoint : pointParkingHelper) {
+		for (Vector copyPoint : getPointParkingHelper()) {
 			if (getCost(copyPoint) <= lowestCost) {
-				pointParking.add(copyPoint);
+				getPointParking().add(copyPoint);
 			} else {
 				onHoldList.add(copyPoint);
 			}
 		}
-		pointParkingHelper.clear();
-		sortTheList(pointParking);
+		getPointParkingHelper().clear();
+		sortTheList(getPointParking());
 	}
 
 	/**
@@ -279,7 +280,7 @@ public class CostMap {
 						setCost(point.getX(), point.getY(),
 								getCost(middlePoint) + getCost(point));
 						visitedPoints.add(point);
-						pointParkingHelper.add(point);
+						getPointParkingHelper().add(point);
 					}
 				}
 			}
@@ -460,5 +461,21 @@ public class CostMap {
 		// surroundingPoints.add(new Vector2D(pointX - 1, pointY - 1));
 
 		return surroundingPoints;
+	}
+
+	public ArrayList<Vector> getPointParkingHelper() {
+		return pointParkingHelper;
+	}
+
+	public void setPointParkingHelper(ArrayList<Vector> pointParkingHelper) {
+		this.pointParkingHelper = pointParkingHelper;
+	}
+
+	public ArrayList<Vector> getPointParking() {
+		return pointParking;
+	}
+
+	public void setPointParking(ArrayList<Vector> pointParking) {
+		this.pointParking = pointParking;
 	}
 }

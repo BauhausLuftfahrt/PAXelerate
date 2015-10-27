@@ -13,9 +13,7 @@ public class ProbabilityMachine {
 
 	private double[][] model;
 	private double[] model2;
-	private int lowerBound = 0;
-	private int upperBound = Integer.MAX_VALUE;
-	private int valueOfAStep;
+	private int lowerBound = 0, upperBound = Integer.MAX_VALUE, valueOfAStep;
 
 	public ProbabilityMachine(double[][] datamodel, int stepValues) {
 		this.model = datamodel;
