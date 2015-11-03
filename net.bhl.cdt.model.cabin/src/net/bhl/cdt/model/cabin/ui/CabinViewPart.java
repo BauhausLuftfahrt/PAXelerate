@@ -5,7 +5,6 @@
  ***************************************************************************************/
 package net.bhl.cdt.model.cabin.ui;
 
-import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.io.File;
@@ -26,7 +25,6 @@ import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
-import net.bhl.cdt.model.cabin.util.Func;
 import net.bhl.cdt.model.cabin.util.SWTResourceManager;
 import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.cabin.util.Vector2D;
@@ -172,8 +170,13 @@ public class CabinViewPart extends ViewPart implements Runnable,
 		for (Row row : ModelHelper.getChildrenByClass(cabin, Row.class)) {
 			int positionY = (int) ((row.getSeats().get(0).getYPosition()) / factor);
 			int positionX = (int) ((cabin.getCabinWidth() / 2) / factor);
-			graphicsControl.drawText(row.getRowNumber() + "", xZero + positionX
-					- 3, yZero + positionY + 4);
+			graphicsControl.drawText(
+					row.getRowNumber() + "",
+					xZero
+							+ positionX
+							- (int) ((graphicsControl.textExtent(row
+									.getRowNumber() + "").x) / 2), yZero
+							+ positionY + 4);
 		}
 
 		for (Door door : ModelHelper.getChildrenByClass(cabin, Door.class)) {

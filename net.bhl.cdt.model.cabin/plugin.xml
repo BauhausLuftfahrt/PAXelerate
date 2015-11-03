@@ -181,6 +181,14 @@
             name="Info View"
             restorable="true">
       </view>
+      <view
+            allowMultiple="false"
+            class="net.bhl.cdt.model.cabin.ui.PropertyViewPart"
+            icon="images/Passenger.png"
+            id="com.paxelerate.propertyview"
+            name="Property View"
+            restorable="true">
+      </view>
    </extension>
    <extension
          point="org.eclipse.emf.ecp.ui.modelElementOpener">

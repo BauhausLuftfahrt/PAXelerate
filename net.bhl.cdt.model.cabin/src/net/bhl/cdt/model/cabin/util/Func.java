@@ -6,6 +6,7 @@
 
 package net.bhl.cdt.model.cabin.util;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.math.BigDecimal;
@@ -17,6 +18,7 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Random;
 
+import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -25,6 +27,7 @@ import org.eclipse.ui.PlatformUI;
 import net.bhl.cdt.model.astar.SimulationHandler;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
+import net.bhl.cdt.model.cabin.ui.PropertyViewPart;
 
 /**
  * This class is used for general calculations and methods.
@@ -42,9 +45,9 @@ public abstract class Func {
 		return (CabinViewPart) page
 				.findView("net.bhl.cdt.model.cabin.cabinview");
 	}
-	
+
 	public static int getLineNumber() {
-	    return Thread.currentThread().getStackTrace()[2].getLineNumber();
+		return Thread.currentThread().getStackTrace()[2].getLineNumber();
 	}
 
 	/**
@@ -458,5 +461,18 @@ public abstract class Func {
 
 	public static void main(String[] args) {
 		System.out.println(transformToTimeString(3471.6));
+	}
+
+	public static RGB hex2Rgb(String colorStr) {
+		return new RGB(Integer.valueOf(colorStr.substring(1, 3), 16),
+				Integer.valueOf(colorStr.substring(3, 5), 16), Integer.valueOf(
+						colorStr.substring(5, 7), 16));
+	}
+
+	public static PropertyViewPart getPropertyView() {
+		IWorkbenchWindow window = PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow();
+		IWorkbenchPage page = window.getActivePage();
+		return (PropertyViewPart) page.findView("com.paxelerate.propertyview");
 	}
 }

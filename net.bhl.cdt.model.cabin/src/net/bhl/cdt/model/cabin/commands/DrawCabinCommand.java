@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
-
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PhysicalObject;
 import net.bhl.cdt.model.cabin.Row;
@@ -18,6 +17,7 @@ import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.SimulationProperties;
 import net.bhl.cdt.model.cabin.TravelClass;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
+import net.bhl.cdt.model.cabin.ui.PropertyViewPart;
 import net.bhl.cdt.model.cabin.util.Func;
 import net.bhl.cdt.model.util.ModelHelper;
 
@@ -25,6 +25,7 @@ import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+
 /**
  * This class refreshed the cabin view without modifying anything. It checks the
  * layout of the cabin and warns the user.
@@ -38,6 +39,7 @@ public class DrawCabinCommand extends CDTCommand {
 	private Cabin cabin;
 	private ILog logger;
 	private CabinViewPart cabinViewPart;
+	private PropertyViewPart propertyViewPart;
 	private ArrayList<String> errorStrings = new ArrayList<String>();
 
 	/**
@@ -63,16 +65,16 @@ public class DrawCabinCommand extends CDTCommand {
 		 * @param args
 		 *            the arguments
 		 */
-		
+
 		SimulationProperties settings = cabin.getSimulationSettings();
 		double[] luggagemodel = {
 				settings.getPercentageOfPassengersWithNoLuggage(),
 				settings.getPercentageOfPassengersWithSmallLuggage(),
 				settings.getPercentageOfPassengersWithMediumLuggage(),
 				settings.getPercentageOfPassengersWithBigLuggage() };
-		
-		if((luggagemodel[0]+luggagemodel[1]+luggagemodel[2]+luggagemodel[3]) == 0) {
-		cabin.setSimulationSettings(null);
+
+		if ((luggagemodel[0] + luggagemodel[1] + luggagemodel[2] + luggagemodel[3]) == 0) {
+			cabin.setSimulationSettings(null);
 		}
 
 		if (cabin.getSimulationSettings() == null) {
@@ -91,8 +93,16 @@ public class DrawCabinCommand extends CDTCommand {
 		checkFoldableSeats();
 		updateTravelClassProperties();
 
+		propertyViewPart = Func.getPropertyView();
+
 		for (String str : errorStrings) {
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin", str));
+		}
+		try {
+			propertyViewPart.updateUI(cabin);
+		} catch (NullPointerException e) {
+			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
+					"No property view is visible!"));
 		}
 
 		try {
