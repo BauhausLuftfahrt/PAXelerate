@@ -5,9 +5,10 @@
  ***************************************************************************************/
 package net.bhl.cdt.model.cabin.ui;
 
+import java.text.DecimalFormat;
+
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
-import org.eclipse.swt.graphics.GC;
 
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
@@ -41,15 +42,22 @@ public class PropertyViewPart extends ViewPart {
 	private Composite parent;
 	private Canvas canvas;
 	private Cabin cabin;
+
 	private final static int BAR_HEIGHT = 15, DEVIATION_BAR_HEIGHT = 2,
 			ITEM_SPACE = 30, HEADER_SPACE = 20;
+
 	private double noLug = 0.1, smallLug = 0.2, medLug = 0.4, bigLug = 0.3,
 			male = 0.5, female = 0.5;
 
-	private double weightValues[] = { 0.1, 0.2, 0.1, 0.2 };
-	private double heightValues[] = { 0.1, 0.2, 0.1, 0.2 };
-	private double widthValues[] = { 0.1, 0.2, 0.1, 0.2 };
-	private double depthValues[] = { 0.1, 0.2, 0.1, 0.2 };
+	private static final double AVG_VALUE = 0.25;
+
+	private double weightValues[] = { 0.1, 0.2, 0.1, 0.2 }, heightValues[] = {
+			0.1, 0.2, 0.1, 0.2 }, widthValues[] = { 0.1, 0.2, 0.1, 0.2 },
+			depthValues[] = { 0.1, 0.2, 0.1, 0.2 };
+
+	// TODO: use this to calculate the real values back!
+	private double[][] averages = { { 50, 50 }, { 50, 50 }, { 50, 50 },
+			{ 50, 50 } };
 
 	private int pos = 0;
 
@@ -187,21 +195,24 @@ public class PropertyViewPart extends ViewPart {
 
 	private void createDeviationBlock(String headline, PaintEvent e,
 			double dev1l, double dev1r, double dev2l, double dev2r) {
+
 		addHeadline(e, headline);
+
 		e.gc.setBackground(getColor(MALE_STR));
-		e.gc.fillRectangle(0, pos, (int) (dimensions.getX() * 0.25), BAR_HEIGHT);
+		e.gc.fillRectangle(0, pos, (int) (dimensions.getX() * AVG_VALUE),
+				BAR_HEIGHT);
 		e.gc.drawText(names[0], 5, pos, true);
 
-		createDeviationLine(e, 0.25 - dev1l, 0.25 + dev1r);
+		createDeviationLine(e, AVG_VALUE - dev1l, AVG_VALUE + dev1r);
 
 		e.gc.setBackground(getColor(FEMALE_STR));
-		e.gc.fillRectangle((int) (dimensions.getX() * 0.75), pos,
+		e.gc.fillRectangle((int) (dimensions.getX() * (1 - AVG_VALUE)), pos,
 				(int) (dimensions.getX()), BAR_HEIGHT);
 		e.gc.drawText(names[1],
 				(int) (dimensions.getX()) - e.gc.textExtent(names[1]).x - 5,
 				pos, true);
 
-		createDeviationLine(e, 0.75 - dev2l, 0.75 + dev2r);
+		createDeviationLine(e, 1 - AVG_VALUE - dev2l, 1 - AVG_VALUE + dev2r);
 	}
 
 	private void createDeviationLine(PaintEvent e, double leftFactor,
@@ -223,6 +234,22 @@ public class PropertyViewPart extends ViewPart {
 				(int) (dimensions.getX() * rightFactor), pos
 						+ (int) (BAR_HEIGHT / 2) + DEVIATION_BAR_HEIGHT);
 
+		e.gc.setFont(new Font(parent.getDisplay(), "Arial", 6, SWT.NONE));
+		DecimalFormat df = new DecimalFormat("#.##");
+
+		String leftStr = df.format(leftFactor);
+		e.gc.drawText(
+				leftStr,
+				(int) (dimensions.getX() * leftFactor)
+						- e.gc.stringExtent(leftStr).x / 2, pos + 15, true);
+
+		String rightStr = df.format(rightFactor);
+		e.gc.drawText(
+				rightStr,
+				(int) (dimensions.getX() * rightFactor)
+						- e.gc.stringExtent(rightStr).x / 2, pos + 15, true);
+
+		e.gc.setFont(new Font(parent.getDisplay(), "Arial", 8, SWT.NONE));
 		e.gc.setForeground(getColor("#000000"));
 	}
 
@@ -238,12 +265,12 @@ public class PropertyViewPart extends ViewPart {
 
 		/* = weightSum ,avWeight ,maxWeight,minWeight */
 		double[][] weightStorage = { { 0, 0 }, { 0, 0 }, { 0, 0 },
-				{ Integer.MAX_VALUE, Integer.MAX_VALUE } };
-		double[][] heightStorage = { { 0, 0 }, { 0, 0 }, { 0, 0 },
-				{ Integer.MAX_VALUE, Integer.MAX_VALUE } };
-		double[][] widthStorage = { { 0, 0 }, { 0, 0 }, { 0, 0 },
-				{ Integer.MAX_VALUE, Integer.MAX_VALUE } };
-		double[][] depthStorage = { { 0, 0 }, { 0, 0 }, { 0, 0 },
+				{ Integer.MAX_VALUE, Integer.MAX_VALUE } }, heightStorage = {
+				{ 0, 0 }, { 0, 0 }, { 0, 0 },
+				{ Integer.MAX_VALUE, Integer.MAX_VALUE } }, widthStorage = {
+				{ 0, 0 }, { 0, 0 }, { 0, 0 },
+				{ Integer.MAX_VALUE, Integer.MAX_VALUE } }, depthStorage = {
+				{ 0, 0 }, { 0, 0 }, { 0, 0 },
 				{ Integer.MAX_VALUE, Integer.MAX_VALUE } };
 
 		for (Passenger pax : cabin.getPassengers()) {
@@ -301,44 +328,60 @@ public class PropertyViewPart extends ViewPart {
 		weightStorage[1][0] = weightStorage[0][0] / male;
 		weightStorage[1][1] = weightStorage[0][1] / female;
 
-		weightValues[0] = (1 - weightStorage[3][0] / weightStorage[1][0]) * 0.25;
-		weightValues[1] = (weightStorage[2][0] / weightStorage[1][0] * 0.25) - 0.25;
+		weightValues[0] = (1 - weightStorage[3][0] / weightStorage[1][0])
+				* AVG_VALUE;
+		weightValues[1] = (weightStorage[2][0] / weightStorage[1][0] * AVG_VALUE)
+				- AVG_VALUE;
 
-		weightValues[2] = (1 - weightStorage[3][1] / weightStorage[1][1]) * 0.25;
-		weightValues[3] = (weightStorage[2][1] / weightStorage[1][1] * 0.25) - 0.25;
+		weightValues[2] = (1 - weightStorage[3][1] / weightStorage[1][1])
+				* AVG_VALUE;
+		weightValues[3] = (weightStorage[2][1] / weightStorage[1][1] * AVG_VALUE)
+				- AVG_VALUE;
 
 		/* ********** */
 
 		heightStorage[1][0] = heightStorage[0][0] / male;
 		heightStorage[1][1] = heightStorage[0][1] / female;
 
-		heightValues[0] = (1 - heightStorage[3][0] / heightStorage[1][0]) * 0.25;
-		heightValues[1] = (heightStorage[2][0] / heightStorage[1][0] * 0.25) - 0.25;
+		heightValues[0] = (1 - heightStorage[3][0] / heightStorage[1][0])
+				* AVG_VALUE;
+		heightValues[1] = (heightStorage[2][0] / heightStorage[1][0] * AVG_VALUE)
+				- AVG_VALUE;
 
-		heightValues[2] = (1 - heightStorage[3][1] / heightStorage[1][1]) * 0.25;
-		heightValues[3] = (heightStorage[2][1] / heightStorage[1][1] * 0.25) - 0.25;
+		heightValues[2] = (1 - heightStorage[3][1] / heightStorage[1][1])
+				* AVG_VALUE;
+		heightValues[3] = (heightStorage[2][1] / heightStorage[1][1] * AVG_VALUE)
+				- AVG_VALUE;
 
 		/* ********** */
 
 		widthStorage[1][0] = widthStorage[0][0] / male;
 		widthStorage[1][1] = widthStorage[0][1] / female;
 
-		widthValues[0] = (1 - widthStorage[3][0] / widthStorage[1][0]) * 0.25;
-		widthValues[1] = (widthStorage[2][0] / widthStorage[1][0] * 0.25) - 0.25;
+		widthValues[0] = (1 - widthStorage[3][0] / widthStorage[1][0])
+				* AVG_VALUE;
+		widthValues[1] = (widthStorage[2][0] / widthStorage[1][0] * AVG_VALUE)
+				- AVG_VALUE;
 
-		widthValues[2] = (1 - widthStorage[3][1] / widthStorage[1][1]) * 0.25;
-		widthValues[3] = (widthStorage[2][1] / widthStorage[1][1] * 0.25) - 0.25;
+		widthValues[2] = (1 - widthStorage[3][1] / widthStorage[1][1])
+				* AVG_VALUE;
+		widthValues[3] = (widthStorage[2][1] / widthStorage[1][1] * AVG_VALUE)
+				- AVG_VALUE;
 
 		/* ********** */
 
 		depthStorage[1][0] = depthStorage[0][0] / male;
 		depthStorage[1][1] = depthStorage[0][1] / female;
 
-		depthValues[0] = (1 - depthStorage[3][0] / depthStorage[1][0]) * 0.25;
-		depthValues[1] = (depthStorage[2][0] / depthStorage[1][0] * 0.25) - 0.25;
+		depthValues[0] = (1 - depthStorage[3][0] / depthStorage[1][0])
+				* AVG_VALUE;
+		depthValues[1] = (depthStorage[2][0] / depthStorage[1][0] * AVG_VALUE)
+				- AVG_VALUE;
 
-		depthValues[2] = (1 - depthStorage[3][1] / depthStorage[1][1]) * 0.25;
-		depthValues[3] = (depthStorage[2][1] / depthStorage[1][1] * 0.25) - 0.25;
+		depthValues[2] = (1 - depthStorage[3][1] / depthStorage[1][1])
+				* AVG_VALUE;
+		depthValues[3] = (depthStorage[2][1] / depthStorage[1][1] * AVG_VALUE)
+				- AVG_VALUE;
 
 		/* ********** */
 
