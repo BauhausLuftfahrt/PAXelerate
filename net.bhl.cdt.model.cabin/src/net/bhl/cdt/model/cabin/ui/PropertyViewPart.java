@@ -56,6 +56,9 @@ public class PropertyViewPart extends ViewPart {
 			depthValues[] = { 0.1, 0.2, 0.1, 0.2 };
 
 	// TODO: use this to calculate the real values back!
+
+	// TODO: create data model to use all these values and genereate output &
+	// export!
 	private double[][] averages = { { 50, 50 }, { 50, 50 }, { 50, 50 },
 			{ 50, 50 } };
 
