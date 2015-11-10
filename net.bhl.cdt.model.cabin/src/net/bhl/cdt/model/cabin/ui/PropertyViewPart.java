@@ -12,6 +12,7 @@ import org.eclipse.swt.graphics.Font;
 
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.CabinFactory;
+import net.bhl.cdt.model.cabin.LuggageSize;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Sex;
 import net.bhl.cdt.model.cabin.util.Func;
@@ -26,6 +27,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.ui.part.ViewPart;
+
+import com.paxelerate.storage.GaussianStorage;
+import com.paxelerate.storage.StorageHandler;
 
 /**
  * This class represents the cabin view. All graphics generation is done here.
@@ -43,24 +47,14 @@ public class PropertyViewPart extends ViewPart {
 	private Canvas canvas;
 	private Cabin cabin;
 
+	private StorageHandler propertyStore = new StorageHandler();
+
 	private final static int BAR_HEIGHT = 15, DEVIATION_BAR_HEIGHT = 2,
 			ITEM_SPACE = 30, HEADER_SPACE = 20;
 
-	private double noLug = 0.1, smallLug = 0.2, medLug = 0.4, bigLug = 0.3,
-			male = 0.5, female = 0.5;
+	private double male = 0.5, female = 0.5;
 
 	private static final double AVG_VALUE = 0.25;
-
-	private double weightValues[] = { 0.1, 0.2, 0.1, 0.2 }, heightValues[] = {
-			0.1, 0.2, 0.1, 0.2 }, widthValues[] = { 0.1, 0.2, 0.1, 0.2 },
-			depthValues[] = { 0.1, 0.2, 0.1, 0.2 };
-
-	// TODO: use this to calculate the real values back!
-
-	// TODO: create data model to use all these values and genereate output &
-	// export!
-	private double[][] averages = { { 50, 50 }, { 50, 50 }, { 50, 50 },
-			{ 50, 50 } };
 
 	private int pos = 0;
 
@@ -144,6 +138,18 @@ public class PropertyViewPart extends ViewPart {
 					pos += ITEM_SPACE;
 					addHeadline(e, "Luggage Distribution");
 
+					double noLug = propertyStore.getLuggageStore()
+							.getLuggagePercentage(LuggageSize.NONE);
+
+					double smallLug = propertyStore.getLuggageStore()
+							.getLuggagePercentage(LuggageSize.SMALL);
+
+					double medLug = propertyStore.getLuggageStore()
+							.getLuggagePercentage(LuggageSize.MEDIUM);
+
+					double bigLug = propertyStore.getLuggageStore()
+							.getLuggagePercentage(LuggageSize.BIG);
+
 					e.gc.setBackground(getColor("#CC0000"));
 					e.gc.fillRectangle(0, pos,
 							(int) (dimensions.getX() * noLug), BAR_HEIGHT);
@@ -166,23 +172,19 @@ public class PropertyViewPart extends ViewPart {
 
 					pos += ITEM_SPACE;
 					createDeviationBlock("Weight Distribution", e,
-							weightValues[0], weightValues[1], weightValues[2],
-							weightValues[3]);
+							propertyStore.getWeightStore());
 
 					pos += ITEM_SPACE;
 					createDeviationBlock("Height Distribution", e,
-							heightValues[0], heightValues[1], heightValues[2],
-							heightValues[3]);
+							propertyStore.getHeightStore());
 
 					pos += ITEM_SPACE;
 					createDeviationBlock("Width Distribution", e,
-							widthValues[0], widthValues[1], widthValues[2],
-							widthValues[3]);
+							propertyStore.getWidthStore());
 
 					pos += ITEM_SPACE;
 					createDeviationBlock("Depth Distribution", e,
-							depthValues[0], depthValues[1], depthValues[2],
-							depthValues[3]);
+							propertyStore.getDepthStore());
 				}
 			});
 		} catch (IllegalArgumentException e) {
@@ -197,7 +199,7 @@ public class PropertyViewPart extends ViewPart {
 	}
 
 	private void createDeviationBlock(String headline, PaintEvent e,
-			double dev1l, double dev1r, double dev2l, double dev2r) {
+			GaussianStorage store) {
 
 		addHeadline(e, headline);
 
@@ -206,7 +208,24 @@ public class PropertyViewPart extends ViewPart {
 				BAR_HEIGHT);
 		e.gc.drawText(names[0], 5, pos, true);
 
-		createDeviationLine(e, AVG_VALUE - dev1l, AVG_VALUE + dev1r);
+		double minimumFactorMale = (1 - store.getMinimum(Sex.MALE)
+				/ store.getAverage(Sex.MALE))
+				* AVG_VALUE;
+
+		double maximumFactorMale = (store.getMaximum(Sex.MALE)
+				/ store.getAverage(Sex.MALE) * AVG_VALUE)
+				- AVG_VALUE;
+
+		double minimumFactorFemale = (1 - store.getMinimum(Sex.FEMALE)
+				/ store.getAverage(Sex.FEMALE))
+				* AVG_VALUE;
+		double maximumFactorFemale = (store.getMaximum(Sex.FEMALE)
+				/ store.getAverage(Sex.FEMALE) * AVG_VALUE)
+				- AVG_VALUE;
+
+		createDeviationLine(e, AVG_VALUE - minimumFactorMale, AVG_VALUE
+				+ maximumFactorMale, store.getMaximum(Sex.MALE),
+				store.getMinimum(Sex.MALE));
 
 		e.gc.setBackground(getColor(FEMALE_STR));
 		e.gc.fillRectangle((int) (dimensions.getX() * (1 - AVG_VALUE)), pos,
@@ -215,11 +234,13 @@ public class PropertyViewPart extends ViewPart {
 				(int) (dimensions.getX()) - e.gc.textExtent(names[1]).x - 5,
 				pos, true);
 
-		createDeviationLine(e, 1 - AVG_VALUE - dev2l, 1 - AVG_VALUE + dev2r);
+		createDeviationLine(e, 1 - AVG_VALUE - minimumFactorFemale, 1
+				- AVG_VALUE + maximumFactorFemale,
+				store.getMinimum(Sex.FEMALE), store.getMaximum(Sex.FEMALE));
 	}
 
 	private void createDeviationLine(PaintEvent e, double leftFactor,
-			double rightFactor) {
+			double rightFactor, double rightLabel, double leftLabel) {
 
 		e.gc.setForeground(getColor("#333333"));
 		e.gc.setLineWidth(2);
@@ -240,13 +261,13 @@ public class PropertyViewPart extends ViewPart {
 		e.gc.setFont(new Font(parent.getDisplay(), "Arial", 6, SWT.NONE));
 		DecimalFormat df = new DecimalFormat("#.##");
 
-		String leftStr = df.format(leftFactor);
+		String leftStr = df.format(leftLabel);
 		e.gc.drawText(
 				leftStr,
 				(int) (dimensions.getX() * leftFactor)
 						- e.gc.stringExtent(leftStr).x / 2, pos + 15, true);
 
-		String rightStr = df.format(rightFactor);
+		String rightStr = df.format(rightLabel);
 		e.gc.drawText(
 				rightStr,
 				(int) (dimensions.getX() * rightFactor)
@@ -263,139 +284,10 @@ public class PropertyViewPart extends ViewPart {
 	}
 
 	private void loopPassengers() {
-		int amount = cabin.getPassengers().size();
-		int sex = 0;
-
-		/* = weightSum ,avWeight ,maxWeight,minWeight */
-		double[][] weightStorage = { { 0, 0 }, { 0, 0 }, { 0, 0 },
-				{ Integer.MAX_VALUE, Integer.MAX_VALUE } }, heightStorage = {
-				{ 0, 0 }, { 0, 0 }, { 0, 0 },
-				{ Integer.MAX_VALUE, Integer.MAX_VALUE } }, widthStorage = {
-				{ 0, 0 }, { 0, 0 }, { 0, 0 },
-				{ Integer.MAX_VALUE, Integer.MAX_VALUE } }, depthStorage = {
-				{ 0, 0 }, { 0, 0 }, { 0, 0 },
-				{ Integer.MAX_VALUE, Integer.MAX_VALUE } };
 
 		for (Passenger pax : cabin.getPassengers()) {
-			switch (pax.getLuggage()) {
-			case NONE:
-				noLug++;
-				break;
-			case SMALL:
-				smallLug++;
-				break;
-			case MEDIUM:
-				medLug++;
-				break;
-			case BIG:
-				bigLug++;
-				break;
-			}
-
-			if (pax.getSex() == Sex.MALE) {
-				male++;
-				sex = 0;
-
-			} else {
-				female++;
-				sex = 1;
-			}
-
-			weightStorage[0][sex] += pax.getWeight();
-			weightStorage[2][sex] = Math.max(weightStorage[2][sex],
-					pax.getWeight());
-			weightStorage[3][sex] = Math.min(weightStorage[3][sex],
-					pax.getWeight());
-
-			heightStorage[0][sex] += pax.getHeight();
-			heightStorage[2][sex] = Math.max(heightStorage[2][sex],
-					pax.getHeight());
-			heightStorage[3][sex] = Math.min(heightStorage[3][sex],
-					pax.getHeight());
-
-			widthStorage[0][sex] += pax.getWidth();
-			widthStorage[2][sex] = Math.max(widthStorage[2][sex],
-					pax.getWidth());
-			widthStorage[3][sex] = Math.min(widthStorage[3][sex],
-					pax.getWidth());
-
-			depthStorage[0][sex] += pax.getDepth();
-			depthStorage[2][sex] = Math.max(depthStorage[2][sex],
-					pax.getDepth());
-			depthStorage[3][sex] = Math.min(depthStorage[3][sex],
-					pax.getDepth());
-
+			propertyStore.addPassenger(pax);
 		}
-		/* ********** */
-
-		weightStorage[1][0] = weightStorage[0][0] / male;
-		weightStorage[1][1] = weightStorage[0][1] / female;
-
-		weightValues[0] = (1 - weightStorage[3][0] / weightStorage[1][0])
-				* AVG_VALUE;
-		weightValues[1] = (weightStorage[2][0] / weightStorage[1][0] * AVG_VALUE)
-				- AVG_VALUE;
-
-		weightValues[2] = (1 - weightStorage[3][1] / weightStorage[1][1])
-				* AVG_VALUE;
-		weightValues[3] = (weightStorage[2][1] / weightStorage[1][1] * AVG_VALUE)
-				- AVG_VALUE;
-
-		/* ********** */
-
-		heightStorage[1][0] = heightStorage[0][0] / male;
-		heightStorage[1][1] = heightStorage[0][1] / female;
-
-		heightValues[0] = (1 - heightStorage[3][0] / heightStorage[1][0])
-				* AVG_VALUE;
-		heightValues[1] = (heightStorage[2][0] / heightStorage[1][0] * AVG_VALUE)
-				- AVG_VALUE;
-
-		heightValues[2] = (1 - heightStorage[3][1] / heightStorage[1][1])
-				* AVG_VALUE;
-		heightValues[3] = (heightStorage[2][1] / heightStorage[1][1] * AVG_VALUE)
-				- AVG_VALUE;
-
-		/* ********** */
-
-		widthStorage[1][0] = widthStorage[0][0] / male;
-		widthStorage[1][1] = widthStorage[0][1] / female;
-
-		widthValues[0] = (1 - widthStorage[3][0] / widthStorage[1][0])
-				* AVG_VALUE;
-		widthValues[1] = (widthStorage[2][0] / widthStorage[1][0] * AVG_VALUE)
-				- AVG_VALUE;
-
-		widthValues[2] = (1 - widthStorage[3][1] / widthStorage[1][1])
-				* AVG_VALUE;
-		widthValues[3] = (widthStorage[2][1] / widthStorage[1][1] * AVG_VALUE)
-				- AVG_VALUE;
-
-		/* ********** */
-
-		depthStorage[1][0] = depthStorage[0][0] / male;
-		depthStorage[1][1] = depthStorage[0][1] / female;
-
-		depthValues[0] = (1 - depthStorage[3][0] / depthStorage[1][0])
-				* AVG_VALUE;
-		depthValues[1] = (depthStorage[2][0] / depthStorage[1][0] * AVG_VALUE)
-				- AVG_VALUE;
-
-		depthValues[2] = (1 - depthStorage[3][1] / depthStorage[1][1])
-				* AVG_VALUE;
-		depthValues[3] = (depthStorage[2][1] / depthStorage[1][1] * AVG_VALUE)
-				- AVG_VALUE;
-
-		/* ********** */
-
-		noLug = noLug / amount;
-		smallLug = smallLug / amount;
-		medLug = medLug / amount;
-		bigLug = bigLug / amount;
-
-		male = male / amount;
-		female = female / amount;
-
 	}
 
 	private Color getColor(String hex) {
