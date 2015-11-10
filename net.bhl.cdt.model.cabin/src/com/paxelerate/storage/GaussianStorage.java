@@ -1,5 +1,7 @@
 package com.paxelerate.storage;
 
+import com.paxelerate.storage.StorageHandler.StoreType;
+
 import net.bhl.cdt.model.cabin.Sex;
 
 public class GaussianStorage {
@@ -17,8 +19,14 @@ public class GaussianStorage {
 
 	private double sumFemale = 0, sumMale = 0;
 
-	public GaussianStorage() {
+	private final StoreType type;
 
+	public GaussianStorage(StoreType type) {
+		this.type = type;
+	}
+
+	public StoreType getStoreType() {
+		return type;
 	}
 
 	public void addValue(Sex sex, double value) {
@@ -75,15 +83,6 @@ public class GaussianStorage {
 		}
 	}
 
-	//
-	// public double getDeviation(Sex sex) {
-	// if (sex == Sex.MALE) {
-	// return deviationMale;
-	// } else {
-	// return deviationFemale;
-	// }
-	// }
-
 	public double getAverage(Sex sex) {
 		if (sex == Sex.MALE) {
 			return averageMale;
@@ -107,5 +106,4 @@ public class GaussianStorage {
 			return numberFemale;
 		}
 	}
-
 }

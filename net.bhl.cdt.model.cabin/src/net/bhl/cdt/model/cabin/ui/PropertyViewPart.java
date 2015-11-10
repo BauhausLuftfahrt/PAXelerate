@@ -28,7 +28,9 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.ui.part.ViewPart;
 
+import com.paxelerate.storage.AgeStorage;
 import com.paxelerate.storage.GaussianStorage;
+import com.paxelerate.storage.StorageHandler.StoreType;
 import com.paxelerate.storage.StorageHandler;
 
 /**
@@ -41,7 +43,7 @@ import com.paxelerate.storage.StorageHandler;
 
 public class PropertyViewPart extends ViewPart {
 
-	private String[] names = { "Male", "Female" };
+	private String[] names = { "♂", "♀" };
 	private static final String MALE_STR = "#3399FF", FEMALE_STR = "#FF99FF";
 	private Composite parent;
 	private Canvas canvas;
@@ -51,8 +53,6 @@ public class PropertyViewPart extends ViewPart {
 
 	private final static int BAR_HEIGHT = 15, DEVIATION_BAR_HEIGHT = 2,
 			ITEM_SPACE = 30, HEADER_SPACE = 20;
-
-	private double male = 0.5, female = 0.5;
 
 	private static final double AVG_VALUE = 0.25;
 
@@ -115,26 +115,37 @@ public class PropertyViewPart extends ViewPart {
 
 					e.gc.setForeground(getColor("#000000"));
 
-					/* male - female ratio */
+					/* ********************************************* */
 					pos += 5;
 					addHeadline(e, "Sex Ratio");
 
 					e.gc.setBackground(getColor(MALE_STR));
 
 					e.gc.fillRectangle(0, pos,
-							(int) (dimensions.getX() * male), BAR_HEIGHT);
+							(int) (dimensions.getX() * propertyStore
+									.getPercentageOfPassengers(Sex.MALE)),
+							BAR_HEIGHT);
 					e.gc.drawText(names[0], 5, pos, true);
 
 					e.gc.setBackground(getColor(FEMALE_STR));
-					e.gc.fillRectangle((int) (dimensions.getX() * male), pos,
-							(int) (dimensions.getX() * female), BAR_HEIGHT);
+					e.gc.fillRectangle((int) (dimensions.getX() * propertyStore
+							.getPercentageOfPassengers(Sex.MALE)), pos,
+							(int) (dimensions.getX() * propertyStore
+									.getPercentageOfPassengers(Sex.FEMALE)),
+							BAR_HEIGHT);
 					e.gc.drawText(
 							names[1],
 							(int) (dimensions.getX())
 									- e.gc.textExtent(names[1]).x - 5, pos,
 							true);
 
-					/* luggage distribution */
+					addLabel(
+							e,
+							propertyStore.getPercentageOfPassengers(Sex.MALE) * 100,
+							propertyStore.getPercentageOfPassengers(Sex.MALE),
+							LabelClass.PERCENTAGE, 0);
+
+					/* ********************************************* */
 					pos += ITEM_SPACE;
 					addHeadline(e, "Luggage Distribution");
 
@@ -170,21 +181,35 @@ public class PropertyViewPart extends ViewPart {
 							* smallLug), pos,
 							(int) (dimensions.getX() * bigLug), BAR_HEIGHT);
 
+					addLabel(e, noLug * 100, noLug, LabelClass.PERCENTAGE, 0);
+					addLabel(e, (noLug + smallLug) * 100, smallLug + noLug,
+							LabelClass.PERCENTAGE, 0);
+					addLabel(e, (noLug + smallLug + medLug) * 100, smallLug
+							+ noLug + medLug, LabelClass.PERCENTAGE, 0);
+
+					/* ********************************************* */
+
 					pos += ITEM_SPACE;
 					createDeviationBlock("Weight Distribution", e,
-							propertyStore.getWeightStore());
+							propertyStore.getStore(StoreType.WEIGHT));
 
 					pos += ITEM_SPACE;
 					createDeviationBlock("Height Distribution", e,
-							propertyStore.getHeightStore());
+							propertyStore.getStore(StoreType.HEIGHT));
 
 					pos += ITEM_SPACE;
 					createDeviationBlock("Width Distribution", e,
-							propertyStore.getWidthStore());
+							propertyStore.getStore(StoreType.WIDTH));
 
 					pos += ITEM_SPACE;
 					createDeviationBlock("Depth Distribution", e,
-							propertyStore.getDepthStore());
+							propertyStore.getStore(StoreType.DEPTH));
+
+					/* ********************************************* */
+
+					pos += ITEM_SPACE;
+					createFunctionBlock("Age Distribution", e,
+							propertyStore.getAgeStore());
 				}
 			});
 		} catch (IllegalArgumentException e) {
@@ -196,6 +221,69 @@ public class PropertyViewPart extends ViewPart {
 	private void addHeadline(PaintEvent e, String headline) {
 		e.gc.drawText(headline, 5, pos, true);
 		pos += HEADER_SPACE;
+	}
+
+	public void createFunctionBlock(String headline, PaintEvent e,
+			AgeStorage store) {
+
+		addHeadline(e, headline);
+
+		int margin = 2;
+
+		int min = store.getMinimumAge(null) - margin;
+		int max = store.getMaximumAge(null) + margin;
+
+		double steps = max - min;
+
+		pos += 30;
+
+		drawFunction(e, store, null, (int) steps, min, max);
+		drawFunction(e, store, Sex.MALE, (int) steps, min, max);
+		drawFunction(e, store, Sex.FEMALE, (int) steps, min, max);
+
+		addLabel(e, store.getMaximumAge(null), 1 - margin / steps,
+				LabelClass.VALUE, -10);
+
+		addLabel(e, store.getMinimumAge(null), margin / steps,
+				LabelClass.VALUE, -10);
+
+		addLabel(e, store.getAverageAge(null),
+				(store.getAverageAge(null) - min) / steps, LabelClass.VALUE,
+				-10);
+	}
+
+	private void drawFunction(PaintEvent e, AgeStorage store, Sex sex,
+			int steps, int min, int max) {
+
+		int maximum = store.getMaximumAmount(sex), i = 0, x1 = 0, y1 = pos, x2 = 0, y2 = 0;
+		if (maximum == 0) {
+			maximum = 1;
+		}
+
+		int maxHeight = maximum * 4;
+
+		if (sex == Sex.MALE) {
+			e.gc.setForeground(getColor(MALE_STR));
+		} else if (sex == null) {
+			e.gc.setForeground(getColor("#AAAAAA"));
+		} else {
+			e.gc.setForeground(getColor(FEMALE_STR));
+			// maxHeight = -maxHeight;
+			// pos += 10;
+			// TODO: mirror female values
+		}
+
+		for (int k = min; k < max; k++) {
+			int value = store.getData(sex)[k];
+			x2 = (int) (i * dimensions.getX() / steps);
+			y2 = pos - (int) (((double) value / (double) maximum) * maxHeight);
+			e.gc.drawLine(x1, y1, x2, y2);
+			x1 = x2;
+			y1 = y2;
+			i++;
+		}
+
+		e.gc.setForeground(getColor("#000000"));
 	}
 
 	private void createDeviationBlock(String headline, PaintEvent e,
@@ -239,6 +327,28 @@ public class PropertyViewPart extends ViewPart {
 				store.getMinimum(Sex.FEMALE), store.getMaximum(Sex.FEMALE));
 	}
 
+	private void addLabel(PaintEvent e, double labelValue,
+			double relativePosition, LabelClass labelClass, int offset) {
+
+		e.gc.setFont(new Font(parent.getDisplay(), "Arial", 6, SWT.NONE));
+
+		String labelString;
+
+		if (labelClass == LabelClass.PERCENTAGE) {
+			DecimalFormat df = new DecimalFormat("#.#");
+			labelString = df.format(labelValue);
+			labelString += "%";
+		} else {
+			DecimalFormat df = new DecimalFormat("#.#");
+			labelString = df.format(labelValue);
+		}
+
+		e.gc.drawText(labelString, (int) (dimensions.getX() * relativePosition)
+				- e.gc.stringExtent(labelString).x / 2, pos + 15 + offset, true);
+
+		e.gc.setFont(new Font(parent.getDisplay(), "Arial", 8, SWT.NONE));
+	}
+
 	private void createDeviationLine(PaintEvent e, double leftFactor,
 			double rightFactor, double rightLabel, double leftLabel) {
 
@@ -258,22 +368,10 @@ public class PropertyViewPart extends ViewPart {
 				(int) (dimensions.getX() * rightFactor), pos
 						+ (int) (BAR_HEIGHT / 2) + DEVIATION_BAR_HEIGHT);
 
-		e.gc.setFont(new Font(parent.getDisplay(), "Arial", 6, SWT.NONE));
-		DecimalFormat df = new DecimalFormat("#.##");
+		addLabel(e, leftLabel, leftFactor, LabelClass.VALUE, 0);
 
-		String leftStr = df.format(leftLabel);
-		e.gc.drawText(
-				leftStr,
-				(int) (dimensions.getX() * leftFactor)
-						- e.gc.stringExtent(leftStr).x / 2, pos + 15, true);
+		addLabel(e, rightLabel, rightFactor, LabelClass.VALUE, 0);
 
-		String rightStr = df.format(rightLabel);
-		e.gc.drawText(
-				rightStr,
-				(int) (dimensions.getX() * rightFactor)
-						- e.gc.stringExtent(rightStr).x / 2, pos + 15, true);
-
-		e.gc.setFont(new Font(parent.getDisplay(), "Arial", 8, SWT.NONE));
 		e.gc.setForeground(getColor("#000000"));
 	}
 
@@ -284,6 +382,8 @@ public class PropertyViewPart extends ViewPart {
 	}
 
 	private void loopPassengers() {
+
+		propertyStore.clear();
 
 		for (Passenger pax : cabin.getPassengers()) {
 			propertyStore.addPassenger(pax);
@@ -298,5 +398,9 @@ public class PropertyViewPart extends ViewPart {
 	public void setFocus() {
 		// TODO Auto-generated method stub
 
+	}
+
+	private enum LabelClass {
+		PERCENTAGE, VALUE
 	}
 }
