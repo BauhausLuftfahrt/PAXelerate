@@ -6,9 +6,7 @@ import net.bhl.cdt.model.cabin.Sex;
 
 public class GaussianStorage {
 
-	// private double deviationFemale = 0, deviationMale = 0;
-
-	private double numberFemale = 0, numberMale = 0;
+	private int numberFemale = 0, numberMale = 0;
 
 	private double averageFemale = 0, averageMale = 0;
 
@@ -45,9 +43,8 @@ public class GaussianStorage {
 
 	private void updateAverage() {
 
-		averageMale = sumMale / numberMale;
-		averageFemale = sumFemale / numberFemale;
-
+		averageMale = sumMale / (double) numberMale;
+		averageFemale = sumFemale / (double) numberFemale;
 	}
 
 	private void updateMinimum(Sex sex, double value) {

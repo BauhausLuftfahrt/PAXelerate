@@ -5,8 +5,6 @@
  ***************************************************************************************/
 package net.bhl.cdt.model.cabin.ui;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -23,6 +21,7 @@ import net.bhl.cdt.model.cabin.FirstClass;
 import net.bhl.cdt.model.cabin.Galley;
 import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.Passenger;
+import net.bhl.cdt.model.cabin.PhysicalObject;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.util.SWTResourceManager;
@@ -59,8 +58,7 @@ import org.eclipse.ui.part.ViewPart;
  *
  */
 
-public class CabinViewPart extends ViewPart implements Runnable,
-		MouseMotionListener {
+public class CabinViewPart extends ViewPart {
 	private Cabin cabin;
 	private double factor;
 	private Composite parent;
@@ -95,7 +93,6 @@ public class CabinViewPart extends ViewPart implements Runnable,
 	private static Image img;
 	private static final String FOLDER_NAME = "paxelerate", FILE_PATH = System
 			.getProperty("user.home") + "/Documents/" + FOLDER_NAME + "/";
-	private static Thread thread = null;
 	private static File storageFolder = new File(FILE_PATH);
 	private double canvasHeight;
 
@@ -128,6 +125,22 @@ public class CabinViewPart extends ViewPart implements Runnable,
 		return cabin;
 	}
 
+	private void drawObject(GC gc, Color color, PhysicalObject object) {
+		gc.setBackground(color);
+		gc.fillRectangle((int) (xZero + object.getXPosition() / factor),
+				(int) (yZero + object.getYPosition() / factor),
+				(int) (object.getXDimension() / factor),
+				(int) (object.getYDimension() / factor));
+		gc.drawImage(lavatoryIcon, (int) (xZero + (object.getXPosition()
+				+ object.getXDimension() / 2 - object.getYDimension()
+				* PASSENGER_CIRCLE_SIZE / 2)
+				/ factor),
+				(int) (yZero + (object.getYPosition() + object.getYDimension()
+						/ 2 - object.getYDimension() * PASSENGER_CIRCLE_SIZE
+						/ 2)
+						/ factor));
+	}
+
 	/**
 	 * This method creates the background image.
 	 * 
@@ -150,7 +163,6 @@ public class CabinViewPart extends ViewPart implements Runnable,
 				xZero + (int) (cabin.getCabinWidth() / factor), yZero
 						+ (int) (cabin.getCabinLength() / factor));
 		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
-
 			if (seat.getTravelClass() instanceof FirstClass) {
 				graphicsControl.drawImage(firstSeat,
 						(int) (xZero + seat.getXPosition() / factor),
@@ -180,6 +192,7 @@ public class CabinViewPart extends ViewPart implements Runnable,
 		}
 
 		for (Door door : ModelHelper.getChildrenByClass(cabin, Door.class)) {
+
 			graphicsControl.setBackground(darkGray);
 			if (door.isOnBothSides()) {
 				graphicsControl.fillRectangle((int) (xZero + OFFSET_OF_DOOR
@@ -194,40 +207,12 @@ public class CabinViewPart extends ViewPart implements Runnable,
 
 		for (Lavatory lavatory : ModelHelper.getChildrenByClass(cabin,
 				Lavatory.class)) {
-			graphicsControl.setBackground(salmon);
-			graphicsControl.fillRectangle(
-					(int) (xZero + lavatory.getXPosition() / factor),
-					(int) (yZero + lavatory.getYPosition() / factor),
-					(int) (lavatory.getXDimension() / factor),
-					(int) (lavatory.getYDimension() / factor));
-			graphicsControl.drawImage(
-					lavatoryIcon,
-					(int) (xZero + (lavatory.getXPosition()
-							+ lavatory.getXDimension() / 2 - lavatory
-							.getYDimension() * PASSENGER_CIRCLE_SIZE / 2)
-							/ factor),
-					(int) (yZero + (lavatory.getYPosition()
-							+ lavatory.getYDimension() / 2 - lavatory
-							.getYDimension() * PASSENGER_CIRCLE_SIZE / 2)
-							/ factor));
-
+			drawObject(graphicsControl, salmon, lavatory);
 		}
 
 		for (Galley galley : ModelHelper
 				.getChildrenByClass(cabin, Galley.class)) {
-			graphicsControl.setBackground(green);
-			graphicsControl.fillRectangle((int) (xZero + galley.getXPosition()
-					/ factor), (int) (yZero + galley.getYPosition() / factor),
-					(int) (galley.getXDimension() / factor),
-					(int) (galley.getYDimension() / factor));
-			graphicsControl.drawImage(
-					coffeeIcon,
-					(int) (xZero + (galley.getXPosition()
-							+ galley.getXDimension() / 2 - galley
-							.getYDimension() / 4) / factor),
-					(int) (yZero + (galley.getYPosition()
-							+ galley.getYDimension() / 2 - galley
-							.getYDimension() / 4) / factor));
+			drawObject(graphicsControl, green, galley);
 		}
 
 		for (Curtain curtain : ModelHelper.getChildrenByClass(cabin,
@@ -360,9 +345,6 @@ public class CabinViewPart extends ViewPart implements Runnable,
 		canvas.setBounds(0, 0, 1000, 1000);
 
 		doTheDraw();
-
-		// JButton button = new JButton();
-		// canvas.add(button);
 
 	}
 
@@ -611,13 +593,6 @@ public class CabinViewPart extends ViewPart implements Runnable,
 		return image;
 	}
 
-	@Override
-	public void mouseMoved(MouseEvent e) {
-		java.awt.Point point = e.getPoint();
-		System.out.println(point);
-
-	}
-
 	/**
 	 * This method gets the paths.
 	 * 
@@ -718,20 +693,6 @@ public class CabinViewPart extends ViewPart implements Runnable,
 											+ lineLength * (vector.getY() / 5));
 						}
 					}
-					// } else {
-					// Seat mySeat = pass.getSeatRef();
-					// e.gc.fillOval(
-					// xZero
-					// + (int) ((mySeat.getXPosition()
-					// + mySeat.getXDimension() / 2 - pass
-					// .getWidth() / 2) / factor),
-					// yZero
-					// + (int) ((mySeat.getYPosition()
-					// + mySeat.getYDimension() / 2 - pass
-					// .getDepth() / 2) / factor),
-					// (int) (pass.getWidth() / factor),
-					// (int) (pass.getDepth() / factor));
-					// }
 				}
 			}
 		});
@@ -779,8 +740,6 @@ public class CabinViewPart extends ViewPart implements Runnable,
 						e.gc.drawImage(img, 0, 0);
 
 					} else {
-						// Image image = SWTResourceManager.getImage(
-						// InfoViewPart.class, "regional.png");
 						e.gc.drawImage(
 								resizeAC(canvas.getBounds().width,
 										canvas.getBounds().height), 0, 0);
@@ -876,46 +835,5 @@ public class CabinViewPart extends ViewPart implements Runnable,
 	public void clearCache() {
 		System.out.println("clearing cache now");
 		// SWTResourceManager.dispose();
-	}
-
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-
-	}
-
-	/**
-	 * This method starts the agent.
-	 */
-	public void start() {
-		if (getThread() == null) {
-			setThread(new Thread(this, "Simulation"));
-			getThread().start();
-		}
-	}
-
-	/**
-	 * This method returns the thread.
-	 * 
-	 * @return the thread
-	 */
-	public Thread getThread() {
-		return thread;
-	}
-
-	/**
-	 * This method sets the thread.
-	 * 
-	 * @param thread
-	 *            the thread
-	 */
-	public void setThread(Thread thread) {
-		this.thread = thread;
-	}
-
-	@Override
-	public void mouseDragged(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
 	}
 }

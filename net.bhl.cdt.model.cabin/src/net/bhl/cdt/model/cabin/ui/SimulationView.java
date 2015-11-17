@@ -193,15 +193,6 @@ public class SimulationView extends JPanel implements MouseListener {
 		}
 	}
 
-	private void performInterupt() {
-		if (interrupted && once) {
-			AreaMap areamapcopy = new AreaMap(areamap);
-			areamap = areamapcopy;
-			once = false;
-			stop.setEnabled(false);
-		}
-	}
-
 	@Override
 	public void paintComponent(Graphics g) {
 

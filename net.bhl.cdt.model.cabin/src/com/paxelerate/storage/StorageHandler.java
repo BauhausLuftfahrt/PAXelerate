@@ -14,8 +14,7 @@ public class StorageHandler {
 
 	LuggageStorage luggageStore = new LuggageStorage();
 
-	int numberOfPassengersTotal = 0, numberOfPassengersMale = 0,
-			numberOfPassengersFemale = 0;
+	int[] numberOfPassengers = { 0, 0, 0 }; // total, male, female
 
 	public StorageHandler() {
 
@@ -30,11 +29,17 @@ public class StorageHandler {
 		luggageStore.addValue(pax.getLuggage());
 		ageStore.addValue(pax.getSex(), pax.getAge());
 
-		numberOfPassengersTotal++;
+		numberOfPassengers[0] += 1;
 		if (pax.getSex() == Sex.MALE) {
-			numberOfPassengersMale++;
+			numberOfPassengers[1] += 1;
 		} else {
-			numberOfPassengersFemale++;
+			numberOfPassengers[2] += 1;
+		}
+
+		if (numberOfPassengers[0] > 179) {
+			Exporter.generateDistributionFile("export", weightStore, heightStore,
+					depthStore, widthStore, ageStore, luggageStore,
+					numberOfPassengers);
 		}
 	}
 
@@ -63,11 +68,11 @@ public class StorageHandler {
 
 	public double getPercentageOfPassengers(Sex sex) {
 		if (sex == Sex.MALE) {
-			return (double) numberOfPassengersMale
-					/ (double) numberOfPassengersTotal;
+			return (double) numberOfPassengers[1]
+					/ (double) numberOfPassengers[0];
 		} else {
-			return (double) numberOfPassengersFemale
-					/ (double) numberOfPassengersTotal;
+			return (double) numberOfPassengers[2]
+					/ (double) numberOfPassengers[0];
 		}
 	}
 
@@ -86,8 +91,6 @@ public class StorageHandler {
 		widthStore = new GaussianStorage(StoreType.WIDTH);
 		ageStore = new AgeStorage();
 		luggageStore = new LuggageStorage();
-		numberOfPassengersTotal = 0;
-		numberOfPassengersMale = 0;
-		numberOfPassengersFemale = 0;
+		numberOfPassengers = new int[3];
 	}
 }

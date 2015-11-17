@@ -5,17 +5,6 @@
  ***************************************************************************************/
 package net.bhl.cdt.model.cabin.ui;
 
-/*******************************************************************************
- * Copyright (c) 2007, 2008 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
-
 import net.bhl.cdt.model.cabin.util.Func;
 
 import org.eclipse.jface.dialogs.ProgressIndicator;
@@ -27,11 +16,6 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-/**
- * A snippet to demonstrate the progress indicator on Vista showing paused and
- * errors
- * 
- */
 public class ProgressHandler {
 
 	private Display display;
@@ -78,7 +62,6 @@ public class ProgressHandler {
 		indicator.setBackground(shell.getDisplay().getSystemColor(
 				SWT.COLOR_CYAN));
 
-		// Create a label
 		label = new Label(shell, SWT.NONE);
 		label.setText("The boarding paths for the passengers are being calculated ...");
 
@@ -86,14 +69,6 @@ public class ProgressHandler {
 		Func.centreWindow(shell);
 		indicator.beginTask(max);
 		indicator.showNormal();
-		// spin(display);
-		// indicator.showPaused();
-		// indicator.worked(50);
-		// spin(display);
-		// indicator.showError();
-		// indicator.worked(50);
-		// spin(display);
-
 	}
 
 	private static void spin(Display display) {

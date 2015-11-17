@@ -43,7 +43,7 @@ import com.paxelerate.storage.StorageHandler;
 
 public class PropertyViewPart extends ViewPart {
 
-	private String[] names = { "♂", "♀" };
+	private String[] names = { "", "" };
 	private static final String MALE_STR = "#3399FF", FEMALE_STR = "#FF99FF";
 	private Composite parent;
 	private Canvas canvas;
@@ -161,21 +161,21 @@ public class PropertyViewPart extends ViewPart {
 					double bigLug = propertyStore.getLuggageStore()
 							.getLuggagePercentage(LuggageSize.BIG);
 
-					e.gc.setBackground(getColor("#CC0000"));
+					e.gc.setBackground(getColor("#7F7063"));
 					e.gc.fillRectangle(0, pos,
 							(int) (dimensions.getX() * noLug), BAR_HEIGHT);
 
-					e.gc.setBackground(getColor("#CCCC00"));
+					e.gc.setBackground(getColor("#FFA24C"));
 					e.gc.fillRectangle((int) (dimensions.getX() * noLug), pos,
 							(int) (dimensions.getX() * smallLug), BAR_HEIGHT);
 
-					e.gc.setBackground(getColor("#00CC00"));
+					e.gc.setBackground(getColor("#CC6100"));
 					e.gc.fillRectangle(
 							(int) (dimensions.getX() * noLug + dimensions
 									.getX() * smallLug), pos,
 							(int) (dimensions.getX() * medLug), BAR_HEIGHT);
 
-					e.gc.setBackground(getColor("#0000CC"));
+					e.gc.setBackground(getColor("#7F3D00"));
 					e.gc.fillRectangle((int) (dimensions.getX() * noLug
 							+ dimensions.getX() * medLug + dimensions.getX()
 							* smallLug), pos,
@@ -268,9 +268,6 @@ public class PropertyViewPart extends ViewPart {
 			e.gc.setForeground(getColor("#AAAAAA"));
 		} else {
 			e.gc.setForeground(getColor(FEMALE_STR));
-			// maxHeight = -maxHeight;
-			// pos += 10;
-			// TODO: mirror female values
 		}
 
 		for (int k = min; k < max; k++) {
