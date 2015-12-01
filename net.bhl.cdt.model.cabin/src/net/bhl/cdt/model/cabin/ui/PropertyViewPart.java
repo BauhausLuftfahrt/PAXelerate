@@ -16,8 +16,6 @@ import net.bhl.cdt.model.cabin.LuggageSize;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Sex;
 import net.bhl.cdt.model.cabin.util.Func;
-import net.bhl.cdt.model.cabin.util.Vector;
-import net.bhl.cdt.model.cabin.util.Vector2D;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
@@ -32,6 +30,8 @@ import com.paxelerate.storage.AgeStorage;
 import com.paxelerate.storage.GaussianStorage;
 import com.paxelerate.storage.StorageHandler.StoreType;
 import com.paxelerate.storage.StorageHandler;
+import com.paxelerate.util.math.Vector;
+import com.paxelerate.util.math.Vector2D;
 
 /**
  * This class represents the cabin view. All graphics generation is done here.

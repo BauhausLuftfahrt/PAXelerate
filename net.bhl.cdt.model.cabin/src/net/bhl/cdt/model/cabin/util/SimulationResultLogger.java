@@ -12,6 +12,8 @@ import net.bhl.cdt.model.cabin.SimulationResult;
 
 import org.eclipse.emf.common.util.EList;
 
+import com.paxelerate.util.math.Vector2D;
+
 /**
  * This class is used to handle passenger data and to analyze and export it.
  * 

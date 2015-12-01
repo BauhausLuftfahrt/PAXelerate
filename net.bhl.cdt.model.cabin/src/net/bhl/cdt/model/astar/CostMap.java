@@ -15,13 +15,14 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 
+import com.paxelerate.util.math.Vector;
+import com.paxelerate.util.math.Vector2D;
+import com.paxelerate.util.math.Vector3D;
+
 import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.astar.Node.Property;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.util.Func;
-import net.bhl.cdt.model.cabin.util.Vector;
-import net.bhl.cdt.model.cabin.util.Vector2D;
-import net.bhl.cdt.model.cabin.util.Vector3D;
 
 /**
  * This class creates a cost map by flooding the whole map from a specific

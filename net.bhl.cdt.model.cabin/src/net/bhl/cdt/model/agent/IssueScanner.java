@@ -7,11 +7,12 @@ package net.bhl.cdt.model.agent;
 
 import java.util.HashMap;
 
+import com.paxelerate.util.math.Vector3D;
+
 import net.bhl.cdt.model.agent.Agent.State;
 import net.bhl.cdt.model.astar.SimulationHandler;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.util.StopWatch;
-import net.bhl.cdt.model.cabin.util.Vector3D;
 import net.bhl.cdt.model.observer.Subject;
 
 public class IssueScanner extends Subject implements Runnable {

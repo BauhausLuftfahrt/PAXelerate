@@ -9,6 +9,9 @@ package net.bhl.cdt.model.agent;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 
+import com.paxelerate.util.math.Vector;
+import com.paxelerate.util.math.Vector2D;
+
 import net.bhl.cdt.model.astar.Core;
 import net.bhl.cdt.model.agent.AgressiveMood;
 import net.bhl.cdt.model.astar.CostMap;
@@ -26,8 +29,6 @@ import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.util.Func;
 import net.bhl.cdt.model.cabin.util.Rotator;
 import net.bhl.cdt.model.cabin.util.StopWatch;
-import net.bhl.cdt.model.cabin.util.Vector;
-import net.bhl.cdt.model.cabin.util.Vector2D;
 import net.bhl.cdt.model.observer.Subject;
 
 /**
@@ -583,6 +584,8 @@ public class Agent extends Subject implements Runnable {
 
 					/* raise the interrupts counter up by one */
 					numbOfInterupts++;
+					SimulationHandler.getMap().getNode(currentPosition)
+							.raiseNumberOfInterrupts();
 
 					/* get the correct behavior for an obstacle avoidance */
 					Situation collision = new Situation(agentMood, property);
@@ -755,6 +758,8 @@ public class Agent extends Subject implements Runnable {
 	private synchronized void occupyOneStepAhead() {
 		blockArea(currentPosition, false, false, null);
 		blockArea(desiredPosition, true, false, null);
+		SimulationHandler.getMap().getNode(desiredPosition)
+				.raiseNumberOfOccupations();
 	}
 
 	/**

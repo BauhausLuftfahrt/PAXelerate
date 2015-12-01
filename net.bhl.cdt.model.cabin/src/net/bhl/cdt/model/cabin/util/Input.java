@@ -10,6 +10,9 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+import com.paxelerate.util.math.Vector;
+import com.paxelerate.util.math.Vector2D;
+
 /**
  * This class generates a dialog which can get various parameters or give output
  * to the user. You decide.

@@ -14,6 +14,9 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 
+import com.paxelerate.util.math.Vector;
+import com.paxelerate.util.math.Vector2D;
+
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Curtain;
 import net.bhl.cdt.model.cabin.Door;
@@ -23,8 +26,6 @@ import net.bhl.cdt.model.cabin.PhysicalObject;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.util.Func;
-import net.bhl.cdt.model.cabin.util.Vector;
-import net.bhl.cdt.model.cabin.util.Vector2D;
 import net.bhl.cdt.model.util.ModelHelper;
 
 /**

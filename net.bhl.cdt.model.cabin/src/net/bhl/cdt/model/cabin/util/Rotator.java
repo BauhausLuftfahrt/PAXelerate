@@ -3,6 +3,9 @@ package net.bhl.cdt.model.cabin.util;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import com.paxelerate.util.math.Vector;
+import com.paxelerate.util.math.Vector2D;
+
 /**
  * This class is used to rotate an array or part of an array.
  * 

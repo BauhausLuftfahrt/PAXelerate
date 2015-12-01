@@ -5,6 +5,9 @@
  ***************************************************************************************/
 package net.bhl.cdt.model.agent;
 
+import com.paxelerate.util.math.Vector;
+import com.paxelerate.util.math.Vector2D;
+
 import net.bhl.cdt.model.astar.CostMap;
 import net.bhl.cdt.model.astar.Node;
 import net.bhl.cdt.model.astar.SimulationHandler;
@@ -15,8 +18,6 @@ import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.util.Func;
-import net.bhl.cdt.model.cabin.util.Vector;
-import net.bhl.cdt.model.cabin.util.Vector2D;
 import net.bhl.cdt.model.util.ModelHelper;
 
 public class AgentFunctions {

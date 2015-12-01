@@ -7,10 +7,11 @@ package net.bhl.cdt.model.cabin.ui;
 
 import javax.swing.*;
 
+import com.paxelerate.util.math.Vector;
+import com.paxelerate.util.math.Vector2D;
+
 import net.bhl.cdt.model.astar.AreaMap;
 import net.bhl.cdt.model.astar.CostMap;
-import net.bhl.cdt.model.cabin.util.Vector;
-import net.bhl.cdt.model.cabin.util.Vector2D;
 
 import java.awt.*;
 import java.awt.event.*;

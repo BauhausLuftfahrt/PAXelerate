@@ -15,10 +15,11 @@ import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.ui.HelpView;
 import net.bhl.cdt.model.cabin.util.Input;
 import net.bhl.cdt.model.cabin.util.Input.WindowType;
-import net.bhl.cdt.model.cabin.util.Vector;
-import net.bhl.cdt.model.cabin.util.Vector2D;
 
 import org.eclipse.jface.dialogs.IMessageProvider;
+
+import com.paxelerate.util.math.Vector;
+import com.paxelerate.util.math.Vector2D;
 
 /**
  * This class refreshed the cabin view without modifying anything. It checks the

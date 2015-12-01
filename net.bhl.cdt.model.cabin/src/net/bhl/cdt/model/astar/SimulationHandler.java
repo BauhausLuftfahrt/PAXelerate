@@ -13,6 +13,9 @@ import javax.swing.SwingUtilities;
 
 import org.eclipse.emf.common.util.EList;
 
+import com.paxelerate.util.math.Vector;
+import com.paxelerate.util.math.Vector2D;
+
 import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.agent.AgentFunctions;
 import net.bhl.cdt.model.cabin.Cabin;
@@ -26,8 +29,6 @@ import net.bhl.cdt.model.cabin.util.Func;
 import net.bhl.cdt.model.cabin.util.Logger;
 import net.bhl.cdt.model.cabin.util.OS;
 import net.bhl.cdt.model.cabin.util.StopWatch;
-import net.bhl.cdt.model.cabin.util.Vector;
-import net.bhl.cdt.model.cabin.util.Vector2D;
 
 /**
  * This class runs and handles the a star algorithm an simulation.
@@ -401,26 +402,17 @@ public class SimulationHandler {
 				/ cabin.getScale(), cabin.getCabinLength() / cabin.getScale());
 		ObstacleMap obstaclemap = new ObstacleMap(cabin);
 		final AreaMap areamap = new AreaMap(dimensions, obstaclemap);
+
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				simulationFrame = new JFrame("Cost Map Flooding Animation");
-				simulationFrame.setContentPane(new HelpView(areamap,
-						dimensions, 5));
+				simulationFrame = new JFrame("Simulation Detail View");
+				SimulationView simulationView = new SimulationView();
+				simulationView.setAreamap(areamap);
+				simulationFrame.setContentPane(simulationView);
 				simulationFrame.pack();
 				simulationFrame.setVisible(true);
 			}
 		});
-
-		// SwingUtilities.invokeLater(new Runnable() {
-		// public void run() {
-		// simulationFrame = new JFrame("Simulation Detail View");
-		// SimulationView simulationView = new SimulationView();
-		// simulationView.setAreamap(areamap);
-		// simulationFrame.setContentPane(simulationView);
-		// simulationFrame.pack();
-		// simulationFrame.setVisible(true);
-		// }
-		// });
 	}
 
 }

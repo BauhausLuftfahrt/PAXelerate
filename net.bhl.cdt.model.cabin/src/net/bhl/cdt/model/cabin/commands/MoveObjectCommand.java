@@ -17,7 +17,6 @@ import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.util.Input;
 import net.bhl.cdt.model.cabin.util.Input.WindowType;
-import net.bhl.cdt.model.cabin.util.Vector;
 import net.bhl.cdt.model.util.ModelHelper;
 
 import org.eclipse.core.runtime.ILog;
@@ -27,6 +26,8 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
+
+import com.paxelerate.util.math.Vector;
 
 /**
  * This class refreshed the cabin view without modifying anything. It checks the

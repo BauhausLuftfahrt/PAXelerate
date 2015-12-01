@@ -7,11 +7,12 @@ package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
 
+import com.paxelerate.util.math.Vector;
+import com.paxelerate.util.math.Vector2D;
+
 import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.cabin.CabinFactory;
 import net.bhl.cdt.model.cabin.Passenger;
-import net.bhl.cdt.model.cabin.util.Vector;
-import net.bhl.cdt.model.cabin.util.Vector2D;
 
 /**
  * This class represents a node object which has several properties important
@@ -24,10 +25,34 @@ public class Node implements Comparable<Node> {
 	private Node north, northEast, east, southEast, south, southWest, west,
 			northWest, previousNode;
 	private ArrayList<Node> neighborList;
-	private int distanceFromStart, costFromStart, cost;
+	private int distanceFromStart, costFromStart, cost,
+			numberOfOccupations = 0, numberOfInterrupts = 0;
+
 	private Vector position = new Vector2D(0, 0);
 	private Property property;
 	private boolean hidden = false;
+	private Passenger linkedPassenger;
+	private ArrayList<NodeProperty> startList = new ArrayList<NodeProperty>();
+
+	public int getNumberOfInterrupts() {
+		return numberOfInterrupts;
+	}
+
+	public void raiseNumberOfInterrupts() {
+		this.numberOfInterrupts++;
+	}
+
+	public int getNumberOfOccupations() {
+		return numberOfOccupations;
+	}
+
+	public void raiseNumberOfOccupations() {
+		this.numberOfOccupations++;
+	}
+
+	public ArrayList<NodeProperty> getStartList() {
+		return startList;
+	}
 
 	public boolean isHidden() {
 		return this.hidden;
@@ -35,14 +60,6 @@ public class Node implements Comparable<Node> {
 
 	public void setHidden() {
 		this.hidden = true;
-	}
-
-	private Passenger linkedPassenger;
-
-	private ArrayList<NodeProperty> startList = new ArrayList<NodeProperty>();
-
-	public ArrayList<NodeProperty> getStartList() {
-		return startList;
 	}
 
 	public void setStartList(ArrayList<NodeProperty> startList) {

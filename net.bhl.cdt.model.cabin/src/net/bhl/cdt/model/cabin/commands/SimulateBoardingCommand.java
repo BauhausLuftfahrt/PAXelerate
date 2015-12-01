@@ -21,7 +21,6 @@ import net.bhl.cdt.model.cabin.util.Input;
 import net.bhl.cdt.model.cabin.util.OS;
 import net.bhl.cdt.model.cabin.util.SimulationResultLogger;
 import net.bhl.cdt.model.cabin.util.Input.WindowType;
-import net.bhl.cdt.model.cabin.util.Vector2D;
 import net.bhl.cdt.model.util.ModelHelper;
 
 import org.eclipse.core.runtime.ILog;
@@ -32,6 +31,8 @@ import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Shell;
 
+import com.paxelerate.storage.Exporter;
+import com.paxelerate.util.math.Vector2D;
 
 /**
  * This command starts the boarding simulation.
@@ -158,11 +159,26 @@ public class SimulateBoardingCommand extends CDTCommand {
 							alreadySeatedList.add(pax);
 						}
 					}
-					if(OS.isMac()) {
-					cabinViewPart.submitPassengerCoordinates(cabin);
+					if (OS.isMac()) {
+						cabinViewPart.submitPassengerCoordinates(cabin);
 					}
 				}
 				if (SimulationHandler.isSimulationDone()) {
+
+					if (Exporter.generateHeatmapFile("Heat Map",
+							SimulationHandler.getMap())) {
+						logger.log(new Status(IStatus.ERROR,
+								"net.bhl.cdt.model.cabin",
+								"Heat map saved successfully!"));
+					}
+
+					if (Exporter.generateInterruptmapFile("Interrupt Map",
+							SimulationHandler.getMap())) {
+						logger.log(new Status(IStatus.ERROR,
+								"net.bhl.cdt.model.cabin",
+								"Interrupt map saved successfully!"));
+					}
+
 					for (Passenger pax : ModelHelper.getChildrenByClass(
 							handler.getPassengerLocations(), Passenger.class)) {
 						if (pax.isIsSeated()

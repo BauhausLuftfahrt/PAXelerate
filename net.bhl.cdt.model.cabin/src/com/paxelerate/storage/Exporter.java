@@ -4,13 +4,61 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
+import net.bhl.cdt.model.astar.AreaMap;
+import net.bhl.cdt.model.astar.Node;
 import net.bhl.cdt.model.cabin.Sex;
 
 public class Exporter {
 
 	private static final String FOLDER_NAME = "paxelerate", FILE_PATH = System
 			.getProperty("user.home") + "/Documents/" + FOLDER_NAME + "/";
+
+	public static boolean generateHeatmapFile(String filename, AreaMap areamap) {
+		try {
+			FileWriter writer = new FileWriter(FILE_PATH + filename + ".xls");
+			for (ArrayList<Node> nodeList : areamap.getNodes()) {
+				for (Node node : nodeList) {
+					writer.append("" + node.getNumberOfOccupations());
+					writer.append("\t");
+				}
+				writer.append("\n");
+			}
+
+			writer.flush();
+			writer.close();
+			return true;
+
+		} catch (FileNotFoundException e) {
+			return false;
+		} catch (IOException e) {
+			return false;
+		}
+	}
+
+	public static boolean generateInterruptmapFile(String filename,
+			AreaMap areamap) {
+		try {
+			FileWriter writer = new FileWriter(FILE_PATH + filename + ".xls");
+			for (ArrayList<Node> nodeList : areamap.getNodes()) {
+				for (Node node : nodeList) {
+					writer.append("" + node.getNumberOfInterrupts());
+					writer.append("\t");
+				}
+				writer.append("\n");
+			}
+
+			writer.flush();
+			writer.close();
+			return true;
+
+		} catch (FileNotFoundException e) {
+			return false;
+		} catch (IOException e) {
+			return false;
+		}
+	}
 
 	static void generateDistributionFile(String sFileName,
 			GaussianStorage weight, GaussianStorage height,

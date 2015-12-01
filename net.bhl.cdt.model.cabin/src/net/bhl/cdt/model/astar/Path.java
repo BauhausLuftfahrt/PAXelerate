@@ -8,8 +8,9 @@ package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
 
+import com.paxelerate.util.math.Vector;
+
 import net.bhl.cdt.model.cabin.util.Func;
-import net.bhl.cdt.model.cabin.util.Vector;
 
 /**
  * Path is a list of nodes which represent the calculated shortest path.
