@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 
 import com.paxelerate.util.Func;
+import com.paxelerate.util.math.StopWatch;
 import com.paxelerate.util.math.Vector;
 import com.paxelerate.util.math.Vector2D;
 
@@ -29,7 +30,6 @@ import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.util.Rotator;
-import net.bhl.cdt.model.cabin.util.StopWatch;
 import net.bhl.cdt.model.observer.Subject;
 
 /**

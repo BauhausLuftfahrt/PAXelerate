@@ -8,6 +8,7 @@ package com.paxelerate.util.input;
 import org.apache.commons.lang.StringUtils;
 
 import com.paxelerate.util.Func;
+import com.paxelerate.util.strings.StringOperations;
 
 /**
  * This class checks user input for errors.
@@ -23,13 +24,13 @@ public class InputChecker {
 		if (structure.contains(" ")) {
 			return false;
 		}
-		if (!Func.isNumeric(structure.replace("-", ""))) {
+		if (!StringOperations.isNumeric(structure.replace("-", ""))) {
 			return false;
 		}
 		if (StringUtils.countMatches(structure, "-") == 0) {
 			return false;
 		}
-		if (Func.checkForDoubleCharacter(structure)) {
+		if (StringOperations.checkForDoubleCharacter(structure)) {
 			return false;
 		}
 		if (structure.endsWith("-")) {
@@ -76,7 +77,7 @@ public class InputChecker {
 		 * if there are other characters than digits inside the string, remove
 		 * them.
 		 */
-		if (!Func.isNumeric(stringWithoutDashes)) {
+		if (!StringOperations.isNumeric(stringWithoutDashes)) {
 			str = str.replaceAll("[^0-9-]+", "");
 			if (DEVELOPER_MODE) {
 				System.out
@@ -113,7 +114,7 @@ public class InputChecker {
 		 * if there are 2 or more dashes following on another, remove all except
 		 * for one.
 		 */
-		if (Func.checkForDoubleCharacter(str)) {
+		if (StringOperations.checkForDoubleCharacter(str)) {
 			if (DEVELOPER_MODE) {
 				System.out
 						.println("several dashes in a row detected and corrected");

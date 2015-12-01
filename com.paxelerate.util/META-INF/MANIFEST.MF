@@ -13,5 +13,7 @@ Bundle-ActivationPolicy: lazy
 Export-Package: com.paxelerate.util,
  com.paxelerate.util.graphics,
  com.paxelerate.util.input,
- com.paxelerate.util.math
+ com.paxelerate.util.math,
+ com.paxelerate.util.strings,
+ com.paxelerate.util.time
 

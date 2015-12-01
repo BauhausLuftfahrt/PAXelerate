@@ -18,6 +18,7 @@ import com.paxelerate.util.Func;
 import com.paxelerate.util.input.InputChecker;
 import com.paxelerate.util.math.Vector;
 import com.paxelerate.util.math.Vector2D;
+import com.paxelerate.util.strings.StringOperations;
 
 import net.bhl.cdt.model.cabin.BusinessClass;
 import net.bhl.cdt.model.cabin.Cabin;
@@ -384,8 +385,9 @@ public class ConstructionLibrary {
 			if ((seats % seatsInRow) != 0) {
 				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 						"Check your number of seats in "
-								+ Func.splitCamelCase(travelSubClass
-										.getSimpleName())
+								+ StringOperations
+										.splitCamelCase(travelSubClass
+												.getSimpleName())
 								+ ". Could not fill all rows."));
 			}
 			for (int i = 1; i <= seats / seatsInRow; i++) {
@@ -428,8 +430,9 @@ public class ConstructionLibrary {
 				createCurtain(
 						true,
 						"after "
-								+ Func.splitCamelCase(travelSubClass
-										.getSimpleName()));
+								+ StringOperations
+										.splitCamelCase(travelSubClass
+												.getSimpleName()));
 			}
 		}
 	}

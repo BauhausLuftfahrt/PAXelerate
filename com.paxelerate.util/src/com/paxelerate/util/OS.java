@@ -1,4 +1,4 @@
-package net.bhl.cdt.model.cabin.util;
+package com.paxelerate.util;
 
 public class OS {
 

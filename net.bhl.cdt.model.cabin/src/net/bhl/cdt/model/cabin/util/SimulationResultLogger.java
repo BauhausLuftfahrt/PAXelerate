@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.EList;
 
 import com.paxelerate.util.Func;
 import com.paxelerate.util.math.Vector2D;
+import com.paxelerate.util.time.TimeHelper;
 
 /**
  * This class is used to handle passenger data and to analyze and export it.
@@ -47,7 +48,7 @@ public class SimulationResultLogger {
 				.getResults().size() + 1);
 		result.setName(dateFormat.format(date));
 		result.setDate(date);
-		result.setBoardingTimeString(Func.transformToTimeString(time));
+		result.setBoardingTimeString(TimeHelper.transformToTimeString(time));
 		SimulationHandler.getCabin().getSimulationSettings().getResults()
 				.add(result);
 	}
@@ -115,15 +116,17 @@ public class SimulationResultLogger {
 		System.out.println();
 		for (SimulationResult result : SimulationHandler.getCabin()
 				.getSimulationSettings().getResults()) {
-			System.out.println(result.getPassengers()
-					+ " passengers simulated in run #" + result.getId()
-					+ " within "
-					+ Func.transformToTimeString(result.getBoardingTime())
-					+ ".");
+			System.out
+					.println(result.getPassengers()
+							+ " passengers simulated in run #"
+							+ result.getId()
+							+ " within "
+							+ TimeHelper.transformToTimeString(result
+									.getBoardingTime()) + ".");
 			System.out.println();
 		}
 		System.out.println("Average boarding time: "
-				+ Func.transformToTimeString(getAverageBoardingTime())
+				+ TimeHelper.transformToTimeString(getAverageBoardingTime())
 				+ " seconds.");
 		System.out.println();
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");

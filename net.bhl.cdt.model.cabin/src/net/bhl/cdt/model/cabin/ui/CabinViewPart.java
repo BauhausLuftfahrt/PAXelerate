@@ -123,6 +123,16 @@ public class CabinViewPart extends ViewPart {
 		}
 	}
 
+	private Image switchIcon(PhysicalObject obj) {
+		if (obj instanceof Lavatory) {
+			return lavatoryIcon;
+		} else if (obj instanceof Galley) {
+			return coffeeIcon;
+		} else {
+			return null;
+		}
+	}
+
 	public Cabin getCabin() {
 		return cabin;
 	}
@@ -131,14 +141,14 @@ public class CabinViewPart extends ViewPart {
 		gc.setBackground(color);
 		gc.fillRectangle(get(object, XYZ.X), get(object, XYZ.Y),
 				adapt(object.getXDimension()), adapt(object.getYDimension()));
-		gc.drawImage(
-				lavatoryIcon,
-				adapt(xZero
-						+ (object.getXPosition() + object.getXDimension() / 2 - object
-								.getYDimension() * PASSENGER_CIRCLE_SIZE / 2)),
-				adapt(yZero
-						+ (object.getYPosition() + object.getYDimension() / 2 - object
-								.getYDimension() * PASSENGER_CIRCLE_SIZE / 2)));
+		gc.drawImage(switchIcon(object),
+				xZero
+						+ adapt((object.getXPosition() + object.getXDimension()
+								/ 2 - object.getYDimension()
+								* PASSENGER_CIRCLE_SIZE / 2)), yZero
+						+ adapt((object.getYPosition() + object.getYDimension()
+								/ 2 - object.getYDimension()
+								* PASSENGER_CIRCLE_SIZE / 2)));
 	}
 
 	private enum XYZ {
@@ -148,10 +158,10 @@ public class CabinViewPart extends ViewPart {
 	private int get(PhysicalObject obj, XYZ dir) {
 		switch (dir) {
 		case X:
-			return adapt(xZero + obj.getXPosition());
+			return xZero + adapt(obj.getXPosition());
 
 		case Y:
-			return adapt(yZero + obj.getYPosition());
+			return yZero + adapt(obj.getYPosition());
 
 		default:
 			return 0;
@@ -264,8 +274,8 @@ public class CabinViewPart extends ViewPart {
 							(int) (yZero + (passengerSeat.getYPosition() + (1 - PASSENGER_CIRCLE_SIZE)
 									* passengerSeat.getYDimension() / 2)
 									/ factor),
-							(int) (PASSENGER_CIRCLE_SIZE
-									* passengerSeat.getYDimension() / factor),
+							adapt(PASSENGER_CIRCLE_SIZE
+									* passengerSeat.getYDimension()),
 							(int) (PASSENGER_CIRCLE_SIZE
 									* passengerSeat.getYDimension() / factor));
 				} else {
@@ -454,6 +464,18 @@ public class CabinViewPart extends ViewPart {
 		 * NOTE: if there is more than one subclass of the same type, only the
 		 * dimensions of the first element are used for scaling
 		 **/
+
+		// TODO: implement this!
+
+		// for (Class<? extends TravelClass> className : classes) {
+		// if (!ModelHelper.getChildrenByClass(cabin, className).isEmpty()) {
+		// firstSeat = resize(firstSeat, (int) (ModelHelper
+		// .getChildrenByClass(cabin, className).get(0)
+		// .getSeatWidth() / factor), (int) (ModelHelper
+		// .getChildrenByClass(cabin, className).get(0)
+		// .getSeatLength() / factor));
+		// }
+		// }
 
 		if (!ModelHelper.getChildrenByClass(cabin, FirstClass.class).isEmpty()) {
 			firstSeat = resize(firstSeat, (int) (ModelHelper

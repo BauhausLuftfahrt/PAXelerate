@@ -30,6 +30,7 @@ import org.eclipse.core.runtime.Status;
 
 import com.paxelerate.util.Func;
 import com.paxelerate.util.math.RandomHelper;
+import com.paxelerate.util.strings.StringOperations;
 
 /**
  * 
@@ -213,14 +214,16 @@ public class GeneratePassengersCommand extends CDTCommand {
 						"successfully created "
 								+ (passengerPerClassCount)
 								+ " passengers in "
-								+ Func.splitCamelCase(travelSubClass
-										.getSimpleName())));
+								+ StringOperations
+										.splitCamelCase(travelSubClass
+												.getSimpleName())));
 			} else {
 
 				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 						"Too many passengers in "
-								+ Func.splitCamelCase(travelSubClass
-										.getSimpleName())));
+								+ StringOperations
+										.splitCamelCase(travelSubClass
+												.getSimpleName())));
 			}
 		}
 	}

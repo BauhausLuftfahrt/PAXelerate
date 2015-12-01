@@ -135,7 +135,6 @@ public class Exporter {
 		writer.append(str(storage.getAmount(Sex.FEMALE)));
 		writer.append('\t');
 		writer.append(str(storage.getAmount(Sex.MALE)));
-		writer.append('\t');
 		writer.append('\n');
 	}
 

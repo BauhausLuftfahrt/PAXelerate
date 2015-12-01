@@ -10,9 +10,9 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-import com.paxelerate.util.Func;
 import com.paxelerate.util.math.Vector;
 import com.paxelerate.util.math.Vector2D;
+import com.paxelerate.util.strings.StringOperations;
 
 /**
  * This class generates a dialog which can get various parameters or give output
@@ -287,7 +287,7 @@ public class Input extends TitleAreaDialog {
 		switch (windowType) {
 		case GET_INTEGER:
 			if (text.getText() != "") {
-				if (Func.isNumeric(text.getText())) {
+				if (StringOperations.isNumeric(text.getText())) {
 					return true;
 				} else {
 					warningLabel
@@ -302,7 +302,7 @@ public class Input extends TitleAreaDialog {
 			}
 		case OPTIONS:
 			if (text.getText() != "") {
-				if (Func.isNumeric(text.getText())) {
+				if (StringOperations.isNumeric(text.getText())) {
 					return true;
 				} else {
 					warningLabel
@@ -325,8 +325,8 @@ public class Input extends TitleAreaDialog {
 			}
 		case GET_VECTOR:
 			if (text.getText() != "" && text2.getText() != "") {
-				if (Func.isNumeric(text.getText())
-						&& Func.isNumeric(text2.getText())) {
+				if (StringOperations.isNumeric(text.getText())
+						&& StringOperations.isNumeric(text2.getText())) {
 					return true;
 				} else {
 					warningLabel
@@ -342,10 +342,10 @@ public class Input extends TitleAreaDialog {
 		case GET_TWO_VECTORS:
 			if (text.getText() != "" && text2.getText() != ""
 					&& text3.getText() != "" && text4.getText() != "") {
-				if (Func.isNumeric(text.getText())
-						&& Func.isNumeric(text2.getText())
-						&& Func.isNumeric(text3.getText())
-						&& Func.isNumeric(text4.getText())) {
+				if (StringOperations.isNumeric(text.getText())
+						&& StringOperations.isNumeric(text2.getText())
+						&& StringOperations.isNumeric(text3.getText())
+						&& StringOperations.isNumeric(text4.getText())) {
 					return true;
 				} else {
 					warningLabel

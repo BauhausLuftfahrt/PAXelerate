@@ -8,12 +8,12 @@ package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
 
+import com.paxelerate.util.Logger;
 import com.paxelerate.util.math.Vector;
 import com.paxelerate.util.math.Vector2D;
 
 import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.astar.Node.Property;
-import net.bhl.cdt.model.cabin.util.Logger;
 
 /**
  * 

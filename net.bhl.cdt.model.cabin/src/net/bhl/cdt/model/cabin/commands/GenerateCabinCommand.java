@@ -120,7 +120,6 @@ public class GenerateCabinCommand extends CDTCommand {
 				"Cabin generation completed"));
 		try {
 			cabinViewPart.setCabin(cabin);
-			// infoViewPart.update(cabin);
 			cabinViewPart.syncViewer();
 		} catch (NullPointerException e) {
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
