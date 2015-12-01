@@ -7,6 +7,8 @@ package net.bhl.cdt.model.cabin.ui;
 
 import javax.swing.*;
 
+import com.paxelerate.util.Func;
+
 import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.astar.AreaMap;
 import net.bhl.cdt.model.astar.Node;
@@ -14,7 +16,6 @@ import net.bhl.cdt.model.astar.Node.Property;
 import net.bhl.cdt.model.astar.Path;
 import net.bhl.cdt.model.astar.SimulationHandler;
 import net.bhl.cdt.model.cabin.Passenger;
-import net.bhl.cdt.model.cabin.util.Func;
 import net.bhl.cdt.model.cabin.util.StopWatch;
 
 import java.awt.*;

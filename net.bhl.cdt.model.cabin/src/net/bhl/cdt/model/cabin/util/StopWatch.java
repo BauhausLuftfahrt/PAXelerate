@@ -5,6 +5,9 @@
  *******************************************************************************/
 package net.bhl.cdt.model.cabin.util;
 
+import com.paxelerate.util.Func;
+
+
 /**
  * This class represents a stop watch.
  * 

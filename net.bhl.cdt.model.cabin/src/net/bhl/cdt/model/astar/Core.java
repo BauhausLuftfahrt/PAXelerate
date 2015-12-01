@@ -7,9 +7,10 @@ package net.bhl.cdt.model.astar;
 
 import java.util.ArrayList;
 
+import com.paxelerate.util.Func;
+
 import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.astar.Node.Property;
-import net.bhl.cdt.model.cabin.util.Func;
 
 /**
  * This class is the A* algorithm.

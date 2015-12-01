@@ -13,6 +13,7 @@ import javax.swing.SwingUtilities;
 
 import org.eclipse.emf.common.util.EList;
 
+import com.paxelerate.util.Func;
 import com.paxelerate.util.math.Vector;
 import com.paxelerate.util.math.Vector2D;
 
@@ -25,7 +26,6 @@ import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.HelpView;
 import net.bhl.cdt.model.cabin.ui.SimulationView;
 import net.bhl.cdt.model.cabin.ui.ProgressHandler;
-import net.bhl.cdt.model.cabin.util.Func;
 import net.bhl.cdt.model.cabin.util.Logger;
 import net.bhl.cdt.model.cabin.util.OS;
 import net.bhl.cdt.model.cabin.util.StopWatch;
@@ -213,16 +213,18 @@ public class SimulationHandler {
 
 		int offset = 5;
 
-		Vector start = new Vector2D(Func.size((seat.getXPosition() + seat
-				.getXDimension() / 2)), Func.size((seat.getYPosition()) - 2));
+		Vector start = new Vector2D(AStarTools.size((seat.getXPosition() + seat
+				.getXDimension() / 2)),
+				AStarTools.size((seat.getYPosition()) - 2));
 
 		if (pax.getSeatRef().getYPosition() < pax.getDoor().getYPosition()) {
 			offset = -(offset + 2);
 			System.out.println("offset mirrored");
 		}
 
-		Vector goal = new Vector2D(Func.size(cabin.getCabinWidth() / 2.0),
-				Func.size(seat.getYPosition()) + offset);
+		Vector goal = new Vector2D(
+				AStarTools.size(cabin.getCabinWidth() / 2.0),
+				AStarTools.size(seat.getYPosition()) + offset);
 
 		Agent agent = new Agent(pax, start, goal,
 				SimulationHandler.getCostMap(), Agent.AgentMode.MAKE_WAY,
@@ -280,7 +282,7 @@ public class SimulationHandler {
 		// TODO: Do not use a static time stamp but consider the simulation
 		// speed!
 		double time = watch.getElapsedTimeTens();
-		if (Math.abs(lastDoorRelease.get(door) - time) > (Func.time(0.15) / 1000.0)) {
+		if (Math.abs(lastDoorRelease.get(door) - time) > (AStarTools.time(0.15) / 1000.0)) {
 			lastDoorRelease.put(door, time);
 			return true;
 		}
@@ -298,7 +300,7 @@ public class SimulationHandler {
 
 	public synchronized static void setPassengerActive(Passenger pax) {
 
-		if (!Func.PassengerAlreadyInList(pax, activeList)) {
+		if (!AStarTools.PassengerAlreadyInList(pax, activeList)) {
 			activeList.add(pax);
 		}
 	}
@@ -318,11 +320,13 @@ public class SimulationHandler {
 		for (Passenger passenger : cabin.getPassengers()) {
 			Seat seat = passenger.getSeatRef();
 			Door door = passenger.getDoor();
-			Vector start = new Vector2D(0,
-					Func.size((door.getYPosition() + door.getWidth() / 2)));
-			Vector goal = new Vector2D(Func.size((seat.getXPosition() + seat
-					.getXDimension() / 2)),
-					Func.size((seat.getYPosition()) - 1));
+			Vector start = new Vector2D(
+					0,
+					AStarTools.size((door.getYPosition() + door.getWidth() / 2)));
+			Vector goal = new Vector2D(
+					AStarTools
+							.size((seat.getXPosition() + seat.getXDimension() / 2)),
+					AStarTools.size((seat.getYPosition()) - 1));
 
 			if (doItOnce) {
 				/* This line generates a costmap which is used for all agents */

@@ -15,7 +15,6 @@ import net.bhl.cdt.model.cabin.CabinFactory;
 import net.bhl.cdt.model.cabin.LuggageSize;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Sex;
-import net.bhl.cdt.model.cabin.util.Func;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
@@ -30,6 +29,8 @@ import com.paxelerate.storage.AgeStorage;
 import com.paxelerate.storage.GaussianStorage;
 import com.paxelerate.storage.StorageHandler.StoreType;
 import com.paxelerate.storage.StorageHandler;
+import com.paxelerate.util.Func;
+import com.paxelerate.util.graphics.ColorHelper;
 import com.paxelerate.util.math.Vector;
 import com.paxelerate.util.math.Vector2D;
 
@@ -388,7 +389,7 @@ public class PropertyViewPart extends ViewPart {
 	}
 
 	private Color getColor(String hex) {
-		return new Color(parent.getDisplay(), Func.hex2Rgb(hex));
+		return new Color(parent.getDisplay(), ColorHelper.hex2Rgb(hex));
 	}
 
 	@Override

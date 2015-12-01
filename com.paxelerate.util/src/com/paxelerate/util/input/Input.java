@@ -1,4 +1,4 @@
-package net.bhl.cdt.model.cabin.util;
+package com.paxelerate.util.input;
 
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.swt.SWT;
@@ -10,6 +10,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+import com.paxelerate.util.Func;
 import com.paxelerate.util.math.Vector;
 import com.paxelerate.util.math.Vector2D;
 

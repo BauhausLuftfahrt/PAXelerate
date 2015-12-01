@@ -5,11 +5,12 @@ package net.bhl.cdt.model.cabin.impl;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Map;
+
 import net.bhl.cdt.model.cabin.CabinPackage;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.TravelClass;
 import net.bhl.cdt.model.cabin.util.CabinValidator;
-import net.bhl.cdt.model.cabin.util.InputChecker;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -22,6 +23,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import com.paxelerate.util.input.InputChecker;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

@@ -18,13 +18,15 @@ import net.bhl.cdt.model.cabin.SimulationProperties;
 import net.bhl.cdt.model.cabin.TravelClass;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.PropertyViewPart;
-import net.bhl.cdt.model.cabin.util.Func;
+import net.bhl.cdt.model.cabin.util.ShouldSoonBeDeletedWhenSolved;
 import net.bhl.cdt.model.util.ModelHelper;
 
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+
+import com.paxelerate.util.Func;
 
 /**
  * This class refreshed the cabin view without modifying anything. It checks the
@@ -83,7 +85,7 @@ public class DrawCabinCommand extends CDTCommand {
 			cabin.setSimulationSettings(props);
 		}
 
-		cabinViewPart = Func.getCabinView();
+		cabinViewPart = ShouldSoonBeDeletedWhenSolved.getCabinView();
 
 		repairBoardingClassAssignments();
 		repairRowAssignments();
@@ -93,7 +95,7 @@ public class DrawCabinCommand extends CDTCommand {
 		checkFoldableSeats();
 		updateTravelClassProperties();
 
-		propertyViewPart = Func.getPropertyView();
+		propertyViewPart = ShouldSoonBeDeletedWhenSolved.getPropertyView();
 
 		for (String str : errorStrings) {
 			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin", str));

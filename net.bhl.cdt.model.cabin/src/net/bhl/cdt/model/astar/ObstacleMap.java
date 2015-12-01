@@ -14,6 +14,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 
+import com.paxelerate.util.Func;
 import com.paxelerate.util.math.Vector;
 import com.paxelerate.util.math.Vector2D;
 
@@ -25,7 +26,6 @@ import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.PhysicalObject;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
-import net.bhl.cdt.model.cabin.util.Func;
 import net.bhl.cdt.model.util.ModelHelper;
 
 /**
@@ -46,9 +46,7 @@ public class ObstacleMap {
 	private ILog logger;
 
 	ArrayList<Class<? extends PhysicalObject>> classes = new ArrayList<Class<? extends PhysicalObject>>() {
-		/**
-		 * 
-		 */
+
 		private static final long serialVersionUID = 1L;
 
 		{
@@ -56,7 +54,6 @@ public class ObstacleMap {
 			add(Galley.class);
 			add(Curtain.class);
 			add(Lavatory.class);
-
 		}
 	};
 
@@ -68,8 +65,8 @@ public class ObstacleMap {
 	 */
 	public ObstacleMap(Cabin cabin) {
 		this.cabin = cabin;
-		((Vector2D) dimensions).set(Func.size(cabin.getCabinWidth()),
-				Func.size(cabin.getCabinLength()));
+		((Vector2D) dimensions).set(AStarTools.size(cabin.getCabinWidth()),
+				AStarTools.size(cabin.getCabinLength()));
 		obstacleMap = createObstacleMap();
 		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
 		printObstacleMap();
@@ -146,7 +143,7 @@ public class ObstacleMap {
 	 * This method creates the potential gradient around obstacle.
 	 */
 	private void generatePotentialGradient() {
-		int range = Func.size(OBSTACLE_RANGE_IN_CM);
+		int range = AStarTools.size(OBSTACLE_RANGE_IN_CM);
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
 				if (obstacleMap[i][j] == MAX_VALUE) {
@@ -222,8 +219,8 @@ public class ObstacleMap {
 		 */
 
 		for (Door door : cabin.getDoors()) {
-			entryMin = Func.size(door.getYPosition()) + 2;
-			entryMax = Func.size(door.getYPosition() + door.getWidth()) - 2;
+			entryMin = AStarTools.size(door.getYPosition()) + 2;
+			entryMax = AStarTools.size(door.getYPosition() + door.getWidth()) - 2;
 
 			for (int i = 0; i < dimensions.getX(); i++) {
 				for (int j = 0; j < dimensions.getY(); j++) {
@@ -285,10 +282,10 @@ public class ObstacleMap {
 
 			if (!(cabin.getSimulationSettings().isUseFoldableSeats() && value)) {
 
-				int width = Func.size(physicalObject.getXDimension());
-				int length = Func.size(physicalObject.getYDimension());
-				int xPosition = Func.size(physicalObject.getXPosition());
-				int yPosition = Func.size(physicalObject.getYPosition());
+				int width = AStarTools.size(physicalObject.getXDimension());
+				int length = AStarTools.size(physicalObject.getYDimension());
+				int xPosition = AStarTools.size(physicalObject.getXPosition());
+				int yPosition = AStarTools.size(physicalObject.getYPosition());
 
 				for (int i = 0; i < width; i++) {
 					for (int j = 0; j < length; j++) {

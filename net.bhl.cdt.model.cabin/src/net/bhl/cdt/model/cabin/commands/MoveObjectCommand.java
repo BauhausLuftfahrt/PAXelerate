@@ -15,8 +15,6 @@ import net.bhl.cdt.model.cabin.Lavatory;
 import net.bhl.cdt.model.cabin.Row;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
-import net.bhl.cdt.model.cabin.util.Input;
-import net.bhl.cdt.model.cabin.util.Input.WindowType;
 import net.bhl.cdt.model.util.ModelHelper;
 
 import org.eclipse.core.runtime.ILog;
@@ -27,6 +25,8 @@ import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 
+import com.paxelerate.util.input.Input;
+import com.paxelerate.util.input.Input.WindowType;
 import com.paxelerate.util.math.Vector;
 
 /**

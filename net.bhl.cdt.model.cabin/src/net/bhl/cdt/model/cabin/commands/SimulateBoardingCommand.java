@@ -16,11 +16,9 @@ import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.SimulationView;
-import net.bhl.cdt.model.cabin.util.Func;
-import net.bhl.cdt.model.cabin.util.Input;
 import net.bhl.cdt.model.cabin.util.OS;
+import net.bhl.cdt.model.cabin.util.ShouldSoonBeDeletedWhenSolved;
 import net.bhl.cdt.model.cabin.util.SimulationResultLogger;
-import net.bhl.cdt.model.cabin.util.Input.WindowType;
 import net.bhl.cdt.model.util.ModelHelper;
 
 import org.eclipse.core.runtime.ILog;
@@ -32,6 +30,9 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Shell;
 
 import com.paxelerate.storage.Exporter;
+import com.paxelerate.util.Func;
+import com.paxelerate.util.input.Input;
+import com.paxelerate.util.input.Input.WindowType;
 import com.paxelerate.util.math.Vector2D;
 
 /**
@@ -84,7 +85,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 		/********** Get CabinView and ConsoleView ***************/
 
-		CabinViewPart cabinViewPart = Func.getCabinView();
+		CabinViewPart cabinViewPart = ShouldSoonBeDeletedWhenSolved
+				.getCabinView();
 		/********************************************************/
 
 		for (int i = 0; i < cabin.getSimulationSettings()

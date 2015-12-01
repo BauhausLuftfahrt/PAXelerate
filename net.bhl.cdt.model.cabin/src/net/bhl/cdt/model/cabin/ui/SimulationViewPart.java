@@ -13,7 +13,6 @@ import net.bhl.cdt.model.agent.Agent;
 import net.bhl.cdt.model.astar.AreaMap;
 import net.bhl.cdt.model.astar.Node;
 import net.bhl.cdt.model.astar.SimulationHandler;
-import net.bhl.cdt.model.cabin.util.Func;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
@@ -21,6 +20,9 @@ import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
+
+import com.paxelerate.util.Func;
+import com.paxelerate.util.graphics.ColorHelper;
 
 /**
  * This class represents the cabin view. All graphics generation is done here.
@@ -135,7 +137,7 @@ public class SimulationViewPart extends ViewPart {
 	}
 
 	private Color getColor(String hex) {
-		return new Color(parent.getDisplay(), Func.hex2Rgb(hex));
+		return new Color(parent.getDisplay(), ColorHelper.hex2Rgb(hex));
 	}
 
 	@Override

@@ -12,6 +12,7 @@ import net.bhl.cdt.model.cabin.SimulationResult;
 
 import org.eclipse.emf.common.util.EList;
 
+import com.paxelerate.util.Func;
 import com.paxelerate.util.math.Vector2D;
 
 /**

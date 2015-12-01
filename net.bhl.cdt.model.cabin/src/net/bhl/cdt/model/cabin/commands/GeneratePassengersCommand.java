@@ -19,14 +19,17 @@ import net.bhl.cdt.model.cabin.PremiumEconomyClass;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.TravelClass;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
-import net.bhl.cdt.model.cabin.util.Func;
 import net.bhl.cdt.model.cabin.util.PassengerPropertyGenerator;
+import net.bhl.cdt.model.cabin.util.ShouldSoonBeDeletedWhenSolved;
 import net.bhl.cdt.model.util.ModelHelper;
 
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+
+import com.paxelerate.util.Func;
+import com.paxelerate.util.math.RandomHelper;
 
 /**
  * 
@@ -175,11 +178,11 @@ public class GeneratePassengersCommand extends CDTCommand {
 					Passenger newPassenger = CabinFactory.eINSTANCE
 							.createPassenger();
 					cabin.getPassengers().add(newPassenger);
-					newPassenger.setId(Func.uniqueRandom(randomPassengerId, 1,
-							totalPax + 1));
+					newPassenger.setId(RandomHelper.uniqueRandom(
+							randomPassengerId, 1, totalPax + 1));
 
-					newPassenger.setSeat(Func.uniqueRandom(randomSeatId,
-							seatAreaBegin, seatsInClass));
+					newPassenger.setSeat(RandomHelper.uniqueRandom(
+							randomSeatId, seatAreaBegin, seatsInClass));
 
 					newPassenger.setName(newPassenger.getId() + " ("
 							+ getSeat(newPassenger).getName() + ")");
@@ -229,7 +232,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 	protected void doRun() {
 
 		/************************* get the views ***********************/
-		cabinViewPart = Func.getCabinView();
+		cabinViewPart = ShouldSoonBeDeletedWhenSolved.getCabinView();
 
 		// Unsync the cabin view during the execution of the command.
 		cabinViewPart.unsyncViewer();

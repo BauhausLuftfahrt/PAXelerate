@@ -9,6 +9,7 @@ package net.bhl.cdt.model.agent;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 
+import com.paxelerate.util.Func;
 import com.paxelerate.util.math.Vector;
 import com.paxelerate.util.math.Vector2D;
 
@@ -16,6 +17,7 @@ import net.bhl.cdt.model.astar.Core;
 import net.bhl.cdt.model.agent.AgressiveMood;
 import net.bhl.cdt.model.astar.CostMap;
 import net.bhl.cdt.model.agent.PassiveMood;
+import net.bhl.cdt.model.astar.AStarTools;
 import net.bhl.cdt.model.astar.Node;
 import net.bhl.cdt.model.astar.Node.Property;
 import net.bhl.cdt.model.astar.Path;
@@ -26,7 +28,6 @@ import net.bhl.cdt.model.cabin.LuggageSize;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.PassengerMood;
 import net.bhl.cdt.model.cabin.Seat;
-import net.bhl.cdt.model.cabin.util.Func;
 import net.bhl.cdt.model.cabin.util.Rotator;
 import net.bhl.cdt.model.cabin.util.StopWatch;
 import net.bhl.cdt.model.observer.Subject;
@@ -617,7 +618,7 @@ public class Agent extends Subject implements Runnable {
 					rotateAgent(90);
 
 					/* sleep the thread as long as the luggage is stowed */
-					Thread.sleep(Func.time(passenger.getLuggageStowTime()));
+					Thread.sleep(AStarTools.time(passenger.getLuggageStowTime()));
 
 					/* notify everyone that the luggage is now stowed */
 					alreadyStowed = true;
@@ -641,7 +642,7 @@ public class Agent extends Subject implements Runnable {
 					if (anyoneNearMe()) {
 						System.out
 								.println("waymaking skipped. Delay simulated!");
-						Thread.sleep(Func.time(7));
+						Thread.sleep(AStarTools.time(7));
 						waitingCompleted = true;
 						continue;
 					}
@@ -660,7 +661,7 @@ public class Agent extends Subject implements Runnable {
 						}
 
 						// TODO: calculate the waiting time!
-						Thread.sleep(Func.time(3));
+						Thread.sleep(AStarTools.time(3));
 
 						waitingCompleted = true;
 					}
@@ -870,7 +871,7 @@ public class Agent extends Subject implements Runnable {
 		}
 
 		try {
-			Thread.sleep(Func.time(defoldingTime));
+			Thread.sleep(AStarTools.time(defoldingTime));
 		} catch (InterruptedException e) {
 			//
 		}
@@ -901,7 +902,8 @@ public class Agent extends Subject implements Runnable {
 			pathlist.add(path);
 			if (inDefaultBoardingMode()) {
 				/* sleep the thread as long as the boarding delay requires it */
-				Thread.sleep(Func.time(passenger.getStartBoardingAfterDelay()));
+				Thread.sleep(AStarTools.time(passenger
+						.getStartBoardingAfterDelay()));
 
 				/*
 				 * then try to spawn the passenger but check if there is enough

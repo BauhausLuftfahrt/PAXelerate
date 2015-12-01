@@ -14,6 +14,8 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 
+import com.paxelerate.util.Func;
+import com.paxelerate.util.input.InputChecker;
 import com.paxelerate.util.math.Vector;
 import com.paxelerate.util.math.Vector2D;
 

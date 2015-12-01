@@ -3,14 +3,14 @@
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ***************************************************************************************/
-package net.bhl.cdt.model.cabin.ui;
-
-import net.bhl.cdt.cabin.ui.Activator;
+package com.paxelerate.ui.util;
 
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.IntegerFieldEditor;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
+
+import com.paxelerate.ui.Activator;
 
 /**
  * This is the PreferencePage of the Cabin view .

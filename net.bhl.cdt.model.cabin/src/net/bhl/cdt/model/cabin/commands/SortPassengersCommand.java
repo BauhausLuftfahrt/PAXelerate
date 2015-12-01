@@ -11,9 +11,6 @@ import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.Door;
 import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
-import net.bhl.cdt.model.cabin.util.Func;
-import net.bhl.cdt.model.cabin.util.Input;
-import net.bhl.cdt.model.cabin.util.Input.WindowType;
 
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
@@ -23,6 +20,11 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
+
+import com.paxelerate.util.Func;
+import com.paxelerate.util.input.Input;
+import com.paxelerate.util.input.Input.WindowType;
+import com.paxelerate.util.math.RandomHelper;
 
 /**
  * This class refreshed the cabin view without modifying anything. It checks the
@@ -77,7 +79,8 @@ public class SortPassengersCommand extends CDTCommand {
 				for (int i = 0; i < paxList.size(); i++) {
 					Passenger pax = paxList.get(i);
 
-					paxList.move(Func.randomValue(0, paxList.size()), pax);
+					paxList.move(RandomHelper.randomValue(0, paxList.size()),
+							pax);
 				}
 			}
 			break;

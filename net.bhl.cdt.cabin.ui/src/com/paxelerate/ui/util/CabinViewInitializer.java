@@ -3,12 +3,12 @@
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ***************************************************************************************/
-package net.bhl.cdt.model.cabin.ui;
-
-import net.bhl.cdt.cabin.ui.Activator;
+package com.paxelerate.ui.util;
 
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
+
+import com.paxelerate.ui.Activator;
 
 /**
  * This class initializes the cabin preference page with reasonable values.

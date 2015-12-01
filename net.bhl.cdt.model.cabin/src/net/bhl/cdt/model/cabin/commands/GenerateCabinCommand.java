@@ -19,7 +19,7 @@ import net.bhl.cdt.model.cabin.StandardDoor;
 import net.bhl.cdt.model.cabin.ui.CabinViewPart;
 import net.bhl.cdt.model.cabin.ui.InfoViewPart;
 import net.bhl.cdt.model.cabin.util.ConstructionLibrary;
-import net.bhl.cdt.model.cabin.util.Func;
+import net.bhl.cdt.model.cabin.util.ShouldSoonBeDeletedWhenSolved;
 
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
@@ -27,6 +27,8 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
+
+import com.paxelerate.util.Func;
 
 /**
  * 
@@ -87,7 +89,7 @@ public class GenerateCabinCommand extends CDTCommand {
 				"Initializing cabin generation ..."));
 
 		/*************** Get the CabinView *******************/
-		cabinViewPart = Func.getCabinView();
+		cabinViewPart = ShouldSoonBeDeletedWhenSolved.getCabinView();
 		cabinViewPart.unsyncViewer();
 		/*****************************************************/
 

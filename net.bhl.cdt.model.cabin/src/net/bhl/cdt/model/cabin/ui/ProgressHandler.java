@@ -5,8 +5,6 @@
  ***************************************************************************************/
 package net.bhl.cdt.model.cabin.ui;
 
-import net.bhl.cdt.model.cabin.util.Func;
-
 import org.eclipse.jface.dialogs.ProgressIndicator;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -15,6 +13,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+
+import com.paxelerate.util.Func;
 
 public class ProgressHandler {
 

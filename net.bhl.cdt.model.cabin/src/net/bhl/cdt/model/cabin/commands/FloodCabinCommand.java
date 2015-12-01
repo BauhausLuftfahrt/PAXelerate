@@ -13,11 +13,11 @@ import net.bhl.cdt.model.astar.AreaMap;
 import net.bhl.cdt.model.astar.ObstacleMap;
 import net.bhl.cdt.model.cabin.Cabin;
 import net.bhl.cdt.model.cabin.ui.HelpView;
-import net.bhl.cdt.model.cabin.util.Input;
-import net.bhl.cdt.model.cabin.util.Input.WindowType;
 
 import org.eclipse.jface.dialogs.IMessageProvider;
 
+import com.paxelerate.util.input.Input;
+import com.paxelerate.util.input.Input.WindowType;
 import com.paxelerate.util.math.Vector;
 import com.paxelerate.util.math.Vector2D;
 

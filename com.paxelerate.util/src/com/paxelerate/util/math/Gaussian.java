@@ -1,8 +1,8 @@
-package net.bhl.cdt.model.cabin.util;
+package com.paxelerate.util.math;
 
 import java.util.ArrayList;
 
-import net.bhl.cdt.model.cabin.util.Func.GaussOptions;
+import com.paxelerate.util.Func;
 
 public class Gaussian {
 
@@ -25,7 +25,8 @@ public class Gaussian {
 
 	private static void loop() {
 		for (int i = 1; i <= ITERATIONS; i++) {
-			list.add(Func.gaussianRandom(100, GaussOptions.PERCENT_99, 5));
+			list.add(GaussianRandom.gaussianRandom(100,
+					GaussOptions.PERCENT_99, 5));
 		}
 		double value = average(list);
 		System.out.println("Average: " + value);
