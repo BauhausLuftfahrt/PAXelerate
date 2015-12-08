@@ -371,15 +371,11 @@ public class SimulationHandler {
 		}
 
 		/* First generate all paths ... */
-		// int i = 1;
 		for (Agent agent : agentList) {
-			// console.addToLog("path calculation (" + i + "/" +
-			// agentList.size()
-			// + ")");
 			agent.findNewPath();
-			// i++;
-			progressValue++;
 
+			/* return information to the progress bar */
+			progressValue++;
 		}
 
 		/* ... then start the simulations simultaneously */
@@ -401,11 +397,6 @@ public class SimulationHandler {
 	}
 
 	private void runAreaMapWindow() {
-
-		final Vector dimensions = new Vector2D(cabin.getCabinWidth()
-				/ cabin.getScale(), cabin.getCabinLength() / cabin.getScale());
-		ObstacleMap obstaclemap = new ObstacleMap(cabin);
-		final AreaMap areamap = new AreaMap(dimensions, obstaclemap);
 
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
