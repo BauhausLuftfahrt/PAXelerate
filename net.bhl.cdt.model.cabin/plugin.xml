@@ -5,6 +5,7 @@
 -->
 
 <plugin>
+   <extension-point id="splashExtension" name="Splash Extensions" schema="schema/splashExtension.exsd"/>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated cabin -->
@@ -199,6 +200,73 @@
                priority="2">
          </staticTester>
       </modelElementOpener>
+   </extension>
+   <extension
+         id="paxelerateProduct"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="net.bhl.cdt.client.application"
+            name="PAXELERATE">
+         <property
+               name="appName"
+               value="PAXELERATE">
+         </property>
+         <property
+               name="startupProgressRect"
+               value="5,275,445,15">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
+         <property
+               name="startupForegroundColor"
+               value="000000">
+         </property>
+         <property
+               name="startupMessageRect"
+               value="7,252,445,20">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.splashHandlers">
+      <splashHandler
+            class="net.bhl.cdt.model.cabin.splashHandlers.ExtensibleSplashHandler"
+            id="net.bhl.cdt.model.cabin.splashHandlers.extensible">
+      </splashHandler>
+      <splashHandler
+            class="net.bhl.cdt.model.cabin.splashHandlers.BrowserSplashHandler"
+            id="net.bhl.cdt.model.cabin.splashHandlers.browser">
+      </splashHandler>
+   </extension>
+   <extension
+         point="net.bhl.cdt.model.cabin.splashExtension">
+      <splashExtension
+            icon="icons/af.png"
+            id="af"
+            tooltip="Application Framework">
+      </splashExtension>
+      <splashExtension
+            icon="icons/embedded.png"
+            id="embedded"
+            tooltip="Embedded">
+      </splashExtension>
+      <splashExtension
+            icon="icons/enterprise.png"
+            id="enterprise"
+            tooltip="Enterprise">
+      </splashExtension>
+      <splashExtension
+            icon="icons/languages.png"
+            id="languages"
+            tooltip="Languages">
+      </splashExtension>
+      <splashExtension
+            icon="icons/rcp.png"
+            id="rcp"
+            tooltip="RCP">
+      </splashExtension>
    </extension>
    
 

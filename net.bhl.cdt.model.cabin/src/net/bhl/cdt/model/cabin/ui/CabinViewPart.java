@@ -103,6 +103,52 @@ public class CabinViewPart extends ViewPart {
 	// String string = preferenceStore.getString("MySTRING1");
 
 	/**
+	 * 
+	 * This method initializes all necessary parameters and images.
+	 *
+	 * @param parent
+	 *            is the parent element
+	 */
+	public void createPartControl(Composite parent) {
+		this.parent = parent;
+		cabin = CabinFactory.eINSTANCE.createCabin();
+		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
+	
+		/********** Create Colors and Fonts here ************/
+		fontsize = 6;
+		fontName = "Helvetica Neue";
+		red = SWTResourceManager.getColor(220, 20, 60);
+		salmon = SWTResourceManager.getColor(250, 128, 114);
+		green = SWTResourceManager.getColor(50, 205, 50);
+		darkGray = SWTResourceManager.getColor(105, 105, 105);
+		white = SWTResourceManager.getColor(255, 255, 255);
+		black = SWTResourceManager.getColor(0, 0, 0);
+		aircraftBackground = SWTResourceManager.getColor(237, 243, 245);
+		fontOne = SWTResourceManager.getFont(fontName, 8, SWT.NORMAL);
+		fontTwo = SWTResourceManager.getFont(fontName, fontsize, SWT.NORMAL);
+		fontThree = SWTResourceManager.getFont(fontName, 9, SWT.NORMAL);
+		/***************************************************/
+	
+		factor = (double) cabin.getCabinWidth()
+				/ (double) CABIN_WIDTH_IN_PIXELS;
+		economySeat = SWTResourceManager.getImage(InfoViewPart.class,
+				"economy_seat.png");
+		businessSeat = SWTResourceManager.getImage(InfoViewPart.class,
+				"business_seat.png");
+		firstSeat = SWTResourceManager.getImage(InfoViewPart.class,
+				"first_seat.png");
+		coffeeIcon = SWTResourceManager.getImage(InfoViewPart.class,
+				"coffee.png");
+		lavatoryIcon = SWTResourceManager.getImage(InfoViewPart.class,
+				"Lavatory.png");
+		canvas = new Canvas(parent, SWT.RESIZE);
+		canvas.setBounds(0, 0, 1000, 1000);
+	
+		doTheDraw();
+	
+	}
+
+	/**
 	 * This method returns the defined file path.
 	 * 
 	 * @return the file path
@@ -314,52 +360,6 @@ public class CabinViewPart extends ViewPart {
 	 */
 	public boolean isInitialBoot() {
 		return initialBoot;
-	}
-
-	/**
-	 * 
-	 * This method initializes all necessary parameters and images.
-	 *
-	 * @param parent
-	 *            is the parent element
-	 */
-	public void createPartControl(Composite parent) {
-		this.parent = parent;
-		cabin = CabinFactory.eINSTANCE.createCabin();
-		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.model.cabin"));
-
-		/********** Create Colors and Fonts here ************/
-		fontsize = 6;
-		fontName = "Helvetica Neue";
-		red = SWTResourceManager.getColor(220, 20, 60);
-		salmon = SWTResourceManager.getColor(250, 128, 114);
-		green = SWTResourceManager.getColor(50, 205, 50);
-		darkGray = SWTResourceManager.getColor(105, 105, 105);
-		white = SWTResourceManager.getColor(255, 255, 255);
-		black = SWTResourceManager.getColor(0, 0, 0);
-		aircraftBackground = SWTResourceManager.getColor(237, 243, 245);
-		fontOne = SWTResourceManager.getFont(fontName, 8, SWT.NORMAL);
-		fontTwo = SWTResourceManager.getFont(fontName, fontsize, SWT.NORMAL);
-		fontThree = SWTResourceManager.getFont(fontName, 9, SWT.NORMAL);
-		/***************************************************/
-
-		factor = (double) cabin.getCabinWidth()
-				/ (double) CABIN_WIDTH_IN_PIXELS;
-		economySeat = SWTResourceManager.getImage(InfoViewPart.class,
-				"economy_seat.png");
-		businessSeat = SWTResourceManager.getImage(InfoViewPart.class,
-				"business_seat.png");
-		firstSeat = SWTResourceManager.getImage(InfoViewPart.class,
-				"first_seat.png");
-		coffeeIcon = SWTResourceManager.getImage(InfoViewPart.class,
-				"coffee.png");
-		lavatoryIcon = SWTResourceManager.getImage(InfoViewPart.class,
-				"Lavatory.png");
-		canvas = new Canvas(parent, SWT.RESIZE);
-		canvas.setBounds(0, 0, 1000, 1000);
-
-		doTheDraw();
-
 	}
 
 	private Image switchAircraftImage() {

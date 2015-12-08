@@ -13,6 +13,7 @@ import javax.swing.SwingUtilities;
 
 import org.eclipse.emf.common.util.EList;
 
+import com.paxelerate.ui.ProgressHandler;
 import com.paxelerate.util.Func;
 import com.paxelerate.util.Logger;
 import com.paxelerate.util.OS;
@@ -28,7 +29,6 @@ import net.bhl.cdt.model.cabin.Passenger;
 import net.bhl.cdt.model.cabin.Seat;
 import net.bhl.cdt.model.cabin.ui.HelpView;
 import net.bhl.cdt.model.cabin.ui.SimulationView;
-import net.bhl.cdt.model.cabin.ui.ProgressHandler;
 
 /**
  * This class runs and handles the a star algorithm an simulation.
@@ -352,8 +352,7 @@ public class SimulationHandler {
 						percent = percentage(progressValue, agentList.size());
 
 						// TODO: real progress indications for calculation of
-						// cost
-						// map could be implemented!
+						// cost map could be implemented!
 
 						if (percent < 10) {
 							progress.updateText("Initializing Path finding algorithms ...");

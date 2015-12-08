@@ -22,7 +22,8 @@ Export-Package: net.bhl.cdt.model.cabin,
  net.bhl.cdt.model.cabin.ui,
  net.bhl.cdt.model.cabin.util
 Bundle-ActivationPolicy: lazy
-Import-Package: com.paxelerate.util,
+Import-Package: com.paxelerate.ui,
+ com.paxelerate.util,
  com.paxelerate.util.graphics,
  com.paxelerate.util.input,
  com.paxelerate.util.math,
