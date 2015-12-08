@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="PAXELERATE" uid="paxelerate.product" id="net.bhl.cdt.model.cabin.paxelerateProduct" application="net.bhl.cdt.client.application" version="1.0.0" useFeatures="true" includeLaunchers="true">
+<product name="PAXELERATE" uid="paxelerate.product" id="net.bhl.cdt.model.cabin.paxelerateProduct" application="net.bhl.cdt.client.application" version="1.0.0" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -14,10 +14,7 @@
    <windowImages/>
 
    <splash
-      location="net.bhl.cdt.model.cabin"
-      startupProgressRect="5,275,445,15"
-      startupMessageRect="7,252,445,20"
-      startupForegroundColor="000000" />
+      location="net.bhl.cdt.model.cabin" />
    <launcher>
       <solaris/>
       <win useIco="false">
