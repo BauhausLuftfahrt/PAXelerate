@@ -68,6 +68,11 @@ public class DrawCabinCommand extends CDTCommand {
 		 *            the arguments
 		 */
 		SimulationProperties settings = cabin.getSimulationSettings();
+
+		if (settings == null) {
+			settings = CabinFactory.eINSTANCE.createSimulationProperties();
+			cabin.setSimulationSettings(settings);
+		}
 		double[] luggagemodel = {
 				settings.getPercentageOfPassengersWithNoLuggage(),
 				settings.getPercentageOfPassengersWithSmallLuggage(),
