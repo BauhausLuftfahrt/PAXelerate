@@ -212,20 +212,16 @@
                value="PAXELERATE">
          </property>
          <property
-               name="startupProgressRect"
-               value="5,275,445,15">
-         </property>
-         <property
                name="preferenceCustomization"
                value="plugin_customization.ini">
          </property>
          <property
-               name="startupForegroundColor"
-               value="000000">
+               name="windowImages"
+               value="icon.png,icon.png,icon.png,icon.png,icon.png,icon.png">
          </property>
          <property
-               name="startupMessageRect"
-               value="7,252,445,20">
+               name="aboutText"
+               value="About">
          </property>
       </product>
    </extension>

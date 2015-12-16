@@ -3,6 +3,12 @@
 
 <product name="PAXELERATE" uid="paxelerate.product" id="net.bhl.cdt.model.cabin.paxelerateProduct" application="net.bhl.cdt.client.application" version="1.0.0" useFeatures="false" includeLaunchers="true">
 
+   <aboutInfo>
+      <text>
+         About
+      </text>
+   </aboutInfo>
+
    <configIni use="default">
    </configIni>
 
@@ -11,16 +17,24 @@
       </vmArgsMac>
    </launcherArgs>
 
-   <windowImages/>
+   <windowImages i16="/com.paxelerate/icon.png" i32="/com.paxelerate/icon.png" i48="/com.paxelerate/icon.png" i64="/com.paxelerate/icon.png" i128="/com.paxelerate/icon.png" i256="/com.paxelerate/icon.png"/>
 
    <splash
       location="net.bhl.cdt.model.cabin" />
-   <launcher>
+   <launcher name="Paxelerate">
       <solaris/>
       <win useIco="false">
-         <bmp/>
+         <bmp
+            winSmallHigh="/com.paxelerate/icon.bmp"
+            winSmallLow="/com.paxelerate/icon.bmp"
+            winMediumHigh="/com.paxelerate/icon.bmp"
+            winMediumLow="/com.paxelerate/icon.bmp"
+            winLargeHigh="/com.paxelerate/icon.bmp"
+            winLargeLow="/com.paxelerate/icon.bmp"
+            winExtraLargeHigh="/com.paxelerate/icon.bmp"/>
       </win>
    </launcher>
+
 
    <vm>
       <windows include="true">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</windows>
