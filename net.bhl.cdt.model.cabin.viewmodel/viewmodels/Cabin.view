@@ -3,7 +3,7 @@
   <rootEClass href="http://bhl.net/cdt/model/cabin/#//Cabin"/>
   <children xsi:type="org.eclipse.emf.ecp.view.model:Control">
     <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
-      <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model#//NamedElement/name"/>
+      <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Cabin/cabinLength"/>
     </domainModelReference>
   </children>
   <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout">
@@ -56,11 +56,6 @@
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control usePresetSettings">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Cabin/usePresetSettings"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Cabin/passengersBoardingPerMinute"/>
           </domainModelReference>
         </children>
       </children>
