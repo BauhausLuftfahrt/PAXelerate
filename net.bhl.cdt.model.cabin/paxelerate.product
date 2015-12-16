@@ -3,12 +3,6 @@
 
 <product name="PAXELERATE" uid="paxelerate.product" id="net.bhl.cdt.model.cabin.paxelerateProduct" application="net.bhl.cdt.client.application" version="1.0.0" useFeatures="false" includeLaunchers="true">
 
-   <aboutInfo>
-      <text>
-         About
-      </text>
-   </aboutInfo>
-
    <configIni use="default">
    </configIni>
 
@@ -35,9 +29,9 @@
       </win>
    </launcher>
 
-
    <vm>
-      <windows include="true">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</windows>
+      <macos include="true">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</macos>
+      <windows include="true">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7</windows>
    </vm>
 
    <plugins>
@@ -49,28 +43,13 @@
       <plugin id="javax.inject"/>
       <plugin id="javax.servlet"/>
       <plugin id="javax.xml"/>
-      <plugin id="net.bhl.cdt.assessment"/>
-      <plugin id="net.bhl.cdt.assessment.edit"/>
       <plugin id="net.bhl.cdt.cabin.ui"/>
       <plugin id="net.bhl.cdt.client"/>
-      <plugin id="net.bhl.cdt.connector"/>
-      <plugin id="net.bhl.cdt.connector.avl"/>
-      <plugin id="net.bhl.cdt.connector.avl.edit"/>
-      <plugin id="net.bhl.cdt.connector.avl.test"/>
-      <plugin id="net.bhl.cdt.connector.avl.ui"/>
-      <plugin id="net.bhl.cdt.connector.files"/>
-      <plugin id="net.bhl.cdt.connector.files.edit"/>
-      <plugin id="net.bhl.cdt.connector.matlab.tornado"/>
-      <plugin id="net.bhl.cdt.connector.matlab.tornado.client"/>
-      <plugin id="net.bhl.cdt.connector.matlab.tornado.edit"/>
-      <plugin id="net.bhl.cdt.connector.matlab.tornado.ui"/>
       <plugin id="net.bhl.cdt.model"/>
       <plugin id="net.bhl.cdt.model.cabin"/>
       <plugin id="net.bhl.cdt.model.cabin.edit"/>
       <plugin id="net.bhl.cdt.model.cabin.viewmodel"/>
       <plugin id="net.bhl.cdt.model.edit"/>
-      <plugin id="net.bhl.cdt.test"/>
-      <plugin id="net.bhl.cdt.trace.ui"/>
       <plugin id="net.bhl.cdt.ui"/>
       <plugin id="org.apache.batik.css"/>
       <plugin id="org.apache.batik.util"/>
@@ -205,6 +184,7 @@
       <plugin id="org.eclipse.ui.console"/>
       <plugin id="org.eclipse.ui.forms"/>
       <plugin id="org.eclipse.ui.ide"/>
+      <plugin id="org.eclipse.ui.intro"/>
       <plugin id="org.eclipse.ui.net"/>
       <plugin id="org.eclipse.ui.views"/>
       <plugin id="org.eclipse.ui.win32" fragment="true"/>

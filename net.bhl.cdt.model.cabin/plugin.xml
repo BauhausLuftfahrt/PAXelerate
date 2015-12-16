@@ -219,10 +219,6 @@
                name="windowImages"
                value="icon.png,icon.png,icon.png,icon.png,icon.png,icon.png">
          </property>
-         <property
-               name="aboutText"
-               value="About">
-         </property>
       </product>
    </extension>
    <extension

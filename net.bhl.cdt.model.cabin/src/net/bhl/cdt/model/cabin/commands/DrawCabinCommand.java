@@ -67,7 +67,6 @@ public class DrawCabinCommand extends CDTCommand {
 		 * @param args
 		 *            the arguments
 		 */
-
 		SimulationProperties settings = cabin.getSimulationSettings();
 		double[] luggagemodel = {
 				settings.getPercentageOfPassengersWithNoLuggage(),
@@ -76,13 +75,8 @@ public class DrawCabinCommand extends CDTCommand {
 				settings.getPercentageOfPassengersWithBigLuggage() };
 
 		if ((luggagemodel[0] + luggagemodel[1] + luggagemodel[2] + luggagemodel[3]) == 0) {
-			cabin.setSimulationSettings(null);
-		}
-
-		if (cabin.getSimulationSettings() == null) {
-			SimulationProperties props = CabinFactory.eINSTANCE
-					.createSimulationProperties();
-			cabin.setSimulationSettings(props);
+			cabin.getSimulationSettings()
+					.setPercentageOfPassengersWithNoLuggage(100);
 		}
 
 		cabinViewPart = ShouldSoonBeDeletedWhenSolved.getCabinView();
