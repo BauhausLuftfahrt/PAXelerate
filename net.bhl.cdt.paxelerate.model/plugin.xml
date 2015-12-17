@@ -260,6 +260,30 @@
             tooltip="RCP">
       </splashExtension>
    </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="net.bhl.cdt.client.application"
+            name="PAXelerate">
+         <property
+               name="windowImages"
+               value="/com.paxelerate/icon.png,/com.paxelerate/icon.png,/com.paxelerate/icon.png,/com.paxelerate/icon.png,/com.paxelerate/icon.png,/com.paxelerate/icon.png">
+         </property>
+         <property
+               name="startupForegroundColor"
+               value="000000">
+         </property>
+         <property
+               name="startupProgressRect"
+               value="5,275,445,15">
+         </property>
+         <property
+               name="startupMessageRect"
+               value="7,252,445,20">
+         </property>
+      </product>
+   </extension>
    
 
 </plugin>
