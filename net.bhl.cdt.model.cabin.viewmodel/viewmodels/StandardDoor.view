@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="ASCII"?>
-<org.eclipse.emf.ecp.view.model:View xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.emf.ecp.view.group.model="http://org/eclipse/emf/ecp/view/group/model" xmlns:org.eclipse.emf.ecp.view.horizontal.model="http://org/eclipse/emf/ecp/view/horizontal/model" xmlns:org.eclipse.emf.ecp.view.model="http://org/eclipse/emf/ecp/view/model" xmlns:org.eclipse.emf.ecp.view.vertical.model="http://org/eclipse/emf/ecp/view/vertical/model" ecorePath="/net.bhl.cdt.model.cabin/model/cabin.ecore">
+<org.eclipse.emf.ecp.view.model:View xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.emf.ecp.view.group.model="http://org/eclipse/emf/ecp/view/group/model" xmlns:org.eclipse.emf.ecp.view.horizontal.model="http://org/eclipse/emf/ecp/view/horizontal/model" xmlns:org.eclipse.emf.ecp.view.model="http://org/eclipse/emf/ecp/view/model/170" xmlns:org.eclipse.emf.ecp.view.vertical.model="http://org/eclipse/emf/ecp/view/vertical/model" xmi:id="_ePPnIKS-EeWGjpaobu8CIA" name="StandardDoor" ecorePath="/net.bhl.cdt.model.cabin/model/cabin.ecore">
   <rootEClass href="http://bhl.net/cdt/model/cabin/#//StandardDoor"/>
-  <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout">
-    <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout">
-      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" name="General Data">
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control id">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+  <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout" xmi:id="_e9AsEKS-EeWGjpaobu8CIA">
+    <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_fTgggKS-EeWGjpaobu8CIA">
+      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_gFBdAKS-EeWGjpaobu8CIA" name="General Data">
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_ePTRhqS-EeWGjpaobu8CIA" name="Control id">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_ePTRh6S-EeWGjpaobu8CIA">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Door/id"/>
           </domainModelReference>
         </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control onBothSides">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_ePTRgqS-EeWGjpaobu8CIA" name="Control onBothSides">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_ePTRg6S-EeWGjpaobu8CIA">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Door/onBothSides"/>
           </domainModelReference>
         </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_ePTRiqS-EeWGjpaobu8CIA" name="Control isActive">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_ePTRi6S-EeWGjpaobu8CIA">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Door/isActive"/>
           </domainModelReference>
         </children>
       </children>
     </children>
-    <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout">
-      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" name="Properties">
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control yPosition">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+    <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_fkEsEKS-EeWGjpaobu8CIA">
+      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_gQP1kKS-EeWGjpaobu8CIA" name="Properties">
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_ePTRgKS-EeWGjpaobu8CIA" name="Control yPosition">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_ePTRgaS-EeWGjpaobu8CIA">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Door/yPosition"/>
           </domainModelReference>
         </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control width">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Door/width"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control widthOfMainDoor">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Door/width"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Control widthOfEmergencyExit">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_ePTRhKS-EeWGjpaobu8CIA" name="Control width">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_ePTRhaS-EeWGjpaobu8CIA">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Door/width"/>
           </domainModelReference>
         </children>
       </children>
     </children>
+  </children>
+  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_ePTRiKS-EeWGjpaobu8CIA" name="Control numberOfSimultaneousPassengers">
+    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_ePTRiaS-EeWGjpaobu8CIA">
+      <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//Door/numberOfSimultaneousPassengers"/>
+    </domainModelReference>
+  </children>
+  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_ePTRjKS-EeWGjpaobu8CIA" name="Control waitingPassengers">
+    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_ePTRjaS-EeWGjpaobu8CIA">
+      <domainModelEFeature xsi:type="ecore:EReference" href="http://bhl.net/cdt/model/cabin/#//Door/waitingPassengers"/>
+    </domainModelReference>
   </children>
 </org.eclipse.emf.ecp.view.model:View>
