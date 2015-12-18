@@ -17,9 +17,11 @@ Welcome to the repository of PAXelerate - an open source passenger flow simulati
 ### Contributors ###
 
 * Marc Engelmann ***(active)***
-* Tobias Brügge-Zobel ***(active)***
+* Raoul Rothfeld ***(active)***
 * Michael Schmidt ***(active)***
-* Martin Glas ***(active)***
+* Michael Shamiyeh ***(active)***
+* Martin Glas 
+* Tobias Brügge-Zobel
 * Stefan Weber
 * Pedro Martinez
 * Philipp Osterrieder
