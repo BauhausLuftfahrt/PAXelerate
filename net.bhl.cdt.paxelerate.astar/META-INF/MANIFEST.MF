@@ -5,7 +5,9 @@ Bundle-SymbolicName: net.bhl.cdt.paxelerate.astar
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: net.bhl.cdt.paxelerate.astar.Activator
 Bundle-Vendor: PAXELERATE
-Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
+Export-Package: net.bhl.cdt.paxelerate.astar
+Require-Bundle: org.eclipse.ui;bundle-version="3.107.0",
+ net.bhl.cdt.paxelerate.agent;bundle-version="1.0.0",
+ net.bhl.cdt.paxelerate.util;bundle-version="1.0.0"

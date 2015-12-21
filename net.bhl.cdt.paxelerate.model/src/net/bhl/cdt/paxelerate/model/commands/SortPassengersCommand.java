@@ -6,10 +6,10 @@
 package net.bhl.cdt.paxelerate.model.commands;
 
 import net.bhl.cdt.commands.CDTCommand;
+import net.bhl.cdt.paxelerate.agent.AgentFunctions;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.Door;
 import net.bhl.cdt.paxelerate.model.Passenger;
-import net.bhl.cdt.paxelerate.model.agent.AgentFunctions;
 import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
 import net.bhl.cdt.paxelerate.util.Func;
 import net.bhl.cdt.paxelerate.util.input.Input;
