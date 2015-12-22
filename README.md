@@ -10,9 +10,9 @@ Welcome to the repository of PAXelerate - an open source passenger flow simulati
 
 ### How do I get set up? ###
 
- The [Installation Guide](installation) is intended to enable a quick and easy setup of PAXelerate.
-* The [Tutorial](tutorial) provides a summary of the functional range of PAXelerate and quick introduction for new users.
-* The [Developers Guide](developer) summarises useful tips to get started with the PAXelerate advancement
+* The [Installation Guide](installation) is intended to enable a quick and easy setup 
+* The [Tutorial](tutorial) provides a summary of the functional range and quick introduction for new users.
+* The [Developers Guide](developer) summarises useful tips to get started with the development
 
 ### Contributors ###
 
