@@ -10,11 +10,11 @@ import java.util.ArrayList;
 
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.util.ModelHelper;
-import net.bhl.cdt.paxelerate.astar.ObstacleMap;
-import net.bhl.cdt.paxelerate.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Seat;
+import net.bhl.cdt.paxelerate.model.astar.ObstacleMap;
+import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.model.storage.Exporter;
 import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
 import net.bhl.cdt.paxelerate.model.ui.SimulationView;

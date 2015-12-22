@@ -9,10 +9,10 @@ package net.bhl.cdt.paxelerate.model.ui;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 
-import net.bhl.cdt.paxelerate.agent.Agent;
-import net.bhl.cdt.paxelerate.astar.AreaMap;
-import net.bhl.cdt.paxelerate.astar.Node;
-import net.bhl.cdt.paxelerate.astar.SimulationHandler;
+import net.bhl.cdt.paxelerate.model.agent.Agent;
+import net.bhl.cdt.paxelerate.model.astar.AreaMap;
+import net.bhl.cdt.paxelerate.model.astar.Node;
+import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.util.Func;
 import net.bhl.cdt.paxelerate.util.graphics.ColorHelper;
 

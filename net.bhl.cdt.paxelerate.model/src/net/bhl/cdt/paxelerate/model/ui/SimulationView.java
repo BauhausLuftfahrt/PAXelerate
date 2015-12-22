@@ -7,13 +7,13 @@ package net.bhl.cdt.paxelerate.model.ui;
 
 import javax.swing.*;
 
-import net.bhl.cdt.paxelerate.agent.Agent;
-import net.bhl.cdt.paxelerate.astar.AreaMap;
-import net.bhl.cdt.paxelerate.astar.Node;
-import net.bhl.cdt.paxelerate.astar.Path;
-import net.bhl.cdt.paxelerate.astar.SimulationHandler;
-import net.bhl.cdt.paxelerate.astar.Node.Property;
 import net.bhl.cdt.paxelerate.model.Passenger;
+import net.bhl.cdt.paxelerate.model.agent.Agent;
+import net.bhl.cdt.paxelerate.model.astar.AreaMap;
+import net.bhl.cdt.paxelerate.model.astar.Node;
+import net.bhl.cdt.paxelerate.model.astar.Path;
+import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
+import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 import net.bhl.cdt.paxelerate.util.Func;
 import net.bhl.cdt.paxelerate.util.math.StopWatch;
 import net.bhl.cdt.paxelerate.util.time.TimeHelper;

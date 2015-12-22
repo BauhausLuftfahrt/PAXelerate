@@ -2,6 +2,8 @@ package net.bhl.cdt.paxelerate.util.math;
 
 import java.util.ArrayList;
 
+import net.bhl.cdt.paxelerate.util.Func;
+
 public class Gaussian {
 
 	/**

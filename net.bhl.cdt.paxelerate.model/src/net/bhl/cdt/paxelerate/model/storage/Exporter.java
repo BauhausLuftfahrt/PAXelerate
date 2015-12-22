@@ -6,9 +6,9 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-import net.bhl.cdt.paxelerate.astar.AreaMap;
-import net.bhl.cdt.paxelerate.astar.Node;
 import net.bhl.cdt.paxelerate.model.Sex;
+import net.bhl.cdt.paxelerate.model.astar.AreaMap;
+import net.bhl.cdt.paxelerate.model.astar.Node;
 
 public class Exporter {
 

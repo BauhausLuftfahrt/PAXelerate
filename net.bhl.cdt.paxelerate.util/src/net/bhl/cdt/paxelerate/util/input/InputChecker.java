@@ -7,6 +7,7 @@ package net.bhl.cdt.paxelerate.util.input;
 
 import org.apache.commons.lang.StringUtils;
 
+import net.bhl.cdt.paxelerate.util.Func;
 import net.bhl.cdt.paxelerate.util.strings.StringOperations;
 
 /**
