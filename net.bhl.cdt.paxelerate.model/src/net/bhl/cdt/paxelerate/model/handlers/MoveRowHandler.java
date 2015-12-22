@@ -62,34 +62,32 @@ public class MoveRowHandler extends AbstractHandler {
 			}
 		}
 		if (!rowlist.isEmpty()) {
-			cabin = ModelHelper.getParent(Cabin.class,
-					rowlist.get(0));
+			cabin = ModelHelper.getParent(Cabin.class, rowlist.get(0));
 		} else if (!seatlist.isEmpty()) {
-			cabin = ModelHelper.getParent(Cabin.class,
-					seatlist.get(0));
+			cabin = ModelHelper.getParent(Cabin.class, seatlist.get(0));
 		} else if (!galleylist.isEmpty()) {
-			cabin = ModelHelper.getParent(Cabin.class,
-					galleylist.get(0));
+			cabin = ModelHelper.getParent(Cabin.class, galleylist.get(0));
 		} else if (!lavatorylist.isEmpty()) {
-			cabin = ModelHelper.getParent(Cabin.class,
-					lavatorylist.get(0));
+			cabin = ModelHelper.getParent(Cabin.class, lavatorylist.get(0));
 		} else if (!curtainlist.isEmpty()) {
-			cabin = ModelHelper.getParent(Cabin.class,
-					curtainlist.get(0));
+			cabin = ModelHelper.getParent(Cabin.class, curtainlist.get(0));
 		} else {
 			cabin = null;
 		}
 
-		new MoveObjectCommand(cabin, rowlist, seatlist, galleylist, lavatorylist,
-				curtainlist).execute();
-		
-		/* clear all lists in order to prevent the unintentioal movement of several items edited before */
+		new MoveObjectCommand(cabin, rowlist, seatlist, galleylist,
+				lavatorylist, curtainlist).execute();
+
+		/*
+		 * clear all lists in order to prevent the unintentioal movement of
+		 * several items edited before
+		 */
 		rowlist.clear();
 		seatlist.clear();
 		galleylist.clear();
 		lavatorylist.clear();
 		curtainlist.clear();
-		
+
 		return null;
 	}
 }

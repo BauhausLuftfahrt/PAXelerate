@@ -24,8 +24,7 @@ public class TimeHelper {
 			secondsAppend = "0";
 		}
 
-		return new String(hoursAppend + hours + ":" + minutesAppend + minutes
-				+ ":" + secondsAppend + seconds);
+		return new String(hoursAppend + hours + ":" + minutesAppend + minutes + ":" + secondsAppend + seconds);
 	}
 
 	public static String getCurrentTimeStamp() {

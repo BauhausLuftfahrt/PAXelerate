@@ -67,7 +67,8 @@ public class ObstacleMap {
 		((Vector2D) dimensions).set(AStarTools.size(cabin.getCabinWidth()),
 				AStarTools.size(cabin.getCabinLength()));
 		obstacleMap = createObstacleMap();
-		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
+		logger = Platform
+				.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
 		printObstacleMap();
 	}
 
@@ -150,24 +151,28 @@ public class ObstacleMap {
 						/** WEST - EAST - NORTH - SOUTH */
 						if (((i - p) > 0)
 								&& (obstacleMap[i - p][j] != MAX_VALUE)) {
-							obstacleMap[i - p][j] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
-									- p;
+							obstacleMap[i
+									- p][j] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
+											- p;
 						}
 						if (((i + p) < dimensions.getX())
 								&& (obstacleMap[i + p][j] != MAX_VALUE)) {
-							obstacleMap[i + p][j] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
-									- p;
+							obstacleMap[i
+									+ p][j] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
+											- p;
 						}
 
 						if (((j - p) > 0)
 								&& (obstacleMap[i][j - p] != MAX_VALUE)) {
-							obstacleMap[i][j - p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
-									- p;
+							obstacleMap[i][j
+									- p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
+											- p;
 						}
 						if (((j + p) < dimensions.getY())
 								&& (obstacleMap[i][j + p] != MAX_VALUE)) {
-							obstacleMap[i][j + p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
-									- p;
+							obstacleMap[i][j
+									+ p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
+											- p;
 						}
 						/*
 						 * In order to create some kind of rounded shape around
@@ -177,25 +182,33 @@ public class ObstacleMap {
 						if (p < (range - 1)) {
 							/** NORTHWEST - NORTHEAST - SOUTHEAST - SOUTHWEST */
 							if ((((i - p) > 0) && ((j - p) > 0))
-									&& (obstacleMap[i - p][j - p] != MAX_VALUE)) {
-								obstacleMap[i - p][j - p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
-										- p;
+									&& (obstacleMap[i - p][j
+											- p] != MAX_VALUE)) {
+								obstacleMap[i - p][j
+										- p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
+												- p;
 							}
 							if ((((i + p) < dimensions.getX()) && ((j - p) > 0))
-									&& (obstacleMap[i + p][j - p] != MAX_VALUE)) {
-								obstacleMap[i + p][j - p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
-										- p;
+									&& (obstacleMap[i + p][j
+											- p] != MAX_VALUE)) {
+								obstacleMap[i + p][j
+										- p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
+												- p;
 							}
-							if ((((j + p) < dimensions.getY()) && ((i + p) < dimensions
-									.getX()))
-									&& (obstacleMap[i + p][j + p] != MAX_VALUE)) {
-								obstacleMap[i + p][j + p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
-										- p;
+							if ((((j + p) < dimensions.getY())
+									&& ((i + p) < dimensions.getX()))
+									&& (obstacleMap[i + p][j
+											+ p] != MAX_VALUE)) {
+								obstacleMap[i + p][j
+										+ p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
+												- p;
 							}
 							if ((((j + p) < dimensions.getY()) && ((i - p) > 0))
-									&& (obstacleMap[i - p][j + p] != MAX_VALUE)) {
-								obstacleMap[i - p][j + p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
-										- p;
+									&& (obstacleMap[i - p][j
+											+ p] != MAX_VALUE)) {
+								obstacleMap[i - p][j
+										+ p] = POTENTIAL_AROUND_OBSTACLE_MAXIMUM
+												- p;
 							}
 						}
 					}
@@ -219,7 +232,8 @@ public class ObstacleMap {
 
 		for (Door door : cabin.getDoors()) {
 			entryMin = AStarTools.size(door.getYPosition()) + 2;
-			entryMax = AStarTools.size(door.getYPosition() + door.getWidth()) - 2;
+			entryMax = AStarTools.size(door.getYPosition() + door.getWidth())
+					- 2;
 
 			for (int i = 0; i < dimensions.getX(); i++) {
 				for (int j = 0; j < dimensions.getY(); j++) {
@@ -269,8 +283,8 @@ public class ObstacleMap {
 	 */
 	private <T extends PhysicalObject> void generateObstacles(
 			Class<T> physicalObjectSubclass) {
-		for (PhysicalObject physicalObject : ModelHelper.getChildrenByClass(
-				cabin, physicalObjectSubclass)) {
+		for (PhysicalObject physicalObject : ModelHelper
+				.getChildrenByClass(cabin, physicalObjectSubclass)) {
 
 			boolean value;
 			try {
@@ -279,7 +293,8 @@ public class ObstacleMap {
 				value = false;
 			}
 
-			if (!(cabin.getSimulationSettings().isUseFoldableSeats() && value)) {
+			if (!(cabin.getSimulationSettings().isUseFoldableSeats()
+					&& value)) {
 
 				int width = AStarTools.size(physicalObject.getXDimension());
 				int length = AStarTools.size(physicalObject.getYDimension());
@@ -321,8 +336,8 @@ public class ObstacleMap {
 		PrintWriter printToFile = null;
 		try {
 			CabinViewPart.makeDirectory();
-			printToFile = new PrintWriter(CabinViewPart.getFilePath()
-					+ "obstaclemap.txt");
+			printToFile = new PrintWriter(
+					CabinViewPart.getFilePath() + "obstaclemap.txt");
 			for (int i = 0; i < dimensions.getY(); i++) {
 				for (int j = 0; j < dimensions.getX(); j++) {
 					printToFile.print(getValueAtPoint(j, i) + "\t");

@@ -14,35 +14,35 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import net.bhl.cdt.paxelerate.model.*;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
+ * end-user-doc -->
+ * 
  * @generated
  */
 public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static CabinFactory init() {
 		try {
-			CabinFactory theCabinFactory = (CabinFactory)EPackage.Registry.INSTANCE.getEFactory(CabinPackage.eNS_URI);
+			CabinFactory theCabinFactory = (CabinFactory) EPackage.Registry.INSTANCE
+					.getEFactory(CabinPackage.eNS_URI);
 			if (theCabinFactory != null) {
 				return theCabinFactory;
 			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new CabinFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CabinFactoryImpl() {
@@ -50,93 +50,118 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case CabinPackage.CABIN: return createCabin();
-			case CabinPackage.ROW: return createRow();
-			case CabinPackage.TRAVEL_CLASS: return createTravelClass();
-			case CabinPackage.BUSINESS_CLASS: return createBusinessClass();
-			case CabinPackage.FIRST_CLASS: return createFirstClass();
-			case CabinPackage.ECONOMY_CLASS: return createEconomyClass();
-			case CabinPackage.PREMIUM_ECONOMY_CLASS: return createPremiumEconomyClass();
-			case CabinPackage.SEAT: return createSeat();
-			case CabinPackage.PASSENGER: return createPassenger();
-			case CabinPackage.CREW_MEMBER: return createCrewMember();
-			case CabinPackage.PHYSICAL_OBJECT: return createPhysicalObject();
-			case CabinPackage.LAVATORY: return createLavatory();
-			case CabinPackage.GALLEY: return createGalley();
-			case CabinPackage.STAIRWAY: return createStairway();
-			case CabinPackage.CURTAIN: return createCurtain();
-			case CabinPackage.STOWAGE: return createStowage();
-			case CabinPackage.DOOR: return createDoor();
-			case CabinPackage.MAIN_DOOR: return createMainDoor();
-			case CabinPackage.EMERGENCY_EXIT: return createEmergencyExit();
-			case CabinPackage.STANDARD_DOOR: return createStandardDoor();
-			case CabinPackage.SIMULATION_PROPERTIES: return createSimulationProperties();
-			case CabinPackage.SIMULATION_RESULT: return createSimulationResult();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case CabinPackage.CABIN:
+			return createCabin();
+		case CabinPackage.ROW:
+			return createRow();
+		case CabinPackage.TRAVEL_CLASS:
+			return createTravelClass();
+		case CabinPackage.BUSINESS_CLASS:
+			return createBusinessClass();
+		case CabinPackage.FIRST_CLASS:
+			return createFirstClass();
+		case CabinPackage.ECONOMY_CLASS:
+			return createEconomyClass();
+		case CabinPackage.PREMIUM_ECONOMY_CLASS:
+			return createPremiumEconomyClass();
+		case CabinPackage.SEAT:
+			return createSeat();
+		case CabinPackage.PASSENGER:
+			return createPassenger();
+		case CabinPackage.CREW_MEMBER:
+			return createCrewMember();
+		case CabinPackage.PHYSICAL_OBJECT:
+			return createPhysicalObject();
+		case CabinPackage.LAVATORY:
+			return createLavatory();
+		case CabinPackage.GALLEY:
+			return createGalley();
+		case CabinPackage.STAIRWAY:
+			return createStairway();
+		case CabinPackage.CURTAIN:
+			return createCurtain();
+		case CabinPackage.STOWAGE:
+			return createStowage();
+		case CabinPackage.DOOR:
+			return createDoor();
+		case CabinPackage.MAIN_DOOR:
+			return createMainDoor();
+		case CabinPackage.EMERGENCY_EXIT:
+			return createEmergencyExit();
+		case CabinPackage.STANDARD_DOOR:
+			return createStandardDoor();
+		case CabinPackage.SIMULATION_PROPERTIES:
+			return createSimulationProperties();
+		case CabinPackage.SIMULATION_RESULT:
+			return createSimulationResult();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case CabinPackage.SEX:
-				return createSexFromString(eDataType, initialValue);
-			case CabinPackage.STAIRWAY_DIRECTION:
-				return createStairwayDirectionFromString(eDataType, initialValue);
-			case CabinPackage.AIRCRAFT_TYPE:
-				return createAircraftTypeFromString(eDataType, initialValue);
-			case CabinPackage.PASSENGER_MOOD:
-				return createPassengerMoodFromString(eDataType, initialValue);
-			case CabinPackage.LUGGAGE_SIZE:
-				return createLuggageSizeFromString(eDataType, initialValue);
-			case CabinPackage.SORTING_STYLE:
-				return createSortingStyleFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		case CabinPackage.SEX:
+			return createSexFromString(eDataType, initialValue);
+		case CabinPackage.STAIRWAY_DIRECTION:
+			return createStairwayDirectionFromString(eDataType, initialValue);
+		case CabinPackage.AIRCRAFT_TYPE:
+			return createAircraftTypeFromString(eDataType, initialValue);
+		case CabinPackage.PASSENGER_MOOD:
+			return createPassengerMoodFromString(eDataType, initialValue);
+		case CabinPackage.LUGGAGE_SIZE:
+			return createLuggageSizeFromString(eDataType, initialValue);
+		case CabinPackage.SORTING_STYLE:
+			return createSortingStyleFromString(eDataType, initialValue);
+		default:
+			throw new IllegalArgumentException("The datatype '"
+					+ eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case CabinPackage.SEX:
-				return convertSexToString(eDataType, instanceValue);
-			case CabinPackage.STAIRWAY_DIRECTION:
-				return convertStairwayDirectionToString(eDataType, instanceValue);
-			case CabinPackage.AIRCRAFT_TYPE:
-				return convertAircraftTypeToString(eDataType, instanceValue);
-			case CabinPackage.PASSENGER_MOOD:
-				return convertPassengerMoodToString(eDataType, instanceValue);
-			case CabinPackage.LUGGAGE_SIZE:
-				return convertLuggageSizeToString(eDataType, instanceValue);
-			case CabinPackage.SORTING_STYLE:
-				return convertSortingStyleToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		case CabinPackage.SEX:
+			return convertSexToString(eDataType, instanceValue);
+		case CabinPackage.STAIRWAY_DIRECTION:
+			return convertStairwayDirectionToString(eDataType, instanceValue);
+		case CabinPackage.AIRCRAFT_TYPE:
+			return convertAircraftTypeToString(eDataType, instanceValue);
+		case CabinPackage.PASSENGER_MOOD:
+			return convertPassengerMoodToString(eDataType, instanceValue);
+		case CabinPackage.LUGGAGE_SIZE:
+			return convertLuggageSizeToString(eDataType, instanceValue);
+		case CabinPackage.SORTING_STYLE:
+			return convertSortingStyleToString(eDataType, instanceValue);
+		default:
+			throw new IllegalArgumentException("The datatype '"
+					+ eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Cabin createCabin() {
@@ -145,8 +170,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Row createRow() {
@@ -155,8 +180,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TravelClass createTravelClass() {
@@ -165,8 +190,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BusinessClass createBusinessClass() {
@@ -175,8 +200,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FirstClass createFirstClass() {
@@ -185,8 +210,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EconomyClass createEconomyClass() {
@@ -195,8 +220,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PremiumEconomyClass createPremiumEconomyClass() {
@@ -205,8 +230,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Door createDoor() {
@@ -215,8 +240,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Seat createSeat() {
@@ -225,8 +250,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Passenger createPassenger() {
@@ -235,8 +260,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CrewMember createCrewMember() {
@@ -245,8 +270,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Lavatory createLavatory() {
@@ -255,8 +280,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Galley createGalley() {
@@ -265,8 +290,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Stairway createStairway() {
@@ -275,8 +300,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Curtain createCurtain() {
@@ -285,8 +310,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Stowage createStowage() {
@@ -295,8 +320,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public MainDoor createMainDoor() {
@@ -305,8 +330,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EmergencyExit createEmergencyExit() {
@@ -315,8 +340,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public StandardDoor createStandardDoor() {
@@ -325,8 +350,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SimulationProperties createSimulationProperties() {
@@ -335,8 +360,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SimulationResult createSimulationResult() {
@@ -345,8 +370,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PhysicalObject createPhysicalObject() {
@@ -355,137 +380,166 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public StairwayDirection createStairwayDirectionFromString(EDataType eDataType, String initialValue) {
+	public StairwayDirection createStairwayDirectionFromString(
+			EDataType eDataType, String initialValue) {
 		StairwayDirection result = StairwayDirection.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + initialValue
+					+ "' is not a valid enumerator of '" + eDataType.getName()
+					+ "'");
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public String convertStairwayDirectionToString(EDataType eDataType, Object instanceValue) {
+	public String convertStairwayDirectionToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public AircraftType createAircraftTypeFromString(EDataType eDataType, String initialValue) {
+	public AircraftType createAircraftTypeFromString(EDataType eDataType,
+			String initialValue) {
 		AircraftType result = AircraftType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + initialValue
+					+ "' is not a valid enumerator of '" + eDataType.getName()
+					+ "'");
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public String convertAircraftTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertAircraftTypeToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public PassengerMood createPassengerMoodFromString(EDataType eDataType, String initialValue) {
+	public PassengerMood createPassengerMoodFromString(EDataType eDataType,
+			String initialValue) {
 		PassengerMood result = PassengerMood.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + initialValue
+					+ "' is not a valid enumerator of '" + eDataType.getName()
+					+ "'");
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public String convertPassengerMoodToString(EDataType eDataType, Object instanceValue) {
+	public String convertPassengerMoodToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public LuggageSize createLuggageSizeFromString(EDataType eDataType, String initialValue) {
+	public LuggageSize createLuggageSizeFromString(EDataType eDataType,
+			String initialValue) {
 		LuggageSize result = LuggageSize.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + initialValue
+					+ "' is not a valid enumerator of '" + eDataType.getName()
+					+ "'");
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public String convertLuggageSizeToString(EDataType eDataType, Object instanceValue) {
+	public String convertLuggageSizeToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public SortingStyle createSortingStyleFromString(EDataType eDataType, String initialValue) {
+	public SortingStyle createSortingStyleFromString(EDataType eDataType,
+			String initialValue) {
 		SortingStyle result = SortingStyle.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + initialValue
+					+ "' is not a valid enumerator of '" + eDataType.getName()
+					+ "'");
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public String convertSortingStyleToString(EDataType eDataType, Object instanceValue) {
+	public String convertSortingStyleToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Sex createSexFromString(EDataType eDataType, String initialValue) {
 		Sex result = Sex.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + initialValue
+					+ "' is not a valid enumerator of '" + eDataType.getName()
+					+ "'");
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public String convertSexToString(EDataType eDataType, Object instanceValue) {
+	public String convertSexToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CabinPackage getCabinPackage() {
-		return (CabinPackage)getEPackage();
+		return (CabinPackage) getEPackage();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */
@@ -494,4 +548,4 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 		return CabinPackage.eINSTANCE;
 	}
 
-} //CabinFactoryImpl
+} // CabinFactoryImpl

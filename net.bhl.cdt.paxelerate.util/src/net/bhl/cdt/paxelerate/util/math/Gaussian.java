@@ -12,8 +12,7 @@ public class Gaussian {
 
 	private static final int ITERATIONS = 10 ^ 9;
 
-	static ArrayList<Double> list = new ArrayList<Double>(),
-			avlist = new ArrayList<Double>();
+	static ArrayList<Double> list = new ArrayList<Double>(), avlist = new ArrayList<Double>();
 
 	private static double sumUp(ArrayList<Double> listlist) {
 		double counter = 0;
@@ -25,8 +24,7 @@ public class Gaussian {
 
 	private static void loop() {
 		for (int i = 1; i <= ITERATIONS; i++) {
-			list.add(GaussianRandom.gaussianRandom(100,
-					GaussOptions.PERCENT_99, 5));
+			list.add(GaussianRandom.gaussianRandom(100, GaussOptions.PERCENT_99, 5));
 		}
 		double value = average(list);
 		System.out.println("Average: " + value);

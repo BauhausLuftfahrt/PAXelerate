@@ -132,7 +132,8 @@ public class PassengerPropertyGenerator {
 				this.settings.getPercentageOfPassengersWithMediumLuggage(),
 				this.settings.getPercentageOfPassengersWithBigLuggage() };
 
-		if ((luggagemodel[0] + luggagemodel[1] + luggagemodel[2] + luggagemodel[3]) == 0) {
+		if ((luggagemodel[0] + luggagemodel[1] + luggagemodel[2]
+				+ luggagemodel[3]) == 0) {
 			luggagemodel[0] = 100;
 
 			System.out.println("CAUTION, ERROR IN LUGGAGE DISTRIBUTION.");

@@ -51,7 +51,8 @@ public class DrawCabinCommand extends CDTCommand {
 	 */
 	public DrawCabinCommand(Cabin cabin) {
 		this.cabin = cabin;
-		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
+		logger = Platform
+				.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
 	}
 
 	/**
@@ -78,7 +79,8 @@ public class DrawCabinCommand extends CDTCommand {
 				settings.getPercentageOfPassengersWithMediumLuggage(),
 				settings.getPercentageOfPassengersWithBigLuggage() };
 
-		if ((luggagemodel[0] + luggagemodel[1] + luggagemodel[2] + luggagemodel[3]) == 0) {
+		if ((luggagemodel[0] + luggagemodel[1] + luggagemodel[2]
+				+ luggagemodel[3]) == 0) {
 			cabin.getSimulationSettings()
 					.setPercentageOfPassengersWithNoLuggage(100);
 		}
@@ -96,7 +98,8 @@ public class DrawCabinCommand extends CDTCommand {
 		propertyViewPart = ShouldSoonBeDeletedWhenSolved.getPropertyView();
 
 		for (String str : errorStrings) {
-			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.paxelerate.model", str));
+			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.paxelerate.model",
+					str));
 		}
 		try {
 			propertyViewPart.updateUI(cabin);
@@ -165,11 +168,11 @@ public class DrawCabinCommand extends CDTCommand {
 
 			if (passenger.getSeat() != seat.getId()) {
 				passenger.setSeat(seat.getId());
-				passenger.setName(passenger.getId() + " (" + seat.getName()
-						+ ")");
+				passenger.setName(
+						passenger.getId() + " (" + seat.getName() + ")");
 			}
-			passenger.setTravelClass(ModelHelper.getParent(TravelClass.class,
-					seat));
+			passenger.setTravelClass(
+					ModelHelper.getParent(TravelClass.class, seat));
 			passenger.setStartBoardingAfterDelay(i * 60 / passengersPerMinute);
 			i++;
 		}
@@ -210,8 +213,7 @@ public class DrawCabinCommand extends CDTCommand {
 	private Boolean checkCabinOutOfBounds() {
 		for (PhysicalObject object : ModelHelper.getChildrenByClass(cabin,
 				PhysicalObject.class)) {
-			if (object.getXPosition() < 0
-					|| object.getYPosition() < 0
+			if (object.getXPosition() < 0 || object.getYPosition() < 0
 					|| (object.getXPosition() + object.getXDimension()) > cabin
 							.getCabinWidth()
 					|| (object.getYPosition() + object.getYDimension()) > cabin

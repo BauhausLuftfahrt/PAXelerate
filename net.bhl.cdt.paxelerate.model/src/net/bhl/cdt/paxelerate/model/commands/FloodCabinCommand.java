@@ -42,10 +42,11 @@ public class FloodCabinCommand extends CDTCommand {
 	public FloodCabinCommand(Cabin cabin) {
 		this.cabin = cabin;
 	}
-	
+
 	public void runFrame(final int value) {
-		final Vector dimensions = new Vector2D(cabin.getCabinWidth()
-				/ cabin.getScale(), cabin.getCabinLength() / cabin.getScale());
+		final Vector dimensions = new Vector2D(
+				cabin.getCabinWidth() / cabin.getScale(),
+				cabin.getCabinLength() / cabin.getScale());
 		ObstacleMap obstaclemap = new ObstacleMap(cabin);
 		final AreaMap areamap = new AreaMap(dimensions, obstaclemap);
 		SwingUtilities.invokeLater(new Runnable() {

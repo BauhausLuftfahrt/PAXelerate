@@ -2,7 +2,6 @@
  */
 package net.bhl.cdt.paxelerate.model.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -26,23 +25,18 @@ import net.bhl.cdt.paxelerate.model.CabinPackage;
 import net.bhl.cdt.paxelerate.model.Door;
 
 /**
- * This is the item provider adapter for a {@link net.bhl.cdt.paxelerate.model.Door} object.
- * <!-- begin-user-doc -->
+ * This is the item provider adapter for a
+ * {@link net.bhl.cdt.paxelerate.model.Door} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
-public class DoorItemProvider 
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+public class DoorItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This constructs an instance from a factory and a notifier. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DoorItemProvider(AdapterFactory adapterFactory) {
@@ -50,9 +44,9 @@ public class DoorItemProvider
 	}
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This returns the property descriptors for the adapted class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -72,163 +66,115 @@ public class DoorItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the YPosition feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds a property descriptor for the YPosition feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addYPositionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Door_yPosition_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Door_yPosition_feature", "_UI_Door_type"),
-				 CabinPackage.Literals.DOOR__YPOSITION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Door_yPosition_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Door_yPosition_feature", "_UI_Door_type"),
+						CabinPackage.Literals.DOOR__YPOSITION, true, false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the On Both Sides feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds a property descriptor for the On Both Sides feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addOnBothSidesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Door_onBothSides_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Door_onBothSides_feature", "_UI_Door_type"),
-				 CabinPackage.Literals.DOOR__ON_BOTH_SIDES,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Door_onBothSides_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Door_onBothSides_feature",
+								"_UI_Door_type"),
+						CabinPackage.Literals.DOOR__ON_BOTH_SIDES, true, false, false,
+						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Width feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds a property descriptor for the Width feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addWidthPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Door_width_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Door_width_feature", "_UI_Door_type"),
-				 CabinPackage.Literals.DOOR__WIDTH,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Door_width_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Door_width_feature", "_UI_Door_type"),
+						CabinPackage.Literals.DOOR__WIDTH, true, false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Id feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds a property descriptor for the Id feature. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addIdPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Door_id_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Door_id_feature", "_UI_Door_type"),
-				 CabinPackage.Literals.DOOR__ID,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Door_id_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Door_id_feature", "_UI_Door_type"),
+						CabinPackage.Literals.DOOR__ID, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+						null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Number Of Simultaneous Passengers feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds a property descriptor for the Number Of Simultaneous Passengers
+	 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addNumberOfSimultaneousPassengersPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Door_numberOfSimultaneousPassengers_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Door_numberOfSimultaneousPassengers_feature", "_UI_Door_type"),
-				 CabinPackage.Literals.DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_Door_numberOfSimultaneousPassengers_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_Door_numberOfSimultaneousPassengers_feature",
+						"_UI_Door_type"),
+				CabinPackage.Literals.DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS, true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Is Active feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds a property descriptor for the Is Active feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addIsActivePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Door_isActive_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Door_isActive_feature", "_UI_Door_type"),
-				 CabinPackage.Literals.DOOR__IS_ACTIVE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Door_isActive_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Door_isActive_feature", "_UI_Door_type"),
+						CabinPackage.Literals.DOOR__IS_ACTIVE, true, false, false,
+						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Waiting Passengers feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds a property descriptor for the Waiting Passengers feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addWaitingPassengersPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Door_waitingPassengers_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Door_waitingPassengers_feature", "_UI_Door_type"),
-				 CabinPackage.Literals.DOOR__WAITING_PASSENGERS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Door_waitingPassengers_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Door_waitingPassengers_feature",
+								"_UI_Door_type"),
+						CabinPackage.Literals.DOOR__WAITING_PASSENGERS, true, false, true, null, null, null));
 	}
 
 	/**
-	 * This returns Door.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This returns Door.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -237,23 +183,23 @@ public class DoorItemProvider
 	}
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This returns the label text for the adapted class. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		Door door = (Door)object;
+		Door door = (Door) object;
 		return getString("_UI_Door_type") + " " + door.getId();
 	}
-	
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This handles model notifications by calling {@link #updateChildren} to
+	 * update any cached children and by creating a viewer notification, which
+	 * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -261,23 +207,23 @@ public class DoorItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Door.class)) {
-			case CabinPackage.DOOR__YPOSITION:
-			case CabinPackage.DOOR__ON_BOTH_SIDES:
-			case CabinPackage.DOOR__WIDTH:
-			case CabinPackage.DOOR__ID:
-			case CabinPackage.DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS:
-			case CabinPackage.DOOR__IS_ACTIVE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case CabinPackage.DOOR__YPOSITION:
+		case CabinPackage.DOOR__ON_BOTH_SIDES:
+		case CabinPackage.DOOR__WIDTH:
+		case CabinPackage.DOOR__ID:
+		case CabinPackage.DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS:
+		case CabinPackage.DOOR__IS_ACTIVE:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
+	 * describing the children that can be created under this object. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -286,9 +232,9 @@ public class DoorItemProvider
 	}
 
 	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Return the resource locator for this item provider's resources. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

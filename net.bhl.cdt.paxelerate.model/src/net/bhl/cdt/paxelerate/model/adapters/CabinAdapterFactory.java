@@ -14,7 +14,8 @@ public class CabinAdapterFactory implements IAdapterFactory {
 
 	@Override
 	public Object getAdapter(Object adaptableObject, Class adapterType) {
-		if (adapterType == IPropertySource.class && adaptableObject instanceof Cabin) {
+		if (adapterType == IPropertySource.class
+				&& adaptableObject instanceof Cabin) {
 			return new CabinPropertySource((Cabin) adaptableObject);
 		}
 		return null;

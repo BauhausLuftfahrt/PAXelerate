@@ -97,7 +97,8 @@ public class Agent extends Subject implements Runnable {
 	 *            the scale of the simulation
 	 */
 	public Agent(Passenger passenger, Vector start, Vector goal,
-			CostMap costmap, AgentMode mode, Passenger thePassengerILetInTheRow) {
+			CostMap costmap, AgentMode mode,
+			Passenger thePassengerILetInTheRow) {
 
 		/* assign the initializer values to the objects values */
 		this.mode = mode;
@@ -117,8 +118,8 @@ public class Agent extends Subject implements Runnable {
 
 		// this.agentMood = new AgressiveMood(this);
 
-		defaultPassengerArea = new int[(int) (passenger.getWidth() / scale)][(int) (passenger
-				.getDepth() / scale)];
+		defaultPassengerArea = new int[(int) (passenger.getWidth()
+				/ scale)][(int) (passenger.getDepth() / scale)];
 		for (int i = 0; i < (int) (passenger.getWidth() / scale); i++) {
 			for (int j = 0; j < (int) (passenger.getDepth() / scale); j++) {
 				defaultPassengerArea[i][j] = 1;
@@ -214,7 +215,8 @@ public class Agent extends Subject implements Runnable {
 		// System.out.println("pos: " + position / scale + ", range: " + range
 		// + ", my:" + desiredPosition.getY());
 		// }
-		if ((int) Math.abs(desiredPosition.getY() - position / scale) == range) {
+		if ((int) Math
+				.abs(desiredPosition.getY() - position / scale) == range) {
 			return true;
 		}
 		return false;
@@ -251,7 +253,9 @@ public class Agent extends Subject implements Runnable {
 	private synchronized void blockArea(Vector vector, boolean occupy,
 			boolean rotateOnly, Integer rotation) {
 
-		/* switch the property depending on whether a node is blocked or release */
+		/*
+		 * switch the property depending on whether a node is blocked or release
+		 */
 		Property property = Property.DEFAULT;
 
 		if (occupy) {
@@ -262,8 +266,8 @@ public class Agent extends Subject implements Runnable {
 		 * check the possibility that the node is already blocked by an agent.
 		 * Normally this should never happen.
 		 */
-		if (SimulationHandler.getMap().getNode(vector).getProperty() == Property.AGENT
-				&& occupy) {
+		if (SimulationHandler.getMap().getNode(vector)
+				.getProperty() == Property.AGENT && occupy) {
 
 			/* Print out if there is an overlap */
 			// System.out.println("Node already blocked. Error!");
@@ -322,8 +326,8 @@ public class Agent extends Subject implements Runnable {
 			for (int y = -dim; y <= dim; y++) {
 
 				/* the location currently under investigation */
-				Vector location = new Vector2D(vector.getX() + x, vector.getY()
-						+ y);
+				Vector location = new Vector2D(vector.getX() + x,
+						vector.getY() + y);
 
 				/* if the point is within the bounds of the passenger area */
 				if (x + dim < adaptedPassengerArea.length
@@ -479,8 +483,8 @@ public class Agent extends Subject implements Runnable {
 				y = -(y + 1);
 			}
 
-			Node checkNode = SimulationHandler.getMap().getNodeByCoordinate(
-					vector.getX() + x, vector.getY() + y);
+			Node checkNode = SimulationHandler.getMap()
+					.getNodeByCoordinate(vector.getX() + x, vector.getY() + y);
 			if (checkNode != null) {
 				if (checkNode.getProperty() == Property.AGENT) {
 
@@ -500,7 +504,9 @@ public class Agent extends Subject implements Runnable {
 				}
 				if (checkNode.getProperty() == Property.OBSTACLE) {
 					// System.out
-					// .println("###### !OVERLAPPING OF AGENT AND OBSTACLE! ###### !AGENT - nodeBlockedBySomeoneElseOrObstacle()! ######");
+					// .println("###### !OVERLAPPING OF AGENT AND OBSTACLE!
+					// ###### !AGENT - nodeBlockedBySomeoneElseOrObstacle()!
+					// ######");
 					// if (isInYRangeSmaller(
 					// passenger.getSeatRef().getYPosition(), 5, false)) {
 					return null;
@@ -564,7 +570,9 @@ public class Agent extends Subject implements Runnable {
 				 */
 				if (i != 0) {
 
-					/* the current position is the last taken step in the path */
+					/*
+					 * the current position is the last taken step in the path
+					 */
 					currentPosition = path.get(i - 1).getPosition();
 
 				}
@@ -593,7 +601,9 @@ public class Agent extends Subject implements Runnable {
 					/* Perform the correct behavior */
 					collision.handle();
 
-					/* the main loop is quit, if there is a new path calculated */
+					/*
+					 * the main loop is quit, if there is a new path calculated
+					 */
 					if (exitTheMainLoop) {
 
 						if (SimulationHandler.DEVELOPER_MODE) {
@@ -617,7 +627,8 @@ public class Agent extends Subject implements Runnable {
 					rotateAgent(90);
 
 					/* sleep the thread as long as the luggage is stowed */
-					Thread.sleep(AStarTools.time(passenger.getLuggageStowTime()));
+					Thread.sleep(
+							AStarTools.time(passenger.getLuggageStowTime()));
 
 					/* notify everyone that the luggage is now stowed */
 					alreadyStowed = true;
@@ -686,30 +697,30 @@ public class Agent extends Subject implements Runnable {
 						passenger.setPositionY(desiredPosition.getY() * scale);
 
 						/* submit the agents orientation */
-						passenger.setOrientationInDegree(AgentFunctions
-								.getRotation(this));
+						passenger.setOrientationInDegree(
+								AgentFunctions.getRotation(this));
 
 						/* catch possible errors */
 					} catch (ConcurrentModificationException e) {
-						System.out
-								.println("###### !ConcurrentModificationException ERROR! ###### !AGENT - setPosition()! ######");
+						System.out.println(
+								"###### !ConcurrentModificationException ERROR! ###### !AGENT - setPosition()! ######");
 					} catch (ArrayIndexOutOfBoundsException a) {
-						System.out
-								.println("###### !ArrayIndexOutOfBoundsException ERROR! ###### !AGENT - setPosition()! ######");
+						System.out.println(
+								"###### !ArrayIndexOutOfBoundsException ERROR! ###### !AGENT - setPosition()! ######");
 
 					}
 
 					/* sleep as long as one step takes */
 					Thread.sleep((int) (1000 / SimulationHandler.getCabin()
-							.getSimulationSettings().getSimulationSpeedFactor() / (passenger
-							.getWalkingSpeed() * 100 / scale)));
+							.getSimulationSettings().getSimulationSpeedFactor()
+							/ (passenger.getWalkingSpeed() * 100 / scale)));
 				}
 			}
 
 			/* catch possible interruptions */
 		} catch (InterruptedException e) {
-			System.out
-					.println("###### !ArrayIndexOutOfBoundsException ERROR! ###### !AGENT - followPath()! ######");
+			System.out.println(
+					"###### !ArrayIndexOutOfBoundsException ERROR! ###### !AGENT - followPath()! ######");
 			/* end this thread */
 			this.getThread().interrupt();
 			System.out.println("thread is now interrupted");
@@ -720,9 +731,10 @@ public class Agent extends Subject implements Runnable {
 		for (Passenger pax : SimulationHandler.getCabin().getPassengers()) {
 			if (!pax.isIsSeated()) {
 				if (pax.getId() != passenger.getId()) {
-					if (isInYRangeSmaller((int) (SimulationHandler
-							.getAgentByPassenger(pax).getCurrentPosition()
-							.getY() * scale), 10, true)) {
+					if (isInYRangeSmaller(
+							(int) (SimulationHandler.getAgentByPassenger(pax)
+									.getCurrentPosition().getY() * scale),
+							10, true)) {
 						return true;
 					}
 				}
@@ -826,9 +838,8 @@ public class Agent extends Subject implements Runnable {
 			stopwatch.stop();
 
 			/* the boarding time is then submitted back to the passenger */
-			passenger
-					.setBoardingTime((int) (stopwatch.getElapsedTimeSecs() * SimulationHandler
-							.getCabin().getSimulationSettings()
+			passenger.setBoardingTime((int) (stopwatch.getElapsedTimeSecs()
+					* SimulationHandler.getCabin().getSimulationSettings()
 							.getSimulationSpeedFactor()));
 
 			/* the number of interrupts is submitted to the passenger */
@@ -901,15 +912,16 @@ public class Agent extends Subject implements Runnable {
 			pathlist.add(path);
 			if (inDefaultBoardingMode()) {
 				/* sleep the thread as long as the boarding delay requires it */
-				Thread.sleep(AStarTools.time(passenger
-						.getStartBoardingAfterDelay()));
+				Thread.sleep(AStarTools
+						.time(passenger.getStartBoardingAfterDelay()));
 
 				/*
 				 * then try to spawn the passenger but check if there is enough
 				 * space in front of the cabin door
 				 */
 
-				while (SimulationHandler.CabinAccessGranted(passenger) == false) {
+				while (SimulationHandler
+						.CabinAccessGranted(passenger) == false) {
 					Thread.sleep(10);
 				}
 			}
@@ -929,7 +941,9 @@ public class Agent extends Subject implements Runnable {
 			 */
 			while (!goalReached()) {
 
-				/* this is run again if the agent detects obstacles in his path */
+				/*
+				 * this is run again if the agent detects obstacles in his path
+				 */
 				followPath();
 			}
 
@@ -952,11 +966,9 @@ public class Agent extends Subject implements Runnable {
 
 				for (int i = 0; i < cabinBlocker.getCabinWidth()
 						/ cabinBlocker.getScale(); i++) {
-					Node node = SimulationHandler.getMap()
-							.getNodeByCoordinate(
-									i,
-									(int) (position / cabinBlocker.getScale())
-											- offset);
+					Node node = SimulationHandler.getMap().getNodeByCoordinate(
+							i, (int) (position / cabinBlocker.getScale())
+									- offset);
 					if (node.getProperty() != Property.OBSTACLE) {
 						node.setProperty(Property.AGENT, passenger);
 						// node.setHidden();
@@ -998,11 +1010,9 @@ public class Agent extends Subject implements Runnable {
 				for (int i = 0; i < cabinBlocker.getCabinWidth()
 						/ cabinBlocker.getScale(); i++) {
 
-					Node node = SimulationHandler.getMap()
-							.getNodeByCoordinate(
-									i,
-									(int) (position / cabinBlocker.getScale())
-											- offset);
+					Node node = SimulationHandler.getMap().getNodeByCoordinate(
+							i, (int) (position / cabinBlocker.getScale())
+									- offset);
 					if (node.getProperty() != Property.OBSTACLE) {
 						node.setProperty(Property.DEFAULT, passenger);
 					}
@@ -1054,8 +1064,8 @@ public class Agent extends Subject implements Runnable {
 
 	public void remove() {
 		if (performFinalElements() == true) {
-			System.out.println("Passenger " + passenger.getId()
-					+ " is now force-seated!");
+			System.out.println(
+					"Passenger " + passenger.getId() + " is now force-seated!");
 		} else {
 			System.out.println("Passenger is already seated!");
 		}

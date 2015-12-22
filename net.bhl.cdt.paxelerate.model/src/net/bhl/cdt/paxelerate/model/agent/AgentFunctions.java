@@ -27,12 +27,12 @@ public class AgentFunctions {
 		Row row = agent.getPassenger().getSeatRef().getRow();
 		for (Seat checkSeat : row.getSeats()) {
 			if (checkSeat.isOccupied()) {
-				if (sameSideOfAisle(checkSeat, agent.getPassenger()
-						.getSeatRef())) {
-					if (otherSeatCloserToAisle(checkSeat, agent.getPassenger()
-							.getSeatRef())) {
-						agent.otherPassengersInRowBlockingMe.add(checkSeat
-								.getPassenger());
+				if (sameSideOfAisle(checkSeat,
+						agent.getPassenger().getSeatRef())) {
+					if (otherSeatCloserToAisle(checkSeat,
+							agent.getPassenger().getSeatRef())) {
+						agent.otherPassengersInRowBlockingMe
+								.add(checkSeat.getPassenger());
 						// System.out.println("SomeOne in Row "
 						// + row.getRowNumber());
 						return true;
@@ -62,10 +62,11 @@ public class AgentFunctions {
 	}
 
 	// TODO: this only works for a ONE AISLE configuration!
-	public static boolean otherSeatCloserToAisle(Seat otherSeat, Seat thisSeat) {
+	public static boolean otherSeatCloserToAisle(Seat otherSeat,
+			Seat thisSeat) {
 
-		int middleOfCabinX = (int) (ModelHelper
-				.getParent(Cabin.class, thisSeat).getCabinWidth() / 2.0);
+		int middleOfCabinX = (int) (ModelHelper.getParent(Cabin.class, thisSeat)
+				.getCabinWidth() / 2.0);
 
 		int otherSeatToAisleDistanceX = Math.abs(otherSeat.getXPosition()
 				+ otherSeat.getXDimension() / 2 - middleOfCabinX);
@@ -87,9 +88,11 @@ public class AgentFunctions {
 	public static int getRotation(Agent agent) {
 
 		/* get the angle in radian from -Pi to Pi, so zero is EAST */
-		double theta = Math.atan2(agent.getDesiredPosition().getY()
-				- agent.getCurrentPosition().getY(), agent.getDesiredPosition()
-				.getX() - agent.getCurrentPosition().getX());
+		double theta = Math.atan2(
+				agent.getDesiredPosition().getY()
+						- agent.getCurrentPosition().getY(),
+				agent.getDesiredPosition().getX()
+						- agent.getCurrentPosition().getX());
 
 		/* rotate the angle by 90 degrees so that zero is NORTH */
 		theta += Math.PI / 2.0;
@@ -108,12 +111,11 @@ public class AgentFunctions {
 		boolean detectedBlocker = false;
 		Door door = passenger.getDoor();
 		for (int i = 0; i <= PIXELS_FOR_SCANNING_AT_DOOR; i++) {
-			for (int j = 0; j < (int) (door.getWidth() / SimulationHandler
-					.getCabin().getScale()); j++) {
-				Node node = SimulationHandler.getMap().getNodeByCoordinate(
-						i,
-						(int) (door.getYPosition() / SimulationHandler
-								.getCabin().getScale()) + j);
+			for (int j = 0; j < (int) (door.getWidth()
+					/ SimulationHandler.getCabin().getScale()); j++) {
+				Node node = SimulationHandler.getMap().getNodeByCoordinate(i,
+						(int) (door.getYPosition()
+								/ SimulationHandler.getCabin().getScale()) + j);
 				if (node.getProperty() == Property.AGENT) {
 					if (node.getPassenger().getId() != passenger.getId()) {
 						detectedBlocker = true;
@@ -135,10 +137,12 @@ public class AgentFunctions {
 	 */
 	public static CostMap updateCostmap(Agent agent) {
 
-		/* The cost map is flooded from the agents current location to his seat */
-		CostMap costmap = new CostMap(SimulationHandler.getMap()
-				.getDimensions(), agent.getStart(), SimulationHandler.getMap(),
-				false, agent, true);
+		/*
+		 * The cost map is flooded from the agents current location to his seat
+		 */
+		CostMap costmap = new CostMap(
+				SimulationHandler.getMap().getDimensions(), agent.getStart(),
+				SimulationHandler.getMap(), false, agent, true);
 
 		/*
 		 * define the square dimension around the passenger that should be
@@ -148,14 +152,14 @@ public class AgentFunctions {
 		int squareDimension = 10;
 
 		/* this is the expansion in the x Direction */
-		Vector xVector = new Vector2D(agent.getCurrentPosition().getX()
-				- squareDimension, agent.getCurrentPosition().getX()
-				+ squareDimension);
+		Vector xVector = new Vector2D(
+				agent.getCurrentPosition().getX() - squareDimension,
+				agent.getCurrentPosition().getX() + squareDimension);
 
 		/* this is the expansion in the x Direction */
-		Vector yVector = new Vector2D(agent.getCurrentPosition().getY()
-				- squareDimension, agent.getCurrentPosition().getY()
-				+ squareDimension);
+		Vector yVector = new Vector2D(
+				agent.getCurrentPosition().getY() - squareDimension,
+				agent.getCurrentPosition().getY() + squareDimension);
 
 		/*
 		 * The first value of the vectors above represents the beginning of the
@@ -163,8 +167,10 @@ public class AgentFunctions {
 		 */
 
 		/* then there is cost assigned to an area around the other agents */
-		for (int xCoordinate = xVector.getX(); xCoordinate < xVector.getY(); xCoordinate++) {
-			for (int yCoordinate = yVector.getX(); yCoordinate < yVector.getY(); yCoordinate++) {
+		for (int xCoordinate = xVector.getX(); xCoordinate < xVector
+				.getY(); xCoordinate++) {
+			for (int yCoordinate = yVector.getX(); yCoordinate < yVector
+					.getY(); yCoordinate++) {
 
 				/* prevent out of bounds exceptions */
 				if (xCoordinate > 0 && yCoordinate > 0) {
@@ -184,10 +190,10 @@ public class AgentFunctions {
 
 							/* the current agents position is excluded here! */
 							if (!Func.vectorsAreEqual(
-									SimulationHandler
-											.getMap()
+									SimulationHandler.getMap()
 											.getNodeByCoordinate(xCoordinate,
-													yCoordinate).getPosition(),
+													yCoordinate)
+											.getPosition(),
 									agent.getCurrentPosition())) {
 
 								/* the surrounding points are calculated */

@@ -5,15 +5,15 @@ package net.bhl.cdt.paxelerate.model;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Partition</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Partition</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Partition#getType <em>Type</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Partition#getPostitionAfterRow <em>Postition After Row</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.Partition#getType <em>Type</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.Partition#getPostitionAfterRow
+ * <em>Postition After Row</em>}</li>
  * </ul>
  * </p>
  *
@@ -23,14 +23,16 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Partition extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' attribute.
-	 * The literals are from the enumeration {@link net.bhl.cdt.paxelerate.model.PartitionType}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Type</b></em>' attribute. The literals
+	 * are from the enumeration
+	 * {@link net.bhl.cdt.paxelerate.model.PartitionType}. <!-- begin-user-doc
+	 * -->
 	 * <p>
-	 * If the meaning of the '<em>Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Type</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see net.bhl.cdt.paxelerate.model.PartitionType
 	 * @see #setType(PartitionType)
@@ -41,10 +43,12 @@ public interface Partition extends EObject {
 	PartitionType getType();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Partition#getType <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' attribute.
+	 * Sets the value of the '
+	 * {@link net.bhl.cdt.paxelerate.model.Partition#getType <em>Type</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Type</em>' attribute.
 	 * @see net.bhl.cdt.paxelerate.model.PartitionType
 	 * @see #getType()
 	 * @generated
@@ -55,10 +59,11 @@ public interface Partition extends EObject {
 	 * Returns the value of the '<em><b>Postition After Row</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Postition After Row</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Postition After Row</em>' attribute isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Postition After Row</em>' attribute.
 	 * @see #setPostitionAfterRow(int)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPartition_PostitionAfterRow()
@@ -68,10 +73,13 @@ public interface Partition extends EObject {
 	int getPostitionAfterRow();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Partition#getPostitionAfterRow <em>Postition After Row</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Postition After Row</em>' attribute.
+	 * Sets the value of the '
+	 * {@link net.bhl.cdt.paxelerate.model.Partition#getPostitionAfterRow
+	 * <em>Postition After Row</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Postition After Row</em>' attribute.
 	 * @see #getPostitionAfterRow()
 	 * @generated
 	 */

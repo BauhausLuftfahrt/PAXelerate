@@ -19,12 +19,12 @@ import org.eclipse.ui.splash.AbstractSplashHandler;
  */
 public class BrowserSplashHandler extends AbstractSplashHandler {
 
-	private final static String F_BROWSER_URL = "http://www.google.com"; //NON-NLS-1
-	
+	private final static String F_BROWSER_URL = "http://www.google.com"; // NON-NLS-1
+
 	private Browser fBrowser;
-	
+
 	private Button fButton;
-	
+
 	private boolean fClose;
 
 	/**
@@ -35,12 +35,13 @@ public class BrowserSplashHandler extends AbstractSplashHandler {
 		fButton = null;
 		fClose = false;
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.ui.internal.splash.AbstractSplashHandler#init(org.eclipse.swt.widgets.Shell,
-	 *      org.eclipse.ui.IWorkbench)
+	 * @see
+	 * org.eclipse.ui.internal.splash.AbstractSplashHandler#init(org.eclipse.swt
+	 * .widgets.Shell, org.eclipse.ui.IWorkbench)
 	 */
 	public void init(final Shell splash) {
 		// Store the shell
@@ -53,11 +54,11 @@ public class BrowserSplashHandler extends AbstractSplashHandler {
 		createUIListeners();
 		// Force the UI to layout
 		splash.layout(true);
-		// Keep the splash screen visible and prevent the RCP application from 
+		// Keep the splash screen visible and prevent the RCP application from
 		// loading until the close button is clicked.
 		doEventLoop();
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -69,7 +70,7 @@ public class BrowserSplashHandler extends AbstractSplashHandler {
 			}
 		}
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -88,10 +89,11 @@ public class BrowserSplashHandler extends AbstractSplashHandler {
 			public void widgetDefaultSelected(SelectionEvent e) {
 				// NO-OP
 			}
+
 			public void widgetSelected(SelectionEvent e) {
 				fClose = true;
 			}
-		});		
+		});
 	}
 
 	/**
@@ -102,15 +104,16 @@ public class BrowserSplashHandler extends AbstractSplashHandler {
 			public void changed(ProgressEvent event) {
 				// NO-OP
 			}
+
 			public void completed(ProgressEvent event) {
-				// Only show the UI when the URL is fully loaded into the 
+				// Only show the UI when the URL is fully loaded into the
 				// browser
 				fBrowser.setVisible(true);
 				fButton.setVisible(true);
 			}
-		});		
+		});
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -127,13 +130,13 @@ public class BrowserSplashHandler extends AbstractSplashHandler {
 	private void createUIButton() {
 		Shell splash = getSplash();
 		fButton = new Button(splash, SWT.PUSH);
-		fButton.setText("Close"); //NON-NLS-1
+		fButton.setText("Close"); // NON-NLS-1
 		fButton.setVisible(false);
 		// Configure the button bounds
-		configureUIButtonBounds();		
+		configureUIButtonBounds();
 		// Configure layout data
 		GridData data = new GridData(SWT.CENTER, SWT.FILL, false, false);
-		data.widthHint = 80;			
+		data.widthHint = 80;
 		fButton.setLayoutData(data);
 	}
 
@@ -142,18 +145,18 @@ public class BrowserSplashHandler extends AbstractSplashHandler {
 	 */
 	private void configureUIButtonBounds() {
 		Shell splash = getSplash();
-		
+
 		int button_x_coord = (splash.getSize().x / 2)
 				- (fButton.computeSize(SWT.DEFAULT, SWT.DEFAULT).x / 2);
 		int button_y_coord = splash.getSize().y
 				- fButton.computeSize(SWT.DEFAULT, SWT.DEFAULT).y;
 		int button_x_width = splash.getSize().x;
 		int button_y_width = fButton.computeSize(SWT.DEFAULT, SWT.DEFAULT).y;
-		
+
 		fButton.setBounds(button_x_coord, button_y_coord, button_x_width,
-				button_y_width);		
-	}	
-	
+				button_y_width);
+	}
+
 	/**
 	 * 
 	 */

@@ -5,14 +5,14 @@ package net.bhl.cdt.paxelerate.model;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Crew Seat</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Crew Seat</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link net.bhl.cdt.paxelerate.model.CrewSeat#getSeatNumber <em>Seat Number</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.CrewSeat#getSeatNumber
+ * <em>Seat Number</em>}</li>
  * </ul>
  * </p>
  *
@@ -22,13 +22,14 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface CrewSeat extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Seat Number</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Seat Number</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Seat Number</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Seat Number</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Seat Number</em>' attribute.
 	 * @see #setSeatNumber(int)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getCrewSeat_SeatNumber()
@@ -38,10 +39,13 @@ public interface CrewSeat extends EObject {
 	int getSeatNumber();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.CrewSeat#getSeatNumber <em>Seat Number</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Seat Number</em>' attribute.
+	 * Sets the value of the '
+	 * {@link net.bhl.cdt.paxelerate.model.CrewSeat#getSeatNumber
+	 * <em>Seat Number</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Seat Number</em>' attribute.
 	 * @see #getSeatNumber()
 	 * @generated
 	 */

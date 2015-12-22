@@ -12,10 +12,12 @@ import net.bhl.cdt.paxelerate.model.astar.Node;
 
 public class Exporter {
 
-	private static final String FOLDER_NAME = "paxelerate", FILE_PATH = System
-			.getProperty("user.home") + "/Documents/" + FOLDER_NAME + "/";
+	private static final String FOLDER_NAME = "paxelerate",
+			FILE_PATH = System.getProperty("user.home") + "/Documents/"
+					+ FOLDER_NAME + "/";
 
-	public static boolean generateHeatmapFile(String filename, AreaMap areamap) {
+	public static boolean generateHeatmapFile(String filename,
+			AreaMap areamap) {
 		try {
 			FileWriter writer = new FileWriter(FILE_PATH + filename + ".xls");
 			for (ArrayList<Node> nodeList : areamap.getNodes()) {
@@ -85,8 +87,8 @@ public class Exporter {
 		}
 	}
 
-	private static void writeHeadline(FileWriter writer) throws IOException,
-			FileNotFoundException {
+	private static void writeHeadline(FileWriter writer)
+			throws IOException, FileNotFoundException {
 		writer.append("Type");
 		writer.append('\t');
 		writer.append("Maximum Value F");
@@ -112,8 +114,8 @@ public class Exporter {
 	}
 
 	private static void writeGaussian(FileWriter writer,
-			GaussianStorage storage, String name) throws IOException,
-			FileNotFoundException {
+			GaussianStorage storage, String name)
+					throws IOException, FileNotFoundException {
 		writer.append(name);
 		writer.append('\t');
 		writer.append(str(storage.getMaximum(Sex.FEMALE)));

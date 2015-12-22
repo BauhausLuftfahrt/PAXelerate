@@ -24,8 +24,8 @@ public class Node implements Comparable<Node> {
 	private Node north, northEast, east, southEast, south, southWest, west,
 			northWest, previousNode;
 	private ArrayList<Node> neighborList;
-	private int distanceFromStart, costFromStart, cost,
-			numberOfOccupations = 0, numberOfInterrupts = 0;
+	private int distanceFromStart, costFromStart, cost, numberOfOccupations = 0,
+			numberOfInterrupts = 0;
 
 	private Vector position = new Vector2D(0, 0);
 	private Property property;

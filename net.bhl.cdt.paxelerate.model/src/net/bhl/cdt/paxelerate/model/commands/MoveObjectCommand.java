@@ -76,7 +76,8 @@ public class MoveObjectCommand extends CDTCommand {
 		this.lavatorylist = lavatorylist;
 		this.curtainlist = curtainlist;
 		this.cabin = cabin;
-		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
+		logger = Platform
+				.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
 	}
 
 	/**
@@ -142,10 +143,10 @@ public class MoveObjectCommand extends CDTCommand {
 			for (Galley galley : galleylist) {
 				for (Galley compareGalley : cabin.getGalleys()) {
 					if (galley.getId() == compareGalley.getId()) {
-						galley.setXPosition(galley.getXPosition()
-								+ movementVector.getX());
-						galley.setYPosition(galley.getYPosition()
-								+ movementVector.getY());
+						galley.setXPosition(
+								galley.getXPosition() + movementVector.getX());
+						galley.setYPosition(
+								galley.getYPosition() + movementVector.getY());
 						if (scalingDesired) {
 							galley.setXDimension(scaleVector.getX());
 							galley.setYDimension(scaleVector.getY());
@@ -158,10 +159,12 @@ public class MoveObjectCommand extends CDTCommand {
 			for (Lavatory lavatory : lavatorylist) {
 				for (Lavatory compareLavatory : cabin.getLavatories()) {
 					if (lavatory.getId() == compareLavatory.getId()) {
-						compareLavatory.setXPosition(compareLavatory
-								.getXPosition() + movementVector.getX());
-						compareLavatory.setYPosition(compareLavatory
-								.getYPosition() + movementVector.getY());
+						compareLavatory
+								.setXPosition(compareLavatory.getXPosition()
+										+ movementVector.getX());
+						compareLavatory
+								.setYPosition(compareLavatory.getYPosition()
+										+ movementVector.getY());
 						if (scalingDesired) {
 							compareLavatory.setXDimension(scaleVector.getX());
 							compareLavatory.setYDimension(scaleVector.getY());
@@ -174,10 +177,12 @@ public class MoveObjectCommand extends CDTCommand {
 			for (Curtain curtain : curtainlist) {
 				for (Curtain compareCurtain : cabin.getCurtains()) {
 					if (curtain.getId() == compareCurtain.getId()) {
-						compareCurtain.setXPosition(compareCurtain
-								.getXPosition() + movementVector.getX());
-						compareCurtain.setYPosition(compareCurtain
-								.getYPosition() + movementVector.getY());
+						compareCurtain
+								.setXPosition(compareCurtain.getXPosition()
+										+ movementVector.getX());
+						compareCurtain
+								.setYPosition(compareCurtain.getYPosition()
+										+ movementVector.getY());
 						if (scalingDesired) {
 							compareCurtain.setXDimension(scaleVector.getX());
 							compareCurtain.setYDimension(scaleVector.getY());

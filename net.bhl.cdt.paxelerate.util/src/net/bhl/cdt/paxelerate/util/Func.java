@@ -71,13 +71,11 @@ public abstract class Func {
 	}
 
 	public static int GetScreenWorkingWidth() {
-		return java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment()
-				.getMaximumWindowBounds().width;
+		return java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
 	}
 
 	public static int GetScreenWorkingHeight() {
-		return java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment()
-				.getMaximumWindowBounds().height;
+		return java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height;
 	}
 
 	public static int roundToFive(int num) {
@@ -88,8 +86,7 @@ public abstract class Func {
 			return num + 5 - temp;
 	}
 
-	public static boolean PassengerIdAlreadyInList(int id,
-			ArrayList<Integer> list) {
+	public static boolean PassengerIdAlreadyInList(int id, ArrayList<Integer> list) {
 		for (int value : list) {
 			if (value == id) {
 				return true;

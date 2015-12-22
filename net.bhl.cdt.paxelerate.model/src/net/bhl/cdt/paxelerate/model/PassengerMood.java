@@ -9,19 +9,19 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Passenger Mood</b></em>',
- * and utility methods for working with them.
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration '
+ * <em><b>Passenger Mood</b></em>', and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassengerMood()
  * @model
  * @generated
  */
 public enum PassengerMood implements Enumerator {
 	/**
-	 * The '<em><b>Agressive</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Agressive</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #AGRESSIVE_VALUE
 	 * @generated
 	 * @ordered
@@ -29,9 +29,9 @@ public enum PassengerMood implements Enumerator {
 	AGRESSIVE(0, "agressive", "agressive"),
 
 	/**
-	 * The '<em><b>Passive</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Passive</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #PASSIVE_VALUE
 	 * @generated
 	 * @ordered
@@ -39,13 +39,13 @@ public enum PassengerMood implements Enumerator {
 	PASSIVE(1, "passive", "passive");
 
 	/**
-	 * The '<em><b>Agressive</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Agressive</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Agressive</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #AGRESSIVE
 	 * @model name="agressive"
 	 * @generated
@@ -54,13 +54,13 @@ public enum PassengerMood implements Enumerator {
 	public static final int AGRESSIVE_VALUE = 0;
 
 	/**
-	 * The '<em><b>Passive</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Passive</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Passive</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #PASSIVE
 	 * @model name="passive"
 	 * @generated
@@ -69,29 +69,27 @@ public enum PassengerMood implements Enumerator {
 	public static final int PASSIVE_VALUE = 1;
 
 	/**
-	 * An array of all the '<em><b>Passenger Mood</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * An array of all the '<em><b>Passenger Mood</b></em>' enumerators. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	private static final PassengerMood[] VALUES_ARRAY =
-		new PassengerMood[] {
-			AGRESSIVE,
-			PASSIVE,
-		};
+	private static final PassengerMood[] VALUES_ARRAY = new PassengerMood[] {
+			AGRESSIVE, PASSIVE, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Passenger Mood</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Passenger Mood</b></em>'
+	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public static final List<PassengerMood> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<PassengerMood> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Passenger Mood</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Passenger Mood</b></em>' literal with the specified
+	 * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static PassengerMood get(String literal) {
@@ -105,9 +103,9 @@ public enum PassengerMood implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Passenger Mood</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Passenger Mood</b></em>' literal with the specified
+	 * name. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static PassengerMood getByName(String name) {
@@ -121,44 +119,46 @@ public enum PassengerMood implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Passenger Mood</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Passenger Mood</b></em>' literal with the specified
+	 * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static PassengerMood get(int value) {
 		switch (value) {
-			case AGRESSIVE_VALUE: return AGRESSIVE;
-			case PASSIVE_VALUE: return PASSIVE;
+		case AGRESSIVE_VALUE:
+			return AGRESSIVE;
+		case PASSIVE_VALUE:
+			return PASSIVE;
 		}
 		return null;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private PassengerMood(int value, String name, String literal) {
@@ -168,41 +168,41 @@ public enum PassengerMood implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string
+	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
 		return literal;
 	}
-	
-} //PassengerMood
+
+} // PassengerMood

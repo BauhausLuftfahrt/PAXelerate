@@ -7,16 +7,17 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Row</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Row</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Row#getSeats <em>Seats</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Row#getRowNumber <em>Row Number</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Row#isOffsetInRow <em>Offset In Row</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.Row#getSeats <em>Seats</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.Row#getRowNumber <em>Row Number</em>}
+ * </li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.Row#isOffsetInRow
+ * <em>Offset In Row</em>}</li>
  * </ul>
  * </p>
  *
@@ -26,14 +27,15 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Row extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Seats</b></em>' containment reference list.
-	 * The list contents are of type {@link net.bhl.cdt.paxelerate.model.Seat}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Seats</b></em>' containment reference
+	 * list. The list contents are of type
+	 * {@link net.bhl.cdt.paxelerate.model.Seat}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Seats</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Seats</em>' containment reference list isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Seats</em>' containment reference list.
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getRow_Seats()
 	 * @model containment="true" required="true"
@@ -42,13 +44,14 @@ public interface Row extends EObject {
 	EList<Seat> getSeats();
 
 	/**
-	 * Returns the value of the '<em><b>Row Number</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Row Number</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Row Number</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Row Number</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Row Number</em>' attribute.
 	 * @see #setRowNumber(int)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getRow_RowNumber()
@@ -58,23 +61,26 @@ public interface Row extends EObject {
 	int getRowNumber();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Row#getRowNumber <em>Row Number</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Row Number</em>' attribute.
+	 * Sets the value of the '
+	 * {@link net.bhl.cdt.paxelerate.model.Row#getRowNumber <em>Row Number</em>}
+	 * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Row Number</em>' attribute.
 	 * @see #getRowNumber()
 	 * @generated
 	 */
 	void setRowNumber(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Offset In Row</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Offset In Row</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Offset In Row</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Offset In Row</em>' attribute.
 	 * @see #setOffsetInRow(boolean)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getRow_OffsetInRow()
@@ -84,10 +90,13 @@ public interface Row extends EObject {
 	boolean isOffsetInRow();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Row#isOffsetInRow <em>Offset In Row</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Offset In Row</em>' attribute.
+	 * Sets the value of the '
+	 * {@link net.bhl.cdt.paxelerate.model.Row#isOffsetInRow
+	 * <em>Offset In Row</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Offset In Row</em>' attribute.
 	 * @see #isOffsetInRow()
 	 * @generated
 	 */

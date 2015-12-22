@@ -8,9 +8,8 @@ import net.bhl.cdt.paxelerate.model.CabinPackage;
 import net.bhl.cdt.paxelerate.model.Galley;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Galley</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Galley</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
  *
@@ -18,8 +17,8 @@ import net.bhl.cdt.paxelerate.model.Galley;
  */
 public class GalleyImpl extends PhysicalObjectImpl implements Galley {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected GalleyImpl() {
@@ -27,8 +26,8 @@ public class GalleyImpl extends PhysicalObjectImpl implements Galley {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -36,4 +35,4 @@ public class GalleyImpl extends PhysicalObjectImpl implements Galley {
 		return CabinPackage.Literals.GALLEY;
 	}
 
-} //GalleyImpl
+} // GalleyImpl

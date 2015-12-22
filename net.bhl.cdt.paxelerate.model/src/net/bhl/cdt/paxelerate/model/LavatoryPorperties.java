@@ -9,19 +9,19 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Lavatory Porperties</b></em>',
- * and utility methods for working with them.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration '
+ * <em><b>Lavatory Porperties</b></em>', and utility methods for working with
+ * them. <!-- end-user-doc -->
+ * 
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getLavatoryPorperties()
  * @model
  * @generated
  */
 public enum LavatoryPorperties implements Enumerator {
 	/**
-	 * The '<em><b>XDimension</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>XDimension</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #XDIMENSION_VALUE
 	 * @generated
 	 * @ordered
@@ -29,9 +29,9 @@ public enum LavatoryPorperties implements Enumerator {
 	XDIMENSION(100, "xDimension", "xDimension"),
 
 	/**
-	 * The '<em><b>YDimension</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>YDimension</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #YDIMENSION_VALUE
 	 * @generated
 	 * @ordered
@@ -39,13 +39,13 @@ public enum LavatoryPorperties implements Enumerator {
 	YDIMENSION(300, "yDimension", "yDimension");
 
 	/**
-	 * The '<em><b>XDimension</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>XDimension</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>XDimension</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>XDimension</b></em>' literal object isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #XDIMENSION
 	 * @model name="xDimension"
 	 * @generated
@@ -54,13 +54,13 @@ public enum LavatoryPorperties implements Enumerator {
 	public static final int XDIMENSION_VALUE = 100;
 
 	/**
-	 * The '<em><b>YDimension</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>YDimension</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>YDimension</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>YDimension</b></em>' literal object isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #YDIMENSION
 	 * @model name="yDimension"
 	 * @generated
@@ -70,28 +70,26 @@ public enum LavatoryPorperties implements Enumerator {
 
 	/**
 	 * An array of all the '<em><b>Lavatory Porperties</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	private static final LavatoryPorperties[] VALUES_ARRAY =
-		new LavatoryPorperties[] {
-			XDIMENSION,
-			YDIMENSION,
-		};
+	private static final LavatoryPorperties[] VALUES_ARRAY = new LavatoryPorperties[] {
+			XDIMENSION, YDIMENSION, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Lavatory Porperties</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Lavatory Porperties</b></em>'
+	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public static final List<LavatoryPorperties> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<LavatoryPorperties> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Lavatory Porperties</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Lavatory Porperties</b></em>' literal with the
+	 * specified literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static LavatoryPorperties get(String literal) {
@@ -105,9 +103,9 @@ public enum LavatoryPorperties implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Lavatory Porperties</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Lavatory Porperties</b></em>' literal with the
+	 * specified name. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static LavatoryPorperties getByName(String name) {
@@ -121,44 +119,46 @@ public enum LavatoryPorperties implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Lavatory Porperties</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Lavatory Porperties</b></em>' literal with the
+	 * specified integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static LavatoryPorperties get(int value) {
 		switch (value) {
-			case XDIMENSION_VALUE: return XDIMENSION;
-			case YDIMENSION_VALUE: return YDIMENSION;
+		case XDIMENSION_VALUE:
+			return XDIMENSION;
+		case YDIMENSION_VALUE:
+			return YDIMENSION;
 		}
 		return null;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private LavatoryPorperties(int value, String name, String literal) {
@@ -168,41 +168,41 @@ public enum LavatoryPorperties implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string
+	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
 		return literal;
 	}
-	
-} //LavatoryPorperties
+
+} // LavatoryPorperties

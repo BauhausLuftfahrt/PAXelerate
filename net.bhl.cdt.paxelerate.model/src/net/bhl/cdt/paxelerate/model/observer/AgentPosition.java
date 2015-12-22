@@ -15,7 +15,7 @@ public class AgentPosition extends Observer {
 	int[][] newPosition;
 	int[] submitPosition;
 	CabinViewPart cabinViewPart;
-	
+
 	/**
 	 * TODO: Description
 	 */

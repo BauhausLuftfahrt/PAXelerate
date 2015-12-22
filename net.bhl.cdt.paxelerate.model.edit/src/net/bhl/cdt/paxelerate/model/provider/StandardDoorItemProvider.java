@@ -12,9 +12,10 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import net.bhl.cdt.paxelerate.model.StandardDoor;
 
 /**
- * This is the item provider adapter for a {@link net.bhl.cdt.paxelerate.model.StandardDoor} object.
- * <!-- begin-user-doc -->
- * <!-- end-user-doc -->
+ * This is the item provider adapter for a
+ * {@link net.bhl.cdt.paxelerate.model.StandardDoor} object. <!-- begin-user-doc
+ * --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class StandardDoorItemProvider extends DoorItemProvider {
@@ -67,15 +68,15 @@ public class StandardDoorItemProvider extends DoorItemProvider {
 		if (door.isIsActive()) {
 			str = "✓";
 		}
-		return getString("_UI_StandardDoor_type") + " " + door.getId() + " ("
-				+ str + ")";
+		return getString("_UI_StandardDoor_type") + " " + door.getId() + " (" + str + ")";
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc --> <!--
+	 * This handles model notifications by calling {@link #updateChildren} to
+	 * update any cached children and by creating a viewer notification, which
+	 * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -92,8 +93,7 @@ public class StandardDoorItemProvider extends DoorItemProvider {
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

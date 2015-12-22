@@ -56,16 +56,16 @@ public class IssueScanner extends Subject implements Runnable {
 		Vector3D data = positionTracker.get(pax.getId());
 		if (noMovementDetected(pax)) {
 			if (Math.abs(watch.getElapsedTimeSecs() - data.getZ()) > 5) {
-				System.out.println(pax.getId() + " NOT MOVING! Time: "
-						+ data.getZ());
+				System.out.println(
+						pax.getId() + " NOT MOVING! Time: " + data.getZ());
 			}
 		}
 	}
 
 	private boolean noMovementDetected(Passenger pax) {
 		Vector3D data = positionTracker.get(pax.getId());
-		return (pax.getPositionX() == data.getX() && pax.getPositionY() == data
-				.getY());
+		return (pax.getPositionX() == data.getX()
+				&& pax.getPositionY() == data.getY());
 	}
 
 	private void updateMap() {
@@ -77,10 +77,8 @@ public class IssueScanner extends Subject implements Runnable {
 					time = positionTracker.get(pax.getId()).getZ();
 				}
 			}
-			positionTracker.put(
-					pax.getId(),
-					new Vector3D((int) pax.getPositionX(), (int) pax
-							.getPositionY(), time));
+			positionTracker.put(pax.getId(), new Vector3D(
+					(int) pax.getPositionX(), (int) pax.getPositionY(), time));
 		}
 		init = false;
 	}

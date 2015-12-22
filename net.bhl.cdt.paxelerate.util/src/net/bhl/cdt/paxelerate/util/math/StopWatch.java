@@ -7,7 +7,6 @@ package net.bhl.cdt.paxelerate.util.math;
 
 import net.bhl.cdt.paxelerate.util.Func;
 
-
 /**
  * This class represents a stop watch.
  * 

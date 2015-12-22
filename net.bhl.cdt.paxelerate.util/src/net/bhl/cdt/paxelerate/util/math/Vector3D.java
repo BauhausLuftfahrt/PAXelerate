@@ -6,18 +6,18 @@ public class Vector3D extends Vector {
 		super(x, y, z);
 		dimensions = 3;
 	}
-	
+
 	public Vector3D(Vector vector) {
-		super(vector.getX(),vector.getY());
+		super(vector.getX(), vector.getY());
 		super.dimensions = 3;
 	}
 
 	public void set(int x, int y, int z) {
-		super.xValue  = x;
+		super.xValue = x;
 		super.yValue = y;
 		super.zValue = z;
 	}
-	
+
 	/**
 	 * This method sets the vector from an int[] if the dimension 2.
 	 * 
@@ -31,7 +31,7 @@ public class Vector3D extends Vector {
 			super.zValue = point[2];
 		}
 	}
-	
+
 	/**
 	 * This method returns the vector in form of an int[] of the dimensions
 	 * DIMENSIONS.

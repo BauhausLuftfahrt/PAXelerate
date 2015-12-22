@@ -51,8 +51,8 @@ public class SimulationView extends JPanel implements MouseListener {
 
 	public SimulationView() {
 		System.out.println(Func.getLineNumber());
-		this.setPreferredSize(new Dimension(Func.GetScreenWorkingWidth() - 20,
-				BOX_HEIGHT));
+		this.setPreferredSize(
+				new Dimension(Func.GetScreenWorkingWidth() - 20, BOX_HEIGHT));
 		System.out.println(Func.getLineNumber());
 		cabinWidth = SimulationHandler.getCabin().getCabinWidth()
 				/ (double) SimulationHandler.getCabin().getScale();
@@ -103,9 +103,7 @@ public class SimulationView extends JPanel implements MouseListener {
 			public void actionPerformed(ActionEvent e) {
 				if (speedPosition < possibleSpeeds.length) {
 					speedPosition++;
-					SimulationHandler
-							.getCabin()
-							.getSimulationSettings()
+					SimulationHandler.getCabin().getSimulationSettings()
 							.setSimulationSpeedFactor(
 									possibleSpeeds[speedPosition]);
 				}
@@ -119,9 +117,7 @@ public class SimulationView extends JPanel implements MouseListener {
 			public void actionPerformed(ActionEvent e) {
 				if (speedPosition > 0) {
 					speedPosition--;
-					SimulationHandler
-							.getCabin()
-							.getSimulationSettings()
+					SimulationHandler.getCabin().getSimulationSettings()
 							.setSimulationSpeedFactor(
 									possibleSpeeds[speedPosition]);
 				}
@@ -212,9 +208,11 @@ public class SimulationView extends JPanel implements MouseListener {
 					try {
 						if (node.getTypeForPrinting().equals("O")
 								|| node.getTypeForPrinting().equals(" ")) {
-							g.setColor(switchColor(SimulationHandler
-									.getAgentByPassenger(node.getPassenger())
-									.getCurrentState()));
+							g.setColor(
+									switchColor(SimulationHandler
+											.getAgentByPassenger(
+													node.getPassenger())
+											.getCurrentState()));
 							g.setFont(new Font("Courier New", Font.PLAIN,
 									FONT_SIZE - 1));
 							if (!node.isHidden()) {
@@ -227,8 +225,8 @@ public class SimulationView extends JPanel implements MouseListener {
 									FONT_SIZE));
 							if (node.getTypeForPrinting() != null) {
 								g.drawString(node.getTypeForPrinting(),
-										(x - pointZero) * FONT_SIZE, y
-												* FONT_SIZE);
+										(x - pointZero) * FONT_SIZE,
+										y * FONT_SIZE);
 							}
 						}
 					} catch (NullPointerException e) {
@@ -249,23 +247,17 @@ public class SimulationView extends JPanel implements MouseListener {
 		g.setFont(new Font("Courier New", Font.PLAIN, 12));
 		g.drawString("Real Time: " + watch.getElapsedTimeTens(), 10, 20);
 
-		double tens = watch.getElapsedTimeTens()
-				* SimulationHandler.getCabin().getSimulationSettings()
-						.getSimulationSpeedFactor();
+		double tens = watch.getElapsedTimeTens() * SimulationHandler.getCabin()
+				.getSimulationSettings().getSimulationSpeedFactor();
 
-		g.drawString("Sim. Time: "
-				+ TimeHelper.transformToTimeString(tens)
-				+ " >> "
-				+ SimulationHandler.getCabin().getSimulationSettings()
-						.getSimulationSpeedFactor() + "x", 10, 40);
-		g.drawString(
-				"Passengers: "
-						+ SimulationHandler.getNumberOfSeatedPassengers()
-						+ " / "
-						+ SimulationHandler.getNumberOfPassengersInCabin()
-						+ " / "
-						+ SimulationHandler.getCabin().getPassengers().size(),
-				10, 60);
+		g.drawString("Sim. Time: " + TimeHelper.transformToTimeString(tens)
+				+ " >> " + SimulationHandler.getCabin().getSimulationSettings()
+						.getSimulationSpeedFactor()
+				+ "x", 10, 40);
+		g.drawString("Passengers: "
+				+ SimulationHandler.getNumberOfSeatedPassengers() + " / "
+				+ SimulationHandler.getNumberOfPassengersInCabin() + " / "
+				+ SimulationHandler.getCabin().getPassengers().size(), 10, 60);
 		Point mousePos = getMousePosition();
 
 		if (mousePos != null) {
@@ -277,7 +269,8 @@ public class SimulationView extends JPanel implements MouseListener {
 				a = (int) (mousePos.x / FONT_SIZE);
 				b = (int) (mousePos.y / FONT_SIZE);
 				prop = areamap.getNodeByCoordinate(b, a).getProperty();
-				if (areamap.getNodeByCoordinate(b, a).getProperty() == Property.AGENT) {
+				if (areamap.getNodeByCoordinate(b, a)
+						.getProperty() == Property.AGENT) {
 					pax = areamap.getNodeByCoordinate(b, a).getPassenger();
 				}
 			} catch (NullPointerException e) {
@@ -287,25 +280,27 @@ public class SimulationView extends JPanel implements MouseListener {
 			g.fillRect(mousePos.x + 10, mousePos.y + 10, 250, 120);
 			g.setColor(Color.BLACK);
 			if (areamap.getNodeByCoordinate(b, a) != null && pax != null) {
-				if (areamap.getNodeByCoordinate(b, a).getProperty() == Property.AGENT) {
-					g.drawString("Passenger: "
-							+ pax.getId()
-							+ ", x: "
-							+ SimulationHandler.getAgentByPassenger(pax)
-									.getCurrentPosition().getX()
-							+ ", y: "
-							+ SimulationHandler.getAgentByPassenger(pax)
-									.getCurrentPosition().getY(),
+				if (areamap.getNodeByCoordinate(b, a)
+						.getProperty() == Property.AGENT) {
+					g.drawString(
+							"Passenger: " + pax.getId() + ", x: "
+									+ SimulationHandler.getAgentByPassenger(pax)
+											.getCurrentPosition().getX()
+									+ ", y: "
+									+ SimulationHandler.getAgentByPassenger(pax)
+											.getCurrentPosition().getY(),
 							mousePos.x + 30, mousePos.y + 30);
 					g.drawString("Seat " + pax.getSeatRef().getName(),
 							mousePos.x + 30, mousePos.y + 50);
-					g.drawString("State: "
-							+ SimulationHandler.getAgentByPassenger(pax)
-									.getCurrentState().toString(),
+					g.drawString(
+							"State: "
+									+ SimulationHandler.getAgentByPassenger(pax)
+											.getCurrentState().toString(),
 							mousePos.x + 30, mousePos.y + 70);
-					g.drawString("Mode: "
-							+ SimulationHandler.getAgentByPassenger(pax)
-									.getAgentMode().toString(),
+					g.drawString(
+							"Mode: " + SimulationHandler
+									.getAgentByPassenger(pax).getAgentMode()
+									.toString(),
 							mousePos.x + 30, mousePos.y + 90);
 					try {
 						g.drawString("Waiting for passenger "
@@ -326,8 +321,8 @@ public class SimulationView extends JPanel implements MouseListener {
 						for (Node node : path.getWaypoints()) {
 							g.drawString("•",
 									(node.getPosition().getY() - pointZero)
-											* FONT_SIZE, node.getPosition()
-											.getX() * FONT_SIZE);
+											* FONT_SIZE,
+									node.getPosition().getX() * FONT_SIZE);
 						}
 					}
 				}
@@ -352,7 +347,8 @@ public class SimulationView extends JPanel implements MouseListener {
 			try {
 				a = (int) (mousePos.x / FONT_SIZE);
 				b = (int) (mousePos.y / FONT_SIZE);
-				if (areamap.getNodeByCoordinate(b, a).getProperty() == Property.AGENT) {
+				if (areamap.getNodeByCoordinate(b, a)
+						.getProperty() == Property.AGENT) {
 					pax = areamap.getNodeByCoordinate(b, a).getPassenger();
 				}
 			} catch (NullPointerException beep) {

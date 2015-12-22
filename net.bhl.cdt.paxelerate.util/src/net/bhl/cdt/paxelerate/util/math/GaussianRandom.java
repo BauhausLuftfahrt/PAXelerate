@@ -15,8 +15,7 @@ public class GaussianRandom {
 	 *            is the deviation at the chosen option.
 	 * @return
 	 */
-	public static double gaussianRandom(double average, GaussOptions gauss,
-			double deviation) {
+	public static double gaussianRandom(double average, GaussOptions gauss, double deviation) {
 		Random rand = new Random();
 		double result = (rand.nextGaussian() * (deviation / gauss.getSigma()) + average);
 		if (result < 0) {

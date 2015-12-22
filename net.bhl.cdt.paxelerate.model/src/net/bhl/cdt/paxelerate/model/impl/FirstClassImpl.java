@@ -8,9 +8,8 @@ import net.bhl.cdt.paxelerate.model.CabinPackage;
 import net.bhl.cdt.paxelerate.model.FirstClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>First Class</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>First Class</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
  *
@@ -18,8 +17,8 @@ import net.bhl.cdt.paxelerate.model.FirstClass;
  */
 public class FirstClassImpl extends TravelClassImpl implements FirstClass {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected FirstClassImpl() {
@@ -27,8 +26,8 @@ public class FirstClassImpl extends TravelClassImpl implements FirstClass {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -36,4 +35,4 @@ public class FirstClassImpl extends TravelClassImpl implements FirstClass {
 		return CabinPackage.Literals.FIRST_CLASS;
 	}
 
-} //FirstClassImpl
+} // FirstClassImpl

@@ -23,37 +23,64 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getId <em>Id</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getSex <em>Sex</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getHeight <em>Height</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getAge <em>Age</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getWeight <em>Weight</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getDoor <em>Door</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getSeat <em>Seat</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getName <em>Name</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getBoardingTime <em>Boarding Time</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getSeatRef <em>Seat Ref</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getWidth <em>Width</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getDepth <em>Depth</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getOrientationInDegree <em>Orientation In Degree</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getPositionX <em>Position X</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getPositionY <em>Position Y</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#isIsSeated <em>Is Seated</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getWalkingSpeed <em>Walking Speed</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getStartBoardingAfterDelay <em>Start Boarding After Delay</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getNumberOfWaits <em>Number Of Waits</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getLuggageStowTime <em>Luggage Stow Time</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getTravelClass <em>Travel Class</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getPassengerMood <em>Passenger Mood</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getNumberOfMakeWayOperations <em>Number Of Make Way Operations</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getLuggage <em>Luggage</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getId <em>Id</em>}
+ * </li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getSex
+ * <em>Sex</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getHeight
+ * <em>Height</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getAge
+ * <em>Age</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getWeight
+ * <em>Weight</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getDoor
+ * <em>Door</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getSeat
+ * <em>Seat</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getName
+ * <em>Name</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getBoardingTime
+ * <em>Boarding Time</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getSeatRef
+ * <em>Seat Ref</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getWidth
+ * <em>Width</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getDepth
+ * <em>Depth</em>}</li>
+ * <li>
+ * {@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getOrientationInDegree
+ * <em>Orientation In Degree</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getPositionX
+ * <em>Position X</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getPositionY
+ * <em>Position Y</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#isIsSeated
+ * <em>Is Seated</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getWalkingSpeed
+ * <em>Walking Speed</em>}</li>
+ * <li>
+ * {@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getStartBoardingAfterDelay
+ * <em>Start Boarding After Delay</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getNumberOfWaits
+ * <em>Number Of Waits</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getLuggageStowTime
+ * <em>Luggage Stow Time</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getTravelClass
+ * <em>Travel Class</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getPassengerMood
+ * <em>Passenger Mood</em>}</li>
+ * <li>
+ * {@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getNumberOfMakeWayOperations
+ * <em>Number Of Make Way Operations</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getLuggage
+ * <em>Luggage</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class PassengerImpl extends MinimalEObjectImpl.Container implements
-		Passenger {
+public class PassengerImpl extends MinimalEObjectImpl.Container
+		implements Passenger {
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -95,8 +122,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected Sex sex = SEX_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getHeight() <em>Height</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getHeight() <em>Height</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getHeight()
 	 * @generated
 	 * @ordered
@@ -106,6 +134,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	/**
 	 * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getHeight()
 	 * @generated
 	 * @ordered
@@ -133,8 +162,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected int age = AGE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getWeight() <em>Weight</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getWeight() <em>Weight</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getWeight()
 	 * @generated
 	 * @ordered
@@ -144,6 +174,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	/**
 	 * The cached value of the '{@link #getWeight() <em>Weight</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getWeight()
 	 * @generated
 	 * @ordered
@@ -153,6 +184,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	/**
 	 * The cached value of the '{@link #getDoor() <em>Door</em>}' reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getDoor()
 	 * @generated
 	 * @ordered
@@ -162,6 +194,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	/**
 	 * The default value of the '{@link #getSeat() <em>Seat</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getSeat()
 	 * @generated
 	 * @ordered
@@ -171,6 +204,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	/**
 	 * The cached value of the '{@link #getSeat() <em>Seat</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getSeat()
 	 * @generated
 	 * @ordered
@@ -180,6 +214,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -189,6 +224,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -196,9 +232,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getBoardingTime() <em>Boarding Time</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getBoardingTime()
+	 * <em>Boarding Time</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @see #getBoardingTime()
 	 * @generated
 	 * @ordered
@@ -206,9 +243,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected static final int BOARDING_TIME_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getBoardingTime() <em>Boarding Time</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * The cached value of the '{@link #getBoardingTime() <em>Boarding Time</em>
+	 * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getBoardingTime()
 	 * @generated
 	 * @ordered
@@ -216,8 +253,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected int boardingTime = BOARDING_TIME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getSeatRef() <em>Seat Ref</em>}' reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getSeatRef() <em>Seat Ref</em>}'
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getSeatRef()
 	 * @generated
 	 * @ordered
@@ -227,6 +265,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	/**
 	 * The default value of the '{@link #getWidth() <em>Width</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getWidth()
 	 * @generated
 	 * @ordered
@@ -236,6 +275,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	/**
 	 * The cached value of the '{@link #getWidth() <em>Width</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getWidth()
 	 * @generated
 	 * @ordered
@@ -245,6 +285,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	/**
 	 * The default value of the '{@link #getDepth() <em>Depth</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getDepth()
 	 * @generated
 	 * @ordered
@@ -254,6 +295,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	/**
 	 * The cached value of the '{@link #getDepth() <em>Depth</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getDepth()
 	 * @generated
 	 * @ordered
@@ -261,9 +303,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected int depth = DEPTH_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getOrientationInDegree() <em>Orientation In Degree</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getOrientationInDegree()
+	 * <em>Orientation In Degree</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @see #getOrientationInDegree()
 	 * @generated
 	 * @ordered
@@ -271,9 +314,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected static final double ORIENTATION_IN_DEGREE_EDEFAULT = 0.0;
 
 	/**
-	 * The cached value of the '{@link #getOrientationInDegree() <em>Orientation In Degree</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getOrientationInDegree()
+	 * <em>Orientation In Degree</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @see #getOrientationInDegree()
 	 * @generated
 	 * @ordered
@@ -281,8 +325,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected double orientationInDegree = ORIENTATION_IN_DEGREE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getPositionX() <em>Position X</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getPositionX() <em>Position X</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getPositionX()
 	 * @generated
 	 * @ordered
@@ -290,8 +335,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected static final double POSITION_X_EDEFAULT = 0.0;
 
 	/**
-	 * The cached value of the '{@link #getPositionX() <em>Position X</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getPositionX() <em>Position X</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getPositionX()
 	 * @generated
 	 * @ordered
@@ -299,8 +345,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected double positionX = POSITION_X_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getPositionY() <em>Position Y</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getPositionY() <em>Position Y</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getPositionY()
 	 * @generated
 	 * @ordered
@@ -308,8 +355,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected static final double POSITION_Y_EDEFAULT = 0.0;
 
 	/**
-	 * The cached value of the '{@link #getPositionY() <em>Position Y</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getPositionY() <em>Position Y</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getPositionY()
 	 * @generated
 	 * @ordered
@@ -317,8 +365,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected double positionY = POSITION_Y_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isIsSeated() <em>Is Seated</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #isIsSeated() <em>Is Seated</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIsSeated()
 	 * @generated
 	 * @ordered
@@ -326,8 +375,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected static final boolean IS_SEATED_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsSeated() <em>Is Seated</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #isIsSeated() <em>Is Seated</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIsSeated()
 	 * @generated
 	 * @ordered
@@ -335,9 +385,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected boolean isSeated = IS_SEATED_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getWalkingSpeed() <em>Walking Speed</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getWalkingSpeed()
+	 * <em>Walking Speed</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @see #getWalkingSpeed()
 	 * @generated
 	 * @ordered
@@ -345,9 +396,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected static final double WALKING_SPEED_EDEFAULT = 2.0;
 
 	/**
-	 * The cached value of the '{@link #getWalkingSpeed() <em>Walking Speed</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * The cached value of the '{@link #getWalkingSpeed() <em>Walking Speed</em>
+	 * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getWalkingSpeed()
 	 * @generated
 	 * @ordered
@@ -355,9 +406,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected double walkingSpeed = WALKING_SPEED_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getStartBoardingAfterDelay() <em>Start Boarding After Delay</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getStartBoardingAfterDelay()
+	 * <em>Start Boarding After Delay</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getStartBoardingAfterDelay()
 	 * @generated
 	 * @ordered
@@ -365,9 +417,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected static final double START_BOARDING_AFTER_DELAY_EDEFAULT = 1.0;
 
 	/**
-	 * The cached value of the '{@link #getStartBoardingAfterDelay() <em>Start Boarding After Delay</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getStartBoardingAfterDelay()
+	 * <em>Start Boarding After Delay</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getStartBoardingAfterDelay()
 	 * @generated
 	 * @ordered
@@ -375,9 +428,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected double startBoardingAfterDelay = START_BOARDING_AFTER_DELAY_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getNumberOfWaits() <em>Number Of Waits</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getNumberOfWaits()
+	 * <em>Number Of Waits</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @see #getNumberOfWaits()
 	 * @generated
 	 * @ordered
@@ -385,9 +439,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected static final int NUMBER_OF_WAITS_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getNumberOfWaits() <em>Number Of Waits</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getNumberOfWaits()
+	 * <em>Number Of Waits</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @see #getNumberOfWaits()
 	 * @generated
 	 * @ordered
@@ -395,9 +450,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected int numberOfWaits = NUMBER_OF_WAITS_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getLuggageStowTime() <em>Luggage Stow Time</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getLuggageStowTime()
+	 * <em>Luggage Stow Time</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @see #getLuggageStowTime()
 	 * @generated
 	 * @ordered
@@ -405,9 +461,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected static final double LUGGAGE_STOW_TIME_EDEFAULT = 1.0;
 
 	/**
-	 * The cached value of the '{@link #getLuggageStowTime() <em>Luggage Stow Time</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getLuggageStowTime()
+	 * <em>Luggage Stow Time</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @see #getLuggageStowTime()
 	 * @generated
 	 * @ordered
@@ -415,8 +472,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected double luggageStowTime = LUGGAGE_STOW_TIME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getTravelClass() <em>Travel Class</em>}' reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTravelClass() <em>Travel Class</em>}'
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTravelClass()
 	 * @generated
 	 * @ordered
@@ -424,9 +482,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected TravelClass travelClass;
 
 	/**
-	 * The default value of the '{@link #getPassengerMood() <em>Passenger Mood</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getPassengerMood()
+	 * <em>Passenger Mood</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @see #getPassengerMood()
 	 * @generated
 	 * @ordered
@@ -434,9 +493,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected static final PassengerMood PASSENGER_MOOD_EDEFAULT = PassengerMood.AGRESSIVE;
 
 	/**
-	 * The cached value of the '{@link #getPassengerMood() <em>Passenger Mood</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getPassengerMood()
+	 * <em>Passenger Mood</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @see #getPassengerMood()
 	 * @generated
 	 * @ordered
@@ -444,9 +504,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected PassengerMood passengerMood = PASSENGER_MOOD_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getNumberOfMakeWayOperations() <em>Number Of Make Way Operations</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getNumberOfMakeWayOperations()
+	 * <em>Number Of Make Way Operations</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getNumberOfMakeWayOperations()
 	 * @generated
 	 * @ordered
@@ -454,9 +515,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected static final int NUMBER_OF_MAKE_WAY_OPERATIONS_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getNumberOfMakeWayOperations() <em>Number Of Make Way Operations</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getNumberOfMakeWayOperations()
+	 * <em>Number Of Make Way Operations</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getNumberOfMakeWayOperations()
 	 * @generated
 	 * @ordered
@@ -464,9 +526,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected int numberOfMakeWayOperations = NUMBER_OF_MAKE_WAY_OPERATIONS_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getLuggage() <em>Luggage</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getLuggage() <em>Luggage</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLuggage()
 	 * @generated
 	 * @ordered
@@ -474,9 +536,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected static final LuggageSize LUGGAGE_EDEFAULT = LuggageSize.SMALL;
 
 	/**
-	 * The cached value of the '{@link #getLuggage() <em>Luggage</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getLuggage() <em>Luggage</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLuggage()
 	 * @generated
 	 * @ordered
@@ -485,6 +547,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected PassengerImpl() {
@@ -493,6 +556,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -502,6 +566,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getId() {
@@ -510,17 +575,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setId(int newId) {
 		int oldId = id;
 		id = newId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__ID, oldId, id));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CabinPackage.PASSENGER__ID, oldId, id));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Sex getSex() {
@@ -529,17 +597,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setSex(Sex newSex) {
 		Sex oldSex = sex;
 		sex = newSex == null ? SEX_EDEFAULT : newSex;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__SEX, oldSex, sex));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CabinPackage.PASSENGER__SEX, oldSex, sex));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getSeat() {
@@ -548,17 +619,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setSeat(int newSeat) {
 		int oldSeat = seat;
 		seat = newSeat;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__SEAT, oldSeat, seat));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CabinPackage.PASSENGER__SEAT, oldSeat, seat));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -567,17 +641,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CabinPackage.PASSENGER__NAME, oldName, name));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getBoardingTime() {
@@ -586,26 +663,32 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setBoardingTime(int newBoardingTime) {
 		int oldBoardingTime = boardingTime;
 		boardingTime = newBoardingTime;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__BOARDING_TIME, oldBoardingTime, boardingTime));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CabinPackage.PASSENGER__BOARDING_TIME, oldBoardingTime,
+					boardingTime));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Seat getSeatRef() {
 		if (seatRef != null && seatRef.eIsProxy()) {
-			InternalEObject oldSeatRef = (InternalEObject)seatRef;
-			seatRef = (Seat)eResolveProxy(oldSeatRef);
+			InternalEObject oldSeatRef = (InternalEObject) seatRef;
+			seatRef = (Seat) eResolveProxy(oldSeatRef);
 			if (seatRef != oldSeatRef) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CabinPackage.PASSENGER__SEAT_REF, oldSeatRef, seatRef));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							CabinPackage.PASSENGER__SEAT_REF, oldSeatRef,
+							seatRef));
 			}
 		}
 		return seatRef;
@@ -613,6 +696,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Seat basicGetSeatRef() {
@@ -621,17 +705,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setSeatRef(Seat newSeatRef) {
 		Seat oldSeatRef = seatRef;
 		seatRef = newSeatRef;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__SEAT_REF, oldSeatRef, seatRef));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CabinPackage.PASSENGER__SEAT_REF, oldSeatRef, seatRef));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getWidth() {
@@ -640,17 +727,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setWidth(int newWidth) {
 		int oldWidth = width;
 		width = newWidth;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__WIDTH, oldWidth, width));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CabinPackage.PASSENGER__WIDTH, oldWidth, width));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getDepth() {
@@ -659,17 +749,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setDepth(int newDepth) {
 		int oldDepth = depth;
 		depth = newDepth;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__DEPTH, oldDepth, depth));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CabinPackage.PASSENGER__DEPTH, oldDepth, depth));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public double getOrientationInDegree() {
@@ -678,18 +771,21 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setOrientationInDegree(
-			double newOrientationInDegree) {
+	public void setOrientationInDegree(double newOrientationInDegree) {
 		double oldOrientationInDegree = orientationInDegree;
 		orientationInDegree = newOrientationInDegree;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__ORIENTATION_IN_DEGREE, oldOrientationInDegree, orientationInDegree));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CabinPackage.PASSENGER__ORIENTATION_IN_DEGREE,
+					oldOrientationInDegree, orientationInDegree));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public double getPositionX() {
@@ -698,17 +794,21 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setPositionX(double newPositionX) {
 		double oldPositionX = positionX;
 		positionX = newPositionX;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__POSITION_X, oldPositionX, positionX));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CabinPackage.PASSENGER__POSITION_X, oldPositionX,
+					positionX));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public double getPositionY() {
@@ -717,17 +817,21 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setPositionY(double newPositionY) {
 		double oldPositionY = positionY;
 		positionY = newPositionY;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__POSITION_Y, oldPositionY, positionY));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CabinPackage.PASSENGER__POSITION_Y, oldPositionY,
+					positionY));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isIsSeated() {
@@ -736,17 +840,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setIsSeated(boolean newIsSeated) {
 		boolean oldIsSeated = isSeated;
 		isSeated = newIsSeated;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__IS_SEATED, oldIsSeated, isSeated));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CabinPackage.PASSENGER__IS_SEATED, oldIsSeated, isSeated));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public double getWalkingSpeed() {
@@ -755,17 +862,21 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setWalkingSpeed(double newWalkingSpeed) {
 		double oldWalkingSpeed = walkingSpeed;
 		walkingSpeed = newWalkingSpeed;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__WALKING_SPEED, oldWalkingSpeed, walkingSpeed));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CabinPackage.PASSENGER__WALKING_SPEED, oldWalkingSpeed,
+					walkingSpeed));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public double getStartBoardingAfterDelay() {
@@ -774,17 +885,21 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setStartBoardingAfterDelay(double newStartBoardingAfterDelay) {
 		double oldStartBoardingAfterDelay = startBoardingAfterDelay;
 		startBoardingAfterDelay = newStartBoardingAfterDelay;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY, oldStartBoardingAfterDelay, startBoardingAfterDelay));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY,
+					oldStartBoardingAfterDelay, startBoardingAfterDelay));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getNumberOfWaits() {
@@ -793,17 +908,21 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setNumberOfWaits(int newNumberOfWaits) {
 		int oldNumberOfWaits = numberOfWaits;
 		numberOfWaits = newNumberOfWaits;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__NUMBER_OF_WAITS, oldNumberOfWaits, numberOfWaits));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CabinPackage.PASSENGER__NUMBER_OF_WAITS, oldNumberOfWaits,
+					numberOfWaits));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public double getLuggageStowTime() {
@@ -812,26 +931,32 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setLuggageStowTime(double newLuggageStowTime) {
 		double oldLuggageStowTime = luggageStowTime;
 		luggageStowTime = newLuggageStowTime;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__LUGGAGE_STOW_TIME, oldLuggageStowTime, luggageStowTime));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CabinPackage.PASSENGER__LUGGAGE_STOW_TIME,
+					oldLuggageStowTime, luggageStowTime));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TravelClass getTravelClass() {
 		if (travelClass != null && travelClass.eIsProxy()) {
-			InternalEObject oldTravelClass = (InternalEObject)travelClass;
-			travelClass = (TravelClass)eResolveProxy(oldTravelClass);
+			InternalEObject oldTravelClass = (InternalEObject) travelClass;
+			travelClass = (TravelClass) eResolveProxy(oldTravelClass);
 			if (travelClass != oldTravelClass) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CabinPackage.PASSENGER__TRAVEL_CLASS, oldTravelClass, travelClass));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							CabinPackage.PASSENGER__TRAVEL_CLASS,
+							oldTravelClass, travelClass));
 			}
 		}
 		return travelClass;
@@ -839,6 +964,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TravelClass basicGetTravelClass() {
@@ -847,17 +973,21 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTravelClass(TravelClass newTravelClass) {
 		TravelClass oldTravelClass = travelClass;
 		travelClass = newTravelClass;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__TRAVEL_CLASS, oldTravelClass, travelClass));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CabinPackage.PASSENGER__TRAVEL_CLASS, oldTravelClass,
+					travelClass));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PassengerMood getPassengerMood() {
@@ -866,18 +996,22 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setPassengerMood(PassengerMood newPassengerMood) {
 		PassengerMood oldPassengerMood = passengerMood;
-		passengerMood = newPassengerMood == null ? PASSENGER_MOOD_EDEFAULT : newPassengerMood;
+		passengerMood = newPassengerMood == null ? PASSENGER_MOOD_EDEFAULT
+				: newPassengerMood;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__PASSENGER_MOOD, oldPassengerMood, passengerMood));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CabinPackage.PASSENGER__PASSENGER_MOOD, oldPassengerMood,
+					passengerMood));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getNumberOfMakeWayOperations() {
@@ -885,20 +1019,22 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setNumberOfMakeWayOperations(int newNumberOfMakeWayOperations) {
 		int oldNumberOfMakeWayOperations = numberOfMakeWayOperations;
 		numberOfMakeWayOperations = newNumberOfMakeWayOperations;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS, oldNumberOfMakeWayOperations, numberOfMakeWayOperations));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS,
+					oldNumberOfMakeWayOperations, numberOfMakeWayOperations));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public LuggageSize getLuggage() {
@@ -906,19 +1042,21 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setLuggage(LuggageSize newLuggage) {
 		LuggageSize oldLuggage = luggage;
 		luggage = newLuggage == null ? LUGGAGE_EDEFAULT : newLuggage;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__LUGGAGE, oldLuggage, luggage));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CabinPackage.PASSENGER__LUGGAGE, oldLuggage, luggage));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getHeight() {
@@ -927,17 +1065,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setHeight(int newHeight) {
 		int oldHeight = height;
 		height = newHeight;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__HEIGHT, oldHeight, height));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CabinPackage.PASSENGER__HEIGHT, oldHeight, height));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getAge() {
@@ -946,17 +1087,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setAge(int newAge) {
 		int oldAge = age;
 		age = newAge;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__AGE, oldAge, age));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CabinPackage.PASSENGER__AGE, oldAge, age));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getWeight() {
@@ -965,26 +1109,30 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setWeight(int newWeight) {
 		int oldWeight = weight;
 		weight = newWeight;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__WEIGHT, oldWeight, weight));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CabinPackage.PASSENGER__WEIGHT, oldWeight, weight));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Door getDoor() {
 		if (door != null && door.eIsProxy()) {
-			InternalEObject oldDoor = (InternalEObject)door;
-			door = (Door)eResolveProxy(oldDoor);
+			InternalEObject oldDoor = (InternalEObject) door;
+			door = (Door) eResolveProxy(oldDoor);
 			if (door != oldDoor) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CabinPackage.PASSENGER__DOOR, oldDoor, door));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							CabinPackage.PASSENGER__DOOR, oldDoor, door));
 			}
 		}
 		return door;
@@ -992,6 +1140,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Door basicGetDoor() {
@@ -1000,309 +1149,322 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setDoor(Door newDoor) {
 		Door oldDoor = door;
 		door = newDoor;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__DOOR, oldDoor, door));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CabinPackage.PASSENGER__DOOR, oldDoor, door));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CabinPackage.PASSENGER__ID:
-				return getId();
-			case CabinPackage.PASSENGER__SEX:
-				return getSex();
-			case CabinPackage.PASSENGER__HEIGHT:
-				return getHeight();
-			case CabinPackage.PASSENGER__AGE:
-				return getAge();
-			case CabinPackage.PASSENGER__WEIGHT:
-				return getWeight();
-			case CabinPackage.PASSENGER__DOOR:
-				if (resolve) return getDoor();
-				return basicGetDoor();
-			case CabinPackage.PASSENGER__SEAT:
-				return getSeat();
-			case CabinPackage.PASSENGER__NAME:
-				return getName();
-			case CabinPackage.PASSENGER__BOARDING_TIME:
-				return getBoardingTime();
-			case CabinPackage.PASSENGER__SEAT_REF:
-				if (resolve) return getSeatRef();
-				return basicGetSeatRef();
-			case CabinPackage.PASSENGER__WIDTH:
-				return getWidth();
-			case CabinPackage.PASSENGER__DEPTH:
-				return getDepth();
-			case CabinPackage.PASSENGER__ORIENTATION_IN_DEGREE:
-				return getOrientationInDegree();
-			case CabinPackage.PASSENGER__POSITION_X:
-				return getPositionX();
-			case CabinPackage.PASSENGER__POSITION_Y:
-				return getPositionY();
-			case CabinPackage.PASSENGER__IS_SEATED:
-				return isIsSeated();
-			case CabinPackage.PASSENGER__WALKING_SPEED:
-				return getWalkingSpeed();
-			case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
-				return getStartBoardingAfterDelay();
-			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
-				return getNumberOfWaits();
-			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
-				return getLuggageStowTime();
-			case CabinPackage.PASSENGER__TRAVEL_CLASS:
-				if (resolve) return getTravelClass();
-				return basicGetTravelClass();
-			case CabinPackage.PASSENGER__PASSENGER_MOOD:
-				return getPassengerMood();
-			case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
-				return getNumberOfMakeWayOperations();
-			case CabinPackage.PASSENGER__LUGGAGE:
-				return getLuggage();
+		case CabinPackage.PASSENGER__ID:
+			return getId();
+		case CabinPackage.PASSENGER__SEX:
+			return getSex();
+		case CabinPackage.PASSENGER__HEIGHT:
+			return getHeight();
+		case CabinPackage.PASSENGER__AGE:
+			return getAge();
+		case CabinPackage.PASSENGER__WEIGHT:
+			return getWeight();
+		case CabinPackage.PASSENGER__DOOR:
+			if (resolve)
+				return getDoor();
+			return basicGetDoor();
+		case CabinPackage.PASSENGER__SEAT:
+			return getSeat();
+		case CabinPackage.PASSENGER__NAME:
+			return getName();
+		case CabinPackage.PASSENGER__BOARDING_TIME:
+			return getBoardingTime();
+		case CabinPackage.PASSENGER__SEAT_REF:
+			if (resolve)
+				return getSeatRef();
+			return basicGetSeatRef();
+		case CabinPackage.PASSENGER__WIDTH:
+			return getWidth();
+		case CabinPackage.PASSENGER__DEPTH:
+			return getDepth();
+		case CabinPackage.PASSENGER__ORIENTATION_IN_DEGREE:
+			return getOrientationInDegree();
+		case CabinPackage.PASSENGER__POSITION_X:
+			return getPositionX();
+		case CabinPackage.PASSENGER__POSITION_Y:
+			return getPositionY();
+		case CabinPackage.PASSENGER__IS_SEATED:
+			return isIsSeated();
+		case CabinPackage.PASSENGER__WALKING_SPEED:
+			return getWalkingSpeed();
+		case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
+			return getStartBoardingAfterDelay();
+		case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
+			return getNumberOfWaits();
+		case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
+			return getLuggageStowTime();
+		case CabinPackage.PASSENGER__TRAVEL_CLASS:
+			if (resolve)
+				return getTravelClass();
+			return basicGetTravelClass();
+		case CabinPackage.PASSENGER__PASSENGER_MOOD:
+			return getPassengerMood();
+		case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
+			return getNumberOfMakeWayOperations();
+		case CabinPackage.PASSENGER__LUGGAGE:
+			return getLuggage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CabinPackage.PASSENGER__ID:
-				setId((Integer)newValue);
-				return;
-			case CabinPackage.PASSENGER__SEX:
-				setSex((Sex)newValue);
-				return;
-			case CabinPackage.PASSENGER__HEIGHT:
-				setHeight((Integer)newValue);
-				return;
-			case CabinPackage.PASSENGER__AGE:
-				setAge((Integer)newValue);
-				return;
-			case CabinPackage.PASSENGER__WEIGHT:
-				setWeight((Integer)newValue);
-				return;
-			case CabinPackage.PASSENGER__DOOR:
-				setDoor((Door)newValue);
-				return;
-			case CabinPackage.PASSENGER__SEAT:
-				setSeat((Integer)newValue);
-				return;
-			case CabinPackage.PASSENGER__NAME:
-				setName((String)newValue);
-				return;
-			case CabinPackage.PASSENGER__BOARDING_TIME:
-				setBoardingTime((Integer)newValue);
-				return;
-			case CabinPackage.PASSENGER__SEAT_REF:
-				setSeatRef((Seat)newValue);
-				return;
-			case CabinPackage.PASSENGER__WIDTH:
-				setWidth((Integer)newValue);
-				return;
-			case CabinPackage.PASSENGER__DEPTH:
-				setDepth((Integer)newValue);
-				return;
-			case CabinPackage.PASSENGER__ORIENTATION_IN_DEGREE:
-				setOrientationInDegree((Double)newValue);
-				return;
-			case CabinPackage.PASSENGER__POSITION_X:
-				setPositionX((Double)newValue);
-				return;
-			case CabinPackage.PASSENGER__POSITION_Y:
-				setPositionY((Double)newValue);
-				return;
-			case CabinPackage.PASSENGER__IS_SEATED:
-				setIsSeated((Boolean)newValue);
-				return;
-			case CabinPackage.PASSENGER__WALKING_SPEED:
-				setWalkingSpeed((Double)newValue);
-				return;
-			case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
-				setStartBoardingAfterDelay((Double)newValue);
-				return;
-			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
-				setNumberOfWaits((Integer)newValue);
-				return;
-			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
-				setLuggageStowTime((Double)newValue);
-				return;
-			case CabinPackage.PASSENGER__TRAVEL_CLASS:
-				setTravelClass((TravelClass)newValue);
-				return;
-			case CabinPackage.PASSENGER__PASSENGER_MOOD:
-				setPassengerMood((PassengerMood)newValue);
-				return;
-			case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
-				setNumberOfMakeWayOperations((Integer)newValue);
-				return;
-			case CabinPackage.PASSENGER__LUGGAGE:
-				setLuggage((LuggageSize)newValue);
-				return;
+		case CabinPackage.PASSENGER__ID:
+			setId((Integer) newValue);
+			return;
+		case CabinPackage.PASSENGER__SEX:
+			setSex((Sex) newValue);
+			return;
+		case CabinPackage.PASSENGER__HEIGHT:
+			setHeight((Integer) newValue);
+			return;
+		case CabinPackage.PASSENGER__AGE:
+			setAge((Integer) newValue);
+			return;
+		case CabinPackage.PASSENGER__WEIGHT:
+			setWeight((Integer) newValue);
+			return;
+		case CabinPackage.PASSENGER__DOOR:
+			setDoor((Door) newValue);
+			return;
+		case CabinPackage.PASSENGER__SEAT:
+			setSeat((Integer) newValue);
+			return;
+		case CabinPackage.PASSENGER__NAME:
+			setName((String) newValue);
+			return;
+		case CabinPackage.PASSENGER__BOARDING_TIME:
+			setBoardingTime((Integer) newValue);
+			return;
+		case CabinPackage.PASSENGER__SEAT_REF:
+			setSeatRef((Seat) newValue);
+			return;
+		case CabinPackage.PASSENGER__WIDTH:
+			setWidth((Integer) newValue);
+			return;
+		case CabinPackage.PASSENGER__DEPTH:
+			setDepth((Integer) newValue);
+			return;
+		case CabinPackage.PASSENGER__ORIENTATION_IN_DEGREE:
+			setOrientationInDegree((Double) newValue);
+			return;
+		case CabinPackage.PASSENGER__POSITION_X:
+			setPositionX((Double) newValue);
+			return;
+		case CabinPackage.PASSENGER__POSITION_Y:
+			setPositionY((Double) newValue);
+			return;
+		case CabinPackage.PASSENGER__IS_SEATED:
+			setIsSeated((Boolean) newValue);
+			return;
+		case CabinPackage.PASSENGER__WALKING_SPEED:
+			setWalkingSpeed((Double) newValue);
+			return;
+		case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
+			setStartBoardingAfterDelay((Double) newValue);
+			return;
+		case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
+			setNumberOfWaits((Integer) newValue);
+			return;
+		case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
+			setLuggageStowTime((Double) newValue);
+			return;
+		case CabinPackage.PASSENGER__TRAVEL_CLASS:
+			setTravelClass((TravelClass) newValue);
+			return;
+		case CabinPackage.PASSENGER__PASSENGER_MOOD:
+			setPassengerMood((PassengerMood) newValue);
+			return;
+		case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
+			setNumberOfMakeWayOperations((Integer) newValue);
+			return;
+		case CabinPackage.PASSENGER__LUGGAGE:
+			setLuggage((LuggageSize) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CabinPackage.PASSENGER__ID:
-				setId(ID_EDEFAULT);
-				return;
-			case CabinPackage.PASSENGER__SEX:
-				setSex(SEX_EDEFAULT);
-				return;
-			case CabinPackage.PASSENGER__HEIGHT:
-				setHeight(HEIGHT_EDEFAULT);
-				return;
-			case CabinPackage.PASSENGER__AGE:
-				setAge(AGE_EDEFAULT);
-				return;
-			case CabinPackage.PASSENGER__WEIGHT:
-				setWeight(WEIGHT_EDEFAULT);
-				return;
-			case CabinPackage.PASSENGER__DOOR:
-				setDoor((Door)null);
-				return;
-			case CabinPackage.PASSENGER__SEAT:
-				setSeat(SEAT_EDEFAULT);
-				return;
-			case CabinPackage.PASSENGER__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case CabinPackage.PASSENGER__BOARDING_TIME:
-				setBoardingTime(BOARDING_TIME_EDEFAULT);
-				return;
-			case CabinPackage.PASSENGER__SEAT_REF:
-				setSeatRef((Seat)null);
-				return;
-			case CabinPackage.PASSENGER__WIDTH:
-				setWidth(WIDTH_EDEFAULT);
-				return;
-			case CabinPackage.PASSENGER__DEPTH:
-				setDepth(DEPTH_EDEFAULT);
-				return;
-			case CabinPackage.PASSENGER__ORIENTATION_IN_DEGREE:
-				setOrientationInDegree(ORIENTATION_IN_DEGREE_EDEFAULT);
-				return;
-			case CabinPackage.PASSENGER__POSITION_X:
-				setPositionX(POSITION_X_EDEFAULT);
-				return;
-			case CabinPackage.PASSENGER__POSITION_Y:
-				setPositionY(POSITION_Y_EDEFAULT);
-				return;
-			case CabinPackage.PASSENGER__IS_SEATED:
-				setIsSeated(IS_SEATED_EDEFAULT);
-				return;
-			case CabinPackage.PASSENGER__WALKING_SPEED:
-				setWalkingSpeed(WALKING_SPEED_EDEFAULT);
-				return;
-			case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
-				setStartBoardingAfterDelay(START_BOARDING_AFTER_DELAY_EDEFAULT);
-				return;
-			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
-				setNumberOfWaits(NUMBER_OF_WAITS_EDEFAULT);
-				return;
-			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
-				setLuggageStowTime(LUGGAGE_STOW_TIME_EDEFAULT);
-				return;
-			case CabinPackage.PASSENGER__TRAVEL_CLASS:
-				setTravelClass((TravelClass)null);
-				return;
-			case CabinPackage.PASSENGER__PASSENGER_MOOD:
-				setPassengerMood(PASSENGER_MOOD_EDEFAULT);
-				return;
-			case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
-				setNumberOfMakeWayOperations(NUMBER_OF_MAKE_WAY_OPERATIONS_EDEFAULT);
-				return;
-			case CabinPackage.PASSENGER__LUGGAGE:
-				setLuggage(LUGGAGE_EDEFAULT);
-				return;
+		case CabinPackage.PASSENGER__ID:
+			setId(ID_EDEFAULT);
+			return;
+		case CabinPackage.PASSENGER__SEX:
+			setSex(SEX_EDEFAULT);
+			return;
+		case CabinPackage.PASSENGER__HEIGHT:
+			setHeight(HEIGHT_EDEFAULT);
+			return;
+		case CabinPackage.PASSENGER__AGE:
+			setAge(AGE_EDEFAULT);
+			return;
+		case CabinPackage.PASSENGER__WEIGHT:
+			setWeight(WEIGHT_EDEFAULT);
+			return;
+		case CabinPackage.PASSENGER__DOOR:
+			setDoor((Door) null);
+			return;
+		case CabinPackage.PASSENGER__SEAT:
+			setSeat(SEAT_EDEFAULT);
+			return;
+		case CabinPackage.PASSENGER__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case CabinPackage.PASSENGER__BOARDING_TIME:
+			setBoardingTime(BOARDING_TIME_EDEFAULT);
+			return;
+		case CabinPackage.PASSENGER__SEAT_REF:
+			setSeatRef((Seat) null);
+			return;
+		case CabinPackage.PASSENGER__WIDTH:
+			setWidth(WIDTH_EDEFAULT);
+			return;
+		case CabinPackage.PASSENGER__DEPTH:
+			setDepth(DEPTH_EDEFAULT);
+			return;
+		case CabinPackage.PASSENGER__ORIENTATION_IN_DEGREE:
+			setOrientationInDegree(ORIENTATION_IN_DEGREE_EDEFAULT);
+			return;
+		case CabinPackage.PASSENGER__POSITION_X:
+			setPositionX(POSITION_X_EDEFAULT);
+			return;
+		case CabinPackage.PASSENGER__POSITION_Y:
+			setPositionY(POSITION_Y_EDEFAULT);
+			return;
+		case CabinPackage.PASSENGER__IS_SEATED:
+			setIsSeated(IS_SEATED_EDEFAULT);
+			return;
+		case CabinPackage.PASSENGER__WALKING_SPEED:
+			setWalkingSpeed(WALKING_SPEED_EDEFAULT);
+			return;
+		case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
+			setStartBoardingAfterDelay(START_BOARDING_AFTER_DELAY_EDEFAULT);
+			return;
+		case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
+			setNumberOfWaits(NUMBER_OF_WAITS_EDEFAULT);
+			return;
+		case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
+			setLuggageStowTime(LUGGAGE_STOW_TIME_EDEFAULT);
+			return;
+		case CabinPackage.PASSENGER__TRAVEL_CLASS:
+			setTravelClass((TravelClass) null);
+			return;
+		case CabinPackage.PASSENGER__PASSENGER_MOOD:
+			setPassengerMood(PASSENGER_MOOD_EDEFAULT);
+			return;
+		case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
+			setNumberOfMakeWayOperations(
+					NUMBER_OF_MAKE_WAY_OPERATIONS_EDEFAULT);
+			return;
+		case CabinPackage.PASSENGER__LUGGAGE:
+			setLuggage(LUGGAGE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CabinPackage.PASSENGER__ID:
-				return id != ID_EDEFAULT;
-			case CabinPackage.PASSENGER__SEX:
-				return sex != SEX_EDEFAULT;
-			case CabinPackage.PASSENGER__HEIGHT:
-				return height != HEIGHT_EDEFAULT;
-			case CabinPackage.PASSENGER__AGE:
-				return age != AGE_EDEFAULT;
-			case CabinPackage.PASSENGER__WEIGHT:
-				return weight != WEIGHT_EDEFAULT;
-			case CabinPackage.PASSENGER__DOOR:
-				return door != null;
-			case CabinPackage.PASSENGER__SEAT:
-				return seat != SEAT_EDEFAULT;
-			case CabinPackage.PASSENGER__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case CabinPackage.PASSENGER__BOARDING_TIME:
-				return boardingTime != BOARDING_TIME_EDEFAULT;
-			case CabinPackage.PASSENGER__SEAT_REF:
-				return seatRef != null;
-			case CabinPackage.PASSENGER__WIDTH:
-				return width != WIDTH_EDEFAULT;
-			case CabinPackage.PASSENGER__DEPTH:
-				return depth != DEPTH_EDEFAULT;
-			case CabinPackage.PASSENGER__ORIENTATION_IN_DEGREE:
-				return orientationInDegree != ORIENTATION_IN_DEGREE_EDEFAULT;
-			case CabinPackage.PASSENGER__POSITION_X:
-				return positionX != POSITION_X_EDEFAULT;
-			case CabinPackage.PASSENGER__POSITION_Y:
-				return positionY != POSITION_Y_EDEFAULT;
-			case CabinPackage.PASSENGER__IS_SEATED:
-				return isSeated != IS_SEATED_EDEFAULT;
-			case CabinPackage.PASSENGER__WALKING_SPEED:
-				return walkingSpeed != WALKING_SPEED_EDEFAULT;
-			case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
-				return startBoardingAfterDelay != START_BOARDING_AFTER_DELAY_EDEFAULT;
-			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
-				return numberOfWaits != NUMBER_OF_WAITS_EDEFAULT;
-			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
-				return luggageStowTime != LUGGAGE_STOW_TIME_EDEFAULT;
-			case CabinPackage.PASSENGER__TRAVEL_CLASS:
-				return travelClass != null;
-			case CabinPackage.PASSENGER__PASSENGER_MOOD:
-				return passengerMood != PASSENGER_MOOD_EDEFAULT;
-			case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
-				return numberOfMakeWayOperations != NUMBER_OF_MAKE_WAY_OPERATIONS_EDEFAULT;
-			case CabinPackage.PASSENGER__LUGGAGE:
-				return luggage != LUGGAGE_EDEFAULT;
+		case CabinPackage.PASSENGER__ID:
+			return id != ID_EDEFAULT;
+		case CabinPackage.PASSENGER__SEX:
+			return sex != SEX_EDEFAULT;
+		case CabinPackage.PASSENGER__HEIGHT:
+			return height != HEIGHT_EDEFAULT;
+		case CabinPackage.PASSENGER__AGE:
+			return age != AGE_EDEFAULT;
+		case CabinPackage.PASSENGER__WEIGHT:
+			return weight != WEIGHT_EDEFAULT;
+		case CabinPackage.PASSENGER__DOOR:
+			return door != null;
+		case CabinPackage.PASSENGER__SEAT:
+			return seat != SEAT_EDEFAULT;
+		case CabinPackage.PASSENGER__NAME:
+			return NAME_EDEFAULT == null ? name != null
+					: !NAME_EDEFAULT.equals(name);
+		case CabinPackage.PASSENGER__BOARDING_TIME:
+			return boardingTime != BOARDING_TIME_EDEFAULT;
+		case CabinPackage.PASSENGER__SEAT_REF:
+			return seatRef != null;
+		case CabinPackage.PASSENGER__WIDTH:
+			return width != WIDTH_EDEFAULT;
+		case CabinPackage.PASSENGER__DEPTH:
+			return depth != DEPTH_EDEFAULT;
+		case CabinPackage.PASSENGER__ORIENTATION_IN_DEGREE:
+			return orientationInDegree != ORIENTATION_IN_DEGREE_EDEFAULT;
+		case CabinPackage.PASSENGER__POSITION_X:
+			return positionX != POSITION_X_EDEFAULT;
+		case CabinPackage.PASSENGER__POSITION_Y:
+			return positionY != POSITION_Y_EDEFAULT;
+		case CabinPackage.PASSENGER__IS_SEATED:
+			return isSeated != IS_SEATED_EDEFAULT;
+		case CabinPackage.PASSENGER__WALKING_SPEED:
+			return walkingSpeed != WALKING_SPEED_EDEFAULT;
+		case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
+			return startBoardingAfterDelay != START_BOARDING_AFTER_DELAY_EDEFAULT;
+		case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
+			return numberOfWaits != NUMBER_OF_WAITS_EDEFAULT;
+		case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
+			return luggageStowTime != LUGGAGE_STOW_TIME_EDEFAULT;
+		case CabinPackage.PASSENGER__TRAVEL_CLASS:
+			return travelClass != null;
+		case CabinPackage.PASSENGER__PASSENGER_MOOD:
+			return passengerMood != PASSENGER_MOOD_EDEFAULT;
+		case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
+			return numberOfMakeWayOperations != NUMBER_OF_MAKE_WAY_OPERATIONS_EDEFAULT;
+		case CabinPackage.PASSENGER__LUGGAGE:
+			return luggage != LUGGAGE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (id: ");

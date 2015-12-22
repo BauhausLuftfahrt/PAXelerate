@@ -13,9 +13,10 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import net.bhl.cdt.paxelerate.model.MainDoor;
 
 /**
- * This is the item provider adapter for a {@link net.bhl.cdt.paxelerate.model.MainDoor} object.
- * <!-- begin-user-doc --> <!--
- * end-user-doc -->
+ * This is the item provider adapter for a
+ * {@link net.bhl.cdt.paxelerate.model.MainDoor} object. <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class MainDoorItemProvider extends DoorItemProvider {
@@ -45,8 +46,8 @@ public class MainDoorItemProvider extends DoorItemProvider {
 	}
 
 	/**
-	 * This returns MainDoor.gif.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This returns MainDoor.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -67,15 +68,15 @@ public class MainDoorItemProvider extends DoorItemProvider {
 		if (mainDoor.isIsActive()) {
 			str = "✓";
 		}
-		return getString("_UI_MainDoor_type") + " " + mainDoor.getId() + " ("
-				+ str + ")";
+		return getString("_UI_MainDoor_type") + " " + mainDoor.getId() + " (" + str + ")";
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc --> <!--
+	 * This handles model notifications by calling {@link #updateChildren} to
+	 * update any cached children and by creating a viewer notification, which
+	 * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -92,8 +93,7 @@ public class MainDoorItemProvider extends DoorItemProvider {
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

@@ -96,8 +96,8 @@ public class InfoViewPart extends ViewPart {
 		}
 		try {
 			pax[2] = ModelHelper
-					.getChildrenByClass(cabin, PremiumEconomyClass.class)
-					.get(0).getAvailableSeats();
+					.getChildrenByClass(cabin, PremiumEconomyClass.class).get(0)
+					.getAvailableSeats();
 		} catch (IndexOutOfBoundsException ioobe) {
 			pax[2] = 0;
 		}
@@ -120,20 +120,24 @@ public class InfoViewPart extends ViewPart {
 				e.gc.setInterpolation(SWT.HIGH);
 				e.gc.setFont(new Font(parent.getDisplay(), fontName, fontsize,
 						SWT.NONE));
-				
-				e.gc.fillRectangle(0, 0, canvas.getBounds().width, canvas.getBounds().height);
+
+				e.gc.fillRectangle(0, 0, canvas.getBounds().width,
+						canvas.getBounds().height);
 				e.gc.drawText("total seats: " + "\ntotal rows: "
 						+ "\n\npassengers: " + "\nalready seated: ", margin,
 						margin);
-				e.gc.drawText(seatList.size() + "\n" + rowList.size() + "\n\n"
-						+ paxList.size() + "\n"
-						+ SimulateBoardingCommand.getSeatedPassengers().size(),
+				e.gc.drawText(
+						seatList.size() + "\n" + rowList.size() + "\n\n"
+								+ paxList.size()
+								+ "\n" + SimulateBoardingCommand
+										.getSeatedPassengers().size(),
 						115, margin);
 
-				e.gc.drawText("seats in first class"
-						+ "\nseats in business class"
-						+ "\nseats in premium economy class"
-						+ "\nseats in economy class", boxTwoX, margin);
+				e.gc.drawText(
+						"seats in first class" + "\nseats in business class"
+								+ "\nseats in premium economy class"
+								+ "\nseats in economy class",
+						boxTwoX, margin);
 				if (!cabin.getClasses().isEmpty()) {
 					try {
 						e.gc.drawText(pax[0] + "\n" + pax[1] + "\n" + pax[2]

@@ -8,9 +8,8 @@ import net.bhl.cdt.paxelerate.model.CabinPackage;
 import net.bhl.cdt.paxelerate.model.MainDoor;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Main Door</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Main Door</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
  *
@@ -18,8 +17,8 @@ import net.bhl.cdt.paxelerate.model.MainDoor;
  */
 public class MainDoorImpl extends DoorImpl implements MainDoor {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected MainDoorImpl() {
@@ -27,8 +26,8 @@ public class MainDoorImpl extends DoorImpl implements MainDoor {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -36,4 +35,4 @@ public class MainDoorImpl extends DoorImpl implements MainDoor {
 		return CabinPackage.Literals.MAIN_DOOR;
 	}
 
-} //MainDoorImpl
+} // MainDoorImpl

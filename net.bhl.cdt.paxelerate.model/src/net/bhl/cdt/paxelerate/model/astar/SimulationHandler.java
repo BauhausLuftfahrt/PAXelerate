@@ -212,8 +212,9 @@ public class SimulationHandler {
 
 		int offset = 5;
 
-		Vector start = new Vector2D(AStarTools.size((seat.getXPosition() + seat
-				.getXDimension() / 2)),
+		Vector start = new Vector2D(
+				AStarTools
+						.size((seat.getXPosition() + seat.getXDimension() / 2)),
 				AStarTools.size((seat.getYPosition()) - 2));
 
 		if (pax.getSeatRef().getYPosition() < pax.getDoor().getYPosition()) {
@@ -221,8 +222,7 @@ public class SimulationHandler {
 			System.out.println("offset mirrored");
 		}
 
-		Vector goal = new Vector2D(
-				AStarTools.size(cabin.getCabinWidth() / 2.0),
+		Vector goal = new Vector2D(AStarTools.size(cabin.getCabinWidth() / 2.0),
 				AStarTools.size(seat.getYPosition()) + offset);
 
 		Agent agent = new Agent(pax, start, goal,
@@ -230,7 +230,8 @@ public class SimulationHandler {
 				myself);
 		agent.findNewPath();
 		agent.start();
-		pax.setNumberOfMakeWayOperations(pax.getNumberOfMakeWayOperations() + 1);
+		pax.setNumberOfMakeWayOperations(
+				pax.getNumberOfMakeWayOperations() + 1);
 
 		System.out.println("Launching passenger " + pax.getId() + " from x:"
 				+ start.getX() + ", y:" + start.getY() + " to x:" + goal.getX()
@@ -281,7 +282,8 @@ public class SimulationHandler {
 		// TODO: Do not use a static time stamp but consider the simulation
 		// speed!
 		double time = watch.getElapsedTimeTens();
-		if (Math.abs(lastDoorRelease.get(door) - time) > (AStarTools.time(0.15) / 1000.0)) {
+		if (Math.abs(lastDoorRelease.get(door) - time) > (AStarTools.time(0.15)
+				/ 1000.0)) {
 			lastDoorRelease.put(door, time);
 			return true;
 		}
@@ -304,7 +306,8 @@ public class SimulationHandler {
 		}
 	}
 
-	public static synchronized void sleepAgent(int duration, Passenger passenger) {
+	public static synchronized void sleepAgent(int duration,
+			Passenger passenger) {
 		getAgentByPassengerID(passenger.getId()).interruptAgent(duration);
 	}
 
@@ -319,12 +322,11 @@ public class SimulationHandler {
 		for (Passenger passenger : cabin.getPassengers()) {
 			Seat seat = passenger.getSeatRef();
 			Door door = passenger.getDoor();
-			Vector start = new Vector2D(
-					0,
-					AStarTools.size((door.getYPosition() + door.getWidth() / 2)));
+			Vector start = new Vector2D(0, AStarTools
+					.size((door.getYPosition() + door.getWidth() / 2)));
 			Vector goal = new Vector2D(
-					AStarTools
-							.size((seat.getXPosition() + seat.getXDimension() / 2)),
+					AStarTools.size(
+							(seat.getXPosition() + seat.getXDimension() / 2)),
 					AStarTools.size((seat.getYPosition()) - 1));
 
 			if (doItOnce) {
@@ -354,11 +356,14 @@ public class SimulationHandler {
 						// cost map could be implemented!
 
 						if (percent < 10) {
-							progress.updateText("Initializing Path finding algorithms ...");
+							progress.updateText(
+									"Initializing Path finding algorithms ...");
 						} else if (percent < 30) {
-							progress.updateText("Creating the agent objects ...");
+							progress.updateText(
+									"Creating the agent objects ...");
 						} else if (percent < 90) {
-							progress.updateText("Calculating the paths for every passenger ...");
+							progress.updateText(
+									"Calculating the paths for every passenger ...");
 						} else {
 							progress.updateText("Finishing calculations ...");
 						}

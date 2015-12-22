@@ -18,8 +18,8 @@ public class OS {
 
 	public static boolean isUnix() {
 
-		return (OSString.indexOf("nix") >= 0 || OSString.indexOf("nux") >= 0 || OSString.indexOf("aix") > 0 );
-		
+		return (OSString.indexOf("nix") >= 0 || OSString.indexOf("nux") >= 0 || OSString.indexOf("aix") > 0);
+
 	}
 
 	public static boolean isSolaris() {

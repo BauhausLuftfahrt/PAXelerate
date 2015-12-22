@@ -23,22 +23,24 @@ public class DrawCabinHandler extends AbstractHandler {
 	/**
 	 * Get selected Element.
 	 * 
-	 * @param event Selected Element
-	 * @throws ExecutionException Exception
+	 * @param event
+	 *            Selected Element
+	 * @throws ExecutionException
+	 *             Exception
 	 * @return null
 	 */
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		//Shell shell = HandlerUtil.getActiveShell(event);
+		// Shell shell = HandlerUtil.getActiveShell(event);
 		ISelection sel = HandlerUtil.getActiveMenuSelection(event);
 		IStructuredSelection selection = (IStructuredSelection) sel;
 
 		Object firstElement = selection.getFirstElement();
-		//if (firstElement instanceof Cabin) {
+		// if (firstElement instanceof Cabin) {
 
-			new DrawCabinCommand((Cabin) firstElement).execute();
+		new DrawCabinCommand((Cabin) firstElement).execute();
 
-		//}
+		// }
 
 		return null;
 	}

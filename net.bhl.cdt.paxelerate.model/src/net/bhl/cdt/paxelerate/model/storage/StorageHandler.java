@@ -37,8 +37,8 @@ public class StorageHandler {
 		}
 
 		if (numberOfPassengers[0] > 179) {
-			Exporter.generateDistributionFile("export", weightStore, heightStore,
-					depthStore, widthStore, ageStore, luggageStore,
+			Exporter.generateDistributionFile("export", weightStore,
+					heightStore, depthStore, widthStore, ageStore, luggageStore,
 					numberOfPassengers);
 		}
 	}

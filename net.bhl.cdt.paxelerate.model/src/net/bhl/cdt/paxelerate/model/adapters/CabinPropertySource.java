@@ -33,8 +33,9 @@ public class CabinPropertySource implements IPropertySource {
 	@Override
 	public IPropertyDescriptor[] getPropertyDescriptors() {
 
-		return new IPropertyDescriptor[] { new TextPropertyDescriptor("summary", "Summary"),
-			new TextPropertyDescriptor("description", "Description") };
+		return new IPropertyDescriptor[] {
+				new TextPropertyDescriptor("summary", "Summary"),
+				new TextPropertyDescriptor("description", "Description") };
 	}
 
 	@Override

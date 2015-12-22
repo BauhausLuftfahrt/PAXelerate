@@ -9,19 +9,19 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Class Type</b></em>',
- * and utility methods for working with them.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration '
+ * <em><b>Class Type</b></em>', and utility methods for working with them. <!--
+ * end-user-doc -->
+ * 
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getClassType()
  * @model
  * @generated
  */
 public enum ClassType implements Enumerator {
 	/**
-	 * The '<em><b>First</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>First</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #FIRST_VALUE
 	 * @generated
 	 * @ordered
@@ -29,9 +29,9 @@ public enum ClassType implements Enumerator {
 	FIRST(0, "First", "First"),
 
 	/**
-	 * The '<em><b>Business</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Business</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #BUSINESS_VALUE
 	 * @generated
 	 * @ordered
@@ -39,17 +39,18 @@ public enum ClassType implements Enumerator {
 	BUSINESS(1, "Business", "Business"),
 
 	/**
-	 * The '<em><b>Premium Eco</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Premium Eco</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #PREMIUM_ECO_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	PREMIUM_ECO(2, "PremiumEco", "PremiumEconomy"), /**
-	 * The '<em><b>Economy</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+	PREMIUM_ECO(2, "PremiumEco", "PremiumEconomy"),
+	/**
+	 * The '<em><b>Economy</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #ECONOMY_VALUE
 	 * @generated
 	 * @ordered
@@ -57,13 +58,13 @@ public enum ClassType implements Enumerator {
 	ECONOMY(3, "Economy", "Economy");
 
 	/**
-	 * The '<em><b>First</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>First</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>First</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #FIRST
 	 * @model name="First"
 	 * @generated
@@ -72,13 +73,13 @@ public enum ClassType implements Enumerator {
 	public static final int FIRST_VALUE = 0;
 
 	/**
-	 * The '<em><b>Business</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Business</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Business</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #BUSINESS
 	 * @model name="Business"
 	 * @generated
@@ -87,13 +88,13 @@ public enum ClassType implements Enumerator {
 	public static final int BUSINESS_VALUE = 1;
 
 	/**
-	 * The '<em><b>Premium Eco</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Premium Eco</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Premium Eco</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Premium Eco</b></em>' literal object isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #PREMIUM_ECO
 	 * @model name="PremiumEco" literal="PremiumEconomy"
 	 * @generated
@@ -102,13 +103,13 @@ public enum ClassType implements Enumerator {
 	public static final int PREMIUM_ECO_VALUE = 2;
 
 	/**
-	 * The '<em><b>Economy</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Economy</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Economy</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #ECONOMY
 	 * @model name="Economy"
 	 * @generated
@@ -117,31 +118,27 @@ public enum ClassType implements Enumerator {
 	public static final int ECONOMY_VALUE = 3;
 
 	/**
-	 * An array of all the '<em><b>Class Type</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * An array of all the '<em><b>Class Type</b></em>' enumerators. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	private static final ClassType[] VALUES_ARRAY =
-		new ClassType[] {
-			FIRST,
-			BUSINESS,
-			PREMIUM_ECO,
-			ECONOMY,
-		};
+	private static final ClassType[] VALUES_ARRAY = new ClassType[] { FIRST,
+			BUSINESS, PREMIUM_ECO, ECONOMY, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Class Type</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Class Type</b></em>'
+	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public static final List<ClassType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ClassType> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Class Type</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Class Type</b></em>' literal with the specified
+	 * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ClassType get(String literal) {
@@ -156,8 +153,8 @@ public enum ClassType implements Enumerator {
 
 	/**
 	 * Returns the '<em><b>Class Type</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ClassType getByName(String name) {
@@ -171,46 +168,50 @@ public enum ClassType implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Class Type</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Class Type</b></em>' literal with the specified
+	 * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ClassType get(int value) {
 		switch (value) {
-			case FIRST_VALUE: return FIRST;
-			case BUSINESS_VALUE: return BUSINESS;
-			case PREMIUM_ECO_VALUE: return PREMIUM_ECO;
-			case ECONOMY_VALUE: return ECONOMY;
+		case FIRST_VALUE:
+			return FIRST;
+		case BUSINESS_VALUE:
+			return BUSINESS;
+		case PREMIUM_ECO_VALUE:
+			return PREMIUM_ECO;
+		case ECONOMY_VALUE:
+			return ECONOMY;
 		}
 		return null;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private ClassType(int value, String name, String literal) {
@@ -220,41 +221,41 @@ public enum ClassType implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string
+	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
 		return literal;
 	}
-	
-} //ClassType
+
+} // ClassType

@@ -5,17 +5,18 @@ package net.bhl.cdt.paxelerate.model;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Result</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Result</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Result#getBoardingTime <em>Boarding Time</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Result#getPassengers <em>Passengers</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Result#getName <em>Name</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Result#getId <em>Id</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.Result#getBoardingTime
+ * <em>Boarding Time</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.Result#getPassengers
+ * <em>Passengers</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.Result#getName <em>Name</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.Result#getId <em>Id</em>}</li>
  * </ul>
  * </p>
  *
@@ -25,13 +26,14 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Result extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Boarding Time</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Boarding Time</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Boarding Time</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Boarding Time</em>' attribute.
 	 * @see #setBoardingTime(double)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getResult_BoardingTime()
@@ -41,23 +43,27 @@ public interface Result extends EObject {
 	double getBoardingTime();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Result#getBoardingTime <em>Boarding Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Boarding Time</em>' attribute.
+	 * Sets the value of the '
+	 * {@link net.bhl.cdt.paxelerate.model.Result#getBoardingTime
+	 * <em>Boarding Time</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Boarding Time</em>' attribute.
 	 * @see #getBoardingTime()
 	 * @generated
 	 */
 	void setBoardingTime(double value);
 
 	/**
-	 * Returns the value of the '<em><b>Passengers</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Passengers</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Passengers</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Passengers</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Passengers</em>' attribute.
 	 * @see #setPassengers(int)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getResult_Passengers()
@@ -67,23 +73,27 @@ public interface Result extends EObject {
 	int getPassengers();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Result#getPassengers <em>Passengers</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Passengers</em>' attribute.
+	 * Sets the value of the '
+	 * {@link net.bhl.cdt.paxelerate.model.Result#getPassengers
+	 * <em>Passengers</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Passengers</em>' attribute.
 	 * @see #getPassengers()
 	 * @generated
 	 */
 	void setPassengers(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getResult_Name()
@@ -93,23 +103,25 @@ public interface Result extends EObject {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Result#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Result#getName
+	 * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Id</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Id</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(int)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getResult_Id()
@@ -119,10 +131,11 @@ public interface Result extends EObject {
 	int getId();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Result#getId <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Id</em>' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Result#getId
+	 * <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Id</em>' attribute.
 	 * @see #getId()
 	 * @generated
 	 */

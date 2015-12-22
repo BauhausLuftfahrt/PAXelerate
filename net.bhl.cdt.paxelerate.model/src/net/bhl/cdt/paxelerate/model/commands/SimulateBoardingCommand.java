@@ -56,7 +56,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 	 */
 	public SimulateBoardingCommand(Shell shell, Cabin cabin) {
 		this.cabin = cabin;
-		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
+		logger = Platform
+				.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
 	}
 
 	/**
@@ -123,7 +124,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 				passenger.setBoardingTime(0);
 			}
 
-			for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
+			for (Seat seat : ModelHelper.getChildrenByClass(cabin,
+					Seat.class)) {
 				seat.setOccupied(false);
 			}
 
@@ -131,8 +133,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 					"Initializing new boarding simulation ..."));
 
 			if (cabin.getPassengers().isEmpty()) {
-				Input input = new Input(
-						WindowType.GET_BOOLEAN,
+				Input input = new Input(WindowType.GET_BOOLEAN,
 						"You did not create any passengers. Random passeners are now created.",
 						IMessageProvider.ERROR);
 				if (input.getBooleanValue()) {
@@ -146,10 +147,12 @@ public class SimulateBoardingCommand extends CDTCommand {
 				ObstacleMap obstaclemap = new ObstacleMap(cabin);
 
 				SimulationHandler handler = new SimulationHandler(obstaclemap,
-						new Vector2D((int) (cabin.getCabinWidth() / cabin
-								.getScale()),
-								(int) (cabin.getCabinLength() / cabin
-										.getScale())), cabin);
+						new Vector2D(
+								(int) (cabin.getCabinWidth()
+										/ cabin.getScale()),
+								(int) (cabin.getCabinLength()
+										/ cabin.getScale())),
+						cabin);
 
 				while (!SimulationHandler.isSimulationDone()) {
 					// try {
@@ -208,8 +211,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 					}
 
 					if (!SimulationHandler.getAgentList().isEmpty()) {
-						cabinViewPart.submitAgents(SimulationHandler
-								.getAgentList());
+						cabinViewPart
+								.submitAgents(SimulationHandler.getAgentList());
 						logger.log(new Status(IStatus.INFO,
 								"net.bhl.cdt.paxelerate.model",
 								"Paths printed successfully"));
@@ -219,16 +222,15 @@ public class SimulateBoardingCommand extends CDTCommand {
 							"Boarding simulation completed"));
 				}
 			} else {
-				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.paxelerate.model",
+				logger.log(new Status(IStatus.ERROR,
+						"net.bhl.cdt.paxelerate.model",
 						"No boarding possible! Please create passengers!"));
 			}
-			results.getSimulationData(
-					SimulationHandler.getCabin(),
-					i + 1,
-					Func.round(
-							(SimulationView.getWatch().getElapsedTimeSecs() * (double) cabin
-									.getSimulationSettings()
-									.getSimulationSpeedFactor()), 2));
+			results.getSimulationData(SimulationHandler.getCabin(), i + 1,
+					Func.round((SimulationView.getWatch().getElapsedTimeSecs()
+							* (double) cabin.getSimulationSettings()
+									.getSimulationSpeedFactor()),
+							2));
 		}
 		results.printSimulationData();
 		cabinViewPart.clearCache();

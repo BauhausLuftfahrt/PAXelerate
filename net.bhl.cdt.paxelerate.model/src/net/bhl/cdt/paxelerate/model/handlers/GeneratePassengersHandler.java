@@ -21,13 +21,15 @@ public class GeneratePassengersHandler extends AbstractHandler {
 	/**
 	 * Get selected Element.
 	 * 
-	 * @param event Selected Element
-	 * @throws ExecutionException Exception
+	 * @param event
+	 *            Selected Element
+	 * @throws ExecutionException
+	 *             Exception
 	 * @return null
 	 */
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		//Shell shell = HandlerUtil.getActiveShell(event);
+		// Shell shell = HandlerUtil.getActiveShell(event);
 		ISelection sel = HandlerUtil.getActiveMenuSelection(event);
 		IStructuredSelection selection = (IStructuredSelection) sel;
 

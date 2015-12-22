@@ -8,9 +8,8 @@ import net.bhl.cdt.paxelerate.model.CabinPackage;
 import net.bhl.cdt.paxelerate.model.EmergencyExit;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Emergency Exit</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Emergency Exit</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
  *
@@ -18,8 +17,8 @@ import net.bhl.cdt.paxelerate.model.EmergencyExit;
  */
 public class EmergencyExitImpl extends DoorImpl implements EmergencyExit {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected EmergencyExitImpl() {
@@ -27,8 +26,8 @@ public class EmergencyExitImpl extends DoorImpl implements EmergencyExit {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -36,4 +35,4 @@ public class EmergencyExitImpl extends DoorImpl implements EmergencyExit {
 		return CabinPackage.Literals.EMERGENCY_EXIT;
 	}
 
-} //EmergencyExitImpl
+} // EmergencyExitImpl

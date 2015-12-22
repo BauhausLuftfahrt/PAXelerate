@@ -5,7 +5,6 @@
  ***************************************************************************************/
 package net.bhl.cdt.paxelerate.model.observer;
 
-
 /**
  * TODO: Description
  */

@@ -103,17 +103,17 @@ public class HelpView extends JPanel {
 
 				if (costmap.getCostForCoordinates(x, y) == -1) {
 					g.setColor(Color.DARK_GRAY);
-					g.fillRect(x * squareDimension - squareCorrectX, y
-							* squareDimension - squareCorrectY,
+					g.fillRect(x * squareDimension - squareCorrectX,
+							y * squareDimension - squareCorrectY,
 							squareDimension, squareDimension);
 				} else {
 
-					g.fillRect(x * squareDimension - squareCorrectX, y
-							* squareDimension - squareCorrectY,
+					g.fillRect(x * squareDimension - squareCorrectX,
+							y * squareDimension - squareCorrectY,
 							squareDimension, squareDimension);
 					g.setColor(Color.BLACK);
-					g.drawString(costmap.getCostForCoordinates(x, y) + "", x
-							* squareDimension, y * squareDimension);
+					g.drawString(costmap.getCostForCoordinates(x, y) + "",
+							x * squareDimension, y * squareDimension);
 
 				}
 			}

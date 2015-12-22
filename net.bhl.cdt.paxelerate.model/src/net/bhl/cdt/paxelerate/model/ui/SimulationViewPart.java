@@ -69,7 +69,8 @@ public class SimulationViewPart extends ViewPart {
 							SWT.NONE));
 
 					for (int x = 0; x < areamap.getDimensions().getY(); x++) {
-						for (int y = 0; y < areamap.getDimensions().getX(); y++) {
+						for (int y = 0; y < areamap.getDimensions()
+								.getX(); y++) {
 
 							Node node = areamap.getNodeByCoordinate(y, x);
 							e.gc.setForeground(getColor("#000000"));
@@ -78,22 +79,24 @@ public class SimulationViewPart extends ViewPart {
 									if (node.getTypeForPrinting().equals("O")
 											|| node.getTypeForPrinting()
 													.equals(" ")) {
-										e.gc.setForeground(switchColor(SimulationHandler
-												.getAgentByPassenger(
-														node.getPassenger())
-												.getCurrentState()));
+										e.gc.setForeground(
+												switchColor(SimulationHandler
+														.getAgentByPassenger(
+																node.getPassenger())
+														.getCurrentState()));
 
 										if (!node.isHidden()) {
-											e.gc.drawString("O", (x)
-													* FONT_SIZE, y * FONT_SIZE);
+											e.gc.drawString("O",
+													(x) * FONT_SIZE,
+													y * FONT_SIZE);
 										}
 									} else {
 										e.gc.setForeground(getColor("#000000"));
 										if (node.getTypeForPrinting() != null) {
 											e.gc.drawString(
 													node.getTypeForPrinting(),
-													(x) * FONT_SIZE, y
-															* FONT_SIZE);
+													(x) * FONT_SIZE,
+													y * FONT_SIZE);
 										}
 									}
 								} catch (NullPointerException a) {

@@ -8,18 +8,18 @@ import net.bhl.cdt.paxelerate.model.CabinPackage;
 import net.bhl.cdt.paxelerate.model.PremiumEconomyClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Premium Economy Class</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Premium Economy Class</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class PremiumEconomyClassImpl extends TravelClassImpl implements PremiumEconomyClass {
+public class PremiumEconomyClassImpl extends TravelClassImpl
+		implements PremiumEconomyClass {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected PremiumEconomyClassImpl() {
@@ -27,8 +27,8 @@ public class PremiumEconomyClassImpl extends TravelClassImpl implements PremiumE
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -36,4 +36,4 @@ public class PremiumEconomyClassImpl extends TravelClassImpl implements PremiumE
 		return CabinPackage.Literals.PREMIUM_ECONOMY_CLASS;
 	}
 
-} //PremiumEconomyClassImpl
+} // PremiumEconomyClassImpl

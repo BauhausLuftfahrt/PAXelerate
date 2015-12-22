@@ -9,19 +9,19 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Sex</b></em>',
- * and utility methods for working with them.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration '
+ * <em><b>Sex</b></em>', and utility methods for working with them. <!--
+ * end-user-doc -->
+ * 
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSex()
  * @model
  * @generated
  */
 public enum Sex implements Enumerator {
 	/**
-	 * The '<em><b>Male</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Male</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #MALE_VALUE
 	 * @generated
 	 * @ordered
@@ -29,9 +29,9 @@ public enum Sex implements Enumerator {
 	MALE(1, "male", "male"),
 
 	/**
-	 * The '<em><b>Female</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Female</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #FEMALE_VALUE
 	 * @generated
 	 * @ordered
@@ -39,13 +39,13 @@ public enum Sex implements Enumerator {
 	FEMALE(0, "female", "female");
 
 	/**
-	 * The '<em><b>Male</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Male</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Male</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #MALE
 	 * @model name="male"
 	 * @generated
@@ -54,13 +54,13 @@ public enum Sex implements Enumerator {
 	public static final int MALE_VALUE = 1;
 
 	/**
-	 * The '<em><b>Female</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Female</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Female</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #FEMALE
 	 * @model name="female"
 	 * @generated
@@ -69,29 +69,26 @@ public enum Sex implements Enumerator {
 	public static final int FEMALE_VALUE = 0;
 
 	/**
-	 * An array of all the '<em><b>Sex</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * An array of all the '<em><b>Sex</b></em>' enumerators. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	private static final Sex[] VALUES_ARRAY =
-		new Sex[] {
-			MALE,
-			FEMALE,
-		};
+	private static final Sex[] VALUES_ARRAY = new Sex[] { MALE, FEMALE, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Sex</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public static final List<Sex> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<Sex> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Sex</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Sex</b></em>' literal with the specified literal
+	 * value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static Sex get(String literal) {
@@ -105,9 +102,9 @@ public enum Sex implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Sex</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Sex</b></em>' literal with the specified name. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static Sex getByName(String name) {
@@ -121,44 +118,46 @@ public enum Sex implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Sex</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Sex</b></em>' literal with the specified integer
+	 * value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static Sex get(int value) {
 		switch (value) {
-			case MALE_VALUE: return MALE;
-			case FEMALE_VALUE: return FEMALE;
+		case MALE_VALUE:
+			return MALE;
+		case FEMALE_VALUE:
+			return FEMALE;
 		}
 		return null;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private Sex(int value, String name, String literal) {
@@ -168,41 +167,41 @@ public enum Sex implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string
+	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
 		return literal;
 	}
-	
-} //Sex
+
+} // Sex

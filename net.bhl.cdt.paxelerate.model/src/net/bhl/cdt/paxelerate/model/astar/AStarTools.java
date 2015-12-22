@@ -47,10 +47,8 @@ public class AStarTools {
 	 * @return transformed time in milliseconds
 	 */
 	public static long time(double timeInSeconds) {
-		double value = timeInSeconds
-				* 1000.0
-				/ SimulationHandler.getCabin().getSimulationSettings()
-						.getSimulationSpeedFactor();
+		double value = timeInSeconds * 1000.0 / SimulationHandler.getCabin()
+				.getSimulationSettings().getSimulationSpeedFactor();
 		if (value < 1) {
 			value = 1;
 		}

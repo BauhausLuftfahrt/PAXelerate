@@ -28,7 +28,5 @@ public class CabinViewInitializer extends AbstractPreferenceInitializer {
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
 		store.setDefault("CabinViewFPS", 5);
 		store.setDefault("CabinViewScale", 10);
-
 	}
-
 }

@@ -7,8 +7,9 @@ Bundle-Activator: net.bhl.cdt.paxelerate.ui.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  net.bhl.cdt.ui,
- org.eclipse.ui.cheatsheets
+ org.eclipse.ui.cheatsheets,
+ net.bhl.cdt.paxelerate.util;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Import-Package: net.bhl.cdt.paxelerate.util
-Export-Package: net.bhl.cdt.paxelerate.ui
+Export-Package: net.bhl.cdt.paxelerate.ui,
+ net.bhl.cdt.paxelerate.ui.util

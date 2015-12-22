@@ -24,7 +24,6 @@ public class CabinPreferencePage extends FieldEditorPreferencePage implements IW
 	 */
 	public CabinPreferencePage() {
 		super(GRID);
-
 	}
 
 	/**

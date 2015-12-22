@@ -44,7 +44,8 @@ public class SortPassengersCommand extends CDTCommand {
 	public SortPassengersCommand(Cabin cabin) {
 
 		this.cabin = cabin;
-		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
+		logger = Platform
+				.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
 	}
 
 	public void setPropertiesManually(boolean showDialog, int value) {
@@ -60,8 +61,7 @@ public class SortPassengersCommand extends CDTCommand {
 	protected void doRun() {
 
 		if (showDialog) {
-			Input input = new Input(
-					WindowType.OPTIONS,
+			Input input = new Input(WindowType.OPTIONS,
 					"Please choose a sorting algorithm. [0]: Random, [1]: RTF, [2]: FTR, [3]: WTA, [4]: WTA & RTF, [5]: WTA & FTR",
 					IMessageProvider.INFORMATION);
 

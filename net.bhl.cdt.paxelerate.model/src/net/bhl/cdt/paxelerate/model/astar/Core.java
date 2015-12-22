@@ -127,12 +127,12 @@ public class Core {
 									neighbor);
 
 					/* calculate the neighbors cost from start */
-					int neighborCostFromStart = costmap.getCost(neighbor
-							.getPosition());
+					int neighborCostFromStart = costmap
+							.getCost(neighbor.getPosition());
 
 					/* calculate the current cost from start for comparison */
-					int currentCostFromStart = costmap.getCost(current
-							.getPosition());
+					int currentCostFromStart = costmap
+							.getCost(current.getPosition());
 
 					/* add neighbor to the open list if it is not there */
 					if (!openList.contains(neighbor)) {
@@ -155,7 +155,8 @@ public class Core {
 					if (neighborIsBetter) {
 						neighbor.setPreviousNode(current);
 						neighbor.setCostFromStart(neighborCostFromStart);
-						neighbor.setDistanceFromStart(neighborDistanceFromStart);
+						neighbor.setDistanceFromStart(
+								neighborDistanceFromStart);
 					}
 				}
 			}
@@ -196,8 +197,8 @@ public class Core {
 
 			}
 		} catch (NullPointerException e) {
-			System.out
-					.println("###### !NullPointerException ERROR! ###### !Core - reconstructPath()! ######");
+			System.out.println(
+					"###### !NullPointerException ERROR! ###### !Core - reconstructPath()! ######");
 			e.printStackTrace();
 		}
 		return path;

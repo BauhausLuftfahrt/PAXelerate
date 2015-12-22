@@ -206,18 +206,30 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="net.bhl.cdt.client.application"
-            name="PAXELERATE">
+            name="PAXelerate">
          <property
                name="appName"
-               value="PAXELERATE">
+               value="PAXelerate">
+         </property>
+         <property
+               name="windowImages"
+               value="/com.paxelerate/icon.png">
+         </property>
+         <property
+               name="startupForegroundColor"
+               value="000000">
+         </property>
+         <property
+               name="startupMessageRect"
+               value="7,252,445,20">
+         </property>
+         <property
+               name="startupProgressRect"
+               value="5,275,445,15">
          </property>
          <property
                name="preferenceCustomization"
                value="plugin_customization.ini">
-         </property>
-         <property
-               name="windowImages"
-               value="icon.png,icon.png,icon.png,icon.png,icon.png,icon.png">
          </property>
       </product>
    </extension>
@@ -268,7 +280,7 @@
             name="PAXelerate">
          <property
                name="windowImages"
-               value="/com.paxelerate/icon.png,/com.paxelerate/icon.png,/com.paxelerate/icon.png,/com.paxelerate/icon.png,/com.paxelerate/icon.png,/com.paxelerate/icon.png">
+               value="/com.paxelerate/icon.png">
          </property>
          <property
                name="startupForegroundColor"

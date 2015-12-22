@@ -53,7 +53,8 @@ public class GenerateCabinCommand extends CDTCommand {
 	 */
 	public GenerateCabinCommand(Cabin cabin) {
 		this.cabin = cabin;
-		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
+		logger = Platform
+				.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
 		cabin.getSimulationSettings().setSimulationSpeedFactor(1);
 		if (cabin.isUsePresetSettings()) {
 			switch (cabin.getAircraftType()) {
@@ -70,7 +71,8 @@ public class GenerateCabinCommand extends CDTCommand {
 				cabin.setCabinLength(4440);
 				break;
 			default:
-				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.paxelerate.model",
+				logger.log(new Status(IStatus.ERROR,
+						"net.bhl.cdt.paxelerate.model",
 						"Error defining aircraft width."));
 				break;
 			}

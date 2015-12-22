@@ -2,17 +2,17 @@
  */
 package net.bhl.cdt.paxelerate.model;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Curtain</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Curtain</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Curtain#getPostitionAfterRow <em>Postition After Row</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Curtain#isCurtainOpen <em>Curtain Open</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.Curtain#getPostitionAfterRow
+ * <em>Postition After Row</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.Curtain#isCurtainOpen
+ * <em>Curtain Open</em>}</li>
  * </ul>
  * </p>
  *
@@ -25,10 +25,11 @@ public interface Curtain extends PhysicalObject {
 	 * Returns the value of the '<em><b>Postition After Row</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Postition After Row</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Postition After Row</em>' attribute isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Postition After Row</em>' attribute.
 	 * @see #setPostitionAfterRow(int)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getCurtain_PostitionAfterRow()
@@ -38,23 +39,27 @@ public interface Curtain extends PhysicalObject {
 	int getPostitionAfterRow();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Curtain#getPostitionAfterRow <em>Postition After Row</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Postition After Row</em>' attribute.
+	 * Sets the value of the '
+	 * {@link net.bhl.cdt.paxelerate.model.Curtain#getPostitionAfterRow
+	 * <em>Postition After Row</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Postition After Row</em>' attribute.
 	 * @see #getPostitionAfterRow()
 	 * @generated
 	 */
 	void setPostitionAfterRow(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Curtain Open</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Curtain Open</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Curtain Open</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Curtain Open</em>' attribute.
 	 * @see #setCurtainOpen(boolean)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getCurtain_CurtainOpen()
@@ -64,10 +69,13 @@ public interface Curtain extends PhysicalObject {
 	boolean isCurtainOpen();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Curtain#isCurtainOpen <em>Curtain Open</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Curtain Open</em>' attribute.
+	 * Sets the value of the '
+	 * {@link net.bhl.cdt.paxelerate.model.Curtain#isCurtainOpen
+	 * <em>Curtain Open</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Curtain Open</em>' attribute.
 	 * @see #isCurtainOpen()
 	 * @generated
 	 */

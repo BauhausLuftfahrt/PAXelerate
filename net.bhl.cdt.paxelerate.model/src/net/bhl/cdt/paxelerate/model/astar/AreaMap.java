@@ -70,9 +70,11 @@ public class AreaMap {
 			for (int j = 0; j < dimensions.getY(); j++) {
 				if (map.get(i).get(j).getProperty() == Property.AGENT) {
 					System.out.print("O");
-				} else if ((map.get(i).get(j).getProperty() == Property.OBSTACLE)) {
+				} else if ((map.get(i).get(j)
+						.getProperty() == Property.OBSTACLE)) {
 					System.out.print("X");
-				} else if ((map.get(i).get(j).getProperty() == Property.START)) {
+				} else if ((map.get(i).get(j)
+						.getProperty() == Property.START)) {
 					System.out.print("X");
 				} else {
 					System.out.print("-");
@@ -197,9 +199,8 @@ public class AreaMap {
 
 		for (Node node : nodeList) {
 
-			if (node.getProperty().equals(property)
-					&& node.getPassenger().getId() == agent.getPassenger()
-							.getId()) {
+			if (node.getProperty().equals(property) && node.getPassenger()
+					.getId() == agent.getPassenger().getId()) {
 				return node;
 			}
 		}
@@ -214,15 +215,13 @@ public class AreaMap {
 	public synchronized void setStartLocation(Vector position, Agent agent) {
 
 		if (position == null) {
-			getNode(agent.getStart()).getStartList().add(
-					new NodeProperty(agent.getPassenger().getId(),
-							Property.START));
+			getNode(agent.getStart()).getStartList().add(new NodeProperty(
+					agent.getPassenger().getId(), Property.START));
 		} else {
 			Node oldStartLocation = this.getNode(agent.getStart());
 			oldStartLocation.removeItemById(agent.getPassenger().getId());
-			getNode(position).getStartList().add(
-					new NodeProperty(agent.getPassenger().getId(),
-							Property.START));
+			getNode(position).getStartList().add(new NodeProperty(
+					agent.getPassenger().getId(), Property.START));
 		}
 		// if (oldStartLocation != null &&
 	}
@@ -239,14 +238,17 @@ public class AreaMap {
 	public double getDistanceBetween(Node node1, Node node2) {
 		try {
 			int exponent = 2;
-			double first = Math.pow((node2.getPosition().getX() - node1
-					.getPosition().getX()), exponent);
-			double second = Math.pow((node2.getPosition().getY() - node1
-					.getPosition().getY()), exponent);
+			double first = Math.pow(
+					(node2.getPosition().getX() - node1.getPosition().getX()),
+					exponent);
+			double second = Math.pow(
+					(node2.getPosition().getY() - node1.getPosition().getY()),
+					exponent);
 			return Math.sqrt(first + second);
 		} catch (NullPointerException e) {
 			// System.out
-			// .println("###### !NullPointerException ERROR! ###### !AreaMap - getDistanceBetween()! ######");
+			// .println("###### !NullPointerException ERROR! ###### !AreaMap -
+			// getDistanceBetween()! ######");
 			return Double.MAX_VALUE;
 		}
 	}

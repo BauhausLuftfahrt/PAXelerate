@@ -8,9 +8,8 @@ import net.bhl.cdt.paxelerate.model.CabinPackage;
 import net.bhl.cdt.paxelerate.model.Stowage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Stowage</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Stowage</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
  *
@@ -18,8 +17,8 @@ import net.bhl.cdt.paxelerate.model.Stowage;
  */
 public class StowageImpl extends PhysicalObjectImpl implements Stowage {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected StowageImpl() {
@@ -27,8 +26,8 @@ public class StowageImpl extends PhysicalObjectImpl implements Stowage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -36,4 +35,4 @@ public class StowageImpl extends PhysicalObjectImpl implements Stowage {
 		return CabinPackage.Literals.STOWAGE;
 	}
 
-} //StowageImpl
+} // StowageImpl

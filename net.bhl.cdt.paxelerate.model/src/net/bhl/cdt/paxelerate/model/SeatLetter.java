@@ -9,19 +9,19 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Seat Letter</b></em>',
- * and utility methods for working with them.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration '
+ * <em><b>Seat Letter</b></em>', and utility methods for working with them. <!--
+ * end-user-doc -->
+ * 
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSeatLetter()
  * @model
  * @generated
  */
 public enum SeatLetter implements Enumerator {
 	/**
-	 * The '<em><b>A</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>A</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #A_VALUE
 	 * @generated
 	 * @ordered
@@ -29,9 +29,9 @@ public enum SeatLetter implements Enumerator {
 	A(0, "A", "A"),
 
 	/**
-	 * The '<em><b>B</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>B</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #B_VALUE
 	 * @generated
 	 * @ordered
@@ -39,9 +39,9 @@ public enum SeatLetter implements Enumerator {
 	B(1, "B", "B"),
 
 	/**
-	 * The '<em><b>C</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>C</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #C_VALUE
 	 * @generated
 	 * @ordered
@@ -49,9 +49,9 @@ public enum SeatLetter implements Enumerator {
 	C(2, "C", "C"),
 
 	/**
-	 * The '<em><b>D</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>D</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #D_VALUE
 	 * @generated
 	 * @ordered
@@ -59,9 +59,9 @@ public enum SeatLetter implements Enumerator {
 	D(3, "D", "D"),
 
 	/**
-	 * The '<em><b>E</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>E</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #E_VALUE
 	 * @generated
 	 * @ordered
@@ -69,9 +69,9 @@ public enum SeatLetter implements Enumerator {
 	E(4, "E", "E"),
 
 	/**
-	 * The '<em><b>F</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>F</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #F_VALUE
 	 * @generated
 	 * @ordered
@@ -79,13 +79,13 @@ public enum SeatLetter implements Enumerator {
 	F(5, "F", "F");
 
 	/**
-	 * The '<em><b>A</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>A</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>A</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>A</b></em>' literal object isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #A
 	 * @model
 	 * @generated
@@ -94,13 +94,13 @@ public enum SeatLetter implements Enumerator {
 	public static final int A_VALUE = 0;
 
 	/**
-	 * The '<em><b>B</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>B</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>B</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>B</b></em>' literal object isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #B
 	 * @model
 	 * @generated
@@ -109,13 +109,13 @@ public enum SeatLetter implements Enumerator {
 	public static final int B_VALUE = 1;
 
 	/**
-	 * The '<em><b>C</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>C</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>C</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>C</b></em>' literal object isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #C
 	 * @model
 	 * @generated
@@ -124,13 +124,13 @@ public enum SeatLetter implements Enumerator {
 	public static final int C_VALUE = 2;
 
 	/**
-	 * The '<em><b>D</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>D</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>D</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>D</b></em>' literal object isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #D
 	 * @model
 	 * @generated
@@ -139,13 +139,13 @@ public enum SeatLetter implements Enumerator {
 	public static final int D_VALUE = 3;
 
 	/**
-	 * The '<em><b>E</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>E</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>E</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>E</b></em>' literal object isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #E
 	 * @model
 	 * @generated
@@ -154,13 +154,13 @@ public enum SeatLetter implements Enumerator {
 	public static final int E_VALUE = 4;
 
 	/**
-	 * The '<em><b>F</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>F</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>F</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>F</b></em>' literal object isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #F
 	 * @model
 	 * @generated
@@ -169,33 +169,27 @@ public enum SeatLetter implements Enumerator {
 	public static final int F_VALUE = 5;
 
 	/**
-	 * An array of all the '<em><b>Seat Letter</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * An array of all the '<em><b>Seat Letter</b></em>' enumerators. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	private static final SeatLetter[] VALUES_ARRAY =
-		new SeatLetter[] {
-			A,
-			B,
-			C,
-			D,
-			E,
-			F,
-		};
+	private static final SeatLetter[] VALUES_ARRAY = new SeatLetter[] { A, B, C,
+			D, E, F, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Seat Letter</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Seat Letter</b></em>'
+	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public static final List<SeatLetter> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<SeatLetter> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Seat Letter</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Seat Letter</b></em>' literal with the specified
+	 * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static SeatLetter get(String literal) {
@@ -209,9 +203,9 @@ public enum SeatLetter implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Seat Letter</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Seat Letter</b></em>' literal with the specified
+	 * name. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static SeatLetter getByName(String name) {
@@ -225,48 +219,54 @@ public enum SeatLetter implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Seat Letter</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Seat Letter</b></em>' literal with the specified
+	 * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static SeatLetter get(int value) {
 		switch (value) {
-			case A_VALUE: return A;
-			case B_VALUE: return B;
-			case C_VALUE: return C;
-			case D_VALUE: return D;
-			case E_VALUE: return E;
-			case F_VALUE: return F;
+		case A_VALUE:
+			return A;
+		case B_VALUE:
+			return B;
+		case C_VALUE:
+			return C;
+		case D_VALUE:
+			return D;
+		case E_VALUE:
+			return E;
+		case F_VALUE:
+			return F;
 		}
 		return null;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private SeatLetter(int value, String name, String literal) {
@@ -276,41 +276,41 @@ public enum SeatLetter implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string
+	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
 		return literal;
 	}
-	
-} //SeatLetter
+
+} // SeatLetter

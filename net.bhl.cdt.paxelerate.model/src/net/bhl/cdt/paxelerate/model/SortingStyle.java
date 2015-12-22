@@ -9,19 +9,19 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Sorting Style</b></em>',
- * and utility methods for working with them.
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration '
+ * <em><b>Sorting Style</b></em>', and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSortingStyle()
  * @model
  * @generated
  */
 public enum SortingStyle implements Enumerator {
 	/**
-	 * The '<em><b>Random</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Random</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #RANDOM_VALUE
 	 * @generated
 	 * @ordered
@@ -29,9 +29,9 @@ public enum SortingStyle implements Enumerator {
 	RANDOM(0, "Random", "Random"),
 
 	/**
-	 * The '<em><b>Window To Aisle</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Window To Aisle</b></em>' literal object. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #WINDOW_TO_AISLE_VALUE
 	 * @generated
 	 * @ordered
@@ -39,9 +39,9 @@ public enum SortingStyle implements Enumerator {
 	WINDOW_TO_AISLE(1, "WindowToAisle", "WindowToAisle"),
 
 	/**
-	 * The '<em><b>Rear To Front</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Rear To Front</b></em>' literal object. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #REAR_TO_FRONT_VALUE
 	 * @generated
 	 * @ordered
@@ -49,13 +49,13 @@ public enum SortingStyle implements Enumerator {
 	REAR_TO_FRONT(2, "RearToFront", "RearToFront");
 
 	/**
-	 * The '<em><b>Random</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Random</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Random</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #RANDOM
 	 * @model name="Random"
 	 * @generated
@@ -64,13 +64,14 @@ public enum SortingStyle implements Enumerator {
 	public static final int RANDOM_VALUE = 0;
 
 	/**
-	 * The '<em><b>Window To Aisle</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Window To Aisle</b></em>' literal value. <!-- begin-user-doc
+	 * -->
 	 * <p>
-	 * If the meaning of '<em><b>Window To Aisle</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Window To Aisle</b></em>' literal object isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #WINDOW_TO_AISLE
 	 * @model name="WindowToAisle"
 	 * @generated
@@ -79,13 +80,14 @@ public enum SortingStyle implements Enumerator {
 	public static final int WINDOW_TO_AISLE_VALUE = 1;
 
 	/**
-	 * The '<em><b>Rear To Front</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Rear To Front</b></em>' literal value. <!-- begin-user-doc
+	 * -->
 	 * <p>
-	 * If the meaning of '<em><b>Rear To Front</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Rear To Front</b></em>' literal object isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #REAR_TO_FRONT
 	 * @model name="RearToFront"
 	 * @generated
@@ -94,30 +96,27 @@ public enum SortingStyle implements Enumerator {
 	public static final int REAR_TO_FRONT_VALUE = 2;
 
 	/**
-	 * An array of all the '<em><b>Sorting Style</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * An array of all the '<em><b>Sorting Style</b></em>' enumerators. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	private static final SortingStyle[] VALUES_ARRAY =
-		new SortingStyle[] {
-			RANDOM,
-			WINDOW_TO_AISLE,
-			REAR_TO_FRONT,
-		};
+	private static final SortingStyle[] VALUES_ARRAY = new SortingStyle[] {
+			RANDOM, WINDOW_TO_AISLE, REAR_TO_FRONT, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Sorting Style</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Sorting Style</b></em>'
+	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public static final List<SortingStyle> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<SortingStyle> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Sorting Style</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Sorting Style</b></em>' literal with the specified
+	 * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static SortingStyle get(String literal) {
@@ -131,9 +130,9 @@ public enum SortingStyle implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Sorting Style</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Sorting Style</b></em>' literal with the specified
+	 * name. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static SortingStyle getByName(String name) {
@@ -147,45 +146,48 @@ public enum SortingStyle implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Sorting Style</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Sorting Style</b></em>' literal with the specified
+	 * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static SortingStyle get(int value) {
 		switch (value) {
-			case RANDOM_VALUE: return RANDOM;
-			case WINDOW_TO_AISLE_VALUE: return WINDOW_TO_AISLE;
-			case REAR_TO_FRONT_VALUE: return REAR_TO_FRONT;
+		case RANDOM_VALUE:
+			return RANDOM;
+		case WINDOW_TO_AISLE_VALUE:
+			return WINDOW_TO_AISLE;
+		case REAR_TO_FRONT_VALUE:
+			return REAR_TO_FRONT;
 		}
 		return null;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private SortingStyle(int value, String name, String literal) {
@@ -195,41 +197,41 @@ public enum SortingStyle implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string
+	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
 		return literal;
 	}
-	
-} //SortingStyle
+
+} // SortingStyle

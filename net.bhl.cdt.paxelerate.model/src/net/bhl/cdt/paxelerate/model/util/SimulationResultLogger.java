@@ -91,37 +91,34 @@ public class SimulationResultLogger {
 
 	public void printPassengerEvaluation() {
 
-		System.out
-				.println("~~~~~~~~~~ Passenger Evaluation (Pre-Boarding) ~~~~~~~~~~~");
+		System.out.println(
+				"~~~~~~~~~~ Passenger Evaluation (Pre-Boarding) ~~~~~~~~~~~");
 		System.out.println();
 		System.out.println("Average age of all " + totalPax + " passengers: "
 				+ df.format(average_age) + " years.");
 
-		System.out.println("Youngest passenger: " + ageLimits.getX()
-				+ " years.");
+		System.out
+				.println("Youngest passenger: " + ageLimits.getX() + " years.");
 		System.out.println("Oldest passenger: " + ageLimits.getY() + " years.");
 
 		System.out.println();
-		System.out
-				.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		System.out.println(
+				"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 	}
 
 	public void printSimulationData() {
 		System.out.println("~~~~~~~~~~ Simulation Results ~~~~~~~~~~~");
 		System.out.println();
-		System.out.println("Number of Loops: "
-				+ SimulationHandler.getCabin().getSimulationSettings()
-						.getResults().size());
+		System.out.println("Number of Loops: " + SimulationHandler.getCabin()
+				.getSimulationSettings().getResults().size());
 		System.out.println();
 		for (SimulationResult result : SimulationHandler.getCabin()
 				.getSimulationSettings().getResults()) {
-			System.out
-					.println(result.getPassengers()
-							+ " passengers simulated in run #"
-							+ result.getId()
-							+ " within "
-							+ TimeHelper.transformToTimeString(result
-									.getBoardingTime()) + ".");
+			System.out.println(result.getPassengers()
+					+ " passengers simulated in run #" + result.getId()
+					+ " within "
+					+ TimeHelper.transformToTimeString(result.getBoardingTime())
+					+ ".");
 			System.out.println();
 		}
 		System.out.println("Average boarding time: "
@@ -140,9 +137,8 @@ public class SimulationResultLogger {
 				.getSimulationSettings().getResults()) {
 			time += result.getBoardingTime();
 		}
-		return time
-				/ SimulationHandler.getCabin().getSimulationSettings()
-						.getResults().size();
+		return time / SimulationHandler.getCabin().getSimulationSettings()
+				.getResults().size();
 
 	}
 }

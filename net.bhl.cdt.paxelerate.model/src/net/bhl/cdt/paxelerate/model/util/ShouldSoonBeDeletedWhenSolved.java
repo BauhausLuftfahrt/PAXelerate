@@ -12,7 +12,8 @@ public class ShouldSoonBeDeletedWhenSolved {
 		IWorkbenchWindow window = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow();
 		IWorkbenchPage page = window.getActivePage();
-		return (PropertyViewPart) page.findView("net.bhl.cdt.paxelerate.model.ui.propertyview");
+		return (PropertyViewPart) page
+				.findView("net.bhl.cdt.paxelerate.model.ui.propertyview");
 	}
 
 	public static CabinViewPart getCabinView() {

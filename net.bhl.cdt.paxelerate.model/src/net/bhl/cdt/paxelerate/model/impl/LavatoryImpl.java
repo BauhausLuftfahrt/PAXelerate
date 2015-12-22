@@ -8,9 +8,8 @@ import net.bhl.cdt.paxelerate.model.CabinPackage;
 import net.bhl.cdt.paxelerate.model.Lavatory;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Lavatory</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Lavatory</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
  *
@@ -18,8 +17,8 @@ import net.bhl.cdt.paxelerate.model.Lavatory;
  */
 public class LavatoryImpl extends PhysicalObjectImpl implements Lavatory {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected LavatoryImpl() {
@@ -27,8 +26,8 @@ public class LavatoryImpl extends PhysicalObjectImpl implements Lavatory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -36,4 +35,4 @@ public class LavatoryImpl extends PhysicalObjectImpl implements Lavatory {
 		return CabinPackage.Literals.LAVATORY;
 	}
 
-} //LavatoryImpl
+} // LavatoryImpl

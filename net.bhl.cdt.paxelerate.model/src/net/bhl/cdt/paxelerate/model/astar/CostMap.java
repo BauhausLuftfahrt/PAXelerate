@@ -42,8 +42,8 @@ import net.bhl.cdt.paxelerate.util.math.Vector3D;
 public class CostMap {
 
 	private int[][] map;
-	private Vector dimensions = new Vector2D(0, 0), startPoint = new Vector2D(
-			0, 0), goalPoint = new Vector2D(0, 0);
+	private Vector dimensions = new Vector2D(0, 0),
+			startPoint = new Vector2D(0, 0), goalPoint = new Vector2D(0, 0);
 
 	private ArrayList<Vector> visitedPoints = new ArrayList<Vector>(),
 			pointParkingHelper = new ArrayList<Vector>(),
@@ -70,8 +70,8 @@ public class CostMap {
 					dimensions.getY() - 1);
 		}
 		this.areamap = areaMap;
-		this.logger = Platform.getLog(Platform
-				.getBundle("net.bhl.cdt.paxelerate.model"));
+		this.logger = Platform
+				.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
 		map = new int[dimensions.getX()][dimensions.getY()];
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
@@ -102,7 +102,8 @@ public class CostMap {
 	}
 
 	public void setPublicCost(int x, int y, int value) {
-		if (areamap.getNodeByCoordinate(x, y).getProperty() != Property.OBSTACLE) {
+		if (areamap.getNodeByCoordinate(x, y)
+				.getProperty() != Property.OBSTACLE) {
 			map[x][y] = value;
 		}
 	}
@@ -147,7 +148,8 @@ public class CostMap {
 				if (i == agent.getPosition().getX()
 						&& j == agent.getPosition().getY()) {
 					System.out.print("I");
-				} else if (areamap.getNodeByCoordinate(i, j).getProperty() == Property.AGENT) {
+				} else if (areamap.getNodeByCoordinate(i, j)
+						.getProperty() == Property.AGENT) {
 					System.out.print("A");
 				} else if (foundNode) {
 					System.out.print(">");
@@ -270,11 +272,11 @@ public class CostMap {
 	 *            is the point around which all costs are calculated
 	 */
 	public void createSurroundingCosts(Vector middlePoint) {
-		for (Vector point : sortTheList(getSurroundingPoints(
-				middlePoint.getX(), middlePoint.getY()))) {
+		for (Vector point : sortTheList(
+				getSurroundingPoints(middlePoint.getX(), middlePoint.getY()))) {
 			if (!(point.getX() < 0 || point.getY() < 0
-					|| point.getX() >= dimensions.getX() || point.getY() >= dimensions
-					.getY())) {
+					|| point.getX() >= dimensions.getX()
+					|| point.getY() >= dimensions.getY())) {
 				if (!isObstacle(point)) {
 					if (!(checkForPoint(visitedPoints, point))) {
 						setCost(point.getX(), point.getY(),
@@ -295,8 +297,8 @@ public class CostMap {
 		PrintWriter printToFile = null;
 		try {
 			CabinViewPart.makeDirectory();
-			printToFile = new PrintWriter(CabinViewPart.getFilePath()
-					+ "costmap.txt");
+			printToFile = new PrintWriter(
+					CabinViewPart.getFilePath() + "costmap.txt");
 			for (int i = 0; i < dimensions.getY(); i++) {
 				for (int j = 0; j < dimensions.getX(); j++) {
 					if (map[j][i] == -1) {
@@ -330,8 +332,8 @@ public class CostMap {
 	@SuppressWarnings("unused")
 	private void printList(ArrayList<Vector> list) {
 		for (Vector printPoint : list) {
-			System.out.println("x:" + printPoint.getX() + ", y:"
-					+ printPoint.getY());
+			System.out.println(
+					"x:" + printPoint.getX() + ", y:" + printPoint.getY());
 		}
 		System.out.println();
 	}
@@ -348,8 +350,8 @@ public class CostMap {
 		try {
 			return map[point.getX()][point.getY()];
 		} catch (ArrayIndexOutOfBoundsException e) {
-			System.out
-					.println("###### !ArrayIndexOutOfBoundsException ERROR! ###### !COSTMAP - getCost()! ######");
+			System.out.println(
+					"###### !ArrayIndexOutOfBoundsException ERROR! ###### !COSTMAP - getCost()! ######");
 			return Integer.MAX_VALUE;
 		}
 
@@ -373,8 +375,8 @@ public class CostMap {
 			}
 			return Integer.MAX_VALUE;
 		} catch (ArrayIndexOutOfBoundsException e) {
-			System.out
-					.println("###### !ArrayIndexOutOfBoundsException ERROR! ###### !COSTMAP - getCostForCoordinate()! ######");
+			System.out.println(
+					"###### !ArrayIndexOutOfBoundsException ERROR! ###### !COSTMAP - getCostForCoordinate()! ######");
 			return Integer.MAX_VALUE;
 		}
 	}

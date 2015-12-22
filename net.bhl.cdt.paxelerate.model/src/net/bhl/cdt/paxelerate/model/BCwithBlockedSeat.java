@@ -9,19 +9,19 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>BCwith Blocked Seat</b></em>',
- * and utility methods for working with them.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration '
+ * <em><b>BCwith Blocked Seat</b></em>', and utility methods for working with
+ * them. <!-- end-user-doc -->
+ * 
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getBCwithBlockedSeat()
  * @model
  * @generated
  */
 public enum BCwithBlockedSeat implements Enumerator {
 	/**
-	 * The '<em><b>No</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>No</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #NO_VALUE
 	 * @generated
 	 * @ordered
@@ -29,9 +29,9 @@ public enum BCwithBlockedSeat implements Enumerator {
 	NO(0, "no", "no"),
 
 	/**
-	 * The '<em><b>Yes</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Yes</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #YES_VALUE
 	 * @generated
 	 * @ordered
@@ -39,13 +39,13 @@ public enum BCwithBlockedSeat implements Enumerator {
 	YES(1, "yes", "yes");
 
 	/**
-	 * The '<em><b>No</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>No</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>No</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>No</b></em>' literal object isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #NO
 	 * @model name="no"
 	 * @generated
@@ -54,13 +54,13 @@ public enum BCwithBlockedSeat implements Enumerator {
 	public static final int NO_VALUE = 0;
 
 	/**
-	 * The '<em><b>Yes</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Yes</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Yes</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Yes</b></em>' literal object isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #YES
 	 * @model name="yes"
 	 * @generated
@@ -70,28 +70,26 @@ public enum BCwithBlockedSeat implements Enumerator {
 
 	/**
 	 * An array of all the '<em><b>BCwith Blocked Seat</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	private static final BCwithBlockedSeat[] VALUES_ARRAY =
-		new BCwithBlockedSeat[] {
-			NO,
-			YES,
-		};
+	private static final BCwithBlockedSeat[] VALUES_ARRAY = new BCwithBlockedSeat[] {
+			NO, YES, };
 
 	/**
-	 * A public read-only list of all the '<em><b>BCwith Blocked Seat</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>BCwith Blocked Seat</b></em>'
+	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public static final List<BCwithBlockedSeat> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<BCwithBlockedSeat> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>BCwith Blocked Seat</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>BCwith Blocked Seat</b></em>' literal with the
+	 * specified literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static BCwithBlockedSeat get(String literal) {
@@ -105,9 +103,9 @@ public enum BCwithBlockedSeat implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>BCwith Blocked Seat</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>BCwith Blocked Seat</b></em>' literal with the
+	 * specified name. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static BCwithBlockedSeat getByName(String name) {
@@ -121,44 +119,46 @@ public enum BCwithBlockedSeat implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>BCwith Blocked Seat</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>BCwith Blocked Seat</b></em>' literal with the
+	 * specified integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static BCwithBlockedSeat get(int value) {
 		switch (value) {
-			case NO_VALUE: return NO;
-			case YES_VALUE: return YES;
+		case NO_VALUE:
+			return NO;
+		case YES_VALUE:
+			return YES;
 		}
 		return null;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private BCwithBlockedSeat(int value, String name, String literal) {
@@ -168,41 +168,41 @@ public enum BCwithBlockedSeat implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string
+	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
 		return literal;
 	}
-	
-} //BCwithBlockedSeat
+
+} // BCwithBlockedSeat

@@ -8,18 +8,18 @@ import net.bhl.cdt.paxelerate.model.BusinessClass;
 import net.bhl.cdt.paxelerate.model.CabinPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Business Class</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Business Class</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class BusinessClassImpl extends TravelClassImpl implements BusinessClass {
+public class BusinessClassImpl extends TravelClassImpl
+		implements BusinessClass {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected BusinessClassImpl() {
@@ -27,8 +27,8 @@ public class BusinessClassImpl extends TravelClassImpl implements BusinessClass 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -36,4 +36,4 @@ public class BusinessClassImpl extends TravelClassImpl implements BusinessClass 
 		return CabinPackage.Literals.BUSINESS_CLASS;
 	}
 
-} //BusinessClassImpl
+} // BusinessClassImpl

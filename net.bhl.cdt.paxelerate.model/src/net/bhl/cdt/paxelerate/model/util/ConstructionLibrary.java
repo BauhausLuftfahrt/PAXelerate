@@ -72,7 +72,8 @@ public class ConstructionLibrary {
 	 *            the cabin element
 	 */
 	public ConstructionLibrary(Cabin cabin) {
-		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
+		logger = Platform
+				.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
 		this.cabin = cabin;
 		rowPartsInt = new ArrayList<Integer>();
 		globalSeatPositionX = 0;
@@ -144,13 +145,16 @@ public class ConstructionLibrary {
 	 * @param <T>
 	 *            is a helper Class
 	 */
-	public <T extends TravelClass> void switchSettings(Class<T> travelSubClass) {
+	public <T extends TravelClass> void switchSettings(
+			Class<T> travelSubClass) {
 		switch (travelSubClass.getSimpleName()) {
 		case "PremiumEconomyClass":
 			try {
-				PremiumEconomyClass subclass = ModelHelper.getChildrenByClass(
-						cabin, PremiumEconomyClass.class).get(0);
-				seats = (int) tryPreset(0, 18, 40, subclass.getAvailableSeats());
+				PremiumEconomyClass subclass = ModelHelper
+						.getChildrenByClass(cabin, PremiumEconomyClass.class)
+						.get(0);
+				seats = (int) tryPreset(0, 18, 40,
+						subclass.getAvailableSeats());
 				seatStructure = (String) tryPreset("2-2", "3-3", "3-4-3",
 						subclass.getRowStructure());
 				((Vector2D) seatDimensions).set(subclass.getSeatWidth(),
@@ -160,7 +164,8 @@ public class ConstructionLibrary {
 				cabin.getClasses().remove(subclass);
 			} catch (IndexOutOfBoundsException e) {
 				seats = (int) tryPreset(0, 24, 40, 24);
-				seatStructure = (String) tryPreset("2-2", "3-3", "3-4-3", "3-3");
+				seatStructure = (String) tryPreset("2-2", "3-3", "3-4-3",
+						"3-3");
 				((Vector2D) seatDimensions).set(50, 60);
 				seatPitch = 20;
 				passengers = 1;
@@ -169,9 +174,10 @@ public class ConstructionLibrary {
 			break;
 		case "BusinessClass":
 			try {
-				BusinessClass subclass = ModelHelper.getChildrenByClass(cabin,
-						BusinessClass.class).get(0);
-				seats = (int) tryPreset(4, 12, 35, subclass.getAvailableSeats());
+				BusinessClass subclass = ModelHelper
+						.getChildrenByClass(cabin, BusinessClass.class).get(0);
+				seats = (int) tryPreset(4, 12, 35,
+						subclass.getAvailableSeats());
 				seatStructure = (String) tryPreset("1-1", "2-2", "2-3-2",
 						subclass.getRowStructure());
 				((Vector2D) seatDimensions).set(subclass.getSeatWidth(),
@@ -190,8 +196,8 @@ public class ConstructionLibrary {
 			break;
 		case "FirstClass":
 			try {
-				FirstClass subclass = ModelHelper.getChildrenByClass(cabin,
-						FirstClass.class).get(0);
+				FirstClass subclass = ModelHelper
+						.getChildrenByClass(cabin, FirstClass.class).get(0);
 				seats = (int) tryPreset(2, 2, 8, subclass.getAvailableSeats());
 				seatStructure = (String) tryPreset("1-1", "1-1", "1-2-1",
 						subclass.getRowStructure());
@@ -211,8 +217,8 @@ public class ConstructionLibrary {
 			break;
 		case "EconomyClass":
 			try {
-				EconomyClass subclass = ModelHelper.getChildrenByClass(cabin,
-						EconomyClass.class).get(0);
+				EconomyClass subclass = ModelHelper
+						.getChildrenByClass(cabin, EconomyClass.class).get(0);
 				seats = (int) tryPreset(20, 72, 280,
 						subclass.getAvailableSeats());
 				seatStructure = (String) tryPreset("2-2", "3-3", "3-4-3",
@@ -305,8 +311,8 @@ public class ConstructionLibrary {
 						* (passengerClass.getSeatWidth() + seatHelper)
 						+ seatHelper);
 			} catch (NullPointerException e) {
-				physialObject.setXDimension((cabin.getCabinWidth() - numbAisles
-						* cabin.getAisleWidth())
+				physialObject.setXDimension((cabin.getCabinWidth()
+						- numbAisles * cabin.getAisleWidth())
 						/ (numbAisles + 1));
 			}
 			physialObject.setXPosition(currentPosition);
@@ -346,13 +352,15 @@ public class ConstructionLibrary {
 	public void checkForDoor() {
 		double seatPitchMultiplicator = 1.5;
 		for (Door door : ModelHelper.getChildrenByClass(cabin, Door.class)) {
-			if ((((door.getYPosition() + door.getWidth()) > (globalSeatPositionY - seatPitch)) && (door
-					.getYPosition() < globalSeatPositionY))
+			if ((((door.getYPosition() + door.getWidth()) > (globalSeatPositionY
+					- seatPitch))
+					&& (door.getYPosition() < globalSeatPositionY))
 					|| ((door.getYPosition() > globalSeatPositionY)
 							&& (door.getYPosition() < globalSeatPositionY
-									+ seatDimensions.getY()) || ((door
-							.getYPosition() + door.getWidth() > globalSeatPositionY) && (door
-							.getYPosition() < globalSeatPositionY)))) {
+									+ seatDimensions.getY())
+							|| ((door.getYPosition()
+									+ door.getWidth() > globalSeatPositionY)
+									&& (door.getYPosition() < globalSeatPositionY)))) {
 				globalSeatPositionY += seatPitchMultiplicator * seatPitch;
 			}
 		}
@@ -373,8 +381,8 @@ public class ConstructionLibrary {
 		splitSeatString(seatStructure);
 		passengerClass.setPassengers(passengers);
 		passengerClass.setAvailableSeats(seats);
-		passengerClass.setRowStructure(InputChecker
-				.checkStructureString(seatStructure));
+		passengerClass.setRowStructure(
+				InputChecker.checkStructureString(seatStructure));
 		passengerClass.setSeatPitch(seatPitch);
 		passengerClass.setSeatWidth(seatDimensions.getX());
 		passengerClass.setSeatLength(seatDimensions.getY());
@@ -384,20 +392,21 @@ public class ConstructionLibrary {
 			if ((seats % seatsInRow) != 0) {
 				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 						"Check your number of seats in "
-								+ StringOperations
-										.splitCamelCase(travelSubClass
-												.getSimpleName())
+								+ StringOperations.splitCamelCase(
+										travelSubClass.getSimpleName())
 								+ ". Could not fill all rows."));
 			}
 			for (int i = 1; i <= seats / seatsInRow; i++) {
 				globalSeatPositionX = 0;
 
 				/** Calculate the gap between the seats **/
-				if ((seatsInRow * seatDimensions.getX() + numbAisles
-						* cabin.getAisleWidth()) <= cabin.getCabinWidth()) {
-					globalSeatPositionX = ((cabin.getCabinWidth() - numbAisles
-							* cabin.getAisleWidth() - seatsInRow
-							* seatDimensions.getX()) / (seatsInRow + numbAisles + 1));
+				if ((seatsInRow * seatDimensions.getX()
+						+ numbAisles * cabin.getAisleWidth()) <= cabin
+								.getCabinWidth()) {
+					globalSeatPositionX = ((cabin.getCabinWidth()
+							- numbAisles * cabin.getAisleWidth()
+							- seatsInRow * seatDimensions.getX())
+							/ (seatsInRow + numbAisles + 1));
 					seatHelper = globalSeatPositionX;
 				} else {
 					logger.log(new Status(IStatus.ERROR,
@@ -426,12 +435,8 @@ public class ConstructionLibrary {
 						+ seatDimensions.getY();
 			}
 			if (!(passengerClass instanceof EconomyClass)) {
-				createCurtain(
-						true,
-						"after "
-								+ StringOperations
-										.splitCamelCase(travelSubClass
-												.getSimpleName()));
+				createCurtain(true, "after " + StringOperations
+						.splitCamelCase(travelSubClass.getSimpleName()));
 			}
 		}
 	}
@@ -480,9 +485,9 @@ public class ConstructionLibrary {
 			for (Door testDoor : cabin.getDoors()) {
 				if (typeDoor.getSimpleName().equals("MainDoor")
 						&& (testDoor instanceof MainDoor)) {
-					logger.log(new Status(IStatus.ERROR,
-							"net.bhl.cdt.model.cabin",
-							"You created more than one main door!"));
+					logger.log(
+							new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
+									"You created more than one main door!"));
 					mainDoorAlreadyExists = true;
 				}
 			}
@@ -538,10 +543,9 @@ public class ConstructionLibrary {
 			newCurtain.setYDimension(10);
 			newCurtain.setId(curtainCount);
 			newCurtain.setYPosition(globalSeatPositionY + 10);
-			newCurtain
-					.setXDimension(rowPartsInt.get(k)
-							* (passengerClass.getSeatWidth() + seatHelper)
-							+ seatHelper);
+			newCurtain.setXDimension(rowPartsInt.get(k)
+					* (passengerClass.getSeatWidth() + seatHelper)
+					+ seatHelper);
 			newCurtain.setXPosition(currentCurtainPosition);
 			currentCurtainPosition = currentCurtainPosition
 					+ newCurtain.getXDimension() + cabin.getAisleWidth();

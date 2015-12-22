@@ -21,8 +21,10 @@ public class SimulateBoardingHandler extends AbstractHandler {
 	/**
 	 * Get selected Element.
 	 * 
-	 * @param event Selected Element
-	 * @throws ExecutionException Exception
+	 * @param event
+	 *            Selected Element
+	 * @throws ExecutionException
+	 *             Exception
 	 * @return null
 	 */
 	@Override

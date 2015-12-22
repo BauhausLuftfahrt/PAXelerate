@@ -80,8 +80,7 @@ public class InputChecker {
 		if (!StringOperations.isNumeric(stringWithoutDashes)) {
 			str = str.replaceAll("[^0-9-]+", "");
 			if (DEVELOPER_MODE) {
-				System.out
-						.println("non-numeric characters detected and removed!");
+				System.out.println("non-numeric characters detected and removed!");
 			}
 		}
 
@@ -97,8 +96,7 @@ public class InputChecker {
 			if (DEVELOPER_MODE) {
 				System.out.println("no dash detected, inserted in the middle!");
 			}
-			str = str.substring(0, (int) (numbcount / 2)) + "-"
-					+ str.substring((int) (numbcount / 2));
+			str = str.substring(0, (int) (numbcount / 2)) + "-" + str.substring((int) (numbcount / 2));
 		}
 
 		/*
@@ -116,8 +114,7 @@ public class InputChecker {
 		 */
 		if (StringOperations.checkForDoubleCharacter(str)) {
 			if (DEVELOPER_MODE) {
-				System.out
-						.println("several dashes in a row detected and corrected");
+				System.out.println("several dashes in a row detected and corrected");
 			}
 			String helperString = "";
 			for (int i = 0; i < str.length(); i++) {

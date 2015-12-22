@@ -11,13 +11,13 @@ import net.bhl.cdt.paxelerate.model.Stairway;
 import net.bhl.cdt.paxelerate.model.StairwayDirection;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Stairway</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Stairway</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.StairwayImpl#getDirection <em>Direction</em>}</li>
+ * <li>{@link net.bhl.cdt.paxelerate.model.impl.StairwayImpl#getDirection
+ * <em>Direction</em>}</li>
  * </ul>
  * </p>
  *
@@ -25,9 +25,9 @@ import net.bhl.cdt.paxelerate.model.StairwayDirection;
  */
 public class StairwayImpl extends PhysicalObjectImpl implements Stairway {
 	/**
-	 * The default value of the '{@link #getDirection() <em>Direction</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getDirection() <em>Direction</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getDirection()
 	 * @generated
 	 * @ordered
@@ -35,9 +35,9 @@ public class StairwayImpl extends PhysicalObjectImpl implements Stairway {
 	protected static final StairwayDirection DIRECTION_EDEFAULT = StairwayDirection.UP;
 
 	/**
-	 * The cached value of the '{@link #getDirection() <em>Direction</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getDirection() <em>Direction</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getDirection()
 	 * @generated
 	 * @ordered
@@ -45,8 +45,8 @@ public class StairwayImpl extends PhysicalObjectImpl implements Stairway {
 	protected StairwayDirection direction = DIRECTION_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected StairwayImpl() {
@@ -54,8 +54,8 @@ public class StairwayImpl extends PhysicalObjectImpl implements Stairway {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -64,8 +64,8 @@ public class StairwayImpl extends PhysicalObjectImpl implements Stairway {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public StairwayDirection getDirection() {
@@ -73,83 +73,85 @@ public class StairwayImpl extends PhysicalObjectImpl implements Stairway {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setDirection(StairwayDirection newDirection) {
 		StairwayDirection oldDirection = direction;
 		direction = newDirection == null ? DIRECTION_EDEFAULT : newDirection;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.STAIRWAY__DIRECTION, oldDirection, direction));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CabinPackage.STAIRWAY__DIRECTION, oldDirection, direction));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CabinPackage.STAIRWAY__DIRECTION:
-				return getDirection();
+		case CabinPackage.STAIRWAY__DIRECTION:
+			return getDirection();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CabinPackage.STAIRWAY__DIRECTION:
-				setDirection((StairwayDirection)newValue);
-				return;
+		case CabinPackage.STAIRWAY__DIRECTION:
+			setDirection((StairwayDirection) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CabinPackage.STAIRWAY__DIRECTION:
-				setDirection(DIRECTION_EDEFAULT);
-				return;
+		case CabinPackage.STAIRWAY__DIRECTION:
+			setDirection(DIRECTION_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CabinPackage.STAIRWAY__DIRECTION:
-				return direction != DIRECTION_EDEFAULT;
+		case CabinPackage.STAIRWAY__DIRECTION:
+			return direction != DIRECTION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (direction: ");
@@ -158,4 +160,4 @@ public class StairwayImpl extends PhysicalObjectImpl implements Stairway {
 		return result.toString();
 	}
 
-} //StairwayImpl
+} // StairwayImpl

@@ -25,14 +25,14 @@ import net.bhl.cdt.paxelerate.model.CabinPackage;
 import net.bhl.cdt.paxelerate.model.SimulationResult;
 
 /**
- * This is the item provider adapter for a {@link net.bhl.cdt.paxelerate.model.SimulationResult} object.
- * <!-- begin-user-doc
- * --> <!-- end-user-doc -->
+ * This is the item provider adapter for a
+ * {@link net.bhl.cdt.paxelerate.model.SimulationResult} object. <!--
+ * begin-user-doc --> <!-- end-user-doc -->
+ * 
  * @generated
  */
-public class SimulationResultItemProvider extends ItemProviderAdapter implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class SimulationResultItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -71,19 +71,13 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 	 * @generated
 	 */
 	protected void addBoardingTimePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationResult_boardingTime_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_boardingTime_feature", "_UI_SimulationResult_type"),
-				 CabinPackage.Literals.SIMULATION_RESULT__BOARDING_TIME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_SimulationResult_boardingTime_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_boardingTime_feature",
+								"_UI_SimulationResult_type"),
+						CabinPackage.Literals.SIMULATION_RESULT__BOARDING_TIME, true, false, false,
+						ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -93,113 +87,83 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 	 * @generated
 	 */
 	protected void addPassengersPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationResult_passengers_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_passengers_feature", "_UI_SimulationResult_type"),
-				 CabinPackage.Literals.SIMULATION_RESULT__PASSENGERS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_SimulationResult_passengers_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_passengers_feature",
+								"_UI_SimulationResult_type"),
+						CabinPackage.Literals.SIMULATION_RESULT__PASSENGERS, true, false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature.
-	 * <!-- begin-user-doc
+	 * This adds a property descriptor for the Name feature. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationResult_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_name_feature", "_UI_SimulationResult_type"),
-				 CabinPackage.Literals.SIMULATION_RESULT__NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_SimulationResult_name_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_name_feature",
+								"_UI_SimulationResult_type"),
+						CabinPackage.Literals.SIMULATION_RESULT__NAME, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Id feature.
-	 * <!-- begin-user-doc
+	 * This adds a property descriptor for the Id feature. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addIdPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationResult_id_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_id_feature", "_UI_SimulationResult_type"),
-				 CabinPackage.Literals.SIMULATION_RESULT__ID,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_SimulationResult_id_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_id_feature",
+								"_UI_SimulationResult_type"),
+						CabinPackage.Literals.SIMULATION_RESULT__ID, true, false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Date feature.
-	 * <!-- begin-user-doc
+	 * This adds a property descriptor for the Date feature. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addDatePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationResult_date_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_date_feature", "_UI_SimulationResult_type"),
-				 CabinPackage.Literals.SIMULATION_RESULT__DATE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_SimulationResult_date_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_date_feature",
+								"_UI_SimulationResult_type"),
+						CabinPackage.Literals.SIMULATION_RESULT__DATE, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Boarding Time String feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addBoardingTimeStringPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationResult_boardingTimeString_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_boardingTimeString_feature", "_UI_SimulationResult_type"),
-				 CabinPackage.Literals.SIMULATION_RESULT__BOARDING_TIME_STRING,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_SimulationResult_boardingTimeString_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_boardingTimeString_feature",
+						"_UI_SimulationResult_type"),
+				CabinPackage.Literals.SIMULATION_RESULT__BOARDING_TIME_STRING, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This returns SimulationResult.gif.
-	 * <!-- begin-user-doc --> <!--
+	 * This returns SimulationResult.gif. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -216,15 +180,15 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 	@Override
 	public String getText(Object object) {
 		String label = ((SimulationResult) object).getName();
-		return label == null || label.length() == 0 ? "Result" : "Result" + " "
-				+ label;
+		return label == null || label.length() == 0 ? "Result" : "Result" + " " + label;
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc --> <!--
+	 * This handles model notifications by calling {@link #updateChildren} to
+	 * update any cached children and by creating a viewer notification, which
+	 * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -232,14 +196,14 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SimulationResult.class)) {
-			case CabinPackage.SIMULATION_RESULT__BOARDING_TIME:
-			case CabinPackage.SIMULATION_RESULT__PASSENGERS:
-			case CabinPackage.SIMULATION_RESULT__NAME:
-			case CabinPackage.SIMULATION_RESULT__ID:
-			case CabinPackage.SIMULATION_RESULT__DATE:
-			case CabinPackage.SIMULATION_RESULT__BOARDING_TIME_STRING:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case CabinPackage.SIMULATION_RESULT__BOARDING_TIME:
+		case CabinPackage.SIMULATION_RESULT__PASSENGERS:
+		case CabinPackage.SIMULATION_RESULT__NAME:
+		case CabinPackage.SIMULATION_RESULT__ID:
+		case CabinPackage.SIMULATION_RESULT__DATE:
+		case CabinPackage.SIMULATION_RESULT__BOARDING_TIME_STRING:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -252,8 +216,7 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

@@ -138,11 +138,13 @@ public class Rotator {
 
 				if (!((center2.getX() + source.getX()) < 0
 						|| (center2.getY() + source.getY()) < 0
-						|| (center2.getX() + source.getX()) >= array.length || (center2
-						.getY() + source.getY()) >= array[1].length)) {
+						|| (center2.getX() + source.getX()) >= array.length
+						|| (center2.getY()
+								+ source.getY()) >= array[1].length)) {
 					result[center.getX() + target.getX()][center.getY()
 							+ target.getY()] = array[center2.getX()
-							+ source.getX()][center2.getY() + source.getY()];
+									+ source.getX()][center2.getY()
+											+ source.getY()];
 				}
 			}
 		}
