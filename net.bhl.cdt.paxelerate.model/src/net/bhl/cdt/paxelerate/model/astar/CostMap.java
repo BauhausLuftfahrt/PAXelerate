@@ -10,15 +10,11 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import org.eclipse.core.runtime.ILog;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
-
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
 import net.bhl.cdt.paxelerate.util.Func;
+import net.bhl.cdt.paxelerate.util.Log;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.math.Vector3D;
@@ -51,7 +47,6 @@ public class CostMap {
 			pointParking = new ArrayList<Vector>();
 
 	private AreaMap areamap;
-	private ILog logger;
 	private int lowestCost;
 
 	/**
@@ -70,8 +65,6 @@ public class CostMap {
 					dimensions.getY() - 1);
 		}
 		this.areamap = areaMap;
-		this.logger = Platform
-				.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
 		map = new int[dimensions.getX()][dimensions.getY()];
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
@@ -309,14 +302,11 @@ public class CostMap {
 				}
 				printToFile.println();
 			}
-			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
-					"Saved cost map to file."));
+			Log.add(this, "Saved cost map to file.");
 		} catch (FileNotFoundException e) {
-			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-					"Could not save cost map to file."));
+			Log.add(this, "Could not save cost map to file.");
 		} catch (NullPointerException e) {
-			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-					"The file path is not available."));
+			Log.add(this, "The file path is not available.");
 		} finally {
 			printToFile.close();
 		}

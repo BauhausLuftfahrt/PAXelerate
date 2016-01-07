@@ -7,8 +7,16 @@ package net.bhl.cdt.paxelerate.model.ui;
 
 import java.text.DecimalFormat;
 
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.PaintEvent;
+import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.widgets.Canvas;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
+import org.eclipse.ui.part.ViewPart;
 
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
@@ -19,19 +27,9 @@ import net.bhl.cdt.paxelerate.model.storage.AgeStorage;
 import net.bhl.cdt.paxelerate.model.storage.GaussianStorage;
 import net.bhl.cdt.paxelerate.model.storage.StorageHandler;
 import net.bhl.cdt.paxelerate.model.storage.StorageHandler.StoreType;
-import net.bhl.cdt.paxelerate.util.Func;
 import net.bhl.cdt.paxelerate.util.graphics.ColorHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
-
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.PaintEvent;
-import org.eclipse.swt.events.PaintListener;
-import org.eclipse.swt.widgets.Canvas;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Listener;
-import org.eclipse.ui.part.ViewPart;
 
 /**
  * This class represents the cabin view. All graphics generation is done here.

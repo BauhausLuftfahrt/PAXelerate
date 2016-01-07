@@ -17,17 +17,9 @@ import net.bhl.cdt.paxelerate.model.MainDoor;
 import net.bhl.cdt.paxelerate.model.PremiumEconomyClass;
 import net.bhl.cdt.paxelerate.model.StandardDoor;
 import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
-import net.bhl.cdt.paxelerate.model.ui.InfoViewPart;
 import net.bhl.cdt.paxelerate.model.util.ConstructionLibrary;
 import net.bhl.cdt.paxelerate.model.util.ShouldSoonBeDeletedWhenSolved;
-import net.bhl.cdt.paxelerate.util.Func;
-
-import org.eclipse.core.runtime.ILog;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.PlatformUI;
+import net.bhl.cdt.paxelerate.util.Log;
 
 /**
  * 
@@ -42,7 +34,6 @@ public class GenerateCabinCommand extends CDTCommand {
 
 	private Cabin cabin;
 	private CabinViewPart cabinViewPart;
-	private ILog logger;
 	private ConstructionLibrary constructor;
 
 	/**
@@ -53,8 +44,6 @@ public class GenerateCabinCommand extends CDTCommand {
 	 */
 	public GenerateCabinCommand(Cabin cabin) {
 		this.cabin = cabin;
-		logger = Platform
-				.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
 		cabin.getSimulationSettings().setSimulationSpeedFactor(1);
 		if (cabin.isUsePresetSettings()) {
 			switch (cabin.getAircraftType()) {
@@ -71,10 +60,7 @@ public class GenerateCabinCommand extends CDTCommand {
 				cabin.setCabinLength(4440);
 				break;
 			default:
-				logger.log(new Status(IStatus.ERROR,
-						"net.bhl.cdt.paxelerate.model",
-						"Error defining aircraft width."));
-				break;
+				Log.add(this, "Error defining aircraft width.");
 			}
 		}
 	}
@@ -86,8 +72,7 @@ public class GenerateCabinCommand extends CDTCommand {
 	 */
 	@Override
 	protected void doRun() {
-		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.paxelerate.model",
-				"Initializing cabin generation ..."));
+		Log.add(this, "Initializing cabin generation ...");
 
 		/*************** Get the CabinView *******************/
 		cabinViewPart = ShouldSoonBeDeletedWhenSolved.getCabinView();
@@ -117,14 +102,12 @@ public class GenerateCabinCommand extends CDTCommand {
 		/* ------- Cabin Construction ends here! ----------- */
 		/* ------------------------------------------------- */
 
-		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.paxelerate.model",
-				"Cabin generation completed"));
+		Log.add(this, "Cabin generation completed");
 		try {
 			cabinViewPart.setCabin(cabin);
 			cabinViewPart.syncViewer();
 		} catch (NullPointerException e) {
-			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.paxelerate.model",
-					"The cabin or info view is not visible."));
+			Log.add(this, "The cabin or info view is not visible.");
 		}
 
 	}

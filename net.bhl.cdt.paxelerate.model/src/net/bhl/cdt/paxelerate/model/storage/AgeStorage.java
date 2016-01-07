@@ -1,7 +1,5 @@
 package net.bhl.cdt.paxelerate.model.storage;
 
-import java.util.Arrays;
-
 import net.bhl.cdt.paxelerate.model.Sex;
 
 public class AgeStorage {

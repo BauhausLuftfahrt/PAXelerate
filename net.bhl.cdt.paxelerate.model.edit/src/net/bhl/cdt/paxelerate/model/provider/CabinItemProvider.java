@@ -5,11 +5,6 @@ package net.bhl.cdt.paxelerate.model.provider;
 import java.util.Collection;
 import java.util.List;
 
-import net.bhl.cdt.model.provider.NamedElementItemProvider;
-import net.bhl.cdt.paxelerate.model.Cabin;
-import net.bhl.cdt.paxelerate.model.CabinFactory;
-import net.bhl.cdt.paxelerate.model.CabinPackage;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -18,6 +13,11 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import net.bhl.cdt.model.provider.NamedElementItemProvider;
+import net.bhl.cdt.paxelerate.model.Cabin;
+import net.bhl.cdt.paxelerate.model.CabinFactory;
+import net.bhl.cdt.paxelerate.model.CabinPackage;
 
 /**
  * This is the item provider adapter for a

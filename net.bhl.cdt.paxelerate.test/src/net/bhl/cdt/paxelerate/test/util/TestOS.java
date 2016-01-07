@@ -6,9 +6,9 @@
 
 package net.bhl.cdt.paxelerate.test.util;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import net.bhl.cdt.paxelerate.util.OS;
@@ -20,11 +20,6 @@ import net.bhl.cdt.paxelerate.util.OS.OSType;
  * @author raoul.rothfeld
  */
 public class TestOS {
-
-	@BeforeClass
-	public static void beforeTest() {
-		System.out.println(System.getProperty("os.name"));
-	}
 
 	@Test
 	public void isOSTest() {

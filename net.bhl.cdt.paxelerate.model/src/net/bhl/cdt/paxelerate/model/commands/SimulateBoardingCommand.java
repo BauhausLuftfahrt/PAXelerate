@@ -8,6 +8,14 @@ package net.bhl.cdt.paxelerate.model.commands;
 
 import java.util.ArrayList;
 
+import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Shell;
+
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
@@ -25,14 +33,6 @@ import net.bhl.cdt.paxelerate.util.OS;
 import net.bhl.cdt.paxelerate.util.input.Input;
 import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
-
-import org.eclipse.core.runtime.ILog;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.jface.dialogs.IMessageProvider;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Shell;
 
 /**
  * This command starts the boarding simulation.

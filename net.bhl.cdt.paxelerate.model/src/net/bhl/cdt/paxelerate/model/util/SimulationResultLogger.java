@@ -4,16 +4,15 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.eclipse.emf.common.util.EList;
+
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.SimulationResult;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
-import net.bhl.cdt.paxelerate.util.Func;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.time.TimeHelper;
-
-import org.eclipse.emf.common.util.EList;
 
 /**
  * This class is used to handle passenger data and to analyze and export it.

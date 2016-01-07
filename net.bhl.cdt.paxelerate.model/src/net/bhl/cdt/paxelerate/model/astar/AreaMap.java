@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
-import net.bhl.cdt.paxelerate.util.Logger;
+import net.bhl.cdt.paxelerate.util.Log;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
@@ -30,7 +30,6 @@ public class AreaMap {
 	}
 
 	private ObstacleMap obstacleMap;
-	private Logger log = new Logger();
 
 	/**
 	 * This is the area map constructor.
@@ -45,9 +44,9 @@ public class AreaMap {
 		this.obstacleMap = obstacleMap;
 
 		createMap();
-		log.addToLog("Map Created");
+		Log.add(this, "Map Created");
 		registerEdges();
-		log.addToLog("Map Node edges registered");
+		Log.add(this, "Map Node edges registered");
 	}
 
 	public AreaMap(AreaMap copy) {

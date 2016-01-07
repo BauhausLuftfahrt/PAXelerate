@@ -21,11 +21,7 @@ import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
 import net.bhl.cdt.paxelerate.model.ui.PropertyViewPart;
 import net.bhl.cdt.paxelerate.model.util.ShouldSoonBeDeletedWhenSolved;
 import net.bhl.cdt.paxelerate.util.Func;
-
-import org.eclipse.core.runtime.ILog;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
+import net.bhl.cdt.paxelerate.util.Log;
 
 /**
  * This class refreshed the cabin view without modifying anything. It checks the
@@ -38,7 +34,6 @@ import org.eclipse.core.runtime.Status;
 public class DrawCabinCommand extends CDTCommand {
 
 	private Cabin cabin;
-	private ILog logger;
 	private CabinViewPart cabinViewPart;
 	private PropertyViewPart propertyViewPart;
 	private ArrayList<String> errorStrings = new ArrayList<String>();
@@ -51,8 +46,6 @@ public class DrawCabinCommand extends CDTCommand {
 	 */
 	public DrawCabinCommand(Cabin cabin) {
 		this.cabin = cabin;
-		logger = Platform
-				.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
 	}
 
 	/**
@@ -98,23 +91,19 @@ public class DrawCabinCommand extends CDTCommand {
 		propertyViewPart = ShouldSoonBeDeletedWhenSolved.getPropertyView();
 
 		for (String str : errorStrings) {
-			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.paxelerate.model",
-					str));
+			Log.add(this, str);
 		}
 		try {
 			propertyViewPart.updateUI(cabin);
 		} catch (NullPointerException e) {
-			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.paxelerate.model",
-					"No property view is visible!"));
+			Log.add(this, "No property view is visible!");
 		}
 
 		try {
 			cabinViewPart.setCabin(cabin);
-			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.paxelerate.model",
-					"Cabin view checked and updated"));
+			Log.add(this, "Cabin view checked and updated");
 		} catch (NullPointerException e) {
-			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.paxelerate.model",
-					"No cabin view is visible!"));
+			Log.add(this, "No cabin view is visible!");
 		}
 	}
 

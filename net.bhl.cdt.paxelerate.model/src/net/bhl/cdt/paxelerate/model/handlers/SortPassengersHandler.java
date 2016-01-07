@@ -5,15 +5,15 @@
  ***************************************************************************************/
 package net.bhl.cdt.paxelerate.model.handlers;
 
-import net.bhl.cdt.paxelerate.model.Cabin;
-import net.bhl.cdt.paxelerate.model.commands.SortPassengersCommand;
-
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
+
+import net.bhl.cdt.paxelerate.model.Cabin;
+import net.bhl.cdt.paxelerate.model.commands.SortPassengersCommand;
 
 public class SortPassengersHandler extends AbstractHandler {
 

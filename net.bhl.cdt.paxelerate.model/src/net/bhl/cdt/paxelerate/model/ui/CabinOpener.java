@@ -5,11 +5,11 @@
  ***************************************************************************************/
 package net.bhl.cdt.paxelerate.model.ui;
 
-import net.bhl.cdt.paxelerate.model.Cabin;
-import net.bhl.cdt.paxelerate.model.commands.DrawCabinCommand;
-
 import org.eclipse.emf.ecp.core.ECPProject;
 import org.eclipse.emf.ecp.explorereditorbridge.internal.EditorModelElementOpener;
+
+import net.bhl.cdt.paxelerate.model.Cabin;
+import net.bhl.cdt.paxelerate.model.commands.DrawCabinCommand;
 
 public class CabinOpener extends EditorModelElementOpener {
 

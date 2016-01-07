@@ -9,11 +9,6 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import org.eclipse.core.runtime.ILog;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
-
 import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.Curtain;
@@ -23,7 +18,7 @@ import net.bhl.cdt.paxelerate.model.Lavatory;
 import net.bhl.cdt.paxelerate.model.PhysicalObject;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
-import net.bhl.cdt.paxelerate.util.Func;
+import net.bhl.cdt.paxelerate.util.Log;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
@@ -42,7 +37,6 @@ public class ObstacleMap {
 			OBSTACLE_RANGE_IN_CM = 20, POTENTIAL_AROUND_OBSTACLE_MAXIMUM = 100,
 			HOLE_VALUE = 1; // DO NEVER SET THIS TO ZERO!
 	private static int[][] obstacleMap;
-	private ILog logger;
 
 	ArrayList<Class<? extends PhysicalObject>> classes = new ArrayList<Class<? extends PhysicalObject>>() {
 
@@ -67,8 +61,6 @@ public class ObstacleMap {
 		((Vector2D) dimensions).set(AStarTools.size(cabin.getCabinWidth()),
 				AStarTools.size(cabin.getCabinLength()));
 		obstacleMap = createObstacleMap();
-		logger = Platform
-				.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
 		printObstacleMap();
 	}
 
@@ -344,11 +336,9 @@ public class ObstacleMap {
 				}
 				printToFile.println();
 			}
-			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.paxelerate.model",
-					"Saved obstacle map to file."));
+			Log.add(this, "Saved obstacle map to file.");
 		} catch (FileNotFoundException e) {
-			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.paxelerate.model",
-					"Could not save obstacle map to file."));
+			Log.add(this, "Could not save obstacle map to file.");
 		} finally {
 			printToFile.close();
 		}

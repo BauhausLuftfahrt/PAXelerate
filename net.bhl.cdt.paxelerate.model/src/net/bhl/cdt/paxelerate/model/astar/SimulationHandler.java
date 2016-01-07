@@ -19,11 +19,9 @@ import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.agent.AgentFunctions;
-import net.bhl.cdt.paxelerate.model.ui.HelpView;
 import net.bhl.cdt.paxelerate.model.ui.SimulationView;
 import net.bhl.cdt.paxelerate.ui.ProgressHandler;
-import net.bhl.cdt.paxelerate.util.Func;
-import net.bhl.cdt.paxelerate.util.Logger;
+import net.bhl.cdt.paxelerate.util.Log;
 import net.bhl.cdt.paxelerate.util.OS;
 import net.bhl.cdt.paxelerate.util.math.StopWatch;
 import net.bhl.cdt.paxelerate.util.math.Vector;
@@ -44,7 +42,6 @@ public class SimulationHandler {
 
 	private static HashMap<Door, Double> lastDoorRelease = new HashMap<Door, Double>();
 
-	private Logger console = new Logger();
 	private static AreaMap areamap;
 	private static CostMap costmap;
 	private static ArrayList<Agent> agentList = new ArrayList<Agent>();
@@ -73,7 +70,7 @@ public class SimulationHandler {
 	public SimulationHandler(ObstacleMap obstaclemap, Vector dimensions,
 			Cabin cabin) {
 		this.dimensions = dimensions;
-		console.addToLog("Cabin initializing...");
+		Log.add(this, "Cabin initializing...");
 		areamap = new AreaMap(this.dimensions, obstaclemap);
 		SimulationHandler.cabin = cabin;
 		run();

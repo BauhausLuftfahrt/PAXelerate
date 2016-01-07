@@ -3,6 +3,7 @@
 package net.bhl.cdt.paxelerate.model;
 
 import java.util.Date;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**

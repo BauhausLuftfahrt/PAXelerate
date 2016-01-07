@@ -7,7 +7,6 @@ package net.bhl.cdt.paxelerate.model.agent;
 
 import net.bhl.cdt.paxelerate.model.astar.AStarTools;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
-import net.bhl.cdt.paxelerate.util.Func;
 
 public class AgressiveMood extends AgentMood implements Strategy {
 

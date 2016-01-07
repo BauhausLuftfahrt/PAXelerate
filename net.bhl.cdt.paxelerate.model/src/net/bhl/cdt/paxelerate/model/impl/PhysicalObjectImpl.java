@@ -5,11 +5,6 @@ package net.bhl.cdt.paxelerate.model.impl;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
-import net.bhl.cdt.paxelerate.model.CabinPackage;
-import net.bhl.cdt.paxelerate.model.PhysicalObject;
-import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
-import net.bhl.cdt.paxelerate.model.util.CabinValidator;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -20,6 +15,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
+
+import net.bhl.cdt.paxelerate.model.CabinPackage;
+import net.bhl.cdt.paxelerate.model.PhysicalObject;
+import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
+import net.bhl.cdt.paxelerate.model.util.CabinValidator;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

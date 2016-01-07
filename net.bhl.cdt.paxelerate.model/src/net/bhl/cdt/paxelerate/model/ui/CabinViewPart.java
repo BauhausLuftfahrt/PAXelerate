@@ -8,29 +8,6 @@ package net.bhl.cdt.paxelerate.model.ui;
 import java.io.File;
 import java.util.ArrayList;
 
-import net.bhl.cdt.model.util.ModelHelper;
-import net.bhl.cdt.paxelerate.model.BusinessClass;
-import net.bhl.cdt.paxelerate.model.Cabin;
-import net.bhl.cdt.paxelerate.model.CabinFactory;
-import net.bhl.cdt.paxelerate.model.Curtain;
-import net.bhl.cdt.paxelerate.model.Door;
-import net.bhl.cdt.paxelerate.model.EconomyClass;
-import net.bhl.cdt.paxelerate.model.FirstClass;
-import net.bhl.cdt.paxelerate.model.Galley;
-import net.bhl.cdt.paxelerate.model.Lavatory;
-import net.bhl.cdt.paxelerate.model.Passenger;
-import net.bhl.cdt.paxelerate.model.PhysicalObject;
-import net.bhl.cdt.paxelerate.model.Row;
-import net.bhl.cdt.paxelerate.model.Seat;
-import net.bhl.cdt.paxelerate.model.TravelClass;
-import net.bhl.cdt.paxelerate.model.agent.Agent;
-import net.bhl.cdt.paxelerate.model.astar.ObstacleMap;
-import net.bhl.cdt.paxelerate.model.astar.Path;
-import net.bhl.cdt.paxelerate.util.graphics.*;
-import net.bhl.cdt.paxelerate.util.math.Vector;
-import net.bhl.cdt.paxelerate.util.math.Vector2D;
-import net.bhl.cdt.paxelerate.util.math.Vector3D;
-
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
@@ -50,6 +27,29 @@ import org.eclipse.swt.graphics.ImageLoader;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
+
+import net.bhl.cdt.model.util.ModelHelper;
+import net.bhl.cdt.paxelerate.model.BusinessClass;
+import net.bhl.cdt.paxelerate.model.Cabin;
+import net.bhl.cdt.paxelerate.model.CabinFactory;
+import net.bhl.cdt.paxelerate.model.Curtain;
+import net.bhl.cdt.paxelerate.model.Door;
+import net.bhl.cdt.paxelerate.model.EconomyClass;
+import net.bhl.cdt.paxelerate.model.FirstClass;
+import net.bhl.cdt.paxelerate.model.Galley;
+import net.bhl.cdt.paxelerate.model.Lavatory;
+import net.bhl.cdt.paxelerate.model.Passenger;
+import net.bhl.cdt.paxelerate.model.PhysicalObject;
+import net.bhl.cdt.paxelerate.model.Row;
+import net.bhl.cdt.paxelerate.model.Seat;
+import net.bhl.cdt.paxelerate.model.TravelClass;
+import net.bhl.cdt.paxelerate.model.agent.Agent;
+import net.bhl.cdt.paxelerate.model.astar.ObstacleMap;
+import net.bhl.cdt.paxelerate.model.astar.Path;
+import net.bhl.cdt.paxelerate.util.graphics.ColorHelper;
+import net.bhl.cdt.paxelerate.util.graphics.SWTResourceManager;
+import net.bhl.cdt.paxelerate.util.math.Vector;
+import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
 /**
  * This class represents the cabin view. All graphics generation is done here.

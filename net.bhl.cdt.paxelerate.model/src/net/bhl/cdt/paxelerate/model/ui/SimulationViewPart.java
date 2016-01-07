@@ -1,5 +1,9 @@
 package net.bhl.cdt.paxelerate.model.ui;
 
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.PaintEvent;
+import org.eclipse.swt.events.PaintListener;
+
 /*******************************************************************************
  * <copyright> Copyright (c) 2014-2015 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
@@ -8,20 +12,15 @@ package net.bhl.cdt.paxelerate.model.ui;
 
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.widgets.Canvas;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.part.ViewPart;
 
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.astar.AreaMap;
 import net.bhl.cdt.paxelerate.model.astar.Node;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
-import net.bhl.cdt.paxelerate.util.Func;
 import net.bhl.cdt.paxelerate.util.graphics.ColorHelper;
-
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.PaintEvent;
-import org.eclipse.swt.events.PaintListener;
-import org.eclipse.swt.widgets.Canvas;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.part.ViewPart;
 
 /**
  * This class represents the cabin view. All graphics generation is done here.
