@@ -33,7 +33,7 @@ public class SimulationResultLogger {
 
 	}
 
-	public void getSimulationData(Cabin cabin, int runNumber, double time) {
+	public void getSimulationData(Cabin cabin, int runNumber, long time) {
 		SimulationResult result = CabinFactory.eINSTANCE
 				.createSimulationResult();
 
@@ -46,7 +46,7 @@ public class SimulationResultLogger {
 				.getResults().size() + 1);
 		result.setName(dateFormat.format(date));
 		result.setDate(date);
-		result.setBoardingTimeString(TimeHelper.transformToTimeString(time));
+		result.setBoardingTimeString(TimeHelper.toTimeOfDay(time));
 		SimulationHandler.getCabin().getSimulationSettings().getResults()
 				.add(result);
 	}

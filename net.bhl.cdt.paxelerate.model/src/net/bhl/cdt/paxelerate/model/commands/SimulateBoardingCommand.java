@@ -205,11 +205,12 @@ public class SimulateBoardingCommand extends CDTCommand {
 			} else {
 				Log.add(this, "No boarding possible! Please create passengers!");
 			}
+			// TODO: why is time double? should be long
 			results.getSimulationData(SimulationHandler.getCabin(), i + 1,
-					Func.round((SimulationView.getWatch().getElapsedTimeSecs()
+					(long) Func.round((SimulationView.getWatch().getElapsedTimeSecs()
 							* (double) cabin.getSimulationSettings()
 									.getSimulationSpeedFactor()),
-							2));
+							0)); // reduced from 2 to 0 for long casting --> change to milliseconds if more precision needed
 		}
 		results.printSimulationData();
 		cabinViewPart.clearCache();
