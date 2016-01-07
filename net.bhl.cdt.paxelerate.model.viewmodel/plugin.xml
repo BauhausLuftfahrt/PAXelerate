@@ -74,8 +74,4 @@
 <file filePath="viewmodels/Cabin.view"/>
 
    </extension>
-
-<extension point="org.eclipse.emf.ecp.view.template">
-<viewTemplate xmi="viewmodels/new_file.template"/>
-</extension>
 </plugin>

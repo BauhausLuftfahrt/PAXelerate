@@ -36,21 +36,6 @@
             locationURI="menu:org.eclipse.ui.main.menu">
          <menu
                label="Cabin">
-            <command
-                  commandId="net.bhl.cdt.paxelerate.ui.command4"
-                  label="Generate Cabin"
-                  style="push">
-            </command>
-            <command
-                  commandId="net.bhl.cdt.paxelerate.ui.command5"
-                  label="Generate Passengers"
-                  style="push">
-            </command>
-            <command
-                  commandId="net.bhl.cdt.paxelerate.ui.command6"
-                  label="Run Simulation"
-                  style="push">
-            </command>
             <separator
                   name="net.bhl.cdt.paxelerate.ui.separator1"
                   visible="true">
@@ -63,16 +48,6 @@
          </menu>
          <menu
                label="Help">
-            <command
-                  commandId="net.bhl.cdt.paxelerate.ui.command3"
-                  label="Help"
-                  style="push">
-            </command>
-            <command
-                  commandId="net.bhl.cdt.paxelerate.model.AboutView"
-                  label="About"
-                  style="push">
-            </command>
          </menu>
       </menuContribution>
    </extension>

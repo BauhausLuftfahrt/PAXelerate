@@ -633,7 +633,8 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter implem
 	 */
 	@Override
 	public String getText(Object object) {
-		SimulationProperties simulationProperties = (SimulationProperties) object;
+		// Unused code
+		//SimulationProperties simulationProperties = (SimulationProperties) object;
 		return getString("_UI_SimulationProperties_type");
 	}
 

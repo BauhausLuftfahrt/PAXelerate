@@ -48,7 +48,8 @@ public class SimulationView extends JPanel implements MouseListener {
 
 	private static double cabinWidth;
 
-	private boolean once = true, interrupted = false;
+	// Unused variable
+	//private boolean interrupted = false;
 
 	public static StopWatch getWatch() {
 		return watch;
@@ -134,7 +135,8 @@ public class SimulationView extends JPanel implements MouseListener {
 		stop.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				interrupted = true;
+				// Unused variable
+				//interrupted = true;
 			}
 		});
 		System.out.println(Func.getLineNumber());

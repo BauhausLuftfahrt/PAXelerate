@@ -135,17 +135,17 @@ public class Path {
 
 	}
 
-	/**
-	 * This method prints the path to the console.
-	 * 
-	 * @param path
-	 *            the path to be printed
-	 */
-	public void print() {
-		for (Node node : getWaypoints()) {
-			// Func.printVectorToLog(node.getPosition(), "position");
-		}
-	}
+//	/**
+//	 * This method prints the path to the console.
+//	 * 
+//	 * @param path
+//	 *            the path to be printed
+//	 */
+//	public void print() {
+//		for (Node node : getWaypoints()) {
+//			// Func.printVectorToLog(node.getPosition(), "position");
+//		}
+//	}
 
 	public Path cutToPoint(Path path, Vector point) {
 		/* get the last node */

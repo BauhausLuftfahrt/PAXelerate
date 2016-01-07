@@ -24,8 +24,9 @@ import org.eclipse.ui.splash.AbstractSplashHandler;
  */
 public class ExtensibleSplashHandler extends AbstractSplashHandler {
 
-	private ArrayList<Object> fImageList;
+	private ArrayList<Image> fImageList;
 
+	 // TODO: rework ArrayLists (to either hold Strings OR images; not both)
 	private ArrayList<Object> fTooltipList;
 
 	private final static String F_SPLASH_EXTENSION_ID = "net.bhl.cdt.model.cabin.splashExtension"; // NON-NLS-1
@@ -48,8 +49,8 @@ public class ExtensibleSplashHandler extends AbstractSplashHandler {
 	 * 
 	 */
 	public ExtensibleSplashHandler() {
-		// TODO: rework ArrayLists (to either hold Strings OR images)
-		fImageList = new ArrayList<Object>();
+		
+		fImageList = new ArrayList<Image>();
 		fTooltipList = new ArrayList<Object>();
 		fIconPanel = null;
 	}
@@ -106,7 +107,7 @@ public class ExtensibleSplashHandler extends AbstractSplashHandler {
 	 * 
 	 */
 	private void createUIImages() {
-		Iterator<Object> imageIterator = fImageList.iterator();
+		Iterator<Image> imageIterator = fImageList.iterator();
 		Iterator<Object> tooltipIterator = fTooltipList.iterator();
 		int i = 1;
 		int columnCount = ((GridLayout) fIconPanel.getLayout()).numColumns;
@@ -304,7 +305,7 @@ public class ExtensibleSplashHandler extends AbstractSplashHandler {
 			return;
 		}
 		// Dispose of all the images
-		Iterator iterator = fImageList.iterator();
+		Iterator<Image> iterator = fImageList.iterator();
 		while (iterator.hasNext()) {
 			Image image = (Image) iterator.next();
 			image.dispose();

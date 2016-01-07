@@ -12,17 +12,19 @@ import net.bhl.cdt.paxelerate.model.Cabin;
 
 public class CabinAdapterFactory implements IAdapterFactory {
 
+	// TODO: rework implementation
+	@SuppressWarnings("unchecked")
 	@Override
-	public Object getAdapter(Object adaptableObject, Class adapterType) {
+	public <T> T getAdapter(Object adaptableObject, Class<T> adapterType) {
 		if (adapterType == IPropertySource.class
 				&& adaptableObject instanceof Cabin) {
-			return new CabinPropertySource((Cabin) adaptableObject);
+			return (T) new CabinPropertySource((Cabin) adaptableObject);
 		}
 		return null;
 	}
 
 	@Override
-	public Class[] getAdapterList() {
+	public Class<?>[] getAdapterList() {
 		// TODO Auto-generated method stub
 		return null;
 	}

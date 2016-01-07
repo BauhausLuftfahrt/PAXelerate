@@ -11,13 +11,14 @@ import org.eclipse.emf.ecp.explorereditorbridge.internal.EditorModelElementOpene
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.commands.DrawCabinCommand;
 
+// TODO: rework without reference to EditorModelElementOpener
+@SuppressWarnings("restriction")
 public class CabinOpener extends EditorModelElementOpener {
 
 	public CabinOpener() {
 		// TODO Auto-generated constructor stub
 	}
 
-	@SuppressWarnings("restriction")
 	@Override
 	public void openModelElement(Object element, ECPProject ecpProject) {
 		new DrawCabinCommand((Cabin) element).execute();

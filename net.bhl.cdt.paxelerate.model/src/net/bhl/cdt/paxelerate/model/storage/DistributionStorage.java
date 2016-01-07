@@ -21,8 +21,9 @@ public class DistributionStorage {
 
 	private int maximumAmountOfOneAgeMale = 0, maximumAmountOfOneAgeFemale = 0,
 			maximumAmountOfOneAgeTotal;
-
-	private int minimumAmountOfOneAgeMale = 0, minimumAmountOfOneAgeFemale = 0;
+	
+	// Unused variables
+	//private int minimumAmountOfOneAgeMale = 0, minimumAmountOfOneAgeFemale = 0;
 
 	public void addValue(Sex sex, int age) {
 		if (sex == Sex.MALE) {
@@ -164,7 +165,7 @@ public class DistributionStorage {
 		maximumAmountOfOneAgeMale = 0;
 		maximumAmountOfOneAgeFemale = 0;
 		maximumAmountOfOneAgeTotal = 0;
-		minimumAmountOfOneAgeMale = 0;
-		minimumAmountOfOneAgeFemale = 0;
+		//minimumAmountOfOneAgeMale = 0;
+		//minimumAmountOfOneAgeFemale = 0;
 	}
 }
