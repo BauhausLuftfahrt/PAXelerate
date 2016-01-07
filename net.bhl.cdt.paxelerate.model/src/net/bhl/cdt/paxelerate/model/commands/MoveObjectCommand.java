@@ -7,10 +7,6 @@ package net.bhl.cdt.paxelerate.model.commands;
 
 import java.util.ArrayList;
 
-import org.eclipse.core.runtime.ILog;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
@@ -24,6 +20,7 @@ import net.bhl.cdt.paxelerate.model.Lavatory;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
+import net.bhl.cdt.paxelerate.util.Log;
 import net.bhl.cdt.paxelerate.util.input.Input;
 import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 import net.bhl.cdt.paxelerate.util.math.Vector;
@@ -39,7 +36,6 @@ import net.bhl.cdt.paxelerate.util.math.Vector;
 public class MoveObjectCommand extends CDTCommand {
 
 	private Cabin cabin;
-	private ILog logger;
 	private CabinViewPart cabinViewPart;
 	private Vector movementVector, scaleVector;
 	private ArrayList<Row> rowlist = new ArrayList<Row>();
@@ -76,8 +72,6 @@ public class MoveObjectCommand extends CDTCommand {
 		this.lavatorylist = lavatorylist;
 		this.curtainlist = curtainlist;
 		this.cabin = cabin;
-		logger = Platform
-				.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
 	}
 
 	/**
@@ -199,11 +193,9 @@ public class MoveObjectCommand extends CDTCommand {
 
 		try {
 			cabinViewPart.setCabin(cabin);
-			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.paxelerate.model",
-					"Cabin view checked and updated"));
+			Log.add(this, "Cabin view checked and updated");
 		} catch (NullPointerException e) {
-			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.paxelerate.model",
-					"No cabin view is visible!"));
+			Log.add(this, "No cabin view is visible!");
 		}
 	}
 }

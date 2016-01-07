@@ -8,10 +8,6 @@ package net.bhl.cdt.paxelerate.model.ui;
 import java.io.File;
 import java.util.ArrayList;
 
-import org.eclipse.core.runtime.ILog;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
@@ -46,6 +42,7 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.astar.ObstacleMap;
 import net.bhl.cdt.paxelerate.model.astar.Path;
+import net.bhl.cdt.paxelerate.util.Log;
 import net.bhl.cdt.paxelerate.util.graphics.ColorHelper;
 import net.bhl.cdt.paxelerate.util.graphics.SWTResourceManager;
 import net.bhl.cdt.paxelerate.util.math.Vector;
@@ -84,8 +81,6 @@ public class CabinViewPart extends ViewPart {
 	private static Font fontOne, fontTwo, fontThree;
 	/********************************************************************/
 
-	private static ILog logger;
-
 	private Image economySeat, businessSeat, firstSeat, coffeeIcon,
 			lavatoryIcon;
 	private Canvas canvas;
@@ -112,8 +107,6 @@ public class CabinViewPart extends ViewPart {
 	public void createPartControl(Composite parent) {
 		this.parent = parent;
 		cabin = CabinFactory.eINSTANCE.createCabin();
-		logger = Platform
-				.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
 
 		/********** Create Colors and Fonts here ************/
 		fontsize = 6;
@@ -352,8 +345,7 @@ public class CabinViewPart extends ViewPart {
 		try {
 			loader.save(FILE_PATH + "aircraft_rendered.png", SWT.IMAGE_PNG);
 		} catch (Exception e) {
-			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-					"The background image could not be saved! Directory problem."));
+			Log.add(this, "The background image could not be saved! Directory problem.");
 		}
 		return image;
 	}
@@ -381,8 +373,7 @@ public class CabinViewPart extends ViewPart {
 			return SWTResourceManager.getImage(InfoViewPart.class,
 					"continental.png");
 		default:
-			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-					"There is a problem with the aircraft type definition."));
+			Log.add(this, "There is a problem with the aircraft type definition.");
 			return null;
 		}
 	}
@@ -427,8 +418,7 @@ public class CabinViewPart extends ViewPart {
 			return resizeAC((int) (imageX * canvasHeight / imageY),
 					(int) (imageY * canvasHeight / imageY));
 		} catch (IndexOutOfBoundsException e) {
-			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-					"Error scaling aircraft image. No image found."));
+			Log.add(this, "Error scaling aircraft image. No image found.");
 			return null;
 		}
 	}
@@ -521,8 +511,7 @@ public class CabinViewPart extends ViewPart {
 							.get(0).getYDimension() / factor
 							* PASSENGER_CIRCLE_SIZE));
 		} catch (IndexOutOfBoundsException e) {
-			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-					"Error scaling seat images. No galley found."));
+			Log.add(this, "Error scaling seat images. No galley found.");
 		}
 		try {
 			lavatoryIcon = resize(lavatoryIcon,
@@ -532,8 +521,7 @@ public class CabinViewPart extends ViewPart {
 							.get(0).getYDimension() / factor
 							* PASSENGER_CIRCLE_SIZE));
 		} catch (IndexOutOfBoundsException e) {
-			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-					"Error scaling seat images. No lavatory found."));
+			Log.add(this, "Error scaling seat images. No lavatory found.");
 		}
 		cabinAdapter = new AdapterImpl() {
 			public void notifyChanged(Notification notification) {
@@ -636,8 +624,7 @@ public class CabinViewPart extends ViewPart {
 		try {
 			loader.save(FILE_PATH + "obstaclemap.png", SWT.IMAGE_PNG);
 		} catch (Exception e) {
-			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-					"The obstacle map could not be saved! Directory problem."));
+			Log.add(this, "The obstacle map could not be saved! Directory problem.");
 		}
 		disposeAll();
 		return image;

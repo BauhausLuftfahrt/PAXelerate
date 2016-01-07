@@ -9,10 +9,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.apache.commons.lang.StringUtils;
-import org.eclipse.core.runtime.ILog;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
 
 import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.BusinessClass;
@@ -36,6 +32,7 @@ import net.bhl.cdt.paxelerate.model.StandardDoor;
 import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.commands.GenerateCabinCommand;
 import net.bhl.cdt.paxelerate.util.Func;
+import net.bhl.cdt.paxelerate.util.Log;
 import net.bhl.cdt.paxelerate.util.input.InputChecker;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
@@ -60,7 +57,6 @@ public class ConstructionLibrary {
 	private Vector seatDimensions = new Vector2D(0, 0);
 
 	private TravelClass passengerClass;
-	private ILog logger;
 	private ArrayList<Integer> rowPartsInt;
 
 	boolean doItOnce = true;
@@ -73,8 +69,6 @@ public class ConstructionLibrary {
 	 *            the cabin element
 	 */
 	public ConstructionLibrary(Cabin cabin) {
-		logger = Platform
-				.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
 		this.cabin = cabin;
 		rowPartsInt = new ArrayList<Integer>();
 		globalSeatPositionX = 0;
@@ -391,11 +385,10 @@ public class ConstructionLibrary {
 		if (seats > 0) {
 			seatHelper = 0;
 			if ((seats % seatsInRow) != 0) {
-				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-						"Check your number of seats in "
+				Log.add(this, "Check your number of seats in "
 								+ StringOperations.splitCamelCase(
 										travelSubClass.getSimpleName())
-								+ ". Could not fill all rows."));
+								+ ". Could not fill all rows.");
 			}
 			for (int i = 1; i <= seats / seatsInRow; i++) {
 				globalSeatPositionX = 0;
@@ -410,9 +403,7 @@ public class ConstructionLibrary {
 							/ (seatsInRow + numbAisles + 1));
 					seatHelper = globalSeatPositionX;
 				} else {
-					logger.log(new Status(IStatus.ERROR,
-							"net.bhl.cdt.model.cabin", "The seats in row " + i
-									+ " do not fit into the cabin!"));
+					Log.add(this, "The seats in row "+i+" do not fit into the cabin!");
 					seatHelper = 0;
 					globalSeatPositionX = 0;
 				}
@@ -421,9 +412,7 @@ public class ConstructionLibrary {
 				if ((globalSeatPositionX < 0)) {
 					seatHelper = 0;
 					globalSeatPositionX = 0;
-					logger.log(new Status(IStatus.ERROR,
-							"net.bhl.cdt.model.cabin", "The seats in row " + i
-									+ " do not fit into the cabin!"));
+					Log.add(this, "The seats in row "+i+" do not fit into the cabin!");
 				}
 				globalSeatPositionY += seatPitch;
 
@@ -486,9 +475,7 @@ public class ConstructionLibrary {
 			for (Door testDoor : cabin.getDoors()) {
 				if (typeDoor.getSimpleName().equals("MainDoor")
 						&& (testDoor instanceof MainDoor)) {
-					logger.log(
-							new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-									"You created more than one main door!"));
+					Log.add(this, "You created more than one main door!");
 					mainDoorAlreadyExists = true;
 				}
 			}
@@ -515,8 +502,7 @@ public class ConstructionLibrary {
 			newDoor.setYPosition(yPosition);
 			newDoor.setIsActive(false);
 			if (yPosition < 0) {
-				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-						"Emergency Exit has a illegal yPosition."));
+				Log.add(this, "Emergency Exit has a illegal yPosition.");
 			}
 		}
 		cabin.getDoors().add(newDoor);
