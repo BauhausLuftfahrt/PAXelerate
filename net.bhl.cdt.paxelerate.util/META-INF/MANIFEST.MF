@@ -14,6 +14,6 @@ Export-Package: net.bhl.cdt.paxelerate.util,
  net.bhl.cdt.paxelerate.util.graphics,
  net.bhl.cdt.paxelerate.util.input,
  net.bhl.cdt.paxelerate.util.math,
- net.bhl.cdt.paxelerate.util.strings,
+ net.bhl.cdt.paxelerate.util.string,
  net.bhl.cdt.paxelerate.util.time
 

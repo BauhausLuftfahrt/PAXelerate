@@ -24,7 +24,7 @@ import net.bhl.cdt.paxelerate.model.util.PassengerPropertyGenerator;
 import net.bhl.cdt.paxelerate.model.util.ShouldSoonBeDeletedWhenSolved;
 import net.bhl.cdt.paxelerate.util.Log;
 import net.bhl.cdt.paxelerate.util.math.RandomHelper;
-import net.bhl.cdt.paxelerate.util.strings.StringOperations;
+import net.bhl.cdt.paxelerate.util.string.StringHelper;
 
 /**
  * 
@@ -206,12 +206,12 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 				Log.add(this, "successfully created " + (passengerPerClassCount)
 								+ " passengers in "
-								+ StringOperations.splitCamelCase(
+								+ StringHelper.splitCamelCase(
 										travelSubClass.getSimpleName()));
 			} else {
 
 				Log.add(this, "Too many passengers in "
-								+ StringOperations.splitCamelCase(
+								+ StringHelper.splitCamelCase(
 										travelSubClass.getSimpleName()));
 			}
 		}

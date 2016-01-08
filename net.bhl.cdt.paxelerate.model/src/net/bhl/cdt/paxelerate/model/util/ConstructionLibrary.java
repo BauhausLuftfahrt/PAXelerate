@@ -36,7 +36,7 @@ import net.bhl.cdt.paxelerate.util.Log;
 import net.bhl.cdt.paxelerate.util.input.InputChecker;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
-import net.bhl.cdt.paxelerate.util.strings.StringOperations;
+import net.bhl.cdt.paxelerate.util.string.StringHelper;
 
 /**
  * This class contains all constructors for the different elements of the cabin.
@@ -386,7 +386,7 @@ public class ConstructionLibrary {
 			seatHelper = 0;
 			if ((seats % seatsInRow) != 0) {
 				Log.add(this, "Check your number of seats in "
-								+ StringOperations.splitCamelCase(
+								+ StringHelper.splitCamelCase(
 										travelSubClass.getSimpleName())
 								+ ". Could not fill all rows.");
 			}
@@ -425,7 +425,7 @@ public class ConstructionLibrary {
 						+ seatDimensions.getY();
 			}
 			if (!(passengerClass instanceof EconomyClass)) {
-				createCurtain(true, "after " + StringOperations
+				createCurtain(true, "after " + StringHelper
 						.splitCamelCase(travelSubClass.getSimpleName()));
 			}
 		}

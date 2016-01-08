@@ -12,7 +12,7 @@ import org.eclipse.swt.widgets.Text;
 
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
-import net.bhl.cdt.paxelerate.util.strings.StringOperations;
+import net.bhl.cdt.paxelerate.util.string.StringHelper;
 
 /**
  * This class generates a dialog which can get various parameters or give output
@@ -281,7 +281,7 @@ public class Input extends TitleAreaDialog {
 		switch (windowType) {
 		case GET_INTEGER:
 			if (text.getText() != "") {
-				if (StringOperations.isNumeric(text.getText())) {
+				if (StringHelper.isInteger(text.getText())) {
 					return true;
 				} else {
 					warningLabel.setText("You entered a character that is not a digit.");
@@ -295,7 +295,7 @@ public class Input extends TitleAreaDialog {
 			}
 		case OPTIONS:
 			if (text.getText() != "") {
-				if (StringOperations.isNumeric(text.getText())) {
+				if (StringHelper.isInteger(text.getText())) {
 					return true;
 				} else {
 					warningLabel.setText("You entered a character that is not a digit.");
@@ -317,7 +317,7 @@ public class Input extends TitleAreaDialog {
 			}
 		case GET_VECTOR:
 			if (text.getText() != "" && text2.getText() != "") {
-				if (StringOperations.isNumeric(text.getText()) && StringOperations.isNumeric(text2.getText())) {
+				if (StringHelper.isInteger(text.getText()) && StringHelper.isInteger(text2.getText())) {
 					return true;
 				} else {
 					warningLabel.setText("One of the two values is not a digit.");
@@ -331,8 +331,8 @@ public class Input extends TitleAreaDialog {
 			}
 		case GET_TWO_VECTORS:
 			if (text.getText() != "" && text2.getText() != "" && text3.getText() != "" && text4.getText() != "") {
-				if (StringOperations.isNumeric(text.getText()) && StringOperations.isNumeric(text2.getText())
-						&& StringOperations.isNumeric(text3.getText()) && StringOperations.isNumeric(text4.getText())) {
+				if (StringHelper.isInteger(text.getText()) && StringHelper.isInteger(text2.getText())
+						&& StringHelper.isInteger(text3.getText()) && StringHelper.isInteger(text4.getText())) {
 					return true;
 				} else {
 					warningLabel.setText("One of the two values is not a digit.");
