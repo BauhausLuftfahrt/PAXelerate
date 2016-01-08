@@ -11,68 +11,51 @@ import java.time.LocalTime;
 import java.util.Date;
 
 /**
+ * Supports formatting various time amounts into HH:mm:ss format
  * 
  * @author marc.engelmann, raoul.rothfeld
- *
  */
 public class TimeHelper {
-	
+
 	/**
+	 * Formats time amount in seconds into HH:mm:ss format
 	 * 
 	 * @param seconds
-	 * @return
+	 *            the number of seconds to be formatted
+	 * @return the converted HH:mm:ss String
 	 */
 	public static String toTimeOfDay(int seconds) {
-		return TimeHelper.toTimeOfDay(seconds);
+		return TimeHelper.toTimeOfDay((long) seconds);
 	}
-	
+
 	/**
+	 * Formats time amount in seconds into HH:mm:ss format
 	 * 
 	 * @param seconds
-	 * @return
+	 *            the number of seconds to be formatted
+	 * @return the converted HH:mm:ss String
+	 */
+	public static String toTimeOfDay(double seconds) {
+		return TimeHelper.toTimeOfDay(Math.round(seconds));
+	}
+
+	/**
+	 * Formats time amount in seconds into HH:mm:ss format
+	 * 
+	 * @param seconds
+	 *            the number of seconds to be formatted
+	 * @return the converted HH:mm:ss String
 	 */
 	public static String toTimeOfDay(long seconds) {
-		LocalTime timeOfDay = LocalTime.ofSecondOfDay(seconds);
-		return timeOfDay.toString();
+		return LocalTime.ofSecondOfDay(seconds).toString();
 	}
-	
+
 	/**
+	 * Delivers the current time in HH:mm:ss format
 	 * 
-	 * @return
+	 * @return the current time as HH:mm:ss String
 	 */
 	public static String getCurrentTimeOfDay() {
 		return new SimpleDateFormat("HH:mm:ss").format(new Date());
-	}
-	
-	@Deprecated
-	public static String transformToTimeString(double timeInSeconds) {
-
-		int hours = (int) (timeInSeconds / 3600);
-		int minutes = (int) (timeInSeconds / 60) - hours * 60;
-		int seconds = (int) (timeInSeconds % 60);
-
-		String hoursAppend = "";
-		String minutesAppend = "";
-		String secondsAppend = "";
-
-		if (hours < 10) {
-			hoursAppend = "0";
-		}
-		if (minutes < 10) {
-			minutesAppend = "0";
-		}
-		if (seconds < 10) {
-			secondsAppend = "0";
-		}
-
-		return new String(hoursAppend + hours + ":" + minutesAppend + minutes + ":" + secondsAppend + seconds);
-	}
-
-	@Deprecated
-	public static String getCurrentTimeStamp() {
-		SimpleDateFormat sdfDate = new SimpleDateFormat("HH:mm:ss.SSS");
-		Date now = new Date();
-		String strDate = sdfDate.format(now);
-		return strDate;
 	}
 }

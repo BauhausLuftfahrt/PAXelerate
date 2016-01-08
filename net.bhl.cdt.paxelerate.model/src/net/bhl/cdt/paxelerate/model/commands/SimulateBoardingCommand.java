@@ -207,10 +207,10 @@ public class SimulateBoardingCommand extends CDTCommand {
 			}
 			// TODO: why is time double? should be long
 			results.getSimulationData(SimulationHandler.getCabin(), i + 1,
-					(long) Func.round((SimulationView.getWatch().getElapsedTimeSecs()
+					Func.round((SimulationView.getWatch().getElapsedTimeSecs()
 							* (double) cabin.getSimulationSettings()
 									.getSimulationSpeedFactor()),
-							0)); // reduced from 2 to 0 for long casting --> change to milliseconds if more precision needed
+							2));
 		}
 		results.printSimulationData();
 		cabinViewPart.clearCache();

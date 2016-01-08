@@ -257,7 +257,7 @@ public class SimulationView extends JPanel implements MouseListener {
 		double tens = watch.getElapsedTimeTens() * SimulationHandler.getCabin()
 				.getSimulationSettings().getSimulationSpeedFactor();
 
-		g.drawString("Sim. Time: " + TimeHelper.transformToTimeString(tens)
+		g.drawString("Sim. Time: " + TimeHelper.toTimeOfDay(tens)
 				+ " >> " + SimulationHandler.getCabin().getSimulationSettings()
 						.getSimulationSpeedFactor()
 				+ "x", 10, 40);

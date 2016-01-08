@@ -33,7 +33,7 @@ public class SimulationResultLogger {
 
 	}
 
-	public void getSimulationData(Cabin cabin, int runNumber, long time) {
+	public void getSimulationData(Cabin cabin, int runNumber, double time) {
 		SimulationResult result = CabinFactory.eINSTANCE
 				.createSimulationResult();
 
@@ -116,12 +116,12 @@ public class SimulationResultLogger {
 			System.out.println(result.getPassengers()
 					+ " passengers simulated in run #" + result.getId()
 					+ " within "
-					+ TimeHelper.transformToTimeString(result.getBoardingTime())
+					+ TimeHelper.toTimeOfDay(result.getBoardingTime())
 					+ ".");
 			System.out.println();
 		}
 		System.out.println("Average boarding time: "
-				+ TimeHelper.transformToTimeString(getAverageBoardingTime())
+				+ TimeHelper.toTimeOfDay(getAverageBoardingTime())
 				+ " seconds.");
 		System.out.println();
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
