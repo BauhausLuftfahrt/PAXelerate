@@ -1,5 +1,6 @@
 package net.bhl.cdt.paxelerate.model.storage;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,6 +18,11 @@ public class Exporter {
 
 	public static boolean generateHeatmapFile(String filename, AreaMap areamap) {
 		try {
+			
+			// Create a path before creating the file!
+			File dir = new File(FILE_PATH);
+			dir.mkdir();
+
 			FileWriter writer = new FileWriter(FILE_PATH + filename + ".xls");
 			for (ArrayList<Node> nodeList : areamap.getNodes()) {
 				for (Node node : nodeList) {
@@ -39,7 +45,11 @@ public class Exporter {
 
 	public static boolean generateInterruptmapFile(String filename,
 			AreaMap areamap) {
+		
 		try {
+			// Create a path before creating the file!
+						File dir = new File(FILE_PATH);
+						dir.mkdir();
 			FileWriter writer = new FileWriter(FILE_PATH + filename + ".xls");
 			for (ArrayList<Node> nodeList : areamap.getNodes()) {
 				for (Node node : nodeList) {
@@ -64,8 +74,12 @@ public class Exporter {
 			GaussianStorage weight, GaussianStorage height,
 			GaussianStorage depth, GaussianStorage width, AgeStorage age,
 			LuggageStorage luggage, int[] pax) {
-
+		
 		try {
+			
+			// Create a path before creating the file!
+						File dir = new File(FILE_PATH);
+						dir.mkdir();
 
 			FileWriter writer = new FileWriter(FILE_PATH + sFileName + ".xls");
 
