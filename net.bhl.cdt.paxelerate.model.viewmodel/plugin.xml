@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?eclipse version="3.4"?><plugin>
    <extension point="org.eclipse.emf.ecp.view.model.provider.xmi.file">
+
 <file filePath="viewmodels/SimulationResult.view"/>
 
 <file filePath="viewmodels/SimulationProperties.view"/>
@@ -74,4 +75,8 @@
 <file filePath="viewmodels/Cabin.view"/>
 
    </extension>
+
+<extension point="org.eclipse.emf.ecp.view.template">
+<viewTemplate xmi="viewmodels/new_file.template"/>
+</extension>
 </plugin>

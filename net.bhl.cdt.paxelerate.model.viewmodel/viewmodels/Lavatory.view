@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="ASCII"?>
-<org.eclipse.emf.ecp.view.model:View xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.emf.ecp.view.group.model="http://org/eclipse/emf/ecp/view/group/model" xmlns:org.eclipse.emf.ecp.view.model="http://org/eclipse/emf/ecp/view/model/170" xmi:id="_bsH1AKS8EeWGjpaobu8CIA" name="Lavatory" ecorePath="/net.bhl.cdt.model.cabin/model/cabin.ecore">
-  <rootEClass href="http://bhl.net/cdt/model/cabin/#//Lavatory"/>
+<org.eclipse.emf.ecp.view.model:View xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.emf.ecp.view.group.model="http://org/eclipse/emf/ecp/view/group/model" xmlns:org.eclipse.emf.ecp.view.model="http://org/eclipse/emf/ecp/view/model/170" xmi:id="_bsH1AKS8EeWGjpaobu8CIA" name="Lavatory" ecorePath="/com.paxelerate/model/cabin.ecore">
+  <rootEClass href="http://paxelerate.com/#//Lavatory"/>
   <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_ciL6UKS8EeWGjpaobu8CIA" name="Properties">
     <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_bsMGcKS8EeWGjpaobu8CIA" name="Control xPosition">
       <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_bsMtgKS8EeWGjpaobu8CIA">
-        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//PhysicalObject/xPosition"/>
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//PhysicalObject/xPosition"/>
       </domainModelReference>
     </children>
     <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_bsMtgaS8EeWGjpaobu8CIA" name="Control yPosition">
       <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_bsMtgqS8EeWGjpaobu8CIA">
-        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//PhysicalObject/yPosition"/>
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//PhysicalObject/yPosition"/>
       </domainModelReference>
     </children>
     <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_bsMtg6S8EeWGjpaobu8CIA" name="Control xDimension">
       <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_bsMthKS8EeWGjpaobu8CIA">
-        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//PhysicalObject/xDimension"/>
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//PhysicalObject/xDimension"/>
       </domainModelReference>
     </children>
     <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_bsMthaS8EeWGjpaobu8CIA" name="Control yDimension">
       <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_bsMthqS8EeWGjpaobu8CIA">
-        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//PhysicalObject/yDimension"/>
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//PhysicalObject/yDimension"/>
       </domainModelReference>
     </children>
     <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_bsMth6S8EeWGjpaobu8CIA" name="Control name">
       <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_bsMtiKS8EeWGjpaobu8CIA">
-        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//PhysicalObject/name"/>
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//PhysicalObject/name"/>
       </domainModelReference>
     </children>
     <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_bsMtiaS8EeWGjpaobu8CIA" name="Control id">
       <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_bsMtiqS8EeWGjpaobu8CIA">
-        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin/#//PhysicalObject/id"/>
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//PhysicalObject/id"/>
       </domainModelReference>
     </children>
   </children>
