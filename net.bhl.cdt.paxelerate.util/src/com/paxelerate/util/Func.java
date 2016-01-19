@@ -10,21 +10,16 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map.Entry;
-import java.util.Random;
 
-import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PlatformUI;
 
+<<<<<<< HEAD:net.bhl.cdt.paxelerate.util/src/com/paxelerate/util/Func.java
 import com.paxelerate.util.math.GaussOptions;
 import com.paxelerate.util.math.Vector;
+=======
+import net.bhl.cdt.paxelerate.util.math.Vector;
+>>>>>>> 8a4686bf70781d8d718637cde7250b659fd4e67e:net.bhl.cdt.paxelerate.util/src/net/bhl/cdt/paxelerate/util/Func.java
 
 /**
  * This class is used for general calculations and methods.
@@ -71,13 +66,11 @@ public abstract class Func {
 	}
 
 	public static int GetScreenWorkingWidth() {
-		return java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment()
-				.getMaximumWindowBounds().width;
+		return java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
 	}
 
 	public static int GetScreenWorkingHeight() {
-		return java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment()
-				.getMaximumWindowBounds().height;
+		return java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height;
 	}
 
 	public static int roundToFive(int num) {
@@ -88,8 +81,7 @@ public abstract class Func {
 			return num + 5 - temp;
 	}
 
-	public static boolean PassengerIdAlreadyInList(int id,
-			ArrayList<Integer> list) {
+	public static boolean PassengerIdAlreadyInList(int id, ArrayList<Integer> list) {
 		for (int value : list) {
 			if (value == id) {
 				return true;

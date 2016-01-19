@@ -7,7 +7,6 @@ package com.paxelerate.util.math;
 
 import com.paxelerate.util.Func;
 
-
 /**
  * This class represents a stop watch.
  * 

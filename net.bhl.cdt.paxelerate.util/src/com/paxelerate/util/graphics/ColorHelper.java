@@ -36,8 +36,7 @@ public class ColorHelper {
 	}
 
 	public static RGB hex2Rgb(String colorStr) {
-		return new RGB(Integer.valueOf(colorStr.substring(1, 3), 16),
-				Integer.valueOf(colorStr.substring(3, 5), 16), Integer.valueOf(
-						colorStr.substring(5, 7), 16));
+		return new RGB(Integer.valueOf(colorStr.substring(1, 3), 16), Integer.valueOf(colorStr.substring(3, 5), 16),
+				Integer.valueOf(colorStr.substring(5, 7), 16));
 	}
 }

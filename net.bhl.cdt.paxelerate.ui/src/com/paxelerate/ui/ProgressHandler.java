@@ -12,7 +12,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Text;
 
 import com.paxelerate.util.Func;
 
@@ -59,8 +58,7 @@ public class ProgressHandler {
 
 		indicator = new ProgressIndicator(shell, SWT.HORIZONTAL);
 		indicator.setLayoutData(new GridData(SWT.FILL, SWT.NONE, true, false));
-		indicator.setBackground(shell.getDisplay().getSystemColor(
-				SWT.COLOR_CYAN));
+		indicator.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_CYAN));
 
 		label = new Label(shell, SWT.NONE);
 		label.setText("The boarding paths for the passengers are being calculated ...");
