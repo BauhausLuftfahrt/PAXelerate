@@ -1,37 +1,65 @@
+<<<<<<< HEAD:net.bhl.cdt.paxelerate.util/src/com/paxelerate/util/time/TimeHelper.java
 package com.paxelerate.util.time;
+=======
+/*******************************************************************************
+ * <copyright> Copyright (c) 2009-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
+ ******************************************************************************/
+
+package net.bhl.cdt.paxelerate.util.time;
+>>>>>>> 8a4686bf70781d8d718637cde7250b659fd4e67e:net.bhl.cdt.paxelerate.util/src/net/bhl/cdt/paxelerate/util/time/TimeHelper.java
 
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.Date;
 
+/**
+ * Supports formatting various time amounts into HH:mm:ss format
+ * 
+ * @author marc.engelmann, raoul.rothfeld
+ */
 public class TimeHelper {
-	public static String transformToTimeString(double timeInSeconds) {
 
-		int hours = (int) (timeInSeconds / 3600);
-		int minutes = (int) (timeInSeconds / 60) - hours * 60;
-		int seconds = (int) (timeInSeconds % 60);
-
-		String hoursAppend = "";
-		String minutesAppend = "";
-		String secondsAppend = "";
-
-		if (hours < 10) {
-			hoursAppend = "0";
-		}
-		if (minutes < 10) {
-			minutesAppend = "0";
-		}
-		if (seconds < 10) {
-			secondsAppend = "0";
-		}
-
-		return new String(hoursAppend + hours + ":" + minutesAppend + minutes
-				+ ":" + secondsAppend + seconds);
+	/**
+	 * Formats time amount in seconds into HH:mm:ss format
+	 * 
+	 * @param seconds
+	 *            the number of seconds to be formatted
+	 * @return the converted HH:mm:ss String
+	 */
+	public static String toTimeOfDay(int seconds) {
+		return TimeHelper.toTimeOfDay((long) seconds);
 	}
 
-	public static String getCurrentTimeStamp() {
-		SimpleDateFormat sdfDate = new SimpleDateFormat("HH:mm:ss.SSS");
-		Date now = new Date();
-		String strDate = sdfDate.format(now);
-		return strDate;
+	/**
+	 * Formats time amount in seconds into HH:mm:ss format
+	 * 
+	 * @param seconds
+	 *            the number of seconds to be formatted
+	 * @return the converted HH:mm:ss String
+	 */
+	public static String toTimeOfDay(double seconds) {
+		return TimeHelper.toTimeOfDay(Math.round(seconds));
+	}
+
+	/**
+	 * Formats time amount in seconds into HH:mm:ss format
+	 * 
+	 * @param seconds
+	 *            the number of seconds to be formatted
+	 * @return the converted HH:mm:ss String
+	 */
+	public static String toTimeOfDay(long seconds) {
+		return LocalTime.ofSecondOfDay(seconds).toString();
+	}
+
+	/**
+	 * Delivers the current time in HH:mm:ss format
+	 * 
+	 * @return the current time as HH:mm:ss String
+	 */
+	public static String getCurrentTimeOfDay() {
+		return new SimpleDateFormat("HH:mm:ss").format(new Date());
 	}
 }

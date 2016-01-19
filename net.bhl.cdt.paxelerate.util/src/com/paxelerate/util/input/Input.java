@@ -10,9 +10,15 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+<<<<<<< HEAD:net.bhl.cdt.paxelerate.util/src/com/paxelerate/util/input/Input.java
 import com.paxelerate.util.math.Vector;
 import com.paxelerate.util.math.Vector2D;
 import com.paxelerate.util.strings.StringOperations;
+=======
+import net.bhl.cdt.paxelerate.util.math.Vector;
+import net.bhl.cdt.paxelerate.util.math.Vector2D;
+import net.bhl.cdt.paxelerate.util.string.StringHelper;
+>>>>>>> 8a4686bf70781d8d718637cde7250b659fd4e67e:net.bhl.cdt.paxelerate.util/src/net/bhl/cdt/paxelerate/util/input/Input.java
 
 /**
  * This class generates a dialog which can get various parameters or give output
@@ -37,8 +43,7 @@ public class Input extends TitleAreaDialog {
 	}
 
 	private WindowType windowType;
-	private String descriptionText, descriptionText2, descriptionText3,
-			descriptionText4, titleString, stringValue;
+	private String descriptionText, descriptionText2, descriptionText3, descriptionText4, titleString, stringValue;
 	private Text text, text2, text3, text4;
 	private int integerValue;
 	private Vector vectorValue, vectorValue2;
@@ -181,11 +186,9 @@ public class Input extends TitleAreaDialog {
 
 	private void createWarningLabel(Composite container) {
 		warningLabel = new Label(container, SWT.NONE);
-		warningLabel
-				.setText("You entered a character that is not allowed here.");
+		warningLabel.setText("You entered a character that is not allowed here.");
 		warningLabel.setVisible(false);
-		warningLabel.setForeground(new org.eclipse.swt.graphics.Color(null,
-				255, 0, 0));
+		warningLabel.setForeground(new org.eclipse.swt.graphics.Color(null, 255, 0, 0));
 	}
 
 	@Override
@@ -222,14 +225,11 @@ public class Input extends TitleAreaDialog {
 			stringValue = text.getText();
 			break;
 		case GET_VECTOR:
-			((Vector2D) vectorValue).set(Integer.parseInt(text.getText()),
-					Integer.parseInt(text2.getText()));
+			((Vector2D) vectorValue).set(Integer.parseInt(text.getText()), Integer.parseInt(text2.getText()));
 			break;
 		case GET_TWO_VECTORS:
-			((Vector2D) vectorValue).set(Integer.parseInt(text.getText()),
-					Integer.parseInt(text2.getText()));
-			((Vector2D) vectorValue2).set(Integer.parseInt(text3.getText()),
-					Integer.parseInt(text4.getText()));
+			((Vector2D) vectorValue).set(Integer.parseInt(text.getText()), Integer.parseInt(text2.getText()));
+			((Vector2D) vectorValue2).set(Integer.parseInt(text3.getText()), Integer.parseInt(text4.getText()));
 			break;
 		case GET_BOOLEAN:
 			booleanValue = true;
@@ -287,11 +287,10 @@ public class Input extends TitleAreaDialog {
 		switch (windowType) {
 		case GET_INTEGER:
 			if (text.getText() != "") {
-				if (StringOperations.isNumeric(text.getText())) {
+				if (StringHelper.isInteger(text.getText())) {
 					return true;
 				} else {
-					warningLabel
-							.setText("You entered a character that is not a digit.");
+					warningLabel.setText("You entered a character that is not a digit.");
 					warningLabel.setVisible(true);
 					return false;
 				}
@@ -302,11 +301,10 @@ public class Input extends TitleAreaDialog {
 			}
 		case OPTIONS:
 			if (text.getText() != "") {
-				if (StringOperations.isNumeric(text.getText())) {
+				if (StringHelper.isInteger(text.getText())) {
 					return true;
 				} else {
-					warningLabel
-							.setText("You entered a character that is not a digit.");
+					warningLabel.setText("You entered a character that is not a digit.");
 					warningLabel.setVisible(true);
 					return false;
 				}
@@ -325,12 +323,10 @@ public class Input extends TitleAreaDialog {
 			}
 		case GET_VECTOR:
 			if (text.getText() != "" && text2.getText() != "") {
-				if (StringOperations.isNumeric(text.getText())
-						&& StringOperations.isNumeric(text2.getText())) {
+				if (StringHelper.isInteger(text.getText()) && StringHelper.isInteger(text2.getText())) {
 					return true;
 				} else {
-					warningLabel
-							.setText("One of the two values is not a digit.");
+					warningLabel.setText("One of the two values is not a digit.");
 					warningLabel.setVisible(true);
 					return false;
 				}
@@ -340,16 +336,12 @@ public class Input extends TitleAreaDialog {
 				return false;
 			}
 		case GET_TWO_VECTORS:
-			if (text.getText() != "" && text2.getText() != ""
-					&& text3.getText() != "" && text4.getText() != "") {
-				if (StringOperations.isNumeric(text.getText())
-						&& StringOperations.isNumeric(text2.getText())
-						&& StringOperations.isNumeric(text3.getText())
-						&& StringOperations.isNumeric(text4.getText())) {
+			if (text.getText() != "" && text2.getText() != "" && text3.getText() != "" && text4.getText() != "") {
+				if (StringHelper.isInteger(text.getText()) && StringHelper.isInteger(text2.getText())
+						&& StringHelper.isInteger(text3.getText()) && StringHelper.isInteger(text4.getText())) {
 					return true;
 				} else {
-					warningLabel
-							.setText("One of the two values is not a digit.");
+					warningLabel.setText("One of the two values is not a digit.");
 					warningLabel.setVisible(true);
 					return false;
 				}

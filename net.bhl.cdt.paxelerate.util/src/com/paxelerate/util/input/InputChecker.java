@@ -7,8 +7,12 @@ package com.paxelerate.util.input;
 
 import org.apache.commons.lang.StringUtils;
 
+<<<<<<< HEAD:net.bhl.cdt.paxelerate.util/src/com/paxelerate/util/input/InputChecker.java
 import com.paxelerate.util.Func;
 import com.paxelerate.util.strings.StringOperations;
+=======
+import net.bhl.cdt.paxelerate.util.string.StringHelper;
+>>>>>>> 8a4686bf70781d8d718637cde7250b659fd4e67e:net.bhl.cdt.paxelerate.util/src/net/bhl/cdt/paxelerate/util/input/InputChecker.java
 
 /**
  * This class checks user input for errors.
@@ -24,13 +28,13 @@ public class InputChecker {
 		if (structure.contains(" ")) {
 			return false;
 		}
-		if (!StringOperations.isNumeric(structure.replace("-", ""))) {
+		if (!StringHelper.isInteger(structure)) {
 			return false;
 		}
 		if (StringUtils.countMatches(structure, "-") == 0) {
 			return false;
 		}
-		if (StringOperations.checkForDoubleCharacter(structure)) {
+		if (StringHelper.checkForDoubleCharacter(structure)) {
 			return false;
 		}
 		if (structure.endsWith("-")) {
@@ -77,11 +81,10 @@ public class InputChecker {
 		 * if there are other characters than digits inside the string, remove
 		 * them.
 		 */
-		if (!StringOperations.isNumeric(stringWithoutDashes)) {
+		if (!StringHelper.isInteger(stringWithoutDashes)) {
 			str = str.replaceAll("[^0-9-]+", "");
 			if (DEVELOPER_MODE) {
-				System.out
-						.println("non-numeric characters detected and removed!");
+				System.out.println("non-numeric characters detected and removed!");
 			}
 		}
 
@@ -97,8 +100,7 @@ public class InputChecker {
 			if (DEVELOPER_MODE) {
 				System.out.println("no dash detected, inserted in the middle!");
 			}
-			str = str.substring(0, (int) (numbcount / 2)) + "-"
-					+ str.substring((int) (numbcount / 2));
+			str = str.substring(0, (int) (numbcount / 2)) + "-" + str.substring((int) (numbcount / 2));
 		}
 
 		/*
@@ -114,10 +116,9 @@ public class InputChecker {
 		 * if there are 2 or more dashes following on another, remove all except
 		 * for one.
 		 */
-		if (StringOperations.checkForDoubleCharacter(str)) {
+		if (StringHelper.checkForDoubleCharacter(str)) {
 			if (DEVELOPER_MODE) {
-				System.out
-						.println("several dashes in a row detected and corrected");
+				System.out.println("several dashes in a row detected and corrected");
 			}
 			String helperString = "";
 			for (int i = 0; i < str.length(); i++) {
