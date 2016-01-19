@@ -89,8 +89,8 @@ public class SortPassengersCommand extends CDTCommand {
 				for (int i = 0; i < paxList.size() - 1; i++) {
 					Passenger pax1 = paxList.get(i);
 					Passenger pax2 = paxList.get(i + 1);
-					if (pax1.getSeatRef().getYNowXPosition() > pax2.getSeatRef()
-							.getYNowXPosition()) {
+					if (pax1.getSeatRef().getXPosition() > pax2.getSeatRef()
+							.getXPosition()) {
 						paxList.move(i, pax2);
 					}
 				}
@@ -101,8 +101,8 @@ public class SortPassengersCommand extends CDTCommand {
 				for (int i = 0; i < paxList.size() - 1; i++) {
 					Passenger pax1 = paxList.get(i);
 					Passenger pax2 = paxList.get(i + 1);
-					if (pax1.getSeatRef().getYNowXPosition() < pax2.getSeatRef()
-							.getYNowXPosition()) {
+					if (pax1.getSeatRef().getXPosition() < pax2.getSeatRef()
+							.getXPosition()) {
 						paxList.move(i, pax2);
 					}
 				}
@@ -129,8 +129,8 @@ public class SortPassengersCommand extends CDTCommand {
 					Passenger otherPax = paxList.get(i + 1);
 					if (AgentFunctions.otherSeatCloserToAisle(
 							thisPax.getSeatRef(), otherPax.getSeatRef())) {
-						if (thisPax.getSeatRef().getYNowXPosition() < otherPax
-								.getSeatRef().getYNowXPosition()) {
+						if (thisPax.getSeatRef().getXPosition() < otherPax
+								.getSeatRef().getXPosition()) {
 							paxList.move(i, otherPax);
 						}
 					}

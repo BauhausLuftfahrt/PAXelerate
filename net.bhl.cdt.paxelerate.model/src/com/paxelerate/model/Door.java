@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.paxelerate.model.Door#getYNowXPosition <em>YNow XPosition</em>}</li>
+ *   <li>{@link com.paxelerate.model.Door#getXPosition <em>XPosition</em>}</li>
  *   <li>{@link com.paxelerate.model.Door#isOnBothSides <em>On Both Sides</em>}</li>
  *   <li>{@link com.paxelerate.model.Door#getWidth <em>Width</em>}</li>
  *   <li>{@link com.paxelerate.model.Door#getId <em>Id</em>}</li>
@@ -29,30 +29,30 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Door extends EObject {
 	/**
-	 * Returns the value of the '<em><b>YNow XPosition</b></em>' attribute.
+	 * Returns the value of the '<em><b>XPosition</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>YNow XPosition</em>' attribute isn't clear,
+	 * If the meaning of the '<em>XPosition</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>YNow XPosition</em>' attribute.
-	 * @see #setYNowXPosition(int)
-	 * @see com.paxelerate.model.CabinPackage#getDoor_YNowXPosition()
+	 * @return the value of the '<em>XPosition</em>' attribute.
+	 * @see #setXPosition(int)
+	 * @see com.paxelerate.model.CabinPackage#getDoor_XPosition()
 	 * @model
 	 * @generated
 	 */
-	int getYNowXPosition();
+	int getXPosition();
 
 	/**
-	 * Sets the value of the '{@link com.paxelerate.model.Door#getYNowXPosition <em>YNow XPosition</em>}' attribute.
+	 * Sets the value of the '{@link com.paxelerate.model.Door#getXPosition <em>XPosition</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>YNow XPosition</em>' attribute.
-	 * @see #getYNowXPosition()
+	 * @param value the new value of the '<em>XPosition</em>' attribute.
+	 * @see #getXPosition()
 	 * @generated
 	 */
-	void setYNowXPosition(int value);
+	void setXPosition(int value);
 
 	/**
 	 * Returns the value of the '<em><b>On Both Sides</b></em>' attribute.

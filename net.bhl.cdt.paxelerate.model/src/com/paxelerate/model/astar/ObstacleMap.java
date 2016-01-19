@@ -43,7 +43,7 @@ public class ObstacleMap {
 			OBSTACLE_RANGE_IN_CM = 20, POTENTIAL_AROUND_OBSTACLE_MAXIMUM = 100,
 			HOLE_VALUE = 1; // DO NEVER SET THIS TO ZERO!
 	private static int[][] obstacleMap;
-	private ILog logger;
+//	private ILog logger;
 
 	ArrayList<Class<? extends PhysicalObject>> classes = new ArrayList<Class<? extends PhysicalObject>>() {
 
@@ -68,7 +68,7 @@ public class ObstacleMap {
 		((Vector2D) dimensions).set(AStarTools.size(cabin.getCabinWidth()),
 				AStarTools.size(cabin.getCabinLength()));
 		obstacleMap = createObstacleMap();
-		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
+//		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
 		printObstacleMap();
 	}
 
@@ -219,8 +219,8 @@ public class ObstacleMap {
 		 */
 
 		for (Door door : cabin.getDoors()) {
-			entryMin = AStarTools.size(door.getYNowXPosition()) + 2;
-			entryMax = AStarTools.size(door.getYNowXPosition() + door.getWidth()) - 2;
+			entryMin = AStarTools.size(door.getXPosition()) + 2;
+			entryMax = AStarTools.size(door.getXPosition() + door.getWidth()) - 2;
 
 			for (int i = 0; i < dimensions.getX(); i++) {
 				for (int j = 0; j < dimensions.getY(); j++) {
@@ -283,9 +283,9 @@ public class ObstacleMap {
 			if (!(cabin.getSimulationSettings().isUseFoldableSeats() && value)) {
 
 				int width = AStarTools.size(physicalObject.getYDimension());
-				int length = AStarTools.size(physicalObject.getYNowXDimension());
+				int length = AStarTools.size(physicalObject.getXDimension());
 				int xPosition = AStarTools.size(physicalObject.getYPosition());
-				int yPosition = AStarTools.size(physicalObject.getYNowXPosition());
+				int yPosition = AStarTools.size(physicalObject.getXPosition());
 
 				for (int i = 0; i < width; i++) {
 					for (int j = 0; j < length; j++) {
@@ -330,11 +330,11 @@ public class ObstacleMap {
 				}
 				printToFile.println();
 			}
-			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.paxelerate.model",
-					"Saved obstacle map to file."));
+//			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.paxelerate.model",
+//					"Saved obstacle map to file."));
 		} catch (FileNotFoundException e) {
-			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.paxelerate.model",
-					"Could not save obstacle map to file."));
+//			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.paxelerate.model",
+//					"Could not save obstacle map to file."));
 		} finally {
 			printToFile.close();
 		}

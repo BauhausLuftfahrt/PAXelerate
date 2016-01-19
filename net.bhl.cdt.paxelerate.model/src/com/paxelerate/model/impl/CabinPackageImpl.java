@@ -695,7 +695,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDoor_YNowXPosition() {
+	public EAttribute getDoor_XPosition() {
 		return (EAttribute)doorEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1568,7 +1568,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPhysicalObject_YNowXPosition() {
+	public EAttribute getPhysicalObject_XPosition() {
 		return (EAttribute)physicalObjectEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -1586,7 +1586,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPhysicalObject_YNowXDimension() {
+	public EAttribute getPhysicalObject_XDimension() {
 		return (EAttribute)physicalObjectEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -1788,9 +1788,9 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 
 		physicalObjectEClass = createEClass(PHYSICAL_OBJECT);
 		createEAttribute(physicalObjectEClass, PHYSICAL_OBJECT__YPOSITION);
-		createEAttribute(physicalObjectEClass, PHYSICAL_OBJECT__YNOW_XPOSITION);
+		createEAttribute(physicalObjectEClass, PHYSICAL_OBJECT__XPOSITION);
 		createEAttribute(physicalObjectEClass, PHYSICAL_OBJECT__YDIMENSION);
-		createEAttribute(physicalObjectEClass, PHYSICAL_OBJECT__YNOW_XDIMENSION);
+		createEAttribute(physicalObjectEClass, PHYSICAL_OBJECT__XDIMENSION);
 		createEAttribute(physicalObjectEClass, PHYSICAL_OBJECT__NAME);
 		createEAttribute(physicalObjectEClass, PHYSICAL_OBJECT__ID);
 		createEOperation(physicalObjectEClass, PHYSICAL_OBJECT___OUT_OF_BOUNDS__DIAGNOSTICCHAIN_MAP);
@@ -1809,7 +1809,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		stowageEClass = createEClass(STOWAGE);
 
 		doorEClass = createEClass(DOOR);
-		createEAttribute(doorEClass, DOOR__YNOW_XPOSITION);
+		createEAttribute(doorEClass, DOOR__XPOSITION);
 		createEAttribute(doorEClass, DOOR__ON_BOTH_SIDES);
 		createEAttribute(doorEClass, DOOR__WIDTH);
 		createEAttribute(doorEClass, DOOR__ID);
@@ -2026,9 +2026,9 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 
 		initEClass(physicalObjectEClass, PhysicalObject.class, "PhysicalObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPhysicalObject_YPosition(), ecorePackage.getEInt(), "yPosition", null, 0, 1, PhysicalObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPhysicalObject_YNowXPosition(), ecorePackage.getEInt(), "yNowXPosition", null, 0, 1, PhysicalObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPhysicalObject_XPosition(), ecorePackage.getEInt(), "xPosition", null, 0, 1, PhysicalObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPhysicalObject_YDimension(), ecorePackage.getEInt(), "yDimension", null, 0, 1, PhysicalObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPhysicalObject_YNowXDimension(), ecorePackage.getEInt(), "yNowXDimension", null, 0, 1, PhysicalObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPhysicalObject_XDimension(), ecorePackage.getEInt(), "xDimension", null, 0, 1, PhysicalObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPhysicalObject_Name(), ecorePackage.getEString(), "name", null, 0, 1, PhysicalObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPhysicalObject_Id(), ecorePackage.getEInt(), "id", "0", 0, 1, PhysicalObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -2055,7 +2055,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 		initEClass(stowageEClass, Stowage.class, "Stowage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(doorEClass, Door.class, "Door", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDoor_YNowXPosition(), ecorePackage.getEInt(), "yNowXPosition", null, 0, 1, Door.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDoor_XPosition(), ecorePackage.getEInt(), "xPosition", null, 0, 1, Door.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDoor_OnBothSides(), ecorePackage.getEBoolean(), "onBothSides", null, 0, 1, Door.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDoor_Width(), ecorePackage.getEInt(), "width", null, 0, 1, Door.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDoor_Id(), ecorePackage.getEInt(), "id", null, 0, 1, Door.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

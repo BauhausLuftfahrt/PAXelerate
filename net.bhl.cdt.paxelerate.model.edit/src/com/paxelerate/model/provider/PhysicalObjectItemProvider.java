@@ -61,9 +61,9 @@ public class PhysicalObjectItemProvider
 			super.getPropertyDescriptors(object);
 
 			addYPositionPropertyDescriptor(object);
-			addYNowXPositionPropertyDescriptor(object);
+			addXPositionPropertyDescriptor(object);
 			addYDimensionPropertyDescriptor(object);
-			addYNowXDimensionPropertyDescriptor(object);
+			addXDimensionPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 			addIdPropertyDescriptor(object);
 		}
@@ -93,19 +93,19 @@ public class PhysicalObjectItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the YNow XPosition feature.
+	 * This adds a property descriptor for the XPosition feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addYNowXPositionPropertyDescriptor(Object object) {
+	protected void addXPositionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_PhysicalObject_yNowXPosition_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PhysicalObject_yNowXPosition_feature", "_UI_PhysicalObject_type"),
-				 CabinPackage.Literals.PHYSICAL_OBJECT__YNOW_XPOSITION,
+				 getString("_UI_PhysicalObject_xPosition_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PhysicalObject_xPosition_feature", "_UI_PhysicalObject_type"),
+				 CabinPackage.Literals.PHYSICAL_OBJECT__XPOSITION,
 				 true,
 				 false,
 				 false,
@@ -137,19 +137,19 @@ public class PhysicalObjectItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the YNow XDimension feature.
+	 * This adds a property descriptor for the XDimension feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addYNowXDimensionPropertyDescriptor(Object object) {
+	protected void addXDimensionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_PhysicalObject_yNowXDimension_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PhysicalObject_yNowXDimension_feature", "_UI_PhysicalObject_type"),
-				 CabinPackage.Literals.PHYSICAL_OBJECT__YNOW_XDIMENSION,
+				 getString("_UI_PhysicalObject_xDimension_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PhysicalObject_xDimension_feature", "_UI_PhysicalObject_type"),
+				 CabinPackage.Literals.PHYSICAL_OBJECT__XDIMENSION,
 				 true,
 				 false,
 				 false,
@@ -241,9 +241,9 @@ public class PhysicalObjectItemProvider
 
 		switch (notification.getFeatureID(PhysicalObject.class)) {
 			case CabinPackage.PHYSICAL_OBJECT__YPOSITION:
-			case CabinPackage.PHYSICAL_OBJECT__YNOW_XPOSITION:
+			case CabinPackage.PHYSICAL_OBJECT__XPOSITION:
 			case CabinPackage.PHYSICAL_OBJECT__YDIMENSION:
-			case CabinPackage.PHYSICAL_OBJECT__YNOW_XDIMENSION:
+			case CabinPackage.PHYSICAL_OBJECT__XDIMENSION:
 			case CabinPackage.PHYSICAL_OBJECT__NAME:
 			case CabinPackage.PHYSICAL_OBJECT__ID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

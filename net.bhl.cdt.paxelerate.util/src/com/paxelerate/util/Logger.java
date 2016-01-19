@@ -23,8 +23,8 @@ public class Logger {
 	 *            is the string which is submitted to the log
 	 */
 	public void addToLog(String s) {
-		ILog logger = Platform.getLog(Platform
-				.getBundle("net.bhl.cdt.paxelerate.model"));
-		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.paxelerate.model", s));
+//		ILog logger = Platform.getLog(Platform
+//				.getBundle("net.bhl.cdt.paxelerate.model"));
+//		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.paxelerate.model", s));
 	}
 }

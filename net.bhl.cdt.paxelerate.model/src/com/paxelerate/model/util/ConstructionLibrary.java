@@ -299,8 +299,8 @@ public class ConstructionLibrary {
 				galleyCount++;
 				break;
 			}
-			physialObject.setYNowXDimension(yDimension);
-			physialObject.setYNowXPosition(globalSeatPositionY);
+			physialObject.setXDimension(yDimension);
+			physialObject.setXPosition(globalSeatPositionY);
 			try {
 				physialObject.setYDimension(rowPartsInt.get(k)
 						* (passengerClass.getSeatWidth() + seatHelper)
@@ -332,10 +332,10 @@ public class ConstructionLibrary {
 		newSeat.setId(seatCount);
 		newSeat.setName(rowCount + Func.getCharForNumber(j));
 		newSeat.setYDimension(seatDimensions.getX());
-		newSeat.setYNowXDimension(seatDimensions.getY());
+		newSeat.setXDimension(seatDimensions.getY());
 		newSeat.setLetter(Func.getCharForNumber(j));
 		newSeat.setYPosition(globalSeatPositionX);
-		newSeat.setYNowXPosition(globalSeatPositionY);
+		newSeat.setXPosition(globalSeatPositionY);
 		newSeat.setTravelClass(passengerClass);
 		newSeat.setRow(row);
 	}
@@ -347,13 +347,13 @@ public class ConstructionLibrary {
 	public void checkForDoor() {
 		double seatPitchMultiplicator = 1.5;
 		for (Door door : ModelHelper.getChildrenByClass(cabin, Door.class)) {
-			if ((((door.getYNowXPosition() + door.getWidth()) > (globalSeatPositionY - seatPitch)) && (door
-					.getYNowXPosition() < globalSeatPositionY))
-					|| ((door.getYNowXPosition() > globalSeatPositionY)
-							&& (door.getYNowXPosition() < globalSeatPositionY
+			if ((((door.getXPosition() + door.getWidth()) > (globalSeatPositionY - seatPitch)) && (door
+					.getXPosition() < globalSeatPositionY))
+					|| ((door.getXPosition() > globalSeatPositionY)
+							&& (door.getXPosition() < globalSeatPositionY
 									+ seatDimensions.getY()) || ((door
-							.getYNowXPosition() + door.getWidth() > globalSeatPositionY) && (door
-							.getYNowXPosition() < globalSeatPositionY)))) {
+							.getXPosition() + door.getWidth() > globalSeatPositionY) && (door
+							.getXPosition() < globalSeatPositionY)))) {
 				globalSeatPositionY += seatPitchMultiplicator * seatPitch;
 			}
 		}
@@ -493,21 +493,21 @@ public class ConstructionLibrary {
 			MainDoor mainDoor = CabinFactory.eINSTANCE.createMainDoor();
 			newDoor = mainDoor;
 			newDoor.setWidth(80);
-			newDoor.setYNowXPosition(globalSeatPositionY);
+			newDoor.setXPosition(globalSeatPositionY);
 			globalSeatPositionY += 80;
 		} else if (typeDoor.getSimpleName().equals("StandardDoor")) {
 			StandardDoor standardDoor = CabinFactory.eINSTANCE
 					.createStandardDoor();
 			newDoor = standardDoor;
 			newDoor.setWidth(80);
-			newDoor.setYNowXPosition(globalSeatPositionY);
+			newDoor.setXPosition(globalSeatPositionY);
 			globalSeatPositionY += 80;
 		} else {
 			EmergencyExit emergencyExit = CabinFactory.eINSTANCE
 					.createEmergencyExit();
 			newDoor = emergencyExit;
 			newDoor.setWidth(50);
-			newDoor.setYNowXPosition(yPosition);
+			newDoor.setXPosition(yPosition);
 			newDoor.setIsActive(false);
 			if (yPosition < 0) {
 				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
@@ -536,9 +536,9 @@ public class ConstructionLibrary {
 			cabin.getCurtains().add(newCurtain);
 			newCurtain.setCurtainOpen(openOrNot);
 			newCurtain.setName(name + " (Part " + (k + 1) + ")");
-			newCurtain.setYNowXDimension(10);
+			newCurtain.setXDimension(10);
 			newCurtain.setId(curtainCount);
-			newCurtain.setYNowXPosition(globalSeatPositionY + 10);
+			newCurtain.setXPosition(globalSeatPositionY + 10);
 			newCurtain
 					.setYDimension(rowPartsInt.get(k)
 							* (passengerClass.getSeatWidth() + seatHelper)
@@ -571,10 +571,10 @@ public class ConstructionLibrary {
 		Stairway newStairway = CabinFactory.eINSTANCE.createStairway();
 		cabin.getStairways().add(newStairway);
 		newStairway.setYPosition(xPosition);
-		newStairway.setYNowXPosition(yPostion);
+		newStairway.setXPosition(yPostion);
 		newStairway.setDirection(direction);
 		newStairway.setYDimension(xDimension);
-		newStairway.setYNowXDimension(yDimension);
+		newStairway.setXDimension(yDimension);
 	}
 
 }

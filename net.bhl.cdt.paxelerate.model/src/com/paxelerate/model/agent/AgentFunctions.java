@@ -113,7 +113,7 @@ public class AgentFunctions {
 					.getCabin().getScale()); j++) {
 				Node node = SimulationHandler.getMap().getNodeByCoordinate(
 						i,
-						(int) (door.getYNowXPosition() / SimulationHandler
+						(int) (door.getXPosition() / SimulationHandler
 								.getCabin().getScale()) + j);
 				if (node.getProperty() == Property.AGENT) {
 					if (node.getPassenger().getId() != passenger.getId()) {

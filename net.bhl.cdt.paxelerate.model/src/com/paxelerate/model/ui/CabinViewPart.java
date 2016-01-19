@@ -186,14 +186,14 @@ public class CabinViewPart extends ViewPart {
 	private void drawObject(GC gc, Color color, PhysicalObject object) {
 		gc.setBackground(color);
 		gc.fillRectangle(get(object, XYZ.X), get(object, XYZ.Y),
-				adapt(object.getYDimension()), adapt(object.getYNowXDimension()));
+				adapt(object.getYDimension()), adapt(object.getXDimension()));
 		gc.drawImage(switchIcon(object),
 				xZero
 						+ adapt((object.getYPosition() + object.getYDimension()
-								/ 2 - object.getYNowXDimension()
+								/ 2 - object.getXDimension()
 								* PASSENGER_CIRCLE_SIZE / 2)), yZero
-						+ adapt((object.getYNowXPosition() + object.getYNowXDimension()
-								/ 2 - object.getYNowXDimension()
+						+ adapt((object.getXPosition() + object.getXDimension()
+								/ 2 - object.getXDimension()
 								* PASSENGER_CIRCLE_SIZE / 2)));
 	}
 
@@ -207,7 +207,7 @@ public class CabinViewPart extends ViewPart {
 			return xZero + adapt(obj.getYPosition());
 
 		case Y:
-			return yZero + adapt(obj.getYNowXPosition());
+			return yZero + adapt(obj.getXPosition());
 
 		default:
 			return 0;
@@ -245,7 +245,7 @@ public class CabinViewPart extends ViewPart {
 		}
 
 		for (Row row : ModelHelper.getChildrenByClass(cabin, Row.class)) {
-			int positionY = (int) ((row.getSeats().get(0).getYNowXPosition()) / factor);
+			int positionY = (int) ((row.getSeats().get(0).getXPosition()) / factor);
 			int positionX = (int) ((cabin.getCabinWidth() / 2) / factor);
 			gc.drawText(
 					row.getRowNumber() + "",
@@ -262,11 +262,11 @@ public class CabinViewPart extends ViewPart {
 				gc.fillRectangle(
 						(int) (xZero + OFFSET_OF_DOOR - DOOR_DEPTH + (cabin
 								.getCabinWidth()) / factor),
-						(int) (yZero + door.getYNowXPosition() / factor),
+						(int) (yZero + door.getXPosition() / factor),
 						(int) (DOOR_DEPTH), (int) (door.getWidth() / factor));
 			}
 			gc.fillRectangle((int) (xZero - OFFSET_OF_DOOR),
-					(int) (yZero + door.getYNowXPosition() / factor),
+					(int) (yZero + door.getXPosition() / factor),
 					(int) (DOOR_DEPTH), (int) (door.getWidth() / factor));
 		}
 
@@ -284,9 +284,9 @@ public class CabinViewPart extends ViewPart {
 				Curtain.class)) {
 			gc.setBackground(black);
 			gc.fillRectangle((int) (xZero + curtain.getYPosition() / factor),
-					(int) (yZero + curtain.getYNowXPosition() / factor),
+					(int) (yZero + curtain.getXPosition() / factor),
 					(int) (curtain.getYDimension() / factor),
-					(int) (curtain.getYNowXDimension() / factor));
+					(int) (curtain.getXDimension() / factor));
 		}
 		if (!cabin.getPassengers().isEmpty()) {
 			for (Passenger passenger : cabin.getPassengers()) {
@@ -309,28 +309,28 @@ public class CabinViewPart extends ViewPart {
 							colorVector.getZ()));
 				}
 
-				if (passengerSeat.getYNowXDimension() < passengerSeat
+				if (passengerSeat.getXDimension() < passengerSeat
 						.getYDimension()) {
 					gc.fillOval(
 							(int) (xZero + (passengerSeat.getYPosition()
 									+ passengerSeat.getYDimension() / 2 - passengerSeat
-									.getYNowXDimension()
+									.getXDimension()
 									* PASSENGER_CIRCLE_SIZE
 									/ 2) / factor),
-							(int) (yZero + (passengerSeat.getYNowXPosition() + (1 - PASSENGER_CIRCLE_SIZE)
-									* passengerSeat.getYNowXDimension() / 2)
+							(int) (yZero + (passengerSeat.getXPosition() + (1 - PASSENGER_CIRCLE_SIZE)
+									* passengerSeat.getXDimension() / 2)
 									/ factor),
 							adapt(PASSENGER_CIRCLE_SIZE
-									* passengerSeat.getYNowXDimension()),
+									* passengerSeat.getXDimension()),
 							(int) (PASSENGER_CIRCLE_SIZE
-									* passengerSeat.getYNowXDimension() / factor));
+									* passengerSeat.getXDimension() / factor));
 				} else {
 					gc.fillOval(
 							(int) (xZero + (passengerSeat.getYPosition() + (1 - PASSENGER_CIRCLE_SIZE)
 									* passengerSeat.getYDimension() / 2)
 									/ factor),
-							(int) (yZero + (passengerSeat.getYNowXPosition()
-									+ passengerSeat.getYNowXDimension() / 2 - passengerSeat
+							(int) (yZero + (passengerSeat.getXPosition()
+									+ passengerSeat.getXDimension() / 2 - passengerSeat
 									.getYDimension()
 									* PASSENGER_CIRCLE_SIZE
 									/ 2) / factor),
@@ -503,10 +503,10 @@ public class CabinViewPart extends ViewPart {
 		try {
 			coffeeIcon = resize(coffeeIcon, (int) (ModelHelper
 					.getChildrenByClass(cabin, Galley.class).get(0)
-					.getYNowXDimension()
+					.getXDimension()
 					/ factor / 2),
 					(int) (ModelHelper.getChildrenByClass(cabin, Galley.class)
-							.get(0).getYNowXDimension()
+							.get(0).getXDimension()
 							/ factor * PASSENGER_CIRCLE_SIZE));
 		} catch (IndexOutOfBoundsException e) {
 			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
@@ -515,11 +515,11 @@ public class CabinViewPart extends ViewPart {
 		try {
 			lavatoryIcon = resize(lavatoryIcon, (int) (ModelHelper
 					.getChildrenByClass(cabin, Lavatory.class).get(0)
-					.getYNowXDimension()
+					.getXDimension()
 					/ factor / 2),
 					(int) (ModelHelper
 							.getChildrenByClass(cabin, Lavatory.class).get(0)
-							.getYNowXDimension()
+							.getXDimension()
 							/ factor * PASSENGER_CIRCLE_SIZE));
 		} catch (IndexOutOfBoundsException e) {
 			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",

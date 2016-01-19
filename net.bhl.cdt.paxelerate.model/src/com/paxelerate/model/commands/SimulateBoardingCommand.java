@@ -45,7 +45,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 	private Cabin cabin;
 	private static ArrayList<Passenger> alreadySeatedList = new ArrayList<Passenger>();
-	private ILog logger;
+//	private ILog logger;
 
 	/**
 	 * This is the constructor method of the SimulateBoardingCommand.
@@ -57,7 +57,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 	 */
 	public SimulateBoardingCommand(Shell shell, Cabin cabin) {
 		this.cabin = cabin;
-		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
+//		logger = Platform.getLog(Platform.getBundle("com.paxelerate.model"));
 	}
 
 	/**
@@ -128,8 +128,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 				seat.setOccupied(false);
 			}
 
-			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.paxelerate.model",
-					"Initializing new boarding simulation ..."));
+//			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.paxelerate.model",
+//					"Initializing new boarding simulation ..."));
 
 			if (cabin.getPassengers().isEmpty()) {
 				Input input = new Input(
@@ -169,16 +169,16 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 					if (Exporter.generateHeatmapFile("Heat Map",
 							SimulationHandler.getMap())) {
-						logger.log(new Status(IStatus.ERROR,
-								"net.bhl.cdt.paxelerate.model",
-								"Heat map saved successfully!"));
+//						logger.log(new Status(IStatus.ERROR,
+//								"net.bhl.cdt.paxelerate.model",
+//								"Heat map saved successfully!"));
 					}
 
 					if (Exporter.generateInterruptmapFile("Interrupt Map",
 							SimulationHandler.getMap())) {
-						logger.log(new Status(IStatus.ERROR,
-								"net.bhl.cdt.paxelerate.model",
-								"Interrupt map saved successfully!"));
+//						logger.log(new Status(IStatus.ERROR,
+//								"net.bhl.cdt.paxelerate.model",
+//								"Interrupt map saved successfully!"));
 					}
 
 					for (Passenger pax : ModelHelper.getChildrenByClass(
@@ -188,9 +188,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 							alreadySeatedList.add(pax);
 							try {
 							} catch (NullPointerException e) {
-								logger.log(new Status(IStatus.ERROR,
-										"net.bhl.cdt.paxelerate.model",
-										"Info view is not visible."));
+//								logger.log(new Status(IStatus.ERROR,
+//										"net.bhl.cdt.paxelerate.model",
+//										"Info view is not visible."));
 							}
 						}
 					}
@@ -203,25 +203,25 @@ public class SimulateBoardingCommand extends CDTCommand {
 						obstaclemap.printObstacleMap();
 						cabinViewPart.printObstacleMap(image);
 
-						logger.log(new Status(IStatus.INFO,
-								"net.bhl.cdt.paxelerate.model",
-								"Heat map generation succeeded"));
+//						logger.log(new Status(IStatus.INFO,
+//								"net.bhl.cdt.paxelerate.model",
+//								"Heat map generation succeeded"));
 					}
 
 					if (!SimulationHandler.getAgentList().isEmpty()) {
 						cabinViewPart.submitAgents(SimulationHandler
 								.getAgentList());
-						logger.log(new Status(IStatus.INFO,
-								"net.bhl.cdt.paxelerate.model",
-								"Paths printed successfully"));
+//						logger.log(new Status(IStatus.INFO,
+//								"net.bhl.cdt.paxelerate.model",
+//								"Paths printed successfully"));
 					}
-					logger.log(new Status(IStatus.INFO,
-							"net.bhl.cdt.paxelerate.model",
-							"Boarding simulation completed"));
+//					logger.log(new Status(IStatus.INFO,
+//							"net.bhl.cdt.paxelerate.model",
+//							"Boarding simulation completed"));
 				}
 			} else {
-				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.paxelerate.model",
-						"No boarding possible! Please create passengers!"));
+//				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.paxelerate.model",
+//						"No boarding possible! Please create passengers!"));
 			}
 			results.getSimulationData(
 					SimulationHandler.getCabin(),

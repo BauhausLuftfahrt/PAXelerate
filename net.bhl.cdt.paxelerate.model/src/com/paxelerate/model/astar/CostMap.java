@@ -51,7 +51,7 @@ public class CostMap {
 			pointParking = new ArrayList<Vector>();
 
 	private AreaMap areamap;
-	private ILog logger;
+//	private ILog logger;
 	private int lowestCost;
 
 	/**
@@ -70,8 +70,8 @@ public class CostMap {
 					dimensions.getY() - 1);
 		}
 		this.areamap = areaMap;
-		this.logger = Platform.getLog(Platform
-				.getBundle("net.bhl.cdt.paxelerate.model"));
+//		this.logger = Platform.getLog(Platform
+//				.getBundle("net.bhl.cdt.paxelerate.model"));
 		map = new int[dimensions.getX()][dimensions.getY()];
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
@@ -307,14 +307,14 @@ public class CostMap {
 				}
 				printToFile.println();
 			}
-			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
-					"Saved cost map to file."));
+//			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.model.cabin",
+//					"Saved cost map to file."));
 		} catch (FileNotFoundException e) {
-			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-					"Could not save cost map to file."));
+//			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
+//					"Could not save cost map to file."));
 		} catch (NullPointerException e) {
-			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-					"The file path is not available."));
+//			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
+//					"The file path is not available."));
 		} finally {
 			printToFile.close();
 		}

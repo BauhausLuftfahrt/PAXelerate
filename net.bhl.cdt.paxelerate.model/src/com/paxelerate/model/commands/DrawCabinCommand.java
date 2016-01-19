@@ -199,7 +199,7 @@ public class DrawCabinCommand extends CDTCommand {
 			seat.setName(seat.getRow().getRowNumber()
 					+ Func.getCharForNumber(seatInRowCount));
 			seat.setYDimension(tc.getSeatWidth());
-			seat.setYNowXDimension(tc.getSeatLength());
+			seat.setXDimension(tc.getSeatLength());
 
 			seatCount++;
 			seatInRowCount++;
@@ -212,10 +212,10 @@ public class DrawCabinCommand extends CDTCommand {
 		for (PhysicalObject object : ModelHelper.getChildrenByClass(cabin,
 				PhysicalObject.class)) {
 			if (object.getYPosition() < 0
-					|| object.getYNowXPosition() < 0
+					|| object.getXPosition() < 0
 					|| (object.getYPosition() + object.getYDimension()) > cabin
 							.getCabinWidth()
-					|| (object.getYNowXPosition() + object.getYNowXDimension()) > cabin
+					|| (object.getXPosition() + object.getXDimension()) > cabin
 							.getCabinLength()) {
 				return true;
 			}

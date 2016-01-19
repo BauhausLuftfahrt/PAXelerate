@@ -23,7 +23,7 @@ import com.paxelerate.model.Passenger;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.paxelerate.model.impl.DoorImpl#getYNowXPosition <em>YNow XPosition</em>}</li>
+ *   <li>{@link com.paxelerate.model.impl.DoorImpl#getXPosition <em>XPosition</em>}</li>
  *   <li>{@link com.paxelerate.model.impl.DoorImpl#isOnBothSides <em>On Both Sides</em>}</li>
  *   <li>{@link com.paxelerate.model.impl.DoorImpl#getWidth <em>Width</em>}</li>
  *   <li>{@link com.paxelerate.model.impl.DoorImpl#getId <em>Id</em>}</li>
@@ -36,24 +36,24 @@ import com.paxelerate.model.Passenger;
  */
 public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	/**
-	 * The default value of the '{@link #getYNowXPosition() <em>YNow XPosition</em>}' attribute.
+	 * The default value of the '{@link #getXPosition() <em>XPosition</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getYNowXPosition()
+	 * @see #getXPosition()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int YNOW_XPOSITION_EDEFAULT = 0;
+	protected static final int XPOSITION_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getYNowXPosition() <em>YNow XPosition</em>}' attribute.
+	 * The cached value of the '{@link #getXPosition() <em>XPosition</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getYNowXPosition()
+	 * @see #getXPosition()
 	 * @generated
 	 * @ordered
 	 */
-	protected int yNowXPosition = YNOW_XPOSITION_EDEFAULT;
+	protected int xPosition = XPOSITION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isOnBothSides() <em>On Both Sides</em>}' attribute.
@@ -189,8 +189,8 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getYNowXPosition() {
-		return yNowXPosition;
+	public int getXPosition() {
+		return xPosition;
 	}
 
 	/**
@@ -198,11 +198,11 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setYNowXPosition(int newYNowXPosition) {
-		int oldYNowXPosition = yNowXPosition;
-		yNowXPosition = newYNowXPosition;
+	public void setXPosition(int newXPosition) {
+		int oldXPosition = xPosition;
+		xPosition = newXPosition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.DOOR__YNOW_XPOSITION, oldYNowXPosition, yNowXPosition));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.DOOR__XPOSITION, oldXPosition, xPosition));
 	}
 
 	/**
@@ -330,8 +330,8 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CabinPackage.DOOR__YNOW_XPOSITION:
-				return getYNowXPosition();
+			case CabinPackage.DOOR__XPOSITION:
+				return getXPosition();
 			case CabinPackage.DOOR__ON_BOTH_SIDES:
 				return isOnBothSides();
 			case CabinPackage.DOOR__WIDTH:
@@ -357,8 +357,8 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CabinPackage.DOOR__YNOW_XPOSITION:
-				setYNowXPosition((Integer)newValue);
+			case CabinPackage.DOOR__XPOSITION:
+				setXPosition((Integer)newValue);
 				return;
 			case CabinPackage.DOOR__ON_BOTH_SIDES:
 				setOnBothSides((Boolean)newValue);
@@ -391,8 +391,8 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CabinPackage.DOOR__YNOW_XPOSITION:
-				setYNowXPosition(YNOW_XPOSITION_EDEFAULT);
+			case CabinPackage.DOOR__XPOSITION:
+				setXPosition(XPOSITION_EDEFAULT);
 				return;
 			case CabinPackage.DOOR__ON_BOTH_SIDES:
 				setOnBothSides(ON_BOTH_SIDES_EDEFAULT);
@@ -424,8 +424,8 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CabinPackage.DOOR__YNOW_XPOSITION:
-				return yNowXPosition != YNOW_XPOSITION_EDEFAULT;
+			case CabinPackage.DOOR__XPOSITION:
+				return xPosition != XPOSITION_EDEFAULT;
 			case CabinPackage.DOOR__ON_BOTH_SIDES:
 				return onBothSides != ON_BOTH_SIDES_EDEFAULT;
 			case CabinPackage.DOOR__WIDTH:
@@ -452,8 +452,8 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (yNowXPosition: ");
-		result.append(yNowXPosition);
+		result.append(" (xPosition: ");
+		result.append(xPosition);
 		result.append(", onBothSides: ");
 		result.append(onBothSides);
 		result.append(", width: ");

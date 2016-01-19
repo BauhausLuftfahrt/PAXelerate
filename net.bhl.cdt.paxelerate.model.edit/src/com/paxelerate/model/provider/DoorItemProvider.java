@@ -60,7 +60,7 @@ public class DoorItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addYNowXPositionPropertyDescriptor(object);
+			addXPositionPropertyDescriptor(object);
 			addOnBothSidesPropertyDescriptor(object);
 			addWidthPropertyDescriptor(object);
 			addIdPropertyDescriptor(object);
@@ -72,19 +72,19 @@ public class DoorItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the YNow XPosition feature.
+	 * This adds a property descriptor for the XPosition feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addYNowXPositionPropertyDescriptor(Object object) {
+	protected void addXPositionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Door_yNowXPosition_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Door_yNowXPosition_feature", "_UI_Door_type"),
-				 CabinPackage.Literals.DOOR__YNOW_XPOSITION,
+				 getString("_UI_Door_xPosition_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Door_xPosition_feature", "_UI_Door_type"),
+				 CabinPackage.Literals.DOOR__XPOSITION,
 				 true,
 				 false,
 				 false,
@@ -261,7 +261,7 @@ public class DoorItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Door.class)) {
-			case CabinPackage.DOOR__YNOW_XPOSITION:
+			case CabinPackage.DOOR__XPOSITION:
 			case CabinPackage.DOOR__ON_BOTH_SIDES:
 			case CabinPackage.DOOR__WIDTH:
 			case CabinPackage.DOOR__ID:

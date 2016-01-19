@@ -107,13 +107,13 @@ public class GeneratePassengersCommand extends CDTCommand {
 			}
 		}
 
-		int seatPos = pass.getSeatRef().getYNowXPosition();
+		int seatPos = pass.getSeatRef().getXPosition();
 
 		int current = Integer.MAX_VALUE;
 		Door bestDoor = null;
 
 		for (Door door : sdoorage) {
-			int diff = Math.abs(door.getYNowXPosition() - seatPos);
+			int diff = Math.abs(door.getXPosition() - seatPos);
 			if (diff < current) {
 				current = diff;
 				bestDoor = door;

@@ -1018,13 +1018,13 @@ public interface CabinPackage extends EPackage {
 	int PHYSICAL_OBJECT__YPOSITION = 0;
 
 	/**
-	 * The feature id for the '<em><b>YNow XPosition</b></em>' attribute.
+	 * The feature id for the '<em><b>XPosition</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PHYSICAL_OBJECT__YNOW_XPOSITION = 1;
+	int PHYSICAL_OBJECT__XPOSITION = 1;
 
 	/**
 	 * The feature id for the '<em><b>YDimension</b></em>' attribute.
@@ -1036,13 +1036,13 @@ public interface CabinPackage extends EPackage {
 	int PHYSICAL_OBJECT__YDIMENSION = 2;
 
 	/**
-	 * The feature id for the '<em><b>YNow XDimension</b></em>' attribute.
+	 * The feature id for the '<em><b>XDimension</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PHYSICAL_OBJECT__YNOW_XDIMENSION = 3;
+	int PHYSICAL_OBJECT__XDIMENSION = 3;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1099,13 +1099,13 @@ public interface CabinPackage extends EPackage {
 	int SEAT__YPOSITION = PHYSICAL_OBJECT__YPOSITION;
 
 	/**
-	 * The feature id for the '<em><b>YNow XPosition</b></em>' attribute.
+	 * The feature id for the '<em><b>XPosition</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEAT__YNOW_XPOSITION = PHYSICAL_OBJECT__YNOW_XPOSITION;
+	int SEAT__XPOSITION = PHYSICAL_OBJECT__XPOSITION;
 
 	/**
 	 * The feature id for the '<em><b>YDimension</b></em>' attribute.
@@ -1117,13 +1117,13 @@ public interface CabinPackage extends EPackage {
 	int SEAT__YDIMENSION = PHYSICAL_OBJECT__YDIMENSION;
 
 	/**
-	 * The feature id for the '<em><b>YNow XDimension</b></em>' attribute.
+	 * The feature id for the '<em><b>XDimension</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEAT__YNOW_XDIMENSION = PHYSICAL_OBJECT__YNOW_XDIMENSION;
+	int SEAT__XDIMENSION = PHYSICAL_OBJECT__XDIMENSION;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1532,13 +1532,13 @@ public interface CabinPackage extends EPackage {
 	int LAVATORY__YPOSITION = PHYSICAL_OBJECT__YPOSITION;
 
 	/**
-	 * The feature id for the '<em><b>YNow XPosition</b></em>' attribute.
+	 * The feature id for the '<em><b>XPosition</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LAVATORY__YNOW_XPOSITION = PHYSICAL_OBJECT__YNOW_XPOSITION;
+	int LAVATORY__XPOSITION = PHYSICAL_OBJECT__XPOSITION;
 
 	/**
 	 * The feature id for the '<em><b>YDimension</b></em>' attribute.
@@ -1550,13 +1550,13 @@ public interface CabinPackage extends EPackage {
 	int LAVATORY__YDIMENSION = PHYSICAL_OBJECT__YDIMENSION;
 
 	/**
-	 * The feature id for the '<em><b>YNow XDimension</b></em>' attribute.
+	 * The feature id for the '<em><b>XDimension</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LAVATORY__YNOW_XDIMENSION = PHYSICAL_OBJECT__YNOW_XDIMENSION;
+	int LAVATORY__XDIMENSION = PHYSICAL_OBJECT__XDIMENSION;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1623,13 +1623,13 @@ public interface CabinPackage extends EPackage {
 	int GALLEY__YPOSITION = PHYSICAL_OBJECT__YPOSITION;
 
 	/**
-	 * The feature id for the '<em><b>YNow XPosition</b></em>' attribute.
+	 * The feature id for the '<em><b>XPosition</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GALLEY__YNOW_XPOSITION = PHYSICAL_OBJECT__YNOW_XPOSITION;
+	int GALLEY__XPOSITION = PHYSICAL_OBJECT__XPOSITION;
 
 	/**
 	 * The feature id for the '<em><b>YDimension</b></em>' attribute.
@@ -1641,13 +1641,13 @@ public interface CabinPackage extends EPackage {
 	int GALLEY__YDIMENSION = PHYSICAL_OBJECT__YDIMENSION;
 
 	/**
-	 * The feature id for the '<em><b>YNow XDimension</b></em>' attribute.
+	 * The feature id for the '<em><b>XDimension</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GALLEY__YNOW_XDIMENSION = PHYSICAL_OBJECT__YNOW_XDIMENSION;
+	int GALLEY__XDIMENSION = PHYSICAL_OBJECT__XDIMENSION;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1714,13 +1714,13 @@ public interface CabinPackage extends EPackage {
 	int STAIRWAY__YPOSITION = PHYSICAL_OBJECT__YPOSITION;
 
 	/**
-	 * The feature id for the '<em><b>YNow XPosition</b></em>' attribute.
+	 * The feature id for the '<em><b>XPosition</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STAIRWAY__YNOW_XPOSITION = PHYSICAL_OBJECT__YNOW_XPOSITION;
+	int STAIRWAY__XPOSITION = PHYSICAL_OBJECT__XPOSITION;
 
 	/**
 	 * The feature id for the '<em><b>YDimension</b></em>' attribute.
@@ -1732,13 +1732,13 @@ public interface CabinPackage extends EPackage {
 	int STAIRWAY__YDIMENSION = PHYSICAL_OBJECT__YDIMENSION;
 
 	/**
-	 * The feature id for the '<em><b>YNow XDimension</b></em>' attribute.
+	 * The feature id for the '<em><b>XDimension</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STAIRWAY__YNOW_XDIMENSION = PHYSICAL_OBJECT__YNOW_XDIMENSION;
+	int STAIRWAY__XDIMENSION = PHYSICAL_OBJECT__XDIMENSION;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1814,13 +1814,13 @@ public interface CabinPackage extends EPackage {
 	int CURTAIN__YPOSITION = PHYSICAL_OBJECT__YPOSITION;
 
 	/**
-	 * The feature id for the '<em><b>YNow XPosition</b></em>' attribute.
+	 * The feature id for the '<em><b>XPosition</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CURTAIN__YNOW_XPOSITION = PHYSICAL_OBJECT__YNOW_XPOSITION;
+	int CURTAIN__XPOSITION = PHYSICAL_OBJECT__XPOSITION;
 
 	/**
 	 * The feature id for the '<em><b>YDimension</b></em>' attribute.
@@ -1832,13 +1832,13 @@ public interface CabinPackage extends EPackage {
 	int CURTAIN__YDIMENSION = PHYSICAL_OBJECT__YDIMENSION;
 
 	/**
-	 * The feature id for the '<em><b>YNow XDimension</b></em>' attribute.
+	 * The feature id for the '<em><b>XDimension</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CURTAIN__YNOW_XDIMENSION = PHYSICAL_OBJECT__YNOW_XDIMENSION;
+	int CURTAIN__XDIMENSION = PHYSICAL_OBJECT__XDIMENSION;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1923,13 +1923,13 @@ public interface CabinPackage extends EPackage {
 	int STOWAGE__YPOSITION = PHYSICAL_OBJECT__YPOSITION;
 
 	/**
-	 * The feature id for the '<em><b>YNow XPosition</b></em>' attribute.
+	 * The feature id for the '<em><b>XPosition</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STOWAGE__YNOW_XPOSITION = PHYSICAL_OBJECT__YNOW_XPOSITION;
+	int STOWAGE__XPOSITION = PHYSICAL_OBJECT__XPOSITION;
 
 	/**
 	 * The feature id for the '<em><b>YDimension</b></em>' attribute.
@@ -1941,13 +1941,13 @@ public interface CabinPackage extends EPackage {
 	int STOWAGE__YDIMENSION = PHYSICAL_OBJECT__YDIMENSION;
 
 	/**
-	 * The feature id for the '<em><b>YNow XDimension</b></em>' attribute.
+	 * The feature id for the '<em><b>XDimension</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STOWAGE__YNOW_XDIMENSION = PHYSICAL_OBJECT__YNOW_XDIMENSION;
+	int STOWAGE__XDIMENSION = PHYSICAL_OBJECT__XDIMENSION;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1995,13 +1995,13 @@ public interface CabinPackage extends EPackage {
 	int STOWAGE_OPERATION_COUNT = PHYSICAL_OBJECT_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>YNow XPosition</b></em>' attribute.
+	 * The feature id for the '<em><b>XPosition</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOOR__YNOW_XPOSITION = 0;
+	int DOOR__XPOSITION = 0;
 
 	/**
 	 * The feature id for the '<em><b>On Both Sides</b></em>' attribute.
@@ -2086,13 +2086,13 @@ public interface CabinPackage extends EPackage {
 	int MAIN_DOOR = 17;
 
 	/**
-	 * The feature id for the '<em><b>YNow XPosition</b></em>' attribute.
+	 * The feature id for the '<em><b>XPosition</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MAIN_DOOR__YNOW_XPOSITION = DOOR__YNOW_XPOSITION;
+	int MAIN_DOOR__XPOSITION = DOOR__XPOSITION;
 
 	/**
 	 * The feature id for the '<em><b>On Both Sides</b></em>' attribute.
@@ -2177,13 +2177,13 @@ public interface CabinPackage extends EPackage {
 	int EMERGENCY_EXIT = 18;
 
 	/**
-	 * The feature id for the '<em><b>YNow XPosition</b></em>' attribute.
+	 * The feature id for the '<em><b>XPosition</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EMERGENCY_EXIT__YNOW_XPOSITION = DOOR__YNOW_XPOSITION;
+	int EMERGENCY_EXIT__XPOSITION = DOOR__XPOSITION;
 
 	/**
 	 * The feature id for the '<em><b>On Both Sides</b></em>' attribute.
@@ -2268,13 +2268,13 @@ public interface CabinPackage extends EPackage {
 	int STANDARD_DOOR = 19;
 
 	/**
-	 * The feature id for the '<em><b>YNow XPosition</b></em>' attribute.
+	 * The feature id for the '<em><b>XPosition</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STANDARD_DOOR__YNOW_XPOSITION = DOOR__YNOW_XPOSITION;
+	int STANDARD_DOOR__XPOSITION = DOOR__XPOSITION;
 
 	/**
 	 * The feature id for the '<em><b>On Both Sides</b></em>' attribute.
@@ -3249,15 +3249,15 @@ public interface CabinPackage extends EPackage {
 	EClass getDoor();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.paxelerate.model.Door#getYNowXPosition <em>YNow XPosition</em>}'.
+	 * Returns the meta object for the attribute '{@link com.paxelerate.model.Door#getXPosition <em>XPosition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>YNow XPosition</em>'.
-	 * @see com.paxelerate.model.Door#getYNowXPosition()
+	 * @return the meta object for the attribute '<em>XPosition</em>'.
+	 * @see com.paxelerate.model.Door#getXPosition()
 	 * @see #getDoor()
 	 * @generated
 	 */
-	EAttribute getDoor_YNowXPosition();
+	EAttribute getDoor_XPosition();
 
 	/**
 	 * Returns the meta object for the attribute '{@link com.paxelerate.model.Door#isOnBothSides <em>On Both Sides</em>}'.
@@ -4302,15 +4302,15 @@ public interface CabinPackage extends EPackage {
 	EAttribute getPhysicalObject_YPosition();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.paxelerate.model.PhysicalObject#getYNowXPosition <em>YNow XPosition</em>}'.
+	 * Returns the meta object for the attribute '{@link com.paxelerate.model.PhysicalObject#getXPosition <em>XPosition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>YNow XPosition</em>'.
-	 * @see com.paxelerate.model.PhysicalObject#getYNowXPosition()
+	 * @return the meta object for the attribute '<em>XPosition</em>'.
+	 * @see com.paxelerate.model.PhysicalObject#getXPosition()
 	 * @see #getPhysicalObject()
 	 * @generated
 	 */
-	EAttribute getPhysicalObject_YNowXPosition();
+	EAttribute getPhysicalObject_XPosition();
 
 	/**
 	 * Returns the meta object for the attribute '{@link com.paxelerate.model.PhysicalObject#getYDimension <em>YDimension</em>}'.
@@ -4324,15 +4324,15 @@ public interface CabinPackage extends EPackage {
 	EAttribute getPhysicalObject_YDimension();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.paxelerate.model.PhysicalObject#getYNowXDimension <em>YNow XDimension</em>}'.
+	 * Returns the meta object for the attribute '{@link com.paxelerate.model.PhysicalObject#getXDimension <em>XDimension</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>YNow XDimension</em>'.
-	 * @see com.paxelerate.model.PhysicalObject#getYNowXDimension()
+	 * @return the meta object for the attribute '<em>XDimension</em>'.
+	 * @see com.paxelerate.model.PhysicalObject#getXDimension()
 	 * @see #getPhysicalObject()
 	 * @generated
 	 */
-	EAttribute getPhysicalObject_YNowXDimension();
+	EAttribute getPhysicalObject_XDimension();
 
 	/**
 	 * Returns the meta object for the attribute '{@link com.paxelerate.model.PhysicalObject#getName <em>Name</em>}'.
@@ -4753,12 +4753,12 @@ public interface CabinPackage extends EPackage {
 		 */
 		EClass DOOR = eINSTANCE.getDoor();
 		/**
-		 * The meta object literal for the '<em><b>YNow XPosition</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>XPosition</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DOOR__YNOW_XPOSITION = eINSTANCE.getDoor_YNowXPosition();
+		EAttribute DOOR__XPOSITION = eINSTANCE.getDoor_XPosition();
 		/**
 		 * The meta object literal for the '<em><b>On Both Sides</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -5460,12 +5460,12 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute PHYSICAL_OBJECT__YPOSITION = eINSTANCE.getPhysicalObject_YPosition();
 		/**
-		 * The meta object literal for the '<em><b>YNow XPosition</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>XPosition</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PHYSICAL_OBJECT__YNOW_XPOSITION = eINSTANCE.getPhysicalObject_YNowXPosition();
+		EAttribute PHYSICAL_OBJECT__XPOSITION = eINSTANCE.getPhysicalObject_XPosition();
 		/**
 		 * The meta object literal for the '<em><b>YDimension</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -5474,12 +5474,12 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute PHYSICAL_OBJECT__YDIMENSION = eINSTANCE.getPhysicalObject_YDimension();
 		/**
-		 * The meta object literal for the '<em><b>YNow XDimension</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>XDimension</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PHYSICAL_OBJECT__YNOW_XDIMENSION = eINSTANCE.getPhysicalObject_YNowXDimension();
+		EAttribute PHYSICAL_OBJECT__XDIMENSION = eINSTANCE.getPhysicalObject_XDimension();
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->

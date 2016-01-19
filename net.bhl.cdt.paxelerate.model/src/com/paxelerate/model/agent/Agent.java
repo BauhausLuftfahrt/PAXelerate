@@ -205,7 +205,7 @@ public class Agent extends Subject implements Runnable {
 		 * return true if the passenger does have luggage and if he is near his
 		 * seat
 		 */
-		return (hasLuggage() && isInYRangeEqual(seat.getYNowXPosition(),
+		return (hasLuggage() && isInYRangeEqual(seat.getXPosition(),
 				PIXELS_FOR_LUGGAGE, false));
 	}
 
@@ -474,8 +474,8 @@ public class Agent extends Subject implements Runnable {
 			// ersetzt wurde: for (int y = dim; y <= dim; y++) {
 			int y = dim;
 
-			if (passenger.getSeatRef().getYNowXPosition() < passenger.getDoor()
-					.getYNowXPosition()) {
+			if (passenger.getSeatRef().getXPosition() < passenger.getDoor()
+					.getXPosition()) {
 				y = -(y + 1);
 			}
 
@@ -502,7 +502,7 @@ public class Agent extends Subject implements Runnable {
 					// System.out
 					// .println("###### !OVERLAPPING OF AGENT AND OBSTACLE! ###### !AGENT - nodeBlockedBySomeoneElseOrObstacle()! ######");
 					// if (isInYRangeSmaller(
-					// passenger.getSeatRef().getYNowXPosition(), 5, false)) {
+					// passenger.getSeatRef().getXPosition(), 5, false)) {
 					return null;
 					// } else {
 					// return Property.OBSTACLE;
@@ -745,7 +745,7 @@ public class Agent extends Subject implements Runnable {
 
 	private boolean waitingForClearingOfRow() {
 
-		if (isInYRangeEqual(passenger.getSeatRef().getYNowXPosition(),
+		if (isInYRangeEqual(passenger.getSeatRef().getXPosition(),
 				PIXELS_FOR_WAY, false)) {
 			if (AgentFunctions.someoneAlreadyInThisPartOfTheRow(this)) {
 				return true;
@@ -852,14 +852,14 @@ public class Agent extends Subject implements Runnable {
 		seat.setCurrentlyFolded(false);
 
 		int width = (int) (seat.getYDimension() / scale);
-		int length = (int) (seat.getYNowXDimension() / scale);
-		int xPosition = (int) (seat.getYPosition() / scale);
-		int YNowXPosition = (int) (seat.getYNowXPosition() / scale);
+		int length = (int) (seat.getXDimension() / scale);
+		int yPosition = (int) (seat.getYPosition() / scale);
+		int xPosition = (int) (seat.getXPosition() / scale);
 
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j < length; j++) {
-				int k = xPosition + i;
-				int l = YNowXPosition + j;
+				int k = yPosition + i;
+				int l = xPosition + j;
 				if (k < SimulationHandler.getMap().getDimensions().getX()
 						&& l < SimulationHandler.getMap().getDimensions()
 								.getY()) {

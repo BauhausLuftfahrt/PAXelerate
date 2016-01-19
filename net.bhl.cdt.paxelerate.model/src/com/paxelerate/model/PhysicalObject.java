@@ -16,9 +16,9 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link com.paxelerate.model.PhysicalObject#getYPosition <em>YPosition</em>}</li>
- *   <li>{@link com.paxelerate.model.PhysicalObject#getYNowXPosition <em>YNow XPosition</em>}</li>
+ *   <li>{@link com.paxelerate.model.PhysicalObject#getXPosition <em>XPosition</em>}</li>
  *   <li>{@link com.paxelerate.model.PhysicalObject#getYDimension <em>YDimension</em>}</li>
- *   <li>{@link com.paxelerate.model.PhysicalObject#getYNowXDimension <em>YNow XDimension</em>}</li>
+ *   <li>{@link com.paxelerate.model.PhysicalObject#getXDimension <em>XDimension</em>}</li>
  *   <li>{@link com.paxelerate.model.PhysicalObject#getName <em>Name</em>}</li>
  *   <li>{@link com.paxelerate.model.PhysicalObject#getId <em>Id</em>}</li>
  * </ul>
@@ -55,30 +55,30 @@ public interface PhysicalObject extends EObject {
 	void setYPosition(int value);
 
 	/**
-	 * Returns the value of the '<em><b>YNow XPosition</b></em>' attribute.
+	 * Returns the value of the '<em><b>XPosition</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>YNow XPosition</em>' attribute isn't clear,
+	 * If the meaning of the '<em>XPosition</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>YNow XPosition</em>' attribute.
-	 * @see #setYNowXPosition(int)
-	 * @see com.paxelerate.model.CabinPackage#getPhysicalObject_YNowXPosition()
+	 * @return the value of the '<em>XPosition</em>' attribute.
+	 * @see #setXPosition(int)
+	 * @see com.paxelerate.model.CabinPackage#getPhysicalObject_XPosition()
 	 * @model
 	 * @generated
 	 */
-	int getYNowXPosition();
+	int getXPosition();
 
 	/**
-	 * Sets the value of the '{@link com.paxelerate.model.PhysicalObject#getYNowXPosition <em>YNow XPosition</em>}' attribute.
+	 * Sets the value of the '{@link com.paxelerate.model.PhysicalObject#getXPosition <em>XPosition</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>YNow XPosition</em>' attribute.
-	 * @see #getYNowXPosition()
+	 * @param value the new value of the '<em>XPosition</em>' attribute.
+	 * @see #getXPosition()
 	 * @generated
 	 */
-	void setYNowXPosition(int value);
+	void setXPosition(int value);
 
 	/**
 	 * Returns the value of the '<em><b>YDimension</b></em>' attribute.
@@ -107,30 +107,30 @@ public interface PhysicalObject extends EObject {
 	void setYDimension(int value);
 
 	/**
-	 * Returns the value of the '<em><b>YNow XDimension</b></em>' attribute.
+	 * Returns the value of the '<em><b>XDimension</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>YNow XDimension</em>' attribute isn't clear,
+	 * If the meaning of the '<em>XDimension</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>YNow XDimension</em>' attribute.
-	 * @see #setYNowXDimension(int)
-	 * @see com.paxelerate.model.CabinPackage#getPhysicalObject_YNowXDimension()
+	 * @return the value of the '<em>XDimension</em>' attribute.
+	 * @see #setXDimension(int)
+	 * @see com.paxelerate.model.CabinPackage#getPhysicalObject_XDimension()
 	 * @model
 	 * @generated
 	 */
-	int getYNowXDimension();
+	int getXDimension();
 
 	/**
-	 * Sets the value of the '{@link com.paxelerate.model.PhysicalObject#getYNowXDimension <em>YNow XDimension</em>}' attribute.
+	 * Sets the value of the '{@link com.paxelerate.model.PhysicalObject#getXDimension <em>XDimension</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>YNow XDimension</em>' attribute.
-	 * @see #getYNowXDimension()
+	 * @param value the new value of the '<em>XDimension</em>' attribute.
+	 * @see #getXDimension()
 	 * @generated
 	 */
-	void setYNowXDimension(int value);
+	void setXDimension(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.

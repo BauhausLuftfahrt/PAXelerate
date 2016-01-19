@@ -214,16 +214,16 @@ public class SimulationHandler {
 
 		Vector start = new Vector2D(AStarTools.size((seat.getYPosition() + seat
 				.getYDimension() / 2)),
-				AStarTools.size((seat.getYNowXPosition()) - 2));
+				AStarTools.size((seat.getXPosition()) - 2));
 
-		if (pax.getSeatRef().getYNowXPosition() < pax.getDoor().getYNowXPosition()) {
+		if (pax.getSeatRef().getXPosition() < pax.getDoor().getXPosition()) {
 			offset = -(offset + 2);
 			System.out.println("offset mirrored");
 		}
 
 		Vector goal = new Vector2D(
 				AStarTools.size(cabin.getCabinWidth() / 2.0),
-				AStarTools.size(seat.getYNowXPosition()) + offset);
+				AStarTools.size(seat.getXPosition()) + offset);
 
 		Agent agent = new Agent(pax, start, goal,
 				SimulationHandler.getCostMap(), Agent.AgentMode.MAKE_WAY,
@@ -321,11 +321,11 @@ public class SimulationHandler {
 			Door door = passenger.getDoor();
 			Vector start = new Vector2D(
 					0,
-					AStarTools.size((door.getYNowXPosition() + door.getWidth() / 2)));
+					AStarTools.size((door.getXPosition() + door.getWidth() / 2)));
 			Vector goal = new Vector2D(
 					AStarTools
 							.size((seat.getYPosition() + seat.getYDimension() / 2)),
-					AStarTools.size((seat.getYNowXPosition()) - 1));
+					AStarTools.size((seat.getXPosition()) - 1));
 
 			if (doItOnce) {
 				/* This line generates a costmap which is used for all agents */
