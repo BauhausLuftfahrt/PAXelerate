@@ -9,8 +9,8 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated cabin -->
       <factory
-            uri="http://bhl.net/cdt/model/cabin/"
-            class="net.bhl.cdt.paxelerate.model.provider.CabinItemProviderAdapterFactory"
+            uri="http://paxelerate.com/"
+            class="com.paxelerate.model.provider.CabinItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

@@ -1,13 +1,13 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Paxelerate
-Bundle-SymbolicName: net.bhl.cdt.paxelerate.model;singleton:=true
+Bundle-SymbolicName: com.paxelerate.model.cabin;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .,
  lib/matlabcontrol-4.1.0.jar
 Bundle-Vendor: Paxelerate
 Bundle-Localization: plugin
-Bundle-Activator: net.bhl.cdt.paxelerate.model.Activator
+Bundle-Activator: com.paxelerate.model.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  net.bhl.cdt.model;visibility:=reexport,
@@ -15,18 +15,18 @@ Require-Bundle: org.eclipse.core.runtime,
  javax.inject,
  org.eclipse.emf.ecp.explorereditorbridge,
  org.eclipse.emf.ecp.editor.e3,
- net.bhl.cdt.paxelerate.util;bundle-version="1.0.0",
+ com.paxelerate.util;bundle-version="1.0.0",
  org.eclipse.ui.intro
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: net.bhl.cdt.paxelerate.model,
- net.bhl.cdt.paxelerate.model.impl,
- net.bhl.cdt.paxelerate.model.ui,
- net.bhl.cdt.paxelerate.model.util
+Export-Package: com.paxelerate.model,
+ com.paxelerate.model.impl,
+ com.paxelerate.model.ui,
+ com.paxelerate.model.util
 Bundle-ActivationPolicy: lazy
-Import-Package: net.bhl.cdt.paxelerate.ui,
- net.bhl.cdt.paxelerate.util,
- net.bhl.cdt.paxelerate.util.graphics,
- net.bhl.cdt.paxelerate.util.input,
- net.bhl.cdt.paxelerate.util.math,
- net.bhl.cdt.paxelerate.util.strings,
- net.bhl.cdt.paxelerate.util.time
+Import-Package: com.paxelerate.ui,
+ com.paxelerate.util,
+ com.paxelerate.util.graphics,
+ com.paxelerate.util.input,
+ com.paxelerate.util.math,
+ com.paxelerate.util.strings,
+ com.paxelerate.util.time

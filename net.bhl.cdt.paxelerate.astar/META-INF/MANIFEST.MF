@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Astar
-Bundle-SymbolicName: net.bhl.cdt.paxelerate.astar
+Bundle-SymbolicName: com.paxelerate.astar
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: net.bhl.cdt.paxelerate.astar.Activator
+Bundle-Activator: com.paxelerate.astar.Activator
 Bundle-Vendor: PAXELERATE
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime

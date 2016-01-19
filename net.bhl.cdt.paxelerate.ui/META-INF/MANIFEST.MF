@@ -1,14 +1,14 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Ui
-Bundle-SymbolicName: net.bhl.cdt.paxelerate.ui;singleton:=true
+Bundle-SymbolicName: com.paxelerate.ui;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: net.bhl.cdt.paxelerate.ui.Activator
+Bundle-Activator: com.paxelerate.ui.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  net.bhl.cdt.ui,
  org.eclipse.ui.cheatsheets
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Import-Package: net.bhl.cdt.paxelerate.util
-Export-Package: net.bhl.cdt.paxelerate.ui
+Import-Package: com.paxelerate.util
+Export-Package: com.paxelerate.ui

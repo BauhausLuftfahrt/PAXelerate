@@ -1,0 +1,25 @@
+package com.paxelerate.model.util;
+
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
+
+import com.paxelerate.model.ui.CabinViewPart;
+import com.paxelerate.model.ui.PropertyViewPart;
+
+public class ShouldSoonBeDeletedWhenSolved {
+	public static PropertyViewPart getPropertyView() {
+		IWorkbenchWindow window = PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow();
+		IWorkbenchPage page = window.getActivePage();
+		return (PropertyViewPart) page.findView("net.bhl.cdt.paxelerate.ui.propertyview");
+	}
+
+	public static CabinViewPart getCabinView() {
+		IWorkbenchWindow window = PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow();
+		IWorkbenchPage page = window.getActivePage();
+		return (CabinViewPart) page
+				.findView("net.bhl.cdt.paxelerate.model.ui.cabinview");
+	}
+}
