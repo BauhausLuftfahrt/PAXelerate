@@ -15,9 +15,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.paxelerate.model.PhysicalObject#getXPosition <em>XPosition</em>}</li>
+ *   <li>{@link com.paxelerate.model.PhysicalObject#getYPosition <em>YPosition</em>}</li>
  *   <li>{@link com.paxelerate.model.PhysicalObject#getYNowXPosition <em>YNow XPosition</em>}</li>
- *   <li>{@link com.paxelerate.model.PhysicalObject#getXDimension <em>XDimension</em>}</li>
+ *   <li>{@link com.paxelerate.model.PhysicalObject#getYDimension <em>YDimension</em>}</li>
  *   <li>{@link com.paxelerate.model.PhysicalObject#getYNowXDimension <em>YNow XDimension</em>}</li>
  *   <li>{@link com.paxelerate.model.PhysicalObject#getName <em>Name</em>}</li>
  *   <li>{@link com.paxelerate.model.PhysicalObject#getId <em>Id</em>}</li>
@@ -29,30 +29,30 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface PhysicalObject extends EObject {
 	/**
-	 * Returns the value of the '<em><b>XPosition</b></em>' attribute.
+	 * Returns the value of the '<em><b>YPosition</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>XPosition</em>' attribute isn't clear,
+	 * If the meaning of the '<em>YPosition</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>XPosition</em>' attribute.
-	 * @see #setXPosition(int)
-	 * @see com.paxelerate.model.CabinPackage#getPhysicalObject_XPosition()
+	 * @return the value of the '<em>YPosition</em>' attribute.
+	 * @see #setYPosition(int)
+	 * @see com.paxelerate.model.CabinPackage#getPhysicalObject_YPosition()
 	 * @model
 	 * @generated
 	 */
-	int getXPosition();
+	int getYPosition();
 
 	/**
-	 * Sets the value of the '{@link com.paxelerate.model.PhysicalObject#getXPosition <em>XPosition</em>}' attribute.
+	 * Sets the value of the '{@link com.paxelerate.model.PhysicalObject#getYPosition <em>YPosition</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>XPosition</em>' attribute.
-	 * @see #getXPosition()
+	 * @param value the new value of the '<em>YPosition</em>' attribute.
+	 * @see #getYPosition()
 	 * @generated
 	 */
-	void setXPosition(int value);
+	void setYPosition(int value);
 
 	/**
 	 * Returns the value of the '<em><b>YNow XPosition</b></em>' attribute.
@@ -81,30 +81,30 @@ public interface PhysicalObject extends EObject {
 	void setYNowXPosition(int value);
 
 	/**
-	 * Returns the value of the '<em><b>XDimension</b></em>' attribute.
+	 * Returns the value of the '<em><b>YDimension</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>XDimension</em>' attribute isn't clear,
+	 * If the meaning of the '<em>YDimension</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>XDimension</em>' attribute.
-	 * @see #setXDimension(int)
-	 * @see com.paxelerate.model.CabinPackage#getPhysicalObject_XDimension()
+	 * @return the value of the '<em>YDimension</em>' attribute.
+	 * @see #setYDimension(int)
+	 * @see com.paxelerate.model.CabinPackage#getPhysicalObject_YDimension()
 	 * @model
 	 * @generated
 	 */
-	int getXDimension();
+	int getYDimension();
 
 	/**
-	 * Sets the value of the '{@link com.paxelerate.model.PhysicalObject#getXDimension <em>XDimension</em>}' attribute.
+	 * Sets the value of the '{@link com.paxelerate.model.PhysicalObject#getYDimension <em>YDimension</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>XDimension</em>' attribute.
-	 * @see #getXDimension()
+	 * @param value the new value of the '<em>YDimension</em>' attribute.
+	 * @see #getYDimension()
 	 * @generated
 	 */
-	void setXDimension(int value);
+	void setYDimension(int value);
 
 	/**
 	 * Returns the value of the '<em><b>YNow XDimension</b></em>' attribute.

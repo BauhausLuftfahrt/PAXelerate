@@ -212,8 +212,8 @@ public class SimulationHandler {
 
 		int offset = 5;
 
-		Vector start = new Vector2D(AStarTools.size((seat.getXPosition() + seat
-				.getXDimension() / 2)),
+		Vector start = new Vector2D(AStarTools.size((seat.getYPosition() + seat
+				.getYDimension() / 2)),
 				AStarTools.size((seat.getYNowXPosition()) - 2));
 
 		if (pax.getSeatRef().getYNowXPosition() < pax.getDoor().getYNowXPosition()) {
@@ -324,7 +324,7 @@ public class SimulationHandler {
 					AStarTools.size((door.getYNowXPosition() + door.getWidth() / 2)));
 			Vector goal = new Vector2D(
 					AStarTools
-							.size((seat.getXPosition() + seat.getXDimension() / 2)),
+							.size((seat.getYPosition() + seat.getYDimension() / 2)),
 					AStarTools.size((seat.getYNowXPosition()) - 1));
 
 			if (doItOnce) {

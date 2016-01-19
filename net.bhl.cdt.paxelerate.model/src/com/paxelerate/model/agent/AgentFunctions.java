@@ -68,11 +68,11 @@ public class AgentFunctions {
 		int middleOfCabinX = (int) (ModelHelper
 				.getParent(Cabin.class, thisSeat).getCabinWidth() / 2.0);
 
-		int otherSeatToAisleDistanceX = Math.abs(otherSeat.getXPosition()
-				+ otherSeat.getXDimension() / 2 - middleOfCabinX);
+		int otherSeatToAisleDistanceX = Math.abs(otherSeat.getYPosition()
+				+ otherSeat.getYDimension() / 2 - middleOfCabinX);
 
-		int mySeatToAisleDistanceX = Math.abs(thisSeat.getXPosition()
-				+ thisSeat.getXDimension() / 2 - middleOfCabinX);
+		int mySeatToAisleDistanceX = Math.abs(thisSeat.getYPosition()
+				+ thisSeat.getYDimension() / 2 - middleOfCabinX);
 
 		if (otherSeatToAisleDistanceX < mySeatToAisleDistanceX) {
 			return true;

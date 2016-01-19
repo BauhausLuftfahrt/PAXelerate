@@ -302,16 +302,16 @@ public class ConstructionLibrary {
 			physialObject.setYNowXDimension(yDimension);
 			physialObject.setYNowXPosition(globalSeatPositionY);
 			try {
-				physialObject.setXDimension(rowPartsInt.get(k)
+				physialObject.setYDimension(rowPartsInt.get(k)
 						* (passengerClass.getSeatWidth() + seatHelper)
 						+ seatHelper);
 			} catch (NullPointerException e) {
-				physialObject.setXDimension((cabin.getCabinWidth() - numbAisles
+				physialObject.setYDimension((cabin.getCabinWidth() - numbAisles
 						* cabin.getAisleWidth())
 						/ (numbAisles + 1));
 			}
-			physialObject.setXPosition(currentPosition);
-			currentPosition = currentPosition + physialObject.getXDimension()
+			physialObject.setYPosition(currentPosition);
+			currentPosition = currentPosition + physialObject.getYDimension()
 					+ cabin.getAisleWidth();
 
 		}
@@ -331,10 +331,10 @@ public class ConstructionLibrary {
 		row.getSeats().add(newSeat);
 		newSeat.setId(seatCount);
 		newSeat.setName(rowCount + Func.getCharForNumber(j));
-		newSeat.setXDimension(seatDimensions.getX());
+		newSeat.setYDimension(seatDimensions.getX());
 		newSeat.setYNowXDimension(seatDimensions.getY());
 		newSeat.setLetter(Func.getCharForNumber(j));
-		newSeat.setXPosition(globalSeatPositionX);
+		newSeat.setYPosition(globalSeatPositionX);
 		newSeat.setYNowXPosition(globalSeatPositionY);
 		newSeat.setTravelClass(passengerClass);
 		newSeat.setRow(row);
@@ -540,12 +540,12 @@ public class ConstructionLibrary {
 			newCurtain.setId(curtainCount);
 			newCurtain.setYNowXPosition(globalSeatPositionY + 10);
 			newCurtain
-					.setXDimension(rowPartsInt.get(k)
+					.setYDimension(rowPartsInt.get(k)
 							* (passengerClass.getSeatWidth() + seatHelper)
 							+ seatHelper);
-			newCurtain.setXPosition(currentCurtainPosition);
+			newCurtain.setYPosition(currentCurtainPosition);
 			currentCurtainPosition = currentCurtainPosition
-					+ newCurtain.getXDimension() + cabin.getAisleWidth();
+					+ newCurtain.getYDimension() + cabin.getAisleWidth();
 			curtainCount++;
 		}
 		globalSeatPositionY += 40;
@@ -570,10 +570,10 @@ public class ConstructionLibrary {
 			int yPostion, int xDimension, int yDimension) {
 		Stairway newStairway = CabinFactory.eINSTANCE.createStairway();
 		cabin.getStairways().add(newStairway);
-		newStairway.setXPosition(xPosition);
+		newStairway.setYPosition(xPosition);
 		newStairway.setYNowXPosition(yPostion);
 		newStairway.setDirection(direction);
-		newStairway.setXDimension(xDimension);
+		newStairway.setYDimension(xDimension);
 		newStairway.setYNowXDimension(yDimension);
 	}
 

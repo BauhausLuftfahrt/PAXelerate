@@ -851,9 +851,9 @@ public class Agent extends Subject implements Runnable {
 		Seat seat = passenger.getSeatRef();
 		seat.setCurrentlyFolded(false);
 
-		int width = (int) (seat.getXDimension() / scale);
+		int width = (int) (seat.getYDimension() / scale);
 		int length = (int) (seat.getYNowXDimension() / scale);
-		int xPosition = (int) (seat.getXPosition() / scale);
+		int xPosition = (int) (seat.getYPosition() / scale);
 		int YNowXPosition = (int) (seat.getYNowXPosition() / scale);
 
 		for (int i = 0; i < width; i++) {

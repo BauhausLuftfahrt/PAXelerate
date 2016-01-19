@@ -108,12 +108,12 @@ public class MoveObjectCommand extends CDTCommand {
 						Row.class)) {
 					if (row.getRowNumber() == compareRow.getRowNumber()) {
 						for (Seat seat : compareRow.getSeats()) {
-							seat.setXPosition(seat.getXPosition()
+							seat.setYPosition(seat.getYPosition()
 									+ movementVector.getX());
 							seat.setYNowXPosition(seat.getYNowXPosition()
 									+ movementVector.getY());
 							if (scalingDesired) {
-								seat.setXDimension(scaleVector.getX());
+								seat.setYDimension(scaleVector.getX());
 								seat.setYNowXDimension(scaleVector.getY());
 							}
 
@@ -127,12 +127,12 @@ public class MoveObjectCommand extends CDTCommand {
 				for (Seat compareSeat : ModelHelper.getChildrenByClass(cabin,
 						Seat.class)) {
 					if (seat.getId() == compareSeat.getId()) {
-						compareSeat.setXPosition(compareSeat.getXPosition()
+						compareSeat.setYPosition(compareSeat.getYPosition()
 								+ movementVector.getX());
 						compareSeat.setYNowXPosition(compareSeat.getYNowXPosition()
 								+ movementVector.getY());
 						if (scalingDesired) {
-							compareSeat.setXDimension(scaleVector.getX());
+							compareSeat.setYDimension(scaleVector.getX());
 							compareSeat.setYNowXDimension(scaleVector.getY());
 						}
 					}
@@ -143,12 +143,12 @@ public class MoveObjectCommand extends CDTCommand {
 			for (Galley galley : galleylist) {
 				for (Galley compareGalley : cabin.getGalleys()) {
 					if (galley.getId() == compareGalley.getId()) {
-						galley.setXPosition(galley.getXPosition()
+						galley.setYPosition(galley.getYPosition()
 								+ movementVector.getX());
 						galley.setYNowXPosition(galley.getYNowXPosition()
 								+ movementVector.getY());
 						if (scalingDesired) {
-							galley.setXDimension(scaleVector.getX());
+							galley.setYDimension(scaleVector.getX());
 							galley.setYNowXDimension(scaleVector.getY());
 						}
 					}
@@ -159,12 +159,12 @@ public class MoveObjectCommand extends CDTCommand {
 			for (Lavatory lavatory : lavatorylist) {
 				for (Lavatory compareLavatory : cabin.getLavatories()) {
 					if (lavatory.getId() == compareLavatory.getId()) {
-						compareLavatory.setXPosition(compareLavatory
-								.getXPosition() + movementVector.getX());
+						compareLavatory.setYPosition(compareLavatory
+								.getYPosition() + movementVector.getX());
 						compareLavatory.setYNowXPosition(compareLavatory
 								.getYNowXPosition() + movementVector.getY());
 						if (scalingDesired) {
-							compareLavatory.setXDimension(scaleVector.getX());
+							compareLavatory.setYDimension(scaleVector.getX());
 							compareLavatory.setYNowXDimension(scaleVector.getY());
 						}
 					}
@@ -175,12 +175,12 @@ public class MoveObjectCommand extends CDTCommand {
 			for (Curtain curtain : curtainlist) {
 				for (Curtain compareCurtain : cabin.getCurtains()) {
 					if (curtain.getId() == compareCurtain.getId()) {
-						compareCurtain.setXPosition(compareCurtain
-								.getXPosition() + movementVector.getX());
+						compareCurtain.setYPosition(compareCurtain
+								.getYPosition() + movementVector.getX());
 						compareCurtain.setYNowXPosition(compareCurtain
 								.getYNowXPosition() + movementVector.getY());
 						if (scalingDesired) {
-							compareCurtain.setXDimension(scaleVector.getX());
+							compareCurtain.setYDimension(scaleVector.getX());
 							compareCurtain.setYNowXDimension(scaleVector.getY());
 						}
 					}

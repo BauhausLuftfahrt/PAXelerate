@@ -186,10 +186,10 @@ public class CabinViewPart extends ViewPart {
 	private void drawObject(GC gc, Color color, PhysicalObject object) {
 		gc.setBackground(color);
 		gc.fillRectangle(get(object, XYZ.X), get(object, XYZ.Y),
-				adapt(object.getXDimension()), adapt(object.getYNowXDimension()));
+				adapt(object.getYDimension()), adapt(object.getYNowXDimension()));
 		gc.drawImage(switchIcon(object),
 				xZero
-						+ adapt((object.getXPosition() + object.getXDimension()
+						+ adapt((object.getYPosition() + object.getYDimension()
 								/ 2 - object.getYNowXDimension()
 								* PASSENGER_CIRCLE_SIZE / 2)), yZero
 						+ adapt((object.getYNowXPosition() + object.getYNowXDimension()
@@ -204,7 +204,7 @@ public class CabinViewPart extends ViewPart {
 	private int get(PhysicalObject obj, XYZ dir) {
 		switch (dir) {
 		case X:
-			return xZero + adapt(obj.getXPosition());
+			return xZero + adapt(obj.getYPosition());
 
 		case Y:
 			return yZero + adapt(obj.getYNowXPosition());
@@ -283,9 +283,9 @@ public class CabinViewPart extends ViewPart {
 		for (Curtain curtain : ModelHelper.getChildrenByClass(cabin,
 				Curtain.class)) {
 			gc.setBackground(black);
-			gc.fillRectangle((int) (xZero + curtain.getXPosition() / factor),
+			gc.fillRectangle((int) (xZero + curtain.getYPosition() / factor),
 					(int) (yZero + curtain.getYNowXPosition() / factor),
-					(int) (curtain.getXDimension() / factor),
+					(int) (curtain.getYDimension() / factor),
 					(int) (curtain.getYNowXDimension() / factor));
 		}
 		if (!cabin.getPassengers().isEmpty()) {
@@ -310,10 +310,10 @@ public class CabinViewPart extends ViewPart {
 				}
 
 				if (passengerSeat.getYNowXDimension() < passengerSeat
-						.getXDimension()) {
+						.getYDimension()) {
 					gc.fillOval(
-							(int) (xZero + (passengerSeat.getXPosition()
-									+ passengerSeat.getXDimension() / 2 - passengerSeat
+							(int) (xZero + (passengerSeat.getYPosition()
+									+ passengerSeat.getYDimension() / 2 - passengerSeat
 									.getYNowXDimension()
 									* PASSENGER_CIRCLE_SIZE
 									/ 2) / factor),
@@ -326,18 +326,18 @@ public class CabinViewPart extends ViewPart {
 									* passengerSeat.getYNowXDimension() / factor));
 				} else {
 					gc.fillOval(
-							(int) (xZero + (passengerSeat.getXPosition() + (1 - PASSENGER_CIRCLE_SIZE)
-									* passengerSeat.getXDimension() / 2)
+							(int) (xZero + (passengerSeat.getYPosition() + (1 - PASSENGER_CIRCLE_SIZE)
+									* passengerSeat.getYDimension() / 2)
 									/ factor),
 							(int) (yZero + (passengerSeat.getYNowXPosition()
 									+ passengerSeat.getYNowXDimension() / 2 - passengerSeat
-									.getXDimension()
+									.getYDimension()
 									* PASSENGER_CIRCLE_SIZE
 									/ 2) / factor),
 							(int) (PASSENGER_CIRCLE_SIZE
-									* passengerSeat.getXDimension() / factor),
+									* passengerSeat.getYDimension() / factor),
 							(int) (PASSENGER_CIRCLE_SIZE
-									* passengerSeat.getXDimension() / factor));
+									* passengerSeat.getYDimension() / factor));
 				}
 			}
 		}

@@ -198,7 +198,7 @@ public class DrawCabinCommand extends CDTCommand {
 			seat.setRow(row);
 			seat.setName(seat.getRow().getRowNumber()
 					+ Func.getCharForNumber(seatInRowCount));
-			seat.setXDimension(tc.getSeatWidth());
+			seat.setYDimension(tc.getSeatWidth());
 			seat.setYNowXDimension(tc.getSeatLength());
 
 			seatCount++;
@@ -211,9 +211,9 @@ public class DrawCabinCommand extends CDTCommand {
 	private Boolean checkCabinOutOfBounds() {
 		for (PhysicalObject object : ModelHelper.getChildrenByClass(cabin,
 				PhysicalObject.class)) {
-			if (object.getXPosition() < 0
+			if (object.getYPosition() < 0
 					|| object.getYNowXPosition() < 0
-					|| (object.getXPosition() + object.getXDimension()) > cabin
+					|| (object.getYPosition() + object.getYDimension()) > cabin
 							.getCabinWidth()
 					|| (object.getYNowXPosition() + object.getYNowXDimension()) > cabin
 							.getCabinLength()) {

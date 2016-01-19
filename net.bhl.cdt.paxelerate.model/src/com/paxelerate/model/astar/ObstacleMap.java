@@ -282,9 +282,9 @@ public class ObstacleMap {
 
 			if (!(cabin.getSimulationSettings().isUseFoldableSeats() && value)) {
 
-				int width = AStarTools.size(physicalObject.getXDimension());
+				int width = AStarTools.size(physicalObject.getYDimension());
 				int length = AStarTools.size(physicalObject.getYNowXDimension());
-				int xPosition = AStarTools.size(physicalObject.getXPosition());
+				int xPosition = AStarTools.size(physicalObject.getYPosition());
 				int yPosition = AStarTools.size(physicalObject.getYNowXPosition());
 
 				for (int i = 0; i < width; i++) {
