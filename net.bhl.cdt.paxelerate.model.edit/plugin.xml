@@ -10,7 +10,7 @@
       <!-- @generated cabin -->
       <factory
             uri="http://paxelerate.com/"
-            class="com.paxelerate.model.provider.CabinItemProviderAdapterFactory"
+            class="net.bhl.cdt.paxelerate.model.provider.CabinItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

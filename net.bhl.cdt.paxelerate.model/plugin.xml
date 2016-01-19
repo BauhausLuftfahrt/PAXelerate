@@ -10,42 +10,42 @@
    <extension
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="com.paxelerate.model.handlers.SimulateBoardingHandler"
+            defaultHandler="net.bhl.cdt.paxelerate.model.handlers.SimulateBoardingHandler"
             id="net.bhl.cdt.paxelerate.model.simulateBoarding"
             name="Simulate Boarding">
       </command>
       <command
-            defaultHandler="com.paxelerate.model.handlers.GenerateCabinHandler"
+            defaultHandler="net.bhl.cdt.paxelerate.model.handlers.GenerateCabinHandler"
             id="net.bhl.cdt.paxelerate.model.generatecabin"
             name="Generate Cabin">
       </command>
       <command
-            defaultHandler="com.paxelerate.model.handlers.DrawCabinHandler"
+            defaultHandler="net.bhl.cdt.paxelerate.model.handlers.DrawCabinHandler"
             id="net.bhl.cdt.paxelerate.model.DrawCabin"
             name="Refresh Cabin View">
       </command>
       <command
-            defaultHandler="com.paxelerate.model.handlers.GeneratePassengersHandler"
+            defaultHandler="net.bhl.cdt.paxelerate.model.handlers.GeneratePassengersHandler"
             id="net.bhl.cdt.paxelerate.model.GeneratePassengers"
             name="Generate Passengers">
       </command>
       <command
-            defaultHandler="com.paxelerate.model.handlers.FloodCabinHandler"
+            defaultHandler="net.bhl.cdt.paxelerate.model.handlers.FloodCabinHandler"
             id="net.bhl.cdt.paxelerate.model.FloodCabin"
             name="Cabin Flood Demo">
       </command>
       <command
-            defaultHandler="com.paxelerate.model.handlers.MoveRowHandler"
+            defaultHandler="net.bhl.cdt.paxelerate.model.handlers.MoveRowHandler"
             id="net.bhl.cdt.paxelerate.model.MoveRow"
             name="Move Object">
       </command>
       <command
-            defaultHandler="com.paxelerate.model.handlers.AboutViewHandler"
+            defaultHandler="net.bhl.cdt.paxelerate.model.handlers.AboutViewHandler"
             id="net.bhl.cdt.paxelerate.model.AboutView"
             name="Show About View">
       </command>
       <command
-            defaultHandler="com.paxelerate.model.handlers.SortPassengersHandler"
+            defaultHandler="net.bhl.cdt.paxelerate.model.handlers.SortPassengersHandler"
             id="net.bhl.cdt.paxelerate.model.sortPassengers"
             name="Sort Passengers">
       </command>
@@ -63,7 +63,7 @@
                   checkEnabled="false">
                <iterate>
                   <instanceof
-                        value="com.paxelerate.model.Cabin">
+                        value="net.bhl.cdt.paxelerate.model.Cabin">
                   </instanceof>
                </iterate>
             </visibleWhen>
@@ -75,7 +75,7 @@
                   checkEnabled="false">
                <iterate>
                   <instanceof
-                        value="com.paxelerate.model.Cabin">
+                        value="net.bhl.cdt.paxelerate.model.Cabin">
                   </instanceof>
                </iterate>
             </visibleWhen>
@@ -88,7 +88,7 @@
                   checkEnabled="false">
                <iterate>
                   <instanceof
-                        value="com.paxelerate.model.Cabin">
+                        value="net.bhl.cdt.paxelerate.model.Cabin">
                   </instanceof>
                </iterate>
             </visibleWhen>
@@ -101,7 +101,7 @@
                   checkEnabled="false">
                <iterate>
                   <instanceof
-                        value="com.paxelerate.model.Cabin">
+                        value="net.bhl.cdt.paxelerate.model.Cabin">
                   </instanceof>
                </iterate>
             </visibleWhen>
@@ -114,7 +114,7 @@
                   checkEnabled="false">
                <iterate>
                   <instanceof
-                        value="com.paxelerate.model.Cabin">
+                        value="net.bhl.cdt.paxelerate.model.Cabin">
                   </instanceof>
                </iterate>
             </visibleWhen>
@@ -128,10 +128,10 @@
                <iterate>
                   <or>
                      <instanceof
-                           value="com.paxelerate.model.PhysicalObject">
+                           value="net.bhl.cdt.paxelerate.model.PhysicalObject">
                      </instanceof>
                      <instanceof
-                           value="com.paxelerate.model.Row">
+                           value="net.bhl.cdt.paxelerate.model.Row">
                      </instanceof>
                   </or>
                </iterate>
@@ -146,10 +146,10 @@
                <iterate>
                   <or>
                      <instanceof
-                           value="com.paxelerate.model.Cabin">
+                           value="net.bhl.cdt.paxelerate.model.Cabin">
                      </instanceof>
                      <instanceof
-                           value="com.paxelerate.model.Passenger">
+                           value="net.bhl.cdt.paxelerate.model.Passenger">
                      </instanceof>
                   </or>
                </iterate>
@@ -161,7 +161,7 @@
          point="org.eclipse.ui.views">
       <view
             allowMultiple="false"
-            class="com.paxelerate.model.ui.CabinViewPart"
+            class="net.bhl.cdt.paxelerate.model.ui.CabinViewPart"
             icon="images/Cabin.gif"
             id="net.bhl.cdt.paxelerate.model.ui.cabinview"
             name="Cabin Layout"
@@ -169,7 +169,7 @@
       </view>
       <view
             allowMultiple="false"
-            class="com.paxelerate.model.ui.InfoViewPart"
+            class="net.bhl.cdt.paxelerate.model.ui.InfoViewPart"
             icon="images/Passenger.png"
             id="net.bhl.cdt.paxelerate.model.ui.infoview"
             name="Info View"
@@ -177,7 +177,7 @@
       </view>
       <view
             allowMultiple="false"
-            class="com.paxelerate.model.ui.PropertyViewPart"
+            class="net.bhl.cdt.paxelerate.model.ui.PropertyViewPart"
             icon="images/Passenger.png"
             id="net.bhl.cdt.paxelerate.ui.propertyview"
             name="Property View"
@@ -187,9 +187,9 @@
    <extension
          point="org.eclipse.emf.ecp.ui.modelElementOpener">
       <modelElementOpener
-            class="com.paxelerate.model.ui.CabinOpener">
+            class="net.bhl.cdt.paxelerate.model.ui.CabinOpener">
          <staticTester
-               modelElement="com.paxelerate.model.Cabin"
+               modelElement="net.bhl.cdt.paxelerate.model.Cabin"
                priority="2">
          </staticTester>
       </modelElementOpener>
@@ -217,11 +217,11 @@
    <extension
          point="org.eclipse.ui.splashHandlers">
       <splashHandler
-            class="com.paxelerate.model.splashHandlers.ExtensibleSplashHandler"
+            class="net.bhl.cdt.paxelerate.model.splashHandlers.ExtensibleSplashHandler"
             id="net.bhl.cdt.paxelerate.model.splashHandlers.extensible">
       </splashHandler>
       <splashHandler
-            class="com.paxelerate.model.splashHandlers.BrowserSplashHandler"
+            class="net.bhl.cdt.paxelerate.model.splashHandlers.BrowserSplashHandler"
             id="net.bhl.cdt.paxelerate.model.splashHandlers.browser">
       </splashHandler>
    </extension>
@@ -229,7 +229,7 @@
       <!-- @generated cabin -->
       <package
             uri="http://paxelerate.com/"
-            class="com.paxelerate.model.CabinPackage"
+            class="net.bhl.cdt.paxelerate.model.CabinPackage"
             genModel="model/cabin.genmodel"/>
    </extension>
 

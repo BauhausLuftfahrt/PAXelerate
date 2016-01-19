@@ -1,17 +1,17 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: com.paxelerate.edit;singleton:=true
+Bundle-SymbolicName: net.bhl.cdt.paxelerate.model.edit;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: com.paxelerate.model.provider.CabinEditPlugin$Implementation
+Bundle-Activator: net.bhl.cdt.paxelerate.model.provider.CabinEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: com.paxelerate.model.provider
+Export-Package: net.bhl.cdt.paxelerate.model.provider
 Require-Bundle: org.eclipse.core.runtime,
- com.paxelerate.model.cabin;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,
  net.bhl.cdt.model;visibility:=reexport,
- net.bhl.cdt.model.edit;visibility:=reexport
+ net.bhl.cdt.model.edit;visibility:=reexport,
+ net.bhl.cdt.paxelerate.model;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
