@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ASCII"?>
+<org.eclipse.emf.ecp.view.model:View xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.emf.ecp.view.group.model="http://org/eclipse/emf/ecp/view/group/model" xmlns:org.eclipse.emf.ecp.view.model="http://org/eclipse/emf/ecp/view/model/170" xmi:id="_IHEhAKS8EeWGjpaobu8CIA" name="Galley" ecorePath="/com.paxelerate/model/cabin.ecore">
+  <rootEClass href="http://paxelerate.com/#//Galley"/>
+  <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_I68N8KS8EeWGjpaobu8CIA" name="Properties">
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_IHILYKS8EeWGjpaobu8CIA" name="Control xPosition">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_IHILYaS8EeWGjpaobu8CIA">
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//PhysicalObject/xPosition"/>
+      </domainModelReference>
+    </children>
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_IHILYqS8EeWGjpaobu8CIA" name="Control yPosition">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_IHILY6S8EeWGjpaobu8CIA">
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//PhysicalObject/yPosition"/>
+      </domainModelReference>
+    </children>
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_IHIycKS8EeWGjpaobu8CIA" name="Control xDimension">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_IHIycaS8EeWGjpaobu8CIA">
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//PhysicalObject/xDimension"/>
+      </domainModelReference>
+    </children>
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_IHIycqS8EeWGjpaobu8CIA" name="Control yDimension">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_IHIyc6S8EeWGjpaobu8CIA">
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//PhysicalObject/yDimension"/>
+      </domainModelReference>
+    </children>
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_IHIydKS8EeWGjpaobu8CIA" name="Control name">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_IHIydaS8EeWGjpaobu8CIA">
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//PhysicalObject/name"/>
+      </domainModelReference>
+    </children>
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_IHIydqS8EeWGjpaobu8CIA" name="Control id">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_IHIyd6S8EeWGjpaobu8CIA">
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//PhysicalObject/id"/>
+      </domainModelReference>
+    </children>
+  </children>
+</org.eclipse.emf.ecp.view.model:View>
