@@ -8,6 +8,25 @@ package net.bhl.cdt.paxelerate.model.ui;
 import java.io.File;
 import java.util.ArrayList;
 
+import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.PaintEvent;
+import org.eclipse.swt.events.PaintListener;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.GC;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.ImageData;
+import org.eclipse.swt.graphics.ImageLoader;
+import org.eclipse.swt.widgets.Canvas;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.part.ViewPart;
+
 import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.BusinessClass;
 import net.bhl.cdt.paxelerate.model.Cabin;
@@ -26,31 +45,10 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.astar.ObstacleMap;
 import net.bhl.cdt.paxelerate.model.astar.Path;
-
-import org.eclipse.core.runtime.ILog;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.PaintEvent;
-import org.eclipse.swt.events.PaintListener;
-import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Font;
-import org.eclipse.swt.graphics.GC;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.ImageData;
-import org.eclipse.swt.graphics.ImageLoader;
-import org.eclipse.swt.widgets.Canvas;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.part.ViewPart;
-
-import net.bhl.cdt.paxelerate.util.graphics.*;
+import net.bhl.cdt.paxelerate.ui.ColorHelper;
+import net.bhl.cdt.paxelerate.ui.SWTResourceManager;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
-import net.bhl.cdt.paxelerate.util.math.Vector3D;
 
 /**
  * This class represents the cabin view. All graphics generation is done here.

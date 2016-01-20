@@ -7,13 +7,12 @@ package net.bhl.cdt.paxelerate.model.agent;
 
 import java.util.HashMap;
 
-import net.bhl.cdt.paxelerate.util.math.StopWatch;
-import net.bhl.cdt.paxelerate.util.math.Vector3D;
-
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.agent.Agent.State;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.model.observer.Subject;
+import net.bhl.cdt.paxelerate.util.math.StopWatch;
+import net.bhl.cdt.paxelerate.util.math.Vector3D;
 
 public class IssueScanner extends Subject implements Runnable {
 

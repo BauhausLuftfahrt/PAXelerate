@@ -10,13 +10,10 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.commands.DrawCabinCommand;
-import net.bhl.cdt.paxelerate.model.commands.GenerateCabinCommand;
-import net.bhl.cdt.paxelerate.model.commands.SimulateBoardingCommand;
 
 public class DrawCabinHandler extends AbstractHandler {
 

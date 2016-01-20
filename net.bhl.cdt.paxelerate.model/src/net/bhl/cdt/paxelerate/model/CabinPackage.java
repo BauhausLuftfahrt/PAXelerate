@@ -2,13 +2,14 @@
  */
 package net.bhl.cdt.paxelerate.model;
 
-import net.bhl.cdt.model.ModelPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
+import net.bhl.cdt.model.ModelPackage;
 
 /**
  * <!-- begin-user-doc -->

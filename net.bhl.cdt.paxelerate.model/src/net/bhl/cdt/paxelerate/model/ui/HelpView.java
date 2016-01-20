@@ -5,17 +5,21 @@
  ***************************************************************************************/
 package net.bhl.cdt.paxelerate.model.ui;
 
-import javax.swing.*;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
-import net.bhl.cdt.paxelerate.util.math.Vector;
-import net.bhl.cdt.paxelerate.util.math.Vector2D;
+import javax.swing.JPanel;
 
 import net.bhl.cdt.paxelerate.model.astar.AreaMap;
 import net.bhl.cdt.paxelerate.model.astar.CostMap;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.util.ArrayList;
+import net.bhl.cdt.paxelerate.util.math.Vector;
+import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
 public class HelpView extends JPanel {
 	private static final long serialVersionUID = 1L;

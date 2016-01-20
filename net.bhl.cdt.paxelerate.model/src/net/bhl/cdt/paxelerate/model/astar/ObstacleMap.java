@@ -9,15 +9,6 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import org.eclipse.core.runtime.ILog;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
-
-import net.bhl.cdt.paxelerate.util.Func;
-import net.bhl.cdt.paxelerate.util.math.Vector;
-import net.bhl.cdt.paxelerate.util.math.Vector2D;
-
 import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.Curtain;
@@ -27,6 +18,8 @@ import net.bhl.cdt.paxelerate.model.Lavatory;
 import net.bhl.cdt.paxelerate.model.PhysicalObject;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
+import net.bhl.cdt.paxelerate.util.math.Vector;
+import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
 /**
  * This class represents an obstacle map. Every point in the two dimensional

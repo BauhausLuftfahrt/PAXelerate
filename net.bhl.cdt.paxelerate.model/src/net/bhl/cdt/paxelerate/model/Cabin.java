@@ -2,8 +2,9 @@
  */
 package net.bhl.cdt.paxelerate.model;
 
-import net.bhl.cdt.model.NamedElement;
 import org.eclipse.emf.common.util.EList;
+
+import net.bhl.cdt.model.NamedElement;
 
 /**
  * <!-- begin-user-doc -->

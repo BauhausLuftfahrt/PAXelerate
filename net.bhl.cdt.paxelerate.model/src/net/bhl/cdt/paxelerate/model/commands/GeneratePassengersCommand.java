@@ -7,6 +7,11 @@ package net.bhl.cdt.paxelerate.model.commands;
 
 import java.util.ArrayList;
 
+import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
+
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.BusinessClass;
@@ -22,13 +27,6 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
 import net.bhl.cdt.paxelerate.model.util.PassengerPropertyGenerator;
 import net.bhl.cdt.paxelerate.model.util.ShouldSoonBeDeletedWhenSolved;
-
-import org.eclipse.core.runtime.ILog;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
-
-import net.bhl.cdt.paxelerate.util.Func;
 import net.bhl.cdt.paxelerate.util.math.RandomHelper;
 import net.bhl.cdt.paxelerate.util.string.StringHelper;
 

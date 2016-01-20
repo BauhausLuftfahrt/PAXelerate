@@ -13,22 +13,19 @@ import javax.swing.SwingUtilities;
 
 import org.eclipse.emf.common.util.EList;
 
-import net.bhl.cdt.paxelerate.ui.ProgressHandler;
-import net.bhl.cdt.paxelerate.util.Func;
-import net.bhl.cdt.paxelerate.util.Log;
-import net.bhl.cdt.paxelerate.util.OS;
-import net.bhl.cdt.paxelerate.util.math.StopWatch;
-import net.bhl.cdt.paxelerate.util.math.Vector;
-import net.bhl.cdt.paxelerate.util.math.Vector2D;
-
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.Door;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.agent.AgentFunctions;
-import net.bhl.cdt.paxelerate.model.ui.HelpView;
 import net.bhl.cdt.paxelerate.model.ui.SimulationView;
+import net.bhl.cdt.paxelerate.ui.ProgressHandler;
+import net.bhl.cdt.paxelerate.util.Log;
+import net.bhl.cdt.paxelerate.util.OS;
+import net.bhl.cdt.paxelerate.util.math.StopWatch;
+import net.bhl.cdt.paxelerate.util.math.Vector;
+import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
 /**
  * This class runs and handles the a star algorithm an simulation.

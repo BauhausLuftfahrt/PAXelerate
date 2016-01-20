@@ -3,6 +3,7 @@
 package net.bhl.cdt.paxelerate.model;
 
 import java.util.Map;
+
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EObject;
 

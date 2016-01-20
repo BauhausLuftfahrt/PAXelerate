@@ -5,6 +5,11 @@
  ***************************************************************************************/
 package net.bhl.cdt.paxelerate.model.commands;
 
+import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
+
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.paxelerate.model.BusinessClass;
 import net.bhl.cdt.paxelerate.model.Cabin;
@@ -17,18 +22,8 @@ import net.bhl.cdt.paxelerate.model.MainDoor;
 import net.bhl.cdt.paxelerate.model.PremiumEconomyClass;
 import net.bhl.cdt.paxelerate.model.StandardDoor;
 import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
-import net.bhl.cdt.paxelerate.model.ui.InfoViewPart;
 import net.bhl.cdt.paxelerate.model.util.ConstructionLibrary;
 import net.bhl.cdt.paxelerate.model.util.ShouldSoonBeDeletedWhenSolved;
-
-import org.eclipse.core.runtime.ILog;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.PlatformUI;
-
-import net.bhl.cdt.paxelerate.util.Func;
 
 /**
  * 

@@ -5,13 +5,6 @@
  ***************************************************************************************/
 package net.bhl.cdt.paxelerate.model.commands;
 
-import net.bhl.cdt.commands.CDTCommand;
-import net.bhl.cdt.paxelerate.model.Cabin;
-import net.bhl.cdt.paxelerate.model.Door;
-import net.bhl.cdt.paxelerate.model.Passenger;
-import net.bhl.cdt.paxelerate.model.agent.AgentFunctions;
-import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
-
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
@@ -21,7 +14,12 @@ import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 
-import net.bhl.cdt.paxelerate.util.Func;
+import net.bhl.cdt.commands.CDTCommand;
+import net.bhl.cdt.paxelerate.model.Cabin;
+import net.bhl.cdt.paxelerate.model.Door;
+import net.bhl.cdt.paxelerate.model.Passenger;
+import net.bhl.cdt.paxelerate.model.agent.AgentFunctions;
+import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
 import net.bhl.cdt.paxelerate.util.input.Input;
 import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 import net.bhl.cdt.paxelerate.util.math.RandomHelper;

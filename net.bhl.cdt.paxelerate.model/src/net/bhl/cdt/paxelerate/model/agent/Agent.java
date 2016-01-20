@@ -9,28 +9,25 @@ package net.bhl.cdt.paxelerate.model.agent;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 
-import net.bhl.cdt.paxelerate.util.Func;
-import net.bhl.cdt.paxelerate.util.math.StopWatch;
-import net.bhl.cdt.paxelerate.util.math.Vector;
-import net.bhl.cdt.paxelerate.util.math.Vector2D;
-
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
 import net.bhl.cdt.paxelerate.model.LuggageSize;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.PassengerMood;
 import net.bhl.cdt.paxelerate.model.Seat;
-import net.bhl.cdt.paxelerate.model.agent.AgressiveMood;
-import net.bhl.cdt.paxelerate.model.agent.PassiveMood;
 import net.bhl.cdt.paxelerate.model.astar.AStarTools;
 import net.bhl.cdt.paxelerate.model.astar.Core;
 import net.bhl.cdt.paxelerate.model.astar.CostMap;
 import net.bhl.cdt.paxelerate.model.astar.Node;
+import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 import net.bhl.cdt.paxelerate.model.astar.Path;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
-import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 import net.bhl.cdt.paxelerate.model.observer.Subject;
 import net.bhl.cdt.paxelerate.model.util.Rotator;
+import net.bhl.cdt.paxelerate.util.Func;
+import net.bhl.cdt.paxelerate.util.math.StopWatch;
+import net.bhl.cdt.paxelerate.util.math.Vector;
+import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
 /**
  * This class is the agent object. It walks a specific calculated path and

@@ -8,6 +8,10 @@ package net.bhl.cdt.paxelerate.model.commands;
 
 import java.util.ArrayList;
 
+import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Shell;
+
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
@@ -20,15 +24,6 @@ import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
 import net.bhl.cdt.paxelerate.model.ui.SimulationView;
 import net.bhl.cdt.paxelerate.model.util.ShouldSoonBeDeletedWhenSolved;
 import net.bhl.cdt.paxelerate.model.util.SimulationResultLogger;
-
-import org.eclipse.core.runtime.ILog;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.jface.dialogs.IMessageProvider;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Shell;
-
 import net.bhl.cdt.paxelerate.util.Func;
 import net.bhl.cdt.paxelerate.util.OS;
 import net.bhl.cdt.paxelerate.util.input.Input;

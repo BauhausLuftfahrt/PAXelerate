@@ -5,10 +5,6 @@
  ***************************************************************************************/
 package net.bhl.cdt.paxelerate.model.agent;
 
-import net.bhl.cdt.paxelerate.util.Func;
-import net.bhl.cdt.paxelerate.util.math.Vector;
-import net.bhl.cdt.paxelerate.util.math.Vector2D;
-
 import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.Door;
@@ -17,8 +13,11 @@ import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.astar.CostMap;
 import net.bhl.cdt.paxelerate.model.astar.Node;
-import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
+import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
+import net.bhl.cdt.paxelerate.util.Func;
+import net.bhl.cdt.paxelerate.util.math.Vector;
+import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
 public class AgentFunctions {
 

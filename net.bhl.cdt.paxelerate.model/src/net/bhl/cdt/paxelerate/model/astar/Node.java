@@ -7,12 +7,10 @@ package net.bhl.cdt.paxelerate.model.astar;
 
 import java.util.ArrayList;
 
-import net.bhl.cdt.paxelerate.util.math.Vector;
-import net.bhl.cdt.paxelerate.util.math.Vector2D;
-
 import net.bhl.cdt.paxelerate.model.CabinFactory;
 import net.bhl.cdt.paxelerate.model.Passenger;
-import net.bhl.cdt.paxelerate.model.agent.Agent;
+import net.bhl.cdt.paxelerate.util.math.Vector;
+import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
 /**
  * This class represents a node object which has several properties important

@@ -8,14 +8,13 @@ package net.bhl.cdt.paxelerate.model.commands;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
+import org.eclipse.jface.dialogs.IMessageProvider;
+
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.astar.AreaMap;
 import net.bhl.cdt.paxelerate.model.astar.ObstacleMap;
 import net.bhl.cdt.paxelerate.model.ui.HelpView;
-
-import org.eclipse.jface.dialogs.IMessageProvider;
-
 import net.bhl.cdt.paxelerate.util.input.Input;
 import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 import net.bhl.cdt.paxelerate.util.math.Vector;

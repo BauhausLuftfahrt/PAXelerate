@@ -6,12 +6,38 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.EObjectValidator;
 
-import net.bhl.cdt.paxelerate.model.*;
+import net.bhl.cdt.paxelerate.model.AircraftType;
+import net.bhl.cdt.paxelerate.model.BusinessClass;
+import net.bhl.cdt.paxelerate.model.Cabin;
+import net.bhl.cdt.paxelerate.model.CabinPackage;
+import net.bhl.cdt.paxelerate.model.CrewMember;
+import net.bhl.cdt.paxelerate.model.Curtain;
+import net.bhl.cdt.paxelerate.model.Door;
+import net.bhl.cdt.paxelerate.model.EconomyClass;
+import net.bhl.cdt.paxelerate.model.EmergencyExit;
+import net.bhl.cdt.paxelerate.model.FirstClass;
+import net.bhl.cdt.paxelerate.model.Galley;
+import net.bhl.cdt.paxelerate.model.Lavatory;
+import net.bhl.cdt.paxelerate.model.LuggageSize;
+import net.bhl.cdt.paxelerate.model.MainDoor;
+import net.bhl.cdt.paxelerate.model.Passenger;
+import net.bhl.cdt.paxelerate.model.PassengerMood;
+import net.bhl.cdt.paxelerate.model.PhysicalObject;
+import net.bhl.cdt.paxelerate.model.PremiumEconomyClass;
+import net.bhl.cdt.paxelerate.model.Row;
+import net.bhl.cdt.paxelerate.model.Seat;
+import net.bhl.cdt.paxelerate.model.Sex;
+import net.bhl.cdt.paxelerate.model.SimulationProperties;
+import net.bhl.cdt.paxelerate.model.SimulationResult;
+import net.bhl.cdt.paxelerate.model.SortingStyle;
+import net.bhl.cdt.paxelerate.model.Stairway;
+import net.bhl.cdt.paxelerate.model.StairwayDirection;
+import net.bhl.cdt.paxelerate.model.StandardDoor;
+import net.bhl.cdt.paxelerate.model.Stowage;
+import net.bhl.cdt.paxelerate.model.TravelClass;
 
 /**
  * <!-- begin-user-doc -->

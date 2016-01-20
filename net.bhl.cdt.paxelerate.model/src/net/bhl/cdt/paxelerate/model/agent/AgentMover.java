@@ -5,11 +5,10 @@
  ***************************************************************************************/
 package net.bhl.cdt.paxelerate.model.agent;
 
-import net.bhl.cdt.paxelerate.util.math.Vector;
-
 import net.bhl.cdt.paxelerate.model.Passenger;
-import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
+import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
+import net.bhl.cdt.paxelerate.util.math.Vector;
 
 public class AgentMover {
 	/**

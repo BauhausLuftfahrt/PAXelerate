@@ -14,12 +14,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 
-import net.bhl.cdt.paxelerate.util.Func;
-import net.bhl.cdt.paxelerate.util.input.InputChecker;
-import net.bhl.cdt.paxelerate.util.math.Vector;
-import net.bhl.cdt.paxelerate.util.math.Vector2D;
-import net.bhl.cdt.paxelerate.util.string.StringHelper;
-
 import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.BusinessClass;
 import net.bhl.cdt.paxelerate.model.Cabin;
@@ -40,6 +34,12 @@ import net.bhl.cdt.paxelerate.model.Stairway;
 import net.bhl.cdt.paxelerate.model.StairwayDirection;
 import net.bhl.cdt.paxelerate.model.StandardDoor;
 import net.bhl.cdt.paxelerate.model.TravelClass;
+import net.bhl.cdt.paxelerate.model.commands.GenerateCabinCommand;
+import net.bhl.cdt.paxelerate.util.Func;
+import net.bhl.cdt.paxelerate.util.input.InputChecker;
+import net.bhl.cdt.paxelerate.util.math.Vector;
+import net.bhl.cdt.paxelerate.util.math.Vector2D;
+import net.bhl.cdt.paxelerate.util.string.StringHelper;
 
 /**
  * This class contains all constructors for the different elements of the cabin.

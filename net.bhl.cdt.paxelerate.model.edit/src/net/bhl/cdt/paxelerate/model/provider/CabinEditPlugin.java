@@ -2,11 +2,11 @@
  */
 package net.bhl.cdt.paxelerate.model.provider;
 
+import org.eclipse.emf.common.EMFPlugin;
+import org.eclipse.emf.common.util.ResourceLocator;
+
 import net.bhl.cdt.model.provider.ModelEditPlugin;
 import net.bhl.cdt.model.units.provider.UnitsEditPlugin;
-import org.eclipse.emf.common.EMFPlugin;
-
-import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
  * This is the central singleton for the Cabin edit plugin.

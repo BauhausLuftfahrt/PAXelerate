@@ -1,10 +1,5 @@
 package net.bhl.cdt.paxelerate.model.util;
 
-import net.bhl.cdt.paxelerate.util.Func;
-import net.bhl.cdt.paxelerate.util.math.GaussOptions;
-import net.bhl.cdt.paxelerate.util.math.GaussianRandom;
-import net.bhl.cdt.paxelerate.util.math.RandomHelper;
-
 import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.LuggageSize;
@@ -12,6 +7,10 @@ import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.PassengerMood;
 import net.bhl.cdt.paxelerate.model.Sex;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
+import net.bhl.cdt.paxelerate.util.Func;
+import net.bhl.cdt.paxelerate.util.math.GaussOptions;
+import net.bhl.cdt.paxelerate.util.math.GaussianRandom;
+import net.bhl.cdt.paxelerate.util.math.RandomHelper;
 
 /**
  * This class is used to generate the passenger properties for each passenger

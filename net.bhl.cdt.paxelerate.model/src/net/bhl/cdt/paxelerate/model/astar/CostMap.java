@@ -10,19 +10,13 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import org.eclipse.core.runtime.ILog;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
-
+import net.bhl.cdt.paxelerate.model.agent.Agent;
+import net.bhl.cdt.paxelerate.model.astar.Node.Property;
+import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
 import net.bhl.cdt.paxelerate.util.Func;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.math.Vector3D;
-
-import net.bhl.cdt.paxelerate.model.agent.Agent;
-import net.bhl.cdt.paxelerate.model.astar.Node.Property;
-import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
 
 /**
  * This class creates a cost map by flooding the whole map from a specific

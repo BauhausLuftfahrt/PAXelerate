@@ -19,12 +19,11 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import net.bhl.cdt.paxelerate.util.input.InputChecker;
-
 import net.bhl.cdt.paxelerate.model.CabinPackage;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.util.CabinValidator;
+import net.bhl.cdt.paxelerate.util.input.InputChecker;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

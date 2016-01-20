@@ -7,21 +7,15 @@ package net.bhl.cdt.paxelerate.model.ui;
 
 import java.text.DecimalFormat;
 
-import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
+import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.ui.part.ViewPart;
-
-import net.bhl.cdt.paxelerate.util.Func;
-import net.bhl.cdt.paxelerate.util.graphics.ColorHelper;
-import net.bhl.cdt.paxelerate.util.math.Vector;
-import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
@@ -32,6 +26,9 @@ import net.bhl.cdt.paxelerate.model.storage.AgeStorage;
 import net.bhl.cdt.paxelerate.model.storage.GaussianStorage;
 import net.bhl.cdt.paxelerate.model.storage.StorageHandler;
 import net.bhl.cdt.paxelerate.model.storage.StorageHandler.StoreType;
+import net.bhl.cdt.paxelerate.ui.ColorHelper;
+import net.bhl.cdt.paxelerate.util.math.Vector;
+import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
 /**
  * This class represents the cabin view. All graphics generation is done here.
@@ -43,12 +40,12 @@ import net.bhl.cdt.paxelerate.model.storage.StorageHandler.StoreType;
 
 public class PropertyViewPart extends ViewPart {
 
-	private String[] names = { "", "" };
-	private static final String MALE_STR = "#3399FF", FEMALE_STR = "#FF99FF";
+	private String[] names = new String[2];
 	private Composite parent;
 	private Canvas canvas;
 	private Cabin cabin;
 
+	private ColorHelper color;
 	private StorageHandler propertyStore = new StorageHandler();
 
 	private final static int BAR_HEIGHT = 15, DEVIATION_BAR_HEIGHT = 2,
@@ -71,6 +68,7 @@ public class PropertyViewPart extends ViewPart {
 		this.parent = parent;
 		cabin = CabinFactory.eINSTANCE.createCabin();
 		canvas = new Canvas(parent, SWT.RESIZE);
+		color = new ColorHelper(parent.getDisplay());
 
 		parent.addListener(SWT.Resize, new Listener() {
 			public void handleEvent(Event e) {
@@ -101,7 +99,7 @@ public class PropertyViewPart extends ViewPart {
 					e.gc.setFont(new Font(parent.getDisplay(), "Arial", 8,
 							SWT.NONE));
 
-					e.gc.setForeground(getColor("#C1C1C1"));
+					e.gc.setForeground(color.LIGHT_GREY);
 					e.gc.setLineWidth(1);
 					e.gc.drawLine((int) (dimensions.getX() / 4), 0,
 							(int) (dimensions.getX() / 4),
@@ -113,13 +111,13 @@ public class PropertyViewPart extends ViewPart {
 							(int) (dimensions.getX() / 4 * 3),
 							(int) (dimensions.getY()));
 
-					e.gc.setForeground(getColor("#000000"));
+					e.gc.setForeground(color.BLACK);
 
 					/* ********************************************* */
 					pos += 5;
 					addHeadline(e, "Sex Ratio");
 
-					e.gc.setBackground(getColor(MALE_STR));
+					e.gc.setBackground(color.MALE_PASSENGER);
 
 					e.gc.fillRectangle(0, pos,
 							(int) (dimensions.getX() * propertyStore
@@ -127,7 +125,7 @@ public class PropertyViewPart extends ViewPart {
 							BAR_HEIGHT);
 					e.gc.drawText(names[0], 5, pos, true);
 
-					e.gc.setBackground(getColor(FEMALE_STR));
+					e.gc.setBackground(color.FEMALE_PASSENGER);
 					e.gc.fillRectangle((int) (dimensions.getX() * propertyStore
 							.getPercentageOfPassengers(Sex.MALE)), pos,
 							(int) (dimensions.getX() * propertyStore
@@ -161,21 +159,21 @@ public class PropertyViewPart extends ViewPart {
 					double bigLug = propertyStore.getLuggageStore()
 							.getLuggagePercentage(LuggageSize.BIG);
 
-					e.gc.setBackground(getColor("#7F7063"));
+					e.gc.setBackground(color.NO_LUGGAGE);
 					e.gc.fillRectangle(0, pos,
 							(int) (dimensions.getX() * noLug), BAR_HEIGHT);
 
-					e.gc.setBackground(getColor("#FFA24C"));
+					e.gc.setBackground(color.SMALL_LUGGAGE);
 					e.gc.fillRectangle((int) (dimensions.getX() * noLug), pos,
 							(int) (dimensions.getX() * smallLug), BAR_HEIGHT);
 
-					e.gc.setBackground(getColor("#CC6100"));
+					e.gc.setBackground(color.MEDIUM_LUGGAGE);
 					e.gc.fillRectangle(
 							(int) (dimensions.getX() * noLug + dimensions
 									.getX() * smallLug), pos,
 							(int) (dimensions.getX() * medLug), BAR_HEIGHT);
 
-					e.gc.setBackground(getColor("#7F3D00"));
+					e.gc.setBackground(color.LARGE_LUGGAGE);
 					e.gc.fillRectangle((int) (dimensions.getX() * noLug
 							+ dimensions.getX() * medLug + dimensions.getX()
 							* smallLug), pos,
@@ -260,14 +258,14 @@ public class PropertyViewPart extends ViewPart {
 			maximum = 1;
 		}
 
-		int maxHeight = maximum * 4;
+		int maxHeight = maximum * 4; // TODO remove magic numbers
 
 		if (sex == Sex.MALE) {
-			e.gc.setForeground(getColor(MALE_STR));
-		} else if (sex == null) {
-			e.gc.setForeground(getColor("#AAAAAA"));
+			e.gc.setForeground(color.MALE_PASSENGER);
+		} else if (sex == Sex.FEMALE) {
+			e.gc.setForeground(color.FEMALE_PASSENGER);
 		} else {
-			e.gc.setForeground(getColor(FEMALE_STR));
+			e.gc.setForeground(color.ERROR);
 		}
 
 		for (int k = min; k < max; k++) {
@@ -280,7 +278,7 @@ public class PropertyViewPart extends ViewPart {
 			i++;
 		}
 
-		e.gc.setForeground(getColor("#000000"));
+		e.gc.setForeground(color.BLACK);
 	}
 
 	private void createDeviationBlock(String headline, PaintEvent e,
@@ -288,7 +286,7 @@ public class PropertyViewPart extends ViewPart {
 
 		addHeadline(e, headline);
 
-		e.gc.setBackground(getColor(MALE_STR));
+		e.gc.setBackground(color.MALE_PASSENGER);
 		e.gc.fillRectangle(0, pos, (int) (dimensions.getX() * AVG_VALUE),
 				BAR_HEIGHT);
 		e.gc.drawText(names[0], 5, pos, true);
@@ -312,7 +310,7 @@ public class PropertyViewPart extends ViewPart {
 				+ maximumFactorMale, store.getMaximum(Sex.MALE),
 				store.getMinimum(Sex.MALE));
 
-		e.gc.setBackground(getColor(FEMALE_STR));
+		e.gc.setBackground(color.FEMALE_PASSENGER);
 		e.gc.fillRectangle((int) (dimensions.getX() * (1 - AVG_VALUE)), pos,
 				(int) (dimensions.getX()), BAR_HEIGHT);
 		e.gc.drawText(names[1],
@@ -349,7 +347,7 @@ public class PropertyViewPart extends ViewPart {
 	private void createDeviationLine(PaintEvent e, double leftFactor,
 			double rightFactor, double rightLabel, double leftLabel) {
 
-		e.gc.setForeground(getColor("#333333"));
+		e.gc.setForeground(color.DARK_GREY);
 		e.gc.setLineWidth(2);
 
 		e.gc.drawLine((int) (dimensions.getX() * leftFactor), pos
@@ -369,7 +367,7 @@ public class PropertyViewPart extends ViewPart {
 
 		addLabel(e, rightLabel, rightFactor, LabelClass.VALUE, 0);
 
-		e.gc.setForeground(getColor("#000000"));
+		e.gc.setForeground(color.BLACK);
 	}
 
 	public void updateUI(Cabin cabin) {
@@ -385,10 +383,6 @@ public class PropertyViewPart extends ViewPart {
 		for (Passenger pax : cabin.getPassengers()) {
 			propertyStore.addPassenger(pax);
 		}
-	}
-
-	private Color getColor(String hex) {
-		return new Color(parent.getDisplay(), ColorHelper.hex2Rgb(hex));
 	}
 
 	@Override

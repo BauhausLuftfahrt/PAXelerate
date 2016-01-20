@@ -8,7 +8,7 @@
  * Contributors:
  *    Google, Inc. - initial API and implementation
  *******************************************************************************/
-package net.bhl.cdt.paxelerate.util.graphics;
+package net.bhl.cdt.paxelerate.ui;
 
 import java.io.FileInputStream;
 import java.io.IOException;

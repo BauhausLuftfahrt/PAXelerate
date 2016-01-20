@@ -4,6 +4,15 @@ package net.bhl.cdt.paxelerate.model.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import net.bhl.cdt.model.impl.NamedElementImpl;
 import net.bhl.cdt.paxelerate.model.AircraftType;
 import net.bhl.cdt.paxelerate.model.Cabin;
@@ -17,15 +26,6 @@ import net.bhl.cdt.paxelerate.model.SimulationProperties;
 import net.bhl.cdt.paxelerate.model.Stairway;
 import net.bhl.cdt.paxelerate.model.Stowage;
 import net.bhl.cdt.paxelerate.model.TravelClass;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

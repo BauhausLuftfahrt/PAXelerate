@@ -1,8 +1,5 @@
 package net.bhl.cdt.paxelerate.model.util;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
