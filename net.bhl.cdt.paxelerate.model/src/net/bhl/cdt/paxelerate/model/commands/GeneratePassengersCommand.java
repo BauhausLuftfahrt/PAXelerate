@@ -7,11 +7,6 @@ package net.bhl.cdt.paxelerate.model.commands;
 
 import java.util.ArrayList;
 
-import org.eclipse.core.runtime.ILog;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
-
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.BusinessClass;
@@ -27,6 +22,7 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
 import net.bhl.cdt.paxelerate.model.util.PassengerPropertyGenerator;
 import net.bhl.cdt.paxelerate.model.util.ShouldSoonBeDeletedWhenSolved;
+import net.bhl.cdt.paxelerate.util.Log;
 import net.bhl.cdt.paxelerate.util.math.RandomHelper;
 import net.bhl.cdt.paxelerate.util.string.StringHelper;
 
@@ -44,7 +40,6 @@ public class GeneratePassengersCommand extends CDTCommand {
 	private Cabin cabin;
 	private ArrayList<Integer> randomSeatId, randomPassengerId;
 	private CabinViewPart cabinViewPart;
-	private ILog logger;
 
 	private int totalPax, totalSeats, paxInClass, seatsInClass, seatAreaBegin,
 			passengerPerClassCount, firstpax = 0, businesspax = 0,
@@ -59,7 +54,6 @@ public class GeneratePassengersCommand extends CDTCommand {
 	 */
 	public GeneratePassengersCommand(Cabin cabin) {
 		this.cabin = cabin;
-		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
 	}
 
 	/**
@@ -135,8 +129,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 				return seat;
 			}
 		}
-		logger.log(new Status(IStatus.INFO, "net.bhl.cdt.paxelerate.model",
-				"No seat found!"));
+		Log.add(this, "No seat found!");
 
 		Seat emptySeat = null;
 
@@ -208,20 +201,18 @@ public class GeneratePassengersCommand extends CDTCommand {
 				}
 				randomSeatId.clear();
 
-				logger.log(new Status(IStatus.INFO, "net.bhl.cdt.paxelerate.model",
-						"successfully created "
+				Log.add(this, "successfully created "
 								+ (passengerPerClassCount)
 								+ " passengers in "
 								+ StringHelper
 										.splitCamelCase(travelSubClass
-												.getSimpleName())));
+												.getSimpleName()));
 			} else {
 
-				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.paxelerate.model",
-						"Too many passengers in "
+				Log.add(this, "Too many passengers in "
 								+ StringHelper
 										.splitCamelCase(travelSubClass
-												.getSimpleName())));
+												.getSimpleName()));
 			}
 		}
 	}
@@ -317,9 +308,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 			}
 
 		} else {
-			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.paxelerate.model",
-					"Too many passengers in the cabin! Remove "
-							+ (totalPax - totalSeats) + "!"));
+			Log.add(this, "Too many passengers in the cabin! Remove "
+							+ (totalPax - totalSeats) + "!");
 		}
 
 		for (Door door : cabin.getDoors()) {
@@ -330,8 +320,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 			cabinViewPart.setCabin(cabin);
 			cabinViewPart.syncViewer();
 		} catch (NullPointerException e) {
-			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.paxelerate.model",
-					"Cabin View or Info view not visible!"));
+			Log.add(this, "Cabin View or Info view not visible!");
 		}
 	}
 }

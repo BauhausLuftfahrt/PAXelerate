@@ -1,23 +1,20 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2014-2015 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) 2009-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
- ***************************************************************************************/
+ ******************************************************************************/
+
 package net.bhl.cdt.paxelerate.model.ui;
 
 import java.io.File;
 import java.util.ArrayList;
 
-import org.eclipse.core.runtime.ILog;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
-import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
@@ -45,16 +42,16 @@ import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.astar.ObstacleMap;
 import net.bhl.cdt.paxelerate.model.astar.Path;
 import net.bhl.cdt.paxelerate.ui.ColorHelper;
+import net.bhl.cdt.paxelerate.ui.FontHelper;
 import net.bhl.cdt.paxelerate.ui.SWTResourceManager;
+import net.bhl.cdt.paxelerate.util.Log;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
 /**
  * This class represents the cabin view. All graphics generation is done here.
  * 
- * @author marc.engelmann
- * @version 1.0
- *
+ * @author marc.engelmann, raoul.rothfeld
  */
 
 public class CabinViewPart extends ViewPart {
@@ -75,13 +72,9 @@ public class CabinViewPart extends ViewPart {
 	/*******************************************************************/
 
 	/************* Create Colors and Fonts here. ***********************/
-	private static int fontsize;
-	private static String fontName;
 	private ColorHelper color;
-	private static Font fontOne, fontTwo, fontThree;
+	private FontHelper font;
 	/********************************************************************/
-
-	private static ILog logger;
 
 	private Image economySeat, businessSeat, firstSeat, coffeeIcon,
 			lavatoryIcon;
@@ -94,10 +87,6 @@ public class CabinViewPart extends ViewPart {
 	private static File storageFolder = new File(FILE_PATH);
 	private double canvasHeight;
 
-	// IPreferenceStore preferenceStore = Activator.getDefault()
-	// .getPreferenceStore();
-	// String string = preferenceStore.getString("MySTRING1");
-
 	/**
 	 * 
 	 * This method initializes all necessary parameters and images.
@@ -109,14 +98,7 @@ public class CabinViewPart extends ViewPart {
 		this.parent = parent;
 		cabin = CabinFactory.eINSTANCE.createCabin();
 		color = new ColorHelper(parent.getDisplay());
-	
-		/********** Create Colors and Fonts here ************/
-		fontsize = 6;
-		fontName = "Helvetica Neue";
-		fontOne = SWTResourceManager.getFont(fontName, 8, SWT.NORMAL);
-		fontTwo = SWTResourceManager.getFont(fontName, fontsize, SWT.NORMAL);
-		fontThree = SWTResourceManager.getFont(fontName, 9, SWT.NORMAL);
-		/***************************************************/
+		font = new FontHelper(parent.getDisplay());
 	
 		factor = (double) cabin.getCabinWidth()
 				/ (double) CABIN_WIDTH_IN_PIXELS;
@@ -211,7 +193,7 @@ public class CabinViewPart extends ViewPart {
 		Image image = new Image(parent.getDisplay(), imageX, imageY);
 		Image newAircraft = tryAircraftSwitch();
 		GC gc = new GC(image);
-		gc.setFont(fontTwo);
+		gc.setFont(font.p);
 		gc.setAntialias(SWT.ON);
 		gc.setInterpolation(SWT.HIGH);
 		gc.drawImage(newAircraft, 0, 0);
@@ -333,8 +315,7 @@ public class CabinViewPart extends ViewPart {
 		try {
 			loader.save(FILE_PATH + "aircraft_rendered.png", SWT.IMAGE_PNG);
 		} catch (Exception e) {
-			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-					"The background image could not be saved! Directory problem."));
+			Log.add(this, "The background image could not be saved! Directory problem.");
 		}
 		return image;
 	}
@@ -362,8 +343,7 @@ public class CabinViewPart extends ViewPart {
 			return SWTResourceManager.getImage(InfoViewPart.class,
 					"continental.png");
 		default:
-			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-					"There is a problem with the aircraft type definition."));
+			Log.add(this, "There is a problem with the aircraft type definition.");
 			return null;
 		}
 	}
@@ -408,8 +388,7 @@ public class CabinViewPart extends ViewPart {
 			return resizeAC((int) (imageX * canvasHeight / imageY),
 					(int) (imageY * canvasHeight / imageY));
 		} catch (IndexOutOfBoundsException e) {
-			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-					"Error scaling aircraft image. No image found."));
+			Log.add(this, "Error scaling aircraft image. No image found.");
 			return null;
 		}
 	}
@@ -495,8 +474,7 @@ public class CabinViewPart extends ViewPart {
 							.get(0).getXDimension()
 							/ factor * PASSENGER_CIRCLE_SIZE));
 		} catch (IndexOutOfBoundsException e) {
-			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-					"Error scaling seat images. No galley found."));
+			Log.add(this, "Error scaling seat images. No galley found.");
 		}
 		try {
 			lavatoryIcon = resize(lavatoryIcon, (int) (ModelHelper
@@ -508,8 +486,7 @@ public class CabinViewPart extends ViewPart {
 							.getXDimension()
 							/ factor * PASSENGER_CIRCLE_SIZE));
 		} catch (IndexOutOfBoundsException e) {
-			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-					"Error scaling seat images. No lavatory found."));
+			Log.add(this, "Error scaling seat images. No lavatory found.");
 		}
 		cabinAdapter = new AdapterImpl() {
 			public void notifyChanged(Notification notification) {
@@ -606,8 +583,7 @@ public class CabinViewPart extends ViewPart {
 		try {
 			loader.save(FILE_PATH + "obstaclemap.png", SWT.IMAGE_PNG);
 		} catch (Exception e) {
-			logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
-					"The obstacle map could not be saved! Directory problem."));
+			Log.add(this, "The obstacle map could not be saved! Directory problem.");
 		}
 		disposeAll();
 		return image;
@@ -747,10 +723,10 @@ public class CabinViewPart extends ViewPart {
 				public void paintControl(final PaintEvent e) {
 
 					e.gc.setAlpha(255);
-					e.gc.setFont(fontOne);
+					e.gc.setFont(font.h3);
 					e.gc.setBackground(color.WHITE);
 
-					e.gc.setFont(fontTwo);
+					e.gc.setFont(font.p);
 					e.gc.setBackground(color.BLACK);
 
 					if (!initialBoot) {
@@ -760,7 +736,7 @@ public class CabinViewPart extends ViewPart {
 						e.gc.drawImage(
 								resizeAC(canvas.getBounds().width,
 										canvas.getBounds().height), 0, 0);
-						e.gc.setFont(fontThree);
+						e.gc.setFont(font.h2);
 						e.gc.setBackground(e.display
 								.getSystemColor(SWT.COLOR_RED));
 						e.gc.fillRectangle(38, 370, 300, 35);

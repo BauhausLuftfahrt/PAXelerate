@@ -7,8 +7,6 @@ package net.bhl.cdt.paxelerate.model.commands;
 
 import java.util.ArrayList;
 
-import org.eclipse.core.runtime.ILog;
-
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
@@ -23,6 +21,7 @@ import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
 import net.bhl.cdt.paxelerate.model.ui.PropertyViewPart;
 import net.bhl.cdt.paxelerate.model.util.ShouldSoonBeDeletedWhenSolved;
 import net.bhl.cdt.paxelerate.util.Func;
+import net.bhl.cdt.paxelerate.util.Log;
 
 /**
  * This class refreshed the cabin view without modifying anything. It checks the
@@ -35,7 +34,6 @@ import net.bhl.cdt.paxelerate.util.Func;
 public class DrawCabinCommand extends CDTCommand {
 
 	private Cabin cabin;
-	private ILog logger;
 	private CabinViewPart cabinViewPart;
 	private PropertyViewPart propertyViewPart;
 	private ArrayList<String> errorStrings = new ArrayList<String>();
@@ -48,7 +46,6 @@ public class DrawCabinCommand extends CDTCommand {
 	 */
 	public DrawCabinCommand(Cabin cabin) {
 		this.cabin = cabin;
-//		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
 	}
 
 	/**
@@ -93,22 +90,19 @@ public class DrawCabinCommand extends CDTCommand {
 		propertyViewPart = ShouldSoonBeDeletedWhenSolved.getPropertyView();
 
 		for (String str : errorStrings) {
-//			logger.log(new Status(IStatus.INFO, "com.paxelerate", str));
+			Log.add(this, str);
 		}
 		try {
 			propertyViewPart.updateUI(cabin);
 		} catch (NullPointerException e) {
-//			logger.log(new Status(IStatus.INFO, "com.paxelerate",
-//					"No property view is visible!"));
+			Log.add(this, "No property view is visible!");
 		}
 
 		try {
 			cabinViewPart.setCabin(cabin);
-//			logger.log(new Status(IStatus.INFO, "com.paxelerate",
-//					"Cabin view checked and updated"));
+			Log.add(this, "Cabin view checked and updated");
 		} catch (NullPointerException e) {
-//			logger.log(new Status(IStatus.INFO, "com.paxelerate",
-//					"No cabin view is visible!"));
+			Log.add(this, "No cabin view is visible!");
 		}
 	}
 

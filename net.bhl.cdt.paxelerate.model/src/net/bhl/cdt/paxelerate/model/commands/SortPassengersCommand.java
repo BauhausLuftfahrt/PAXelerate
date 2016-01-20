@@ -5,10 +5,6 @@
  ***************************************************************************************/
 package net.bhl.cdt.paxelerate.model.commands;
 
-import org.eclipse.core.runtime.ILog;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.ui.IWorkbenchPage;
@@ -20,6 +16,7 @@ import net.bhl.cdt.paxelerate.model.Door;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.agent.AgentFunctions;
 import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
+import net.bhl.cdt.paxelerate.util.Log;
 import net.bhl.cdt.paxelerate.util.input.Input;
 import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 import net.bhl.cdt.paxelerate.util.math.RandomHelper;
@@ -35,15 +32,12 @@ import net.bhl.cdt.paxelerate.util.math.RandomHelper;
 public class SortPassengersCommand extends CDTCommand {
 
 	private Cabin cabin;
-	private ILog logger;
 	private CabinViewPart cabinViewPart;
 	private boolean showDialog = true;
 	private int value = 0;
 
 	public SortPassengersCommand(Cabin cabin) {
-
 		this.cabin = cabin;
-		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
 	}
 
 	public void setPropertiesManually(boolean showDialog, int value) {
@@ -157,11 +151,9 @@ public class SortPassengersCommand extends CDTCommand {
 
 		try {
 			cabinViewPart.setCabin(cabin);
-			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.paxelerate.model",
-					"Cabin view checked and updated"));
+			Log.add(this, "Cabin view checked and updated");
 		} catch (NullPointerException e) {
-			logger.log(new Status(IStatus.INFO, "net.bhl.cdt.paxelerate.model",
-					"No cabin view is visible!"));
+			Log.add(this, "No cabin view is visible!");
 		}
 	}
 
