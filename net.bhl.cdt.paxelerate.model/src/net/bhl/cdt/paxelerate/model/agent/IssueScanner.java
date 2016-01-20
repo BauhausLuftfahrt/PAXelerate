@@ -7,8 +7,8 @@ package net.bhl.cdt.paxelerate.model.agent;
 
 import java.util.HashMap;
 
-import com.paxelerate.util.math.StopWatch;
-import com.paxelerate.util.math.Vector3D;
+import net.bhl.cdt.paxelerate.util.math.StopWatch;
+import net.bhl.cdt.paxelerate.util.math.Vector3D;
 
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.agent.Agent.State;

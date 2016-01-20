@@ -7,7 +7,7 @@ package net.bhl.cdt.paxelerate.model.astar;
 
 import java.util.ArrayList;
 
-import com.paxelerate.util.Func;
+import net.bhl.cdt.paxelerate.util.Func;
 
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;

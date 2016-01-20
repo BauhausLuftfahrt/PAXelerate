@@ -47,10 +47,10 @@ import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 
-import com.paxelerate.util.graphics.*;
-import com.paxelerate.util.math.Vector;
-import com.paxelerate.util.math.Vector2D;
-import com.paxelerate.util.math.Vector3D;
+import net.bhl.cdt.paxelerate.util.graphics.*;
+import net.bhl.cdt.paxelerate.util.math.Vector;
+import net.bhl.cdt.paxelerate.util.math.Vector2D;
+import net.bhl.cdt.paxelerate.util.math.Vector3D;
 
 /**
  * This class represents the cabin view. All graphics generation is done here.

@@ -16,10 +16,10 @@ import net.bhl.cdt.paxelerate.model.ui.HelpView;
 
 import org.eclipse.jface.dialogs.IMessageProvider;
 
-import com.paxelerate.util.input.Input;
-import com.paxelerate.util.input.Input.WindowType;
-import com.paxelerate.util.math.Vector;
-import com.paxelerate.util.math.Vector2D;
+import net.bhl.cdt.paxelerate.util.input.Input;
+import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
+import net.bhl.cdt.paxelerate.util.math.Vector;
+import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
 /**
  * This class refreshed the cabin view without modifying anything. It checks the

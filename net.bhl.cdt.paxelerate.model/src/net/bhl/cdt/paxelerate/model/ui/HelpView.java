@@ -7,8 +7,8 @@ package net.bhl.cdt.paxelerate.model.ui;
 
 import javax.swing.*;
 
-import com.paxelerate.util.math.Vector;
-import com.paxelerate.util.math.Vector2D;
+import net.bhl.cdt.paxelerate.util.math.Vector;
+import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
 import net.bhl.cdt.paxelerate.model.astar.AreaMap;
 import net.bhl.cdt.paxelerate.model.astar.CostMap;

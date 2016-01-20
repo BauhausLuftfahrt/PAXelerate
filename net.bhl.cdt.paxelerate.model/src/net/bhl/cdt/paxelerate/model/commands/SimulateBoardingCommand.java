@@ -29,11 +29,11 @@ import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Shell;
 
-import com.paxelerate.util.Func;
-import com.paxelerate.util.OS;
-import com.paxelerate.util.input.Input;
-import com.paxelerate.util.input.Input.WindowType;
-import com.paxelerate.util.math.Vector2D;
+import net.bhl.cdt.paxelerate.util.Func;
+import net.bhl.cdt.paxelerate.util.OS;
+import net.bhl.cdt.paxelerate.util.input.Input;
+import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
+import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
 /**
  * This command starts the boarding simulation.
@@ -57,7 +57,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 	 */
 	public SimulateBoardingCommand(Shell shell, Cabin cabin) {
 		this.cabin = cabin;
-//		logger = Platform.getLog(Platform.getBundle("com.paxelerate.model"));
+//		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
 	}
 
 	/**

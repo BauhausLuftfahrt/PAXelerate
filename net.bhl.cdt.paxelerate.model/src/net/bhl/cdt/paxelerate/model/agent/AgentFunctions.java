@@ -5,9 +5,9 @@
  ***************************************************************************************/
 package net.bhl.cdt.paxelerate.model.agent;
 
-import com.paxelerate.util.Func;
-import com.paxelerate.util.math.Vector;
-import com.paxelerate.util.math.Vector2D;
+import net.bhl.cdt.paxelerate.util.Func;
+import net.bhl.cdt.paxelerate.util.math.Vector;
+import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
 import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;

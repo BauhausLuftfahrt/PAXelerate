@@ -3,8 +3,8 @@ package net.bhl.cdt.paxelerate.model.util;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import com.paxelerate.util.math.Vector;
-import com.paxelerate.util.math.Vector2D;
+import net.bhl.cdt.paxelerate.util.math.Vector;
+import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
 /**
  * This class is used to rotate an array or part of an array.

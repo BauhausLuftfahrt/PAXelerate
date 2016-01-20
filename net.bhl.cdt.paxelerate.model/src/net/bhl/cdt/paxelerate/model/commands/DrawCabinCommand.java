@@ -26,7 +26,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 
-import com.paxelerate.util.Func;
+import net.bhl.cdt.paxelerate.util.Func;
 
 /**
  * This class refreshed the cabin view without modifying anything. It checks the
@@ -52,7 +52,7 @@ public class DrawCabinCommand extends CDTCommand {
 	 */
 	public DrawCabinCommand(Cabin cabin) {
 		this.cabin = cabin;
-//		logger = Platform.getLog(Platform.getBundle("com.paxelerate.model"));
+//		logger = Platform.getLog(Platform.getBundle("net.bhl.cdt.paxelerate.model"));
 	}
 
 	/**

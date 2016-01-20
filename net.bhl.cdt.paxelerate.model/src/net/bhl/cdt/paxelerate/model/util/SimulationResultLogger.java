@@ -6,9 +6,9 @@ import java.util.Date;
 
 import org.eclipse.emf.common.util.EList;
 
-import com.paxelerate.util.Func;
-import com.paxelerate.util.math.Vector2D;
-import com.paxelerate.util.time.TimeHelper;
+import net.bhl.cdt.paxelerate.util.Func;
+import net.bhl.cdt.paxelerate.util.math.Vector2D;
+import net.bhl.cdt.paxelerate.util.time.TimeHelper;
 
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
@@ -48,7 +48,7 @@ public class SimulationResultLogger {
 				.getResults().size() + 1);
 		result.setName(dateFormat.format(date));
 		result.setDate(date);
-		result.setBoardingTimeString(TimeHelper.transformToTimeString(time));
+		result.setBoardingTimeString(TimeHelper.toTimeOfDay(time));
 		SimulationHandler.getCabin().getSimulationSettings().getResults()
 				.add(result);
 	}
@@ -121,12 +121,12 @@ public class SimulationResultLogger {
 							+ " passengers simulated in run #"
 							+ result.getId()
 							+ " within "
-							+ TimeHelper.transformToTimeString(result
+							+ TimeHelper.toTimeOfDay(result
 									.getBoardingTime()) + ".");
 			System.out.println();
 		}
 		System.out.println("Average boarding time: "
-				+ TimeHelper.transformToTimeString(getAverageBoardingTime())
+				+ TimeHelper.toTimeOfDay(getAverageBoardingTime())
 				+ " seconds.");
 		System.out.println();
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");

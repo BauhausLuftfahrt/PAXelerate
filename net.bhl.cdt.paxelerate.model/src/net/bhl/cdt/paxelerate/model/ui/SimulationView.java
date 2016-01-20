@@ -7,9 +7,9 @@ package net.bhl.cdt.paxelerate.model.ui;
 
 import javax.swing.*;
 
-import com.paxelerate.util.Func;
-import com.paxelerate.util.math.StopWatch;
-import com.paxelerate.util.time.TimeHelper;
+import net.bhl.cdt.paxelerate.util.Func;
+import net.bhl.cdt.paxelerate.util.math.StopWatch;
+import net.bhl.cdt.paxelerate.util.time.TimeHelper;
 
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
@@ -255,7 +255,7 @@ public class SimulationView extends JPanel implements MouseListener {
 						.getSimulationSpeedFactor();
 
 		g.drawString("Sim. Time: "
-				+ TimeHelper.transformToTimeString(tens)
+				+ TimeHelper.toTimeOfDay(tens)
 				+ " >> "
 				+ SimulationHandler.getCabin().getSimulationSettings()
 						.getSimulationSpeedFactor() + "x", 10, 40);

@@ -37,7 +37,7 @@ public class CabinValidator extends EObjectValidator {
 	 * @see org.eclipse.emf.common.util.Diagnostic#getCode()
 	 * @generated
 	 */
-	public static final String DIAGNOSTIC_SOURCE = "com.paxelerate.model";
+	public static final String DIAGNOSTIC_SOURCE = "net.bhl.cdt.paxelerate.model";
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Too Many Passengers' of 'Travel Class'.

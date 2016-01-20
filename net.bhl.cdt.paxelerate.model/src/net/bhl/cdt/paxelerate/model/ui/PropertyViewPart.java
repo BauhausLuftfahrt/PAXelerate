@@ -18,10 +18,10 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.ui.part.ViewPart;
 
-import com.paxelerate.util.Func;
-import com.paxelerate.util.graphics.ColorHelper;
-import com.paxelerate.util.math.Vector;
-import com.paxelerate.util.math.Vector2D;
+import net.bhl.cdt.paxelerate.util.Func;
+import net.bhl.cdt.paxelerate.util.graphics.ColorHelper;
+import net.bhl.cdt.paxelerate.util.math.Vector;
+import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;

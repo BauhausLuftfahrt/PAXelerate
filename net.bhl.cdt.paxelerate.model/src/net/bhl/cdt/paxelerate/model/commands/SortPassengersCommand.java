@@ -21,10 +21,10 @@ import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 
-import com.paxelerate.util.Func;
-import com.paxelerate.util.input.Input;
-import com.paxelerate.util.input.Input.WindowType;
-import com.paxelerate.util.math.RandomHelper;
+import net.bhl.cdt.paxelerate.util.Func;
+import net.bhl.cdt.paxelerate.util.input.Input;
+import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
+import net.bhl.cdt.paxelerate.util.math.RandomHelper;
 
 /**
  * This class refreshed the cabin view without modifying anything. It checks the

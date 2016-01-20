@@ -28,9 +28,9 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 
-import com.paxelerate.util.Func;
-import com.paxelerate.util.math.RandomHelper;
-import com.paxelerate.util.strings.StringOperations;
+import net.bhl.cdt.paxelerate.util.Func;
+import net.bhl.cdt.paxelerate.util.math.RandomHelper;
+import net.bhl.cdt.paxelerate.util.string.StringHelper;
 
 /**
  * 
@@ -214,14 +214,14 @@ public class GeneratePassengersCommand extends CDTCommand {
 						"successfully created "
 								+ (passengerPerClassCount)
 								+ " passengers in "
-								+ StringOperations
+								+ StringHelper
 										.splitCamelCase(travelSubClass
 												.getSimpleName())));
 			} else {
 
 				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.paxelerate.model",
 						"Too many passengers in "
-								+ StringOperations
+								+ StringHelper
 										.splitCamelCase(travelSubClass
 												.getSimpleName())));
 			}

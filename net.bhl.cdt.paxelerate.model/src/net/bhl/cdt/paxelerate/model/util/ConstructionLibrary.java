@@ -14,11 +14,11 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 
-import com.paxelerate.util.Func;
-import com.paxelerate.util.input.InputChecker;
-import com.paxelerate.util.math.Vector;
-import com.paxelerate.util.math.Vector2D;
-import com.paxelerate.util.strings.StringOperations;
+import net.bhl.cdt.paxelerate.util.Func;
+import net.bhl.cdt.paxelerate.util.input.InputChecker;
+import net.bhl.cdt.paxelerate.util.math.Vector;
+import net.bhl.cdt.paxelerate.util.math.Vector2D;
+import net.bhl.cdt.paxelerate.util.string.StringHelper;
 
 import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.BusinessClass;
@@ -385,7 +385,7 @@ public class ConstructionLibrary {
 			if ((seats % seatsInRow) != 0) {
 				logger.log(new Status(IStatus.ERROR, "net.bhl.cdt.model.cabin",
 						"Check your number of seats in "
-								+ StringOperations
+								+ StringHelper
 										.splitCamelCase(travelSubClass
 												.getSimpleName())
 								+ ". Could not fill all rows."));
@@ -430,7 +430,7 @@ public class ConstructionLibrary {
 				createCurtain(
 						true,
 						"after "
-								+ StringOperations
+								+ StringHelper
 										.splitCamelCase(travelSubClass
 												.getSimpleName()));
 			}

@@ -28,7 +28,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 
-import com.paxelerate.util.Func;
+import net.bhl.cdt.paxelerate.util.Func;
 
 /**
  * 

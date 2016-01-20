@@ -1,9 +1,9 @@
 package net.bhl.cdt.paxelerate.model.util;
 
-import com.paxelerate.util.Func;
-import com.paxelerate.util.math.GaussOptions;
-import com.paxelerate.util.math.GaussianRandom;
-import com.paxelerate.util.math.RandomHelper;
+import net.bhl.cdt.paxelerate.util.Func;
+import net.bhl.cdt.paxelerate.util.math.GaussOptions;
+import net.bhl.cdt.paxelerate.util.math.GaussianRandom;
+import net.bhl.cdt.paxelerate.util.math.RandomHelper;
 
 import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
