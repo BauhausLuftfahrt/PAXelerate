@@ -826,6 +826,8 @@ public class CabinViewPart extends ViewPart {
 	 */
 	public void clearCache() {
 		System.out.println("clearing cache now");
+		System.err.println("METHOD IS NOT DOING ANYTHING");
+		// TODO resolve
 		// SWTResourceManager.dispose();
 	}
 }

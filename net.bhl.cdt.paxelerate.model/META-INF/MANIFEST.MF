@@ -3,22 +3,21 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Paxelerate
 Bundle-SymbolicName: net.bhl.cdt.paxelerate.model;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-ClassPath: .,
- lib/matlabcontrol-4.1.0.jar
+Bundle-ClassPath: .
 Bundle-Vendor: Paxelerate
 Bundle-Localization: plugin
 Bundle-Activator: net.bhl.cdt.paxelerate.model.Activator
-Require-Bundle: org.eclipse.core.runtime,
+Require-Bundle: javax.inject,
+ org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
- net.bhl.cdt.ui;bundle-version="0.1.0",
- javax.inject,
  org.eclipse.emf.ecp.explorereditorbridge,
  org.eclipse.emf.ecp.editor.e3,
  org.eclipse.ui.intro,
+ net.bhl.cdt.ui;bundle-version="0.1.0",
  net.bhl.cdt.model;visibility:=reexport,
  net.bhl.cdt.paxelerate.util;bundle-version="1.0.0",
  net.bhl.cdt.paxelerate.ui;bundle-version="1.0.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: net.bhl.cdt.paxelerate.model,
  net.bhl.cdt.paxelerate.model.impl,
  net.bhl.cdt.paxelerate.model.ui,
