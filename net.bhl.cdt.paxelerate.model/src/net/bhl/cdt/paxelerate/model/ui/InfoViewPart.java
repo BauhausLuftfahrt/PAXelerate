@@ -10,7 +10,6 @@ import java.util.List;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
-import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
@@ -26,6 +25,7 @@ import net.bhl.cdt.paxelerate.model.PremiumEconomyClass;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.commands.SimulateBoardingCommand;
+import net.bhl.cdt.paxelerate.ui.FontHelper;
 
 /**
  * 
@@ -38,11 +38,6 @@ public class InfoViewPart extends ViewPart {
 	private Cabin cabin;
 	private Composite parent;
 
-	/************* Create Colors and Fonts here. ***********************/
-	private static int fontsize;
-	private static String fontName;
-	/********************************************************************/
-
 	private Canvas canvas;
 
 	/**
@@ -54,8 +49,6 @@ public class InfoViewPart extends ViewPart {
 	public void createPartControl(Composite parent) {
 		this.parent = parent;
 		cabin = CabinFactory.eINSTANCE.createCabin();
-		fontsize = 8;
-		fontName = "Helvetica Neue";
 		canvas = new Canvas(parent, SWT.RESIZE);
 		drawIt();
 	}
@@ -117,8 +110,7 @@ public class InfoViewPart extends ViewPart {
 			public void paintControl(final PaintEvent e) {
 				e.gc.setAntialias(SWT.ON);
 				e.gc.setInterpolation(SWT.HIGH);
-				e.gc.setFont(new Font(parent.getDisplay(), fontName, fontsize,
-						SWT.NONE));
+				e.gc.setFont(FontHelper.HEADING3);
 				
 				e.gc.fillRectangle(0, 0, canvas.getBounds().width, canvas.getBounds().height);
 				e.gc.drawText("total seats: " + "\ntotal rows: "
@@ -144,9 +136,6 @@ public class InfoViewPart extends ViewPart {
 				} else {
 					e.gc.drawText("0\n0\n0\n0", boxTwoX - 20, margin);
 				}
-				// e.gc.setForeground(new Color(parent.getDisplay(), 220, 20,
-				// 60));
-				// e.gc.drawText("Existing Cabin Layout Errors:", x, y);
 			}
 
 		});

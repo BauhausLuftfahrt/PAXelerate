@@ -9,6 +9,7 @@ package net.bhl.cdt.paxelerate.ui;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Device;
 import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.widgets.Display;
 
 /**
  * Unified font system for Paxelerate
@@ -20,30 +21,29 @@ public class FontHelper {
 	/**
 	 * The font displaying device/component
 	 */
-	private Device d;
+	private static final Device d = Display.getCurrent();
 	
-	private static final String FONT_NAME = "Helvetica Neue";
+	/**
+	 * Font Name
+	 */
+	private static final String fontName = "Helvetica Neue";
 
 	/**
 	 * All Paxelerate font styles
 	 */
-	public final Font
+	public static final Font
 			// Heading styles
-			h1 = new Font(d, FONT_NAME, 9, SWT.BOLD),
-			h2 = new Font(d, FONT_NAME, 9, SWT.NORMAL),
-			h3 = new Font(d, FONT_NAME, 8, SWT.NORMAL),
+			HEADING1 = new Font(d, fontName, 9, SWT.BOLD),
+			HEADING2 = new Font(d, fontName, 9, SWT.NORMAL),
+			HEADING3 = new Font(d, fontName, 8, SWT.NORMAL),
 			
 			// Paragraph styles
-			p = new Font(d, FONT_NAME, 6, SWT.NORMAL);
+			PARAGRAPH = new Font(d, fontName, 6, SWT.NORMAL);
 
 	/**
-	 * Constructor for a FontHelper instance
-	 * 
-	 * @param display
-	 *            the font displaying device/component
+	 * Singleton constructor for a FontHelper instance
 	 */
-	public FontHelper(Device display) {
-		this.d = display;
+	private FontHelper() {
 	}
 	
 }

@@ -5,6 +5,9 @@
  ***************************************************************************************/
 package net.bhl.cdt.paxelerate.ui;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 import org.eclipse.jface.dialogs.ProgressIndicator;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -12,8 +15,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
-
-import net.bhl.cdt.paxelerate.util.Func;
 
 public class ProgressHandler {
 
@@ -64,7 +65,12 @@ public class ProgressHandler {
 		label.setText("The boarding paths for the passengers are being calculated ...");
 
 		shell.open();
-		Func.centreWindow(shell);
+	
+		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+		int x = (int) ((dimension.getWidth() - shell.getSize().x) / 2);
+		int y = (int) ((dimension.getHeight() - shell.getSize().y) / 2);
+		shell.setLocation(x, y);
+		
 		indicator.beginTask(max);
 		indicator.showNormal();
 	}

@@ -9,17 +9,14 @@ package net.bhl.cdt.paxelerate.model.ui;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
-import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 
-import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.astar.AreaMap;
 import net.bhl.cdt.paxelerate.model.astar.Node;
-import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.ui.ColorHelper;
+import net.bhl.cdt.paxelerate.ui.FontHelper;
 
 /**
  * This class represents the cabin view. All graphics generation is done here.
@@ -32,8 +29,6 @@ public class SimulationViewPart extends ViewPart {
 
 	private Composite parent;
 	private Canvas canvas;
-
-	private ColorHelper color;
 
 	private AreaMap areamap;
 
@@ -50,7 +45,6 @@ public class SimulationViewPart extends ViewPart {
 		this.parent = parent;
 		areamap = null;
 		canvas = new Canvas(parent, SWT.RESIZE);
-		color = new ColorHelper(parent.getDisplay());
 	}
 
 	/**
@@ -65,25 +59,20 @@ public class SimulationViewPart extends ViewPart {
 			canvas.addPaintListener(new PaintListener() {
 				public void paintControl(final PaintEvent e) {
 
-					e.gc.setFont(new Font(parent.getDisplay(), "Arial", 8,
-							SWT.NONE));
+					e.gc.setFont(FontHelper.HEADING3);
 
 					for (int x = 0; x < areamap.getDimensions().getY(); x++) {
 						for (int y = 0; y < areamap.getDimensions()
 								.getX(); y++) {
 
 							Node node = areamap.getNodeByCoordinate(y, x);
-							e.gc.setForeground(color.BLACK);
+							e.gc.setForeground(ColorHelper.BLACK);
 							if (node.getTypeForPrinting() != null) {
 								try {
 									if (node.getTypeForPrinting().equals("O")
 											|| node.getTypeForPrinting()
 													.equals(" ")) {
-										e.gc.setForeground(
-												switchColor(SimulationHandler
-														.getAgentByPassenger(
-																node.getPassenger())
-														.getCurrentState()));
+										e.gc.setForeground(ColorHelper.BLACK);
 
 										if (!node.isHidden()) {
 											e.gc.drawString("O",
@@ -91,7 +80,7 @@ public class SimulationViewPart extends ViewPart {
 													y * FONT_SIZE);
 										}
 									} else {
-										e.gc.setForeground(color.BLACK);
+										e.gc.setForeground(ColorHelper.BLACK);
 										if (node.getTypeForPrinting() != null) {
 											e.gc.drawString(
 													node.getTypeForPrinting(),
@@ -100,7 +89,7 @@ public class SimulationViewPart extends ViewPart {
 										}
 									}
 								} catch (NullPointerException a) {
-									// Should not happen!
+									// Should not happen! TODO
 								}
 							}
 						}
@@ -114,25 +103,25 @@ public class SimulationViewPart extends ViewPart {
 		}
 	}
 
-	public Color switchColor(Agent.State state) {
-		// switch (state) {
-		// case FOLLOWING_PATH:
-		// return getColor("#000000");
-		// case QUEUEING_UP:
-		// return getColor("#000000");
-		// case CLEARING_ROW:
-		// return getColor("#000000");
-		// case WAITING_FOR_ROW_CLEARING:
-		// return getColor("#000000");
-		// case RETURNING_TO_SEAT:
-		// return getColor("#000000");
-		// case STOWING_LUGGAGE:
-		// return getColor("#000000");
-		// default:
-		// return getColor("#000000");
-		// }
-		return color.BLACK;
-	}
+//	public Color switchColor(Agent.State state) {
+//		// switch (state) {
+//		// case FOLLOWING_PATH:
+//		// return getColor("#000000");
+//		// case QUEUEING_UP:
+//		// return getColor("#000000");
+//		// case CLEARING_ROW:
+//		// return getColor("#000000");
+//		// case WAITING_FOR_ROW_CLEARING:
+//		// return getColor("#000000");
+//		// case RETURNING_TO_SEAT:
+//		// return getColor("#000000");
+//		// case STOWING_LUGGAGE:
+//		// return getColor("#000000");
+//		// default:
+//		// return getColor("#000000");
+//		// }
+//		return ColorHelper.black;
+//	}
 
 	public void updateUI(AreaMap areamap) {
 		this.areamap = areamap;

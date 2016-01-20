@@ -10,7 +10,6 @@ import java.text.DecimalFormat;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
-import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
@@ -27,6 +26,7 @@ import net.bhl.cdt.paxelerate.model.storage.GaussianStorage;
 import net.bhl.cdt.paxelerate.model.storage.StorageHandler;
 import net.bhl.cdt.paxelerate.model.storage.StorageHandler.StoreType;
 import net.bhl.cdt.paxelerate.ui.ColorHelper;
+import net.bhl.cdt.paxelerate.ui.FontHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
@@ -45,7 +45,6 @@ public class PropertyViewPart extends ViewPart {
 	private Canvas canvas;
 	private Cabin cabin;
 
-	private ColorHelper color;
 	private StorageHandler propertyStore = new StorageHandler();
 
 	private final static int BAR_HEIGHT = 15, DEVIATION_BAR_HEIGHT = 2,
@@ -68,7 +67,6 @@ public class PropertyViewPart extends ViewPart {
 		this.parent = parent;
 		cabin = CabinFactory.eINSTANCE.createCabin();
 		canvas = new Canvas(parent, SWT.RESIZE);
-		color = new ColorHelper(parent.getDisplay());
 
 		parent.addListener(SWT.Resize, new Listener() {
 			public void handleEvent(Event e) {
@@ -96,10 +94,9 @@ public class PropertyViewPart extends ViewPart {
 					e.gc.setAntialias(SWT.ON);
 					e.gc.setInterpolation(SWT.HIGH);
 
-					e.gc.setFont(new Font(parent.getDisplay(), "Arial", 8,
-							SWT.NONE));
+					e.gc.setFont(FontHelper.HEADING3);
 
-					e.gc.setForeground(color.LIGHT_GREY);
+					e.gc.setForeground(ColorHelper.GREY_LIGHT);
 					e.gc.setLineWidth(1);
 					e.gc.drawLine((int) (dimensions.getX() / 4), 0,
 							(int) (dimensions.getX() / 4),
@@ -111,13 +108,13 @@ public class PropertyViewPart extends ViewPart {
 							(int) (dimensions.getX() / 4 * 3),
 							(int) (dimensions.getY()));
 
-					e.gc.setForeground(color.BLACK);
+					e.gc.setForeground(ColorHelper.BLACK);
 
 					/* ********************************************* */
 					pos += 5;
 					addHeadline(e, "Sex Ratio");
 
-					e.gc.setBackground(color.MALE_PASSENGER);
+					e.gc.setBackground(ColorHelper.PASSENGER_MALE);
 
 					e.gc.fillRectangle(0, pos,
 							(int) (dimensions.getX() * propertyStore
@@ -125,7 +122,7 @@ public class PropertyViewPart extends ViewPart {
 							BAR_HEIGHT);
 					e.gc.drawText(names[0], 5, pos, true);
 
-					e.gc.setBackground(color.FEMALE_PASSENGER);
+					e.gc.setBackground(ColorHelper.PASSEMGER_FEMALE);
 					e.gc.fillRectangle((int) (dimensions.getX() * propertyStore
 							.getPercentageOfPassengers(Sex.MALE)), pos,
 							(int) (dimensions.getX() * propertyStore
@@ -159,21 +156,21 @@ public class PropertyViewPart extends ViewPart {
 					double bigLug = propertyStore.getLuggageStore()
 							.getLuggagePercentage(LuggageSize.BIG);
 
-					e.gc.setBackground(color.NO_LUGGAGE);
+					e.gc.setBackground(ColorHelper.LUGGAGE_NONE);
 					e.gc.fillRectangle(0, pos,
 							(int) (dimensions.getX() * noLug), BAR_HEIGHT);
 
-					e.gc.setBackground(color.SMALL_LUGGAGE);
+					e.gc.setBackground(ColorHelper.LUGGAGE_SMALL);
 					e.gc.fillRectangle((int) (dimensions.getX() * noLug), pos,
 							(int) (dimensions.getX() * smallLug), BAR_HEIGHT);
 
-					e.gc.setBackground(color.MEDIUM_LUGGAGE);
+					e.gc.setBackground(ColorHelper.LUGGAGE_MEDIUM);
 					e.gc.fillRectangle(
 							(int) (dimensions.getX() * noLug + dimensions
 									.getX() * smallLug), pos,
 							(int) (dimensions.getX() * medLug), BAR_HEIGHT);
 
-					e.gc.setBackground(color.LARGE_LUGGAGE);
+					e.gc.setBackground(ColorHelper.LUGGAGE_LARGE);
 					e.gc.fillRectangle((int) (dimensions.getX() * noLug
 							+ dimensions.getX() * medLug + dimensions.getX()
 							* smallLug), pos,
@@ -261,11 +258,11 @@ public class PropertyViewPart extends ViewPart {
 		int maxHeight = maximum * 4; // TODO remove magic numbers
 
 		if (sex == Sex.MALE) {
-			e.gc.setForeground(color.MALE_PASSENGER);
+			e.gc.setForeground(ColorHelper.PASSENGER_MALE);
 		} else if (sex == Sex.FEMALE) {
-			e.gc.setForeground(color.FEMALE_PASSENGER);
+			e.gc.setForeground(ColorHelper.PASSEMGER_FEMALE);
 		} else {
-			e.gc.setForeground(color.ERROR);
+			e.gc.setForeground(ColorHelper.ERROR);
 		}
 
 		for (int k = min; k < max; k++) {
@@ -278,7 +275,7 @@ public class PropertyViewPart extends ViewPart {
 			i++;
 		}
 
-		e.gc.setForeground(color.BLACK);
+		e.gc.setForeground(ColorHelper.BLACK);
 	}
 
 	private void createDeviationBlock(String headline, PaintEvent e,
@@ -286,7 +283,7 @@ public class PropertyViewPart extends ViewPart {
 
 		addHeadline(e, headline);
 
-		e.gc.setBackground(color.MALE_PASSENGER);
+		e.gc.setBackground(ColorHelper.PASSENGER_MALE);
 		e.gc.fillRectangle(0, pos, (int) (dimensions.getX() * AVG_VALUE),
 				BAR_HEIGHT);
 		e.gc.drawText(names[0], 5, pos, true);
@@ -310,7 +307,7 @@ public class PropertyViewPart extends ViewPart {
 				+ maximumFactorMale, store.getMaximum(Sex.MALE),
 				store.getMinimum(Sex.MALE));
 
-		e.gc.setBackground(color.FEMALE_PASSENGER);
+		e.gc.setBackground(ColorHelper.PASSEMGER_FEMALE);
 		e.gc.fillRectangle((int) (dimensions.getX() * (1 - AVG_VALUE)), pos,
 				(int) (dimensions.getX()), BAR_HEIGHT);
 		e.gc.drawText(names[1],
@@ -325,7 +322,7 @@ public class PropertyViewPart extends ViewPart {
 	private void addLabel(PaintEvent e, double labelValue,
 			double relativePosition, LabelClass labelClass, int offset) {
 
-		e.gc.setFont(new Font(parent.getDisplay(), "Arial", 6, SWT.NONE));
+		e.gc.setFont(FontHelper.PARAGRAPH);
 
 		String labelString;
 
@@ -341,13 +338,13 @@ public class PropertyViewPart extends ViewPart {
 		e.gc.drawText(labelString, (int) (dimensions.getX() * relativePosition)
 				- e.gc.stringExtent(labelString).x / 2, pos + 15 + offset, true);
 
-		e.gc.setFont(new Font(parent.getDisplay(), "Arial", 8, SWT.NONE));
+		e.gc.setFont(FontHelper.HEADING3);
 	}
 
 	private void createDeviationLine(PaintEvent e, double leftFactor,
 			double rightFactor, double rightLabel, double leftLabel) {
 
-		e.gc.setForeground(color.DARK_GREY);
+		e.gc.setForeground(ColorHelper.GREY_DARK);
 		e.gc.setLineWidth(2);
 
 		e.gc.drawLine((int) (dimensions.getX() * leftFactor), pos
@@ -367,7 +364,7 @@ public class PropertyViewPart extends ViewPart {
 
 		addLabel(e, rightLabel, rightFactor, LabelClass.VALUE, 0);
 
-		e.gc.setForeground(color.BLACK);
+		e.gc.setForeground(ColorHelper.BLACK);
 	}
 
 	public void updateUI(Cabin cabin) {

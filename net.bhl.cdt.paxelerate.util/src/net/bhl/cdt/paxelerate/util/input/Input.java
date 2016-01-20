@@ -182,6 +182,7 @@ public class Input extends TitleAreaDialog {
 		warningLabel = new Label(container, SWT.NONE);
 		warningLabel.setText("You entered a character that is not allowed here.");
 		warningLabel.setVisible(false);
+		// TODO util should not set UI
 		warningLabel.setForeground(new org.eclipse.swt.graphics.Color(null, 255, 0, 0));
 	}
 

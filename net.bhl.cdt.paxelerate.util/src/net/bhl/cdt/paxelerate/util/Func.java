@@ -53,13 +53,6 @@ public abstract class Func {
 		return false;
 	}
 
-	public static void centreWindow(Shell frame) {
-		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-		int x = (int) ((dimension.getWidth() - frame.getSize().x) / 2);
-		int y = (int) ((dimension.getHeight() - frame.getSize().y) / 2);
-		frame.setLocation(x, y);
-	}
-
 	public static int GetScreenWorkingWidth() {
 		return java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
 	}

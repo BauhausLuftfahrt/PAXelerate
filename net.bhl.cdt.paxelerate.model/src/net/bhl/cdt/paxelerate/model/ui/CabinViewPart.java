@@ -71,11 +71,6 @@ public class CabinViewPart extends ViewPart {
 
 	/*******************************************************************/
 
-	/************* Create Colors and Fonts here. ***********************/
-	private ColorHelper color;
-	private FontHelper font;
-	/********************************************************************/
-
 	private Image economySeat, businessSeat, firstSeat, coffeeIcon,
 			lavatoryIcon;
 	private Canvas canvas;
@@ -97,8 +92,6 @@ public class CabinViewPart extends ViewPart {
 	public void createPartControl(Composite parent) {
 		this.parent = parent;
 		cabin = CabinFactory.eINSTANCE.createCabin();
-		color = new ColorHelper(parent.getDisplay());
-		font = new FontHelper(parent.getDisplay());
 	
 		factor = (double) cabin.getCabinWidth()
 				/ (double) CABIN_WIDTH_IN_PIXELS;
@@ -193,11 +186,11 @@ public class CabinViewPart extends ViewPart {
 		Image image = new Image(parent.getDisplay(), imageX, imageY);
 		Image newAircraft = tryAircraftSwitch();
 		GC gc = new GC(image);
-		gc.setFont(font.p);
+		gc.setFont(FontHelper.PARAGRAPH);
 		gc.setAntialias(SWT.ON);
 		gc.setInterpolation(SWT.HIGH);
 		gc.drawImage(newAircraft, 0, 0);
-		gc.setBackground(color.AIRCRAFT_FLOOR);
+		gc.setBackground(ColorHelper.AIRCRAFT_FLOOR);
 		gc.fillRectangle(xZero, yZero, adapt(cabin.getCabinWidth()),
 				adapt(cabin.getCabinLength()));
 		gc.drawLine(xZero, yZero + (int) (cabin.getCabinLength() / factor),
@@ -227,7 +220,7 @@ public class CabinViewPart extends ViewPart {
 
 		for (Door door : ModelHelper.getChildrenByClass(cabin, Door.class)) {
 
-			gc.setBackground(color.DARK_GREY);
+			gc.setBackground(ColorHelper.GREY_DARK);
 			if (door.isOnBothSides()) {
 				gc.fillRectangle(
 						(int) (xZero + OFFSET_OF_DOOR - DOOR_DEPTH + (cabin
@@ -242,19 +235,19 @@ public class CabinViewPart extends ViewPart {
 
 		for (Lavatory lavatory : ModelHelper.getChildrenByClass(cabin,
 				Lavatory.class)) {
-			gc.setBackground(color.AIRCRAFT_LAVATORY);
+			gc.setBackground(ColorHelper.AIRCRAFT_LAVATORY);
 			drawObject(gc, lavatory);
 		}
 
 		for (Galley galley : ModelHelper.getChildrenByClass(cabin,
 				Galley.class)) {
-			gc.setBackground(color.GREEN);
+			gc.setBackground(ColorHelper.GREEN);
 			drawObject(gc, galley);
 		}
 
 		for (Curtain curtain : ModelHelper.getChildrenByClass(cabin,
 				Curtain.class)) {
-			gc.setBackground(color.BLACK);
+			gc.setBackground(ColorHelper.BLACK);
 			gc.fillRectangle((int) (xZero + curtain.getYPosition() / factor),
 					(int) (yZero + curtain.getXPosition() / factor),
 					(int) (curtain.getYDimension() / factor),
@@ -267,14 +260,14 @@ public class CabinViewPart extends ViewPart {
 				if (MATCH_PASSENGER_COLORS_TO_MOOD) {
 					switch (passenger.getPassengerMood()) {
 					case AGRESSIVE:
-						gc.setBackground(color.RED);
+						gc.setBackground(ColorHelper.RED);
 						break;
 					case PASSIVE:
-						gc.setBackground(color.GREEN);
+						gc.setBackground(ColorHelper.GREEN);
 						break;
 					}
 				} else {
-					gc.setBackground(color.getRandomColor());
+					gc.setBackground(ColorHelper.getRandomColor());
 				}
 
 				if (passengerSeat.getXDimension() < passengerSeat
@@ -548,27 +541,27 @@ public class CabinViewPart extends ViewPart {
 					/*
 					 * set the hole color in the aisles to green
 					 */
-					gc.setBackground(color.GREEN);
+					gc.setBackground(ColorHelper.GREEN);
 				} else if (obstacleMap[i][j] <= ObstacleMap.getBasicValue()) {
 					/*
 					 * set the color of the basic value to a lighter green
 					 */
-					gc.setBackground(color.LIGHT_GREEN);
+					gc.setBackground(ColorHelper.GREEN_LIGHT);
 				} else if (obstacleMap[i][j] < ObstacleMap.getPotentialValue()) {
 					/*
 					 * set the color of the potential gradient to yellow
 					 */
-					gc.setBackground(color.YELLOW);
+					gc.setBackground(ColorHelper.YELLOW);
 				} else if (obstacleMap[i][j] == ObstacleMap.getPotentialValue()) {
 					/*
 					 * set the color of the potential maximum to orange
 					 */
-					gc.setBackground(color.ORANGE);
+					gc.setBackground(ColorHelper.ORANGE);
 				} else {
 					/*
 					 * set the color of obstacles to red
 					 */
-					gc.setBackground(color.RED);
+					gc.setBackground(ColorHelper.RED);
 				}
 				gc.fillOval(xZero + (int) (i * cabin.getScale() / factor),
 						yZero + (int) (j * cabin.getScale() / factor),
@@ -649,14 +642,14 @@ public class CabinViewPart extends ViewPart {
 					if (MATCH_PASSENGER_COLORS_TO_MOOD) {
 						switch (pass.getPassengerMood()) {
 						case AGRESSIVE:
-							e.gc.setBackground(color.RED);
+							e.gc.setBackground(ColorHelper.RED);
 							break;
 						case PASSIVE:
-							e.gc.setBackground(color.GREEN);
+							e.gc.setBackground(ColorHelper.GREEN);
 							break;
 						}
 					} else {
-						e.gc.setBackground(color.getRandomColor());
+						e.gc.setBackground(ColorHelper.getRandomColor());
 					}
 					if (!pass.isIsSeated()) {
 						if (!((pass.getPositionX() == 0) && (pass
@@ -723,11 +716,11 @@ public class CabinViewPart extends ViewPart {
 				public void paintControl(final PaintEvent e) {
 
 					e.gc.setAlpha(255);
-					e.gc.setFont(font.h3);
-					e.gc.setBackground(color.WHITE);
+					e.gc.setFont(FontHelper.HEADING3);
+					e.gc.setBackground(ColorHelper.WHITE);
 
-					e.gc.setFont(font.p);
-					e.gc.setBackground(color.BLACK);
+					e.gc.setFont(FontHelper.PARAGRAPH);
+					e.gc.setBackground(ColorHelper.BLACK);
 
 					if (!initialBoot) {
 						e.gc.drawImage(img, 0, 0);
@@ -736,7 +729,7 @@ public class CabinViewPart extends ViewPart {
 						e.gc.drawImage(
 								resizeAC(canvas.getBounds().width,
 										canvas.getBounds().height), 0, 0);
-						e.gc.setFont(font.h2);
+						e.gc.setFont(FontHelper.HEADING2);
 						e.gc.setBackground(e.display
 								.getSystemColor(SWT.COLOR_RED));
 						e.gc.fillRectangle(38, 370, 300, 35);
