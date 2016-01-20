@@ -6,13 +6,9 @@
 
 package net.bhl.cdt.paxelerate.util;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
-
-import org.eclipse.swt.widgets.Shell;
 
 import net.bhl.cdt.paxelerate.util.math.Vector;
 
