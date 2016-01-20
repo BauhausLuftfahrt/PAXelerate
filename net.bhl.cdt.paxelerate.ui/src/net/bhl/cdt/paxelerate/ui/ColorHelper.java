@@ -6,12 +6,10 @@
 
 package net.bhl.cdt.paxelerate.ui;
 
+import java.util.Random;
+
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Device;
-import org.eclipse.swt.graphics.RGB;
-
-import net.bhl.cdt.paxelerate.util.math.Vector;
-import net.bhl.cdt.paxelerate.util.math.Vector3D;
 
 /**
  * Unified coloring system for Paxelerate
@@ -22,72 +20,57 @@ public class ColorHelper {
 	/**
 	 * 
 	 */
-	private Device display;
-	
+	private Device d;
+		
 	/**
 	 * Paxelerate colors
 	 * @author raoul.rothfeld
 	 */
 	public final Color 
 			// General colors
-			BLACK = new Color(display,0,0,0),
-			DARK_GREY = new Color(display,51,51,51),
-			LIGHT_GREY = new Color(display,193,193,193),
+			BLACK = new Color(d,0,0,0),
+			DARK_GREY = new Color(d,51,51,51),
+			LIGHT_GREY = new Color(d,193,193,193),
+			RED = new Color(d,255,0,0),
+			GREEN = new Color(d,0,255,0),
+			LIGHT_GREEN = new Color(d,122,255,0),
+			BLUE = new Color(d,0,0,255),
+			YELLOW = new Color(d,255,255,0),
+			ORANGE = new Color(d,255,122,0),
+			WHITE = new Color(d,0,0,0),
 			
 			// Program colors
-			ERROR = new Color(display,255,0,0),
+			ERROR = new Color(d,255,51,51),
 			
 			// Passenger colors
-			MALE_PASSENGER = new Color(display,51,153,255),
-			FEMALE_PASSENGER = new Color(display,255,153,255),
+			MALE_PASSENGER = new Color(d,51,153,255),
+			FEMALE_PASSENGER = new Color(d,255,153,255),
 	
 			// Luggage colors
-			NO_LUGGAGE = new Color(display,127,112,99),
-			SMALL_LUGGAGE = new Color(display,255,162,76),
-			MEDIUM_LUGGAGE = new Color(display,204,97,0),
-			LARGE_LUGGAGE = new Color(display,127,61,0);
+			NO_LUGGAGE = new Color(d,127,112,99),
+			SMALL_LUGGAGE = new Color(d,255,162,76),
+			MEDIUM_LUGGAGE = new Color(d,204,97,0),
+			LARGE_LUGGAGE = new Color(d,127,61,0),
+	
+			// Aircraft colors
+			AIRCRAFT_FLOOR = new Color(d,237,243,245),
+			AIRCRAFT_LAVATORY = new Color(d,255,160,122);
 	
 	/**
 	 * 	
 	 * @param display
 	 */
 	public ColorHelper(Device display) {
-		this.display = display;
+		this.d = display;
 	}
 	
 	/**
-	 * This method calculates the color of the passenger and seat. It is
-	 * calculated by a formula and the passenger id.
 	 * 
-	 * @param pax
-	 *            the passenger
-	 * @return the color code represented by a three dimensional vector
+	 * @return
 	 */
-	@Deprecated
-	public static Vector calculateColor(int value) {
-		int randInt = value % 6;
-		int colorDefine = (value % 13) * 20 + 15;
-		switch (randInt) {
-		case 0:
-			return new Vector3D(255, 0, colorDefine);
-		case 1:
-			return new Vector3D(255, colorDefine, 0);
-		case 2:
-			return new Vector3D(0, 255, colorDefine);
-		case 3:
-			return new Vector3D(colorDefine, 255, 0);
-		case 4:
-			return new Vector3D(0, colorDefine, 255);
-		case 5:
-			return new Vector3D(colorDefine, 0, 255);
-		default:
-			return new Vector3D(255, 255, 255);
-		}
+	public Color getRandomColor() {
+		Random r = new Random();
+		return new Color(d,r.nextInt(256),r.nextInt(256),r.nextInt(256));
 	}
-
-	@Deprecated
-	public static RGB hex2Rgb(String colorStr) {
-		return new RGB(Integer.valueOf(colorStr.substring(1, 3), 16), Integer.valueOf(colorStr.substring(3, 5), 16),
-				Integer.valueOf(colorStr.substring(5, 7), 16));
-	}
+	
 }
