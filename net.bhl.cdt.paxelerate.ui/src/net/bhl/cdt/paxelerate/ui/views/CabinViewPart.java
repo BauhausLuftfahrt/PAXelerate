@@ -97,12 +97,12 @@ public class CabinViewPart extends ViewPart {
 		factor = (double) cabin.getCabinWidth()
 				/ (double) CABIN_WIDTH_IN_PIXELS;
 		economySeat = ImageHelper.getImage(InfoViewPart.class,
-				"P:\\Workspace\\paxelerate\\net.bhl.cdt.paxelerate.ui\\images\\aircraft\\interior\\economy_seat.png");
+				"/images/aircraft/interior/economy_seat.png");
 		businessSeat = ImageHelper.getImage(InfoViewPart.class,
-				"images/aircraft/interior/business_seat.png");
-		firstSeat = ImageHelper.getImage(InfoViewPart.class, "images/aircraft/interior/first_seat.png");
-		coffeeIcon = ImageHelper.getImage(InfoViewPart.class, "images/aircraft/interior/coffee.png");
-		lavatoryIcon = ImageHelper.getImage(InfoViewPart.class, "images/aircraft/interior/lavatory.png");
+				"/images/aircraft/interior/business_seat.png");
+		firstSeat = ImageHelper.getImage(InfoViewPart.class, "/images/aircraft/interior/first_seat.png");
+		coffeeIcon = ImageHelper.getImage(InfoViewPart.class, "/images/aircraft/interior/coffee.png");
+		lavatoryIcon = ImageHelper.getImage(InfoViewPart.class, "/images/aircraft/interior/lavatory.png");
 		canvas = new Canvas(parent, SWT.RESIZE);
 		canvas.setBounds(0, 0, 1000, 1000);
 
@@ -328,13 +328,13 @@ public class CabinViewPart extends ViewPart {
 	private Image switchAircraftImage() {
 		switch (cabin.getAircraftType()) {
 		case REGIONAL:
-			return ImageHelper.getImage(InfoViewPart.class, "images/aircraft/regional.png");
+			return ImageHelper.getImage(InfoViewPart.class, "/images/aircraft/regional.png");
 
 		case INTERCONTINENTAL:
-			return ImageHelper.getImage(InfoViewPart.class, "images/aircraft/intercontinental.png");
+			return ImageHelper.getImage(InfoViewPart.class, "/images/aircraft/intercontinental.png");
 
 		case CONTINENTAL:
-			return ImageHelper.getImage(InfoViewPart.class, "images/aircraft/continental.png");
+			return ImageHelper.getImage(InfoViewPart.class, "/images/aircraft/continental.png");
 		default:
 			Log.add(this, "There is a problem with the aircraft type definition.");
 			return null;
