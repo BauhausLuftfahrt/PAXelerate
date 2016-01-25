@@ -20,12 +20,12 @@ import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.agent.AgentFunctions;
 import net.bhl.cdt.paxelerate.model.ui.SimulationView;
-import net.bhl.cdt.paxelerate.ui.ProgressHandler;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.time.StopWatch;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.OS;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.ProgressHandler;
 
 /**
  * This class runs and handles the a star algorithm an simulation.

@@ -3,7 +3,7 @@
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ***************************************************************************************/
-package net.bhl.cdt.paxelerate.ui;
+package net.bhl.cdt.paxelerate.util.toOpenCDT;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;

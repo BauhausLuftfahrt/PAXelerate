@@ -5,8 +5,6 @@
  *******************************************************************************/
 package net.bhl.cdt.paxelerate.util.math;
 
-import java.awt.Color;
-
 /**
  * This class represents a vector consisting of 2 coordinates. It is easily
  * possible to expand this vector to 3 coordinates. It can represent both a
@@ -56,15 +54,6 @@ public abstract class Vector implements Comparable<Vector> {
 		xValue = x;
 		yValue = y;
 		zValue = z;
-	}
-
-	/**
-	 * This method generates a color out of the three values.
-	 * 
-	 * @return returns the Color
-	 */
-	public Color getTheColor() {
-		return new Color(xValue, yValue, zValue);
 	}
 
 	/**

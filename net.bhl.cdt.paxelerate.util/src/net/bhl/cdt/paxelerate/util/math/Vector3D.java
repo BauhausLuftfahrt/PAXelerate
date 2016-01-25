@@ -1,5 +1,6 @@
 package net.bhl.cdt.paxelerate.util.math;
 
+@Deprecated
 public class Vector3D extends Vector {
 
 	public Vector3D(int x, int y, int z) {
