@@ -30,6 +30,12 @@ import net.bhl.cdt.paxelerate.ui.color.ColorHelper;
  *
  */
 public class ImageHelper {
+	
+	/**
+	 * Protect constructor since it is a static only class
+	 */
+	protected ImageHelper() {
+	}
 
 	/**
 	 * Maps image paths to images.
