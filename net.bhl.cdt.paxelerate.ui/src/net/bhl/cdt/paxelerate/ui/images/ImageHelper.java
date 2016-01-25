@@ -89,6 +89,7 @@ public class ImageHelper {
 	 */
 	public static Image getImage(Class<?> clazz, String path) {
 		String key = clazz.getName() + '|' + path;
+		
 		Image image = m_imageMap.get(key);
 		if (image == null) {
 			try {

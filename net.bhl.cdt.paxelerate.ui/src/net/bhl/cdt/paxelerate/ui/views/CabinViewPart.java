@@ -78,7 +78,7 @@ public class CabinViewPart extends ViewPart {
 	private ImageLoader loader;
 	private static Image img;
 	private static final String FOLDER_NAME = "paxelerate",
-			FILE_PATH = System.getProperty("user.home") + "/Documents/"
+			FILE_PATH = System.getProperty("user.home") + "/.cdt/"
 					+ FOLDER_NAME + "/";
 	private static File storageFolder = new File(FILE_PATH);
 	private double canvasHeight;
@@ -97,12 +97,12 @@ public class CabinViewPart extends ViewPart {
 		factor = (double) cabin.getCabinWidth()
 				/ (double) CABIN_WIDTH_IN_PIXELS;
 		economySeat = ImageHelper.getImage(InfoViewPart.class,
-				"images/economy_seat.png");
+				"P:\\Workspace\\paxelerate\\net.bhl.cdt.paxelerate.ui\\images\\aircraft\\interior\\economy_seat.png");
 		businessSeat = ImageHelper.getImage(InfoViewPart.class,
-				"images/business_seat.png");
-		firstSeat = ImageHelper.getImage(InfoViewPart.class, "images/first_seat.png");
-		coffeeIcon = ImageHelper.getImage(InfoViewPart.class, "images/coffee.png");
-		lavatoryIcon = ImageHelper.getImage(InfoViewPart.class, "images/Lavatory.png");
+				"images/aircraft/interior/business_seat.png");
+		firstSeat = ImageHelper.getImage(InfoViewPart.class, "images/aircraft/interior/first_seat.png");
+		coffeeIcon = ImageHelper.getImage(InfoViewPart.class, "images/aircraft/interior/coffee.png");
+		lavatoryIcon = ImageHelper.getImage(InfoViewPart.class, "images/aircraft/interior/lavatory.png");
 		canvas = new Canvas(parent, SWT.RESIZE);
 		canvas.setBounds(0, 0, 1000, 1000);
 
@@ -328,17 +328,15 @@ public class CabinViewPart extends ViewPart {
 	private Image switchAircraftImage() {
 		switch (cabin.getAircraftType()) {
 		case REGIONAL:
-			return ImageHelper.getImage(InfoViewPart.class, "images/regional.png");
+			return ImageHelper.getImage(InfoViewPart.class, "images/aircraft/regional.png");
 
 		case INTERCONTINENTAL:
-			return ImageHelper.getImage(InfoViewPart.class,
-					"images/intercontinental.png");
+			return ImageHelper.getImage(InfoViewPart.class, "images/aircraft/intercontinental.png");
 
 		case CONTINENTAL:
-			return ImageHelper.getImage(InfoViewPart.class, "images/continental.png");
+			return ImageHelper.getImage(InfoViewPart.class, "images/aircraft/continental.png");
 		default:
-			Log.add(this,
-					"There is a problem with the aircraft type definition.");
+			Log.add(this, "There is a problem with the aircraft type definition.");
 			return null;
 		}
 	}
@@ -408,97 +406,102 @@ public class CabinViewPart extends ViewPart {
 	 *            is the caught cabin
 	 */
 	public void setCabin(Cabin cabin) {
-		initialBoot = false;
-		this.cabin = cabin;
-		xZero = 139;
-		yZero = 75;
-		canvasHeight = 0;
-		canvasHeight = canvas.getBounds().height;
-		factor = (double) cabin.getCabinWidth() / (double) CABIN_WIDTH_IN_PIXELS
-				/ (double) (canvasHeight / imageY);
-		xZero = (int) (xZero * (canvasHeight / imageY));
-		yZero = (int) (yZero * (canvasHeight / imageY));
-
-		/**
-		 * NOTE: if there is more than one subclass of the same type, only the
-		 * dimensions of the first element are used for scaling
-		 **/
-
-		// TODO: implement this!
-
-		// for (Class<? extends TravelClass> className : classes) {
-		// if (!ModelHelper.getChildrenByClass(cabin, className).isEmpty()) {
-		// firstSeat = resize(firstSeat, (int) (ModelHelper
-		// .getChildrenByClass(cabin, className).get(0)
-		// .getSeatWidth() / factor), (int) (ModelHelper
-		// .getChildrenByClass(cabin, className).get(0)
-		// .getSeatLength() / factor));
-		// }
-		// }
-
-		if (!ModelHelper.getChildrenByClass(cabin, FirstClass.class)
-				.isEmpty()) {
-			firstSeat = resize(firstSeat,
-					(int) (ModelHelper
-							.getChildrenByClass(cabin, FirstClass.class).get(0)
-							.getSeatWidth() / factor),
-					(int) (ModelHelper
-							.getChildrenByClass(cabin, FirstClass.class).get(0)
-							.getSeatLength() / factor));
-		}
-		if (!ModelHelper.getChildrenByClass(cabin, BusinessClass.class)
-				.isEmpty()) {
-			businessSeat = resize(businessSeat,
-					(int) (ModelHelper
-							.getChildrenByClass(cabin, BusinessClass.class)
-							.get(0).getSeatWidth()
-							/ factor),
-					(int) (ModelHelper
-							.getChildrenByClass(cabin, BusinessClass.class)
-							.get(0).getSeatLength() / factor));
-		}
-		if (!ModelHelper.getChildrenByClass(cabin, EconomyClass.class)
-				.isEmpty()) {
-			economySeat = resize(economySeat,
-					(int) (ModelHelper
-							.getChildrenByClass(cabin, EconomyClass.class)
-							.get(0).getSeatWidth()
-							/ factor),
-					(int) (ModelHelper
-							.getChildrenByClass(cabin, EconomyClass.class)
-							.get(0).getSeatLength() / factor));
-		}
 		try {
-			coffeeIcon = resize(coffeeIcon,
-					(int) (ModelHelper.getChildrenByClass(cabin, Galley.class)
-							.get(0).getXDimension() / factor / 2),
-					(int) (ModelHelper.getChildrenByClass(cabin, Galley.class)
-							.get(0).getXDimension() / factor
-							* PASSENGER_CIRCLE_SIZE));
-		} catch (IndexOutOfBoundsException e) {
-			Log.add(this, "Error scaling seat images. No galley found.");
-		}
-		try {
-			lavatoryIcon = resize(lavatoryIcon,
-					(int) (ModelHelper.getChildrenByClass(cabin, Lavatory.class)
-							.get(0).getXDimension() / factor / 2),
-					(int) (ModelHelper.getChildrenByClass(cabin, Lavatory.class)
-							.get(0).getXDimension() / factor
-							* PASSENGER_CIRCLE_SIZE));
-		} catch (IndexOutOfBoundsException e) {
-			Log.add(this, "Error scaling seat images. No lavatory found.");
-		}
-		cabinAdapter = new AdapterImpl() {
-			public void notifyChanged(Notification notification) {
-				if (!notification.isTouch()) {
-					// TODO: I DEACTIVATED THIS!
-					// doTheDraw();
-				}
+			initialBoot = false;
+			this.cabin = cabin;
+			xZero = 139;
+			yZero = 75;
+			canvasHeight = 0;
+			canvasHeight = canvas.getBounds().height;
+			factor = (double) cabin.getCabinWidth() / (double) CABIN_WIDTH_IN_PIXELS
+					/ (double) (canvasHeight / imageY);
+			xZero = (int) (xZero * (canvasHeight / imageY));
+			yZero = (int) (yZero * (canvasHeight / imageY));
+
+			/**
+			 * NOTE: if there is more than one subclass of the same type, only the
+			 * dimensions of the first element are used for scaling
+			 **/
+
+			// TODO: implement this!
+
+			// for (Class<? extends TravelClass> className : classes) {
+			// if (!ModelHelper.getChildrenByClass(cabin, className).isEmpty()) {
+			// firstSeat = resize(firstSeat, (int) (ModelHelper
+			// .getChildrenByClass(cabin, className).get(0)
+			// .getSeatWidth() / factor), (int) (ModelHelper
+			// .getChildrenByClass(cabin, className).get(0)
+			// .getSeatLength() / factor));
+			// }
+			// }
+
+			if (!ModelHelper.getChildrenByClass(cabin, FirstClass.class)
+					.isEmpty()) {
+				firstSeat = resize(firstSeat,
+						(int) (ModelHelper
+								.getChildrenByClass(cabin, FirstClass.class).get(0)
+								.getSeatWidth() / factor),
+						(int) (ModelHelper
+								.getChildrenByClass(cabin, FirstClass.class).get(0)
+								.getSeatLength() / factor));
 			}
-		};
-		img = createImage();
-		syncViewer();
-		doTheDraw();
+			if (!ModelHelper.getChildrenByClass(cabin, BusinessClass.class)
+					.isEmpty()) {
+				businessSeat = resize(businessSeat,
+						(int) (ModelHelper
+								.getChildrenByClass(cabin, BusinessClass.class)
+								.get(0).getSeatWidth()
+								/ factor),
+						(int) (ModelHelper
+								.getChildrenByClass(cabin, BusinessClass.class)
+								.get(0).getSeatLength() / factor));
+			}
+			if (!ModelHelper.getChildrenByClass(cabin, EconomyClass.class)
+					.isEmpty()) {
+				economySeat = resize(economySeat,
+						(int) (ModelHelper
+								.getChildrenByClass(cabin, EconomyClass.class)
+								.get(0).getSeatWidth()
+								/ factor),
+						(int) (ModelHelper
+								.getChildrenByClass(cabin, EconomyClass.class)
+								.get(0).getSeatLength() / factor));
+			}
+			try {
+				coffeeIcon = resize(coffeeIcon,
+						(int) (ModelHelper.getChildrenByClass(cabin, Galley.class)
+								.get(0).getXDimension() / factor / 2),
+						(int) (ModelHelper.getChildrenByClass(cabin, Galley.class)
+								.get(0).getXDimension() / factor
+								* PASSENGER_CIRCLE_SIZE));
+			} catch (IndexOutOfBoundsException e) {
+				Log.add(this, "Error scaling seat images. No galley found.");
+			}
+			try {
+				lavatoryIcon = resize(lavatoryIcon,
+						(int) (ModelHelper.getChildrenByClass(cabin, Lavatory.class)
+								.get(0).getXDimension() / factor / 2),
+						(int) (ModelHelper.getChildrenByClass(cabin, Lavatory.class)
+								.get(0).getXDimension() / factor
+								* PASSENGER_CIRCLE_SIZE));
+			} catch (IndexOutOfBoundsException e) {
+				Log.add(this, "Error scaling seat images. No lavatory found.");
+			}
+			cabinAdapter = new AdapterImpl() {
+				public void notifyChanged(Notification notification) {
+					if (!notification.isTouch()) {
+						// TODO: I DEACTIVATED THIS!
+						// doTheDraw();
+					}
+				}
+			};
+			img = createImage();
+			syncViewer();
+			doTheDraw();
+		} catch (Exception e) {
+			Log.add(this, "ERROR in setCabin()");
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -799,7 +802,6 @@ public class CabinViewPart extends ViewPart {
 	 */
 	public void clearCache() {
 		// TODO
-		Log.add(this, "Not doing anything");
-		//ImageHelper.disposeImages();
+		ImageHelper.disposeImages();
 	}
 }

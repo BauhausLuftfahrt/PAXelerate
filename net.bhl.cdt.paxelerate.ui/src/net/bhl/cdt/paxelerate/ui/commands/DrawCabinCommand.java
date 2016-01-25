@@ -65,15 +65,13 @@ public class DrawCabinCommand extends CDTCommand {
 			settings = CabinFactory.eINSTANCE.createSimulationProperties();
 			cabin.setSimulationSettings(settings);
 		}
-		double[] luggagemodel = {
-				settings.getPercentageOfPassengersWithNoLuggage(),
+		double[] luggagemodel = { settings.getPercentageOfPassengersWithNoLuggage(),
 				settings.getPercentageOfPassengersWithSmallLuggage(),
 				settings.getPercentageOfPassengersWithMediumLuggage(),
 				settings.getPercentageOfPassengersWithBigLuggage() };
 
 		if ((luggagemodel[0] + luggagemodel[1] + luggagemodel[2] + luggagemodel[3]) == 0) {
-			cabin.getSimulationSettings()
-					.setPercentageOfPassengersWithNoLuggage(100);
+			cabin.getSimulationSettings().setPercentageOfPassengersWithNoLuggage(100);
 		}
 
 		cabinViewPart = ShouldSoonBeDeletedWhenSolved.getCabinView();
@@ -155,11 +153,9 @@ public class DrawCabinCommand extends CDTCommand {
 
 			if (passenger.getSeat() != seat.getId()) {
 				passenger.setSeat(seat.getId());
-				passenger.setName(passenger.getId() + " (" + seat.getName()
-						+ ")");
+				passenger.setName(passenger.getId() + " (" + seat.getName() + ")");
 			}
-			passenger.setTravelClass(ModelHelper.getParent(TravelClass.class,
-					seat));
+			passenger.setTravelClass(ModelHelper.getParent(TravelClass.class, seat));
 			passenger.setStartBoardingAfterDelay(i * 60 / passengersPerMinute);
 			i++;
 		}
@@ -185,8 +181,7 @@ public class DrawCabinCommand extends CDTCommand {
 
 			seat.setTravelClass(tc);
 			seat.setRow(row);
-			seat.setName(seat.getRow().getRowNumber()
-					+ StringHelper.toString(seatInRowCount));
+			seat.setName(seat.getRow().getRowNumber() + StringHelper.toString(seatInRowCount));
 			seat.setYDimension(tc.getSeatWidth());
 			seat.setXDimension(tc.getSeatLength());
 
@@ -198,14 +193,10 @@ public class DrawCabinCommand extends CDTCommand {
 	}
 
 	private Boolean checkCabinOutOfBounds() {
-		for (PhysicalObject object : ModelHelper.getChildrenByClass(cabin,
-				PhysicalObject.class)) {
-			if (object.getYPosition() < 0
-					|| object.getXPosition() < 0
-					|| (object.getYPosition() + object.getYDimension()) > cabin
-							.getCabinWidth()
-					|| (object.getXPosition() + object.getXDimension()) > cabin
-							.getCabinLength()) {
+		for (PhysicalObject object : ModelHelper.getChildrenByClass(cabin, PhysicalObject.class)) {
+			if (object.getYPosition() < 0 || object.getXPosition() < 0
+					|| (object.getYPosition() + object.getYDimension()) > cabin.getCabinWidth()
+					|| (object.getXPosition() + object.getXDimension()) > cabin.getCabinLength()) {
 				return true;
 			}
 		}
@@ -217,8 +208,7 @@ public class DrawCabinCommand extends CDTCommand {
 		for (Row row : ModelHelper.getChildrenByClass(cabin, Row.class)) {
 			int numberOfSeats = row.getSeats().size();
 
-			String rowString = row.getSeats().get(0).getTravelClass()
-					.getRowStructure();
+			String rowString = row.getSeats().get(0).getTravelClass().getRowStructure();
 
 			int seatsPerRow = 0;
 
@@ -228,12 +218,10 @@ public class DrawCabinCommand extends CDTCommand {
 			}
 
 			if (numberOfSeats > seatsPerRow) {
-				errorStrings.add("There are too many seats in row #"
-						+ row.getRowNumber() + "!");
+				errorStrings.add("There are too many seats in row #" + row.getRowNumber() + "!");
 			}
 			if (numberOfSeats < seatsPerRow) {
-				errorStrings.add("There are too few seats in row #"
-						+ row.getRowNumber() + "!");
+				errorStrings.add("There are too few seats in row #" + row.getRowNumber() + "!");
 			}
 		}
 	}

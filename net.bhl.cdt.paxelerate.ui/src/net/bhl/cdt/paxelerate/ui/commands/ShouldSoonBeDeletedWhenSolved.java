@@ -12,6 +12,7 @@ public class ShouldSoonBeDeletedWhenSolved {
 		IWorkbenchWindow window = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow();
 		IWorkbenchPage page = window.getActivePage();
+		
 		return (PropertyViewPart) page.findView("net.bhl.cdt.paxelerate.ui.propertyview");
 	}
 
@@ -19,7 +20,8 @@ public class ShouldSoonBeDeletedWhenSolved {
 		IWorkbenchWindow window = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow();
 		IWorkbenchPage page = window.getActivePage();
+		
 		return (CabinViewPart) page
-				.findView("net.bhl.cdt.paxelerate.model.ui.cabinview");
+				.findView("net.bhl.cdt.paxelerate.ui.views.cabinview");
 	}
 }
