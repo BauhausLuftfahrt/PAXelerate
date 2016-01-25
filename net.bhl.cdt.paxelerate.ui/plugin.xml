@@ -1,53 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-<extension
-         point="org.eclipse.ui.preferencePages">
-      <page
-            class="net.bhl.cdt.paxelerate.ui.cabin.CabinPreferencePage"
-            id="net.bhl.cdt.paxelerate.model.preference"
-            name="Cabin">
-      </page>
-   </extension>
-   <extension
-         point="org.eclipse.core.runtime.preferences">
-      <initializer
-            class="net.bhl.cdt.paxelerate.ui.cabin.CabinViewInitializer">
-      </initializer>
-   </extension>
-   <extension
-         point="org.eclipse.ui.cheatsheets.cheatSheetContent">
-      <category
-            id="net.bhl.cdt.paxelerate.ui.cheats"
-            name="Help Cheats">
-      </category>
-      <cheatsheet
-            category="net.bhl.cdt.paxelerate.ui.cheats"
-            composite="false"
-            contentFile="src/net/bhl/cdt/paxelerate/ui/cabin/CabinRegulationCheats.xml"
-            id="net.bhl.cdt.paxelerate.ui.cheats.cabin"
-            name="CS - 25: Cabin Regulation">
-      </cheatsheet>
-   </extension>
-   <extension
-         point="org.eclipse.ui.menus">
+   <extension point="org.eclipse.ui.menus">
       <menuContribution
             allPopups="false"
             locationURI="menu:org.eclipse.ui.main.menu">
-         <menu
-               label="Cabin">
-            <separator
-                  name="net.bhl.cdt.paxelerate.ui.separator1"
-                  visible="true">
-            </separator>
+         <menu label="Cabin">
             <command
                   commandId="net.bhl.cdt.paxelerate.model.DrawCabin"
                   label="Refresh Cabin View"
                   style="push">
             </command>
          </menu>
-         <menu
-               label="Help">
+         <menu label="Help">
+             <command
+             	  commandId="net.bhl.cdt.paxelerate.model.DrawCabin"
+                  label="Raoul Test"
+                  style="push">
+            </command>
          </menu>
       </menuContribution>
    </extension>

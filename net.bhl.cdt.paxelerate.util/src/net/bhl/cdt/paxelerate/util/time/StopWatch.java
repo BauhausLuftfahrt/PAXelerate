@@ -61,6 +61,10 @@ public class StopWatch {
 		return elapsed;
 	}
 
+	/**
+	 * TODO
+	 * @return
+	 */
 	public double getElapsedTimeTens() {
 		return getElapsedTime() / 1000.0;
 	}
