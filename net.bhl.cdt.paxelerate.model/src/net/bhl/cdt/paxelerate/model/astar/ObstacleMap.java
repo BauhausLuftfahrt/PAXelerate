@@ -18,9 +18,9 @@ import net.bhl.cdt.paxelerate.model.Lavatory;
 import net.bhl.cdt.paxelerate.model.PhysicalObject;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
-import net.bhl.cdt.paxelerate.util.Log;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * This class represents an obstacle map. Every point in the two dimensional

@@ -8,7 +8,6 @@ package net.bhl.cdt.paxelerate.model.astar;
 
 import java.util.ArrayList;
 
-import net.bhl.cdt.paxelerate.util.Func;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 
 /**
@@ -155,7 +154,7 @@ public class Path {
 			try {
 				Node node = waypoints.get(i);
 				newPath.prependWayPoint(node);
-				if (Func.vectorsAreEqual(node.getPosition(), point)) {
+				if (node.getPosition().equals(point)) {
 					break;
 				}
 				i++;

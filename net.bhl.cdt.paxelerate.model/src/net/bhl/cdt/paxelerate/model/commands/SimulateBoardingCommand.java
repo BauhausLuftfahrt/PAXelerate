@@ -24,12 +24,12 @@ import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
 import net.bhl.cdt.paxelerate.model.ui.SimulationView;
 import net.bhl.cdt.paxelerate.model.util.ShouldSoonBeDeletedWhenSolved;
 import net.bhl.cdt.paxelerate.model.util.SimulationResultLogger;
-import net.bhl.cdt.paxelerate.util.Func;
-import net.bhl.cdt.paxelerate.util.Log;
-import net.bhl.cdt.paxelerate.util.OS;
 import net.bhl.cdt.paxelerate.util.input.Input;
 import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
+import net.bhl.cdt.paxelerate.util.math.DecimalHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.OS;
 
 /**
  * This command starts the boarding simulation.
@@ -203,10 +203,11 @@ public class SimulateBoardingCommand extends CDTCommand {
 			} else {
 				Log.add(this, "No boarding possible! Please create passengers!");
 			}
+			// TODO do not round results, rounding should ONLY happen for displaying (not for internal calculations)
 			results.getSimulationData(
 					SimulationHandler.getCabin(),
 					i + 1,
-					Func.round(
+					DecimalHelper.round(
 							(SimulationView.getWatch().getElapsedTimeSecs() * (double) cabin
 									.getSimulationSettings()
 									.getSimulationSpeedFactor()), 2));

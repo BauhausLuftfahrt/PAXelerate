@@ -13,11 +13,10 @@ import java.util.Collections;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
-import net.bhl.cdt.paxelerate.util.Func;
-import net.bhl.cdt.paxelerate.util.Log;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.math.Vector3D;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * This class creates a cost map by flooding the whole map from a specific
@@ -132,8 +131,7 @@ public class CostMap {
 				// TODO: check if there is a node at a specific point.
 				if (path != null) {
 					for (Node node : path.getWaypoints()) {
-						if (Func.vectorsAreEqual(node.getPosition(),
-								new Vector2D(i, j))) {
+						if (node.getPosition().equals(new Vector2D(i, j))) {
 							foundNode = true;
 						}
 					}

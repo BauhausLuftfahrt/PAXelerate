@@ -7,7 +7,7 @@ import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.PassengerMood;
 import net.bhl.cdt.paxelerate.model.Sex;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
-import net.bhl.cdt.paxelerate.util.Func;
+import net.bhl.cdt.paxelerate.util.math.DecimalHelper;
 import net.bhl.cdt.paxelerate.util.math.GaussOptions;
 import net.bhl.cdt.paxelerate.util.math.GaussianRandom;
 import net.bhl.cdt.paxelerate.util.math.RandomHelper;
@@ -31,16 +31,18 @@ public class PassengerPropertyGenerator {
 	 * This array contains two values, first the age of the passenger and second
 	 * the corresponding speed.
 	 */
+	// TODO take literals out of class
 	private double[][] speedmodel = { { 5, 0.6 }, { 10, 1.18 }, { 15, 1.5 },
 			{ 20, 1.6 }, { 25, 1.6 }, { 30, 1.55 }, { 35, 1.5 }, { 40, 1.5 },
 			{ 45, 1.45 }, { 50, 1.42 }, { 55, 1.37 }, { 60, 1.3 }, { 65, 1.2 },
 			{ 70, 1.05 }, { 75, 0.9 }, { 80, 0.7 } };
 
 	/*
-	 * This array contains the age dirstribution in the united states in 2012.
+	 * This array contains the age distribution in the united states in 2012.
 	 * The first value of the tuple is the male, the second one the female
 	 * distribution.
 	 */
+	// TODO take literals out of class
 	private double[][] agemodel = { { 0.0349, 0.0333 }, { 0.0374, 0.0356 },
 			{ 0.0374, 0.0356 }, { 0.0369, 0.0349 }, { 0.0344, 0.0330 },
 			{ 0.0348, 0.0341 }, { 0.0367, 0.0362 }, { 0.0402, 0.0405 },
@@ -96,7 +98,7 @@ public class PassengerPropertyGenerator {
 		passenger.setLuggage(adaptLuggage());
 
 		/** Define the luggage stow time randomly **/
-		passenger.setLuggageStowTime(Func.round(adaptLuggageStowTime(), 2));
+		passenger.setLuggageStowTime(DecimalHelper.round(adaptLuggageStowTime(), 2));
 
 	}
 
@@ -116,7 +118,8 @@ public class PassengerPropertyGenerator {
 	 * @return the speed in meters per second
 	 */
 	private double adaptSpeed() {
-		int value = Func.roundToFive(passenger.getAge());
+		// Removed round to five. Otherwise value % 5 always = 0.
+		int value = passenger.getAge();
 		int index = value % 5;
 		if (index <= 0) {
 			index = 1;

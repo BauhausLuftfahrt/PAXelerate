@@ -20,8 +20,8 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
 import net.bhl.cdt.paxelerate.model.ui.PropertyViewPart;
 import net.bhl.cdt.paxelerate.model.util.ShouldSoonBeDeletedWhenSolved;
-import net.bhl.cdt.paxelerate.util.Func;
-import net.bhl.cdt.paxelerate.util.Log;
+import net.bhl.cdt.paxelerate.util.string.StringHelper;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * This class refreshed the cabin view without modifying anything. It checks the
@@ -187,7 +187,7 @@ public class DrawCabinCommand extends CDTCommand {
 			seat.setTravelClass(tc);
 			seat.setRow(row);
 			seat.setName(seat.getRow().getRowNumber()
-					+ Func.getCharForNumber(seatInRowCount));
+					+ StringHelper.toString(seatInRowCount));
 			seat.setYDimension(tc.getSeatWidth());
 			seat.setXDimension(tc.getSeatLength());
 

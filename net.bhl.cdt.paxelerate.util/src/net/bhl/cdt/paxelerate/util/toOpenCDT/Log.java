@@ -4,7 +4,7 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ******************************************************************************/
 
-package net.bhl.cdt.paxelerate.util;
+package net.bhl.cdt.paxelerate.util.toOpenCDT;
 
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
@@ -15,6 +15,8 @@ import org.osgi.framework.FrameworkUtil;
 
 /**
  * Class to simplify logging program events
+ * 
+ * TODO michael.shamiyeh, shift to OpenCDT
  * 
  * @author marc.engelmann, raoul.rothfeld
  */

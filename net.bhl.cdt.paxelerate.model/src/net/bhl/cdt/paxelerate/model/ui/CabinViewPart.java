@@ -44,9 +44,9 @@ import net.bhl.cdt.paxelerate.model.astar.Path;
 import net.bhl.cdt.paxelerate.ui.ColorHelper;
 import net.bhl.cdt.paxelerate.ui.FontHelper;
 import net.bhl.cdt.paxelerate.ui.SWTResourceManager;
-import net.bhl.cdt.paxelerate.util.Log;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * This class represents the cabin view. All graphics generation is done here.

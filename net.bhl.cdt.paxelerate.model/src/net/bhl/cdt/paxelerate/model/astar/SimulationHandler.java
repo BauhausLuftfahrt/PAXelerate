@@ -21,11 +21,11 @@ import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.agent.AgentFunctions;
 import net.bhl.cdt.paxelerate.model.ui.SimulationView;
 import net.bhl.cdt.paxelerate.ui.ProgressHandler;
-import net.bhl.cdt.paxelerate.util.Log;
-import net.bhl.cdt.paxelerate.util.OS;
-import net.bhl.cdt.paxelerate.util.math.StopWatch;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
+import net.bhl.cdt.paxelerate.util.time.StopWatch;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.OS;
 
 /**
  * This class runs and handles the a star algorithm an simulation.
@@ -49,8 +49,7 @@ public class SimulationHandler {
 	private static StopWatch watch = new StopWatch();
 	private Vector dimensions;
 
-	public static final boolean DEVELOPER_MODE = false,
-			SHOW_AREAMAP_ANIMATION = true;
+	public static final boolean SHOW_AREAMAP_ANIMATION = true;
 
 	private static JFrame simulationFrame;
 	private static ProgressHandler progress;

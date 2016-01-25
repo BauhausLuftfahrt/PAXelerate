@@ -31,12 +31,11 @@ import net.bhl.cdt.paxelerate.model.StairwayDirection;
 import net.bhl.cdt.paxelerate.model.StandardDoor;
 import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.commands.GenerateCabinCommand;
-import net.bhl.cdt.paxelerate.util.Func;
-import net.bhl.cdt.paxelerate.util.Log;
 import net.bhl.cdt.paxelerate.util.input.InputChecker;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.string.StringHelper;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * This class contains all constructors for the different elements of the cabin.
@@ -330,10 +329,10 @@ public class ConstructionLibrary {
 		Seat newSeat = CabinFactory.eINSTANCE.createSeat();
 		row.getSeats().add(newSeat);
 		newSeat.setId(seatCount);
-		newSeat.setName(rowCount + Func.getCharForNumber(j));
+		newSeat.setName(rowCount + StringHelper.toString(j));
 		newSeat.setYDimension(seatDimensions.getX());
 		newSeat.setXDimension(seatDimensions.getY());
-		newSeat.setLetter(Func.getCharForNumber(j));
+		newSeat.setLetter("" + StringHelper.toString(j));
 		newSeat.setYPosition(globalSeatPositionX);
 		newSeat.setXPosition(globalSeatPositionY);
 		newSeat.setTravelClass(passengerClass);

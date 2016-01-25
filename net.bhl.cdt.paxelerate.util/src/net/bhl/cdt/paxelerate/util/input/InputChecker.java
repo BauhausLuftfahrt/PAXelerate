@@ -5,17 +5,16 @@
  *******************************************************************************/
 package net.bhl.cdt.paxelerate.util.input;
 
+import net.bhl.cdt.paxelerate.util.mode.DeveloperMode;
 import net.bhl.cdt.paxelerate.util.string.StringHelper;
 
 /**
  * This class checks user input for errors.
  * 
- * @author marc.engelmann
+ * @author marc.engelmann, raoul.rothfeld
  *
  */
 public class InputChecker {
-
-	private static final boolean DEVELOPER_MODE = false;
 
 	public static boolean noIssuesDetected(String structure) {
 		if (structure.contains(" ")) {
@@ -27,7 +26,7 @@ public class InputChecker {
 		if (structure.indexOf('-') < 0) {
 			return false;
 		}
-		if (StringHelper.checkForDoubleCharacter(structure)) {
+		if (structure.contains("--")) {
 			return false;
 		}
 		if (structure.endsWith("-")) {
@@ -44,7 +43,7 @@ public class InputChecker {
 	 * @return the cleaned string
 	 */
 	public static String removeNonInteger(String str) {
-		if (DEVELOPER_MODE) {
+		if (DeveloperMode.ACTIVE) {
 			System.out.println("non-numeric characters detected and removed!");
 		}
 		return str.replaceAll("[^0-9-]+", "");
@@ -62,7 +61,7 @@ public class InputChecker {
 		/* remove all spaces and invisible pieces */
 		if (str.contains(" ")) {
 			str = str.replaceAll("\\s+", "");
-			if (DEVELOPER_MODE) {
+			if (DeveloperMode.ACTIVE) {
 				System.out.println("spaces detected and removed!");
 			}
 		}
@@ -76,7 +75,7 @@ public class InputChecker {
 		 */
 		if (!StringHelper.isInteger(stringWithoutDashes)) {
 			str = str.replaceAll("[^0-9-]+", "");
-			if (DEVELOPER_MODE) {
+			if (DeveloperMode.ACTIVE) {
 				System.out.println("non-numeric characters detected and removed!");
 			}
 		}
@@ -90,7 +89,7 @@ public class InputChecker {
 		 */
 		if (str.indexOf('-') < 0) {
 			int numbcount = stringWithoutDashes.length();
-			if (DEVELOPER_MODE) {
+			if (DeveloperMode.ACTIVE) {
 				System.out.println("no dash detected, inserted in the middle!");
 			}
 			str = str.substring(0, (int) (numbcount / 2)) + "-" + str.substring((int) (numbcount / 2));
@@ -105,26 +104,26 @@ public class InputChecker {
 			str = str.substring(0, str.length() - 1);
 		}
 
-		/*
-		 * if there are 2 or more dashes following on another, remove all except
-		 * for one.
-		 */
-		if (StringHelper.checkForDoubleCharacter(str)) {
-			if (DEVELOPER_MODE) {
-				System.out.println("several dashes in a row detected and corrected");
-			}
-			String helperString = "";
-			for (int i = 0; i < str.length(); i++) {
-				if (i == 0) {
-					helperString = "" + str.charAt(i);
-				} else {
-					if (str.charAt(i - 1) != str.charAt(i)) {
-						helperString = helperString + str.charAt(i);
-					}
-				}
-			}
-			str = helperString;
-		}
+//		/*
+//		 * if there are 2 or more dashes following on another, remove all except
+//		 * for one.
+//		 */
+//		if (StringHelper.checkForDoubleCharacter(str)) {
+//			if (DeveloperMode.ACTIVE) {
+//				System.out.println("several dashes in a row detected and corrected");
+//			}
+//			String helperString = "";
+//			for (int i = 0; i < str.length(); i++) {
+//				if (i == 0) {
+//					helperString = "" + str.charAt(i);
+//				} else {
+//					if (str.charAt(i - 1) != str.charAt(i)) {
+//						helperString = helperString + str.charAt(i);
+//					}
+//				}
+//			}
+//			str = helperString;
+//		}
 		return str;
 	}
 }

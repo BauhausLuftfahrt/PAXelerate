@@ -20,10 +20,10 @@ import net.bhl.cdt.paxelerate.model.Lavatory;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
-import net.bhl.cdt.paxelerate.util.Log;
 import net.bhl.cdt.paxelerate.util.input.Input;
 import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 import net.bhl.cdt.paxelerate.util.math.Vector;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * This class refreshed the cabin view without modifying anything. It checks the

@@ -24,10 +24,10 @@ import net.bhl.cdt.paxelerate.model.astar.Path;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.model.observer.Subject;
 import net.bhl.cdt.paxelerate.model.util.Rotator;
-import net.bhl.cdt.paxelerate.util.Func;
-import net.bhl.cdt.paxelerate.util.math.StopWatch;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
+import net.bhl.cdt.paxelerate.util.mode.DeveloperMode;
+import net.bhl.cdt.paxelerate.util.time.StopWatch;
 
 /**
  * This class is the agent object. It walks a specific calculated path and
@@ -412,7 +412,7 @@ public class Agent extends Subject implements Runnable {
 			blockArea(currentPosition, false, false, null);
 
 			/* print out the area map when in developer mode */
-			if (SimulationHandler.DEVELOPER_MODE) {
+			if (DeveloperMode.ACTIVE) {
 				SimulationHandler.getMap().printMap();
 			}
 
@@ -454,7 +454,7 @@ public class Agent extends Subject implements Runnable {
 	 * @return
 	 */
 	private boolean goalReached() {
-		return Func.vectorsAreEqual(desiredPosition, goal);
+		return desiredPosition.equals(goal);
 	}
 
 	/**
@@ -594,7 +594,7 @@ public class Agent extends Subject implements Runnable {
 					/* the main loop is quit, if there is a new path calculated */
 					if (exitTheMainLoop) {
 
-						if (SimulationHandler.DEVELOPER_MODE) {
+						if (DeveloperMode.ACTIVE) {
 							System.out.println("searching for new path ...");
 						}
 

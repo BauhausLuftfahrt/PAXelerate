@@ -19,7 +19,7 @@ import net.bhl.cdt.paxelerate.model.StandardDoor;
 import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
 import net.bhl.cdt.paxelerate.model.util.ConstructionLibrary;
 import net.bhl.cdt.paxelerate.model.util.ShouldSoonBeDeletedWhenSolved;
-import net.bhl.cdt.paxelerate.util.Log;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * 

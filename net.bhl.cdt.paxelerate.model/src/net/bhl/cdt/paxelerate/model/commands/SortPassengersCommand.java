@@ -16,10 +16,10 @@ import net.bhl.cdt.paxelerate.model.Door;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.agent.AgentFunctions;
 import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
-import net.bhl.cdt.paxelerate.util.Log;
 import net.bhl.cdt.paxelerate.util.input.Input;
 import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 import net.bhl.cdt.paxelerate.util.math.RandomHelper;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * This class refreshed the cabin view without modifying anything. It checks the

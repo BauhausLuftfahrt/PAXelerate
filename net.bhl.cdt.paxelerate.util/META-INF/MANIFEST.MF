@@ -13,5 +13,7 @@ Bundle-ActivationPolicy: lazy
 Export-Package: net.bhl.cdt.paxelerate.util,
  net.bhl.cdt.paxelerate.util.input,
  net.bhl.cdt.paxelerate.util.math,
+ net.bhl.cdt.paxelerate.util.mode,
  net.bhl.cdt.paxelerate.util.string,
- net.bhl.cdt.paxelerate.util.time
+ net.bhl.cdt.paxelerate.util.time,
+ net.bhl.cdt.paxelerate.util.toOpenCDT

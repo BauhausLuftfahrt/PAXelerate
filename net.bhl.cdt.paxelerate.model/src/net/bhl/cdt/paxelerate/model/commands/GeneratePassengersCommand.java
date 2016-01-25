@@ -22,9 +22,9 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
 import net.bhl.cdt.paxelerate.model.util.PassengerPropertyGenerator;
 import net.bhl.cdt.paxelerate.model.util.ShouldSoonBeDeletedWhenSolved;
-import net.bhl.cdt.paxelerate.util.Log;
 import net.bhl.cdt.paxelerate.util.math.RandomHelper;
 import net.bhl.cdt.paxelerate.util.string.StringHelper;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * 

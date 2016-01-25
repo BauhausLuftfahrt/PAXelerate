@@ -4,10 +4,13 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ******************************************************************************/
 
-package net.bhl.cdt.paxelerate.util;
+package net.bhl.cdt.paxelerate.util.toOpenCDT;
 
 /**
- * Identification class for host's operating system
+ * Identification class for host's operating system.
+ * 
+ * TODO michael.shamiyeh, shift to OpenCDT
+ * 
  * @author marc.engelmann, raoul.rothfeld
  */
 public final class OS {

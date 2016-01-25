@@ -3,9 +3,7 @@
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  *******************************************************************************/
-package net.bhl.cdt.paxelerate.util.math;
-
-import net.bhl.cdt.paxelerate.util.Func;
+package net.bhl.cdt.paxelerate.util.time;
 
 /**
  * This class represents a stop watch.
@@ -64,8 +62,7 @@ public class StopWatch {
 	}
 
 	public double getElapsedTimeTens() {
-		double value = getElapsedTime() / 1000.0;
-		return Func.round(value, 1);
+		return getElapsedTime() / 1000.0;
 	}
 
 	/**

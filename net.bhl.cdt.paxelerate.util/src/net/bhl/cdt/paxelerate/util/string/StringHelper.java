@@ -6,23 +6,17 @@
 
 package net.bhl.cdt.paxelerate.util.string;
 
+/**
+ * 
+ * @author marc.engelmann, raoul.rothfeld
+ *
+ */
 public class StringHelper {
+
 	/**
-	 * Check if there are two of the same characters directly after each other,
-	 * like in <i>balloon</i>.
-	 * 
-	 * @param str
-	 *            the string
-	 * @return a character is repeating
+	 * Protect constructor since it is a static only class
 	 */
-	@Deprecated
-	public static boolean checkForDoubleCharacter(String str) {
-		for (int i = 1; i < str.length(); i++) {
-			if (str.charAt(i - 1) == str.charAt(i)) {
-				return true;
-			}
-		}
-		return false;
+	protected StringHelper() {
 	}
 
 	/**
@@ -32,7 +26,6 @@ public class StringHelper {
 	 *            is the string that should be transformed.
 	 * @return returns the transformed string
 	 */
-	@Deprecated
 	public static String splitCamelCase(String s) {
 		return s.replaceAll(String.format("%s|%s|%s", "(?<=[A-Z])(?=[A-Z][a-z])", "(?<=[^A-Z])(?=[A-Z])",
 				"(?<=[A-Za-z])(?=[^A-Za-z])"), " ");
@@ -46,9 +39,9 @@ public class StringHelper {
 	 * @return
 	 */
 	public static boolean isInteger(String str) {
-		if (StringHelper.isEmpty(str))
+		if (str.isEmpty())
 			return false;
-		
+
 		int length = str.length(), i = 0;
 		if (str.charAt(0) == '-') {
 			if (length == 1) {
@@ -64,7 +57,7 @@ public class StringHelper {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * @see <a href=
 	 *      "http://stackoverflow.com/questions/237159/whats-the-best-way-to-check-to-see-if-a-string-represents-an-integer-in-java">
@@ -73,35 +66,24 @@ public class StringHelper {
 	 * @return
 	 */
 	public static boolean isPositiveInteger(String str) {
-		if (StringHelper.isEmpty(str))
+		if (str.isEmpty())
 			return false;
 
 		if (str.charAt(0) == '-')
 			return false;
-		
+
 		return StringHelper.isInteger(str);
 	}
-	
+
 	/**
+	 * This method returns a letter for a integer in the alphabet.
 	 * 
-	 * @param str
-	 * @return
+	 * @param i
+	 *            the integer
+	 * @return the letter which represents the number.
 	 */
-	public static boolean isEmpty(String str) {
-		return str == null || str.length() == 0;
+	public static String toString(int i) {
+		return i > 0 && i < 27 ? "" + (char) (i + 'A' - 1) : null;
 	}
-	
-//	// http://stackoverflow.com/questions/19484406/detecting-if-a-string-has-unique-characters-comparing-my-solution-to-cracking
-//	public static boolean isUniqueChars(String str) {
-//	    if (str.length() > 26) { 
-//	        return false;
-//	    }
-//	    int checker = 0;
-//	    for (int i = 0; i < str.length(); i++) {
-//	        int val = str.charAt(i) - 'a';
-//	        if ((checker & (1 << val)) > 0) return false;
-//	        checker |= (1 << val);
-//	    }
-//	    return true;
-//	}
+
 }

@@ -15,7 +15,6 @@ import net.bhl.cdt.paxelerate.model.astar.CostMap;
 import net.bhl.cdt.paxelerate.model.astar.Node;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
-import net.bhl.cdt.paxelerate.util.Func;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
@@ -183,12 +182,11 @@ public class AgentFunctions {
 						for (int stepsAhead = 0; stepsAhead < 6; stepsAhead++) {
 
 							/* the current agents position is excluded here! */
-							if (!Func.vectorsAreEqual(
-									SimulationHandler
-											.getMap()
-											.getNodeByCoordinate(xCoordinate,
-													yCoordinate).getPosition(),
-									agent.getCurrentPosition())) {
+							if (!SimulationHandler.getMap()
+									.getNodeByCoordinate(xCoordinate,
+											yCoordinate)
+									.getPosition()
+									.equals(agent.getCurrentPosition())) {
 
 								/* the surrounding points are calculated */
 								for (Vector point : costmap
