@@ -26,7 +26,7 @@
       <view
             allowMultiple="false"
             class="net.bhl.cdt.paxelerate.ui.views.CabinViewPart"
-            icon="images/Cabin.gif"
+            icon="images/icons/cabin.png"
             id="net.bhl.cdt.paxelerate.ui.views.cabinview"
             name="Cabin Layout"
             restorable="true">
@@ -34,7 +34,7 @@
       <view
             allowMultiple="false"
             class="net.bhl.cdt.paxelerate.ui.views.InfoViewPart"
-            icon="images/Passenger.png"
+            icon="images/icons/passenger.png"
             id="net.bhl.cdt.paxelerate.ui.views.infoview"
             name="Info View"
             restorable="true">
@@ -42,7 +42,7 @@
       <view
             allowMultiple="false"
             class="net.bhl.cdt.paxelerate.ui.views.PropertyViewPart"
-            icon="images/Passenger.png"
+            icon="images/icons/passenger.png"
             id="net.bhl.cdt.paxelerate.ui.propertyview"
             name="Property View"
             restorable="true">

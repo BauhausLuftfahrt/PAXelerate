@@ -21,4 +21,3 @@ Export-Package: net.bhl.cdt.paxelerate.ui,
  net.bhl.cdt.paxelerate.ui.images,
  net.bhl.cdt.paxelerate.ui.views
 Bundle-Vendor: Paxelerate
-Import-Package: net.bhl.cdt.paxelerate.ui.views

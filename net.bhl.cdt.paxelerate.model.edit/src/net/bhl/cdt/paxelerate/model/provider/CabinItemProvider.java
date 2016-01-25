@@ -340,14 +340,14 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	}
 
 	/**
-	 * This returns Cabin.gif.
+	 * This returns cabin.png.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Cabin"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/cabin"));
 	}
 
 	/**
