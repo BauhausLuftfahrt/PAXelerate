@@ -5,8 +5,6 @@
  *******************************************************************************/
 package net.bhl.cdt.paxelerate.util.input;
 
-import org.apache.commons.lang.StringUtils;
-
 import net.bhl.cdt.paxelerate.util.string.StringHelper;
 
 /**
@@ -26,7 +24,7 @@ public class InputChecker {
 		if (!StringHelper.isInteger(structure)) {
 			return false;
 		}
-		if (StringUtils.countMatches(structure, "-") == 0) {
+		if (structure.indexOf('-') < 0) {
 			return false;
 		}
 		if (StringHelper.checkForDoubleCharacter(structure)) {
@@ -90,7 +88,7 @@ public class InputChecker {
 		 * if there is no dash, define an aisle in the middle so that there is
 		 * at least on aisle and the generate cabin method is working correctly.
 		 */
-		if (StringUtils.countMatches(str, "-") == 0) {
+		if (str.indexOf('-') < 0) {
 			int numbcount = stringWithoutDashes.length();
 			if (DEVELOPER_MODE) {
 				System.out.println("no dash detected, inserted in the middle!");

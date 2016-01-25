@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Paxelerate
+Bundle-Name: Model
 Bundle-SymbolicName: net.bhl.cdt.paxelerate.model;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
@@ -18,8 +18,6 @@ Require-Bundle: javax.inject,
  net.bhl.cdt.paxelerate.util;bundle-version="1.0.0",
  net.bhl.cdt.paxelerate.ui;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: net.bhl.cdt.paxelerate.model,
- net.bhl.cdt.paxelerate.model.impl,
- net.bhl.cdt.paxelerate.model.ui,
- net.bhl.cdt.paxelerate.model.util
 Bundle-ActivationPolicy: lazy
+Export-Package: net.bhl.cdt.paxelerate.model,
+ net.bhl.cdt.paxelerate.model.util

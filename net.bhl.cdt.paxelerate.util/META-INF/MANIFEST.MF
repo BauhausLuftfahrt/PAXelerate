@@ -4,10 +4,9 @@ Bundle-Name: Util
 Bundle-SymbolicName: net.bhl.cdt.paxelerate.util
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: net.bhl.cdt.paxelerate.util.Activator
-Bundle-Vendor: PAXELERATE
+Bundle-Vendor: Paxelerate
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.apache.commons.lang;bundle-version="2.4.0",
  net.bhl.cdt.paxelerate.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

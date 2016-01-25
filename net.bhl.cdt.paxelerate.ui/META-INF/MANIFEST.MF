@@ -12,3 +12,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: net.bhl.cdt.paxelerate.ui,
  net.bhl.cdt.paxelerate.ui.util
+Bundle-Vendor: Paxelerate

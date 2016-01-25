@@ -1,4 +1,4 @@
-package net.bhl.cdt.paxelerate.agent;
+package net.bhl.cdt.paxelerate.core;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
