@@ -4,7 +4,7 @@
 <extension
          point="org.eclipse.ui.preferencePages">
       <page
-            class="net.bhl.cdt.paxelerate.ui.util.CabinPreferencePage"
+            class="net.bhl.cdt.paxelerate.ui.cabin.CabinPreferencePage"
             id="net.bhl.cdt.paxelerate.model.preference"
             name="Cabin">
       </page>
@@ -12,7 +12,7 @@
    <extension
          point="org.eclipse.core.runtime.preferences">
       <initializer
-            class="net.bhl.cdt.paxelerate.ui.util.CabinViewInitializer">
+            class="net.bhl.cdt.paxelerate.ui.cabin.CabinViewInitializer">
       </initializer>
    </extension>
    <extension
@@ -24,7 +24,7 @@
       <cheatsheet
             category="net.bhl.cdt.paxelerate.ui.cheats"
             composite="false"
-            contentFile="src/net/bhl/cdt/paxelerate/ui/util/CabinRegulationCheats.xml"
+            contentFile="src/net/bhl/cdt/paxelerate/ui/cabin/CabinRegulationCheats.xml"
             id="net.bhl.cdt.paxelerate.ui.cheats.cabin"
             name="CS - 25: Cabin Regulation">
       </cheatsheet>

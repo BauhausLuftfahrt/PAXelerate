@@ -25,7 +25,7 @@ import net.bhl.cdt.paxelerate.model.PremiumEconomyClass;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.commands.SimulateBoardingCommand;
-import net.bhl.cdt.paxelerate.ui.FontHelper;
+import net.bhl.cdt.paxelerate.ui.font.FontHelper;
 
 /**
  * 

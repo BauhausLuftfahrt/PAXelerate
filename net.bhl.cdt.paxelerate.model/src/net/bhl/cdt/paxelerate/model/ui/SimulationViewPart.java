@@ -15,8 +15,8 @@ import org.eclipse.ui.part.ViewPart;
 
 import net.bhl.cdt.paxelerate.model.astar.AreaMap;
 import net.bhl.cdt.paxelerate.model.astar.Node;
-import net.bhl.cdt.paxelerate.ui.ColorHelper;
-import net.bhl.cdt.paxelerate.ui.FontHelper;
+import net.bhl.cdt.paxelerate.ui.color.ColorHelper;
+import net.bhl.cdt.paxelerate.ui.font.FontHelper;
 
 /**
  * This class represents the cabin view. All graphics generation is done here.

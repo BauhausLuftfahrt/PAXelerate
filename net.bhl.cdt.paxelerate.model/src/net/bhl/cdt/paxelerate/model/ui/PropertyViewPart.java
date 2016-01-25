@@ -25,8 +25,8 @@ import net.bhl.cdt.paxelerate.model.storage.AgeStorage;
 import net.bhl.cdt.paxelerate.model.storage.GaussianStorage;
 import net.bhl.cdt.paxelerate.model.storage.StorageHandler;
 import net.bhl.cdt.paxelerate.model.storage.StorageHandler.StoreType;
-import net.bhl.cdt.paxelerate.ui.ColorHelper;
-import net.bhl.cdt.paxelerate.ui.FontHelper;
+import net.bhl.cdt.paxelerate.ui.color.ColorHelper;
+import net.bhl.cdt.paxelerate.ui.font.FontHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 

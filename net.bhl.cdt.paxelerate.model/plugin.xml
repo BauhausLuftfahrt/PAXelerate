@@ -39,11 +39,6 @@
             name="Move Object">
       </command>
       <command
-            defaultHandler="net.bhl.cdt.paxelerate.model.handlers.AboutViewHandler"
-            id="net.bhl.cdt.paxelerate.model.AboutView"
-            name="Show About View">
-      </command>
-      <command
             defaultHandler="net.bhl.cdt.paxelerate.model.handlers.SortPassengersHandler"
             id="net.bhl.cdt.paxelerate.model.sortPassengers"
             name="Sort Passengers">

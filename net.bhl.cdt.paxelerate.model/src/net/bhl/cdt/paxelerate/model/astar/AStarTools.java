@@ -57,6 +57,7 @@ public class AStarTools {
 		return (long) value;
 	}
 
+	// TODO NullPointer handling überarbeiten
 	public static int size(double size) {
 		try {
 			return (int) (size / SimulationHandler.getCabin().getScale());

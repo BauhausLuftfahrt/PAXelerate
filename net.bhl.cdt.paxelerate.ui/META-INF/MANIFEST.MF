@@ -11,5 +11,6 @@ Require-Bundle: org.eclipse.ui,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: net.bhl.cdt.paxelerate.ui,
- net.bhl.cdt.paxelerate.ui.util
+ net.bhl.cdt.paxelerate.ui.color,
+ net.bhl.cdt.paxelerate.ui.font
 Bundle-Vendor: Paxelerate

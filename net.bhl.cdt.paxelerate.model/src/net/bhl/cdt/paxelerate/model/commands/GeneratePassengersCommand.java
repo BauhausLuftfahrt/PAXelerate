@@ -227,7 +227,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 		cabinViewPart = ShouldSoonBeDeletedWhenSolved.getCabinView();
 
 		// Unsync the cabin view during the execution of the command.
-		cabinViewPart.unsyncViewer();
+		// THROWS NULL POINTER!!
+		//cabinViewPart.unsyncViewer();
 		/**************************************************************/
 		cabin.getPassengers().clear();
 

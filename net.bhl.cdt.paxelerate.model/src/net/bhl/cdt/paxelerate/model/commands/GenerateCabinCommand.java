@@ -77,7 +77,7 @@ public class GenerateCabinCommand extends CDTCommand {
 
 		/*************** Get the CabinView *******************/
 		cabinViewPart = ShouldSoonBeDeletedWhenSolved.getCabinView();
-		cabinViewPart.unsyncViewer();
+		//cabinViewPart.unsyncViewer();
 		/*****************************************************/
 
 		/* ------------------------------------------------- */
