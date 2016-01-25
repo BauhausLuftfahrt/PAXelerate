@@ -12,7 +12,6 @@ import java.util.Collections;
 
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
-import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.math.Vector3D;
@@ -283,12 +282,15 @@ public class CostMap {
 	 * This method saves the whole cost map in a text file to the documents
 	 * folder.
 	 */
+	// CURRENTLY DISAPLED, until Cost Map is unlinked from ui
+	@Deprecated
 	public void saveMapToFile() {
 		PrintWriter printToFile = null;
 		try {
-			CabinViewPart.makeDirectory();
-			printToFile = new PrintWriter(CabinViewPart.getFilePath()
-					+ "costmap.txt");
+			// TODO COST MAP MAY NOT LINK TO UI
+//			CabinViewPart.makeDirectory();
+//			printToFile = new PrintWriter(CabinViewPart.getFilePath()
+//					+ "costmap.txt");
 			for (int i = 0; i < dimensions.getY(); i++) {
 				for (int j = 0; j < dimensions.getX(); j++) {
 					if (map[j][i] == -1) {
@@ -299,10 +301,10 @@ public class CostMap {
 				}
 				printToFile.println();
 			}
-		} catch (FileNotFoundException e) {
-			Log.add(this, "Could not save cost map to file.");
-		} catch (NullPointerException e) {
-			Log.add(this, "The file path is not available.");
+//		} catch (FileNotFoundException e) {
+//			Log.add(this, "Could not save cost map to file.");
+//		} catch (NullPointerException e) {
+//			Log.add(this, "The file path is not available.");
 		} finally {
 			printToFile.close();
 		}

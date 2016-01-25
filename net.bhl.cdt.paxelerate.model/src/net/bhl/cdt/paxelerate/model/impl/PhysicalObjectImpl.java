@@ -18,7 +18,6 @@ import org.eclipse.ui.PlatformUI;
 
 import net.bhl.cdt.paxelerate.model.CabinPackage;
 import net.bhl.cdt.paxelerate.model.PhysicalObject;
-import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
 import net.bhl.cdt.paxelerate.model.util.CabinValidator;
 
 /**
@@ -313,13 +312,14 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements
 		int length = 50000;
 
 		try {
-			IWorkbenchPage page = PlatformUI.getWorkbench()
-					.getActiveWorkbenchWindow().getActivePage();
-			CabinViewPart cabinViewPart = (CabinViewPart) page
-					.findView("net.bhl.cdt.model.cabin.cabinview");
-
-			width = cabinViewPart.getCabin().getCabinWidth();
-			length = cabinViewPart.getCabin().getCabinLength();
+			// TODO disabled, as to unlink model from ui
+//			IWorkbenchPage page = PlatformUI.getWorkbench()
+//					.getActiveWorkbenchWindow().getActivePage();
+//			CabinViewPart cabinViewPart = (CabinViewPart) page
+//					.findView("net.bhl.cdt.model.cabin.cabinview");
+//
+//			width = cabinViewPart.getCabin().getCabinWidth();
+//			length = cabinViewPart.getCabin().getCabinLength();
 		} catch (NullPointerException e) {
 			// BLA BLA
 		}

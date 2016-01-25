@@ -17,7 +17,6 @@ import net.bhl.cdt.paxelerate.model.Galley;
 import net.bhl.cdt.paxelerate.model.Lavatory;
 import net.bhl.cdt.paxelerate.model.PhysicalObject;
 import net.bhl.cdt.paxelerate.model.Seat;
-import net.bhl.cdt.paxelerate.model.ui.CabinViewPart;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
@@ -61,7 +60,7 @@ public class ObstacleMap {
 		((Vector2D) dimensions).set(AStarTools.size(cabin.getCabinWidth()),
 				AStarTools.size(cabin.getCabinLength()));
 		obstacleMap = createObstacleMap();
-		printObstacleMap();
+		//printObstacleMap();
 	}
 
 	/**
@@ -310,22 +309,23 @@ public class ObstacleMap {
 	 * This method saves the obstacle map in a text file to the documents
 	 * folder.
 	 */
-	public void printObstacleMap() {
-		PrintWriter printToFile = null;
-		try {
-			CabinViewPart.makeDirectory();
-			printToFile = new PrintWriter(CabinViewPart.getFilePath()
-					+ "obstaclemap.txt");
-			for (int i = 0; i < dimensions.getY(); i++) {
-				for (int j = 0; j < dimensions.getX(); j++) {
-					printToFile.print(getValueAtPoint(j, i) + "\t");
-				}
-				printToFile.println();
-			}
-		} catch (FileNotFoundException e) {
-			Log.add(this, "Could not save obstacle map to file.");
-		} finally {
-			printToFile.close();
-		}
-	}
+	// TODO disabled to unlink model from ui
+//	public void printObstacleMap() {
+//		PrintWriter printToFile = null;
+//		try {
+//			CabinViewPart.makeDirectory();
+//			printToFile = new PrintWriter(CabinViewPart.getFilePath()
+//					+ "obstaclemap.txt");
+//			for (int i = 0; i < dimensions.getY(); i++) {
+//				for (int j = 0; j < dimensions.getX(); j++) {
+//					printToFile.print(getValueAtPoint(j, i) + "\t");
+//				}
+//				printToFile.println();
+//			}
+//		} catch (FileNotFoundException e) {
+//			Log.add(this, "Could not save obstacle map to file.");
+//		} finally {
+//			printToFile.close();
+//		}
+//	}
 }

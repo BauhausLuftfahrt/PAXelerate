@@ -19,7 +19,6 @@ import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.agent.AgentFunctions;
-import net.bhl.cdt.paxelerate.model.ui.SimulationView;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.time.StopWatch;
@@ -395,9 +394,10 @@ public class SimulationHandler {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				simulationFrame = new JFrame("Simulation Detail View");
-				SimulationView simulationView = new SimulationView();
-				simulationView.setAreamap(areamap);
-				simulationFrame.setContentPane(simulationView);
+				// TODO disabled to unlink model from ui
+//				SimulationView simulationView = new SimulationView();
+//				simulationView.setAreamap(areamap);
+//				simulationFrame.setContentPane(simulationView);
 				simulationFrame.pack();
 				simulationFrame.setVisible(true);
 			}

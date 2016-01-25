@@ -6,8 +6,7 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: net.bhl.cdt.paxelerate.util.Activator
 Bundle-Vendor: Paxelerate
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
- net.bhl.cdt.paxelerate.ui
+ org.eclipse.core.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: net.bhl.cdt.paxelerate.util,

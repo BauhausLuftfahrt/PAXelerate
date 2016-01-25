@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 import net.bhl.cdt.paxelerate.model.Passenger;
-import net.bhl.cdt.paxelerate.model.util.ShouldSoonBeDeletedWhenSolved;
 
 public class AStarTools {
 	public static boolean lowestValueInHashMap(Passenger pax,
@@ -62,8 +61,8 @@ public class AStarTools {
 		try {
 			return (int) (size / SimulationHandler.getCabin().getScale());
 		} catch (NullPointerException e) {
-			return (int) (size / ShouldSoonBeDeletedWhenSolved.getCabinView()
-					.getCabin().getScale());
+			//return (int) (size / ShouldSoonBeDeletedWhenSolved.getCabinView()s.getCabin().getScale());
+			return 5; // DIRTY FIX has no meaning
 		}
 	}
 }

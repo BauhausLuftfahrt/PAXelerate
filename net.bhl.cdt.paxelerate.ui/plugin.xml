@@ -7,18 +7,211 @@
             locationURI="menu:org.eclipse.ui.main.menu">
          <menu label="Cabin">
             <command
-                  commandId="net.bhl.cdt.paxelerate.model.DrawCabin"
+                  commandId="net.bhl.cdt.paxelerate.ui.DrawCabin"
                   label="Refresh Cabin View"
                   style="push">
             </command>
          </menu>
          <menu label="Help">
              <command
-             	  commandId="net.bhl.cdt.paxelerate.model.DrawCabin"
+             	  commandId="net.bhl.cdt.paxelerate.ui.DrawCabin"
                   label="Raoul Test"
                   style="push">
             </command>
          </menu>
       </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            allowMultiple="false"
+            class="net.bhl.cdt.paxelerate.ui.views.CabinViewPart"
+            icon="images/Cabin.gif"
+            id="net.bhl.cdt.paxelerate.ui.views.cabinview"
+            name="Cabin Layout"
+            restorable="true">
+      </view>
+      <view
+            allowMultiple="false"
+            class="net.bhl.cdt.paxelerate.ui.views.InfoViewPart"
+            icon="images/Passenger.png"
+            id="net.bhl.cdt.paxelerate.ui.views.infoview"
+            name="Info View"
+            restorable="true">
+      </view>
+      <view
+            allowMultiple="false"
+            class="net.bhl.cdt.paxelerate.ui.views.PropertyViewPart"
+            icon="images/Passenger.png"
+            id="net.bhl.cdt.paxelerate.ui.propertyview"
+            name="Property View"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.SimulateBoardingHandler"
+            id="net.bhl.cdt.paxelerate.ui.simulateBoarding"
+            name="Simulate Boarding">
+      </command>
+      <command
+            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.GenerateCabinHandler"
+            id="net.bhl.cdt.paxelerate.ui.generatecabin"
+            name="Generate Cabin">
+      </command>
+      <command
+            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.DrawCabinHandler"
+            id="net.bhl.cdt.paxelerate.ui.DrawCabin"
+            name="Refresh Cabin View">
+      </command>
+      <command
+            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.GeneratePassengersHandler"
+            id="net.bhl.cdt.paxelerate.ui.GeneratePassengers"
+            name="Generate Passengers">
+      </command>
+      <command
+            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.FloodCabinHandler"
+            id="net.bhl.cdt.paxelerate.ui.FloodCabin"
+            name="Cabin Flood Demo">
+      </command>
+      <command
+            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.MoveRowHandler"
+            id="net.bhl.cdt.paxelerate.ui.MoveRow"
+            name="Move Object">
+      </command>
+      <command
+            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.SortPassengersHandler"
+            id="net.bhl.cdt.paxelerate.ui.sortPassengers"
+            name="Sort Passengers">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.emf.ecp.ui.ModelExplorerView">
+         <command
+               commandId="net.bhl.cdt.paxelerate.ui.simulateBoarding"
+               label="Simulate Boarding of this Cabin"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate>
+                  <instanceof
+                        value="net.bhl.cdt.paxelerate.model.Cabin">
+                  </instanceof>
+               </iterate>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="net.bhl.cdt.paxelerate.ui.generatecabin"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate>
+                  <instanceof
+                        value="net.bhl.cdt.paxelerate.model.Cabin">
+                  </instanceof>
+               </iterate>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="net.bhl.cdt.paxelerate.ui.DrawCabin"
+               label="Refresh Cabin View"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate>
+                  <instanceof
+                        value="net.bhl.cdt.paxelerate.model.Cabin">
+                  </instanceof>
+               </iterate>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="net.bhl.cdt.paxelerate.ui.GeneratePassengers"
+               label="Generate Passengers"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate>
+                  <instanceof
+                        value="net.bhl.cdt.paxelerate.model.Cabin">
+                  </instanceof>
+               </iterate>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="net.bhl.cdt.paxelerate.ui.FloodCabin"
+               label="Run Flooding Demo"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate>
+                  <instanceof
+                        value="net.bhl.cdt.paxelerate.model.Cabin">
+                  </instanceof>
+               </iterate>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="net.bhl.cdt.paxelerate.ui.MoveRow"
+               label="Reposition ..."
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate>
+                  <or>
+                     <instanceof
+                           value="net.bhl.cdt.paxelerate.model.PhysicalObject">
+                     </instanceof>
+                     <instanceof
+                           value="net.bhl.cdt.paxelerate.model.Row">
+                     </instanceof>
+                  </or>
+               </iterate>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="net.bhl.cdt.paxelerate.ui.sortPassengers"
+               label="Sort Passengers ..."
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate>
+                  <or>
+                     <instanceof
+                           value="net.bhl.cdt.paxelerate.model.Cabin">
+                     </instanceof>
+                     <instanceof
+                           value="net.bhl.cdt.paxelerate.model.Passenger">
+                     </instanceof>
+                  </or>
+               </iterate>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.emf.ecp.ui.modelElementOpener">
+      <modelElementOpener
+            class="net.bhl.cdt.paxelerate.ui.views.CabinOpener">
+         <staticTester
+               modelElement="net.bhl.cdt.paxelerate.model.Cabin"
+               priority="2">
+         </staticTester>
+      </modelElementOpener>
+   </extension>
+   <extension
+         point="org.eclipse.ui.splashHandlers">
+      <splashHandler
+            class="net.bhl.cdt.paxelerate.ui.splashHandlers.ExtensibleSplashHandler"
+            id="net.bhl.cdt.paxelerate.ui.splashHandlers.extensible">
+      </splashHandler>
+      <splashHandler
+            class="net.bhl.cdt.paxelerate.ui.splashHandlers.BrowserSplashHandler"
+            id="net.bhl.cdt.paxelerate.ui.splashHandlers.browser">
+      </splashHandler>
    </extension>
 </plugin>
