@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.paxelerate/src" editDirectory="/net.bhl.cdt.paxelerate.edit/src"
-    editorDirectory="/net.bhl.cdt.paxelerate.editor/src" modelPluginID="net.bhl.cdt.paxelerate.model.cabin"
-    modelName="Cabin" editPluginClass="net.bhl.cdt.paxelerate.model.provider.CabinEditPlugin"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.paxelerate/src" editDirectory="/com.paxelerate.edit/src"
+    editorDirectory="/com.paxelerate.editor/src" modelPluginID="com.paxelerate.model.cabin"
+    modelName="Cabin" editPluginClass="com.paxelerate.model.provider.CabinEditPlugin"
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="7.0" copyrightFields="false" editPluginID="net.bhl.cdt.paxelerate.edit"
-    editorPluginID="com.model.cabin.editor" usedGenPackages="../../net.bhl.cdt.model/model/model.genmodel#//model ../../net.bhl.cdt.model/model/units.genmodel#//units"
+    complianceLevel="7.0" copyrightFields="false" editPluginID="com.paxelerate.edit"
+    editorPluginID="com.paxelerate.model.cabin.editor" usedGenPackages="../../net.bhl.cdt.model/model/model.genmodel#//model ../../net.bhl.cdt.model/model/units.genmodel#//units"
     operationReflection="true" importOrganizing="true">
   <foreignModel>cabin.ecore</foreignModel>
   <genPackages prefix="Cabin" basePackage="com.paxelerate" disposableProviderFactory="true"
@@ -128,10 +128,10 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cabin.ecore#//CrewMember/seat"/>
     </genClasses>
     <genClasses ecoreClass="cabin.ecore#//PhysicalObject">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//PhysicalObject/xPosition"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//PhysicalObject/yPosition"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//PhysicalObject/xDimension"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//PhysicalObject/xPosition"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//PhysicalObject/yDimension"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//PhysicalObject/xDimension"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//PhysicalObject/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//PhysicalObject/id"/>
       <genOperations ecoreOperation="cabin.ecore#//PhysicalObject/outOfBounds">
@@ -150,7 +150,7 @@
     </genClasses>
     <genClasses ecoreClass="cabin.ecore#//Stowage"/>
     <genClasses ecoreClass="cabin.ecore#//Door">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Door/yPosition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Door/xPosition"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Door/onBothSides"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Door/width"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Door/id"/>

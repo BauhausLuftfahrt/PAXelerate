@@ -10,7 +10,7 @@
       <!-- @generated cabin -->
       <package
             uri="http://paxelerate.com/"
-            class="net.bhl.cdt.paxelerate.model.CabinPackage"
+            class="com.paxelerate.model.CabinPackage"
             genModel="model/cabin.genmodel"/>
    </extension>
 

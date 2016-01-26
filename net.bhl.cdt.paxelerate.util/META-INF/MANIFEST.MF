@@ -1,18 +1,18 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Util
-Bundle-SymbolicName: net.bhl.cdt.paxelerate.util
+Bundle-SymbolicName: com.paxelerate.util
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: net.bhl.cdt.paxelerate.util.Activator
+Bundle-Activator: com.paxelerate.util.Activator
 Bundle-Vendor: Paxelerate
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Export-Package: net.bhl.cdt.paxelerate.util,
- net.bhl.cdt.paxelerate.util.input,
- net.bhl.cdt.paxelerate.util.math,
- net.bhl.cdt.paxelerate.util.mode,
- net.bhl.cdt.paxelerate.util.string,
- net.bhl.cdt.paxelerate.util.time,
- net.bhl.cdt.paxelerate.util.toOpenCDT
+Export-Package: com.paxelerate.util,
+ com.paxelerate.util.input,
+ com.paxelerate.util.math,
+ com.paxelerate.util.mode,
+ com.paxelerate.util.string,
+ com.paxelerate.util.time,
+ com.paxelerate.util.toOpenCDT

@@ -25,15 +25,15 @@
          point="org.eclipse.ui.views">
       <view
             allowMultiple="false"
-            class="net.bhl.cdt.paxelerate.ui.views.CabinViewPart"
-            icon="images/icons/cabin.png"
+            class="com.paxelerate.ui.views.CabinViewPart"
+            icon="images/Cabin.gif"
             id="net.bhl.cdt.paxelerate.ui.views.cabinview"
             name="Cabin Layout"
             restorable="true">
       </view>
       <view
             allowMultiple="false"
-            class="net.bhl.cdt.paxelerate.ui.views.InfoViewPart"
+            class="com.paxelerate.ui.views.InfoViewPart"
             icon="images/icons/passenger.png"
             id="net.bhl.cdt.paxelerate.ui.views.infoview"
             name="Info View"
@@ -41,7 +41,7 @@
       </view>
       <view
             allowMultiple="false"
-            class="net.bhl.cdt.paxelerate.ui.views.PropertyViewPart"
+            class="com.paxelerate.ui.views.PropertyViewPart"
             icon="images/icons/passenger.png"
             id="net.bhl.cdt.paxelerate.ui.propertyview"
             name="Property View"
@@ -51,37 +51,37 @@
    <extension
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.SimulateBoardingHandler"
+            defaultHandler="com.paxelerate.ui.handlers.SimulateBoardingHandler"
             id="net.bhl.cdt.paxelerate.ui.simulateBoarding"
             name="Simulate Boarding">
       </command>
       <command
-            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.GenerateCabinHandler"
+            defaultHandler="com.paxelerate.ui.handlers.GenerateCabinHandler"
             id="net.bhl.cdt.paxelerate.ui.generatecabin"
             name="Generate Cabin">
       </command>
       <command
-            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.DrawCabinHandler"
+            defaultHandler="com.paxelerate.ui.handlers.DrawCabinHandler"
             id="net.bhl.cdt.paxelerate.ui.DrawCabin"
             name="Refresh Cabin View">
       </command>
       <command
-            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.GeneratePassengersHandler"
+            defaultHandler="com.paxelerate.ui.handlers.GeneratePassengersHandler"
             id="net.bhl.cdt.paxelerate.ui.GeneratePassengers"
             name="Generate Passengers">
       </command>
       <command
-            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.FloodCabinHandler"
+            defaultHandler="com.paxelerate.ui.handlers.FloodCabinHandler"
             id="net.bhl.cdt.paxelerate.ui.FloodCabin"
             name="Cabin Flood Demo">
       </command>
       <command
-            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.MoveRowHandler"
+            defaultHandler="com.paxelerate.ui.handlers.MoveRowHandler"
             id="net.bhl.cdt.paxelerate.ui.MoveRow"
             name="Move Object">
       </command>
       <command
-            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.SortPassengersHandler"
+            defaultHandler="com.paxelerate.ui.handlers.SortPassengersHandler"
             id="net.bhl.cdt.paxelerate.ui.sortPassengers"
             name="Sort Passengers">
       </command>
@@ -196,7 +196,7 @@
    <extension
          point="org.eclipse.emf.ecp.ui.modelElementOpener">
       <modelElementOpener
-            class="net.bhl.cdt.paxelerate.ui.views.CabinOpener">
+            class="com.paxelerate.ui.views.CabinOpener">
          <staticTester
                modelElement="net.bhl.cdt.paxelerate.model.Cabin"
                priority="2">
@@ -206,11 +206,11 @@
    <extension
          point="org.eclipse.ui.splashHandlers">
       <splashHandler
-            class="net.bhl.cdt.paxelerate.ui.splashHandlers.ExtensibleSplashHandler"
+            class="com.paxelerate.ui.splashHandlers.ExtensibleSplashHandler"
             id="net.bhl.cdt.paxelerate.ui.splashHandlers.extensible">
       </splashHandler>
       <splashHandler
-            class="net.bhl.cdt.paxelerate.ui.splashHandlers.BrowserSplashHandler"
+            class="com.paxelerate.ui.splashHandlers.BrowserSplashHandler"
             id="net.bhl.cdt.paxelerate.ui.splashHandlers.browser">
       </splashHandler>
    </extension>
