@@ -9,7 +9,7 @@ import net.bhl.cdt.model.provider.ModelEditPlugin;
 import net.bhl.cdt.model.units.provider.UnitsEditPlugin;
 
 /**
- * This is the central singleton for the Paxelerate edit plugin.
+ * This is the central singleton for the Cabin edit plugin.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
