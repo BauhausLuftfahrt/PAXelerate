@@ -11,7 +11,7 @@
       <package
             uri="http://paxelerate.com/"
             class="net.bhl.cdt.paxelerate.model.CabinPackage"
-            genModel="model/paxelerate.genmodel"/>
+            genModel="model/cabin.genmodel"/>
    </extension>
 
 </plugin>
