@@ -13,5 +13,13 @@
             class="com.paxelerate.model.CabinPackage"
             genModel="model/cabin.genmodel"/>
    </extension>
+   <extension
+         id="paxelerate_product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="net.bhl.cdt.client.application"
+            name="PAXelerate">
+      </product>
+   </extension>
 
 </plugin>

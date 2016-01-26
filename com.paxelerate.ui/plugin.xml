@@ -214,4 +214,32 @@
             id="com.paxelerate.ui.splashHandlers.browser">
       </splashHandler>
    </extension>
+   <extension
+         id="paxelerate"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="net.bhl.cdt.client.application"
+            name="PAXelerate">
+         <property
+               name="appName"
+               value="PAXelerate">
+         </property>
+         <property
+               name="startupForegroundColor"
+               value="000000">
+         </property>
+         <property
+               name="startupMessageRect"
+               value="7,252,445,20">
+         </property>
+         <property
+               name="startupProgressRect"
+               value="5,275,445,15">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
+      </product>
+   </extension>
 </plugin>
