@@ -16,7 +16,6 @@ import com.paxelerate.ui.commands.DrawCabinCommand;
 public class CabinOpener extends EditorModelElementOpener {
 
 	public CabinOpener() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@SuppressWarnings("restriction")

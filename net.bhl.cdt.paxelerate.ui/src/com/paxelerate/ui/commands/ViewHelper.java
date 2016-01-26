@@ -26,9 +26,9 @@ public class ViewHelper {
 	}
 	
 	/**
-	 * This method returns the requested viewpart.
-	 * @param type type the desired viewpart
-	 * @return the viewpart
+	 * This method returns the requested ViewPart.
+	 * @param type type the desired ViewPart
+	 * @return the ViewPart
 	 */
 	public static ViewPart getView(ViewType type) {
 		IWorkbenchWindow window = PlatformUI.getWorkbench()
@@ -36,9 +36,9 @@ public class ViewHelper {
 		IWorkbenchPage page = window.getActivePage();
 		switch(type) {
 		case CABIN_LAYOUT:
-			return (CabinViewPart) page.findView("net.bhl.cdt.paxelerate.ui.propertyview");
+			return (CabinViewPart) page.findView("com.paxelerate.ui.views.cabinview");
 		case PROPERTY_VIEW:
-			return (PropertyViewPart) page.findView("net.bhl.cdt.paxelerate.ui.cabinview");
+			return (PropertyViewPart) page.findView("com.paxelerate.ui.propertyview");
 		default:
 			return null;
 		}	
