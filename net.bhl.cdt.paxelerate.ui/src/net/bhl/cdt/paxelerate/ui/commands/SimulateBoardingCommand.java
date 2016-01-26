@@ -212,6 +212,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 									.getSimulationSpeedFactor()), 2));
 		}
 		results.printSimulationData();
+		
+		// THIS IS IMPORTANT:
 		cabinViewPart.clearCache();
 	}
 }

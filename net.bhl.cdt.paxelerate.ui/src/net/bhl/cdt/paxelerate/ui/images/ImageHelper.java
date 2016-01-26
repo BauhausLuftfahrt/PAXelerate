@@ -30,7 +30,7 @@ import net.bhl.cdt.paxelerate.ui.color.ColorHelper;
  *
  */
 public class ImageHelper {
-	
+
 	/**
 	 * Protect constructor since it is a static only class
 	 */
@@ -95,7 +95,6 @@ public class ImageHelper {
 	 */
 	public static Image getImage(Class<?> clazz, String path) {
 		String key = clazz.getName() + '|' + path;
-		
 		Image image = m_imageMap.get(key);
 		if (image == null) {
 			try {
@@ -113,15 +112,14 @@ public class ImageHelper {
 	 * Standard size for missing {@link Image}'s.
 	 */
 	private static final int MISSING_IMAGE_SIZE = 10;
-	
+
 	/**
 	 * @return the small {@link Image} that can be used as placeholder for
 	 *         missing image.
 	 */
-	
+
 	private static Image getMissingImage() {
 		Image image = new Image(Display.getCurrent(), MISSING_IMAGE_SIZE, MISSING_IMAGE_SIZE);
-
 		GC gc = new GC(image);
 		gc.setBackground(ColorHelper.ERROR);
 		gc.fillRectangle(0, 0, MISSING_IMAGE_SIZE, MISSING_IMAGE_SIZE);
