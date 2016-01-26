@@ -1,10 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Model
-Bundle-SymbolicName: net.bhl.cdt.paxelerate.model;singleton:=true
+Bundle-Name: %pluginName
+Bundle-SymbolicName: net.bhl.cdt.paxelerate.model.cabin;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Vendor: Paxelerate
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
 Bundle-Activator: net.bhl.cdt.paxelerate.model.Activator
 Require-Bundle: javax.inject,
  org.eclipse.core.runtime,
@@ -18,6 +19,7 @@ Require-Bundle: javax.inject,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: net.bhl.cdt.paxelerate.model,
+ net.bhl.cdt.paxelerate.model.impl,
  net.bhl.cdt.paxelerate.model.agent,
  net.bhl.cdt.paxelerate.model.astar,
  net.bhl.cdt.paxelerate.model.storage,

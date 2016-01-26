@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<org.eclipse.emf.ecp.view.model:View xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.emf.ecp.view.group.model="http://org/eclipse/emf/ecp/view/group/model" xmlns:org.eclipse.emf.ecp.view.model="http://org/eclipse/emf/ecp/view/model/170" xmi:id="_bsH1AKS8EeWGjpaobu8CIA" name="Lavatory" ecorePath="/com.paxelerate/model/cabin.ecore">
+<org.eclipse.emf.ecp.view.model:View xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.emf.ecp.view.group.model="http://org/eclipse/emf/ecp/view/group/model" xmlns:org.eclipse.emf.ecp.view.model="http://org/eclipse/emf/ecp/view/model/170" xmi:id="_bsH1AKS8EeWGjpaobu8CIA" name="Lavatory" ecorePath="/net.bhl.cdt.paxelerate/model/cabin.ecore">
   <rootEClass href="http://paxelerate.com/#//Lavatory"/>
   <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_ciL6UKS8EeWGjpaobu8CIA" name="Properties">
     <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_bsMGcKS8EeWGjpaobu8CIA" name="Control xPosition">

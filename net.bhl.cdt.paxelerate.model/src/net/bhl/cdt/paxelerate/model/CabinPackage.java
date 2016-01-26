@@ -50,7 +50,7 @@ public interface CabinPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "com.paxelerate";
+	String eNS_PREFIX = "net.bhl.cdt.paxelerate";
 
 	/**
 	 * The singleton instance of the package.
