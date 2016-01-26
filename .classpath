@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="net.bhl.cdt.paxelerate.core/src"/>
+	<classpathentry kind="src" path="net.bhl.cdt.paxelerate.model.edit/src"/>
+	<classpathentry kind="src" path="net.bhl.cdt.paxelerate.model/src"/>
+	<classpathentry kind="src" path="net.bhl.cdt.paxelerate.test/src"/>
+	<classpathentry kind="src" path="net.bhl.cdt.paxelerate.ui/src"/>
+	<classpathentry kind="src" path="net.bhl.cdt.paxelerate.util/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="net.bhl.cdt.paxelerate.model/bin"/>
+</classpath>
