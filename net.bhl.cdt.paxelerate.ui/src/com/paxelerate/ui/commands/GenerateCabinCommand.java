@@ -16,6 +16,7 @@ import com.paxelerate.model.MainDoor;
 import com.paxelerate.model.PremiumEconomyClass;
 import com.paxelerate.model.StandardDoor;
 import com.paxelerate.model.util.ConstructionLibrary;
+import com.paxelerate.ui.commands.ViewHelper.ViewType;
 import com.paxelerate.ui.views.CabinViewPart;
 import com.paxelerate.util.toOpenCDT.Log;
 
@@ -76,7 +77,7 @@ public class GenerateCabinCommand extends CDTCommand {
 		Log.add(this, "Initializing cabin generation ...");
 
 		/*************** Get the CabinView *******************/
-		cabinViewPart = ShouldSoonBeDeletedWhenSolved.getCabinView();
+		cabinViewPart = (CabinViewPart) ViewHelper.getView(ViewType.CABIN_LAYOUT);
 		//cabinViewPart.unsyncViewer();
 		/*****************************************************/
 

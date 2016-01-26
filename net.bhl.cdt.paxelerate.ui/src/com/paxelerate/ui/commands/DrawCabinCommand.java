@@ -15,6 +15,7 @@ import com.paxelerate.model.Row;
 import com.paxelerate.model.Seat;
 import com.paxelerate.model.SimulationProperties;
 import com.paxelerate.model.TravelClass;
+import com.paxelerate.ui.commands.ViewHelper.ViewType;
 import com.paxelerate.ui.views.CabinViewPart;
 import com.paxelerate.ui.views.PropertyViewPart;
 import com.paxelerate.util.string.StringHelper;
@@ -75,7 +76,7 @@ public class DrawCabinCommand extends CDTCommand {
 			cabin.getSimulationSettings().setPercentageOfPassengersWithNoLuggage(100);
 		}
 
-		cabinViewPart = ShouldSoonBeDeletedWhenSolved.getCabinView();
+		cabinViewPart = (CabinViewPart) ViewHelper.getView(ViewType.CABIN_LAYOUT);
 
 		repairBoardingClassAssignments();
 		repairRowAssignments();
@@ -85,7 +86,7 @@ public class DrawCabinCommand extends CDTCommand {
 		checkFoldableSeats();
 		updateTravelClassProperties();
 
-		propertyViewPart = ShouldSoonBeDeletedWhenSolved.getPropertyView();
+		propertyViewPart = (PropertyViewPart) ViewHelper.getView(ViewType.PROPERTY_VIEW);
 
 		for (String str : errorStrings) {
 			Log.add(this, str);

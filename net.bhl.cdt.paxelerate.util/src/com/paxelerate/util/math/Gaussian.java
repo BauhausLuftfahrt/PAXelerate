@@ -2,6 +2,12 @@ package com.paxelerate.util.math;
 
 import java.util.ArrayList;
 
+/**
+ * 
+ * @author marc.engelmann
+ *
+ */
+
 public class Gaussian {
 
 	/**

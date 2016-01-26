@@ -18,6 +18,7 @@ import com.paxelerate.model.PremiumEconomyClass;
 import com.paxelerate.model.Seat;
 import com.paxelerate.model.TravelClass;
 import com.paxelerate.model.util.PassengerPropertyGenerator;
+import com.paxelerate.ui.commands.ViewHelper.ViewType;
 import com.paxelerate.ui.views.CabinViewPart;
 import com.paxelerate.util.math.RandomHelper;
 import com.paxelerate.util.string.StringHelper;
@@ -136,6 +137,11 @@ public class GeneratePassengersCommand extends CDTCommand {
 		return emptySeat;
 	}
 
+	/**
+	 * 
+	 * @param pax
+	 * @return
+	 */
 	private double calculateDelay(Passenger pax) {
 		double delay = 0;
 		double clocking = cabin.getSimulationSettings()
@@ -223,13 +229,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 	@Override
 	protected void doRun() {
 
-		/************************* get the views ***********************/
-		cabinViewPart = ShouldSoonBeDeletedWhenSolved.getCabinView();
+		cabinViewPart = (CabinViewPart) ViewHelper.getView(ViewType.CABIN_LAYOUT);
 
-		// Unsync the cabin view during the execution of the command.
-		// THROWS NULL POINTER!!
-		//cabinViewPart.unsyncViewer();
-		/**************************************************************/
 		cabin.getPassengers().clear();
 
 		try {

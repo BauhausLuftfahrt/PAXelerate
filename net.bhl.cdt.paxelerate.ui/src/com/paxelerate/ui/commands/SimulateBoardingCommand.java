@@ -19,6 +19,7 @@ import com.paxelerate.model.astar.ObstacleMap;
 import com.paxelerate.model.astar.SimulationHandler;
 import com.paxelerate.model.storage.Exporter;
 import com.paxelerate.model.util.SimulationResultLogger;
+import com.paxelerate.ui.commands.ViewHelper.ViewType;
 import com.paxelerate.ui.views.CabinViewPart;
 import com.paxelerate.ui.views.SimulationView;
 import com.paxelerate.util.input.Input;
@@ -79,8 +80,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 		/********** Get CabinView and ConsoleView ***************/
 
-		CabinViewPart cabinViewPart = ShouldSoonBeDeletedWhenSolved
-				.getCabinView();
+		CabinViewPart cabinViewPart = (CabinViewPart) ViewHelper.getView(ViewType.CABIN_LAYOUT);
 		/********************************************************/
 
 		for (int i = 0; i < cabin.getSimulationSettings()
