@@ -21,7 +21,7 @@
       location="net.bhl.cdt.paxelerate.core" />
    <launcher>
       <solaris/>
-      <win useIco="false">
+      <win useIco="true">
          <bmp/>
       </win>
    </launcher>
@@ -184,6 +184,10 @@
       <plugin id="org.w3c.dom.svg"/>
    </plugins>
 
+
+   <repositories>
+      <repository location="http://bitbucket.org/PAXelerate/paxelerate" enabled="true" />
+   </repositories>
 
    <preferencesInfo>
       <targetfile overwrite="false"/>
