@@ -40,7 +40,7 @@ import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
 public class PropertyViewPart extends ViewPart {
 
-	private String[] names = new String[2];
+	private String[] names = {"M,","F"};
 	private Composite parent;
 	private Canvas canvas;
 	private Cabin cabin;

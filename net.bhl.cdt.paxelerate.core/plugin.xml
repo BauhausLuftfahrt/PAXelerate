@@ -12,8 +12,8 @@
                value="Paxelerate">
          </property>
          <property
-               name="preferenceCustomization"
-               value="plugin.properties">
+               name="aboutImage"
+               value="platform:/plugin/net.bhl.cdt.paxelerate.ui/images/about.png">
          </property>
       </product>
    </extension>
