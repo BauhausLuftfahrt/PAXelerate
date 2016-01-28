@@ -18,14 +18,13 @@
    <windowImages/>
 
    <splash
-      location="net.bhl.cdt.paxelerate.core" />
+      location="net.bhl.cdt.paxelerate.ui" />
    <launcher>
       <solaris/>
       <win useIco="true">
          <bmp/>
       </win>
    </launcher>
-
 
    <vm>
    </vm>
