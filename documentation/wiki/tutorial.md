@@ -1,8 +1,8 @@
-# Tutorial #
+# Tutorial
 
 PAXelerate is based on a microscopic approach applying agent-based modelling techniques. Each passenger is represented as an agent with individual properties such as body dimensions, walking speed, target seat or type of carry-on luggage.
 
-## PAXelerate - A Functional Overview ##
+## PAXelerate - A Functional Overview
 
 * [**Development Platform Fundamentals**](#tut-platform)
 * [**Cabin Layout Generator**](#tut-cabin) 
@@ -10,8 +10,8 @@ PAXelerate is based on a microscopic approach applying agent-based modelling tec
 * [**Agent Based Simulation**](#tut-simulation)
 * [**Post-Processing**](#tut-postprocessing)
 
-## Development Platform Fundamentals ##
-#tut-platform
+## Development Platform Fundamentals <a id="tut-platform"></a> 
+
 The framework development is based on the [Eclipse Modelling Framework (EMF)](http://www.eclipse.org/ecp/) which is a modelling framework and code generation facility for building tools and other applications based on a structured data model. The core EMF framework includes a meta meta model (ECore) for describing meta models and runtime support for the models. The passenger flow framework builds upon the [OpenCDT framework](https://bitbucket.org/opencdt/opencdt) which uses the EMF framework and provides a graphical user interface (GUI) with adaptable views. OpenCDT is an open source framework for conceptual aircraft design which vision is to enables the integration of design data and functionality from existing software tools, that supports the collaboration between discipline teams and that is flexible enough to be adapted for designing unconventional aircraft concepts.
 
 As you can see simplified in the UML diagram below, the connection between OpenCDT and PAXelerate is enabled using the services *GenerateModel*, *ShowView* and *SimulateModel*. The structure of the cabin and passenger data is generated with the corresponding generator and follows the predefined ECore meta model. The visualisation of the *CabinView* and the post processing results are currently displayed using [Java Standard Widget Toolkit (SWT) framework](https://www.eclipse.org/swt). SWT is an open source widget toolkit designed to provide efficient, portable access to the user-interface facilities of the operating systems on which it is implemented. The *SimulateModel* service triggers the start of the simulation core comprising the path-finding algorithm.
