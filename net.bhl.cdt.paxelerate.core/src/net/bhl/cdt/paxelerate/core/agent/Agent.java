@@ -4,23 +4,13 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ******************************************************************************/
 
-package net.bhl.cdt.paxelerate.util.mode;
+package net.bhl.cdt.paxelerate.core.agent;
 
 /**
- * Class to broadcast whether the program is in developer mode (additional
- * logging) or not.
  * 
  * @author raoul.rothfeld
  *
  */
-public class DeveloperMode {
-	
-	/**
-	 * Protect constructor since it is a static only class
-	 */
-	protected DeveloperMode() {
-	}
-	
-	public static final boolean ACTIVE = true;
-	
+public class Agent {
+
 }

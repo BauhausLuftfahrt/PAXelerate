@@ -5,7 +5,6 @@
  *******************************************************************************/
 package net.bhl.cdt.paxelerate.util.input;
 
-import net.bhl.cdt.paxelerate.util.mode.DeveloperMode;
 import net.bhl.cdt.paxelerate.util.string.StringHelper;
 
 /**
@@ -43,9 +42,9 @@ public class InputChecker {
 	 * @return the cleaned string
 	 */
 	public static String removeNonInteger(String str) {
-		if (DeveloperMode.ACTIVE) {
-			System.out.println("non-numeric characters detected and removed!");
-		}
+//		if (DeveloperMode.ACTIVE) {
+//			System.out.println("non-numeric characters detected and removed!");
+//		}
 		return str.replaceAll("[^0-9-]+", "");
 	}
 
@@ -61,9 +60,9 @@ public class InputChecker {
 		/* remove all spaces and invisible pieces */
 		if (str.contains(" ")) {
 			str = str.replaceAll("\\s+", "");
-			if (DeveloperMode.ACTIVE) {
-				System.out.println("spaces detected and removed!");
-			}
+//			if (DeveloperMode.ACTIVE) {
+//				System.out.println("spaces detected and removed!");
+//			}
 		}
 
 		/* for cleaning purposes, the dashes are temporarily removed */
@@ -75,9 +74,9 @@ public class InputChecker {
 		 */
 		if (!StringHelper.isInteger(stringWithoutDashes)) {
 			str = str.replaceAll("[^0-9-]+", "");
-			if (DeveloperMode.ACTIVE) {
-				System.out.println("non-numeric characters detected and removed!");
-			}
+//			if (DeveloperMode.ACTIVE) {
+//				System.out.println("non-numeric characters detected and removed!");
+//			}
 		}
 
 		/* Now this string only contains numbers! */
@@ -89,9 +88,9 @@ public class InputChecker {
 		 */
 		if (str.indexOf('-') < 0) {
 			int numbcount = stringWithoutDashes.length();
-			if (DeveloperMode.ACTIVE) {
-				System.out.println("no dash detected, inserted in the middle!");
-			}
+//			if (DeveloperMode.ACTIVE) {
+//				System.out.println("no dash detected, inserted in the middle!");
+//			}
 			str = str.substring(0, (int) (numbcount / 2)) + "-" + str.substring((int) (numbcount / 2));
 		}
 

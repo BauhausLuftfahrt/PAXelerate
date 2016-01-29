@@ -12,7 +12,6 @@ import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
-import net.bhl.cdt.paxelerate.util.mode.DeveloperMode;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
@@ -203,10 +202,10 @@ public class AreaMap {
 				return node;
 			}
 		}
-		if (DeveloperMode.ACTIVE) {
-			System.out.println("no matching node found for property '"
-					+ property.toString() + "'.");
-		}
+//		if (DeveloperMode.ACTIVE) {
+//			System.out.println("no matching node found for property '"
+//					+ property.toString() + "'.");
+//		}
 		// System.out.println("getNodeByProperty() returns null!");
 		return null;
 	}

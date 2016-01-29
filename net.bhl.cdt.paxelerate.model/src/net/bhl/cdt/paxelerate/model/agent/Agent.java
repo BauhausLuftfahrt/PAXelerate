@@ -26,7 +26,6 @@ import net.bhl.cdt.paxelerate.model.observer.Subject;
 import net.bhl.cdt.paxelerate.model.util.Rotator;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
-import net.bhl.cdt.paxelerate.util.mode.DeveloperMode;
 import net.bhl.cdt.paxelerate.util.time.StopWatch;
 
 /**
@@ -412,9 +411,9 @@ public class Agent extends Subject implements Runnable {
 			blockArea(currentPosition, false, false, null);
 
 			/* print out the area map when in developer mode */
-			if (DeveloperMode.ACTIVE) {
-				SimulationHandler.getMap().printMap();
-			}
+//			if (DeveloperMode.ACTIVE) {
+//				SimulationHandler.getMap().printMap();
+//			}
 
 			/* this sets the new start of the A* to the current position */
 			start = currentPosition;
@@ -594,9 +593,9 @@ public class Agent extends Subject implements Runnable {
 					/* the main loop is quit, if there is a new path calculated */
 					if (exitTheMainLoop) {
 
-						if (DeveloperMode.ACTIVE) {
-							System.out.println("searching for new path ...");
-						}
+//						if (DeveloperMode.ACTIVE) {
+//							System.out.println("searching for new path ...");
+//						}
 
 						/* cut the old path and add the new one to the list */
 						redefinePathLayout();
