@@ -4,21 +4,21 @@ First, get started with the [Git repository handling and Jira integration](#mark
 
 Use the code snippets to get the implementation of a desired aspect started. 
  
-* [Aircraft cabin generation using the construction library](#markdown-header-)
-* [Using the Gaussian Distribution](#gaussian)
-* [Exception handling](#java-exception)
+* [Aircraft cabin generation using the construction library](#markdown-header-How-to-use-the-construction-library-class-for-cabin-generation-purposes)
+* [Using the Gaussian Distribution](#markdown-header-gaussian-distribution)
+* [Exception handling](#markdown-header-exception-handling-procedures)
 
 ## Eclipse and OpenCDT related ##
-* [Creating a user input dialog](#input-dialog)
-* [Creating a new popup window](#help-window)
-* [How to add a new right click command to OpenCDT](#opencdt-right-click-command)
-* [Usage of EMF Forms and customisation](#emf-forms)
+* [Creating a user input dialog](#markdown-header-how-to-create-a-new-input-dialog)
+* [Creating a new popup window](#markdown-header-how-to-create-a-new-help-window-popup)
+* [How to add a new right click command to OpenCDT](#markdown-header-how-to-add-a-new-right-click-command-to-opencdt)
+* [Usage of EMF Forms and customisation](#markdown-header-usage-of-emf-forms)
 * [Eclipse product and application deployment](http://www.vogella.com/tutorials/EclipseProductDeployment/article.html#deployment_deltapack)
 
-For further information regarding OpenCDT please refer to the [wiki](http://bitbucket.org/opencdt/opencdt/wiki/Home) or to these [useful links](#useful-links)
+For further information regarding OpenCDT please refer to the [wiki](http://bitbucket.org/opencdt/opencdt/wiki/Home) or to these [useful links](useful-links.md)
 
 ## Troubleshooting
-* [Framework errors during launch](#error-framework)
+* [Framework errors during launch](#markdown-header-framework-errors-during-launch)
 
 ---
 
