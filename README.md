@@ -33,4 +33,4 @@ Welcome to the repository of [PAXelerate](http://www.paxelerate.com) - an open s
 
 ### About ###
 
-Copyright (c) 2014-2015 [Bauhaus Luftfahrt e.V.](http://www.bauhaus-luftfahrt.net/?set_language=en) All rights reserved. [PAXelerate](http://www.paxelerate.com) and the accompanying materials are made available under the terms of the [Eclipse Public License (EPL) v1.0](http://www.eclipse.org/legal/epl-v10.html) which accompanies this distribution.
+Copyright (c) 2014-2016 [Bauhaus Luftfahrt e.V.](http://www.bauhaus-luftfahrt.net/?set_language=en) All rights reserved. [PAXelerate](http://www.paxelerate.com) and the accompanying materials are made available under the terms of the [Eclipse Public License (EPL) v1.0](http://www.eclipse.org/legal/epl-v10.html) which accompanies this distribution.
