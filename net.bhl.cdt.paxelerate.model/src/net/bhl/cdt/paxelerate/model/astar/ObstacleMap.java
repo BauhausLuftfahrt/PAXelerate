@@ -54,10 +54,9 @@ public class ObstacleMap {
 	 */
 	public ObstacleMap(Cabin cabin) {
 		this.cabin = cabin;
-		((Vector2D) dimensions).set(AStarTools.size(cabin.getCabinWidth()),
-				AStarTools.size(cabin.getCabinLength()));
+		((Vector2D) dimensions).set(AStarTools.scaleValue(cabin.getCabinWidth()),
+				AStarTools.scaleValue(cabin.getCabinLength()));
 		obstacleMap = createObstacleMap();
-		//printObstacleMap();
 	}
 
 	/**
@@ -131,7 +130,7 @@ public class ObstacleMap {
 	 * This method creates the potential gradient around obstacle.
 	 */
 	private void generatePotentialGradient() {
-		int range = AStarTools.size(OBSTACLE_RANGE_IN_CM);
+		int range = AStarTools.scaleValue(OBSTACLE_RANGE_IN_CM);
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
 				if (obstacleMap[i][j] == MAX_VALUE) {
@@ -207,8 +206,8 @@ public class ObstacleMap {
 		 */
 
 		for (Door door : cabin.getDoors()) {
-			entryMin = AStarTools.size(door.getXPosition()) + 2;
-			entryMax = AStarTools.size(door.getXPosition() + door.getWidth()) - 2;
+			entryMin = AStarTools.scaleValue(door.getXPosition()) + 2;
+			entryMax = AStarTools.scaleValue(door.getXPosition() + door.getWidth()) - 2;
 
 			for (int i = 0; i < dimensions.getX(); i++) {
 				for (int j = 0; j < dimensions.getY(); j++) {
@@ -270,10 +269,10 @@ public class ObstacleMap {
 
 			if (!(cabin.getSimulationSettings().isUseFoldableSeats() && value)) {
 
-				int width = AStarTools.size(physicalObject.getYDimension());
-				int length = AStarTools.size(physicalObject.getXDimension());
-				int xPosition = AStarTools.size(physicalObject.getYPosition());
-				int yPosition = AStarTools.size(physicalObject.getXPosition());
+				int width = AStarTools.scaleValue(physicalObject.getYDimension());
+				int length = AStarTools.scaleValue(physicalObject.getXDimension());
+				int xPosition = AStarTools.scaleValue(physicalObject.getYPosition());
+				int yPosition = AStarTools.scaleValue(physicalObject.getXPosition());
 
 				for (int i = 0; i < width; i++) {
 					for (int j = 0; j < length; j++) {

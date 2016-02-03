@@ -202,11 +202,7 @@ public class AreaMap {
 				return node;
 			}
 		}
-//		if (DeveloperMode.ACTIVE) {
-//			System.out.println("no matching node found for property '"
-//					+ property.toString() + "'.");
-//		}
-		// System.out.println("getNodeByProperty() returns null!");
+		
 		return null;
 	}
 
@@ -223,7 +219,6 @@ public class AreaMap {
 					new NodeProperty(agent.getPassenger().getId(),
 							Property.START));
 		}
-		// if (oldStartLocation != null &&
 	}
 
 	/**
@@ -244,8 +239,6 @@ public class AreaMap {
 					.getPosition().getY()), exponent);
 			return Math.sqrt(first + second);
 		} catch (NullPointerException e) {
-			// System.out
-			// .println("###### !NullPointerException ERROR! ###### !AreaMap - getDistanceBetween()! ######");
 			return Double.MAX_VALUE;
 		}
 	}

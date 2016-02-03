@@ -54,14 +54,10 @@ public class AStarTools {
 		}
 		return (long) value;
 	}
-
-	// TODO LÖSCHEN!
+	
+	//TODO get the real scaling value!
 	@Deprecated
-	public static int size(double size) {
-		try {
-			return (int) (size / SimulationHandler.getCabin().getScale());
-		} catch (NullPointerException e) {
-			return 5; // DIRTY FIX has no meaning
-		}
+	public static int scaleValue(double value) {
+		return (int) (value / 10);
 	}
 }

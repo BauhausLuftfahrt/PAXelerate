@@ -283,28 +283,28 @@ public class CostMap {
 	// CURRENTLY DISAPLED, until Cost Map is unlinked from ui
 	@Deprecated
 	public void saveMapToFile() {
-		PrintWriter printToFile = null;
+//		PrintWriter printToFile = null;
 		try {
 			// TODO COST MAP MAY NOT LINK TO UI
 //			CabinViewPart.makeDirectory();
 //			printToFile = new PrintWriter(CabinViewPart.getFilePath()
 //					+ "costmap.txt");
-			for (int i = 0; i < dimensions.getY(); i++) {
-				for (int j = 0; j < dimensions.getX(); j++) {
-					if (map[j][i] == -1) {
-						printToFile.print("X\t");
-					} else {
-						printToFile.print(map[j][i] + "\t");
-					}
-				}
-				printToFile.println();
-			}
+//			for (int i = 0; i < dimensions.getY(); i++) {
+//				for (int j = 0; j < dimensions.getX(); j++) {
+//					if (map[j][i] == -1) {
+//						printToFile.print("X\t");
+//					} else {
+//						printToFile.print(map[j][i] + "\t");
+//					}
+//				}
+//				printToFile.println();
+//			}
 //		} catch (FileNotFoundException e) {
 //			Log.add(this, "Could not save cost map to file.");
 //		} catch (NullPointerException e) {
 //			Log.add(this, "The file path is not available.");
 		} finally {
-			printToFile.close();
+//			printToFile.close();
 		}
 	}
 
