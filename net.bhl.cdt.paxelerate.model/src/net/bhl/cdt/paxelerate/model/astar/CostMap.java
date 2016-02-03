@@ -50,8 +50,7 @@ public class CostMap {
 	 * @param dimension
 	 * @param areaMap
 	 */
-	public CostMap(Vector dimension, Vector start, AreaMap areaMap,
-			Boolean inSteps, Agent agent, boolean OnlyFloodToSeat) {
+	public CostMap(Vector dimension, Vector start, AreaMap areaMap, Agent agent, boolean OnlyFloodToSeat) {
 		this.dimensions = dimension;
 		this.startPoint = start;
 		if (OnlyFloodToSeat) {
@@ -76,25 +75,11 @@ public class CostMap {
 
 		map[startPoint.getX()][startPoint.getY()] = 0;
 		visitedPoints.add(startPoint);
-		if (!inSteps) {
-			floodMap();
-		} else {
-			createSurroundingCosts(startPoint);
-		}
+		floodMap();
 	}
 
-	public int[][] getMap() {
-		return map;
-	}
-
-	private void setCost(int x, int y, int value) {
+	public void setCost(int x, int y, int value) {
 		map[x][y] = value;
-	}
-
-	public void setPublicCost(int x, int y, int value) {
-		if (areamap.getNodeByCoordinate(x, y).getProperty() != Property.OBSTACLE) {
-			map[x][y] = value;
-		}
 	}
 
 	/**
@@ -227,7 +212,7 @@ public class CostMap {
 	 * This function moves the points gathered in pointParkingHelper to
 	 * pointParking.
 	 */
-	public void copyPoints() {
+	private void copyPoints() {
 		lowestCost = Integer.MAX_VALUE;
 		getPointParking().clear();
 
@@ -258,7 +243,7 @@ public class CostMap {
 	 * @param middlePoint
 	 *            is the point around which all costs are calculated
 	 */
-	public void createSurroundingCosts(Vector middlePoint) {
+	private void createSurroundingCosts(Vector middlePoint) {
 		for (Vector point : sortTheList(getSurroundingPoints(
 				middlePoint.getX(), middlePoint.getY()))) {
 			if (!(point.getX() < 0 || point.getY() < 0
@@ -308,21 +293,6 @@ public class CostMap {
 		}
 	}
 
-	/**
-	 * This function outputs a specific list in the console.
-	 * 
-	 * @param list
-	 *            is the ArrayList element (MUST be of type int[]) you want to
-	 *            print out.
-	 */
-	@SuppressWarnings("unused")
-	private void printList(ArrayList<Vector> list) {
-		for (Vector printPoint : list) {
-			System.out.println("x:" + printPoint.getX() + ", y:"
-					+ printPoint.getY());
-		}
-		System.out.println();
-	}
 
 	/**
 	 * This method returns the <b><i>already calculated</i></b> cost of a
@@ -353,7 +323,8 @@ public class CostMap {
 	 *            is the y coordinate of the desired point
 	 * @return returns the cost for a specific coordinate
 	 */
-	public int getCostForCoordinates(int xCord, int yCord) {
+	
+	private int getCostForCoordinates(int xCord, int yCord) {
 		try {
 			if (xCord >= 0 && yCord >= 0 && xCord < dimensions.getX()
 					&& yCord < dimensions.getY()) {
@@ -411,59 +382,11 @@ public class CostMap {
 		return surroundingPoints;
 	}
 
-	/**
-	 * This method delivers all 8 surrounding points of a specific point in the
-	 * cost map. Starting in the north, all points are collected clockwise.
-	 * 
-	 * @param pointX
-	 *            x coordinate of the middle point
-	 * @param pointY
-	 *            y coordinate of the middle point
-	 * @return returns the point vector
-	 */
-	public static ArrayList<Vector> getSurroundingPointsViaStaticCommand(
-			int pointX, int pointY) {
-		ArrayList<Vector> surroundingPoints = new ArrayList<Vector>();
-		/* north */
-		surroundingPoints.add(new Vector2D(pointX, pointY - 1));
-
-		/* north - east */
-		// surroundingPoints.add(new Vector2D(pointX + 1, pointY - 1));
-
-		/* east */
-		surroundingPoints.add(new Vector2D(pointX + 1, pointY));
-
-		/* south - east */
-		// surroundingPoints.add(new Vector2D(pointX + 1, pointY + 1));
-
-		/* south */
-		surroundingPoints.add(new Vector2D(pointX, pointY + 1));
-
-		/* south - west */
-		// surroundingPoints.add(new Vector2D(pointX - 1, pointY + 1));
-
-		/* west */
-		surroundingPoints.add(new Vector2D(pointX - 1, pointY));
-
-		/* north - west */
-		// surroundingPoints.add(new Vector2D(pointX - 1, pointY - 1));
-
-		return surroundingPoints;
-	}
-
-	public ArrayList<Vector> getPointParkingHelper() {
+	private ArrayList<Vector> getPointParkingHelper() {
 		return pointParkingHelper;
 	}
 
-	public void setPointParkingHelper(ArrayList<Vector> pointParkingHelper) {
-		this.pointParkingHelper = pointParkingHelper;
-	}
-
-	public ArrayList<Vector> getPointParking() {
+	private ArrayList<Vector> getPointParking() {
 		return pointParking;
-	}
-
-	public void setPointParking(ArrayList<Vector> pointParking) {
-		this.pointParking = pointParking;
 	}
 }

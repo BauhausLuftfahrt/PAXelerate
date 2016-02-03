@@ -136,8 +136,7 @@ public class AgentFunctions {
 
 		/* The cost map is flooded from the agents current location to his seat */
 		CostMap costmap = new CostMap(SimulationHandler.getMap()
-				.getDimensions(), agent.getStart(), SimulationHandler.getMap(),
-				false, agent, true);
+				.getDimensions(), agent.getStart(), SimulationHandler.getMap(), agent, true);
 
 		/*
 		 * define the square dimension around the passenger that should be
@@ -194,8 +193,10 @@ public class AgentFunctions {
 												yCoordinate + stepsAhead)) {
 
 									/* the surrounding costs are assigned */
-									costmap.setPublicCost(point.getX(),
-											point.getY(), 5000);
+									if (SimulationHandler.getMap().getNode(point).getProperty() != Property.OBSTACLE) {
+										costmap.setCost(point.getX(),point.getY(), 5000);
+									}
+									
 								}
 							}
 						}

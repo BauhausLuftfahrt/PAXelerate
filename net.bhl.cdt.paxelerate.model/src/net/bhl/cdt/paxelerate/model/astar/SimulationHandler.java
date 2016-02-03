@@ -324,7 +324,7 @@ public class SimulationHandler {
 
 			if (doItOnce) {
 				/* This line generates a costmap which is used for all agents */
-				costmap = new CostMap(dimensions, start, areamap, false, null,
+				costmap = new CostMap(dimensions, start, areamap, null,
 						false);
 				costmap.saveMapToFile();
 				doItOnce = false;
@@ -377,10 +377,7 @@ public class SimulationHandler {
 			agent.setInitialized(true);
 		}
 
-		// IssueScanner scanner = new IssueScanner();
-		// scanner.start();
-
-		if (SHOW_AREAMAP_ANIMATION) { // && OS.isWindows()) {
+		if (SHOW_AREAMAP_ANIMATION) { 
 			runAreaMapWindow();
 		}
 	}
