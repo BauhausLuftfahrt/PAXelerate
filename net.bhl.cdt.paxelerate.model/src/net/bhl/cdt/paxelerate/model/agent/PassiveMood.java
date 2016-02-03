@@ -5,9 +5,14 @@
  ***************************************************************************************/
 package net.bhl.cdt.paxelerate.model.agent;
 
-import net.bhl.cdt.paxelerate.model.astar.AStarTools;
+import net.bhl.cdt.paxelerate.model.astar.AStarHelper;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 
+/**
+ * 
+ * @author marc.engelmann, tobias.bruegge-zobel
+ *
+ */
 public class PassiveMood extends AgentMood implements Strategy {
 
 	public PassiveMood(Agent agent) {
@@ -19,7 +24,7 @@ public class PassiveMood extends AgentMood implements Strategy {
 	public void reactToCollision(Property property) {
 
 		try {
-			super.getAgent().getThread().sleep(AStarTools.time(1));
+			super.getAgent().getThread().sleep(AStarHelper.time(1));
 		} catch (InterruptedException e) {
 		}
 		super.getAgent().setExitPathLoop(false);

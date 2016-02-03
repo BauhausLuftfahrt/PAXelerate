@@ -7,6 +7,12 @@ package net.bhl.cdt.paxelerate.model.agent;
 
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 
+
+/**
+ * 
+ * @author marc.engelmann, tobias.bruegge-zobel
+ *
+ */
 public class Situation {
 
 	private Strategy strategy;

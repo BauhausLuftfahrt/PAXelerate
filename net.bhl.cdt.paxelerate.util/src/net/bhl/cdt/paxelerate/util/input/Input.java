@@ -220,11 +220,11 @@ public class Input extends TitleAreaDialog {
 			stringValue = text.getText();
 			break;
 		case GET_VECTOR:
-			((Vector2D) vectorValue).set(Integer.parseInt(text.getText()), Integer.parseInt(text2.getText()));
+			vectorValue = new Vector2D(Integer.parseInt(text.getText()), Integer.parseInt(text2.getText()));
 			break;
 		case GET_TWO_VECTORS:
-			((Vector2D) vectorValue).set(Integer.parseInt(text.getText()), Integer.parseInt(text2.getText()));
-			((Vector2D) vectorValue2).set(Integer.parseInt(text3.getText()), Integer.parseInt(text4.getText()));
+			vectorValue = new Vector2D(Integer.parseInt(text.getText()), Integer.parseInt(text2.getText()));
+			vectorValue2 = new Vector2D(Integer.parseInt(text3.getText()), Integer.parseInt(text4.getText()));
 			break;
 		case GET_BOOLEAN:
 			booleanValue = true;

@@ -18,6 +18,12 @@ import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
+
+/**
+ * 
+ * @author marc.engelmann
+ *
+ */
 public class AgentFunctions {
 
 	public static final int PIXELS_FOR_SCANNING_AT_DOOR = 3;

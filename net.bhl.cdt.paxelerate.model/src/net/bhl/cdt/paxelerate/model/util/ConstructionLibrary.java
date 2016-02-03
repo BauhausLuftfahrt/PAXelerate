@@ -150,7 +150,7 @@ public class ConstructionLibrary {
 						subclass.getAvailableSeats());
 				seatStructure = (String) tryPreset("2-2", "3-3", "3-4-3",
 						subclass.getRowStructure());
-				((Vector2D) seatDimensions).set(subclass.getSeatWidth(),
+				seatDimensions = new Vector2D(subclass.getSeatWidth(),
 						subclass.getSeatLength());
 				seatPitch = subclass.getSeatPitch();
 				passengers = (int) tryPreset(0, 0, 0, subclass.getPassengers());
@@ -159,7 +159,7 @@ public class ConstructionLibrary {
 				seats = (int) tryPreset(0, 24, 40, 24);
 				seatStructure = (String) tryPreset("2-2", "3-3", "3-4-3",
 						"3-3");
-				((Vector2D) seatDimensions).set(50, 60);
+				seatDimensions = new Vector2D(50, 60);
 				seatPitch = 20;
 				passengers = 1;
 			}
@@ -173,7 +173,7 @@ public class ConstructionLibrary {
 						subclass.getAvailableSeats());
 				seatStructure = (String) tryPreset("1-1", "2-2", "2-3-2",
 						subclass.getRowStructure());
-				((Vector2D) seatDimensions).set(subclass.getSeatWidth(),
+				seatDimensions = new Vector2D(subclass.getSeatWidth(),
 						subclass.getSeatLength());
 				seatPitch = subclass.getSeatPitch();
 				passengers = (int) tryPreset(0, 0, 0, subclass.getPassengers());
@@ -181,7 +181,7 @@ public class ConstructionLibrary {
 			} catch (IndexOutOfBoundsException e) {
 				seats = 8;
 				seatStructure = "2-2";
-				((Vector2D) seatDimensions).set(72, 80);
+				seatDimensions = new Vector2D(72, 80);
 				seatPitch = 30;
 				passengers = 1;
 			}
@@ -194,7 +194,7 @@ public class ConstructionLibrary {
 				seats = (int) tryPreset(2, 2, 8, subclass.getAvailableSeats());
 				seatStructure = (String) tryPreset("1-1", "1-1", "1-2-1",
 						subclass.getRowStructure());
-				((Vector2D) seatDimensions).set(subclass.getSeatWidth(),
+				seatDimensions = new Vector2D(subclass.getSeatWidth(),
 						subclass.getSeatLength());
 				seatPitch = subclass.getSeatPitch();
 				passengers = (int) tryPreset(0, 0, 0, subclass.getPassengers());
@@ -202,7 +202,7 @@ public class ConstructionLibrary {
 			} catch (IndexOutOfBoundsException e) {
 				seats = 2;
 				seatStructure = "1-1";
-				((Vector2D) seatDimensions).set(100, 120);
+				seatDimensions = new Vector2D(100, 120);
 				seatPitch = 40;
 				passengers = 1;
 			}
@@ -216,7 +216,7 @@ public class ConstructionLibrary {
 						subclass.getAvailableSeats());
 				seatStructure = (String) tryPreset("2-2", "3-3", "3-4-3",
 						subclass.getRowStructure());
-				((Vector2D) seatDimensions).set(subclass.getSeatWidth(),
+				seatDimensions = new Vector2D(subclass.getSeatWidth(),
 						subclass.getSeatLength());
 				seatPitch = subclass.getSeatPitch();
 				passengers = (int) tryPreset(2, 2, 2, subclass.getPassengers());
@@ -224,7 +224,7 @@ public class ConstructionLibrary {
 			} catch (IndexOutOfBoundsException e) {
 				seats = 72;
 				seatStructure = "3-3";
-				((Vector2D) seatDimensions).set(50, 60);
+				seatDimensions = new Vector2D(50, 60);
 				seatPitch = 20;
 				passengers = 1;
 			}

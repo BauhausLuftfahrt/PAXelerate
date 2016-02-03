@@ -6,10 +6,7 @@
 package net.bhl.cdt.paxelerate.util.math;
 
 /**
- * This class represents a vector consisting of 2 coordinates. It is easily
- * possible to expand this vector to 3 coordinates. It can represent both a
- * specific point as well as lengths or other values with several dimensions.
- * RGB color codes are possible as well.
+ * This class represents a vector consisting of 2 or 3 coordinates. 
  * 
  * @author marc.engelmann
  * @version 1.0
@@ -35,9 +32,10 @@ public abstract class Vector implements Comparable<Vector> {
 	 * @param y
 	 *            is the second value
 	 */
-	public Vector(int x, int y) {
+	protected Vector(int x, int y) {
 		xValue = x;
 		yValue = y;
+		dimensions = 2;
 	}
 
 	/**
@@ -50,10 +48,11 @@ public abstract class Vector implements Comparable<Vector> {
 	 * @param z
 	 *            is the third value
 	 */
-	public Vector(int x, int y, int z) {
+	protected Vector(int x, int y, int z) {
 		xValue = x;
 		yValue = y;
 		zValue = z;
+		dimensions = 3;
 	}
 
 	/**

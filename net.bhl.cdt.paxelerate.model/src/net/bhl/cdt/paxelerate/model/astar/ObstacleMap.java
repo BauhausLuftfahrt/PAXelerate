@@ -28,7 +28,7 @@ import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
 public class ObstacleMap {
 	private Cabin cabin;
-	private Vector dimensions = new Vector2D(0, 0);
+	private Vector dimensions;
 	private static final int MAX_VALUE = 100000, BASIC_VALUE = 3,
 			OBSTACLE_RANGE_IN_CM = 20, POTENTIAL_AROUND_OBSTACLE_MAXIMUM = 100,
 			HOLE_VALUE = 1; // DO NEVER SET THIS TO ZERO!
@@ -54,8 +54,8 @@ public class ObstacleMap {
 	 */
 	public ObstacleMap(Cabin cabin) {
 		this.cabin = cabin;
-		((Vector2D) dimensions).set(AStarTools.scaleValue(cabin.getCabinWidth()),
-				AStarTools.scaleValue(cabin.getCabinLength()));
+		dimensions = new Vector2D(AStarHelper.scaleValue(cabin.getCabinWidth()),
+				AStarHelper.scaleValue(cabin.getCabinLength()));
 		obstacleMap = createObstacleMap();
 	}
 
@@ -130,7 +130,7 @@ public class ObstacleMap {
 	 * This method creates the potential gradient around obstacle.
 	 */
 	private void generatePotentialGradient() {
-		int range = AStarTools.scaleValue(OBSTACLE_RANGE_IN_CM);
+		int range = AStarHelper.scaleValue(OBSTACLE_RANGE_IN_CM);
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
 				if (obstacleMap[i][j] == MAX_VALUE) {
@@ -206,8 +206,8 @@ public class ObstacleMap {
 		 */
 
 		for (Door door : cabin.getDoors()) {
-			entryMin = AStarTools.scaleValue(door.getXPosition()) + 2;
-			entryMax = AStarTools.scaleValue(door.getXPosition() + door.getWidth()) - 2;
+			entryMin = AStarHelper.scaleValue(door.getXPosition()) + 2;
+			entryMax = AStarHelper.scaleValue(door.getXPosition() + door.getWidth()) - 2;
 
 			for (int i = 0; i < dimensions.getX(); i++) {
 				for (int j = 0; j < dimensions.getY(); j++) {
@@ -269,10 +269,10 @@ public class ObstacleMap {
 
 			if (!(cabin.getSimulationSettings().isUseFoldableSeats() && value)) {
 
-				int width = AStarTools.scaleValue(physicalObject.getYDimension());
-				int length = AStarTools.scaleValue(physicalObject.getXDimension());
-				int xPosition = AStarTools.scaleValue(physicalObject.getYPosition());
-				int yPosition = AStarTools.scaleValue(physicalObject.getXPosition());
+				int width = AStarHelper.scaleValue(physicalObject.getYDimension());
+				int length = AStarHelper.scaleValue(physicalObject.getXDimension());
+				int xPosition = AStarHelper.scaleValue(physicalObject.getYPosition());
+				int yPosition = AStarHelper.scaleValue(physicalObject.getXPosition());
 
 				for (int i = 0; i < width; i++) {
 					for (int j = 0; j < length; j++) {

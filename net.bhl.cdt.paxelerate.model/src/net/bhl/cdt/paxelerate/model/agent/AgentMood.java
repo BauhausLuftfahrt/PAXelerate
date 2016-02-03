@@ -7,6 +7,11 @@ package net.bhl.cdt.paxelerate.model.agent;
 
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 
+/**
+ * 
+ * @author marc.engelmann, tobias.bruegge-zobel
+ *
+ */
 public abstract class AgentMood implements Strategy {
 
 	private Agent agent;

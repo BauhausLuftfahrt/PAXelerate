@@ -64,7 +64,11 @@ public class Node implements Comparable<Node> {
 		this.startList = startList;
 	}
 
-	/* This declares the type of the node */
+	/**
+	 * 
+	 * @author marc.engelmann
+	 *
+	 */
 	public enum Property {
 		OBSTACLE, AGENT, DEFAULT, START, GOAL
 	}

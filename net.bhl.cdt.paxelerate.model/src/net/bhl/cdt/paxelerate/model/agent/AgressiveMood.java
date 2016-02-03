@@ -5,9 +5,14 @@
  ***************************************************************************************/
 package net.bhl.cdt.paxelerate.model.agent;
 
-import net.bhl.cdt.paxelerate.model.astar.AStarTools;
+import net.bhl.cdt.paxelerate.model.astar.AStarHelper;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 
+/**
+ * 
+ * @author marc.engelmann, tobias.bruegge-zobel
+ *
+ */
 public class AgressiveMood extends AgentMood implements Strategy {
 
 	public AgressiveMood(Agent agent) {
@@ -27,7 +32,7 @@ public class AgressiveMood extends AgentMood implements Strategy {
 		// other wise if blocked act as passive agent
 		else {
 			try {
-				super.getAgent().getThread().sleep(AStarTools.time(1));
+				super.getAgent().getThread().sleep(AStarHelper.time(1));
 			} catch (InterruptedException e) {
 			}
 			super.getAgent().setExitPathLoop(false);

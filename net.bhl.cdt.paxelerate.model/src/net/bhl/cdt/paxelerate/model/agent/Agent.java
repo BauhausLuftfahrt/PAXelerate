@@ -15,7 +15,7 @@ import net.bhl.cdt.paxelerate.model.LuggageSize;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.PassengerMood;
 import net.bhl.cdt.paxelerate.model.Seat;
-import net.bhl.cdt.paxelerate.model.astar.AStarTools;
+import net.bhl.cdt.paxelerate.model.astar.AStarHelper;
 import net.bhl.cdt.paxelerate.model.astar.Core;
 import net.bhl.cdt.paxelerate.model.astar.CostMap;
 import net.bhl.cdt.paxelerate.model.astar.Node;
@@ -398,7 +398,6 @@ public class Agent extends Subject implements Runnable {
 	public void findNewPath() {
 
 		/* starts the StopWatch - used for performance testing */
-
 		stopwatch.start();
 
 		/* reset the mutable CostMap to the original cost map */
@@ -418,8 +417,6 @@ public class Agent extends Subject implements Runnable {
 			mutableCostMap = AgentFunctions.updateCostmap(this);
 		}
 		
-		SimulationHandler.getMap().printMapWithLocation(start,goal);
-
 		/* run the path finding algorithm */
 		Core astar = new Core(SimulationHandler.getMap(), mutableCostMap, this);
 
@@ -466,7 +463,6 @@ public class Agent extends Subject implements Runnable {
 
 		for (int x = -dim; x <= dim; x++) {
 
-			// ersetzt wurde: for (int y = dim; y <= dim; y++) {
 			int y = dim;
 
 			if (passenger.getSeatRef().getXPosition() < passenger.getDoor()
@@ -533,13 +529,6 @@ public class Agent extends Subject implements Runnable {
 	 */
 	private void followPath() {
 
-		// System.out.println(passenger.getId());
-		// System.out.println(start);
-		// System.out.println(goal);
-		// if (goal.getY() < start.getY()) {
-		// System.out.println("ERROR!!!");
-		// }
-
 		/* define the try catch loop as main loop */
 		mainloop: try {
 
@@ -591,10 +580,6 @@ public class Agent extends Subject implements Runnable {
 					/* the main loop is quit, if there is a new path calculated */
 					if (exitTheMainLoop) {
 
-//						if (DeveloperMode.ACTIVE) {
-//							System.out.println("searching for new path ...");
-//						}
-
 						/* cut the old path and add the new one to the list */
 						redefinePathLayout();
 
@@ -612,7 +597,7 @@ public class Agent extends Subject implements Runnable {
 					rotateAgent(90);
 
 					/* sleep the thread as long as the luggage is stowed */
-					Thread.sleep(AStarTools.time(passenger.getLuggageStowTime()));
+					Thread.sleep(AStarHelper.time(passenger.getLuggageStowTime()));
 
 					/* notify everyone that the luggage is now stowed */
 					alreadyStowed = true;
@@ -636,7 +621,7 @@ public class Agent extends Subject implements Runnable {
 					if (anyoneNearMe()) {
 						System.out
 								.println("waymaking skipped. Delay simulated!");
-						Thread.sleep(AStarTools.time(7));
+						Thread.sleep(AStarHelper.time(7));
 						waitingCompleted = true;
 						continue;
 					}
@@ -655,7 +640,7 @@ public class Agent extends Subject implements Runnable {
 						}
 
 						// TODO: calculate the waiting time!
-						Thread.sleep(AStarTools.time(3));
+						Thread.sleep(AStarHelper.time(3));
 
 						waitingCompleted = true;
 					}
@@ -865,7 +850,7 @@ public class Agent extends Subject implements Runnable {
 		}
 
 		try {
-			Thread.sleep(AStarTools.time(defoldingTime));
+			Thread.sleep(AStarHelper.time(defoldingTime));
 		} catch (InterruptedException e) {
 			//
 		}
@@ -896,7 +881,7 @@ public class Agent extends Subject implements Runnable {
 			pathlist.add(path);
 			if (inDefaultBoardingMode()) {
 				/* sleep the thread as long as the boarding delay requires it */
-				Thread.sleep(AStarTools.time(passenger
+				Thread.sleep(AStarHelper.time(passenger
 						.getStartBoardingAfterDelay()));
 
 				/*
@@ -968,11 +953,11 @@ public class Agent extends Subject implements Runnable {
 				setCurrentState(State.PREPARING);
 
 				/* new helper vector stores the start */
-				Vector helper = new Vector2D(start);
+				Vector helper = new Vector2D(start.getX(),start.getY());
 
 				/* swap goal and start position */
-				start = new Vector2D(goal);
-				goal = new Vector2D(helper);
+				start = new Vector2D(goal.getX(),goal.getY());
+				goal = new Vector2D(helper.getX(),helper.getY());
 
 				path.invert();
 				path.appendWayPoint(SimulationHandler.getMap().getNode(goal));

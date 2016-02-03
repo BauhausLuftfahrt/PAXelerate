@@ -5,7 +5,13 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 import net.bhl.cdt.paxelerate.model.Passenger;
 
-public class AStarTools {
+
+/**
+ * This class is a helper class for the A* Algorithm
+ * @author marc.engelmann
+ *
+ */
+public class AStarHelper {
 	public static boolean lowestValueInHashMap(Passenger pax,
 			HashMap<Passenger, Integer> hashmap) {
 		int lowestValue = Integer.MAX_VALUE;
@@ -24,6 +30,12 @@ public class AStarTools {
 		}
 	}
 
+	/**
+	 * 
+	 * @param pax
+	 * @param list
+	 * @return
+	 */
 	public synchronized static boolean PassengerAlreadyInList(Passenger pax,
 			ArrayList<Passenger> list) {
 		if (list != null) {

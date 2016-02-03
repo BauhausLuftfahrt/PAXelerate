@@ -207,9 +207,9 @@ public class SimulationHandler {
 
 		int offset = 5;
 
-		Vector start = new Vector2D(AStarTools.scaleValue((seat.getYPosition() + seat
+		Vector start = new Vector2D(AStarHelper.scaleValue((seat.getYPosition() + seat
 				.getYDimension() / 2)),
-				AStarTools.scaleValue((seat.getXPosition()) - 2));
+				AStarHelper.scaleValue((seat.getXPosition()) - 2));
 
 		if (pax.getSeatRef().getXPosition() < pax.getDoor().getXPosition()) {
 			offset = -(offset + 2);
@@ -217,8 +217,8 @@ public class SimulationHandler {
 		}
 
 		Vector goal = new Vector2D(
-				AStarTools.scaleValue(cabin.getCabinWidth() / 2.0),
-				AStarTools.scaleValue(seat.getXPosition()) + offset);
+				AStarHelper.scaleValue(cabin.getCabinWidth() / 2.0),
+				AStarHelper.scaleValue(seat.getXPosition()) + offset);
 
 		Agent agent = new Agent(pax, start, goal,
 				SimulationHandler.getCostMap(), Agent.AgentMode.MAKE_WAY,
@@ -276,7 +276,7 @@ public class SimulationHandler {
 		// TODO: Do not use a static time stamp but consider the simulation
 		// speed!
 		double time = watch.getElapsedTimeTens();
-		if (Math.abs(lastDoorRelease.get(door) - time) > (AStarTools.time(0.15) / 1000.0)) {
+		if (Math.abs(lastDoorRelease.get(door) - time) > (AStarHelper.time(0.15) / 1000.0)) {
 			lastDoorRelease.put(door, time);
 			return true;
 		}
@@ -294,7 +294,7 @@ public class SimulationHandler {
 
 	public synchronized static void setPassengerActive(Passenger pax) {
 
-		if (!AStarTools.PassengerAlreadyInList(pax, activeList)) {
+		if (!AStarHelper.PassengerAlreadyInList(pax, activeList)) {
 			activeList.add(pax);
 		}
 	}
@@ -316,11 +316,11 @@ public class SimulationHandler {
 			Door door = passenger.getDoor();
 			Vector start = new Vector2D(
 					0,
-					AStarTools.scaleValue((door.getXPosition() + door.getWidth() / 2)));
+					AStarHelper.scaleValue((door.getXPosition() + door.getWidth() / 2)));
 			Vector goal = new Vector2D(
-					AStarTools
+					AStarHelper
 							.scaleValue((seat.getYPosition() + seat.getYDimension() / 2)),
-					AStarTools.scaleValue((seat.getXPosition()) - 1));
+					AStarHelper.scaleValue((seat.getXPosition()) - 1));
 
 			if (doItOnce) {
 				/* This line generates a costmap which is used for all agents */

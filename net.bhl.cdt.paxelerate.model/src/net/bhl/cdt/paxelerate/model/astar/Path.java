@@ -117,6 +117,9 @@ public class Path {
 		return false;
 	}
 
+	/**
+	 * 
+	 */
 	public void invert() {
 
 		ArrayList<Node> waypointStorage = new ArrayList<Node>();
@@ -134,6 +137,12 @@ public class Path {
 
 	}
 
+	/**
+	 * 
+	 * @param path
+	 * @param point
+	 * @return
+	 */
 	public Path cutToPoint(Path path, Vector point) {
 		/* get the last node */
 		Path newPath = new Path();

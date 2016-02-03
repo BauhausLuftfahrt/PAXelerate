@@ -5,7 +5,7 @@
  ***************************************************************************************/
 package net.bhl.cdt.paxelerate.model.astar;
 
-import java.io.PrintWriter;
+//import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -56,7 +56,7 @@ public class CostMap {
 		if (OnlyFloodToSeat) {
 			this.goalPoint = agent.getGoal();
 		} else {
-			((Vector2D) this.goalPoint).set((int) dimensions.getX() / 2,
+			this.goalPoint = new Vector2D((int) dimensions.getX() / 2,
 					dimensions.getY() - 1);
 		}
 		this.areamap = areaMap;
