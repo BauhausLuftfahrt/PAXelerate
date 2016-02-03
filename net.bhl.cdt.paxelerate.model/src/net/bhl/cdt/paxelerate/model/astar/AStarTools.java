@@ -3,7 +3,6 @@ package net.bhl.cdt.paxelerate.model.astar;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
-
 import net.bhl.cdt.paxelerate.model.Passenger;
 
 public class AStarTools {
@@ -56,12 +55,12 @@ public class AStarTools {
 		return (long) value;
 	}
 
-	// TODO NullPointer handling überarbeiten
+	// TODO LÖSCHEN!
+	@Deprecated
 	public static int size(double size) {
 		try {
 			return (int) (size / SimulationHandler.getCabin().getScale());
 		} catch (NullPointerException e) {
-			//return (int) (size / ShouldSoonBeDeletedWhenSolved.getCabinView()s.getCabin().getScale());
 			return 5; // DIRTY FIX has no meaning
 		}
 	}

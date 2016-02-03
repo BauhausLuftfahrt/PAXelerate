@@ -7,7 +7,7 @@ import org.eclipse.ui.PlatformUI;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.PropertyViewPart;
 
-public class ShouldSoonBeDeletedWhenSolved {
+public class ViewPartHelper {
 	public static PropertyViewPart getPropertyView() {
 		IWorkbenchWindow window = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow();

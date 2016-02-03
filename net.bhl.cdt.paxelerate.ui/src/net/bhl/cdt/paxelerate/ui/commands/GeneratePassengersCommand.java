@@ -223,7 +223,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 	protected void doRun() {
 
 		/************************* get the views ***********************/
-		cabinViewPart = ShouldSoonBeDeletedWhenSolved.getCabinView();
+		cabinViewPart = ViewPartHelper.getCabinView();
 
 		// Unsync the cabin view during the execution of the command.
 		// THROWS NULL POINTER!!

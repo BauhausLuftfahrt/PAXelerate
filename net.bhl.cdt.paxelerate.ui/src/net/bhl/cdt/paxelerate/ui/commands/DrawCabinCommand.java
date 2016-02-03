@@ -74,7 +74,7 @@ public class DrawCabinCommand extends CDTCommand {
 			cabin.getSimulationSettings().setPercentageOfPassengersWithNoLuggage(100);
 		}
 
-		cabinViewPart = ShouldSoonBeDeletedWhenSolved.getCabinView();
+		cabinViewPart = ViewPartHelper.getCabinView();
 
 		repairBoardingClassAssignments();
 		repairRowAssignments();
@@ -84,7 +84,7 @@ public class DrawCabinCommand extends CDTCommand {
 		checkFoldableSeats();
 		updateTravelClassProperties();
 
-		propertyViewPart = ShouldSoonBeDeletedWhenSolved.getPropertyView();
+		propertyViewPart = ViewPartHelper.getPropertyView();
 
 		for (String str : errorStrings) {
 			Log.add(this, str);

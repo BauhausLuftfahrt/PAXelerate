@@ -21,8 +21,11 @@ import net.bhl.cdt.paxelerate.model.astar.CostMap;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
-//UNUSED CLASS?
-@Deprecated
+/**
+ * This class animates the cabin flooding algorithm
+ * @author marc.engelmann
+ *
+ */
 public class HelpView extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private static final int BOX_WIDTH = 720, BOX_HEIGHT = 1000;

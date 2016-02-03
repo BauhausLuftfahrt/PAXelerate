@@ -78,7 +78,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 		/********** Get CabinView and ConsoleView ***************/
 
-		CabinViewPart cabinViewPart = ShouldSoonBeDeletedWhenSolved
+		CabinViewPart cabinViewPart = ViewPartHelper
 				.getCabinView();
 		/********************************************************/
 
