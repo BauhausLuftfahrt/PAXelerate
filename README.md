@@ -2,7 +2,7 @@
 
 Welcome to the repository of [PAXelerate](http://www.paxelerate.com) - an open source passenger flow simulation framework for advanced aircraft cabin layouts! 
 
-* The current version under development is *Alpha 0.2*
+* The current version under development is *Alpha 0.4*
 * The implementation began in November 2014
 
 ### Quick Guide ###
