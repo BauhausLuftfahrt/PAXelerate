@@ -80,7 +80,7 @@ public class Core {
 			 * check if our current Node location is the goal Node. If it is, we
 			 * are done.
 			 */
-			if (current.getPosition().equals(agent.getGoal())) {
+			if (current.getPosition().compareTo(agent.getGoal() )== 0) {
 
 				/* the start node does never have a previous node! */
 				if (map.getNode(agent.getStart()) != null) {

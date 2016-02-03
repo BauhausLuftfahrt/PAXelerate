@@ -391,10 +391,12 @@ public class SimulationHandler {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				simulationFrame = new JFrame("Simulation Detail View");
+				
 				// TODO disabled to unlink model from ui
 //				SimulationView simulationView = new SimulationView();
 //				simulationView.setAreamap(areamap);
 //				simulationFrame.setContentPane(simulationView);
+				
 				simulationFrame.pack();
 				simulationFrame.setVisible(true);
 			}

@@ -398,6 +398,7 @@ public class Agent extends Subject implements Runnable {
 	public void findNewPath() {
 
 		/* starts the StopWatch - used for performance testing */
+
 		stopwatch.start();
 
 		/* reset the mutable CostMap to the original cost map */
@@ -410,17 +411,14 @@ public class Agent extends Subject implements Runnable {
 
 			blockArea(currentPosition, false, false, null);
 
-			/* print out the area map when in developer mode */
-//			if (DeveloperMode.ACTIVE) {
-//				SimulationHandler.getMap().printMap();
-//			}
-
 			/* this sets the new start of the A* to the current position */
 			start = currentPosition;
 
 			/* this declares the area around agents as high cost terrain */
 			mutableCostMap = AgentFunctions.updateCostmap(this);
 		}
+		
+		SimulationHandler.getMap().printMapWithLocation(start,goal);
 
 		/* run the path finding algorithm */
 		Core astar = new Core(SimulationHandler.getMap(), mutableCostMap, this);

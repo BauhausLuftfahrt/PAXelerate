@@ -259,4 +259,28 @@ public class AreaMap {
 		createMap();
 		registerEdges();
 	}
+
+	public void printMapWithLocation(Vector start, Vector goal) {
+		System.out.println("This is the area map:");
+		for (int i = 0; i < dimensions.getX(); i++) {
+			for (int j = 0; j < dimensions.getY(); j++) {
+				if(i == goal.getX() && j == goal.getY()) {
+					System.out.print("G");
+				} else if(i == start.getX() && j == start.getY()) {
+					System.out.print("S");
+				} else if (map.get(i).get(j).getProperty() == Property.AGENT) {
+					System.out.print("O");
+				} else if ((map.get(i).get(j).getProperty() == Property.OBSTACLE)) {
+					System.out.print("X");
+				} else if ((map.get(i).get(j).getProperty() == Property.START)) {
+					System.out.print("X");
+				} else {
+					System.out.print("-");
+				}
+			}
+			System.out.println();
+		}
+		System.out.println();
+		System.out.println();
+	}
 }
