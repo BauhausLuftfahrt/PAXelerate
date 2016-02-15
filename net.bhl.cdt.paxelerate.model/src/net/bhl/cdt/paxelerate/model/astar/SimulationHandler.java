@@ -176,7 +176,6 @@ public class SimulationHandler {
 	 */
 	public static synchronized void setPassengerSeated(Passenger passenger,
 			boolean setSeated) {
-		System.out.println(passenger.getId()+"reached seat");
 		if (setSeated) {
 			if (!finishedList.contains(passenger)) {
 				finishedList.add(passenger);
