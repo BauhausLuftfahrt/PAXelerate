@@ -26,7 +26,7 @@ public class PerspectiveFactory implements IPerspectiveFactory {
 		IFolderLayout left = layout.createFolder("left", IPageLayout.LEFT, 0.25f, layout.getEditorArea());
 		left.addView(ModelExplorerView.ID);
 
-		IFolderLayout right = layout.createFolder("right", IPageLayout.RIGHT, 0.70f, layout.getEditorArea());
+		IFolderLayout right = layout.createFolder("right", IPageLayout.RIGHT, 0.50f, layout.getEditorArea());
 		right.addView("net.bhl.cdt.paxelerate.ui.views.cabinview");
 		right.addView("net.bhl.cdt.paxelerate.ui.propertyview");
 		right.addView(ModelRepositoriesView.ID);

@@ -19,13 +19,14 @@
 
    <splash
       location="net.bhl.cdt.paxelerate.core" />
-   <launcher>
+   <launcher name="PAXelerate">
       <solaris/>
       <win useIco="true">
          <bmp/>
       </win>
    </launcher>
 
+   <intro introId="net.bhl.cdt.paxelerate.ui.intro"/>
 
    <vm>
    </vm>
