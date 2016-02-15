@@ -151,9 +151,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 				runAreaMapWindow();
 				
 				while (!SimulationHandler.isSimulationDone()) {
-					// try {
-					for (Passenger pax : ModelHelper.getChildrenByClass(
-							handler.getPassengerLocations(), Passenger.class)) {
+					for (Passenger pax : SimulationHandler.getCabin().getPassengers()) {
 						if (pax.isIsSeated()
 								&& !alreadySeatedList.contains(pax)) {
 							alreadySeatedList.add(pax);
@@ -228,12 +226,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				JFrame simulationFrame = new JFrame("Simulation Detail View");
-				
-				// TODO disabled to unlink model from ui
 				SimulationView simulationView = new SimulationView();
 				simulationView.setAreamap(SimulationHandler.getMap());
 				simulationFrame.setContentPane(simulationView);
-				
 				simulationFrame.pack();
 				simulationFrame.setVisible(true);
 			}
