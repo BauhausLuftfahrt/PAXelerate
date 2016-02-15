@@ -195,6 +195,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/percentageOfPassengersWithBigLuggage"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/sorting"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/simulationSpeedFactor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/developerMode"/>
     </genClasses>
     <genClasses ecoreClass="cabin.ecore#//SimulationResult">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationResult/boardingTime"/>

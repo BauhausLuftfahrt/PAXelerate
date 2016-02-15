@@ -9,7 +9,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated cabin -->
       <package
-            uri="http://paxelerate.com/"
+            uri="http://bhl.net/cdt/model/cabin"
             class="net.bhl.cdt.paxelerate.model.CabinPackage"
             genModel="model/cabin.genmodel"/>
    </extension>
