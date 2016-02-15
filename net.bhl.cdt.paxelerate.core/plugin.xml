@@ -17,11 +17,5 @@
          </property>
       </product>
    </extension>
-   <extension
-         point="org.eclipse.emf.ecp.core.filters">
-      <FilterProvider
-            class="net.bhl.cdt.paxelerate.ui.PAXDefaultFilterProvider">
-      </FilterProvider>
-   </extension>
 
 </plugin>
