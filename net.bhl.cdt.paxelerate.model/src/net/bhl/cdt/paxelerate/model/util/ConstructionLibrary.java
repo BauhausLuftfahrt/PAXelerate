@@ -99,9 +99,9 @@ public class ConstructionLibrary {
 			switch (cabin.getAircraftType()) {
 			case REGIONAL:
 				return presetValueA;
-			case CONTINENTAL:
+			case NARROWBODY:
 				return presetValueB;
-			case INTERCONTINENTAL:
+			case WIDEBODY:
 				return presetValueC;
 			default:
 				return elseValue;

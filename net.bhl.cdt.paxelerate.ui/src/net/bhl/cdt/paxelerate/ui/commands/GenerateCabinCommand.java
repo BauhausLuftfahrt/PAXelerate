@@ -50,11 +50,11 @@ public class GenerateCabinCommand extends CDTCommand {
 				cabin.setCabinWidth(300);
 				cabin.setCabinLength(2000);
 				break;
-			case CONTINENTAL:
+			case NARROWBODY:
 				cabin.setCabinWidth(364);
 				cabin.setCabinLength(2460);
 				break;
-			case INTERCONTINENTAL:
+			case WIDEBODY:
 				cabin.setCabinWidth(650);
 				cabin.setCabinLength(4440);
 				break;
