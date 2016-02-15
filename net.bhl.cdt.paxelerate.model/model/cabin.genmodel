@@ -10,7 +10,7 @@
     operationReflection="true" importOrganizing="true">
   <foreignModel>cabin.ecore</foreignModel>
   <genPackages prefix="Cabin" basePackage="net.bhl.cdt.paxelerate" disposableProviderFactory="true"
-      ecorePackage="cabin.ecore#/">
+      loadInitialization="true" ecorePackage="cabin.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="cabin.ecore#//Sex">
       <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//Sex/male"/>
       <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//Sex/female"/>

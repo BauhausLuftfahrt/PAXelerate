@@ -6,7 +6,6 @@
 package net.bhl.cdt.paxelerate.ui;
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EPackage.Registry;
@@ -16,25 +15,18 @@ import org.eclipse.emf.ecp.core.util.ECPFilterProvider;
  * Filter all EPackages not associated with .cdt.paxelerate.
  * Used by ExtensionPoint filter.
  * 
- * @author David Otter, Michael Schmidt
+ * @author David Otter, Michael Schmidt, raoul.rothfeld
  *
  */
 public class DefaultFilterProvider implements ECPFilterProvider {
 
 	@Override
 	public Set<String> getHiddenPackages() {
-		String temp = null;
-		Set<String> hiddenElements = new HashSet<String>();
-		//All URIs
 		Set<String> relevantURIs = new HashSet<String>(Registry.INSTANCE.keySet());
-		Iterator<String> iterator = relevantURIs.iterator();
-		while (iterator.hasNext()){
-			temp = iterator.next();
-			if (!temp.contains("model")) {
-				hiddenElements.add(temp);
-			}
-		}
-		return hiddenElements;
+				
+		relevantURIs.remove("http://net.bhl.cdt.paxelerate.model/");
+		
+		return relevantURIs;
 	}
 
 }
