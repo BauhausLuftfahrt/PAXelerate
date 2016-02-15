@@ -64,10 +64,10 @@ public enum AircraftType implements Enumerator {
 	public static final int REGIONAL_VALUE = 0;
 
 	/**
-	 * The '<em><b>Narrowbody</b></em>' literal value.
+	 * The '<em><b>narrowbody</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Narrowbody</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>narrowbody</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
