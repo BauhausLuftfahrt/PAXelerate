@@ -190,8 +190,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="AircraftType">
     <eLiterals name="regional"/>
-    <eLiterals name="narrowbody" value="1" literal="narrowbody"/>
-    <eLiterals name="widebody" value="2" literal="widebody"/>
+    <eLiterals name="continental" value="1"/>
+    <eLiterals name="intercontinental" value="2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="PassengerMood">
     <eLiterals name="agressive"/>
