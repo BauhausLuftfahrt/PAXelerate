@@ -45,16 +45,13 @@ public class WelcomePage extends IntroPart implements IIntroPart {
 		newProjectButton.computeSize(SWT.DEFAULT, SWT.DEFAULT);
 		newProjectButton.addSelectionListener(new SelectionListener() {
 
-			/**
-			 * NewProjectCommand does no longer work - ECPHandlerHelper.createProject does the same job due it has
-			 * discouraged access it maybe has to be replaced in future versions
-			 */
 			@SuppressWarnings("restriction")
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				dispose();
 
 				ECPHandlerHelper.createProject(PlatformUI.getWorkbench().getDisplay().getActiveShell());
+
 			}
 
 			@Override
