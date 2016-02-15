@@ -26,6 +26,7 @@
       </win>
    </launcher>
 
+
    <vm>
    </vm>
 
@@ -130,6 +131,7 @@
       <plugin id="org.eclipse.emf.ecp.makeithappen.view.group.renderer"/>
       <plugin id="org.eclipse.emf.ecp.ui"/>
       <plugin id="org.eclipse.emf.ecp.ui.e3"/>
+      <plugin id="org.eclipse.emf.ecp.ui.rcp"/>
       <plugin id="org.eclipse.emf.ecp.ui.view"/>
       <plugin id="org.eclipse.emf.ecp.ui.view.editor.controls"/>
       <plugin id="org.eclipse.emf.ecp.ui.view.swt"/>
