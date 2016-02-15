@@ -2121,8 +2121,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 
 		initEEnum(aircraftTypeEEnum, AircraftType.class, "AircraftType");
 		addEEnumLiteral(aircraftTypeEEnum, AircraftType.REGIONAL);
-		addEEnumLiteral(aircraftTypeEEnum, AircraftType.CONTINENTAL);
-		addEEnumLiteral(aircraftTypeEEnum, AircraftType.INTERCONTINENTAL);
+		addEEnumLiteral(aircraftTypeEEnum, AircraftType.NARROWBODY);
+		addEEnumLiteral(aircraftTypeEEnum, AircraftType.WIDEBODY);
 
 		initEEnum(passengerMoodEEnum, PassengerMood.class, "PassengerMood");
 		addEEnumLiteral(passengerMoodEEnum, PassengerMood.AGRESSIVE);

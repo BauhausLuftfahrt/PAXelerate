@@ -29,24 +29,24 @@ public enum AircraftType implements Enumerator {
 	REGIONAL(0, "regional", "regional"),
 
 	/**
-	 * The '<em><b>Continental</b></em>' literal object.
+	 * The '<em><b>Narrowbody</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #CONTINENTAL_VALUE
+	 * @see #NARROWBODY_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	CONTINENTAL(1, "continental", "continental"),
+	NARROWBODY(1, "narrowbody", "narrowbody"),
 
 	/**
-	 * The '<em><b>Intercontinental</b></em>' literal object.
+	 * The '<em><b>widebody</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #INTERCONTINENTAL_VALUE
+	 * @see #NARROWBODY_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	INTERCONTINENTAL(2, "intercontinental", "intercontinental");
+	WIDEBODY(2, "widebody", "widebody");
 
 	/**
 	 * The '<em><b>Regional</b></em>' literal value.
@@ -64,34 +64,34 @@ public enum AircraftType implements Enumerator {
 	public static final int REGIONAL_VALUE = 0;
 
 	/**
-	 * The '<em><b>Continental</b></em>' literal value.
+	 * The '<em><b>Narrowbody</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Continental</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Narrowbody</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #CONTINENTAL
-	 * @model name="continental"
+	 * @see #NARROWBODY
+	 * @model name="narrowbody"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int CONTINENTAL_VALUE = 1;
+	public static final int NARROWBODY_VALUE = 1;
 
 	/**
-	 * The '<em><b>Intercontinental</b></em>' literal value.
+	 * The '<em><b>widebody</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Intercontinental</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>widebody</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #INTERCONTINENTAL
-	 * @model name="intercontinental"
+	 * @see #WIDEBODY
+	 * @model name="widebody"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int INTERCONTINENTAL_VALUE = 2;
+	public static final int WIDEBODY_VALUE = 2;
 
 	/**
 	 * An array of all the '<em><b>Aircraft Type</b></em>' enumerators.
@@ -102,8 +102,8 @@ public enum AircraftType implements Enumerator {
 	private static final AircraftType[] VALUES_ARRAY =
 		new AircraftType[] {
 			REGIONAL,
-			CONTINENTAL,
-			INTERCONTINENTAL,
+			NARROWBODY,
+			WIDEBODY,
 		};
 
 	/**
@@ -161,8 +161,8 @@ public enum AircraftType implements Enumerator {
 	public static AircraftType get(int value) {
 		switch (value) {
 			case REGIONAL_VALUE: return REGIONAL;
-			case CONTINENTAL_VALUE: return CONTINENTAL;
-			case INTERCONTINENTAL_VALUE: return INTERCONTINENTAL;
+			case NARROWBODY_VALUE: return NARROWBODY;
+			case WIDEBODY_VALUE: return WIDEBODY;
 		}
 		return null;
 	}

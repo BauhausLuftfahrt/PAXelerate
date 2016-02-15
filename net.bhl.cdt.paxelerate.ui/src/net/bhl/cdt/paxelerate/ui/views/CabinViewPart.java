@@ -330,10 +330,10 @@ public class CabinViewPart extends ViewPart {
 		case REGIONAL:
 			return ImageHelper.getImage(InfoViewPart.class, "/images/aircraft/regional.png");
 
-		case INTERCONTINENTAL:
+		case WIDEBODY:
 			return ImageHelper.getImage(InfoViewPart.class, "/images/aircraft/intercontinental.png");
 
-		case CONTINENTAL:
+		case NARROWBODY:
 			return ImageHelper.getImage(InfoViewPart.class, "/images/aircraft/continental.png");
 		default:
 			Log.add(this, "There is a problem with the aircraft type definition.");
