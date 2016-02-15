@@ -2,14 +2,6 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="org.eclipse.ui.perspectives">
-      <perspective
-            class="net.bhl.cdt.paxelerate.ui.perspective.PerspectiveFactory"
-            id="net.bhl.cdt.paxelerate.ui.perspective.paxelerate"
-            name="Paxelerate Perspective">
-      </perspective>
-   </extension>
-   <extension
          point="org.eclipse.ui.views">
       <view
             allowMultiple="false"
@@ -35,6 +27,14 @@
             name="Info View"
             restorable="true">
       </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="net.bhl.cdt.paxelerate.ui.perspective.PerspectiveFactory"
+            id="net.bhl.cdt.paxelerate.ui.perspective.paxelerate"
+            name="Paxelerate Perspective">
+      </perspective>
    </extension>
    <extension
          point="org.eclipse.ui.commands">

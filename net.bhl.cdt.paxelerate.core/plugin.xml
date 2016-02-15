@@ -15,10 +15,6 @@
                name="aboutImage"
                value="platform:/plugin/net.bhl.cdt.paxelerate.ui/images/about.png">
          </property>
-         <property
-               name="preferenceCustomization"
-               value="plugin_customization.ini">
-         </property>
       </product>
    </extension>
 
