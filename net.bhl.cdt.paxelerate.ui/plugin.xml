@@ -5,8 +5,8 @@
          point="org.eclipse.ui.perspectives">
       <perspective
             class="net.bhl.cdt.paxelerate.ui.perspective.PerspectiveFactory"
-            id="net.bhl.cdt.paxelerate.ui.perspective.perspectivefactory"
-            name="Perspective Factory">
+            id="net.bhl.cdt.paxelerate.ui.perspective.paxelerate"
+            name="Paxelerate Perspective">
       </perspective>
    </extension>
    <extension point="org.eclipse.ui.menus">
