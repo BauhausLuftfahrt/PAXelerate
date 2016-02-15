@@ -377,9 +377,9 @@ public class SimulationHandler {
 			agent.setInitialized(true);
 		}
 
-		if (SHOW_AREAMAP_ANIMATION) { 
-			runAreaMapWindow();
-		}
+//		if (SHOW_AREAMAP_ANIMATION) { 
+//			runAreaMapWindow();
+//		}
 	}
 
 	private int percentage(double now, double max) {
@@ -387,20 +387,20 @@ public class SimulationHandler {
 	}
 
 	private void runAreaMapWindow() {
-
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				simulationFrame = new JFrame("Simulation Detail View");
-				
-				// TODO disabled to unlink model from ui
-//				SimulationView simulationView = new SimulationView();
-//				simulationView.setAreamap(areamap);
-//				simulationFrame.setContentPane(simulationView);
-				
-				simulationFrame.pack();
-				simulationFrame.setVisible(true);
-			}
-		});
+//
+//		SwingUtilities.invokeLater(new Runnable() {
+//			public void run() {
+//				simulationFrame = new JFrame("Simulation Detail View");
+//				
+//				// TODO disabled to unlink model from ui
+////				SimulationView simulationView = new SimulationView();
+////				simulationView.setAreamap(areamap);
+////				simulationFrame.setContentPane(simulationView);
+//				
+//				simulationFrame.pack();
+//				simulationFrame.setVisible(true);
+//			}
+//		});
 	}
 
 }

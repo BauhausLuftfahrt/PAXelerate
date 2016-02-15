@@ -22,6 +22,7 @@ import org.eclipse.ui.splash.AbstractSplashHandler;
  * @since 3.3
  *
  */
+@Deprecated
 public class ExtensibleSplashHandler extends AbstractSplashHandler {
 	
 	private ArrayList fImageList;

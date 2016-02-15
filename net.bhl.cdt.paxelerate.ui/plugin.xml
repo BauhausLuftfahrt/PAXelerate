@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="net.bhl.cdt.paxelerate.ui.perspective.PerspectiveFactory"
+            id="net.bhl.cdt.paxelerate.ui.perspective.perspectivefactory"
+            name="Perspective Factory">
+      </perspective>
+   </extension>
    <extension point="org.eclipse.ui.menus">
       <menuContribution
             allPopups="false"
