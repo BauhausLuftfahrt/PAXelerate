@@ -19,7 +19,7 @@ import org.eclipse.emf.ecp.core.util.ECPFilterProvider;
  * @author David Otter, Michael Schmidt
  *
  */
-public class PAXDefaultFilterProvider implements ECPFilterProvider {
+public class DefaultFilterProvider implements ECPFilterProvider {
 
 	@Override
 	public Set<String> getHiddenPackages() {

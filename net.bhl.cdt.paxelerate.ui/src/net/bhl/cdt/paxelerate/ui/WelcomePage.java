@@ -13,6 +13,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.intro.IIntroPart;
 import org.eclipse.ui.part.IntroPart;
@@ -23,12 +24,16 @@ import org.eclipse.ui.part.IntroPart;
  * 
  * @author Michael Kagel, Michael Schmidt
  */
-public class PAXWelcomePage extends IntroPart implements IIntroPart {
+public class WelcomePage extends IntroPart implements IIntroPart {
 
 	@Override
 	public void createPartControl(Composite parent) {
 		Composite outerContainer = new Composite(parent, SWT.NONE);
 		outerContainer.setLayout(new GridLayout());
+		
+		Label newWelcomeLabel = new Label(outerContainer, SWT.NONE);
+		newWelcomeLabel.setLayoutData(new GridData(GridData.CENTER, GridData.CENTER, true, true));
+		newWelcomeLabel.setText("Welcome to PAXelerate - an open source passenger flow simulation framework for advanced aircraft cabin layouts!");
 
 		Composite buttonContainer = new Composite(outerContainer, SWT.NONE);
 		buttonContainer.setLayout(new GridLayout(2, true));
