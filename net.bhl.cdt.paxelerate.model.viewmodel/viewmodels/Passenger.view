@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="ASCII"?>
 <org.eclipse.emf.ecp.view.model:View xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.emf.ecp.view.group.model="http://org/eclipse/emf/ecp/view/group/model" xmlns:org.eclipse.emf.ecp.view.horizontal.model="http://org/eclipse/emf/ecp/view/horizontal/model" xmlns:org.eclipse.emf.ecp.view.model="http://org/eclipse/emf/ecp/view/model/170" xmlns:org.eclipse.emf.ecp.view.vertical.model="http://org/eclipse/emf/ecp/view/vertical/model" xmi:id="_230KQKS8EeWGjpaobu8CIA" name="Passenger" ecorePath="/net.bhl.cdt.paxelerate/model/cabin.ecore">
-  <rootEClass href="http://paxelerate.com/#//Passenger"/>
+  <rootEClass href="http://net.bhl.cdt.paxelerate.model/#//Passenger"/>
   <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout" xmi:id="_5D0HwKS8EeWGjpaobu8CIA">
     <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_6Ii7MKS8EeWGjpaobu8CIA">
       <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_7oYWQKS8EeWGjpaobu8CIA" name="General Data">
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235CzqS8EeWGjpaobu8CIA" name="Control Name">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235Cz6S8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//Passenger/Name"/>
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/Name"/>
           </domainModelReference>
         </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235CwKS8EeWGjpaobu8CIA" name="Control id">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235CwaS8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//Passenger/id"/>
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/id"/>
           </domainModelReference>
         </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235CwqS8EeWGjpaobu8CIA" name="Control sex">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235Cw6S8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//Passenger/sex"/>
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/sex"/>
           </domainModelReference>
         </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235CxqS8EeWGjpaobu8CIA" name="Control age">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235Cx6S8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//Passenger/age"/>
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/age"/>
           </domainModelReference>
         </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C7qS8EeWGjpaobu8CIA" name="Control luggage">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C76S8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//Passenger/luggage"/>
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/luggage"/>
           </domainModelReference>
         </children>
       </children>
       <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C6qS8EeWGjpaobu8CIA" name="Control passengerMood">
         <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C66S8EeWGjpaobu8CIA">
-          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//Passenger/passengerMood"/>
+          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/passengerMood"/>
         </domainModelReference>
       </children>
     </children>
@@ -40,27 +40,27 @@
       <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_8JxzIKS8EeWGjpaobu8CIA" name="Anthropometrics">
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235CxKS8EeWGjpaobu8CIA" name="Control height">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235CxaS8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//Passenger/height"/>
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/height"/>
           </domainModelReference>
         </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235CyKS8EeWGjpaobu8CIA" name="Control weight">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235CyaS8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//Passenger/weight"/>
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/weight"/>
           </domainModelReference>
         </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C1KS8EeWGjpaobu8CIA" name="Control width">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C1aS8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//Passenger/width"/>
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/width"/>
           </domainModelReference>
         </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C1qS8EeWGjpaobu8CIA" name="Control depth">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C16S8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//Passenger/depth"/>
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/depth"/>
           </domainModelReference>
         </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C4KS8EeWGjpaobu8CIA" name="Control walkingSpeed">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C4aS8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//Passenger/walkingSpeed"/>
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/walkingSpeed"/>
           </domainModelReference>
         </children>
       </children>
@@ -71,22 +71,22 @@
       <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_Lrje8KS9EeWGjpaobu8CIA" name="Seat">
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C6KS8EeWGjpaobu8CIA" name="Control travelClass">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C6aS8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EReference" href="http://paxelerate.com/#//Passenger/travelClass"/>
+            <domainModelEFeature xsi:type="ecore:EReference" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/travelClass"/>
           </domainModelReference>
         </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235CyqS8EeWGjpaobu8CIA" name="Control door">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235Cy6S8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EReference" href="http://paxelerate.com/#//Passenger/door"/>
+            <domainModelEFeature xsi:type="ecore:EReference" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/door"/>
           </domainModelReference>
         </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C0qS8EeWGjpaobu8CIA" name="Control seatRef">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C06S8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EReference" href="http://paxelerate.com/#//Passenger/seatRef"/>
+            <domainModelEFeature xsi:type="ecore:EReference" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/seatRef"/>
           </domainModelReference>
         </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235CzKS8EeWGjpaobu8CIA" name="Control seat">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235CzaS8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//Passenger/seat"/>
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/seat"/>
           </domainModelReference>
         </children>
       </children>
@@ -95,32 +95,32 @@
       <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_MAwS4KS9EeWGjpaobu8CIA" name="Results">
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C0KS8EeWGjpaobu8CIA" name="Control boardingTime">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C0aS8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//Passenger/boardingTime"/>
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/boardingTime"/>
           </domainModelReference>
         </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C5KS8EeWGjpaobu8CIA" name="Control numberOfWaits">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C5aS8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//Passenger/numberOfWaits"/>
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/numberOfWaits"/>
           </domainModelReference>
         </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C5qS8EeWGjpaobu8CIA" name="Control luggageStowTime">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C56S8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//Passenger/luggageStowTime"/>
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/luggageStowTime"/>
           </domainModelReference>
         </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C4qS8EeWGjpaobu8CIA" name="Control startBoardingAfterDelay">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C46S8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//Passenger/startBoardingAfterDelay"/>
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/startBoardingAfterDelay"/>
           </domainModelReference>
         </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C3qS8EeWGjpaobu8CIA" name="Control isSeated">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C36S8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//Passenger/isSeated"/>
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/isSeated"/>
           </domainModelReference>
         </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C7KS8EeWGjpaobu8CIA" name="makeWay" readonly="true">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C7aS8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//Passenger/numberOfMakeWayOperations"/>
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/numberOfMakeWayOperations"/>
           </domainModelReference>
         </children>
       </children>
@@ -129,17 +129,17 @@
   <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_YjHAMKS9EeWGjpaobu8CIA" name="Live Data">
     <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C2KS8EeWGjpaobu8CIA" name="Control orientationInDegree">
       <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C2aS8EeWGjpaobu8CIA">
-        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//Passenger/orientationInDegree"/>
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/orientationInDegree"/>
       </domainModelReference>
     </children>
     <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C2qS8EeWGjpaobu8CIA" name="Control positionX">
       <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C26S8EeWGjpaobu8CIA">
-        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//Passenger/positionX"/>
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/positionX"/>
       </domainModelReference>
     </children>
     <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C3KS8EeWGjpaobu8CIA" name="Control positionY">
       <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C3aS8EeWGjpaobu8CIA">
-        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//Passenger/positionY"/>
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/positionY"/>
       </domainModelReference>
     </children>
   </children>

@@ -51,11 +51,12 @@ https://bitbucket.org/paxelerate/paxelerate
 * *Import* the following plugins
 ```
 #!html
-net.bhl.cdt.paxelerate.agent
-net.bhl.cdt.paxelerate.astar
+
+net.bhl.cdt.paxelerate.core
 net.bhl.cdt.paxelerate.model
 net.bhl.cdt.paxelerate.model.edit
 net.bhl.cdt.paxelerate.model.viewmodel
+net.bhl.cdt.paxelerate.test
 net.bhl.cdt.paxelerate.ui
 net.bhl.cdt.paxelerate.util
 
@@ -65,7 +66,7 @@ net.bhl.cdt.paxelerate.util
 
 You can finally start PAXelerate now:
 
-* Expand *net.bhl.cdt.paxelerate.model* from the package explorer tree view
+* Expand *net.bhl.cdt.paxelerate.core* from the package explorer tree view
 * Right-click *paxelerate.product*
 * Select Run as/Eclipse Application
 

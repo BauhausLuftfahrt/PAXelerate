@@ -41,7 +41,7 @@ public class StringHelper {
 	public static boolean isInteger(String str) {
 		if (str.isEmpty())
 			return false;
-
+		
 		int length = str.length(), i = 0;
 		if (str.charAt(0) == '-') {
 			if (length == 1) {
@@ -52,7 +52,9 @@ public class StringHelper {
 		for (; i < length; i++) {
 			char c = str.charAt(i);
 			if (c < '0' || c > '9') {
+				if(c != '-') {
 				return false;
+				}
 			}
 		}
 		return true;

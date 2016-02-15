@@ -50,7 +50,6 @@ public class SimulationHandler {
 
 	public static final boolean SHOW_AREAMAP_ANIMATION = true;
 
-	private static JFrame simulationFrame;
 	private static ProgressHandler progress;
 	private static int progressValue = 0;
 	private static int percent = 0;
@@ -161,7 +160,6 @@ public class SimulationHandler {
 		accessPending.clear();
 		watch.reset();
 
-		simulationFrame = null;
 		progress = null;
 
 		progressValue = 0;
@@ -187,7 +185,6 @@ public class SimulationHandler {
 		}
 		if (finishedList.size() >= (cabin.getPassengers().size() - 1)) {
 			setSimulationDone(true);
-			simulationFrame.dispose();
 		}
 
 	}
@@ -337,31 +334,29 @@ public class SimulationHandler {
 			agentList.add(agent);
 		}
 
-		if (!OS.isMac()) {
-			javax.swing.SwingUtilities.invokeLater(new Runnable() {
-				public void run() {
-					progress = new ProgressHandler(agentList.size());
-					while (progressValue < agentList.size() - 1) {
-						progress.reportProgress(progressValue);
-						percent = percentage(progressValue, agentList.size());
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				progress = new ProgressHandler(agentList.size());
+				while (progressValue < agentList.size() - 1) {
+					progress.reportProgress(progressValue);
+					percent = percentage(progressValue, agentList.size());
 
-						// TODO: real progress indications for calculation of
-						// cost map could be implemented!
+					// TODO: real progress indications for calculation of
+					// cost map could be implemented!
 
-						if (percent < 10) {
-							progress.updateText("Initializing Path finding algorithms ...");
-						} else if (percent < 30) {
-							progress.updateText("Creating the agent objects ...");
-						} else if (percent < 90) {
-							progress.updateText("Calculating the paths for every passenger ...");
-						} else {
-							progress.updateText("Finishing calculations ...");
-						}
+					if (percent < 10) {
+						progress.updateText("Initializing Path finding algorithms ...");
+					} else if (percent < 30) {
+						progress.updateText("Creating the agent objects ...");
+					} else if (percent < 90) {
+						progress.updateText("Calculating the paths for every passenger ...");
+					} else {
+						progress.updateText("Finishing calculations ...");
 					}
-					progress.done();
 				}
-			});
-		}
+				progress.done();
+			}
+		});
 
 		/* First generate all paths ... */
 		for (Agent agent : agentList) {
@@ -376,31 +371,9 @@ public class SimulationHandler {
 			agent.start();
 			agent.setInitialized(true);
 		}
-
-		if (SHOW_AREAMAP_ANIMATION) { 
-			runAreaMapWindow();
-		}
 	}
 
 	private int percentage(double now, double max) {
 		return (int) ((now / max) * 100.0);
 	}
-
-	private void runAreaMapWindow() {
-
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				simulationFrame = new JFrame("Simulation Detail View");
-				
-				// TODO disabled to unlink model from ui
-//				SimulationView simulationView = new SimulationView();
-//				simulationView.setAreamap(areamap);
-//				simulationFrame.setContentPane(simulationView);
-				
-				simulationFrame.pack();
-				simulationFrame.setVisible(true);
-			}
-		});
-	}
-
 }

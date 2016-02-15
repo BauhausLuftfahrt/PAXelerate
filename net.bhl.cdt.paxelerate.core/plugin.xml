@@ -5,15 +5,19 @@
          id="paxelerateProduct"
          point="org.eclipse.core.runtime.products">
       <product
-            application="net.bhl.cdt.client.application"
-            name="Paxelerate">
+      		name="PAXelerate"
+            application="net.bhl.cdt.client.application">
          <property
                name="appName"
-               value="Paxelerate">
+               value="PAXelerate">
          </property>
          <property
                name="aboutImage"
                value="platform:/plugin/net.bhl.cdt.paxelerate.ui/images/about.png">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
          </property>
       </product>
    </extension>

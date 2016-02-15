@@ -8,6 +8,9 @@ package net.bhl.cdt.paxelerate.ui.commands;
 
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Shell;
@@ -144,10 +147,11 @@ public class SimulateBoardingCommand extends CDTCommand {
 								(int) (cabin.getCabinLength() / cabin
 										.getScale())), cabin);
 
+				// Show WIP simulation view
+				runAreaMapWindow();
+				
 				while (!SimulationHandler.isSimulationDone()) {
-					// try {
-					for (Passenger pax : ModelHelper.getChildrenByClass(
-							handler.getPassengerLocations(), Passenger.class)) {
+					for (Passenger pax : SimulationHandler.getCabin().getPassengers()) {
 						if (pax.isIsSeated()
 								&& !alreadySeatedList.contains(pax)) {
 							alreadySeatedList.add(pax);
@@ -215,5 +219,19 @@ public class SimulateBoardingCommand extends CDTCommand {
 		
 		// THIS IS IMPORTANT:
 		cabinViewPart.clearCache();
+	}
+	
+	private void runAreaMapWindow() {
+
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				JFrame simulationFrame = new JFrame("Simulation Detail View");
+				SimulationView simulationView = new SimulationView();
+				simulationView.setAreamap(SimulationHandler.getMap());
+				simulationFrame.setContentPane(simulationView);
+				simulationFrame.pack();
+				simulationFrame.setVisible(true);
+			}
+		});
 	}
 }

@@ -3,7 +3,6 @@
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ******************************************************************************/
-
 package net.bhl.cdt.paxelerate.ui.views;
 
 import java.io.File;
@@ -305,14 +304,15 @@ public class CabinViewPart extends ViewPart {
 			}
 		}
 		gc.dispose();
-		loader = new ImageLoader();
-		loader.data = new ImageData[] { image.getImageData() };
-		try {
-			loader.save(FILE_PATH + "aircraft_rendered.png", SWT.IMAGE_PNG);
-		} catch (Exception e) {
-			Log.add(this,
-					"The background image could not be saved! Directory problem.");
-		}
+		// Temporarily do not save image
+//		loader = new ImageLoader();
+//		loader.data = new ImageData[] { image.getImageData() };
+//		try {
+//			loader.save(FILE_PATH + "aircraft_rendered.png", SWT.IMAGE_PNG);
+//		} catch (Exception e) {
+//			Log.add(this,
+//					"The background image could not be saved! Directory problem.");
+//		}
 		return image;
 	}
 

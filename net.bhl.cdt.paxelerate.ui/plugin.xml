@@ -1,25 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension point="org.eclipse.ui.menus">
-      <menuContribution
-            allPopups="false"
-            locationURI="menu:org.eclipse.ui.main.menu">
-         <menu label="Cabin">
-            <command
-                  commandId="net.bhl.cdt.paxelerate.ui.DrawCabin"
-                  label="Refresh Cabin View"
-                  style="push">
-            </command>
-         </menu>
-         <menu label="Help">
-             <command
-             	  commandId="net.bhl.cdt.paxelerate.ui.DrawCabin"
-                  label="Raoul Test"
-                  style="push">
-            </command>
-         </menu>
-      </menuContribution>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="net.bhl.cdt.paxelerate.ui.perspective.PerspectiveFactory"
+            id="net.bhl.cdt.paxelerate.ui.perspective.paxelerate"
+            name="Paxelerate Perspective">
+      </perspective>
    </extension>
    <extension
          point="org.eclipse.ui.views">
@@ -33,18 +21,18 @@
       </view>
       <view
             allowMultiple="false"
-            class="net.bhl.cdt.paxelerate.ui.views.InfoViewPart"
-            icon="images/icons/passenger.png"
-            id="net.bhl.cdt.paxelerate.ui.views.infoview"
-            name="Info View"
-            restorable="true">
-      </view>
-      <view
-            allowMultiple="false"
             class="net.bhl.cdt.paxelerate.ui.views.PropertyViewPart"
             icon="images/icons/passenger.png"
             id="net.bhl.cdt.paxelerate.ui.propertyview"
             name="Property View"
+            restorable="true">
+      </view>
+      <view
+            allowMultiple="false"
+            class="net.bhl.cdt.paxelerate.ui.views.InfoViewPart"
+            icon="images/icons/passenger.png"
+            id="net.bhl.cdt.paxelerate.ui.views.infoview"
+            name="Info View"
             restorable="true">
       </view>
    </extension>
@@ -195,5 +183,23 @@
             class="net.bhl.cdt.paxelerate.ui.splashHandlers.BrowserSplashHandler"
             id="net.bhl.cdt.paxelerate.ui.splashHandlers.browser">
       </splashHandler>
+   </extension>
+   <extension
+         point="org.eclipse.emf.ecp.core.filters">
+      <FilterProvider
+            class="net.bhl.cdt.paxelerate.ui.DefaultFilterProvider">
+      </FilterProvider>
+   </extension>
+   <extension
+         point="org.eclipse.ui.intro">
+      <introProductBinding
+            introId="net.bhl.cdt.paxelerate.ui.intro"
+            productId="net.bhl.cdt.paxelerate.core.paxelerateProduct">
+      </introProductBinding>
+      <intro
+            class="net.bhl.cdt.paxelerate.ui.WelcomePage"
+            id="net.bhl.cdt.paxelerate.ui.intro"
+            label="PAXelerate Welcome Page">
+      </intro>
    </extension>
 </plugin>

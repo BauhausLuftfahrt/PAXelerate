@@ -17,6 +17,7 @@ import org.eclipse.ui.splash.AbstractSplashHandler;
  * @since 3.3
  * 
  */
+@Deprecated
 public class BrowserSplashHandler extends AbstractSplashHandler {
 
 	private final static String F_BROWSER_URL = "http://www.google.com"; //NON-NLS-1

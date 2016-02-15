@@ -55,13 +55,10 @@ public class SimulationView extends JPanel implements MouseListener {
 	}
 
 	public SimulationView() {
-		System.out.println(getLineNumber());
 		this.setPreferredSize(new Dimension(Screen.getWidth() - 20,
 				BOX_HEIGHT));
-		System.out.println(getLineNumber());
 		cabinWidth = SimulationHandler.getCabin().getCabinWidth()
 				/ (double) SimulationHandler.getCabin().getScale();
-		System.out.println(getLineNumber());
 		Thread gameThread = new Thread() {
 
 			public void run() {
@@ -70,11 +67,9 @@ public class SimulationView extends JPanel implements MouseListener {
 				}
 			}
 		};
-		System.out.println(getLineNumber());
 		gameThread.start(); // Callback run()
 		watch = new StopWatch();
 		watch.start();
-		System.out.println(getLineNumber());
 		leftButton = new Button();
 		rightButton = new Button();
 
@@ -92,7 +87,6 @@ public class SimulationView extends JPanel implements MouseListener {
 			}
 			j++;
 		}
-		System.out.println(getLineNumber());
 		addMouseListener(this);
 
 		leftButton.setFocusable(false);
@@ -100,7 +94,6 @@ public class SimulationView extends JPanel implements MouseListener {
 		faster.setFocusable(false);
 		slower.setFocusable(false);
 		stop.setFocusable(false);
-		System.out.println(getLineNumber());
 		faster.setLabel("faster");
 		faster.setEnabled(true);
 		faster.addActionListener(new ActionListener() {
@@ -116,7 +109,6 @@ public class SimulationView extends JPanel implements MouseListener {
 				}
 			}
 		});
-		System.out.println(getLineNumber());
 		slower.setLabel("slower");
 		slower.setEnabled(true);
 		slower.addActionListener(new ActionListener() {
@@ -132,7 +124,6 @@ public class SimulationView extends JPanel implements MouseListener {
 				}
 			}
 		});
-		System.out.println(getLineNumber());
 		stop.setLabel("STOP");
 		stop.setEnabled(true);
 		stop.addActionListener(new ActionListener() {
@@ -141,7 +132,6 @@ public class SimulationView extends JPanel implements MouseListener {
 				interrupted = true;
 			}
 		});
-		System.out.println(getLineNumber());
 		this.add(slower);
 		this.add(faster);
 
@@ -171,13 +161,11 @@ public class SimulationView extends JPanel implements MouseListener {
 			}
 		});
 		this.add(rightButton);
-		System.out.println(getLineNumber());
 
 	}
 
 	public void setAreamap(AreaMap areamap) {
 		this.areamap = areamap;
-		System.out.println(getLineNumber());
 	}
 
 	public Color switchColor(Agent.State state) {
@@ -393,9 +381,5 @@ public class SimulationView extends JPanel implements MouseListener {
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 
-	}
-	
-	public int getLineNumber() {
-		return Thread.currentThread().getStackTrace()[2].getLineNumber();
 	}
 }

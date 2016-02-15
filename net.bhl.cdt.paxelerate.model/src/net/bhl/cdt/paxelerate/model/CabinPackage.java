@@ -42,7 +42,7 @@ public interface CabinPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://paxelerate.com/";
+	String eNS_URI = "http://net.bhl.cdt.paxelerate.model/";
 
 	/**
 	 * The package namespace name.
