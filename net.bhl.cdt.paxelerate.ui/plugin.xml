@@ -9,26 +9,6 @@
             name="Paxelerate Perspective">
       </perspective>
    </extension>
-   <extension point="org.eclipse.ui.menus">
-      <menuContribution
-            allPopups="false"
-            locationURI="menu:org.eclipse.ui.main.menu">
-         <menu label="Cabin">
-            <command
-                  commandId="net.bhl.cdt.paxelerate.ui.DrawCabin"
-                  label="Refresh Cabin View"
-                  style="push">
-            </command>
-         </menu>
-         <menu label="Help">
-             <command
-             	  commandId="net.bhl.cdt.paxelerate.ui.DrawCabin"
-                  label="Raoul Test"
-                  style="push">
-            </command>
-         </menu>
-      </menuContribution>
-   </extension>
    <extension
          point="org.eclipse.ui.views">
       <view
@@ -41,18 +21,18 @@
       </view>
       <view
             allowMultiple="false"
-            class="net.bhl.cdt.paxelerate.ui.views.InfoViewPart"
-            icon="images/icons/passenger.png"
-            id="net.bhl.cdt.paxelerate.ui.views.infoview"
-            name="Info View"
-            restorable="true">
-      </view>
-      <view
-            allowMultiple="false"
             class="net.bhl.cdt.paxelerate.ui.views.PropertyViewPart"
             icon="images/icons/passenger.png"
             id="net.bhl.cdt.paxelerate.ui.propertyview"
             name="Property View"
+            restorable="true">
+      </view>
+      <view
+            allowMultiple="false"
+            class="net.bhl.cdt.paxelerate.ui.views.InfoViewPart"
+            icon="images/icons/passenger.png"
+            id="net.bhl.cdt.paxelerate.ui.views.infoview"
+            name="Info View"
             restorable="true">
       </view>
    </extension>
