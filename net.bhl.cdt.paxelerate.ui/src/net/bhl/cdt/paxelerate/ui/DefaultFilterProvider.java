@@ -30,7 +30,7 @@ public class DefaultFilterProvider implements ECPFilterProvider {
 		Iterator<String> iterator = relevantURIs.iterator();
 		while (iterator.hasNext()){
 			temp = iterator.next();
-			if (!temp.contains("cabin")) {
+			if (!temp.contains("model")) {
 				hiddenElements.add(temp);
 			}
 		}
