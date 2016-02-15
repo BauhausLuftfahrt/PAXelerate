@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="ASCII"?>
-<org.eclipse.emf.ecp.view.model:View xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.emf.ecp.view.group.model="http://org/eclipse/emf/ecp/view/group/model" xmlns:org.eclipse.emf.ecp.view.horizontal.model="http://org/eclipse/emf/ecp/view/horizontal/model" xmlns:org.eclipse.emf.ecp.view.model="http://org/eclipse/emf/ecp/view/model/170" xmi:id="_A3Er4KTBEeWGjpaobu8CIA" name="SimulationResult" ecorePath="/net.bhl.cdt.paxelerate/model/cabin.ecore">
-  <rootEClass href="http://paxelerate.com/#//SimulationResult"/>
+<org.eclipse.emf.ecp.view.model:View xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.emf.ecp.view.group.model="http://org/eclipse/emf/ecp/view/group/model" xmlns:org.eclipse.emf.ecp.view.horizontal.model="http://org/eclipse/emf/ecp/view/horizontal/model" xmlns:org.eclipse.emf.ecp.view.model="http://org/eclipse/emf/ecp/view/model/170" xmi:id="_A3Er4KTBEeWGjpaobu8CIA" name="SimulationResult" ecorePath="/net.bhl.cdt.paxelerate.model/model/cabin.ecore">
+  <rootEClass href="http://bhl.net/cdt/model/cabin#//SimulationResult"/>
   <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout" xmi:id="_CP3DwKTBEeWGjpaobu8CIA">
     <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_CeNBwKTBEeWGjpaobu8CIA" name="General" readonly="true">
       <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_A3I9WKTBEeWGjpaobu8CIA" name="Control date">
         <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_A3I9WaTBEeWGjpaobu8CIA">
-          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//SimulationResult/date"/>
+          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin#//SimulationResult/date"/>
         </domainModelReference>
       </children>
       <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_A3I9VKTBEeWGjpaobu8CIA" name="Control name">
         <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_A3I9VaTBEeWGjpaobu8CIA">
-          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//SimulationResult/name"/>
+          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin#//SimulationResult/name"/>
         </domainModelReference>
       </children>
       <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_A3I9VqTBEeWGjpaobu8CIA" name="Control id">
         <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_A3I9V6TBEeWGjpaobu8CIA">
-          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//SimulationResult/id"/>
+          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin#//SimulationResult/id"/>
         </domainModelReference>
       </children>
     </children>
     <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_CrAusKTBEeWGjpaobu8CIA" name="Results" readonly="true">
       <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_A3I9UKTBEeWGjpaobu8CIA" name="Control boardingTime">
         <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_A3I9UaTBEeWGjpaobu8CIA">
-          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//SimulationResult/boardingTime"/>
+          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin#//SimulationResult/boardingTime"/>
         </domainModelReference>
       </children>
       <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_A3I9WqTBEeWGjpaobu8CIA" name="Control boardingTimeString">
         <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_A3I9W6TBEeWGjpaobu8CIA">
-          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//SimulationResult/boardingTimeString"/>
+          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin#//SimulationResult/boardingTimeString"/>
         </domainModelReference>
       </children>
       <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_A3I9UqTBEeWGjpaobu8CIA" name="Control passengers">
         <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_A3I9U6TBEeWGjpaobu8CIA">
-          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://paxelerate.com/#//SimulationResult/passengers"/>
+          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://bhl.net/cdt/model/cabin#//SimulationResult/passengers"/>
         </domainModelReference>
       </children>
     </children>

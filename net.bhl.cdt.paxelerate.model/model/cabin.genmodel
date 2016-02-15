@@ -21,8 +21,8 @@
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="cabin.ecore#//AircraftType">
       <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//AircraftType/regional"/>
-      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//AircraftType/continental"/>
-      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//AircraftType/intercontinental"/>
+      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//AircraftType/narrowbody"/>
+      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//AircraftType/widebody"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="cabin.ecore#//PassengerMood">
       <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//PassengerMood/agressive"/>
