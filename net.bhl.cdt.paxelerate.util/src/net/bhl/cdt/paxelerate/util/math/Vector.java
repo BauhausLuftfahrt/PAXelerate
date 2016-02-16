@@ -113,11 +113,11 @@ public abstract class Vector implements Comparable<Vector> {
 	}
 
 	/**
-	 * This method compares two nodes.
+	 * This method compares two nodes within the A* environment. Do not use it for equality comparison!
 	 * 
 	 * @param otherNode
 	 *            the other node
-	 * @return returns the better node value
+	 * @return returns the better node value in terms of cost and distance
 	 */
 	
 	/* TODO: The method compareTo() is essential for the A* Algorithm and should not be used for equality comparison of two vectors.
@@ -148,5 +148,27 @@ public abstract class Vector implements Comparable<Vector> {
 				}
 			}
 		}
+	}
+	
+	/**
+	 * This method compares two vectors for equality.
+	 * 
+	 * @param the object being compared to the node
+	 * 
+	 * @return vectors are equal or not
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if((obj != null) && (obj instanceof Vector)) {
+			Vector vector = (Vector) obj;
+			if(dimensions == vector.getNumberOfDimensions()) {
+				if((xValue == vector.getX()) &&
+						(yValue == vector.getY()) &&
+						(zValue == vector.getZ())) {
+					return true;					
+				}
+			}
+		}
+	return false;
 	}
 }

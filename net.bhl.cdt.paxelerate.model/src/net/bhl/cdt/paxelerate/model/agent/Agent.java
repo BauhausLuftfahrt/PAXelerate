@@ -448,7 +448,7 @@ public class Agent extends Subject implements Runnable {
 	 * @return
 	 */
 	private boolean goalReached() {
-		return (desiredPosition.compareTo(goal) == 0);
+		return (desiredPosition.equals(goal));
 	}
 
 	/**
