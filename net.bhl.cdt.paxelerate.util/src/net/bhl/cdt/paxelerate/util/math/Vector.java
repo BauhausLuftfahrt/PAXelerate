@@ -119,6 +119,12 @@ public abstract class Vector implements Comparable<Vector> {
 	 *            the other node
 	 * @return returns the better node value
 	 */
+	
+	/* TODO: The method compareTo() is essential for the A* Algorithm and should not be used for equality comparison of two vectors.
+	 * It should solely be used for the path finding purposes, requiring both the distances (XYZ) and the cost of each node.
+	 */
+	
+	@Deprecated
 	public int compareTo(Vector vector) {
 		int better = -1;
 		int equal = 0;

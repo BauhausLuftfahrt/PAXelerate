@@ -117,15 +117,16 @@ public class Core {
 				if (neighbor.getProperty() != Property.OBSTACLE) {
 
 					/* calculate the neighbors distance from start */
-					if (map.getNode(agent.getStart()) == null) {
-						// System.out.println("start ist null");
-					}
-
 					int neighborDistanceFromStart = (int) map
 							.getDistanceBetween(map.getNode(agent.getStart()),
 									neighbor);
+					
+					/* calculate the neighbors distance from start */
+					int currentDistanceFromStart = (int) map
+							.getDistanceBetween(map.getNode(agent.getStart()),
+									current);
 
-					/* calculate the neighbors cost from start */
+					/* calculate the neighbors cost */
 					int neighborCostFromStart = costmap.getCost(neighbor
 							.getPosition());
 
@@ -141,6 +142,12 @@ public class Core {
 						/* it is better if the other node is cheaper */
 					} else if (neighborCostFromStart < currentCostFromStart) {
 						neighborIsBetter = true;
+						
+						/* it is better if the other node is closer */ 
+					} else if(neighborDistanceFromStart < currentDistanceFromStart) {
+						neighborIsBetter = true;
+						
+						/* if no criteria is matched, the node is worse */
 					} else {
 						neighborIsBetter = false;
 					}

@@ -43,6 +43,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 	private Cabin cabin;
 	private static ArrayList<Passenger> alreadySeatedList = new ArrayList<Passenger>();
+	private JFrame simulationFrame;
 
 	/**
 	 * This is the constructor method of the SimulateBoardingCommand.
@@ -162,6 +163,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 					}
 				}
 				if (SimulationHandler.isSimulationDone()) {
+					
+					/* closes the simulation view after completion */
+					simulationFrame.dispose();
 
 					if (Exporter.generateHeatmapFile("Heat Map",
 							SimulationHandler.getMap())) {
@@ -225,7 +229,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				JFrame simulationFrame = new JFrame("Simulation Detail View");
+				simulationFrame = new JFrame("Simulation Detail View");
 				SimulationView simulationView = new SimulationView();
 				simulationView.setAreamap(SimulationHandler.getMap());
 				simulationFrame.setContentPane(simulationView);

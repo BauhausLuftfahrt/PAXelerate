@@ -231,16 +231,12 @@ public class AreaMap {
 	 * @return the distance between the nodes
 	 */
 	public double getDistanceBetween(Node node1, Node node2) {
-		try {
-			int exponent = 2;
-			double first = Math.pow((node2.getPosition().getX() - node1
-					.getPosition().getX()), exponent);
-			double second = Math.pow((node2.getPosition().getY() - node1
-					.getPosition().getY()), exponent);
-			return Math.sqrt(first + second);
-		} catch (NullPointerException e) {
-			return Double.MAX_VALUE;
-		}
+		int exponent = 2;
+		double first = Math.pow((node2.getPosition().getX() - node1
+				.getPosition().getX()), exponent);
+		double second = Math.pow((node2.getPosition().getY() - node1
+				.getPosition().getY()), exponent);
+		return Math.sqrt(first + second);
 	}
 
 	/**
