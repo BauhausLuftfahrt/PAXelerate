@@ -1,0 +1,1398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<history:History xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:history="http://www.eclipse.org/emf/edapt/history/0.3">
+  <releases date="2016-02-16T10:34:31.239+0100" label="Initial Release Alpha 0.5">
+    <changes xsi:type="history:CompositeChange">
+      <changes xsi:type="history:Create" element="cabin.ecore#/">
+        <changes xsi:type="history:Set" element="cabin.ecore#/" featureName="name"
+            dataValue="model"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#/" featureName="nsURI"
+            dataValue="http://net.bhl.cdt.paxelerate.model/"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#/" featureName="nsPrefix"
+            dataValue="net.bhl.cdt.paxelerate"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//Cabin">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin" featureName="name"
+            dataValue="Cabin"/>
+        <changes xsi:type="history:Add" element="cabin.ecore#//Cabin" featureName="eSuperTypes"
+            referenceValue="../../net.bhl.cdt.model/model/model.ecore#//NamedElement"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Cabin" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Cabin/cabinLength">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/cabinLength"
+            featureName="name" dataValue="cabinLength"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/cabinLength"
+            featureName="defaultValueLiteral" dataValue="2412"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/cabinLength"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Cabin" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Cabin/cabinWidth">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/cabinWidth" featureName="name"
+            dataValue="cabinWidth"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/cabinWidth" featureName="defaultValueLiteral"
+            dataValue="364"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/cabinWidth" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Cabin" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Cabin/rowNonexistent">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/rowNonexistent"
+            featureName="name" dataValue="rowNonexistent"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/rowNonexistent"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Cabin" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Cabin/aisleWidth">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/aisleWidth" featureName="name"
+            dataValue="aisleWidth"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/aisleWidth" featureName="defaultValueLiteral"
+            dataValue="64"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/aisleWidth" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Cabin" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Cabin/framesPerSecond">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/framesPerSecond"
+            featureName="name" dataValue="framesPerSecond"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/framesPerSecond"
+            featureName="defaultValueLiteral" dataValue="5"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/framesPerSecond"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Cabin" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Cabin/numberOfDecks">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/numberOfDecks"
+            featureName="name" dataValue="numberOfDecks"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/numberOfDecks"
+            featureName="defaultValueLiteral" dataValue="1"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/numberOfDecks"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Cabin" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Cabin/scale">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/scale" featureName="name"
+            dataValue="scale"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/scale" featureName="defaultValueLiteral"
+            dataValue="10"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/scale" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Cabin" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Cabin/usePresetSettings">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/usePresetSettings"
+            featureName="name" dataValue="usePresetSettings"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/usePresetSettings"
+            featureName="defaultValueLiteral" dataValue="false"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/usePresetSettings"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Cabin" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Cabin/speedFactor">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/speedFactor"
+            featureName="name" dataValue="speedFactor"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/speedFactor"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//Row">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Row" featureName="name"
+            dataValue="Row"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Row" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Row/rowNumber">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Row/rowNumber" featureName="name"
+            dataValue="rowNumber"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Row/rowNumber" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Row" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Row/offsetInRow">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Row/offsetInRow" featureName="name"
+            dataValue="offsetInRow"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Row/offsetInRow" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//TravelClass">
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass" featureName="name"
+            dataValue="TravelClass"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Cabin" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Cabin/classes">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/classes" featureName="name"
+            dataValue="classes"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/classes" featureName="lowerBound"
+            dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/classes" featureName="upperBound"
+            dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/classes" featureName="containment"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/classes" featureName="eType"
+            referenceValue="cabin.ecore#//TravelClass"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//TravelClass" referenceName="eOperations"
+          element="cabin.ecore#//TravelClass/tooManyPassengers">
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/tooManyPassengers"
+            featureName="name" dataValue="tooManyPassengers"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/tooManyPassengers"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//TravelClass/tooManyPassengers"
+          referenceName="eParameters" element="cabin.ecore#//TravelClass/tooManyPassengers/chain">
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/tooManyPassengers/chain"
+            featureName="name" dataValue="chain"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/tooManyPassengers/chain"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//TravelClass/tooManyPassengers"
+          referenceName="eParameters" element="cabin.ecore#//TravelClass/tooManyPassengers/context">
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/tooManyPassengers/context"
+            featureName="name" dataValue="context"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/tooManyPassengers/context"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//TravelClass" referenceName="eOperations"
+          element="cabin.ecore#//TravelClass/wrongRowStructure">
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/wrongRowStructure"
+            featureName="name" dataValue="wrongRowStructure"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/wrongRowStructure"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//TravelClass/wrongRowStructure"
+          referenceName="eParameters" element="cabin.ecore#//TravelClass/wrongRowStructure/chain">
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/wrongRowStructure/chain"
+            featureName="name" dataValue="chain"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/wrongRowStructure/chain"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//TravelClass/wrongRowStructure"
+          referenceName="eParameters" element="cabin.ecore#//TravelClass/wrongRowStructure/context">
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/wrongRowStructure/context"
+            featureName="name" dataValue="context"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/wrongRowStructure/context"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//TravelClass" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//TravelClass/rows">
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/rows" featureName="name"
+            dataValue="rows"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/rows" featureName="lowerBound"
+            dataValue="2" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/rows" featureName="upperBound"
+            dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/rows" featureName="containment"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/rows" featureName="eType"
+            referenceValue="cabin.ecore#//Row"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//TravelClass" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//TravelClass/sequence">
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/sequence"
+            featureName="name" dataValue="sequence"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/sequence"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//TravelClass" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//TravelClass/passengers">
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/passengers"
+            featureName="name" dataValue="passengers"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/passengers"
+            featureName="defaultValueLiteral" dataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/passengers"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//TravelClass" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//TravelClass/availableSeats">
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/availableSeats"
+            featureName="name" dataValue="availableSeats"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/availableSeats"
+            featureName="defaultValueLiteral" dataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/availableSeats"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//TravelClass" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//TravelClass/seatPitch">
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/seatPitch"
+            featureName="name" dataValue="seatPitch"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/seatPitch"
+            featureName="defaultValueLiteral" dataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/seatPitch"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//TravelClass" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//TravelClass/seatLength">
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/seatLength"
+            featureName="name" dataValue="seatLength"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/seatLength"
+            featureName="defaultValueLiteral" dataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/seatLength"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//TravelClass" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//TravelClass/seatWidth">
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/seatWidth"
+            featureName="name" dataValue="seatWidth"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/seatWidth"
+            featureName="defaultValueLiteral" dataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/seatWidth"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//TravelClass" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//TravelClass/name">
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/name" featureName="name"
+            dataValue="name"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/name" featureName="defaultValueLiteral"
+            dataValue="Placeholder String"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/name" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//TravelClass" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//TravelClass/rowStructure">
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/rowStructure"
+            featureName="name" dataValue="rowStructure"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/rowStructure"
+            featureName="defaultValueLiteral" dataValue="3-3"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//TravelClass/rowStructure"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//BusinessClass">
+        <changes xsi:type="history:Set" element="cabin.ecore#//BusinessClass" featureName="name"
+            dataValue="BusinessClass"/>
+        <changes xsi:type="history:Add" element="cabin.ecore#//BusinessClass" featureName="eSuperTypes"
+            referenceValue="cabin.ecore#//TravelClass"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//FirstClass">
+        <changes xsi:type="history:Set" element="cabin.ecore#//FirstClass" featureName="name"
+            dataValue="FirstClass"/>
+        <changes xsi:type="history:Add" element="cabin.ecore#//FirstClass" featureName="eSuperTypes"
+            referenceValue="cabin.ecore#//TravelClass"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//EconomyClass">
+        <changes xsi:type="history:Set" element="cabin.ecore#//EconomyClass" featureName="name"
+            dataValue="EconomyClass"/>
+        <changes xsi:type="history:Add" element="cabin.ecore#//EconomyClass" featureName="eSuperTypes"
+            referenceValue="cabin.ecore#//TravelClass"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//PremiumEconomyClass">
+        <changes xsi:type="history:Set" element="cabin.ecore#//PremiumEconomyClass"
+            featureName="name" dataValue="PremiumEconomyClass"/>
+        <changes xsi:type="history:Add" element="cabin.ecore#//PremiumEconomyClass"
+            featureName="eSuperTypes" referenceValue="cabin.ecore#//TravelClass"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//Passenger">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger" featureName="name"
+            dataValue="Passenger"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Cabin" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Cabin/passengers">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/passengers" featureName="name"
+            dataValue="passengers"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/passengers" featureName="upperBound"
+            dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/passengers" featureName="containment"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/passengers" featureName="eType"
+            referenceValue="cabin.ecore#//Passenger"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Passenger" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Passenger/id">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/id" featureName="name"
+            dataValue="id"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/id" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Passenger" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Passenger/height">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/height" featureName="name"
+            dataValue="height"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/height" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Passenger" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Passenger/age">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/age" featureName="name"
+            dataValue="age"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/age" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Passenger" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Passenger/weight">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/weight" featureName="name"
+            dataValue="weight"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/weight" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Passenger" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Passenger/seat">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/seat" featureName="name"
+            dataValue="seat"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/seat" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Passenger" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Passenger/Name">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/Name" featureName="name"
+            dataValue="Name"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/Name" featureName="defaultValueLiteral"
+            dataValue="Mr. Placeholder"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/Name" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Passenger" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Passenger/boardingTime">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/boardingTime"
+            featureName="name" dataValue="boardingTime"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/boardingTime"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Passenger" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Passenger/width">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/width" featureName="name"
+            dataValue="width"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/width" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Passenger" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Passenger/depth">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/depth" featureName="name"
+            dataValue="depth"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/depth" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Passenger" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Passenger/orientationInDegree">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/orientationInDegree"
+            featureName="name" dataValue="orientationInDegree"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/orientationInDegree"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Passenger" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Passenger/positionX">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/positionX"
+            featureName="name" dataValue="positionX"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/positionX"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Passenger" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Passenger/positionY">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/positionY"
+            featureName="name" dataValue="positionY"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/positionY"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Passenger" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Passenger/isSeated">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/isSeated"
+            featureName="name" dataValue="isSeated"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/isSeated"
+            featureName="defaultValueLiteral" dataValue="false"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/isSeated"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Passenger" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Passenger/walkingSpeed">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/walkingSpeed"
+            featureName="name" dataValue="walkingSpeed"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/walkingSpeed"
+            featureName="defaultValueLiteral" dataValue="2.0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/walkingSpeed"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Passenger" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Passenger/startBoardingAfterDelay">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/startBoardingAfterDelay"
+            featureName="name" dataValue="startBoardingAfterDelay"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/startBoardingAfterDelay"
+            featureName="defaultValueLiteral" dataValue="1.0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/startBoardingAfterDelay"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Passenger" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Passenger/numberOfWaits">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/numberOfWaits"
+            featureName="name" dataValue="numberOfWaits"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/numberOfWaits"
+            featureName="defaultValueLiteral" dataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/numberOfWaits"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Passenger" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Passenger/luggageStowTime">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/luggageStowTime"
+            featureName="name" dataValue="luggageStowTime"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/luggageStowTime"
+            featureName="defaultValueLiteral" dataValue="1.0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/luggageStowTime"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Passenger" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Passenger/travelClass">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/travelClass"
+            featureName="name" dataValue="travelClass"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/travelClass"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/travelClass"
+            featureName="eType" referenceValue="cabin.ecore#//TravelClass"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Passenger" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Passenger/numberOfMakeWayOperations">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/numberOfMakeWayOperations"
+            featureName="name" dataValue="numberOfMakeWayOperations"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/numberOfMakeWayOperations"
+            featureName="defaultValueLiteral" dataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/numberOfMakeWayOperations"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//CrewMember">
+        <changes xsi:type="history:Set" element="cabin.ecore#//CrewMember" featureName="name"
+            dataValue="CrewMember"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//CrewMember" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//CrewMember/id">
+        <changes xsi:type="history:Set" element="cabin.ecore#//CrewMember/id" featureName="name"
+            dataValue="id"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//CrewMember/id" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//PhysicalObject">
+        <changes xsi:type="history:Set" element="cabin.ecore#//PhysicalObject" featureName="name"
+            dataValue="PhysicalObject"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//Seat">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Seat" featureName="name"
+            dataValue="Seat"/>
+        <changes xsi:type="history:Add" element="cabin.ecore#//Seat" featureName="eSuperTypes"
+            referenceValue="cabin.ecore#//PhysicalObject"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Row" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Row/seats">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Row/seats" featureName="name"
+            dataValue="seats"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Row/seats" featureName="lowerBound"
+            dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Row/seats" featureName="upperBound"
+            dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Row/seats" featureName="containment"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Row/seats" featureName="eType"
+            referenceValue="cabin.ecore#//Seat"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Seat" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Seat/seatBlocked">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Seat/seatBlocked" featureName="name"
+            dataValue="seatBlocked"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Seat/seatBlocked" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Seat" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Seat/crewSeat">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Seat/crewSeat" featureName="name"
+            dataValue="crewSeat"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Seat/crewSeat" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Seat" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Seat/letter">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Seat/letter" featureName="name"
+            dataValue="letter"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Seat/letter" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Seat" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Seat/travelClass">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Seat/travelClass" featureName="name"
+            dataValue="travelClass"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Seat/travelClass" featureName="lowerBound"
+            dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Seat/travelClass" featureName="eType"
+            referenceValue="cabin.ecore#//TravelClass"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Seat" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Seat/row">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Seat/row" featureName="name"
+            dataValue="row"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Seat/row" featureName="lowerBound"
+            dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Seat/row" featureName="eType"
+            referenceValue="cabin.ecore#//Row"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Seat" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Seat/occupied">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Seat/occupied" featureName="name"
+            dataValue="occupied"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Seat/occupied" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Seat" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Seat/passenger">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Seat/passenger" featureName="name"
+            dataValue="passenger"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Seat/passenger" featureName="eType"
+            referenceValue="cabin.ecore#//Passenger"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Seat" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Seat/currentlyFolded">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Seat/currentlyFolded"
+            featureName="name" dataValue="currentlyFolded"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Seat/currentlyFolded"
+            featureName="defaultValueLiteral" dataValue="false"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Seat/currentlyFolded"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Passenger" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Passenger/seatRef">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/seatRef"
+            featureName="name" dataValue="seatRef"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/seatRef"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/seatRef"
+            featureName="eType" referenceValue="cabin.ecore#//Seat"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//CrewMember" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//CrewMember/seat">
+        <changes xsi:type="history:Set" element="cabin.ecore#//CrewMember/seat" featureName="name"
+            dataValue="seat"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//CrewMember/seat" featureName="eType"
+            referenceValue="cabin.ecore#//Seat"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//PhysicalObject" referenceName="eOperations"
+          element="cabin.ecore#//PhysicalObject/outOfBounds">
+        <changes xsi:type="history:Set" element="cabin.ecore#//PhysicalObject/outOfBounds"
+            featureName="name" dataValue="outOfBounds"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//PhysicalObject/outOfBounds"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//PhysicalObject/outOfBounds"
+          referenceName="eParameters" element="cabin.ecore#//PhysicalObject/outOfBounds/chain">
+        <changes xsi:type="history:Set" element="cabin.ecore#//PhysicalObject/outOfBounds/chain"
+            featureName="name" dataValue="chain"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//PhysicalObject/outOfBounds/chain"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//PhysicalObject/outOfBounds"
+          referenceName="eParameters" element="cabin.ecore#//PhysicalObject/outOfBounds/context">
+        <changes xsi:type="history:Set" element="cabin.ecore#//PhysicalObject/outOfBounds/context"
+            featureName="name" dataValue="context"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//PhysicalObject/outOfBounds/context"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//PhysicalObject" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//PhysicalObject/yPosition">
+        <changes xsi:type="history:Set" element="cabin.ecore#//PhysicalObject/yPosition"
+            featureName="name" dataValue="yPosition"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//PhysicalObject/yPosition"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//PhysicalObject" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//PhysicalObject/xPosition">
+        <changes xsi:type="history:Set" element="cabin.ecore#//PhysicalObject/xPosition"
+            featureName="name" dataValue="xPosition"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//PhysicalObject/xPosition"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//PhysicalObject" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//PhysicalObject/yDimension">
+        <changes xsi:type="history:Set" element="cabin.ecore#//PhysicalObject/yDimension"
+            featureName="name" dataValue="yDimension"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//PhysicalObject/yDimension"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//PhysicalObject" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//PhysicalObject/xDimension">
+        <changes xsi:type="history:Set" element="cabin.ecore#//PhysicalObject/xDimension"
+            featureName="name" dataValue="xDimension"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//PhysicalObject/xDimension"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//PhysicalObject" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//PhysicalObject/name">
+        <changes xsi:type="history:Set" element="cabin.ecore#//PhysicalObject/name"
+            featureName="name" dataValue="name"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//PhysicalObject/name"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//PhysicalObject" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//PhysicalObject/id">
+        <changes xsi:type="history:Set" element="cabin.ecore#//PhysicalObject/id"
+            featureName="name" dataValue="id"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//PhysicalObject/id"
+            featureName="defaultValueLiteral" dataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//PhysicalObject/id"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//Lavatory">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Lavatory" featureName="name"
+            dataValue="Lavatory"/>
+        <changes xsi:type="history:Add" element="cabin.ecore#//Lavatory" featureName="eSuperTypes"
+            referenceValue="cabin.ecore#//PhysicalObject"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Cabin" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Cabin/lavatories">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/lavatories" featureName="name"
+            dataValue="lavatories"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/lavatories" featureName="lowerBound"
+            dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/lavatories" featureName="upperBound"
+            dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/lavatories" featureName="containment"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/lavatories" featureName="eType"
+            referenceValue="cabin.ecore#//Lavatory"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//Galley">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Galley" featureName="name"
+            dataValue="Galley"/>
+        <changes xsi:type="history:Add" element="cabin.ecore#//Galley" featureName="eSuperTypes"
+            referenceValue="cabin.ecore#//PhysicalObject"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Cabin" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Cabin/galleys">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/galleys" featureName="name"
+            dataValue="galleys"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/galleys" featureName="lowerBound"
+            dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/galleys" featureName="upperBound"
+            dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/galleys" featureName="containment"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/galleys" featureName="eType"
+            referenceValue="cabin.ecore#//Galley"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//Stairway">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Stairway" featureName="name"
+            dataValue="Stairway"/>
+        <changes xsi:type="history:Add" element="cabin.ecore#//Stairway" featureName="eSuperTypes"
+            referenceValue="cabin.ecore#//PhysicalObject"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Cabin" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Cabin/stairways">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/stairways" featureName="name"
+            dataValue="stairways"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/stairways" featureName="upperBound"
+            dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/stairways" featureName="containment"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/stairways" featureName="eType"
+            referenceValue="cabin.ecore#//Stairway"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//Curtain">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Curtain" featureName="name"
+            dataValue="Curtain"/>
+        <changes xsi:type="history:Add" element="cabin.ecore#//Curtain" featureName="eSuperTypes"
+            referenceValue="cabin.ecore#//PhysicalObject"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Cabin" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Cabin/curtains">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/curtains" featureName="name"
+            dataValue="curtains"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/curtains" featureName="upperBound"
+            dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/curtains" featureName="containment"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/curtains" featureName="eType"
+            referenceValue="cabin.ecore#//Curtain"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Curtain" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Curtain/postitionAfterRow">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Curtain/postitionAfterRow"
+            featureName="name" dataValue="postitionAfterRow"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Curtain/postitionAfterRow"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Curtain" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Curtain/curtainOpen">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Curtain/curtainOpen"
+            featureName="name" dataValue="curtainOpen"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Curtain/curtainOpen"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//Stowage">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Stowage" featureName="name"
+            dataValue="Stowage"/>
+        <changes xsi:type="history:Add" element="cabin.ecore#//Stowage" featureName="eSuperTypes"
+            referenceValue="cabin.ecore#//PhysicalObject"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Cabin" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Cabin/stowages">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/stowages" featureName="name"
+            dataValue="stowages"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/stowages" featureName="upperBound"
+            dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/stowages" featureName="containment"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/stowages" featureName="eType"
+            referenceValue="cabin.ecore#//Stowage"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//Door">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Door" featureName="name"
+            dataValue="Door"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Cabin" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Cabin/doors">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/doors" featureName="name"
+            dataValue="doors"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/doors" featureName="lowerBound"
+            dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/doors" featureName="upperBound"
+            dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/doors" featureName="containment"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/doors" featureName="eType"
+            referenceValue="cabin.ecore#//Door"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Passenger" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Passenger/door">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/door" featureName="name"
+            dataValue="door"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/door" featureName="lowerBound"
+            dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/door" featureName="eType"
+            referenceValue="cabin.ecore#//Door"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Door" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Door/xPosition">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Door/xPosition" featureName="name"
+            dataValue="xPosition"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Door/xPosition" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Door" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Door/onBothSides">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Door/onBothSides" featureName="name"
+            dataValue="onBothSides"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Door/onBothSides" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Door" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Door/width">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Door/width" featureName="name"
+            dataValue="width"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Door/width" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Door" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Door/id">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Door/id" featureName="name"
+            dataValue="id"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Door/id" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Door" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Door/numberOfSimultaneousPassengers">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Door/numberOfSimultaneousPassengers"
+            featureName="name" dataValue="numberOfSimultaneousPassengers"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Door/numberOfSimultaneousPassengers"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Door" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Door/isActive">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Door/isActive" featureName="name"
+            dataValue="isActive"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Door/isActive" featureName="defaultValueLiteral"
+            dataValue="true"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Door/isActive" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Door" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Door/waitingPassengers">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Door/waitingPassengers"
+            featureName="name" dataValue="waitingPassengers"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Door/waitingPassengers"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Door/waitingPassengers"
+            featureName="eType" referenceValue="cabin.ecore#//Passenger"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//MainDoor">
+        <changes xsi:type="history:Set" element="cabin.ecore#//MainDoor" featureName="name"
+            dataValue="MainDoor"/>
+        <changes xsi:type="history:Add" element="cabin.ecore#//MainDoor" featureName="eSuperTypes"
+            referenceValue="cabin.ecore#//Door"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//EmergencyExit">
+        <changes xsi:type="history:Set" element="cabin.ecore#//EmergencyExit" featureName="name"
+            dataValue="EmergencyExit"/>
+        <changes xsi:type="history:Add" element="cabin.ecore#//EmergencyExit" featureName="eSuperTypes"
+            referenceValue="cabin.ecore#//Door"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//StandardDoor">
+        <changes xsi:type="history:Set" element="cabin.ecore#//StandardDoor" featureName="name"
+            dataValue="StandardDoor"/>
+        <changes xsi:type="history:Add" element="cabin.ecore#//StandardDoor" featureName="eSuperTypes"
+            referenceValue="cabin.ecore#//Door"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//Sex">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Sex" featureName="name"
+            dataValue="Sex"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Passenger" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Passenger/sex">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/sex" featureName="name"
+            dataValue="sex"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/sex" featureName="eType"
+            referenceValue="cabin.ecore#//Sex"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Sex" referenceName="eLiterals"
+          element="cabin.ecore#//Sex/male">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Sex/male" featureName="name"
+            dataValue="male"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Sex/male" featureName="value"
+            dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Sex/male" featureName="literal"
+            dataValue="male"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Sex" referenceName="eLiterals"
+          element="cabin.ecore#//Sex/female">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Sex/female" featureName="name"
+            dataValue="female"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Sex/female" featureName="literal"
+            dataValue="female"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//StairwayDirection">
+        <changes xsi:type="history:Set" element="cabin.ecore#//StairwayDirection"
+            featureName="name" dataValue="StairwayDirection"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Stairway" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Stairway/direction">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Stairway/direction"
+            featureName="name" dataValue="direction"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Stairway/direction"
+            featureName="eType" referenceValue="cabin.ecore#//StairwayDirection"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//StairwayDirection"
+          referenceName="eLiterals" element="cabin.ecore#//StairwayDirection/up">
+        <changes xsi:type="history:Set" element="cabin.ecore#//StairwayDirection/up"
+            featureName="name" dataValue="up"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//StairwayDirection/up"
+            featureName="value" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//StairwayDirection/up"
+            featureName="literal" dataValue="up"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//StairwayDirection"
+          referenceName="eLiterals" element="cabin.ecore#//StairwayDirection/down">
+        <changes xsi:type="history:Set" element="cabin.ecore#//StairwayDirection/down"
+            featureName="name" dataValue="down"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//StairwayDirection/down"
+            featureName="value" dataValue="-1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//StairwayDirection/down"
+            featureName="literal" dataValue="down"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//AircraftType">
+        <changes xsi:type="history:Set" element="cabin.ecore#//AircraftType" featureName="name"
+            dataValue="AircraftType"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Cabin" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Cabin/aircraftType">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/aircraftType"
+            featureName="name" dataValue="aircraftType"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/aircraftType"
+            featureName="eType" referenceValue="cabin.ecore#//AircraftType"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//AircraftType" referenceName="eLiterals"
+          element="cabin.ecore#//AircraftType/regional">
+        <changes xsi:type="history:Set" element="cabin.ecore#//AircraftType/regional"
+            featureName="name" dataValue="regional"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//AircraftType/regional"
+            featureName="literal" dataValue="regional"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//AircraftType" referenceName="eLiterals"
+          element="cabin.ecore#//AircraftType/narrowbody">
+        <changes xsi:type="history:Set" element="cabin.ecore#//AircraftType/narrowbody"
+            featureName="name" dataValue="narrowbody"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//AircraftType/narrowbody"
+            featureName="value" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//AircraftType/narrowbody"
+            featureName="literal" dataValue="narrowbody"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//AircraftType" referenceName="eLiterals"
+          element="cabin.ecore#//AircraftType/widebody">
+        <changes xsi:type="history:Set" element="cabin.ecore#//AircraftType/widebody"
+            featureName="name" dataValue="widebody"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//AircraftType/widebody"
+            featureName="value" dataValue="2" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//AircraftType/widebody"
+            featureName="literal" dataValue="widebody"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//PassengerMood">
+        <changes xsi:type="history:Set" element="cabin.ecore#//PassengerMood" featureName="name"
+            dataValue="PassengerMood"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Passenger" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Passenger/passengerMood">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/passengerMood"
+            featureName="name" dataValue="passengerMood"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/passengerMood"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/passengerMood"
+            featureName="eType" referenceValue="cabin.ecore#//PassengerMood"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//PassengerMood" referenceName="eLiterals"
+          element="cabin.ecore#//PassengerMood/agressive">
+        <changes xsi:type="history:Set" element="cabin.ecore#//PassengerMood/agressive"
+            featureName="name" dataValue="agressive"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//PassengerMood/agressive"
+            featureName="literal" dataValue="agressive"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//PassengerMood" referenceName="eLiterals"
+          element="cabin.ecore#//PassengerMood/passive">
+        <changes xsi:type="history:Set" element="cabin.ecore#//PassengerMood/passive"
+            featureName="name" dataValue="passive"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//PassengerMood/passive"
+            featureName="value" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//PassengerMood/passive"
+            featureName="literal" dataValue="passive"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//SimulationProperties">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties"
+            featureName="name" dataValue="SimulationProperties"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Cabin" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Cabin/simulationSettings">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/simulationSettings"
+            featureName="name" dataValue="simulationSettings"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/simulationSettings"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Cabin/simulationSettings"
+            featureName="eType" referenceValue="cabin.ecore#//SimulationProperties"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/simulateWithoutUI">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/simulateWithoutUI"
+            featureName="name" dataValue="simulateWithoutUI"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/simulateWithoutUI"
+            featureName="defaultValueLiteral" dataValue="false"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/simulateWithoutUI"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/numberOfSimulationLoops">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/numberOfSimulationLoops"
+            featureName="name" dataValue="numberOfSimulationLoops"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/numberOfSimulationLoops"
+            featureName="defaultValueLiteral" dataValue="1"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/numberOfSimulationLoops"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/randomSortBetweenLoops">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/randomSortBetweenLoops"
+            featureName="name" dataValue="randomSortBetweenLoops"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/randomSortBetweenLoops"
+            featureName="defaultValueLiteral" dataValue="true"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/randomSortBetweenLoops"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/useFoldableSeats">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/useFoldableSeats"
+            featureName="name" dataValue="useFoldableSeats"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/useFoldableSeats"
+            featureName="defaultValueLiteral" dataValue="false"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/useFoldableSeats"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/bringYourOwnSeat">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/bringYourOwnSeat"
+            featureName="name" dataValue="bringYourOwnSeat"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/bringYourOwnSeat"
+            featureName="defaultValueLiteral" dataValue="false"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/bringYourOwnSeat"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengersBoardingPerMinute">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengersBoardingPerMinute"
+            featureName="name" dataValue="passengersBoardingPerMinute"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengersBoardingPerMinute"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengersBoardingPerMinute"
+            featureName="defaultValueLiteral" dataValue="18"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengersBoardingPerMinute"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerWidthMeanMale">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerWidthMeanMale"
+            featureName="name" dataValue="passengerWidthMeanMale"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerWidthMeanMale"
+            featureName="defaultValueLiteral" dataValue="47"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerWidthMeanMale"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerWidthDeviationMale">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerWidthDeviationMale"
+            featureName="name" dataValue="passengerWidthDeviationMale"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerWidthDeviationMale"
+            featureName="defaultValueLiteral" dataValue="2.8"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerWidthDeviationMale"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerWeightMeanMale">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerWeightMeanMale"
+            featureName="name" dataValue="passengerWeightMeanMale"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerWeightMeanMale"
+            featureName="defaultValueLiteral" dataValue="90"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerWeightMeanMale"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerWeightDeviationMale">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerWeightDeviationMale"
+            featureName="name" dataValue="passengerWeightDeviationMale"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerWeightDeviationMale"
+            featureName="defaultValueLiteral" dataValue="20"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerWeightDeviationMale"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerHeightMeanMale">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerHeightMeanMale"
+            featureName="name" dataValue="passengerHeightMeanMale"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerHeightMeanMale"
+            featureName="defaultValueLiteral" dataValue="177.5"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerHeightMeanMale"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerHeightDeviationMale">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerHeightDeviationMale"
+            featureName="name" dataValue="passengerHeightDeviationMale"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerHeightDeviationMale"
+            featureName="defaultValueLiteral" dataValue="11.1"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerHeightDeviationMale"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerDepthMeanMale">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerDepthMeanMale"
+            featureName="name" dataValue="passengerDepthMeanMale"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerDepthMeanMale"
+            featureName="defaultValueLiteral" dataValue="30"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerDepthMeanMale"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerDepthDeviationMale">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerDepthDeviationMale"
+            featureName="name" dataValue="passengerDepthDeviationMale"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerDepthDeviationMale"
+            featureName="defaultValueLiteral" dataValue="5"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerDepthDeviationMale"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/percentageOfWomen">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/percentageOfWomen"
+            featureName="name" dataValue="percentageOfWomen"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/percentageOfWomen"
+            featureName="defaultValueLiteral" dataValue="50"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/percentageOfWomen"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerLuggageStowTimeMean">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerLuggageStowTimeMean"
+            featureName="name" dataValue="passengerLuggageStowTimeMean"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerLuggageStowTimeMean"
+            featureName="defaultValueLiteral" dataValue="15"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerLuggageStowTimeMean"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerLuggageStowTimeDeviation">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerLuggageStowTimeDeviation"
+            featureName="name" dataValue="passengerLuggageStowTimeDeviation"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerLuggageStowTimeDeviation"
+            featureName="defaultValueLiteral" dataValue="7"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerLuggageStowTimeDeviation"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerWidthMeanFemale">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerWidthMeanFemale"
+            featureName="name" dataValue="passengerWidthMeanFemale"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerWidthMeanFemale"
+            featureName="defaultValueLiteral" dataValue="41.4"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerWidthMeanFemale"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerWidthDeviationFemale">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerWidthDeviationFemale"
+            featureName="name" dataValue="passengerWidthDeviationFemale"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerWidthDeviationFemale"
+            featureName="defaultValueLiteral" dataValue="2.8"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerWidthDeviationFemale"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerWeightMeanFemale">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerWeightMeanFemale"
+            featureName="name" dataValue="passengerWeightMeanFemale"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerWeightMeanFemale"
+            featureName="defaultValueLiteral" dataValue="60"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerWeightMeanFemale"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerWeightDeviationFemale">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerWeightDeviationFemale"
+            featureName="name" dataValue="passengerWeightDeviationFemale"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerWeightDeviationFemale"
+            featureName="defaultValueLiteral" dataValue="15"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerWeightDeviationFemale"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerHeightMeanFemale">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerHeightMeanFemale"
+            featureName="name" dataValue="passengerHeightMeanFemale"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerHeightMeanFemale"
+            featureName="defaultValueLiteral" dataValue="164.5"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerHeightMeanFemale"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerHeightDeviationFemale">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerHeightDeviationFemale"
+            featureName="name" dataValue="passengerHeightDeviationFemale"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerHeightDeviationFemale"
+            featureName="defaultValueLiteral" dataValue="11.5"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerHeightDeviationFemale"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerDepthMeanFemale">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerDepthMeanFemale"
+            featureName="name" dataValue="passengerDepthMeanFemale"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerDepthMeanFemale"
+            featureName="defaultValueLiteral" dataValue="27"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerDepthMeanFemale"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerDepthDeviationFemale">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerDepthDeviationFemale"
+            featureName="name" dataValue="passengerDepthDeviationFemale"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerDepthDeviationFemale"
+            featureName="defaultValueLiteral" dataValue="3"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerDepthDeviationFemale"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/percentageOfPassengersWithNoLuggage">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/percentageOfPassengersWithNoLuggage"
+            featureName="name" dataValue="percentageOfPassengersWithNoLuggage"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/percentageOfPassengersWithNoLuggage"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/percentageOfPassengersWithSmallLuggage">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/percentageOfPassengersWithSmallLuggage"
+            featureName="name" dataValue="percentageOfPassengersWithSmallLuggage"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/percentageOfPassengersWithSmallLuggage"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/percentageOfPassengersWithMediumLuggage">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/percentageOfPassengersWithMediumLuggage"
+            featureName="name" dataValue="percentageOfPassengersWithMediumLuggage"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/percentageOfPassengersWithMediumLuggage"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/percentageOfPassengersWithBigLuggage">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/percentageOfPassengersWithBigLuggage"
+            featureName="name" dataValue="percentageOfPassengersWithBigLuggage"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/percentageOfPassengersWithBigLuggage"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/simulationSpeedFactor">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/simulationSpeedFactor"
+            featureName="name" dataValue="simulationSpeedFactor"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/simulationSpeedFactor"
+            featureName="defaultValueLiteral" dataValue="10"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/simulationSpeedFactor"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/developerMode">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/developerMode"
+            featureName="name" dataValue="developerMode"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/developerMode"
+            featureName="defaultValueLiteral" dataValue="false"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/developerMode"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//SimulationResult">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationResult" featureName="name"
+            dataValue="SimulationResult"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/results">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/results"
+            featureName="name" dataValue="results"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/results"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/results"
+            featureName="eType" referenceValue="cabin.ecore#//SimulationResult"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationResult" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//SimulationResult/boardingTime">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationResult/boardingTime"
+            featureName="name" dataValue="boardingTime"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationResult/boardingTime"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationResult" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//SimulationResult/passengers">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationResult/passengers"
+            featureName="name" dataValue="passengers"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationResult/passengers"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationResult" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//SimulationResult/name">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationResult/name"
+            featureName="name" dataValue="name"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationResult/name"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationResult" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//SimulationResult/id">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationResult/id"
+            featureName="name" dataValue="id"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationResult/id"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationResult" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//SimulationResult/date">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationResult/date"
+            featureName="name" dataValue="date"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationResult/date"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationResult/date"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationResult" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//SimulationResult/boardingTimeString">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationResult/boardingTimeString"
+            featureName="name" dataValue="boardingTimeString"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationResult/boardingTimeString"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//LuggageSize">
+        <changes xsi:type="history:Set" element="cabin.ecore#//LuggageSize" featureName="name"
+            dataValue="LuggageSize"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//Passenger" referenceName="eStructuralFeatures"
+          element="cabin.ecore#//Passenger/luggage">
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/luggage"
+            featureName="name" dataValue="luggage"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/luggage"
+            featureName="eType" referenceValue="cabin.ecore#//LuggageSize"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//LuggageSize" referenceName="eLiterals"
+          element="cabin.ecore#//LuggageSize/small">
+        <changes xsi:type="history:Set" element="cabin.ecore#//LuggageSize/small"
+            featureName="name" dataValue="small"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//LuggageSize/small"
+            featureName="literal" dataValue="small"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//LuggageSize" referenceName="eLiterals"
+          element="cabin.ecore#//LuggageSize/medium">
+        <changes xsi:type="history:Set" element="cabin.ecore#//LuggageSize/medium"
+            featureName="name" dataValue="medium"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//LuggageSize/medium"
+            featureName="value" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//LuggageSize/medium"
+            featureName="literal" dataValue="medium"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//LuggageSize" referenceName="eLiterals"
+          element="cabin.ecore#//LuggageSize/big">
+        <changes xsi:type="history:Set" element="cabin.ecore#//LuggageSize/big" featureName="name"
+            dataValue="big"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//LuggageSize/big" featureName="value"
+            dataValue="2" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//LuggageSize/big" featureName="literal"
+            dataValue="big"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//LuggageSize" referenceName="eLiterals"
+          element="cabin.ecore#//LuggageSize/none">
+        <changes xsi:type="history:Set" element="cabin.ecore#//LuggageSize/none" featureName="name"
+            dataValue="none"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//LuggageSize/none" featureName="value"
+            dataValue="3" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//LuggageSize/none" featureName="literal"
+            dataValue="none"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#/" referenceName="eClassifiers"
+          element="cabin.ecore#//SortingStyle">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SortingStyle" featureName="name"
+            dataValue="SortingStyle"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/sorting">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/sorting"
+            featureName="name" dataValue="sorting"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/sorting"
+            featureName="eType" referenceValue="cabin.ecore#//SortingStyle"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SortingStyle" referenceName="eLiterals"
+          element="cabin.ecore#//SortingStyle/Random">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SortingStyle/Random"
+            featureName="name" dataValue="Random"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SortingStyle/Random"
+            featureName="literal" dataValue="Random"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SortingStyle" referenceName="eLiterals"
+          element="cabin.ecore#//SortingStyle/WindowToAisle">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SortingStyle/WindowToAisle"
+            featureName="name" dataValue="WindowToAisle"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SortingStyle/WindowToAisle"
+            featureName="value" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SortingStyle/WindowToAisle"
+            featureName="literal" dataValue="WindowToAisle"/>
+      </changes>
+      <changes xsi:type="history:Create" target="cabin.ecore#//SortingStyle" referenceName="eLiterals"
+          element="cabin.ecore#//SortingStyle/RearToFront">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SortingStyle/RearToFront"
+            featureName="name" dataValue="RearToFront"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SortingStyle/RearToFront"
+            featureName="value" dataValue="2" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="cabin.ecore#//SortingStyle/RearToFront"
+            featureName="literal" dataValue="RearToFront"/>
+      </changes>
+    </changes>
+  </releases>
+  <releases/>
+</history:History>
