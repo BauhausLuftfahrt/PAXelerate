@@ -67,8 +67,6 @@ public class Core {
 
 		/* while we haven't reached the goal yet */
 		while (openList.size() != 0) {
-			// System.out.println(map.getNode(agent.getStart()).getProperty()
-			// .toString());
 
 			/*
 			 * get the first Node from non-searched Node list, sorted by lowest
@@ -117,12 +115,12 @@ public class Core {
 				if (neighbor.getProperty() != Property.OBSTACLE) {
 
 					/* calculate the neighbors distance from start */
-					int neighborDistanceFromStart = (int) map
+					double neighborDistanceFromStart = map
 							.getDistanceBetween(map.getNode(agent.getStart()),
 									neighbor);
 					
 					/* calculate the neighbors distance from start */
-					int currentDistanceFromStart = (int) map
+					double currentDistanceFromStart = map
 							.getDistanceBetween(map.getNode(agent.getStart()),
 									current);
 
@@ -187,24 +185,10 @@ public class Core {
 	 * @return the path
 	 */
 	private synchronized Path reconstructPath(Node node) {
-
 		Path path = new Path();
-		try {
-
-			while (node.getPreviousNode() != null && node != null) {
-
-				if (node != null) {
-					path.prependWayPoint(node);
-				}
-				if (node.getPreviousNode() != null) {
-					node = node.getPreviousNode();
-				}
-
-			}
-		} catch (NullPointerException e) {
-			System.out
-					.println("###### !NullPointerException ERROR! ###### !Core - reconstructPath()! ######");
-			e.printStackTrace();
+		while (node.getPreviousNode() != null && node != null) {
+			path.prependWayPoint(node);
+			node = node.getPreviousNode();
 		}
 		return path;
 	}

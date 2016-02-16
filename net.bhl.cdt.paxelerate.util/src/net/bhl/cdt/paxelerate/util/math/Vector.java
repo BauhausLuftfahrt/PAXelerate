@@ -162,9 +162,9 @@ public abstract class Vector implements Comparable<Vector> {
 		if((obj != null) && (obj instanceof Vector)) {
 			Vector vector = (Vector) obj;
 			if(dimensions == vector.getNumberOfDimensions()) {
-				if((xValue == vector.getX()) &&
-						(yValue == vector.getY()) &&
-						(zValue == vector.getZ())) {
+				if((xValue == vector.getX()) 
+						&& (yValue == vector.getY()) 
+						&& (zValue == vector.getZ())) {
 					return true;					
 				}
 			}

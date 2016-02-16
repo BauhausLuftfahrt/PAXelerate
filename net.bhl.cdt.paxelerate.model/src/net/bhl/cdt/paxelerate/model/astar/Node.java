@@ -23,7 +23,8 @@ public class Node implements Comparable<Node> {
 	private Node north, northEast, east, southEast, south, southWest, west,
 			northWest, previousNode;
 	private ArrayList<Node> neighborList;
-	private int distanceFromStart, costFromStart, cost,
+	private double distanceFromStart;
+	private int costFromStart, cost,
 			numberOfOccupations = 0, numberOfInterrupts = 0;
 
 	private Vector position = new Vector2D(0, 0);
@@ -301,7 +302,7 @@ public class Node implements Comparable<Node> {
 	 * 
 	 * @return the distance from start
 	 */
-	public float getDistanceFromStart() {
+	public double getDistanceFromStart() {
 		return distanceFromStart;
 	}
 
@@ -311,8 +312,8 @@ public class Node implements Comparable<Node> {
 	 * @param f
 	 *            the distance
 	 */
-	public void setDistanceFromStart(int f) {
-		this.distanceFromStart = f;
+	public void setDistanceFromStart(double distance) {
+		this.distanceFromStart = distance;
 	}
 
 	/**
