@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<com.paxelerate.model:Cabin xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.paxelerate.model="http://bhl.net/cdt/model/cabin" name="Ce-Liner" cabinLength="2799" cabinWidth="518" aisleWidth="48" aircraftType="widebody" usePresetSettings="true">
+<com.paxelerate.model:Cabin xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.paxelerate.model="http://net.bhl.cdt.paxelerate.model/" name="Ce-Liner" cabinLength="2799" cabinWidth="518" aisleWidth="48" aircraftType="widebody" usePresetSettings="true">
   <classes xsi:type="com.paxelerate.model:EconomyClass" sequence="1" passengers="1" availableSeats="72" seatPitch="20" seatLength="60" seatWidth="50" name="" rowStructure="2-3-2">
     <rows rowNumber="1">
       <seats yPosition="2" xPosition="202" yDimension="50" xDimension="60" name="1A" id="1" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.0"/>
