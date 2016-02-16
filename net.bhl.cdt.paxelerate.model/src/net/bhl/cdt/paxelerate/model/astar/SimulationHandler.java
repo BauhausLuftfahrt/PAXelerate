@@ -8,9 +8,6 @@ package net.bhl.cdt.paxelerate.model.astar;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
-
 import org.eclipse.emf.common.util.EList;
 
 import net.bhl.cdt.paxelerate.model.Cabin;
@@ -23,7 +20,6 @@ import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.time.StopWatch;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
-import net.bhl.cdt.paxelerate.util.toOpenCDT.OS;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.ProgressHandler;
 
 /**

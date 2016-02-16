@@ -11,6 +11,7 @@ import net.bhl.cdt.paxelerate.model.Sex;
 import net.bhl.cdt.paxelerate.model.astar.AreaMap;
 import net.bhl.cdt.paxelerate.model.astar.Node;
 
+@Deprecated
 public class Exporter {
 
 	private static final String FOLDER_NAME = "paxelerate", FILE_PATH = System

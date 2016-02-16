@@ -45,7 +45,6 @@ public class WelcomePage extends IntroPart implements IIntroPart {
 		newProjectButton.computeSize(SWT.DEFAULT, SWT.DEFAULT);
 		newProjectButton.addSelectionListener(new SelectionListener() {
 
-			@SuppressWarnings("restriction")
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				dispose();
