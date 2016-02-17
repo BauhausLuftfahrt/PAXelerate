@@ -81,6 +81,8 @@ public class CabinViewPart extends ViewPart {
 					+ FOLDER_NAME + "/";
 	private static File storageFolder = new File(FILE_PATH);
 	private double canvasHeight;
+	
+	private int scaledX, scaledY;
 
 	/**
 	 * 
@@ -180,7 +182,7 @@ public class CabinViewPart extends ViewPart {
 	 * @return the background image
 	 */
 	private Image createImage() {
-		Image image = new Image(parent.getDisplay(), imageX, imageY);
+		Image image = new Image(parent.getDisplay(), scaledX, scaledY);
 		Image newAircraft = tryAircraftSwitch();
 		GC gc = new GC(image);
 		gc.setFont(FontHelper.PARAGRAPH);
@@ -358,9 +360,8 @@ public class CabinViewPart extends ViewPart {
 		gc.setAntialias(SWT.ON);
 		gc.setInterpolation(SWT.HIGH);
 		gc.drawImage(image, 0, 0, image.getBounds().width,
-				image.getBounds().height, 0, 0, width, height);
+				image.getBounds().height, 0, 0, width, height);		
 		gc.dispose();
-		image.dispose();
 		return scaledImage;
 	}
 
@@ -716,7 +717,6 @@ public class CabinViewPart extends ViewPart {
 	 */
 	private void doTheDraw() {
 		try {
-			// factor = cabin.getCabinWidth() / CABIN_WIDTH_IN_PIXELS;
 			parent.redraw();
 			parent.update();
 			canvas.redraw();
@@ -729,20 +729,36 @@ public class CabinViewPart extends ViewPart {
 
 					e.gc.setFont(FontHelper.PARAGRAPH);
 					e.gc.setBackground(ColorHelper.BLACK);
+					
+					/* always maintain the correct aspect ratio of the image */
+					float scale = canvas.getBounds().width / (float)imageX;
+					scaledX = (int) (imageX * scale);
+					scaledY = (int) (imageY * scale);
+					
+					/* if the scaling causes the image to overflow the canvas, it is scaled differently */
+					if(canvas.getBounds().height<scaledY) {
+						scale = canvas.getBounds().height / (float)imageY;
+						scaledX = (int) (imageX * scale);
+						scaledY = (int) (imageY * scale);
+					}
 
 					if (!initialBoot) {
-						e.gc.drawImage(img, 0, 0);
+						e.gc.drawImage(resize(img,scaledX,scaledY), 0, 0);
 
-					} else {
-						e.gc.drawImage(resizeAC(canvas.getBounds().width,
-								canvas.getBounds().height), 0, 0);
+					} else {					
+						
+						e.gc.drawImage(resizeAC(scaledX,scaledY), 0, 0);
 						e.gc.setFont(FontHelper.HEADING2);
-						e.gc.setBackground(
-								e.display.getSystemColor(SWT.COLOR_RED));
-						e.gc.fillRectangle(38, 370, 300, 35);
-						e.gc.drawText(
-								"Please refresh cabin view or generate a new cabin!",
-								50, 380);
+						e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_RED));
+						e.gc.fillRectangle((int)(scaledX*0.1), (int)(scaledY*0.45), (int)(scaledX*0.8), (int)(scaledY*0.1));
+						
+						/* Warning string and its dimensions */
+						String warningString = "Refresh required!";
+						int stringWidth = e.gc.stringExtent(warningString).x;
+						int stringHeight = e.gc.stringExtent(warningString).y;
+						
+						e.gc.drawText(warningString,
+								(int)(scaledX*0.1 + (scaledX*0.8 - stringWidth)/2), (int)(scaledY*0.45 + (scaledY*0.1 - stringHeight)/2 ));
 					}
 				}
 			});
