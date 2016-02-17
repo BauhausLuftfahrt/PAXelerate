@@ -6,7 +6,7 @@
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" testsDirectory="net.bhl.cdt.paxelerate.model.tests/src"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
     editPluginID="net.bhl.cdt.paxelerate.model.edit" editorPluginID="net.bhl.cdt.paxelerate.model.editor"
-    usedGenPackages="../../net.bhl.cdt.model/model/model.genmodel#//model ../../net.bhl.cdt.model/model/units.genmodel#//units"
+    language="" usedGenPackages="../../net.bhl.cdt.model/model/model.genmodel#//model ../../net.bhl.cdt.model/model/units.genmodel#//units"
     operationReflection="true" importOrganizing="true">
   <foreignModel>cabin.ecore</foreignModel>
   <genPackages prefix="Cabin" basePackage="net.bhl.cdt.paxelerate" disposableProviderFactory="true"
@@ -178,8 +178,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/passengerDepthMeanMale"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/passengerDepthDeviationMale"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/percentageOfWomen"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/passengerLuggageStowTimeMean"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/passengerLuggageStowTimeDeviation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/passengerSmallLuggageStowTimeMean"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/passengerSmallLuggageStowTimeDeviation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/passengerMediumLuggageStowTimeMean"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/passengerMediumLuggageStowTimeDeviation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/passengerBigLuggageStowTimeMean"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/passengerBigLuggageStowTimeDeviation"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/passengerWidthMeanFemale"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/passengerWidthDeviationFemale"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/passengerWeightMeanFemale"/>

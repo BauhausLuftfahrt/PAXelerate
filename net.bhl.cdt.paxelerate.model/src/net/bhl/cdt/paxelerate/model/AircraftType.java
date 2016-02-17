@@ -29,7 +29,7 @@ public enum AircraftType implements Enumerator {
 	REGIONAL(0, "regional", "regional"),
 
 	/**
-	 * The '<em><b>narrowbody</b></em>' literal object.
+	 * The '<em><b>Narrowbody</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #NARROWBODY_VALUE
@@ -39,7 +39,7 @@ public enum AircraftType implements Enumerator {
 	NARROWBODY(1, "narrowbody", "narrowbody"),
 
 	/**
-	 * The '<em><b>widebody</b></em>' literal object.
+	 * The '<em><b>Widebody</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #WIDEBODY_VALUE
@@ -64,7 +64,7 @@ public enum AircraftType implements Enumerator {
 	public static final int REGIONAL_VALUE = 0;
 
 	/**
-	 * The '<em><b>narrowbody</b></em>' literal value.
+	 * The '<em><b>Narrowbody</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>narrowbody</b></em>' literal object isn't clear,
@@ -79,7 +79,7 @@ public enum AircraftType implements Enumerator {
 	public static final int NARROWBODY_VALUE = 1;
 
 	/**
-	 * The '<em><b>widebody</b></em>' literal value.
+	 * The '<em><b>Widebody</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>widebody</b></em>' literal object isn't clear,

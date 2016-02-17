@@ -229,10 +229,18 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="5"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="percentageOfWomen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         defaultValueLiteral="50"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerLuggageStowTimeMean"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerSmallLuggageStowTimeMean"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="10"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerSmallLuggageStowTimeDeviation"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="5"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerMediumLuggageStowTimeMean"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="15"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerLuggageStowTimeDeviation"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerMediumLuggageStowTimeDeviation"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="7"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerBigLuggageStowTimeMean"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="20"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerBigLuggageStowTimeDeviation"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="5"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerWidthMeanFemale"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="41.4"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerWidthDeviationFemale"

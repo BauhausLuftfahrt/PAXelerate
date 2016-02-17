@@ -29,8 +29,12 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerDepthMeanMale <em>Passenger Depth Mean Male</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerDepthDeviationMale <em>Passenger Depth Deviation Male</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPercentageOfWomen <em>Percentage Of Women</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerLuggageStowTimeMean <em>Passenger Luggage Stow Time Mean</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerLuggageStowTimeDeviation <em>Passenger Luggage Stow Time Deviation</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerSmallLuggageStowTimeMean <em>Passenger Small Luggage Stow Time Mean</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerSmallLuggageStowTimeDeviation <em>Passenger Small Luggage Stow Time Deviation</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerMediumLuggageStowTimeMean <em>Passenger Medium Luggage Stow Time Mean</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerMediumLuggageStowTimeDeviation <em>Passenger Medium Luggage Stow Time Deviation</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerBigLuggageStowTimeMean <em>Passenger Big Luggage Stow Time Mean</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerBigLuggageStowTimeDeviation <em>Passenger Big Luggage Stow Time Deviation</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerWidthMeanFemale <em>Passenger Width Mean Female</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerWidthDeviationFemale <em>Passenger Width Deviation Female</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerWeightMeanFemale <em>Passenger Weight Mean Female</em>}</li>
@@ -46,6 +50,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPercentageOfPassengersWithBigLuggage <em>Percentage Of Passengers With Big Luggage</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSorting <em>Sorting</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDeveloperMode <em>Developer Mode</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties()
@@ -459,58 +464,166 @@ public interface SimulationProperties extends EObject {
 	void setPercentageOfWomen(double value);
 
 	/**
-	 * Returns the value of the '<em><b>Passenger Luggage Stow Time Mean</b></em>' attribute.
+	 * Returns the value of the '<em><b>Passenger Small Luggage Stow Time Mean</b></em>' attribute.
+	 * The default value is <code>"10"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Passenger Small Luggage Stow Time Mean</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Passenger Small Luggage Stow Time Mean</em>' attribute.
+	 * @see #setPassengerSmallLuggageStowTimeMean(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_PassengerSmallLuggageStowTimeMean()
+	 * @model default="10"
+	 * @generated
+	 */
+	double getPassengerSmallLuggageStowTimeMean();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerSmallLuggageStowTimeMean <em>Passenger Small Luggage Stow Time Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Passenger Small Luggage Stow Time Mean</em>' attribute.
+	 * @see #getPassengerSmallLuggageStowTimeMean()
+	 * @generated
+	 */
+	void setPassengerSmallLuggageStowTimeMean(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Passenger Small Luggage Stow Time Deviation</b></em>' attribute.
+	 * The default value is <code>"5"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Passenger Small Luggage Stow Time Deviation</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Passenger Small Luggage Stow Time Deviation</em>' attribute.
+	 * @see #setPassengerSmallLuggageStowTimeDeviation(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_PassengerSmallLuggageStowTimeDeviation()
+	 * @model default="5"
+	 * @generated
+	 */
+	double getPassengerSmallLuggageStowTimeDeviation();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerSmallLuggageStowTimeDeviation <em>Passenger Small Luggage Stow Time Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Passenger Small Luggage Stow Time Deviation</em>' attribute.
+	 * @see #getPassengerSmallLuggageStowTimeDeviation()
+	 * @generated
+	 */
+	void setPassengerSmallLuggageStowTimeDeviation(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Passenger Medium Luggage Stow Time Mean</b></em>' attribute.
 	 * The default value is <code>"15"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Passenger Luggage Stow Time Mean</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Passenger Medium Luggage Stow Time Mean</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Passenger Luggage Stow Time Mean</em>' attribute.
-	 * @see #setPassengerLuggageStowTimeMean(double)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_PassengerLuggageStowTimeMean()
+	 * @return the value of the '<em>Passenger Medium Luggage Stow Time Mean</em>' attribute.
+	 * @see #setPassengerMediumLuggageStowTimeMean(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_PassengerMediumLuggageStowTimeMean()
 	 * @model default="15"
 	 * @generated
 	 */
-	double getPassengerLuggageStowTimeMean();
+	double getPassengerMediumLuggageStowTimeMean();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerLuggageStowTimeMean <em>Passenger Luggage Stow Time Mean</em>}' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerMediumLuggageStowTimeMean <em>Passenger Medium Luggage Stow Time Mean</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Passenger Luggage Stow Time Mean</em>' attribute.
-	 * @see #getPassengerLuggageStowTimeMean()
+	 * @param value the new value of the '<em>Passenger Medium Luggage Stow Time Mean</em>' attribute.
+	 * @see #getPassengerMediumLuggageStowTimeMean()
 	 * @generated
 	 */
-	void setPassengerLuggageStowTimeMean(double value);
+	void setPassengerMediumLuggageStowTimeMean(double value);
 
 	/**
-	 * Returns the value of the '<em><b>Passenger Luggage Stow Time Deviation</b></em>' attribute.
+	 * Returns the value of the '<em><b>Passenger Medium Luggage Stow Time Deviation</b></em>' attribute.
 	 * The default value is <code>"7"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Passenger Luggage Stow Time Deviation</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Passenger Medium Luggage Stow Time Deviation</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Passenger Luggage Stow Time Deviation</em>' attribute.
-	 * @see #setPassengerLuggageStowTimeDeviation(double)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_PassengerLuggageStowTimeDeviation()
+	 * @return the value of the '<em>Passenger Medium Luggage Stow Time Deviation</em>' attribute.
+	 * @see #setPassengerMediumLuggageStowTimeDeviation(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_PassengerMediumLuggageStowTimeDeviation()
 	 * @model default="7"
 	 * @generated
 	 */
-	double getPassengerLuggageStowTimeDeviation();
+	double getPassengerMediumLuggageStowTimeDeviation();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerLuggageStowTimeDeviation <em>Passenger Luggage Stow Time Deviation</em>}' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerMediumLuggageStowTimeDeviation <em>Passenger Medium Luggage Stow Time Deviation</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Passenger Luggage Stow Time Deviation</em>' attribute.
-	 * @see #getPassengerLuggageStowTimeDeviation()
+	 * @param value the new value of the '<em>Passenger Medium Luggage Stow Time Deviation</em>' attribute.
+	 * @see #getPassengerMediumLuggageStowTimeDeviation()
 	 * @generated
 	 */
-	void setPassengerLuggageStowTimeDeviation(double value);
+	void setPassengerMediumLuggageStowTimeDeviation(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Passenger Big Luggage Stow Time Mean</b></em>' attribute.
+	 * The default value is <code>"20"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Passenger Big Luggage Stow Time Mean</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Passenger Big Luggage Stow Time Mean</em>' attribute.
+	 * @see #setPassengerBigLuggageStowTimeMean(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_PassengerBigLuggageStowTimeMean()
+	 * @model default="20"
+	 * @generated
+	 */
+	double getPassengerBigLuggageStowTimeMean();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerBigLuggageStowTimeMean <em>Passenger Big Luggage Stow Time Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Passenger Big Luggage Stow Time Mean</em>' attribute.
+	 * @see #getPassengerBigLuggageStowTimeMean()
+	 * @generated
+	 */
+	void setPassengerBigLuggageStowTimeMean(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Passenger Big Luggage Stow Time Deviation</b></em>' attribute.
+	 * The default value is <code>"5"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Passenger Big Luggage Stow Time Deviation</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Passenger Big Luggage Stow Time Deviation</em>' attribute.
+	 * @see #setPassengerBigLuggageStowTimeDeviation(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_PassengerBigLuggageStowTimeDeviation()
+	 * @model default="5"
+	 * @generated
+	 */
+	double getPassengerBigLuggageStowTimeDeviation();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerBigLuggageStowTimeDeviation <em>Passenger Big Luggage Stow Time Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Passenger Big Luggage Stow Time Deviation</em>' attribute.
+	 * @see #getPassengerBigLuggageStowTimeDeviation()
+	 * @generated
+	 */
+	void setPassengerBigLuggageStowTimeDeviation(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Passenger Width Mean Female</b></em>' attribute.
@@ -903,5 +1016,32 @@ public interface SimulationProperties extends EObject {
 	 * @generated
 	 */
 	void setSimulationSpeedFactor(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Developer Mode</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Developer Mode</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Developer Mode</em>' attribute.
+	 * @see #setDeveloperMode(boolean)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_DeveloperMode()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isDeveloperMode();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDeveloperMode <em>Developer Mode</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Developer Mode</em>' attribute.
+	 * @see #isDeveloperMode()
+	 * @generated
+	 */
+	void setDeveloperMode(boolean value);
 
 } // SimulationProperties

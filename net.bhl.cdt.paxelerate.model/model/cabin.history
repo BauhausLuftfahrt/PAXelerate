@@ -1116,21 +1116,21 @@
             featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
       </changes>
       <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
-          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerLuggageStowTimeMean">
-        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerLuggageStowTimeMean"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerMediumLuggageStowTimeMean">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerMediumLuggageStowTimeMean"
             featureName="name" dataValue="passengerLuggageStowTimeMean"/>
-        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerLuggageStowTimeMean"
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerMediumLuggageStowTimeMean"
             featureName="defaultValueLiteral" dataValue="15"/>
-        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerLuggageStowTimeMean"
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerMediumLuggageStowTimeMean"
             featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
       </changes>
       <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
-          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerLuggageStowTimeDeviation">
-        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerLuggageStowTimeDeviation"
+          referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerMediumLuggageStowTimeDeviation">
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerMediumLuggageStowTimeDeviation"
             featureName="name" dataValue="passengerLuggageStowTimeDeviation"/>
-        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerLuggageStowTimeDeviation"
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerMediumLuggageStowTimeDeviation"
             featureName="defaultValueLiteral" dataValue="7"/>
-        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerLuggageStowTimeDeviation"
+        <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerMediumLuggageStowTimeDeviation"
             featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
       </changes>
       <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
@@ -1394,5 +1394,53 @@
       </changes>
     </changes>
   </releases>
-  <releases/>
+  <releases>
+    <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+        referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerSmallLuggageStowTimeMean"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerSmallLuggageStowTimeMean"
+        featureName="name" dataValue="passengerSmallLuggageStowTimeMean"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerSmallLuggageStowTimeMean"
+        featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerSmallLuggageStowTimeMean"
+        featureName="defaultValueLiteral" dataValue="10"/>
+    <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+        referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerSmallLuggageStowTimeDeviation"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerSmallLuggageStowTimeDeviation"
+        featureName="name" dataValue="passengerSmallLuggageStowTimeDeviation"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerSmallLuggageStowTimeDeviation"
+        featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerSmallLuggageStowTimeDeviation"
+        featureName="eType" oldReferenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerSmallLuggageStowTimeDeviation"
+        featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerSmallLuggageStowTimeDeviation"
+        featureName="defaultValueLiteral" dataValue=""/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerSmallLuggageStowTimeDeviation"
+        featureName="defaultValueLiteral" dataValue="5" oldDataValue=""/>
+    <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+        referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerBigLuggageStowTimeMean"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerBigLuggageStowTimeMean"
+        featureName="name" dataValue="passengerBigLuggageStowTimeMean"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerBigLuggageStowTimeMean"
+        featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerBigLuggageStowTimeMean"
+        featureName="defaultValueLiteral" dataValue=""/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerBigLuggageStowTimeMean"
+        featureName="defaultValueLiteral" dataValue="20" oldDataValue=""/>
+    <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+        referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/passengerBigLuggageStowTimeDeviation"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerBigLuggageStowTimeDeviation"
+        featureName="name" dataValue="passengerBigLuggageStowTimeDeviation"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerBigLuggageStowTimeDeviation"
+        featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerBigLuggageStowTimeDeviation"
+        featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        oldReferenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerBigLuggageStowTimeDeviation"
+        featureName="defaultValueLiteral" dataValue="5"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerMediumLuggageStowTimeMean"
+        featureName="name" dataValue="passengerMediumLuggageStowTimeMean" oldDataValue="passengerLuggageStowTimeMean"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerMediumLuggageStowTimeDeviation"
+        featureName="name" dataValue="passengerMediumLuggageStowTimeDeviation" oldDataValue="passengerLuggageStowTimeDeviation"/>
+  </releases>
 </history:History>
