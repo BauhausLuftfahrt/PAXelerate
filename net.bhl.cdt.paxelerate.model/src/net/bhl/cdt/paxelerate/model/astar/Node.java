@@ -377,12 +377,29 @@ public class Node implements Comparable<Node> {
 		int better = -1;
 		int equal = 0;
 		int worse = 1;
+		
+		/* if this node is cheaper, it is better */ 
 		if (costFromStart < otherNode.costFromStart) {
 			return better;
+			
+			/* if the other node is cheaper, this one is worse  */
 		} else if (costFromStart > otherNode.costFromStart) {
 			return worse;
+			
+			/* if they are equally expensive, check the distance */
 		} else {
-			return equal;
+			
+			/* if this node is closer to the start, it is better */ 
+			if(distanceFromStart < otherNode.distanceFromStart) {
+				return better;
+				/* if the distance is greater, it is worse */
+			} else if(distanceFromStart > otherNode.distanceFromStart) {
+				return worse;
+				
+				/* else the nodes are equal (concerning the criteria used here) */ 
+			} else {
+				return equal;
+			}
 		}
 	}
 }
