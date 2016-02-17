@@ -444,35 +444,27 @@ public class CabinViewPart extends ViewPart {
 
 			if (!ModelHelper.getChildrenByClass(cabin, FirstClass.class)
 					.isEmpty()) {
-				firstSeat = resize(firstSeat,
-						(int) (ModelHelper
-								.getChildrenByClass(cabin, FirstClass.class).get(0)
-								.getSeatWidth() / factor),
-						(int) (ModelHelper
-								.getChildrenByClass(cabin, FirstClass.class).get(0)
-								.getSeatLength() / factor));
+				int dim = (int) (ModelHelper
+						.getChildrenByClass(cabin, FirstClass.class).get(0)
+						.getSeatWidth() / factor);
+				firstSeat = resize(firstSeat, dim, dim);
 			}
 			if (!ModelHelper.getChildrenByClass(cabin, BusinessClass.class)
 					.isEmpty()) {
-				businessSeat = resize(businessSeat,
-						(int) (ModelHelper
-								.getChildrenByClass(cabin, BusinessClass.class)
-								.get(0).getSeatWidth()
-								/ factor),
-						(int) (ModelHelper
-								.getChildrenByClass(cabin, BusinessClass.class)
-								.get(0).getSeatLength() / factor));
+				int dim = (int) (ModelHelper
+						.getChildrenByClass(cabin, BusinessClass.class)
+						.get(0).getSeatWidth()
+						/ factor);
+				businessSeat = resize(businessSeat, dim, dim);
 			}
+			
 			if (!ModelHelper.getChildrenByClass(cabin, EconomyClass.class)
 					.isEmpty()) {
-				economySeat = resize(economySeat,
-						(int) (ModelHelper
-								.getChildrenByClass(cabin, EconomyClass.class)
-								.get(0).getSeatWidth()
-								/ factor),
-						(int) (ModelHelper
-								.getChildrenByClass(cabin, EconomyClass.class)
-								.get(0).getSeatLength() / factor));
+				int dim = (int) (ModelHelper
+						.getChildrenByClass(cabin, EconomyClass.class)
+						.get(0).getSeatWidth()
+						/ factor);
+				economySeat = resize(economySeat,dim, dim);
 			}
 			
 			if(!cabin.getGalleys().isEmpty()) {
