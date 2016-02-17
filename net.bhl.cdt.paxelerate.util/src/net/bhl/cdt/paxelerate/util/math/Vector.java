@@ -113,20 +113,22 @@ public abstract class Vector implements Comparable<Vector> {
 	}
 
 	/**
-	 * This method compares two nodes within the A* environment. Do not use it for equality comparison!
+	 * This method compares two vectors for the cost map generation. Do not use it for equality comparison!
 	 * 
-	 * @param otherNode
-	 *            the other node
-	 * @return returns the better node value in terms of cost and distance
+	 * @param vector the other vector
+	 * @return returns the better better vector
 	 */
-	
-	/* TODO: The method compareTo() is essential for the A* Algorithm and should not be used for equality comparison of two vectors.
-	 * It should solely be used for the path finding purposes, requiring both the distances (XYZ) and the cost of each node.
-	 */
-	
+		
 	// TODO: Marc bitte mit Raoul über diese Funktion sprechen.
 	
-	@Deprecated
+	/**
+	 * @Raoul: Die Methode compareTo() ist eine definierte Methode des interfaces "Comparable", was die Klasse Vector hier implementiert.
+	 * Wie vergleichsweise in Core.java zu sehen, wird openList (SortedNodeList.java) verwendet, um die Nodes vorzusortieren. Hier ist Collections.sort(list)
+	 * die entscheidende Funktion, die sich auf das Comparable bezieht. Hier werden Nodes sortiert, weswegen in Node.java auch eine compareTo ist.
+	 * 
+	 * Bei den Vectoren ist das ganze in der CostMap nötig, um die Erzeugung eben jener zu gewährleisten.
+	 */
+	
 	public int compareTo(Vector vector) {
 		int better = -1;
 		int equal = 0;

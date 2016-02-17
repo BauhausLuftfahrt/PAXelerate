@@ -42,12 +42,7 @@ public class SortedNodeList {
 	 */
 	public void add(Node node) {
 		list.add(node);
-		try {
-			Collections.sort(list);
-		} catch (IllegalArgumentException e) {
-			System.out
-					.println("###### !IllegalArgumentException ERROR! ###### !SortedNodeList - add()! ######");
-		}
+		Collections.sort(list);
 	}
 
 	/**
