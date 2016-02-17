@@ -118,9 +118,7 @@ public abstract class Vector implements Comparable<Vector> {
 	 * @param vector the other vector
 	 * @return returns the better better vector
 	 */
-		
-	// TODO: Marc bitte mit Raoul über diese Funktion sprechen.
-	
+
 	/**
 	 * @Raoul: Die Methode compareTo() ist eine definierte Methode des interfaces "Comparable", was die Klasse Vector hier implementiert.
 	 * Wie vergleichsweise in Core.java zu sehen, wird openList (SortedNodeList.java) verwendet, um die Nodes vorzusortieren. Hier ist Collections.sort(list)

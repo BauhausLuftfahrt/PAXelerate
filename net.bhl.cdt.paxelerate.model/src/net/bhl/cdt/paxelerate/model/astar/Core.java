@@ -101,7 +101,7 @@ public class Core {
 			 * should be our next step
 			 */
 			for (Node neighbor : current.getNeighborList()) {
-				boolean neighborIsBetter;
+				boolean neighborIsBetter = false;
 
 				/*
 				 * if we have already searched this Node, don't bother and
@@ -141,20 +141,19 @@ public class Core {
 					} else if (neighborCostFromStart < currentCostFromStart) {
 						neighborIsBetter = true;
 						
-						/* it is better if the other node is closer */ 
-					} else if(neighborDistanceFromStart < currentDistanceFromStart) {
-						neighborIsBetter = true;
+						/* it is better if the other node is closer if they have the same cost */ 
+					} else if(neighborCostFromStart == currentCostFromStart) {
+						if(neighborDistanceFromStart < currentDistanceFromStart) {
+							neighborIsBetter = true;
+						}
 						
 						/* if no criteria is matched, the node is worse */
 					} else {
 						neighborIsBetter = false;
 					}
 
-					/*
-					 * TODO: check if passenger dimensions allow this specific
-					 * node.
-					 */
-
+					// TODO: check if passenger dimensions allow this specific node.
+					
 					/* set neighbors parameters if it is better */
 					if (neighborIsBetter) {
 						neighbor.setPreviousNode(current);
