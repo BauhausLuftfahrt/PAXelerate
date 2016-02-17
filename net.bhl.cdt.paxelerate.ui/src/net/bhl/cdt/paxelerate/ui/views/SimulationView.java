@@ -196,10 +196,13 @@ public class SimulationView extends JPanel implements MouseListener {
 
 		super.paintComponent(g); // Paint background
 		g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE));
-		for (int x = pointZero; x < areamap.getDimensions().getY(); x++) {
-			for (int y = 0; y < areamap.getDimensions().getX(); y++) {
+		for (int y = pointZero; y < areamap.getDimensions().getY(); y++) {
+			for (int x = 0; x < areamap.getDimensions().getX(); x++) {
 
-				Node node = areamap.getNodeByCoordinate(y, x);
+				/* select the inverted node */
+				int xInverted = areamap.getDimensions().getX() - 1 - x;
+				
+				Node node = areamap.getNodeByCoordinate(xInverted, y);
 				g.setColor(Color.LIGHT_GRAY);
 				if (node.getTypeForPrinting() != null) {
 					try {
@@ -211,8 +214,8 @@ public class SimulationView extends JPanel implements MouseListener {
 							g.setFont(new Font("Courier New", Font.PLAIN,
 									FONT_SIZE - 1));
 							if (!node.isHidden()) {
-								g.drawString("O", (x - pointZero) * FONT_SIZE,
-										y * FONT_SIZE);
+								g.drawString("O", (y - pointZero) * FONT_SIZE,
+										x * FONT_SIZE);
 							}
 						} else {
 							g.setColor(Color.LIGHT_GRAY);
@@ -220,7 +223,7 @@ public class SimulationView extends JPanel implements MouseListener {
 									FONT_SIZE));
 							if (node.getTypeForPrinting() != null) {
 								g.drawString(node.getTypeForPrinting(),
-										(x - pointZero) * FONT_SIZE, y
+										(y - pointZero) * FONT_SIZE, x
 												* FONT_SIZE);
 							}
 						}
@@ -230,13 +233,6 @@ public class SimulationView extends JPanel implements MouseListener {
 				}
 			}
 		}
-		// g.setColor(Color.BLACK);
-		// g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE + 2));
-		// for (Passenger pax : SimulationHandler.getCabin().getPassengers()) {
-		// Agent agent = SimulationHandler.getAgentByPassenger(pax);
-		// g.drawString("#", (agent.getDesiredPosition().getY() - pointZero)
-		// * FONT_SIZE, agent.getDesiredPosition().getX() * FONT_SIZE);
-		// }
 
 		g.setColor(Color.BLACK);
 		g.setFont(new Font("Courier New", Font.PLAIN, 12));
@@ -361,25 +357,21 @@ public class SimulationView extends JPanel implements MouseListener {
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 }

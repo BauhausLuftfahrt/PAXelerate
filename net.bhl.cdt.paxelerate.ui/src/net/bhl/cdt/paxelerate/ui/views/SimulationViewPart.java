@@ -26,6 +26,7 @@ import net.bhl.cdt.paxelerate.ui.font.FontHelper;
  *
  */
 //UNUSED CLASS?
+// TODO: I wanted to integrate the simulation view into openCDT itself, but the openCDT ui freezes immediately when the simulation starts so it is useless for now.
 @Deprecated
 public class SimulationViewPart extends ViewPart {
 
