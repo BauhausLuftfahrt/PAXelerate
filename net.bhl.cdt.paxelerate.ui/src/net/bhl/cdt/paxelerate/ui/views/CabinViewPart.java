@@ -431,16 +431,19 @@ public class CabinViewPart extends ViewPart {
 			 **/
 
 			// TODO: implement this!
+			
+			// TODO: write global helper function to get a list of all Economy classes etc.
+			
+			// TODO: generate global enum for Business First , Economy, ...
 
-			// for (Class<? extends TravelClass> className : classes) {
-			// if (!ModelHelper.getChildrenByClass(cabin, className).isEmpty()) {
-			// firstSeat = resize(firstSeat, (int) (ModelHelper
-			// .getChildrenByClass(cabin, className).get(0)
-			// .getSeatWidth() / factor), (int) (ModelHelper
-			// .getChildrenByClass(cabin, className).get(0)
-			// .getSeatLength() / factor));
-			// }
-			// }
+//			 for (Class<? extends TravelClass> className : classes) {
+//				 if (!ModelHelper.getChildrenByClass(cabin, className).isEmpty()) {
+//					 int dim = (int) (ModelHelper
+//							 .getChildrenByClass(cabin, className).get(0)
+//							 .getSeatWidth() / factor);
+//					 firstSeat = resize(firstSeat, dim, dim);
+//				 }
+//			 }
 
 			if (!ModelHelper.getChildrenByClass(cabin, FirstClass.class)
 					.isEmpty()) {
