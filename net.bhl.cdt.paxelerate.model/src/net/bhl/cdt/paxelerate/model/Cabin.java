@@ -15,8 +15,8 @@ import net.bhl.cdt.model.NamedElement;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getCabinLength <em>Cabin Length</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getCabinWidth <em>Cabin Width</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getXDimension <em>XDimension</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getYDimension <em>YDimension</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getRowNonexistent <em>Row Nonexistent</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getAisleWidth <em>Aisle Width</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getFramesPerSecond <em>Frames Per Second</em>}</li>
@@ -43,58 +43,58 @@ import net.bhl.cdt.model.NamedElement;
 public interface Cabin extends NamedElement {
 
 	/**
-	 * Returns the value of the '<em><b>Cabin Length</b></em>' attribute.
+	 * Returns the value of the '<em><b>XDimension</b></em>' attribute.
 	 * The default value is <code>"2412"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Cabin Length</em>' attribute isn't clear,
+	 * If the meaning of the '<em>XDimension</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Cabin Length</em>' attribute.
-	 * @see #setCabinLength(int)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getCabin_CabinLength()
+	 * @return the value of the '<em>XDimension</em>' attribute.
+	 * @see #setXDimension(int)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getCabin_XDimension()
 	 * @model default="2412"
 	 * @generated
 	 */
-	int getCabinLength();
+	int getXDimension();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Cabin#getCabinLength <em>Cabin Length</em>}' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Cabin#getXDimension <em>XDimension</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Cabin Length</em>' attribute.
-	 * @see #getCabinLength()
+	 * @param value the new value of the '<em>XDimension</em>' attribute.
+	 * @see #getXDimension()
 	 * @generated
 	 */
-	void setCabinLength(int value);
+	void setXDimension(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Cabin Width</b></em>' attribute.
+	 * Returns the value of the '<em><b>YDimension</b></em>' attribute.
 	 * The default value is <code>"364"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Cabin Width</em>' attribute isn't clear,
+	 * If the meaning of the '<em>YDimension</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Cabin Width</em>' attribute.
-	 * @see #setCabinWidth(int)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getCabin_CabinWidth()
+	 * @return the value of the '<em>YDimension</em>' attribute.
+	 * @see #setYDimension(int)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getCabin_YDimension()
 	 * @model default="364"
 	 * @generated
 	 */
-	int getCabinWidth();
+	int getYDimension();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Cabin#getCabinWidth <em>Cabin Width</em>}' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Cabin#getYDimension <em>YDimension</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Cabin Width</em>' attribute.
-	 * @see #getCabinWidth()
+	 * @param value the new value of the '<em>YDimension</em>' attribute.
+	 * @see #getYDimension()
 	 * @generated
 	 */
-	void setCabinWidth(int value);
+	void setYDimension(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Doors</b></em>' containment reference list.

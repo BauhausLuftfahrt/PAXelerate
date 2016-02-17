@@ -95,7 +95,7 @@ public class CabinViewPart extends ViewPart {
 		this.parent = parent;
 		cabin = CabinFactory.eINSTANCE.createCabin();
 
-		factor = (double) cabin.getCabinWidth()
+		factor = (double) cabin.getYDimension()
 				/ (double) CABIN_WIDTH_IN_PIXELS;
 		economySeat = ImageHelper.getImage(InfoViewPart.class,
 				"/images/aircraft/interior/economy_seat.png");
@@ -190,11 +190,11 @@ public class CabinViewPart extends ViewPart {
 		gc.setInterpolation(SWT.HIGH);
 		gc.drawImage(newAircraft, 0, 0);
 		gc.setBackground(ColorHelper.AIRCRAFT_FLOOR);
-		gc.fillRectangle(xZero, yZero, adapt(cabin.getCabinWidth()),
-				adapt(cabin.getCabinLength()));
-		gc.drawLine(xZero, yZero + (int) (cabin.getCabinLength() / factor),
-				xZero + (int) (cabin.getCabinWidth() / factor),
-				yZero + (int) (cabin.getCabinLength() / factor));
+		gc.fillRectangle(xZero, yZero, adapt(cabin.getYDimension()),
+				adapt(cabin.getXDimension()));
+		gc.drawLine(xZero, yZero + (int) (cabin.getXDimension() / factor),
+				xZero + (int) (cabin.getYDimension() / factor),
+				yZero + (int) (cabin.getXDimension() / factor));
 		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
 			if (seat.getTravelClass() instanceof FirstClass) {
 				gc.drawImage(firstSeat, get(seat, XYZ.X), get(seat, XYZ.Y));
@@ -209,7 +209,7 @@ public class CabinViewPart extends ViewPart {
 		for (Row row : ModelHelper.getChildrenByClass(cabin, Row.class)) {
 			int positionY = (int) ((row.getSeats().get(0).getXPosition())
 					/ factor);
-			int positionX = (int) ((cabin.getCabinWidth() / 2) / factor);
+			int positionX = (int) ((cabin.getYDimension() / 2) / factor);
 			gc.drawText(
 					row.getRowNumber()
 							+ "",
@@ -225,7 +225,7 @@ public class CabinViewPart extends ViewPart {
 			if (door.isOnBothSides()) {
 				gc.fillRectangle(
 						(int) (xZero + OFFSET_OF_DOOR - DOOR_DEPTH
-								+ (cabin.getCabinWidth()) / factor),
+								+ (cabin.getYDimension()) / factor),
 						(int) (yZero + door.getXPosition() / factor),
 						(int) (DOOR_DEPTH), (int) (door.getWidth() / factor));
 			}
@@ -414,7 +414,7 @@ public class CabinViewPart extends ViewPart {
 			yZero = 75;
 			canvasHeight = 0;
 			canvasHeight = canvas.getBounds().height;
-			factor = (double) cabin.getCabinWidth() / (double) CABIN_WIDTH_IN_PIXELS
+			factor = (double) cabin.getYDimension() / (double) CABIN_WIDTH_IN_PIXELS
 					/ (double) (canvasHeight / imageY);
 			xZero = (int) (xZero * (canvasHeight / imageY));
 			yZero = (int) (yZero * (canvasHeight / imageY));
@@ -544,9 +544,9 @@ public class CabinViewPart extends ViewPart {
 		gc.setInterpolation(SWT.HIGH);
 		gc.drawImage(img, 0, 0);
 		gc.setAlpha(100);
-		for (int i = 0; i < (int) (cabin.getCabinWidth()
+		for (int i = 0; i < (int) (cabin.getYDimension()
 				/ cabin.getScale()); i++) {
-			for (int j = 0; j < (int) (cabin.getCabinLength()
+			for (int j = 0; j < (int) (cabin.getXDimension()
 					/ cabin.getScale()); j++) {
 
 				if (obstacleMap[i][j] <= ObstacleMap.getHoleValue()) {

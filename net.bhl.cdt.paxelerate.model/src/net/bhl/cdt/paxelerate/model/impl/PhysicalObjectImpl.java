@@ -315,8 +315,8 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements
 //			CabinViewPart cabinViewPart = (CabinViewPart) page
 //					.findView("net.bhl.cdt.model.cabin.cabinview");
 //
-//			width = cabinViewPart.getCabin().getCabinWidth();
-//			length = cabinViewPart.getCabin().getCabinLength();
+//			width = cabinViewPart.getCabin().getYDimension();
+//			length = cabinViewPart.getCabin().getXDimension();
 		} catch (NullPointerException e) {
 			// BLA BLA
 		}

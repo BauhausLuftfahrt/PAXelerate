@@ -195,8 +195,8 @@ public class DrawCabinCommand extends CDTCommand {
 	private Boolean checkCabinOutOfBounds() {
 		for (PhysicalObject object : ModelHelper.getChildrenByClass(cabin, PhysicalObject.class)) {
 			if (object.getYPosition() < 0 || object.getXPosition() < 0
-					|| (object.getYPosition() + object.getYDimension()) > cabin.getCabinWidth()
-					|| (object.getXPosition() + object.getXDimension()) > cabin.getCabinLength()) {
+					|| (object.getYPosition() + object.getYDimension()) > cabin.getYDimension()
+					|| (object.getXPosition() + object.getXDimension()) > cabin.getXDimension()) {
 				return true;
 			}
 		}

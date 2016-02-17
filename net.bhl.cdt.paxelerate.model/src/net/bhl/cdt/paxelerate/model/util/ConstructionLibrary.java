@@ -304,7 +304,7 @@ public class ConstructionLibrary {
 						* (passengerClass.getSeatWidth() + seatHelper)
 						+ seatHelper);
 			} catch (NullPointerException e) {
-				physialObject.setYDimension((cabin.getCabinWidth()
+				physialObject.setYDimension((cabin.getYDimension()
 						- numbAisles * cabin.getAisleWidth())
 						/ (numbAisles + 1));
 			}
@@ -395,8 +395,8 @@ public class ConstructionLibrary {
 				/** Calculate the gap between the seats **/
 				if ((seatsInRow * seatDimensions.getX()
 						+ numbAisles * cabin.getAisleWidth()) <= cabin
-								.getCabinWidth()) {
-					globalSeatPositionX = ((cabin.getCabinWidth()
+								.getYDimension()) {
+					globalSeatPositionX = ((cabin.getYDimension()
 							- numbAisles * cabin.getAisleWidth()
 							- seatsInRow * seatDimensions.getX())
 							/ (seatsInRow + numbAisles + 1));

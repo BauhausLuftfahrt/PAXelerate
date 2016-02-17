@@ -210,7 +210,7 @@ public class SimulationHandler {
 		}
 
 		Vector goal = new Vector2D(
-				AStarHelper.scaleValue(cabin.getCabinWidth() / 2.0),
+				AStarHelper.scaleValue(cabin.getYDimension() / 2.0),
 				AStarHelper.scaleValue(seat.getXPosition()) + offset);
 
 		Agent agent = new Agent(pax, start, goal,

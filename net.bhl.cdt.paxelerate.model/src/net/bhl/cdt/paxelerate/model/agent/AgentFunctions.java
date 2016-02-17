@@ -70,7 +70,7 @@ public class AgentFunctions {
 	public static boolean otherSeatCloserToAisle(Seat otherSeat, Seat thisSeat) {
 
 		int middleOfCabinX = (int) (ModelHelper
-				.getParent(Cabin.class, thisSeat).getCabinWidth() / 2.0);
+				.getParent(Cabin.class, thisSeat).getYDimension() / 2.0);
 
 		int otherSeatToAisleDistanceX = Math.abs(otherSeat.getYPosition()
 				+ otherSeat.getYDimension() / 2 - middleOfCabinX);

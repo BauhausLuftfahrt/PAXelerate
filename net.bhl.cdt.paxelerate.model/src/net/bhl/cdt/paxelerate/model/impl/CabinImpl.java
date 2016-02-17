@@ -34,8 +34,8 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getCabinLength <em>Cabin Length</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getCabinWidth <em>Cabin Width</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getXDimension <em>XDimension</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getYDimension <em>YDimension</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getRowNonexistent <em>Row Nonexistent</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getAisleWidth <em>Aisle Width</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getFramesPerSecond <em>Frames Per Second</em>}</li>
@@ -59,37 +59,41 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
  */
 public class CabinImpl extends NamedElementImpl implements Cabin {
 	/**
-	 * The default value of the '{@link #getCabinLength() <em>Cabin Length</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getCabinLength()
+	 * The default value of the '{@link #getXDimension() <em>XDimension</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getXDimension()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int CABIN_LENGTH_EDEFAULT = 2412;
+	protected static final int XDIMENSION_EDEFAULT = 2412;
 	/**
-	 * The cached value of the '{@link #getCabinLength() <em>Cabin Length</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getCabinLength()
+	 * The cached value of the '{@link #getXDimension() <em>XDimension</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getXDimension()
 	 * @generated
 	 * @ordered
 	 */
-	protected int cabinLength = CABIN_LENGTH_EDEFAULT;
+	protected int xDimension = XDIMENSION_EDEFAULT;
 	/**
-	 * The default value of the '{@link #getCabinWidth() <em>Cabin Width</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getCabinWidth()
+	 * The default value of the '{@link #getYDimension() <em>YDimension</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getYDimension()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int CABIN_WIDTH_EDEFAULT = 364;
+	protected static final int YDIMENSION_EDEFAULT = 364;
 	/**
-	 * The cached value of the '{@link #getCabinWidth() <em>Cabin Width</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getCabinWidth()
+	 * The cached value of the '{@link #getYDimension() <em>YDimension</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getYDimension()
 	 * @generated
 	 * @ordered
 	 */
-	protected int cabinWidth = CABIN_WIDTH_EDEFAULT;
+	protected int yDimension = YDIMENSION_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getRowNonexistent() <em>Row Nonexistent</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
@@ -321,41 +325,45 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getCabinLength() {
-		return cabinLength;
+	public int getXDimension() {
+		return xDimension;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCabinLength(int newCabinLength) {
-		int oldCabinLength = cabinLength;
-		cabinLength = newCabinLength;
+	public void setXDimension(int newXDimension) {
+		int oldXDimension = xDimension;
+		xDimension = newXDimension;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__CABIN_LENGTH, oldCabinLength, cabinLength));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__XDIMENSION, oldXDimension, xDimension));
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getCabinWidth() {
-		return cabinWidth;
+	public int getYDimension() {
+		return yDimension;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCabinWidth(int newCabinWidth) {
-		int oldCabinWidth = cabinWidth;
-		cabinWidth = newCabinWidth;
+	public void setYDimension(int newYDimension) {
+		int oldYDimension = yDimension;
+		yDimension = newYDimension;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__CABIN_WIDTH, oldCabinWidth, cabinWidth));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__YDIMENSION, oldYDimension, yDimension));
 	}
 
 	/**
@@ -673,10 +681,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CabinPackage.CABIN__CABIN_LENGTH:
-				return getCabinLength();
-			case CabinPackage.CABIN__CABIN_WIDTH:
-				return getCabinWidth();
+			case CabinPackage.CABIN__XDIMENSION:
+				return getXDimension();
+			case CabinPackage.CABIN__YDIMENSION:
+				return getYDimension();
 			case CabinPackage.CABIN__ROW_NONEXISTENT:
 				return getRowNonexistent();
 			case CabinPackage.CABIN__AISLE_WIDTH:
@@ -724,11 +732,11 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CabinPackage.CABIN__CABIN_LENGTH:
-				setCabinLength((Integer)newValue);
+			case CabinPackage.CABIN__XDIMENSION:
+				setXDimension((Integer)newValue);
 				return;
-			case CabinPackage.CABIN__CABIN_WIDTH:
-				setCabinWidth((Integer)newValue);
+			case CabinPackage.CABIN__YDIMENSION:
+				setYDimension((Integer)newValue);
 				return;
 			case CabinPackage.CABIN__ROW_NONEXISTENT:
 				setRowNonexistent((Integer)newValue);
@@ -800,11 +808,11 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CabinPackage.CABIN__CABIN_LENGTH:
-				setCabinLength(CABIN_LENGTH_EDEFAULT);
+			case CabinPackage.CABIN__XDIMENSION:
+				setXDimension(XDIMENSION_EDEFAULT);
 				return;
-			case CabinPackage.CABIN__CABIN_WIDTH:
-				setCabinWidth(CABIN_WIDTH_EDEFAULT);
+			case CabinPackage.CABIN__YDIMENSION:
+				setYDimension(YDIMENSION_EDEFAULT);
 				return;
 			case CabinPackage.CABIN__ROW_NONEXISTENT:
 				setRowNonexistent(ROW_NONEXISTENT_EDEFAULT);
@@ -868,10 +876,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CabinPackage.CABIN__CABIN_LENGTH:
-				return cabinLength != CABIN_LENGTH_EDEFAULT;
-			case CabinPackage.CABIN__CABIN_WIDTH:
-				return cabinWidth != CABIN_WIDTH_EDEFAULT;
+			case CabinPackage.CABIN__XDIMENSION:
+				return xDimension != XDIMENSION_EDEFAULT;
+			case CabinPackage.CABIN__YDIMENSION:
+				return yDimension != YDIMENSION_EDEFAULT;
 			case CabinPackage.CABIN__ROW_NONEXISTENT:
 				return rowNonexistent != ROW_NONEXISTENT_EDEFAULT;
 			case CabinPackage.CABIN__AISLE_WIDTH:
@@ -919,10 +927,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (cabinLength: ");
-		result.append(cabinLength);
-		result.append(", cabinWidth: ");
-		result.append(cabinWidth);
+		result.append(" (xDimension: ");
+		result.append(xDimension);
+		result.append(", yDimension: ");
+		result.append(yDimension);
 		result.append(", rowNonexistent: ");
 		result.append(rowNonexistent);
 		result.append(", aisleWidth: ");

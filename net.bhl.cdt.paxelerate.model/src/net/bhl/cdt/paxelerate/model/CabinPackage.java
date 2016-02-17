@@ -80,22 +80,22 @@ public interface CabinPackage extends EPackage {
 	int CABIN__NAME = ModelPackage.NAMED_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Cabin Length</b></em>' attribute.
+	 * The feature id for the '<em><b>XDimension</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__CABIN_LENGTH = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int CABIN__XDIMENSION = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Cabin Width</b></em>' attribute.
+	 * The feature id for the '<em><b>YDimension</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__CABIN_WIDTH = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int CABIN__YDIMENSION = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Row Nonexistent</b></em>' attribute.
@@ -2891,26 +2891,26 @@ public interface CabinPackage extends EPackage {
 	EClass getCabin();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Cabin#getCabinLength <em>Cabin Length</em>}'.
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Cabin#getXDimension <em>XDimension</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Cabin Length</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.Cabin#getCabinLength()
+	 * @return the meta object for the attribute '<em>XDimension</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.Cabin#getXDimension()
 	 * @see #getCabin()
 	 * @generated
 	 */
-	EAttribute getCabin_CabinLength();
+	EAttribute getCabin_XDimension();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Cabin#getCabinWidth <em>Cabin Width</em>}'.
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Cabin#getYDimension <em>YDimension</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Cabin Width</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.Cabin#getCabinWidth()
+	 * @return the meta object for the attribute '<em>YDimension</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.Cabin#getYDimension()
 	 * @see #getCabin()
 	 * @generated
 	 */
-	EAttribute getCabin_CabinWidth();
+	EAttribute getCabin_YDimension();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link net.bhl.cdt.paxelerate.model.Cabin#getDoors <em>Doors</em>}'.
@@ -4620,19 +4620,19 @@ public interface CabinPackage extends EPackage {
 		 */
 		EClass CABIN = eINSTANCE.getCabin();
 		/**
-		 * The meta object literal for the '<em><b>Cabin Length</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>XDimension</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CABIN__CABIN_LENGTH = eINSTANCE.getCabin_CabinLength();
+		EAttribute CABIN__XDIMENSION = eINSTANCE.getCabin_XDimension();
 		/**
-		 * The meta object literal for the '<em><b>Cabin Width</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>YDimension</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CABIN__CABIN_WIDTH = eINSTANCE.getCabin_CabinWidth();
+		EAttribute CABIN__YDIMENSION = eINSTANCE.getCabin_YDimension();
 		/**
 		 * The meta object literal for the '<em><b>Doors</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->

@@ -47,16 +47,16 @@ public class GenerateCabinCommand extends CDTCommand {
 		if (cabin.isUsePresetSettings()) {
 			switch (cabin.getAircraftType()) {
 			case REGIONAL:
-				cabin.setCabinWidth(300);
-				cabin.setCabinLength(2000);
+				cabin.setYDimension(300);
+				cabin.setXDimension(2000);
 				break;
 			case NARROWBODY:
-				cabin.setCabinWidth(364);
-				cabin.setCabinLength(2460);
+				cabin.setYDimension(364);
+				cabin.setXDimension(2460);
 				break;
 			case WIDEBODY:
-				cabin.setCabinWidth(650);
-				cabin.setCabinLength(4440);
+				cabin.setYDimension(650);
+				cabin.setXDimension(4440);
 				break;
 			default:
 				Log.add(this, "Error defining aircraft width.");

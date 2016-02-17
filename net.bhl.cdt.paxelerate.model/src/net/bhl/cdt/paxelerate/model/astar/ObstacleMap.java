@@ -54,8 +54,8 @@ public class ObstacleMap {
 	 */
 	public ObstacleMap(Cabin cabin) {
 		this.cabin = cabin;
-		dimensions = new Vector2D(AStarHelper.scaleValue(cabin.getCabinWidth()),
-				AStarHelper.scaleValue(cabin.getCabinLength()));
+		dimensions = new Vector2D(AStarHelper.scaleValue(cabin.getYDimension()),
+				AStarHelper.scaleValue(cabin.getXDimension()));
 		obstacleMap = createObstacleMap();
 	}
 

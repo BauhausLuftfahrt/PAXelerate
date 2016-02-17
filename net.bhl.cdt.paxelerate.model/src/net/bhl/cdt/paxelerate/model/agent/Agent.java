@@ -954,7 +954,7 @@ public class Agent extends Subject implements Runnable {
 				Passenger dummyPax = CabinFactory.eINSTANCE.createPassenger();
 				dummyPax.setId(Integer.MAX_VALUE);
 
-				for (int i = 0; i < cabinBlocker.getCabinWidth()
+				for (int i = 0; i < cabinBlocker.getYDimension()
 						/ cabinBlocker.getScale(); i++) {
 					Node node = SimulationHandler.getMap()
 							.getNodeByCoordinate(
@@ -999,7 +999,7 @@ public class Agent extends Subject implements Runnable {
 
 				}
 
-				for (int i = 0; i < cabinBlocker.getCabinWidth()
+				for (int i = 0; i < cabinBlocker.getYDimension()
 						/ cabinBlocker.getScale(); i++) {
 
 					Node node = SimulationHandler.getMap()

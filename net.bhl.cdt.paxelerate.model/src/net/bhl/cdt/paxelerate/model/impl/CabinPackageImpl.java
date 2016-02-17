@@ -320,7 +320,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCabin_CabinLength() {
+	public EAttribute getCabin_XDimension() {
         return (EAttribute)getCabin().getEStructuralFeatures().get(0);
 	}
 
@@ -329,7 +329,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCabin_CabinWidth() {
+	public EAttribute getCabin_YDimension() {
         return (EAttribute)getCabin().getEStructuralFeatures().get(1);
 	}
 
