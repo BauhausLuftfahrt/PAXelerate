@@ -54,8 +54,8 @@ public class ObstacleMap {
 	 */
 	public ObstacleMap(Cabin cabin) {
 		this.cabin = cabin;
-		dimensions = new Vector2D(AStarHelper.scaleValue(cabin.getYDimension()),
-				AStarHelper.scaleValue(cabin.getXDimension()));
+		dimensions = new Vector2D(cabin.getYDimension(),
+				cabin.getXDimension(),cabin.getScale());
 		obstacleMap = createObstacleMap();
 	}
 
@@ -130,7 +130,7 @@ public class ObstacleMap {
 	 * This method creates the potential gradient around obstacle.
 	 */
 	private void generatePotentialGradient() {
-		int range = AStarHelper.scaleValue(OBSTACLE_RANGE_IN_CM);
+		int range = OBSTACLE_RANGE_IN_CM / cabin.getScale();
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
 				if (obstacleMap[i][j] == MAX_VALUE) {
@@ -206,8 +206,8 @@ public class ObstacleMap {
 		 */
 
 		for (Door door : cabin.getDoors()) {
-			entryMin = AStarHelper.scaleValue(door.getXPosition()) + 2;
-			entryMax = AStarHelper.scaleValue(door.getXPosition() + door.getWidth()) - 2;
+			entryMin = (door.getXPosition() / cabin.getScale()) + 2;
+			entryMax = (door.getXPosition() + door.getWidth()) / cabin.getScale() - 2;
 
 			for (int i = 0; i < dimensions.getX(); i++) {
 				for (int j = 0; j < dimensions.getY(); j++) {
@@ -269,10 +269,10 @@ public class ObstacleMap {
 
 			if (!(cabin.getSimulationSettings().isUseFoldableSeats() && value)) {
 
-				int width = AStarHelper.scaleValue(physicalObject.getYDimension());
-				int length = AStarHelper.scaleValue(physicalObject.getXDimension());
-				int xPosition = AStarHelper.scaleValue(physicalObject.getYPosition());
-				int yPosition = AStarHelper.scaleValue(physicalObject.getXPosition());
+				int width = physicalObject.getYDimension() / cabin.getScale();
+				int length = physicalObject.getXDimension() / cabin.getScale();;
+				int xPosition = physicalObject.getYPosition()/ cabin.getScale();;
+				int yPosition = physicalObject.getXPosition()/ cabin.getScale();;
 
 				for (int i = 0; i < width; i++) {
 					for (int j = 0; j < length; j++) {

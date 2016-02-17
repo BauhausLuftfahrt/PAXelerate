@@ -37,6 +37,30 @@ public abstract class Vector implements Comparable<Vector> {
 		yValue = y;
 		dimensions = 2;
 	}
+	
+	/**
+	 * Instead of casting every Vector to (int) manually, this can be done automatically here.
+	 * @param x the double x value <b>(will become int!)</b>
+	 * @param y the double y value <b>(will become int!)</b>
+	 */
+	protected Vector(double x, double y) {
+		xValue = (int) x;
+		yValue = (int) y;
+		dimensions = 2;
+	}
+	
+	/**
+	 * Instead of casting every Vector to (int) manually, this can be done automatically here.
+	 * Additionally, the parameters are scaled automatically.
+	 * @param x the double x value <b>(will become int!)</b>
+	 * @param y the double y value <b>(will become int!)</b>
+	 * @param scaling additionally, the entries are scaled!
+	 */
+	protected Vector(double x, double y, int scaling) {
+		xValue = (int) (x / scaling);
+		yValue = (int) (y / scaling);
+		dimensions = 2;
+	}
 
 	/**
 	 * This method constructs the three dimensional Vector object.

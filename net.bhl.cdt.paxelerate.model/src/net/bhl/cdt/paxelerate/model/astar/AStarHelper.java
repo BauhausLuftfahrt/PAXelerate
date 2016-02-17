@@ -66,10 +66,4 @@ public class AStarHelper {
 		}
 		return (long) value;
 	}
-	
-	//TODO get the real scaling value!
-	@Deprecated
-	public static int scaleValue(double value) {
-		return (int) (value / 10);
-	}
 }

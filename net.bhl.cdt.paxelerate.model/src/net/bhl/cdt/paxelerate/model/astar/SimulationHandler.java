@@ -200,9 +200,9 @@ public class SimulationHandler {
 
 		int offset = 5;
 
-		Vector start = new Vector2D(AStarHelper.scaleValue((seat.getYPosition() + seat
-				.getYDimension() / 2)),
-				AStarHelper.scaleValue((seat.getXPosition()) - 2));
+		Vector start = new Vector2D(seat.getYPosition() + seat
+				.getYDimension() / 2,
+				(seat.getXPosition()) - 2, cabin.getScale());
 
 		if (pax.getSeatRef().getXPosition() < pax.getDoor().getXPosition()) {
 			offset = -(offset + 2);
@@ -210,8 +210,8 @@ public class SimulationHandler {
 		}
 
 		Vector goal = new Vector2D(
-				AStarHelper.scaleValue(cabin.getYDimension() / 2.0),
-				AStarHelper.scaleValue(seat.getXPosition()) + offset);
+				cabin.getYDimension() / 2.0,
+				seat.getXPosition() + offset*cabin.getScale(),cabin.getScale());
 
 		Agent agent = new Agent(pax, start, goal,
 				SimulationHandler.getCostMap(), Agent.AgentMode.MAKE_WAY,
@@ -307,13 +307,11 @@ public class SimulationHandler {
 		for (Passenger passenger : cabin.getPassengers()) {
 			Seat seat = passenger.getSeatRef();
 			Door door = passenger.getDoor();
-			Vector start = new Vector2D(
-					0,
-					AStarHelper.scaleValue((door.getXPosition() + door.getWidth() / 2)));
-			Vector goal = new Vector2D(
-					AStarHelper
-							.scaleValue((seat.getYPosition() + seat.getYDimension() / 2)),
-					AStarHelper.scaleValue((seat.getXPosition()) - 1));
+			Vector start = new Vector2D(0,
+					(door.getXPosition() + door.getWidth() / 2),cabin.getScale());
+			
+			Vector goal = new Vector2D(seat.getYPosition() + seat.getYDimension() / 2,
+					(seat.getXPosition()) - 1,cabin.getScale());
 
 			if (doItOnce) {
 				/* This line generates a costmap which is used for all agents */

@@ -143,10 +143,10 @@ public class SimulateBoardingCommand extends CDTCommand {
 				ObstacleMap obstaclemap = new ObstacleMap(cabin);
 
 				SimulationHandler handler = new SimulationHandler(obstaclemap,
-						new Vector2D((int) (cabin.getYDimension() / cabin
-								.getScale()),
-								(int) (cabin.getXDimension() / cabin
-										.getScale())), cabin);
+						new Vector2D(cabin.getYDimension() / cabin
+								.getScale(),
+								cabin.getXDimension() / cabin
+										.getScale()), cabin);
 
 				// Show WIP simulation view
 				runAreaMapWindow();

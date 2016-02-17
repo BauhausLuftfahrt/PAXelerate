@@ -53,12 +53,14 @@ public class CostMap {
 	public CostMap(Vector dimension, Vector start, AreaMap areaMap, Agent agent, boolean OnlyFloodToSeat) {
 		this.dimensions = dimension;
 		this.startPoint = start;
+		
 		if (OnlyFloodToSeat) {
 			this.goalPoint = agent.getGoal();
 		} else {
 			this.goalPoint = new Vector2D((int) dimensions.getX() / 2,
 					dimensions.getY() - 1);
 		}
+		
 		this.areamap = areaMap;
 		
 		map = new int[dimensions.getX()][dimensions.getY()];
