@@ -162,26 +162,32 @@ public class PassengerPropertyGenerator {
 		}
 	}
 
+	/**
+	 * This function adapts a specific luggage stowing time using a Gaussian 
+	 * distribution depending on the luggage size
+	 * 
+	 * @return stowing time in s
+	 */
 	private double adaptLuggageStowTime() {
 
 		switch (passenger.getLuggage()) {
 		case NONE:
 			return 0;
 		case SMALL:
-			return 0.8 * GaussianRandom.gaussianRandom(
-					settings.getPassengerLuggageStowTimeMean(),
+			return  GaussianRandom.gaussianRandom(
+					settings.getPassengerSmallLuggageStowTimeMean(),
 					GaussOptions.PERCENT_95,
-					settings.getPassengerLuggageStowTimeDeviation());
+					settings.getPassengerSmallLuggageStowTimeDeviation());
 		case MEDIUM:
-			return 0.9 * GaussianRandom.gaussianRandom(
-					settings.getPassengerLuggageStowTimeMean(),
+			return 	GaussianRandom.gaussianRandom(
+					settings.getPassengerMediumLuggageStowTimeMean(),
 					GaussOptions.PERCENT_95,
-					settings.getPassengerLuggageStowTimeDeviation());
+					settings.getPassengerMediumLuggageStowTimeDeviation());
 		case BIG:
 			return GaussianRandom.gaussianRandom(
-					settings.getPassengerLuggageStowTimeMean(),
+					settings.getPassengerBigLuggageStowTimeMean(),
 					GaussOptions.PERCENT_95,
-					settings.getPassengerLuggageStowTimeDeviation());
+					settings.getPassengerBigLuggageStowTimeDeviation());
 		default:
 			return 0;
 		}

@@ -39,8 +39,12 @@ import net.bhl.cdt.paxelerate.model.SortingStyle;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerDepthMeanMale <em>Passenger Depth Mean Male</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerDepthDeviationMale <em>Passenger Depth Deviation Male</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPercentageOfWomen <em>Percentage Of Women</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerLuggageStowTimeMean <em>Passenger Luggage Stow Time Mean</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerLuggageStowTimeDeviation <em>Passenger Luggage Stow Time Deviation</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerSmallLuggageStowTimeMean <em>Passenger Small Luggage Stow Time Mean</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerSmallLuggageStowTimeDeviation <em>Passenger Small Luggage Stow Time Deviation</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerMediumLuggageStowTimeMean <em>Passenger Medium Luggage Stow Time Mean</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerMediumLuggageStowTimeDeviation <em>Passenger Medium Luggage Stow Time Deviation</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerBigLuggageStowTimeMean <em>Passenger Big Luggage Stow Time Mean</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerBigLuggageStowTimeDeviation <em>Passenger Big Luggage Stow Time Deviation</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerWidthMeanFemale <em>Passenger Width Mean Female</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerWidthDeviationFemale <em>Passenger Width Deviation Female</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerWeightMeanFemale <em>Passenger Weight Mean Female</em>}</li>
@@ -56,6 +60,7 @@ import net.bhl.cdt.paxelerate.model.SortingStyle;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPercentageOfPassengersWithBigLuggage <em>Percentage Of Passengers With Big Luggage</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSorting <em>Sorting</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isDeveloperMode <em>Developer Mode</em>}</li>
  * </ul>
  *
  * @generated
@@ -362,44 +367,124 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	protected double percentageOfWomen = PERCENTAGE_OF_WOMEN_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getPassengerLuggageStowTimeMean() <em>Passenger Luggage Stow Time Mean</em>}' attribute.
+	 * The default value of the '{@link #getPassengerSmallLuggageStowTimeMean() <em>Passenger Small Luggage Stow Time Mean</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPassengerLuggageStowTimeMean()
+	 * @see #getPassengerSmallLuggageStowTimeMean()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double PASSENGER_LUGGAGE_STOW_TIME_MEAN_EDEFAULT = 15.0;
+	protected static final double PASSENGER_SMALL_LUGGAGE_STOW_TIME_MEAN_EDEFAULT = 10.0;
 
 	/**
-	 * The cached value of the '{@link #getPassengerLuggageStowTimeMean() <em>Passenger Luggage Stow Time Mean</em>}' attribute.
+	 * The cached value of the '{@link #getPassengerSmallLuggageStowTimeMean() <em>Passenger Small Luggage Stow Time Mean</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPassengerLuggageStowTimeMean()
+	 * @see #getPassengerSmallLuggageStowTimeMean()
 	 * @generated
 	 * @ordered
 	 */
-	protected double passengerLuggageStowTimeMean = PASSENGER_LUGGAGE_STOW_TIME_MEAN_EDEFAULT;
+	protected double passengerSmallLuggageStowTimeMean = PASSENGER_SMALL_LUGGAGE_STOW_TIME_MEAN_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getPassengerLuggageStowTimeDeviation() <em>Passenger Luggage Stow Time Deviation</em>}' attribute.
+	 * The default value of the '{@link #getPassengerSmallLuggageStowTimeDeviation() <em>Passenger Small Luggage Stow Time Deviation</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPassengerLuggageStowTimeDeviation()
+	 * @see #getPassengerSmallLuggageStowTimeDeviation()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double PASSENGER_LUGGAGE_STOW_TIME_DEVIATION_EDEFAULT = 7.0;
+	protected static final double PASSENGER_SMALL_LUGGAGE_STOW_TIME_DEVIATION_EDEFAULT = 5.0;
 
 	/**
-	 * The cached value of the '{@link #getPassengerLuggageStowTimeDeviation() <em>Passenger Luggage Stow Time Deviation</em>}' attribute.
+	 * The cached value of the '{@link #getPassengerSmallLuggageStowTimeDeviation() <em>Passenger Small Luggage Stow Time Deviation</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPassengerLuggageStowTimeDeviation()
+	 * @see #getPassengerSmallLuggageStowTimeDeviation()
 	 * @generated
 	 * @ordered
 	 */
-	protected double passengerLuggageStowTimeDeviation = PASSENGER_LUGGAGE_STOW_TIME_DEVIATION_EDEFAULT;
+	protected double passengerSmallLuggageStowTimeDeviation = PASSENGER_SMALL_LUGGAGE_STOW_TIME_DEVIATION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPassengerMediumLuggageStowTimeMean() <em>Passenger Medium Luggage Stow Time Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassengerMediumLuggageStowTimeMean()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_MEAN_EDEFAULT = 15.0;
+
+	/**
+	 * The cached value of the '{@link #getPassengerMediumLuggageStowTimeMean() <em>Passenger Medium Luggage Stow Time Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassengerMediumLuggageStowTimeMean()
+	 * @generated
+	 * @ordered
+	 */
+	protected double passengerMediumLuggageStowTimeMean = PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_MEAN_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPassengerMediumLuggageStowTimeDeviation() <em>Passenger Medium Luggage Stow Time Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassengerMediumLuggageStowTimeDeviation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_DEVIATION_EDEFAULT = 7.0;
+
+	/**
+	 * The cached value of the '{@link #getPassengerMediumLuggageStowTimeDeviation() <em>Passenger Medium Luggage Stow Time Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassengerMediumLuggageStowTimeDeviation()
+	 * @generated
+	 * @ordered
+	 */
+	protected double passengerMediumLuggageStowTimeDeviation = PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_DEVIATION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPassengerBigLuggageStowTimeMean() <em>Passenger Big Luggage Stow Time Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassengerBigLuggageStowTimeMean()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double PASSENGER_BIG_LUGGAGE_STOW_TIME_MEAN_EDEFAULT = 20.0;
+
+	/**
+	 * The cached value of the '{@link #getPassengerBigLuggageStowTimeMean() <em>Passenger Big Luggage Stow Time Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassengerBigLuggageStowTimeMean()
+	 * @generated
+	 * @ordered
+	 */
+	protected double passengerBigLuggageStowTimeMean = PASSENGER_BIG_LUGGAGE_STOW_TIME_MEAN_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPassengerBigLuggageStowTimeDeviation() <em>Passenger Big Luggage Stow Time Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassengerBigLuggageStowTimeDeviation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double PASSENGER_BIG_LUGGAGE_STOW_TIME_DEVIATION_EDEFAULT = 5.0;
+
+	/**
+	 * The cached value of the '{@link #getPassengerBigLuggageStowTimeDeviation() <em>Passenger Big Luggage Stow Time Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassengerBigLuggageStowTimeDeviation()
+	 * @generated
+	 * @ordered
+	 */
+	protected double passengerBigLuggageStowTimeDeviation = PASSENGER_BIG_LUGGAGE_STOW_TIME_DEVIATION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getPassengerWidthMeanFemale() <em>Passenger Width Mean Female</em>}' attribute.
@@ -690,6 +775,26 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * @ordered
 	 */
 	protected int simulationSpeedFactor = SIMULATION_SPEED_FACTOR_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isDeveloperMode() <em>Developer Mode</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDeveloperMode()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean DEVELOPER_MODE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isDeveloperMode() <em>Developer Mode</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDeveloperMode()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean developerMode = DEVELOPER_MODE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1030,8 +1135,8 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getPassengerLuggageStowTimeMean() {
-		return passengerLuggageStowTimeMean;
+	public double getPassengerSmallLuggageStowTimeMean() {
+		return passengerSmallLuggageStowTimeMean;
 	}
 
 	/**
@@ -1039,11 +1144,11 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPassengerLuggageStowTimeMean(double newPassengerLuggageStowTimeMean) {
-		double oldPassengerLuggageStowTimeMean = passengerLuggageStowTimeMean;
-		passengerLuggageStowTimeMean = newPassengerLuggageStowTimeMean;
+	public void setPassengerSmallLuggageStowTimeMean(double newPassengerSmallLuggageStowTimeMean) {
+		double oldPassengerSmallLuggageStowTimeMean = passengerSmallLuggageStowTimeMean;
+		passengerSmallLuggageStowTimeMean = newPassengerSmallLuggageStowTimeMean;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_MEAN, oldPassengerLuggageStowTimeMean, passengerLuggageStowTimeMean));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__PASSENGER_SMALL_LUGGAGE_STOW_TIME_MEAN, oldPassengerSmallLuggageStowTimeMean, passengerSmallLuggageStowTimeMean));
 	}
 
 	/**
@@ -1051,8 +1156,8 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getPassengerLuggageStowTimeDeviation() {
-		return passengerLuggageStowTimeDeviation;
+	public double getPassengerSmallLuggageStowTimeDeviation() {
+		return passengerSmallLuggageStowTimeDeviation;
 	}
 
 	/**
@@ -1060,11 +1165,95 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPassengerLuggageStowTimeDeviation(double newPassengerLuggageStowTimeDeviation) {
-		double oldPassengerLuggageStowTimeDeviation = passengerLuggageStowTimeDeviation;
-		passengerLuggageStowTimeDeviation = newPassengerLuggageStowTimeDeviation;
+	public void setPassengerSmallLuggageStowTimeDeviation(double newPassengerSmallLuggageStowTimeDeviation) {
+		double oldPassengerSmallLuggageStowTimeDeviation = passengerSmallLuggageStowTimeDeviation;
+		passengerSmallLuggageStowTimeDeviation = newPassengerSmallLuggageStowTimeDeviation;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_DEVIATION, oldPassengerLuggageStowTimeDeviation, passengerLuggageStowTimeDeviation));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__PASSENGER_SMALL_LUGGAGE_STOW_TIME_DEVIATION, oldPassengerSmallLuggageStowTimeDeviation, passengerSmallLuggageStowTimeDeviation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getPassengerMediumLuggageStowTimeMean() {
+		return passengerMediumLuggageStowTimeMean;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPassengerMediumLuggageStowTimeMean(double newPassengerMediumLuggageStowTimeMean) {
+		double oldPassengerMediumLuggageStowTimeMean = passengerMediumLuggageStowTimeMean;
+		passengerMediumLuggageStowTimeMean = newPassengerMediumLuggageStowTimeMean;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_MEAN, oldPassengerMediumLuggageStowTimeMean, passengerMediumLuggageStowTimeMean));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getPassengerMediumLuggageStowTimeDeviation() {
+		return passengerMediumLuggageStowTimeDeviation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPassengerMediumLuggageStowTimeDeviation(double newPassengerMediumLuggageStowTimeDeviation) {
+		double oldPassengerMediumLuggageStowTimeDeviation = passengerMediumLuggageStowTimeDeviation;
+		passengerMediumLuggageStowTimeDeviation = newPassengerMediumLuggageStowTimeDeviation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_DEVIATION, oldPassengerMediumLuggageStowTimeDeviation, passengerMediumLuggageStowTimeDeviation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getPassengerBigLuggageStowTimeMean() {
+		return passengerBigLuggageStowTimeMean;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPassengerBigLuggageStowTimeMean(double newPassengerBigLuggageStowTimeMean) {
+		double oldPassengerBigLuggageStowTimeMean = passengerBigLuggageStowTimeMean;
+		passengerBigLuggageStowTimeMean = newPassengerBigLuggageStowTimeMean;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_MEAN, oldPassengerBigLuggageStowTimeMean, passengerBigLuggageStowTimeMean));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getPassengerBigLuggageStowTimeDeviation() {
+		return passengerBigLuggageStowTimeDeviation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPassengerBigLuggageStowTimeDeviation(double newPassengerBigLuggageStowTimeDeviation) {
+		double oldPassengerBigLuggageStowTimeDeviation = passengerBigLuggageStowTimeDeviation;
+		passengerBigLuggageStowTimeDeviation = newPassengerBigLuggageStowTimeDeviation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_DEVIATION, oldPassengerBigLuggageStowTimeDeviation, passengerBigLuggageStowTimeDeviation));
 	}
 
 	/**
@@ -1378,6 +1567,27 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isDeveloperMode() {
+		return developerMode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDeveloperMode(boolean newDeveloperMode) {
+		boolean oldDeveloperMode = developerMode;
+		developerMode = newDeveloperMode;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE, oldDeveloperMode, developerMode));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -1411,10 +1621,18 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return getPassengerDepthDeviationMale();
 			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_WOMEN:
 				return getPercentageOfWomen();
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_MEAN:
-				return getPassengerLuggageStowTimeMean();
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_DEVIATION:
-				return getPassengerLuggageStowTimeDeviation();
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_SMALL_LUGGAGE_STOW_TIME_MEAN:
+				return getPassengerSmallLuggageStowTimeMean();
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_SMALL_LUGGAGE_STOW_TIME_DEVIATION:
+				return getPassengerSmallLuggageStowTimeDeviation();
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_MEAN:
+				return getPassengerMediumLuggageStowTimeMean();
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_DEVIATION:
+				return getPassengerMediumLuggageStowTimeDeviation();
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_MEAN:
+				return getPassengerBigLuggageStowTimeMean();
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_DEVIATION:
+				return getPassengerBigLuggageStowTimeDeviation();
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_FEMALE:
 				return getPassengerWidthMeanFemale();
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_FEMALE:
@@ -1445,6 +1663,8 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return getSorting();
 			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
 				return getSimulationSpeedFactor();
+			case CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE:
+				return isDeveloperMode();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1503,11 +1723,23 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_WOMEN:
 				setPercentageOfWomen((Double)newValue);
 				return;
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_MEAN:
-				setPassengerLuggageStowTimeMean((Double)newValue);
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_SMALL_LUGGAGE_STOW_TIME_MEAN:
+				setPassengerSmallLuggageStowTimeMean((Double)newValue);
 				return;
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_DEVIATION:
-				setPassengerLuggageStowTimeDeviation((Double)newValue);
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_SMALL_LUGGAGE_STOW_TIME_DEVIATION:
+				setPassengerSmallLuggageStowTimeDeviation((Double)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_MEAN:
+				setPassengerMediumLuggageStowTimeMean((Double)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_DEVIATION:
+				setPassengerMediumLuggageStowTimeDeviation((Double)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_MEAN:
+				setPassengerBigLuggageStowTimeMean((Double)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_DEVIATION:
+				setPassengerBigLuggageStowTimeDeviation((Double)newValue);
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_FEMALE:
 				setPassengerWidthMeanFemale((Double)newValue);
@@ -1554,6 +1786,9 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
 				setSimulationSpeedFactor((Integer)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE:
+				setDeveloperMode((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1612,11 +1847,23 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_WOMEN:
 				setPercentageOfWomen(PERCENTAGE_OF_WOMEN_EDEFAULT);
 				return;
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_MEAN:
-				setPassengerLuggageStowTimeMean(PASSENGER_LUGGAGE_STOW_TIME_MEAN_EDEFAULT);
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_SMALL_LUGGAGE_STOW_TIME_MEAN:
+				setPassengerSmallLuggageStowTimeMean(PASSENGER_SMALL_LUGGAGE_STOW_TIME_MEAN_EDEFAULT);
 				return;
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_DEVIATION:
-				setPassengerLuggageStowTimeDeviation(PASSENGER_LUGGAGE_STOW_TIME_DEVIATION_EDEFAULT);
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_SMALL_LUGGAGE_STOW_TIME_DEVIATION:
+				setPassengerSmallLuggageStowTimeDeviation(PASSENGER_SMALL_LUGGAGE_STOW_TIME_DEVIATION_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_MEAN:
+				setPassengerMediumLuggageStowTimeMean(PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_MEAN_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_DEVIATION:
+				setPassengerMediumLuggageStowTimeDeviation(PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_DEVIATION_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_MEAN:
+				setPassengerBigLuggageStowTimeMean(PASSENGER_BIG_LUGGAGE_STOW_TIME_MEAN_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_DEVIATION:
+				setPassengerBigLuggageStowTimeDeviation(PASSENGER_BIG_LUGGAGE_STOW_TIME_DEVIATION_EDEFAULT);
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_FEMALE:
 				setPassengerWidthMeanFemale(PASSENGER_WIDTH_MEAN_FEMALE_EDEFAULT);
@@ -1663,6 +1910,9 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
 				setSimulationSpeedFactor(SIMULATION_SPEED_FACTOR_EDEFAULT);
 				return;
+			case CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE:
+				setDeveloperMode(DEVELOPER_MODE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1705,10 +1955,18 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return passengerDepthDeviationMale != PASSENGER_DEPTH_DEVIATION_MALE_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_WOMEN:
 				return percentageOfWomen != PERCENTAGE_OF_WOMEN_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_MEAN:
-				return passengerLuggageStowTimeMean != PASSENGER_LUGGAGE_STOW_TIME_MEAN_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_DEVIATION:
-				return passengerLuggageStowTimeDeviation != PASSENGER_LUGGAGE_STOW_TIME_DEVIATION_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_SMALL_LUGGAGE_STOW_TIME_MEAN:
+				return passengerSmallLuggageStowTimeMean != PASSENGER_SMALL_LUGGAGE_STOW_TIME_MEAN_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_SMALL_LUGGAGE_STOW_TIME_DEVIATION:
+				return passengerSmallLuggageStowTimeDeviation != PASSENGER_SMALL_LUGGAGE_STOW_TIME_DEVIATION_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_MEAN:
+				return passengerMediumLuggageStowTimeMean != PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_MEAN_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_DEVIATION:
+				return passengerMediumLuggageStowTimeDeviation != PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_DEVIATION_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_MEAN:
+				return passengerBigLuggageStowTimeMean != PASSENGER_BIG_LUGGAGE_STOW_TIME_MEAN_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_DEVIATION:
+				return passengerBigLuggageStowTimeDeviation != PASSENGER_BIG_LUGGAGE_STOW_TIME_DEVIATION_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_FEMALE:
 				return passengerWidthMeanFemale != PASSENGER_WIDTH_MEAN_FEMALE_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_FEMALE:
@@ -1739,6 +1997,8 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return sorting != SORTING_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
 				return simulationSpeedFactor != SIMULATION_SPEED_FACTOR_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE:
+				return developerMode != DEVELOPER_MODE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1783,10 +2043,18 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 		result.append(passengerDepthDeviationMale);
 		result.append(", percentageOfWomen: ");
 		result.append(percentageOfWomen);
-		result.append(", passengerLuggageStowTimeMean: ");
-		result.append(passengerLuggageStowTimeMean);
-		result.append(", passengerLuggageStowTimeDeviation: ");
-		result.append(passengerLuggageStowTimeDeviation);
+		result.append(", passengerSmallLuggageStowTimeMean: ");
+		result.append(passengerSmallLuggageStowTimeMean);
+		result.append(", passengerSmallLuggageStowTimeDeviation: ");
+		result.append(passengerSmallLuggageStowTimeDeviation);
+		result.append(", passengerMediumLuggageStowTimeMean: ");
+		result.append(passengerMediumLuggageStowTimeMean);
+		result.append(", passengerMediumLuggageStowTimeDeviation: ");
+		result.append(passengerMediumLuggageStowTimeDeviation);
+		result.append(", passengerBigLuggageStowTimeMean: ");
+		result.append(passengerBigLuggageStowTimeMean);
+		result.append(", passengerBigLuggageStowTimeDeviation: ");
+		result.append(passengerBigLuggageStowTimeDeviation);
 		result.append(", passengerWidthMeanFemale: ");
 		result.append(passengerWidthMeanFemale);
 		result.append(", passengerWidthDeviationFemale: ");
@@ -1815,6 +2083,8 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 		result.append(sorting);
 		result.append(", simulationSpeedFactor: ");
 		result.append(simulationSpeedFactor);
+		result.append(", developerMode: ");
+		result.append(developerMode);
 		result.append(')');
 		return result.toString();
 	}

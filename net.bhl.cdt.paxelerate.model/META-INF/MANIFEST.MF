@@ -10,6 +10,7 @@ Bundle-Activator: net.bhl.cdt.paxelerate.model.Activator
 Require-Bundle: javax.inject,
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.eclipse.emf.ecp.explorereditorbridge,
  org.eclipse.emf.ecp.editor.e3,
  org.eclipse.ui.intro,
