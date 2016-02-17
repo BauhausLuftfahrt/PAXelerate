@@ -35,6 +35,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerMediumLuggageStowTimeDeviation <em>Passenger Medium Luggage Stow Time Deviation</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerBigLuggageStowTimeMean <em>Passenger Big Luggage Stow Time Mean</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerBigLuggageStowTimeDeviation <em>Passenger Big Luggage Stow Time Deviation</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageStowingDistanceFromSeatMean <em>Luggage Stowing Distance From Seat Mean</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageStowingDistanceFromSeatDeviation <em>Luggage Stowing Distance From Seat Deviation</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerWidthMeanFemale <em>Passenger Width Mean Female</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerWidthDeviationFemale <em>Passenger Width Deviation Female</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerWeightMeanFemale <em>Passenger Weight Mean Female</em>}</li>
@@ -624,6 +626,60 @@ public interface SimulationProperties extends EObject {
 	 * @generated
 	 */
 	void setPassengerBigLuggageStowTimeDeviation(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Luggage Stowing Distance From Seat Mean</b></em>' attribute.
+	 * The default value is <code>"80"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Luggage Stowing Distance From Seat Mean</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Luggage Stowing Distance From Seat Mean</em>' attribute.
+	 * @see #setLuggageStowingDistanceFromSeatMean(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_LuggageStowingDistanceFromSeatMean()
+	 * @model default="80"
+	 * @generated
+	 */
+	double getLuggageStowingDistanceFromSeatMean();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageStowingDistanceFromSeatMean <em>Luggage Stowing Distance From Seat Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Luggage Stowing Distance From Seat Mean</em>' attribute.
+	 * @see #getLuggageStowingDistanceFromSeatMean()
+	 * @generated
+	 */
+	void setLuggageStowingDistanceFromSeatMean(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Luggage Stowing Distance From Seat Deviation</b></em>' attribute.
+	 * The default value is <code>"10"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Luggage Stowing Distance From Seat Deviation</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Luggage Stowing Distance From Seat Deviation</em>' attribute.
+	 * @see #setLuggageStowingDistanceFromSeatDeviation(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_LuggageStowingDistanceFromSeatDeviation()
+	 * @model default="10"
+	 * @generated
+	 */
+	double getLuggageStowingDistanceFromSeatDeviation();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageStowingDistanceFromSeatDeviation <em>Luggage Stowing Distance From Seat Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Luggage Stowing Distance From Seat Deviation</em>' attribute.
+	 * @see #getLuggageStowingDistanceFromSeatDeviation()
+	 * @generated
+	 */
+	void setLuggageStowingDistanceFromSeatDeviation(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Passenger Width Mean Female</b></em>' attribute.

@@ -1442,5 +1442,36 @@
         featureName="name" dataValue="passengerMediumLuggageStowTimeMean" oldDataValue="passengerLuggageStowTimeMean"/>
     <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/passengerMediumLuggageStowTimeDeviation"
         featureName="name" dataValue="passengerMediumLuggageStowTimeDeviation" oldDataValue="passengerLuggageStowTimeDeviation"/>
+    <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+        referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/luggageStowingDistanceFromSeatMean"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/luggageStowingDistanceFromSeatMean"
+        featureName="name" dataValue="luggageStpwingDistanceFromSeat"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/luggageStowingDistanceFromSeatMean"
+        featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/luggageStowingDistanceFromSeatMean"
+        featureName="name" dataValue="luggageStpwingDistanceFromSeatMean" oldDataValue="luggageStpwingDistanceFromSeat"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/luggageStowingDistanceFromSeatMean"
+        featureName="name" dataValue="luggageStowingDistanceFromSeatMean" oldDataValue="luggageStpwingDistanceFromSeatMean"/>
+    <changes xsi:type="history:Create" target="cabin.ecore#//SimulationProperties"
+        referenceName="eStructuralFeatures" element="cabin.ecore#//SimulationProperties/luggageStowingDistanceFromSeatDeviation"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/luggageStowingDistanceFromSeatDeviation"
+        featureName="name" dataValue="luggageStowingDistanceFromSeatDeviation"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/luggageStowingDistanceFromSeatDeviation"
+        featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/luggageStowingDistanceFromSeatDeviation"
+        featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        oldReferenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/luggageStowingDistanceFromSeatDeviation"
+        featureName="defaultValueLiteral" dataValue=""/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/luggageStowingDistanceFromSeatMean"
+        featureName="defaultValueLiteral" dataValue="80"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//SimulationProperties/luggageStowingDistanceFromSeatDeviation"
+        featureName="defaultValueLiteral" dataValue="10" oldDataValue=""/>
+    <changes xsi:type="history:Create" target="cabin.ecore#//Passenger" referenceName="eStructuralFeatures"
+        element="cabin.ecore#//Passenger/luggageStowingDistance"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/luggageStowingDistance"
+        featureName="name" dataValue="luggageStowingDistance"/>
+    <changes xsi:type="history:Set" element="cabin.ecore#//Passenger/luggageStowingDistance"
+        featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </releases>
 </history:History>

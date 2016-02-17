@@ -94,12 +94,14 @@ public class PassengerPropertyGenerator {
 		/** Define the walking speed according to age **/
 		passenger.setWalkingSpeed(adaptSpeed());
 
-		/* Define the type of luggage */
+		/** Define the type of luggage **/
 		passenger.setLuggage(adaptLuggage());
 
 		/** Define the luggage stow time randomly **/
 		passenger.setLuggageStowTime(DecimalHelper.round(adaptLuggageStowTime(), 2));
 
+		/** Define the luggage distance from seat randomly **/
+		passenger.setLuggageStowingDistance(DecimalHelper.round(defineLuggageStowDistance(), 2));
 	}
 
 	/**
@@ -192,6 +194,20 @@ public class PassengerPropertyGenerator {
 			return 0;
 		}
 
+	}
+	
+	/**
+	 * This function adapts a specific luggage stowing distance using a Gaussian 
+	 * distribution
+	 * 
+	 * @return stowing distance in cm
+	 */
+	private double defineLuggageStowDistance() {
+
+			return  GaussianRandom.gaussianRandom(
+					settings.getLuggageStowingDistanceFromSeatMean(),
+					GaussOptions.PERCENT_95,
+					settings.getLuggageStowingDistanceFromSeatDeviation());
 	}
 
 	/**

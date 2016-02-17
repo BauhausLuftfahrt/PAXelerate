@@ -108,6 +108,11 @@
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/luggageStowTime"/>
           </domainModelReference>
         </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_Ktf6ENV3EeWEPo3DdOyvxA" name="Control luggageStowingDistance">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_Ktf6EdV3EeWEPo3DdOyvxA">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/luggageStowingDistance"/>
+          </domainModelReference>
+        </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C4qS8EeWGjpaobu8CIA" name="Control startBoardingAfterDelay">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C46S8EeWGjpaobu8CIA">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/startBoardingAfterDelay"/>

@@ -78,6 +78,7 @@ public class PassengerItemProvider
 			addStartBoardingAfterDelayPropertyDescriptor(object);
 			addNumberOfWaitsPropertyDescriptor(object);
 			addLuggageStowTimePropertyDescriptor(object);
+			addLuggageStowingDistancePropertyDescriptor(object);
 			addTravelClassPropertyDescriptor(object);
 			addPassengerMoodPropertyDescriptor(object);
 			addNumberOfMakeWayOperationsPropertyDescriptor(object);
@@ -439,6 +440,28 @@ public class PassengerItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Luggage Stowing Distance feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLuggageStowingDistancePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_luggageStowingDistance_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_luggageStowingDistance_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__LUGGAGE_STOWING_DISTANCE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Travel Class feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -668,6 +691,7 @@ public class PassengerItemProvider
 			case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
 			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
 			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
+			case CabinPackage.PASSENGER__LUGGAGE_STOWING_DISTANCE:
 			case CabinPackage.PASSENGER__PASSENGER_MOOD:
 			case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
 			case CabinPackage.PASSENGER__LUGGAGE:

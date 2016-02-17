@@ -1424,13 +1424,22 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER__LUGGAGE_STOW_TIME = 19;
 
 	/**
+	 * The feature id for the '<em><b>Luggage Stowing Distance</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__LUGGAGE_STOWING_DISTANCE = 20;
+
+	/**
 	 * The feature id for the '<em><b>Travel Class</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__TRAVEL_CLASS = 20;
+	int PASSENGER__TRAVEL_CLASS = 21;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Mood</b></em>' attribute.
@@ -1439,7 +1448,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__PASSENGER_MOOD = 21;
+	int PASSENGER__PASSENGER_MOOD = 22;
 
 	/**
 	 * The feature id for the '<em><b>Number Of Make Way Operations</b></em>' attribute.
@@ -1448,7 +1457,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS = 22;
+	int PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS = 23;
 
 	/**
 	 * The feature id for the '<em><b>Luggage</b></em>' attribute.
@@ -1457,7 +1466,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__LUGGAGE = 23;
+	int PASSENGER__LUGGAGE = 24;
 
 	/**
 	 * The number of structural features of the '<em>Passenger</em>' class.
@@ -1466,7 +1475,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_FEATURE_COUNT = 24;
+	int PASSENGER_FEATURE_COUNT = 25;
 
 	/**
 	 * The number of operations of the '<em>Passenger</em>' class.
@@ -2549,13 +2558,31 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_DEVIATION = 20;
 
 	/**
+	 * The feature id for the '<em><b>Luggage Stowing Distance From Seat Mean</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN = 21;
+
+	/**
+	 * The feature id for the '<em><b>Luggage Stowing Distance From Seat Deviation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION = 22;
+
+	/**
 	 * The feature id for the '<em><b>Passenger Width Mean Female</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_FEMALE = 21;
+	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_FEMALE = 23;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Width Deviation Female</b></em>' attribute.
@@ -2564,7 +2591,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_FEMALE = 22;
+	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_FEMALE = 24;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Weight Mean Female</b></em>' attribute.
@@ -2573,7 +2600,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_MEAN_FEMALE = 23;
+	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_MEAN_FEMALE = 25;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Weight Deviation Female</b></em>' attribute.
@@ -2582,7 +2609,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_FEMALE = 24;
+	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_FEMALE = 26;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Height Mean Female</b></em>' attribute.
@@ -2591,7 +2618,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_MEAN_FEMALE = 25;
+	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_MEAN_FEMALE = 27;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Height Deviation Female</b></em>' attribute.
@@ -2600,7 +2627,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_FEMALE = 26;
+	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_FEMALE = 28;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Depth Mean Female</b></em>' attribute.
@@ -2609,7 +2636,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_FEMALE = 27;
+	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_FEMALE = 29;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Depth Deviation Female</b></em>' attribute.
@@ -2618,7 +2645,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE = 28;
+	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE = 30;
 
 	/**
 	 * The feature id for the '<em><b>Results</b></em>' reference list.
@@ -2627,7 +2654,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__RESULTS = 29;
+	int SIMULATION_PROPERTIES__RESULTS = 31;
 
 	/**
 	 * The feature id for the '<em><b>Percentage Of Passengers With No Luggage</b></em>' attribute.
@@ -2636,7 +2663,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE = 30;
+	int SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE = 32;
 
 	/**
 	 * The feature id for the '<em><b>Percentage Of Passengers With Small Luggage</b></em>' attribute.
@@ -2645,7 +2672,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE = 31;
+	int SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE = 33;
 
 	/**
 	 * The feature id for the '<em><b>Percentage Of Passengers With Medium Luggage</b></em>' attribute.
@@ -2654,7 +2681,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE = 32;
+	int SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE = 34;
 
 	/**
 	 * The feature id for the '<em><b>Percentage Of Passengers With Big Luggage</b></em>' attribute.
@@ -2663,7 +2690,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE = 33;
+	int SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE = 35;
 
 	/**
 	 * The feature id for the '<em><b>Sorting</b></em>' attribute.
@@ -2672,7 +2699,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SORTING = 34;
+	int SIMULATION_PROPERTIES__SORTING = 36;
 
 	/**
 	 * The feature id for the '<em><b>Simulation Speed Factor</b></em>' attribute.
@@ -2681,7 +2708,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR = 35;
+	int SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR = 37;
 
 	/**
 	 * The feature id for the '<em><b>Developer Mode</b></em>' attribute.
@@ -2690,7 +2717,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__DEVELOPER_MODE = 36;
+	int SIMULATION_PROPERTIES__DEVELOPER_MODE = 38;
 
 	/**
 	 * The number of structural features of the '<em>Simulation Properties</em>' class.
@@ -2699,7 +2726,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES_FEATURE_COUNT = 37;
+	int SIMULATION_PROPERTIES_FEATURE_COUNT = 39;
 
 	/**
 	 * The number of operations of the '<em>Simulation Properties</em>' class.
@@ -3656,6 +3683,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getPassenger_LuggageStowTime();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Passenger#getLuggageStowingDistance <em>Luggage Stowing Distance</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Luggage Stowing Distance</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.Passenger#getLuggageStowingDistance()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_LuggageStowingDistance();
+
+	/**
 	 * Returns the meta object for the reference '{@link net.bhl.cdt.paxelerate.model.Passenger#getTravelClass <em>Travel Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4128,6 +4166,28 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSimulationProperties_PassengerBigLuggageStowTimeDeviation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageStowingDistanceFromSeatMean <em>Luggage Stowing Distance From Seat Mean</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Luggage Stowing Distance From Seat Mean</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageStowingDistanceFromSeatMean()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_LuggageStowingDistanceFromSeatMean();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageStowingDistanceFromSeatDeviation <em>Luggage Stowing Distance From Seat Deviation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Luggage Stowing Distance From Seat Deviation</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageStowingDistanceFromSeatDeviation()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_LuggageStowingDistanceFromSeatDeviation();
 
 	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerWidthMeanFemale <em>Passenger Width Mean Female</em>}'.
@@ -5089,6 +5149,13 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute PASSENGER__LUGGAGE_STOW_TIME = eINSTANCE.getPassenger_LuggageStowTime();
 		/**
+		 * The meta object literal for the '<em><b>Luggage Stowing Distance</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__LUGGAGE_STOWING_DISTANCE = eINSTANCE.getPassenger_LuggageStowingDistance();
+		/**
 		 * The meta object literal for the '<em><b>Travel Class</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5416,6 +5483,20 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SIMULATION_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_DEVIATION = eINSTANCE.getSimulationProperties_PassengerBigLuggageStowTimeDeviation();
+		/**
+		 * The meta object literal for the '<em><b>Luggage Stowing Distance From Seat Mean</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN = eINSTANCE.getSimulationProperties_LuggageStowingDistanceFromSeatMean();
+		/**
+		 * The meta object literal for the '<em><b>Luggage Stowing Distance From Seat Deviation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION = eINSTANCE.getSimulationProperties_LuggageStowingDistanceFromSeatDeviation();
 		/**
 		 * The meta object literal for the '<em><b>Passenger Width Mean Female</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
