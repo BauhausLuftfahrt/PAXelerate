@@ -74,6 +74,8 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 			addPassengerMediumLuggageStowTimeDeviationPropertyDescriptor(object);
 			addPassengerBigLuggageStowTimeMeanPropertyDescriptor(object);
 			addPassengerBigLuggageStowTimeDeviationPropertyDescriptor(object);
+			addLuggageStowingDistanceFromSeatMeanPropertyDescriptor(object);
+			addLuggageStowingDistanceFromSeatDeviationPropertyDescriptor(object);
 			addPassengerWidthMeanFemalePropertyDescriptor(object);
 			addPassengerWidthDeviationFemalePropertyDescriptor(object);
 			addPassengerWeightMeanFemalePropertyDescriptor(object);
@@ -553,6 +555,50 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	}
 
 	/**
+	 * This adds a property descriptor for the Luggage Stowing Distance From Seat Mean feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLuggageStowingDistanceFromSeatMeanPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_luggageStowingDistanceFromSeatMean_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_luggageStowingDistanceFromSeatMean_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Luggage Stowing Distance From Seat Deviation feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLuggageStowingDistanceFromSeatDeviationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_luggageStowingDistanceFromSeatDeviation_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_luggageStowingDistanceFromSeatDeviation_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Passenger Width Mean Female feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -956,6 +1002,8 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_DEVIATION:
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_MEAN:
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_DEVIATION:
+			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN:
+			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION:
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_FEMALE:
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_FEMALE:
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WEIGHT_MEAN_FEMALE:

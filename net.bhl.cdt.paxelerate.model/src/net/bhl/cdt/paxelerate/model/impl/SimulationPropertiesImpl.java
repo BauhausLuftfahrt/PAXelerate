@@ -45,6 +45,8 @@ import net.bhl.cdt.paxelerate.model.SortingStyle;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerMediumLuggageStowTimeDeviation <em>Passenger Medium Luggage Stow Time Deviation</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerBigLuggageStowTimeMean <em>Passenger Big Luggage Stow Time Mean</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerBigLuggageStowTimeDeviation <em>Passenger Big Luggage Stow Time Deviation</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getLuggageStowingDistanceFromSeatMean <em>Luggage Stowing Distance From Seat Mean</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getLuggageStowingDistanceFromSeatDeviation <em>Luggage Stowing Distance From Seat Deviation</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerWidthMeanFemale <em>Passenger Width Mean Female</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerWidthDeviationFemale <em>Passenger Width Deviation Female</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerWeightMeanFemale <em>Passenger Weight Mean Female</em>}</li>
@@ -485,6 +487,46 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * @ordered
 	 */
 	protected double passengerBigLuggageStowTimeDeviation = PASSENGER_BIG_LUGGAGE_STOW_TIME_DEVIATION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLuggageStowingDistanceFromSeatMean() <em>Luggage Stowing Distance From Seat Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLuggageStowingDistanceFromSeatMean()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN_EDEFAULT = 80.0;
+
+	/**
+	 * The cached value of the '{@link #getLuggageStowingDistanceFromSeatMean() <em>Luggage Stowing Distance From Seat Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLuggageStowingDistanceFromSeatMean()
+	 * @generated
+	 * @ordered
+	 */
+	protected double luggageStowingDistanceFromSeatMean = LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLuggageStowingDistanceFromSeatDeviation() <em>Luggage Stowing Distance From Seat Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLuggageStowingDistanceFromSeatDeviation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION_EDEFAULT = 10.0;
+
+	/**
+	 * The cached value of the '{@link #getLuggageStowingDistanceFromSeatDeviation() <em>Luggage Stowing Distance From Seat Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLuggageStowingDistanceFromSeatDeviation()
+	 * @generated
+	 * @ordered
+	 */
+	protected double luggageStowingDistanceFromSeatDeviation = LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getPassengerWidthMeanFemale() <em>Passenger Width Mean Female</em>}' attribute.
@@ -1261,6 +1303,48 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public double getLuggageStowingDistanceFromSeatMean() {
+		return luggageStowingDistanceFromSeatMean;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLuggageStowingDistanceFromSeatMean(double newLuggageStowingDistanceFromSeatMean) {
+		double oldLuggageStowingDistanceFromSeatMean = luggageStowingDistanceFromSeatMean;
+		luggageStowingDistanceFromSeatMean = newLuggageStowingDistanceFromSeatMean;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN, oldLuggageStowingDistanceFromSeatMean, luggageStowingDistanceFromSeatMean));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getLuggageStowingDistanceFromSeatDeviation() {
+		return luggageStowingDistanceFromSeatDeviation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLuggageStowingDistanceFromSeatDeviation(double newLuggageStowingDistanceFromSeatDeviation) {
+		double oldLuggageStowingDistanceFromSeatDeviation = luggageStowingDistanceFromSeatDeviation;
+		luggageStowingDistanceFromSeatDeviation = newLuggageStowingDistanceFromSeatDeviation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION, oldLuggageStowingDistanceFromSeatDeviation, luggageStowingDistanceFromSeatDeviation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public double getPassengerWidthMeanFemale() {
 		return passengerWidthMeanFemale;
 	}
@@ -1633,6 +1717,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return getPassengerBigLuggageStowTimeMean();
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_DEVIATION:
 				return getPassengerBigLuggageStowTimeDeviation();
+			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN:
+				return getLuggageStowingDistanceFromSeatMean();
+			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION:
+				return getLuggageStowingDistanceFromSeatDeviation();
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_FEMALE:
 				return getPassengerWidthMeanFemale();
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_FEMALE:
@@ -1740,6 +1828,12 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_DEVIATION:
 				setPassengerBigLuggageStowTimeDeviation((Double)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN:
+				setLuggageStowingDistanceFromSeatMean((Double)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION:
+				setLuggageStowingDistanceFromSeatDeviation((Double)newValue);
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_FEMALE:
 				setPassengerWidthMeanFemale((Double)newValue);
@@ -1865,6 +1959,12 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_DEVIATION:
 				setPassengerBigLuggageStowTimeDeviation(PASSENGER_BIG_LUGGAGE_STOW_TIME_DEVIATION_EDEFAULT);
 				return;
+			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN:
+				setLuggageStowingDistanceFromSeatMean(LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION:
+				setLuggageStowingDistanceFromSeatDeviation(LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION_EDEFAULT);
+				return;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_FEMALE:
 				setPassengerWidthMeanFemale(PASSENGER_WIDTH_MEAN_FEMALE_EDEFAULT);
 				return;
@@ -1967,6 +2067,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return passengerBigLuggageStowTimeMean != PASSENGER_BIG_LUGGAGE_STOW_TIME_MEAN_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_DEVIATION:
 				return passengerBigLuggageStowTimeDeviation != PASSENGER_BIG_LUGGAGE_STOW_TIME_DEVIATION_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN:
+				return luggageStowingDistanceFromSeatMean != LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION:
+				return luggageStowingDistanceFromSeatDeviation != LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_FEMALE:
 				return passengerWidthMeanFemale != PASSENGER_WIDTH_MEAN_FEMALE_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_FEMALE:
@@ -2055,6 +2159,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 		result.append(passengerBigLuggageStowTimeMean);
 		result.append(", passengerBigLuggageStowTimeDeviation: ");
 		result.append(passengerBigLuggageStowTimeDeviation);
+		result.append(", luggageStowingDistanceFromSeatMean: ");
+		result.append(luggageStowingDistanceFromSeatMean);
+		result.append(", luggageStowingDistanceFromSeatDeviation: ");
+		result.append(luggageStowingDistanceFromSeatDeviation);
 		result.append(", passengerWidthMeanFemale: ");
 		result.append(passengerWidthMeanFemale);
 		result.append(", passengerWidthDeviationFemale: ");

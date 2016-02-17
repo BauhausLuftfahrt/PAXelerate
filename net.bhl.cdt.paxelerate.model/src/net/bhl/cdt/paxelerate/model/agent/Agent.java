@@ -9,12 +9,14 @@ package net.bhl.cdt.paxelerate.model.agent;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 
+import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
 import net.bhl.cdt.paxelerate.model.LuggageSize;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.PassengerMood;
 import net.bhl.cdt.paxelerate.model.Seat;
+import net.bhl.cdt.paxelerate.model.SimulationProperties;
 import net.bhl.cdt.paxelerate.model.astar.AStarHelper;
 import net.bhl.cdt.paxelerate.model.astar.Core;
 import net.bhl.cdt.paxelerate.model.astar.CostMap;
@@ -24,6 +26,8 @@ import net.bhl.cdt.paxelerate.model.astar.Path;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.model.observer.Subject;
 import net.bhl.cdt.paxelerate.model.util.Rotator;
+import net.bhl.cdt.paxelerate.util.math.GaussOptions;
+import net.bhl.cdt.paxelerate.util.math.GaussianRandom;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.time.StopWatch;
@@ -39,12 +43,14 @@ public class Agent extends Subject implements Runnable {
 	private Thread thread;
 	private Path path;
 
-	private final static int PIXELS_FOR_LUGGAGE = 8, PIXELS_FOR_WAY = 7;
+	private final static int PIXELS_FOR_WAY = 7;
 
 	private Vector start, goal, desiredPosition, currentPosition;
 	private CostMap mutableCostMap;
 
 	private int numbOfInterupts = 0, waycounter = 0;
+	
+	private double distance;
 
 	private boolean alreadyStowed = false, waitingCompleted = false,
 			initialized = false, exitTheMainLoop = false, movedOnce = false;;
@@ -65,6 +71,8 @@ public class Agent extends Subject implements Runnable {
 	private State currentState;
 
 	private Passenger thePassengerILetInTheRow;
+	
+	private SimulationProperties settings;
 
 	public Passenger getThePassengerILetInTheRow() {
 		return thePassengerILetInTheRow;
@@ -104,6 +112,7 @@ public class Agent extends Subject implements Runnable {
 		this.scale = SimulationHandler.getCabin().getScale();
 		this.finalCostmap = costmap;
 		this.thePassengerILetInTheRow = thePassengerILetInTheRow;
+		this.settings = SimulationHandler.getCabin().getSimulationSettings();
 
 		/* generate a mood for the passenger depending on his presets */
 		if (passenger.getPassengerMood() == PassengerMood.AGRESSIVE) {
@@ -187,6 +196,21 @@ public class Agent extends Subject implements Runnable {
 	public boolean didMoveOnce() {
 		return movedOnce;
 	}
+	
+	/**
+	 * This method returns the distance form the seat where PAX is stowing 
+	 * his luggage in multiple of the current map scaling
+	 * 
+	 * @return distance in multiple of the current map scaling
+	 */
+	private int getLuggageStowDistance(){
+		distance = (GaussianRandom.gaussianRandom(
+				settings.getLuggageStowingDistanceFromSeatMean(),
+				GaussOptions.PERCENT_95,
+				settings.getLuggageStowingDistanceFromSeatDeviation())/
+				scale);
+		return  (int) distance;
+	}
 
 	/**
 	 * This method returns if the passenger is ready to stow his luggage
@@ -203,7 +227,7 @@ public class Agent extends Subject implements Runnable {
 		 * seat
 		 */
 		return (hasLuggage() && isInYRangeEqual(seat.getXPosition(),
-				PIXELS_FOR_LUGGAGE, false));
+				getLuggageStowDistance(), false));
 	}
 
 	private boolean isInYRangeEqual(int position, int range, boolean print) {

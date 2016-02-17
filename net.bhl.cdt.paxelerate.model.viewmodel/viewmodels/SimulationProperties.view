@@ -90,6 +90,16 @@
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/passengerBigLuggageStowTimeDeviation"/>
           </domainModelReference>
         </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_xtcLYNV1EeWEPo3DdOyvxA" name="Control luggageStowingDistanceFromSeatMean">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_xtcLYdV1EeWEPo3DdOyvxA">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/luggageStowingDistanceFromSeatMean"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_xtcLYtV1EeWEPo3DdOyvxA" name="Control luggageStowingDistanceFromSeatDeviation">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_xtcLY9V1EeWEPo3DdOyvxA">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/luggageStowingDistanceFromSeatDeviation"/>
+          </domainModelReference>
+        </children>
       </children>
     </children>
   </children>
