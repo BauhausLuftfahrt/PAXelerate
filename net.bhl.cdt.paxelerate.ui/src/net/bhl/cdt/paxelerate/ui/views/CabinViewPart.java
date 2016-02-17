@@ -355,7 +355,13 @@ public class CabinViewPart extends ViewPart {
 	 * @return the scaled image
 	 */
 	private Image resize(Image image, int width, int height) {
+		
+		if(width == 0 || height == 0) {
+			return image;
+		}
+		
 		Image scaledImage = new Image(parent.getDisplay(), width, height);
+		
 		GC gc = new GC(scaledImage);
 		gc.setAntialias(SWT.ON);
 		gc.setInterpolation(SWT.HIGH);
@@ -468,34 +474,28 @@ public class CabinViewPart extends ViewPart {
 								.getChildrenByClass(cabin, EconomyClass.class)
 								.get(0).getSeatLength() / factor));
 			}
-			try {
-				coffeeIcon = resize(coffeeIcon,
-						(int) (ModelHelper.getChildrenByClass(cabin, Galley.class)
-								.get(0).getXDimension() / factor / 2),
-						(int) (ModelHelper.getChildrenByClass(cabin, Galley.class)
-								.get(0).getXDimension() / factor
-								* PASSENGER_CIRCLE_SIZE));
-			} catch (IndexOutOfBoundsException e) {
-				Log.add(this, "Error scaling seat images. No galley found.");
+			
+			if(!cabin.getGalleys().isEmpty()) {
+				int dim = (int)(cabin.getGalleys().get(0).getXDimension() / factor *0.6);
+				coffeeIcon = resize(coffeeIcon,dim,dim);
 			}
-			try {
-				lavatoryIcon = resize(lavatoryIcon,
-						(int) (ModelHelper.getChildrenByClass(cabin, Lavatory.class)
-								.get(0).getXDimension() / factor / 2),
-						(int) (ModelHelper.getChildrenByClass(cabin, Lavatory.class)
-								.get(0).getXDimension() / factor
-								* PASSENGER_CIRCLE_SIZE));
-			} catch (IndexOutOfBoundsException e) {
-				Log.add(this, "Error scaling seat images. No lavatory found.");
+			
+			if(!cabin.getLavatories().isEmpty()) {
+				int dim = (int)(cabin.getLavatories().get(0).getXDimension() / factor *0.6);
+				lavatoryIcon = resize(lavatoryIcon,dim,dim);
 			}
+			
+			
 			cabinAdapter = new AdapterImpl() {
 				public void notifyChanged(Notification notification) {
 					if (!notification.isTouch()) {
-						// TODO: I DEACTIVATED THIS!
-						// doTheDraw();
+						
+						// TODO: check performance
+						doTheDraw();
 					}
 				}
 			};
+			
 			img = createImage();
 			syncViewer();
 			doTheDraw();
