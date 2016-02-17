@@ -124,6 +124,8 @@ public abstract class Vector implements Comparable<Vector> {
 	 * It should solely be used for the path finding purposes, requiring both the distances (XYZ) and the cost of each node.
 	 */
 	
+	// TODO: Marc bitte mit Raoul über diese Funktion sprechen.
+	
 	@Deprecated
 	public int compareTo(Vector vector) {
 		int better = -1;
@@ -157,18 +159,11 @@ public abstract class Vector implements Comparable<Vector> {
 	 * 
 	 * @return vectors are equal or not
 	 */
-	@Override
-	public boolean equals(Object obj) {
-		if((obj != null) && (obj instanceof Vector)) {
-			Vector vector = (Vector) obj;
-			if(dimensions == vector.getNumberOfDimensions()) {
-				if((xValue == vector.getX()) 
-						&& (yValue == vector.getY()) 
-						&& (zValue == vector.getZ())) {
-					return true;					
-				}
-			}
-		}
-	return false;
+	public boolean equals(Vector vec) {
+		return vec != null 
+				&& dimensions == vec.getNumberOfDimensions() 
+				&& xValue == vec.getX() 
+				&& yValue == vec.getY()
+				&& zValue == vec.getZ();
 	}
 }
