@@ -5,13 +5,13 @@
     <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_6_O9gKS6EeWGjpaobu8CIA">
       <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_9FpQYKS6EeWGjpaobu8CIA" name="Aircraft Parameters">
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_yK0hkqS6EeWGjpaobu8CIA" name="Control cabinLength">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_yK0hk6S6EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Cabin/cabinLength"/>
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_TBmgcNWGEeW0OPmOr1ApzQ">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Cabin/xDimension"/>
           </domainModelReference>
         </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_yK0hlKS6EeWGjpaobu8CIA" name="Control cabinWidth">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_yK0hlaS6EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Cabin/cabinWidth"/>
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_UIOxUNWGEeW0OPmOr1ApzQ">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Cabin/yDimension"/>
           </domainModelReference>
         </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_yK0hlqS6EeWGjpaobu8CIA" name="Control rowNonexistent">
