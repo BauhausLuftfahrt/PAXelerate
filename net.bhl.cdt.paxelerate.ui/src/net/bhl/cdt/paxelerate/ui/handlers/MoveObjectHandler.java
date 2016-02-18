@@ -23,7 +23,7 @@ import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.ui.commands.MoveObjectCommand;
 
-public class MoveRowHandler extends AbstractHandler {
+public class MoveObjectHandler extends AbstractHandler {
 
 	/**
 	 * Get selected Element.

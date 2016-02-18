@@ -59,8 +59,8 @@
             name="Generate Passengers">
       </command>
       <command
-            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.MoveRowHandler"
-            id="net.bhl.cdt.paxelerate.ui.moveRow"
+            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.MoveObjectHandler"
+            id="net.bhl.cdt.paxelerate.ui.moveObject"
             name="Move Object">
       </command>
       <command
@@ -89,6 +89,7 @@
          </command>
          <command
                commandId="net.bhl.cdt.paxelerate.ui.generatePassengers"
+               icon="images/icons/passenger.png"
                label="2. Generate Passengers"
                style="push">
             <visibleWhen
@@ -131,8 +132,8 @@
             </visibleWhen>
          </command>
          <command
-               commandId="net.bhl.cdt.paxelerate.ui.moveRow"
-               label="Reposition ..."
+               commandId="net.bhl.cdt.paxelerate.ui.moveObject"
+               label="Reposition Object ..."
                style="push">
             <visibleWhen
                   checkEnabled="false">
