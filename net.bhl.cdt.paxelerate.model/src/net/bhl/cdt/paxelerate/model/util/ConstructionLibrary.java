@@ -51,6 +51,8 @@ public class ConstructionLibrary {
 	private int seatCount, rowCount, globalSeatPositionX, globalSeatPositionY,
 			seats, seatsInRow, seatPitch, seatHelper, passengers, numbAisles,
 			galleyCount = 1, lavatoryCount = 1, curtainCount = 1;
+	
+	private final static int DISTANCE_INCREMENT_DOOR = 20;
 
 	private Vector seatDimensions = new Vector2D(0, 0);
 
@@ -160,7 +162,7 @@ public class ConstructionLibrary {
 				seatStructure = (String) tryPreset("2-2", "3-3", "3-4-3",
 						"3-3");
 				seatDimensions = new Vector2D(50, 60);
-				seatPitch = 20;
+				seatPitch = 85; 
 				passengers = 1;
 			}
 			passengerClass = CabinFactory.eINSTANCE.createPremiumEconomyClass();
@@ -182,7 +184,7 @@ public class ConstructionLibrary {
 				seats = 8;
 				seatStructure = "2-2";
 				seatDimensions = new Vector2D(72, 80);
-				seatPitch = 30;
+				seatPitch = 90; 
 				passengers = 1;
 			}
 			passengerClass = CabinFactory.eINSTANCE.createBusinessClass();
@@ -203,7 +205,7 @@ public class ConstructionLibrary {
 				seats = 2;
 				seatStructure = "1-1";
 				seatDimensions = new Vector2D(100, 120);
-				seatPitch = 40;
+				seatPitch = 100; 
 				passengers = 1;
 			}
 			passengerClass = CabinFactory.eINSTANCE.createFirstClass();
@@ -225,7 +227,7 @@ public class ConstructionLibrary {
 				seats = 72;
 				seatStructure = "3-3";
 				seatDimensions = new Vector2D(50, 60);
-				seatPitch = 20;
+				seatPitch = 80; 
 				passengers = 1;
 			}
 			passengerClass = CabinFactory.eINSTANCE.createEconomyClass();
@@ -339,11 +341,10 @@ public class ConstructionLibrary {
 	}
 
 	/**
-	 * This method checks if there is a door at the current y position. If so,
-	 * the y position is increased.
+	 * This method checks if there is a door at the current x position. If so,
+	 * the x position is increased.
 	 */
 	public void checkForDoor() {
-		double seatPitchMultiplicator = 1.5;
 		for (Door door : ModelHelper.getChildrenByClass(cabin, Door.class)) {
 			if ((((door.getXPosition() + door.getWidth()) > (globalSeatPositionY
 					- seatPitch))
@@ -354,7 +355,7 @@ public class ConstructionLibrary {
 							|| ((door.getXPosition()
 									+ door.getWidth() > globalSeatPositionY)
 									&& (door.getXPosition() < globalSeatPositionY)))) {
-				globalSeatPositionY += seatPitchMultiplicator * seatPitch;
+				globalSeatPositionY += DISTANCE_INCREMENT_DOOR;
 			}
 		}
 	}
@@ -415,15 +416,14 @@ public class ConstructionLibrary {
 					Log.add(this, "The seats in row " + i
 							+ " do not fit into the cabin!");
 				}
-				globalSeatPositionY += seatPitch;
-
+				
 				if (cabin.getRowNonexistent() == rowCount) {
 					rowCount++;
 				}
 				createRow();
 				rowCount++;
-				globalSeatPositionY = globalSeatPositionY
-						+ seatDimensions.getY();
+				globalSeatPositionY += seatPitch;
+				
 			}
 			if (!(passengerClass instanceof EconomyClass)) {
 				createCurtain(true, "after " + StringHelper
