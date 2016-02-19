@@ -89,7 +89,6 @@
          </command>
          <command
                commandId="net.bhl.cdt.paxelerate.ui.generatePassengers"
-               icon="images/icons/passenger.png"
                label="2. Generate Passengers"
                style="push">
             <visibleWhen
@@ -211,5 +210,18 @@
             id="net.bhl.cdt.paxelerate.ui.intro"
             label="PAXelerate Welcome Page">
       </intro>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="net.bhl.cdt.paxelerate.ui.drawCabin"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="net.bhl.cdt.paxelerate.ui.scheme"
+            sequence="M1+R">
+      </key>
+      <scheme
+            id="net.bhl.cdt.paxelerate.ui.scheme"
+            name="PAXelerateScheme">
+      </scheme>
    </extension>
 </plugin>
