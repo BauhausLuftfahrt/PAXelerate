@@ -2,14 +2,14 @@
 
 Welcome to the repository of [PAXelerate](http://www.paxelerate.com) - an open source passenger flow simulation framework for advanced aircraft cabin layouts! 
 
-* The current version under development is *Alpha 0.4*
+* The current version under development is *Alpha 0.6*
 * The implementation began in November 2014
 
 ### Quick Guide ###
 1. Install [Eclipse Mars - Modelling Tools](http://www.eclipse.org/downloads/) and [Java JDK Version 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 2. Upgrade the [EMF Client Platform](http://www.eclipse.org/ecp/download.html) to version 1.7.x 
 3. Checkout [OpenCDT](http://bitbucket.org/opencdt/opencdt) core plugins
-4. Checkout [PAXelerate](http://bitbucket.org/paxelerate/paxelerate) 
+4. Checkout [PAXelerate](http://github.com/BauhausLuftfahrt/PAXelerate) 
 5. Launch *paxelerate.product*
 
 
