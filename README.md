@@ -16,7 +16,7 @@ Welcome to the repository of [PAXelerate](http://www.paxelerate.com) - an open s
 ### How do I get set up? ###
 
 * The [Installation Guide](documentation/wiki/installation.md) is intended to enable a quick and easy setup 
-* The [Tutorial](documentation/wiki/tutorial.md) provides a summary of the functional range and quick introduction for new users
+* The [Tutorial](documentation/wiki/overview.md) provides a summary of the functional range and quick introduction for new users
 * The [Developers Guide](documentation/wiki/developer.md) summarises useful tips to get started with the development
 
 ### Contributors ###

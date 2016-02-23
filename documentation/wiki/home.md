@@ -1,7 +1,7 @@
 # The PAXelerate Wiki
 
 * The [Installation Guide](installation.md) is intended to enable a quick and easy setup of PAXelerate.
-* The [Tutorial](tutorial.md) provides a summary of the functional range of PAXelerate and quick introduction for new users.
+* The [Tutorial](overview.md) provides a summary of the functional range of PAXelerate and quick introduction for new users.
 * The [Developers Guide](developer.md) summarises useful tips to get started with the PAXelerate advancement
 
 ## Quick Guide ##
