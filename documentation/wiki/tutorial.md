@@ -37,6 +37,9 @@ Using the Generate Cabin function accessible through the context menu applies a 
 
 ## Start simulation
 
+
+## Provide feedback and report bugs ##
+
 ## Index and definitions
 
 model explorer

@@ -1,14 +1,14 @@
-# Tutorial
+# A Functional Overview
 
 PAXelerate is based on a microscopic approach applying agent-based modelling techniques. Each passenger is represented as an agent with individual properties such as body dimensions, walking speed, target seat or type of carry-on luggage.
 
 ## PAXelerate - A Functional Overview
 
-* [**Development Platform Fundamentals**](#markdown-header-development-platform-fundamentals)
-* [**Cabin Layout Generator**](#markdown-header-1.-cabin-layout-definition) 
-* [**Agent Builder**](#markdown-header-2.-agent-builder)
-* [**Agent Based Simulation**](#markdown-header-3.-agent-based-simulation)
-* [**Post-Processing**](#markdown-header-4.-data-analysis-and-post-processing)
+* **Development Platform Fundamentals**
+* **Cabin Layout Generator** 
+* **Agent Builder**
+* **Agent Based Simulation**
+* **Post-Processing**
 
 ## Development Platform Fundamentals
 

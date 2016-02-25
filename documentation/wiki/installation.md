@@ -5,7 +5,7 @@ To use PAXelerate you require to install [Eclipse](http://www.eclipse.org) and [
 
 * Download the [Eclipse Mars Installer](http://www.eclipse.org/downloads/) and select Eclipse Modelling Tools 
 
-![eclipse-installer.png](https://bitbucket.org/repo/E4bXa6/images/12633121-eclipse-installer.png)
+![eclipse-installer.png](images/eclipse-installer.png)
 
 * Upgrade the [EMF Client Platform](http://www.eclipse.org/ecp/download.html) to version 1.7.x 
 * [JAVA JDK Version 8 (Java SE Development Kit 8)](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
@@ -45,7 +45,7 @@ net.bhl.cdt.ui
 * Go to *File -> import -> Git -> Projects from Git -> Clone URI* and paste in the following link:
 ```
 #!html
-https://bitbucket.org/paxelerate/paxelerate
+https://github.com/BauhausLuftfahrt/PAXelerate.git
 ```
 * Select the *Master* branch
 * *Import* the following plugins
