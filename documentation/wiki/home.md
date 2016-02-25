@@ -8,10 +8,12 @@
 ### Quick Guide ###
 
 **User Version**
+
 1. Download and unpack the latest client version [Alpha 0.5](https://github.com/BauhausLuftfahrt/PAXelerate/releases/tag/alpha-0.5)
 2. Start *PAXelerate.exe*
 
 **Developer Version**
+
 1. Install [Eclipse Mars.1 - Modelling Tools](http://www.eclipse.org/downloads/) and [Java JDK Version 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 2. Upgrade the [EMF Client Platform](http://www.eclipse.org/ecp/download.html) to version 1.7.x 
 3. Checkout [OpenCDT](http://bitbucket.org/opencdt/opencdt) core plugins from the master branch
