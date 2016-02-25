@@ -4,11 +4,11 @@ PAXelerate is based on a microscopic approach applying agent-based modelling tec
 
 ## PAXelerate - A Functional Overview
 
-* **Development Platform Fundamentals**
-* **Cabin Layout Generator** 
-* **Agent Builder**
-* **Agent Based Simulation**
-* **Post-Processing**
+* **[Development Platform Fundamentals](#development-platform-fundamentals)**
+* **[Cabin Layout Generator](#1-cabin-layout-definition)** 
+* **[Agent Builder](#2-agent-builder)**
+* **[Agent Based Simulation](#3-agent-based-simulation)**
+* **[Post-Processing](#4-data-analysis-and-post-processing)**
 
 ## Development Platform Fundamentals
 
