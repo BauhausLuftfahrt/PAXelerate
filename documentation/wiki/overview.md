@@ -34,7 +34,7 @@ A simultaneous update of the graphical visualisation of the cabin layout and exe
 
 ## 2. Agent Builder ##
 
-After the number of passengers is assigned to each cabin class during the cabin layout definition, agent features are set according to the characteristics listed below. The anthropometric properties of waist width, body depth and walking speed are determined using a [Gaussian normal distribution](gaussian.md) between minimum and maximum values. The range can be adapted to represent passengers from different regions worldwide. Especially the waist width has a large impact on egress times beside the walking speed. Based on the passengers age, the appropriate walking speed is derived.
+After the number of passengers is assigned to each cabin class during the cabin layout definition, agent features are set according to the characteristics listed below. The anthropometric properties of waist width, body depth and walking speed are determined using a [Gaussian normal distribution](developer.md/#gaussian-distribution) between minimum and maximum values. The range can be adapted to represent passengers from different regions worldwide. Especially the waist width has a large impact on egress times beside the walking speed. Based on the passengers age, the appropriate walking speed is derived.
 
 
 | Anthropometrics  | Behaviour  |  
