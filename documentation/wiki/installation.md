@@ -14,8 +14,8 @@ To use PAXelerate you require to install [Eclipse](http://www.eclipse.org) and [
 * Probably [Git for Windows](http://msysgit.github.io/) is required
 * Optional: a Git client, such as [Tortoise Git](https://code.google.com/p/tortoisegit/)    
 
-### Mac ###
-* no further tools required
+### Mac and Linux ###
+* Currently not supported
 
 ## 2. Install the OpenCDT core plug-ins ##
 
@@ -28,13 +28,11 @@ Once you have started Eclipse, its time to download OpenCDT from the code reposi
 
 * At first, go to *File -> import -> Git -> Projects from Git -> Clone URI* and paste in the following link:
 ```
-#!html
 https://bitbucket.org/opencdt/opencdt.git
 ```
 * Select the *Master* branch
 * *Import* the following plugins
 ```
-#!html
 net.bhl.cdt.client
 net.bhl.cdt.model
 net.bhl.cdt.model.edit
@@ -44,14 +42,11 @@ net.bhl.cdt.ui
 ## 3. Install PAXelerate plugin ##
 * Go to *File -> import -> Git -> Projects from Git -> Clone URI* and paste in the following link:
 ```
-#!html
 https://github.com/BauhausLuftfahrt/PAXelerate.git
 ```
 * Select the *Master* branch
 * *Import* the following plugins
 ```
-#!html
-
 net.bhl.cdt.paxelerate.core
 net.bhl.cdt.paxelerate.model
 net.bhl.cdt.paxelerate.model.edit
@@ -59,7 +54,6 @@ net.bhl.cdt.paxelerate.model.viewmodel
 net.bhl.cdt.paxelerate.test
 net.bhl.cdt.paxelerate.ui
 net.bhl.cdt.paxelerate.util
-
 ```
 
 ## 4. Launch PAXelerate ##
@@ -70,11 +64,11 @@ You can finally start PAXelerate now:
 * Right-click *paxelerate.product*
 * Select Run as/Eclipse Application
 
-** An error message occurs?** Perhaps not all required plugins are added to working set.
+An error message occurs? Perhaps not all required plugins are added to working set.
 * Select *Run Configurations... -> Plugins*
 * In this view, *Add Required Plug-ins* and subsequently *Validate Plug-ins*
 
-### Do you have any troubles? Create a [ticket](https://bauhaus.atlassian.net/secure/CreateIssue!default.jspa) and we give our best to solve your issue. ###
+### Do you have any troubles? Create an [issue](https://github.com/BauhausLuftfahrt/PAXelerate/issues/new) and we give our best to solve your issue. ###
 
 
 
