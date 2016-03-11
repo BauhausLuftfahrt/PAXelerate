@@ -68,6 +68,11 @@
             id="net.bhl.cdt.paxelerate.ui.sortPassengers"
             name="Sort Passengers">
       </command>
+      <command
+            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.CloneObjectHandler"
+            id="net.bhl.cdt.paxelerate.ui.cloneObject"
+            name="Clone Object">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -145,6 +150,19 @@
                            value="net.bhl.cdt.paxelerate.model.Row">
                      </instanceof>
                   </or>
+               </iterate>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="net.bhl.cdt.paxelerate.ui.cloneObject"
+               label="Clone Object ... "
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate>
+                  <instanceof
+                        value="net.bhl.cdt.paxelerate.model.Row">
+                  </instanceof>
                </iterate>
             </visibleWhen>
          </command>

@@ -13,7 +13,6 @@ import javax.swing.SwingUtilities;
 
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Shell;
 
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.util.ModelHelper;
@@ -53,7 +52,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 	 * @param cabin
 	 *            the cabin object
 	 */
-	public SimulateBoardingCommand(Shell shell, Cabin cabin) {
+	public SimulateBoardingCommand(Cabin cabin) {
 		this.cabin = cabin;
 	}
 

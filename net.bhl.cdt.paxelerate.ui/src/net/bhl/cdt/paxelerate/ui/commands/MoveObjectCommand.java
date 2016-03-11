@@ -8,8 +8,6 @@ package net.bhl.cdt.paxelerate.ui.commands;
 import java.util.ArrayList;
 
 import org.eclipse.jface.dialogs.IMessageProvider;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.PlatformUI;
 
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.util.ModelHelper;
@@ -19,11 +17,9 @@ import net.bhl.cdt.paxelerate.model.Galley;
 import net.bhl.cdt.paxelerate.model.Lavatory;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
-import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.util.input.Input;
 import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 import net.bhl.cdt.paxelerate.util.math.Vector;
-import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * This class refreshed the cabin view without modifying anything. It checks the
@@ -36,7 +32,6 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 public class MoveObjectCommand extends CDTCommand {
 
 	private Cabin cabin;
-	private CabinViewPart cabinViewPart;
 	private Vector movementVector, scaleVector;
 	private ArrayList<Row> rowlist = new ArrayList<Row>();
 	private ArrayList<Seat> seatlist = new ArrayList<Seat>();
@@ -95,7 +90,7 @@ public class MoveObjectCommand extends CDTCommand {
 			scalingDesired = true;
 		}
 
-		int xMovement = movementVector.getY();
+		int xMovement = movementVector.getX();
 		int yMovement = movementVector.getY();
 
 		if (!rowlist.isEmpty()) {
@@ -172,14 +167,6 @@ public class MoveObjectCommand extends CDTCommand {
 			}
 		}
 
-		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-		cabinViewPart = (CabinViewPart) page.findView("net.bhl.cdt.paxelerate.model.cabinview");
-
-		try {
-			cabinViewPart.setCabin(cabin);
-			Log.add(this, "Cabin view checked and updated");
-		} catch (NullPointerException e) {
-			Log.add(this, "No cabin view is visible!");
-		}
+		new DrawCabinCommand(cabin).execute();
 	}
 }
