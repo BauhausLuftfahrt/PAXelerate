@@ -16,13 +16,13 @@
             class="net.bhl.cdt.paxelerate.ui.views.PropertyViewPart"
             icon="images/icons/passenger.png"
             id="net.bhl.cdt.paxelerate.ui.propertyview"
-            name="Property View"
+            name="Passenger Properties"
             restorable="true">
       </view>
       <view
             allowMultiple="false"
             class="net.bhl.cdt.paxelerate.ui.views.InfoViewPart"
-            icon="images/icons/passenger.png"
+            icon="images/icons/simulate.png"
             id="net.bhl.cdt.paxelerate.ui.views.infoview"
             name="Info View"
             restorable="true">
@@ -109,6 +109,7 @@
          </command>
          <command
                commandId="net.bhl.cdt.paxelerate.ui.simulateBoarding"
+               icon="images/icons/simulate.png"
                label="3. Simulate Boarding"
                style="push">
             <visibleWhen
@@ -126,6 +127,7 @@
          </separator>
          <command
                commandId="net.bhl.cdt.paxelerate.ui.drawCabin"
+               icon="images/icons/refresh.png"
                label="Refresh Cabin View"
                style="push">
             <visibleWhen
