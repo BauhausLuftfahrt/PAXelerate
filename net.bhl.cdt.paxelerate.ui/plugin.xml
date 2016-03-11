@@ -81,6 +81,7 @@
             locationURI="popup:org.eclipse.emf.ecp.ui.ModelExplorerView">
          <command
                commandId="net.bhl.cdt.paxelerate.ui.generateCabin"
+               icon="images/icons/cabin.png"
                label="1. Generate New Cabin"
                style="push">
             <visibleWhen
@@ -94,6 +95,7 @@
          </command>
          <command
                commandId="net.bhl.cdt.paxelerate.ui.generatePassengers"
+               icon="images/icons/passenger.png"
                label="2. Generate Passengers"
                style="push">
             <visibleWhen
