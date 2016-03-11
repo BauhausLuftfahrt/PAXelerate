@@ -470,12 +470,12 @@ public class PassengerPropertiesItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
 		PassengerProperties passengerProperties = (PassengerProperties)object;
-		return getString("_UI_PassengerProperties_type") + " " + passengerProperties.getPassengerWidthMeanMale();
+		return getString("_UI_PassengerProperties_type");
 	}
 	
 

@@ -355,12 +355,12 @@ public class LuggagePropertiesItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
 		LuggageProperties luggageProperties = (LuggageProperties)object;
-		return getString("_UI_LuggageProperties_type") + " " + luggageProperties.getLuggageStowingDistanceFromSeatMean();
+		return getString("_UI_LuggageProperties_type");
 	}
 	
 
