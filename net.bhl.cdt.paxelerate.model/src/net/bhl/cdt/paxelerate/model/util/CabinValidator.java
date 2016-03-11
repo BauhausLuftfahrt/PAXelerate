@@ -3,6 +3,7 @@
 package net.bhl.cdt.paxelerate.model.util;
 
 import java.util.Map;
+import net.bhl.cdt.paxelerate.model.*;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EPackage;
@@ -176,8 +177,12 @@ public class CabinValidator extends EObjectValidator {
 				return validateStandardDoor((StandardDoor)value, diagnostics, context);
 			case CabinPackage.SIMULATION_PROPERTIES:
 				return validateSimulationProperties((SimulationProperties)value, diagnostics, context);
+			case CabinPackage.LUGGAGE_PROPERTIES:
+				return validateLuggageProperties((LuggageProperties)value, diagnostics, context);
 			case CabinPackage.SIMULATION_RESULT:
 				return validateSimulationResult((SimulationResult)value, diagnostics, context);
+			case CabinPackage.PASSENGER_PROPERTIES:
+				return validatePassengerProperties((PassengerProperties)value, diagnostics, context);
 			case CabinPackage.SEX:
 				return validateSex((Sex)value, diagnostics, context);
 			case CabinPackage.STAIRWAY_DIRECTION:
@@ -544,8 +549,26 @@ public class CabinValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateLuggageProperties(LuggageProperties luggageProperties, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(luggageProperties, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateSimulationResult(SimulationResult simulationResult, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(simulationResult, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePassengerProperties(PassengerProperties passengerProperties, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(passengerProperties, diagnostics, context);
 	}
 
 	/**

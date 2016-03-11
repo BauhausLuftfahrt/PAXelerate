@@ -5,8 +5,9 @@ import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.LuggageSize;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.PassengerMood;
+import net.bhl.cdt.paxelerate.model.PassengerProperties;
+import net.bhl.cdt.paxelerate.model.LuggageProperties;
 import net.bhl.cdt.paxelerate.model.Sex;
-import net.bhl.cdt.paxelerate.model.SimulationProperties;
 import net.bhl.cdt.paxelerate.util.math.DecimalHelper;
 import net.bhl.cdt.paxelerate.util.math.GaussOptions;
 import net.bhl.cdt.paxelerate.util.math.GaussianRandom;
@@ -24,8 +25,9 @@ public class PassengerPropertyGenerator {
 	/* The current passenger */
 	private Passenger passenger;
 
-	/* the settings */
-	private SimulationProperties settings;
+	/* the paxSettings */
+	private PassengerProperties paxSettings;
+	private LuggageProperties luggageSettings;
 
 	/*
 	 * This array contains two values, first the age of the passenger and second
@@ -55,11 +57,14 @@ public class PassengerPropertyGenerator {
 
 		this.passenger = pax;
 
-		this.settings = ModelHelper.getParent(Cabin.class, pax)
-				.getSimulationSettings();
+		this.paxSettings = ModelHelper.getParent(Cabin.class, pax)
+				.getSimulationSettings().getPassenger();
+		
+		this.luggageSettings = ModelHelper.getParent(Cabin.class, pax)
+				.getSimulationSettings().getLuggage();
 
 		/** At first. decide for the sex. **/
-		passenger.setSex(switchRandomSex(settings.getPercentageOfWomen()));
+		passenger.setSex(switchRandomSex(paxSettings.getPercentageOfWomen()));
 
 		/** Define the mood of the passenger **/
 		passenger.setPassengerMood(PassengerMood.PASSIVE);
@@ -68,28 +73,28 @@ public class PassengerPropertyGenerator {
 		passenger.setAge(adaptAge());
 
 		/** Define the height according to normal distribution **/
-		passenger.setHeight((int) adapt(settings.getPassengerHeightMeanMale(),
-				settings.getPassengerHeightDeviationMale(),
-				settings.getPassengerHeightMeanFemale(),
-				settings.getPassengerHeightDeviationFemale()));
+		passenger.setHeight((int) adapt(paxSettings.getPassengerHeightMeanMale(),
+				paxSettings.getPassengerHeightDeviationMale(),
+				paxSettings.getPassengerHeightMeanFemale(),
+				paxSettings.getPassengerHeightDeviationFemale()));
 
 		/** Define the weight according to normal distribution **/
-		passenger.setWeight((int) adapt(settings.getPassengerWeightMeanMale(),
-				settings.getPassengerWeightDeviationMale(),
-				settings.getPassengerWeightMeanFemale(),
-				settings.getPassengerWeightDeviationFemale()));
+		passenger.setWeight((int) adapt(paxSettings.getPassengerWeightMeanMale(),
+				paxSettings.getPassengerWeightDeviationMale(),
+				paxSettings.getPassengerWeightMeanFemale(),
+				paxSettings.getPassengerWeightDeviationFemale()));
 
 		/** Define the depth according to normal distribution **/
-		passenger.setDepth((int) adapt(settings.getPassengerDepthMeanMale(),
-				settings.getPassengerDepthDeviationMale(),
-				settings.getPassengerDepthMeanFemale(),
-				settings.getPassengerDepthDeviationFemale()));
+		passenger.setDepth((int) adapt(paxSettings.getPassengerDepthMeanMale(),
+				paxSettings.getPassengerDepthDeviationMale(),
+				paxSettings.getPassengerDepthMeanFemale(),
+				paxSettings.getPassengerDepthDeviationFemale()));
 
 		/** Define the width according to normal distribution **/
-		passenger.setWidth((int) adapt(settings.getPassengerWidthMeanMale(),
-				settings.getPassengerWidthDeviationMale(),
-				settings.getPassengerWidthMeanFemale(),
-				settings.getPassengerWidthDeviationFemale()));
+		passenger.setWidth((int) adapt(paxSettings.getPassengerWidthMeanMale(),
+				paxSettings.getPassengerWidthDeviationMale(),
+				paxSettings.getPassengerWidthMeanFemale(),
+				paxSettings.getPassengerWidthDeviationFemale()));
 
 		/** Define the walking speed according to age **/
 		passenger.setWalkingSpeed(adaptSpeed());
@@ -130,12 +135,14 @@ public class PassengerPropertyGenerator {
 	}
 
 	private LuggageSize adaptLuggage() {
+		
+		
 
 		double[] luggagemodel = {
-				this.settings.getPercentageOfPassengersWithNoLuggage(),
-				this.settings.getPercentageOfPassengersWithSmallLuggage(),
-				this.settings.getPercentageOfPassengersWithMediumLuggage(),
-				this.settings.getPercentageOfPassengersWithBigLuggage() };
+				this.luggageSettings.getPercentageOfPassengersWithNoLuggage(),
+				this.luggageSettings.getPercentageOfPassengersWithSmallLuggage(),
+				this.luggageSettings.getPercentageOfPassengersWithMediumLuggage(),
+				this.luggageSettings.getPercentageOfPassengersWithBigLuggage() };
 
 		if ((luggagemodel[0] + luggagemodel[1] + luggagemodel[2] + luggagemodel[3]) == 0) {
 			luggagemodel[0] = 100;
@@ -177,19 +184,19 @@ public class PassengerPropertyGenerator {
 			return 0;
 		case SMALL:
 			return  GaussianRandom.gaussianRandom(
-					settings.getPassengerSmallLuggageStowTimeMean(),
+					luggageSettings.getPassengerSmallLuggageStowTimeMean(),
 					GaussOptions.PERCENT_95,
-					settings.getPassengerSmallLuggageStowTimeDeviation());
+					luggageSettings.getPassengerSmallLuggageStowTimeDeviation());
 		case MEDIUM:
 			return 	GaussianRandom.gaussianRandom(
-					settings.getPassengerMediumLuggageStowTimeMean(),
+					luggageSettings.getPassengerMediumLuggageStowTimeMean(),
 					GaussOptions.PERCENT_95,
-					settings.getPassengerMediumLuggageStowTimeDeviation());
+					luggageSettings.getPassengerMediumLuggageStowTimeDeviation());
 		case BIG:
 			return GaussianRandom.gaussianRandom(
-					settings.getPassengerBigLuggageStowTimeMean(),
+					luggageSettings.getPassengerBigLuggageStowTimeMean(),
 					GaussOptions.PERCENT_95,
-					settings.getPassengerBigLuggageStowTimeDeviation());
+					luggageSettings.getPassengerBigLuggageStowTimeDeviation());
 		default:
 			return 0;
 		}
@@ -205,9 +212,9 @@ public class PassengerPropertyGenerator {
 	private double defineLuggageStowDistance() {
 
 			return  GaussianRandom.gaussianRandom(
-					settings.getLuggageStowingDistanceFromSeatMean(),
+					luggageSettings.getLuggageStowingDistanceFromSeatMean(),
 					GaussOptions.PERCENT_95,
-					settings.getLuggageStowingDistanceFromSeatDeviation());
+					luggageSettings.getLuggageStowingDistanceFromSeatDeviation());
 	}
 
 	/**

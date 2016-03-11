@@ -5,9 +5,11 @@ package net.bhl.cdt.paxelerate.model.provider;
 import java.util.Collection;
 import java.util.List;
 
+import net.bhl.cdt.paxelerate.model.CabinFactory;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -58,40 +60,11 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 			addRandomSortBetweenLoopsPropertyDescriptor(object);
 			addUseFoldableSeatsPropertyDescriptor(object);
 			addBringYourOwnSeatPropertyDescriptor(object);
-			addPassengersBoardingPerMinutePropertyDescriptor(object);
-			addPassengerWidthMeanMalePropertyDescriptor(object);
-			addPassengerWidthDeviationMalePropertyDescriptor(object);
-			addPassengerWeightMeanMalePropertyDescriptor(object);
-			addPassengerWeightDeviationMalePropertyDescriptor(object);
-			addPassengerHeightMeanMalePropertyDescriptor(object);
-			addPassengerHeightDeviationMalePropertyDescriptor(object);
-			addPassengerDepthMeanMalePropertyDescriptor(object);
-			addPassengerDepthDeviationMalePropertyDescriptor(object);
-			addPercentageOfWomenPropertyDescriptor(object);
-			addPassengerSmallLuggageStowTimeMeanPropertyDescriptor(object);
-			addPassengerSmallLuggageStowTimeDeviationPropertyDescriptor(object);
-			addPassengerMediumLuggageStowTimeMeanPropertyDescriptor(object);
-			addPassengerMediumLuggageStowTimeDeviationPropertyDescriptor(object);
-			addPassengerBigLuggageStowTimeMeanPropertyDescriptor(object);
-			addPassengerBigLuggageStowTimeDeviationPropertyDescriptor(object);
-			addLuggageStowingDistanceFromSeatMeanPropertyDescriptor(object);
-			addLuggageStowingDistanceFromSeatDeviationPropertyDescriptor(object);
-			addPassengerWidthMeanFemalePropertyDescriptor(object);
-			addPassengerWidthDeviationFemalePropertyDescriptor(object);
-			addPassengerWeightMeanFemalePropertyDescriptor(object);
-			addPassengerWeightDeviationFemalePropertyDescriptor(object);
-			addPassengerHeightMeanFemalePropertyDescriptor(object);
-			addPassengerHeightDeviationFemalePropertyDescriptor(object);
-			addPassengerDepthMeanFemalePropertyDescriptor(object);
-			addPassengerDepthDeviationFemalePropertyDescriptor(object);
 			addResultsPropertyDescriptor(object);
-			addPercentageOfPassengersWithNoLuggagePropertyDescriptor(object);
-			addPercentageOfPassengersWithSmallLuggagePropertyDescriptor(object);
-			addPercentageOfPassengersWithMediumLuggagePropertyDescriptor(object);
-			addPercentageOfPassengersWithBigLuggagePropertyDescriptor(object);
 			addSortingPropertyDescriptor(object);
 			addSimulationSpeedFactorPropertyDescriptor(object);
 			addDeveloperModePropertyDescriptor(object);
+			addPassengersBoardingPerMinutePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -207,570 +180,6 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	}
 
 	/**
-	 * This adds a property descriptor for the Passengers Boarding Per Minute feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPassengersBoardingPerMinutePropertyDescriptor(
-			Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_passengersBoardingPerMinute_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengersBoardingPerMinute_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Passenger Width Mean Male feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPassengerWidthMeanMalePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_passengerWidthMeanMale_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengerWidthMeanMale_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_MALE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Passenger Width Deviation Male feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPassengerWidthDeviationMalePropertyDescriptor(
-			Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_passengerWidthDeviationMale_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengerWidthDeviationMale_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_MALE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Passenger Weight Mean Male feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPassengerWeightMeanMalePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_passengerWeightMeanMale_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengerWeightMeanMale_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER_WEIGHT_MEAN_MALE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Passenger Weight Deviation Male feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPassengerWeightDeviationMalePropertyDescriptor(
-			Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_passengerWeightDeviationMale_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengerWeightDeviationMale_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_MALE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Passenger Height Mean Male feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPassengerHeightMeanMalePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_passengerHeightMeanMale_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengerHeightMeanMale_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER_HEIGHT_MEAN_MALE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Passenger Height Deviation Male feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPassengerHeightDeviationMalePropertyDescriptor(
-			Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_passengerHeightDeviationMale_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengerHeightDeviationMale_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_MALE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Passenger Depth Mean Male feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPassengerDepthMeanMalePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_passengerDepthMeanMale_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengerDepthMeanMale_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_MALE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Passenger Depth Deviation Male feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPassengerDepthDeviationMalePropertyDescriptor(
-			Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_passengerDepthDeviationMale_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengerDepthDeviationMale_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_MALE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Percentage Of Women feature. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	protected void addPercentageOfWomenPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_percentageOfWomen_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_percentageOfWomen_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PERCENTAGE_OF_WOMEN,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Passenger Small Luggage Stow Time Mean feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPassengerSmallLuggageStowTimeMeanPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_passengerSmallLuggageStowTimeMean_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengerSmallLuggageStowTimeMean_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER_SMALL_LUGGAGE_STOW_TIME_MEAN,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Passenger Small Luggage Stow Time Deviation feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPassengerSmallLuggageStowTimeDeviationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_passengerSmallLuggageStowTimeDeviation_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengerSmallLuggageStowTimeDeviation_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER_SMALL_LUGGAGE_STOW_TIME_DEVIATION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Passenger Medium Luggage Stow Time Mean feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPassengerMediumLuggageStowTimeMeanPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_passengerMediumLuggageStowTimeMean_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengerMediumLuggageStowTimeMean_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_MEAN,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Passenger Medium Luggage Stow Time Deviation feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPassengerMediumLuggageStowTimeDeviationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_passengerMediumLuggageStowTimeDeviation_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengerMediumLuggageStowTimeDeviation_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_DEVIATION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Passenger Big Luggage Stow Time Mean feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPassengerBigLuggageStowTimeMeanPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_passengerBigLuggageStowTimeMean_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengerBigLuggageStowTimeMean_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_MEAN,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Passenger Big Luggage Stow Time Deviation feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPassengerBigLuggageStowTimeDeviationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_passengerBigLuggageStowTimeDeviation_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengerBigLuggageStowTimeDeviation_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_DEVIATION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Luggage Stowing Distance From Seat Mean feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addLuggageStowingDistanceFromSeatMeanPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_luggageStowingDistanceFromSeatMean_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_luggageStowingDistanceFromSeatMean_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Luggage Stowing Distance From Seat Deviation feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addLuggageStowingDistanceFromSeatDeviationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_luggageStowingDistanceFromSeatDeviation_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_luggageStowingDistanceFromSeatDeviation_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Passenger Width Mean Female feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPassengerWidthMeanFemalePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_passengerWidthMeanFemale_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengerWidthMeanFemale_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_FEMALE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Passenger Width Deviation Female feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPassengerWidthDeviationFemalePropertyDescriptor(
-			Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_passengerWidthDeviationFemale_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengerWidthDeviationFemale_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_FEMALE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Passenger Weight Mean Female feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPassengerWeightMeanFemalePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_passengerWeightMeanFemale_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengerWeightMeanFemale_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER_WEIGHT_MEAN_FEMALE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Passenger Weight Deviation Female feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPassengerWeightDeviationFemalePropertyDescriptor(
-			Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_passengerWeightDeviationFemale_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengerWeightDeviationFemale_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_FEMALE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Passenger Height Mean Female feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPassengerHeightMeanFemalePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_passengerHeightMeanFemale_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengerHeightMeanFemale_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER_HEIGHT_MEAN_FEMALE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Passenger Height Deviation Female feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPassengerHeightDeviationFemalePropertyDescriptor(
-			Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_passengerHeightDeviationFemale_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengerHeightDeviationFemale_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_FEMALE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Passenger Depth Mean Female feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPassengerDepthMeanFemalePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_passengerDepthMeanFemale_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengerDepthMeanFemale_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_FEMALE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Passenger Depth Deviation Female feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPassengerDepthDeviationFemalePropertyDescriptor(
-			Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_passengerDepthDeviationFemale_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengerDepthDeviationFemale_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Results feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -788,94 +197,6 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 				 false,
 				 true,
 				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Percentage Of Passengers With No Luggage feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPercentageOfPassengersWithNoLuggagePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_percentageOfPassengersWithNoLuggage_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_percentageOfPassengersWithNoLuggage_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Percentage Of Passengers With Small Luggage feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPercentageOfPassengersWithSmallLuggagePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_percentageOfPassengersWithSmallLuggage_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_percentageOfPassengersWithSmallLuggage_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Percentage Of Passengers With Medium Luggage feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPercentageOfPassengersWithMediumLuggagePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_percentageOfPassengersWithMediumLuggage_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_percentageOfPassengersWithMediumLuggage_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Percentage Of Passengers With Big Luggage feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPercentageOfPassengersWithBigLuggagePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_percentageOfPassengersWithBigLuggage_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_percentageOfPassengersWithBigLuggage_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -947,6 +268,59 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	}
 
 	/**
+	 * This adds a property descriptor for the Passengers Boarding Per Minute feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPassengersBoardingPerMinutePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_passengersBoardingPerMinute_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengersBoardingPerMinute_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(CabinPackage.Literals.SIMULATION_PROPERTIES__LUGGAGE);
+			childrenFeatures.add(CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
+	}
+
+	/**
 	 * This returns SimulationProperties.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -986,40 +360,15 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 			case CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS:
 			case CabinPackage.SIMULATION_PROPERTIES__USE_FOLDABLE_SEATS:
 			case CabinPackage.SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT:
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_MALE:
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_MALE:
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WEIGHT_MEAN_MALE:
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_MALE:
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_HEIGHT_MEAN_MALE:
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_MALE:
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_MALE:
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_MALE:
-			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_WOMEN:
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_SMALL_LUGGAGE_STOW_TIME_MEAN:
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_SMALL_LUGGAGE_STOW_TIME_DEVIATION:
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_MEAN:
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_DEVIATION:
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_MEAN:
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_DEVIATION:
-			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN:
-			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION:
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_FEMALE:
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_FEMALE:
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WEIGHT_MEAN_FEMALE:
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_FEMALE:
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_HEIGHT_MEAN_FEMALE:
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_FEMALE:
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_FEMALE:
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE:
-			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE:
-			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE:
-			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE:
-			case CabinPackage.SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE:
 			case CabinPackage.SIMULATION_PROPERTIES__SORTING:
 			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
 			case CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE:
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE:
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -1036,6 +385,16 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	protected void collectNewChildDescriptors(
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CabinPackage.Literals.SIMULATION_PROPERTIES__LUGGAGE,
+				 CabinFactory.eINSTANCE.createLuggageProperties()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER,
+				 CabinFactory.eINSTANCE.createPassengerProperties()));
 	}
 
 	/**

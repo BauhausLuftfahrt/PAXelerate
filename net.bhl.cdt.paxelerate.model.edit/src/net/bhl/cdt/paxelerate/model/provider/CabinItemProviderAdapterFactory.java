@@ -531,6 +531,29 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.paxelerate.model.LuggageProperties} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LuggagePropertiesItemProvider luggagePropertiesItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.LuggageProperties}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLuggagePropertiesAdapter() {
+		if (luggagePropertiesItemProvider == null) {
+			luggagePropertiesItemProvider = new LuggagePropertiesItemProvider(this);
+		}
+
+		return luggagePropertiesItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.paxelerate.model.SimulationResult} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -551,6 +574,29 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 		}
 
 		return simulationResultItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.paxelerate.model.PassengerProperties} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PassengerPropertiesItemProvider passengerPropertiesItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.PassengerProperties}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPassengerPropertiesAdapter() {
+		if (passengerPropertiesItemProvider == null) {
+			passengerPropertiesItemProvider = new PassengerPropertiesItemProvider(this);
+		}
+
+		return passengerPropertiesItemProvider;
 	}
 
 	/**
@@ -696,7 +742,9 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 		if (emergencyExitItemProvider != null) emergencyExitItemProvider.dispose();
 		if (standardDoorItemProvider != null) standardDoorItemProvider.dispose();
 		if (simulationPropertiesItemProvider != null) simulationPropertiesItemProvider.dispose();
+		if (luggagePropertiesItemProvider != null) luggagePropertiesItemProvider.dispose();
 		if (simulationResultItemProvider != null) simulationResultItemProvider.dispose();
+		if (passengerPropertiesItemProvider != null) passengerPropertiesItemProvider.dispose();
 	}
 
 }

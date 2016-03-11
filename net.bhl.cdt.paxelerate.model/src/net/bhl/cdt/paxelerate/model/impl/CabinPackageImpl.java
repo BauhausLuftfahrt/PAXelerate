@@ -181,7 +181,21 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass luggagePropertiesEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass simulationResultEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass passengerPropertiesEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1295,278 +1309,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_PassengersBoardingPerMinute() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PassengerWidthMeanMale() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PassengerWidthDeviationMale() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PassengerWeightMeanMale() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PassengerWeightDeviationMale() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PassengerHeightMeanMale() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(10);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PassengerHeightDeviationMale() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(11);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PassengerDepthMeanMale() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(12);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PassengerDepthDeviationMale() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(13);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PercentageOfWomen() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(14);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PassengerSmallLuggageStowTimeMean() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(15);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PassengerSmallLuggageStowTimeDeviation() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(16);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PassengerMediumLuggageStowTimeMean() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(17);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PassengerMediumLuggageStowTimeDeviation() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(18);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PassengerBigLuggageStowTimeMean() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(19);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PassengerBigLuggageStowTimeDeviation() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(20);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_LuggageStowingDistanceFromSeatMean() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(21);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_LuggageStowingDistanceFromSeatDeviation() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(22);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PassengerWidthMeanFemale() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(23);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PassengerWidthDeviationFemale() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(24);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PassengerWeightMeanFemale() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(25);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PassengerWeightDeviationFemale() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(26);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PassengerHeightMeanFemale() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(27);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PassengerHeightDeviationFemale() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(28);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PassengerDepthMeanFemale() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(29);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PassengerDepthDeviationFemale() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(30);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getSimulationProperties_Results() {
-        return (EReference)getSimulationProperties().getEStructuralFeatures().get(31);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PercentageOfPassengersWithNoLuggage() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(32);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PercentageOfPassengersWithSmallLuggage() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(33);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PercentageOfPassengersWithMediumLuggage() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(34);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_PercentageOfPassengersWithBigLuggage() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(35);
+        return (EReference)getSimulationProperties().getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1575,7 +1319,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getSimulationProperties_Sorting() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(36);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -1584,7 +1328,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getSimulationProperties_SimulationSpeedFactor() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(37);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -1593,7 +1337,154 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getSimulationProperties_DeveloperMode() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(38);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSimulationProperties_Luggage() {
+        return (EReference)getSimulationProperties().getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSimulationProperties_Passenger() {
+        return (EReference)getSimulationProperties().getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PassengersBoardingPerMinute() {
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLuggageProperties() {
+		if (luggagePropertiesEClass == null) {
+			luggagePropertiesEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(25);
+		}
+		return luggagePropertiesEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLuggageProperties_LuggageStowingDistanceFromSeatMean() {
+        return (EAttribute)getLuggageProperties().getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLuggageProperties_LuggageStowingDistanceFromSeatDeviation() {
+        return (EAttribute)getLuggageProperties().getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLuggageProperties_PercentageOfPassengersWithNoLuggage() {
+        return (EAttribute)getLuggageProperties().getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLuggageProperties_PercentageOfPassengersWithSmallLuggage() {
+        return (EAttribute)getLuggageProperties().getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLuggageProperties_PercentageOfPassengersWithMediumLuggage() {
+        return (EAttribute)getLuggageProperties().getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLuggageProperties_PercentageOfPassengersWithBigLuggage() {
+        return (EAttribute)getLuggageProperties().getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLuggageProperties_PassengerSmallLuggageStowTimeMean() {
+        return (EAttribute)getLuggageProperties().getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLuggageProperties_PassengerSmallLuggageStowTimeDeviation() {
+        return (EAttribute)getLuggageProperties().getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLuggageProperties_PassengerMediumLuggageStowTimeMean() {
+        return (EAttribute)getLuggageProperties().getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLuggageProperties_PassengerMediumLuggageStowTimeDeviation() {
+        return (EAttribute)getLuggageProperties().getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLuggageProperties_PassengerBigLuggageStowTimeMean() {
+        return (EAttribute)getLuggageProperties().getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLuggageProperties_PassengerBigLuggageStowTimeDeviation() {
+        return (EAttribute)getLuggageProperties().getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -1603,7 +1494,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EClass getSimulationResult() {
 		if (simulationResultEClass == null) {
-			simulationResultEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(25);
+			simulationResultEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(26);
 		}
 		return simulationResultEClass;
 	}
@@ -1660,6 +1551,171 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EAttribute getSimulationResult_BoardingTimeString() {
         return (EAttribute)getSimulationResult().getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPassengerProperties() {
+		if (passengerPropertiesEClass == null) {
+			passengerPropertiesEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(29);
+		}
+		return passengerPropertiesEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassengerProperties_PassengerWidthMeanMale() {
+        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassengerProperties_PassengerWidthDeviationMale() {
+        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassengerProperties_PassengerWeightMeanMale() {
+        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassengerProperties_PassengerWeightDeviationMale() {
+        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassengerProperties_PassengerHeightMeanMale() {
+        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassengerProperties_PassengerHeightDeviationMale() {
+        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassengerProperties_PassengerDepthMeanMale() {
+        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassengerProperties_PassengerDepthDeviationMale() {
+        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassengerProperties_PercentageOfWomen() {
+        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassengerProperties_PassengerWidthMeanFemale() {
+        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassengerProperties_PassengerWidthDeviationFemale() {
+        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassengerProperties_PassengerWeightMeanFemale() {
+        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassengerProperties_PassengerWeightDeviationFemale() {
+        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassengerProperties_PassengerHeightMeanFemale() {
+        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassengerProperties_PassengerHeightDeviationFemale() {
+        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassengerProperties_PassengerDepthMeanFemale() {
+        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassengerProperties_PassengerDepthDeviationFemale() {
+        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(16);
 	}
 
 	/**
@@ -1780,7 +1836,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EEnum getLuggageSize() {
 		if (luggageSizeEEnum == null) {
-			luggageSizeEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(26);
+			luggageSizeEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(27);
 		}
 		return luggageSizeEEnum;
 	}
@@ -1792,7 +1848,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EEnum getSortingStyle() {
 		if (sortingStyleEEnum == null) {
-			sortingStyleEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(27);
+			sortingStyleEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(28);
 		}
 		return sortingStyleEEnum;
 	}

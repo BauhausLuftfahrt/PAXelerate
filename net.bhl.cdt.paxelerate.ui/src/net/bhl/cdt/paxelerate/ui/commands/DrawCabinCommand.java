@@ -11,7 +11,9 @@ import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
+import net.bhl.cdt.paxelerate.model.LuggageProperties;
 import net.bhl.cdt.paxelerate.model.Passenger;
+import net.bhl.cdt.paxelerate.model.PassengerProperties;
 import net.bhl.cdt.paxelerate.model.PhysicalObject;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
@@ -60,18 +62,34 @@ public class DrawCabinCommand extends CDTCommand {
 		 *            the arguments
 		 */
 		SimulationProperties settings = cabin.getSimulationSettings();
-
+		
 		if (settings == null) {
 			settings = CabinFactory.eINSTANCE.createSimulationProperties();
 			cabin.setSimulationSettings(settings);
 		}
-		double[] luggagemodel = { settings.getPercentageOfPassengersWithNoLuggage(),
-				settings.getPercentageOfPassengersWithSmallLuggage(),
-				settings.getPercentageOfPassengersWithMediumLuggage(),
-				settings.getPercentageOfPassengersWithBigLuggage() };
+
+		LuggageProperties luggageSettings = cabin.getSimulationSettings().getLuggage();
+
+		if (luggageSettings == null) {
+			luggageSettings = CabinFactory.eINSTANCE.createLuggageProperties();
+			cabin.getSimulationSettings().setLuggage(luggageSettings);
+		}
+		
+		PassengerProperties paxSettings = cabin.getSimulationSettings().getPassenger();
+
+		if (paxSettings == null) {
+			paxSettings = CabinFactory.eINSTANCE.createPassengerProperties();
+			cabin.getSimulationSettings().setPassenger(paxSettings);
+		}
+		
+		
+		double[] luggagemodel = { luggageSettings.getPercentageOfPassengersWithNoLuggage(),
+				luggageSettings.getPercentageOfPassengersWithSmallLuggage(),
+				luggageSettings.getPercentageOfPassengersWithMediumLuggage(),
+				luggageSettings.getPercentageOfPassengersWithBigLuggage() };
 
 		if ((luggagemodel[0] + luggagemodel[1] + luggagemodel[2] + luggagemodel[3]) == 0) {
-			cabin.getSimulationSettings().setPercentageOfPassengersWithNoLuggage(100);
+			cabin.getSimulationSettings().getLuggage().setPercentageOfPassengersWithNoLuggage(100);
 		}
 
 		cabinViewPart = ViewPartHelper.getCabinView();

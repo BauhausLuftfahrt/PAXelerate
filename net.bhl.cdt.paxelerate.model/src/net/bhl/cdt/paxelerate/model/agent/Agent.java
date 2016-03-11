@@ -11,6 +11,7 @@ import java.util.ConcurrentModificationException;
 
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
+import net.bhl.cdt.paxelerate.model.LuggageProperties;
 import net.bhl.cdt.paxelerate.model.LuggageSize;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.PassengerMood;
@@ -71,7 +72,7 @@ public class Agent extends Subject implements Runnable {
 
 	private Passenger thePassengerILetInTheRow;
 
-	private SimulationProperties settings;
+	private LuggageProperties simLuggageSettings;
 
 	public Passenger getThePassengerILetInTheRow() {
 		return thePassengerILetInTheRow;
@@ -87,6 +88,7 @@ public class Agent extends Subject implements Runnable {
 
 	private int[][] defaultPassengerArea;
 	private int[][] adaptedPassengerArea;
+
 
 	/**
 	 * This method constructs an agent.
@@ -112,7 +114,7 @@ public class Agent extends Subject implements Runnable {
 		this.scale = SimulationHandler.getCabin().getScale();
 		this.finalCostmap = costmap;
 		this.thePassengerILetInTheRow = thePassengerILetInTheRow;
-		this.settings = SimulationHandler.getCabin().getSimulationSettings();
+		this.simLuggageSettings = SimulationHandler.getCabin().getSimulationSettings().getLuggage();
 
 		/* generate a mood for the passenger depending on his presets */
 		if (passenger.getPassengerMood() == PassengerMood.AGRESSIVE) {
@@ -205,9 +207,9 @@ public class Agent extends Subject implements Runnable {
 	 */
 	private int getLuggageStowDistance() {
 		distance = (GaussianRandom.gaussianRandom(
-				settings.getLuggageStowingDistanceFromSeatMean(),
+				simLuggageSettings.getLuggageStowingDistanceFromSeatMean(),
 				GaussOptions.PERCENT_95,
-				settings.getLuggageStowingDistanceFromSeatDeviation()) / scale);
+				simLuggageSettings.getLuggageStowingDistanceFromSeatDeviation()) / scale);
 		return (int) distance;
 	}
 

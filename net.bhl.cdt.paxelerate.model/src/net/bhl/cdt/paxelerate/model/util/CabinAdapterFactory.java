@@ -8,6 +8,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
 import net.bhl.cdt.model.NamedElement;
+import net.bhl.cdt.paxelerate.model.*;
 import net.bhl.cdt.paxelerate.model.BusinessClass;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinPackage;
@@ -173,8 +174,16 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 				return createSimulationPropertiesAdapter();
 			}
 			@Override
+			public Adapter caseLuggageProperties(LuggageProperties object) {
+				return createLuggagePropertiesAdapter();
+			}
+			@Override
 			public Adapter caseSimulationResult(SimulationResult object) {
 				return createSimulationResultAdapter();
+			}
+			@Override
+			public Adapter casePassengerProperties(PassengerProperties object) {
+				return createPassengerPropertiesAdapter();
 			}
 			@Override
 			public Adapter caseNamedElement(NamedElement object) {
@@ -481,6 +490,20 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.paxelerate.model.LuggageProperties <em>Luggage Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see net.bhl.cdt.paxelerate.model.LuggageProperties
+	 * @generated
+	 */
+	public Adapter createLuggagePropertiesAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.paxelerate.model.SimulationResult <em>Simulation Result</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -491,6 +514,20 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSimulationResultAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.paxelerate.model.PassengerProperties <em>Passenger Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties
+	 * @generated
+	 */
+	public Adapter createPassengerPropertiesAdapter() {
 		return null;
 	}
 

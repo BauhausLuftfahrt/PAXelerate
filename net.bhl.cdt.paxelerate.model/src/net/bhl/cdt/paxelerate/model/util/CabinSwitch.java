@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 
 import net.bhl.cdt.model.NamedElement;
+import net.bhl.cdt.paxelerate.model.*;
 import net.bhl.cdt.paxelerate.model.BusinessClass;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinPackage;
@@ -228,9 +229,21 @@ public class CabinSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CabinPackage.LUGGAGE_PROPERTIES: {
+				LuggageProperties luggageProperties = (LuggageProperties)theEObject;
+				T result = caseLuggageProperties(luggageProperties);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case CabinPackage.SIMULATION_RESULT: {
 				SimulationResult simulationResult = (SimulationResult)theEObject;
 				T result = caseSimulationResult(simulationResult);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CabinPackage.PASSENGER_PROPERTIES: {
+				PassengerProperties passengerProperties = (PassengerProperties)theEObject;
+				T result = casePassengerProperties(passengerProperties);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -539,6 +552,21 @@ public class CabinSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Luggage Properties</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Luggage Properties</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLuggageProperties(LuggageProperties object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Simulation Result</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -550,6 +578,21 @@ public class CabinSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseSimulationResult(SimulationResult object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Passenger Properties</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Passenger Properties</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePassengerProperties(PassengerProperties object) {
 		return null;
 	}
 

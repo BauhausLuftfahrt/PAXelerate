@@ -2,6 +2,7 @@
  */
 package net.bhl.cdt.paxelerate.model.impl;
 
+import net.bhl.cdt.paxelerate.model.*;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -105,7 +106,9 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 			case CabinPackage.EMERGENCY_EXIT: return createEmergencyExit();
 			case CabinPackage.STANDARD_DOOR: return createStandardDoor();
 			case CabinPackage.SIMULATION_PROPERTIES: return createSimulationProperties();
+			case CabinPackage.LUGGAGE_PROPERTIES: return createLuggageProperties();
 			case CabinPackage.SIMULATION_RESULT: return createSimulationResult();
+			case CabinPackage.PASSENGER_PROPERTIES: return createPassengerProperties();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -366,9 +369,29 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public LuggageProperties createLuggageProperties() {
+		LuggagePropertiesImpl luggageProperties = new LuggagePropertiesImpl();
+		return luggageProperties;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public SimulationResult createSimulationResult() {
 		SimulationResultImpl simulationResult = new SimulationResultImpl();
 		return simulationResult;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PassengerProperties createPassengerProperties() {
+		PassengerPropertiesImpl passengerProperties = new PassengerPropertiesImpl();
+		return passengerProperties;
 	}
 
 	/**
