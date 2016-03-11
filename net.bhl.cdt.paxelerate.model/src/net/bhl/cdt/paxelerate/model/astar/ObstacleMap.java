@@ -221,36 +221,36 @@ public class ObstacleMap {
 			entryMax = (door.getXPosition() + door.getWidth())
 					/ cabin.getScale() - 2;
 
-			for (int i = 0; i < dimensions.getX(); i++) {
-				for (int j = 0; j < dimensions.getY(); j++) {
-					if (obstacleMap[i][j] != MAX_VALUE) {
+			for (int i = 0; i < dimensions.getY(); i++) {
+				for (int j = 0; j < dimensions.getX(); j++) {
+					if (obstacleMap[j][i] != MAX_VALUE) {
 						if (j > entryMin && j < entryMax) {
-							obstacleMap[i][j] = HOLE_VALUE;
+							obstacleMap[j][i] = HOLE_VALUE;
 						}
 
 						if (!cabin.getSimulationSettings().isBringYourOwnSeat()
 								&& !cabin.getSimulationSettings()
 										.isUseFoldableSeats()) {
 							if (i < 19 && i > 16) {
-								obstacleMap[i][j] = HOLE_VALUE;
+								obstacleMap[j][i] = HOLE_VALUE;
 							}
 						} else if (cabin.getSimulationSettings()
 								.isUseFoldableSeats()
 								&& !cabin.getSimulationSettings()
 										.isBringYourOwnSeat()) {
 							if (i < 21 && i > 16) {
-								obstacleMap[i][j] = HOLE_VALUE;
+								obstacleMap[j][i] = HOLE_VALUE;
 							}
 							if (j > 20) {
 								if (i == 19) {
-									obstacleMap[i][j] = 900;
+									obstacleMap[j][i] = 900;
 								}
 							}
 						} else {
 							if (j > 20) {
 								if (i == 5 || i == 10 || i == 15 || i == 31
 										|| i == 26 || i == 21) {
-									obstacleMap[i][j] = 900;
+									obstacleMap[j][i] = 900;
 								}
 							}
 						}
