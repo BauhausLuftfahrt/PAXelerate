@@ -22,7 +22,7 @@
       <view
             allowMultiple="false"
             class="net.bhl.cdt.paxelerate.ui.views.InfoViewPart"
-            icon="images/icons/simulate.png"
+            icon="images/icons/info.png"
             id="net.bhl.cdt.paxelerate.ui.views.infoview"
             name="Info View"
             restorable="true">
@@ -141,6 +141,7 @@
          </command>
          <command
                commandId="net.bhl.cdt.paxelerate.ui.moveObject"
+               icon="images/icons/reposition.png"
                label="Reposition Object ..."
                style="push">
             <visibleWhen
@@ -159,6 +160,7 @@
          </command>
          <command
                commandId="net.bhl.cdt.paxelerate.ui.cloneObject"
+               icon="images/icons/clone.png"
                label="Clone Object ... "
                style="push">
             <visibleWhen
@@ -172,6 +174,7 @@
          </command>
          <command
                commandId="net.bhl.cdt.paxelerate.ui.sortPassengers"
+               icon="ic_sort_black_18dp.png"
                label="Sort Passengers ..."
                style="push">
             <visibleWhen
