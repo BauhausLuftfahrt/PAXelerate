@@ -80,15 +80,15 @@ public class Input extends TitleAreaDialog {
 			break;
 		case GET_VECTOR:
 			titleString = "Vector Input Required!";
-			descriptionText = "Y dimension:";
-			descriptionText2 = "X dimension:";
+			descriptionText = "X dimension:";
+			descriptionText2 = "Y dimension:";
 			break;
 		case GET_TWO_VECTORS:
 			titleString = "Vector Input Required!";
-			descriptionText = "Y position:";
-			descriptionText2 = "X position:";
-			descriptionText3 = "height:";
-			descriptionText4 = "width:";
+			descriptionText = "X position:";
+			descriptionText2 = "Y position:";
+			descriptionText3 = "X dimension:";
+			descriptionText4 = "Y dimension:";
 			break;
 		case GET_STRING:
 			titleString = "Text Input Required!";

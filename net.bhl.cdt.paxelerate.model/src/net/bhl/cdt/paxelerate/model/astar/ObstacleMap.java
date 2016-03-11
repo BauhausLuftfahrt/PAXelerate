@@ -347,7 +347,7 @@ public class ObstacleMap {
 	// }
 	// printToFile.println();
 	// }
-	// } catch (FileNotFoundException e) {
+	// } catch (FileNotFoundException e) {<y
 	// Log.add(this, "Could not save obstacle map to file.");
 	// } finally {
 	// printToFile.close();

@@ -8,8 +8,6 @@ package net.bhl.cdt.paxelerate.ui.commands;
 import java.util.ArrayList;
 
 import org.eclipse.jface.dialogs.IMessageProvider;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.PlatformUI;
 
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.util.ModelHelper;
@@ -19,11 +17,9 @@ import net.bhl.cdt.paxelerate.model.Galley;
 import net.bhl.cdt.paxelerate.model.Lavatory;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
-import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.util.input.Input;
 import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 import net.bhl.cdt.paxelerate.util.math.Vector;
-import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * This class refreshed the cabin view without modifying anything. It checks the
@@ -36,7 +32,6 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 public class MoveObjectCommand extends CDTCommand {
 
 	private Cabin cabin;
-	private CabinViewPart cabinViewPart;
 	private Vector movementVector, scaleVector;
 	private ArrayList<Row> rowlist = new ArrayList<Row>();
 	private ArrayList<Seat> seatlist = new ArrayList<Seat>();
@@ -94,13 +89,17 @@ public class MoveObjectCommand extends CDTCommand {
 		if (scaleVector.getX() != 0 && scaleVector.getY() != 0) {
 			scalingDesired = true;
 		}
+
+		int xMovement = movementVector.getX();
+		int yMovement = movementVector.getY();
+
 		if (!rowlist.isEmpty()) {
 			for (Row row : rowlist) {
 				for (Row compareRow : ModelHelper.getChildrenByClass(cabin, Row.class)) {
 					if (row.getRowNumber() == compareRow.getRowNumber()) {
 						for (Seat seat : compareRow.getSeats()) {
-							seat.setYPosition(seat.getYPosition() + movementVector.getY());
-							seat.setXPosition(seat.getXPosition() + movementVector.getX());
+							seat.setYPosition(seat.getYPosition() + yMovement);
+							seat.setXPosition(seat.getXPosition() + xMovement);
 							if (scalingDesired) {
 								seat.setYDimension(scaleVector.getY());
 								seat.setXDimension(scaleVector.getX());
@@ -115,8 +114,8 @@ public class MoveObjectCommand extends CDTCommand {
 			for (Seat seat : seatlist) {
 				for (Seat compareSeat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
 					if (seat.getId() == compareSeat.getId()) {
-						compareSeat.setYPosition(compareSeat.getYPosition() + movementVector.getX());
-						compareSeat.setXPosition(compareSeat.getXPosition() + movementVector.getY());
+						compareSeat.setYPosition(compareSeat.getYPosition() + yMovement);
+						compareSeat.setXPosition(compareSeat.getXPosition() + xMovement);
 						if (scalingDesired) {
 							compareSeat.setYDimension(scaleVector.getX());
 							compareSeat.setXDimension(scaleVector.getY());
@@ -129,8 +128,8 @@ public class MoveObjectCommand extends CDTCommand {
 			for (Galley galley : galleylist) {
 				for (Galley compareGalley : cabin.getGalleys()) {
 					if (galley.getId() == compareGalley.getId()) {
-						galley.setYPosition(galley.getYPosition() + movementVector.getY());
-						galley.setXPosition(galley.getXPosition() + movementVector.getX());
+						galley.setYPosition(galley.getYPosition() + yMovement);
+						galley.setXPosition(galley.getXPosition() + xMovement);
 						if (scalingDesired) {
 							galley.setYDimension(scaleVector.getY());
 							galley.setXDimension(scaleVector.getX());
@@ -143,8 +142,8 @@ public class MoveObjectCommand extends CDTCommand {
 			for (Lavatory lavatory : lavatorylist) {
 				for (Lavatory compareLavatory : cabin.getLavatories()) {
 					if (lavatory.getId() == compareLavatory.getId()) {
-						compareLavatory.setYPosition(compareLavatory.getYPosition() + movementVector.getY());
-						compareLavatory.setXPosition(compareLavatory.getXPosition() + movementVector.getX());
+						compareLavatory.setYPosition(compareLavatory.getYPosition() + yMovement);
+						compareLavatory.setXPosition(compareLavatory.getXPosition() + xMovement);
 						if (scalingDesired) {
 							compareLavatory.setYDimension(scaleVector.getY());
 							compareLavatory.setXDimension(scaleVector.getX());
@@ -157,8 +156,8 @@ public class MoveObjectCommand extends CDTCommand {
 			for (Curtain curtain : curtainlist) {
 				for (Curtain compareCurtain : cabin.getCurtains()) {
 					if (curtain.getId() == compareCurtain.getId()) {
-						compareCurtain.setYPosition(compareCurtain.getYPosition() + movementVector.getY());
-						compareCurtain.setXPosition(compareCurtain.getXPosition() + movementVector.getX());
+						compareCurtain.setYPosition(compareCurtain.getYPosition() + yMovement);
+						compareCurtain.setXPosition(compareCurtain.getXPosition() + xMovement);
 						if (scalingDesired) {
 							compareCurtain.setYDimension(scaleVector.getY());
 							compareCurtain.setXDimension(scaleVector.getX());
@@ -168,14 +167,6 @@ public class MoveObjectCommand extends CDTCommand {
 			}
 		}
 
-		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-		cabinViewPart = (CabinViewPart) page.findView("net.bhl.cdt.paxelerate.model.cabinview");
-
-		try {
-			cabinViewPart.setCabin(cabin);
-			Log.add(this, "Cabin view checked and updated");
-		} catch (NullPointerException e) {
-			Log.add(this, "No cabin view is visible!");
-		}
+		new DrawCabinCommand(cabin).execute();
 	}
 }

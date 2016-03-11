@@ -46,7 +46,7 @@
       <command
             defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.GenerateCabinHandler"
             id="net.bhl.cdt.paxelerate.ui.generateCabin"
-            name="Generate Cabin">
+            name="Generate New Cabin">
       </command>
       <command
             defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.DrawCabinHandler"
@@ -68,6 +68,11 @@
             id="net.bhl.cdt.paxelerate.ui.sortPassengers"
             name="Sort Passengers">
       </command>
+      <command
+            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.CloneObjectHandler"
+            id="net.bhl.cdt.paxelerate.ui.cloneObject"
+            name="Clone Object">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -76,7 +81,7 @@
             locationURI="popup:org.eclipse.emf.ecp.ui.ModelExplorerView">
          <command
                commandId="net.bhl.cdt.paxelerate.ui.generateCabin"
-               label="1. Generate Cabin"
+               label="1. Generate New Cabin"
                style="push">
             <visibleWhen
                   checkEnabled="false">
@@ -145,6 +150,19 @@
                            value="net.bhl.cdt.paxelerate.model.Row">
                      </instanceof>
                   </or>
+               </iterate>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="net.bhl.cdt.paxelerate.ui.cloneObject"
+               label="Clone Object ... "
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate>
+                  <instanceof
+                        value="net.bhl.cdt.paxelerate.model.Row">
+                  </instanceof>
                </iterate>
             </visibleWhen>
          </command>

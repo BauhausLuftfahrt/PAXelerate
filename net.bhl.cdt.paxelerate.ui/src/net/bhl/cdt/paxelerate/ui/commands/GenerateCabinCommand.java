@@ -5,6 +5,8 @@
  ***************************************************************************************/
 package net.bhl.cdt.paxelerate.ui.commands;
 
+import org.eclipse.jface.dialogs.IMessageProvider;
+
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.paxelerate.model.BusinessClass;
 import net.bhl.cdt.paxelerate.model.Cabin;
@@ -18,6 +20,8 @@ import net.bhl.cdt.paxelerate.model.PremiumEconomyClass;
 import net.bhl.cdt.paxelerate.model.StandardDoor;
 import net.bhl.cdt.paxelerate.model.util.ConstructionLibrary;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
+import net.bhl.cdt.paxelerate.util.input.Input;
+import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
@@ -76,40 +80,49 @@ public class GenerateCabinCommand extends CDTCommand {
 
 		/*************** Get the CabinView *******************/
 		cabinViewPart = ViewPartHelper.getCabinView();
-		//cabinViewPart.unsyncViewer();
+		// cabinViewPart.unsyncViewer();
 		/*****************************************************/
 
 		/* ------------------------------------------------- */
 		/* ------- Cabin Construction starts here! --------- */
 		/* ------------------------------------------------- */
-		constructor = new ConstructionLibrary(cabin);
-		constructor.clearCabin(); // clear the predecessor cabin (if existent)
-		constructor.createDoor(EmergencyExit.class, true, 3, 935);
-		constructor.createDoor(EmergencyExit.class, true, 4, 1228);
-		constructor.createPhysicalObject(Lavatory.class, 100);
-		constructor.createDoor(MainDoor.class, true, 1, -1);
-		constructor.createPhysicalObject(Galley.class, 100);
-		constructor.createClass(FirstClass.class);
-		constructor.createClass(BusinessClass.class);
-		constructor.createClass(PremiumEconomyClass.class);
-		constructor.createClass(EconomyClass.class);
-		constructor.createPhysicalObject(Galley.class, 100);
-		constructor.createDoor(StandardDoor.class, true, 2, -1);
-		constructor.createPhysicalObject(Lavatory.class, 100);
-		cabin = constructor.getCabin(); // sync cabins
-		cabin.setUsePresetSettings(false);
-		/* ------------------------------------------------- */
-		/* ------- Cabin Construction ends here! ----------- */
-		/* ------------------------------------------------- */
 
-		Log.add(this, "Cabin generation completed");
-		try {
-			cabinViewPart.setCabin(cabin);
-			cabinViewPart.syncViewer();
-		} catch (NullPointerException e) {
-			Log.add(this, "The cabin or info view is not visible.");
+		Input input = new Input(WindowType.GET_BOOLEAN, "Warning! The existing cabin will be deleted. Continue?",
+				IMessageProvider.WARNING);
+
+		if (input.getBooleanValue()) {
+
+			constructor = new ConstructionLibrary(cabin);
+			constructor.clearCabin(); // clear the predecessor cabin (if
+										// existent)
+			constructor.createDoor(EmergencyExit.class, true, 3, 935);
+			constructor.createDoor(EmergencyExit.class, true, 4, 1228);
+			constructor.createPhysicalObject(Lavatory.class, 100);
+			constructor.createDoor(MainDoor.class, true, 1, -1);
+			constructor.createPhysicalObject(Galley.class, 100);
+			constructor.createClass(FirstClass.class);
+			constructor.createClass(BusinessClass.class);
+			constructor.createClass(PremiumEconomyClass.class);
+			constructor.createClass(EconomyClass.class);
+			constructor.createPhysicalObject(Galley.class, 100);
+			constructor.createDoor(StandardDoor.class, true, 2, -1);
+			constructor.createPhysicalObject(Lavatory.class, 100);
+			cabin = constructor.getCabin(); // sync cabins
+			cabin.setUsePresetSettings(false);
+			/* ------------------------------------------------- */
+			/* ------- Cabin Construction ends here! ----------- */
+			/* ------------------------------------------------- */
+
+			Log.add(this, "Cabin generation completed");
+			try {
+				cabinViewPart.setCabin(cabin);
+				cabinViewPart.syncViewer();
+			} catch (NullPointerException e) {
+				Log.add(this, "The cabin or info view is not visible.");
+			}
+		} else {
+			Log.add(this, "Cabin generation aborted");
 		}
-
 	}
 
 }
