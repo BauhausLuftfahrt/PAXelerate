@@ -63,7 +63,6 @@ public class CloneObjectCommand extends CDTCommand {
 				newSeat.setYDimension(seat.getYDimension());
 
 				newRow.getSeats().add(newSeat);
-
 			}
 
 			row = newRow;

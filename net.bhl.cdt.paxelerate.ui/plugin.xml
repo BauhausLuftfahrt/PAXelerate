@@ -46,7 +46,7 @@
       <command
             defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.GenerateCabinHandler"
             id="net.bhl.cdt.paxelerate.ui.generateCabin"
-            name="Generate Cabin">
+            name="Generate New Cabin">
       </command>
       <command
             defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.DrawCabinHandler"
@@ -81,7 +81,7 @@
             locationURI="popup:org.eclipse.emf.ecp.ui.ModelExplorerView">
          <command
                commandId="net.bhl.cdt.paxelerate.ui.generateCabin"
-               label="1. Generate Cabin"
+               label="1. Generate New Cabin"
                style="push">
             <visibleWhen
                   checkEnabled="false">

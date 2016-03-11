@@ -118,6 +118,7 @@ public class ConstructionLibrary {
 	 * passenger classes</b>. These are removed in a later step.
 	 */
 	public void clearCabin() {
+		cabin.getClasses().clear();
 		cabin.getDoors().clear();
 		cabin.getLavatories().clear();
 		cabin.getGalleys().clear();
@@ -161,7 +162,7 @@ public class ConstructionLibrary {
 				seats = (int) tryPreset(0, 24, 40, 24);
 				seatStructure = (String) tryPreset("2-2", "3-3", "3-4-3",
 						"3-3");
-				seatDimensions = new Vector2D(50, 60);
+				seatDimensions = new Vector2D(60, 50);
 				seatPitch = 85;
 				passengers = 1;
 			}
@@ -183,7 +184,7 @@ public class ConstructionLibrary {
 			} catch (IndexOutOfBoundsException e) {
 				seats = 8;
 				seatStructure = "2-2";
-				seatDimensions = new Vector2D(72, 80);
+				seatDimensions = new Vector2D(80, 72);
 				seatPitch = 90;
 				passengers = 1;
 			}
@@ -204,7 +205,7 @@ public class ConstructionLibrary {
 			} catch (IndexOutOfBoundsException e) {
 				seats = 2;
 				seatStructure = "1-1";
-				seatDimensions = new Vector2D(100, 120);
+				seatDimensions = new Vector2D(120, 100);
 				seatPitch = 100;
 				passengers = 1;
 			}
@@ -226,7 +227,7 @@ public class ConstructionLibrary {
 			} catch (IndexOutOfBoundsException e) {
 				seats = 72;
 				seatStructure = "3-3";
-				seatDimensions = new Vector2D(50, 60);
+				seatDimensions = new Vector2D(60, 50);
 				seatPitch = 80;
 				passengers = 1;
 			}
@@ -334,8 +335,8 @@ public class ConstructionLibrary {
 		newSeat.setXDimension(seatDimensions.getX());
 		newSeat.setYDimension(seatDimensions.getY());
 		newSeat.setLetter("" + StringHelper.toString(j));
-		newSeat.setXPosition(globalSeatPositionY);
-		newSeat.setYPosition(globalSeatPositionX);
+		newSeat.setXPosition(globalSeatPositionX);
+		newSeat.setYPosition(globalSeatPositionY);
 		newSeat.setTravelClass(passengerClass);
 		newSeat.setRow(row);
 	}
