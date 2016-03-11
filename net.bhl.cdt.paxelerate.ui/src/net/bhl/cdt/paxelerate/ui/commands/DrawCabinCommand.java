@@ -182,8 +182,8 @@ public class DrawCabinCommand extends CDTCommand {
 			seat.setTravelClass(tc);
 			seat.setRow(row);
 			seat.setName(seat.getRow().getRowNumber() + StringHelper.toString(seatInRowCount));
-			seat.setYDimension(tc.getSeatWidth());
-			seat.setXDimension(tc.getSeatLength());
+			seat.setYDimension(tc.getYDimensionOfSeats());
+			seat.setXDimension(tc.getXDimensionOfSeats());
 
 			seatCount++;
 			seatInRowCount++;

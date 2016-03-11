@@ -64,8 +64,8 @@ public class TravelClassItemProvider
 			addPassengersPropertyDescriptor(object);
 			addAvailableSeatsPropertyDescriptor(object);
 			addSeatPitchPropertyDescriptor(object);
-			addSeatLengthPropertyDescriptor(object);
-			addSeatWidthPropertyDescriptor(object);
+			addXDimensionOfSeatsPropertyDescriptor(object);
+			addYDimensionOfSeatsPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 			addRowStructurePropertyDescriptor(object);
 		}
@@ -161,19 +161,19 @@ public class TravelClassItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Seat Length feature.
+	 * This adds a property descriptor for the XDimension Of Seats feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addSeatLengthPropertyDescriptor(Object object) {
+	protected void addXDimensionOfSeatsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_TravelClass_seatLength_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_TravelClass_seatLength_feature", "_UI_TravelClass_type"),
-				 CabinPackage.Literals.TRAVEL_CLASS__SEAT_LENGTH,
+				 getString("_UI_TravelClass_xDimensionOfSeats_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TravelClass_xDimensionOfSeats_feature", "_UI_TravelClass_type"),
+				 CabinPackage.Literals.TRAVEL_CLASS__XDIMENSION_OF_SEATS,
 				 true,
 				 false,
 				 false,
@@ -183,19 +183,19 @@ public class TravelClassItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Seat Width feature.
+	 * This adds a property descriptor for the YDimension Of Seats feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addSeatWidthPropertyDescriptor(Object object) {
+	protected void addYDimensionOfSeatsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_TravelClass_seatWidth_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_TravelClass_seatWidth_feature", "_UI_TravelClass_type"),
-				 CabinPackage.Literals.TRAVEL_CLASS__SEAT_WIDTH,
+				 getString("_UI_TravelClass_yDimensionOfSeats_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TravelClass_yDimensionOfSeats_feature", "_UI_TravelClass_type"),
+				 CabinPackage.Literals.TRAVEL_CLASS__YDIMENSION_OF_SEATS,
 				 true,
 				 false,
 				 false,
@@ -320,8 +320,8 @@ public class TravelClassItemProvider
 			case CabinPackage.TRAVEL_CLASS__PASSENGERS:
 			case CabinPackage.TRAVEL_CLASS__AVAILABLE_SEATS:
 			case CabinPackage.TRAVEL_CLASS__SEAT_PITCH:
-			case CabinPackage.TRAVEL_CLASS__SEAT_LENGTH:
-			case CabinPackage.TRAVEL_CLASS__SEAT_WIDTH:
+			case CabinPackage.TRAVEL_CLASS__XDIMENSION_OF_SEATS:
+			case CabinPackage.TRAVEL_CLASS__YDIMENSION_OF_SEATS:
 			case CabinPackage.TRAVEL_CLASS__NAME:
 			case CabinPackage.TRAVEL_CLASS__ROW_STRUCTURE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

@@ -380,22 +380,22 @@ public interface CabinPackage extends EPackage {
 	int TRAVEL_CLASS__SEAT_PITCH = 4;
 
 	/**
-	 * The feature id for the '<em><b>Seat Length</b></em>' attribute.
+	 * The feature id for the '<em><b>XDimension Of Seats</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRAVEL_CLASS__SEAT_LENGTH = 5;
+	int TRAVEL_CLASS__XDIMENSION_OF_SEATS = 5;
 
 	/**
-	 * The feature id for the '<em><b>Seat Width</b></em>' attribute.
+	 * The feature id for the '<em><b>YDimension Of Seats</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRAVEL_CLASS__SEAT_WIDTH = 6;
+	int TRAVEL_CLASS__YDIMENSION_OF_SEATS = 6;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -507,22 +507,22 @@ public interface CabinPackage extends EPackage {
 	int BUSINESS_CLASS__SEAT_PITCH = TRAVEL_CLASS__SEAT_PITCH;
 
 	/**
-	 * The feature id for the '<em><b>Seat Length</b></em>' attribute.
+	 * The feature id for the '<em><b>XDimension Of Seats</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BUSINESS_CLASS__SEAT_LENGTH = TRAVEL_CLASS__SEAT_LENGTH;
+	int BUSINESS_CLASS__XDIMENSION_OF_SEATS = TRAVEL_CLASS__XDIMENSION_OF_SEATS;
 
 	/**
-	 * The feature id for the '<em><b>Seat Width</b></em>' attribute.
+	 * The feature id for the '<em><b>YDimension Of Seats</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BUSINESS_CLASS__SEAT_WIDTH = TRAVEL_CLASS__SEAT_WIDTH;
+	int BUSINESS_CLASS__YDIMENSION_OF_SEATS = TRAVEL_CLASS__YDIMENSION_OF_SEATS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -634,22 +634,22 @@ public interface CabinPackage extends EPackage {
 	int FIRST_CLASS__SEAT_PITCH = TRAVEL_CLASS__SEAT_PITCH;
 
 	/**
-	 * The feature id for the '<em><b>Seat Length</b></em>' attribute.
+	 * The feature id for the '<em><b>XDimension Of Seats</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FIRST_CLASS__SEAT_LENGTH = TRAVEL_CLASS__SEAT_LENGTH;
+	int FIRST_CLASS__XDIMENSION_OF_SEATS = TRAVEL_CLASS__XDIMENSION_OF_SEATS;
 
 	/**
-	 * The feature id for the '<em><b>Seat Width</b></em>' attribute.
+	 * The feature id for the '<em><b>YDimension Of Seats</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FIRST_CLASS__SEAT_WIDTH = TRAVEL_CLASS__SEAT_WIDTH;
+	int FIRST_CLASS__YDIMENSION_OF_SEATS = TRAVEL_CLASS__YDIMENSION_OF_SEATS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -761,22 +761,22 @@ public interface CabinPackage extends EPackage {
 	int ECONOMY_CLASS__SEAT_PITCH = TRAVEL_CLASS__SEAT_PITCH;
 
 	/**
-	 * The feature id for the '<em><b>Seat Length</b></em>' attribute.
+	 * The feature id for the '<em><b>XDimension Of Seats</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECONOMY_CLASS__SEAT_LENGTH = TRAVEL_CLASS__SEAT_LENGTH;
+	int ECONOMY_CLASS__XDIMENSION_OF_SEATS = TRAVEL_CLASS__XDIMENSION_OF_SEATS;
 
 	/**
-	 * The feature id for the '<em><b>Seat Width</b></em>' attribute.
+	 * The feature id for the '<em><b>YDimension Of Seats</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECONOMY_CLASS__SEAT_WIDTH = TRAVEL_CLASS__SEAT_WIDTH;
+	int ECONOMY_CLASS__YDIMENSION_OF_SEATS = TRAVEL_CLASS__YDIMENSION_OF_SEATS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -888,22 +888,22 @@ public interface CabinPackage extends EPackage {
 	int PREMIUM_ECONOMY_CLASS__SEAT_PITCH = TRAVEL_CLASS__SEAT_PITCH;
 
 	/**
-	 * The feature id for the '<em><b>Seat Length</b></em>' attribute.
+	 * The feature id for the '<em><b>XDimension Of Seats</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PREMIUM_ECONOMY_CLASS__SEAT_LENGTH = TRAVEL_CLASS__SEAT_LENGTH;
+	int PREMIUM_ECONOMY_CLASS__XDIMENSION_OF_SEATS = TRAVEL_CLASS__XDIMENSION_OF_SEATS;
 
 	/**
-	 * The feature id for the '<em><b>Seat Width</b></em>' attribute.
+	 * The feature id for the '<em><b>YDimension Of Seats</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PREMIUM_ECONOMY_CLASS__SEAT_WIDTH = TRAVEL_CLASS__SEAT_WIDTH;
+	int PREMIUM_ECONOMY_CLASS__YDIMENSION_OF_SEATS = TRAVEL_CLASS__YDIMENSION_OF_SEATS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3208,26 +3208,26 @@ public interface CabinPackage extends EPackage {
 	EAttribute getTravelClass_SeatPitch();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.TravelClass#getSeatLength <em>Seat Length</em>}'.
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.TravelClass#getXDimensionOfSeats <em>XDimension Of Seats</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Seat Length</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.TravelClass#getSeatLength()
+	 * @return the meta object for the attribute '<em>XDimension Of Seats</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.TravelClass#getXDimensionOfSeats()
 	 * @see #getTravelClass()
 	 * @generated
 	 */
-	EAttribute getTravelClass_SeatLength();
+	EAttribute getTravelClass_XDimensionOfSeats();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.TravelClass#getSeatWidth <em>Seat Width</em>}'.
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.TravelClass#getYDimensionOfSeats <em>YDimension Of Seats</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Seat Width</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.TravelClass#getSeatWidth()
+	 * @return the meta object for the attribute '<em>YDimension Of Seats</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.TravelClass#getYDimensionOfSeats()
 	 * @see #getTravelClass()
 	 * @generated
 	 */
-	EAttribute getTravelClass_SeatWidth();
+	EAttribute getTravelClass_YDimensionOfSeats();
 
 	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.TravelClass#getName <em>Name</em>}'.
@@ -4827,19 +4827,19 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute TRAVEL_CLASS__SEAT_PITCH = eINSTANCE.getTravelClass_SeatPitch();
 		/**
-		 * The meta object literal for the '<em><b>Seat Length</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>XDimension Of Seats</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TRAVEL_CLASS__SEAT_LENGTH = eINSTANCE.getTravelClass_SeatLength();
+		EAttribute TRAVEL_CLASS__XDIMENSION_OF_SEATS = eINSTANCE.getTravelClass_XDimensionOfSeats();
 		/**
-		 * The meta object literal for the '<em><b>Seat Width</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>YDimension Of Seats</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TRAVEL_CLASS__SEAT_WIDTH = eINSTANCE.getTravelClass_SeatWidth();
+		EAttribute TRAVEL_CLASS__YDIMENSION_OF_SEATS = eINSTANCE.getTravelClass_YDimensionOfSeats();
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->

@@ -6,7 +6,7 @@
 package net.bhl.cdt.paxelerate.util.math;
 
 /**
- * This class represents a vector consisting of 2 or 3 coordinates. 
+ * This class represents a vector consisting of 2 or 3 coordinates.
  * 
  * @author marc.engelmann
  * @version 1.0
@@ -37,24 +37,33 @@ public abstract class Vector implements Comparable<Vector> {
 		yValue = y;
 		dimensions = 2;
 	}
-	
+
 	/**
-	 * Instead of casting every Vector to (int) manually, this can be done automatically here.
-	 * @param x the double x value <b>(will become int!)</b>
-	 * @param y the double y value <b>(will become int!)</b>
+	 * Instead of casting every Vector to (int) manually, this can be done
+	 * automatically here.
+	 * 
+	 * @param x
+	 *            the double x value <b>(will become int!)</b>
+	 * @param y
+	 *            the double y value <b>(will become int!)</b>
 	 */
 	protected Vector(double x, double y) {
 		xValue = (int) x;
 		yValue = (int) y;
 		dimensions = 2;
 	}
-	
+
 	/**
-	 * Instead of casting every Vector to (int) manually, this can be done automatically here.
-	 * Additionally, the parameters are scaled automatically.
-	 * @param x the double x value <b>(will become int!)</b>
-	 * @param y the double y value <b>(will become int!)</b>
-	 * @param scaling additionally, the entries are scaled!
+	 * Instead of casting every Vector to (int) manually, this can be done
+	 * automatically here. Additionally, the parameters are scaled
+	 * automatically.
+	 * 
+	 * @param x
+	 *            the double x value <b>(will become int!)</b>
+	 * @param y
+	 *            the double y value <b>(will become int!)</b>
+	 * @param scaling
+	 *            additionally, the entries are scaled!
 	 */
 	protected Vector(double x, double y, int scaling) {
 		xValue = (int) (x / scaling);
@@ -137,20 +146,28 @@ public abstract class Vector implements Comparable<Vector> {
 	}
 
 	/**
-	 * This method compares two vectors for the cost map generation. Do not use it for equality comparison!
+	 * This method compares two vectors for the cost map generation. Do not use
+	 * it for equality comparison!
 	 * 
-	 * @param vector the other vector
+	 * @param vector
+	 *            the other vector
 	 * @return returns the better better vector
 	 */
 
 	/**
-	 * @Raoul: Die Methode compareTo() ist eine definierte Methode des interfaces "Comparable", was die Klasse Vector hier implementiert.
-	 * Wie vergleichsweise in Core.java zu sehen, wird openList (SortedNodeList.java) verwendet, um die Nodes vorzusortieren. Hier ist Collections.sort(list)
-	 * die entscheidende Funktion, die sich auf das Comparable bezieht. Hier werden Nodes sortiert, weswegen in Node.java auch eine compareTo ist.
+	 * @Raoul: Die Methode compareTo() ist eine definierte Methode des
+	 *         interfaces "Comparable", was die Klasse Vector hier
+	 *         implementiert. Wie vergleichsweise in Core.java zu sehen, wird
+	 *         openList (SortedNodeList.java) verwendet, um die Nodes
+	 *         vorzusortieren. Hier ist Collections.sort(list) die entscheidende
+	 *         Funktion, die sich auf das Comparable bezieht. Hier werden Nodes
+	 *         sortiert, weswegen in Node.java auch eine compareTo ist.
 	 * 
-	 * Bei den Vectoren ist das ganze in der CostMap nötig, um die Erzeugung eben jener zu gewährleisten.
+	 *         Bei den Vectoren ist das ganze in der CostMap nötig, um die
+	 *         Erzeugung eben jener zu gewährleisten.
 	 */
-	
+
+	@Override
 	public int compareTo(Vector vector) {
 		int better = -1;
 		int equal = 0;
@@ -175,19 +192,17 @@ public abstract class Vector implements Comparable<Vector> {
 			}
 		}
 	}
-	
+
 	/**
 	 * This method compares two vectors for equality.
 	 * 
-	 * @param the object being compared to the node
+	 * @param the
+	 *            object being compared to the node
 	 * 
 	 * @return vectors are equal or not
 	 */
 	public boolean equals(Vector vec) {
-		return vec != null 
-				&& dimensions == vec.getNumberOfDimensions() 
-				&& xValue == vec.getX() 
-				&& yValue == vec.getY()
+		return vec != null && dimensions == vec.getNumberOfDimensions() && xValue == vec.getX() && yValue == vec.getY()
 				&& zValue == vec.getZ();
 	}
 }

@@ -587,7 +587,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTravelClass_SeatLength() {
+	public EAttribute getTravelClass_XDimensionOfSeats() {
         return (EAttribute)getTravelClass().getEStructuralFeatures().get(5);
 	}
 
@@ -596,7 +596,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTravelClass_SeatWidth() {
+	public EAttribute getTravelClass_YDimensionOfSeats() {
         return (EAttribute)getTravelClass().getEStructuralFeatures().get(6);
 	}
 

@@ -82,12 +82,10 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 		/********** Get CabinView and ConsoleView ***************/
 
-		CabinViewPart cabinViewPart = ViewPartHelper
-				.getCabinView();
+		CabinViewPart cabinViewPart = ViewPartHelper.getCabinView();
 		/********************************************************/
 
-		for (int i = 0; i < cabin.getSimulationSettings()
-				.getNumberOfSimulationLoops(); i++) {
+		for (int i = 0; i < cabin.getSimulationSettings().getNumberOfSimulationLoops(); i++) {
 
 			if (cabin.getSimulationSettings().isRandomSortBetweenLoops()) {
 				SortPassengersCommand sort = new SortPassengersCommand(cabin);
@@ -128,33 +126,28 @@ public class SimulateBoardingCommand extends CDTCommand {
 			Log.add(this, "Initializing new boarding simulation ...");
 
 			if (cabin.getPassengers().isEmpty()) {
-				Input input = new Input(
-						WindowType.GET_BOOLEAN,
-						"You did not create any passengers. Random passeners are now created.",
-						IMessageProvider.ERROR);
+				Input input = new Input(WindowType.GET_BOOLEAN,
+						"You did not create any passengers. Random passeners are now created.", IMessageProvider.ERROR);
 				if (input.getBooleanValue()) {
-					GeneratePassengersCommand pax = new GeneratePassengersCommand(
-							cabin);
+					GeneratePassengersCommand pax = new GeneratePassengersCommand(cabin);
 					pax.doRun();
 					System.out.println("PAX created!");
 				}
 			}
 			if (!cabin.getPassengers().isEmpty()) {
-				ObstacleMap obstaclemap = new ObstacleMap(cabin);
 
-				SimulationHandler handler = new SimulationHandler(obstaclemap,
-						new Vector2D(cabin.getYDimension() / cabin
-								.getScale(),
-								cabin.getXDimension() / cabin
-										.getScale()), cabin);
+				Vector2D dimensions = new Vector2D(cabin.getXDimension(), cabin.getYDimension(), cabin.getScale());
+
+				ObstacleMap obstaclemap = new ObstacleMap(dimensions, cabin);
+
+				SimulationHandler handler = new SimulationHandler(obstaclemap, dimensions, cabin);
 
 				// Show WIP simulation view
 				runAreaMapWindow();
-				
+
 				while (!SimulationHandler.isSimulationDone()) {
 					for (Passenger pax : SimulationHandler.getCabin().getPassengers()) {
-						if (pax.isIsSeated()
-								&& !alreadySeatedList.contains(pax)) {
+						if (pax.isIsSeated() && !alreadySeatedList.contains(pax)) {
 							alreadySeatedList.add(pax);
 						}
 					}
@@ -163,24 +156,21 @@ public class SimulateBoardingCommand extends CDTCommand {
 					}
 				}
 				if (SimulationHandler.isSimulationDone()) {
-					
+
 					/* closes the simulation view after completion */
 					simulationFrame.dispose();
 
-					if (Exporter.generateHeatmapFile("Heat Map",
-							SimulationHandler.getMap())) {
+					if (Exporter.generateHeatmapFile("Heat Map", SimulationHandler.getMap())) {
 						Log.add(this, "Heat map saved successfully!");
 					}
 
-					if (Exporter.generateInterruptmapFile("Interrupt Map",
-							SimulationHandler.getMap())) {
+					if (Exporter.generateInterruptmapFile("Interrupt Map", SimulationHandler.getMap())) {
 						Log.add(this, "Interrupt map saved successfully!");
 					}
 
-					for (Passenger pax : ModelHelper.getChildrenByClass(
-							handler.getPassengerLocations(), Passenger.class)) {
-						if (pax.isIsSeated()
-								&& !alreadySeatedList.contains(pax)) {
+					for (Passenger pax : ModelHelper.getChildrenByClass(handler.getPassengerLocations(),
+							Passenger.class)) {
+						if (pax.isIsSeated() && !alreadySeatedList.contains(pax)) {
 							alreadySeatedList.add(pax);
 							try {
 							} catch (NullPointerException e) {
@@ -192,17 +182,15 @@ public class SimulateBoardingCommand extends CDTCommand {
 					SimulationView.getWatch().stop();
 
 					if (!obstaclemap.equals(null)) {
-						Image image = cabinViewPart
-								.submitObstacleMap(obstaclemap.getMap());
-						//obstaclemap.printObstacleMap();
+						Image image = cabinViewPart.submitObstacleMap(obstaclemap.getMap());
+						// obstaclemap.printObstacleMap();
 						cabinViewPart.printObstacleMap(image);
 
 						Log.add(this, "Heat map generation succeeded");
 					}
 
 					if (!SimulationHandler.getAgentList().isEmpty()) {
-						cabinViewPart.submitAgents(SimulationHandler
-								.getAgentList());
+						cabinViewPart.submitAgents(SimulationHandler.getAgentList());
 						Log.add(this, "Paths printed successfully");
 					}
 					Log.add(this, "Boarding simulation completed");
@@ -210,24 +198,22 @@ public class SimulateBoardingCommand extends CDTCommand {
 			} else {
 				Log.add(this, "No boarding possible! Please create passengers!");
 			}
-			// TODO do not round results, rounding should ONLY happen for displaying (not for internal calculations)
-			results.getSimulationData(
-					SimulationHandler.getCabin(),
-					i + 1,
-					DecimalHelper.round(
-							(SimulationView.getWatch().getElapsedTimeSecs() * (double) cabin
-									.getSimulationSettings()
-									.getSimulationSpeedFactor()), 2));
+			// TODO do not round results, rounding should ONLY happen for
+			// displaying (not for internal calculations)
+			results.getSimulationData(SimulationHandler.getCabin(), i + 1,
+					DecimalHelper.round((SimulationView.getWatch().getElapsedTimeSecs()
+							* (double) cabin.getSimulationSettings().getSimulationSpeedFactor()), 2));
 		}
 		results.printSimulationData();
-		
+
 		// THIS IS IMPORTANT:
 		cabinViewPart.clearCache();
 	}
-	
+
 	private void runAreaMapWindow() {
 
 		SwingUtilities.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				simulationFrame = new JFrame("Simulation Detail View");
 				SimulationView simulationView = new SimulationView();

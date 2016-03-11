@@ -22,8 +22,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.TravelClass#getPassengers <em>Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.TravelClass#getAvailableSeats <em>Available Seats</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.TravelClass#getSeatPitch <em>Seat Pitch</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.TravelClass#getSeatLength <em>Seat Length</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.TravelClass#getSeatWidth <em>Seat Width</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.TravelClass#getXDimensionOfSeats <em>XDimension Of Seats</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.TravelClass#getYDimensionOfSeats <em>YDimension Of Seats</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.TravelClass#getName <em>Name</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.TravelClass#getRowStructure <em>Row Structure</em>}</li>
  * </ul>
@@ -157,58 +157,58 @@ public interface TravelClass extends EObject {
 	void setSeatPitch(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Seat Length</b></em>' attribute.
+	 * Returns the value of the '<em><b>XDimension Of Seats</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Seat Length</em>' attribute isn't clear,
+	 * If the meaning of the '<em>XDimension Of Seats</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Seat Length</em>' attribute.
-	 * @see #setSeatLength(int)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getTravelClass_SeatLength()
+	 * @return the value of the '<em>XDimension Of Seats</em>' attribute.
+	 * @see #setXDimensionOfSeats(int)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getTravelClass_XDimensionOfSeats()
 	 * @model default="0"
 	 * @generated
 	 */
-	int getSeatLength();
+	int getXDimensionOfSeats();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.TravelClass#getSeatLength <em>Seat Length</em>}' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.TravelClass#getXDimensionOfSeats <em>XDimension Of Seats</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Seat Length</em>' attribute.
-	 * @see #getSeatLength()
+	 * @param value the new value of the '<em>XDimension Of Seats</em>' attribute.
+	 * @see #getXDimensionOfSeats()
 	 * @generated
 	 */
-	void setSeatLength(int value);
+	void setXDimensionOfSeats(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Seat Width</b></em>' attribute.
+	 * Returns the value of the '<em><b>YDimension Of Seats</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Seat Width</em>' attribute isn't clear,
+	 * If the meaning of the '<em>YDimension Of Seats</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Seat Width</em>' attribute.
-	 * @see #setSeatWidth(int)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getTravelClass_SeatWidth()
+	 * @return the value of the '<em>YDimension Of Seats</em>' attribute.
+	 * @see #setYDimensionOfSeats(int)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getTravelClass_YDimensionOfSeats()
 	 * @model default="0"
 	 * @generated
 	 */
-	int getSeatWidth();
+	int getYDimensionOfSeats();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.TravelClass#getSeatWidth <em>Seat Width</em>}' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.TravelClass#getYDimensionOfSeats <em>YDimension Of Seats</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Seat Width</em>' attribute.
-	 * @see #getSeatWidth()
+	 * @param value the new value of the '<em>YDimension Of Seats</em>' attribute.
+	 * @see #getYDimensionOfSeats()
 	 * @generated
 	 */
-	void setSeatWidth(int value);
+	void setYDimensionOfSeats(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.

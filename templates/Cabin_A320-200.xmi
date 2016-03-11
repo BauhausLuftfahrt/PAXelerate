@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <com.paxelerate.model:Cabin xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.paxelerate.model="http://net.bhl.cdt.paxelerate.model/" name="A320-200" xDimension="2751" yDimension="370" framesPerSecond="10" aircraftType="narrowbody" speedFactor="5">
   <simulationSettings href="emfstore://workspaces/default/projectspaces/_8UzHkBpoEeWdwdawUoFc6w/project#_K2tR0BppEeWdwdawUoFc6w"/>
-  <classes xsi:type="com.paxelerate.model:EconomyClass" sequence="1" passengers="180" availableSeats="180" seatPitch="15" seatLength="50" seatWidth="50" name="">
+  <classes xsi:type="com.paxelerate.model:EconomyClass" sequence="1" passengers="180" availableSeats="180" seatPitch="15" xDimensionOfSeats="50" yDimensionOfSeats="50" name="">
     <rows rowNumber="1">
       <seats yPosition="3" xPosition="232" yDimension="50" xDimension="50" name="1A" id="1" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.0" occupied="true" passenger="//@passengers.70"/>
       <seats yPosition="53" xPosition="232" yDimension="50" xDimension="50" name="1B" id="2" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.0" occupied="true" passenger="//@passengers.174"/>

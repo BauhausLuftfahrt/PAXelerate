@@ -37,8 +37,8 @@ import net.bhl.cdt.paxelerate.util.input.InputChecker;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.TravelClassImpl#getPassengers <em>Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.TravelClassImpl#getAvailableSeats <em>Available Seats</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.TravelClassImpl#getSeatPitch <em>Seat Pitch</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.TravelClassImpl#getSeatLength <em>Seat Length</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.TravelClassImpl#getSeatWidth <em>Seat Width</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.TravelClassImpl#getXDimensionOfSeats <em>XDimension Of Seats</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.TravelClassImpl#getYDimensionOfSeats <em>YDimension Of Seats</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.TravelClassImpl#getName <em>Name</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.TravelClassImpl#getRowStructure <em>Row Structure</em>}</li>
  * </ul>
@@ -131,40 +131,44 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 	protected int seatPitch = SEAT_PITCH_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getSeatLength() <em>Seat Length</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getSeatLength()
+	 * The default value of the '{@link #getXDimensionOfSeats() <em>XDimension Of Seats</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getXDimensionOfSeats()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SEAT_LENGTH_EDEFAULT = 0;
+	protected static final int XDIMENSION_OF_SEATS_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getSeatLength() <em>Seat Length</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getSeatLength()
+	 * The cached value of the '{@link #getXDimensionOfSeats() <em>XDimension Of Seats</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getXDimensionOfSeats()
 	 * @generated
 	 * @ordered
 	 */
-	protected int seatLength = SEAT_LENGTH_EDEFAULT;
+	protected int xDimensionOfSeats = XDIMENSION_OF_SEATS_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getSeatWidth() <em>Seat Width</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getSeatWidth()
+	 * The default value of the '{@link #getYDimensionOfSeats() <em>YDimension Of Seats</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getYDimensionOfSeats()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SEAT_WIDTH_EDEFAULT = 0;
+	protected static final int YDIMENSION_OF_SEATS_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getSeatWidth() <em>Seat Width</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getSeatWidth()
+	 * The cached value of the '{@link #getYDimensionOfSeats() <em>YDimension Of Seats</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getYDimensionOfSeats()
 	 * @generated
 	 * @ordered
 	 */
-	protected int seatWidth = SEAT_WIDTH_EDEFAULT;
+	protected int yDimensionOfSeats = YDIMENSION_OF_SEATS_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -309,41 +313,45 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getSeatLength() {
-		return seatLength;
+	public int getXDimensionOfSeats() {
+		return xDimensionOfSeats;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSeatLength(int newSeatLength) {
-		int oldSeatLength = seatLength;
-		seatLength = newSeatLength;
+	public void setXDimensionOfSeats(int newXDimensionOfSeats) {
+		int oldXDimensionOfSeats = xDimensionOfSeats;
+		xDimensionOfSeats = newXDimensionOfSeats;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.TRAVEL_CLASS__SEAT_LENGTH, oldSeatLength, seatLength));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.TRAVEL_CLASS__XDIMENSION_OF_SEATS, oldXDimensionOfSeats, xDimensionOfSeats));
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getSeatWidth() {
-		return seatWidth;
+	public int getYDimensionOfSeats() {
+		return yDimensionOfSeats;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSeatWidth(int newSeatWidth) {
-		int oldSeatWidth = seatWidth;
-		seatWidth = newSeatWidth;
+	public void setYDimensionOfSeats(int newYDimensionOfSeats) {
+		int oldYDimensionOfSeats = yDimensionOfSeats;
+		yDimensionOfSeats = newYDimensionOfSeats;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.TRAVEL_CLASS__SEAT_WIDTH, oldSeatWidth, seatWidth));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.TRAVEL_CLASS__YDIMENSION_OF_SEATS, oldYDimensionOfSeats, yDimensionOfSeats));
 	}
 
 	/**
@@ -470,10 +478,10 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 				return getAvailableSeats();
 			case CabinPackage.TRAVEL_CLASS__SEAT_PITCH:
 				return getSeatPitch();
-			case CabinPackage.TRAVEL_CLASS__SEAT_LENGTH:
-				return getSeatLength();
-			case CabinPackage.TRAVEL_CLASS__SEAT_WIDTH:
-				return getSeatWidth();
+			case CabinPackage.TRAVEL_CLASS__XDIMENSION_OF_SEATS:
+				return getXDimensionOfSeats();
+			case CabinPackage.TRAVEL_CLASS__YDIMENSION_OF_SEATS:
+				return getYDimensionOfSeats();
 			case CabinPackage.TRAVEL_CLASS__NAME:
 				return getName();
 			case CabinPackage.TRAVEL_CLASS__ROW_STRUCTURE:
@@ -506,11 +514,11 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 			case CabinPackage.TRAVEL_CLASS__SEAT_PITCH:
 				setSeatPitch((Integer)newValue);
 				return;
-			case CabinPackage.TRAVEL_CLASS__SEAT_LENGTH:
-				setSeatLength((Integer)newValue);
+			case CabinPackage.TRAVEL_CLASS__XDIMENSION_OF_SEATS:
+				setXDimensionOfSeats((Integer)newValue);
 				return;
-			case CabinPackage.TRAVEL_CLASS__SEAT_WIDTH:
-				setSeatWidth((Integer)newValue);
+			case CabinPackage.TRAVEL_CLASS__YDIMENSION_OF_SEATS:
+				setYDimensionOfSeats((Integer)newValue);
 				return;
 			case CabinPackage.TRAVEL_CLASS__NAME:
 				setName((String)newValue);
@@ -544,11 +552,11 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 			case CabinPackage.TRAVEL_CLASS__SEAT_PITCH:
 				setSeatPitch(SEAT_PITCH_EDEFAULT);
 				return;
-			case CabinPackage.TRAVEL_CLASS__SEAT_LENGTH:
-				setSeatLength(SEAT_LENGTH_EDEFAULT);
+			case CabinPackage.TRAVEL_CLASS__XDIMENSION_OF_SEATS:
+				setXDimensionOfSeats(XDIMENSION_OF_SEATS_EDEFAULT);
 				return;
-			case CabinPackage.TRAVEL_CLASS__SEAT_WIDTH:
-				setSeatWidth(SEAT_WIDTH_EDEFAULT);
+			case CabinPackage.TRAVEL_CLASS__YDIMENSION_OF_SEATS:
+				setYDimensionOfSeats(YDIMENSION_OF_SEATS_EDEFAULT);
 				return;
 			case CabinPackage.TRAVEL_CLASS__NAME:
 				setName(NAME_EDEFAULT);
@@ -577,10 +585,10 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 				return availableSeats != AVAILABLE_SEATS_EDEFAULT;
 			case CabinPackage.TRAVEL_CLASS__SEAT_PITCH:
 				return seatPitch != SEAT_PITCH_EDEFAULT;
-			case CabinPackage.TRAVEL_CLASS__SEAT_LENGTH:
-				return seatLength != SEAT_LENGTH_EDEFAULT;
-			case CabinPackage.TRAVEL_CLASS__SEAT_WIDTH:
-				return seatWidth != SEAT_WIDTH_EDEFAULT;
+			case CabinPackage.TRAVEL_CLASS__XDIMENSION_OF_SEATS:
+				return xDimensionOfSeats != XDIMENSION_OF_SEATS_EDEFAULT;
+			case CabinPackage.TRAVEL_CLASS__YDIMENSION_OF_SEATS:
+				return yDimensionOfSeats != YDIMENSION_OF_SEATS_EDEFAULT;
 			case CabinPackage.TRAVEL_CLASS__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case CabinPackage.TRAVEL_CLASS__ROW_STRUCTURE:
@@ -622,10 +630,10 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 		result.append(availableSeats);
 		result.append(", seatPitch: ");
 		result.append(seatPitch);
-		result.append(", seatLength: ");
-		result.append(seatLength);
-		result.append(", seatWidth: ");
-		result.append(seatWidth);
+		result.append(", xDimensionOfSeats: ");
+		result.append(xDimensionOfSeats);
+		result.append(", yDimensionOfSeats: ");
+		result.append(yDimensionOfSeats);
 		result.append(", name: ");
 		result.append(name);
 		result.append(", rowStructure: ");
