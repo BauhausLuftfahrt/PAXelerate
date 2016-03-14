@@ -22,10 +22,8 @@ To use PAXelerate you require to install [Eclipse](http://www.eclipse.org) and [
 Once you have started Eclipse, its time to download OpenCDT from the code repository on [Bitbucket](http://bitbucket.org/opencdt/opencdt). 
 
 **Is it not possible to connect to the repository?**
-* *Try the following:* 
+* Try the following: 
 * Go to *Window -> Preferences -> Team -> Git -> Configuration* and then to *User Settings*. Click *Add Entry*, then enter **http.sslVerify** for the Key and **false** for the value. Then try again to connect to the Git Repository.
-
-
 * At first, go to *File -> import -> Git -> Projects from Git -> Clone URI* and paste in the following link:
 ```
 https://bitbucket.org/opencdt/opencdt.git
