@@ -21,13 +21,13 @@
     </children>
     <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_ArqYAKS_EeWGjpaobu8CIA">
       <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="__U1vCqS-EeWGjpaobu8CIA" name="Control seatLength">
-        <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="__U1vC6S-EeWGjpaobu8CIA">
-          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/seatLength"/>
+        <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_XM4f8OnQEeW9YZ_BIemzRw">
+          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/xDimensionOfSeats"/>
         </domainModelReference>
       </children>
       <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="__U1vDKS-EeWGjpaobu8CIA" name="Control seatWidth">
-        <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="__U1vDaS-EeWGjpaobu8CIA">
-          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/seatWidth"/>
+        <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_YAAmAOnQEeW9YZ_BIemzRw">
+          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/yDimensionOfSeats"/>
         </domainModelReference>
       </children>
       <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="__U1vEKS-EeWGjpaobu8CIA" name="Control rowStructure">
@@ -40,6 +40,11 @@
           <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/seatPitch"/>
         </domainModelReference>
       </children>
+    </children>
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_ZuVwEOnQEeW9YZ_BIemzRw" name="Control rows">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_ZuVwEenQEeW9YZ_BIemzRw">
+        <domainModelEFeature xsi:type="ecore:EReference" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/rows"/>
+      </domainModelReference>
     </children>
   </children>
 </org.eclipse.emf.ecp.view.model:View>
