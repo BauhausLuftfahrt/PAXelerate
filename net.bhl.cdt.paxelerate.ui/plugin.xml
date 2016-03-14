@@ -19,14 +19,6 @@
             name="Passenger Properties"
             restorable="true">
       </view>
-      <view
-            allowMultiple="false"
-            class="net.bhl.cdt.paxelerate.ui.views.InfoViewPart"
-            icon="images/icons/info.png"
-            id="net.bhl.cdt.paxelerate.ui.views.infoview"
-            name="Info View"
-            restorable="true">
-      </view>
    </extension>
    <extension
          point="org.eclipse.ui.perspectives">

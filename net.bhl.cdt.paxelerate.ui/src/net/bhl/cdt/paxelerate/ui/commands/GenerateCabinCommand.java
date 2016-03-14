@@ -116,7 +116,7 @@ public class GenerateCabinCommand extends CDTCommand {
 			Log.add(this, "Cabin generation completed");
 			try {
 				cabinViewPart.setCabin(cabin);
-				cabinViewPart.syncViewer();
+				// cabinViewPart.syncViewer();
 			} catch (NullPointerException e) {
 				Log.add(this, "The cabin or info view is not visible.");
 			}
