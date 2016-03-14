@@ -14,28 +14,47 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.ui.commands.DrawCabinCommand;
+import net.bhl.cdt.paxelerate.ui.commands.ViewPartHelper;
+import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
+
+/**
+ * 
+ * @author marc.engelmann
+ *
+ */
 
 public class DrawCabinHandler extends AbstractHandler {
 
 	/**
 	 * Get selected Element.
 	 * 
-	 * @param event Selected Element
-	 * @throws ExecutionException Exception
+	 * @param event
+	 *            Selected Element
+	 * @throws ExecutionException
+	 *             Exception
 	 * @return null
 	 */
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		//Shell shell = HandlerUtil.getActiveShell(event);
+
 		ISelection sel = HandlerUtil.getActiveMenuSelection(event);
 		IStructuredSelection selection = (IStructuredSelection) sel;
 
-		Object firstElement = selection.getFirstElement();
-		//if (firstElement instanceof Cabin) {
+		Object firstElement = null;
 
+		// TODO: this does not work if the cabin has not been loaded from the
+		// model explorer into the cabin view before!
+
+		if (selection == null) {
+			CabinViewPart cabinView = ViewPartHelper.getCabinView();
+			firstElement = cabinView.getCabin();
+		} else {
+			firstElement = selection.getFirstElement();
+		}
+
+		if (firstElement instanceof Cabin) {
 			new DrawCabinCommand((Cabin) firstElement).execute();
-
-		//}
+		}
 
 		return null;
 	}
