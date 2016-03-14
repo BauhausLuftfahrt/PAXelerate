@@ -45,6 +45,7 @@ import net.bhl.cdt.paxelerate.ui.font.FontHelper;
 import net.bhl.cdt.paxelerate.ui.images.ImageHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
+import net.bhl.cdt.paxelerate.util.time.StopWatch;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
@@ -81,6 +82,10 @@ public class CabinViewPart extends ViewPart {
 
 	private int scaledX, scaledY;
 
+	private StopWatch watch = new StopWatch();
+
+	private long timestore = 0;
+
 	/**
 	 * 
 	 * This method initializes all necessary parameters and images.
@@ -99,8 +104,10 @@ public class CabinViewPart extends ViewPart {
 		firstSeat = ImageHelper.getImage(InfoViewPart.class, "/images/aircraft/interior/first_seat.png");
 		coffeeIcon = ImageHelper.getImage(InfoViewPart.class, "/images/aircraft/interior/coffee.png");
 		lavatoryIcon = ImageHelper.getImage(InfoViewPart.class, "/images/aircraft/interior/lavatory.png");
-		canvas = new Canvas(parent, SWT.RESIZE);
+		canvas = new Canvas(parent, SWT.DOUBLE_BUFFERED);
 		canvas.setBounds(0, 0, 1000, 1000);
+
+		watch.start();
 
 		doTheDraw();
 
@@ -180,6 +187,7 @@ public class CabinViewPart extends ViewPart {
 		gc.setFont(FontHelper.PARAGRAPH);
 		gc.setAntialias(SWT.ON);
 		gc.setInterpolation(SWT.HIGH);
+		gc.setTextAntialias(SWT.ON);
 		gc.drawImage(newAircraft, 0, 0);
 		gc.setBackground(ColorHelper.AIRCRAFT_FLOOR);
 		gc.fillRectangle(xZero, yZero, adapt(cabin.getYDimension()), adapt(cabin.getXDimension()));
@@ -326,6 +334,7 @@ public class CabinViewPart extends ViewPart {
 		GC gc = new GC(scaledImage);
 		gc.setAntialias(SWT.ON);
 		gc.setInterpolation(SWT.HIGH);
+
 		gc.drawImage(image, 0, 0, image.getBounds().width, image.getBounds().height, 0, 0, width, height);
 		gc.dispose();
 		return scaledImage;
@@ -386,23 +395,6 @@ public class CabinViewPart extends ViewPart {
 			 * NOTE: if there is more than one subclass of the same type, only
 			 * the dimensions of the first element are used for scaling
 			 **/
-
-			// TODO: implement this!
-
-			// TODO: write global helper function to get a list of all Economy
-			// classes etc.
-
-			// TODO: generate global enum for Business First , Economy, ...
-
-			// for (Class<? extends TravelClass> className : classes) {
-			// if (!ModelHelper.getChildrenByClass(cabin, className).isEmpty())
-			// {
-			// int dim = (int) (ModelHelper
-			// .getChildrenByClass(cabin, className).get(0)
-			// .getYDimensionOfSeats() / factor);
-			// firstSeat = resize(firstSeat, dim, dim);
-			// }
-			// }
 
 			if (!ModelHelper.getChildrenByClass(cabin, FirstClass.class).isEmpty()) {
 				int dim = (int) (ModelHelper.getChildrenByClass(cabin, FirstClass.class).get(0).getYDimensionOfSeats()
@@ -543,8 +535,6 @@ public class CabinViewPart extends ViewPart {
 	 *            the list of paths
 	 */
 	public void submitAgents(final ArrayList<Agent> agentList) {
-		parent.redraw();
-		parent.update();
 		canvas.redraw();
 
 		canvas.addPaintListener(new PaintListener() {
@@ -583,8 +573,6 @@ public class CabinViewPart extends ViewPart {
 	 *            the cabin object
 	 */
 	public void submitPassengerCoordinates(final Cabin paxCabin) {
-		parent.redraw();
-		parent.update();
 		canvas.redraw();
 		canvas.addPaintListener(new PaintListener() {
 			@Override
@@ -629,8 +617,6 @@ public class CabinViewPart extends ViewPart {
 	 *            the obstacle map image
 	 */
 	public void printObstacleMap(final Image obstacleImage) {
-		parent.redraw();
-		parent.update();
 		canvas.redraw();
 		canvas.addPaintListener(new PaintListener() {
 			@Override
@@ -646,21 +632,26 @@ public class CabinViewPart extends ViewPart {
 	 */
 	private void doTheDraw() {
 		try {
-			parent.redraw();
-			parent.update();
 			canvas.redraw();
 			canvas.addPaintListener(new PaintListener() {
 				@Override
 				public void paintControl(final PaintEvent e) {
 
 					e.gc.setAlpha(255);
+
+					e.gc.setTextAntialias(SWT.ON);
+					e.gc.setAntialias(SWT.ON);
+					e.gc.setInterpolation(SWT.HIGH);
+
 					e.gc.setFont(FontHelper.HEADING3);
 					e.gc.setBackground(ColorHelper.WHITE);
 
 					e.gc.setFont(FontHelper.PARAGRAPH);
 					e.gc.setBackground(ColorHelper.BLACK);
 
-					/* always maintain the correct aspect ratio of the image */
+					/*
+					 * always maintain the correct aspect ratio of the image
+					 */
 					float scale = canvas.getBounds().width / (float) imageX;
 					scaledX = (int) (imageX * scale);
 					scaledY = (int) (imageY * scale);
@@ -676,6 +667,7 @@ public class CabinViewPart extends ViewPart {
 					}
 
 					if (!initialBoot) {
+
 						e.gc.drawImage(resize(img, scaledX, scaledY), 0, 0);
 
 					} else {
@@ -696,6 +688,7 @@ public class CabinViewPart extends ViewPart {
 					}
 				}
 			});
+			System.out.println("redraw!");
 			disposeAll();
 		} catch (IllegalArgumentException e) {
 			System.out.println("illegal argument exception!");
