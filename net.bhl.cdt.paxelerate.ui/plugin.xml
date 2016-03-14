@@ -174,7 +174,7 @@
          </command>
          <command
                commandId="net.bhl.cdt.paxelerate.ui.sortPassengers"
-               icon="ic_sort_black_18dp.png"
+               icon="images/icons/sort.png"
                label="Sort Passengers ..."
                style="push">
             <visibleWhen
