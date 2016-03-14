@@ -1,9 +1,9 @@
 # Installation #
-To use PAXelerate you require to install [Eclipse](http://www.eclipse.org) and [OpenCDT](https://bitbucket.org/opencdt/opencdt) beforehand. PAXelerate is compatible with latest Eclipse Version Mars and we highly recommend to use it. 
+To use PAXelerate you require to install [Eclipse](http://www.eclipse.org) and [OpenCDT](https://bitbucket.org/opencdt/opencdt) beforehand. PAXelerate is compatible with latest Eclipse Version Mars.2 and we highly recommend to use it. 
 
 ## 1. Setup ##
 
-* Download the [Eclipse Mars Installer](http://www.eclipse.org/downloads/) and select Eclipse Modelling Tools 
+* Download the [Eclipse Mars.2 Installer](http://www.eclipse.org/downloads/) and select Eclipse Modelling Tools 
 
 ![eclipse-installer.png](images/eclipse-installer.png)
 

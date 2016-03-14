@@ -1,9 +1,15 @@
 # Release Guidelines
 
+A summary of all necessary website and repository updates prior to a new release.
+
+
+## General branch workflow
 * Git branching workflow
 	* Master
 	* Milestones
 	* Release candidates
+	
+## Pre-release tasks
 * Tests
 	* project generation, import, export
 	* child: export, import
@@ -16,14 +22,24 @@
 	* Eclipse
 	* ECP
 	* OpenCDT
-* Release tag
-	* Included material in zip file: wiki, changelog
-* Required updates on website and repository
-	* Blog post
-	* readme and wiki (refer to release version for each file in header)
-* Issue tracker
+	
+## Release day
+* Repository
+	* readme.md and home.md
+		* Eclipse, ECP and PAXelerate version 
+		* Year
+	* Wiki
+		* refer to release version for each file in header
+		* check compatibility with current release
+	* Issue tracker
+		* Mark milestones as released
+	* Release tag
+		* Included material in zip file: updated wiki, change log
+* Website
+	* Blog post: change log and main features
+	* links to current release 
 * Code
-	* Legal and copyright info
+	* Update legal and copyright info with current year
 
 
 
