@@ -16,7 +16,6 @@ import net.bhl.cdt.paxelerate.model.LuggageSize;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.PassengerMood;
 import net.bhl.cdt.paxelerate.model.Seat;
-import net.bhl.cdt.paxelerate.model.SimulationProperties;
 import net.bhl.cdt.paxelerate.model.astar.AStarHelper;
 import net.bhl.cdt.paxelerate.model.astar.Core;
 import net.bhl.cdt.paxelerate.model.astar.CostMap;
@@ -89,7 +88,6 @@ public class Agent extends Subject implements Runnable {
 	private int[][] defaultPassengerArea;
 	private int[][] adaptedPassengerArea;
 
-
 	/**
 	 * This method constructs an agent.
 	 * 
@@ -114,7 +112,8 @@ public class Agent extends Subject implements Runnable {
 		this.scale = SimulationHandler.getCabin().getScale();
 		this.finalCostmap = costmap;
 		this.thePassengerILetInTheRow = thePassengerILetInTheRow;
-		this.simLuggageSettings = SimulationHandler.getCabin().getSimulationSettings().getLuggage();
+		this.simLuggageSettings = SimulationHandler.getCabin()
+				.getSimulationSettings().getLuggage();
 
 		/* generate a mood for the passenger depending on his presets */
 		if (passenger.getPassengerMood() == PassengerMood.AGRESSIVE) {
@@ -137,6 +136,10 @@ public class Agent extends Subject implements Runnable {
 
 	public ArrayList<Passenger> otherPassengersInRowBlockingMe = new ArrayList<Passenger>();
 
+	/**
+	 * 
+	 * @return
+	 */
 	public Passenger getOtherPassengersInRowBlockingMe() {
 		if (!otherPassengersInRowBlockingMe.isEmpty()) {
 			return otherPassengersInRowBlockingMe.get(0);
@@ -209,7 +212,8 @@ public class Agent extends Subject implements Runnable {
 		distance = (GaussianRandom.gaussianRandom(
 				simLuggageSettings.getLuggageStowingDistanceFromSeatMean(),
 				GaussOptions.PERCENT_95,
-				simLuggageSettings.getLuggageStowingDistanceFromSeatDeviation()) / scale);
+				simLuggageSettings.getLuggageStowingDistanceFromSeatDeviation())
+				/ scale);
 		return (int) distance;
 	}
 
@@ -232,23 +236,16 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	private boolean isInXRangeEqual(int position, int range, boolean print) {
-		// if (print) {
-		// System.out.println("pos: " + position / scale + ", range: " + range
-		// + ", my:" + desiredPosition.getY());
-		// }
-		if ((int) Math
-				.abs(desiredPosition.getX() - position / scale) == range) {
+
+		if (Math.abs(desiredPosition.getX() - position / scale) == range) {
 			return true;
 		}
 		return false;
 	}
 
 	private boolean isInXRangeSmaller(int position, int range, boolean print) {
-		// if (print) {
-		// System.out.println("pos: " + position / scale + ", range: " + range
-		// + ", my:" + desiredPosition.getY());
-		// }
-		if ((int) Math.abs(desiredPosition.getX() - position / scale) < range) {
+
+		if (Math.abs(desiredPosition.getX() - position / scale) < range) {
 			return true;
 		}
 		return false;
@@ -736,8 +733,8 @@ public class Agent extends Subject implements Runnable {
 			if (!pax.isIsSeated()) {
 				if (pax.getId() != passenger.getId()) {
 					if (isInXRangeSmaller(
-							(int) (SimulationHandler.getAgentByPassenger(pax)
-									.getCurrentPosition().getX() * scale),
+							SimulationHandler.getAgentByPassenger(pax)
+									.getCurrentPosition().getX() * scale,
 							10, true)) {
 						return true;
 					}

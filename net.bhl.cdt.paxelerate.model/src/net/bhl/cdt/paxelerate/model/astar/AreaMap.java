@@ -43,8 +43,6 @@ public class AreaMap {
 		this.dimensions = dimensions;
 		this.obstacleMap = obstacleMap;
 
-		obstacleMap.print();
-
 		createMap();
 		Log.add(this, "Map Created");
 		registerEdges();

@@ -236,8 +236,8 @@ public class SimulationView extends JPanel implements MouseListener {
 			int a = 0;
 			int b = 0;
 			try {
-				a = mousePos.x / FONT_SIZE;
-				b = mousePos.y / FONT_SIZE;
+				b = mousePos.x / FONT_SIZE;
+				a = mousePos.y / FONT_SIZE;
 				prop = areamap.getNodeByCoordinate(b, a).getProperty();
 				if (areamap.getNodeByCoordinate(b, a).getProperty() == Property.AGENT) {
 					pax = areamap.getNodeByCoordinate(b, a).getPassenger();
@@ -272,8 +272,8 @@ public class SimulationView extends JPanel implements MouseListener {
 					g.setColor(Color.GRAY);
 					for (Path path : SimulationHandler.getAgentByPassenger(pax).getPathList()) {
 						for (Node node : path.getWaypoints()) {
-							g.drawString("•", (node.getPosition().getY() - pointZero) * FONT_SIZE,
-									node.getPosition().getX() * FONT_SIZE);
+							g.drawString("•", (node.getPosition().getX() - pointZero) * FONT_SIZE,
+									node.getPosition().getY() * FONT_SIZE);
 						}
 					}
 				}
