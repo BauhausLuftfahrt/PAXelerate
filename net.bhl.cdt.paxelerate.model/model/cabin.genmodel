@@ -75,6 +75,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//TravelClass/yDimensionOfSeats"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//TravelClass/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//TravelClass/rowStructure"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//TravelClass/loadFactor"/>
       <genOperations ecoreOperation="cabin.ecore#//TravelClass/tooManyPassengers">
         <genParameters ecoreParameter="cabin.ecore#//TravelClass/tooManyPassengers/chain"/>
         <genParameters ecoreParameter="cabin.ecore#//TravelClass/tooManyPassengers/context"/>

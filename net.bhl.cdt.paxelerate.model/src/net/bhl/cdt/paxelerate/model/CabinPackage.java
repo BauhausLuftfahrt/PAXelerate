@@ -416,13 +416,22 @@ public interface CabinPackage extends EPackage {
 	int TRAVEL_CLASS__ROW_STRUCTURE = 8;
 
 	/**
+	 * The feature id for the '<em><b>Load Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRAVEL_CLASS__LOAD_FACTOR = 9;
+
+	/**
 	 * The number of structural features of the '<em>Travel Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRAVEL_CLASS_FEATURE_COUNT = 9;
+	int TRAVEL_CLASS_FEATURE_COUNT = 10;
 
 	/**
 	 * The operation id for the '<em>Too Many Passengers</em>' operation.
@@ -541,6 +550,15 @@ public interface CabinPackage extends EPackage {
 	 * @ordered
 	 */
 	int BUSINESS_CLASS__ROW_STRUCTURE = TRAVEL_CLASS__ROW_STRUCTURE;
+
+	/**
+	 * The feature id for the '<em><b>Load Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUSINESS_CLASS__LOAD_FACTOR = TRAVEL_CLASS__LOAD_FACTOR;
 
 	/**
 	 * The number of structural features of the '<em>Business Class</em>' class.
@@ -670,6 +688,15 @@ public interface CabinPackage extends EPackage {
 	int FIRST_CLASS__ROW_STRUCTURE = TRAVEL_CLASS__ROW_STRUCTURE;
 
 	/**
+	 * The feature id for the '<em><b>Load Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIRST_CLASS__LOAD_FACTOR = TRAVEL_CLASS__LOAD_FACTOR;
+
+	/**
 	 * The number of structural features of the '<em>First Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -797,6 +824,15 @@ public interface CabinPackage extends EPackage {
 	int ECONOMY_CLASS__ROW_STRUCTURE = TRAVEL_CLASS__ROW_STRUCTURE;
 
 	/**
+	 * The feature id for the '<em><b>Load Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECONOMY_CLASS__LOAD_FACTOR = TRAVEL_CLASS__LOAD_FACTOR;
+
+	/**
 	 * The number of structural features of the '<em>Economy Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -922,6 +958,15 @@ public interface CabinPackage extends EPackage {
 	 * @ordered
 	 */
 	int PREMIUM_ECONOMY_CLASS__ROW_STRUCTURE = TRAVEL_CLASS__ROW_STRUCTURE;
+
+	/**
+	 * The feature id for the '<em><b>Load Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PREMIUM_ECONOMY_CLASS__LOAD_FACTOR = TRAVEL_CLASS__LOAD_FACTOR;
 
 	/**
 	 * The number of structural features of the '<em>Premium Economy Class</em>' class.
@@ -3326,6 +3371,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getTravelClass_RowStructure();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.TravelClass#getLoadFactor <em>Load Factor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Load Factor</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.TravelClass#getLoadFactor()
+	 * @see #getTravelClass()
+	 * @generated
+	 */
+	EAttribute getTravelClass_LoadFactor();
+
+	/**
 	 * Returns the meta object for the '{@link net.bhl.cdt.paxelerate.model.TravelClass#tooManyPassengers(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Too Many Passengers</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4970,6 +5026,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TRAVEL_CLASS__ROW_STRUCTURE = eINSTANCE.getTravelClass_RowStructure();
+		/**
+		 * The meta object literal for the '<em><b>Load Factor</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRAVEL_CLASS__LOAD_FACTOR = eINSTANCE.getTravelClass_LoadFactor();
 		/**
 		 * The meta object literal for the '<em><b>Too Many Passengers</b></em>' operation.
 		 * <!-- begin-user-doc -->

@@ -147,8 +147,18 @@ public class DrawCabinCommand extends CDTCommand {
 
 	private void updateTravelClassProperties() {
 		for (TravelClass tc : cabin.getClasses()) {
-			int number = ModelHelper.getChildrenByClass(tc, Seat.class).size();
-			tc.setAvailableSeats(number);
+			// set number of seats
+			int numberSeats = ModelHelper.getChildrenByClass(tc, Seat.class).size();
+			tc.setAvailableSeats(numberSeats);
+			// calculate load factor and number of passengers
+			if (tc.getPassengers() == 0 && tc.getLoadFactor() != 0){
+				int numberPax = tc.getAvailableSeats()*tc.getLoadFactor()/100;
+				tc.setPassengers(numberPax);
+			}
+			else {
+				int loadFactor = tc.getPassengers()*100/tc.getAvailableSeats();
+				tc.setLoadFactor(loadFactor);
+			}
 		}
 	}
 

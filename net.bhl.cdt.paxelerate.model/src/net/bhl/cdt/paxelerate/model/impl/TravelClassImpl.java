@@ -41,6 +41,7 @@ import net.bhl.cdt.paxelerate.util.input.InputChecker;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.TravelClassImpl#getYDimensionOfSeats <em>YDimension Of Seats</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.TravelClassImpl#getName <em>Name</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.TravelClassImpl#getRowStructure <em>Row Structure</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.TravelClassImpl#getLoadFactor <em>Load Factor</em>}</li>
  * </ul>
  *
  * @generated
@@ -207,6 +208,26 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 	 * @ordered
 	 */
 	protected String rowStructure = ROW_STRUCTURE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLoadFactor() <em>Load Factor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLoadFactor()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int LOAD_FACTOR_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getLoadFactor() <em>Load Factor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLoadFactor()
+	 * @generated
+	 * @ordered
+	 */
+	protected int loadFactor = LOAD_FACTOR_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -393,6 +414,27 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getLoadFactor() {
+		return loadFactor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLoadFactor(int newLoadFactor) {
+		int oldLoadFactor = loadFactor;
+		loadFactor = newLoadFactor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.TRAVEL_CLASS__LOAD_FACTOR, oldLoadFactor, loadFactor));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated NOT
@@ -486,6 +528,8 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 				return getName();
 			case CabinPackage.TRAVEL_CLASS__ROW_STRUCTURE:
 				return getRowStructure();
+			case CabinPackage.TRAVEL_CLASS__LOAD_FACTOR:
+				return getLoadFactor();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -526,6 +570,9 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.TRAVEL_CLASS__ROW_STRUCTURE:
 				setRowStructure((String)newValue);
 				return;
+			case CabinPackage.TRAVEL_CLASS__LOAD_FACTOR:
+				setLoadFactor((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -564,6 +611,9 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.TRAVEL_CLASS__ROW_STRUCTURE:
 				setRowStructure(ROW_STRUCTURE_EDEFAULT);
 				return;
+			case CabinPackage.TRAVEL_CLASS__LOAD_FACTOR:
+				setLoadFactor(LOAD_FACTOR_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -593,6 +643,8 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case CabinPackage.TRAVEL_CLASS__ROW_STRUCTURE:
 				return ROW_STRUCTURE_EDEFAULT == null ? rowStructure != null : !ROW_STRUCTURE_EDEFAULT.equals(rowStructure);
+			case CabinPackage.TRAVEL_CLASS__LOAD_FACTOR:
+				return loadFactor != LOAD_FACTOR_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -638,6 +690,8 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 		result.append(name);
 		result.append(", rowStructure: ");
 		result.append(rowStructure);
+		result.append(", loadFactor: ");
+		result.append(loadFactor);
 		result.append(')');
 		return result.toString();
 	}

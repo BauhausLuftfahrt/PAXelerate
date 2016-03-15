@@ -68,6 +68,7 @@ public class TravelClassItemProvider
 			addYDimensionOfSeatsPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 			addRowStructurePropertyDescriptor(object);
+			addLoadFactorPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -249,6 +250,28 @@ public class TravelClassItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Load Factor feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLoadFactorPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TravelClass_loadFactor_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TravelClass_loadFactor_feature", "_UI_TravelClass_type"),
+				 CabinPackage.Literals.TRAVEL_CLASS__LOAD_FACTOR,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -324,6 +347,7 @@ public class TravelClassItemProvider
 			case CabinPackage.TRAVEL_CLASS__YDIMENSION_OF_SEATS:
 			case CabinPackage.TRAVEL_CLASS__NAME:
 			case CabinPackage.TRAVEL_CLASS__ROW_STRUCTURE:
+			case CabinPackage.TRAVEL_CLASS__LOAD_FACTOR:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CabinPackage.TRAVEL_CLASS__ROWS:

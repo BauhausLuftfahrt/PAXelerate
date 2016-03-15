@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.TravelClass#getYDimensionOfSeats <em>YDimension Of Seats</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.TravelClass#getName <em>Name</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.TravelClass#getRowStructure <em>Row Structure</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.TravelClass#getLoadFactor <em>Load Factor</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getTravelClass()
@@ -263,6 +264,33 @@ public interface TravelClass extends EObject {
 	 * @generated
 	 */
 	void setRowStructure(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Load Factor</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Load Factor</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Load Factor</em>' attribute.
+	 * @see #setLoadFactor(int)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getTravelClass_LoadFactor()
+	 * @model default="0"
+	 * @generated
+	 */
+	int getLoadFactor();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.TravelClass#getLoadFactor <em>Load Factor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Load Factor</em>' attribute.
+	 * @see #getLoadFactor()
+	 * @generated
+	 */
+	void setLoadFactor(int value);
 
 	/**
 	 * <!-- begin-user-doc -->

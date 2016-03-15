@@ -637,6 +637,15 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getTravelClass_LoadFactor() {
+        return (EAttribute)getTravelClass().getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getTravelClass__TooManyPassengers__DiagnosticChain_Map() {
         return getTravelClass().getEOperations().get(0);
 	}

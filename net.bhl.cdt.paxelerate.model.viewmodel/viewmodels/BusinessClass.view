@@ -6,14 +6,19 @@
       <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/sequence"/>
     </domainModelReference>
   </children>
+  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_iZb7cqQVEeWgbereOogQMg" name="Control availableSeats" readonly="true">
+    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_iZb7c6QVEeWgbereOogQMg">
+      <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/availableSeats"/>
+    </domainModelReference>
+  </children>
   <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_iZb7cKQVEeWgbereOogQMg" name="Control passengers">
     <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_iZb7caQVEeWgbereOogQMg">
       <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/passengers"/>
     </domainModelReference>
   </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_iZb7cqQVEeWgbereOogQMg" name="Control availableSeats">
-    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_iZb7c6QVEeWgbereOogQMg">
-      <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/availableSeats"/>
+  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_Wip1IOqqEeWI07VLAZFAFw" name="Control loadFactor">
+    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_Wip1IeqqEeWI07VLAZFAFw">
+      <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/loadFactor"/>
     </domainModelReference>
   </children>
   <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_iZb7dKQVEeWgbereOogQMg" name="Control seatPitch">
