@@ -1,4 +1,7 @@
 # Installation #
+
+Based on PAXelerate release: Alpha 0.5 (02/15/2016)
+
 To use PAXelerate you require to install [Eclipse](http://www.eclipse.org) and [OpenCDT](https://bitbucket.org/opencdt/opencdt) beforehand. PAXelerate is compatible with latest Eclipse Version Mars.2 and we highly recommend to use it. 
 
 * **[1. Setup](#1-setup)**
@@ -76,7 +79,7 @@ An error message occurs? Perhaps not all required plugins are added to working s
 ---
 
 
-### Do you have any troubles? Create an [issue](https://github.com/BauhausLuftfahrt/PAXelerate/issues/new) and we give our best to solve it. ###
+**Do you have any troubles? Create an [issue](https://github.com/BauhausLuftfahrt/PAXelerate/issues/new) and we give our best to solve it.**
 
 
 

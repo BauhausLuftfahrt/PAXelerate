@@ -1,5 +1,7 @@
 # Developer Guide #
 
+Based on PAXelerate release: Alpha 0.5 (02/15/2016)
+
 First, get started with the [Git repository and issues handling](#git-workflow)
 
 Use the code snippets to get the implementation of a desired aspect started. 

@@ -1,5 +1,6 @@
 # Tutorial
 
+Based on PAXelerate release: Alpha 0.5 (02/15/2016)
 
 ## First encounter with PAXelerate
 
