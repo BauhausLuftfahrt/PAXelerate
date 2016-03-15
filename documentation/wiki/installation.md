@@ -1,9 +1,16 @@
 # Installation #
 To use PAXelerate you require to install [Eclipse](http://www.eclipse.org) and [OpenCDT](https://bitbucket.org/opencdt/opencdt) beforehand. PAXelerate is compatible with latest Eclipse Version Mars.2 and we highly recommend to use it. 
 
+* **[1. Setup](#1-setup)**
+* **[2. Install OpenCDT core plug-ins](#2-install-opencdt-core-plug-ins)** 
+* **[3. Install PAXelerate](#3-install-paxelerate)**
+* **[4. Launch PAXelerate](#4-launch-paxelerate)**
+
+---
+
 ## 1. Setup ##
 
-* Download the [Eclipse Mars.2 Installer](http://www.eclipse.org/downloads/) and select Eclipse Modelling Tools 
+* Download the [Eclipse Mars Installer](http://www.eclipse.org/downloads/) and select Eclipse Modelling Tools for Mars.2
 
 ![eclipse-installer.png](images/eclipse-installer.png)
 
@@ -17,15 +24,13 @@ To use PAXelerate you require to install [Eclipse](http://www.eclipse.org) and [
 ### Mac and Linux ###
 * Currently not supported
 
-## 2. Install the OpenCDT core plug-ins ##
+## 2. Install OpenCDT core plug-ins ##
 
 Once you have started Eclipse, its time to download OpenCDT from the code repository on [Bitbucket](http://bitbucket.org/opencdt/opencdt). 
 
 **Is it not possible to connect to the repository?**
-* *Try the following:* 
+* Try the following: 
 * Go to *Window -> Preferences -> Team -> Git -> Configuration* and then to *User Settings*. Click *Add Entry*, then enter **http.sslVerify** for the Key and **false** for the value. Then try again to connect to the Git Repository.
-
-
 * At first, go to *File -> import -> Git -> Projects from Git -> Clone URI* and paste in the following link:
 ```
 https://bitbucket.org/opencdt/opencdt.git
@@ -39,7 +44,7 @@ net.bhl.cdt.model.edit
 net.bhl.cdt.ui
 ```
 
-## 3. Install PAXelerate plugin ##
+## 3. Install PAXelerate ##
 * Go to *File -> import -> Git -> Projects from Git -> Clone URI* and paste in the following link:
 ```
 https://github.com/BauhausLuftfahrt/PAXelerate.git
@@ -60,15 +65,18 @@ net.bhl.cdt.paxelerate.util
 
 You can finally start PAXelerate now:
 
-* Expand *net.bhl.cdt.paxelerate.core* from the package explorer tree view
-* Right-click *paxelerate.product*
+* Expand `net.bhl.cdt.paxelerate.core` from the package explorer tree view
+* Right-click `paxelerate.product`
 * Select Run as/Eclipse Application
 
 An error message occurs? Perhaps not all required plugins are added to working set.
 * Select *Run Configurations... -> Plugins*
 * In this view, *Add Required Plug-ins* and subsequently *Validate Plug-ins*
 
-### Do you have any troubles? Create an [issue](https://github.com/BauhausLuftfahrt/PAXelerate/issues/new) and we give our best to solve your issue. ###
+---
+
+
+### Do you have any troubles? Create an [issue](https://github.com/BauhausLuftfahrt/PAXelerate/issues/new) and we give our best to solve it. ###
 
 
 
