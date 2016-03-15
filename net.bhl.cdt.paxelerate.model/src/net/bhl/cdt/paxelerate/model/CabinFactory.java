@@ -40,15 +40,6 @@ public interface CabinFactory extends EFactory {
 	Row createRow();
 
 	/**
-	 * Returns a new object of class '<em>Travel Class</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Travel Class</em>'.
-	 * @generated
-	 */
-	TravelClass createTravelClass();
-
-	/**
 	 * Returns a new object of class '<em>Business Class</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -83,15 +74,6 @@ public interface CabinFactory extends EFactory {
 	 * @generated
 	 */
 	PremiumEconomyClass createPremiumEconomyClass();
-
-	/**
-	 * Returns a new object of class '<em>Door</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Door</em>'.
-	 * @generated
-	 */
-	Door createDoor();
 
 	/**
 	 * Returns a new object of class '<em>Seat</em>'.
@@ -227,15 +209,6 @@ public interface CabinFactory extends EFactory {
 	 * @generated
 	 */
 	PassengerProperties createPassengerProperties();
-
-	/**
-	 * Returns a new object of class '<em>Physical Object</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Physical Object</em>'.
-	 * @generated
-	 */
-	PhysicalObject createPhysicalObject();
 
 	/**
 	 * Returns the package supported by this factory.

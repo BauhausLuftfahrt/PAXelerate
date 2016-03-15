@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getTravelClass()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface TravelClass extends EObject {

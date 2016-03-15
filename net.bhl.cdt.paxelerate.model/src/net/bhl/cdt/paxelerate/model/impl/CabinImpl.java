@@ -34,240 +34,200 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getXDimension
- * <em>XDimension</em>}</li>
- * <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getYDimension
- * <em>YDimension</em>}</li>
- * <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getRowNonexistent
- * <em>Row Nonexistent</em>}</li>
- * <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getAisleWidth
- * <em>Aisle Width</em>}</li>
- * <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getFramesPerSecond
- * <em>Frames Per Second</em>}</li>
- * <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getNumberOfDecks
- * <em>Number Of Decks</em>}</li>
- * <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getSimulationSettings
- * <em>Simulation Settings</em>}</li>
- * <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getClasses
- * <em>Classes</em>}</li>
- * <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getDoors
- * <em>Doors</em>}</li>
- * <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getLavatories
- * <em>Lavatories</em>}</li>
- * <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getGalleys
- * <em>Galleys</em>}</li>
- * <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getStairways
- * <em>Stairways</em>}</li>
- * <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getCurtains
- * <em>Curtains</em>}</li>
- * <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getStowages
- * <em>Stowages</em>}</li>
- * <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getPassengers
- * <em>Passengers</em>}</li>
- * <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getScale
- * <em>Scale</em>}</li>
- * <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getAircraftType
- * <em>Aircraft Type</em>}</li>
- * <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#isUsePresetSettings
- * <em>Use Preset Settings</em>}</li>
- * <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getSpeedFactor
- * <em>Speed Factor</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getXDimension <em>XDimension</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getYDimension <em>YDimension</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getRowNonexistent <em>Row Nonexistent</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getAisleWidth <em>Aisle Width</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getFramesPerSecond <em>Frames Per Second</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getNumberOfDecks <em>Number Of Decks</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getSimulationSettings <em>Simulation Settings</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getClasses <em>Classes</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getDoors <em>Doors</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getLavatories <em>Lavatories</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getGalleys <em>Galleys</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getStairways <em>Stairways</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getCurtains <em>Curtains</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getStowages <em>Stowages</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getPassengers <em>Passengers</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getScale <em>Scale</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getAircraftType <em>Aircraft Type</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#isUsePresetSettings <em>Use Preset Settings</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getSpeedFactor <em>Speed Factor</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class CabinImpl extends NamedElementImpl implements Cabin {
 	/**
-	 * The default value of the '{@link #getXDimension() <em>XDimension</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getXDimension() <em>XDimension</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getXDimension()
 	 * @generated
 	 * @ordered
 	 */
 	protected static final int XDIMENSION_EDEFAULT = 2412;
 	/**
-	 * The cached value of the '{@link #getXDimension() <em>XDimension</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getXDimension() <em>XDimension</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getXDimension()
 	 * @generated
 	 * @ordered
 	 */
 	protected int xDimension = XDIMENSION_EDEFAULT;
 	/**
-	 * The default value of the '{@link #getYDimension() <em>YDimension</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getYDimension() <em>YDimension</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getYDimension()
 	 * @generated
 	 * @ordered
 	 */
 	protected static final int YDIMENSION_EDEFAULT = 364;
 	/**
-	 * The cached value of the '{@link #getYDimension() <em>YDimension</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getYDimension() <em>YDimension</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getYDimension()
 	 * @generated
 	 * @ordered
 	 */
 	protected int yDimension = YDIMENSION_EDEFAULT;
 	/**
-	 * The default value of the '{@link #getRowNonexistent()
-	 * <em>Row Nonexistent</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getRowNonexistent() <em>Row Nonexistent</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getRowNonexistent()
 	 * @generated
 	 * @ordered
 	 */
 	protected static final int ROW_NONEXISTENT_EDEFAULT = 0;
 	/**
-	 * The cached value of the '{@link #getRowNonexistent()
-	 * <em>Row Nonexistent</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getRowNonexistent() <em>Row Nonexistent</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getRowNonexistent()
 	 * @generated
 	 * @ordered
 	 */
 	protected int rowNonexistent = ROW_NONEXISTENT_EDEFAULT;
 	/**
-	 * The default value of the '{@link #getAisleWidth() <em>Aisle Width</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getAisleWidth() <em>Aisle Width</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getAisleWidth()
 	 * @generated
 	 * @ordered
 	 */
 	protected static final int AISLE_WIDTH_EDEFAULT = 64;
 	/**
-	 * The cached value of the '{@link #getAisleWidth() <em>Aisle Width</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getAisleWidth() <em>Aisle Width</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getAisleWidth()
 	 * @generated
 	 * @ordered
 	 */
 	protected int aisleWidth = AISLE_WIDTH_EDEFAULT;
 	/**
-	 * The default value of the '{@link #getFramesPerSecond()
-	 * <em>Frames Per Second</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getFramesPerSecond() <em>Frames Per Second</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getFramesPerSecond()
 	 * @generated
 	 * @ordered
 	 */
 	protected static final int FRAMES_PER_SECOND_EDEFAULT = 5;
 	/**
-	 * The cached value of the '{@link #getFramesPerSecond()
-	 * <em>Frames Per Second</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getFramesPerSecond() <em>Frames Per Second</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getFramesPerSecond()
 	 * @generated
 	 * @ordered
 	 */
 	protected int framesPerSecond = FRAMES_PER_SECOND_EDEFAULT;
 	/**
-	 * The default value of the '{@link #getNumberOfDecks()
-	 * <em>Number Of Decks</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getNumberOfDecks() <em>Number Of Decks</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getNumberOfDecks()
 	 * @generated
 	 * @ordered
 	 */
 	protected static final int NUMBER_OF_DECKS_EDEFAULT = 1;
 	/**
-	 * The cached value of the '{@link #getNumberOfDecks()
-	 * <em>Number Of Decks</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getNumberOfDecks() <em>Number Of Decks</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getNumberOfDecks()
 	 * @generated
 	 * @ordered
 	 */
 	protected int numberOfDecks = NUMBER_OF_DECKS_EDEFAULT;
 	/**
-	 * The cached value of the '{@link #getSimulationSettings()
-	 * <em>Simulation Settings</em>}' reference. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getSimulationSettings() <em>Simulation Settings</em>}' reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getSimulationSettings()
 	 * @generated
 	 * @ordered
 	 */
 	protected SimulationProperties simulationSettings;
 	/**
-	 * The cached value of the '{@link #getClasses() <em>Classes</em>}'
-	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getClasses() <em>Classes</em>}' containment reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getClasses()
 	 * @generated
 	 * @ordered
 	 */
 	protected EList<TravelClass> classes;
 	/**
-	 * The cached value of the '{@link #getDoors() <em>Doors</em>}' containment
-	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getDoors() <em>Doors</em>}' containment reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getDoors()
 	 * @generated
 	 * @ordered
 	 */
 	protected EList<Door> doors;
 	/**
-	 * The cached value of the '{@link #getLavatories() <em>Lavatories</em>}'
-	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getLavatories() <em>Lavatories</em>}' containment reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getLavatories()
 	 * @generated
 	 * @ordered
 	 */
 	protected EList<Lavatory> lavatories;
 	/**
-	 * The cached value of the '{@link #getGalleys() <em>Galleys</em>}'
-	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getGalleys() <em>Galleys</em>}' containment reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getGalleys()
 	 * @generated
 	 * @ordered
 	 */
 	protected EList<Galley> galleys;
 	/**
-	 * The cached value of the '{@link #getStairways() <em>Stairways</em>}'
-	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getStairways() <em>Stairways</em>}' containment reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getStairways()
 	 * @generated
 	 * @ordered
 	 */
 	protected EList<Stairway> stairways;
 	/**
-	 * The cached value of the '{@link #getCurtains() <em>Curtains</em>}'
-	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getCurtains() <em>Curtains</em>}' containment reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getCurtains()
 	 * @generated
 	 * @ordered
 	 */
 	protected EList<Curtain> curtains;
 	/**
-	 * The cached value of the '{@link #getStowages() <em>Stowages</em>}'
-	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getStowages() <em>Stowages</em>}' containment reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getStowages()
 	 * @generated
 	 * @ordered
 	 */
 	protected EList<Stowage> stowages;
 	/**
-	 * The cached value of the '{@link #getPassengers() <em>Passengers</em>}'
-	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getPassengers() <em>Passengers</em>}' containment reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getPassengers()
 	 * @generated
 	 * @ordered
@@ -276,7 +236,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	/**
 	 * The default value of the '{@link #getScale() <em>Scale</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getScale()
 	 * @generated
 	 * @ordered
@@ -285,64 +244,57 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	/**
 	 * The cached value of the '{@link #getScale() <em>Scale</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getScale()
 	 * @generated
 	 * @ordered
 	 */
 	protected int scale = SCALE_EDEFAULT;
 	/**
-	 * The default value of the '{@link #getAircraftType()
-	 * <em>Aircraft Type</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getAircraftType() <em>Aircraft Type</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getAircraftType()
 	 * @generated
 	 * @ordered
 	 */
 	protected static final AircraftType AIRCRAFT_TYPE_EDEFAULT = AircraftType.REGIONAL;
 	/**
-	 * The cached value of the '{@link #getAircraftType() <em>Aircraft Type</em>
-	 * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getAircraftType() <em>Aircraft Type</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getAircraftType()
 	 * @generated
 	 * @ordered
 	 */
 	protected AircraftType aircraftType = AIRCRAFT_TYPE_EDEFAULT;
 	/**
-	 * The default value of the '{@link #isUsePresetSettings()
-	 * <em>Use Preset Settings</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #isUsePresetSettings() <em>Use Preset Settings</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #isUsePresetSettings()
 	 * @generated
 	 * @ordered
 	 */
 	protected static final boolean USE_PRESET_SETTINGS_EDEFAULT = false;
 	/**
-	 * The cached value of the '{@link #isUsePresetSettings()
-	 * <em>Use Preset Settings</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #isUsePresetSettings() <em>Use Preset Settings</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #isUsePresetSettings()
 	 * @generated
 	 * @ordered
 	 */
 	protected boolean usePresetSettings = USE_PRESET_SETTINGS_EDEFAULT;
 	/**
-	 * The default value of the '{@link #getSpeedFactor() <em>Speed Factor</em>}
-	 * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getSpeedFactor() <em>Speed Factor</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getSpeedFactor()
 	 * @generated
 	 * @ordered
 	 */
 	protected static final int SPEED_FACTOR_EDEFAULT = 0;
 	/**
-	 * The cached value of the '{@link #getSpeedFactor() <em>Speed Factor</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getSpeedFactor() <em>Speed Factor</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getSpeedFactor()
 	 * @generated
 	 * @ordered
@@ -351,7 +303,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected CabinImpl() {
@@ -360,7 +311,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -370,7 +320,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -380,7 +329,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -388,13 +336,11 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		int oldXDimension = xDimension;
 		xDimension = newXDimension;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					CabinPackage.CABIN__XDIMENSION, oldXDimension, xDimension));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__XDIMENSION, oldXDimension, xDimension));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -404,7 +350,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -412,97 +357,83 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		int oldYDimension = yDimension;
 		yDimension = newYDimension;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					CabinPackage.CABIN__YDIMENSION, oldYDimension, yDimension));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__YDIMENSION, oldYDimension, yDimension));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public EList<Door> getDoors() {
 		if (doors == null) {
-			doors = new EObjectContainmentEList<Door>(Door.class, this,
-					CabinPackage.CABIN__DOORS);
+			doors = new EObjectContainmentEList<Door>(Door.class, this, CabinPackage.CABIN__DOORS);
 		}
 		return doors;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public EList<Lavatory> getLavatories() {
 		if (lavatories == null) {
-			lavatories = new EObjectContainmentEList<Lavatory>(Lavatory.class,
-					this, CabinPackage.CABIN__LAVATORIES);
+			lavatories = new EObjectContainmentEList<Lavatory>(Lavatory.class, this, CabinPackage.CABIN__LAVATORIES);
 		}
 		return lavatories;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public EList<Galley> getGalleys() {
 		if (galleys == null) {
-			galleys = new EObjectContainmentEList<Galley>(Galley.class, this,
-					CabinPackage.CABIN__GALLEYS);
+			galleys = new EObjectContainmentEList<Galley>(Galley.class, this, CabinPackage.CABIN__GALLEYS);
 		}
 		return galleys;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public EList<Stairway> getStairways() {
 		if (stairways == null) {
-			stairways = new EObjectContainmentEList<Stairway>(Stairway.class,
-					this, CabinPackage.CABIN__STAIRWAYS);
+			stairways = new EObjectContainmentEList<Stairway>(Stairway.class, this, CabinPackage.CABIN__STAIRWAYS);
 		}
 		return stairways;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public EList<Curtain> getCurtains() {
 		if (curtains == null) {
-			curtains = new EObjectContainmentEList<Curtain>(Curtain.class, this,
-					CabinPackage.CABIN__CURTAINS);
+			curtains = new EObjectContainmentEList<Curtain>(Curtain.class, this, CabinPackage.CABIN__CURTAINS);
 		}
 		return curtains;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public EList<Stowage> getStowages() {
 		if (stowages == null) {
-			stowages = new EObjectContainmentEList<Stowage>(Stowage.class, this,
-					CabinPackage.CABIN__STOWAGES);
+			stowages = new EObjectContainmentEList<Stowage>(Stowage.class, this, CabinPackage.CABIN__STOWAGES);
 		}
 		return stowages;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -512,7 +443,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -520,13 +450,11 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		int oldScale = scale;
 		scale = newScale;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					CabinPackage.CABIN__SCALE, oldScale, scale));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SCALE, oldScale, scale));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -536,7 +464,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -544,28 +471,23 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		int oldFramesPerSecond = framesPerSecond;
 		framesPerSecond = newFramesPerSecond;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					CabinPackage.CABIN__FRAMES_PER_SECOND, oldFramesPerSecond,
-					framesPerSecond));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__FRAMES_PER_SECOND, oldFramesPerSecond, framesPerSecond));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public EList<Passenger> getPassengers() {
 		if (passengers == null) {
-			passengers = new EObjectContainmentEList<Passenger>(Passenger.class,
-					this, CabinPackage.CABIN__PASSENGERS);
+			passengers = new EObjectContainmentEList<Passenger>(Passenger.class, this, CabinPackage.CABIN__PASSENGERS);
 		}
 		return passengers;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -575,7 +497,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -583,14 +504,11 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		int oldNumberOfDecks = numberOfDecks;
 		numberOfDecks = newNumberOfDecks;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					CabinPackage.CABIN__NUMBER_OF_DECKS, oldNumberOfDecks,
-					numberOfDecks));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__NUMBER_OF_DECKS, oldNumberOfDecks, numberOfDecks));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -600,23 +518,18 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void setAircraftType(AircraftType newAircraftType) {
 		AircraftType oldAircraftType = aircraftType;
-		aircraftType = newAircraftType == null ? AIRCRAFT_TYPE_EDEFAULT
-				: newAircraftType;
+		aircraftType = newAircraftType == null ? AIRCRAFT_TYPE_EDEFAULT : newAircraftType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					CabinPackage.CABIN__AIRCRAFT_TYPE, oldAircraftType,
-					aircraftType));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__AIRCRAFT_TYPE, oldAircraftType, aircraftType));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -626,7 +539,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -634,14 +546,11 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		boolean oldUsePresetSettings = usePresetSettings;
 		usePresetSettings = newUsePresetSettings;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					CabinPackage.CABIN__USE_PRESET_SETTINGS,
-					oldUsePresetSettings, usePresetSettings));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__USE_PRESET_SETTINGS, oldUsePresetSettings, usePresetSettings));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -651,7 +560,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -659,27 +567,21 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		int oldSpeedFactor = speedFactor;
 		speedFactor = newSpeedFactor;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					CabinPackage.CABIN__SPEED_FACTOR, oldSpeedFactor,
-					speedFactor));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SPEED_FACTOR, oldSpeedFactor, speedFactor));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public SimulationProperties getSimulationSettings() {
 		if (simulationSettings != null && simulationSettings.eIsProxy()) {
-			InternalEObject oldSimulationSettings = (InternalEObject) simulationSettings;
-			simulationSettings = (SimulationProperties) eResolveProxy(
-					oldSimulationSettings);
+			InternalEObject oldSimulationSettings = (InternalEObject)simulationSettings;
+			simulationSettings = (SimulationProperties)eResolveProxy(oldSimulationSettings);
 			if (simulationSettings != oldSimulationSettings) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							CabinPackage.CABIN__SIMULATION_SETTINGS,
-							oldSimulationSettings, simulationSettings));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CabinPackage.CABIN__SIMULATION_SETTINGS, oldSimulationSettings, simulationSettings));
 			}
 		}
 		return simulationSettings;
@@ -687,7 +589,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public SimulationProperties basicGetSimulationSettings() {
@@ -696,7 +597,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -705,28 +605,23 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		SimulationProperties oldSimulationSettings = simulationSettings;
 		simulationSettings = newSimulationSettings;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					CabinPackage.CABIN__SIMULATION_SETTINGS,
-					oldSimulationSettings, simulationSettings));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SIMULATION_SETTINGS, oldSimulationSettings, simulationSettings));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public EList<TravelClass> getClasses() {
 		if (classes == null) {
-			classes = new EObjectContainmentEList<TravelClass>(
-					TravelClass.class, this, CabinPackage.CABIN__CLASSES);
+			classes = new EObjectContainmentEList<TravelClass>(TravelClass.class, this, CabinPackage.CABIN__CLASSES);
 		}
 		return classes;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -736,7 +631,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -744,14 +638,11 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		int oldRowNonexistent = rowNonexistent;
 		rowNonexistent = newRowNonexistent;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					CabinPackage.CABIN__ROW_NONEXISTENT, oldRowNonexistent,
-					rowNonexistent));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__ROW_NONEXISTENT, oldRowNonexistent, rowNonexistent));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -761,7 +652,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -769,305 +659,288 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		int oldAisleWidth = aisleWidth;
 		aisleWidth = newAisleWidth;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					CabinPackage.CABIN__AISLE_WIDTH, oldAisleWidth,
-					aisleWidth));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__AISLE_WIDTH, oldAisleWidth, aisleWidth));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case CabinPackage.CABIN__CLASSES:
-			return ((InternalEList<?>) getClasses()).basicRemove(otherEnd,
-					msgs);
-		case CabinPackage.CABIN__DOORS:
-			return ((InternalEList<?>) getDoors()).basicRemove(otherEnd, msgs);
-		case CabinPackage.CABIN__LAVATORIES:
-			return ((InternalEList<?>) getLavatories()).basicRemove(otherEnd,
-					msgs);
-		case CabinPackage.CABIN__GALLEYS:
-			return ((InternalEList<?>) getGalleys()).basicRemove(otherEnd,
-					msgs);
-		case CabinPackage.CABIN__STAIRWAYS:
-			return ((InternalEList<?>) getStairways()).basicRemove(otherEnd,
-					msgs);
-		case CabinPackage.CABIN__CURTAINS:
-			return ((InternalEList<?>) getCurtains()).basicRemove(otherEnd,
-					msgs);
-		case CabinPackage.CABIN__STOWAGES:
-			return ((InternalEList<?>) getStowages()).basicRemove(otherEnd,
-					msgs);
-		case CabinPackage.CABIN__PASSENGERS:
-			return ((InternalEList<?>) getPassengers()).basicRemove(otherEnd,
-					msgs);
+			case CabinPackage.CABIN__CLASSES:
+				return ((InternalEList<?>)getClasses()).basicRemove(otherEnd, msgs);
+			case CabinPackage.CABIN__DOORS:
+				return ((InternalEList<?>)getDoors()).basicRemove(otherEnd, msgs);
+			case CabinPackage.CABIN__LAVATORIES:
+				return ((InternalEList<?>)getLavatories()).basicRemove(otherEnd, msgs);
+			case CabinPackage.CABIN__GALLEYS:
+				return ((InternalEList<?>)getGalleys()).basicRemove(otherEnd, msgs);
+			case CabinPackage.CABIN__STAIRWAYS:
+				return ((InternalEList<?>)getStairways()).basicRemove(otherEnd, msgs);
+			case CabinPackage.CABIN__CURTAINS:
+				return ((InternalEList<?>)getCurtains()).basicRemove(otherEnd, msgs);
+			case CabinPackage.CABIN__STOWAGES:
+				return ((InternalEList<?>)getStowages()).basicRemove(otherEnd, msgs);
+			case CabinPackage.CABIN__PASSENGERS:
+				return ((InternalEList<?>)getPassengers()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case CabinPackage.CABIN__XDIMENSION:
-			return getXDimension();
-		case CabinPackage.CABIN__YDIMENSION:
-			return getYDimension();
-		case CabinPackage.CABIN__ROW_NONEXISTENT:
-			return getRowNonexistent();
-		case CabinPackage.CABIN__AISLE_WIDTH:
-			return getAisleWidth();
-		case CabinPackage.CABIN__FRAMES_PER_SECOND:
-			return getFramesPerSecond();
-		case CabinPackage.CABIN__NUMBER_OF_DECKS:
-			return getNumberOfDecks();
-		case CabinPackage.CABIN__SIMULATION_SETTINGS:
-			if (resolve)
-				return getSimulationSettings();
-			return basicGetSimulationSettings();
-		case CabinPackage.CABIN__CLASSES:
-			return getClasses();
-		case CabinPackage.CABIN__DOORS:
-			return getDoors();
-		case CabinPackage.CABIN__LAVATORIES:
-			return getLavatories();
-		case CabinPackage.CABIN__GALLEYS:
-			return getGalleys();
-		case CabinPackage.CABIN__STAIRWAYS:
-			return getStairways();
-		case CabinPackage.CABIN__CURTAINS:
-			return getCurtains();
-		case CabinPackage.CABIN__STOWAGES:
-			return getStowages();
-		case CabinPackage.CABIN__PASSENGERS:
-			return getPassengers();
-		case CabinPackage.CABIN__SCALE:
-			return getScale();
-		case CabinPackage.CABIN__AIRCRAFT_TYPE:
-			return getAircraftType();
-		case CabinPackage.CABIN__USE_PRESET_SETTINGS:
-			return isUsePresetSettings();
-		case CabinPackage.CABIN__SPEED_FACTOR:
-			return getSpeedFactor();
+			case CabinPackage.CABIN__XDIMENSION:
+				return getXDimension();
+			case CabinPackage.CABIN__YDIMENSION:
+				return getYDimension();
+			case CabinPackage.CABIN__ROW_NONEXISTENT:
+				return getRowNonexistent();
+			case CabinPackage.CABIN__AISLE_WIDTH:
+				return getAisleWidth();
+			case CabinPackage.CABIN__FRAMES_PER_SECOND:
+				return getFramesPerSecond();
+			case CabinPackage.CABIN__NUMBER_OF_DECKS:
+				return getNumberOfDecks();
+			case CabinPackage.CABIN__SIMULATION_SETTINGS:
+				if (resolve) return getSimulationSettings();
+				return basicGetSimulationSettings();
+			case CabinPackage.CABIN__CLASSES:
+				return getClasses();
+			case CabinPackage.CABIN__DOORS:
+				return getDoors();
+			case CabinPackage.CABIN__LAVATORIES:
+				return getLavatories();
+			case CabinPackage.CABIN__GALLEYS:
+				return getGalleys();
+			case CabinPackage.CABIN__STAIRWAYS:
+				return getStairways();
+			case CabinPackage.CABIN__CURTAINS:
+				return getCurtains();
+			case CabinPackage.CABIN__STOWAGES:
+				return getStowages();
+			case CabinPackage.CABIN__PASSENGERS:
+				return getPassengers();
+			case CabinPackage.CABIN__SCALE:
+				return getScale();
+			case CabinPackage.CABIN__AIRCRAFT_TYPE:
+				return getAircraftType();
+			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
+				return isUsePresetSettings();
+			case CabinPackage.CABIN__SPEED_FACTOR:
+				return getSpeedFactor();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case CabinPackage.CABIN__XDIMENSION:
-			setXDimension((Integer) newValue);
-			return;
-		case CabinPackage.CABIN__YDIMENSION:
-			setYDimension((Integer) newValue);
-			return;
-		case CabinPackage.CABIN__ROW_NONEXISTENT:
-			setRowNonexistent((Integer) newValue);
-			return;
-		case CabinPackage.CABIN__AISLE_WIDTH:
-			setAisleWidth((Integer) newValue);
-			return;
-		case CabinPackage.CABIN__FRAMES_PER_SECOND:
-			setFramesPerSecond((Integer) newValue);
-			return;
-		case CabinPackage.CABIN__NUMBER_OF_DECKS:
-			setNumberOfDecks((Integer) newValue);
-			return;
-		case CabinPackage.CABIN__SIMULATION_SETTINGS:
-			setSimulationSettings((SimulationProperties) newValue);
-			return;
-		case CabinPackage.CABIN__CLASSES:
-			getClasses().clear();
-			getClasses().addAll((Collection<? extends TravelClass>) newValue);
-			return;
-		case CabinPackage.CABIN__DOORS:
-			getDoors().clear();
-			getDoors().addAll((Collection<? extends Door>) newValue);
-			return;
-		case CabinPackage.CABIN__LAVATORIES:
-			getLavatories().clear();
-			getLavatories().addAll((Collection<? extends Lavatory>) newValue);
-			return;
-		case CabinPackage.CABIN__GALLEYS:
-			getGalleys().clear();
-			getGalleys().addAll((Collection<? extends Galley>) newValue);
-			return;
-		case CabinPackage.CABIN__STAIRWAYS:
-			getStairways().clear();
-			getStairways().addAll((Collection<? extends Stairway>) newValue);
-			return;
-		case CabinPackage.CABIN__CURTAINS:
-			getCurtains().clear();
-			getCurtains().addAll((Collection<? extends Curtain>) newValue);
-			return;
-		case CabinPackage.CABIN__STOWAGES:
-			getStowages().clear();
-			getStowages().addAll((Collection<? extends Stowage>) newValue);
-			return;
-		case CabinPackage.CABIN__PASSENGERS:
-			getPassengers().clear();
-			getPassengers().addAll((Collection<? extends Passenger>) newValue);
-			return;
-		case CabinPackage.CABIN__SCALE:
-			setScale((Integer) newValue);
-			return;
-		case CabinPackage.CABIN__AIRCRAFT_TYPE:
-			setAircraftType((AircraftType) newValue);
-			return;
-		case CabinPackage.CABIN__USE_PRESET_SETTINGS:
-			setUsePresetSettings((Boolean) newValue);
-			return;
-		case CabinPackage.CABIN__SPEED_FACTOR:
-			setSpeedFactor((Integer) newValue);
-			return;
+			case CabinPackage.CABIN__XDIMENSION:
+				setXDimension((Integer)newValue);
+				return;
+			case CabinPackage.CABIN__YDIMENSION:
+				setYDimension((Integer)newValue);
+				return;
+			case CabinPackage.CABIN__ROW_NONEXISTENT:
+				setRowNonexistent((Integer)newValue);
+				return;
+			case CabinPackage.CABIN__AISLE_WIDTH:
+				setAisleWidth((Integer)newValue);
+				return;
+			case CabinPackage.CABIN__FRAMES_PER_SECOND:
+				setFramesPerSecond((Integer)newValue);
+				return;
+			case CabinPackage.CABIN__NUMBER_OF_DECKS:
+				setNumberOfDecks((Integer)newValue);
+				return;
+			case CabinPackage.CABIN__SIMULATION_SETTINGS:
+				setSimulationSettings((SimulationProperties)newValue);
+				return;
+			case CabinPackage.CABIN__CLASSES:
+				getClasses().clear();
+				getClasses().addAll((Collection<? extends TravelClass>)newValue);
+				return;
+			case CabinPackage.CABIN__DOORS:
+				getDoors().clear();
+				getDoors().addAll((Collection<? extends Door>)newValue);
+				return;
+			case CabinPackage.CABIN__LAVATORIES:
+				getLavatories().clear();
+				getLavatories().addAll((Collection<? extends Lavatory>)newValue);
+				return;
+			case CabinPackage.CABIN__GALLEYS:
+				getGalleys().clear();
+				getGalleys().addAll((Collection<? extends Galley>)newValue);
+				return;
+			case CabinPackage.CABIN__STAIRWAYS:
+				getStairways().clear();
+				getStairways().addAll((Collection<? extends Stairway>)newValue);
+				return;
+			case CabinPackage.CABIN__CURTAINS:
+				getCurtains().clear();
+				getCurtains().addAll((Collection<? extends Curtain>)newValue);
+				return;
+			case CabinPackage.CABIN__STOWAGES:
+				getStowages().clear();
+				getStowages().addAll((Collection<? extends Stowage>)newValue);
+				return;
+			case CabinPackage.CABIN__PASSENGERS:
+				getPassengers().clear();
+				getPassengers().addAll((Collection<? extends Passenger>)newValue);
+				return;
+			case CabinPackage.CABIN__SCALE:
+				setScale((Integer)newValue);
+				return;
+			case CabinPackage.CABIN__AIRCRAFT_TYPE:
+				setAircraftType((AircraftType)newValue);
+				return;
+			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
+				setUsePresetSettings((Boolean)newValue);
+				return;
+			case CabinPackage.CABIN__SPEED_FACTOR:
+				setSpeedFactor((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case CabinPackage.CABIN__XDIMENSION:
-			setXDimension(XDIMENSION_EDEFAULT);
-			return;
-		case CabinPackage.CABIN__YDIMENSION:
-			setYDimension(YDIMENSION_EDEFAULT);
-			return;
-		case CabinPackage.CABIN__ROW_NONEXISTENT:
-			setRowNonexistent(ROW_NONEXISTENT_EDEFAULT);
-			return;
-		case CabinPackage.CABIN__AISLE_WIDTH:
-			setAisleWidth(AISLE_WIDTH_EDEFAULT);
-			return;
-		case CabinPackage.CABIN__FRAMES_PER_SECOND:
-			setFramesPerSecond(FRAMES_PER_SECOND_EDEFAULT);
-			return;
-		case CabinPackage.CABIN__NUMBER_OF_DECKS:
-			setNumberOfDecks(NUMBER_OF_DECKS_EDEFAULT);
-			return;
-		case CabinPackage.CABIN__SIMULATION_SETTINGS:
-			setSimulationSettings((SimulationProperties) null);
-			return;
-		case CabinPackage.CABIN__CLASSES:
-			getClasses().clear();
-			return;
-		case CabinPackage.CABIN__DOORS:
-			getDoors().clear();
-			return;
-		case CabinPackage.CABIN__LAVATORIES:
-			getLavatories().clear();
-			return;
-		case CabinPackage.CABIN__GALLEYS:
-			getGalleys().clear();
-			return;
-		case CabinPackage.CABIN__STAIRWAYS:
-			getStairways().clear();
-			return;
-		case CabinPackage.CABIN__CURTAINS:
-			getCurtains().clear();
-			return;
-		case CabinPackage.CABIN__STOWAGES:
-			getStowages().clear();
-			return;
-		case CabinPackage.CABIN__PASSENGERS:
-			getPassengers().clear();
-			return;
-		case CabinPackage.CABIN__SCALE:
-			setScale(SCALE_EDEFAULT);
-			return;
-		case CabinPackage.CABIN__AIRCRAFT_TYPE:
-			setAircraftType(AIRCRAFT_TYPE_EDEFAULT);
-			return;
-		case CabinPackage.CABIN__USE_PRESET_SETTINGS:
-			setUsePresetSettings(USE_PRESET_SETTINGS_EDEFAULT);
-			return;
-		case CabinPackage.CABIN__SPEED_FACTOR:
-			setSpeedFactor(SPEED_FACTOR_EDEFAULT);
-			return;
+			case CabinPackage.CABIN__XDIMENSION:
+				setXDimension(XDIMENSION_EDEFAULT);
+				return;
+			case CabinPackage.CABIN__YDIMENSION:
+				setYDimension(YDIMENSION_EDEFAULT);
+				return;
+			case CabinPackage.CABIN__ROW_NONEXISTENT:
+				setRowNonexistent(ROW_NONEXISTENT_EDEFAULT);
+				return;
+			case CabinPackage.CABIN__AISLE_WIDTH:
+				setAisleWidth(AISLE_WIDTH_EDEFAULT);
+				return;
+			case CabinPackage.CABIN__FRAMES_PER_SECOND:
+				setFramesPerSecond(FRAMES_PER_SECOND_EDEFAULT);
+				return;
+			case CabinPackage.CABIN__NUMBER_OF_DECKS:
+				setNumberOfDecks(NUMBER_OF_DECKS_EDEFAULT);
+				return;
+			case CabinPackage.CABIN__SIMULATION_SETTINGS:
+				setSimulationSettings((SimulationProperties)null);
+				return;
+			case CabinPackage.CABIN__CLASSES:
+				getClasses().clear();
+				return;
+			case CabinPackage.CABIN__DOORS:
+				getDoors().clear();
+				return;
+			case CabinPackage.CABIN__LAVATORIES:
+				getLavatories().clear();
+				return;
+			case CabinPackage.CABIN__GALLEYS:
+				getGalleys().clear();
+				return;
+			case CabinPackage.CABIN__STAIRWAYS:
+				getStairways().clear();
+				return;
+			case CabinPackage.CABIN__CURTAINS:
+				getCurtains().clear();
+				return;
+			case CabinPackage.CABIN__STOWAGES:
+				getStowages().clear();
+				return;
+			case CabinPackage.CABIN__PASSENGERS:
+				getPassengers().clear();
+				return;
+			case CabinPackage.CABIN__SCALE:
+				setScale(SCALE_EDEFAULT);
+				return;
+			case CabinPackage.CABIN__AIRCRAFT_TYPE:
+				setAircraftType(AIRCRAFT_TYPE_EDEFAULT);
+				return;
+			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
+				setUsePresetSettings(USE_PRESET_SETTINGS_EDEFAULT);
+				return;
+			case CabinPackage.CABIN__SPEED_FACTOR:
+				setSpeedFactor(SPEED_FACTOR_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case CabinPackage.CABIN__XDIMENSION:
-			return xDimension != XDIMENSION_EDEFAULT;
-		case CabinPackage.CABIN__YDIMENSION:
-			return yDimension != YDIMENSION_EDEFAULT;
-		case CabinPackage.CABIN__ROW_NONEXISTENT:
-			return rowNonexistent != ROW_NONEXISTENT_EDEFAULT;
-		case CabinPackage.CABIN__AISLE_WIDTH:
-			return aisleWidth != AISLE_WIDTH_EDEFAULT;
-		case CabinPackage.CABIN__FRAMES_PER_SECOND:
-			return framesPerSecond != FRAMES_PER_SECOND_EDEFAULT;
-		case CabinPackage.CABIN__NUMBER_OF_DECKS:
-			return numberOfDecks != NUMBER_OF_DECKS_EDEFAULT;
-		case CabinPackage.CABIN__SIMULATION_SETTINGS:
-			return simulationSettings != null;
-		case CabinPackage.CABIN__CLASSES:
-			return classes != null && !classes.isEmpty();
-		case CabinPackage.CABIN__DOORS:
-			return doors != null && !doors.isEmpty();
-		case CabinPackage.CABIN__LAVATORIES:
-			return lavatories != null && !lavatories.isEmpty();
-		case CabinPackage.CABIN__GALLEYS:
-			return galleys != null && !galleys.isEmpty();
-		case CabinPackage.CABIN__STAIRWAYS:
-			return stairways != null && !stairways.isEmpty();
-		case CabinPackage.CABIN__CURTAINS:
-			return curtains != null && !curtains.isEmpty();
-		case CabinPackage.CABIN__STOWAGES:
-			return stowages != null && !stowages.isEmpty();
-		case CabinPackage.CABIN__PASSENGERS:
-			return passengers != null && !passengers.isEmpty();
-		case CabinPackage.CABIN__SCALE:
-			return scale != SCALE_EDEFAULT;
-		case CabinPackage.CABIN__AIRCRAFT_TYPE:
-			return aircraftType != AIRCRAFT_TYPE_EDEFAULT;
-		case CabinPackage.CABIN__USE_PRESET_SETTINGS:
-			return usePresetSettings != USE_PRESET_SETTINGS_EDEFAULT;
-		case CabinPackage.CABIN__SPEED_FACTOR:
-			return speedFactor != SPEED_FACTOR_EDEFAULT;
+			case CabinPackage.CABIN__XDIMENSION:
+				return xDimension != XDIMENSION_EDEFAULT;
+			case CabinPackage.CABIN__YDIMENSION:
+				return yDimension != YDIMENSION_EDEFAULT;
+			case CabinPackage.CABIN__ROW_NONEXISTENT:
+				return rowNonexistent != ROW_NONEXISTENT_EDEFAULT;
+			case CabinPackage.CABIN__AISLE_WIDTH:
+				return aisleWidth != AISLE_WIDTH_EDEFAULT;
+			case CabinPackage.CABIN__FRAMES_PER_SECOND:
+				return framesPerSecond != FRAMES_PER_SECOND_EDEFAULT;
+			case CabinPackage.CABIN__NUMBER_OF_DECKS:
+				return numberOfDecks != NUMBER_OF_DECKS_EDEFAULT;
+			case CabinPackage.CABIN__SIMULATION_SETTINGS:
+				return simulationSettings != null;
+			case CabinPackage.CABIN__CLASSES:
+				return classes != null && !classes.isEmpty();
+			case CabinPackage.CABIN__DOORS:
+				return doors != null && !doors.isEmpty();
+			case CabinPackage.CABIN__LAVATORIES:
+				return lavatories != null && !lavatories.isEmpty();
+			case CabinPackage.CABIN__GALLEYS:
+				return galleys != null && !galleys.isEmpty();
+			case CabinPackage.CABIN__STAIRWAYS:
+				return stairways != null && !stairways.isEmpty();
+			case CabinPackage.CABIN__CURTAINS:
+				return curtains != null && !curtains.isEmpty();
+			case CabinPackage.CABIN__STOWAGES:
+				return stowages != null && !stowages.isEmpty();
+			case CabinPackage.CABIN__PASSENGERS:
+				return passengers != null && !passengers.isEmpty();
+			case CabinPackage.CABIN__SCALE:
+				return scale != SCALE_EDEFAULT;
+			case CabinPackage.CABIN__AIRCRAFT_TYPE:
+				return aircraftType != AIRCRAFT_TYPE_EDEFAULT;
+			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
+				return usePresetSettings != USE_PRESET_SETTINGS_EDEFAULT;
+			case CabinPackage.CABIN__SPEED_FACTOR:
+				return speedFactor != SPEED_FACTOR_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (xDimension: ");

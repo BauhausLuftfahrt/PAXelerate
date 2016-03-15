@@ -34,7 +34,7 @@ import net.bhl.cdt.paxelerate.model.util.CabinValidator;
  *
  * @generated
  */
-public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements
+public abstract class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements
 		PhysicalObject {
 	/**
 	 * The default value of the '{@link #getYPosition() <em>YPosition</em>}' attribute.

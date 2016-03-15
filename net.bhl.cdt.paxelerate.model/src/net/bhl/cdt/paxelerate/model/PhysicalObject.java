@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPhysicalObject()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface PhysicalObject extends EObject {

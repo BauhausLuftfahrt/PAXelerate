@@ -45,7 +45,7 @@ import net.bhl.cdt.paxelerate.util.input.InputChecker;
  *
  * @generated
  */
-public class TravelClassImpl extends MinimalEObjectImpl.Container implements
+public abstract class TravelClassImpl extends MinimalEObjectImpl.Container implements
 		TravelClass {
 	/**
 	 * The cached value of the '{@link #getRows() <em>Rows</em>}' containment reference list.

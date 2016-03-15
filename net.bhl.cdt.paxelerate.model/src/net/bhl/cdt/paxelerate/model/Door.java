@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getDoor()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface Door extends EObject {

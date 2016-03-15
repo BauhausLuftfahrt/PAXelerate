@@ -417,11 +417,6 @@ public class CabinItemProvider extends NamedElementItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(CabinPackage.Literals.CABIN__CLASSES,
-				 CabinFactory.eINSTANCE.createTravelClass()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CabinPackage.Literals.CABIN__CLASSES,
 				 CabinFactory.eINSTANCE.createBusinessClass()));
 
 		newChildDescriptors.add
@@ -438,11 +433,6 @@ public class CabinItemProvider extends NamedElementItemProvider {
 			(createChildParameter
 				(CabinPackage.Literals.CABIN__CLASSES,
 				 CabinFactory.eINSTANCE.createPremiumEconomyClass()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CabinPackage.Literals.CABIN__DOORS,
-				 CabinFactory.eINSTANCE.createDoor()));
 
 		newChildDescriptors.add
 			(createChildParameter
