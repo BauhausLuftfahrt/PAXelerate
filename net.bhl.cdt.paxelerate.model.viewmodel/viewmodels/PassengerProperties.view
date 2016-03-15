@@ -2,14 +2,14 @@
 <org.eclipse.emf.ecp.view.model:View xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.emf.ecp.view.group.model="http://org/eclipse/emf/ecp/view/group/model" xmlns:org.eclipse.emf.ecp.view.horizontal.model="http://org/eclipse/emf/ecp/view/horizontal/model" xmlns:org.eclipse.emf.ecp.view.label.model="http://org/eclipse/emf/ecp/view/label/model" xmlns:org.eclipse.emf.ecp.view.model="http://org/eclipse/emf/ecp/view/model/170" xmlns:org.eclipse.emf.ecp.view.vertical.model="http://org/eclipse/emf/ecp/view/vertical/model" xmi:id="_rwWmYOeTEeWmCN7fuSm0Sw" name="Passenger" ecorePath="/net.bhl.cdt.paxelerate.model/model/cabin.ecore">
   <rootEClass href="http://net.bhl.cdt.paxelerate.model/#//PassengerProperties"/>
   <children xsi:type="org.eclipse.emf.ecp.view.label.model:Label" xmi:id="_r_96QOeUEeWmCN7fuSm0Sw" name="These are the Gaussian Normal Distribution values. The deviation values refer to the 5 and 95 percent values." style="H1"/>
-  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_rwaQ0OeTEeWmCN7fuSm0Sw" name="Control percentageOfWomen">
-    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_rwaQ0eeTEeWmCN7fuSm0Sw">
-      <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//PassengerProperties/percentageOfWomen"/>
-    </domainModelReference>
-  </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_UVtEYOeUEeWmCN7fuSm0Sw" name="Female">
-    <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout" xmi:id="_Q3ScwOeUEeWmCN7fuSm0Sw">
-      <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_U5Lk4OeUEeWmCN7fuSm0Sw">
+  <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout" xmi:id="_Q3ScwOeUEeWmCN7fuSm0Sw">
+    <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_U5Lk4OeUEeWmCN7fuSm0Sw">
+      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_UVtEYOeUEeWmCN7fuSm0Sw" name="Female">
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_rwaQ0OeTEeWmCN7fuSm0Sw" name="Control percentageOfWomen">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_rwaQ0eeTEeWmCN7fuSm0Sw">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//PassengerProperties/percentageOfWomen"/>
+          </domainModelReference>
+        </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_rwaQ0ueTEeWmCN7fuSm0Sw" name="Control passengerWidthMeanFemale">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_rwaQ0-eTEeWmCN7fuSm0Sw">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//PassengerProperties/passengerWidthMeanFemale"/>
@@ -40,8 +40,6 @@
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//PassengerProperties/passengerDepthDeviationFemale"/>
           </domainModelReference>
         </children>
-      </children>
-      <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_VWZFUOeUEeWmCN7fuSm0Sw">
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_rwaQ1ueTEeWmCN7fuSm0Sw" name="Control passengerWeightMeanFemale">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_rwaQ1-eTEeWmCN7fuSm0Sw">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//PassengerProperties/passengerWeightMeanFemale"/>
@@ -54,10 +52,8 @@
         </children>
       </children>
     </children>
-  </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_RgWA0OeUEeWmCN7fuSm0Sw" name="Male">
-    <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout" xmi:id="_P-Ye0OeUEeWmCN7fuSm0Sw">
-      <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_SF8oQOeUEeWmCN7fuSm0Sw">
+    <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_SF8oQOeUEeWmCN7fuSm0Sw">
+      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_RgWA0OeUEeWmCN7fuSm0Sw" name="Male">
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_gQNHgOeUEeWmCN7fuSm0Sw" name="Control passengerWidthMeanMale">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_gQNHgeeUEeWmCN7fuSm0Sw">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//PassengerProperties/passengerWidthMeanMale"/>
@@ -88,8 +84,6 @@
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//PassengerProperties/passengerDepthDeviationMale"/>
           </domainModelReference>
         </children>
-      </children>
-      <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_gQNHkOeUEeWmCN7fuSm0Sw">
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_gQNHhOeUEeWmCN7fuSm0Sw" name="Control passengerWeightMeanMale">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_gQNHheeUEeWmCN7fuSm0Sw">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//PassengerProperties/passengerWeightMeanMale"/>

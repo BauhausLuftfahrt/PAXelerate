@@ -3,7 +3,7 @@
   <rootEClass href="http://net.bhl.cdt.paxelerate.model/#//LuggageProperties"/>
   <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout" xmi:id="_yPAr4OeTEeWmCN7fuSm0Sw">
     <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_zI1P0OeTEeWmCN7fuSm0Sw">
-      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_0hj9UOeTEeWmCN7fuSm0Sw" name="Luggage Stowing">
+      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_0hj9UOeTEeWmCN7fuSm0Sw" name="Stowing Distance">
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_oRi9MOeTEeWmCN7fuSm0Sw" name="Control luggageStowingDistanceFromSeatMean">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_oRi9MeeTEeWmCN7fuSm0Sw">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//LuggageProperties/luggageStowingDistanceFromSeatMean"/>
@@ -14,6 +14,8 @@
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//LuggageProperties/luggageStowingDistanceFromSeatDeviation"/>
           </domainModelReference>
         </children>
+      </children>
+      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_bfEgQOq0EeWI07VLAZFAFw" name="Stowing Time">
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_4Fdh4OeTEeWmCN7fuSm0Sw" name="Control passengerSmallLuggageStowTimeMean">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_4Fdh4eeTEeWmCN7fuSm0Sw">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//LuggageProperties/passengerSmallLuggageStowTimeMean"/>
