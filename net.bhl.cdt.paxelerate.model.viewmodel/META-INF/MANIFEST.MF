@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: net.bhl.cdt.paxelerate.model.viewmodel;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.6.0.qualifier
 Require-Bundle: org.eclipse.emf.ecp.view.model.provider.xmi,
  org.eclipse.emf.ecp.view.categorization.model;bundle-version="1.7.2",
  org.eclipse.emf.ecp.view.categorization.model.edit;bundle-version="1.7.2",

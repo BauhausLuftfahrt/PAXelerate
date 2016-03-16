@@ -49,6 +49,7 @@ After a successful test of the release candiate, updates of the code, repository
 
 * Code
 	* Update legal and copyright info with current year
+	* Change release number in `MANIFEST.MF` to `0.X.0.qualifier` of all plug-ins and update minimum version in _Dependencies_
 * Repository
 	* Branch
 		* Merge `release-0.X` with `master` branch
