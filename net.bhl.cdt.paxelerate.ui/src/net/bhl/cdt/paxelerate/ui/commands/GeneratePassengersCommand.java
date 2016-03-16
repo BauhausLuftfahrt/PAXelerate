@@ -6,6 +6,7 @@
 package net.bhl.cdt.paxelerate.ui.commands;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.util.ModelHelper;
@@ -20,6 +21,7 @@ import net.bhl.cdt.paxelerate.model.PremiumEconomyClass;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.util.PassengerPropertyGenerator;
+import net.bhl.cdt.paxelerate.model.util.TCHelper;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.util.math.RandomHelper;
 import net.bhl.cdt.paxelerate.util.string.StringHelper;
@@ -60,25 +62,30 @@ public class GeneratePassengersCommand extends CDTCommand {
 	 * @param classT
 	 *            is the specific class
 	 */
-	private <T extends TravelClass> void switchClass(Class<T> travelSubClass) {
-		if (travelSubClass.getSimpleName().equals("BusinessClass")) {
-			seatAreaBegin = firstseats + 1;
-			seatsInClass = businessseats;
-			paxInClass = businesspax;
-		} else if (travelSubClass.getSimpleName().equals("FirstClass")) {
-			seatAreaBegin = 1;
-			seatsInClass = firstseats;
-			paxInClass = firstpax;
-		} else if (travelSubClass.getSimpleName().equals("PremiumEconomyClass")) {
-			seatAreaBegin = firstseats + businessseats + 1;
-			seatsInClass = premiumecoseats;
-			paxInClass = premiumecopax;
-		} else {
+	private <T extends TravelClass> void switchClass(Class<T> travelclass) {
+
+		switch (TCHelper.getClassType(travelclass)) {
+		case EC:
 			seatAreaBegin = totalSeats - ecoseats + 1;
 			seatsInClass = ecoseats;
 			paxInClass = ecopax;
+			break;
+		case FC:
+			seatAreaBegin = 1;
+			seatsInClass = firstseats;
+			paxInClass = firstpax;
+			break;
+		case BC:
+			seatAreaBegin = firstseats + 1;
+			seatsInClass = businessseats;
+			paxInClass = businesspax;
+			break;
+		case PEC:
+			seatAreaBegin = firstseats + businessseats + 1;
+			seatsInClass = premiumecoseats;
+			paxInClass = premiumecopax;
+			break;
 		}
-
 	}
 
 	/**
@@ -127,11 +134,10 @@ public class GeneratePassengersCommand extends CDTCommand {
 				return seat;
 			}
 		}
+
 		Log.add(this, "No seat found!");
 
-		Seat emptySeat = null;
-
-		return emptySeat;
+		return null;
 	}
 
 	private double calculateDelay(Passenger pax) {
@@ -151,52 +157,38 @@ public class GeneratePassengersCommand extends CDTCommand {
 	 * @param classType
 	 *            specifies in which class the passengers are generated
 	 */
-	private <T extends TravelClass> void generatePassengers(
-
-			Class<T> travelSubClass) {
+	private <T extends TravelClass> void generatePassengers(Class<T> travelclass) {
 		passengerPerClassCount = 0;
 
-		/********************************************************/
+		switchClass(travelclass);
 
-		switchClass(travelSubClass);
 		if (paxInClass != 0) {
 			if (paxInClass <= seatsInClass) {
 				for (int i = 1; i <= paxInClass; i++) {
 
 					Passenger newPassenger = CabinFactory.eINSTANCE.createPassenger();
 					cabin.getPassengers().add(newPassenger);
+
 					newPassenger.setId(RandomHelper.uniqueRandom(randomPassengerId, 1, totalPax + 1));
-
 					newPassenger.setSeat(RandomHelper.uniqueRandom(randomSeatId, seatAreaBegin, seatsInClass));
-
 					newPassenger.setName(newPassenger.getId() + " (" + getSeat(newPassenger).getName() + ")");
-
 					newPassenger.setSeatRef(getSeat(newPassenger));
-
 					newPassenger.setTravelClass(newPassenger.getSeatRef().getTravelClass());
-
 					newPassenger.setDoor(getDoor(newPassenger));
-
 					newPassenger.setStartBoardingAfterDelay(calculateDelay(newPassenger));
-
-					/************************
-					 * random values
-					 ***************************/
 
 					PassengerPropertyGenerator generator = new PassengerPropertyGenerator(newPassenger);
 					newPassenger = generator.getPassenger();
-
-					/********************************************************************/
 
 					passengerPerClassCount++;
 				}
 				randomSeatId.clear();
 
 				Log.add(this, "successfully created " + (passengerPerClassCount) + " passengers in "
-						+ StringHelper.splitCamelCase(travelSubClass.getSimpleName()));
+						+ StringHelper.splitCamelCase(travelclass.getSimpleName()));
 			} else {
 
-				Log.add(this, "Too many passengers in " + StringHelper.splitCamelCase(travelSubClass.getSimpleName()));
+				Log.add(this, "Too many passengers in " + StringHelper.splitCamelCase(travelclass.getSimpleName()));
 			}
 		}
 	}
@@ -207,62 +199,39 @@ public class GeneratePassengersCommand extends CDTCommand {
 	@Override
 	protected void doRun() {
 
-		/************************* get the views ***********************/
 		cabinViewPart = ViewPartHelper.getCabinView();
 
-		// Unsync the cabin view during the execution of the command.
-		// THROWS NULL POINTER!!
-		// cabinViewPart.unsyncViewer();
-		/**************************************************************/
+		cabinViewPart.unsyncViewer();
+
 		cabin.getPassengers().clear();
 
-		// TODO: create functions for this!
-		try {
-			firstpax = ModelHelper.getChildrenByClass(cabin, FirstClass.class).get(0).getPassengers();
-		} catch (IndexOutOfBoundsException e) {
-			// ...
+		List<FirstClass> firstClasses = TCHelper.getFirstClasses(cabin);
+		if (!firstClasses.isEmpty()) {
+			firstpax = firstClasses.get(0).getPassengers();
+			firstseats = firstClasses.get(0).getAvailableSeats();
 		}
-		try {
-			businesspax = ModelHelper.getChildrenByClass(cabin, BusinessClass.class).get(0).getPassengers();
-		} catch (IndexOutOfBoundsException e) {
-			// ...
+
+		List<BusinessClass> businessClasses = TCHelper.getBusinessClasses(cabin);
+		if (!businessClasses.isEmpty()) {
+			businesspax = businessClasses.get(0).getPassengers();
+			businessseats = businessClasses.get(0).getAvailableSeats();
 		}
-		try {
-			premiumecopax = ModelHelper.getChildrenByClass(cabin, PremiumEconomyClass.class).get(0).getPassengers();
-		} catch (IndexOutOfBoundsException e) {
-			// ...
+
+		List<EconomyClass> economyClasses = TCHelper.getEconomyClasses(cabin);
+		if (!economyClasses.isEmpty()) {
+			ecopax = economyClasses.get(0).getPassengers();
+			ecoseats = economyClasses.get(0).getAvailableSeats();
 		}
-		try {
-			ecopax = ModelHelper.getChildrenByClass(cabin, EconomyClass.class).get(0).getPassengers();
-		} catch (IndexOutOfBoundsException e) {
-			// ...
+
+		List<PremiumEconomyClass> premiumEconomyClasses = TCHelper.getPremiumEconomyClasses(cabin);
+		if (!premiumEconomyClasses.isEmpty()) {
+			premiumecopax = premiumEconomyClasses.get(0).getPassengers();
+			premiumecoseats = premiumEconomyClasses.get(0).getAvailableSeats();
 		}
 
 		totalPax = firstpax + businesspax + premiumecopax + ecopax;
-
-		try {
-			firstseats = ModelHelper.getChildrenByClass(cabin, FirstClass.class).get(0).getAvailableSeats();
-		} catch (IndexOutOfBoundsException e) {
-			// ...
-		}
-		try {
-			businessseats = ModelHelper.getChildrenByClass(cabin, BusinessClass.class).get(0).getAvailableSeats();
-		} catch (IndexOutOfBoundsException e) {
-			// ...
-		}
-		try {
-			premiumecoseats = ModelHelper.getChildrenByClass(cabin, PremiumEconomyClass.class).get(0)
-					.getAvailableSeats();
-		} catch (IndexOutOfBoundsException e) {
-			// ...
-		}
-		try {
-			ecoseats = ModelHelper.getChildrenByClass(cabin, EconomyClass.class).get(0).getAvailableSeats();
-		} catch (IndexOutOfBoundsException e) {
-			// ...
-		}
-
 		totalSeats = firstseats + businessseats + premiumecoseats + ecoseats;
+
 		randomSeatId = new ArrayList<Integer>();
 		randomPassengerId = new ArrayList<Integer>();
 

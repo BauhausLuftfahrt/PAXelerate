@@ -8,6 +8,7 @@ package net.bhl.cdt.paxelerate.model.astar;
 
 import java.util.ArrayList;
 
+import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 import net.bhl.cdt.paxelerate.util.math.Vector;
@@ -39,9 +40,9 @@ public class AreaMap {
 	 * @param obstacleMap
 	 *            the obstacle map
 	 */
-	public AreaMap(Vector dimensions, ObstacleMap obstacleMap) {
+	public AreaMap(Vector dimensions, Cabin cabin) {
 		this.dimensions = dimensions;
-		this.obstacleMap = obstacleMap;
+		this.obstacleMap = new ObstacleMap(dimensions, cabin);
 
 		createMap();
 		Log.add(this, "Map Created");

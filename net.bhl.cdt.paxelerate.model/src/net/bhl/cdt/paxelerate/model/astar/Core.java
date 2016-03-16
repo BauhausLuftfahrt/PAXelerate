@@ -31,11 +31,13 @@ public class Core {
 	 *            is the AreaMap that is fed into the algorithm
 	 */
 	public Core(AreaMap map, CostMap costmap, Agent agent) {
+
 		this.map = map;
 		this.agent = agent;
 		this.costmap = costmap;
 		closedList = new ArrayList<Node>();
 		openList = new SortedNodeList();
+
 		calculateShortestPath();
 	}
 
@@ -115,22 +117,20 @@ public class Core {
 				if (neighbor.getProperty() != Property.OBSTACLE) {
 
 					/* calculate the neighbors distance from start */
-					double neighborDistanceFromStart = map
-							.getDistanceBetween(map.getNode(agent.getStart()),
-									neighbor);
-					
+					double neighborDistanceFromStart = map.getDistanceBetween(
+							map.getNode(agent.getStart()), neighbor);
+
 					/* calculate the neighbors distance from start */
-					double currentDistanceFromStart = map
-							.getDistanceBetween(map.getNode(agent.getStart()),
-									current);
+					double currentDistanceFromStart = map.getDistanceBetween(
+							map.getNode(agent.getStart()), current);
 
 					/* calculate the neighbors cost */
-					int neighborCostFromStart = costmap.getCost(neighbor
-							.getPosition());
+					int neighborCostFromStart = costmap
+							.getCost(neighbor.getPosition());
 
 					/* calculate the current cost from start for comparison */
-					int currentCostFromStart = costmap.getCost(current
-							.getPosition());
+					int currentCostFromStart = costmap
+							.getCost(current.getPosition());
 
 					/* add neighbor to the open list if it is not there */
 					if (!openList.contains(neighbor)) {
@@ -140,25 +140,31 @@ public class Core {
 						/* it is better if the other node is cheaper */
 					} else if (neighborCostFromStart < currentCostFromStart) {
 						neighborIsBetter = true;
-						
-						/* it is better if the other node is closer if they have the same cost */ 
-					} else if(neighborCostFromStart == currentCostFromStart) {
-						if(neighborDistanceFromStart < currentDistanceFromStart) {
+
+						/*
+						 * it is better if the other node is closer if they have
+						 * the same cost
+						 */
+					} else if (neighborCostFromStart == currentCostFromStart) {
+
+						if (neighborDistanceFromStart < currentDistanceFromStart) {
 							neighborIsBetter = true;
 						}
-						
+
 						/* if no criteria is matched, the node is worse */
 					} else {
 						neighborIsBetter = false;
 					}
 
-					// TODO: check if passenger dimensions allow this specific node.
-					
+					// TODO: check if passenger dimensions allow this specific
+					// node.
+
 					/* set neighbors parameters if it is better */
 					if (neighborIsBetter) {
 						neighbor.setPreviousNode(current);
 						neighbor.setCostFromStart(neighborCostFromStart);
-						neighbor.setDistanceFromStart(neighborDistanceFromStart);
+						neighbor.setDistanceFromStart(
+								neighborDistanceFromStart);
 					}
 				}
 			}

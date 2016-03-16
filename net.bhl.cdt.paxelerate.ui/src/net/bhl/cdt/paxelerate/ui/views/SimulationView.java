@@ -237,21 +237,18 @@ public class SimulationView extends JPanel implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 
-		Point mousePos = getMousePosition();
-		if (mousePos != null) {
+		if (getMousePosition() != null) {
 
-			Passenger pax = null;
+			int a = getMousePosition().x / FONT_SIZE;
+			int b = getMousePosition().y / FONT_SIZE;
 
-			int a = mousePos.x / FONT_SIZE;
-			int b = mousePos.y / FONT_SIZE;
-
-			if (areamap.getNodeByCoordinate(b, a).getProperty() == Property.AGENT) {
-				pax = areamap.getNodeByCoordinate(b, a).getPassenger();
+			Node node = areamap.getNodeByCoordinate(b, a);
+			if (node != null) {
+				if (node.getProperty() == Property.AGENT && node.getPassenger() != null) {
+					SimulationHandler.removePassenger(node.getPassenger());
+				}
 			}
 
-			if (pax != null) {
-				SimulationHandler.removePassenger(pax);
-			}
 		}
 	}
 

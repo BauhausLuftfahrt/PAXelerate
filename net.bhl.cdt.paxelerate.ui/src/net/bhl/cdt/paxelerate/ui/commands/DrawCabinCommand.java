@@ -7,6 +7,10 @@ package net.bhl.cdt.paxelerate.ui.commands;
 
 import java.util.ArrayList;
 
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
+
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
@@ -101,7 +105,9 @@ public class DrawCabinCommand extends CDTCommand {
 		checkFoldableSeats();
 		updateTravelClassProperties();
 
-		propertyViewPart = ViewPartHelper.getPropertyView();
+		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+		IWorkbenchPage page = window.getActivePage();
+		propertyViewPart = (PropertyViewPart) page.findView("net.bhl.cdt.paxelerate.ui.propertyview");
 
 		for (String str : errorStrings) {
 			Log.add(this, str);

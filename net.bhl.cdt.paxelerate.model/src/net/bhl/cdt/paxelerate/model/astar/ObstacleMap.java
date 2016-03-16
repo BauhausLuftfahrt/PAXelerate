@@ -16,7 +16,6 @@ import net.bhl.cdt.paxelerate.model.Lavatory;
 import net.bhl.cdt.paxelerate.model.PhysicalObject;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.util.math.Vector;
-import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
 /**
  * This class represents an obstacle map. Every point in the two dimensional
@@ -52,7 +51,7 @@ public class ObstacleMap {
 	 * @param cabin
 	 *            is the input cabin
 	 */
-	public ObstacleMap(Vector2D dimensions, Cabin cabin) {
+	public ObstacleMap(Vector dimensions, Cabin cabin) {
 		this.cabin = cabin;
 		this.dimensions = dimensions;
 		obstacleMap = createObstacleMap();
