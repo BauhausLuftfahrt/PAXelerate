@@ -5,12 +5,17 @@ A summary of all necessary website and repository updates prior to a new release
 
 ## General branch workflow
 
-* Master: should always be working and reflects mayor releases and bug fixes
-* Developer: for milestones, such as `dev-0.6`
-* Release candidates: some days prior to releases for testing and bug fixing, such as `dev-0.6-RC1`
+* master: is the main branch including mayor releases and bug fixes, the HEAD version should reflect a production-ready state 
+* developer: for milestones where the HEAD always reflects a state with the latest delivered development changes for the next release, named `develop`
+* release candidate (RC): some days prior to releases for testing and bug fixing, such as `release-0.X`
+
+When the source code in the `develop` branch reaches a stable point and is ready to be released, all of the changes should be merged back into `master` somehow and then tagged with a release number. 
+
+See [a successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/) for further information on branching.
+
 	
 ## Pre-release tasks
-A release candiate (RC1) branch will be produced for testing and bug fixing. Tests should comprise at least the following tasks. Bit by bit this will be transfered to automatic tests.
+A release candiate branch `release-0.X` will be produced for testing and bug fixing. Tests should comprise at least the following tasks. Bit by bit this will be transfered to automatic tests.
 
 * OpenCDT
 	* Project generation, import, export
@@ -40,16 +45,17 @@ The wiki should be updated, if new features and functions as well as mayor UI ch
 
 	
 ## Release day
-After a successful test of the release candiate (RC1) updates of the code, repository and website are necessary
+After a successful test of the release candiate, updates of the code, repository and website are necessary
 
 * Code
 	* Update legal and copyright info with current year
 * Repository
 	* Branch
-		* Merge RC1 with master branch
+		* Merge `release-0.X` with `master` branch
 		* Release tag
 			* Included material in zip file: updated wiki, change log
-		* new development branch for next milestone `dev-0.7`
+		* Merge `release-0.X` with `develop` branch
+		* Delete `release-0.X` branch
 	* `readme.md` and `home.md`
 		* Eclipse, ECP, OpenCDT and PAXelerate version 
 		* Year
