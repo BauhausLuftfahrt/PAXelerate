@@ -1,11 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: %pluginName
+Bundle-Name: PAXelerate - Model Edit
 Bundle-SymbolicName: net.bhl.cdt.paxelerate.model.edit;singleton:=true
 Bundle-Version: 0.6.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: net.bhl.cdt.paxelerate.model.provider.CabinEditPlugin$Implementation
-Bundle-Vendor: %providerName
+Bundle-Vendor: http://www.paxelerate.com/
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: net.bhl.cdt.paxelerate.model.provider

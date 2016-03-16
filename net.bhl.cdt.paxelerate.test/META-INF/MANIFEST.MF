@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: %pluginName
+Bundle-Name: PAXelerate - Test
 Bundle-SymbolicName: net.bhl.cdt.paxelerate.test
 Bundle-Version: 0.6.0.qualifier
-Bundle-Vendor: %providerName
+Bundle-Vendor: http://www.paxelerate.com/
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.junit,
