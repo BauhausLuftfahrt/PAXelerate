@@ -301,8 +301,8 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(CabinPackage.Literals.SIMULATION_PROPERTIES__LUGGAGE);
-			childrenFeatures.add(CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER);
+			childrenFeatures.add(CabinPackage.Literals.SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES);
+			childrenFeatures.add(CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER_PROPERTIES);
 		}
 		return childrenFeatures;
 	}
@@ -366,8 +366,8 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE:
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER:
+			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES:
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_PROPERTIES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -388,12 +388,12 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 
 		newChildDescriptors.add
 			(createChildParameter
-				(CabinPackage.Literals.SIMULATION_PROPERTIES__LUGGAGE,
+				(CabinPackage.Literals.SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES,
 				 CabinFactory.eINSTANCE.createLuggageProperties()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER,
+				(CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGER_PROPERTIES,
 				 CabinFactory.eINSTANCE.createPassengerProperties()));
 	}
 

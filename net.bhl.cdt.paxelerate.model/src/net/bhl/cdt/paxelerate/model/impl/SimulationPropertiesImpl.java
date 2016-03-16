@@ -36,8 +36,8 @@ import net.bhl.cdt.paxelerate.model.SortingStyle;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSorting <em>Sorting</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isDeveloperMode <em>Developer Mode</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getLuggage <em>Luggage</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassenger <em>Passenger</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getLuggageProperties <em>Luggage Properties</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerProperties <em>Passenger Properties</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}</li>
  * </ul>
  *
@@ -215,24 +215,24 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	protected boolean developerMode = DEVELOPER_MODE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getLuggage() <em>Luggage</em>}' containment reference.
+	 * The cached value of the '{@link #getLuggageProperties() <em>Luggage Properties</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLuggage()
+	 * @see #getLuggageProperties()
 	 * @generated
 	 * @ordered
 	 */
-	protected LuggageProperties luggage;
+	protected LuggageProperties luggageProperties;
 
 	/**
-	 * The cached value of the '{@link #getPassenger() <em>Passenger</em>}' containment reference.
+	 * The cached value of the '{@link #getPassengerProperties() <em>Passenger Properties</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPassenger()
+	 * @see #getPassengerProperties()
 	 * @generated
 	 * @ordered
 	 */
-	protected PassengerProperties passenger;
+	protected PassengerProperties passengerProperties;
 
 	/**
 	 * The default value of the '{@link #getPassengersBoardingPerMinute() <em>Passengers Boarding Per Minute</em>}' attribute.
@@ -458,8 +458,8 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LuggageProperties getLuggage() {
-		return luggage;
+	public LuggageProperties getLuggageProperties() {
+		return luggageProperties;
 	}
 
 	/**
@@ -467,11 +467,11 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetLuggage(LuggageProperties newLuggage, NotificationChain msgs) {
-		LuggageProperties oldLuggage = luggage;
-		luggage = newLuggage;
+	public NotificationChain basicSetLuggageProperties(LuggageProperties newLuggageProperties, NotificationChain msgs) {
+		LuggageProperties oldLuggageProperties = luggageProperties;
+		luggageProperties = newLuggageProperties;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__LUGGAGE, oldLuggage, newLuggage);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES, oldLuggageProperties, newLuggageProperties);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -482,18 +482,18 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLuggage(LuggageProperties newLuggage) {
-		if (newLuggage != luggage) {
+	public void setLuggageProperties(LuggageProperties newLuggageProperties) {
+		if (newLuggageProperties != luggageProperties) {
 			NotificationChain msgs = null;
-			if (luggage != null)
-				msgs = ((InternalEObject)luggage).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CabinPackage.SIMULATION_PROPERTIES__LUGGAGE, null, msgs);
-			if (newLuggage != null)
-				msgs = ((InternalEObject)newLuggage).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CabinPackage.SIMULATION_PROPERTIES__LUGGAGE, null, msgs);
-			msgs = basicSetLuggage(newLuggage, msgs);
+			if (luggageProperties != null)
+				msgs = ((InternalEObject)luggageProperties).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES, null, msgs);
+			if (newLuggageProperties != null)
+				msgs = ((InternalEObject)newLuggageProperties).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES, null, msgs);
+			msgs = basicSetLuggageProperties(newLuggageProperties, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__LUGGAGE, newLuggage, newLuggage));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES, newLuggageProperties, newLuggageProperties));
 	}
 
 	/**
@@ -501,8 +501,8 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PassengerProperties getPassenger() {
-		return passenger;
+	public PassengerProperties getPassengerProperties() {
+		return passengerProperties;
 	}
 
 	/**
@@ -510,11 +510,11 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetPassenger(PassengerProperties newPassenger, NotificationChain msgs) {
-		PassengerProperties oldPassenger = passenger;
-		passenger = newPassenger;
+	public NotificationChain basicSetPassengerProperties(PassengerProperties newPassengerProperties, NotificationChain msgs) {
+		PassengerProperties oldPassengerProperties = passengerProperties;
+		passengerProperties = newPassengerProperties;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__PASSENGER, oldPassenger, newPassenger);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__PASSENGER_PROPERTIES, oldPassengerProperties, newPassengerProperties);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -525,18 +525,18 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPassenger(PassengerProperties newPassenger) {
-		if (newPassenger != passenger) {
+	public void setPassengerProperties(PassengerProperties newPassengerProperties) {
+		if (newPassengerProperties != passengerProperties) {
 			NotificationChain msgs = null;
-			if (passenger != null)
-				msgs = ((InternalEObject)passenger).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CabinPackage.SIMULATION_PROPERTIES__PASSENGER, null, msgs);
-			if (newPassenger != null)
-				msgs = ((InternalEObject)newPassenger).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CabinPackage.SIMULATION_PROPERTIES__PASSENGER, null, msgs);
-			msgs = basicSetPassenger(newPassenger, msgs);
+			if (passengerProperties != null)
+				msgs = ((InternalEObject)passengerProperties).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CabinPackage.SIMULATION_PROPERTIES__PASSENGER_PROPERTIES, null, msgs);
+			if (newPassengerProperties != null)
+				msgs = ((InternalEObject)newPassengerProperties).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CabinPackage.SIMULATION_PROPERTIES__PASSENGER_PROPERTIES, null, msgs);
+			msgs = basicSetPassengerProperties(newPassengerProperties, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__PASSENGER, newPassenger, newPassenger));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__PASSENGER_PROPERTIES, newPassengerProperties, newPassengerProperties));
 	}
 
 	/**
@@ -568,10 +568,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE:
-				return basicSetLuggage(null, msgs);
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER:
-				return basicSetPassenger(null, msgs);
+			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES:
+				return basicSetLuggageProperties(null, msgs);
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_PROPERTIES:
+				return basicSetPassengerProperties(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -602,10 +602,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return getSimulationSpeedFactor();
 			case CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE:
 				return isDeveloperMode();
-			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE:
-				return getLuggage();
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER:
-				return getPassenger();
+			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES:
+				return getLuggageProperties();
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_PROPERTIES:
+				return getPassengerProperties();
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				return getPassengersBoardingPerMinute();
 		}
@@ -649,11 +649,11 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE:
 				setDeveloperMode((Boolean)newValue);
 				return;
-			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE:
-				setLuggage((LuggageProperties)newValue);
+			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES:
+				setLuggageProperties((LuggageProperties)newValue);
 				return;
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER:
-				setPassenger((PassengerProperties)newValue);
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_PROPERTIES:
+				setPassengerProperties((PassengerProperties)newValue);
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				setPassengersBoardingPerMinute((Double)newValue);
@@ -697,11 +697,11 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE:
 				setDeveloperMode(DEVELOPER_MODE_EDEFAULT);
 				return;
-			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE:
-				setLuggage((LuggageProperties)null);
+			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES:
+				setLuggageProperties((LuggageProperties)null);
 				return;
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER:
-				setPassenger((PassengerProperties)null);
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_PROPERTIES:
+				setPassengerProperties((PassengerProperties)null);
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				setPassengersBoardingPerMinute(PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT);
@@ -736,10 +736,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return simulationSpeedFactor != SIMULATION_SPEED_FACTOR_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE:
 				return developerMode != DEVELOPER_MODE_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE:
-				return luggage != null;
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER:
-				return passenger != null;
+			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES:
+				return luggageProperties != null;
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_PROPERTIES:
+				return passengerProperties != null;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				return passengersBoardingPerMinute != PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT;
 		}

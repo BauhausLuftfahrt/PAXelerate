@@ -2495,22 +2495,22 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_PROPERTIES__DEVELOPER_MODE = 8;
 
 	/**
-	 * The feature id for the '<em><b>Luggage</b></em>' containment reference.
+	 * The feature id for the '<em><b>Luggage Properties</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__LUGGAGE = 9;
+	int SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES = 9;
 
 	/**
-	 * The feature id for the '<em><b>Passenger</b></em>' containment reference.
+	 * The feature id for the '<em><b>Passenger Properties</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER = 10;
+	int SIMULATION_PROPERTIES__PASSENGER_PROPERTIES = 10;
 
 	/**
 	 * The feature id for the '<em><b>Passengers Boarding Per Minute</b></em>' attribute.
@@ -4166,26 +4166,26 @@ public interface CabinPackage extends EPackage {
 	EAttribute getSimulationProperties_DeveloperMode();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggage <em>Luggage</em>}'.
+	 * Returns the meta object for the containment reference '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageProperties <em>Luggage Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Luggage</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggage()
+	 * @return the meta object for the containment reference '<em>Luggage Properties</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageProperties()
 	 * @see #getSimulationProperties()
 	 * @generated
 	 */
-	EReference getSimulationProperties_Luggage();
+	EReference getSimulationProperties_LuggageProperties();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassenger <em>Passenger</em>}'.
+	 * Returns the meta object for the containment reference '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerProperties <em>Passenger Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Passenger</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPassenger()
+	 * @return the meta object for the containment reference '<em>Passenger Properties</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerProperties()
 	 * @see #getSimulationProperties()
 	 * @generated
 	 */
-	EReference getSimulationProperties_Passenger();
+	EReference getSimulationProperties_PassengerProperties();
 
 	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}'.
@@ -5579,19 +5579,19 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute SIMULATION_PROPERTIES__DEVELOPER_MODE = eINSTANCE.getSimulationProperties_DeveloperMode();
 		/**
-		 * The meta object literal for the '<em><b>Luggage</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Luggage Properties</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SIMULATION_PROPERTIES__LUGGAGE = eINSTANCE.getSimulationProperties_Luggage();
+		EReference SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES = eINSTANCE.getSimulationProperties_LuggageProperties();
 		/**
-		 * The meta object literal for the '<em><b>Passenger</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Passenger Properties</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SIMULATION_PROPERTIES__PASSENGER = eINSTANCE.getSimulationProperties_Passenger();
+		EReference SIMULATION_PROPERTIES__PASSENGER_PROPERTIES = eINSTANCE.getSimulationProperties_PassengerProperties();
 		/**
 		 * The meta object literal for the '<em><b>Passengers Boarding Per Minute</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->

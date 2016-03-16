@@ -113,7 +113,7 @@ public class Agent extends Subject implements Runnable {
 		this.finalCostmap = costmap;
 		this.thePassengerILetInTheRow = thePassengerILetInTheRow;
 		this.simLuggageSettings = SimulationHandler.getCabin()
-				.getSimulationSettings().getLuggage();
+				.getSimulationSettings().getLuggageProperties();
 
 		/* generate a mood for the passenger depending on his presets */
 		if (passenger.getPassengerMood() == PassengerMood.AGRESSIVE) {

@@ -58,10 +58,10 @@ public class PassengerPropertyGenerator {
 		this.passenger = pax;
 
 		this.paxSettings = ModelHelper.getParent(Cabin.class, pax)
-				.getSimulationSettings().getPassenger();
+				.getSimulationSettings().getPassengerProperties();
 
 		this.luggageSettings = ModelHelper.getParent(Cabin.class, pax)
-				.getSimulationSettings().getLuggage();
+				.getSimulationSettings().getLuggageProperties();
 
 		/** At first. decide for the sex. **/
 		passenger.setSex(switchRandomSex(paxSettings.getPercentageOfWomen()));

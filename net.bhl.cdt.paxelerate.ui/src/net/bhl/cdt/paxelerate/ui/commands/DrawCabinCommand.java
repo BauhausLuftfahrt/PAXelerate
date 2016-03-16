@@ -68,18 +68,18 @@ public class DrawCabinCommand extends CDTCommand {
 			cabin.setSimulationSettings(settings);
 		}
 
-		LuggageProperties luggageSettings = cabin.getSimulationSettings().getLuggage();
+		LuggageProperties luggageSettings = cabin.getSimulationSettings().getLuggageProperties();
 
 		if (luggageSettings == null) {
 			luggageSettings = CabinFactory.eINSTANCE.createLuggageProperties();
-			cabin.getSimulationSettings().setLuggage(luggageSettings);
+			cabin.getSimulationSettings().setLuggageProperties(luggageSettings);
 		}
 
-		PassengerProperties paxSettings = cabin.getSimulationSettings().getPassenger();
+		PassengerProperties paxSettings = cabin.getSimulationSettings().getPassengerProperties();
 
 		if (paxSettings == null) {
 			paxSettings = CabinFactory.eINSTANCE.createPassengerProperties();
-			cabin.getSimulationSettings().setPassenger(paxSettings);
+			cabin.getSimulationSettings().setPassengerProperties(paxSettings);
 		}
 
 		double[] luggagemodel = { luggageSettings.getPercentageOfPassengersWithNoLuggage(),
@@ -88,7 +88,7 @@ public class DrawCabinCommand extends CDTCommand {
 				luggageSettings.getPercentageOfPassengersWithBigLuggage() };
 
 		if ((luggagemodel[0] + luggagemodel[1] + luggagemodel[2] + luggagemodel[3]) == 0) {
-			cabin.getSimulationSettings().getLuggage().setPercentageOfPassengersWithNoLuggage(100);
+			cabin.getSimulationSettings().getLuggageProperties().setPercentageOfPassengersWithNoLuggage(100);
 		}
 
 		cabinViewPart = ViewPartHelper.getCabinView();

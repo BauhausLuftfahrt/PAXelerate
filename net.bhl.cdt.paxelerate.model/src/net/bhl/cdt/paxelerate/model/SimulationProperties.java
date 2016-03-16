@@ -23,8 +23,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSorting <em>Sorting</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDeveloperMode <em>Developer Mode</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggage <em>Luggage</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassenger <em>Passenger</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageProperties <em>Luggage Properties</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerProperties <em>Passenger Properties</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}</li>
  * </ul>
  *
@@ -268,56 +268,56 @@ public interface SimulationProperties extends EObject {
 	void setDeveloperMode(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Luggage</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Luggage Properties</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Luggage</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Luggage Properties</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Luggage</em>' containment reference.
-	 * @see #setLuggage(LuggageProperties)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_Luggage()
+	 * @return the value of the '<em>Luggage Properties</em>' containment reference.
+	 * @see #setLuggageProperties(LuggageProperties)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_LuggageProperties()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	LuggageProperties getLuggage();
+	LuggageProperties getLuggageProperties();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggage <em>Luggage</em>}' containment reference.
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageProperties <em>Luggage Properties</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Luggage</em>' containment reference.
-	 * @see #getLuggage()
+	 * @param value the new value of the '<em>Luggage Properties</em>' containment reference.
+	 * @see #getLuggageProperties()
 	 * @generated
 	 */
-	void setLuggage(LuggageProperties value);
+	void setLuggageProperties(LuggageProperties value);
 
 	/**
-	 * Returns the value of the '<em><b>Passenger</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Passenger Properties</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Passenger</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Passenger Properties</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Passenger</em>' containment reference.
-	 * @see #setPassenger(PassengerProperties)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_Passenger()
+	 * @return the value of the '<em>Passenger Properties</em>' containment reference.
+	 * @see #setPassengerProperties(PassengerProperties)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_PassengerProperties()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	PassengerProperties getPassenger();
+	PassengerProperties getPassengerProperties();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassenger <em>Passenger</em>}' containment reference.
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerProperties <em>Passenger Properties</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Passenger</em>' containment reference.
-	 * @see #getPassenger()
+	 * @param value the new value of the '<em>Passenger Properties</em>' containment reference.
+	 * @see #getPassengerProperties()
 	 * @generated
 	 */
-	void setPassenger(PassengerProperties value);
+	void setPassengerProperties(PassengerProperties value);
 
 	/**
 	 * Returns the value of the '<em><b>Passengers Boarding Per Minute</b></em>' attribute.

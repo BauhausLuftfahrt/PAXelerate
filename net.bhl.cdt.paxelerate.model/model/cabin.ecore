@@ -219,9 +219,9 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="10"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="developerMode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="luggage" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="luggageProperties" lowerBound="1"
         eType="#//LuggageProperties" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="passenger" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="passengerProperties" lowerBound="1"
         eType="#//PassengerProperties" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengersBoardingPerMinute"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"

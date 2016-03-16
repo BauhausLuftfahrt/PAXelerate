@@ -1354,7 +1354,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSimulationProperties_Luggage() {
+	public EReference getSimulationProperties_LuggageProperties() {
         return (EReference)getSimulationProperties().getEStructuralFeatures().get(9);
 	}
 
@@ -1363,7 +1363,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSimulationProperties_Passenger() {
+	public EReference getSimulationProperties_PassengerProperties() {
         return (EReference)getSimulationProperties().getEStructuralFeatures().get(10);
 	}
 
