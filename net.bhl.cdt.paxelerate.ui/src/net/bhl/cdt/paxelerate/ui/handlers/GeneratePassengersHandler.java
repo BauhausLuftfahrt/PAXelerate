@@ -13,7 +13,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import net.bhl.cdt.paxelerate.model.Cabin;
-import net.bhl.cdt.paxelerate.model.util.ModelLoader;
+import net.bhl.cdt.paxelerate.model.util.EMFModelLoader;
 import net.bhl.cdt.paxelerate.ui.commands.GeneratePassengersCommand;
 
 public class GeneratePassengersHandler extends AbstractHandler {
@@ -39,7 +39,7 @@ public class GeneratePassengersHandler extends AbstractHandler {
 		// model explorer into the cabin view before!
 
 		if (selection == null) {
-			firstElement = ModelLoader.loadCabin();
+			firstElement = EMFModelLoader.loadCabin();
 
 		} else {
 			firstElement = selection.getFirstElement();

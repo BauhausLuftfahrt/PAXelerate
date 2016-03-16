@@ -119,7 +119,12 @@ public class DrawCabinCommand extends CDTCommand {
 			Log.add(this, "No cabin view is visible!");
 		}
 
-		// TODO: this is a test for storing the cabin object!
+		/*
+		 * TODO: this is a test for storing the cabin object! It crashes the
+		 * model explorer.
+		 * 
+		 */
+
 		// ModelPersistor.store(cabin);
 		// ModelPersistor.store(cabin.getSimulationSettings());
 	}

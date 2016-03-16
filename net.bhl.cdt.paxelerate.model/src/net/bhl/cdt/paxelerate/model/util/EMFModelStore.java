@@ -18,7 +18,7 @@ import net.bhl.cdt.paxelerate.model.SimulationProperties;
  * @author marc.engelmann
  *
  */
-public class ModelPersistor {
+public class EMFModelStore {
 
 	/**
 	 * @param args

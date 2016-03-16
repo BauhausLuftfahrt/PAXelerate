@@ -12,11 +12,12 @@ import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
 
 /**
+ * This class is used for loading the previously stored model.
  * 
  * @author marc.engelmann
  *
  */
-public class ModelLoader {
+public class EMFModelLoader {
 
 	public static Cabin loadCabin() {
 

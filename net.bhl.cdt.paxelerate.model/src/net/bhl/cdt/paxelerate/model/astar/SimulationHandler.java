@@ -200,9 +200,9 @@ public class SimulationHandler {
 
 		int offset = 5;
 
-		Vector start = new Vector2D(
+		Vector start = new Vector2D(seat.getXPosition() - 2,
 				seat.getYPosition() + seat.getYDimension() / 2,
-				(seat.getXPosition()) - 2, cabin.getScale());
+				cabin.getScale());
 
 		if (pax.getSeatRef().getXPosition() < pax.getDoor().getXPosition()) {
 			offset = -(offset + 2);
