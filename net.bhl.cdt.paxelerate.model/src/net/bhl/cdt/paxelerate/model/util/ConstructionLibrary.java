@@ -72,7 +72,7 @@ public class ConstructionLibrary {
 		this.cabin = cabin;
 		rowPartsInt = new ArrayList<Integer>();
 		globalSeatPositionY = 0;
-		globalSeatPositionX = 0;
+		globalSeatPositionX = 50;
 		seatStructure = "3-3";
 		seatCount = 1;
 		rowCount = 1;
@@ -265,10 +265,10 @@ public class ConstructionLibrary {
 	 * This method creates the physical objects except for seats!
 	 * 
 	 * @param physicalObjectClass
-	 * @param yDimension
+	 * @param xDimension
 	 */
 	public <P extends PhysicalObject> void createPhysicalObject(
-			Class<P> physicalObjectClass, int yDimension) {
+			Class<P> physicalObjectClass, int xDimension) {
 		int currentPosition = 0;
 		splitSeatString(seatStructure);
 		if (doItOnce) {
@@ -300,7 +300,7 @@ public class ConstructionLibrary {
 				galleyCount++;
 				break;
 			}
-			physialObject.setXDimension(yDimension);
+			physialObject.setXDimension(xDimension);
 			physialObject.setXPosition(globalSeatPositionX);
 			try {
 				physialObject.setYDimension(rowPartsInt.get(k)
@@ -316,7 +316,7 @@ public class ConstructionLibrary {
 					+ cabin.getAisleWidth();
 
 		}
-		globalSeatPositionX += yDimension;
+		globalSeatPositionX += xDimension;
 	}
 
 	/**
@@ -389,8 +389,13 @@ public class ConstructionLibrary {
 						"Check your number of seats in "
 								+ StringHelper.splitCamelCase(
 										travelSubClass.getSimpleName())
-						+ ". Could not fill all rows.");
+								+ ". Could not fill all rows.");
 			}
+
+			if (passengerClass instanceof FirstClass) {
+				globalSeatPositionX += 20;
+			}
+
 			for (int i = 1; i <= seats / seatsInRow; i++) {
 				globalSeatPositionY = 0;
 
@@ -495,6 +500,7 @@ public class ConstructionLibrary {
 			newDoor = standardDoor;
 			newDoor.setWidth(80);
 			newDoor.setXPosition(globalSeatPositionX);
+			newDoor.setIsActive(false);
 			globalSeatPositionX += 80;
 		} else {
 			EmergencyExit emergencyExit = CabinFactory.eINSTANCE

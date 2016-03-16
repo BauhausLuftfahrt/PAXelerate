@@ -513,17 +513,19 @@ public class CabinViewPart extends ViewPart {
 				e.gc.setLineWidth(2);
 				for (int l = 0; l < agentList.size(); l++) {
 					for (Path path : agentList.get(l).getPathList()) {
-						int[] points = new int[2 * path.getLength()];
-						int k = 0;
-						int i = 0;
-						while (k < 2 * path.getLength()) {
-							points[k] = xZero + (int) (path.get(i).getPosition().getY() * scale());
-							points[k + 1] = yZero + (int) (path.get(i).getPosition().getX() * scale());
-							k = k + 2;
-							i++;
+						if (path != null) {
+							int[] points = new int[2 * path.getLength()];
+							int k = 0;
+							int i = 0;
+							while (k < 2 * path.getLength()) {
+								points[k] = xZero + (int) (path.get(i).getPosition().getY() * scale());
+								points[k + 1] = yZero + (int) (path.get(i).getPosition().getX() * scale());
+								k = k + 2;
+								i++;
+							}
+							e.gc.drawPolyline(points);
+							points = null;
 						}
-						e.gc.drawPolyline(points);
-						points = null;
 					}
 				}
 				e.gc.setLineWidth(1);

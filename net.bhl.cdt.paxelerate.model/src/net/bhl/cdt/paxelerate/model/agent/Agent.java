@@ -420,7 +420,7 @@ public class Agent extends Subject implements Runnable {
 	 * map is always modified based on the non-editable final cost map
 	 * calculated at the beginning.
 	 */
-	public void findNewPath() {
+	public void findNewPath() throws NullPointerException {
 
 		/* starts the StopWatch - used for performance testing */
 		stopwatch.start();
@@ -448,7 +448,11 @@ public class Agent extends Subject implements Runnable {
 		/* retrieve the path information */
 		path = astar.getBestPath();
 
-		/* setting the new desired and current positions */
+		/*
+		 * setting the new desired and current positions. This causes a
+		 * NullPointerException if no path is found!
+		 */
+
 		desiredPosition = path.get(0).getPosition();
 
 		if (!initialized) {

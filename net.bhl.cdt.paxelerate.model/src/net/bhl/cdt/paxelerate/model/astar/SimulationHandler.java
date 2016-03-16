@@ -361,7 +361,18 @@ public class SimulationHandler {
 
 		/* First generate all paths ... */
 		for (Agent agent : agentList) {
-			agent.findNewPath();
+
+			/* try to find a path! */
+			try {
+				agent.findNewPath();
+
+				/* Warn if no path can be found */
+			} catch (NullPointerException e) {
+				System.out.println("Passenger " + agent.getPassenger().getId()
+						+ " for Seat "
+						+ agent.getPassenger().getSeatRef().getName()
+						+ " can not find a path to the seat!");
+			}
 
 			/* return information to the progress bar */
 			progressValue++;
