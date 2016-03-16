@@ -2486,13 +2486,40 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR = 7;
 
 	/**
+	 * The feature id for the '<em><b>Seat Interference Standing Up Passenger Waiting Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME = 8;
+
+	/**
+	 * The feature id for the '<em><b>Seat Interference Process Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME = 9;
+
+	/**
+	 * The feature id for the '<em><b>Thread Sleep Time Default</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT = 10;
+
+	/**
 	 * The feature id for the '<em><b>Developer Mode</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__DEVELOPER_MODE = 8;
+	int SIMULATION_PROPERTIES__DEVELOPER_MODE = 11;
 
 	/**
 	 * The feature id for the '<em><b>Luggage Properties</b></em>' containment reference.
@@ -2501,7 +2528,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES = 9;
+	int SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES = 12;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Properties</b></em>' containment reference.
@@ -2510,7 +2537,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_PROPERTIES = 10;
+	int SIMULATION_PROPERTIES__PASSENGER_PROPERTIES = 13;
 
 	/**
 	 * The feature id for the '<em><b>Passengers Boarding Per Minute</b></em>' attribute.
@@ -2519,7 +2546,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = 11;
+	int SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = 14;
 
 	/**
 	 * The number of structural features of the '<em>Simulation Properties</em>' class.
@@ -2528,7 +2555,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES_FEATURE_COUNT = 12;
+	int SIMULATION_PROPERTIES_FEATURE_COUNT = 15;
 
 	/**
 	 * The number of operations of the '<em>Simulation Properties</em>' class.
@@ -4155,6 +4182,39 @@ public interface CabinPackage extends EPackage {
 	EAttribute getSimulationProperties_SimulationSpeedFactor();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceStandingUpPassengerWaitingTime <em>Seat Interference Standing Up Passenger Waiting Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seat Interference Standing Up Passenger Waiting Time</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceStandingUpPassengerWaitingTime()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_SeatInterferenceStandingUpPassengerWaitingTime();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTime <em>Seat Interference Process Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seat Interference Process Time</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTime()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_SeatInterferenceProcessTime();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getThreadSleepTimeDefault <em>Thread Sleep Time Default</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Thread Sleep Time Default</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getThreadSleepTimeDefault()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_ThreadSleepTimeDefault();
+
+	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDeveloperMode <em>Developer Mode</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5571,6 +5631,27 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR = eINSTANCE.getSimulationProperties_SimulationSpeedFactor();
+		/**
+		 * The meta object literal for the '<em><b>Seat Interference Standing Up Passenger Waiting Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME = eINSTANCE.getSimulationProperties_SeatInterferenceStandingUpPassengerWaitingTime();
+		/**
+		 * The meta object literal for the '<em><b>Seat Interference Process Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME = eINSTANCE.getSimulationProperties_SeatInterferenceProcessTime();
+		/**
+		 * The meta object literal for the '<em><b>Thread Sleep Time Default</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT = eINSTANCE.getSimulationProperties_ThreadSleepTimeDefault();
 		/**
 		 * The meta object literal for the '<em><b>Developer Mode</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->

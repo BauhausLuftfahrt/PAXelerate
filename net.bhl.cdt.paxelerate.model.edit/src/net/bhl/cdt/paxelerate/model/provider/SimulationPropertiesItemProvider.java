@@ -63,6 +63,9 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 			addResultsPropertyDescriptor(object);
 			addSortingPropertyDescriptor(object);
 			addSimulationSpeedFactorPropertyDescriptor(object);
+			addSeatInterferenceStandingUpPassengerWaitingTimePropertyDescriptor(object);
+			addSeatInterferenceProcessTimePropertyDescriptor(object);
+			addThreadSleepTimeDefaultPropertyDescriptor(object);
 			addDeveloperModePropertyDescriptor(object);
 			addPassengersBoardingPerMinutePropertyDescriptor(object);
 		}
@@ -246,6 +249,72 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	}
 
 	/**
+	 * This adds a property descriptor for the Seat Interference Standing Up Passenger Waiting Time feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatInterferenceStandingUpPassengerWaitingTimePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_seatInterferenceStandingUpPassengerWaitingTime_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_seatInterferenceStandingUpPassengerWaitingTime_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Seat Interference Process Time feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatInterferenceProcessTimePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_seatInterferenceProcessTime_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_seatInterferenceProcessTime_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Thread Sleep Time Default feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addThreadSleepTimeDefaultPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_threadSleepTimeDefault_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_threadSleepTimeDefault_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Developer Mode feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -362,6 +431,9 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 			case CabinPackage.SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT:
 			case CabinPackage.SIMULATION_PROPERTIES__SORTING:
 			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME:
+			case CabinPackage.SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT:
 			case CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE:
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

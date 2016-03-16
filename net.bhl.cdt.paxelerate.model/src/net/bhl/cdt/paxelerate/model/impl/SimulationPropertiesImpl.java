@@ -35,6 +35,9 @@ import net.bhl.cdt.paxelerate.model.SortingStyle;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getResults <em>Results</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSorting <em>Sorting</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSeatInterferenceStandingUpPassengerWaitingTime <em>Seat Interference Standing Up Passenger Waiting Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSeatInterferenceProcessTime <em>Seat Interference Process Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getThreadSleepTimeDefault <em>Thread Sleep Time Default</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isDeveloperMode <em>Developer Mode</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getLuggageProperties <em>Luggage Properties</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerProperties <em>Passenger Properties</em>}</li>
@@ -193,6 +196,66 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * @ordered
 	 */
 	protected int simulationSpeedFactor = SIMULATION_SPEED_FACTOR_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSeatInterferenceStandingUpPassengerWaitingTime() <em>Seat Interference Standing Up Passenger Waiting Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceStandingUpPassengerWaitingTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME_EDEFAULT = 3;
+
+	/**
+	 * The cached value of the '{@link #getSeatInterferenceStandingUpPassengerWaitingTime() <em>Seat Interference Standing Up Passenger Waiting Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceStandingUpPassengerWaitingTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected int seatInterferenceStandingUpPassengerWaitingTime = SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSeatInterferenceProcessTime() <em>Seat Interference Process Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int SEAT_INTERFERENCE_PROCESS_TIME_EDEFAULT = 7;
+
+	/**
+	 * The cached value of the '{@link #getSeatInterferenceProcessTime() <em>Seat Interference Process Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected int seatInterferenceProcessTime = SEAT_INTERFERENCE_PROCESS_TIME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getThreadSleepTimeDefault() <em>Thread Sleep Time Default</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getThreadSleepTimeDefault()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int THREAD_SLEEP_TIME_DEFAULT_EDEFAULT = 10;
+
+	/**
+	 * The cached value of the '{@link #getThreadSleepTimeDefault() <em>Thread Sleep Time Default</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getThreadSleepTimeDefault()
+	 * @generated
+	 * @ordered
+	 */
+	protected int threadSleepTimeDefault = THREAD_SLEEP_TIME_DEFAULT_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isDeveloperMode() <em>Developer Mode</em>}' attribute.
@@ -437,6 +500,69 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getSeatInterferenceStandingUpPassengerWaitingTime() {
+		return seatInterferenceStandingUpPassengerWaitingTime;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatInterferenceStandingUpPassengerWaitingTime(int newSeatInterferenceStandingUpPassengerWaitingTime) {
+		int oldSeatInterferenceStandingUpPassengerWaitingTime = seatInterferenceStandingUpPassengerWaitingTime;
+		seatInterferenceStandingUpPassengerWaitingTime = newSeatInterferenceStandingUpPassengerWaitingTime;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME, oldSeatInterferenceStandingUpPassengerWaitingTime, seatInterferenceStandingUpPassengerWaitingTime));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getSeatInterferenceProcessTime() {
+		return seatInterferenceProcessTime;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatInterferenceProcessTime(int newSeatInterferenceProcessTime) {
+		int oldSeatInterferenceProcessTime = seatInterferenceProcessTime;
+		seatInterferenceProcessTime = newSeatInterferenceProcessTime;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME, oldSeatInterferenceProcessTime, seatInterferenceProcessTime));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getThreadSleepTimeDefault() {
+		return threadSleepTimeDefault;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setThreadSleepTimeDefault(int newThreadSleepTimeDefault) {
+		int oldThreadSleepTimeDefault = threadSleepTimeDefault;
+		threadSleepTimeDefault = newThreadSleepTimeDefault;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT, oldThreadSleepTimeDefault, threadSleepTimeDefault));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isDeveloperMode() {
 		return developerMode;
 	}
@@ -600,6 +726,12 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return getSorting();
 			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
 				return getSimulationSpeedFactor();
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
+				return getSeatInterferenceStandingUpPassengerWaitingTime();
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME:
+				return getSeatInterferenceProcessTime();
+			case CabinPackage.SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT:
+				return getThreadSleepTimeDefault();
 			case CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE:
 				return isDeveloperMode();
 			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES:
@@ -645,6 +777,15 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
 				setSimulationSpeedFactor((Integer)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
+				setSeatInterferenceStandingUpPassengerWaitingTime((Integer)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME:
+				setSeatInterferenceProcessTime((Integer)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT:
+				setThreadSleepTimeDefault((Integer)newValue);
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE:
 				setDeveloperMode((Boolean)newValue);
@@ -694,6 +835,15 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
 				setSimulationSpeedFactor(SIMULATION_SPEED_FACTOR_EDEFAULT);
 				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
+				setSeatInterferenceStandingUpPassengerWaitingTime(SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME:
+				setSeatInterferenceProcessTime(SEAT_INTERFERENCE_PROCESS_TIME_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT:
+				setThreadSleepTimeDefault(THREAD_SLEEP_TIME_DEFAULT_EDEFAULT);
+				return;
 			case CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE:
 				setDeveloperMode(DEVELOPER_MODE_EDEFAULT);
 				return;
@@ -734,6 +884,12 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return sorting != SORTING_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
 				return simulationSpeedFactor != SIMULATION_SPEED_FACTOR_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
+				return seatInterferenceStandingUpPassengerWaitingTime != SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME:
+				return seatInterferenceProcessTime != SEAT_INTERFERENCE_PROCESS_TIME_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT:
+				return threadSleepTimeDefault != THREAD_SLEEP_TIME_DEFAULT_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE:
 				return developerMode != DEVELOPER_MODE_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES:
@@ -770,6 +926,12 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 		result.append(sorting);
 		result.append(", simulationSpeedFactor: ");
 		result.append(simulationSpeedFactor);
+		result.append(", seatInterferenceStandingUpPassengerWaitingTime: ");
+		result.append(seatInterferenceStandingUpPassengerWaitingTime);
+		result.append(", seatInterferenceProcessTime: ");
+		result.append(seatInterferenceProcessTime);
+		result.append(", threadSleepTimeDefault: ");
+		result.append(threadSleepTimeDefault);
 		result.append(", developerMode: ");
 		result.append(developerMode);
 		result.append(", passengersBoardingPerMinute: ");

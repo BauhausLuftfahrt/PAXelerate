@@ -16,6 +16,7 @@ import net.bhl.cdt.paxelerate.model.LuggageSize;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.PassengerMood;
 import net.bhl.cdt.paxelerate.model.Seat;
+import net.bhl.cdt.paxelerate.model.SimulationProperties;
 import net.bhl.cdt.paxelerate.model.astar.AStarHelper;
 import net.bhl.cdt.paxelerate.model.astar.Core;
 import net.bhl.cdt.paxelerate.model.astar.CostMap;
@@ -72,6 +73,8 @@ public class Agent extends Subject implements Runnable {
 	private Passenger thePassengerILetInTheRow;
 
 	private LuggageProperties simLuggageSettings;
+	
+	private SimulationProperties simSettings;
 
 	public Passenger getThePassengerILetInTheRow() {
 		return thePassengerILetInTheRow;
@@ -112,6 +115,8 @@ public class Agent extends Subject implements Runnable {
 		this.scale = SimulationHandler.getCabin().getScale();
 		this.finalCostmap = costmap;
 		this.thePassengerILetInTheRow = thePassengerILetInTheRow;
+		this.simSettings = SimulationHandler.getCabin()
+				.getSimulationSettings();
 		this.simLuggageSettings = SimulationHandler.getCabin()
 				.getSimulationSettings().getLuggageProperties();
 
@@ -651,13 +656,13 @@ public class Agent extends Subject implements Runnable {
 					// already in the row!
 
 					while (waymakingAllowed() == false) {
-						Thread.sleep(10);
+						Thread.sleep(simSettings.getThreadSleepTimeDefault());
 					}
 
 					if (anyoneNearMe()) {
 						System.out
 								.println("waymaking skipped. Delay simulated!");
-						Thread.sleep(AStarHelper.time(7));
+						Thread.sleep(AStarHelper.time(simSettings.getSeatInterferenceProcessTime()));
 						waitingCompleted = true;
 						continue;
 					}
@@ -672,11 +677,12 @@ public class Agent extends Subject implements Runnable {
 						}
 
 						while (!otherPassengerStoodUp()) {
-							Thread.sleep(10);
+							Thread.sleep(simSettings.getThreadSleepTimeDefault());
 						}
 
 						// TODO: calculate the waiting time!
-						Thread.sleep(AStarHelper.time(3));
+						Thread.sleep(AStarHelper.time(
+								simSettings.getSeatInterferenceStandingUpPassengerWaitingTime()));
 
 						waitingCompleted = true;
 					}
@@ -928,7 +934,7 @@ public class Agent extends Subject implements Runnable {
 
 				while (SimulationHandler
 						.CabinAccessGranted(passenger) == false) {
-					Thread.sleep(10);
+					Thread.sleep(simSettings.getThreadSleepTimeDefault());
 				}
 			}
 
@@ -984,7 +990,7 @@ public class Agent extends Subject implements Runnable {
 				/* sleep until the other passenger has seated! */
 				setCurrentState(State.WAITING_FOR_OTHER_PASSENGER_TO_SEAT);
 				while (!thePassengerILetInTheRow.isIsSeated()) {
-					Thread.sleep(10);
+					Thread.sleep(simSettings.getThreadSleepTimeDefault());
 
 				}
 

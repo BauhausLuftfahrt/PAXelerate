@@ -1345,7 +1345,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_DeveloperMode() {
+	public EAttribute getSimulationProperties_SeatInterferenceStandingUpPassengerWaitingTime() {
         return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(8);
 	}
 
@@ -1354,8 +1354,35 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getSimulationProperties_SeatInterferenceProcessTime() {
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_ThreadSleepTimeDefault() {
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_DeveloperMode() {
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getSimulationProperties_LuggageProperties() {
-        return (EReference)getSimulationProperties().getEStructuralFeatures().get(9);
+        return (EReference)getSimulationProperties().getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -1364,7 +1391,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EReference getSimulationProperties_PassengerProperties() {
-        return (EReference)getSimulationProperties().getEStructuralFeatures().get(10);
+        return (EReference)getSimulationProperties().getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -1373,7 +1400,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getSimulationProperties_PassengersBoardingPerMinute() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(11);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(14);
 	}
 
 	/**

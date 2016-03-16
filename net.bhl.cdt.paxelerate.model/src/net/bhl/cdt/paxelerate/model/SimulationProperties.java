@@ -22,6 +22,9 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getResults <em>Results</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSorting <em>Sorting</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceStandingUpPassengerWaitingTime <em>Seat Interference Standing Up Passenger Waiting Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTime <em>Seat Interference Process Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getThreadSleepTimeDefault <em>Thread Sleep Time Default</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDeveloperMode <em>Developer Mode</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageProperties <em>Luggage Properties</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerProperties <em>Passenger Properties</em>}</li>
@@ -239,6 +242,87 @@ public interface SimulationProperties extends EObject {
 	 * @generated
 	 */
 	void setSimulationSpeedFactor(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Seat Interference Standing Up Passenger Waiting Time</b></em>' attribute.
+	 * The default value is <code>"3"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seat Interference Standing Up Passenger Waiting Time</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seat Interference Standing Up Passenger Waiting Time</em>' attribute.
+	 * @see #setSeatInterferenceStandingUpPassengerWaitingTime(int)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_SeatInterferenceStandingUpPassengerWaitingTime()
+	 * @model default="3"
+	 * @generated
+	 */
+	int getSeatInterferenceStandingUpPassengerWaitingTime();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceStandingUpPassengerWaitingTime <em>Seat Interference Standing Up Passenger Waiting Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seat Interference Standing Up Passenger Waiting Time</em>' attribute.
+	 * @see #getSeatInterferenceStandingUpPassengerWaitingTime()
+	 * @generated
+	 */
+	void setSeatInterferenceStandingUpPassengerWaitingTime(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Seat Interference Process Time</b></em>' attribute.
+	 * The default value is <code>"7"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seat Interference Process Time</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seat Interference Process Time</em>' attribute.
+	 * @see #setSeatInterferenceProcessTime(int)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_SeatInterferenceProcessTime()
+	 * @model default="7"
+	 * @generated
+	 */
+	int getSeatInterferenceProcessTime();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTime <em>Seat Interference Process Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seat Interference Process Time</em>' attribute.
+	 * @see #getSeatInterferenceProcessTime()
+	 * @generated
+	 */
+	void setSeatInterferenceProcessTime(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Thread Sleep Time Default</b></em>' attribute.
+	 * The default value is <code>"10"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Thread Sleep Time Default</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Thread Sleep Time Default</em>' attribute.
+	 * @see #setThreadSleepTimeDefault(int)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_ThreadSleepTimeDefault()
+	 * @model default="10"
+	 * @generated
+	 */
+	int getThreadSleepTimeDefault();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getThreadSleepTimeDefault <em>Thread Sleep Time Default</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Thread Sleep Time Default</em>' attribute.
+	 * @see #getThreadSleepTimeDefault()
+	 * @generated
+	 */
+	void setThreadSleepTimeDefault(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Developer Mode</b></em>' attribute.
