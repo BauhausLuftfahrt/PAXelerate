@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: %pluginName
+Bundle-Name: PAXelerate - User Interface
 Bundle-SymbolicName: net.bhl.cdt.paxelerate.ui;singleton:=true
 Bundle-Version: 0.6.0.qualifier
 Bundle-Activator: net.bhl.cdt.paxelerate.ui.Activator
@@ -20,4 +20,4 @@ Export-Package: net.bhl.cdt.paxelerate.ui,
  net.bhl.cdt.paxelerate.ui.font,
  net.bhl.cdt.paxelerate.ui.images,
  net.bhl.cdt.paxelerate.ui.views
-Bundle-Vendor: %providerName
+Bundle-Vendor: http://www.paxelerate.com/

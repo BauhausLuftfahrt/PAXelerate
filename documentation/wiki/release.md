@@ -15,7 +15,7 @@ See [a successful Git branching model](http://nvie.com/posts/a-successful-git-br
 
 	
 ## Pre-release tasks
-A release candiate branch `release-0.X` will be produced for testing and bug fixing. Tests should comprise at least the following tasks. Bit by bit this will be transfered to automatic tests.
+A release candidate branch `release-0.X` will be produced for testing and bug fixing. Tests should comprise at least the following tasks. Bit by bit this will be transfered to automatic tests.
 
 * OpenCDT
 	* Project generation, import, export
@@ -30,7 +30,7 @@ A release candiate branch `release-0.X` will be produced for testing and bug fix
 		* Editing of model element values
 		* Repositioning of elements
 	* Passenger 
-		* Generation in first, business, premium eco and eco
+		* Generation in first, business, premium economy and economy
 		* Passenger sorting
 	* Simulation
 	
@@ -45,7 +45,7 @@ The wiki should be updated, if new features and functions as well as mayor UI ch
 
 	
 ## Release day
-After a successful test of the release candiate, updates of the code, repository and website are necessary
+After a successful test of the release candidate, updates of the code, repository and website are necessary
 
 * Code
 	* Update legal and copyright info with current year
