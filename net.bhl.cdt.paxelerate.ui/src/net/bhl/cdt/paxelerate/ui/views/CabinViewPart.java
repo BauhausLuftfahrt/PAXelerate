@@ -8,6 +8,7 @@ package net.bhl.cdt.paxelerate.ui.views;
 import java.io.File;
 import java.util.ArrayList;
 
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
@@ -68,7 +69,7 @@ public class CabinViewPart extends ViewPart {
 
 	private Image economySeat, businessSeat, firstSeat, coffeeIcon, lavatoryIcon;
 	private Canvas canvas;
-	// private Adapter cabinAdapter;
+	private Adapter cabinAdapter;
 	private ImageLoader loader;
 	private static Image img;
 	private static final String FOLDER_NAME = "paxelerate",
@@ -410,7 +411,7 @@ public class CabinViewPart extends ViewPart {
 			// };
 
 			img = createImage();
-			// syncViewer();
+			syncViewer();
 			doTheDraw();
 		} catch (Exception e) {
 			Log.add(this, "ERROR in setCabin()");
@@ -418,30 +419,27 @@ public class CabinViewPart extends ViewPart {
 		}
 	}
 
-	// /**
-	// * This method synchronizes the cabin view with the cabin object by
-	// * listening to its change events.
-	// */
-	// public void syncViewer() {
-	// if ((cabinAdapter != null) &&
-	// (!cabin.eAdapters().contains(cabinAdapter))) {
-	// cabin.eAdapters().add(cabinAdapter);
-	// }
-	//
-	// }
-	//
-	// /**
-	// * This method unsyncs the Cabin view with the cabin object by removing
-	// the
-	// * event listener form the cabin object.
-	// */
-	// public void unsyncViewer() {
-	// if ((cabinAdapter != null) && (cabin.eAdapters().contains(cabinAdapter)))
-	// {
-	//
-	// cabin.eAdapters().remove(cabinAdapter);
-	// }
-	// }
+	/**
+	 * This method synchronizes the cabin view with the cabin object by
+	 * listening to its change events.
+	 */
+	public void syncViewer() {
+		if ((cabinAdapter != null) && (!cabin.eAdapters().contains(cabinAdapter))) {
+			cabin.eAdapters().add(cabinAdapter);
+		}
+
+	}
+
+	/**
+	 * This method unsyncs the Cabin view with the cabin object by removing the
+	 * event listener form the cabin object.
+	 */
+	public void unsyncViewer() {
+		if ((cabinAdapter != null) && (cabin.eAdapters().contains(cabinAdapter))) {
+
+			cabin.eAdapters().remove(cabinAdapter);
+		}
+	}
 
 	/**
 	 * This method catches an obstacle map and generates an image from it.

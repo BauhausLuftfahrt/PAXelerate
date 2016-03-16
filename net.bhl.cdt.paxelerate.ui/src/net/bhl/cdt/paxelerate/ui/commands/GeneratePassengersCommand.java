@@ -216,6 +216,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 		/**************************************************************/
 		cabin.getPassengers().clear();
 
+		// TODO: create functions for this!
 		try {
 			firstpax = ModelHelper.getChildrenByClass(cabin, FirstClass.class).get(0).getPassengers();
 		} catch (IndexOutOfBoundsException e) {
@@ -289,7 +290,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 		try {
 			cabinViewPart.setCabin(cabin);
-			// cabinViewPart.syncViewer();
+			cabinViewPart.syncViewer();
 		} catch (NullPointerException e) {
 			Log.add(this, "Cabin View or Info view not visible!");
 		}

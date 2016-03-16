@@ -13,6 +13,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import net.bhl.cdt.paxelerate.model.Cabin;
+import net.bhl.cdt.paxelerate.model.util.ModelLoader;
 import net.bhl.cdt.paxelerate.ui.commands.GenerateCabinCommand;
 
 public class GenerateCabinHandler extends AbstractHandler {
@@ -31,7 +32,18 @@ public class GenerateCabinHandler extends AbstractHandler {
 		ISelection sel = HandlerUtil.getActiveMenuSelection(event);
 		IStructuredSelection selection = (IStructuredSelection) sel;
 
-		Object firstElement = selection.getFirstElement();
+		Object firstElement = null;
+
+		// TODO: this does not work if the cabin has not been loaded from the
+		// model explorer into the cabin view before!
+
+		if (selection == null) {
+			firstElement = ModelLoader.loadCabin();
+
+		} else {
+			firstElement = selection.getFirstElement();
+		}
+
 		if (firstElement instanceof Cabin) {
 
 			new GenerateCabinCommand((Cabin) firstElement).execute();

@@ -230,15 +230,21 @@
    </extension>
    <extension
          point="org.eclipse.ui.bindings">
+      <scheme
+            id="net.bhl.cdt.paxelerate.ui.scheme"
+            name="PAXelerateScheme">
+      </scheme>
+      <key
+            commandId="net.bhl.cdt.paxelerate.ui.generatePassengers"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="net.bhl.cdt.paxelerate.ui.scheme"
+            sequence="M1+P">
+      </key>
       <key
             commandId="net.bhl.cdt.paxelerate.ui.drawCabin"
             contextId="org.eclipse.ui.contexts.window"
             schemeId="net.bhl.cdt.paxelerate.ui.scheme"
             sequence="M1+R">
       </key>
-      <scheme
-            id="net.bhl.cdt.paxelerate.ui.scheme"
-            name="PAXelerateScheme">
-      </scheme>
    </extension>
 </plugin>

@@ -62,7 +62,7 @@ public class DrawCabinCommand extends CDTCommand {
 		 *            the arguments
 		 */
 		SimulationProperties settings = cabin.getSimulationSettings();
-		
+
 		if (settings == null) {
 			settings = CabinFactory.eINSTANCE.createSimulationProperties();
 			cabin.setSimulationSettings(settings);
@@ -74,15 +74,14 @@ public class DrawCabinCommand extends CDTCommand {
 			luggageSettings = CabinFactory.eINSTANCE.createLuggageProperties();
 			cabin.getSimulationSettings().setLuggage(luggageSettings);
 		}
-		
+
 		PassengerProperties paxSettings = cabin.getSimulationSettings().getPassenger();
 
 		if (paxSettings == null) {
 			paxSettings = CabinFactory.eINSTANCE.createPassengerProperties();
 			cabin.getSimulationSettings().setPassenger(paxSettings);
 		}
-		
-		
+
 		double[] luggagemodel = { luggageSettings.getPercentageOfPassengersWithNoLuggage(),
 				luggageSettings.getPercentageOfPassengersWithSmallLuggage(),
 				luggageSettings.getPercentageOfPassengersWithMediumLuggage(),
@@ -119,6 +118,10 @@ public class DrawCabinCommand extends CDTCommand {
 		} catch (NullPointerException e) {
 			Log.add(this, "No cabin view is visible!");
 		}
+
+		// TODO: this is a test for storing the cabin object!
+		// ModelPersistor.store(cabin);
+		// ModelPersistor.store(cabin.getSimulationSettings());
 	}
 
 	private void repairBoardingClassAssignments() {
@@ -146,18 +149,21 @@ public class DrawCabinCommand extends CDTCommand {
 	}
 
 	private void updateTravelClassProperties() {
-		for (TravelClass tc : cabin.getClasses()) {
+		for (TravelClass travelclass : cabin.getClasses()) {
+
 			// set number of seats
-			int numberSeats = ModelHelper.getChildrenByClass(tc, Seat.class).size();
-			tc.setAvailableSeats(numberSeats);
+			int numberSeats = ModelHelper.getChildrenByClass(travelclass, Seat.class).size();
+			travelclass.setAvailableSeats(numberSeats);
+
 			// calculate load factor and number of passengers
-			if (tc.getPassengers() == 0 && tc.getLoadFactor() != 0){
-				int numberPax = tc.getAvailableSeats()*tc.getLoadFactor()/100;
-				tc.setPassengers(numberPax);
-			}
-			else {
-				int loadFactor = tc.getPassengers()*100/tc.getAvailableSeats();
-				tc.setLoadFactor(loadFactor);
+			if (travelclass.getPassengers() == 0 && travelclass.getLoadFactor() != 0) {
+
+				int numberOfPax = (int) (travelclass.getAvailableSeats() * travelclass.getLoadFactor() / 100.0);
+				travelclass.setPassengers(numberOfPax);
+			} else {
+
+				int loadFactor = (int) (travelclass.getPassengers() * 100.0 / travelclass.getAvailableSeats());
+				travelclass.setLoadFactor(loadFactor);
 			}
 		}
 	}
