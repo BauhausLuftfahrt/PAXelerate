@@ -19,7 +19,7 @@ import net.bhl.cdt.paxelerate.model.FirstClass;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.PremiumEconomyClass;
 import net.bhl.cdt.paxelerate.model.Seat;
-import net.bhl.cdt.paxelerate.model.TravelClass;
+import net.bhl.cdt.paxelerate.model.TravelOption;
 import net.bhl.cdt.paxelerate.model.util.PassengerPropertyGenerator;
 import net.bhl.cdt.paxelerate.model.util.TCHelper;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
@@ -62,25 +62,25 @@ public class GeneratePassengersCommand extends CDTCommand {
 	 * @param classT
 	 *            is the specific class
 	 */
-	private <T extends TravelClass> void switchClass(Class<T> travelclass) {
+	private void switchClass(TravelOption travelOption) {
 
-		switch (TCHelper.getClassType(travelclass)) {
-		case EC:
+		switch (travelOption) {
+		case ECONOMY_CLASS:
 			seatAreaBegin = totalSeats - ecoseats + 1;
 			seatsInClass = ecoseats;
 			paxInClass = ecopax;
 			break;
-		case FC:
+		case FIRST_CLASS:
 			seatAreaBegin = 1;
 			seatsInClass = firstseats;
 			paxInClass = firstpax;
 			break;
-		case BC:
+		case BUSINESS_CLASS:
 			seatAreaBegin = firstseats + 1;
 			seatsInClass = businessseats;
 			paxInClass = businesspax;
 			break;
-		case PEC:
+		case PREMIUM_ECONOMY_CLASS:
 			seatAreaBegin = firstseats + businessseats + 1;
 			seatsInClass = premiumecoseats;
 			paxInClass = premiumecopax;
@@ -157,7 +157,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 	 * @param classType
 	 *            specifies in which class the passengers are generated
 	 */
-	private <T extends TravelClass> void generatePassengers(Class<T> travelclass) {
+	private void generatePassengers(TravelOption travelclass) {
 		passengerPerClassCount = 0;
 
 		switchClass(travelclass);
@@ -185,10 +185,10 @@ public class GeneratePassengersCommand extends CDTCommand {
 				randomSeatId.clear();
 
 				Log.add(this, "successfully created " + (passengerPerClassCount) + " passengers in "
-						+ StringHelper.splitCamelCase(travelclass.getSimpleName()));
+						+ StringHelper.splitCamelCase(travelclass.getName()));
 			} else {
 
-				Log.add(this, "Too many passengers in " + StringHelper.splitCamelCase(travelclass.getSimpleName()));
+				Log.add(this, "Too many passengers in " + StringHelper.splitCamelCase(travelclass.getName()));
 			}
 		}
 	}
@@ -237,16 +237,16 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 		if (totalPax <= totalSeats) {
 			if (firstpax > 0) {
-				generatePassengers(FirstClass.class);
+				generatePassengers(TravelOption.FIRST_CLASS);
 			}
 			if (businesspax > 0) {
-				generatePassengers(BusinessClass.class);
+				generatePassengers(TravelOption.BUSINESS_CLASS);
 			}
 			if (premiumecopax > 0) {
-				generatePassengers(PremiumEconomyClass.class);
+				generatePassengers(TravelOption.PREMIUM_ECONOMY_CLASS);
 			}
 			if (ecopax > 0) {
-				generatePassengers(EconomyClass.class);
+				generatePassengers(TravelOption.ECONOMY_CLASS);
 			}
 
 		} else {

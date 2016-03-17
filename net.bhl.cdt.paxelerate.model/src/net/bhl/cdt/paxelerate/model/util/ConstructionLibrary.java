@@ -28,6 +28,7 @@ import net.bhl.cdt.paxelerate.model.Stairway;
 import net.bhl.cdt.paxelerate.model.StairwayDirection;
 import net.bhl.cdt.paxelerate.model.StandardDoor;
 import net.bhl.cdt.paxelerate.model.TravelClass;
+import net.bhl.cdt.paxelerate.model.TravelOption;
 import net.bhl.cdt.paxelerate.util.input.InputChecker;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
@@ -108,14 +109,14 @@ public class ConstructionLibrary {
 	 * 
 	 * NOTE: This only works if there is just one existing class per class type.
 	 * 
-	 * @param travelclass
+	 * @param travelOption
 	 *            the subclass
 	 * @param <T>
 	 *            is a helper Class
 	 */
-	public <T extends TravelClass> void switchSettings(Class<T> travelclass) {
-		switch (TCHelper.getClassType(travelclass)) {
-		case PEC:
+	public void switchSettings(TravelOption travelOption) {
+		switch (travelOption) {
+		case PREMIUM_ECONOMY_CLASS:
 
 			seats = 24;
 			seatStructure = "3-3";
@@ -125,7 +126,7 @@ public class ConstructionLibrary {
 			passengerClass = CabinFactory.eINSTANCE.createPremiumEconomyClass();
 			break;
 
-		case BC:
+		case BUSINESS_CLASS:
 
 			seats = 8;
 			seatStructure = "2-2";
@@ -135,7 +136,7 @@ public class ConstructionLibrary {
 			passengerClass = CabinFactory.eINSTANCE.createBusinessClass();
 			break;
 
-		case FC:
+		case FIRST_CLASS:
 
 			seats = 2;
 			seatStructure = "1-1";
@@ -145,7 +146,7 @@ public class ConstructionLibrary {
 			passengerClass = CabinFactory.eINSTANCE.createFirstClass();
 			break;
 
-		case EC:
+		case ECONOMY_CLASS:
 
 			seats = 72;
 			seatStructure = "3-3";
@@ -193,10 +194,10 @@ public class ConstructionLibrary {
 		int currentPosition = 0;
 		splitSeatString(seatStructure);
 		if (doItOnce) {
-			try {
+			if (!cabin.getClasses().isEmpty()) {
 				seatStructure = cabin.getClasses().get(0).getRowStructure();
 				splitSeatString(seatStructure);
-			} catch (IndexOutOfBoundsException e) {
+			} else {
 				rowPartsInt.clear();
 				rowPartsInt.addAll(Arrays.asList(3, 3));
 			}
@@ -285,15 +286,15 @@ public class ConstructionLibrary {
 	/**
 	 * This method creates a class and the subclasses (seats, rows, etc.).
 	 * 
-	 * @param travelSubClass
+	 * @param travelOption
 	 *            is the subclass
 	 * @param <T>
 	 *            is a helper class
 	 */
-	public <T extends TravelClass> void createClass(Class<T> travelSubClass) {
+	public void createClass(TravelOption travelOption) {
 
 		passengerClass = null;
-		switchSettings(travelSubClass);
+		switchSettings(travelOption);
 		cabin.getClasses().add(passengerClass);
 		splitSeatString(seatStructure);
 
@@ -312,8 +313,8 @@ public class ConstructionLibrary {
 			if ((seats % seatsInRow) != 0) {
 				Log.add(this,
 						"Check your number of seats in "
-								+ StringHelper.splitCamelCase(
-										travelSubClass.getSimpleName())
+								+ StringHelper
+										.splitCamelCase(travelOption.getName())
 								+ ". Could not fill all rows.");
 			}
 
@@ -357,8 +358,8 @@ public class ConstructionLibrary {
 
 			}
 			if (!(passengerClass instanceof EconomyClass)) {
-				createCurtain(true, "after " + StringHelper
-						.splitCamelCase(travelSubClass.getSimpleName()));
+				createCurtain(true, "after "
+						+ StringHelper.splitCamelCase(travelOption.getName()));
 			}
 		}
 	}

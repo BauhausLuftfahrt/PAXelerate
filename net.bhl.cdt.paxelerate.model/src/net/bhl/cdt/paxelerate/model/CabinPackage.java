@@ -3016,6 +3016,26 @@ public interface CabinPackage extends EPackage {
 	int SORTING_STYLE = 29;
 
 	/**
+	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.TravelOption <em>Travel Option</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.paxelerate.model.TravelOption
+	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getTravelOption()
+	 * @generated
+	 */
+	int TRAVEL_OPTION = 30;
+
+	/**
+	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.ObjectOption <em>Object Option</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.paxelerate.model.ObjectOption
+	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getObjectOption()
+	 * @generated
+	 */
+	int OBJECT_OPTION = 31;
+
+	/**
 	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.Sex <em>Sex</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4810,6 +4830,26 @@ public interface CabinPackage extends EPackage {
 	EEnum getSortingStyle();
 
 	/**
+	 * Returns the meta object for enum '{@link net.bhl.cdt.paxelerate.model.TravelOption <em>Travel Option</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Travel Option</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.TravelOption
+	 * @generated
+	 */
+	EEnum getTravelOption();
+
+	/**
+	 * Returns the meta object for enum '{@link net.bhl.cdt.paxelerate.model.ObjectOption <em>Object Option</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Object Option</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.ObjectOption
+	 * @generated
+	 */
+	EEnum getObjectOption();
+
+	/**
 	 * Returns the meta object for enum '{@link net.bhl.cdt.paxelerate.model.Sex <em>Sex</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6055,6 +6095,24 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum SORTING_STYLE = eINSTANCE.getSortingStyle();
+		/**
+		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.TravelOption <em>Travel Option</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.bhl.cdt.paxelerate.model.TravelOption
+		 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getTravelOption()
+		 * @generated
+		 */
+		EEnum TRAVEL_OPTION = eINSTANCE.getTravelOption();
+		/**
+		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.ObjectOption <em>Object Option</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.bhl.cdt.paxelerate.model.ObjectOption
+		 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getObjectOption()
+		 * @generated
+		 */
+		EEnum OBJECT_OPTION = eINSTANCE.getObjectOption();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.Sex <em>Sex</em>}' enum.
 		 * <!-- begin-user-doc -->

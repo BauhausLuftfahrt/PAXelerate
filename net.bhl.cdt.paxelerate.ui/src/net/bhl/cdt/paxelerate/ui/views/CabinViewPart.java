@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
@@ -27,7 +29,6 @@ import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
 import net.bhl.cdt.paxelerate.model.Curtain;
 import net.bhl.cdt.paxelerate.model.Door;
-import net.bhl.cdt.paxelerate.model.EconomyClass;
 import net.bhl.cdt.paxelerate.model.FirstClass;
 import net.bhl.cdt.paxelerate.model.Galley;
 import net.bhl.cdt.paxelerate.model.Lavatory;
@@ -35,6 +36,8 @@ import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.PhysicalObject;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
+import net.bhl.cdt.paxelerate.model.TravelClass;
+import net.bhl.cdt.paxelerate.model.TravelOption;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.astar.ObstacleMap;
 import net.bhl.cdt.paxelerate.model.astar.Path;
@@ -374,22 +377,23 @@ public class CabinViewPart extends ViewPart {
 			 * the dimensions of the first element are used for scaling
 			 **/
 
-			List<FirstClass> firstclasses = TCHelper.getFirstClasses(cabin);
-			List<BusinessClass> businessclasses = TCHelper.getBusinessClasses(cabin);
-			List<EconomyClass> economyclasses = TCHelper.getEconomyClasses(cabin);
+			for (TravelOption option : TravelOption.VALUES) {
+				List<TravelClass> list = TCHelper.getClassesByOption(option, cabin);
+				if (!list.isEmpty()) {
 
-			if (!firstclasses.isEmpty()) {
-				int dim = adapt(firstclasses.get(0).getYDimensionOfSeats());
-				firstSeat = ImageHelper.resize(firstSeat, dim, dim, parent);
-			}
-			if (!businessclasses.isEmpty()) {
-				int dim = adapt(businessclasses.get(0).getYDimensionOfSeats());
-				businessSeat = ImageHelper.resize(businessSeat, dim, dim, parent);
-			}
+					int dim = adapt(list.get(0).getYDimensionOfSeats());
+					switch (option) {
 
-			if (!economyclasses.isEmpty()) {
-				int dim = adapt(economyclasses.get(0).getYDimensionOfSeats());
-				economySeat = ImageHelper.resize(economySeat, dim, dim, parent);
+					case FIRST_CLASS:
+						firstSeat = ImageHelper.resize(firstSeat, dim, dim, parent);
+					case BUSINESS_CLASS:
+						businessSeat = ImageHelper.resize(businessSeat, dim, dim, parent);
+					case ECONOMY_CLASS:
+						economySeat = ImageHelper.resize(economySeat, dim, dim, parent);
+					default:
+						//
+					}
+				}
 			}
 
 			if (!cabin.getGalleys().isEmpty()) {
@@ -402,21 +406,21 @@ public class CabinViewPart extends ViewPart {
 				lavatoryIcon = ImageHelper.resize(lavatoryIcon, dim, dim, parent);
 			}
 
-			// cabinAdapter = new AdapterImpl() {
-			// @Override
-			// public void notifyChanged(Notification notification) {
-			// if (!notification.isTouch()) {
-			//
-			// // TODO: check performance
-			// doTheDraw();
-			// }
-			// }
-			// };
+			cabinAdapter = new AdapterImpl() {
+				@Override
+				public void notifyChanged(Notification notification) {
+					if (!notification.isTouch()) {
+						doTheDraw();
+					}
+				}
+			};
 
 			img = createImage();
 			syncViewer();
 			doTheDraw();
-		} catch (Exception e) {
+		} catch (
+
+		Exception e) {
 			Log.add(this, "ERROR in setCabin()");
 			e.printStackTrace();
 		}

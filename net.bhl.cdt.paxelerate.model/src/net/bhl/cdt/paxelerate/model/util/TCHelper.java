@@ -9,6 +9,7 @@ import net.bhl.cdt.paxelerate.model.EconomyClass;
 import net.bhl.cdt.paxelerate.model.FirstClass;
 import net.bhl.cdt.paxelerate.model.PremiumEconomyClass;
 import net.bhl.cdt.paxelerate.model.TravelClass;
+import net.bhl.cdt.paxelerate.model.TravelOption;
 
 /**
  * 
@@ -19,15 +20,6 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
 // TODO: Implement these functions directly into Cabin.java ? // CabinImpl.java?
 
 public class TCHelper {
-
-	/**
-	 * 
-	 * @author marc.engelmann
-	 *
-	 */
-	public enum TC {
-		FC, BC, EC, PEC;
-	}
 
 	/**
 	 * 
@@ -68,22 +60,28 @@ public class TCHelper {
 
 	/**
 	 * 
-	 * @param travelclass
+	 * @param option
+	 * @param cabin
 	 * @return
 	 */
-	public static <T extends TravelClass> TC getClassType(
-			Class<T> travelclass) {
 
-		switch (travelclass.getSimpleName()) {
-
-		case "FirstClass":
-			return TC.FC;
-		case "BusinessClass":
-			return TC.BC;
-		case "EconomyClass":
-			return TC.EC;
-		case "PremiumEconomyClass":
-			return TC.PEC;
+	// TODO: make this better!
+	@SuppressWarnings("unchecked")
+	public static List<TravelClass> getClassesByOption(TravelOption option,
+			Cabin cabin) {
+		switch (option) {
+		case FIRST_CLASS:
+			return (List<TravelClass>) (Object) ModelHelper
+					.getChildrenByClass(cabin, FirstClass.class);
+		case BUSINESS_CLASS:
+			return (List<TravelClass>) (Object) ModelHelper
+					.getChildrenByClass(cabin, BusinessClass.class);
+		case PREMIUM_ECONOMY_CLASS:
+			return (List<TravelClass>) (Object) ModelHelper
+					.getChildrenByClass(cabin, PremiumEconomyClass.class);
+		case ECONOMY_CLASS:
+			return (List<TravelClass>) (Object) ModelHelper
+					.getChildrenByClass(cabin, EconomyClass.class);
 		default:
 			return null;
 		}

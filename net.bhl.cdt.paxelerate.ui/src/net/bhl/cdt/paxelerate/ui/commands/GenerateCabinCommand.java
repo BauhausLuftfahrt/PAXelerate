@@ -8,16 +8,13 @@ package net.bhl.cdt.paxelerate.ui.commands;
 import org.eclipse.jface.dialogs.IMessageProvider;
 
 import net.bhl.cdt.commands.CDTCommand;
-import net.bhl.cdt.paxelerate.model.BusinessClass;
 import net.bhl.cdt.paxelerate.model.Cabin;
-import net.bhl.cdt.paxelerate.model.EconomyClass;
 import net.bhl.cdt.paxelerate.model.EmergencyExit;
-import net.bhl.cdt.paxelerate.model.FirstClass;
 import net.bhl.cdt.paxelerate.model.Galley;
 import net.bhl.cdt.paxelerate.model.Lavatory;
 import net.bhl.cdt.paxelerate.model.MainDoor;
-import net.bhl.cdt.paxelerate.model.PremiumEconomyClass;
 import net.bhl.cdt.paxelerate.model.StandardDoor;
+import net.bhl.cdt.paxelerate.model.TravelOption;
 import net.bhl.cdt.paxelerate.model.util.ConstructionLibrary;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.util.input.Input;
@@ -47,7 +44,6 @@ public class GenerateCabinCommand extends CDTCommand {
 	 */
 	public GenerateCabinCommand(Cabin cabin) {
 		this.cabin = cabin;
-		cabin.getSimulationSettings().setSimulationSpeedFactor(1);
 		if (cabin.isUsePresetSettings()) {
 			switch (cabin.getAircraftType()) {
 			case REGIONAL:
@@ -62,9 +58,6 @@ public class GenerateCabinCommand extends CDTCommand {
 				cabin.setYDimension(650);
 				cabin.setXDimension(4440);
 				break;
-			default:
-				Log.add(this, "Error defining aircraft width.");
-				break;
 			}
 		}
 	}
@@ -78,45 +71,41 @@ public class GenerateCabinCommand extends CDTCommand {
 	protected void doRun() {
 		Log.add(this, "Initializing cabin generation ...");
 
-		/*************** Get the CabinView *******************/
 		cabinViewPart = ViewPartHelper.getCabinView();
-		// cabinViewPart.unsyncViewer();
-		/*****************************************************/
-
-		/* ------------------------------------------------- */
-		/* ------- Cabin Construction starts here! --------- */
-		/* ------------------------------------------------- */
 
 		Input input = new Input(WindowType.GET_BOOLEAN, "Warning! The existing cabin will be deleted. Continue?",
 				IMessageProvider.WARNING);
 
 		if (input.getBooleanValue()) {
 
+			/* ------- Cabin Construction starts here! --------- */
 			constructor = new ConstructionLibrary(cabin);
-			constructor.clearCabin(); // clear the predecessor cabin (if
-										// existent)
+			constructor.clearCabin();
 			constructor.createDoor(EmergencyExit.class, true, 3, 935);
 			constructor.createDoor(EmergencyExit.class, true, 4, 1228);
 			constructor.createPhysicalObject(Lavatory.class, 100);
 			constructor.createDoor(MainDoor.class, true, 1, -1);
 			constructor.createPhysicalObject(Galley.class, 100);
-			constructor.createClass(FirstClass.class);
-			constructor.createClass(BusinessClass.class);
-			constructor.createClass(PremiumEconomyClass.class);
-			constructor.createClass(EconomyClass.class);
+
+			/*
+			 * Note that the classes are generated in the order that they are
+			 * defined in in the enum
+			 */
+			for (TravelOption option : TravelOption.VALUES) {
+				constructor.createClass(option);
+			}
+
 			constructor.createPhysicalObject(Galley.class, 100);
 			constructor.createDoor(StandardDoor.class, true, 2, -1);
 			constructor.createPhysicalObject(Lavatory.class, 100);
-			cabin = constructor.getCabin(); // sync cabins
+			cabin = constructor.getCabin();
 			cabin.setUsePresetSettings(false);
-			/* ------------------------------------------------- */
 			/* ------- Cabin Construction ends here! ----------- */
-			/* ------------------------------------------------- */
 
 			Log.add(this, "Cabin generation completed");
 			try {
 				cabinViewPart.setCabin(cabin);
-				// cabinViewPart.syncViewer();
+				cabinViewPart.syncViewer();
 			} catch (NullPointerException e) {
 				Log.add(this, "The cabin or info view is not visible.");
 			}
