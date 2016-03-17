@@ -23,6 +23,7 @@ import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
 import net.bhl.cdt.paxelerate.model.TravelClass;
+import net.bhl.cdt.paxelerate.model.util.EMFModelStore;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.PropertyViewPart;
 import net.bhl.cdt.paxelerate.util.string.StringHelper;
@@ -125,14 +126,8 @@ public class DrawCabinCommand extends CDTCommand {
 			Log.add(this, "No cabin view is visible!");
 		}
 
-		/*
-		 * TODO: this is a test for storing the cabin object! It crashes the
-		 * model explorer.
-		 * 
-		 */
-
-		// ModelPersistor.store(cabin);
-		// ModelPersistor.store(cabin.getSimulationSettings());
+		/* This stores the cabin as an .XMI file into the local storage. */
+		EMFModelStore.store(cabin);
 	}
 
 	private void repairBoardingClassAssignments() {

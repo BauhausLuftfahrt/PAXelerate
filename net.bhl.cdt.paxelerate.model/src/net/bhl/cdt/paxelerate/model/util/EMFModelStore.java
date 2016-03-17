@@ -8,88 +8,66 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
 
 /**
+ * This class is used to store data locally by using the EMF Persistence API.
  * 
  * @author marc.engelmann
+ * @see EMFModelLoader
  *
  */
 public class EMFModelStore {
 
+	public final static String PATH = "PAXelerate", CABIN_FILE = "cabin",
+			SETTINGS_FILE = "properties";
+
 	/**
-	 * @param args
+	 * This method stores a Cabin object as an .XMI file locally. <b> Note that
+	 * only direct children of the object are stored. <b/>
+	 * 
+	 * @param submittedCabin
+	 *            The cabin object which should be stored.
 	 */
+	public static void store(Cabin submittedCabin) {
 
-	public static void store(Cabin cabin) {
+		/* The cabin object is copied for local storage first */
+		Cabin cabin = EcoreUtil.copy(submittedCabin);
+		SimulationProperties settings = EcoreUtil
+				.copy(submittedCabin.getSimulationSettings());
 
-		System.out.println("0");
-
-		// Register the XMI resource factory
+		/* Register the XMI resource factory */
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
-		m.put("cabin", new XMIResourceFactoryImpl());
 
-		System.out.println("1");
+		m.put(CABIN_FILE, new XMIResourceFactoryImpl());
+		m.put(SETTINGS_FILE, new XMIResourceFactoryImpl());
 
-		// Obtain a new resource set
+		/* Obtain a new resource set */
 		ResourceSet resSet = new ResourceSetImpl();
 
-		System.out.println("2");
+		/* create a resource */
+		Resource cabinResource = resSet
+				.createResource(URI.createURI(PATH + "/" + CABIN_FILE));
 
-		// create a resource
-		Resource resource = resSet
-				.createResource(URI.createURI("paxelerate/cabin"));
+		/* create a resource */
+		Resource settingsResource = resSet
+				.createResource(URI.createURI(PATH + "/" + SETTINGS_FILE));
 
-		if (!resource.getContents().isEmpty()) {
+		cabinResource.getContents().add(cabin);
+		settingsResource.getContents().add(settings);
 
-			System.out.println("already exists!");
-			return;
-		}
-
-		resource.getContents().add(cabin);
-
-		// now save the content.
+		/* now save the content. */
 		try {
-			resource.save(Collections.EMPTY_MAP);
-			System.out.println("Cabin is now stored locally!");
+			cabinResource.save(Collections.EMPTY_MAP);
+			settingsResource.save(Collections.EMPTY_MAP);
+			System.out.println("Cabin has been saved locally.");
 
 		} catch (IOException e) {
-			System.out.println("Cabin could not be persisted!");
-			e.printStackTrace();
-		}
-	}
-
-	public static void store(SimulationProperties settings) {
-
-		// Register the XMI resource factory
-		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
-		Map<String, Object> m = reg.getExtensionToFactoryMap();
-		m.put("properties", new XMIResourceFactoryImpl());
-
-		// Obtain a new resource set
-		ResourceSet resSet = new ResourceSetImpl();
-
-		// create a resource
-		Resource resource = resSet
-				.createResource(URI.createURI("paxelerate/properties"));
-		// Get the first model element and cast it to the right type, in my
-		// example everything is hierarchical included in this first node
-
-		resource.getContents().clear();
-
-		resource.getContents().add(settings);
-
-		// now save the content.
-		try {
-			resource.save(Collections.EMPTY_MAP);
-			System.out.println("Simulation properties are now stored locally!");
-
-		} catch (IOException e) {
-			System.out.println("Simulation properties could not be persisted!");
 			e.printStackTrace();
 		}
 	}

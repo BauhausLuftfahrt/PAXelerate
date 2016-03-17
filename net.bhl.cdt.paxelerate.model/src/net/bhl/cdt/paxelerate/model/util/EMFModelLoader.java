@@ -15,57 +15,46 @@ import net.bhl.cdt.paxelerate.model.SimulationProperties;
  * This class is used for loading the previously stored model.
  * 
  * @author marc.engelmann
+ * @see EMFModelStore
  *
  */
 public class EMFModelLoader {
 
+	/**
+	 * This function loads a already stored cabin object from an .XMI file.
+	 * 
+	 * @return the loaded cabin is returned
+	 */
 	public static Cabin loadCabin() {
 
-		// Register the XMI resource factory
-
+		/* Register the XMI resource factory */
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
-		m.put("cabin", new XMIResourceFactoryImpl());
+		m.put(EMFModelStore.CABIN_FILE, new XMIResourceFactoryImpl());
+		m.put(EMFModelStore.SETTINGS_FILE, new XMIResourceFactoryImpl());
 
-		// Obtain a new resource set
+		/* Obtain a new resource set */
 		ResourceSet resSet = new ResourceSetImpl();
 
-		// Get the resource
-		Resource resource = resSet
-				.getResource(URI.createURI("paxelerate/cabin"), true);
+		/* Get the resource */
+		Resource cabinResource = resSet.getResource(
+				URI.createURI(
+						EMFModelStore.PATH + "/" + EMFModelStore.CABIN_FILE),
+				true);
+		Resource settingsResource = resSet.getResource(
+				URI.createURI(
+						EMFModelStore.PATH + "/" + EMFModelStore.SETTINGS_FILE),
+				true);
 
-		// Get the first model element and cast it to the right type, in my
-		// example everything is hierarchical included in this first node
-		Cabin cabin = (Cabin) resource.getContents().get(0);
-
-		System.out.println("Cabin is now loaded from local store!");
-
-		cabin.setSimulationSettings(loadSettings());
-
-		return cabin;
-	}
-
-	public static SimulationProperties loadSettings() {
-
-		// Register the XMI resource factory
-
-		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
-		Map<String, Object> m = reg.getExtensionToFactoryMap();
-		m.put("properties", new XMIResourceFactoryImpl());
-
-		// Obtain a new resource set
-		ResourceSet resSet = new ResourceSetImpl();
-
-		// Get the resource
-		Resource resource = resSet
-				.getResource(URI.createURI("paxelerate/properties"), true);
-		// Get the first model element and cast it to the right type, in my
-		// example everything is hierarchical included in this first node
-		SimulationProperties settings = (SimulationProperties) resource
+		/* Get the model elements */
+		Cabin cabin = (Cabin) cabinResource.getContents().get(0);
+		SimulationProperties settings = (SimulationProperties) settingsResource
 				.getContents().get(0);
 
-		System.out.println("Settings are now loaded from local store!");
+		/* Load the settings into the cabin */
+		cabin.setSimulationSettings(settings);
 
-		return settings;
+		System.out.println("Cabin is now loaded from local store!");
+		return cabin;
 	}
 }

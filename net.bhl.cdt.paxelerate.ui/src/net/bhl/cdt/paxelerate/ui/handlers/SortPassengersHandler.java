@@ -15,6 +15,12 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.ui.commands.SortPassengersCommand;
 
+/**
+ * 
+ * @author marc.engelmann
+ *
+ */
+
 public class SortPassengersHandler extends AbstractHandler {
 
 	@Override
