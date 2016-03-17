@@ -953,8 +953,8 @@ public class Agent extends Subject implements Runnable {
 				 * he should return to his seat afterwards!
 				 */
 
-				int offset = 0;
-				double position = thePassengerILetInTheRow.getPositionY();
+				int offset = 3;
+				double position = thePassengerILetInTheRow.getPositionX();
 				Cabin cabinBlocker = SimulationHandler.getCabin();
 				Passenger dummyPax = CabinFactory.eINSTANCE.createPassenger();
 				dummyPax.setId(Integer.MAX_VALUE);
@@ -962,8 +962,8 @@ public class Agent extends Subject implements Runnable {
 				for (int i = 0; i < cabinBlocker.getYDimension()
 						/ cabinBlocker.getScale(); i++) {
 					Node node = SimulationHandler.getMap().getNodeByCoordinate(
-							i, (int) (position / cabinBlocker.getScale())
-									- offset);
+							(int) (position / cabinBlocker.getScale()) - offset,
+							i);
 					if (node.getProperty() != Property.OBSTACLE) {
 						node.setProperty(Property.AGENT, passenger);
 						// node.setHidden();
@@ -1006,8 +1006,9 @@ public class Agent extends Subject implements Runnable {
 						/ cabinBlocker.getScale(); i++) {
 
 					Node node = SimulationHandler.getMap().getNodeByCoordinate(
-							i, (int) (position / cabinBlocker.getScale())
-									- offset);
+							(int) (position / cabinBlocker.getScale()) - offset,
+							i);
+
 					if (node.getProperty() != Property.OBSTACLE) {
 						node.setProperty(Property.DEFAULT, passenger);
 					}

@@ -142,7 +142,7 @@ public class SimulationView extends JPanel implements MouseListener {
 
 				Node node = areamap.getNodeByCoordinate(x, y);
 				g.setColor(Color.LIGHT_GRAY);
-				if (node.getTypeForPrinting() != null) {
+				if (node != null && node.getTypeForPrinting() != null) {
 
 					if (node.getTypeForPrinting().equals("O") || node.getTypeForPrinting().equals(" ")) {
 						g.setColor(switchColor(
@@ -188,48 +188,50 @@ public class SimulationView extends JPanel implements MouseListener {
 			int a = mouse.y / FONT_SIZE;
 
 			Node node = areamap.getNodeByCoordinate(b, a);
-			Property property = node.getProperty();
 
-			if (property == Property.AGENT) {
-				agent = SimulationHandler.getAgentByPassenger(node.getPassenger());
-			}
+			if (node != null) {
+				Property property = node.getProperty();
 
-			g.setColor(Color.LIGHT_GRAY);
+				if (property == Property.AGENT) {
+					agent = SimulationHandler.getAgentByPassenger(node.getPassenger());
+				}
 
-			g.fillRect(mouse.x + 10, mouse.y + 10, 250, 120);
+				g.setColor(Color.LIGHT_GRAY);
 
-			g.setColor(Color.BLACK);
+				g.fillRect(mouse.x + 10, mouse.y + 10, 250, 120);
 
-			if (node != null && agent != null) {
-				if (node.getProperty() == Property.AGENT) {
-					g.drawString("Passenger: " + node.getPassenger().getId() + ", x: "
-							+ agent.getCurrentPosition().getX() + ", y: " + agent.getCurrentPosition().getY(),
-							mouse.x + 30, mouse.y + 30);
-					g.drawString("Seat " + node.getPassenger().getSeatRef().getName(), mouse.x + 30, mouse.y + 50);
-					g.drawString("State: " + agent.getCurrentState().toString(), mouse.x + 30, mouse.y + 70);
-					g.drawString("Mode: " + agent.getAgentMode().toString(), mouse.x + 30, mouse.y + 90);
+				g.setColor(Color.BLACK);
 
-					Passenger other = agent.getOtherPassengersInRowBlockingMe();
+				if (node != null && agent != null) {
+					if (node.getProperty() == Property.AGENT) {
+						g.drawString("Passenger: " + node.getPassenger().getId() + ", x: "
+								+ agent.getCurrentPosition().getX() + ", y: " + agent.getCurrentPosition().getY(),
+								mouse.x + 30, mouse.y + 30);
+						g.drawString("Seat " + node.getPassenger().getSeatRef().getName(), mouse.x + 30, mouse.y + 50);
+						g.drawString("State: " + agent.getCurrentState().toString(), mouse.x + 30, mouse.y + 70);
+						g.drawString("Mode: " + agent.getAgentMode().toString(), mouse.x + 30, mouse.y + 90);
 
-					if (other != null) {
-						g.drawString(
-								"Waiting for passenger " + other.getId() + " on seat " + other.getSeatRef().getName(),
-								mouse.x + 30, mouse.y + 110);
-					}
+						Passenger other = agent.getOtherPassengersInRowBlockingMe();
 
-					g.setColor(Color.GRAY);
+						if (other != null) {
+							g.drawString("Waiting for passenger " + other.getId() + " on seat "
+									+ other.getSeatRef().getName(), mouse.x + 30, mouse.y + 110);
+						}
 
-					for (Path path : agent.getPathList()) {
-						for (Node pathNode : path.getWaypoints()) {
-							g.drawString("•", (pathNode.getPosition().getX() - pointZero) * FONT_SIZE,
-									pathNode.getPosition().getY() * FONT_SIZE);
+						g.setColor(Color.GRAY);
+
+						for (Path path : agent.getPathList()) {
+							for (Node pathNode : path.getWaypoints()) {
+								g.drawString("•", (pathNode.getPosition().getX() - pointZero) * FONT_SIZE,
+										pathNode.getPosition().getY() * FONT_SIZE);
+							}
 						}
 					}
+				} else if (property != null) {
+					g.setColor(Color.BLACK);
+					g.drawString("Property: " + property.toString() + ", x: " + b + ", y: " + a, mouse.x + 30,
+							mouse.y + 30);
 				}
-			} else if (property != null) {
-				g.setColor(Color.BLACK);
-				g.drawString("Property: " + property.toString() + ", x: " + b + ", y: " + a, mouse.x + 30,
-						mouse.y + 30);
 			}
 		}
 	}

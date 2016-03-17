@@ -5,16 +5,12 @@
  ***************************************************************************************/
 package net.bhl.cdt.paxelerate.model.astar;
 
-import java.util.ArrayList;
-
-import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
-import net.bhl.cdt.paxelerate.model.Curtain;
 import net.bhl.cdt.paxelerate.model.Door;
-import net.bhl.cdt.paxelerate.model.Galley;
-import net.bhl.cdt.paxelerate.model.Lavatory;
+import net.bhl.cdt.paxelerate.model.ObjectOption;
 import net.bhl.cdt.paxelerate.model.PhysicalObject;
 import net.bhl.cdt.paxelerate.model.Seat;
+import net.bhl.cdt.paxelerate.model.util.POHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 
 /**
@@ -32,18 +28,6 @@ public class ObstacleMap {
 			OBSTACLE_RANGE_IN_CM = 20, POTENTIAL_AROUND_OBSTACLE_MAXIMUM = 100,
 			HOLE_VALUE = 1; // DO NEVER SET THIS TO ZERO!
 	private static int[][] obstacleMap;
-
-	ArrayList<Class<? extends PhysicalObject>> classes = new ArrayList<Class<? extends PhysicalObject>>() {
-
-		private static final long serialVersionUID = 1L;
-
-		{
-			add(Seat.class);
-			add(Galley.class);
-			add(Curtain.class);
-			add(Lavatory.class);
-		}
-	};
 
 	/**
 	 * This method constructs the obstacle map.
@@ -115,8 +99,8 @@ public class ObstacleMap {
 			}
 		}
 
-		for (Class<? extends PhysicalObject> className : classes) {
-			generateObstacles(className);
+		for (ObjectOption option : ObjectOption.VALUES) {
+			generateObstacles(option);
 		}
 
 		generateAisleHole();
@@ -266,42 +250,27 @@ public class ObstacleMap {
 	 * @param physicalObjectSubclass
 	 *            is the Class of the object that should be used
 	 */
-	private <T extends PhysicalObject> void generateObstacles(
-			Class<T> physicalObjectSubclass) {
-		for (PhysicalObject physicalObject : ModelHelper
-				.getChildrenByClass(cabin, physicalObjectSubclass)) {
-
-			boolean value;
-			try {
-				value = ((Seat) physicalObject).isCurrentlyFolded();
-			} catch (ClassCastException e) {
-				value = false;
+	private void generateObstacles(ObjectOption option) {
+		for (PhysicalObject obj : POHelper.getObjectByOption(option, cabin)) {
+			if (obj instanceof Seat) {
+				if (cabin.getSimulationSettings().isUseFoldableSeats()
+						&& ((Seat) obj).isCurrentlyFolded()) {
+					break;
+				}
 			}
 
-			if (!(cabin.getSimulationSettings().isUseFoldableSeats()
-					&& value)) {
+			int yDimension = obj.getYDimension() / cabin.getScale();
+			int xDimension = obj.getXDimension() / cabin.getScale();
+			int xPosition = obj.getXPosition() / cabin.getScale();
+			int yPosition = obj.getYPosition() / cabin.getScale();
 
-				int yDimension = physicalObject.getYDimension()
-						/ cabin.getScale();
-				int xDimension = physicalObject.getXDimension()
-						/ cabin.getScale();
-				;
-				int xPosition = physicalObject.getXPosition()
-						/ cabin.getScale();
-				;
-				int yPosition = physicalObject.getYPosition()
-						/ cabin.getScale();
-				;
-
-				for (int i = 0; i < xDimension; i++) {
-					for (int j = 0; j < yDimension; j++) {
-						int k = xPosition + i;
-						int l = yPosition + j;
-						if (k < dimensions.getX() && l < dimensions.getY()) {
-							obstacleMap[k][l] = MAX_VALUE;
-						}
+			for (int i = 0; i < xDimension; i++) {
+				for (int j = 0; j < yDimension; j++) {
+					int k = xPosition + i;
+					int l = yPosition + j;
+					if (k < dimensions.getX() && l < dimensions.getY()) {
+						obstacleMap[k][l] = MAX_VALUE;
 					}
-
 				}
 			}
 		}
