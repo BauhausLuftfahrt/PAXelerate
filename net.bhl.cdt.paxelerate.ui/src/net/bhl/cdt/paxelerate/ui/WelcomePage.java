@@ -11,9 +11,16 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.RowData;
+import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.ExpandBar;
+import org.eclipse.swt.widgets.ExpandItem;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Scale;
+import org.eclipse.swt.widgets.Slider;
+import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.intro.IIntroPart;
 import org.eclipse.ui.part.IntroPart;
@@ -29,19 +36,38 @@ public class WelcomePage extends IntroPart implements IIntroPart {
 	@Override
 	public void createPartControl(Composite parent) {
 		Composite outerContainer = new Composite(parent, SWT.NONE);
-		outerContainer.setLayout(new GridLayout());
+		RowLayout rowLayout = new RowLayout();
+		rowLayout.wrap = true;
+		rowLayout.center = true;
+		rowLayout.type = SWT.VERTICAL;
+		rowLayout.marginBottom = rowLayout.marginLeft = rowLayout.marginRight = rowLayout.marginTop = 10;
+		outerContainer.setLayout(rowLayout);
 		
+		// Welcome message
 		Label newWelcomeLabel = new Label(outerContainer, SWT.NONE);
-		newWelcomeLabel.setLayoutData(new GridData(GridData.CENTER, GridData.CENTER, true, true));
+		newWelcomeLabel.setLayoutData(new RowData(800,50));
 		newWelcomeLabel.setText("Welcome to PAXelerate - an open source passenger flow simulation framework for advanced aircraft cabin layouts!");
-
-		Composite buttonContainer = new Composite(outerContainer, SWT.NONE);
-		buttonContainer.setLayout(new GridLayout(2, true));
-		buttonContainer.setLayoutData(new GridData(GridData.CENTER, GridData.CENTER, true, true));
-
-		Button newProjectButton = new Button(buttonContainer, SWT.CENTER);
+		
+	    // ExpandBar
+		ExpandBar bar = new ExpandBar (outerContainer, SWT.V_SCROLL);
+		
+		// First item
+		//Composite composite = new Composite (bar, SWT.NONE);
+		//composite.setLayoutData(new RowData(800,50));
+		
+		Composite composite = new Composite (bar, SWT.NONE);
+		GridLayout layout = new GridLayout ();
+		layout.marginLeft = layout.marginTop = layout.marginRight = layout.marginBottom = 10;
+		layout.verticalSpacing = 10;
+		composite.setLayout(layout);
+		
+		Label label0 = new Label (composite, SWT.NONE);
+		label0 = new Label (composite, SWT.NONE);
+		label0.setText("To get started, create a new project and select EMF Store as a provider. ");
+		
+		Button newProjectButton = new Button(composite, SWT.PUSH);
 		newProjectButton.setText("New Project");
-		newProjectButton.setLayoutData(new GridData(GridData.CENTER, GridData.CENTER, true, true));
+		newProjectButton.setLayoutData(new GridData());
 		newProjectButton.computeSize(SWT.DEFAULT, SWT.DEFAULT);
 		newProjectButton.addSelectionListener(new SelectionListener() {
 
@@ -58,7 +84,35 @@ public class WelcomePage extends IntroPart implements IIntroPart {
 				// do nothing
 			}
 		});
-
+		
+		ExpandItem item0 = new ExpandItem (bar, SWT.NONE, 0);
+		item0.setText("New Project");
+		item0.setHeight(composite.computeSize(SWT.DEFAULT, SWT.DEFAULT).y);
+		item0.setControl(composite);
+		item0.setExpanded(true);
+		//item0.setImage(image);
+			
+		// Second item
+		
+		composite = new Composite (bar, SWT.NONE);
+		layout = new GridLayout ();
+		layout.marginLeft = layout.marginTop = layout.marginRight = layout.marginBottom = 10;
+		layout.verticalSpacing = 10;
+		composite.setLayout(layout);
+		
+		//composite = new Composite (bar, SWT.NONE);
+		//composite.setLayoutData(new RowData(800,50));
+		
+		ExpandItem item1 = new ExpandItem (bar, SWT.NONE, 1);
+		item1.setText("Tutorial");
+		item1.setHeight(composite.computeSize(SWT.DEFAULT, SWT.DEFAULT).y);
+		item1.setControl(composite);
+		// item1.setImage(image);
+		
+	
+		item1.setExpanded(true);
+		bar.setSpacing(8);
+	
 	}
 
 	@Override
