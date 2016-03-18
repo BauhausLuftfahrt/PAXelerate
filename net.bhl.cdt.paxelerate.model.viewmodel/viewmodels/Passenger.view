@@ -9,11 +9,6 @@
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/Name"/>
           </domainModelReference>
         </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235CwKS8EeWGjpaobu8CIA" name="Control id">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235CwaS8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/id"/>
-          </domainModelReference>
-        </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235CwqS8EeWGjpaobu8CIA" name="Control sex">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235Cw6S8EeWGjpaobu8CIA">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/sex"/>
@@ -29,11 +24,11 @@
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/luggage"/>
           </domainModelReference>
         </children>
-      </children>
-      <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C6qS8EeWGjpaobu8CIA" name="Control passengerMood">
-        <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C66S8EeWGjpaobu8CIA">
-          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/passengerMood"/>
-        </domainModelReference>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C6qS8EeWGjpaobu8CIA" name="Control passengerMood">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C66S8EeWGjpaobu8CIA">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/passengerMood"/>
+          </domainModelReference>
+        </children>
       </children>
     </children>
     <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_6jUysKS8EeWGjpaobu8CIA">

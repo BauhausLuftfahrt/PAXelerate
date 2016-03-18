@@ -4,6 +4,11 @@
   <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout" xmi:id="_WLxAQKS7EeWGjpaobu8CIA">
     <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_WlK-wKS7EeWGjpaobu8CIA">
       <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_XX1KwKS7EeWGjpaobu8CIA" name="General">
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_U-PdOKS7EeWGjpaobu8CIA" name="Control name">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_U-PdOaS7EeWGjpaobu8CIA">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//PhysicalObject/name"/>
+          </domainModelReference>
+        </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_U-PdPKS7EeWGjpaobu8CIA" name="Control postitionAfterRow">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_U-PdPaS7EeWGjpaobu8CIA">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Curtain/postitionAfterRow"/>
@@ -12,16 +17,6 @@
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_U-PdPqS7EeWGjpaobu8CIA" name="Control curtainOpen">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_U-PdP6S7EeWGjpaobu8CIA">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Curtain/curtainOpen"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_U-PdOKS7EeWGjpaobu8CIA" name="Control name">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_U-PdOaS7EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//PhysicalObject/name"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_U-PdOqS7EeWGjpaobu8CIA" name="Control id">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_U-PdO6S7EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//PhysicalObject/id"/>
           </domainModelReference>
         </children>
       </children>

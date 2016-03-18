@@ -36,14 +36,16 @@
       </children>
     </children>
   </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_ePTRiKS-EeWGjpaobu8CIA" name="Control numberOfSimultaneousPassengers">
-    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_ePTRiaS-EeWGjpaobu8CIA">
-      <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Door/numberOfSimultaneousPassengers"/>
-    </domainModelReference>
-  </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_ePTRjKS-EeWGjpaobu8CIA" name="Control waitingPassengers">
-    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_ePTRjaS-EeWGjpaobu8CIA">
-      <domainModelEFeature xsi:type="ecore:EReference" href="http://net.bhl.cdt.paxelerate.model/#//Door/waitingPassengers"/>
-    </domainModelReference>
+  <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_CHRioO0GEeWQctE5HEBbjA" name="Passenger">
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_ePTRiKS-EeWGjpaobu8CIA" name="Control numberOfSimultaneousPassengers">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_ePTRiaS-EeWGjpaobu8CIA">
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Door/numberOfSimultaneousPassengers"/>
+      </domainModelReference>
+    </children>
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_ePTRjKS-EeWGjpaobu8CIA" name="Control waitingPassengers">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_ePTRjaS-EeWGjpaobu8CIA">
+        <domainModelEFeature xsi:type="ecore:EReference" href="http://net.bhl.cdt.paxelerate.model/#//Door/waitingPassengers"/>
+      </domainModelReference>
+    </children>
   </children>
 </org.eclipse.emf.ecp.view.model:View>
