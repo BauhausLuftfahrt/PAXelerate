@@ -7,6 +7,10 @@ package net.bhl.cdt.paxelerate.ui.commands;
 
 import java.util.ArrayList;
 
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
+
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
@@ -19,6 +23,7 @@ import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
 import net.bhl.cdt.paxelerate.model.TravelClass;
+import net.bhl.cdt.paxelerate.model.util.EMFModelStore;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.PropertyViewPart;
 import net.bhl.cdt.paxelerate.util.string.StringHelper;
@@ -101,7 +106,9 @@ public class DrawCabinCommand extends CDTCommand {
 		checkFoldableSeats();
 		updateTravelClassProperties();
 
-		propertyViewPart = ViewPartHelper.getPropertyView();
+		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+		IWorkbenchPage page = window.getActivePage();
+		propertyViewPart = (PropertyViewPart) page.findView("net.bhl.cdt.paxelerate.ui.propertyview");
 
 		for (String str : errorStrings) {
 			Log.add(this, str);
@@ -119,9 +126,8 @@ public class DrawCabinCommand extends CDTCommand {
 			Log.add(this, "No cabin view is visible!");
 		}
 
-		// TODO: this is a test for storing the cabin object!
-		// ModelPersistor.store(cabin);
-		// ModelPersistor.store(cabin.getSimulationSettings());
+		/* This stores the cabin as an .XMI file into the local storage. */
+		EMFModelStore.store(cabin);
 	}
 
 	private void repairBoardingClassAssignments() {

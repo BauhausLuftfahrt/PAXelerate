@@ -100,6 +100,10 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return createLuggageSizeFromString(eDataType, initialValue);
 			case CabinPackage.SORTING_STYLE:
 				return createSortingStyleFromString(eDataType, initialValue);
+			case CabinPackage.TRAVEL_OPTION:
+				return createTravelOptionFromString(eDataType, initialValue);
+			case CabinPackage.OBJECT_OPTION:
+				return createObjectOptionFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -125,6 +129,10 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return convertLuggageSizeToString(eDataType, instanceValue);
 			case CabinPackage.SORTING_STYLE:
 				return convertSortingStyleToString(eDataType, instanceValue);
+			case CabinPackage.TRAVEL_OPTION:
+				return convertTravelOptionToString(eDataType, instanceValue);
+			case CabinPackage.OBJECT_OPTION:
+				return convertObjectOptionToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -437,6 +445,46 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * @generated
 	 */
 	public String convertSortingStyleToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TravelOption createTravelOptionFromString(EDataType eDataType, String initialValue) {
+		TravelOption result = TravelOption.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertTravelOptionToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ObjectOption createObjectOptionFromString(EDataType eDataType, String initialValue) {
+		ObjectOption result = ObjectOption.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertObjectOptionToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

@@ -195,6 +195,10 @@ public class CabinValidator extends EObjectValidator {
 				return validateLuggageSize((LuggageSize)value, diagnostics, context);
 			case CabinPackage.SORTING_STYLE:
 				return validateSortingStyle((SortingStyle)value, diagnostics, context);
+			case CabinPackage.TRAVEL_OPTION:
+				return validateTravelOption((TravelOption)value, diagnostics, context);
+			case CabinPackage.OBJECT_OPTION:
+				return validateObjectOption((ObjectOption)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -622,6 +626,24 @@ public class CabinValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateSortingStyle(SortingStyle sortingStyle, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTravelOption(TravelOption travelOption, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateObjectOption(ObjectOption objectOption, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

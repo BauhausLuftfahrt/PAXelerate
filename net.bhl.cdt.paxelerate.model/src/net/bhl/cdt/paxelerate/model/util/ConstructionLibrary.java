@@ -11,7 +11,6 @@ import java.util.Arrays;
 import org.apache.commons.lang.StringUtils;
 
 import net.bhl.cdt.model.util.ModelHelper;
-import net.bhl.cdt.paxelerate.model.BusinessClass;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
 import net.bhl.cdt.paxelerate.model.Curtain;
@@ -23,13 +22,13 @@ import net.bhl.cdt.paxelerate.model.Galley;
 import net.bhl.cdt.paxelerate.model.Lavatory;
 import net.bhl.cdt.paxelerate.model.MainDoor;
 import net.bhl.cdt.paxelerate.model.PhysicalObject;
-import net.bhl.cdt.paxelerate.model.PremiumEconomyClass;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.Stairway;
 import net.bhl.cdt.paxelerate.model.StairwayDirection;
 import net.bhl.cdt.paxelerate.model.StandardDoor;
 import net.bhl.cdt.paxelerate.model.TravelClass;
+import net.bhl.cdt.paxelerate.model.TravelOption;
 import net.bhl.cdt.paxelerate.util.input.InputChecker;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
@@ -88,32 +87,6 @@ public class ConstructionLibrary {
 	}
 
 	/**
-	 * 
-	 * @param presetValueA
-	 * @param presetValueB
-	 * @param presetValueC
-	 * @param elseValue
-	 * @return
-	 */
-	private Object tryPreset(Object presetValueA, Object presetValueB,
-			Object presetValueC, Object elseValue) {
-		if (cabin.isUsePresetSettings()) {
-			switch (cabin.getAircraftType()) {
-			case REGIONAL:
-				return presetValueA;
-			case NARROWBODY:
-				return presetValueB;
-			case WIDEBODY:
-				return presetValueC;
-			default:
-				return elseValue;
-			}
-		} else {
-			return elseValue;
-		}
-	}
-
-	/**
 	 * This method clears all objects from the cabin object <b>excluding the
 	 * passenger classes</b>. These are removed in a later step.
 	 */
@@ -136,101 +109,50 @@ public class ConstructionLibrary {
 	 * 
 	 * NOTE: This only works if there is just one existing class per class type.
 	 * 
-	 * @param travelSubClass
+	 * @param travelOption
 	 *            the subclass
 	 * @param <T>
 	 *            is a helper Class
 	 */
-	public <T extends TravelClass> void switchSettings(
-			Class<T> travelSubClass) {
-		switch (travelSubClass.getSimpleName()) {
-		case "PremiumEconomyClass":
-			try {
-				PremiumEconomyClass subclass = ModelHelper
-						.getChildrenByClass(cabin, PremiumEconomyClass.class)
-						.get(0);
-				seats = (int) tryPreset(0, 18, 40,
-						subclass.getAvailableSeats());
-				seatStructure = (String) tryPreset("2-2", "3-3", "3-4-3",
-						subclass.getRowStructure());
-				seatDimensions = new Vector2D(subclass.getXDimensionOfSeats(),
-						subclass.getYDimensionOfSeats());
-				seatPitch = subclass.getSeatPitch();
-				passengers = (int) tryPreset(0, 0, 0, subclass.getPassengers());
-				cabin.getClasses().remove(subclass);
-			} catch (IndexOutOfBoundsException e) {
-				seats = (int) tryPreset(0, 24, 40, 24);
-				seatStructure = (String) tryPreset("2-2", "3-3", "3-4-3",
-						"3-3");
-				seatDimensions = new Vector2D(60, 50);
-				seatPitch = 85;
-				passengers = 1;
-			}
+	public void switchSettings(TravelOption travelOption) {
+		switch (travelOption) {
+		case PREMIUM_ECONOMY_CLASS:
+
+			seats = 24;
+			seatStructure = "3-3";
+			seatDimensions = new Vector2D(60, 50);
+			seatPitch = 85;
+			passengers = 1;
 			passengerClass = CabinFactory.eINSTANCE.createPremiumEconomyClass();
 			break;
-		case "BusinessClass":
-			try {
-				BusinessClass subclass = ModelHelper
-						.getChildrenByClass(cabin, BusinessClass.class).get(0);
-				seats = (int) tryPreset(4, 12, 35,
-						subclass.getAvailableSeats());
-				seatStructure = (String) tryPreset("1-1", "2-2", "2-3-2",
-						subclass.getRowStructure());
-				seatDimensions = new Vector2D(subclass.getXDimensionOfSeats(),
-						subclass.getYDimensionOfSeats());
-				seatPitch = subclass.getSeatPitch();
-				passengers = (int) tryPreset(0, 0, 0, subclass.getPassengers());
-				cabin.getClasses().remove(subclass);
-			} catch (IndexOutOfBoundsException e) {
-				seats = 8;
-				seatStructure = "2-2";
-				seatDimensions = new Vector2D(80, 72);
-				seatPitch = 90;
-				passengers = 1;
-			}
+
+		case BUSINESS_CLASS:
+
+			seats = 8;
+			seatStructure = "2-2";
+			seatDimensions = new Vector2D(80, 72);
+			seatPitch = 90;
+			passengers = 1;
 			passengerClass = CabinFactory.eINSTANCE.createBusinessClass();
 			break;
-		case "FirstClass":
-			try {
-				FirstClass subclass = ModelHelper
-						.getChildrenByClass(cabin, FirstClass.class).get(0);
-				seats = (int) tryPreset(2, 2, 8, subclass.getAvailableSeats());
-				seatStructure = (String) tryPreset("1-1", "1-1", "1-2-1",
-						subclass.getRowStructure());
-				seatDimensions = new Vector2D(subclass.getXDimensionOfSeats(),
-						subclass.getYDimensionOfSeats());
-				seatPitch = subclass.getSeatPitch();
-				passengers = (int) tryPreset(0, 0, 0, subclass.getPassengers());
-				cabin.getClasses().remove(subclass);
-			} catch (IndexOutOfBoundsException e) {
-				seats = 2;
-				seatStructure = "1-1";
-				seatDimensions = new Vector2D(120, 100);
-				seatPitch = 100;
-				passengers = 1;
-			}
+
+		case FIRST_CLASS:
+
+			seats = 2;
+			seatStructure = "1-1";
+			seatDimensions = new Vector2D(120, 100);
+			seatPitch = 100;
+			passengers = 1;
 			passengerClass = CabinFactory.eINSTANCE.createFirstClass();
 			break;
-		case "EconomyClass":
-			try {
-				EconomyClass subclass = ModelHelper
-						.getChildrenByClass(cabin, EconomyClass.class).get(0);
-				seats = (int) tryPreset(20, 72, 280,
-						subclass.getAvailableSeats());
-				seatStructure = (String) tryPreset("2-2", "3-3", "3-4-3",
-						subclass.getRowStructure());
-				seatDimensions = new Vector2D(subclass.getXDimensionOfSeats(),
-						subclass.getYDimensionOfSeats());
-				seatPitch = subclass.getSeatPitch();
-				passengers = (int) tryPreset(2, 2, 2, subclass.getPassengers());
-				cabin.getClasses().remove(subclass);
-			} catch (IndexOutOfBoundsException e) {
-				seats = 72;
-				seatStructure = "3-3";
-				seatDimensions = new Vector2D(60, 50);
-				seatPitch = 80;
-				passengers = 1;
-			}
+
+		case ECONOMY_CLASS:
+
+			seats = 72;
+			seatStructure = "3-3";
+			seatDimensions = new Vector2D(60, 50);
+			seatPitch = 80;
+			passengers = 1;
 			passengerClass = CabinFactory.eINSTANCE.createEconomyClass();
 			break;
 		}
@@ -272,10 +194,10 @@ public class ConstructionLibrary {
 		int currentPosition = 0;
 		splitSeatString(seatStructure);
 		if (doItOnce) {
-			try {
+			if (!cabin.getClasses().isEmpty()) {
 				seatStructure = cabin.getClasses().get(0).getRowStructure();
 				splitSeatString(seatStructure);
-			} catch (IndexOutOfBoundsException e) {
+			} else {
 				rowPartsInt.clear();
 				rowPartsInt.addAll(Arrays.asList(3, 3));
 			}
@@ -364,31 +286,35 @@ public class ConstructionLibrary {
 	/**
 	 * This method creates a class and the subclasses (seats, rows, etc.).
 	 * 
-	 * @param travelSubClass
+	 * @param travelOption
 	 *            is the subclass
 	 * @param <T>
 	 *            is a helper class
 	 */
-	public <T extends TravelClass> void createClass(Class<T> travelSubClass) {
+	public void createClass(TravelOption travelOption) {
+
 		passengerClass = null;
-		switchSettings(travelSubClass);
+		switchSettings(travelOption);
 		cabin.getClasses().add(passengerClass);
 		splitSeatString(seatStructure);
+
 		passengerClass.setPassengers(passengers);
 		passengerClass.setAvailableSeats(seats);
 		passengerClass.setRowStructure(
 				InputChecker.checkStructureString(seatStructure));
+
 		passengerClass.setSeatPitch(seatPitch);
 		passengerClass.setYDimensionOfSeats(seatDimensions.getY());
 		passengerClass.setXDimensionOfSeats(seatDimensions.getX());
 		passengerClass.setName("");
+
 		if (seats > 0) {
 			seatHelper = 0;
 			if ((seats % seatsInRow) != 0) {
 				Log.add(this,
 						"Check your number of seats in "
-								+ StringHelper.splitCamelCase(
-										travelSubClass.getSimpleName())
+								+ StringHelper
+										.splitCamelCase(travelOption.getName())
 								+ ". Could not fill all rows.");
 			}
 
@@ -432,8 +358,8 @@ public class ConstructionLibrary {
 
 			}
 			if (!(passengerClass instanceof EconomyClass)) {
-				createCurtain(true, "after " + StringHelper
-						.splitCamelCase(travelSubClass.getSimpleName()));
+				createCurtain(true, "after "
+						+ StringHelper.splitCamelCase(travelOption.getName()));
 			}
 		}
 	}

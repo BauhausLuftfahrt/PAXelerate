@@ -60,11 +60,10 @@ public class SimulationHandler {
 	 * @param cabin
 	 *            is the cabin
 	 */
-	public SimulationHandler(ObstacleMap obstaclemap, Vector dimensions,
-			Cabin cabin) {
+	public SimulationHandler(Vector dimensions, Cabin cabin) {
 		this.dimensions = dimensions;
 		Log.add(this, "Cabin initializing...");
-		areamap = new AreaMap(this.dimensions, obstaclemap);
+		areamap = new AreaMap(this.dimensions, cabin);
 		SimulationHandler.cabin = cabin;
 		run();
 	}
@@ -200,18 +199,18 @@ public class SimulationHandler {
 
 		int offset = 5;
 
-		Vector start = new Vector2D(
+		Vector start = new Vector2D(seat.getXPosition() - 2,
 				seat.getYPosition() + seat.getYDimension() / 2,
-				(seat.getXPosition()) - 2, cabin.getScale());
+				cabin.getScale());
 
 		if (pax.getSeatRef().getXPosition() < pax.getDoor().getXPosition()) {
 			offset = -(offset + 2);
 			System.out.println("offset mirrored");
 		}
 
-		Vector goal = new Vector2D(cabin.getYDimension() / 2.0,
+		Vector goal = new Vector2D(
 				seat.getXPosition() + offset * cabin.getScale(),
-				cabin.getScale());
+				cabin.getYDimension() / 2.0, cabin.getScale());
 
 		Agent agent = new Agent(pax, start, goal,
 				SimulationHandler.getCostMap(), Agent.AgentMode.MAKE_WAY,
@@ -226,14 +225,27 @@ public class SimulationHandler {
 				+ ", y:" + goal.getY() + ".");
 	}
 
+	/**
+	 * 
+	 * @param agentList
+	 */
 	public static synchronized void setAgentList(ArrayList<Agent> agentList) {
 		SimulationHandler.agentList = agentList;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public static synchronized int getNumberOfPassengersInCabin() {
 		return activeList.size();
 	}
 
+	/**
+	 * 
+	 * @param pax
+	 * @return
+	 */
 	public synchronized static boolean CabinAccessGranted(Passenger pax) {
 
 		EList<Passenger> waitingList = pax.getDoor().getWaitingPassengers();
@@ -260,6 +272,11 @@ public class SimulationHandler {
 		return false;
 	}
 
+	/**
+	 * 
+	 * @param pax
+	 * @return
+	 */
 	private static boolean enoughTimePassed(Passenger pax) {
 		Door door = pax.getDoor();
 		if (!lastDoorRelease.containsKey(door)) {
@@ -278,25 +295,15 @@ public class SimulationHandler {
 		return false;
 	}
 
-	private static synchronized Agent getAgentByPassengerID(int id) {
-		for (Agent agentWhoIsIt : agentList) {
-			if (agentWhoIsIt.getPassenger().getId() == id) {
-				return agentWhoIsIt;
-			}
-		}
-		return null;
-	}
-
+	/**
+	 * 
+	 * @param pax
+	 */
 	public synchronized static void setPassengerActive(Passenger pax) {
 
 		if (!AStarHelper.PassengerAlreadyInList(pax, activeList)) {
 			activeList.add(pax);
 		}
-	}
-
-	public static synchronized void sleepAgent(int duration,
-			Passenger passenger) {
-		getAgentByPassengerID(passenger.getId()).interruptAgent(duration);
 	}
 
 	/**

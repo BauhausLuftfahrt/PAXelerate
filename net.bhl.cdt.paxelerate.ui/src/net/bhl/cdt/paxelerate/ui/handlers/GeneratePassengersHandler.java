@@ -13,8 +13,14 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import net.bhl.cdt.paxelerate.model.Cabin;
-import net.bhl.cdt.paxelerate.model.util.ModelLoader;
+import net.bhl.cdt.paxelerate.model.util.EMFModelLoader;
 import net.bhl.cdt.paxelerate.ui.commands.GeneratePassengersCommand;
+
+/**
+ * 
+ * @author marc.engelmann
+ *
+ */
 
 public class GeneratePassengersHandler extends AbstractHandler {
 
@@ -35,20 +41,17 @@ public class GeneratePassengersHandler extends AbstractHandler {
 
 		Object firstElement = null;
 
-		// TODO: this does not work if the cabin has not been loaded from the
-		// model explorer into the cabin view before!
+		// TODO: this does not work if the cabin has not once been refreshed
+		// using a right click refresh.
 
 		if (selection == null) {
-			firstElement = ModelLoader.loadCabin();
-
+			firstElement = EMFModelLoader.loadCabin();
 		} else {
 			firstElement = selection.getFirstElement();
 		}
 
 		if (firstElement instanceof Cabin) {
-
 			new GeneratePassengersCommand((Cabin) firstElement).execute();
-
 		}
 
 		return null;

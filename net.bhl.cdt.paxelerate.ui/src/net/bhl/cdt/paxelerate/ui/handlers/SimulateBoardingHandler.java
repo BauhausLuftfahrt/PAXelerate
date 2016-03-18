@@ -13,7 +13,14 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import net.bhl.cdt.paxelerate.model.Cabin;
+import net.bhl.cdt.paxelerate.model.util.EMFModelLoader;
 import net.bhl.cdt.paxelerate.ui.commands.SimulateBoardingCommand;
+
+/**
+ * 
+ * @author marc.engelmann
+ *
+ */
 
 public class SimulateBoardingHandler extends AbstractHandler {
 
@@ -32,11 +39,19 @@ public class SimulateBoardingHandler extends AbstractHandler {
 		ISelection sel = HandlerUtil.getActiveMenuSelection(event);
 		IStructuredSelection selection = (IStructuredSelection) sel;
 
-		Object firstElement = selection.getFirstElement();
+		Object firstElement = null;
+
+		// TODO: this does not work if the cabin has not once been refreshed
+		// using a right click refresh.
+
+		if (selection == null) {
+			firstElement = EMFModelLoader.loadCabin();
+		} else {
+			firstElement = selection.getFirstElement();
+		}
+
 		if (firstElement instanceof Cabin) {
-
 			new SimulateBoardingCommand((Cabin) firstElement).execute();
-
 		}
 
 		return null;

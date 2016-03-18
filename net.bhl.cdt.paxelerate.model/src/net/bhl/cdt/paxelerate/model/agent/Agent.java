@@ -73,7 +73,7 @@ public class Agent extends Subject implements Runnable {
 	private Passenger thePassengerILetInTheRow;
 
 	private LuggageProperties simLuggageSettings;
-	
+
 	private SimulationProperties simSettings;
 
 	public Passenger getThePassengerILetInTheRow() {
@@ -115,8 +115,7 @@ public class Agent extends Subject implements Runnable {
 		this.scale = SimulationHandler.getCabin().getScale();
 		this.finalCostmap = costmap;
 		this.thePassengerILetInTheRow = thePassengerILetInTheRow;
-		this.simSettings = SimulationHandler.getCabin()
-				.getSimulationSettings();
+		this.simSettings = SimulationHandler.getCabin().getSimulationSettings();
 		this.simLuggageSettings = SimulationHandler.getCabin()
 				.getSimulationSettings().getLuggageProperties();
 
@@ -524,22 +523,11 @@ public class Agent extends Subject implements Runnable {
 					}
 				}
 				if (checkNode.getProperty() == Property.OBSTACLE) {
-					// System.out
-					// .println("###### !OVERLAPPING OF AGENT AND OBSTACLE!
-					// ###### !AGENT - nodeBlockedBySomeoneElseOrObstacle()!
-					// ######");
-					// if (isInYRangeSmaller(
-					// passenger.getSeatRef().getXPosition(), 5, false)) {
 					return null;
-					// } else {
-					// return Property.OBSTACLE;
-					// }
 				}
 			}
-			// }
 		}
 		return null;
-
 	}
 
 	/**
@@ -662,7 +650,8 @@ public class Agent extends Subject implements Runnable {
 					if (anyoneNearMe()) {
 						System.out
 								.println("waymaking skipped. Delay simulated!");
-						Thread.sleep(AStarHelper.time(simSettings.getSeatInterferenceProcessTime()));
+						Thread.sleep(AStarHelper.time(
+								simSettings.getSeatInterferenceProcessTime()));
 						waitingCompleted = true;
 						continue;
 					}
@@ -677,12 +666,13 @@ public class Agent extends Subject implements Runnable {
 						}
 
 						while (!otherPassengerStoodUp()) {
-							Thread.sleep(simSettings.getThreadSleepTimeDefault());
+							Thread.sleep(
+									simSettings.getThreadSleepTimeDefault());
 						}
 
 						// TODO: calculate the waiting time!
-						Thread.sleep(AStarHelper.time(
-								simSettings.getSeatInterferenceStandingUpPassengerWaitingTime()));
+						Thread.sleep(AStarHelper.time(simSettings
+								.getSeatInterferenceStandingUpPassengerWaitingTime()));
 
 						waitingCompleted = true;
 					}
@@ -713,12 +703,9 @@ public class Agent extends Subject implements Runnable {
 
 						/* catch possible errors */
 					} catch (ConcurrentModificationException e) {
-						System.out.println(
-								"###### !ConcurrentModificationException ERROR! ###### !AGENT - setPosition()! ######");
+						e.printStackTrace();
 					} catch (ArrayIndexOutOfBoundsException a) {
-						System.out.println(
-								"###### !ArrayIndexOutOfBoundsException ERROR! ###### !AGENT - setPosition()! ######");
-
+						a.printStackTrace();
 					}
 
 					/* sleep as long as one step takes */
@@ -730,11 +717,7 @@ public class Agent extends Subject implements Runnable {
 
 			/* catch possible interruptions */
 		} catch (InterruptedException e) {
-			System.out.println(
-					"###### !ArrayIndexOutOfBoundsException ERROR! ###### !AGENT - followPath()! ######");
-			/* end this thread */
-			this.getThread().interrupt();
-			System.out.println("thread is now interrupted");
+			e.printStackTrace();
 		}
 	}
 
@@ -970,8 +953,8 @@ public class Agent extends Subject implements Runnable {
 				 * he should return to his seat afterwards!
 				 */
 
-				int offset = 0;
-				double position = thePassengerILetInTheRow.getPositionY();
+				int offset = 3;
+				double position = thePassengerILetInTheRow.getPositionX();
 				Cabin cabinBlocker = SimulationHandler.getCabin();
 				Passenger dummyPax = CabinFactory.eINSTANCE.createPassenger();
 				dummyPax.setId(Integer.MAX_VALUE);
@@ -979,8 +962,8 @@ public class Agent extends Subject implements Runnable {
 				for (int i = 0; i < cabinBlocker.getYDimension()
 						/ cabinBlocker.getScale(); i++) {
 					Node node = SimulationHandler.getMap().getNodeByCoordinate(
-							i, (int) (position / cabinBlocker.getScale())
-									- offset);
+							(int) (position / cabinBlocker.getScale()) - offset,
+							i);
 					if (node.getProperty() != Property.OBSTACLE) {
 						node.setProperty(Property.AGENT, passenger);
 						// node.setHidden();
@@ -1023,8 +1006,9 @@ public class Agent extends Subject implements Runnable {
 						/ cabinBlocker.getScale(); i++) {
 
 					Node node = SimulationHandler.getMap().getNodeByCoordinate(
-							i, (int) (position / cabinBlocker.getScale())
-									- offset);
+							(int) (position / cabinBlocker.getScale()) - offset,
+							i);
+
 					if (node.getProperty() != Property.OBSTACLE) {
 						node.setProperty(Property.DEFAULT, passenger);
 					}
@@ -1039,9 +1023,7 @@ public class Agent extends Subject implements Runnable {
 			performFinalElements();
 
 		} catch (InterruptedException e) {
-
-			/* This loop is run if there was an unknown error during runtime */
-			System.out.println("thread got an error");
+			e.printStackTrace();
 		}
 	}
 

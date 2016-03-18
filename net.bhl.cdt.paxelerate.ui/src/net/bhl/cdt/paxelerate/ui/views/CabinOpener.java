@@ -11,8 +11,6 @@ import org.eclipse.emf.ecp.explorereditorbridge.internal.EditorModelElementOpene
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.ui.commands.DrawCabinCommand;
 
-// UNUSED CLASS?
-@Deprecated
 public class CabinOpener extends EditorModelElementOpener {
 
 	public CabinOpener() {
@@ -24,7 +22,5 @@ public class CabinOpener extends EditorModelElementOpener {
 	public void openModelElement(Object element, ECPProject ecpProject) {
 		new DrawCabinCommand((Cabin) element).execute();
 		super.openModelElement(element, ecpProject);
-
 	}
-
 }

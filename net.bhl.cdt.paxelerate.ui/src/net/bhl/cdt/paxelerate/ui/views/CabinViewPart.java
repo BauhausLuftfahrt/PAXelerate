@@ -7,8 +7,11 @@ package net.bhl.cdt.paxelerate.ui.views;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
@@ -26,22 +29,26 @@ import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
 import net.bhl.cdt.paxelerate.model.Curtain;
 import net.bhl.cdt.paxelerate.model.Door;
-import net.bhl.cdt.paxelerate.model.EconomyClass;
 import net.bhl.cdt.paxelerate.model.FirstClass;
 import net.bhl.cdt.paxelerate.model.Galley;
 import net.bhl.cdt.paxelerate.model.Lavatory;
+import net.bhl.cdt.paxelerate.model.ObjectOption;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.PhysicalObject;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
+import net.bhl.cdt.paxelerate.model.TravelClass;
+import net.bhl.cdt.paxelerate.model.TravelOption;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.astar.ObstacleMap;
 import net.bhl.cdt.paxelerate.model.astar.Path;
+import net.bhl.cdt.paxelerate.model.util.POHelper;
+import net.bhl.cdt.paxelerate.model.util.TCHelper;
 import net.bhl.cdt.paxelerate.ui.color.ColorHelper;
 import net.bhl.cdt.paxelerate.ui.font.FontHelper;
 import net.bhl.cdt.paxelerate.ui.graphics.SWTHelper;
-import net.bhl.cdt.paxelerate.ui.images.ImageHelper;
-import net.bhl.cdt.paxelerate.ui.images.ImageImporter;
+import net.bhl.cdt.paxelerate.ui.image.ImageHelper;
+import net.bhl.cdt.paxelerate.ui.image.ImageImporter;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
@@ -67,7 +74,7 @@ public class CabinViewPart extends ViewPart {
 	private static int xZero = 139, yZero = 75, imageX = 400, imageY = 1000;
 	/*******************************************************************/
 
-	private Image economySeat, businessSeat, firstSeat, coffeeIcon, lavatoryIcon;
+	private Image economySeat, businessSeat, firstSeat, galleyIcon, lavatoryIcon;
 	private Canvas canvas;
 	private Adapter cabinAdapter;
 	private ImageLoader loader;
@@ -96,7 +103,7 @@ public class CabinViewPart extends ViewPart {
 		economySeat = ImageImporter.getImage(getClass(), IMAGE_PATH + "/economy_seat.png");
 		businessSeat = ImageImporter.getImage(getClass(), IMAGE_PATH + "/business_seat.png");
 		firstSeat = ImageImporter.getImage(getClass(), IMAGE_PATH + "/first_seat.png");
-		coffeeIcon = ImageImporter.getImage(getClass(), IMAGE_PATH + "/coffee.png");
+		galleyIcon = ImageImporter.getImage(getClass(), IMAGE_PATH + "/coffee.png");
 		lavatoryIcon = ImageImporter.getImage(getClass(), IMAGE_PATH + "/lavatory.png");
 
 		canvas = new Canvas(parent, SWT.DOUBLE_BUFFERED);
@@ -133,13 +140,13 @@ public class CabinViewPart extends ViewPart {
 	 * @return
 	 */
 	private Image switchIcon(PhysicalObject obj) {
+
 		if (obj instanceof Lavatory) {
 			return lavatoryIcon;
 		} else if (obj instanceof Galley) {
-			return coffeeIcon;
-		} else {
-			return null;
+			return galleyIcon;
 		}
+		return null;
 	}
 
 	/**
@@ -214,7 +221,6 @@ public class CabinViewPart extends ViewPart {
 				gc.drawImage(firstSeat, get(seat, Axis.X), get(seat, Axis.Y));
 			} else if (seat.getTravelClass() instanceof BusinessClass) {
 				gc.drawImage(businessSeat, get(seat, Axis.X), get(seat, Axis.Y));
-
 			} else {
 				gc.drawImage(economySeat, get(seat, Axis.X), get(seat, Axis.Y));
 			}
@@ -227,7 +233,7 @@ public class CabinViewPart extends ViewPart {
 					yZero + positionY + 4);
 		}
 
-		for (Door door : ModelHelper.getChildrenByClass(cabin, Door.class)) {
+		for (Door door : cabin.getDoors()) {
 
 			gc.setBackground(ColorHelper.GREY_DARK);
 
@@ -239,17 +245,17 @@ public class CabinViewPart extends ViewPart {
 					adapt(door.getWidth()));
 		}
 
-		for (Lavatory lavatory : ModelHelper.getChildrenByClass(cabin, Lavatory.class)) {
+		for (Lavatory lavatory : cabin.getLavatories()) {
 			gc.setBackground(ColorHelper.AIRCRAFT_LAVATORY);
 			drawObject(gc, lavatory);
 		}
 
-		for (Galley galley : ModelHelper.getChildrenByClass(cabin, Galley.class)) {
+		for (Galley galley : cabin.getGalleys()) {
 			gc.setBackground(ColorHelper.GREEN);
 			drawObject(gc, galley);
 		}
 
-		for (Curtain curtain : ModelHelper.getChildrenByClass(cabin, Curtain.class)) {
+		for (Curtain curtain : cabin.getCurtains()) {
 			gc.setBackground(ColorHelper.BLACK);
 			gc.fillRectangle(adapt(Axis.X, curtain.getYPosition()), adapt(Axis.Y, curtain.getXPosition()),
 					adapt(curtain.getYDimension()), adapt(curtain.getXDimension()));
@@ -373,47 +379,55 @@ public class CabinViewPart extends ViewPart {
 			 * the dimensions of the first element are used for scaling
 			 **/
 
-			if (!ModelHelper.getChildrenByClass(cabin, FirstClass.class).isEmpty()) {
-				int dim = adapt(ModelHelper.getChildrenByClass(cabin, FirstClass.class).get(0).getYDimensionOfSeats());
-				firstSeat = ImageHelper.resize(firstSeat, dim, dim, parent);
-			}
-			if (!ModelHelper.getChildrenByClass(cabin, BusinessClass.class).isEmpty()) {
-				int dim = adapt(
-						ModelHelper.getChildrenByClass(cabin, BusinessClass.class).get(0).getYDimensionOfSeats());
-				businessSeat = ImageHelper.resize(businessSeat, dim, dim, parent);
+			for (TravelOption option : TravelOption.VALUES) {
+				List<TravelClass> list = TCHelper.getClassesByOption(option, cabin);
+
+				if (!list.isEmpty()) {
+					int dim = adapt(list.get(0).getYDimensionOfSeats());
+
+					switch (option) {
+					case FIRST_CLASS:
+						firstSeat = ImageHelper.resize(firstSeat, dim, dim, parent);
+					case BUSINESS_CLASS:
+						businessSeat = ImageHelper.resize(businessSeat, dim, dim, parent);
+					case ECONOMY_CLASS:
+						economySeat = ImageHelper.resize(economySeat, dim, dim, parent);
+					default:
+					}
+				}
 			}
 
-			if (!ModelHelper.getChildrenByClass(cabin, EconomyClass.class).isEmpty()) {
-				int dim = adapt(
-						ModelHelper.getChildrenByClass(cabin, EconomyClass.class).get(0).getYDimensionOfSeats());
-				economySeat = ImageHelper.resize(economySeat, dim, dim, parent);
+			for (ObjectOption option : ObjectOption.VALUES) {
+				List<PhysicalObject> list = POHelper.getObjectByOption(option, cabin);
+
+				if (!list.isEmpty()) {
+					int dim = adapt(list.get(0).getXDimension() * 0.6);
+
+					switch (option) {
+					case GALLEY:
+						galleyIcon = ImageHelper.resize(galleyIcon, dim, dim, parent);
+					case LAVATORY:
+						lavatoryIcon = ImageHelper.resize(lavatoryIcon, dim, dim, parent);
+					default:
+					}
+				}
 			}
 
-			if (!cabin.getGalleys().isEmpty()) {
-				int dim = adapt(cabin.getGalleys().get(0).getXDimension() * 0.6);
-				coffeeIcon = ImageHelper.resize(coffeeIcon, dim, dim, parent);
-			}
-
-			if (!cabin.getLavatories().isEmpty()) {
-				int dim = adapt(cabin.getLavatories().get(0).getXDimension() * 0.6);
-				lavatoryIcon = ImageHelper.resize(lavatoryIcon, dim, dim, parent);
-			}
-
-			// cabinAdapter = new AdapterImpl() {
-			// @Override
-			// public void notifyChanged(Notification notification) {
-			// if (!notification.isTouch()) {
-			//
-			// // TODO: check performance
-			// doTheDraw();
-			// }
-			// }
-			// };
+			cabinAdapter = new AdapterImpl() {
+				@Override
+				public void notifyChanged(Notification notification) {
+					if (!notification.isTouch()) {
+						doTheDraw();
+					}
+				}
+			};
 
 			img = createImage();
 			syncViewer();
 			doTheDraw();
-		} catch (Exception e) {
+		} catch (
+
+		Exception e) {
 			Log.add(this, "ERROR in setCabin()");
 			e.printStackTrace();
 		}

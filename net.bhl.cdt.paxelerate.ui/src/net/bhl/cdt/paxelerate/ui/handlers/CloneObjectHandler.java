@@ -9,6 +9,12 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 import net.bhl.cdt.paxelerate.ui.commands.CloneObjectCommand;
 
+/**
+ * 
+ * @author marc.engelmann
+ *
+ */
+
 public class CloneObjectHandler extends AbstractHandler {
 
 	/**

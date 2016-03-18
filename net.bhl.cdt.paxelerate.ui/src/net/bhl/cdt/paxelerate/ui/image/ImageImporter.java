@@ -9,7 +9,7 @@
  *    Google, Inc. - initial API and implementation
  *******************************************************************************/
 
-package net.bhl.cdt.paxelerate.ui.images;
+package net.bhl.cdt.paxelerate.ui.image;
 
 import java.io.FileInputStream;
 import java.io.IOException;

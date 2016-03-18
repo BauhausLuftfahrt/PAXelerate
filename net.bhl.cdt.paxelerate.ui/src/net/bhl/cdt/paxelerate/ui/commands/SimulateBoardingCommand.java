@@ -19,7 +19,6 @@ import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Seat;
-import net.bhl.cdt.paxelerate.model.astar.ObstacleMap;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.model.storage.Exporter;
 import net.bhl.cdt.paxelerate.model.util.SimulationResultLogger;
@@ -28,6 +27,7 @@ import net.bhl.cdt.paxelerate.ui.views.SimulationView;
 import net.bhl.cdt.paxelerate.util.input.Input;
 import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 import net.bhl.cdt.paxelerate.util.math.DecimalHelper;
+import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.OS;
@@ -71,7 +71,6 @@ public class SimulateBoardingCommand extends CDTCommand {
 	@Override
 	protected void doRun() {
 
-		cabin.setFramesPerSecond(10);
 		cabin.getSimulationSettings().setRandomSortBetweenLoops(false);
 
 		SimulationResultLogger results = new SimulationResultLogger();
@@ -79,10 +78,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 		DrawCabinCommand drawCom = new DrawCabinCommand(cabin);
 		drawCom.doRun();
 
-		/********** Get CabinView and ConsoleView ***************/
-
 		CabinViewPart cabinViewPart = ViewPartHelper.getCabinView();
-		/********************************************************/
 
 		for (int i = 0; i < cabin.getSimulationSettings().getNumberOfSimulationLoops(); i++) {
 
@@ -135,11 +131,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 			}
 			if (!cabin.getPassengers().isEmpty()) {
 
-				Vector2D dimensions = new Vector2D(cabin.getXDimension(), cabin.getYDimension(), cabin.getScale());
-
-				ObstacleMap obstaclemap = new ObstacleMap(dimensions, cabin);
-
-				SimulationHandler handler = new SimulationHandler(obstaclemap, dimensions, cabin);
+				Vector dimensions = new Vector2D(cabin.getXDimension(), cabin.getYDimension(), cabin.getScale());
+				SimulationHandler simulationhandler = new SimulationHandler(dimensions, cabin);
 
 				// Show WIP simulation view
 				runAreaMapWindow();
@@ -151,7 +144,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 						}
 					}
 					if (OS.isMac()) {
-						cabinViewPart.submitPassengerCoordinates(cabin);
+						// cabinViewPart.submitPassengerCoordinates(cabin);
 					}
 				}
 				if (SimulationHandler.isSimulationDone()) {
@@ -167,7 +160,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 						Log.add(this, "Interrupt map saved successfully!");
 					}
 
-					for (Passenger pax : ModelHelper.getChildrenByClass(handler.getPassengerLocations(),
+					for (Passenger pax : ModelHelper.getChildrenByClass(simulationhandler.getPassengerLocations(),
 							Passenger.class)) {
 						if (pax.isIsSeated() && !alreadySeatedList.contains(pax)) {
 							alreadySeatedList.add(pax);
@@ -180,18 +173,10 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 					SimulationView.getWatch().stop();
 
-					if (!obstaclemap.equals(null)) {
-						Image image = cabinViewPart.submitObstacleMap(obstaclemap.getMap());
-						// obstaclemap.printObstacleMap();
-						cabinViewPart.printObstacleMap(image);
+					Image image = cabinViewPart.submitObstacleMap(SimulationHandler.getMap().getObstacleMap().getMap());
+					cabinViewPart.printObstacleMap(image);
+					cabinViewPart.submitAgents(SimulationHandler.getAgentList());
 
-						Log.add(this, "Heat map generation succeeded");
-					}
-
-					if (!SimulationHandler.getAgentList().isEmpty()) {
-						cabinViewPart.submitAgents(SimulationHandler.getAgentList());
-						Log.add(this, "Paths printed successfully");
-					}
 					Log.add(this, "Boarding simulation completed");
 				}
 			} else {
@@ -205,7 +190,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 		}
 		results.printSimulationData();
 
-		// THIS IS IMPORTANT:
+		/* Clear the cache! */
 		cabinViewPart.clearCache();
 	}
 

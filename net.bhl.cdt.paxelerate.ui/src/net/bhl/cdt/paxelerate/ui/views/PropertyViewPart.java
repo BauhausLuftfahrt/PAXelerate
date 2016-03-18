@@ -27,6 +27,7 @@ import net.bhl.cdt.paxelerate.model.storage.StorageHandler;
 import net.bhl.cdt.paxelerate.model.storage.StorageHandler.StoreType;
 import net.bhl.cdt.paxelerate.ui.color.ColorHelper;
 import net.bhl.cdt.paxelerate.ui.font.FontHelper;
+import net.bhl.cdt.paxelerate.ui.graphics.SWTHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
@@ -53,7 +54,7 @@ public class PropertyViewPart extends ViewPart {
 
 	private int pos = 0;
 
-	private Vector dimensions = new Vector2D(0, 0);
+	private Vector dim = new Vector2D(0, 0);
 
 	/**
 	 * 
@@ -71,8 +72,8 @@ public class PropertyViewPart extends ViewPart {
 		parent.addListener(SWT.Resize, new Listener() {
 			@Override
 			public void handleEvent(Event e) {
-				dimensions.setX(parent.getSize().x);
-				dimensions.setY(parent.getSize().y);
+				dim.setX(parent.getSize().x);
+				dim.setY(parent.getSize().y);
 			}
 		});
 		doTheDraw();
@@ -93,17 +94,15 @@ public class PropertyViewPart extends ViewPart {
 
 					pos = 0;
 
-					e.gc.setAntialias(SWT.ON);
-					e.gc.setTextAntialias(SWT.ON);
-					e.gc.setInterpolation(SWT.HIGH);
+					e.gc = SWTHelper.getQualitySettings(e.gc);
 
 					e.gc.setFont(FontHelper.HEADING3);
 
 					e.gc.setForeground(ColorHelper.GREY_LIGHT);
 					e.gc.setLineWidth(1);
-					e.gc.drawLine(dimensions.getX() / 4, 0, dimensions.getX() / 4, (dimensions.getY()));
-					e.gc.drawLine(dimensions.getX() / 2, 0, dimensions.getX() / 2, (dimensions.getY()));
-					e.gc.drawLine(dimensions.getX() / 4 * 3, 0, dimensions.getX() / 4 * 3, (dimensions.getY()));
+					e.gc.drawLine(dim.getX() / 4, 0, dim.getX() / 4, (dim.getY()));
+					e.gc.drawLine(dim.getX() / 2, 0, dim.getX() / 2, (dim.getY()));
+					e.gc.drawLine(dim.getX() / 4 * 3, 0, dim.getX() / 4 * 3, (dim.getY()));
 
 					e.gc.setForeground(ColorHelper.BLACK);
 
@@ -114,14 +113,14 @@ public class PropertyViewPart extends ViewPart {
 					e.gc.setBackground(ColorHelper.PASSENGER_MALE);
 
 					e.gc.fillRectangle(0, pos,
-							(int) (dimensions.getX() * propertyStore.getPercentageOfPassengers(Sex.MALE)), BAR_HEIGHT);
+							(int) (dim.getX() * propertyStore.getPercentageOfPassengers(Sex.MALE)), BAR_HEIGHT);
 					e.gc.drawText(names[0], 5, pos, true);
 
 					e.gc.setBackground(ColorHelper.PASSEMGER_FEMALE);
-					e.gc.fillRectangle((int) (dimensions.getX() * propertyStore.getPercentageOfPassengers(Sex.MALE)),
-							pos, (int) (dimensions.getX() * propertyStore.getPercentageOfPassengers(Sex.FEMALE)),
+					e.gc.fillRectangle((int) (dim.getX() * propertyStore.getPercentageOfPassengers(Sex.MALE)),
+							pos, (int) (dim.getX() * propertyStore.getPercentageOfPassengers(Sex.FEMALE)),
 							BAR_HEIGHT);
-					e.gc.drawText(names[1], (dimensions.getX()) - e.gc.textExtent(names[1]).x - 5, pos, true);
+					e.gc.drawText(names[1], (dim.getX()) - e.gc.textExtent(names[1]).x - 5, pos, true);
 
 					addLabel(e, propertyStore.getPercentageOfPassengers(Sex.MALE) * 100,
 							propertyStore.getPercentageOfPassengers(Sex.MALE), LabelClass.PERCENTAGE, 0);
@@ -139,21 +138,21 @@ public class PropertyViewPart extends ViewPart {
 					double bigLug = propertyStore.getLuggageStore().getLuggagePercentage(LuggageSize.BIG);
 
 					e.gc.setBackground(ColorHelper.LUGGAGE_NONE);
-					e.gc.fillRectangle(0, pos, (int) (dimensions.getX() * noLug), BAR_HEIGHT);
+					e.gc.fillRectangle(0, pos, (int) (dim.getX() * noLug), BAR_HEIGHT);
 
 					e.gc.setBackground(ColorHelper.LUGGAGE_SMALL);
-					e.gc.fillRectangle((int) (dimensions.getX() * noLug), pos, (int) (dimensions.getX() * smallLug),
+					e.gc.fillRectangle((int) (dim.getX() * noLug), pos, (int) (dim.getX() * smallLug),
 							BAR_HEIGHT);
 
 					e.gc.setBackground(ColorHelper.LUGGAGE_MEDIUM);
-					e.gc.fillRectangle((int) (dimensions.getX() * noLug + dimensions.getX() * smallLug), pos,
-							(int) (dimensions.getX() * medLug), BAR_HEIGHT);
+					e.gc.fillRectangle((int) (dim.getX() * noLug + dim.getX() * smallLug), pos,
+							(int) (dim.getX() * medLug), BAR_HEIGHT);
 
 					e.gc.setBackground(ColorHelper.LUGGAGE_LARGE);
 					e.gc.fillRectangle(
-							(int) (dimensions.getX() * noLug + dimensions.getX() * medLug
-									+ dimensions.getX() * smallLug),
-							pos, (int) (dimensions.getX() * bigLug), BAR_HEIGHT);
+							(int) (dim.getX() * noLug + dim.getX() * medLug
+									+ dim.getX() * smallLug),
+							pos, (int) (dim.getX() * bigLug), BAR_HEIGHT);
 
 					addLabel(e, noLug * 100, noLug, LabelClass.PERCENTAGE, 0);
 					addLabel(e, (noLug + smallLug) * 100, smallLug + noLug, LabelClass.PERCENTAGE, 0);
@@ -233,7 +232,7 @@ public class PropertyViewPart extends ViewPart {
 
 		for (int k = min; k < max; k++) {
 			int value = store.getData(sex)[k];
-			x2 = i * dimensions.getX() / steps;
+			x2 = i * dim.getX() / steps;
 			y2 = pos - (int) (((double) value / (double) maximum) * maxHeight);
 			e.gc.drawLine(x1, y1, x2, y2);
 			x1 = x2;
@@ -249,7 +248,7 @@ public class PropertyViewPart extends ViewPart {
 		addHeadline(e, headline);
 
 		e.gc.setBackground(ColorHelper.PASSENGER_MALE);
-		e.gc.fillRectangle(0, pos, (int) (dimensions.getX() * AVG_VALUE), BAR_HEIGHT);
+		e.gc.fillRectangle(0, pos, (int) (dim.getX() * AVG_VALUE), BAR_HEIGHT);
 		e.gc.drawText(names[0], 5, pos, true);
 
 		double minimumFactorMale = (1 - store.getMinimum(Sex.MALE) / store.getAverage(Sex.MALE)) * AVG_VALUE;
@@ -264,8 +263,8 @@ public class PropertyViewPart extends ViewPart {
 				store.getMinimum(Sex.MALE));
 
 		e.gc.setBackground(ColorHelper.PASSEMGER_FEMALE);
-		e.gc.fillRectangle((int) (dimensions.getX() * (1 - AVG_VALUE)), pos, (dimensions.getX()), BAR_HEIGHT);
-		e.gc.drawText(names[1], (dimensions.getX()) - e.gc.textExtent(names[1]).x - 5, pos, true);
+		e.gc.fillRectangle((int) (dim.getX() * (1 - AVG_VALUE)), pos, (dim.getX()), BAR_HEIGHT);
+		e.gc.drawText(names[1], (dim.getX()) - e.gc.textExtent(names[1]).x - 5, pos, true);
 
 		createDeviationLine(e, 1 - AVG_VALUE - minimumFactorFemale, 1 - AVG_VALUE + maximumFactorFemale,
 				store.getMinimum(Sex.FEMALE), store.getMaximum(Sex.FEMALE));
@@ -286,7 +285,7 @@ public class PropertyViewPart extends ViewPart {
 			labelString = df.format(labelValue);
 		}
 
-		e.gc.drawText(labelString, (int) (dimensions.getX() * relativePosition) - e.gc.stringExtent(labelString).x / 2,
+		e.gc.drawText(labelString, (int) (dim.getX() * relativePosition) - e.gc.stringExtent(labelString).x / 2,
 				pos + 15 + offset, true);
 
 		e.gc.setFont(FontHelper.HEADING3);
@@ -298,12 +297,12 @@ public class PropertyViewPart extends ViewPart {
 		e.gc.setForeground(ColorHelper.GREY_DARK);
 		e.gc.setLineWidth(2);
 
-		e.gc.drawLine((int) (dimensions.getX() * leftFactor), pos + BAR_HEIGHT / 2,
-				(int) (dimensions.getX() * rightFactor), pos + BAR_HEIGHT / 2);
-		e.gc.drawLine((int) (dimensions.getX() * leftFactor), pos + BAR_HEIGHT / 2 - DEVIATION_BAR_HEIGHT,
-				(int) (dimensions.getX() * leftFactor), pos + BAR_HEIGHT / 2 + DEVIATION_BAR_HEIGHT);
-		e.gc.drawLine((int) (dimensions.getX() * rightFactor), pos + BAR_HEIGHT / 2 - DEVIATION_BAR_HEIGHT,
-				(int) (dimensions.getX() * rightFactor), pos + BAR_HEIGHT / 2 + DEVIATION_BAR_HEIGHT);
+		e.gc.drawLine((int) (dim.getX() * leftFactor), pos + BAR_HEIGHT / 2,
+				(int) (dim.getX() * rightFactor), pos + BAR_HEIGHT / 2);
+		e.gc.drawLine((int) (dim.getX() * leftFactor), pos + BAR_HEIGHT / 2 - DEVIATION_BAR_HEIGHT,
+				(int) (dim.getX() * leftFactor), pos + BAR_HEIGHT / 2 + DEVIATION_BAR_HEIGHT);
+		e.gc.drawLine((int) (dim.getX() * rightFactor), pos + BAR_HEIGHT / 2 - DEVIATION_BAR_HEIGHT,
+				(int) (dim.getX() * rightFactor), pos + BAR_HEIGHT / 2 + DEVIATION_BAR_HEIGHT);
 
 		addLabel(e, leftLabel, leftFactor, LabelClass.VALUE, 0);
 

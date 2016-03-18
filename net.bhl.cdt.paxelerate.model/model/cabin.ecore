@@ -314,4 +314,18 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerDepthDeviationFemale"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="3"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TravelOption">
+    <eLiterals name="FirstClass"/>
+    <eLiterals name="BusinessClass" value="1"/>
+    <eLiterals name="PremiumEconomyClass" value="2"/>
+    <eLiterals name="EconomyClass" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ObjectOption">
+    <eLiterals name="Seat"/>
+    <eLiterals name="Galley" value="1"/>
+    <eLiterals name="Lavatory" value="2"/>
+    <eLiterals name="Stairway" value="3"/>
+    <eLiterals name="Curtain" value="4"/>
+    <eLiterals name="Stowage" value="5"/>
+  </eClassifiers>
 </ecore:EPackage>

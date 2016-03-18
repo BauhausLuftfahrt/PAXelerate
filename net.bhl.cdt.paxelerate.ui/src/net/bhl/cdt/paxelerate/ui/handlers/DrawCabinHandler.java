@@ -13,9 +13,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import net.bhl.cdt.paxelerate.model.Cabin;
+import net.bhl.cdt.paxelerate.model.util.EMFModelLoader;
 import net.bhl.cdt.paxelerate.ui.commands.DrawCabinCommand;
-import net.bhl.cdt.paxelerate.ui.commands.ViewPartHelper;
-import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 
 /**
  * 
@@ -42,12 +41,11 @@ public class DrawCabinHandler extends AbstractHandler {
 
 		Object firstElement = null;
 
-		// TODO: this does not work if the cabin has not been loaded from the
-		// model explorer into the cabin view before!
+		// TODO: this does not work if the cabin has not once been refreshed
+		// using a right click refresh.
 
 		if (selection == null) {
-			CabinViewPart cabinView = ViewPartHelper.getCabinView();
-			firstElement = cabinView.getCabin();
+			firstElement = EMFModelLoader.loadCabin();
 		} else {
 			firstElement = selection.getFirstElement();
 		}
