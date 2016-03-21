@@ -55,6 +55,7 @@ After a successful test of the release candidate, updates of the code, repositor
 		* Merge `release-0.X` with `master` branch
 		* Release tag
 			* Included material in zip file: updated wiki, change log
+			* Release notes: description, bugs, improvement
 		* Merge `release-0.X` with `develop` branch
 		* Delete `release-0.X` branch
 	* `readme.md` and `home.md`
