@@ -8,6 +8,10 @@ package net.bhl.cdt.paxelerate.ui.commands;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
+
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.BusinessClass;
@@ -23,6 +27,7 @@ import net.bhl.cdt.paxelerate.model.TravelOption;
 import net.bhl.cdt.paxelerate.model.util.PassengerPropertyGenerator;
 import net.bhl.cdt.paxelerate.model.util.TCHelper;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
+import net.bhl.cdt.paxelerate.ui.views.PropertyViewPart;
 import net.bhl.cdt.paxelerate.util.math.RandomHelper;
 import net.bhl.cdt.paxelerate.util.string.StringHelper;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
@@ -41,6 +46,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 	private Cabin cabin;
 	private ArrayList<Integer> randomSeatId, randomPassengerId;
 	private CabinViewPart cabinViewPart;
+	private PropertyViewPart propertyViewPart;
+	private ArrayList<String> errorStrings = new ArrayList<String>();
 
 	private int totalPax, totalSeats, paxInClass, seatsInClass, seatAreaBegin, passengerPerClassCount, firstpax = 0,
 			businesspax = 0, premiumecopax = 0, ecopax = 0, firstseats = 0, businessseats = 0, premiumecoseats = 0,
@@ -257,6 +264,19 @@ public class GeneratePassengersCommand extends CDTCommand {
 			door.getWaitingPassengers().clear();
 		}
 
+		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+		IWorkbenchPage page = window.getActivePage();
+		propertyViewPart = (PropertyViewPart) page.findView("net.bhl.cdt.paxelerate.ui.propertyview");
+
+		for (String str : errorStrings) {
+			Log.add(this, str);
+		}
+		try {
+			propertyViewPart.updateUI(cabin);
+		} catch (NullPointerException e) {
+			Log.add(this, "No property view is visible!");
+		}
+		
 		try {
 			cabinViewPart.setCabin(cabin);
 			cabinViewPart.syncViewer();
