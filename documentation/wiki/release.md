@@ -18,14 +18,16 @@ See [a successful Git branching model](http://nvie.com/posts/a-successful-git-br
 A release candidate branch `release-0.X` will be produced for testing and bug fixing. Tests should comprise at least the following tasks. Bit by bit this will be transfered to automatic tests.
 
 * OpenCDT
-	* Project generation, import, export
-	* Child: export, import
+	* Eclipse workbench and EMFStore 
+		* Project generation, import, export
+		* Child: export, import
 * PAXelerate
 	* Cabin models
 		* Automatic cabin generation
 		* From scratch with row cloning function
-		* A320 model
+			* Cabin with all available monuments
 		* Refresh function
+		* Compatibility: A320 model
 	* Model modifications
 		* Editing of model element values
 		* Repositioning of elements
@@ -33,6 +35,7 @@ A release candidate branch `release-0.X` will be produced for testing and bug fi
 		* Generation in first, business, premium economy and economy
 		* Passenger sorting
 	* Simulation
+		* Different settings
 	
 Basic information about the operating environment should be noted
 
@@ -45,7 +48,7 @@ The wiki should be updated, if new features and functions as well as mayor UI ch
 
 	
 ## Release day
-After a successful test of the release candidate, updates of the code, repository and website are necessary
+After a successful test of the release candidate, updates of the code, repository and website are necessary.
 
 * Code
 	* Update legal and copyright info with current year
@@ -58,10 +61,10 @@ After a successful test of the release candidate, updates of the code, repositor
 			* Release notes: description, bugs, improvement
 		* Merge `release-0.X` with `develop` branch
 		* Delete `release-0.X` branch
-	* `readme.md` and `home.md`
+	* `readme.md`, `home.md` and Wiki landing page
 		* Eclipse, ECP, OpenCDT and PAXelerate version 
 		* Year
-	* Wiki
+	* Documentation
 		* Refer to release version for each file in header
 		* Check compatibility with current release (screenshots)
 	* Issue tracker
