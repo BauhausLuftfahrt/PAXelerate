@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="ASCII"?>
+<net.bhl.cdt.paxelerate:Cabin xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:net.bhl.cdt.paxelerate="http://net.bhl.cdt.paxelerate.model/" yDimension="350" aisleWidth="50">
+  <simulationSettings href="emfstore://workspaces/default/projectspaces/_fO6bQPaKEeW5bKEtLYqgDA/project#//@modelElements.1"/>
+  <classes xsi:type="net.bhl.cdt.paxelerate:EconomyClass" sequence="1" passengers="10" availableSeats="36" seatPitch="60" xDimensionOfSeats="50" yDimensionOfSeats="50" loadFactor="27">
+    <rows rowNumber="1">
+      <seats xPosition="200" yDimension="50" xDimension="50" name="1A" id="1" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.0"/>
+      <seats yPosition="50" xPosition="200" yDimension="50" xDimension="50" name="1B" id="2" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.0"/>
+      <seats yPosition="100" xPosition="200" yDimension="50" xDimension="50" name="1C" id="3" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.0"/>
+      <seats yPosition="200" xPosition="200" yDimension="50" xDimension="50" name="1D" id="4" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.0"/>
+      <seats yPosition="250" xPosition="200" yDimension="50" xDimension="50" name="1E" id="5" letter="E" travelClass="//@classes.0" row="//@classes.0/@rows.0" passenger="//@passengers.1"/>
+      <seats yPosition="300" xPosition="200" yDimension="50" xDimension="50" name="1F" id="6" letter="F" travelClass="//@classes.0" row="//@classes.0/@rows.0"/>
+    </rows>
+    <rows rowNumber="2">
+      <seats xPosition="260" yDimension="50" xDimension="50" name="2A" id="7" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.1"/>
+      <seats yPosition="50" xPosition="260" yDimension="50" xDimension="50" name="2B" id="8" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.1" passenger="//@passengers.0"/>
+      <seats yPosition="100" xPosition="260" yDimension="50" xDimension="50" name="2C" id="9" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.1"/>
+      <seats yPosition="200" xPosition="260" yDimension="50" xDimension="50" name="2D" id="10" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.1"/>
+      <seats yPosition="250" xPosition="260" yDimension="50" xDimension="50" name="2E" id="11" letter="E" travelClass="//@classes.0" row="//@classes.0/@rows.1" passenger="//@passengers.3"/>
+      <seats yPosition="300" xPosition="260" yDimension="50" xDimension="50" name="2F" id="12" letter="F" travelClass="//@classes.0" row="//@classes.0/@rows.1"/>
+    </rows>
+    <rows rowNumber="3">
+      <seats xPosition="320" yDimension="50" xDimension="50" name="3A" id="13" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.2"/>
+      <seats yPosition="50" xPosition="320" yDimension="50" xDimension="50" name="3B" id="14" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.2" passenger="//@passengers.2"/>
+      <seats yPosition="100" xPosition="320" yDimension="50" xDimension="50" name="3C" id="15" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.2"/>
+      <seats yPosition="200" xPosition="320" yDimension="50" xDimension="50" name="3D" id="16" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.2"/>
+      <seats yPosition="250" xPosition="320" yDimension="50" xDimension="50" name="3E" id="17" letter="E" travelClass="//@classes.0" row="//@classes.0/@rows.2"/>
+      <seats yPosition="300" xPosition="320" yDimension="50" xDimension="50" name="3F" id="18" letter="F" travelClass="//@classes.0" row="//@classes.0/@rows.2" passenger="//@passengers.11"/>
+    </rows>
+    <rows rowNumber="4">
+      <seats xPosition="380" yDimension="50" xDimension="50" name="4A" id="19" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.3"/>
+      <seats yPosition="50" xPosition="380" yDimension="50" xDimension="50" name="4B" id="20" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.3"/>
+      <seats yPosition="100" xPosition="380" yDimension="50" xDimension="50" name="4C" id="21" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.3"/>
+      <seats yPosition="200" xPosition="380" yDimension="50" xDimension="50" name="4D" id="22" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.3" passenger="//@passengers.6"/>
+      <seats yPosition="250" xPosition="380" yDimension="50" xDimension="50" name="4E" id="23" letter="E" travelClass="//@classes.0" row="//@classes.0/@rows.3"/>
+      <seats yPosition="300" xPosition="380" yDimension="50" xDimension="50" name="4F" id="24" letter="F" travelClass="//@classes.0" row="//@classes.0/@rows.3"/>
+    </rows>
+    <rows rowNumber="5">
+      <seats xPosition="440" yDimension="50" xDimension="50" name="5A" id="25" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.4"/>
+      <seats yPosition="50" xPosition="440" yDimension="50" xDimension="50" name="5B" id="26" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.4"/>
+      <seats yPosition="100" xPosition="440" yDimension="50" xDimension="50" name="5C" id="27" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.4"/>
+      <seats yPosition="200" xPosition="440" yDimension="50" xDimension="50" name="5D" id="28" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.4"/>
+      <seats yPosition="250" xPosition="440" yDimension="50" xDimension="50" name="5E" id="29" letter="E" travelClass="//@classes.0" row="//@classes.0/@rows.4"/>
+      <seats yPosition="300" xPosition="440" yDimension="50" xDimension="50" name="5F" id="30" letter="F" travelClass="//@classes.0" row="//@classes.0/@rows.4"/>
+    </rows>
+    <rows rowNumber="6">
+      <seats xPosition="500" yDimension="50" xDimension="50" name="6A" id="31" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.5"/>
+      <seats yPosition="50" xPosition="500" yDimension="50" xDimension="50" name="6B" id="32" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.5"/>
+      <seats yPosition="100" xPosition="500" yDimension="50" xDimension="50" name="6C" id="33" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.5"/>
+      <seats yPosition="200" xPosition="500" yDimension="50" xDimension="50" name="6D" id="34" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.5" passenger="//@passengers.8"/>
+      <seats yPosition="250" xPosition="500" yDimension="50" xDimension="50" name="6E" id="35" letter="E" travelClass="//@classes.0" row="//@classes.0/@rows.5"/>
+      <seats yPosition="300" xPosition="500" yDimension="50" xDimension="50" name="6F" id="36" letter="F" travelClass="//@classes.0" row="//@classes.0/@rows.5" passenger="//@passengers.12"/>
+    </rows>
+  </classes>
+  <classes xsi:type="net.bhl.cdt.paxelerate:BusinessClass" sequence="2" passengers="4" availableSeats="16" seatPitch="80" xDimensionOfSeats="60" yDimensionOfSeats="60" rowStructure="2-2" loadFactor="25">
+    <rows rowNumber="7">
+      <seats xPosition="700" yDimension="60" xDimension="60" name="7A" id="37" letter="A" travelClass="//@classes.1" row="//@classes.1/@rows.0"/>
+      <seats yPosition="60" xPosition="700" yDimension="60" xDimension="60" name="7B" id="38" letter="B" travelClass="//@classes.1" row="//@classes.1/@rows.0"/>
+      <seats yPosition="230" xPosition="700" yDimension="60" xDimension="60" name="7C" id="39" letter="C" travelClass="//@classes.1" row="//@classes.1/@rows.0"/>
+      <seats yPosition="290" xPosition="700" yDimension="60" xDimension="60" name="7D" id="40" letter="D" travelClass="//@classes.1" row="//@classes.1/@rows.0"/>
+    </rows>
+    <rows rowNumber="8">
+      <seats xPosition="780" yDimension="60" xDimension="60" name="8A" id="41" letter="A" travelClass="//@classes.1" row="//@classes.1/@rows.1"/>
+      <seats yPosition="60" xPosition="780" yDimension="60" xDimension="60" name="8B" id="42" letter="B" travelClass="//@classes.1" row="//@classes.1/@rows.1" passenger="//@passengers.4"/>
+      <seats yPosition="230" xPosition="780" yDimension="60" xDimension="60" name="8C" id="43" letter="C" travelClass="//@classes.1" row="//@classes.1/@rows.1" passenger="//@passengers.5"/>
+      <seats yPosition="290" xPosition="780" yDimension="60" xDimension="60" name="8D" id="44" letter="D" travelClass="//@classes.1" row="//@classes.1/@rows.1"/>
+    </rows>
+    <rows rowNumber="9">
+      <seats xPosition="860" yDimension="60" xDimension="60" name="9A" id="45" letter="A" travelClass="//@classes.1" row="//@classes.1/@rows.2"/>
+      <seats yPosition="60" xPosition="860" yDimension="60" xDimension="60" name="9B" id="46" letter="B" travelClass="//@classes.1" row="//@classes.1/@rows.2"/>
+      <seats yPosition="230" xPosition="860" yDimension="60" xDimension="60" name="9C" id="47" letter="C" travelClass="//@classes.1" row="//@classes.1/@rows.2" passenger="//@passengers.9"/>
+      <seats yPosition="290" xPosition="860" yDimension="60" xDimension="60" name="9D" id="48" letter="D" travelClass="//@classes.1" row="//@classes.1/@rows.2"/>
+    </rows>
+    <rows rowNumber="10">
+      <seats xPosition="940" yDimension="60" xDimension="60" name="10A" id="49" letter="A" travelClass="//@classes.1" row="//@classes.1/@rows.3" passenger="//@passengers.7"/>
+      <seats yPosition="60" xPosition="940" yDimension="60" xDimension="60" name="10B" id="50" letter="B" travelClass="//@classes.1" row="//@classes.1/@rows.3"/>
+      <seats yPosition="230" xPosition="940" yDimension="60" xDimension="60" name="10C" id="51" letter="C" travelClass="//@classes.1" row="//@classes.1/@rows.3" passenger="//@passengers.13"/>
+      <seats yPosition="290" xPosition="940" yDimension="60" xDimension="60" name="10D" id="52" letter="D" travelClass="//@classes.1" row="//@classes.1/@rows.3" passenger="//@passengers.10"/>
+    </rows>
+  </classes>
+  <doors xsi:type="net.bhl.cdt.paxelerate:MainDoor" xPosition="10" width="90" numberOfSimultaneousPassengers="1"/>
+  <passengers id="8" height="172" age="36" weight="99" door="//@doors.0" seat="8" Name="8 (2B)" seatRef="//@classes.0/@rows.1/@seats.1" width="49" depth="28" walkingSpeed="0.6" startBoardingAfterDelay="0.0" luggageStowTime="0.0" luggageStowingDistance="85.27" travelClass="//@classes.0" passengerMood="passive" luggage="none"/>
+  <passengers id="9" sex="female" height="164" age="29" weight="50" door="//@doors.0" seat="5" Name="9 (1E)" seatRef="//@classes.0/@rows.0/@seats.4" width="39" depth="26" walkingSpeed="1.6" startBoardingAfterDelay="3.3333333333333335" luggageStowTime="0.0" luggageStowingDistance="85.5" travelClass="//@classes.0" passengerMood="passive" luggage="none"/>
+  <passengers id="3" height="183" age="21" weight="84" door="//@doors.0" seat="14" Name="3 (3B)" seatRef="//@classes.0/@rows.2/@seats.1" width="48" depth="31" walkingSpeed="0.6" startBoardingAfterDelay="6.666666666666667" luggageStowTime="0.0" luggageStowingDistance="85.56" travelClass="//@classes.0" passengerMood="passive" luggage="none"/>
+  <passengers id="12" height="180" age="27" weight="85" door="//@doors.0" seat="11" Name="12 (2E)" seatRef="//@classes.0/@rows.1/@seats.4" width="48" depth="26" walkingSpeed="1.18" startBoardingAfterDelay="10.0" luggageStowTime="0.0" luggageStowingDistance="77.73" travelClass="//@classes.0" passengerMood="passive" luggage="none"/>
+  <passengers id="4" height="176" age="45" weight="75" door="//@doors.0" seat="42" Name="4 (8B)" seatRef="//@classes.1/@rows.1/@seats.1" width="48" depth="29" walkingSpeed="0.6" startBoardingAfterDelay="13.333333333333334" luggageStowTime="0.0" luggageStowingDistance="86.99" travelClass="//@classes.1" passengerMood="passive" luggage="none"/>
+  <passengers id="15" height="183" age="50" weight="91" door="//@doors.0" seat="43" Name="15 (8C)" seatRef="//@classes.1/@rows.1/@seats.2" width="47" depth="29" walkingSpeed="0.6" startBoardingAfterDelay="16.666666666666668" luggageStowTime="0.0" luggageStowingDistance="70.8" travelClass="//@classes.1" passengerMood="passive" luggage="none"/>
+  <passengers id="11" height="178" age="29" weight="96" door="//@doors.0" seat="22" Name="11 (4D)" seatRef="//@classes.0/@rows.3/@seats.3" width="46" depth="31" walkingSpeed="1.6" startBoardingAfterDelay="20.0" luggageStowTime="0.0" luggageStowingDistance="76.26" travelClass="//@classes.0" passengerMood="passive" luggage="none"/>
+  <passengers id="5" sex="female" height="166" age="28" weight="64" door="//@doors.0" seat="49" Name="5 (10A)" seatRef="//@classes.1/@rows.3/@seats.0" width="42" depth="25" walkingSpeed="1.5" startBoardingAfterDelay="23.333333333333332" luggageStowTime="0.0" luggageStowingDistance="80.36" travelClass="//@classes.1" passengerMood="passive" luggage="none"/>
+  <passengers id="6" sex="female" height="162" age="28" weight="65" door="//@doors.0" seat="34" Name="6 (6D)" seatRef="//@classes.0/@rows.5/@seats.3" width="42" depth="26" walkingSpeed="1.5" startBoardingAfterDelay="26.666666666666668" luggageStowTime="0.0" luggageStowingDistance="78.36" travelClass="//@classes.0" passengerMood="passive" luggage="none"/>
+  <passengers id="14" sex="female" height="161" age="20" weight="57" door="//@doors.0" seat="47" Name="14 (9C)" seatRef="//@classes.1/@rows.2/@seats.2" width="42" depth="28" walkingSpeed="0.6" startBoardingAfterDelay="30.0" luggageStowTime="0.0" luggageStowingDistance="73.67" travelClass="//@classes.1" passengerMood="passive" luggage="none"/>
+  <passengers id="13" height="181" age="31" weight="101" door="//@doors.0" seat="52" Name="13 (10D)" seatRef="//@classes.1/@rows.3/@seats.3" width="47" depth="33" walkingSpeed="0.6" startBoardingAfterDelay="33.333333333333336" luggageStowTime="0.0" luggageStowingDistance="72.47" travelClass="//@classes.1" passengerMood="passive" luggage="none"/>
+  <passengers id="1" height="182" age="51" weight="87" door="//@doors.0" seat="18" Name="1 (3F)" seatRef="//@classes.0/@rows.2/@seats.5" width="49" depth="26" walkingSpeed="0.6" startBoardingAfterDelay="36.666666666666664" luggageStowTime="0.0" luggageStowingDistance="77.55" travelClass="//@classes.0" passengerMood="passive" luggage="none"/>
+  <passengers id="2" sex="female" height="161" age="34" weight="59" door="//@doors.0" seat="36" Name="2 (6F)" seatRef="//@classes.0/@rows.5/@seats.5" width="42" depth="25" walkingSpeed="1.6" startBoardingAfterDelay="40.0" luggageStowTime="0.0" luggageStowingDistance="82.16" travelClass="//@classes.0" passengerMood="passive" luggage="none"/>
+  <passengers id="10" sex="female" height="162" age="32" weight="77" door="//@doors.0" seat="51" Name="10 (10C)" seatRef="//@classes.1/@rows.3/@seats.2" width="42" depth="28" walkingSpeed="1.18" startBoardingAfterDelay="43.333333333333336" luggageStowTime="0.0" luggageStowingDistance="80.08" travelClass="//@classes.1" passengerMood="passive" luggage="none"/>
+</net.bhl.cdt.paxelerate:Cabin>

@@ -65,7 +65,8 @@ public class SortPassengersCommand extends CDTCommand {
 		System.out.println("Sorting passengers ...");
 
 		switch (value) {
-
+		
+		// Random
 		case 0:
 			for (int j = 0; j < paxList.size() / 10; j++) {
 				for (int i = 0; i < paxList.size(); i++) {
@@ -76,18 +77,7 @@ public class SortPassengersCommand extends CDTCommand {
 				}
 			}
 			break;
-		case 2:
-			for (int j = 0; j < paxList.size(); j++) {
-				for (int i = 0; i < paxList.size() - 1; i++) {
-					Passenger pax1 = paxList.get(i);
-					Passenger pax2 = paxList.get(i + 1);
-					if (pax1.getSeatRef().getXPosition() > pax2.getSeatRef()
-							.getXPosition()) {
-						paxList.move(i, pax2);
-					}
-				}
-			}
-			break;
+		// Rear to front (RTF)
 		case 1:
 			for (int j = 0; j < paxList.size(); j++) {
 				for (int i = 0; i < paxList.size() - 1; i++) {
@@ -100,7 +90,20 @@ public class SortPassengersCommand extends CDTCommand {
 				}
 			}
 			break;
-
+		// Front to rear (FTR)
+		case 2:
+			for (int j = 0; j < paxList.size(); j++) {
+				for (int i = 0; i < paxList.size() - 1; i++) {
+					Passenger pax1 = paxList.get(i);
+					Passenger pax2 = paxList.get(i + 1);
+					if (pax1.getSeatRef().getXPosition() > pax2.getSeatRef()
+							.getXPosition()) {
+						paxList.move(i, pax2);
+					}
+				}
+			}
+			break;
+		// Window to aisle (WTA)
 		case 3:
 			for (int j = 0; j < 3 * paxList.size(); j++) {
 				for (int i = 0; i < paxList.size() - 1; i++) {
@@ -113,7 +116,7 @@ public class SortPassengersCommand extends CDTCommand {
 				}
 			}
 			break;
-
+		// Window to aisle and rear to front (WTA + RTF)
 		case 4:
 			for (int j = 0; j < 3 * paxList.size(); j++) {
 				for (int i = 0; i < paxList.size() - 1; i++) {
@@ -129,7 +132,10 @@ public class SortPassengersCommand extends CDTCommand {
 				}
 			}
 			break;
-
+			// Window to aisle and front to rear (WTA + FTR)
+					case 5:
+						//TODO
+						break;
 		default:
 			break;
 		}
