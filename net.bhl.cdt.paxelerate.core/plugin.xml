@@ -15,6 +15,10 @@
                name="aboutImage"
                value="platform:/plugin/net.bhl.cdt.paxelerate.ui/images/about.png">
          </property>
+         <property
+               name="aboutText"
+               value="PAXelerate.com (c) Bauhaus Luftfahrt e.V. 2014 - 2016">
+         </property>
       </product>
    </extension>
 

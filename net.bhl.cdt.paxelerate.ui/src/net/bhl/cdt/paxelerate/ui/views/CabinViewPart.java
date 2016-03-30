@@ -413,21 +413,20 @@ public class CabinViewPart extends ViewPart {
 				}
 			}
 
-			cabinAdapter = new AdapterImpl() {
-				@Override
-				public void notifyChanged(Notification notification) {
-					if (!notification.isTouch()) {
-						doTheDraw();
-					}
-				}
-			};
+			// Causes repeated redraw!
+//			cabinAdapter = new AdapterImpl() {
+//				@Override
+//				public void notifyChanged(Notification notification) {
+//					if (!notification.isTouch()) {
+//						doTheDraw();
+//					}
+//				}
+//			};
 
 			img = createImage();
 			syncViewer();
 			doTheDraw();
-		} catch (
-
-		Exception e) {
+		} catch (Exception e) {
 			Log.add(this, "ERROR in setCabin()");
 			e.printStackTrace();
 		}
@@ -615,7 +614,7 @@ public class CabinViewPart extends ViewPart {
 	 */
 	private void doTheDraw() {
 		try {
-			canvas.redraw();
+ 			canvas.redraw();
 			canvas.addPaintListener(new PaintListener() {
 				@Override
 				public void paintControl(final PaintEvent e) {
