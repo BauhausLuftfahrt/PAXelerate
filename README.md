@@ -2,7 +2,7 @@
 
 Welcome to the repository of [PAXelerate](http://www.paxelerate.com) - an open source passenger flow simulation framework for advanced aircraft cabin layouts! 
 
-* The current version under development is *Alpha 0.6*
+* Currently version *Alpha 0.7* is under developement and scheduled for 05/25/2016
 * The implementation began in November 2014
 
 
@@ -10,7 +10,7 @@ Welcome to the repository of [PAXelerate](http://www.paxelerate.com) - an open s
 
 **User Version**
 
-1. Download and unpack the latest client version [Alpha 0.5](https://github.com/BauhausLuftfahrt/PAXelerate/releases/tag/alpha-0.5)
+1. Download and unpack the latest client version [Alpha 0.6](https://github.com/BauhausLuftfahrt/PAXelerate/releases/tag/alpha-0.6)
 2. Start `PAXelerate.exe`
 
 **Developer Version**
@@ -36,7 +36,7 @@ Welcome to the repository of [PAXelerate](http://www.paxelerate.com) - an open s
 * Michael Schmidt ***(active)***
 * Michael Shamiyeh ***(active)***
 * Martin Glas 
-* Tobias BrÃ¼gge-Zobel
+* Tobias Brügge-Zobel
 * Stefan Weber
 * Pedro Martinez
 * Philipp Osterrieder
@@ -44,5 +44,3 @@ Welcome to the repository of [PAXelerate](http://www.paxelerate.com) - an open s
 ### About ###
 
 Copyright (c) 2014-2016 [Bauhaus Luftfahrt e.V.](http://www.bauhaus-luftfahrt.net/?set_language=en) All rights reserved. [PAXelerate](http://www.paxelerate.com) and the accompanying materials are made available under the terms of the [Eclipse Public License (EPL) v1.0](http://www.eclipse.org/legal/epl-v10.html) which accompanies this distribution.
-
-[![Analytics](https://ga-beacon.appspot.com/UA-68592968-4/readme?pixel)](https://github.com/BauhausLuftfahrt/PAXelerate)

@@ -1,4 +1,4 @@
-# The PAXelerate Wiki
+# The PAXelerate Documentation
 
 * The [Installation Guide](installation.md) is intended to enable a quick and easy setup 
 * The [Overview](overview.md) provides a summary of the functional range
