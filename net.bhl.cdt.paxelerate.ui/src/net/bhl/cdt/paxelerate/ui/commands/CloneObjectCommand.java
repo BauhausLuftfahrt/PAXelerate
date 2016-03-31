@@ -40,7 +40,7 @@ public class CloneObjectCommand extends CDTCommand {
 	@Override
 	protected void doRun() {
 
-		Input input = new Input(WindowType.GET_INTEGER, "Enter the number of rows you want to add!",
+		Input input = new Input(WindowType.CLONE_OBJECT, "Enter the number of rows you want to add (integer values).",
 				IMessageProvider.INFORMATION);
 
 		int numberOfRows = input.getIntegerValue();
