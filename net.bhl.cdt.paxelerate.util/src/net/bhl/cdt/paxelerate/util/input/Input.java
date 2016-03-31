@@ -38,7 +38,7 @@ public class Input extends TitleAreaDialog {
 		/**
 		 * Access the different types using WindowType.CHOOSE_TYPE.
 		 */
-		INFORMATION, GET_STRING, GET_INTEGER, GET_VECTOR, WARNING, OPTIONS, GET_BOOLEAN, GET_TWO_VECTORS
+		INFORMATION, GET_STRING, GET_INTEGER, GET_VECTOR, WARNING, OPTIONS, GET_BOOLEAN, GET_TWO_VECTORS, CLONE_OBJECT
 	}
 
 	private WindowType windowType;
@@ -98,6 +98,11 @@ public class Input extends TitleAreaDialog {
 		case OPTIONS:
 			titleString = "Please choose one of the following options!";
 			descriptionText = "Options:";
+			break;
+			
+		case CLONE_OBJECT:
+			titleString = "Duplicate rows";
+			descriptionText = "Number of rows";
 			break;
 
 		default:
