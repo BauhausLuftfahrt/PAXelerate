@@ -62,6 +62,34 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass businessClassEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass firstClassEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass economyClassEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass premiumEconomyClassEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass doorEClass = null;
 
 	/**
@@ -632,15 +660,6 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTravelClass_ClassType() {
-        return (EAttribute)getTravelClass().getEStructuralFeatures().get(10);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EOperation getTravelClass__TooManyPassengers__DiagnosticChain_Map() {
         return getTravelClass().getEOperations().get(0);
 	}
@@ -659,9 +678,57 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getBusinessClass() {
+		if (businessClassEClass == null) {
+			businessClassEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(3);
+		}
+		return businessClassEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getFirstClass() {
+		if (firstClassEClass == null) {
+			firstClassEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(4);
+		}
+		return firstClassEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEconomyClass() {
+		if (economyClassEClass == null) {
+			economyClassEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(5);
+		}
+		return economyClassEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPremiumEconomyClass() {
+		if (premiumEconomyClassEClass == null) {
+			premiumEconomyClassEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(6);
+		}
+		return premiumEconomyClassEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDoor() {
 		if (doorEClass == null) {
-			doorEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(12);
+			doorEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(16);
 		}
 		return doorEClass;
 	}
@@ -736,7 +803,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EClass getSeat() {
 		if (seatEClass == null) {
-			seatEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(3);
+			seatEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(7);
 		}
 		return seatEClass;
 	}
@@ -820,7 +887,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EClass getPassenger() {
 		if (passengerEClass == null) {
-			passengerEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(4);
+			passengerEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(8);
 		}
 		return passengerEClass;
 	}
@@ -1057,7 +1124,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EClass getCrewMember() {
 		if (crewMemberEClass == null) {
-			crewMemberEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(5);
+			crewMemberEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(9);
 		}
 		return crewMemberEClass;
 	}
@@ -1087,7 +1154,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EClass getLavatory() {
 		if (lavatoryEClass == null) {
-			lavatoryEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(7);
+			lavatoryEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(11);
 		}
 		return lavatoryEClass;
 	}
@@ -1099,7 +1166,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EClass getGalley() {
 		if (galleyEClass == null) {
-			galleyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(8);
+			galleyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(12);
 		}
 		return galleyEClass;
 	}
@@ -1111,7 +1178,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EClass getStairway() {
 		if (stairwayEClass == null) {
-			stairwayEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(9);
+			stairwayEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(13);
 		}
 		return stairwayEClass;
 	}
@@ -1132,7 +1199,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EClass getCurtain() {
 		if (curtainEClass == null) {
-			curtainEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(10);
+			curtainEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(14);
 		}
 		return curtainEClass;
 	}
@@ -1162,7 +1229,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EClass getStowage() {
 		if (stowageEClass == null) {
-			stowageEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(11);
+			stowageEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(15);
 		}
 		return stowageEClass;
 	}
@@ -1174,7 +1241,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EClass getMainDoor() {
 		if (mainDoorEClass == null) {
-			mainDoorEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(13);
+			mainDoorEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(17);
 		}
 		return mainDoorEClass;
 	}
@@ -1186,7 +1253,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EClass getEmergencyExit() {
 		if (emergencyExitEClass == null) {
-			emergencyExitEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(14);
+			emergencyExitEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(18);
 		}
 		return emergencyExitEClass;
 	}
@@ -1198,7 +1265,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EClass getStandardDoor() {
 		if (standardDoorEClass == null) {
-			standardDoorEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(15);
+			standardDoorEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(19);
 		}
 		return standardDoorEClass;
 	}
@@ -1210,7 +1277,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EClass getSimulationProperties() {
 		if (simulationPropertiesEClass == null) {
-			simulationPropertiesEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(20);
+			simulationPropertiesEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(24);
 		}
 		return simulationPropertiesEClass;
 	}
@@ -1357,7 +1424,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EClass getLuggageProperties() {
 		if (luggagePropertiesEClass == null) {
-			luggagePropertiesEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(21);
+			luggagePropertiesEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(25);
 		}
 		return luggagePropertiesEClass;
 	}
@@ -1477,7 +1544,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EClass getSimulationResult() {
 		if (simulationResultEClass == null) {
-			simulationResultEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(22);
+			simulationResultEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(26);
 		}
 		return simulationResultEClass;
 	}
@@ -1543,7 +1610,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EClass getPassengerProperties() {
 		if (passengerPropertiesEClass == null) {
-			passengerPropertiesEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(25);
+			passengerPropertiesEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(29);
 		}
 		return passengerPropertiesEClass;
 	}
@@ -1708,7 +1775,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EClass getPhysicalObject() {
 		if (physicalObjectEClass == null) {
-			physicalObjectEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(6);
+			physicalObjectEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(10);
 		}
 		return physicalObjectEClass;
 	}
@@ -1783,7 +1850,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EEnum getStairwayDirection() {
 		if (stairwayDirectionEEnum == null) {
-			stairwayDirectionEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(17);
+			stairwayDirectionEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(21);
 		}
 		return stairwayDirectionEEnum;
 	}
@@ -1795,7 +1862,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EEnum getAircraftType() {
 		if (aircraftTypeEEnum == null) {
-			aircraftTypeEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(18);
+			aircraftTypeEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(22);
 		}
 		return aircraftTypeEEnum;
 	}
@@ -1807,7 +1874,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EEnum getPassengerMood() {
 		if (passengerMoodEEnum == null) {
-			passengerMoodEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(19);
+			passengerMoodEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(23);
 		}
 		return passengerMoodEEnum;
 	}
@@ -1819,7 +1886,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EEnum getLuggageSize() {
 		if (luggageSizeEEnum == null) {
-			luggageSizeEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(23);
+			luggageSizeEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(27);
 		}
 		return luggageSizeEEnum;
 	}
@@ -1831,7 +1898,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EEnum getSortingStyle() {
 		if (sortingStyleEEnum == null) {
-			sortingStyleEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(24);
+			sortingStyleEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(28);
 		}
 		return sortingStyleEEnum;
 	}
@@ -1843,7 +1910,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EEnum getTravelOption() {
 		if (travelOptionEEnum == null) {
-			travelOptionEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(26);
+			travelOptionEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(30);
 		}
 		return travelOptionEEnum;
 	}
@@ -1855,7 +1922,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EEnum getObjectOption() {
 		if (objectOptionEEnum == null) {
-			objectOptionEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(27);
+			objectOptionEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(31);
 		}
 		return objectOptionEEnum;
 	}
@@ -1867,7 +1934,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EEnum getSex() {
 		if (sexEEnum == null) {
-			sexEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(16);
+			sexEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(20);
 		}
 		return sexEEnum;
 	}

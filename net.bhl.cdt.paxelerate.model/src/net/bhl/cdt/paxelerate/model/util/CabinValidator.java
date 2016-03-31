@@ -9,6 +9,36 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EObjectValidator;
 
+import net.bhl.cdt.paxelerate.model.AircraftType;
+import net.bhl.cdt.paxelerate.model.BusinessClass;
+import net.bhl.cdt.paxelerate.model.Cabin;
+import net.bhl.cdt.paxelerate.model.CabinPackage;
+import net.bhl.cdt.paxelerate.model.CrewMember;
+import net.bhl.cdt.paxelerate.model.Curtain;
+import net.bhl.cdt.paxelerate.model.Door;
+import net.bhl.cdt.paxelerate.model.EconomyClass;
+import net.bhl.cdt.paxelerate.model.EmergencyExit;
+import net.bhl.cdt.paxelerate.model.FirstClass;
+import net.bhl.cdt.paxelerate.model.Galley;
+import net.bhl.cdt.paxelerate.model.Lavatory;
+import net.bhl.cdt.paxelerate.model.LuggageSize;
+import net.bhl.cdt.paxelerate.model.MainDoor;
+import net.bhl.cdt.paxelerate.model.Passenger;
+import net.bhl.cdt.paxelerate.model.PassengerMood;
+import net.bhl.cdt.paxelerate.model.PhysicalObject;
+import net.bhl.cdt.paxelerate.model.PremiumEconomyClass;
+import net.bhl.cdt.paxelerate.model.Row;
+import net.bhl.cdt.paxelerate.model.Seat;
+import net.bhl.cdt.paxelerate.model.Sex;
+import net.bhl.cdt.paxelerate.model.SimulationProperties;
+import net.bhl.cdt.paxelerate.model.SimulationResult;
+import net.bhl.cdt.paxelerate.model.SortingStyle;
+import net.bhl.cdt.paxelerate.model.Stairway;
+import net.bhl.cdt.paxelerate.model.StairwayDirection;
+import net.bhl.cdt.paxelerate.model.StandardDoor;
+import net.bhl.cdt.paxelerate.model.Stowage;
+import net.bhl.cdt.paxelerate.model.TravelClass;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Validator</b> for the model.
@@ -111,6 +141,14 @@ public class CabinValidator extends EObjectValidator {
 				return validateRow((Row)value, diagnostics, context);
 			case CabinPackage.TRAVEL_CLASS:
 				return validateTravelClass((TravelClass)value, diagnostics, context);
+			case CabinPackage.BUSINESS_CLASS:
+				return validateBusinessClass((BusinessClass)value, diagnostics, context);
+			case CabinPackage.FIRST_CLASS:
+				return validateFirstClass((FirstClass)value, diagnostics, context);
+			case CabinPackage.ECONOMY_CLASS:
+				return validateEconomyClass((EconomyClass)value, diagnostics, context);
+			case CabinPackage.PREMIUM_ECONOMY_CLASS:
+				return validatePremiumEconomyClass((PremiumEconomyClass)value, diagnostics, context);
 			case CabinPackage.SEAT:
 				return validateSeat((Seat)value, diagnostics, context);
 			case CabinPackage.PASSENGER:
@@ -222,6 +260,86 @@ public class CabinValidator extends EObjectValidator {
 	 */
 	public boolean validateTravelClass_wrongRowStructure(TravelClass travelClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return travelClass.wrongRowStructure(diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateBusinessClass(BusinessClass businessClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(businessClass, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(businessClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(businessClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(businessClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(businessClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(businessClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(businessClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(businessClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(businessClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTravelClass_tooManyPassengers(businessClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTravelClass_wrongRowStructure(businessClass, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateFirstClass(FirstClass firstClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(firstClass, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(firstClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(firstClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(firstClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(firstClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(firstClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(firstClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(firstClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(firstClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTravelClass_tooManyPassengers(firstClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTravelClass_wrongRowStructure(firstClass, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateEconomyClass(EconomyClass economyClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(economyClass, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(economyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(economyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(economyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(economyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(economyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(economyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(economyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(economyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTravelClass_tooManyPassengers(economyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTravelClass_wrongRowStructure(economyClass, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePremiumEconomyClass(PremiumEconomyClass premiumEconomyClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(premiumEconomyClass, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(premiumEconomyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(premiumEconomyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(premiumEconomyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(premiumEconomyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(premiumEconomyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(premiumEconomyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(premiumEconomyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(premiumEconomyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTravelClass_tooManyPassengers(premiumEconomyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTravelClass_wrongRowStructure(premiumEconomyClass, diagnostics, context);
+		return result;
 	}
 
 	/**

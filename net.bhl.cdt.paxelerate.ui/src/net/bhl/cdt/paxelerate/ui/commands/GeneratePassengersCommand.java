@@ -24,6 +24,7 @@ import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.util.PassengerPropertyGenerator;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
+import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
 import net.bhl.cdt.paxelerate.util.string.StringHelper;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
@@ -204,7 +205,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 					@Override
 					public void run() {
 						try {
-							// ViewPartHelper.getPropertyView().updateUI(cabin);
+							ViewPartHelper.getPropertyView().updateUI(cabin);
 						} catch (NullPointerException e) {
 							Log.add(this, "No property view is visible!");
 						}

@@ -417,7 +417,22 @@ public class CabinItemProvider extends NamedElementItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(CabinPackage.Literals.CABIN__CLASSES,
-				 CabinFactory.eINSTANCE.createTravelClass()));
+				 CabinFactory.eINSTANCE.createBusinessClass()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CabinPackage.Literals.CABIN__CLASSES,
+				 CabinFactory.eINSTANCE.createFirstClass()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CabinPackage.Literals.CABIN__CLASSES,
+				 CabinFactory.eINSTANCE.createEconomyClass()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CabinPackage.Literals.CABIN__CLASSES,
+				 CabinFactory.eINSTANCE.createPremiumEconomyClass()));
 
 		newChildDescriptors.add
 			(createChildParameter

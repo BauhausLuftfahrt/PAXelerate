@@ -38,7 +38,7 @@ public class Input extends TitleAreaDialog {
 		/**
 		 * Access the different types using WindowType.CHOOSE_TYPE.
 		 */
-		INFORMATION, GET_STRING, GET_INTEGER, GET_VECTOR, WARNING, OPTIONS, GET_BOOLEAN, GET_TWO_VECTORS
+		INFORMATION, GET_STRING, GET_INTEGER, GET_VECTOR, WARNING, OPTIONS, GET_BOOLEAN, GET_TWO_VECTORS, CLONE_OBJECT, MOVE_OBJECT
 	}
 
 	private WindowType windowType;
@@ -94,10 +94,19 @@ public class Input extends TitleAreaDialog {
 			titleString = "Text Input Required!";
 			descriptionText = "text:";
 			break;
-
 		case OPTIONS:
 			titleString = "Please choose one of the following options!";
 			descriptionText = "Options:";
+			break;
+
+		case CLONE_OBJECT:
+			titleString = "Duplicate rows";
+			descriptionText = "Number of rows";
+			break;
+		case MOVE_OBJECT:
+			titleString = "Move object";
+			descriptionText = "X displacement:";
+			descriptionText2 = "Y displacement:";
 			break;
 
 		default:
@@ -125,7 +134,7 @@ public class Input extends TitleAreaDialog {
 		container.setLayout(layout);
 		if (windowType != WindowType.GET_BOOLEAN) {
 			createInputField(container);
-			if (windowType == WindowType.GET_VECTOR) {
+			if (windowType == WindowType.GET_VECTOR || windowType == WindowType.MOVE_OBJECT) {
 				createAnotherInputField(container);
 			}
 			if (windowType == WindowType.GET_TWO_VECTORS) {
@@ -134,6 +143,7 @@ public class Input extends TitleAreaDialog {
 				createFourthInputField(container);
 			}
 		}
+
 		createWarningLabel(container);
 		return area;
 	}
@@ -216,15 +226,15 @@ public class Input extends TitleAreaDialog {
 	private void saveInput() {
 		switch (windowType) {
 		case GET_INTEGER:
-			integerValue = Integer.parseInt(text.getText());
-			break;
 		case OPTIONS:
+		case CLONE_OBJECT:
 			integerValue = Integer.parseInt(text.getText());
 			break;
 		case GET_STRING:
 			stringValue = text.getText();
 			break;
 		case GET_VECTOR:
+		case MOVE_OBJECT:
 			vectorValue = new Vector2D(Integer.parseInt(text.getText()), Integer.parseInt(text2.getText()));
 			break;
 		case GET_TWO_VECTORS:
@@ -233,6 +243,7 @@ public class Input extends TitleAreaDialog {
 			break;
 		case GET_BOOLEAN:
 			booleanValue = true;
+			break;
 		default:
 			break;
 		}
@@ -285,6 +296,7 @@ public class Input extends TitleAreaDialog {
 	 */
 	public boolean inputCheckOK() {
 		switch (windowType) {
+		case CLONE_OBJECT:
 		case GET_INTEGER:
 			if (text.getText() != "") {
 				if (StringHelper.isInteger(text.getText())) {
@@ -322,6 +334,7 @@ public class Input extends TitleAreaDialog {
 				return false;
 			}
 		case GET_VECTOR:
+		case MOVE_OBJECT:
 			if (text.getText() != "" && text2.getText() != "") {
 				if (StringHelper.isInteger(text.getText()) && StringHelper.isInteger(text2.getText())) {
 					return true;

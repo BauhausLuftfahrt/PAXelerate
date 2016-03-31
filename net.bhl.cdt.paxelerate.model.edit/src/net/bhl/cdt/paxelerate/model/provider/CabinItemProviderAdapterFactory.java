@@ -117,26 +117,95 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.paxelerate.model.TravelClass} instances.
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.paxelerate.model.BusinessClass} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected TravelClassItemProvider travelClassItemProvider;
+	protected BusinessClassItemProvider businessClassItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.TravelClass}.
+	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.BusinessClass}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createTravelClassAdapter() {
-		if (travelClassItemProvider == null) {
-			travelClassItemProvider = new TravelClassItemProvider(this);
+	public Adapter createBusinessClassAdapter() {
+		if (businessClassItemProvider == null) {
+			businessClassItemProvider = new BusinessClassItemProvider(this);
 		}
 
-		return travelClassItemProvider;
+		return businessClassItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.paxelerate.model.FirstClass} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FirstClassItemProvider firstClassItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.FirstClass}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFirstClassAdapter() {
+		if (firstClassItemProvider == null) {
+			firstClassItemProvider = new FirstClassItemProvider(this);
+		}
+
+		return firstClassItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.paxelerate.model.EconomyClass} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EconomyClassItemProvider economyClassItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.EconomyClass}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEconomyClassAdapter() {
+		if (economyClassItemProvider == null) {
+			economyClassItemProvider = new EconomyClassItemProvider(this);
+		}
+
+		return economyClassItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.paxelerate.model.PremiumEconomyClass} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PremiumEconomyClassItemProvider premiumEconomyClassItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.PremiumEconomyClass}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPremiumEconomyClassAdapter() {
+		if (premiumEconomyClassItemProvider == null) {
+			premiumEconomyClassItemProvider = new PremiumEconomyClassItemProvider(this);
+		}
+
+		return premiumEconomyClassItemProvider;
 	}
 
 	/**
@@ -585,7 +654,10 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	public void dispose() {
 		if (cabinItemProvider != null) cabinItemProvider.dispose();
 		if (rowItemProvider != null) rowItemProvider.dispose();
-		if (travelClassItemProvider != null) travelClassItemProvider.dispose();
+		if (businessClassItemProvider != null) businessClassItemProvider.dispose();
+		if (firstClassItemProvider != null) firstClassItemProvider.dispose();
+		if (economyClassItemProvider != null) economyClassItemProvider.dispose();
+		if (premiumEconomyClassItemProvider != null) premiumEconomyClassItemProvider.dispose();
 		if (seatItemProvider != null) seatItemProvider.dispose();
 		if (passengerItemProvider != null) passengerItemProvider.dispose();
 		if (crewMemberItemProvider != null) crewMemberItemProvider.dispose();
