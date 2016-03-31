@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
@@ -42,7 +40,6 @@ import net.bhl.cdt.paxelerate.model.TravelOption;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.astar.ObstacleMap;
 import net.bhl.cdt.paxelerate.model.astar.Path;
-import net.bhl.cdt.paxelerate.model.util.POHelper;
 import net.bhl.cdt.paxelerate.model.util.TCHelper;
 import net.bhl.cdt.paxelerate.ui.color.ColorHelper;
 import net.bhl.cdt.paxelerate.ui.font.FontHelper;
@@ -67,7 +64,7 @@ public class CabinViewPart extends ViewPart {
 	private static boolean initialBoot = true;
 
 	/********************* graphical settings. *************************/
-	private static final int OFFSET_OF_DOOR = 0, CABIN_WIDTH_IN_PIXELS = 123, DOOR_DEPTH = 2;
+	private static final int OFFSET_OF_DOOR = 0, CABIN_WIDTH_IN_PIXELS = 123, DOOR_DEPTH = 2, ICON_SIZE_IN_PIXELS = 15;
 	private static final double PAX_SIZE = 0.5;
 	private static final boolean MATCH_PASSENGER_COLORS_TO_MOOD = true;
 
@@ -81,7 +78,7 @@ public class CabinViewPart extends ViewPart {
 	private static Image img;
 	private static final String FOLDER_NAME = "paxelerate",
 			FILE_PATH = System.getProperty("user.home") + "/.cdt/" + FOLDER_NAME + "/",
-			IMAGE_PATH = "/images/aircraft/interior";
+			IMAGE_PATH = "/images/aircraft/interior/";
 	private static File storageFolder = new File(FILE_PATH);
 
 	private int scaledX, scaledY;
@@ -100,11 +97,11 @@ public class CabinViewPart extends ViewPart {
 
 		factor = cabin.getYDimension() / (double) CABIN_WIDTH_IN_PIXELS;
 
-		economySeat = ImageImporter.getImage(getClass(), IMAGE_PATH + "/economy_seat.png");
-		businessSeat = ImageImporter.getImage(getClass(), IMAGE_PATH + "/business_seat.png");
-		firstSeat = ImageImporter.getImage(getClass(), IMAGE_PATH + "/first_seat.png");
-		galleyIcon = ImageImporter.getImage(getClass(), IMAGE_PATH + "/coffee.png");
-		lavatoryIcon = ImageImporter.getImage(getClass(), IMAGE_PATH + "/lavatory.png");
+		economySeat = ImageImporter.getImage(getClass(), IMAGE_PATH + "economy_seat.png");
+		businessSeat = ImageImporter.getImage(getClass(), IMAGE_PATH + "business_seat.png");
+		firstSeat = ImageImporter.getImage(getClass(), IMAGE_PATH + "first_seat.png");
+		galleyIcon = ImageImporter.getImage(getClass(), IMAGE_PATH + "coffee.png");
+		lavatoryIcon = ImageImporter.getImage(getClass(), IMAGE_PATH + "lavatory.png");
 
 		canvas = new Canvas(parent, SWT.DOUBLE_BUFFERED);
 		canvas.setBounds(0, 0, 1000, 1000);
@@ -165,8 +162,10 @@ public class CabinViewPart extends ViewPart {
 	private void drawObject(GC gc, PhysicalObject obj) {
 		gc.fillRectangle(get(obj, Axis.X), get(obj, Axis.Y), adapt(obj.getYDimension()), adapt(obj.getXDimension()));
 		gc.drawImage(switchIcon(obj),
-				adapt(Axis.X, obj.getYPosition() + obj.getYDimension() / 2 - obj.getXDimension() * PAX_SIZE / 2),
-				adapt(Axis.Y, obj.getXPosition() + obj.getXDimension() / 2 - obj.getXDimension() * PAX_SIZE / 2));
+				adapt(Axis.X,
+						obj.getYPosition() + obj.getYDimension() / 2 - switchIcon(obj).getBounds().width / 2 * factor),
+				adapt(Axis.Y, obj.getXPosition() + obj.getXDimension() / 2
+						- switchIcon(obj).getBounds().height / 2 * factor));
 	}
 
 	/**
@@ -398,30 +397,28 @@ public class CabinViewPart extends ViewPart {
 			}
 
 			for (ObjectOption option : ObjectOption.VALUES) {
-				List<PhysicalObject> list = POHelper.getObjectByOption(option, cabin);
 
-				if (!list.isEmpty()) {
-					int dim = adapt(list.get(0).getXDimension() * 0.6);
-
-					switch (option) {
-					case GALLEY:
-						galleyIcon = ImageHelper.resize(galleyIcon, dim, dim, parent);
-					case LAVATORY:
-						lavatoryIcon = ImageHelper.resize(lavatoryIcon, dim, dim, parent);
-					default:
-					}
+				switch (option) {
+				case GALLEY:
+					galleyIcon = ImageHelper.resize(galleyIcon, ICON_SIZE_IN_PIXELS, ICON_SIZE_IN_PIXELS, parent);
+					break;
+				case LAVATORY:
+					lavatoryIcon = ImageHelper.resize(lavatoryIcon, ICON_SIZE_IN_PIXELS, ICON_SIZE_IN_PIXELS, parent);
+					break;
+				default:
+					break;
 				}
 			}
 
 			// Causes repeated redraw!
-//			cabinAdapter = new AdapterImpl() {
-//				@Override
-//				public void notifyChanged(Notification notification) {
-//					if (!notification.isTouch()) {
-//						doTheDraw();
-//					}
-//				}
-//			};
+			// cabinAdapter = new AdapterImpl() {
+			// @Override
+			// public void notifyChanged(Notification notification) {
+			// if (!notification.isTouch()) {
+			// doTheDraw();
+			// }
+			// }
+			// };
 
 			img = createImage();
 			syncViewer();
@@ -616,7 +613,7 @@ public class CabinViewPart extends ViewPart {
 	 */
 	private void doTheDraw() {
 		try {
- 			canvas.redraw();
+			canvas.redraw();
 			canvas.addPaintListener(new PaintListener() {
 				@Override
 				public void paintControl(final PaintEvent e) {
