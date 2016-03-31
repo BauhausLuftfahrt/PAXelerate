@@ -6,6 +6,7 @@
 package net.bhl.cdt.paxelerate.ui.commands;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
