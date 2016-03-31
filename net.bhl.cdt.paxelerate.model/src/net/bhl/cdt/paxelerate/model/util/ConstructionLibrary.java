@@ -10,7 +10,6 @@ import java.util.Arrays;
 
 import org.apache.commons.lang.StringUtils;
 
-import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
 import net.bhl.cdt.paxelerate.model.Curtain;
@@ -19,6 +18,7 @@ import net.bhl.cdt.paxelerate.model.EmergencyExit;
 import net.bhl.cdt.paxelerate.model.Galley;
 import net.bhl.cdt.paxelerate.model.Lavatory;
 import net.bhl.cdt.paxelerate.model.MainDoor;
+import net.bhl.cdt.paxelerate.model.ObjectOption;
 import net.bhl.cdt.paxelerate.model.PhysicalObject;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
@@ -186,8 +186,7 @@ public class ConstructionLibrary {
 	 * @param physicalObjectClass
 	 * @param xDimension
 	 */
-	public <P extends PhysicalObject> void createPhysicalObject(
-			Class<P> physicalObjectClass, int xDimension) {
+	public void createPhysicalObject(ObjectOption option, int xDimension) {
 		int currentPosition = 0;
 		splitSeatString(seatStructure);
 		if (doItOnce) {
@@ -203,20 +202,22 @@ public class ConstructionLibrary {
 
 		for (int k = 0; k < rowPartsInt.size(); k++) {
 			PhysicalObject physialObject = null;
-			switch (physicalObjectClass.getSimpleName()) {
-			case "Lavatory":
+			switch (option) {
+			case LAVATORY:
 				physialObject = CabinFactory.eINSTANCE.createLavatory();
 				cabin.getLavatories().add((Lavatory) physialObject);
 				physialObject.setName(" " + lavatoryCount);
 				physialObject.setId(lavatoryCount);
 				lavatoryCount++;
 				break;
-			case "Galley":
+			case GALLEY:
 				physialObject = CabinFactory.eINSTANCE.createGalley();
 				cabin.getGalleys().add((Galley) physialObject);
 				physialObject.setName(" " + galleyCount);
 				physialObject.setId(galleyCount);
 				galleyCount++;
+				break;
+			default:
 				break;
 			}
 			physialObject.setXDimension(xDimension);
@@ -264,21 +265,21 @@ public class ConstructionLibrary {
 	 * This method checks if there is a door at the current x position. If so,
 	 * the x position is increased.
 	 */
-	public void checkForDoor() {
-		for (Door door : ModelHelper.getChildrenByClass(cabin, Door.class)) {
-			if ((((door.getXPosition() + door.getWidth()) > (globalSeatPositionX
-					- seatPitch))
-					&& (door.getXPosition() < globalSeatPositionX))
-					|| ((door.getXPosition() > globalSeatPositionX)
-							&& (door.getXPosition() < globalSeatPositionX
-									+ seatDimensions.getY())
-							|| ((door.getXPosition()
-									+ door.getWidth() > globalSeatPositionX)
-									&& (door.getXPosition() < globalSeatPositionX)))) {
-				globalSeatPositionX += DISTANCE_INCREMENT_DOOR;
-			}
-		}
-	}
+	// public void checkForDoor() {
+	// for (Door door : ModelHelper.getChildrenByClass(cabin, Door.class)) {
+	// if ((((door.getXPosition() + door.getWidth()) > (globalSeatPositionX
+	// - seatPitch))
+	// && (door.getXPosition() < globalSeatPositionX))
+	// || ((door.getXPosition() > globalSeatPositionX)
+	// && (door.getXPosition() < globalSeatPositionX
+	// + seatDimensions.getY())
+	// || ((door.getXPosition()
+	// + door.getWidth() > globalSeatPositionX)
+	// && (door.getXPosition() < globalSeatPositionX)))) {
+	// globalSeatPositionX += DISTANCE_INCREMENT_DOOR;
+	// }
+	// }
+	// }
 
 	/**
 	 * This method creates a class and the subclasses (seats, rows, etc.).
@@ -369,7 +370,7 @@ public class ConstructionLibrary {
 		Row newRow = CabinFactory.eINSTANCE.createRow();
 		passengerClass.getRows().add(newRow);
 		newRow.setRowNumber(rowCount);
-		checkForDoor();
+		// checkForDoor();
 		int seatLabelCount = 1;
 		for (int rowBlock : rowPartsInt) {
 			for (int j = 1; j <= rowBlock; j++) {
