@@ -6,6 +6,7 @@
 package net.bhl.cdt.paxelerate.ui.commands;
 
 import java.util.ArrayList;
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -153,8 +154,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 				}
 				randomSeatId.clear();
 
-				Log.add(this, "successfully created " + numberOfPassengers + " passengers in "
-						+ StringHelper.splitCamelCase(tc.getName()));
+				Log.add(this, "successfully created " + numberOfPassengers + " passengers in " + tc.getName());
 			} else {
 
 				Log.add(this, "Too many passengers in " + StringHelper.splitCamelCase(tc.getName()));
@@ -173,21 +173,22 @@ public class GeneratePassengersCommand extends CDTCommand {
 			protected IStatus run(IProgressMonitor monitor) {
 
 				Log.add(this, "Passenger generation started...");
-				
+
 				// Generate actual passengers
 				cabin.getPassengers().clear();
 
-		for (TravelClass travelclass : cabin.getClasses()) {
-			generatePassengers(travelclass, travelclass.getPassengers(), travelclass.getAvailableSeats());
-		}
+				for (TravelClass travelclass : cabin.getClasses()) {
+					generatePassengers(travelclass, travelclass.getPassengers(), travelclass.getAvailableSeats());
+				}
 
-		for (Door door : cabin.getDoors()) {
-			door.getWaitingPassengers().clear();
-		}
+				for (Door door : cabin.getDoors()) {
+					door.getWaitingPassengers().clear();
+				}
 
 				// PUBLISH
 				Log.add(this, "Updating GUI...");
 				Display.getDefault().syncExec(new Runnable() {
+					@Override
 					public void run() {
 						try {
 							ViewPartHelper.getPropertyView().updateUI(cabin);
@@ -200,7 +201,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 						} catch (NullPointerException e) {
 							Log.add(this, "Cabin View or Info view not visible!");
 						}
-						
+
 						Log.add(this, "Passenger generation completed");
 					}
 				});

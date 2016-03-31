@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
@@ -410,15 +412,14 @@ public class CabinViewPart extends ViewPart {
 				}
 			}
 
-			// Causes repeated redraw!
-			// cabinAdapter = new AdapterImpl() {
-			// @Override
-			// public void notifyChanged(Notification notification) {
-			// if (!notification.isTouch()) {
-			// doTheDraw();
-			// }
-			// }
-			// };
+			cabinAdapter = new AdapterImpl() {
+				@Override
+				public void notifyChanged(Notification notification) {
+					if (!notification.isTouch()) {
+						doTheDraw();
+					}
+				}
+			};
 
 			img = createImage();
 			syncViewer();
@@ -433,7 +434,6 @@ public class CabinViewPart extends ViewPart {
 	 * This method synchronizes the cabin view with the cabin object by
 	 * listening to its change events.
 	 */
-	@Deprecated
 	public void syncViewer() {
 		if ((cabinAdapter != null) && (!cabin.eAdapters().contains(cabinAdapter))) {
 			cabin.eAdapters().add(cabinAdapter);
@@ -445,7 +445,6 @@ public class CabinViewPart extends ViewPart {
 	 * This method unsyncs the Cabin view with the cabin object by removing the
 	 * event listener form the cabin object.
 	 */
-	@Deprecated
 	public void unsyncViewer() {
 		if ((cabinAdapter != null) && (cabin.eAdapters().contains(cabinAdapter))) {
 
