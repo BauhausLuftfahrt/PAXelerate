@@ -6,6 +6,8 @@
 package net.bhl.cdt.paxelerate.ui.commands;
 
 import java.util.ArrayList;
+import java.util.Collections;
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -129,29 +131,34 @@ public class GeneratePassengersCommand extends CDTCommand {
 		if (numberOfPassengers != 0) {
 			if (numberOfPassengers <= numberOfSeats) {
 
+				int firstSeatNumber = ModelHelper.getChildrenByClass(tc, Seat.class).get(0).getId();
+
+				// Create random list
 				ArrayList<Integer> randomSeatId = new ArrayList<Integer>();
-
-				for (int i = 1; i <= numberOfPassengers; i++) {
-
-					Passenger passenger = CabinFactory.eINSTANCE.createPassenger();
-					cabin.getPassengers().add(passenger);
-
-					int firstSeatNumber = ModelHelper.getChildrenByClass(tc, Seat.class).get(0).getId();
-
-					passenger.setId(totalCount);
-					passenger.setSeat(RandomHelper.uniqueRandom(randomSeatId, firstSeatNumber, numberOfSeats));
-					passenger.setName(passenger.getId() + " (" + getSeat(passenger).getName() + ")");
-					passenger.setSeatRef(getSeat(passenger));
-					passenger.setTravelClass(passenger.getSeatRef().getTravelClass());
-					passenger.setDoor(getDoor(passenger));
-					passenger.setStartBoardingAfterDelay(calculateDelay(passenger));
-
-					PassengerPropertyGenerator generator = new PassengerPropertyGenerator(passenger);
-					passenger = generator.getPassenger();
-
-					totalCount++;
+				for (int i = 0; i < numberOfSeats; i++) {
+					randomSeatId.add(firstSeatNumber + i);
 				}
-				randomSeatId.clear();
+				Collections.shuffle(randomSeatId);
+
+				for (int i = 0; i < numberOfPassengers; i++) {
+					synchronized (this) {
+						Passenger passenger = CabinFactory.eINSTANCE.createPassenger();
+						cabin.getPassengers().add(passenger);
+
+						passenger.setId(totalCount);
+						passenger.setSeat(randomSeatId.get(i));
+						passenger.setName(passenger.getId() + " (" + getSeat(passenger).getName() + ")");
+						passenger.setSeatRef(getSeat(passenger));
+						passenger.setTravelClass(passenger.getSeatRef().getTravelClass());
+						passenger.setDoor(getDoor(passenger));
+						passenger.setStartBoardingAfterDelay(calculateDelay(passenger));
+						PassengerPropertyGenerator generator = new PassengerPropertyGenerator(passenger);
+						passenger = generator.getPassenger();
+
+						totalCount++;
+					}
+
+				}
 
 				Log.add(this, "successfully created " + numberOfPassengers + " passengers in "
 						+ StringHelper.splitCamelCase(tc.getName()));
@@ -173,17 +180,17 @@ public class GeneratePassengersCommand extends CDTCommand {
 			protected IStatus run(IProgressMonitor monitor) {
 
 				Log.add(this, "Passenger generation started...");
-				
+
 				// Generate actual passengers
 				cabin.getPassengers().clear();
 
-		for (TravelClass travelclass : cabin.getClasses()) {
-			generatePassengers(travelclass, travelclass.getPassengers(), travelclass.getAvailableSeats());
-		}
+				for (TravelClass travelclass : cabin.getClasses()) {
+					generatePassengers(travelclass, travelclass.getPassengers(), travelclass.getAvailableSeats());
+				}
 
-		for (Door door : cabin.getDoors()) {
-			door.getWaitingPassengers().clear();
-		}
+				for (Door door : cabin.getDoors()) {
+					door.getWaitingPassengers().clear();
+				}
 
 				// PUBLISH
 				Log.add(this, "Updating GUI...");
@@ -200,7 +207,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 						} catch (NullPointerException e) {
 							Log.add(this, "Cabin View or Info view not visible!");
 						}
-						
+
 						Log.add(this, "Passenger generation completed");
 					}
 				});
