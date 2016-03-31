@@ -90,7 +90,12 @@ public class SimulateBoardingCommand extends CDTCommand {
 				SimulationResultLogger results = new SimulationResultLogger();
 
 				DrawCabinCommand drawCom = new DrawCabinCommand(cabin);
-				drawCom.doRun();
+				Display.getDefault().syncExec(new Runnable() {
+					@Override
+					public void run() {
+						drawCom.doRun();
+					}
+				});
 
 				CabinViewPart cabinViewPart = ViewPartHelper.getCabinView();
 
@@ -232,16 +237,17 @@ public class SimulateBoardingCommand extends CDTCommand {
 				simulationFrame = new JFrame("Simulation Detail View");
 				SimulationView simulationView = new SimulationView();
 				simulationView.setAreamap(SimulationHandler.getMap());
+				// change from exit on close to nothing once stopSimulation() is working
 				simulationFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				simulationFrame.setContentPane(simulationView);
 				simulationFrame.pack();
 				simulationFrame.setVisible(true);
-				
+
 				WindowListener exitListener = new WindowAdapter() {
-				    @Override
-				    public void windowClosing(WindowEvent e) {
-				    	simulationhandler.stopSimulation();
-				    }
+					@Override
+					public void windowClosing(WindowEvent e) {
+						simulationhandler.stopSimulation();
+					}
 				};
 				simulationFrame.addWindowListener(exitListener);
 			}
