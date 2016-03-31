@@ -395,4 +395,8 @@ public class SimulationHandler {
 	private int percentage(double now, double max) {
 		return (int) ((now / max) * 100.0);
 	}
+	
+	public void stopSimulation() {
+		// TODO mark, end all agent threads and end simulation
+	}
 }
