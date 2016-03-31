@@ -181,11 +181,15 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 				Log.add(this, "Passenger generation started...");
 
-				cabinview = ViewPartHelper.getCabinView();
-				cabinview.unsyncViewer();
+				Display.getDefault().syncExec(new Runnable() {
+					@Override
+					public void run() {
+						cabinview = ViewPartHelper.getCabinView();
+						cabinview.unsyncViewer();
 
-				// Generate actual passengers
-				cabin.getPassengers().clear();
+						cabin.getPassengers().clear();
+					}
+				});
 
 				for (TravelClass travelclass : cabin.getClasses()) {
 					generatePassengers(travelclass, travelclass.getPassengers(), travelclass.getAvailableSeats());

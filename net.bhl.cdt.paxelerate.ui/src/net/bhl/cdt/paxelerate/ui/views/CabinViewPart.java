@@ -412,14 +412,14 @@ public class CabinViewPart extends ViewPart {
 				}
 			}
 
-			cabinAdapter = new AdapterImpl() {
-				@Override
-				public void notifyChanged(Notification notification) {
-					if (!notification.isTouch()) {
-						doTheDraw();
-					}
-				}
-			};
+//			cabinAdapter = new AdapterImpl() {
+//				@Override
+//				public void notifyChanged(Notification notification) {
+//					if (!notification.isTouch()) {
+//						doTheDraw();
+//					}
+//				}
+//			};
 
 			img = createImage();
 			syncViewer();
