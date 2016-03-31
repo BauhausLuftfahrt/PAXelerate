@@ -41,6 +41,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 	private CabinViewPart cabinViewPart;
 	private PropertyViewPart propertyViewPart;
 	private ArrayList<String> errorStrings = new ArrayList<String>();
+	private int totalCount = 1;
 
 	/**
 	 * This method submits the cabin to be used in the file.
@@ -138,7 +139,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 					int firstSeatNumber = ModelHelper.getChildrenByClass(tc, Seat.class).get(0).getId();
 
-					passenger.setId(i);
+					passenger.setId(totalCount);
 					passenger.setSeat(RandomHelper.uniqueRandom(randomSeatId, firstSeatNumber, numberOfSeats));
 					passenger.setName(passenger.getId() + " (" + getSeat(passenger).getName() + ")");
 					passenger.setSeatRef(getSeat(passenger));
@@ -148,6 +149,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 					PassengerPropertyGenerator generator = new PassengerPropertyGenerator(passenger);
 					passenger = generator.getPassenger();
+
+					totalCount++;
 
 				}
 				randomSeatId.clear();
