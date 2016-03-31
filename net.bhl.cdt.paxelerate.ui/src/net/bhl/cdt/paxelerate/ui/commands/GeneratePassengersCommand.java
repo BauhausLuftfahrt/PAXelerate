@@ -23,8 +23,8 @@ import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.util.PassengerPropertyGenerator;
+import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
-import net.bhl.cdt.paxelerate.util.math.RandomHelper;
 import net.bhl.cdt.paxelerate.util.string.StringHelper;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
@@ -41,6 +41,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 	private Cabin cabin;
 	private int totalCount = 1;
+	private CabinViewPart cabinview;
 
 	/**
 	 * This method submits the cabin to be used in the file.
@@ -126,7 +127,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 	 * @param classType
 	 *            specifies in which class the passengers are generated
 	 */
-	private void generatePassengers(TravelClass tc, int numberOfPassengers, int numberOfSeats) {
+	private synchronized void generatePassengers(TravelClass tc, int numberOfPassengers, int numberOfSeats) {
 
 		if (numberOfPassengers != 0) {
 			if (numberOfPassengers <= numberOfSeats) {
@@ -180,6 +181,9 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 				Log.add(this, "Passenger generation started...");
 
+				cabinview = ViewPartHelper.getCabinView();
+				cabinview.unsyncViewer();
+
 				// Generate actual passengers
 				cabin.getPassengers().clear();
 
@@ -194,6 +198,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 				// PUBLISH
 				Log.add(this, "Updating GUI...");
 				Display.getDefault().syncExec(new Runnable() {
+					@Override
 					public void run() {
 						try {
 							ViewPartHelper.getPropertyView().updateUI(cabin);
@@ -202,9 +207,10 @@ public class GeneratePassengersCommand extends CDTCommand {
 						}
 
 						try {
-							ViewPartHelper.getCabinView().setCabin(cabin);
+							cabinview.syncViewer();
+							cabinview.setCabin(cabin);
 						} catch (NullPointerException e) {
-							Log.add(this, "Cabin View or Info view not visible!");
+							Log.add(this, "Cabin View not visible!");
 						}
 
 						Log.add(this, "Passenger generation completed");
