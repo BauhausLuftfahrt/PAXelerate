@@ -21,7 +21,6 @@ public class RandomHelper {
 	 *            itself is never reached!</i></b>
 	 * @return returns a random value
 	 */
-	@Deprecated
 	public static int uniqueRandom(ArrayList<Integer> list, int lowerBound, int range) {
 		boolean checkUniqueness = false;
 		Random rand = new Random();

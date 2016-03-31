@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: PAXelerate - Model Edit
+Bundle-SymbolicName: net.bhl.cdt.paxelerate.model.edit;singleton:=true
+Bundle-Version: 0.6.0.qualifier
+Bundle-ClassPath: .
+Bundle-Activator: net.bhl.cdt.paxelerate.model.provider.CabinEditPlugin$Implementation
+Bundle-Vendor: http://www.paxelerate.com/
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: net.bhl.cdt.paxelerate.model.provider
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.edit;visibility:=reexport,
+ net.bhl.cdt.model;visibility:=reexport,
+ net.bhl.cdt.model.edit;visibility:=reexport,
+ net.bhl.cdt.paxelerate.model;bundle-version="0.6.0";visibility:=reexport
+Bundle-ActivationPolicy: lazy
+Import-Package: net.bhl.cdt.paxelerate.util.string

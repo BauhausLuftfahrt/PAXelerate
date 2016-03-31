@@ -1,6 +1,6 @@
 # Developer Guide #
 
-Based on PAXelerate release: Alpha 0.6 (04/01/2016)
+Based on PAXelerate release: Alpha 0.5 (02/15/2016)
 
 First, get started with the [Git repository and issues handling](#git-workflow)
 

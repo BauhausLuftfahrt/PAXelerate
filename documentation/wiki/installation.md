@@ -1,6 +1,6 @@
-# SDK Installation #
+# Installation #
 
-Based on PAXelerate release: Alpha 0.6 (04/01/2016)
+Based on PAXelerate release: Alpha 0.5 (02/15/2016)
 
 To use PAXelerate you require to install [Eclipse](http://www.eclipse.org) and [OpenCDT](https://bitbucket.org/opencdt/opencdt) beforehand. PAXelerate is compatible with latest Eclipse Version Mars.2 and we highly recommend to use it. 
 

@@ -10,13 +10,13 @@ import org.eclipse.jface.dialogs.IMessageProvider;
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.EmergencyExit;
+import net.bhl.cdt.paxelerate.model.Galley;
+import net.bhl.cdt.paxelerate.model.Lavatory;
 import net.bhl.cdt.paxelerate.model.MainDoor;
-import net.bhl.cdt.paxelerate.model.ObjectOption;
 import net.bhl.cdt.paxelerate.model.StandardDoor;
 import net.bhl.cdt.paxelerate.model.TravelOption;
 import net.bhl.cdt.paxelerate.model.util.ConstructionLibrary;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
-import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
 import net.bhl.cdt.paxelerate.util.input.Input;
 import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
@@ -83,9 +83,9 @@ public class GenerateCabinCommand extends CDTCommand {
 			constructor.clearCabin();
 			constructor.createDoor(EmergencyExit.class, true, 3, 935);
 			constructor.createDoor(EmergencyExit.class, true, 4, 1228);
-			constructor.createPhysicalObject(ObjectOption.LAVATORY, 100);
+			constructor.createPhysicalObject(Lavatory.class, 100);
 			constructor.createDoor(MainDoor.class, true, 1, -1);
-			constructor.createPhysicalObject(ObjectOption.GALLEY, 100);
+			constructor.createPhysicalObject(Galley.class, 100);
 
 			/*
 			 * Note that the classes are generated in the order that they are
@@ -95,9 +95,9 @@ public class GenerateCabinCommand extends CDTCommand {
 				constructor.createClass(option);
 			}
 
-			constructor.createPhysicalObject(ObjectOption.GALLEY, 100);
+			constructor.createPhysicalObject(Galley.class, 100);
 			constructor.createDoor(StandardDoor.class, true, 2, -1);
-			constructor.createPhysicalObject(ObjectOption.LAVATORY, 100);
+			constructor.createPhysicalObject(Lavatory.class, 100);
 			cabin = constructor.getCabin();
 			cabin.setUsePresetSettings(false);
 			/* ------- Cabin Construction ends here! ----------- */

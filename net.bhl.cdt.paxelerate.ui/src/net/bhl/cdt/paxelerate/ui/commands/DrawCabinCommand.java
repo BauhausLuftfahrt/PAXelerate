@@ -26,7 +26,6 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.util.EMFModelStore;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.PropertyViewPart;
-import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
 import net.bhl.cdt.paxelerate.util.string.StringHelper;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
@@ -107,7 +106,9 @@ public class DrawCabinCommand extends CDTCommand {
 		checkFoldableSeats();
 		updateTravelClassProperties();
 
-		propertyViewPart = ViewPartHelper.getPropertyView();
+		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+		IWorkbenchPage page = window.getActivePage();
+		propertyViewPart = (PropertyViewPart) page.findView("net.bhl.cdt.paxelerate.ui.propertyview");
 
 		for (String str : errorStrings) {
 			Log.add(this, str);

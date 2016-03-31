@@ -1,7 +1,5 @@
 # A Functional Overview
 
-Based on PAXelerate release: Alpha 0.6 (04/01/2016)
-
 PAXelerate is based on a microscopic approach applying agent-based modelling techniques. Each passenger is represented as an agent with individual properties such as body dimensions, walking speed, target seat or type of carry-on luggage.
 
 ## PAXelerate - A Functional Overview
@@ -47,9 +45,9 @@ After the number of passengers is assigned to each cabin class during the cabin 
 |   | Entry door  |
 |   | Seat  |  
 
-The behaviour properties mainly influence the simulation process. If an agent is assigned an aggressive mood, he tries to overtake other passengers blocking the way in the aisle when there is enough space. In contrast, a passive agent pauses for the blocking passenger to move out of the way, then keeps walking on the calculated path. This enables to model dynamic reactions based on the mood and environment. Thus, agents can be programmed to become impatient when forced to wait for too long and change their mood from passive to aggressive. The entry door marks the starting point and the assigned seat the target.
+The behaviour properties mainly influence the simulation process. If an agent is assigned an aggressive mood, he tries to overtake other passengers blocking the way in the aisle when there is enough space. In contrast, a passive agent pauses for the blocking passenger to move out of the way, then keeps walking on the calculated path. This enables to model dynamic reactions based on the mood and environment. Thus, agents can be “programmed” to become impatient when forced to wait for too long and change their mood from passive to aggressive. The entry door marks the starting point and the assigned seat the target.
 
-Optional carried hand luggage has an impact on the walking speed and requires the additional stowing task to be performed before seating. This causes the aisle to be blocked and thus impacts all active agents. Besides the differentiation of whether a passenger carries luggage or not, the type of luggage, namely: small, medium and large items, influences the required stowing times. With these implemented characteristics it becomes feasible to define various passenger's patterns, such as business or leisure travellers.
+Optional carried hand luggage has an impact on the walking speed and requires the additional stowing task to be performed before seating. This causes the aisle to be blocked and thus impacts all active agents. Besides the differentiation of whether a passenger carries luggage or not, the type of luggage, namely: small, medium and large items, influences the required stowing times. With these implemented characteristics it becomes feasible to define various passenger’s patterns, such as business or leisure travellers.
 
 ## 3. Agent-Based Simulation ##
 

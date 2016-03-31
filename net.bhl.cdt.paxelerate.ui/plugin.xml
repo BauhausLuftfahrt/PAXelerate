@@ -279,7 +279,7 @@
             commandId="net.bhl.cdt.paxelerate.ui.generateCabin"
             contextId="org.eclipse.ui.contexts.window"
             schemeId="net.bhl.cdt.paxelerate.ui.scheme"
-            sequence="M1+G">
+            sequence="M1+N">
       </key>
       <key
             commandId="net.bhl.cdt.paxelerate.ui.simulateBoarding"
