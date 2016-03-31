@@ -8,9 +8,11 @@ package net.bhl.cdt.paxelerate.ui.commands;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PlatformUI;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.swt.widgets.Display;
 
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.util.ModelHelper;
@@ -26,8 +28,7 @@ import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.TravelOption;
 import net.bhl.cdt.paxelerate.model.util.PassengerPropertyGenerator;
 import net.bhl.cdt.paxelerate.model.util.TCHelper;
-import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
-import net.bhl.cdt.paxelerate.ui.views.PropertyViewPart;
+import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
 import net.bhl.cdt.paxelerate.util.math.RandomHelper;
 import net.bhl.cdt.paxelerate.util.string.StringHelper;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
@@ -45,9 +46,6 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 	private Cabin cabin;
 	private ArrayList<Integer> randomSeatId, randomPassengerId;
-	private CabinViewPart cabinViewPart;
-	private PropertyViewPart propertyViewPart;
-	private ArrayList<String> errorStrings = new ArrayList<String>();
 
 	private int totalPax, totalSeats, paxInClass, seatsInClass, seatAreaBegin, passengerPerClassCount, firstpax = 0,
 			businesspax = 0, premiumecopax = 0, ecopax = 0, firstseats = 0, businessseats = 0, premiumecoseats = 0,
@@ -205,83 +203,102 @@ public class GeneratePassengersCommand extends CDTCommand {
 	 */
 	@Override
 	protected void doRun() {
+		// Create separate thread
+		Job job = new Job("Generate Passengers Thread") {
+			@Override
+			protected IStatus run(IProgressMonitor monitor) {
 
-		cabinViewPart = ViewPartHelper.getCabinView();
+				Log.add(this, "Passenger generation started...");
+				
+				// Generate actual passengers
+				cabin.getPassengers().clear();
 
-		cabinViewPart.unsyncViewer();
+				List<FirstClass> firstClasses = TCHelper.getFirstClasses(cabin);
+				if (!firstClasses.isEmpty()) {
+					firstpax = firstClasses.get(0).getPassengers();
+					firstseats = firstClasses.get(0).getAvailableSeats();
+				}
 
-		cabin.getPassengers().clear();
+				List<BusinessClass> businessClasses = TCHelper.getBusinessClasses(cabin);
+				if (!businessClasses.isEmpty()) {
+					businesspax = businessClasses.get(0).getPassengers();
+					businessseats = businessClasses.get(0).getAvailableSeats();
+				}
 
-		List<FirstClass> firstClasses = TCHelper.getFirstClasses(cabin);
-		if (!firstClasses.isEmpty()) {
-			firstpax = firstClasses.get(0).getPassengers();
-			firstseats = firstClasses.get(0).getAvailableSeats();
-		}
+				List<EconomyClass> economyClasses = TCHelper.getEconomyClasses(cabin);
+				if (!economyClasses.isEmpty()) {
+					ecopax = economyClasses.get(0).getPassengers();
+					ecoseats = economyClasses.get(0).getAvailableSeats();
+				}
 
-		List<BusinessClass> businessClasses = TCHelper.getBusinessClasses(cabin);
-		if (!businessClasses.isEmpty()) {
-			businesspax = businessClasses.get(0).getPassengers();
-			businessseats = businessClasses.get(0).getAvailableSeats();
-		}
+				List<PremiumEconomyClass> premiumEconomyClasses = TCHelper.getPremiumEconomyClasses(cabin);
+				if (!premiumEconomyClasses.isEmpty()) {
+					premiumecopax = premiumEconomyClasses.get(0).getPassengers();
+					premiumecoseats = premiumEconomyClasses.get(0).getAvailableSeats();
+				}
 
-		List<EconomyClass> economyClasses = TCHelper.getEconomyClasses(cabin);
-		if (!economyClasses.isEmpty()) {
-			ecopax = economyClasses.get(0).getPassengers();
-			ecoseats = economyClasses.get(0).getAvailableSeats();
-		}
+				totalPax = firstpax + businesspax + premiumecopax + ecopax;
+				totalSeats = firstseats + businessseats + premiumecoseats + ecoseats;
 
-		List<PremiumEconomyClass> premiumEconomyClasses = TCHelper.getPremiumEconomyClasses(cabin);
-		if (!premiumEconomyClasses.isEmpty()) {
-			premiumecopax = premiumEconomyClasses.get(0).getPassengers();
-			premiumecoseats = premiumEconomyClasses.get(0).getAvailableSeats();
-		}
+				randomSeatId = new ArrayList<Integer>();
+				randomPassengerId = new ArrayList<Integer>();
 
-		totalPax = firstpax + businesspax + premiumecopax + ecopax;
-		totalSeats = firstseats + businessseats + premiumecoseats + ecoseats;
+				if (totalPax <= totalSeats) {
+					if (firstpax > 0) {
+					    synchronized (this.getThread()) {
+					    	generatePassengers(TravelOption.FIRST_CLASS);
+					    }
+					}
+					if (businesspax > 0) {
+					    synchronized (this.getThread()) {
+					    	generatePassengers(TravelOption.BUSINESS_CLASS);
+					    }
+					}
+					if (premiumecopax > 0) {
+					    synchronized (this.getThread()) {
+					    	generatePassengers(TravelOption.PREMIUM_ECONOMY_CLASS);
+					    }
+					}
+					if (ecopax > 0) {
+					    synchronized (this.getThread()) {
+					    	generatePassengers(TravelOption.ECONOMY_CLASS);
+					    }
+					}
 
-		randomSeatId = new ArrayList<Integer>();
-		randomPassengerId = new ArrayList<Integer>();
+				} else {
+					Log.add(this, "Too many passengers in the cabin! Remove " + (totalPax - totalSeats) + "!");
+				}
 
-		if (totalPax <= totalSeats) {
-			if (firstpax > 0) {
-				generatePassengers(TravelOption.FIRST_CLASS);
+				for (Door door : cabin.getDoors()) {
+					door.getWaitingPassengers().clear();
+				}
+
+				// PUBLISH
+				Log.add(this, "Updating GUI...");
+				Display.getDefault().syncExec(new Runnable() {
+					public void run() {
+						try {
+							ViewPartHelper.getPropertyView().updateUI(cabin);
+						} catch (NullPointerException e) {
+							Log.add(this, "No property view is visible!");
+						}
+
+						try {
+							ViewPartHelper.getCabinView().setCabin(cabin);
+						} catch (NullPointerException e) {
+							Log.add(this, "Cabin View or Info view not visible!");
+						}
+						
+						Log.add(this, "Passenger generation completed");
+					}
+				});
+
+				// report finished
+				return Status.OK_STATUS;
 			}
-			if (businesspax > 0) {
-				generatePassengers(TravelOption.BUSINESS_CLASS);
-			}
-			if (premiumecopax > 0) {
-				generatePassengers(TravelOption.PREMIUM_ECONOMY_CLASS);
-			}
-			if (ecopax > 0) {
-				generatePassengers(TravelOption.ECONOMY_CLASS);
-			}
+		};
 
-		} else {
-			Log.add(this, "Too many passengers in the cabin! Remove " + (totalPax - totalSeats) + "!");
-		}
-
-		for (Door door : cabin.getDoors()) {
-			door.getWaitingPassengers().clear();
-		}
-
-		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-		IWorkbenchPage page = window.getActivePage();
-		propertyViewPart = (PropertyViewPart) page.findView("net.bhl.cdt.paxelerate.ui.propertyview");
-
-		for (String str : errorStrings) {
-			Log.add(this, str);
-		}
-		try {
-			propertyViewPart.updateUI(cabin);
-		} catch (NullPointerException e) {
-			Log.add(this, "No property view is visible!");
-		}
-		
-		try {
-			cabinViewPart.setCabin(cabin);
-			cabinViewPart.syncViewer();
-		} catch (NullPointerException e) {
-			Log.add(this, "Cabin View or Info view not visible!");
-		}
+		// Start the Job
+		job.schedule();
 	}
 }

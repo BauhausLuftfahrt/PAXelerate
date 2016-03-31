@@ -26,6 +26,7 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.util.EMFModelStore;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.PropertyViewPart;
+import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
 import net.bhl.cdt.paxelerate.util.string.StringHelper;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 

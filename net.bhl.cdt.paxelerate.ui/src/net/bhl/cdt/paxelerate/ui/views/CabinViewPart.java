@@ -436,6 +436,7 @@ public class CabinViewPart extends ViewPart {
 	 * This method synchronizes the cabin view with the cabin object by
 	 * listening to its change events.
 	 */
+	@Deprecated
 	public void syncViewer() {
 		if ((cabinAdapter != null) && (!cabin.eAdapters().contains(cabinAdapter))) {
 			cabin.eAdapters().add(cabinAdapter);
@@ -447,6 +448,7 @@ public class CabinViewPart extends ViewPart {
 	 * This method unsyncs the Cabin view with the cabin object by removing the
 	 * event listener form the cabin object.
 	 */
+	@Deprecated
 	public void unsyncViewer() {
 		if ((cabinAdapter != null) && (cabin.eAdapters().contains(cabinAdapter))) {
 

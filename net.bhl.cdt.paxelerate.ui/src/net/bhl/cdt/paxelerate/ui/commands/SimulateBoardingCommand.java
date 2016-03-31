@@ -24,6 +24,7 @@ import net.bhl.cdt.paxelerate.model.storage.Exporter;
 import net.bhl.cdt.paxelerate.model.util.SimulationResultLogger;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.SimulationView;
+import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
 import net.bhl.cdt.paxelerate.util.input.Input;
 import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 import net.bhl.cdt.paxelerate.util.math.DecimalHelper;
@@ -129,59 +130,56 @@ public class SimulateBoardingCommand extends CDTCommand {
 					System.out.println("PAX created!");
 				}
 			}
-			if (!cabin.getPassengers().isEmpty()) {
 
-				Vector dimensions = new Vector2D(cabin.getXDimension(), cabin.getYDimension(), cabin.getScale());
-				SimulationHandler simulationhandler = new SimulationHandler(dimensions, cabin);
+			Vector dimensions = new Vector2D(cabin.getXDimension(), cabin.getYDimension(), cabin.getScale());
+			SimulationHandler simulationhandler = new SimulationHandler(dimensions, cabin);
 
-				// Show WIP simulation view
-				runAreaMapWindow();
+			// Show WIP simulation view
+			runAreaMapWindow();
 
-				while (!SimulationHandler.isSimulationDone()) {
-					for (Passenger pax : SimulationHandler.getCabin().getPassengers()) {
-						if (pax.isIsSeated() && !alreadySeatedList.contains(pax)) {
-							alreadySeatedList.add(pax);
-						}
-					}
-					if (OS.isMac()) {
-						// cabinViewPart.submitPassengerCoordinates(cabin);
+			while (!SimulationHandler.isSimulationDone()) {
+				for (Passenger pax : SimulationHandler.getCabin().getPassengers()) {
+					if (pax.isIsSeated() && !alreadySeatedList.contains(pax)) {
+						alreadySeatedList.add(pax);
 					}
 				}
-				if (SimulationHandler.isSimulationDone()) {
-
-					/* closes the simulation view after completion */
-					simulationFrame.dispose();
-
-					if (Exporter.generateHeatmapFile("Heat Map", SimulationHandler.getMap())) {
-						Log.add(this, "Heat map saved successfully!");
-					}
-
-					if (Exporter.generateInterruptmapFile("Interrupt Map", SimulationHandler.getMap())) {
-						Log.add(this, "Interrupt map saved successfully!");
-					}
-
-					for (Passenger pax : ModelHelper.getChildrenByClass(simulationhandler.getPassengerLocations(),
-							Passenger.class)) {
-						if (pax.isIsSeated() && !alreadySeatedList.contains(pax)) {
-							alreadySeatedList.add(pax);
-							try {
-							} catch (NullPointerException e) {
-								Log.add(this, "Info view is not visible.");
-							}
-						}
-					}
-
-					SimulationView.getWatch().stop();
-
-					Image image = cabinViewPart.submitObstacleMap(SimulationHandler.getMap().getObstacleMap().getMap());
-					cabinViewPart.printObstacleMap(image);
-					cabinViewPart.submitAgents(SimulationHandler.getAgentList());
-
-					Log.add(this, "Boarding simulation completed");
+				if (OS.isMac()) {
+					// cabinViewPart.submitPassengerCoordinates(cabin);
 				}
-			} else {
-				Log.add(this, "No boarding possible! Please create passengers!");
 			}
+			if (SimulationHandler.isSimulationDone()) {
+
+				/* closes the simulation view after completion */
+				simulationFrame.dispose();
+
+				if (Exporter.generateHeatmapFile("Heat Map", SimulationHandler.getMap())) {
+					Log.add(this, "Heat map saved successfully!");
+				}
+
+				if (Exporter.generateInterruptmapFile("Interrupt Map", SimulationHandler.getMap())) {
+					Log.add(this, "Interrupt map saved successfully!");
+				}
+
+				for (Passenger pax : ModelHelper.getChildrenByClass(simulationhandler.getPassengerLocations(),
+						Passenger.class)) {
+					if (pax.isIsSeated() && !alreadySeatedList.contains(pax)) {
+						alreadySeatedList.add(pax);
+						try {
+						} catch (NullPointerException e) {
+							Log.add(this, "Info view is not visible.");
+						}
+					}
+				}
+
+				SimulationView.getWatch().stop();
+
+				Image image = cabinViewPart.submitObstacleMap(SimulationHandler.getMap().getObstacleMap().getMap());
+				cabinViewPart.printObstacleMap(image);
+				cabinViewPart.submitAgents(SimulationHandler.getAgentList());
+
+				Log.add(this, "Boarding simulation completed");
+			}
+
 			// TODO do not round results, rounding should ONLY happen for
 			// displaying (not for internal calculations)
 			results.getSimulationData(SimulationHandler.getCabin(), i + 1,
