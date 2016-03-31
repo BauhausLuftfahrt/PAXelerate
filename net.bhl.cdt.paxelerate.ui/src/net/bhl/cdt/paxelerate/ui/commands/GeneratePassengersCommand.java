@@ -151,10 +151,13 @@ public class GeneratePassengersCommand extends CDTCommand {
 		double delay = 0;
 		double clocking = cabin.getSimulationSettings().getPassengersBoardingPerMinute();
 
-		pax.getDoor().getWaitingPassengers().add(pax);
-
-		delay = (pax.getDoor().getWaitingPassengers().size() - 1) * 60.0 / clocking;
-
+		try {
+			pax.getDoor().getWaitingPassengers().add(pax);
+			delay = (pax.getDoor().getWaitingPassengers().size() - 1) * 60.0 / clocking;
+		} catch (NullPointerException e) {
+			Log.add(this, "The cabin has no doors so far, please assign one manually!");
+		}
+		
 		return delay;
 	}
 
