@@ -192,10 +192,18 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 						SimulationView.getWatch().stop();
 
-						Image image = cabinViewPart
-								.submitObstacleMap(SimulationHandler.getMap().getObstacleMap().getMap());
-						cabinViewPart.printObstacleMap(image);
-						cabinViewPart.submitAgents(SimulationHandler.getAgentList());
+						
+						
+						
+						Display.getDefault().syncExec(new Runnable() {
+							@Override
+							public void run() {
+								Image image = cabinViewPart
+								.submitObstacleMap(SimulationHandler.getMap().getObstacleMap().getMap()); 
+										cabinViewPart.printObstacleMap(image);
+								cabinViewPart.submitAgents(SimulationHandler.getAgentList()); 
+							}
+						});
 
 						Log.add(this, "Boarding simulation completed");
 					}
