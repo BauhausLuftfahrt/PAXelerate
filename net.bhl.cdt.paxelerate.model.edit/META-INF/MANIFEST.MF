@@ -15,3 +15,4 @@ Require-Bundle: org.eclipse.core.runtime,
  net.bhl.cdt.model.edit;visibility:=reexport,
  net.bhl.cdt.paxelerate.model;bundle-version="0.6.0";visibility:=reexport
 Bundle-ActivationPolicy: lazy
+Import-Package: net.bhl.cdt.paxelerate.util.string
