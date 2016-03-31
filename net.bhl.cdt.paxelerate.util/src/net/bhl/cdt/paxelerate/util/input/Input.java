@@ -38,8 +38,7 @@ public class Input extends TitleAreaDialog {
 		/**
 		 * Access the different types using WindowType.CHOOSE_TYPE.
 		 */
-		INFORMATION, GET_STRING, GET_INTEGER, GET_VECTOR, WARNING, OPTIONS, GET_BOOLEAN, GET_TWO_VECTORS, 
-		CLONE_OBJECT, MOVE_OBJECT
+		INFORMATION, GET_STRING, GET_INTEGER, GET_VECTOR, WARNING, OPTIONS, GET_BOOLEAN, GET_TWO_VECTORS, CLONE_OBJECT, MOVE_OBJECT
 	}
 
 	private WindowType windowType;
@@ -99,7 +98,7 @@ public class Input extends TitleAreaDialog {
 			titleString = "Please choose one of the following options!";
 			descriptionText = "Options:";
 			break;
-			
+
 		case CLONE_OBJECT:
 			titleString = "Duplicate rows";
 			descriptionText = "Number of rows";
@@ -144,6 +143,7 @@ public class Input extends TitleAreaDialog {
 				createFourthInputField(container);
 			}
 		}
+
 		createWarningLabel(container);
 		return area;
 	}
@@ -297,7 +297,7 @@ public class Input extends TitleAreaDialog {
 	public boolean inputCheckOK() {
 		switch (windowType) {
 		case CLONE_OBJECT:
-		case GET_INTEGER: 
+		case GET_INTEGER:
 			if (text.getText() != "") {
 				if (StringHelper.isInteger(text.getText())) {
 					return true;
