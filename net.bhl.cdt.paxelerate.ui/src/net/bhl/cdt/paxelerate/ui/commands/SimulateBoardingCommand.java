@@ -237,8 +237,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 				simulationFrame = new JFrame("Simulation Detail View");
 				SimulationView simulationView = new SimulationView();
 				simulationView.setAreamap(SimulationHandler.getMap());
-				// change from exit on close to nothing once stopSimulation() is working
-				simulationFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				simulationFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				simulationFrame.setContentPane(simulationView);
 				simulationFrame.pack();
 				simulationFrame.setVisible(true);

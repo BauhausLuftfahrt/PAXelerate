@@ -397,6 +397,10 @@ public class SimulationHandler {
 	}
 	
 	public void stopSimulation() {
-		// TODO mark, end all agent threads and end simulation
+		// TODO
+		// This is just a quick fix
+		for (Agent agent : agentList) {
+			agent.getThread().stop();
+		}
 	}
 }
