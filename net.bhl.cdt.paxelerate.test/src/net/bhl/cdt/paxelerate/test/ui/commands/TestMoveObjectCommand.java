@@ -6,25 +6,22 @@
 
 package net.bhl.cdt.paxelerate.test.ui.commands;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import net.bhl.cdt.paxelerate.ui.commands.MoveObjectCommand;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.EmergencyExit;
-import net.bhl.cdt.paxelerate.model.Galley;
-import net.bhl.cdt.paxelerate.model.Lavatory;
 import net.bhl.cdt.paxelerate.model.MainDoor;
+import net.bhl.cdt.paxelerate.model.ObjectOption;
 import net.bhl.cdt.paxelerate.model.StandardDoor;
 import net.bhl.cdt.paxelerate.model.TravelOption;
 import net.bhl.cdt.paxelerate.model.util.ConstructionLibrary;
 
-
 /**
- * Test class for MoveObjectCommand.java imported from net.bhl.cdt.paxelerate.ui.commands
+ * Test class for MoveObjectCommand.java imported from
+ * net.bhl.cdt.paxelerate.ui.commands
  * 
  * @author michael.schmidt
  */
@@ -33,21 +30,21 @@ public class TestMoveObjectCommand {
 
 	private static Cabin cabin;
 	private static ConstructionLibrary constructor;
-	
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 
 		cabin.setYDimension(364);
 		cabin.setXDimension(2460);
-		
+
 		/* ------- Cabin Construction starts here! --------- */
 		constructor = new ConstructionLibrary(cabin);
-		//constructor.clearCabin();
+		// constructor.clearCabin();
 		constructor.createDoor(EmergencyExit.class, true, 3, 935);
 		constructor.createDoor(EmergencyExit.class, true, 4, 1228);
-		constructor.createPhysicalObject(Lavatory.class, 100);
+		constructor.createPhysicalObject(ObjectOption.LAVATORY, 100);
 		constructor.createDoor(MainDoor.class, true, 1, -1);
-		constructor.createPhysicalObject(Galley.class, 100);
+		constructor.createPhysicalObject(ObjectOption.GALLEY, 100);
 
 		/*
 		 * Note that the classes are generated in the order that they are
@@ -57,11 +54,11 @@ public class TestMoveObjectCommand {
 			constructor.createClass(option);
 		}
 
-		constructor.createPhysicalObject(Galley.class, 100);
+		constructor.createPhysicalObject(ObjectOption.GALLEY, 100);
 		constructor.createDoor(StandardDoor.class, true, 2, -1);
-		constructor.createPhysicalObject(Lavatory.class, 100);
+		constructor.createPhysicalObject(ObjectOption.LAVATORY, 100);
 		cabin = constructor.getCabin();
-		//cabin.setUsePresetSettings(false);
+		// cabin.setUsePresetSettings(false);
 		/* ------- Cabin Construction ends here! ----------- */
 	}
 
@@ -69,6 +66,5 @@ public class TestMoveObjectCommand {
 	public void modXCoordinate() {
 		fail("Not yet implemented");
 	}
-	
 
 }
