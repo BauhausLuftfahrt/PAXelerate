@@ -10,7 +10,6 @@ import java.util.Arrays;
 
 import org.apache.commons.lang.StringUtils;
 
-import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
 import net.bhl.cdt.paxelerate.model.Curtain;
@@ -269,21 +268,21 @@ public class ConstructionLibrary {
 	 * This method checks if there is a door at the current x position. If so,
 	 * the x position is increased.
 	 */
-	public void checkForDoor() {
-		for (Door door : ModelHelper.getChildrenByClass(cabin, Door.class)) {
-			if ((((door.getXPosition() + door.getWidth()) > (globalSeatPositionX
-					- seatPitch))
-					&& (door.getXPosition() < globalSeatPositionX))
-					|| ((door.getXPosition() > globalSeatPositionX)
-							&& (door.getXPosition() < globalSeatPositionX
-									+ seatDimensions.getY())
-							|| ((door.getXPosition()
-									+ door.getWidth() > globalSeatPositionX)
-									&& (door.getXPosition() < globalSeatPositionX)))) {
-				globalSeatPositionX += DISTANCE_INCREMENT_DOOR;
-			}
-		}
-	}
+	// public void checkForDoor() {
+	// for (Door door : ModelHelper.getChildrenByClass(cabin, Door.class)) {
+	// if ((((door.getXPosition() + door.getWidth()) > (globalSeatPositionX
+	// - seatPitch))
+	// && (door.getXPosition() < globalSeatPositionX))
+	// || ((door.getXPosition() > globalSeatPositionX)
+	// && (door.getXPosition() < globalSeatPositionX
+	// + seatDimensions.getY())
+	// || ((door.getXPosition()
+	// + door.getWidth() > globalSeatPositionX)
+	// && (door.getXPosition() < globalSeatPositionX)))) {
+	// globalSeatPositionX += DISTANCE_INCREMENT_DOOR;
+	// }
+	// }
+	// }
 
 	/**
 	 * This method creates a class and the subclasses (seats, rows, etc.).
@@ -373,7 +372,7 @@ public class ConstructionLibrary {
 		Row newRow = CabinFactory.eINSTANCE.createRow();
 		passengerClass.getRows().add(newRow);
 		newRow.setRowNumber(rowCount);
-		checkForDoor();
+		// checkForDoor();
 		int seatLabelCount = 1;
 		for (int rowBlock : rowPartsInt) {
 			for (int j = 1; j <= rowBlock; j++) {
