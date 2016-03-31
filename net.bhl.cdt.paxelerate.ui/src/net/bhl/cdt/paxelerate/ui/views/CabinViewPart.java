@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
@@ -412,14 +410,18 @@ public class CabinViewPart extends ViewPart {
 				}
 			}
 
-//			cabinAdapter = new AdapterImpl() {
-//				@Override
-//				public void notifyChanged(Notification notification) {
-//					if (!notification.isTouch()) {
-//						doTheDraw();
-//					}
-//				}
-//			};
+			// TODO: @Raoul: This is actually quite important as it enables
+			// automatic redraws when changing the EMF model in the explorer.
+			// Should be reactivated soon!
+
+			// cabinAdapter = new AdapterImpl() {
+			// @Override
+			// public void notifyChanged(Notification notification) {
+			// if (!notification.isTouch()) {
+			// doTheDraw();
+			// }
+			// }
+			// };
 
 			img = createImage();
 			syncViewer();
