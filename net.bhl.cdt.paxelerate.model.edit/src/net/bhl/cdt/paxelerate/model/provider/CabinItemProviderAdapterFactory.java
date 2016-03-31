@@ -117,29 +117,6 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.paxelerate.model.TravelClass} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TravelClassItemProvider travelClassItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.TravelClass}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createTravelClassAdapter() {
-		if (travelClassItemProvider == null) {
-			travelClassItemProvider = new TravelClassItemProvider(this);
-		}
-
-		return travelClassItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.paxelerate.model.BusinessClass} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -229,29 +206,6 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 		}
 
 		return premiumEconomyClassItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.paxelerate.model.Door} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DoorItemProvider doorItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.Door}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createDoorAdapter() {
-		if (doorItemProvider == null) {
-			doorItemProvider = new DoorItemProvider(this);
-		}
-
-		return doorItemProvider;
 	}
 
 	/**
@@ -531,6 +485,29 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.paxelerate.model.LuggageProperties} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LuggagePropertiesItemProvider luggagePropertiesItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.LuggageProperties}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLuggagePropertiesAdapter() {
+		if (luggagePropertiesItemProvider == null) {
+			luggagePropertiesItemProvider = new LuggagePropertiesItemProvider(this);
+		}
+
+		return luggagePropertiesItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.paxelerate.model.SimulationResult} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -554,26 +531,26 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.paxelerate.model.PhysicalObject} instances.
+	 * This keeps track of the one adapter used for all {@link net.bhl.cdt.paxelerate.model.PassengerProperties} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PhysicalObjectItemProvider physicalObjectItemProvider;
+	protected PassengerPropertiesItemProvider passengerPropertiesItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.PhysicalObject}.
+	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.PassengerProperties}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createPhysicalObjectAdapter() {
-		if (physicalObjectItemProvider == null) {
-			physicalObjectItemProvider = new PhysicalObjectItemProvider(this);
+	public Adapter createPassengerPropertiesAdapter() {
+		if (passengerPropertiesItemProvider == null) {
+			passengerPropertiesItemProvider = new PassengerPropertiesItemProvider(this);
 		}
 
-		return physicalObjectItemProvider;
+		return passengerPropertiesItemProvider;
 	}
 
 	/**
@@ -677,7 +654,6 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	public void dispose() {
 		if (cabinItemProvider != null) cabinItemProvider.dispose();
 		if (rowItemProvider != null) rowItemProvider.dispose();
-		if (travelClassItemProvider != null) travelClassItemProvider.dispose();
 		if (businessClassItemProvider != null) businessClassItemProvider.dispose();
 		if (firstClassItemProvider != null) firstClassItemProvider.dispose();
 		if (economyClassItemProvider != null) economyClassItemProvider.dispose();
@@ -685,18 +661,18 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 		if (seatItemProvider != null) seatItemProvider.dispose();
 		if (passengerItemProvider != null) passengerItemProvider.dispose();
 		if (crewMemberItemProvider != null) crewMemberItemProvider.dispose();
-		if (physicalObjectItemProvider != null) physicalObjectItemProvider.dispose();
 		if (lavatoryItemProvider != null) lavatoryItemProvider.dispose();
 		if (galleyItemProvider != null) galleyItemProvider.dispose();
 		if (stairwayItemProvider != null) stairwayItemProvider.dispose();
 		if (curtainItemProvider != null) curtainItemProvider.dispose();
 		if (stowageItemProvider != null) stowageItemProvider.dispose();
-		if (doorItemProvider != null) doorItemProvider.dispose();
 		if (mainDoorItemProvider != null) mainDoorItemProvider.dispose();
 		if (emergencyExitItemProvider != null) emergencyExitItemProvider.dispose();
 		if (standardDoorItemProvider != null) standardDoorItemProvider.dispose();
 		if (simulationPropertiesItemProvider != null) simulationPropertiesItemProvider.dispose();
+		if (luggagePropertiesItemProvider != null) luggagePropertiesItemProvider.dispose();
 		if (simulationResultItemProvider != null) simulationResultItemProvider.dispose();
+		if (passengerPropertiesItemProvider != null) passengerPropertiesItemProvider.dispose();
 	}
 
 }

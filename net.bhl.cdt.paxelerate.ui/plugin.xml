@@ -16,15 +16,7 @@
             class="net.bhl.cdt.paxelerate.ui.views.PropertyViewPart"
             icon="images/icons/passenger.png"
             id="net.bhl.cdt.paxelerate.ui.propertyview"
-            name="Property View"
-            restorable="true">
-      </view>
-      <view
-            allowMultiple="false"
-            class="net.bhl.cdt.paxelerate.ui.views.InfoViewPart"
-            icon="images/icons/passenger.png"
-            id="net.bhl.cdt.paxelerate.ui.views.infoview"
-            name="Info View"
+            name="Passenger Properties"
             restorable="true">
       </view>
    </extension>
@@ -45,28 +37,33 @@
       </command>
       <command
             defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.GenerateCabinHandler"
-            id="net.bhl.cdt.paxelerate.ui.generatecabin"
-            name="Generate Cabin">
+            id="net.bhl.cdt.paxelerate.ui.generateCabin"
+            name="Generate New Cabin">
       </command>
       <command
             defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.DrawCabinHandler"
-            id="net.bhl.cdt.paxelerate.ui.DrawCabin"
+            id="net.bhl.cdt.paxelerate.ui.drawCabin"
             name="Refresh Cabin View">
       </command>
       <command
             defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.GeneratePassengersHandler"
-            id="net.bhl.cdt.paxelerate.ui.GeneratePassengers"
+            id="net.bhl.cdt.paxelerate.ui.generatePassengers"
             name="Generate Passengers">
       </command>
       <command
-            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.MoveRowHandler"
-            id="net.bhl.cdt.paxelerate.ui.MoveRow"
+            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.MoveObjectHandler"
+            id="net.bhl.cdt.paxelerate.ui.moveObject"
             name="Move Object">
       </command>
       <command
             defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.SortPassengersHandler"
             id="net.bhl.cdt.paxelerate.ui.sortPassengers"
             name="Sort Passengers">
+      </command>
+      <command
+            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.CloneObjectHandler"
+            id="net.bhl.cdt.paxelerate.ui.cloneObject"
+            name="Clone Object">
       </command>
    </extension>
    <extension
@@ -75,8 +72,37 @@
             allPopups="false"
             locationURI="popup:org.eclipse.emf.ecp.ui.ModelExplorerView">
          <command
+               commandId="net.bhl.cdt.paxelerate.ui.generateCabin"
+               icon="images/icons/cabin.png"
+               label="1. Generate New Cabin"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate>
+                  <instanceof
+                        value="net.bhl.cdt.paxelerate.model.Cabin">
+                  </instanceof>
+               </iterate>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="net.bhl.cdt.paxelerate.ui.generatePassengers"
+               icon="images/icons/passenger.png"
+               label="2. Generate Passengers"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate>
+                  <instanceof
+                        value="net.bhl.cdt.paxelerate.model.Cabin">
+                  </instanceof>
+               </iterate>
+            </visibleWhen>
+         </command>
+         <command
                commandId="net.bhl.cdt.paxelerate.ui.simulateBoarding"
-               label="Simulate Boarding of this Cabin"
+               icon="images/icons/simulate.png"
+               label="3. Simulate Boarding"
                style="push">
             <visibleWhen
                   checkEnabled="false">
@@ -87,20 +113,13 @@
                </iterate>
             </visibleWhen>
          </command>
+         <separator
+               name="net.bhl.cdt.paxelerate.ui.separator1"
+               visible="true">
+         </separator>
          <command
-               commandId="net.bhl.cdt.paxelerate.ui.generatecabin"
-               style="push">
-            <visibleWhen
-                  checkEnabled="false">
-               <iterate>
-                  <instanceof
-                        value="net.bhl.cdt.paxelerate.model.Cabin">
-                  </instanceof>
-               </iterate>
-            </visibleWhen>
-         </command>
-         <command
-               commandId="net.bhl.cdt.paxelerate.ui.DrawCabin"
+               commandId="net.bhl.cdt.paxelerate.ui.drawCabin"
+               icon="images/icons/refresh.png"
                label="Refresh Cabin View"
                style="push">
             <visibleWhen
@@ -113,21 +132,9 @@
             </visibleWhen>
          </command>
          <command
-               commandId="net.bhl.cdt.paxelerate.ui.GeneratePassengers"
-               label="Generate Passengers"
-               style="push">
-            <visibleWhen
-                  checkEnabled="false">
-               <iterate>
-                  <instanceof
-                        value="net.bhl.cdt.paxelerate.model.Cabin">
-                  </instanceof>
-               </iterate>
-            </visibleWhen>
-         </command>
-         <command
-               commandId="net.bhl.cdt.paxelerate.ui.MoveRow"
-               label="Reposition ..."
+               commandId="net.bhl.cdt.paxelerate.ui.moveObject"
+               icon="images/icons/reposition.png"
+               label="Reposition Object ..."
                style="push">
             <visibleWhen
                   checkEnabled="false">
@@ -144,7 +151,22 @@
             </visibleWhen>
          </command>
          <command
+               commandId="net.bhl.cdt.paxelerate.ui.cloneObject"
+               icon="images/icons/clone.png"
+               label="Clone Object ... "
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate>
+                  <instanceof
+                        value="net.bhl.cdt.paxelerate.model.Row">
+                  </instanceof>
+               </iterate>
+            </visibleWhen>
+         </command>
+         <command
                commandId="net.bhl.cdt.paxelerate.ui.sortPassengers"
+               icon="images/icons/sort.png"
                label="Sort Passengers ..."
                style="push">
             <visibleWhen
@@ -161,6 +183,39 @@
                </iterate>
             </visibleWhen>
          </command>
+         <separator
+               name="net.bhl.cdt.paxelerate.ui.separator2"
+               visible="true">
+         </separator>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.eclipse.ui.main.menu">
+         <menu
+               label="Menu">
+            <command
+                  commandId="org.eclipse.ui.views.showView"
+                  icon="images/icons/monitor.png"
+                  label="Show Views"
+                  style="push">
+            </command>
+            <command
+                  commandId="org.eclipse.ui.window.preferences"
+                  icon="images/icons/preferences.png"
+                  label="Preferences"
+                  style="push">
+            </command>
+            <command
+                  commandId="org.eclipse.ui.help.aboutAction"
+                  label="About PAXelerate"
+                  style="push">
+            </command>
+            <command
+                  commandId="org.eclipse.ui.file.exit"
+                  label="Exit"
+                  style="push">
+            </command>
+         </menu>
       </menuContribution>
    </extension>
    <extension
@@ -201,5 +256,36 @@
             id="net.bhl.cdt.paxelerate.ui.intro"
             label="PAXelerate Welcome Page">
       </intro>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <scheme
+            id="net.bhl.cdt.paxelerate.ui.scheme"
+            name="PAXelerateScheme">
+      </scheme>
+      <key
+            commandId="net.bhl.cdt.paxelerate.ui.generatePassengers"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="net.bhl.cdt.paxelerate.ui.scheme"
+            sequence="M1+P">
+      </key>
+      <key
+            commandId="net.bhl.cdt.paxelerate.ui.drawCabin"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="net.bhl.cdt.paxelerate.ui.scheme"
+            sequence="M1+R">
+      </key>
+      <key
+            commandId="net.bhl.cdt.paxelerate.ui.generateCabin"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="net.bhl.cdt.paxelerate.ui.scheme"
+            sequence="M1+G">
+      </key>
+      <key
+            commandId="net.bhl.cdt.paxelerate.ui.simulateBoarding"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="net.bhl.cdt.paxelerate.ui.scheme"
+            sequence="M1+L">
+      </key>
    </extension>
 </plugin>

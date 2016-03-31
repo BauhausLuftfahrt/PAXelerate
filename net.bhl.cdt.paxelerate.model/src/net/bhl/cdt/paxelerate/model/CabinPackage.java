@@ -80,22 +80,22 @@ public interface CabinPackage extends EPackage {
 	int CABIN__NAME = ModelPackage.NAMED_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Cabin Length</b></em>' attribute.
+	 * The feature id for the '<em><b>XDimension</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__CABIN_LENGTH = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int CABIN__XDIMENSION = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Cabin Width</b></em>' attribute.
+	 * The feature id for the '<em><b>YDimension</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__CABIN_WIDTH = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int CABIN__YDIMENSION = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Row Nonexistent</b></em>' attribute.
@@ -380,22 +380,22 @@ public interface CabinPackage extends EPackage {
 	int TRAVEL_CLASS__SEAT_PITCH = 4;
 
 	/**
-	 * The feature id for the '<em><b>Seat Length</b></em>' attribute.
+	 * The feature id for the '<em><b>XDimension Of Seats</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRAVEL_CLASS__SEAT_LENGTH = 5;
+	int TRAVEL_CLASS__XDIMENSION_OF_SEATS = 5;
 
 	/**
-	 * The feature id for the '<em><b>Seat Width</b></em>' attribute.
+	 * The feature id for the '<em><b>YDimension Of Seats</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRAVEL_CLASS__SEAT_WIDTH = 6;
+	int TRAVEL_CLASS__YDIMENSION_OF_SEATS = 6;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -416,13 +416,22 @@ public interface CabinPackage extends EPackage {
 	int TRAVEL_CLASS__ROW_STRUCTURE = 8;
 
 	/**
+	 * The feature id for the '<em><b>Load Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRAVEL_CLASS__LOAD_FACTOR = 9;
+
+	/**
 	 * The number of structural features of the '<em>Travel Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRAVEL_CLASS_FEATURE_COUNT = 9;
+	int TRAVEL_CLASS_FEATURE_COUNT = 10;
 
 	/**
 	 * The operation id for the '<em>Too Many Passengers</em>' operation.
@@ -507,22 +516,22 @@ public interface CabinPackage extends EPackage {
 	int BUSINESS_CLASS__SEAT_PITCH = TRAVEL_CLASS__SEAT_PITCH;
 
 	/**
-	 * The feature id for the '<em><b>Seat Length</b></em>' attribute.
+	 * The feature id for the '<em><b>XDimension Of Seats</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BUSINESS_CLASS__SEAT_LENGTH = TRAVEL_CLASS__SEAT_LENGTH;
+	int BUSINESS_CLASS__XDIMENSION_OF_SEATS = TRAVEL_CLASS__XDIMENSION_OF_SEATS;
 
 	/**
-	 * The feature id for the '<em><b>Seat Width</b></em>' attribute.
+	 * The feature id for the '<em><b>YDimension Of Seats</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BUSINESS_CLASS__SEAT_WIDTH = TRAVEL_CLASS__SEAT_WIDTH;
+	int BUSINESS_CLASS__YDIMENSION_OF_SEATS = TRAVEL_CLASS__YDIMENSION_OF_SEATS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -541,6 +550,15 @@ public interface CabinPackage extends EPackage {
 	 * @ordered
 	 */
 	int BUSINESS_CLASS__ROW_STRUCTURE = TRAVEL_CLASS__ROW_STRUCTURE;
+
+	/**
+	 * The feature id for the '<em><b>Load Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUSINESS_CLASS__LOAD_FACTOR = TRAVEL_CLASS__LOAD_FACTOR;
 
 	/**
 	 * The number of structural features of the '<em>Business Class</em>' class.
@@ -634,22 +652,22 @@ public interface CabinPackage extends EPackage {
 	int FIRST_CLASS__SEAT_PITCH = TRAVEL_CLASS__SEAT_PITCH;
 
 	/**
-	 * The feature id for the '<em><b>Seat Length</b></em>' attribute.
+	 * The feature id for the '<em><b>XDimension Of Seats</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FIRST_CLASS__SEAT_LENGTH = TRAVEL_CLASS__SEAT_LENGTH;
+	int FIRST_CLASS__XDIMENSION_OF_SEATS = TRAVEL_CLASS__XDIMENSION_OF_SEATS;
 
 	/**
-	 * The feature id for the '<em><b>Seat Width</b></em>' attribute.
+	 * The feature id for the '<em><b>YDimension Of Seats</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FIRST_CLASS__SEAT_WIDTH = TRAVEL_CLASS__SEAT_WIDTH;
+	int FIRST_CLASS__YDIMENSION_OF_SEATS = TRAVEL_CLASS__YDIMENSION_OF_SEATS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -668,6 +686,15 @@ public interface CabinPackage extends EPackage {
 	 * @ordered
 	 */
 	int FIRST_CLASS__ROW_STRUCTURE = TRAVEL_CLASS__ROW_STRUCTURE;
+
+	/**
+	 * The feature id for the '<em><b>Load Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIRST_CLASS__LOAD_FACTOR = TRAVEL_CLASS__LOAD_FACTOR;
 
 	/**
 	 * The number of structural features of the '<em>First Class</em>' class.
@@ -761,22 +788,22 @@ public interface CabinPackage extends EPackage {
 	int ECONOMY_CLASS__SEAT_PITCH = TRAVEL_CLASS__SEAT_PITCH;
 
 	/**
-	 * The feature id for the '<em><b>Seat Length</b></em>' attribute.
+	 * The feature id for the '<em><b>XDimension Of Seats</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECONOMY_CLASS__SEAT_LENGTH = TRAVEL_CLASS__SEAT_LENGTH;
+	int ECONOMY_CLASS__XDIMENSION_OF_SEATS = TRAVEL_CLASS__XDIMENSION_OF_SEATS;
 
 	/**
-	 * The feature id for the '<em><b>Seat Width</b></em>' attribute.
+	 * The feature id for the '<em><b>YDimension Of Seats</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECONOMY_CLASS__SEAT_WIDTH = TRAVEL_CLASS__SEAT_WIDTH;
+	int ECONOMY_CLASS__YDIMENSION_OF_SEATS = TRAVEL_CLASS__YDIMENSION_OF_SEATS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -795,6 +822,15 @@ public interface CabinPackage extends EPackage {
 	 * @ordered
 	 */
 	int ECONOMY_CLASS__ROW_STRUCTURE = TRAVEL_CLASS__ROW_STRUCTURE;
+
+	/**
+	 * The feature id for the '<em><b>Load Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECONOMY_CLASS__LOAD_FACTOR = TRAVEL_CLASS__LOAD_FACTOR;
 
 	/**
 	 * The number of structural features of the '<em>Economy Class</em>' class.
@@ -888,22 +924,22 @@ public interface CabinPackage extends EPackage {
 	int PREMIUM_ECONOMY_CLASS__SEAT_PITCH = TRAVEL_CLASS__SEAT_PITCH;
 
 	/**
-	 * The feature id for the '<em><b>Seat Length</b></em>' attribute.
+	 * The feature id for the '<em><b>XDimension Of Seats</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PREMIUM_ECONOMY_CLASS__SEAT_LENGTH = TRAVEL_CLASS__SEAT_LENGTH;
+	int PREMIUM_ECONOMY_CLASS__XDIMENSION_OF_SEATS = TRAVEL_CLASS__XDIMENSION_OF_SEATS;
 
 	/**
-	 * The feature id for the '<em><b>Seat Width</b></em>' attribute.
+	 * The feature id for the '<em><b>YDimension Of Seats</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PREMIUM_ECONOMY_CLASS__SEAT_WIDTH = TRAVEL_CLASS__SEAT_WIDTH;
+	int PREMIUM_ECONOMY_CLASS__YDIMENSION_OF_SEATS = TRAVEL_CLASS__YDIMENSION_OF_SEATS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -922,6 +958,15 @@ public interface CabinPackage extends EPackage {
 	 * @ordered
 	 */
 	int PREMIUM_ECONOMY_CLASS__ROW_STRUCTURE = TRAVEL_CLASS__ROW_STRUCTURE;
+
+	/**
+	 * The feature id for the '<em><b>Load Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PREMIUM_ECONOMY_CLASS__LOAD_FACTOR = TRAVEL_CLASS__LOAD_FACTOR;
 
 	/**
 	 * The number of structural features of the '<em>Premium Economy Class</em>' class.
@@ -1424,13 +1469,22 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER__LUGGAGE_STOW_TIME = 19;
 
 	/**
+	 * The feature id for the '<em><b>Luggage Stowing Distance</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__LUGGAGE_STOWING_DISTANCE = 20;
+
+	/**
 	 * The feature id for the '<em><b>Travel Class</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__TRAVEL_CLASS = 20;
+	int PASSENGER__TRAVEL_CLASS = 21;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Mood</b></em>' attribute.
@@ -1439,7 +1493,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__PASSENGER_MOOD = 21;
+	int PASSENGER__PASSENGER_MOOD = 22;
 
 	/**
 	 * The feature id for the '<em><b>Number Of Make Way Operations</b></em>' attribute.
@@ -1448,7 +1502,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS = 22;
+	int PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS = 23;
 
 	/**
 	 * The feature id for the '<em><b>Luggage</b></em>' attribute.
@@ -1457,7 +1511,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__LUGGAGE = 23;
+	int PASSENGER__LUGGAGE = 24;
 
 	/**
 	 * The number of structural features of the '<em>Passenger</em>' class.
@@ -1466,7 +1520,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_FEATURE_COUNT = 24;
+	int PASSENGER_FEATURE_COUNT = 25;
 
 	/**
 	 * The number of operations of the '<em>Passenger</em>' class.
@@ -2405,229 +2459,13 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT = 4;
 
 	/**
-	 * The feature id for the '<em><b>Passengers Boarding Per Minute</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = 5;
-
-	/**
-	 * The feature id for the '<em><b>Passenger Width Mean Male</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_MALE = 6;
-
-	/**
-	 * The feature id for the '<em><b>Passenger Width Deviation Male</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_MALE = 7;
-
-	/**
-	 * The feature id for the '<em><b>Passenger Weight Mean Male</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_MEAN_MALE = 8;
-
-	/**
-	 * The feature id for the '<em><b>Passenger Weight Deviation Male</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_MALE = 9;
-
-	/**
-	 * The feature id for the '<em><b>Passenger Height Mean Male</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_MEAN_MALE = 10;
-
-	/**
-	 * The feature id for the '<em><b>Passenger Height Deviation Male</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_MALE = 11;
-
-	/**
-	 * The feature id for the '<em><b>Passenger Depth Mean Male</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_MALE = 12;
-
-	/**
-	 * The feature id for the '<em><b>Passenger Depth Deviation Male</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_MALE = 13;
-
-	/**
-	 * The feature id for the '<em><b>Percentage Of Women</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__PERCENTAGE_OF_WOMEN = 14;
-
-	/**
-	 * The feature id for the '<em><b>Passenger Luggage Stow Time Mean</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_MEAN = 15;
-
-	/**
-	 * The feature id for the '<em><b>Passenger Luggage Stow Time Deviation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_DEVIATION = 16;
-
-	/**
-	 * The feature id for the '<em><b>Passenger Width Mean Female</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_FEMALE = 17;
-
-	/**
-	 * The feature id for the '<em><b>Passenger Width Deviation Female</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_FEMALE = 18;
-
-	/**
-	 * The feature id for the '<em><b>Passenger Weight Mean Female</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_MEAN_FEMALE = 19;
-
-	/**
-	 * The feature id for the '<em><b>Passenger Weight Deviation Female</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_FEMALE = 20;
-
-	/**
-	 * The feature id for the '<em><b>Passenger Height Mean Female</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_MEAN_FEMALE = 21;
-
-	/**
-	 * The feature id for the '<em><b>Passenger Height Deviation Female</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_FEMALE = 22;
-
-	/**
-	 * The feature id for the '<em><b>Passenger Depth Mean Female</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_FEMALE = 23;
-
-	/**
-	 * The feature id for the '<em><b>Passenger Depth Deviation Female</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE = 24;
-
-	/**
 	 * The feature id for the '<em><b>Results</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__RESULTS = 25;
-
-	/**
-	 * The feature id for the '<em><b>Percentage Of Passengers With No Luggage</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE = 26;
-
-	/**
-	 * The feature id for the '<em><b>Percentage Of Passengers With Small Luggage</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE = 27;
-
-	/**
-	 * The feature id for the '<em><b>Percentage Of Passengers With Medium Luggage</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE = 28;
-
-	/**
-	 * The feature id for the '<em><b>Percentage Of Passengers With Big Luggage</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE = 29;
+	int SIMULATION_PROPERTIES__RESULTS = 5;
 
 	/**
 	 * The feature id for the '<em><b>Sorting</b></em>' attribute.
@@ -2636,7 +2474,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SORTING = 30;
+	int SIMULATION_PROPERTIES__SORTING = 6;
 
 	/**
 	 * The feature id for the '<em><b>Simulation Speed Factor</b></em>' attribute.
@@ -2645,7 +2483,70 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR = 31;
+	int SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR = 7;
+
+	/**
+	 * The feature id for the '<em><b>Seat Interference Standing Up Passenger Waiting Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME = 8;
+
+	/**
+	 * The feature id for the '<em><b>Seat Interference Process Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME = 9;
+
+	/**
+	 * The feature id for the '<em><b>Thread Sleep Time Default</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT = 10;
+
+	/**
+	 * The feature id for the '<em><b>Developer Mode</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__DEVELOPER_MODE = 11;
+
+	/**
+	 * The feature id for the '<em><b>Luggage Properties</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES = 12;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Properties</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__PASSENGER_PROPERTIES = 13;
+
+	/**
+	 * The feature id for the '<em><b>Passengers Boarding Per Minute</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = 14;
 
 	/**
 	 * The number of structural features of the '<em>Simulation Properties</em>' class.
@@ -2654,7 +2555,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES_FEATURE_COUNT = 32;
+	int SIMULATION_PROPERTIES_FEATURE_COUNT = 15;
 
 	/**
 	 * The number of operations of the '<em>Simulation Properties</em>' class.
@@ -2666,6 +2567,142 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_PROPERTIES_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.impl.LuggagePropertiesImpl <em>Luggage Properties</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.paxelerate.model.impl.LuggagePropertiesImpl
+	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getLuggageProperties()
+	 * @generated
+	 */
+	int LUGGAGE_PROPERTIES = 21;
+
+	/**
+	 * The feature id for the '<em><b>Luggage Stowing Distance From Seat Mean</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN = 0;
+
+	/**
+	 * The feature id for the '<em><b>Luggage Stowing Distance From Seat Deviation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION = 1;
+
+	/**
+	 * The feature id for the '<em><b>Percentage Of Passengers With No Luggage</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Percentage Of Passengers With Small Luggage</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Percentage Of Passengers With Medium Luggage</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Percentage Of Passengers With Big Luggage</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Small Luggage Stow Time Mean</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LUGGAGE_PROPERTIES__PASSENGER_SMALL_LUGGAGE_STOW_TIME_MEAN = 6;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Small Luggage Stow Time Deviation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LUGGAGE_PROPERTIES__PASSENGER_SMALL_LUGGAGE_STOW_TIME_DEVIATION = 7;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Medium Luggage Stow Time Mean</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LUGGAGE_PROPERTIES__PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_MEAN = 8;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Medium Luggage Stow Time Deviation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LUGGAGE_PROPERTIES__PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_DEVIATION = 9;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Big Luggage Stow Time Mean</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LUGGAGE_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_MEAN = 10;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Big Luggage Stow Time Deviation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LUGGAGE_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_DEVIATION = 11;
+
+	/**
+	 * The number of structural features of the '<em>Luggage Properties</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LUGGAGE_PROPERTIES_FEATURE_COUNT = 12;
+
+	/**
+	 * The number of operations of the '<em>Luggage Properties</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LUGGAGE_PROPERTIES_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.impl.SimulationResultImpl <em>Simulation Result</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2673,7 +2710,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getSimulationResult()
 	 * @generated
 	 */
-	int SIMULATION_RESULT = 21;
+	int SIMULATION_RESULT = 22;
 
 	/**
 	 * The feature id for the '<em><b>Boarding Time</b></em>' attribute.
@@ -2748,6 +2785,187 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_RESULT_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl <em>Passenger Properties</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl
+	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getPassengerProperties()
+	 * @generated
+	 */
+	int PASSENGER_PROPERTIES = 23;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Width Mean Male</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__PASSENGER_WIDTH_MEAN_MALE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Width Deviation Male</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__PASSENGER_WIDTH_DEVIATION_MALE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Weight Mean Male</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__PASSENGER_WEIGHT_MEAN_MALE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Weight Deviation Male</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_MALE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Height Mean Male</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__PASSENGER_HEIGHT_MEAN_MALE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Height Deviation Male</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_MALE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Depth Mean Male</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__PASSENGER_DEPTH_MEAN_MALE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Depth Deviation Male</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__PASSENGER_DEPTH_DEVIATION_MALE = 7;
+
+	/**
+	 * The feature id for the '<em><b>Percentage Of Women</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__PERCENTAGE_OF_WOMEN = 8;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Width Mean Female</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__PASSENGER_WIDTH_MEAN_FEMALE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Width Deviation Female</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__PASSENGER_WIDTH_DEVIATION_FEMALE = 10;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Weight Mean Female</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__PASSENGER_WEIGHT_MEAN_FEMALE = 11;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Weight Deviation Female</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_FEMALE = 12;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Height Mean Female</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__PASSENGER_HEIGHT_MEAN_FEMALE = 13;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Height Deviation Female</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_FEMALE = 14;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Depth Mean Female</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__PASSENGER_DEPTH_MEAN_FEMALE = 15;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Depth Deviation Female</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE = 16;
+
+	/**
+	 * The number of structural features of the '<em>Passenger Properties</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES_FEATURE_COUNT = 17;
+
+	/**
+	 * The number of operations of the '<em>Passenger Properties</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.StairwayDirection <em>Stairway Direction</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2755,7 +2973,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getStairwayDirection()
 	 * @generated
 	 */
-	int STAIRWAY_DIRECTION = 23;
+	int STAIRWAY_DIRECTION = 25;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.AircraftType <em>Aircraft Type</em>}' enum.
@@ -2765,7 +2983,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getAircraftType()
 	 * @generated
 	 */
-	int AIRCRAFT_TYPE = 24;
+	int AIRCRAFT_TYPE = 26;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.PassengerMood <em>Passenger Mood</em>}' enum.
@@ -2775,7 +2993,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getPassengerMood()
 	 * @generated
 	 */
-	int PASSENGER_MOOD = 25;
+	int PASSENGER_MOOD = 27;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.LuggageSize <em>Luggage Size</em>}' enum.
@@ -2785,7 +3003,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getLuggageSize()
 	 * @generated
 	 */
-	int LUGGAGE_SIZE = 26;
+	int LUGGAGE_SIZE = 28;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.SortingStyle <em>Sorting Style</em>}' enum.
@@ -2795,7 +3013,27 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getSortingStyle()
 	 * @generated
 	 */
-	int SORTING_STYLE = 27;
+	int SORTING_STYLE = 29;
+
+	/**
+	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.TravelOption <em>Travel Option</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.paxelerate.model.TravelOption
+	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getTravelOption()
+	 * @generated
+	 */
+	int TRAVEL_OPTION = 30;
+
+	/**
+	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.ObjectOption <em>Object Option</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.paxelerate.model.ObjectOption
+	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getObjectOption()
+	 * @generated
+	 */
+	int OBJECT_OPTION = 31;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.Sex <em>Sex</em>}' enum.
@@ -2805,7 +3043,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getSex()
 	 * @generated
 	 */
-	int SEX = 22;
+	int SEX = 24;
 
 
 	/**
@@ -2819,26 +3057,26 @@ public interface CabinPackage extends EPackage {
 	EClass getCabin();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Cabin#getCabinLength <em>Cabin Length</em>}'.
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Cabin#getXDimension <em>XDimension</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Cabin Length</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.Cabin#getCabinLength()
+	 * @return the meta object for the attribute '<em>XDimension</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.Cabin#getXDimension()
 	 * @see #getCabin()
 	 * @generated
 	 */
-	EAttribute getCabin_CabinLength();
+	EAttribute getCabin_XDimension();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Cabin#getCabinWidth <em>Cabin Width</em>}'.
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Cabin#getYDimension <em>YDimension</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Cabin Width</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.Cabin#getCabinWidth()
+	 * @return the meta object for the attribute '<em>YDimension</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.Cabin#getYDimension()
 	 * @see #getCabin()
 	 * @generated
 	 */
-	EAttribute getCabin_CabinWidth();
+	EAttribute getCabin_YDimension();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link net.bhl.cdt.paxelerate.model.Cabin#getDoors <em>Doors</em>}'.
@@ -3136,26 +3374,26 @@ public interface CabinPackage extends EPackage {
 	EAttribute getTravelClass_SeatPitch();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.TravelClass#getSeatLength <em>Seat Length</em>}'.
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.TravelClass#getXDimensionOfSeats <em>XDimension Of Seats</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Seat Length</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.TravelClass#getSeatLength()
+	 * @return the meta object for the attribute '<em>XDimension Of Seats</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.TravelClass#getXDimensionOfSeats()
 	 * @see #getTravelClass()
 	 * @generated
 	 */
-	EAttribute getTravelClass_SeatLength();
+	EAttribute getTravelClass_XDimensionOfSeats();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.TravelClass#getSeatWidth <em>Seat Width</em>}'.
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.TravelClass#getYDimensionOfSeats <em>YDimension Of Seats</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Seat Width</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.TravelClass#getSeatWidth()
+	 * @return the meta object for the attribute '<em>YDimension Of Seats</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.TravelClass#getYDimensionOfSeats()
 	 * @see #getTravelClass()
 	 * @generated
 	 */
-	EAttribute getTravelClass_SeatWidth();
+	EAttribute getTravelClass_YDimensionOfSeats();
 
 	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.TravelClass#getName <em>Name</em>}'.
@@ -3178,6 +3416,17 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTravelClass_RowStructure();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.TravelClass#getLoadFactor <em>Load Factor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Load Factor</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.TravelClass#getLoadFactor()
+	 * @see #getTravelClass()
+	 * @generated
+	 */
+	EAttribute getTravelClass_LoadFactor();
 
 	/**
 	 * Returns the meta object for the '{@link net.bhl.cdt.paxelerate.model.TravelClass#tooManyPassengers(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Too Many Passengers</em>}' operation.
@@ -3611,6 +3860,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getPassenger_LuggageStowTime();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Passenger#getLuggageStowingDistance <em>Luggage Stowing Distance</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Luggage Stowing Distance</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.Passenger#getLuggageStowingDistance()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_LuggageStowingDistance();
+
+	/**
 	 * Returns the meta object for the reference '{@link net.bhl.cdt.paxelerate.model.Passenger#getTravelClass <em>Travel Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3909,226 +4169,6 @@ public interface CabinPackage extends EPackage {
 	EAttribute getSimulationProperties_BringYourOwnSeat();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Passengers Boarding Per Minute</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengersBoardingPerMinute()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_PassengersBoardingPerMinute();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerWidthMeanMale <em>Passenger Width Mean Male</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Passenger Width Mean Male</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerWidthMeanMale()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_PassengerWidthMeanMale();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerWidthDeviationMale <em>Passenger Width Deviation Male</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Passenger Width Deviation Male</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerWidthDeviationMale()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_PassengerWidthDeviationMale();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerWeightMeanMale <em>Passenger Weight Mean Male</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Passenger Weight Mean Male</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerWeightMeanMale()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_PassengerWeightMeanMale();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerWeightDeviationMale <em>Passenger Weight Deviation Male</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Passenger Weight Deviation Male</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerWeightDeviationMale()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_PassengerWeightDeviationMale();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerHeightMeanMale <em>Passenger Height Mean Male</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Passenger Height Mean Male</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerHeightMeanMale()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_PassengerHeightMeanMale();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerHeightDeviationMale <em>Passenger Height Deviation Male</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Passenger Height Deviation Male</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerHeightDeviationMale()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_PassengerHeightDeviationMale();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerDepthMeanMale <em>Passenger Depth Mean Male</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Passenger Depth Mean Male</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerDepthMeanMale()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_PassengerDepthMeanMale();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerDepthDeviationMale <em>Passenger Depth Deviation Male</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Passenger Depth Deviation Male</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerDepthDeviationMale()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_PassengerDepthDeviationMale();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPercentageOfWomen <em>Percentage Of Women</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Percentage Of Women</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPercentageOfWomen()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_PercentageOfWomen();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerLuggageStowTimeMean <em>Passenger Luggage Stow Time Mean</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Passenger Luggage Stow Time Mean</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerLuggageStowTimeMean()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_PassengerLuggageStowTimeMean();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerLuggageStowTimeDeviation <em>Passenger Luggage Stow Time Deviation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Passenger Luggage Stow Time Deviation</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerLuggageStowTimeDeviation()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_PassengerLuggageStowTimeDeviation();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerWidthMeanFemale <em>Passenger Width Mean Female</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Passenger Width Mean Female</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerWidthMeanFemale()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_PassengerWidthMeanFemale();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerWidthDeviationFemale <em>Passenger Width Deviation Female</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Passenger Width Deviation Female</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerWidthDeviationFemale()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_PassengerWidthDeviationFemale();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerWeightMeanFemale <em>Passenger Weight Mean Female</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Passenger Weight Mean Female</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerWeightMeanFemale()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_PassengerWeightMeanFemale();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerWeightDeviationFemale <em>Passenger Weight Deviation Female</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Passenger Weight Deviation Female</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerWeightDeviationFemale()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_PassengerWeightDeviationFemale();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerHeightMeanFemale <em>Passenger Height Mean Female</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Passenger Height Mean Female</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerHeightMeanFemale()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_PassengerHeightMeanFemale();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerHeightDeviationFemale <em>Passenger Height Deviation Female</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Passenger Height Deviation Female</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerHeightDeviationFemale()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_PassengerHeightDeviationFemale();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerDepthMeanFemale <em>Passenger Depth Mean Female</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Passenger Depth Mean Female</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerDepthMeanFemale()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_PassengerDepthMeanFemale();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerDepthDeviationFemale <em>Passenger Depth Deviation Female</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Passenger Depth Deviation Female</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerDepthDeviationFemale()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_PassengerDepthDeviationFemale();
-
-	/**
 	 * Returns the meta object for the reference list '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getResults <em>Results</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4138,50 +4178,6 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSimulationProperties_Results();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPercentageOfPassengersWithNoLuggage <em>Percentage Of Passengers With No Luggage</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Percentage Of Passengers With No Luggage</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPercentageOfPassengersWithNoLuggage()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_PercentageOfPassengersWithNoLuggage();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPercentageOfPassengersWithSmallLuggage <em>Percentage Of Passengers With Small Luggage</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Percentage Of Passengers With Small Luggage</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPercentageOfPassengersWithSmallLuggage()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_PercentageOfPassengersWithSmallLuggage();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPercentageOfPassengersWithMediumLuggage <em>Percentage Of Passengers With Medium Luggage</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Percentage Of Passengers With Medium Luggage</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPercentageOfPassengersWithMediumLuggage()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_PercentageOfPassengersWithMediumLuggage();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPercentageOfPassengersWithBigLuggage <em>Percentage Of Passengers With Big Luggage</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Percentage Of Passengers With Big Luggage</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPercentageOfPassengersWithBigLuggage()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_PercentageOfPassengersWithBigLuggage();
 
 	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSorting <em>Sorting</em>}'.
@@ -4204,6 +4200,225 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSimulationProperties_SimulationSpeedFactor();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceStandingUpPassengerWaitingTime <em>Seat Interference Standing Up Passenger Waiting Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seat Interference Standing Up Passenger Waiting Time</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceStandingUpPassengerWaitingTime()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_SeatInterferenceStandingUpPassengerWaitingTime();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTime <em>Seat Interference Process Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seat Interference Process Time</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTime()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_SeatInterferenceProcessTime();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getThreadSleepTimeDefault <em>Thread Sleep Time Default</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Thread Sleep Time Default</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getThreadSleepTimeDefault()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_ThreadSleepTimeDefault();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDeveloperMode <em>Developer Mode</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Developer Mode</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#isDeveloperMode()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_DeveloperMode();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageProperties <em>Luggage Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Luggage Properties</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageProperties()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EReference getSimulationProperties_LuggageProperties();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerProperties <em>Passenger Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Passenger Properties</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerProperties()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EReference getSimulationProperties_PassengerProperties();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passengers Boarding Per Minute</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengersBoardingPerMinute()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PassengersBoardingPerMinute();
+
+	/**
+	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.LuggageProperties <em>Luggage Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Luggage Properties</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.LuggageProperties
+	 * @generated
+	 */
+	EClass getLuggageProperties();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.LuggageProperties#getLuggageStowingDistanceFromSeatMean <em>Luggage Stowing Distance From Seat Mean</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Luggage Stowing Distance From Seat Mean</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.LuggageProperties#getLuggageStowingDistanceFromSeatMean()
+	 * @see #getLuggageProperties()
+	 * @generated
+	 */
+	EAttribute getLuggageProperties_LuggageStowingDistanceFromSeatMean();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.LuggageProperties#getLuggageStowingDistanceFromSeatDeviation <em>Luggage Stowing Distance From Seat Deviation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Luggage Stowing Distance From Seat Deviation</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.LuggageProperties#getLuggageStowingDistanceFromSeatDeviation()
+	 * @see #getLuggageProperties()
+	 * @generated
+	 */
+	EAttribute getLuggageProperties_LuggageStowingDistanceFromSeatDeviation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.LuggageProperties#getPercentageOfPassengersWithNoLuggage <em>Percentage Of Passengers With No Luggage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Percentage Of Passengers With No Luggage</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.LuggageProperties#getPercentageOfPassengersWithNoLuggage()
+	 * @see #getLuggageProperties()
+	 * @generated
+	 */
+	EAttribute getLuggageProperties_PercentageOfPassengersWithNoLuggage();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.LuggageProperties#getPercentageOfPassengersWithSmallLuggage <em>Percentage Of Passengers With Small Luggage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Percentage Of Passengers With Small Luggage</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.LuggageProperties#getPercentageOfPassengersWithSmallLuggage()
+	 * @see #getLuggageProperties()
+	 * @generated
+	 */
+	EAttribute getLuggageProperties_PercentageOfPassengersWithSmallLuggage();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.LuggageProperties#getPercentageOfPassengersWithMediumLuggage <em>Percentage Of Passengers With Medium Luggage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Percentage Of Passengers With Medium Luggage</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.LuggageProperties#getPercentageOfPassengersWithMediumLuggage()
+	 * @see #getLuggageProperties()
+	 * @generated
+	 */
+	EAttribute getLuggageProperties_PercentageOfPassengersWithMediumLuggage();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.LuggageProperties#getPercentageOfPassengersWithBigLuggage <em>Percentage Of Passengers With Big Luggage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Percentage Of Passengers With Big Luggage</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.LuggageProperties#getPercentageOfPassengersWithBigLuggage()
+	 * @see #getLuggageProperties()
+	 * @generated
+	 */
+	EAttribute getLuggageProperties_PercentageOfPassengersWithBigLuggage();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.LuggageProperties#getPassengerSmallLuggageStowTimeMean <em>Passenger Small Luggage Stow Time Mean</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Small Luggage Stow Time Mean</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.LuggageProperties#getPassengerSmallLuggageStowTimeMean()
+	 * @see #getLuggageProperties()
+	 * @generated
+	 */
+	EAttribute getLuggageProperties_PassengerSmallLuggageStowTimeMean();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.LuggageProperties#getPassengerSmallLuggageStowTimeDeviation <em>Passenger Small Luggage Stow Time Deviation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Small Luggage Stow Time Deviation</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.LuggageProperties#getPassengerSmallLuggageStowTimeDeviation()
+	 * @see #getLuggageProperties()
+	 * @generated
+	 */
+	EAttribute getLuggageProperties_PassengerSmallLuggageStowTimeDeviation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.LuggageProperties#getPassengerMediumLuggageStowTimeMean <em>Passenger Medium Luggage Stow Time Mean</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Medium Luggage Stow Time Mean</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.LuggageProperties#getPassengerMediumLuggageStowTimeMean()
+	 * @see #getLuggageProperties()
+	 * @generated
+	 */
+	EAttribute getLuggageProperties_PassengerMediumLuggageStowTimeMean();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.LuggageProperties#getPassengerMediumLuggageStowTimeDeviation <em>Passenger Medium Luggage Stow Time Deviation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Medium Luggage Stow Time Deviation</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.LuggageProperties#getPassengerMediumLuggageStowTimeDeviation()
+	 * @see #getLuggageProperties()
+	 * @generated
+	 */
+	EAttribute getLuggageProperties_PassengerMediumLuggageStowTimeDeviation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.LuggageProperties#getPassengerBigLuggageStowTimeMean <em>Passenger Big Luggage Stow Time Mean</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Big Luggage Stow Time Mean</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.LuggageProperties#getPassengerBigLuggageStowTimeMean()
+	 * @see #getLuggageProperties()
+	 * @generated
+	 */
+	EAttribute getLuggageProperties_PassengerBigLuggageStowTimeMean();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.LuggageProperties#getPassengerBigLuggageStowTimeDeviation <em>Passenger Big Luggage Stow Time Deviation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Big Luggage Stow Time Deviation</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.LuggageProperties#getPassengerBigLuggageStowTimeDeviation()
+	 * @see #getLuggageProperties()
+	 * @generated
+	 */
+	EAttribute getLuggageProperties_PassengerBigLuggageStowTimeDeviation();
 
 	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.SimulationResult <em>Simulation Result</em>}'.
@@ -4280,6 +4495,203 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSimulationResult_BoardingTimeString();
+
+	/**
+	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.PassengerProperties <em>Passenger Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Passenger Properties</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties
+	 * @generated
+	 */
+	EClass getPassengerProperties();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerWidthMeanMale <em>Passenger Width Mean Male</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Width Mean Male</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerWidthMeanMale()
+	 * @see #getPassengerProperties()
+	 * @generated
+	 */
+	EAttribute getPassengerProperties_PassengerWidthMeanMale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerWidthDeviationMale <em>Passenger Width Deviation Male</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Width Deviation Male</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerWidthDeviationMale()
+	 * @see #getPassengerProperties()
+	 * @generated
+	 */
+	EAttribute getPassengerProperties_PassengerWidthDeviationMale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerWeightMeanMale <em>Passenger Weight Mean Male</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Weight Mean Male</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerWeightMeanMale()
+	 * @see #getPassengerProperties()
+	 * @generated
+	 */
+	EAttribute getPassengerProperties_PassengerWeightMeanMale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerWeightDeviationMale <em>Passenger Weight Deviation Male</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Weight Deviation Male</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerWeightDeviationMale()
+	 * @see #getPassengerProperties()
+	 * @generated
+	 */
+	EAttribute getPassengerProperties_PassengerWeightDeviationMale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerHeightMeanMale <em>Passenger Height Mean Male</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Height Mean Male</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerHeightMeanMale()
+	 * @see #getPassengerProperties()
+	 * @generated
+	 */
+	EAttribute getPassengerProperties_PassengerHeightMeanMale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerHeightDeviationMale <em>Passenger Height Deviation Male</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Height Deviation Male</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerHeightDeviationMale()
+	 * @see #getPassengerProperties()
+	 * @generated
+	 */
+	EAttribute getPassengerProperties_PassengerHeightDeviationMale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerDepthMeanMale <em>Passenger Depth Mean Male</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Depth Mean Male</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerDepthMeanMale()
+	 * @see #getPassengerProperties()
+	 * @generated
+	 */
+	EAttribute getPassengerProperties_PassengerDepthMeanMale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerDepthDeviationMale <em>Passenger Depth Deviation Male</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Depth Deviation Male</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerDepthDeviationMale()
+	 * @see #getPassengerProperties()
+	 * @generated
+	 */
+	EAttribute getPassengerProperties_PassengerDepthDeviationMale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPercentageOfWomen <em>Percentage Of Women</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Percentage Of Women</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties#getPercentageOfWomen()
+	 * @see #getPassengerProperties()
+	 * @generated
+	 */
+	EAttribute getPassengerProperties_PercentageOfWomen();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerWidthMeanFemale <em>Passenger Width Mean Female</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Width Mean Female</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerWidthMeanFemale()
+	 * @see #getPassengerProperties()
+	 * @generated
+	 */
+	EAttribute getPassengerProperties_PassengerWidthMeanFemale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerWidthDeviationFemale <em>Passenger Width Deviation Female</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Width Deviation Female</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerWidthDeviationFemale()
+	 * @see #getPassengerProperties()
+	 * @generated
+	 */
+	EAttribute getPassengerProperties_PassengerWidthDeviationFemale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerWeightMeanFemale <em>Passenger Weight Mean Female</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Weight Mean Female</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerWeightMeanFemale()
+	 * @see #getPassengerProperties()
+	 * @generated
+	 */
+	EAttribute getPassengerProperties_PassengerWeightMeanFemale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerWeightDeviationFemale <em>Passenger Weight Deviation Female</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Weight Deviation Female</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerWeightDeviationFemale()
+	 * @see #getPassengerProperties()
+	 * @generated
+	 */
+	EAttribute getPassengerProperties_PassengerWeightDeviationFemale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerHeightMeanFemale <em>Passenger Height Mean Female</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Height Mean Female</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerHeightMeanFemale()
+	 * @see #getPassengerProperties()
+	 * @generated
+	 */
+	EAttribute getPassengerProperties_PassengerHeightMeanFemale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerHeightDeviationFemale <em>Passenger Height Deviation Female</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Height Deviation Female</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerHeightDeviationFemale()
+	 * @see #getPassengerProperties()
+	 * @generated
+	 */
+	EAttribute getPassengerProperties_PassengerHeightDeviationFemale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerDepthMeanFemale <em>Passenger Depth Mean Female</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Depth Mean Female</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerDepthMeanFemale()
+	 * @see #getPassengerProperties()
+	 * @generated
+	 */
+	EAttribute getPassengerProperties_PassengerDepthMeanFemale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerDepthDeviationFemale <em>Passenger Depth Deviation Female</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Depth Deviation Female</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerDepthDeviationFemale()
+	 * @see #getPassengerProperties()
+	 * @generated
+	 */
+	EAttribute getPassengerProperties_PassengerDepthDeviationFemale();
 
 	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.PhysicalObject <em>Physical Object</em>}'.
@@ -4418,6 +4830,26 @@ public interface CabinPackage extends EPackage {
 	EEnum getSortingStyle();
 
 	/**
+	 * Returns the meta object for enum '{@link net.bhl.cdt.paxelerate.model.TravelOption <em>Travel Option</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Travel Option</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.TravelOption
+	 * @generated
+	 */
+	EEnum getTravelOption();
+
+	/**
+	 * Returns the meta object for enum '{@link net.bhl.cdt.paxelerate.model.ObjectOption <em>Object Option</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Object Option</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.ObjectOption
+	 * @generated
+	 */
+	EEnum getObjectOption();
+
+	/**
 	 * Returns the meta object for enum '{@link net.bhl.cdt.paxelerate.model.Sex <em>Sex</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4460,19 +4892,19 @@ public interface CabinPackage extends EPackage {
 		 */
 		EClass CABIN = eINSTANCE.getCabin();
 		/**
-		 * The meta object literal for the '<em><b>Cabin Length</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>XDimension</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CABIN__CABIN_LENGTH = eINSTANCE.getCabin_CabinLength();
+		EAttribute CABIN__XDIMENSION = eINSTANCE.getCabin_XDimension();
 		/**
-		 * The meta object literal for the '<em><b>Cabin Width</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>YDimension</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CABIN__CABIN_WIDTH = eINSTANCE.getCabin_CabinWidth();
+		EAttribute CABIN__YDIMENSION = eINSTANCE.getCabin_YDimension();
 		/**
 		 * The meta object literal for the '<em><b>Doors</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
@@ -4667,19 +5099,19 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute TRAVEL_CLASS__SEAT_PITCH = eINSTANCE.getTravelClass_SeatPitch();
 		/**
-		 * The meta object literal for the '<em><b>Seat Length</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>XDimension Of Seats</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TRAVEL_CLASS__SEAT_LENGTH = eINSTANCE.getTravelClass_SeatLength();
+		EAttribute TRAVEL_CLASS__XDIMENSION_OF_SEATS = eINSTANCE.getTravelClass_XDimensionOfSeats();
 		/**
-		 * The meta object literal for the '<em><b>Seat Width</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>YDimension Of Seats</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TRAVEL_CLASS__SEAT_WIDTH = eINSTANCE.getTravelClass_SeatWidth();
+		EAttribute TRAVEL_CLASS__YDIMENSION_OF_SEATS = eINSTANCE.getTravelClass_YDimensionOfSeats();
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -4694,6 +5126,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TRAVEL_CLASS__ROW_STRUCTURE = eINSTANCE.getTravelClass_RowStructure();
+		/**
+		 * The meta object literal for the '<em><b>Load Factor</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRAVEL_CLASS__LOAD_FACTOR = eINSTANCE.getTravelClass_LoadFactor();
 		/**
 		 * The meta object literal for the '<em><b>Too Many Passengers</b></em>' operation.
 		 * <!-- begin-user-doc -->
@@ -4989,6 +5428,13 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute PASSENGER__LUGGAGE_STOW_TIME = eINSTANCE.getPassenger_LuggageStowTime();
 		/**
+		 * The meta object literal for the '<em><b>Luggage Stowing Distance</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__LUGGAGE_STOWING_DISTANCE = eINSTANCE.getPassenger_LuggageStowingDistance();
+		/**
 		 * The meta object literal for the '<em><b>Travel Class</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5205,180 +5651,12 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT = eINSTANCE.getSimulationProperties_BringYourOwnSeat();
 		/**
-		 * The meta object literal for the '<em><b>Passengers Boarding Per Minute</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = eINSTANCE.getSimulationProperties_PassengersBoardingPerMinute();
-		/**
-		 * The meta object literal for the '<em><b>Passenger Width Mean Male</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_MALE = eINSTANCE.getSimulationProperties_PassengerWidthMeanMale();
-		/**
-		 * The meta object literal for the '<em><b>Passenger Width Deviation Male</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_MALE = eINSTANCE.getSimulationProperties_PassengerWidthDeviationMale();
-		/**
-		 * The meta object literal for the '<em><b>Passenger Weight Mean Male</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__PASSENGER_WEIGHT_MEAN_MALE = eINSTANCE.getSimulationProperties_PassengerWeightMeanMale();
-		/**
-		 * The meta object literal for the '<em><b>Passenger Weight Deviation Male</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_MALE = eINSTANCE.getSimulationProperties_PassengerWeightDeviationMale();
-		/**
-		 * The meta object literal for the '<em><b>Passenger Height Mean Male</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__PASSENGER_HEIGHT_MEAN_MALE = eINSTANCE.getSimulationProperties_PassengerHeightMeanMale();
-		/**
-		 * The meta object literal for the '<em><b>Passenger Height Deviation Male</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_MALE = eINSTANCE.getSimulationProperties_PassengerHeightDeviationMale();
-		/**
-		 * The meta object literal for the '<em><b>Passenger Depth Mean Male</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_MALE = eINSTANCE.getSimulationProperties_PassengerDepthMeanMale();
-		/**
-		 * The meta object literal for the '<em><b>Passenger Depth Deviation Male</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_MALE = eINSTANCE.getSimulationProperties_PassengerDepthDeviationMale();
-		/**
-		 * The meta object literal for the '<em><b>Percentage Of Women</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__PERCENTAGE_OF_WOMEN = eINSTANCE.getSimulationProperties_PercentageOfWomen();
-		/**
-		 * The meta object literal for the '<em><b>Passenger Luggage Stow Time Mean</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_MEAN = eINSTANCE.getSimulationProperties_PassengerLuggageStowTimeMean();
-		/**
-		 * The meta object literal for the '<em><b>Passenger Luggage Stow Time Deviation</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__PASSENGER_LUGGAGE_STOW_TIME_DEVIATION = eINSTANCE.getSimulationProperties_PassengerLuggageStowTimeDeviation();
-		/**
-		 * The meta object literal for the '<em><b>Passenger Width Mean Female</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__PASSENGER_WIDTH_MEAN_FEMALE = eINSTANCE.getSimulationProperties_PassengerWidthMeanFemale();
-		/**
-		 * The meta object literal for the '<em><b>Passenger Width Deviation Female</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__PASSENGER_WIDTH_DEVIATION_FEMALE = eINSTANCE.getSimulationProperties_PassengerWidthDeviationFemale();
-		/**
-		 * The meta object literal for the '<em><b>Passenger Weight Mean Female</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__PASSENGER_WEIGHT_MEAN_FEMALE = eINSTANCE.getSimulationProperties_PassengerWeightMeanFemale();
-		/**
-		 * The meta object literal for the '<em><b>Passenger Weight Deviation Female</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_FEMALE = eINSTANCE.getSimulationProperties_PassengerWeightDeviationFemale();
-		/**
-		 * The meta object literal for the '<em><b>Passenger Height Mean Female</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__PASSENGER_HEIGHT_MEAN_FEMALE = eINSTANCE.getSimulationProperties_PassengerHeightMeanFemale();
-		/**
-		 * The meta object literal for the '<em><b>Passenger Height Deviation Female</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_FEMALE = eINSTANCE.getSimulationProperties_PassengerHeightDeviationFemale();
-		/**
-		 * The meta object literal for the '<em><b>Passenger Depth Mean Female</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__PASSENGER_DEPTH_MEAN_FEMALE = eINSTANCE.getSimulationProperties_PassengerDepthMeanFemale();
-		/**
-		 * The meta object literal for the '<em><b>Passenger Depth Deviation Female</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE = eINSTANCE.getSimulationProperties_PassengerDepthDeviationFemale();
-		/**
 		 * The meta object literal for the '<em><b>Results</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference SIMULATION_PROPERTIES__RESULTS = eINSTANCE.getSimulationProperties_Results();
-		/**
-		 * The meta object literal for the '<em><b>Percentage Of Passengers With No Luggage</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE = eINSTANCE.getSimulationProperties_PercentageOfPassengersWithNoLuggage();
-		/**
-		 * The meta object literal for the '<em><b>Percentage Of Passengers With Small Luggage</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE = eINSTANCE.getSimulationProperties_PercentageOfPassengersWithSmallLuggage();
-		/**
-		 * The meta object literal for the '<em><b>Percentage Of Passengers With Medium Luggage</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE = eINSTANCE.getSimulationProperties_PercentageOfPassengersWithMediumLuggage();
-		/**
-		 * The meta object literal for the '<em><b>Percentage Of Passengers With Big Luggage</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE = eINSTANCE.getSimulationProperties_PercentageOfPassengersWithBigLuggage();
 		/**
 		 * The meta object literal for the '<em><b>Sorting</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -5393,6 +5671,148 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR = eINSTANCE.getSimulationProperties_SimulationSpeedFactor();
+		/**
+		 * The meta object literal for the '<em><b>Seat Interference Standing Up Passenger Waiting Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME = eINSTANCE.getSimulationProperties_SeatInterferenceStandingUpPassengerWaitingTime();
+		/**
+		 * The meta object literal for the '<em><b>Seat Interference Process Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME = eINSTANCE.getSimulationProperties_SeatInterferenceProcessTime();
+		/**
+		 * The meta object literal for the '<em><b>Thread Sleep Time Default</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT = eINSTANCE.getSimulationProperties_ThreadSleepTimeDefault();
+		/**
+		 * The meta object literal for the '<em><b>Developer Mode</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__DEVELOPER_MODE = eINSTANCE.getSimulationProperties_DeveloperMode();
+		/**
+		 * The meta object literal for the '<em><b>Luggage Properties</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES = eINSTANCE.getSimulationProperties_LuggageProperties();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Properties</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SIMULATION_PROPERTIES__PASSENGER_PROPERTIES = eINSTANCE.getSimulationProperties_PassengerProperties();
+		/**
+		 * The meta object literal for the '<em><b>Passengers Boarding Per Minute</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = eINSTANCE.getSimulationProperties_PassengersBoardingPerMinute();
+		/**
+		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.LuggagePropertiesImpl <em>Luggage Properties</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.bhl.cdt.paxelerate.model.impl.LuggagePropertiesImpl
+		 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getLuggageProperties()
+		 * @generated
+		 */
+		EClass LUGGAGE_PROPERTIES = eINSTANCE.getLuggageProperties();
+		/**
+		 * The meta object literal for the '<em><b>Luggage Stowing Distance From Seat Mean</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN = eINSTANCE.getLuggageProperties_LuggageStowingDistanceFromSeatMean();
+		/**
+		 * The meta object literal for the '<em><b>Luggage Stowing Distance From Seat Deviation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION = eINSTANCE.getLuggageProperties_LuggageStowingDistanceFromSeatDeviation();
+		/**
+		 * The meta object literal for the '<em><b>Percentage Of Passengers With No Luggage</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE = eINSTANCE.getLuggageProperties_PercentageOfPassengersWithNoLuggage();
+		/**
+		 * The meta object literal for the '<em><b>Percentage Of Passengers With Small Luggage</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE = eINSTANCE.getLuggageProperties_PercentageOfPassengersWithSmallLuggage();
+		/**
+		 * The meta object literal for the '<em><b>Percentage Of Passengers With Medium Luggage</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE = eINSTANCE.getLuggageProperties_PercentageOfPassengersWithMediumLuggage();
+		/**
+		 * The meta object literal for the '<em><b>Percentage Of Passengers With Big Luggage</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_BIG_LUGGAGE = eINSTANCE.getLuggageProperties_PercentageOfPassengersWithBigLuggage();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Small Luggage Stow Time Mean</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LUGGAGE_PROPERTIES__PASSENGER_SMALL_LUGGAGE_STOW_TIME_MEAN = eINSTANCE.getLuggageProperties_PassengerSmallLuggageStowTimeMean();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Small Luggage Stow Time Deviation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LUGGAGE_PROPERTIES__PASSENGER_SMALL_LUGGAGE_STOW_TIME_DEVIATION = eINSTANCE.getLuggageProperties_PassengerSmallLuggageStowTimeDeviation();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Medium Luggage Stow Time Mean</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LUGGAGE_PROPERTIES__PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_MEAN = eINSTANCE.getLuggageProperties_PassengerMediumLuggageStowTimeMean();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Medium Luggage Stow Time Deviation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LUGGAGE_PROPERTIES__PASSENGER_MEDIUM_LUGGAGE_STOW_TIME_DEVIATION = eINSTANCE.getLuggageProperties_PassengerMediumLuggageStowTimeDeviation();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Big Luggage Stow Time Mean</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LUGGAGE_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_MEAN = eINSTANCE.getLuggageProperties_PassengerBigLuggageStowTimeMean();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Big Luggage Stow Time Deviation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LUGGAGE_PROPERTIES__PASSENGER_BIG_LUGGAGE_STOW_TIME_DEVIATION = eINSTANCE.getLuggageProperties_PassengerBigLuggageStowTimeDeviation();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.SimulationResultImpl <em>Simulation Result</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -5444,6 +5864,134 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SIMULATION_RESULT__BOARDING_TIME_STRING = eINSTANCE.getSimulationResult_BoardingTimeString();
+		/**
+		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl <em>Passenger Properties</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl
+		 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getPassengerProperties()
+		 * @generated
+		 */
+		EClass PASSENGER_PROPERTIES = eINSTANCE.getPassengerProperties();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Width Mean Male</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_PROPERTIES__PASSENGER_WIDTH_MEAN_MALE = eINSTANCE.getPassengerProperties_PassengerWidthMeanMale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Width Deviation Male</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_PROPERTIES__PASSENGER_WIDTH_DEVIATION_MALE = eINSTANCE.getPassengerProperties_PassengerWidthDeviationMale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Weight Mean Male</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_PROPERTIES__PASSENGER_WEIGHT_MEAN_MALE = eINSTANCE.getPassengerProperties_PassengerWeightMeanMale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Weight Deviation Male</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_MALE = eINSTANCE.getPassengerProperties_PassengerWeightDeviationMale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Height Mean Male</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_PROPERTIES__PASSENGER_HEIGHT_MEAN_MALE = eINSTANCE.getPassengerProperties_PassengerHeightMeanMale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Height Deviation Male</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_MALE = eINSTANCE.getPassengerProperties_PassengerHeightDeviationMale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Depth Mean Male</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_PROPERTIES__PASSENGER_DEPTH_MEAN_MALE = eINSTANCE.getPassengerProperties_PassengerDepthMeanMale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Depth Deviation Male</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_PROPERTIES__PASSENGER_DEPTH_DEVIATION_MALE = eINSTANCE.getPassengerProperties_PassengerDepthDeviationMale();
+		/**
+		 * The meta object literal for the '<em><b>Percentage Of Women</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_PROPERTIES__PERCENTAGE_OF_WOMEN = eINSTANCE.getPassengerProperties_PercentageOfWomen();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Width Mean Female</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_PROPERTIES__PASSENGER_WIDTH_MEAN_FEMALE = eINSTANCE.getPassengerProperties_PassengerWidthMeanFemale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Width Deviation Female</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_PROPERTIES__PASSENGER_WIDTH_DEVIATION_FEMALE = eINSTANCE.getPassengerProperties_PassengerWidthDeviationFemale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Weight Mean Female</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_PROPERTIES__PASSENGER_WEIGHT_MEAN_FEMALE = eINSTANCE.getPassengerProperties_PassengerWeightMeanFemale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Weight Deviation Female</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_PROPERTIES__PASSENGER_WEIGHT_DEVIATION_FEMALE = eINSTANCE.getPassengerProperties_PassengerWeightDeviationFemale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Height Mean Female</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_PROPERTIES__PASSENGER_HEIGHT_MEAN_FEMALE = eINSTANCE.getPassengerProperties_PassengerHeightMeanFemale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Height Deviation Female</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_FEMALE = eINSTANCE.getPassengerProperties_PassengerHeightDeviationFemale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Depth Mean Female</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_PROPERTIES__PASSENGER_DEPTH_MEAN_FEMALE = eINSTANCE.getPassengerProperties_PassengerDepthMeanFemale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Depth Deviation Female</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE = eINSTANCE.getPassengerProperties_PassengerDepthDeviationFemale();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.PhysicalObjectImpl <em>Physical Object</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -5547,6 +6095,24 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum SORTING_STYLE = eINSTANCE.getSortingStyle();
+		/**
+		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.TravelOption <em>Travel Option</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.bhl.cdt.paxelerate.model.TravelOption
+		 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getTravelOption()
+		 * @generated
+		 */
+		EEnum TRAVEL_OPTION = eINSTANCE.getTravelOption();
+		/**
+		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.ObjectOption <em>Object Option</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.bhl.cdt.paxelerate.model.ObjectOption
+		 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getObjectOption()
+		 * @generated
+		 */
+		EEnum OBJECT_OPTION = eINSTANCE.getObjectOption();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.Sex <em>Sex</em>}' enum.
 		 * <!-- begin-user-doc -->

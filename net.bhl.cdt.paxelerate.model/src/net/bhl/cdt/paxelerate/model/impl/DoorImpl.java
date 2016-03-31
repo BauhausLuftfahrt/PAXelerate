@@ -34,7 +34,7 @@ import net.bhl.cdt.paxelerate.model.Passenger;
  *
  * @generated
  */
-public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
+public abstract class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	/**
 	 * The default value of the '{@link #getXPosition() <em>XPosition</em>}' attribute.
 	 * <!-- begin-user-doc -->

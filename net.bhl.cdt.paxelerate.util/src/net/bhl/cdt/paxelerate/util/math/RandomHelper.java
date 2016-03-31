@@ -1,3 +1,8 @@
+/*******************************************************************************
+ * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
+ ******************************************************************************/
 package net.bhl.cdt.paxelerate.util.math;
 
 import java.util.ArrayList;
@@ -16,6 +21,7 @@ public class RandomHelper {
 	 *            itself is never reached!</i></b>
 	 * @return returns a random value
 	 */
+	@Deprecated
 	public static int uniqueRandom(ArrayList<Integer> list, int lowerBound, int range) {
 		boolean checkUniqueness = false;
 		Random rand = new Random();

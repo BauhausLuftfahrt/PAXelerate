@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2014-2015 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ***************************************************************************************/
@@ -7,9 +7,6 @@ package net.bhl.cdt.paxelerate.model.astar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -23,7 +20,6 @@ import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.time.StopWatch;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
-import net.bhl.cdt.paxelerate.util.toOpenCDT.OS;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.ProgressHandler;
 
 /**
@@ -64,11 +60,10 @@ public class SimulationHandler {
 	 * @param cabin
 	 *            is the cabin
 	 */
-	public SimulationHandler(ObstacleMap obstaclemap, Vector dimensions,
-			Cabin cabin) {
+	public SimulationHandler(Vector dimensions, Cabin cabin) {
 		this.dimensions = dimensions;
 		Log.add(this, "Cabin initializing...");
-		areamap = new AreaMap(this.dimensions, obstaclemap);
+		areamap = new AreaMap(this.dimensions, cabin);
 		SimulationHandler.cabin = cabin;
 		run();
 	}
@@ -204,9 +199,9 @@ public class SimulationHandler {
 
 		int offset = 5;
 
-		Vector start = new Vector2D(AStarHelper.scaleValue((seat.getYPosition() + seat
-				.getYDimension() / 2)),
-				AStarHelper.scaleValue((seat.getXPosition()) - 2));
+		Vector start = new Vector2D(seat.getXPosition() - 2,
+				seat.getYPosition() + seat.getYDimension() / 2,
+				cabin.getScale());
 
 		if (pax.getSeatRef().getXPosition() < pax.getDoor().getXPosition()) {
 			offset = -(offset + 2);
@@ -214,29 +209,43 @@ public class SimulationHandler {
 		}
 
 		Vector goal = new Vector2D(
-				AStarHelper.scaleValue(cabin.getCabinWidth() / 2.0),
-				AStarHelper.scaleValue(seat.getXPosition()) + offset);
+				seat.getXPosition() + offset * cabin.getScale(),
+				cabin.getYDimension() / 2.0, cabin.getScale());
 
 		Agent agent = new Agent(pax, start, goal,
 				SimulationHandler.getCostMap(), Agent.AgentMode.MAKE_WAY,
 				myself);
 		agent.findNewPath();
 		agent.start();
-		pax.setNumberOfMakeWayOperations(pax.getNumberOfMakeWayOperations() + 1);
+		pax.setNumberOfMakeWayOperations(
+				pax.getNumberOfMakeWayOperations() + 1);
 
 		System.out.println("Launching passenger " + pax.getId() + " from x:"
 				+ start.getX() + ", y:" + start.getY() + " to x:" + goal.getX()
 				+ ", y:" + goal.getY() + ".");
 	}
 
+	/**
+	 * 
+	 * @param agentList
+	 */
 	public static synchronized void setAgentList(ArrayList<Agent> agentList) {
 		SimulationHandler.agentList = agentList;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public static synchronized int getNumberOfPassengersInCabin() {
 		return activeList.size();
 	}
 
+	/**
+	 * 
+	 * @param pax
+	 * @return
+	 */
 	public synchronized static boolean CabinAccessGranted(Passenger pax) {
 
 		EList<Passenger> waitingList = pax.getDoor().getWaitingPassengers();
@@ -263,6 +272,11 @@ public class SimulationHandler {
 		return false;
 	}
 
+	/**
+	 * 
+	 * @param pax
+	 * @return
+	 */
 	private static boolean enoughTimePassed(Passenger pax) {
 		Door door = pax.getDoor();
 		if (!lastDoorRelease.containsKey(door)) {
@@ -273,31 +287,23 @@ public class SimulationHandler {
 		// TODO: Do not use a static time stamp but consider the simulation
 		// speed!
 		double time = watch.getElapsedTimeTens();
-		if (Math.abs(lastDoorRelease.get(door) - time) > (AStarHelper.time(0.15) / 1000.0)) {
+		if (Math.abs(lastDoorRelease.get(door) - time) > (AStarHelper.time(0.15)
+				/ 1000.0)) {
 			lastDoorRelease.put(door, time);
 			return true;
 		}
 		return false;
 	}
 
-	private static synchronized Agent getAgentByPassengerID(int id) {
-		for (Agent agentWhoIsIt : agentList) {
-			if (agentWhoIsIt.getPassenger().getId() == id) {
-				return agentWhoIsIt;
-			}
-		}
-		return null;
-	}
-
+	/**
+	 * 
+	 * @param pax
+	 */
 	public synchronized static void setPassengerActive(Passenger pax) {
 
 		if (!AStarHelper.PassengerAlreadyInList(pax, activeList)) {
 			activeList.add(pax);
 		}
-	}
-
-	public static synchronized void sleepAgent(int duration, Passenger passenger) {
-		getAgentByPassengerID(passenger.getId()).interruptAgent(duration);
 	}
 
 	/**
@@ -312,17 +318,16 @@ public class SimulationHandler {
 			Seat seat = passenger.getSeatRef();
 			Door door = passenger.getDoor();
 			Vector start = new Vector2D(
-					0,
-					AStarHelper.scaleValue((door.getXPosition() + door.getWidth() / 2)));
-			Vector goal = new Vector2D(
-					AStarHelper
-							.scaleValue((seat.getYPosition() + seat.getYDimension() / 2)),
-					AStarHelper.scaleValue((seat.getXPosition()) - 1));
+					(door.getXPosition() + door.getWidth() / 2), 0,
+					cabin.getScale());
+
+			Vector goal = new Vector2D((seat.getXPosition()) - 1,
+					seat.getYPosition() + seat.getYDimension() / 2,
+					cabin.getScale());
 
 			if (doItOnce) {
 				/* This line generates a costmap which is used for all agents */
-				costmap = new CostMap(dimensions, start, areamap, null,
-						false);
+				costmap = new CostMap(dimensions, start, areamap, null, false);
 				costmap.saveMapToFile();
 				doItOnce = false;
 			}
@@ -335,6 +340,7 @@ public class SimulationHandler {
 		}
 
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				progress = new ProgressHandler(agentList.size());
 				while (progressValue < agentList.size() - 1) {
@@ -345,11 +351,13 @@ public class SimulationHandler {
 					// cost map could be implemented!
 
 					if (percent < 10) {
-						progress.updateText("Initializing Path finding algorithms ...");
+						progress.updateText(
+								"Initializing Path finding algorithms ...");
 					} else if (percent < 30) {
 						progress.updateText("Creating the agent objects ...");
 					} else if (percent < 90) {
-						progress.updateText("Calculating the paths for every passenger ...");
+						progress.updateText(
+								"Calculating the paths for every passenger ...");
 					} else {
 						progress.updateText("Finishing calculations ...");
 					}
@@ -360,7 +368,18 @@ public class SimulationHandler {
 
 		/* First generate all paths ... */
 		for (Agent agent : agentList) {
-			agent.findNewPath();
+
+			/* try to find a path! */
+			try {
+				agent.findNewPath();
+
+				/* Warn if no path can be found */
+			} catch (NullPointerException e) {
+				System.out.println("Passenger " + agent.getPassenger().getId()
+						+ " for Seat "
+						+ agent.getPassenger().getSeatRef().getName()
+						+ " can not find a path to the seat!");
+			}
 
 			/* return information to the progress bar */
 			progressValue++;
@@ -375,5 +394,13 @@ public class SimulationHandler {
 
 	private int percentage(double now, double max) {
 		return (int) ((now / max) * 100.0);
+	}
+	
+	public void stopSimulation() {
+		// TODO
+		// This is just a quick fix
+		for (Agent agent : agentList) {
+			agent.getThread().stop();
+		}
 	}
 }

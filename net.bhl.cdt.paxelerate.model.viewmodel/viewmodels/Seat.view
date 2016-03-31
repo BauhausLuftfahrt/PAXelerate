@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<org.eclipse.emf.ecp.view.model:View xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.emf.ecp.view.group.model="http://org/eclipse/emf/ecp/view/group/model" xmlns:org.eclipse.emf.ecp.view.horizontal.model="http://org/eclipse/emf/ecp/view/horizontal/model" xmlns:org.eclipse.emf.ecp.view.label.model="http://org/eclipse/emf/ecp/view/label/model" xmlns:org.eclipse.emf.ecp.view.model="http://org/eclipse/emf/ecp/view/model/170" xmlns:org.eclipse.emf.ecp.view.vertical.model="http://org/eclipse/emf/ecp/view/vertical/model" xmi:id="_3qKXwKS9EeWGjpaobu8CIA" name="Seat" ecorePath="/net.bhl.cdt.paxelerate/model/cabin.ecore">
+<org.eclipse.emf.ecp.view.model:View xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.emf.ecp.view.group.model="http://org/eclipse/emf/ecp/view/group/model" xmlns:org.eclipse.emf.ecp.view.horizontal.model="http://org/eclipse/emf/ecp/view/horizontal/model" xmlns:org.eclipse.emf.ecp.view.label.model="http://org/eclipse/emf/ecp/view/label/model" xmlns:org.eclipse.emf.ecp.view.model="http://org/eclipse/emf/ecp/view/model/170" xmlns:org.eclipse.emf.ecp.view.vertical.model="http://org/eclipse/emf/ecp/view/vertical/model" xmi:id="_3qKXwKS9EeWGjpaobu8CIA" name="Seat" ecorePath="/net.bhl.cdt.paxelerate.model/model/cabin.ecore">
   <rootEClass href="http://net.bhl.cdt.paxelerate.model/#//Seat"/>
   <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout" xmi:id="_4dkxsKS9EeWGjpaobu8CIA">
     <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_40rDEKS9EeWGjpaobu8CIA">
@@ -7,11 +7,6 @@
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_3qOCJ6S9EeWGjpaobu8CIA" name="Control name">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_3qOCKKS9EeWGjpaobu8CIA">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//PhysicalObject/name"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_3qOCKaS9EeWGjpaobu8CIA" name="Control id">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_3qOCKqS9EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//PhysicalObject/id"/>
           </domainModelReference>
         </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_3qOCL6S9EeWGjpaobu8CIA" name="Control letter">
@@ -45,21 +40,23 @@
             </children>
           </children>
         </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.label.model:Label" xmi:id="_NhIrEKS-EeWGjpaobu8CIA" name="Linked Properties" readonly="true" style="Separator"/>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_3qOCMaS9EeWGjpaobu8CIA" name="Control travelClass" readonly="true">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_3qOCMqS9EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EReference" href="http://net.bhl.cdt.paxelerate.model/#//Seat/travelClass"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_3qOCM6S9EeWGjpaobu8CIA" name="Control row" readonly="true">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_3qOCNKS9EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EReference" href="http://net.bhl.cdt.paxelerate.model/#//Seat/row"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_3qOCN6S9EeWGjpaobu8CIA" name="Control passenger" readonly="true">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_3qOCOKS9EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EReference" href="http://net.bhl.cdt.paxelerate.model/#//Seat/passenger"/>
-          </domainModelReference>
+        <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_GqOxcOz7EeWQctE5HEBbjA">
+          <children xsi:type="org.eclipse.emf.ecp.view.label.model:Label" xmi:id="_NhIrEKS-EeWGjpaobu8CIA" name="Linked Properties" readonly="true" style="Separator"/>
+          <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_3qOCMaS9EeWGjpaobu8CIA" name="Control travelClass" readonly="true">
+            <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_3qOCMqS9EeWGjpaobu8CIA">
+              <domainModelEFeature xsi:type="ecore:EReference" href="http://net.bhl.cdt.paxelerate.model/#//Seat/travelClass"/>
+            </domainModelReference>
+          </children>
+          <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_3qOCM6S9EeWGjpaobu8CIA" name="Control row" readonly="true">
+            <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_3qOCNKS9EeWGjpaobu8CIA">
+              <domainModelEFeature xsi:type="ecore:EReference" href="http://net.bhl.cdt.paxelerate.model/#//Seat/row"/>
+            </domainModelReference>
+          </children>
+          <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_3qOCN6S9EeWGjpaobu8CIA" name="Control passenger" readonly="true">
+            <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_3qOCOKS9EeWGjpaobu8CIA">
+              <domainModelEFeature xsi:type="ecore:EReference" href="http://net.bhl.cdt.paxelerate.model/#//Seat/passenger"/>
+            </domainModelReference>
+          </children>
         </children>
       </children>
     </children>

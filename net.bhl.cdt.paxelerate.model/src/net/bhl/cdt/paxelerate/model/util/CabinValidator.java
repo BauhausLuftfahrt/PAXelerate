@@ -3,6 +3,7 @@
 package net.bhl.cdt.paxelerate.model.util;
 
 import java.util.Map;
+import net.bhl.cdt.paxelerate.model.*;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EPackage;
@@ -176,8 +177,12 @@ public class CabinValidator extends EObjectValidator {
 				return validateStandardDoor((StandardDoor)value, diagnostics, context);
 			case CabinPackage.SIMULATION_PROPERTIES:
 				return validateSimulationProperties((SimulationProperties)value, diagnostics, context);
+			case CabinPackage.LUGGAGE_PROPERTIES:
+				return validateLuggageProperties((LuggageProperties)value, diagnostics, context);
 			case CabinPackage.SIMULATION_RESULT:
 				return validateSimulationResult((SimulationResult)value, diagnostics, context);
+			case CabinPackage.PASSENGER_PROPERTIES:
+				return validatePassengerProperties((PassengerProperties)value, diagnostics, context);
 			case CabinPackage.SEX:
 				return validateSex((Sex)value, diagnostics, context);
 			case CabinPackage.STAIRWAY_DIRECTION:
@@ -190,6 +195,10 @@ public class CabinValidator extends EObjectValidator {
 				return validateLuggageSize((LuggageSize)value, diagnostics, context);
 			case CabinPackage.SORTING_STYLE:
 				return validateSortingStyle((SortingStyle)value, diagnostics, context);
+			case CabinPackage.TRAVEL_OPTION:
+				return validateTravelOption((TravelOption)value, diagnostics, context);
+			case CabinPackage.OBJECT_OPTION:
+				return validateObjectOption((ObjectOption)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -544,8 +553,26 @@ public class CabinValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateLuggageProperties(LuggageProperties luggageProperties, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(luggageProperties, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateSimulationResult(SimulationResult simulationResult, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(simulationResult, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePassengerProperties(PassengerProperties passengerProperties, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(passengerProperties, diagnostics, context);
 	}
 
 	/**
@@ -599,6 +626,24 @@ public class CabinValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateSortingStyle(SortingStyle sortingStyle, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTravelOption(TravelOption travelOption, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateObjectOption(ObjectOption objectOption, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

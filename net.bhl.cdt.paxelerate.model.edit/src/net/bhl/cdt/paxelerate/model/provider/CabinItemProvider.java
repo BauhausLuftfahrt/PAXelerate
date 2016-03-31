@@ -46,8 +46,8 @@ public class CabinItemProvider extends NamedElementItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addCabinLengthPropertyDescriptor(object);
-			addCabinWidthPropertyDescriptor(object);
+			addXDimensionPropertyDescriptor(object);
+			addYDimensionPropertyDescriptor(object);
 			addRowNonexistentPropertyDescriptor(object);
 			addAisleWidthPropertyDescriptor(object);
 			addFramesPerSecondPropertyDescriptor(object);
@@ -62,19 +62,19 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Cabin Length feature. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * This adds a property descriptor for the XDimension feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addCabinLengthPropertyDescriptor(Object object) {
+	protected void addXDimensionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Cabin_cabinLength_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_cabinLength_feature", "_UI_Cabin_type"),
-				 CabinPackage.Literals.CABIN__CABIN_LENGTH,
+				 getString("_UI_Cabin_xDimension_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_xDimension_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__XDIMENSION,
 				 true,
 				 false,
 				 false,
@@ -84,19 +84,19 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Cabin Width feature. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * This adds a property descriptor for the YDimension feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addCabinWidthPropertyDescriptor(Object object) {
+	protected void addYDimensionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Cabin_cabinWidth_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_cabinWidth_feature", "_UI_Cabin_type"),
-				 CabinPackage.Literals.CABIN__CABIN_WIDTH,
+				 getString("_UI_Cabin_yDimension_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_yDimension_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__YDIMENSION,
 				 true,
 				 false,
 				 false,
@@ -376,8 +376,8 @@ public class CabinItemProvider extends NamedElementItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Cabin.class)) {
-			case CabinPackage.CABIN__CABIN_LENGTH:
-			case CabinPackage.CABIN__CABIN_WIDTH:
+			case CabinPackage.CABIN__XDIMENSION:
+			case CabinPackage.CABIN__YDIMENSION:
 			case CabinPackage.CABIN__ROW_NONEXISTENT:
 			case CabinPackage.CABIN__AISLE_WIDTH:
 			case CabinPackage.CABIN__FRAMES_PER_SECOND:
@@ -417,11 +417,6 @@ public class CabinItemProvider extends NamedElementItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(CabinPackage.Literals.CABIN__CLASSES,
-				 CabinFactory.eINSTANCE.createTravelClass()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CabinPackage.Literals.CABIN__CLASSES,
 				 CabinFactory.eINSTANCE.createBusinessClass()));
 
 		newChildDescriptors.add
@@ -438,11 +433,6 @@ public class CabinItemProvider extends NamedElementItemProvider {
 			(createChildParameter
 				(CabinPackage.Literals.CABIN__CLASSES,
 				 CabinFactory.eINSTANCE.createPremiumEconomyClass()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CabinPackage.Literals.CABIN__DOORS,
-				 CabinFactory.eINSTANCE.createDoor()));
 
 		newChildDescriptors.add
 			(createChildParameter

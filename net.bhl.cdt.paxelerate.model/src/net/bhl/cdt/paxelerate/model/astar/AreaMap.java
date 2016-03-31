@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2014-2015 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ***************************************************************************************/
@@ -8,6 +8,7 @@ package net.bhl.cdt.paxelerate.model.astar;
 
 import java.util.ArrayList;
 
+import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 import net.bhl.cdt.paxelerate.util.math.Vector;
@@ -39,9 +40,9 @@ public class AreaMap {
 	 * @param obstacleMap
 	 *            the obstacle map
 	 */
-	public AreaMap(Vector dimensions, ObstacleMap obstacleMap) {
+	public AreaMap(Vector dimensions, Cabin cabin) {
 		this.dimensions = dimensions;
-		this.obstacleMap = obstacleMap;
+		this.obstacleMap = new ObstacleMap(dimensions, cabin);
 
 		createMap();
 		Log.add(this, "Map Created");
@@ -69,9 +70,11 @@ public class AreaMap {
 			for (int j = 0; j < dimensions.getY(); j++) {
 				if (map.get(i).get(j).getProperty() == Property.AGENT) {
 					System.out.print("O");
-				} else if ((map.get(i).get(j).getProperty() == Property.OBSTACLE)) {
+				} else if ((map.get(i).get(j)
+						.getProperty() == Property.OBSTACLE)) {
 					System.out.print("X");
-				} else if ((map.get(i).get(j).getProperty() == Property.START)) {
+				} else if ((map.get(i).get(j)
+						.getProperty() == Property.START)) {
 					System.out.print("X");
 				} else {
 					System.out.print("-");
@@ -88,6 +91,7 @@ public class AreaMap {
 	 */
 	private void createMap() {
 		Node node;
+
 		map = new ArrayList<ArrayList<Node>>();
 		for (int x = 0; x < dimensions.getX(); x++) {
 			map.add(new ArrayList<Node>());
@@ -196,28 +200,25 @@ public class AreaMap {
 
 		for (Node node : nodeList) {
 
-			if (node.getProperty().equals(property)
-					&& node.getPassenger().getId() == agent.getPassenger()
-							.getId()) {
+			if (node.getProperty().equals(property) && node.getPassenger()
+					.getId() == agent.getPassenger().getId()) {
 				return node;
 			}
 		}
-		
+
 		return null;
 	}
 
 	public synchronized void setStartLocation(Vector position, Agent agent) {
 
 		if (position == null) {
-			getNode(agent.getStart()).getStartList().add(
-					new NodeProperty(agent.getPassenger().getId(),
-							Property.START));
+			getNode(agent.getStart()).getStartList().add(new NodeProperty(
+					agent.getPassenger().getId(), Property.START));
 		} else {
 			Node oldStartLocation = this.getNode(agent.getStart());
 			oldStartLocation.removeItemById(agent.getPassenger().getId());
-			getNode(position).getStartList().add(
-					new NodeProperty(agent.getPassenger().getId(),
-							Property.START));
+			getNode(position).getStartList().add(new NodeProperty(
+					agent.getPassenger().getId(), Property.START));
 		}
 	}
 
@@ -231,16 +232,14 @@ public class AreaMap {
 	 * @return the distance between the nodes
 	 */
 	public double getDistanceBetween(Node node1, Node node2) {
-		try {
-			int exponent = 2;
-			double first = Math.pow((node2.getPosition().getX() - node1
-					.getPosition().getX()), exponent);
-			double second = Math.pow((node2.getPosition().getY() - node1
-					.getPosition().getY()), exponent);
-			return Math.sqrt(first + second);
-		} catch (NullPointerException e) {
-			return Double.MAX_VALUE;
-		}
+		int exponent = 2;
+		double first = Math.pow(
+				(node2.getPosition().getX() - node1.getPosition().getX()),
+				exponent);
+		double second = Math.pow(
+				(node2.getPosition().getY() - node1.getPosition().getY()),
+				exponent);
+		return Math.sqrt(first + second);
 	}
 
 	/**
@@ -264,15 +263,17 @@ public class AreaMap {
 		System.out.println("This is the area map:");
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
-				if(i == goal.getX() && j == goal.getY()) {
+				if (i == goal.getX() && j == goal.getY()) {
 					System.out.print("G");
-				} else if(i == start.getX() && j == start.getY()) {
+				} else if (i == start.getX() && j == start.getY()) {
 					System.out.print("S");
 				} else if (map.get(i).get(j).getProperty() == Property.AGENT) {
 					System.out.print("O");
-				} else if ((map.get(i).get(j).getProperty() == Property.OBSTACLE)) {
+				} else if ((map.get(i).get(j)
+						.getProperty() == Property.OBSTACLE)) {
 					System.out.print("X");
-				} else if ((map.get(i).get(j).getProperty() == Property.START)) {
+				} else if ((map.get(i).get(j)
+						.getProperty() == Property.START)) {
 					System.out.print("X");
 				} else {
 					System.out.print("-");

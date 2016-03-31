@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2014-2015 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ***************************************************************************************/
@@ -8,8 +8,6 @@ package net.bhl.cdt.paxelerate.ui.commands;
 import java.util.ArrayList;
 
 import org.eclipse.jface.dialogs.IMessageProvider;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.PlatformUI;
 
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.util.ModelHelper;
@@ -19,11 +17,9 @@ import net.bhl.cdt.paxelerate.model.Galley;
 import net.bhl.cdt.paxelerate.model.Lavatory;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
-import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.util.input.Input;
 import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 import net.bhl.cdt.paxelerate.util.math.Vector;
-import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * This class refreshed the cabin view without modifying anything. It checks the
@@ -36,7 +32,6 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 public class MoveObjectCommand extends CDTCommand {
 
 	private Cabin cabin;
-	private CabinViewPart cabinViewPart;
 	private Vector movementVector, scaleVector;
 	private ArrayList<Row> rowlist = new ArrayList<Row>();
 	private ArrayList<Seat> seatlist = new ArrayList<Seat>();
@@ -63,9 +58,8 @@ public class MoveObjectCommand extends CDTCommand {
 	 * @param curtainlist
 	 *            is the list of curtain objects
 	 */
-	public MoveObjectCommand(Cabin cabin, ArrayList<Row> rowlist,
-			ArrayList<Seat> seatlist, ArrayList<Galley> galleylist,
-			ArrayList<Lavatory> lavatorylist, ArrayList<Curtain> curtainlist) {
+	public MoveObjectCommand(Cabin cabin, ArrayList<Row> rowlist, ArrayList<Seat> seatlist,
+			ArrayList<Galley> galleylist, ArrayList<Lavatory> lavatorylist, ArrayList<Curtain> curtainlist) {
 		this.rowlist = rowlist;
 		this.seatlist = seatlist;
 		this.galleylist = galleylist;
@@ -87,29 +81,29 @@ public class MoveObjectCommand extends CDTCommand {
 		 *            the arguments
 		 */
 
-		Input input = new Input(WindowType.GET_TWO_VECTORS,
-				"All values must be entered in [cm]. Please use digits only.",
-				IMessageProvider.INFORMATION);
+		Input input = new Input(WindowType.MOVE_OBJECT,
+				"All values must be entered in [cm]. Please use positive and negative digits only.", IMessageProvider.INFORMATION);
 
 		movementVector = input.getVectorValue();
-		scaleVector = input.getSecondVectorValue();
+/*		scaleVector = input.getSecondVectorValue();
 		if (scaleVector.getX() != 0 && scaleVector.getY() != 0) {
 			scalingDesired = true;
-		}
+		}*/
+
+		int xMovement = movementVector.getX();
+		int yMovement = movementVector.getY();
+
 		if (!rowlist.isEmpty()) {
 			for (Row row : rowlist) {
-				for (Row compareRow : ModelHelper.getChildrenByClass(cabin,
-						Row.class)) {
+				for (Row compareRow : ModelHelper.getChildrenByClass(cabin, Row.class)) {
 					if (row.getRowNumber() == compareRow.getRowNumber()) {
 						for (Seat seat : compareRow.getSeats()) {
-							seat.setYPosition(seat.getYPosition()
-									+ movementVector.getX());
-							seat.setXPosition(seat.getXPosition()
-									+ movementVector.getY());
-							if (scalingDesired) {
-								seat.setYDimension(scaleVector.getX());
-								seat.setXDimension(scaleVector.getY());
-							}
+							seat.setYPosition(seat.getYPosition() + yMovement);
+							seat.setXPosition(seat.getXPosition() + xMovement);
+/*							if (scalingDesired) {
+								seat.setYDimension(scaleVector.getY());
+								seat.setXDimension(scaleVector.getX());
+							}*/
 
 						}
 					}
@@ -118,17 +112,14 @@ public class MoveObjectCommand extends CDTCommand {
 		}
 		if (!seatlist.isEmpty()) {
 			for (Seat seat : seatlist) {
-				for (Seat compareSeat : ModelHelper.getChildrenByClass(cabin,
-						Seat.class)) {
+				for (Seat compareSeat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
 					if (seat.getId() == compareSeat.getId()) {
-						compareSeat.setYPosition(compareSeat.getYPosition()
-								+ movementVector.getX());
-						compareSeat.setXPosition(compareSeat.getXPosition()
-								+ movementVector.getY());
-						if (scalingDesired) {
+						compareSeat.setYPosition(compareSeat.getYPosition() + yMovement);
+						compareSeat.setXPosition(compareSeat.getXPosition() + xMovement);
+/*						if (scalingDesired) {
 							compareSeat.setYDimension(scaleVector.getX());
 							compareSeat.setXDimension(scaleVector.getY());
-						}
+						}*/
 					}
 				}
 			}
@@ -137,14 +128,12 @@ public class MoveObjectCommand extends CDTCommand {
 			for (Galley galley : galleylist) {
 				for (Galley compareGalley : cabin.getGalleys()) {
 					if (galley.getId() == compareGalley.getId()) {
-						galley.setYPosition(galley.getYPosition()
-								+ movementVector.getX());
-						galley.setXPosition(galley.getXPosition()
-								+ movementVector.getY());
-						if (scalingDesired) {
-							galley.setYDimension(scaleVector.getX());
-							galley.setXDimension(scaleVector.getY());
-						}
+						galley.setYPosition(galley.getYPosition() + yMovement);
+						galley.setXPosition(galley.getXPosition() + xMovement);
+/*						if (scalingDesired) {
+							galley.setYDimension(scaleVector.getY());
+							galley.setXDimension(scaleVector.getX());
+						}*/
 					}
 				}
 			}
@@ -153,14 +142,12 @@ public class MoveObjectCommand extends CDTCommand {
 			for (Lavatory lavatory : lavatorylist) {
 				for (Lavatory compareLavatory : cabin.getLavatories()) {
 					if (lavatory.getId() == compareLavatory.getId()) {
-						compareLavatory.setYPosition(compareLavatory
-								.getYPosition() + movementVector.getX());
-						compareLavatory.setXPosition(compareLavatory
-								.getXPosition() + movementVector.getY());
-						if (scalingDesired) {
-							compareLavatory.setYDimension(scaleVector.getX());
-							compareLavatory.setXDimension(scaleVector.getY());
-						}
+						compareLavatory.setYPosition(compareLavatory.getYPosition() + yMovement);
+						compareLavatory.setXPosition(compareLavatory.getXPosition() + xMovement);
+/*						if (scalingDesired) {
+							compareLavatory.setYDimension(scaleVector.getY());
+							compareLavatory.setXDimension(scaleVector.getX());
+						}*/
 					}
 				}
 			}
@@ -169,29 +156,17 @@ public class MoveObjectCommand extends CDTCommand {
 			for (Curtain curtain : curtainlist) {
 				for (Curtain compareCurtain : cabin.getCurtains()) {
 					if (curtain.getId() == compareCurtain.getId()) {
-						compareCurtain.setYPosition(compareCurtain
-								.getYPosition() + movementVector.getX());
-						compareCurtain.setXPosition(compareCurtain
-								.getXPosition() + movementVector.getY());
-						if (scalingDesired) {
-							compareCurtain.setYDimension(scaleVector.getX());
-							compareCurtain.setXDimension(scaleVector.getY());
-						}
+						compareCurtain.setYPosition(compareCurtain.getYPosition() + yMovement);
+						compareCurtain.setXPosition(compareCurtain.getXPosition() + xMovement);
+/*						if (scalingDesired) {
+							compareCurtain.setYDimension(scaleVector.getY());
+							compareCurtain.setXDimension(scaleVector.getX());
+						}*/
 					}
 				}
 			}
 		}
 
-		IWorkbenchPage page = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage();
-		cabinViewPart = (CabinViewPart) page
-				.findView("net.bhl.cdt.paxelerate.model.cabinview");
-
-		try {
-			cabinViewPart.setCabin(cabin);
-			Log.add(this, "Cabin view checked and updated");
-		} catch (NullPointerException e) {
-			Log.add(this, "No cabin view is visible!");
-		}
+		new DrawCabinCommand(cabin).execute();
 	}
 }

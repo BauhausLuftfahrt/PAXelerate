@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2014-2015 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ***************************************************************************************/
@@ -7,18 +7,26 @@ package net.bhl.cdt.paxelerate.ui.commands;
 
 import java.util.ArrayList;
 
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
+
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
+import net.bhl.cdt.paxelerate.model.LuggageProperties;
 import net.bhl.cdt.paxelerate.model.Passenger;
+import net.bhl.cdt.paxelerate.model.PassengerProperties;
 import net.bhl.cdt.paxelerate.model.PhysicalObject;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
 import net.bhl.cdt.paxelerate.model.TravelClass;
+import net.bhl.cdt.paxelerate.model.util.EMFModelStore;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.PropertyViewPart;
+import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
 import net.bhl.cdt.paxelerate.util.string.StringHelper;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
@@ -65,13 +73,28 @@ public class DrawCabinCommand extends CDTCommand {
 			settings = CabinFactory.eINSTANCE.createSimulationProperties();
 			cabin.setSimulationSettings(settings);
 		}
-		double[] luggagemodel = { settings.getPercentageOfPassengersWithNoLuggage(),
-				settings.getPercentageOfPassengersWithSmallLuggage(),
-				settings.getPercentageOfPassengersWithMediumLuggage(),
-				settings.getPercentageOfPassengersWithBigLuggage() };
+
+		LuggageProperties luggageSettings = cabin.getSimulationSettings().getLuggageProperties();
+
+		if (luggageSettings == null) {
+			luggageSettings = CabinFactory.eINSTANCE.createLuggageProperties();
+			cabin.getSimulationSettings().setLuggageProperties(luggageSettings);
+		}
+
+		PassengerProperties paxSettings = cabin.getSimulationSettings().getPassengerProperties();
+
+		if (paxSettings == null) {
+			paxSettings = CabinFactory.eINSTANCE.createPassengerProperties();
+			cabin.getSimulationSettings().setPassengerProperties(paxSettings);
+		}
+
+		double[] luggagemodel = { luggageSettings.getPercentageOfPassengersWithNoLuggage(),
+				luggageSettings.getPercentageOfPassengersWithSmallLuggage(),
+				luggageSettings.getPercentageOfPassengersWithMediumLuggage(),
+				luggageSettings.getPercentageOfPassengersWithBigLuggage() };
 
 		if ((luggagemodel[0] + luggagemodel[1] + luggagemodel[2] + luggagemodel[3]) == 0) {
-			cabin.getSimulationSettings().setPercentageOfPassengersWithNoLuggage(100);
+			cabin.getSimulationSettings().getLuggageProperties().setPercentageOfPassengersWithNoLuggage(100);
 		}
 
 		cabinViewPart = ViewPartHelper.getCabinView();
@@ -101,6 +124,9 @@ public class DrawCabinCommand extends CDTCommand {
 		} catch (NullPointerException e) {
 			Log.add(this, "No cabin view is visible!");
 		}
+
+		/* This stores the cabin as an .XMI file into the local storage. */
+		EMFModelStore.store(cabin);
 	}
 
 	private void repairBoardingClassAssignments() {
@@ -128,9 +154,22 @@ public class DrawCabinCommand extends CDTCommand {
 	}
 
 	private void updateTravelClassProperties() {
-		for (TravelClass tc : cabin.getClasses()) {
-			int number = ModelHelper.getChildrenByClass(tc, Seat.class).size();
-			tc.setAvailableSeats(number);
+		for (TravelClass travelclass : cabin.getClasses()) {
+
+			// set number of seats
+			int numberSeats = ModelHelper.getChildrenByClass(travelclass, Seat.class).size();
+			travelclass.setAvailableSeats(numberSeats);
+
+			// calculate load factor and number of passengers
+			if (travelclass.getPassengers() == 0 && travelclass.getLoadFactor() != 0) {
+
+				int numberOfPax = (int) (travelclass.getAvailableSeats() * travelclass.getLoadFactor() / 100.0);
+				travelclass.setPassengers(numberOfPax);
+			} else {
+
+				int loadFactor = (int) (travelclass.getPassengers() * 100.0 / travelclass.getAvailableSeats());
+				travelclass.setLoadFactor(loadFactor);
+			}
 		}
 	}
 
@@ -182,8 +221,9 @@ public class DrawCabinCommand extends CDTCommand {
 			seat.setTravelClass(tc);
 			seat.setRow(row);
 			seat.setName(seat.getRow().getRowNumber() + StringHelper.toString(seatInRowCount));
-			seat.setYDimension(tc.getSeatWidth());
-			seat.setXDimension(tc.getSeatLength());
+			seat.setLetter(StringHelper.toString(seatInRowCount));
+			seat.setYDimension(tc.getYDimensionOfSeats());
+			seat.setXDimension(tc.getXDimensionOfSeats());
 
 			seatCount++;
 			seatInRowCount++;
@@ -195,8 +235,8 @@ public class DrawCabinCommand extends CDTCommand {
 	private Boolean checkCabinOutOfBounds() {
 		for (PhysicalObject object : ModelHelper.getChildrenByClass(cabin, PhysicalObject.class)) {
 			if (object.getYPosition() < 0 || object.getXPosition() < 0
-					|| (object.getYPosition() + object.getYDimension()) > cabin.getCabinWidth()
-					|| (object.getXPosition() + object.getXDimension()) > cabin.getCabinLength()) {
+					|| (object.getYPosition() + object.getYDimension()) > cabin.getYDimension()
+					|| (object.getXPosition() + object.getXDimension()) > cabin.getXDimension()) {
 				return true;
 			}
 		}

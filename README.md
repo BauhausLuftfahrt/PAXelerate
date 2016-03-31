@@ -2,22 +2,32 @@
 
 Welcome to the repository of [PAXelerate](http://www.paxelerate.com) - an open source passenger flow simulation framework for advanced aircraft cabin layouts! 
 
-* The current version under development is *Alpha 0.4*
+* Currently version *Alpha 0.7* is under developement and scheduled for 05/25/2016
 * The implementation began in November 2014
 
+
 ### Quick Guide ###
-1. Install [Eclipse Mars - Modelling Tools](http://www.eclipse.org/downloads/) and [Java JDK Version 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+
+**User Version**
+
+1. Download and unpack the latest client version [Alpha 0.6](https://github.com/BauhausLuftfahrt/PAXelerate/releases/tag/alpha-0.6)
+2. Start `PAXelerate.exe`
+
+**Developer Version**
+
+1. Install [Eclipse Mars.2 - Modelling Tools](http://www.eclipse.org/downloads/) and [Java JDK Version 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 2. Upgrade the [EMF Client Platform](http://www.eclipse.org/ecp/download.html) to version 1.7.x 
-3. Checkout [OpenCDT](http://bitbucket.org/opencdt/opencdt) core plugins
-4. Checkout [PAXelerate](http://bitbucket.org/paxelerate/paxelerate) 
-5. Launch *paxelerate.product*
+3. Checkout [OpenCDT](http://bitbucket.org/opencdt/opencdt) core plugins from the master branch
+4. Checkout [PAXelerate](http://github.com/BauhausLuftfahrt/PAXelerate) from the master branch
+5. Launch `paxelerate.product` in `net.bhl.cdt.paxelerate.core`
 
 
 ### How do I get set up? ###
 
 * The [Installation Guide](documentation/wiki/installation.md) is intended to enable a quick and easy setup 
-* The [Tutorial](documentation/wiki/tutorial.md) provides a summary of the functional range and quick introduction for new users
-* The [Developers Guide](documentation/wiki/developer.md) summarises useful tips to get started with the development
+* The [Overview](documentation/wiki/overview.md) provides a summary of the functional range
+* The Tutorial gives quick introduction for new users
+* The [Developers Guide](documentation/wiki/developer.md) summarizes useful tips to get started with the development
 
 ### Contributors ###
 
@@ -26,7 +36,7 @@ Welcome to the repository of [PAXelerate](http://www.paxelerate.com) - an open s
 * Michael Schmidt ***(active)***
 * Michael Shamiyeh ***(active)***
 * Martin Glas 
-* Tobias BrÃ¼gge-Zobel
+* Tobias Brügge-Zobel
 * Stefan Weber
 * Pedro Martinez
 * Philipp Osterrieder

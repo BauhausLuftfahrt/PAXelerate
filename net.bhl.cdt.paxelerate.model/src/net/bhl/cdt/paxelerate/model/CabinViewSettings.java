@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.CabinViewSettings#getDoorOffSetInPixels <em>Door Off Set In Pixels</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.CabinViewSettings#getXZeroInPixels <em>XZero In Pixels</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.CabinViewSettings#getYZeroInPixels <em>YZero In Pixels</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.CabinViewSettings#getCabinWidthInPixels <em>Cabin Width In Pixels</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.CabinViewSettings#getYDimensionInPixels <em>Cabin Width In Pixels</em>}</li>
  * </ul>
  * </p>
  *
@@ -395,21 +395,21 @@ public interface CabinViewSettings extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Cabin Width In Pixels</em>' attribute.
-	 * @see #setCabinWidthInPixels(int)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getCabinViewSettings_CabinWidthInPixels()
+	 * @see #setYDimensionInPixels(int)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getCabinViewSettings_YDimensionInPixels()
 	 * @model default="96"
 	 * @generated
 	 */
-	int getCabinWidthInPixels();
+	int getYDimensionInPixels();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.CabinViewSettings#getCabinWidthInPixels <em>Cabin Width In Pixels</em>}' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.CabinViewSettings#getYDimensionInPixels <em>Cabin Width In Pixels</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Cabin Width In Pixels</em>' attribute.
-	 * @see #getCabinWidthInPixels()
+	 * @see #getYDimensionInPixels()
 	 * @generated
 	 */
-	void setCabinWidthInPixels(int value);
+	void setYDimensionInPixels(int value);
 
 } // CabinViewSettings

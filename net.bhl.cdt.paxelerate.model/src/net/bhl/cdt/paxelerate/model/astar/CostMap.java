@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2014-2015 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ***************************************************************************************/
@@ -34,8 +34,8 @@ import net.bhl.cdt.paxelerate.util.math.Vector3D;
 public class CostMap {
 
 	private int[][] map;
-	private Vector dimensions = new Vector2D(0, 0), startPoint = new Vector2D(
-			0, 0), goalPoint = new Vector2D(0, 0);
+	private Vector dimensions = new Vector2D(0, 0),
+			startPoint = new Vector2D(0, 0), goalPoint = new Vector2D(0, 0);
 
 	private ArrayList<Vector> visitedPoints = new ArrayList<Vector>(),
 			pointParkingHelper = new ArrayList<Vector>(),
@@ -50,17 +50,20 @@ public class CostMap {
 	 * @param dimension
 	 * @param areaMap
 	 */
-	public CostMap(Vector dimension, Vector start, AreaMap areaMap, Agent agent, boolean OnlyFloodToSeat) {
+	public CostMap(Vector dimension, Vector start, AreaMap areaMap, Agent agent,
+			boolean OnlyFloodToSeat) {
 		this.dimensions = dimension;
 		this.startPoint = start;
+
 		if (OnlyFloodToSeat) {
 			this.goalPoint = agent.getGoal();
 		} else {
-			this.goalPoint = new Vector2D((int) dimensions.getX() / 2,
-					dimensions.getY() - 1);
+			this.goalPoint = new Vector2D(dimensions.getX() - 1,
+					dimensions.getY() / 2);
 		}
+
 		this.areamap = areaMap;
-		
+
 		map = new int[dimensions.getX()][dimensions.getY()];
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
@@ -121,7 +124,8 @@ public class CostMap {
 				if (i == agent.getPosition().getX()
 						&& j == agent.getPosition().getY()) {
 					System.out.print("I");
-				} else if (areamap.getNodeByCoordinate(i, j).getProperty() == Property.AGENT) {
+				} else if (areamap.getNodeByCoordinate(i, j)
+						.getProperty() == Property.AGENT) {
 					System.out.print("A");
 				} else if (foundNode) {
 					System.out.print(">");
@@ -244,11 +248,11 @@ public class CostMap {
 	 *            is the point around which all costs are calculated
 	 */
 	private void createSurroundingCosts(Vector middlePoint) {
-		for (Vector point : sortTheList(getSurroundingPoints(
-				middlePoint.getX(), middlePoint.getY()))) {
+		for (Vector point : sortTheList(
+				getSurroundingPoints(middlePoint.getX(), middlePoint.getY()))) {
 			if (!(point.getX() < 0 || point.getY() < 0
-					|| point.getX() >= dimensions.getX() || point.getY() >= dimensions
-					.getY())) {
+					|| point.getX() >= dimensions.getX()
+					|| point.getY() >= dimensions.getY())) {
 				if (!isObstacle(point)) {
 					if (!(checkForPoint(visitedPoints, point))) {
 						setCost(point.getX(), point.getY(),
@@ -268,31 +272,30 @@ public class CostMap {
 	// CURRENTLY DISAPLED, until Cost Map is unlinked from ui
 	@Deprecated
 	public void saveMapToFile() {
-//		PrintWriter printToFile = null;
+		// PrintWriter printToFile = null;
 		try {
 			// TODO COST MAP MAY NOT LINK TO UI
-//			CabinViewPart.makeDirectory();
-//			printToFile = new PrintWriter(CabinViewPart.getFilePath()
-//					+ "costmap.txt");
-//			for (int i = 0; i < dimensions.getY(); i++) {
-//				for (int j = 0; j < dimensions.getX(); j++) {
-//					if (map[j][i] == -1) {
-//						printToFile.print("X\t");
-//					} else {
-//						printToFile.print(map[j][i] + "\t");
-//					}
-//				}
-//				printToFile.println();
-//			}
-//		} catch (FileNotFoundException e) {
-//			Log.add(this, "Could not save cost map to file.");
-//		} catch (NullPointerException e) {
-//			Log.add(this, "The file path is not available.");
+			// CabinViewPart.makeDirectory();
+			// printToFile = new PrintWriter(CabinViewPart.getFilePath()
+			// + "costmap.txt");
+			// for (int i = 0; i < dimensions.getY(); i++) {
+			// for (int j = 0; j < dimensions.getX(); j++) {
+			// if (map[j][i] == -1) {
+			// printToFile.print("X\t");
+			// } else {
+			// printToFile.print(map[j][i] + "\t");
+			// }
+			// }
+			// printToFile.println();
+			// }
+			// } catch (FileNotFoundException e) {
+			// Log.add(this, "Could not save cost map to file.");
+			// } catch (NullPointerException e) {
+			// Log.add(this, "The file path is not available.");
 		} finally {
-//			printToFile.close();
+			// printToFile.close();
 		}
 	}
-
 
 	/**
 	 * This method returns the <b><i>already calculated</i></b> cost of a
@@ -306,8 +309,8 @@ public class CostMap {
 		try {
 			return map[point.getX()][point.getY()];
 		} catch (ArrayIndexOutOfBoundsException e) {
-			System.out
-					.println("###### !ArrayIndexOutOfBoundsException ERROR! ###### !COSTMAP - getCost()! ######");
+			System.out.println(
+					"###### !ArrayIndexOutOfBoundsException ERROR! ###### !COSTMAP - getCost()! ######");
 			return Integer.MAX_VALUE;
 		}
 
@@ -323,7 +326,7 @@ public class CostMap {
 	 *            is the y coordinate of the desired point
 	 * @return returns the cost for a specific coordinate
 	 */
-	
+
 	private int getCostForCoordinates(int xCord, int yCord) {
 		try {
 			if (xCord >= 0 && yCord >= 0 && xCord < dimensions.getX()
@@ -332,8 +335,8 @@ public class CostMap {
 			}
 			return Integer.MAX_VALUE;
 		} catch (ArrayIndexOutOfBoundsException e) {
-			System.out
-					.println("###### !ArrayIndexOutOfBoundsException ERROR! ###### !COSTMAP - getCostForCoordinate()! ######");
+			System.out.println(
+					"###### !ArrayIndexOutOfBoundsException ERROR! ###### !COSTMAP - getCostForCoordinate()! ######");
 			return Integer.MAX_VALUE;
 		}
 	}

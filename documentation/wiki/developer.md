@@ -1,24 +1,26 @@
 # Developer Guide #
 
-First, get started with the [Git repository handling and Jira integration](#markdown-header-git-workflow)
+Based on PAXelerate release: Alpha 0.6 (04/01/2016)
+
+First, get started with the [Git repository and issues handling](#git-workflow)
 
 Use the code snippets to get the implementation of a desired aspect started. 
  
-* [Aircraft cabin generation using the construction library](#markdown-header-How-to-use-the-construction-library-class-for-cabin-generation-purposes)
-* [Using the Gaussian Distribution](#markdown-header-gaussian-distribution)
-* [Exception handling](#markdown-header-exception-handling-procedures)
+* [Aircraft cabin generation using the construction library](#how-to-use-the-construction-library-class-for-cabin-generation-purposes)
+* [Using the Gaussian Distribution](#gaussian-distribution)
+* [Exception handling](#exception-handling-procedures)
 
 ## Eclipse and OpenCDT related ##
-* [Creating a user input dialog](#markdown-header-how-to-create-a-new-input-dialog)
-* [Creating a new popup window](#markdown-header-how-to-create-a-new-help-window-popup)
-* [How to add a new right click command to OpenCDT](#markdown-header-how-to-add-a-new-right-click-command-to-opencdt)
-* [Usage of EMF Forms and customisation](#markdown-header-usage-of-emf-forms)
+* [Creating a user input dialog](#how-to-create-a-new-input-dialog)
+* [Creating a new popup window](#how-to-create-a-new-help-window-popup)
+* [How to add a new right click command to OpenCDT](#how-to-add-a-new-right-click-command-to-opencdt)
+* [Usage of EMF Forms and customisation](#usage-of-emf-forms)
 * [Eclipse product and application deployment](http://www.vogella.com/tutorials/EclipseProductDeployment/article.html#deployment_deltapack)
 
 For further information regarding OpenCDT please refer to the [wiki](http://bitbucket.org/opencdt/opencdt/wiki/Home) or to these [useful links](useful-links.md)
 
 ## Troubleshooting
-* [Framework errors during launch](#markdown-header-framework-errors-during-launch)
+* [Framework errors during launch](#framework-errors-during-launch)
 
 ---
 
@@ -27,22 +29,21 @@ For further information regarding OpenCDT please refer to the [wiki](http://bitb
 * **Commit**: versionises the changes files and saves all changes on your local hard drive
 * **Push**: uploading of changes to the bitbucket Git repository
 
-## Processing JIRA issues with commit messages 
-* Jira Ticket number: PXE-000
-* *#close* - closes the issue
-* *#resolve* - resolves the issue
-* *#comment* - records a comment against an issue
+## Processing issues with commit messages 
+* Fix #10
 
-example:
-```
-#!html
-PXE-090 #close Fixed this today
+The following keywords will close an issue via commit message:
+* close
+* closes
+* closed
+* fix
+* fixes
+* fixed
+* resolve
+* resolves
+* resolved
 
-or
-
-PXE-123 PXE-234 PXE-345 #resolve
-```
-refer to [Jira documentation](https://confluence.atlassian.com/display/BITBUCKET/Processing+JIRA+issues+with+commit+messages) for more info
+refer to [documentation](https://help.github.com/articles/closing-issues-via-commit-messages/) for more info
 
 ---
 
@@ -63,6 +64,7 @@ constructor.clearCabin();
 * Emergency Exits must be generated at first.  
 * Only create one main door.  
 * Create all other objects in the order they appear within the cabin (from front to rear).  
+
 ### Create a passenger class
 ```java
 constructor.createClass(passengerClass);
@@ -99,8 +101,7 @@ cabin = constructor.getCabin();
 In order to use the gaussian distribution, simply call the following method:
 
 
-```
-#!java
+```java
 FuncLib.gaussianRandom(double average, GaussOptions option, double deviation);
 ```
 The average value is the peak value of the gaussian distribution.
@@ -121,8 +122,7 @@ Then you would define that 95% of the values should be within the range of +/- 1
 
 Then your function would look like this:
 
-```
-#!java
+```java
 FuncLib.gaussianRandom(100, GaussOptions.PERCENT_95, 10);
 ```
 
@@ -287,14 +287,11 @@ Further information can be obtained on the [EMF Forms Website](http://www.eclips
 The following plug-ins are required:
 
 ```
-#!html
-
 net.bhl.cdt.client
 net.bhl.cdt.model
 net.bhl.cdt.model.edit
 net.bhl.cdt.ui
-net.bhl.cdt.paxelerate.agent
-net.bhl.cdt.paxelerate.astar
+net.bhl.cdt.paxelerate.core
 net.bhl.cdt.paxelerate.model
 net.bhl.cdt.paxelerate.model.edit
 net.bhl.cdt.paxelerate.model.viewmodel

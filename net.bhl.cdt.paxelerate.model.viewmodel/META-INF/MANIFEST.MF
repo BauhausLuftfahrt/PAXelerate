@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: %pluginName
+Bundle-Name: PAXelerate - View Models
 Bundle-SymbolicName: net.bhl.cdt.paxelerate.model.viewmodel;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.6.0.qualifier
 Require-Bundle: org.eclipse.emf.ecp.view.model.provider.xmi,
  org.eclipse.emf.ecp.view.categorization.model;bundle-version="1.7.2",
  org.eclipse.emf.ecp.view.categorization.model.edit;bundle-version="1.7.2",
@@ -83,4 +83,4 @@ Require-Bundle: org.eclipse.emf.ecp.view.model.provider.xmi,
  org.eclipse.emf.ecp.view.vertical.ui.swt;bundle-version="1.7.2",
  org.eclipse.emf.ecp.view.viewproxy.model;bundle-version="1.7.2",
  org.eclipse.emf.ecp.view.viewproxy.model.edit;bundle-version="1.7.2"
-Bundle-Vendor: %providerName
+Bundle-Vendor: http://www.paxelerate.com/

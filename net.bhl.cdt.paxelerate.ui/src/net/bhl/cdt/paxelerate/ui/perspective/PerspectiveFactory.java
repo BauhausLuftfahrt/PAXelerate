@@ -6,31 +6,32 @@
 package net.bhl.cdt.paxelerate.ui.perspective;
 
 import org.eclipse.emf.ecp.ui.views.ModelExplorerView;
-import org.eclipse.emf.ecp.ui.views.ModelRepositoriesView;
 import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 import org.eclipse.ui.console.IConsoleConstants;
 
-
 /**
  * 
- * @author raoul.rothfeld
+ * @author raoul.rothfeld, Michael Schmidt
  *
  */
 public class PerspectiveFactory implements IPerspectiveFactory {
 
 	@Override
 	public void createInitialLayout(IPageLayout layout) {
-		
-		IFolderLayout left = layout.createFolder("left", IPageLayout.LEFT, 0.25f, layout.getEditorArea());
-		left.addView(ModelExplorerView.ID);
+
+		IFolderLayout topLeft = layout.createFolder("topLeft", IPageLayout.LEFT, 0.25f, layout.getEditorArea());
+		topLeft.addView(ModelExplorerView.ID);
+
+		IFolderLayout bottomLeft = layout.createFolder("bottomLeft", IPageLayout.BOTTOM, 0.5f, "topLeft");
+		bottomLeft.addView("net.bhl.cdt.paxelerate.ui.propertyview");
+		;
 
 		IFolderLayout right = layout.createFolder("right", IPageLayout.RIGHT, 0.7f, layout.getEditorArea());
 		right.addView("net.bhl.cdt.paxelerate.ui.views.cabinview");
-		right.addView("net.bhl.cdt.paxelerate.ui.propertyview");
-		right.addView(ModelRepositoriesView.ID);
-		
+
+		// TODO: is it possible to freeze the aspect ratio here?
 
 		IFolderLayout bottom = layout.createFolder("bottom", IPageLayout.BOTTOM, 0.70f, layout.getEditorArea());
 		bottom.addView(IConsoleConstants.ID_CONSOLE_VIEW);

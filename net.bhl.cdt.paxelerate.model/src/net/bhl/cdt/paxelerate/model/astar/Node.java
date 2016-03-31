@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2014-2015 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ***************************************************************************************/
@@ -23,7 +23,8 @@ public class Node implements Comparable<Node> {
 	private Node north, northEast, east, southEast, south, southWest, west,
 			northWest, previousNode;
 	private ArrayList<Node> neighborList;
-	private int distanceFromStart, costFromStart, cost,
+	private double distanceFromStart;
+	private int costFromStart, cost,
 			numberOfOccupations = 0, numberOfInterrupts = 0;
 
 	private Vector position = new Vector2D(0, 0);
@@ -301,7 +302,7 @@ public class Node implements Comparable<Node> {
 	 * 
 	 * @return the distance from start
 	 */
-	public float getDistanceFromStart() {
+	public double getDistanceFromStart() {
 		return distanceFromStart;
 	}
 
@@ -311,8 +312,8 @@ public class Node implements Comparable<Node> {
 	 * @param f
 	 *            the distance
 	 */
-	public void setDistanceFromStart(int f) {
-		this.distanceFromStart = f;
+	public void setDistanceFromStart(double distance) {
+		this.distanceFromStart = distance;
 	}
 
 	/**
@@ -376,12 +377,29 @@ public class Node implements Comparable<Node> {
 		int better = -1;
 		int equal = 0;
 		int worse = 1;
+		
+		/* if this node is cheaper, it is better */ 
 		if (costFromStart < otherNode.costFromStart) {
 			return better;
+			
+			/* if the other node is cheaper, this one is worse  */
 		} else if (costFromStart > otherNode.costFromStart) {
 			return worse;
+			
+			/* if they are equally expensive, check the distance */
 		} else {
-			return equal;
+			
+			/* if this node is closer to the start, it is better */ 
+			if(distanceFromStart < otherNode.distanceFromStart) {
+				return better;
+				/* if the distance is greater, it is worse */
+			} else if(distanceFromStart > otherNode.distanceFromStart) {
+				return worse;
+				
+				/* else the nodes are equal (concerning the criteria used here) */ 
+			} else {
+				return equal;
+			}
 		}
 	}
 }

@@ -40,15 +40,6 @@ public interface CabinFactory extends EFactory {
 	Row createRow();
 
 	/**
-	 * Returns a new object of class '<em>Travel Class</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Travel Class</em>'.
-	 * @generated
-	 */
-	TravelClass createTravelClass();
-
-	/**
 	 * Returns a new object of class '<em>Business Class</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -83,15 +74,6 @@ public interface CabinFactory extends EFactory {
 	 * @generated
 	 */
 	PremiumEconomyClass createPremiumEconomyClass();
-
-	/**
-	 * Returns a new object of class '<em>Door</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Door</em>'.
-	 * @generated
-	 */
-	Door createDoor();
 
 	/**
 	 * Returns a new object of class '<em>Seat</em>'.
@@ -202,6 +184,15 @@ public interface CabinFactory extends EFactory {
 	SimulationProperties createSimulationProperties();
 
 	/**
+	 * Returns a new object of class '<em>Luggage Properties</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Luggage Properties</em>'.
+	 * @generated
+	 */
+	LuggageProperties createLuggageProperties();
+
+	/**
 	 * Returns a new object of class '<em>Simulation Result</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -211,13 +202,13 @@ public interface CabinFactory extends EFactory {
 	SimulationResult createSimulationResult();
 
 	/**
-	 * Returns a new object of class '<em>Physical Object</em>'.
+	 * Returns a new object of class '<em>Passenger Properties</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Physical Object</em>'.
+	 * @return a new object of class '<em>Passenger Properties</em>'.
 	 * @generated
 	 */
-	PhysicalObject createPhysicalObject();
+	PassengerProperties createPassengerProperties();
 
 	/**
 	 * Returns the package supported by this factory.

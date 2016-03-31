@@ -2,43 +2,13 @@
  */
 package net.bhl.cdt.paxelerate.model.impl;
 
+import net.bhl.cdt.paxelerate.model.*;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import net.bhl.cdt.paxelerate.model.AircraftType;
-import net.bhl.cdt.paxelerate.model.BusinessClass;
-import net.bhl.cdt.paxelerate.model.Cabin;
-import net.bhl.cdt.paxelerate.model.CabinFactory;
-import net.bhl.cdt.paxelerate.model.CabinPackage;
-import net.bhl.cdt.paxelerate.model.CrewMember;
-import net.bhl.cdt.paxelerate.model.Curtain;
-import net.bhl.cdt.paxelerate.model.Door;
-import net.bhl.cdt.paxelerate.model.EconomyClass;
-import net.bhl.cdt.paxelerate.model.EmergencyExit;
-import net.bhl.cdt.paxelerate.model.FirstClass;
-import net.bhl.cdt.paxelerate.model.Galley;
-import net.bhl.cdt.paxelerate.model.Lavatory;
-import net.bhl.cdt.paxelerate.model.LuggageSize;
-import net.bhl.cdt.paxelerate.model.MainDoor;
-import net.bhl.cdt.paxelerate.model.Passenger;
-import net.bhl.cdt.paxelerate.model.PassengerMood;
-import net.bhl.cdt.paxelerate.model.PhysicalObject;
-import net.bhl.cdt.paxelerate.model.PremiumEconomyClass;
-import net.bhl.cdt.paxelerate.model.Row;
-import net.bhl.cdt.paxelerate.model.Seat;
-import net.bhl.cdt.paxelerate.model.Sex;
-import net.bhl.cdt.paxelerate.model.SimulationProperties;
-import net.bhl.cdt.paxelerate.model.SimulationResult;
-import net.bhl.cdt.paxelerate.model.SortingStyle;
-import net.bhl.cdt.paxelerate.model.Stairway;
-import net.bhl.cdt.paxelerate.model.StairwayDirection;
-import net.bhl.cdt.paxelerate.model.StandardDoor;
-import net.bhl.cdt.paxelerate.model.Stowage;
-import net.bhl.cdt.paxelerate.model.TravelClass;
 
 /**
  * <!-- begin-user-doc -->
@@ -86,7 +56,6 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 		switch (eClass.getClassifierID()) {
 			case CabinPackage.CABIN: return createCabin();
 			case CabinPackage.ROW: return createRow();
-			case CabinPackage.TRAVEL_CLASS: return createTravelClass();
 			case CabinPackage.BUSINESS_CLASS: return createBusinessClass();
 			case CabinPackage.FIRST_CLASS: return createFirstClass();
 			case CabinPackage.ECONOMY_CLASS: return createEconomyClass();
@@ -94,18 +63,18 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 			case CabinPackage.SEAT: return createSeat();
 			case CabinPackage.PASSENGER: return createPassenger();
 			case CabinPackage.CREW_MEMBER: return createCrewMember();
-			case CabinPackage.PHYSICAL_OBJECT: return createPhysicalObject();
 			case CabinPackage.LAVATORY: return createLavatory();
 			case CabinPackage.GALLEY: return createGalley();
 			case CabinPackage.STAIRWAY: return createStairway();
 			case CabinPackage.CURTAIN: return createCurtain();
 			case CabinPackage.STOWAGE: return createStowage();
-			case CabinPackage.DOOR: return createDoor();
 			case CabinPackage.MAIN_DOOR: return createMainDoor();
 			case CabinPackage.EMERGENCY_EXIT: return createEmergencyExit();
 			case CabinPackage.STANDARD_DOOR: return createStandardDoor();
 			case CabinPackage.SIMULATION_PROPERTIES: return createSimulationProperties();
+			case CabinPackage.LUGGAGE_PROPERTIES: return createLuggageProperties();
 			case CabinPackage.SIMULATION_RESULT: return createSimulationResult();
+			case CabinPackage.PASSENGER_PROPERTIES: return createPassengerProperties();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -131,6 +100,10 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return createLuggageSizeFromString(eDataType, initialValue);
 			case CabinPackage.SORTING_STYLE:
 				return createSortingStyleFromString(eDataType, initialValue);
+			case CabinPackage.TRAVEL_OPTION:
+				return createTravelOptionFromString(eDataType, initialValue);
+			case CabinPackage.OBJECT_OPTION:
+				return createObjectOptionFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -156,6 +129,10 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return convertLuggageSizeToString(eDataType, instanceValue);
 			case CabinPackage.SORTING_STYLE:
 				return convertSortingStyleToString(eDataType, instanceValue);
+			case CabinPackage.TRAVEL_OPTION:
+				return convertTravelOptionToString(eDataType, instanceValue);
+			case CabinPackage.OBJECT_OPTION:
+				return convertObjectOptionToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -179,16 +156,6 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	public Row createRow() {
 		RowImpl row = new RowImpl();
 		return row;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TravelClass createTravelClass() {
-		TravelClassImpl travelClass = new TravelClassImpl();
-		return travelClass;
 	}
 
 	/**
@@ -229,16 +196,6 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	public PremiumEconomyClass createPremiumEconomyClass() {
 		PremiumEconomyClassImpl premiumEconomyClass = new PremiumEconomyClassImpl();
 		return premiumEconomyClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Door createDoor() {
-		DoorImpl door = new DoorImpl();
-		return door;
 	}
 
 	/**
@@ -366,6 +323,16 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public LuggageProperties createLuggageProperties() {
+		LuggagePropertiesImpl luggageProperties = new LuggagePropertiesImpl();
+		return luggageProperties;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public SimulationResult createSimulationResult() {
 		SimulationResultImpl simulationResult = new SimulationResultImpl();
 		return simulationResult;
@@ -376,9 +343,9 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PhysicalObject createPhysicalObject() {
-		PhysicalObjectImpl physicalObject = new PhysicalObjectImpl();
-		return physicalObject;
+	public PassengerProperties createPassengerProperties() {
+		PassengerPropertiesImpl passengerProperties = new PassengerPropertiesImpl();
+		return passengerProperties;
 	}
 
 	/**
@@ -478,6 +445,46 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * @generated
 	 */
 	public String convertSortingStyleToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TravelOption createTravelOptionFromString(EDataType eDataType, String initialValue) {
+		TravelOption result = TravelOption.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertTravelOptionToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ObjectOption createObjectOptionFromString(EDataType eDataType, String initialValue) {
+		ObjectOption result = ObjectOption.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertObjectOptionToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

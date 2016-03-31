@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2014-2015 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ***************************************************************************************/
@@ -42,12 +42,7 @@ public class SortedNodeList {
 	 */
 	public void add(Node node) {
 		list.add(node);
-		try {
-			Collections.sort(list);
-		} catch (IllegalArgumentException e) {
-			System.out
-					.println("###### !IllegalArgumentException ERROR! ###### !SortedNodeList - add()! ######");
-		}
+		Collections.sort(list);
 	}
 
 	/**

@@ -1,3 +1,8 @@
+/*******************************************************************************
+ * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
+ ******************************************************************************/
 package net.bhl.cdt.paxelerate.util.input;
 
 import org.eclipse.jface.dialogs.TitleAreaDialog;
@@ -33,7 +38,7 @@ public class Input extends TitleAreaDialog {
 		/**
 		 * Access the different types using WindowType.CHOOSE_TYPE.
 		 */
-		INFORMATION, GET_STRING, GET_INTEGER, GET_VECTOR, WARNING, OPTIONS, GET_BOOLEAN, GET_TWO_VECTORS
+		INFORMATION, GET_STRING, GET_INTEGER, GET_VECTOR, WARNING, OPTIONS, GET_BOOLEAN, GET_TWO_VECTORS, CLONE_OBJECT, MOVE_OBJECT
 	}
 
 	private WindowType windowType;
@@ -75,24 +80,33 @@ public class Input extends TitleAreaDialog {
 			break;
 		case GET_VECTOR:
 			titleString = "Vector Input Required!";
-			descriptionText = "Y dimension:";
-			descriptionText2 = "X dimension:";
+			descriptionText = "X dimension:";
+			descriptionText2 = "Y dimension:";
 			break;
 		case GET_TWO_VECTORS:
 			titleString = "Vector Input Required!";
-			descriptionText = "Y position:";
-			descriptionText2 = "X position:";
-			descriptionText3 = "height:";
-			descriptionText4 = "width:";
+			descriptionText = "X position:";
+			descriptionText2 = "Y position:";
+			descriptionText3 = "X dimension:";
+			descriptionText4 = "Y dimension:";
 			break;
 		case GET_STRING:
 			titleString = "Text Input Required!";
 			descriptionText = "text:";
 			break;
-
 		case OPTIONS:
 			titleString = "Please choose one of the following options!";
 			descriptionText = "Options:";
+			break;
+
+		case CLONE_OBJECT:
+			titleString = "Duplicate rows";
+			descriptionText = "Number of rows";
+			break;
+		case MOVE_OBJECT:
+			titleString = "Move object";
+			descriptionText = "X displacement:";
+			descriptionText2 = "Y displacement:";
 			break;
 
 		default:
@@ -120,7 +134,7 @@ public class Input extends TitleAreaDialog {
 		container.setLayout(layout);
 		if (windowType != WindowType.GET_BOOLEAN) {
 			createInputField(container);
-			if (windowType == WindowType.GET_VECTOR) {
+			if (windowType == WindowType.GET_VECTOR || windowType == WindowType.MOVE_OBJECT) {
 				createAnotherInputField(container);
 			}
 			if (windowType == WindowType.GET_TWO_VECTORS) {
@@ -129,6 +143,7 @@ public class Input extends TitleAreaDialog {
 				createFourthInputField(container);
 			}
 		}
+
 		createWarningLabel(container);
 		return area;
 	}
@@ -211,15 +226,15 @@ public class Input extends TitleAreaDialog {
 	private void saveInput() {
 		switch (windowType) {
 		case GET_INTEGER:
-			integerValue = Integer.parseInt(text.getText());
-			break;
 		case OPTIONS:
+		case CLONE_OBJECT:
 			integerValue = Integer.parseInt(text.getText());
 			break;
 		case GET_STRING:
 			stringValue = text.getText();
 			break;
 		case GET_VECTOR:
+		case MOVE_OBJECT:
 			vectorValue = new Vector2D(Integer.parseInt(text.getText()), Integer.parseInt(text2.getText()));
 			break;
 		case GET_TWO_VECTORS:
@@ -228,6 +243,7 @@ public class Input extends TitleAreaDialog {
 			break;
 		case GET_BOOLEAN:
 			booleanValue = true;
+			break;
 		default:
 			break;
 		}
@@ -280,6 +296,7 @@ public class Input extends TitleAreaDialog {
 	 */
 	public boolean inputCheckOK() {
 		switch (windowType) {
+		case CLONE_OBJECT:
 		case GET_INTEGER:
 			if (text.getText() != "") {
 				if (StringHelper.isInteger(text.getText())) {
@@ -317,6 +334,7 @@ public class Input extends TitleAreaDialog {
 				return false;
 			}
 		case GET_VECTOR:
+		case MOVE_OBJECT:
 			if (text.getText() != "" && text2.getText() != "") {
 				if (StringHelper.isInteger(text.getText()) && StringHelper.isInteger(text2.getText())) {
 					return true;

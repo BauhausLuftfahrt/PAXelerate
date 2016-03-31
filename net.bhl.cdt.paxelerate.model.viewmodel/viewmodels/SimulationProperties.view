@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="ASCII"?>
-<org.eclipse.emf.ecp.view.model:View xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.emf.ecp.view.group.model="http://org/eclipse/emf/ecp/view/group/model" xmlns:org.eclipse.emf.ecp.view.horizontal.model="http://org/eclipse/emf/ecp/view/horizontal/model" xmlns:org.eclipse.emf.ecp.view.label.model="http://org/eclipse/emf/ecp/view/label/model" xmlns:org.eclipse.emf.ecp.view.model="http://org/eclipse/emf/ecp/view/model/170" xmlns:org.eclipse.emf.ecp.view.vertical.model="http://org/eclipse/emf/ecp/view/vertical/model" xmi:id="_NArM4KS_EeWGjpaobu8CIA" name="SimulationProperties" ecorePath="/net.bhl.cdt.paxelerate/model/cabin.ecore">
+<org.eclipse.emf.ecp.view.model:View xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.emf.ecp.view.group.model="http://org/eclipse/emf/ecp/view/group/model" xmlns:org.eclipse.emf.ecp.view.horizontal.model="http://org/eclipse/emf/ecp/view/horizontal/model" xmlns:org.eclipse.emf.ecp.view.label.model="http://org/eclipse/emf/ecp/view/label/model" xmlns:org.eclipse.emf.ecp.view.model="http://org/eclipse/emf/ecp/view/model/170" xmlns:org.eclipse.emf.ecp.view.vertical.model="http://org/eclipse/emf/ecp/view/vertical/model" xmi:id="_NArM4KS_EeWGjpaobu8CIA" name="SimulationProperties" ecorePath="/net.bhl.cdt.paxelerate.model/model/cabin.ecore">
   <rootEClass href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties"/>
   <children xsi:type="org.eclipse.emf.ecp.view.label.model:Label" xmi:id="_1g2agKTAEeWGjpaobu8CIA" name="Be sure to recreate all passengers when editing this values!" readonly="true"/>
-  <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout" xmi:id="_OjJsQKS_EeWGjpaobu8CIA">
-    <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_QJ7c0KS_EeWGjpaobu8CIA">
+  <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout" xmi:id="_bX4vkOt3EeWI07VLAZFAFw">
+    <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_cnxqIOt3EeWI07VLAZFAFw">
       <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_Van6YKS_EeWGjpaobu8CIA" name="General">
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAveWqS_EeWGjpaobu8CIA" name="Control passengersBoardingPerMinute">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAveW6S_EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/passengersBoardingPerMinute"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFbqS_EeWGjpaobu8CIA" name="Control percentageOfWomen">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAwFb6S_EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/percentageOfWomen"/>
-          </domainModelReference>
-        </children>
         <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout" xmi:id="_ul4B4KS_EeWGjpaobu8CIA">
           <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_u--eYKS_EeWGjpaobu8CIA">
             <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAveVqS_EeWGjpaobu8CIA" name="Control useFoldableSeats">
@@ -41,164 +31,43 @@
             </children>
           </children>
         </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFjqS_EeWGjpaobu8CIA" name="Control sorting">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAwFj6S_EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/sorting"/>
-          </domainModelReference>
-        </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAveUqS_EeWGjpaobu8CIA" name="Control numberOfSimulationLoops">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAveU6S_EeWGjpaobu8CIA">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_g0kh4NVWEeWEPo3DdOyvxA">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/numberOfSimulationLoops"/>
           </domainModelReference>
         </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFkKS_EeWGjpaobu8CIA" name="Control simulationSpeedFactor">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAwFkaS_EeWGjpaobu8CIA">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_iEmmYNVWEeWEPo3DdOyvxA">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/simulationSpeedFactor"/>
           </domainModelReference>
         </children>
       </children>
     </children>
-    <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_QjyuUKS_EeWGjpaobu8CIA">
-      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_Vok20KS_EeWGjpaobu8CIA" name="Luggage Stowing">
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFcKS_EeWGjpaobu8CIA" name="Control passengerLuggageStowTimeMean">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAwFcaS_EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/passengerLuggageStowTimeMean"/>
+    <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_dNtowOt3EeWI07VLAZFAFw">
+      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_QMcK0Ot3EeWI07VLAZFAFw" name="Passenger">
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAveWqS_EeWGjpaobu8CIA" name="Control passengersBoardingPerMinute">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_cJLw0NVWEeWEPo3DdOyvxA">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/passengersBoardingPerMinute"/>
           </domainModelReference>
         </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFcqS_EeWGjpaobu8CIA" name="Control passengerLuggageStowTimeDeviation">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAwFc6S_EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/passengerLuggageStowTimeDeviation"/>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFjqS_EeWGjpaobu8CIA" name="Control sorting">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_fNB8UNVWEeWEPo3DdOyvxA">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/sorting"/>
           </domainModelReference>
         </children>
-      </children>
-    </children>
-  </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_PMztQKS_EeWGjpaobu8CIA" name="Luggage Properties">
-    <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout" xmi:id="_S_cRYKS_EeWGjpaobu8CIA">
-      <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_T96r0KS_EeWGjpaobu8CIA">
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFhqS_EeWGjpaobu8CIA" name="Control percentageOfPassengersWithNoLuggage">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAwFh6S_EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/percentageOfPassengersWithNoLuggage"/>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_CX7SEOt3EeWI07VLAZFAFw" name="Control seatInterferenceStandingUpPassengerWaitingTime">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_CX7SEet3EeWI07VLAZFAFw">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/seatInterferenceStandingUpPassengerWaitingTime"/>
           </domainModelReference>
         </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFiKS_EeWGjpaobu8CIA" name="Control percentageOfPassengersWithSmallLuggage">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAwFiaS_EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/percentageOfPassengersWithSmallLuggage"/>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_CYFDEOt3EeWI07VLAZFAFw" name="Control seatInterferenceProcessTime">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_CYFDEet3EeWI07VLAZFAFw">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/seatInterferenceProcessTime"/>
           </domainModelReference>
         </children>
-      </children>
-      <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_UZUOYKS_EeWGjpaobu8CIA">
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFiqS_EeWGjpaobu8CIA" name="Control percentageOfPassengersWithMediumLuggage">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAwFi6S_EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/percentageOfPassengersWithMediumLuggage"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFjKS_EeWGjpaobu8CIA" name="Control percentageOfPassengersWithBigLuggage">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAwFjaS_EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/percentageOfPassengersWithBigLuggage"/>
-          </domainModelReference>
-        </children>
-      </children>
-    </children>
-  </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.label.model:Label" xmi:id="_3zl5MKTAEeWGjpaobu8CIA"/>
-  <children xsi:type="org.eclipse.emf.ecp.view.label.model:Label" xmi:id="_4zvHkKTAEeWGjpaobu8CIA" name="These are the Gaussian Normal Distribution values! " style="H7"/>
-  <children xsi:type="org.eclipse.emf.ecp.view.label.model:Label" xmi:id="_5SCNIKTAEeWGjpaobu8CIA" name="The deviation values refer to the 5 and 95 percent values." style="H7"/>
-  <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout" xmi:id="_OyyDsKS_EeWGjpaobu8CIA">
-    <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_RfdFUKS_EeWGjpaobu8CIA" name="Male Properties">
-      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_-ze48KS_EeWGjpaobu8CIA" name="Width Properties">
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFdKS_EeWGjpaobu8CIA" name="Control passengerWidthMeanFemale">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAwFdaS_EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/passengerWidthMeanFemale"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFdqS_EeWGjpaobu8CIA" name="Control passengerWidthDeviationFemale">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAwFd6S_EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/passengerWidthDeviationFemale"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.label.model:Label" xmi:id="_XkO1wKTAEeWGjpaobu8CIA"/>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAveXKS_EeWGjpaobu8CIA" name="Control passengerWidthMeanMale">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAveXaS_EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/passengerWidthMeanMale"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFYKS_EeWGjpaobu8CIA" name="Control passengerWidthDeviationMale">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAwFYaS_EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/passengerWidthDeviationMale"/>
-          </domainModelReference>
-        </children>
-      </children>
-      <children xsi:type="org.eclipse.emf.ecp.view.label.model:Label" xmi:id="_Nbx_EKTAEeWGjpaobu8CIA"/>
-      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="__Ih74KS_EeWGjpaobu8CIA" name="Depth Properties">
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFgKS_EeWGjpaobu8CIA" name="Control passengerDepthMeanFemale">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAwFgaS_EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/passengerDepthMeanFemale"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFgqS_EeWGjpaobu8CIA" name="Control passengerDepthDeviationFemale">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAwFg6S_EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/passengerDepthDeviationFemale"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.label.model:Label" xmi:id="_e8nYkKTAEeWGjpaobu8CIA"/>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFaqS_EeWGjpaobu8CIA" name="Control passengerDepthMeanMale">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAwFa6S_EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/passengerDepthMeanMale"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFbKS_EeWGjpaobu8CIA" name="Control passengerDepthDeviationMale">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAwFbaS_EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/passengerDepthDeviationMale"/>
-          </domainModelReference>
-        </children>
-      </children>
-    </children>
-    <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_RwsmUKS_EeWGjpaobu8CIA">
-      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="__sxRYKS_EeWGjpaobu8CIA" name="Weight Properties">
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFeKS_EeWGjpaobu8CIA" name="Control passengerWeightMeanFemale">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAwFeaS_EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/passengerWeightMeanFemale"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFeqS_EeWGjpaobu8CIA" name="Control passengerWeightDeviationFemale">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAwFe6S_EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/passengerWeightDeviationFemale"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.label.model:Label" xmi:id="_pfx1UKTAEeWGjpaobu8CIA"/>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFYqS_EeWGjpaobu8CIA" name="Control passengerWeightMeanMale">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAwFY6S_EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/passengerWeightMeanMale"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFZKS_EeWGjpaobu8CIA" name="Control passengerWeightDeviationMale">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAwFZaS_EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/passengerWeightDeviationMale"/>
-          </domainModelReference>
-        </children>
-      </children>
-      <children xsi:type="org.eclipse.emf.ecp.view.label.model:Label" xmi:id="_OBO1gKTAEeWGjpaobu8CIA"/>
-      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_AQxWUKTAEeWGjpaobu8CIA" name="Height Properties">
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFfKS_EeWGjpaobu8CIA" name="Control passengerHeightMeanFemale">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAwFfaS_EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/passengerHeightMeanFemale"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFfqS_EeWGjpaobu8CIA" name="Control passengerHeightDeviationFemale">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAwFf6S_EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/passengerHeightDeviationFemale"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.label.model:Label" xmi:id="_u5Y-UKTAEeWGjpaobu8CIA"/>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFZqS_EeWGjpaobu8CIA" name="Control passengerHeightMeanMale">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAwFZ6S_EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/passengerHeightMeanMale"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFaKS_EeWGjpaobu8CIA" name="Control passengerHeightDeviationMale">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAwFaaS_EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/passengerHeightDeviationMale"/>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_rxHyYOt4EeWI07VLAZFAFw" name="Control threadSleepTimeDefault">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_rxHyYet4EeWI07VLAZFAFw">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/threadSleepTimeDefault"/>
           </domainModelReference>
         </children>
       </children>

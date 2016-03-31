@@ -34,7 +34,7 @@ import net.bhl.cdt.paxelerate.model.util.CabinValidator;
  *
  * @generated
  */
-public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements
+public abstract class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements
 		PhysicalObject {
 	/**
 	 * The default value of the '{@link #getYPosition() <em>YPosition</em>}' attribute.
@@ -315,8 +315,8 @@ public class PhysicalObjectImpl extends MinimalEObjectImpl.Container implements
 //			CabinViewPart cabinViewPart = (CabinViewPart) page
 //					.findView("net.bhl.cdt.model.cabin.cabinview");
 //
-//			width = cabinViewPart.getCabin().getCabinWidth();
-//			length = cabinViewPart.getCabin().getCabinLength();
+//			width = cabinViewPart.getCabin().getYDimension();
+//			length = cabinViewPart.getCabin().getXDimension();
 		} catch (NullPointerException e) {
 			// BLA BLA
 		}

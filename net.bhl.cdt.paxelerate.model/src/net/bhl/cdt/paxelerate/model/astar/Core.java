@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2014-2015 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ***************************************************************************************/
@@ -31,11 +31,13 @@ public class Core {
 	 *            is the AreaMap that is fed into the algorithm
 	 */
 	public Core(AreaMap map, CostMap costmap, Agent agent) {
+
 		this.map = map;
 		this.agent = agent;
 		this.costmap = costmap;
 		closedList = new ArrayList<Node>();
 		openList = new SortedNodeList();
+
 		calculateShortestPath();
 	}
 
@@ -67,8 +69,6 @@ public class Core {
 
 		/* while we haven't reached the goal yet */
 		while (openList.size() != 0) {
-			// System.out.println(map.getNode(agent.getStart()).getProperty()
-			// .toString());
 
 			/*
 			 * get the first Node from non-searched Node list, sorted by lowest
@@ -80,7 +80,7 @@ public class Core {
 			 * check if our current Node location is the goal Node. If it is, we
 			 * are done.
 			 */
-			if (current.getPosition().compareTo(agent.getGoal() )== 0) {
+			if (current.getPosition().equals(agent.getGoal())) {
 
 				/* the start node does never have a previous node! */
 				if (map.getNode(agent.getStart()) != null) {
@@ -103,7 +103,7 @@ public class Core {
 			 * should be our next step
 			 */
 			for (Node neighbor : current.getNeighborList()) {
-				boolean neighborIsBetter;
+				boolean neighborIsBetter = false;
 
 				/*
 				 * if we have already searched this Node, don't bother and
@@ -117,21 +117,20 @@ public class Core {
 				if (neighbor.getProperty() != Property.OBSTACLE) {
 
 					/* calculate the neighbors distance from start */
-					if (map.getNode(agent.getStart()) == null) {
-						// System.out.println("start ist null");
-					}
+					double neighborDistanceFromStart = map.getDistanceBetween(
+							map.getNode(agent.getStart()), neighbor);
 
-					int neighborDistanceFromStart = (int) map
-							.getDistanceBetween(map.getNode(agent.getStart()),
-									neighbor);
+					/* calculate the neighbors distance from start */
+					double currentDistanceFromStart = map.getDistanceBetween(
+							map.getNode(agent.getStart()), current);
 
-					/* calculate the neighbors cost from start */
-					int neighborCostFromStart = costmap.getCost(neighbor
-							.getPosition());
+					/* calculate the neighbors cost */
+					int neighborCostFromStart = costmap
+							.getCost(neighbor.getPosition());
 
 					/* calculate the current cost from start for comparison */
-					int currentCostFromStart = costmap.getCost(current
-							.getPosition());
+					int currentCostFromStart = costmap
+							.getCost(current.getPosition());
 
 					/* add neighbor to the open list if it is not there */
 					if (!openList.contains(neighbor)) {
@@ -141,20 +140,31 @@ public class Core {
 						/* it is better if the other node is cheaper */
 					} else if (neighborCostFromStart < currentCostFromStart) {
 						neighborIsBetter = true;
+
+						/*
+						 * it is better if the other node is closer if they have
+						 * the same cost
+						 */
+					} else if (neighborCostFromStart == currentCostFromStart) {
+
+						if (neighborDistanceFromStart < currentDistanceFromStart) {
+							neighborIsBetter = true;
+						}
+
+						/* if no criteria is matched, the node is worse */
 					} else {
 						neighborIsBetter = false;
 					}
 
-					/*
-					 * TODO: check if passenger dimensions allow this specific
-					 * node.
-					 */
+					// TODO: check if passenger dimensions allow this specific
+					// node.
 
 					/* set neighbors parameters if it is better */
 					if (neighborIsBetter) {
 						neighbor.setPreviousNode(current);
 						neighbor.setCostFromStart(neighborCostFromStart);
-						neighbor.setDistanceFromStart(neighborDistanceFromStart);
+						neighbor.setDistanceFromStart(
+								neighborDistanceFromStart);
 					}
 				}
 			}
@@ -180,24 +190,10 @@ public class Core {
 	 * @return the path
 	 */
 	private synchronized Path reconstructPath(Node node) {
-
 		Path path = new Path();
-		try {
-
-			while (node.getPreviousNode() != null && node != null) {
-
-				if (node != null) {
-					path.prependWayPoint(node);
-				}
-				if (node.getPreviousNode() != null) {
-					node = node.getPreviousNode();
-				}
-
-			}
-		} catch (NullPointerException e) {
-			System.out
-					.println("###### !NullPointerException ERROR! ###### !Core - reconstructPath()! ######");
-			e.printStackTrace();
+		while (node.getPreviousNode() != null && node != null) {
+			path.prependWayPoint(node);
+			node = node.getPreviousNode();
 		}
 		return path;
 	}
