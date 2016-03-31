@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import net.bhl.cdt.paxelerate.model.CabinPackage;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.TravelClass;
+import net.bhl.cdt.paxelerate.model.TravelOption;
 import net.bhl.cdt.paxelerate.model.util.CabinValidator;
 import net.bhl.cdt.paxelerate.util.input.InputChecker;
 
@@ -42,11 +43,12 @@ import net.bhl.cdt.paxelerate.util.input.InputChecker;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.TravelClassImpl#getName <em>Name</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.TravelClassImpl#getRowStructure <em>Row Structure</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.TravelClassImpl#getLoadFactor <em>Load Factor</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.TravelClassImpl#getClassType <em>Class Type</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class TravelClassImpl extends MinimalEObjectImpl.Container implements
+public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 		TravelClass {
 	/**
 	 * The cached value of the '{@link #getRows() <em>Rows</em>}' containment reference list.
@@ -228,6 +230,26 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 	 * @ordered
 	 */
 	protected int loadFactor = LOAD_FACTOR_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getClassType() <em>Class Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClassType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final TravelOption CLASS_TYPE_EDEFAULT = TravelOption.ECONOMY_CLASS;
+
+	/**
+	 * The cached value of the '{@link #getClassType() <em>Class Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClassType()
+	 * @generated
+	 * @ordered
+	 */
+	protected TravelOption classType = CLASS_TYPE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -435,6 +457,27 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TravelOption getClassType() {
+		return classType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setClassType(TravelOption newClassType) {
+		TravelOption oldClassType = classType;
+		classType = newClassType == null ? CLASS_TYPE_EDEFAULT : newClassType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.TRAVEL_CLASS__CLASS_TYPE, oldClassType, classType));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated NOT
@@ -530,6 +573,8 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 				return getRowStructure();
 			case CabinPackage.TRAVEL_CLASS__LOAD_FACTOR:
 				return getLoadFactor();
+			case CabinPackage.TRAVEL_CLASS__CLASS_TYPE:
+				return getClassType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -573,6 +618,9 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.TRAVEL_CLASS__LOAD_FACTOR:
 				setLoadFactor((Integer)newValue);
 				return;
+			case CabinPackage.TRAVEL_CLASS__CLASS_TYPE:
+				setClassType((TravelOption)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -614,6 +662,9 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.TRAVEL_CLASS__LOAD_FACTOR:
 				setLoadFactor(LOAD_FACTOR_EDEFAULT);
 				return;
+			case CabinPackage.TRAVEL_CLASS__CLASS_TYPE:
+				setClassType(CLASS_TYPE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -645,6 +696,8 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 				return ROW_STRUCTURE_EDEFAULT == null ? rowStructure != null : !ROW_STRUCTURE_EDEFAULT.equals(rowStructure);
 			case CabinPackage.TRAVEL_CLASS__LOAD_FACTOR:
 				return loadFactor != LOAD_FACTOR_EDEFAULT;
+			case CabinPackage.TRAVEL_CLASS__CLASS_TYPE:
+				return classType != CLASS_TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -692,6 +745,8 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 		result.append(rowStructure);
 		result.append(", loadFactor: ");
 		result.append(loadFactor);
+		result.append(", classType: ");
+		result.append(classType);
 		result.append(')');
 		return result.toString();
 	}

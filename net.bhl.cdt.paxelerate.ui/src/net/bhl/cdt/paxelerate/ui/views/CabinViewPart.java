@@ -24,12 +24,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 
 import net.bhl.cdt.model.util.ModelHelper;
-import net.bhl.cdt.paxelerate.model.BusinessClass;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
 import net.bhl.cdt.paxelerate.model.Curtain;
 import net.bhl.cdt.paxelerate.model.Door;
-import net.bhl.cdt.paxelerate.model.FirstClass;
 import net.bhl.cdt.paxelerate.model.Galley;
 import net.bhl.cdt.paxelerate.model.Lavatory;
 import net.bhl.cdt.paxelerate.model.ObjectOption;
@@ -217,9 +215,9 @@ public class CabinViewPart extends ViewPart {
 				adapt(Axis.Y, cabin.getXDimension()));
 
 		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
-			if (seat.getTravelClass() instanceof FirstClass) {
+			if (seat.getTravelClass().getClassType() == TravelOption.FIRST_CLASS) {
 				gc.drawImage(firstSeat, get(seat, Axis.X), get(seat, Axis.Y));
-			} else if (seat.getTravelClass() instanceof BusinessClass) {
+			} else if (seat.getTravelClass().getClassType() == TravelOption.BUSINESS_CLASS) {
 				gc.drawImage(businessSeat, get(seat, Axis.X), get(seat, Axis.Y));
 			} else {
 				gc.drawImage(economySeat, get(seat, Axis.X), get(seat, Axis.Y));

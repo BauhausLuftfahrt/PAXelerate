@@ -40,40 +40,13 @@ public interface CabinFactory extends EFactory {
 	Row createRow();
 
 	/**
-	 * Returns a new object of class '<em>Business Class</em>'.
+	 * Returns a new object of class '<em>Travel Class</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Business Class</em>'.
+	 * @return a new object of class '<em>Travel Class</em>'.
 	 * @generated
 	 */
-	BusinessClass createBusinessClass();
-
-	/**
-	 * Returns a new object of class '<em>First Class</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>First Class</em>'.
-	 * @generated
-	 */
-	FirstClass createFirstClass();
-
-	/**
-	 * Returns a new object of class '<em>Economy Class</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Economy Class</em>'.
-	 * @generated
-	 */
-	EconomyClass createEconomyClass();
-
-	/**
-	 * Returns a new object of class '<em>Premium Economy Class</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Premium Economy Class</em>'.
-	 * @generated
-	 */
-	PremiumEconomyClass createPremiumEconomyClass();
+	TravelClass createTravelClass();
 
 	/**
 	 * Returns a new object of class '<em>Seat</em>'.

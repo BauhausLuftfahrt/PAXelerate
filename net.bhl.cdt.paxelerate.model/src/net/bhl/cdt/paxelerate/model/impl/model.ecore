@@ -44,7 +44,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rowNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="offsetInRow" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TravelClass" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="TravelClass">
     <eOperations name="tooManyPassengers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="chain" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context">
@@ -82,11 +82,9 @@
         defaultValueLiteral="3-3"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="loadFactor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="classType" lowerBound="1"
+        eType="#//TravelOption" defaultValueLiteral="EconomyClass"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BusinessClass" eSuperTypes="#//TravelClass"/>
-  <eClassifiers xsi:type="ecore:EClass" name="FirstClass" eSuperTypes="#//TravelClass"/>
-  <eClassifiers xsi:type="ecore:EClass" name="EconomyClass" eSuperTypes="#//TravelClass"/>
-  <eClassifiers xsi:type="ecore:EClass" name="PremiumEconomyClass" eSuperTypes="#//TravelClass"/>
   <eClassifiers xsi:type="ecore:EClass" name="Seat" eSuperTypes="#//PhysicalObject">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatBlocked" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="crewSeat" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
