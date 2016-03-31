@@ -21,6 +21,7 @@ import net.bhl.cdt.paxelerate.model.FirstClass;
 import net.bhl.cdt.paxelerate.model.Galley;
 import net.bhl.cdt.paxelerate.model.Lavatory;
 import net.bhl.cdt.paxelerate.model.MainDoor;
+import net.bhl.cdt.paxelerate.model.ObjectOption;
 import net.bhl.cdt.paxelerate.model.PhysicalObject;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
@@ -189,8 +190,7 @@ public class ConstructionLibrary {
 	 * @param physicalObjectClass
 	 * @param xDimension
 	 */
-	public <P extends PhysicalObject> void createPhysicalObject(
-			Class<P> physicalObjectClass, int xDimension) {
+	public void createPhysicalObject(ObjectOption option, int xDimension) {
 		int currentPosition = 0;
 		splitSeatString(seatStructure);
 		if (doItOnce) {
@@ -206,20 +206,22 @@ public class ConstructionLibrary {
 
 		for (int k = 0; k < rowPartsInt.size(); k++) {
 			PhysicalObject physialObject = null;
-			switch (physicalObjectClass.getSimpleName()) {
-			case "Lavatory":
+			switch (option) {
+			case LAVATORY:
 				physialObject = CabinFactory.eINSTANCE.createLavatory();
 				cabin.getLavatories().add((Lavatory) physialObject);
 				physialObject.setName(" " + lavatoryCount);
 				physialObject.setId(lavatoryCount);
 				lavatoryCount++;
 				break;
-			case "Galley":
+			case GALLEY:
 				physialObject = CabinFactory.eINSTANCE.createGalley();
 				cabin.getGalleys().add((Galley) physialObject);
 				physialObject.setName(" " + galleyCount);
 				physialObject.setId(galleyCount);
 				galleyCount++;
+				break;
+			default:
 				break;
 			}
 			physialObject.setXDimension(xDimension);
