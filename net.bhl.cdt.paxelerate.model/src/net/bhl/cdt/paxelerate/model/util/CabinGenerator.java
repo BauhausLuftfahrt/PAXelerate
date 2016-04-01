@@ -14,17 +14,13 @@ import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
 import net.bhl.cdt.paxelerate.model.Curtain;
 import net.bhl.cdt.paxelerate.model.Door;
-import net.bhl.cdt.paxelerate.model.EmergencyExit;
+import net.bhl.cdt.paxelerate.model.DoorOption;
 import net.bhl.cdt.paxelerate.model.Galley;
 import net.bhl.cdt.paxelerate.model.Lavatory;
-import net.bhl.cdt.paxelerate.model.MainDoor;
 import net.bhl.cdt.paxelerate.model.ObjectOption;
 import net.bhl.cdt.paxelerate.model.PhysicalObject;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
-import net.bhl.cdt.paxelerate.model.Stairway;
-import net.bhl.cdt.paxelerate.model.StairwayDirection;
-import net.bhl.cdt.paxelerate.model.StandardDoor;
 import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.TravelOption;
 import net.bhl.cdt.paxelerate.util.input.InputChecker;
@@ -46,8 +42,7 @@ public class CabinGenerator {
 	private Cabin cabin;
 
 	private int seatCount, rowCount, globalSeatPositionY, globalSeatPositionX,
-			seats, seatsInRow, seatPitch, seatHelper, passengers, numbAisles,
-			galleyCount = 1, lavatoryCount = 1, curtainCount = 1;
+			seats, seatsInRow, seatPitch, seatHelper, passengers, numbAisles;
 
 	// private final static int DISTANCE_INCREMENT_DOOR = 20;
 
@@ -202,20 +197,19 @@ public class CabinGenerator {
 			case LAVATORY:
 				physialObject = CabinFactory.eINSTANCE.createLavatory();
 				cabin.getLavatories().add((Lavatory) physialObject);
-				physialObject.setName(" " + lavatoryCount);
-				physialObject.setId(lavatoryCount);
-				lavatoryCount++;
+				physialObject.setName(" " + cabin.getLavatories().size() + 1);
+				physialObject.setId(cabin.getLavatories().size() + 1);
 				break;
 			case GALLEY:
 				physialObject = CabinFactory.eINSTANCE.createGalley();
 				cabin.getGalleys().add((Galley) physialObject);
-				physialObject.setName(" " + galleyCount);
-				physialObject.setId(galleyCount);
-				galleyCount++;
+				physialObject.setName(" " + cabin.getGalleys().size() + 1);
+				physialObject.setId(cabin.getGalleys().size() + 1);
 				break;
 			default:
 				break;
 			}
+
 			physialObject.setXDimension(xDimension);
 			physialObject.setXPosition(globalSeatPositionX);
 			try {
@@ -396,50 +390,38 @@ public class CabinGenerator {
 	 * @param yPosition
 	 *            set it to -1 to ignore value, only important for emergency
 	 *            exit.
-	 * @param <T>
-	 *            is a helper class
 	 */
-	public <T extends Door> void createDoor(Class<T> typeDoor,
-			boolean symmetrical, int id, int yPosition) {
-		Boolean mainDoorAlreadyExists = false;
-		if (!mainDoorAlreadyExists) {
-			for (Door testDoor : cabin.getDoors()) {
-				if (typeDoor.getSimpleName().equals("MainDoor")
-						&& (testDoor instanceof MainDoor)) {
-					Log.add(this, "You created more than one main door!");
-					mainDoorAlreadyExists = true;
-				}
-			}
-		}
-		Door newDoor = null;
-		if (typeDoor.getSimpleName().equals("MainDoor")) {
-			MainDoor mainDoor = CabinFactory.eINSTANCE.createMainDoor();
-			newDoor = mainDoor;
+	public void createDoor(DoorOption option, boolean symmetrical, int id,
+			int yPosition) {
+
+		Door newDoor = CabinFactory.eINSTANCE.createDoor();
+
+		newDoor.setDoorOption(option);
+		newDoor.setId(id);
+		newDoor.setOnBothSides(symmetrical);
+
+		switch (option) {
+		case MAIN_DOOR:
 			newDoor.setWidth(80);
 			newDoor.setXPosition(globalSeatPositionX);
 			globalSeatPositionX += 80;
-		} else if (typeDoor.getSimpleName().equals("StandardDoor")) {
-			StandardDoor standardDoor = CabinFactory.eINSTANCE
-					.createStandardDoor();
-			newDoor = standardDoor;
+			break;
+		case STANDARD_DOOR:
 			newDoor.setWidth(80);
 			newDoor.setXPosition(globalSeatPositionX);
 			newDoor.setIsActive(false);
 			globalSeatPositionX += 80;
-		} else {
-			EmergencyExit emergencyExit = CabinFactory.eINSTANCE
-					.createEmergencyExit();
-			newDoor = emergencyExit;
+			break;
+		case EMERGENCY_EXIT:
 			newDoor.setWidth(50);
 			newDoor.setXPosition(yPosition);
 			newDoor.setIsActive(false);
-			if (yPosition < 0) {
-				Log.add(this, "Emergency Exit has a illegal yPosition.");
-			}
+			break;
+		default:
+			break;
 		}
+
 		cabin.getDoors().add(newDoor);
-		newDoor.setId(id);
-		newDoor.setOnBothSides(symmetrical);
 	}
 
 	/**
@@ -460,7 +442,7 @@ public class CabinGenerator {
 			newCurtain.setCurtainOpen(openOrNot);
 			newCurtain.setName(name + " (Part " + (k + 1) + ")");
 			newCurtain.setXDimension(10);
-			newCurtain.setId(curtainCount);
+			newCurtain.setId(cabin.getCurtains().size() + 1);
 			newCurtain.setXPosition(globalSeatPositionX + 10);
 			newCurtain.setYDimension(rowPartsInt.get(k)
 					* (passengerClass.getYDimensionOfSeats() + seatHelper)
@@ -468,35 +450,7 @@ public class CabinGenerator {
 			newCurtain.setYPosition(currentCurtainPosition);
 			currentCurtainPosition = currentCurtainPosition
 					+ newCurtain.getYDimension() + cabin.getAisleWidth();
-			curtainCount++;
 		}
 		globalSeatPositionX += 40;
 	}
-
-	/**
-	 * This method creates a stairway.
-	 * 
-	 * @param direction
-	 *            is the direction of the stairway
-	 * @param xPosition
-	 *            is the x position of the stairway
-	 * @param yPostion
-	 *            is the y position of the stairway
-	 * @param xDimension
-	 *            is the x dimension of the stairway
-	 * @param yDimension
-	 *            is the y dimension of the stairway
-	 */
-
-	public void createStairway(StairwayDirection direction, int xPosition,
-			int yPostion, int xDimension, int yDimension) {
-		Stairway newStairway = CabinFactory.eINSTANCE.createStairway();
-		cabin.getStairways().add(newStairway);
-		newStairway.setYPosition(xPosition);
-		newStairway.setXPosition(yPostion);
-		newStairway.setDirection(direction);
-		newStairway.setYDimension(xDimension);
-		newStairway.setXDimension(yDimension);
-	}
-
 }

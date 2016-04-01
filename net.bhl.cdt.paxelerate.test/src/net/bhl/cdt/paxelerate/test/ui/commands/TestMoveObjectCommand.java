@@ -12,10 +12,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import net.bhl.cdt.paxelerate.model.Cabin;
-import net.bhl.cdt.paxelerate.model.EmergencyExit;
-import net.bhl.cdt.paxelerate.model.MainDoor;
+import net.bhl.cdt.paxelerate.model.DoorOption;
 import net.bhl.cdt.paxelerate.model.ObjectOption;
-import net.bhl.cdt.paxelerate.model.StandardDoor;
 import net.bhl.cdt.paxelerate.model.TravelOption;
 import net.bhl.cdt.paxelerate.model.util.CabinGenerator;
 
@@ -40,10 +38,10 @@ public class TestMoveObjectCommand {
 		/* ------- Cabin Construction starts here! --------- */
 		constructor = new CabinGenerator(cabin);
 		// constructor.clearCabin();
-		constructor.createDoor(EmergencyExit.class, true, 3, 935);
-		constructor.createDoor(EmergencyExit.class, true, 4, 1228);
+		constructor.createDoor(DoorOption.EMERGENCY_EXIT, true, 3, 935);
+		constructor.createDoor(DoorOption.EMERGENCY_EXIT, true, 4, 1228);
 		constructor.createPhysicalObject(ObjectOption.LAVATORY, 100);
-		constructor.createDoor(MainDoor.class, true, 1, -1);
+		constructor.createDoor(DoorOption.MAIN_DOOR, true, 1, -1);
 		constructor.createPhysicalObject(ObjectOption.GALLEY, 100);
 
 		/*
@@ -55,7 +53,7 @@ public class TestMoveObjectCommand {
 		}
 
 		constructor.createPhysicalObject(ObjectOption.GALLEY, 100);
-		constructor.createDoor(StandardDoor.class, true, 2, -1);
+		constructor.createDoor(DoorOption.STANDARD_DOOR, true, 2, -1);
 		constructor.createPhysicalObject(ObjectOption.LAVATORY, 100);
 		cabin = constructor.getCabin();
 		// cabin.setUsePresetSettings(false);

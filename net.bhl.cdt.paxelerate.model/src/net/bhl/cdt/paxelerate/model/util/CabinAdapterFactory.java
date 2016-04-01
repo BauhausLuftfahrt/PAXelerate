@@ -119,18 +119,6 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 				return createDoorAdapter();
 			}
 			@Override
-			public Adapter caseMainDoor(MainDoor object) {
-				return createMainDoorAdapter();
-			}
-			@Override
-			public Adapter caseEmergencyExit(EmergencyExit object) {
-				return createEmergencyExitAdapter();
-			}
-			@Override
-			public Adapter caseStandardDoor(StandardDoor object) {
-				return createStandardDoorAdapter();
-			}
-			@Override
 			public Adapter caseSimulationProperties(SimulationProperties object) {
 				return createSimulationPropertiesAdapter();
 			}
@@ -335,48 +323,6 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStowageAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.paxelerate.model.MainDoor <em>Main Door</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see net.bhl.cdt.paxelerate.model.MainDoor
-	 * @generated
-	 */
-	public Adapter createMainDoorAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.paxelerate.model.EmergencyExit <em>Emergency Exit</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see net.bhl.cdt.paxelerate.model.EmergencyExit
-	 * @generated
-	 */
-	public Adapter createEmergencyExitAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.paxelerate.model.StandardDoor <em>Standard Door</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see net.bhl.cdt.paxelerate.model.StandardDoor
-	 * @generated
-	 */
-	public Adapter createStandardDoorAdapter() {
 		return null;
 	}
 

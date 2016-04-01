@@ -151,27 +151,6 @@ public class CabinSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CabinPackage.MAIN_DOOR: {
-				MainDoor mainDoor = (MainDoor)theEObject;
-				T result = caseMainDoor(mainDoor);
-				if (result == null) result = caseDoor(mainDoor);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CabinPackage.EMERGENCY_EXIT: {
-				EmergencyExit emergencyExit = (EmergencyExit)theEObject;
-				T result = caseEmergencyExit(emergencyExit);
-				if (result == null) result = caseDoor(emergencyExit);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CabinPackage.STANDARD_DOOR: {
-				StandardDoor standardDoor = (StandardDoor)theEObject;
-				T result = caseStandardDoor(standardDoor);
-				if (result == null) result = caseDoor(standardDoor);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case CabinPackage.SIMULATION_PROPERTIES: {
 				SimulationProperties simulationProperties = (SimulationProperties)theEObject;
 				T result = caseSimulationProperties(simulationProperties);
@@ -377,51 +356,6 @@ public class CabinSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseStowage(Stowage object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Main Door</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Main Door</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseMainDoor(MainDoor object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Emergency Exit</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Emergency Exit</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEmergencyExit(EmergencyExit object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Standard Door</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Standard Door</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseStandardDoor(StandardDoor object) {
 		return null;
 	}
 

@@ -131,12 +131,6 @@ public class CabinValidator extends EObjectValidator {
 				return validateStowage((Stowage)value, diagnostics, context);
 			case CabinPackage.DOOR:
 				return validateDoor((Door)value, diagnostics, context);
-			case CabinPackage.MAIN_DOOR:
-				return validateMainDoor((MainDoor)value, diagnostics, context);
-			case CabinPackage.EMERGENCY_EXIT:
-				return validateEmergencyExit((EmergencyExit)value, diagnostics, context);
-			case CabinPackage.STANDARD_DOOR:
-				return validateStandardDoor((StandardDoor)value, diagnostics, context);
 			case CabinPackage.SIMULATION_PROPERTIES:
 				return validateSimulationProperties((SimulationProperties)value, diagnostics, context);
 			case CabinPackage.LUGGAGE_PROPERTIES:
@@ -161,6 +155,8 @@ public class CabinValidator extends EObjectValidator {
 				return validateTravelOption((TravelOption)value, diagnostics, context);
 			case CabinPackage.OBJECT_OPTION:
 				return validateObjectOption((ObjectOption)value, diagnostics, context);
+			case CabinPackage.DOOR_OPTION:
+				return validateDoorOption((DoorOption)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -399,33 +395,6 @@ public class CabinValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMainDoor(MainDoor mainDoor, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(mainDoor, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateEmergencyExit(EmergencyExit emergencyExit, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(emergencyExit, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateStandardDoor(StandardDoor standardDoor, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(standardDoor, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateSimulationProperties(SimulationProperties simulationProperties, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(simulationProperties, diagnostics, context);
 	}
@@ -526,6 +495,15 @@ public class CabinValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateObjectOption(ObjectOption objectOption, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDoorOption(DoorOption doorOption, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

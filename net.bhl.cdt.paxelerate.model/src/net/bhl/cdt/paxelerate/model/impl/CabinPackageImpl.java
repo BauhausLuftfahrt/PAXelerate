@@ -125,27 +125,6 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass mainDoorEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass emergencyExitEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass standardDoorEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass simulationPropertiesEClass = null;
 
 	/**
@@ -224,6 +203,13 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	private EEnum objectOptionEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum doorOptionEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -734,6 +720,15 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getDoor_DoorOption() {
+        return (EAttribute)getDoor().getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSeat() {
 		if (seatEClass == null) {
 			seatEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(3);
@@ -1172,45 +1167,9 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getMainDoor() {
-		if (mainDoorEClass == null) {
-			mainDoorEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(13);
-		}
-		return mainDoorEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getEmergencyExit() {
-		if (emergencyExitEClass == null) {
-			emergencyExitEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(14);
-		}
-		return emergencyExitEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getStandardDoor() {
-		if (standardDoorEClass == null) {
-			standardDoorEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(15);
-		}
-		return standardDoorEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getSimulationProperties() {
 		if (simulationPropertiesEClass == null) {
-			simulationPropertiesEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(20);
+			simulationPropertiesEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(17);
 		}
 		return simulationPropertiesEClass;
 	}
@@ -1357,7 +1316,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EClass getLuggageProperties() {
 		if (luggagePropertiesEClass == null) {
-			luggagePropertiesEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(21);
+			luggagePropertiesEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(18);
 		}
 		return luggagePropertiesEClass;
 	}
@@ -1477,7 +1436,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EClass getSimulationResult() {
 		if (simulationResultEClass == null) {
-			simulationResultEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(22);
+			simulationResultEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(19);
 		}
 		return simulationResultEClass;
 	}
@@ -1543,7 +1502,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EClass getPassengerProperties() {
 		if (passengerPropertiesEClass == null) {
-			passengerPropertiesEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(25);
+			passengerPropertiesEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(22);
 		}
 		return passengerPropertiesEClass;
 	}
@@ -1783,7 +1742,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EEnum getStairwayDirection() {
 		if (stairwayDirectionEEnum == null) {
-			stairwayDirectionEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(17);
+			stairwayDirectionEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(14);
 		}
 		return stairwayDirectionEEnum;
 	}
@@ -1795,7 +1754,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EEnum getAircraftType() {
 		if (aircraftTypeEEnum == null) {
-			aircraftTypeEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(18);
+			aircraftTypeEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(15);
 		}
 		return aircraftTypeEEnum;
 	}
@@ -1807,7 +1766,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EEnum getPassengerMood() {
 		if (passengerMoodEEnum == null) {
-			passengerMoodEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(19);
+			passengerMoodEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(16);
 		}
 		return passengerMoodEEnum;
 	}
@@ -1819,7 +1778,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EEnum getLuggageSize() {
 		if (luggageSizeEEnum == null) {
-			luggageSizeEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(23);
+			luggageSizeEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(20);
 		}
 		return luggageSizeEEnum;
 	}
@@ -1831,7 +1790,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EEnum getSortingStyle() {
 		if (sortingStyleEEnum == null) {
-			sortingStyleEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(24);
+			sortingStyleEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(21);
 		}
 		return sortingStyleEEnum;
 	}
@@ -1843,7 +1802,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EEnum getTravelOption() {
 		if (travelOptionEEnum == null) {
-			travelOptionEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(26);
+			travelOptionEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(23);
 		}
 		return travelOptionEEnum;
 	}
@@ -1855,7 +1814,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EEnum getObjectOption() {
 		if (objectOptionEEnum == null) {
-			objectOptionEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(27);
+			objectOptionEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(24);
 		}
 		return objectOptionEEnum;
 	}
@@ -1865,9 +1824,21 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getDoorOption() {
+		if (doorOptionEEnum == null) {
+			doorOptionEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(25);
+		}
+		return doorOptionEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getSex() {
 		if (sexEEnum == null) {
-			sexEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(16);
+			sexEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(13);
 		}
 		return sexEEnum;
 	}

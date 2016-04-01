@@ -167,7 +167,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="curtainOpen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Stowage" eSuperTypes="#//PhysicalObject"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Door" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="Door">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="xPosition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="onBothSides" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -178,10 +178,9 @@
         defaultValueLiteral="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="waitingPassengers" upperBound="-1"
         eType="#//Passenger"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="doorOption" lowerBound="1"
+        eType="#//DoorOption" defaultValueLiteral="StandardDoor"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MainDoor" eSuperTypes="#//Door"/>
-  <eClassifiers xsi:type="ecore:EClass" name="EmergencyExit" eSuperTypes="#//Door"/>
-  <eClassifiers xsi:type="ecore:EClass" name="StandardDoor" eSuperTypes="#//Door"/>
   <eClassifiers xsi:type="ecore:EEnum" name="Sex">
     <eLiterals name="male" value="1"/>
     <eLiterals name="female"/>
@@ -325,5 +324,10 @@
     <eLiterals name="Stairway" value="3"/>
     <eLiterals name="Curtain" value="4"/>
     <eLiterals name="Stowage" value="5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DoorOption">
+    <eLiterals name="MainDoor"/>
+    <eLiterals name="StandardDoor" value="1"/>
+    <eLiterals name="EmergencyExit" value="2"/>
   </eClassifiers>
 </ecore:EPackage>

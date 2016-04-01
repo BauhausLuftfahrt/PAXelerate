@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import net.bhl.cdt.paxelerate.model.CabinPackage;
 import net.bhl.cdt.paxelerate.model.Door;
+import net.bhl.cdt.paxelerate.model.DoorOption;
 import net.bhl.cdt.paxelerate.model.Passenger;
 
 /**
@@ -30,11 +31,12 @@ import net.bhl.cdt.paxelerate.model.Passenger;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.DoorImpl#getNumberOfSimultaneousPassengers <em>Number Of Simultaneous Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.DoorImpl#isIsActive <em>Is Active</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.DoorImpl#getWaitingPassengers <em>Waiting Passengers</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.DoorImpl#getDoorOption <em>Door Option</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class DoorImpl extends MinimalEObjectImpl.Container implements Door {
+public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	/**
 	 * The default value of the '{@link #getXPosition() <em>XPosition</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -164,6 +166,26 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 	 * @ordered
 	 */
 	protected EList<Passenger> waitingPassengers;
+
+	/**
+	 * The default value of the '{@link #getDoorOption() <em>Door Option</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDoorOption()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final DoorOption DOOR_OPTION_EDEFAULT = DoorOption.STANDARD_DOOR;
+
+	/**
+	 * The cached value of the '{@link #getDoorOption() <em>Door Option</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDoorOption()
+	 * @generated
+	 * @ordered
+	 */
+	protected DoorOption doorOption = DOOR_OPTION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -327,6 +349,27 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public DoorOption getDoorOption() {
+		return doorOption;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDoorOption(DoorOption newDoorOption) {
+		DoorOption oldDoorOption = doorOption;
+		doorOption = newDoorOption == null ? DOOR_OPTION_EDEFAULT : newDoorOption;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.DOOR__DOOR_OPTION, oldDoorOption, doorOption));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -344,6 +387,8 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 				return isIsActive();
 			case CabinPackage.DOOR__WAITING_PASSENGERS:
 				return getWaitingPassengers();
+			case CabinPackage.DOOR__DOOR_OPTION:
+				return getDoorOption();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -379,6 +424,9 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 				getWaitingPassengers().clear();
 				getWaitingPassengers().addAll((Collection<? extends Passenger>)newValue);
 				return;
+			case CabinPackage.DOOR__DOOR_OPTION:
+				setDoorOption((DoorOption)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -412,6 +460,9 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 			case CabinPackage.DOOR__WAITING_PASSENGERS:
 				getWaitingPassengers().clear();
 				return;
+			case CabinPackage.DOOR__DOOR_OPTION:
+				setDoorOption(DOOR_OPTION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -438,6 +489,8 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 				return isActive != IS_ACTIVE_EDEFAULT;
 			case CabinPackage.DOOR__WAITING_PASSENGERS:
 				return waitingPassengers != null && !waitingPassengers.isEmpty();
+			case CabinPackage.DOOR__DOOR_OPTION:
+				return doorOption != DOOR_OPTION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -464,6 +517,8 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 		result.append(numberOfSimultaneousPassengers);
 		result.append(", isActive: ");
 		result.append(isActive);
+		result.append(", doorOption: ");
+		result.append(doorOption);
 		result.append(')');
 		return result.toString();
 	}

@@ -65,6 +65,7 @@ public class DoorItemProvider
 			addNumberOfSimultaneousPassengersPropertyDescriptor(object);
 			addIsActivePropertyDescriptor(object);
 			addWaitingPassengersPropertyDescriptor(object);
+			addDoorOptionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -224,6 +225,28 @@ public class DoorItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Door Option feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDoorOptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Door_doorOption_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Door_doorOption_feature", "_UI_Door_type"),
+				 CabinPackage.Literals.DOOR__DOOR_OPTION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Door.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -265,6 +288,7 @@ public class DoorItemProvider
 			case CabinPackage.DOOR__ID:
 			case CabinPackage.DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS:
 			case CabinPackage.DOOR__IS_ACTIVE:
+			case CabinPackage.DOOR__DOOR_OPTION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

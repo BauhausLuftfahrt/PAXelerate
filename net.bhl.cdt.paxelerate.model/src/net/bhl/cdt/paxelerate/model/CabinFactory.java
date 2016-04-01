@@ -121,31 +121,13 @@ public interface CabinFactory extends EFactory {
 	Stowage createStowage();
 
 	/**
-	 * Returns a new object of class '<em>Main Door</em>'.
+	 * Returns a new object of class '<em>Door</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Main Door</em>'.
+	 * @return a new object of class '<em>Door</em>'.
 	 * @generated
 	 */
-	MainDoor createMainDoor();
-
-	/**
-	 * Returns a new object of class '<em>Emergency Exit</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Emergency Exit</em>'.
-	 * @generated
-	 */
-	EmergencyExit createEmergencyExit();
-
-	/**
-	 * Returns a new object of class '<em>Standard Door</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Standard Door</em>'.
-	 * @generated
-	 */
-	StandardDoor createStandardDoor();
+	Door createDoor();
 
 	/**
 	 * Returns a new object of class '<em>Simulation Properties</em>'.

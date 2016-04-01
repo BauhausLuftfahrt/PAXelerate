@@ -65,9 +65,7 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 			case CabinPackage.STAIRWAY: return createStairway();
 			case CabinPackage.CURTAIN: return createCurtain();
 			case CabinPackage.STOWAGE: return createStowage();
-			case CabinPackage.MAIN_DOOR: return createMainDoor();
-			case CabinPackage.EMERGENCY_EXIT: return createEmergencyExit();
-			case CabinPackage.STANDARD_DOOR: return createStandardDoor();
+			case CabinPackage.DOOR: return createDoor();
 			case CabinPackage.SIMULATION_PROPERTIES: return createSimulationProperties();
 			case CabinPackage.LUGGAGE_PROPERTIES: return createLuggageProperties();
 			case CabinPackage.SIMULATION_RESULT: return createSimulationResult();
@@ -101,6 +99,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return createTravelOptionFromString(eDataType, initialValue);
 			case CabinPackage.OBJECT_OPTION:
 				return createObjectOptionFromString(eDataType, initialValue);
+			case CabinPackage.DOOR_OPTION:
+				return createDoorOptionFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -130,6 +130,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return convertTravelOptionToString(eDataType, instanceValue);
 			case CabinPackage.OBJECT_OPTION:
 				return convertObjectOptionToString(eDataType, instanceValue);
+			case CabinPackage.DOOR_OPTION:
+				return convertDoorOptionToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -250,29 +252,9 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MainDoor createMainDoor() {
-		MainDoorImpl mainDoor = new MainDoorImpl();
-		return mainDoor;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EmergencyExit createEmergencyExit() {
-		EmergencyExitImpl emergencyExit = new EmergencyExitImpl();
-		return emergencyExit;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public StandardDoor createStandardDoor() {
-		StandardDoorImpl standardDoor = new StandardDoorImpl();
-		return standardDoor;
+	public Door createDoor() {
+		DoorImpl door = new DoorImpl();
+		return door;
 	}
 
 	/**
@@ -452,6 +434,26 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * @generated
 	 */
 	public String convertObjectOptionToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DoorOption createDoorOptionFromString(EDataType eDataType, String initialValue) {
+		DoorOption result = DoorOption.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertDoorOptionToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
