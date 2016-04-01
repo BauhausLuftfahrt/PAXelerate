@@ -127,7 +127,10 @@ public class GeneratePassengersCommand extends CDTCommand {
 	 * @param classType
 	 *            specifies in which class the passengers are generated
 	 */
-	private synchronized void generatePassengers(TravelClass tc, int numberOfPassengers, int numberOfSeats) {
+	private synchronized void generatePassengers(TravelClass tc) {
+
+		int numberOfPassengers = tc.getPassengers();
+		int numberOfSeats = tc.getAvailableSeats();
 
 		if (numberOfPassengers != 0) {
 			if (numberOfPassengers <= numberOfSeats) {
@@ -139,6 +142,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 				for (int i = 0; i < numberOfSeats; i++) {
 					randomSeatId.add(firstSeatNumber + i);
 				}
+
 				Collections.shuffle(randomSeatId);
 
 				for (int i = 0; i < numberOfPassengers; i++) {
@@ -192,7 +196,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 				});
 
 				for (TravelClass travelclass : cabin.getClasses()) {
-					generatePassengers(travelclass, travelclass.getPassengers(), travelclass.getAvailableSeats());
+					generatePassengers(travelclass);
 				}
 
 				for (Door door : cabin.getDoors()) {

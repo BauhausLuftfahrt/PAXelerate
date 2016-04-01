@@ -17,7 +17,7 @@ import net.bhl.cdt.paxelerate.model.MainDoor;
 import net.bhl.cdt.paxelerate.model.ObjectOption;
 import net.bhl.cdt.paxelerate.model.StandardDoor;
 import net.bhl.cdt.paxelerate.model.TravelOption;
-import net.bhl.cdt.paxelerate.model.util.ConstructionLibrary;
+import net.bhl.cdt.paxelerate.model.util.CabinGenerator;
 
 /**
  * Test class for MoveObjectCommand.java imported from
@@ -29,7 +29,7 @@ import net.bhl.cdt.paxelerate.model.util.ConstructionLibrary;
 public class TestMoveObjectCommand {
 
 	private static Cabin cabin;
-	private static ConstructionLibrary constructor;
+	private static CabinGenerator constructor;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -38,7 +38,7 @@ public class TestMoveObjectCommand {
 		cabin.setXDimension(2460);
 
 		/* ------- Cabin Construction starts here! --------- */
-		constructor = new ConstructionLibrary(cabin);
+		constructor = new CabinGenerator(cabin);
 		// constructor.clearCabin();
 		constructor.createDoor(EmergencyExit.class, true, 3, 935);
 		constructor.createDoor(EmergencyExit.class, true, 4, 1228);

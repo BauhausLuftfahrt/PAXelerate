@@ -14,7 +14,7 @@ import net.bhl.cdt.paxelerate.model.MainDoor;
 import net.bhl.cdt.paxelerate.model.ObjectOption;
 import net.bhl.cdt.paxelerate.model.StandardDoor;
 import net.bhl.cdt.paxelerate.model.TravelOption;
-import net.bhl.cdt.paxelerate.model.util.ConstructionLibrary;
+import net.bhl.cdt.paxelerate.model.util.CabinGenerator;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
 import net.bhl.cdt.paxelerate.util.input.Input;
@@ -34,7 +34,7 @@ public class GenerateCabinCommand extends CDTCommand {
 
 	private Cabin cabin;
 	private CabinViewPart cabinViewPart;
-	private ConstructionLibrary constructor;
+	private CabinGenerator generator;
 
 	/**
 	 * Creates a cabin.
@@ -69,47 +69,47 @@ public class GenerateCabinCommand extends CDTCommand {
 	 */
 	@Override
 	protected void doRun() {
-		
+
 		Log.add(this, "Initializing cabin generation ...");
 
 		cabinViewPart = ViewPartHelper.getCabinView();
 		cabinViewPart.unsyncViewer();
-		
+
 		Input input = new Input(WindowType.GET_BOOLEAN, "Warning! The existing cabin will be deleted. Continue?",
 				IMessageProvider.WARNING);
 
 		if (input.getBooleanValue()) {
 
 			/* ------- Cabin Construction starts here! --------- */
-			constructor = new ConstructionLibrary(cabin);
-			constructor.clearCabin();
-			constructor.createDoor(EmergencyExit.class, true, 3, 935);
-			constructor.createDoor(EmergencyExit.class, true, 4, 1228);
-			constructor.createPhysicalObject(ObjectOption.LAVATORY, 100);
-			constructor.createDoor(MainDoor.class, true, 1, -1);
-			constructor.createPhysicalObject(ObjectOption.GALLEY, 100);
+			generator = new CabinGenerator(cabin);
+			generator.clearCabin();
+			generator.createDoor(EmergencyExit.class, true, 3, 935);
+			generator.createDoor(EmergencyExit.class, true, 4, 1228);
+			generator.createPhysicalObject(ObjectOption.LAVATORY, 100);
+			generator.createDoor(MainDoor.class, true, 1, -1);
+			generator.createPhysicalObject(ObjectOption.GALLEY, 100);
 
 			/*
 			 * Note that the classes are generated in the order that they are
 			 * defined in in the enum
 			 */
 			for (TravelOption option : TravelOption.VALUES) {
-				constructor.createClass(option);
+				generator.createClass(option);
 			}
 
-			constructor.createPhysicalObject(ObjectOption.GALLEY, 100);
-			constructor.createDoor(StandardDoor.class, true, 2, -1);
-			constructor.createPhysicalObject(ObjectOption.LAVATORY, 100);
-			cabin = constructor.getCabin();
+			generator.createPhysicalObject(ObjectOption.GALLEY, 100);
+			generator.createDoor(StandardDoor.class, true, 2, -1);
+			generator.createPhysicalObject(ObjectOption.LAVATORY, 100);
+			cabin = generator.getCabin();
 			cabin.setUsePresetSettings(false);
 			/* ------- Cabin Construction ends here! ----------- */
 
 			Log.add(this, "Cabin generation completed");
-			
+
 			new DrawCabinCommand(cabin).doRun();
-			
+
 			cabinViewPart.syncViewer();
-			
+
 		} else {
 			Log.add(this, "Cabin generation aborted");
 		}

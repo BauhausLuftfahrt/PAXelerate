@@ -42,14 +42,14 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
  * @author marc.engelmann
  *
  */
-public class ConstructionLibrary {
+public class CabinGenerator {
 	private Cabin cabin;
 
 	private int seatCount, rowCount, globalSeatPositionY, globalSeatPositionX,
 			seats, seatsInRow, seatPitch, seatHelper, passengers, numbAisles,
 			galleyCount = 1, lavatoryCount = 1, curtainCount = 1;
 
-	private final static int DISTANCE_INCREMENT_DOOR = 20;
+	// private final static int DISTANCE_INCREMENT_DOOR = 20;
 
 	private Vector seatDimensions = new Vector2D(0, 0);
 
@@ -65,7 +65,7 @@ public class ConstructionLibrary {
 	 * @param cabin
 	 *            the cabin element
 	 */
-	public ConstructionLibrary(Cabin cabin) {
+	public CabinGenerator(Cabin cabin) {
 		this.cabin = cabin;
 		rowPartsInt = new ArrayList<Integer>();
 		globalSeatPositionY = 0;
@@ -100,17 +100,12 @@ public class ConstructionLibrary {
 	}
 
 	/**
-	 * Load the class settings depending on type. If there already exists an
-	 * object of the corresponding class, the values are copied over to the new
-	 * class. This makes it possible for changes in the openCDT app during
-	 * runtime.
+	 * Load the class settings depending on type.
 	 * 
 	 * NOTE: This only works if there is just one existing class per class type.
 	 * 
 	 * @param travelOption
 	 *            the subclass
-	 * @param <T>
-	 *            is a helper Class
 	 */
 	public void switchSettings(TravelOption travelOption) {
 
@@ -266,6 +261,9 @@ public class ConstructionLibrary {
 	 * This method checks if there is a door at the current x position. If so,
 	 * the x position is increased.
 	 */
+
+	// TODO: space for emergency exits deactivated
+
 	// public void checkForDoor() {
 	// for (Door door : ModelHelper.getChildrenByClass(cabin, Door.class)) {
 	// if ((((door.getXPosition() + door.getWidth()) > (globalSeatPositionX
