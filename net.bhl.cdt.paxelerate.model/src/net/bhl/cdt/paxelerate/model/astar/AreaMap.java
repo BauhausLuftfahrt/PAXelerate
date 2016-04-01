@@ -25,12 +25,15 @@ public class AreaMap {
 	private Vector dimensions = new Vector2D(0, 0);
 	private ArrayList<ArrayList<Node>> map;
 	private ArrayList<Node> nodeList = new ArrayList<Node>();
+	private ObstacleMap obstacleMap;
 
+	/**
+	 * 
+	 * @return
+	 */
 	public ArrayList<Node> getNodeList() {
 		return nodeList;
 	}
-
-	private ObstacleMap obstacleMap;
 
 	/**
 	 * This is the area map constructor.
@@ -46,6 +49,7 @@ public class AreaMap {
 
 		createMap();
 		Log.add(this, "Map Created");
+
 		registerEdges();
 		Log.add(this, "Map Node edges registered");
 	}
@@ -62,40 +66,19 @@ public class AreaMap {
 	}
 
 	/**
-	 * This method prints the map to the console.
-	 */
-	public void printMap() {
-		System.out.println("This is the area map:");
-		for (int i = 0; i < dimensions.getX(); i++) {
-			for (int j = 0; j < dimensions.getY(); j++) {
-				if (map.get(i).get(j).getProperty() == Property.AGENT) {
-					System.out.print("O");
-				} else if ((map.get(i).get(j)
-						.getProperty() == Property.OBSTACLE)) {
-					System.out.print("X");
-				} else if ((map.get(i).get(j)
-						.getProperty() == Property.START)) {
-					System.out.print("X");
-				} else {
-					System.out.print("-");
-				}
-			}
-			System.out.println();
-		}
-		System.out.println();
-		System.out.println();
-	}
-
-	/**
 	 * This method creates the area map.
 	 */
 	private void createMap() {
+
 		Node node;
 
 		map = new ArrayList<ArrayList<Node>>();
 		for (int x = 0; x < dimensions.getX(); x++) {
+
 			map.add(new ArrayList<Node>());
+
 			for (int y = 0; y < dimensions.getY(); y++) {
+
 				node = new Node(new Vector2D(x, y));
 
 				if (obstacleMap.getValueAtPoint(x, y) == ObstacleMap
@@ -209,6 +192,11 @@ public class AreaMap {
 		return null;
 	}
 
+	/**
+	 * 
+	 * @param position
+	 * @param agent
+	 */
 	public synchronized void setStartLocation(Vector position, Agent agent) {
 
 		if (position == null) {
@@ -259,22 +247,28 @@ public class AreaMap {
 		registerEdges();
 	}
 
-	public void printMapWithLocation(Vector start, Vector goal) {
-		System.out.println("This is the area map:");
+	/**
+	 * This method prints the map to the console.
+	 */
+	public void toConsole() {
+
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
-				if (i == goal.getX() && j == goal.getY()) {
-					System.out.print("G");
-				} else if (i == start.getX() && j == start.getY()) {
-					System.out.print("S");
-				} else if (map.get(i).get(j).getProperty() == Property.AGENT) {
+
+				if (map.get(i).get(j).getProperty() == Property.AGENT) {
 					System.out.print("O");
+
 				} else if ((map.get(i).get(j)
 						.getProperty() == Property.OBSTACLE)) {
 					System.out.print("X");
+
 				} else if ((map.get(i).get(j)
 						.getProperty() == Property.START)) {
-					System.out.print("X");
+					System.out.print("S");
+
+				} else if ((map.get(i).get(j).getProperty() == Property.GOAL)) {
+					System.out.print("G");
+
 				} else {
 					System.out.print("-");
 				}

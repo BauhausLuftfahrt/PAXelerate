@@ -31,8 +31,6 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 public class GenerateCabinCommand extends CDTCommand {
 
 	private Cabin cabin;
-	private CabinViewPart cabinViewPart;
-	private CabinGenerator generator;
 
 	/**
 	 * Creates a cabin.
@@ -70,7 +68,7 @@ public class GenerateCabinCommand extends CDTCommand {
 
 		Log.add(this, "Initializing cabin generation ...");
 
-		cabinViewPart = ViewPartHelper.getCabinView();
+		CabinViewPart cabinViewPart = ViewPartHelper.getCabinView();
 		cabinViewPart.unsyncViewer();
 
 		Input input = new Input(WindowType.GET_BOOLEAN, "Warning! The existing cabin will be deleted. Continue?",
@@ -79,7 +77,7 @@ public class GenerateCabinCommand extends CDTCommand {
 		if (input.getBooleanValue()) {
 
 			/* ------- Cabin Construction starts here! --------- */
-			generator = new CabinGenerator(cabin);
+			CabinGenerator generator = new CabinGenerator(cabin);
 			generator.clearCabin();
 			generator.createDoor(DoorOption.EMERGENCY_EXIT, true, 3, 935);
 			generator.createDoor(DoorOption.EMERGENCY_EXIT, true, 4, 1228);

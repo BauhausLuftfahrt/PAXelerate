@@ -48,7 +48,7 @@ public class Agent extends Subject implements Runnable {
 	private Vector start, goal, desiredPosition, currentPosition;
 	private CostMap mutableCostMap;
 
-	private int numbOfInterupts = 0, waycounter = 0;
+	private int numbOfInterupts = 0, waycounter = 0, dim = 2;
 
 	private double distance;
 
@@ -88,8 +88,7 @@ public class Agent extends Subject implements Runnable {
 		FOLLOWING_PATH, WAITING_FOR_ROW_CLEARING, CLEARING_ROW, STOWING_LUGGAGE, PREPARING, QUEUEING_UP, WAITING_FOR_OTHER_PASSENGER_TO_SEAT, RETURNING_TO_SEAT;
 	}
 
-	private int[][] defaultPassengerArea;
-	private int[][] adaptedPassengerArea;
+	private int[][] footprint;
 
 	/**
 	 * This method constructs an agent.
@@ -100,8 +99,6 @@ public class Agent extends Subject implements Runnable {
 	 *            the starting vector
 	 * @param goal
 	 *            the goal vector
-	 * @param scale
-	 *            the scale of the simulation
 	 */
 	public Agent(Passenger passenger, Vector start, Vector goal,
 			CostMap costmap, AgentMode mode,
@@ -112,6 +109,7 @@ public class Agent extends Subject implements Runnable {
 		this.passenger = passenger;
 		this.start = start;
 		this.goal = goal;
+
 		this.scale = SimulationHandler.getCabin().getScale();
 		this.finalCostmap = costmap;
 		this.thePassengerILetInTheRow = thePassengerILetInTheRow;
@@ -128,11 +126,11 @@ public class Agent extends Subject implements Runnable {
 
 		// this.agentMood = new AgressiveMood(this);
 
-		defaultPassengerArea = new int[passenger.getWidth()
-				/ scale][passenger.getDepth() / scale];
+		footprint = new int[passenger.getWidth() / scale][passenger.getDepth()
+				/ scale];
 		for (int i = 0; i < passenger.getWidth() / scale; i++) {
 			for (int j = 0; j < passenger.getDepth() / scale; j++) {
-				defaultPassengerArea[i][j] = 1;
+				footprint[i][j] = 1;
 			}
 		}
 
@@ -151,8 +149,6 @@ public class Agent extends Subject implements Runnable {
 			return null;
 		}
 	}
-
-	private int dim = 2;
 
 	public Passenger getPassenger() {
 		return passenger;
@@ -290,10 +286,9 @@ public class Agent extends Subject implements Runnable {
 		 */
 		if (SimulationHandler.getMap().getNode(vector)
 				.getProperty() == Property.AGENT && occupy) {
-
-			/* Print out if there is an overlap */
-			// System.out.println("Node already blocked. Error!");
 		}
+
+		int[][] rotatedFootprint = null;
 
 		/*
 		 * Rotate the 2d integer array which has stored the layout of the agent.
@@ -305,17 +300,15 @@ public class Agent extends Subject implements Runnable {
 
 			/* if you want to rotate only, you can specify the rotation angle */
 			if (rotateOnly) {
-				adaptedPassengerArea = Rotator.rotate(rotation,
-						defaultPassengerArea);
+				rotatedFootprint = Rotator.rotate(rotation, footprint);
 
 				/* if you want to do auto rotation, this method is called. */
 			} else {
 				if (rotationAllowed()) {
-					adaptedPassengerArea = Rotator.rotate(
-							AgentFunctions.getRotation(this),
-							defaultPassengerArea);
+					rotatedFootprint = Rotator.rotate(
+							AgentFunctions.getRotation(this), footprint);
 				} else {
-					adaptedPassengerArea = null;
+					rotatedFootprint = null;
 				}
 
 			}
@@ -325,8 +318,8 @@ public class Agent extends Subject implements Runnable {
 		 * if no rotation is needed or possible, skip the rotation process and
 		 * assign the basic layout to the object.
 		 */
-		if (adaptedPassengerArea == null) {
-			adaptedPassengerArea = defaultPassengerArea;
+		if (rotatedFootprint == null) {
+			rotatedFootprint = footprint;
 		}
 
 		/*
@@ -334,8 +327,8 @@ public class Agent extends Subject implements Runnable {
 		 * values.
 		 */
 
-		double dimension = Math.max(adaptedPassengerArea.length,
-				adaptedPassengerArea[1].length);
+		double dimension = Math.max(rotatedFootprint.length,
+				rotatedFootprint[1].length);
 
 		/*
 		 * this is the dimension you need to go in every direction from the
@@ -352,14 +345,14 @@ public class Agent extends Subject implements Runnable {
 						vector.getY() + y);
 
 				/* if the point is within the bounds of the passenger area */
-				if (x + dim < adaptedPassengerArea.length
-						&& y + dim < adaptedPassengerArea[0].length) {
+				if (x + dim < rotatedFootprint.length
+						&& y + dim < rotatedFootprint[0].length) {
 
 					/*
 					 * if the passenger area has a passenger located on this
 					 * specific node
 					 */
-					if (adaptedPassengerArea[x + dim][y + dim] == 1) {
+					if (rotatedFootprint[x + dim][y + dim] == 1) {
 
 						/* block or deblock the specific node */
 						AgentMover.blockNode(location, occupy, property,

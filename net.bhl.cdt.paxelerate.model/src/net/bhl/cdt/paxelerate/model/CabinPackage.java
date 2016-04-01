@@ -298,22 +298,13 @@ public interface CabinPackage extends EPackage {
 	int ROW__ROW_NUMBER = 1;
 
 	/**
-	 * The feature id for the '<em><b>Offset In Row</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROW__OFFSET_IN_ROW = 2;
-
-	/**
 	 * The number of structural features of the '<em>Row</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROW_FEATURE_COUNT = 3;
+	int ROW_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Row</em>' class.
@@ -2509,17 +2500,6 @@ public interface CabinPackage extends EPackage {
 	EAttribute getRow_RowNumber();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Row#isOffsetInRow <em>Offset In Row</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Offset In Row</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.Row#isOffsetInRow()
-	 * @see #getRow()
-	 * @generated
-	 */
-	EAttribute getRow_OffsetInRow();
-
-	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.TravelClass <em>Travel Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4220,13 +4200,6 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ROW__ROW_NUMBER = eINSTANCE.getRow_RowNumber();
-		/**
-		 * The meta object literal for the '<em><b>Offset In Row</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ROW__OFFSET_IN_ROW = eINSTANCE.getRow_OffsetInRow();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.TravelClassImpl <em>Travel Class</em>}' class.
 		 * <!-- begin-user-doc -->

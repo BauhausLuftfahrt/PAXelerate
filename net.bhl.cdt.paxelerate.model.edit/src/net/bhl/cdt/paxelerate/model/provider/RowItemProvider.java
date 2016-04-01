@@ -61,7 +61,6 @@ public class RowItemProvider
 			super.getPropertyDescriptors(object);
 
 			addRowNumberPropertyDescriptor(object);
-			addOffsetInRowPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -84,28 +83,6 @@ public class RowItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Offset In Row feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOffsetInRowPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Row_offsetInRow_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Row_offsetInRow_feature", "_UI_Row_type"),
-				 CabinPackage.Literals.ROW__OFFSET_IN_ROW,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -176,7 +153,6 @@ public class RowItemProvider
 
 		switch (notification.getFeatureID(Row.class)) {
 			case CabinPackage.ROW__ROW_NUMBER:
-			case CabinPackage.ROW__OFFSET_IN_ROW:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CabinPackage.ROW__SEATS:
