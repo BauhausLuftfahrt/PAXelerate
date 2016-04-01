@@ -399,7 +399,7 @@ public class SimulationHandler {
 	public void stopSimulation() {
 		for (Agent agent : agentList) {
 
-			agent.setThread(null);
+			agent.getThread().stop();
 			reset();
 
 		}
