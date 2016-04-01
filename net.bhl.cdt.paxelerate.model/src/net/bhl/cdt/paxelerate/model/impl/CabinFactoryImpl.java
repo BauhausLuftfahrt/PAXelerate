@@ -56,10 +56,7 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 		switch (eClass.getClassifierID()) {
 			case CabinPackage.CABIN: return createCabin();
 			case CabinPackage.ROW: return createRow();
-			case CabinPackage.BUSINESS_CLASS: return createBusinessClass();
-			case CabinPackage.FIRST_CLASS: return createFirstClass();
-			case CabinPackage.ECONOMY_CLASS: return createEconomyClass();
-			case CabinPackage.PREMIUM_ECONOMY_CLASS: return createPremiumEconomyClass();
+			case CabinPackage.TRAVEL_CLASS: return createTravelClass();
 			case CabinPackage.SEAT: return createSeat();
 			case CabinPackage.PASSENGER: return createPassenger();
 			case CabinPackage.CREW_MEMBER: return createCrewMember();
@@ -163,39 +160,9 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BusinessClass createBusinessClass() {
-		BusinessClassImpl businessClass = new BusinessClassImpl();
-		return businessClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public FirstClass createFirstClass() {
-		FirstClassImpl firstClass = new FirstClassImpl();
-		return firstClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EconomyClass createEconomyClass() {
-		EconomyClassImpl economyClass = new EconomyClassImpl();
-		return economyClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public PremiumEconomyClass createPremiumEconomyClass() {
-		PremiumEconomyClassImpl premiumEconomyClass = new PremiumEconomyClassImpl();
-		return premiumEconomyClass;
+	public TravelClass createTravelClass() {
+		TravelClassImpl travelClass = new TravelClassImpl();
+		return travelClass;
 	}
 
 	/**

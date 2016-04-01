@@ -9,29 +9,6 @@ import org.eclipse.emf.ecore.EObject;
 
 import net.bhl.cdt.model.NamedElement;
 import net.bhl.cdt.paxelerate.model.*;
-import net.bhl.cdt.paxelerate.model.BusinessClass;
-import net.bhl.cdt.paxelerate.model.Cabin;
-import net.bhl.cdt.paxelerate.model.CabinPackage;
-import net.bhl.cdt.paxelerate.model.CrewMember;
-import net.bhl.cdt.paxelerate.model.Curtain;
-import net.bhl.cdt.paxelerate.model.Door;
-import net.bhl.cdt.paxelerate.model.EconomyClass;
-import net.bhl.cdt.paxelerate.model.EmergencyExit;
-import net.bhl.cdt.paxelerate.model.FirstClass;
-import net.bhl.cdt.paxelerate.model.Galley;
-import net.bhl.cdt.paxelerate.model.Lavatory;
-import net.bhl.cdt.paxelerate.model.MainDoor;
-import net.bhl.cdt.paxelerate.model.Passenger;
-import net.bhl.cdt.paxelerate.model.PhysicalObject;
-import net.bhl.cdt.paxelerate.model.PremiumEconomyClass;
-import net.bhl.cdt.paxelerate.model.Row;
-import net.bhl.cdt.paxelerate.model.Seat;
-import net.bhl.cdt.paxelerate.model.SimulationProperties;
-import net.bhl.cdt.paxelerate.model.SimulationResult;
-import net.bhl.cdt.paxelerate.model.Stairway;
-import net.bhl.cdt.paxelerate.model.StandardDoor;
-import net.bhl.cdt.paxelerate.model.Stowage;
-import net.bhl.cdt.paxelerate.model.TravelClass;
 
 /**
  * <!-- begin-user-doc -->
@@ -100,22 +77,6 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseTravelClass(TravelClass object) {
 				return createTravelClassAdapter();
-			}
-			@Override
-			public Adapter caseBusinessClass(BusinessClass object) {
-				return createBusinessClassAdapter();
-			}
-			@Override
-			public Adapter caseFirstClass(FirstClass object) {
-				return createFirstClassAdapter();
-			}
-			@Override
-			public Adapter caseEconomyClass(EconomyClass object) {
-				return createEconomyClassAdapter();
-			}
-			@Override
-			public Adapter casePremiumEconomyClass(PremiumEconomyClass object) {
-				return createPremiumEconomyClassAdapter();
 			}
 			@Override
 			public Adapter caseSeat(Seat object) {
@@ -248,62 +209,6 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTravelClassAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.paxelerate.model.BusinessClass <em>Business Class</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see net.bhl.cdt.paxelerate.model.BusinessClass
-	 * @generated
-	 */
-	public Adapter createBusinessClassAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.paxelerate.model.FirstClass <em>First Class</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see net.bhl.cdt.paxelerate.model.FirstClass
-	 * @generated
-	 */
-	public Adapter createFirstClassAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.paxelerate.model.EconomyClass <em>Economy Class</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see net.bhl.cdt.paxelerate.model.EconomyClass
-	 * @generated
-	 */
-	public Adapter createEconomyClassAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link net.bhl.cdt.paxelerate.model.PremiumEconomyClass <em>Premium Economy Class</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see net.bhl.cdt.paxelerate.model.PremiumEconomyClass
-	 * @generated
-	 */
-	public Adapter createPremiumEconomyClassAdapter() {
 		return null;
 	}
 

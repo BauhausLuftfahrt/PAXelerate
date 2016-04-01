@@ -39,27 +39,13 @@
       <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//SortingStyle/WindowToAisle"/>
       <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//SortingStyle/RearToFront"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cabin.ecore#//TravelOption">
-      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//TravelOption/FirstClass"/>
-      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//TravelOption/BusinessClass"/>
-      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//TravelOption/PremiumEconomyClass"/>
-      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//TravelOption/EconomyClass"/>
-    </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cabin.ecore#//ObjectOption">
-      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//ObjectOption/Seat"/>
-      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//ObjectOption/Galley"/>
-      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//ObjectOption/Lavatory"/>
-      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//ObjectOption/Stairway"/>
-      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//ObjectOption/Curtain"/>
-      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//ObjectOption/Stowage"/>
-    </genEnums>
     <genClasses ecoreClass="cabin.ecore#//Cabin">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/xDimension"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/yDimension"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/rowNonexistent"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/aisleWidth"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/framesPerSecond"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/numberOfDecks"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/aircraftType"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cabin.ecore#//Cabin/simulationSettings"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//Cabin/classes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//Cabin/doors"/>
@@ -69,6 +55,10 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//Cabin/curtains"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//Cabin/stowages"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//Cabin/passengers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/scale"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/aircraftType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/usePresetSettings"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/speedFactor"/>
     </genClasses>
     <genClasses ecoreClass="cabin.ecore#//Row">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//Row/seats"/>
@@ -190,10 +180,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//SimulationProperties/luggageProperties"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//SimulationProperties/passengerProperties"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/passengersBoardingPerMinute"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/scale"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/usePresetSettings"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/speedFactor"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/framesPerSecond"/>
     </genClasses>
     <genClasses ecoreClass="cabin.ecore#//LuggageProperties">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//LuggageProperties/luggageStowingDistanceFromSeatMean"/>

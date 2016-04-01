@@ -38,8 +38,8 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getYDimension <em>YDimension</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getRowNonexistent <em>Row Nonexistent</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getAisleWidth <em>Aisle Width</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getFramesPerSecond <em>Frames Per Second</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getNumberOfDecks <em>Number Of Decks</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getAircraftType <em>Aircraft Type</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getSimulationSettings <em>Simulation Settings</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getClasses <em>Classes</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getDoors <em>Doors</em>}</li>
@@ -49,6 +49,10 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getCurtains <em>Curtains</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getStowages <em>Stowages</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getPassengers <em>Passengers</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getScale <em>Scale</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getAircraftType <em>Aircraft Type</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#isUsePresetSettings <em>Use Preset Settings</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getSpeedFactor <em>Speed Factor</em>}</li>
  * </ul>
  *
  * @generated
@@ -121,6 +125,24 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 */
 	protected int aisleWidth = AISLE_WIDTH_EDEFAULT;
 	/**
+	 * The default value of the '{@link #getFramesPerSecond() <em>Frames Per Second</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * @see #getFramesPerSecond()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int FRAMES_PER_SECOND_EDEFAULT = 5;
+	/**
+	 * The cached value of the '{@link #getFramesPerSecond() <em>Frames Per Second</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * @see #getFramesPerSecond()
+	 * @generated
+	 * @ordered
+	 */
+	protected int framesPerSecond = FRAMES_PER_SECOND_EDEFAULT;
+	/**
 	 * The default value of the '{@link #getNumberOfDecks() <em>Number Of Decks</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -138,24 +160,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @ordered
 	 */
 	protected int numberOfDecks = NUMBER_OF_DECKS_EDEFAULT;
-	/**
-	 * The default value of the '{@link #getAircraftType() <em>Aircraft Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAircraftType()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final AircraftType AIRCRAFT_TYPE_EDEFAULT = AircraftType.REGIONAL;
-	/**
-	 * The cached value of the '{@link #getAircraftType() <em>Aircraft Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAircraftType()
-	 * @generated
-	 * @ordered
-	 */
-	protected AircraftType aircraftType = AIRCRAFT_TYPE_EDEFAULT;
 	/**
 	 * The cached value of the '{@link #getSimulationSettings() <em>Simulation Settings</em>}' reference.
 	 * <!-- begin-user-doc --> <!--
@@ -229,6 +233,74 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @ordered
 	 */
 	protected EList<Passenger> passengers;
+	/**
+	 * The default value of the '{@link #getScale() <em>Scale</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #getScale()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int SCALE_EDEFAULT = 10;
+	/**
+	 * The cached value of the '{@link #getScale() <em>Scale</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #getScale()
+	 * @generated
+	 * @ordered
+	 */
+	protected int scale = SCALE_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getAircraftType() <em>Aircraft Type</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * @see #getAircraftType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final AircraftType AIRCRAFT_TYPE_EDEFAULT = AircraftType.REGIONAL;
+	/**
+	 * The cached value of the '{@link #getAircraftType() <em>Aircraft Type</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #getAircraftType()
+	 * @generated
+	 * @ordered
+	 */
+	protected AircraftType aircraftType = AIRCRAFT_TYPE_EDEFAULT;
+	/**
+	 * The default value of the '{@link #isUsePresetSettings() <em>Use Preset Settings</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * @see #isUsePresetSettings()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean USE_PRESET_SETTINGS_EDEFAULT = false;
+	/**
+	 * The cached value of the '{@link #isUsePresetSettings() <em>Use Preset Settings</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * @see #isUsePresetSettings()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean usePresetSettings = USE_PRESET_SETTINGS_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getSpeedFactor() <em>Speed Factor</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #getSpeedFactor()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int SPEED_FACTOR_EDEFAULT = 0;
+	/**
+	 * The cached value of the '{@link #getSpeedFactor() <em>Speed Factor</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #getSpeedFactor()
+	 * @generated
+	 * @ordered
+	 */
+	protected int speedFactor = SPEED_FACTOR_EDEFAULT;
+
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -365,6 +437,48 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 */
 	@Override
+	public int getScale() {
+		return scale;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setScale(int newScale) {
+		int oldScale = scale;
+		scale = newScale;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SCALE, oldScale, scale));
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int getFramesPerSecond() {
+		return framesPerSecond;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setFramesPerSecond(int newFramesPerSecond) {
+		int oldFramesPerSecond = framesPerSecond;
+		framesPerSecond = newFramesPerSecond;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__FRAMES_PER_SECOND, oldFramesPerSecond, framesPerSecond));
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EList<Passenger> getPassengers() {
 		if (passengers == null) {
 			passengers = new EObjectContainmentEList<Passenger>(Passenger.class, this, CabinPackage.CABIN__PASSENGERS);
@@ -394,24 +508,66 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AircraftType getAircraftType() {
 		return aircraftType;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAircraftType(AircraftType newAircraftType) {
 		AircraftType oldAircraftType = aircraftType;
 		aircraftType = newAircraftType == null ? AIRCRAFT_TYPE_EDEFAULT : newAircraftType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__AIRCRAFT_TYPE, oldAircraftType, aircraftType));
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isUsePresetSettings() {
+		return usePresetSettings;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setUsePresetSettings(boolean newUsePresetSettings) {
+		boolean oldUsePresetSettings = usePresetSettings;
+		usePresetSettings = newUsePresetSettings;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__USE_PRESET_SETTINGS, oldUsePresetSettings, usePresetSettings));
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int getSpeedFactor() {
+		return speedFactor;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setSpeedFactor(int newSpeedFactor) {
+		int oldSpeedFactor = speedFactor;
+		speedFactor = newSpeedFactor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SPEED_FACTOR, oldSpeedFactor, speedFactor));
 	}
 
 	/**
@@ -549,10 +705,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return getRowNonexistent();
 			case CabinPackage.CABIN__AISLE_WIDTH:
 				return getAisleWidth();
+			case CabinPackage.CABIN__FRAMES_PER_SECOND:
+				return getFramesPerSecond();
 			case CabinPackage.CABIN__NUMBER_OF_DECKS:
 				return getNumberOfDecks();
-			case CabinPackage.CABIN__AIRCRAFT_TYPE:
-				return getAircraftType();
 			case CabinPackage.CABIN__SIMULATION_SETTINGS:
 				if (resolve) return getSimulationSettings();
 				return basicGetSimulationSettings();
@@ -572,6 +728,14 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return getStowages();
 			case CabinPackage.CABIN__PASSENGERS:
 				return getPassengers();
+			case CabinPackage.CABIN__SCALE:
+				return getScale();
+			case CabinPackage.CABIN__AIRCRAFT_TYPE:
+				return getAircraftType();
+			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
+				return isUsePresetSettings();
+			case CabinPackage.CABIN__SPEED_FACTOR:
+				return getSpeedFactor();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -596,11 +760,11 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__AISLE_WIDTH:
 				setAisleWidth((Integer)newValue);
 				return;
+			case CabinPackage.CABIN__FRAMES_PER_SECOND:
+				setFramesPerSecond((Integer)newValue);
+				return;
 			case CabinPackage.CABIN__NUMBER_OF_DECKS:
 				setNumberOfDecks((Integer)newValue);
-				return;
-			case CabinPackage.CABIN__AIRCRAFT_TYPE:
-				setAircraftType((AircraftType)newValue);
 				return;
 			case CabinPackage.CABIN__SIMULATION_SETTINGS:
 				setSimulationSettings((SimulationProperties)newValue);
@@ -637,6 +801,18 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				getPassengers().clear();
 				getPassengers().addAll((Collection<? extends Passenger>)newValue);
 				return;
+			case CabinPackage.CABIN__SCALE:
+				setScale((Integer)newValue);
+				return;
+			case CabinPackage.CABIN__AIRCRAFT_TYPE:
+				setAircraftType((AircraftType)newValue);
+				return;
+			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
+				setUsePresetSettings((Boolean)newValue);
+				return;
+			case CabinPackage.CABIN__SPEED_FACTOR:
+				setSpeedFactor((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -660,11 +836,11 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__AISLE_WIDTH:
 				setAisleWidth(AISLE_WIDTH_EDEFAULT);
 				return;
+			case CabinPackage.CABIN__FRAMES_PER_SECOND:
+				setFramesPerSecond(FRAMES_PER_SECOND_EDEFAULT);
+				return;
 			case CabinPackage.CABIN__NUMBER_OF_DECKS:
 				setNumberOfDecks(NUMBER_OF_DECKS_EDEFAULT);
-				return;
-			case CabinPackage.CABIN__AIRCRAFT_TYPE:
-				setAircraftType(AIRCRAFT_TYPE_EDEFAULT);
 				return;
 			case CabinPackage.CABIN__SIMULATION_SETTINGS:
 				setSimulationSettings((SimulationProperties)null);
@@ -693,6 +869,18 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__PASSENGERS:
 				getPassengers().clear();
 				return;
+			case CabinPackage.CABIN__SCALE:
+				setScale(SCALE_EDEFAULT);
+				return;
+			case CabinPackage.CABIN__AIRCRAFT_TYPE:
+				setAircraftType(AIRCRAFT_TYPE_EDEFAULT);
+				return;
+			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
+				setUsePresetSettings(USE_PRESET_SETTINGS_EDEFAULT);
+				return;
+			case CabinPackage.CABIN__SPEED_FACTOR:
+				setSpeedFactor(SPEED_FACTOR_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -712,10 +900,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return rowNonexistent != ROW_NONEXISTENT_EDEFAULT;
 			case CabinPackage.CABIN__AISLE_WIDTH:
 				return aisleWidth != AISLE_WIDTH_EDEFAULT;
+			case CabinPackage.CABIN__FRAMES_PER_SECOND:
+				return framesPerSecond != FRAMES_PER_SECOND_EDEFAULT;
 			case CabinPackage.CABIN__NUMBER_OF_DECKS:
 				return numberOfDecks != NUMBER_OF_DECKS_EDEFAULT;
-			case CabinPackage.CABIN__AIRCRAFT_TYPE:
-				return aircraftType != AIRCRAFT_TYPE_EDEFAULT;
 			case CabinPackage.CABIN__SIMULATION_SETTINGS:
 				return simulationSettings != null;
 			case CabinPackage.CABIN__CLASSES:
@@ -734,6 +922,14 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return stowages != null && !stowages.isEmpty();
 			case CabinPackage.CABIN__PASSENGERS:
 				return passengers != null && !passengers.isEmpty();
+			case CabinPackage.CABIN__SCALE:
+				return scale != SCALE_EDEFAULT;
+			case CabinPackage.CABIN__AIRCRAFT_TYPE:
+				return aircraftType != AIRCRAFT_TYPE_EDEFAULT;
+			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
+				return usePresetSettings != USE_PRESET_SETTINGS_EDEFAULT;
+			case CabinPackage.CABIN__SPEED_FACTOR:
+				return speedFactor != SPEED_FACTOR_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -755,10 +951,18 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		result.append(rowNonexistent);
 		result.append(", aisleWidth: ");
 		result.append(aisleWidth);
+		result.append(", framesPerSecond: ");
+		result.append(framesPerSecond);
 		result.append(", numberOfDecks: ");
 		result.append(numberOfDecks);
+		result.append(", scale: ");
+		result.append(scale);
 		result.append(", aircraftType: ");
 		result.append(aircraftType);
+		result.append(", usePresetSettings: ");
+		result.append(usePresetSettings);
+		result.append(", speedFactor: ");
+		result.append(speedFactor);
 		result.append(')');
 		return result.toString();
 	}

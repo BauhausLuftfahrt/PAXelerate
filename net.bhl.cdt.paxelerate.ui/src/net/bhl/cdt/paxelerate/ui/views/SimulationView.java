@@ -52,7 +52,7 @@ public class SimulationView extends JPanel implements MouseListener {
 
 	public SimulationView() {
 		this.setPreferredSize(new Dimension(Screen.getWidth() - 20, BOX_HEIGHT));
-		cabinWidth = SimulationHandler.getCabin().getYDimension() / (double) SimulationHandler.getCabin().getSimulationSettings().getScale();
+		cabinWidth = SimulationHandler.getCabin().getYDimension() / (double) SimulationHandler.getCabin().getScale();
 
 		Thread gameThread = new Thread() {
 			@Override

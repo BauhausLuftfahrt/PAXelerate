@@ -14,9 +14,7 @@ import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
 import net.bhl.cdt.paxelerate.model.Curtain;
 import net.bhl.cdt.paxelerate.model.Door;
-import net.bhl.cdt.paxelerate.model.EconomyClass;
 import net.bhl.cdt.paxelerate.model.EmergencyExit;
-import net.bhl.cdt.paxelerate.model.FirstClass;
 import net.bhl.cdt.paxelerate.model.Galley;
 import net.bhl.cdt.paxelerate.model.Lavatory;
 import net.bhl.cdt.paxelerate.model.MainDoor;
@@ -115,6 +113,10 @@ public class ConstructionLibrary {
 	 *            is a helper Class
 	 */
 	public void switchSettings(TravelOption travelOption) {
+
+		passengerClass = CabinFactory.eINSTANCE.createTravelClass();
+		passengerClass.setTravelOption(travelOption);
+
 		switch (travelOption) {
 		case PREMIUM_ECONOMY_CLASS:
 
@@ -123,7 +125,6 @@ public class ConstructionLibrary {
 			seatDimensions = new Vector2D(60, 50);
 			seatPitch = 85;
 			passengers = 1;
-			passengerClass = CabinFactory.eINSTANCE.createPremiumEconomyClass();
 			break;
 
 		case BUSINESS_CLASS:
@@ -133,7 +134,6 @@ public class ConstructionLibrary {
 			seatDimensions = new Vector2D(80, 72);
 			seatPitch = 90;
 			passengers = 1;
-			passengerClass = CabinFactory.eINSTANCE.createBusinessClass();
 			break;
 
 		case FIRST_CLASS:
@@ -143,7 +143,6 @@ public class ConstructionLibrary {
 			seatDimensions = new Vector2D(120, 100);
 			seatPitch = 100;
 			passengers = 1;
-			passengerClass = CabinFactory.eINSTANCE.createFirstClass();
 			break;
 
 		case ECONOMY_CLASS:
@@ -153,7 +152,6 @@ public class ConstructionLibrary {
 			seatDimensions = new Vector2D(60, 50);
 			seatPitch = 80;
 			passengers = 1;
-			passengerClass = CabinFactory.eINSTANCE.createEconomyClass();
 			break;
 		}
 	}
@@ -319,7 +317,7 @@ public class ConstructionLibrary {
 								+ ". Could not fill all rows.");
 			}
 
-			if (passengerClass instanceof FirstClass) {
+			if (passengerClass.getTravelOption() == TravelOption.FIRST_CLASS) {
 				globalSeatPositionX += 20;
 			}
 
@@ -358,7 +356,8 @@ public class ConstructionLibrary {
 				globalSeatPositionX += seatPitch;
 
 			}
-			if (!(passengerClass instanceof EconomyClass)) {
+			if (!(passengerClass
+					.getTravelOption() == TravelOption.ECONOMY_CLASS)) {
 				createCurtain(true, "after "
 						+ StringHelper.splitCamelCase(travelOption.getName()));
 			}

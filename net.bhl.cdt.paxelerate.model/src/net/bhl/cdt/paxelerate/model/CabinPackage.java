@@ -116,22 +116,22 @@ public interface CabinPackage extends EPackage {
 	int CABIN__AISLE_WIDTH = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Frames Per Second</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN__FRAMES_PER_SECOND = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
 	 * The feature id for the '<em><b>Number Of Decks</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__NUMBER_OF_DECKS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Aircraft Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CABIN__AIRCRAFT_TYPE = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 5;
+	int CABIN__NUMBER_OF_DECKS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Simulation Settings</b></em>' reference.
@@ -215,13 +215,49 @@ public interface CabinPackage extends EPackage {
 	int CABIN__PASSENGERS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 14;
 
 	/**
+	 * The feature id for the '<em><b>Scale</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN__SCALE = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 15;
+
+	/**
+	 * The feature id for the '<em><b>Aircraft Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN__AIRCRAFT_TYPE = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 16;
+
+	/**
+	 * The feature id for the '<em><b>Use Preset Settings</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN__USE_PRESET_SETTINGS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 17;
+
+	/**
+	 * The feature id for the '<em><b>Speed Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN__SPEED_FACTOR = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 18;
+
+	/**
 	 * The number of structural features of the '<em>Cabin</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_FEATURE_COUNT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 15;
+	int CABIN_FEATURE_COUNT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 19;
 
 	/**
 	 * The number of operations of the '<em>Cabin</em>' class.
@@ -389,13 +425,22 @@ public interface CabinPackage extends EPackage {
 	int TRAVEL_CLASS__LOAD_FACTOR = 9;
 
 	/**
+	 * The feature id for the '<em><b>Travel Option</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRAVEL_CLASS__TRAVEL_OPTION = 10;
+
+	/**
 	 * The number of structural features of the '<em>Travel Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRAVEL_CLASS_FEATURE_COUNT = 10;
+	int TRAVEL_CLASS_FEATURE_COUNT = 11;
 
 	/**
 	 * The operation id for the '<em>Too Many Passengers</em>' operation.
@@ -425,550 +470,6 @@ public interface CabinPackage extends EPackage {
 	int TRAVEL_CLASS_OPERATION_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.impl.BusinessClassImpl <em>Business Class</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see net.bhl.cdt.paxelerate.model.impl.BusinessClassImpl
-	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getBusinessClass()
-	 * @generated
-	 */
-	int BUSINESS_CLASS = 3;
-
-	/**
-	 * The feature id for the '<em><b>Rows</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUSINESS_CLASS__ROWS = TRAVEL_CLASS__ROWS;
-
-	/**
-	 * The feature id for the '<em><b>Sequence</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUSINESS_CLASS__SEQUENCE = TRAVEL_CLASS__SEQUENCE;
-
-	/**
-	 * The feature id for the '<em><b>Passengers</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUSINESS_CLASS__PASSENGERS = TRAVEL_CLASS__PASSENGERS;
-
-	/**
-	 * The feature id for the '<em><b>Available Seats</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUSINESS_CLASS__AVAILABLE_SEATS = TRAVEL_CLASS__AVAILABLE_SEATS;
-
-	/**
-	 * The feature id for the '<em><b>Seat Pitch</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUSINESS_CLASS__SEAT_PITCH = TRAVEL_CLASS__SEAT_PITCH;
-
-	/**
-	 * The feature id for the '<em><b>XDimension Of Seats</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUSINESS_CLASS__XDIMENSION_OF_SEATS = TRAVEL_CLASS__XDIMENSION_OF_SEATS;
-
-	/**
-	 * The feature id for the '<em><b>YDimension Of Seats</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUSINESS_CLASS__YDIMENSION_OF_SEATS = TRAVEL_CLASS__YDIMENSION_OF_SEATS;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUSINESS_CLASS__NAME = TRAVEL_CLASS__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Row Structure</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUSINESS_CLASS__ROW_STRUCTURE = TRAVEL_CLASS__ROW_STRUCTURE;
-
-	/**
-	 * The feature id for the '<em><b>Load Factor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUSINESS_CLASS__LOAD_FACTOR = TRAVEL_CLASS__LOAD_FACTOR;
-
-	/**
-	 * The number of structural features of the '<em>Business Class</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUSINESS_CLASS_FEATURE_COUNT = TRAVEL_CLASS_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Too Many Passengers</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUSINESS_CLASS___TOO_MANY_PASSENGERS__DIAGNOSTICCHAIN_MAP = TRAVEL_CLASS___TOO_MANY_PASSENGERS__DIAGNOSTICCHAIN_MAP;
-
-	/**
-	 * The operation id for the '<em>Wrong Row Structure</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUSINESS_CLASS___WRONG_ROW_STRUCTURE__DIAGNOSTICCHAIN_MAP = TRAVEL_CLASS___WRONG_ROW_STRUCTURE__DIAGNOSTICCHAIN_MAP;
-
-	/**
-	 * The number of operations of the '<em>Business Class</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUSINESS_CLASS_OPERATION_COUNT = TRAVEL_CLASS_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.impl.FirstClassImpl <em>First Class</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see net.bhl.cdt.paxelerate.model.impl.FirstClassImpl
-	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getFirstClass()
-	 * @generated
-	 */
-	int FIRST_CLASS = 4;
-
-	/**
-	 * The feature id for the '<em><b>Rows</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FIRST_CLASS__ROWS = TRAVEL_CLASS__ROWS;
-
-	/**
-	 * The feature id for the '<em><b>Sequence</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FIRST_CLASS__SEQUENCE = TRAVEL_CLASS__SEQUENCE;
-
-	/**
-	 * The feature id for the '<em><b>Passengers</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FIRST_CLASS__PASSENGERS = TRAVEL_CLASS__PASSENGERS;
-
-	/**
-	 * The feature id for the '<em><b>Available Seats</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FIRST_CLASS__AVAILABLE_SEATS = TRAVEL_CLASS__AVAILABLE_SEATS;
-
-	/**
-	 * The feature id for the '<em><b>Seat Pitch</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FIRST_CLASS__SEAT_PITCH = TRAVEL_CLASS__SEAT_PITCH;
-
-	/**
-	 * The feature id for the '<em><b>XDimension Of Seats</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FIRST_CLASS__XDIMENSION_OF_SEATS = TRAVEL_CLASS__XDIMENSION_OF_SEATS;
-
-	/**
-	 * The feature id for the '<em><b>YDimension Of Seats</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FIRST_CLASS__YDIMENSION_OF_SEATS = TRAVEL_CLASS__YDIMENSION_OF_SEATS;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FIRST_CLASS__NAME = TRAVEL_CLASS__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Row Structure</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FIRST_CLASS__ROW_STRUCTURE = TRAVEL_CLASS__ROW_STRUCTURE;
-
-	/**
-	 * The feature id for the '<em><b>Load Factor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FIRST_CLASS__LOAD_FACTOR = TRAVEL_CLASS__LOAD_FACTOR;
-
-	/**
-	 * The number of structural features of the '<em>First Class</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FIRST_CLASS_FEATURE_COUNT = TRAVEL_CLASS_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Too Many Passengers</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FIRST_CLASS___TOO_MANY_PASSENGERS__DIAGNOSTICCHAIN_MAP = TRAVEL_CLASS___TOO_MANY_PASSENGERS__DIAGNOSTICCHAIN_MAP;
-
-	/**
-	 * The operation id for the '<em>Wrong Row Structure</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FIRST_CLASS___WRONG_ROW_STRUCTURE__DIAGNOSTICCHAIN_MAP = TRAVEL_CLASS___WRONG_ROW_STRUCTURE__DIAGNOSTICCHAIN_MAP;
-
-	/**
-	 * The number of operations of the '<em>First Class</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FIRST_CLASS_OPERATION_COUNT = TRAVEL_CLASS_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.impl.EconomyClassImpl <em>Economy Class</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see net.bhl.cdt.paxelerate.model.impl.EconomyClassImpl
-	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getEconomyClass()
-	 * @generated
-	 */
-	int ECONOMY_CLASS = 5;
-
-	/**
-	 * The feature id for the '<em><b>Rows</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECONOMY_CLASS__ROWS = TRAVEL_CLASS__ROWS;
-
-	/**
-	 * The feature id for the '<em><b>Sequence</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECONOMY_CLASS__SEQUENCE = TRAVEL_CLASS__SEQUENCE;
-
-	/**
-	 * The feature id for the '<em><b>Passengers</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECONOMY_CLASS__PASSENGERS = TRAVEL_CLASS__PASSENGERS;
-
-	/**
-	 * The feature id for the '<em><b>Available Seats</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECONOMY_CLASS__AVAILABLE_SEATS = TRAVEL_CLASS__AVAILABLE_SEATS;
-
-	/**
-	 * The feature id for the '<em><b>Seat Pitch</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECONOMY_CLASS__SEAT_PITCH = TRAVEL_CLASS__SEAT_PITCH;
-
-	/**
-	 * The feature id for the '<em><b>XDimension Of Seats</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECONOMY_CLASS__XDIMENSION_OF_SEATS = TRAVEL_CLASS__XDIMENSION_OF_SEATS;
-
-	/**
-	 * The feature id for the '<em><b>YDimension Of Seats</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECONOMY_CLASS__YDIMENSION_OF_SEATS = TRAVEL_CLASS__YDIMENSION_OF_SEATS;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECONOMY_CLASS__NAME = TRAVEL_CLASS__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Row Structure</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECONOMY_CLASS__ROW_STRUCTURE = TRAVEL_CLASS__ROW_STRUCTURE;
-
-	/**
-	 * The feature id for the '<em><b>Load Factor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECONOMY_CLASS__LOAD_FACTOR = TRAVEL_CLASS__LOAD_FACTOR;
-
-	/**
-	 * The number of structural features of the '<em>Economy Class</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECONOMY_CLASS_FEATURE_COUNT = TRAVEL_CLASS_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Too Many Passengers</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECONOMY_CLASS___TOO_MANY_PASSENGERS__DIAGNOSTICCHAIN_MAP = TRAVEL_CLASS___TOO_MANY_PASSENGERS__DIAGNOSTICCHAIN_MAP;
-
-	/**
-	 * The operation id for the '<em>Wrong Row Structure</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECONOMY_CLASS___WRONG_ROW_STRUCTURE__DIAGNOSTICCHAIN_MAP = TRAVEL_CLASS___WRONG_ROW_STRUCTURE__DIAGNOSTICCHAIN_MAP;
-
-	/**
-	 * The number of operations of the '<em>Economy Class</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECONOMY_CLASS_OPERATION_COUNT = TRAVEL_CLASS_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.impl.PremiumEconomyClassImpl <em>Premium Economy Class</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see net.bhl.cdt.paxelerate.model.impl.PremiumEconomyClassImpl
-	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getPremiumEconomyClass()
-	 * @generated
-	 */
-	int PREMIUM_ECONOMY_CLASS = 6;
-
-	/**
-	 * The feature id for the '<em><b>Rows</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREMIUM_ECONOMY_CLASS__ROWS = TRAVEL_CLASS__ROWS;
-
-	/**
-	 * The feature id for the '<em><b>Sequence</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREMIUM_ECONOMY_CLASS__SEQUENCE = TRAVEL_CLASS__SEQUENCE;
-
-	/**
-	 * The feature id for the '<em><b>Passengers</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREMIUM_ECONOMY_CLASS__PASSENGERS = TRAVEL_CLASS__PASSENGERS;
-
-	/**
-	 * The feature id for the '<em><b>Available Seats</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREMIUM_ECONOMY_CLASS__AVAILABLE_SEATS = TRAVEL_CLASS__AVAILABLE_SEATS;
-
-	/**
-	 * The feature id for the '<em><b>Seat Pitch</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREMIUM_ECONOMY_CLASS__SEAT_PITCH = TRAVEL_CLASS__SEAT_PITCH;
-
-	/**
-	 * The feature id for the '<em><b>XDimension Of Seats</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREMIUM_ECONOMY_CLASS__XDIMENSION_OF_SEATS = TRAVEL_CLASS__XDIMENSION_OF_SEATS;
-
-	/**
-	 * The feature id for the '<em><b>YDimension Of Seats</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREMIUM_ECONOMY_CLASS__YDIMENSION_OF_SEATS = TRAVEL_CLASS__YDIMENSION_OF_SEATS;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREMIUM_ECONOMY_CLASS__NAME = TRAVEL_CLASS__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Row Structure</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREMIUM_ECONOMY_CLASS__ROW_STRUCTURE = TRAVEL_CLASS__ROW_STRUCTURE;
-
-	/**
-	 * The feature id for the '<em><b>Load Factor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREMIUM_ECONOMY_CLASS__LOAD_FACTOR = TRAVEL_CLASS__LOAD_FACTOR;
-
-	/**
-	 * The number of structural features of the '<em>Premium Economy Class</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREMIUM_ECONOMY_CLASS_FEATURE_COUNT = TRAVEL_CLASS_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Too Many Passengers</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREMIUM_ECONOMY_CLASS___TOO_MANY_PASSENGERS__DIAGNOSTICCHAIN_MAP = TRAVEL_CLASS___TOO_MANY_PASSENGERS__DIAGNOSTICCHAIN_MAP;
-
-	/**
-	 * The operation id for the '<em>Wrong Row Structure</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREMIUM_ECONOMY_CLASS___WRONG_ROW_STRUCTURE__DIAGNOSTICCHAIN_MAP = TRAVEL_CLASS___WRONG_ROW_STRUCTURE__DIAGNOSTICCHAIN_MAP;
-
-	/**
-	 * The number of operations of the '<em>Premium Economy Class</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREMIUM_ECONOMY_CLASS_OPERATION_COUNT = TRAVEL_CLASS_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.impl.DoorImpl <em>Door</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -976,7 +477,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getDoor()
 	 * @generated
 	 */
-	int DOOR = 16;
+	int DOOR = 12;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.impl.SeatImpl <em>Seat</em>}' class.
@@ -986,7 +487,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getSeat()
 	 * @generated
 	 */
-	int SEAT = 7;
+	int SEAT = 3;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl <em>Passenger</em>}' class.
@@ -996,7 +497,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getPassenger()
 	 * @generated
 	 */
-	int PASSENGER = 8;
+	int PASSENGER = 4;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.impl.CrewMemberImpl <em>Crew Member</em>}' class.
@@ -1006,7 +507,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getCrewMember()
 	 * @generated
 	 */
-	int CREW_MEMBER = 9;
+	int CREW_MEMBER = 5;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.impl.PhysicalObjectImpl <em>Physical Object</em>}' class.
@@ -1016,7 +517,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getPhysicalObject()
 	 * @generated
 	 */
-	int PHYSICAL_OBJECT = 10;
+	int PHYSICAL_OBJECT = 6;
 
 	/**
 	 * The feature id for the '<em><b>YPosition</b></em>' attribute.
@@ -1539,7 +1040,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getLavatory()
 	 * @generated
 	 */
-	int LAVATORY = 11;
+	int LAVATORY = 7;
 
 	/**
 	 * The feature id for the '<em><b>YPosition</b></em>' attribute.
@@ -1630,7 +1131,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getGalley()
 	 * @generated
 	 */
-	int GALLEY = 12;
+	int GALLEY = 8;
 
 	/**
 	 * The feature id for the '<em><b>YPosition</b></em>' attribute.
@@ -1721,7 +1222,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getStairway()
 	 * @generated
 	 */
-	int STAIRWAY = 13;
+	int STAIRWAY = 9;
 
 	/**
 	 * The feature id for the '<em><b>YPosition</b></em>' attribute.
@@ -1821,7 +1322,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getCurtain()
 	 * @generated
 	 */
-	int CURTAIN = 14;
+	int CURTAIN = 10;
 
 	/**
 	 * The feature id for the '<em><b>YPosition</b></em>' attribute.
@@ -1930,7 +1431,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getStowage()
 	 * @generated
 	 */
-	int STOWAGE = 15;
+	int STOWAGE = 11;
 
 	/**
 	 * The feature id for the '<em><b>YPosition</b></em>' attribute.
@@ -2102,7 +1603,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getMainDoor()
 	 * @generated
 	 */
-	int MAIN_DOOR = 17;
+	int MAIN_DOOR = 13;
 
 	/**
 	 * The feature id for the '<em><b>XPosition</b></em>' attribute.
@@ -2193,7 +1694,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getEmergencyExit()
 	 * @generated
 	 */
-	int EMERGENCY_EXIT = 18;
+	int EMERGENCY_EXIT = 14;
 
 	/**
 	 * The feature id for the '<em><b>XPosition</b></em>' attribute.
@@ -2284,7 +1785,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getStandardDoor()
 	 * @generated
 	 */
-	int STANDARD_DOOR = 19;
+	int STANDARD_DOOR = 15;
 
 	/**
 	 * The feature id for the '<em><b>XPosition</b></em>' attribute.
@@ -2375,7 +1876,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getSimulationProperties()
 	 * @generated
 	 */
-	int SIMULATION_PROPERTIES = 20;
+	int SIMULATION_PROPERTIES = 16;
 
 	/**
 	 * The feature id for the '<em><b>Simulate Without UI</b></em>' attribute.
@@ -2513,49 +2014,13 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = 14;
 
 	/**
-	 * The feature id for the '<em><b>Scale</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__SCALE = 15;
-
-	/**
-	 * The feature id for the '<em><b>Use Preset Settings</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__USE_PRESET_SETTINGS = 16;
-
-	/**
-	 * The feature id for the '<em><b>Speed Factor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__SPEED_FACTOR = 17;
-
-	/**
-	 * The feature id for the '<em><b>Frames Per Second</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__FRAMES_PER_SECOND = 18;
-
-	/**
 	 * The number of structural features of the '<em>Simulation Properties</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES_FEATURE_COUNT = 19;
+	int SIMULATION_PROPERTIES_FEATURE_COUNT = 15;
 
 	/**
 	 * The number of operations of the '<em>Simulation Properties</em>' class.
@@ -2574,7 +2039,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getLuggageProperties()
 	 * @generated
 	 */
-	int LUGGAGE_PROPERTIES = 21;
+	int LUGGAGE_PROPERTIES = 17;
 
 	/**
 	 * The feature id for the '<em><b>Luggage Stowing Distance From Seat Mean</b></em>' attribute.
@@ -2710,7 +2175,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getSimulationResult()
 	 * @generated
 	 */
-	int SIMULATION_RESULT = 22;
+	int SIMULATION_RESULT = 18;
 
 	/**
 	 * The feature id for the '<em><b>Boarding Time</b></em>' attribute.
@@ -2792,7 +2257,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getPassengerProperties()
 	 * @generated
 	 */
-	int PASSENGER_PROPERTIES = 23;
+	int PASSENGER_PROPERTIES = 19;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Width Mean Male</b></em>' attribute.
@@ -2973,7 +2438,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getStairwayDirection()
 	 * @generated
 	 */
-	int STAIRWAY_DIRECTION = 25;
+	int STAIRWAY_DIRECTION = 21;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.AircraftType <em>Aircraft Type</em>}' enum.
@@ -2983,7 +2448,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getAircraftType()
 	 * @generated
 	 */
-	int AIRCRAFT_TYPE = 26;
+	int AIRCRAFT_TYPE = 22;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.PassengerMood <em>Passenger Mood</em>}' enum.
@@ -2993,7 +2458,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getPassengerMood()
 	 * @generated
 	 */
-	int PASSENGER_MOOD = 27;
+	int PASSENGER_MOOD = 23;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.LuggageSize <em>Luggage Size</em>}' enum.
@@ -3003,7 +2468,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getLuggageSize()
 	 * @generated
 	 */
-	int LUGGAGE_SIZE = 28;
+	int LUGGAGE_SIZE = 24;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.SortingStyle <em>Sorting Style</em>}' enum.
@@ -3013,7 +2478,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getSortingStyle()
 	 * @generated
 	 */
-	int SORTING_STYLE = 29;
+	int SORTING_STYLE = 25;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.TravelOption <em>Travel Option</em>}' enum.
@@ -3023,7 +2488,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getTravelOption()
 	 * @generated
 	 */
-	int TRAVEL_OPTION = 30;
+	int TRAVEL_OPTION = 26;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.ObjectOption <em>Object Option</em>}' enum.
@@ -3033,7 +2498,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getObjectOption()
 	 * @generated
 	 */
-	int OBJECT_OPTION = 31;
+	int OBJECT_OPTION = 27;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.Sex <em>Sex</em>}' enum.
@@ -3043,7 +2508,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getSex()
 	 * @generated
 	 */
-	int SEX = 24;
+	int SEX = 20;
 
 
 	/**
@@ -3145,6 +2610,28 @@ public interface CabinPackage extends EPackage {
 	EReference getCabin_Stowages();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Cabin#getScale <em>Scale</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Scale</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.Cabin#getScale()
+	 * @see #getCabin()
+	 * @generated
+	 */
+	EAttribute getCabin_Scale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Cabin#getFramesPerSecond <em>Frames Per Second</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Frames Per Second</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.Cabin#getFramesPerSecond()
+	 * @see #getCabin()
+	 * @generated
+	 */
+	EAttribute getCabin_FramesPerSecond();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link net.bhl.cdt.paxelerate.model.Cabin#getPassengers <em>Passengers</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3176,6 +2663,28 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCabin_AircraftType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Cabin#isUsePresetSettings <em>Use Preset Settings</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Use Preset Settings</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.Cabin#isUsePresetSettings()
+	 * @see #getCabin()
+	 * @generated
+	 */
+	EAttribute getCabin_UsePresetSettings();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Cabin#getSpeedFactor <em>Speed Factor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Speed Factor</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.Cabin#getSpeedFactor()
+	 * @see #getCabin()
+	 * @generated
+	 */
+	EAttribute getCabin_SpeedFactor();
 
 	/**
 	 * Returns the meta object for the reference '{@link net.bhl.cdt.paxelerate.model.Cabin#getSimulationSettings <em>Simulation Settings</em>}'.
@@ -3385,6 +2894,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getTravelClass_LoadFactor();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.TravelClass#getTravelOption <em>Travel Option</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Travel Option</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.TravelClass#getTravelOption()
+	 * @see #getTravelClass()
+	 * @generated
+	 */
+	EAttribute getTravelClass_TravelOption();
+
+	/**
 	 * Returns the meta object for the '{@link net.bhl.cdt.paxelerate.model.TravelClass#tooManyPassengers(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Too Many Passengers</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3403,46 +2923,6 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getTravelClass__WrongRowStructure__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.BusinessClass <em>Business Class</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Business Class</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.BusinessClass
-	 * @generated
-	 */
-	EClass getBusinessClass();
-
-	/**
-	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.FirstClass <em>First Class</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>First Class</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.FirstClass
-	 * @generated
-	 */
-	EClass getFirstClass();
-
-	/**
-	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.EconomyClass <em>Economy Class</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Economy Class</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.EconomyClass
-	 * @generated
-	 */
-	EClass getEconomyClass();
-
-	/**
-	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.PremiumEconomyClass <em>Premium Economy Class</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Premium Economy Class</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.PremiumEconomyClass
-	 * @generated
-	 */
-	EClass getPremiumEconomyClass();
 
 	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.Door <em>Door</em>}'.
@@ -4235,50 +3715,6 @@ public interface CabinPackage extends EPackage {
 	EAttribute getSimulationProperties_PassengersBoardingPerMinute();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getScale <em>Scale</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Scale</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getScale()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_Scale();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUsePresetSettings <em>Use Preset Settings</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Use Preset Settings</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#isUsePresetSettings()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_UsePresetSettings();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSpeedFactor <em>Speed Factor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Speed Factor</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getSpeedFactor()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_SpeedFactor();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getFramesPerSecond <em>Frames Per Second</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Frames Per Second</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getFramesPerSecond()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_FramesPerSecond();
-
-	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.LuggageProperties <em>Luggage Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4948,6 +4384,20 @@ public interface CabinPackage extends EPackage {
 		 */
 		EReference CABIN__STOWAGES = eINSTANCE.getCabin_Stowages();
 		/**
+		 * The meta object literal for the '<em><b>Scale</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN__SCALE = eINSTANCE.getCabin_Scale();
+		/**
+		 * The meta object literal for the '<em><b>Frames Per Second</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN__FRAMES_PER_SECOND = eINSTANCE.getCabin_FramesPerSecond();
+		/**
 		 * The meta object literal for the '<em><b>Passengers</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4968,6 +4418,20 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CABIN__AIRCRAFT_TYPE = eINSTANCE.getCabin_AircraftType();
+		/**
+		 * The meta object literal for the '<em><b>Use Preset Settings</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN__USE_PRESET_SETTINGS = eINSTANCE.getCabin_UsePresetSettings();
+		/**
+		 * The meta object literal for the '<em><b>Speed Factor</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CABIN__SPEED_FACTOR = eINSTANCE.getCabin_SpeedFactor();
 		/**
 		 * The meta object literal for the '<em><b>Simulation Settings</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
@@ -5106,6 +4570,13 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute TRAVEL_CLASS__LOAD_FACTOR = eINSTANCE.getTravelClass_LoadFactor();
 		/**
+		 * The meta object literal for the '<em><b>Travel Option</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRAVEL_CLASS__TRAVEL_OPTION = eINSTANCE.getTravelClass_TravelOption();
+		/**
 		 * The meta object literal for the '<em><b>Too Many Passengers</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5119,42 +4590,6 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation TRAVEL_CLASS___WRONG_ROW_STRUCTURE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getTravelClass__WrongRowStructure__DiagnosticChain_Map();
-		/**
-		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.BusinessClassImpl <em>Business Class</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see net.bhl.cdt.paxelerate.model.impl.BusinessClassImpl
-		 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getBusinessClass()
-		 * @generated
-		 */
-		EClass BUSINESS_CLASS = eINSTANCE.getBusinessClass();
-		/**
-		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.FirstClassImpl <em>First Class</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see net.bhl.cdt.paxelerate.model.impl.FirstClassImpl
-		 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getFirstClass()
-		 * @generated
-		 */
-		EClass FIRST_CLASS = eINSTANCE.getFirstClass();
-		/**
-		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.EconomyClassImpl <em>Economy Class</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see net.bhl.cdt.paxelerate.model.impl.EconomyClassImpl
-		 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getEconomyClass()
-		 * @generated
-		 */
-		EClass ECONOMY_CLASS = eINSTANCE.getEconomyClass();
-		/**
-		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.PremiumEconomyClassImpl <em>Premium Economy Class</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see net.bhl.cdt.paxelerate.model.impl.PremiumEconomyClassImpl
-		 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getPremiumEconomyClass()
-		 * @generated
-		 */
-		EClass PREMIUM_ECONOMY_CLASS = eINSTANCE.getPremiumEconomyClass();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.DoorImpl <em>Door</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -5692,34 +5127,6 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = eINSTANCE.getSimulationProperties_PassengersBoardingPerMinute();
-		/**
-		 * The meta object literal for the '<em><b>Scale</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__SCALE = eINSTANCE.getSimulationProperties_Scale();
-		/**
-		 * The meta object literal for the '<em><b>Use Preset Settings</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__USE_PRESET_SETTINGS = eINSTANCE.getSimulationProperties_UsePresetSettings();
-		/**
-		 * The meta object literal for the '<em><b>Speed Factor</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__SPEED_FACTOR = eINSTANCE.getSimulationProperties_SpeedFactor();
-		/**
-		 * The meta object literal for the '<em><b>Frames Per Second</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__FRAMES_PER_SECOND = eINSTANCE.getSimulationProperties_FramesPerSecond();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.LuggagePropertiesImpl <em>Luggage Properties</em>}' class.
 		 * <!-- begin-user-doc -->

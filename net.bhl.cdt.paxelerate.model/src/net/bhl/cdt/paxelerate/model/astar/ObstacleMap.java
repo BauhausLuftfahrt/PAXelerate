@@ -112,7 +112,7 @@ public class ObstacleMap {
 	 * This method creates the potential gradient around obstacle.
 	 */
 	private void generatePotentialGradient() {
-		int range = OBSTACLE_RANGE_IN_CM / cabin.getSimulationSettings().getScale();
+		int range = OBSTACLE_RANGE_IN_CM / cabin.getScale();
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
 				if (obstacleMap[i][j] == MAX_VALUE) {
@@ -200,9 +200,9 @@ public class ObstacleMap {
 		 */
 
 		for (Door door : cabin.getDoors()) {
-			entryMin = (door.getXPosition() / cabin.getSimulationSettings().getScale()) + 2;
+			entryMin = (door.getXPosition() / cabin.getScale()) + 2;
 			entryMax = (door.getXPosition() + door.getWidth())
-					/ cabin.getSimulationSettings().getScale() - 2;
+					/ cabin.getScale() - 2;
 
 			for (int i = 0; i < dimensions.getY(); i++) {
 				for (int j = 0; j < dimensions.getX(); j++) {
@@ -259,10 +259,10 @@ public class ObstacleMap {
 				}
 			}
 
-			int yDimension = obj.getYDimension() / cabin.getSimulationSettings().getScale();
-			int xDimension = obj.getXDimension() / cabin.getSimulationSettings().getScale();
-			int xPosition = obj.getXPosition() / cabin.getSimulationSettings().getScale();
-			int yPosition = obj.getYPosition() / cabin.getSimulationSettings().getScale();
+			int yDimension = obj.getYDimension() / cabin.getScale();
+			int xDimension = obj.getXDimension() / cabin.getScale();
+			int xPosition = obj.getXPosition() / cabin.getScale();
+			int yPosition = obj.getYPosition() / cabin.getScale();
 
 			for (int i = 0; i < xDimension; i++) {
 				for (int j = 0; j < yDimension; j++) {

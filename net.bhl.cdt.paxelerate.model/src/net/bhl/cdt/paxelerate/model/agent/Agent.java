@@ -112,7 +112,7 @@ public class Agent extends Subject implements Runnable {
 		this.passenger = passenger;
 		this.start = start;
 		this.goal = goal;
-		this.scale = SimulationHandler.getCabin().getSimulationSettings().getScale();
+		this.scale = SimulationHandler.getCabin().getScale();
 		this.finalCostmap = costmap;
 		this.thePassengerILetInTheRow = thePassengerILetInTheRow;
 		this.simSettings = SimulationHandler.getCabin().getSimulationSettings();
@@ -960,9 +960,9 @@ public class Agent extends Subject implements Runnable {
 				dummyPax.setId(Integer.MAX_VALUE);
 
 				for (int i = 0; i < cabinBlocker.getYDimension()
-						/ cabinBlocker.getSimulationSettings().getScale(); i++) {
+						/ cabinBlocker.getScale(); i++) {
 					Node node = SimulationHandler.getMap().getNodeByCoordinate(
-							(int) (position / cabinBlocker.getSimulationSettings().getScale()) - offset,
+							(int) (position / cabinBlocker.getScale()) - offset,
 							i);
 					if (node.getProperty() != Property.OBSTACLE) {
 						node.setProperty(Property.AGENT, passenger);
@@ -1003,10 +1003,10 @@ public class Agent extends Subject implements Runnable {
 				}
 
 				for (int i = 0; i < cabinBlocker.getYDimension()
-						/ cabinBlocker.getSimulationSettings().getScale(); i++) {
+						/ cabinBlocker.getScale(); i++) {
 
 					Node node = SimulationHandler.getMap().getNodeByCoordinate(
-							(int) (position / cabinBlocker.getSimulationSettings().getScale()) - offset,
+							(int) (position / cabinBlocker.getScale()) - offset,
 							i);
 
 					if (node.getProperty() != Property.OBSTACLE) {

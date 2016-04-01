@@ -68,10 +68,6 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 			addThreadSleepTimeDefaultPropertyDescriptor(object);
 			addDeveloperModePropertyDescriptor(object);
 			addPassengersBoardingPerMinutePropertyDescriptor(object);
-			addScalePropertyDescriptor(object);
-			addUsePresetSettingsPropertyDescriptor(object);
-			addSpeedFactorPropertyDescriptor(object);
-			addFramesPerSecondPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -363,94 +359,6 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	}
 
 	/**
-	 * This adds a property descriptor for the Scale feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addScalePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_scale_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_scale_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__SCALE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Use Preset Settings feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addUsePresetSettingsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_usePresetSettings_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_usePresetSettings_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__USE_PRESET_SETTINGS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Speed Factor feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSpeedFactorPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_speedFactor_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_speedFactor_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__SPEED_FACTOR,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Frames Per Second feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addFramesPerSecondPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_framesPerSecond_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_framesPerSecond_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__FRAMES_PER_SECOND,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -528,10 +436,6 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 			case CabinPackage.SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT:
 			case CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE:
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
-			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
-			case CabinPackage.SIMULATION_PROPERTIES__USE_PRESET_SETTINGS:
-			case CabinPackage.SIMULATION_PROPERTIES__SPEED_FACTOR:
-			case CabinPackage.SIMULATION_PROPERTIES__FRAMES_PER_SECOND:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES:

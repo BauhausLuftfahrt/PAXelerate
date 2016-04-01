@@ -27,10 +27,11 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.TravelClass#getName <em>Name</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.TravelClass#getRowStructure <em>Row Structure</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.TravelClass#getLoadFactor <em>Load Factor</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.TravelClass#getTravelOption <em>Travel Option</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getTravelClass()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface TravelClass extends EObject {
@@ -291,6 +292,36 @@ public interface TravelClass extends EObject {
 	 * @generated
 	 */
 	void setLoadFactor(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Travel Option</b></em>' attribute.
+	 * The default value is <code>"EconomyClass"</code>.
+	 * The literals are from the enumeration {@link net.bhl.cdt.paxelerate.model.TravelOption}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Travel Option</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Travel Option</em>' attribute.
+	 * @see net.bhl.cdt.paxelerate.model.TravelOption
+	 * @see #setTravelOption(TravelOption)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getTravelClass_TravelOption()
+	 * @model default="EconomyClass" required="true"
+	 * @generated
+	 */
+	TravelOption getTravelOption();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.TravelClass#getTravelOption <em>Travel Option</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Travel Option</em>' attribute.
+	 * @see net.bhl.cdt.paxelerate.model.TravelOption
+	 * @see #getTravelOption()
+	 * @generated
+	 */
+	void setTravelOption(TravelOption value);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -63,6 +63,7 @@ public class TravelClassItemProvider extends ItemProviderAdapter implements IEdi
 			addNamePropertyDescriptor(object);
 			addRowStructurePropertyDescriptor(object);
 			addLoadFactorPropertyDescriptor(object);
+			addTravelOptionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -266,6 +267,28 @@ public class TravelClassItemProvider extends ItemProviderAdapter implements IEdi
 	}
 
 	/**
+	 * This adds a property descriptor for the Travel Option feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTravelOptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TravelClass_travelOption_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TravelClass_travelOption_feature", "_UI_TravelClass_type"),
+				 CabinPackage.Literals.TRAVEL_CLASS__TRAVEL_OPTION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -301,7 +324,7 @@ public class TravelClassItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	@Override
 	public Object getImage(Object object) {
-		switch (((TravelClass) object).getClassType()) {
+		switch (((TravelClass) object).getTravelOption()) {
 		case FIRST_CLASS:
 			return overlayImage(object, getResourceLocator().getImage("full/obj16/FirstClass"));
 		case BUSINESS_CLASS:
@@ -323,7 +346,7 @@ public class TravelClassItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((TravelClass) object).getClassType().getName();
+		String label = ((TravelClass) object).getTravelOption().getName();
 		return StringHelper.splitCamelCase(label);
 
 	}
@@ -349,6 +372,7 @@ public class TravelClassItemProvider extends ItemProviderAdapter implements IEdi
 			case CabinPackage.TRAVEL_CLASS__NAME:
 			case CabinPackage.TRAVEL_CLASS__ROW_STRUCTURE:
 			case CabinPackage.TRAVEL_CLASS__LOAD_FACTOR:
+			case CabinPackage.TRAVEL_CLASS__TRAVEL_OPTION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CabinPackage.TRAVEL_CLASS__ROWS:

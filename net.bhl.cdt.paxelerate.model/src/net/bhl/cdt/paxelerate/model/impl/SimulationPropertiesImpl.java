@@ -3,6 +3,7 @@
 package net.bhl.cdt.paxelerate.model.impl;
 
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -41,10 +42,6 @@ import net.bhl.cdt.paxelerate.model.SortingStyle;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getLuggageProperties <em>Luggage Properties</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerProperties <em>Passenger Properties</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getScale <em>Scale</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isUsePresetSettings <em>Use Preset Settings</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSpeedFactor <em>Speed Factor</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getFramesPerSecond <em>Frames Per Second</em>}</li>
  * </ul>
  *
  * @generated
@@ -319,86 +316,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * @ordered
 	 */
 	protected double passengersBoardingPerMinute = PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getScale() <em>Scale</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getScale()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int SCALE_EDEFAULT = 10;
-
-	/**
-	 * The cached value of the '{@link #getScale() <em>Scale</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getScale()
-	 * @generated
-	 * @ordered
-	 */
-	protected int scale = SCALE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isUsePresetSettings() <em>Use Preset Settings</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isUsePresetSettings()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean USE_PRESET_SETTINGS_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isUsePresetSettings() <em>Use Preset Settings</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isUsePresetSettings()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean usePresetSettings = USE_PRESET_SETTINGS_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getSpeedFactor() <em>Speed Factor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSpeedFactor()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int SPEED_FACTOR_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getSpeedFactor() <em>Speed Factor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSpeedFactor()
-	 * @generated
-	 * @ordered
-	 */
-	protected int speedFactor = SPEED_FACTOR_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getFramesPerSecond() <em>Frames Per Second</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFramesPerSecond()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int FRAMES_PER_SECOND_EDEFAULT = 5;
-
-	/**
-	 * The cached value of the '{@link #getFramesPerSecond() <em>Frames Per Second</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFramesPerSecond()
-	 * @generated
-	 * @ordered
-	 */
-	protected int framesPerSecond = FRAMES_PER_SECOND_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -774,90 +691,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getScale() {
-		return scale;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setScale(int newScale) {
-		int oldScale = scale;
-		scale = newScale;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SCALE, oldScale, scale));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isUsePresetSettings() {
-		return usePresetSettings;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setUsePresetSettings(boolean newUsePresetSettings) {
-		boolean oldUsePresetSettings = usePresetSettings;
-		usePresetSettings = newUsePresetSettings;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__USE_PRESET_SETTINGS, oldUsePresetSettings, usePresetSettings));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public int getSpeedFactor() {
-		return speedFactor;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSpeedFactor(int newSpeedFactor) {
-		int oldSpeedFactor = speedFactor;
-		speedFactor = newSpeedFactor;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SPEED_FACTOR, oldSpeedFactor, speedFactor));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public int getFramesPerSecond() {
-		return framesPerSecond;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setFramesPerSecond(int newFramesPerSecond) {
-		int oldFramesPerSecond = framesPerSecond;
-		framesPerSecond = newFramesPerSecond;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__FRAMES_PER_SECOND, oldFramesPerSecond, framesPerSecond));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -907,14 +740,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return getPassengerProperties();
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				return getPassengersBoardingPerMinute();
-			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
-				return getScale();
-			case CabinPackage.SIMULATION_PROPERTIES__USE_PRESET_SETTINGS:
-				return isUsePresetSettings();
-			case CabinPackage.SIMULATION_PROPERTIES__SPEED_FACTOR:
-				return getSpeedFactor();
-			case CabinPackage.SIMULATION_PROPERTIES__FRAMES_PER_SECOND:
-				return getFramesPerSecond();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -974,18 +799,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				setPassengersBoardingPerMinute((Double)newValue);
 				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
-				setScale((Integer)newValue);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__USE_PRESET_SETTINGS:
-				setUsePresetSettings((Boolean)newValue);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SPEED_FACTOR:
-				setSpeedFactor((Integer)newValue);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__FRAMES_PER_SECOND:
-				setFramesPerSecond((Integer)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1043,18 +856,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				setPassengersBoardingPerMinute(PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT);
 				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
-				setScale(SCALE_EDEFAULT);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__USE_PRESET_SETTINGS:
-				setUsePresetSettings(USE_PRESET_SETTINGS_EDEFAULT);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SPEED_FACTOR:
-				setSpeedFactor(SPEED_FACTOR_EDEFAULT);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__FRAMES_PER_SECOND:
-				setFramesPerSecond(FRAMES_PER_SECOND_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1097,14 +898,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return passengerProperties != null;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				return passengersBoardingPerMinute != PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
-				return scale != SCALE_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__USE_PRESET_SETTINGS:
-				return usePresetSettings != USE_PRESET_SETTINGS_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__SPEED_FACTOR:
-				return speedFactor != SPEED_FACTOR_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__FRAMES_PER_SECOND:
-				return framesPerSecond != FRAMES_PER_SECOND_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1143,14 +936,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 		result.append(developerMode);
 		result.append(", passengersBoardingPerMinute: ");
 		result.append(passengersBoardingPerMinute);
-		result.append(", scale: ");
-		result.append(scale);
-		result.append(", usePresetSettings: ");
-		result.append(usePresetSettings);
-		result.append(", speedFactor: ");
-		result.append(speedFactor);
-		result.append(", framesPerSecond: ");
-		result.append(framesPerSecond);
 		result.append(')');
 		return result.toString();
 	}

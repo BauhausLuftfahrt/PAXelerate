@@ -114,10 +114,10 @@ public class AgentFunctions {
 		Door door = passenger.getDoor();
 		for (int i = 0; i <= PIXELS_FOR_SCANNING_AT_DOOR; i++) {
 			for (int j = 0; j < door.getWidth()
-					/ SimulationHandler.getCabin().getSimulationSettings().getScale(); j++) {
+					/ SimulationHandler.getCabin().getScale(); j++) {
 				Node node = SimulationHandler.getMap()
 						.getNodeByCoordinate(door.getXPosition()
-								/ SimulationHandler.getCabin().getSimulationSettings().getScale() + j,
+								/ SimulationHandler.getCabin().getScale() + j,
 								i);
 				if (node.getProperty() == Property.AGENT) {
 					if (node.getPassenger().getId() != passenger.getId()) {

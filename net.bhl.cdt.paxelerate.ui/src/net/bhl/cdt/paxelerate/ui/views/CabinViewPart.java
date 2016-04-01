@@ -7,7 +7,6 @@ package net.bhl.cdt.paxelerate.ui.views;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.swt.SWT;
@@ -22,12 +21,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 
 import net.bhl.cdt.model.util.ModelHelper;
-import net.bhl.cdt.paxelerate.model.BusinessClass;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
 import net.bhl.cdt.paxelerate.model.Curtain;
 import net.bhl.cdt.paxelerate.model.Door;
-import net.bhl.cdt.paxelerate.model.FirstClass;
 import net.bhl.cdt.paxelerate.model.Galley;
 import net.bhl.cdt.paxelerate.model.Lavatory;
 import net.bhl.cdt.paxelerate.model.ObjectOption;
@@ -40,7 +37,6 @@ import net.bhl.cdt.paxelerate.model.TravelOption;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.astar.ObstacleMap;
 import net.bhl.cdt.paxelerate.model.astar.Path;
-import net.bhl.cdt.paxelerate.model.util.TCHelper;
 import net.bhl.cdt.paxelerate.ui.color.ColorHelper;
 import net.bhl.cdt.paxelerate.ui.font.FontHelper;
 import net.bhl.cdt.paxelerate.ui.graphics.SWTHelper;
@@ -216,9 +212,9 @@ public class CabinViewPart extends ViewPart {
 				adapt(Axis.Y, cabin.getXDimension()));
 
 		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
-			if (seat.getTravelClass() instanceof FirstClass) {
+			if (seat.getTravelClass().getTravelOption() == TravelOption.FIRST_CLASS) {
 				gc.drawImage(firstSeat, get(seat, Axis.X), get(seat, Axis.Y));
-			} else if (seat.getTravelClass() instanceof BusinessClass) {
+			} else if (seat.getTravelClass().getTravelOption() == TravelOption.BUSINESS_CLASS) {
 				gc.drawImage(businessSeat, get(seat, Axis.X), get(seat, Axis.Y));
 			} else {
 				gc.drawImage(economySeat, get(seat, Axis.X), get(seat, Axis.Y));
@@ -378,21 +374,19 @@ public class CabinViewPart extends ViewPart {
 			 * the dimensions of the first element are used for scaling
 			 **/
 
-			for (TravelOption option : TravelOption.VALUES) {
-				List<TravelClass> list = TCHelper.getClassesByOption(option, cabin);
+			for (TravelClass tc : cabin.getClasses()) {
 
-				if (!list.isEmpty()) {
-					int dim = adapt(list.get(0).getYDimensionOfSeats());
+				int dimY = adapt(tc.getYDimensionOfSeats());
+				int dimX = adapt(tc.getXDimensionOfSeats());
 
-					switch (option) {
-					case FIRST_CLASS:
-						firstSeat = ImageHelper.resize(firstSeat, dim, dim, parent);
-					case BUSINESS_CLASS:
-						businessSeat = ImageHelper.resize(businessSeat, dim, dim, parent);
-					case ECONOMY_CLASS:
-						economySeat = ImageHelper.resize(economySeat, dim, dim, parent);
-					default:
-					}
+				switch (tc.getTravelOption()) {
+				case FIRST_CLASS:
+					firstSeat = ImageHelper.resize(firstSeat, dimY, dimX, parent);
+				case BUSINESS_CLASS:
+					businessSeat = ImageHelper.resize(businessSeat, dimY, dimX, parent);
+				case ECONOMY_CLASS:
+					economySeat = ImageHelper.resize(economySeat, dimY, dimX, parent);
+				default:
 				}
 			}
 
@@ -470,8 +464,8 @@ public class CabinViewPart extends ViewPart {
 
 		gc.drawImage(img, 0, 0);
 		gc.setAlpha(100);
-		for (int i = 0; i < cabin.getXDimension() / cabin.getSimulationSettings().getScale(); i++) {
-			for (int j = 0; j < cabin.getYDimension() / cabin.getSimulationSettings().getScale(); j++) {
+		for (int i = 0; i < cabin.getXDimension() / cabin.getScale(); i++) {
+			for (int j = 0; j < cabin.getYDimension() / cabin.getScale(); j++) {
 
 				if (map[i][j] <= ObstacleMap.getHoleValue()) {
 					gc.setBackground(ColorHelper.GREEN);
@@ -709,7 +703,7 @@ public class CabinViewPart extends ViewPart {
 	 * @return
 	 */
 	private double scale() {
-		return cabin.getSimulationSettings().getScale() / factor;
+		return cabin.getScale() / factor;
 	}
 
 	/**
