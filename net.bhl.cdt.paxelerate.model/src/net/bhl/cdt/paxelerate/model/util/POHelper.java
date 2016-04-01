@@ -25,7 +25,10 @@ public class POHelper {
 	 * @return
 	 */
 
+	// TODO: Replace this by using the ObjectOption ENUM directly
+
 	@SuppressWarnings("unchecked")
+	@Deprecated
 	public static List<PhysicalObject> getObjectByOption(ObjectOption option,
 			Cabin cabin) {
 		switch (option) {

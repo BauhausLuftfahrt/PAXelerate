@@ -395,12 +395,13 @@ public class SimulationHandler {
 	private int percentage(double now, double max) {
 		return (int) ((now / max) * 100.0);
 	}
-	
+
 	public void stopSimulation() {
-		// TODO
-		// This is just a quick fix
 		for (Agent agent : agentList) {
-			agent.getThread().stop();
+
+			agent.setThread(null);
+			reset();
+
 		}
 	}
 }

@@ -192,16 +192,13 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 						SimulationView.getWatch().stop();
 
-						
-						
-						
 						Display.getDefault().syncExec(new Runnable() {
 							@Override
 							public void run() {
 								Image image = cabinViewPart
-								.submitObstacleMap(SimulationHandler.getMap().getObstacleMap().getMap()); 
-										cabinViewPart.printObstacleMap(image);
-								cabinViewPart.submitAgents(SimulationHandler.getAgentList()); 
+										.submitObstacleMap(SimulationHandler.getMap().getObstacleMap().getMap());
+								cabinViewPart.printObstacleMap(image);
+								cabinViewPart.submitAgents(SimulationHandler.getAgentList());
 							}
 						});
 
@@ -223,6 +220,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 				// PUBLISH
 				Log.add(this, "Updating GUI...");
 				Display.getDefault().syncExec(new Runnable() {
+					@Override
 					public void run() {
 
 					}
