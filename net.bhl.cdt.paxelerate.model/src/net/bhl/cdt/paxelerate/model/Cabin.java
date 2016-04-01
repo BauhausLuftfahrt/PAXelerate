@@ -291,6 +291,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Aircraft Type</b></em>' attribute.
+	 * The default value is <code>"narrowbody"</code>.
 	 * The literals are from the enumeration {@link net.bhl.cdt.paxelerate.model.AircraftType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -302,7 +303,7 @@ public interface Cabin extends NamedElement {
 	 * @see net.bhl.cdt.paxelerate.model.AircraftType
 	 * @see #setAircraftType(AircraftType)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getCabin_AircraftType()
-	 * @model
+	 * @model default="narrowbody" required="true"
 	 * @generated
 	 */
 	AircraftType getAircraftType();

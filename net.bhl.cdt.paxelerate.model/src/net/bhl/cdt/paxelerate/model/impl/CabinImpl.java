@@ -257,7 +257,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final AircraftType AIRCRAFT_TYPE_EDEFAULT = AircraftType.REGIONAL;
+	protected static final AircraftType AIRCRAFT_TYPE_EDEFAULT = AircraftType.NARROWBODY;
 	/**
 	 * The cached value of the '{@link #getAircraftType() <em>Aircraft Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
