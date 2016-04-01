@@ -470,8 +470,8 @@ public class CabinViewPart extends ViewPart {
 
 		gc.drawImage(img, 0, 0);
 		gc.setAlpha(100);
-		for (int i = 0; i < cabin.getXDimension() / cabin.getScale(); i++) {
-			for (int j = 0; j < cabin.getYDimension() / cabin.getScale(); j++) {
+		for (int i = 0; i < cabin.getXDimension() / cabin.getSimulationSettings().getScale(); i++) {
+			for (int j = 0; j < cabin.getYDimension() / cabin.getSimulationSettings().getScale(); j++) {
 
 				if (map[i][j] <= ObstacleMap.getHoleValue()) {
 					gc.setBackground(ColorHelper.GREEN);
@@ -709,7 +709,7 @@ public class CabinViewPart extends ViewPart {
 	 * @return
 	 */
 	private double scale() {
-		return cabin.getScale() / factor;
+		return cabin.getSimulationSettings().getScale() / factor;
 	}
 
 	/**

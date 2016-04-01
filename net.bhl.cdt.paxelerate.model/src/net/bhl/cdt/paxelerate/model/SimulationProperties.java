@@ -29,6 +29,10 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageProperties <em>Luggage Properties</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerProperties <em>Passenger Properties</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getScale <em>Scale</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUsePresetSettings <em>Use Preset Settings</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSpeedFactor <em>Speed Factor</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getFramesPerSecond <em>Frames Per Second</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties()
@@ -429,5 +433,112 @@ public interface SimulationProperties extends EObject {
 	 * @generated
 	 */
 	void setPassengersBoardingPerMinute(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Scale</b></em>' attribute.
+	 * The default value is <code>"10"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Scale</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Scale</em>' attribute.
+	 * @see #setScale(int)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_Scale()
+	 * @model default="10"
+	 * @generated
+	 */
+	int getScale();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getScale <em>Scale</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Scale</em>' attribute.
+	 * @see #getScale()
+	 * @generated
+	 */
+	void setScale(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Use Preset Settings</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Use Preset Settings</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Use Preset Settings</em>' attribute.
+	 * @see #setUsePresetSettings(boolean)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_UsePresetSettings()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isUsePresetSettings();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUsePresetSettings <em>Use Preset Settings</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Use Preset Settings</em>' attribute.
+	 * @see #isUsePresetSettings()
+	 * @generated
+	 */
+	void setUsePresetSettings(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Speed Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Speed Factor</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Speed Factor</em>' attribute.
+	 * @see #setSpeedFactor(int)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_SpeedFactor()
+	 * @model
+	 * @generated
+	 */
+	int getSpeedFactor();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSpeedFactor <em>Speed Factor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Speed Factor</em>' attribute.
+	 * @see #getSpeedFactor()
+	 * @generated
+	 */
+	void setSpeedFactor(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Frames Per Second</b></em>' attribute.
+	 * The default value is <code>"5"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Frames Per Second</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Frames Per Second</em>' attribute.
+	 * @see #setFramesPerSecond(int)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_FramesPerSecond()
+	 * @model default="5"
+	 * @generated
+	 */
+	int getFramesPerSecond();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getFramesPerSecond <em>Frames Per Second</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Frames Per Second</em>' attribute.
+	 * @see #getFramesPerSecond()
+	 * @generated
+	 */
+	void setFramesPerSecond(int value);
 
 } // SimulationProperties

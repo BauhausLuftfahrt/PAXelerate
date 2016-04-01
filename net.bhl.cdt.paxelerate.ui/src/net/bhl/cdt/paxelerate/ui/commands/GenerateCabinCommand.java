@@ -44,7 +44,7 @@ public class GenerateCabinCommand extends CDTCommand {
 	 */
 	public GenerateCabinCommand(Cabin cabin) {
 		this.cabin = cabin;
-		if (cabin.isUsePresetSettings()) {
+		if (cabin.getSimulationSettings().isUsePresetSettings()) {
 			switch (cabin.getAircraftType()) {
 			case REGIONAL:
 				cabin.setYDimension(300);
@@ -101,7 +101,7 @@ public class GenerateCabinCommand extends CDTCommand {
 			constructor.createDoor(StandardDoor.class, true, 2, -1);
 			constructor.createPhysicalObject(ObjectOption.LAVATORY, 100);
 			cabin = constructor.getCabin();
-			cabin.setUsePresetSettings(false);
+			cabin.getSimulationSettings().setUsePresetSettings(false);
 			/* ------- Cabin Construction ends here! ----------- */
 
 			Log.add(this, "Cabin generation completed");

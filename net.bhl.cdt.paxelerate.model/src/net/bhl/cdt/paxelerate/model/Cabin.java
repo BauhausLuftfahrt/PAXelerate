@@ -19,8 +19,8 @@ import net.bhl.cdt.model.NamedElement;
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getYDimension <em>YDimension</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getRowNonexistent <em>Row Nonexistent</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getAisleWidth <em>Aisle Width</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getFramesPerSecond <em>Frames Per Second</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getNumberOfDecks <em>Number Of Decks</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getAircraftType <em>Aircraft Type</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getSimulationSettings <em>Simulation Settings</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getClasses <em>Classes</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getDoors <em>Doors</em>}</li>
@@ -30,10 +30,6 @@ import net.bhl.cdt.model.NamedElement;
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getCurtains <em>Curtains</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getStowages <em>Stowages</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getPassengers <em>Passengers</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getScale <em>Scale</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getAircraftType <em>Aircraft Type</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#isUsePresetSettings <em>Use Preset Settings</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getSpeedFactor <em>Speed Factor</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getCabin()
@@ -193,60 +189,6 @@ public interface Cabin extends NamedElement {
 	EList<Stowage> getStowages();
 
 	/**
-	 * Returns the value of the '<em><b>Scale</b></em>' attribute.
-	 * The default value is <code>"10"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Scale</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Scale</em>' attribute.
-	 * @see #setScale(int)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getCabin_Scale()
-	 * @model default="10"
-	 * @generated
-	 */
-	int getScale();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Cabin#getScale <em>Scale</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Scale</em>' attribute.
-	 * @see #getScale()
-	 * @generated
-	 */
-	void setScale(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Frames Per Second</b></em>' attribute.
-	 * The default value is <code>"5"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Frames Per Second</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Frames Per Second</em>' attribute.
-	 * @see #setFramesPerSecond(int)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getCabin_FramesPerSecond()
-	 * @model default="5"
-	 * @generated
-	 */
-	int getFramesPerSecond();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Cabin#getFramesPerSecond <em>Frames Per Second</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Frames Per Second</em>' attribute.
-	 * @see #getFramesPerSecond()
-	 * @generated
-	 */
-	void setFramesPerSecond(int value);
-
-	/**
 	 * Returns the value of the '<em><b>Passengers</b></em>' containment reference list.
 	 * The list contents are of type {@link net.bhl.cdt.paxelerate.model.Passenger}.
 	 * <!-- begin-user-doc -->
@@ -317,59 +259,6 @@ public interface Cabin extends NamedElement {
 	 * @generated
 	 */
 	void setAircraftType(AircraftType value);
-
-	/**
-	 * Returns the value of the '<em><b>Use Preset Settings</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Use Preset Settings</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Use Preset Settings</em>' attribute.
-	 * @see #setUsePresetSettings(boolean)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getCabin_UsePresetSettings()
-	 * @model default="false"
-	 * @generated
-	 */
-	boolean isUsePresetSettings();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Cabin#isUsePresetSettings <em>Use Preset Settings</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Use Preset Settings</em>' attribute.
-	 * @see #isUsePresetSettings()
-	 * @generated
-	 */
-	void setUsePresetSettings(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Speed Factor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Speed Factor</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Speed Factor</em>' attribute.
-	 * @see #setSpeedFactor(int)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getCabin_SpeedFactor()
-	 * @model
-	 * @generated
-	 */
-	int getSpeedFactor();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Cabin#getSpeedFactor <em>Speed Factor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Speed Factor</em>' attribute.
-	 * @see #getSpeedFactor()
-	 * @generated
-	 */
-	void setSpeedFactor(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Simulation Settings</b></em>' reference.

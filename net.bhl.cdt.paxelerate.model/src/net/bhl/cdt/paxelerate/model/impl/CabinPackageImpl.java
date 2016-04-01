@@ -420,24 +420,6 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCabin_Scale() {
-        return (EAttribute)getCabin().getEStructuralFeatures().get(15);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCabin_FramesPerSecond() {
-        return (EAttribute)getCabin().getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getCabin_Passengers() {
         return (EReference)getCabin().getEStructuralFeatures().get(14);
 	}
@@ -448,7 +430,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getCabin_NumberOfDecks() {
-        return (EAttribute)getCabin().getEStructuralFeatures().get(5);
+        return (EAttribute)getCabin().getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -457,25 +439,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getCabin_AircraftType() {
-        return (EAttribute)getCabin().getEStructuralFeatures().get(16);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCabin_UsePresetSettings() {
-        return (EAttribute)getCabin().getEStructuralFeatures().get(17);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCabin_SpeedFactor() {
-        return (EAttribute)getCabin().getEStructuralFeatures().get(18);
+        return (EAttribute)getCabin().getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1415,6 +1379,42 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EAttribute getSimulationProperties_PassengersBoardingPerMinute() {
         return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_Scale() {
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_UsePresetSettings() {
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(16);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_SpeedFactor() {
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(17);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_FramesPerSecond() {
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(18);
 	}
 
 	/**
