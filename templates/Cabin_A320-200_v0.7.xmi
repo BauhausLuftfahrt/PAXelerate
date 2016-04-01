@@ -243,10 +243,10 @@
       <seats yPosition="317" xPosition="2405" yDimension="50" xDimension="50" name="30F" id="180" letter="F" travelClass="//@classes.0" row="//@classes.0/@rows.29" occupied="true" passenger="//@passengers.154"/>
     </rows>
   </classes>
-  <doors xsi:type="net.bhl.cdt.paxelerate:EmergencyExit" xPosition="1073" onBothSides="true" width="50" id="3" isActive="false"/>
-  <doors xsi:type="net.bhl.cdt.paxelerate:EmergencyExit" xPosition="1158" onBothSides="true" width="50" id="4" isActive="false"/>
-  <doors xsi:type="net.bhl.cdt.paxelerate:MainDoor" xPosition="95" onBothSides="true" width="81" id="1"/>
-  <doors xsi:type="net.bhl.cdt.paxelerate:StandardDoor" xPosition="2554" onBothSides="true" width="81" id="2" isActive="false"/>
+  <doors xsi:type="net.bhl.cdt.paxelerate:Door" doorOption="EmergencyExit" xPosition="1073" onBothSides="true" width="50" id="3" isActive="false"/>
+  <doors xsi:type="net.bhl.cdt.paxelerate:Door" doorOption="EmergencyExit" xPosition="1158" onBothSides="true" width="50" id="4" isActive="false"/>
+  <doors xsi:type="net.bhl.cdt.paxelerate:Door" doorOption="MainDoor" xPosition="95" onBothSides="true" width="81" id="1"/>
+  <doors xsi:type="net.bhl.cdt.paxelerate:Door" doorOption="StandardDoor" xPosition="2554" onBothSides="true" width="81" id="2" isActive="false"/>
   <lavatories yDimension="123" xDimension="82" name=" 1" id="1"/>
   <lavatories xPosition="2452" yDimension="137" xDimension="96" name=" 2" id="2"/>
   <lavatories yPosition="233" xPosition="2452" yDimension="137" xDimension="96" name=" 3" id="3"/>
