@@ -1,59 +1,73 @@
 <?xml version="1.0" encoding="ASCII"?>
-<org.eclipse.emf.ecp.view.model:View xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.emf.ecp.view.model="http://org/eclipse/emf/ecp/view/model/170" xmi:id="_6lcZIPfrEeWCYsQgm16VBQ" name="TravelClass" ecorePath="/net.bhl.cdt.paxelerate.model/model/cabin.ecore">
+<org.eclipse.emf.ecp.view.model:View xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.emf.ecp.view.group.model="http://org/eclipse/emf/ecp/view/group/model" xmlns:org.eclipse.emf.ecp.view.horizontal.model="http://org/eclipse/emf/ecp/view/horizontal/model" xmlns:org.eclipse.emf.ecp.view.model="http://org/eclipse/emf/ecp/view/model/170" xmlns:org.eclipse.emf.ecp.view.vertical.model="http://org/eclipse/emf/ecp/view/vertical/model" xmi:id="_6lcZIPfrEeWCYsQgm16VBQ" name="TravelClass" ecorePath="/net.bhl.cdt.paxelerate.model/model/cabin.ecore">
   <rootEClass href="http://net.bhl.cdt.paxelerate.model/#//TravelClass"/>
-  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_6l_LsPfrEeWCYsQgm16VBQ" name="Control rows">
-    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_6l_LsffrEeWCYsQgm16VBQ">
-      <domainModelEFeature xsi:type="ecore:EReference" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/rows"/>
-    </domainModelReference>
+  <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_aETB8Po3EeWozM0q10hXZQ" name="Properties">
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_6l_LvvfrEeWCYsQgm16VBQ" name="Control name">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_6l_Lv_frEeWCYsQgm16VBQ">
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/name"/>
+      </domainModelReference>
+    </children>
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_6l_LsvfrEeWCYsQgm16VBQ" name="Control sequence">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_6l_Ls_frEeWCYsQgm16VBQ">
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/sequence"/>
+      </domainModelReference>
+    </children>
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_6l_LxPfrEeWCYsQgm16VBQ" name="Control travelOption">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_6l_LxffrEeWCYsQgm16VBQ">
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/travelOption"/>
+      </domainModelReference>
+    </children>
   </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_6l_LsvfrEeWCYsQgm16VBQ" name="Control sequence">
-    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_6l_Ls_frEeWCYsQgm16VBQ">
-      <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/sequence"/>
-    </domainModelReference>
+  <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout" xmi:id="_qIpPUPo3EeWozM0q10hXZQ">
+    <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_qj9SUPo3EeWozM0q10hXZQ">
+      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_k6hkoPo3EeWozM0q10hXZQ" name="Dimensions">
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_6l_LuvfrEeWCYsQgm16VBQ" name="Control xDimensionOfSeats">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_6l_Lu_frEeWCYsQgm16VBQ">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/xDimensionOfSeats"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_6l_LvPfrEeWCYsQgm16VBQ" name="Control yDimensionOfSeats">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_6l_LvffrEeWCYsQgm16VBQ">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/yDimensionOfSeats"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_6l_LuPfrEeWCYsQgm16VBQ" name="Control seatPitch">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_6l_LuffrEeWCYsQgm16VBQ">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/seatPitch"/>
+          </domainModelReference>
+        </children>
+      </children>
+    </children>
+    <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_q8OBUPo3EeWozM0q10hXZQ">
+      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_g8u5YPo3EeWozM0q10hXZQ" name="Passengers">
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_6l_LtvfrEeWCYsQgm16VBQ" name="Control availableSeats">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_6l_Lt_frEeWCYsQgm16VBQ">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/availableSeats"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_6l_LtPfrEeWCYsQgm16VBQ" name="Control passengers">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_6l_LtffrEeWCYsQgm16VBQ">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/passengers"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_6l_LwvfrEeWCYsQgm16VBQ" name="Control loadFactor">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_6l_Lw_frEeWCYsQgm16VBQ">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/loadFactor"/>
+          </domainModelReference>
+        </children>
+      </children>
+    </children>
   </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_6l_LtPfrEeWCYsQgm16VBQ" name="Control passengers">
-    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_6l_LtffrEeWCYsQgm16VBQ">
-      <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/passengers"/>
-    </domainModelReference>
-  </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_6l_LtvfrEeWCYsQgm16VBQ" name="Control availableSeats">
-    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_6l_Lt_frEeWCYsQgm16VBQ">
-      <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/availableSeats"/>
-    </domainModelReference>
-  </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_6l_LuPfrEeWCYsQgm16VBQ" name="Control seatPitch">
-    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_6l_LuffrEeWCYsQgm16VBQ">
-      <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/seatPitch"/>
-    </domainModelReference>
-  </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_6l_LuvfrEeWCYsQgm16VBQ" name="Control xDimensionOfSeats">
-    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_6l_Lu_frEeWCYsQgm16VBQ">
-      <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/xDimensionOfSeats"/>
-    </domainModelReference>
-  </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_6l_LvPfrEeWCYsQgm16VBQ" name="Control yDimensionOfSeats">
-    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_6l_LvffrEeWCYsQgm16VBQ">
-      <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/yDimensionOfSeats"/>
-    </domainModelReference>
-  </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_6l_LvvfrEeWCYsQgm16VBQ" name="Control name">
-    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_6l_Lv_frEeWCYsQgm16VBQ">
-      <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/name"/>
-    </domainModelReference>
-  </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_6l_LwPfrEeWCYsQgm16VBQ" name="Control rowStructure">
-    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_6l_LwffrEeWCYsQgm16VBQ">
-      <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/rowStructure"/>
-    </domainModelReference>
-  </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_6l_LwvfrEeWCYsQgm16VBQ" name="Control loadFactor">
-    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_6l_Lw_frEeWCYsQgm16VBQ">
-      <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/loadFactor"/>
-    </domainModelReference>
-  </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_6l_LxPfrEeWCYsQgm16VBQ" name="Control travelOption">
-    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_6l_LxffrEeWCYsQgm16VBQ">
-      <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/travelOption"/>
-    </domainModelReference>
+  <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_YnAkkPo3EeWozM0q10hXZQ" name="Rows">
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_6l_LwPfrEeWCYsQgm16VBQ" name="Control rowStructure">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_6l_LwffrEeWCYsQgm16VBQ">
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/rowStructure"/>
+      </domainModelReference>
+    </children>
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_6l_LsPfrEeWCYsQgm16VBQ" name="Control rows">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_6l_LsffrEeWCYsQgm16VBQ">
+        <domainModelEFeature xsi:type="ecore:EReference" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/rows"/>
+      </domainModelReference>
+    </children>
   </children>
 </org.eclipse.emf.ecp.view.model:View>

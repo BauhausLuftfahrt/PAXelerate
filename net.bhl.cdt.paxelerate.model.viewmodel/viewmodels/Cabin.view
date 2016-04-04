@@ -24,7 +24,7 @@
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Cabin/aisleWidth"/>
           </domainModelReference>
         </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_yK0hnKS6EeWGjpaobu8CIA" name="Control numberOfDecks">
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_yK0hnKS6EeWGjpaobu8CIA" name="Control numberOfDecks" readonly="true">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_yK0hnaS6EeWGjpaobu8CIA">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Cabin/numberOfDecks"/>
           </domainModelReference>

@@ -1,44 +1,49 @@
 <?xml version="1.0" encoding="ASCII"?>
-<org.eclipse.emf.ecp.view.model:View xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.emf.ecp.view.model="http://org/eclipse/emf/ecp/view/model/170" xmi:id="_Ex4IMPf9EeWW1cUGXMH3Rw" name="Door" ecorePath="/net.bhl.cdt.paxelerate.model/model/cabin.ecore">
+<org.eclipse.emf.ecp.view.model:View xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.emf.ecp.view.group.model="http://org/eclipse/emf/ecp/view/group/model" xmlns:org.eclipse.emf.ecp.view.horizontal.model="http://org/eclipse/emf/ecp/view/horizontal/model" xmlns:org.eclipse.emf.ecp.view.model="http://org/eclipse/emf/ecp/view/model/170" xmlns:org.eclipse.emf.ecp.view.vertical.model="http://org/eclipse/emf/ecp/view/vertical/model" xmi:id="_Ex4IMPf9EeWW1cUGXMH3Rw" name="Door" ecorePath="/net.bhl.cdt.paxelerate.model/model/cabin.ecore">
   <rootEClass href="http://net.bhl.cdt.paxelerate.model/#//Door"/>
-  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_Eya6wPf9EeWW1cUGXMH3Rw" name="Control xPosition">
-    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_Eya6wff9EeWW1cUGXMH3Rw">
-      <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Door/xPosition"/>
-    </domainModelReference>
+  <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_1SjYcPo2EeWozM0q10hXZQ" name="Properties">
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_Eya6zvf9EeWW1cUGXMH3Rw" name="Control doorOption">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_Eya6z_f9EeWW1cUGXMH3Rw">
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Door/doorOption"/>
+      </domainModelReference>
+    </children>
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_Eya6wPf9EeWW1cUGXMH3Rw" name="Control xPosition">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_Eya6wff9EeWW1cUGXMH3Rw">
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Door/xPosition"/>
+      </domainModelReference>
+    </children>
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_Eya6xPf9EeWW1cUGXMH3Rw" name="Control width">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_Eya6xff9EeWW1cUGXMH3Rw">
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Door/width"/>
+      </domainModelReference>
+    </children>
+    <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout" xmi:id="_7M-vgPo2EeWozM0q10hXZQ">
+      <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_73tukPo2EeWozM0q10hXZQ">
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_Eya6yvf9EeWW1cUGXMH3Rw" name="Control isActive">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_Eya6y_f9EeWW1cUGXMH3Rw">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Door/isActive"/>
+          </domainModelReference>
+        </children>
+      </children>
+      <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_8PShEPo2EeWozM0q10hXZQ">
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_Eya6wvf9EeWW1cUGXMH3Rw" name="Control onBothSides">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_Eya6w_f9EeWW1cUGXMH3Rw">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Door/onBothSides"/>
+          </domainModelReference>
+        </children>
+      </children>
+    </children>
   </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_Eya6wvf9EeWW1cUGXMH3Rw" name="Control onBothSides">
-    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_Eya6w_f9EeWW1cUGXMH3Rw">
-      <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Door/onBothSides"/>
-    </domainModelReference>
-  </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_Eya6xPf9EeWW1cUGXMH3Rw" name="Control width">
-    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_Eya6xff9EeWW1cUGXMH3Rw">
-      <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Door/width"/>
-    </domainModelReference>
-  </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_Eya6xvf9EeWW1cUGXMH3Rw" name="Control id">
-    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_Eya6x_f9EeWW1cUGXMH3Rw">
-      <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Door/id"/>
-    </domainModelReference>
-  </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_Eya6yPf9EeWW1cUGXMH3Rw" name="Control numberOfSimultaneousPassengers">
-    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_Eya6yff9EeWW1cUGXMH3Rw">
-      <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Door/numberOfSimultaneousPassengers"/>
-    </domainModelReference>
-  </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_Eya6yvf9EeWW1cUGXMH3Rw" name="Control isActive">
-    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_Eya6y_f9EeWW1cUGXMH3Rw">
-      <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Door/isActive"/>
-    </domainModelReference>
-  </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_Eya6zPf9EeWW1cUGXMH3Rw" name="Control waitingPassengers">
-    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_Eya6zff9EeWW1cUGXMH3Rw">
-      <domainModelEFeature xsi:type="ecore:EReference" href="http://net.bhl.cdt.paxelerate.model/#//Door/waitingPassengers"/>
-    </domainModelReference>
-  </children>
-  <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_Eya6zvf9EeWW1cUGXMH3Rw" name="Control doorOption">
-    <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_Eya6z_f9EeWW1cUGXMH3Rw">
-      <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Door/doorOption"/>
-    </domainModelReference>
+  <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_AqlnsPo3EeWozM0q10hXZQ" name="Passengers">
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_Eya6yPf9EeWW1cUGXMH3Rw" name="Control numberOfSimultaneousPassengers">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_Eya6yff9EeWW1cUGXMH3Rw">
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Door/numberOfSimultaneousPassengers"/>
+      </domainModelReference>
+    </children>
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_Eya6zPf9EeWW1cUGXMH3Rw" name="Control waitingPassengers">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_Eya6zff9EeWW1cUGXMH3Rw">
+        <domainModelEFeature xsi:type="ecore:EReference" href="http://net.bhl.cdt.paxelerate.model/#//Door/waitingPassengers"/>
+      </domainModelReference>
+    </children>
   </children>
 </org.eclipse.emf.ecp.view.model:View>

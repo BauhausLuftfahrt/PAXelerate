@@ -1,8 +1,8 @@
+# Changelog #
 
+## PAXelerate - Version Alpha 0.6 / 2016-03-31 ##
 
-**PAXelerate – Version Alpha 0.6** / 2016-03-31
-
-This release focused on additional functionalities as well as more stability. The passenger generation and simulation views are now unsynced from the main GUI which prohibits the GUI from freezing during caculations. Enhancements can be found in the UI and workflow.
+This release focused on additional functionalities as well as more stability. The passenger generation and simulation views are now unsynced from the main GUI which prohibits the GUI from freezing during calculations. Enhancements can be found in the UI and workflow.
 
 **Fixed bugs**
 
@@ -11,7 +11,7 @@ This release focused on additional functionalities as well as more stability. Th
 - #84 Right Click menu with "generate pax" & "simulate" is shown on every element and folder
 - #83 On first startup, model elements are not listed
 - #82 Exception is thrown when launching PAXelerate for the first time
-- #75 Simulation: pathfinding cannot be iniated
+- #75 Simulation: pathfinding cannot be initiated
 - #71 Performance Issues During Simulation
 - #23 Check monument dimensions != 0
 - #21 Simulation view and cabin view are mirror-inverted
@@ -23,7 +23,7 @@ This release focused on additional functionalities as well as more stability. Th
 - #104 Provide more information in dialog CloneObject
 - #81 Added menu to add views 
 - #78 Prohibit selection of top level meta model elements in model explorer
-- #64 Change discription and output of ConsoleView
+- #64 Change description and output of ConsoleView
 - #47 Harmonize icons design
 - #36 Reorganize simulation properties
 - #32 WelcomePage: Additional Info to Get Started
@@ -36,7 +36,7 @@ This release focused on additional functionalities as well as more stability. Th
 - #103 GeneratePassengers class dramatically improved & shortened
 - #102 Passenger sorting: decouple from cabin view refresh and enhance input window
 - #76 Define aircraft load factor as parameter
-- #24 Redefine seat pitch as distance between seat backrests
+- #24 Redefine seat pitch as distance between seat back rests
 - #20 Variation of luggage stowing row
 - #19 Differentiation between stowing tasks
 - #3 Check time of seat interference task
@@ -49,19 +49,19 @@ This release focused on additional functionalities as well as more stability. Th
 - #74 Store cabin model during runtime 
 - #65 Performance of cabin view re-sizing function
 - #25 Rename MoveRow to MoveObject
-- #6 Compatibilty with Eclipse Mars.2 (4.5.2)
+- #6 Compatibility with Eclipse Mars.2 (4.5.2)
 
 ---
 
-**PAXelerate – Version Alpha 0.5** / 2016-02-15
+## PAXelerate - Version Alpha 0.5 / 2016-02-15 ##
 
-The version Alpha 0.5 marks the half way to the Beta stadium and focused on re-structuring of the packages and bug-fixing.
+The version Alpha 0.5 marks the half way to the Beta status and focused on re-structuring of the packages and bug-fixing.
 
 **Bugs**
 
 - Restore OpenCDT Menu
 - Right Click Commands are no longer visible
-- Clicking “import child” in paxelerate.product causes NullPointerException
+- Clicking import child in paxelerate.product causes NullPointerException
 - Array out of bound in ObstacleMap.getValueAtPoint
 
 **Improvement**
@@ -72,7 +72,7 @@ The version Alpha 0.5 marks the half way to the Beta stadium and focused on re-s
 - Cut decimal places with point instead of comma (English convention)
 - Preselect PAXelerate models under Project > Right click > New Model element
 - Auto-show Cabin Layout View (when starting PAX 1st time)
-- Define required plugins in paxelerate.product
+- Define required plug-ins in paxelerate.product
 - Change naming of predefined cabin layouts to regional, narrow-body and wide-body
 
 
