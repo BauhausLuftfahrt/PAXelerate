@@ -1,15 +1,16 @@
-Eclipse Public License - v 1.0
+# Eclipse Public License - v 1.0 #
 
 THE ACCOMPANYING PROGRAM IS PROVIDED UNDER THE TERMS OF THIS ECLIPSE PUBLIC
 LICENSE ("AGREEMENT"). ANY USE, REPRODUCTION OR DISTRIBUTION OF THE PROGRAM
 CONSTITUTES RECIPIENT'S ACCEPTANCE OF THIS AGREEMENT.
 
-1. DEFINITIONS
+## 1. DEFINITIONS ##
 
 "Contribution" means:
 
 a) in the case of the initial Contributor, the initial code and documentation
    distributed under this Agreement, and
+   
 b) in the case of each subsequent Contributor:
     i) changes to the Program, and
    ii) additions to the Program;
@@ -34,12 +35,14 @@ Agreement.
 "Recipient" means anyone who receives the Program under this Agreement,
 including all Contributors.
 
-2. GRANT OF RIGHTS
+## 2. GRANT OF RIGHTS ##
+
   a) Subject to the terms of this Agreement, each Contributor hereby grants
      Recipient a non-exclusive, worldwide, royalty-free copyright license to
      reproduce, prepare derivative works of, publicly display, publicly
      perform, distribute and sublicense the Contribution of such Contributor,
      if any, and such derivative works, in source code and object code form.
+     
   b) Subject to the terms of this Agreement, each Contributor hereby grants
      Recipient a non-exclusive, worldwide, royalty-free patent license under
      Licensed Patents to make, use, sell, offer to sell, import and otherwise
@@ -50,6 +53,7 @@ including all Contributors.
      combination to be covered by the Licensed Patents. The patent license
      shall not apply to any other combinations which include the Contribution.
      No hardware per se is licensed hereunder.
+     
   c) Recipient understands that although each Contributor grants the licenses
      to its Contributions set forth herein, no assurances are provided by any
      Contributor that the Program does not infringe the patent or other
@@ -62,18 +66,20 @@ including all Contributors.
      third party patent license is required to allow Recipient to distribute
      the Program, it is Recipient's responsibility to acquire that license
      before distributing the Program.
+     
   d) Each Contributor represents that to its knowledge it has sufficient
      copyright rights in its Contribution, if any, to grant the copyright
      license set forth in this Agreement.
 
-3. REQUIREMENTS
+## 3. REQUIREMENTS ##
 
 A Contributor may choose to distribute the Program in object code form under
 its own license agreement, provided that:
 
   a) it complies with the terms and conditions of this Agreement; and
+  
   b) its license agreement:
-      i) effectively disclaims on behalf of all Contributors all warranties
+        i) effectively disclaims on behalf of all Contributors all warranties
          and conditions, express and implied, including warranties or
          conditions of title and non-infringement, and implied warranties or
          conditions of merchantability and fitness for a particular purpose;
@@ -89,6 +95,7 @@ its own license agreement, provided that:
 When the Program is made available in source code form:
 
   a) it must be made available under this Agreement; and
+  
   b) a copy of this Agreement must be included with each copy of the Program.
      Contributors may not remove or alter any copyright notices contained
      within the Program.
@@ -98,7 +105,7 @@ if
 any, in a manner that reasonably allows subsequent Recipients to identify the
 originator of the Contribution.
 
-4. COMMERCIAL DISTRIBUTION
+## 4. COMMERCIAL DISTRIBUTION ##
 
 Commercial distributors of software may accept certain responsibilities with
 respect to end users, business partners and the like. While this license is
@@ -131,7 +138,7 @@ Contributors related to those performance claims and warranties, and if a
 court requires any other Contributor to pay any damages as a result, the
 Commercial Contributor must pay those damages.
 
-5. NO WARRANTY
+## 5. NO WARRANTY ##
 
 EXCEPT AS EXPRESSLY SET FORTH IN THIS AGREEMENT, THE PROGRAM IS PROVIDED ON AN
 "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR
@@ -144,7 +151,7 @@ risks and costs of program errors, compliance with applicable laws, damage to
 or loss of data, programs or equipment, and unavailability or interruption of
 operations.
 
-6. DISCLAIMER OF LIABILITY
+## 6. DISCLAIMER OF LIABILITY ##
 
 EXCEPT AS EXPRESSLY SET FORTH IN THIS AGREEMENT, NEITHER RECIPIENT NOR ANY
 CONTRIBUTORS SHALL HAVE ANY LIABILITY FOR ANY DIRECT, INDIRECT, INCIDENTAL,
@@ -155,7 +162,7 @@ ARISING IN ANY WAY OUT OF THE USE OR DISTRIBUTION OF THE PROGRAM OR THE
 EXERCISE OF ANY RIGHTS GRANTED HEREUNDER, EVEN IF ADVISED OF THE POSSIBILITY
 OF SUCH DAMAGES.
 
-7. GENERAL
+## 7. GENERAL ##
 
 If any provision of this Agreement is invalid or unenforceable under
 applicable law, it shall not affect the validity or enforceability of the
