@@ -10,7 +10,7 @@ Welcome to the repository of [PAXelerate](http://www.paxelerate.com) - an open s
 
 **Client Version**
 
-1. Download and unpack the latest client version [Alpha 0.6] (2016-03-31)(https://github.com/BauhausLuftfahrt/PAXelerate/releases/tag/alpha-0.6)
+1. Download and unpack the latest client version [Alpha 0.6] (https://github.com/BauhausLuftfahrt/PAXelerate/releases/tag/alpha-0.6) (2016-03-31)
 2. Start `PAXelerate.exe`
 
 **Software Developer Kit**
@@ -36,7 +36,7 @@ Welcome to the repository of [PAXelerate](http://www.paxelerate.com) - an open s
 * Michael Schmidt ***(active)***
 * Michael Shamiyeh ***(active)***
 * Martin Glas 
-* Tobias Brügge-Zobel
+* Tobias BrÃ¼gge-Zobel
 * Stefan Weber
 * Pedro Martinez
 * Philipp Osterrieder
