@@ -39,29 +39,10 @@
 
 
 
-<file filePath="viewmodels/StandardDoor.view"/>
-<file
-      filePath="viewmodels/EmergencyExit.view">
-</file>
-<file
-      filePath="viewmodels/MainDoor.view">
-</file>
-
-<file filePath="viewmodels/EmergencyExit.view"/>
-<file
-      filePath="viewmodels/TravelClass.view">
-</file>
 
 
-<file filePath="viewmodels/FirstClass.view"/>
 
-<file filePath="viewmodels/BusinessClass.view"/>
-<file
-      filePath="viewmodels/PremiumEconomyClass.view">
-</file>
-<file
-      filePath="viewmodels/EconomyClass.view">
-</file>
+
 <file
       filePath="viewmodels/SimulationProperties.view">
 </file>

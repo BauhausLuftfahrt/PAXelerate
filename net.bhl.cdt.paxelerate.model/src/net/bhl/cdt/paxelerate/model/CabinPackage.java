@@ -116,22 +116,22 @@ public interface CabinPackage extends EPackage {
 	int CABIN__AISLE_WIDTH = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Frames Per Second</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CABIN__FRAMES_PER_SECOND = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
 	 * The feature id for the '<em><b>Number Of Decks</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__NUMBER_OF_DECKS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 5;
+	int CABIN__NUMBER_OF_DECKS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Aircraft Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN__AIRCRAFT_TYPE = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Simulation Settings</b></em>' reference.
@@ -215,49 +215,13 @@ public interface CabinPackage extends EPackage {
 	int CABIN__PASSENGERS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 14;
 
 	/**
-	 * The feature id for the '<em><b>Scale</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CABIN__SCALE = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 15;
-
-	/**
-	 * The feature id for the '<em><b>Aircraft Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CABIN__AIRCRAFT_TYPE = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 16;
-
-	/**
-	 * The feature id for the '<em><b>Use Preset Settings</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CABIN__USE_PRESET_SETTINGS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 17;
-
-	/**
-	 * The feature id for the '<em><b>Speed Factor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CABIN__SPEED_FACTOR = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 18;
-
-	/**
 	 * The number of structural features of the '<em>Cabin</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_FEATURE_COUNT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 19;
+	int CABIN_FEATURE_COUNT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 15;
 
 	/**
 	 * The number of operations of the '<em>Cabin</em>' class.
@@ -1606,13 +1570,40 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_PROPERTIES = 13;
 
 	/**
+	 * The feature id for the '<em><b>Scale</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__SCALE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Frames Per Second</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__FRAMES_PER_SECOND = 1;
+
+	/**
+	 * The feature id for the '<em><b>Use Preset Settings</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__USE_PRESET_SETTINGS = 2;
+
+	/**
 	 * The feature id for the '<em><b>Simulate Without UI</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI = 0;
+	int SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI = 3;
 
 	/**
 	 * The feature id for the '<em><b>Number Of Simulation Loops</b></em>' attribute.
@@ -1621,7 +1612,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS = 1;
+	int SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS = 4;
 
 	/**
 	 * The feature id for the '<em><b>Random Sort Between Loops</b></em>' attribute.
@@ -1630,7 +1621,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS = 2;
+	int SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS = 5;
 
 	/**
 	 * The feature id for the '<em><b>Use Foldable Seats</b></em>' attribute.
@@ -1639,7 +1630,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__USE_FOLDABLE_SEATS = 3;
+	int SIMULATION_PROPERTIES__USE_FOLDABLE_SEATS = 6;
 
 	/**
 	 * The feature id for the '<em><b>Bring Your Own Seat</b></em>' attribute.
@@ -1648,7 +1639,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT = 4;
+	int SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT = 7;
 
 	/**
 	 * The feature id for the '<em><b>Results</b></em>' reference list.
@@ -1657,7 +1648,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__RESULTS = 5;
+	int SIMULATION_PROPERTIES__RESULTS = 8;
 
 	/**
 	 * The feature id for the '<em><b>Sorting</b></em>' attribute.
@@ -1666,7 +1657,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SORTING = 6;
+	int SIMULATION_PROPERTIES__SORTING = 9;
 
 	/**
 	 * The feature id for the '<em><b>Simulation Speed Factor</b></em>' attribute.
@@ -1675,7 +1666,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR = 7;
+	int SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR = 10;
 
 	/**
 	 * The feature id for the '<em><b>Seat Interference Standing Up Passenger Waiting Time</b></em>' attribute.
@@ -1684,7 +1675,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME = 8;
+	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME = 11;
 
 	/**
 	 * The feature id for the '<em><b>Seat Interference Process Time</b></em>' attribute.
@@ -1693,7 +1684,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME = 9;
+	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME = 12;
 
 	/**
 	 * The feature id for the '<em><b>Thread Sleep Time Default</b></em>' attribute.
@@ -1702,7 +1693,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT = 10;
+	int SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT = 13;
 
 	/**
 	 * The feature id for the '<em><b>Developer Mode</b></em>' attribute.
@@ -1711,7 +1702,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__DEVELOPER_MODE = 11;
+	int SIMULATION_PROPERTIES__DEVELOPER_MODE = 14;
 
 	/**
 	 * The feature id for the '<em><b>Luggage Properties</b></em>' containment reference.
@@ -1720,7 +1711,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES = 12;
+	int SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES = 15;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Properties</b></em>' containment reference.
@@ -1729,7 +1720,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_PROPERTIES = 13;
+	int SIMULATION_PROPERTIES__PASSENGER_PROPERTIES = 16;
 
 	/**
 	 * The feature id for the '<em><b>Passengers Boarding Per Minute</b></em>' attribute.
@@ -1738,7 +1729,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = 14;
+	int SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = 17;
 
 	/**
 	 * The number of structural features of the '<em>Simulation Properties</em>' class.
@@ -1747,7 +1738,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES_FEATURE_COUNT = 15;
+	int SIMULATION_PROPERTIES_FEATURE_COUNT = 18;
 
 	/**
 	 * The number of operations of the '<em>Simulation Properties</em>' class.
@@ -2347,28 +2338,6 @@ public interface CabinPackage extends EPackage {
 	EReference getCabin_Stowages();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Cabin#getScale <em>Scale</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Scale</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.Cabin#getScale()
-	 * @see #getCabin()
-	 * @generated
-	 */
-	EAttribute getCabin_Scale();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Cabin#getFramesPerSecond <em>Frames Per Second</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Frames Per Second</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.Cabin#getFramesPerSecond()
-	 * @see #getCabin()
-	 * @generated
-	 */
-	EAttribute getCabin_FramesPerSecond();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link net.bhl.cdt.paxelerate.model.Cabin#getPassengers <em>Passengers</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2400,28 +2369,6 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCabin_AircraftType();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Cabin#isUsePresetSettings <em>Use Preset Settings</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Use Preset Settings</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.Cabin#isUsePresetSettings()
-	 * @see #getCabin()
-	 * @generated
-	 */
-	EAttribute getCabin_UsePresetSettings();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Cabin#getSpeedFactor <em>Speed Factor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Speed Factor</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.Cabin#getSpeedFactor()
-	 * @see #getCabin()
-	 * @generated
-	 */
-	EAttribute getCabin_SpeedFactor();
 
 	/**
 	 * Returns the meta object for the reference '{@link net.bhl.cdt.paxelerate.model.Cabin#getSimulationSettings <em>Simulation Settings</em>}'.
@@ -3255,6 +3202,39 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getSimulationProperties();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getScale <em>Scale</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Scale</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getScale()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_Scale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getFramesPerSecond <em>Frames Per Second</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Frames Per Second</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getFramesPerSecond()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_FramesPerSecond();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUsePresetSettings <em>Use Preset Settings</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Use Preset Settings</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#isUsePresetSettings()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_UsePresetSettings();
 
 	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isSimulateWithoutUI <em>Simulate Without UI</em>}'.
@@ -4101,20 +4081,6 @@ public interface CabinPackage extends EPackage {
 		 */
 		EReference CABIN__STOWAGES = eINSTANCE.getCabin_Stowages();
 		/**
-		 * The meta object literal for the '<em><b>Scale</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CABIN__SCALE = eINSTANCE.getCabin_Scale();
-		/**
-		 * The meta object literal for the '<em><b>Frames Per Second</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CABIN__FRAMES_PER_SECOND = eINSTANCE.getCabin_FramesPerSecond();
-		/**
 		 * The meta object literal for the '<em><b>Passengers</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4135,20 +4101,6 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CABIN__AIRCRAFT_TYPE = eINSTANCE.getCabin_AircraftType();
-		/**
-		 * The meta object literal for the '<em><b>Use Preset Settings</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CABIN__USE_PRESET_SETTINGS = eINSTANCE.getCabin_UsePresetSettings();
-		/**
-		 * The meta object literal for the '<em><b>Speed Factor</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CABIN__SPEED_FACTOR = eINSTANCE.getCabin_SpeedFactor();
 		/**
 		 * The meta object literal for the '<em><b>Simulation Settings</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
@@ -4712,6 +4664,27 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EClass SIMULATION_PROPERTIES = eINSTANCE.getSimulationProperties();
+		/**
+		 * The meta object literal for the '<em><b>Scale</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__SCALE = eINSTANCE.getSimulationProperties_Scale();
+		/**
+		 * The meta object literal for the '<em><b>Frames Per Second</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__FRAMES_PER_SECOND = eINSTANCE.getSimulationProperties_FramesPerSecond();
+		/**
+		 * The meta object literal for the '<em><b>Use Preset Settings</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__USE_PRESET_SETTINGS = eINSTANCE.getSimulationProperties_UsePresetSettings();
 		/**
 		 * The meta object literal for the '<em><b>Simulate Without UI</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->

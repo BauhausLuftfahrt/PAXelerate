@@ -27,6 +27,9 @@ import net.bhl.cdt.paxelerate.model.SortingStyle;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getScale <em>Scale</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getFramesPerSecond <em>Frames Per Second</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isUsePresetSettings <em>Use Preset Settings</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isSimulateWithoutUI <em>Simulate Without UI</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getNumberOfSimulationLoops <em>Number Of Simulation Loops</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isRandomSortBetweenLoops <em>Random Sort Between Loops</em>}</li>
@@ -47,6 +50,66 @@ import net.bhl.cdt.paxelerate.model.SortingStyle;
  * @generated
  */
 public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container implements SimulationProperties {
+	/**
+	 * The default value of the '{@link #getScale() <em>Scale</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getScale()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int SCALE_EDEFAULT = 10;
+
+	/**
+	 * The cached value of the '{@link #getScale() <em>Scale</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getScale()
+	 * @generated
+	 * @ordered
+	 */
+	protected int scale = SCALE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getFramesPerSecond() <em>Frames Per Second</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFramesPerSecond()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int FRAMES_PER_SECOND_EDEFAULT = 5;
+
+	/**
+	 * The cached value of the '{@link #getFramesPerSecond() <em>Frames Per Second</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFramesPerSecond()
+	 * @generated
+	 * @ordered
+	 */
+	protected int framesPerSecond = FRAMES_PER_SECOND_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isUsePresetSettings() <em>Use Preset Settings</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isUsePresetSettings()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean USE_PRESET_SETTINGS_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isUsePresetSettings() <em>Use Preset Settings</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isUsePresetSettings()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean usePresetSettings = USE_PRESET_SETTINGS_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #isSimulateWithoutUI() <em>Simulate Without UI</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -334,6 +397,69 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	protected EClass eStaticClass() {
 		return CabinPackage.Literals.SIMULATION_PROPERTIES;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getScale() {
+		return scale;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setScale(int newScale) {
+		int oldScale = scale;
+		scale = newScale;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SCALE, oldScale, scale));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getFramesPerSecond() {
+		return framesPerSecond;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFramesPerSecond(int newFramesPerSecond) {
+		int oldFramesPerSecond = framesPerSecond;
+		framesPerSecond = newFramesPerSecond;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__FRAMES_PER_SECOND, oldFramesPerSecond, framesPerSecond));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isUsePresetSettings() {
+		return usePresetSettings;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUsePresetSettings(boolean newUsePresetSettings) {
+		boolean oldUsePresetSettings = usePresetSettings;
+		usePresetSettings = newUsePresetSettings;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__USE_PRESET_SETTINGS, oldUsePresetSettings, usePresetSettings));
 	}
 
 	/**
@@ -710,6 +836,12 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
+				return getScale();
+			case CabinPackage.SIMULATION_PROPERTIES__FRAMES_PER_SECOND:
+				return getFramesPerSecond();
+			case CabinPackage.SIMULATION_PROPERTIES__USE_PRESET_SETTINGS:
+				return isUsePresetSettings();
 			case CabinPackage.SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI:
 				return isSimulateWithoutUI();
 			case CabinPackage.SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS:
@@ -753,6 +885,15 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
+				setScale((Integer)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__FRAMES_PER_SECOND:
+				setFramesPerSecond((Integer)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__USE_PRESET_SETTINGS:
+				setUsePresetSettings((Boolean)newValue);
+				return;
 			case CabinPackage.SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI:
 				setSimulateWithoutUI((Boolean)newValue);
 				return;
@@ -811,6 +952,15 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
+				setScale(SCALE_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__FRAMES_PER_SECOND:
+				setFramesPerSecond(FRAMES_PER_SECOND_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__USE_PRESET_SETTINGS:
+				setUsePresetSettings(USE_PRESET_SETTINGS_EDEFAULT);
+				return;
 			case CabinPackage.SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI:
 				setSimulateWithoutUI(SIMULATE_WITHOUT_UI_EDEFAULT);
 				return;
@@ -868,6 +1018,12 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
+				return scale != SCALE_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__FRAMES_PER_SECOND:
+				return framesPerSecond != FRAMES_PER_SECOND_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__USE_PRESET_SETTINGS:
+				return usePresetSettings != USE_PRESET_SETTINGS_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI:
 				return simulateWithoutUI != SIMULATE_WITHOUT_UI_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS:
@@ -912,7 +1068,13 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (simulateWithoutUI: ");
+		result.append(" (scale: ");
+		result.append(scale);
+		result.append(", framesPerSecond: ");
+		result.append(framesPerSecond);
+		result.append(", usePresetSettings: ");
+		result.append(usePresetSettings);
+		result.append(", simulateWithoutUI: ");
 		result.append(simulateWithoutUI);
 		result.append(", numberOfSimulationLoops: ");
 		result.append(numberOfSimulationLoops);

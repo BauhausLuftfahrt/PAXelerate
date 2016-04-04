@@ -150,7 +150,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 						}
 					}
 
-					Vector dimensions = new Vector2D(cabin.getXDimension(), cabin.getYDimension(), cabin.getScale());
+					Vector dimensions = new Vector2D(cabin.getXDimension(), cabin.getYDimension(), cabin.getSimulationSettings().getScale());
 					simulationhandler = new SimulationHandler(dimensions, cabin);
 
 					// Show WIP simulation view

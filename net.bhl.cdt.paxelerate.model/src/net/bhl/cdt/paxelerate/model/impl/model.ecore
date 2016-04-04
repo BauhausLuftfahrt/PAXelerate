@@ -9,10 +9,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rowNonexistent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="aisleWidth" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="64"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="framesPerSecond" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        defaultValueLiteral="5"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfDecks" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="aircraftType" lowerBound="1"
+        eType="#//AircraftType" defaultValueLiteral="narrowbody"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="simulationSettings" lowerBound="1"
         eType="#//SimulationProperties"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="classes" lowerBound="1"
@@ -31,13 +31,6 @@
         eType="#//Stowage" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="passengers" upperBound="-1"
         eType="#//Passenger" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scale" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        defaultValueLiteral="10"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="aircraftType" lowerBound="1"
-        eType="#//AircraftType" defaultValueLiteral="narrowbody"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="usePresetSettings" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="speedFactor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Row">
     <eStructuralFeatures xsi:type="ecore:EReference" name="seats" lowerBound="1" upperBound="-1"
@@ -199,6 +192,12 @@
     <eLiterals name="passive" value="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SimulationProperties">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scale" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="10"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="framesPerSecond" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="5"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="usePresetSettings" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="simulateWithoutUI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfSimulationLoops"

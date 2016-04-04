@@ -55,6 +55,9 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addScalePropertyDescriptor(object);
+			addFramesPerSecondPropertyDescriptor(object);
+			addUsePresetSettingsPropertyDescriptor(object);
 			addSimulateWithoutUIPropertyDescriptor(object);
 			addNumberOfSimulationLoopsPropertyDescriptor(object);
 			addRandomSortBetweenLoopsPropertyDescriptor(object);
@@ -70,6 +73,72 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 			addPassengersBoardingPerMinutePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Scale feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addScalePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_scale_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_scale_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__SCALE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Frames Per Second feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addFramesPerSecondPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_framesPerSecond_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_framesPerSecond_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__FRAMES_PER_SECOND,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Use Preset Settings feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUsePresetSettingsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_usePresetSettings_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_usePresetSettings_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__USE_PRESET_SETTINGS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -424,6 +493,9 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SimulationProperties.class)) {
+			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
+			case CabinPackage.SIMULATION_PROPERTIES__FRAMES_PER_SECOND:
+			case CabinPackage.SIMULATION_PROPERTIES__USE_PRESET_SETTINGS:
 			case CabinPackage.SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI:
 			case CabinPackage.SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS:
 			case CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS:

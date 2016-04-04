@@ -50,13 +50,9 @@ public class CabinItemProvider extends NamedElementItemProvider {
 			addYDimensionPropertyDescriptor(object);
 			addRowNonexistentPropertyDescriptor(object);
 			addAisleWidthPropertyDescriptor(object);
-			addFramesPerSecondPropertyDescriptor(object);
 			addNumberOfDecksPropertyDescriptor(object);
-			addSimulationSettingsPropertyDescriptor(object);
-			addScalePropertyDescriptor(object);
 			addAircraftTypePropertyDescriptor(object);
-			addUsePresetSettingsPropertyDescriptor(object);
-			addSpeedFactorPropertyDescriptor(object);
+			addSimulationSettingsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -106,50 +102,6 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Scale feature. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	protected void addScalePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Cabin_scale_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_scale_feature", "_UI_Cabin_type"),
-				 CabinPackage.Literals.CABIN__SCALE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Frames Per Second feature. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	protected void addFramesPerSecondPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Cabin_framesPerSecond_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_framesPerSecond_feature", "_UI_Cabin_type"),
-				 CabinPackage.Literals.CABIN__FRAMES_PER_SECOND,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Number Of Decks feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -189,50 +141,6 @@ public class CabinItemProvider extends NamedElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Use Preset Settings feature. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	protected void addUsePresetSettingsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Cabin_usePresetSettings_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_usePresetSettings_feature", "_UI_Cabin_type"),
-				 CabinPackage.Literals.CABIN__USE_PRESET_SETTINGS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Speed Factor feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSpeedFactorPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Cabin_speedFactor_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_speedFactor_feature", "_UI_Cabin_type"),
-				 CabinPackage.Literals.CABIN__SPEED_FACTOR,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -380,12 +288,8 @@ public class CabinItemProvider extends NamedElementItemProvider {
 			case CabinPackage.CABIN__YDIMENSION:
 			case CabinPackage.CABIN__ROW_NONEXISTENT:
 			case CabinPackage.CABIN__AISLE_WIDTH:
-			case CabinPackage.CABIN__FRAMES_PER_SECOND:
 			case CabinPackage.CABIN__NUMBER_OF_DECKS:
-			case CabinPackage.CABIN__SCALE:
 			case CabinPackage.CABIN__AIRCRAFT_TYPE:
-			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
-			case CabinPackage.CABIN__SPEED_FACTOR:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CabinPackage.CABIN__CLASSES:

@@ -36,24 +36,5 @@
         </children>
       </children>
     </children>
-    <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_8Tv5YKS6EeWGjpaobu8CIA">
-      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_9oHrUKS6EeWGjpaobu8CIA" name="Preferences">
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_yK0hmqS6EeWGjpaobu8CIA" name="Control framesPerSecond">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_yK0hm6S6EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Cabin/framesPerSecond"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_yK0htKS6EeWGjpaobu8CIA" name="Control usePresetSettings">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_yK0htaS6EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Cabin/usePresetSettings"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_yK0htqS6EeWGjpaobu8CIA" name="Control speedFactor">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_yK0ht6S6EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Cabin/speedFactor"/>
-          </domainModelReference>
-        </children>
-      </children>
-    </children>
   </children>
 </org.eclipse.emf.ecp.view.model:View>
