@@ -20,7 +20,7 @@
   </children>
   <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout" xmi:id="_qIpPUPo3EeWozM0q10hXZQ">
     <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_qj9SUPo3EeWozM0q10hXZQ">
-      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_k6hkoPo3EeWozM0q10hXZQ" name="Dimensions">
+      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_k6hkoPo3EeWozM0q10hXZQ" name="Seat">
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_6l_LuvfrEeWCYsQgm16VBQ" name="Control xDimensionOfSeats">
           <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_6l_Lu_frEeWCYsQgm16VBQ">
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//TravelClass/xDimensionOfSeats"/>
