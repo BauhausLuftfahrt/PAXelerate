@@ -7,11 +7,14 @@ package net.bhl.cdt.paxelerate.ui.commands;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.swt.widgets.Display;
 
 import net.bhl.cdt.commands.CDTCommand;
@@ -25,6 +28,8 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.util.PassengerPropertyGenerator;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
+import net.bhl.cdt.paxelerate.util.input.Input;
+import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 import net.bhl.cdt.paxelerate.util.string.StringHelper;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
@@ -42,6 +47,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 	private Cabin cabin;
 	private int totalCount = 1;
 	private CabinViewPart cabinview;
+
+	private Map<Integer, Double> delays = new HashMap<>();
 
 	/**
 	 * This method submits the cabin to be used in the file.
@@ -105,20 +112,30 @@ public class GeneratePassengersCommand extends CDTCommand {
 		return null;
 	}
 
-	private double calculateDelay(Passenger pax) {
-		double delay = 0;
-		double clocking = cabin.getSimulationSettings().getPassengersBoardingPerMinute();
+	/**
+	 * 
+	 * @param passenger
+	 * @return
+	 */
+	private void applyDelay(Passenger passenger) {
 
-		try {
-			pax.getDoor().getWaitingPassengers().add(pax);
-			delay = (pax.getDoor().getWaitingPassengers().size() - 1) * 60.0 / clocking;
-		} catch (NullPointerException e) {
-			Log.add(this, "The cabin has no doors so far, please assign one manually!");
+		/* calculate the step size for the delay */
+		double stepsize = 60.0 / cabin.getSimulationSettings().getPassengersBoardingPerMinute();
+
+		/* get the linked door of the passenger */
+		Door door = passenger.getDoor();
+		int id = door.getId();
+
+		/* if there is no delay before, set it to zero */
+		if (delays.get(id) == null) {
+			delays.put(id, 0.0);
 		}
 
-		delay = (pax.getDoor().getWaitingPassengers().size() - 1) * 60.0 / clocking;
+		/* read out the delay value of the door and assign it */
+		passenger.setStartBoardingAfterDelay(delays.get(id));
 
-		return delay;
+		/* increase the delay of the corresponding door */
+		delays.put(id, delays.get(id) + stepsize);
 	}
 
 	/**
@@ -156,7 +173,9 @@ public class GeneratePassengersCommand extends CDTCommand {
 						passenger.setSeat(getSeat(passenger));
 						passenger.setTravelClass(passenger.getSeat().getTravelClass());
 						passenger.setDoor(getDoor(passenger));
-						passenger.setStartBoardingAfterDelay(calculateDelay(passenger));
+
+						applyDelay(passenger);
+
 						PassengerPropertyGenerator generator = new PassengerPropertyGenerator(passenger);
 						passenger = generator.getPassenger();
 
@@ -185,48 +204,56 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 				Log.add(this, "Passenger generation started...");
 
-				Display.getDefault().syncExec(new Runnable() {
-					@Override
-					public void run() {
-						cabinview = ViewPartHelper.getCabinView();
-						cabinview.unsyncViewer();
+				if (cabin.getDoors().isEmpty()) {
+					new Input(WindowType.WARNING,
+							"You can not continue without generating and activating at least one door!",
+							IMessageProvider.ERROR);
+					Log.add(this, "Passenger generation aborted");
+				} else {
 
-						cabin.getPassengers().clear();
-					}
-				});
+					Display.getDefault().syncExec(new Runnable() {
+						@Override
+						public void run() {
+							cabinview = ViewPartHelper.getCabinView();
+							cabinview.unsyncViewer();
 
-				for (TravelClass travelclass : cabin.getClasses()) {
-					generatePassengers(travelclass);
-				}
-
-				for (Door door : cabin.getDoors()) {
-					door.getWaitingPassengers().clear();
-				}
-
-				// PUBLISH
-				Log.add(this, "Updating GUI...");
-				Display.getDefault().syncExec(new Runnable() {
-					@Override
-					public void run() {
-						try {
-							ViewPartHelper.getPropertyView().updateUI(cabin);
-						} catch (NullPointerException e) {
-							Log.add(this, "No property view is visible!");
+							cabin.getPassengers().clear();
 						}
+					});
 
-						try {
-							cabinview.syncViewer();
-							cabinview.setCabin(cabin);
-						} catch (NullPointerException e) {
-							Log.add(this, "Cabin View not visible!");
-						}
-
-						Log.add(this, "Passenger generation completed");
+					for (TravelClass travelclass : cabin.getClasses()) {
+						generatePassengers(travelclass);
 					}
-				});
 
+					for (Door door : cabin.getDoors()) {
+						door.getWaitingPassengers().clear();
+					}
+
+					// PUBLISH
+					Log.add(this, "Updating GUI...");
+					Display.getDefault().syncExec(new Runnable() {
+						@Override
+						public void run() {
+							try {
+								ViewPartHelper.getPropertyView().updateUI(cabin);
+							} catch (NullPointerException e) {
+								Log.add(this, "No property view is visible!");
+							}
+
+							try {
+								cabinview.syncViewer();
+								cabinview.setCabin(cabin);
+							} catch (NullPointerException e) {
+								Log.add(this, "Cabin View not visible!");
+							}
+
+							Log.add(this, "Passenger generation completed");
+						}
+					});
+				}
 				// report finished
 				return Status.OK_STATUS;
+
 			}
 		};
 

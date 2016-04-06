@@ -25,8 +25,11 @@ import net.bhl.cdt.paxelerate.util.math.Vector2D;
  */
 public class AgentFunctions {
 
-	public static final int PIXELS_FOR_SCANNING_AT_DOOR = 3;
-
+	/**
+	 * 
+	 * @param agent
+	 * @return
+	 */
 	public static boolean someoneAlreadyInThisPartOfTheRow(Agent agent) {
 		Row row = agent.getPassenger().getSeat().getRow();
 		for (Seat checkSeat : row.getSeats()) {
@@ -48,6 +51,12 @@ public class AgentFunctions {
 	/*
 	 * TODO: ONLY APPLICABLE FOR 3-3 CONFIGURATIONS OR BELOW!
 	 */
+	/**
+	 * 
+	 * @param checkSeat
+	 * @param mySeat
+	 * @return
+	 */
 	private static boolean sameSideOfAisle(Seat checkSeat, Seat mySeat) {
 
 		if ("ABC".contains(checkSeat.getLetter())) {
@@ -64,6 +73,12 @@ public class AgentFunctions {
 	}
 
 	// TODO: this only works for a ONE AISLE configuration!
+	/**
+	 * 
+	 * @param otherSeat
+	 * @param thisSeat
+	 * @return
+	 */
 	public static boolean otherSeatCloserToAisle(Seat otherSeat,
 			Seat thisSeat) {
 
@@ -109,29 +124,44 @@ public class AgentFunctions {
 		return angle;
 	}
 
+	public static final int PIXELS_FOR_SCANNING_AT_DOOR = 3;
+
+	/**
+	 * 
+	 * @param passenger
+	 * @return
+	 */
 	public synchronized static boolean doorwayBlocked(Passenger passenger) {
-		boolean detectedBlocker = false;
+
+		/* get the door of the passenger */
 		Door door = passenger.getDoor();
+
+		/* get the scale of the cabin */
+		int scale = SimulationHandler.getCabin().getSimulationSettings()
+				.getScale();
+
+		/*
+		 * loop through the area defined by the width of the door and a certain
+		 * size for the first step into the cabin
+		 */
 		for (int i = 0; i <= PIXELS_FOR_SCANNING_AT_DOOR; i++) {
-			for (int j = 0; j < door.getWidth() / SimulationHandler.getCabin()
-					.getSimulationSettings().getScale(); j++) {
+			for (int j = 0; j < door.getWidth() / scale; j++) {
+
+				/* get the corresponding node */
 				Node node = SimulationHandler.getMap().getNodeByCoordinate(
-						door.getXPosition() / SimulationHandler.getCabin()
-								.getSimulationSettings().getScale() + j,
-						i);
+						door.getXPosition() / scale + j, i);
+
+				/* check if the node is an agent */
 				if (node.getProperty() == Property.AGENT) {
+
+					/* check if it is not the agent itself */
 					if (node.getPassenger().getId() != passenger.getId()) {
-						detectedBlocker = true;
+						return true;
 					}
 				}
 			}
 		}
-		if (detectedBlocker) {
-			return true;
-		} else {
-			// System.out.println("Doorway is now clear.");
-			return false;
-		}
+		return false;
 	}
 
 	/**

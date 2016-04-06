@@ -17,6 +17,7 @@ import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.agent.AgentFunctions;
+import net.bhl.cdt.paxelerate.util.math.DecimalHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.time.StopWatch;
@@ -30,26 +31,33 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.ProgressHandler;
  *
  */
 public class SimulationHandler {
-	private static Cabin cabin;
-	private static Boolean simulationDone = false;
-	private static ArrayList<Passenger> finishedList = new ArrayList<Passenger>(),
-			activeList = new ArrayList<Passenger>(),
-			waymakingList = new ArrayList<Passenger>();
 
-	private static HashMap<Door, Double> lastDoorRelease = new HashMap<Door, Double>();
+	private static Cabin cabin;
+
+	private static Boolean simulationDone = false;
 
 	private static AreaMap areamap;
 
+	/* Lists & Maps */
+
+	private static ArrayList<Passenger> finishedList = new ArrayList<Passenger>(),
+			activeList = new ArrayList<Passenger>(),
+			waymakingList = new ArrayList<Passenger>();
 	private static ArrayList<Agent> agentList = new ArrayList<Agent>();
+
 	private static HashMap<Passenger, Integer> accessPending = new HashMap<Passenger, Integer>();
+	private static HashMap<Door, Double> lastDoorRelease = new HashMap<Door, Double>();
+
+	/* ************ */
+
 	private static StopWatch watch = new StopWatch();
 	private Vector dimensions;
 
 	public static final boolean SHOW_AREAMAP_ANIMATION = true;
 
 	private static ProgressHandler progress;
-	private static int progressValue = 0;
-	private static int percent = 0;
+
+	private static int percent = 0, progressvalue = 0;
 
 	/**
 	 * This method constructs the RunAStar algorithm.
@@ -69,18 +77,35 @@ public class SimulationHandler {
 		run();
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public static int getNumberOfSeatedPassengers() {
 		return finishedList.size();
 	}
 
+	/**
+	 * 
+	 * @param pax
+	 */
 	public static void addToWaymakingList(Passenger pax) {
 		waymakingList.add(pax);
 	}
 
+	/**
+	 * 
+	 * @param pax
+	 */
 	public static void removeFromWaymakingList(Passenger pax) {
 		waymakingList.remove(pax);
 	}
 
+	/**
+	 * 
+	 * @param pax
+	 * @return
+	 */
 	public static boolean waymakingInRange(Passenger pax) {
 		for (Passenger pass : waymakingList) {
 			if (Math.abs(pass.getPositionY() - pax.getPositionY()) < 10) {
@@ -109,19 +134,17 @@ public class SimulationHandler {
 	}
 
 	/**
-	 * This method sets the value for simulationDone.
 	 * 
-	 * @param bool
-	 *            is the boolean
+	 * @return
 	 */
-	public static void setSimulationDone(Boolean bool) {
-		simulationDone = bool;
-	}
-
 	public static Cabin getCabin() {
 		return cabin;
 	}
 
+	/**
+	 * 
+	 * @param pax
+	 */
 	public static synchronized void removePassenger(Passenger pax) {
 		Agent agent = getAgentByPassenger(pax);
 		agent.remove();
@@ -136,11 +159,19 @@ public class SimulationHandler {
 		return simulationDone;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public static ArrayList<Agent> getAgentList() {
 		return agentList;
 	}
 
+	/**
+	 * 
+	 */
 	public static synchronized void reset() {
+
 		cabin = null;
 		simulationDone = false;
 		finishedList.clear();
@@ -153,8 +184,6 @@ public class SimulationHandler {
 
 		progress = null;
 
-		progressValue = 0;
-		percent = 0;
 		System.out.println("Simulation Handler resetted!");
 	}
 
@@ -174,21 +203,18 @@ public class SimulationHandler {
 		} else {
 			finishedList.remove(passenger);
 		}
-		if (finishedList.size() >= (cabin.getPassengers().size() - 1)) {
-			setSimulationDone(true);
+		if (finishedList.size() == cabin.getPassengers().size()) {
+			simulationDone = true;
+			System.out.println("Simulation done!");
 		}
 
 	}
 
 	/**
-	 * This method returns the passenger locations.
 	 * 
-	 * @return This is done by submitting the whole cabin.
+	 * @param pax
+	 * @param myself
 	 */
-	public synchronized Cabin getPassengerLocations() {
-		return cabin;
-	}
-
 	public static synchronized void launchWaymakingAgent(Passenger pax,
 			Passenger myself) {
 		Seat seat = pax.getSeat();
@@ -225,17 +251,9 @@ public class SimulationHandler {
 
 	/**
 	 * 
-	 * @param agentList
-	 */
-	public static synchronized void setAgentList(ArrayList<Agent> agentList) {
-		SimulationHandler.agentList = agentList;
-	}
-
-	/**
-	 * 
 	 * @return
 	 */
-	public static synchronized int getNumberOfPassengersInCabin() {
+	public static synchronized int getActivePassengers() {
 		return activeList.size();
 	}
 
@@ -250,7 +268,7 @@ public class SimulationHandler {
 
 		/* add the passenger to the waiting list of the specific door */
 		if (!waitingList.contains(pax)) {
-			pax.getDoor().getWaitingPassengers().add(pax);
+			waitingList.add(pax);
 		}
 
 		if (pax.getId() == waitingList.get(0).getId()) {
@@ -258,38 +276,12 @@ public class SimulationHandler {
 			/* check if doorway is clear. */
 			if (!AgentFunctions.doorwayBlocked(pax)) {
 
-				/* check if time has passed since releasing last one */
-				if (enoughTimePassed(pax)) {
-					waitingList.remove(pax);
-					return true;
-				}
+				waitingList.remove(pax);
+				return true;
+
 			}
 		}
 
-		// TODO: insert minimum delays between launches!
-		return false;
-	}
-
-	/**
-	 * 
-	 * @param pax
-	 * @return
-	 */
-	private static boolean enoughTimePassed(Passenger pax) {
-		Door door = pax.getDoor();
-		if (!lastDoorRelease.containsKey(door)) {
-			lastDoorRelease.put(door, 0.0);
-			return true;
-		}
-
-		// TODO: Do not use a static time stamp but consider the simulation
-		// speed!
-		double time = watch.getElapsedTimeTens();
-		if (Math.abs(lastDoorRelease.get(door) - time) > (AStarHelper.time(0.15)
-				/ 1000.0)) {
-			lastDoorRelease.put(door, time);
-			return true;
-		}
 		return false;
 	}
 
@@ -367,7 +359,7 @@ public class SimulationHandler {
 
 			/*
 			 * Create an agent object for path finding purposes. The cost map is
-			 * loaded from the list of costmaps accordingly
+			 * loaded from the list of cost maps accordingly
 			 */
 			Agent agent = new Agent(passenger, start, goal,
 					costmaps.get(door.getId()), Agent.AgentMode.GO_TO_SEAT,
@@ -381,9 +373,11 @@ public class SimulationHandler {
 			@Override
 			public void run() {
 				progress = new ProgressHandler(agentList.size());
-				while (progressValue < agentList.size() - 1) {
-					progress.reportProgress(progressValue);
-					percent = percentage(progressValue, agentList.size());
+				while (progressvalue < agentList.size() - 1) {
+					progress.reportProgress(progressvalue);
+
+					percent = DecimalHelper.percentage(progressvalue,
+							agentList.size());
 
 					// TODO: real progress indications for calculation of
 					// cost map could be implemented!
@@ -413,14 +407,12 @@ public class SimulationHandler {
 
 				/* Warn if no path can be found */
 			} catch (NullPointerException e) {
-				System.out.println("Passenger " + agent.getPassenger().getId()
-						+ " for Seat "
-						+ agent.getPassenger().getSeat().getName()
+				System.out.println("Passenger " + agent.getPassenger().getName()
 						+ " can not find a path to the seat!");
 			}
 
 			/* return information to the progress bar */
-			progressValue++;
+			progressvalue++;
 		}
 
 		/* ... then start the simulations simultaneously */
@@ -430,16 +422,13 @@ public class SimulationHandler {
 		}
 	}
 
-	private int percentage(double now, double max) {
-		return (int) ((now / max) * 100.0);
-	}
-
-	public void stopSimulation() {
+	/**
+	 * 
+	 */
+	public static void stopSimulation() {
 		for (Agent agent : agentList) {
-
 			agent.getThread().stop();
-			reset();
-
 		}
+		reset();
 	}
 }

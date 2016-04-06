@@ -182,7 +182,7 @@ public class CabinViewPart extends ViewPart {
 
 		for (ObjectOption option : ObjectOption.VALUES) {
 
-			objectLoop: for (PhysicalObject obj : POHelper.getObjectByOption(option, cabin)) {
+			objectLoop: for (PhysicalObject obj : POHelper.getObjectsByOption(option, cabin)) {
 
 				Image icon;
 
@@ -196,9 +196,6 @@ public class CabinViewPart extends ViewPart {
 					gc.setBackground(ColorHelper.GREEN);
 					icon = galleyIcon;
 					break;
-
-				case CURTAIN:
-					break objectLoop;
 
 				case SEAT:
 
@@ -219,6 +216,9 @@ public class CabinViewPart extends ViewPart {
 					gc.drawImage(icon, adapt(Axis.X, obj.getYPosition()), adapt(Axis.Y, obj.getXPosition()));
 
 					break;
+
+				case CURTAIN:
+					break objectLoop;
 
 				default:
 					gc.setBackground(ColorHelper.RED);

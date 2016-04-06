@@ -81,6 +81,8 @@ public class AreaMap {
 
 				node = new Node(new Vector2D(x, y));
 
+				node.setObstacleValue(obstacleMap.getValueAtPoint(x, y));
+
 				if (obstacleMap.getValueAtPoint(x, y) == ObstacleMap
 						.getObstacleValue()) {
 					node.setProperty(Property.OBSTACLE, null);

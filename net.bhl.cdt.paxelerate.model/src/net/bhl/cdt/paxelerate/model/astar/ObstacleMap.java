@@ -27,7 +27,7 @@ public class ObstacleMap {
 	private static final int MAX_VALUE = 100000, BASIC_VALUE = 3,
 			OBSTACLE_RANGE_IN_CM = 20, POTENTIAL_AROUND_OBSTACLE_MAXIMUM = 100,
 			HOLE_VALUE = 1; // DO NEVER SET THIS TO ZERO!
-	private static int[][] obstacleMap;
+	private static int[][] obstacleMap; // TODO: REMOVE ?!
 
 	/**
 	 * This method constructs the obstacle map.
@@ -112,7 +112,8 @@ public class ObstacleMap {
 	 * This method creates the potential gradient around obstacle.
 	 */
 	private void generatePotentialGradient() {
-		int range = OBSTACLE_RANGE_IN_CM / cabin.getSimulationSettings().getScale();
+		int range = OBSTACLE_RANGE_IN_CM
+				/ cabin.getSimulationSettings().getScale();
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
 				if (obstacleMap[i][j] == MAX_VALUE) {
@@ -200,7 +201,8 @@ public class ObstacleMap {
 		 */
 
 		for (Door door : cabin.getDoors()) {
-			entryMin = (door.getXPosition() / cabin.getSimulationSettings().getScale()) + 2;
+			entryMin = (door.getXPosition()
+					/ cabin.getSimulationSettings().getScale()) + 2;
 			entryMax = (door.getXPosition() + door.getWidth())
 					/ cabin.getSimulationSettings().getScale() - 2;
 
@@ -251,7 +253,7 @@ public class ObstacleMap {
 	 *            is the Class of the object that should be used
 	 */
 	private void generateObstacles(ObjectOption option) {
-		for (PhysicalObject obj : POHelper.getObjectByOption(option, cabin)) {
+		for (PhysicalObject obj : POHelper.getObjectsByOption(option, cabin)) {
 			if (obj instanceof Seat) {
 				if (cabin.getSimulationSettings().isUseFoldableSeats()
 						&& ((Seat) obj).isCurrentlyFolded()) {
@@ -259,10 +261,14 @@ public class ObstacleMap {
 				}
 			}
 
-			int yDimension = obj.getYDimension() / cabin.getSimulationSettings().getScale();
-			int xDimension = obj.getXDimension() / cabin.getSimulationSettings().getScale();
-			int xPosition = obj.getXPosition() / cabin.getSimulationSettings().getScale();
-			int yPosition = obj.getYPosition() / cabin.getSimulationSettings().getScale();
+			int yDimension = obj.getYDimension()
+					/ cabin.getSimulationSettings().getScale();
+			int xDimension = obj.getXDimension()
+					/ cabin.getSimulationSettings().getScale();
+			int xPosition = obj.getXPosition()
+					/ cabin.getSimulationSettings().getScale();
+			int yPosition = obj.getYPosition()
+					/ cabin.getSimulationSettings().getScale();
 
 			for (int i = 0; i < xDimension; i++) {
 				for (int j = 0; j < yDimension; j++) {

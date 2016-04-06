@@ -66,8 +66,11 @@ public class DrawCabinCommand extends CDTCommand {
 		SimulationProperties settings = cabin.getSimulationSettings();
 
 		if (settings == null) {
+
+			System.out.println("no settings found!");
 			settings = CabinFactory.eINSTANCE.createSimulationProperties();
 			cabin.setSimulationSettings(settings);
+
 		}
 
 		LuggageProperties luggageSettings = cabin.getSimulationSettings().getLuggageProperties();
@@ -199,7 +202,9 @@ public class DrawCabinCommand extends CDTCommand {
 				passenger.setName(passenger.getId() + " (" + seat.getName() + ")");
 			}
 			passenger.setTravelClass(ModelHelper.getParent(TravelClass.class, seat));
-			passenger.setStartBoardingAfterDelay(i * 60 / passengersPerMinute);
+
+			// TODO: recalculate the delay!
+
 			i++;
 		}
 	}

@@ -65,12 +65,12 @@ public class ProgressHandler {
 		label.setText("The boarding paths for the passengers are being calculated ...");
 
 		shell.open();
-	
+
 		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 		int x = (int) ((dimension.getWidth() - shell.getSize().x) / 2);
 		int y = (int) ((dimension.getHeight() - shell.getSize().y) / 2);
 		shell.setLocation(x, y);
-		
+
 		indicator.beginTask(max);
 		indicator.showNormal();
 	}

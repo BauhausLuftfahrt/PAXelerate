@@ -24,8 +24,16 @@ public class Node implements Comparable<Node> {
 			northWest, previousNode;
 	private ArrayList<Node> neighborList;
 	private double distanceFromStart;
-	private int costFromStart, cost,
-			numberOfOccupations = 0, numberOfInterrupts = 0;
+	private int costFromStart, cost, numberOfOccupations = 0,
+			numberOfInterrupts = 0, obstacleValue = 0;
+
+	public int getObstacleValue() {
+		return obstacleValue;
+	}
+
+	public void setObstacleValue(int obstacleValue) {
+		this.obstacleValue = obstacleValue;
+	}
 
 	private Vector position = new Vector2D(0, 0);
 	private Property property;
@@ -373,30 +381,33 @@ public class Node implements Comparable<Node> {
 	 *            the other node
 	 * @return returns the better node value
 	 */
+	@Override
 	public synchronized int compareTo(Node otherNode) {
 		int better = -1;
 		int equal = 0;
 		int worse = 1;
-		
-		/* if this node is cheaper, it is better */ 
+
+		/* if this node is cheaper, it is better */
 		if (costFromStart < otherNode.costFromStart) {
 			return better;
-			
-			/* if the other node is cheaper, this one is worse  */
+
+			/* if the other node is cheaper, this one is worse */
 		} else if (costFromStart > otherNode.costFromStart) {
 			return worse;
-			
+
 			/* if they are equally expensive, check the distance */
 		} else {
-			
-			/* if this node is closer to the start, it is better */ 
-			if(distanceFromStart < otherNode.distanceFromStart) {
+
+			/* if this node is closer to the start, it is better */
+			if (distanceFromStart < otherNode.distanceFromStart) {
 				return better;
 				/* if the distance is greater, it is worse */
-			} else if(distanceFromStart > otherNode.distanceFromStart) {
+			} else if (distanceFromStart > otherNode.distanceFromStart) {
 				return worse;
-				
-				/* else the nodes are equal (concerning the criteria used here) */ 
+
+				/*
+				 * else the nodes are equal (concerning the criteria used here)
+				 */
 			} else {
 				return equal;
 			}

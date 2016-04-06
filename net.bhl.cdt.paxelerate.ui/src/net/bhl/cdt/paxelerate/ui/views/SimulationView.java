@@ -176,7 +176,7 @@ public class SimulationView extends JPanel implements MouseListener {
 						+ SimulationHandler.getCabin().getSimulationSettings().getSimulationSpeedFactor() + "x",
 				10, 40);
 		g.drawString("Passengers: " + SimulationHandler.getNumberOfSeatedPassengers() + " / "
-				+ SimulationHandler.getNumberOfPassengersInCabin() + " / "
+				+ SimulationHandler.getActivePassengers() + " / "
 				+ SimulationHandler.getCabin().getPassengers().size(), 10, 60);
 
 		Point mouse = getMousePosition();

@@ -255,6 +255,13 @@ public class Agent extends Subject implements Runnable {
 				getLuggageStowDistance(), false));
 	}
 
+	/**
+	 * 
+	 * @param position
+	 * @param range
+	 * @param print
+	 * @return
+	 */
 	private boolean isInXRangeEqual(int position, int range, boolean print) {
 
 		if (Math.abs(desiredPosition.getX() - position / scale) == range) {
@@ -263,6 +270,13 @@ public class Agent extends Subject implements Runnable {
 		return false;
 	}
 
+	/**
+	 * 
+	 * @param position
+	 * @param range
+	 * @param print
+	 * @return
+	 */
 	private boolean isInXRangeSmaller(int position, int range, boolean print) {
 
 		if (Math.abs(desiredPosition.getX() - position / scale) < range) {
@@ -271,6 +285,10 @@ public class Agent extends Subject implements Runnable {
 		return false;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	private boolean hasLuggage() {
 		return (passenger.getLuggage() != LuggageSize.NONE);
 	}
@@ -549,7 +567,11 @@ public class Agent extends Subject implements Runnable {
 		return pathlist;
 	}
 
-	/* check if there is still on passenger seated */
+	/**
+	 * check if there is still on passenger seated
+	 * 
+	 * @return
+	 */
 	private boolean otherPassengerStoodUp() {
 		for (Passenger pax : otherPassengersInRowBlockingMe) {
 			if (pax.isIsSeated()) {
@@ -732,6 +754,10 @@ public class Agent extends Subject implements Runnable {
 		}
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	private boolean anyoneNearMe() {
 		for (Passenger pax : SimulationHandler.getCabin().getPassengers()) {
 			if (!pax.isIsSeated()) {
@@ -748,6 +774,10 @@ public class Agent extends Subject implements Runnable {
 		return false;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	private boolean waymakingAllowed() {
 		if (SimulationHandler.waymakingInRange(passenger)) {
 			waycounter++;
@@ -760,6 +790,10 @@ public class Agent extends Subject implements Runnable {
 		return true;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	private boolean waitingForClearingOfRow() {
 
 		if (isInXRangeEqual(passenger.getSeat().getXPosition(), PIXELS_FOR_WAY,
@@ -772,6 +806,9 @@ public class Agent extends Subject implements Runnable {
 		return false;
 	}
 
+	/**
+	 * 
+	 */
 	private synchronized void occupyOneStepAhead() {
 		blockArea(currentPosition, false, false, null);
 		blockArea(desiredPosition, true, false, null);
@@ -787,6 +824,10 @@ public class Agent extends Subject implements Runnable {
 		return exitTheMainLoop;
 	}
 
+	/**
+	 * 
+	 * @param isSeated
+	 */
 	private void defineSeated(boolean isSeated) {
 
 		/* when the goal is reached, the passenger is defined seated */
@@ -799,6 +840,10 @@ public class Agent extends Subject implements Runnable {
 		SimulationHandler.setPassengerSeated(passenger, isSeated);
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	private boolean inDefaultBoardingMode() {
 		if (mode == AgentMode.MAKE_WAY) {
 			return false;
@@ -825,6 +870,10 @@ public class Agent extends Subject implements Runnable {
 		}
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean performFinalElements() {
 
 		if (!passenger.getSeat().isOccupied()) {
@@ -860,6 +909,9 @@ public class Agent extends Subject implements Runnable {
 
 	}
 
+	/**
+	 * 
+	 */
 	private void unfoldSeat() {
 
 		int defoldingTime = 5;
@@ -1069,6 +1121,9 @@ public class Agent extends Subject implements Runnable {
 		this.thread = thread;
 	}
 
+	/**
+	 * 
+	 */
 	public void remove() {
 		if (performFinalElements() == true) {
 			System.out.println(

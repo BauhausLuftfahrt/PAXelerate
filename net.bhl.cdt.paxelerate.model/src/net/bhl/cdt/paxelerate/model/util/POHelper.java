@@ -1,52 +1,83 @@
 package net.bhl.cdt.paxelerate.model.util;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
+import net.bhl.cdt.paxelerate.model.Curtain;
+import net.bhl.cdt.paxelerate.model.Galley;
+import net.bhl.cdt.paxelerate.model.Lavatory;
 import net.bhl.cdt.paxelerate.model.ObjectOption;
 import net.bhl.cdt.paxelerate.model.PhysicalObject;
 import net.bhl.cdt.paxelerate.model.Seat;
+import net.bhl.cdt.paxelerate.model.Stairway;
+import net.bhl.cdt.paxelerate.model.Stowage;
 
 /**
+ * This class is a helper class for
  * 
  * @author marc.engelmann
  *
  */
 
-// TODO: Implement these functions directly into Cabin.java ? // CabinImpl.java?
-
 public class POHelper {
 
 	/**
+	 * This method returns all objects identified by a specific ObjectOption
+	 * within the cabin object.
 	 * 
 	 * @param option
+	 *            the desired option
 	 * @param cabin
-	 * @return
+	 *            the cabin which contains the objects
+	 * @return All requested objects
 	 */
 
-	// TODO: Replace this by using the ObjectOption ENUM directly
-
-	@SuppressWarnings("unchecked")
-	@Deprecated
-	public static List<PhysicalObject> getObjectByOption(ObjectOption option,
+	public static List<PhysicalObject> getObjectsByOption(ObjectOption option,
 			Cabin cabin) {
+
+		List<PhysicalObject> list = new ArrayList<>();
+
 		switch (option) {
+
 		case GALLEY:
-			return (List<PhysicalObject>) (Object) cabin.getGalleys();
+			for (Galley galley : cabin.getGalleys()) {
+				list.add(galley);
+			}
+			break;
+
 		case LAVATORY:
-			return (List<PhysicalObject>) (Object) cabin.getLavatories();
+			for (Lavatory lavatory : cabin.getLavatories()) {
+				list.add(lavatory);
+			}
+			break;
+
 		case SEAT:
-			return (List<PhysicalObject>) (Object) ModelHelper
-					.getChildrenByClass(cabin, Seat.class);
+			for (Seat seat : ModelHelper.getChildrenByClass(cabin,
+					Seat.class)) {
+				list.add(seat);
+			}
+			break;
+
 		case STOWAGE:
-			return (List<PhysicalObject>) (Object) cabin.getStowages();
+			for (Stowage stowage : cabin.getStowages()) {
+				list.add(stowage);
+			}
+			break;
+
 		case STAIRWAY:
-			return (List<PhysicalObject>) (Object) cabin.getStairways();
+			for (Stairway stairway : cabin.getStairways()) {
+				list.add(stairway);
+			}
+			break;
+
 		case CURTAIN:
-			return (List<PhysicalObject>) (Object) cabin.getCurtains();
-		default:
-			return null;
+			for (Curtain curtain : cabin.getCurtains()) {
+				list.add(curtain);
+			}
+			break;
 		}
+		return list;
 	}
 }
