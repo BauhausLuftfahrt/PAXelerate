@@ -247,7 +247,7 @@ public class CabinViewPart extends ViewPart {
 
 		for (Passenger passenger : cabin.getPassengers()) {
 
-			Seat seat = passenger.getSeatRef();
+			Seat seat = passenger.getSeat();
 
 			switch (passenger.getPassengerMood()) {
 			case AGRESSIVE:

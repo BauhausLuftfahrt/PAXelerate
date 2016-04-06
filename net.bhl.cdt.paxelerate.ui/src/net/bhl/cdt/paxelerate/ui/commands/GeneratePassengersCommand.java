@@ -69,7 +69,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 			}
 		}
 
-		int seatPos = pass.getSeatRef().getXPosition();
+		int seatPos = pass.getSeat().getXPosition();
 
 		int current = Integer.MAX_VALUE;
 		Door bestDoor = null;
@@ -93,7 +93,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 	 */
 	private Seat getSeat(Passenger passenger) {
 		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
-			if ((!seat.equals(null)) && (seat.getId() == passenger.getSeat())) {
+			if ((!seat.equals(null)) && (seat.getId() == passenger.getSeatID())) {
 				seat.setPassenger(passenger);
 
 				return seat;
@@ -151,10 +151,10 @@ public class GeneratePassengersCommand extends CDTCommand {
 						cabin.getPassengers().add(passenger);
 
 						passenger.setId(totalCount);
-						passenger.setSeat(randomSeatId.get(i));
+						passenger.setSeatID(randomSeatId.get(i));
 						passenger.setName(passenger.getId() + " (" + getSeat(passenger).getName() + ")");
-						passenger.setSeatRef(getSeat(passenger));
-						passenger.setTravelClass(passenger.getSeatRef().getTravelClass());
+						passenger.setSeat(getSeat(passenger));
+						passenger.setTravelClass(passenger.getSeat().getTravelClass());
 						passenger.setDoor(getDoor(passenger));
 						passenger.setStartBoardingAfterDelay(calculateDelay(passenger));
 						PassengerPropertyGenerator generator = new PassengerPropertyGenerator(passenger);

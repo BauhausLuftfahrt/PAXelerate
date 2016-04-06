@@ -74,14 +74,14 @@
             <domainModelEFeature xsi:type="ecore:EReference" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/door"/>
           </domainModelReference>
         </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C0qS8EeWGjpaobu8CIA" name="Control seatRef">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C06S8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EReference" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/seatRef"/>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C0qS8EeWGjpaobu8CIA" name="Control seatID">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_H4nPUPvREeWgxr1RUqWG5A">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/seatID"/>
           </domainModelReference>
         </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235CzKS8EeWGjpaobu8CIA" name="Control seat">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235CzaS8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/seat"/>
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_SBYPEPvREeWgxr1RUqWG5A">
+            <domainModelEFeature xsi:type="ecore:EReference" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/seat"/>
           </domainModelReference>
         </children>
       </children>

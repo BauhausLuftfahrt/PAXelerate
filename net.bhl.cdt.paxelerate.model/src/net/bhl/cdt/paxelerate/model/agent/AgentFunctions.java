@@ -28,13 +28,13 @@ public class AgentFunctions {
 	public static final int PIXELS_FOR_SCANNING_AT_DOOR = 3;
 
 	public static boolean someoneAlreadyInThisPartOfTheRow(Agent agent) {
-		Row row = agent.getPassenger().getSeatRef().getRow();
+		Row row = agent.getPassenger().getSeat().getRow();
 		for (Seat checkSeat : row.getSeats()) {
 			if (checkSeat.isOccupied()) {
 				if (sameSideOfAisle(checkSeat,
-						agent.getPassenger().getSeatRef())) {
+						agent.getPassenger().getSeat())) {
 					if (otherSeatCloserToAisle(checkSeat,
-							agent.getPassenger().getSeatRef())) {
+							agent.getPassenger().getSeat())) {
 						agent.otherPassengersInRowBlockingMe
 								.add(checkSeat.getPassenger());
 						return true;
@@ -113,12 +113,12 @@ public class AgentFunctions {
 		boolean detectedBlocker = false;
 		Door door = passenger.getDoor();
 		for (int i = 0; i <= PIXELS_FOR_SCANNING_AT_DOOR; i++) {
-			for (int j = 0; j < door.getWidth()
-					/ SimulationHandler.getCabin().getSimulationSettings().getScale(); j++) {
-				Node node = SimulationHandler.getMap()
-						.getNodeByCoordinate(door.getXPosition()
-								/ SimulationHandler.getCabin().getSimulationSettings().getScale() + j,
-								i);
+			for (int j = 0; j < door.getWidth() / SimulationHandler.getCabin()
+					.getSimulationSettings().getScale(); j++) {
+				Node node = SimulationHandler.getMap().getNodeByCoordinate(
+						door.getXPosition() / SimulationHandler.getCabin()
+								.getSimulationSettings().getScale() + j,
+						i);
 				if (node.getProperty() == Property.AGENT) {
 					if (node.getPassenger().getId() != passenger.getId()) {
 						detectedBlocker = true;

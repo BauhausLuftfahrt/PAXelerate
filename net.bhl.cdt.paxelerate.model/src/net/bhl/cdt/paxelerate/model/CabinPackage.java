@@ -763,13 +763,13 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER__DOOR = 5;
 
 	/**
-	 * The feature id for the '<em><b>Seat</b></em>' attribute.
+	 * The feature id for the '<em><b>Seat ID</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__SEAT = 6;
+	int PASSENGER__SEAT_ID = 6;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -790,13 +790,13 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER__BOARDING_TIME = 8;
 
 	/**
-	 * The feature id for the '<em><b>Seat Ref</b></em>' reference.
+	 * The feature id for the '<em><b>Seat</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__SEAT_REF = 9;
+	int PASSENGER__SEAT = 9;
 
 	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
@@ -2826,15 +2826,15 @@ public interface CabinPackage extends EPackage {
 	EAttribute getPassenger_Sex();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Passenger#getSeat <em>Seat</em>}'.
+	 * Returns the meta object for the reference '{@link net.bhl.cdt.paxelerate.model.Passenger#getSeat <em>Seat</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Seat</em>'.
+	 * @return the meta object for the reference '<em>Seat</em>'.
 	 * @see net.bhl.cdt.paxelerate.model.Passenger#getSeat()
 	 * @see #getPassenger()
 	 * @generated
 	 */
-	EAttribute getPassenger_Seat();
+	EReference getPassenger_Seat();
 
 	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Passenger#getName <em>Name</em>}'.
@@ -2857,17 +2857,6 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPassenger_BoardingTime();
-
-	/**
-	 * Returns the meta object for the reference '{@link net.bhl.cdt.paxelerate.model.Passenger#getSeatRef <em>Seat Ref</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Seat Ref</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.Passenger#getSeatRef()
-	 * @see #getPassenger()
-	 * @generated
-	 */
-	EReference getPassenger_SeatRef();
 
 	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Passenger#getWidth <em>Width</em>}'.
@@ -3077,6 +3066,17 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getPassenger_Door();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Passenger#getSeatID <em>Seat ID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seat ID</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.Passenger#getSeatID()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_SeatID();
 
 	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.CrewMember <em>Crew Member</em>}'.
@@ -4406,12 +4406,12 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute PASSENGER__SEX = eINSTANCE.getPassenger_Sex();
 		/**
-		 * The meta object literal for the '<em><b>Seat</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Seat</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PASSENGER__SEAT = eINSTANCE.getPassenger_Seat();
+		EReference PASSENGER__SEAT = eINSTANCE.getPassenger_Seat();
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -4426,13 +4426,6 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PASSENGER__BOARDING_TIME = eINSTANCE.getPassenger_BoardingTime();
-		/**
-		 * The meta object literal for the '<em><b>Seat Ref</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PASSENGER__SEAT_REF = eINSTANCE.getPassenger_SeatRef();
 		/**
 		 * The meta object literal for the '<em><b>Width</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -4566,6 +4559,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PASSENGER__DOOR = eINSTANCE.getPassenger_Door();
+		/**
+		 * The meta object literal for the '<em><b>Seat ID</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__SEAT_ID = eINSTANCE.getPassenger_SeatID();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.CrewMemberImpl <em>Crew Member</em>}' class.
 		 * <!-- begin-user-doc -->

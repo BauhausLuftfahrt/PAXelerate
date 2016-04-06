@@ -195,7 +195,7 @@ public class SimulationHandler {
 
 	public static synchronized void launchWaymakingAgent(Passenger pax,
 			Passenger myself) {
-		Seat seat = pax.getSeatRef();
+		Seat seat = pax.getSeat();
 
 		int offset = 5;
 
@@ -203,14 +203,16 @@ public class SimulationHandler {
 				seat.getYPosition() + seat.getYDimension() / 2,
 				cabin.getSimulationSettings().getScale());
 
-		if (pax.getSeatRef().getXPosition() < pax.getDoor().getXPosition()) {
+		if (pax.getSeat().getXPosition() < pax.getDoor().getXPosition()) {
 			offset = -(offset + 2);
 			System.out.println("offset mirrored");
 		}
 
 		Vector goal = new Vector2D(
-				seat.getXPosition() + offset * cabin.getSimulationSettings().getScale(),
-				cabin.getYDimension() / 2.0, cabin.getSimulationSettings().getScale());
+				seat.getXPosition()
+						+ offset * cabin.getSimulationSettings().getScale(),
+				cabin.getYDimension() / 2.0,
+				cabin.getSimulationSettings().getScale());
 
 		Agent agent = new Agent(pax, start, goal,
 				SimulationHandler.getCostMap(), Agent.AgentMode.MAKE_WAY,
@@ -315,7 +317,7 @@ public class SimulationHandler {
 		Boolean doItOnce = true;
 
 		for (Passenger passenger : cabin.getPassengers()) {
-			Seat seat = passenger.getSeatRef();
+			Seat seat = passenger.getSeat();
 			Door door = passenger.getDoor();
 			Vector start = new Vector2D(
 					(door.getXPosition() + door.getWidth() / 2), 0,
@@ -377,7 +379,7 @@ public class SimulationHandler {
 			} catch (NullPointerException e) {
 				System.out.println("Passenger " + agent.getPassenger().getId()
 						+ " for Seat "
-						+ agent.getPassenger().getSeatRef().getName()
+						+ agent.getPassenger().getSeat().getName()
 						+ " can not find a path to the seat!");
 			}
 

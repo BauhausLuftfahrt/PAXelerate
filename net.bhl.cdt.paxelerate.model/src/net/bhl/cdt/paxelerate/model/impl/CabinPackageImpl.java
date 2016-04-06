@@ -798,8 +798,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPassenger_Seat() {
-        return (EAttribute)getPassenger().getEStructuralFeatures().get(6);
+	public EReference getPassenger_Seat() {
+        return (EReference)getPassenger().getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -818,15 +818,6 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EAttribute getPassenger_BoardingTime() {
         return (EAttribute)getPassenger().getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPassenger_SeatRef() {
-        return (EReference)getPassenger().getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -998,6 +989,15 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EReference getPassenger_Door() {
         return (EReference)getPassenger().getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassenger_SeatID() {
+        return (EAttribute)getPassenger().getEStructuralFeatures().get(6);
 	}
 
 	/**

@@ -7,10 +7,6 @@ package net.bhl.cdt.paxelerate.ui.commands;
 
 import java.util.ArrayList;
 
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PlatformUI;
-
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
@@ -186,12 +182,12 @@ public class DrawCabinCommand extends CDTCommand {
 		double passengersPerMinute = 30;
 		int i = 0;
 		for (Passenger passenger : cabin.getPassengers()) {
-			Seat seat = passenger.getSeatRef();
+			Seat seat = passenger.getSeat();
 
 			seat.setPassenger(passenger);
 
-			if (passenger.getSeat() != seat.getId()) {
-				passenger.setSeat(seat.getId());
+			if (passenger.getSeatID() != seat.getId()) {
+				passenger.setSeatID(seat.getId());
 				passenger.setName(passenger.getId() + " (" + seat.getName() + ")");
 			}
 			passenger.setTravelClass(ModelHelper.getParent(TravelClass.class, seat));

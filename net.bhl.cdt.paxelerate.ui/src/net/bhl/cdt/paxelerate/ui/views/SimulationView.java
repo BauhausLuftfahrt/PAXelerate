@@ -52,7 +52,8 @@ public class SimulationView extends JPanel implements MouseListener {
 
 	public SimulationView() {
 		this.setPreferredSize(new Dimension(Screen.getWidth() - 20, BOX_HEIGHT));
-		cabinWidth = SimulationHandler.getCabin().getYDimension() / (double) SimulationHandler.getCabin().getSimulationSettings().getScale();
+		cabinWidth = SimulationHandler.getCabin().getYDimension()
+				/ (double) SimulationHandler.getCabin().getSimulationSettings().getScale();
 
 		Thread gameThread = new Thread() {
 			@Override
@@ -207,15 +208,16 @@ public class SimulationView extends JPanel implements MouseListener {
 						g.drawString("Passenger: " + node.getPassenger().getId() + ", x: "
 								+ agent.getCurrentPosition().getX() + ", y: " + agent.getCurrentPosition().getY(),
 								mouse.x + 30, mouse.y + 30);
-						g.drawString("Seat " + node.getPassenger().getSeatRef().getName(), mouse.x + 30, mouse.y + 50);
+						g.drawString("Seat " + node.getPassenger().getSeat().getName(), mouse.x + 30, mouse.y + 50);
 						g.drawString("State: " + agent.getCurrentState().toString(), mouse.x + 30, mouse.y + 70);
 						g.drawString("Mode: " + agent.getAgentMode().toString(), mouse.x + 30, mouse.y + 90);
 
 						Passenger other = agent.getOtherPassengersInRowBlockingMe();
 
 						if (other != null) {
-							g.drawString("Waiting for passenger " + other.getId() + " on seat "
-									+ other.getSeatRef().getName(), mouse.x + 30, mouse.y + 110);
+							g.drawString(
+									"Waiting for passenger " + other.getId() + " on seat " + other.getSeat().getName(),
+									mouse.x + 30, mouse.y + 110);
 						}
 
 						g.setColor(Color.GRAY);

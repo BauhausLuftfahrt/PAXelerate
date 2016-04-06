@@ -19,10 +19,10 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getAge <em>Age</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getWeight <em>Weight</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getDoor <em>Door</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getSeat <em>Seat</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getSeatID <em>Seat ID</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getName <em>Name</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getBoardingTime <em>Boarding Time</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getSeatRef <em>Seat Ref</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getSeat <em>Seat</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getWidth <em>Width</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getDepth <em>Depth</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getOrientationInDegree <em>Orientation In Degree</em>}</li>
@@ -101,30 +101,30 @@ public interface Passenger extends EObject {
 	void setSex(Sex value);
 
 	/**
-	 * Returns the value of the '<em><b>Seat</b></em>' attribute.
+	 * Returns the value of the '<em><b>Seat</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Seat</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Seat</em>' attribute.
-	 * @see #setSeat(int)
+	 * @return the value of the '<em>Seat</em>' reference.
+	 * @see #setSeat(Seat)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassenger_Seat()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
-	int getSeat();
+	Seat getSeat();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Passenger#getSeat <em>Seat</em>}' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Passenger#getSeat <em>Seat</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Seat</em>' attribute.
+	 * @param value the new value of the '<em>Seat</em>' reference.
 	 * @see #getSeat()
 	 * @generated
 	 */
-	void setSeat(int value);
+	void setSeat(Seat value);
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -178,32 +178,6 @@ public interface Passenger extends EObject {
 	 * @generated
 	 */
 	void setBoardingTime(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Seat Ref</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Seat Ref</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Seat Ref</em>' reference.
-	 * @see #setSeatRef(Seat)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassenger_SeatRef()
-	 * @model required="true"
-	 * @generated
-	 */
-	Seat getSeatRef();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Passenger#getSeatRef <em>Seat Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Seat Ref</em>' reference.
-	 * @see #getSeatRef()
-	 * @generated
-	 */
-	void setSeatRef(Seat value);
 
 	/**
 	 * Returns the value of the '<em><b>Width</b></em>' attribute.
@@ -710,5 +684,31 @@ public interface Passenger extends EObject {
 	 * @generated
 	 */
 	void setDoor(Door value);
+
+	/**
+	 * Returns the value of the '<em><b>Seat ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seat ID</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seat ID</em>' attribute.
+	 * @see #setSeatID(int)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassenger_SeatID()
+	 * @model
+	 * @generated
+	 */
+	int getSeatID();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Passenger#getSeatID <em>Seat ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seat ID</em>' attribute.
+	 * @see #getSeatID()
+	 * @generated
+	 */
+	void setSeatID(int value);
 
 } // Passenger

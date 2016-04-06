@@ -110,7 +110,8 @@ public class Agent extends Subject implements Runnable {
 		this.start = start;
 		this.goal = goal;
 
-		this.scale = SimulationHandler.getCabin().getSimulationSettings().getScale();
+		this.scale = SimulationHandler.getCabin().getSimulationSettings()
+				.getScale();
 		this.finalCostmap = costmap;
 		this.thePassengerILetInTheRow = thePassengerILetInTheRow;
 		this.simSettings = SimulationHandler.getCabin().getSimulationSettings();
@@ -225,7 +226,7 @@ public class Agent extends Subject implements Runnable {
 	public boolean passengerStowsLuggage() {
 
 		/* get the passengers seat */
-		Seat seat = this.passenger.getSeatRef();
+		Seat seat = this.passenger.getSeat();
 
 		/*
 		 * return true if the passenger does have luggage and if he is near his
@@ -491,7 +492,7 @@ public class Agent extends Subject implements Runnable {
 
 			int y = dim;
 
-			if (passenger.getSeatRef().getXPosition() < passenger.getDoor()
+			if (passenger.getSeat().getXPosition() < passenger.getDoor()
 					.getXPosition()) {
 				y = -(y + 1);
 			}
@@ -744,8 +745,8 @@ public class Agent extends Subject implements Runnable {
 
 	private boolean waitingForClearingOfRow() {
 
-		if (isInXRangeEqual(passenger.getSeatRef().getXPosition(),
-				PIXELS_FOR_WAY, false)) {
+		if (isInXRangeEqual(passenger.getSeat().getXPosition(), PIXELS_FOR_WAY,
+				false)) {
 			if (AgentFunctions.someoneAlreadyInThisPartOfTheRow(this)) {
 				return true;
 			}
@@ -775,7 +776,7 @@ public class Agent extends Subject implements Runnable {
 		passenger.setIsSeated(isSeated);
 
 		/* then the assigned seat is declared occupied */
-		passenger.getSeatRef().setOccupied(isSeated);
+		passenger.getSeat().setOccupied(isSeated);
 
 		/* RunAStar is notified that a passenger is seated now */
 		SimulationHandler.setPassengerSeated(passenger, isSeated);
@@ -809,13 +810,13 @@ public class Agent extends Subject implements Runnable {
 
 	public boolean performFinalElements() {
 
-		if (!passenger.getSeatRef().isOccupied()) {
+		if (!passenger.getSeat().isOccupied()) {
 
 			/* clear the current position of the agent */
 			blockArea(currentPosition, false, false, null);
 			blockArea(desiredPosition, false, false, null);
 
-			if (passenger.getSeatRef().isCurrentlyFolded()) {
+			if (passenger.getSeat().isCurrentlyFolded()) {
 				unfoldSeat();
 			}
 
@@ -846,7 +847,7 @@ public class Agent extends Subject implements Runnable {
 
 		int defoldingTime = 5;
 
-		Seat seat = passenger.getSeatRef();
+		Seat seat = passenger.getSeat();
 		seat.setCurrentlyFolded(false);
 
 		int width = seat.getYDimension() / scale;
@@ -952,11 +953,12 @@ public class Agent extends Subject implements Runnable {
 				Passenger dummyPax = CabinFactory.eINSTANCE.createPassenger();
 				dummyPax.setId(Integer.MAX_VALUE);
 
-				for (int i = 0; i < cabinBlocker.getYDimension()
-						/ cabinBlocker.getSimulationSettings().getScale(); i++) {
-					Node node = SimulationHandler.getMap().getNodeByCoordinate(
-							(int) (position / cabinBlocker.getSimulationSettings().getScale()) - offset,
-							i);
+				for (int i = 0; i < cabinBlocker.getYDimension() / cabinBlocker
+						.getSimulationSettings().getScale(); i++) {
+					Node node = SimulationHandler.getMap()
+							.getNodeByCoordinate((int) (position / cabinBlocker
+									.getSimulationSettings().getScale())
+									- offset, i);
 					if (node.getProperty() != Property.OBSTACLE) {
 						node.setProperty(Property.AGENT, passenger);
 						// node.setHidden();
@@ -995,12 +997,13 @@ public class Agent extends Subject implements Runnable {
 
 				}
 
-				for (int i = 0; i < cabinBlocker.getYDimension()
-						/ cabinBlocker.getSimulationSettings().getScale(); i++) {
+				for (int i = 0; i < cabinBlocker.getYDimension() / cabinBlocker
+						.getSimulationSettings().getScale(); i++) {
 
-					Node node = SimulationHandler.getMap().getNodeByCoordinate(
-							(int) (position / cabinBlocker.getSimulationSettings().getScale()) - offset,
-							i);
+					Node node = SimulationHandler.getMap()
+							.getNodeByCoordinate((int) (position / cabinBlocker
+									.getSimulationSettings().getScale())
+									- offset, i);
 
 					if (node.getProperty() != Property.OBSTACLE) {
 						node.setProperty(Property.DEFAULT, passenger);

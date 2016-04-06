@@ -64,10 +64,10 @@ public class PassengerItemProvider
 			addAgePropertyDescriptor(object);
 			addWeightPropertyDescriptor(object);
 			addDoorPropertyDescriptor(object);
-			addSeatPropertyDescriptor(object);
+			addSeatIDPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 			addBoardingTimePropertyDescriptor(object);
-			addSeatRefPropertyDescriptor(object);
+			addSeatPropertyDescriptor(object);
 			addWidthPropertyDescriptor(object);
 			addDepthPropertyDescriptor(object);
 			addOrientationInDegreePropertyDescriptor(object);
@@ -148,7 +148,7 @@ public class PassengerItemProvider
 				 true,
 				 false,
 				 true,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
 				 null,
 				 null));
 	}
@@ -193,28 +193,6 @@ public class PassengerItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Seat Ref feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSeatRefPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Passenger_seatRef_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_seatRef_feature", "_UI_Passenger_type"),
-				 CabinPackage.Literals.PASSENGER__SEAT_REF,
-				 true,
-				 false,
-				 true,
-				 null,
 				 null,
 				 null));
 	}
@@ -638,6 +616,28 @@ public class PassengerItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Seat ID feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatIDPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_seatID_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_seatID_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__SEAT_ID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Passenger.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -679,6 +679,7 @@ public class PassengerItemProvider
 			case CabinPackage.PASSENGER__HEIGHT:
 			case CabinPackage.PASSENGER__AGE:
 			case CabinPackage.PASSENGER__WEIGHT:
+			case CabinPackage.PASSENGER__SEAT_ID:
 			case CabinPackage.PASSENGER__NAME:
 			case CabinPackage.PASSENGER__BOARDING_TIME:
 			case CabinPackage.PASSENGER__WIDTH:
