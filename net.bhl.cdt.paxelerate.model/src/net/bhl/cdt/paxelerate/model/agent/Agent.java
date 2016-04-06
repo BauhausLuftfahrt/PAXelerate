@@ -69,23 +69,42 @@ public class Agent extends Subject implements Runnable {
 	private final AgentMode mode;
 
 	private State currentState;
-
 	private Passenger thePassengerILetInTheRow;
-
 	private LuggageProperties simLuggageSettings;
-
 	private SimulationProperties simSettings;
 
+	/**
+	 * 
+	 * @return
+	 */
 	public Passenger getThePassengerILetInTheRow() {
 		return thePassengerILetInTheRow;
 	}
 
+	/**
+	 * 
+	 * @author marc.engelmann
+	 *
+	 */
 	public static enum AgentMode {
 		GO_TO_SEAT, MAKE_WAY
 	}
 
+	/**
+	 * 
+	 * @author marc.engelmann
+	 *
+	 */
 	public static enum State {
 		FOLLOWING_PATH, WAITING_FOR_ROW_CLEARING, CLEARING_ROW, STOWING_LUGGAGE, PREPARING, QUEUEING_UP, WAITING_FOR_OTHER_PASSENGER_TO_SEAT, RETURNING_TO_SEAT;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public CostMap getCostMap() {
+		return finalCostmap;
 	}
 
 	private int[][] footprint, rotatedFootprint;

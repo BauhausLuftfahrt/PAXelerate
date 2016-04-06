@@ -7,6 +7,7 @@ package net.bhl.cdt.paxelerate.model.astar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -38,7 +39,7 @@ public class SimulationHandler {
 	private static HashMap<Door, Double> lastDoorRelease = new HashMap<Door, Double>();
 
 	private static AreaMap areamap;
-	private static CostMap costmap;
+
 	private static ArrayList<Agent> agentList = new ArrayList<Agent>();
 	private static HashMap<Passenger, Integer> accessPending = new HashMap<Passenger, Integer>();
 	private static StopWatch watch = new StopWatch();
@@ -121,10 +122,6 @@ public class SimulationHandler {
 		return cabin;
 	}
 
-	public static CostMap getCostMap() {
-		return costmap;
-	}
-
 	public static synchronized void removePassenger(Passenger pax) {
 		Agent agent = getAgentByPassenger(pax);
 		agent.remove();
@@ -150,7 +147,6 @@ public class SimulationHandler {
 		activeList.clear();
 
 		areamap = null;
-		costmap = null;
 		agentList.clear();
 		accessPending.clear();
 		watch.reset();
@@ -215,8 +211,8 @@ public class SimulationHandler {
 				cabin.getSimulationSettings().getScale());
 
 		Agent agent = new Agent(pax, start, goal,
-				SimulationHandler.getCostMap(), Agent.AgentMode.MAKE_WAY,
-				myself);
+				getAgentByPassenger(myself).getCostMap(),
+				Agent.AgentMode.MAKE_WAY, myself);
 		agent.findNewPath();
 		agent.start();
 		pax.setNumberOfMakeWayOperations(
@@ -312,32 +308,72 @@ public class SimulationHandler {
 	 * This method executes the path finding simulation of the agents.
 	 */
 	public void run() {
-		watch.start();
-		costmap = null;
-		Boolean doItOnce = true;
 
+		/* start the stop watch */
+		watch.start();
+
+		/* create the list for all cost maps */
+		Map<Integer, CostMap> costmaps = new HashMap<>();
+
+		/*
+		 * Every active door needs its own CostMap.java for path calculations!
+		 * The CostMap.java objects are stored in the HashMap.java and can be
+		 * accessed by the ID of the corresponding door.
+		 */
+		for (Door door : cabin.getDoors()) {
+
+			/* check if the door is active */
+			if (door.isIsActive()) {
+
+				/* get the 2D position of the door object */
+				Vector doorPosition = new Vector2D(
+						(door.getXPosition() + door.getWidth() / 2), 0,
+						cabin.getSimulationSettings().getScale());
+
+				/* generate a new cost map */
+				CostMap costmap = new CostMap(dimensions, doorPosition, areamap,
+						null, false);
+
+				/* save the CostMap to the local file system */
+				costmap.saveMapToFile();
+
+				/* add it to the list of CostMaps */
+				costmaps.put(door.getId(), costmap);
+			}
+		}
+
+		/* loop through all passengers and create their respective agent */
 		for (Passenger passenger : cabin.getPassengers()) {
+
+			/* get objects assigned to the passenger */
 			Seat seat = passenger.getSeat();
 			Door door = passenger.getDoor();
+
+			/*
+			 * create the start location - this is the position of the door
+			 * which the passenger will use to board the plane
+			 */
 			Vector start = new Vector2D(
 					(door.getXPosition() + door.getWidth() / 2), 0,
 					cabin.getSimulationSettings().getScale());
 
+			/*
+			 * create the goal location. this is the position of the passengers
+			 * seat. The goal is one "PIXEL" in front of the center of the seat.
+			 */
 			Vector goal = new Vector2D((seat.getXPosition()) - 1,
 					seat.getYPosition() + seat.getYDimension() / 2,
 					cabin.getSimulationSettings().getScale());
 
-			if (doItOnce) {
-				/* This line generates a costmap which is used for all agents */
-				costmap = new CostMap(dimensions, start, areamap, null, false);
-				costmap.saveMapToFile();
-				doItOnce = false;
-			}
+			/*
+			 * Create an agent object for path finding purposes. The cost map is
+			 * loaded from the list of costmaps accordingly
+			 */
+			Agent agent = new Agent(passenger, start, goal,
+					costmaps.get(door.getId()), Agent.AgentMode.GO_TO_SEAT,
+					null);
 
-			Agent agent = new Agent(passenger, start, goal, costmap,
-					Agent.AgentMode.GO_TO_SEAT, null);
-
-			// list of all agents
+			/* add the agent to the list */
 			agentList.add(agent);
 		}
 
