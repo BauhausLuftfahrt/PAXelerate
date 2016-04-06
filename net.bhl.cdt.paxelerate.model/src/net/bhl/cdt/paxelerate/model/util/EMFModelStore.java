@@ -33,7 +33,7 @@ public class EMFModelStore {
 	 * @param submittedCabin
 	 *            The cabin object which should be stored.
 	 */
-	public static void store(Cabin submittedCabin) {
+	public static synchronized void store(Cabin submittedCabin) {
 
 		/* The cabin object is copied for local storage first */
 		Cabin cabin = EcoreUtil.copy(submittedCabin);

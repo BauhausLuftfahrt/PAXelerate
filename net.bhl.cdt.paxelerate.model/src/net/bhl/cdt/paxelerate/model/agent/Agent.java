@@ -88,7 +88,7 @@ public class Agent extends Subject implements Runnable {
 		FOLLOWING_PATH, WAITING_FOR_ROW_CLEARING, CLEARING_ROW, STOWING_LUGGAGE, PREPARING, QUEUEING_UP, WAITING_FOR_OTHER_PASSENGER_TO_SEAT, RETURNING_TO_SEAT;
 	}
 
-	private int[][] footprint;
+	private int[][] footprint, rotatedFootprint;
 
 	/**
 	 * This method constructs an agent.
@@ -288,8 +288,6 @@ public class Agent extends Subject implements Runnable {
 		if (SimulationHandler.getMap().getNode(vector)
 				.getProperty() == Property.AGENT && occupy) {
 		}
-
-		int[][] rotatedFootprint = null;
 
 		/*
 		 * Rotate the 2d integer array which has stored the layout of the agent.

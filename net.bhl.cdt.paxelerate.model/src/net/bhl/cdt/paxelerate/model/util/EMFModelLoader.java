@@ -25,7 +25,7 @@ public class EMFModelLoader {
 	 * 
 	 * @return the loaded cabin is returned
 	 */
-	public static Cabin loadCabin() {
+	public static synchronized Cabin loadCabin() {
 
 		/* Register the XMI resource factory */
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;

@@ -21,8 +21,8 @@ import net.bhl.cdt.paxelerate.util.math.RandomHelper;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
- * This class refreshed the cabin view without modifying anything. It checks the
- * layout of the cabin and warns the user.
+ * This class is used for sorting the Passenger.class objects depending on
+ * predefined criteria.
  * 
  * @author marc.engelmann
  *

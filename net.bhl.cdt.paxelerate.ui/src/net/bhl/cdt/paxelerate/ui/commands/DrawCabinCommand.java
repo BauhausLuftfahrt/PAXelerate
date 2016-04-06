@@ -93,6 +93,14 @@ public class DrawCabinCommand extends CDTCommand {
 			cabin.getSimulationSettings().getLuggageProperties().setPercentageOfPassengersWithNoLuggage(100);
 		}
 
+		int count = 1;
+		for (TravelClass tc : cabin.getClasses()) {
+			if (tc.getName().isEmpty()) {
+				tc.setName(StringHelper.splitCamelCase(tc.getTravelOption().getName()) + " #" + count);
+			}
+			count++;
+		}
+
 		cabinViewPart = ViewPartHelper.getCabinView();
 
 		repairBoardingClassAssignments();
