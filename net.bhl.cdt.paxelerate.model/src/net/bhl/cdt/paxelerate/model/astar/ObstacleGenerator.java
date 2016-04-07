@@ -54,7 +54,10 @@ public class ObstacleGenerator {
 			generateObstacles(option);
 		}
 
+		generateDoorPaths();
+
 		generateAisleHole();
+
 		generatePotentialGradient();
 	}
 
@@ -150,54 +153,73 @@ public class ObstacleGenerator {
 	 * the aisle, the obstacle value is set to HOLE_VALUE. This makes the
 	 * passengers use the aisle as their preferred path.
 	 */
-	private void generateAisleHole() {
+	private void generateDoorPaths() {
 
-		/*
-		 * Create the door path
-		 */
-
+		/* Create the door paths for every door */
 		for (Door door : cabin.getDoors()) {
 
-			int entryMin = (door.getXPosition() / scale) + 2;
-			int entryMax = (door.getXPosition() + door.getWidth()) / scale - 2;
-			SimulationProperties set = cabin.getSimulationSettings();
+			/* get the borders of the door within the area map */
+			int entryMin = (door.getXPosition() / scale)
+					+ AreamapHandler.NARROWING_OF_DOOR_PATH_IN_PIXELS;
+			int entryMax = (door.getXPosition() + door.getWidth()) / scale
+					- AreamapHandler.NARROWING_OF_DOOR_PATH_IN_PIXELS;
 
-			for (int i = 0; i < dimensions.getY(); i++) {
-				for (int j = 0; j < dimensions.getX(); j++) {
+			/* loop through all nodes */
+			for (Node node : areamap.getNodes()) {
 
-					Node node = areamap.get(j, i);
-					if (node.getObstacleValue() != AreamapHandler.MAX_VALUE) {
-						if (j > entryMin && j < entryMax) {
-							node.setObstacleValue(AreamapHandler.HOLE_VALUE);
-						}
+				/* get the x position of the node */
+				int x = node.getPosition().getX();
 
-						if (!set.isBringYourOwnSeat()
-								&& !set.isUseFoldableSeats()) {
-							if (i < 19 && i > 16) {
-								node.setObstacleValue(
-										AreamapHandler.HOLE_VALUE);
-							}
-						} else if (set.isUseFoldableSeats()
-								&& !set.isBringYourOwnSeat()) {
-							if (i < 21 && i > 16) {
-								node.setObstacleValue(
-										AreamapHandler.HOLE_VALUE);
-							}
-							if (j > 20) {
-								if (i == 19) {
-									node.setObstacleValue(900);
-								}
-							}
-						} else {
-							if (j > 20) {
-								if (i == 5 || i == 10 || i == 15 || i == 31
-										|| i == 26 || i == 21) {
-									node.setObstacleValue(900);
-								}
-							}
-						}
-					}
+				/* check if the node is within the door area and no obstacle */
+				if (x >= entryMin && x <= entryMax && !node.isObstacle()) {
+
+					/* create a potential hole wihtin the area map */
+					node.setObstacleValue(AreamapHandler.HOLE_VALUE);
 				}
+			}
+		}
+	}
+
+	/**
+	 * Generate a hole in the potential of the area map where the aisle is
+	 * located.
+	 */
+	private void generateAisleHole() {
+
+		/* load the simulation settings */
+		SimulationProperties set = cabin.getSimulationSettings();
+
+		/* loop through all nodes */
+		for (Node node : areamap.getNodes()) {
+
+			/* get the y location of the node */
+			int y = node.getPosition().getY();
+
+			if (!node.isObstacle()) {
+
+				// TODO: THIS IS ONLY FOR ONE MIDDLE AISLE!
+
+				if (!set.isBringYourOwnSeat() && !set.isUseFoldableSeats()) {
+					if (y < 19 && y > 16) {
+						node.setObstacleValue(AreamapHandler.HOLE_VALUE);
+					}
+				} else if (set.isUseFoldableSeats()
+						&& !set.isBringYourOwnSeat()) {
+					// if (y < 21 && y > 16) {
+					// node.setObstacleValue(AreamapHandler.HOLE_VALUE);
+					// }
+					// if (j > 20) {
+					// if (i == 19) {
+					// node.setObstacleValue(900);
+					// }
+				}
+			} else {
+				// if (j > 20) {
+				// if (i == 5 || i == 10 || i == 15 || i == 31 || i == 26
+				// || i == 21) {
+				// node.setObstacleValue(900);
+				// }
+				// }
 			}
 		}
 	}

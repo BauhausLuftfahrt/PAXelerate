@@ -553,7 +553,7 @@ public class Agent extends Subject implements Runnable {
 						return Property.AGENT;
 					}
 				}
-				if (checkNode.getProperty() == Property.OBSTACLE) {
+				if (checkNode.isObstacle()) {
 					return null;
 				}
 			}
@@ -1030,7 +1030,7 @@ public class Agent extends Subject implements Runnable {
 							.get((int) (position / cabinBlocker
 									.getSimulationSettings().getScale())
 									- offset, i);
-					if (node.getProperty() != Property.OBSTACLE) {
+					if (!node.isObstacle()) {
 						node.setProperty(Property.AGENT, passenger);
 						// node.setHidden();
 					}
@@ -1076,7 +1076,7 @@ public class Agent extends Subject implements Runnable {
 									.getSimulationSettings().getScale())
 									- offset, i);
 
-					if (node.getProperty() != Property.OBSTACLE) {
+					if (!node.isObstacle()) {
 						node.setProperty(Property.DEFAULT, passenger);
 					}
 				}

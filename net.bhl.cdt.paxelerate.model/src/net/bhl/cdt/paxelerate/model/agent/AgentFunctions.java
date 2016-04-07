@@ -231,8 +231,8 @@ public class AgentFunctions {
 												yCoordinate + stepsAhead)) {
 
 									/* the surrounding costs are assigned */
-									if (SimulationHandler.getMap().get(point)
-											.getProperty() != Property.OBSTACLE) {
+									if (!SimulationHandler.getMap().get(point)
+											.isObstacle()) {
 										costmap.setCost(point, 5000);
 									}
 

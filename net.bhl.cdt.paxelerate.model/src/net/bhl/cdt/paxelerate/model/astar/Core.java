@@ -116,7 +116,7 @@ public class Core {
 				}
 
 				/* also just continue if the neighbor is an obstacle */
-				if (neighbor.getProperty() != Property.OBSTACLE) {
+				if (!neighbor.isObstacle()) {
 
 					/* calculate the neighbors distance from start */
 					double neighborDistanceFromStart = maphandler

@@ -83,6 +83,10 @@ public class Node implements Comparable<Node> {
 		OBSTACLE, AGENT, DEFAULT, START, GOAL
 	}
 
+	public enum Direction {
+		NORTH, NORTH_EAST, EAST, SOUTH_EAST, SOUTH, SOUTH_WEST, WEST, NORTH_WEST;
+	}
+
 	/**
 	 * this method constructs the Node.
 	 * 
@@ -358,6 +362,14 @@ public class Node implements Comparable<Node> {
 	public boolean equalsOtherNode(Node node) {
 		return (node.getPosition().getX() == position.getX())
 				&& (node.getPosition().getY() == position.getY());
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean isObstacle() {
+		return property == Property.OBSTACLE;
 	}
 
 	/**

@@ -68,7 +68,7 @@ public class Costmap {
 
 		for (Node node : areamap.getNodes()) {
 
-			if (node.getProperty() == Property.OBSTACLE) {
+			if (node.isObstacle()) {
 
 				setCost(node.getPosition(), -1);
 			} else {

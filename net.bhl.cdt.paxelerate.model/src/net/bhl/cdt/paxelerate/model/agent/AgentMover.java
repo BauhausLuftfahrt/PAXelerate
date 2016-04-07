@@ -37,8 +37,8 @@ public class AgentMover {
 							.getProperty() != Property.AGENT) {
 
 				/* check if the node is no obstacle */
-				if (SimulationHandler.getMap().get(vector.getX(), vector.getY())
-						.getProperty() != Property.OBSTACLE) {
+				if (!SimulationHandler.getMap()
+						.get(vector.getX(), vector.getY()).isObstacle()) {
 
 					/*
 					 * set the node to the desired property and link the agent

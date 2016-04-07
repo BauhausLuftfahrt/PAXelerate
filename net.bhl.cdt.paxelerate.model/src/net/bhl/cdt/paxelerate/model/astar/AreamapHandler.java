@@ -22,7 +22,7 @@ public class AreamapHandler {
 
 	public static final int MAX_VALUE = 100000, BASIC_VALUE = 3,
 			OBSTACLE_RANGE_IN_CM = 20, POTENTIAL_AROUND_OBSTACLE_MAXIMUM = 100,
-			HOLE_VALUE = 1; // DO NEVER SET THIS TO ZERO!
+			HOLE_VALUE = 1, NARROWING_OF_DOOR_PATH_IN_PIXELS = 2;
 
 	/**
 	 * This is the area map constructor.
