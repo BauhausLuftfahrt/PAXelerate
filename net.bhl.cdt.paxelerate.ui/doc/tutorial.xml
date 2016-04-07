@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="PAXelerate Tutorial">
+  
+   <item
+         skip="false"
+         title="First encounter with PAXelerate">
+      <description>
+         <b>After a first launch of PAXelerate the welcome page will greet you. To get started, create a new project and select EMF Store<b>You can start to create a new cabin layout with a right click on the aircraft project folder in the model explorer. In the context menu select New Model Element which opens a pop-up window with a selection of possible elements. The Cabin is the root element and should be created first. The remaining elements are children and can be added in the further course. The standard view disp<b>We are happy to receive your feedback. If you discover any bugs, please attach the log file stored in workspace/.metadata/ to your bug report.</b>
+         <b>This tutorial is based on PAXelerate release: Alpha 0.6 (03/31/2016)</b>appy to receive your feedback. If you discover any bugs, please attach the log file stored in workspace/.metadata/ to your &lt;a href=&quot;https://github.com/BauhausLuftfahrt/PAXelerate/issues/new&quot; &gt;bug report.&lt;/a&gt;</b>e parameter and associated values dived into Aircraft Parameters and Preferences. Additional to the Cabin element, also the Simulation Properties are supplemented. &lt;br /&gt;
+
+Using the Generate Cabin function accessible through the context menu applies a predefined algorithm to create a first layout. Further elements, such as Economy Class, Emergency Exit 3 or Lavatory 1, are generated as children of Cabin. The properties of each element are accessible with a double-click which opens another tab on the standard view. The cabin view is updated accordingly and shows you the general arrangement. </b>der. The general perspective is composed with the model explorer on the left which contains the just created project. The property view underneath contains an overview of the passenger characteristics distribution, such as anthroprometric and luggage parameters. Right now, it is still empty since no passengers are created so far. The console view shows you a history of executed commands and lists warnings if something went wrong. The cabin view on the right will display a rendering of the current cabin layout. The standard view in the middle is currently still empty, it will contain parameters and assigned values for the selected model element.</b>
+         <b>This tutorial is based on PAXelerate release: Alpha 0.6 (02/15/2016)</b>
+      </description>
+   </item>
+   <item
+         title="Create a cabin layout">
+      <description>
+         <b>Body</b>
+      </description>
+   </item>
+   <item
+         title="Generate passengers">
+      <description>
+         <b>Body</b>
+      </description>
+   </item>
+   <item
+         title="Start simulation">
+      <description>
+         <b>Body</b>
+      </description>
+   </item>
+   <item
+         title="Provide feedback and report bugs">
+      <description>
+         <b>Body</b>
+      </description>
+   </item> <intro>
+      <description>
+         This tutorial is based on PAXelerate release: Alpha 0.6 (02/15/2016)
+         This tutorial is based on PAXelerate release: Alpha 0.5 (02/15/2016)
+         This tutorial is based on PAXelerate release: Alpha 0.5 (02/15/2016)
+    First encounter with PAXeleratedescription>
+   </intro>
+   <iteAfter a first laun
+   <item
+         title="Create a cabin layout">
+      <description>
+         You can start to create a new cabin layout with a right click on the aircraft project folder in the model explorer. In the context menu select New Model Element which opens a pop-up window with a selection of possible elements. The Cabin is the root element and should be created first. The remaining elements are children and can be added in the further course. The standard view displays now the parameter and associated values dived into Aircraft Parameters and Preferences. Additional to the Cabin element, also the Simulation Properties are supplemented.
+
+Using the Generate Cabin function accessible through the context menu applies a predefined algorithm to create a first layout. Further elements, such as Economy Class, Emergency Exit 3 or Lavatory 1, are generated as children of Cabin. The properties of each element are accessible with a double-click which opens another tab on the standard view. The cabin view is updated accordingly and shows you the general arrangement.
+      </description>
+   </item>ch of PAXelerate the welcome page will greet you. To get started, create a new project and select EMF Store as a provider. The general perspective is composed with the model explorer on the left which contains the just created project. The property view underneath contains an overview of the passenger characteristics distribution, such as anthroprometric and luggage parameters. Right now, it is still empty since no passengers are created so far. The console view shows you a history of executed commands and lists warnings if something went wrong. The cabin view on the right will display a rendering of the current cabin layout. The standard view in the middle is currently still empty, it will contain parameters and assigned values for the selected model element. title="Item">
+      <description>
+         <b>Body</b>
+      </description>
+   </item>
+</cheatsheet>

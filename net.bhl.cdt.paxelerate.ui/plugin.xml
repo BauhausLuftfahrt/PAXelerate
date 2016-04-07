@@ -5,6 +5,7 @@
          point="org.eclipse.ui.views">
       <view
             allowMultiple="false"
+            category="net.bhl.cdt.paxelerate.ui.categoryPAXelerate"
             class="net.bhl.cdt.paxelerate.ui.views.CabinViewPart"
             icon="images/icons/cabin.png"
             id="net.bhl.cdt.paxelerate.ui.views.cabinview"
@@ -13,12 +14,17 @@
       </view>
       <view
             allowMultiple="false"
+            category="net.bhl.cdt.paxelerate.ui.categoryPAXelerate"
             class="net.bhl.cdt.paxelerate.ui.views.PropertyViewPart"
             icon="images/icons/passenger.png"
             id="net.bhl.cdt.paxelerate.ui.propertyview"
             name="Passenger Properties"
             restorable="true">
       </view>
+      <category
+            id="net.bhl.cdt.paxelerate.ui.categoryPAXelerate"
+            name="PAXelerate">
+      </category>
    </extension>
    <extension
          point="org.eclipse.ui.perspectives">
