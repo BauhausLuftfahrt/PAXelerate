@@ -107,7 +107,7 @@ public class Node implements Comparable<Node> {
 		return cost;
 	}
 
-	public Property getProperty() {
+	public synchronized Property getProperty() {
 		return property;
 	}
 
