@@ -25,6 +25,7 @@ import net.bhl.cdt.paxelerate.model.Door;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.TravelClass;
+import net.bhl.cdt.paxelerate.model.util.PassengerGenerator;
 import net.bhl.cdt.paxelerate.model.util.PassengerPropertyGenerator;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
@@ -47,8 +48,6 @@ public class GeneratePassengersCommand extends CDTCommand {
 	private Cabin cabin;
 	private int totalCount = 1;
 	private CabinViewPart cabinview;
-
-	private Map<Integer, Double> delays = new HashMap<>();
 
 	/**
 	 * This method submits the cabin to be used in the file.
@@ -113,32 +112,6 @@ public class GeneratePassengersCommand extends CDTCommand {
 	}
 
 	/**
-	 * 
-	 * @param passenger
-	 * @return
-	 */
-	private void applyDelay(Passenger passenger) {
-
-		/* calculate the step size for the delay */
-		double stepsize = 60.0 / cabin.getSimulationSettings().getPassengersBoardingPerMinute();
-
-		/* get the linked door of the passenger */
-		Door door = passenger.getDoor();
-		int id = door.getId();
-
-		/* if there is no delay before, set it to zero */
-		if (delays.get(id) == null) {
-			delays.put(id, 0.0);
-		}
-
-		/* read out the delay value of the door and assign it */
-		passenger.setStartBoardingAfterDelay(delays.get(id));
-
-		/* increase the delay of the corresponding door */
-		delays.put(id, delays.get(id) + stepsize);
-	}
-
-	/**
 	 * This method generates the passengers.
 	 * 
 	 * @param classType
@@ -162,6 +135,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 				Collections.shuffle(randomSeatId);
 
+				Map<Integer, Double> delays = new HashMap<>();
+
 				for (int i = 0; i < numberOfPassengers; i++) {
 					synchronized (this) {
 						Passenger passenger = CabinFactory.eINSTANCE.createPassenger();
@@ -174,7 +149,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 						passenger.setTravelClass(passenger.getSeat().getTravelClass());
 						passenger.setDoor(getDoor(passenger));
 
-						applyDelay(passenger);
+						PassengerGenerator.applyDelay(passenger, delays);
 
 						PassengerPropertyGenerator generator = new PassengerPropertyGenerator(passenger);
 						passenger = generator.getPassenger();

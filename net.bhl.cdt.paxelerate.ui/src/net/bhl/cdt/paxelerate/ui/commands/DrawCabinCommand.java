@@ -6,6 +6,8 @@
 package net.bhl.cdt.paxelerate.ui.commands;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.util.ModelHelper;
@@ -20,6 +22,7 @@ import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
 import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.util.EMFModelStore;
+import net.bhl.cdt.paxelerate.model.util.PassengerGenerator;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.PropertyViewPart;
 import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
@@ -190,8 +193,9 @@ public class DrawCabinCommand extends CDTCommand {
 	}
 
 	private void checkPassengerAssignments() {
-		double passengersPerMinute = 30;
-		int i = 0;
+
+		Map<Integer, Double> delays = new HashMap<>();
+
 		for (Passenger passenger : cabin.getPassengers()) {
 			Seat seat = passenger.getSeat();
 
@@ -203,9 +207,8 @@ public class DrawCabinCommand extends CDTCommand {
 			}
 			passenger.setTravelClass(ModelHelper.getParent(TravelClass.class, seat));
 
-			// TODO: recalculate the delay!
+			PassengerGenerator.applyDelay(passenger, delays);
 
-			i++;
 		}
 	}
 
