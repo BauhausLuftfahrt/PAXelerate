@@ -17,8 +17,9 @@ import net.bhl.cdt.paxelerate.model.astar.Node.Property;
  *
  */
 public class Core {
-	private AreaMap map;
-	private CostMap costmap;
+	private Areamap map;
+	private AreamapHandler maphandler;
+	private Costmap costmap;
 	private Path bestPath;
 	private ArrayList<Node> closedList;
 	private SortedNodeList openList;
@@ -30,9 +31,10 @@ public class Core {
 	 * @param map
 	 *            is the AreaMap that is fed into the algorithm
 	 */
-	public Core(AreaMap map, CostMap costmap, Agent agent) {
+	public Core(AreamapHandler maphandler, Costmap costmap, Agent agent) {
 
-		this.map = map;
+		this.maphandler = maphandler;
+		this.map = maphandler.getAreamap();
 		this.agent = agent;
 		this.costmap = costmap;
 		closedList = new ArrayList<Node>();
@@ -53,19 +55,19 @@ public class Core {
 	private void calculateShortestPath() {
 
 		/* mark start and goal node */
-		map.getNode(agent.getGoal()).setProperty(Property.GOAL,
+		map.get(agent.getGoal()).setProperty(Property.GOAL,
 				agent.getPassenger());
-		map.getNode(agent.getStart()).setProperty(Property.START,
+		map.get(agent.getStart()).setProperty(Property.START,
 				agent.getPassenger());
 
 		/* reset the properties of the start node */
-		map.getNode(agent.getStart()).setDistanceFromStart(0);
-		map.getNode(agent.getStart()).setCostFromStart(0);
+		map.get(agent.getStart()).setDistanceFromStart(0);
+		map.get(agent.getStart()).setCostFromStart(0);
 
 		/* reset the lists */
 		closedList.clear();
 		openList.clear();
-		openList.add(map.getNode(agent.getStart()));
+		openList.add(map.get(agent.getStart()));
 
 		/* while we haven't reached the goal yet */
 		while (openList.size() != 0) {
@@ -83,8 +85,8 @@ public class Core {
 			if (current.getPosition().equals(agent.getGoal())) {
 
 				/* the start node does never have a previous node! */
-				if (map.getNode(agent.getStart()) != null) {
-					map.getNode(agent.getStart()).setPreviousNode(null);
+				if (map.get(agent.getStart()) != null) {
+					map.get(agent.getStart()).setPreviousNode(null);
 				}
 
 				/* if there is a path found, reconstruct it */
@@ -117,12 +119,14 @@ public class Core {
 				if (neighbor.getProperty() != Property.OBSTACLE) {
 
 					/* calculate the neighbors distance from start */
-					double neighborDistanceFromStart = map.getDistanceBetween(
-							map.getNode(agent.getStart()), neighbor);
+					double neighborDistanceFromStart = maphandler
+							.getDistanceBetween(map.get(agent.getStart()),
+									neighbor);
 
 					/* calculate the neighbors distance from start */
-					double currentDistanceFromStart = map.getDistanceBetween(
-							map.getNode(agent.getStart()), current);
+					double currentDistanceFromStart = maphandler
+							.getDistanceBetween(map.get(agent.getStart()),
+									current);
 
 					/* calculate the neighbors cost */
 					int neighborCostFromStart = costmap

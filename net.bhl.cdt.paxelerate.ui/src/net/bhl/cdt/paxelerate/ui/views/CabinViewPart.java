@@ -32,7 +32,7 @@ import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
-import net.bhl.cdt.paxelerate.model.astar.ObstacleMap;
+import net.bhl.cdt.paxelerate.model.astar.AreamapHandler;
 import net.bhl.cdt.paxelerate.model.astar.Path;
 import net.bhl.cdt.paxelerate.model.util.POHelper;
 import net.bhl.cdt.paxelerate.ui.color.ColorHelper;
@@ -455,16 +455,16 @@ public class CabinViewPart extends ViewPart {
 		for (int i = 0; i < cabin.getXDimension() / cabin.getSimulationSettings().getScale(); i++) {
 			for (int j = 0; j < cabin.getYDimension() / cabin.getSimulationSettings().getScale(); j++) {
 
-				if (map[i][j] <= ObstacleMap.getHoleValue()) {
+				if (map[i][j] <= AreamapHandler.HOLE_VALUE) {
 					gc.setBackground(ColorHelper.GREEN);
 
-				} else if (map[i][j] <= ObstacleMap.getBasicValue()) {
+				} else if (map[i][j] <= AreamapHandler.BASIC_VALUE) {
 					gc.setBackground(ColorHelper.GREEN_LIGHT);
 
-				} else if (map[i][j] < ObstacleMap.getPotentialValue()) {
+				} else if (map[i][j] < AreamapHandler.POTENTIAL_AROUND_OBSTACLE_MAXIMUM) {
 					gc.setBackground(ColorHelper.YELLOW);
 
-				} else if (map[i][j] == ObstacleMap.getPotentialValue()) {
+				} else if (map[i][j] == AreamapHandler.POTENTIAL_AROUND_OBSTACLE_MAXIMUM) {
 					gc.setBackground(ColorHelper.ORANGE);
 
 				} else {

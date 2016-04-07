@@ -36,7 +36,7 @@ public class SimulationHandler {
 
 	private static Boolean simulationDone = false;
 
-	private static AreaMap areamap;
+	private static AreamapHandler areamaphandler;
 
 	/* Lists & Maps */
 
@@ -72,7 +72,7 @@ public class SimulationHandler {
 	public SimulationHandler(Vector dimensions, Cabin cabin) {
 		this.dimensions = dimensions;
 		Log.add(this, "Cabin initializing...");
-		areamap = new AreaMap(this.dimensions, cabin);
+		areamaphandler = new AreamapHandler(this.dimensions, cabin);
 		SimulationHandler.cabin = cabin;
 		run();
 	}
@@ -120,8 +120,8 @@ public class SimulationHandler {
 	 *
 	 * @return the area map
 	 */
-	public static AreaMap getMap() {
-		return areamap;
+	public static Areamap getMap() {
+		return areamaphandler.getAreamap();
 	}
 
 	public static synchronized Agent getAgentByPassenger(Passenger pax) {
@@ -177,7 +177,7 @@ public class SimulationHandler {
 		finishedList.clear();
 		activeList.clear();
 
-		areamap = null;
+		areamaphandler = null;
 		agentList.clear();
 		accessPending.clear();
 		watch.reset();
@@ -305,7 +305,7 @@ public class SimulationHandler {
 		watch.start();
 
 		/* create the list for all cost maps */
-		Map<Integer, CostMap> costmaps = new HashMap<>();
+		Map<Integer, Costmap> costmaps = new HashMap<>();
 
 		/*
 		 * Every active door needs its own CostMap.java for path calculations!
@@ -323,8 +323,8 @@ public class SimulationHandler {
 						cabin.getSimulationSettings().getScale());
 
 				/* generate a new cost map */
-				CostMap costmap = new CostMap(dimensions, doorPosition, areamap,
-						null, false);
+				Costmap costmap = new Costmap(dimensions, doorPosition,
+						areamaphandler.getAreamap(), null, false);
 
 				/* save the CostMap to the local file system */
 				costmap.saveMapToFile();
@@ -407,8 +407,11 @@ public class SimulationHandler {
 
 				/* Warn if no path can be found */
 			} catch (NullPointerException e) {
+
 				System.out.println("Passenger " + agent.getPassenger().getName()
-						+ " can not find a path to the seat!");
+						+ " can not find a path to the seat at "
+						+ agent.getGoal().getX() + " / "
+						+ agent.getGoal().getY());
 			}
 
 			/* return information to the progress bar */
@@ -430,5 +433,9 @@ public class SimulationHandler {
 			agent.getThread().stop();
 		}
 		reset();
+	}
+
+	public static AreamapHandler getAreamapHandler() {
+		return areamaphandler;
 	}
 }

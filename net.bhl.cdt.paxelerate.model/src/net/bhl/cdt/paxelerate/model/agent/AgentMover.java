@@ -25,31 +25,26 @@ public class AgentMover {
 			Property property, Passenger passenger) {
 
 		/* check if the desired node is out of bounds */
-		if (SimulationHandler.getMap().getNodeByCoordinate(vector.getX(),
-				vector.getY()) != null
-				&& SimulationHandler.getMap()
-						.getNodeByCoordinate(vector.getX(), vector.getY())
+		if (SimulationHandler.getMap().get(vector.getX(), vector.getY()) != null
+				&& SimulationHandler.getMap().get(vector.getX(), vector.getY())
 						.getPassenger() != null) {
 
 			/* check if the agent itself blocked the node */
-			if (SimulationHandler.getMap()
-					.getNodeByCoordinate(vector.getX(), vector.getY())
+			if (SimulationHandler.getMap().get(vector.getX(), vector.getY())
 					.getPassenger().getId() == passenger.getId()
 					|| SimulationHandler.getMap()
-							.getNodeByCoordinate(vector.getX(), vector.getY())
+							.get(vector.getX(), vector.getY())
 							.getProperty() != Property.AGENT) {
 
 				/* check if the node is no obstacle */
-				if (SimulationHandler.getMap()
-						.getNodeByCoordinate(vector.getX(), vector.getY())
+				if (SimulationHandler.getMap().get(vector.getX(), vector.getY())
 						.getProperty() != Property.OBSTACLE) {
 
 					/*
 					 * set the node to the desired property and link the agent
 					 * id
 					 */
-					SimulationHandler.getMap()
-							.getNodeByCoordinate(vector.getX(), vector.getY())
+					SimulationHandler.getMap().get(vector.getX(), vector.getY())
 							.setProperty(property, passenger);
 				}
 			}

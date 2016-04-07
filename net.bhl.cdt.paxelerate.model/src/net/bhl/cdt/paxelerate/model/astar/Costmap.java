@@ -31,7 +31,7 @@ import net.bhl.cdt.paxelerate.util.math.Vector3D;
  * 
  */
 
-public class CostMap {
+public class Costmap {
 
 	private int[][] map;
 	private Vector dimensions = new Vector2D(0, 0),
@@ -42,7 +42,7 @@ public class CostMap {
 			onHoldList = new ArrayList<Vector>(),
 			pointParking = new ArrayList<Vector>();
 
-	private AreaMap areamap;
+	private Areamap areamap;
 	private int lowestCost;
 
 	/**
@@ -50,7 +50,7 @@ public class CostMap {
 	 * @param dimension
 	 * @param areaMap
 	 */
-	public CostMap(Vector dimension, Vector start, AreaMap areaMap, Agent agent,
+	public Costmap(Vector dimension, Vector start, Areamap areaMap, Agent agent,
 			boolean OnlyFloodToSeat) {
 		this.dimensions = dimension;
 		this.startPoint = start;
@@ -65,14 +65,14 @@ public class CostMap {
 		this.areamap = areaMap;
 
 		map = new int[dimensions.getX()][dimensions.getY()];
-		for (int i = 0; i < dimensions.getX(); i++) {
-			for (int j = 0; j < dimensions.getY(); j++) {
-				Node node = areamap.getNodeByCoordinate(i, j);
-				if (node.getProperty() == Property.OBSTACLE) {
-					setCost(i, j, -1);
-				} else {
-					setCost(i, j, node.getCost());
-				}
+
+		for (Node node : areamap.getNodes()) {
+
+			if (node.getProperty() == Property.OBSTACLE) {
+
+				setCost(node.getPosition(), -1);
+			} else {
+				setCost(node.getPosition(), node.getObstacleValue());
 			}
 		}
 
@@ -81,8 +81,8 @@ public class CostMap {
 		floodMap();
 	}
 
-	public void setCost(int x, int y, int value) {
-		map[x][y] = value;
+	public void setCost(Vector position, int value) {
+		map[position.getX()][position.getY()] = value;
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class CostMap {
 	/**
 	 * This method prints the cost map with a path to the console.
 	 */
-	public void printMapPathToConsole(Path path, AreaMap areamap, Agent agent) {
+	public void printMapPathToConsole(Path path, Areamap areamap, Agent agent) {
 		System.out.println("This is the cost map:");
 		for (int i = 0; i < dimensions.getX(); i++) {
 			for (int j = 0; j < dimensions.getY(); j++) {
@@ -124,8 +124,7 @@ public class CostMap {
 				if (i == agent.getPosition().getX()
 						&& j == agent.getPosition().getY()) {
 					System.out.print("I");
-				} else if (areamap.getNodeByCoordinate(i, j)
-						.getProperty() == Property.AGENT) {
+				} else if (areamap.get(i, j).getProperty() == Property.AGENT) {
 					System.out.print("A");
 				} else if (foundNode) {
 					System.out.print(">");
@@ -255,8 +254,7 @@ public class CostMap {
 					|| point.getY() >= dimensions.getY())) {
 				if (!isObstacle(point)) {
 					if (!(checkForPoint(visitedPoints, point))) {
-						setCost(point.getX(), point.getY(),
-								getCost(middlePoint) + getCost(point));
+						setCost(point, getCost(middlePoint) + getCost(point));
 						visitedPoints.add(point);
 						getPointParkingHelper().add(point);
 					}

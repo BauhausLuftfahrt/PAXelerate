@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
-import net.bhl.cdt.paxelerate.model.astar.AreaMap;
+import net.bhl.cdt.paxelerate.model.astar.Areamap;
 import net.bhl.cdt.paxelerate.model.astar.Node;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 import net.bhl.cdt.paxelerate.model.astar.Path;
@@ -38,7 +38,7 @@ public class SimulationView extends JPanel implements MouseListener {
 
 	private static final long serialVersionUID = 2L;
 	private static final int BOX_WIDTH = 1000, BOX_HEIGHT = 300, STEP_SIZE = 2;
-	private AreaMap areamap;
+	private Areamap areamap;
 	private final Button leftButton, rightButton;
 
 	private int pointZero = 0, FONT_SIZE = 10;
@@ -106,7 +106,7 @@ public class SimulationView extends JPanel implements MouseListener {
 
 	}
 
-	public void setAreamap(AreaMap areamap) {
+	public void setAreamap(Areamap areamap) {
 		this.areamap = areamap;
 	}
 
@@ -141,7 +141,7 @@ public class SimulationView extends JPanel implements MouseListener {
 		for (int x = 0; x < areamap.getDimensions().getX(); x++) {
 			for (int y = pointZero; y < areamap.getDimensions().getY(); y++) {
 
-				Node node = areamap.getNodeByCoordinate(x, y);
+				Node node = areamap.get(x, y);
 				g.setColor(Color.LIGHT_GRAY);
 				if (node != null && node.getTypeForPrinting() != null) {
 
@@ -176,8 +176,8 @@ public class SimulationView extends JPanel implements MouseListener {
 						+ SimulationHandler.getCabin().getSimulationSettings().getSimulationSpeedFactor() + "x",
 				10, 40);
 		g.drawString("Passengers: " + SimulationHandler.getNumberOfSeatedPassengers() + " / "
-				+ SimulationHandler.getActivePassengers() + " / "
-				+ SimulationHandler.getCabin().getPassengers().size(), 10, 60);
+				+ SimulationHandler.getActivePassengers() + " / " + SimulationHandler.getCabin().getPassengers().size(),
+				10, 60);
 
 		Point mouse = getMousePosition();
 
@@ -188,7 +188,7 @@ public class SimulationView extends JPanel implements MouseListener {
 			int b = mouse.x / FONT_SIZE;
 			int a = mouse.y / FONT_SIZE;
 
-			Node node = areamap.getNodeByCoordinate(b, a);
+			Node node = areamap.get(b, a);
 
 			if (node != null) {
 				Property property = node.getProperty();
@@ -246,7 +246,7 @@ public class SimulationView extends JPanel implements MouseListener {
 			int a = getMousePosition().x / FONT_SIZE;
 			int b = getMousePosition().y / FONT_SIZE;
 
-			Node node = areamap.getNodeByCoordinate(b, a);
+			Node node = areamap.get(b, a);
 			if (node != null) {
 				if (node.getProperty() == Property.AGENT && node.getPassenger() != null) {
 					SimulationHandler.removePassenger(node.getPassenger());

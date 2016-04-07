@@ -10,82 +10,81 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 
 import net.bhl.cdt.paxelerate.model.Sex;
-import net.bhl.cdt.paxelerate.model.astar.AreaMap;
-import net.bhl.cdt.paxelerate.model.astar.Node;
 
 @Deprecated
 public class Exporter {
 
-	private static final String FOLDER_NAME = "paxelerate", FILE_PATH = System
-			.getProperty("user.home") + "/Documents/" + FOLDER_NAME + "/";
+	private static final String FOLDER_NAME = "paxelerate",
+			FILE_PATH = System.getProperty("user.home") + "/Documents/"
+					+ FOLDER_NAME + "/";
 
-	public static boolean generateHeatmapFile(String filename, AreaMap areamap) {
-		try {
-			
-			// Create a path before creating the file!
-			File dir = new File(FILE_PATH);
-			dir.mkdir();
+	// public static boolean generateHeatmapFile(String filename, AreamapHandler
+	// areamap) {
+	// try {
+	//
+	// // Create a path before creating the file!
+	// File dir = new File(FILE_PATH);
+	// dir.mkdir();
+	//
+	// FileWriter writer = new FileWriter(FILE_PATH + filename + ".xls");
+	// for (ArrayList<Node> nodeList : areamap.getAreamap()) {
+	// for (Node node : nodeList) {
+	// writer.append("" + node.getNumberOfOccupations());
+	// writer.append("\t");
+	// }
+	// writer.append("\n");
+	// }
+	//
+	// writer.flush();
+	// writer.close();
+	// return true;
+	//
+	// } catch (FileNotFoundException e) {
+	// return false;
+	// } catch (IOException e) {
+	// return false;
+	// }
+	// }
 
-			FileWriter writer = new FileWriter(FILE_PATH + filename + ".xls");
-			for (ArrayList<Node> nodeList : areamap.getNodes()) {
-				for (Node node : nodeList) {
-					writer.append("" + node.getNumberOfOccupations());
-					writer.append("\t");
-				}
-				writer.append("\n");
-			}
-
-			writer.flush();
-			writer.close();
-			return true;
-
-		} catch (FileNotFoundException e) {
-			return false;
-		} catch (IOException e) {
-			return false;
-		}
-	}
-
-	public static boolean generateInterruptmapFile(String filename,
-			AreaMap areamap) {
-		
-		try {
-			// Create a path before creating the file!
-						File dir = new File(FILE_PATH);
-						dir.mkdir();
-			FileWriter writer = new FileWriter(FILE_PATH + filename + ".xls");
-			for (ArrayList<Node> nodeList : areamap.getNodes()) {
-				for (Node node : nodeList) {
-					writer.append("" + node.getNumberOfInterrupts());
-					writer.append("\t");
-				}
-				writer.append("\n");
-			}
-
-			writer.flush();
-			writer.close();
-			return true;
-
-		} catch (FileNotFoundException e) {
-			return false;
-		} catch (IOException e) {
-			return false;
-		}
-	}
+	// public static boolean generateInterruptmapFile(String filename,
+	// AreamapHandler areamap) {
+	//
+	// try {
+	// // Create a path before creating the file!
+	// File dir = new File(FILE_PATH);
+	// dir.mkdir();
+	// FileWriter writer = new FileWriter(FILE_PATH + filename + ".xls");
+	// for (ArrayList<Node> nodeList : areamap.getAreamap()) {
+	// for (Node node : nodeList) {
+	// writer.append("" + node.getNumberOfInterrupts());
+	// writer.append("\t");
+	// }
+	// writer.append("\n");
+	// }
+	//
+	// writer.flush();
+	// writer.close();
+	// return true;
+	//
+	// } catch (FileNotFoundException e) {
+	// return false;
+	// } catch (IOException e) {
+	// return false;
+	// }
+	// }
 
 	static void generateDistributionFile(String sFileName,
 			GaussianStorage weight, GaussianStorage height,
 			GaussianStorage depth, GaussianStorage width, AgeStorage age,
 			LuggageStorage luggage, int[] pax) {
-		
+
 		try {
-			
+
 			// Create a path before creating the file!
-						File dir = new File(FILE_PATH);
-						dir.mkdir();
+			File dir = new File(FILE_PATH);
+			dir.mkdir();
 
 			FileWriter writer = new FileWriter(FILE_PATH + sFileName + ".xls");
 
@@ -105,8 +104,8 @@ public class Exporter {
 		}
 	}
 
-	private static void writeHeadline(FileWriter writer) throws IOException,
-			FileNotFoundException {
+	private static void writeHeadline(FileWriter writer)
+			throws IOException, FileNotFoundException {
 		writer.append("Type");
 		writer.append('\t');
 		writer.append("Maximum Value F");
@@ -132,8 +131,8 @@ public class Exporter {
 	}
 
 	private static void writeGaussian(FileWriter writer,
-			GaussianStorage storage, String name) throws IOException,
-			FileNotFoundException {
+			GaussianStorage storage, String name)
+			throws IOException, FileNotFoundException {
 		writer.append(name);
 		writer.append('\t');
 		writer.append(str(storage.getMaximum(Sex.FEMALE)));

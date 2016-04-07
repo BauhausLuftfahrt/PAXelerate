@@ -19,7 +19,7 @@ import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
 import net.bhl.cdt.paxelerate.model.astar.AStarHelper;
 import net.bhl.cdt.paxelerate.model.astar.Core;
-import net.bhl.cdt.paxelerate.model.astar.CostMap;
+import net.bhl.cdt.paxelerate.model.astar.Costmap;
 import net.bhl.cdt.paxelerate.model.astar.Node;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 import net.bhl.cdt.paxelerate.model.astar.Path;
@@ -46,7 +46,7 @@ public class Agent extends Subject implements Runnable {
 	private final static int PIXELS_FOR_WAY = 7;
 
 	private Vector start, goal, desiredPosition, currentPosition;
-	private CostMap mutableCostMap;
+	private Costmap mutableCostMap;
 
 	private int numbOfInterupts = 0, waycounter = 0, dim = 2;
 
@@ -62,7 +62,7 @@ public class Agent extends Subject implements Runnable {
 	private Agent blockingAgent;
 
 	/* constant values */
-	private final CostMap finalCostmap;
+	private final Costmap finalCostmap;
 	private final Passenger passenger;
 
 	private final int scale;
@@ -103,7 +103,7 @@ public class Agent extends Subject implements Runnable {
 	 * 
 	 * @return
 	 */
-	public CostMap getCostMap() {
+	public Costmap getCostMap() {
 		return finalCostmap;
 	}
 
@@ -120,7 +120,7 @@ public class Agent extends Subject implements Runnable {
 	 *            the goal vector
 	 */
 	public Agent(Passenger passenger, Vector start, Vector goal,
-			CostMap costmap, AgentMode mode,
+			Costmap costmap, AgentMode mode,
 			Passenger thePassengerILetInTheRow) {
 
 		/* assign the initializer values to the objects values */
@@ -322,7 +322,7 @@ public class Agent extends Subject implements Runnable {
 		 * check the possibility that the node is already blocked by an agent.
 		 * Normally this should never happen.
 		 */
-		if (SimulationHandler.getMap().getNode(vector)
+		if (SimulationHandler.getMap().get(vector)
 				.getProperty() == Property.AGENT && occupy) {
 		}
 
@@ -461,7 +461,8 @@ public class Agent extends Subject implements Runnable {
 		/* reset the mutable CostMap to the original cost map */
 		mutableCostMap = finalCostmap;
 
-		SimulationHandler.getMap().setStartLocation(currentPosition, this);
+		SimulationHandler.getAreamapHandler().setStartLocation(currentPosition,
+				this);
 
 		/* this is only run if its not the initial path finding process */
 		if (currentPosition != null) {
@@ -476,7 +477,8 @@ public class Agent extends Subject implements Runnable {
 		}
 
 		/* run the path finding algorithm */
-		Core astar = new Core(SimulationHandler.getMap(), mutableCostMap, this);
+		Core astar = new Core(SimulationHandler.getAreamapHandler(),
+				mutableCostMap, this);
 
 		/* retrieve the path information */
 		path = astar.getBestPath();
@@ -532,8 +534,8 @@ public class Agent extends Subject implements Runnable {
 				y = -(y + 1);
 			}
 
-			Node checkNode = SimulationHandler.getMap()
-					.getNodeByCoordinate(vector.getX() + x, vector.getY() + y);
+			Node checkNode = SimulationHandler.getMap().get(vector.getX() + x,
+					vector.getY() + y);
 			if (checkNode != null) {
 				if (checkNode.getProperty() == Property.AGENT) {
 
@@ -627,7 +629,7 @@ public class Agent extends Subject implements Runnable {
 
 					/* raise the interrupts counter up by one */
 					numbOfInterupts++;
-					SimulationHandler.getMap().getNode(currentPosition)
+					SimulationHandler.getMap().get(currentPosition)
 							.raiseNumberOfInterrupts();
 
 					/* get the correct behavior for an obstacle avoidance */
@@ -812,7 +814,7 @@ public class Agent extends Subject implements Runnable {
 	private synchronized void occupyOneStepAhead() {
 		blockArea(currentPosition, false, false, null);
 		blockArea(desiredPosition, true, false, null);
-		SimulationHandler.getMap().getNode(desiredPosition)
+		SimulationHandler.getMap().get(desiredPosition)
 				.raiseNumberOfOccupations();
 	}
 
@@ -899,7 +901,7 @@ public class Agent extends Subject implements Runnable {
 			/* the number of interrupts is submitted to the passenger */
 			passenger.setNumberOfWaits(numbOfInterupts);
 
-			SimulationHandler.getMap().getNode(getGoal())
+			SimulationHandler.getMap().get(getGoal())
 					.setProperty(Property.DEFAULT, getPassenger());
 
 			return true;
@@ -931,7 +933,7 @@ public class Agent extends Subject implements Runnable {
 				if (k < SimulationHandler.getMap().getDimensions().getY()
 						&& l < SimulationHandler.getMap().getDimensions()
 								.getX()) {
-					SimulationHandler.getMap().getNodeByCoordinate(k, l)
+					SimulationHandler.getMap().get(k, l)
 							.setProperty(Property.OBSTACLE, null);
 				}
 			}
@@ -1025,7 +1027,7 @@ public class Agent extends Subject implements Runnable {
 				for (int i = 0; i < cabinBlocker.getYDimension() / cabinBlocker
 						.getSimulationSettings().getScale(); i++) {
 					Node node = SimulationHandler.getMap()
-							.getNodeByCoordinate((int) (position / cabinBlocker
+							.get((int) (position / cabinBlocker
 									.getSimulationSettings().getScale())
 									- offset, i);
 					if (node.getProperty() != Property.OBSTACLE) {
@@ -1051,7 +1053,7 @@ public class Agent extends Subject implements Runnable {
 				goal = new Vector2D(helper.getX(), helper.getY());
 
 				path.invert();
-				path.appendWayPoint(SimulationHandler.getMap().getNode(goal));
+				path.appendWayPoint(SimulationHandler.getMap().get(goal));
 
 				setCurrentState(State.RETURNING_TO_SEAT);
 
@@ -1070,7 +1072,7 @@ public class Agent extends Subject implements Runnable {
 						.getSimulationSettings().getScale(); i++) {
 
 					Node node = SimulationHandler.getMap()
-							.getNodeByCoordinate((int) (position / cabinBlocker
+							.get((int) (position / cabinBlocker
 									.getSimulationSettings().getScale())
 									- offset, i);
 

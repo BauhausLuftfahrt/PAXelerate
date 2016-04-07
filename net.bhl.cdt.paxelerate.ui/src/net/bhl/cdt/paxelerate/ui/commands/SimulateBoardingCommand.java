@@ -27,7 +27,6 @@ import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
-import net.bhl.cdt.paxelerate.model.storage.Exporter;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.SimulationView;
 import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
@@ -93,15 +92,15 @@ public class SimulateBoardingCommand extends CDTCommand {
 						SortPassengersCommand sort2 = new SortPassengersCommand(cabin);
 						int value = 0;
 						switch (cabin.getSimulationSettings().getSorting()) {
-							case RANDOM:
-								value = 0;
-								break;
-							case WINDOW_TO_AISLE:
-								value = 3;
-								break;
-							case REAR_TO_FRONT:
-								value = 1;
-								break;
+						case RANDOM:
+							value = 0;
+							break;
+						case WINDOW_TO_AISLE:
+							value = 3;
+							break;
+						case REAR_TO_FRONT:
+							value = 1;
+							break;
 						}
 						if (value != 0) {
 							sort2.setPropertiesManually(false, value);
@@ -159,19 +158,21 @@ public class SimulateBoardingCommand extends CDTCommand {
 					/* closes the simulation view after completion */
 					simulationFrame.dispose();
 
-					if (Exporter.generateHeatmapFile("Heat Map", SimulationHandler.getMap())) {
-						Log.add(this, "Heat map saved successfully!");
-					}
-
-					if (Exporter.generateInterruptmapFile("Interrupt Map", SimulationHandler.getMap())) {
-						Log.add(this, "Interrupt map saved successfully!");
-					}
+					// if (Exporter.generateHeatmapFile("Heat Map",
+					// SimulationHandler.getMap())) {
+					// Log.add(this, "Heat map saved successfully!");
+					// }
+					//
+					// if (Exporter.generateInterruptmapFile("Interrupt Map",
+					// SimulationHandler.getMap())) {
+					// Log.add(this, "Interrupt map saved successfully!");
+					// }
 
 					Display.getDefault().syncExec(new Runnable() {
 						@Override
 						public void run() {
 							Image image = cabinViewPart
-									.submitObstacleMap(SimulationHandler.getMap().getObstacleMap().getMap());
+									.submitObstacleMap(SimulationHandler.getAreamapHandler().getObstaclemap());
 							cabinViewPart.printObstacleMap(image);
 							cabinViewPart.submitAgents(SimulationHandler.getAgentList());
 						}

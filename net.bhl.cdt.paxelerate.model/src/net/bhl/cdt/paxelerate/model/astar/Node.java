@@ -24,8 +24,8 @@ public class Node implements Comparable<Node> {
 			northWest, previousNode;
 	private ArrayList<Node> neighborList;
 	private double distanceFromStart;
-	private int costFromStart, cost, numberOfOccupations = 0,
-			numberOfInterrupts = 0, obstacleValue = 0;
+	private int costFromStart, numberOfOccupations = 0, numberOfInterrupts = 0,
+			obstacleValue = 0;
 
 	public int getObstacleValue() {
 		return obstacleValue;
@@ -36,6 +36,7 @@ public class Node implements Comparable<Node> {
 	}
 
 	private Vector position = new Vector2D(0, 0);
+
 	private Property property;
 	private boolean hidden = false;
 	private Passenger linkedPassenger;
@@ -90,21 +91,12 @@ public class Node implements Comparable<Node> {
 	 */
 	public Node(Vector vector) {
 		neighborList = new ArrayList<Node>();
-		position = vector;
+		this.position = vector;
 		this.distanceFromStart = Integer.MAX_VALUE;
 		this.costFromStart = Integer.MAX_VALUE;
 		property = Property.DEFAULT;
 		linkedPassenger = CabinFactory.eINSTANCE.createPassenger();
 		linkedPassenger.setId(Integer.MAX_VALUE);
-	}
-
-	/**
-	 * This method returns the cost of the node.
-	 * 
-	 * @return the cost
-	 */
-	public int getCost() {
-		return cost;
 	}
 
 	public synchronized Property getProperty() {
@@ -132,15 +124,9 @@ public class Node implements Comparable<Node> {
 	}
 
 	/**
-	 * This method sets the cost of the node.
 	 * 
-	 * @param cost
-	 *            the cost
+	 * @return
 	 */
-	public void setCost(int cost) {
-		this.cost = cost;
-	}
-
 	public String getTypeForPrinting() {
 		switch (property) {
 		case OBSTACLE:

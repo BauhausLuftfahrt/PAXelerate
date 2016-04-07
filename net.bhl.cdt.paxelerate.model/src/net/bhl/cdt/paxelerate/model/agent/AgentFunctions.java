@@ -11,7 +11,7 @@ import net.bhl.cdt.paxelerate.model.Door;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
-import net.bhl.cdt.paxelerate.model.astar.CostMap;
+import net.bhl.cdt.paxelerate.model.astar.Costmap;
 import net.bhl.cdt.paxelerate.model.astar.Node;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
@@ -148,8 +148,8 @@ public class AgentFunctions {
 			for (int j = 0; j < door.getWidth() / scale; j++) {
 
 				/* get the corresponding node */
-				Node node = SimulationHandler.getMap().getNodeByCoordinate(
-						door.getXPosition() / scale + j, i);
+				Node node = SimulationHandler.getMap()
+						.get(door.getXPosition() / scale + j, i);
 
 				/* check if the node is an agent */
 				if (node.getProperty() == Property.AGENT) {
@@ -168,12 +168,12 @@ public class AgentFunctions {
 	 * This method takes a cost map and adds a huge cost to the location and the
 	 * area around agents. The agent triggering this method is ignored.
 	 */
-	public static CostMap updateCostmap(Agent agent) {
+	public static Costmap updateCostmap(Agent agent) {
 
 		/*
 		 * The cost map is flooded from the agents current location to his seat
 		 */
-		CostMap costmap = new CostMap(
+		Costmap costmap = new Costmap(
 				SimulationHandler.getMap().getDimensions(), agent.getStart(),
 				SimulationHandler.getMap(), agent, true);
 
@@ -209,8 +209,7 @@ public class AgentFunctions {
 				if (xCoordinate > 0 && yCoordinate > 0) {
 
 					/* find all nodes occupied by agents */
-					if (SimulationHandler.getMap()
-							.getNodeByCoordinate(xCoordinate, yCoordinate)
+					if (SimulationHandler.getMap().get(xCoordinate, yCoordinate)
 							.getProperty() == Property.AGENT) {
 
 						/*
@@ -223,9 +222,7 @@ public class AgentFunctions {
 
 							/* the current agents position is excluded here! */
 							if (!SimulationHandler.getMap()
-									.getNodeByCoordinate(xCoordinate,
-											yCoordinate)
-									.getPosition()
+									.get(xCoordinate, yCoordinate).getPosition()
 									.equals(agent.getCurrentPosition())) {
 
 								/* the surrounding points are calculated */
@@ -234,11 +231,9 @@ public class AgentFunctions {
 												yCoordinate + stepsAhead)) {
 
 									/* the surrounding costs are assigned */
-									if (SimulationHandler.getMap()
-											.getNode(point)
+									if (SimulationHandler.getMap().get(point)
 											.getProperty() != Property.OBSTACLE) {
-										costmap.setCost(point.getX(),
-												point.getY(), 5000);
+										costmap.setCost(point, 5000);
 									}
 
 								}
