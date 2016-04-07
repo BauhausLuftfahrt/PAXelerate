@@ -5,6 +5,8 @@
  ******************************************************************************/
 package net.bhl.cdt.paxelerate.util.input;
 
+import java.util.Objects;
+
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Point;
@@ -298,7 +300,7 @@ public class Input extends TitleAreaDialog {
 		switch (windowType) {
 		case CLONE_OBJECT:
 		case GET_INTEGER:
-			if (text.getText() != "") {
+			if (text.getText() != null && !text.getText().isEmpty()){
 				if (StringHelper.isInteger(text.getText())) {
 					return true;
 				} else {
@@ -312,7 +314,7 @@ public class Input extends TitleAreaDialog {
 				return false;
 			}
 		case OPTIONS:
-			if (text.getText() != "") {
+			if (text.getText() != null && !text.getText().isEmpty()){
 				if (StringHelper.isInteger(text.getText())) {
 					return true;
 				} else {
@@ -326,7 +328,7 @@ public class Input extends TitleAreaDialog {
 				return false;
 			}
 		case GET_STRING:
-			if (text.getText() != "") {
+			if (text.getText() != null && !text.getText().isEmpty()){
 				return true;
 			} else {
 				warningLabel.setText("Please enter a string.");
@@ -335,7 +337,8 @@ public class Input extends TitleAreaDialog {
 			}
 		case GET_VECTOR:
 		case MOVE_OBJECT:
-			if (text.getText() != "" && text2.getText() != "") {
+			if ((text.getText() != null && !text.getText().isEmpty()) 
+					&& (text2.getText() != null && !text2.getText().isEmpty())) {
 				if (StringHelper.isInteger(text.getText()) && StringHelper.isInteger(text2.getText())) {
 					return true;
 				} else {
@@ -349,8 +352,11 @@ public class Input extends TitleAreaDialog {
 				return false;
 			}
 		case GET_TWO_VECTORS:
-			if (text.getText() != "" && text2.getText() != "" && text3.getText() != "" && text4.getText() != "") {
-				if (StringHelper.isInteger(text.getText()) && StringHelper.isInteger(text2.getText())
+			if ((text.getText() != null && !text.getText().isEmpty()) 
+					&& (text2.getText() != null && !text2.getText().isEmpty()) 
+					&& (text3.getText() != null && !text3.getText().isEmpty())
+					&& (text4.getText() != null && !text4.getText().isEmpty())){
+					if (StringHelper.isInteger(text.getText()) && StringHelper.isInteger(text2.getText())
 						&& StringHelper.isInteger(text3.getText()) && StringHelper.isInteger(text4.getText())) {
 					return true;
 				} else {

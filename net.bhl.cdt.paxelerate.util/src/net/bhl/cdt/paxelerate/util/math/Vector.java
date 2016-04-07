@@ -201,8 +201,15 @@ public abstract class Vector implements Comparable<Vector> {
 	 * 
 	 * @return vectors are equal or not
 	 */
-	public boolean equals(Vector vec) {
-		return vec != null && dimensions == vec.getNumberOfDimensions() && xValue == vec.getX() && yValue == vec.getY()
+	@Override
+	public boolean equals(Object object) {
+		if (!(object instanceof Vector))
+	        return false;
+
+	   Vector vec = (Vector) object; 
+	   
+	   return vec != null && dimensions == vec.getNumberOfDimensions() && xValue == vec.getX() && yValue == vec.getY()
 				&& zValue == vec.getZ();
 	}
+	
 }

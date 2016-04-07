@@ -191,7 +191,7 @@ public class Core {
 	 */
 	private synchronized Path reconstructPath(Node node) {
 		Path path = new Path();
-		while (node.getPreviousNode() != null && node != null) {
+		while (node.getPreviousNode() != null) {
 			path.prependWayPoint(node);
 			node = node.getPreviousNode();
 		}

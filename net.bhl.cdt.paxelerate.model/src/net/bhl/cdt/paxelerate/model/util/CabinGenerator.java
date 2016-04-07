@@ -70,7 +70,7 @@ public class CabinGenerator {
 	/**
 	 * Returns the cabin.
 	 * 
-	 * @return the cabin that was created whithin this class.
+	 * @return the cabin that was created within this class.
 	 */
 	public Cabin getCabin() {
 		return cabin;
@@ -211,10 +211,15 @@ public class CabinGenerator {
 				obj = null;
 				break;
 			}
-
-			obj.setXDimension(xDimension);
-			obj.setXPosition(globalSeatPositionX);
 			try {
+				obj.setXDimension(xDimension);
+			} catch (NullPointerException e) {
+				Log.add(this, "Define the seat dimensions");
+			}
+			
+			
+			try {
+				obj.setXPosition(globalSeatPositionX);
 				obj.setYDimension(rowPartsInt.get(k)
 						* (tc.getYDimensionOfSeats() + seatHelper)
 						+ seatHelper);
