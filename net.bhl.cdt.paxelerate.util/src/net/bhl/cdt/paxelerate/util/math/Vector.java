@@ -203,13 +203,14 @@ public abstract class Vector implements Comparable<Vector> {
 	 */
 	@Override
 	public boolean equals(Object object) {
-		if (!(object instanceof Vector))
-	        return false;
 
-	   Vector vec = (Vector) object; 
-	   
-	   return vec != null && dimensions == vec.getNumberOfDimensions() && xValue == vec.getX() && yValue == vec.getY()
-				&& zValue == vec.getZ();
+		if (!(object instanceof Vector)) {
+			return super.equals(object);
+		} else {
+
+			Vector vec = (Vector) object;
+			return vec != null && dimensions == vec.getNumberOfDimensions() && xValue == vec.getX()
+					&& yValue == vec.getY() && zValue == vec.getZ();
+		}
 	}
-	
 }

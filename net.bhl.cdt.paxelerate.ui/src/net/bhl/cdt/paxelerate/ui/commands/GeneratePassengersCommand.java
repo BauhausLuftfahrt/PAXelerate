@@ -99,10 +99,10 @@ public class GeneratePassengersCommand extends CDTCommand {
 	 * @return the seat which is linked to the passenger
 	 */
 	private Seat getSeat(Passenger passenger) {
-		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
-			if ((!seat.equals(null)) && (seat.getId() == passenger.getSeatID())) {
-				seat.setPassenger(passenger);
 
+		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
+			if ((seat.getId() == passenger.getSeatID())) {
+				seat.setPassenger(passenger);
 				return seat;
 			}
 		}
