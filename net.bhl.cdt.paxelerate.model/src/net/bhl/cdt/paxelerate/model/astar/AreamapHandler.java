@@ -8,6 +8,7 @@ package net.bhl.cdt.paxelerate.model.astar;
 
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
+import net.bhl.cdt.paxelerate.model.astar.Node.Direction;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 
@@ -40,8 +41,6 @@ public class AreamapHandler {
 		/* apply obstacle values to the area map */
 		areamap = new ObstacleGenerator(areamap, cabin).returnMap();
 
-		new ObstacleGenerator(areamap, cabin).output();
-
 		/* define the neighboring nodes of each node */
 		defineNeighboringNodes();
 	}
@@ -61,46 +60,53 @@ public class AreamapHandler {
 			int x = node.getPosition().getX();
 			int y = node.getPosition().getY();
 
+			/* clear any previous defined neighbors */
+			node.getNeighborList().clear();
+
 			/* define the neighboring nodes */
 
 			/* the north node */
 			if (!(y == 0)) {
-				node.setNorth(areamap.get(x, y - 1));
+				node.addNeighbor(areamap.get(x, y - 1), Direction.NORTH);
 			}
 
 			/* the north east node */
 			if (!(y == 0) && !(x == dimensions.getX())) {
-				node.setNorthEast(areamap.get(x + 1, y - 1));
+				node.addNeighbor(areamap.get(x + 1, y - 1),
+						Direction.NORTH_EAST);
 			}
 
 			/* the east node */
 			if (!(x == dimensions.getX())) {
-				node.setEast(areamap.get(x + 1, y));
+				node.addNeighbor(areamap.get(x + 1, y), Direction.EAST);
 			}
 
 			/* the south east node */
 			if (!(x == dimensions.getX()) && !(y == dimensions.getY())) {
-				node.setSouthEast(areamap.get(x + 1, y + 1));
+				node.addNeighbor(areamap.get(x + 1, y + 1),
+						Direction.SOUTH_EAST);
 			}
 
 			/* the south node */
 			if (!(y == dimensions.getY())) {
-				node.setSouth(areamap.get(x, y + 1));
+				node.addNeighbor(areamap.get(x, y + 1), Direction.SOUTH);
 			}
 
 			/* the south west node */
 			if (!(x == 0) && !(y == dimensions.getY())) {
-				node.setSouthWest(areamap.get(x - 1, y + 1));
+				node.addNeighbor(areamap.get(x - 1, y + 1),
+						Direction.SOUTH_WEST);
 			}
 
 			/* the west node */
 			if (!(x == 0)) {
-				node.setWest(areamap.get(x - 1, y));
+				node.addNeighbor(areamap.get(x - 1, y), Direction.WEST);
 			}
 
 			/* the north west node */
 			if (!(x == 0) && !(y == 0)) {
-				node.setNorthWest(areamap.get(x - 1, y - 1));
+				node.addNeighbor(areamap.get(x - 1, y - 1),
+						Direction.NORTH_WEST);
 			}
 		}
 	}
@@ -156,29 +162,6 @@ public class AreamapHandler {
 		/* return the populated integer array */
 		return integerArray;
 
-	}
-
-	/**
-	 * This method calculates the distance between two nodes.
-	 * 
-	 * @param node1
-	 *            the first node
-	 * @param node2
-	 *            the second node
-	 * @return the distance between the nodes
-	 */
-	public double getDistanceBetween(Node node1, Node node2) {
-
-		/* define the first element of the square root function */
-		double first = Math.pow(
-				(node2.getPosition().getX() - node1.getPosition().getX()), 2);
-
-		/* define the second element of the square root function */
-		double second = Math.pow(
-				(node2.getPosition().getY() - node1.getPosition().getY()), 2);
-
-		/* calculate the square root */
-		return Math.sqrt(first + second);
 	}
 
 	/**

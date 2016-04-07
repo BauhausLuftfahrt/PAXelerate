@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
+import net.bhl.cdt.paxelerate.util.math.MathHelper;
 
 /**
  * This class is the A* algorithm.
@@ -17,8 +18,7 @@ import net.bhl.cdt.paxelerate.model.astar.Node.Property;
  *
  */
 public class Core {
-	private Areamap map;
-	private AreamapHandler maphandler;
+	private Areamap areamap;
 	private Costmap costmap;
 	private Path bestPath;
 	private ArrayList<Node> closedList;
@@ -28,13 +28,12 @@ public class Core {
 	/**
 	 * This method constructs the Core.
 	 * 
-	 * @param map
+	 * @param areamap
 	 *            is the AreaMap that is fed into the algorithm
 	 */
 	public Core(AreamapHandler maphandler, Costmap costmap, Agent agent) {
 
-		this.maphandler = maphandler;
-		this.map = maphandler.getAreamap();
+		this.areamap = maphandler.getAreamap();
 		this.agent = agent;
 		this.costmap = costmap;
 		closedList = new ArrayList<Node>();
@@ -55,19 +54,19 @@ public class Core {
 	private void calculateShortestPath() {
 
 		/* mark start and goal node */
-		map.get(agent.getGoal()).setProperty(Property.GOAL,
+		areamap.get(agent.getGoal()).setProperty(Property.GOAL,
 				agent.getPassenger());
-		map.get(agent.getStart()).setProperty(Property.START,
+		areamap.get(agent.getStart()).setProperty(Property.START,
 				agent.getPassenger());
 
 		/* reset the properties of the start node */
-		map.get(agent.getStart()).setDistanceFromStart(0);
-		map.get(agent.getStart()).setCostFromStart(0);
+		areamap.get(agent.getStart()).setDistanceFromStart(0);
+		areamap.get(agent.getStart()).setCostFromStart(0);
 
 		/* reset the lists */
 		closedList.clear();
 		openList.clear();
-		openList.add(map.get(agent.getStart()));
+		openList.add(areamap.get(agent.getStart()));
 
 		/* while we haven't reached the goal yet */
 		while (openList.size() != 0) {
@@ -85,8 +84,8 @@ public class Core {
 			if (current.getPosition().equals(agent.getGoal())) {
 
 				/* the start node does never have a previous node! */
-				if (map.get(agent.getStart()) != null) {
-					map.get(agent.getStart()).setPreviousNode(null);
+				if (areamap.get(agent.getStart()) != null) {
+					areamap.get(agent.getStart()).setPreviousNode(null);
 				}
 
 				/* if there is a path found, reconstruct it */
@@ -119,14 +118,14 @@ public class Core {
 				if (!neighbor.isObstacle()) {
 
 					/* calculate the neighbors distance from start */
-					double neighborDistanceFromStart = maphandler
-							.getDistanceBetween(map.get(agent.getStart()),
-									neighbor);
+					double neighborDistanceFromStart = MathHelper.distance(
+							areamap.get(agent.getStart()).getPosition(),
+							neighbor.getPosition());
 
 					/* calculate the neighbors distance from start */
-					double currentDistanceFromStart = maphandler
-							.getDistanceBetween(map.get(agent.getStart()),
-									current);
+					double currentDistanceFromStart = MathHelper.distance(
+							(areamap.get(agent.getStart()).getPosition()),
+							current.getPosition());
 
 					/* calculate the neighbors cost */
 					int neighborCostFromStart = costmap

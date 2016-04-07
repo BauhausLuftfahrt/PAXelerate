@@ -6,6 +6,7 @@
 package net.bhl.cdt.paxelerate.model.astar;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 import net.bhl.cdt.paxelerate.model.CabinFactory;
 import net.bhl.cdt.paxelerate.model.Passenger;
@@ -20,12 +21,19 @@ import net.bhl.cdt.paxelerate.util.math.Vector2D;
  *
  */
 public class Node implements Comparable<Node> {
+
 	private Node north, northEast, east, southEast, south, southWest, west,
 			northWest, previousNode;
-	private ArrayList<Node> neighborList;
+
 	private double distanceFromStart;
 	private int costFromStart, numberOfOccupations = 0, numberOfInterrupts = 0,
 			obstacleValue = 0;
+
+	private Property property;
+	private boolean hidden = false;
+	private Passenger linkedPassenger;
+	private ArrayList<NodeProperty> startList = new ArrayList<NodeProperty>();
+	private Vector position = new Vector2D(0, 0);
 
 	public int getObstacleValue() {
 		return obstacleValue;
@@ -34,13 +42,6 @@ public class Node implements Comparable<Node> {
 	public void setObstacleValue(int obstacleValue) {
 		this.obstacleValue = obstacleValue;
 	}
-
-	private Vector position = new Vector2D(0, 0);
-
-	private Property property;
-	private boolean hidden = false;
-	private Passenger linkedPassenger;
-	private ArrayList<NodeProperty> startList = new ArrayList<NodeProperty>();
 
 	public int getNumberOfInterrupts() {
 		return numberOfInterrupts;
@@ -83,6 +84,11 @@ public class Node implements Comparable<Node> {
 		OBSTACLE, AGENT, DEFAULT, START, GOAL
 	}
 
+	/**
+	 * 
+	 * @author marc.engelmann
+	 *
+	 */
 	public enum Direction {
 		NORTH, NORTH_EAST, EAST, SOUTH_EAST, SOUTH, SOUTH_WEST, WEST, NORTH_WEST;
 	}
@@ -94,7 +100,6 @@ public class Node implements Comparable<Node> {
 	 *            is the position vector
 	 */
 	public Node(Vector vector) {
-		neighborList = new ArrayList<Node>();
 		this.position = vector;
 		this.distanceFromStart = Integer.MAX_VALUE;
 		this.costFromStart = Integer.MAX_VALUE;
@@ -153,136 +158,44 @@ public class Node implements Comparable<Node> {
 	}
 
 	/**
-	 * This method sets the corresponding node.
 	 * 
-	 * @param north
-	 *            is the node
+	 * @param node
 	 */
-	public void setNorth(Node north) {
-		// replace the old Node with the new one in the neighborList
-		if (neighborList.contains(this.north)) {
-			neighborList.remove(this.north);
+	public void addNeighbor(Node node, Direction direction) {
+
+		switch (direction) {
+		case NORTH:
+			this.north = node;
+			break;
+
+		case NORTH_EAST:
+			this.northEast = node;
+			break;
+
+		case EAST:
+			this.east = node;
+			break;
+
+		case SOUTH_EAST:
+			this.southEast = node;
+			break;
+
+		case SOUTH:
+			this.south = node;
+			break;
+
+		case SOUTH_WEST:
+			this.southWest = node;
+			break;
+
+		case WEST:
+			this.west = node;
+			break;
+
+		case NORTH_WEST:
+			this.northWest = node;
+			break;
 		}
-		neighborList.add(north);
-
-		// set the new Node
-		this.north = north;
-	}
-
-	/**
-	 * This method sets the corresponding node.
-	 * 
-	 * @param northEast
-	 *            is the node
-	 */
-	public void setNorthEast(Node northEast) {
-		// replace the old Node with the new one in the neighborList
-		if (neighborList.contains(this.northEast)) {
-			neighborList.remove(this.northEast);
-		}
-		neighborList.add(northEast);
-
-		// set the new Node
-		this.northEast = northEast;
-	}
-
-	/**
-	 * This method sets the corresponding node.
-	 * 
-	 * @param east
-	 *            is the node
-	 */
-	public void setEast(Node east) {
-		// replace the old Node with the new one in the neighborList
-		if (neighborList.contains(this.east)) {
-			neighborList.remove(this.east);
-		}
-		neighborList.add(east);
-
-		// set the new Node
-		this.east = east;
-	}
-
-	/**
-	 * This method sets the corresponding node.
-	 * 
-	 * @param southEast
-	 *            is the node
-	 */
-	public void setSouthEast(Node southEast) {
-		// replace the old Node with the new one in the neighborList
-		if (neighborList.contains(this.southEast)) {
-			neighborList.remove(this.southEast);
-		}
-		neighborList.add(southEast);
-
-		// set the new Node
-		this.southEast = southEast;
-	}
-
-	/**
-	 * This method sets the corresponding node.
-	 * 
-	 * @param south
-	 *            is the node
-	 */
-	public void setSouth(Node south) {
-		// replace the old Node with the new one in the neighborList
-		if (neighborList.contains(this.south)) {
-			neighborList.remove(this.south);
-		}
-		neighborList.add(south);
-
-		// set the new Node
-		this.south = south;
-	}
-
-	/**
-	 * This method sets the corresponding node.
-	 * 
-	 * @param southWest
-	 *            is the node
-	 */
-	public void setSouthWest(Node southWest) {
-		if (neighborList.contains(this.southWest)) {
-			neighborList.remove(this.southWest);
-		}
-		neighborList.add(southWest);
-		this.southWest = southWest;
-	}
-
-	/**
-	 * This method sets the corresponding node.
-	 * 
-	 * @param west
-	 *            is the node
-	 */
-	public void setWest(Node west) {
-		// replace the old Node with the new one in the neighborList
-		if (neighborList.contains(this.west)) {
-			neighborList.remove(this.west);
-		}
-		neighborList.add(west);
-
-		// set the new Node
-		this.west = west;
-	}
-
-	/**
-	 * This method sets the corresponding node.
-	 * 
-	 * @param northWest
-	 *            is the node.
-	 */
-	public void setNorthWest(Node northWest) {
-		// replace the old Node with the new one in the neighborList
-		if (neighborList.contains(this.northWest)) {
-			neighborList.remove(this.northWest);
-		}
-		neighborList.add(northWest);
-
-		// set the new Node
-		this.northWest = northWest;
 	}
 
 	/**
@@ -292,7 +205,25 @@ public class Node implements Comparable<Node> {
 	 */
 	public ArrayList<Node> getNeighborList() {
 
-		return neighborList;
+		ArrayList<Node> neighbors = new ArrayList<>();
+
+		neighbors.add(north);
+		neighbors.add(northEast);
+		neighbors.add(east);
+		neighbors.add(southEast);
+		neighbors.add(south);
+		neighbors.add(southWest);
+		neighbors.add(west);
+		neighbors.add(northWest);
+
+		ListIterator<Node> iterator = neighbors.listIterator();
+		while (iterator.hasNext()) {
+			if (iterator.next() == null) {
+				iterator.remove();
+			}
+		}
+
+		return neighbors;
 	}
 
 	/**
