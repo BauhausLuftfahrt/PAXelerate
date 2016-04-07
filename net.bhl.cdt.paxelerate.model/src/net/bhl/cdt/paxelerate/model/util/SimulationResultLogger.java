@@ -58,7 +58,7 @@ public class SimulationResultLogger {
 		// passengers, their waiting times, their boarding times, their number
 		// of interrupts, ...
 
-		// TODO: the data could be output to a text file.
+		// the data could be output to a text file.
 
 		totalPax = paxList.size();
 

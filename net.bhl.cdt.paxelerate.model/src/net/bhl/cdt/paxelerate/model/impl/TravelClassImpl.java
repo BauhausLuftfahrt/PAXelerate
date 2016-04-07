@@ -483,12 +483,6 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 	 * @generated NOT
 	 */
 	public boolean tooManyPassengers(DiagnosticChain chain, Map<?, ?> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and
-		// message
-		// Ensure that you remove @generated or mark it @generated NOT
-
 		if (getAvailableSeats() < getPassengers()) {
 			if (chain != null) {
 				chain.add(new BasicDiagnostic(Diagnostic.ERROR,
@@ -511,11 +505,6 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 	 * @generated NOT
 	 */
 	public boolean wrongRowStructure(DiagnosticChain chain, Map<?, ?> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and
-		// message
-		// Ensure that you remove @generated or mark it @generated NOT
 		if (!InputChecker.noIssuesDetected(getRowStructure())) {
 			if (chain != null) {
 				chain.add(new BasicDiagnostic(Diagnostic.ERROR,

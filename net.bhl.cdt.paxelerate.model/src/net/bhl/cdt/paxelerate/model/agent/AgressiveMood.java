@@ -17,7 +17,7 @@ public class AgressiveMood extends AgentMood implements Strategy {
 
 	public AgressiveMood(Agent agent) {
 		super(agent);
-		// TODO Auto-generated constructor stub
+		// Auto-generated constructor stub
 	}
 
 	@SuppressWarnings("static-access")

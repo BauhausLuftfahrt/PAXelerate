@@ -115,13 +115,13 @@ public class WelcomePage extends IntroPart implements IIntroPart {
 
 	@Override
 	public void setFocus() {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
 	@Override
 	public void standbyStateChanged(boolean standby) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 

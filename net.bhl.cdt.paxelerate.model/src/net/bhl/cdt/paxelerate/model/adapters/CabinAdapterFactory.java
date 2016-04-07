@@ -22,7 +22,7 @@ public class CabinAdapterFactory implements IAdapterFactory {
 
 	@Override
 	public Class[] getAdapterList() {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 		return null;
 	}
 

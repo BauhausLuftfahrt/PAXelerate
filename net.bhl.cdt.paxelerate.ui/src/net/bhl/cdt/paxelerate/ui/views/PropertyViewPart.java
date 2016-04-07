@@ -328,7 +328,7 @@ public class PropertyViewPart extends ViewPart {
 
 	@Override
 	public void setFocus() {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 

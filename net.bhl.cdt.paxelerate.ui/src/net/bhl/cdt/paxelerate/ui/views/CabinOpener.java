@@ -14,7 +14,7 @@ import net.bhl.cdt.paxelerate.ui.commands.DrawCabinCommand;
 public class CabinOpener extends EditorModelElementOpener {
 
 	public CabinOpener() {
-		// TODO Auto-generated constructor stub
+		// Auto-generated constructor stub
 	}
 
 	@SuppressWarnings("restriction")

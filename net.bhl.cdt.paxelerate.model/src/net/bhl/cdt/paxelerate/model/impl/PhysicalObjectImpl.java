@@ -299,11 +299,6 @@ public abstract class PhysicalObjectImpl extends MinimalEObjectImpl.Container im
 	 * @generated NOT
 	 */
 	public boolean outOfBounds(DiagnosticChain chain, Map<?, ?> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and
-		// message
-		// Ensure that you remove @generated or mark it @generated NOT
 
 		int width = 10000;
 		int length = 50000;
