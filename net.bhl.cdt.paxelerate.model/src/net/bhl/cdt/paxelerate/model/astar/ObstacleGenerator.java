@@ -7,6 +7,7 @@ package net.bhl.cdt.paxelerate.model.astar;
 
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.Door;
+import net.bhl.cdt.paxelerate.model.DoorOption;
 import net.bhl.cdt.paxelerate.model.ObjectOption;
 import net.bhl.cdt.paxelerate.model.PhysicalObject;
 import net.bhl.cdt.paxelerate.model.Seat;
@@ -47,7 +48,7 @@ public class ObstacleGenerator {
 		this.cabin = cabin;
 
 		for (Node node : areamap.getNodes()) {
-			node.setObstacleValue(AreamapHandler.BASIC_VALUE);
+			node.setObstacleValue(AreamapHandler.DEFAULT_VALUE);
 		}
 
 		for (ObjectOption option : ObjectOption.VALUES) {
@@ -66,82 +67,21 @@ public class ObstacleGenerator {
 	 */
 	private void generatePotentialGradient() {
 
-		int range = AreamapHandler.OBSTACLE_RANGE_IN_CM / scale;
-
+		/* loop through all nodes */
 		for (Node node : areamap.getNodes()) {
 
-			if (node.getObstacleValue() == AreamapHandler.MAX_VALUE) {
+			/* find the obstacle nodes */
+			if (node.isObstacle()) {
 
-				for (int p = 1; p < range; p++) {
+				/* get the neighbors of the obstacle */
+				for (Node neighbor : node.getNeighborList()) {
 
-					/** WEST - EAST - NORTH - SOUTH */
+					/* check if neighbor is an obstacle */
+					if (!neighbor.isObstacle()) {
 
-					int i = node.getPosition().getX();
-					int j = node.getPosition().getY();
-
-					if (((i - p) > 0) && (areamap.get(i - p, j)
-							.getObstacleValue() != AreamapHandler.MAX_VALUE)) {
-						areamap.get(i - p, j).setObstacleValue(
-								AreamapHandler.POTENTIAL_AROUND_OBSTACLE_MAXIMUM
-										- p);
-					}
-
-					if (((i + p) < dimensions.getX()) && (areamap.get(i + p, j)
-							.getObstacleValue() != AreamapHandler.MAX_VALUE)) {
-						areamap.get(i + p, j).setObstacleValue(
-								AreamapHandler.POTENTIAL_AROUND_OBSTACLE_MAXIMUM
-										- p);
-					}
-
-					if (((j - p) > 0) && (areamap.get(i, j - p)
-							.getObstacleValue() != AreamapHandler.MAX_VALUE)) {
-						areamap.get(i, j - p).setObstacleValue(
-								AreamapHandler.POTENTIAL_AROUND_OBSTACLE_MAXIMUM
-										- p);
-					}
-
-					if (((j + p) < dimensions.getY()) && (areamap.get(i, j + p)
-							.getObstacleValue() != AreamapHandler.MAX_VALUE)) {
-						areamap.get(i, j + p).setObstacleValue(
-								AreamapHandler.POTENTIAL_AROUND_OBSTACLE_MAXIMUM
-										- p);
-					}
-					/*
-					 * In order to create some kind of rounded shape around the
-					 * obstacle, the corners are left out on the last loop of
-					 * the gradient generation.
-					 */
-					if (p < (range - 1)) {
-						/** NORTHWEST - NORTHEAST - SOUTHEAST - SOUTHWEST */
-						if ((((i - p) > 0) && ((j - p) > 0)) && (areamap
-								.get(i - p, j - p)
-								.getObstacleValue() != AreamapHandler.MAX_VALUE)) {
-							areamap.get(i - p, j - p).setObstacleValue(
-									AreamapHandler.POTENTIAL_AROUND_OBSTACLE_MAXIMUM
-											- p);
-						}
-						if ((((i + p) < dimensions.getX()) && ((j - p) > 0))
-								&& (areamap.get(i + p, j - p)
-										.getObstacleValue() != AreamapHandler.MAX_VALUE)) {
-							areamap.get(i + p, j - p).setObstacleValue(
-									AreamapHandler.POTENTIAL_AROUND_OBSTACLE_MAXIMUM
-											- p);
-						}
-						if ((((j + p) < dimensions.getY())
-								&& ((i + p) < dimensions.getX()))
-								&& (areamap.get(i + p, j + p)
-										.getObstacleValue() != AreamapHandler.MAX_VALUE)) {
-							areamap.get(i + p, j + p).setObstacleValue(
-									AreamapHandler.POTENTIAL_AROUND_OBSTACLE_MAXIMUM
-											- p);
-						}
-						if ((((j + p) < dimensions.getY()) && ((i - p) > 0))
-								&& (areamap.get(i - p, j + p)
-										.getObstacleValue() != AreamapHandler.MAX_VALUE)) {
-							areamap.get(i - p, j + p).setObstacleValue(
-									AreamapHandler.POTENTIAL_AROUND_OBSTACLE_MAXIMUM
-											- p);
-						}
+						/* set the potential gradient */
+						neighbor.setObstacleValue(
+								AreamapHandler.POTENTIAL_GRADIENT_MAX - 1);
 					}
 				}
 			}
@@ -158,23 +98,29 @@ public class ObstacleGenerator {
 		/* Create the door paths for every door */
 		for (Door door : cabin.getDoors()) {
 
-			/* get the borders of the door within the area map */
-			int entryMin = (door.getXPosition() / scale)
-					+ AreamapHandler.NARROWING_OF_DOOR_PATH_IN_PIXELS;
-			int entryMax = (door.getXPosition() + door.getWidth()) / scale
-					- AreamapHandler.NARROWING_OF_DOOR_PATH_IN_PIXELS;
+			/* do not make a hole for emergency exits */
+			if (door.getDoorOption() != DoorOption.EMERGENCY_EXIT) {
 
-			/* loop through all nodes */
-			for (Node node : areamap.getNodes()) {
+				/* get the borders of the door within the area map */
+				int entryMin = (door.getXPosition() / scale)
+						+ AreamapHandler.NARROWING_OF_DOOR_PATH_IN_PIXELS;
+				int entryMax = (door.getXPosition() + door.getWidth()) / scale
+						- AreamapHandler.NARROWING_OF_DOOR_PATH_IN_PIXELS;
 
-				/* get the x position of the node */
-				int x = node.getPosition().getX();
+				/* loop through all nodes */
+				for (Node node : areamap.getNodes()) {
 
-				/* check if the node is within the door area and no obstacle */
-				if (x >= entryMin && x <= entryMax && !node.isObstacle()) {
+					/* get the x position of the node */
+					int x = node.getPosition().getX();
 
-					/* create a potential hole wihtin the area map */
-					node.setObstacleValue(AreamapHandler.HOLE_VALUE);
+					/*
+					 * check if the node is within the door area and no obstacle
+					 */
+					if (x >= entryMin && x <= entryMax && !node.isObstacle()) {
+
+						/* create a potential hole within the area map */
+						node.setObstacleValue(AreamapHandler.HOLE_VALUE);
+					}
 				}
 			}
 		}
@@ -203,23 +149,7 @@ public class ObstacleGenerator {
 					if (y < 19 && y > 16) {
 						node.setObstacleValue(AreamapHandler.HOLE_VALUE);
 					}
-				} else if (set.isUseFoldableSeats()
-						&& !set.isBringYourOwnSeat()) {
-					// if (y < 21 && y > 16) {
-					// node.setObstacleValue(AreamapHandler.HOLE_VALUE);
-					// }
-					// if (j > 20) {
-					// if (i == 19) {
-					// node.setObstacleValue(900);
-					// }
 				}
-			} else {
-				// if (j > 20) {
-				// if (i == 5 || i == 10 || i == 15 || i == 31 || i == 26
-				// || i == 21) {
-				// node.setObstacleValue(900);
-				// }
-				// }
 			}
 		}
 	}
@@ -256,8 +186,9 @@ public class ObstacleGenerator {
 
 						Node node = areamap.get(k, l);
 
-						node.setObstacleValue(AreamapHandler.MAX_VALUE);
+						node.setObstacleValue(Integer.MAX_VALUE);
 						node.setProperty(Property.OBSTACLE, null);
+						node.setObstacleType(option);
 					}
 				}
 			}

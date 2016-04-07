@@ -5,7 +5,6 @@
  ***************************************************************************************/
 package net.bhl.cdt.paxelerate.model.astar;
 
-//import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -34,37 +33,33 @@ import net.bhl.cdt.paxelerate.util.math.Vector3D;
 public class Costmap {
 
 	private int[][] map;
-	private Vector dimensions = new Vector2D(0, 0),
-			startPoint = new Vector2D(0, 0), goalPoint = new Vector2D(0, 0);
+	private Vector size, startPoint = new Vector2D(0, 0),
+			goalPoint = new Vector2D(0, 0);
 
 	private ArrayList<Vector> visitedPoints = new ArrayList<Vector>(),
 			pointParkingHelper = new ArrayList<Vector>(),
 			onHoldList = new ArrayList<Vector>(),
 			pointParking = new ArrayList<Vector>();
 
-	private Areamap areamap;
 	private int lowestCost;
 
 	/**
 	 * 
-	 * @param dimension
-	 * @param areaMap
+	 * @param size
+	 * @param areamap
 	 */
-	public Costmap(Vector dimension, Vector start, Areamap areaMap, Agent agent,
+	public Costmap(Vector size, Vector start, Areamap areamap, Agent agent,
 			boolean OnlyFloodToSeat) {
-		this.dimensions = dimension;
+		this.size = size;
 		this.startPoint = start;
 
 		if (OnlyFloodToSeat) {
 			this.goalPoint = agent.getGoal();
 		} else {
-			this.goalPoint = new Vector2D(dimensions.getX() - 1,
-					dimensions.getY() / 2);
+			this.goalPoint = new Vector2D(size.getX() - 1, size.getY() / 2);
 		}
 
-		this.areamap = areaMap;
-
-		map = new int[dimensions.getX()][dimensions.getY()];
+		map = new int[size.getX()][size.getY()];
 
 		for (Node node : areamap.getNodes()) {
 
@@ -89,8 +84,8 @@ public class Costmap {
 	 * This method prints the cost map with values.
 	 */
 	public void printMapToConsole() {
-		for (int i = 0; i < dimensions.getX(); i++) {
-			for (int j = 0; j < dimensions.getY(); j++) {
+		for (int i = 0; i < size.getX(); i++) {
+			for (int j = 0; j < size.getY(); j++) {
 				if (map[i][j] == -1) {
 					System.out.print("X\t");
 				} else if (i == goalPoint.getX() && j == goalPoint.getY()) {
@@ -110,8 +105,8 @@ public class Costmap {
 	 */
 	public void printMapPathToConsole(Path path, Areamap areamap, Agent agent) {
 		System.out.println("This is the cost map:");
-		for (int i = 0; i < dimensions.getX(); i++) {
-			for (int j = 0; j < dimensions.getY(); j++) {
+		for (int i = 0; i < size.getX(); i++) {
+			for (int j = 0; j < size.getY(); j++) {
 				boolean foundNode = false;
 				// TODO: check if there is a node at a specific point.
 				if (path != null) {
@@ -137,8 +132,7 @@ public class Costmap {
 				} else if (i == startPoint.getX() && j == startPoint.getY()) {
 					System.out.print("S");
 				} else {
-					System.out.print("-");// getCostForCoordinates(i, j) +
-											// "\t");
+					System.out.print("-");
 				}
 			}
 			System.out.println();
@@ -250,8 +244,8 @@ public class Costmap {
 		for (Vector point : sortTheList(
 				getSurroundingPoints(middlePoint.getX(), middlePoint.getY()))) {
 			if (!(point.getX() < 0 || point.getY() < 0
-					|| point.getX() >= dimensions.getX()
-					|| point.getY() >= dimensions.getY())) {
+					|| point.getX() >= size.getX()
+					|| point.getY() >= size.getY())) {
 				if (!isObstacle(point)) {
 					if (!(checkForPoint(visitedPoints, point))) {
 						setCost(point, getCost(middlePoint) + getCost(point));
@@ -327,8 +321,8 @@ public class Costmap {
 
 	private int getCostForCoordinates(int xCord, int yCord) {
 		try {
-			if (xCord >= 0 && yCord >= 0 && xCord < dimensions.getX()
-					&& yCord < dimensions.getY()) {
+			if (xCord >= 0 && yCord >= 0 && xCord < size.getX()
+					&& yCord < size.getY()) {
 				return map[xCord][yCord];
 			}
 			return Integer.MAX_VALUE;
@@ -356,31 +350,28 @@ public class Costmap {
 	 * This method delivers all 8 surrounding points of a specific point in the
 	 * cost map. Starting in the north, all points are collected clockwise.
 	 * 
-	 * @param pointX
+	 * @param x
 	 *            x coordinate of the middle point
-	 * @param pointY
+	 * @param y
 	 *            y coordinate of the middle point
 	 * @return returns the point vector
 	 */
-	public ArrayList<Vector> getSurroundingPoints(int pointX, int pointY) {
-		ArrayList<Vector> surroundingPoints = new ArrayList<Vector>();
-		surroundingPoints.add(new Vector3D(pointX, pointY - 1,
-				getCostForCoordinates(pointX, pointY - 1)));
-		surroundingPoints.add(new Vector3D(pointX + 1, pointY - 1,
-				getCostForCoordinates(pointX + 1, pointY - 1)));
-		surroundingPoints.add(new Vector3D(pointX + 1, pointY,
-				getCostForCoordinates(pointX + 1, pointY)));
-		surroundingPoints.add(new Vector3D(pointX + 1, pointY + 1,
-				getCostForCoordinates(pointX + 1, pointY + 1)));
-		surroundingPoints.add(new Vector3D(pointX, pointY + 1,
-				getCostForCoordinates(pointX, pointY + 1)));
-		surroundingPoints.add(new Vector3D(pointX - 1, pointY + 1,
-				getCostForCoordinates(pointX - 1, pointY + 1)));
-		surroundingPoints.add(new Vector3D(pointX - 1, pointY,
-				getCostForCoordinates(pointX - 1, pointY)));
-		surroundingPoints.add(new Vector3D(pointX - 1, pointY - 1,
-				getCostForCoordinates(pointX - 1, pointY - 1)));
-		return surroundingPoints;
+	public ArrayList<Vector> getSurroundingPoints(int x, int y) {
+		ArrayList<Vector> neighbors = new ArrayList<Vector>();
+		neighbors.add(new Vector3D(x, y - 1, getCostForCoordinates(x, y - 1)));
+		neighbors.add(new Vector3D(x + 1, y - 1,
+				getCostForCoordinates(x + 1, y - 1)));
+		neighbors.add(new Vector3D(x + 1, y, getCostForCoordinates(x + 1, y)));
+		neighbors.add(new Vector3D(x + 1, y + 1,
+				getCostForCoordinates(x + 1, y + 1)));
+		neighbors.add(new Vector3D(x, y + 1, getCostForCoordinates(x, y + 1)));
+		neighbors.add(new Vector3D(x - 1, y + 1,
+				getCostForCoordinates(x - 1, y + 1)));
+		neighbors.add(new Vector3D(x - 1, y, getCostForCoordinates(x - 1, y)));
+		neighbors.add(new Vector3D(x - 1, y - 1,
+				getCostForCoordinates(x - 1, y - 1)));
+
+		return neighbors;
 	}
 
 	private ArrayList<Vector> getPointParkingHelper() {

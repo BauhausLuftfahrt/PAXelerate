@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.ListIterator;
 
 import net.bhl.cdt.paxelerate.model.CabinFactory;
+import net.bhl.cdt.paxelerate.model.ObjectOption;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
@@ -24,16 +25,23 @@ public class Node implements Comparable<Node> {
 
 	private Node north, northEast, east, southEast, south, southWest, west,
 			northWest, previousNode;
-
 	private double distanceFromStart;
 	private int costFromStart, numberOfOccupations = 0, numberOfInterrupts = 0,
 			obstacleValue = 0;
-
 	private Property property;
 	private boolean hidden = false;
 	private Passenger linkedPassenger;
 	private ArrayList<NodeProperty> startList = new ArrayList<NodeProperty>();
 	private Vector position = new Vector2D(0, 0);
+	private ObjectOption obstacleType;
+
+	public ObjectOption getObstacleType() {
+		return obstacleType;
+	}
+
+	public void setObstacleType(ObjectOption obstacleType) {
+		this.obstacleType = obstacleType;
+	}
 
 	public int getObstacleValue() {
 		return obstacleValue;

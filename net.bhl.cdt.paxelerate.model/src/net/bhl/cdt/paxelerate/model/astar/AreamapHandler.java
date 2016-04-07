@@ -21,9 +21,9 @@ public class AreamapHandler {
 
 	private Areamap areamap;
 
-	public static final int MAX_VALUE = 100000, BASIC_VALUE = 3,
-			OBSTACLE_RANGE_IN_CM = 20, POTENTIAL_AROUND_OBSTACLE_MAXIMUM = 100,
-			HOLE_VALUE = 1, NARROWING_OF_DOOR_PATH_IN_PIXELS = 2;
+	public static final int DEFAULT_VALUE = 3, OBSTACLE_RANGE_IN_CM = 20,
+			POTENTIAL_GRADIENT_MAX = 100, HOLE_VALUE = 1,
+			NARROWING_OF_DOOR_PATH_IN_PIXELS = 2;
 
 	/**
 	 * This is the area map constructor.
@@ -38,11 +38,12 @@ public class AreamapHandler {
 		/* initialize an area map */
 		areamap = new Areamap(dimensions);
 
+		/* define the neighboring nodes of each node */
+		defineNeighboringNodes();
+
 		/* apply obstacle values to the area map */
 		areamap = new ObstacleGenerator(areamap, cabin).returnMap();
 
-		/* define the neighboring nodes of each node */
-		defineNeighboringNodes();
 	}
 
 	/**

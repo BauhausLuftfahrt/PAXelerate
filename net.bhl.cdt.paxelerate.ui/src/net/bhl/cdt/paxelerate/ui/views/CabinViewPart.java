@@ -458,13 +458,13 @@ public class CabinViewPart extends ViewPart {
 				if (map[i][j] <= AreamapHandler.HOLE_VALUE) {
 					gc.setBackground(ColorHelper.GREEN);
 
-				} else if (map[i][j] <= AreamapHandler.BASIC_VALUE) {
+				} else if (map[i][j] <= AreamapHandler.DEFAULT_VALUE) {
 					gc.setBackground(ColorHelper.GREEN_LIGHT);
 
-				} else if (map[i][j] < AreamapHandler.POTENTIAL_AROUND_OBSTACLE_MAXIMUM) {
+				} else if (map[i][j] < AreamapHandler.POTENTIAL_GRADIENT_MAX) {
 					gc.setBackground(ColorHelper.YELLOW);
 
-				} else if (map[i][j] == AreamapHandler.POTENTIAL_AROUND_OBSTACLE_MAXIMUM) {
+				} else if (map[i][j] == AreamapHandler.POTENTIAL_GRADIENT_MAX) {
 					gc.setBackground(ColorHelper.ORANGE);
 
 				} else {
