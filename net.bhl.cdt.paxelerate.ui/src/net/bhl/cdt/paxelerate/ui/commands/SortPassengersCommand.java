@@ -9,9 +9,13 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.jface.dialogs.IMessageProvider;
 
 import net.bhl.cdt.commands.CDTCommand;
+import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.Door;
 import net.bhl.cdt.paxelerate.model.Passenger;
+import net.bhl.cdt.paxelerate.model.Row;
+import net.bhl.cdt.paxelerate.model.Seat;
+import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.agent.AgentFunctions;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
@@ -89,17 +93,22 @@ public class SortPassengersCommand extends CDTCommand {
 		 */
 
 		int numberOfLoops = cabin.getPassengers().size();
+		
+		int numberOfRows = 0;
+		for (TravelClass travelclass : cabin.getClasses()) {
+			numberOfRows = numberOfRows + ModelHelper.getChildrenByClass(travelclass, Row.class).size();
+		}
+		
+		
 
 		switch (value) {
 
 		// Random
 		case 0:
-
 			for (int i = 0; i < paxList.size(); i++) {
 				Passenger pax = paxList.get(i);
 				paxList.move(RandomHelper.randomValue(0, paxList.size()), pax);
 			}
-
 			break;
 
 		// Rear to front (RTF)
@@ -158,6 +167,31 @@ public class SortPassengersCommand extends CDTCommand {
 
 		// Window to aisle and front to rear (WTA + FTR)
 		case 5:
+			for (int j = 0; j < numberOfLoops; j++) {
+				for (int i = 0; i < paxList.size() - 1; i++) {
+					Passenger thisPax = paxList.get(i);
+					Passenger otherPax = paxList.get(i + 1);
+					if (AgentFunctions.otherSeatCloserToAisle(thisPax.getSeat(), otherPax.getSeat())) {
+						if (thisPax.getSeat().getXPosition() > otherPax.getSeat().getXPosition()) {
+							paxList.move(i, otherPax);
+						}
+					}
+				}
+			}
+			break;
+		
+		// Group/block boarding: create blocks with 10 rows each and distribute the passengers randomly
+		case 6:
+			// TODO
+			break;
+		
+		// Steffen method: window every second row left and right
+		case 7:
+			// TODO
+			break;
+		
+		// Milne/Kelly method: based on number of carried bags
+		case 8:
 			// TODO
 			break;
 
