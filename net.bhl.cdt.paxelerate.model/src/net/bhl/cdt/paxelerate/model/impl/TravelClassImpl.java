@@ -219,7 +219,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int LOAD_FACTOR_EDEFAULT = 0;
+	protected static final double LOAD_FACTOR_EDEFAULT = 0.0;
 
 	/**
 	 * The cached value of the '{@link #getLoadFactor() <em>Load Factor</em>}' attribute.
@@ -229,7 +229,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 * @ordered
 	 */
-	protected int loadFactor = LOAD_FACTOR_EDEFAULT;
+	protected double loadFactor = LOAD_FACTOR_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getTravelOption() <em>Travel Option</em>}' attribute.
@@ -440,7 +440,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getLoadFactor() {
+	public double getLoadFactor() {
 		return loadFactor;
 	}
 
@@ -449,8 +449,8 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLoadFactor(int newLoadFactor) {
-		int oldLoadFactor = loadFactor;
+	public void setLoadFactor(double newLoadFactor) {
+		double oldLoadFactor = loadFactor;
 		loadFactor = newLoadFactor;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.TRAVEL_CLASS__LOAD_FACTOR, oldLoadFactor, loadFactor));
@@ -605,7 +605,7 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 				setRowStructure((String)newValue);
 				return;
 			case CabinPackage.TRAVEL_CLASS__LOAD_FACTOR:
-				setLoadFactor((Integer)newValue);
+				setLoadFactor((Double)newValue);
 				return;
 			case CabinPackage.TRAVEL_CLASS__TRAVEL_OPTION:
 				setTravelOption((TravelOption)newValue);

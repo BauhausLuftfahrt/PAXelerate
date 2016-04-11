@@ -73,7 +73,7 @@
         defaultValueLiteral="Placeholder String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rowStructure" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="3-3"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="loadFactor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="loadFactor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         defaultValueLiteral="0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="travelOption" lowerBound="1"
         eType="#//TravelOption" defaultValueLiteral="EconomyClass"/>

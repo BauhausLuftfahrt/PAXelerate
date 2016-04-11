@@ -177,7 +177,7 @@ public class DrawCabinCommand extends CDTCommand {
 				travelclass.setPassengers(numberOfPax);
 			} else {
 
-				int loadFactor = (int) (travelclass.getPassengers() * 100.0 / travelclass.getAvailableSeats());
+				double loadFactor = (double) Math.round(travelclass.getPassengers() * 100.0 / travelclass.getAvailableSeats());
 				travelclass.setLoadFactor(loadFactor);
 			}
 		}

@@ -276,12 +276,12 @@ public interface TravelClass extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Load Factor</em>' attribute.
-	 * @see #setLoadFactor(int)
+	 * @see #setLoadFactor(double)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getTravelClass_LoadFactor()
 	 * @model default="0"
 	 * @generated
 	 */
-	int getLoadFactor();
+	double getLoadFactor();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.TravelClass#getLoadFactor <em>Load Factor</em>}' attribute.
@@ -291,7 +291,7 @@ public interface TravelClass extends EObject {
 	 * @see #getLoadFactor()
 	 * @generated
 	 */
-	void setLoadFactor(int value);
+	void setLoadFactor(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Travel Option</b></em>' attribute.
