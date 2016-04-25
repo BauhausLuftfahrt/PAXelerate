@@ -12,11 +12,19 @@ import net.bhl.cdt.paxelerate.model.Passenger;
 
 
 /**
- * This class is a helper class for the A* Algorithm
- * @author marc.engelmann
+ * This class is a helper class for the A* Algorithm.
  *
+ * @author marc.engelmann
  */
 public class AStarHelper {
+	
+	/**
+	 * Lowest value in hash map.
+	 *
+	 * @param pax the pax
+	 * @param hashmap the hashmap
+	 * @return true, if successful
+	 */
 	public static boolean lowestValueInHashMap(Passenger pax,
 			HashMap<Passenger, Integer> hashmap) {
 		int lowestValue = Integer.MAX_VALUE;
@@ -36,10 +44,11 @@ public class AStarHelper {
 	}
 
 	/**
-	 * 
-	 * @param pax
-	 * @param list
-	 * @return
+	 * Passenger already in list.
+	 *
+	 * @param pax the pax
+	 * @param list the list
+	 * @return true, if successful
 	 */
 	public synchronized static boolean PassengerAlreadyInList(Passenger pax,
 			ArrayList<Passenger> list) {

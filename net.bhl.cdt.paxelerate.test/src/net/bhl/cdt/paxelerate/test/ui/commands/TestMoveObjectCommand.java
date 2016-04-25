@@ -26,9 +26,17 @@ import net.bhl.cdt.paxelerate.model.util.CabinGenerator;
 
 public class TestMoveObjectCommand {
 
+	/** The cabin. */
 	private static Cabin cabin;
+	
+	/** The constructor. */
 	private static CabinGenerator constructor;
 
+	/**
+	 * Sets the up before class.
+	 *
+	 * @throws Exception the exception
+	 */
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 
@@ -60,6 +68,9 @@ public class TestMoveObjectCommand {
 		/* ------- Cabin Construction ends here! ----------- */
 	}
 
+	/**
+	 * Mod x coordinate.
+	 */
 	@Test
 	public void modXCoordinate() {
 		fail("Not yet implemented");

@@ -1,19 +1,17 @@
 package net.bhl.cdt.paxelerate.util.math;
 
 /**
- * 
- * @author marc.engelmann
+ * The Class MathHelper.
  *
+ * @author marc.engelmann
  */
 public abstract class MathHelper {
 
 	/**
 	 * This method calculates the Pythagoras distance between two vectors.
-	 * 
-	 * @param node1
-	 *            the first node
-	 * @param node2
-	 *            the second node
+	 *
+	 * @param vector1 the vector1
+	 * @param vector2 the vector2
 	 * @return the distance between the nodes
 	 */
 	public static double distance(Vector vector1, Vector vector2) {

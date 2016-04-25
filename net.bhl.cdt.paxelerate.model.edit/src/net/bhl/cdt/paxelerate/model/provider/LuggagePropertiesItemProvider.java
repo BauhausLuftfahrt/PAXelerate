@@ -39,11 +39,14 @@ public class LuggagePropertiesItemProvider
 		ITreeItemContentProvider,
 		IItemLabelProvider,
 		IItemPropertySource {
+	
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param adapterFactory the adapter factory
+	 * @generated 
 	 */
 	public LuggagePropertiesItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
@@ -53,7 +56,10 @@ public class LuggagePropertiesItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @return the property descriptors
+	 * @generated 
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
@@ -80,7 +86,9 @@ public class LuggagePropertiesItemProvider
 	 * This adds a property descriptor for the Luggage Stowing Distance From Seat Mean feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addLuggageStowingDistanceFromSeatMeanPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -102,7 +110,9 @@ public class LuggagePropertiesItemProvider
 	 * This adds a property descriptor for the Luggage Stowing Distance From Seat Deviation feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addLuggageStowingDistanceFromSeatDeviationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -124,7 +134,9 @@ public class LuggagePropertiesItemProvider
 	 * This adds a property descriptor for the Percentage Of Passengers With No Luggage feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPercentageOfPassengersWithNoLuggagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -146,7 +158,9 @@ public class LuggagePropertiesItemProvider
 	 * This adds a property descriptor for the Percentage Of Passengers With Small Luggage feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPercentageOfPassengersWithSmallLuggagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -168,7 +182,9 @@ public class LuggagePropertiesItemProvider
 	 * This adds a property descriptor for the Percentage Of Passengers With Medium Luggage feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPercentageOfPassengersWithMediumLuggagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -190,7 +206,9 @@ public class LuggagePropertiesItemProvider
 	 * This adds a property descriptor for the Percentage Of Passengers With Big Luggage feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPercentageOfPassengersWithBigLuggagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -212,7 +230,9 @@ public class LuggagePropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Small Luggage Stow Time Mean feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPassengerSmallLuggageStowTimeMeanPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -234,7 +254,9 @@ public class LuggagePropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Small Luggage Stow Time Deviation feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPassengerSmallLuggageStowTimeDeviationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -256,7 +278,9 @@ public class LuggagePropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Medium Luggage Stow Time Mean feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPassengerMediumLuggageStowTimeMeanPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -278,7 +302,9 @@ public class LuggagePropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Medium Luggage Stow Time Deviation feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPassengerMediumLuggageStowTimeDeviationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -300,7 +326,9 @@ public class LuggagePropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Big Luggage Stow Time Mean feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPassengerBigLuggageStowTimeMeanPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -322,7 +350,9 @@ public class LuggagePropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Big Luggage Stow Time Deviation feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPassengerBigLuggageStowTimeDeviationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -344,7 +374,10 @@ public class LuggagePropertiesItemProvider
 	 * This returns LuggageProperties.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @return the image
+	 * @generated 
 	 */
 	@Override
 	public Object getImage(Object object) {
@@ -355,6 +388,9 @@ public class LuggagePropertiesItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
+	 * @param object the object
+	 * @return the text
 	 * @generated NOT
 	 */
 	@Override
@@ -369,7 +405,9 @@ public class LuggagePropertiesItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param notification the notification
+	 * @generated 
 	 */
 	@Override
 	public void notifyChanged(Notification notification) {
@@ -399,7 +437,10 @@ public class LuggagePropertiesItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param newChildDescriptors the new child descriptors
+	 * @param object the object
+	 * @generated 
 	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -410,7 +451,9 @@ public class LuggagePropertiesItemProvider
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @return the resource locator
+	 * @generated 
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {

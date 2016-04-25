@@ -11,12 +11,21 @@ import org.eclipse.emf.ecp.explorereditorbridge.internal.EditorModelElementOpene
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.ui.commands.DrawCabinCommand;
 
+/**
+ * The Class CabinOpener.
+ */
 public class CabinOpener extends EditorModelElementOpener {
 
+	/**
+	 * Instantiates a new cabin opener.
+	 */
 	public CabinOpener() {
 		// Auto-generated constructor stub
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.emf.ecp.explorereditorbridge.internal.EditorModelElementOpener#openModelElement(java.lang.Object, org.eclipse.emf.ecp.core.ECPProject)
+	 */
 	@SuppressWarnings("restriction")
 	@Override
 	public void openModelElement(Object element, ECPProject ecpProject) {

@@ -7,8 +7,14 @@
 
 package net.bhl.cdt.paxelerate.core.node;
 
+/**
+ * The Class ObstacleNode.
+ */
 public class ObstacleNode extends Node {
 
+	/**
+	 * Instantiates a new obstacle node.
+	 */
 	public ObstacleNode() {
 		// Auto-generated constructor stub
 	}

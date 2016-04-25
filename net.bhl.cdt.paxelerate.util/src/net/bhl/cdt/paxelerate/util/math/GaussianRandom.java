@@ -7,18 +7,19 @@ package net.bhl.cdt.paxelerate.util.math;
 
 import java.util.Random;
 
+/**
+ * The Class GaussianRandom.
+ */
 public class GaussianRandom {
+	
 	/**
 	 * Use this function to generate a value according to gaussian normal
 	 * distribution.
-	 * 
-	 * @param average
-	 *            is the average value of the distribution
-	 * @param gauss
-	 *            is the option you want to choose.
-	 * @param deviation
-	 *            is the deviation at the chosen option.
-	 * @return
+	 *
+	 * @param average            is the average value of the distribution
+	 * @param gauss            is the option you want to choose.
+	 * @param deviation            is the deviation at the chosen option.
+	 * @return the double
 	 */
 	public static double gaussianRandom(double average, GaussOptions gauss, double deviation) {
 		Random rand = new Random();

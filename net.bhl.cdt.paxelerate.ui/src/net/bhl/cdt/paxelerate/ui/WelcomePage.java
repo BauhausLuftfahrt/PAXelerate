@@ -33,6 +33,9 @@ import org.eclipse.ui.part.IntroPart;
  */
 public class WelcomePage extends IntroPart implements IIntroPart {
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.ui.part.IntroPart#createPartControl(org.eclipse.swt.widgets.Composite)
+	 */
 	@Override
 	public void createPartControl(Composite parent) {
 		Composite outerContainer = new Composite(parent, SWT.NONE);
@@ -113,18 +116,27 @@ public class WelcomePage extends IntroPart implements IIntroPart {
 		group2.pack();			
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.ui.part.IntroPart#setFocus()
+	 */
 	@Override
 	public void setFocus() {
 		// Auto-generated method stub
 
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.ui.intro.IIntroPart#standbyStateChanged(boolean)
+	 */
 	@Override
 	public void standbyStateChanged(boolean standby) {
 		// Auto-generated method stub
 
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.ui.part.IntroPart#dispose()
+	 */
 	@Override
 	public void dispose() {
 		super.dispose();

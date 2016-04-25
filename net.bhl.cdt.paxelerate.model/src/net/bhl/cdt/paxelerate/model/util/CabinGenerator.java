@@ -33,24 +33,32 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 /**
  * This class contains all constructors for the different elements of the cabin.
  * You can construct every single part of cabin on its own.
- * 
- * @see GenerateCabinCommand.java for implementation example.
- * 
- * @author marc.engelmann
  *
+ * @author marc.engelmann
+ * @see GenerateCabinCommand.java for implementation example.
  */
 public class CabinGenerator {
+	
+	/** The cabin. */
 	private Cabin cabin;
 
+	/** The number of aisles. */
 	private int globalSeatPositionY, globalSeatPositionX, seats, abreast,
 			seatPitch, seatHelper, passengers, numberOfAisles;
 
+	/** The seat dimensions. */
 	private Vector seatDimensions = new Vector2D(0, 0);
 
+	/** The tc. */
 	private TravelClass tc;
+	
+	/** The row parts int. */
 	private ArrayList<Integer> rowPartsInt;
 
+	/** The do it once. */
 	boolean doItOnce = true;
+	
+	/** The seat structure. */
 	private String seatStructure = "1-1";
 
 	/**
@@ -169,10 +177,10 @@ public class CabinGenerator {
 	}
 
 	/**
-	 * This method creates the physical objects except for seats!
-	 * 
-	 * @param physicalObjectClass
-	 * @param xDimension
+	 * This method creates the physical objects except for seats!.
+	 *
+	 * @param option the option
+	 * @param xDimension the x dimension
 	 */
 	public void createPhysicalObject(ObjectOption option, int xDimension) {
 		int currentPosition = 0;
@@ -238,11 +246,8 @@ public class CabinGenerator {
 
 	/**
 	 * This method creates a new seat.
-	 * 
-	 * @param row
-	 *            is the row in which the seat should be generated
-	 * @param j
-	 *            is the number of the seat in the row
+	 *
+	 * @param row            is the row in which the seat should be generated
 	 */
 	public void createSeat(Row row) {
 
@@ -268,11 +273,8 @@ public class CabinGenerator {
 
 	/**
 	 * This method creates a class and the subclasses (seats, rows, etc.).
-	 * 
-	 * @param travelOption
-	 *            is the subclass
-	 * @param <T>
-	 *            is a helper class
+	 *
+	 * @param travelOption            is the subclass
 	 */
 	public void createClass(TravelOption travelOption) {
 
@@ -375,15 +377,11 @@ public class CabinGenerator {
 
 	/**
 	 * This function creates a door.
-	 * 
-	 * @param typeDoor
-	 *            is the type of the door
-	 * @param symmetrical
-	 *            describes if the door will be generated on both sides
-	 * @param id
-	 *            is the id of the door
-	 * @param yPosition
-	 *            set it to -1 to ignore value, only important for emergency
+	 *
+	 * @param option the option
+	 * @param symmetrical            describes if the door will be generated on both sides
+	 * @param id            is the id of the door
+	 * @param yPosition            set it to -1 to ignore value, only important for emergency
 	 *            exit.
 	 */
 	public void createDoor(DoorOption option, boolean symmetrical, int id,

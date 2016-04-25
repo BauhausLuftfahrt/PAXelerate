@@ -7,12 +7,18 @@ package net.bhl.cdt.paxelerate.model.observer;
 
 
 /**
- * TODO: Description
+ * TODO: Description.
  */
 
 public abstract class Observer {
 
+	/** The observed subject. */
 	Subject observedSubject;
 
+	/**
+	 * Update.
+	 *
+	 * @param i the i
+	 */
 	public abstract void update(int i);
 }

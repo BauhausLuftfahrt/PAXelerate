@@ -17,21 +17,19 @@ import net.bhl.cdt.paxelerate.model.util.EMFModelLoader;
 import net.bhl.cdt.paxelerate.ui.commands.DrawCabinCommand;
 
 /**
- * 
- * @author marc.engelmann
+ * The Class DrawCabinHandler.
  *
+ * @author marc.engelmann
  */
 
 public class DrawCabinHandler extends AbstractHandler {
 
 	/**
 	 * Get selected Element.
-	 * 
-	 * @param event
-	 *            Selected Element
-	 * @throws ExecutionException
-	 *             Exception
+	 *
+	 * @param event            Selected Element
 	 * @return null
+	 * @throws ExecutionException             Exception
 	 */
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {

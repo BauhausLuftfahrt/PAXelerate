@@ -11,21 +11,26 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
 /**
- * The activator class controls the plug-in life cycle
+ * The activator class controls the plug-in life cycle.
  */
 public class Activator extends AbstractUIPlugin {
 
+	/** The Constant PLUGIN_ID. */
 	// The plug-in ID
 	public static final String PLUGIN_ID = "net.bhl.cdt.paxelerate.ui"; //$NON-NLS-1$
 
+	/** The cabin console. */
 	private MessageConsole cabinConsole;
+	
+	/** The cabin message stream. */
 	private MessageConsoleStream cabinMessageStream;
 
+	/** The plugin. */
 	// The shared instance
 	private static Activator plugin;
 
 	/**
-	 * The constructor
+	 * The constructor.
 	 */
 	public Activator() {
 	}
@@ -53,7 +58,7 @@ public class Activator extends AbstractUIPlugin {
 	}
 
 	/**
-	 * Returns the shared instance
+	 * Returns the shared instance.
 	 *
 	 * @return the shared instance
 	 */
@@ -61,10 +66,20 @@ public class Activator extends AbstractUIPlugin {
 		return plugin;
 	}
 
+	/**
+	 * Gets the message console stream.
+	 *
+	 * @return the message console stream
+	 */
 	public MessageConsoleStream getMessageConsoleStream() {
 		return cabinMessageStream;
 	}
 
+	/**
+	 * Gets the message console.
+	 *
+	 * @return the message console
+	 */
 	public MessageConsole getMessageConsole() {
 		return cabinConsole;
 	}

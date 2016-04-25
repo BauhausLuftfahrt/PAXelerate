@@ -15,10 +15,9 @@ import net.bhl.cdt.paxelerate.model.Stairway;
 import net.bhl.cdt.paxelerate.model.Stowage;
 
 /**
- * This class is a helper class for
- * 
- * @author marc.engelmann
+ * This class is a helper class for.
  *
+ * @author marc.engelmann
  */
 
 public class POHelper {

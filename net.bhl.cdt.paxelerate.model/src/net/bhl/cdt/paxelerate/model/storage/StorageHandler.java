@@ -8,23 +8,38 @@ package net.bhl.cdt.paxelerate.model.storage;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Sex;
 
+/**
+ * The Class StorageHandler.
+ */
 public class StorageHandler {
 
+	/** The width store. */
 	GaussianStorage weightStore = new GaussianStorage(StoreType.WEIGHT),
 			heightStore = new GaussianStorage(StoreType.HEIGHT),
 			depthStore = new GaussianStorage(StoreType.DEPTH),
 			widthStore = new GaussianStorage(StoreType.WIDTH);
 
+	/** The age store. */
 	AgeStorage ageStore = new AgeStorage();
 
+	/** The luggage store. */
 	LuggageStorage luggageStore = new LuggageStorage();
 
+	/** The number of passengers. */
 	int[] numberOfPassengers = { 0, 0, 0 }; // total, male, female
 
+	/**
+	 * Instantiates a new storage handler.
+	 */
 	public StorageHandler() {
 
 	}
 
+	/**
+	 * Adds the passenger.
+	 *
+	 * @param pax the pax
+	 */
 	public void addPassenger(Passenger pax) {
 
 		weightStore.addValue(pax.getSex(), pax.getWeight());
@@ -48,6 +63,12 @@ public class StorageHandler {
 		}
 	}
 
+	/**
+	 * Gets the store.
+	 *
+	 * @param type the type
+	 * @return the store
+	 */
 	public GaussianStorage getStore(StoreType type) {
 		switch (type) {
 		case WEIGHT: {
@@ -67,10 +88,21 @@ public class StorageHandler {
 		}
 	}
 
+	/**
+	 * Gets the luggage store.
+	 *
+	 * @return the luggage store
+	 */
 	public LuggageStorage getLuggageStore() {
 		return luggageStore;
 	}
 
+	/**
+	 * Gets the percentage of passengers.
+	 *
+	 * @param sex the sex
+	 * @return the percentage of passengers
+	 */
 	public double getPercentageOfPassengers(Sex sex) {
 		if (sex == Sex.MALE) {
 			return (double) numberOfPassengers[1]
@@ -81,14 +113,35 @@ public class StorageHandler {
 		}
 	}
 
+	/**
+	 * Gets the age store.
+	 *
+	 * @return the age store
+	 */
 	public AgeStorage getAgeStore() {
 		return ageStore;
 	}
 
+	/**
+	 * The Enum StoreType.
+	 */
 	public enum StoreType {
-		WEIGHT, HEIGHT, WIDTH, DEPTH, AGE
+		
+		/** The weight. */
+		WEIGHT, 
+ /** The height. */
+ HEIGHT, 
+ /** The width. */
+ WIDTH, 
+ /** The depth. */
+ DEPTH, 
+ /** The age. */
+ AGE
 	}
 
+	/**
+	 * Clear.
+	 */
 	public void clear() {
 		weightStore = new GaussianStorage(StoreType.WEIGHT);
 		heightStore = new GaussianStorage(StoreType.HEIGHT);

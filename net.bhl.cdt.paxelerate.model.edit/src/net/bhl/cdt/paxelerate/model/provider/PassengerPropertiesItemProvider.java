@@ -39,11 +39,14 @@ public class PassengerPropertiesItemProvider
 		ITreeItemContentProvider,
 		IItemLabelProvider,
 		IItemPropertySource {
+	
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param adapterFactory the adapter factory
+	 * @generated 
 	 */
 	public PassengerPropertiesItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
@@ -53,7 +56,10 @@ public class PassengerPropertiesItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @return the property descriptors
+	 * @generated 
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
@@ -85,7 +91,9 @@ public class PassengerPropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Width Mean Male feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPassengerWidthMeanMalePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -107,7 +115,9 @@ public class PassengerPropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Width Deviation Male feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPassengerWidthDeviationMalePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -129,7 +139,9 @@ public class PassengerPropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Weight Mean Male feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPassengerWeightMeanMalePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -151,7 +163,9 @@ public class PassengerPropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Weight Deviation Male feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPassengerWeightDeviationMalePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -173,7 +187,9 @@ public class PassengerPropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Height Mean Male feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPassengerHeightMeanMalePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -195,7 +211,9 @@ public class PassengerPropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Height Deviation Male feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPassengerHeightDeviationMalePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -217,7 +235,9 @@ public class PassengerPropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Depth Mean Male feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPassengerDepthMeanMalePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -239,7 +259,9 @@ public class PassengerPropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Depth Deviation Male feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPassengerDepthDeviationMalePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -261,7 +283,9 @@ public class PassengerPropertiesItemProvider
 	 * This adds a property descriptor for the Percentage Of Women feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPercentageOfWomenPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -283,7 +307,9 @@ public class PassengerPropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Width Mean Female feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPassengerWidthMeanFemalePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -305,7 +331,9 @@ public class PassengerPropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Width Deviation Female feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPassengerWidthDeviationFemalePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -327,7 +355,9 @@ public class PassengerPropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Weight Mean Female feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPassengerWeightMeanFemalePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -349,7 +379,9 @@ public class PassengerPropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Weight Deviation Female feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPassengerWeightDeviationFemalePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -371,7 +403,9 @@ public class PassengerPropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Height Mean Female feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPassengerHeightMeanFemalePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -393,7 +427,9 @@ public class PassengerPropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Height Deviation Female feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPassengerHeightDeviationFemalePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -415,7 +451,9 @@ public class PassengerPropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Depth Mean Female feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPassengerDepthMeanFemalePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -437,7 +475,9 @@ public class PassengerPropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Depth Deviation Female feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPassengerDepthDeviationFemalePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -459,7 +499,10 @@ public class PassengerPropertiesItemProvider
 	 * This returns PassengerProperties.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @return the image
+	 * @generated 
 	 */
 	@Override
 	public Object getImage(Object object) {
@@ -470,6 +513,9 @@ public class PassengerPropertiesItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
+	 * @param object the object
+	 * @return the text
 	 * @generated NOT
 	 */
 	@Override
@@ -484,7 +530,9 @@ public class PassengerPropertiesItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param notification the notification
+	 * @generated 
 	 */
 	@Override
 	public void notifyChanged(Notification notification) {
@@ -519,7 +567,10 @@ public class PassengerPropertiesItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param newChildDescriptors the new child descriptors
+	 * @param object the object
+	 * @generated 
 	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -530,7 +581,9 @@ public class PassengerPropertiesItemProvider
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @return the resource locator
+	 * @generated 
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {

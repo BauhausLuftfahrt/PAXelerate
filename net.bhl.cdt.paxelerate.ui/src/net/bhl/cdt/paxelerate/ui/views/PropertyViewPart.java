@@ -41,19 +41,31 @@ import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
 public class PropertyViewPart extends ViewPart {
 
+	/** The names. */
 	private String[] names = { "M,", "F" };
+	
+	/** The parent. */
 	private Composite parent;
+	
+	/** The canvas. */
 	private Canvas canvas;
+	
+	/** The cabin. */
 	private Cabin cabin;
 
+	/** The property store. */
 	private StorageHandler propertyStore = new StorageHandler();
 
+	/** The Constant HEADER_SPACE. */
 	private final static int BAR_HEIGHT = 15, DEVIATION_BAR_HEIGHT = 2, ITEM_SPACE = 30, HEADER_SPACE = 20;
 
+	/** The Constant AVG_VALUE. */
 	private static final double AVG_VALUE = 0.25;
 
+	/** The pos. */
 	private int pos = 0;
 
+	/** The dim. */
 	private Vector dim = new Vector2D(0, 0);
 
 	/**
@@ -184,11 +196,24 @@ public class PropertyViewPart extends ViewPart {
 		}
 	}
 
+	/**
+	 * Adds the headline.
+	 *
+	 * @param e the e
+	 * @param headline the headline
+	 */
 	private void addHeadline(PaintEvent e, String headline) {
 		e.gc.drawText(headline, 5, pos, true);
 		pos += HEADER_SPACE;
 	}
 
+	/**
+	 * Creates the function block.
+	 *
+	 * @param headline the headline
+	 * @param e the e
+	 * @param store the store
+	 */
 	public void createFunctionBlock(String headline, PaintEvent e, AgeStorage store) {
 
 		addHeadline(e, headline);
@@ -213,6 +238,16 @@ public class PropertyViewPart extends ViewPart {
 		addLabel(e, store.getAverageAge(null), (store.getAverageAge(null) - min) / steps, LabelClass.VALUE, -10);
 	}
 
+	/**
+	 * Draw function.
+	 *
+	 * @param e the e
+	 * @param store the store
+	 * @param sex the sex
+	 * @param steps the steps
+	 * @param min the min
+	 * @param max the max
+	 */
 	private void drawFunction(PaintEvent e, AgeStorage store, Sex sex, int steps, int min, int max) {
 
 		int maximum = store.getMaximumAmount(sex), i = 0, x1 = 0, y1 = pos, x2 = 0, y2 = 0;
@@ -243,6 +278,13 @@ public class PropertyViewPart extends ViewPart {
 		e.gc.setForeground(ColorHelper.BLACK);
 	}
 
+	/**
+	 * Creates the deviation block.
+	 *
+	 * @param headline the headline
+	 * @param e the e
+	 * @param store the store
+	 */
 	private void createDeviationBlock(String headline, PaintEvent e, GaussianStorage store) {
 
 		addHeadline(e, headline);
@@ -270,6 +312,15 @@ public class PropertyViewPart extends ViewPart {
 				store.getMinimum(Sex.FEMALE), store.getMaximum(Sex.FEMALE));
 	}
 
+	/**
+	 * Adds the label.
+	 *
+	 * @param e the e
+	 * @param labelValue the label value
+	 * @param relativePosition the relative position
+	 * @param labelClass the label class
+	 * @param offset the offset
+	 */
 	private void addLabel(PaintEvent e, double labelValue, double relativePosition, LabelClass labelClass, int offset) {
 
 		e.gc.setFont(FontHelper.PARAGRAPH);
@@ -291,6 +342,15 @@ public class PropertyViewPart extends ViewPart {
 		e.gc.setFont(FontHelper.HEADING3);
 	}
 
+	/**
+	 * Creates the deviation line.
+	 *
+	 * @param e the e
+	 * @param leftFactor the left factor
+	 * @param rightFactor the right factor
+	 * @param rightLabel the right label
+	 * @param leftLabel the left label
+	 */
 	private void createDeviationLine(PaintEvent e, double leftFactor, double rightFactor, double rightLabel,
 			double leftLabel) {
 
@@ -311,12 +371,20 @@ public class PropertyViewPart extends ViewPart {
 		e.gc.setForeground(ColorHelper.BLACK);
 	}
 
+	/**
+	 * Update ui.
+	 *
+	 * @param cabin the cabin
+	 */
 	public void updateUI(Cabin cabin) {
 		this.cabin = cabin;
 		loopPassengers();
 		doTheDraw();
 	}
 
+	/**
+	 * Loop passengers.
+	 */
 	private void loopPassengers() {
 
 		propertyStore.clear();
@@ -326,13 +394,23 @@ public class PropertyViewPart extends ViewPart {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.ui.part.WorkbenchPart#setFocus()
+	 */
 	@Override
 	public void setFocus() {
 		// Auto-generated method stub
 
 	}
 
+	/**
+	 * The Enum LabelClass.
+	 */
 	private enum LabelClass {
-		PERCENTAGE, VALUE
+		
+		/** The percentage. */
+		PERCENTAGE, 
+ /** The value. */
+ VALUE
 	}
 }

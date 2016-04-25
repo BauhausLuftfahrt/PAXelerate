@@ -8,16 +8,17 @@ import net.bhl.cdt.paxelerate.model.Door;
 import net.bhl.cdt.paxelerate.model.Passenger;
 
 /**
- * 
- * @author marc.engelmann
+ * The Class PassengerGenerator.
  *
+ * @author marc.engelmann
  */
 public class PassengerGenerator {
 
 	/**
-	 * 
-	 * @param passenger
-	 * @return
+	 * Apply delay.
+	 *
+	 * @param passenger the passenger
+	 * @param delays the delays
 	 */
 	public static void applyDelay(Passenger passenger,
 			Map<Integer, Double> delays) {

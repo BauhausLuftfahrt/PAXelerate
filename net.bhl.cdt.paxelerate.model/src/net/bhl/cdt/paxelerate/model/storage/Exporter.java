@@ -13,9 +13,13 @@ import java.text.DecimalFormat;
 
 import net.bhl.cdt.paxelerate.model.Sex;
 
+/**
+ * The Class Exporter.
+ */
 @Deprecated
 public class Exporter {
 
+	/** The Constant FILE_PATH. */
 	private static final String FOLDER_NAME = "paxelerate",
 			FILE_PATH = System.getProperty("user.home") + "/Documents/"
 					+ FOLDER_NAME + "/";
@@ -75,6 +79,18 @@ public class Exporter {
 	// }
 	// }
 
+	/**
+	 * Generate distribution file.
+	 *
+	 * @param sFileName the s file name
+	 * @param weight the weight
+	 * @param height the height
+	 * @param depth the depth
+	 * @param width the width
+	 * @param age the age
+	 * @param luggage the luggage
+	 * @param pax the pax
+	 */
 	static void generateDistributionFile(String sFileName,
 			GaussianStorage weight, GaussianStorage height,
 			GaussianStorage depth, GaussianStorage width, AgeStorage age,
@@ -104,6 +120,13 @@ public class Exporter {
 		}
 	}
 
+	/**
+	 * Write headline.
+	 *
+	 * @param writer the writer
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException the file not found exception
+	 */
 	private static void writeHeadline(FileWriter writer)
 			throws IOException, FileNotFoundException {
 		writer.append("Type");
@@ -130,6 +153,15 @@ public class Exporter {
 		writer.append('\n');
 	}
 
+	/**
+	 * Write gaussian.
+	 *
+	 * @param writer the writer
+	 * @param storage the storage
+	 * @param name the name
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException the file not found exception
+	 */
 	private static void writeGaussian(FileWriter writer,
 			GaussianStorage storage, String name)
 			throws IOException, FileNotFoundException {
@@ -157,6 +189,12 @@ public class Exporter {
 		writer.append('\n');
 	}
 
+	/**
+	 * Str.
+	 *
+	 * @param value the value
+	 * @return the string
+	 */
 	private static String str(double value) {
 		DecimalFormat df = new DecimalFormat("#.##");
 		return df.format(value);

@@ -7,21 +7,19 @@ import org.eclipse.swt.widgets.Composite;
 import net.bhl.cdt.paxelerate.ui.graphics.SWTHelper;
 
 /**
- * 
- * @author marc.engelmann
+ * The Class ImageHelper.
  *
+ * @author marc.engelmann
  */
 public class ImageHelper {
 
 	/**
 	 * This method resizes an image.
-	 * 
-	 * @param image
-	 *            the image
-	 * @param width
-	 *            the desired width
-	 * @param height
-	 *            the desired height
+	 *
+	 * @param image            the image
+	 * @param width            the desired width
+	 * @param height            the desired height
+	 * @param parent the parent
 	 * @return the scaled image
 	 */
 	public static Image resize(Image image, int width, int height, Composite parent) {

@@ -16,6 +16,7 @@ import java.util.Collections;
  */
 public class SortedNodeList {
 
+	/** The list. */
 	private ArrayList<Node> list = new ArrayList<Node>();
 
 	/**
@@ -66,9 +67,9 @@ public class SortedNodeList {
 
 	/**
 	 * This method checks if a specific node is already in the list.
-	 * 
-	 * @param n
-	 *            the node which is checked
+	 *
+	 * @param n            the node which is checked
+	 * @return true, if successful
 	 */
 	public boolean contains(Node n) {
 		return list.contains(n);

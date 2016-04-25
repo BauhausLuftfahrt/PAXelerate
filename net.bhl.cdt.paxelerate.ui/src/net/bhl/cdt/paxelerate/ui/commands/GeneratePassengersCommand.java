@@ -45,8 +45,13 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 public class GeneratePassengersCommand extends CDTCommand {
 
+	/** The cabin. */
 	private Cabin cabin;
+	
+	/** The total count. */
 	private int totalCount = 1;
+	
+	/** The cabinview. */
 	private CabinViewPart cabinview;
 
 	/**
@@ -61,9 +66,9 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 	/**
 	 * This method applies a door to a passenger.
-	 * 
-	 * @param pass
-	 *            is the passenger to whom the door is assigned to.
+	 *
+	 * @param pass            is the passenger to whom the door is assigned to.
+	 * @return the door
 	 */
 	private Door getDoor(Passenger pass) {
 
@@ -113,9 +118,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 	/**
 	 * This method generates the passengers.
-	 * 
-	 * @param classType
-	 *            specifies in which class the passengers are generated
+	 *
+	 * @param tc the tc
 	 */
 	private synchronized void generatePassengers(TravelClass tc) {
 

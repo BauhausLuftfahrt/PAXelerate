@@ -22,17 +22,22 @@ import net.bhl.cdt.paxelerate.util.math.RandomHelper;
  */
 public class PassengerPropertyGenerator {
 
+	/** The passenger. */
 	/* The current passenger */
 	private Passenger passenger;
 
+	/** The pax settings. */
 	/* the paxSettings */
 	private PassengerProperties paxSettings;
+	
+	/** The luggage settings. */
 	private LuggageProperties luggageSettings;
 
 	/*
 	 * This array contains two values, first the age of the passenger and second
 	 * the corresponding speed.
 	 */
+	/** The speedmodel. */
 	// TODO take literals out of class
 	private double[][] speedmodel = { { 5, 0.6 }, { 10, 1.18 }, { 15, 1.5 },
 			{ 20, 1.6 }, { 25, 1.6 }, { 30, 1.55 }, { 35, 1.5 }, { 40, 1.5 },
@@ -44,6 +49,7 @@ public class PassengerPropertyGenerator {
 	 * The first value of the tuple is the male, the second one the female
 	 * distribution.
 	 */
+	/** The agemodel. */
 	// TODO take literals out of class
 	private double[][] agemodel = { { 0.0349, 0.0333 }, { 0.0374, 0.0356 },
 			{ 0.0374, 0.0356 }, { 0.0369, 0.0349 }, { 0.0344, 0.0330 },
@@ -53,6 +59,11 @@ public class PassengerPropertyGenerator {
 			{ 0.0139, 0.0176 }, { 0.0108, 0.0155 }, { 0.0065, 0.0111 },
 			{ 0.0044, 0.0107 } };
 
+	/**
+	 * Instantiates a new passenger property generator.
+	 *
+	 * @param pax the pax
+	 */
 	public PassengerPropertyGenerator(Passenger pax) {
 
 		this.passenger = pax;
@@ -138,6 +149,11 @@ public class PassengerPropertyGenerator {
 		return speedmodel[index - 1][1];
 	}
 
+	/**
+	 * Adapt luggage.
+	 *
+	 * @return the luggage size
+	 */
 	private LuggageSize adaptLuggage() {
 
 		double[] luggagemodel = {
@@ -178,8 +194,8 @@ public class PassengerPropertyGenerator {
 
 	/**
 	 * This function adapts a specific luggage stowing time using a Gaussian
-	 * distribution depending on the luggage size
-	 * 
+	 * distribution depending on the luggage size.
+	 *
 	 * @return stowing time in s
 	 */
 	private double adaptLuggageStowTime() {
@@ -210,8 +226,8 @@ public class PassengerPropertyGenerator {
 
 	/**
 	 * This function adapts a specific luggage stowing distance using a Gaussian
-	 * distribution
-	 * 
+	 * distribution.
+	 *
 	 * @return stowing distance in cm
 	 */
 	private double defineLuggageStowDistance() {

@@ -13,20 +13,16 @@ import org.eclipse.swt.graphics.Device;
 import org.eclipse.swt.widgets.Display;
 
 /**
- * Unified coloring system for Paxelerate
- * 
+ * Unified coloring system for Paxelerate.
+ *
  * @author marc.engelmann, raoul.rothfeld
  */
 public class ColorHelper {
 
-	/**
-	 * The color displaying device/component
-	 */
+	/** The color displaying device/component. */
 	private static final Device d = Display.getCurrent();
 
-	/**
-	 * All Paxelerate colors
-	 */
+	/** All Paxelerate colors. */
 	public static final Color
 			// General colors
 			BLACK = new Color(d, 0, 0, 0),
@@ -58,14 +54,14 @@ public class ColorHelper {
 			AIRCRAFT_LAVATORY = new Color(d, 255, 160, 122);
 
 	/**
-	 * Singleton constructor for a ColorHelper instance
+	 * Singleton constructor for a ColorHelper instance.
 	 */
 	private ColorHelper() {
 	}
 
 	/**
-	 * Returns a random color
-	 * 
+	 * Returns a random color.
+	 *
 	 * @return the random color
 	 */
 	public static Color getRandomColor() {

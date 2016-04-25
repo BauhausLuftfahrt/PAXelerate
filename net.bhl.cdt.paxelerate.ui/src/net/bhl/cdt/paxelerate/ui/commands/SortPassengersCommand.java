@@ -34,23 +34,32 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 public class SortPassengersCommand extends CDTCommand {
 
+	/** The cabin. */
 	private Cabin cabin;
+	
+	/** The show dialog. */
 	private boolean showDialog = true;
+	
+	/** The value. */
 	private int value = 0;
+	
+	/** The Constant INPUT_STRING. */
 	private static final String INPUT_STRING = "Please choose a sorting algorithm. [0]: Random, [1]: RTF, [2]: FTR, [3]: WTA, [4]: WTA & RTF, [5]: WTA & FTR";
 
 	/**
-	 * 
-	 * @param cabin
+	 * Instantiates a new sort passengers command.
+	 *
+	 * @param cabin the cabin
 	 */
 	public SortPassengersCommand(Cabin cabin) {
 		this.cabin = cabin;
 	}
 
 	/**
-	 * 
-	 * @param showDialog
-	 * @param value
+	 * Sets the properties manually.
+	 *
+	 * @param showDialog the show dialog
+	 * @param value the value
 	 */
 	public void setPropertiesManually(boolean showDialog, int value) {
 		this.showDialog = showDialog;
@@ -58,15 +67,16 @@ public class SortPassengersCommand extends CDTCommand {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Return cabin.
+	 *
+	 * @return the cabin
 	 */
 	public Cabin returnCabin() {
 		return cabin;
 	}
 
-	/**
-	 * 
+	/* (non-Javadoc)
+	 * @see net.bhl.cdt.commands.CDTCommand#doRun()
 	 */
 	@Override
 	protected synchronized void doRun() {
@@ -182,12 +192,30 @@ public class SortPassengersCommand extends CDTCommand {
 		
 		// Group/block boarding: create blocks with 10 rows each and distribute the passengers randomly
 		case 6:
-			// TODO
+			int blocks = (numberOfRows / 10);
+			int paxPerBlock = numberOfLoops / blocks;
+			for (int j = 0; j < numberOfLoops; j++) {
+				for (int i = 0; i < paxList.size(); i++) {
+					Passenger pax = paxList.get(i);
+
+					
+					paxList.move(RandomHelper.randomValue(0, paxList.size()), pax);
+				}
+			}
 			break;
 		
 		// Steffen method: window every second row left and right
 		case 7:
-			// TODO
+			for (int j = 0; j < numberOfLoops; j++) {
+				for (int i = 0; i < paxList.size() - 1; i++) {
+					Passenger thisPax = paxList.get(i);
+					Passenger otherPax = paxList.get(i + 1);
+					if (AgentFunctions.otherSeatCloserToAisle(thisPax.getSeat(), otherPax.getSeat())) {
+						if (thisPax.getSeat().getXPosition() > otherPax.getSeat().getXPosition()) {
+						}
+					}
+				}
+			}
 			break;
 		
 		// Milne/Kelly method: based on number of carried bags
@@ -226,9 +254,10 @@ public class SortPassengersCommand extends CDTCommand {
 	}
 
 	/**
-	 * 
-	 * @param pax
-	 * @return
+	 * Calculate delay.
+	 *
+	 * @param pax the pax
+	 * @return the double
 	 */
 	private synchronized double calculateDelay(Passenger pax) {
 		double delay = 0;

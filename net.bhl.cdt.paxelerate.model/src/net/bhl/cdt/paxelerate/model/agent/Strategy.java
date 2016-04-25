@@ -9,12 +9,17 @@ import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 
 
 /**
- * 
- * @author marc.engelmann, tobias.bruegge-zobel
+ * The Interface Strategy.
  *
+ * @author marc.engelmann, tobias.bruegge-zobel
  */
 public interface Strategy {
 
+	/**
+	 * React to collision.
+	 *
+	 * @param property the property
+	 */
 	public void reactToCollision(Property property);
 
 }

@@ -30,26 +30,45 @@ import net.bhl.cdt.paxelerate.util.time.TimeHelper;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Screen;
 
 /**
- * 
- * @author marc.engelmann
+ * The Class SimulationView.
  *
+ * @author marc.engelmann
  */
 public class SimulationView extends JPanel implements MouseListener {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 2L;
+	
+	/** The Constant STEP_SIZE. */
 	private static final int BOX_WIDTH = 1000, BOX_HEIGHT = 300, STEP_SIZE = 2;
+	
+	/** The areamap. */
 	private Areamap areamap;
+	
+	/** The right button. */
 	private final Button leftButton, rightButton;
 
+	/** The font size. */
 	private int pointZero = 0, FONT_SIZE = 10;
+	
+	/** The watch. */
 	private static StopWatch watch;
 
+	/** The cabin width. */
 	private static double cabinWidth;
 
+	/**
+	 * Gets the watch.
+	 *
+	 * @return the watch
+	 */
 	public static StopWatch getWatch() {
 		return watch;
 	}
 
+	/**
+	 * Instantiates a new simulation view.
+	 */
 	public SimulationView() {
 		this.setPreferredSize(new Dimension(Screen.getWidth() - 20, BOX_HEIGHT));
 		cabinWidth = SimulationHandler.getCabin().getYDimension()
@@ -106,10 +125,21 @@ public class SimulationView extends JPanel implements MouseListener {
 
 	}
 
+	/**
+	 * Sets the areamap.
+	 *
+	 * @param areamap the new areamap
+	 */
 	public void setAreamap(Areamap areamap) {
 		this.areamap = areamap;
 	}
 
+	/**
+	 * Switch color.
+	 *
+	 * @param state the state
+	 * @return the color
+	 */
 	public Color switchColor(Agent.State state) {
 		switch (state) {
 		case FOLLOWING_PATH:
@@ -129,6 +159,9 @@ public class SimulationView extends JPanel implements MouseListener {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 
@@ -238,6 +271,9 @@ public class SimulationView extends JPanel implements MouseListener {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
 
@@ -256,21 +292,33 @@ public class SimulationView extends JPanel implements MouseListener {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		//
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseExited(MouseEvent e) {
 		//
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 		//
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		//

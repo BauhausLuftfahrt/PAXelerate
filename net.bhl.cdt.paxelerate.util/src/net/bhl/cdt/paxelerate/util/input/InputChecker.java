@@ -15,6 +15,12 @@ import net.bhl.cdt.paxelerate.util.string.StringHelper;
  */
 public class InputChecker {
 
+	/**
+	 * No issues detected.
+	 *
+	 * @param structure the structure
+	 * @return true, if successful
+	 */
 	public static boolean noIssuesDetected(String structure) {
 		if (structure.contains(" ")) {
 			return false;

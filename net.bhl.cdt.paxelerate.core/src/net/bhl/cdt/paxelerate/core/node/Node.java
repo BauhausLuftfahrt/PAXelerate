@@ -7,8 +7,14 @@
 
 package net.bhl.cdt.paxelerate.core.node;
 
+/**
+ * The Class Node.
+ */
 public class Node implements Comparable<Node> {
 
+	/* (non-Javadoc)
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 */
 	@Override
 	public int compareTo(Node arg0) {
 		// Auto-generated method stub

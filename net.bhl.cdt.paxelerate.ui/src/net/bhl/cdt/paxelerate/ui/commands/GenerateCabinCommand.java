@@ -30,6 +30,7 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 public class GenerateCabinCommand extends CDTCommand {
 
+	/** The cabin. */
 	private Cabin cabin;
 
 	/**

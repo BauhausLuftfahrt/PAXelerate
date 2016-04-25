@@ -252,16 +252,19 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 	protected TravelOption travelOption = TRAVEL_OPTION_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	protected TravelClassImpl() {
 		super();
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the e class
+	 * @generated 
 	 */
 	@Override
 	protected EClass eStaticClass() {
@@ -269,8 +272,10 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the rows
+	 * @generated 
 	 */
 	public EList<Row> getRows() {
 		if (rows == null) {
@@ -280,16 +285,20 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the sequence
+	 * @generated 
 	 */
 	public int getSequence() {
 		return sequence;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newSequence the new sequence
+	 * @generated 
 	 */
 	public void setSequence(int newSequence) {
 		int oldSequence = sequence;
@@ -299,16 +308,20 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the passengers
+	 * @generated 
 	 */
 	public int getPassengers() {
 		return passengers;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newPassengers the new passengers
+	 * @generated 
 	 */
 	public void setPassengers(int newPassengers) {
 		int oldPassengers = passengers;
@@ -318,16 +331,20 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the available seats
+	 * @generated 
 	 */
 	public int getAvailableSeats() {
 		return availableSeats;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newAvailableSeats the new available seats
+	 * @generated 
 	 */
 	public void setAvailableSeats(int newAvailableSeats) {
 		int oldAvailableSeats = availableSeats;
@@ -337,16 +354,20 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the seat pitch
+	 * @generated 
 	 */
 	public int getSeatPitch() {
 		return seatPitch;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newSeatPitch the new seat pitch
+	 * @generated 
 	 */
 	public void setSeatPitch(int newSeatPitch) {
 		int oldSeatPitch = seatPitch;
@@ -357,8 +378,10 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the x dimension of seats
+	 * @generated 
 	 */
 	public int getXDimensionOfSeats() {
 		return xDimensionOfSeats;
@@ -366,8 +389,10 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newXDimensionOfSeats the new x dimension of seats
+	 * @generated 
 	 */
 	public void setXDimensionOfSeats(int newXDimensionOfSeats) {
 		int oldXDimensionOfSeats = xDimensionOfSeats;
@@ -378,8 +403,10 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the y dimension of seats
+	 * @generated 
 	 */
 	public int getYDimensionOfSeats() {
 		return yDimensionOfSeats;
@@ -387,8 +414,10 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newYDimensionOfSeats the new y dimension of seats
+	 * @generated 
 	 */
 	public void setYDimensionOfSeats(int newYDimensionOfSeats) {
 		int oldYDimensionOfSeats = yDimensionOfSeats;
@@ -398,16 +427,20 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the name
+	 * @generated 
 	 */
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newName the new name
+	 * @generated 
 	 */
 	public void setName(String newName) {
 		String oldName = name;
@@ -417,16 +450,20 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the row structure
+	 * @generated 
 	 */
 	public String getRowStructure() {
 		return rowStructure;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newRowStructure the new row structure
+	 * @generated 
 	 */
 	public void setRowStructure(String newRowStructure) {
 		String oldRowStructure = rowStructure;
@@ -437,8 +474,10 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the load factor
+	 * @generated 
 	 */
 	public double getLoadFactor() {
 		return loadFactor;
@@ -446,8 +485,10 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newLoadFactor the new load factor
+	 * @generated 
 	 */
 	public void setLoadFactor(double newLoadFactor) {
 		double oldLoadFactor = loadFactor;
@@ -458,8 +499,10 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the travel option
+	 * @generated 
 	 */
 	public TravelOption getTravelOption() {
 		return travelOption;
@@ -467,8 +510,10 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newTravelOption the new travel option
+	 * @generated 
 	 */
 	public void setTravelOption(TravelOption newTravelOption) {
 		TravelOption oldTravelOption = travelOption;
@@ -478,8 +523,11 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param chain the chain
+	 * @param context the context
+	 * @return true, if successful
 	 * @generated NOT
 	 */
 	public boolean tooManyPassengers(DiagnosticChain chain, Map<?, ?> context) {
@@ -500,8 +548,11 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param chain the chain
+	 * @param context the context
+	 * @return true, if successful
 	 * @generated NOT
 	 */
 	public boolean wrongRowStructure(DiagnosticChain chain, Map<?, ?> context) {
@@ -522,8 +573,13 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param otherEnd the other end
+	 * @param featureID the feature id
+	 * @param msgs the msgs
+	 * @return the notification chain
+	 * @generated 
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
@@ -536,8 +592,13 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param resolve the resolve
+	 * @param coreType the core type
+	 * @return the object
+	 * @generated 
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
@@ -569,8 +630,11 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param newValue the new value
+	 * @generated 
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
@@ -615,8 +679,10 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @generated 
 	 */
 	@Override
 	public void eUnset(int featureID) {
@@ -659,8 +725,11 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @return true, if successful
+	 * @generated 
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
@@ -692,8 +761,13 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param operationID the operation id
+	 * @param arguments the arguments
+	 * @return the object
+	 * @throws InvocationTargetException the invocation target exception
+	 * @generated 
 	 */
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments)
@@ -708,8 +782,10 @@ public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the string
+	 * @generated 
 	 */
 	@Override
 	public String toString() {

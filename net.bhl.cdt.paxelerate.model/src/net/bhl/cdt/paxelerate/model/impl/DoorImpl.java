@@ -189,8 +189,9 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	protected DoorImpl() {
 		super();
@@ -198,8 +199,10 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the e class
+	 * @generated 
 	 */
 	@Override
 	protected EClass eStaticClass() {
@@ -208,8 +211,10 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the x position
+	 * @generated 
 	 */
 	public int getXPosition() {
 		return xPosition;
@@ -217,8 +222,10 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newXPosition the new x position
+	 * @generated 
 	 */
 	public void setXPosition(int newXPosition) {
 		int oldXPosition = xPosition;
@@ -229,8 +236,10 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return true, if is on both sides
+	 * @generated 
 	 */
 	public boolean isOnBothSides() {
 		return onBothSides;
@@ -238,8 +247,10 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newOnBothSides the new on both sides
+	 * @generated 
 	 */
 	public void setOnBothSides(boolean newOnBothSides) {
 		boolean oldOnBothSides = onBothSides;
@@ -250,8 +261,10 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the width
+	 * @generated 
 	 */
 	public int getWidth() {
 		return width;
@@ -259,8 +272,10 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newWidth the new width
+	 * @generated 
 	 */
 	public void setWidth(int newWidth) {
 		int oldWidth = width;
@@ -271,8 +286,10 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the id
+	 * @generated 
 	 */
 	public int getId() {
 		return id;
@@ -280,8 +297,10 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newId the new id
+	 * @generated 
 	 */
 	public void setId(int newId) {
 		int oldId = id;
@@ -292,8 +311,10 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the number of simultaneous passengers
+	 * @generated 
 	 */
 	public int getNumberOfSimultaneousPassengers() {
 		return numberOfSimultaneousPassengers;
@@ -301,8 +322,10 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newNumberOfSimultaneousPassengers the new number of simultaneous passengers
+	 * @generated 
 	 */
 	public void setNumberOfSimultaneousPassengers(int newNumberOfSimultaneousPassengers) {
 		int oldNumberOfSimultaneousPassengers = numberOfSimultaneousPassengers;
@@ -313,8 +336,10 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return true, if is checks if is active
+	 * @generated 
 	 */
 	public boolean isIsActive() {
 		return isActive;
@@ -322,8 +347,10 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newIsActive the new checks if is active
+	 * @generated 
 	 */
 	public void setIsActive(boolean newIsActive) {
 		boolean oldIsActive = isActive;
@@ -334,8 +361,10 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the waiting passengers
+	 * @generated 
 	 */
 	public EList<Passenger> getWaitingPassengers() {
 		if (waitingPassengers == null) {
@@ -346,8 +375,10 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the door option
+	 * @generated 
 	 */
 	public DoorOption getDoorOption() {
 		return doorOption;
@@ -355,8 +386,10 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newDoorOption the new door option
+	 * @generated 
 	 */
 	public void setDoorOption(DoorOption newDoorOption) {
 		DoorOption oldDoorOption = doorOption;
@@ -367,8 +400,13 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param resolve the resolve
+	 * @param coreType the core type
+	 * @return the object
+	 * @generated 
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
@@ -395,8 +433,11 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param newValue the new value
+	 * @generated 
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
@@ -433,8 +474,10 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @generated 
 	 */
 	@Override
 	public void eUnset(int featureID) {
@@ -469,8 +512,11 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @return true, if successful
+	 * @generated 
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
@@ -497,8 +543,10 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the string
+	 * @generated 
 	 */
 	@Override
 	public String toString() {

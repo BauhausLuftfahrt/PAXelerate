@@ -12,12 +12,15 @@ import org.eclipse.ui.IPerspectiveFactory;
 import org.eclipse.ui.console.IConsoleConstants;
 
 /**
- * 
- * @author raoul.rothfeld, Michael Schmidt
+ * A factory for creating Perspective objects.
  *
+ * @author raoul.rothfeld, Michael Schmidt
  */
 public class PerspectiveFactory implements IPerspectiveFactory {
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.ui.IPerspectiveFactory#createInitialLayout(org.eclipse.ui.IPageLayout)
+	 */
 	@Override
 	public void createInitialLayout(IPageLayout layout) {
 

@@ -7,14 +7,14 @@
 package net.bhl.cdt.paxelerate.util.string;
 
 /**
- * 
- * @author marc.engelmann, raoul.rothfeld
+ * The Class StringHelper.
  *
+ * @author marc.engelmann, raoul.rothfeld
  */
 public class StringHelper {
 
 	/**
-	 * Protect constructor since it is a static only class
+	 * Protect constructor since it is a static only class.
 	 */
 	protected StringHelper() {
 	}
@@ -32,11 +32,13 @@ public class StringHelper {
 	}
 
 	/**
+	 * Checks if is integer.
+	 *
+	 * @param str the str
+	 * @return true, if is integer
 	 * @see <a href=
 	 *      "http://stackoverflow.com/questions/237159/whats-the-best-way-to-check-to-see-if-a-string-represents-an-integer-in-java">
 	 *      Stackoverflow question on faster options to Integer.parseInt()</a>
-	 * @param str
-	 * @return
 	 */
 	public static boolean isInteger(String str) {
 		if (str.isEmpty())
@@ -61,11 +63,13 @@ public class StringHelper {
 	}
 
 	/**
+	 * Checks if is positive integer.
+	 *
+	 * @param str the str
+	 * @return true, if is positive integer
 	 * @see <a href=
 	 *      "http://stackoverflow.com/questions/237159/whats-the-best-way-to-check-to-see-if-a-string-represents-an-integer-in-java">
 	 *      Stackoverflow question on faster options to Integer.parseInt()</a>
-	 * @param str
-	 * @return
 	 */
 	public static boolean isPositiveInteger(String str) {
 		if (str.isEmpty())

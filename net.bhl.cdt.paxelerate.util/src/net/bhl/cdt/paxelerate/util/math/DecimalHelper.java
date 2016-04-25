@@ -15,15 +15,19 @@ import java.math.BigDecimal;
  */
 public class DecimalHelper {
 
+	/**
+	 * Instantiates a new decimal helper.
+	 */
 	protected DecimalHelper() {
 
 	}
 
 	/**
-	 * 
-	 * @param value
-	 * @param numberOfDigitsAfterDecimalPoint
-	 * @return
+	 * Round.
+	 *
+	 * @param value the value
+	 * @param numberOfDigitsAfterDecimalPoint the number of digits after decimal point
+	 * @return the double
 	 */
 	public static double round(double value, int numberOfDigitsAfterDecimalPoint) {
 		BigDecimal bigDecimal = new BigDecimal(value);
@@ -32,10 +36,11 @@ public class DecimalHelper {
 	}
 
 	/**
-	 * 
-	 * @param value
-	 * @param max
-	 * @return
+	 * Percentage.
+	 *
+	 * @param value the value
+	 * @param maximumValue the maximum value
+	 * @return the int
 	 */
 	public static int percentage(double value, double maximumValue) {
 		return (int) ((value / maximumValue) * 100.0);

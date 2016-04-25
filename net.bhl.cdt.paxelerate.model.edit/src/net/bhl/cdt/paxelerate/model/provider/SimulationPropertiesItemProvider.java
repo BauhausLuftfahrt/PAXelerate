@@ -34,11 +34,13 @@ import net.bhl.cdt.paxelerate.model.SimulationProperties;
 public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
 		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param adapterFactory the adapter factory
+	 * @generated 
 	 */
 	public SimulationPropertiesItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
@@ -47,8 +49,10 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param object the object
+	 * @return the property descriptors
+	 * @generated 
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
@@ -79,7 +83,9 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Scale feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addScalePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -101,7 +107,9 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Frames Per Second feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addFramesPerSecondPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -123,7 +131,9 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Use Preset Settings feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addUsePresetSettingsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -145,7 +155,9 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Simulate Without UI feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addSimulateWithoutUIPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -167,7 +179,9 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Number Of Simulation Loops feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addNumberOfSimulationLoopsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -189,7 +203,9 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Random Sort Between Loops feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addRandomSortBetweenLoopsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -211,7 +227,9 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Use Foldable Seats feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addUseFoldableSeatsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -233,7 +251,9 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Bring Your Own Seat feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addBringYourOwnSeatPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -255,7 +275,9 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Results feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addResultsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -277,7 +299,9 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Sorting feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addSortingPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -299,7 +323,9 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Simulation Speed Factor feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addSimulationSpeedFactorPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -321,7 +347,9 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Seat Interference Standing Up Passenger Waiting Time feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addSeatInterferenceStandingUpPassengerWaitingTimePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -343,7 +371,9 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Seat Interference Process Time feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addSeatInterferenceProcessTimePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -365,7 +395,9 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Thread Sleep Time Default feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addThreadSleepTimeDefaultPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -387,7 +419,9 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Developer Mode feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addDeveloperModePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -409,7 +443,9 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Passengers Boarding Per Minute feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPassengersBoardingPerMinutePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -433,7 +469,10 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @return the children features
+	 * @generated 
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
@@ -447,8 +486,12 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param object the object
+	 * @param child the child
+	 * @return the child feature
+	 * @generated 
 	 */
 	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
@@ -462,7 +505,10 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This returns SimulationProperties.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @return the image
+	 * @generated 
 	 */
 	@Override
 	public Object getImage(Object object) {
@@ -472,7 +518,9 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	/**
 	 * This returns the label text for the adapted class. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
+	 * @param object the object
+	 * @return the text
 	 * @generated NOT
 	 */
 	@Override
@@ -486,7 +534,9 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * @generated
+	 *
+	 * @param notification the notification
+	 * @generated 
 	 */
 	@Override
 	public void notifyChanged(Notification notification) {
@@ -522,8 +572,10 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param newChildDescriptors the new child descriptors
+	 * @param object the object
+	 * @generated 
 	 */
 	@Override
 	protected void collectNewChildDescriptors(
@@ -544,8 +596,9 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	/**
 	 * Return the resource locator for this item provider's resources. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @return the resource locator
+	 * @generated 
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {

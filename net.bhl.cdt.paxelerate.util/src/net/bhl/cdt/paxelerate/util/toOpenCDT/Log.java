@@ -23,42 +23,36 @@ import org.osgi.framework.FrameworkUtil;
 public final class Log {
 
 	/**
-	 * Enforce static use
+	 * Enforce static use.
 	 */
 	private Log() {
 	}
 
 	/**
-	 * Adds a log entry to the overall program log
-	 * 
-	 * @param obj
-	 *            the object from which the log event is called
-	 * @param logEntry
-	 *            the message to be recorded in the log
+	 * Adds a log entry to the overall program log.
+	 *
+	 * @param obj            the object from which the log event is called
+	 * @param logEntry            the message to be recorded in the log
 	 */
 	public static void add(Object obj, String logEntry) {
 		Log.add(FrameworkUtil.getBundle(obj.getClass()), logEntry);
 	}
 
 	/**
-	 * Adds a log entry to the overall program log
-	 * 
-	 * @param bundle
-	 *            the bundle from which a log event is called
-	 * @param logEntry
-	 *            the message to be recorded in the log
+	 * Adds a log entry to the overall program log.
+	 *
+	 * @param bundle            the bundle from which a log event is called
+	 * @param logEntry            the message to be recorded in the log
 	 */
 	public static void add(Bundle bundle, String logEntry) {
 		Log.add(bundle.getSymbolicName().toString(), logEntry);
 	}
 
 	/**
-	 * Adds a log entry to the overall program log
-	 * 
-	 * @param bundleName
-	 *            the name of the superior bundle from which a log event is called
-	 * @param logEntry
-	 *            the message to be recorded in the log
+	 * Adds a log entry to the overall program log.
+	 *
+	 * @param bundleName            the name of the superior bundle from which a log event is called
+	 * @param logEntry            the message to be recorded in the log
 	 */
 	public static void add(String bundleName, String logEntry) {
 		ILog bundleLog = Platform.getLog(Platform.getBundle(bundleName));

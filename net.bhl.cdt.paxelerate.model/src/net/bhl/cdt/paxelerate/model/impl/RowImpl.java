@@ -65,8 +65,9 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	protected RowImpl() {
 		super();
@@ -74,8 +75,10 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the e class
+	 * @generated 
 	 */
 	@Override
 	protected EClass eStaticClass() {
@@ -84,8 +87,10 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the seats
+	 * @generated 
 	 */
 	public EList<Seat> getSeats() {
 		if (seats == null) {
@@ -96,8 +101,10 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the row number
+	 * @generated 
 	 */
 	public int getRowNumber() {
 		return rowNumber;
@@ -105,8 +112,10 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newRowNumber the new row number
+	 * @generated 
 	 */
 	public void setRowNumber(int newRowNumber) {
 		int oldRowNumber = rowNumber;
@@ -117,8 +126,13 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param otherEnd the other end
+	 * @param featureID the feature id
+	 * @param msgs the msgs
+	 * @return the notification chain
+	 * @generated 
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -131,8 +145,13 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param resolve the resolve
+	 * @param coreType the core type
+	 * @return the object
+	 * @generated 
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
@@ -147,8 +166,11 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param newValue the new value
+	 * @generated 
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
@@ -167,8 +189,10 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @generated 
 	 */
 	@Override
 	public void eUnset(int featureID) {
@@ -185,8 +209,11 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @return true, if successful
+	 * @generated 
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
@@ -201,8 +228,10 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the string
+	 * @generated 
 	 */
 	@Override
 	public String toString() {

@@ -26,9 +26,16 @@ import net.bhl.cdt.paxelerate.util.math.Vector;
 
 public class ObstacleGenerator {
 
+	/** The scale. */
 	private int scale;
+	
+	/** The dimensions. */
 	private Vector dimensions;
+	
+	/** The areamap. */
 	private Areamap areamap;
+	
+	/** The cabin. */
 	private Cabin cabin;
 
 	/**
@@ -196,15 +203,16 @@ public class ObstacleGenerator {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Return map.
+	 *
+	 * @return the areamap
 	 */
 	public Areamap returnMap() {
 		return areamap;
 	}
 
 	/**
-	 * 
+	 * Output.
 	 */
 	public void output() {
 		for (int x = 0; x < dimensions.getX(); x++) {

@@ -66,8 +66,9 @@ public class CurtainImpl extends PhysicalObjectImpl implements Curtain {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	protected CurtainImpl() {
 		super();
@@ -75,8 +76,10 @@ public class CurtainImpl extends PhysicalObjectImpl implements Curtain {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the e class
+	 * @generated 
 	 */
 	@Override
 	protected EClass eStaticClass() {
@@ -85,8 +88,10 @@ public class CurtainImpl extends PhysicalObjectImpl implements Curtain {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the postition after row
+	 * @generated 
 	 */
 	public int getPostitionAfterRow() {
 		return postitionAfterRow;
@@ -94,8 +99,10 @@ public class CurtainImpl extends PhysicalObjectImpl implements Curtain {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPostitionAfterRow the new postition after row
+	 * @generated 
 	 */
 	public void setPostitionAfterRow(int newPostitionAfterRow) {
 		int oldPostitionAfterRow = postitionAfterRow;
@@ -106,8 +113,10 @@ public class CurtainImpl extends PhysicalObjectImpl implements Curtain {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return true, if is curtain open
+	 * @generated 
 	 */
 	public boolean isCurtainOpen() {
 		return curtainOpen;
@@ -115,8 +124,10 @@ public class CurtainImpl extends PhysicalObjectImpl implements Curtain {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newCurtainOpen the new curtain open
+	 * @generated 
 	 */
 	public void setCurtainOpen(boolean newCurtainOpen) {
 		boolean oldCurtainOpen = curtainOpen;
@@ -127,8 +138,13 @@ public class CurtainImpl extends PhysicalObjectImpl implements Curtain {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param resolve the resolve
+	 * @param coreType the core type
+	 * @return the object
+	 * @generated 
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
@@ -143,8 +159,11 @@ public class CurtainImpl extends PhysicalObjectImpl implements Curtain {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param newValue the new value
+	 * @generated 
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
@@ -161,8 +180,10 @@ public class CurtainImpl extends PhysicalObjectImpl implements Curtain {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @generated 
 	 */
 	@Override
 	public void eUnset(int featureID) {
@@ -179,8 +200,11 @@ public class CurtainImpl extends PhysicalObjectImpl implements Curtain {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @return true, if successful
+	 * @generated 
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
@@ -195,8 +219,10 @@ public class CurtainImpl extends PhysicalObjectImpl implements Curtain {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the string
+	 * @generated 
 	 */
 	@Override
 	public String toString() {

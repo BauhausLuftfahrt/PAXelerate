@@ -7,8 +7,14 @@
 
 package net.bhl.cdt.paxelerate.core.node;
 
+/**
+ * The Class AgentNode.
+ */
 public class AgentNode extends Node {
 
+	/**
+	 * Instantiates a new agent node.
+	 */
 	public AgentNode() {
 		// Auto-generated constructor stub
 	}

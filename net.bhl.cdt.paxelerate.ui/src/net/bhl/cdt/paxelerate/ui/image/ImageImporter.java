@@ -25,14 +25,14 @@ import org.eclipse.swt.widgets.Display;
 import net.bhl.cdt.paxelerate.ui.color.ColorHelper;
 
 /**
- * 
- * @author Google Inc.W
+ * The Class ImageImporter.
  *
+ * @author Google Inc.W
  */
 public class ImageImporter {
 
 	/**
-	 * Protect constructor since it is a static only class
+	 * Protect constructor since it is a static only class.
 	 */
 	protected ImageImporter() {
 	}
@@ -44,10 +44,10 @@ public class ImageImporter {
 
 	/**
 	 * Returns an {@link Image} encoded by the specified {@link InputStream}.
-	 * 
-	 * @param stream
-	 *            the {@link InputStream} encoding the image data
+	 *
+	 * @param stream            the {@link InputStream} encoding the image data
 	 * @return the {@link Image} encoded by the specified input stream
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	protected static Image getImage(InputStream stream) throws IOException {
 		try {
@@ -114,6 +114,8 @@ public class ImageImporter {
 	private static final int MISSING_IMAGE_SIZE = 10;
 
 	/**
+	 * Gets the missing image.
+	 *
 	 * @return the small {@link Image} that can be used as placeholder for
 	 *         missing image.
 	 */

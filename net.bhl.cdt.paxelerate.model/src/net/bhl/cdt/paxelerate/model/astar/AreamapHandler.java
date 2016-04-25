@@ -13,25 +13,25 @@ import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 
 /**
- * 
- * @author marc.engelmann
+ * The Class AreamapHandler.
  *
+ * @author marc.engelmann
  */
 public class AreamapHandler {
 
+	/** The areamap. */
 	private Areamap areamap;
 
+	/** The Constant NARROWING_OF_DOOR_PATH_IN_PIXELS. */
 	public static final int DEFAULT_VALUE = 3, OBSTACLE_RANGE_IN_CM = 20,
 			POTENTIAL_GRADIENT_MAX = 100, HOLE_VALUE = 1,
 			NARROWING_OF_DOOR_PATH_IN_PIXELS = 2;
 
 	/**
 	 * This is the area map constructor.
-	 * 
-	 * @param dimensions
-	 *            the dimensions of the map
-	 * @param obstacleMap
-	 *            the obstacle map
+	 *
+	 * @param dimensions            the dimensions of the map
+	 * @param cabin the cabin
 	 */
 	public AreamapHandler(Vector dimensions, Cabin cabin) {
 
@@ -123,9 +123,9 @@ public class AreamapHandler {
 
 	/**
 	 * This map sets the start location of an agent.
-	 * 
-	 * @param position
-	 * @param agent
+	 *
+	 * @param position the position
+	 * @param agent the agent
 	 */
 	public synchronized void setStartLocation(Vector position, Agent agent) {
 

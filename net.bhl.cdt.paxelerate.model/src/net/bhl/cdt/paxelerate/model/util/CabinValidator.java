@@ -17,11 +17,13 @@ import org.eclipse.emf.ecore.util.EObjectValidator;
  * @generated
  */
 public class CabinValidator extends EObjectValidator {
+	
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	public static final CabinValidator INSTANCE = new CabinValidator();
 
@@ -89,7 +91,9 @@ public class CabinValidator extends EObjectValidator {
 	 * Returns the package of this validator switch.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @return the e package
+	 * @generated 
 	 */
 	@Override
 	protected EPackage getEPackage() {
@@ -100,7 +104,13 @@ public class CabinValidator extends EObjectValidator {
 	 * Calls <code>validateXXX</code> for the corresponding classifier of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param classifierID the classifier id
+	 * @param value the value
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	@Override
 	protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -164,8 +174,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param cabin the cabin
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateCabin(Cabin cabin, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(cabin, diagnostics, context);
@@ -173,8 +188,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param row the row
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateRow(Row row, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(row, diagnostics, context);
@@ -182,8 +202,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param travelClass the travel class
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateTravelClass(TravelClass travelClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(travelClass, diagnostics, context)) return false;
@@ -204,7 +229,12 @@ public class CabinValidator extends EObjectValidator {
 	 * Validates the tooManyPassengers constraint of '<em>Travel Class</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param travelClass the travel class
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateTravelClass_tooManyPassengers(TravelClass travelClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return travelClass.tooManyPassengers(diagnostics, context);
@@ -214,7 +244,12 @@ public class CabinValidator extends EObjectValidator {
 	 * Validates the wrongRowStructure constraint of '<em>Travel Class</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param travelClass the travel class
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateTravelClass_wrongRowStructure(TravelClass travelClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return travelClass.wrongRowStructure(diagnostics, context);
@@ -222,8 +257,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param seat the seat
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateSeat(Seat seat, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(seat, diagnostics, context)) return false;
@@ -241,8 +281,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param passenger the passenger
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validatePassenger(Passenger passenger, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(passenger, diagnostics, context);
@@ -250,8 +295,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param crewMember the crew member
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateCrewMember(CrewMember crewMember, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(crewMember, diagnostics, context);
@@ -259,8 +309,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param physicalObject the physical object
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validatePhysicalObject(PhysicalObject physicalObject, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(physicalObject, diagnostics, context)) return false;
@@ -280,7 +335,12 @@ public class CabinValidator extends EObjectValidator {
 	 * Validates the outOfBounds constraint of '<em>Physical Object</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param physicalObject the physical object
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validatePhysicalObject_outOfBounds(PhysicalObject physicalObject, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return physicalObject.outOfBounds(diagnostics, context);
@@ -288,8 +348,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param lavatory the lavatory
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateLavatory(Lavatory lavatory, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(lavatory, diagnostics, context)) return false;
@@ -307,8 +372,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param galley the galley
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateGalley(Galley galley, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(galley, diagnostics, context)) return false;
@@ -326,8 +396,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param stairway the stairway
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateStairway(Stairway stairway, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(stairway, diagnostics, context)) return false;
@@ -345,8 +420,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param curtain the curtain
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateCurtain(Curtain curtain, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(curtain, diagnostics, context)) return false;
@@ -364,8 +444,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param stowage the stowage
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateStowage(Stowage stowage, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(stowage, diagnostics, context)) return false;
@@ -383,8 +468,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param door the door
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateDoor(Door door, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(door, diagnostics, context);
@@ -392,8 +482,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param simulationProperties the simulation properties
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateSimulationProperties(SimulationProperties simulationProperties, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(simulationProperties, diagnostics, context);
@@ -401,8 +496,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param luggageProperties the luggage properties
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateLuggageProperties(LuggageProperties luggageProperties, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(luggageProperties, diagnostics, context);
@@ -410,8 +510,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param simulationResult the simulation result
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateSimulationResult(SimulationResult simulationResult, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(simulationResult, diagnostics, context);
@@ -419,8 +524,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param passengerProperties the passenger properties
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validatePassengerProperties(PassengerProperties passengerProperties, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(passengerProperties, diagnostics, context);
@@ -428,8 +538,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param sex the sex
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateSex(Sex sex, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
@@ -437,8 +552,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param stairwayDirection the stairway direction
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateStairwayDirection(StairwayDirection stairwayDirection, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
@@ -446,8 +566,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param aircraftType the aircraft type
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateAircraftType(AircraftType aircraftType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
@@ -455,8 +580,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param passengerMood the passenger mood
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validatePassengerMood(PassengerMood passengerMood, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
@@ -464,8 +594,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param luggageSize the luggage size
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateLuggageSize(LuggageSize luggageSize, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
@@ -473,8 +608,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param sortingStyle the sorting style
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateSortingStyle(SortingStyle sortingStyle, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
@@ -482,8 +622,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param travelOption the travel option
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateTravelOption(TravelOption travelOption, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
@@ -491,8 +636,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param objectOption the object option
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateObjectOption(ObjectOption objectOption, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
@@ -500,8 +650,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param doorOption the door option
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateDoorOption(DoorOption doorOption, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
@@ -511,7 +666,9 @@ public class CabinValidator extends EObjectValidator {
 	 * Returns the resource locator that will be used to fetch messages for this validator's diagnostics.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @return the resource locator
+	 * @generated 
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {

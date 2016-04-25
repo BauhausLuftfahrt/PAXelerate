@@ -5,6 +5,9 @@
  ***************************************************************************************/
 package net.bhl.cdt.paxelerate.model.agent;
 
+/**
+ * The Class AgentPathFinder.
+ */
 public class AgentPathFinder {
 
 }

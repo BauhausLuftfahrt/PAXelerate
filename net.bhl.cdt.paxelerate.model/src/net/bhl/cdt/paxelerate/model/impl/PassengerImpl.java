@@ -507,16 +507,19 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected LuggageSize luggage = LUGGAGE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	protected PassengerImpl() {
 		super();
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the e class
+	 * @generated 
 	 */
 	@Override
 	protected EClass eStaticClass() {
@@ -524,16 +527,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the id
+	 * @generated 
 	 */
 	public int getId() {
 		return id;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newId the new id
+	 * @generated 
 	 */
 	public void setId(int newId) {
 		int oldId = id;
@@ -543,16 +550,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the sex
+	 * @generated 
 	 */
 	public Sex getSex() {
 		return sex;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newSex the new sex
+	 * @generated 
 	 */
 	public void setSex(Sex newSex) {
 		Sex oldSex = sex;
@@ -562,8 +573,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the seat
+	 * @generated 
 	 */
 	public Seat getSeat() {
 		if (seat != null && seat.eIsProxy()) {
@@ -579,8 +592,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the seat
+	 * @generated 
 	 */
 	public Seat basicGetSeat() {
 		return seat;
@@ -588,8 +603,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newSeat the new seat
+	 * @generated 
 	 */
 	public void setSeat(Seat newSeat) {
 		Seat oldSeat = seat;
@@ -599,16 +616,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the name
+	 * @generated 
 	 */
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newName the new name
+	 * @generated 
 	 */
 	public void setName(String newName) {
 		String oldName = name;
@@ -618,16 +639,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the boarding time
+	 * @generated 
 	 */
 	public int getBoardingTime() {
 		return boardingTime;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newBoardingTime the new boarding time
+	 * @generated 
 	 */
 	public void setBoardingTime(int newBoardingTime) {
 		int oldBoardingTime = boardingTime;
@@ -637,16 +662,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the width
+	 * @generated 
 	 */
 	public int getWidth() {
 		return width;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newWidth the new width
+	 * @generated 
 	 */
 	public void setWidth(int newWidth) {
 		int oldWidth = width;
@@ -656,16 +685,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the depth
+	 * @generated 
 	 */
 	public int getDepth() {
 		return depth;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newDepth the new depth
+	 * @generated 
 	 */
 	public void setDepth(int newDepth) {
 		int oldDepth = depth;
@@ -675,16 +708,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the orientation in degree
+	 * @generated 
 	 */
 	public double getOrientationInDegree() {
 		return orientationInDegree;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newOrientationInDegree the new orientation in degree
+	 * @generated 
 	 */
 	public void setOrientationInDegree(
 			double newOrientationInDegree) {
@@ -695,16 +732,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the position x
+	 * @generated 
 	 */
 	public double getPositionX() {
 		return positionX;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newPositionX the new position x
+	 * @generated 
 	 */
 	public void setPositionX(double newPositionX) {
 		double oldPositionX = positionX;
@@ -714,16 +755,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the position y
+	 * @generated 
 	 */
 	public double getPositionY() {
 		return positionY;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newPositionY the new position y
+	 * @generated 
 	 */
 	public void setPositionY(double newPositionY) {
 		double oldPositionY = positionY;
@@ -733,16 +778,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return true, if is checks if is seated
+	 * @generated 
 	 */
 	public boolean isIsSeated() {
 		return isSeated;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newIsSeated the new checks if is seated
+	 * @generated 
 	 */
 	public void setIsSeated(boolean newIsSeated) {
 		boolean oldIsSeated = isSeated;
@@ -752,16 +801,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the walking speed
+	 * @generated 
 	 */
 	public double getWalkingSpeed() {
 		return walkingSpeed;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newWalkingSpeed the new walking speed
+	 * @generated 
 	 */
 	public void setWalkingSpeed(double newWalkingSpeed) {
 		double oldWalkingSpeed = walkingSpeed;
@@ -771,16 +824,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the start boarding after delay
+	 * @generated 
 	 */
 	public double getStartBoardingAfterDelay() {
 		return startBoardingAfterDelay;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newStartBoardingAfterDelay the new start boarding after delay
+	 * @generated 
 	 */
 	public void setStartBoardingAfterDelay(double newStartBoardingAfterDelay) {
 		double oldStartBoardingAfterDelay = startBoardingAfterDelay;
@@ -790,16 +847,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the number of waits
+	 * @generated 
 	 */
 	public int getNumberOfWaits() {
 		return numberOfWaits;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newNumberOfWaits the new number of waits
+	 * @generated 
 	 */
 	public void setNumberOfWaits(int newNumberOfWaits) {
 		int oldNumberOfWaits = numberOfWaits;
@@ -809,16 +870,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the luggage stow time
+	 * @generated 
 	 */
 	public double getLuggageStowTime() {
 		return luggageStowTime;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newLuggageStowTime the new luggage stow time
+	 * @generated 
 	 */
 	public void setLuggageStowTime(double newLuggageStowTime) {
 		double oldLuggageStowTime = luggageStowTime;
@@ -829,8 +894,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the luggage stowing distance
+	 * @generated 
 	 */
 	public double getLuggageStowingDistance() {
 		return luggageStowingDistance;
@@ -838,8 +905,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newLuggageStowingDistance the new luggage stowing distance
+	 * @generated 
 	 */
 	public void setLuggageStowingDistance(double newLuggageStowingDistance) {
 		double oldLuggageStowingDistance = luggageStowingDistance;
@@ -849,8 +918,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the travel class
+	 * @generated 
 	 */
 	public TravelClass getTravelClass() {
 		if (travelClass != null && travelClass.eIsProxy()) {
@@ -865,16 +936,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the travel class
+	 * @generated 
 	 */
 	public TravelClass basicGetTravelClass() {
 		return travelClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newTravelClass the new travel class
+	 * @generated 
 	 */
 	public void setTravelClass(TravelClass newTravelClass) {
 		TravelClass oldTravelClass = travelClass;
@@ -884,16 +959,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the passenger mood
+	 * @generated 
 	 */
 	public PassengerMood getPassengerMood() {
 		return passengerMood;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerMood the new passenger mood
+	 * @generated 
 	 */
 	public void setPassengerMood(PassengerMood newPassengerMood) {
 		PassengerMood oldPassengerMood = passengerMood;
@@ -904,8 +983,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the number of make way operations
+	 * @generated 
 	 */
 	public int getNumberOfMakeWayOperations() {
 		return numberOfMakeWayOperations;
@@ -913,8 +994,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newNumberOfMakeWayOperations the new number of make way operations
+	 * @generated 
 	 */
 	public void setNumberOfMakeWayOperations(int newNumberOfMakeWayOperations) {
 		int oldNumberOfMakeWayOperations = numberOfMakeWayOperations;
@@ -925,8 +1008,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the luggage
+	 * @generated 
 	 */
 	public LuggageSize getLuggage() {
 		return luggage;
@@ -934,8 +1019,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newLuggage the new luggage
+	 * @generated 
 	 */
 	public void setLuggage(LuggageSize newLuggage) {
 		LuggageSize oldLuggage = luggage;
@@ -945,16 +1032,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the height
+	 * @generated 
 	 */
 	public int getHeight() {
 		return height;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newHeight the new height
+	 * @generated 
 	 */
 	public void setHeight(int newHeight) {
 		int oldHeight = height;
@@ -964,16 +1055,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the age
+	 * @generated 
 	 */
 	public int getAge() {
 		return age;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newAge the new age
+	 * @generated 
 	 */
 	public void setAge(int newAge) {
 		int oldAge = age;
@@ -983,16 +1078,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the weight
+	 * @generated 
 	 */
 	public int getWeight() {
 		return weight;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newWeight the new weight
+	 * @generated 
 	 */
 	public void setWeight(int newWeight) {
 		int oldWeight = weight;
@@ -1002,8 +1101,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the door
+	 * @generated 
 	 */
 	public Door getDoor() {
 		if (door != null && door.eIsProxy()) {
@@ -1018,16 +1119,20 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the door
+	 * @generated 
 	 */
 	public Door basicGetDoor() {
 		return door;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newDoor the new door
+	 * @generated 
 	 */
 	public void setDoor(Door newDoor) {
 		Door oldDoor = door;
@@ -1038,8 +1143,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the seat id
+	 * @generated 
 	 */
 	public int getSeatID() {
 		return seatID;
@@ -1047,8 +1154,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newSeatID the new seat id
+	 * @generated 
 	 */
 	public void setSeatID(int newSeatID) {
 		int oldSeatID = seatID;
@@ -1058,8 +1167,13 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param resolve the resolve
+	 * @param coreType the core type
+	 * @return the object
+	 * @generated 
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
@@ -1122,8 +1236,11 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param newValue the new value
+	 * @generated 
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
@@ -1208,8 +1325,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @generated 
 	 */
 	@Override
 	public void eUnset(int featureID) {
@@ -1294,8 +1413,11 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @return true, if successful
+	 * @generated 
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
@@ -1355,8 +1477,10 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the string
+	 * @generated 
 	 */
 	@Override
 	public String toString() {

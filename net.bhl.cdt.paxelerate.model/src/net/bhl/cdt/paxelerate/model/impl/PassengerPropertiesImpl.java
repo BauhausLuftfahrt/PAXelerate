@@ -384,8 +384,9 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	protected PassengerPropertiesImpl() {
 		super();
@@ -393,8 +394,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the e class
+	 * @generated 
 	 */
 	@Override
 	protected EClass eStaticClass() {
@@ -403,8 +406,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger width mean male
+	 * @generated 
 	 */
 	public double getPassengerWidthMeanMale() {
 		return passengerWidthMeanMale;
@@ -412,8 +417,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerWidthMeanMale the new passenger width mean male
+	 * @generated 
 	 */
 	public void setPassengerWidthMeanMale(double newPassengerWidthMeanMale) {
 		double oldPassengerWidthMeanMale = passengerWidthMeanMale;
@@ -424,8 +431,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger width deviation male
+	 * @generated 
 	 */
 	public double getPassengerWidthDeviationMale() {
 		return passengerWidthDeviationMale;
@@ -433,8 +442,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerWidthDeviationMale the new passenger width deviation male
+	 * @generated 
 	 */
 	public void setPassengerWidthDeviationMale(double newPassengerWidthDeviationMale) {
 		double oldPassengerWidthDeviationMale = passengerWidthDeviationMale;
@@ -445,8 +456,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger weight mean male
+	 * @generated 
 	 */
 	public double getPassengerWeightMeanMale() {
 		return passengerWeightMeanMale;
@@ -454,8 +467,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerWeightMeanMale the new passenger weight mean male
+	 * @generated 
 	 */
 	public void setPassengerWeightMeanMale(double newPassengerWeightMeanMale) {
 		double oldPassengerWeightMeanMale = passengerWeightMeanMale;
@@ -466,8 +481,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger weight deviation male
+	 * @generated 
 	 */
 	public double getPassengerWeightDeviationMale() {
 		return passengerWeightDeviationMale;
@@ -475,8 +492,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerWeightDeviationMale the new passenger weight deviation male
+	 * @generated 
 	 */
 	public void setPassengerWeightDeviationMale(double newPassengerWeightDeviationMale) {
 		double oldPassengerWeightDeviationMale = passengerWeightDeviationMale;
@@ -487,8 +506,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger height mean male
+	 * @generated 
 	 */
 	public double getPassengerHeightMeanMale() {
 		return passengerHeightMeanMale;
@@ -496,8 +517,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerHeightMeanMale the new passenger height mean male
+	 * @generated 
 	 */
 	public void setPassengerHeightMeanMale(double newPassengerHeightMeanMale) {
 		double oldPassengerHeightMeanMale = passengerHeightMeanMale;
@@ -508,8 +531,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger height deviation male
+	 * @generated 
 	 */
 	public double getPassengerHeightDeviationMale() {
 		return passengerHeightDeviationMale;
@@ -517,8 +542,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerHeightDeviationMale the new passenger height deviation male
+	 * @generated 
 	 */
 	public void setPassengerHeightDeviationMale(double newPassengerHeightDeviationMale) {
 		double oldPassengerHeightDeviationMale = passengerHeightDeviationMale;
@@ -529,8 +556,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger depth mean male
+	 * @generated 
 	 */
 	public double getPassengerDepthMeanMale() {
 		return passengerDepthMeanMale;
@@ -538,8 +567,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerDepthMeanMale the new passenger depth mean male
+	 * @generated 
 	 */
 	public void setPassengerDepthMeanMale(double newPassengerDepthMeanMale) {
 		double oldPassengerDepthMeanMale = passengerDepthMeanMale;
@@ -550,8 +581,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger depth deviation male
+	 * @generated 
 	 */
 	public double getPassengerDepthDeviationMale() {
 		return passengerDepthDeviationMale;
@@ -559,8 +592,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerDepthDeviationMale the new passenger depth deviation male
+	 * @generated 
 	 */
 	public void setPassengerDepthDeviationMale(double newPassengerDepthDeviationMale) {
 		double oldPassengerDepthDeviationMale = passengerDepthDeviationMale;
@@ -571,8 +606,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the percentage of women
+	 * @generated 
 	 */
 	public double getPercentageOfWomen() {
 		return percentageOfWomen;
@@ -580,8 +617,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPercentageOfWomen the new percentage of women
+	 * @generated 
 	 */
 	public void setPercentageOfWomen(double newPercentageOfWomen) {
 		double oldPercentageOfWomen = percentageOfWomen;
@@ -592,8 +631,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger width mean female
+	 * @generated 
 	 */
 	public double getPassengerWidthMeanFemale() {
 		return passengerWidthMeanFemale;
@@ -601,8 +642,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerWidthMeanFemale the new passenger width mean female
+	 * @generated 
 	 */
 	public void setPassengerWidthMeanFemale(double newPassengerWidthMeanFemale) {
 		double oldPassengerWidthMeanFemale = passengerWidthMeanFemale;
@@ -613,8 +656,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger width deviation female
+	 * @generated 
 	 */
 	public double getPassengerWidthDeviationFemale() {
 		return passengerWidthDeviationFemale;
@@ -622,8 +667,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerWidthDeviationFemale the new passenger width deviation female
+	 * @generated 
 	 */
 	public void setPassengerWidthDeviationFemale(double newPassengerWidthDeviationFemale) {
 		double oldPassengerWidthDeviationFemale = passengerWidthDeviationFemale;
@@ -634,8 +681,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger weight mean female
+	 * @generated 
 	 */
 	public double getPassengerWeightMeanFemale() {
 		return passengerWeightMeanFemale;
@@ -643,8 +692,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerWeightMeanFemale the new passenger weight mean female
+	 * @generated 
 	 */
 	public void setPassengerWeightMeanFemale(double newPassengerWeightMeanFemale) {
 		double oldPassengerWeightMeanFemale = passengerWeightMeanFemale;
@@ -655,8 +706,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger weight deviation female
+	 * @generated 
 	 */
 	public double getPassengerWeightDeviationFemale() {
 		return passengerWeightDeviationFemale;
@@ -664,8 +717,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerWeightDeviationFemale the new passenger weight deviation female
+	 * @generated 
 	 */
 	public void setPassengerWeightDeviationFemale(double newPassengerWeightDeviationFemale) {
 		double oldPassengerWeightDeviationFemale = passengerWeightDeviationFemale;
@@ -676,8 +731,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger height mean female
+	 * @generated 
 	 */
 	public double getPassengerHeightMeanFemale() {
 		return passengerHeightMeanFemale;
@@ -685,8 +742,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerHeightMeanFemale the new passenger height mean female
+	 * @generated 
 	 */
 	public void setPassengerHeightMeanFemale(double newPassengerHeightMeanFemale) {
 		double oldPassengerHeightMeanFemale = passengerHeightMeanFemale;
@@ -697,8 +756,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger height deviation female
+	 * @generated 
 	 */
 	public double getPassengerHeightDeviationFemale() {
 		return passengerHeightDeviationFemale;
@@ -706,8 +767,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerHeightDeviationFemale the new passenger height deviation female
+	 * @generated 
 	 */
 	public void setPassengerHeightDeviationFemale(double newPassengerHeightDeviationFemale) {
 		double oldPassengerHeightDeviationFemale = passengerHeightDeviationFemale;
@@ -718,8 +781,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger depth mean female
+	 * @generated 
 	 */
 	public int getPassengerDepthMeanFemale() {
 		return passengerDepthMeanFemale;
@@ -727,8 +792,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerDepthMeanFemale the new passenger depth mean female
+	 * @generated 
 	 */
 	public void setPassengerDepthMeanFemale(int newPassengerDepthMeanFemale) {
 		int oldPassengerDepthMeanFemale = passengerDepthMeanFemale;
@@ -739,8 +806,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger depth deviation female
+	 * @generated 
 	 */
 	public double getPassengerDepthDeviationFemale() {
 		return passengerDepthDeviationFemale;
@@ -748,8 +817,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerDepthDeviationFemale the new passenger depth deviation female
+	 * @generated 
 	 */
 	public void setPassengerDepthDeviationFemale(double newPassengerDepthDeviationFemale) {
 		double oldPassengerDepthDeviationFemale = passengerDepthDeviationFemale;
@@ -760,8 +831,13 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param resolve the resolve
+	 * @param coreType the core type
+	 * @return the object
+	 * @generated 
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
@@ -806,8 +882,11 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param newValue the new value
+	 * @generated 
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
@@ -869,8 +948,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @generated 
 	 */
 	@Override
 	public void eUnset(int featureID) {
@@ -932,8 +1013,11 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @return true, if successful
+	 * @generated 
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
@@ -978,8 +1062,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the string
+	 * @generated 
 	 */
 	@Override
 	public String toString() {

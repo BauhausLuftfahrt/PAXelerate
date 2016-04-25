@@ -12,25 +12,19 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Display;
 
 /**
- * Unified font system for Paxelerate
- * 
+ * Unified font system for Paxelerate.
+ *
  * @author raoul.rothfeld
  */
 public class FontHelper {
 	
-	/**
-	 * The font displaying device/component
-	 */
+	/** The font displaying device/component. */
 	private static final Device d = Display.getCurrent();
 	
-	/**
-	 * Font Name
-	 */
+	/** Font Name. */
 	private static final String fontName = "Helvetica Neue";
 
-	/**
-	 * All Paxelerate font styles
-	 */
+	/** All Paxelerate font styles. */
 	public static final Font
 			// Heading styles
 			HEADING1 = new Font(d, fontName, 9, SWT.BOLD),
@@ -41,7 +35,7 @@ public class FontHelper {
 			PARAGRAPH = new Font(d, fontName, 6, SWT.NORMAL);
 
 	/**
-	 * Singleton constructor for a FontHelper instance
+	 * Singleton constructor for a FontHelper instance.
 	 */
 	private FontHelper() {
 	}

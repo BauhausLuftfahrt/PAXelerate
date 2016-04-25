@@ -32,11 +32,13 @@ import net.bhl.cdt.paxelerate.util.string.StringHelper;
  */
 public class DoorItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
 		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param adapterFactory the adapter factory
+	 * @generated 
 	 */
 	public DoorItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
@@ -45,8 +47,10 @@ public class DoorItemProvider extends ItemProviderAdapter implements IEditingDom
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param object the object
+	 * @return the property descriptors
+	 * @generated 
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
@@ -68,8 +72,9 @@ public class DoorItemProvider extends ItemProviderAdapter implements IEditingDom
 	/**
 	 * This adds a property descriptor for the XPosition feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addXPositionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
@@ -83,8 +88,9 @@ public class DoorItemProvider extends ItemProviderAdapter implements IEditingDom
 	/**
 	 * This adds a property descriptor for the On Both Sides feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addOnBothSidesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
@@ -99,8 +105,9 @@ public class DoorItemProvider extends ItemProviderAdapter implements IEditingDom
 	/**
 	 * This adds a property descriptor for the Width feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addWidthPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
@@ -114,8 +121,9 @@ public class DoorItemProvider extends ItemProviderAdapter implements IEditingDom
 	/**
 	 * This adds a property descriptor for the Id feature. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
@@ -129,8 +137,9 @@ public class DoorItemProvider extends ItemProviderAdapter implements IEditingDom
 	/**
 	 * This adds a property descriptor for the Number Of Simultaneous Passengers
 	 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addNumberOfSimultaneousPassengersPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(
@@ -145,8 +154,9 @@ public class DoorItemProvider extends ItemProviderAdapter implements IEditingDom
 	/**
 	 * This adds a property descriptor for the Is Active feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addIsActivePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
@@ -160,8 +170,9 @@ public class DoorItemProvider extends ItemProviderAdapter implements IEditingDom
 	/**
 	 * This adds a property descriptor for the Waiting Passengers feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addWaitingPassengersPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
@@ -175,8 +186,9 @@ public class DoorItemProvider extends ItemProviderAdapter implements IEditingDom
 	/**
 	 * This adds a property descriptor for the Door Option feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addDoorOptionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
@@ -189,7 +201,9 @@ public class DoorItemProvider extends ItemProviderAdapter implements IEditingDom
 
 	/**
 	 * This returns Door.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
+	 * @param object the object
+	 * @return the image
 	 * @generated NOT
 	 */
 	@Override
@@ -206,7 +220,9 @@ public class DoorItemProvider extends ItemProviderAdapter implements IEditingDom
 	/**
 	 * This returns the label text for the adapted class. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
+	 * @param object the object
+	 * @return the text
 	 * @generated NOT
 	 */
 	@Override
@@ -224,8 +240,9 @@ public class DoorItemProvider extends ItemProviderAdapter implements IEditingDom
 	 * update any cached children and by creating a viewer notification, which
 	 * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param notification the notification
+	 * @generated 
 	 */
 	@Override
 	public void notifyChanged(Notification notification) {
@@ -249,8 +266,10 @@ public class DoorItemProvider extends ItemProviderAdapter implements IEditingDom
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param newChildDescriptors the new child descriptors
+	 * @param object the object
+	 * @generated 
 	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -260,8 +279,9 @@ public class DoorItemProvider extends ItemProviderAdapter implements IEditingDom
 	/**
 	 * Return the resource locator for this item provider's resources. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @return the resource locator
+	 * @generated 
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {

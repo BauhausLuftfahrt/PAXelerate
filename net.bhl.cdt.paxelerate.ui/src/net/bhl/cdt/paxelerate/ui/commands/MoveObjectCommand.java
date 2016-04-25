@@ -31,13 +31,28 @@ import net.bhl.cdt.paxelerate.util.math.Vector;
 
 public class MoveObjectCommand extends CDTCommand {
 
+	/** The cabin. */
 	private Cabin cabin;
+	
+	/** The scale vector. */
 	private Vector movementVector, scaleVector;
+	
+	/** The rowlist. */
 	private ArrayList<Row> rowlist = new ArrayList<Row>();
+	
+	/** The seatlist. */
 	private ArrayList<Seat> seatlist = new ArrayList<Seat>();
+	
+	/** The galleylist. */
 	private ArrayList<Galley> galleylist = new ArrayList<Galley>();
+	
+	/** The lavatorylist. */
 	private ArrayList<Lavatory> lavatorylist = new ArrayList<Lavatory>();
+	
+	/** The curtainlist. */
 	private ArrayList<Curtain> curtainlist = new ArrayList<Curtain>();
+	
+	/** The scaling desired. */
 	private boolean scalingDesired = false;
 
 	/**

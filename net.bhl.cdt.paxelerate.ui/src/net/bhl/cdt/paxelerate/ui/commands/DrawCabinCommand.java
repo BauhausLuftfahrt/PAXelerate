@@ -39,9 +39,16 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 public class DrawCabinCommand extends CDTCommand {
 
+	/** The cabin. */
 	private Cabin cabin;
+	
+	/** The cabin view part. */
 	private CabinViewPart cabinViewPart;
+	
+	/** The property view part. */
 	private PropertyViewPart propertyViewPart;
+	
+	/** The error strings. */
 	private ArrayList<String> errorStrings = new ArrayList<String>();
 
 	/**
@@ -139,6 +146,9 @@ public class DrawCabinCommand extends CDTCommand {
 		EMFModelStore.store(cabin);
 	}
 
+	/**
+	 * Repair boarding class assignments.
+	 */
 	private void repairBoardingClassAssignments() {
 		int i = 1;
 		for (TravelClass tc : cabin.getClasses()) {
@@ -147,6 +157,9 @@ public class DrawCabinCommand extends CDTCommand {
 		}
 	}
 
+	/**
+	 * Check foldable seats.
+	 */
 	private void checkFoldableSeats() {
 		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
 			if (cabin.getSimulationSettings().isBringYourOwnSeat()) {
@@ -163,6 +176,9 @@ public class DrawCabinCommand extends CDTCommand {
 		}
 	}
 
+	/**
+	 * Update travel class properties.
+	 */
 	private void updateTravelClassProperties() {
 		for (TravelClass travelclass : cabin.getClasses()) {
 
@@ -183,6 +199,9 @@ public class DrawCabinCommand extends CDTCommand {
 		}
 	}
 
+	/**
+	 * Repair row assignments.
+	 */
 	private void repairRowAssignments() {
 		int i = 1;
 		for (Row row : ModelHelper.getChildrenByClass(cabin, Row.class)) {
@@ -192,6 +211,9 @@ public class DrawCabinCommand extends CDTCommand {
 		}
 	}
 
+	/**
+	 * Check passenger assignments.
+	 */
 	private void checkPassengerAssignments() {
 
 		Map<Integer, Double> delays = new HashMap<>();
@@ -212,6 +234,9 @@ public class DrawCabinCommand extends CDTCommand {
 		}
 	}
 
+	/**
+	 * Repair seat assignments.
+	 */
 	private void repairSeatAssignments() {
 
 		int seatCount = 1;
@@ -244,6 +269,11 @@ public class DrawCabinCommand extends CDTCommand {
 		System.out.println("Seat IDs reassigned.");
 	}
 
+	/**
+	 * Check cabin out of bounds.
+	 *
+	 * @return the boolean
+	 */
 	private Boolean checkCabinOutOfBounds() {
 		for (PhysicalObject object : ModelHelper.getChildrenByClass(cabin, PhysicalObject.class)) {
 			if (object.getYPosition() < 0 || object.getXPosition() < 0
@@ -255,6 +285,9 @@ public class DrawCabinCommand extends CDTCommand {
 		return false;
 	}
 
+	/**
+	 * Check too many seats in row.
+	 */
 	private void checkTooManySeatsInRow() {
 
 		for (Row row : ModelHelper.getChildrenByClass(cabin, Row.class)) {
@@ -278,6 +311,9 @@ public class DrawCabinCommand extends CDTCommand {
 		}
 	}
 
+	/**
+	 * Check for construction errors.
+	 */
 	private void checkForConstructionErrors() {
 
 		if (checkCabinOutOfBounds()) {

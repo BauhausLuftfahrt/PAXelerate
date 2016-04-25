@@ -16,27 +16,37 @@ package net.bhl.cdt.paxelerate.util.toOpenCDT;
 public final class OS {
 
 	/**
-	 * OS type categorization
+	 * OS type categorization.
+	 *
 	 * @author raoul.rothfeld
 	 */
 	public enum OSType {
-		Windows, MacOS, Linux, Solaris, Other
+		
+		/** The Windows. */
+		Windows, 
+ /** The Mac os. */
+ MacOS, 
+ /** The Linux. */
+ Linux, 
+ /** The Solaris. */
+ Solaris, 
+ /** The Other. */
+ Other
 	}
 	
 	/**
-	 * Set class constructor to private to enforce singleton use
+	 * Set class constructor to private to enforce singleton use.
 	 */
 	private OS() {}
 
-	/**
-	 * Instance variable storing the active OS type enumerator
-	 */
+	/** Instance variable storing the active OS type enumerator. */
 	private static OSType activeOS;
 
 	/**
-	 * Private population of the OS type instance variable to one-time OS retrieval from host system
-	 * @return active OS type enumerator
+	 * Private population of the OS type instance variable to one-time OS retrieval from host system.
+	 *
 	 * @author marc.engelmann, raoul.rothfeld
+	 * @return active OS type enumerator
 	 */
 	private static OSType getActiveOS() {
 		if (activeOS == null) {
@@ -57,7 +67,8 @@ public final class OS {
 	}
 
 	/**
-	 * Retrieve active OS type
+	 * Retrieve active OS type.
+	 *
 	 * @return active OS type enumerator
 	 */
 	public static OSType getOSType() {
@@ -65,7 +76,8 @@ public final class OS {
 	}
 
 	/**
-	 * Test if OS type is Windows
+	 * Test if OS type is Windows.
+	 *
 	 * @return whether OS type is Windows
 	 */
 	public static boolean isWindows() {
@@ -73,7 +85,8 @@ public final class OS {
 	}
 
 	/**
-	 * Test if OS type is MacOS
+	 * Test if OS type is MacOS.
+	 *
 	 * @return whether OS type is MacOS
 	 */
 	public static boolean isMac() {
@@ -81,7 +94,8 @@ public final class OS {
 	}
 
 	/**
-	 * Test if OS type is Linux
+	 * Test if OS type is Linux.
+	 *
 	 * @return whether OS type is Linux
 	 */
 	public static boolean isUnix() {
@@ -89,7 +103,8 @@ public final class OS {
 	}
 
 	/**
-	 * Test if OS type is Solaris
+	 * Test if OS type is Solaris.
+	 *
 	 * @return whether OS type is Solaris
 	 */
 	public static boolean isSolaris() {

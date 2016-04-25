@@ -51,30 +51,56 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
  */
 
 public class CabinViewPart extends ViewPart {
+	
+	/** The cabin. */
 	private Cabin cabin;
+	
+	/** The canvas height. */
 	private double factor, canvasHeight;
+	
+	/** The parent. */
 	private Composite parent;
 
+	/** The initial boot. */
 	private static boolean initialBoot = true;
 
 	/********************* graphical settings. *************************/
 	private static final int OFFSET_OF_DOOR = 0, CABIN_WIDTH_IN_PIXELS = 123, DOOR_DEPTH = 2, ICON_SIZE_IN_PIXELS = 15;
+	
+	/** The Constant PAX_SIZE. */
 	private static final double PAX_SIZE = 0.5;
+	
+	/** The Constant MATCH_PASSENGER_COLORS_TO_MOOD. */
 	private static final boolean MATCH_PASSENGER_COLORS_TO_MOOD = true;
 
+	/** The image y. */
 	private static int xZero = 139, yZero = 75, imageX = 400, imageY = 1000;
-	/*******************************************************************/
+	
+	/** ****************************************************************. */
 
 	private Image economySeat, businessSeat, firstSeat, galleyIcon, lavatoryIcon;
+	
+	/** The canvas. */
 	private Canvas canvas;
+	
+	/** The cabin adapter. */
 	private Adapter cabinAdapter;
+	
+	/** The loader. */
 	private ImageLoader loader;
+	
+	/** The img. */
 	private static Image img;
+	
+	/** The Constant IMAGE_PATH. */
 	private static final String FOLDER_NAME = "paxelerate",
 			FILE_PATH = System.getProperty("user.home") + "/.cdt/" + FOLDER_NAME + "/",
 			IMAGE_PATH = "/images/aircraft/interior/";
+	
+	/** The storage folder. */
 	private static File storageFolder = new File(FILE_PATH);
 
+	/** The scaled y. */
 	private int scaledX, scaledY;
 
 	/**
@@ -126,20 +152,27 @@ public class CabinViewPart extends ViewPart {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Gets the cabin.
+	 *
+	 * @return the cabin
 	 */
 	public Cabin getCabin() {
 		return cabin;
 	}
 
 	/**
-	 * 
-	 * @author marc.engelmann
+	 * The Enum Axis.
 	 *
+	 * @author marc.engelmann
 	 */
 	private enum Axis {
-		X, Y, Z
+		
+		/** The x. */
+		X, 
+ /** The y. */
+ Y, 
+ /** The z. */
+ Z
 	}
 
 	/**
@@ -297,8 +330,9 @@ public class CabinViewPart extends ViewPart {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Switch aircraft image.
+	 *
+	 * @return the image
 	 */
 	private Image switchAircraftImage() {
 		switch (cabin.getAircraftType()) {
@@ -315,10 +349,11 @@ public class CabinViewPart extends ViewPart {
 	}
 
 	/**
-	 * 
-	 * @param width
-	 * @param height
-	 * @return
+	 * Resize ac.
+	 *
+	 * @param width the width
+	 * @param height the height
+	 * @return the image
 	 */
 	private Image resizeAC(int width, int height) {
 		Image scaledImage = new Image(parent.getDisplay(), width, height);
@@ -333,8 +368,9 @@ public class CabinViewPart extends ViewPart {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Try aircraft switch.
+	 *
+	 * @return the image
 	 */
 	private Image tryAircraftSwitch() {
 		return resizeAC((int) (imageX * canvasHeight / imageY), (int) (imageY * canvasHeight / imageY));
@@ -490,9 +526,8 @@ public class CabinViewPart extends ViewPart {
 
 	/**
 	 * This method gets the paths.
-	 * 
-	 * @param pathList
-	 *            the list of paths
+	 *
+	 * @param agentList the agent list
 	 */
 	public void submitAgents(final ArrayList<Agent> agentList) {
 		canvas.redraw();
@@ -658,9 +693,9 @@ public class CabinViewPart extends ViewPart {
 	/**
 	 * NOTE: FACTORS ARE SCALED BY 100, YOU NEED TO DIVIDE IT BY 100 IN ORDER TO
 	 * GET THE REAL FACTORS.
-	 * 
-	 * @param passenger
-	 * @return
+	 *
+	 * @param passenger the passenger
+	 * @return the direction vector
 	 */
 	private Vector getDirectionVector(Passenger passenger) {
 		int rotation = (int) passenger.getOrientationInDegree();
@@ -687,27 +722,30 @@ public class CabinViewPart extends ViewPart {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Scale.
+	 *
+	 * @return the double
 	 */
 	private double scale() {
 		return cabin.getSimulationSettings().getScale() / factor;
 	}
 
 	/**
-	 * 
-	 * @param value
-	 * @return
+	 * Adapt.
+	 *
+	 * @param value the value
+	 * @return the int
 	 */
 	private int adapt(double value) {
 		return (int) (value / factor);
 	}
 
 	/**
-	 * 
-	 * @param axis
-	 * @param value
-	 * @return
+	 * Adapt.
+	 *
+	 * @param axis the axis
+	 * @param value the value
+	 * @return the int
 	 */
 	private int adapt(Axis axis, double value) {
 		switch (axis) {
@@ -728,7 +766,7 @@ public class CabinViewPart extends ViewPart {
 	}
 
 	/**
-	 * 
+	 * Dispose all.
 	 */
 	private void disposeAll() {
 		super.dispose();

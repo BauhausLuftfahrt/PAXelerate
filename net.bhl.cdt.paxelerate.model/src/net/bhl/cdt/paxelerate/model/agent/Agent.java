@@ -40,84 +40,137 @@ import net.bhl.cdt.paxelerate.util.time.StopWatch;
  *
  */
 public class Agent extends Subject implements Runnable {
+	
+	/** The thread. */
 	private Thread thread;
+	
+	/** The path. */
 	private Path path;
 
+	/** The Constant PIXELS_FOR_WAY. */
 	private final static int PIXELS_FOR_WAY = 7;
 
+	/** The current position. */
 	private Vector start, goal, desiredPosition, currentPosition;
+	
+	/** The mutable cost map. */
 	private Costmap mutableCostMap;
 
+	/** The dim. */
 	private int numbOfInterupts = 0, waycounter = 0, dim = 2;
 
+	/** The distance. */
 	private double distance;
 
+	/** The moved once. */
 	private boolean alreadyStowed = false, waitingCompleted = false,
 			initialized = false, exitTheMainLoop = false, movedOnce = false;;
 
+	/** The stopwatch. */
 	private StopWatch stopwatch = new StopWatch();
+	
+	/** The pathlist. */
 	private ArrayList<Path> pathlist = new ArrayList<Path>();
 
+	/** The agent mood. */
 	private AgentMood agentMood;
+	
+	/** The blocking agent. */
 	private Agent blockingAgent;
 
+	/** The final costmap. */
 	/* constant values */
 	private final Costmap finalCostmap;
+	
+	/** The passenger. */
 	private final Passenger passenger;
 
+	/** The scale. */
 	private final int scale;
+	
+	/** The mode. */
 	private final AgentMode mode;
 
+	/** The current state. */
 	private State currentState;
+	
+	/** The passenger i let in the row. */
 	private Passenger thePassengerILetInTheRow;
+	
+	/** The sim luggage settings. */
 	private LuggageProperties simLuggageSettings;
+	
+	/** The sim settings. */
 	private SimulationProperties simSettings;
 
 	/**
-	 * 
-	 * @return
+	 * Gets the the passenger i let in the row.
+	 *
+	 * @return the the passenger i let in the row
 	 */
 	public Passenger getThePassengerILetInTheRow() {
 		return thePassengerILetInTheRow;
 	}
 
 	/**
-	 * 
-	 * @author marc.engelmann
+	 * The Enum AgentMode.
 	 *
+	 * @author marc.engelmann
 	 */
 	public static enum AgentMode {
-		GO_TO_SEAT, MAKE_WAY
+		
+		/** The go to seat. */
+		GO_TO_SEAT, 
+ /** The make way. */
+ MAKE_WAY
 	}
 
 	/**
-	 * 
-	 * @author marc.engelmann
+	 * The Enum State.
 	 *
+	 * @author marc.engelmann
 	 */
 	public static enum State {
-		FOLLOWING_PATH, WAITING_FOR_ROW_CLEARING, CLEARING_ROW, STOWING_LUGGAGE, PREPARING, QUEUEING_UP, WAITING_FOR_OTHER_PASSENGER_TO_SEAT, RETURNING_TO_SEAT;
+		
+		/** The following path. */
+		FOLLOWING_PATH, 
+ /** The waiting for row clearing. */
+ WAITING_FOR_ROW_CLEARING, 
+ /** The clearing row. */
+ CLEARING_ROW, 
+ /** The stowing luggage. */
+ STOWING_LUGGAGE, 
+ /** The preparing. */
+ PREPARING, 
+ /** The queueing up. */
+ QUEUEING_UP, 
+ /** The waiting for other passenger to seat. */
+ WAITING_FOR_OTHER_PASSENGER_TO_SEAT, 
+ /** The returning to seat. */
+ RETURNING_TO_SEAT;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Gets the cost map.
+	 *
+	 * @return the cost map
 	 */
 	public Costmap getCostMap() {
 		return finalCostmap;
 	}
 
+	/** The rotated footprint. */
 	private int[][] footprint, rotatedFootprint;
 
 	/**
 	 * This method constructs an agent.
-	 * 
-	 * @param passenger
-	 *            the passenger which is represented by the agent
-	 * @param start
-	 *            the starting vector
-	 * @param goal
-	 *            the goal vector
+	 *
+	 * @param passenger            the passenger which is represented by the agent
+	 * @param start            the starting vector
+	 * @param goal            the goal vector
+	 * @param costmap the costmap
+	 * @param mode the mode
+	 * @param thePassengerILetInTheRow the the passenger i let in the row
 	 */
 	public Agent(Passenger passenger, Vector start, Vector goal,
 			Costmap costmap, AgentMode mode,
@@ -156,11 +209,13 @@ public class Agent extends Subject implements Runnable {
 
 	}
 
+	/** The other passengers in row blocking me. */
 	public ArrayList<Passenger> otherPassengersInRowBlockingMe = new ArrayList<Passenger>();
 
 	/**
-	 * 
-	 * @return
+	 * Gets the other passengers in row blocking me.
+	 *
+	 * @return the other passengers in row blocking me
 	 */
 	public Passenger getOtherPassengersInRowBlockingMe() {
 		if (!otherPassengersInRowBlockingMe.isEmpty()) {
@@ -170,62 +225,127 @@ public class Agent extends Subject implements Runnable {
 		}
 	}
 
+	/**
+	 * Gets the passenger.
+	 *
+	 * @return the passenger
+	 */
 	public Passenger getPassenger() {
 		return passenger;
 	}
 
+	/**
+	 * Sets the current state.
+	 *
+	 * @param status the new current state
+	 */
 	public void setCurrentState(State status) {
 		this.currentState = status;
 	}
 
+	/**
+	 * Gets the current state.
+	 *
+	 * @return the current state
+	 */
 	public State getCurrentState() {
 		return currentState;
 	}
 
+	/**
+	 * Gets the agent mode.
+	 *
+	 * @return the agent mode
+	 */
 	public AgentMode getAgentMode() {
 		return mode;
 	}
 
+	/**
+	 * Gets the blocking agent.
+	 *
+	 * @return the blocking agent
+	 */
 	public Agent getBlockingAgent() {
 		return blockingAgent;
 	}
 
+	/**
+	 * Checks if is initialized.
+	 *
+	 * @return true, if is initialized
+	 */
 	public boolean isInitialized() {
 		return initialized;
 	}
 
+	/**
+	 * Sets the initialized.
+	 *
+	 * @param initialized the new initialized
+	 */
 	public void setInitialized(boolean initialized) {
 		this.initialized = initialized;
 	}
 
+	/**
+	 * Sets the blocking agent.
+	 *
+	 * @param blockingAgent the new blocking agent
+	 */
 	public void setBlockingAgent(Agent blockingAgent) {
 		this.blockingAgent = blockingAgent;
 	}
 
+	/**
+	 * Gets the start.
+	 *
+	 * @return the start
+	 */
 	public Vector getStart() {
 		return start;
 	}
 
+	/**
+	 * Gets the current position.
+	 *
+	 * @return the current position
+	 */
 	public Vector getCurrentPosition() {
 		return currentPosition;
 	}
 
+	/**
+	 * Gets the desired position.
+	 *
+	 * @return the desired position
+	 */
 	public Vector getDesiredPosition() {
 		return desiredPosition;
 	}
 
+	/**
+	 * Gets the goal.
+	 *
+	 * @return the goal
+	 */
 	public Vector getGoal() {
 		return goal;
 	}
 
+	/**
+	 * Did move once.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean didMoveOnce() {
 		return movedOnce;
 	}
 
 	/**
 	 * This method returns the distance form the seat where PAX is stowing his
-	 * luggage in multiple of the current map scaling
-	 * 
+	 * luggage in multiple of the current map scaling.
+	 *
 	 * @return distance in multiple of the current map scaling
 	 */
 	private int getLuggageStowDistance() {
@@ -238,8 +358,8 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * This method returns if the passenger is ready to stow his luggage
-	 * 
+	 * This method returns if the passenger is ready to stow his luggage.
+	 *
 	 * @return if the passenger is ready to stow luggage
 	 */
 	public boolean passengerStowsLuggage() {
@@ -256,11 +376,12 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * 
-	 * @param position
-	 * @param range
-	 * @param print
-	 * @return
+	 * Checks if is in x range equal.
+	 *
+	 * @param position the position
+	 * @param range the range
+	 * @param print the print
+	 * @return true, if is in x range equal
 	 */
 	private boolean isInXRangeEqual(int position, int range, boolean print) {
 
@@ -271,11 +392,12 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * 
-	 * @param position
-	 * @param range
-	 * @param print
-	 * @return
+	 * Checks if is in x range smaller.
+	 *
+	 * @param position the position
+	 * @param range the range
+	 * @param print the print
+	 * @return true, if is in x range smaller
 	 */
 	private boolean isInXRangeSmaller(int position, int range, boolean print) {
 
@@ -286,8 +408,9 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Checks for luggage.
+	 *
+	 * @return true, if successful
 	 */
 	private boolean hasLuggage() {
 		return (passenger.getLuggage() != LuggageSize.NONE);
@@ -400,10 +523,9 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * This method is used to rotate the agent!
-	 * 
-	 * @param degrees
-	 *            is the rotation in degrees
+	 * This method is used to rotate the agent!.
+	 *
+	 * @param degrees            is the rotation in degrees
 	 */
 	private void rotateAgent(int degrees) {
 		if (rotationAllowed()) {
@@ -452,6 +574,8 @@ public class Agent extends Subject implements Runnable {
 	 * there is no overlapping of different agent positions over time. The cost
 	 * map is always modified based on the non-editable final cost map
 	 * calculated at the beginning.
+	 *
+	 * @throws NullPointerException the null pointer exception
 	 */
 	public void findNewPath() throws NullPointerException {
 
@@ -499,8 +623,8 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * This method returns the current position of the agent
-	 * 
+	 * This method returns the current position of the agent.
+	 *
 	 * @return the current position
 	 */
 	public Vector getPosition() {
@@ -508,8 +632,9 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Goal reached.
+	 *
+	 * @return true, if successful
 	 */
 	private boolean goalReached() {
 		return (desiredPosition.equals(goal));
@@ -562,17 +687,18 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Gets the path list.
+	 *
+	 * @return the path list
 	 */
 	public ArrayList<Path> getPathList() {
 		return pathlist;
 	}
 
 	/**
-	 * check if there is still on passenger seated
-	 * 
-	 * @return
+	 * check if there is still on passenger seated.
+	 *
+	 * @return true, if successful
 	 */
 	private boolean otherPassengerStoodUp() {
 		for (Passenger pax : otherPassengersInRowBlockingMe) {
@@ -757,8 +883,9 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Anyone near me.
+	 *
+	 * @return true, if successful
 	 */
 	private boolean anyoneNearMe() {
 		for (Passenger pax : SimulationHandler.getCabin().getPassengers()) {
@@ -777,8 +904,9 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Waymaking allowed.
+	 *
+	 * @return true, if successful
 	 */
 	private boolean waymakingAllowed() {
 		if (SimulationHandler.waymakingInRange(passenger)) {
@@ -793,8 +921,9 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Waiting for clearing of row.
+	 *
+	 * @return true, if successful
 	 */
 	private boolean waitingForClearingOfRow() {
 
@@ -809,7 +938,7 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * 
+	 * Occupy one step ahead.
 	 */
 	private synchronized void occupyOneStepAhead() {
 		blockArea(currentPosition, false, false, null);
@@ -819,16 +948,18 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Checks if is exit path loop.
+	 *
+	 * @return true, if is exit path loop
 	 */
 	public boolean isExitPathLoop() {
 		return exitTheMainLoop;
 	}
 
 	/**
-	 * 
-	 * @param isSeated
+	 * Define seated.
+	 *
+	 * @param isSeated the is seated
 	 */
 	private void defineSeated(boolean isSeated) {
 
@@ -843,8 +974,9 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * In default boarding mode.
+	 *
+	 * @return true, if successful
 	 */
 	private boolean inDefaultBoardingMode() {
 		if (mode == AgentMode.MAKE_WAY) {
@@ -855,13 +987,19 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * 
-	 * @param exitPathLoop
+	 * Sets the exit path loop.
+	 *
+	 * @param exitPathLoop the new exit path loop
 	 */
 	public void setExitPathLoop(boolean exitPathLoop) {
 		this.exitTheMainLoop = exitPathLoop;
 	}
 
+	/**
+	 * Interrupt agent.
+	 *
+	 * @param duration the duration
+	 */
 	public void interruptAgent(int duration) {
 		try {
 			Thread.sleep(duration);
@@ -873,8 +1011,9 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Perform final elements.
+	 *
+	 * @return true, if successful
 	 */
 	public boolean performFinalElements() {
 
@@ -912,7 +1051,7 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * 
+	 * Unfold seat.
 	 */
 	private void unfoldSeat() {
 
@@ -1124,7 +1263,7 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * 
+	 * Removes the.
 	 */
 	public void remove() {
 		if (performFinalElements() == true) {

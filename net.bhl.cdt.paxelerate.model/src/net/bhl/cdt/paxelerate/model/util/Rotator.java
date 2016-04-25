@@ -11,6 +11,13 @@ import net.bhl.cdt.paxelerate.util.math.Vector2D;
  */
 public class Rotator {
 
+	/**
+	 * Round index to point.
+	 *
+	 * @param index the index
+	 * @param radius the radius
+	 * @return the vector
+	 */
 	private static Vector RoundIndexToPoint(int index, int radius) {
 		if (radius == 0)
 			return new Vector2D(0, 0);
@@ -113,6 +120,12 @@ public class Rotator {
 	// return false;
 	// }
 
+	/**
+	 * Rotate45.
+	 *
+	 * @param array the array
+	 * @return the int[][]
+	 */
 	private static int[][] rotate45(int[][] array) {
 
 		int dim = Math.max(array[0].length, array.length);
@@ -147,6 +160,13 @@ public class Rotator {
 		return result;
 	}
 
+	/**
+	 * Rotate.
+	 *
+	 * @param degrees the degrees
+	 * @param array the array
+	 * @return the int[][]
+	 */
 	public static int[][] rotate(int degrees, int[][] array) {
 		if (degrees == 0 || degrees % 45 != 0) {
 			return null;

@@ -12,7 +12,11 @@ package net.bhl.cdt.paxelerate.util.time;
  */
 
 public class StopWatch {
+	
+	/** The stop time. */
 	private long startTime, stopTime;
+	
+	/** The running. */
 	private boolean running;
 
 	/**
@@ -24,6 +28,9 @@ public class StopWatch {
 		running = false;
 	}
 
+	/**
+	 * Reset.
+	 */
 	public void reset() {
 		startTime = 0;
 		stopTime = 0;

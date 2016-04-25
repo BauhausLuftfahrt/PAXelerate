@@ -19,6 +19,7 @@ import net.bhl.cdt.paxelerate.util.math.Vector;
 
 public class Path {
 
+	/** The waypoints. */
 	private ArrayList<Node> waypoints = new ArrayList<Node>();
 
 	/**
@@ -118,7 +119,7 @@ public class Path {
 	}
 
 	/**
-	 * 
+	 * Invert.
 	 */
 	public void invert() {
 
@@ -138,10 +139,11 @@ public class Path {
 	}
 
 	/**
-	 * 
-	 * @param path
-	 * @param point
-	 * @return
+	 * Cut to point.
+	 *
+	 * @param path the path
+	 * @param point the point
+	 * @return the path
 	 */
 	public Path cutToPoint(Path path, Vector point) {
 		/* get the last node */

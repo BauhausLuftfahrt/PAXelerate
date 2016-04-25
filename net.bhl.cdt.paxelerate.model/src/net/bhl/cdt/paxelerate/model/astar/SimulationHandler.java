@@ -32,42 +32,53 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.ProgressHandler;
  */
 public class SimulationHandler {
 
+	/** The cabin. */
 	private static Cabin cabin;
 
+	/** The simulation done. */
 	private static Boolean simulationDone = false;
 
+	/** The areamaphandler. */
 	private static AreamapHandler areamaphandler;
 
 	/* Lists & Maps */
 
+	/** The waymaking list. */
 	private static ArrayList<Passenger> finishedList = new ArrayList<Passenger>(),
 			activeList = new ArrayList<Passenger>(),
 			waymakingList = new ArrayList<Passenger>();
+	
+	/** The agent list. */
 	private static ArrayList<Agent> agentList = new ArrayList<Agent>();
 
+	/** The access pending. */
 	private static HashMap<Passenger, Integer> accessPending = new HashMap<Passenger, Integer>();
+	
+	/** The last door release. */
 	private static HashMap<Door, Double> lastDoorRelease = new HashMap<Door, Double>();
 
 	/* ************ */
 
+	/** The watch. */
 	private static StopWatch watch = new StopWatch();
+	
+	/** The dimensions. */
 	private Vector dimensions;
 
+	/** The Constant SHOW_AREAMAP_ANIMATION. */
 	public static final boolean SHOW_AREAMAP_ANIMATION = true;
 
+	/** The progress. */
 	private static ProgressHandler progress;
 
+	/** The progressvalue. */
 	private static int percent = 0, progressvalue = 0;
 
 	/**
 	 * This method constructs the RunAStar algorithm.
-	 * 
-	 * @param obstaclemap
-	 *            is the obstacle map
-	 * @param dimensions
-	 *            is the dimension vector
-	 * @param cabin
-	 *            is the cabin
+	 *
+	 * @param dimensions            is the dimension vector
+	 * @param cabin            is the cabin
 	 */
 	public SimulationHandler(Vector dimensions, Cabin cabin) {
 		this.dimensions = dimensions;
@@ -78,33 +89,37 @@ public class SimulationHandler {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Gets the number of seated passengers.
+	 *
+	 * @return the number of seated passengers
 	 */
 	public static int getNumberOfSeatedPassengers() {
 		return finishedList.size();
 	}
 
 	/**
-	 * 
-	 * @param pax
+	 * Adds the to waymaking list.
+	 *
+	 * @param pax the pax
 	 */
 	public static void addToWaymakingList(Passenger pax) {
 		waymakingList.add(pax);
 	}
 
 	/**
-	 * 
-	 * @param pax
+	 * Removes the from waymaking list.
+	 *
+	 * @param pax the pax
 	 */
 	public static void removeFromWaymakingList(Passenger pax) {
 		waymakingList.remove(pax);
 	}
 
 	/**
-	 * 
-	 * @param pax
-	 * @return
+	 * Waymaking in range.
+	 *
+	 * @param pax the pax
+	 * @return true, if successful
 	 */
 	public static boolean waymakingInRange(Passenger pax) {
 		for (Passenger pass : waymakingList) {
@@ -124,6 +139,12 @@ public class SimulationHandler {
 		return areamaphandler.getAreamap();
 	}
 
+	/**
+	 * Gets the agent by passenger.
+	 *
+	 * @param pax the pax
+	 * @return the agent by passenger
+	 */
 	public static synchronized Agent getAgentByPassenger(Passenger pax) {
 		for (Agent agent : agentList) {
 			if (agent.getPassenger().getId() == pax.getId()) {
@@ -134,16 +155,18 @@ public class SimulationHandler {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Gets the cabin.
+	 *
+	 * @return the cabin
 	 */
 	public static Cabin getCabin() {
 		return cabin;
 	}
 
 	/**
-	 * 
-	 * @param pax
+	 * Removes the passenger.
+	 *
+	 * @param pax the pax
 	 */
 	public static synchronized void removePassenger(Passenger pax) {
 		Agent agent = getAgentByPassenger(pax);
@@ -160,15 +183,16 @@ public class SimulationHandler {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Gets the agent list.
+	 *
+	 * @return the agent list
 	 */
 	public static ArrayList<Agent> getAgentList() {
 		return agentList;
 	}
 
 	/**
-	 * 
+	 * Reset.
 	 */
 	public static synchronized void reset() {
 
@@ -190,9 +214,9 @@ public class SimulationHandler {
 	/**
 	 * This method signals that a passengers has found his seat. This is done by
 	 * adding him to the finishedList ArrayList element.
-	 * 
-	 * @param passenger
-	 *            is the passenger
+	 *
+	 * @param passenger            is the passenger
+	 * @param setSeated the set seated
 	 */
 	public static synchronized void setPassengerSeated(Passenger passenger,
 			boolean setSeated) {
@@ -211,9 +235,10 @@ public class SimulationHandler {
 	}
 
 	/**
-	 * 
-	 * @param pax
-	 * @param myself
+	 * Launch waymaking agent.
+	 *
+	 * @param pax the pax
+	 * @param myself the myself
 	 */
 	public static synchronized void launchWaymakingAgent(Passenger pax,
 			Passenger myself) {
@@ -250,17 +275,19 @@ public class SimulationHandler {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Gets the active passengers.
+	 *
+	 * @return the active passengers
 	 */
 	public static synchronized int getActivePassengers() {
 		return activeList.size();
 	}
 
 	/**
-	 * 
-	 * @param pax
-	 * @return
+	 * Cabin access granted.
+	 *
+	 * @param pax the pax
+	 * @return true, if successful
 	 */
 	public synchronized static boolean CabinAccessGranted(Passenger pax) {
 
@@ -286,8 +313,9 @@ public class SimulationHandler {
 	}
 
 	/**
-	 * 
-	 * @param pax
+	 * Sets the passenger active.
+	 *
+	 * @param pax the new passenger active
 	 */
 	public synchronized static void setPassengerActive(Passenger pax) {
 
@@ -426,7 +454,7 @@ public class SimulationHandler {
 	}
 
 	/**
-	 * 
+	 * Stop simulation.
 	 */
 	public static void stopSimulation() {
 		for (Agent agent : agentList) {
@@ -435,6 +463,11 @@ public class SimulationHandler {
 		reset();
 	}
 
+	/**
+	 * Gets the areamap handler.
+	 *
+	 * @return the areamap handler
+	 */
 	public static AreamapHandler getAreamapHandler() {
 		return areamaphandler;
 	}

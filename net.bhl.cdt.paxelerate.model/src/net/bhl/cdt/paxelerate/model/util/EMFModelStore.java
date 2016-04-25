@@ -23,6 +23,7 @@ import net.bhl.cdt.paxelerate.model.SimulationProperties;
  */
 public class EMFModelStore {
 
+	/** The Constant SETTINGS_FILE. */
 	public final static String PATH = "PAXelerate", CABIN_FILE = "cabin",
 			SETTINGS_FILE = "properties";
 

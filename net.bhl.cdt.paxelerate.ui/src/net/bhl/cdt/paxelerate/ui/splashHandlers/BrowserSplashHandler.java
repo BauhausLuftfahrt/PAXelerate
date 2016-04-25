@@ -14,22 +14,27 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.splash.AbstractSplashHandler;
 
 /**
+ * The Class BrowserSplashHandler.
+ *
  * @since 3.3
- * 
  */
 @Deprecated
 public class BrowserSplashHandler extends AbstractSplashHandler {
 
+	/** The Constant F_BROWSER_URL. */
 	private final static String F_BROWSER_URL = "http://www.google.com"; //NON-NLS-1
 	
+	/** The browser. */
 	private Browser fBrowser;
 	
+	/** The button. */
 	private Button fButton;
 	
+	/** The close. */
 	private boolean fClose;
 
 	/**
-	 * 
+	 * Instantiates a new browser splash handler.
 	 */
 	public BrowserSplashHandler() {
 		fBrowser = null;
@@ -60,7 +65,7 @@ public class BrowserSplashHandler extends AbstractSplashHandler {
 	}
 	
 	/**
-	 * 
+	 * Do event loop.
 	 */
 	private void doEventLoop() {
 		Shell splash = getSplash();
@@ -72,7 +77,7 @@ public class BrowserSplashHandler extends AbstractSplashHandler {
 	}
 	
 	/**
-	 * 
+	 * Creates the ui listeners.
 	 */
 	private void createUIListeners() {
 		// Create the browser listeners
@@ -82,7 +87,7 @@ public class BrowserSplashHandler extends AbstractSplashHandler {
 	}
 
 	/**
-	 * 
+	 * Creates the ui listeners button.
 	 */
 	private void createUIListenersButton() {
 		fButton.addSelectionListener(new SelectionListener() {
@@ -96,7 +101,7 @@ public class BrowserSplashHandler extends AbstractSplashHandler {
 	}
 
 	/**
-	 * 
+	 * Creates the ui listeners browser.
 	 */
 	private void createUIListenersBrowser() {
 		fBrowser.addProgressListener(new ProgressListener() {
@@ -113,7 +118,7 @@ public class BrowserSplashHandler extends AbstractSplashHandler {
 	}
 	
 	/**
-	 * 
+	 * Creates the ui.
 	 */
 	private void createUI() {
 		// Create the web browser
@@ -123,7 +128,7 @@ public class BrowserSplashHandler extends AbstractSplashHandler {
 	}
 
 	/**
-	 * 
+	 * Creates the ui button.
 	 */
 	private void createUIButton() {
 		Shell splash = getSplash();
@@ -139,7 +144,7 @@ public class BrowserSplashHandler extends AbstractSplashHandler {
 	}
 
 	/**
-	 * 
+	 * Configure ui button bounds.
 	 */
 	private void configureUIButtonBounds() {
 		Shell splash = getSplash();
@@ -156,7 +161,7 @@ public class BrowserSplashHandler extends AbstractSplashHandler {
 	}	
 	
 	/**
-	 * 
+	 * Creates the ui browser.
 	 */
 	private void createUIBrowser() {
 		fBrowser = new Browser(getSplash(), SWT.NONE);
@@ -168,7 +173,7 @@ public class BrowserSplashHandler extends AbstractSplashHandler {
 	}
 
 	/**
-	 * 
+	 * Configure ui splash.
 	 */
 	private void configureUISplash() {
 		GridLayout layout = new GridLayout(1, true);

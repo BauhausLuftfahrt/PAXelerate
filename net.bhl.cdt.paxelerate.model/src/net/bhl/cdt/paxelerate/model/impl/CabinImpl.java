@@ -228,17 +228,21 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @ordered
 	 */
 	protected EList<Passenger> passengers;
+	
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	protected CabinImpl() {
 		super();
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the e class
+	 * @generated 
 	 */
 	@Override
 	protected EClass eStaticClass() {
@@ -246,8 +250,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the x dimension
+	 * @generated 
 	 */
 	@Override
 	public int getXDimension() {
@@ -255,8 +261,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newXDimension the new x dimension
+	 * @generated 
 	 */
 	@Override
 	public void setXDimension(int newXDimension) {
@@ -267,8 +275,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the y dimension
+	 * @generated 
 	 */
 	@Override
 	public int getYDimension() {
@@ -276,8 +286,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newYDimension the new y dimension
+	 * @generated 
 	 */
 	@Override
 	public void setYDimension(int newYDimension) {
@@ -288,8 +300,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the doors
+	 * @generated 
 	 */
 	@Override
 	public EList<Door> getDoors() {
@@ -300,8 +314,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the lavatories
+	 * @generated 
 	 */
 	@Override
 	public EList<Lavatory> getLavatories() {
@@ -312,8 +328,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the galleys
+	 * @generated 
 	 */
 	@Override
 	public EList<Galley> getGalleys() {
@@ -324,8 +342,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the stairways
+	 * @generated 
 	 */
 	@Override
 	public EList<Stairway> getStairways() {
@@ -336,8 +356,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the curtains
+	 * @generated 
 	 */
 	@Override
 	public EList<Curtain> getCurtains() {
@@ -348,8 +370,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the stowages
+	 * @generated 
 	 */
 	@Override
 	public EList<Stowage> getStowages() {
@@ -360,8 +384,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the passengers
+	 * @generated 
 	 */
 	@Override
 	public EList<Passenger> getPassengers() {
@@ -372,8 +398,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the number of decks
+	 * @generated 
 	 */
 	@Override
 	public int getNumberOfDecks() {
@@ -381,8 +409,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newNumberOfDecks the new number of decks
+	 * @generated 
 	 */
 	@Override
 	public void setNumberOfDecks(int newNumberOfDecks) {
@@ -393,8 +423,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the aircraft type
+	 * @generated 
 	 */
 	@Override
 	public AircraftType getAircraftType() {
@@ -402,8 +434,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newAircraftType the new aircraft type
+	 * @generated 
 	 */
 	@Override
 	public void setAircraftType(AircraftType newAircraftType) {
@@ -414,8 +448,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the simulation settings
+	 * @generated 
 	 */
 	@Override
 	public SimulationProperties getSimulationSettings() {
@@ -431,16 +467,20 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the simulation properties
+	 * @generated 
 	 */
 	public SimulationProperties basicGetSimulationSettings() {
 		return simulationSettings;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newSimulationSettings the new simulation settings
+	 * @generated 
 	 */
 	@Override
 	public void setSimulationSettings(
@@ -452,8 +492,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the classes
+	 * @generated 
 	 */
 	@Override
 	public EList<TravelClass> getClasses() {
@@ -464,8 +506,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the row nonexistent
+	 * @generated 
 	 */
 	@Override
 	public int getRowNonexistent() {
@@ -473,8 +517,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newRowNonexistent the new row nonexistent
+	 * @generated 
 	 */
 	@Override
 	public void setRowNonexistent(int newRowNonexistent) {
@@ -485,8 +531,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the aisle width
+	 * @generated 
 	 */
 	@Override
 	public int getAisleWidth() {
@@ -494,8 +542,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newAisleWidth the new aisle width
+	 * @generated 
 	 */
 	@Override
 	public void setAisleWidth(int newAisleWidth) {
@@ -506,8 +556,13 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param otherEnd the other end
+	 * @param featureID the feature id
+	 * @param msgs the msgs
+	 * @return the notification chain
+	 * @generated 
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
@@ -534,8 +589,13 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param resolve the resolve
+	 * @param coreType the core type
+	 * @return the object
+	 * @generated 
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
@@ -576,8 +636,11 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param newValue the new value
+	 * @generated 
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
@@ -641,8 +704,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @generated 
 	 */
 	@Override
 	public void eUnset(int featureID) {
@@ -697,8 +762,11 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @return true, if successful
+	 * @generated 
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
@@ -738,8 +806,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the string
+	 * @generated 
 	 */
 	@Override
 	public String toString() {

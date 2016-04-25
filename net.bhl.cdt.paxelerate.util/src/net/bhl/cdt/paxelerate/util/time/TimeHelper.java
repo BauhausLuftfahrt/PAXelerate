@@ -11,17 +11,16 @@ import java.time.LocalTime;
 import java.util.Date;
 
 /**
- * Supports formatting various time amounts into HH:mm:ss format
- * 
+ * Supports formatting various time amounts into HH:mm:ss format.
+ *
  * @author marc.engelmann, raoul.rothfeld
  */
 public class TimeHelper {
 
 	/**
-	 * Formats time amount in seconds into HH:mm:ss format
-	 * 
-	 * @param seconds
-	 *            the number of seconds to be formatted
+	 * Formats time amount in seconds into HH:mm:ss format.
+	 *
+	 * @param seconds            the number of seconds to be formatted
 	 * @return the converted HH:mm:ss String
 	 */
 	public static String toTimeOfDay(int seconds) {
@@ -29,10 +28,9 @@ public class TimeHelper {
 	}
 
 	/**
-	 * Formats time amount in seconds into HH:mm:ss format
-	 * 
-	 * @param seconds
-	 *            the number of seconds to be formatted
+	 * Formats time amount in seconds into HH:mm:ss format.
+	 *
+	 * @param seconds            the number of seconds to be formatted
 	 * @return the converted HH:mm:ss String
 	 */
 	public static String toTimeOfDay(double seconds) {
@@ -40,10 +38,9 @@ public class TimeHelper {
 	}
 
 	/**
-	 * Formats time amount in seconds into HH:mm:ss format
-	 * 
-	 * @param seconds
-	 *            the number of seconds to be formatted
+	 * Formats time amount in seconds into HH:mm:ss format.
+	 *
+	 * @param seconds            the number of seconds to be formatted
 	 * @return the converted HH:mm:ss String
 	 */
 	public static String toTimeOfDay(long seconds) {
@@ -51,8 +48,8 @@ public class TimeHelper {
 	}
 
 	/**
-	 * Delivers the current time in HH:mm:ss format
-	 * 
+	 * Delivers the current time in HH:mm:ss format.
+	 *
 	 * @return the current time as HH:mm:ss String
 	 */
 	public static String getCurrentTimeOfDay() {

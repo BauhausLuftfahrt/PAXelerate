@@ -7,15 +7,27 @@ package net.bhl.cdt.paxelerate.model.storage;
 
 import net.bhl.cdt.paxelerate.model.LuggageSize;
 
+/**
+ * The Class LuggageStorage.
+ */
 public class LuggageStorage {
 
+	/** The big luggage count. */
 	private int counter = 0, noLuggageCount = 0, smallLuggageCount = 0,
 			mediumLuggageCount = 0, bigLuggageCount = 0;
 
+	/**
+	 * Instantiates a new luggage storage.
+	 */
 	public LuggageStorage() {
 
 	}
 
+	/**
+	 * Adds the value.
+	 *
+	 * @param size the size
+	 */
 	public void addValue(LuggageSize size) {
 
 		counter++;
@@ -36,6 +48,12 @@ public class LuggageStorage {
 		}
 	}
 
+	/**
+	 * Gets the luggage count.
+	 *
+	 * @param size the size
+	 * @return the luggage count
+	 */
 	public int getLuggageCount(LuggageSize size) {
 		switch (size) {
 		default:
@@ -52,6 +70,12 @@ public class LuggageStorage {
 		}
 	}
 
+	/**
+	 * Gets the luggage percentage.
+	 *
+	 * @param size the size
+	 * @return the luggage percentage
+	 */
 	public double getLuggagePercentage(LuggageSize size) {
 		try {
 			switch (size) {
@@ -72,6 +96,11 @@ public class LuggageStorage {
 		}
 	}
 
+	/**
+	 * Gets the amount.
+	 *
+	 * @return the amount
+	 */
 	public int getAmount() {
 		return counter;
 	}

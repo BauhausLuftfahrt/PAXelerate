@@ -9,17 +9,25 @@ import net.bhl.cdt.paxelerate.model.astar.AStarHelper;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 
 /**
- * 
- * @author marc.engelmann, tobias.bruegge-zobel
+ * The Class AgressiveMood.
  *
+ * @author marc.engelmann, tobias.bruegge-zobel
  */
 public class AgressiveMood extends AgentMood implements Strategy {
 
+	/**
+	 * Instantiates a new agressive mood.
+	 *
+	 * @param agent the agent
+	 */
 	public AgressiveMood(Agent agent) {
 		super(agent);
 		// Auto-generated constructor stub
 	}
 
+	/* (non-Javadoc)
+	 * @see net.bhl.cdt.paxelerate.model.agent.AgentMood#reactToCollision(net.bhl.cdt.paxelerate.model.astar.Node.Property)
+	 */
 	@SuppressWarnings("static-access")
 	@Override
 	public void reactToCollision(Property property) {

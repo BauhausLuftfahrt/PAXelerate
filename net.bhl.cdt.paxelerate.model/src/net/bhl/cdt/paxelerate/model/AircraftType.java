@@ -169,22 +169,25 @@ public enum AircraftType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	private final String literal;
 
@@ -192,7 +195,11 @@ public enum AircraftType implements Enumerator {
 	 * Only this class can construct instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param value the value
+	 * @param name the name
+	 * @param literal the literal
+	 * @generated 
 	 */
 	private AircraftType(int value, String name, String literal) {
 		this.value = value;
@@ -202,8 +209,10 @@ public enum AircraftType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the value
+	 * @generated 
 	 */
 	public int getValue() {
 	  return value;
@@ -211,8 +220,10 @@ public enum AircraftType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the name
+	 * @generated 
 	 */
 	public String getName() {
 	  return name;
@@ -220,8 +231,10 @@ public enum AircraftType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the literal
+	 * @generated 
 	 */
 	public String getLiteral() {
 	  return literal;
@@ -231,7 +244,9 @@ public enum AircraftType implements Enumerator {
 	 * Returns the literal value of the enumerator, which is its string representation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @return the string
+	 * @generated 
 	 */
 	@Override
 	public String toString() {

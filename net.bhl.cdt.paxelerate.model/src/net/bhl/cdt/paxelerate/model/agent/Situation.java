@@ -9,20 +9,32 @@ import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 
 
 /**
- * 
- * @author marc.engelmann, tobias.bruegge-zobel
+ * The Class Situation.
  *
+ * @author marc.engelmann, tobias.bruegge-zobel
  */
 public class Situation {
 
+	/** The strategy. */
 	private Strategy strategy;
+	
+	/** The property. */
 	private Property property;
 
+	/**
+	 * Instantiates a new situation.
+	 *
+	 * @param strategy the strategy
+	 * @param property the property
+	 */
 	public Situation(Strategy strategy, Property property) {
 		this.strategy = strategy;
 		this.property = property;
 	}
 
+	/**
+	 * Handle.
+	 */
 	public void handle() {
 		this.strategy.reactToCollision(property);
 	}

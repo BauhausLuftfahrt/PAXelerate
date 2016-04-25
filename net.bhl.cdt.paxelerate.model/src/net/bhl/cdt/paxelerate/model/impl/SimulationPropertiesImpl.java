@@ -382,8 +382,9 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	protected SimulationPropertiesImpl() {
 		super();
@@ -391,8 +392,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the e class
+	 * @generated 
 	 */
 	@Override
 	protected EClass eStaticClass() {
@@ -401,8 +404,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the scale
+	 * @generated 
 	 */
 	public int getScale() {
 		return scale;
@@ -410,8 +415,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newScale the new scale
+	 * @generated 
 	 */
 	public void setScale(int newScale) {
 		int oldScale = scale;
@@ -422,8 +429,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the frames per second
+	 * @generated 
 	 */
 	public int getFramesPerSecond() {
 		return framesPerSecond;
@@ -431,8 +440,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newFramesPerSecond the new frames per second
+	 * @generated 
 	 */
 	public void setFramesPerSecond(int newFramesPerSecond) {
 		int oldFramesPerSecond = framesPerSecond;
@@ -443,8 +454,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return true, if is use preset settings
+	 * @generated 
 	 */
 	public boolean isUsePresetSettings() {
 		return usePresetSettings;
@@ -452,8 +465,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newUsePresetSettings the new use preset settings
+	 * @generated 
 	 */
 	public void setUsePresetSettings(boolean newUsePresetSettings) {
 		boolean oldUsePresetSettings = usePresetSettings;
@@ -464,8 +479,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return true, if is simulate without ui
+	 * @generated 
 	 */
 	public boolean isSimulateWithoutUI() {
 		return simulateWithoutUI;
@@ -473,8 +490,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newSimulateWithoutUI the new simulate without ui
+	 * @generated 
 	 */
 	public void setSimulateWithoutUI(boolean newSimulateWithoutUI) {
 		boolean oldSimulateWithoutUI = simulateWithoutUI;
@@ -485,8 +504,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the number of simulation loops
+	 * @generated 
 	 */
 	public int getNumberOfSimulationLoops() {
 		return numberOfSimulationLoops;
@@ -494,8 +515,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newNumberOfSimulationLoops the new number of simulation loops
+	 * @generated 
 	 */
 	public void setNumberOfSimulationLoops(int newNumberOfSimulationLoops) {
 		int oldNumberOfSimulationLoops = numberOfSimulationLoops;
@@ -506,8 +529,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return true, if is random sort between loops
+	 * @generated 
 	 */
 	public boolean isRandomSortBetweenLoops() {
 		return randomSortBetweenLoops;
@@ -515,8 +540,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newRandomSortBetweenLoops the new random sort between loops
+	 * @generated 
 	 */
 	public void setRandomSortBetweenLoops(boolean newRandomSortBetweenLoops) {
 		boolean oldRandomSortBetweenLoops = randomSortBetweenLoops;
@@ -527,8 +554,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return true, if is use foldable seats
+	 * @generated 
 	 */
 	public boolean isUseFoldableSeats() {
 		return useFoldableSeats;
@@ -536,8 +565,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newUseFoldableSeats the new use foldable seats
+	 * @generated 
 	 */
 	public void setUseFoldableSeats(boolean newUseFoldableSeats) {
 		boolean oldUseFoldableSeats = useFoldableSeats;
@@ -548,8 +579,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return true, if is bring your own seat
+	 * @generated 
 	 */
 	public boolean isBringYourOwnSeat() {
 		return bringYourOwnSeat;
@@ -557,8 +590,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newBringYourOwnSeat the new bring your own seat
+	 * @generated 
 	 */
 	public void setBringYourOwnSeat(boolean newBringYourOwnSeat) {
 		boolean oldBringYourOwnSeat = bringYourOwnSeat;
@@ -569,8 +604,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the results
+	 * @generated 
 	 */
 	public EList<SimulationResult> getResults() {
 		if (results == null) {
@@ -581,8 +618,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the sorting
+	 * @generated 
 	 */
 	public SortingStyle getSorting() {
 		return sorting;
@@ -590,8 +629,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newSorting the new sorting
+	 * @generated 
 	 */
 	public void setSorting(SortingStyle newSorting) {
 		SortingStyle oldSorting = sorting;
@@ -602,8 +643,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the simulation speed factor
+	 * @generated 
 	 */
 	public int getSimulationSpeedFactor() {
 		return simulationSpeedFactor;
@@ -611,8 +654,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newSimulationSpeedFactor the new simulation speed factor
+	 * @generated 
 	 */
 	public void setSimulationSpeedFactor(int newSimulationSpeedFactor) {
 		int oldSimulationSpeedFactor = simulationSpeedFactor;
@@ -623,8 +668,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the seat interference standing up passenger waiting time
+	 * @generated 
 	 */
 	public int getSeatInterferenceStandingUpPassengerWaitingTime() {
 		return seatInterferenceStandingUpPassengerWaitingTime;
@@ -632,8 +679,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newSeatInterferenceStandingUpPassengerWaitingTime the new seat interference standing up passenger waiting time
+	 * @generated 
 	 */
 	public void setSeatInterferenceStandingUpPassengerWaitingTime(int newSeatInterferenceStandingUpPassengerWaitingTime) {
 		int oldSeatInterferenceStandingUpPassengerWaitingTime = seatInterferenceStandingUpPassengerWaitingTime;
@@ -644,8 +693,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the seat interference process time
+	 * @generated 
 	 */
 	public int getSeatInterferenceProcessTime() {
 		return seatInterferenceProcessTime;
@@ -653,8 +704,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newSeatInterferenceProcessTime the new seat interference process time
+	 * @generated 
 	 */
 	public void setSeatInterferenceProcessTime(int newSeatInterferenceProcessTime) {
 		int oldSeatInterferenceProcessTime = seatInterferenceProcessTime;
@@ -665,8 +718,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the thread sleep time default
+	 * @generated 
 	 */
 	public int getThreadSleepTimeDefault() {
 		return threadSleepTimeDefault;
@@ -674,8 +729,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newThreadSleepTimeDefault the new thread sleep time default
+	 * @generated 
 	 */
 	public void setThreadSleepTimeDefault(int newThreadSleepTimeDefault) {
 		int oldThreadSleepTimeDefault = threadSleepTimeDefault;
@@ -686,8 +743,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return true, if is developer mode
+	 * @generated 
 	 */
 	public boolean isDeveloperMode() {
 		return developerMode;
@@ -695,8 +754,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newDeveloperMode the new developer mode
+	 * @generated 
 	 */
 	public void setDeveloperMode(boolean newDeveloperMode) {
 		boolean oldDeveloperMode = developerMode;
@@ -707,8 +768,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the luggage properties
+	 * @generated 
 	 */
 	public LuggageProperties getLuggageProperties() {
 		return luggageProperties;
@@ -716,8 +779,12 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newLuggageProperties the new luggage properties
+	 * @param msgs the msgs
+	 * @return the notification chain
+	 * @generated 
 	 */
 	public NotificationChain basicSetLuggageProperties(LuggageProperties newLuggageProperties, NotificationChain msgs) {
 		LuggageProperties oldLuggageProperties = luggageProperties;
@@ -731,8 +798,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newLuggageProperties the new luggage properties
+	 * @generated 
 	 */
 	public void setLuggageProperties(LuggageProperties newLuggageProperties) {
 		if (newLuggageProperties != luggageProperties) {
@@ -750,8 +819,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger properties
+	 * @generated 
 	 */
 	public PassengerProperties getPassengerProperties() {
 		return passengerProperties;
@@ -759,8 +830,12 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerProperties the new passenger properties
+	 * @param msgs the msgs
+	 * @return the notification chain
+	 * @generated 
 	 */
 	public NotificationChain basicSetPassengerProperties(PassengerProperties newPassengerProperties, NotificationChain msgs) {
 		PassengerProperties oldPassengerProperties = passengerProperties;
@@ -774,8 +849,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerProperties the new passenger properties
+	 * @generated 
 	 */
 	public void setPassengerProperties(PassengerProperties newPassengerProperties) {
 		if (newPassengerProperties != passengerProperties) {
@@ -793,8 +870,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passengers boarding per minute
+	 * @generated 
 	 */
 	public double getPassengersBoardingPerMinute() {
 		return passengersBoardingPerMinute;
@@ -802,8 +881,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengersBoardingPerMinute the new passengers boarding per minute
+	 * @generated 
 	 */
 	public void setPassengersBoardingPerMinute(double newPassengersBoardingPerMinute) {
 		double oldPassengersBoardingPerMinute = passengersBoardingPerMinute;
@@ -814,8 +895,13 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param otherEnd the other end
+	 * @param featureID the feature id
+	 * @param msgs the msgs
+	 * @return the notification chain
+	 * @generated 
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -830,8 +916,13 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param resolve the resolve
+	 * @param coreType the core type
+	 * @return the object
+	 * @generated 
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
@@ -878,8 +969,11 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param newValue the new value
+	 * @generated 
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
@@ -946,8 +1040,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @generated 
 	 */
 	@Override
 	public void eUnset(int featureID) {
@@ -1012,8 +1108,11 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @return true, if successful
+	 * @generated 
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
@@ -1060,8 +1159,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the string
+	 * @generated 
 	 */
 	@Override
 	public String toString() {

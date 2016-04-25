@@ -19,16 +19,17 @@ import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
 /**
- * 
- * @author marc.engelmann
+ * The Class AgentFunctions.
  *
+ * @author marc.engelmann
  */
 public class AgentFunctions {
 
 	/**
-	 * 
-	 * @param agent
-	 * @return
+	 * Someone already in this part of the row.
+	 *
+	 * @param agent the agent
+	 * @return true, if successful
 	 */
 	public static boolean someoneAlreadyInThisPartOfTheRow(Agent agent) {
 		Row row = agent.getPassenger().getSeat().getRow();
@@ -52,10 +53,11 @@ public class AgentFunctions {
 	 * TODO: ONLY APPLICABLE FOR 3-3 CONFIGURATIONS OR BELOW!
 	 */
 	/**
-	 * 
-	 * @param checkSeat
-	 * @param mySeat
-	 * @return
+	 * Same side of aisle.
+	 *
+	 * @param checkSeat the check seat
+	 * @param mySeat the my seat
+	 * @return true, if successful
 	 */
 	private static boolean sameSideOfAisle(Seat checkSeat, Seat mySeat) {
 
@@ -74,10 +76,11 @@ public class AgentFunctions {
 
 	// TODO: this only works for a ONE AISLE configuration!
 	/**
-	 * 
-	 * @param otherSeat
-	 * @param thisSeat
-	 * @return
+	 * Other seat closer to aisle.
+	 *
+	 * @param otherSeat the other seat
+	 * @param thisSeat the this seat
+	 * @return true, if successful
 	 */
 	public static boolean otherSeatCloserToAisle(Seat otherSeat,
 			Seat thisSeat) {
@@ -99,7 +102,8 @@ public class AgentFunctions {
 
 	/**
 	 * Rotation from 0 to 359 degrees. Only 45 degree steps. North is zero.
-	 * 
+	 *
+	 * @param agent the agent
 	 * @return the rotation in degrees.
 	 */
 	public static int getRotation(Agent agent) {
@@ -124,12 +128,14 @@ public class AgentFunctions {
 		return angle;
 	}
 
+	/** The Constant PIXELS_FOR_SCANNING_AT_DOOR. */
 	public static final int PIXELS_FOR_SCANNING_AT_DOOR = 3;
 
 	/**
-	 * 
-	 * @param passenger
-	 * @return
+	 * Doorway blocked.
+	 *
+	 * @param passenger the passenger
+	 * @return true, if successful
 	 */
 	public synchronized static boolean doorwayBlocked(Passenger passenger) {
 
@@ -167,6 +173,9 @@ public class AgentFunctions {
 	/**
 	 * This method takes a cost map and adds a huge cost to the location and the
 	 * area around agents. The agent triggering this method is ignored.
+	 *
+	 * @param agent the agent
+	 * @return the costmap
 	 */
 	public static Costmap updateCostmap(Agent agent) {
 

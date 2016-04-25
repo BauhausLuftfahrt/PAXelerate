@@ -25,11 +25,13 @@ import net.bhl.cdt.paxelerate.model.CabinPackage;
  * @generated
  */
 public class CabinItemProvider extends NamedElementItemProvider {
+	
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param adapterFactory the adapter factory
+	 * @generated 
 	 */
 	public CabinItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
@@ -38,8 +40,10 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param object the object
+	 * @return the property descriptors
+	 * @generated 
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
@@ -61,7 +65,9 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	 * This adds a property descriptor for the XDimension feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addXDimensionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -83,7 +89,9 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	 * This adds a property descriptor for the YDimension feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addYDimensionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -104,8 +112,9 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	/**
 	 * This adds a property descriptor for the Number Of Decks feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addNumberOfDecksPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -126,8 +135,9 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	/**
 	 * This adds a property descriptor for the Aircraft Type feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addAircraftTypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -149,7 +159,9 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	 * This adds a property descriptor for the Simulation Settings feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addSimulationSettingsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -170,8 +182,9 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	/**
 	 * This adds a property descriptor for the Row Nonexistent feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addRowNonexistentPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -192,8 +205,9 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	/**
 	 * This adds a property descriptor for the Aisle Width feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addAisleWidthPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -216,7 +230,10 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @return the children features
+	 * @generated 
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(
@@ -236,8 +253,12 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param object the object
+	 * @param child the child
+	 * @return the child feature
+	 * @generated 
 	 */
 	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
@@ -251,7 +272,10 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	 * This returns Cabin.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @return the image
+	 * @generated 
 	 */
 	@Override
 	public Object getImage(Object object) {
@@ -262,7 +286,10 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @return the text
+	 * @generated 
 	 */
 	@Override
 	public String getText(Object object) {
@@ -277,7 +304,9 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * @generated
+	 *
+	 * @param notification the notification
+	 * @generated 
 	 */
 	@Override
 	public void notifyChanged(Notification notification) {
@@ -310,8 +339,10 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param newChildDescriptors the new child descriptors
+	 * @param object the object
+	 * @generated 
 	 */
 	@Override
 	protected void collectNewChildDescriptors(
@@ -362,8 +393,9 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	/**
 	 * Return the resource locator for this item provider's resources. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @return the resource locator
+	 * @generated 
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {

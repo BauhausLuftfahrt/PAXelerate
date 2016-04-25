@@ -44,7 +44,10 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 public class SimulateBoardingCommand extends CDTCommand {
 
+	/** The cabin. */
 	private Cabin cabin;
+	
+	/** The simulation frame. */
 	private JFrame simulationFrame;
 
 	/**
@@ -203,6 +206,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 		job.schedule();
 	}
 
+	/**
+	 * Run area map window.
+	 */
 	private void runAreaMapWindow() {
 
 		SwingUtilities.invokeLater(new Runnable() {

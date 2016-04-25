@@ -166,8 +166,9 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	protected SeatImpl() {
 		super();
@@ -175,8 +176,10 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the e class
+	 * @generated 
 	 */
 	@Override
 	protected EClass eStaticClass() {
@@ -185,8 +188,10 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return true, if is seat blocked
+	 * @generated 
 	 */
 	public boolean isSeatBlocked() {
 		return seatBlocked;
@@ -194,8 +199,10 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newSeatBlocked the new seat blocked
+	 * @generated 
 	 */
 	public void setSeatBlocked(boolean newSeatBlocked) {
 		boolean oldSeatBlocked = seatBlocked;
@@ -206,8 +213,10 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return true, if is crew seat
+	 * @generated 
 	 */
 	public boolean isCrewSeat() {
 		return crewSeat;
@@ -215,8 +224,10 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newCrewSeat the new crew seat
+	 * @generated 
 	 */
 	public void setCrewSeat(boolean newCrewSeat) {
 		boolean oldCrewSeat = crewSeat;
@@ -227,8 +238,10 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the letter
+	 * @generated 
 	 */
 	public String getLetter() {
 		return letter;
@@ -236,8 +249,10 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newLetter the new letter
+	 * @generated 
 	 */
 	public void setLetter(String newLetter) {
 		String oldLetter = letter;
@@ -248,8 +263,10 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the travel class
+	 * @generated 
 	 */
 	public TravelClass getTravelClass() {
 		if (travelClass != null && travelClass.eIsProxy()) {
@@ -265,8 +282,10 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the travel class
+	 * @generated 
 	 */
 	public TravelClass basicGetTravelClass() {
 		return travelClass;
@@ -274,8 +293,10 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newTravelClass the new travel class
+	 * @generated 
 	 */
 	public void setTravelClass(TravelClass newTravelClass) {
 		TravelClass oldTravelClass = travelClass;
@@ -286,8 +307,10 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the row
+	 * @generated 
 	 */
 	public Row getRow() {
 		if (row != null && row.eIsProxy()) {
@@ -303,8 +326,10 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the row
+	 * @generated 
 	 */
 	public Row basicGetRow() {
 		return row;
@@ -312,8 +337,10 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newRow the new row
+	 * @generated 
 	 */
 	public void setRow(Row newRow) {
 		Row oldRow = row;
@@ -324,8 +351,10 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return true, if is occupied
+	 * @generated 
 	 */
 	public boolean isOccupied() {
 		return occupied;
@@ -333,8 +362,10 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newOccupied the new occupied
+	 * @generated 
 	 */
 	public void setOccupied(boolean newOccupied) {
 		boolean oldOccupied = occupied;
@@ -345,8 +376,10 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger
+	 * @generated 
 	 */
 	public Passenger getPassenger() {
 		if (passenger != null && passenger.eIsProxy()) {
@@ -362,8 +395,10 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger
+	 * @generated 
 	 */
 	public Passenger basicGetPassenger() {
 		return passenger;
@@ -371,8 +406,10 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassenger the new passenger
+	 * @generated 
 	 */
 	public void setPassenger(Passenger newPassenger) {
 		Passenger oldPassenger = passenger;
@@ -383,8 +420,10 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return true, if is currently folded
+	 * @generated 
 	 */
 	public boolean isCurrentlyFolded() {
 		return currentlyFolded;
@@ -392,8 +431,10 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newCurrentlyFolded the new currently folded
+	 * @generated 
 	 */
 	public void setCurrentlyFolded(boolean newCurrentlyFolded) {
 		boolean oldCurrentlyFolded = currentlyFolded;
@@ -404,8 +445,13 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param resolve the resolve
+	 * @param coreType the core type
+	 * @return the object
+	 * @generated 
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
@@ -435,8 +481,11 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param newValue the new value
+	 * @generated 
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
@@ -471,8 +520,10 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @generated 
 	 */
 	@Override
 	public void eUnset(int featureID) {
@@ -507,8 +558,11 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @return true, if successful
+	 * @generated 
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
@@ -535,8 +589,10 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the string
+	 * @generated 
 	 */
 	@Override
 	public String toString() {

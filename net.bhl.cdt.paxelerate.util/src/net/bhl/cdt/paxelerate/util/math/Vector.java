@@ -13,6 +13,7 @@ package net.bhl.cdt.paxelerate.util.math;
  */
 public abstract class Vector implements Comparable<Vector> {
 
+	/** The z value. */
 	protected int dimensions, xValue, yValue, zValue;
 
 	/**
@@ -195,10 +196,8 @@ public abstract class Vector implements Comparable<Vector> {
 
 	/**
 	 * This method compares two vectors for equality.
-	 * 
-	 * @param the
-	 *            object being compared to the node
-	 * 
+	 *
+	 * @param object the object
 	 * @return vectors are equal or not
 	 */
 	@Override

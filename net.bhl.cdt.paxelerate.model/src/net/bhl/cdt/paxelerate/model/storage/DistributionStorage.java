@@ -8,28 +8,45 @@ package net.bhl.cdt.paxelerate.model.storage;
 
 import net.bhl.cdt.paxelerate.model.Sex;
 
+/**
+ * The Class DistributionStorage.
+ */
 public class DistributionStorage {
 
+	/** The ages total. */
 	private int[] agesMale = new int[100], agesFemale = new int[100],
 			agesTotal = new int[100];
 
+	/** The minimum age total. */
 	private int minimumAgeMale = Integer.MAX_VALUE,
 			minimumAgeFemale = Integer.MAX_VALUE,
 			minimumAgeTotal = Integer.MAX_VALUE;
 
+	/** The maximum age total. */
 	private int maximumAgeMale = 0, maximumAgeFemale = 0, maximumAgeTotal = 0;
 
+	/** The age sum total. */
 	private int ageSumTotal = 0;
 
+	/** The number of age values total. */
 	private int numberOfAgeValuesTotal = 0;
 
+	/** The average age total. */
 	private double averageAgeTotal = 0;
 
+	/** The maximum amount of one age total. */
 	private int maximumAmountOfOneAgeMale = 0, maximumAmountOfOneAgeFemale = 0,
 			maximumAmountOfOneAgeTotal;
 
+	/** The minimum amount of one age female. */
 	private int minimumAmountOfOneAgeMale = 0, minimumAmountOfOneAgeFemale = 0;
 
+	/**
+	 * Adds the value.
+	 *
+	 * @param sex the sex
+	 * @param age the age
+	 */
 	public void addValue(Sex sex, int age) {
 		if (sex == Sex.MALE) {
 			agesMale[age] += 1;
@@ -50,6 +67,12 @@ public class DistributionStorage {
 		numberOfAgeValuesTotal++;
 	}
 
+	/**
+	 * Update maximum age.
+	 *
+	 * @param sex the sex
+	 * @param age the age
+	 */
 	public void updateMaximumAge(Sex sex, int age) {
 		if (sex == Sex.MALE) {
 			maximumAgeMale = Math.max(maximumAgeMale, age);
@@ -60,6 +83,11 @@ public class DistributionStorage {
 		}
 	}
 
+	/**
+	 * Update average age.
+	 *
+	 * @param sex the sex
+	 */
 	public void updateAverageAge(Sex sex) {
 		if (sex == null) {
 			averageAgeTotal = (double) ageSumTotal
@@ -69,6 +97,12 @@ public class DistributionStorage {
 		}
 	}
 
+	/**
+	 * Update minimum age.
+	 *
+	 * @param sex the sex
+	 * @param age the age
+	 */
 	public void updateMinimumAge(Sex sex, int age) {
 		if (sex == Sex.MALE) {
 			minimumAgeMale = Math.min(minimumAgeMale, age);
@@ -79,6 +113,9 @@ public class DistributionStorage {
 		}
 	}
 
+	/**
+	 * Update maximum amount.
+	 */
 	public void updateMaximumAmount() {
 
 		for (int ageAmount : agesMale) {
@@ -95,6 +132,12 @@ public class DistributionStorage {
 		}
 	}
 
+	/**
+	 * Gets the data.
+	 *
+	 * @param sex the sex
+	 * @return the data
+	 */
 	public int[] getData(Sex sex) {
 		if (sex == null) {
 			return agesTotal;
@@ -106,6 +149,12 @@ public class DistributionStorage {
 		}
 	}
 
+	/**
+	 * Gets the average age.
+	 *
+	 * @param sex the sex
+	 * @return the average age
+	 */
 	public double getAverageAge(Sex sex) {
 
 		updateAverageAge(sex);
@@ -119,6 +168,12 @@ public class DistributionStorage {
 
 	}
 
+	/**
+	 * Gets the minimum age.
+	 *
+	 * @param sex the sex
+	 * @return the minimum age
+	 */
 	public int getMinimumAge(Sex sex) {
 		if (sex == null) {
 			return minimumAgeTotal;
@@ -130,6 +185,12 @@ public class DistributionStorage {
 		}
 	}
 
+	/**
+	 * Gets the maximum age.
+	 *
+	 * @param sex the sex
+	 * @return the maximum age
+	 */
 	public int getMaximumAge(Sex sex) {
 		if (sex == null) {
 			return maximumAgeTotal;
@@ -141,6 +202,12 @@ public class DistributionStorage {
 		}
 	}
 
+	/**
+	 * Gets the maximum amount.
+	 *
+	 * @param sex the sex
+	 * @return the maximum amount
+	 */
 	public int getMaximumAmount(Sex sex) {
 		updateMaximumAmount();
 
@@ -154,6 +221,9 @@ public class DistributionStorage {
 		}
 	}
 
+	/**
+	 * Clear.
+	 */
 	public void clear() {
 		agesMale = new int[100];
 		agesFemale = new int[100];

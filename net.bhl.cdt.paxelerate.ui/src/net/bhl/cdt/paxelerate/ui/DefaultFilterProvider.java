@@ -20,6 +20,9 @@ import org.eclipse.emf.ecp.core.util.ECPFilterProvider;
  */
 public class DefaultFilterProvider implements ECPFilterProvider {
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.emf.ecp.core.util.ECPFilterProvider#getHiddenPackages()
+	 */
 	@Override
 	public Set<String> getHiddenPackages() {
 		Set<String> relevantURIs = new HashSet<String>(Registry.INSTANCE.keySet());

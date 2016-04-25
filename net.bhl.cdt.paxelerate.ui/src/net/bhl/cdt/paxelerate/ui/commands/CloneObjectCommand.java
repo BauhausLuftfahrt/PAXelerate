@@ -13,18 +13,20 @@ import net.bhl.cdt.paxelerate.util.input.Input;
 import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 
 /**
- * 
- * @author marc.engelmann
+ * The Class CloneObjectCommand.
  *
+ * @author marc.engelmann
  */
 
 public class CloneObjectCommand extends CDTCommand {
 
+	/** The row. */
 	private Row row;
 
 	/**
-	 * 
-	 * @param obj
+	 * Instantiates a new clone object command.
+	 *
+	 * @param obj the obj
 	 */
 	public CloneObjectCommand(Object obj) {
 

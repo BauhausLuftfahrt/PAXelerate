@@ -155,16 +155,19 @@ public abstract class PhysicalObjectImpl extends MinimalEObjectImpl.Container im
 	protected int id = ID_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	protected PhysicalObjectImpl() {
 		super();
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the e class
+	 * @generated 
 	 */
 	@Override
 	protected EClass eStaticClass() {
@@ -173,8 +176,10 @@ public abstract class PhysicalObjectImpl extends MinimalEObjectImpl.Container im
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the y position
+	 * @generated 
 	 */
 	public int getYPosition() {
 		return yPosition;
@@ -182,8 +187,10 @@ public abstract class PhysicalObjectImpl extends MinimalEObjectImpl.Container im
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newYPosition the new y position
+	 * @generated 
 	 */
 	public void setYPosition(int newYPosition) {
 		int oldYPosition = yPosition;
@@ -194,8 +201,10 @@ public abstract class PhysicalObjectImpl extends MinimalEObjectImpl.Container im
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the x position
+	 * @generated 
 	 */
 	public int getXPosition() {
 		return xPosition;
@@ -203,8 +212,10 @@ public abstract class PhysicalObjectImpl extends MinimalEObjectImpl.Container im
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newXPosition the new x position
+	 * @generated 
 	 */
 	public void setXPosition(int newXPosition) {
 		int oldXPosition = xPosition;
@@ -215,8 +226,10 @@ public abstract class PhysicalObjectImpl extends MinimalEObjectImpl.Container im
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the y dimension
+	 * @generated 
 	 */
 	public int getYDimension() {
 		return yDimension;
@@ -224,8 +237,10 @@ public abstract class PhysicalObjectImpl extends MinimalEObjectImpl.Container im
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newYDimension the new y dimension
+	 * @generated 
 	 */
 	public void setYDimension(int newYDimension) {
 		int oldYDimension = yDimension;
@@ -236,8 +251,10 @@ public abstract class PhysicalObjectImpl extends MinimalEObjectImpl.Container im
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the x dimension
+	 * @generated 
 	 */
 	public int getXDimension() {
 		return xDimension;
@@ -245,8 +262,10 @@ public abstract class PhysicalObjectImpl extends MinimalEObjectImpl.Container im
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newXDimension the new x dimension
+	 * @generated 
 	 */
 	public void setXDimension(int newXDimension) {
 		int oldXDimension = xDimension;
@@ -256,16 +275,20 @@ public abstract class PhysicalObjectImpl extends MinimalEObjectImpl.Container im
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the name
+	 * @generated 
 	 */
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newName the new name
+	 * @generated 
 	 */
 	public void setName(String newName) {
 		String oldName = name;
@@ -275,16 +298,20 @@ public abstract class PhysicalObjectImpl extends MinimalEObjectImpl.Container im
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the id
+	 * @generated 
 	 */
 	public int getId() {
 		return id;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newId the new id
+	 * @generated 
 	 */
 	public void setId(int newId) {
 		int oldId = id;
@@ -294,8 +321,11 @@ public abstract class PhysicalObjectImpl extends MinimalEObjectImpl.Container im
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param chain the chain
+	 * @param context the context
+	 * @return true, if successful
 	 * @generated NOT
 	 */
 	public boolean outOfBounds(DiagnosticChain chain, Map<?, ?> context) {
@@ -355,8 +385,13 @@ public abstract class PhysicalObjectImpl extends MinimalEObjectImpl.Container im
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param resolve the resolve
+	 * @param coreType the core type
+	 * @return the object
+	 * @generated 
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
@@ -378,8 +413,11 @@ public abstract class PhysicalObjectImpl extends MinimalEObjectImpl.Container im
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param newValue the new value
+	 * @generated 
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
@@ -407,8 +445,10 @@ public abstract class PhysicalObjectImpl extends MinimalEObjectImpl.Container im
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @generated 
 	 */
 	@Override
 	public void eUnset(int featureID) {
@@ -436,8 +476,11 @@ public abstract class PhysicalObjectImpl extends MinimalEObjectImpl.Container im
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @return true, if successful
+	 * @generated 
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
@@ -459,8 +502,13 @@ public abstract class PhysicalObjectImpl extends MinimalEObjectImpl.Container im
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param operationID the operation id
+	 * @param arguments the arguments
+	 * @return the object
+	 * @throws InvocationTargetException the invocation target exception
+	 * @generated 
 	 */
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments)
@@ -473,8 +521,10 @@ public abstract class PhysicalObjectImpl extends MinimalEObjectImpl.Container im
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the string
+	 * @generated 
 	 */
 	@Override
 	public String toString() {

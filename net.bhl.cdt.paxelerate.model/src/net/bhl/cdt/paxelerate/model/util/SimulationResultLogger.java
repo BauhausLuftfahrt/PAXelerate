@@ -23,16 +23,36 @@ import net.bhl.cdt.paxelerate.util.time.TimeHelper;
 
 public class SimulationResultLogger {
 
+	/** The total pax. */
 	private int totalPax;
+	
+	/** The average_age. */
 	private double average_age;
+	
+	/** The df. */
 	private DecimalFormat df = new DecimalFormat("#.##");
+	
+	/** The pax list. */
 	private EList<Passenger> paxList;
+	
+	/** The age limits. */
 	private Vector2D ageLimits;
 
+	/**
+	 * Instantiates a new simulation result logger.
+	 */
 	public SimulationResultLogger() {
 
 	}
 
+	/**
+	 * Gets the simulation data.
+	 *
+	 * @param cabin the cabin
+	 * @param runNumber the run number
+	 * @param time the time
+	 * @return the simulation data
+	 */
 	public void getSimulationData(Cabin cabin, int runNumber, double time) {
 		SimulationResult result = CabinFactory.eINSTANCE
 				.createSimulationResult();
@@ -51,6 +71,12 @@ public class SimulationResultLogger {
 				.add(result);
 	}
 
+	/**
+	 * Gets the passenger data.
+	 *
+	 * @param paxList the pax list
+	 * @return the passenger data
+	 */
 	public void getPassengerData(EList<Passenger> paxList) {
 		this.paxList = paxList;
 
@@ -73,6 +99,11 @@ public class SimulationResultLogger {
 
 	}
 
+	/**
+	 * Find maxima.
+	 *
+	 * @return the vector2 d
+	 */
 	private Vector2D findMaxima() {
 		int max = 0;
 		int min = Integer.MAX_VALUE;
@@ -88,6 +119,9 @@ public class SimulationResultLogger {
 		return new Vector2D(min, max);
 	}
 
+	/**
+	 * Prints the passenger evaluation.
+	 */
 	public void printPassengerEvaluation() {
 
 		System.out
@@ -105,6 +139,9 @@ public class SimulationResultLogger {
 				.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 	}
 
+	/**
+	 * Prints the simulation data.
+	 */
 	public void printSimulationData() {
 		System.out.println("~~~~~~~~~~ Simulation Results ~~~~~~~~~~~");
 		System.out.println();
@@ -131,6 +168,11 @@ public class SimulationResultLogger {
 
 	}
 
+	/**
+	 * Gets the average boarding time.
+	 *
+	 * @return the average boarding time
+	 */
 	private double getAverageBoardingTime() {
 
 		double time = 0;

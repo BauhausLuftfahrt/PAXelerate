@@ -15,10 +15,12 @@ import net.bhl.cdt.paxelerate.model.Stowage;
  * @generated
  */
 public class StowageImpl extends PhysicalObjectImpl implements Stowage {
+	
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	protected StowageImpl() {
 		super();
@@ -26,8 +28,10 @@ public class StowageImpl extends PhysicalObjectImpl implements Stowage {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the e class
+	 * @generated 
 	 */
 	@Override
 	protected EClass eStaticClass() {

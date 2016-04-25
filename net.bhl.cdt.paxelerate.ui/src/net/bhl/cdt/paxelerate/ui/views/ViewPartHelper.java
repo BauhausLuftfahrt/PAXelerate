@@ -13,8 +13,16 @@ import org.eclipse.ui.PlatformUI;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.PropertyViewPart;
 
+/**
+ * The Class ViewPartHelper.
+ */
 public class ViewPartHelper {
 
+	/**
+	 * Gets the cabin view.
+	 *
+	 * @return the cabin view
+	 */
 	public static CabinViewPart getCabinView() {
 		IWorkbenchWindow[] windows = PlatformUI.getWorkbench().getWorkbenchWindows();
 		for (IWorkbenchWindow window : windows) {
@@ -26,6 +34,11 @@ public class ViewPartHelper {
 		return null;
 	}
 	
+	/**
+	 * Gets the property view.
+	 *
+	 * @return the property view
+	 */
 	public static PropertyViewPart getPropertyView() {
 		IWorkbenchWindow[] windows = PlatformUI.getWorkbench().getWorkbenchWindows();
 		for (IWorkbenchWindow window : windows) {

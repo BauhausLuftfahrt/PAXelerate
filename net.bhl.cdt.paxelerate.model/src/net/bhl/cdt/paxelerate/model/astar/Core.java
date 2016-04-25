@@ -18,18 +18,31 @@ import net.bhl.cdt.paxelerate.util.math.MathHelper;
  *
  */
 public class Core {
+	
+	/** The areamap. */
 	private Areamap areamap;
+	
+	/** The costmap. */
 	private Costmap costmap;
+	
+	/** The best path. */
 	private Path bestPath;
+	
+	/** The closed list. */
 	private ArrayList<Node> closedList;
+	
+	/** The open list. */
 	private SortedNodeList openList;
+	
+	/** The agent. */
 	private Agent agent;
 
 	/**
 	 * This method constructs the Core.
-	 * 
-	 * @param areamap
-	 *            is the AreaMap that is fed into the algorithm
+	 *
+	 * @param maphandler the maphandler
+	 * @param costmap the costmap
+	 * @param agent the agent
 	 */
 	public Core(AreamapHandler maphandler, Costmap costmap, Agent agent) {
 
@@ -44,11 +57,7 @@ public class Core {
 
 	/**
 	 * This method calculates the shortest path.
-	 * 
-	 * @param start
-	 *            is the start vector
-	 * @param goal
-	 *            is the goal vector
+	 *
 	 * @return returns the shortest path
 	 */
 	private void calculateShortestPath() {

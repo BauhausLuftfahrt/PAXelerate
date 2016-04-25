@@ -7,13 +7,16 @@ import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
 /**
- * 
- * @author marc.engelmann
+ * The Class Areamap.
  *
+ * @author marc.engelmann
  */
 public class Areamap {
 
+	/** The structure. */
 	private List<ArrayList<Node>> structure;
+	
+	/** The size. */
 	private Vector size;
 
 	/**

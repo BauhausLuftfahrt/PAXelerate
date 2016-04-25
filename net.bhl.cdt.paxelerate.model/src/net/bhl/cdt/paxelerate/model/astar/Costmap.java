@@ -21,32 +21,39 @@ import net.bhl.cdt.paxelerate.util.math.Vector3D;
  * cost to get there from the initial value. In its current configuration, the
  * cost map is fed with an area map, width, height and the initial starting
  * point.
- * 
- * @see net.bhl.cdt.model.astar/AreaMap.java
- * @see net.bhl.cdt.model.astar/Node.java
- * 
+ *
  * @author marc.engelmann
  * @version 1.3
- * 
+ * @see net.bhl.cdt.model.astar/AreaMap.java
+ * @see net.bhl.cdt.model.astar/Node.java
  */
 
 public class Costmap {
 
+	/** The map. */
 	private int[][] map;
+	
+	/** The goal point. */
 	private Vector size, startPoint = new Vector2D(0, 0),
 			goalPoint = new Vector2D(0, 0);
 
+	/** The point parking. */
 	private ArrayList<Vector> visitedPoints = new ArrayList<Vector>(),
 			pointParkingHelper = new ArrayList<Vector>(),
 			onHoldList = new ArrayList<Vector>(),
 			pointParking = new ArrayList<Vector>();
 
+	/** The lowest cost. */
 	private int lowestCost;
 
 	/**
-	 * 
-	 * @param size
-	 * @param areamap
+	 * Instantiates a new costmap.
+	 *
+	 * @param size the size
+	 * @param start the start
+	 * @param areamap the areamap
+	 * @param agent the agent
+	 * @param OnlyFloodToSeat the only flood to seat
 	 */
 	public Costmap(Vector size, Vector start, Areamap areamap, Agent agent,
 			boolean OnlyFloodToSeat) {
@@ -76,6 +83,12 @@ public class Costmap {
 		floodMap();
 	}
 
+	/**
+	 * Sets the cost.
+	 *
+	 * @param position the position
+	 * @param value the value
+	 */
 	public void setCost(Vector position, int value) {
 		map[position.getX()][position.getY()] = value;
 	}
@@ -102,6 +115,10 @@ public class Costmap {
 
 	/**
 	 * This method prints the cost map with a path to the console.
+	 *
+	 * @param path the path
+	 * @param areamap the areamap
+	 * @param agent the agent
 	 */
 	public void printMapPathToConsole(Path path, Areamap areamap, Agent agent) {
 		System.out.println("This is the cost map:");
@@ -333,11 +350,22 @@ public class Costmap {
 		}
 	}
 
+	/**
+	 * Sort the list.
+	 *
+	 * @param sortedList the sorted list
+	 * @return the array list
+	 */
 	private ArrayList<Vector> sortTheList(ArrayList<Vector> sortedList) {
 		Collections.sort(sortedList);
 		return sortedList;
 	}
 
+	/**
+	 * Check lowest cost.
+	 *
+	 * @param point the point
+	 */
 	private void checkLowestCost(Vector point) {
 		if (getCost(point) != 0) {
 			if (getCost(point) < lowestCost) {
@@ -374,10 +402,20 @@ public class Costmap {
 		return neighbors;
 	}
 
+	/**
+	 * Gets the point parking helper.
+	 *
+	 * @return the point parking helper
+	 */
 	private ArrayList<Vector> getPointParkingHelper() {
 		return pointParkingHelper;
 	}
 
+	/**
+	 * Gets the point parking.
+	 *
+	 * @return the point parking
+	 */
 	private ArrayList<Vector> getPointParking() {
 		return pointParking;
 	}

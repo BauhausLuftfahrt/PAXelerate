@@ -24,11 +24,14 @@ import net.bhl.cdt.paxelerate.model.Curtain;
  */
 public class CurtainItemProvider 
 	extends PhysicalObjectItemProvider {
+	
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param adapterFactory the adapter factory
+	 * @generated 
 	 */
 	public CurtainItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
@@ -38,7 +41,10 @@ public class CurtainItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @return the property descriptors
+	 * @generated 
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
@@ -55,7 +61,9 @@ public class CurtainItemProvider
 	 * This adds a property descriptor for the Postition After Row feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPostitionAfterRowPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -77,7 +85,9 @@ public class CurtainItemProvider
 	 * This adds a property descriptor for the Curtain Open feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addCurtainOpenPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -99,7 +109,10 @@ public class CurtainItemProvider
 	 * This returns Curtain.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @return the image
+	 * @generated 
 	 */
 	@Override
 	public Object getImage(Object object) {
@@ -110,7 +123,10 @@ public class CurtainItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param object the object
+	 * @return the text
+	 * @generated 
 	 */
 	@Override
 	public String getText(Object object) {
@@ -126,7 +142,9 @@ public class CurtainItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param notification the notification
+	 * @generated 
 	 */
 	@Override
 	public void notifyChanged(Notification notification) {
@@ -146,7 +164,10 @@ public class CurtainItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param newChildDescriptors the new child descriptors
+	 * @param object the object
+	 * @generated 
 	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {

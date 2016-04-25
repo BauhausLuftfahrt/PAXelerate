@@ -12,8 +12,16 @@ import org.eclipse.ui.PlatformUI;
 
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 
+/**
+ * The Class ViewPartHelper.
+ */
 public class ViewPartHelper {
 
+	/**
+	 * Gets the cabin view.
+	 *
+	 * @return the cabin view
+	 */
 	public static CabinViewPart getCabinView() {
 		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 		IWorkbenchPage page = window.getActivePage();
