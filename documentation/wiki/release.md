@@ -81,6 +81,7 @@ After a successful test of the release candidate, updates of the code, repositor
 		* Mark milestone as released
 * Website
 	* Blog post: change log and main features
+	* Update JavaDoc
 	* Links to current release 
 
 
