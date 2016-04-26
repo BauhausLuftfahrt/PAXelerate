@@ -22,35 +22,29 @@ import net.bhl.cdt.paxelerate.util.math.RandomHelper;
  */
 public class PassengerPropertyGenerator {
 
-	/** The passenger. */
-	/* The current passenger */
+	/** The current passenger. */
 	private Passenger passenger;
 
-	/** The pax settings. */
-	/* the paxSettings */
+	/** The paxSettings. */
 	private PassengerProperties paxSettings;
 	
 	/** The luggage settings. */
 	private LuggageProperties luggageSettings;
 
-	/*
+	/**
 	 * This array contains two values, first the age of the passenger and second
 	 * the corresponding speed.
-	 */
-	/** The speedmodel. */
-	// TODO take literals out of class
+	 **/
 	private double[][] speedmodel = { { 5, 0.6 }, { 10, 1.18 }, { 15, 1.5 },
 			{ 20, 1.6 }, { 25, 1.6 }, { 30, 1.55 }, { 35, 1.5 }, { 40, 1.5 },
 			{ 45, 1.45 }, { 50, 1.42 }, { 55, 1.37 }, { 60, 1.3 }, { 65, 1.2 },
 			{ 70, 1.05 }, { 75, 0.9 }, { 80, 0.7 } };
 
-	/*
+	/**
 	 * This array contains the age distribution in the united states in 2012.
 	 * The first value of the tuple is the male, the second one the female
 	 * distribution.
-	 */
-	/** The agemodel. */
-	// TODO take literals out of class
+	 **/
 	private double[][] agemodel = { { 0.0349, 0.0333 }, { 0.0374, 0.0356 },
 			{ 0.0374, 0.0356 }, { 0.0369, 0.0349 }, { 0.0344, 0.0330 },
 			{ 0.0348, 0.0341 }, { 0.0367, 0.0362 }, { 0.0402, 0.0405 },
@@ -140,7 +134,7 @@ public class PassengerPropertyGenerator {
 	 * @return the speed in meters per second
 	 */
 	private double adaptSpeed() {
-		// Removed round to five. Otherwise value % 5 always = 0.
+		/** Removed round to five. Otherwise value % 5 always = 0. **/
 		int value = passenger.getAge();
 		int index = value % 5;
 		if (index <= 0) {
@@ -247,34 +241,34 @@ public class PassengerPropertyGenerator {
 	 */
 	private int adaptAge() {
 
-		/* This class is used for the probability calculations */
+		/** This class is used for the probability calculations **/
 		ProbabilityMachine machine = new ProbabilityMachine(agemodel, 5);
 
-		/* Define the lower bound of the age model. */
+		/** Define the lower bound of the age model. **/
 		machine.setLowerBound(20);
 
-		/* Define the upper bound of the age model. */
+		/** Define the upper bound of the age model. **/
 		machine.setUpperBound(80);
 
-		/* This returns the index of the object in the age model. */
+		/** This returns the index of the object in the age model. **/
 		int index = machine.getProbabilityValue(passenger.getSex());
 
-		/*
+		/**
 		 * To translate this to an age, multiply it with 5, because each element
 		 * stands for a 5 year range.
-		 */
+		 **/
 		int age = index * 5;
 		if (age < 5) {
 			age = 5;
 		}
 
-		/* Then create a random number within the 5 year range. */
+		/** Then create a random number within the 5 year range. **/
 		return RandomHelper.randomValue(age - 5, age);
 
 	}
 
 	/**
-	 * This method takes four variables and performs the gauss distribution for
+	 * This method takes four variables and performs the Gauss distribution for
 	 * the correct two ones.
 	 * 
 	 * @param one
@@ -285,7 +279,7 @@ public class PassengerPropertyGenerator {
 	 *            is the female mean value
 	 * @param four
 	 *            is the female deviation value
-	 * @return is a gaussian random value
+	 * @return is a Gaussian random value
 	 */
 	private double adapt(double one, double two, double three, double four) {
 		return getGauss95(applySwitch(one, three), applySwitch(two, four));
@@ -309,14 +303,14 @@ public class PassengerPropertyGenerator {
 	}
 
 	/**
-	 * This function performs the gaussian distribution for a specific mean and
+	 * This function performs the Gaussian distribution for a specific mean and
 	 * deviation value.
 	 * 
 	 * @param mean
 	 *            the mean value
 	 * @param deviation
 	 *            the deviation value
-	 * @return a random gauss value
+	 * @return a random Gauss value
 	 */
 	private double getGauss95(double mean, double deviation) {
 		return GaussianRandom.gaussianRandom(mean, GaussOptions.PERCENT_95,

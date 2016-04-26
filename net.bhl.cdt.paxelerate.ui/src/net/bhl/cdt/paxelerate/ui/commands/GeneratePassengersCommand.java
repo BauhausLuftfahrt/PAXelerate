@@ -38,7 +38,7 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
  * 
  * This command creates the passengers.
  * 
- * @author marc.engelmann
+ * @author marc.engelmann, michael.schmidt
  * @version 1.0
  *
  */
@@ -47,10 +47,10 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 	/** The cabin. */
 	private Cabin cabin;
-	
+
 	/** The total count. */
 	private int totalCount = 1;
-	
+
 	/** The cabinview. */
 	private CabinViewPart cabinview;
 
@@ -67,7 +67,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 	/**
 	 * This method applies a door to a passenger.
 	 *
-	 * @param pass            is the passenger to whom the door is assigned to.
+	 * @param pass
+	 *            is the passenger to whom the door is assigned to.
 	 * @return the door
 	 */
 	private Door getDoor(Passenger pass) {
@@ -79,7 +80,11 @@ public class GeneratePassengersCommand extends CDTCommand {
 				sdoorage.add(door);
 			}
 		}
-
+		/** Check if active doors exist otherwise throw a NullPointerException**/
+		if (sdoorage.size() == 0) {
+			Log.add(this, "Please activate at least one door which can be assigned to passengers.");
+			throw new NullPointerException();
+		}
 		int seatPos = pass.getSeat().getXPosition();
 
 		int current = Integer.MAX_VALUE;
@@ -119,7 +124,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 	/**
 	 * This method generates the passengers.
 	 *
-	 * @param tc the tc
+	 * @param tc
+	 *            the tc
 	 */
 	private synchronized void generatePassengers(TravelClass tc) {
 
@@ -131,7 +137,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 				int firstSeatNumber = ModelHelper.getChildrenByClass(tc, Seat.class).get(0).getId();
 
-				// Create random list
+				/** Create random list **/
 				ArrayList<Integer> randomSeatId = new ArrayList<Integer>();
 				for (int i = 0; i < numberOfSeats; i++) {
 					randomSeatId.add(firstSeatNumber + i);
@@ -176,7 +182,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 	 */
 	@Override
 	protected void doRun() {
-		// Create separate thread
+		/** Create separate thread **/
 		Job job = new Job("Generate Passengers Thread") {
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
@@ -208,7 +214,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 						door.getWaitingPassengers().clear();
 					}
 
-					// PUBLISH
+					/** PUBLISH **/
 					Log.add(this, "Updating GUI...");
 					Display.getDefault().syncExec(new Runnable() {
 						@Override
@@ -230,13 +236,13 @@ public class GeneratePassengersCommand extends CDTCommand {
 						}
 					});
 				}
-				// report finished
+				/** report finished **/
 				return Status.OK_STATUS;
 
 			}
 		};
 
-		// Start the Job
+		/** Start the Job **/
 		job.schedule();
 	}
 }
