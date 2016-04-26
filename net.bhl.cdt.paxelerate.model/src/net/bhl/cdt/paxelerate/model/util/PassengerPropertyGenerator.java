@@ -114,7 +114,7 @@ public class PassengerPropertyGenerator {
 				DecimalHelper.round(adaptLuggageStowTime(), 2));
 
 		/** Define the luggage distance from seat randomly **/
-		passenger.setLuggageStowingDistance(
+		passenger.setLuggageStowDistance(
 				DecimalHelper.round(defineLuggageStowDistance(), 2));
 	}
 
@@ -227,9 +227,9 @@ public class PassengerPropertyGenerator {
 	private double defineLuggageStowDistance() {
 
 		return GaussianRandom.gaussianRandom(
-				luggageSettings.getLuggageStowingDistanceFromSeatMean(),
+				luggageSettings.getLuggageStowDistanceFromSeatMean(),
 				GaussOptions.PERCENT_95,
-				luggageSettings.getLuggageStowingDistanceFromSeatDeviation());
+				luggageSettings.getLuggageStowDistanceFromSeatDeviation());
 	}
 
 	/**

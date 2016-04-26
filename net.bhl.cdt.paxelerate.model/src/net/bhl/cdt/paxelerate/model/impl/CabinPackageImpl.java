@@ -281,10 +281,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the cabin package
 	 * @see #eNS_URI
-	 * @generated 
+	 * @generated
 	 */
 	public static CabinPackage init() {
 		if (isInited) return (CabinPackage)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI);
@@ -1078,12 +1076,10 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->.
-	 *
-	 * @return the passenger_ luggage stowing distance
-	 * @generated 
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
-	public EAttribute getPassenger_LuggageStowingDistance() {
+	public EAttribute getPassenger_LuggageStowDistance() {
         return (EAttribute)getPassenger().getEStructuralFeatures().get(20);
 	}
 
@@ -1553,23 +1549,19 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->.
-	 *
-	 * @return the luggage properties_ luggage stowing distance from seat mean
-	 * @generated 
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
-	public EAttribute getLuggageProperties_LuggageStowingDistanceFromSeatMean() {
+	public EAttribute getLuggageProperties_LuggageStowDistanceFromSeatMean() {
         return (EAttribute)getLuggageProperties().getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->.
-	 *
-	 * @return the luggage properties_ luggage stowing distance from seat deviation
-	 * @generated 
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
-	public EAttribute getLuggageProperties_LuggageStowingDistanceFromSeatDeviation() {
+	public EAttribute getLuggageProperties_LuggageStowDistanceFromSeatDeviation() {
         return (EAttribute)getLuggageProperties().getEStructuralFeatures().get(1);
 	}
 
@@ -2250,9 +2242,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * Sets the instance class on the given classifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param eClassifier the e classifier
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	protected void fixInstanceClass(EClassifier eClassifier) {

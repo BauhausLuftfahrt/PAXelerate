@@ -222,11 +222,7 @@ public enum LuggageSize implements Enumerator {
 	 * Only this class can construct instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param value the value
-	 * @param name the name
-	 * @param literal the literal
-	 * @generated 
+	 * @generated
 	 */
 	private LuggageSize(int value, String name, String literal) {
 		this.value = value;
@@ -271,9 +267,7 @@ public enum LuggageSize implements Enumerator {
 	 * Returns the literal value of the enumerator, which is its string representation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the string
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public String toString() {

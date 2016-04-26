@@ -83,9 +83,7 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Scale feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addScalePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -107,9 +105,7 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Frames Per Second feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addFramesPerSecondPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -131,9 +127,7 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Use Preset Settings feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addUsePresetSettingsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -155,9 +149,7 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Simulate Without UI feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addSimulateWithoutUIPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -179,9 +171,7 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Number Of Simulation Loops feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addNumberOfSimulationLoopsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -203,9 +193,7 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Random Sort Between Loops feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addRandomSortBetweenLoopsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -227,9 +215,7 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Use Foldable Seats feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addUseFoldableSeatsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -251,9 +237,7 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Bring Your Own Seat feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addBringYourOwnSeatPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -275,9 +259,7 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Results feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addResultsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -299,9 +281,7 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Sorting feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addSortingPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -323,9 +303,7 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Simulation Speed Factor feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addSimulationSpeedFactorPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -347,9 +325,7 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Seat Interference Standing Up Passenger Waiting Time feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addSeatInterferenceStandingUpPassengerWaitingTimePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -371,9 +347,7 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Seat Interference Process Time feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addSeatInterferenceProcessTimePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -395,9 +369,7 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Thread Sleep Time Default feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addThreadSleepTimeDefaultPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -419,9 +391,7 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Developer Mode feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addDeveloperModePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -443,9 +413,7 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Passengers Boarding Per Minute feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addPassengersBoardingPerMinutePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -469,10 +437,7 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @return the children features
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
@@ -505,10 +470,7 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * This returns SimulationProperties.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
-	 * @param object the object
-	 * @return the image
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
@@ -534,9 +496,7 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
-	 * @param notification the notification
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public void notifyChanged(Notification notification) {

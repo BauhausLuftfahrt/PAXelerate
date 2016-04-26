@@ -889,13 +889,13 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER__LUGGAGE_STOW_TIME = 19;
 
 	/**
-	 * The feature id for the '<em><b>Luggage Stowing Distance</b></em>' attribute.
+	 * The feature id for the '<em><b>Luggage Stow Distance</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__LUGGAGE_STOWING_DISTANCE = 20;
+	int PASSENGER__LUGGAGE_STOW_DISTANCE = 20;
 
 	/**
 	 * The feature id for the '<em><b>Travel Class</b></em>' reference.
@@ -1760,22 +1760,22 @@ public interface CabinPackage extends EPackage {
 	int LUGGAGE_PROPERTIES = 14;
 
 	/**
-	 * The feature id for the '<em><b>Luggage Stowing Distance From Seat Mean</b></em>' attribute.
+	 * The feature id for the '<em><b>Luggage Stow Distance From Seat Mean</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN = 0;
+	int LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_MEAN = 0;
 
 	/**
-	 * The feature id for the '<em><b>Luggage Stowing Distance From Seat Deviation</b></em>' attribute.
+	 * The feature id for the '<em><b>Luggage Stow Distance From Seat Deviation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION = 1;
+	int LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_DEVIATION = 1;
 
 	/**
 	 * The feature id for the '<em><b>Percentage Of Passengers With No Luggage</b></em>' attribute.
@@ -2969,15 +2969,15 @@ public interface CabinPackage extends EPackage {
 	EAttribute getPassenger_LuggageStowTime();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Passenger#getLuggageStowingDistance <em>Luggage Stowing Distance</em>}'.
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Passenger#getLuggageStowDistance <em>Luggage Stow Distance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Luggage Stowing Distance</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.Passenger#getLuggageStowingDistance()
+	 * @return the meta object for the attribute '<em>Luggage Stow Distance</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.Passenger#getLuggageStowDistance()
 	 * @see #getPassenger()
 	 * @generated
 	 */
-	EAttribute getPassenger_LuggageStowingDistance();
+	EAttribute getPassenger_LuggageStowDistance();
 
 	/**
 	 * Returns the meta object for the reference '{@link net.bhl.cdt.paxelerate.model.Passenger#getTravelClass <em>Travel Class</em>}'.
@@ -3412,26 +3412,26 @@ public interface CabinPackage extends EPackage {
 	EClass getLuggageProperties();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.LuggageProperties#getLuggageStowingDistanceFromSeatMean <em>Luggage Stowing Distance From Seat Mean</em>}'.
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.LuggageProperties#getLuggageStowDistanceFromSeatMean <em>Luggage Stow Distance From Seat Mean</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Luggage Stowing Distance From Seat Mean</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.LuggageProperties#getLuggageStowingDistanceFromSeatMean()
+	 * @return the meta object for the attribute '<em>Luggage Stow Distance From Seat Mean</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.LuggageProperties#getLuggageStowDistanceFromSeatMean()
 	 * @see #getLuggageProperties()
 	 * @generated
 	 */
-	EAttribute getLuggageProperties_LuggageStowingDistanceFromSeatMean();
+	EAttribute getLuggageProperties_LuggageStowDistanceFromSeatMean();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.LuggageProperties#getLuggageStowingDistanceFromSeatDeviation <em>Luggage Stowing Distance From Seat Deviation</em>}'.
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.LuggageProperties#getLuggageStowDistanceFromSeatDeviation <em>Luggage Stow Distance From Seat Deviation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Luggage Stowing Distance From Seat Deviation</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.LuggageProperties#getLuggageStowingDistanceFromSeatDeviation()
+	 * @return the meta object for the attribute '<em>Luggage Stow Distance From Seat Deviation</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.LuggageProperties#getLuggageStowDistanceFromSeatDeviation()
 	 * @see #getLuggageProperties()
 	 * @generated
 	 */
-	EAttribute getLuggageProperties_LuggageStowingDistanceFromSeatDeviation();
+	EAttribute getLuggageProperties_LuggageStowDistanceFromSeatDeviation();
 
 	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.LuggageProperties#getPercentageOfPassengersWithNoLuggage <em>Percentage Of Passengers With No Luggage</em>}'.
@@ -4498,12 +4498,12 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute PASSENGER__LUGGAGE_STOW_TIME = eINSTANCE.getPassenger_LuggageStowTime();
 		/**
-		 * The meta object literal for the '<em><b>Luggage Stowing Distance</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Luggage Stow Distance</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PASSENGER__LUGGAGE_STOWING_DISTANCE = eINSTANCE.getPassenger_LuggageStowingDistance();
+		EAttribute PASSENGER__LUGGAGE_STOW_DISTANCE = eINSTANCE.getPassenger_LuggageStowDistance();
 		/**
 		 * The meta object literal for the '<em><b>Travel Class</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
@@ -4801,19 +4801,19 @@ public interface CabinPackage extends EPackage {
 		 */
 		EClass LUGGAGE_PROPERTIES = eINSTANCE.getLuggageProperties();
 		/**
-		 * The meta object literal for the '<em><b>Luggage Stowing Distance From Seat Mean</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Luggage Stow Distance From Seat Mean</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN = eINSTANCE.getLuggageProperties_LuggageStowingDistanceFromSeatMean();
+		EAttribute LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_MEAN = eINSTANCE.getLuggageProperties_LuggageStowDistanceFromSeatMean();
 		/**
-		 * The meta object literal for the '<em><b>Luggage Stowing Distance From Seat Deviation</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Luggage Stow Distance From Seat Deviation</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION = eINSTANCE.getLuggageProperties_LuggageStowingDistanceFromSeatDeviation();
+		EAttribute LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_DEVIATION = eINSTANCE.getLuggageProperties_LuggageStowDistanceFromSeatDeviation();
 		/**
 		 * The meta object literal for the '<em><b>Percentage Of Passengers With No Luggage</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->

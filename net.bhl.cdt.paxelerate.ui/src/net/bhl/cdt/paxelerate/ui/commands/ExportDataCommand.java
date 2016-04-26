@@ -105,7 +105,7 @@ public class ExportDataCommand extends CDTCommand{
 				writer.append("\t");
 				writer.append("" + pax.getLuggageStowTime());
 				writer.append("\t");
-				writer.append("" + pax.getLuggageStowingDistance());
+				writer.append("" + pax.getLuggageStowDistance());
 				writer.append("\n");
 				
 			}

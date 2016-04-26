@@ -116,9 +116,7 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -140,9 +138,7 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 	 * This adds a property descriptor for the Id feature.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -164,9 +160,7 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 	 * This adds a property descriptor for the Date feature.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addDatePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -188,9 +182,7 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 	 * This adds a property descriptor for the Boarding Time String feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addBoardingTimeStringPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -212,10 +204,7 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 	 * This returns SimulationResult.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
-	 * @param object the object
-	 * @return the image
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
@@ -242,9 +231,7 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
-	 * @param notification the notification
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public void notifyChanged(Notification notification) {

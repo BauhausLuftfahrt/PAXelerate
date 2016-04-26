@@ -65,9 +65,7 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	 * This adds a property descriptor for the XDimension feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addXDimensionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -89,9 +87,7 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	 * This adds a property descriptor for the YDimension feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addYDimensionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -159,9 +155,7 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	 * This adds a property descriptor for the Simulation Settings feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addSimulationSettingsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -230,10 +224,7 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @return the children features
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(
@@ -272,10 +263,7 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	 * This returns Cabin.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @return the image
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
@@ -286,10 +274,7 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @return the text
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
@@ -304,9 +289,7 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
-	 * @param notification the notification
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public void notifyChanged(Notification notification) {

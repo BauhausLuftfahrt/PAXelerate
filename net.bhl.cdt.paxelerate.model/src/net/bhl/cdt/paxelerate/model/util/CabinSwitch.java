@@ -19,10 +19,8 @@ import net.bhl.cdt.paxelerate.model.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- *
- * @param <T> the generic type
  * @see net.bhl.cdt.paxelerate.model.CabinPackage
- * @generated 
+ * @generated
  */
 public class CabinSwitch<T> extends Switch<T> {
 	
@@ -64,11 +62,8 @@ public class CabinSwitch<T> extends Switch<T> {
 	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param classifierID the classifier id
-	 * @param theEObject the the e object
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {

@@ -350,9 +350,9 @@ public class Agent extends Subject implements Runnable {
 	 */
 	private int getLuggageStowDistance() {
 		distance = (GaussianRandom.gaussianRandom(
-				simLuggageSettings.getLuggageStowingDistanceFromSeatMean(),
+				simLuggageSettings.getLuggageStowDistanceFromSeatMean(),
 				GaussOptions.PERCENT_95,
-				simLuggageSettings.getLuggageStowingDistanceFromSeatDeviation())
+				simLuggageSettings.getLuggageStowDistanceFromSeatDeviation())
 				/ scale);
 		return (int) distance;
 	}

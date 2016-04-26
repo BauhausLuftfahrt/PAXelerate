@@ -42,9 +42,7 @@ public class CrewMemberItemProvider
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param adapterFactory the adapter factory
-	 * @generated 
+	 * @generated
 	 */
 	public CrewMemberItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
@@ -54,10 +52,7 @@ public class CrewMemberItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @return the property descriptors
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
@@ -74,9 +69,7 @@ public class CrewMemberItemProvider
 	 * This adds a property descriptor for the Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -98,9 +91,7 @@ public class CrewMemberItemProvider
 	 * This adds a property descriptor for the Seat feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addSeatPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -122,10 +113,7 @@ public class CrewMemberItemProvider
 	 * This returns CrewMember.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @return the image
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
@@ -136,10 +124,7 @@ public class CrewMemberItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @return the text
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
@@ -153,9 +138,7 @@ public class CrewMemberItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param notification the notification
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public void notifyChanged(Notification notification) {
@@ -174,10 +157,7 @@ public class CrewMemberItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param newChildDescriptors the new child descriptors
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -188,9 +168,7 @@ public class CrewMemberItemProvider
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the resource locator
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {

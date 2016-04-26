@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getStartBoardingAfterDelay <em>Start Boarding After Delay</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getNumberOfWaits <em>Number Of Waits</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getLuggageStowTime <em>Luggage Stow Time</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getLuggageStowingDistance <em>Luggage Stowing Distance</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getLuggageStowDistance <em>Luggage Stow Distance</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getTravelClass <em>Travel Class</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getPassengerMood <em>Passenger Mood</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getNumberOfMakeWayOperations <em>Number Of Make Way Operations</em>}</li>
@@ -445,30 +445,30 @@ public interface Passenger extends EObject {
 	void setLuggageStowTime(double value);
 
 	/**
-	 * Returns the value of the '<em><b>Luggage Stowing Distance</b></em>' attribute.
+	 * Returns the value of the '<em><b>Luggage Stow Distance</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Luggage Stowing Distance</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Luggage Stow Distance</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Luggage Stowing Distance</em>' attribute.
-	 * @see #setLuggageStowingDistance(double)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassenger_LuggageStowingDistance()
+	 * @return the value of the '<em>Luggage Stow Distance</em>' attribute.
+	 * @see #setLuggageStowDistance(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassenger_LuggageStowDistance()
 	 * @model
 	 * @generated
 	 */
-	double getLuggageStowingDistance();
+	double getLuggageStowDistance();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Passenger#getLuggageStowingDistance <em>Luggage Stowing Distance</em>}' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Passenger#getLuggageStowDistance <em>Luggage Stow Distance</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Luggage Stowing Distance</em>' attribute.
-	 * @see #getLuggageStowingDistance()
+	 * @param value the new value of the '<em>Luggage Stow Distance</em>' attribute.
+	 * @see #getLuggageStowDistance()
 	 * @generated
 	 */
-	void setLuggageStowingDistance(double value);
+	void setLuggageStowDistance(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Travel Class</b></em>' reference.

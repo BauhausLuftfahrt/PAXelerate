@@ -82,9 +82,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.Cabin}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the adapter
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Adapter createCabinAdapter() {
@@ -107,9 +105,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.Row}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the adapter
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Adapter createRowAdapter() {
@@ -132,9 +128,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.TravelClass}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the adapter
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Adapter createTravelClassAdapter() {
@@ -157,9 +151,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.Seat}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the adapter
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Adapter createSeatAdapter() {
@@ -182,9 +174,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.Passenger}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the adapter
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Adapter createPassengerAdapter() {
@@ -207,9 +197,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.CrewMember}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the adapter
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Adapter createCrewMemberAdapter() {
@@ -232,9 +220,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.Lavatory}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the adapter
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Adapter createLavatoryAdapter() {
@@ -257,9 +243,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.Galley}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the adapter
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Adapter createGalleyAdapter() {
@@ -282,9 +266,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.Stairway}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the adapter
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Adapter createStairwayAdapter() {
@@ -307,9 +289,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.Curtain}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the adapter
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Adapter createCurtainAdapter() {
@@ -332,9 +312,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.Stowage}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the adapter
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Adapter createStowageAdapter() {
@@ -357,9 +335,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.Door}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the adapter
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Adapter createDoorAdapter() {
@@ -382,9 +358,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.SimulationProperties}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the adapter
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Adapter createSimulationPropertiesAdapter() {
@@ -407,9 +381,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.LuggageProperties}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the adapter
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Adapter createLuggagePropertiesAdapter() {
@@ -432,9 +404,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.SimulationResult}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the adapter
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Adapter createSimulationResultAdapter() {
@@ -457,9 +427,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	 * This creates an adapter for a {@link net.bhl.cdt.paxelerate.model.PassengerProperties}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the adapter
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Adapter createPassengerPropertiesAdapter() {
@@ -474,9 +442,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the root adapter factory
-	 * @generated 
+	 * @generated
 	 */
 	public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
@@ -486,9 +452,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	 * This sets the composed adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param parentAdapterFactory the new parent adapter factory
-	 * @generated 
+	 * @generated
 	 */
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
@@ -511,11 +475,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	 * This implementation substitutes the factory itself as the key for the adapter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param notifier the notifier
-	 * @param type the type
-	 * @return the adapter
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
@@ -547,9 +507,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	 * This adds a listener.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param notifyChangedListener the notify changed listener
-	 * @generated 
+	 * @generated
 	 */
 	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
@@ -559,9 +517,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	 * This removes a listener.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param notifyChangedListener the notify changed listener
-	 * @generated 
+	 * @generated
 	 */
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
@@ -571,9 +527,7 @@ public class CabinItemProviderAdapterFactory extends CabinAdapterFactory impleme
 	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param notification the notification
-	 * @generated 
+	 * @generated
 	 */
 	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);

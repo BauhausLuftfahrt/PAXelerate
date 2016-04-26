@@ -131,7 +131,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Passenger/startBoardingAfterDelay"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Passenger/numberOfWaits"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Passenger/luggageStowTime"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Passenger/luggageStowingDistance"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Passenger/luggageStowDistance"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cabin.ecore#//Passenger/travelClass"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Passenger/passengerMood"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Passenger/numberOfMakeWayOperations"/>
@@ -194,8 +194,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/passengersBoardingPerMinute"/>
     </genClasses>
     <genClasses ecoreClass="cabin.ecore#//LuggageProperties">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//LuggageProperties/luggageStowingDistanceFromSeatMean"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//LuggageProperties/luggageStowingDistanceFromSeatDeviation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//LuggageProperties/luggageStowDistanceFromSeatMean"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//LuggageProperties/luggageStowDistanceFromSeatDeviation"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//LuggageProperties/percentageOfPassengersWithNoLuggage"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//LuggageProperties/percentageOfPassengersWithSmallLuggage"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//LuggageProperties/percentageOfPassengersWithMediumLuggage"/>

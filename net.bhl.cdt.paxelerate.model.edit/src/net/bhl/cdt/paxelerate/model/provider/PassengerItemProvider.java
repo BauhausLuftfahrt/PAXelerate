@@ -42,9 +42,7 @@ public class PassengerItemProvider
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param adapterFactory the adapter factory
-	 * @generated 
+	 * @generated
 	 */
 	public PassengerItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
@@ -54,10 +52,7 @@ public class PassengerItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @return the property descriptors
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
@@ -84,7 +79,7 @@ public class PassengerItemProvider
 			addStartBoardingAfterDelayPropertyDescriptor(object);
 			addNumberOfWaitsPropertyDescriptor(object);
 			addLuggageStowTimePropertyDescriptor(object);
-			addLuggageStowingDistancePropertyDescriptor(object);
+			addLuggageStowDistancePropertyDescriptor(object);
 			addTravelClassPropertyDescriptor(object);
 			addPassengerMoodPropertyDescriptor(object);
 			addNumberOfMakeWayOperationsPropertyDescriptor(object);
@@ -97,9 +92,7 @@ public class PassengerItemProvider
 	 * This adds a property descriptor for the Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -121,9 +114,7 @@ public class PassengerItemProvider
 	 * This adds a property descriptor for the Sex feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addSexPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -145,9 +136,7 @@ public class PassengerItemProvider
 	 * This adds a property descriptor for the Seat feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addSeatPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -169,9 +158,7 @@ public class PassengerItemProvider
 	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -193,9 +180,7 @@ public class PassengerItemProvider
 	 * This adds a property descriptor for the Boarding Time feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addBoardingTimePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -217,9 +202,7 @@ public class PassengerItemProvider
 	 * This adds a property descriptor for the Width feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addWidthPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -241,9 +224,7 @@ public class PassengerItemProvider
 	 * This adds a property descriptor for the Depth feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addDepthPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -265,9 +246,7 @@ public class PassengerItemProvider
 	 * This adds a property descriptor for the Orientation In Degree feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addOrientationInDegreePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -289,9 +268,7 @@ public class PassengerItemProvider
 	 * This adds a property descriptor for the Position X feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addPositionXPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -313,9 +290,7 @@ public class PassengerItemProvider
 	 * This adds a property descriptor for the Position Y feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addPositionYPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -337,9 +312,7 @@ public class PassengerItemProvider
 	 * This adds a property descriptor for the Is Seated feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addIsSeatedPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -361,9 +334,7 @@ public class PassengerItemProvider
 	 * This adds a property descriptor for the Walking Speed feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addWalkingSpeedPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -385,9 +356,7 @@ public class PassengerItemProvider
 	 * This adds a property descriptor for the Start Boarding After Delay feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addStartBoardingAfterDelayPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -409,9 +378,7 @@ public class PassengerItemProvider
 	 * This adds a property descriptor for the Number Of Waits feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addNumberOfWaitsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -433,9 +400,7 @@ public class PassengerItemProvider
 	 * This adds a property descriptor for the Luggage Stow Time feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addLuggageStowTimePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -454,21 +419,19 @@ public class PassengerItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Luggage Stowing Distance feature.
+	 * This adds a property descriptor for the Luggage Stow Distance feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
-	protected void addLuggageStowingDistancePropertyDescriptor(Object object) {
+	protected void addLuggageStowDistancePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Passenger_luggageStowingDistance_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_luggageStowingDistance_feature", "_UI_Passenger_type"),
-				 CabinPackage.Literals.PASSENGER__LUGGAGE_STOWING_DISTANCE,
+				 getString("_UI_Passenger_luggageStowDistance_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_luggageStowDistance_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__LUGGAGE_STOW_DISTANCE,
 				 true,
 				 false,
 				 false,
@@ -481,9 +444,7 @@ public class PassengerItemProvider
 	 * This adds a property descriptor for the Travel Class feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addTravelClassPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -505,9 +466,7 @@ public class PassengerItemProvider
 	 * This adds a property descriptor for the Passenger Mood feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addPassengerMoodPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -529,9 +488,7 @@ public class PassengerItemProvider
 	 * This adds a property descriptor for the Number Of Make Way Operations feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addNumberOfMakeWayOperationsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -553,9 +510,7 @@ public class PassengerItemProvider
 	 * This adds a property descriptor for the Luggage feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addLuggagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -577,9 +532,7 @@ public class PassengerItemProvider
 	 * This adds a property descriptor for the Height feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addHeightPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -601,9 +554,7 @@ public class PassengerItemProvider
 	 * This adds a property descriptor for the Age feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addAgePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -625,9 +576,7 @@ public class PassengerItemProvider
 	 * This adds a property descriptor for the Weight feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addWeightPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -649,9 +598,7 @@ public class PassengerItemProvider
 	 * This adds a property descriptor for the Door feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addDoorPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -673,9 +620,7 @@ public class PassengerItemProvider
 	 * This adds a property descriptor for the Seat ID feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addSeatIDPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -697,10 +642,7 @@ public class PassengerItemProvider
 	 * This returns Passenger.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @return the image
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
@@ -711,10 +653,7 @@ public class PassengerItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @return the text
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
@@ -729,9 +668,7 @@ public class PassengerItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param notification the notification
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public void notifyChanged(Notification notification) {
@@ -756,7 +693,7 @@ public class PassengerItemProvider
 			case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
 			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
 			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
-			case CabinPackage.PASSENGER__LUGGAGE_STOWING_DISTANCE:
+			case CabinPackage.PASSENGER__LUGGAGE_STOW_DISTANCE:
 			case CabinPackage.PASSENGER__PASSENGER_MOOD:
 			case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
 			case CabinPackage.PASSENGER__LUGGAGE:
@@ -771,10 +708,7 @@ public class PassengerItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param newChildDescriptors the new child descriptors
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -785,9 +719,7 @@ public class PassengerItemProvider
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the resource locator
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {

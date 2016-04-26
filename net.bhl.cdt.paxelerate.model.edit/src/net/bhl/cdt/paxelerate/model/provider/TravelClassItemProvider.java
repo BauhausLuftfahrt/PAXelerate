@@ -214,9 +214,7 @@ public class TravelClassItemProvider extends ItemProviderAdapter implements IEdi
 	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -275,7 +273,7 @@ public class TravelClassItemProvider extends ItemProviderAdapter implements IEdi
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -284,9 +282,7 @@ public class TravelClassItemProvider extends ItemProviderAdapter implements IEdi
 	 * This adds a property descriptor for the Travel Option feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addTravelOptionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -309,10 +305,7 @@ public class TravelClassItemProvider extends ItemProviderAdapter implements IEdi
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @return the children features
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
@@ -383,9 +376,7 @@ public class TravelClassItemProvider extends ItemProviderAdapter implements IEdi
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
-	 * @param notification the notification
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public void notifyChanged(Notification notification) {

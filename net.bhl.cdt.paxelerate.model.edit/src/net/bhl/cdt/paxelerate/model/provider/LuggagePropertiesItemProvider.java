@@ -44,9 +44,7 @@ public class LuggagePropertiesItemProvider
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param adapterFactory the adapter factory
-	 * @generated 
+	 * @generated
 	 */
 	public LuggagePropertiesItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
@@ -56,18 +54,15 @@ public class LuggagePropertiesItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @return the property descriptors
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addLuggageStowingDistanceFromSeatMeanPropertyDescriptor(object);
-			addLuggageStowingDistanceFromSeatDeviationPropertyDescriptor(object);
+			addLuggageStowDistanceFromSeatMeanPropertyDescriptor(object);
+			addLuggageStowDistanceFromSeatDeviationPropertyDescriptor(object);
 			addPercentageOfPassengersWithNoLuggagePropertyDescriptor(object);
 			addPercentageOfPassengersWithSmallLuggagePropertyDescriptor(object);
 			addPercentageOfPassengersWithMediumLuggagePropertyDescriptor(object);
@@ -83,21 +78,19 @@ public class LuggagePropertiesItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Luggage Stowing Distance From Seat Mean feature.
+	 * This adds a property descriptor for the Luggage Stow Distance From Seat Mean feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
-	protected void addLuggageStowingDistanceFromSeatMeanPropertyDescriptor(Object object) {
+	protected void addLuggageStowDistanceFromSeatMeanPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_LuggageProperties_luggageStowingDistanceFromSeatMean_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LuggageProperties_luggageStowingDistanceFromSeatMean_feature", "_UI_LuggageProperties_type"),
-				 CabinPackage.Literals.LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN,
+				 getString("_UI_LuggageProperties_luggageStowDistanceFromSeatMean_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LuggageProperties_luggageStowDistanceFromSeatMean_feature", "_UI_LuggageProperties_type"),
+				 CabinPackage.Literals.LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_MEAN,
 				 true,
 				 false,
 				 false,
@@ -107,21 +100,19 @@ public class LuggagePropertiesItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Luggage Stowing Distance From Seat Deviation feature.
+	 * This adds a property descriptor for the Luggage Stow Distance From Seat Deviation feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
-	protected void addLuggageStowingDistanceFromSeatDeviationPropertyDescriptor(Object object) {
+	protected void addLuggageStowDistanceFromSeatDeviationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_LuggageProperties_luggageStowingDistanceFromSeatDeviation_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LuggageProperties_luggageStowingDistanceFromSeatDeviation_feature", "_UI_LuggageProperties_type"),
-				 CabinPackage.Literals.LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION,
+				 getString("_UI_LuggageProperties_luggageStowDistanceFromSeatDeviation_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LuggageProperties_luggageStowDistanceFromSeatDeviation_feature", "_UI_LuggageProperties_type"),
+				 CabinPackage.Literals.LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_DEVIATION,
 				 true,
 				 false,
 				 false,
@@ -134,9 +125,7 @@ public class LuggagePropertiesItemProvider
 	 * This adds a property descriptor for the Percentage Of Passengers With No Luggage feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addPercentageOfPassengersWithNoLuggagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -158,9 +147,7 @@ public class LuggagePropertiesItemProvider
 	 * This adds a property descriptor for the Percentage Of Passengers With Small Luggage feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addPercentageOfPassengersWithSmallLuggagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -182,9 +169,7 @@ public class LuggagePropertiesItemProvider
 	 * This adds a property descriptor for the Percentage Of Passengers With Medium Luggage feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addPercentageOfPassengersWithMediumLuggagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -206,9 +191,7 @@ public class LuggagePropertiesItemProvider
 	 * This adds a property descriptor for the Percentage Of Passengers With Big Luggage feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addPercentageOfPassengersWithBigLuggagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -230,9 +213,7 @@ public class LuggagePropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Small Luggage Stow Time Mean feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addPassengerSmallLuggageStowTimeMeanPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -254,9 +235,7 @@ public class LuggagePropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Small Luggage Stow Time Deviation feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addPassengerSmallLuggageStowTimeDeviationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -278,9 +257,7 @@ public class LuggagePropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Medium Luggage Stow Time Mean feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addPassengerMediumLuggageStowTimeMeanPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -302,9 +279,7 @@ public class LuggagePropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Medium Luggage Stow Time Deviation feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addPassengerMediumLuggageStowTimeDeviationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -326,9 +301,7 @@ public class LuggagePropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Big Luggage Stow Time Mean feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addPassengerBigLuggageStowTimeMeanPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -350,9 +323,7 @@ public class LuggagePropertiesItemProvider
 	 * This adds a property descriptor for the Passenger Big Luggage Stow Time Deviation feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	protected void addPassengerBigLuggageStowTimeDeviationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -374,10 +345,7 @@ public class LuggagePropertiesItemProvider
 	 * This returns LuggageProperties.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
-	 * @return the image
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
@@ -405,17 +373,15 @@ public class LuggagePropertiesItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param notification the notification
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(LuggageProperties.class)) {
-			case CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN:
-			case CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION:
+			case CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_MEAN:
+			case CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_DEVIATION:
 			case CabinPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE:
 			case CabinPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE:
 			case CabinPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE:
@@ -437,10 +403,7 @@ public class LuggagePropertiesItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param newChildDescriptors the new child descriptors
-	 * @param object the object
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -451,9 +414,7 @@ public class LuggagePropertiesItemProvider
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the resource locator
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {

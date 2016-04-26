@@ -44,7 +44,7 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getStartBoardingAfterDelay <em>Start Boarding After Delay</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getNumberOfWaits <em>Number Of Waits</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getLuggageStowTime <em>Luggage Stow Time</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getLuggageStowingDistance <em>Luggage Stowing Distance</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getLuggageStowDistance <em>Luggage Stow Distance</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getTravelClass <em>Travel Class</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getPassengerMood <em>Passenger Mood</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getNumberOfMakeWayOperations <em>Number Of Make Way Operations</em>}</li>
@@ -418,24 +418,24 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected double luggageStowTime = LUGGAGE_STOW_TIME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getLuggageStowingDistance() <em>Luggage Stowing Distance</em>}' attribute.
+	 * The default value of the '{@link #getLuggageStowDistance() <em>Luggage Stow Distance</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLuggageStowingDistance()
+	 * @see #getLuggageStowDistance()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double LUGGAGE_STOWING_DISTANCE_EDEFAULT = 0.0;
+	protected static final double LUGGAGE_STOW_DISTANCE_EDEFAULT = 0.0;
 
 	/**
-	 * The cached value of the '{@link #getLuggageStowingDistance() <em>Luggage Stowing Distance</em>}' attribute.
+	 * The cached value of the '{@link #getLuggageStowDistance() <em>Luggage Stow Distance</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLuggageStowingDistance()
+	 * @see #getLuggageStowDistance()
 	 * @generated
 	 * @ordered
 	 */
-	protected double luggageStowingDistance = LUGGAGE_STOWING_DISTANCE_EDEFAULT;
+	protected double luggageStowDistance = LUGGAGE_STOW_DISTANCE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getTravelClass() <em>Travel Class</em>}' reference.
@@ -894,27 +894,23 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->.
-	 *
-	 * @return the luggage stowing distance
-	 * @generated 
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
-	public double getLuggageStowingDistance() {
-		return luggageStowingDistance;
+	public double getLuggageStowDistance() {
+		return luggageStowDistance;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->.
-	 *
-	 * @param newLuggageStowingDistance the new luggage stowing distance
-	 * @generated 
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
-	public void setLuggageStowingDistance(double newLuggageStowingDistance) {
-		double oldLuggageStowingDistance = luggageStowingDistance;
-		luggageStowingDistance = newLuggageStowingDistance;
+	public void setLuggageStowDistance(double newLuggageStowDistance) {
+		double oldLuggageStowDistance = luggageStowDistance;
+		luggageStowDistance = newLuggageStowDistance;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__LUGGAGE_STOWING_DISTANCE, oldLuggageStowingDistance, luggageStowingDistance));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__LUGGAGE_STOW_DISTANCE, oldLuggageStowDistance, luggageStowDistance));
 	}
 
 	/**
@@ -1220,8 +1216,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 				return getNumberOfWaits();
 			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
 				return getLuggageStowTime();
-			case CabinPackage.PASSENGER__LUGGAGE_STOWING_DISTANCE:
-				return getLuggageStowingDistance();
+			case CabinPackage.PASSENGER__LUGGAGE_STOW_DISTANCE:
+				return getLuggageStowDistance();
 			case CabinPackage.PASSENGER__TRAVEL_CLASS:
 				if (resolve) return getTravelClass();
 				return basicGetTravelClass();
@@ -1305,8 +1301,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
 				setLuggageStowTime((Double)newValue);
 				return;
-			case CabinPackage.PASSENGER__LUGGAGE_STOWING_DISTANCE:
-				setLuggageStowingDistance((Double)newValue);
+			case CabinPackage.PASSENGER__LUGGAGE_STOW_DISTANCE:
+				setLuggageStowDistance((Double)newValue);
 				return;
 			case CabinPackage.PASSENGER__TRAVEL_CLASS:
 				setTravelClass((TravelClass)newValue);
@@ -1393,8 +1389,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
 				setLuggageStowTime(LUGGAGE_STOW_TIME_EDEFAULT);
 				return;
-			case CabinPackage.PASSENGER__LUGGAGE_STOWING_DISTANCE:
-				setLuggageStowingDistance(LUGGAGE_STOWING_DISTANCE_EDEFAULT);
+			case CabinPackage.PASSENGER__LUGGAGE_STOW_DISTANCE:
+				setLuggageStowDistance(LUGGAGE_STOW_DISTANCE_EDEFAULT);
 				return;
 			case CabinPackage.PASSENGER__TRAVEL_CLASS:
 				setTravelClass((TravelClass)null);
@@ -1462,8 +1458,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 				return numberOfWaits != NUMBER_OF_WAITS_EDEFAULT;
 			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
 				return luggageStowTime != LUGGAGE_STOW_TIME_EDEFAULT;
-			case CabinPackage.PASSENGER__LUGGAGE_STOWING_DISTANCE:
-				return luggageStowingDistance != LUGGAGE_STOWING_DISTANCE_EDEFAULT;
+			case CabinPackage.PASSENGER__LUGGAGE_STOW_DISTANCE:
+				return luggageStowDistance != LUGGAGE_STOW_DISTANCE_EDEFAULT;
 			case CabinPackage.PASSENGER__TRAVEL_CLASS:
 				return travelClass != null;
 			case CabinPackage.PASSENGER__PASSENGER_MOOD:
@@ -1523,8 +1519,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 		result.append(numberOfWaits);
 		result.append(", luggageStowTime: ");
 		result.append(luggageStowTime);
-		result.append(", luggageStowingDistance: ");
-		result.append(luggageStowingDistance);
+		result.append(", luggageStowDistance: ");
+		result.append(luggageStowDistance);
 		result.append(", passengerMood: ");
 		result.append(passengerMood);
 		result.append(", numberOfMakeWayOperations: ");

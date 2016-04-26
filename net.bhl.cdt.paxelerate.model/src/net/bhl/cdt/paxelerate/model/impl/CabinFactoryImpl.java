@@ -22,9 +22,7 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the cabin factory
-	 * @generated 
+	 * @generated
 	 */
 	public static CabinFactory init() {
 		try {

@@ -117,8 +117,7 @@
         defaultValueLiteral="0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="luggageStowTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         defaultValueLiteral="1.0"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="luggageStowingDistance"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="luggageStowDistance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="travelClass" lowerBound="1"
         eType="#//TravelClass"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerMood" lowerBound="1"
@@ -229,9 +228,9 @@
         defaultValueLiteral="18"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LuggageProperties">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="luggageStowingDistanceFromSeatMean"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="luggageStowDistanceFromSeatMean"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="80"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="luggageStowingDistanceFromSeatDeviation"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="luggageStowDistanceFromSeatDeviation"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="10"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="percentageOfPassengersWithNoLuggage"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>

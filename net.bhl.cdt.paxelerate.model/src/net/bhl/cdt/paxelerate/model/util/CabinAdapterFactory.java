@@ -44,10 +44,8 @@ public class CabinAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- begin-user-doc -->
 	 * This implementation returns <code>true</code> if the object is either the model's package or is an instance object of the model.
 	 * <!-- end-user-doc -->
-	 *
-	 * @param object the object
 	 * @return whether this factory is applicable for the type of the object.
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public boolean isFactoryForType(Object object) {

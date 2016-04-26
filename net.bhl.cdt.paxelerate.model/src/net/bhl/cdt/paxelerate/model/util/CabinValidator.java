@@ -91,9 +91,7 @@ public class CabinValidator extends EObjectValidator {
 	 * Returns the package of this validator switch.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the e package
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	protected EPackage getEPackage() {
@@ -104,13 +102,7 @@ public class CabinValidator extends EObjectValidator {
 	 * Calls <code>validateXXX</code> for the corresponding classifier of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param classifierID the classifier id
-	 * @param value the value
-	 * @param diagnostics the diagnostics
-	 * @param context the context
-	 * @return true, if successful
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -229,12 +221,7 @@ public class CabinValidator extends EObjectValidator {
 	 * Validates the tooManyPassengers constraint of '<em>Travel Class</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param travelClass the travel class
-	 * @param diagnostics the diagnostics
-	 * @param context the context
-	 * @return true, if successful
-	 * @generated 
+	 * @generated
 	 */
 	public boolean validateTravelClass_tooManyPassengers(TravelClass travelClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return travelClass.tooManyPassengers(diagnostics, context);
@@ -244,12 +231,7 @@ public class CabinValidator extends EObjectValidator {
 	 * Validates the wrongRowStructure constraint of '<em>Travel Class</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param travelClass the travel class
-	 * @param diagnostics the diagnostics
-	 * @param context the context
-	 * @return true, if successful
-	 * @generated 
+	 * @generated
 	 */
 	public boolean validateTravelClass_wrongRowStructure(TravelClass travelClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return travelClass.wrongRowStructure(diagnostics, context);
@@ -335,12 +317,7 @@ public class CabinValidator extends EObjectValidator {
 	 * Validates the outOfBounds constraint of '<em>Physical Object</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @param physicalObject the physical object
-	 * @param diagnostics the diagnostics
-	 * @param context the context
-	 * @return true, if successful
-	 * @generated 
+	 * @generated
 	 */
 	public boolean validatePhysicalObject_outOfBounds(PhysicalObject physicalObject, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return physicalObject.outOfBounds(diagnostics, context);
@@ -666,9 +643,7 @@ public class CabinValidator extends EObjectValidator {
 	 * Returns the resource locator that will be used to fetch messages for this validator's diagnostics.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the resource locator
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
