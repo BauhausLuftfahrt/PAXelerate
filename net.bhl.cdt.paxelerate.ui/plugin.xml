@@ -196,6 +196,7 @@
          </command>
          <command
                commandId="net.bhl.cdt.paxelerate.ui.exportData"
+               icon="images/icons/export.png"
                label="Export Data..."
                style="push">
             <visibleWhen
