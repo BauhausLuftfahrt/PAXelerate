@@ -10,8 +10,10 @@ public abstract class MathHelper {
 	/**
 	 * This method calculates the Pythagoras distance between two vectors.
 	 *
-	 * @param vector1 the vector1
-	 * @param vector2 the vector2
+	 * @param vector1
+	 *            the vector1
+	 * @param vector2
+	 *            the vector2
 	 * @return the distance between the nodes
 	 */
 	public static double distanceBetween(Vector vector1, Vector vector2) {
@@ -24,6 +26,23 @@ public abstract class MathHelper {
 
 		/* calculate the square root */
 		return Math.sqrt(first + second);
+	}
+
+	/**
+	 * Perform a linear interpolation calculation
+	 * 
+	 * @param y2
+	 *            the upper bound
+	 * @param y1
+	 *            the lower bound
+	 * @param deltaX
+	 *            the delta x value
+	 * @param x1
+	 *            the given x value
+	 * @return the calculated y value at the position x1
+	 */
+	public static double linearInterpolation(double y2, double y1, double deltaX, double x1) {
+		return y2 - (y2 - y1) / deltaX * x1;
 	}
 
 }

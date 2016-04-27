@@ -24,34 +24,24 @@ public class ColorHelper {
 
 	/** All Paxelerate colors. */
 	public static final Color
-			// General colors
-			BLACK = new Color(d, 0, 0, 0),
-			GREY_DARK = new Color(d, 51, 51, 51),
-			GREY_LIGHT = new Color(d, 193, 193, 193),
-			RED = new Color(d, 255, 0, 0),
-			ORANGE = new Color(d, 255, 122, 0),
-			YELLOW = new Color(d, 255, 255, 0),
-			GREEN = new Color(d, 0, 255, 0),
-			GREEN_LIGHT = new Color(d, 122, 255, 0),
-			BLUE = new Color(d, 0, 0, 255),
-			WHITE = new Color(d, 0, 0, 0),
+	// General colors
+	BLACK = new Color(d, 0, 0, 0), GREY_DARK = new Color(d, 51, 51, 51), GREY_LIGHT = new Color(d, 193, 193, 193),
+			RED = new Color(d, 255, 0, 0), ORANGE = new Color(d, 255, 122, 0), YELLOW = new Color(d, 255, 255, 0),
+			GREEN = new Color(d, 0, 255, 0), GREEN_LIGHT = new Color(d, 122, 255, 0), BLUE = new Color(d, 0, 0, 255),
+			WHITE = new Color(d, 255, 255, 255),
 
 			// Program colors
 			ERROR = new Color(d, 255, 51, 51),
 
 			// Passenger colors
-			PASSENGER_MALE = new Color(d, 51, 153, 255),
-			PASSEMGER_FEMALE = new Color(d, 255, 153, 255),
+			PASSENGER_MALE = new Color(d, 51, 153, 255), PASSEMGER_FEMALE = new Color(d, 255, 153, 255),
 
 			// Luggage colors
-			LUGGAGE_NONE = new Color(d, 127, 112, 99),
-			LUGGAGE_SMALL = new Color(d, 255, 162, 76),
-			LUGGAGE_MEDIUM = new Color(d, 204, 97, 0),
-			LUGGAGE_LARGE = new Color(d, 127, 61, 0),
+			LUGGAGE_NONE = new Color(d, 127, 112, 99), LUGGAGE_SMALL = new Color(d, 255, 162, 76),
+			LUGGAGE_MEDIUM = new Color(d, 204, 97, 0), LUGGAGE_LARGE = new Color(d, 127, 61, 0),
 
 			// Aircraft colors
-			AIRCRAFT_FLOOR = new Color(d, 237, 243, 245),
-			AIRCRAFT_LAVATORY = new Color(d, 255, 160, 122);
+			AIRCRAFT_FLOOR = new Color(d, 237, 243, 245), AIRCRAFT_LAVATORY = new Color(d, 255, 160, 122);
 
 	/**
 	 * Singleton constructor for a ColorHelper instance.

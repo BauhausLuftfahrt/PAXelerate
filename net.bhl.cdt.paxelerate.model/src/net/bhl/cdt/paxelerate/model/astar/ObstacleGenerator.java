@@ -145,15 +145,11 @@ public class ObstacleGenerator {
 
 		case LINEAR:
 
-			/* using linear interpolation here */
-
-			/* f(x) = y2 - (y2 - y1) / Δ x * x1 */
-
-			return (int) (AreamapHandler.GRADIENT_UPPER_BOUND
-					- (AreamapHandler.GRADIENT_UPPER_BOUND
-							- AreamapHandler.GRADIENT_LOWER_BOUND)
-							/ (AreamapHandler.GRADIENT_WIDTH - 1)
-							* (distance - 1));
+			/* use linear interpolation here */
+			return (int) MathHelper.linearInterpolation(
+					AreamapHandler.GRADIENT_UPPER_BOUND,
+					AreamapHandler.GRADIENT_LOWER_BOUND,
+					(AreamapHandler.GRADIENT_WIDTH - 1), (distance - 1));
 
 		default:
 
