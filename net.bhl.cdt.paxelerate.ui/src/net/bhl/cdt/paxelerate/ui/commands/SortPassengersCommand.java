@@ -14,8 +14,6 @@ import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.Door;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Row;
-import net.bhl.cdt.paxelerate.model.Seat;
-import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.agent.AgentFunctions;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
@@ -36,20 +34,21 @@ public class SortPassengersCommand extends CDTCommand {
 
 	/** The cabin. */
 	private Cabin cabin;
-	
+
 	/** The show dialog. */
 	private boolean showDialog = true;
-	
+
 	/** The value. */
 	private int value = 0;
-	
+
 	/** The Constant INPUT_STRING. */
 	private static final String INPUT_STRING = "Please choose a sorting algorithm. [0]: Random, [1]: RTF, [2]: FTR, [3]: WTA, [4]: WTA & RTF, [5]: WTA & FTR";
 
 	/**
 	 * Instantiates a new sort passengers command.
 	 *
-	 * @param cabin the cabin
+	 * @param cabin
+	 *            the cabin
 	 */
 	public SortPassengersCommand(Cabin cabin) {
 		this.cabin = cabin;
@@ -58,8 +57,10 @@ public class SortPassengersCommand extends CDTCommand {
 	/**
 	 * Sets the properties manually.
 	 *
-	 * @param showDialog the show dialog
-	 * @param value the value
+	 * @param showDialog
+	 *            the show dialog
+	 * @param value
+	 *            the value
 	 */
 	public void setPropertiesManually(boolean showDialog, int value) {
 		this.showDialog = showDialog;
@@ -75,7 +76,9 @@ public class SortPassengersCommand extends CDTCommand {
 		return cabin;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.bhl.cdt.commands.CDTCommand#doRun()
 	 */
 	@Override
@@ -103,13 +106,8 @@ public class SortPassengersCommand extends CDTCommand {
 		 */
 
 		int numberOfLoops = cabin.getPassengers().size();
-		
-		int numberOfRows = 0;
-		for (TravelClass travelclass : cabin.getClasses()) {
-			numberOfRows = numberOfRows + ModelHelper.getChildrenByClass(travelclass, Row.class).size();
-		}
-		
-		
+
+		int numberOfRows = ModelHelper.getChildrenByClass(cabin, Row.class).size();
 
 		switch (value) {
 
@@ -189,8 +187,9 @@ public class SortPassengersCommand extends CDTCommand {
 				}
 			}
 			break;
-		
-		// Group/block boarding: create blocks with 10 rows each and distribute the passengers randomly
+
+		// Group/block boarding: create blocks with 10 rows each and distribute
+		// the passengers randomly
 		case 6:
 			int blocks = (numberOfRows / 10);
 			int paxPerBlock = numberOfLoops / blocks;
@@ -198,12 +197,11 @@ public class SortPassengersCommand extends CDTCommand {
 				for (int i = 0; i < paxList.size(); i++) {
 					Passenger pax = paxList.get(i);
 
-					
 					paxList.move(RandomHelper.randomValue(0, paxList.size()), pax);
 				}
 			}
 			break;
-		
+
 		// Steffen method: window every second row left and right
 		case 7:
 			for (int j = 0; j < numberOfLoops; j++) {
@@ -217,7 +215,7 @@ public class SortPassengersCommand extends CDTCommand {
 				}
 			}
 			break;
-		
+
 		// Milne/Kelly method: based on number of carried bags
 		case 8:
 			// TODO
@@ -256,7 +254,8 @@ public class SortPassengersCommand extends CDTCommand {
 	/**
 	 * Calculate delay.
 	 *
-	 * @param pax the pax
+	 * @param pax
+	 *            the pax
 	 * @return the double
 	 */
 	private synchronized double calculateDelay(Passenger pax) {
