@@ -127,12 +127,12 @@ public class Core {
 				if (!neighbor.isObstacle()) {
 
 					/* calculate the neighbors distance from start */
-					double neighborDistanceFromStart = MathHelper.distance(
+					double neighborDistanceFromStart = MathHelper.distanceBetween(
 							areamap.get(agent.getStart()).getPosition(),
 							neighbor.getPosition());
 
 					/* calculate the neighbors distance from start */
-					double currentDistanceFromStart = MathHelper.distance(
+					double currentDistanceFromStart = MathHelper.distanceBetween(
 							(areamap.get(agent.getStart()).getPosition()),
 							current.getPosition());
 

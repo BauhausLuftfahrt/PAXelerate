@@ -10,6 +10,7 @@ import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.astar.Node.Direction;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
+import net.bhl.cdt.paxelerate.model.astar.ObstacleGenerator.GradientOption;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 
 /**
@@ -25,13 +26,16 @@ public class AreamapHandler {
 	/** The Constant NARROWING_OF_DOOR_PATH_IN_PIXELS. */
 	public static final int DEFAULT_VALUE = 3, OBSTACLE_RANGE_IN_CM = 20,
 			POTENTIAL_GRADIENT_MAX = 100, HOLE_VALUE = 1,
-			NARROWING_OF_DOOR_PATH_IN_PIXELS = 2;
+			NARROWING_OF_DOOR_PATH_IN_PIXELS = 2, GRADIENT_LOWER_BOUND = 6,
+			GRADIENT_UPPER_BOUND = 10, GRADIENT_WIDTH = 2;
 
 	/**
 	 * This is the area map constructor.
 	 *
-	 * @param dimensions            the dimensions of the map
-	 * @param cabin the cabin
+	 * @param dimensions
+	 *            the dimensions of the map
+	 * @param cabin
+	 *            the cabin
 	 */
 	public AreamapHandler(Vector dimensions, Cabin cabin) {
 
@@ -42,8 +46,8 @@ public class AreamapHandler {
 		defineNeighboringNodes();
 
 		/* apply obstacle values to the area map */
-		areamap = new ObstacleGenerator(areamap, cabin).returnMap();
-
+		areamap = new ObstacleGenerator(areamap, cabin, GradientOption.LINEAR)
+				.returnMap();
 	}
 
 	/**
@@ -124,8 +128,10 @@ public class AreamapHandler {
 	/**
 	 * This map sets the start location of an agent.
 	 *
-	 * @param position the position
-	 * @param agent the agent
+	 * @param position
+	 *            the position
+	 * @param agent
+	 *            the agent
 	 */
 	public synchronized void setStartLocation(Vector position, Agent agent) {
 

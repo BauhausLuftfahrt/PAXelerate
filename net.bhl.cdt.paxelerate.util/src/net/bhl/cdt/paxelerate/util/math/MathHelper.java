@@ -14,7 +14,7 @@ public abstract class MathHelper {
 	 * @param vector2 the vector2
 	 * @return the distance between the nodes
 	 */
-	public static double distance(Vector vector1, Vector vector2) {
+	public static double distanceBetween(Vector vector1, Vector vector2) {
 
 		/* define the first element of the square root function */
 		double first = Math.pow(vector2.getX() - vector1.getX(), 2);

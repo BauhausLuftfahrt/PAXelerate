@@ -5,6 +5,8 @@
  ***************************************************************************************/
 package net.bhl.cdt.paxelerate.model.astar;
 
+import java.util.ArrayList;
+
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.Door;
 import net.bhl.cdt.paxelerate.model.DoorOption;
@@ -14,6 +16,7 @@ import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 import net.bhl.cdt.paxelerate.model.util.POHelper;
+import net.bhl.cdt.paxelerate.util.math.MathHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 
 /**
@@ -28,15 +31,30 @@ public class ObstacleGenerator {
 
 	/** The scale. */
 	private int scale;
-	
+
 	/** The dimensions. */
 	private Vector dimensions;
-	
+
 	/** The areamap. */
 	private Areamap areamap;
-	
+
 	/** The cabin. */
 	private Cabin cabin;
+
+	/** a list of all obstacle nodes */
+	private ArrayList<Node> obstacles = new ArrayList<>();
+
+	private GradientOption gradient;
+
+	/**
+	 * The different options for the gradient
+	 * 
+	 * @author marc.engelmann
+	 *
+	 */
+	public enum GradientOption {
+		LINEAR, CUBIC, EXPONENTIAL;
+	}
 
 	/**
 	 * This method generates a new obstacle generator.
@@ -46,27 +64,36 @@ public class ObstacleGenerator {
 	 * @param cabin
 	 *            the cabin from which to get the values
 	 */
-	public ObstacleGenerator(Areamap areamap, Cabin cabin) {
+	public ObstacleGenerator(Areamap areamap, Cabin cabin,
+			GradientOption gradientOption) {
 
+		/* store the needed values locally */
 		this.areamap = areamap;
-
+		this.gradient = gradientOption;
 		this.scale = cabin.getSimulationSettings().getScale();
 		this.dimensions = areamap.getDimensions();
 		this.cabin = cabin;
 
+		/* loop through all nodes and apply the default value */
 		for (Node node : areamap.getNodes()) {
 			node.setObstacleValue(AreamapHandler.DEFAULT_VALUE);
 		}
 
+		/* apply obstacle values to all obstacle positions */
 		for (ObjectOption option : ObjectOption.VALUES) {
 			generateObstacles(option);
 		}
 
-		generateDoorPaths();
-
-		generateAisleHole();
-
+		/* generate the potential gradient around all obstacles */
 		generatePotentialGradient();
+
+		/* generate a depression in the potential for the paths */
+		generateDoorDepressions();
+
+		/* generate a depression in the potential for the aisles */
+		generateAisleDepressions();
+
+		output();
 	}
 
 	/**
@@ -77,22 +104,93 @@ public class ObstacleGenerator {
 		/* loop through all nodes */
 		for (Node node : areamap.getNodes()) {
 
-			/* find the obstacle nodes */
-			if (node.isObstacle()) {
+			/*
+			 * only consider the ones which are no obstacle and have not been
+			 * calculated before
+			 */
+			if (!node.isObstacle() && node
+					.getObstacleValue() == AreamapHandler.DEFAULT_VALUE) {
 
-				/* get the neighbors of the obstacle */
-				for (Node neighbor : node.getNeighborList()) {
+				/* calculate the distance to the closest obstacle node */
+				double distanceToClosestNode = minimumDistanceToObstacle(node);
 
-					/* check if neighbor is an obstacle */
-					if (!neighbor.isObstacle()) {
+				/*
+				 * check if the distance is smaller than the maximum allowed
+				 * gradient width
+				 */
+				if (distanceToClosestNode <= AreamapHandler.GRADIENT_WIDTH) {
 
-						/* set the potential gradient */
-						neighbor.setObstacleValue(
-								AreamapHandler.POTENTIAL_GRADIENT_MAX - 1);
-					}
+					/* calculate the gradient value and apply it to the node */
+					node.setObstacleValue(getDistanceByOption(
+							distanceToClosestNode, gradient));
 				}
 			}
 		}
+	}
+
+	/**
+	 * This function calculates the gradient value at a specific position within
+	 * an integer array
+	 * 
+	 * @param distance
+	 *            is the position within the gradient
+	 * @param option
+	 *            defines the option used for the gradient
+	 * @return returns the value
+	 */
+	private int getDistanceByOption(double distance, GradientOption option) {
+
+		/* calculate the value depending on the chosen function */
+		switch (option) {
+
+		case LINEAR:
+
+			/* using linear interpolation here */
+
+			/* f(x) = y2 - (y2 - y1) / Δ x * x1 */
+
+			return (int) (AreamapHandler.GRADIENT_UPPER_BOUND
+					- (AreamapHandler.GRADIENT_UPPER_BOUND
+							- AreamapHandler.GRADIENT_LOWER_BOUND)
+							/ (AreamapHandler.GRADIENT_WIDTH - 1)
+							* (distance - 1));
+
+		default:
+
+			/* return the default value */
+			return AreamapHandler.DEFAULT_VALUE;
+		}
+	}
+
+	/**
+	 * This function calculates the minimum distance to an obstacle
+	 * 
+	 * @param node
+	 *            the node which's distance is calculated
+	 * @return the minimum distance
+	 */
+	private double minimumDistanceToObstacle(Node node) {
+
+		/* set the minimum as high as possible */
+		double minimum = Integer.MAX_VALUE;
+
+		/* loop through all obstacles */
+		for (Node obstacle : obstacles) {
+
+			/* calculate the distance using z = root(x² + y²) */
+			double distance = MathHelper.distanceBetween(node.getPosition(),
+					obstacle.getPosition());
+
+			/* check if there is a distance smaller than the current one */
+			if (distance < minimum) {
+
+				/* if so, define it as the new smallest distance */
+				minimum = distance;
+			}
+		}
+
+		/* return the distance */
+		return minimum;
 	}
 
 	/**
@@ -100,7 +198,7 @@ public class ObstacleGenerator {
 	 * the aisle, the obstacle value is set to HOLE_VALUE. This makes the
 	 * passengers use the aisle as their preferred path.
 	 */
-	private void generateDoorPaths() {
+	private void generateDoorDepressions() {
 
 		/* Create the door paths for every door */
 		for (Door door : cabin.getDoors()) {
@@ -137,7 +235,7 @@ public class ObstacleGenerator {
 	 * Generate a hole in the potential of the area map where the aisle is
 	 * located.
 	 */
-	private void generateAisleHole() {
+	private void generateAisleDepressions() {
 
 		/* load the simulation settings */
 		SimulationProperties set = cabin.getSimulationSettings();
@@ -148,6 +246,7 @@ public class ObstacleGenerator {
 			/* get the y location of the node */
 			int y = node.getPosition().getY();
 
+			/* check if the node is no obstacle */
 			if (!node.isObstacle()) {
 
 				// TODO: THIS IS ONLY FOR ONE MIDDLE AISLE!
@@ -179,9 +278,10 @@ public class ObstacleGenerator {
 				}
 			}
 
-			int yDimension = obj.getYDimension() / scale;
 			int xDimension = obj.getXDimension() / scale;
 			int xPosition = obj.getXPosition() / scale;
+
+			int yDimension = obj.getYDimension() / scale;
 			int yPosition = obj.getYPosition() / scale;
 
 			for (int i = 0; i < xDimension; i++) {
@@ -196,6 +296,7 @@ public class ObstacleGenerator {
 						node.setObstacleValue(Integer.MAX_VALUE);
 						node.setProperty(Property.OBSTACLE, null);
 						node.setObstacleType(option);
+						obstacles.add(node);
 					}
 				}
 			}
@@ -217,7 +318,12 @@ public class ObstacleGenerator {
 	public void output() {
 		for (int x = 0; x < dimensions.getX(); x++) {
 			for (int y = 0; y < dimensions.getY(); y++) {
-				System.out.print(areamap.get(x, y).getObstacleValue());
+				int value = areamap.get(x, y).getObstacleValue();
+				if (value == Integer.MAX_VALUE) {
+					System.out.print("XXX");
+				} else {
+					System.out.print(value);
+				}
 				System.out.print("\t");
 			}
 			System.out.println();
