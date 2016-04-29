@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="ASCII"?>
+<net.bhl.cdt.paxelerate:Cabin xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:net.bhl.cdt.paxelerate="http://net.bhl.cdt.paxelerate.model/" name="A320-200" xDimension="2751" yDimension="370">
+  <simulationSettings href="emfstore://workspaces/default/projectspaces/_8UzHkBpoEeWdwdawUoFc6w/project#_K2tR0BppEeWdwdawUoFc6w"/>
+  <classes sequence="1" passengers="10" availableSeats="124" seatPitch="15" xDimensionOfSeats="50" yDimensionOfSeats="50" name="Economy Class #1" loadFactor="8.0">
+    <rows rowNumber="1">
+      <seats yPosition="3" xPosition="232" yDimension="50" xDimension="50" name="1A" id="1" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.0"/>
+      <seats yPosition="133" xPosition="232" yDimension="50" xDimension="50" name="1B" id="2" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.0"/>
+      <seats yPosition="187" xPosition="232" yDimension="50" xDimension="50" name="1C" id="3" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.0"/>
+      <seats yPosition="317" xPosition="232" yDimension="50" xDimension="50" name="1D" id="4" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.0"/>
+    </rows>
+    <rows rowNumber="2">
+      <seats yPosition="3" xPosition="297" yDimension="50" xDimension="50" name="2A" id="5" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.1"/>
+      <seats yPosition="133" xPosition="297" yDimension="50" xDimension="50" name="2B" id="6" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.1"/>
+      <seats yPosition="187" xPosition="297" yDimension="50" xDimension="50" name="2C" id="7" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.1"/>
+      <seats yPosition="317" xPosition="297" yDimension="50" xDimension="50" name="2D" id="8" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.1" passenger="//@passengers.9"/>
+    </rows>
+    <rows rowNumber="3">
+      <seats yPosition="3" xPosition="362" yDimension="50" xDimension="50" name="3A" id="9" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.2"/>
+      <seats yPosition="133" xPosition="362" yDimension="50" xDimension="50" name="3B" id="10" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.2"/>
+      <seats yPosition="187" xPosition="362" yDimension="50" xDimension="50" name="3C" id="11" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.2"/>
+      <seats yPosition="317" xPosition="362" yDimension="50" xDimension="50" name="3D" id="12" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.2"/>
+    </rows>
+    <rows rowNumber="4">
+      <seats yPosition="3" xPosition="427" yDimension="50" xDimension="50" name="4A" id="13" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.3"/>
+      <seats yPosition="133" xPosition="427" yDimension="50" xDimension="50" name="4B" id="14" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.3"/>
+      <seats yPosition="187" xPosition="427" yDimension="50" xDimension="50" name="4C" id="15" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.3"/>
+      <seats yPosition="317" xPosition="427" yDimension="50" xDimension="50" name="4D" id="16" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.3"/>
+    </rows>
+    <rows rowNumber="5">
+      <seats yPosition="3" xPosition="492" yDimension="50" xDimension="50" name="5A" id="17" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.4"/>
+      <seats yPosition="133" xPosition="492" yDimension="50" xDimension="50" name="5B" id="18" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.4"/>
+      <seats yPosition="187" xPosition="492" yDimension="50" xDimension="50" name="5C" id="19" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.4"/>
+      <seats yPosition="317" xPosition="492" yDimension="50" xDimension="50" name="5D" id="20" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.4"/>
+    </rows>
+    <rows rowNumber="6">
+      <seats yPosition="3" xPosition="557" yDimension="50" xDimension="50" name="6A" id="21" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.5"/>
+      <seats yPosition="133" xPosition="557" yDimension="50" xDimension="50" name="6B" id="22" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.5"/>
+      <seats yPosition="187" xPosition="557" yDimension="50" xDimension="50" name="6C" id="23" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.5"/>
+      <seats yPosition="317" xPosition="557" yDimension="50" xDimension="50" name="6D" id="24" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.5"/>
+    </rows>
+    <rows rowNumber="7">
+      <seats yPosition="3" xPosition="622" yDimension="50" xDimension="50" name="7A" id="25" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.6"/>
+      <seats yPosition="133" xPosition="622" yDimension="50" xDimension="50" name="7B" id="26" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.6"/>
+      <seats yPosition="187" xPosition="622" yDimension="50" xDimension="50" name="7C" id="27" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.6"/>
+      <seats yPosition="317" xPosition="622" yDimension="50" xDimension="50" name="7D" id="28" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.6"/>
+    </rows>
+    <rows rowNumber="8">
+      <seats yPosition="3" xPosition="687" yDimension="50" xDimension="50" name="8A" id="29" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.7"/>
+      <seats yPosition="133" xPosition="687" yDimension="50" xDimension="50" name="8B" id="30" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.7"/>
+      <seats yPosition="187" xPosition="687" yDimension="50" xDimension="50" name="8C" id="31" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.7" passenger="//@passengers.7"/>
+      <seats yPosition="317" xPosition="687" yDimension="50" xDimension="50" name="8D" id="32" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.7" passenger="//@passengers.4"/>
+    </rows>
+    <rows rowNumber="9">
+      <seats yPosition="3" xPosition="752" yDimension="50" xDimension="50" name="9A" id="33" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.8"/>
+      <seats yPosition="133" xPosition="752" yDimension="50" xDimension="50" name="9B" id="34" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.8"/>
+      <seats yPosition="187" xPosition="752" yDimension="50" xDimension="50" name="9C" id="35" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.8"/>
+      <seats yPosition="317" xPosition="752" yDimension="50" xDimension="50" name="9D" id="36" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.8"/>
+    </rows>
+    <rows rowNumber="10">
+      <seats yPosition="3" xPosition="817" yDimension="50" xDimension="50" name="10A" id="37" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.9"/>
+      <seats yPosition="133" xPosition="817" yDimension="50" xDimension="50" name="10B" id="38" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.9"/>
+      <seats yPosition="187" xPosition="817" yDimension="50" xDimension="50" name="10C" id="39" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.9"/>
+      <seats yPosition="317" xPosition="817" yDimension="50" xDimension="50" name="10D" id="40" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.9"/>
+    </rows>
+    <rows rowNumber="11">
+      <seats yPosition="3" xPosition="882" yDimension="50" xDimension="50" name="11A" id="41" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.10" passenger="//@passengers.1"/>
+      <seats yPosition="133" xPosition="882" yDimension="50" xDimension="50" name="11B" id="42" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.10"/>
+      <seats yPosition="187" xPosition="882" yDimension="50" xDimension="50" name="11C" id="43" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.10"/>
+      <seats yPosition="317" xPosition="882" yDimension="50" xDimension="50" name="11D" id="44" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.10"/>
+    </rows>
+    <rows rowNumber="12">
+      <seats yPosition="3" xPosition="947" yDimension="50" xDimension="50" name="12A" id="45" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.11"/>
+      <seats yPosition="133" xPosition="947" yDimension="50" xDimension="50" name="12B" id="46" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.11"/>
+      <seats yPosition="187" xPosition="947" yDimension="50" xDimension="50" name="12C" id="47" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.11"/>
+      <seats yPosition="317" xPosition="947" yDimension="50" xDimension="50" name="12D" id="48" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.11"/>
+    </rows>
+    <rows rowNumber="13">
+      <seats yPosition="3" xPosition="1012" yDimension="50" xDimension="50" name="13A" id="49" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.12"/>
+      <seats yPosition="133" xPosition="1012" yDimension="50" xDimension="50" name="13B" id="50" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.12"/>
+      <seats yPosition="187" xPosition="1012" yDimension="50" xDimension="50" name="13C" id="51" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.12"/>
+      <seats yPosition="317" xPosition="1012" yDimension="50" xDimension="50" name="13D" id="52" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.12"/>
+    </rows>
+    <rows rowNumber="14">
+      <seats yPosition="3" xPosition="1077" yDimension="50" xDimension="50" name="14A" id="53" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.13" passenger="//@passengers.8"/>
+      <seats yPosition="133" xPosition="1077" yDimension="50" xDimension="50" name="14B" id="54" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.13"/>
+      <seats yPosition="187" xPosition="1077" yDimension="50" xDimension="50" name="14C" id="55" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.13" passenger="//@passengers.5"/>
+      <seats yPosition="317" xPosition="1077" yDimension="50" xDimension="50" name="14D" id="56" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.13"/>
+    </rows>
+    <rows rowNumber="15">
+      <seats yPosition="3" xPosition="1142" yDimension="50" xDimension="50" name="15A" id="57" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.14" passenger="//@passengers.3"/>
+      <seats yPosition="133" xPosition="1142" yDimension="50" xDimension="50" name="15B" id="58" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.14"/>
+      <seats yPosition="187" xPosition="1142" yDimension="50" xDimension="50" name="15C" id="59" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.14"/>
+      <seats yPosition="317" xPosition="1142" yDimension="50" xDimension="50" name="15D" id="60" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.14"/>
+    </rows>
+    <rows rowNumber="16">
+      <seats yPosition="3" xPosition="1207" yDimension="50" xDimension="50" name="16A" id="61" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.15"/>
+      <seats yPosition="133" xPosition="1207" yDimension="50" xDimension="50" name="16B" id="62" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.15"/>
+      <seats yPosition="187" xPosition="1207" yDimension="50" xDimension="50" name="16C" id="63" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.15"/>
+      <seats yPosition="317" xPosition="1207" yDimension="50" xDimension="50" name="16D" id="64" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.15"/>
+    </rows>
+    <rows rowNumber="17">
+      <seats yPosition="3" xPosition="1272" yDimension="50" xDimension="50" name="17A" id="65" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.16"/>
+      <seats yPosition="133" xPosition="1272" yDimension="50" xDimension="50" name="17B" id="66" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.16"/>
+      <seats yPosition="187" xPosition="1272" yDimension="50" xDimension="50" name="17C" id="67" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.16"/>
+      <seats yPosition="317" xPosition="1272" yDimension="50" xDimension="50" name="17D" id="68" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.16"/>
+    </rows>
+    <rows rowNumber="18">
+      <seats yPosition="3" xPosition="1337" yDimension="50" xDimension="50" name="18A" id="69" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.17"/>
+      <seats yPosition="133" xPosition="1337" yDimension="50" xDimension="50" name="18B" id="70" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.17"/>
+      <seats yPosition="187" xPosition="1337" yDimension="50" xDimension="50" name="18C" id="71" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.17"/>
+      <seats yPosition="317" xPosition="1337" yDimension="50" xDimension="50" name="18D" id="72" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.17"/>
+    </rows>
+    <rows rowNumber="19">
+      <seats yPosition="3" xPosition="1402" yDimension="50" xDimension="50" name="19A" id="73" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.18"/>
+      <seats yPosition="133" xPosition="1402" yDimension="50" xDimension="50" name="19B" id="74" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.18"/>
+      <seats yPosition="187" xPosition="1402" yDimension="50" xDimension="50" name="19C" id="75" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.18"/>
+      <seats yPosition="317" xPosition="1402" yDimension="50" xDimension="50" name="19D" id="76" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.18"/>
+    </rows>
+    <rows rowNumber="20">
+      <seats yPosition="3" xPosition="1467" yDimension="50" xDimension="50" name="20A" id="77" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.19"/>
+      <seats yPosition="133" xPosition="1467" yDimension="50" xDimension="50" name="20B" id="78" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.19"/>
+      <seats yPosition="187" xPosition="1467" yDimension="50" xDimension="50" name="20C" id="79" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.19"/>
+      <seats yPosition="317" xPosition="1467" yDimension="50" xDimension="50" name="20D" id="80" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.19"/>
+    </rows>
+    <rows rowNumber="21">
+      <seats yPosition="3" xPosition="1532" yDimension="50" xDimension="50" name="21A" id="81" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.20"/>
+      <seats yPosition="133" xPosition="1532" yDimension="50" xDimension="50" name="21B" id="82" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.20"/>
+      <seats yPosition="187" xPosition="1532" yDimension="50" xDimension="50" name="21C" id="83" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.20"/>
+      <seats yPosition="317" xPosition="1532" yDimension="50" xDimension="50" name="21D" id="84" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.20"/>
+    </rows>
+    <rows rowNumber="22">
+      <seats yPosition="3" xPosition="1597" yDimension="50" xDimension="50" name="22A" id="85" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.21"/>
+      <seats yPosition="133" xPosition="1597" yDimension="50" xDimension="50" name="22B" id="86" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.21"/>
+      <seats yPosition="187" xPosition="1597" yDimension="50" xDimension="50" name="22C" id="87" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.21"/>
+      <seats yPosition="317" xPosition="1597" yDimension="50" xDimension="50" name="22D" id="88" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.21"/>
+    </rows>
+    <rows rowNumber="23">
+      <seats yPosition="3" xPosition="1662" yDimension="50" xDimension="50" name="23A" id="89" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.22"/>
+      <seats yPosition="133" xPosition="1662" yDimension="50" xDimension="50" name="23B" id="90" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.22" passenger="//@passengers.6"/>
+      <seats yPosition="187" xPosition="1662" yDimension="50" xDimension="50" name="23C" id="91" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.22"/>
+      <seats yPosition="317" xPosition="1662" yDimension="50" xDimension="50" name="23D" id="92" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.22" passenger="//@passengers.0"/>
+    </rows>
+    <rows rowNumber="24">
+      <seats yPosition="3" xPosition="1727" yDimension="50" xDimension="50" name="24A" id="93" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.23"/>
+      <seats yPosition="133" xPosition="1727" yDimension="50" xDimension="50" name="24B" id="94" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.23"/>
+      <seats yPosition="187" xPosition="1727" yDimension="50" xDimension="50" name="24C" id="95" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.23"/>
+      <seats yPosition="317" xPosition="1727" yDimension="50" xDimension="50" name="24D" id="96" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.23"/>
+    </rows>
+    <rows rowNumber="25">
+      <seats yPosition="3" xPosition="1792" yDimension="50" xDimension="50" name="25A" id="97" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.24"/>
+      <seats yPosition="133" xPosition="1792" yDimension="50" xDimension="50" name="25B" id="98" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.24"/>
+      <seats yPosition="187" xPosition="1792" yDimension="50" xDimension="50" name="25C" id="99" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.24"/>
+      <seats yPosition="317" xPosition="1792" yDimension="50" xDimension="50" name="25D" id="100" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.24"/>
+    </rows>
+    <rows rowNumber="26">
+      <seats yPosition="3" xPosition="1857" yDimension="50" xDimension="50" name="26A" id="101" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.25"/>
+      <seats yPosition="133" xPosition="1857" yDimension="50" xDimension="50" name="26B" id="102" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.25"/>
+      <seats yPosition="187" xPosition="1857" yDimension="50" xDimension="50" name="26C" id="103" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.25" passenger="//@passengers.2"/>
+      <seats yPosition="317" xPosition="1857" yDimension="50" xDimension="50" name="26D" id="104" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.25"/>
+    </rows>
+    <rows rowNumber="27">
+      <seats yPosition="3" xPosition="1922" yDimension="50" xDimension="50" name="27A" id="105" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.26"/>
+      <seats yPosition="133" xPosition="1922" yDimension="50" xDimension="50" name="27B" id="106" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.26"/>
+      <seats yPosition="187" xPosition="1922" yDimension="50" xDimension="50" name="27C" id="107" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.26"/>
+      <seats yPosition="317" xPosition="1922" yDimension="50" xDimension="50" name="27D" id="108" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.26"/>
+    </rows>
+    <rows rowNumber="28">
+      <seats yPosition="3" xPosition="1987" yDimension="50" xDimension="50" name="28A" id="109" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.27"/>
+      <seats yPosition="133" xPosition="1987" yDimension="50" xDimension="50" name="28B" id="110" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.27"/>
+      <seats yPosition="187" xPosition="1987" yDimension="50" xDimension="50" name="28C" id="111" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.27"/>
+      <seats yPosition="317" xPosition="1987" yDimension="50" xDimension="50" name="28D" id="112" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.27"/>
+    </rows>
+    <rows rowNumber="29">
+      <seats yPosition="3" xPosition="2052" yDimension="50" xDimension="50" name="29A" id="113" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.28"/>
+      <seats yPosition="133" xPosition="2052" yDimension="50" xDimension="50" name="29B" id="114" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.28"/>
+      <seats yPosition="187" xPosition="2052" yDimension="50" xDimension="50" name="29C" id="115" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.28"/>
+      <seats yPosition="317" xPosition="2052" yDimension="50" xDimension="50" name="29D" id="116" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.28"/>
+    </rows>
+    <rows rowNumber="30">
+      <seats yPosition="3" xPosition="2117" yDimension="50" xDimension="50" name="30A" id="117" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.29"/>
+      <seats yPosition="133" xPosition="2117" yDimension="50" xDimension="50" name="30B" id="118" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.29"/>
+      <seats yPosition="187" xPosition="2117" yDimension="50" xDimension="50" name="30C" id="119" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.29"/>
+      <seats yPosition="317" xPosition="2117" yDimension="50" xDimension="50" name="30D" id="120" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.29"/>
+    </rows>
+    <rows rowNumber="31">
+      <seats yPosition="3" xPosition="2182" yDimension="50" xDimension="50" name="31A" id="121" letter="A" travelClass="//@classes.0" row="//@classes.0/@rows.30"/>
+      <seats yPosition="133" xPosition="2182" yDimension="50" xDimension="50" name="31B" id="122" letter="B" travelClass="//@classes.0" row="//@classes.0/@rows.30"/>
+      <seats yPosition="187" xPosition="2182" yDimension="50" xDimension="50" name="31C" id="123" letter="C" travelClass="//@classes.0" row="//@classes.0/@rows.30"/>
+      <seats yPosition="317" xPosition="2182" yDimension="50" xDimension="50" name="31D" id="124" letter="D" travelClass="//@classes.0" row="//@classes.0/@rows.30"/>
+    </rows>
+  </classes>
+  <doors xPosition="1073" onBothSides="true" width="50" id="3" isActive="false" doorOption="EmergencyExit"/>
+  <doors xPosition="1158" onBothSides="true" width="50" id="4" isActive="false" doorOption="EmergencyExit"/>
+  <doors xPosition="95" onBothSides="true" width="81" id="1" doorOption="MainDoor"/>
+  <doors xPosition="2554" onBothSides="true" width="81" id="2" isActive="false"/>
+  <lavatories yDimension="123" xDimension="82" name=" 1" id="1"/>
+  <lavatories xPosition="2452" yDimension="137" xDimension="96" name=" 2" id="2"/>
+  <lavatories yPosition="233" xPosition="2452" yDimension="137" xDimension="96" name=" 3" id="3"/>
+  <galleys yPosition="247" yDimension="123" xDimension="82" name=" 1" id="1"/>
+  <galleys yPosition="75" xPosition="2642" yDimension="220" xDimension="109" name=" 3" id="3"/>
+  <passengers id="1" height="184" age="47" weight="81" door="//@doors.2" seatID="92" Name="1 (23D)" seat="//@classes.0/@rows.22/@seats.3" width="48" depth="32" walkingSpeed="1.18" startBoardingAfterDelay="0.0" luggageStowTime="0.0" luggageStowDistance="78.61" travelClass="//@classes.0" passengerMood="passive" luggage="none"/>
+  <passengers id="2" height="176" age="62" weight="91" door="//@doors.2" seatID="41" Name="2 (11A)" seat="//@classes.0/@rows.10/@seats.0" width="45" depth="30" walkingSpeed="1.18" startBoardingAfterDelay="3.3333333333333335" luggageStowTime="0.0" luggageStowDistance="87.06" travelClass="//@classes.0" passengerMood="passive" luggage="none"/>
+  <passengers id="3" height="182" age="68" weight="74" door="//@doors.2" seatID="103" Name="3 (26C)" seat="//@classes.0/@rows.25/@seats.2" width="46" depth="31" walkingSpeed="1.5" startBoardingAfterDelay="6.666666666666667" luggageStowTime="0.0" luggageStowDistance="85.62" travelClass="//@classes.0" passengerMood="passive" luggage="none"/>
+  <passengers id="4" height="184" age="38" weight="88" door="//@doors.2" seatID="57" Name="4 (15A)" seat="//@classes.0/@rows.14/@seats.0" width="46" depth="30" walkingSpeed="1.5" startBoardingAfterDelay="10.0" luggageStowTime="0.0" luggageStowDistance="86.97" travelClass="//@classes.0" passengerMood="passive" luggage="none"/>
+  <passengers id="5" height="178" age="32" weight="73" door="//@doors.2" seatID="32" Name="5 (8D)" seat="//@classes.0/@rows.7/@seats.3" width="44" depth="30" walkingSpeed="1.18" startBoardingAfterDelay="13.333333333333334" luggageStowTime="0.0" luggageStowDistance="78.51" travelClass="//@classes.0" passengerMood="passive" luggage="none"/>
+  <passengers id="6" sex="female" height="165" age="29" weight="62" door="//@doors.2" seatID="55" Name="6 (14C)" seat="//@classes.0/@rows.13/@seats.2" width="40" depth="28" walkingSpeed="1.6" startBoardingAfterDelay="16.666666666666668" luggageStowTime="0.0" luggageStowDistance="72.29" travelClass="//@classes.0" passengerMood="passive" luggage="none"/>
+  <passengers id="7" height="175" age="76" weight="81" door="//@doors.2" seatID="90" Name="7 (23B)" seat="//@classes.0/@rows.22/@seats.1" width="46" depth="33" walkingSpeed="0.6" startBoardingAfterDelay="20.0" luggageStowTime="0.0" luggageStowDistance="75.78" travelClass="//@classes.0" passengerMood="passive" luggage="none"/>
+  <passengers id="8" sex="female" height="168" age="48" weight="61" door="//@doors.2" seatID="31" Name="8 (8C)" seat="//@classes.0/@rows.7/@seats.2" width="39" depth="24" walkingSpeed="1.5" startBoardingAfterDelay="23.333333333333332" luggageStowTime="0.0" luggageStowDistance="84.5" travelClass="//@classes.0" passengerMood="passive" luggage="none"/>
+  <passengers id="9" height="176" age="24" weight="93" door="//@doors.2" seatID="53" Name="9 (14A)" seat="//@classes.0/@rows.13/@seats.0" width="48" depth="29" walkingSpeed="1.6" startBoardingAfterDelay="26.666666666666664" luggageStowTime="0.0" luggageStowDistance="76.24" travelClass="//@classes.0" passengerMood="passive" luggage="none"/>
+  <passengers id="10" sex="female" height="169" age="40" weight="64" door="//@doors.2" seatID="8" Name="10 (2D)" seat="//@classes.0/@rows.1/@seats.3" width="41" depth="26" walkingSpeed="0.6" startBoardingAfterDelay="29.999999999999996" luggageStowTime="0.0" luggageStowDistance="83.98" travelClass="//@classes.0" passengerMood="passive" luggage="none"/>
+</net.bhl.cdt.paxelerate:Cabin>

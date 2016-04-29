@@ -12,12 +12,14 @@ import net.bhl.cdt.paxelerate.model.Door;
 import net.bhl.cdt.paxelerate.model.DoorOption;
 import net.bhl.cdt.paxelerate.model.ObjectOption;
 import net.bhl.cdt.paxelerate.model.PhysicalObject;
+import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
-import net.bhl.cdt.paxelerate.model.SimulationProperties;
+import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 import net.bhl.cdt.paxelerate.model.util.POHelper;
 import net.bhl.cdt.paxelerate.util.math.MathHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector;
+import net.bhl.cdt.paxelerate.util.math.Vector3D;
 
 /**
  * This class represents an obstacle map. Every point in the two dimensional
@@ -190,9 +192,9 @@ public class ObstacleGenerator {
 	}
 
 	/**
-	 * This method generates the obstacle hole in the aisle. This means that in
-	 * the aisle, the obstacle value is set to HOLE_VALUE. This makes the
-	 * passengers use the aisle as their preferred path.
+	 * This method generates the obstacle hole in the door path. This means that
+	 * in the door area, the obstacle value is set to HOLE_VALUE. This makes the
+	 * passengers use the door path as their preferred path.
 	 */
 	private void generateDoorDepressions() {
 
@@ -233,25 +235,79 @@ public class ObstacleGenerator {
 	 */
 	private void generateAisleDepressions() {
 
-		/* load the simulation settings */
-		SimulationProperties set = cabin.getSimulationSettings();
+		/* the minimum aisle width for automatic detection */
+		int minimumAisleWidth = 4;
 
-		/* loop through all nodes */
-		for (Node node : areamap.getNodes()) {
+		/* loop through every class */
+		for (TravelClass travelclass : cabin.getClasses()) {
 
-			/* get the y location of the node */
-			int y = node.getPosition().getY();
+			/* get the first row of each class */
+			Row firstRowOfClass = travelclass.getRows().get(0);
 
-			/* check if the node is no obstacle */
-			if (!node.isObstacle()) {
+			/* store a list of all aisles per class */
+			ArrayList<Vector3D> aisles = new ArrayList<>();
 
-				// TODO: THIS IS ONLY FOR ONE MIDDLE AISLE!
+			/* store the previous y position */
+			int lastYPosition = 0;
 
-				if (!set.isBringYourOwnSeat() && !set.isUseFoldableSeats()) {
-					if (y < 19 && y > 16) {
-						node.setObstacleValue(AreamapHandler.HOLE_VALUE);
+			/*
+			 * loop through all seats of the first row in order to find the gaps
+			 */
+			for (Seat seat : firstRowOfClass.getSeats()) {
+
+				/* calculate the gap between current and previous seat */
+				int gap = seat.getYPosition() / scale - lastYPosition;
+
+				/* if the gap is bigger than the predefined minimum, continue */
+				if (gap >= minimumAisleWidth) {
+
+					/* save the found aisle to the aisles list */
+					aisles.add(new Vector3D(seat.getXPosition() / scale,
+							seat.getYPosition() / scale - gap, gap));
+
+					/* x & y = position of top left corner & z = width */
+				}
+
+				/* store the new last y position of the previous seat */
+				lastYPosition = (seat.getYPosition() + seat.getYDimension())
+						/ scale;
+			}
+
+			/* load a seat from the last row of the current class */
+			Seat lastSeat = travelclass.getRows()
+					.get(travelclass.getRows().size() - 1).getSeats().get(0);
+
+			/* get the position of the end of the last seat in the class */
+			int endOfLastRowSeat = (lastSeat.getXPosition()
+					+ lastSeat.getXDimension()) / scale;
+
+			/* loop through all aisle found above */
+			for (Vector3D aisle : aisles) {
+
+				/* loop through the whole area of the aisle */
+				for (int x = aisle.getX()
+						- AreamapHandler.AISLE_OVERLAP_FRONT_AND_REAR; x <= endOfLastRowSeat
+								+ AreamapHandler.AISLE_OVERLAP_FRONT_AND_REAR; x++) {
+					for (int y = aisle.getY()
+							+ AreamapHandler.NARROWING_OF_AISLE_PATH_IN_PIXELS; y < aisle
+									.getY()
+									- AreamapHandler.NARROWING_OF_AISLE_PATH_IN_PIXELS
+									+ aisle.getZ(); y++) {
+
+						/* check if there might be an obstacle somewhere */
+						if (!areamap.get(x, y).isObstacle()) {
+
+							/* apply the hole value */
+							areamap.get(x, y).setObstacleValue(
+									AreamapHandler.HOLE_VALUE);
+						}
 					}
 				}
+
+				/* for debugging, output the found aisles */
+				System.out.println(travelclass.getName()
+						+ ": aisle detected at " + aisle.getX() + "|"
+						+ aisle.getY() + " , width: " + aisle.getZ());
 			}
 		}
 	}
@@ -265,35 +321,47 @@ public class ObstacleGenerator {
 	 */
 	private void generateObstacles(ObjectOption option) {
 
+		/* first loop through every physical object within the cabin */
 		for (PhysicalObject obj : POHelper.getObjectsByOption(option, cabin)) {
 
+			/* check if the object is a seat */
 			if (obj instanceof Seat) {
+
+				/* check for foldable seats and if it is currently folded */
 				if (cabin.getSimulationSettings().isUseFoldableSeats()
 						&& ((Seat) obj).isCurrentlyFolded()) {
+
+					/* if so, do not create an obstacle for that seat */
 					break;
 				}
 			}
 
+			/* define the dimension and position of the object */
 			int xDimension = obj.getXDimension() / scale;
 			int xPosition = obj.getXPosition() / scale;
 
 			int yDimension = obj.getYDimension() / scale;
 			int yPosition = obj.getYPosition() / scale;
 
-			for (int i = 0; i < xDimension; i++) {
-				for (int j = 0; j < yDimension; j++) {
+			/* loop from 0 to the dimension of the object */
+			for (int relativePositionX = 0; relativePositionX < xDimension; relativePositionX++) {
+				for (int relativePositionY = 0; relativePositionY < yDimension; relativePositionY++) {
 
-					int k = xPosition + i;
-					int l = yPosition + j;
-					if (k < dimensions.getX() && l < dimensions.getY()) {
+					/* begin at the top left corner */
+					int absolutePositionX = xPosition + relativePositionX;
+					int absolutePositionY = yPosition + relativePositionY;
 
-						Node node = areamap.get(k, l);
+					/* get the node at the current position */
+					Node node = areamap.get(absolutePositionX,
+							absolutePositionY);
 
-						node.setObstacleValue(Integer.MAX_VALUE);
-						node.setProperty(Property.OBSTACLE, null);
-						node.setObstacleType(option);
-						obstacles.add(node);
-					}
+					/* define the attributes to the current position */
+					node.setObstacleValue(Integer.MAX_VALUE);
+					node.setProperty(Property.OBSTACLE, null);
+					node.setObstacleType(option);
+
+					/* add the obstacle to the list of obstacles */
+					obstacles.add(node);
 				}
 			}
 		}

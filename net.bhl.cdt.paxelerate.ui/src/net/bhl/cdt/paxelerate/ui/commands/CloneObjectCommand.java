@@ -26,7 +26,8 @@ public class CloneObjectCommand extends CDTCommand {
 	/**
 	 * Instantiates a new clone object command.
 	 *
-	 * @param obj the obj
+	 * @param obj
+	 *            the obj
 	 */
 	public CloneObjectCommand(Object obj) {
 
@@ -59,7 +60,7 @@ public class CloneObjectCommand extends CDTCommand {
 
 				Seat newSeat = CabinFactory.eINSTANCE.createSeat();
 
-				newSeat.setXPosition(seat.getXPosition() + travelclass.getSeatPitch());
+				newSeat.setXPosition(seat.getXPosition() + seat.getXDimension() + travelclass.getSeatPitch());
 				newSeat.setYPosition(seat.getYPosition());
 				newSeat.setXDimension(seat.getXDimension());
 				newSeat.setYDimension(seat.getYDimension());
