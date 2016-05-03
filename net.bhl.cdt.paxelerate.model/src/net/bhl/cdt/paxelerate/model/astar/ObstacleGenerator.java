@@ -95,7 +95,7 @@ public class ObstacleGenerator {
 		/* generate a depression in the potential for the aisles */
 		generateAisleDepressions();
 
-		output();
+		// output();
 	}
 
 	/**

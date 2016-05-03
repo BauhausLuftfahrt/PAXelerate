@@ -24,6 +24,7 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.util.EMFModelStore;
 import net.bhl.cdt.paxelerate.model.util.PassengerGenerator;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
+import net.bhl.cdt.paxelerate.ui.views.HeatmapPart;
 import net.bhl.cdt.paxelerate.ui.views.PropertyViewPart;
 import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
 import net.bhl.cdt.paxelerate.util.string.StringHelper;
@@ -41,13 +42,13 @@ public class DrawCabinCommand extends CDTCommand {
 
 	/** The cabin. */
 	private Cabin cabin;
-	
+
 	/** The cabin view part. */
 	private CabinViewPart cabinViewPart;
-	
+
 	/** The property view part. */
 	private PropertyViewPart propertyViewPart;
-	
+
 	/** The error strings. */
 	private ArrayList<String> errorStrings = new ArrayList<String>();
 
@@ -66,6 +67,15 @@ public class DrawCabinCommand extends CDTCommand {
 	 */
 	@Override
 	protected void doRun() {
+
+		int countedPax = 0;
+		for (TravelClass tc : cabin.getClasses()) {
+			countedPax += tc.getPassengers();
+		}
+
+		if (countedPax != cabin.getPassengers().size()) {
+			new GeneratePassengersCommand(cabin).doRun();
+		}
 
 		/**
 		 * Main method.
@@ -144,6 +154,9 @@ public class DrawCabinCommand extends CDTCommand {
 
 		/* This stores the cabin as an .XMI file into the local storage. */
 		EMFModelStore.store(cabin);
+
+		HeatmapPart heatmap = ViewPartHelper.getHeatView();
+		heatmap.setCabin(cabin);
 	}
 
 	/**
@@ -193,7 +206,7 @@ public class DrawCabinCommand extends CDTCommand {
 				travelclass.setPassengers(numberOfPax);
 			} else {
 
-				double loadFactor = (double) Math.round(travelclass.getPassengers() * 100.0 / travelclass.getAvailableSeats());
+				double loadFactor = Math.round(travelclass.getPassengers() * 100.0 / travelclass.getAvailableSeats());
 				travelclass.setLoadFactor(loadFactor);
 			}
 		}

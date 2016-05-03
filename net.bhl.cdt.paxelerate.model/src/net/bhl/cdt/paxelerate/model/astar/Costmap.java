@@ -32,7 +32,7 @@ public class Costmap {
 
 	/** The map. */
 	private int[][] map;
-	
+
 	/** The goal point. */
 	private Vector size, startPoint = new Vector2D(0, 0),
 			goalPoint = new Vector2D(0, 0);
@@ -49,11 +49,16 @@ public class Costmap {
 	/**
 	 * Instantiates a new costmap.
 	 *
-	 * @param size the size
-	 * @param start the start
-	 * @param areamap the areamap
-	 * @param agent the agent
-	 * @param OnlyFloodToSeat the only flood to seat
+	 * @param size
+	 *            the size
+	 * @param start
+	 *            the start
+	 * @param areamap
+	 *            the areamap
+	 * @param agent
+	 *            the agent
+	 * @param OnlyFloodToSeat
+	 *            the only flood to seat
 	 */
 	public Costmap(Vector size, Vector start, Areamap areamap, Agent agent,
 			boolean OnlyFloodToSeat) {
@@ -86,8 +91,10 @@ public class Costmap {
 	/**
 	 * Sets the cost.
 	 *
-	 * @param position the position
-	 * @param value the value
+	 * @param position
+	 *            the position
+	 * @param value
+	 *            the value
 	 */
 	public void setCost(Vector position, int value) {
 		map[position.getX()][position.getY()] = value;
@@ -116,9 +123,12 @@ public class Costmap {
 	/**
 	 * This method prints the cost map with a path to the console.
 	 *
-	 * @param path the path
-	 * @param areamap the areamap
-	 * @param agent the agent
+	 * @param path
+	 *            the path
+	 * @param areamap
+	 *            the areamap
+	 * @param agent
+	 *            the agent
 	 */
 	public void printMapPathToConsole(Path path, Areamap areamap, Agent agent) {
 		System.out.println("This is the cost map:");
@@ -353,7 +363,8 @@ public class Costmap {
 	/**
 	 * Sort the list.
 	 *
-	 * @param sortedList the sorted list
+	 * @param sortedList
+	 *            the sorted list
 	 * @return the array list
 	 */
 	private ArrayList<Vector> sortTheList(ArrayList<Vector> sortedList) {
@@ -361,10 +372,23 @@ public class Costmap {
 		return sortedList;
 	}
 
+	public int getMaximumCost() {
+		int maximum = 0;
+		for (int i = 0; i < size.getX(); i++) {
+			for (int j = 0; j < size.getY(); j++) {
+				if (map[i][j] > maximum) {
+					maximum = map[i][j];
+				}
+			}
+		}
+		return maximum;
+	}
+
 	/**
 	 * Check lowest cost.
 	 *
-	 * @param point the point
+	 * @param point
+	 *            the point
 	 */
 	private void checkLowestCost(Vector point) {
 		if (getCost(point) != 0) {

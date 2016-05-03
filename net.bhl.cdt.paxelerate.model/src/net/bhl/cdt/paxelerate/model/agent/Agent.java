@@ -9,6 +9,8 @@ package net.bhl.cdt.paxelerate.model.agent;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 
+import org.eclipse.swt.SWTException;
+
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
 import net.bhl.cdt.paxelerate.model.LuggageProperties;
@@ -40,10 +42,10 @@ import net.bhl.cdt.paxelerate.util.time.StopWatch;
  *
  */
 public class Agent extends Subject implements Runnable {
-	
+
 	/** The thread. */
 	private Thread thread;
-	
+
 	/** The path. */
 	private Path path;
 
@@ -52,7 +54,7 @@ public class Agent extends Subject implements Runnable {
 
 	/** The current position. */
 	private Vector start, goal, desiredPosition, currentPosition;
-	
+
 	/** The mutable cost map. */
 	private Costmap mutableCostMap;
 
@@ -68,38 +70,38 @@ public class Agent extends Subject implements Runnable {
 
 	/** The stopwatch. */
 	private StopWatch stopwatch = new StopWatch();
-	
+
 	/** The pathlist. */
 	private ArrayList<Path> pathlist = new ArrayList<Path>();
 
 	/** The agent mood. */
 	private AgentMood agentMood;
-	
+
 	/** The blocking agent. */
 	private Agent blockingAgent;
 
 	/** The final costmap. */
 	/* constant values */
 	private final Costmap finalCostmap;
-	
+
 	/** The passenger. */
 	private final Passenger passenger;
 
 	/** The scale. */
 	private final int scale;
-	
+
 	/** The mode. */
 	private final AgentMode mode;
 
 	/** The current state. */
 	private State currentState;
-	
+
 	/** The passenger i let in the row. */
 	private Passenger thePassengerILetInTheRow;
-	
+
 	/** The sim luggage settings. */
 	private LuggageProperties simLuggageSettings;
-	
+
 	/** The sim settings. */
 	private SimulationProperties simSettings;
 
@@ -118,11 +120,11 @@ public class Agent extends Subject implements Runnable {
 	 * @author marc.engelmann
 	 */
 	public static enum AgentMode {
-		
+
 		/** The go to seat. */
-		GO_TO_SEAT, 
- /** The make way. */
- MAKE_WAY
+		GO_TO_SEAT,
+		/** The make way. */
+		MAKE_WAY
 	}
 
 	/**
@@ -131,23 +133,23 @@ public class Agent extends Subject implements Runnable {
 	 * @author marc.engelmann
 	 */
 	public static enum State {
-		
+
 		/** The following path. */
-		FOLLOWING_PATH, 
- /** The waiting for row clearing. */
- WAITING_FOR_ROW_CLEARING, 
- /** The clearing row. */
- CLEARING_ROW, 
- /** The stowing luggage. */
- STOWING_LUGGAGE, 
- /** The preparing. */
- PREPARING, 
- /** The queueing up. */
- QUEUEING_UP, 
- /** The waiting for other passenger to seat. */
- WAITING_FOR_OTHER_PASSENGER_TO_SEAT, 
- /** The returning to seat. */
- RETURNING_TO_SEAT;
+		FOLLOWING_PATH,
+		/** The waiting for row clearing. */
+		WAITING_FOR_ROW_CLEARING,
+		/** The clearing row. */
+		CLEARING_ROW,
+		/** The stowing luggage. */
+		STOWING_LUGGAGE,
+		/** The preparing. */
+		PREPARING,
+		/** The queueing up. */
+		QUEUEING_UP,
+		/** The waiting for other passenger to seat. */
+		WAITING_FOR_OTHER_PASSENGER_TO_SEAT,
+		/** The returning to seat. */
+		RETURNING_TO_SEAT;
 	}
 
 	/**
@@ -165,12 +167,18 @@ public class Agent extends Subject implements Runnable {
 	/**
 	 * This method constructs an agent.
 	 *
-	 * @param passenger            the passenger which is represented by the agent
-	 * @param start            the starting vector
-	 * @param goal            the goal vector
-	 * @param costmap the costmap
-	 * @param mode the mode
-	 * @param thePassengerILetInTheRow the the passenger i let in the row
+	 * @param passenger
+	 *            the passenger which is represented by the agent
+	 * @param start
+	 *            the starting vector
+	 * @param goal
+	 *            the goal vector
+	 * @param costmap
+	 *            the costmap
+	 * @param mode
+	 *            the mode
+	 * @param thePassengerILetInTheRow
+	 *            the the passenger i let in the row
 	 */
 	public Agent(Passenger passenger, Vector start, Vector goal,
 			Costmap costmap, AgentMode mode,
@@ -237,7 +245,8 @@ public class Agent extends Subject implements Runnable {
 	/**
 	 * Sets the current state.
 	 *
-	 * @param status the new current state
+	 * @param status
+	 *            the new current state
 	 */
 	public void setCurrentState(State status) {
 		this.currentState = status;
@@ -282,7 +291,8 @@ public class Agent extends Subject implements Runnable {
 	/**
 	 * Sets the initialized.
 	 *
-	 * @param initialized the new initialized
+	 * @param initialized
+	 *            the new initialized
 	 */
 	public void setInitialized(boolean initialized) {
 		this.initialized = initialized;
@@ -291,7 +301,8 @@ public class Agent extends Subject implements Runnable {
 	/**
 	 * Sets the blocking agent.
 	 *
-	 * @param blockingAgent the new blocking agent
+	 * @param blockingAgent
+	 *            the new blocking agent
 	 */
 	public void setBlockingAgent(Agent blockingAgent) {
 		this.blockingAgent = blockingAgent;
@@ -378,9 +389,12 @@ public class Agent extends Subject implements Runnable {
 	/**
 	 * Checks if is in x range equal.
 	 *
-	 * @param position the position
-	 * @param range the range
-	 * @param print the print
+	 * @param position
+	 *            the position
+	 * @param range
+	 *            the range
+	 * @param print
+	 *            the print
 	 * @return true, if is in x range equal
 	 */
 	private boolean isInXRangeEqual(int position, int range, boolean print) {
@@ -394,9 +408,12 @@ public class Agent extends Subject implements Runnable {
 	/**
 	 * Checks if is in x range smaller.
 	 *
-	 * @param position the position
-	 * @param range the range
-	 * @param print the print
+	 * @param position
+	 *            the position
+	 * @param range
+	 *            the range
+	 * @param print
+	 *            the print
 	 * @return true, if is in x range smaller
 	 */
 	private boolean isInXRangeSmaller(int position, int range, boolean print) {
@@ -525,7 +542,8 @@ public class Agent extends Subject implements Runnable {
 	/**
 	 * This method is used to rotate the agent!.
 	 *
-	 * @param degrees            is the rotation in degrees
+	 * @param degrees
+	 *            is the rotation in degrees
 	 */
 	private void rotateAgent(int degrees) {
 		if (rotationAllowed()) {
@@ -575,7 +593,8 @@ public class Agent extends Subject implements Runnable {
 	 * map is always modified based on the non-editable final cost map
 	 * calculated at the beginning.
 	 *
-	 * @throws NullPointerException the null pointer exception
+	 * @throws NullPointerException
+	 *             the null pointer exception
 	 */
 	public void findNewPath() throws NullPointerException {
 
@@ -867,6 +886,8 @@ public class Agent extends Subject implements Runnable {
 						e.printStackTrace();
 					} catch (ArrayIndexOutOfBoundsException a) {
 						a.printStackTrace();
+					} catch (SWTException swt) {
+						swt.printStackTrace();
 					}
 
 					/* sleep as long as one step takes */
@@ -959,7 +980,8 @@ public class Agent extends Subject implements Runnable {
 	/**
 	 * Define seated.
 	 *
-	 * @param isSeated the is seated
+	 * @param isSeated
+	 *            the is seated
 	 */
 	private void defineSeated(boolean isSeated) {
 
@@ -989,7 +1011,8 @@ public class Agent extends Subject implements Runnable {
 	/**
 	 * Sets the exit path loop.
 	 *
-	 * @param exitPathLoop the new exit path loop
+	 * @param exitPathLoop
+	 *            the new exit path loop
 	 */
 	public void setExitPathLoop(boolean exitPathLoop) {
 		this.exitTheMainLoop = exitPathLoop;
@@ -998,7 +1021,8 @@ public class Agent extends Subject implements Runnable {
 	/**
 	 * Interrupt agent.
 	 *
-	 * @param duration the duration
+	 * @param duration
+	 *            the duration
 	 */
 	public void interruptAgent(int duration) {
 		try {

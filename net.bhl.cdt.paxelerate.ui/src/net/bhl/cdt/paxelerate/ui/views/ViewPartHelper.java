@@ -10,9 +10,6 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 
-import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
-import net.bhl.cdt.paxelerate.ui.views.PropertyViewPart;
-
 /**
  * The Class ViewPartHelper.
  */
@@ -33,7 +30,23 @@ public class ViewPartHelper {
 		}
 		return null;
 	}
-	
+
+	/**
+	 * Gets the heat map view.
+	 *
+	 * @return the heat map view
+	 */
+	public static HeatmapPart getHeatView() {
+		IWorkbenchWindow[] windows = PlatformUI.getWorkbench().getWorkbenchWindows();
+		for (IWorkbenchWindow window : windows) {
+			IWorkbenchPage page = window.getActivePage();
+			HeatmapPart found = (HeatmapPart) page.findView("net.bhl.cdt.paxelerate.ui.heatmap");
+			if (found != null)
+				return found;
+		}
+		return null;
+	}
+
 	/**
 	 * Gets the property view.
 	 *

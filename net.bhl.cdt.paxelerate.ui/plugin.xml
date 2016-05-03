@@ -30,6 +30,15 @@
             name="Potential Gradient"
             restorable="true">
       </view>
+      <view
+            allowMultiple="false"
+            category="net.bhl.cdt.paxelerate.ui.categoryPAXelerate"
+            class="net.bhl.cdt.paxelerate.ui.views.HeatmapPart"
+            icon="images/icons/cabin.png"
+            id="net.bhl.cdt.paxelerate.ui.heatmap"
+            name="HeatMap"
+            restorable="true">
+      </view>
       <category
             id="net.bhl.cdt.paxelerate.ui.categoryPAXelerate"
             name="PAXelerate">
