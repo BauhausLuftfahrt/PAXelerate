@@ -32,7 +32,7 @@ import net.bhl.cdt.paxelerate.util.math.Vector3D;
 public class ObstacleGenerator {
 
 	/** The scale. */
-	private int scale;
+	private double scale;
 
 	/** The dimensions. */
 	private Vector dimensions;
@@ -94,8 +94,6 @@ public class ObstacleGenerator {
 
 		/* generate a depression in the potential for the aisles */
 		generateAisleDepressions();
-
-		// output();
 	}
 
 	/**
@@ -205,9 +203,10 @@ public class ObstacleGenerator {
 			if (door.getDoorOption() != DoorOption.EMERGENCY_EXIT) {
 
 				/* get the borders of the door within the area map */
-				int entryMin = (door.getXPosition() / scale)
+				int entryMin = (int) (door.getXPosition() / scale)
 						+ AreamapHandler.NARROWING_OF_DOOR_PATH_IN_PIXELS;
-				int entryMax = (door.getXPosition() + door.getWidth()) / scale
+				int entryMax = (door.getXPosition() + door.getWidth())
+						/ (int) scale
 						- AreamapHandler.NARROWING_OF_DOOR_PATH_IN_PIXELS;
 
 				/* loop through all nodes */
@@ -256,21 +255,21 @@ public class ObstacleGenerator {
 			for (Seat seat : firstRowOfClass.getSeats()) {
 
 				/* calculate the gap between current and previous seat */
-				int gap = seat.getYPosition() / scale - lastYPosition;
+				int gap = seat.getYPosition() / (int) scale - lastYPosition;
 
 				/* if the gap is bigger than the predefined minimum, continue */
 				if (gap >= minimumAisleWidth) {
 
 					/* save the found aisle to the aisles list */
-					aisles.add(new Vector3D(seat.getXPosition() / scale,
-							seat.getYPosition() / scale - gap, gap));
+					aisles.add(new Vector3D(seat.getXPosition() / (int) scale,
+							seat.getYPosition() / (int) scale - gap, gap));
 
 					/* x & y = position of top left corner & z = width */
 				}
 
 				/* store the new last y position of the previous seat */
 				lastYPosition = (seat.getYPosition() + seat.getYDimension())
-						/ scale;
+						/ (int) scale;
 			}
 
 			/* load a seat from the last row of the current class */
@@ -279,7 +278,7 @@ public class ObstacleGenerator {
 
 			/* get the position of the end of the last seat in the class */
 			int endOfLastRowSeat = (lastSeat.getXPosition()
-					+ lastSeat.getXDimension()) / scale;
+					+ lastSeat.getXDimension()) / (int) scale;
 
 			/* loop through all aisle found above */
 			for (Vector3D aisle : aisles) {
@@ -337,11 +336,11 @@ public class ObstacleGenerator {
 			}
 
 			/* define the dimension and position of the object */
-			int xDimension = obj.getXDimension() / scale;
-			int xPosition = obj.getXPosition() / scale;
+			int xDimension = obj.getXDimension() / (int) scale;
+			int xPosition = obj.getXPosition() / (int) scale;
 
-			int yDimension = obj.getYDimension() / scale;
-			int yPosition = obj.getYPosition() / scale;
+			int yDimension = obj.getYDimension() / (int) scale;
+			int yPosition = obj.getYPosition() / (int) scale;
 
 			/* loop from 0 to the dimension of the object */
 			for (int relativePositionX = 0; relativePositionX < xDimension; relativePositionX++) {
@@ -375,46 +374,4 @@ public class ObstacleGenerator {
 	public Areamap returnMap() {
 		return areamap;
 	}
-
-	/**
-	 * Output.
-	 */
-	public void output() {
-		for (int x = 0; x < dimensions.getX(); x++) {
-			for (int y = 0; y < dimensions.getY(); y++) {
-				int value = areamap.get(x, y).getObstacleValue();
-				if (value == Integer.MAX_VALUE) {
-					System.out.print("XXX");
-				} else {
-					System.out.print(value);
-				}
-				System.out.print("\t");
-			}
-			System.out.println();
-		}
-	}
-
-	/**
-	 * This method saves the obstacle map in a text file to the documents
-	 * folder.
-	 */
-	// TODO disabled to unlink model from ui
-	// public void printObstacleMap() {
-	// PrintWriter printToFile = null;
-	// try {
-	// CabinViewPart.makeDirectory();
-	// printToFile = new PrintWriter(CabinViewPart.getFilePath()
-	// + "obstaclemap.txt");
-	// for (int i = 0; i < dimensions.getY(); i++) {
-	// for (int j = 0; j < dimensions.getX(); j++) {
-	// printToFile.print(getValueAtPoint(j, i) + "\t");
-	// }
-	// printToFile.println();
-	// }
-	// } catch (FileNotFoundException e) {<y
-	// Log.add(this, "Could not save obstacle map to file.");
-	// } finally {
-	// printToFile.close();
-	// }
-	// }
 }

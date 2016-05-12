@@ -24,7 +24,6 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.util.EMFModelStore;
 import net.bhl.cdt.paxelerate.model.util.PassengerGenerator;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
-import net.bhl.cdt.paxelerate.ui.views.HeatmapPart;
 import net.bhl.cdt.paxelerate.ui.views.PropertyViewPart;
 import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
 import net.bhl.cdt.paxelerate.util.string.StringHelper;
@@ -155,8 +154,8 @@ public class DrawCabinCommand extends CDTCommand {
 		/* This stores the cabin as an .XMI file into the local storage. */
 		EMFModelStore.store(cabin);
 
-		HeatmapPart heatmap = ViewPartHelper.getHeatView();
-		heatmap.setCabin(cabin);
+		// HeatmapPart heatmap = ViewPartHelper.getHeatView();
+		// heatmap.setCabin(cabin);
 	}
 
 	/**

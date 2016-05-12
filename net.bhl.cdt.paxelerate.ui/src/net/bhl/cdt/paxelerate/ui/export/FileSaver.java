@@ -3,6 +3,7 @@ package net.bhl.cdt.paxelerate.ui.export;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
+import net.bhl.cdt.paxelerate.model.astar.Areamap;
 import net.bhl.cdt.paxelerate.model.astar.Costmap;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.util.math.Vector;
@@ -42,4 +43,35 @@ public class FileSaver {
 		}
 	}
 
+	/**
+	 * This method saves the whole obstacle map in a text file to the documents
+	 * folder.
+	 */
+
+	public static void saveObstacleToFile(Areamap areamap, Vector dimensions) {
+
+		PrintWriter printToFile = null;
+		try {
+
+			CabinViewPart.makeDirectory();
+			printToFile = new PrintWriter(CabinViewPart.getFilePath() + "obstaclemap.xls");
+
+			for (int x = 0; x < dimensions.getX(); x++) {
+				for (int y = 0; y < dimensions.getY(); y++) {
+					if (areamap.get(new Vector2D(x, y)).isObstacle()) {
+						printToFile.print("X\t");
+					} else {
+						printToFile.print(areamap.get(new Vector2D(x, y)).getObstacleValue() + "\t");
+					}
+				}
+				printToFile.println();
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("Could not save obstacle map to file.");
+		} catch (NullPointerException e) {
+			System.out.println("The file path is not available.");
+		} finally {
+			printToFile.close();
+		}
+	}
 }

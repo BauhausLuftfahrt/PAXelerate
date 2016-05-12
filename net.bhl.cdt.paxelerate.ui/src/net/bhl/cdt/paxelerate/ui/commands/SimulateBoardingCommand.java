@@ -77,6 +77,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 				cabin.getSimulationSettings().setRandomSortBetweenLoops(false);
 				cabin.getSimulationSettings().setSimulationSpeedFactor(1);
+				cabin.getSimulationSettings().setScale(10);
 
 				Display.getDefault().syncExec(new Runnable() {
 					@Override
@@ -176,15 +177,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 						index++;
 					}
 
-					// if (Exporter.generateHeatmapFile("Heat Map",
-					// SimulationHandler.getMap())) {
-					// Log.add(this, "Heat map saved successfully!");
-					// }
-					//
-					// if (Exporter.generateInterruptmapFile("Interrupt Map",
-					// SimulationHandler.getMap())) {
-					// Log.add(this, "Interrupt map saved successfully!");
-					// }
+					FileSaver.saveObstacleToFile(SimulationHandler.getMap(), dimensions);
 
 					Display.getDefault().syncExec(new Runnable() {
 						@Override
