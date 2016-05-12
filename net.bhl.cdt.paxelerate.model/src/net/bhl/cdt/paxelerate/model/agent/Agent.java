@@ -1182,6 +1182,12 @@ public class Agent extends Subject implements Runnable {
 				 */
 
 				int offset = 3;
+
+				if (passenger.getDoor().getXPosition() > passenger.getSeat()
+						.getXPosition()) {
+					offset = -offset;
+				}
+
 				double position = thePassengerILetInTheRow.getPositionX();
 				Cabin cabinBlocker = SimulationHandler.getCabin();
 				Passenger dummyPax = CabinFactory.eINSTANCE.createPassenger();
