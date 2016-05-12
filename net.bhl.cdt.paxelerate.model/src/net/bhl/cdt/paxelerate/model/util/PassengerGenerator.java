@@ -11,8 +11,9 @@ import net.bhl.cdt.paxelerate.model.Passenger;
  * The Class PassengerGenerator.
  *
  * @author marc.engelmann, michael.schmidt
- * @version 1.0
+ * @version 1.1
  */
+
 public class PassengerGenerator {
 
 	/**
