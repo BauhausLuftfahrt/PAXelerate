@@ -9,6 +9,7 @@ package net.bhl.cdt.paxelerate.ui.commands;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.Map;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -26,7 +27,9 @@ import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Seat;
+import net.bhl.cdt.paxelerate.model.astar.Costmap;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
+import net.bhl.cdt.paxelerate.ui.export.FileSaver;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.SimulationView;
 import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
@@ -46,7 +49,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 	/** The cabin. */
 	private Cabin cabin;
-	
+
 	/** The simulation frame. */
 	private JFrame simulationFrame;
 
@@ -161,6 +164,18 @@ public class SimulateBoardingCommand extends CDTCommand {
 					/* closes the simulation view after completion */
 					simulationFrame.dispose();
 
+					Map<Integer, Costmap> costmaps = SimulationHandler.getUsedCostmaps();
+
+					int index = 0;
+
+					for (Costmap costmap : costmaps.values()) {
+
+						/* save the CostMap to the local file system */
+						FileSaver.saveCostmapToFile(costmap, dimensions, index);
+
+						index++;
+					}
+
 					// if (Exporter.generateHeatmapFile("Heat Map",
 					// SimulationHandler.getMap())) {
 					// Log.add(this, "Heat map saved successfully!");
@@ -200,6 +215,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 				// report finished
 				return Status.OK_STATUS;
 			}
+
 		};
 
 		// Start the Job

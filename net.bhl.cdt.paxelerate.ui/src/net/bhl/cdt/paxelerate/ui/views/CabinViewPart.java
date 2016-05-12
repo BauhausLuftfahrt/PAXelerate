@@ -6,7 +6,7 @@
 package net.bhl.cdt.paxelerate.ui.views;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.swt.SWT;
@@ -529,7 +529,7 @@ public class CabinViewPart extends ViewPart {
 	 * @param agentList
 	 *            the agent list
 	 */
-	public void submitAgents(final ArrayList<Agent> agentList) {
+	public void submitAgents(final List<Agent> agentList) {
 		canvas.redraw();
 
 		canvas.addPaintListener(new PaintListener() {

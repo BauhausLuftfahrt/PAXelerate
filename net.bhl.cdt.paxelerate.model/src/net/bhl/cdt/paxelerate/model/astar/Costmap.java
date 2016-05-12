@@ -285,38 +285,6 @@ public class Costmap {
 	}
 
 	/**
-	 * This method saves the whole cost map in a text file to the documents
-	 * folder.
-	 */
-	// CURRENTLY DISAPLED, until Cost Map is unlinked from ui
-	@Deprecated
-	public void saveMapToFile() {
-		// PrintWriter printToFile = null;
-		try {
-			// TODO COST MAP MAY NOT LINK TO UI
-			// CabinViewPart.makeDirectory();
-			// printToFile = new PrintWriter(CabinViewPart.getFilePath()
-			// + "costmap.txt");
-			// for (int i = 0; i < dimensions.getY(); i++) {
-			// for (int j = 0; j < dimensions.getX(); j++) {
-			// if (map[j][i] == -1) {
-			// printToFile.print("X\t");
-			// } else {
-			// printToFile.print(map[j][i] + "\t");
-			// }
-			// }
-			// printToFile.println();
-			// }
-			// } catch (FileNotFoundException e) {
-			// Log.add(this, "Could not save cost map to file.");
-			// } catch (NullPointerException e) {
-			// Log.add(this, "The file path is not available.");
-		} finally {
-			// printToFile.close();
-		}
-	}
-
-	/**
 	 * This method returns the <b><i>already calculated</i></b> cost of a
 	 * specific point in the cost map.
 	 * 

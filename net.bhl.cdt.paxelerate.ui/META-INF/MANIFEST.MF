@@ -18,6 +18,7 @@ Bundle-ActivationPolicy: lazy
 Export-Package: net.bhl.cdt.paxelerate.ui,
  net.bhl.cdt.paxelerate.ui.color,
  net.bhl.cdt.paxelerate.ui.commands,
+ net.bhl.cdt.paxelerate.ui.export,
  net.bhl.cdt.paxelerate.ui.font,
  net.bhl.cdt.paxelerate.ui.image,
  net.bhl.cdt.paxelerate.ui.views
