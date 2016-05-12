@@ -26,29 +26,29 @@ public class Node implements Comparable<Node> {
 	/** The previous node. */
 	private Node north, northEast, east, southEast, south, southWest, west,
 			northWest, previousNode;
-	
+
 	/** The distance from start. */
 	private double distanceFromStart;
-	
+
 	/** The obstacle value. */
 	private int costFromStart, numberOfOccupations = 0, numberOfInterrupts = 0,
 			obstacleValue = 0;
-	
+
 	/** The property. */
 	private Property property;
-	
+
 	/** The hidden. */
 	private boolean hidden = false;
-	
+
 	/** The linked passenger. */
 	private Passenger linkedPassenger;
-	
+
 	/** The start list. */
 	private ArrayList<NodeProperty> startList = new ArrayList<NodeProperty>();
-	
+
 	/** The position. */
 	private Vector position = new Vector2D(0, 0);
-	
+
 	/** The obstacle type. */
 	private ObjectOption obstacleType;
 
@@ -64,7 +64,8 @@ public class Node implements Comparable<Node> {
 	/**
 	 * Sets the obstacle type.
 	 *
-	 * @param obstacleType the new obstacle type
+	 * @param obstacleType
+	 *            the new obstacle type
 	 */
 	public void setObstacleType(ObjectOption obstacleType) {
 		this.obstacleType = obstacleType;
@@ -82,7 +83,8 @@ public class Node implements Comparable<Node> {
 	/**
 	 * Sets the obstacle value.
 	 *
-	 * @param obstacleValue the new obstacle value
+	 * @param obstacleValue
+	 *            the new obstacle value
 	 */
 	public void setObstacleValue(int obstacleValue) {
 		this.obstacleValue = obstacleValue;
@@ -148,7 +150,8 @@ public class Node implements Comparable<Node> {
 	/**
 	 * Sets the start list.
 	 *
-	 * @param startList the new start list
+	 * @param startList
+	 *            the new start list
 	 */
 	public void setStartList(ArrayList<NodeProperty> startList) {
 		this.startList = startList;
@@ -160,17 +163,17 @@ public class Node implements Comparable<Node> {
 	 * @author marc.engelmann
 	 */
 	public enum Property {
-		
+
 		/** The obstacle. */
-		OBSTACLE, 
- /** The agent. */
- AGENT, 
- /** The default. */
- DEFAULT, 
- /** The start. */
- START, 
- /** The goal. */
- GOAL
+		OBSTACLE,
+		/** The agent. */
+		AGENT,
+		/** The default. */
+		DEFAULT,
+		/** The start. */
+		START,
+		/** The goal. */
+		GOAL
 	}
 
 	/**
@@ -179,23 +182,23 @@ public class Node implements Comparable<Node> {
 	 * @author marc.engelmann
 	 */
 	public enum Direction {
-		
+
 		/** The north. */
-		NORTH, 
- /** The north east. */
- NORTH_EAST, 
- /** The east. */
- EAST, 
- /** The south east. */
- SOUTH_EAST, 
- /** The south. */
- SOUTH, 
- /** The south west. */
- SOUTH_WEST, 
- /** The west. */
- WEST, 
- /** The north west. */
- NORTH_WEST;
+		NORTH,
+		/** The north east. */
+		NORTH_EAST,
+		/** The east. */
+		EAST,
+		/** The south east. */
+		SOUTH_EAST,
+		/** The south. */
+		SOUTH,
+		/** The south west. */
+		SOUTH_WEST,
+		/** The west. */
+		WEST,
+		/** The north west. */
+		NORTH_WEST;
 	}
 
 	/**
@@ -205,12 +208,14 @@ public class Node implements Comparable<Node> {
 	 *            is the position vector
 	 */
 	public Node(Vector vector) {
+
 		this.position = vector;
 		this.distanceFromStart = Integer.MAX_VALUE;
 		this.costFromStart = Integer.MAX_VALUE;
 		property = Property.DEFAULT;
 		linkedPassenger = CabinFactory.eINSTANCE.createPassenger();
 		linkedPassenger.setId(Integer.MAX_VALUE);
+		this.obstacleType = null;
 	}
 
 	/**
@@ -234,8 +239,10 @@ public class Node implements Comparable<Node> {
 	/**
 	 * Sets the property.
 	 *
-	 * @param property the property
-	 * @param agentID the agent id
+	 * @param property
+	 *            the property
+	 * @param agentID
+	 *            the agent id
 	 */
 	public synchronized void setProperty(Property property, Passenger agentID) {
 		this.property = property;
@@ -245,7 +252,8 @@ public class Node implements Comparable<Node> {
 	/**
 	 * Removes the item by id.
 	 *
-	 * @param id the id
+	 * @param id
+	 *            the id
 	 */
 	public synchronized void removeItemById(int id) {
 		NodeProperty theCulprit = null;
@@ -287,8 +295,10 @@ public class Node implements Comparable<Node> {
 	/**
 	 * Adds the neighbor.
 	 *
-	 * @param node the node
-	 * @param direction the direction
+	 * @param node
+	 *            the node
+	 * @param direction
+	 *            the direction
 	 */
 	public void addNeighbor(Node node, Direction direction) {
 
@@ -367,7 +377,8 @@ public class Node implements Comparable<Node> {
 	/**
 	 * This method sets the distance to the start.
 	 *
-	 * @param distance the new distance from start
+	 * @param distance
+	 *            the new distance from start
 	 */
 	public void setDistanceFromStart(double distance) {
 		this.distanceFromStart = distance;

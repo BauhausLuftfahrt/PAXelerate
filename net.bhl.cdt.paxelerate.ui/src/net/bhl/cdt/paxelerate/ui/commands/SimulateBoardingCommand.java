@@ -73,7 +73,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
 
-				Log.add(this, "Initializing new boarding simulation ...");
+				Log.add(this, "Initializing  new boarding simulation ...");
 
 				cabin.getSimulationSettings().setRandomSortBetweenLoops(false);
 				cabin.getSimulationSettings().setSimulationSpeedFactor(1);

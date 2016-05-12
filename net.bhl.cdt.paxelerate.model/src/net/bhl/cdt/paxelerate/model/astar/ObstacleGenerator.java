@@ -20,6 +20,7 @@ import net.bhl.cdt.paxelerate.model.util.POHelper;
 import net.bhl.cdt.paxelerate.util.math.MathHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector3D;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * This class represents an obstacle map. Every point in the two dimensional
@@ -354,13 +355,25 @@ public class ObstacleGenerator {
 					Node node = areamap.get(absolutePositionX,
 							absolutePositionY);
 
-					/* define the attributes to the current position */
-					node.setObstacleValue(Integer.MAX_VALUE);
-					node.setProperty(Property.OBSTACLE, null);
-					node.setObstacleType(option);
+					/* check if the node is already an obstacle! */
+					if (node.isObstacle()) {
 
-					/* add the obstacle to the list of obstacles */
-					obstacles.add(node);
+						Log.add(this,
+
+								"WARNING! Overlap between 2 objects at x: "
+										+ node.getPosition().getX() + ", y: "
+										+ node.getPosition().getY());
+
+					} else {
+
+						/* define the attributes to the current position */
+						node.setObstacleValue(Integer.MAX_VALUE);
+						node.setProperty(Property.OBSTACLE, null);
+						node.setObstacleType(option);
+
+						/* add the obstacle to the list of obstacles */
+						obstacles.add(node);
+					}
 				}
 			}
 		}

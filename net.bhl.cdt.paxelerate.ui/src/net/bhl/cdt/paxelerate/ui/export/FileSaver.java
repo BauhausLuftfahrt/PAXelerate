@@ -39,7 +39,9 @@ public class FileSaver {
 		} catch (NullPointerException e) {
 			System.out.println("The file path is not available.");
 		} finally {
-			printToFile.close();
+			if (printToFile != null) {
+				printToFile.close();
+			}
 		}
 	}
 
@@ -50,28 +52,30 @@ public class FileSaver {
 
 	public static void saveObstacleToFile(Areamap areamap, Vector dimensions) {
 
-		PrintWriter printToFile = null;
+		PrintWriter printer = null;
 		try {
 
 			CabinViewPart.makeDirectory();
-			printToFile = new PrintWriter(CabinViewPart.getFilePath() + "obstaclemap.xls");
+			printer = new PrintWriter(CabinViewPart.getFilePath() + "obstaclemap.xls");
 
 			for (int x = 0; x < dimensions.getX(); x++) {
 				for (int y = 0; y < dimensions.getY(); y++) {
 					if (areamap.get(new Vector2D(x, y)).isObstacle()) {
-						printToFile.print("X\t");
+						printer.print("X\t");
 					} else {
-						printToFile.print(areamap.get(new Vector2D(x, y)).getObstacleValue() + "\t");
+						printer.print(areamap.get(new Vector2D(x, y)).getObstacleValue() + "\t");
 					}
 				}
-				printToFile.println();
+				printer.println();
 			}
 		} catch (FileNotFoundException e) {
 			System.out.println("Could not save obstacle map to file.");
 		} catch (NullPointerException e) {
 			System.out.println("The file path is not available.");
 		} finally {
-			printToFile.close();
+			if (printer != null) {
+				printer.close();
+			}
 		}
 	}
 }
