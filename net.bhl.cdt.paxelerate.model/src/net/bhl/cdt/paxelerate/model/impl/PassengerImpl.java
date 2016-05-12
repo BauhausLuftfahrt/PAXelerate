@@ -49,6 +49,7 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getPassengerMood <em>Passenger Mood</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getNumberOfMakeWayOperations <em>Number Of Make Way Operations</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getLuggage <em>Luggage</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getDistanceWalked <em>Distance Walked</em>}</li>
  * </ul>
  *
  * @generated
@@ -206,7 +207,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int BOARDING_TIME_EDEFAULT = 0;
+	protected static final double BOARDING_TIME_EDEFAULT = 0.0;
 
 	/**
 	 * The cached value of the '{@link #getBoardingTime() <em>Boarding Time</em>}' attribute.
@@ -216,7 +217,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 * @ordered
 	 */
-	protected int boardingTime = BOARDING_TIME_EDEFAULT;
+	protected double boardingTime = BOARDING_TIME_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getSeat() <em>Seat</em>}' reference.
@@ -507,6 +508,26 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected LuggageSize luggage = LUGGAGE_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getDistanceWalked() <em>Distance Walked</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDistanceWalked()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int DISTANCE_WALKED_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getDistanceWalked() <em>Distance Walked</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDistanceWalked()
+	 * @generated
+	 * @ordered
+	 */
+	protected int distanceWalked = DISTANCE_WALKED_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
 	 *
 	 * @generated 
@@ -644,18 +665,17 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	 * @return the boarding time
 	 * @generated 
 	 */
-	public int getBoardingTime() {
+	public double getBoardingTime() {
 		return boardingTime;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 *
-	 * @param newBoardingTime the new boarding time
-	 * @generated 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
-	public void setBoardingTime(int newBoardingTime) {
-		int oldBoardingTime = boardingTime;
+	public void setBoardingTime(double newBoardingTime) {
+		double oldBoardingTime = boardingTime;
 		boardingTime = newBoardingTime;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__BOARDING_TIME, oldBoardingTime, boardingTime));
@@ -1028,6 +1048,27 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getDistanceWalked() {
+		return distanceWalked;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDistanceWalked(int newDistanceWalked) {
+		int oldDistanceWalked = distanceWalked;
+		distanceWalked = newDistanceWalked;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__DISTANCE_WALKED, oldDistanceWalked, distanceWalked));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
 	 *
 	 * @return the height
@@ -1227,6 +1268,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 				return getNumberOfMakeWayOperations();
 			case CabinPackage.PASSENGER__LUGGAGE:
 				return getLuggage();
+			case CabinPackage.PASSENGER__DISTANCE_WALKED:
+				return getDistanceWalked();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1266,7 +1309,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 				setName((String)newValue);
 				return;
 			case CabinPackage.PASSENGER__BOARDING_TIME:
-				setBoardingTime((Integer)newValue);
+				setBoardingTime((Double)newValue);
 				return;
 			case CabinPackage.PASSENGER__SEAT:
 				setSeat((Seat)newValue);
@@ -1315,6 +1358,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 				return;
 			case CabinPackage.PASSENGER__LUGGAGE:
 				setLuggage((LuggageSize)newValue);
+				return;
+			case CabinPackage.PASSENGER__DISTANCE_WALKED:
+				setDistanceWalked((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1404,6 +1450,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 			case CabinPackage.PASSENGER__LUGGAGE:
 				setLuggage(LUGGAGE_EDEFAULT);
 				return;
+			case CabinPackage.PASSENGER__DISTANCE_WALKED:
+				setDistanceWalked(DISTANCE_WALKED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1468,6 +1517,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 				return numberOfMakeWayOperations != NUMBER_OF_MAKE_WAY_OPERATIONS_EDEFAULT;
 			case CabinPackage.PASSENGER__LUGGAGE:
 				return luggage != LUGGAGE_EDEFAULT;
+			case CabinPackage.PASSENGER__DISTANCE_WALKED:
+				return distanceWalked != DISTANCE_WALKED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1527,6 +1578,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 		result.append(numberOfMakeWayOperations);
 		result.append(", luggage: ");
 		result.append(luggage);
+		result.append(", distanceWalked: ");
+		result.append(distanceWalked);
 		result.append(')');
 		return result.toString();
 	}

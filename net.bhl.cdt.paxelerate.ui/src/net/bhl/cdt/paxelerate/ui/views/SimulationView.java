@@ -25,6 +25,7 @@ import net.bhl.cdt.paxelerate.model.astar.Node;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 import net.bhl.cdt.paxelerate.model.astar.Path;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
+import net.bhl.cdt.paxelerate.util.math.DecimalHelper;
 import net.bhl.cdt.paxelerate.util.time.StopWatch;
 import net.bhl.cdt.paxelerate.util.time.TimeHelper;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Screen;
@@ -38,19 +39,19 @@ public class SimulationView extends JPanel implements MouseListener {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 2L;
-	
+
 	/** The Constant STEP_SIZE. */
 	private static final int BOX_WIDTH = 1000, BOX_HEIGHT = 300, STEP_SIZE = 2;
-	
+
 	/** The areamap. */
 	private Areamap areamap;
-	
+
 	/** The right button. */
 	private final Button leftButton, rightButton;
 
 	/** The font size. */
 	private int pointZero = 0, FONT_SIZE = 10;
-	
+
 	/** The watch. */
 	private static StopWatch watch;
 
@@ -128,7 +129,8 @@ public class SimulationView extends JPanel implements MouseListener {
 	/**
 	 * Sets the areamap.
 	 *
-	 * @param areamap the new areamap
+	 * @param areamap
+	 *            the new areamap
 	 */
 	public void setAreamap(Areamap areamap) {
 		this.areamap = areamap;
@@ -137,7 +139,8 @@ public class SimulationView extends JPanel implements MouseListener {
 	/**
 	 * Switch color.
 	 *
-	 * @param state the state
+	 * @param state
+	 *            the state
 	 * @return the color
 	 */
 	public Color switchColor(Agent.State state) {
@@ -159,7 +162,9 @@ public class SimulationView extends JPanel implements MouseListener {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
 	 */
 	@Override
@@ -251,6 +256,10 @@ public class SimulationView extends JPanel implements MouseListener {
 							g.drawString(
 									"Waiting for passenger " + other.getId() + " on seat " + other.getSeat().getName(),
 									mouse.x + 30, mouse.y + 110);
+						} else {
+							g.drawString("Walked distance: "
+									+ DecimalHelper.round(node.getPassenger().getDistanceWalked() / 100.0, 1)
+									+ " meters.", mouse.x + 30, mouse.y + 110);
 						}
 
 						g.setColor(Color.GRAY);
@@ -271,7 +280,9 @@ public class SimulationView extends JPanel implements MouseListener {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
 	 */
 	@Override
@@ -292,7 +303,9 @@ public class SimulationView extends JPanel implements MouseListener {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
 	 */
 	@Override
@@ -300,7 +313,9 @@ public class SimulationView extends JPanel implements MouseListener {
 		//
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
 	 */
 	@Override
@@ -308,7 +323,9 @@ public class SimulationView extends JPanel implements MouseListener {
 		//
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
 	 */
 	@Override
@@ -316,8 +333,11 @@ public class SimulationView extends JPanel implements MouseListener {
 		//
 	}
 
-	/* (non-Javadoc)
-	 * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
 	 */
 	@Override
 	public void mouseReleased(MouseEvent e) {

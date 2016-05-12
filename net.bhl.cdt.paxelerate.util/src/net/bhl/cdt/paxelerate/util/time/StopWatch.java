@@ -12,10 +12,10 @@ package net.bhl.cdt.paxelerate.util.time;
  */
 
 public class StopWatch {
-	
+
 	/** The stop time. */
 	private long startTime, stopTime;
-	
+
 	/** The running. */
 	private boolean running;
 
@@ -85,9 +85,9 @@ public class StopWatch {
 	public long getElapsedTimeSecs() {
 		long elapsed;
 		if (running) {
-			elapsed = (int) ((System.currentTimeMillis() - startTime) / 1000);
+			elapsed = (System.currentTimeMillis() - startTime) / 1000;
 		} else {
-			elapsed = (int) ((stopTime - startTime) / 1000);
+			elapsed = (stopTime - startTime) / 1000;
 		}
 		return elapsed;
 	}

@@ -76,7 +76,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 				Log.add(this, "Initializing new boarding simulation ...");
 
 				cabin.getSimulationSettings().setRandomSortBetweenLoops(false);
-				cabin.getSimulationSettings().setSimulationSpeedFactor(2);
+				cabin.getSimulationSettings().setSimulationSpeedFactor(1);
 
 				Display.getDefault().syncExec(new Runnable() {
 					@Override

@@ -30,6 +30,7 @@ import net.bhl.cdt.paxelerate.model.observer.Subject;
 import net.bhl.cdt.paxelerate.model.util.Rotator;
 import net.bhl.cdt.paxelerate.util.math.GaussOptions;
 import net.bhl.cdt.paxelerate.util.math.GaussianRandom;
+import net.bhl.cdt.paxelerate.util.math.MathHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.time.StopWatch;
@@ -867,6 +868,19 @@ public class Agent extends Subject implements Runnable {
 					 */
 					occupyOneStepAhead();
 
+					if (currentPosition.getX() != 0
+							&& currentPosition.getY() != 0
+							&& desiredPosition.getX() != 0
+							&& desiredPosition.getY() != 0) {
+
+						/* update the walked distance */
+						passenger.setDistanceWalked(passenger
+								.getDistanceWalked()
+								+ (int) (MathHelper.distanceBetween(
+										desiredPosition, currentPosition)
+										* scale));
+					}
+
 					/* then perform the step */
 					i++;
 
@@ -893,7 +907,8 @@ public class Agent extends Subject implements Runnable {
 					/* sleep as long as one step takes */
 					Thread.sleep((int) (1000 / SimulationHandler.getCabin()
 							.getSimulationSettings().getSimulationSpeedFactor()
-							/ (passenger.getWalkingSpeed() * 100 / scale)));
+							/ passenger.getWalkingSpeed() / (100 / scale)));
+
 				}
 			}
 
@@ -1043,6 +1058,9 @@ public class Agent extends Subject implements Runnable {
 
 		if (!passenger.getSeat().isOccupied()) {
 
+			/* the stop watch is interrupted */
+			stopwatch.stop();
+
 			/* clear the current position of the agent */
 			blockArea(currentPosition, false, false, null);
 			blockArea(desiredPosition, false, false, null);
@@ -1053,13 +1071,15 @@ public class Agent extends Subject implements Runnable {
 
 			defineSeated(true);
 
-			/* the stop watch is then interrupted */
-			stopwatch.stop();
-
 			/* the boarding time is then submitted back to the passenger */
-			passenger.setBoardingTime((int) (stopwatch.getElapsedTimeSecs()
-					* SimulationHandler.getCabin().getSimulationSettings()
-							.getSimulationSpeedFactor()));
+			passenger
+					.setBoardingTime(stopwatch.getElapsedTime() / 1000.0
+							* SimulationHandler.getCabin()
+									.getSimulationSettings()
+									.getSimulationSpeedFactor());
+
+			System.out.println("Speed Factor: " + SimulationHandler.getCabin()
+					.getSimulationSettings().getSimulationSpeedFactor());
 
 			/* the number of interrupts is submitted to the passenger */
 			passenger.setNumberOfWaits(numbOfInterupts);
@@ -1149,9 +1169,6 @@ public class Agent extends Subject implements Runnable {
 				}
 			}
 
-			/* start counting the elapsed time for boarding */
-			stopwatch.start();
-
 			/*
 			 * tell the handler that the passengers now enters the cabin
 			 */
@@ -1159,6 +1176,12 @@ public class Agent extends Subject implements Runnable {
 			SimulationHandler.setPassengerActive(this.passenger);
 
 			setCurrentState(State.FOLLOWING_PATH);
+
+			passenger.setDistanceWalked(0);
+
+			/* start counting the elapsed time for boarding */
+			stopwatch.start();
+
 			/*
 			 * run path following as long as the goal is not reached yet
 			 */

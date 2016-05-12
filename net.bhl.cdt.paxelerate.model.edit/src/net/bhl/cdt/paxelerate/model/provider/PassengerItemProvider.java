@@ -84,6 +84,7 @@ public class PassengerItemProvider
 			addPassengerMoodPropertyDescriptor(object);
 			addNumberOfMakeWayOperationsPropertyDescriptor(object);
 			addLuggagePropertyDescriptor(object);
+			addDistanceWalkedPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -193,7 +194,7 @@ public class PassengerItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -529,6 +530,28 @@ public class PassengerItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Distance Walked feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDistanceWalkedPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_distanceWalked_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_distanceWalked_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__DISTANCE_WALKED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Height feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -697,6 +720,7 @@ public class PassengerItemProvider
 			case CabinPackage.PASSENGER__PASSENGER_MOOD:
 			case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
 			case CabinPackage.PASSENGER__LUGGAGE:
+			case CabinPackage.PASSENGER__DISTANCE_WALKED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

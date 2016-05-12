@@ -38,6 +38,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getPassengerMood <em>Passenger Mood</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getNumberOfMakeWayOperations <em>Number Of Make Way Operations</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getLuggage <em>Luggage</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getDistanceWalked <em>Distance Walked</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassenger()
@@ -162,12 +163,12 @@ public interface Passenger extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Boarding Time</em>' attribute.
-	 * @see #setBoardingTime(int)
+	 * @see #setBoardingTime(double)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassenger_BoardingTime()
 	 * @model
 	 * @generated
 	 */
-	int getBoardingTime();
+	double getBoardingTime();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Passenger#getBoardingTime <em>Boarding Time</em>}' attribute.
@@ -177,7 +178,7 @@ public interface Passenger extends EObject {
 	 * @see #getBoardingTime()
 	 * @generated
 	 */
-	void setBoardingTime(int value);
+	void setBoardingTime(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Width</b></em>' attribute.
@@ -580,6 +581,33 @@ public interface Passenger extends EObject {
 	 * @generated
 	 */
 	void setLuggage(LuggageSize value);
+
+	/**
+	 * Returns the value of the '<em><b>Distance Walked</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Distance Walked</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Distance Walked</em>' attribute.
+	 * @see #setDistanceWalked(int)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassenger_DistanceWalked()
+	 * @model default="0"
+	 * @generated
+	 */
+	int getDistanceWalked();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Passenger#getDistanceWalked <em>Distance Walked</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Distance Walked</em>' attribute.
+	 * @see #getDistanceWalked()
+	 * @generated
+	 */
+	void setDistanceWalked(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Height</b></em>' attribute.

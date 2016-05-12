@@ -249,7 +249,14 @@ public class HeatmapPart extends ViewPart {
 
 	public void drawCostmap() {
 
-		Image image = new Image(parent.getDisplay(), canvas.getBounds().width, canvas.getBounds().height);
+		Image image = null;
+		try {
+
+			image = new Image(parent.getDisplay(), canvas.getBounds().width, canvas.getBounds().height);
+
+		} catch (IllegalArgumentException e) {
+			image = new Image(parent.getDisplay(), 10, 10);
+		}
 
 		final double overlap = 2.5;
 
