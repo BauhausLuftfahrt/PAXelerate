@@ -47,6 +47,5 @@ public class PassengerGenerator {
 
 		/** increase the delay of the corresponding door **/
 		delays.put(id, delays.get(id) + stepsize);
-
 	}
 }
