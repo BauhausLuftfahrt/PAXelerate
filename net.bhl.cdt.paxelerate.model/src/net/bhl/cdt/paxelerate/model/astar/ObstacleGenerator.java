@@ -18,7 +18,6 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 import net.bhl.cdt.paxelerate.model.util.POHelper;
 import net.bhl.cdt.paxelerate.util.math.MathHelper;
-import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector3D;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
@@ -34,9 +33,6 @@ public class ObstacleGenerator {
 
 	/** The scale. */
 	private double scale;
-
-	/** The dimensions. */
-	private Vector dimensions;
 
 	/** The areamap. */
 	private Areamap areamap;
@@ -74,7 +70,6 @@ public class ObstacleGenerator {
 		this.areamap = areamap;
 		this.gradient = gradientOption;
 		this.scale = cabin.getSimulationSettings().getScale();
-		this.dimensions = areamap.getDimensions();
 		this.cabin = cabin;
 
 		/* loop through all nodes and apply the default value */
@@ -113,17 +108,20 @@ public class ObstacleGenerator {
 					.getObstacleValue() == AreamapHandler.DEFAULT_VALUE) {
 
 				/* calculate the distance to the closest obstacle node */
-				double distanceToClosestNode = minimumDistanceToObstacle(node);
+				double distanceToClosestObstacle = AreamapHandler
+						.minimumDistanceToObstacle(node, obstacles);
 
 				/*
 				 * check if the distance is smaller than the maximum allowed
 				 * gradient width
 				 */
-				if (distanceToClosestNode <= AreamapHandler.GRADIENT_WIDTH) {
+				if (distanceToClosestObstacle <= AreamapHandler.GRADIENT_WIDTH) {
 
 					/* calculate the gradient value and apply it to the node */
 					node.setObstacleValue(getDistanceByOption(
-							distanceToClosestNode, gradient));
+							distanceToClosestObstacle, gradient));
+					node.setDistanceToClosestObstacle(
+							distanceToClosestObstacle);
 				}
 			}
 		}
@@ -157,37 +155,6 @@ public class ObstacleGenerator {
 			/* return the default value */
 			return AreamapHandler.DEFAULT_VALUE;
 		}
-	}
-
-	/**
-	 * This function calculates the minimum distance to an obstacle
-	 * 
-	 * @param node
-	 *            the node which's distance is calculated
-	 * @return the minimum distance
-	 */
-	private double minimumDistanceToObstacle(Node node) {
-
-		/* set the minimum as high as possible */
-		double minimum = Integer.MAX_VALUE;
-
-		/* loop through all obstacles */
-		for (Node obstacle : obstacles) {
-
-			/* calculate the distance using z = root(x² + y²) */
-			double distance = MathHelper.distanceBetween(node.getPosition(),
-					obstacle.getPosition());
-
-			/* check if there is a distance smaller than the current one */
-			if (distance < minimum) {
-
-				/* if so, define it as the new smallest distance */
-				minimum = distance;
-			}
-		}
-
-		/* return the distance */
-		return minimum;
 	}
 
 	/**

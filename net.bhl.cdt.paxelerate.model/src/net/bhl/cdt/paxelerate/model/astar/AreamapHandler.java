@@ -6,11 +6,14 @@
 
 package net.bhl.cdt.paxelerate.model.astar;
 
+import java.util.ArrayList;
+
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.astar.Node.Direction;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 import net.bhl.cdt.paxelerate.model.astar.ObstacleGenerator.GradientOption;
+import net.bhl.cdt.paxelerate.util.math.MathHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 
 /**
@@ -24,10 +27,10 @@ public class AreamapHandler {
 	private Areamap areamap;
 
 	/** The Constant NARROWING_OF_DOOR_PATH_IN_PIXELS. */
-	public static final int DEFAULT_VALUE = 3, OBSTACLE_RANGE_IN_CM = 20,
+	public static final int DEFAULT_VALUE = 40, OBSTACLE_RANGE_IN_CM = 20,
 			HOLE_VALUE = 1, NARROWING_OF_DOOR_PATH_IN_PIXELS = 2,
-			GRADIENT_LOWER_BOUND = 6, GRADIENT_UPPER_BOUND = 10,
-			GRADIENT_WIDTH = 2, NARROWING_OF_AISLE_PATH_IN_PIXELS = 2,
+			GRADIENT_LOWER_BOUND = 60, GRADIENT_UPPER_BOUND = 200,
+			GRADIENT_WIDTH = 2, NARROWING_OF_AISLE_PATH_IN_PIXELS = 3,
 			AISLE_OVERLAP_FRONT_AND_REAR = 10;
 
 	/**
@@ -124,6 +127,38 @@ public class AreamapHandler {
 	 */
 	public Areamap getAreamap() {
 		return areamap;
+	}
+
+	/**
+	 * This function calculates the minimum distance to an obstacle
+	 * 
+	 * @param node
+	 *            the node which's distance is calculated
+	 * @return the minimum distance
+	 */
+	public static double minimumDistanceToObstacle(Node node,
+			ArrayList<Node> obstacles) {
+
+		/* set the minimum as high as possible */
+		double minimum = Integer.MAX_VALUE;
+
+		/* loop through all obstacles */
+		for (Node obstacle : obstacles) {
+
+			/* calculate the distance using z = root(x² + y²) */
+			double distance = MathHelper.distanceBetween(node.getPosition(),
+					obstacle.getPosition());
+
+			/* check if there is a distance smaller than the current one */
+			if (distance < minimum) {
+
+				/* if so, define it as the new smallest distance */
+				minimum = distance;
+			}
+		}
+
+		/* return the distance */
+		return minimum;
 	}
 
 	/**

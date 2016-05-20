@@ -18,21 +18,26 @@ public class PassiveMood extends AgentMood implements Strategy {
 	/**
 	 * Instantiates a new passive mood.
 	 *
-	 * @param agent the agent
+	 * @param agent
+	 *            the agent
 	 */
 	public PassiveMood(Agent agent) {
 		super(agent);
 	}
 
-	/* (non-Javadoc)
-	 * @see net.bhl.cdt.paxelerate.model.agent.AgentMood#reactToCollision(net.bhl.cdt.paxelerate.model.astar.Node.Property)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.bhl.cdt.paxelerate.model.agent.AgentMood#reactToCollision(net.bhl.cdt
+	 * .paxelerate.model.astar.Node.Property)
 	 */
 	@SuppressWarnings("static-access")
 	@Override
 	public void reactToCollision(Property property) {
 
 		try {
-			super.getAgent().getThread().sleep(AStarHelper.time(1));
+			super.getAgent().getThread().sleep(AStarHelper.time(0.3));
 		} catch (InterruptedException e) {
 		}
 		super.getAgent().setExitPathLoop(false);

@@ -28,7 +28,7 @@ public class Node implements Comparable<Node> {
 			northWest, previousNode;
 
 	/** The distance from start. */
-	private double distanceFromStart;
+	private double distanceFromStart, distanceToClosestObstacle;
 
 	/** The obstacle value. */
 	private int costFromStart, numberOfOccupations = 0, numberOfInterrupts = 0,
@@ -69,6 +69,22 @@ public class Node implements Comparable<Node> {
 	 */
 	public void setObstacleType(ObjectOption obstacleType) {
 		this.obstacleType = obstacleType;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public double getDistanceToClosestObstacle() {
+		return distanceToClosestObstacle;
+	}
+
+	/**
+	 * 
+	 * @param distanceToClosestObstacle
+	 */
+	public void setDistanceToClosestObstacle(double distanceToClosestObstacle) {
+		this.distanceToClosestObstacle = distanceToClosestObstacle;
 	}
 
 	/**
