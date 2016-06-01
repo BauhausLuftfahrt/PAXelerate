@@ -40,6 +40,7 @@ public class StorageHandler {
 	 *
 	 * @param pax the pax
 	 */
+	@SuppressWarnings("deprecation")
 	public void addPassenger(Passenger pax) {
 
 		weightStore.addValue(pax.getSex(), pax.getWeight());
@@ -126,17 +127,17 @@ public class StorageHandler {
 	 * The Enum StoreType.
 	 */
 	public enum StoreType {
-		
+
 		/** The weight. */
 		WEIGHT, 
- /** The height. */
- HEIGHT, 
- /** The width. */
- WIDTH, 
- /** The depth. */
- DEPTH, 
- /** The age. */
- AGE
+		/** The height. */
+		HEIGHT, 
+		/** The width. */
+		WIDTH, 
+		/** The depth. */
+		DEPTH, 
+		/** The age. */
+		AGE
 	}
 
 	/**

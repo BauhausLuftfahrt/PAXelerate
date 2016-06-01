@@ -5,8 +5,6 @@
  ******************************************************************************/
 package net.bhl.cdt.paxelerate.ui.commands;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 
 import org.eclipse.emf.common.util.EList;
@@ -18,6 +16,7 @@ import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.LuggageProperties;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
+import net.bhl.cdt.paxelerate.util.exchange.ExcelExport;
 import net.bhl.cdt.paxelerate.util.input.Input;
 import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
@@ -33,16 +32,11 @@ public class ExportDataCommand extends CDTCommand {
 
 	/** The cabin. */
 	private Cabin cabin;
-
-	/** The writer. */
-	private FileWriter writer;
-
-	/** The Constant FILE_PATH. */
-	private static final String FOLDER_NAME = "paxelerate",
-			FILE_PATH = System.getProperty("user.home") + "/Documents/" + FOLDER_NAME + "/";
 	
 	/** The default fileName. */
 	String fileName = "export";
+	
+	private ExcelExport exporter;
 
 	/**
 	 * Instantiates a new export data command.
@@ -52,40 +46,7 @@ public class ExportDataCommand extends CDTCommand {
 	public ExportDataCommand(Cabin cabin) {
 		this.cabin = cabin;
 	}
-
-	/**
-	 * Creates the export file.
-	 *
-	 * @param fileName the file name
-	 * @return true, if successful
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	private boolean createExportFile(String fileName) throws IOException {
-		Log.add(this, "Start data export...");
-
-		File dir = new File(FILE_PATH);
-		dir.mkdir();
-		this.writer = new FileWriter(FILE_PATH + fileName + ".xls");
-
-		return true;
-	}
-
-	/**
-	 * Close export file.
-	 *
-	 * @param writer the writer
-	 * @return true, if successful
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	private boolean closeExportFile(FileWriter writer) throws IOException {
-		writer.flush();
-		writer.close();
-
-		Log.add(this, "...data export complete.");
-
-		return true;
-	}
-
+	
 	/**
 	 * Gets the passenger data.
 	 *
@@ -93,88 +54,52 @@ public class ExportDataCommand extends CDTCommand {
 	 * @return the passenger data
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	private boolean getPassengerData(FileWriter writer) throws IOException {
+	public boolean getPassengerData() throws IOException {
 		/** Create file header **/
-		writer.append("ID");
-		writer.append("\t");
-		writer.append("Sex");
-		writer.append("\t");
-		writer.append("Age");
-		writer.append("\t");
-		writer.append("Mood");
-		writer.append("\t");
-		writer.append("Height");
-		writer.append("\t");
-		writer.append("Weight");
-		writer.append("\t");
-		writer.append("Width");
-		writer.append("\t");
-		writer.append("Depth");
-		writer.append("\t");
-		writer.append("WalkingSpeed");
-		writer.append("\t");
-		writer.append("TravelClass");
-		writer.append("\t");
-		writer.append("Door");
-		writer.append("\t");
-		writer.append("SeatID");
-		writer.append("\t");
-		writer.append("Luggage");
-		writer.append("\t");
-		writer.append("LuggageStowTime");
-		writer.append("\t");
-		writer.append("LuggageStowDistance");
-		writer.append("\t");
-		writer.append("BoardingTime");
-		writer.append("\t");
-		writer.append("NumberOfWaits");
-		writer.append("\t");
-		writer.append("InitialBoardingDelay");
-		writer.append("\t");
-		writer.append("NumberOfWayMaking");
-		writer.append("\n");
+		exporter.addColumnElement("ID");
+		exporter.addColumnElement("Sex");
+		exporter.addColumnElement("Age");
+		exporter.addColumnElement("Mood");
+		exporter.addColumnElement("Height");
+		exporter.addColumnElement("Weight");
+		exporter.addColumnElement("Width");
+		exporter.addColumnElement("Depth");
+		exporter.addColumnElement("WalkingSpeed");
+		exporter.addColumnElement("TravelClass");
+		exporter.addColumnElement("Door");
+		exporter.addColumnElement("SeatID");
+		exporter.addColumnElement("Luggage");
+		exporter.addColumnElement("LuggageStowTime");
+		exporter.addColumnElement("LuggageStowDistance");
+		exporter.addColumnElement("BoardingTime");
+		exporter.addColumnElement("NumberOfWaits");
+		exporter.addColumnElement("InitialBoardingDelay");
+		exporter.addColumnElement("NumberOfWayMaking");
+		exporter.addNewLine();
 
 		EList<Passenger> paxList = cabin.getPassengers();
 
 		for (Passenger pax : paxList) {
-			writer.append("" + pax.getId());
-			writer.append("\t");
-			writer.append("" + pax.getSex());
-			writer.append("\t");
-			writer.append("" + pax.getAge());
-			writer.append("\t");
-			writer.append("" + pax.getPassengerMood());
-			writer.append("\t");
-			writer.append("" + pax.getHeight());
-			writer.append("\t");
-			writer.append("" + pax.getWeight());
-			writer.append("\t");
-			writer.append("" + pax.getWidth());
-			writer.append("\t");
-			writer.append("" + pax.getDepth());
-			writer.append("\t");
-			writer.append("" + pax.getWalkingSpeed());
-			writer.append("\t");
-			writer.append("" + pax.getTravelClass().getTravelOption());
-			writer.append("\t");
-			writer.append("" + pax.getDoor().getDoorOption());
-			writer.append("\t");
-			writer.append("" + pax.getSeatID());
-			writer.append("\t");
-			writer.append("" + pax.getLuggage());
-			writer.append("\t");
-			writer.append("" + pax.getLuggageStowTime());
-			writer.append("\t");
-			writer.append("" + pax.getLuggageStowDistance());
-			writer.append("\t");
-			writer.append("" + pax.getBoardingTime());
-			writer.append("\t");
-			writer.append("" + pax.getNumberOfWaits());
-			writer.append("\t");
-			writer.append("" + pax.getStartBoardingAfterDelay());
-			writer.append("\t");
-			writer.append("" + pax.getNumberOfMakeWayOperations());
-			writer.append("\n");
+			exporter.addColumnElement(pax.getId());
+			exporter.addColumnElement(pax.getSex().toString());
+			exporter.addColumnElement(pax.getAge());
+			exporter.addColumnElement(pax.getPassengerMood().toString());
+			exporter.addColumnElement(pax.getHeight());
+			exporter.addColumnElement(pax.getWeight());
+			exporter.addColumnElement(pax.getWidth());
+			exporter.addColumnElement(pax.getDepth());
+			exporter.addColumnElement(pax.getWalkingSpeed());
+			exporter.addColumnElement(pax.getTravelClass().getTravelOption().toString());
+			exporter.addColumnElement(pax.getDoor().getDoorOption().toString());
+			exporter.addColumnElement(pax.getSeatID());
+			exporter.addColumnElement(pax.getLuggage().toString());
+			exporter.addColumnElement(pax.getLuggageStowTime());
+			exporter.addColumnElement(pax.getLuggageStowDistance());
+			exporter.addColumnElement(pax.getBoardingTime());
+			exporter.addColumnElement(pax.getNumberOfWaits());
+			exporter.addColumnElement(pax.getStartBoardingAfterDelay());
+			exporter.addColumnElement(pax.getNumberOfMakeWayOperations());
+			exporter.addNewLine();
 		}
 
 		return true;
@@ -187,56 +112,47 @@ public class ExportDataCommand extends CDTCommand {
 	 * @return the simulation properties data
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	private boolean getSimulationPropertiesData(FileWriter writer) throws IOException {
+	public boolean getSimulationPropertiesData() throws IOException {
 
 		/** SimulationProperties **/
 		SimulationProperties settings = cabin.getSimulationSettings();
 		
-		writer.append("FramesPerSecond");
-		writer.append("\t");
-		writer.append("" + settings.getFramesPerSecond());
-		writer.append("\n");
+		exporter.addColumnElement("FramesPerSecond");
+		exporter.addColumnElement(settings.getFramesPerSecond());
+		exporter.addNewLine();
 		
-		writer.append("Scale");
-		writer.append("\t");
-		writer.append("" + settings.getScale());
-		writer.append("\n");
+		exporter.addColumnElement("Scale");
+		exporter.addColumnElement(settings.getScale());
+		exporter.addNewLine();
 		
-		writer.append("NumberOfSimulationLoops");
-		writer.append("\t");
-		writer.append("" + settings.getNumberOfSimulationLoops());
-		writer.append("\n");
+		exporter.addColumnElement("NumberOfSimulationLoops");
+		exporter.addColumnElement(settings.getNumberOfSimulationLoops());
+		exporter.addNewLine();
 		
-		writer.append("SimulationSpeedFactor");
-		writer.append("\t");
-		writer.append("" + settings.getSimulationSpeedFactor());
-		writer.append("\n");
+		exporter.addColumnElement("SimulationSpeedFactor");
+		exporter.addColumnElement(settings.getSimulationSpeedFactor());
+		exporter.addNewLine();
 		
 		/** General passenger properties **/
-		writer.append("PassengersBoardingPerMinute");
-		writer.append("\t");
-		writer.append("" + settings.getPassengersBoardingPerMinute());
-		writer.append("\n");
+		exporter.addColumnElement("PassengersBoardingPerMinute");
+		exporter.addColumnElement(settings.getPassengersBoardingPerMinute());
+		exporter.addNewLine();
 		
-		writer.append("SeatInterferenceProcessTime");
-		writer.append("\t");
-		writer.append("" + settings.getSeatInterferenceProcessTime());
-		writer.append("\n");
+		exporter.addColumnElement("SeatInterferenceProcessTime");
+		exporter.addColumnElement(settings.getSeatInterferenceProcessTime());
+		exporter.addNewLine();
 		
-		writer.append("SeatInterferenceStandingUpPassengerWaitingTime");
-		writer.append("\t");
-		writer.append("" + settings.getSeatInterferenceStandingUpPassengerWaitingTime());
-		writer.append("\n");
+		exporter.addColumnElement("SeatInterferenceStandingUpPassengerWaitingTime");
+		exporter.addColumnElement(settings.getSeatInterferenceStandingUpPassengerWaitingTime());
+		exporter.addNewLine();
 		
-		writer.append("Sorting");
-		writer.append("\t");
-		writer.append("" + settings.getSorting());
-		writer.append("\n");
+		exporter.addColumnElement("Sorting");
+		exporter.addColumnElement(settings.getSorting().toString());
+		exporter.addNewLine();
 		
-		writer.append("ThreadSleepTimeDefault");
-		writer.append("\t");
-		writer.append("" + settings.getThreadSleepTimeDefault());
-		writer.append("\n");
+		exporter.addColumnElement("ThreadSleepTimeDefault");
+		exporter.addColumnElement(settings.getThreadSleepTimeDefault());
+		exporter.addNewLine();
 		
 		//LuggageProperties luggageSettings = cabin.getSimulationSettings().getLuggageProperties();
 		//PassengerProperties paxSettings = cabin.getSimulationSettings().getPassengerProperties();
@@ -253,10 +169,11 @@ public class ExportDataCommand extends CDTCommand {
 
 		String fileName = input.getStringValue();
 		try {
-			createExportFile(fileName);
-			getPassengerData(this.writer);
-			getSimulationPropertiesData(this.writer);
-			closeExportFile(this.writer);
+			exporter = new ExcelExport(fileName);
+			exporter.createFile();
+			getPassengerData();
+			getSimulationPropertiesData();
+			exporter.closeFile();
 		} catch (IOException e) {
 			Log.add(this, "Data export failed!");
 		}

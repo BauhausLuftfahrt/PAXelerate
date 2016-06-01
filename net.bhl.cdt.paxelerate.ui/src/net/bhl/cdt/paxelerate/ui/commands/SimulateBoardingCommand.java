@@ -9,6 +9,7 @@ package net.bhl.cdt.paxelerate.ui.commands;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.IOException;
 import java.util.Map;
 
 import javax.swing.JFrame;
@@ -33,6 +34,7 @@ import net.bhl.cdt.paxelerate.ui.export.FileSaver;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.SimulationView;
 import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
+import net.bhl.cdt.paxelerate.util.exchange.ExcelExport;
 import net.bhl.cdt.paxelerate.util.input.Input;
 import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 import net.bhl.cdt.paxelerate.util.math.Vector;
@@ -68,6 +70,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 	 */
 	@Override
 	protected void doRun() {
+		
+		cabin.getSimulationSettings().setNumberOfSimulationLoops(10);
+		
 		// Create separate thread
 		Job job = new Job("Simulate Boarding Thread") {
 			@Override
@@ -75,9 +80,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 				Log.add(this, "Initializing  new boarding simulation ...");
 
-				cabin.getSimulationSettings().setRandomSortBetweenLoops(false);
-				cabin.getSimulationSettings().setSimulationSpeedFactor(1);
-				cabin.getSimulationSettings().setScale(10);
+				cabin.getSimulationSettings().setRandomSortBetweenLoops(true);
+				cabin.getSimulationSettings().getSimulationSpeedFactor();
+				cabin.getSimulationSettings().getScale();
 
 				Display.getDefault().syncExec(new Runnable() {
 					@Override
@@ -89,7 +94,10 @@ public class SimulateBoardingCommand extends CDTCommand {
 				CabinViewPart cabinViewPart = ViewPartHelper.getCabinView();
 
 				for (int i = 0; i < cabin.getSimulationSettings().getNumberOfSimulationLoops(); i++) {
-
+					
+					Log.add(this, "Iteration " + (i+1) + " of " + cabin.getSimulationSettings().getNumberOfSimulationLoops());
+					
+					/* sorts the passenger according to selected method */
 					if (cabin.getSimulationSettings().isRandomSortBetweenLoops()) {
 						SortPassengersCommand sort = new SortPassengersCommand(cabin);
 						sort.setPropertiesManually(false, 0);
@@ -115,7 +123,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 							cabin = sort2.returnCabin();
 						}
 					}
-
+					
 					// reset simulation in case of previous existing objects.
 					SimulationHandler.reset();
 
@@ -165,6 +173,18 @@ public class SimulateBoardingCommand extends CDTCommand {
 					/* closes the simulation view after completion */
 					simulationFrame.dispose();
 
+/*					 Exporting data 
+					try {
+						ExcelExport exporterHelper = new ExcelExport("iteration" + i);
+						exporterHelper.createFile();
+						ExportDataCommand exportData = new ExportDataCommand(cabin);
+						exportData.getPassengerData();
+						exportData.getSimulationPropertiesData();
+						exporterHelper.closeFile();
+					} catch (IOException e) {
+						Log.add(this, "Data export failed!");
+					}*/
+					
 					Map<Integer, Costmap> costmaps = SimulationHandler.getUsedCostmaps();
 
 					int index = 0;

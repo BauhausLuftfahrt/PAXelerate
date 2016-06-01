@@ -91,7 +91,7 @@ public class Exporter {
 	 * @param luggage the luggage
 	 * @param pax the pax
 	 */
-	static void generateDistributionFile(String sFileName,
+	public static void generateDistributionFile(String sFileName,
 			GaussianStorage weight, GaussianStorage height,
 			GaussianStorage depth, GaussianStorage width, AgeStorage age,
 			LuggageStorage luggage, int[] pax) {
