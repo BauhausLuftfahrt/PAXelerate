@@ -5,11 +5,11 @@
 package net.bhl.cdt.paxelerate.util.exchange;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
-
 
 /**
  * This command exports data from the EMF meta-model.
@@ -19,33 +19,35 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
  */
 
 public class ExcelExport {
-	
+
 	/** The writer. */
 	private FileWriter writer;
 
 	/** The Constant FILE_PATH. */
 	private static final String FOLDER_NAME = "paxelerate",
 			FILE_PATH = System.getProperty("user.home") + "/Documents/" + FOLDER_NAME + "/";
-	
+
 	/** The default fileName. */
 	String fileName = "export";
-	
+
 	/**
 	 * Instantiates a new excel export.
 	 *
-	 * @param filename the filename
+	 * @param filename
+	 *            the filename
 	 */
 	public ExcelExport(String filename) {
 		this.fileName = filename;
 	}
-	
-/**
- * Creates the export file.
- *
- * @return true, if successful
- * @throws IOException Signals that an I/O exception has occurred.
- */
-	public void createFile() throws IOException {
+
+	/**
+	 * Creates the export file.
+	 *
+	 * @return true, if successful
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
+	public void createFile() throws IOException, FileNotFoundException {
 		Log.add(this, "Start data export...");
 
 		File dir = new File(FILE_PATH);
@@ -57,55 +59,63 @@ public class ExcelExport {
 	 * Close export file.
 	 *
 	 * @return true, if successful
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 */
-	public void closeFile() throws IOException {
+	public void closeFile() throws IOException, FileNotFoundException {
 		this.writer.flush();
 		this.writer.close();
 
 		Log.add(this, "...data export complete.");
 	}
-	
+
 	/**
 	 * Adds the column element.
 	 *
-	 * @param parStringValue the par string value
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @param parStringValue
+	 *            the par string value
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 */
-	public void addColumnElement(String parStringValue) throws IOException {
+	public void addColumnElement(String parStringValue) throws IOException, FileNotFoundException {
 		this.writer.append("" + parStringValue);
 		this.writer.append("\t");
 	}
-	
+
 	/**
 	 * Adds the column element.
 	 *
-	 * @param parIntValue the par int value
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @param parIntValue
+	 *            the par int value
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 */
-	public void addColumnElement(int parIntValue) throws IOException {
+	public void addColumnElement(int parIntValue) throws IOException, FileNotFoundException {
 		this.writer.append("" + parIntValue);
 		this.writer.append("\t");
 	}
-	
+
 	/**
 	 * Adds the column element.
 	 *
-	 * @param parDoubleValue the par double value
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @param parDoubleValue
+	 *            the par double value
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 */
-	public void addColumnElement(double parDoubleValue) throws IOException {
+	public void addColumnElement(double parDoubleValue) throws IOException, FileNotFoundException {
 		writer.append("" + parDoubleValue);
 		writer.append("\t");
 	}
-	
+
 	/**
 	 * Adds the new line.
 	 *
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 */
-	public void addNewLine() throws IOException {
+	public void addNewLine() throws IOException, FileNotFoundException {
 		this.writer.append("\n");
 	}
-	
+
 }

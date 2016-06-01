@@ -24,60 +24,6 @@ public class Exporter {
 			FILE_PATH = System.getProperty("user.home") + "/Documents/"
 					+ FOLDER_NAME + "/";
 
-	// public static boolean generateHeatmapFile(String filename, AreamapHandler
-	// areamap) {
-	// try {
-	//
-	// // Create a path before creating the file!
-	// File dir = new File(FILE_PATH);
-	// dir.mkdir();
-	//
-	// FileWriter writer = new FileWriter(FILE_PATH + filename + ".xls");
-	// for (ArrayList<Node> nodeList : areamap.getAreamap()) {
-	// for (Node node : nodeList) {
-	// writer.append("" + node.getNumberOfOccupations());
-	// writer.append("\t");
-	// }
-	// writer.append("\n");
-	// }
-	//
-	// writer.flush();
-	// writer.close();
-	// return true;
-	//
-	// } catch (FileNotFoundException e) {
-	// return false;
-	// } catch (IOException e) {
-	// return false;
-	// }
-	// }
-
-	// public static boolean generateInterruptmapFile(String filename,
-	// AreamapHandler areamap) {
-	//
-	// try {
-	// // Create a path before creating the file!
-	// File dir = new File(FILE_PATH);
-	// dir.mkdir();
-	// FileWriter writer = new FileWriter(FILE_PATH + filename + ".xls");
-	// for (ArrayList<Node> nodeList : areamap.getAreamap()) {
-	// for (Node node : nodeList) {
-	// writer.append("" + node.getNumberOfInterrupts());
-	// writer.append("\t");
-	// }
-	// writer.append("\n");
-	// }
-	//
-	// writer.flush();
-	// writer.close();
-	// return true;
-	//
-	// } catch (FileNotFoundException e) {
-	// return false;
-	// } catch (IOException e) {
-	// return false;
-	// }
-	// }
 
 	/**
 	 * Generate distribution file.
