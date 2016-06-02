@@ -29,6 +29,7 @@ import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.astar.Costmap;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
+import net.bhl.cdt.paxelerate.model.util.SimulationResultLogger;
 import net.bhl.cdt.paxelerate.ui.export.FileSaver;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.SimulationView;
@@ -88,7 +89,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 				CabinViewPart cabinViewPart = ViewPartHelper.getCabinView();
 
-				for (int i = 0; i < cabin.getSimulationSettings().getNumberOfSimulationLoops(); i++) {
+				for (int simulationLoopIndex = 0; simulationLoopIndex < cabin.getSimulationSettings()
+						.getNumberOfSimulationLoops(); simulationLoopIndex++) {
 
 					if (cabin.getSimulationSettings().isRandomSortBetweenLoops()) {
 						SortPassengersCommand sort = new SortPassengersCommand(cabin);
@@ -176,6 +178,12 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 						index++;
 					}
+
+					// TODO: @MICHAEL: hier sind die results
+					SimulationResultLogger results = new SimulationResultLogger();
+					results.getSimulationData(cabin, simulationLoopIndex, SimulationView.getWatch().getElapsedTime()
+							* cabin.getSimulationSettings().getSimulationSpeedFactor());
+					results.printSimulationData();
 
 					FileSaver.saveObstacleToFile(SimulationHandler.getMap(), dimensions);
 

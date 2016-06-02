@@ -136,23 +136,23 @@ public class Core {
 				// much closer to each other than the passengers width!
 
 				// DEACTIVATED INTENTIONALLY
-				if (false && neighbor.getDistanceToClosestObstacle() != 0) {
-					if (neighbor.getDistanceToClosestObstacle() <= agent
-							.getPassenger().getWidth()
-							/ (double) SimulationHandler.getCabin()
-									.getSimulationSettings().getScale()) {
-
-						System.out.println(neighbor
-								.getDistanceToClosestObstacle()
-								+ " <= "
-								+ agent.getPassenger().getDepth()
-										/ (double) SimulationHandler.getCabin()
-												.getSimulationSettings()
-												.getScale()
-								+ " -> agent does not fit through!");
-						continue;
-					}
-				}
+				// if (false && neighbor.getDistanceToClosestObstacle() != 0) {
+				// if (neighbor.getDistanceToClosestObstacle() <= agent
+				// .getPassenger().getWidth()
+				// / (double) SimulationHandler.getCabin()
+				// .getSimulationSettings().getScale()) {
+				//
+				// System.out.println(neighbor
+				// .getDistanceToClosestObstacle()
+				// + " <= "
+				// + agent.getPassenger().getDepth()
+				// / (double) SimulationHandler.getCabin()
+				// .getSimulationSettings()
+				// .getScale()
+				// + " -> agent does not fit through!");
+				// continue;
+				// }
+				// }
 
 				/* also just continue if the neighbor is an obstacle */
 				if (!neighbor.isObstacle()) {
