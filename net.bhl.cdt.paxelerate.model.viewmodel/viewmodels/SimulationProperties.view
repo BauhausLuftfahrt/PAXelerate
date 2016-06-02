@@ -17,11 +17,21 @@
                 <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/usePresetSettings"/>
               </domainModelReference>
             </children>
-          </children>
-          <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_vX_bUKS_EeWGjpaobu8CIA">
             <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAveVKS_EeWGjpaobu8CIA" name="Control randomSortBetweenLoops">
               <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAveVaS_EeWGjpaobu8CIA">
                 <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/randomSortBetweenLoops"/>
+              </domainModelReference>
+            </children>
+          </children>
+          <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_vX_bUKS_EeWGjpaobu8CIA">
+            <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_145NoCjDEeayboTXRwGmOA" name="Control displayMap">
+              <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_145NoSjDEeayboTXRwGmOA">
+                <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/displayMap"/>
+              </domainModelReference>
+            </children>
+            <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_1408MCjDEeayboTXRwGmOA" name="Control dataExport">
+              <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_1408MSjDEeayboTXRwGmOA">
+                <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/dataExport"/>
               </domainModelReference>
             </children>
           </children>

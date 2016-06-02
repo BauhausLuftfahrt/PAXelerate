@@ -57,9 +57,6 @@ public class SimulateBoardingCommand extends CDTCommand {
 	/** The simulation frame. */
 	private JFrame simulationFrame;
 
-	private boolean dataExport = true;
-	private boolean displayMap = false;
-
 	/**
 	 * This is the constructor method of the SimulateBoardingCommand.
 	 * 
@@ -77,7 +74,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 	protected void doRun() {
 
 		// set number iterations
-		cabin.getSimulationSettings().setNumberOfSimulationLoops(2);
+		//cabin.getSimulationSettings().setNumberOfSimulationLoops(2);
 
 		// Create separate thread
 		Job job = new Job("Simulate Boarding Thread") {
@@ -86,9 +83,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 				Log.add(this, "Initializing  new boarding simulation ...");
 
-				cabin.getSimulationSettings().setRandomSortBetweenLoops(true);
-				cabin.getSimulationSettings().getSimulationSpeedFactor();
-				cabin.getSimulationSettings().getScale();
+//				cabin.getSimulationSettings().setRandomSortBetweenLoops(true);
+//				cabin.getSimulationSettings().getSimulationSpeedFactor();
+//				cabin.getSimulationSettings().getScale();
 
 				Display.getDefault().syncExec(new Runnable() {
 					@Override
@@ -194,7 +191,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 							SimulationHandler.getNumberWaymakingSkipped(),
 							SimulationHandler.getNumberWaymakingCompleted());
 
-					if (dataExport) {
+					if (cabin.getSimulationSettings().isDataExport()) {
 
 						// Exporting data
 						try {
@@ -231,7 +228,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 					/*
 					 * display the agent path and cost map in the Cabin UI view
 					 */
-					if (displayMap) {
+					if (cabin.getSimulationSettings().isDisplayMap()) {
 						Display.getDefault().syncExec(new Runnable() {
 
 							@Override
@@ -247,17 +244,19 @@ public class SimulateBoardingCommand extends CDTCommand {
 					Log.add(this, "Iteration " + (simulationLoopIndex + 1) + " completed.");
 
 				}
-				try {
-					ExcelExport exporterResults = new ExcelExport("results");
-					exporterResults.createFile();
-					ExportDataCommand exportDataResults = new ExportDataCommand(cabin, exporterResults);
-					exportDataResults.getStudySettings();
-					exportDataResults.getResultData();
-					exporterResults.closeFile();
-				} catch (FileNotFoundException e) {
-					Log.add(this, "Data export failed! - FileNotFoundException ");
-				} catch (IOException e) {
-					Log.add(this, "Data export failed! - IOException");
+				if (cabin.getSimulationSettings().isDataExport()) {
+					try {
+						ExcelExport exporterResults = new ExcelExport("results");
+						exporterResults.createFile();
+						ExportDataCommand exportDataResults = new ExportDataCommand(cabin, exporterResults);
+						exportDataResults.getStudySettings();
+						exportDataResults.getResultData();
+						exporterResults.closeFile();
+					} catch (FileNotFoundException e) {
+						Log.add(this, "Data export failed! - FileNotFoundException ");
+					} catch (IOException e) {
+						Log.add(this, "Data export failed! - IOException");
+					}
 				}
 
 				/* Clear the cache! */

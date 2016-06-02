@@ -32,6 +32,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageProperties <em>Luggage Properties</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerProperties <em>Passenger Properties</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDataExport <em>Data Export</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDisplayMap <em>Display Map</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties()
@@ -513,5 +515,59 @@ public interface SimulationProperties extends EObject {
 	 * @generated
 	 */
 	void setPassengersBoardingPerMinute(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Data Export</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Data Export</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Data Export</em>' attribute.
+	 * @see #setDataExport(boolean)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_DataExport()
+	 * @model default="true"
+	 * @generated
+	 */
+	boolean isDataExport();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDataExport <em>Data Export</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Data Export</em>' attribute.
+	 * @see #isDataExport()
+	 * @generated
+	 */
+	void setDataExport(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Display Map</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Display Map</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Display Map</em>' attribute.
+	 * @see #setDisplayMap(boolean)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_DisplayMap()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isDisplayMap();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDisplayMap <em>Display Map</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Display Map</em>' attribute.
+	 * @see #isDisplayMap()
+	 * @generated
+	 */
+	void setDisplayMap(boolean value);
 
 } // SimulationProperties

@@ -193,6 +193,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//SimulationProperties/luggageProperties"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//SimulationProperties/passengerProperties"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/passengersBoardingPerMinute"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/dataExport"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/displayMap"/>
     </genClasses>
     <genClasses ecoreClass="cabin.ecore#//LuggageProperties">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//LuggageProperties/luggageStowDistanceFromSeatMean"/>

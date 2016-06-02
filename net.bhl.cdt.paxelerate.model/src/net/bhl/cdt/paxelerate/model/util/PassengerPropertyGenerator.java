@@ -12,6 +12,7 @@ import net.bhl.cdt.paxelerate.util.math.DecimalHelper;
 import net.bhl.cdt.paxelerate.util.math.GaussOptions;
 import net.bhl.cdt.paxelerate.util.math.GaussianRandom;
 import net.bhl.cdt.paxelerate.util.math.RandomHelper;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * This class is used to generate the passenger properties for each passenger
@@ -27,7 +28,7 @@ public class PassengerPropertyGenerator {
 
 	/** The paxSettings. */
 	private PassengerProperties paxSettings;
-	
+
 	/** The luggage settings. */
 	private LuggageProperties luggageSettings;
 
@@ -56,16 +57,17 @@ public class PassengerPropertyGenerator {
 	/**
 	 * Instantiates a new passenger property generator.
 	 *
-	 * @param pax the pax
+	 * @param pax
+	 *            the pax
 	 */
 	public PassengerPropertyGenerator(Passenger pax) {
 
-		this.passenger = pax;
+		passenger = pax;
 
-		this.paxSettings = ModelHelper.getParent(Cabin.class, pax)
+		paxSettings = ModelHelper.getParent(Cabin.class, pax)
 				.getSimulationSettings().getPassengerProperties();
 
-		this.luggageSettings = ModelHelper.getParent(Cabin.class, pax)
+		luggageSettings = ModelHelper.getParent(Cabin.class, pax)
 				.getSimulationSettings().getLuggageProperties();
 
 		/** At first. decide for the sex. **/
@@ -151,18 +153,17 @@ public class PassengerPropertyGenerator {
 	private LuggageSize adaptLuggage() {
 
 		double[] luggagemodel = {
-				this.luggageSettings.getPercentageOfPassengersWithNoLuggage(),
-				this.luggageSettings
-						.getPercentageOfPassengersWithSmallLuggage(),
-				this.luggageSettings
-						.getPercentageOfPassengersWithMediumLuggage(),
-				this.luggageSettings
-						.getPercentageOfPassengersWithBigLuggage() };
+				luggageSettings.getPercentageOfPassengersWithNoLuggage(),
+				luggageSettings.getPercentageOfPassengersWithSmallLuggage(),
+				luggageSettings.getPercentageOfPassengersWithMediumLuggage(),
+				luggageSettings.getPercentageOfPassengersWithBigLuggage() };
 
-		if (luggagemodel[0] == 0 && luggagemodel[1] == 0 && luggagemodel[2] == 0
-				&& luggagemodel[3] == 0) {
+		if ((luggagemodel[0] == 0 && luggagemodel[1] == 0
+				&& luggagemodel[2] == 0 && luggagemodel[3] == 0)
+				|| ((luggagemodel[0] + luggagemodel[1] + luggagemodel[2]
+						+ luggagemodel[3]) == 0)) {
 			luggagemodel[0] = 100;
-			System.out.println("CAUTION, ERROR IN LUGGAGE DISTRIBUTION.");
+			Log.add(this, "CAUTION, ERROR IN LUGGAGE DISTRIBUTION.");
 		}
 
 		ProbabilityMachine machine = new ProbabilityMachine(luggagemodel);

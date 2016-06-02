@@ -1741,13 +1741,31 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = 17;
 
 	/**
+	 * The feature id for the '<em><b>Data Export</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__DATA_EXPORT = 18;
+
+	/**
+	 * The feature id for the '<em><b>Display Map</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__DISPLAY_MAP = 19;
+
+	/**
 	 * The number of structural features of the '<em>Simulation Properties</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES_FEATURE_COUNT = 18;
+	int SIMULATION_PROPERTIES_FEATURE_COUNT = 20;
 
 	/**
 	 * The number of operations of the '<em>Simulation Properties</em>' class.
@@ -3440,6 +3458,28 @@ public interface CabinPackage extends EPackage {
 	EAttribute getSimulationProperties_PassengersBoardingPerMinute();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDataExport <em>Data Export</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Data Export</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#isDataExport()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_DataExport();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDisplayMap <em>Display Map</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Display Map</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#isDisplayMap()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_DisplayMap();
+
+	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.LuggageProperties <em>Luggage Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4858,6 +4898,20 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = eINSTANCE.getSimulationProperties_PassengersBoardingPerMinute();
+		/**
+		 * The meta object literal for the '<em><b>Data Export</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__DATA_EXPORT = eINSTANCE.getSimulationProperties_DataExport();
+		/**
+		 * The meta object literal for the '<em><b>Display Map</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__DISPLAY_MAP = eINSTANCE.getSimulationProperties_DisplayMap();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.LuggagePropertiesImpl <em>Luggage Properties</em>}' class.
 		 * <!-- begin-user-doc -->

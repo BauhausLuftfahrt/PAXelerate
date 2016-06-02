@@ -105,15 +105,6 @@ public class DrawCabinCommand extends CDTCommand {
 			cabin.getSimulationSettings().setPassengerProperties(paxSettings);
 		}
 
-		double[] luggagemodel = { luggageSettings.getPercentageOfPassengersWithNoLuggage(),
-				luggageSettings.getPercentageOfPassengersWithSmallLuggage(),
-				luggageSettings.getPercentageOfPassengersWithMediumLuggage(),
-				luggageSettings.getPercentageOfPassengersWithBigLuggage() };
-
-		if ((luggagemodel[0] + luggagemodel[1] + luggagemodel[2] + luggagemodel[3]) == 0) {
-			cabin.getSimulationSettings().getLuggageProperties().setPercentageOfPassengersWithNoLuggage(100);
-		}
-
 		int count = 1;
 		for (TravelClass tc : cabin.getClasses()) {
 			if (tc.getName().isEmpty()) {

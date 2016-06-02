@@ -75,6 +75,8 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 			addThreadSleepTimeDefaultPropertyDescriptor(object);
 			addDeveloperModePropertyDescriptor(object);
 			addPassengersBoardingPerMinutePropertyDescriptor(object);
+			addDataExportPropertyDescriptor(object);
+			addDisplayMapPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -432,6 +434,50 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	}
 
 	/**
+	 * This adds a property descriptor for the Data Export feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDataExportPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_dataExport_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_dataExport_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__DATA_EXPORT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Display Map feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDisplayMapPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_displayMap_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_displayMap_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__DISPLAY_MAP,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -518,6 +564,8 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 			case CabinPackage.SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT:
 			case CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE:
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
+			case CabinPackage.SIMULATION_PROPERTIES__DATA_EXPORT:
+			case CabinPackage.SIMULATION_PROPERTIES__DISPLAY_MAP:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES:

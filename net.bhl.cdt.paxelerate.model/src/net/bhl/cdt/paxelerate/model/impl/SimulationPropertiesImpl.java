@@ -45,6 +45,8 @@ import net.bhl.cdt.paxelerate.model.SortingStyle;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getLuggageProperties <em>Luggage Properties</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerProperties <em>Passenger Properties</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isDataExport <em>Data Export</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isDisplayMap <em>Display Map</em>}</li>
  * </ul>
  *
  * @generated
@@ -379,6 +381,46 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * @ordered
 	 */
 	protected double passengersBoardingPerMinute = PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isDataExport() <em>Data Export</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDataExport()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean DATA_EXPORT_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isDataExport() <em>Data Export</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDataExport()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean dataExport = DATA_EXPORT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isDisplayMap() <em>Display Map</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDisplayMap()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean DISPLAY_MAP_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isDisplayMap() <em>Display Map</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDisplayMap()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean displayMap = DISPLAY_MAP_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -895,6 +937,48 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isDataExport() {
+		return dataExport;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDataExport(boolean newDataExport) {
+		boolean oldDataExport = dataExport;
+		dataExport = newDataExport;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__DATA_EXPORT, oldDataExport, dataExport));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isDisplayMap() {
+		return displayMap;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDisplayMap(boolean newDisplayMap) {
+		boolean oldDisplayMap = displayMap;
+		displayMap = newDisplayMap;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__DISPLAY_MAP, oldDisplayMap, displayMap));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->.
 	 *
 	 * @param otherEnd the other end
@@ -963,6 +1047,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return getPassengerProperties();
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				return getPassengersBoardingPerMinute();
+			case CabinPackage.SIMULATION_PROPERTIES__DATA_EXPORT:
+				return isDataExport();
+			case CabinPackage.SIMULATION_PROPERTIES__DISPLAY_MAP:
+				return isDisplayMap();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1034,6 +1122,12 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				setPassengersBoardingPerMinute((Double)newValue);
 				return;
+			case CabinPackage.SIMULATION_PROPERTIES__DATA_EXPORT:
+				setDataExport((Boolean)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__DISPLAY_MAP:
+				setDisplayMap((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1102,6 +1196,12 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				setPassengersBoardingPerMinute(PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT);
 				return;
+			case CabinPackage.SIMULATION_PROPERTIES__DATA_EXPORT:
+				setDataExport(DATA_EXPORT_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__DISPLAY_MAP:
+				setDisplayMap(DISPLAY_MAP_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1153,6 +1253,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return passengerProperties != null;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				return passengersBoardingPerMinute != PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__DATA_EXPORT:
+				return dataExport != DATA_EXPORT_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__DISPLAY_MAP:
+				return displayMap != DISPLAY_MAP_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1199,6 +1303,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 		result.append(developerMode);
 		result.append(", passengersBoardingPerMinute: ");
 		result.append(passengersBoardingPerMinute);
+		result.append(", dataExport: ");
+		result.append(dataExport);
+		result.append(", displayMap: ");
+		result.append(displayMap);
 		result.append(')');
 		return result.toString();
 	}
