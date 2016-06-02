@@ -136,6 +136,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Passenger/passengerMood"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Passenger/numberOfMakeWayOperations"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Passenger/luggage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Passenger/distanceWalked"/>
     </genClasses>
     <genClasses ecoreClass="cabin.ecore#//CrewMember">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//CrewMember/id"/>
@@ -214,6 +215,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationResult/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationResult/date"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationResult/boardingTimeString"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationResult/waymakingSkipped"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationResult/waymakingCompleted"/>
     </genClasses>
     <genClasses ecoreClass="cabin.ecore#//PassengerProperties">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//PassengerProperties/passengerWidthMeanMale"/>

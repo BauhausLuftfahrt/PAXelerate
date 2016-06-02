@@ -52,7 +52,7 @@ public class ExcelExport {
 
 		File dir = new File(FILE_PATH);
 		dir.mkdir();
-		this.writer = new FileWriter(FILE_PATH + fileName + ".xls");
+		this.writer = new FileWriter(FILE_PATH + fileName + ".xls", true);
 	}
 
 	/**

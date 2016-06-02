@@ -179,8 +179,6 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 					}
 
-					Log.add(this, "getNumberWaymakingSkipped " + SimulationHandler.getNumberWaymakingSkipped());
-
 					SimulationView.getWatch().stop();
 
 					/* closes the simulation view after completion */
@@ -189,22 +187,26 @@ public class SimulateBoardingCommand extends CDTCommand {
 					// new SimulationResultLogger().getSimulationData(cabin, i,
 					// time);;
 
+					SimulationResultLogger results = new SimulationResultLogger();
+					results.getSimulationData(cabin, simulationLoopIndex,
+							SimulationView.getWatch().getElapsedTime() / 1000
+									* cabin.getSimulationSettings().getSimulationSpeedFactor(),
+							SimulationHandler.getNumberWaymakingSkipped(),
+							SimulationHandler.getNumberWaymakingCompleted());
+
 					if (dataExport) {
 
 						// Exporting data
 						try {
 							ExcelExport exporter = new ExcelExport("iteration" + simulationLoopIndex);
+
 							exporter.createFile();
 							ExportDataCommand exportData = new ExportDataCommand(cabin, exporter);
 							exportData.generateDistributionFile();
 							exportData.getPassengerData();
 							exportData.getSimulationPropertiesData();
 							exporter.closeFile();
-							// TODO: @MICHAEL: hier sind die results
-							SimulationResultLogger results = new SimulationResultLogger();
-							results.getSimulationData(cabin, simulationLoopIndex, SimulationView.getWatch().getElapsedTime()
-									* cabin.getSimulationSettings().getSimulationSpeedFactor());
-							results.printSimulationData();
+
 						} catch (FileNotFoundException e) {
 							Log.add(this, "Data export failed! - FileNotFoundException ");
 						} catch (IOException e) {
@@ -244,6 +246,18 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 					Log.add(this, "Iteration " + (simulationLoopIndex + 1) + " completed.");
 
+				}
+				try {
+					ExcelExport exporterResults = new ExcelExport("results");
+					exporterResults.createFile();
+					ExportDataCommand exportDataResults = new ExportDataCommand(cabin, exporterResults);
+					exportDataResults.getStudySettings();
+					exportDataResults.getResultData();
+					exporterResults.closeFile();
+				} catch (FileNotFoundException e) {
+					Log.add(this, "Data export failed! - FileNotFoundException ");
+				} catch (IOException e) {
+					Log.add(this, "Data export failed! - IOException");
 				}
 
 				/* Clear the cache! */

@@ -62,6 +62,8 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 			addIdPropertyDescriptor(object);
 			addDatePropertyDescriptor(object);
 			addBoardingTimeStringPropertyDescriptor(object);
+			addWaymakingSkippedPropertyDescriptor(object);
+			addWaymakingCompletedPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -201,6 +203,50 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 	}
 
 	/**
+	 * This adds a property descriptor for the Waymaking Skipped feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addWaymakingSkippedPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationResult_waymakingSkipped_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_waymakingSkipped_feature", "_UI_SimulationResult_type"),
+				 CabinPackage.Literals.SIMULATION_RESULT__WAYMAKING_SKIPPED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Waymaking Completed feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addWaymakingCompletedPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationResult_waymakingCompleted_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_waymakingCompleted_feature", "_UI_SimulationResult_type"),
+				 CabinPackage.Literals.SIMULATION_RESULT__WAYMAKING_COMPLETED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns SimulationResult.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -244,6 +290,8 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 			case CabinPackage.SIMULATION_RESULT__ID:
 			case CabinPackage.SIMULATION_RESULT__DATE:
 			case CabinPackage.SIMULATION_RESULT__BOARDING_TIME_STRING:
+			case CabinPackage.SIMULATION_RESULT__WAYMAKING_SKIPPED:
+			case CabinPackage.SIMULATION_RESULT__WAYMAKING_COMPLETED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

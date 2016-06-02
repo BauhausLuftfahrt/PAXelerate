@@ -53,7 +53,7 @@ public class SimulationResultLogger {
 	 * @param time the time
 	 * @return the simulation data
 	 */
-	public void getSimulationData(Cabin cabin, int runNumber, double time) {
+	public void getSimulationData(Cabin cabin, int runNumber, double time, int waymakingSkipped, int waymakingCompleted) {
 		SimulationResult result = CabinFactory.eINSTANCE
 				.createSimulationResult();
 
@@ -67,6 +67,8 @@ public class SimulationResultLogger {
 		result.setName(dateFormat.format(date));
 		result.setDate(date);
 		result.setBoardingTimeString(TimeHelper.toTimeOfDay(time));
+		result.setWaymakingSkipped(waymakingSkipped);
+		result.setWaymakingCompleted(waymakingCompleted);
 		SimulationHandler.getCabin().getSimulationSettings().getResults()
 				.add(result);
 	}

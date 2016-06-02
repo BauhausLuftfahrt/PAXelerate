@@ -19,8 +19,12 @@ import net.bhl.cdt.paxelerate.model.PassengerProperties;
 import net.bhl.cdt.paxelerate.model.Sex;
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.paxelerate.model.Cabin;
+import net.bhl.cdt.paxelerate.model.Door;
 import net.bhl.cdt.paxelerate.model.LuggageProperties;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
+import net.bhl.cdt.paxelerate.model.SimulationResult;
+import net.bhl.cdt.paxelerate.model.TravelClass;
+import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.model.storage.AgeStorage;
 import net.bhl.cdt.paxelerate.model.storage.GaussianStorage;
 import net.bhl.cdt.paxelerate.model.storage.LuggageStorage;
@@ -28,6 +32,7 @@ import net.bhl.cdt.paxelerate.model.storage.StorageHandler;
 import net.bhl.cdt.paxelerate.util.exchange.ExcelExport;
 import net.bhl.cdt.paxelerate.util.input.Input;
 import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
+import net.bhl.cdt.paxelerate.util.time.TimeHelper;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
@@ -44,7 +49,7 @@ public class ExportDataCommand extends CDTCommand {
 
 	/** The default fileName. */
 	String fileName = "export";
-	
+
 	private StorageHandler propertyStore = new StorageHandler();
 
 	private ExcelExport exporter;
@@ -58,7 +63,7 @@ public class ExportDataCommand extends CDTCommand {
 	public ExportDataCommand(Cabin cabin) {
 		this.cabin = cabin;
 	}
-	
+
 	public ExportDataCommand(Cabin cabin, ExcelExport exporter) {
 		// super();
 		this.cabin = cabin;
@@ -184,6 +189,58 @@ public class ExportDataCommand extends CDTCommand {
 		return true;
 	}
 
+	public boolean getStudySettings() throws IOException, FileNotFoundException {
+
+		LuggageProperties luggageSettings = cabin.getSimulationSettings().getLuggageProperties();
+		EList<TravelClass> tcList = cabin.getClasses();
+		EList<Door> doorList = cabin.getDoors();
+
+		exporter.addColumnElement("No Luggage");
+		exporter.addColumnElement("Small Luggage");
+		exporter.addColumnElement("Medium Luggage");
+		exporter.addColumnElement("Big Luggage");
+		exporter.addColumnElement("Load Factor");
+		exporter.addColumnElement("Active Door ID");
+		exporter.addNewLine();
+		exporter.addColumnElement(luggageSettings.getPercentageOfPassengersWithNoLuggage());
+		exporter.addColumnElement(luggageSettings.getPercentageOfPassengersWithSmallLuggage());
+		exporter.addColumnElement(luggageSettings.getPercentageOfPassengersWithMediumLuggage());
+		exporter.addColumnElement(luggageSettings.getPercentageOfPassengersWithBigLuggage());
+		for (TravelClass tc : tcList) {
+			exporter.addColumnElement(tc.getLoadFactor());
+		}
+		for (Door dl : doorList) {
+			if(dl.isIsActive()) {
+				exporter.addColumnElement(dl.getId());
+			}
+		}
+		exporter.addNewLine();
+		exporter.addNewLine();
+
+		return true;
+	}
+
+	public boolean getResultData() throws IOException, FileNotFoundException {
+
+		exporter.addColumnElement("Loop ID");
+		exporter.addColumnElement("Passengers");
+		exporter.addColumnElement("Time");
+		exporter.addColumnElement("Skipped Way Making");
+		exporter.addColumnElement("Completed Way Making");
+		exporter.addNewLine();
+
+		for (SimulationResult result : cabin.getSimulationSettings().getResults()) {
+			exporter.addColumnElement(result.getId());
+			exporter.addColumnElement(result.getPassengers());
+			exporter.addColumnElement(TimeHelper.toTimeOfDay(result.getBoardingTime()));
+			exporter.addColumnElement(result.getWaymakingSkipped());
+			exporter.addColumnElement(result.getWaymakingCompleted());
+			exporter.addNewLine();
+		}
+
+		return true;
+	}
+
 	/**
 	 * Generate distribution file.
 	 *
@@ -204,15 +261,15 @@ public class ExportDataCommand extends CDTCommand {
 	 * @param pax
 	 *            the pax
 	 */
-	public void generateDistributionFile()
-			throws IOException, FileNotFoundException {
-		
+	public void generateDistributionFile() throws IOException, FileNotFoundException {
+
 		propertyStore.clear();
 		for (Passenger pax : cabin.getPassengers()) {
 			propertyStore.addPassenger(pax);
 		}
 		Object[] storageData = propertyStore.getStorageData();
-		// weightStore, heightStore, depthStore, widthStore, ageStore, luggageStore, numberOfPassengers
+		// weightStore, heightStore, depthStore, widthStore, ageStore,
+		// luggageStore, numberOfPassengers
 
 		exporter.addColumnElement("Type");
 		exporter.addColumnElement("Maximum Value F");
@@ -231,9 +288,9 @@ public class ExportDataCommand extends CDTCommand {
 		writeGaussian((GaussianStorage) storageData[1], "Height");
 		writeGaussian((GaussianStorage) storageData[2], "Depth");
 		writeGaussian((GaussianStorage) storageData[3], "Width");
-		//writeGaussian((GaussianStorage) storageData[4], "Age");
-		//writeGaussian((GaussianStorage) storageData[5], "Luggage");
-		//writeGaussian((GaussianStorage) storageData[6], "Passengers");
+		// writeGaussian((GaussianStorage) storageData[4], "Age");
+		// writeGaussian((GaussianStorage) storageData[5], "Luggage");
+		// writeGaussian((GaussianStorage) storageData[6], "Passengers");
 	}
 
 	/**
@@ -251,8 +308,8 @@ public class ExportDataCommand extends CDTCommand {
 	 *             the file not found exception
 	 */
 	private void writeGaussian(GaussianStorage storage, String name) throws IOException, FileNotFoundException {
-		
-		exporter.addColumnElement(name);		
+
+		exporter.addColumnElement(name);
 		exporter.addColumnElement(str(storage.getMaximum(Sex.FEMALE)));
 		exporter.addColumnElement(str(storage.getMaximum(Sex.MALE)));
 		exporter.addColumnElement(str(storage.getMinimum(Sex.FEMALE)));
@@ -277,7 +334,6 @@ public class ExportDataCommand extends CDTCommand {
 		DecimalFormat df = new DecimalFormat("#.##");
 		return df.format(value);
 	}
-	
 
 	/*
 	 * (non-Javadoc)
@@ -290,7 +346,7 @@ public class ExportDataCommand extends CDTCommand {
 
 		String fileName = input.getStringValue();
 		try {
-			
+
 			getPassengerData();
 			getSimulationPropertiesData();
 			exporter.closeFile();

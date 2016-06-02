@@ -493,4 +493,12 @@ public class SimulationHandler {
 		}
 		return numberSkipped;
 	}
+	
+	public static int getNumberWaymakingCompleted() {
+		int numberCompleted = 0;
+		for (Passenger pax : finishedList) {
+			numberCompleted = numberCompleted + pax.getNumberOfMakeWayOperations();
+		}
+		return numberCompleted;
+	}
 }

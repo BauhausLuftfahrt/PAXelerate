@@ -1959,13 +1959,31 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_RESULT__BOARDING_TIME_STRING = 5;
 
 	/**
+	 * The feature id for the '<em><b>Waymaking Skipped</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_RESULT__WAYMAKING_SKIPPED = 6;
+
+	/**
+	 * The feature id for the '<em><b>Waymaking Completed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_RESULT__WAYMAKING_COMPLETED = 7;
+
+	/**
 	 * The number of structural features of the '<em>Simulation Result</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_RESULT_FEATURE_COUNT = 6;
+	int SIMULATION_RESULT_FEATURE_COUNT = 8;
 
 	/**
 	 * The number of operations of the '<em>Simulation Result</em>' class.
@@ -3640,6 +3658,28 @@ public interface CabinPackage extends EPackage {
 	EAttribute getSimulationResult_BoardingTimeString();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationResult#getWaymakingSkipped <em>Waymaking Skipped</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Waymaking Skipped</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationResult#getWaymakingSkipped()
+	 * @see #getSimulationResult()
+	 * @generated
+	 */
+	EAttribute getSimulationResult_WaymakingSkipped();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationResult#getWaymakingCompleted <em>Waymaking Completed</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Waymaking Completed</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationResult#getWaymakingCompleted()
+	 * @see #getSimulationResult()
+	 * @generated
+	 */
+	EAttribute getSimulationResult_WaymakingCompleted();
+
+	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.PassengerProperties <em>Passenger Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4962,6 +5002,20 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SIMULATION_RESULT__BOARDING_TIME_STRING = eINSTANCE.getSimulationResult_BoardingTimeString();
+		/**
+		 * The meta object literal for the '<em><b>Waymaking Skipped</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_RESULT__WAYMAKING_SKIPPED = eINSTANCE.getSimulationResult_WaymakingSkipped();
+		/**
+		 * The meta object literal for the '<em><b>Waymaking Completed</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_RESULT__WAYMAKING_COMPLETED = eINSTANCE.getSimulationResult_WaymakingCompleted();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl <em>Passenger Properties</em>}' class.
 		 * <!-- begin-user-doc -->

@@ -26,6 +26,8 @@ import net.bhl.cdt.paxelerate.model.SimulationResult;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationResultImpl#getId <em>Id</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationResultImpl#getDate <em>Date</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationResultImpl#getBoardingTimeString <em>Boarding Time String</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationResultImpl#getWaymakingSkipped <em>Waymaking Skipped</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationResultImpl#getWaymakingCompleted <em>Waymaking Completed</em>}</li>
  * </ul>
  *
  * @generated
@@ -150,6 +152,46 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected String boardingTimeString = BOARDING_TIME_STRING_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getWaymakingSkipped() <em>Waymaking Skipped</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWaymakingSkipped()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int WAYMAKING_SKIPPED_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getWaymakingSkipped() <em>Waymaking Skipped</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWaymakingSkipped()
+	 * @generated
+	 * @ordered
+	 */
+	protected int waymakingSkipped = WAYMAKING_SKIPPED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getWaymakingCompleted() <em>Waymaking Completed</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWaymakingCompleted()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int WAYMAKING_COMPLETED_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getWaymakingCompleted() <em>Waymaking Completed</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWaymakingCompleted()
+	 * @generated
+	 * @ordered
+	 */
+	protected int waymakingCompleted = WAYMAKING_COMPLETED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -325,6 +367,48 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getWaymakingSkipped() {
+		return waymakingSkipped;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWaymakingSkipped(int newWaymakingSkipped) {
+		int oldWaymakingSkipped = waymakingSkipped;
+		waymakingSkipped = newWaymakingSkipped;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_RESULT__WAYMAKING_SKIPPED, oldWaymakingSkipped, waymakingSkipped));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getWaymakingCompleted() {
+		return waymakingCompleted;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWaymakingCompleted(int newWaymakingCompleted) {
+		int oldWaymakingCompleted = waymakingCompleted;
+		waymakingCompleted = newWaymakingCompleted;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_RESULT__WAYMAKING_COMPLETED, oldWaymakingCompleted, waymakingCompleted));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->.
 	 *
 	 * @param featureID the feature id
@@ -348,6 +432,10 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 				return getDate();
 			case CabinPackage.SIMULATION_RESULT__BOARDING_TIME_STRING:
 				return getBoardingTimeString();
+			case CabinPackage.SIMULATION_RESULT__WAYMAKING_SKIPPED:
+				return getWaymakingSkipped();
+			case CabinPackage.SIMULATION_RESULT__WAYMAKING_COMPLETED:
+				return getWaymakingCompleted();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -381,6 +469,12 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 			case CabinPackage.SIMULATION_RESULT__BOARDING_TIME_STRING:
 				setBoardingTimeString((String)newValue);
 				return;
+			case CabinPackage.SIMULATION_RESULT__WAYMAKING_SKIPPED:
+				setWaymakingSkipped((Integer)newValue);
+				return;
+			case CabinPackage.SIMULATION_RESULT__WAYMAKING_COMPLETED:
+				setWaymakingCompleted((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -413,6 +507,12 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 			case CabinPackage.SIMULATION_RESULT__BOARDING_TIME_STRING:
 				setBoardingTimeString(BOARDING_TIME_STRING_EDEFAULT);
 				return;
+			case CabinPackage.SIMULATION_RESULT__WAYMAKING_SKIPPED:
+				setWaymakingSkipped(WAYMAKING_SKIPPED_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_RESULT__WAYMAKING_COMPLETED:
+				setWaymakingCompleted(WAYMAKING_COMPLETED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -440,6 +540,10 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 				return DATE_EDEFAULT == null ? date != null : !DATE_EDEFAULT.equals(date);
 			case CabinPackage.SIMULATION_RESULT__BOARDING_TIME_STRING:
 				return BOARDING_TIME_STRING_EDEFAULT == null ? boardingTimeString != null : !BOARDING_TIME_STRING_EDEFAULT.equals(boardingTimeString);
+			case CabinPackage.SIMULATION_RESULT__WAYMAKING_SKIPPED:
+				return waymakingSkipped != WAYMAKING_SKIPPED_EDEFAULT;
+			case CabinPackage.SIMULATION_RESULT__WAYMAKING_COMPLETED:
+				return waymakingCompleted != WAYMAKING_COMPLETED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -468,6 +572,10 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 		result.append(date);
 		result.append(", boardingTimeString: ");
 		result.append(boardingTimeString);
+		result.append(", waymakingSkipped: ");
+		result.append(waymakingSkipped);
+		result.append(", waymakingCompleted: ");
+		result.append(waymakingCompleted);
 		result.append(')');
 		return result.toString();
 	}
