@@ -40,7 +40,6 @@ public class StorageHandler {
 	 *
 	 * @param pax the pax
 	 */
-	@SuppressWarnings("deprecation")
 	public void addPassenger(Passenger pax) {
 
 		weightStore.addValue(pax.getSex(), pax.getWeight());
@@ -58,10 +57,17 @@ public class StorageHandler {
 		}
 
 		if (numberOfPassengers[0] > 179) {
-			Exporter.generateDistributionFile("export", weightStore, heightStore,
+			/*Exporter.generateDistributionFile("export", weightStore, heightStore,
 					depthStore, widthStore, ageStore, luggageStore,
-					numberOfPassengers);
+					numberOfPassengers)*/;
 		}
+	}
+	
+	public Object[] getStorageData(){
+		Object[] storageData = {weightStore, heightStore,
+				depthStore, widthStore, ageStore, luggageStore,
+				numberOfPassengers};
+		return storageData;
 	}
 
 	/**

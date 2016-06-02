@@ -192,9 +192,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 							ExcelExport exporter = new ExcelExport("iteration" + i);
 							exporter.createFile();
 							ExportDataCommand exportData = new ExportDataCommand(cabin, exporter);
+							exportData.generateDistributionFile();
 							exportData.getPassengerData();
-							exportData.getSimulationPropertiesData();
-							//exportData.generateDistributionFile();
+							exportData.getSimulationPropertiesData();							
 							exporter.closeFile();
 						} catch (FileNotFoundException e) {
 							Log.add(this, "Data export failed! - FileNotFoundException ");

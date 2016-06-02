@@ -24,6 +24,7 @@ import net.bhl.cdt.paxelerate.model.SimulationProperties;
 import net.bhl.cdt.paxelerate.model.storage.AgeStorage;
 import net.bhl.cdt.paxelerate.model.storage.GaussianStorage;
 import net.bhl.cdt.paxelerate.model.storage.LuggageStorage;
+import net.bhl.cdt.paxelerate.model.storage.StorageHandler;
 import net.bhl.cdt.paxelerate.util.exchange.ExcelExport;
 import net.bhl.cdt.paxelerate.util.input.Input;
 import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
@@ -43,6 +44,8 @@ public class ExportDataCommand extends CDTCommand {
 
 	/** The default fileName. */
 	String fileName = "export";
+	
+	private StorageHandler propertyStore = new StorageHandler();
 
 	private ExcelExport exporter;
 
@@ -201,38 +204,36 @@ public class ExportDataCommand extends CDTCommand {
 	 * @param pax
 	 *            the pax
 	 */
-	public void generateDistributionFile(GaussianStorage weight, GaussianStorage height,
-			GaussianStorage depth, GaussianStorage width, AgeStorage age, LuggageStorage luggage, int[] pax)
+	public void generateDistributionFile()
 			throws IOException, FileNotFoundException {
+		
+		propertyStore.clear();
+		for (Passenger pax : cabin.getPassengers()) {
+			propertyStore.addPassenger(pax);
+		}
+		Object[] storageData = propertyStore.getStorageData();
+		// weightStore, heightStore, depthStore, widthStore, ageStore, luggageStore, numberOfPassengers
 
 		exporter.addColumnElement("Type");
-		exporter.addNewLine();
 		exporter.addColumnElement("Maximum Value F");
-		exporter.addNewLine();
 		exporter.addColumnElement("Maximum Value M");
-		exporter.addNewLine();
 		exporter.addColumnElement("Minimum Value F");
-		exporter.addNewLine();
 		exporter.addColumnElement("Minimum Value M");
-		exporter.addNewLine();
 		exporter.addColumnElement("Average Value F");
-		exporter.addNewLine();
 		exporter.addColumnElement("Average Value M");
-		exporter.addNewLine();
 		exporter.addColumnElement("Sum Value F");
-		exporter.addNewLine();
 		exporter.addColumnElement("Sum Value M");
-		exporter.addNewLine();
 		exporter.addColumnElement("Amount Value F");
-		exporter.addNewLine();
 		exporter.addColumnElement("Amount Value F");
 		exporter.addNewLine();
 
-		writeGaussian(weight, "Weight");
-		writeGaussian(height, "Height");
-		writeGaussian(depth, "Depth");
-		writeGaussian(width, "Width");
-
+		writeGaussian((GaussianStorage) storageData[0], "Weight");
+		writeGaussian((GaussianStorage) storageData[1], "Height");
+		writeGaussian((GaussianStorage) storageData[2], "Depth");
+		writeGaussian((GaussianStorage) storageData[3], "Width");
+		//writeGaussian((GaussianStorage) storageData[4], "Age");
+		//writeGaussian((GaussianStorage) storageData[5], "Luggage");
+		//writeGaussian((GaussianStorage) storageData[6], "Passengers");
 	}
 
 	/**
@@ -250,7 +251,8 @@ public class ExportDataCommand extends CDTCommand {
 	 *             the file not found exception
 	 */
 	private void writeGaussian(GaussianStorage storage, String name) throws IOException, FileNotFoundException {
-		exporter.addColumnElement(name);
+		
+		exporter.addColumnElement(name);		
 		exporter.addColumnElement(str(storage.getMaximum(Sex.FEMALE)));
 		exporter.addColumnElement(str(storage.getMaximum(Sex.MALE)));
 		exporter.addColumnElement(str(storage.getMinimum(Sex.FEMALE)));
@@ -261,6 +263,7 @@ public class ExportDataCommand extends CDTCommand {
 		exporter.addColumnElement(str(storage.getSum(Sex.MALE)));
 		exporter.addColumnElement(str(storage.getAmount(Sex.FEMALE)));
 		exporter.addColumnElement(str(storage.getAmount(Sex.MALE)));
+		exporter.addNewLine();
 	}
 
 	/**
