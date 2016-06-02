@@ -9,6 +9,8 @@ package net.bhl.cdt.paxelerate.ui.commands;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Map;
 
 import javax.swing.JFrame;
@@ -34,6 +36,7 @@ import net.bhl.cdt.paxelerate.ui.export.FileSaver;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.SimulationView;
 import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
+import net.bhl.cdt.paxelerate.util.exchange.ExcelExport;
 import net.bhl.cdt.paxelerate.util.input.Input;
 import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 import net.bhl.cdt.paxelerate.util.math.Vector;
@@ -43,7 +46,7 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 /**
  * This command starts the boarding simulation.
  * 
- * @author marc.engelmann
+ * @author marc.engelmann, michael.schmidt
  */
 
 public class SimulateBoardingCommand extends CDTCommand {
@@ -53,6 +56,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 	/** The simulation frame. */
 	private JFrame simulationFrame;
+
+	private boolean dataExport = true;
+	private boolean displayMap = false;
 
 	/**
 	 * This is the constructor method of the SimulateBoardingCommand.
@@ -69,6 +75,10 @@ public class SimulateBoardingCommand extends CDTCommand {
 	 */
 	@Override
 	protected void doRun() {
+
+		// set number iterations
+		cabin.getSimulationSettings().setNumberOfSimulationLoops(2);
+
 		// Create separate thread
 		Job job = new Job("Simulate Boarding Thread") {
 			@Override
@@ -76,9 +86,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 				Log.add(this, "Initializing  new boarding simulation ...");
 
-				cabin.getSimulationSettings().setRandomSortBetweenLoops(false);
-				cabin.getSimulationSettings().setSimulationSpeedFactor(1);
-				cabin.getSimulationSettings().setScale(10);
+				cabin.getSimulationSettings().setRandomSortBetweenLoops(true);
+				cabin.getSimulationSettings().getSimulationSpeedFactor();
+				cabin.getSimulationSettings().getScale();
 
 				Display.getDefault().syncExec(new Runnable() {
 					@Override
@@ -92,7 +102,15 @@ public class SimulateBoardingCommand extends CDTCommand {
 				for (int simulationLoopIndex = 0; simulationLoopIndex < cabin.getSimulationSettings()
 						.getNumberOfSimulationLoops(); simulationLoopIndex++) {
 
+					Log.add(this, "Iteration " + (simulationLoopIndex + 1) + " of "
+							+ cabin.getSimulationSettings().getNumberOfSimulationLoops());
+
 					if (cabin.getSimulationSettings().isRandomSortBetweenLoops()) {
+
+						/* generates new passenger */
+						new GeneratePassengersCommand(cabin).doRun();
+
+						/* sorts the passenger according to selected method */
 						SortPassengersCommand sort = new SortPassengersCommand(cabin);
 						sort.setPropertiesManually(false, 0);
 						sort.doRun();
@@ -136,9 +154,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 								"You did not create any passengers. Random passeners are now created.",
 								IMessageProvider.ERROR);
 						if (input.getBooleanValue()) {
-							GeneratePassengersCommand pax = new GeneratePassengersCommand(cabin);
-							pax.doRun();
-							System.out.println("PAX created!");
+							new GeneratePassengersCommand(cabin).doRun();
+							Log.add(this, "PAX created!");
 						}
 					}
 
@@ -162,42 +179,70 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 					}
 
+					Log.add(this, "getNumberWaymakingSkipped " + SimulationHandler.getNumberWaymakingSkipped());
+
 					SimulationView.getWatch().stop();
 
 					/* closes the simulation view after completion */
 					simulationFrame.dispose();
 
-					Map<Integer, Costmap> costmaps = SimulationHandler.getUsedCostmaps();
+					// new SimulationResultLogger().getSimulationData(cabin, i,
+					// time);;
 
-					int index = 0;
+					if (dataExport) {
 
-					for (Costmap costmap : costmaps.values()) {
+						// Exporting data
+						try {
+							ExcelExport exporter = new ExcelExport("iteration" + simulationLoopIndex);
+							exporter.createFile();
+							ExportDataCommand exportData = new ExportDataCommand(cabin, exporter);
+							exportData.generateDistributionFile();
+							exportData.getPassengerData();
+							exportData.getSimulationPropertiesData();
+							exporter.closeFile();
+							// TODO: @MICHAEL: hier sind die results
+							SimulationResultLogger results = new SimulationResultLogger();
+							results.getSimulationData(cabin, simulationLoopIndex, SimulationView.getWatch().getElapsedTime()
+									* cabin.getSimulationSettings().getSimulationSpeedFactor());
+							results.printSimulationData();
+						} catch (FileNotFoundException e) {
+							Log.add(this, "Data export failed! - FileNotFoundException ");
+						} catch (IOException e) {
+							Log.add(this, "Data export failed! - IOException");
+						}
 
-						/* save the CostMap to the local file system */
-						FileSaver.saveCostmapToFile(costmap, dimensions, index);
+						Map<Integer, Costmap> costmaps = SimulationHandler.getUsedCostmaps();
 
-						index++;
+						int index = 0;
+
+						for (Costmap costmap : costmaps.values()) {
+
+							/* save the CostMap to the local file system */
+							FileSaver.saveCostmapToFile(costmap, dimensions, index);
+
+							index++;
+						}
+
+						FileSaver.saveObstacleToFile(SimulationHandler.getMap(), dimensions);
 					}
 
-					// TODO: @MICHAEL: hier sind die results
-					SimulationResultLogger results = new SimulationResultLogger();
-					results.getSimulationData(cabin, simulationLoopIndex, SimulationView.getWatch().getElapsedTime()
-							* cabin.getSimulationSettings().getSimulationSpeedFactor());
-					results.printSimulationData();
+					/*
+					 * display the agent path and cost map in the Cabin UI view
+					 */
+					if (displayMap) {
+						Display.getDefault().syncExec(new Runnable() {
 
-					FileSaver.saveObstacleToFile(SimulationHandler.getMap(), dimensions);
+							@Override
+							public void run() {
+								Image image = cabinViewPart
+										.submitObstacleMap(SimulationHandler.getAreamapHandler().getObstaclemap());
+								cabinViewPart.printObstacleMap(image);
+								cabinViewPart.submitAgents(SimulationHandler.getAgentList());
+							}
+						});
+					}
 
-					Display.getDefault().syncExec(new Runnable() {
-						@Override
-						public void run() {
-							Image image = cabinViewPart
-									.submitObstacleMap(SimulationHandler.getAreamapHandler().getObstaclemap());
-							cabinViewPart.printObstacleMap(image);
-							cabinViewPart.submitAgents(SimulationHandler.getAgentList());
-						}
-					});
-
-					Log.add(this, "Boarding simulation completed");
+					Log.add(this, "Iteration " + (simulationLoopIndex + 1) + " completed.");
 
 				}
 
@@ -214,7 +259,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 				});
 
 				// report finished
+				Log.add(this, "Boarding simulation completed");
 				return Status.OK_STATUS;
+
 			}
 
 		};

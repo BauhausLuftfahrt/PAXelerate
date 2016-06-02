@@ -57,10 +57,17 @@ public class StorageHandler {
 		}
 
 		if (numberOfPassengers[0] > 179) {
-			Exporter.generateDistributionFile("export", weightStore, heightStore,
+			/*Exporter.generateDistributionFile("export", weightStore, heightStore,
 					depthStore, widthStore, ageStore, luggageStore,
-					numberOfPassengers);
+					numberOfPassengers)*/;
 		}
+	}
+	
+	public Object[] getStorageData(){
+		Object[] storageData = {weightStore, heightStore,
+				depthStore, widthStore, ageStore, luggageStore,
+				numberOfPassengers};
+		return storageData;
 	}
 
 	/**
@@ -126,17 +133,17 @@ public class StorageHandler {
 	 * The Enum StoreType.
 	 */
 	public enum StoreType {
-		
+
 		/** The weight. */
 		WEIGHT, 
- /** The height. */
- HEIGHT, 
- /** The width. */
- WIDTH, 
- /** The depth. */
- DEPTH, 
- /** The age. */
- AGE
+		/** The height. */
+		HEIGHT, 
+		/** The width. */
+		WIDTH, 
+		/** The depth. */
+		DEPTH, 
+		/** The age. */
+		AGE
 	}
 
 	/**
