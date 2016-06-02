@@ -85,7 +85,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 				Log.add(this, "Initializing  new boarding simulation ...");
 
 				// cabin.getSimulationSettings().setRandomSortBetweenLoops(true);
-				cabin.getSimulationSettings().setSimulationSpeedFactor(5);
+				//cabin.getSimulationSettings().setSimulationSpeedFactor(5);
 				// cabin.getSimulationSettings().getScale();
 
 				Display.getDefault().syncExec(new Runnable() {
@@ -106,7 +106,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 					if (cabin.getSimulationSettings().isRandomSortBetweenLoops()) {
 
 						/* generates new passenger */
-						// new GeneratePassengersCommand(cabin).doRun();
+						new GeneratePassengersCommand(cabin).doRun();
 
 						/* sorts the passenger according to selected method */
 						SortPassengersCommand sort = new SortPassengersCommand(cabin);
@@ -187,6 +187,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 													* 1000)) {
 										System.out.println(sleepyPassenger.getName() + "has caused interuption!");
 
+										//SimulationHandler.setSimulationStatus(true);
 										SimulationHandler.stopSimulation();
 										SimulationView.getWatch().stop();
 										simulationFrame.dispose();

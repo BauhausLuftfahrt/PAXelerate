@@ -14,7 +14,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="aircraftType" lowerBound="1"
         eType="#//AircraftType" defaultValueLiteral="narrowbody"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="simulationSettings" lowerBound="1"
-        eType="#//SimulationProperties"/>
+        eType="#//SimulationProperties" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="simulationResults" eType="#//SimulationResult"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="classes" lowerBound="1"
         upperBound="-1" eType="#//TravelClass" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="doors" lowerBound="1" upperBound="-1"

@@ -363,7 +363,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EReference getCabin_Doors() {
-        return (EReference)getCabin().getEStructuralFeatures().get(8);
+        return (EReference)getCabin().getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -374,7 +374,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EReference getCabin_Lavatories() {
-        return (EReference)getCabin().getEStructuralFeatures().get(9);
+        return (EReference)getCabin().getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -385,7 +385,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EReference getCabin_Galleys() {
-        return (EReference)getCabin().getEStructuralFeatures().get(10);
+        return (EReference)getCabin().getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -396,7 +396,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EReference getCabin_Stairways() {
-        return (EReference)getCabin().getEStructuralFeatures().get(11);
+        return (EReference)getCabin().getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -407,7 +407,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EReference getCabin_Curtains() {
-        return (EReference)getCabin().getEStructuralFeatures().get(12);
+        return (EReference)getCabin().getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -418,7 +418,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EReference getCabin_Stowages() {
-        return (EReference)getCabin().getEStructuralFeatures().get(13);
+        return (EReference)getCabin().getEStructuralFeatures().get(14);
 	}
 
 	/**
@@ -429,7 +429,16 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EReference getCabin_Passengers() {
-        return (EReference)getCabin().getEStructuralFeatures().get(14);
+        return (EReference)getCabin().getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCabin_SimulationResults() {
+        return (EReference)getCabin().getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -473,7 +482,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EReference getCabin_Classes() {
-        return (EReference)getCabin().getEStructuralFeatures().get(7);
+        return (EReference)getCabin().getEStructuralFeatures().get(8);
 	}
 
 	/**

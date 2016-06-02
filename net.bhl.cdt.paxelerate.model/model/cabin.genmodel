@@ -65,7 +65,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/aisleWidth"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/numberOfDecks"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/aircraftType"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cabin.ecore#//Cabin/simulationSettings"/>
+      <genFeatures children="true" createChild="true" propertyDescription="" propertySortChoices="true"
+          ecoreFeature="ecore:EReference cabin.ecore#//Cabin/simulationSettings"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference cabin.ecore#//Cabin/simulationResults"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//Cabin/classes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//Cabin/doors"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//Cabin/lavatories"/>

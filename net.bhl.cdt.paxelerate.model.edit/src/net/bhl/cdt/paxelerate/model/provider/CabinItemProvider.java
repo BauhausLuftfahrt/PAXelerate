@@ -57,6 +57,7 @@ public class CabinItemProvider extends NamedElementItemProvider {
 			addNumberOfDecksPropertyDescriptor(object);
 			addAircraftTypePropertyDescriptor(object);
 			addSimulationSettingsPropertyDescriptor(object);
+			addSimulationResultsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -174,6 +175,28 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Simulation Results feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSimulationResultsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cabin_simulationResults_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cabin_simulationResults_feature", "_UI_Cabin_type"),
+				 CabinPackage.Literals.CABIN__SIMULATION_RESULTS,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Row Nonexistent feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -231,6 +254,8 @@ public class CabinItemProvider extends NamedElementItemProvider {
 			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(CabinPackage.Literals.CABIN__SIMULATION_SETTINGS);
+			childrenFeatures.add(CabinPackage.Literals.CABIN__SIMULATION_RESULTS);
 			childrenFeatures.add(CabinPackage.Literals.CABIN__CLASSES);
 			childrenFeatures.add(CabinPackage.Literals.CABIN__DOORS);
 			childrenFeatures.add(CabinPackage.Literals.CABIN__LAVATORIES);
@@ -304,6 +329,8 @@ public class CabinItemProvider extends NamedElementItemProvider {
 			case CabinPackage.CABIN__AIRCRAFT_TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
+			case CabinPackage.CABIN__SIMULATION_SETTINGS:
+			case CabinPackage.CABIN__SIMULATION_RESULTS:
 			case CabinPackage.CABIN__CLASSES:
 			case CabinPackage.CABIN__DOORS:
 			case CabinPackage.CABIN__LAVATORIES:
@@ -331,6 +358,16 @@ public class CabinItemProvider extends NamedElementItemProvider {
 	protected void collectNewChildDescriptors(
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CabinPackage.Literals.CABIN__SIMULATION_SETTINGS,
+				 CabinFactory.eINSTANCE.createSimulationProperties()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CabinPackage.Literals.CABIN__SIMULATION_RESULTS,
+				 CabinFactory.eINSTANCE.createSimulationResult()));
 
 		newChildDescriptors.add
 			(createChildParameter

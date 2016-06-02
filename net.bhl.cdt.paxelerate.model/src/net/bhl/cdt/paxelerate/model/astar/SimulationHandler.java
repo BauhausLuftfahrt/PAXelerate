@@ -191,6 +191,10 @@ public class SimulationHandler {
 	public static Boolean isSimulationDone() {
 		return simulationDone;
 	}
+	
+	public static void setSimulationStatus(boolean status) {
+		simulationDone = status;
+	}
 
 	/**
 	 * Gets the agent list.

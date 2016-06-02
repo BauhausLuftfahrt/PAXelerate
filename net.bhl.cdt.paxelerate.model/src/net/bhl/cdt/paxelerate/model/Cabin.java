@@ -22,6 +22,7 @@ import net.bhl.cdt.model.NamedElement;
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getNumberOfDecks <em>Number Of Decks</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getAircraftType <em>Aircraft Type</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getSimulationSettings <em>Simulation Settings</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getSimulationResults <em>Simulation Results</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getClasses <em>Classes</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getDoors <em>Doors</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getLavatories <em>Lavatories</em>}</li>
@@ -205,6 +206,32 @@ public interface Cabin extends NamedElement {
 	EList<Passenger> getPassengers();
 
 	/**
+	 * Returns the value of the '<em><b>Simulation Results</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Simulation Results</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Simulation Results</em>' containment reference.
+	 * @see #setSimulationResults(SimulationResult)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getCabin_SimulationResults()
+	 * @model containment="true"
+	 * @generated
+	 */
+	SimulationResult getSimulationResults();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Cabin#getSimulationResults <em>Simulation Results</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Simulation Results</em>' containment reference.
+	 * @see #getSimulationResults()
+	 * @generated
+	 */
+	void setSimulationResults(SimulationResult value);
+
+	/**
 	 * Returns the value of the '<em><b>Number Of Decks</b></em>' attribute.
 	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
@@ -262,26 +289,26 @@ public interface Cabin extends NamedElement {
 	void setAircraftType(AircraftType value);
 
 	/**
-	 * Returns the value of the '<em><b>Simulation Settings</b></em>' reference.
+	 * Returns the value of the '<em><b>Simulation Settings</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Simulation Settings</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Simulation Settings</em>' reference.
+	 * @return the value of the '<em>Simulation Settings</em>' containment reference.
 	 * @see #setSimulationSettings(SimulationProperties)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getCabin_SimulationSettings()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	SimulationProperties getSimulationSettings();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Cabin#getSimulationSettings <em>Simulation Settings</em>}' reference.
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Cabin#getSimulationSettings <em>Simulation Settings</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Simulation Settings</em>' reference.
+	 * @param value the new value of the '<em>Simulation Settings</em>' containment reference.
 	 * @see #getSimulationSettings()
 	 * @generated
 	 */

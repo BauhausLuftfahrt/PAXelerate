@@ -23,6 +23,7 @@ import net.bhl.cdt.paxelerate.model.Galley;
 import net.bhl.cdt.paxelerate.model.Lavatory;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
+import net.bhl.cdt.paxelerate.model.SimulationResult;
 import net.bhl.cdt.paxelerate.model.Stairway;
 import net.bhl.cdt.paxelerate.model.Stowage;
 import net.bhl.cdt.paxelerate.model.TravelClass;
@@ -41,6 +42,7 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getNumberOfDecks <em>Number Of Decks</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getAircraftType <em>Aircraft Type</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getSimulationSettings <em>Simulation Settings</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getSimulationResults <em>Simulation Results</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getClasses <em>Classes</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getDoors <em>Doors</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getLavatories <em>Lavatories</em>}</li>
@@ -156,7 +158,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 */
 	protected AircraftType aircraftType = AIRCRAFT_TYPE_EDEFAULT;
 	/**
-	 * The cached value of the '{@link #getSimulationSettings() <em>Simulation Settings</em>}' reference.
+	 * The cached value of the '{@link #getSimulationSettings() <em>Simulation Settings</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @see #getSimulationSettings()
@@ -164,6 +166,15 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @ordered
 	 */
 	protected SimulationProperties simulationSettings;
+	/**
+	 * The cached value of the '{@link #getSimulationResults() <em>Simulation Results</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimulationResults()
+	 * @generated
+	 * @ordered
+	 */
+	protected SimulationResult simulationResults;
 	/**
 	 * The cached value of the '{@link #getClasses() <em>Classes</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -228,7 +239,7 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @ordered
 	 */
 	protected EList<Passenger> passengers;
-	
+
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
 	 *
@@ -398,6 +409,49 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SimulationResult getSimulationResults() {
+		return simulationResults;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSimulationResults(SimulationResult newSimulationResults, NotificationChain msgs) {
+		SimulationResult oldSimulationResults = simulationResults;
+		simulationResults = newSimulationResults;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SIMULATION_RESULTS, oldSimulationResults, newSimulationResults);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSimulationResults(SimulationResult newSimulationResults) {
+		if (newSimulationResults != simulationResults) {
+			NotificationChain msgs = null;
+			if (simulationResults != null)
+				msgs = ((InternalEObject)simulationResults).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CabinPackage.CABIN__SIMULATION_RESULTS, null, msgs);
+			if (newSimulationResults != null)
+				msgs = ((InternalEObject)newSimulationResults).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CabinPackage.CABIN__SIMULATION_RESULTS, null, msgs);
+			msgs = basicSetSimulationResults(newSimulationResults, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SIMULATION_RESULTS, newSimulationResults, newSimulationResults));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
 	 *
 	 * @return the number of decks
@@ -455,25 +509,22 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 */
 	@Override
 	public SimulationProperties getSimulationSettings() {
-		if (simulationSettings != null && simulationSettings.eIsProxy()) {
-			InternalEObject oldSimulationSettings = (InternalEObject)simulationSettings;
-			simulationSettings = (SimulationProperties)eResolveProxy(oldSimulationSettings);
-			if (simulationSettings != oldSimulationSettings) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CabinPackage.CABIN__SIMULATION_SETTINGS, oldSimulationSettings, simulationSettings));
-			}
-		}
 		return simulationSettings;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 *
-	 * @return the simulation properties
-	 * @generated 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
-	public SimulationProperties basicGetSimulationSettings() {
-		return simulationSettings;
+	public NotificationChain basicSetSimulationSettings(SimulationProperties newSimulationSettings, NotificationChain msgs) {
+		SimulationProperties oldSimulationSettings = simulationSettings;
+		simulationSettings = newSimulationSettings;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SIMULATION_SETTINGS, oldSimulationSettings, newSimulationSettings);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -485,10 +536,17 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	@Override
 	public void setSimulationSettings(
 			SimulationProperties newSimulationSettings) {
-		SimulationProperties oldSimulationSettings = simulationSettings;
-		simulationSettings = newSimulationSettings;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SIMULATION_SETTINGS, oldSimulationSettings, simulationSettings));
+		if (newSimulationSettings != simulationSettings) {
+			NotificationChain msgs = null;
+			if (simulationSettings != null)
+				msgs = ((InternalEObject)simulationSettings).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CabinPackage.CABIN__SIMULATION_SETTINGS, null, msgs);
+			if (newSimulationSettings != null)
+				msgs = ((InternalEObject)newSimulationSettings).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CabinPackage.CABIN__SIMULATION_SETTINGS, null, msgs);
+			msgs = basicSetSimulationSettings(newSimulationSettings, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SIMULATION_SETTINGS, newSimulationSettings, newSimulationSettings));
 	}
 
 	/**
@@ -568,6 +626,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case CabinPackage.CABIN__SIMULATION_SETTINGS:
+				return basicSetSimulationSettings(null, msgs);
+			case CabinPackage.CABIN__SIMULATION_RESULTS:
+				return basicSetSimulationResults(null, msgs);
 			case CabinPackage.CABIN__CLASSES:
 				return ((InternalEList<?>)getClasses()).basicRemove(otherEnd, msgs);
 			case CabinPackage.CABIN__DOORS:
@@ -613,8 +675,9 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__AIRCRAFT_TYPE:
 				return getAircraftType();
 			case CabinPackage.CABIN__SIMULATION_SETTINGS:
-				if (resolve) return getSimulationSettings();
-				return basicGetSimulationSettings();
+				return getSimulationSettings();
+			case CabinPackage.CABIN__SIMULATION_RESULTS:
+				return getSimulationResults();
 			case CabinPackage.CABIN__CLASSES:
 				return getClasses();
 			case CabinPackage.CABIN__DOORS:
@@ -666,6 +729,9 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return;
 			case CabinPackage.CABIN__SIMULATION_SETTINGS:
 				setSimulationSettings((SimulationProperties)newValue);
+				return;
+			case CabinPackage.CABIN__SIMULATION_RESULTS:
+				setSimulationResults((SimulationResult)newValue);
 				return;
 			case CabinPackage.CABIN__CLASSES:
 				getClasses().clear();
@@ -733,6 +799,9 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__SIMULATION_SETTINGS:
 				setSimulationSettings((SimulationProperties)null);
 				return;
+			case CabinPackage.CABIN__SIMULATION_RESULTS:
+				setSimulationResults((SimulationResult)null);
+				return;
 			case CabinPackage.CABIN__CLASSES:
 				getClasses().clear();
 				return;
@@ -785,6 +854,8 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return aircraftType != AIRCRAFT_TYPE_EDEFAULT;
 			case CabinPackage.CABIN__SIMULATION_SETTINGS:
 				return simulationSettings != null;
+			case CabinPackage.CABIN__SIMULATION_RESULTS:
+				return simulationResults != null;
 			case CabinPackage.CABIN__CLASSES:
 				return classes != null && !classes.isEmpty();
 			case CabinPackage.CABIN__DOORS:

@@ -7,6 +7,8 @@ package net.bhl.cdt.paxelerate.ui.commands;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Display;
 
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.util.ModelHelper;
@@ -15,6 +17,7 @@ import net.bhl.cdt.paxelerate.model.Door;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.agent.AgentFunctions;
+import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
 import net.bhl.cdt.paxelerate.util.input.Input;
@@ -244,8 +247,15 @@ public class SortPassengersCommand extends CDTCommand {
 		cabinViewPart.syncViewer();
 
 		try {
-			cabinViewPart.setCabin(cabin);
-			Log.add(this, "Cabin view checked and updated");
+			Display.getDefault().syncExec(new Runnable() {
+
+				@Override
+				public void run() {
+					cabinViewPart.setCabin(cabin);
+					Log.add(this, "Cabin view checked and updated");
+				}
+			});
+
 		} catch (NullPointerException e) {
 			Log.add(this, "No cabin view is visible!");
 		}

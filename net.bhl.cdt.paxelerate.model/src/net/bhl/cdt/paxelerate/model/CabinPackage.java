@@ -134,7 +134,7 @@ public interface CabinPackage extends EPackage {
 	int CABIN__AIRCRAFT_TYPE = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
-	 * The feature id for the '<em><b>Simulation Settings</b></em>' reference.
+	 * The feature id for the '<em><b>Simulation Settings</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -143,13 +143,22 @@ public interface CabinPackage extends EPackage {
 	int CABIN__SIMULATION_SETTINGS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Simulation Results</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CABIN__SIMULATION_RESULTS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 7;
+
+	/**
 	 * The feature id for the '<em><b>Classes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__CLASSES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 7;
+	int CABIN__CLASSES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Doors</b></em>' containment reference list.
@@ -158,7 +167,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__DOORS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 8;
+	int CABIN__DOORS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Lavatories</b></em>' containment reference list.
@@ -167,7 +176,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__LAVATORIES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 9;
+	int CABIN__LAVATORIES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Galleys</b></em>' containment reference list.
@@ -176,7 +185,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__GALLEYS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 10;
+	int CABIN__GALLEYS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Stairways</b></em>' containment reference list.
@@ -185,7 +194,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__STAIRWAYS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 11;
+	int CABIN__STAIRWAYS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Curtains</b></em>' containment reference list.
@@ -194,7 +203,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__CURTAINS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 12;
+	int CABIN__CURTAINS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 13;
 
 	/**
 	 * The feature id for the '<em><b>Stowages</b></em>' containment reference list.
@@ -203,7 +212,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__STOWAGES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 13;
+	int CABIN__STOWAGES = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 14;
 
 	/**
 	 * The feature id for the '<em><b>Passengers</b></em>' containment reference list.
@@ -212,7 +221,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN__PASSENGERS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 14;
+	int CABIN__PASSENGERS = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 15;
 
 	/**
 	 * The number of structural features of the '<em>Cabin</em>' class.
@@ -221,7 +230,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CABIN_FEATURE_COUNT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 15;
+	int CABIN_FEATURE_COUNT = ModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 16;
 
 	/**
 	 * The number of operations of the '<em>Cabin</em>' class.
@@ -2394,6 +2403,17 @@ public interface CabinPackage extends EPackage {
 	EReference getCabin_Passengers();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link net.bhl.cdt.paxelerate.model.Cabin#getSimulationResults <em>Simulation Results</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Simulation Results</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.Cabin#getSimulationResults()
+	 * @see #getCabin()
+	 * @generated
+	 */
+	EReference getCabin_SimulationResults();
+
+	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Cabin#getNumberOfDecks <em>Number Of Decks</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2416,10 +2436,10 @@ public interface CabinPackage extends EPackage {
 	EAttribute getCabin_AircraftType();
 
 	/**
-	 * Returns the meta object for the reference '{@link net.bhl.cdt.paxelerate.model.Cabin#getSimulationSettings <em>Simulation Settings</em>}'.
+	 * Returns the meta object for the containment reference '{@link net.bhl.cdt.paxelerate.model.Cabin#getSimulationSettings <em>Simulation Settings</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Simulation Settings</em>'.
+	 * @return the meta object for the containment reference '<em>Simulation Settings</em>'.
 	 * @see net.bhl.cdt.paxelerate.model.Cabin#getSimulationSettings()
 	 * @see #getCabin()
 	 * @generated
@@ -4189,6 +4209,13 @@ public interface CabinPackage extends EPackage {
 		 */
 		EReference CABIN__PASSENGERS = eINSTANCE.getCabin_Passengers();
 		/**
+		 * The meta object literal for the '<em><b>Simulation Results</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CABIN__SIMULATION_RESULTS = eINSTANCE.getCabin_SimulationResults();
+		/**
 		 * The meta object literal for the '<em><b>Number Of Decks</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4203,7 +4230,7 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute CABIN__AIRCRAFT_TYPE = eINSTANCE.getCabin_AircraftType();
 		/**
-		 * The meta object literal for the '<em><b>Simulation Settings</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Simulation Settings</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
