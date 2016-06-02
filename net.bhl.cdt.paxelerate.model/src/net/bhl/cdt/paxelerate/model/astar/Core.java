@@ -18,31 +18,34 @@ import net.bhl.cdt.paxelerate.util.math.MathHelper;
  *
  */
 public class Core {
-	
+
 	/** The areamap. */
 	private Areamap areamap;
-	
+
 	/** The costmap. */
 	private Costmap costmap;
-	
+
 	/** The best path. */
 	private Path bestPath;
-	
+
 	/** The closed list. */
 	private ArrayList<Node> closedList;
-	
+
 	/** The open list. */
 	private SortedNodeList openList;
-	
+
 	/** The agent. */
 	private Agent agent;
 
 	/**
 	 * This method constructs the Core.
 	 *
-	 * @param maphandler the maphandler
-	 * @param costmap the costmap
-	 * @param agent the agent
+	 * @param maphandler
+	 *            the maphandler
+	 * @param costmap
+	 *            the costmap
+	 * @param agent
+	 *            the agent
 	 */
 	public Core(AreamapHandler maphandler, Costmap costmap, Agent agent) {
 
@@ -123,18 +126,49 @@ public class Core {
 					continue;
 				}
 
+				/*
+				 * if the distance to the closest obstacle is smaller than half
+				 * of the diameter of the agent, it will not be able to pass
+				 * through
+				 */
+
+				// TODO: This is a problem concerning the design: the seats are
+				// much closer to each other than the passengers width!
+
+				// DEACTIVATED INTENTIONALLY
+				// if (false && neighbor.getDistanceToClosestObstacle() != 0) {
+				// if (neighbor.getDistanceToClosestObstacle() <= agent
+				// .getPassenger().getWidth()
+				// / (double) SimulationHandler.getCabin()
+				// .getSimulationSettings().getScale()) {
+				//
+				// System.out.println(neighbor
+				// .getDistanceToClosestObstacle()
+				// + " <= "
+				// + agent.getPassenger().getDepth()
+				// / (double) SimulationHandler.getCabin()
+				// .getSimulationSettings()
+				// .getScale()
+				// + " -> agent does not fit through!");
+				// continue;
+				// }
+				// }
+
 				/* also just continue if the neighbor is an obstacle */
 				if (!neighbor.isObstacle()) {
 
 					/* calculate the neighbors distance from start */
-					double neighborDistanceFromStart = MathHelper.distanceBetween(
-							areamap.get(agent.getStart()).getPosition(),
-							neighbor.getPosition());
+					double neighborDistanceFromStart = MathHelper
+							.distanceBetween(
+									areamap.get(agent.getStart()).getPosition(),
+									neighbor.getPosition());
 
 					/* calculate the neighbors distance from start */
-					double currentDistanceFromStart = MathHelper.distanceBetween(
-							(areamap.get(agent.getStart()).getPosition()),
-							current.getPosition());
+					double currentDistanceFromStart = MathHelper
+							.distanceBetween(
+									(areamap.get(agent.getStart())
+											.getPosition()),
+									current.getPosition());
 
 					/* calculate the neighbors cost */
 					int neighborCostFromStart = costmap
@@ -167,9 +201,6 @@ public class Core {
 					} else {
 						neighborIsBetter = false;
 					}
-
-					// TODO: check if passenger dimensions allow this specific
-					// node.
 
 					/* set neighbors parameters if it is better */
 					if (neighborIsBetter) {

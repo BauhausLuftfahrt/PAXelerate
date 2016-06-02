@@ -99,7 +99,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 				CabinViewPart cabinViewPart = ViewPartHelper.getCabinView();
 
-				for (int i = 0; i < cabin.getSimulationSettings().getNumberOfSimulationLoops(); i++) {
+				for (int simulationLoopIndex = 0; simulationLoopIndex < cabin.getSimulationSettings()
+						.getNumberOfSimulationLoops(); simulationLoopIndex++) {
 
 					Log.add(this, "Iteration " + (i + 1) + " of "
 							+ cabin.getSimulationSettings().getNumberOfSimulationLoops());
@@ -219,9 +220,21 @@ public class SimulateBoardingCommand extends CDTCommand {
 						FileSaver.saveObstacleToFile(SimulationHandler.getMap(), dimensions);
 					}
 
+<<<<<<< HEAD
 					/* display the agent path and cost map in the Cabin UI view */
 					if (displayMap) {
 						Display.getDefault().syncExec(new Runnable() {
+=======
+					// TODO: @MICHAEL: hier sind die results
+					SimulationResultLogger results = new SimulationResultLogger();
+					results.getSimulationData(cabin, simulationLoopIndex, SimulationView.getWatch().getElapsedTime()
+							* cabin.getSimulationSettings().getSimulationSpeedFactor());
+					results.printSimulationData();
+
+					FileSaver.saveObstacleToFile(SimulationHandler.getMap(), dimensions);
+
+					Display.getDefault().syncExec(new Runnable() {
+>>>>>>> refs/remotes/origin/develop
 						@Override
 						public void run() {
 							Image image = cabinViewPart
