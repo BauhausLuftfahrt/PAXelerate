@@ -177,6 +177,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 						}
 
 					}
+					
+					Log.add(this,"getNumberWaymakingSkipped " + SimulationHandler.getNumberWaymakingSkipped()); 
 
 					SimulationView.getWatch().stop();
 

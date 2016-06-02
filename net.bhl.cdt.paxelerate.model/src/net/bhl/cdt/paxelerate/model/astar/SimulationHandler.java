@@ -485,4 +485,12 @@ public class SimulationHandler {
 	public static Map<Integer, Costmap> getUsedCostmaps() {
 		return costmaps;
 	}
+	
+	public static int getNumberWaymakingSkipped() {
+		int numberSkipped = 0;
+		for (Agent agent : agentList) {
+			numberSkipped = numberSkipped + agent.getWayMakingSkipped();
+		}
+		return numberSkipped;
+	}
 }

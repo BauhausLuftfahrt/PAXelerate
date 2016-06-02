@@ -61,6 +61,8 @@ public class Agent extends Subject implements Runnable {
 
 	/** The dim. */
 	private int numbOfInterupts = 0, waycounter = 0, dim = 2;
+	
+	private int wayMakingSkipped = 0;
 
 	/** The distance. */
 	private double distance;
@@ -827,16 +829,19 @@ public class Agent extends Subject implements Runnable {
 					while (waymakingAllowed() == false) {
 						Thread.sleep(simSettings.getThreadSleepTimeDefault());
 					}
-
+					
+					/* way making procedure is skipped */
 					if (anyoneNearMe()) {
 						System.out
 								.println("waymaking skipped. Delay simulated!");
 						Thread.sleep(AStarHelper.time(
 								simSettings.getSeatInterferenceProcessTime()));
+						wayMakingSkipped++;
 						waitingCompleted = true;
 						continue;
 					}
-
+					
+					/* way making works as planned */
 					if (!waitingCompleted) {
 
 						for (Passenger pax : otherPassengersInRowBlockingMe) {
@@ -1326,5 +1331,10 @@ public class Agent extends Subject implements Runnable {
 			System.out.println("Passenger is already seated!");
 		}
 	}
+
+	public int getWayMakingSkipped() {
+		return wayMakingSkipped;
+	}
+
 
 }
