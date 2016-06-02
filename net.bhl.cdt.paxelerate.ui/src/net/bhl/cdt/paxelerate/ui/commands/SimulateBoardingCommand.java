@@ -29,6 +29,7 @@ import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Seat;
+import net.bhl.cdt.paxelerate.model.agent.Agent.AgentMode;
 import net.bhl.cdt.paxelerate.model.astar.Costmap;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.model.util.SimulationResultLogger;
@@ -74,7 +75,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 	protected void doRun() {
 
 		// set number iterations
-		//cabin.getSimulationSettings().setNumberOfSimulationLoops(2);
+		// cabin.getSimulationSettings().setNumberOfSimulationLoops(2);
 
 		// Create separate thread
 		Job job = new Job("Simulate Boarding Thread") {
@@ -83,9 +84,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 				Log.add(this, "Initializing  new boarding simulation ...");
 
-//				cabin.getSimulationSettings().setRandomSortBetweenLoops(true);
-//				cabin.getSimulationSettings().getSimulationSpeedFactor();
-//				cabin.getSimulationSettings().getScale();
+				// cabin.getSimulationSettings().setRandomSortBetweenLoops(true);
+				cabin.getSimulationSettings().setSimulationSpeedFactor(5);
+				// cabin.getSimulationSettings().getScale();
 
 				Display.getDefault().syncExec(new Runnable() {
 					@Override
@@ -96,7 +97,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 				CabinViewPart cabinViewPart = ViewPartHelper.getCabinView();
 
-				for (int simulationLoopIndex = 0; simulationLoopIndex < cabin.getSimulationSettings()
+				simulationloop: for (int simulationLoopIndex = 0; simulationLoopIndex < cabin.getSimulationSettings()
 						.getNumberOfSimulationLoops(); simulationLoopIndex++) {
 
 					Log.add(this, "Iteration " + (simulationLoopIndex + 1) + " of "
@@ -105,7 +106,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 					if (cabin.getSimulationSettings().isRandomSortBetweenLoops()) {
 
 						/* generates new passenger */
-						new GeneratePassengersCommand(cabin).doRun();
+						// new GeneratePassengersCommand(cabin).doRun();
 
 						/* sorts the passenger according to selected method */
 						SortPassengersCommand sort = new SortPassengersCommand(cabin);
@@ -164,16 +165,46 @@ public class SimulateBoardingCommand extends CDTCommand {
 					// Show WIP simulation view
 					runAreaMapWindow();
 
+					// TODO: INSERT PAX LOCATION SUBMIT TO CABINVIEWPART HERE
+
 					while (!SimulationHandler.isSimulationDone()) {
 
 						/* wait for completion! */
 						try {
 							// TODO: send UI update to ViewPart
-							Thread.sleep(100);
+
+							System.out.println("sleep check");
+
+							for (Passenger sleepyPassenger : cabin.getPassengers()) {
+
+								long timestamp = SimulationHandler.getAgentByPassenger(sleepyPassenger)
+										.getLastMoveTimestamp();
+
+								if (!sleepyPassenger.isIsSeated() && timestamp != 0 && SimulationHandler
+										.getAgentByPassenger(sleepyPassenger).getAgentMode() != AgentMode.MAKE_WAY) {
+									if ((System.currentTimeMillis() - SimulationHandler
+											.getAgentByPassenger(sleepyPassenger).getLastMoveTimestamp()) > (30
+													* 1000)) {
+										System.out.println(sleepyPassenger.getName() + "has caused interuption!");
+
+										SimulationHandler.stopSimulation();
+										SimulationView.getWatch().stop();
+										simulationFrame.dispose();
+
+										Log.add(this, "SIMULATION TERMINATED! Passenger " + sleepyPassenger.getName()
+												+ " did not react.");
+
+										continue simulationloop;
+									}
+								}
+							}
+
+							Thread.sleep(5000);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
+						} catch (NullPointerException e) {
+							e.printStackTrace();
 						}
-
 					}
 
 					SimulationView.getWatch().stop();
@@ -203,7 +234,6 @@ public class SimulateBoardingCommand extends CDTCommand {
 							exportData.getPassengerData();
 							exportData.getSimulationPropertiesData();
 							exporter.closeFile();
-
 						} catch (FileNotFoundException e) {
 							Log.add(this, "Data export failed! - FileNotFoundException ");
 						} catch (IOException e) {

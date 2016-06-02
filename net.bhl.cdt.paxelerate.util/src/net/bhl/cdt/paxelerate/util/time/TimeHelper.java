@@ -20,7 +20,8 @@ public class TimeHelper {
 	/**
 	 * Formats time amount in seconds into HH:mm:ss format.
 	 *
-	 * @param seconds            the number of seconds to be formatted
+	 * @param seconds
+	 *            the number of seconds to be formatted
 	 * @return the converted HH:mm:ss String
 	 */
 	public static String toTimeOfDay(int seconds) {
@@ -30,17 +31,23 @@ public class TimeHelper {
 	/**
 	 * Formats time amount in seconds into HH:mm:ss format.
 	 *
-	 * @param seconds            the number of seconds to be formatted
+	 * @param seconds
+	 *            the number of seconds to be formatted
 	 * @return the converted HH:mm:ss String
 	 */
 	public static String toTimeOfDay(double seconds) {
-		return TimeHelper.toTimeOfDay(Math.round(seconds));
+		if (seconds >= 0 && seconds <= 86399) {
+			return TimeHelper.toTimeOfDay(Math.round(seconds));
+		} else {
+			return "ERROR IN TimeHelper.java";
+		}
 	}
 
 	/**
 	 * Formats time amount in seconds into HH:mm:ss format.
 	 *
-	 * @param seconds            the number of seconds to be formatted
+	 * @param seconds
+	 *            the number of seconds to be formatted
 	 * @return the converted HH:mm:ss String
 	 */
 	public static String toTimeOfDay(long seconds) {
