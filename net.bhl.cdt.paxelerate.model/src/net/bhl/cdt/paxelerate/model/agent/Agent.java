@@ -61,7 +61,7 @@ public class Agent extends Subject implements Runnable {
 
 	/** The dim. */
 	private int numbOfInterupts = 0, waycounter = 0, dim = 2;
-	
+
 	private int wayMakingSkipped = 0;
 
 	/** The distance. */
@@ -108,6 +108,8 @@ public class Agent extends Subject implements Runnable {
 	/** The sim settings. */
 	private SimulationProperties simSettings;
 
+	private long lastMoveTime;
+
 	/**
 	 * Gets the the passenger i let in the row.
 	 *
@@ -153,6 +155,14 @@ public class Agent extends Subject implements Runnable {
 		WAITING_FOR_OTHER_PASSENGER_TO_SEAT,
 		/** The returning to seat. */
 		RETURNING_TO_SEAT;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public long getLastMoveTimestamp() {
+		return lastMoveTime;
 	}
 
 	/**
@@ -829,7 +839,7 @@ public class Agent extends Subject implements Runnable {
 					while (waymakingAllowed() == false) {
 						Thread.sleep(simSettings.getThreadSleepTimeDefault());
 					}
-					
+
 					/* way making procedure is skipped */
 					if (anyoneNearMe()) {
 						System.out
@@ -840,7 +850,7 @@ public class Agent extends Subject implements Runnable {
 						waitingCompleted = true;
 						continue;
 					}
-					
+
 					/* way making works as planned */
 					if (!waitingCompleted) {
 
@@ -885,6 +895,9 @@ public class Agent extends Subject implements Runnable {
 										desiredPosition, currentPosition)
 										* scale));
 					}
+
+					/* notify next step */
+					lastMoveTime = System.currentTimeMillis();
 
 					/* then perform the step */
 					i++;
@@ -1082,9 +1095,6 @@ public class Agent extends Subject implements Runnable {
 							* SimulationHandler.getCabin()
 									.getSimulationSettings()
 									.getSimulationSpeedFactor());
-
-			System.out.println("Speed Factor: " + SimulationHandler.getCabin()
-					.getSimulationSettings().getSimulationSpeedFactor());
 
 			/* the number of interrupts is submitted to the passenger */
 			passenger.setNumberOfWaits(numbOfInterupts);
@@ -1335,6 +1345,5 @@ public class Agent extends Subject implements Runnable {
 	public int getWayMakingSkipped() {
 		return wayMakingSkipped;
 	}
-
 
 }
