@@ -102,7 +102,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 				for (int simulationLoopIndex = 0; simulationLoopIndex < cabin.getSimulationSettings()
 						.getNumberOfSimulationLoops(); simulationLoopIndex++) {
 
-					Log.add(this, "Iteration " + (i + 1) + " of "
+					Log.add(this, "Iteration " + (simulationLoopIndex + 1) + " of "
 							+ cabin.getSimulationSettings().getNumberOfSimulationLoops());
 
 					if (cabin.getSimulationSettings().isRandomSortBetweenLoops()) {
@@ -178,33 +178,39 @@ public class SimulateBoardingCommand extends CDTCommand {
 						}
 
 					}
-					
-					Log.add(this,"getNumberWaymakingSkipped " + SimulationHandler.getNumberWaymakingSkipped()); 
+
+					Log.add(this, "getNumberWaymakingSkipped " + SimulationHandler.getNumberWaymakingSkipped());
 
 					SimulationView.getWatch().stop();
 
 					/* closes the simulation view after completion */
 					simulationFrame.dispose();
-					
-					//new SimulationResultLogger().getSimulationData(cabin, i, time);;
+
+					// new SimulationResultLogger().getSimulationData(cabin, i,
+					// time);;
 
 					if (dataExport) {
 
 						// Exporting data
 						try {
-							ExcelExport exporter = new ExcelExport("iteration" + i);
+							ExcelExport exporter = new ExcelExport("iteration" + simulationLoopIndex);
 							exporter.createFile();
 							ExportDataCommand exportData = new ExportDataCommand(cabin, exporter);
 							exportData.generateDistributionFile();
 							exportData.getPassengerData();
-							exportData.getSimulationPropertiesData();							
+							exportData.getSimulationPropertiesData();
 							exporter.closeFile();
+							// TODO: @MICHAEL: hier sind die results
+							SimulationResultLogger results = new SimulationResultLogger();
+							results.getSimulationData(cabin, simulationLoopIndex, SimulationView.getWatch().getElapsedTime()
+									* cabin.getSimulationSettings().getSimulationSpeedFactor());
+							results.printSimulationData();
 						} catch (FileNotFoundException e) {
 							Log.add(this, "Data export failed! - FileNotFoundException ");
 						} catch (IOException e) {
 							Log.add(this, "Data export failed! - IOException");
-						} 
-						
+						}
+
 						Map<Integer, Costmap> costmaps = SimulationHandler.getUsedCostmaps();
 
 						int index = 0;
@@ -220,33 +226,23 @@ public class SimulateBoardingCommand extends CDTCommand {
 						FileSaver.saveObstacleToFile(SimulationHandler.getMap(), dimensions);
 					}
 
-<<<<<<< HEAD
-					/* display the agent path and cost map in the Cabin UI view */
+					/*
+					 * display the agent path and cost map in the Cabin UI view
+					 */
 					if (displayMap) {
 						Display.getDefault().syncExec(new Runnable() {
-=======
-					// TODO: @MICHAEL: hier sind die results
-					SimulationResultLogger results = new SimulationResultLogger();
-					results.getSimulationData(cabin, simulationLoopIndex, SimulationView.getWatch().getElapsedTime()
-							* cabin.getSimulationSettings().getSimulationSpeedFactor());
-					results.printSimulationData();
 
-					FileSaver.saveObstacleToFile(SimulationHandler.getMap(), dimensions);
-
-					Display.getDefault().syncExec(new Runnable() {
->>>>>>> refs/remotes/origin/develop
-						@Override
-						public void run() {
-							Image image = cabinViewPart
-									.submitObstacleMap(SimulationHandler.getAreamapHandler().getObstaclemap());
-							cabinViewPart.printObstacleMap(image);
-							cabinViewPart.submitAgents(SimulationHandler.getAgentList());
-						}
-					});
+							@Override
+							public void run() {
+								Image image = cabinViewPart
+										.submitObstacleMap(SimulationHandler.getAreamapHandler().getObstaclemap());
+								cabinViewPart.printObstacleMap(image);
+								cabinViewPart.submitAgents(SimulationHandler.getAgentList());
+							}
+						});
 					}
-					
 
-					Log.add(this, "Iteration " + (i + 1) + " completed.");
+					Log.add(this, "Iteration " + (simulationLoopIndex + 1) + " completed.");
 
 				}
 
@@ -261,12 +257,11 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 					}
 				});
-				
+
 				// report finished
-				Log.add(this, "Boarding simulation completed");				
+				Log.add(this, "Boarding simulation completed");
 				return Status.OK_STATUS;
-				
-				
+
 			}
 
 		};
