@@ -15,7 +15,7 @@ import org.eclipse.emf.ecp.core.util.ECPFilterProvider;
  * Filter all EPackages not associated with .cdt.paxelerate.
  * Used by ExtensionPoint filter.
  * 
- * @author David Otter, Michael Schmidt, raoul.rothfeld
+ * @author David Otter, michael.schmidt, raoul.rothfeld
  *
  */
 public class DefaultFilterProvider implements ECPFilterProvider {

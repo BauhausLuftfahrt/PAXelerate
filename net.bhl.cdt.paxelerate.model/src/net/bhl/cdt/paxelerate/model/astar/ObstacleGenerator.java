@@ -25,7 +25,7 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
  * This class represents an obstacle map. Every point in the two dimensional
  * array has a specific value which represents the strength of the obstacle.
  * 
- * @author marc.engelmann
+ * @author marc.engelmann, michael.schmidt
  *
  */
 
@@ -308,16 +308,18 @@ public class ObstacleGenerator {
 				if (cabin.getSimulationSettings().isUseSidewaysFoldableSeats()
 						&& ((Seat) obj).isFoldedAway()) {
 					/* if so, do not create an obstacle for that seat */
-					break;
-				}
+					continue;
 
-				/* check for folding seat pans and if it is currently folded */
-				if (cabin.getSimulationSettings().isUseLiftingSeatPanSeats()
+					/*
+					 * check for folding seat pans and if it is currently folded
+					 */
+				} else if (cabin.getSimulationSettings()
+						.isUseLiftingSeatPanSeats()
 						&& ((Seat) obj).isFoldedUpwards()) {
 					/* only the backrest is visible (percentage value) */
-					int backrestThickness = 10;
-					yDimension = obj.getYDimension() / (int) scale
-							/ backrestThickness;
+					int backrestThickness = 20;
+					xDimension = xDimension * backrestThickness / 100;
+					xPosition = xPosition + yDimension - xDimension;
 
 				}
 			}

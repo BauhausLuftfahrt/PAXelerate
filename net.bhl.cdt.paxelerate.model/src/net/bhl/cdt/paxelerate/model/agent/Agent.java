@@ -39,7 +39,7 @@ import net.bhl.cdt.paxelerate.util.time.StopWatch;
  * This class is the agent object. It walks a specific calculated path and
  * reacts to obstacles occurring on the go.
  * 
- * @author marc.engelmann
+ * @author marc.engelmann, michael.schmidt
  *
  */
 public class Agent extends Subject implements Runnable {

@@ -29,7 +29,7 @@ import org.eclipse.ui.part.IntroPart;
 /**
  * PAXWelcome page which will be shown at the first start.
  * 
- * @author Michael Kagel, Michael Schmidt
+ * @author Michael Kagel, michael.schmidt
  */
 public class WelcomePage extends IntroPart implements IIntroPart {
 

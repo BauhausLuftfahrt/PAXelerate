@@ -14,7 +14,7 @@ import org.eclipse.ui.console.IConsoleConstants;
 /**
  * A factory for creating Perspective objects.
  *
- * @author raoul.rothfeld, Michael Schmidt
+ * @author raoul.rothfeld, michael.schmidt
  */
 public class PerspectiveFactory implements IPerspectiveFactory {
 
