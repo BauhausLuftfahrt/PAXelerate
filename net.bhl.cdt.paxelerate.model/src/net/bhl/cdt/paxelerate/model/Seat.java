@@ -20,7 +20,8 @@ package net.bhl.cdt.paxelerate.model;
  *   <li>{@link net.bhl.cdt.paxelerate.model.Seat#getRow <em>Row</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Seat#isOccupied <em>Occupied</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Seat#getPassenger <em>Passenger</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Seat#isCurrentlyFolded <em>Currently Folded</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Seat#isFoldedAway <em>Folded Away</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Seat#isFoldedUpwards <em>Folded Upwards</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSeat()
@@ -211,30 +212,57 @@ public interface Seat extends PhysicalObject {
 	void setPassenger(Passenger value);
 
 	/**
-	 * Returns the value of the '<em><b>Currently Folded</b></em>' attribute.
+	 * Returns the value of the '<em><b>Folded Away</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Currently Folded</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Folded Away</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Currently Folded</em>' attribute.
-	 * @see #setCurrentlyFolded(boolean)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSeat_CurrentlyFolded()
+	 * @return the value of the '<em>Folded Away</em>' attribute.
+	 * @see #setFoldedAway(boolean)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSeat_FoldedAway()
 	 * @model default="false"
 	 * @generated
 	 */
-	boolean isCurrentlyFolded();
+	boolean isFoldedAway();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Seat#isCurrentlyFolded <em>Currently Folded</em>}' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Seat#isFoldedAway <em>Folded Away</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Currently Folded</em>' attribute.
-	 * @see #isCurrentlyFolded()
+	 * @param value the new value of the '<em>Folded Away</em>' attribute.
+	 * @see #isFoldedAway()
 	 * @generated
 	 */
-	void setCurrentlyFolded(boolean value);
+	void setFoldedAway(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Folded Upwards</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Folded Upwards</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Folded Upwards</em>' attribute.
+	 * @see #setFoldedUpwards(boolean)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSeat_FoldedUpwards()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isFoldedUpwards();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Seat#isFoldedUpwards <em>Folded Upwards</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Folded Upwards</em>' attribute.
+	 * @see #isFoldedUpwards()
+	 * @generated
+	 */
+	void setFoldedUpwards(boolean value);
 
 } // Seat

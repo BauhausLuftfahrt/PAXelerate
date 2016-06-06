@@ -33,9 +33,14 @@
                 <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Seat/occupied"/>
               </domainModelReference>
             </children>
-            <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_3qOCOaS9EeWGjpaobu8CIA" name="Control currentlyFolded">
-              <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_3qOCOqS9EeWGjpaobu8CIA">
-                <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Seat/currentlyFolded"/>
+            <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_3qOCOaS9EeWGjpaobu8CIA" name="Control foldedAway">
+              <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_6EsOgCvKEeazLKOMHhvqJA">
+                <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Seat/foldedAway"/>
+              </domainModelReference>
+            </children>
+            <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_9cq28CvKEeazLKOMHhvqJA" name="Control foldedUpwards">
+              <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_9cq28SvKEeazLKOMHhvqJA">
+                <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Seat/foldedUpwards"/>
               </domainModelReference>
             </children>
           </children>

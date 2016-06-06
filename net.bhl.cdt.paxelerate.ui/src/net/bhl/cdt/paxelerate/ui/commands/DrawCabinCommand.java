@@ -165,16 +165,33 @@ public class DrawCabinCommand extends CDTCommand {
 	 */
 	private void checkFoldableSeats() {
 		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
+			/* Bring your own seat */
 			if (cabin.getSimulationSettings().isBringYourOwnSeat()) {
-				seat.setCurrentlyFolded(true);
-			} else if (cabin.getSimulationSettings().isUseFoldableSeats()) {
-				if (seat.getLetter().contains("D")) {
-					seat.setCurrentlyFolded(true);
+				seat.setFoldedAway(true);
+
+				/* Sideways foldable seat */
+			} else if (cabin.getSimulationSettings().isUseSidewaysFoldableSeats()) {
+				/* Aisle seats are set foldable */
+				if (seat.getLetter().contains("C")) {
+					seat.setFoldedAway(true);
+				} else if (seat.getLetter().contains("D")) {
+					seat.setFoldedAway(true);
 				} else {
-					seat.setCurrentlyFolded(false);
+					seat.setFoldedAway(false);
+				}
+				/* Lifting seat pan */
+			} else if (cabin.getSimulationSettings().isUseLiftingSeatPanSeats()) {
+				/* Aisle seats are set foldable */
+				if (seat.getLetter().contains("C")) {
+					seat.setFoldedUpwards(true);
+				} else if (seat.getLetter().contains("D")) {
+					seat.setFoldedUpwards(true);
+				} else {
+					seat.setFoldedUpwards(false);
 				}
 			} else {
-				seat.setCurrentlyFolded(false);
+				seat.setFoldedAway(false);
+				seat.setFoldedUpwards(false);
 			}
 		}
 	}

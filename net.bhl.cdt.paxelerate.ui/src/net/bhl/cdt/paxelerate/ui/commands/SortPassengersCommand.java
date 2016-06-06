@@ -5,6 +5,8 @@
  ***************************************************************************************/
 package net.bhl.cdt.paxelerate.ui.commands;
 
+import java.util.ArrayList;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.swt.graphics.Image;
@@ -116,7 +118,7 @@ public class SortPassengersCommand extends CDTCommand {
 
 		// Random
 		case 0:
-			for (int i = 0; i < paxList.size(); i++) {
+			for (int i = 0; i < numberOfLoops; i++) {
 				Passenger pax = paxList.get(i);
 				paxList.move(RandomHelper.randomValue(0, paxList.size()), pax);
 			}

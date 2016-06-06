@@ -28,7 +28,8 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SeatImpl#getRow <em>Row</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SeatImpl#isOccupied <em>Occupied</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SeatImpl#getPassenger <em>Passenger</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SeatImpl#isCurrentlyFolded <em>Currently Folded</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SeatImpl#isFoldedAway <em>Folded Away</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SeatImpl#isFoldedUpwards <em>Folded Upwards</em>}</li>
  * </ul>
  *
  * @generated
@@ -145,24 +146,44 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 	protected Passenger passenger;
 
 	/**
-	 * The default value of the '{@link #isCurrentlyFolded() <em>Currently Folded</em>}' attribute.
+	 * The default value of the '{@link #isFoldedAway() <em>Folded Away</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isCurrentlyFolded()
+	 * @see #isFoldedAway()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean CURRENTLY_FOLDED_EDEFAULT = false;
+	protected static final boolean FOLDED_AWAY_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isCurrentlyFolded() <em>Currently Folded</em>}' attribute.
+	 * The cached value of the '{@link #isFoldedAway() <em>Folded Away</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isCurrentlyFolded()
+	 * @see #isFoldedAway()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean currentlyFolded = CURRENTLY_FOLDED_EDEFAULT;
+	protected boolean foldedAway = FOLDED_AWAY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isFoldedUpwards() <em>Folded Upwards</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isFoldedUpwards()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean FOLDED_UPWARDS_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isFoldedUpwards() <em>Folded Upwards</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isFoldedUpwards()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean foldedUpwards = FOLDED_UPWARDS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -420,27 +441,44 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->.
-	 *
-	 * @return true, if is currently folded
-	 * @generated 
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
-	public boolean isCurrentlyFolded() {
-		return currentlyFolded;
+	public boolean isFoldedAway() {
+		return foldedAway;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->.
-	 *
-	 * @param newCurrentlyFolded the new currently folded
-	 * @generated 
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
-	public void setCurrentlyFolded(boolean newCurrentlyFolded) {
-		boolean oldCurrentlyFolded = currentlyFolded;
-		currentlyFolded = newCurrentlyFolded;
+	public void setFoldedAway(boolean newFoldedAway) {
+		boolean oldFoldedAway = foldedAway;
+		foldedAway = newFoldedAway;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SEAT__CURRENTLY_FOLDED, oldCurrentlyFolded, currentlyFolded));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SEAT__FOLDED_AWAY, oldFoldedAway, foldedAway));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isFoldedUpwards() {
+		return foldedUpwards;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFoldedUpwards(boolean newFoldedUpwards) {
+		boolean oldFoldedUpwards = foldedUpwards;
+		foldedUpwards = newFoldedUpwards;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SEAT__FOLDED_UPWARDS, oldFoldedUpwards, foldedUpwards));
 	}
 
 	/**
@@ -473,8 +511,10 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 			case CabinPackage.SEAT__PASSENGER:
 				if (resolve) return getPassenger();
 				return basicGetPassenger();
-			case CabinPackage.SEAT__CURRENTLY_FOLDED:
-				return isCurrentlyFolded();
+			case CabinPackage.SEAT__FOLDED_AWAY:
+				return isFoldedAway();
+			case CabinPackage.SEAT__FOLDED_UPWARDS:
+				return isFoldedUpwards();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -511,8 +551,11 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 			case CabinPackage.SEAT__PASSENGER:
 				setPassenger((Passenger)newValue);
 				return;
-			case CabinPackage.SEAT__CURRENTLY_FOLDED:
-				setCurrentlyFolded((Boolean)newValue);
+			case CabinPackage.SEAT__FOLDED_AWAY:
+				setFoldedAway((Boolean)newValue);
+				return;
+			case CabinPackage.SEAT__FOLDED_UPWARDS:
+				setFoldedUpwards((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -549,8 +592,11 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 			case CabinPackage.SEAT__PASSENGER:
 				setPassenger((Passenger)null);
 				return;
-			case CabinPackage.SEAT__CURRENTLY_FOLDED:
-				setCurrentlyFolded(CURRENTLY_FOLDED_EDEFAULT);
+			case CabinPackage.SEAT__FOLDED_AWAY:
+				setFoldedAway(FOLDED_AWAY_EDEFAULT);
+				return;
+			case CabinPackage.SEAT__FOLDED_UPWARDS:
+				setFoldedUpwards(FOLDED_UPWARDS_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -581,8 +627,10 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 				return occupied != OCCUPIED_EDEFAULT;
 			case CabinPackage.SEAT__PASSENGER:
 				return passenger != null;
-			case CabinPackage.SEAT__CURRENTLY_FOLDED:
-				return currentlyFolded != CURRENTLY_FOLDED_EDEFAULT;
+			case CabinPackage.SEAT__FOLDED_AWAY:
+				return foldedAway != FOLDED_AWAY_EDEFAULT;
+			case CabinPackage.SEAT__FOLDED_UPWARDS:
+				return foldedUpwards != FOLDED_UPWARDS_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -607,8 +655,10 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 		result.append(letter);
 		result.append(", occupied: ");
 		result.append(occupied);
-		result.append(", currentlyFolded: ");
-		result.append(currentlyFolded);
+		result.append(", foldedAway: ");
+		result.append(foldedAway);
+		result.append(", foldedUpwards: ");
+		result.append(foldedUpwards);
 		result.append(')');
 		return result.toString();
 	}

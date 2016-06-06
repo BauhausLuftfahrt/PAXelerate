@@ -20,7 +20,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isSimulateWithoutUI <em>Simulate Without UI</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getNumberOfSimulationLoops <em>Number Of Simulation Loops</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isRandomSortBetweenLoops <em>Random Sort Between Loops</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUseFoldableSeats <em>Use Foldable Seats</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUseSidewaysFoldableSeats <em>Use Sideways Foldable Seats</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUseLiftingSeatPanSeats <em>Use Lifting Seat Pan Seats</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isBringYourOwnSeat <em>Bring Your Own Seat</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getResults <em>Results</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSorting <em>Sorting</em>}</li>
@@ -34,6 +35,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDataExport <em>Data Export</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDisplayMap <em>Display Map</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSidewaysFoldabeSeatPopupTime <em>Sideways Foldabe Seat Popup Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLiftingSeatPanPopupTime <em>Lifting Seat Pan Popup Time</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties()
@@ -204,31 +207,58 @@ public interface SimulationProperties extends EObject {
 	void setRandomSortBetweenLoops(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Use Foldable Seats</b></em>' attribute.
+	 * Returns the value of the '<em><b>Use Sideways Foldable Seats</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Use Foldable Seats</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Use Sideways Foldable Seats</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Use Foldable Seats</em>' attribute.
-	 * @see #setUseFoldableSeats(boolean)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_UseFoldableSeats()
+	 * @return the value of the '<em>Use Sideways Foldable Seats</em>' attribute.
+	 * @see #setUseSidewaysFoldableSeats(boolean)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_UseSidewaysFoldableSeats()
 	 * @model default="false"
 	 * @generated
 	 */
-	boolean isUseFoldableSeats();
+	boolean isUseSidewaysFoldableSeats();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUseFoldableSeats <em>Use Foldable Seats</em>}' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUseSidewaysFoldableSeats <em>Use Sideways Foldable Seats</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Use Foldable Seats</em>' attribute.
-	 * @see #isUseFoldableSeats()
+	 * @param value the new value of the '<em>Use Sideways Foldable Seats</em>' attribute.
+	 * @see #isUseSidewaysFoldableSeats()
 	 * @generated
 	 */
-	void setUseFoldableSeats(boolean value);
+	void setUseSidewaysFoldableSeats(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Use Lifting Seat Pan Seats</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Use Lifting Seat Pan Seats</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Use Lifting Seat Pan Seats</em>' attribute.
+	 * @see #setUseLiftingSeatPanSeats(boolean)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_UseLiftingSeatPanSeats()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isUseLiftingSeatPanSeats();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUseLiftingSeatPanSeats <em>Use Lifting Seat Pan Seats</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Use Lifting Seat Pan Seats</em>' attribute.
+	 * @see #isUseLiftingSeatPanSeats()
+	 * @generated
+	 */
+	void setUseLiftingSeatPanSeats(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Bring Your Own Seat</b></em>' attribute.
@@ -569,5 +599,59 @@ public interface SimulationProperties extends EObject {
 	 * @generated
 	 */
 	void setDisplayMap(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Sideways Foldabe Seat Popup Time</b></em>' attribute.
+	 * The default value is <code>"5"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Sideways Foldabe Seat Popup Time</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Sideways Foldabe Seat Popup Time</em>' attribute.
+	 * @see #setSidewaysFoldabeSeatPopupTime(int)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_SidewaysFoldabeSeatPopupTime()
+	 * @model default="5"
+	 * @generated
+	 */
+	int getSidewaysFoldabeSeatPopupTime();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSidewaysFoldabeSeatPopupTime <em>Sideways Foldabe Seat Popup Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Sideways Foldabe Seat Popup Time</em>' attribute.
+	 * @see #getSidewaysFoldabeSeatPopupTime()
+	 * @generated
+	 */
+	void setSidewaysFoldabeSeatPopupTime(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Lifting Seat Pan Popup Time</b></em>' attribute.
+	 * The default value is <code>"2"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Lifting Seat Pan Popup Time</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Lifting Seat Pan Popup Time</em>' attribute.
+	 * @see #setLiftingSeatPanPopupTime(int)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_LiftingSeatPanPopupTime()
+	 * @model default="2"
+	 * @generated
+	 */
+	int getLiftingSeatPanPopupTime();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLiftingSeatPanPopupTime <em>Lifting Seat Pan Popup Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Lifting Seat Pan Popup Time</em>' attribute.
+	 * @see #getLiftingSeatPanPopupTime()
+	 * @generated
+	 */
+	void setLiftingSeatPanPopupTime(int value);
 
 } // SimulationProperties

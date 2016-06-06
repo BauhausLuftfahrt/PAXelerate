@@ -1083,8 +1083,13 @@ public class Agent extends Subject implements Runnable {
 			blockArea(currentPosition, false, false, null);
 			blockArea(desiredPosition, false, false, null);
 
-			if (passenger.getSeat().isCurrentlyFolded()) {
-				unfoldSeat();
+			/* Unfold seat if necessary*/
+			/* Sideways foldable seat*/
+			if (passenger.getSeat().isFoldedAway()) {
+				unfoldSeat(simSettings.getSidewaysFoldabeSeatPopupTime());
+			/* Lifting seat pan */
+			} else if (passenger.getSeat().isFoldedUpwards()) {
+				unfoldSeat(simSettings.getLiftingSeatPanPopupTime());
 			}
 
 			defineSeated(true);
@@ -1109,15 +1114,17 @@ public class Agent extends Subject implements Runnable {
 
 	}
 
+	
+	
+	
 	/**
-	 * Unfold seat.
+	 * Unfold sideways foldable seat or lifting seat pan seat
 	 */
-	private void unfoldSeat() {
-
-		int defoldingTime = 5;
+	private void unfoldSeat(int seatPopupTime) {
 
 		Seat seat = passenger.getSeat();
-		seat.setCurrentlyFolded(false);
+		seat.setFoldedAway(false);
+		seat.setFoldedUpwards(false);
 
 		int width = seat.getYDimension() / scale;
 		int length = seat.getXDimension() / scale;
@@ -1137,8 +1144,9 @@ public class Agent extends Subject implements Runnable {
 			}
 		}
 
+		/* Pauses the agent for the set seat pop up time */
 		try {
-			Thread.sleep(AStarHelper.time(defoldingTime));
+			Thread.sleep(AStarHelper.time(seatPopupTime));
 		} catch (InterruptedException e) {
 			//
 		}

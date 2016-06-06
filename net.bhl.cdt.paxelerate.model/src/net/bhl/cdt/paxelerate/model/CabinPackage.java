@@ -682,13 +682,22 @@ public interface CabinPackage extends EPackage {
 	int SEAT__PASSENGER = PHYSICAL_OBJECT_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Currently Folded</b></em>' attribute.
+	 * The feature id for the '<em><b>Folded Away</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEAT__CURRENTLY_FOLDED = PHYSICAL_OBJECT_FEATURE_COUNT + 7;
+	int SEAT__FOLDED_AWAY = PHYSICAL_OBJECT_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Folded Upwards</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEAT__FOLDED_UPWARDS = PHYSICAL_OBJECT_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of structural features of the '<em>Seat</em>' class.
@@ -697,7 +706,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEAT_FEATURE_COUNT = PHYSICAL_OBJECT_FEATURE_COUNT + 8;
+	int SEAT_FEATURE_COUNT = PHYSICAL_OBJECT_FEATURE_COUNT + 9;
 
 	/**
 	 * The operation id for the '<em>Out Of Bounds</em>' operation.
@@ -1642,13 +1651,22 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS = 5;
 
 	/**
-	 * The feature id for the '<em><b>Use Foldable Seats</b></em>' attribute.
+	 * The feature id for the '<em><b>Use Sideways Foldable Seats</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__USE_FOLDABLE_SEATS = 6;
+	int SIMULATION_PROPERTIES__USE_SIDEWAYS_FOLDABLE_SEATS = 6;
+
+	/**
+	 * The feature id for the '<em><b>Use Lifting Seat Pan Seats</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__USE_LIFTING_SEAT_PAN_SEATS = 7;
 
 	/**
 	 * The feature id for the '<em><b>Bring Your Own Seat</b></em>' attribute.
@@ -1657,7 +1675,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT = 7;
+	int SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT = 8;
 
 	/**
 	 * The feature id for the '<em><b>Results</b></em>' reference list.
@@ -1666,7 +1684,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__RESULTS = 8;
+	int SIMULATION_PROPERTIES__RESULTS = 9;
 
 	/**
 	 * The feature id for the '<em><b>Sorting</b></em>' attribute.
@@ -1675,7 +1693,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SORTING = 9;
+	int SIMULATION_PROPERTIES__SORTING = 10;
 
 	/**
 	 * The feature id for the '<em><b>Simulation Speed Factor</b></em>' attribute.
@@ -1684,7 +1702,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR = 10;
+	int SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR = 11;
 
 	/**
 	 * The feature id for the '<em><b>Seat Interference Standing Up Passenger Waiting Time</b></em>' attribute.
@@ -1693,7 +1711,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME = 11;
+	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME = 12;
 
 	/**
 	 * The feature id for the '<em><b>Seat Interference Process Time</b></em>' attribute.
@@ -1702,7 +1720,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME = 12;
+	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME = 13;
 
 	/**
 	 * The feature id for the '<em><b>Thread Sleep Time Default</b></em>' attribute.
@@ -1711,7 +1729,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT = 13;
+	int SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT = 14;
 
 	/**
 	 * The feature id for the '<em><b>Developer Mode</b></em>' attribute.
@@ -1720,7 +1738,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__DEVELOPER_MODE = 14;
+	int SIMULATION_PROPERTIES__DEVELOPER_MODE = 15;
 
 	/**
 	 * The feature id for the '<em><b>Luggage Properties</b></em>' containment reference.
@@ -1729,7 +1747,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES = 15;
+	int SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES = 16;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Properties</b></em>' containment reference.
@@ -1738,7 +1756,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_PROPERTIES = 16;
+	int SIMULATION_PROPERTIES__PASSENGER_PROPERTIES = 17;
 
 	/**
 	 * The feature id for the '<em><b>Passengers Boarding Per Minute</b></em>' attribute.
@@ -1747,7 +1765,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = 17;
+	int SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = 18;
 
 	/**
 	 * The feature id for the '<em><b>Data Export</b></em>' attribute.
@@ -1756,7 +1774,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__DATA_EXPORT = 18;
+	int SIMULATION_PROPERTIES__DATA_EXPORT = 19;
 
 	/**
 	 * The feature id for the '<em><b>Display Map</b></em>' attribute.
@@ -1765,7 +1783,25 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__DISPLAY_MAP = 19;
+	int SIMULATION_PROPERTIES__DISPLAY_MAP = 20;
+
+	/**
+	 * The feature id for the '<em><b>Sideways Foldabe Seat Popup Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME = 21;
+
+	/**
+	 * The feature id for the '<em><b>Lifting Seat Pan Popup Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME = 22;
 
 	/**
 	 * The number of structural features of the '<em>Simulation Properties</em>' class.
@@ -1774,7 +1810,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES_FEATURE_COUNT = 20;
+	int SIMULATION_PROPERTIES_FEATURE_COUNT = 23;
 
 	/**
 	 * The number of operations of the '<em>Simulation Properties</em>' class.
@@ -2848,15 +2884,26 @@ public interface CabinPackage extends EPackage {
 	EReference getSeat_Passenger();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Seat#isCurrentlyFolded <em>Currently Folded</em>}'.
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Seat#isFoldedAway <em>Folded Away</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Currently Folded</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.Seat#isCurrentlyFolded()
+	 * @return the meta object for the attribute '<em>Folded Away</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.Seat#isFoldedAway()
 	 * @see #getSeat()
 	 * @generated
 	 */
-	EAttribute getSeat_CurrentlyFolded();
+	EAttribute getSeat_FoldedAway();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Seat#isFoldedUpwards <em>Folded Upwards</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Folded Upwards</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.Seat#isFoldedUpwards()
+	 * @see #getSeat()
+	 * @generated
+	 */
+	EAttribute getSeat_FoldedUpwards();
 
 	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.Passenger <em>Passenger</em>}'.
@@ -3346,15 +3393,26 @@ public interface CabinPackage extends EPackage {
 	EAttribute getSimulationProperties_RandomSortBetweenLoops();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUseFoldableSeats <em>Use Foldable Seats</em>}'.
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUseSidewaysFoldableSeats <em>Use Sideways Foldable Seats</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Use Foldable Seats</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#isUseFoldableSeats()
+	 * @return the meta object for the attribute '<em>Use Sideways Foldable Seats</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#isUseSidewaysFoldableSeats()
 	 * @see #getSimulationProperties()
 	 * @generated
 	 */
-	EAttribute getSimulationProperties_UseFoldableSeats();
+	EAttribute getSimulationProperties_UseSidewaysFoldableSeats();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUseLiftingSeatPanSeats <em>Use Lifting Seat Pan Seats</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Use Lifting Seat Pan Seats</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#isUseLiftingSeatPanSeats()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_UseLiftingSeatPanSeats();
 
 	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isBringYourOwnSeat <em>Bring Your Own Seat</em>}'.
@@ -3498,6 +3556,28 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSimulationProperties_DisplayMap();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSidewaysFoldabeSeatPopupTime <em>Sideways Foldabe Seat Popup Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Sideways Foldabe Seat Popup Time</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getSidewaysFoldabeSeatPopupTime()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_SidewaysFoldabeSeatPopupTime();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLiftingSeatPanPopupTime <em>Lifting Seat Pan Popup Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lifting Seat Pan Popup Time</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getLiftingSeatPanPopupTime()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_LiftingSeatPanPopupTime();
 
 	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.LuggageProperties <em>Luggage Properties</em>}'.
@@ -4504,12 +4584,19 @@ public interface CabinPackage extends EPackage {
 		 */
 		EReference SEAT__PASSENGER = eINSTANCE.getSeat_Passenger();
 		/**
-		 * The meta object literal for the '<em><b>Currently Folded</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Folded Away</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SEAT__CURRENTLY_FOLDED = eINSTANCE.getSeat_CurrentlyFolded();
+		EAttribute SEAT__FOLDED_AWAY = eINSTANCE.getSeat_FoldedAway();
+		/**
+		 * The meta object literal for the '<em><b>Folded Upwards</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SEAT__FOLDED_UPWARDS = eINSTANCE.getSeat_FoldedUpwards();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl <em>Passenger</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -4842,12 +4929,19 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS = eINSTANCE.getSimulationProperties_RandomSortBetweenLoops();
 		/**
-		 * The meta object literal for the '<em><b>Use Foldable Seats</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Use Sideways Foldable Seats</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SIMULATION_PROPERTIES__USE_FOLDABLE_SEATS = eINSTANCE.getSimulationProperties_UseFoldableSeats();
+		EAttribute SIMULATION_PROPERTIES__USE_SIDEWAYS_FOLDABLE_SEATS = eINSTANCE.getSimulationProperties_UseSidewaysFoldableSeats();
+		/**
+		 * The meta object literal for the '<em><b>Use Lifting Seat Pan Seats</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__USE_LIFTING_SEAT_PAN_SEATS = eINSTANCE.getSimulationProperties_UseLiftingSeatPanSeats();
 		/**
 		 * The meta object literal for the '<em><b>Bring Your Own Seat</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -4939,6 +5033,20 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SIMULATION_PROPERTIES__DISPLAY_MAP = eINSTANCE.getSimulationProperties_DisplayMap();
+		/**
+		 * The meta object literal for the '<em><b>Sideways Foldabe Seat Popup Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME = eINSTANCE.getSimulationProperties_SidewaysFoldabeSeatPopupTime();
+		/**
+		 * The meta object literal for the '<em><b>Lifting Seat Pan Popup Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME = eINSTANCE.getSimulationProperties_LiftingSeatPanPopupTime();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.LuggagePropertiesImpl <em>Luggage Properties</em>}' class.
 		 * <!-- begin-user-doc -->

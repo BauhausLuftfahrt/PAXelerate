@@ -291,24 +291,36 @@ public class ObstacleGenerator {
 		/* first loop through every physical object within the cabin */
 		for (PhysicalObject obj : POHelper.getObjectsByOption(option, cabin)) {
 
-			/* check if the object is a seat */
-			if (obj instanceof Seat) {
-
-				/* check for foldable seats and if it is currently folded */
-				if (cabin.getSimulationSettings().isUseFoldableSeats()
-						&& ((Seat) obj).isCurrentlyFolded()) {
-
-					/* if so, do not create an obstacle for that seat */
-					break;
-				}
-			}
-
 			/* define the dimension and position of the object */
 			int xDimension = obj.getXDimension() / (int) scale;
 			int xPosition = obj.getXPosition() / (int) scale;
 
 			int yDimension = obj.getYDimension() / (int) scale;
 			int yPosition = obj.getYPosition() / (int) scale;
+
+			/* check if the object is a seat */
+			if (obj instanceof Seat) {
+
+				/*
+				 * check for sideways foldable seats and if it is currently
+				 * folded
+				 */
+				if (cabin.getSimulationSettings().isUseSidewaysFoldableSeats()
+						&& ((Seat) obj).isFoldedAway()) {
+					/* if so, do not create an obstacle for that seat */
+					break;
+				}
+
+				/* check for folding seat pans and if it is currently folded */
+				if (cabin.getSimulationSettings().isUseLiftingSeatPanSeats()
+						&& ((Seat) obj).isFoldedUpwards()) {
+					/* only the backrest is visible (percentage value) */
+					int backrestThickness = 10;
+					yDimension = obj.getYDimension() / (int) scale
+							/ backrestThickness;
+
+				}
+			}
 
 			/* loop from 0 to the dimension of the object */
 			for (int relativePositionX = 0; relativePositionX < xDimension; relativePositionX++) {

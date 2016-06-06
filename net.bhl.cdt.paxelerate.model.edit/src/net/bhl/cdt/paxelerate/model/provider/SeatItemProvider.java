@@ -53,7 +53,8 @@ public class SeatItemProvider
 			addRowPropertyDescriptor(object);
 			addOccupiedPropertyDescriptor(object);
 			addPassengerPropertyDescriptor(object);
-			addCurrentlyFoldedPropertyDescriptor(object);
+			addFoldedAwayPropertyDescriptor(object);
+			addFoldedUpwardsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -213,19 +214,41 @@ public class SeatItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Currently Folded feature.
+	 * This adds a property descriptor for the Folded Away feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addCurrentlyFoldedPropertyDescriptor(Object object) {
+	protected void addFoldedAwayPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Seat_currentlyFolded_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Seat_currentlyFolded_feature", "_UI_Seat_type"),
-				 CabinPackage.Literals.SEAT__CURRENTLY_FOLDED,
+				 getString("_UI_Seat_foldedAway_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Seat_foldedAway_feature", "_UI_Seat_type"),
+				 CabinPackage.Literals.SEAT__FOLDED_AWAY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Folded Upwards feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addFoldedUpwardsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Seat_foldedUpwards_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Seat_foldedUpwards_feature", "_UI_Seat_type"),
+				 CabinPackage.Literals.SEAT__FOLDED_UPWARDS,
 				 true,
 				 false,
 				 false,
@@ -275,7 +298,8 @@ public class SeatItemProvider
 			case CabinPackage.SEAT__CREW_SEAT:
 			case CabinPackage.SEAT__LETTER:
 			case CabinPackage.SEAT__OCCUPIED:
-			case CabinPackage.SEAT__CURRENTLY_FOLDED:
+			case CabinPackage.SEAT__FOLDED_AWAY:
+			case CabinPackage.SEAT__FOLDED_UPWARDS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
