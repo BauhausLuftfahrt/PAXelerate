@@ -70,52 +70,52 @@ public class PassengerPropertyGenerator {
 		luggageSettings = ModelHelper.getParent(Cabin.class, pax)
 				.getSimulationSettings().getLuggageProperties();
 
-		/** At first. decide for the sex. **/
+		/* At first. decide for the sex. */
 		passenger.setSex(switchRandomSex(paxSettings.getPercentageOfWomen()));
 
-		/** Define the mood of the passenger **/
-		passenger.setPassengerMood(PassengerMood.PASSIVE);
+		/* Define the mood of the passenger **/
+		passenger.setPassengerMood(switchRandomMood(paxSettings.getPassengerAggressiveMoodShare()));
 
-		/** Define the age according to age distribution **/
+		/* Define the age according to age distribution **/
 		passenger.setAge(adaptAge());
 
-		/** Define the height according to normal distribution **/
+		/* Define the height according to normal distribution **/
 		passenger
 				.setHeight((int) adapt(paxSettings.getPassengerHeightMeanMale(),
 						paxSettings.getPassengerHeightDeviationMale(),
 						paxSettings.getPassengerHeightMeanFemale(),
 						paxSettings.getPassengerHeightDeviationFemale()));
 
-		/** Define the weight according to normal distribution **/
+		/* Define the weight according to normal distribution **/
 		passenger
 				.setWeight((int) adapt(paxSettings.getPassengerWeightMeanMale(),
 						paxSettings.getPassengerWeightDeviationMale(),
 						paxSettings.getPassengerWeightMeanFemale(),
 						paxSettings.getPassengerWeightDeviationFemale()));
 
-		/** Define the depth according to normal distribution **/
+		/* Define the depth according to normal distribution **/
 		passenger.setDepth((int) adapt(paxSettings.getPassengerDepthMeanMale(),
 				paxSettings.getPassengerDepthDeviationMale(),
 				paxSettings.getPassengerDepthMeanFemale(),
 				paxSettings.getPassengerDepthDeviationFemale()));
 
-		/** Define the width according to normal distribution **/
+		/* Define the width according to normal distribution **/
 		passenger.setWidth((int) adapt(paxSettings.getPassengerWidthMeanMale(),
 				paxSettings.getPassengerWidthDeviationMale(),
 				paxSettings.getPassengerWidthMeanFemale(),
 				paxSettings.getPassengerWidthDeviationFemale()));
 
-		/** Define the walking speed according to age **/
+		/* Define the walking speed according to age **/
 		passenger.setWalkingSpeed(adaptSpeed());
 
-		/** Define the type of luggage **/
+		/* Define the type of luggage **/
 		passenger.setLuggage(adaptLuggage());
 
-		/** Define the luggage stow time randomly **/
+		/* Define the luggage stow time randomly **/
 		passenger.setLuggageStowTime(
 				DecimalHelper.round(adaptLuggageStowTime(), 2));
 
-		/** Define the luggage distance from seat randomly **/
+		/* Define the luggage distance from seat randomly **/
 		passenger.setLuggageStowDistance(
 				DecimalHelper.round(defineLuggageStowDistance(), 2));
 	}
@@ -242,19 +242,19 @@ public class PassengerPropertyGenerator {
 	 */
 	private int adaptAge() {
 
-		/** This class is used for the probability calculations **/
+		/* This class is used for the probability calculations **/
 		ProbabilityMachine machine = new ProbabilityMachine(agemodel, 5);
 
-		/** Define the lower bound of the age model. **/
+		/* Define the lower bound of the age model. **/
 		machine.setLowerBound(20);
 
-		/** Define the upper bound of the age model. **/
+		/* Define the upper bound of the age model. **/
 		machine.setUpperBound(80);
 
-		/** This returns the index of the object in the age model. **/
+		/* This returns the index of the object in the age model. **/
 		int index = machine.getProbabilityValue(passenger.getSex());
 
-		/**
+		/*
 		 * To translate this to an age, multiply it with 5, because each element
 		 * stands for a 5 year range.
 		 **/
@@ -263,7 +263,7 @@ public class PassengerPropertyGenerator {
 			age = 5;
 		}
 
-		/** Then create a random number within the 5 year range. **/
+		/* Then create a random number within the 5 year range. **/
 		return RandomHelper.randomValue(age - 5, age);
 
 	}
@@ -300,6 +300,22 @@ public class PassengerPropertyGenerator {
 			return Sex.FEMALE;
 		}
 		return Sex.MALE;
+
+	}
+	
+	/**
+	 * This method switches the mood of the passengers according to the
+	 * probability of aggressive agents.
+	 *
+	 * @param percentageOfAggressiveAgents the percentage of aggressive agents
+	 * @return returns the sex.
+	 */
+
+	private PassengerMood switchRandomMood(double percentageOfAggressiveAgents) {
+		if (RandomHelper.randomValue(0, 100) < percentageOfAggressiveAgents) {
+			return PassengerMood.AGRESSIVE;
+		}
+		return PassengerMood.PASSIVE;
 
 	}
 

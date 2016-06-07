@@ -493,7 +493,7 @@ public class SimulationHandler {
 	public static int getNumberWaymakingSkipped() {
 		int numberSkipped = 0;
 		for (Agent agent : agentList) {
-			numberSkipped = numberSkipped + agent.getWayMakingSkipped();
+			numberSkipped = numberSkipped + agent.getNumberWayMakingSkipped();
 		}
 		return numberSkipped;
 	}

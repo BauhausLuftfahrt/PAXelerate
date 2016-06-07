@@ -39,6 +39,10 @@ public class ColorHelper {
 			// Luggage colors
 			LUGGAGE_NONE = new Color(d, 127, 112, 99), LUGGAGE_SMALL = new Color(d, 255, 162, 76),
 			LUGGAGE_MEDIUM = new Color(d, 204, 97, 0), LUGGAGE_LARGE = new Color(d, 127, 61, 0),
+			
+			// Mood
+			MOOD_AGGRESSIVE = new Color(d, 127, 61, 0) , MODD_PASSIVE = new Color(d, 127, 112, 99),
+		
 
 			// Aircraft colors
 			AIRCRAFT_FLOOR = new Color(d, 237, 243, 245), AIRCRAFT_LAVATORY = new Color(d, 255, 160, 122);

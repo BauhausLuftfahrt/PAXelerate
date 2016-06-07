@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerHeightDeviationFemale <em>Passenger Height Deviation Female</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerDepthMeanFemale <em>Passenger Depth Mean Female</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerDepthDeviationFemale <em>Passenger Depth Deviation Female</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerAggressiveMoodShare <em>Passenger Aggressive Mood Share</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassengerProperties()
@@ -495,5 +496,32 @@ public interface PassengerProperties extends EObject {
 	 * @generated
 	 */
 	void setPassengerDepthDeviationFemale(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Passenger Aggressive Mood Share</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Passenger Aggressive Mood Share</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Passenger Aggressive Mood Share</em>' attribute.
+	 * @see #setPassengerAggressiveMoodShare(int)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassengerProperties_PassengerAggressiveMoodShare()
+	 * @model default="0"
+	 * @generated
+	 */
+	int getPassengerAggressiveMoodShare();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerAggressiveMoodShare <em>Passenger Aggressive Mood Share</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Passenger Aggressive Mood Share</em>' attribute.
+	 * @see #getPassengerAggressiveMoodShare()
+	 * @generated
+	 */
+	void setPassengerAggressiveMoodShare(int value);
 
 } // PassengerProperties

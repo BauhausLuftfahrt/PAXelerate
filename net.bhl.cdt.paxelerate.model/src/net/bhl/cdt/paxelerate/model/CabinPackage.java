@@ -2221,13 +2221,22 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE = 16;
 
 	/**
+	 * The feature id for the '<em><b>Passenger Aggressive Mood Share</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__PASSENGER_AGGRESSIVE_MOOD_SHARE = 17;
+
+	/**
 	 * The number of structural features of the '<em>Passenger Properties</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES_FEATURE_COUNT = 17;
+	int PASSENGER_PROPERTIES_FEATURE_COUNT = 18;
 
 	/**
 	 * The number of operations of the '<em>Passenger Properties</em>' class.
@@ -4017,6 +4026,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getPassengerProperties_PassengerDepthDeviationFemale();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerAggressiveMoodShare <em>Passenger Aggressive Mood Share</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passenger Aggressive Mood Share</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerAggressiveMoodShare()
+	 * @see #getPassengerProperties()
+	 * @generated
+	 */
+	EAttribute getPassengerProperties_PassengerAggressiveMoodShare();
+
+	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.PhysicalObject <em>Physical Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5333,6 +5353,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PASSENGER_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE = eINSTANCE.getPassengerProperties_PassengerDepthDeviationFemale();
+		/**
+		 * The meta object literal for the '<em><b>Passenger Aggressive Mood Share</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_PROPERTIES__PASSENGER_AGGRESSIVE_MOOD_SHARE = eINSTANCE.getPassengerProperties_PassengerAggressiveMoodShare();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.PhysicalObjectImpl <em>Physical Object</em>}' class.
 		 * <!-- begin-user-doc -->

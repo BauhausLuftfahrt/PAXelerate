@@ -32,10 +32,11 @@ public class AgressiveMood extends AgentMood implements Strategy {
 	@Override
 	public void reactToCollision(Property property) {
 //		// only pass if other passenger is stowing luggage
-//		// if (super.getAgent().getBlockingAgent().passengerStowsLuggage()) {
+		if (super.getAgent().getBlockingAgent().passengerStowsLuggage()) {
 //		if (property == Property.OBSTACLE) {
-//			super.getAgent().findNewPath();
-//		}
+			super.getAgent().findNewPath();
+			super.getAgent().setExitPathLoop(false);
+		}
 //		// other wise if blocked act as passive agent
 //		else {
 //			try {
@@ -44,7 +45,6 @@ public class AgressiveMood extends AgentMood implements Strategy {
 //			}
 //		}
 		
-		super.getAgent().findNewPath();
-		super.getAgent().setExitPathLoop(false);
+		
 	}
 }

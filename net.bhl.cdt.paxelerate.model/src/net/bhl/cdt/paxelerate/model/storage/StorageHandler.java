@@ -6,6 +6,7 @@
 package net.bhl.cdt.paxelerate.model.storage;
 
 import net.bhl.cdt.paxelerate.model.Passenger;
+import net.bhl.cdt.paxelerate.model.PassengerMood;
 import net.bhl.cdt.paxelerate.model.Sex;
 
 /**
@@ -38,7 +39,8 @@ public class StorageHandler {
 	/**
 	 * Adds the passenger.
 	 *
-	 * @param pax the pax
+	 * @param pax
+	 *            the pax
 	 */
 	public void addPassenger(Passenger pax) {
 
@@ -57,23 +59,25 @@ public class StorageHandler {
 		}
 
 		if (numberOfPassengers[0] > 179) {
-			/*Exporter.generateDistributionFile("export", weightStore, heightStore,
-					depthStore, widthStore, ageStore, luggageStore,
-					numberOfPassengers)*/;
+			/*
+			 * Exporter.generateDistributionFile("export", weightStore,
+			 * heightStore, depthStore, widthStore, ageStore, luggageStore,
+			 * numberOfPassengers)
+			 */;
 		}
 	}
-	
-	public Object[] getStorageData(){
-		Object[] storageData = {weightStore, heightStore,
-				depthStore, widthStore, ageStore, luggageStore,
-				numberOfPassengers};
+
+	public Object[] getStorageData() {
+		Object[] storageData = { weightStore, heightStore, depthStore,
+				widthStore, ageStore, luggageStore, numberOfPassengers };
 		return storageData;
 	}
 
 	/**
 	 * Gets the store.
 	 *
-	 * @param type the type
+	 * @param type
+	 *            the type
 	 * @return the store
 	 */
 	public GaussianStorage getStore(StoreType type) {
@@ -107,7 +111,8 @@ public class StorageHandler {
 	/**
 	 * Gets the percentage of passengers.
 	 *
-	 * @param sex the sex
+	 * @param sex
+	 *            the sex
 	 * @return the percentage of passengers
 	 */
 	public double getPercentageOfPassengers(Sex sex) {
@@ -135,13 +140,13 @@ public class StorageHandler {
 	public enum StoreType {
 
 		/** The weight. */
-		WEIGHT, 
+		WEIGHT,
 		/** The height. */
-		HEIGHT, 
+		HEIGHT,
 		/** The width. */
-		WIDTH, 
+		WIDTH,
 		/** The depth. */
-		DEPTH, 
+		DEPTH,
 		/** The age. */
 		AGE
 	}

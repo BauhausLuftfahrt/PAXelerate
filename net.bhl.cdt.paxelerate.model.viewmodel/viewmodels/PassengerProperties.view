@@ -97,4 +97,16 @@
       </children>
     </children>
   </children>
+  <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout" xmi:id="_ggV5YCytEeaGtfBfHfcYsw">
+    <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_k23_UCyuEeaGtfBfHfcYsw">
+      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_iCJDUCytEeaGtfBfHfcYsw" name="Behaviour pattern">
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_jWYSYCytEeaGtfBfHfcYsw" name="Control passengerAgressiveMoodShare">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_R4CZ8CyyEeaGtfBfHfcYsw">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//PassengerProperties/passengerAggressiveMoodShare"/>
+          </domainModelReference>
+        </children>
+      </children>
+    </children>
+    <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_lO-9UCyuEeaGtfBfHfcYsw"/>
+  </children>
 </org.eclipse.emf.ecp.view.model:View>

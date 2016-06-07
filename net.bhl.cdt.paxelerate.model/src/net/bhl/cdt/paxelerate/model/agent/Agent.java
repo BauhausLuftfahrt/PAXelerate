@@ -62,6 +62,7 @@ public class Agent extends Subject implements Runnable {
 	/** The dim. */
 	private int numbOfInterupts = 0, waycounter = 0, dim = 2;
 
+	/** The way making skipped. */
 	private int wayMakingSkipped = 0;
 
 	/** The distance. */
@@ -108,6 +109,7 @@ public class Agent extends Subject implements Runnable {
 	/** The sim settings. */
 	private SimulationProperties simSettings;
 
+	/** The last move time. */
 	private long lastMoveTime;
 
 	/**
@@ -158,8 +160,9 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Gets the last move timestamp.
+	 *
+	 * @return the last move timestamp
 	 */
 	public long getLastMoveTimestamp() {
 		return lastMoveTime;
@@ -1083,11 +1086,12 @@ public class Agent extends Subject implements Runnable {
 			blockArea(currentPosition, false, false, null);
 			blockArea(desiredPosition, false, false, null);
 
-			/* Unfold seat if necessary*/
-			/* Sideways foldable seat*/
+			/* Unfold seat if necessary */
+			/* Sideways foldable seat */
 			if (passenger.getSeat().isFoldedAway()) {
 				unfoldSeat(simSettings.getSidewaysFoldabeSeatPopupTime());
-			/* Lifting seat pan */
+
+				/* Lifting seat pan */
 			} else if (passenger.getSeat().isFoldedUpwards()) {
 				unfoldSeat(simSettings.getLiftingSeatPanPopupTime());
 			}
@@ -1114,11 +1118,10 @@ public class Agent extends Subject implements Runnable {
 
 	}
 
-	
-	
-	
 	/**
-	 * Unfold sideways foldable seat or lifting seat pan seat
+	 * Unfold sideways foldable seat or lifting seat pan seat.
+	 *
+	 * @param seatPopupTime the seat popup time
 	 */
 	private void unfoldSeat(int seatPopupTime) {
 
@@ -1144,7 +1147,7 @@ public class Agent extends Subject implements Runnable {
 			}
 		}
 
-		/* Pauses the agent for the set seat pop up time */
+		/* Pauses the agent for the seat pop up time */
 		try {
 			Thread.sleep(AStarHelper.time(seatPopupTime));
 		} catch (InterruptedException e) {
@@ -1350,7 +1353,12 @@ public class Agent extends Subject implements Runnable {
 		}
 	}
 
-	public int getWayMakingSkipped() {
+	/**
+	 * Gets the number way making skipped.
+	 *
+	 * @return the number way making skipped
+	 */
+	public int getNumberWayMakingSkipped() {
 		return wayMakingSkipped;
 	}
 

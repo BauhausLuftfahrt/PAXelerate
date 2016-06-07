@@ -37,6 +37,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getPassengerHeightDeviationFemale <em>Passenger Height Deviation Female</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getPassengerDepthMeanFemale <em>Passenger Depth Mean Female</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getPassengerDepthDeviationFemale <em>Passenger Depth Deviation Female</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getPassengerAggressiveMoodShare <em>Passenger Aggressive Mood Share</em>}</li>
  * </ul>
  *
  * @generated
@@ -381,6 +382,26 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 	 * @ordered
 	 */
 	protected double passengerDepthDeviationFemale = PASSENGER_DEPTH_DEVIATION_FEMALE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPassengerAggressiveMoodShare() <em>Passenger Aggressive Mood Share</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassengerAggressiveMoodShare()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int PASSENGER_AGGRESSIVE_MOOD_SHARE_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getPassengerAggressiveMoodShare() <em>Passenger Aggressive Mood Share</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassengerAggressiveMoodShare()
+	 * @generated
+	 * @ordered
+	 */
+	protected int passengerAggressiveMoodShare = PASSENGER_AGGRESSIVE_MOOD_SHARE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -831,6 +852,27 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getPassengerAggressiveMoodShare() {
+		return passengerAggressiveMoodShare;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPassengerAggressiveMoodShare(int newPassengerAggressiveMoodShare) {
+		int oldPassengerAggressiveMoodShare = passengerAggressiveMoodShare;
+		passengerAggressiveMoodShare = newPassengerAggressiveMoodShare;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER_PROPERTIES__PASSENGER_AGGRESSIVE_MOOD_SHARE, oldPassengerAggressiveMoodShare, passengerAggressiveMoodShare));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->.
 	 *
 	 * @param featureID the feature id
@@ -876,6 +918,8 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 				return getPassengerDepthMeanFemale();
 			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE:
 				return getPassengerDepthDeviationFemale();
+			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_AGGRESSIVE_MOOD_SHARE:
+				return getPassengerAggressiveMoodShare();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -942,6 +986,9 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE:
 				setPassengerDepthDeviationFemale((Double)newValue);
 				return;
+			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_AGGRESSIVE_MOOD_SHARE:
+				setPassengerAggressiveMoodShare((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1007,6 +1054,9 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE:
 				setPassengerDepthDeviationFemale(PASSENGER_DEPTH_DEVIATION_FEMALE_EDEFAULT);
 				return;
+			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_AGGRESSIVE_MOOD_SHARE:
+				setPassengerAggressiveMoodShare(PASSENGER_AGGRESSIVE_MOOD_SHARE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1056,6 +1106,8 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 				return passengerDepthMeanFemale != PASSENGER_DEPTH_MEAN_FEMALE_EDEFAULT;
 			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE:
 				return passengerDepthDeviationFemale != PASSENGER_DEPTH_DEVIATION_FEMALE_EDEFAULT;
+			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_AGGRESSIVE_MOOD_SHARE:
+				return passengerAggressiveMoodShare != PASSENGER_AGGRESSIVE_MOOD_SHARE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1106,6 +1158,8 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 		result.append(passengerDepthMeanFemale);
 		result.append(", passengerDepthDeviationFemale: ");
 		result.append(passengerDepthDeviationFemale);
+		result.append(", passengerAggressiveMoodShare: ");
+		result.append(passengerAggressiveMoodShare);
 		result.append(')');
 		return result.toString();
 	}

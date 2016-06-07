@@ -11,7 +11,7 @@ import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 /**
  * The Class PassiveMood.
  *
- * @author marc.engelmann, tobias.bruegge-zobel
+ * @author marc.engelmann, tobias.bruegge-zobel, michael.schmidt
  */
 public class PassiveMood extends AgentMood implements Strategy {
 
@@ -37,6 +37,7 @@ public class PassiveMood extends AgentMood implements Strategy {
 	public void reactToCollision(Property property) {
 
 		try {
+			/* agent waits for 0.3s before he continues walking */
 			super.getAgent().getThread().sleep(AStarHelper.time(0.3));
 		} catch (InterruptedException e) {
 		}

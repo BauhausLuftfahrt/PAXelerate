@@ -50,8 +50,10 @@ public class ExportDataCommand extends CDTCommand {
 	/** The default fileName. */
 	String fileName = "export";
 
+	/** The property store. */
 	private StorageHandler propertyStore = new StorageHandler();
 
+	/** The exporter. */
 	private ExcelExport exporter;
 
 	/**
@@ -64,6 +66,12 @@ public class ExportDataCommand extends CDTCommand {
 		this.cabin = cabin;
 	}
 
+	/**
+	 * Instantiates a new export data command.
+	 *
+	 * @param cabin the cabin
+	 * @param exporter the exporter
+	 */
 	public ExportDataCommand(Cabin cabin, ExcelExport exporter) {
 		// super();
 		this.cabin = cabin;
@@ -73,11 +81,9 @@ public class ExportDataCommand extends CDTCommand {
 	/**
 	 * Gets the passenger data.
 	 *
-	 * @param writer
-	 *            the writer
 	 * @return the passenger data
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
+	 * @throws IOException             Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException the file not found exception
 	 */
 	public boolean getPassengerData() throws IOException, FileNotFoundException {
 		/** Create file header **/
@@ -133,11 +139,9 @@ public class ExportDataCommand extends CDTCommand {
 	/**
 	 * Gets the simulation properties data.
 	 *
-	 * @param writer
-	 *            the writer
 	 * @return the simulation properties data
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
+	 * @throws IOException             Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException the file not found exception
 	 */
 	public boolean getSimulationPropertiesData() throws IOException, FileNotFoundException {
 
@@ -189,6 +193,13 @@ public class ExportDataCommand extends CDTCommand {
 		return true;
 	}
 
+	/**
+	 * Gets the study settings.
+	 *
+	 * @return the study settings
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException the file not found exception
+	 */
 	public boolean getStudySettings() throws IOException, FileNotFoundException {
 
 		LuggageProperties luggageSettings = cabin.getSimulationSettings().getLuggageProperties();
@@ -220,6 +231,13 @@ public class ExportDataCommand extends CDTCommand {
 		return true;
 	}
 
+	/**
+	 * Gets the result data.
+	 *
+	 * @return the result data
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException the file not found exception
+	 */
 	public boolean getResultData() throws IOException, FileNotFoundException {
 
 		exporter.addColumnElement("Loop ID");
@@ -244,22 +262,8 @@ public class ExportDataCommand extends CDTCommand {
 	/**
 	 * Generate distribution file.
 	 *
-	 * @param sFileName
-	 *            the s file name
-	 * @param weight
-	 *            the weight
-	 * @param height
-	 *            the height
-	 * @param depth
-	 *            the depth
-	 * @param width
-	 *            the width
-	 * @param age
-	 *            the age
-	 * @param luggage
-	 *            the luggage
-	 * @param pax
-	 *            the pax
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException the file not found exception
 	 */
 	public void generateDistributionFile() throws IOException, FileNotFoundException {
 
@@ -296,16 +300,10 @@ public class ExportDataCommand extends CDTCommand {
 	/**
 	 * Write gaussian.
 	 *
-	 * @param writer
-	 *            the writer
-	 * @param storage
-	 *            the storage
-	 * @param name
-	 *            the name
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
-	 * @throws FileNotFoundException
-	 *             the file not found exception
+	 * @param storage            the storage
+	 * @param name            the name
+	 * @throws IOException             Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException             the file not found exception
 	 */
 	private void writeGaussian(GaussianStorage storage, String name) throws IOException, FileNotFoundException {
 

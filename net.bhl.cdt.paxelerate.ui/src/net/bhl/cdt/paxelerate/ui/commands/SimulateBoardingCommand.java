@@ -74,9 +74,6 @@ public class SimulateBoardingCommand extends CDTCommand {
 	@Override
 	protected void doRun() {
 
-		// set number iterations
-		// cabin.getSimulationSettings().setNumberOfSimulationLoops(2);
-
 		// Create separate thread
 		Job job = new Job("Simulate Boarding Thread") {
 			@Override
@@ -100,15 +97,16 @@ public class SimulateBoardingCommand extends CDTCommand {
 				simulationloop: for (int simulationLoopIndex = 0; simulationLoopIndex < cabin.getSimulationSettings()
 						.getNumberOfSimulationLoops(); simulationLoopIndex++) {
 
-					Log.add(this, "Iteration " + (simulationLoopIndex + 1) + " of "
+					/*Log.add(this, "Iteration " + (simulationLoopIndex + 1) + " of "
 							+ cabin.getSimulationSettings().getNumberOfSimulationLoops());
 
 					if (cabin.getSimulationSettings().isRandomSortBetweenLoops()) {
 
-						/* generates new passenger */
-						new GeneratePassengersCommand(cabin).doRun();
+						 generates new passenger
+						 * this runs in extra thread and causes ConcurrentModificationException 
+						//new GeneratePassengersCommand(cabin).doRun();
 
-						/* sorts the passenger according to selected method */
+						 sorts the passenger according to selected method 
 						SortPassengersCommand sort = new SortPassengersCommand(cabin);
 						sort.setPropertiesManually(false, 0);
 						sort.doRun();
@@ -132,7 +130,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 							sort2.doRun();
 							cabin = sort2.returnCabin();
 						}
-					}
+					}*/
 
 					// reset simulation in case of previous existing objects.
 					SimulationHandler.reset();
@@ -161,6 +159,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 							cabin.getSimulationSettings().getScale());
 
 					new SimulationHandler(dimensions, cabin);
+					
+					// WIP 
+					FileSaver.saveObstacleToFile(SimulationHandler.getMap(), dimensions);
 
 					// Show WIP simulation view
 					runAreaMapWindow();

@@ -78,6 +78,7 @@ public class PassengerPropertiesItemProvider
 			addPassengerHeightDeviationFemalePropertyDescriptor(object);
 			addPassengerDepthMeanFemalePropertyDescriptor(object);
 			addPassengerDepthDeviationFemalePropertyDescriptor(object);
+			addPassengerAggressiveMoodSharePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -457,6 +458,28 @@ public class PassengerPropertiesItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Passenger Aggressive Mood Share feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPassengerAggressiveMoodSharePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PassengerProperties_passengerAggressiveMoodShare_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PassengerProperties_passengerAggressiveMoodShare_feature", "_UI_PassengerProperties_type"),
+				 CabinPackage.Literals.PASSENGER_PROPERTIES__PASSENGER_AGGRESSIVE_MOOD_SHARE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns PassengerProperties.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -512,6 +535,7 @@ public class PassengerPropertiesItemProvider
 			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_HEIGHT_DEVIATION_FEMALE:
 			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_DEPTH_MEAN_FEMALE:
 			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE:
+			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_AGGRESSIVE_MOOD_SHARE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

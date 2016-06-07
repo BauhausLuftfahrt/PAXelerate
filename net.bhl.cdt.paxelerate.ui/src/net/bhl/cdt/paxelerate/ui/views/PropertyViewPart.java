@@ -20,6 +20,7 @@ import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
 import net.bhl.cdt.paxelerate.model.LuggageSize;
 import net.bhl.cdt.paxelerate.model.Passenger;
+import net.bhl.cdt.paxelerate.model.PassengerMood;
 import net.bhl.cdt.paxelerate.model.Sex;
 import net.bhl.cdt.paxelerate.model.storage.AgeStorage;
 import net.bhl.cdt.paxelerate.model.storage.GaussianStorage;
@@ -43,13 +44,16 @@ public class PropertyViewPart extends ViewPart {
 
 	/** The names. */
 	private String[] names = { "M,", "F" };
-	
+
+	/** The names. */
+	private String[] moods = { "passive", "aggressive" };
+
 	/** The parent. */
 	private Composite parent;
-	
+
 	/** The canvas. */
 	private Canvas canvas;
-	
+
 	/** The cabin. */
 	private Cabin cabin;
 
@@ -124,18 +128,36 @@ public class PropertyViewPart extends ViewPart {
 
 					e.gc.setBackground(ColorHelper.PASSENGER_MALE);
 
-					e.gc.fillRectangle(0, pos,
-							(int) (dim.getX() * propertyStore.getPercentageOfPassengers(Sex.MALE)), BAR_HEIGHT);
+					e.gc.fillRectangle(0, pos, (int) (dim.getX() * propertyStore.getPercentageOfPassengers(Sex.MALE)),
+							BAR_HEIGHT);
 					e.gc.drawText(names[0], 5, pos, true);
 
 					e.gc.setBackground(ColorHelper.PASSEMGER_FEMALE);
-					e.gc.fillRectangle((int) (dim.getX() * propertyStore.getPercentageOfPassengers(Sex.MALE)),
-							pos, (int) (dim.getX() * propertyStore.getPercentageOfPassengers(Sex.FEMALE)),
-							BAR_HEIGHT);
+					e.gc.fillRectangle((int) (dim.getX() * propertyStore.getPercentageOfPassengers(Sex.MALE)), pos,
+							(int) (dim.getX() * propertyStore.getPercentageOfPassengers(Sex.FEMALE)), BAR_HEIGHT);
 					e.gc.drawText(names[1], (dim.getX()) - e.gc.textExtent(names[1]).x - 5, pos, true);
-
 					addLabel(e, propertyStore.getPercentageOfPassengers(Sex.MALE) * 100,
 							propertyStore.getPercentageOfPassengers(Sex.MALE), LabelClass.PERCENTAGE, 0);
+
+					/* ********************************************* */
+					pos += ITEM_SPACE;
+					addHeadline(e, "Mood");
+
+					double passiveShare = (100
+							- cabin.getSimulationSettings().getPassengerProperties().getPassengerAggressiveMoodShare())
+							/ 100;
+
+					e.gc.setBackground(ColorHelper.MODD_PASSIVE);
+
+					e.gc.fillRectangle(0, pos, (int) (dim.getX() * passiveShare), BAR_HEIGHT);
+					e.gc.drawText(moods[0], 5, pos, true);
+
+					e.gc.setBackground(ColorHelper.MOOD_AGGRESSIVE);
+					e.gc.fillRectangle((int) (dim.getX() * passiveShare), pos, (int) (dim.getX() * (1 - passiveShare)),
+							BAR_HEIGHT);
+					e.gc.drawText(moods[1], (dim.getX()) - e.gc.textExtent(moods[1]).x - 5, pos, true);
+
+					addLabel(e, passiveShare * 100, passiveShare, LabelClass.PERCENTAGE, 0);
 
 					/* ********************************************* */
 					pos += ITEM_SPACE;
@@ -153,18 +175,15 @@ public class PropertyViewPart extends ViewPart {
 					e.gc.fillRectangle(0, pos, (int) (dim.getX() * noLug), BAR_HEIGHT);
 
 					e.gc.setBackground(ColorHelper.LUGGAGE_SMALL);
-					e.gc.fillRectangle((int) (dim.getX() * noLug), pos, (int) (dim.getX() * smallLug),
-							BAR_HEIGHT);
+					e.gc.fillRectangle((int) (dim.getX() * noLug), pos, (int) (dim.getX() * smallLug), BAR_HEIGHT);
 
 					e.gc.setBackground(ColorHelper.LUGGAGE_MEDIUM);
 					e.gc.fillRectangle((int) (dim.getX() * noLug + dim.getX() * smallLug), pos,
 							(int) (dim.getX() * medLug), BAR_HEIGHT);
 
 					e.gc.setBackground(ColorHelper.LUGGAGE_LARGE);
-					e.gc.fillRectangle(
-							(int) (dim.getX() * noLug + dim.getX() * medLug
-									+ dim.getX() * smallLug),
-							pos, (int) (dim.getX() * bigLug), BAR_HEIGHT);
+					e.gc.fillRectangle((int) (dim.getX() * noLug + dim.getX() * medLug + dim.getX() * smallLug), pos,
+							(int) (dim.getX() * bigLug), BAR_HEIGHT);
 
 					addLabel(e, noLug * 100, noLug, LabelClass.PERCENTAGE, 0);
 					addLabel(e, (noLug + smallLug) * 100, smallLug + noLug, LabelClass.PERCENTAGE, 0);
@@ -199,8 +218,10 @@ public class PropertyViewPart extends ViewPart {
 	/**
 	 * Adds the headline.
 	 *
-	 * @param e the e
-	 * @param headline the headline
+	 * @param e
+	 *            the e
+	 * @param headline
+	 *            the headline
 	 */
 	private void addHeadline(PaintEvent e, String headline) {
 		e.gc.drawText(headline, 5, pos, true);
@@ -210,9 +231,12 @@ public class PropertyViewPart extends ViewPart {
 	/**
 	 * Creates the function block.
 	 *
-	 * @param headline the headline
-	 * @param e the e
-	 * @param store the store
+	 * @param headline
+	 *            the headline
+	 * @param e
+	 *            the e
+	 * @param store
+	 *            the store
 	 */
 	public void createFunctionBlock(String headline, PaintEvent e, AgeStorage store) {
 
@@ -241,12 +265,18 @@ public class PropertyViewPart extends ViewPart {
 	/**
 	 * Draw function.
 	 *
-	 * @param e the e
-	 * @param store the store
-	 * @param sex the sex
-	 * @param steps the steps
-	 * @param min the min
-	 * @param max the max
+	 * @param e
+	 *            the e
+	 * @param store
+	 *            the store
+	 * @param sex
+	 *            the sex
+	 * @param steps
+	 *            the steps
+	 * @param min
+	 *            the min
+	 * @param max
+	 *            the max
 	 */
 	private void drawFunction(PaintEvent e, AgeStorage store, Sex sex, int steps, int min, int max) {
 
@@ -281,9 +311,12 @@ public class PropertyViewPart extends ViewPart {
 	/**
 	 * Creates the deviation block.
 	 *
-	 * @param headline the headline
-	 * @param e the e
-	 * @param store the store
+	 * @param headline
+	 *            the headline
+	 * @param e
+	 *            the e
+	 * @param store
+	 *            the store
 	 */
 	private void createDeviationBlock(String headline, PaintEvent e, GaussianStorage store) {
 
@@ -315,11 +348,16 @@ public class PropertyViewPart extends ViewPart {
 	/**
 	 * Adds the label.
 	 *
-	 * @param e the e
-	 * @param labelValue the label value
-	 * @param relativePosition the relative position
-	 * @param labelClass the label class
-	 * @param offset the offset
+	 * @param e
+	 *            the e
+	 * @param labelValue
+	 *            the label value
+	 * @param relativePosition
+	 *            the relative position
+	 * @param labelClass
+	 *            the label class
+	 * @param offset
+	 *            the offset
 	 */
 	private void addLabel(PaintEvent e, double labelValue, double relativePosition, LabelClass labelClass, int offset) {
 
@@ -345,11 +383,16 @@ public class PropertyViewPart extends ViewPart {
 	/**
 	 * Creates the deviation line.
 	 *
-	 * @param e the e
-	 * @param leftFactor the left factor
-	 * @param rightFactor the right factor
-	 * @param rightLabel the right label
-	 * @param leftLabel the left label
+	 * @param e
+	 *            the e
+	 * @param leftFactor
+	 *            the left factor
+	 * @param rightFactor
+	 *            the right factor
+	 * @param rightLabel
+	 *            the right label
+	 * @param leftLabel
+	 *            the left label
 	 */
 	private void createDeviationLine(PaintEvent e, double leftFactor, double rightFactor, double rightLabel,
 			double leftLabel) {
@@ -357,8 +400,8 @@ public class PropertyViewPart extends ViewPart {
 		e.gc.setForeground(ColorHelper.GREY_DARK);
 		e.gc.setLineWidth(2);
 
-		e.gc.drawLine((int) (dim.getX() * leftFactor), pos + BAR_HEIGHT / 2,
-				(int) (dim.getX() * rightFactor), pos + BAR_HEIGHT / 2);
+		e.gc.drawLine((int) (dim.getX() * leftFactor), pos + BAR_HEIGHT / 2, (int) (dim.getX() * rightFactor),
+				pos + BAR_HEIGHT / 2);
 		e.gc.drawLine((int) (dim.getX() * leftFactor), pos + BAR_HEIGHT / 2 - DEVIATION_BAR_HEIGHT,
 				(int) (dim.getX() * leftFactor), pos + BAR_HEIGHT / 2 + DEVIATION_BAR_HEIGHT);
 		e.gc.drawLine((int) (dim.getX() * rightFactor), pos + BAR_HEIGHT / 2 - DEVIATION_BAR_HEIGHT,
@@ -374,7 +417,8 @@ public class PropertyViewPart extends ViewPart {
 	/**
 	 * Update ui.
 	 *
-	 * @param cabin the cabin
+	 * @param cabin
+	 *            the cabin
 	 */
 	public void updateUI(Cabin cabin) {
 		this.cabin = cabin;
@@ -394,7 +438,9 @@ public class PropertyViewPart extends ViewPart {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.ui.part.WorkbenchPart#setFocus()
 	 */
 	@Override
@@ -407,10 +453,10 @@ public class PropertyViewPart extends ViewPart {
 	 * The Enum LabelClass.
 	 */
 	private enum LabelClass {
-		
+
 		/** The percentage. */
-		PERCENTAGE, 
- /** The value. */
- VALUE
+		PERCENTAGE,
+		/** The value. */
+		VALUE
 	}
 }
