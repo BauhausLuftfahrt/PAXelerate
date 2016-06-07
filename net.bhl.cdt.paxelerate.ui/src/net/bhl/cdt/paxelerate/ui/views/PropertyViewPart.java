@@ -144,16 +144,14 @@ public class PropertyViewPart extends ViewPart {
 					addHeadline(e, "Mood");
 
 					double passiveShare = (100
-							- cabin.getSimulationSettings().getPassengerProperties().getPassengerAggressiveMoodShare())
-							/ 100;
+							- cabin.getSimulationSettings().getPassengerProperties().getPassengerAggressiveMoodShare());
 
 					e.gc.setBackground(ColorHelper.MODD_PASSIVE);
-
 					e.gc.fillRectangle(0, pos, (int) (dim.getX() * passiveShare), BAR_HEIGHT);
 					e.gc.drawText(moods[0], 5, pos, true);
 
 					e.gc.setBackground(ColorHelper.MOOD_AGGRESSIVE);
-					e.gc.fillRectangle((int) (dim.getX() * passiveShare), pos, (int) (dim.getX() * (1 - passiveShare)),
+					e.gc.fillRectangle((int) (dim.getX() * passiveShare), pos, (int) (dim.getX() * (100 - passiveShare)),
 							BAR_HEIGHT);
 					e.gc.drawText(moods[1], (dim.getX()) - e.gc.textExtent(moods[1]).x - 5, pos, true);
 

@@ -630,6 +630,8 @@ public class Agent extends Subject implements Runnable {
 
 			/* this sets the new start of the A* to the current position */
 			start = currentPosition;
+			
+			/*TODO: set new goal as the intersection of the old path 2-3m meters from the current position */
 
 			/* this declares the area around agents as high cost terrain */
 			mutableCostMap = AgentFunctions.updateCostmap(this);

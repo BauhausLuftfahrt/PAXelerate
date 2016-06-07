@@ -198,7 +198,7 @@ public class AgentFunctions {
 				agent.getCurrentPosition().getX() - squareDimension,
 				agent.getCurrentPosition().getX() + squareDimension);
 
-		/* this is the expansion in the x Direction */
+		/* this is the expansion in the y Direction */
 		Vector yVector = new Vector2D(
 				agent.getCurrentPosition().getY() - squareDimension,
 				agent.getCurrentPosition().getY() + squareDimension);
