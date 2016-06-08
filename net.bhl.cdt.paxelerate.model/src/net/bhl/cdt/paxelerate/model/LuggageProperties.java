@@ -88,7 +88,7 @@ public interface LuggageProperties extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Percentage Of Passengers With No Luggage</b></em>' attribute.
-	 * The default value is <code>"0"</code>.
+	 * The default value is <code>"100"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Percentage Of Passengers With No Luggage</em>' attribute isn't clear,
@@ -98,7 +98,7 @@ public interface LuggageProperties extends EObject {
 	 * @return the value of the '<em>Percentage Of Passengers With No Luggage</em>' attribute.
 	 * @see #setPercentageOfPassengersWithNoLuggage(double)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getLuggageProperties_PercentageOfPassengersWithNoLuggage()
-	 * @model default="0"
+	 * @model default="100"
 	 * @generated
 	 */
 	double getPercentageOfPassengersWithNoLuggage();

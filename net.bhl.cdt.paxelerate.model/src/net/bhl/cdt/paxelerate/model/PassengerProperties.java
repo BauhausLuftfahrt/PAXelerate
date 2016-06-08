@@ -310,7 +310,7 @@ public interface PassengerProperties extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Passenger Width Deviation Female</b></em>' attribute.
-	 * The default value is <code>"2.8"</code>.
+	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Passenger Width Deviation Female</em>' attribute isn't clear,
@@ -320,7 +320,7 @@ public interface PassengerProperties extends EObject {
 	 * @return the value of the '<em>Passenger Width Deviation Female</em>' attribute.
 	 * @see #setPassengerWidthDeviationFemale(double)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassengerProperties_PassengerWidthDeviationFemale()
-	 * @model default="2.8"
+	 * @model default="1"
 	 * @generated
 	 */
 	double getPassengerWidthDeviationFemale();

@@ -85,7 +85,7 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE_EDEFAULT = 0.0;
+	protected static final double PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE_EDEFAULT = 100.0;
 
 	/**
 	 * The cached value of the '{@link #getPercentageOfPassengersWithNoLuggage() <em>Percentage Of Passengers With No Luggage</em>}' attribute.

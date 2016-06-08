@@ -251,7 +251,7 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double PASSENGER_WIDTH_DEVIATION_FEMALE_EDEFAULT = 2.8;
+	protected static final double PASSENGER_WIDTH_DEVIATION_FEMALE_EDEFAULT = 1.0;
 
 	/**
 	 * The cached value of the '{@link #getPassengerWidthDeviationFemale() <em>Passenger Width Deviation Female</em>}' attribute.
