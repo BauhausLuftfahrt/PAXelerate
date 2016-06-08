@@ -66,9 +66,6 @@ public class Agent extends Subject implements Runnable {
 	/** The way making skipped. */
 	private int wayMakingSkipped = 0;
 
-	/** The distance. */
-	private double distance;
-
 	/** The moved once. */
 	private boolean alreadyStowed = false, waitingCompleted = false,
 			initialized = false, exitTheMainLoop = false, movedOnce = false,
@@ -389,12 +386,7 @@ public class Agent extends Subject implements Runnable {
 	 * @return distance in multiple of the current map scaling
 	 */
 	private int getLuggageStowDistance() {
-		distance = (GaussianRandom.gaussianRandom(
-				simLuggageSettings.getLuggageStowDistanceFromSeatMean(),
-				GaussOptions.PERCENT_95,
-				simLuggageSettings.getLuggageStowDistanceFromSeatDeviation())
-				/ scale);
-		return (int) distance;
+		return (int) (passenger.getLuggageStowDistance() / scale);
 	}
 
 	/**
@@ -466,9 +458,7 @@ public class Agent extends Subject implements Runnable {
 	 * @return the seat folding distance
 	 */
 	private int getSeatFoldingDistance() {
-		// 10 cm?
-		distance = (10 / scale);
-		return (int) distance;
+		return (int) (10 / scale);
 	}
 
 	/**
@@ -859,22 +849,37 @@ public class Agent extends Subject implements Runnable {
 					 */
 				} else if (passengerStowsLuggage() && !alreadyStowed) {
 
-					setCurrentState(State.STOWING_LUGGAGE);
-					rotateAgent(90);
+					/*
+					 * decision point: normal luggage stowing distance if the
+					 * seat is still folded, the agent can stow his luggage
+					 * directly at the seat position TODO: case if seat is
+					 * unfolded in the meantime
+					 */
+					if ((passenger.getSeat().isFoldedAway()
+							|| passenger.getSeat().isFoldedUpwards())) {
+						/* distance is set to zero */
+						passenger.setLuggageStowDistance(0.0);
+					} else {
 
-					/* sleep the thread as long as the luggage is stowed */
-					Thread.sleep(
-							AStarHelper.time(passenger.getLuggageStowTime()));
+						setCurrentState(State.STOWING_LUGGAGE);
+						rotateAgent(90);
 
-					/* notify everyone that the luggage is now stowed */
-					alreadyStowed = true;
+						/* sleep the thread as long as the luggage is stowed */
+						Thread.sleep(AStarHelper
+								.time(passenger.getLuggageStowTime()));
+
+						/* notify everyone that the luggage is now stowed */
+						alreadyStowed = true;
+
+					}
 
 					/*
 					 * if there is no obstacle or luggage stowing required, run
 					 * the default step
 					 */
 
-				} else if (passengerUnfoldsSeat() && !alreadyUnfolded) {
+				} else if (passengerUnfoldsSeat() && !alreadyUnfolded
+						&& alreadyStowed) {
 
 					setCurrentState(State.UNFOLDING_SEAT);
 					rotateAgent(90);
