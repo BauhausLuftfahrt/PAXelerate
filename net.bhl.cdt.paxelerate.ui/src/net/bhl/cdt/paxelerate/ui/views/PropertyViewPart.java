@@ -35,7 +35,7 @@ import net.bhl.cdt.paxelerate.util.math.Vector2D;
 /**
  * This class represents the cabin view. All graphics generation is done here.
  * 
- * @author marc.engelmann
+ * @author marc.engelmann, michael.schmidt
  * @version 1.0
  *
  */
@@ -143,15 +143,15 @@ public class PropertyViewPart extends ViewPart {
 					pos += ITEM_SPACE;
 					addHeadline(e, "Mood");
 
-					double passiveShare = (100
-							- cabin.getSimulationSettings().getPassengerProperties().getPassengerAggressiveMoodShare());
+					double passiveShare = propertyStore.getMoodStore().getMoodPercentage(PassengerMood.PASSIVE);
+					double aggressiveShare = propertyStore.getMoodStore().getMoodPercentage(PassengerMood.AGGRESSIVE);
 
 					e.gc.setBackground(ColorHelper.MODD_PASSIVE);
 					e.gc.fillRectangle(0, pos, (int) (dim.getX() * passiveShare), BAR_HEIGHT);
 					e.gc.drawText(moods[0], 5, pos, true);
 
 					e.gc.setBackground(ColorHelper.MOOD_AGGRESSIVE);
-					e.gc.fillRectangle((int) (dim.getX() * passiveShare), pos, (int) (dim.getX() * (100 - passiveShare)),
+					e.gc.fillRectangle((int) (dim.getX() * passiveShare), pos, (int) (dim.getX() * (aggressiveShare)),
 							BAR_HEIGHT);
 					e.gc.drawText(moods[1], (dim.getX()) - e.gc.textExtent(moods[1]).x - 5, pos, true);
 

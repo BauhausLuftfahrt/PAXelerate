@@ -22,6 +22,8 @@ public class StorageHandler {
 
 	/** The age store. */
 	AgeStorage ageStore = new AgeStorage();
+	
+	MoodStorage moodStore = new MoodStorage();
 
 	/** The luggage store. */
 	LuggageStorage luggageStore = new LuggageStorage();
@@ -50,6 +52,7 @@ public class StorageHandler {
 		widthStore.addValue(pax.getSex(), pax.getWidth());
 		luggageStore.addValue(pax.getLuggage());
 		ageStore.addValue(pax.getSex(), pax.getAge());
+		moodStore.addValue(pax.getPassengerMood());
 
 		numberOfPassengers[0] += 1;
 		if (pax.getSex() == Sex.MALE) {
@@ -69,7 +72,7 @@ public class StorageHandler {
 
 	public Object[] getStorageData() {
 		Object[] storageData = { weightStore, heightStore, depthStore,
-				widthStore, ageStore, luggageStore, numberOfPassengers };
+				widthStore, ageStore, luggageStore, numberOfPassengers, moodStore };
 		return storageData;
 	}
 
@@ -134,6 +137,11 @@ public class StorageHandler {
 		return ageStore;
 	}
 
+	
+	public MoodStorage getMoodStore() {
+		return moodStore;
+	}
+
 	/**
 	 * The Enum StoreType.
 	 */
@@ -148,7 +156,9 @@ public class StorageHandler {
 		/** The depth. */
 		DEPTH,
 		/** The age. */
-		AGE
+		AGE,
+		/* mood */
+		MOOD
 	}
 
 	/**
@@ -160,6 +170,7 @@ public class StorageHandler {
 		depthStore = new GaussianStorage(StoreType.DEPTH);
 		widthStore = new GaussianStorage(StoreType.WIDTH);
 		ageStore = new AgeStorage();
+		moodStore = new MoodStorage();
 		luggageStore = new LuggageStorage();
 		numberOfPassengers = new int[3];
 	}

@@ -455,7 +455,7 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 * @ordered
 	 */
-	protected static final PassengerMood PASSENGER_MOOD_EDEFAULT = PassengerMood.AGRESSIVE;
+	protected static final PassengerMood PASSENGER_MOOD_EDEFAULT = PassengerMood.AGGRESSIVE;
 
 	/**
 	 * The cached value of the '{@link #getPassengerMood() <em>Passenger Mood</em>}' attribute.

@@ -25,7 +25,7 @@
       <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//AircraftType/widebody"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="cabin.ecore#//PassengerMood">
-      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//PassengerMood/agressive"/>
+      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//PassengerMood/aggressive"/>
       <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//PassengerMood/passive"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="cabin.ecore#//LuggageSize">

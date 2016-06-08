@@ -313,7 +313,7 @@ public class PassengerPropertyGenerator {
 
 	private PassengerMood switchRandomMood(double percentageOfAggressiveAgents) {
 		if (RandomHelper.randomValue(0, 100) < percentageOfAggressiveAgents) {
-			return PassengerMood.AGRESSIVE;
+			return PassengerMood.AGGRESSIVE;
 		}
 		return PassengerMood.PASSIVE;
 

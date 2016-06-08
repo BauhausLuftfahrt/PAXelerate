@@ -283,7 +283,7 @@ public class CabinViewPart extends ViewPart {
 			Seat seat = passenger.getSeat();
 
 			switch (passenger.getPassengerMood()) {
-			case AGRESSIVE:
+			case AGGRESSIVE:
 				gc.setBackground(ColorHelper.RED);
 				break;
 			case PASSIVE:
@@ -579,7 +579,7 @@ public class CabinViewPart extends ViewPart {
 				for (Passenger passenger : paxCabin.getPassengers()) {
 					if (MATCH_PASSENGER_COLORS_TO_MOOD) {
 						switch (passenger.getPassengerMood()) {
-						case AGRESSIVE:
+						case AGGRESSIVE:
 							e.gc.setBackground(ColorHelper.RED);
 							break;
 						case PASSIVE:

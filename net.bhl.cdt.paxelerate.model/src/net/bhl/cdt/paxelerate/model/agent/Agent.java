@@ -215,7 +215,7 @@ public class Agent extends Subject implements Runnable {
 				.getSimulationSettings().getLuggageProperties();
 
 		/* generate a mood for the passenger depending on his presets */
-		if (passenger.getPassengerMood() == PassengerMood.AGRESSIVE) {
+		if (passenger.getPassengerMood() == PassengerMood.AGGRESSIVE) {
 			this.agentMood = new AgressiveMood(this);
 		} else if (passenger.getPassengerMood() == PassengerMood.PASSIVE) {
 			this.agentMood = new PassiveMood(this);

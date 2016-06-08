@@ -19,16 +19,14 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum PassengerMood implements Enumerator {
 	/**
-	 * The '<em><b>Agressive</b></em>' literal object.
+	 * The '<em><b>Aggressive</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #AGRESSIVE_VALUE
+	 * @see #AGGRESSIVE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	AGRESSIVE(0, "agressive", "agressive"),
-
-	/**
+	AGGRESSIVE(0, "aggressive", "aggressive"), /**
 	 * The '<em><b>Passive</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -39,19 +37,19 @@ public enum PassengerMood implements Enumerator {
 	PASSIVE(1, "passive", "passive");
 
 	/**
-	 * The '<em><b>Agressive</b></em>' literal value.
+	 * The '<em><b>Aggressive</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Agressive</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Aggressive</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #AGRESSIVE
-	 * @model name="agressive"
+	 * @see #AGGRESSIVE
+	 * @model name="aggressive"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int AGRESSIVE_VALUE = 0;
+	public static final int AGGRESSIVE_VALUE = 0;
 
 	/**
 	 * The '<em><b>Passive</b></em>' literal value.
@@ -76,7 +74,7 @@ public enum PassengerMood implements Enumerator {
 	 */
 	private static final PassengerMood[] VALUES_ARRAY =
 		new PassengerMood[] {
-			AGRESSIVE,
+			AGGRESSIVE,
 			PASSIVE,
 		};
 
@@ -134,7 +132,7 @@ public enum PassengerMood implements Enumerator {
 	 */
 	public static PassengerMood get(int value) {
 		switch (value) {
-			case AGRESSIVE_VALUE: return AGRESSIVE;
+			case AGGRESSIVE_VALUE: return AGGRESSIVE;
 			case PASSIVE_VALUE: return PASSIVE;
 		}
 		return null;
