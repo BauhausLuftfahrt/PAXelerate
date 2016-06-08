@@ -35,6 +35,7 @@ import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.time.StopWatch;
 
+// TODO: Auto-generated Javadoc
 /**
  * This class is the agent object. It walks a specific calculated path and
  * reacts to obstacles occurring on the go.
@@ -70,7 +71,8 @@ public class Agent extends Subject implements Runnable {
 
 	/** The moved once. */
 	private boolean alreadyStowed = false, waitingCompleted = false,
-			initialized = false, exitTheMainLoop = false, movedOnce = false;;
+			initialized = false, exitTheMainLoop = false, movedOnce = false,
+			alreadyUnfolded = false;
 
 	/** The stopwatch. */
 	private StopWatch stopwatch = new StopWatch();
@@ -149,6 +151,8 @@ public class Agent extends Subject implements Runnable {
 		CLEARING_ROW,
 		/** The stowing luggage. */
 		STOWING_LUGGAGE,
+		/** The unfold seat. */
+		UNFOLDING_SEAT,
 		/** The preparing. */
 		PREPARING,
 		/** The queueing up. */
@@ -370,6 +374,15 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
+	 * Checks for luggage.
+	 *
+	 * @return true, if successful
+	 */
+	private boolean hasLuggage() {
+		return (passenger.getLuggage() != LuggageSize.NONE);
+	}
+
+	/**
 	 * This method returns the distance form the seat where PAX is stowing his
 	 * luggage in multiple of the current map scaling.
 	 *
@@ -390,16 +403,13 @@ public class Agent extends Subject implements Runnable {
 	 * @return if the passenger is ready to stow luggage
 	 */
 	public boolean passengerStowsLuggage() {
-
-		/* get the passengers seat */
-		Seat seat = this.passenger.getSeat();
-
 		/*
 		 * return true if the passenger does have luggage and if he is near his
 		 * seat
 		 */
-		return (hasLuggage() && isInXRangeEqual(seat.getXPosition(),
-				getLuggageStowDistance(), false));
+		return (hasLuggage()
+				&& isInXRangeEqual(passenger.getSeat().getXPosition(),
+						getLuggageStowDistance(), false));
 	}
 
 	/**
@@ -441,12 +451,39 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * Checks for luggage.
+	 * Checks for foldable seat.
 	 *
 	 * @return true, if successful
 	 */
-	private boolean hasLuggage() {
-		return (passenger.getLuggage() != LuggageSize.NONE);
+	private boolean hasFoldableSeat() {
+		return (passenger.getSeat().isFoldedAway()
+				|| passenger.getSeat().isFoldedUpwards());
+	}
+
+	/**
+	 * Gets the seat folding distance.
+	 *
+	 * @return the seat folding distance
+	 */
+	private int getSeatFoldingDistance() {
+		// 10 cm?
+		distance = (10 / scale);
+		return (int) distance;
+	}
+
+	/**
+	 * Passenger unfolds seat.
+	 *
+	 * @return true, if successful
+	 */
+	public boolean passengerUnfoldsSeat() {
+		/*
+		 * return true if the passenger does have luggage and if he is near his
+		 * seat
+		 */
+		return (hasFoldableSeat()
+				&& isInXRangeEqual(passenger.getSeat().getXPosition(),
+						getSeatFoldingDistance(), false));
 	}
 
 	/**
@@ -630,8 +667,11 @@ public class Agent extends Subject implements Runnable {
 
 			/* this sets the new start of the A* to the current position */
 			start = currentPosition;
-			
-			/*TODO: set new goal as the intersection of the old path 2-3m meters from the current position */
+
+			/*
+			 * TODO: set new goal as the intersection of the old path 2-3m
+			 * meters from the current position
+			 */
 
 			/* this declares the area around agents as high cost terrain */
 			mutableCostMap = AgentFunctions.updateCostmap(this);
@@ -828,6 +868,30 @@ public class Agent extends Subject implements Runnable {
 
 					/* notify everyone that the luggage is now stowed */
 					alreadyStowed = true;
+
+					/*
+					 * if there is no obstacle or luggage stowing required, run
+					 * the default step
+					 */
+
+				} else if (passengerUnfoldsSeat() && !alreadyUnfolded) {
+
+					setCurrentState(State.UNFOLDING_SEAT);
+					rotateAgent(90);
+
+					/* Unfold seat if necessary */
+					/* Sideways foldable seat */
+					if (passenger.getSeat().isFoldedAway()) {
+						unfoldSeat(
+								simSettings.getSidewaysFoldabeSeatPopupTime());
+
+						/* Lifting seat pan */
+					} else if (passenger.getSeat().isFoldedUpwards()) {
+						unfoldSeat(simSettings.getLiftingSeatPanPopupTime());
+					}
+
+					/* notify everyone that the luggage is now stowed */
+					alreadyUnfolded = true;
 
 					/*
 					 * if there is no obstacle or luggage stowing required, run
@@ -1088,16 +1152,6 @@ public class Agent extends Subject implements Runnable {
 			blockArea(currentPosition, false, false, null);
 			blockArea(desiredPosition, false, false, null);
 
-			/* Unfold seat if necessary */
-			/* Sideways foldable seat */
-			if (passenger.getSeat().isFoldedAway()) {
-				unfoldSeat(simSettings.getSidewaysFoldabeSeatPopupTime());
-
-				/* Lifting seat pan */
-			} else if (passenger.getSeat().isFoldedUpwards()) {
-				unfoldSeat(simSettings.getLiftingSeatPanPopupTime());
-			}
-
 			defineSeated(true);
 
 			/* the boarding time is then submitted back to the passenger */
@@ -1123,7 +1177,8 @@ public class Agent extends Subject implements Runnable {
 	/**
 	 * Unfold sideways foldable seat or lifting seat pan seat.
 	 *
-	 * @param seatPopupTime the seat popup time
+	 * @param seatPopupTime
+	 *            the seat popup time
 	 */
 	private void unfoldSeat(int seatPopupTime) {
 
@@ -1136,6 +1191,9 @@ public class Agent extends Subject implements Runnable {
 		int yPosition = seat.getYPosition() / scale;
 		int xPosition = seat.getXPosition() / scale;
 
+		System.out.println("Passenger " + passenger.getId() + " unfolds Seat "
+				+ seat.getName());
+
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j < length; j++) {
 				int k = yPosition + i;
@@ -1143,7 +1201,7 @@ public class Agent extends Subject implements Runnable {
 				if (k < SimulationHandler.getMap().getDimensions().getY()
 						&& l < SimulationHandler.getMap().getDimensions()
 								.getX()) {
-					SimulationHandler.getMap().get(k, l)
+					SimulationHandler.getMap().get(l, k)
 							.setProperty(Property.OBSTACLE, null);
 				}
 			}

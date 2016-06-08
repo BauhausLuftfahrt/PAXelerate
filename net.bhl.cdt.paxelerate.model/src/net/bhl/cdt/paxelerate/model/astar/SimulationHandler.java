@@ -66,6 +66,8 @@ public class SimulationHandler {
 	/** The dimensions. */
 	private Vector dimensions;
 
+	private static int scale = 1;
+
 	/** The Constant SHOW_AREAMAP_ANIMATION. */
 	public static final boolean SHOW_AREAMAP_ANIMATION = true;
 
@@ -90,6 +92,7 @@ public class SimulationHandler {
 		Log.add(this, "Cabin initializing...");
 		areamaphandler = new AreamapHandler(this.dimensions, cabin);
 		SimulationHandler.cabin = cabin;
+		scale = cabin.getSimulationSettings().getScale();
 		run();
 	}
 
@@ -191,7 +194,7 @@ public class SimulationHandler {
 	public static Boolean isSimulationDone() {
 		return simulationDone;
 	}
-	
+
 	public static void setSimulationStatus(boolean status) {
 		simulationDone = status;
 	}
@@ -265,19 +268,15 @@ public class SimulationHandler {
 		int offset = 5;
 
 		Vector start = new Vector2D(seat.getXPosition() - 2,
-				seat.getYPosition() + seat.getYDimension() / 2,
-				cabin.getSimulationSettings().getScale());
+				seat.getYPosition() + seat.getYDimension() / 2, scale);
 
 		if (pax.getSeat().getXPosition() < pax.getDoor().getXPosition()) {
 			offset = -(offset + 2);
 			System.out.println("offset mirrored");
 		}
 
-		Vector goal = new Vector2D(
-				seat.getXPosition()
-						+ offset * cabin.getSimulationSettings().getScale(),
-				cabin.getYDimension() / 2.0,
-				cabin.getSimulationSettings().getScale());
+		Vector goal = new Vector2D(seat.getXPosition() + offset * scale,
+				cabin.getYDimension() / 2.0, scale);
 
 		Agent agent = new Agent(pax, start, goal,
 				getAgentByPassenger(myself).getCostMap(),
@@ -364,8 +363,7 @@ public class SimulationHandler {
 
 				/* get the 2D position of the door object */
 				Vector doorPosition = new Vector2D(
-						(door.getXPosition() + door.getWidth() / 2), 0,
-						cabin.getSimulationSettings().getScale());
+						(door.getXPosition() + door.getWidth() / 2), 0, scale);
 
 				/* generate a new cost map */
 				Costmap costmap = new Costmap(dimensions, doorPosition,
@@ -388,16 +386,14 @@ public class SimulationHandler {
 			 * which the passenger will use to board the plane
 			 */
 			Vector start = new Vector2D(
-					(door.getXPosition() + door.getWidth() / 2), 0,
-					cabin.getSimulationSettings().getScale());
+					(door.getXPosition() + door.getWidth() / 2), 0, scale);
 
 			/*
 			 * create the goal location. this is the position of the passengers
 			 * seat. The goal is one "PIXEL" in front of the center of the seat.
 			 */
 			Vector goal = new Vector2D((seat.getXPosition()) - 1,
-					seat.getYPosition() + seat.getYDimension() / 2,
-					cabin.getSimulationSettings().getScale());
+					seat.getYPosition() + seat.getYDimension() / 2, scale);
 
 			/*
 			 * Create an agent object for path finding purposes. The cost map is
@@ -497,12 +493,14 @@ public class SimulationHandler {
 		}
 		return numberSkipped;
 	}
-	
+
 	public static int getNumberWaymakingCompleted() {
 		int numberCompleted = 0;
 		for (Passenger pax : finishedList) {
-			numberCompleted = numberCompleted + pax.getNumberOfMakeWayOperations();
+			numberCompleted = numberCompleted
+					+ pax.getNumberOfMakeWayOperations();
 		}
 		return numberCompleted;
 	}
+
 }
