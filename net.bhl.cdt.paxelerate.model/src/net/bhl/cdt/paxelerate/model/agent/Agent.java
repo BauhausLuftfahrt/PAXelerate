@@ -67,7 +67,7 @@ public class Agent extends Subject implements Runnable {
 	/** The moved once. */
 	private boolean alreadyStowed = false, waitingCompleted = false,
 			initialized = false, exitTheMainLoop = false, movedOnce = false,
-			alreadyUnfolded = false;
+			foldingSeats = false, stowingAtSeat = false;
 
 	/** The stopwatch. */
 	private StopWatch stopwatch = new StopWatch();
@@ -212,6 +212,8 @@ public class Agent extends Subject implements Runnable {
 		this.simSettings = SimulationHandler.getCabin().getSimulationSettings();
 		this.simLuggageSettings = SimulationHandler.getCabin()
 				.getSimulationSettings().getLuggageProperties();
+		this.foldingSeats = (simSettings.isUseSidewaysFoldableSeats()
+				|| simSettings.isUseLiftingSeatPanSeats());
 
 		/* generate a mood for the passenger depending on his presets */
 		if (passenger.getPassengerMood() == PassengerMood.AGGRESSIVE) {
@@ -847,7 +849,8 @@ public class Agent extends Subject implements Runnable {
 					 * if there is no obstacle in the way, check if the luggage
 					 * should be stowed now next
 					 */
-				} else if (passengerStowsLuggage() && !alreadyStowed) {
+				} else if (foldingSeats && !stowingAtSeat && !alreadyStowed
+						&& passengerStowsLuggage()) {
 
 					/*
 					 * decision point: normal luggage stowing distance if the
@@ -855,55 +858,32 @@ public class Agent extends Subject implements Runnable {
 					 * directly at the seat position TODO: case if seat is
 					 * unfolded in the meantime
 					 */
-					if ((passenger.getSeat().isFoldedAway()
-							|| passenger.getSeat().isFoldedUpwards())) {
-						/* distance is set to zero */
-						passenger.setLuggageStowDistance(0.0);
-					} else {
 
-						setCurrentState(State.STOWING_LUGGAGE);
-						rotateAgent(90);
-
-						/* sleep the thread as long as the luggage is stowed */
-						Thread.sleep(AStarHelper
-								.time(passenger.getLuggageStowTime()));
-
-						/* notify everyone that the luggage is now stowed */
-						alreadyStowed = true;
-
+					if (passenger.getSeat().isFoldedAway()
+							|| passenger.getSeat().isFoldedUpwards()) {
+						// distance is set to zero
+						stowingAtSeat = true;
 					}
 
-					/*
-					 * if there is no obstacle or luggage stowing required, run
-					 * the default step
-					 */
+				} else if (!alreadyStowed && !stowingAtSeat
+						&& passengerStowsLuggage()) {
 
-				} else if (passengerUnfoldsSeat() && !alreadyUnfolded
-						&& alreadyStowed) {
-
-					setCurrentState(State.UNFOLDING_SEAT);
+					setCurrentState(State.STOWING_LUGGAGE);
 					rotateAgent(90);
 
-					/* Unfold seat if necessary */
-					/* Sideways foldable seat */
-					if (passenger.getSeat().isFoldedAway()) {
-						unfoldSeat(
-								simSettings.getSidewaysFoldabeSeatPopupTime());
-
-						/* Lifting seat pan */
-					} else if (passenger.getSeat().isFoldedUpwards()) {
-						unfoldSeat(simSettings.getLiftingSeatPanPopupTime());
-					}
+					/* sleep the thread as long as the luggage is stowed */
+					Thread.sleep(
+							AStarHelper.time(passenger.getLuggageStowTime()));
 
 					/* notify everyone that the luggage is now stowed */
-					alreadyUnfolded = true;
+					alreadyStowed = true;
 
 					/*
-					 * if there is no obstacle or luggage stowing required, run
-					 * the default step
+					 * } if there is no obstacle or luggage stowing required,
+					 * run the default step
 					 */
 
-				} else if (waitingForClearingOfRow() && !waitingCompleted) {
+				} else if (!waitingCompleted && waitingForClearingOfRow()) {
 
 					setCurrentState(State.WAITING_FOR_ROW_CLEARING);
 
@@ -1181,6 +1161,37 @@ public class Agent extends Subject implements Runnable {
 
 	}
 
+	private void stowLuggage() {
+
+		setCurrentState(State.STOWING_LUGGAGE);
+
+		/* sleep the thread as long as the luggage is stowed */
+		try {
+			Thread.sleep(AStarHelper.time(passenger.getLuggageStowTime()));
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		/* notify everyone that the luggage is now stowed */
+		alreadyStowed = true;
+
+	}
+
+	private void unfoldingSeatProcedure() {
+
+		setCurrentState(State.UNFOLDING_SEAT);
+		// rotateAgent(90);
+
+		/* Unfold seat if necessary */
+		/* Sideways foldable seat */
+		if (passenger.getSeat().isFoldedAway()) {
+			unfoldSeat(simSettings.getSidewaysFoldabeSeatPopupTime());
+
+			/* Lifting seat pan */
+		} else if (passenger.getSeat().isFoldedUpwards()) {
+			unfoldSeat(simSettings.getLiftingSeatPanPopupTime());
+		}
+	}
+
 	/**
 	 * Unfold sideways foldable seat or lifting seat pan seat.
 	 *
@@ -1372,6 +1383,17 @@ public class Agent extends Subject implements Runnable {
 				SimulationHandler.removeFromWaymakingList(passenger);
 			}
 
+			//
+			if (stowingAtSeat) {
+				stowLuggage();
+			}
+
+			//
+			if (foldingSeats) {
+				unfoldingSeatProcedure();
+			}
+
+			//
 			performFinalElements();
 
 		} catch (InterruptedException e) {
