@@ -14,6 +14,7 @@ import net.bhl.cdt.paxelerate.model.ObjectOption;
 import net.bhl.cdt.paxelerate.model.PhysicalObject;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
+import net.bhl.cdt.paxelerate.model.SeatType;
 import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 import net.bhl.cdt.paxelerate.model.util.POHelper;
@@ -309,7 +310,7 @@ public class ObstacleGenerator {
 				 * folded
 				 */
 				if (cabin.getSimulationSettings().isUseSidewaysFoldableSeats()
-						&& seat.isFoldedAway()) {
+						&& seat.getSeatType() == SeatType.FOLDED_AWAY) {
 
 					/* if so, do not create an obstacle for that seat */
 					continue;
@@ -318,7 +319,8 @@ public class ObstacleGenerator {
 					 * check for folding seat pans and if it is currently folded
 					 */
 				} else if (cabin.getSimulationSettings()
-						.isUseLiftingSeatPanSeats() && seat.isFoldedUpwards()) {
+						.isUseLiftingSeatPanSeats()
+						&& seat.getSeatType() == SeatType.FOLDED_UPWARDS) {
 
 					/* only the backrest is visible (percentage value) */
 					int backrestThickness = 20;

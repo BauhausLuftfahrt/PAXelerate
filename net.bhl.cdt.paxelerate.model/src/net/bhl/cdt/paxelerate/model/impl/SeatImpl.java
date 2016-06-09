@@ -11,6 +11,7 @@ import net.bhl.cdt.paxelerate.model.CabinPackage;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
+import net.bhl.cdt.paxelerate.model.SeatType;
 import net.bhl.cdt.paxelerate.model.TravelClass;
 
 /**
@@ -28,8 +29,7 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SeatImpl#getRow <em>Row</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SeatImpl#isOccupied <em>Occupied</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SeatImpl#getPassenger <em>Passenger</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SeatImpl#isFoldedAway <em>Folded Away</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SeatImpl#isFoldedUpwards <em>Folded Upwards</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SeatImpl#getSeatType <em>Seat Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -146,44 +146,24 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 	protected Passenger passenger;
 
 	/**
-	 * The default value of the '{@link #isFoldedAway() <em>Folded Away</em>}' attribute.
+	 * The default value of the '{@link #getSeatType() <em>Seat Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isFoldedAway()
+	 * @see #getSeatType()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean FOLDED_AWAY_EDEFAULT = false;
+	protected static final SeatType SEAT_TYPE_EDEFAULT = SeatType.DEFAULT;
 
 	/**
-	 * The cached value of the '{@link #isFoldedAway() <em>Folded Away</em>}' attribute.
+	 * The cached value of the '{@link #getSeatType() <em>Seat Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isFoldedAway()
+	 * @see #getSeatType()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean foldedAway = FOLDED_AWAY_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isFoldedUpwards() <em>Folded Upwards</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isFoldedUpwards()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean FOLDED_UPWARDS_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isFoldedUpwards() <em>Folded Upwards</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isFoldedUpwards()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean foldedUpwards = FOLDED_UPWARDS_EDEFAULT;
+	protected SeatType seatType = SEAT_TYPE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -444,8 +424,8 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isFoldedAway() {
-		return foldedAway;
+	public SeatType getSeatType() {
+		return seatType;
 	}
 
 	/**
@@ -453,32 +433,11 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setFoldedAway(boolean newFoldedAway) {
-		boolean oldFoldedAway = foldedAway;
-		foldedAway = newFoldedAway;
+	public void setSeatType(SeatType newSeatType) {
+		SeatType oldSeatType = seatType;
+		seatType = newSeatType == null ? SEAT_TYPE_EDEFAULT : newSeatType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SEAT__FOLDED_AWAY, oldFoldedAway, foldedAway));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isFoldedUpwards() {
-		return foldedUpwards;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setFoldedUpwards(boolean newFoldedUpwards) {
-		boolean oldFoldedUpwards = foldedUpwards;
-		foldedUpwards = newFoldedUpwards;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SEAT__FOLDED_UPWARDS, oldFoldedUpwards, foldedUpwards));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SEAT__SEAT_TYPE, oldSeatType, seatType));
 	}
 
 	/**
@@ -511,10 +470,8 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 			case CabinPackage.SEAT__PASSENGER:
 				if (resolve) return getPassenger();
 				return basicGetPassenger();
-			case CabinPackage.SEAT__FOLDED_AWAY:
-				return isFoldedAway();
-			case CabinPackage.SEAT__FOLDED_UPWARDS:
-				return isFoldedUpwards();
+			case CabinPackage.SEAT__SEAT_TYPE:
+				return getSeatType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -551,11 +508,8 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 			case CabinPackage.SEAT__PASSENGER:
 				setPassenger((Passenger)newValue);
 				return;
-			case CabinPackage.SEAT__FOLDED_AWAY:
-				setFoldedAway((Boolean)newValue);
-				return;
-			case CabinPackage.SEAT__FOLDED_UPWARDS:
-				setFoldedUpwards((Boolean)newValue);
+			case CabinPackage.SEAT__SEAT_TYPE:
+				setSeatType((SeatType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -592,11 +546,8 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 			case CabinPackage.SEAT__PASSENGER:
 				setPassenger((Passenger)null);
 				return;
-			case CabinPackage.SEAT__FOLDED_AWAY:
-				setFoldedAway(FOLDED_AWAY_EDEFAULT);
-				return;
-			case CabinPackage.SEAT__FOLDED_UPWARDS:
-				setFoldedUpwards(FOLDED_UPWARDS_EDEFAULT);
+			case CabinPackage.SEAT__SEAT_TYPE:
+				setSeatType(SEAT_TYPE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -627,10 +578,8 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 				return occupied != OCCUPIED_EDEFAULT;
 			case CabinPackage.SEAT__PASSENGER:
 				return passenger != null;
-			case CabinPackage.SEAT__FOLDED_AWAY:
-				return foldedAway != FOLDED_AWAY_EDEFAULT;
-			case CabinPackage.SEAT__FOLDED_UPWARDS:
-				return foldedUpwards != FOLDED_UPWARDS_EDEFAULT;
+			case CabinPackage.SEAT__SEAT_TYPE:
+				return seatType != SEAT_TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -655,10 +604,8 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 		result.append(letter);
 		result.append(", occupied: ");
 		result.append(occupied);
-		result.append(", foldedAway: ");
-		result.append(foldedAway);
-		result.append(", foldedUpwards: ");
-		result.append(foldedUpwards);
+		result.append(", seatType: ");
+		result.append(seatType);
 		result.append(')');
 		return result.toString();
 	}

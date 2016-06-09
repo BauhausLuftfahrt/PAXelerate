@@ -19,6 +19,7 @@ import net.bhl.cdt.paxelerate.model.PassengerProperties;
 import net.bhl.cdt.paxelerate.model.PhysicalObject;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
+import net.bhl.cdt.paxelerate.model.SeatType;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
 import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.util.PassengerGenerator;
@@ -167,31 +168,31 @@ public class DrawCabinCommand extends CDTCommand {
 		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
 			/* Bring your own seat */
 			if (cabin.getSimulationSettings().isBringYourOwnSeat()) {
-				seat.setFoldedAway(true);
+				seat.setSeatType(SeatType.FOLDED_AWAY);
+				;
 
 				/* Sideways foldable seat */
 			} else if (cabin.getSimulationSettings().isUseSidewaysFoldableSeats()) {
 				/* Aisle seats are set foldable */
 				if (seat.getLetter().contains("C")) {
-					seat.setFoldedAway(true);
+					seat.setSeatType(SeatType.FOLDED_AWAY);
 				} else if (seat.getLetter().contains("D")) {
-					seat.setFoldedAway(true);
+					seat.setSeatType(SeatType.FOLDED_AWAY);
 				} else {
-					seat.setFoldedAway(false);
+					seat.setSeatType(SeatType.DEFAULT);
 				}
 				/* Lifting seat pan */
 			} else if (cabin.getSimulationSettings().isUseLiftingSeatPanSeats()) {
 				/* Aisle seats are set foldable */
 				if (seat.getLetter().contains("C")) {
-					seat.setFoldedUpwards(true);
+					seat.setSeatType(SeatType.FOLDED_UPWARDS);
 				} else if (seat.getLetter().contains("D")) {
-					seat.setFoldedUpwards(true);
+					seat.setSeatType(SeatType.FOLDED_UPWARDS);
 				} else {
-					seat.setFoldedUpwards(false);
+					seat.setSeatType(SeatType.DEFAULT);
 				}
 			} else {
-				seat.setFoldedAway(false);
-				seat.setFoldedUpwards(false);
+				seat.setSeatType(SeatType.DEFAULT);
 			}
 		}
 	}

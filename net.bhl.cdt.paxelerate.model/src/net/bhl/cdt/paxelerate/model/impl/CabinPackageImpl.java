@@ -241,6 +241,13 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum seatTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->.
 	 *
 	 * @generated 
@@ -898,17 +905,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSeat_FoldedAway() {
+	public EAttribute getSeat_SeatType() {
         return (EAttribute)getSeat().getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSeat_FoldedUpwards() {
-        return (EAttribute)getSeat().getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -2252,6 +2250,18 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 			doorOptionEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(25);
 		}
 		return doorOptionEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getSeatType() {
+		if (seatTypeEEnum == null) {
+			seatTypeEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(26);
+		}
+		return seatTypeEEnum;
 	}
 
 	/**

@@ -89,10 +89,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="row" lowerBound="1" eType="#//Row"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="occupied" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="passenger" eType="#//Passenger"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="foldedAway" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="foldedUpwards" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatType" lowerBound="1"
+        eType="#//SeatType" defaultValueLiteral="Default"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Passenger">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -346,5 +344,10 @@
     <eLiterals name="MainDoor"/>
     <eLiterals name="StandardDoor" value="1"/>
     <eLiterals name="EmergencyExit" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SeatType">
+    <eLiterals name="Default"/>
+    <eLiterals name="FoldedAway" value="1"/>
+    <eLiterals name="FoldedUpwards" value="2" literal=""/>
   </eClassifiers>
 </ecore:EPackage>

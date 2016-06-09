@@ -20,8 +20,7 @@ package net.bhl.cdt.paxelerate.model;
  *   <li>{@link net.bhl.cdt.paxelerate.model.Seat#getRow <em>Row</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Seat#isOccupied <em>Occupied</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Seat#getPassenger <em>Passenger</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Seat#isFoldedAway <em>Folded Away</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Seat#isFoldedUpwards <em>Folded Upwards</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Seat#getSeatType <em>Seat Type</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSeat()
@@ -212,57 +211,33 @@ public interface Seat extends PhysicalObject {
 	void setPassenger(Passenger value);
 
 	/**
-	 * Returns the value of the '<em><b>Folded Away</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
+	 * Returns the value of the '<em><b>Seat Type</b></em>' attribute.
+	 * The default value is <code>"Default"</code>.
+	 * The literals are from the enumeration {@link net.bhl.cdt.paxelerate.model.SeatType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Folded Away</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Seat Type</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Folded Away</em>' attribute.
-	 * @see #setFoldedAway(boolean)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSeat_FoldedAway()
-	 * @model default="false"
+	 * @return the value of the '<em>Seat Type</em>' attribute.
+	 * @see net.bhl.cdt.paxelerate.model.SeatType
+	 * @see #setSeatType(SeatType)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSeat_SeatType()
+	 * @model default="Default" required="true"
 	 * @generated
 	 */
-	boolean isFoldedAway();
+	SeatType getSeatType();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Seat#isFoldedAway <em>Folded Away</em>}' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Seat#getSeatType <em>Seat Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Folded Away</em>' attribute.
-	 * @see #isFoldedAway()
+	 * @param value the new value of the '<em>Seat Type</em>' attribute.
+	 * @see net.bhl.cdt.paxelerate.model.SeatType
+	 * @see #getSeatType()
 	 * @generated
 	 */
-	void setFoldedAway(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Folded Upwards</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Folded Upwards</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Folded Upwards</em>' attribute.
-	 * @see #setFoldedUpwards(boolean)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSeat_FoldedUpwards()
-	 * @model default="false"
-	 * @generated
-	 */
-	boolean isFoldedUpwards();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Seat#isFoldedUpwards <em>Folded Upwards</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Folded Upwards</em>' attribute.
-	 * @see #isFoldedUpwards()
-	 * @generated
-	 */
-	void setFoldedUpwards(boolean value);
+	void setSeatType(SeatType value);
 
 } // Seat

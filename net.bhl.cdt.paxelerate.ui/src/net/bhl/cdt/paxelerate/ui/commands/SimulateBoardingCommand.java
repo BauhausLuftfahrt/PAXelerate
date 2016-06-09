@@ -94,7 +94,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 				CabinViewPart cabinViewPart = ViewPartHelper.getCabinView();
 
-				simulationloop: for (int simulationLoopIndex = 0; simulationLoopIndex < cabin.getSimulationSettings()
+				simulationloop: for (int simulationLoopIndex = 1; simulationLoopIndex <= cabin.getSimulationSettings()
 						.getNumberOfSimulationLoops(); simulationLoopIndex++) {
 
 					/*
@@ -152,7 +152,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 					Vector dimensions = new Vector2D(cabin.getXDimension(), cabin.getYDimension(),
 							cabin.getSimulationSettings().getScale());
 
-					new SimulationHandler(dimensions, cabin);
+					new SimulationHandler(dimensions, cabin, simulationLoopIndex);
 
 					// WIP
 					FileSaver.saveObstacleToFile(SimulationHandler.getMap(), dimensions);

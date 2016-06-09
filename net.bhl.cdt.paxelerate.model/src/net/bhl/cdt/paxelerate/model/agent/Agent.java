@@ -18,6 +18,7 @@ import net.bhl.cdt.paxelerate.model.LuggageSize;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.PassengerMood;
 import net.bhl.cdt.paxelerate.model.Seat;
+import net.bhl.cdt.paxelerate.model.SeatType;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
 import net.bhl.cdt.paxelerate.model.astar.AStarHelper;
 import net.bhl.cdt.paxelerate.model.astar.Core;
@@ -448,8 +449,9 @@ public class Agent extends Subject implements Runnable {
 	 * @return true, if successful
 	 */
 	private boolean hasFoldableSeat() {
-		return (passenger.getSeat().isFoldedAway()
-				|| passenger.getSeat().isFoldedUpwards());
+		return (passenger.getSeat().getSeatType() == SeatType.FOLDED_AWAY
+				|| passenger.getSeat()
+						.getSeatType() == SeatType.FOLDED_UPWARDS);
 	}
 
 	/**
@@ -859,8 +861,7 @@ public class Agent extends Subject implements Runnable {
 					 * unfolded in the meantime
 					 */
 
-					if (passenger.getSeat().isFoldedAway()
-							|| passenger.getSeat().isFoldedUpwards()) {
+					if (hasFoldableSeat()) {
 						// distance is set to zero
 						stowingAtSeat = true;
 					}
@@ -1183,11 +1184,12 @@ public class Agent extends Subject implements Runnable {
 
 		/* Unfold seat if necessary */
 		/* Sideways foldable seat */
-		if (passenger.getSeat().isFoldedAway()) {
+		if (passenger.getSeat().getSeatType() == SeatType.FOLDED_AWAY) {
 			unfoldSeat(simSettings.getSidewaysFoldabeSeatPopupTime());
 
 			/* Lifting seat pan */
-		} else if (passenger.getSeat().isFoldedUpwards()) {
+		} else if (passenger.getSeat()
+				.getSeatType() == SeatType.FOLDED_UPWARDS) {
 			unfoldSeat(simSettings.getLiftingSeatPanPopupTime());
 		}
 	}
@@ -1201,8 +1203,7 @@ public class Agent extends Subject implements Runnable {
 	private void unfoldSeat(int seatPopupTime) {
 
 		Seat seat = passenger.getSeat();
-		seat.setFoldedAway(false);
-		seat.setFoldedUpwards(false);
+		seat.setSeatType(SeatType.DEFAULT);
 
 		int width = seat.getYDimension() / scale;
 		int length = seat.getXDimension() / scale;

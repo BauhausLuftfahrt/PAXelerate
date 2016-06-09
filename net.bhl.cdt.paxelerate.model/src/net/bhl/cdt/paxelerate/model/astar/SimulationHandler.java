@@ -65,6 +65,12 @@ public class SimulationHandler {
 
 	private static int scale = 1;
 
+	private static int simulationLoopIndex;
+
+	public static int getSimulationLoopIndex() {
+		return simulationLoopIndex;
+	}
+
 	/** The Constant SHOW_AREAMAP_ANIMATION. */
 	public static final boolean SHOW_AREAMAP_ANIMATION = true;
 
@@ -83,9 +89,12 @@ public class SimulationHandler {
 	 *            is the dimension vector
 	 * @param cabin
 	 *            is the cabin
+	 * @param simulationLoopIndex
 	 */
-	public SimulationHandler(Vector dimensions, Cabin cabin) {
+	public SimulationHandler(Vector dimensions, Cabin cabin,
+			int simulationLoopIndex) {
 		this.dimensions = dimensions;
+		this.simulationLoopIndex = simulationLoopIndex;
 		Log.add(this, "Cabin initializing...");
 		areamaphandler = new AreamapHandler(this.dimensions, cabin);
 		SimulationHandler.cabin = cabin;

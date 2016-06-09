@@ -214,6 +214,9 @@ public class SimulationView extends JPanel implements MouseListener {
 				+ SimulationHandler.getActivePassengers() + " / " + SimulationHandler.getCabin().getPassengers().size(),
 				10, 60);
 
+		g.drawString("Loop Number: " + SimulationHandler.getSimulationLoopIndex() + " / "
+				+ SimulationHandler.getCabin().getSimulationSettings().getNumberOfSimulationLoops(), 10, 80);
+
 		Point mouse = getMousePosition();
 
 		if (mouse != null) {

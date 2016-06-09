@@ -159,6 +159,8 @@ public class CabinValidator extends EObjectValidator {
 				return validateObjectOption((ObjectOption)value, diagnostics, context);
 			case CabinPackage.DOOR_OPTION:
 				return validateDoorOption((DoorOption)value, diagnostics, context);
+			case CabinPackage.SEAT_TYPE:
+				return validateSeatType((SeatType)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -636,6 +638,15 @@ public class CabinValidator extends EObjectValidator {
 	 * @generated 
 	 */
 	public boolean validateDoorOption(DoorOption doorOption, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateSeatType(SeatType seatType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
