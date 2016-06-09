@@ -46,7 +46,7 @@ public enum SeatType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	FOLDED_UPWARDS(2, "FoldedUpwards", "");
+	FOLDED_UPWARDS(2, "FoldedUpwards", "FoldedUpwards");
 
 	/**
 	 * The '<em><b>Default</b></em>' literal value.
@@ -87,7 +87,7 @@ public enum SeatType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #FOLDED_UPWARDS
-	 * @model name="FoldedUpwards" literal=""
+	 * @model name="FoldedUpwards"
 	 * @generated
 	 * @ordered
 	 */

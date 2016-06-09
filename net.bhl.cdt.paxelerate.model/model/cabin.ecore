@@ -348,6 +348,6 @@
   <eClassifiers xsi:type="ecore:EEnum" name="SeatType">
     <eLiterals name="Default"/>
     <eLiterals name="FoldedAway" value="1"/>
-    <eLiterals name="FoldedUpwards" value="2" literal=""/>
+    <eLiterals name="FoldedUpwards" value="2" literal="FoldedUpwards"/>
   </eClassifiers>
 </ecore:EPackage>
