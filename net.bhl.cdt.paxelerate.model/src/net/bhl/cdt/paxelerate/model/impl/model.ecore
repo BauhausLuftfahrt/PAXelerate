@@ -206,12 +206,6 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="1"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="randomSortBetweenLoops"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="useSidewaysFoldableSeats"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="useLiftingSeatPanSeats"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bringYourOwnSeat" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="results" upperBound="-1"
         eType="#//SimulationResult"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sorting" eType="#//SortingStyle"/>
@@ -240,6 +234,8 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="5"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="liftingSeatPanPopupTime"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="2"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="layoutConcept" lowerBound="1"
+        eType="#//LayoutConcept" defaultValueLiteral="Default"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LuggageProperties">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="luggageStowDistanceFromSeatMean"
@@ -349,5 +345,11 @@
     <eLiterals name="Default"/>
     <eLiterals name="FoldedAway" value="1"/>
     <eLiterals name="FoldedUpwards" value="2" literal="FoldedUpwards"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LayoutConcept">
+    <eLiterals name="Default"/>
+    <eLiterals name="SidwaysFoldableSeat" value="1"/>
+    <eLiterals name="LiftingSeatPanSeats" value="2"/>
+    <eLiterals name="bringYourOwnSeat" value="3"/>
   </eClassifiers>
 </ecore:EPackage>

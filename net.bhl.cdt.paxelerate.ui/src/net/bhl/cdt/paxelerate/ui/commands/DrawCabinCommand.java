@@ -13,6 +13,7 @@ import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
+import net.bhl.cdt.paxelerate.model.LayoutConcept;
 import net.bhl.cdt.paxelerate.model.LuggageProperties;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.PassengerProperties;
@@ -167,12 +168,12 @@ public class DrawCabinCommand extends CDTCommand {
 	private void checkFoldableSeats() {
 		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
 			/* Bring your own seat */
-			if (cabin.getSimulationSettings().isBringYourOwnSeat()) {
+			if (cabin.getSimulationSettings().getLayoutConcept() == LayoutConcept.BRING_YOUR_OWN_SEAT) {
 				seat.setSeatType(SeatType.FOLDED_AWAY);
 				;
 
 				/* Sideways foldable seat */
-			} else if (cabin.getSimulationSettings().isUseSidewaysFoldableSeats()) {
+			} else if (cabin.getSimulationSettings().getLayoutConcept() == LayoutConcept.SIDWAYS_FOLDABLE_SEAT) {
 				/* Aisle seats are set foldable */
 				if (seat.getLetter().contains("C")) {
 					seat.setSeatType(SeatType.FOLDED_AWAY);
@@ -182,7 +183,7 @@ public class DrawCabinCommand extends CDTCommand {
 					seat.setSeatType(SeatType.DEFAULT);
 				}
 				/* Lifting seat pan */
-			} else if (cabin.getSimulationSettings().isUseLiftingSeatPanSeats()) {
+			} else if (cabin.getSimulationSettings().getLayoutConcept() == LayoutConcept.SIDWAYS_FOLDABLE_SEAT) {
 				/* Aisle seats are set foldable */
 				if (seat.getLetter().contains("C")) {
 					seat.setSeatType(SeatType.FOLDED_UPWARDS);

@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import net.bhl.cdt.paxelerate.model.CabinPackage;
+import net.bhl.cdt.paxelerate.model.LayoutConcept;
 import net.bhl.cdt.paxelerate.model.LuggageProperties;
 import net.bhl.cdt.paxelerate.model.PassengerProperties;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
@@ -33,9 +34,6 @@ import net.bhl.cdt.paxelerate.model.SortingStyle;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isSimulateWithoutUI <em>Simulate Without UI</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getNumberOfSimulationLoops <em>Number Of Simulation Loops</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isRandomSortBetweenLoops <em>Random Sort Between Loops</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isUseSidewaysFoldableSeats <em>Use Sideways Foldable Seats</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isUseLiftingSeatPanSeats <em>Use Lifting Seat Pan Seats</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isBringYourOwnSeat <em>Bring Your Own Seat</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getResults <em>Results</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSorting <em>Sorting</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}</li>
@@ -50,6 +48,7 @@ import net.bhl.cdt.paxelerate.model.SortingStyle;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isDisplayMap <em>Display Map</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSidewaysFoldabeSeatPopupTime <em>Sideways Foldabe Seat Popup Time</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getLiftingSeatPanPopupTime <em>Lifting Seat Pan Popup Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getLayoutConcept <em>Layout Concept</em>}</li>
  * </ul>
  *
  * @generated
@@ -174,66 +173,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * @ordered
 	 */
 	protected boolean randomSortBetweenLoops = RANDOM_SORT_BETWEEN_LOOPS_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isUseSidewaysFoldableSeats() <em>Use Sideways Foldable Seats</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isUseSidewaysFoldableSeats()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean USE_SIDEWAYS_FOLDABLE_SEATS_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isUseSidewaysFoldableSeats() <em>Use Sideways Foldable Seats</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isUseSidewaysFoldableSeats()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean useSidewaysFoldableSeats = USE_SIDEWAYS_FOLDABLE_SEATS_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isUseLiftingSeatPanSeats() <em>Use Lifting Seat Pan Seats</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isUseLiftingSeatPanSeats()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean USE_LIFTING_SEAT_PAN_SEATS_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isUseLiftingSeatPanSeats() <em>Use Lifting Seat Pan Seats</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isUseLiftingSeatPanSeats()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean useLiftingSeatPanSeats = USE_LIFTING_SEAT_PAN_SEATS_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isBringYourOwnSeat() <em>Bring Your Own Seat</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isBringYourOwnSeat()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean BRING_YOUR_OWN_SEAT_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isBringYourOwnSeat() <em>Bring Your Own Seat</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isBringYourOwnSeat()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean bringYourOwnSeat = BRING_YOUR_OWN_SEAT_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getResults() <em>Results</em>}' reference list.
@@ -486,6 +425,26 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	protected int liftingSeatPanPopupTime = LIFTING_SEAT_PAN_POPUP_TIME_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getLayoutConcept() <em>Layout Concept</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLayoutConcept()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final LayoutConcept LAYOUT_CONCEPT_EDEFAULT = LayoutConcept.DEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getLayoutConcept() <em>Layout Concept</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLayoutConcept()
+	 * @generated
+	 * @ordered
+	 */
+	protected LayoutConcept layoutConcept = LAYOUT_CONCEPT_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->.
 	 *
@@ -655,73 +614,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 		randomSortBetweenLoops = newRandomSortBetweenLoops;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS, oldRandomSortBetweenLoops, randomSortBetweenLoops));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isUseSidewaysFoldableSeats() {
-		return useSidewaysFoldableSeats;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setUseSidewaysFoldableSeats(boolean newUseSidewaysFoldableSeats) {
-		boolean oldUseSidewaysFoldableSeats = useSidewaysFoldableSeats;
-		useSidewaysFoldableSeats = newUseSidewaysFoldableSeats;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__USE_SIDEWAYS_FOLDABLE_SEATS, oldUseSidewaysFoldableSeats, useSidewaysFoldableSeats));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isUseLiftingSeatPanSeats() {
-		return useLiftingSeatPanSeats;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setUseLiftingSeatPanSeats(boolean newUseLiftingSeatPanSeats) {
-		boolean oldUseLiftingSeatPanSeats = useLiftingSeatPanSeats;
-		useLiftingSeatPanSeats = newUseLiftingSeatPanSeats;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__USE_LIFTING_SEAT_PAN_SEATS, oldUseLiftingSeatPanSeats, useLiftingSeatPanSeats));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->.
-	 *
-	 * @return true, if is bring your own seat
-	 * @generated 
-	 */
-	public boolean isBringYourOwnSeat() {
-		return bringYourOwnSeat;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->.
-	 *
-	 * @param newBringYourOwnSeat the new bring your own seat
-	 * @generated 
-	 */
-	public void setBringYourOwnSeat(boolean newBringYourOwnSeat) {
-		boolean oldBringYourOwnSeat = bringYourOwnSeat;
-		bringYourOwnSeat = newBringYourOwnSeat;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT, oldBringYourOwnSeat, bringYourOwnSeat));
 	}
 
 	/**
@@ -1101,6 +993,27 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LayoutConcept getLayoutConcept() {
+		return layoutConcept;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLayoutConcept(LayoutConcept newLayoutConcept) {
+		LayoutConcept oldLayoutConcept = layoutConcept;
+		layoutConcept = newLayoutConcept == null ? LAYOUT_CONCEPT_EDEFAULT : newLayoutConcept;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT, oldLayoutConcept, layoutConcept));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->.
 	 *
 	 * @param otherEnd the other end
@@ -1145,12 +1058,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return getNumberOfSimulationLoops();
 			case CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS:
 				return isRandomSortBetweenLoops();
-			case CabinPackage.SIMULATION_PROPERTIES__USE_SIDEWAYS_FOLDABLE_SEATS:
-				return isUseSidewaysFoldableSeats();
-			case CabinPackage.SIMULATION_PROPERTIES__USE_LIFTING_SEAT_PAN_SEATS:
-				return isUseLiftingSeatPanSeats();
-			case CabinPackage.SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT:
-				return isBringYourOwnSeat();
 			case CabinPackage.SIMULATION_PROPERTIES__RESULTS:
 				return getResults();
 			case CabinPackage.SIMULATION_PROPERTIES__SORTING:
@@ -1179,6 +1086,8 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return getSidewaysFoldabeSeatPopupTime();
 			case CabinPackage.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME:
 				return getLiftingSeatPanPopupTime();
+			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
+				return getLayoutConcept();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1212,15 +1121,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS:
 				setRandomSortBetweenLoops((Boolean)newValue);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__USE_SIDEWAYS_FOLDABLE_SEATS:
-				setUseSidewaysFoldableSeats((Boolean)newValue);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__USE_LIFTING_SEAT_PAN_SEATS:
-				setUseLiftingSeatPanSeats((Boolean)newValue);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT:
-				setBringYourOwnSeat((Boolean)newValue);
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__RESULTS:
 				getResults().clear();
@@ -1265,6 +1165,9 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME:
 				setLiftingSeatPanPopupTime((Integer)newValue);
 				return;
+			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
+				setLayoutConcept((LayoutConcept)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1296,15 +1199,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS:
 				setRandomSortBetweenLoops(RANDOM_SORT_BETWEEN_LOOPS_EDEFAULT);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__USE_SIDEWAYS_FOLDABLE_SEATS:
-				setUseSidewaysFoldableSeats(USE_SIDEWAYS_FOLDABLE_SEATS_EDEFAULT);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__USE_LIFTING_SEAT_PAN_SEATS:
-				setUseLiftingSeatPanSeats(USE_LIFTING_SEAT_PAN_SEATS_EDEFAULT);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT:
-				setBringYourOwnSeat(BRING_YOUR_OWN_SEAT_EDEFAULT);
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__RESULTS:
 				getResults().clear();
@@ -1348,6 +1242,9 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME:
 				setLiftingSeatPanPopupTime(LIFTING_SEAT_PAN_POPUP_TIME_EDEFAULT);
 				return;
+			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
+				setLayoutConcept(LAYOUT_CONCEPT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1375,12 +1272,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return numberOfSimulationLoops != NUMBER_OF_SIMULATION_LOOPS_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS:
 				return randomSortBetweenLoops != RANDOM_SORT_BETWEEN_LOOPS_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__USE_SIDEWAYS_FOLDABLE_SEATS:
-				return useSidewaysFoldableSeats != USE_SIDEWAYS_FOLDABLE_SEATS_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__USE_LIFTING_SEAT_PAN_SEATS:
-				return useLiftingSeatPanSeats != USE_LIFTING_SEAT_PAN_SEATS_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT:
-				return bringYourOwnSeat != BRING_YOUR_OWN_SEAT_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__RESULTS:
 				return results != null && !results.isEmpty();
 			case CabinPackage.SIMULATION_PROPERTIES__SORTING:
@@ -1409,6 +1300,8 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return sidewaysFoldabeSeatPopupTime != SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME:
 				return liftingSeatPanPopupTime != LIFTING_SEAT_PAN_POPUP_TIME_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
+				return layoutConcept != LAYOUT_CONCEPT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1437,12 +1330,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 		result.append(numberOfSimulationLoops);
 		result.append(", randomSortBetweenLoops: ");
 		result.append(randomSortBetweenLoops);
-		result.append(", useSidewaysFoldableSeats: ");
-		result.append(useSidewaysFoldableSeats);
-		result.append(", useLiftingSeatPanSeats: ");
-		result.append(useLiftingSeatPanSeats);
-		result.append(", bringYourOwnSeat: ");
-		result.append(bringYourOwnSeat);
 		result.append(", sorting: ");
 		result.append(sorting);
 		result.append(", simulationSpeedFactor: ");
@@ -1465,6 +1352,8 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 		result.append(sidewaysFoldabeSeatPopupTime);
 		result.append(", liftingSeatPanPopupTime: ");
 		result.append(liftingSeatPanPopupTime);
+		result.append(", layoutConcept: ");
+		result.append(layoutConcept);
 		result.append(')');
 		return result.toString();
 	}

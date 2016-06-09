@@ -65,9 +65,6 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 			addSimulateWithoutUIPropertyDescriptor(object);
 			addNumberOfSimulationLoopsPropertyDescriptor(object);
 			addRandomSortBetweenLoopsPropertyDescriptor(object);
-			addUseSidewaysFoldableSeatsPropertyDescriptor(object);
-			addUseLiftingSeatPanSeatsPropertyDescriptor(object);
-			addBringYourOwnSeatPropertyDescriptor(object);
 			addResultsPropertyDescriptor(object);
 			addSortingPropertyDescriptor(object);
 			addSimulationSpeedFactorPropertyDescriptor(object);
@@ -80,6 +77,7 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 			addDisplayMapPropertyDescriptor(object);
 			addSidewaysFoldabeSeatPopupTimePropertyDescriptor(object);
 			addLiftingSeatPanPopupTimePropertyDescriptor(object);
+			addLayoutConceptPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -208,72 +206,6 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 				 getString("_UI_SimulationProperties_randomSortBetweenLoops_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_randomSortBetweenLoops_feature", "_UI_SimulationProperties_type"),
 				 CabinPackage.Literals.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Use Sideways Foldable Seats feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addUseSidewaysFoldableSeatsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_useSidewaysFoldableSeats_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_useSidewaysFoldableSeats_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__USE_SIDEWAYS_FOLDABLE_SEATS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Use Lifting Seat Pan Seats feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addUseLiftingSeatPanSeatsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_useLiftingSeatPanSeats_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_useLiftingSeatPanSeats_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__USE_LIFTING_SEAT_PAN_SEATS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Bring Your Own Seat feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addBringYourOwnSeatPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_bringYourOwnSeat_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_bringYourOwnSeat_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT,
 				 true,
 				 false,
 				 false,
@@ -547,6 +479,28 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	}
 
 	/**
+	 * This adds a property descriptor for the Layout Concept feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLayoutConceptPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_layoutConcept_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_layoutConcept_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__LAYOUT_CONCEPT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -624,9 +578,6 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 			case CabinPackage.SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI:
 			case CabinPackage.SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS:
 			case CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS:
-			case CabinPackage.SIMULATION_PROPERTIES__USE_SIDEWAYS_FOLDABLE_SEATS:
-			case CabinPackage.SIMULATION_PROPERTIES__USE_LIFTING_SEAT_PAN_SEATS:
-			case CabinPackage.SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT:
 			case CabinPackage.SIMULATION_PROPERTIES__SORTING:
 			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
 			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
@@ -638,6 +589,7 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 			case CabinPackage.SIMULATION_PROPERTIES__DISPLAY_MAP:
 			case CabinPackage.SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME:
 			case CabinPackage.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME:
+			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES:

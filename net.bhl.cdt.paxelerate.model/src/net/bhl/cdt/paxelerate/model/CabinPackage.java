@@ -1642,40 +1642,13 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS = 5;
 
 	/**
-	 * The feature id for the '<em><b>Use Sideways Foldable Seats</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__USE_SIDEWAYS_FOLDABLE_SEATS = 6;
-
-	/**
-	 * The feature id for the '<em><b>Use Lifting Seat Pan Seats</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__USE_LIFTING_SEAT_PAN_SEATS = 7;
-
-	/**
-	 * The feature id for the '<em><b>Bring Your Own Seat</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT = 8;
-
-	/**
 	 * The feature id for the '<em><b>Results</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__RESULTS = 9;
+	int SIMULATION_PROPERTIES__RESULTS = 6;
 
 	/**
 	 * The feature id for the '<em><b>Sorting</b></em>' attribute.
@@ -1684,7 +1657,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SORTING = 10;
+	int SIMULATION_PROPERTIES__SORTING = 7;
 
 	/**
 	 * The feature id for the '<em><b>Simulation Speed Factor</b></em>' attribute.
@@ -1693,7 +1666,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR = 11;
+	int SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR = 8;
 
 	/**
 	 * The feature id for the '<em><b>Seat Interference Standing Up Passenger Waiting Time</b></em>' attribute.
@@ -1702,7 +1675,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME = 12;
+	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME = 9;
 
 	/**
 	 * The feature id for the '<em><b>Seat Interference Process Time</b></em>' attribute.
@@ -1711,7 +1684,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME = 13;
+	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME = 10;
 
 	/**
 	 * The feature id for the '<em><b>Thread Sleep Time Default</b></em>' attribute.
@@ -1720,7 +1693,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT = 14;
+	int SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT = 11;
 
 	/**
 	 * The feature id for the '<em><b>Developer Mode</b></em>' attribute.
@@ -1729,7 +1702,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__DEVELOPER_MODE = 15;
+	int SIMULATION_PROPERTIES__DEVELOPER_MODE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Luggage Properties</b></em>' containment reference.
@@ -1738,7 +1711,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES = 16;
+	int SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES = 13;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Properties</b></em>' containment reference.
@@ -1747,7 +1720,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_PROPERTIES = 17;
+	int SIMULATION_PROPERTIES__PASSENGER_PROPERTIES = 14;
 
 	/**
 	 * The feature id for the '<em><b>Passengers Boarding Per Minute</b></em>' attribute.
@@ -1756,7 +1729,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = 18;
+	int SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = 15;
 
 	/**
 	 * The feature id for the '<em><b>Data Export</b></em>' attribute.
@@ -1765,7 +1738,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__DATA_EXPORT = 19;
+	int SIMULATION_PROPERTIES__DATA_EXPORT = 16;
 
 	/**
 	 * The feature id for the '<em><b>Display Map</b></em>' attribute.
@@ -1774,7 +1747,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__DISPLAY_MAP = 20;
+	int SIMULATION_PROPERTIES__DISPLAY_MAP = 17;
 
 	/**
 	 * The feature id for the '<em><b>Sideways Foldabe Seat Popup Time</b></em>' attribute.
@@ -1783,7 +1756,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME = 21;
+	int SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME = 18;
 
 	/**
 	 * The feature id for the '<em><b>Lifting Seat Pan Popup Time</b></em>' attribute.
@@ -1792,7 +1765,16 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME = 22;
+	int SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME = 19;
+
+	/**
+	 * The feature id for the '<em><b>Layout Concept</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__LAYOUT_CONCEPT = 20;
 
 	/**
 	 * The number of structural features of the '<em>Simulation Properties</em>' class.
@@ -1801,7 +1783,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES_FEATURE_COUNT = 23;
+	int SIMULATION_PROPERTIES_FEATURE_COUNT = 21;
 
 	/**
 	 * The number of operations of the '<em>Simulation Properties</em>' class.
@@ -2327,6 +2309,16 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	int SEAT_TYPE = 26;
+
+	/**
+	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.LayoutConcept <em>Layout Concept</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.paxelerate.model.LayoutConcept
+	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getLayoutConcept()
+	 * @generated
+	 */
+	int LAYOUT_CONCEPT = 27;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.Sex <em>Sex</em>}' enum.
@@ -3392,39 +3384,6 @@ public interface CabinPackage extends EPackage {
 	EAttribute getSimulationProperties_RandomSortBetweenLoops();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUseSidewaysFoldableSeats <em>Use Sideways Foldable Seats</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Use Sideways Foldable Seats</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#isUseSidewaysFoldableSeats()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_UseSidewaysFoldableSeats();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUseLiftingSeatPanSeats <em>Use Lifting Seat Pan Seats</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Use Lifting Seat Pan Seats</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#isUseLiftingSeatPanSeats()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_UseLiftingSeatPanSeats();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isBringYourOwnSeat <em>Bring Your Own Seat</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Bring Your Own Seat</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#isBringYourOwnSeat()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_BringYourOwnSeat();
-
-	/**
 	 * Returns the meta object for the reference list '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getResults <em>Results</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3577,6 +3536,17 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSimulationProperties_LiftingSeatPanPopupTime();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLayoutConcept <em>Layout Concept</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Layout Concept</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getLayoutConcept()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_LayoutConcept();
 
 	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.LuggageProperties <em>Luggage Properties</em>}'.
@@ -4201,6 +4171,16 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getSeatType();
+
+	/**
+	 * Returns the meta object for enum '{@link net.bhl.cdt.paxelerate.model.LayoutConcept <em>Layout Concept</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Layout Concept</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.LayoutConcept
+	 * @generated
+	 */
+	EEnum getLayoutConcept();
 
 	/**
 	 * Returns the meta object for enum '{@link net.bhl.cdt.paxelerate.model.Sex <em>Sex</em>}'.
@@ -4942,27 +4922,6 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS = eINSTANCE.getSimulationProperties_RandomSortBetweenLoops();
 		/**
-		 * The meta object literal for the '<em><b>Use Sideways Foldable Seats</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__USE_SIDEWAYS_FOLDABLE_SEATS = eINSTANCE.getSimulationProperties_UseSidewaysFoldableSeats();
-		/**
-		 * The meta object literal for the '<em><b>Use Lifting Seat Pan Seats</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__USE_LIFTING_SEAT_PAN_SEATS = eINSTANCE.getSimulationProperties_UseLiftingSeatPanSeats();
-		/**
-		 * The meta object literal for the '<em><b>Bring Your Own Seat</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__BRING_YOUR_OWN_SEAT = eINSTANCE.getSimulationProperties_BringYourOwnSeat();
-		/**
 		 * The meta object literal for the '<em><b>Results</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5060,6 +5019,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME = eINSTANCE.getSimulationProperties_LiftingSeatPanPopupTime();
+		/**
+		 * The meta object literal for the '<em><b>Layout Concept</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__LAYOUT_CONCEPT = eINSTANCE.getSimulationProperties_LayoutConcept();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.LuggagePropertiesImpl <em>Luggage Properties</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -5492,6 +5458,15 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum SEAT_TYPE = eINSTANCE.getSeatType();
+		/**
+		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.LayoutConcept <em>Layout Concept</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.bhl.cdt.paxelerate.model.LayoutConcept
+		 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getLayoutConcept()
+		 * @generated
+		 */
+		EEnum LAYOUT_CONCEPT = eINSTANCE.getLayoutConcept();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.Sex <em>Sex</em>}' enum.
 		 * <!-- begin-user-doc -->

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.Door;
 import net.bhl.cdt.paxelerate.model.DoorOption;
+import net.bhl.cdt.paxelerate.model.LayoutConcept;
 import net.bhl.cdt.paxelerate.model.ObjectOption;
 import net.bhl.cdt.paxelerate.model.PhysicalObject;
 import net.bhl.cdt.paxelerate.model.Row;
@@ -309,7 +310,8 @@ public class ObstacleGenerator {
 				 * check for sideways foldable seats and if it is currently
 				 * folded
 				 */
-				if (cabin.getSimulationSettings().isUseSidewaysFoldableSeats()
+				if (cabin.getSimulationSettings()
+						.getLayoutConcept() == LayoutConcept.SIDWAYS_FOLDABLE_SEAT
 						&& seat.getSeatType() == SeatType.FOLDED_AWAY) {
 
 					/* if so, do not create an obstacle for that seat */
@@ -319,7 +321,7 @@ public class ObstacleGenerator {
 					 * check for folding seat pans and if it is currently folded
 					 */
 				} else if (cabin.getSimulationSettings()
-						.isUseLiftingSeatPanSeats()
+						.getLayoutConcept() == LayoutConcept.LIFTING_SEAT_PAN_SEATS
 						&& seat.getSeatType() == SeatType.FOLDED_UPWARDS) {
 
 					/* only the backrest is visible (percentage value) */

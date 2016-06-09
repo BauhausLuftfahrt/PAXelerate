@@ -20,9 +20,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isSimulateWithoutUI <em>Simulate Without UI</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getNumberOfSimulationLoops <em>Number Of Simulation Loops</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isRandomSortBetweenLoops <em>Random Sort Between Loops</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUseSidewaysFoldableSeats <em>Use Sideways Foldable Seats</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUseLiftingSeatPanSeats <em>Use Lifting Seat Pan Seats</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isBringYourOwnSeat <em>Bring Your Own Seat</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getResults <em>Results</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSorting <em>Sorting</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}</li>
@@ -37,6 +34,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDisplayMap <em>Display Map</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSidewaysFoldabeSeatPopupTime <em>Sideways Foldabe Seat Popup Time</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLiftingSeatPanPopupTime <em>Lifting Seat Pan Popup Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLayoutConcept <em>Layout Concept</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties()
@@ -205,87 +203,6 @@ public interface SimulationProperties extends EObject {
 	 * @generated
 	 */
 	void setRandomSortBetweenLoops(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Use Sideways Foldable Seats</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Use Sideways Foldable Seats</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Use Sideways Foldable Seats</em>' attribute.
-	 * @see #setUseSidewaysFoldableSeats(boolean)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_UseSidewaysFoldableSeats()
-	 * @model default="false"
-	 * @generated
-	 */
-	boolean isUseSidewaysFoldableSeats();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUseSidewaysFoldableSeats <em>Use Sideways Foldable Seats</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Use Sideways Foldable Seats</em>' attribute.
-	 * @see #isUseSidewaysFoldableSeats()
-	 * @generated
-	 */
-	void setUseSidewaysFoldableSeats(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Use Lifting Seat Pan Seats</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Use Lifting Seat Pan Seats</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Use Lifting Seat Pan Seats</em>' attribute.
-	 * @see #setUseLiftingSeatPanSeats(boolean)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_UseLiftingSeatPanSeats()
-	 * @model default="false"
-	 * @generated
-	 */
-	boolean isUseLiftingSeatPanSeats();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUseLiftingSeatPanSeats <em>Use Lifting Seat Pan Seats</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Use Lifting Seat Pan Seats</em>' attribute.
-	 * @see #isUseLiftingSeatPanSeats()
-	 * @generated
-	 */
-	void setUseLiftingSeatPanSeats(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Bring Your Own Seat</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Bring Your Own Seat</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Bring Your Own Seat</em>' attribute.
-	 * @see #setBringYourOwnSeat(boolean)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_BringYourOwnSeat()
-	 * @model default="false"
-	 * @generated
-	 */
-	boolean isBringYourOwnSeat();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isBringYourOwnSeat <em>Bring Your Own Seat</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Bring Your Own Seat</em>' attribute.
-	 * @see #isBringYourOwnSeat()
-	 * @generated
-	 */
-	void setBringYourOwnSeat(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Results</b></em>' reference list.
@@ -653,5 +570,35 @@ public interface SimulationProperties extends EObject {
 	 * @generated
 	 */
 	void setLiftingSeatPanPopupTime(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Layout Concept</b></em>' attribute.
+	 * The default value is <code>"Default"</code>.
+	 * The literals are from the enumeration {@link net.bhl.cdt.paxelerate.model.LayoutConcept}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Layout Concept</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Layout Concept</em>' attribute.
+	 * @see net.bhl.cdt.paxelerate.model.LayoutConcept
+	 * @see #setLayoutConcept(LayoutConcept)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_LayoutConcept()
+	 * @model default="Default" required="true"
+	 * @generated
+	 */
+	LayoutConcept getLayoutConcept();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLayoutConcept <em>Layout Concept</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Layout Concept</em>' attribute.
+	 * @see net.bhl.cdt.paxelerate.model.LayoutConcept
+	 * @see #getLayoutConcept()
+	 * @generated
+	 */
+	void setLayoutConcept(LayoutConcept value);
 
 } // SimulationProperties

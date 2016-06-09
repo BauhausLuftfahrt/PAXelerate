@@ -86,23 +86,11 @@
     <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_pmLi0Po0EeWozM0q10hXZQ" name="Layout">
       <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout" xmi:id="_qmoTMPo0EeWozM0q10hXZQ">
         <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_rb9YsPo0EeWozM0q10hXZQ">
-          <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAveVqS_EeWGjpaobu8CIA" name="Control useSidewaysFoldableSeats">
-            <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_AoWIwCvLEeazLKOMHhvqJA">
-              <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/useSidewaysFoldableSeats"/>
+          <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_Ugti4C5TEeaEQpcn8SDveQ" name="Control layoutConcept">
+            <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_UguJ8C5TEeaEQpcn8SDveQ">
+              <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/layoutConcept"/>
             </domainModelReference>
           </children>
-          <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_EiC-MCvLEeazLKOMHhvqJA" name="Control useLiftingSeatPanSeats">
-            <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_EiC-MSvLEeazLKOMHhvqJA">
-              <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/useLiftingSeatPanSeats"/>
-            </domainModelReference>
-          </children>
-          <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAveWKS_EeWGjpaobu8CIA" name="Control bringYourOwnSeat">
-            <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_NAveWaS_EeWGjpaobu8CIA">
-              <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/bringYourOwnSeat"/>
-            </domainModelReference>
-          </children>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_sDi9IPo0EeWozM0q10hXZQ">
           <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_EiEMUCvLEeazLKOMHhvqJA" name="Control sidewaysFoldabeSeatPopupTime">
             <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_EiEMUSvLEeazLKOMHhvqJA">
               <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/sidewaysFoldabeSeatPopupTime"/>

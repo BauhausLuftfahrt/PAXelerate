@@ -13,6 +13,7 @@ import org.eclipse.swt.SWTException;
 
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
+import net.bhl.cdt.paxelerate.model.LayoutConcept;
 import net.bhl.cdt.paxelerate.model.LuggageProperties;
 import net.bhl.cdt.paxelerate.model.LuggageSize;
 import net.bhl.cdt.paxelerate.model.Passenger;
@@ -213,8 +214,10 @@ public class Agent extends Subject implements Runnable {
 		this.simSettings = SimulationHandler.getCabin().getSimulationSettings();
 		this.simLuggageSettings = SimulationHandler.getCabin()
 				.getSimulationSettings().getLuggageProperties();
-		this.foldingSeats = (simSettings.isUseSidewaysFoldableSeats()
-				|| simSettings.isUseLiftingSeatPanSeats());
+		this.foldingSeats = (simSettings
+				.getLayoutConcept() == LayoutConcept.SIDWAYS_FOLDABLE_SEAT
+				|| simSettings
+						.getLayoutConcept() == LayoutConcept.LIFTING_SEAT_PAN_SEATS);
 
 		/* generate a mood for the passenger depending on his presets */
 		if (passenger.getPassengerMood() == PassengerMood.AGGRESSIVE) {
@@ -452,6 +455,17 @@ public class Agent extends Subject implements Runnable {
 		return (passenger.getSeat().getSeatType() == SeatType.FOLDED_AWAY
 				|| passenger.getSeat()
 						.getSeatType() == SeatType.FOLDED_UPWARDS);
+	}
+
+	private int checkSeatFoldingStatusInRow() {
+		for (Seat seat : passenger.getSeat().getRow().getSeats()) {
+			if (!seat.isOccupied() && "C".contains(seat.getLetter())) {
+				return 1;
+			} else if (!seat.isOccupied() && "D".contains(seat.getLetter())) {
+				return 2;
+			}
+		}
+		return 0;
 	}
 
 	/**
@@ -857,8 +871,11 @@ public class Agent extends Subject implements Runnable {
 					 * unfolded in the meantime
 					 */
 
-					if (hasFoldableSeat()) {
-						// distance is set to zero
+					if ((checkSeatFoldingStatusInRow() == 1
+							&& "C".contains(passenger.getSeat().getLetter()))
+							|| (checkSeatFoldingStatusInRow() == 2
+									&& "D".contains(
+											passenger.getSeat().getLetter()))) {
 						stowingAtSeat = true;
 					}
 
