@@ -179,9 +179,12 @@ public class SimulationView extends JPanel implements MouseListener {
 		g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE));
 
 		for (int x = 0; x < areamap.getDimensions().getX(); x++) {
-			for (int y = pointZero; y < areamap.getDimensions().getY(); y++) {
+			for (int y = 0; y < areamap.getDimensions().getY(); y++) {
 
-				Node node = areamap.get(x, y);
+				int yInverse = areamap.getDimensions().getY() - y;
+
+				Node node = areamap.get(x, yInverse);
+
 				g.setColor(Color.LIGHT_GRAY);
 				if (node != null && node.getTypeForPrinting() != null) {
 
