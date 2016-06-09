@@ -26,7 +26,6 @@ import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 import net.bhl.cdt.paxelerate.model.astar.Path;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.util.math.DecimalHelper;
-import net.bhl.cdt.paxelerate.util.time.StopWatch;
 import net.bhl.cdt.paxelerate.util.time.TimeHelper;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Screen;
 
@@ -52,20 +51,8 @@ public class SimulationView extends JPanel implements MouseListener {
 	/** The font size. */
 	private int pointZero = 0, FONT_SIZE = 10;
 
-	/** The watch. */
-	private static StopWatch watch;
-
 	/** The cabin width. */
 	private static double cabinWidth;
-
-	/**
-	 * Gets the watch.
-	 *
-	 * @return the watch
-	 */
-	public static StopWatch getWatch() {
-		return watch;
-	}
 
 	/**
 	 * Instantiates a new simulation view.
@@ -85,9 +72,6 @@ public class SimulationView extends JPanel implements MouseListener {
 		};
 
 		gameThread.start();
-
-		watch = new StopWatch();
-		watch.start();
 
 		leftButton = new Button();
 		rightButton = new Button();
@@ -209,9 +193,9 @@ public class SimulationView extends JPanel implements MouseListener {
 		g.setColor(Color.BLACK);
 
 		g.setFont(new Font("Courier New", Font.PLAIN, 12));
-		g.drawString("Real Time: " + watch.getElapsedTimeTens(), 10, 20);
+		g.drawString("Real Time: " + SimulationHandler.getMasterBoardingTime().getElapsedTimeTens(), 10, 20);
 
-		double tens = watch.getElapsedTimeTens()
+		double tens = SimulationHandler.getMasterBoardingTime().getElapsedTimeTens()
 				* SimulationHandler.getCabin().getSimulationSettings().getSimulationSpeedFactor();
 
 		g.drawString(
@@ -271,8 +255,11 @@ public class SimulationView extends JPanel implements MouseListener {
 
 						for (Path path : agent.getPathList()) {
 							for (Node pathNode : path.getWaypoints()) {
-								g.drawString("•", (pathNode.getPosition().getX() - pointZero) * FONT_SIZE,
-										pathNode.getPosition().getY() * FONT_SIZE);
+
+								int x = (pathNode.getPosition().getX() - pointZero) * FONT_SIZE;
+								int y = (areamap.getDimensions().getY() - pathNode.getPosition().getY()) * FONT_SIZE;
+
+								g.drawString("•", x, y);
 							}
 						}
 					}

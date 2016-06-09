@@ -5,7 +5,6 @@
  ***************************************************************************************/
 package net.bhl.cdt.paxelerate.model.agent;
 
-import net.bhl.cdt.paxelerate.model.astar.AStarHelper;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 
 /**
@@ -18,33 +17,37 @@ public class AgressiveMood extends AgentMood implements Strategy {
 	/**
 	 * Instantiates a new agressive mood.
 	 *
-	 * @param agent the agent
+	 * @param agent
+	 *            the agent
 	 */
 	public AgressiveMood(Agent agent) {
 		super(agent);
 		// Auto-generated constructor stub
 	}
 
-	/* (non-Javadoc)
-	 * @see net.bhl.cdt.paxelerate.model.agent.AgentMood#reactToCollision(net.bhl.cdt.paxelerate.model.astar.Node.Property)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.bhl.cdt.paxelerate.model.agent.AgentMood#reactToCollision(net.bhl.cdt
+	 * .paxelerate.model.astar.Node.Property)
 	 */
-	@SuppressWarnings("static-access")
+
 	@Override
 	public void reactToCollision(Property property) {
-//		// only pass if other passenger is stowing luggage
+		// only pass if other passenger is stowing luggage
 		if (super.getAgent().getBlockingAgent().passengerStowsLuggage()) {
-//		if (property == Property.OBSTACLE) {
+			// if (property == Property.OBSTACLE) {
 			super.getAgent().findNewPath();
 			super.getAgent().setExitPathLoop(false);
 		}
-//		// other wise if blocked act as passive agent
-//		else {
-//			try {
-//				super.getAgent().getThread().sleep(AStarHelper.time(1));
-//			} catch (InterruptedException e) {
-//			}
-//		}
-		
-		
+		// // other wise if blocked act as passive agent
+		// else {
+		// try {
+		// super.getAgent().getThread().sleep(AStarHelper.time(1));
+		// } catch (InterruptedException e) {
+		// }
+		// }
+
 	}
 }

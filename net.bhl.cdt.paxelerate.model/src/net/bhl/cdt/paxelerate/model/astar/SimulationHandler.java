@@ -39,12 +39,12 @@ public class SimulationHandler {
 	/** The simulation done. */
 	private static Boolean simulationDone = false;
 
-	/** The areamaphandler. */
+	/** The areamap handler. */
 	private static AreamapHandler areamaphandler;
 
 	/* Lists & Maps */
 
-	/** The waymaking list. */
+	/** The way making list. */
 	private static ArrayList<Passenger> finishedList = new ArrayList<Passenger>(),
 			activeList = new ArrayList<Passenger>(),
 			waymakingList = new ArrayList<Passenger>();
@@ -55,13 +55,10 @@ public class SimulationHandler {
 	/** The access pending. */
 	private static HashMap<Passenger, Integer> accessPending = new HashMap<Passenger, Integer>();
 
-	/** The last door release. */
-	private static HashMap<Door, Double> lastDoorRelease = new HashMap<Door, Double>();
-
 	/* ************ */
 
 	/** The watch. */
-	private static StopWatch watch = new StopWatch();
+	private static StopWatch master_boarding_time = new StopWatch();
 
 	/** The dimensions. */
 	private Vector dimensions;
@@ -76,7 +73,7 @@ public class SimulationHandler {
 
 	private static Map<Integer, Costmap> costmaps = new HashMap<>();
 
-	/** The progressvalue. */
+	/** The progress value. */
 	private static int percent = 0, progressvalue = 0;
 
 	/**
@@ -221,7 +218,7 @@ public class SimulationHandler {
 		areamaphandler = null;
 		agentList.clear();
 		accessPending.clear();
-		watch.reset();
+		master_boarding_time.reset();
 
 		progress = null;
 
@@ -248,6 +245,10 @@ public class SimulationHandler {
 		}
 		if (finishedList.size() == cabin.getPassengers().size()) {
 			simulationDone = true;
+
+			/* stop the boarding time when the last passenger is seated */
+			master_boarding_time.stop();
+
 			System.out.println("Simulation done!");
 		}
 
@@ -338,18 +339,27 @@ public class SimulationHandler {
 	 */
 	public synchronized static void setPassengerActive(Passenger pax) {
 
+		/*
+		 * start the master_boarding_time when the first passenger is set active
+		 */
+
+		if (activeList.isEmpty() && finishedList.isEmpty()) {
+			master_boarding_time.start();
+		}
+
 		if (!AStarHelper.PassengerAlreadyInList(pax, activeList)) {
 			activeList.add(pax);
 		}
+	}
+
+	public static StopWatch getMasterBoardingTime() {
+		return master_boarding_time;
 	}
 
 	/**
 	 * This method executes the path finding simulation of the agents.
 	 */
 	public void run() {
-
-		/* start the stop watch */
-		watch.start();
 
 		/*
 		 * Every active door needs its own CostMap.java for path calculations!

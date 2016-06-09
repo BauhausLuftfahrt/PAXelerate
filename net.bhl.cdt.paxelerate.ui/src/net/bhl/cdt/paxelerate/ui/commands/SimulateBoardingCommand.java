@@ -82,7 +82,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 				Log.add(this, "Initializing  new boarding simulation ...");
 
 				// cabin.getSimulationSettings().setRandomSortBetweenLoops(true);
-				//cabin.getSimulationSettings().setSimulationSpeedFactor(5);
+				// cabin.getSimulationSettings().setSimulationSpeedFactor(5);
 				// cabin.getSimulationSettings().getScale();
 
 				Display.getDefault().syncExec(new Runnable() {
@@ -97,40 +97,34 @@ public class SimulateBoardingCommand extends CDTCommand {
 				simulationloop: for (int simulationLoopIndex = 0; simulationLoopIndex < cabin.getSimulationSettings()
 						.getNumberOfSimulationLoops(); simulationLoopIndex++) {
 
-					/*Log.add(this, "Iteration " + (simulationLoopIndex + 1) + " of "
-							+ cabin.getSimulationSettings().getNumberOfSimulationLoops());
-
-					if (cabin.getSimulationSettings().isRandomSortBetweenLoops()) {
-
-						 generates new passenger
-						 * this runs in extra thread and causes ConcurrentModificationException 
-						//new GeneratePassengersCommand(cabin).doRun();
-
-						 sorts the passenger according to selected method 
-						SortPassengersCommand sort = new SortPassengersCommand(cabin);
-						sort.setPropertiesManually(false, 0);
-						sort.doRun();
-						cabin = sort.returnCabin();
-
-						SortPassengersCommand sort2 = new SortPassengersCommand(cabin);
-						int value = 0;
-						switch (cabin.getSimulationSettings().getSorting()) {
-						case RANDOM:
-							value = 0;
-							break;
-						case WINDOW_TO_AISLE:
-							value = 3;
-							break;
-						case REAR_TO_FRONT:
-							value = 1;
-							break;
-						}
-						if (value != 0) {
-							sort2.setPropertiesManually(false, value);
-							sort2.doRun();
-							cabin = sort2.returnCabin();
-						}
-					}*/
+					/*
+					 * Log.add(this, "Iteration " + (simulationLoopIndex + 1) +
+					 * " of " +
+					 * cabin.getSimulationSettings().getNumberOfSimulationLoops(
+					 * ));
+					 * 
+					 * if
+					 * (cabin.getSimulationSettings().isRandomSortBetweenLoops()
+					 * ) {
+					 * 
+					 * generates new passenger this runs in extra thread and
+					 * causes ConcurrentModificationException //new
+					 * GeneratePassengersCommand(cabin).doRun();
+					 * 
+					 * sorts the passenger according to selected method
+					 * SortPassengersCommand sort = new
+					 * SortPassengersCommand(cabin);
+					 * sort.setPropertiesManually(false, 0); sort.doRun(); cabin
+					 * = sort.returnCabin();
+					 * 
+					 * SortPassengersCommand sort2 = new
+					 * SortPassengersCommand(cabin); int value = 0; switch
+					 * (cabin.getSimulationSettings().getSorting()) { case
+					 * RANDOM: value = 0; break; case WINDOW_TO_AISLE: value =
+					 * 3; break; case REAR_TO_FRONT: value = 1; break; } if
+					 * (value != 0) { sort2.setPropertiesManually(false, value);
+					 * sort2.doRun(); cabin = sort2.returnCabin(); } }
+					 */
 
 					// reset simulation in case of previous existing objects.
 					SimulationHandler.reset();
@@ -159,8 +153,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 							cabin.getSimulationSettings().getScale());
 
 					new SimulationHandler(dimensions, cabin);
-					
-					// WIP 
+
+					// WIP
 					FileSaver.saveObstacleToFile(SimulationHandler.getMap(), dimensions);
 
 					// Show WIP simulation view
@@ -188,9 +182,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 													* 1000)) {
 										System.out.println(sleepyPassenger.getName() + "has caused interuption!");
 
-										//SimulationHandler.setSimulationStatus(true);
+										// SimulationHandler.setSimulationStatus(true);
 										SimulationHandler.stopSimulation();
-										SimulationView.getWatch().stop();
 										simulationFrame.dispose();
 
 										Log.add(this, "SIMULATION TERMINATED! Passenger " + sleepyPassenger.getName()
@@ -209,8 +202,6 @@ public class SimulateBoardingCommand extends CDTCommand {
 						}
 					}
 
-					SimulationView.getWatch().stop();
-
 					/* closes the simulation view after completion */
 					simulationFrame.dispose();
 
@@ -218,8 +209,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 					// time);;
 
 					SimulationResultLogger results = new SimulationResultLogger();
+
 					results.getSimulationData(cabin, simulationLoopIndex,
-							SimulationView.getWatch().getElapsedTime() / 1000
+							SimulationHandler.getMasterBoardingTime().getElapsedTime() / 1000
 									* cabin.getSimulationSettings().getSimulationSpeedFactor(),
 							SimulationHandler.getNumberWaymakingSkipped(),
 							SimulationHandler.getNumberWaymakingCompleted());

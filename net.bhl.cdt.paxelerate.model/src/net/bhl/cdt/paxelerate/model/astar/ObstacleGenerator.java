@@ -301,12 +301,16 @@ public class ObstacleGenerator {
 			/* check if the object is a seat */
 			if (obj instanceof Seat) {
 
+				/* cast the object */
+				Seat seat = (Seat) obj;
+
 				/*
 				 * check for sideways foldable seats and if it is currently
 				 * folded
 				 */
 				if (cabin.getSimulationSettings().isUseSidewaysFoldableSeats()
-						&& ((Seat) obj).isFoldedAway()) {
+						&& seat.isFoldedAway()) {
+
 					/* if so, do not create an obstacle for that seat */
 					continue;
 
@@ -314,8 +318,8 @@ public class ObstacleGenerator {
 					 * check for folding seat pans and if it is currently folded
 					 */
 				} else if (cabin.getSimulationSettings()
-						.isUseLiftingSeatPanSeats()
-						&& ((Seat) obj).isFoldedUpwards()) {
+						.isUseLiftingSeatPanSeats() && seat.isFoldedUpwards()) {
+
 					/* only the backrest is visible (percentage value) */
 					int backrestThickness = 20;
 					xDimension = xDimension * backrestThickness / 100;
