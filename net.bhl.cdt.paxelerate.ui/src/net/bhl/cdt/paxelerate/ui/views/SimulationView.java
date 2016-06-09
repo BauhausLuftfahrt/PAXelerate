@@ -62,11 +62,19 @@ public class SimulationView extends JPanel implements MouseListener {
 		cabinWidth = SimulationHandler.getCabin().getYDimension()
 				/ (double) SimulationHandler.getCabin().getSimulationSettings().getScale();
 
+		int fps = 25;
+
 		Thread gameThread = new Thread() {
 			@Override
 			public void run() {
 				while (true) {
-					repaint();
+					try {
+						repaint();
+
+						Thread.sleep(1000 / fps);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		};

@@ -28,8 +28,6 @@ import net.bhl.cdt.paxelerate.model.astar.Path;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.model.observer.Subject;
 import net.bhl.cdt.paxelerate.model.util.Rotator;
-import net.bhl.cdt.paxelerate.util.math.GaussOptions;
-import net.bhl.cdt.paxelerate.util.math.GaussianRandom;
 import net.bhl.cdt.paxelerate.util.math.MathHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
@@ -458,7 +456,7 @@ public class Agent extends Subject implements Runnable {
 	 * @return the seat folding distance
 	 */
 	private int getSeatFoldingDistance() {
-		return (int) (10 / scale);
+		return 10 / scale;
 	}
 
 	/**
@@ -613,6 +611,8 @@ public class Agent extends Subject implements Runnable {
 	 * instead a matching complete path.
 	 */
 	public void redefinePathLayout() {
+
+		System.out.println("REDEFINE PATH LAYOUT!");
 
 		/* get the path used by the agent before finding a new one. */
 		Path pathhelper = pathlist.get(pathlist.size() - 1);
@@ -1171,6 +1171,8 @@ public class Agent extends Subject implements Runnable {
 
 			SimulationHandler.getMap().get(getGoal())
 					.setProperty(Property.DEFAULT, getPassenger());
+
+			System.out.println("List size:" + pathlist.size());
 
 			return true;
 		} else {

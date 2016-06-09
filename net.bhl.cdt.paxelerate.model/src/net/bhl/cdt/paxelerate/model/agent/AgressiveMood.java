@@ -39,7 +39,7 @@ public class AgressiveMood extends AgentMood implements Strategy {
 		if (super.getAgent().getBlockingAgent().passengerStowsLuggage()) {
 			// if (property == Property.OBSTACLE) {
 			super.getAgent().findNewPath();
-			super.getAgent().setExitPathLoop(false);
+			super.getAgent().setExitPathLoop(true);
 		}
 		// // other wise if blocked act as passive agent
 		// else {
