@@ -11,22 +11,22 @@ import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
 public class FileSaver {
 
-	
 	/** The Constant FILE_PATH. */
 	private static final String FOLDER_NAME = "paxelerate",
 			FILE_PATH = System.getProperty("user.home") + "/Documents/" + FOLDER_NAME + "/";
+
 	/**
 	 * This method saves the whole cost map in a text file to the documents
 	 * folder.
 	 */
 
-	public static void saveCostmapToFile(Costmap costmap, Vector dimensions, int i) {
+	public static void saveCostmapToFile(Costmap costmap, Vector dimensions, String string) {
 
 		PrintWriter printToFile = null;
 		try {
 
 			CabinViewPart.makeDirectory();
-			printToFile = new PrintWriter(FILE_PATH + "costmap_door_" + i + ".xls");
+			printToFile = new PrintWriter(FILE_PATH + "costmap_door_" + string + ".xls");
 
 			for (int x = 0; x < dimensions.getX(); x++) {
 				for (int y = 0; y < dimensions.getY(); y++) {

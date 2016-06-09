@@ -28,7 +28,8 @@ public class AgentFunctions {
 	/**
 	 * Someone already in this part of the row.
 	 *
-	 * @param agent the agent
+	 * @param agent
+	 *            the agent
 	 * @return true, if successful
 	 */
 	public static boolean someoneAlreadyInThisPartOfTheRow(Agent agent) {
@@ -55,8 +56,10 @@ public class AgentFunctions {
 	/**
 	 * Same side of aisle.
 	 *
-	 * @param checkSeat the check seat
-	 * @param mySeat the my seat
+	 * @param checkSeat
+	 *            the check seat
+	 * @param mySeat
+	 *            the my seat
 	 * @return true, if successful
 	 */
 	private static boolean sameSideOfAisle(Seat checkSeat, Seat mySeat) {
@@ -78,8 +81,10 @@ public class AgentFunctions {
 	/**
 	 * Other seat closer to aisle.
 	 *
-	 * @param otherSeat the other seat
-	 * @param thisSeat the this seat
+	 * @param otherSeat
+	 *            the other seat
+	 * @param thisSeat
+	 *            the this seat
 	 * @return true, if successful
 	 */
 	public static boolean otherSeatCloserToAisle(Seat otherSeat,
@@ -103,7 +108,8 @@ public class AgentFunctions {
 	/**
 	 * Rotation from 0 to 359 degrees. Only 45 degree steps. North is zero.
 	 *
-	 * @param agent the agent
+	 * @param agent
+	 *            the agent
 	 * @return the rotation in degrees.
 	 */
 	public static int getRotation(Agent agent) {
@@ -134,7 +140,8 @@ public class AgentFunctions {
 	/**
 	 * Doorway blocked.
 	 *
-	 * @param passenger the passenger
+	 * @param passenger
+	 *            the passenger
 	 * @return true, if successful
 	 */
 	public synchronized static boolean doorwayBlocked(Passenger passenger) {
@@ -174,7 +181,8 @@ public class AgentFunctions {
 	 * This method takes a cost map and adds a huge cost to the location and the
 	 * area around agents. The agent triggering this method is ignored.
 	 *
-	 * @param agent the agent
+	 * @param agent
+	 *            the agent
 	 * @return the costmap
 	 */
 	public static Costmap updateCostmap(Agent agent) {
@@ -217,9 +225,13 @@ public class AgentFunctions {
 				/* prevent out of bounds exceptions */
 				if (xCoordinate > 0 && yCoordinate > 0) {
 
+					Node node = SimulationHandler.getMap().get(xCoordinate,
+							yCoordinate);
+
 					/* find all nodes occupied by agents */
-					if (SimulationHandler.getMap().get(xCoordinate, yCoordinate)
-							.getProperty() == Property.AGENT) {
+					if (node.getProperty() == Property.AGENT
+							&& node.getPassenger().getId() != agent
+									.getPassenger().getId()) {
 
 						/*
 						 * additionally to the surrounding points of the agents,
@@ -230,8 +242,7 @@ public class AgentFunctions {
 						for (int stepsAhead = 0; stepsAhead < 6; stepsAhead++) {
 
 							/* the current agents position is excluded here! */
-							if (!SimulationHandler.getMap()
-									.get(xCoordinate, yCoordinate).getPosition()
+							if (!node.getPosition()
 									.equals(agent.getCurrentPosition())) {
 
 								/* the surrounding points are calculated */

@@ -241,7 +241,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 						for (Costmap costmap : costmaps.values()) {
 
 							/* save the CostMap to the local file system */
-							FileSaver.saveCostmapToFile(costmap, dimensions, index);
+							FileSaver.saveCostmapToFile(costmap, dimensions, Integer.toString(index));
 
 							index++;
 						}

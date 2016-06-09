@@ -653,15 +653,8 @@ public class Agent extends Subject implements Runnable {
 		/* this is only run if its not the initial path finding process */
 		if (currentPosition != null) {
 
-			blockArea(currentPosition, false, false, null);
-
 			/* this sets the new start of the A* to the current position */
 			start = currentPosition;
-
-			/*
-			 * TODO: set new goal as the intersection of the old path 2-3m
-			 * meters from the current position
-			 */
 
 			/* this declares the area around agents as high cost terrain */
 			mutableCostMap = AgentFunctions.updateCostmap(this);
@@ -681,12 +674,19 @@ public class Agent extends Subject implements Runnable {
 
 		desiredPosition = path.get(0).getPosition();
 
+		/* this is only run if its not the initial path finding process */
+		if (currentPosition != null) {
+			blockArea(currentPosition, false, false, null);
+		}
+
 		if (!initialized) {
 			currentPosition = new Vector2D(0, 0);
 
 		}
 		/* ends the stop watch performance logging */
 		stopwatch.stop();
+
+		mutableCostMap.printMapToConsole();
 	}
 
 	/**
