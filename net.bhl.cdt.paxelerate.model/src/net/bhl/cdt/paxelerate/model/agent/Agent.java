@@ -616,8 +616,6 @@ public class Agent extends Subject implements Runnable {
 	 */
 	public void redefinePathLayout() {
 
-		System.out.println("REDEFINE PATH LAYOUT!");
-
 		/* get the path used by the agent before finding a new one. */
 		Path pathhelper = pathlist.get(pathlist.size() - 1);
 
@@ -689,8 +687,6 @@ public class Agent extends Subject implements Runnable {
 		}
 		/* ends the stop watch performance logging */
 		stopwatch.stop();
-
-		mutableCostMap.printMapToConsole();
 	}
 
 	/**
@@ -1152,8 +1148,6 @@ public class Agent extends Subject implements Runnable {
 
 			SimulationHandler.getMap().get(getGoal())
 					.setProperty(Property.DEFAULT, getPassenger());
-
-			System.out.println("List size:" + pathlist.size());
 
 			return true;
 		} else {

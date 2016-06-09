@@ -252,6 +252,25 @@ public class DrawCabinCommand extends CDTCommand {
 
 			PassengerGenerator.applyDelay(passenger, delays);
 
+			// TODO: CONTINUE THIS!
+			// LuggageProperties lugg =
+			// cabin.getSimulationSettings().getLuggageProperties();
+			// double time = passenger.getLuggageStowTime();
+			//
+			// switch (passenger.getLuggage()) {
+			//
+			// case BIG:
+			// if (time != lugg.)
+			// break;
+			// case MEDIUM:
+			// break;
+			// case SMALL:
+			// break;
+			// case NONE:
+			// break;
+			//
+			// }
+
 		}
 	}
 

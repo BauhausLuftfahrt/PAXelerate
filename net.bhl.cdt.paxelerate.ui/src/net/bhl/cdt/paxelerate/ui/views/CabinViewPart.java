@@ -246,6 +246,8 @@ public class CabinViewPart extends ViewPart {
 						break;
 					}
 
+					// TODO: implement the change in the seat image here!
+
 					gc.drawImage(icon, adapt(Axis.X, obj.getYPosition()), adapt(Axis.Y, obj.getXPosition()));
 
 					break;
