@@ -398,9 +398,9 @@ public class Agent extends Subject implements Runnable {
 		 * return true if the passenger does have luggage and if he is near his
 		 * seat
 		 */
-		return (hasLuggage()
-				&& isInRangeEqual(passenger.getSeat().getXPosition(),
-						desiredPosition.getX() * scale, getLuggageStowDistance()));
+		return (hasLuggage() && isInRangeEqual(
+				(int) passenger.getSeat().getXPosition(),
+				desiredPosition.getX() * scale, getLuggageStowDistance()));
 	}
 
 	public boolean passengerStowsLuggageAtAisleSeat() {
@@ -458,7 +458,7 @@ public class Agent extends Subject implements Runnable {
 	 */
 	private boolean isInRangeSmaller(int position, int desiredPosition,
 			int range) {
-		
+
 		if (Math.abs((desiredPosition - position) / scale) < range) {
 			return true;
 		}
@@ -478,9 +478,11 @@ public class Agent extends Subject implements Runnable {
 
 	private int checkSeatFoldingStatusInRow() {
 		for (Seat seat : passenger.getSeat().getRow().getSeats()) {
-			if (!seat.isOccupied() && "C".contains(seat.getLetter())) {
+			if (!seat.isOccupied() && "C".contains(seat.getLetter())
+					&& "ABC".contains(passenger.getSeat().getLetter())) {
 				return 1;
-			} else if (!seat.isOccupied() && "D".contains(seat.getLetter())) {
+			} else if (!seat.isOccupied() && "D".contains(seat.getLetter())
+					&& "DEF".contains(passenger.getSeat().getLetter())) {
 				return 2;
 			}
 		}
@@ -506,9 +508,9 @@ public class Agent extends Subject implements Runnable {
 		 * return true if the passenger does have luggage and if he is near his
 		 * seat
 		 */
-		return (hasFoldableSeat()
-				&& isInRangeEqual(passenger.getSeat().getXPosition(),
-						desiredPosition.getX() * scale, getSeatFoldingDistance()));
+		return (hasFoldableSeat() && isInRangeEqual(
+				passenger.getSeat().getXPosition(),
+				desiredPosition.getX() * scale, getSeatFoldingDistance()));
 	}
 
 	/**
