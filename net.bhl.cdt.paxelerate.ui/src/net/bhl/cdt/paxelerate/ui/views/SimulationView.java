@@ -150,7 +150,7 @@ public class SimulationView extends JPanel implements MouseListener {
 		case STOWING_LUGGAGE:
 			return Color.CYAN;
 		case UNFOLDING_SEAT:
-			return Color.CYAN;
+			return Color.MAGENTA;
 		default:
 			return Color.DARK_GRAY;
 		}

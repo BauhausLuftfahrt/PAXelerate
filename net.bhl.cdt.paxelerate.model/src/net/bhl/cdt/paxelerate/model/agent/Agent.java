@@ -1189,6 +1189,9 @@ public class Agent extends Subject implements Runnable {
 									&& "DEF".contains(
 											passenger.getSeat().getLetter()))) {
 						stowingAtAisleSeat = true;
+					} else {
+						
+						stowLuggage();
 					}
 
 				} else if (!alreadyStowed && !stowingAtAisleSeat
