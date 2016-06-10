@@ -167,10 +167,10 @@ public class DrawCabinCommand extends CDTCommand {
 	 */
 	private void checkFoldableSeats() {
 		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
+
 			/* Bring your own seat */
 			if (cabin.getSimulationSettings().getLayoutConcept() == LayoutConcept.BRING_YOUR_OWN_SEAT) {
 				seat.setSeatType(SeatType.FOLDED_AWAY);
-				;
 
 				/* Sideways foldable seat */
 			} else if (cabin.getSimulationSettings().getLayoutConcept() == LayoutConcept.SIDWAYS_FOLDABLE_SEAT) {
@@ -183,7 +183,7 @@ public class DrawCabinCommand extends CDTCommand {
 					seat.setSeatType(SeatType.DEFAULT);
 				}
 				/* Lifting seat pan */
-			} else if (cabin.getSimulationSettings().getLayoutConcept() == LayoutConcept.SIDWAYS_FOLDABLE_SEAT) {
+			} else if (cabin.getSimulationSettings().getLayoutConcept() == LayoutConcept.LIFTING_SEAT_PAN_SEATS) {
 				/* Aisle seats are set foldable */
 				if (seat.getLetter().contains("C")) {
 					seat.setSeatType(SeatType.FOLDED_UPWARDS);

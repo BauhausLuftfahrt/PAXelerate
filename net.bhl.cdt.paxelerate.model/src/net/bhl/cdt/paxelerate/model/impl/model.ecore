@@ -210,7 +210,7 @@
         eType="#//SimulationResult"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sorting" eType="#//SortingStyle"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="simulationSpeedFactor"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="10"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="1"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatInterferenceStandingUpPassengerWaitingTime"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="3"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatInterferenceProcessTime"
@@ -344,7 +344,8 @@
   <eClassifiers xsi:type="ecore:EEnum" name="SeatType">
     <eLiterals name="Default"/>
     <eLiterals name="FoldedAway" value="1"/>
-    <eLiterals name="FoldedUpwards" value="2" literal="FoldedUpwards"/>
+    <eLiterals name="FoldedUpwards" value="2"/>
+    <eLiterals name="BringYourOwn" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="LayoutConcept">
     <eLiterals name="Default"/>

@@ -251,7 +251,7 @@ public interface SimulationProperties extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Simulation Speed Factor</b></em>' attribute.
-	 * The default value is <code>"10"</code>.
+	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Simulation Speed Factor</em>' attribute isn't clear,
@@ -261,7 +261,7 @@ public interface SimulationProperties extends EObject {
 	 * @return the value of the '<em>Simulation Speed Factor</em>' attribute.
 	 * @see #setSimulationSpeedFactor(int)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_SimulationSpeedFactor()
-	 * @model default="10"
+	 * @model default="1"
 	 * @generated
 	 */
 	int getSimulationSpeedFactor();

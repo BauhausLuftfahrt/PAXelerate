@@ -46,7 +46,15 @@ public enum SeatType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	FOLDED_UPWARDS(2, "FoldedUpwards", "FoldedUpwards");
+	FOLDED_UPWARDS(2, "FoldedUpwards", "FoldedUpwards"), /**
+	 * The '<em><b>Bring Your Own</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #BRING_YOUR_OWN_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	BRING_YOUR_OWN(3, "BringYourOwn", "BringYourOwn");
 
 	/**
 	 * The '<em><b>Default</b></em>' literal value.
@@ -94,6 +102,21 @@ public enum SeatType implements Enumerator {
 	public static final int FOLDED_UPWARDS_VALUE = 2;
 
 	/**
+	 * The '<em><b>Bring Your Own</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Bring Your Own</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #BRING_YOUR_OWN
+	 * @model name="BringYourOwn"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int BRING_YOUR_OWN_VALUE = 3;
+
+	/**
 	 * An array of all the '<em><b>Seat Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -104,6 +127,7 @@ public enum SeatType implements Enumerator {
 			DEFAULT,
 			FOLDED_AWAY,
 			FOLDED_UPWARDS,
+			BRING_YOUR_OWN,
 		};
 
 	/**
@@ -163,6 +187,7 @@ public enum SeatType implements Enumerator {
 			case DEFAULT_VALUE: return DEFAULT;
 			case FOLDED_AWAY_VALUE: return FOLDED_AWAY;
 			case FOLDED_UPWARDS_VALUE: return FOLDED_UPWARDS;
+			case BRING_YOUR_OWN_VALUE: return BRING_YOUR_OWN;
 		}
 		return null;
 	}

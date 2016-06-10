@@ -14,7 +14,6 @@ import org.eclipse.swt.SWTException;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
 import net.bhl.cdt.paxelerate.model.LayoutConcept;
-import net.bhl.cdt.paxelerate.model.LuggageProperties;
 import net.bhl.cdt.paxelerate.model.LuggageSize;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.PassengerMood;
@@ -69,7 +68,7 @@ public class Agent extends Subject implements Runnable {
 	/** The moved once. */
 	private boolean alreadyStowed = false, waitingCompleted = false,
 			initialized = false, exitTheMainLoop = false, movedOnce = false,
-			foldingSeats = false, stowingAtSeat = false;
+			foldingSeats = false, stowingAtAisleSeat = false, aisleSeat = false;
 
 	/** The stopwatch. */
 	private StopWatch stopwatch = new StopWatch();
@@ -101,9 +100,6 @@ public class Agent extends Subject implements Runnable {
 
 	/** The passenger i let in the row. */
 	private Passenger thePassengerILetInTheRow;
-
-	/** The sim luggage settings. */
-	private LuggageProperties simLuggageSettings;
 
 	/** The sim settings. */
 	private SimulationProperties simSettings;
@@ -212,12 +208,11 @@ public class Agent extends Subject implements Runnable {
 		this.finalCostmap = costmap;
 		this.thePassengerILetInTheRow = thePassengerILetInTheRow;
 		this.simSettings = SimulationHandler.getCabin().getSimulationSettings();
-		this.simLuggageSettings = SimulationHandler.getCabin()
-				.getSimulationSettings().getLuggageProperties();
 		this.foldingSeats = (simSettings
 				.getLayoutConcept() == LayoutConcept.SIDWAYS_FOLDABLE_SEAT
 				|| simSettings
 						.getLayoutConcept() == LayoutConcept.LIFTING_SEAT_PAN_SEATS);
+		this.aisleSeat = "CD".contains(passenger.getSeat().getLetter());
 
 		/* generate a mood for the passenger depending on his presets */
 		if (passenger.getPassengerMood() == PassengerMood.AGGRESSIVE) {
@@ -404,12 +399,34 @@ public class Agent extends Subject implements Runnable {
 		 * seat
 		 */
 		return (hasLuggage()
-				&& isInXRangeEqual(passenger.getSeat().getXPosition(),
-						getLuggageStowDistance(), false));
+				&& isInRangeEqual(passenger.getSeat().getXPosition(),
+						desiredPosition.getX() * scale, getLuggageStowDistance()));
+	}
+
+	public boolean passengerStowsLuggageAtAisleSeat() {
+		int yCoordAisleSeat = 0;
+		int distanceToAisleSeat = 1;
+
+		for (Seat seat : passenger.getSeat().getRow().getSeats()) {
+			if ("ABC".contains(passenger.getSeat().getLetter())) {
+				if ("C".contains(seat.getLetter())) {
+					yCoordAisleSeat = seat.getYPosition()
+							+ seat.getYDimension() / 2;
+				}
+			} else if ("DEF".contains(passenger.getSeat().getLetter())) {
+				if ("D".contains(seat.getLetter())) {
+					yCoordAisleSeat = seat.getYPosition()
+							+ seat.getYDimension() / 2;
+				}
+			}
+		}
+
+		return (hasLuggage() && isInRangeSmaller((int) passenger.getPositionY(),
+				yCoordAisleSeat, distanceToAisleSeat));
 	}
 
 	/**
-	 * Checks if is in x range equal.
+	 * Checks if is in x/y range equal.
 	 *
 	 * @param position
 	 *            the position
@@ -417,18 +434,19 @@ public class Agent extends Subject implements Runnable {
 	 *            the range
 	 * @param print
 	 *            the print
-	 * @return true, if is in x range equal
+	 * @return true, if is in x/y range equal
 	 */
-	private boolean isInXRangeEqual(int position, int range, boolean print) {
+	private boolean isInRangeEqual(int position, int desiredPosition,
+			int range) {
 
-		if (Math.abs(desiredPosition.getX() - position / scale) == range) {
+		if (Math.abs((desiredPosition - position) / scale) == range) {
 			return true;
 		}
 		return false;
 	}
 
 	/**
-	 * Checks if is in x range smaller.
+	 * Checks if is in x/y range smaller.
 	 *
 	 * @param position
 	 *            the position
@@ -436,11 +454,12 @@ public class Agent extends Subject implements Runnable {
 	 *            the range
 	 * @param print
 	 *            the print
-	 * @return true, if is in x range smaller
+	 * @return true, if is in x/y range smaller
 	 */
-	private boolean isInXRangeSmaller(int position, int range, boolean print) {
-
-		if (Math.abs(desiredPosition.getX() - position / scale) < range) {
+	private boolean isInRangeSmaller(int position, int desiredPosition,
+			int range) {
+		
+		if (Math.abs((desiredPosition - position) / scale) < range) {
 			return true;
 		}
 		return false;
@@ -488,8 +507,8 @@ public class Agent extends Subject implements Runnable {
 		 * seat
 		 */
 		return (hasFoldableSeat()
-				&& isInXRangeEqual(passenger.getSeat().getXPosition(),
-						getSeatFoldingDistance(), false));
+				&& isInRangeEqual(passenger.getSeat().getXPosition(),
+						desiredPosition.getX() * scale, getSeatFoldingDistance()));
 	}
 
 	/**
@@ -791,220 +810,6 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * This method is the main path following loop for the agent.
-	 */
-	private void followPath() {
-
-		/* define the try catch loop as main loop */
-		mainloop: try {
-
-			/*
-			 * i represents the number of steps taken as well as the current
-			 * step count. The actual position is one step behind i, so i is the
-			 * desired step.
-			 */
-			int i = 0;
-
-			/* run the path up to its end */
-			while (i < path.getLength()) {
-
-				/*
-				 * at the first step, there is no current location but only a
-				 * desired first location. So ignore this at the first loop.
-				 */
-				if (i != 0) {
-
-					/*
-					 * the current position is the last taken step in the path
-					 */
-					currentPosition = path.get(i - 1).getPosition();
-
-				}
-
-				if (i == 2) {
-					movedOnce = true;
-				}
-
-				/* the new planned location is current step in the path */
-				desiredPosition = path.get(i).getPosition();
-
-				/* check if the desired next step is blocked by someone else */
-				Property property = nodeBlocked(desiredPosition);
-				if (property != null) {
-
-					setCurrentState(State.QUEUEING_UP);
-
-					/* raise the interrupts counter up by one */
-					numbOfInterupts++;
-					SimulationHandler.getMap().get(currentPosition)
-							.raiseNumberOfInterrupts();
-
-					/* get the correct behavior for an obstacle avoidance */
-					Situation collision = new Situation(agentMood, property);
-
-					/* Perform the correct behavior */
-					collision.handle();
-
-					/*
-					 * the main loop is quit, if there is a new path calculated
-					 */
-					if (exitTheMainLoop) {
-
-						/* cut the old path and add the new one to the list */
-						redefinePathLayout();
-
-						/* exit this loop */
-						break mainloop;
-					}
-
-					/*
-					 * if there is no obstacle in the way, check if the luggage
-					 * should be stowed now next
-					 */
-				} else if (foldingSeats && !stowingAtSeat && !alreadyStowed
-						&& passengerStowsLuggage()) {
-
-					/*
-					 * decision point: normal luggage stowing distance if the
-					 * seat is still folded, the agent can stow his luggage
-					 * directly at the seat position TODO: case if seat is
-					 * unfolded in the meantime
-					 */
-
-					if ((checkSeatFoldingStatusInRow() == 1
-							&& "C".contains(passenger.getSeat().getLetter()))
-							|| (checkSeatFoldingStatusInRow() == 2
-									&& "D".contains(
-											passenger.getSeat().getLetter()))) {
-						stowingAtSeat = true;
-					}
-
-				} else if (!alreadyStowed && !stowingAtSeat
-						&& passengerStowsLuggage()) {
-
-					setCurrentState(State.STOWING_LUGGAGE);
-					rotateAgent(90);
-
-					/* sleep the thread as long as the luggage is stowed */
-					Thread.sleep(
-							AStarHelper.time(passenger.getLuggageStowTime()));
-
-					/* notify everyone that the luggage is now stowed */
-					alreadyStowed = true;
-
-					/*
-					 * } if there is no obstacle or luggage stowing required,
-					 * run the default step
-					 */
-
-				} else if (!waitingCompleted && waitingForClearingOfRow()) {
-
-					setCurrentState(State.WAITING_FOR_ROW_CLEARING);
-
-					// TODO: only one passenger is detected, even if there are 2
-					// already in the row!
-
-					while (waymakingAllowed() == false) {
-						Thread.sleep(simSettings.getThreadSleepTimeDefault());
-					}
-
-					/* way making procedure is skipped */
-					if (anyoneNearMe()) {
-						System.out
-								.println("waymaking skipped. Delay simulated!");
-						Thread.sleep(AStarHelper.time(
-								simSettings.getSeatInterferenceProcessTime()));
-						wayMakingSkipped++;
-						waitingCompleted = true;
-						continue;
-					}
-
-					/* way making works as planned */
-					if (!waitingCompleted) {
-
-						for (Passenger pax : otherPassengersInRowBlockingMe) {
-
-							SimulationHandler.launchWaymakingAgent(pax,
-									this.passenger);
-
-						}
-
-						while (!otherPassengerStoodUp()) {
-							Thread.sleep(
-									simSettings.getThreadSleepTimeDefault());
-						}
-
-						// TODO: calculate the waiting time!
-						Thread.sleep(AStarHelper.time(simSettings
-								.getSeatInterferenceStandingUpPassengerWaitingTime()));
-
-						waitingCompleted = true;
-					}
-
-				} else {
-
-					setCurrentState(State.FOLLOWING_PATH);
-
-					/*
-					 * Go one step ahead. Do this by unblocking the current
-					 * position and blocking the next position.
-					 */
-					occupyOneStepAhead();
-
-					if (currentPosition.getX() != 0
-							&& currentPosition.getY() != 0
-							&& desiredPosition.getX() != 0
-							&& desiredPosition.getY() != 0) {
-
-						/* update the walked distance */
-						passenger.setDistanceWalked(passenger
-								.getDistanceWalked()
-								+ (int) (MathHelper.distanceBetween(
-										desiredPosition, currentPosition)
-										* scale));
-					}
-
-					/* notify next step */
-					lastMoveTime = System.currentTimeMillis();
-
-					/* then perform the step */
-					i++;
-
-					/* try to submit the properties back to the passenger */
-					try {
-
-						/* submit the agents position */
-						passenger.setPositionX(desiredPosition.getX() * scale);
-						passenger.setPositionY(desiredPosition.getY() * scale);
-
-						/* submit the agents orientation */
-						passenger.setOrientationInDegree(
-								AgentFunctions.getRotation(this));
-
-						/* catch possible errors */
-					} catch (ConcurrentModificationException e) {
-						e.printStackTrace();
-					} catch (ArrayIndexOutOfBoundsException a) {
-						a.printStackTrace();
-					} catch (SWTException swt) {
-						swt.printStackTrace();
-					}
-
-					/* sleep as long as one step takes */
-					Thread.sleep((int) (1000 / SimulationHandler.getCabin()
-							.getSimulationSettings().getSimulationSpeedFactor()
-							/ passenger.getWalkingSpeed() / (100 / scale)));
-
-				}
-			}
-
-			/* catch possible interruptions */
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
 	 * Anyone near me.
 	 *
 	 * @return true, if successful
@@ -1013,10 +818,10 @@ public class Agent extends Subject implements Runnable {
 		for (Passenger pax : SimulationHandler.getCabin().getPassengers()) {
 			if (!pax.isIsSeated()) {
 				if (pax.getId() != passenger.getId()) {
-					if (isInXRangeSmaller(
+					if (isInRangeSmaller(
 							SimulationHandler.getAgentByPassenger(pax)
 									.getCurrentPosition().getX() * scale,
-							10, true)) {
+							desiredPosition.getX(), 10)) {
 						return true;
 					}
 				}
@@ -1049,8 +854,8 @@ public class Agent extends Subject implements Runnable {
 	 */
 	private boolean waitingForClearingOfRow() {
 
-		if (isInXRangeEqual(passenger.getSeat().getXPosition(), PIXELS_FOR_WAY,
-				false)) {
+		if (isInRangeEqual(passenger.getSeat().getXPosition(),
+				desiredPosition.getX() * scale, PIXELS_FOR_WAY)) {
 			if (AgentFunctions.someoneAlreadyInThisPartOfTheRow(this)) {
 				return true;
 			}
@@ -1176,6 +981,7 @@ public class Agent extends Subject implements Runnable {
 	private void stowLuggage() {
 
 		setCurrentState(State.STOWING_LUGGAGE);
+		rotateAgent(90);
 
 		/* sleep the thread as long as the luggage is stowed */
 		try {
@@ -1191,7 +997,6 @@ public class Agent extends Subject implements Runnable {
 	private void unfoldingSeatProcedure() {
 
 		setCurrentState(State.UNFOLDING_SEAT);
-		// rotateAgent(90);
 
 		/* Unfold seat if necessary */
 		/* Sideways foldable seat */
@@ -1242,6 +1047,267 @@ public class Agent extends Subject implements Runnable {
 			Thread.sleep(AStarHelper.time(seatPopupTime));
 		} catch (InterruptedException e) {
 			//
+		}
+	}
+
+	/**
+	 * This method starts the agent.
+	 */
+	public void start() {
+		if (getThread() == null) {
+			setThread(new Thread(this, passenger.getName()));
+			getThread().start();
+		}
+	}
+
+	/**
+	 * This method returns the thread.
+	 * 
+	 * @return the thread
+	 */
+	public Thread getThread() {
+		return thread;
+	}
+
+	/**
+	 * This method sets the thread.
+	 * 
+	 * @param thread
+	 *            the thread
+	 */
+	public void setThread(Thread thread) {
+		this.thread = thread;
+	}
+
+	/**
+	 * Removes the.
+	 */
+	public void remove() {
+		if (performFinalElements() == true) {
+			System.out.println(
+					"Passenger " + passenger.getId() + " is now force-seated!");
+		} else {
+			System.out.println("Passenger is already seated!");
+		}
+	}
+
+	/**
+	 * Gets the number way making skipped.
+	 *
+	 * @return the number way making skipped
+	 */
+	public int getNumberWayMakingSkipped() {
+		return wayMakingSkipped;
+	}
+
+	/**
+	 * This method is the main path following loop for the agent.
+	 */
+	private void followPath() {
+
+		/* define the try catch loop as main loop */
+		mainloop: try {
+
+			/*
+			 * i represents the number of steps taken as well as the current
+			 * step count. The actual position is one step behind i, so i is the
+			 * desired step.
+			 */
+			int i = 0;
+
+			/* run the path up to its end */
+			while (i < path.getLength()) {
+
+				/*
+				 * at the first step, there is no current location but only a
+				 * desired first location. So ignore this at the first loop.
+				 */
+				if (i != 0) {
+
+					/*
+					 * the current position is the last taken step in the path
+					 */
+					currentPosition = path.get(i - 1).getPosition();
+
+				}
+
+				if (i == 2) {
+					movedOnce = true;
+				}
+
+				/* the new planned location is current step in the path */
+				desiredPosition = path.get(i).getPosition();
+
+				/* check if the desired next step is blocked by someone else */
+				Property property = nodeBlocked(desiredPosition);
+				if (property != null) {
+
+					setCurrentState(State.QUEUEING_UP);
+
+					/* raise the interrupts counter up by one */
+					numbOfInterupts++;
+					SimulationHandler.getMap().get(currentPosition)
+							.raiseNumberOfInterrupts();
+
+					/* get the correct behavior for an obstacle avoidance */
+					Situation collision = new Situation(agentMood, property);
+
+					/* Perform the correct behavior */
+					collision.handle();
+
+					/*
+					 * the main loop is quit, if there is a new path calculated
+					 */
+					if (exitTheMainLoop) {
+
+						/* cut the old path and add the new one to the list */
+						redefinePathLayout();
+
+						/* exit this loop */
+						break mainloop;
+					}
+
+					/*
+					 * if there is no obstacle in the way, check if the luggage
+					 * should be stowed now next
+					 */
+				} else if (foldingSeats && !stowingAtAisleSeat && !alreadyStowed
+						&& passengerStowsLuggage()) {
+
+					/*
+					 * decision point: normal luggage stowing distance if the
+					 * seat is still folded, the agent can stow his luggage
+					 * directly at the seat position TODO: case if seat is
+					 * unfolded in the meantime
+					 */
+
+					if ((checkSeatFoldingStatusInRow() == 1
+							&& "ABC".contains(passenger.getSeat().getLetter()))
+							|| (checkSeatFoldingStatusInRow() == 2
+									&& "DEF".contains(
+											passenger.getSeat().getLetter()))) {
+						stowingAtAisleSeat = true;
+					}
+
+				} else if (!alreadyStowed && !stowingAtAisleSeat
+						&& passengerStowsLuggage()) {
+
+					stowLuggage();
+
+					/*
+					 * if there is no obstacle or luggage stowing required, run
+					 * the default step
+					 */
+
+				} else if (!alreadyStowed && stowingAtAisleSeat
+						&& passengerStowsLuggageAtAisleSeat()) {
+
+					stowLuggage();
+
+				} else if (!waitingCompleted && waitingForClearingOfRow()) {
+
+					setCurrentState(State.WAITING_FOR_ROW_CLEARING);
+
+					// TODO: only one passenger is detected, even if there are 2
+					// already in the row!
+
+					while (waymakingAllowed() == false) {
+						Thread.sleep(simSettings.getThreadSleepTimeDefault());
+					}
+
+					/* way making procedure is skipped */
+					if (anyoneNearMe()) {
+						System.out
+								.println("waymaking skipped. Delay simulated!");
+						Thread.sleep(AStarHelper.time(
+								simSettings.getSeatInterferenceProcessTime()));
+						wayMakingSkipped++;
+						waitingCompleted = true;
+						continue;
+					}
+
+					/* way making works as planned */
+					if (!waitingCompleted) {
+
+						for (Passenger pax : otherPassengersInRowBlockingMe) {
+
+							SimulationHandler.launchWaymakingAgent(pax,
+									this.passenger);
+
+						}
+
+						while (!otherPassengerStoodUp()) {
+							Thread.sleep(
+									simSettings.getThreadSleepTimeDefault());
+						}
+
+						// TODO: calculate the waiting time!
+						Thread.sleep(AStarHelper.time(simSettings
+								.getSeatInterferenceStandingUpPassengerWaitingTime()));
+
+						waitingCompleted = true;
+					}
+
+				} else {
+
+					setCurrentState(State.FOLLOWING_PATH);
+
+					/*
+					 * Go one step ahead. Do this by unblocking the current
+					 * position and blocking the next position.
+					 */
+					occupyOneStepAhead();
+
+					if (currentPosition.getX() != 0
+							&& currentPosition.getY() != 0
+							&& desiredPosition.getX() != 0
+							&& desiredPosition.getY() != 0) {
+
+						/* update the walked distance */
+						passenger.setDistanceWalked(passenger
+								.getDistanceWalked()
+								+ (int) (MathHelper.distanceBetween(
+										desiredPosition, currentPosition)
+										* scale));
+					}
+
+					/* notify next step */
+					lastMoveTime = System.currentTimeMillis();
+
+					/* then perform the step */
+					i++;
+
+					/* try to submit the properties back to the passenger */
+					try {
+
+						/* submit the agents position */
+						passenger.setPositionX(desiredPosition.getX() * scale);
+						passenger.setPositionY(desiredPosition.getY() * scale);
+
+						/* submit the agents orientation */
+						passenger.setOrientationInDegree(
+								AgentFunctions.getRotation(this));
+
+						/* catch possible errors */
+					} catch (ConcurrentModificationException e) {
+						e.printStackTrace();
+					} catch (ArrayIndexOutOfBoundsException a) {
+						a.printStackTrace();
+					} catch (SWTException swt) {
+						swt.printStackTrace();
+					}
+
+					/* sleep as long as one step takes */
+					Thread.sleep((int) (1000 / SimulationHandler.getCabin()
+							.getSimulationSettings().getSimulationSpeedFactor()
+							/ passenger.getWalkingSpeed() / (100 / scale)));
+
+				}
+			}
+
+			/* catch possible interruptions */
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -1396,12 +1462,7 @@ public class Agent extends Subject implements Runnable {
 			}
 
 			//
-			if (stowingAtSeat) {
-				stowLuggage();
-			}
-
-			//
-			if (foldingSeats) {
+			if (foldingSeats && aisleSeat) {
 				unfoldingSeatProcedure();
 			}
 
@@ -1411,56 +1472,6 @@ public class Agent extends Subject implements Runnable {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-	}
-
-	/**
-	 * This method starts the agent.
-	 */
-	public void start() {
-		if (getThread() == null) {
-			setThread(new Thread(this, passenger.getName()));
-			getThread().start();
-		}
-	}
-
-	/**
-	 * This method returns the thread.
-	 * 
-	 * @return the thread
-	 */
-	public Thread getThread() {
-		return thread;
-	}
-
-	/**
-	 * This method sets the thread.
-	 * 
-	 * @param thread
-	 *            the thread
-	 */
-	public void setThread(Thread thread) {
-		this.thread = thread;
-	}
-
-	/**
-	 * Removes the.
-	 */
-	public void remove() {
-		if (performFinalElements() == true) {
-			System.out.println(
-					"Passenger " + passenger.getId() + " is now force-seated!");
-		} else {
-			System.out.println("Passenger is already seated!");
-		}
-	}
-
-	/**
-	 * Gets the number way making skipped.
-	 *
-	 * @return the number way making skipped
-	 */
-	public int getNumberWayMakingSkipped() {
-		return wayMakingSkipped;
 	}
 
 }

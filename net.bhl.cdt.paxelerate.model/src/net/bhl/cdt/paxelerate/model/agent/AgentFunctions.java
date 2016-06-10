@@ -25,6 +25,10 @@ import net.bhl.cdt.paxelerate.util.math.Vector2D;
  */
 public class AgentFunctions {
 
+	
+	/** The Constant PIXELS_FOR_SCANNING_AT_DOOR. */
+	public static final int PIXELS_FOR_SCANNING_AT_DOOR = 3;
+	
 	/**
 	 * Someone already in this part of the row.
 	 *
@@ -76,6 +80,8 @@ public class AgentFunctions {
 		}
 		return false;
 	}
+	
+	
 
 	// TODO: this only works for a ONE AISLE configuration!
 	/**
@@ -134,8 +140,6 @@ public class AgentFunctions {
 		return angle;
 	}
 
-	/** The Constant PIXELS_FOR_SCANNING_AT_DOOR. */
-	public static final int PIXELS_FOR_SCANNING_AT_DOOR = 3;
 
 	/**
 	 * Doorway blocked.

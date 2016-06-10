@@ -62,6 +62,7 @@
       <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//SeatType/Default"/>
       <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//SeatType/FoldedAway"/>
       <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//SeatType/FoldedUpwards"/>
+      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//SeatType/BringYourOwn"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="cabin.ecore#//LayoutConcept">
       <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//LayoutConcept/Default"/>

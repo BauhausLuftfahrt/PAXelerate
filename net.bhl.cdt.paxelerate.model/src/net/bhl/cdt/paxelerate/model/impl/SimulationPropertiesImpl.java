@@ -212,7 +212,7 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SIMULATION_SPEED_FACTOR_EDEFAULT = 10;
+	protected static final int SIMULATION_SPEED_FACTOR_EDEFAULT = 1;
 
 	/**
 	 * The cached value of the '{@link #getSimulationSpeedFactor() <em>Simulation Speed Factor</em>}' attribute.
