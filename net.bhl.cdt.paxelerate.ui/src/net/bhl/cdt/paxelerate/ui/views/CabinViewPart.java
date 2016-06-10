@@ -78,7 +78,8 @@ public class CabinViewPart extends ViewPart {
 
 	/** ****************************************************************. */
 
-	private Image economySeat, businessSeat, firstSeat, galleyIcon, lavatoryIcon;
+	private Image economySeatDefault, economySeatBack, economySeatSide, businessSeat, firstSeat, galleyIcon,
+			lavatoryIcon;
 
 	/** The canvas. */
 	private Canvas canvas;
@@ -117,7 +118,9 @@ public class CabinViewPart extends ViewPart {
 
 		factor = cabin.getYDimension() / (double) CABIN_WIDTH_IN_PIXELS;
 
-		economySeat = ImageImporter.getImage(getClass(), IMAGE_PATH + "economy_seat.png");
+		economySeatDefault = ImageImporter.getImage(getClass(), IMAGE_PATH + "economy_seat.png");
+		economySeatSide = ImageImporter.getImage(getClass(), IMAGE_PATH + "economy_seat_folded_2.png");
+		economySeatBack = ImageImporter.getImage(getClass(), IMAGE_PATH + "economy_seat_folded_1.png");
 		businessSeat = ImageImporter.getImage(getClass(), IMAGE_PATH + "business_seat.png");
 		firstSeat = ImageImporter.getImage(getClass(), IMAGE_PATH + "first_seat.png");
 		galleyIcon = ImageImporter.getImage(getClass(), IMAGE_PATH + "coffee.png");
@@ -232,7 +235,9 @@ public class CabinViewPart extends ViewPart {
 
 				case SEAT:
 
-					switch (((Seat) obj).getTravelClass().getTravelOption()) {
+					Seat seat = (Seat) obj;
+
+					switch (seat.getTravelClass().getTravelOption()) {
 					case FIRST_CLASS:
 						icon = firstSeat;
 						break;
@@ -242,11 +247,19 @@ public class CabinViewPart extends ViewPart {
 						break;
 
 					default:
-						icon = economySeat;
+						switch (seat.getLayoutConcept()) {
+						case SIDWAYS_FOLDABLE_SEAT:
+							icon = economySeatSide;
+							break;
+						case LIFTING_SEAT_PAN_SEATS:
+							icon = economySeatBack;
+							break;
+						default:
+							icon = economySeatDefault;
+							break;
+						}
 						break;
 					}
-
-					// TODO: implement the change in the seat image here!
 
 					gc.drawImage(icon, adapt(Axis.X, obj.getYPosition()), adapt(Axis.Y, obj.getXPosition()));
 
@@ -413,7 +426,9 @@ public class CabinViewPart extends ViewPart {
 				case BUSINESS_CLASS:
 					businessSeat = ImageHelper.resize(businessSeat, dimY, dimX, parent);
 				case ECONOMY_CLASS:
-					economySeat = ImageHelper.resize(economySeat, dimY, dimX, parent);
+					economySeatDefault = ImageHelper.resize(economySeatDefault, dimY, dimX, parent);
+					economySeatSide = ImageHelper.resize(economySeatSide, dimY, dimX, parent);
+					economySeatBack = ImageHelper.resize(economySeatBack, dimY, dimX, parent);
 				default:
 				}
 			}

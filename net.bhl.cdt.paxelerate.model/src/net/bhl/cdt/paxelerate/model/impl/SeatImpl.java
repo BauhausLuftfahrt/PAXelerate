@@ -8,10 +8,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import net.bhl.cdt.paxelerate.model.CabinPackage;
+import net.bhl.cdt.paxelerate.model.LayoutConcept;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
-import net.bhl.cdt.paxelerate.model.SeatType;
 import net.bhl.cdt.paxelerate.model.TravelClass;
 
 /**
@@ -29,7 +29,7 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SeatImpl#getRow <em>Row</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SeatImpl#isOccupied <em>Occupied</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SeatImpl#getPassenger <em>Passenger</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SeatImpl#getSeatType <em>Seat Type</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SeatImpl#getLayoutConcept <em>Layout Concept</em>}</li>
  * </ul>
  *
  * @generated
@@ -146,24 +146,24 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 	protected Passenger passenger;
 
 	/**
-	 * The default value of the '{@link #getSeatType() <em>Seat Type</em>}' attribute.
+	 * The default value of the '{@link #getLayoutConcept() <em>Layout Concept</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSeatType()
+	 * @see #getLayoutConcept()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final SeatType SEAT_TYPE_EDEFAULT = SeatType.DEFAULT;
+	protected static final LayoutConcept LAYOUT_CONCEPT_EDEFAULT = LayoutConcept.DEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getSeatType() <em>Seat Type</em>}' attribute.
+	 * The cached value of the '{@link #getLayoutConcept() <em>Layout Concept</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSeatType()
+	 * @see #getLayoutConcept()
 	 * @generated
 	 * @ordered
 	 */
-	protected SeatType seatType = SEAT_TYPE_EDEFAULT;
+	protected LayoutConcept layoutConcept = LAYOUT_CONCEPT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -424,8 +424,8 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SeatType getSeatType() {
-		return seatType;
+	public LayoutConcept getLayoutConcept() {
+		return layoutConcept;
 	}
 
 	/**
@@ -433,11 +433,11 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSeatType(SeatType newSeatType) {
-		SeatType oldSeatType = seatType;
-		seatType = newSeatType == null ? SEAT_TYPE_EDEFAULT : newSeatType;
+	public void setLayoutConcept(LayoutConcept newLayoutConcept) {
+		LayoutConcept oldLayoutConcept = layoutConcept;
+		layoutConcept = newLayoutConcept == null ? LAYOUT_CONCEPT_EDEFAULT : newLayoutConcept;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SEAT__SEAT_TYPE, oldSeatType, seatType));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SEAT__LAYOUT_CONCEPT, oldLayoutConcept, layoutConcept));
 	}
 
 	/**
@@ -470,8 +470,8 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 			case CabinPackage.SEAT__PASSENGER:
 				if (resolve) return getPassenger();
 				return basicGetPassenger();
-			case CabinPackage.SEAT__SEAT_TYPE:
-				return getSeatType();
+			case CabinPackage.SEAT__LAYOUT_CONCEPT:
+				return getLayoutConcept();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -508,8 +508,8 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 			case CabinPackage.SEAT__PASSENGER:
 				setPassenger((Passenger)newValue);
 				return;
-			case CabinPackage.SEAT__SEAT_TYPE:
-				setSeatType((SeatType)newValue);
+			case CabinPackage.SEAT__LAYOUT_CONCEPT:
+				setLayoutConcept((LayoutConcept)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -546,8 +546,8 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 			case CabinPackage.SEAT__PASSENGER:
 				setPassenger((Passenger)null);
 				return;
-			case CabinPackage.SEAT__SEAT_TYPE:
-				setSeatType(SEAT_TYPE_EDEFAULT);
+			case CabinPackage.SEAT__LAYOUT_CONCEPT:
+				setLayoutConcept(LAYOUT_CONCEPT_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -578,8 +578,8 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 				return occupied != OCCUPIED_EDEFAULT;
 			case CabinPackage.SEAT__PASSENGER:
 				return passenger != null;
-			case CabinPackage.SEAT__SEAT_TYPE:
-				return seatType != SEAT_TYPE_EDEFAULT;
+			case CabinPackage.SEAT__LAYOUT_CONCEPT:
+				return layoutConcept != LAYOUT_CONCEPT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -604,8 +604,8 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 		result.append(letter);
 		result.append(", occupied: ");
 		result.append(occupied);
-		result.append(", seatType: ");
-		result.append(seatType);
+		result.append(", layoutConcept: ");
+		result.append(layoutConcept);
 		result.append(')');
 		return result.toString();
 	}

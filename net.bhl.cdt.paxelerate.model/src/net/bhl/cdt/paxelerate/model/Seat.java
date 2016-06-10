@@ -20,7 +20,7 @@ package net.bhl.cdt.paxelerate.model;
  *   <li>{@link net.bhl.cdt.paxelerate.model.Seat#getRow <em>Row</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Seat#isOccupied <em>Occupied</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Seat#getPassenger <em>Passenger</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Seat#getSeatType <em>Seat Type</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Seat#getLayoutConcept <em>Layout Concept</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSeat()
@@ -211,33 +211,33 @@ public interface Seat extends PhysicalObject {
 	void setPassenger(Passenger value);
 
 	/**
-	 * Returns the value of the '<em><b>Seat Type</b></em>' attribute.
+	 * Returns the value of the '<em><b>Layout Concept</b></em>' attribute.
 	 * The default value is <code>"Default"</code>.
-	 * The literals are from the enumeration {@link net.bhl.cdt.paxelerate.model.SeatType}.
+	 * The literals are from the enumeration {@link net.bhl.cdt.paxelerate.model.LayoutConcept}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Seat Type</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Layout Concept</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Seat Type</em>' attribute.
-	 * @see net.bhl.cdt.paxelerate.model.SeatType
-	 * @see #setSeatType(SeatType)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSeat_SeatType()
+	 * @return the value of the '<em>Layout Concept</em>' attribute.
+	 * @see net.bhl.cdt.paxelerate.model.LayoutConcept
+	 * @see #setLayoutConcept(LayoutConcept)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSeat_LayoutConcept()
 	 * @model default="Default" required="true"
 	 * @generated
 	 */
-	SeatType getSeatType();
+	LayoutConcept getLayoutConcept();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Seat#getSeatType <em>Seat Type</em>}' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Seat#getLayoutConcept <em>Layout Concept</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Seat Type</em>' attribute.
-	 * @see net.bhl.cdt.paxelerate.model.SeatType
-	 * @see #getSeatType()
+	 * @param value the new value of the '<em>Layout Concept</em>' attribute.
+	 * @see net.bhl.cdt.paxelerate.model.LayoutConcept
+	 * @see #getLayoutConcept()
 	 * @generated
 	 */
-	void setSeatType(SeatType value);
+	void setLayoutConcept(LayoutConcept value);
 
 } // Seat

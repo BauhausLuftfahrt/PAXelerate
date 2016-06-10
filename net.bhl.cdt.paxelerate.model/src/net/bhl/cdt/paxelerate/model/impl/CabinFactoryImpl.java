@@ -109,8 +109,6 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return createObjectOptionFromString(eDataType, initialValue);
 			case CabinPackage.DOOR_OPTION:
 				return createDoorOptionFromString(eDataType, initialValue);
-			case CabinPackage.SEAT_TYPE:
-				return createSeatTypeFromString(eDataType, initialValue);
 			case CabinPackage.LAYOUT_CONCEPT:
 				return createLayoutConceptFromString(eDataType, initialValue);
 			default:
@@ -148,8 +146,6 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return convertObjectOptionToString(eDataType, instanceValue);
 			case CabinPackage.DOOR_OPTION:
 				return convertDoorOptionToString(eDataType, instanceValue);
-			case CabinPackage.SEAT_TYPE:
-				return convertSeatTypeToString(eDataType, instanceValue);
 			case CabinPackage.LAYOUT_CONCEPT:
 				return convertLayoutConceptToString(eDataType, instanceValue);
 			default:
@@ -570,26 +566,6 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * @generated 
 	 */
 	public String convertDoorOptionToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SeatType createSeatTypeFromString(EDataType eDataType, String initialValue) {
-		SeatType result = SeatType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertSeatTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

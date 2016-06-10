@@ -18,7 +18,6 @@ import net.bhl.cdt.paxelerate.model.LuggageSize;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.PassengerMood;
 import net.bhl.cdt.paxelerate.model.Seat;
-import net.bhl.cdt.paxelerate.model.SeatType;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
 import net.bhl.cdt.paxelerate.model.astar.AStarHelper;
 import net.bhl.cdt.paxelerate.model.astar.Core;
@@ -399,7 +398,7 @@ public class Agent extends Subject implements Runnable {
 		 * seat
 		 */
 		return (hasLuggage() && isInRangeEqual(
-				(int) passenger.getSeat().getXPosition(),
+				passenger.getSeat().getXPosition(),
 				desiredPosition.getX() * scale, getLuggageStowDistance()));
 	}
 
@@ -471,9 +470,10 @@ public class Agent extends Subject implements Runnable {
 	 * @return true, if successful
 	 */
 	private boolean hasFoldableSeat() {
-		return (passenger.getSeat().getSeatType() == SeatType.FOLDED_AWAY
+		return (passenger.getSeat()
+				.getLayoutConcept() == LayoutConcept.SIDWAYS_FOLDABLE_SEAT
 				|| passenger.getSeat()
-						.getSeatType() == SeatType.FOLDED_UPWARDS);
+						.getLayoutConcept() == LayoutConcept.LIFTING_SEAT_PAN_SEATS);
 	}
 
 	private int checkSeatFoldingStatusInRow() {
@@ -1002,12 +1002,13 @@ public class Agent extends Subject implements Runnable {
 
 		/* Unfold seat if necessary */
 		/* Sideways foldable seat */
-		if (passenger.getSeat().getSeatType() == SeatType.FOLDED_AWAY) {
+		if (passenger.getSeat()
+				.getLayoutConcept() == LayoutConcept.SIDWAYS_FOLDABLE_SEAT) {
 			unfoldSeat(simSettings.getSidewaysFoldabeSeatPopupTime());
 
 			/* Lifting seat pan */
 		} else if (passenger.getSeat()
-				.getSeatType() == SeatType.FOLDED_UPWARDS) {
+				.getLayoutConcept() == LayoutConcept.LIFTING_SEAT_PAN_SEATS) {
 			unfoldSeat(simSettings.getLiftingSeatPanPopupTime());
 		}
 	}
@@ -1021,7 +1022,7 @@ public class Agent extends Subject implements Runnable {
 	private void unfoldSeat(int seatPopupTime) {
 
 		Seat seat = passenger.getSeat();
-		seat.setSeatType(SeatType.DEFAULT);
+		seat.setLayoutConcept(LayoutConcept.DEFAULT);
 
 		int width = seat.getYDimension() / scale;
 		int length = seat.getXDimension() / scale;
@@ -1190,7 +1191,7 @@ public class Agent extends Subject implements Runnable {
 											passenger.getSeat().getLetter()))) {
 						stowingAtAisleSeat = true;
 					} else {
-						
+
 						stowLuggage();
 					}
 

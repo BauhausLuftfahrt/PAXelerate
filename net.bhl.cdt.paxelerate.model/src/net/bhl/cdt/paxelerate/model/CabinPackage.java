@@ -682,13 +682,13 @@ public interface CabinPackage extends EPackage {
 	int SEAT__PASSENGER = PHYSICAL_OBJECT_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Seat Type</b></em>' attribute.
+	 * The feature id for the '<em><b>Layout Concept</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEAT__SEAT_TYPE = PHYSICAL_OBJECT_FEATURE_COUNT + 7;
+	int SEAT__LAYOUT_CONCEPT = PHYSICAL_OBJECT_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of structural features of the '<em>Seat</em>' class.
@@ -2301,16 +2301,6 @@ public interface CabinPackage extends EPackage {
 	int DOOR_OPTION = 25;
 
 	/**
-	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.SeatType <em>Seat Type</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see net.bhl.cdt.paxelerate.model.SeatType
-	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getSeatType()
-	 * @generated
-	 */
-	int SEAT_TYPE = 26;
-
-	/**
 	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.LayoutConcept <em>Layout Concept</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2318,7 +2308,7 @@ public interface CabinPackage extends EPackage {
 	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getLayoutConcept()
 	 * @generated
 	 */
-	int LAYOUT_CONCEPT = 27;
+	int LAYOUT_CONCEPT = 26;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.Sex <em>Sex</em>}' enum.
@@ -2886,15 +2876,15 @@ public interface CabinPackage extends EPackage {
 	EReference getSeat_Passenger();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Seat#getSeatType <em>Seat Type</em>}'.
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Seat#getLayoutConcept <em>Layout Concept</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Seat Type</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.Seat#getSeatType()
+	 * @return the meta object for the attribute '<em>Layout Concept</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.Seat#getLayoutConcept()
 	 * @see #getSeat()
 	 * @generated
 	 */
-	EAttribute getSeat_SeatType();
+	EAttribute getSeat_LayoutConcept();
 
 	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.Passenger <em>Passenger</em>}'.
@@ -4163,16 +4153,6 @@ public interface CabinPackage extends EPackage {
 	EEnum getDoorOption();
 
 	/**
-	 * Returns the meta object for enum '{@link net.bhl.cdt.paxelerate.model.SeatType <em>Seat Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Seat Type</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SeatType
-	 * @generated
-	 */
-	EEnum getSeatType();
-
-	/**
 	 * Returns the meta object for enum '{@link net.bhl.cdt.paxelerate.model.LayoutConcept <em>Layout Concept</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4584,12 +4564,12 @@ public interface CabinPackage extends EPackage {
 		 */
 		EReference SEAT__PASSENGER = eINSTANCE.getSeat_Passenger();
 		/**
-		 * The meta object literal for the '<em><b>Seat Type</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Layout Concept</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SEAT__SEAT_TYPE = eINSTANCE.getSeat_SeatType();
+		EAttribute SEAT__LAYOUT_CONCEPT = eINSTANCE.getSeat_LayoutConcept();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl <em>Passenger</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -5449,15 +5429,6 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum DOOR_OPTION = eINSTANCE.getDoorOption();
-		/**
-		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.SeatType <em>Seat Type</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see net.bhl.cdt.paxelerate.model.SeatType
-		 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getSeatType()
-		 * @generated
-		 */
-		EEnum SEAT_TYPE = eINSTANCE.getSeatType();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.LayoutConcept <em>Layout Concept</em>}' enum.
 		 * <!-- begin-user-doc -->

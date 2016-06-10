@@ -20,7 +20,6 @@ import net.bhl.cdt.paxelerate.model.PassengerProperties;
 import net.bhl.cdt.paxelerate.model.PhysicalObject;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
-import net.bhl.cdt.paxelerate.model.SeatType;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
 import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.util.PassengerGenerator;
@@ -170,30 +169,30 @@ public class DrawCabinCommand extends CDTCommand {
 
 			/* Bring your own seat */
 			if (cabin.getSimulationSettings().getLayoutConcept() == LayoutConcept.BRING_YOUR_OWN_SEAT) {
-				seat.setSeatType(SeatType.FOLDED_AWAY);
+				seat.setLayoutConcept(LayoutConcept.SIDWAYS_FOLDABLE_SEAT);
 
 				/* Sideways foldable seat */
 			} else if (cabin.getSimulationSettings().getLayoutConcept() == LayoutConcept.SIDWAYS_FOLDABLE_SEAT) {
 				/* Aisle seats are set foldable */
 				if (seat.getLetter().contains("C")) {
-					seat.setSeatType(SeatType.FOLDED_AWAY);
+					seat.setLayoutConcept(LayoutConcept.SIDWAYS_FOLDABLE_SEAT);
 				} else if (seat.getLetter().contains("D")) {
-					seat.setSeatType(SeatType.FOLDED_AWAY);
+					seat.setLayoutConcept(LayoutConcept.SIDWAYS_FOLDABLE_SEAT);
 				} else {
-					seat.setSeatType(SeatType.DEFAULT);
+					seat.setLayoutConcept(LayoutConcept.DEFAULT);
 				}
 				/* Lifting seat pan */
 			} else if (cabin.getSimulationSettings().getLayoutConcept() == LayoutConcept.LIFTING_SEAT_PAN_SEATS) {
 				/* Aisle seats are set foldable */
 				if (seat.getLetter().contains("C")) {
-					seat.setSeatType(SeatType.FOLDED_UPWARDS);
+					seat.setLayoutConcept(LayoutConcept.LIFTING_SEAT_PAN_SEATS);
 				} else if (seat.getLetter().contains("D")) {
-					seat.setSeatType(SeatType.FOLDED_UPWARDS);
+					seat.setLayoutConcept(LayoutConcept.LIFTING_SEAT_PAN_SEATS);
 				} else {
-					seat.setSeatType(SeatType.DEFAULT);
+					seat.setLayoutConcept(LayoutConcept.DEFAULT);
 				}
 			} else {
-				seat.setSeatType(SeatType.DEFAULT);
+				seat.setLayoutConcept(LayoutConcept.DEFAULT);
 			}
 		}
 	}

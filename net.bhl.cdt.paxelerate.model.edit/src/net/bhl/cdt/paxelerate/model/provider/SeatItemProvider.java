@@ -53,7 +53,7 @@ public class SeatItemProvider
 			addRowPropertyDescriptor(object);
 			addOccupiedPropertyDescriptor(object);
 			addPassengerPropertyDescriptor(object);
-			addSeatTypePropertyDescriptor(object);
+			addLayoutConceptPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -213,19 +213,19 @@ public class SeatItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Seat Type feature.
+	 * This adds a property descriptor for the Layout Concept feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addSeatTypePropertyDescriptor(Object object) {
+	protected void addLayoutConceptPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Seat_seatType_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Seat_seatType_feature", "_UI_Seat_type"),
-				 CabinPackage.Literals.SEAT__SEAT_TYPE,
+				 getString("_UI_Seat_layoutConcept_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Seat_layoutConcept_feature", "_UI_Seat_type"),
+				 CabinPackage.Literals.SEAT__LAYOUT_CONCEPT,
 				 true,
 				 false,
 				 false,
@@ -275,7 +275,7 @@ public class SeatItemProvider
 			case CabinPackage.SEAT__CREW_SEAT:
 			case CabinPackage.SEAT__LETTER:
 			case CabinPackage.SEAT__OCCUPIED:
-			case CabinPackage.SEAT__SEAT_TYPE:
+			case CabinPackage.SEAT__LAYOUT_CONCEPT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

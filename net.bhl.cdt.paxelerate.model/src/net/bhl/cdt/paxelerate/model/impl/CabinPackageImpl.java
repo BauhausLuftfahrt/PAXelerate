@@ -244,13 +244,6 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum seatTypeEEnum = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EEnum layoutConceptEEnum = null;
 
 	/**
@@ -912,7 +905,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSeat_SeatType() {
+	public EAttribute getSeat_LayoutConcept() {
         return (EAttribute)getSeat().getEStructuralFeatures().get(7);
 	}
 
@@ -2244,21 +2237,9 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getSeatType() {
-		if (seatTypeEEnum == null) {
-			seatTypeEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(26);
-		}
-		return seatTypeEEnum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EEnum getLayoutConcept() {
 		if (layoutConceptEEnum == null) {
-			layoutConceptEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(27);
+			layoutConceptEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(26);
 		}
 		return layoutConceptEEnum;
 	}
