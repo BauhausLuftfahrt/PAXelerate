@@ -39,6 +39,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getNumberOfMakeWayOperations <em>Number Of Make Way Operations</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getLuggage <em>Luggage</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getDistanceWalked <em>Distance Walked</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getCostOfPath <em>Cost Of Path</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassenger()
@@ -608,6 +609,33 @@ public interface Passenger extends EObject {
 	 * @generated
 	 */
 	void setDistanceWalked(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Cost Of Path</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Cost Of Path</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Cost Of Path</em>' attribute.
+	 * @see #setCostOfPath(int)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassenger_CostOfPath()
+	 * @model default="0"
+	 * @generated
+	 */
+	int getCostOfPath();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Passenger#getCostOfPath <em>Cost Of Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cost Of Path</em>' attribute.
+	 * @see #getCostOfPath()
+	 * @generated
+	 */
+	void setCostOfPath(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Height</b></em>' attribute.

@@ -85,6 +85,7 @@ public class PassengerItemProvider
 			addNumberOfMakeWayOperationsPropertyDescriptor(object);
 			addLuggagePropertyDescriptor(object);
 			addDistanceWalkedPropertyDescriptor(object);
+			addCostOfPathPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -552,6 +553,28 @@ public class PassengerItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Cost Of Path feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCostOfPathPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_costOfPath_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_costOfPath_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__COST_OF_PATH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Height feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -721,6 +744,7 @@ public class PassengerItemProvider
 			case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
 			case CabinPackage.PASSENGER__LUGGAGE:
 			case CabinPackage.PASSENGER__DISTANCE_WALKED:
+			case CabinPackage.PASSENGER__COST_OF_PATH:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

@@ -50,6 +50,7 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getNumberOfMakeWayOperations <em>Number Of Make Way Operations</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getLuggage <em>Luggage</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getDistanceWalked <em>Distance Walked</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getCostOfPath <em>Cost Of Path</em>}</li>
  * </ul>
  *
  * @generated
@@ -526,6 +527,26 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	 * @ordered
 	 */
 	protected int distanceWalked = DISTANCE_WALKED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCostOfPath() <em>Cost Of Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCostOfPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int COST_OF_PATH_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getCostOfPath() <em>Cost Of Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCostOfPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected int costOfPath = COST_OF_PATH_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -1069,6 +1090,27 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getCostOfPath() {
+		return costOfPath;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCostOfPath(int newCostOfPath) {
+		int oldCostOfPath = costOfPath;
+		costOfPath = newCostOfPath;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__COST_OF_PATH, oldCostOfPath, costOfPath));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
 	 *
 	 * @return the height
@@ -1270,6 +1312,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 				return getLuggage();
 			case CabinPackage.PASSENGER__DISTANCE_WALKED:
 				return getDistanceWalked();
+			case CabinPackage.PASSENGER__COST_OF_PATH:
+				return getCostOfPath();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1362,6 +1406,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 			case CabinPackage.PASSENGER__DISTANCE_WALKED:
 				setDistanceWalked((Integer)newValue);
 				return;
+			case CabinPackage.PASSENGER__COST_OF_PATH:
+				setCostOfPath((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1453,6 +1500,9 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 			case CabinPackage.PASSENGER__DISTANCE_WALKED:
 				setDistanceWalked(DISTANCE_WALKED_EDEFAULT);
 				return;
+			case CabinPackage.PASSENGER__COST_OF_PATH:
+				setCostOfPath(COST_OF_PATH_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1519,6 +1569,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 				return luggage != LUGGAGE_EDEFAULT;
 			case CabinPackage.PASSENGER__DISTANCE_WALKED:
 				return distanceWalked != DISTANCE_WALKED_EDEFAULT;
+			case CabinPackage.PASSENGER__COST_OF_PATH:
+				return costOfPath != COST_OF_PATH_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1580,6 +1632,8 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 		result.append(luggage);
 		result.append(", distanceWalked: ");
 		result.append(distanceWalked);
+		result.append(", costOfPath: ");
+		result.append(costOfPath);
 		result.append(')');
 		return result.toString();
 	}

@@ -952,13 +952,22 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER__DISTANCE_WALKED = 25;
 
 	/**
+	 * The feature id for the '<em><b>Cost Of Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__COST_OF_PATH = 26;
+
+	/**
 	 * The number of structural features of the '<em>Passenger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_FEATURE_COUNT = 26;
+	int PASSENGER_FEATURE_COUNT = 27;
 
 	/**
 	 * The number of operations of the '<em>Passenger</em>' class.
@@ -3128,6 +3137,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getPassenger_DistanceWalked();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Passenger#getCostOfPath <em>Cost Of Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cost Of Path</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.Passenger#getCostOfPath()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_CostOfPath();
+
+	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Passenger#getHeight <em>Height</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4726,6 +4746,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PASSENGER__DISTANCE_WALKED = eINSTANCE.getPassenger_DistanceWalked();
+		/**
+		 * The meta object literal for the '<em><b>Cost Of Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__COST_OF_PATH = eINSTANCE.getPassenger_CostOfPath();
 		/**
 		 * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
