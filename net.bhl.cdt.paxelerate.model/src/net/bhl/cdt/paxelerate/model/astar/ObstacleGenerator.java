@@ -83,6 +83,8 @@ public class ObstacleGenerator {
 			generateObstacles(option);
 		}
 
+		checkForGaps();
+
 		/* generate the potential gradient around all obstacles */
 		generatePotentialGradient();
 
@@ -91,6 +93,7 @@ public class ObstacleGenerator {
 
 		/* generate a depression in the potential for the aisles */
 		generateAisleDepressions();
+
 	}
 
 	/**
@@ -361,6 +364,54 @@ public class ObstacleGenerator {
 
 						/* add the obstacle to the list of obstacles */
 						obstacles.add(node);
+					}
+				}
+			}
+		}
+	}
+
+	private void checkForGaps() {
+
+		/* loop through all nodes */
+		for (Node node : areamap.getNodes()) {
+
+			/* check if node is an obstacle */
+			if (node.isObstacle()) {
+
+				/*
+				 * check if the node has one more node between itself and the
+				 * border in the y dimension
+				 */
+				if (node.getPosition().getY() == 1 || node.getPosition()
+						.getY() == areamap.getDimensions().getY() - 2) {
+
+					System.out.println("detected: " + node.getPosition().getX()
+							+ " / " + node.getPosition().getY());
+
+					/* check if the other node is not yet an obstacle */
+					if (!areamap.get(node.getPosition().getX(), 0)
+							.isObstacle()) {
+
+						Node newNode = areamap.get(node.getPosition().getX(),
+								0);
+
+						/* define the attributes to the current position */
+						newNode.setObstacleValue(Integer.MAX_VALUE);
+						newNode.setProperty(Property.OBSTACLE, null);
+						newNode.setObstacleType(node.getObstacleType());
+					}
+					if (!areamap
+							.get(node.getPosition().getX(),
+									areamap.getDimensions().getY() - 1)
+							.isObstacle()) {
+
+						Node newNode = areamap.get(node.getPosition().getX(),
+								areamap.getDimensions().getY() - 1);
+
+						/* define the attributes to the current position */
+						newNode.setObstacleValue(Integer.MAX_VALUE);
+						newNode.setProperty(Property.OBSTACLE, null);
+						newNode.setObstacleType(node.getObstacleType());
 					}
 				}
 			}
