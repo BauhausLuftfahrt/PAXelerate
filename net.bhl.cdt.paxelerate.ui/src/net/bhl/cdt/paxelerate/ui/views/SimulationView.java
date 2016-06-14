@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ConcurrentModificationException;
 
 import javax.swing.JPanel;
 
@@ -162,125 +163,136 @@ public class SimulationView extends JPanel implements MouseListener {
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
 	 */
 	@Override
-	public void paintComponent(Graphics g) {
+	public synchronized void paintComponent(Graphics g) {
 
-		FONT_SIZE = (int) (getSize().height / cabinWidth);
+		try {
+			FONT_SIZE = (int) (getSize().height / cabinWidth);
 
-		super.paintComponent(g);
+			super.paintComponent(g);
 
-		g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE));
+			g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE));
 
-		for (int x = 0; x < areamap.getDimensions().getX(); x++) {
-			for (int y = 0; y < areamap.getDimensions().getY(); y++) {
+			for (int x = 0; x < areamap.getDimensions().getX(); x++) {
+				for (int y = 0; y < areamap.getDimensions().getY(); y++) {
 
-				int yInverse = areamap.getDimensions().getY() - y;
+					int yInverse = areamap.getDimensions().getY() - y;
 
-				Node node = areamap.get(x, yInverse);
+					Node node = areamap.get(x, yInverse);
 
-				g.setColor(Color.LIGHT_GRAY);
-				if (node != null && node.getTypeForPrinting() != null) {
+					g.setColor(Color.LIGHT_GRAY);
+					if (node != null && node.getTypeForPrinting() != null) {
 
-					if (node.getTypeForPrinting().equals("O") || node.getTypeForPrinting().equals(" ")) {
-						g.setColor(switchColor(
-								SimulationHandler.getAgentByPassenger(node.getPassenger()).getCurrentState()));
-						g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE - 1));
-						if (!node.isHidden()) {
-							g.drawString("O", x * FONT_SIZE, (y - pointZero) * FONT_SIZE);
-						}
-					} else {
-						g.setColor(Color.LIGHT_GRAY);
-						g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE));
-						if (node.getTypeForPrinting() != null) {
-							g.drawString(node.getTypeForPrinting(), x * FONT_SIZE, (y - pointZero) * FONT_SIZE);
-						}
-					}
-				}
-			}
-		}
-
-		g.setColor(Color.BLACK);
-
-		g.setFont(new Font("Courier New", Font.PLAIN, 12));
-		g.drawString("Real Time: " + SimulationHandler.getMasterBoardingTime().getElapsedTimeTens(), 10, 20);
-
-		double tens = SimulationHandler.getMasterBoardingTime().getElapsedTimeTens()
-				* SimulationHandler.getCabin().getSimulationSettings().getSimulationSpeedFactor();
-
-		g.drawString(
-				"Sim. Time: " + TimeHelper.toTimeOfDay(tens) + " >> "
-						+ SimulationHandler.getCabin().getSimulationSettings().getSimulationSpeedFactor() + "x",
-				10, 40);
-		g.drawString("Passengers: " + SimulationHandler.getNumberOfSeatedPassengers() + " / "
-				+ SimulationHandler.getActivePassengers() + " / " + SimulationHandler.getCabin().getPassengers().size(),
-				10, 60);
-
-		g.drawString("Loop Number: " + SimulationHandler.getSimulationLoopIndex() + " / "
-				+ SimulationHandler.getCabin().getSimulationSettings().getNumberOfSimulationLoops(), 10, 80);
-
-		Point mouse = getMousePosition();
-
-		if (mouse != null) {
-
-			Agent agent = null;
-
-			int b = mouse.x / FONT_SIZE;
-			int a = mouse.y / FONT_SIZE;
-
-			Node node = areamap.get(b, a);
-
-			if (node != null) {
-				Property property = node.getProperty();
-
-				if (property == Property.AGENT) {
-					agent = SimulationHandler.getAgentByPassenger(node.getPassenger());
-				}
-
-				g.setColor(Color.LIGHT_GRAY);
-
-				g.fillRect(mouse.x + 10, mouse.y + 10, 250, 120);
-
-				g.setColor(Color.BLACK);
-
-				if (node != null && agent != null) {
-					if (node.getProperty() == Property.AGENT) {
-						g.drawString("Passenger: " + node.getPassenger().getId() + ", x: "
-								+ agent.getCurrentPosition().getX() + ", y: " + agent.getCurrentPosition().getY(),
-								mouse.x + 30, mouse.y + 30);
-						g.drawString("Seat " + node.getPassenger().getSeat().getName(), mouse.x + 30, mouse.y + 50);
-						g.drawString("State: " + agent.getCurrentState().toString(), mouse.x + 30, mouse.y + 70);
-						g.drawString("Mode: " + agent.getAgentMode().toString(), mouse.x + 30, mouse.y + 90);
-
-						Passenger other = agent.getOtherPassengersInRowBlockingMe();
-
-						if (other != null) {
-							g.drawString(
-									"Waiting for passenger " + other.getId() + " on seat " + other.getSeat().getName(),
-									mouse.x + 30, mouse.y + 110);
+						if (node.getTypeForPrinting().equals("O") || node.getTypeForPrinting().equals(" ")) {
+							g.setColor(switchColor(
+									SimulationHandler.getAgentByPassenger(node.getPassenger()).getCurrentState()));
+							g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE - 1));
+							if (!node.isHidden()) {
+								g.drawString("O", x * FONT_SIZE, (y - pointZero) * FONT_SIZE);
+							}
 						} else {
-							g.drawString("Walked distance: "
-									+ DecimalHelper.round(node.getPassenger().getDistanceWalked() / 100.0, 1)
-									+ " meters.", mouse.x + 30, mouse.y + 110);
-						}
-
-						g.setColor(Color.GRAY);
-
-						for (Path path : agent.getPathList()) {
-							for (Node pathNode : path.getWaypoints()) {
-
-								int x = (pathNode.getPosition().getX() - pointZero) * FONT_SIZE;
-								int y = (areamap.getDimensions().getY() - pathNode.getPosition().getY()) * FONT_SIZE;
-
-								g.drawString("•", x, y);
+							g.setColor(Color.LIGHT_GRAY);
+							g.setFont(new Font("Courier New", Font.PLAIN, FONT_SIZE));
+							if (node.getTypeForPrinting() != null) {
+								g.drawString(node.getTypeForPrinting(), x * FONT_SIZE, (y - pointZero) * FONT_SIZE);
 							}
 						}
 					}
-				} else if (property != null) {
-					g.setColor(Color.BLACK);
-					g.drawString("Property: " + property.toString() + ", x: " + b + ", y: " + a, mouse.x + 30,
-							mouse.y + 30);
 				}
 			}
+
+			g.setColor(Color.BLACK);
+
+			g.setFont(new Font("Courier New", Font.PLAIN, 12));
+			g.drawString("Real Time: " + SimulationHandler.getMasterBoardingTime().getElapsedTimeTens(), 10, 20);
+
+			double tens = SimulationHandler.getMasterBoardingTime().getElapsedTimeTens()
+					* SimulationHandler.getCabin().getSimulationSettings().getSimulationSpeedFactor();
+
+			g.drawString(
+					"Sim. Time: " + TimeHelper.toTimeOfDay(tens) + " >> "
+							+ SimulationHandler.getCabin().getSimulationSettings().getSimulationSpeedFactor() + "x",
+					10, 40);
+			g.drawString("Passengers: " + SimulationHandler.getNumberOfSeatedPassengers() + " / "
+					+ SimulationHandler.getActivePassengers() + " / "
+					+ SimulationHandler.getCabin().getPassengers().size(), 10, 60);
+
+			g.drawString(
+					"Loop Number: " + SimulationHandler.getSimulationLoopIndex() + " / "
+							+ SimulationHandler.getCabin().getSimulationSettings().getNumberOfSimulationLoops(),
+					10, 80);
+
+			Point mouse = getMousePosition();
+
+			if (mouse != null) {
+
+				Agent agent = null;
+
+				int b = mouse.x / FONT_SIZE;
+				int a = mouse.y / FONT_SIZE;
+
+				Node node = areamap.get(b, a);
+
+				if (node != null) {
+					Property property = node.getProperty();
+
+					if (property == Property.AGENT) {
+						agent = SimulationHandler.getAgentByPassenger(node.getPassenger());
+					}
+
+					g.setColor(Color.LIGHT_GRAY);
+
+					g.fillRect(mouse.x + 10, mouse.y + 10, 250, 120);
+
+					g.setColor(Color.BLACK);
+
+					if (node != null && agent != null) {
+						if (node.getProperty() == Property.AGENT) {
+							g.drawString("Passenger: " + node.getPassenger().getId() + ", x: "
+									+ agent.getCurrentPosition().getX() + ", y: " + agent.getCurrentPosition().getY(),
+									mouse.x + 30, mouse.y + 30);
+							g.drawString("Seat " + node.getPassenger().getSeat().getName(), mouse.x + 30, mouse.y + 50);
+							g.drawString("State: " + agent.getCurrentState().toString(), mouse.x + 30, mouse.y + 70);
+							g.drawString("Mode: " + agent.getAgentMode().toString(), mouse.x + 30, mouse.y + 90);
+
+							Passenger other = agent.getOtherPassengersInRowBlockingMe();
+
+							if (other != null) {
+								g.drawString("Waiting for passenger " + other.getId() + " on seat "
+										+ other.getSeat().getName(), mouse.x + 30, mouse.y + 110);
+							} else {
+								g.drawString(
+										"Walked distance: " + DecimalHelper
+												.round(node.getPassenger().getDistanceWalked() / 100.0, 1) + " meters.",
+										mouse.x + 30, mouse.y + 110);
+							}
+
+							g.setColor(Color.GRAY);
+
+							for (Path path : agent.getPathList()) {
+								for (Node pathNode : path.getWaypoints()) {
+
+									int x = (pathNode.getPosition().getX() - pointZero) * FONT_SIZE;
+									int y = (areamap.getDimensions().getY() - pathNode.getPosition().getY())
+											* FONT_SIZE;
+
+									g.drawString("•", x, y);
+								}
+							}
+						}
+					} else if (property != null) {
+						g.setColor(Color.BLACK);
+						g.drawString("Property: " + property.toString() + ", x: " + b + ", y: " + a, mouse.x + 30,
+								mouse.y + 30);
+					}
+				}
+			}
+
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		} catch (ConcurrentModificationException e) {
+			e.printStackTrace();
 		}
+
 	}
 
 	/*

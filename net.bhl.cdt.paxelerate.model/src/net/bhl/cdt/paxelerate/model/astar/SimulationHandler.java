@@ -50,7 +50,8 @@ public class SimulationHandler {
 			waymakingList = new ArrayList<Passenger>();
 
 	/** The agent list. */
-	private static List<Agent> agentList = new ArrayList<>();
+
+	private static List<Agent> agentList = new ArrayList<Agent>();
 
 	/** The access pending. */
 	private static HashMap<Passenger, Integer> accessPending = new HashMap<Passenger, Integer>();
@@ -152,7 +153,7 @@ public class SimulationHandler {
 	 *
 	 * @return the area map
 	 */
-	public static Areamap getMap() {
+	public synchronized static Areamap getMap() {
 		return areamaphandler.getAreamap();
 	}
 
@@ -219,6 +220,8 @@ public class SimulationHandler {
 	 */
 	public static synchronized void reset() {
 
+		stopSimulation();
+		
 		cabin = null;
 		simulationDone = false;
 		finishedList.clear();
@@ -487,9 +490,9 @@ public class SimulationHandler {
 	 */
 	public static void stopSimulation() {
 		for (Agent agent : agentList) {
-			agent.getThread().stop();
+			if (agent.getThread().isInterrupted())
+			agent.getThread().interrupt();
 		}
-		reset();
 	}
 
 	/**

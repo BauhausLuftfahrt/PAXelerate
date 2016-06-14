@@ -114,121 +114,125 @@ public class SortPassengersCommand extends CDTCommand {
 
 		int numberOfRows = ModelHelper.getChildrenByClass(cabin, Row.class).size();
 
-		switch (value) {
+		synchronized (paxList) {
+			switch (value) {
 
-		// Random
-		case 0:
-			for (int i = 0; i < numberOfLoops; i++) {
-				Passenger pax = paxList.get(i);
-				paxList.move(RandomHelper.randomValue(0, paxList.size()), pax);
-			}
-			break;
+			// Random
+			case 0:
 
-		// Rear to front (RTF)
-		case 1:
-			for (int j = 0; j < numberOfLoops; j++) {
-				for (int i = 0; i < paxList.size() - 1; i++) {
-					Passenger pax1 = paxList.get(i);
-					Passenger pax2 = paxList.get(i + 1);
-					if (pax1.getSeat().getXPosition() < pax2.getSeat().getXPosition()) {
-						paxList.move(i, pax2);
-					}
-				}
-			}
-			break;
-
-		// Front to rear (FTR)
-		case 2:
-			for (int j = 0; j < numberOfLoops; j++) {
-				for (int i = 0; i < paxList.size() - 1; i++) {
-					Passenger pax1 = paxList.get(i);
-					Passenger pax2 = paxList.get(i + 1);
-					if (pax1.getSeat().getXPosition() > pax2.getSeat().getXPosition()) {
-						paxList.move(i, pax2);
-					}
-				}
-			}
-			break;
-
-		// Window to aisle (WTA)
-		case 3:
-			for (int j = 0; j < numberOfLoops; j++) {
-				for (int i = 0; i < paxList.size() - 1; i++) {
-					Passenger thisPax = paxList.get(i);
-					Passenger otherPax = paxList.get(i + 1);
-					if (AgentFunctions.otherSeatCloserToAisle(thisPax.getSeat(), otherPax.getSeat())) {
-						paxList.move(i, otherPax);
-					}
-				}
-			}
-			break;
-
-		// Window to aisle and rear to front (WTA + RTF)
-		case 4:
-			for (int j = 0; j < numberOfLoops; j++) {
-				for (int i = 0; i < paxList.size() - 1; i++) {
-					Passenger thisPax = paxList.get(i);
-					Passenger otherPax = paxList.get(i + 1);
-					if (AgentFunctions.otherSeatCloserToAisle(thisPax.getSeat(), otherPax.getSeat())) {
-						if (thisPax.getSeat().getXPosition() < otherPax.getSeat().getXPosition()) {
-							paxList.move(i, otherPax);
-						}
-					}
-				}
-			}
-			break;
-
-		// Window to aisle and front to rear (WTA + FTR)
-		case 5:
-			for (int j = 0; j < numberOfLoops; j++) {
-				for (int i = 0; i < paxList.size() - 1; i++) {
-					Passenger thisPax = paxList.get(i);
-					Passenger otherPax = paxList.get(i + 1);
-					if (AgentFunctions.otherSeatCloserToAisle(thisPax.getSeat(), otherPax.getSeat())) {
-						if (thisPax.getSeat().getXPosition() > otherPax.getSeat().getXPosition()) {
-							paxList.move(i, otherPax);
-						}
-					}
-				}
-			}
-			break;
-
-		// Group/block boarding: create blocks with 10 rows each and distribute
-		// the passengers randomly
-		case 6:
-			int blocks = (numberOfRows / 10);
-			int paxPerBlock = numberOfLoops / blocks;
-			for (int j = 0; j < numberOfLoops; j++) {
-				for (int i = 0; i < paxList.size(); i++) {
+				for (int i = 0; i < numberOfLoops; i++) {
 					Passenger pax = paxList.get(i);
-
 					paxList.move(RandomHelper.randomValue(0, paxList.size()), pax);
 				}
-			}
-			break;
+				break;
 
-		// Steffen method: window every second row left and right
-		case 7:
-			for (int j = 0; j < numberOfLoops; j++) {
-				for (int i = 0; i < paxList.size() - 1; i++) {
-					Passenger thisPax = paxList.get(i);
-					Passenger otherPax = paxList.get(i + 1);
-					if (AgentFunctions.otherSeatCloserToAisle(thisPax.getSeat(), otherPax.getSeat())) {
-						if (thisPax.getSeat().getXPosition() > otherPax.getSeat().getXPosition()) {
+			// Rear to front (RTF)
+			case 1:
+				for (int j = 0; j < numberOfLoops; j++) {
+					for (int i = 0; i < paxList.size() - 1; i++) {
+						Passenger pax1 = paxList.get(i);
+						Passenger pax2 = paxList.get(i + 1);
+						if (pax1.getSeat().getXPosition() < pax2.getSeat().getXPosition()) {
+							paxList.move(i, pax2);
 						}
 					}
 				}
+				break;
+
+			// Front to rear (FTR)
+			case 2:
+				for (int j = 0; j < numberOfLoops; j++) {
+					for (int i = 0; i < paxList.size() - 1; i++) {
+						Passenger pax1 = paxList.get(i);
+						Passenger pax2 = paxList.get(i + 1);
+						if (pax1.getSeat().getXPosition() > pax2.getSeat().getXPosition()) {
+							paxList.move(i, pax2);
+						}
+					}
+				}
+				break;
+
+			// Window to aisle (WTA)
+			case 3:
+				for (int j = 0; j < numberOfLoops; j++) {
+					for (int i = 0; i < paxList.size() - 1; i++) {
+						Passenger thisPax = paxList.get(i);
+						Passenger otherPax = paxList.get(i + 1);
+						if (AgentFunctions.otherSeatCloserToAisle(thisPax.getSeat(), otherPax.getSeat())) {
+							paxList.move(i, otherPax);
+						}
+					}
+				}
+				break;
+
+			// Window to aisle and rear to front (WTA + RTF)
+			case 4:
+				for (int j = 0; j < numberOfLoops; j++) {
+					for (int i = 0; i < paxList.size() - 1; i++) {
+						Passenger thisPax = paxList.get(i);
+						Passenger otherPax = paxList.get(i + 1);
+						if (AgentFunctions.otherSeatCloserToAisle(thisPax.getSeat(), otherPax.getSeat())) {
+							if (thisPax.getSeat().getXPosition() < otherPax.getSeat().getXPosition()) {
+								paxList.move(i, otherPax);
+							}
+						}
+					}
+				}
+				break;
+
+			// Window to aisle and front to rear (WTA + FTR)
+			case 5:
+				for (int j = 0; j < numberOfLoops; j++) {
+					for (int i = 0; i < paxList.size() - 1; i++) {
+						Passenger thisPax = paxList.get(i);
+						Passenger otherPax = paxList.get(i + 1);
+						if (AgentFunctions.otherSeatCloserToAisle(thisPax.getSeat(), otherPax.getSeat())) {
+							if (thisPax.getSeat().getXPosition() > otherPax.getSeat().getXPosition()) {
+								paxList.move(i, otherPax);
+							}
+						}
+					}
+				}
+				break;
+
+			// Group/block boarding: create blocks with 10 rows each and
+			// distribute
+			// the passengers randomly
+			case 6:
+				int blocks = (numberOfRows / 10);
+				int paxPerBlock = numberOfLoops / blocks;
+				for (int j = 0; j < numberOfLoops; j++) {
+					for (int i = 0; i < paxList.size(); i++) {
+						Passenger pax = paxList.get(i);
+
+						paxList.move(RandomHelper.randomValue(0, paxList.size()), pax);
+					}
+				}
+				break;
+
+			// Steffen method: window every second row left and right
+			case 7:
+				for (int j = 0; j < numberOfLoops; j++) {
+					for (int i = 0; i < paxList.size() - 1; i++) {
+						Passenger thisPax = paxList.get(i);
+						Passenger otherPax = paxList.get(i + 1);
+						if (AgentFunctions.otherSeatCloserToAisle(thisPax.getSeat(), otherPax.getSeat())) {
+							if (thisPax.getSeat().getXPosition() > otherPax.getSeat().getXPosition()) {
+							}
+						}
+					}
+				}
+				break;
+
+			// Milne/Kelly method: based on number of carried bags
+			case 8:
+				// TODO
+				break;
+
+			default:
+				Log.add(this, "Wrong Input!");
+				break;
 			}
-			break;
-
-		// Milne/Kelly method: based on number of carried bags
-		case 8:
-			// TODO
-			break;
-
-		default:
-			Log.add(this, "Wrong Input!");
-			break;
 		}
 
 		System.out.println("Sorting completed.");

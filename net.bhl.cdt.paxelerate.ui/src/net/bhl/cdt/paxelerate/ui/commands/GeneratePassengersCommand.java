@@ -7,13 +7,16 @@ package net.bhl.cdt.paxelerate.ui.commands;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.ConcurrentModificationException;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.swt.widgets.Display;
 
@@ -53,6 +56,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 	/** The cabinview. */
 	private CabinViewPart cabinview;
+	
+	final JobScheduleRule jobRule = new JobScheduleRule();
 
 	/**
 	 * This method submits the cabin to be used in the file.
@@ -80,7 +85,9 @@ public class GeneratePassengersCommand extends CDTCommand {
 				sdoorage.add(door);
 			}
 		}
-		/** Check if active doors exist otherwise throw a NullPointerException**/
+		/**
+		 * Check if active doors exist otherwise throw a NullPointerException
+		 **/
 		if (sdoorage.size() == 0) {
 			Log.add(this, "Please activate at least one door which can be assigned to passengers.");
 			throw new NullPointerException();
@@ -137,8 +144,10 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 				int firstSeatNumber = ModelHelper.getChildrenByClass(tc, Seat.class).get(0).getId();
 
-				/** Create random list **/
+				/* Create random list */
+
 				ArrayList<Integer> randomSeatId = new ArrayList<Integer>();
+
 				for (int i = 0; i < numberOfSeats; i++) {
 					randomSeatId.add(firstSeatNumber + i);
 				}
@@ -149,29 +158,33 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 				for (int i = 0; i < numberOfPassengers; i++) {
 					synchronized (this) {
-						Passenger passenger = CabinFactory.eINSTANCE.createPassenger();
-						cabin.getPassengers().add(passenger);
+						try {
+							Passenger passenger = CabinFactory.eINSTANCE.createPassenger();
 
-						passenger.setId(totalCount);
-						passenger.setSeatID(randomSeatId.get(i));
-						passenger.setName(passenger.getId() + " (" + getSeat(passenger).getName() + ")");
-						passenger.setSeat(getSeat(passenger));
-						passenger.setTravelClass(passenger.getSeat().getTravelClass());
-						passenger.setDoor(getDoor(passenger));
+							cabin.getPassengers().add(passenger);
 
-						PassengerGenerator.applyDelay(passenger, delays);
+							passenger.setId(totalCount);
+							passenger.setSeatID(randomSeatId.get(i));
+							passenger.setName(passenger.getId() + " (" + getSeat(passenger).getName() + ")");
+							passenger.setSeat(getSeat(passenger));
+							passenger.setTravelClass(passenger.getSeat().getTravelClass());
+							passenger.setDoor(getDoor(passenger));
 
-						PassengerPropertyGenerator generator = new PassengerPropertyGenerator(passenger);
-						passenger = generator.getPassenger();
+							PassengerGenerator.applyDelay(passenger, delays);
 
-						totalCount++;
+							PassengerPropertyGenerator generator = new PassengerPropertyGenerator(passenger);
+							passenger = generator.getPassenger();
+
+							totalCount++;
+
+						} catch (ConcurrentModificationException e) {
+							e.printStackTrace();
+						}
+
 					}
-
 				}
-
 				Log.add(this, "successfully created " + numberOfPassengers + " passengers in " + tc.getName());
 			} else {
-
 				Log.add(this, "Too many passengers in " + StringHelper.splitCamelCase(tc.getName()));
 			}
 		}
@@ -182,7 +195,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 	 */
 	@Override
 	protected void doRun() {
-		/** Create separate thread **/
+		/* Create separate thread */
+		
 		Job job = new Job("Generate Passengers Thread") {
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
@@ -209,12 +223,11 @@ public class GeneratePassengersCommand extends CDTCommand {
 					for (TravelClass travelclass : cabin.getClasses()) {
 						generatePassengers(travelclass);
 					}
-
 					for (Door door : cabin.getDoors()) {
 						door.getWaitingPassengers().clear();
 					}
 
-					/** PUBLISH **/
+					/* PUBLISH */
 					Log.add(this, "Updating GUI...");
 					Display.getDefault().syncExec(new Runnable() {
 						@Override
@@ -231,18 +244,27 @@ public class GeneratePassengersCommand extends CDTCommand {
 							} catch (NullPointerException e) {
 								Log.add(this, "Cabin View not visible!");
 							}
-
-							Log.add(this, "Passenger generation completed");
 						}
 					});
 				}
-				/** report finished **/
+				/* report finished */
 				return Status.OK_STATUS;
 
 			}
 		};
 
-		/** Start the Job **/
+		job.addJobChangeListener(new JobChangeAdapter() {
+			public void done(IJobChangeEvent event) {
+				if (event.getResult().isOK())
+					Log.add(this, "Passenger generation completed");
+				else
+					Log.add(this, "Job did not complete successfully");
+			}
+		});
+		
+		job.setUser(true);
+		job.setRule(jobRule);
+		/* Start the Job */
 		job.schedule();
 	}
 }

@@ -152,7 +152,7 @@ public interface SimulationProperties extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Number Of Simulation Loops</b></em>' attribute.
-	 * The default value is <code>"1"</code>.
+	 * The default value is <code>"10"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Number Of Simulation Loops</em>' attribute isn't clear,
@@ -162,7 +162,7 @@ public interface SimulationProperties extends EObject {
 	 * @return the value of the '<em>Number Of Simulation Loops</em>' attribute.
 	 * @see #setNumberOfSimulationLoops(int)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_NumberOfSimulationLoops()
-	 * @model default="1"
+	 * @model default="10"
 	 * @generated
 	 */
 	int getNumberOfSimulationLoops();
@@ -251,7 +251,7 @@ public interface SimulationProperties extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Simulation Speed Factor</b></em>' attribute.
-	 * The default value is <code>"1"</code>.
+	 * The default value is <code>"2"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Simulation Speed Factor</em>' attribute isn't clear,
@@ -261,7 +261,7 @@ public interface SimulationProperties extends EObject {
 	 * @return the value of the '<em>Simulation Speed Factor</em>' attribute.
 	 * @see #setSimulationSpeedFactor(int)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_SimulationSpeedFactor()
-	 * @model default="1"
+	 * @model default="2"
 	 * @generated
 	 */
 	int getSimulationSpeedFactor();

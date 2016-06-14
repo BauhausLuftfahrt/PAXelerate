@@ -24,7 +24,7 @@ public class PassengerGenerator {
 	 * @param delays
 	 *            the delays
 	 */
-	public static void applyDelay(Passenger passenger,
+	public synchronized static void  applyDelay(Passenger passenger,
 			Map<Integer, Double> delays) {
 
 		/* get the passengers parent cabin object */

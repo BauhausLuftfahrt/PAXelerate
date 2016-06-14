@@ -94,6 +94,11 @@
             id="net.bhl.cdt.paxelerate.ui.exportData"
             name="Export Data">
       </command>
+      <command
+            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.RunBatchSimulationHandler"
+            id="net.bhl.cdt.paxelerate.ui.runBatchSimulation"
+            name="Run Batch Simulation">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -225,6 +230,11 @@
                   </instanceof>
                </iterate>
             </visibleWhen>
+         </command>
+         <command
+               commandId="net.bhl.cdt.paxelerate.ui.runBatchSimulation"
+               label="Run Batch Simulation"
+               style="push">
          </command>
          <separator
                name="net.bhl.cdt.paxelerate.ui.separator2"

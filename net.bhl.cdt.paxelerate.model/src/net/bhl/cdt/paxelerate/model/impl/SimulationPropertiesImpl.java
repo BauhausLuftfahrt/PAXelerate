@@ -142,7 +142,7 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int NUMBER_OF_SIMULATION_LOOPS_EDEFAULT = 1;
+	protected static final int NUMBER_OF_SIMULATION_LOOPS_EDEFAULT = 10;
 
 	/**
 	 * The cached value of the '{@link #getNumberOfSimulationLoops() <em>Number Of Simulation Loops</em>}' attribute.
@@ -212,7 +212,7 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SIMULATION_SPEED_FACTOR_EDEFAULT = 1;
+	protected static final int SIMULATION_SPEED_FACTOR_EDEFAULT = 2;
 
 	/**
 	 * The cached value of the '{@link #getSimulationSpeedFactor() <em>Simulation Speed Factor</em>}' attribute.
