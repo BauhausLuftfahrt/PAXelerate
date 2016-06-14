@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import net.bhl.cdt.paxelerate.model.CabinPackage;
+import net.bhl.cdt.paxelerate.model.LayoutConcept;
 import net.bhl.cdt.paxelerate.model.SimulationResult;
 
 /**
@@ -28,6 +29,7 @@ import net.bhl.cdt.paxelerate.model.SimulationResult;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationResultImpl#getBoardingTimeString <em>Boarding Time String</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationResultImpl#getWaymakingSkipped <em>Waymaking Skipped</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationResultImpl#getWaymakingCompleted <em>Waymaking Completed</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationResultImpl#getLayoutConceptType <em>Layout Concept Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -192,6 +194,26 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected int waymakingCompleted = WAYMAKING_COMPLETED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLayoutConceptType() <em>Layout Concept Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLayoutConceptType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final LayoutConcept LAYOUT_CONCEPT_TYPE_EDEFAULT = LayoutConcept.DEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getLayoutConceptType() <em>Layout Concept Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLayoutConceptType()
+	 * @generated
+	 * @ordered
+	 */
+	protected LayoutConcept layoutConceptType = LAYOUT_CONCEPT_TYPE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -409,6 +431,27 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LayoutConcept getLayoutConceptType() {
+		return layoutConceptType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLayoutConceptType(LayoutConcept newLayoutConceptType) {
+		LayoutConcept oldLayoutConceptType = layoutConceptType;
+		layoutConceptType = newLayoutConceptType == null ? LAYOUT_CONCEPT_TYPE_EDEFAULT : newLayoutConceptType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_RESULT__LAYOUT_CONCEPT_TYPE, oldLayoutConceptType, layoutConceptType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->.
 	 *
 	 * @param featureID the feature id
@@ -436,6 +479,8 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 				return getWaymakingSkipped();
 			case CabinPackage.SIMULATION_RESULT__WAYMAKING_COMPLETED:
 				return getWaymakingCompleted();
+			case CabinPackage.SIMULATION_RESULT__LAYOUT_CONCEPT_TYPE:
+				return getLayoutConceptType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -475,6 +520,9 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 			case CabinPackage.SIMULATION_RESULT__WAYMAKING_COMPLETED:
 				setWaymakingCompleted((Integer)newValue);
 				return;
+			case CabinPackage.SIMULATION_RESULT__LAYOUT_CONCEPT_TYPE:
+				setLayoutConceptType((LayoutConcept)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -513,6 +561,9 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 			case CabinPackage.SIMULATION_RESULT__WAYMAKING_COMPLETED:
 				setWaymakingCompleted(WAYMAKING_COMPLETED_EDEFAULT);
 				return;
+			case CabinPackage.SIMULATION_RESULT__LAYOUT_CONCEPT_TYPE:
+				setLayoutConceptType(LAYOUT_CONCEPT_TYPE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -544,6 +595,8 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 				return waymakingSkipped != WAYMAKING_SKIPPED_EDEFAULT;
 			case CabinPackage.SIMULATION_RESULT__WAYMAKING_COMPLETED:
 				return waymakingCompleted != WAYMAKING_COMPLETED_EDEFAULT;
+			case CabinPackage.SIMULATION_RESULT__LAYOUT_CONCEPT_TYPE:
+				return layoutConceptType != LAYOUT_CONCEPT_TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -576,6 +629,8 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 		result.append(waymakingSkipped);
 		result.append(", waymakingCompleted: ");
 		result.append(waymakingCompleted);
+		result.append(", layoutConceptType: ");
+		result.append(layoutConceptType);
 		result.append(')');
 		return result.toString();
 	}

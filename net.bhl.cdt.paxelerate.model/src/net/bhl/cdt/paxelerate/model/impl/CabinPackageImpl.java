@@ -1581,6 +1581,15 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_SeatInterferenceProcessTimeFoldingSeat() {
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(21);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->.
 	 *
 	 * @return the luggage properties
@@ -1817,6 +1826,15 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EAttribute getSimulationResult_WaymakingCompleted() {
         return (EAttribute)getSimulationResult().getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationResult_LayoutConceptType() {
+        return (EAttribute)getSimulationResult().getEStructuralFeatures().get(8);
 	}
 
 	/**

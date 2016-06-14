@@ -11,6 +11,8 @@ import org.eclipse.swt.widgets.Display;
 
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.paxelerate.model.Cabin;
+import net.bhl.cdt.paxelerate.model.LayoutConcept;
+import net.bhl.cdt.paxelerate.model.SimulationProperties;
 import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
@@ -24,6 +26,8 @@ public class RunBatchSimulationCommand extends CDTCommand {
 
 	/** The cabin. */
 	private Cabin cabin;
+	
+	private SimulationProperties simSettings;
 
 	/**
 	 * This is the constructor method of the SimulateBoardingCommand.
@@ -33,6 +37,7 @@ public class RunBatchSimulationCommand extends CDTCommand {
 	 */
 	public RunBatchSimulationCommand(Cabin cabin) {
 		this.cabin = cabin;
+		this.simSettings = cabin.getSimulationSettings();
 	}
 
 	/**
@@ -50,27 +55,31 @@ public class RunBatchSimulationCommand extends CDTCommand {
 			}
 		});
 
-		cabin.getSimulationSettings().setSimulationSpeedFactor(5);
-		cabin.getSimulationSettings().setNumberOfSimulationLoops(10);
-		cabin.getSimulationSettings().getLuggageProperties().setPercentageOfPassengersWithNoLuggage(10);
-		cabin.getSimulationSettings().getLuggageProperties().setPercentageOfPassengersWithSmallLuggage(50);
-		cabin.getSimulationSettings().getLuggageProperties().setPercentageOfPassengersWithMediumLuggage(30);
-		cabin.getSimulationSettings().getLuggageProperties().setPercentageOfPassengersWithBigLuggage(10);
+		
+		Display.getDefault().syncExec(new Runnable() {
+			@Override
+			public void run() {
+				new DrawCabinCommand(cabin).doRun();
+			}
+		});
 
 		for (TravelClass travelclass : cabin.getClasses()) {
 			travelclass.setPassengers(180);
 		}
+		
+		Display.getDefault().syncExec(new Runnable() {
+			@Override
+			public void run() {
+				new DrawCabinCommand(cabin).doRun();
+			}
+		});
 
 		for (int simulationLoopIndex = 1; simulationLoopIndex <= cabin.getSimulationSettings()
 				.getNumberOfSimulationLoops(); simulationLoopIndex++) {
 		
-			new GeneratePassengersCommand(cabin).doRun();		
+			new GeneratePassengersCommand(cabin).doRun();	
 			new SimulateBoardingCommand(cabin).doRun();			
 			
 		}
-
-
-
 	}
-
 }

@@ -262,7 +262,6 @@ public class GeneratePassengersCommand extends CDTCommand {
 			}
 		});
 		
-		job.setUser(true);
 		job.setRule(jobRule);
 		/* Start the Job */
 		job.schedule();

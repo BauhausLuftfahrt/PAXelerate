@@ -212,6 +212,7 @@ public class ExportDataCommand extends CDTCommand {
 		exporter.addColumnElement("Big Luggage");
 		exporter.addColumnElement("Load Factor");
 		exporter.addColumnElement("Active Door ID");
+		exporter.addColumnElement("Layout Concept");
 		exporter.addNewLine();
 		exporter.addColumnElement(luggageSettings.getPercentageOfPassengersWithNoLuggage());
 		exporter.addColumnElement(luggageSettings.getPercentageOfPassengersWithSmallLuggage());
@@ -225,7 +226,7 @@ public class ExportDataCommand extends CDTCommand {
 				exporter.addColumnElement(dl.getId());
 			}
 		}
-		exporter.addNewLine();
+		//exporter.addColumnElement(cabin.getSimulationSettings().getLayoutConcept());
 		exporter.addNewLine();
 
 		return true;

@@ -49,6 +49,7 @@ import net.bhl.cdt.paxelerate.model.SortingStyle;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSidewaysFoldabeSeatPopupTime <em>Sideways Foldabe Seat Popup Time</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getLiftingSeatPanPopupTime <em>Lifting Seat Pan Popup Time</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getLayoutConcept <em>Layout Concept</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSeatInterferenceProcessTimeFoldingSeat <em>Seat Interference Process Time Folding Seat</em>}</li>
  * </ul>
  *
  * @generated
@@ -212,7 +213,7 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SIMULATION_SPEED_FACTOR_EDEFAULT = 2;
+	protected static final int SIMULATION_SPEED_FACTOR_EDEFAULT = 5;
 
 	/**
 	 * The cached value of the '{@link #getSimulationSpeedFactor() <em>Simulation Speed Factor</em>}' attribute.
@@ -443,6 +444,26 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * @ordered
 	 */
 	protected LayoutConcept layoutConcept = LAYOUT_CONCEPT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSeatInterferenceProcessTimeFoldingSeat() <em>Seat Interference Process Time Folding Seat</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTimeFoldingSeat()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_EDEFAULT = 5;
+
+	/**
+	 * The cached value of the '{@link #getSeatInterferenceProcessTimeFoldingSeat() <em>Seat Interference Process Time Folding Seat</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTimeFoldingSeat()
+	 * @generated
+	 * @ordered
+	 */
+	protected int seatInterferenceProcessTimeFoldingSeat = SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1014,6 +1035,27 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getSeatInterferenceProcessTimeFoldingSeat() {
+		return seatInterferenceProcessTimeFoldingSeat;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatInterferenceProcessTimeFoldingSeat(int newSeatInterferenceProcessTimeFoldingSeat) {
+		int oldSeatInterferenceProcessTimeFoldingSeat = seatInterferenceProcessTimeFoldingSeat;
+		seatInterferenceProcessTimeFoldingSeat = newSeatInterferenceProcessTimeFoldingSeat;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT, oldSeatInterferenceProcessTimeFoldingSeat, seatInterferenceProcessTimeFoldingSeat));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->.
 	 *
 	 * @param otherEnd the other end
@@ -1088,6 +1130,8 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return getLiftingSeatPanPopupTime();
 			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
 				return getLayoutConcept();
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT:
+				return getSeatInterferenceProcessTimeFoldingSeat();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1168,6 +1212,9 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
 				setLayoutConcept((LayoutConcept)newValue);
 				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT:
+				setSeatInterferenceProcessTimeFoldingSeat((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1245,6 +1292,9 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
 				setLayoutConcept(LAYOUT_CONCEPT_EDEFAULT);
 				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT:
+				setSeatInterferenceProcessTimeFoldingSeat(SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1302,6 +1352,8 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return liftingSeatPanPopupTime != LIFTING_SEAT_PAN_POPUP_TIME_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
 				return layoutConcept != LAYOUT_CONCEPT_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT:
+				return seatInterferenceProcessTimeFoldingSeat != SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1354,6 +1406,8 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 		result.append(liftingSeatPanPopupTime);
 		result.append(", layoutConcept: ");
 		result.append(layoutConcept);
+		result.append(", seatInterferenceProcessTimeFoldingSeat: ");
+		result.append(seatInterferenceProcessTimeFoldingSeat);
 		result.append(')');
 		return result.toString();
 	}

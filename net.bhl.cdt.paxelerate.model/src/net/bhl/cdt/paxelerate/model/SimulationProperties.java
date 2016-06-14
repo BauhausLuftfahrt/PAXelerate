@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSidewaysFoldabeSeatPopupTime <em>Sideways Foldabe Seat Popup Time</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLiftingSeatPanPopupTime <em>Lifting Seat Pan Popup Time</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLayoutConcept <em>Layout Concept</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeFoldingSeat <em>Seat Interference Process Time Folding Seat</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties()
@@ -251,7 +252,7 @@ public interface SimulationProperties extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Simulation Speed Factor</b></em>' attribute.
-	 * The default value is <code>"2"</code>.
+	 * The default value is <code>"5"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Simulation Speed Factor</em>' attribute isn't clear,
@@ -261,7 +262,7 @@ public interface SimulationProperties extends EObject {
 	 * @return the value of the '<em>Simulation Speed Factor</em>' attribute.
 	 * @see #setSimulationSpeedFactor(int)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_SimulationSpeedFactor()
-	 * @model default="2"
+	 * @model default="5"
 	 * @generated
 	 */
 	int getSimulationSpeedFactor();
@@ -600,5 +601,32 @@ public interface SimulationProperties extends EObject {
 	 * @generated
 	 */
 	void setLayoutConcept(LayoutConcept value);
+
+	/**
+	 * Returns the value of the '<em><b>Seat Interference Process Time Folding Seat</b></em>' attribute.
+	 * The default value is <code>"5"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seat Interference Process Time Folding Seat</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seat Interference Process Time Folding Seat</em>' attribute.
+	 * @see #setSeatInterferenceProcessTimeFoldingSeat(int)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_SeatInterferenceProcessTimeFoldingSeat()
+	 * @model default="5"
+	 * @generated
+	 */
+	int getSeatInterferenceProcessTimeFoldingSeat();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeFoldingSeat <em>Seat Interference Process Time Folding Seat</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seat Interference Process Time Folding Seat</em>' attribute.
+	 * @see #getSeatInterferenceProcessTimeFoldingSeat()
+	 * @generated
+	 */
+	void setSeatInterferenceProcessTimeFoldingSeat(int value);
 
 } // SimulationProperties

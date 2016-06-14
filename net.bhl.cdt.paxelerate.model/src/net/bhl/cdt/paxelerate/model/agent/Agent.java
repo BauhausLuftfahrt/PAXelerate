@@ -63,11 +63,13 @@ public class Agent extends Subject implements Runnable {
 
 	/** The way making skipped. */
 	private int wayMakingSkipped = 0;
+	private int wayMakingFoldableSeatSkipped = 0;
 
 	/** The moved once. */
 	private boolean alreadyStowed = false, waitingCompleted = false,
 			initialized = false, exitTheMainLoop = false, movedOnce = false,
-			foldingSeats = false, stowingAtAisleSeat = false, aisleSeat = false;
+			foldingSeats = false, stowingAtAisleSeat = false,
+			waitingAtAisleSeat = false, aisleSeat = false;
 
 	/** The stopwatch. */
 	private StopWatch stopwatch = new StopWatch();
@@ -234,6 +236,8 @@ public class Agent extends Subject implements Runnable {
 
 	/** The other passengers in row blocking me. */
 	public ArrayList<Passenger> otherPassengersInRowBlockingMe = new ArrayList<Passenger>();
+
+	
 
 	/**
 	 * Gets the other passengers in row blocking me.
@@ -423,6 +427,29 @@ public class Agent extends Subject implements Runnable {
 		return (hasLuggage() && isInRangeSmaller((int) passenger.getPositionY(),
 				yCoordAisleSeat, distanceToAisleSeat));
 	}
+	
+	public boolean passengerWaitAtAisleSeat() {
+		int yCoordAisleSeat = 0;
+		int distanceToAisleSeat = 1;
+
+		for (Seat seat : passenger.getSeat().getRow().getSeats()) {
+			if ("ABC".contains(passenger.getSeat().getLetter())) {
+				if ("C".contains(seat.getLetter())) {
+					yCoordAisleSeat = seat.getYPosition()
+							+ seat.getYDimension() / 2;
+				}
+			} else if ("DEF".contains(passenger.getSeat().getLetter())) {
+				if ("D".contains(seat.getLetter())) {
+					yCoordAisleSeat = seat.getYPosition()
+							+ seat.getYDimension() / 2;
+				}
+			}
+		}
+
+		return isInRangeSmaller((int) passenger.getPositionY(),
+				yCoordAisleSeat, distanceToAisleSeat);
+	}
+
 
 	/**
 	 * Checks if is in x/y range equal.
@@ -973,10 +1000,35 @@ public class Agent extends Subject implements Runnable {
 			SimulationHandler.getMap().get(getGoal())
 					.setProperty(Property.DEFAULT, getPassenger());
 
+			// stopThread();
+
 			return true;
 		} else {
 			return false;
 		}
+
+	}
+
+	private void waymakingSkipped() {
+
+		System.out.println("waymaking skipped. Delay simulated!");
+		try {
+			if(waitingAtAisleSeat) {
+				Thread.sleep(AStarHelper
+						.time(simSettings.getSeatInterferenceProcessTimeFoldingSeat()));
+				wayMakingFoldableSeatSkipped++;
+			} else {
+				Thread.sleep(AStarHelper
+					.time(simSettings.getSeatInterferenceProcessTime()));
+				wayMakingSkipped++;
+			}
+							
+		} catch (InterruptedException e) {
+
+			e.printStackTrace();
+		}
+		
+		waitingCompleted = true;
 
 	}
 
@@ -1082,6 +1134,10 @@ public class Agent extends Subject implements Runnable {
 		this.thread = thread;
 	}
 
+	public void stopThread() {
+		thread.interrupt();
+	}
+
 	/**
 	 * Removes the.
 	 */
@@ -1099,9 +1155,14 @@ public class Agent extends Subject implements Runnable {
 	 *
 	 * @return the number way making skipped
 	 */
+	/*public int getNumberWayMakingSkipped() {
+		return wayMakingSkipped;
+	}*/
+	
 	public int getNumberWayMakingSkipped() {
 		return wayMakingSkipped;
 	}
+
 
 	/**
 	 * This method is the main path following loop for the agent.
@@ -1210,6 +1271,28 @@ public class Agent extends Subject implements Runnable {
 
 					stowLuggage();
 
+				} else if (foldingSeats && !waitingCompleted
+						&& waitingForClearingOfRow()) {
+
+					setCurrentState(State.WAITING_FOR_ROW_CLEARING);
+
+					while (waymakingAllowed() == false) {
+						Thread.sleep(simSettings.getThreadSleepTimeDefault());
+					}
+
+					if ((checkSeatFoldingStatusInRow() == 1
+							&& "ABC".contains(passenger.getSeat().getLetter()))
+							|| (checkSeatFoldingStatusInRow() == 2
+									&& "DEF".contains(
+											passenger.getSeat().getLetter()))) {
+						waitingAtAisleSeat = true;
+						waymakingSkipped();
+						
+					} else {
+
+						waymakingSkipped();
+					}
+
 				} else if (!waitingCompleted && waitingForClearingOfRow()) {
 
 					setCurrentState(State.WAITING_FOR_ROW_CLEARING);
@@ -1222,37 +1305,37 @@ public class Agent extends Subject implements Runnable {
 					}
 
 					/* way making procedure is skipped */
-					if (anyoneNearMe()) {
+					// if (anyoneNearMe()) {
+					if (!waitingCompleted) {
 						System.out
 								.println("waymaking skipped. Delay simulated!");
 						Thread.sleep(AStarHelper.time(
 								simSettings.getSeatInterferenceProcessTime()));
 						wayMakingSkipped++;
 						waitingCompleted = true;
-						continue;
+						// continue;
 					}
 
-					/* way making works as planned */
-					if (!waitingCompleted) {
-
-						for (Passenger pax : otherPassengersInRowBlockingMe) {
-
-							SimulationHandler.launchWaymakingAgent(pax,
-									this.passenger);
-
-						}
-
-						while (!otherPassengerStoodUp()) {
-							Thread.sleep(
-									simSettings.getThreadSleepTimeDefault());
-						}
-
-						// TODO: calculate the waiting time!
-						Thread.sleep(AStarHelper.time(simSettings
-								.getSeatInterferenceStandingUpPassengerWaitingTime()));
-
-						waitingCompleted = true;
-					}
+					// way making works as planned
+					/*
+					 * if (!waitingCompleted) {
+					 * 
+					 * for (Passenger pax : otherPassengersInRowBlockingMe) {
+					 * 
+					 * SimulationHandler.launchWaymakingAgent(pax,
+					 * this.passenger);
+					 * 
+					 * }
+					 * 
+					 * while (!otherPassengerStoodUp()) { Thread.sleep(
+					 * simSettings.getThreadSleepTimeDefault()); }
+					 * 
+					 * // TODO: calculate the waiting time!
+					 * Thread.sleep(AStarHelper.time(simSettings
+					 * .getSeatInterferenceStandingUpPassengerWaitingTime()));
+					 * 
+					 * waitingCompleted = true; }
+					 */
 
 				} else {
 
@@ -1313,6 +1396,8 @@ public class Agent extends Subject implements Runnable {
 
 			/* catch possible interruptions */
 		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ConcurrentModificationException e) {
 			e.printStackTrace();
 		}
 	}
@@ -1476,6 +1561,8 @@ public class Agent extends Subject implements Runnable {
 			performFinalElements();
 
 		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ConcurrentModificationException e) {
 			e.printStackTrace();
 		}
 	}

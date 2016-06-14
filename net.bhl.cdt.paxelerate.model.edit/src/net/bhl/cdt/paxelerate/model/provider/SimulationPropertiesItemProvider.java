@@ -78,6 +78,7 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 			addSidewaysFoldabeSeatPopupTimePropertyDescriptor(object);
 			addLiftingSeatPanPopupTimePropertyDescriptor(object);
 			addLayoutConceptPropertyDescriptor(object);
+			addSeatInterferenceProcessTimeFoldingSeatPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -501,6 +502,28 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	}
 
 	/**
+	 * This adds a property descriptor for the Seat Interference Process Time Folding Seat feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatInterferenceProcessTimeFoldingSeatPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_seatInterferenceProcessTimeFoldingSeat_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_seatInterferenceProcessTimeFoldingSeat_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -590,6 +613,7 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 			case CabinPackage.SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME:
 			case CabinPackage.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME:
 			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES:

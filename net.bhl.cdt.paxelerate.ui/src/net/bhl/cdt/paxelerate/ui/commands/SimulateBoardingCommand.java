@@ -111,6 +111,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 				 * Log.add(this, "Iteration " + simulationLoopIndex + " of " +
 				 * cabin.getSimulationSettings().getNumberOfSimulationLoops());
 				 */
+				
+				new GeneratePassengersCommand(cabin).doRun();	
 
 				if (cabin.getSimulationSettings().isRandomSortBetweenLoops()) {
 
@@ -203,8 +205,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 									Log.add(this, "SIMULATION TERMINATED! Passenger " + sleepyPassenger.getName()
 											+ " did not react.");
-
-									continue;
+									
+									return Status.CANCEL_STATUS;
 								}
 							}
 						}
@@ -318,7 +320,6 @@ public class SimulateBoardingCommand extends CDTCommand {
 			}
 		});
 		
-		job.setUser(true);
 		job.setRule(jobRule);
 		// Start the Job
 		job.schedule();

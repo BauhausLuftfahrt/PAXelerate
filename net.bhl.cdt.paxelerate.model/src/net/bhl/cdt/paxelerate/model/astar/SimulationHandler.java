@@ -524,5 +524,13 @@ public class SimulationHandler {
 		}
 		return numberCompleted;
 	}
+	
+	public static int getNumberWaymakingFoldableSeatSkipped() {
+		int numberSkipped = 0;
+		for (Agent agent : agentList) {
+			numberSkipped = numberSkipped + agent.getNumberWayMakingSkipped();
+		}
+		return numberSkipped;
+	}
 
 }

@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationResult#getBoardingTimeString <em>Boarding Time String</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationResult#getWaymakingSkipped <em>Waymaking Skipped</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationResult#getWaymakingCompleted <em>Waymaking Completed</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationResult#getLayoutConceptType <em>Layout Concept Type</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationResult()
@@ -237,5 +238,35 @@ public interface SimulationResult extends EObject {
 	 * @generated
 	 */
 	void setWaymakingCompleted(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Layout Concept Type</b></em>' attribute.
+	 * The default value is <code>"Default"</code>.
+	 * The literals are from the enumeration {@link net.bhl.cdt.paxelerate.model.LayoutConcept}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Layout Concept Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Layout Concept Type</em>' attribute.
+	 * @see net.bhl.cdt.paxelerate.model.LayoutConcept
+	 * @see #setLayoutConceptType(LayoutConcept)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationResult_LayoutConceptType()
+	 * @model default="Default" required="true"
+	 * @generated
+	 */
+	LayoutConcept getLayoutConceptType();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationResult#getLayoutConceptType <em>Layout Concept Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Layout Concept Type</em>' attribute.
+	 * @see net.bhl.cdt.paxelerate.model.LayoutConcept
+	 * @see #getLayoutConceptType()
+	 * @generated
+	 */
+	void setLayoutConceptType(LayoutConcept value);
 
 } // SimulationResult

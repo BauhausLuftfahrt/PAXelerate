@@ -69,6 +69,7 @@ public class SimulationResultLogger {
 		result.setBoardingTimeString(TimeHelper.toTimeOfDay(time));
 		result.setWaymakingSkipped(waymakingSkipped);
 		result.setWaymakingCompleted(waymakingCompleted);
+		result.setLayoutConceptType(cabin.getSimulationSettings().getLayoutConcept());
 		SimulationHandler.getCabin().getSimulationSettings().getResults()
 				.add(result);
 	}

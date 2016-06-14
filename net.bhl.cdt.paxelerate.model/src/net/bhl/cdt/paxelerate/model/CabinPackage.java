@@ -1777,13 +1777,22 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_PROPERTIES__LAYOUT_CONCEPT = 20;
 
 	/**
+	 * The feature id for the '<em><b>Seat Interference Process Time Folding Seat</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT = 21;
+
+	/**
 	 * The number of structural features of the '<em>Simulation Properties</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES_FEATURE_COUNT = 21;
+	int SIMULATION_PROPERTIES_FEATURE_COUNT = 22;
 
 	/**
 	 * The number of operations of the '<em>Simulation Properties</em>' class.
@@ -2013,13 +2022,22 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_RESULT__WAYMAKING_COMPLETED = 7;
 
 	/**
+	 * The feature id for the '<em><b>Layout Concept Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_RESULT__LAYOUT_CONCEPT_TYPE = 8;
+
+	/**
 	 * The number of structural features of the '<em>Simulation Result</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_RESULT_FEATURE_COUNT = 8;
+	int SIMULATION_RESULT_FEATURE_COUNT = 9;
 
 	/**
 	 * The number of operations of the '<em>Simulation Result</em>' class.
@@ -3539,6 +3557,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getSimulationProperties_LayoutConcept();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeFoldingSeat <em>Seat Interference Process Time Folding Seat</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seat Interference Process Time Folding Seat</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeFoldingSeat()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_SeatInterferenceProcessTimeFoldingSeat();
+
+	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.LuggageProperties <em>Luggage Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3777,6 +3806,17 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSimulationResult_WaymakingCompleted();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationResult#getLayoutConceptType <em>Layout Concept Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Layout Concept Type</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationResult#getLayoutConceptType()
+	 * @see #getSimulationResult()
+	 * @generated
+	 */
+	EAttribute getSimulationResult_LayoutConceptType();
 
 	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.PassengerProperties <em>Passenger Properties</em>}'.
@@ -5007,6 +5047,13 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute SIMULATION_PROPERTIES__LAYOUT_CONCEPT = eINSTANCE.getSimulationProperties_LayoutConcept();
 		/**
+		 * The meta object literal for the '<em><b>Seat Interference Process Time Folding Seat</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT = eINSTANCE.getSimulationProperties_SeatInterferenceProcessTimeFoldingSeat();
+		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.LuggagePropertiesImpl <em>Luggage Properties</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5164,6 +5211,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SIMULATION_RESULT__WAYMAKING_COMPLETED = eINSTANCE.getSimulationResult_WaymakingCompleted();
+		/**
+		 * The meta object literal for the '<em><b>Layout Concept Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_RESULT__LAYOUT_CONCEPT_TYPE = eINSTANCE.getSimulationResult_LayoutConceptType();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl <em>Passenger Properties</em>}' class.
 		 * <!-- begin-user-doc -->
