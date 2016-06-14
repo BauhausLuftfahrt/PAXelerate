@@ -129,6 +129,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="luggage" eType="#//LuggageSize"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="distanceWalked" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="costOfPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CrewMember">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>

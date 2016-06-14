@@ -132,6 +132,11 @@
         <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/distanceWalked"/>
       </domainModelReference>
     </children>
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_nwYmEDFvEeawfa8UF_72Dg" name="Control CostOfPath" readonly="true">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_qZCqYDFvEeawfa8UF_72Dg">
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/costOfPath"/>
+      </domainModelReference>
+    </children>
   </children>
   <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_YjHAMKS9EeWGjpaobu8CIA" name="Live Data">
     <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C2KS8EeWGjpaobu8CIA" name="Control orientationInDegree" readonly="true">

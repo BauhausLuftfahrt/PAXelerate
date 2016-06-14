@@ -141,8 +141,10 @@ public class Path {
 	/**
 	 * Cut to point.
 	 *
-	 * @param path the path
-	 * @param point the point
+	 * @param path
+	 *            the path
+	 * @param point
+	 *            the point
 	 * @return the path
 	 */
 	public Path cutToPoint(Path path, Vector point) {
@@ -164,4 +166,12 @@ public class Path {
 		return newPath;
 	}
 
+	public int getCost() {
+
+		int cost = 0;
+		for (Node node : waypoints) {
+			cost += node.getCostFromStart();
+		}
+		return cost;
+	}
 }

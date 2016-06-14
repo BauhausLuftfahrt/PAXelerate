@@ -429,16 +429,6 @@ public class Node implements Comparable<Node> {
 	}
 
 	/**
-	 * This method returns the cost from the start.
-	 * 
-	 * @param costFromStart
-	 *            is the cost from the start
-	 */
-	public void setCostFromStart(int costFromStart) {
-		this.costFromStart = costFromStart;
-	}
-
-	/**
 	 * This method checks for equality with another node.
 	 * 
 	 * @param node
@@ -497,5 +487,13 @@ public class Node implements Comparable<Node> {
 				return equal;
 			}
 		}
+	}
+
+	public int getCostFromStart() {
+		return costFromStart;
+	}
+
+	public void setCostFromStart(int cost) {
+		costFromStart = cost;
 	}
 }

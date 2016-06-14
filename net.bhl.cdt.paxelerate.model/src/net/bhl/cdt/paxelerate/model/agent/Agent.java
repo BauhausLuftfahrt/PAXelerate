@@ -692,6 +692,14 @@ public class Agent extends Subject implements Runnable {
 
 		/* add the newly calculated path as well */
 		pathlist.add(path);
+
+		int costOfPaths = 0;
+
+		for (Path path : pathlist) {
+			costOfPaths += path.getCost();
+		}
+
+		passenger.setCostOfPath(costOfPaths);
 	}
 
 	/**
@@ -745,10 +753,12 @@ public class Agent extends Subject implements Runnable {
 
 		if (!initialized) {
 			currentPosition = new Vector2D(0, 0);
-
 		}
+
 		/* ends the stop watch performance logging */
 		stopwatch.stop();
+
+		passenger.setCostOfPath(path.getCost());
 	}
 
 	/**
