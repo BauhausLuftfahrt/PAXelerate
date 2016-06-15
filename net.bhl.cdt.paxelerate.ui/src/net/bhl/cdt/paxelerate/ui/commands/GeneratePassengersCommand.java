@@ -56,7 +56,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 	/** The cabinview. */
 	private CabinViewPart cabinview;
-	
+
 	final JobScheduleRule jobRule = new JobScheduleRule();
 
 	/**
@@ -196,7 +196,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 	@Override
 	protected void doRun() {
 		/* Create separate thread */
-		
+
 		Job job = new Job("Generate Passengers Thread") {
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
@@ -244,6 +244,12 @@ public class GeneratePassengersCommand extends CDTCommand {
 							} catch (NullPointerException e) {
 								Log.add(this, "Cabin View not visible!");
 							}
+
+							try {
+								new DrawCabinCommand(cabin).doRun();
+							} catch (NullPointerException e) {
+								Log.add(this, "Cabin View could not be refreshed");
+							}
 						}
 					});
 				}
@@ -261,7 +267,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 					Log.add(this, "Job did not complete successfully");
 			}
 		});
-		
+
 		job.setRule(jobRule);
 		/* Start the Job */
 		job.schedule();

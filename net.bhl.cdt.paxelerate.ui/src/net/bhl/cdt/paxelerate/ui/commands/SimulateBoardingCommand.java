@@ -220,7 +220,6 @@ public class SimulateBoardingCommand extends CDTCommand {
 				}
 
 				/* closes the simulation view after completion */
-				SimulationHandler.stopSimulation();
 				simulationFrame.dispose();
 
 				SimulationResultLogger results = new SimulationResultLogger();
@@ -293,7 +292,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 				
 				/* Clear the cache! */
 				cabinViewPart.clearCache();
-
+				SimulationHandler.reset();
+				System.gc();
+				
 				// PUBLISH
 				Log.add(this, "Updating GUI...");
 				Display.getDefault().syncExec(new Runnable() {
@@ -304,7 +305,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 				});
 
 				// report finished
-
+				
 				return Status.OK_STATUS;
 
 			}

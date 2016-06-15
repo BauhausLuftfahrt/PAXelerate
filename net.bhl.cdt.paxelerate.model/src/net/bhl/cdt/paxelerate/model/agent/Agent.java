@@ -85,6 +85,7 @@ public class Agent extends Subject implements Runnable {
 
 	/** The final costmap. */
 	/* constant values */
+	
 	private final Costmap finalCostmap;
 
 	/** The passenger. */
@@ -250,6 +251,22 @@ public class Agent extends Subject implements Runnable {
 		} else {
 			return null;
 		}
+	}
+	
+	public void resetAgent() {
+		thread = null;
+		path = null;
+		start = null;
+		goal = null;
+		desiredPosition = null;
+		currentPosition = null;
+		mutableCostMap = null;
+		thePassengerILetInTheRow = null;
+		simSettings = null;
+		
+		pathlist.clear();
+		//finalCostmap = null;
+		// passenger = null;		
 	}
 
 	/**

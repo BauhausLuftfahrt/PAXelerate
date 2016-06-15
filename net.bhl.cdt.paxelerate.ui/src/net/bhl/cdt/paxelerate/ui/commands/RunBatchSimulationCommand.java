@@ -6,7 +6,6 @@
 
 package net.bhl.cdt.paxelerate.ui.commands;
 
-
 import org.eclipse.swt.widgets.Display;
 
 import net.bhl.cdt.commands.CDTCommand;
@@ -26,7 +25,7 @@ public class RunBatchSimulationCommand extends CDTCommand {
 
 	/** The cabin. */
 	private Cabin cabin;
-	
+
 	private SimulationProperties simSettings;
 
 	/**
@@ -55,7 +54,14 @@ public class RunBatchSimulationCommand extends CDTCommand {
 			}
 		});
 
-		
+		simSettings.setSimulationSpeedFactor(5);
+		simSettings.setNumberOfSimulationLoops(20);
+		simSettings.getLuggageProperties().setPercentageOfPassengersWithNoLuggage(100);
+		simSettings.getLuggageProperties().setPercentageOfPassengersWithSmallLuggage(0);
+		simSettings.getLuggageProperties().setPercentageOfPassengersWithMediumLuggage(0);
+		simSettings.getLuggageProperties().setPercentageOfPassengersWithBigLuggage(0);
+		simSettings.setLayoutConcept(LayoutConcept.LIFTING_SEAT_PAN_SEATS);
+
 		Display.getDefault().syncExec(new Runnable() {
 			@Override
 			public void run() {
@@ -64,22 +70,15 @@ public class RunBatchSimulationCommand extends CDTCommand {
 		});
 
 		for (TravelClass travelclass : cabin.getClasses()) {
-			travelclass.setPassengers(180);
+			travelclass.setPassengers(108);
 		}
-		
-		Display.getDefault().syncExec(new Runnable() {
-			@Override
-			public void run() {
-				new DrawCabinCommand(cabin).doRun();
-			}
-		});
 
 		for (int simulationLoopIndex = 1; simulationLoopIndex <= cabin.getSimulationSettings()
 				.getNumberOfSimulationLoops(); simulationLoopIndex++) {
-		
-			new GeneratePassengersCommand(cabin).doRun();	
-			new SimulateBoardingCommand(cabin).doRun();			
 			
+			new GeneratePassengersCommand(cabin).doRun();
+			new SimulateBoardingCommand(cabin).doRun();
+
 		}
 	}
 }

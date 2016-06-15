@@ -223,15 +223,14 @@ public class SimulationHandler {
 		stopSimulation();
 		
 		cabin = null;
+		areamaphandler = null;
 		simulationDone = false;
 		finishedList.clear();
 		activeList.clear();
-
-		areamaphandler = null;
+		waymakingList.clear();
 		agentList.clear();
 		accessPending.clear();
 		master_boarding_time.reset();
-
 		progress = null;
 
 		System.out.println("Simulation Handler resetted!");
@@ -490,8 +489,10 @@ public class SimulationHandler {
 	 */
 	public static void stopSimulation() {
 		for (Agent agent : agentList) {
+			//agent.resetAgent();
 			if (agent.getThread().isInterrupted())
 			agent.getThread().interrupt();
+			//agent = null;
 		}
 	}
 
