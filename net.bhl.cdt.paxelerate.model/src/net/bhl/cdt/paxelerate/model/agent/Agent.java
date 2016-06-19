@@ -218,7 +218,7 @@ public class Agent extends Subject implements Runnable {
 
 		/* generate a mood for the passenger depending on his presets */
 		if (passenger.getPassengerMood() == PassengerMood.AGGRESSIVE) {
-			this.agentMood = new AgressiveMood(this);
+			this.agentMood = new AggressiveMood(this);
 		} else if (passenger.getPassengerMood() == PassengerMood.PASSIVE) {
 			this.agentMood = new PassiveMood(this);
 		}

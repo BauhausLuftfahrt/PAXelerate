@@ -22,6 +22,13 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecp.core.ECPProject;
+import org.eclipse.emf.ecp.core.util.ECPUtil;
+import org.eclipse.emf.emfstore.client.ESLocalProject;
+import org.eclipse.emf.emfstore.client.ESWorkspace;
+import org.eclipse.emf.emfstore.client.ESWorkspaceProvider;
+import org.eclipse.emf.emfstore.common.ESSystemOutProgressMonitor;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
@@ -60,7 +67,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 	/** The simulation frame. */
 	private JFrame simulationFrame;
-	
+
 	final JobScheduleRule jobRule = new JobScheduleRule();
 
 	/**
@@ -71,6 +78,13 @@ public class SimulateBoardingCommand extends CDTCommand {
 	 */
 	public SimulateBoardingCommand(Cabin cabin) {
 		this.cabin = cabin;
+	}
+	
+	public SimulateBoardingCommand() {
+		if (ECPUtil.getECPProjectManager().getProjects() != null) {
+			Cabin cabinModel = (Cabin) ECPUtil.getECPProjectManager().getProject("reference").getContents().get(0);
+			this.cabin = EcoreUtil.copy(cabinModel);
+			}
 	}
 
 	/**
@@ -111,11 +125,10 @@ public class SimulateBoardingCommand extends CDTCommand {
 				 * Log.add(this, "Iteration " + simulationLoopIndex + " of " +
 				 * cabin.getSimulationSettings().getNumberOfSimulationLoops());
 				 */
-				
-				new GeneratePassengersCommand(cabin).doRun();	
+
+				new GeneratePassengersCommand(cabin).doRun();
 
 				if (cabin.getSimulationSettings().isRandomSortBetweenLoops()) {
-
 
 					// sorts the passenger according to selected method
 					SortPassengersCommand sort = new SortPassengersCommand(cabin);
@@ -205,7 +218,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 									Log.add(this, "SIMULATION TERMINATED! Passenger " + sleepyPassenger.getName()
 											+ " did not react.");
-									
+
 									return Status.CANCEL_STATUS;
 								}
 							}
@@ -234,15 +247,15 @@ public class SimulateBoardingCommand extends CDTCommand {
 					// Exporting data
 					try {
 
-						ExcelExport exporter = new ExcelExport("iteration" + simulationLoopIndex);
+						/*ExcelExport exporter = new ExcelExport("iteration" + simulationLoopIndex);
 						exporter.createFile();
 						ExportDataCommand exportData = new ExportDataCommand(cabin, exporter);
 						exportData.generateDistributionFile();
 						exportData.getPassengerData();
 						exportData.getSimulationPropertiesData();
-						exporter.closeFile();
+						exporter.closeFile();*/
 
-						ExcelExport exporterResults = new ExcelExport("results");
+						ExcelExport exporterResults = new ExcelExport("results_michi");
 						exporterResults.createFile();
 						ExportDataCommand exportDataResults = new ExportDataCommand(cabin, exporterResults);
 						exportDataResults.getStudySettings();
@@ -255,22 +268,20 @@ public class SimulateBoardingCommand extends CDTCommand {
 						Log.add(this, "Data export failed! - IOException");
 					}
 
-					/*Map<Integer, Costmap> costmaps = SimulationHandler.getUsedCostmaps();
+					Map<Integer, Costmap> costmaps = SimulationHandler.getUsedCostmaps();
 
 					int index = 0;
 
-					
-					 * for (Costmap costmap : costmaps.values()) {
-					 * 
-					 * save the CostMap to the local file system
-					 * FileSaver.saveCostmapToFile(costmap, dimensions,
-					 * Integer.toString(index));
-					 * 
-					 * index++; }
-					 * 
-					 * FileSaver.saveObstacleToFile(SimulationHandler.getMap(),
-					 * dimensions);
-					 */
+					for (Costmap costmap : costmaps.values()) {
+
+						// save the CostMap to the local file system
+						FileSaver.saveCostmapToFile(costmap, dimensions, Integer.toString(index));
+
+						index++;
+					}
+
+					FileSaver.saveObstacleToFile(SimulationHandler.getMap(), dimensions);
+
 				}
 
 				/*
@@ -289,12 +300,16 @@ public class SimulateBoardingCommand extends CDTCommand {
 					});
 				}
 
-				
 				/* Clear the cache! */
 				cabinViewPart.clearCache();
 				SimulationHandler.reset();
-				System.gc();
+				//System.gc();
 				
+				ESWorkspace workspace = ESWorkspaceProvider.INSTANCE.getWorkspace();
+				ESLocalProject firstProject = workspace.getLocalProjects().get(0);
+				firstProject.revert();
+				//Cabin cabinModel = (Cabin) firstProject.getModelElements().get(0);
+			
 				// PUBLISH
 				Log.add(this, "Updating GUI...");
 				Display.getDefault().syncExec(new Runnable() {
@@ -305,13 +320,13 @@ public class SimulateBoardingCommand extends CDTCommand {
 				});
 
 				// report finished
-				
+
 				return Status.OK_STATUS;
 
 			}
 
 		};
-		
+
 		job.addJobChangeListener(new JobChangeAdapter() {
 			public void done(IJobChangeEvent event) {
 				if (event.getResult().isOK())
@@ -320,7 +335,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 					Log.add(this, "Job did not complete successfully");
 			}
 		});
-		
+
 		job.setRule(jobRule);
 		// Start the Job
 		job.schedule();
@@ -345,7 +360,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 				WindowListener exitListener = new WindowAdapter() {
 					@Override
 					public void windowClosing(WindowEvent e) {
-						SimulationHandler.stopSimulation();
+						simulationView.resetSimulationView();
+						SimulationHandler.reset();
 					}
 				};
 				simulationFrame.addWindowListener(exitListener);

@@ -358,4 +358,8 @@ public class SimulationView extends JPanel implements MouseListener {
 	public void mouseReleased(MouseEvent e) {
 		//
 	}
+	
+	public void resetSimulationView(){
+		areamap = null;
+	}
 }
