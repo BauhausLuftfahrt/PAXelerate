@@ -23,6 +23,7 @@ import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.time.StopWatch;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.OS;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.ProgressHandler;
 
 /**
@@ -38,6 +39,8 @@ public class SimulationHandler {
 
 	/** The simulation done. */
 	private static Boolean simulationDone = false;
+	
+	private static OS osType;
 
 	/** The areamap handler. */
 	private static AreamapHandler areamaphandler;
@@ -428,34 +431,39 @@ public class SimulationHandler {
 			agentList.add(agent);
 		}
 
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				progress = new ProgressHandler(agentList.size());
-				while (progressvalue < agentList.size() - 1) {
-					progress.reportProgress(progressvalue);
+		if (OS.isWindows()) {
+			javax.swing.SwingUtilities.invokeLater(new Runnable() {
+				@Override
+				public void run() {
+					progress = new ProgressHandler(agentList.size());
+					while (progressvalue < agentList.size() - 1) {
+						progress.reportProgress(progressvalue);
 
-					percent = DecimalHelper.percentage(progressvalue,
-							agentList.size());
+						percent = DecimalHelper.percentage(progressvalue,
+								agentList.size());
 
-					// TODO: real progress indications for calculation of
-					// cost map could be implemented!
+						// TODO: real progress indications for calculation of
+						// cost map could be implemented!
 
-					if (percent < 10) {
-						progress.updateText(
-								"Initializing Path finding algorithms ...");
-					} else if (percent < 30) {
-						progress.updateText("Creating the agent objects ...");
-					} else if (percent < 90) {
-						progress.updateText(
-								"Calculating the paths for every passenger ...");
-					} else {
-						progress.updateText("Finishing calculations ...");
+						if (percent < 10) {
+							progress.updateText(
+									"Initializing Path finding algorithms ...");
+						} else if (percent < 30) {
+							progress.updateText("Creating the agent objects ...");
+						} else if (percent < 90) {
+							progress.updateText(
+									"Calculating the paths for every passenger ...");
+						} else {
+							progress.updateText("Finishing calculations ...");
+						}
 					}
+					progress.done();
 				}
-				progress.done();
-			}
-		});
+			});
+		} else if (OS.isMac()) {
+			//TODO: implement eclipse progress bar
+		}
+		
 
 		/* First generate all paths ... */
 		for (Agent agent : agentList) {
