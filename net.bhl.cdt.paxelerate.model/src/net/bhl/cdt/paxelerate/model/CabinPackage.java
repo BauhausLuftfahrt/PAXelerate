@@ -1597,121 +1597,13 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_PROPERTIES = 13;
 
 	/**
-	 * The feature id for the '<em><b>Scale</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__SCALE = 0;
-
-	/**
-	 * The feature id for the '<em><b>Frames Per Second</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__FRAMES_PER_SECOND = 1;
-
-	/**
-	 * The feature id for the '<em><b>Use Preset Settings</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__USE_PRESET_SETTINGS = 2;
-
-	/**
-	 * The feature id for the '<em><b>Simulate Without UI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI = 3;
-
-	/**
-	 * The feature id for the '<em><b>Number Of Simulation Loops</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS = 4;
-
-	/**
-	 * The feature id for the '<em><b>Random Sort Between Loops</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS = 5;
-
-	/**
 	 * The feature id for the '<em><b>Results</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__RESULTS = 6;
-
-	/**
-	 * The feature id for the '<em><b>Sorting</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__SORTING = 7;
-
-	/**
-	 * The feature id for the '<em><b>Simulation Speed Factor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR = 8;
-
-	/**
-	 * The feature id for the '<em><b>Seat Interference Standing Up Passenger Waiting Time</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME = 9;
-
-	/**
-	 * The feature id for the '<em><b>Seat Interference Process Time</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME = 10;
-
-	/**
-	 * The feature id for the '<em><b>Thread Sleep Time Default</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT = 11;
-
-	/**
-	 * The feature id for the '<em><b>Developer Mode</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__DEVELOPER_MODE = 12;
+	int SIMULATION_PROPERTIES__RESULTS = 0;
 
 	/**
 	 * The feature id for the '<em><b>Luggage Properties</b></em>' containment reference.
@@ -1720,7 +1612,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES = 13;
+	int SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES = 1;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Properties</b></em>' containment reference.
@@ -1729,7 +1621,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGER_PROPERTIES = 14;
+	int SIMULATION_PROPERTIES__PASSENGER_PROPERTIES = 2;
 
 	/**
 	 * The feature id for the '<em><b>Passengers Boarding Per Minute</b></em>' attribute.
@@ -1738,43 +1630,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = 15;
-
-	/**
-	 * The feature id for the '<em><b>Data Export</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__DATA_EXPORT = 16;
-
-	/**
-	 * The feature id for the '<em><b>Display Map</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__DISPLAY_MAP = 17;
-
-	/**
-	 * The feature id for the '<em><b>Sideways Foldabe Seat Popup Time</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME = 18;
-
-	/**
-	 * The feature id for the '<em><b>Lifting Seat Pan Popup Time</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME = 19;
+	int SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Layout Concept</b></em>' attribute.
@@ -1783,16 +1639,187 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__LAYOUT_CONCEPT = 20;
+	int SIMULATION_PROPERTIES__LAYOUT_CONCEPT = 4;
 
 	/**
-	 * The feature id for the '<em><b>Seat Interference Process Time Folding Seat</b></em>' attribute.
+	 * The feature id for the '<em><b>Scale</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT = 21;
+	int SIMULATION_PROPERTIES__SCALE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Simulation Speed Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR = 6;
+
+	/**
+	 * The feature id for the '<em><b>Use Preset Settings</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__USE_PRESET_SETTINGS = 7;
+
+	/**
+	 * The feature id for the '<em><b>Simulate Without UI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI = 8;
+
+	/**
+	 * The feature id for the '<em><b>Number Of Simulation Loops</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS = 9;
+
+	/**
+	 * The feature id for the '<em><b>Developer Mode</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__DEVELOPER_MODE = 10;
+
+	/**
+	 * The feature id for the '<em><b>Data Export</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__DATA_EXPORT = 11;
+
+	/**
+	 * The feature id for the '<em><b>Display Map</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__DISPLAY_MAP = 12;
+
+	/**
+	 * The feature id for the '<em><b>Sort Passenger Between Loops</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__SORT_PASSENGER_BETWEEN_LOOPS = 13;
+
+	/**
+	 * The feature id for the '<em><b>Sorting</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__SORTING = 14;
+
+	/**
+	 * The feature id for the '<em><b>Seat Interference Standing Up Passenger Waiting Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME = 15;
+
+	/**
+	 * The feature id for the '<em><b>Seat Interference Process Time Mean</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN = 16;
+
+	/**
+	 * The feature id for the '<em><b>Seat Interference Process Time Deviation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION = 17;
+
+	/**
+	 * The feature id for the '<em><b>Seat Interference Process Time Folding Seat Mean</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN = 18;
+
+	/**
+	 * The feature id for the '<em><b>Seat Interference Process Time Folding Seat Deviation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION = 19;
+
+	/**
+	 * The feature id for the '<em><b>Thread Sleep Time Default</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT = 20;
+
+	/**
+	 * The feature id for the '<em><b>Sideways Foldabe Seat Popup Time Mean</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_MEAN = 21;
+
+	/**
+	 * The feature id for the '<em><b>Sideways Foldabe Seat Popup Time Deviation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_DEVIATION = 22;
+
+	/**
+	 * The feature id for the '<em><b>Lifting Seat Pan Popup Time Mean</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_MEAN = 23;
+
+	/**
+	 * The feature id for the '<em><b>Lifting Seat Pan Popup Time Deviation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_DEVIATION = 24;
 
 	/**
 	 * The number of structural features of the '<em>Simulation Properties</em>' class.
@@ -1801,7 +1828,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES_FEATURE_COUNT = 22;
+	int SIMULATION_PROPERTIES_FEATURE_COUNT = 25;
 
 	/**
 	 * The number of operations of the '<em>Simulation Properties</em>' class.
@@ -3357,17 +3384,6 @@ public interface CabinPackage extends EPackage {
 	EAttribute getSimulationProperties_Scale();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getFramesPerSecond <em>Frames Per Second</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Frames Per Second</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getFramesPerSecond()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_FramesPerSecond();
-
-	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUsePresetSettings <em>Use Preset Settings</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3399,17 +3415,6 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSimulationProperties_NumberOfSimulationLoops();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isRandomSortBetweenLoops <em>Random Sort Between Loops</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Random Sort Between Loops</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#isRandomSortBetweenLoops()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_RandomSortBetweenLoops();
 
 	/**
 	 * Returns the meta object for the reference list '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getResults <em>Results</em>}'.
@@ -3456,15 +3461,48 @@ public interface CabinPackage extends EPackage {
 	EAttribute getSimulationProperties_SeatInterferenceStandingUpPassengerWaitingTime();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTime <em>Seat Interference Process Time</em>}'.
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeMean <em>Seat Interference Process Time Mean</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Seat Interference Process Time</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTime()
+	 * @return the meta object for the attribute '<em>Seat Interference Process Time Mean</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeMean()
 	 * @see #getSimulationProperties()
 	 * @generated
 	 */
-	EAttribute getSimulationProperties_SeatInterferenceProcessTime();
+	EAttribute getSimulationProperties_SeatInterferenceProcessTimeMean();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeDeviation <em>Seat Interference Process Time Deviation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seat Interference Process Time Deviation</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeDeviation()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_SeatInterferenceProcessTimeDeviation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeFoldingSeatMean <em>Seat Interference Process Time Folding Seat Mean</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seat Interference Process Time Folding Seat Mean</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeFoldingSeatMean()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_SeatInterferenceProcessTimeFoldingSeatMean();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeFoldingSeatDeviation <em>Seat Interference Process Time Folding Seat Deviation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seat Interference Process Time Folding Seat Deviation</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeFoldingSeatDeviation()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_SeatInterferenceProcessTimeFoldingSeatDeviation();
 
 	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getThreadSleepTimeDefault <em>Thread Sleep Time Default</em>}'.
@@ -3487,6 +3525,17 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSimulationProperties_DeveloperMode();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isSortPassengerBetweenLoops <em>Sort Passenger Between Loops</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Sort Passenger Between Loops</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#isSortPassengerBetweenLoops()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_SortPassengerBetweenLoops();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageProperties <em>Luggage Properties</em>}'.
@@ -3544,26 +3593,48 @@ public interface CabinPackage extends EPackage {
 	EAttribute getSimulationProperties_DisplayMap();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSidewaysFoldabeSeatPopupTime <em>Sideways Foldabe Seat Popup Time</em>}'.
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSidewaysFoldabeSeatPopupTimeMean <em>Sideways Foldabe Seat Popup Time Mean</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Sideways Foldabe Seat Popup Time</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getSidewaysFoldabeSeatPopupTime()
+	 * @return the meta object for the attribute '<em>Sideways Foldabe Seat Popup Time Mean</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getSidewaysFoldabeSeatPopupTimeMean()
 	 * @see #getSimulationProperties()
 	 * @generated
 	 */
-	EAttribute getSimulationProperties_SidewaysFoldabeSeatPopupTime();
+	EAttribute getSimulationProperties_SidewaysFoldabeSeatPopupTimeMean();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLiftingSeatPanPopupTime <em>Lifting Seat Pan Popup Time</em>}'.
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSidewaysFoldabeSeatPopupTimeDeviation <em>Sideways Foldabe Seat Popup Time Deviation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Lifting Seat Pan Popup Time</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getLiftingSeatPanPopupTime()
+	 * @return the meta object for the attribute '<em>Sideways Foldabe Seat Popup Time Deviation</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getSidewaysFoldabeSeatPopupTimeDeviation()
 	 * @see #getSimulationProperties()
 	 * @generated
 	 */
-	EAttribute getSimulationProperties_LiftingSeatPanPopupTime();
+	EAttribute getSimulationProperties_SidewaysFoldabeSeatPopupTimeDeviation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLiftingSeatPanPopupTimeMean <em>Lifting Seat Pan Popup Time Mean</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lifting Seat Pan Popup Time Mean</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getLiftingSeatPanPopupTimeMean()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_LiftingSeatPanPopupTimeMean();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLiftingSeatPanPopupTimeDeviation <em>Lifting Seat Pan Popup Time Deviation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lifting Seat Pan Popup Time Deviation</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getLiftingSeatPanPopupTimeDeviation()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_LiftingSeatPanPopupTimeDeviation();
 
 	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLayoutConcept <em>Layout Concept</em>}'.
@@ -3575,17 +3646,6 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSimulationProperties_LayoutConcept();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeFoldingSeat <em>Seat Interference Process Time Folding Seat</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Seat Interference Process Time Folding Seat</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeFoldingSeat()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_SeatInterferenceProcessTimeFoldingSeat();
 
 	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.LuggageProperties <em>Luggage Properties</em>}'.
@@ -4934,13 +4994,6 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute SIMULATION_PROPERTIES__SCALE = eINSTANCE.getSimulationProperties_Scale();
 		/**
-		 * The meta object literal for the '<em><b>Frames Per Second</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__FRAMES_PER_SECOND = eINSTANCE.getSimulationProperties_FramesPerSecond();
-		/**
 		 * The meta object literal for the '<em><b>Use Preset Settings</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4961,13 +5014,6 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS = eINSTANCE.getSimulationProperties_NumberOfSimulationLoops();
-		/**
-		 * The meta object literal for the '<em><b>Random Sort Between Loops</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS = eINSTANCE.getSimulationProperties_RandomSortBetweenLoops();
 		/**
 		 * The meta object literal for the '<em><b>Results</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
@@ -4997,12 +5043,33 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME = eINSTANCE.getSimulationProperties_SeatInterferenceStandingUpPassengerWaitingTime();
 		/**
-		 * The meta object literal for the '<em><b>Seat Interference Process Time</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Seat Interference Process Time Mean</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME = eINSTANCE.getSimulationProperties_SeatInterferenceProcessTime();
+		EAttribute SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN = eINSTANCE.getSimulationProperties_SeatInterferenceProcessTimeMean();
+		/**
+		 * The meta object literal for the '<em><b>Seat Interference Process Time Deviation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION = eINSTANCE.getSimulationProperties_SeatInterferenceProcessTimeDeviation();
+		/**
+		 * The meta object literal for the '<em><b>Seat Interference Process Time Folding Seat Mean</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN = eINSTANCE.getSimulationProperties_SeatInterferenceProcessTimeFoldingSeatMean();
+		/**
+		 * The meta object literal for the '<em><b>Seat Interference Process Time Folding Seat Deviation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION = eINSTANCE.getSimulationProperties_SeatInterferenceProcessTimeFoldingSeatDeviation();
 		/**
 		 * The meta object literal for the '<em><b>Thread Sleep Time Default</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -5017,6 +5084,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SIMULATION_PROPERTIES__DEVELOPER_MODE = eINSTANCE.getSimulationProperties_DeveloperMode();
+		/**
+		 * The meta object literal for the '<em><b>Sort Passenger Between Loops</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__SORT_PASSENGER_BETWEEN_LOOPS = eINSTANCE.getSimulationProperties_SortPassengerBetweenLoops();
 		/**
 		 * The meta object literal for the '<em><b>Luggage Properties</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
@@ -5053,19 +5127,33 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute SIMULATION_PROPERTIES__DISPLAY_MAP = eINSTANCE.getSimulationProperties_DisplayMap();
 		/**
-		 * The meta object literal for the '<em><b>Sideways Foldabe Seat Popup Time</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Sideways Foldabe Seat Popup Time Mean</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME = eINSTANCE.getSimulationProperties_SidewaysFoldabeSeatPopupTime();
+		EAttribute SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_MEAN = eINSTANCE.getSimulationProperties_SidewaysFoldabeSeatPopupTimeMean();
 		/**
-		 * The meta object literal for the '<em><b>Lifting Seat Pan Popup Time</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Sideways Foldabe Seat Popup Time Deviation</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME = eINSTANCE.getSimulationProperties_LiftingSeatPanPopupTime();
+		EAttribute SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_DEVIATION = eINSTANCE.getSimulationProperties_SidewaysFoldabeSeatPopupTimeDeviation();
+		/**
+		 * The meta object literal for the '<em><b>Lifting Seat Pan Popup Time Mean</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_MEAN = eINSTANCE.getSimulationProperties_LiftingSeatPanPopupTimeMean();
+		/**
+		 * The meta object literal for the '<em><b>Lifting Seat Pan Popup Time Deviation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_DEVIATION = eINSTANCE.getSimulationProperties_LiftingSeatPanPopupTimeDeviation();
 		/**
 		 * The meta object literal for the '<em><b>Layout Concept</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -5073,13 +5161,6 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SIMULATION_PROPERTIES__LAYOUT_CONCEPT = eINSTANCE.getSimulationProperties_LayoutConcept();
-		/**
-		 * The meta object literal for the '<em><b>Seat Interference Process Time Folding Seat</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT = eINSTANCE.getSimulationProperties_SeatInterferenceProcessTimeFoldingSeat();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.LuggagePropertiesImpl <em>Luggage Properties</em>}' class.
 		 * <!-- begin-user-doc -->

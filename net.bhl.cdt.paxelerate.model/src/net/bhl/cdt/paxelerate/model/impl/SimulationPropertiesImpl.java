@@ -28,33 +28,106 @@ import net.bhl.cdt.paxelerate.model.SortingStyle;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getScale <em>Scale</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getFramesPerSecond <em>Frames Per Second</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isUsePresetSettings <em>Use Preset Settings</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isSimulateWithoutUI <em>Simulate Without UI</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getNumberOfSimulationLoops <em>Number Of Simulation Loops</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isRandomSortBetweenLoops <em>Random Sort Between Loops</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getResults <em>Results</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSorting <em>Sorting</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSeatInterferenceStandingUpPassengerWaitingTime <em>Seat Interference Standing Up Passenger Waiting Time</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSeatInterferenceProcessTime <em>Seat Interference Process Time</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getThreadSleepTimeDefault <em>Thread Sleep Time Default</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isDeveloperMode <em>Developer Mode</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getLuggageProperties <em>Luggage Properties</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerProperties <em>Passenger Properties</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getLayoutConcept <em>Layout Concept</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getScale <em>Scale</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isUsePresetSettings <em>Use Preset Settings</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isSimulateWithoutUI <em>Simulate Without UI</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getNumberOfSimulationLoops <em>Number Of Simulation Loops</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isDeveloperMode <em>Developer Mode</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isDataExport <em>Data Export</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isDisplayMap <em>Display Map</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSidewaysFoldabeSeatPopupTime <em>Sideways Foldabe Seat Popup Time</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getLiftingSeatPanPopupTime <em>Lifting Seat Pan Popup Time</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getLayoutConcept <em>Layout Concept</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSeatInterferenceProcessTimeFoldingSeat <em>Seat Interference Process Time Folding Seat</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isSortPassengerBetweenLoops <em>Sort Passenger Between Loops</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSorting <em>Sorting</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSeatInterferenceStandingUpPassengerWaitingTime <em>Seat Interference Standing Up Passenger Waiting Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSeatInterferenceProcessTimeMean <em>Seat Interference Process Time Mean</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSeatInterferenceProcessTimeDeviation <em>Seat Interference Process Time Deviation</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSeatInterferenceProcessTimeFoldingSeatMean <em>Seat Interference Process Time Folding Seat Mean</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSeatInterferenceProcessTimeFoldingSeatDeviation <em>Seat Interference Process Time Folding Seat Deviation</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getThreadSleepTimeDefault <em>Thread Sleep Time Default</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSidewaysFoldabeSeatPopupTimeMean <em>Sideways Foldabe Seat Popup Time Mean</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSidewaysFoldabeSeatPopupTimeDeviation <em>Sideways Foldabe Seat Popup Time Deviation</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getLiftingSeatPanPopupTimeMean <em>Lifting Seat Pan Popup Time Mean</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getLiftingSeatPanPopupTimeDeviation <em>Lifting Seat Pan Popup Time Deviation</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container implements SimulationProperties {
+	/**
+	 * The cached value of the '{@link #getResults() <em>Results</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResults()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<SimulationResult> results;
+
+	/**
+	 * The cached value of the '{@link #getLuggageProperties() <em>Luggage Properties</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLuggageProperties()
+	 * @generated
+	 * @ordered
+	 */
+	protected LuggageProperties luggageProperties;
+
+	/**
+	 * The cached value of the '{@link #getPassengerProperties() <em>Passenger Properties</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassengerProperties()
+	 * @generated
+	 * @ordered
+	 */
+	protected PassengerProperties passengerProperties;
+
+	/**
+	 * The default value of the '{@link #getPassengersBoardingPerMinute() <em>Passengers Boarding Per Minute</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassengersBoardingPerMinute()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT = 18.0;
+
+	/**
+	 * The cached value of the '{@link #getPassengersBoardingPerMinute() <em>Passengers Boarding Per Minute</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassengersBoardingPerMinute()
+	 * @generated
+	 * @ordered
+	 */
+	protected double passengersBoardingPerMinute = PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLayoutConcept() <em>Layout Concept</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLayoutConcept()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final LayoutConcept LAYOUT_CONCEPT_EDEFAULT = LayoutConcept.DEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getLayoutConcept() <em>Layout Concept</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLayoutConcept()
+	 * @generated
+	 * @ordered
+	 */
+	protected LayoutConcept layoutConcept = LAYOUT_CONCEPT_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getScale() <em>Scale</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -76,24 +149,24 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	protected int scale = SCALE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getFramesPerSecond() <em>Frames Per Second</em>}' attribute.
+	 * The default value of the '{@link #getSimulationSpeedFactor() <em>Simulation Speed Factor</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFramesPerSecond()
+	 * @see #getSimulationSpeedFactor()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int FRAMES_PER_SECOND_EDEFAULT = 5;
+	protected static final int SIMULATION_SPEED_FACTOR_EDEFAULT = 5;
 
 	/**
-	 * The cached value of the '{@link #getFramesPerSecond() <em>Frames Per Second</em>}' attribute.
+	 * The cached value of the '{@link #getSimulationSpeedFactor() <em>Simulation Speed Factor</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFramesPerSecond()
+	 * @see #getSimulationSpeedFactor()
 	 * @generated
 	 * @ordered
 	 */
-	protected int framesPerSecond = FRAMES_PER_SECOND_EDEFAULT;
+	protected int simulationSpeedFactor = SIMULATION_SPEED_FACTOR_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isUsePresetSettings() <em>Use Preset Settings</em>}' attribute.
@@ -156,136 +229,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	protected int numberOfSimulationLoops = NUMBER_OF_SIMULATION_LOOPS_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isRandomSortBetweenLoops() <em>Random Sort Between Loops</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isRandomSortBetweenLoops()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean RANDOM_SORT_BETWEEN_LOOPS_EDEFAULT = true;
-
-	/**
-	 * The cached value of the '{@link #isRandomSortBetweenLoops() <em>Random Sort Between Loops</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isRandomSortBetweenLoops()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean randomSortBetweenLoops = RANDOM_SORT_BETWEEN_LOOPS_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getResults() <em>Results</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getResults()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<SimulationResult> results;
-
-	/**
-	 * The default value of the '{@link #getSorting() <em>Sorting</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSorting()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final SortingStyle SORTING_EDEFAULT = SortingStyle.RANDOM;
-
-	/**
-	 * The cached value of the '{@link #getSorting() <em>Sorting</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSorting()
-	 * @generated
-	 * @ordered
-	 */
-	protected SortingStyle sorting = SORTING_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getSimulationSpeedFactor() <em>Simulation Speed Factor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSimulationSpeedFactor()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int SIMULATION_SPEED_FACTOR_EDEFAULT = 5;
-
-	/**
-	 * The cached value of the '{@link #getSimulationSpeedFactor() <em>Simulation Speed Factor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSimulationSpeedFactor()
-	 * @generated
-	 * @ordered
-	 */
-	protected int simulationSpeedFactor = SIMULATION_SPEED_FACTOR_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getSeatInterferenceStandingUpPassengerWaitingTime() <em>Seat Interference Standing Up Passenger Waiting Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatInterferenceStandingUpPassengerWaitingTime()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME_EDEFAULT = 3;
-
-	/**
-	 * The cached value of the '{@link #getSeatInterferenceStandingUpPassengerWaitingTime() <em>Seat Interference Standing Up Passenger Waiting Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatInterferenceStandingUpPassengerWaitingTime()
-	 * @generated
-	 * @ordered
-	 */
-	protected int seatInterferenceStandingUpPassengerWaitingTime = SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getSeatInterferenceProcessTime() <em>Seat Interference Process Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatInterferenceProcessTime()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int SEAT_INTERFERENCE_PROCESS_TIME_EDEFAULT = 7;
-
-	/**
-	 * The cached value of the '{@link #getSeatInterferenceProcessTime() <em>Seat Interference Process Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatInterferenceProcessTime()
-	 * @generated
-	 * @ordered
-	 */
-	protected int seatInterferenceProcessTime = SEAT_INTERFERENCE_PROCESS_TIME_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getThreadSleepTimeDefault() <em>Thread Sleep Time Default</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getThreadSleepTimeDefault()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int THREAD_SLEEP_TIME_DEFAULT_EDEFAULT = 10;
-
-	/**
-	 * The cached value of the '{@link #getThreadSleepTimeDefault() <em>Thread Sleep Time Default</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getThreadSleepTimeDefault()
-	 * @generated
-	 * @ordered
-	 */
-	protected int threadSleepTimeDefault = THREAD_SLEEP_TIME_DEFAULT_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #isDeveloperMode() <em>Developer Mode</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -293,7 +236,7 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean DEVELOPER_MODE_EDEFAULT = false;
+	protected static final boolean DEVELOPER_MODE_EDEFAULT = true;
 
 	/**
 	 * The cached value of the '{@link #isDeveloperMode() <em>Developer Mode</em>}' attribute.
@@ -304,46 +247,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * @ordered
 	 */
 	protected boolean developerMode = DEVELOPER_MODE_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getLuggageProperties() <em>Luggage Properties</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLuggageProperties()
-	 * @generated
-	 * @ordered
-	 */
-	protected LuggageProperties luggageProperties;
-
-	/**
-	 * The cached value of the '{@link #getPassengerProperties() <em>Passenger Properties</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPassengerProperties()
-	 * @generated
-	 * @ordered
-	 */
-	protected PassengerProperties passengerProperties;
-
-	/**
-	 * The default value of the '{@link #getPassengersBoardingPerMinute() <em>Passengers Boarding Per Minute</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPassengersBoardingPerMinute()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT = 18.0;
-
-	/**
-	 * The cached value of the '{@link #getPassengersBoardingPerMinute() <em>Passengers Boarding Per Minute</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPassengersBoardingPerMinute()
-	 * @generated
-	 * @ordered
-	 */
-	protected double passengersBoardingPerMinute = PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isDataExport() <em>Data Export</em>}' attribute.
@@ -386,84 +289,244 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	protected boolean displayMap = DISPLAY_MAP_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getSidewaysFoldabeSeatPopupTime() <em>Sideways Foldabe Seat Popup Time</em>}' attribute.
+	 * The default value of the '{@link #isSortPassengerBetweenLoops() <em>Sort Passenger Between Loops</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSidewaysFoldabeSeatPopupTime()
+	 * @see #isSortPassengerBetweenLoops()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_EDEFAULT = 5;
+	protected static final boolean SORT_PASSENGER_BETWEEN_LOOPS_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #getSidewaysFoldabeSeatPopupTime() <em>Sideways Foldabe Seat Popup Time</em>}' attribute.
+	 * The cached value of the '{@link #isSortPassengerBetweenLoops() <em>Sort Passenger Between Loops</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSidewaysFoldabeSeatPopupTime()
+	 * @see #isSortPassengerBetweenLoops()
 	 * @generated
 	 * @ordered
 	 */
-	protected int sidewaysFoldabeSeatPopupTime = SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_EDEFAULT;
+	protected boolean sortPassengerBetweenLoops = SORT_PASSENGER_BETWEEN_LOOPS_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getLiftingSeatPanPopupTime() <em>Lifting Seat Pan Popup Time</em>}' attribute.
+	 * The default value of the '{@link #getSorting() <em>Sorting</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLiftingSeatPanPopupTime()
+	 * @see #getSorting()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int LIFTING_SEAT_PAN_POPUP_TIME_EDEFAULT = 2;
+	protected static final SortingStyle SORTING_EDEFAULT = SortingStyle.RANDOM;
 
 	/**
-	 * The cached value of the '{@link #getLiftingSeatPanPopupTime() <em>Lifting Seat Pan Popup Time</em>}' attribute.
+	 * The cached value of the '{@link #getSorting() <em>Sorting</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLiftingSeatPanPopupTime()
+	 * @see #getSorting()
 	 * @generated
 	 * @ordered
 	 */
-	protected int liftingSeatPanPopupTime = LIFTING_SEAT_PAN_POPUP_TIME_EDEFAULT;
+	protected SortingStyle sorting = SORTING_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getLayoutConcept() <em>Layout Concept</em>}' attribute.
+	 * The default value of the '{@link #getSeatInterferenceStandingUpPassengerWaitingTime() <em>Seat Interference Standing Up Passenger Waiting Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLayoutConcept()
+	 * @see #getSeatInterferenceStandingUpPassengerWaitingTime()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final LayoutConcept LAYOUT_CONCEPT_EDEFAULT = LayoutConcept.DEFAULT;
+	protected static final double SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME_EDEFAULT = 3.0;
 
 	/**
-	 * The cached value of the '{@link #getLayoutConcept() <em>Layout Concept</em>}' attribute.
+	 * The cached value of the '{@link #getSeatInterferenceStandingUpPassengerWaitingTime() <em>Seat Interference Standing Up Passenger Waiting Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLayoutConcept()
+	 * @see #getSeatInterferenceStandingUpPassengerWaitingTime()
 	 * @generated
 	 * @ordered
 	 */
-	protected LayoutConcept layoutConcept = LAYOUT_CONCEPT_EDEFAULT;
+	protected double seatInterferenceStandingUpPassengerWaitingTime = SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getSeatInterferenceProcessTimeFoldingSeat() <em>Seat Interference Process Time Folding Seat</em>}' attribute.
+	 * The default value of the '{@link #getSeatInterferenceProcessTimeMean() <em>Seat Interference Process Time Mean</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSeatInterferenceProcessTimeFoldingSeat()
+	 * @see #getSeatInterferenceProcessTimeMean()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_EDEFAULT = 5;
+	protected static final double SEAT_INTERFERENCE_PROCESS_TIME_MEAN_EDEFAULT = 7.0;
 
 	/**
-	 * The cached value of the '{@link #getSeatInterferenceProcessTimeFoldingSeat() <em>Seat Interference Process Time Folding Seat</em>}' attribute.
+	 * The cached value of the '{@link #getSeatInterferenceProcessTimeMean() <em>Seat Interference Process Time Mean</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSeatInterferenceProcessTimeFoldingSeat()
+	 * @see #getSeatInterferenceProcessTimeMean()
 	 * @generated
 	 * @ordered
 	 */
-	protected int seatInterferenceProcessTimeFoldingSeat = SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_EDEFAULT;
+	protected double seatInterferenceProcessTimeMean = SEAT_INTERFERENCE_PROCESS_TIME_MEAN_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSeatInterferenceProcessTimeDeviation() <em>Seat Interference Process Time Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTimeDeviation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION_EDEFAULT = 1.5;
+
+	/**
+	 * The cached value of the '{@link #getSeatInterferenceProcessTimeDeviation() <em>Seat Interference Process Time Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTimeDeviation()
+	 * @generated
+	 * @ordered
+	 */
+	protected double seatInterferenceProcessTimeDeviation = SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSeatInterferenceProcessTimeFoldingSeatMean() <em>Seat Interference Process Time Folding Seat Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTimeFoldingSeatMean()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN_EDEFAULT = 5.0;
+
+	/**
+	 * The cached value of the '{@link #getSeatInterferenceProcessTimeFoldingSeatMean() <em>Seat Interference Process Time Folding Seat Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTimeFoldingSeatMean()
+	 * @generated
+	 * @ordered
+	 */
+	protected double seatInterferenceProcessTimeFoldingSeatMean = SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSeatInterferenceProcessTimeFoldingSeatDeviation() <em>Seat Interference Process Time Folding Seat Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTimeFoldingSeatDeviation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION_EDEFAULT = 1.0;
+
+	/**
+	 * The cached value of the '{@link #getSeatInterferenceProcessTimeFoldingSeatDeviation() <em>Seat Interference Process Time Folding Seat Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTimeFoldingSeatDeviation()
+	 * @generated
+	 * @ordered
+	 */
+	protected double seatInterferenceProcessTimeFoldingSeatDeviation = SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getThreadSleepTimeDefault() <em>Thread Sleep Time Default</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getThreadSleepTimeDefault()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int THREAD_SLEEP_TIME_DEFAULT_EDEFAULT = 10;
+
+	/**
+	 * The cached value of the '{@link #getThreadSleepTimeDefault() <em>Thread Sleep Time Default</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getThreadSleepTimeDefault()
+	 * @generated
+	 * @ordered
+	 */
+	protected int threadSleepTimeDefault = THREAD_SLEEP_TIME_DEFAULT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSidewaysFoldabeSeatPopupTimeMean() <em>Sideways Foldabe Seat Popup Time Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSidewaysFoldabeSeatPopupTimeMean()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_MEAN_EDEFAULT = 5.0;
+
+	/**
+	 * The cached value of the '{@link #getSidewaysFoldabeSeatPopupTimeMean() <em>Sideways Foldabe Seat Popup Time Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSidewaysFoldabeSeatPopupTimeMean()
+	 * @generated
+	 * @ordered
+	 */
+	protected double sidewaysFoldabeSeatPopupTimeMean = SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_MEAN_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSidewaysFoldabeSeatPopupTimeDeviation() <em>Sideways Foldabe Seat Popup Time Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSidewaysFoldabeSeatPopupTimeDeviation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_DEVIATION_EDEFAULT = 1.0;
+
+	/**
+	 * The cached value of the '{@link #getSidewaysFoldabeSeatPopupTimeDeviation() <em>Sideways Foldabe Seat Popup Time Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSidewaysFoldabeSeatPopupTimeDeviation()
+	 * @generated
+	 * @ordered
+	 */
+	protected double sidewaysFoldabeSeatPopupTimeDeviation = SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_DEVIATION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLiftingSeatPanPopupTimeMean() <em>Lifting Seat Pan Popup Time Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLiftingSeatPanPopupTimeMean()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double LIFTING_SEAT_PAN_POPUP_TIME_MEAN_EDEFAULT = 2.0;
+
+	/**
+	 * The cached value of the '{@link #getLiftingSeatPanPopupTimeMean() <em>Lifting Seat Pan Popup Time Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLiftingSeatPanPopupTimeMean()
+	 * @generated
+	 * @ordered
+	 */
+	protected double liftingSeatPanPopupTimeMean = LIFTING_SEAT_PAN_POPUP_TIME_MEAN_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLiftingSeatPanPopupTimeDeviation() <em>Lifting Seat Pan Popup Time Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLiftingSeatPanPopupTimeDeviation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double LIFTING_SEAT_PAN_POPUP_TIME_DEVIATION_EDEFAULT = 0.5;
+
+	/**
+	 * The cached value of the '{@link #getLiftingSeatPanPopupTimeDeviation() <em>Lifting Seat Pan Popup Time Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLiftingSeatPanPopupTimeDeviation()
+	 * @generated
+	 * @ordered
+	 */
+	protected double liftingSeatPanPopupTimeDeviation = LIFTING_SEAT_PAN_POPUP_TIME_DEVIATION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -510,31 +573,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 		scale = newScale;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SCALE, oldScale, scale));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->.
-	 *
-	 * @return the frames per second
-	 * @generated 
-	 */
-	public int getFramesPerSecond() {
-		return framesPerSecond;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->.
-	 *
-	 * @param newFramesPerSecond the new frames per second
-	 * @generated 
-	 */
-	public void setFramesPerSecond(int newFramesPerSecond) {
-		int oldFramesPerSecond = framesPerSecond;
-		framesPerSecond = newFramesPerSecond;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__FRAMES_PER_SECOND, oldFramesPerSecond, framesPerSecond));
 	}
 
 	/**
@@ -616,31 +654,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->.
 	 *
-	 * @return true, if is random sort between loops
-	 * @generated 
-	 */
-	public boolean isRandomSortBetweenLoops() {
-		return randomSortBetweenLoops;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->.
-	 *
-	 * @param newRandomSortBetweenLoops the new random sort between loops
-	 * @generated 
-	 */
-	public void setRandomSortBetweenLoops(boolean newRandomSortBetweenLoops) {
-		boolean oldRandomSortBetweenLoops = randomSortBetweenLoops;
-		randomSortBetweenLoops = newRandomSortBetweenLoops;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS, oldRandomSortBetweenLoops, randomSortBetweenLoops));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->.
-	 *
 	 * @return the results
 	 * @generated 
 	 */
@@ -708,19 +721,17 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * @return the seat interference standing up passenger waiting time
 	 * @generated 
 	 */
-	public int getSeatInterferenceStandingUpPassengerWaitingTime() {
+	public double getSeatInterferenceStandingUpPassengerWaitingTime() {
 		return seatInterferenceStandingUpPassengerWaitingTime;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->.
-	 *
-	 * @param newSeatInterferenceStandingUpPassengerWaitingTime the new seat interference standing up passenger waiting time
-	 * @generated 
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
-	public void setSeatInterferenceStandingUpPassengerWaitingTime(int newSeatInterferenceStandingUpPassengerWaitingTime) {
-		int oldSeatInterferenceStandingUpPassengerWaitingTime = seatInterferenceStandingUpPassengerWaitingTime;
+	public void setSeatInterferenceStandingUpPassengerWaitingTime(double newSeatInterferenceStandingUpPassengerWaitingTime) {
+		double oldSeatInterferenceStandingUpPassengerWaitingTime = seatInterferenceStandingUpPassengerWaitingTime;
 		seatInterferenceStandingUpPassengerWaitingTime = newSeatInterferenceStandingUpPassengerWaitingTime;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME, oldSeatInterferenceStandingUpPassengerWaitingTime, seatInterferenceStandingUpPassengerWaitingTime));
@@ -728,27 +739,86 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->.
-	 *
-	 * @return the seat interference process time
-	 * @generated 
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
-	public int getSeatInterferenceProcessTime() {
-		return seatInterferenceProcessTime;
+	public double getSeatInterferenceProcessTimeMean() {
+		return seatInterferenceProcessTimeMean;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->.
-	 *
-	 * @param newSeatInterferenceProcessTime the new seat interference process time
-	 * @generated 
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
-	public void setSeatInterferenceProcessTime(int newSeatInterferenceProcessTime) {
-		int oldSeatInterferenceProcessTime = seatInterferenceProcessTime;
-		seatInterferenceProcessTime = newSeatInterferenceProcessTime;
+	public void setSeatInterferenceProcessTimeMean(double newSeatInterferenceProcessTimeMean) {
+		double oldSeatInterferenceProcessTimeMean = seatInterferenceProcessTimeMean;
+		seatInterferenceProcessTimeMean = newSeatInterferenceProcessTimeMean;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME, oldSeatInterferenceProcessTime, seatInterferenceProcessTime));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN, oldSeatInterferenceProcessTimeMean, seatInterferenceProcessTimeMean));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getSeatInterferenceProcessTimeDeviation() {
+		return seatInterferenceProcessTimeDeviation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatInterferenceProcessTimeDeviation(double newSeatInterferenceProcessTimeDeviation) {
+		double oldSeatInterferenceProcessTimeDeviation = seatInterferenceProcessTimeDeviation;
+		seatInterferenceProcessTimeDeviation = newSeatInterferenceProcessTimeDeviation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION, oldSeatInterferenceProcessTimeDeviation, seatInterferenceProcessTimeDeviation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getSeatInterferenceProcessTimeFoldingSeatMean() {
+		return seatInterferenceProcessTimeFoldingSeatMean;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatInterferenceProcessTimeFoldingSeatMean(double newSeatInterferenceProcessTimeFoldingSeatMean) {
+		double oldSeatInterferenceProcessTimeFoldingSeatMean = seatInterferenceProcessTimeFoldingSeatMean;
+		seatInterferenceProcessTimeFoldingSeatMean = newSeatInterferenceProcessTimeFoldingSeatMean;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN, oldSeatInterferenceProcessTimeFoldingSeatMean, seatInterferenceProcessTimeFoldingSeatMean));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getSeatInterferenceProcessTimeFoldingSeatDeviation() {
+		return seatInterferenceProcessTimeFoldingSeatDeviation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatInterferenceProcessTimeFoldingSeatDeviation(double newSeatInterferenceProcessTimeFoldingSeatDeviation) {
+		double oldSeatInterferenceProcessTimeFoldingSeatDeviation = seatInterferenceProcessTimeFoldingSeatDeviation;
+		seatInterferenceProcessTimeFoldingSeatDeviation = newSeatInterferenceProcessTimeFoldingSeatDeviation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION, oldSeatInterferenceProcessTimeFoldingSeatDeviation, seatInterferenceProcessTimeFoldingSeatDeviation));
 	}
 
 	/**
@@ -799,6 +869,27 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 		developerMode = newDeveloperMode;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE, oldDeveloperMode, developerMode));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSortPassengerBetweenLoops() {
+		return sortPassengerBetweenLoops;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSortPassengerBetweenLoops(boolean newSortPassengerBetweenLoops) {
+		boolean oldSortPassengerBetweenLoops = sortPassengerBetweenLoops;
+		sortPassengerBetweenLoops = newSortPassengerBetweenLoops;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SORT_PASSENGER_BETWEEN_LOOPS, oldSortPassengerBetweenLoops, sortPassengerBetweenLoops));
 	}
 
 	/**
@@ -975,8 +1066,8 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getSidewaysFoldabeSeatPopupTime() {
-		return sidewaysFoldabeSeatPopupTime;
+	public double getSidewaysFoldabeSeatPopupTimeMean() {
+		return sidewaysFoldabeSeatPopupTimeMean;
 	}
 
 	/**
@@ -984,11 +1075,11 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSidewaysFoldabeSeatPopupTime(int newSidewaysFoldabeSeatPopupTime) {
-		int oldSidewaysFoldabeSeatPopupTime = sidewaysFoldabeSeatPopupTime;
-		sidewaysFoldabeSeatPopupTime = newSidewaysFoldabeSeatPopupTime;
+	public void setSidewaysFoldabeSeatPopupTimeMean(double newSidewaysFoldabeSeatPopupTimeMean) {
+		double oldSidewaysFoldabeSeatPopupTimeMean = sidewaysFoldabeSeatPopupTimeMean;
+		sidewaysFoldabeSeatPopupTimeMean = newSidewaysFoldabeSeatPopupTimeMean;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME, oldSidewaysFoldabeSeatPopupTime, sidewaysFoldabeSeatPopupTime));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_MEAN, oldSidewaysFoldabeSeatPopupTimeMean, sidewaysFoldabeSeatPopupTimeMean));
 	}
 
 	/**
@@ -996,8 +1087,8 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getLiftingSeatPanPopupTime() {
-		return liftingSeatPanPopupTime;
+	public double getSidewaysFoldabeSeatPopupTimeDeviation() {
+		return sidewaysFoldabeSeatPopupTimeDeviation;
 	}
 
 	/**
@@ -1005,11 +1096,53 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLiftingSeatPanPopupTime(int newLiftingSeatPanPopupTime) {
-		int oldLiftingSeatPanPopupTime = liftingSeatPanPopupTime;
-		liftingSeatPanPopupTime = newLiftingSeatPanPopupTime;
+	public void setSidewaysFoldabeSeatPopupTimeDeviation(double newSidewaysFoldabeSeatPopupTimeDeviation) {
+		double oldSidewaysFoldabeSeatPopupTimeDeviation = sidewaysFoldabeSeatPopupTimeDeviation;
+		sidewaysFoldabeSeatPopupTimeDeviation = newSidewaysFoldabeSeatPopupTimeDeviation;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME, oldLiftingSeatPanPopupTime, liftingSeatPanPopupTime));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_DEVIATION, oldSidewaysFoldabeSeatPopupTimeDeviation, sidewaysFoldabeSeatPopupTimeDeviation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getLiftingSeatPanPopupTimeMean() {
+		return liftingSeatPanPopupTimeMean;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLiftingSeatPanPopupTimeMean(double newLiftingSeatPanPopupTimeMean) {
+		double oldLiftingSeatPanPopupTimeMean = liftingSeatPanPopupTimeMean;
+		liftingSeatPanPopupTimeMean = newLiftingSeatPanPopupTimeMean;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_MEAN, oldLiftingSeatPanPopupTimeMean, liftingSeatPanPopupTimeMean));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getLiftingSeatPanPopupTimeDeviation() {
+		return liftingSeatPanPopupTimeDeviation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLiftingSeatPanPopupTimeDeviation(double newLiftingSeatPanPopupTimeDeviation) {
+		double oldLiftingSeatPanPopupTimeDeviation = liftingSeatPanPopupTimeDeviation;
+		liftingSeatPanPopupTimeDeviation = newLiftingSeatPanPopupTimeDeviation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_DEVIATION, oldLiftingSeatPanPopupTimeDeviation, liftingSeatPanPopupTimeDeviation));
 	}
 
 	/**
@@ -1031,27 +1164,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 		layoutConcept = newLayoutConcept == null ? LAYOUT_CONCEPT_EDEFAULT : newLayoutConcept;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT, oldLayoutConcept, layoutConcept));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public int getSeatInterferenceProcessTimeFoldingSeat() {
-		return seatInterferenceProcessTimeFoldingSeat;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSeatInterferenceProcessTimeFoldingSeat(int newSeatInterferenceProcessTimeFoldingSeat) {
-		int oldSeatInterferenceProcessTimeFoldingSeat = seatInterferenceProcessTimeFoldingSeat;
-		seatInterferenceProcessTimeFoldingSeat = newSeatInterferenceProcessTimeFoldingSeat;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT, oldSeatInterferenceProcessTimeFoldingSeat, seatInterferenceProcessTimeFoldingSeat));
 	}
 
 	/**
@@ -1088,50 +1200,56 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
-				return getScale();
-			case CabinPackage.SIMULATION_PROPERTIES__FRAMES_PER_SECOND:
-				return getFramesPerSecond();
-			case CabinPackage.SIMULATION_PROPERTIES__USE_PRESET_SETTINGS:
-				return isUsePresetSettings();
-			case CabinPackage.SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI:
-				return isSimulateWithoutUI();
-			case CabinPackage.SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS:
-				return getNumberOfSimulationLoops();
-			case CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS:
-				return isRandomSortBetweenLoops();
 			case CabinPackage.SIMULATION_PROPERTIES__RESULTS:
 				return getResults();
-			case CabinPackage.SIMULATION_PROPERTIES__SORTING:
-				return getSorting();
-			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
-				return getSimulationSpeedFactor();
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
-				return getSeatInterferenceStandingUpPassengerWaitingTime();
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME:
-				return getSeatInterferenceProcessTime();
-			case CabinPackage.SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT:
-				return getThreadSleepTimeDefault();
-			case CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE:
-				return isDeveloperMode();
 			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES:
 				return getLuggageProperties();
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_PROPERTIES:
 				return getPassengerProperties();
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				return getPassengersBoardingPerMinute();
+			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
+				return getLayoutConcept();
+			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
+				return getScale();
+			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
+				return getSimulationSpeedFactor();
+			case CabinPackage.SIMULATION_PROPERTIES__USE_PRESET_SETTINGS:
+				return isUsePresetSettings();
+			case CabinPackage.SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI:
+				return isSimulateWithoutUI();
+			case CabinPackage.SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS:
+				return getNumberOfSimulationLoops();
+			case CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE:
+				return isDeveloperMode();
 			case CabinPackage.SIMULATION_PROPERTIES__DATA_EXPORT:
 				return isDataExport();
 			case CabinPackage.SIMULATION_PROPERTIES__DISPLAY_MAP:
 				return isDisplayMap();
-			case CabinPackage.SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME:
-				return getSidewaysFoldabeSeatPopupTime();
-			case CabinPackage.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME:
-				return getLiftingSeatPanPopupTime();
-			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
-				return getLayoutConcept();
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT:
-				return getSeatInterferenceProcessTimeFoldingSeat();
+			case CabinPackage.SIMULATION_PROPERTIES__SORT_PASSENGER_BETWEEN_LOOPS:
+				return isSortPassengerBetweenLoops();
+			case CabinPackage.SIMULATION_PROPERTIES__SORTING:
+				return getSorting();
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
+				return getSeatInterferenceStandingUpPassengerWaitingTime();
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN:
+				return getSeatInterferenceProcessTimeMean();
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION:
+				return getSeatInterferenceProcessTimeDeviation();
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN:
+				return getSeatInterferenceProcessTimeFoldingSeatMean();
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION:
+				return getSeatInterferenceProcessTimeFoldingSeatDeviation();
+			case CabinPackage.SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT:
+				return getThreadSleepTimeDefault();
+			case CabinPackage.SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_MEAN:
+				return getSidewaysFoldabeSeatPopupTimeMean();
+			case CabinPackage.SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_DEVIATION:
+				return getSidewaysFoldabeSeatPopupTimeDeviation();
+			case CabinPackage.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_MEAN:
+				return getLiftingSeatPanPopupTimeMean();
+			case CabinPackage.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_DEVIATION:
+				return getLiftingSeatPanPopupTimeDeviation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1148,45 +1266,9 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
-				setScale((Integer)newValue);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__FRAMES_PER_SECOND:
-				setFramesPerSecond((Integer)newValue);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__USE_PRESET_SETTINGS:
-				setUsePresetSettings((Boolean)newValue);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI:
-				setSimulateWithoutUI((Boolean)newValue);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS:
-				setNumberOfSimulationLoops((Integer)newValue);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS:
-				setRandomSortBetweenLoops((Boolean)newValue);
-				return;
 			case CabinPackage.SIMULATION_PROPERTIES__RESULTS:
 				getResults().clear();
 				getResults().addAll((Collection<? extends SimulationResult>)newValue);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SORTING:
-				setSorting((SortingStyle)newValue);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
-				setSimulationSpeedFactor((Integer)newValue);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
-				setSeatInterferenceStandingUpPassengerWaitingTime((Integer)newValue);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME:
-				setSeatInterferenceProcessTime((Integer)newValue);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT:
-				setThreadSleepTimeDefault((Integer)newValue);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE:
-				setDeveloperMode((Boolean)newValue);
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES:
 				setLuggageProperties((LuggageProperties)newValue);
@@ -1197,23 +1279,68 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				setPassengersBoardingPerMinute((Double)newValue);
 				return;
+			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
+				setLayoutConcept((LayoutConcept)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
+				setScale((Integer)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
+				setSimulationSpeedFactor((Integer)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__USE_PRESET_SETTINGS:
+				setUsePresetSettings((Boolean)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI:
+				setSimulateWithoutUI((Boolean)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS:
+				setNumberOfSimulationLoops((Integer)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE:
+				setDeveloperMode((Boolean)newValue);
+				return;
 			case CabinPackage.SIMULATION_PROPERTIES__DATA_EXPORT:
 				setDataExport((Boolean)newValue);
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__DISPLAY_MAP:
 				setDisplayMap((Boolean)newValue);
 				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME:
-				setSidewaysFoldabeSeatPopupTime((Integer)newValue);
+			case CabinPackage.SIMULATION_PROPERTIES__SORT_PASSENGER_BETWEEN_LOOPS:
+				setSortPassengerBetweenLoops((Boolean)newValue);
 				return;
-			case CabinPackage.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME:
-				setLiftingSeatPanPopupTime((Integer)newValue);
+			case CabinPackage.SIMULATION_PROPERTIES__SORTING:
+				setSorting((SortingStyle)newValue);
 				return;
-			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
-				setLayoutConcept((LayoutConcept)newValue);
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
+				setSeatInterferenceStandingUpPassengerWaitingTime((Double)newValue);
 				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT:
-				setSeatInterferenceProcessTimeFoldingSeat((Integer)newValue);
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN:
+				setSeatInterferenceProcessTimeMean((Double)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION:
+				setSeatInterferenceProcessTimeDeviation((Double)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN:
+				setSeatInterferenceProcessTimeFoldingSeatMean((Double)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION:
+				setSeatInterferenceProcessTimeFoldingSeatDeviation((Double)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT:
+				setThreadSleepTimeDefault((Integer)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_MEAN:
+				setSidewaysFoldabeSeatPopupTimeMean((Double)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_DEVIATION:
+				setSidewaysFoldabeSeatPopupTimeDeviation((Double)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_MEAN:
+				setLiftingSeatPanPopupTimeMean((Double)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_DEVIATION:
+				setLiftingSeatPanPopupTimeDeviation((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1229,44 +1356,8 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
-				setScale(SCALE_EDEFAULT);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__FRAMES_PER_SECOND:
-				setFramesPerSecond(FRAMES_PER_SECOND_EDEFAULT);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__USE_PRESET_SETTINGS:
-				setUsePresetSettings(USE_PRESET_SETTINGS_EDEFAULT);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI:
-				setSimulateWithoutUI(SIMULATE_WITHOUT_UI_EDEFAULT);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS:
-				setNumberOfSimulationLoops(NUMBER_OF_SIMULATION_LOOPS_EDEFAULT);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS:
-				setRandomSortBetweenLoops(RANDOM_SORT_BETWEEN_LOOPS_EDEFAULT);
-				return;
 			case CabinPackage.SIMULATION_PROPERTIES__RESULTS:
 				getResults().clear();
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SORTING:
-				setSorting(SORTING_EDEFAULT);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
-				setSimulationSpeedFactor(SIMULATION_SPEED_FACTOR_EDEFAULT);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
-				setSeatInterferenceStandingUpPassengerWaitingTime(SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME_EDEFAULT);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME:
-				setSeatInterferenceProcessTime(SEAT_INTERFERENCE_PROCESS_TIME_EDEFAULT);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT:
-				setThreadSleepTimeDefault(THREAD_SLEEP_TIME_DEFAULT_EDEFAULT);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE:
-				setDeveloperMode(DEVELOPER_MODE_EDEFAULT);
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES:
 				setLuggageProperties((LuggageProperties)null);
@@ -1277,23 +1368,68 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				setPassengersBoardingPerMinute(PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT);
 				return;
+			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
+				setLayoutConcept(LAYOUT_CONCEPT_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
+				setScale(SCALE_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
+				setSimulationSpeedFactor(SIMULATION_SPEED_FACTOR_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__USE_PRESET_SETTINGS:
+				setUsePresetSettings(USE_PRESET_SETTINGS_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI:
+				setSimulateWithoutUI(SIMULATE_WITHOUT_UI_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS:
+				setNumberOfSimulationLoops(NUMBER_OF_SIMULATION_LOOPS_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE:
+				setDeveloperMode(DEVELOPER_MODE_EDEFAULT);
+				return;
 			case CabinPackage.SIMULATION_PROPERTIES__DATA_EXPORT:
 				setDataExport(DATA_EXPORT_EDEFAULT);
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__DISPLAY_MAP:
 				setDisplayMap(DISPLAY_MAP_EDEFAULT);
 				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME:
-				setSidewaysFoldabeSeatPopupTime(SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_EDEFAULT);
+			case CabinPackage.SIMULATION_PROPERTIES__SORT_PASSENGER_BETWEEN_LOOPS:
+				setSortPassengerBetweenLoops(SORT_PASSENGER_BETWEEN_LOOPS_EDEFAULT);
 				return;
-			case CabinPackage.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME:
-				setLiftingSeatPanPopupTime(LIFTING_SEAT_PAN_POPUP_TIME_EDEFAULT);
+			case CabinPackage.SIMULATION_PROPERTIES__SORTING:
+				setSorting(SORTING_EDEFAULT);
 				return;
-			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
-				setLayoutConcept(LAYOUT_CONCEPT_EDEFAULT);
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
+				setSeatInterferenceStandingUpPassengerWaitingTime(SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME_EDEFAULT);
 				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT:
-				setSeatInterferenceProcessTimeFoldingSeat(SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_EDEFAULT);
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN:
+				setSeatInterferenceProcessTimeMean(SEAT_INTERFERENCE_PROCESS_TIME_MEAN_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION:
+				setSeatInterferenceProcessTimeDeviation(SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN:
+				setSeatInterferenceProcessTimeFoldingSeatMean(SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION:
+				setSeatInterferenceProcessTimeFoldingSeatDeviation(SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT:
+				setThreadSleepTimeDefault(THREAD_SLEEP_TIME_DEFAULT_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_MEAN:
+				setSidewaysFoldabeSeatPopupTimeMean(SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_MEAN_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_DEVIATION:
+				setSidewaysFoldabeSeatPopupTimeDeviation(SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_DEVIATION_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_MEAN:
+				setLiftingSeatPanPopupTimeMean(LIFTING_SEAT_PAN_POPUP_TIME_MEAN_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_DEVIATION:
+				setLiftingSeatPanPopupTimeDeviation(LIFTING_SEAT_PAN_POPUP_TIME_DEVIATION_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -1310,50 +1446,56 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
-				return scale != SCALE_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__FRAMES_PER_SECOND:
-				return framesPerSecond != FRAMES_PER_SECOND_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__USE_PRESET_SETTINGS:
-				return usePresetSettings != USE_PRESET_SETTINGS_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI:
-				return simulateWithoutUI != SIMULATE_WITHOUT_UI_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS:
-				return numberOfSimulationLoops != NUMBER_OF_SIMULATION_LOOPS_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS:
-				return randomSortBetweenLoops != RANDOM_SORT_BETWEEN_LOOPS_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__RESULTS:
 				return results != null && !results.isEmpty();
-			case CabinPackage.SIMULATION_PROPERTIES__SORTING:
-				return sorting != SORTING_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
-				return simulationSpeedFactor != SIMULATION_SPEED_FACTOR_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
-				return seatInterferenceStandingUpPassengerWaitingTime != SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME:
-				return seatInterferenceProcessTime != SEAT_INTERFERENCE_PROCESS_TIME_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT:
-				return threadSleepTimeDefault != THREAD_SLEEP_TIME_DEFAULT_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE:
-				return developerMode != DEVELOPER_MODE_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES:
 				return luggageProperties != null;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_PROPERTIES:
 				return passengerProperties != null;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 				return passengersBoardingPerMinute != PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
+				return layoutConcept != LAYOUT_CONCEPT_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
+				return scale != SCALE_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
+				return simulationSpeedFactor != SIMULATION_SPEED_FACTOR_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__USE_PRESET_SETTINGS:
+				return usePresetSettings != USE_PRESET_SETTINGS_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI:
+				return simulateWithoutUI != SIMULATE_WITHOUT_UI_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS:
+				return numberOfSimulationLoops != NUMBER_OF_SIMULATION_LOOPS_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE:
+				return developerMode != DEVELOPER_MODE_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__DATA_EXPORT:
 				return dataExport != DATA_EXPORT_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__DISPLAY_MAP:
 				return displayMap != DISPLAY_MAP_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME:
-				return sidewaysFoldabeSeatPopupTime != SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME:
-				return liftingSeatPanPopupTime != LIFTING_SEAT_PAN_POPUP_TIME_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
-				return layoutConcept != LAYOUT_CONCEPT_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT:
-				return seatInterferenceProcessTimeFoldingSeat != SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__SORT_PASSENGER_BETWEEN_LOOPS:
+				return sortPassengerBetweenLoops != SORT_PASSENGER_BETWEEN_LOOPS_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__SORTING:
+				return sorting != SORTING_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
+				return seatInterferenceStandingUpPassengerWaitingTime != SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN:
+				return seatInterferenceProcessTimeMean != SEAT_INTERFERENCE_PROCESS_TIME_MEAN_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION:
+				return seatInterferenceProcessTimeDeviation != SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN:
+				return seatInterferenceProcessTimeFoldingSeatMean != SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION:
+				return seatInterferenceProcessTimeFoldingSeatDeviation != SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT:
+				return threadSleepTimeDefault != THREAD_SLEEP_TIME_DEFAULT_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_MEAN:
+				return sidewaysFoldabeSeatPopupTimeMean != SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_MEAN_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_DEVIATION:
+				return sidewaysFoldabeSeatPopupTimeDeviation != SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_DEVIATION_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_MEAN:
+				return liftingSeatPanPopupTimeMean != LIFTING_SEAT_PAN_POPUP_TIME_MEAN_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_DEVIATION:
+				return liftingSeatPanPopupTimeDeviation != LIFTING_SEAT_PAN_POPUP_TIME_DEVIATION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1370,44 +1512,50 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (scale: ");
+		result.append(" (passengersBoardingPerMinute: ");
+		result.append(passengersBoardingPerMinute);
+		result.append(", layoutConcept: ");
+		result.append(layoutConcept);
+		result.append(", scale: ");
 		result.append(scale);
-		result.append(", framesPerSecond: ");
-		result.append(framesPerSecond);
+		result.append(", simulationSpeedFactor: ");
+		result.append(simulationSpeedFactor);
 		result.append(", usePresetSettings: ");
 		result.append(usePresetSettings);
 		result.append(", simulateWithoutUI: ");
 		result.append(simulateWithoutUI);
 		result.append(", numberOfSimulationLoops: ");
 		result.append(numberOfSimulationLoops);
-		result.append(", randomSortBetweenLoops: ");
-		result.append(randomSortBetweenLoops);
-		result.append(", sorting: ");
-		result.append(sorting);
-		result.append(", simulationSpeedFactor: ");
-		result.append(simulationSpeedFactor);
-		result.append(", seatInterferenceStandingUpPassengerWaitingTime: ");
-		result.append(seatInterferenceStandingUpPassengerWaitingTime);
-		result.append(", seatInterferenceProcessTime: ");
-		result.append(seatInterferenceProcessTime);
-		result.append(", threadSleepTimeDefault: ");
-		result.append(threadSleepTimeDefault);
 		result.append(", developerMode: ");
 		result.append(developerMode);
-		result.append(", passengersBoardingPerMinute: ");
-		result.append(passengersBoardingPerMinute);
 		result.append(", dataExport: ");
 		result.append(dataExport);
 		result.append(", displayMap: ");
 		result.append(displayMap);
-		result.append(", sidewaysFoldabeSeatPopupTime: ");
-		result.append(sidewaysFoldabeSeatPopupTime);
-		result.append(", liftingSeatPanPopupTime: ");
-		result.append(liftingSeatPanPopupTime);
-		result.append(", layoutConcept: ");
-		result.append(layoutConcept);
-		result.append(", seatInterferenceProcessTimeFoldingSeat: ");
-		result.append(seatInterferenceProcessTimeFoldingSeat);
+		result.append(", sortPassengerBetweenLoops: ");
+		result.append(sortPassengerBetweenLoops);
+		result.append(", sorting: ");
+		result.append(sorting);
+		result.append(", seatInterferenceStandingUpPassengerWaitingTime: ");
+		result.append(seatInterferenceStandingUpPassengerWaitingTime);
+		result.append(", seatInterferenceProcessTimeMean: ");
+		result.append(seatInterferenceProcessTimeMean);
+		result.append(", seatInterferenceProcessTimeDeviation: ");
+		result.append(seatInterferenceProcessTimeDeviation);
+		result.append(", seatInterferenceProcessTimeFoldingSeatMean: ");
+		result.append(seatInterferenceProcessTimeFoldingSeatMean);
+		result.append(", seatInterferenceProcessTimeFoldingSeatDeviation: ");
+		result.append(seatInterferenceProcessTimeFoldingSeatDeviation);
+		result.append(", threadSleepTimeDefault: ");
+		result.append(threadSleepTimeDefault);
+		result.append(", sidewaysFoldabeSeatPopupTimeMean: ");
+		result.append(sidewaysFoldabeSeatPopupTimeMean);
+		result.append(", sidewaysFoldabeSeatPopupTimeDeviation: ");
+		result.append(sidewaysFoldabeSeatPopupTimeDeviation);
+		result.append(", liftingSeatPanPopupTimeMean: ");
+		result.append(liftingSeatPanPopupTimeMean);
+		result.append(", liftingSeatPanPopupTimeDeviation: ");
+		result.append(liftingSeatPanPopupTimeDeviation);
 		result.append(')');
 		return result.toString();
 	}

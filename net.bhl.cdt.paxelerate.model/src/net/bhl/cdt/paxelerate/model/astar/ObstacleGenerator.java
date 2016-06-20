@@ -22,6 +22,7 @@ import net.bhl.cdt.paxelerate.util.math.MathHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector3D;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
+// TODO: Auto-generated Javadoc
 /**
  * This class represents an obstacle map. Every point in the two dimensional
  * array has a specific value which represents the strength of the obstacle.
@@ -35,34 +36,43 @@ public class ObstacleGenerator {
 	/** The scale. */
 	private double scale;
 
+	/** The developer mode. */
+	private boolean developerMode;
+
 	/** The areamap. */
 	private Areamap areamap;
 
 	/** The cabin. */
 	private Cabin cabin;
 
-	/** a list of all obstacle nodes */
+	/** a list of all obstacle nodes. */
 	private ArrayList<Node> obstacles = new ArrayList<>();
 
+	/** The gradient. */
 	private GradientOption gradient;
 
 	/**
-	 * The different options for the gradient
-	 * 
-	 * @author marc.engelmann
-	 *
+	 * The different options for the gradient.
 	 */
 	public enum GradientOption {
-		LINEAR, CUBIC, EXPONENTIAL;
+
+		/** The linear. */
+		LINEAR,
+		/** The cubic. */
+		CUBIC,
+		/** The exponential. */
+		EXPONENTIAL;
 	}
 
 	/**
 	 * This method generates a new obstacle generator.
-	 * 
+	 *
 	 * @param areamap
 	 *            the area map on which the obstacles should be applied to
 	 * @param cabin
 	 *            the cabin from which to get the values
+	 * @param gradientOption
+	 *            the gradient option
 	 */
 	public ObstacleGenerator(Areamap areamap, Cabin cabin,
 			GradientOption gradientOption) {
@@ -71,6 +81,7 @@ public class ObstacleGenerator {
 		this.areamap = areamap;
 		this.gradient = gradientOption;
 		this.scale = cabin.getSimulationSettings().getScale();
+		this.developerMode = cabin.getSimulationSettings().isDeveloperMode();
 		this.cabin = cabin;
 
 		/* loop through all nodes and apply the default value */
@@ -133,8 +144,8 @@ public class ObstacleGenerator {
 
 	/**
 	 * This function calculates the gradient value at a specific position within
-	 * an integer array
-	 * 
+	 * an integer array.
+	 *
 	 * @param distance
 	 *            is the position within the gradient
 	 * @param option
@@ -274,11 +285,13 @@ public class ObstacleGenerator {
 						}
 					}
 				}
-
 				/* for debugging, output the found aisles */
-				System.out.println(travelclass.getName()
-						+ ": aisle detected at " + aisle.getX() + "|"
-						+ aisle.getY() + " , width: " + aisle.getZ());
+				if (developerMode) {
+					System.out.println(travelclass.getName()
+							+ ": aisle detected at " + aisle.getX() + "|"
+							+ aisle.getY() + " , width: " + aisle.getZ());
+				}
+
 			}
 		}
 	}
@@ -370,6 +383,9 @@ public class ObstacleGenerator {
 		}
 	}
 
+	/**
+	 * Check for gaps.
+	 */
 	private void checkForGaps() {
 
 		/* loop through all nodes */
@@ -385,8 +401,11 @@ public class ObstacleGenerator {
 				if (node.getPosition().getY() == 1 || node.getPosition()
 						.getY() == areamap.getDimensions().getY() - 2) {
 
-					System.out.println("detected: " + node.getPosition().getX()
-							+ " / " + node.getPosition().getY());
+					if (developerMode) {
+						System.out.println(
+								"detected: " + node.getPosition().getX() + " / "
+										+ node.getPosition().getY());
+					}
 
 					/* check if the other node is not yet an obstacle */
 					if (!areamap.get(node.getPosition().getX(), 0)

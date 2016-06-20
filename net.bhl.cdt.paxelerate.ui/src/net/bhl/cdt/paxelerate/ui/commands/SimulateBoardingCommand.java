@@ -23,12 +23,7 @@ import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecp.core.ECPProject;
 import org.eclipse.emf.ecp.core.util.ECPUtil;
-import org.eclipse.emf.emfstore.client.ESLocalProject;
-import org.eclipse.emf.emfstore.client.ESWorkspace;
-import org.eclipse.emf.emfstore.client.ESWorkspaceProvider;
-import org.eclipse.emf.emfstore.common.ESSystemOutProgressMonitor;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
@@ -38,7 +33,6 @@ import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Seat;
-import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.agent.Agent.AgentMode;
 import net.bhl.cdt.paxelerate.model.astar.Costmap;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
@@ -104,31 +98,16 @@ public class SimulateBoardingCommand extends CDTCommand {
 			 */
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
-
-				Log.add(this, "Initializing new boarding simulation ...");
-
-				/*
-				 * Display.getDefault().syncExec(new Runnable() {
-				 * 
-				 * @Override public void run() { new
-				 * DrawCabinCommand(cabin).doRun(); } });
-				 */
+				
+				int simulationLoopIndex = 1;
+				Log.add(this, "Initializing new simulation run ...");
 
 				CabinViewPart cabinViewPart = ViewPartHelper.getCabinView();
-				int simulationLoopIndex = 1;
-
-				/*
-				 * simulationloop: for (int simulationLoopIndex = 1;
-				 * simulationLoopIndex <= cabin.getSimulationSettings()
-				 * .getNumberOfSimulationLoops(); simulationLoopIndex++) {
-				 * 
-				 * Log.add(this, "Iteration " + simulationLoopIndex + " of " +
-				 * cabin.getSimulationSettings().getNumberOfSimulationLoops());
-				 */
+				
 
 				new GeneratePassengersCommand(cabin).doRun();
 
-				if (cabin.getSimulationSettings().isRandomSortBetweenLoops()) {
+				if (cabin.getSimulationSettings().isSortPassengerBetweenLoops()) {
 
 					// sorts the passenger according to selected method
 					SortPassengersCommand sort = new SortPassengersCommand(cabin);
@@ -188,7 +167,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 				FileSaver.saveObstacleToFile(SimulationHandler.getMap(), dimensions);
 
 				// Show WIP simulation view
-				runAreaMapWindow();
+				if(!cabin.getSimulationSettings().isSimulateWithoutUI()) {
+					runAreaMapWindow();
+				}				
 
 				// TODO: INSERT PAX LOCATION SUBMIT TO CABINVIEWPART
 				// HERE
@@ -214,7 +195,10 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 									SimulationHandler.setSimulationStatus(true);
 									SimulationHandler.reset();
-									simulationFrame.dispose();
+									
+									if(!cabin.getSimulationSettings().isSimulateWithoutUI()) {
+										simulationFrame.dispose();
+									}									
 
 									Log.add(this, "SIMULATION TERMINATED! Passenger " + sleepyPassenger.getName()
 											+ " did not react.");
@@ -233,7 +217,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 				}
 
 				/* closes the simulation view after completion */
-				simulationFrame.dispose();
+				if(!cabin.getSimulationSettings().isSimulateWithoutUI()) {
+					simulationFrame.dispose();
+				}					
 
 				SimulationResultLogger results = new SimulationResultLogger();
 
@@ -303,12 +289,6 @@ public class SimulateBoardingCommand extends CDTCommand {
 				/* Clear the cache! */
 				cabinViewPart.clearCache();
 				SimulationHandler.reset();
-				//System.gc();
-				
-				ESWorkspace workspace = ESWorkspaceProvider.INSTANCE.getWorkspace();
-				ESLocalProject firstProject = workspace.getLocalProjects().get(0);
-				firstProject.revert();
-				//Cabin cabinModel = (Cabin) firstProject.getModelElements().get(0);
 			
 				// PUBLISH
 				Log.add(this, "Updating GUI...");
@@ -322,7 +302,6 @@ public class SimulateBoardingCommand extends CDTCommand {
 				// report finished
 
 				return Status.OK_STATUS;
-
 			}
 
 		};
@@ -330,9 +309,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 		job.addJobChangeListener(new JobChangeAdapter() {
 			public void done(IJobChangeEvent event) {
 				if (event.getResult().isOK())
-					Log.add(this, "Boarding simulation completed");
+					Log.add(this, "Simulation run completed");
 				else
-					Log.add(this, "Job did not complete successfully");
+					Log.add(this, "Simulation run failed!");
 			}
 		});
 

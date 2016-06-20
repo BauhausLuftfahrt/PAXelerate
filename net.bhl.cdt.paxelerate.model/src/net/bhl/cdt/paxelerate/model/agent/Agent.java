@@ -28,12 +28,13 @@ import net.bhl.cdt.paxelerate.model.astar.Path;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.model.observer.Subject;
 import net.bhl.cdt.paxelerate.model.util.Rotator;
+import net.bhl.cdt.paxelerate.util.math.GaussOptions;
+import net.bhl.cdt.paxelerate.util.math.GaussianRandom;
 import net.bhl.cdt.paxelerate.util.math.MathHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.time.StopWatch;
 
-// TODO: Auto-generated Javadoc
 /**
  * This class is the agent object. It walks a specific calculated path and
  * reacts to obstacles occurring on the go.
@@ -85,7 +86,7 @@ public class Agent extends Subject implements Runnable {
 
 	/** The final costmap. */
 	/* constant values */
-	
+
 	private final Costmap finalCostmap;
 
 	/** The passenger. */
@@ -93,6 +94,9 @@ public class Agent extends Subject implements Runnable {
 
 	/** The scale. */
 	private final int scale;
+
+	/** The developer mode. */
+	private final boolean developerMode;
 
 	/** The mode. */
 	private final AgentMode mode;
@@ -207,9 +211,11 @@ public class Agent extends Subject implements Runnable {
 
 		this.scale = SimulationHandler.getCabin().getSimulationSettings()
 				.getScale();
+
 		this.finalCostmap = costmap;
 		this.thePassengerILetInTheRow = thePassengerILetInTheRow;
 		this.simSettings = SimulationHandler.getCabin().getSimulationSettings();
+		this.developerMode = simSettings.isDeveloperMode();
 		this.foldingSeats = (simSettings
 				.getLayoutConcept() == LayoutConcept.SIDWAYS_FOLDABLE_SEAT
 				|| simSettings
@@ -238,8 +244,6 @@ public class Agent extends Subject implements Runnable {
 	/** The other passengers in row blocking me. */
 	public ArrayList<Passenger> otherPassengersInRowBlockingMe = new ArrayList<Passenger>();
 
-	
-
 	/**
 	 * Gets the other passengers in row blocking me.
 	 *
@@ -252,7 +256,7 @@ public class Agent extends Subject implements Runnable {
 			return null;
 		}
 	}
-	
+
 	public void resetAgent() {
 		thread = null;
 		path = null;
@@ -263,10 +267,10 @@ public class Agent extends Subject implements Runnable {
 		mutableCostMap = null;
 		thePassengerILetInTheRow = null;
 		simSettings = null;
-		
+
 		pathlist.clear();
-		//finalCostmap = null;
-		// passenger = null;		
+		// finalCostmap = null;
+		// passenger = null;
 	}
 
 	/**
@@ -444,7 +448,7 @@ public class Agent extends Subject implements Runnable {
 		return (hasLuggage() && isInRangeSmaller((int) passenger.getPositionY(),
 				yCoordAisleSeat, distanceToAisleSeat));
 	}
-	
+
 	public boolean passengerWaitAtAisleSeat() {
 		int yCoordAisleSeat = 0;
 		int distanceToAisleSeat = 1;
@@ -463,10 +467,9 @@ public class Agent extends Subject implements Runnable {
 			}
 		}
 
-		return isInRangeSmaller((int) passenger.getPositionY(),
-				yCoordAisleSeat, distanceToAisleSeat);
+		return isInRangeSmaller((int) passenger.getPositionY(), yCoordAisleSeat,
+				distanceToAisleSeat);
 	}
-
 
 	/**
 	 * Checks if is in x/y range equal.
@@ -1038,23 +1041,36 @@ public class Agent extends Subject implements Runnable {
 
 	private void waymakingSkipped() {
 
-		System.out.println("waymaking skipped. Delay simulated!");
+		if (developerMode) {
+			System.out.println("waymaking skipped. Delay simulated!");
+		}
+
 		try {
-			if(waitingAtAisleSeat) {
-				Thread.sleep(AStarHelper
-						.time(simSettings.getSeatInterferenceProcessTimeFoldingSeat()));
+			if (waitingAtAisleSeat) {
+				Thread.sleep(AStarHelper.time(GaussianRandom.gaussianRandom(
+						simSettings
+								.getSeatInterferenceProcessTimeFoldingSeatMean(),
+						GaussOptions.PERCENT_95, simSettings
+								.getSeatInterferenceProcessTimeFoldingSeatDeviation())
+
+				));
 				wayMakingFoldableSeatSkipped++;
 			} else {
-				Thread.sleep(AStarHelper
-					.time(simSettings.getSeatInterferenceProcessTime()));
+				Thread.sleep(AStarHelper.time(GaussianRandom.gaussianRandom(
+						simSettings.getSeatInterferenceProcessTimeMean(),
+						GaussOptions.PERCENT_95,
+						simSettings.getSeatInterferenceProcessTimeDeviation())
+
+				));
+
 				wayMakingSkipped++;
 			}
-							
+
 		} catch (InterruptedException e) {
 
 			e.printStackTrace();
 		}
-		
+
 		waitingCompleted = true;
 
 	}
@@ -1083,22 +1099,28 @@ public class Agent extends Subject implements Runnable {
 		/* Sideways foldable seat */
 		if (passenger.getSeat()
 				.getLayoutConcept() == LayoutConcept.SIDWAYS_FOLDABLE_SEAT) {
-			unfoldSeat(simSettings.getSidewaysFoldabeSeatPopupTime());
+			unfoldSeat(GaussianRandom.gaussianRandom(
+					simSettings.getSidewaysFoldabeSeatPopupTimeMean(),
+					GaussOptions.PERCENT_95,
+					simSettings.getSidewaysFoldabeSeatPopupTimeDeviation()));
 
 			/* Lifting seat pan */
 		} else if (passenger.getSeat()
 				.getLayoutConcept() == LayoutConcept.LIFTING_SEAT_PAN_SEATS) {
-			unfoldSeat(simSettings.getLiftingSeatPanPopupTime());
+			unfoldSeat(GaussianRandom.gaussianRandom(
+					simSettings.getLiftingSeatPanPopupTimeMean(),
+					GaussOptions.PERCENT_95,
+					simSettings.getLiftingSeatPanPopupTimeDeviation()));
 		}
 	}
 
 	/**
 	 * Unfold sideways foldable seat or lifting seat pan seat.
 	 *
-	 * @param seatPopupTime
+	 * @param d
 	 *            the seat popup time
 	 */
-	private void unfoldSeat(int seatPopupTime) {
+	private void unfoldSeat(double d) {
 
 		Seat seat = passenger.getSeat();
 		seat.setLayoutConcept(LayoutConcept.DEFAULT);
@@ -1108,8 +1130,10 @@ public class Agent extends Subject implements Runnable {
 		int yPosition = seat.getYPosition() / scale;
 		int xPosition = seat.getXPosition() / scale;
 
-		System.out.println("Passenger " + passenger.getId() + " unfolds Seat "
-				+ seat.getName());
+		if (developerMode) {
+			System.out.println("Passenger " + passenger.getId()
+					+ " unfolds Seat " + seat.getName());
+		}
 
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j < length; j++) {
@@ -1126,7 +1150,7 @@ public class Agent extends Subject implements Runnable {
 
 		/* Pauses the agent for the seat pop up time */
 		try {
-			Thread.sleep(AStarHelper.time(seatPopupTime));
+			Thread.sleep(AStarHelper.time(d));
 		} catch (InterruptedException e) {
 			//
 		}
@@ -1170,8 +1194,11 @@ public class Agent extends Subject implements Runnable {
 	 */
 	public void remove() {
 		if (performFinalElements() == true) {
-			System.out.println(
-					"Passenger " + passenger.getId() + " is now force-seated!");
+			if (developerMode) {
+				System.out.println("Passenger " + passenger.getId()
+						+ " is now force-seated!");
+			}
+
 		} else {
 			System.out.println("Passenger is already seated!");
 		}
@@ -1182,14 +1209,13 @@ public class Agent extends Subject implements Runnable {
 	 *
 	 * @return the number way making skipped
 	 */
-	/*public int getNumberWayMakingSkipped() {
-		return wayMakingSkipped;
-	}*/
-	
+	/*
+	 * public int getNumberWayMakingSkipped() { return wayMakingSkipped; }
+	 */
+
 	public int getNumberWayMakingSkipped() {
 		return wayMakingSkipped;
 	}
-
 
 	/**
 	 * This method is the main path following loop for the agent.
@@ -1314,7 +1340,7 @@ public class Agent extends Subject implements Runnable {
 											passenger.getSeat().getLetter()))) {
 						waitingAtAisleSeat = true;
 						waymakingSkipped();
-						
+
 					} else {
 
 						waymakingSkipped();
@@ -1334,10 +1360,17 @@ public class Agent extends Subject implements Runnable {
 					/* way making procedure is skipped */
 					// if (anyoneNearMe()) {
 					if (!waitingCompleted) {
-						System.out
-								.println("waymaking skipped. Delay simulated!");
-						Thread.sleep(AStarHelper.time(
-								simSettings.getSeatInterferenceProcessTime()));
+						if (developerMode) {
+							System.out.println(
+									"waymaking skipped. Delay simulated!");
+						}
+
+						Thread.sleep(AStarHelper.time(GaussianRandom.gaussianRandom(
+								simSettings.getSeatInterferenceProcessTimeMean(),
+								GaussOptions.PERCENT_95,
+								simSettings.getSeatInterferenceProcessTimeDeviation())
+
+						));
 						wayMakingSkipped++;
 						waitingCompleted = true;
 						// continue;

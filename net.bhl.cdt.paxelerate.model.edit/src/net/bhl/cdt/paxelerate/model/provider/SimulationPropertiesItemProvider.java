@@ -59,26 +59,29 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addResultsPropertyDescriptor(object);
+			addPassengersBoardingPerMinutePropertyDescriptor(object);
+			addLayoutConceptPropertyDescriptor(object);
 			addScalePropertyDescriptor(object);
-			addFramesPerSecondPropertyDescriptor(object);
+			addSimulationSpeedFactorPropertyDescriptor(object);
 			addUsePresetSettingsPropertyDescriptor(object);
 			addSimulateWithoutUIPropertyDescriptor(object);
 			addNumberOfSimulationLoopsPropertyDescriptor(object);
-			addRandomSortBetweenLoopsPropertyDescriptor(object);
-			addResultsPropertyDescriptor(object);
-			addSortingPropertyDescriptor(object);
-			addSimulationSpeedFactorPropertyDescriptor(object);
-			addSeatInterferenceStandingUpPassengerWaitingTimePropertyDescriptor(object);
-			addSeatInterferenceProcessTimePropertyDescriptor(object);
-			addThreadSleepTimeDefaultPropertyDescriptor(object);
 			addDeveloperModePropertyDescriptor(object);
-			addPassengersBoardingPerMinutePropertyDescriptor(object);
 			addDataExportPropertyDescriptor(object);
 			addDisplayMapPropertyDescriptor(object);
-			addSidewaysFoldabeSeatPopupTimePropertyDescriptor(object);
-			addLiftingSeatPanPopupTimePropertyDescriptor(object);
-			addLayoutConceptPropertyDescriptor(object);
-			addSeatInterferenceProcessTimeFoldingSeatPropertyDescriptor(object);
+			addSortPassengerBetweenLoopsPropertyDescriptor(object);
+			addSortingPropertyDescriptor(object);
+			addSeatInterferenceStandingUpPassengerWaitingTimePropertyDescriptor(object);
+			addSeatInterferenceProcessTimeMeanPropertyDescriptor(object);
+			addSeatInterferenceProcessTimeDeviationPropertyDescriptor(object);
+			addSeatInterferenceProcessTimeFoldingSeatMeanPropertyDescriptor(object);
+			addSeatInterferenceProcessTimeFoldingSeatDeviationPropertyDescriptor(object);
+			addThreadSleepTimeDefaultPropertyDescriptor(object);
+			addSidewaysFoldabeSeatPopupTimeMeanPropertyDescriptor(object);
+			addSidewaysFoldabeSeatPopupTimeDeviationPropertyDescriptor(object);
+			addLiftingSeatPanPopupTimeMeanPropertyDescriptor(object);
+			addLiftingSeatPanPopupTimeDeviationPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -97,28 +100,6 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 				 getString("_UI_SimulationProperties_scale_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_scale_feature", "_UI_SimulationProperties_type"),
 				 CabinPackage.Literals.SIMULATION_PROPERTIES__SCALE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Frames Per Second feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addFramesPerSecondPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_framesPerSecond_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_framesPerSecond_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__FRAMES_PER_SECOND,
 				 true,
 				 false,
 				 false,
@@ -189,28 +170,6 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Random Sort Between Loops feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addRandomSortBetweenLoopsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_randomSortBetweenLoops_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_randomSortBetweenLoops_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -298,29 +257,95 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Seat Interference Process Time feature.
+	 * This adds a property descriptor for the Seat Interference Process Time Mean feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addSeatInterferenceProcessTimePropertyDescriptor(Object object) {
+	protected void addSeatInterferenceProcessTimeMeanPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_seatInterferenceProcessTime_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_seatInterferenceProcessTime_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME,
+				 getString("_UI_SimulationProperties_seatInterferenceProcessTimeMean_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_seatInterferenceProcessTimeMean_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Seat Interference Process Time Deviation feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatInterferenceProcessTimeDeviationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_seatInterferenceProcessTimeDeviation_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_seatInterferenceProcessTimeDeviation_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Seat Interference Process Time Folding Seat Mean feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatInterferenceProcessTimeFoldingSeatMeanPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_seatInterferenceProcessTimeFoldingSeatMean_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_seatInterferenceProcessTimeFoldingSeatMean_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Seat Interference Process Time Folding Seat Deviation feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatInterferenceProcessTimeFoldingSeatDeviationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_seatInterferenceProcessTimeFoldingSeatDeviation_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_seatInterferenceProcessTimeFoldingSeatDeviation_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -361,6 +386,28 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 				 getString("_UI_SimulationProperties_developerMode_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_developerMode_feature", "_UI_SimulationProperties_type"),
 				 CabinPackage.Literals.SIMULATION_PROPERTIES__DEVELOPER_MODE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Sort Passenger Between Loops feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSortPassengerBetweenLoopsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_sortPassengerBetweenLoops_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_sortPassengerBetweenLoops_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__SORT_PASSENGER_BETWEEN_LOOPS,
 				 true,
 				 false,
 				 false,
@@ -436,45 +483,89 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	}
 
 	/**
-	 * This adds a property descriptor for the Sideways Foldabe Seat Popup Time feature.
+	 * This adds a property descriptor for the Sideways Foldabe Seat Popup Time Mean feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addSidewaysFoldabeSeatPopupTimePropertyDescriptor(Object object) {
+	protected void addSidewaysFoldabeSeatPopupTimeMeanPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_sidewaysFoldabeSeatPopupTime_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_sidewaysFoldabeSeatPopupTime_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME,
+				 getString("_UI_SimulationProperties_sidewaysFoldabeSeatPopupTimeMean_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_sidewaysFoldabeSeatPopupTimeMean_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_MEAN,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Lifting Seat Pan Popup Time feature.
+	 * This adds a property descriptor for the Sideways Foldabe Seat Popup Time Deviation feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addLiftingSeatPanPopupTimePropertyDescriptor(Object object) {
+	protected void addSidewaysFoldabeSeatPopupTimeDeviationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_liftingSeatPanPopupTime_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_liftingSeatPanPopupTime_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME,
+				 getString("_UI_SimulationProperties_sidewaysFoldabeSeatPopupTimeDeviation_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_sidewaysFoldabeSeatPopupTimeDeviation_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_DEVIATION,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Lifting Seat Pan Popup Time Mean feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLiftingSeatPanPopupTimeMeanPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_liftingSeatPanPopupTimeMean_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_liftingSeatPanPopupTimeMean_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_MEAN,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Lifting Seat Pan Popup Time Deviation feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLiftingSeatPanPopupTimeDeviationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_liftingSeatPanPopupTimeDeviation_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_liftingSeatPanPopupTimeDeviation_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_DEVIATION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -497,28 +588,6 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Seat Interference Process Time Folding Seat feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSeatInterferenceProcessTimeFoldingSeatPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_seatInterferenceProcessTimeFoldingSeat_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_seatInterferenceProcessTimeFoldingSeat_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -595,25 +664,28 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SimulationProperties.class)) {
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
+			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
 			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
-			case CabinPackage.SIMULATION_PROPERTIES__FRAMES_PER_SECOND:
+			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
 			case CabinPackage.SIMULATION_PROPERTIES__USE_PRESET_SETTINGS:
 			case CabinPackage.SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI:
 			case CabinPackage.SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS:
-			case CabinPackage.SIMULATION_PROPERTIES__RANDOM_SORT_BETWEEN_LOOPS:
-			case CabinPackage.SIMULATION_PROPERTIES__SORTING:
-			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME:
-			case CabinPackage.SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT:
 			case CabinPackage.SIMULATION_PROPERTIES__DEVELOPER_MODE:
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 			case CabinPackage.SIMULATION_PROPERTIES__DATA_EXPORT:
 			case CabinPackage.SIMULATION_PROPERTIES__DISPLAY_MAP:
-			case CabinPackage.SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME:
-			case CabinPackage.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME:
-			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT:
+			case CabinPackage.SIMULATION_PROPERTIES__SORT_PASSENGER_BETWEEN_LOOPS:
+			case CabinPackage.SIMULATION_PROPERTIES__SORTING:
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN:
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION:
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN:
+			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION:
+			case CabinPackage.SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT:
+			case CabinPackage.SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_MEAN:
+			case CabinPackage.SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_DEVIATION:
+			case CabinPackage.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_MEAN:
+			case CabinPackage.SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_DEVIATION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_PROPERTIES:

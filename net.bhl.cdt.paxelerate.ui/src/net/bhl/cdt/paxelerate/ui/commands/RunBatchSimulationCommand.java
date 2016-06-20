@@ -35,6 +35,8 @@ public class RunBatchSimulationCommand extends CDTCommand {
 	 *            the cabin object
 	 */
 	public RunBatchSimulationCommand(Cabin cabin) {
+		//this.cabin = EcoreUtil.copy(cabin);
+		//this.simSettings = this.cabin.getSimulationSettings();
 		this.cabin = cabin;
 		this.simSettings = cabin.getSimulationSettings();
 	}
@@ -54,13 +56,17 @@ public class RunBatchSimulationCommand extends CDTCommand {
 			}
 		});
 
-		simSettings.setSimulationSpeedFactor(5);
-		simSettings.setNumberOfSimulationLoops(20);
-		simSettings.getLuggageProperties().setPercentageOfPassengersWithNoLuggage(100);
-		simSettings.getLuggageProperties().setPercentageOfPassengersWithSmallLuggage(0);
-		simSettings.getLuggageProperties().setPercentageOfPassengersWithMediumLuggage(0);
-		simSettings.getLuggageProperties().setPercentageOfPassengersWithBigLuggage(0);
-		simSettings.setLayoutConcept(LayoutConcept.LIFTING_SEAT_PAN_SEATS);
+		// 10 	50	30	10
+		// 10	30	40	20
+		// 0	20	30	50
+
+		simSettings.setSimulationSpeedFactor(2);
+		simSettings.setNumberOfSimulationLoops(30);
+		simSettings.getLuggageProperties().setPercentageOfPassengersWithNoLuggage(10);
+		simSettings.getLuggageProperties().setPercentageOfPassengersWithSmallLuggage(50);
+		simSettings.getLuggageProperties().setPercentageOfPassengersWithMediumLuggage(30);
+		simSettings.getLuggageProperties().setPercentageOfPassengersWithBigLuggage(10);
+		simSettings.setLayoutConcept(LayoutConcept.SIDWAYS_FOLDABLE_SEAT);
 
 		Display.getDefault().syncExec(new Runnable() {
 			@Override
@@ -68,9 +74,10 @@ public class RunBatchSimulationCommand extends CDTCommand {
 				new DrawCabinCommand(cabin).doRun();
 			}
 		});
-
+		// 70 - 126
+		// 90 - 162
 		for (TravelClass travelclass : cabin.getClasses()) {
-			travelclass.setPassengers(108);
+			travelclass.setPassengers(127);
 		}
 
 		for (int simulationLoopIndex = 1; simulationLoopIndex <= cabin.getSimulationSettings()

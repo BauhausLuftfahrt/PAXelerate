@@ -148,10 +148,6 @@ public class ExportDataCommand extends CDTCommand {
 		/** SimulationProperties **/
 		SimulationProperties settings = cabin.getSimulationSettings();
 
-		exporter.addColumnElement("FramesPerSecond");
-		exporter.addColumnElement(settings.getFramesPerSecond());
-		exporter.addNewLine();
-
 		exporter.addColumnElement("Scale");
 		exporter.addColumnElement(settings.getScale());
 		exporter.addNewLine();
@@ -169,8 +165,8 @@ public class ExportDataCommand extends CDTCommand {
 		exporter.addColumnElement(settings.getPassengersBoardingPerMinute());
 		exporter.addNewLine();
 
-		exporter.addColumnElement("SeatInterferenceProcessTime");
-		exporter.addColumnElement(settings.getSeatInterferenceProcessTime());
+		exporter.addColumnElement("SeatInterferenceProcessTimeMean");
+		exporter.addColumnElement(settings.getSeatInterferenceProcessTimeMean());
 		exporter.addNewLine();
 
 		exporter.addColumnElement("SeatInterferenceStandingUpPassengerWaitingTime");

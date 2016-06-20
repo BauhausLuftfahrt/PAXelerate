@@ -1375,18 +1375,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EAttribute getSimulationProperties_Scale() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->.
-	 *
-	 * @return the simulation properties_ frames per second
-	 * @generated 
-	 */
-	public EAttribute getSimulationProperties_FramesPerSecond() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(1);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1397,7 +1386,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EAttribute getSimulationProperties_UsePresetSettings() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(2);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -1408,7 +1397,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EAttribute getSimulationProperties_SimulateWithoutUI() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(3);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -1419,18 +1408,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EAttribute getSimulationProperties_NumberOfSimulationLoops() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->.
-	 *
-	 * @return the simulation properties_ random sort between loops
-	 * @generated 
-	 */
-	public EAttribute getSimulationProperties_RandomSortBetweenLoops() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(5);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -1441,7 +1419,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EReference getSimulationProperties_Results() {
-        return (EReference)getSimulationProperties().getEStructuralFeatures().get(6);
+        return (EReference)getSimulationProperties().getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1452,7 +1430,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EAttribute getSimulationProperties_Sorting() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(7);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(14);
 	}
 
 	/**
@@ -1463,7 +1441,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EAttribute getSimulationProperties_SimulationSpeedFactor() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(8);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -1474,18 +1452,43 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EAttribute getSimulationProperties_SeatInterferenceStandingUpPassengerWaitingTime() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(9);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(15);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->.
-	 *
-	 * @return the simulation properties_ seat interference process time
-	 * @generated 
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
-	public EAttribute getSimulationProperties_SeatInterferenceProcessTime() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(10);
+	public EAttribute getSimulationProperties_SeatInterferenceProcessTimeMean() {
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(16);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_SeatInterferenceProcessTimeDeviation() {
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(17);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_SeatInterferenceProcessTimeFoldingSeatMean() {
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(18);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_SeatInterferenceProcessTimeFoldingSeatDeviation() {
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(19);
 	}
 
 	/**
@@ -1496,7 +1499,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EAttribute getSimulationProperties_ThreadSleepTimeDefault() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(11);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(20);
 	}
 
 	/**
@@ -1507,7 +1510,16 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EAttribute getSimulationProperties_DeveloperMode() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(12);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_SortPassengerBetweenLoops() {
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -1518,7 +1530,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EReference getSimulationProperties_LuggageProperties() {
-        return (EReference)getSimulationProperties().getEStructuralFeatures().get(13);
+        return (EReference)getSimulationProperties().getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1529,7 +1541,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EReference getSimulationProperties_PassengerProperties() {
-        return (EReference)getSimulationProperties().getEStructuralFeatures().get(14);
+        return (EReference)getSimulationProperties().getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1540,7 +1552,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EAttribute getSimulationProperties_PassengersBoardingPerMinute() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(15);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1549,7 +1561,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getSimulationProperties_DataExport() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(16);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -1558,7 +1570,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getSimulationProperties_DisplayMap() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(17);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -1566,8 +1578,8 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_SidewaysFoldabeSeatPopupTime() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(18);
+	public EAttribute getSimulationProperties_SidewaysFoldabeSeatPopupTimeMean() {
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(21);
 	}
 
 	/**
@@ -1575,8 +1587,26 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_LiftingSeatPanPopupTime() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(19);
+	public EAttribute getSimulationProperties_SidewaysFoldabeSeatPopupTimeDeviation() {
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(22);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_LiftingSeatPanPopupTimeMean() {
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(23);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_LiftingSeatPanPopupTimeDeviation() {
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(24);
 	}
 
 	/**
@@ -1585,16 +1615,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getSimulationProperties_LayoutConcept() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(20);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_SeatInterferenceProcessTimeFoldingSeat() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(21);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(4);
 	}
 
 	/**

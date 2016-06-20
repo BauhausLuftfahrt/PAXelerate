@@ -14,28 +14,31 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getScale <em>Scale</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getFramesPerSecond <em>Frames Per Second</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUsePresetSettings <em>Use Preset Settings</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isSimulateWithoutUI <em>Simulate Without UI</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getNumberOfSimulationLoops <em>Number Of Simulation Loops</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isRandomSortBetweenLoops <em>Random Sort Between Loops</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getResults <em>Results</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSorting <em>Sorting</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceStandingUpPassengerWaitingTime <em>Seat Interference Standing Up Passenger Waiting Time</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTime <em>Seat Interference Process Time</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getThreadSleepTimeDefault <em>Thread Sleep Time Default</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDeveloperMode <em>Developer Mode</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageProperties <em>Luggage Properties</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerProperties <em>Passenger Properties</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLayoutConcept <em>Layout Concept</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getScale <em>Scale</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUsePresetSettings <em>Use Preset Settings</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isSimulateWithoutUI <em>Simulate Without UI</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getNumberOfSimulationLoops <em>Number Of Simulation Loops</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDeveloperMode <em>Developer Mode</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDataExport <em>Data Export</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDisplayMap <em>Display Map</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSidewaysFoldabeSeatPopupTime <em>Sideways Foldabe Seat Popup Time</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLiftingSeatPanPopupTime <em>Lifting Seat Pan Popup Time</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLayoutConcept <em>Layout Concept</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeFoldingSeat <em>Seat Interference Process Time Folding Seat</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isSortPassengerBetweenLoops <em>Sort Passenger Between Loops</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSorting <em>Sorting</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceStandingUpPassengerWaitingTime <em>Seat Interference Standing Up Passenger Waiting Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeMean <em>Seat Interference Process Time Mean</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeDeviation <em>Seat Interference Process Time Deviation</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeFoldingSeatMean <em>Seat Interference Process Time Folding Seat Mean</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeFoldingSeatDeviation <em>Seat Interference Process Time Folding Seat Deviation</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getThreadSleepTimeDefault <em>Thread Sleep Time Default</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSidewaysFoldabeSeatPopupTimeMean <em>Sideways Foldabe Seat Popup Time Mean</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSidewaysFoldabeSeatPopupTimeDeviation <em>Sideways Foldabe Seat Popup Time Deviation</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLiftingSeatPanPopupTimeMean <em>Lifting Seat Pan Popup Time Mean</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLiftingSeatPanPopupTimeDeviation <em>Lifting Seat Pan Popup Time Deviation</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties()
@@ -69,33 +72,6 @@ public interface SimulationProperties extends EObject {
 	 * @generated
 	 */
 	void setScale(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Frames Per Second</b></em>' attribute.
-	 * The default value is <code>"5"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Frames Per Second</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Frames Per Second</em>' attribute.
-	 * @see #setFramesPerSecond(int)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_FramesPerSecond()
-	 * @model default="5"
-	 * @generated
-	 */
-	int getFramesPerSecond();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getFramesPerSecond <em>Frames Per Second</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Frames Per Second</em>' attribute.
-	 * @see #getFramesPerSecond()
-	 * @generated
-	 */
-	void setFramesPerSecond(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Use Preset Settings</b></em>' attribute.
@@ -179,33 +155,6 @@ public interface SimulationProperties extends EObject {
 	void setNumberOfSimulationLoops(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Random Sort Between Loops</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Random Sort Between Loops</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Random Sort Between Loops</em>' attribute.
-	 * @see #setRandomSortBetweenLoops(boolean)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_RandomSortBetweenLoops()
-	 * @model default="true"
-	 * @generated
-	 */
-	boolean isRandomSortBetweenLoops();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isRandomSortBetweenLoops <em>Random Sort Between Loops</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Random Sort Between Loops</em>' attribute.
-	 * @see #isRandomSortBetweenLoops()
-	 * @generated
-	 */
-	void setRandomSortBetweenLoops(boolean value);
-
-	/**
 	 * Returns the value of the '<em><b>Results</b></em>' reference list.
 	 * The list contents are of type {@link net.bhl.cdt.paxelerate.model.SimulationResult}.
 	 * <!-- begin-user-doc -->
@@ -287,12 +236,12 @@ public interface SimulationProperties extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Seat Interference Standing Up Passenger Waiting Time</em>' attribute.
-	 * @see #setSeatInterferenceStandingUpPassengerWaitingTime(int)
+	 * @see #setSeatInterferenceStandingUpPassengerWaitingTime(double)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_SeatInterferenceStandingUpPassengerWaitingTime()
 	 * @model default="3"
 	 * @generated
 	 */
-	int getSeatInterferenceStandingUpPassengerWaitingTime();
+	double getSeatInterferenceStandingUpPassengerWaitingTime();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceStandingUpPassengerWaitingTime <em>Seat Interference Standing Up Passenger Waiting Time</em>}' attribute.
@@ -302,34 +251,115 @@ public interface SimulationProperties extends EObject {
 	 * @see #getSeatInterferenceStandingUpPassengerWaitingTime()
 	 * @generated
 	 */
-	void setSeatInterferenceStandingUpPassengerWaitingTime(int value);
+	void setSeatInterferenceStandingUpPassengerWaitingTime(double value);
 
 	/**
-	 * Returns the value of the '<em><b>Seat Interference Process Time</b></em>' attribute.
+	 * Returns the value of the '<em><b>Seat Interference Process Time Mean</b></em>' attribute.
 	 * The default value is <code>"7"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Seat Interference Process Time</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Seat Interference Process Time Mean</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Seat Interference Process Time</em>' attribute.
-	 * @see #setSeatInterferenceProcessTime(int)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_SeatInterferenceProcessTime()
+	 * @return the value of the '<em>Seat Interference Process Time Mean</em>' attribute.
+	 * @see #setSeatInterferenceProcessTimeMean(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_SeatInterferenceProcessTimeMean()
 	 * @model default="7"
 	 * @generated
 	 */
-	int getSeatInterferenceProcessTime();
+	double getSeatInterferenceProcessTimeMean();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTime <em>Seat Interference Process Time</em>}' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeMean <em>Seat Interference Process Time Mean</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Seat Interference Process Time</em>' attribute.
-	 * @see #getSeatInterferenceProcessTime()
+	 * @param value the new value of the '<em>Seat Interference Process Time Mean</em>' attribute.
+	 * @see #getSeatInterferenceProcessTimeMean()
 	 * @generated
 	 */
-	void setSeatInterferenceProcessTime(int value);
+	void setSeatInterferenceProcessTimeMean(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Seat Interference Process Time Deviation</b></em>' attribute.
+	 * The default value is <code>"1.5"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seat Interference Process Time Deviation</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seat Interference Process Time Deviation</em>' attribute.
+	 * @see #setSeatInterferenceProcessTimeDeviation(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_SeatInterferenceProcessTimeDeviation()
+	 * @model default="1.5"
+	 * @generated
+	 */
+	double getSeatInterferenceProcessTimeDeviation();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeDeviation <em>Seat Interference Process Time Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seat Interference Process Time Deviation</em>' attribute.
+	 * @see #getSeatInterferenceProcessTimeDeviation()
+	 * @generated
+	 */
+	void setSeatInterferenceProcessTimeDeviation(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Seat Interference Process Time Folding Seat Mean</b></em>' attribute.
+	 * The default value is <code>"5"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seat Interference Process Time Folding Seat Mean</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seat Interference Process Time Folding Seat Mean</em>' attribute.
+	 * @see #setSeatInterferenceProcessTimeFoldingSeatMean(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_SeatInterferenceProcessTimeFoldingSeatMean()
+	 * @model default="5"
+	 * @generated
+	 */
+	double getSeatInterferenceProcessTimeFoldingSeatMean();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeFoldingSeatMean <em>Seat Interference Process Time Folding Seat Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seat Interference Process Time Folding Seat Mean</em>' attribute.
+	 * @see #getSeatInterferenceProcessTimeFoldingSeatMean()
+	 * @generated
+	 */
+	void setSeatInterferenceProcessTimeFoldingSeatMean(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Seat Interference Process Time Folding Seat Deviation</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seat Interference Process Time Folding Seat Deviation</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seat Interference Process Time Folding Seat Deviation</em>' attribute.
+	 * @see #setSeatInterferenceProcessTimeFoldingSeatDeviation(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_SeatInterferenceProcessTimeFoldingSeatDeviation()
+	 * @model default="1"
+	 * @generated
+	 */
+	double getSeatInterferenceProcessTimeFoldingSeatDeviation();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeFoldingSeatDeviation <em>Seat Interference Process Time Folding Seat Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seat Interference Process Time Folding Seat Deviation</em>' attribute.
+	 * @see #getSeatInterferenceProcessTimeFoldingSeatDeviation()
+	 * @generated
+	 */
+	void setSeatInterferenceProcessTimeFoldingSeatDeviation(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Thread Sleep Time Default</b></em>' attribute.
@@ -360,7 +390,7 @@ public interface SimulationProperties extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Developer Mode</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
+	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Developer Mode</em>' attribute isn't clear,
@@ -370,7 +400,7 @@ public interface SimulationProperties extends EObject {
 	 * @return the value of the '<em>Developer Mode</em>' attribute.
 	 * @see #setDeveloperMode(boolean)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_DeveloperMode()
-	 * @model default="false"
+	 * @model default="true"
 	 * @generated
 	 */
 	boolean isDeveloperMode();
@@ -384,6 +414,33 @@ public interface SimulationProperties extends EObject {
 	 * @generated
 	 */
 	void setDeveloperMode(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Sort Passenger Between Loops</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Sort Passenger Between Loops</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Sort Passenger Between Loops</em>' attribute.
+	 * @see #setSortPassengerBetweenLoops(boolean)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_SortPassengerBetweenLoops()
+	 * @model default="true"
+	 * @generated
+	 */
+	boolean isSortPassengerBetweenLoops();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isSortPassengerBetweenLoops <em>Sort Passenger Between Loops</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Sort Passenger Between Loops</em>' attribute.
+	 * @see #isSortPassengerBetweenLoops()
+	 * @generated
+	 */
+	void setSortPassengerBetweenLoops(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Luggage Properties</b></em>' containment reference.
@@ -519,58 +576,112 @@ public interface SimulationProperties extends EObject {
 	void setDisplayMap(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Sideways Foldabe Seat Popup Time</b></em>' attribute.
+	 * Returns the value of the '<em><b>Sideways Foldabe Seat Popup Time Mean</b></em>' attribute.
 	 * The default value is <code>"5"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Sideways Foldabe Seat Popup Time</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Sideways Foldabe Seat Popup Time Mean</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sideways Foldabe Seat Popup Time</em>' attribute.
-	 * @see #setSidewaysFoldabeSeatPopupTime(int)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_SidewaysFoldabeSeatPopupTime()
+	 * @return the value of the '<em>Sideways Foldabe Seat Popup Time Mean</em>' attribute.
+	 * @see #setSidewaysFoldabeSeatPopupTimeMean(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_SidewaysFoldabeSeatPopupTimeMean()
 	 * @model default="5"
 	 * @generated
 	 */
-	int getSidewaysFoldabeSeatPopupTime();
+	double getSidewaysFoldabeSeatPopupTimeMean();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSidewaysFoldabeSeatPopupTime <em>Sideways Foldabe Seat Popup Time</em>}' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSidewaysFoldabeSeatPopupTimeMean <em>Sideways Foldabe Seat Popup Time Mean</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Sideways Foldabe Seat Popup Time</em>' attribute.
-	 * @see #getSidewaysFoldabeSeatPopupTime()
+	 * @param value the new value of the '<em>Sideways Foldabe Seat Popup Time Mean</em>' attribute.
+	 * @see #getSidewaysFoldabeSeatPopupTimeMean()
 	 * @generated
 	 */
-	void setSidewaysFoldabeSeatPopupTime(int value);
+	void setSidewaysFoldabeSeatPopupTimeMean(double value);
 
 	/**
-	 * Returns the value of the '<em><b>Lifting Seat Pan Popup Time</b></em>' attribute.
-	 * The default value is <code>"2"</code>.
+	 * Returns the value of the '<em><b>Sideways Foldabe Seat Popup Time Deviation</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Lifting Seat Pan Popup Time</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Sideways Foldabe Seat Popup Time Deviation</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Lifting Seat Pan Popup Time</em>' attribute.
-	 * @see #setLiftingSeatPanPopupTime(int)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_LiftingSeatPanPopupTime()
+	 * @return the value of the '<em>Sideways Foldabe Seat Popup Time Deviation</em>' attribute.
+	 * @see #setSidewaysFoldabeSeatPopupTimeDeviation(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_SidewaysFoldabeSeatPopupTimeDeviation()
+	 * @model default="1"
+	 * @generated
+	 */
+	double getSidewaysFoldabeSeatPopupTimeDeviation();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSidewaysFoldabeSeatPopupTimeDeviation <em>Sideways Foldabe Seat Popup Time Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Sideways Foldabe Seat Popup Time Deviation</em>' attribute.
+	 * @see #getSidewaysFoldabeSeatPopupTimeDeviation()
+	 * @generated
+	 */
+	void setSidewaysFoldabeSeatPopupTimeDeviation(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Lifting Seat Pan Popup Time Mean</b></em>' attribute.
+	 * The default value is <code>"2"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Lifting Seat Pan Popup Time Mean</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Lifting Seat Pan Popup Time Mean</em>' attribute.
+	 * @see #setLiftingSeatPanPopupTimeMean(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_LiftingSeatPanPopupTimeMean()
 	 * @model default="2"
 	 * @generated
 	 */
-	int getLiftingSeatPanPopupTime();
+	double getLiftingSeatPanPopupTimeMean();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLiftingSeatPanPopupTime <em>Lifting Seat Pan Popup Time</em>}' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLiftingSeatPanPopupTimeMean <em>Lifting Seat Pan Popup Time Mean</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Lifting Seat Pan Popup Time</em>' attribute.
-	 * @see #getLiftingSeatPanPopupTime()
+	 * @param value the new value of the '<em>Lifting Seat Pan Popup Time Mean</em>' attribute.
+	 * @see #getLiftingSeatPanPopupTimeMean()
 	 * @generated
 	 */
-	void setLiftingSeatPanPopupTime(int value);
+	void setLiftingSeatPanPopupTimeMean(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Lifting Seat Pan Popup Time Deviation</b></em>' attribute.
+	 * The default value is <code>"0.5"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Lifting Seat Pan Popup Time Deviation</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Lifting Seat Pan Popup Time Deviation</em>' attribute.
+	 * @see #setLiftingSeatPanPopupTimeDeviation(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_LiftingSeatPanPopupTimeDeviation()
+	 * @model default="0.5"
+	 * @generated
+	 */
+	double getLiftingSeatPanPopupTimeDeviation();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLiftingSeatPanPopupTimeDeviation <em>Lifting Seat Pan Popup Time Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Lifting Seat Pan Popup Time Deviation</em>' attribute.
+	 * @see #getLiftingSeatPanPopupTimeDeviation()
+	 * @generated
+	 */
+	void setLiftingSeatPanPopupTimeDeviation(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Layout Concept</b></em>' attribute.
@@ -601,32 +712,5 @@ public interface SimulationProperties extends EObject {
 	 * @generated
 	 */
 	void setLayoutConcept(LayoutConcept value);
-
-	/**
-	 * Returns the value of the '<em><b>Seat Interference Process Time Folding Seat</b></em>' attribute.
-	 * The default value is <code>"5"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Seat Interference Process Time Folding Seat</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Seat Interference Process Time Folding Seat</em>' attribute.
-	 * @see #setSeatInterferenceProcessTimeFoldingSeat(int)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_SeatInterferenceProcessTimeFoldingSeat()
-	 * @model default="5"
-	 * @generated
-	 */
-	int getSeatInterferenceProcessTimeFoldingSeat();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeFoldingSeat <em>Seat Interference Process Time Folding Seat</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Seat Interference Process Time Folding Seat</em>' attribute.
-	 * @see #getSeatInterferenceProcessTimeFoldingSeat()
-	 * @generated
-	 */
-	void setSeatInterferenceProcessTimeFoldingSeat(int value);
 
 } // SimulationProperties

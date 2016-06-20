@@ -145,6 +145,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Passenger/numberOfMakeWayOperations"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Passenger/luggage"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Passenger/distanceWalked"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Passenger/costOfPath"/>
     </genClasses>
     <genClasses ecoreClass="cabin.ecore#//CrewMember">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//CrewMember/id"/>
@@ -183,28 +184,31 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Door/doorOption"/>
     </genClasses>
     <genClasses ecoreClass="cabin.ecore#//SimulationProperties">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/scale"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/framesPerSecond"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/usePresetSettings"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/simulateWithoutUI"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/numberOfSimulationLoops"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/randomSortBetweenLoops"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cabin.ecore#//SimulationProperties/results"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/sorting"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/simulationSpeedFactor"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/seatInterferenceStandingUpPassengerWaitingTime"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/seatInterferenceProcessTime"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/threadSleepTimeDefault"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/developerMode"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//SimulationProperties/luggageProperties"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//SimulationProperties/passengerProperties"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/passengersBoardingPerMinute"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/layoutConcept"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/scale"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/simulationSpeedFactor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/usePresetSettings"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/simulateWithoutUI"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/numberOfSimulationLoops"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/developerMode"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/dataExport"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/displayMap"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/sidewaysFoldabeSeatPopupTime"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/liftingSeatPanPopupTime"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/layoutConcept"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/seatInterferenceProcessTimeFoldingSeat"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/sortPassengerBetweenLoops"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/sorting"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/seatInterferenceStandingUpPassengerWaitingTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/seatInterferenceProcessTimeMean"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/seatInterferenceProcessTimeDeviation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/seatInterferenceProcessTimeFoldingSeatMean"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/seatInterferenceProcessTimeFoldingSeatDeviation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/threadSleepTimeDefault"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/sidewaysFoldabeSeatPopupTimeMean"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/sidewaysFoldabeSeatPopupTimeDeviation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/liftingSeatPanPopupTimeMean"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/liftingSeatPanPopupTimeDeviation"/>
     </genClasses>
     <genClasses ecoreClass="cabin.ecore#//LuggageProperties">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//LuggageProperties/luggageStowDistanceFromSeatMean"/>
