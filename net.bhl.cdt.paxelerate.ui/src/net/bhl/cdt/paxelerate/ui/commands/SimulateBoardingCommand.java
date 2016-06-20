@@ -23,12 +23,10 @@ import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecp.core.ECPProject;
 import org.eclipse.emf.ecp.core.util.ECPUtil;
 import org.eclipse.emf.emfstore.client.ESLocalProject;
 import org.eclipse.emf.emfstore.client.ESWorkspace;
 import org.eclipse.emf.emfstore.client.ESWorkspaceProvider;
-import org.eclipse.emf.emfstore.common.ESSystemOutProgressMonitor;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
@@ -38,7 +36,6 @@ import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Seat;
-import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.agent.Agent.AgentMode;
 import net.bhl.cdt.paxelerate.model.astar.Costmap;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
@@ -68,6 +65,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 	/** The simulation frame. */
 	private JFrame simulationFrame;
 
+	/** The job rule. */
 	final JobScheduleRule jobRule = new JobScheduleRule();
 
 	/**
@@ -80,6 +78,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 		this.cabin = cabin;
 	}
 	
+	/**
+	 * Instantiates a new simulate boarding command.
+	 */
 	public SimulateBoardingCommand() {
 		if (ECPUtil.getECPProjectManager().getProjects() != null) {
 			Cabin cabinModel = (Cabin) ECPUtil.getECPProjectManager().getProject("reference").getContents().get(0);

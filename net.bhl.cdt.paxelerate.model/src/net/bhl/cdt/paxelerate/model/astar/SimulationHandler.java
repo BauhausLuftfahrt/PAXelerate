@@ -29,7 +29,7 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.ProgressHandler;
 /**
  * This class runs and handles the a star algorithm an simulation.
  * 
- * @author marc.engelmann
+ * @author marc.engelmann, michael.schmidt
  *
  */
 public class SimulationHandler {
@@ -39,8 +39,6 @@ public class SimulationHandler {
 
 	/** The simulation done. */
 	private static Boolean simulationDone = false;
-	
-	private static OS osType;
 
 	/** The areamap handler. */
 	private static AreamapHandler areamaphandler;
@@ -67,10 +65,17 @@ public class SimulationHandler {
 	/** The dimensions. */
 	private Vector dimensions;
 
+	/** The scale. */
 	private static int scale = 1;
 
+	/** The simulation loop index. */
 	private static int simulationLoopIndex;
 
+	/**
+	 * Gets the simulation loop index.
+	 *
+	 * @return the simulation loop index
+	 */
 	public static int getSimulationLoopIndex() {
 		return simulationLoopIndex;
 	}
@@ -81,6 +86,7 @@ public class SimulationHandler {
 	/** The progress. */
 	private static ProgressHandler progress;
 
+	/** The costmaps. */
 	private static Map<Integer, Costmap> costmaps = new HashMap<>();
 
 	/** The progress value. */
@@ -205,6 +211,11 @@ public class SimulationHandler {
 		return simulationDone;
 	}
 
+	/**
+	 * Sets the simulation status.
+	 *
+	 * @param status the new simulation status
+	 */
 	public static void setSimulationStatus(boolean status) {
 		simulationDone = status;
 	}
@@ -224,7 +235,7 @@ public class SimulationHandler {
 	public static synchronized void reset() {
 
 		stopSimulation();
-		
+
 		cabin = null;
 		areamaphandler = null;
 		simulationDone = false;
@@ -366,6 +377,11 @@ public class SimulationHandler {
 		}
 	}
 
+	/**
+	 * Gets the master boarding time.
+	 *
+	 * @return the master boarding time
+	 */
 	public static StopWatch getMasterBoardingTime() {
 		return master_boarding_time;
 	}
@@ -449,7 +465,8 @@ public class SimulationHandler {
 							progress.updateText(
 									"Initializing Path finding algorithms ...");
 						} else if (percent < 30) {
-							progress.updateText("Creating the agent objects ...");
+							progress.updateText(
+									"Creating the agent objects ...");
 						} else if (percent < 90) {
 							progress.updateText(
 									"Calculating the paths for every passenger ...");
@@ -461,9 +478,11 @@ public class SimulationHandler {
 				}
 			});
 		} else if (OS.isMac()) {
-			//TODO: implement eclipse progress bar
+			// TODO: implement eclipse progress bar
+			Log.add(this, "Initializing Path finding algorithms ...");
+			Log.add(this, "Creating the agent objects ...");
+			Log.add(this, "Calculating the paths for every passenger ...");
 		}
-		
 
 		/* First generate all paths ... */
 		for (Agent agent : agentList) {
@@ -497,10 +516,10 @@ public class SimulationHandler {
 	 */
 	public static void stopSimulation() {
 		for (Agent agent : agentList) {
-			//agent.resetAgent();
+			// agent.resetAgent();
 			if (agent.getThread().isInterrupted())
-			agent.getThread().interrupt();
-			//agent = null;
+				agent.getThread().interrupt();
+			// agent = null;
 		}
 	}
 
@@ -513,10 +532,20 @@ public class SimulationHandler {
 		return areamaphandler;
 	}
 
+	/**
+	 * Gets the used costmaps.
+	 *
+	 * @return the used costmaps
+	 */
 	public static Map<Integer, Costmap> getUsedCostmaps() {
 		return costmaps;
 	}
 
+	/**
+	 * Gets the number waymaking skipped.
+	 *
+	 * @return the number waymaking skipped
+	 */
 	public static int getNumberWaymakingSkipped() {
 		int numberSkipped = 0;
 		for (Agent agent : agentList) {
@@ -525,6 +554,11 @@ public class SimulationHandler {
 		return numberSkipped;
 	}
 
+	/**
+	 * Gets the number waymaking completed.
+	 *
+	 * @return the number waymaking completed
+	 */
 	public static int getNumberWaymakingCompleted() {
 		int numberCompleted = 0;
 		for (Passenger pax : finishedList) {
@@ -532,14 +566,6 @@ public class SimulationHandler {
 					+ pax.getNumberOfMakeWayOperations();
 		}
 		return numberCompleted;
-	}
-	
-	public static int getNumberWaymakingFoldableSeatSkipped() {
-		int numberSkipped = 0;
-		for (Agent agent : agentList) {
-			numberSkipped = numberSkipped + agent.getNumberWayMakingSkipped();
-		}
-		return numberSkipped;
 	}
 
 }
