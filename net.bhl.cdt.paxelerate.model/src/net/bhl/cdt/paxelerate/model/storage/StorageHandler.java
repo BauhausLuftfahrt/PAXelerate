@@ -6,7 +6,6 @@
 package net.bhl.cdt.paxelerate.model.storage;
 
 import net.bhl.cdt.paxelerate.model.Passenger;
-import net.bhl.cdt.paxelerate.model.PassengerMood;
 import net.bhl.cdt.paxelerate.model.Sex;
 
 /**

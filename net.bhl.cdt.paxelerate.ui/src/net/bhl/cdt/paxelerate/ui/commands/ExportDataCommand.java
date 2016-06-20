@@ -5,9 +5,7 @@
  ******************************************************************************/
 package net.bhl.cdt.paxelerate.ui.commands;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
@@ -15,7 +13,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.jface.dialogs.IMessageProvider;
 
 import net.bhl.cdt.paxelerate.model.Passenger;
-import net.bhl.cdt.paxelerate.model.PassengerProperties;
 import net.bhl.cdt.paxelerate.model.Sex;
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.paxelerate.model.Cabin;
@@ -24,10 +21,7 @@ import net.bhl.cdt.paxelerate.model.LuggageProperties;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
 import net.bhl.cdt.paxelerate.model.SimulationResult;
 import net.bhl.cdt.paxelerate.model.TravelClass;
-import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
-import net.bhl.cdt.paxelerate.model.storage.AgeStorage;
 import net.bhl.cdt.paxelerate.model.storage.GaussianStorage;
-import net.bhl.cdt.paxelerate.model.storage.LuggageStorage;
 import net.bhl.cdt.paxelerate.model.storage.StorageHandler;
 import net.bhl.cdt.paxelerate.util.exchange.ExcelExport;
 import net.bhl.cdt.paxelerate.util.input.Input;

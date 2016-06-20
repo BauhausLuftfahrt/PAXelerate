@@ -61,6 +61,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 	/** The simulation frame. */
 	private JFrame simulationFrame;
+	
+	private boolean developerMode;
 
 	final JobScheduleRule jobRule = new JobScheduleRule();
 
@@ -72,6 +74,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 	 */
 	public SimulateBoardingCommand(Cabin cabin) {
 		this.cabin = cabin;
+		this.developerMode = cabin.getSimulationSettings().isDeveloperMode();
 	}
 	
 	public SimulateBoardingCommand() {
@@ -202,6 +205,13 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 									Log.add(this, "SIMULATION TERMINATED! Passenger " + sleepyPassenger.getName()
 											+ " did not react.");
+									
+									/* records the failed simulation run */
+									if(developerMode) {
+										SimulationResultLogger results = new SimulationResultLogger();
+									results.getSimulationData(cabin, simulationLoopIndex, 0, 0, 0);
+									}
+									
 
 									return Status.CANCEL_STATUS;
 								}
@@ -328,7 +338,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				simulationFrame = new JFrame("Simulation Detail View");
+				simulationFrame = new JFrame("Simulation View");
 				SimulationView simulationView = new SimulationView();
 				simulationView.setAreamap(SimulationHandler.getMap());
 				simulationFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

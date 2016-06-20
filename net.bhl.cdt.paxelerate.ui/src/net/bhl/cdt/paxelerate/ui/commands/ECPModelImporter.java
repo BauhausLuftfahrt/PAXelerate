@@ -15,7 +15,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.ecp.core.ECPProject;
 import org.eclipse.emf.ecp.core.ECPProvider;
@@ -23,13 +22,9 @@ import org.eclipse.emf.ecp.core.exceptions.ECPProjectWithNameExistsException;
 import org.eclipse.emf.ecp.core.util.ECPUtil;
 import org.eclipse.emf.edit.command.ChangeCommand;
 
-import org.eclipse.swt.widgets.Display;
-
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.paxelerate.model.Cabin;
-import net.bhl.cdt.paxelerate.model.LayoutConcept;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
-import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**

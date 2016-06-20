@@ -5,8 +5,6 @@
  ******************************************************************************/
 package net.bhl.cdt.paxelerate.util.input;
 
-import java.util.Objects;
-
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Point;

@@ -60,7 +60,7 @@ public class RunBatchSimulationCommand extends CDTCommand {
 		// 10	30	40	20
 		// 0	20	30	50
 
-		simSettings.setSimulationSpeedFactor(2);
+		simSettings.setSimulationSpeedFactor(10);
 		simSettings.setNumberOfSimulationLoops(30);
 		simSettings.getLuggageProperties().setPercentageOfPassengersWithNoLuggage(10);
 		simSettings.getLuggageProperties().setPercentageOfPassengersWithSmallLuggage(50);
