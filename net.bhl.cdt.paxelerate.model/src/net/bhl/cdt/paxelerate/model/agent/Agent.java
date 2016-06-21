@@ -65,6 +65,8 @@ public class Agent extends Subject implements Runnable {
 	/** The way making skipped. */
 	private int wayMakingSkipped = 0;
 	private int wayMakingFoldableSeatSkipped = 0;
+	
+	private long totalWaitingTime = 0;
 
 	/** The moved once. */
 	private boolean alreadyStowed = false, waitingCompleted = false,
@@ -97,6 +99,9 @@ public class Agent extends Subject implements Runnable {
 
 	/** The developer mode. */
 	private final boolean developerMode;
+
+	/**  */
+	private final double waitingTimeAfterCollision;
 
 	/** The mode. */
 	private final AgentMode mode;
@@ -171,6 +176,10 @@ public class Agent extends Subject implements Runnable {
 		return lastMoveTime;
 	}
 
+	public double getWaitingTimeAfterCollision() {
+		return waitingTimeAfterCollision;
+	}
+
 	/**
 	 * Gets the cost map.
 	 *
@@ -221,6 +230,8 @@ public class Agent extends Subject implements Runnable {
 				|| simSettings
 						.getLayoutConcept() == LayoutConcept.LIFTING_SEAT_PAN_SEATS);
 		this.aisleSeat = "CD".contains(passenger.getSeat().getLetter());
+		this.waitingTimeAfterCollision = simSettings.getPassengerProperties()
+				.getPassivePassengerWaitingTimeAfterCollision();
 
 		/* generate a mood for the passenger depending on his presets */
 		if (passenger.getPassengerMood() == PassengerMood.AGGRESSIVE) {
@@ -391,6 +402,10 @@ public class Agent extends Subject implements Runnable {
 	 */
 	public boolean didMoveOnce() {
 		return movedOnce;
+	}
+	
+	private void increaseTotalWaitingTime(long time){
+		totalWaitingTime = totalWaitingTime + time;
 	}
 
 	/**
@@ -1013,7 +1028,7 @@ public class Agent extends Subject implements Runnable {
 
 			/* the number of interrupts is submitted to the passenger */
 			passenger.setNumberOfWaits(numbOfInterupts);
-
+			passenger.setTotalTimeWaited(totalWaitingTime);
 			SimulationHandler.getMap().get(getGoal())
 					.setProperty(Property.DEFAULT, getPassenger());
 
@@ -1032,24 +1047,27 @@ public class Agent extends Subject implements Runnable {
 			System.out.println("waymaking skipped. Delay simulated!");
 		}
 
+		long sleepTime = 0;
 		try {
 			if (waitingAtAisleSeat) {
-				Thread.sleep(AStarHelper.time(GaussianRandom.gaussianRandom(
-						simSettings
-								.getSeatInterferenceProcessTimeFoldingSeatMean(),
-						GaussOptions.PERCENT_95, simSettings
-								.getSeatInterferenceProcessTimeFoldingSeatDeviation())
-
-				));
+				sleepTime = AStarHelper.time(GaussianRandom.gaussianRandom(
+						simSettings.getPassengerProperties()
+						.getSeatInterferenceProcessTimeFoldingSeatMean(),
+				GaussOptions.PERCENT_95,
+				simSettings.getPassengerProperties()
+						.getSeatInterferenceProcessTimeFoldingSeatDeviation()));
+				Thread.sleep(sleepTime);
+				increaseTotalWaitingTime(sleepTime);
 				wayMakingFoldableSeatSkipped++;
 			} else {
-				Thread.sleep(AStarHelper.time(GaussianRandom.gaussianRandom(
-						simSettings.getSeatInterferenceProcessTimeMean(),
-						GaussOptions.PERCENT_95,
-						simSettings.getSeatInterferenceProcessTimeDeviation())
-
-				));
-
+				sleepTime = AStarHelper.time(GaussianRandom.gaussianRandom(
+						simSettings.getPassengerProperties()
+						.getSeatInterferenceProcessTimeMean(),
+				GaussOptions.PERCENT_95,
+				simSettings.getPassengerProperties()
+						.getSeatInterferenceProcessTimeDeviation()));
+				Thread.sleep(sleepTime);
+				increaseTotalWaitingTime(sleepTime);
 				wayMakingSkipped++;
 			}
 
@@ -1068,8 +1086,10 @@ public class Agent extends Subject implements Runnable {
 		rotateAgent(90);
 
 		/* sleep the thread as long as the luggage is stowed */
+		long sleepTime = AStarHelper.time(passenger.getLuggageStowTime());
 		try {
-			Thread.sleep(AStarHelper.time(passenger.getLuggageStowTime()));
+			Thread.sleep(sleepTime);
+			increaseTotalWaitingTime(sleepTime);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -1137,6 +1157,7 @@ public class Agent extends Subject implements Runnable {
 
 		/* Pauses the agent for the seat pop up time */
 		try {
+			increaseTotalWaitingTime(AStarHelper.time(d));
 			Thread.sleep(AStarHelper.time(d));
 		} catch (InterruptedException e) {
 			//
@@ -1258,6 +1279,8 @@ public class Agent extends Subject implements Runnable {
 
 					/* Perform the correct behavior */
 					collision.handle();
+					
+					//
 
 					/*
 					 * the main loop is quit, if there is a new path calculated
@@ -1319,6 +1342,7 @@ public class Agent extends Subject implements Runnable {
 					setCurrentState(State.WAITING_FOR_ROW_CLEARING);
 
 					while (waymakingAllowed() == false) {
+						increaseTotalWaitingTime(simSettings.getThreadSleepTimeDefault());
 						Thread.sleep(simSettings.getThreadSleepTimeDefault());
 					}
 
@@ -1345,6 +1369,7 @@ public class Agent extends Subject implements Runnable {
 					// already in the row!
 
 					while (waymakingAllowed() == false) {
+						increaseTotalWaitingTime(simSettings.getThreadSleepTimeDefault());
 						Thread.sleep(simSettings.getThreadSleepTimeDefault());
 					}
 
@@ -1356,14 +1381,14 @@ public class Agent extends Subject implements Runnable {
 									"waymaking skipped. Delay simulated!");
 						}
 
-						Thread.sleep(
-								AStarHelper.time(GaussianRandom.gaussianRandom(
-										simSettings
-												.getSeatInterferenceProcessTimeMean(),
-										GaussOptions.PERCENT_95, simSettings
-												.getSeatInterferenceProcessTimeDeviation())
-
-								));
+						long sleepTime = AStarHelper.time(GaussianRandom.gaussianRandom(
+								simSettings.getPassengerProperties()
+								.getSeatInterferenceProcessTimeMean(),
+						GaussOptions.PERCENT_95,
+						simSettings.getPassengerProperties()
+								.getSeatInterferenceProcessTimeDeviation()));
+						increaseTotalWaitingTime(sleepTime);
+						Thread.sleep(sleepTime);
 						wayMakingSkipped++;
 						waitingCompleted = true;
 						// continue;

@@ -38,6 +38,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getPassengerDepthMeanFemale <em>Passenger Depth Mean Female</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getPassengerDepthDeviationFemale <em>Passenger Depth Deviation Female</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getPassengerAggressiveMoodShare <em>Passenger Aggressive Mood Share</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getSeatInterferenceStandingUpPassengerWaitingTime <em>Seat Interference Standing Up Passenger Waiting Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getSeatInterferenceProcessTimeMean <em>Seat Interference Process Time Mean</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getSeatInterferenceProcessTimeDeviation <em>Seat Interference Process Time Deviation</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getSeatInterferenceProcessTimeFoldingSeatMean <em>Seat Interference Process Time Folding Seat Mean</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getSeatInterferenceProcessTimeFoldingSeatDeviation <em>Seat Interference Process Time Folding Seat Deviation</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getPassivePassengerWaitingTimeAfterCollision <em>Passive Passenger Waiting Time After Collision</em>}</li>
  * </ul>
  *
  * @generated
@@ -402,6 +408,126 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 	 * @ordered
 	 */
 	protected int passengerAggressiveMoodShare = PASSENGER_AGGRESSIVE_MOOD_SHARE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSeatInterferenceStandingUpPassengerWaitingTime() <em>Seat Interference Standing Up Passenger Waiting Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceStandingUpPassengerWaitingTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME_EDEFAULT = 3.0;
+
+	/**
+	 * The cached value of the '{@link #getSeatInterferenceStandingUpPassengerWaitingTime() <em>Seat Interference Standing Up Passenger Waiting Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceStandingUpPassengerWaitingTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected double seatInterferenceStandingUpPassengerWaitingTime = SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSeatInterferenceProcessTimeMean() <em>Seat Interference Process Time Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTimeMean()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double SEAT_INTERFERENCE_PROCESS_TIME_MEAN_EDEFAULT = 7.0;
+
+	/**
+	 * The cached value of the '{@link #getSeatInterferenceProcessTimeMean() <em>Seat Interference Process Time Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTimeMean()
+	 * @generated
+	 * @ordered
+	 */
+	protected double seatInterferenceProcessTimeMean = SEAT_INTERFERENCE_PROCESS_TIME_MEAN_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSeatInterferenceProcessTimeDeviation() <em>Seat Interference Process Time Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTimeDeviation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION_EDEFAULT = 1.5;
+
+	/**
+	 * The cached value of the '{@link #getSeatInterferenceProcessTimeDeviation() <em>Seat Interference Process Time Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTimeDeviation()
+	 * @generated
+	 * @ordered
+	 */
+	protected double seatInterferenceProcessTimeDeviation = SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSeatInterferenceProcessTimeFoldingSeatMean() <em>Seat Interference Process Time Folding Seat Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTimeFoldingSeatMean()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN_EDEFAULT = 5.0;
+
+	/**
+	 * The cached value of the '{@link #getSeatInterferenceProcessTimeFoldingSeatMean() <em>Seat Interference Process Time Folding Seat Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTimeFoldingSeatMean()
+	 * @generated
+	 * @ordered
+	 */
+	protected double seatInterferenceProcessTimeFoldingSeatMean = SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSeatInterferenceProcessTimeFoldingSeatDeviation() <em>Seat Interference Process Time Folding Seat Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTimeFoldingSeatDeviation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION_EDEFAULT = 1.0;
+
+	/**
+	 * The cached value of the '{@link #getSeatInterferenceProcessTimeFoldingSeatDeviation() <em>Seat Interference Process Time Folding Seat Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTimeFoldingSeatDeviation()
+	 * @generated
+	 * @ordered
+	 */
+	protected double seatInterferenceProcessTimeFoldingSeatDeviation = SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPassivePassengerWaitingTimeAfterCollision() <em>Passive Passenger Waiting Time After Collision</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassivePassengerWaitingTimeAfterCollision()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION_EDEFAULT = 0.3;
+
+	/**
+	 * The cached value of the '{@link #getPassivePassengerWaitingTimeAfterCollision() <em>Passive Passenger Waiting Time After Collision</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassivePassengerWaitingTimeAfterCollision()
+	 * @generated
+	 * @ordered
+	 */
+	protected double passivePassengerWaitingTimeAfterCollision = PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -873,6 +999,132 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getSeatInterferenceStandingUpPassengerWaitingTime() {
+		return seatInterferenceStandingUpPassengerWaitingTime;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatInterferenceStandingUpPassengerWaitingTime(double newSeatInterferenceStandingUpPassengerWaitingTime) {
+		double oldSeatInterferenceStandingUpPassengerWaitingTime = seatInterferenceStandingUpPassengerWaitingTime;
+		seatInterferenceStandingUpPassengerWaitingTime = newSeatInterferenceStandingUpPassengerWaitingTime;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME, oldSeatInterferenceStandingUpPassengerWaitingTime, seatInterferenceStandingUpPassengerWaitingTime));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getSeatInterferenceProcessTimeMean() {
+		return seatInterferenceProcessTimeMean;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatInterferenceProcessTimeMean(double newSeatInterferenceProcessTimeMean) {
+		double oldSeatInterferenceProcessTimeMean = seatInterferenceProcessTimeMean;
+		seatInterferenceProcessTimeMean = newSeatInterferenceProcessTimeMean;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN, oldSeatInterferenceProcessTimeMean, seatInterferenceProcessTimeMean));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getSeatInterferenceProcessTimeDeviation() {
+		return seatInterferenceProcessTimeDeviation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatInterferenceProcessTimeDeviation(double newSeatInterferenceProcessTimeDeviation) {
+		double oldSeatInterferenceProcessTimeDeviation = seatInterferenceProcessTimeDeviation;
+		seatInterferenceProcessTimeDeviation = newSeatInterferenceProcessTimeDeviation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION, oldSeatInterferenceProcessTimeDeviation, seatInterferenceProcessTimeDeviation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getSeatInterferenceProcessTimeFoldingSeatMean() {
+		return seatInterferenceProcessTimeFoldingSeatMean;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatInterferenceProcessTimeFoldingSeatMean(double newSeatInterferenceProcessTimeFoldingSeatMean) {
+		double oldSeatInterferenceProcessTimeFoldingSeatMean = seatInterferenceProcessTimeFoldingSeatMean;
+		seatInterferenceProcessTimeFoldingSeatMean = newSeatInterferenceProcessTimeFoldingSeatMean;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN, oldSeatInterferenceProcessTimeFoldingSeatMean, seatInterferenceProcessTimeFoldingSeatMean));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getSeatInterferenceProcessTimeFoldingSeatDeviation() {
+		return seatInterferenceProcessTimeFoldingSeatDeviation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatInterferenceProcessTimeFoldingSeatDeviation(double newSeatInterferenceProcessTimeFoldingSeatDeviation) {
+		double oldSeatInterferenceProcessTimeFoldingSeatDeviation = seatInterferenceProcessTimeFoldingSeatDeviation;
+		seatInterferenceProcessTimeFoldingSeatDeviation = newSeatInterferenceProcessTimeFoldingSeatDeviation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION, oldSeatInterferenceProcessTimeFoldingSeatDeviation, seatInterferenceProcessTimeFoldingSeatDeviation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getPassivePassengerWaitingTimeAfterCollision() {
+		return passivePassengerWaitingTimeAfterCollision;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPassivePassengerWaitingTimeAfterCollision(double newPassivePassengerWaitingTimeAfterCollision) {
+		double oldPassivePassengerWaitingTimeAfterCollision = passivePassengerWaitingTimeAfterCollision;
+		passivePassengerWaitingTimeAfterCollision = newPassivePassengerWaitingTimeAfterCollision;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER_PROPERTIES__PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION, oldPassivePassengerWaitingTimeAfterCollision, passivePassengerWaitingTimeAfterCollision));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->.
 	 *
 	 * @param featureID the feature id
@@ -920,6 +1172,18 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 				return getPassengerDepthDeviationFemale();
 			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_AGGRESSIVE_MOOD_SHARE:
 				return getPassengerAggressiveMoodShare();
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
+				return getSeatInterferenceStandingUpPassengerWaitingTime();
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN:
+				return getSeatInterferenceProcessTimeMean();
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION:
+				return getSeatInterferenceProcessTimeDeviation();
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN:
+				return getSeatInterferenceProcessTimeFoldingSeatMean();
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION:
+				return getSeatInterferenceProcessTimeFoldingSeatDeviation();
+			case CabinPackage.PASSENGER_PROPERTIES__PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION:
+				return getPassivePassengerWaitingTimeAfterCollision();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -989,6 +1253,24 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_AGGRESSIVE_MOOD_SHARE:
 				setPassengerAggressiveMoodShare((Integer)newValue);
 				return;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
+				setSeatInterferenceStandingUpPassengerWaitingTime((Double)newValue);
+				return;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN:
+				setSeatInterferenceProcessTimeMean((Double)newValue);
+				return;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION:
+				setSeatInterferenceProcessTimeDeviation((Double)newValue);
+				return;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN:
+				setSeatInterferenceProcessTimeFoldingSeatMean((Double)newValue);
+				return;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION:
+				setSeatInterferenceProcessTimeFoldingSeatDeviation((Double)newValue);
+				return;
+			case CabinPackage.PASSENGER_PROPERTIES__PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION:
+				setPassivePassengerWaitingTimeAfterCollision((Double)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1057,6 +1339,24 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_AGGRESSIVE_MOOD_SHARE:
 				setPassengerAggressiveMoodShare(PASSENGER_AGGRESSIVE_MOOD_SHARE_EDEFAULT);
 				return;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
+				setSeatInterferenceStandingUpPassengerWaitingTime(SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME_EDEFAULT);
+				return;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN:
+				setSeatInterferenceProcessTimeMean(SEAT_INTERFERENCE_PROCESS_TIME_MEAN_EDEFAULT);
+				return;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION:
+				setSeatInterferenceProcessTimeDeviation(SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION_EDEFAULT);
+				return;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN:
+				setSeatInterferenceProcessTimeFoldingSeatMean(SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN_EDEFAULT);
+				return;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION:
+				setSeatInterferenceProcessTimeFoldingSeatDeviation(SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION_EDEFAULT);
+				return;
+			case CabinPackage.PASSENGER_PROPERTIES__PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION:
+				setPassivePassengerWaitingTimeAfterCollision(PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1108,6 +1408,18 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 				return passengerDepthDeviationFemale != PASSENGER_DEPTH_DEVIATION_FEMALE_EDEFAULT;
 			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_AGGRESSIVE_MOOD_SHARE:
 				return passengerAggressiveMoodShare != PASSENGER_AGGRESSIVE_MOOD_SHARE_EDEFAULT;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
+				return seatInterferenceStandingUpPassengerWaitingTime != SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME_EDEFAULT;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN:
+				return seatInterferenceProcessTimeMean != SEAT_INTERFERENCE_PROCESS_TIME_MEAN_EDEFAULT;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION:
+				return seatInterferenceProcessTimeDeviation != SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION_EDEFAULT;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN:
+				return seatInterferenceProcessTimeFoldingSeatMean != SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN_EDEFAULT;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION:
+				return seatInterferenceProcessTimeFoldingSeatDeviation != SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION_EDEFAULT;
+			case CabinPackage.PASSENGER_PROPERTIES__PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION:
+				return passivePassengerWaitingTimeAfterCollision != PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1160,6 +1472,18 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 		result.append(passengerDepthDeviationFemale);
 		result.append(", passengerAggressiveMoodShare: ");
 		result.append(passengerAggressiveMoodShare);
+		result.append(", seatInterferenceStandingUpPassengerWaitingTime: ");
+		result.append(seatInterferenceStandingUpPassengerWaitingTime);
+		result.append(", seatInterferenceProcessTimeMean: ");
+		result.append(seatInterferenceProcessTimeMean);
+		result.append(", seatInterferenceProcessTimeDeviation: ");
+		result.append(seatInterferenceProcessTimeDeviation);
+		result.append(", seatInterferenceProcessTimeFoldingSeatMean: ");
+		result.append(seatInterferenceProcessTimeFoldingSeatMean);
+		result.append(", seatInterferenceProcessTimeFoldingSeatDeviation: ");
+		result.append(seatInterferenceProcessTimeFoldingSeatDeviation);
+		result.append(", passivePassengerWaitingTimeAfterCollision: ");
+		result.append(passivePassengerWaitingTimeAfterCollision);
 		result.append(')');
 		return result.toString();
 	}

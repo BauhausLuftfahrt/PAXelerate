@@ -132,8 +132,7 @@ public class AgentFunctions {
 	}
 
 	private static int checkSeatAbrest(Seat seat) {
-		return ModelHelper.getParent(Row.class, seat).getSeats()
-				.lastIndexOf(seat);
+		return ModelHelper.getParent(Row.class, seat).getSeats().size();
 	}
 
 	private static boolean checkSeatLocation(Seat checkSeat, Seat mySeat,

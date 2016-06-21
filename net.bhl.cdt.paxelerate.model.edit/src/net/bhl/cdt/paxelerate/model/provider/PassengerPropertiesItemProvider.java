@@ -79,6 +79,12 @@ public class PassengerPropertiesItemProvider
 			addPassengerDepthMeanFemalePropertyDescriptor(object);
 			addPassengerDepthDeviationFemalePropertyDescriptor(object);
 			addPassengerAggressiveMoodSharePropertyDescriptor(object);
+			addSeatInterferenceStandingUpPassengerWaitingTimePropertyDescriptor(object);
+			addSeatInterferenceProcessTimeMeanPropertyDescriptor(object);
+			addSeatInterferenceProcessTimeDeviationPropertyDescriptor(object);
+			addSeatInterferenceProcessTimeFoldingSeatMeanPropertyDescriptor(object);
+			addSeatInterferenceProcessTimeFoldingSeatDeviationPropertyDescriptor(object);
+			addPassivePassengerWaitingTimeAfterCollisionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -480,6 +486,138 @@ public class PassengerPropertiesItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Seat Interference Standing Up Passenger Waiting Time feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatInterferenceStandingUpPassengerWaitingTimePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PassengerProperties_seatInterferenceStandingUpPassengerWaitingTime_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PassengerProperties_seatInterferenceStandingUpPassengerWaitingTime_feature", "_UI_PassengerProperties_type"),
+				 CabinPackage.Literals.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Seat Interference Process Time Mean feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatInterferenceProcessTimeMeanPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PassengerProperties_seatInterferenceProcessTimeMean_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PassengerProperties_seatInterferenceProcessTimeMean_feature", "_UI_PassengerProperties_type"),
+				 CabinPackage.Literals.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Seat Interference Process Time Deviation feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatInterferenceProcessTimeDeviationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PassengerProperties_seatInterferenceProcessTimeDeviation_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PassengerProperties_seatInterferenceProcessTimeDeviation_feature", "_UI_PassengerProperties_type"),
+				 CabinPackage.Literals.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Seat Interference Process Time Folding Seat Mean feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatInterferenceProcessTimeFoldingSeatMeanPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PassengerProperties_seatInterferenceProcessTimeFoldingSeatMean_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PassengerProperties_seatInterferenceProcessTimeFoldingSeatMean_feature", "_UI_PassengerProperties_type"),
+				 CabinPackage.Literals.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Seat Interference Process Time Folding Seat Deviation feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatInterferenceProcessTimeFoldingSeatDeviationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PassengerProperties_seatInterferenceProcessTimeFoldingSeatDeviation_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PassengerProperties_seatInterferenceProcessTimeFoldingSeatDeviation_feature", "_UI_PassengerProperties_type"),
+				 CabinPackage.Literals.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Passive Passenger Waiting Time After Collision feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPassivePassengerWaitingTimeAfterCollisionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PassengerProperties_passivePassengerWaitingTimeAfterCollision_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PassengerProperties_passivePassengerWaitingTimeAfterCollision_feature", "_UI_PassengerProperties_type"),
+				 CabinPackage.Literals.PASSENGER_PROPERTIES__PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns PassengerProperties.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -536,6 +674,12 @@ public class PassengerPropertiesItemProvider
 			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_DEPTH_MEAN_FEMALE:
 			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE:
 			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_AGGRESSIVE_MOOD_SHARE:
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN:
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION:
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN:
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION:
+			case CabinPackage.PASSENGER_PROPERTIES__PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

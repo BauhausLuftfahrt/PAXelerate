@@ -42,15 +42,16 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#isIsSeated <em>Is Seated</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getWalkingSpeed <em>Walking Speed</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getStartBoardingAfterDelay <em>Start Boarding After Delay</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getNumberOfWaits <em>Number Of Waits</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getLuggageStowTime <em>Luggage Stow Time</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getLuggageStowDistance <em>Luggage Stow Distance</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getTravelClass <em>Travel Class</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getPassengerMood <em>Passenger Mood</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getNumberOfWaits <em>Number Of Waits</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getNumberOfMakeWayOperations <em>Number Of Make Way Operations</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getLuggage <em>Luggage</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getDistanceWalked <em>Distance Walked</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getLuggage <em>Luggage</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getCostOfPath <em>Cost Of Path</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerImpl#getTotalTimeWaited <em>Total Time Waited</em>}</li>
  * </ul>
  *
  * @generated
@@ -380,26 +381,6 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected double startBoardingAfterDelay = START_BOARDING_AFTER_DELAY_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getNumberOfWaits() <em>Number Of Waits</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @see #getNumberOfWaits()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int NUMBER_OF_WAITS_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getNumberOfWaits() <em>Number Of Waits</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @see #getNumberOfWaits()
-	 * @generated
-	 * @ordered
-	 */
-	protected int numberOfWaits = NUMBER_OF_WAITS_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getLuggageStowTime() <em>Luggage Stow Time</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -469,6 +450,26 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected PassengerMood passengerMood = PASSENGER_MOOD_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getNumberOfWaits() <em>Number Of Waits</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * @see #getNumberOfWaits()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int NUMBER_OF_WAITS_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getNumberOfWaits() <em>Number Of Waits</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * @see #getNumberOfWaits()
+	 * @generated
+	 * @ordered
+	 */
+	protected int numberOfWaits = NUMBER_OF_WAITS_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getNumberOfMakeWayOperations() <em>Number Of Make Way Operations</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -487,26 +488,6 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	 * @ordered
 	 */
 	protected int numberOfMakeWayOperations = NUMBER_OF_MAKE_WAY_OPERATIONS_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getLuggage() <em>Luggage</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLuggage()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final LuggageSize LUGGAGE_EDEFAULT = LuggageSize.SMALL;
-
-	/**
-	 * The cached value of the '{@link #getLuggage() <em>Luggage</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLuggage()
-	 * @generated
-	 * @ordered
-	 */
-	protected LuggageSize luggage = LUGGAGE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getDistanceWalked() <em>Distance Walked</em>}' attribute.
@@ -529,6 +510,26 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	protected int distanceWalked = DISTANCE_WALKED_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getLuggage() <em>Luggage</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLuggage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final LuggageSize LUGGAGE_EDEFAULT = LuggageSize.SMALL;
+
+	/**
+	 * The cached value of the '{@link #getLuggage() <em>Luggage</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLuggage()
+	 * @generated
+	 * @ordered
+	 */
+	protected LuggageSize luggage = LUGGAGE_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getCostOfPath() <em>Cost Of Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -547,6 +548,26 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	 * @ordered
 	 */
 	protected int costOfPath = COST_OF_PATH_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTotalTimeWaited() <em>Total Time Waited</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTotalTimeWaited()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double TOTAL_TIME_WAITED_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getTotalTimeWaited() <em>Total Time Waited</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTotalTimeWaited()
+	 * @generated
+	 * @ordered
+	 */
+	protected double totalTimeWaited = TOTAL_TIME_WAITED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -1111,6 +1132,27 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getTotalTimeWaited() {
+		return totalTimeWaited;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTotalTimeWaited(double newTotalTimeWaited) {
+		double oldTotalTimeWaited = totalTimeWaited;
+		totalTimeWaited = newTotalTimeWaited;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER__TOTAL_TIME_WAITED, oldTotalTimeWaited, totalTimeWaited));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
 	 *
 	 * @return the height
@@ -1295,8 +1337,6 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 				return getWalkingSpeed();
 			case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
 				return getStartBoardingAfterDelay();
-			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
-				return getNumberOfWaits();
 			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
 				return getLuggageStowTime();
 			case CabinPackage.PASSENGER__LUGGAGE_STOW_DISTANCE:
@@ -1306,14 +1346,18 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 				return basicGetTravelClass();
 			case CabinPackage.PASSENGER__PASSENGER_MOOD:
 				return getPassengerMood();
+			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
+				return getNumberOfWaits();
 			case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
 				return getNumberOfMakeWayOperations();
-			case CabinPackage.PASSENGER__LUGGAGE:
-				return getLuggage();
 			case CabinPackage.PASSENGER__DISTANCE_WALKED:
 				return getDistanceWalked();
+			case CabinPackage.PASSENGER__LUGGAGE:
+				return getLuggage();
 			case CabinPackage.PASSENGER__COST_OF_PATH:
 				return getCostOfPath();
+			case CabinPackage.PASSENGER__TOTAL_TIME_WAITED:
+				return getTotalTimeWaited();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1382,9 +1426,6 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 			case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
 				setStartBoardingAfterDelay((Double)newValue);
 				return;
-			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
-				setNumberOfWaits((Integer)newValue);
-				return;
 			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
 				setLuggageStowTime((Double)newValue);
 				return;
@@ -1397,17 +1438,23 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 			case CabinPackage.PASSENGER__PASSENGER_MOOD:
 				setPassengerMood((PassengerMood)newValue);
 				return;
+			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
+				setNumberOfWaits((Integer)newValue);
+				return;
 			case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
 				setNumberOfMakeWayOperations((Integer)newValue);
-				return;
-			case CabinPackage.PASSENGER__LUGGAGE:
-				setLuggage((LuggageSize)newValue);
 				return;
 			case CabinPackage.PASSENGER__DISTANCE_WALKED:
 				setDistanceWalked((Integer)newValue);
 				return;
+			case CabinPackage.PASSENGER__LUGGAGE:
+				setLuggage((LuggageSize)newValue);
+				return;
 			case CabinPackage.PASSENGER__COST_OF_PATH:
 				setCostOfPath((Integer)newValue);
+				return;
+			case CabinPackage.PASSENGER__TOTAL_TIME_WAITED:
+				setTotalTimeWaited((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1476,9 +1523,6 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 			case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
 				setStartBoardingAfterDelay(START_BOARDING_AFTER_DELAY_EDEFAULT);
 				return;
-			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
-				setNumberOfWaits(NUMBER_OF_WAITS_EDEFAULT);
-				return;
 			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
 				setLuggageStowTime(LUGGAGE_STOW_TIME_EDEFAULT);
 				return;
@@ -1491,17 +1535,23 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 			case CabinPackage.PASSENGER__PASSENGER_MOOD:
 				setPassengerMood(PASSENGER_MOOD_EDEFAULT);
 				return;
+			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
+				setNumberOfWaits(NUMBER_OF_WAITS_EDEFAULT);
+				return;
 			case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
 				setNumberOfMakeWayOperations(NUMBER_OF_MAKE_WAY_OPERATIONS_EDEFAULT);
-				return;
-			case CabinPackage.PASSENGER__LUGGAGE:
-				setLuggage(LUGGAGE_EDEFAULT);
 				return;
 			case CabinPackage.PASSENGER__DISTANCE_WALKED:
 				setDistanceWalked(DISTANCE_WALKED_EDEFAULT);
 				return;
+			case CabinPackage.PASSENGER__LUGGAGE:
+				setLuggage(LUGGAGE_EDEFAULT);
+				return;
 			case CabinPackage.PASSENGER__COST_OF_PATH:
 				setCostOfPath(COST_OF_PATH_EDEFAULT);
+				return;
+			case CabinPackage.PASSENGER__TOTAL_TIME_WAITED:
+				setTotalTimeWaited(TOTAL_TIME_WAITED_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -1553,8 +1603,6 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 				return walkingSpeed != WALKING_SPEED_EDEFAULT;
 			case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
 				return startBoardingAfterDelay != START_BOARDING_AFTER_DELAY_EDEFAULT;
-			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
-				return numberOfWaits != NUMBER_OF_WAITS_EDEFAULT;
 			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
 				return luggageStowTime != LUGGAGE_STOW_TIME_EDEFAULT;
 			case CabinPackage.PASSENGER__LUGGAGE_STOW_DISTANCE:
@@ -1563,14 +1611,18 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 				return travelClass != null;
 			case CabinPackage.PASSENGER__PASSENGER_MOOD:
 				return passengerMood != PASSENGER_MOOD_EDEFAULT;
+			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
+				return numberOfWaits != NUMBER_OF_WAITS_EDEFAULT;
 			case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
 				return numberOfMakeWayOperations != NUMBER_OF_MAKE_WAY_OPERATIONS_EDEFAULT;
-			case CabinPackage.PASSENGER__LUGGAGE:
-				return luggage != LUGGAGE_EDEFAULT;
 			case CabinPackage.PASSENGER__DISTANCE_WALKED:
 				return distanceWalked != DISTANCE_WALKED_EDEFAULT;
+			case CabinPackage.PASSENGER__LUGGAGE:
+				return luggage != LUGGAGE_EDEFAULT;
 			case CabinPackage.PASSENGER__COST_OF_PATH:
 				return costOfPath != COST_OF_PATH_EDEFAULT;
+			case CabinPackage.PASSENGER__TOTAL_TIME_WAITED:
+				return totalTimeWaited != TOTAL_TIME_WAITED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1618,22 +1670,24 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements
 		result.append(walkingSpeed);
 		result.append(", startBoardingAfterDelay: ");
 		result.append(startBoardingAfterDelay);
-		result.append(", numberOfWaits: ");
-		result.append(numberOfWaits);
 		result.append(", luggageStowTime: ");
 		result.append(luggageStowTime);
 		result.append(", luggageStowDistance: ");
 		result.append(luggageStowDistance);
 		result.append(", passengerMood: ");
 		result.append(passengerMood);
+		result.append(", numberOfWaits: ");
+		result.append(numberOfWaits);
 		result.append(", numberOfMakeWayOperations: ");
 		result.append(numberOfMakeWayOperations);
-		result.append(", luggage: ");
-		result.append(luggage);
 		result.append(", distanceWalked: ");
 		result.append(distanceWalked);
+		result.append(", luggage: ");
+		result.append(luggage);
 		result.append(", costOfPath: ");
 		result.append(costOfPath);
+		result.append(", totalTimeWaited: ");
+		result.append(totalTimeWaited);
 		result.append(')');
 		return result.toString();
 	}

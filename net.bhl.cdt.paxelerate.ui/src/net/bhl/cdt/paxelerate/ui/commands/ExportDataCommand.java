@@ -50,6 +50,11 @@ public class ExportDataCommand extends CDTCommand {
 	/** The exporter. */
 	private ExcelExport exporter;
 
+	public static enum PassengerProperty {
+
+		DISTANCE_WALKED, NUMBER_WAITS, TIME_WAITED
+	}
+
 	/**
 	 * Instantiates a new export data command.
 	 *
@@ -63,8 +68,10 @@ public class ExportDataCommand extends CDTCommand {
 	/**
 	 * Instantiates a new export data command.
 	 *
-	 * @param cabin the cabin
-	 * @param exporter the exporter
+	 * @param cabin
+	 *            the cabin
+	 * @param exporter
+	 *            the exporter
 	 */
 	public ExportDataCommand(Cabin cabin, ExcelExport exporter) {
 		// super();
@@ -76,8 +83,10 @@ public class ExportDataCommand extends CDTCommand {
 	 * Gets the passenger data.
 	 *
 	 * @return the passenger data
-	 * @throws IOException             Signals that an I/O exception has occurred.
-	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException
+	 *             the file not found exception
 	 */
 	public boolean getPassengerData() throws IOException, FileNotFoundException {
 		/** Create file header **/
@@ -130,12 +139,37 @@ public class ExportDataCommand extends CDTCommand {
 		return true;
 	}
 
+	public int getAverageOfPassengerProperty(PassengerProperty property) {
+		EList<Passenger> paxList = cabin.getPassengers();
+		int number = 0;
+
+		for (Passenger pax : paxList) {
+			switch (property) {
+			case DISTANCE_WALKED:
+				number = number + pax.getDistanceWalked();
+				break;
+			case NUMBER_WAITS:
+				number = number + pax.getNumberOfWaits();
+				break;
+			case TIME_WAITED:
+				number = (int) (number + pax.getTotalTimeWaited());
+				break;
+			default:
+				break;
+			}
+		}
+
+		return number / paxList.size();
+	}
+
 	/**
 	 * Gets the simulation properties data.
 	 *
 	 * @return the simulation properties data
-	 * @throws IOException             Signals that an I/O exception has occurred.
-	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException
+	 *             the file not found exception
 	 */
 	public boolean getSimulationPropertiesData() throws IOException, FileNotFoundException {
 
@@ -160,11 +194,12 @@ public class ExportDataCommand extends CDTCommand {
 		exporter.addNewLine();
 
 		exporter.addColumnElement("SeatInterferenceProcessTimeMean");
-		exporter.addColumnElement(settings.getSeatInterferenceProcessTimeMean());
+		exporter.addColumnElement(settings.getPassengerProperties().getSeatInterferenceProcessTimeMean());
 		exporter.addNewLine();
 
 		exporter.addColumnElement("SeatInterferenceStandingUpPassengerWaitingTime");
-		exporter.addColumnElement(settings.getSeatInterferenceStandingUpPassengerWaitingTime());
+		exporter.addColumnElement(
+				settings.getPassengerProperties().getSeatInterferenceStandingUpPassengerWaitingTime());
 		exporter.addNewLine();
 
 		exporter.addColumnElement("Sorting");
@@ -187,8 +222,10 @@ public class ExportDataCommand extends CDTCommand {
 	 * Gets the study settings.
 	 *
 	 * @return the study settings
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException
+	 *             the file not found exception
 	 */
 	public boolean getStudySettings() throws IOException, FileNotFoundException {
 
@@ -212,11 +249,11 @@ public class ExportDataCommand extends CDTCommand {
 			exporter.addColumnElement(tc.getLoadFactor());
 		}
 		for (Door dl : doorList) {
-			if(dl.isIsActive()) {
+			if (dl.isIsActive()) {
 				exporter.addColumnElement(dl.getId());
 			}
 		}
-		//exporter.addColumnElement(cabin.getSimulationSettings().getLayoutConcept());
+		exporter.addColumnElement(cabin.getSimulationSettings().getLayoutConcept().getLiteral());
 		exporter.addNewLine();
 
 		return true;
@@ -226,8 +263,10 @@ public class ExportDataCommand extends CDTCommand {
 	 * Gets the result data.
 	 *
 	 * @return the result data
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException
+	 *             the file not found exception
 	 */
 	public boolean getResultData() throws IOException, FileNotFoundException {
 
@@ -236,6 +275,9 @@ public class ExportDataCommand extends CDTCommand {
 		exporter.addColumnElement("Time");
 		exporter.addColumnElement("Skipped Way Making");
 		exporter.addColumnElement("Completed Way Making");
+		exporter.addColumnElement("Average number of waiting");
+		exporter.addColumnElement("Average PAX waiting time");
+		exporter.addColumnElement("Average distance walked");
 		exporter.addNewLine();
 
 		for (SimulationResult result : cabin.getSimulationSettings().getResults()) {
@@ -244,6 +286,9 @@ public class ExportDataCommand extends CDTCommand {
 			exporter.addColumnElement(TimeHelper.toTimeOfDay(result.getBoardingTime()));
 			exporter.addColumnElement(result.getWaymakingSkipped());
 			exporter.addColumnElement(result.getWaymakingCompleted());
+			exporter.addColumnElement(getAverageOfPassengerProperty(PassengerProperty.NUMBER_WAITS));
+			exporter.addColumnElement(getAverageOfPassengerProperty(PassengerProperty.TIME_WAITED));
+			exporter.addColumnElement(getAverageOfPassengerProperty(PassengerProperty.DISTANCE_WALKED));
 			exporter.addNewLine();
 		}
 
@@ -253,8 +298,10 @@ public class ExportDataCommand extends CDTCommand {
 	/**
 	 * Generate distribution file.
 	 *
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException
+	 *             the file not found exception
 	 */
 	public void generateDistributionFile() throws IOException, FileNotFoundException {
 
@@ -291,10 +338,14 @@ public class ExportDataCommand extends CDTCommand {
 	/**
 	 * Write gaussian.
 	 *
-	 * @param storage            the storage
-	 * @param name            the name
-	 * @throws IOException             Signals that an I/O exception has occurred.
-	 * @throws FileNotFoundException             the file not found exception
+	 * @param storage
+	 *            the storage
+	 * @param name
+	 *            the name
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException
+	 *             the file not found exception
 	 */
 	private void writeGaussian(GaussianStorage storage, String name) throws IOException, FileNotFoundException {
 

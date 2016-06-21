@@ -880,22 +880,13 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER__START_BOARDING_AFTER_DELAY = 17;
 
 	/**
-	 * The feature id for the '<em><b>Number Of Waits</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PASSENGER__NUMBER_OF_WAITS = 18;
-
-	/**
 	 * The feature id for the '<em><b>Luggage Stow Time</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__LUGGAGE_STOW_TIME = 19;
+	int PASSENGER__LUGGAGE_STOW_TIME = 18;
 
 	/**
 	 * The feature id for the '<em><b>Luggage Stow Distance</b></em>' attribute.
@@ -904,7 +895,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__LUGGAGE_STOW_DISTANCE = 20;
+	int PASSENGER__LUGGAGE_STOW_DISTANCE = 19;
 
 	/**
 	 * The feature id for the '<em><b>Travel Class</b></em>' reference.
@@ -913,7 +904,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__TRAVEL_CLASS = 21;
+	int PASSENGER__TRAVEL_CLASS = 20;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Mood</b></em>' attribute.
@@ -922,7 +913,16 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__PASSENGER_MOOD = 22;
+	int PASSENGER__PASSENGER_MOOD = 21;
+
+	/**
+	 * The feature id for the '<em><b>Number Of Waits</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__NUMBER_OF_WAITS = 22;
 
 	/**
 	 * The feature id for the '<em><b>Number Of Make Way Operations</b></em>' attribute.
@@ -934,22 +934,22 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS = 23;
 
 	/**
-	 * The feature id for the '<em><b>Luggage</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PASSENGER__LUGGAGE = 24;
-
-	/**
 	 * The feature id for the '<em><b>Distance Walked</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER__DISTANCE_WALKED = 25;
+	int PASSENGER__DISTANCE_WALKED = 24;
+
+	/**
+	 * The feature id for the '<em><b>Luggage</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__LUGGAGE = 25;
 
 	/**
 	 * The feature id for the '<em><b>Cost Of Path</b></em>' attribute.
@@ -961,13 +961,22 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER__COST_OF_PATH = 26;
 
 	/**
+	 * The feature id for the '<em><b>Total Time Waited</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__TOTAL_TIME_WAITED = 27;
+
+	/**
 	 * The number of structural features of the '<em>Passenger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_FEATURE_COUNT = 27;
+	int PASSENGER_FEATURE_COUNT = 28;
 
 	/**
 	 * The number of operations of the '<em>Passenger</em>' class.
@@ -1732,58 +1741,13 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_PROPERTIES__SORTING = 14;
 
 	/**
-	 * The feature id for the '<em><b>Seat Interference Standing Up Passenger Waiting Time</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME = 15;
-
-	/**
-	 * The feature id for the '<em><b>Seat Interference Process Time Mean</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN = 16;
-
-	/**
-	 * The feature id for the '<em><b>Seat Interference Process Time Deviation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION = 17;
-
-	/**
-	 * The feature id for the '<em><b>Seat Interference Process Time Folding Seat Mean</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN = 18;
-
-	/**
-	 * The feature id for the '<em><b>Seat Interference Process Time Folding Seat Deviation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION = 19;
-
-	/**
 	 * The feature id for the '<em><b>Thread Sleep Time Default</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT = 20;
+	int SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT = 15;
 
 	/**
 	 * The feature id for the '<em><b>Sideways Foldabe Seat Popup Time Mean</b></em>' attribute.
@@ -1792,7 +1756,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_MEAN = 21;
+	int SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_MEAN = 16;
 
 	/**
 	 * The feature id for the '<em><b>Sideways Foldabe Seat Popup Time Deviation</b></em>' attribute.
@@ -1801,7 +1765,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_DEVIATION = 22;
+	int SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_DEVIATION = 17;
 
 	/**
 	 * The feature id for the '<em><b>Lifting Seat Pan Popup Time Mean</b></em>' attribute.
@@ -1810,7 +1774,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_MEAN = 23;
+	int SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_MEAN = 18;
 
 	/**
 	 * The feature id for the '<em><b>Lifting Seat Pan Popup Time Deviation</b></em>' attribute.
@@ -1819,7 +1783,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_DEVIATION = 24;
+	int SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_DEVIATION = 19;
 
 	/**
 	 * The number of structural features of the '<em>Simulation Properties</em>' class.
@@ -1828,7 +1792,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES_FEATURE_COUNT = 25;
+	int SIMULATION_PROPERTIES_FEATURE_COUNT = 20;
 
 	/**
 	 * The number of operations of the '<em>Simulation Properties</em>' class.
@@ -2257,13 +2221,67 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER_PROPERTIES__PASSENGER_AGGRESSIVE_MOOD_SHARE = 17;
 
 	/**
+	 * The feature id for the '<em><b>Seat Interference Standing Up Passenger Waiting Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME = 18;
+
+	/**
+	 * The feature id for the '<em><b>Seat Interference Process Time Mean</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN = 19;
+
+	/**
+	 * The feature id for the '<em><b>Seat Interference Process Time Deviation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION = 20;
+
+	/**
+	 * The feature id for the '<em><b>Seat Interference Process Time Folding Seat Mean</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN = 21;
+
+	/**
+	 * The feature id for the '<em><b>Seat Interference Process Time Folding Seat Deviation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION = 22;
+
+	/**
+	 * The feature id for the '<em><b>Passive Passenger Waiting Time After Collision</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION = 23;
+
+	/**
 	 * The number of structural features of the '<em>Passenger Properties</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES_FEATURE_COUNT = 18;
+	int PASSENGER_PROPERTIES_FEATURE_COUNT = 24;
 
 	/**
 	 * The number of operations of the '<em>Passenger Properties</em>' class.
@@ -3193,6 +3211,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getPassenger_CostOfPath();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Passenger#getTotalTimeWaited <em>Total Time Waited</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Total Time Waited</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.Passenger#getTotalTimeWaited()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_TotalTimeWaited();
+
+	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.Passenger#getHeight <em>Height</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3448,61 +3477,6 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSimulationProperties_SimulationSpeedFactor();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceStandingUpPassengerWaitingTime <em>Seat Interference Standing Up Passenger Waiting Time</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Seat Interference Standing Up Passenger Waiting Time</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceStandingUpPassengerWaitingTime()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_SeatInterferenceStandingUpPassengerWaitingTime();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeMean <em>Seat Interference Process Time Mean</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Seat Interference Process Time Mean</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeMean()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_SeatInterferenceProcessTimeMean();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeDeviation <em>Seat Interference Process Time Deviation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Seat Interference Process Time Deviation</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeDeviation()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_SeatInterferenceProcessTimeDeviation();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeFoldingSeatMean <em>Seat Interference Process Time Folding Seat Mean</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Seat Interference Process Time Folding Seat Mean</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeFoldingSeatMean()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_SeatInterferenceProcessTimeFoldingSeatMean();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeFoldingSeatDeviation <em>Seat Interference Process Time Folding Seat Deviation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Seat Interference Process Time Folding Seat Deviation</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTimeFoldingSeatDeviation()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_SeatInterferenceProcessTimeFoldingSeatDeviation();
 
 	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getThreadSleepTimeDefault <em>Thread Sleep Time Default</em>}'.
@@ -4105,6 +4079,72 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPassengerProperties_PassengerAggressiveMoodShare();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceStandingUpPassengerWaitingTime <em>Seat Interference Standing Up Passenger Waiting Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seat Interference Standing Up Passenger Waiting Time</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceStandingUpPassengerWaitingTime()
+	 * @see #getPassengerProperties()
+	 * @generated
+	 */
+	EAttribute getPassengerProperties_SeatInterferenceStandingUpPassengerWaitingTime();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceProcessTimeMean <em>Seat Interference Process Time Mean</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seat Interference Process Time Mean</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceProcessTimeMean()
+	 * @see #getPassengerProperties()
+	 * @generated
+	 */
+	EAttribute getPassengerProperties_SeatInterferenceProcessTimeMean();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceProcessTimeDeviation <em>Seat Interference Process Time Deviation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seat Interference Process Time Deviation</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceProcessTimeDeviation()
+	 * @see #getPassengerProperties()
+	 * @generated
+	 */
+	EAttribute getPassengerProperties_SeatInterferenceProcessTimeDeviation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceProcessTimeFoldingSeatMean <em>Seat Interference Process Time Folding Seat Mean</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seat Interference Process Time Folding Seat Mean</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceProcessTimeFoldingSeatMean()
+	 * @see #getPassengerProperties()
+	 * @generated
+	 */
+	EAttribute getPassengerProperties_SeatInterferenceProcessTimeFoldingSeatMean();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceProcessTimeFoldingSeatDeviation <em>Seat Interference Process Time Folding Seat Deviation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seat Interference Process Time Folding Seat Deviation</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceProcessTimeFoldingSeatDeviation()
+	 * @see #getPassengerProperties()
+	 * @generated
+	 */
+	EAttribute getPassengerProperties_SeatInterferenceProcessTimeFoldingSeatDeviation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassivePassengerWaitingTimeAfterCollision <em>Passive Passenger Waiting Time After Collision</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passive Passenger Waiting Time After Collision</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties#getPassivePassengerWaitingTimeAfterCollision()
+	 * @see #getPassengerProperties()
+	 * @generated
+	 */
+	EAttribute getPassengerProperties_PassivePassengerWaitingTimeAfterCollision();
 
 	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.PhysicalObject <em>Physical Object</em>}'.
@@ -4854,6 +4894,13 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute PASSENGER__COST_OF_PATH = eINSTANCE.getPassenger_CostOfPath();
 		/**
+		 * The meta object literal for the '<em><b>Total Time Waited</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__TOTAL_TIME_WAITED = eINSTANCE.getPassenger_TotalTimeWaited();
+		/**
 		 * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5035,41 +5082,6 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR = eINSTANCE.getSimulationProperties_SimulationSpeedFactor();
-		/**
-		 * The meta object literal for the '<em><b>Seat Interference Standing Up Passenger Waiting Time</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME = eINSTANCE.getSimulationProperties_SeatInterferenceStandingUpPassengerWaitingTime();
-		/**
-		 * The meta object literal for the '<em><b>Seat Interference Process Time Mean</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN = eINSTANCE.getSimulationProperties_SeatInterferenceProcessTimeMean();
-		/**
-		 * The meta object literal for the '<em><b>Seat Interference Process Time Deviation</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION = eINSTANCE.getSimulationProperties_SeatInterferenceProcessTimeDeviation();
-		/**
-		 * The meta object literal for the '<em><b>Seat Interference Process Time Folding Seat Mean</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN = eINSTANCE.getSimulationProperties_SeatInterferenceProcessTimeFoldingSeatMean();
-		/**
-		 * The meta object literal for the '<em><b>Seat Interference Process Time Folding Seat Deviation</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION = eINSTANCE.getSimulationProperties_SeatInterferenceProcessTimeFoldingSeatDeviation();
 		/**
 		 * The meta object literal for the '<em><b>Thread Sleep Time Default</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -5461,6 +5473,48 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PASSENGER_PROPERTIES__PASSENGER_AGGRESSIVE_MOOD_SHARE = eINSTANCE.getPassengerProperties_PassengerAggressiveMoodShare();
+		/**
+		 * The meta object literal for the '<em><b>Seat Interference Standing Up Passenger Waiting Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME = eINSTANCE.getPassengerProperties_SeatInterferenceStandingUpPassengerWaitingTime();
+		/**
+		 * The meta object literal for the '<em><b>Seat Interference Process Time Mean</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN = eINSTANCE.getPassengerProperties_SeatInterferenceProcessTimeMean();
+		/**
+		 * The meta object literal for the '<em><b>Seat Interference Process Time Deviation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION = eINSTANCE.getPassengerProperties_SeatInterferenceProcessTimeDeviation();
+		/**
+		 * The meta object literal for the '<em><b>Seat Interference Process Time Folding Seat Mean</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN = eINSTANCE.getPassengerProperties_SeatInterferenceProcessTimeFoldingSeatMean();
+		/**
+		 * The meta object literal for the '<em><b>Seat Interference Process Time Folding Seat Deviation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION = eINSTANCE.getPassengerProperties_SeatInterferenceProcessTimeFoldingSeatDeviation();
+		/**
+		 * The meta object literal for the '<em><b>Passive Passenger Waiting Time After Collision</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_PROPERTIES__PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION = eINSTANCE.getPassengerProperties_PassivePassengerWaitingTimeAfterCollision();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.PhysicalObjectImpl <em>Physical Object</em>}' class.
 		 * <!-- begin-user-doc -->

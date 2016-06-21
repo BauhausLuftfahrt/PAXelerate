@@ -31,15 +31,16 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#isIsSeated <em>Is Seated</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getWalkingSpeed <em>Walking Speed</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getStartBoardingAfterDelay <em>Start Boarding After Delay</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getNumberOfWaits <em>Number Of Waits</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getLuggageStowTime <em>Luggage Stow Time</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getLuggageStowDistance <em>Luggage Stow Distance</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getTravelClass <em>Travel Class</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getPassengerMood <em>Passenger Mood</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getNumberOfWaits <em>Number Of Waits</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getNumberOfMakeWayOperations <em>Number Of Make Way Operations</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getLuggage <em>Luggage</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getDistanceWalked <em>Distance Walked</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getLuggage <em>Luggage</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getCostOfPath <em>Cost Of Path</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getTotalTimeWaited <em>Total Time Waited</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassenger()
@@ -636,6 +637,33 @@ public interface Passenger extends EObject {
 	 * @generated
 	 */
 	void setCostOfPath(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Total Time Waited</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Total Time Waited</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Total Time Waited</em>' attribute.
+	 * @see #setTotalTimeWaited(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassenger_TotalTimeWaited()
+	 * @model default="0"
+	 * @generated
+	 */
+	double getTotalTimeWaited();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Passenger#getTotalTimeWaited <em>Total Time Waited</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Total Time Waited</em>' attribute.
+	 * @see #getTotalTimeWaited()
+	 * @generated
+	 */
+	void setTotalTimeWaited(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Height</b></em>' attribute.

@@ -43,11 +43,6 @@ import net.bhl.cdt.paxelerate.model.SortingStyle;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isDisplayMap <em>Display Map</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isSortPassengerBetweenLoops <em>Sort Passenger Between Loops</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSorting <em>Sorting</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSeatInterferenceStandingUpPassengerWaitingTime <em>Seat Interference Standing Up Passenger Waiting Time</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSeatInterferenceProcessTimeMean <em>Seat Interference Process Time Mean</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSeatInterferenceProcessTimeDeviation <em>Seat Interference Process Time Deviation</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSeatInterferenceProcessTimeFoldingSeatMean <em>Seat Interference Process Time Folding Seat Mean</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSeatInterferenceProcessTimeFoldingSeatDeviation <em>Seat Interference Process Time Folding Seat Deviation</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getThreadSleepTimeDefault <em>Thread Sleep Time Default</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSidewaysFoldabeSeatPopupTimeMean <em>Sideways Foldabe Seat Popup Time Mean</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSidewaysFoldabeSeatPopupTimeDeviation <em>Sideways Foldabe Seat Popup Time Deviation</em>}</li>
@@ -327,106 +322,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * @ordered
 	 */
 	protected SortingStyle sorting = SORTING_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getSeatInterferenceStandingUpPassengerWaitingTime() <em>Seat Interference Standing Up Passenger Waiting Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatInterferenceStandingUpPassengerWaitingTime()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME_EDEFAULT = 3.0;
-
-	/**
-	 * The cached value of the '{@link #getSeatInterferenceStandingUpPassengerWaitingTime() <em>Seat Interference Standing Up Passenger Waiting Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatInterferenceStandingUpPassengerWaitingTime()
-	 * @generated
-	 * @ordered
-	 */
-	protected double seatInterferenceStandingUpPassengerWaitingTime = SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getSeatInterferenceProcessTimeMean() <em>Seat Interference Process Time Mean</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatInterferenceProcessTimeMean()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double SEAT_INTERFERENCE_PROCESS_TIME_MEAN_EDEFAULT = 7.0;
-
-	/**
-	 * The cached value of the '{@link #getSeatInterferenceProcessTimeMean() <em>Seat Interference Process Time Mean</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatInterferenceProcessTimeMean()
-	 * @generated
-	 * @ordered
-	 */
-	protected double seatInterferenceProcessTimeMean = SEAT_INTERFERENCE_PROCESS_TIME_MEAN_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getSeatInterferenceProcessTimeDeviation() <em>Seat Interference Process Time Deviation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatInterferenceProcessTimeDeviation()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION_EDEFAULT = 1.5;
-
-	/**
-	 * The cached value of the '{@link #getSeatInterferenceProcessTimeDeviation() <em>Seat Interference Process Time Deviation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatInterferenceProcessTimeDeviation()
-	 * @generated
-	 * @ordered
-	 */
-	protected double seatInterferenceProcessTimeDeviation = SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getSeatInterferenceProcessTimeFoldingSeatMean() <em>Seat Interference Process Time Folding Seat Mean</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatInterferenceProcessTimeFoldingSeatMean()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN_EDEFAULT = 5.0;
-
-	/**
-	 * The cached value of the '{@link #getSeatInterferenceProcessTimeFoldingSeatMean() <em>Seat Interference Process Time Folding Seat Mean</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatInterferenceProcessTimeFoldingSeatMean()
-	 * @generated
-	 * @ordered
-	 */
-	protected double seatInterferenceProcessTimeFoldingSeatMean = SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getSeatInterferenceProcessTimeFoldingSeatDeviation() <em>Seat Interference Process Time Folding Seat Deviation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatInterferenceProcessTimeFoldingSeatDeviation()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION_EDEFAULT = 1.0;
-
-	/**
-	 * The cached value of the '{@link #getSeatInterferenceProcessTimeFoldingSeatDeviation() <em>Seat Interference Process Time Folding Seat Deviation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatInterferenceProcessTimeFoldingSeatDeviation()
-	 * @generated
-	 * @ordered
-	 */
-	protected double seatInterferenceProcessTimeFoldingSeatDeviation = SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getThreadSleepTimeDefault() <em>Thread Sleep Time Default</em>}' attribute.
@@ -712,113 +607,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 		simulationSpeedFactor = newSimulationSpeedFactor;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR, oldSimulationSpeedFactor, simulationSpeedFactor));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->.
-	 *
-	 * @return the seat interference standing up passenger waiting time
-	 * @generated 
-	 */
-	public double getSeatInterferenceStandingUpPassengerWaitingTime() {
-		return seatInterferenceStandingUpPassengerWaitingTime;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSeatInterferenceStandingUpPassengerWaitingTime(double newSeatInterferenceStandingUpPassengerWaitingTime) {
-		double oldSeatInterferenceStandingUpPassengerWaitingTime = seatInterferenceStandingUpPassengerWaitingTime;
-		seatInterferenceStandingUpPassengerWaitingTime = newSeatInterferenceStandingUpPassengerWaitingTime;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME, oldSeatInterferenceStandingUpPassengerWaitingTime, seatInterferenceStandingUpPassengerWaitingTime));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public double getSeatInterferenceProcessTimeMean() {
-		return seatInterferenceProcessTimeMean;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSeatInterferenceProcessTimeMean(double newSeatInterferenceProcessTimeMean) {
-		double oldSeatInterferenceProcessTimeMean = seatInterferenceProcessTimeMean;
-		seatInterferenceProcessTimeMean = newSeatInterferenceProcessTimeMean;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN, oldSeatInterferenceProcessTimeMean, seatInterferenceProcessTimeMean));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public double getSeatInterferenceProcessTimeDeviation() {
-		return seatInterferenceProcessTimeDeviation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSeatInterferenceProcessTimeDeviation(double newSeatInterferenceProcessTimeDeviation) {
-		double oldSeatInterferenceProcessTimeDeviation = seatInterferenceProcessTimeDeviation;
-		seatInterferenceProcessTimeDeviation = newSeatInterferenceProcessTimeDeviation;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION, oldSeatInterferenceProcessTimeDeviation, seatInterferenceProcessTimeDeviation));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public double getSeatInterferenceProcessTimeFoldingSeatMean() {
-		return seatInterferenceProcessTimeFoldingSeatMean;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSeatInterferenceProcessTimeFoldingSeatMean(double newSeatInterferenceProcessTimeFoldingSeatMean) {
-		double oldSeatInterferenceProcessTimeFoldingSeatMean = seatInterferenceProcessTimeFoldingSeatMean;
-		seatInterferenceProcessTimeFoldingSeatMean = newSeatInterferenceProcessTimeFoldingSeatMean;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN, oldSeatInterferenceProcessTimeFoldingSeatMean, seatInterferenceProcessTimeFoldingSeatMean));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public double getSeatInterferenceProcessTimeFoldingSeatDeviation() {
-		return seatInterferenceProcessTimeFoldingSeatDeviation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSeatInterferenceProcessTimeFoldingSeatDeviation(double newSeatInterferenceProcessTimeFoldingSeatDeviation) {
-		double oldSeatInterferenceProcessTimeFoldingSeatDeviation = seatInterferenceProcessTimeFoldingSeatDeviation;
-		seatInterferenceProcessTimeFoldingSeatDeviation = newSeatInterferenceProcessTimeFoldingSeatDeviation;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION, oldSeatInterferenceProcessTimeFoldingSeatDeviation, seatInterferenceProcessTimeFoldingSeatDeviation));
 	}
 
 	/**
@@ -1230,16 +1018,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return isSortPassengerBetweenLoops();
 			case CabinPackage.SIMULATION_PROPERTIES__SORTING:
 				return getSorting();
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
-				return getSeatInterferenceStandingUpPassengerWaitingTime();
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN:
-				return getSeatInterferenceProcessTimeMean();
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION:
-				return getSeatInterferenceProcessTimeDeviation();
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN:
-				return getSeatInterferenceProcessTimeFoldingSeatMean();
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION:
-				return getSeatInterferenceProcessTimeFoldingSeatDeviation();
 			case CabinPackage.SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT:
 				return getThreadSleepTimeDefault();
 			case CabinPackage.SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_MEAN:
@@ -1311,21 +1089,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__SORTING:
 				setSorting((SortingStyle)newValue);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
-				setSeatInterferenceStandingUpPassengerWaitingTime((Double)newValue);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN:
-				setSeatInterferenceProcessTimeMean((Double)newValue);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION:
-				setSeatInterferenceProcessTimeDeviation((Double)newValue);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN:
-				setSeatInterferenceProcessTimeFoldingSeatMean((Double)newValue);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION:
-				setSeatInterferenceProcessTimeFoldingSeatDeviation((Double)newValue);
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT:
 				setThreadSleepTimeDefault((Integer)newValue);
@@ -1401,21 +1164,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.SIMULATION_PROPERTIES__SORTING:
 				setSorting(SORTING_EDEFAULT);
 				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
-				setSeatInterferenceStandingUpPassengerWaitingTime(SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME_EDEFAULT);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN:
-				setSeatInterferenceProcessTimeMean(SEAT_INTERFERENCE_PROCESS_TIME_MEAN_EDEFAULT);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION:
-				setSeatInterferenceProcessTimeDeviation(SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION_EDEFAULT);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN:
-				setSeatInterferenceProcessTimeFoldingSeatMean(SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN_EDEFAULT);
-				return;
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION:
-				setSeatInterferenceProcessTimeFoldingSeatDeviation(SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION_EDEFAULT);
-				return;
 			case CabinPackage.SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT:
 				setThreadSleepTimeDefault(THREAD_SLEEP_TIME_DEFAULT_EDEFAULT);
 				return;
@@ -1476,16 +1224,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return sortPassengerBetweenLoops != SORT_PASSENGER_BETWEEN_LOOPS_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__SORTING:
 				return sorting != SORTING_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
-				return seatInterferenceStandingUpPassengerWaitingTime != SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN:
-				return seatInterferenceProcessTimeMean != SEAT_INTERFERENCE_PROCESS_TIME_MEAN_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION:
-				return seatInterferenceProcessTimeDeviation != SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN:
-				return seatInterferenceProcessTimeFoldingSeatMean != SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN_EDEFAULT;
-			case CabinPackage.SIMULATION_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION:
-				return seatInterferenceProcessTimeFoldingSeatDeviation != SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT:
 				return threadSleepTimeDefault != THREAD_SLEEP_TIME_DEFAULT_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_MEAN:
@@ -1536,16 +1274,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 		result.append(sortPassengerBetweenLoops);
 		result.append(", sorting: ");
 		result.append(sorting);
-		result.append(", seatInterferenceStandingUpPassengerWaitingTime: ");
-		result.append(seatInterferenceStandingUpPassengerWaitingTime);
-		result.append(", seatInterferenceProcessTimeMean: ");
-		result.append(seatInterferenceProcessTimeMean);
-		result.append(", seatInterferenceProcessTimeDeviation: ");
-		result.append(seatInterferenceProcessTimeDeviation);
-		result.append(", seatInterferenceProcessTimeFoldingSeatMean: ");
-		result.append(seatInterferenceProcessTimeFoldingSeatMean);
-		result.append(", seatInterferenceProcessTimeFoldingSeatDeviation: ");
-		result.append(seatInterferenceProcessTimeFoldingSeatDeviation);
 		result.append(", threadSleepTimeDefault: ");
 		result.append(threadSleepTimeDefault);
 		result.append(", sidewaysFoldabeSeatPopupTimeMean: ");

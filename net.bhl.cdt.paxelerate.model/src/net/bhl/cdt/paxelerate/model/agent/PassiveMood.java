@@ -37,8 +37,9 @@ public class PassiveMood extends AgentMood implements Strategy {
 	public void reactToCollision(Property property) {
 
 		try {
-			/* agent waits for 0.3s before he continues walking */
-			super.getAgent().getThread().sleep(AStarHelper.time(0.3));
+			/* agent waits for specific time before he continues walking */
+			super.getAgent().getThread().sleep(AStarHelper
+					.time(super.getAgent().getWaitingTimeAfterCollision()));
 		} catch (InterruptedException e) {
 		}
 		super.getAgent().setExitPathLoop(false);

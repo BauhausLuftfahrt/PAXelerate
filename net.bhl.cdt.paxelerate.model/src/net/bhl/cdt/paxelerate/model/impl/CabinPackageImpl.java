@@ -1074,7 +1074,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EAttribute getPassenger_NumberOfWaits() {
-        return (EAttribute)getPassenger().getEStructuralFeatures().get(18);
+        return (EAttribute)getPassenger().getEStructuralFeatures().get(22);
 	}
 
 	/**
@@ -1085,7 +1085,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EAttribute getPassenger_LuggageStowTime() {
-        return (EAttribute)getPassenger().getEStructuralFeatures().get(19);
+        return (EAttribute)getPassenger().getEStructuralFeatures().get(18);
 	}
 
 	/**
@@ -1094,7 +1094,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getPassenger_LuggageStowDistance() {
-        return (EAttribute)getPassenger().getEStructuralFeatures().get(20);
+        return (EAttribute)getPassenger().getEStructuralFeatures().get(19);
 	}
 
 	/**
@@ -1105,7 +1105,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EReference getPassenger_TravelClass() {
-        return (EReference)getPassenger().getEStructuralFeatures().get(21);
+        return (EReference)getPassenger().getEStructuralFeatures().get(20);
 	}
 
 	/**
@@ -1116,7 +1116,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EAttribute getPassenger_PassengerMood() {
-        return (EAttribute)getPassenger().getEStructuralFeatures().get(22);
+        return (EAttribute)getPassenger().getEStructuralFeatures().get(21);
 	}
 
 	/**
@@ -1138,7 +1138,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EAttribute getPassenger_Luggage() {
-        return (EAttribute)getPassenger().getEStructuralFeatures().get(24);
+        return (EAttribute)getPassenger().getEStructuralFeatures().get(25);
 	}
 
 	/**
@@ -1147,7 +1147,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getPassenger_DistanceWalked() {
-        return (EAttribute)getPassenger().getEStructuralFeatures().get(25);
+        return (EAttribute)getPassenger().getEStructuralFeatures().get(24);
 	}
 
 	/**
@@ -1157,6 +1157,15 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EAttribute getPassenger_CostOfPath() {
         return (EAttribute)getPassenger().getEStructuralFeatures().get(26);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassenger_TotalTimeWaited() {
+        return (EAttribute)getPassenger().getEStructuralFeatures().get(27);
 	}
 
 	/**
@@ -1448,58 +1457,11 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->.
 	 *
-	 * @return the simulation properties_ seat interference standing up passenger waiting time
-	 * @generated 
-	 */
-	public EAttribute getSimulationProperties_SeatInterferenceStandingUpPassengerWaitingTime() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(15);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_SeatInterferenceProcessTimeMean() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(16);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_SeatInterferenceProcessTimeDeviation() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(17);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_SeatInterferenceProcessTimeFoldingSeatMean() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(18);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_SeatInterferenceProcessTimeFoldingSeatDeviation() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(19);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->.
-	 *
 	 * @return the simulation properties_ thread sleep time default
 	 * @generated 
 	 */
 	public EAttribute getSimulationProperties_ThreadSleepTimeDefault() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(20);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(15);
 	}
 
 	/**
@@ -1579,7 +1541,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getSimulationProperties_SidewaysFoldabeSeatPopupTimeMean() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(21);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(16);
 	}
 
 	/**
@@ -1588,7 +1550,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getSimulationProperties_SidewaysFoldabeSeatPopupTimeDeviation() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(22);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(17);
 	}
 
 	/**
@@ -1597,7 +1559,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getSimulationProperties_LiftingSeatPanPopupTimeMean() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(23);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(18);
 	}
 
 	/**
@@ -1606,7 +1568,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getSimulationProperties_LiftingSeatPanPopupTimeDeviation() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(24);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(19);
 	}
 
 	/**
@@ -2075,6 +2037,60 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EAttribute getPassengerProperties_PassengerAggressiveMoodShare() {
         return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(17);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassengerProperties_SeatInterferenceStandingUpPassengerWaitingTime() {
+        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(18);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassengerProperties_SeatInterferenceProcessTimeMean() {
+        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(19);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassengerProperties_SeatInterferenceProcessTimeDeviation() {
+        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(20);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassengerProperties_SeatInterferenceProcessTimeFoldingSeatMean() {
+        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(21);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassengerProperties_SeatInterferenceProcessTimeFoldingSeatDeviation() {
+        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(22);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassengerProperties_PassivePassengerWaitingTimeAfterCollision() {
+        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(23);
 	}
 
 	/**
