@@ -36,6 +36,7 @@ public class AgentFunctions {
 	 * @return true, if successful
 	 */
 	public static boolean someoneAlreadyInThisPartOfTheRow(Agent agent) {
+		boolean rowOccupied = false;
 		Row row = agent.getPassenger().getSeat().getRow();
 		for (Seat checkSeat : row.getSeats()) {
 			/* check for blocked seats in my part of the row */
@@ -47,12 +48,12 @@ public class AgentFunctions {
 							agent.getPassenger().getSeat())) {
 						agent.otherPassengersInRowBlockingMe
 								.add(checkSeat.getPassenger());
-						return true;
+						rowOccupied = true;
 					}
 				}
 			}
 		}
-		return false;
+		return rowOccupied;
 	}
 
 	/**
@@ -209,6 +210,20 @@ public class AgentFunctions {
 		return middleOfAisleY;
 
 	}
+	
+	// TODO: arbitrary seat abreast
+	public static int checkSeatFoldingStatusInRow(Passenger agent) {
+		for (Seat seat : agent.getSeat().getRow().getSeats()) {
+			if (!seat.isOccupied() && "C".contains(seat.getLetter())
+					&& "ABC".contains(agent.getSeat().getLetter())) {
+				return 1;
+			} else if (!seat.isOccupied() && "D".contains(seat.getLetter())
+					&& "DEF".contains(agent.getSeat().getLetter())) {
+				return 2;
+			}
+		}
+		return 0;
+	}
 
 	/**
 	 * Rotation from 0 to 359 degrees. Only 45 degree steps. North is zero.
@@ -278,6 +293,8 @@ public class AgentFunctions {
 		}
 		return false;
 	}
+	
+
 
 	/**
 	 * This method takes a cost map and adds a huge cost to the location and the

@@ -523,19 +523,6 @@ public class Agent extends Subject implements Runnable {
 						.getLayoutConcept() == LayoutConcept.LIFTING_SEAT_PAN_SEATS);
 	}
 
-	private int checkSeatFoldingStatusInRow() {
-		for (Seat seat : passenger.getSeat().getRow().getSeats()) {
-			if (!seat.isOccupied() && "C".contains(seat.getLetter())
-					&& "ABC".contains(passenger.getSeat().getLetter())) {
-				return 1;
-			} else if (!seat.isOccupied() && "D".contains(seat.getLetter())
-					&& "DEF".contains(passenger.getSeat().getLetter())) {
-				return 2;
-			}
-		}
-		return 0;
-	}
-
 	/**
 	 * Gets the seat folding distance.
 	 *
@@ -1298,9 +1285,11 @@ public class Agent extends Subject implements Runnable {
 					 * unfolded in the meantime
 					 */
 
-					if ((checkSeatFoldingStatusInRow() == 1
+					if ((AgentFunctions
+							.checkSeatFoldingStatusInRow(passenger) == 1
 							&& "ABC".contains(passenger.getSeat().getLetter()))
-							|| (checkSeatFoldingStatusInRow() == 2
+							|| (AgentFunctions
+									.checkSeatFoldingStatusInRow(passenger) == 2
 									&& "DEF".contains(
 											passenger.getSeat().getLetter()))) {
 						stowingAtAisleSeat = true;
@@ -1333,9 +1322,11 @@ public class Agent extends Subject implements Runnable {
 						Thread.sleep(simSettings.getThreadSleepTimeDefault());
 					}
 
-					if ((checkSeatFoldingStatusInRow() == 1
+					if ((AgentFunctions
+							.checkSeatFoldingStatusInRow(passenger) == 1
 							&& "ABC".contains(passenger.getSeat().getLetter()))
-							|| (checkSeatFoldingStatusInRow() == 2
+							|| (AgentFunctions
+									.checkSeatFoldingStatusInRow(passenger) == 2
 									&& "DEF".contains(
 											passenger.getSeat().getLetter()))) {
 						waitingAtAisleSeat = true;
@@ -1365,12 +1356,14 @@ public class Agent extends Subject implements Runnable {
 									"waymaking skipped. Delay simulated!");
 						}
 
-						Thread.sleep(AStarHelper.time(GaussianRandom.gaussianRandom(
-								simSettings.getSeatInterferenceProcessTimeMean(),
-								GaussOptions.PERCENT_95,
-								simSettings.getSeatInterferenceProcessTimeDeviation())
+						Thread.sleep(
+								AStarHelper.time(GaussianRandom.gaussianRandom(
+										simSettings
+												.getSeatInterferenceProcessTimeMean(),
+										GaussOptions.PERCENT_95, simSettings
+												.getSeatInterferenceProcessTimeDeviation())
 
-						));
+								));
 						wayMakingSkipped++;
 						waitingCompleted = true;
 						// continue;
