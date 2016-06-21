@@ -23,7 +23,7 @@ import org.eclipse.ui.part.ViewPart;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.astar.AreamapHandler;
 import net.bhl.cdt.paxelerate.model.astar.Costmap;
-import net.bhl.cdt.paxelerate.ui.color.ColorHelper;
+import net.bhl.cdt.paxelerate.ui.graphics.ColorHelper;
 import net.bhl.cdt.paxelerate.ui.graphics.SWTHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;

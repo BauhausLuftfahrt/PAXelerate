@@ -31,6 +31,7 @@ import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.util.PassengerGenerator;
 import net.bhl.cdt.paxelerate.model.util.PassengerPropertyGenerator;
+import net.bhl.cdt.paxelerate.ui.helper.JobScheduleRule;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
 import net.bhl.cdt.paxelerate.util.input.Input;

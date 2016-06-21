@@ -1,4 +1,4 @@
-package net.bhl.cdt.paxelerate.ui.commands;
+package net.bhl.cdt.paxelerate.ui.helper;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -14,6 +14,7 @@ import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.LayoutConcept;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
 import net.bhl.cdt.paxelerate.model.TravelClass;
+import net.bhl.cdt.paxelerate.ui.commands.DrawCabinCommand;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 public class DefineBatchSimulationInput extends CDTCommand {
@@ -60,7 +61,7 @@ public class DefineBatchSimulationInput extends CDTCommand {
 				Display.getDefault().syncExec(new Runnable() {
 					@Override
 					public void run() {
-						new DrawCabinCommand(cabin).doRun();
+						new DrawCabinCommand(cabin).execute();
 					}
 				});
 
@@ -79,7 +80,7 @@ public class DefineBatchSimulationInput extends CDTCommand {
 				Display.getDefault().syncExec(new Runnable() {
 					@Override
 					public void run() {
-						new DrawCabinCommand(cabin).doRun();
+						new DrawCabinCommand(cabin).execute();
 					}
 				});
 				// 70 - 126

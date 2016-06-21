@@ -9,7 +9,7 @@
  *    Google, Inc. - initial API and implementation
  *******************************************************************************/
 
-package net.bhl.cdt.paxelerate.ui.image;
+package net.bhl.cdt.paxelerate.ui.graphics;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -21,8 +21,6 @@ import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.widgets.Display;
-
-import net.bhl.cdt.paxelerate.ui.color.ColorHelper;
 
 /**
  * The Class ImageImporter.

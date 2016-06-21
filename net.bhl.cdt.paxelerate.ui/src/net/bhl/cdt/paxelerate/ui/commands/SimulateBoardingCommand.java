@@ -37,15 +37,16 @@ import net.bhl.cdt.paxelerate.model.agent.Agent.AgentMode;
 import net.bhl.cdt.paxelerate.model.astar.Costmap;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.model.util.SimulationResultLogger;
-import net.bhl.cdt.paxelerate.ui.export.FileSaver;
+import net.bhl.cdt.paxelerate.ui.helper.MapExportHelper;
+import net.bhl.cdt.paxelerate.ui.helper.JobScheduleRule;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.SimulationView;
 import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
-import net.bhl.cdt.paxelerate.util.exchange.ExcelExport;
 import net.bhl.cdt.paxelerate.util.input.Input;
 import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
+import net.bhl.cdt.paxelerate.util.output.ExcelExport;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
@@ -61,7 +62,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 	/** The simulation frame. */
 	private JFrame simulationFrame;
-	
+
 	private boolean developerMode;
 
 	final JobScheduleRule jobRule = new JobScheduleRule();
@@ -76,12 +77,12 @@ public class SimulateBoardingCommand extends CDTCommand {
 		this.cabin = cabin;
 		this.developerMode = cabin.getSimulationSettings().isDeveloperMode();
 	}
-	
+
 	public SimulateBoardingCommand() {
 		if (ECPUtil.getECPProjectManager().getProjects() != null) {
 			Cabin cabinModel = (Cabin) ECPUtil.getECPProjectManager().getProject("reference").getContents().get(0);
 			this.cabin = EcoreUtil.copy(cabinModel);
-			}
+		}
 	}
 
 	/**
@@ -101,12 +102,11 @@ public class SimulateBoardingCommand extends CDTCommand {
 			 */
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
-				
+
 				int simulationLoopIndex = 1;
 				Log.add(this, "Initializing new simulation run ...");
 
 				CabinViewPart cabinViewPart = ViewPartHelper.getCabinView();
-				
 
 				new GeneratePassengersCommand(cabin).doRun();
 
@@ -166,13 +166,10 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 				new SimulationHandler(dimensions, cabin, simulationLoopIndex);
 
-				// WIP
-				FileSaver.saveObstacleToFile(SimulationHandler.getMap(), dimensions);
-
 				// Show WIP simulation view
-				if(!cabin.getSimulationSettings().isSimulateWithoutUI()) {
+				if (!cabin.getSimulationSettings().isSimulateWithoutUI()) {
 					runAreaMapWindow();
-				}				
+				}
 
 				// TODO: INSERT PAX LOCATION SUBMIT TO CABINVIEWPART
 				// HERE
@@ -198,20 +195,19 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 									SimulationHandler.setSimulationStatus(true);
 									SimulationHandler.reset();
-									
-									if(!cabin.getSimulationSettings().isSimulateWithoutUI()) {
+
+									if (!cabin.getSimulationSettings().isSimulateWithoutUI()) {
 										simulationFrame.dispose();
-									}									
+									}
 
 									Log.add(this, "SIMULATION TERMINATED! Passenger " + sleepyPassenger.getName()
 											+ " did not react.");
-									
+
 									/* records the failed simulation run */
-									if(developerMode) {
+									if (developerMode) {
 										SimulationResultLogger results = new SimulationResultLogger();
-									results.getSimulationData(cabin, simulationLoopIndex, 0, 0, 0);
+										results.getSimulationData(cabin, simulationLoopIndex, 0, 0, 0);
 									}
-									
 
 									return Status.CANCEL_STATUS;
 								}
@@ -227,9 +223,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 				}
 
 				/* closes the simulation view after completion */
-				if(!cabin.getSimulationSettings().isSimulateWithoutUI()) {
+				if (!cabin.getSimulationSettings().isSimulateWithoutUI()) {
 					simulationFrame.dispose();
-				}					
+				}
 
 				SimulationResultLogger results = new SimulationResultLogger();
 
@@ -243,13 +239,16 @@ public class SimulateBoardingCommand extends CDTCommand {
 					// Exporting data
 					try {
 
-						/*ExcelExport exporter = new ExcelExport("iteration" + simulationLoopIndex);
-						exporter.createFile();
-						ExportDataCommand exportData = new ExportDataCommand(cabin, exporter);
-						exportData.generateDistributionFile();
-						exportData.getPassengerData();
-						exportData.getSimulationPropertiesData();
-						exporter.closeFile();*/
+						/*
+						 * ExcelExport exporter = new ExcelExport("iteration" +
+						 * simulationLoopIndex); exporter.createFile();
+						 * ExportDataCommand exportData = new
+						 * ExportDataCommand(cabin, exporter);
+						 * exportData.generateDistributionFile();
+						 * exportData.getPassengerData();
+						 * exportData.getSimulationPropertiesData();
+						 * exporter.closeFile();
+						 */
 
 						ExcelExport exporterResults = new ExcelExport("results_michi");
 						exporterResults.createFile();
@@ -258,26 +257,24 @@ public class SimulateBoardingCommand extends CDTCommand {
 						exportDataResults.getResultData();
 						exporterResults.closeFile();
 
+						// save the CostMap and ObstacleMap to the local file
+						// system
+						ExcelExport exporterCostMap = new ExcelExport("CostMap");
+						exporterCostMap.createFile();
+						MapExportHelper exportDataResults1 = new MapExportHelper(exporterCostMap);
+						exportDataResults1.saveCostmapToFile(SimulationHandler.getUsedCostmaps(), dimensions);
+						exporterCostMap.closeFile();
+
+						ExcelExport exporterObstacleMap = new ExcelExport("ObstacleMap");
+						exporterObstacleMap.createFile();
+						MapExportHelper exportData = new MapExportHelper(exporterObstacleMap);
+						exportData.saveObstacleToFile(SimulationHandler.getMap(), dimensions);
+						exporterObstacleMap.closeFile();
 					} catch (FileNotFoundException e) {
 						Log.add(this, "Data export failed! - FileNotFoundException ");
 					} catch (IOException e) {
 						Log.add(this, "Data export failed! - IOException");
 					}
-
-					Map<Integer, Costmap> costmaps = SimulationHandler.getUsedCostmaps();
-
-					int index = 0;
-
-					for (Costmap costmap : costmaps.values()) {
-
-						// save the CostMap to the local file system
-						FileSaver.saveCostmapToFile(costmap, dimensions, Integer.toString(index));
-
-						index++;
-					}
-
-					FileSaver.saveObstacleToFile(SimulationHandler.getMap(), dimensions);
-
 				}
 
 				/*
@@ -299,7 +296,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 				/* Clear the cache! */
 				cabinViewPart.clearCache();
 				SimulationHandler.reset();
-			
+
 				// PUBLISH
 				Log.add(this, "Updating GUI...");
 				Display.getDefault().syncExec(new Runnable() {

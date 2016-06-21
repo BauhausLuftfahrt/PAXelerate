@@ -4,7 +4,7 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ***************************************************************************************/
 
-package net.bhl.cdt.paxelerate.ui.commands;
+package net.bhl.cdt.paxelerate.ui.helper;
 
 import org.eclipse.core.runtime.jobs.ISchedulingRule;
 

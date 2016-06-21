@@ -23,9 +23,9 @@ import net.bhl.cdt.paxelerate.model.SimulationResult;
 import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.storage.GaussianStorage;
 import net.bhl.cdt.paxelerate.model.storage.StorageHandler;
-import net.bhl.cdt.paxelerate.util.exchange.ExcelExport;
 import net.bhl.cdt.paxelerate.util.input.Input;
 import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
+import net.bhl.cdt.paxelerate.util.output.ExcelExport;
 import net.bhl.cdt.paxelerate.util.time.TimeHelper;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 

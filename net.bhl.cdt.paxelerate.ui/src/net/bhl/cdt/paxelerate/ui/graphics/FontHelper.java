@@ -4,7 +4,7 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ******************************************************************************/
 
-package net.bhl.cdt.paxelerate.ui.font;
+package net.bhl.cdt.paxelerate.ui.graphics;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Device;
