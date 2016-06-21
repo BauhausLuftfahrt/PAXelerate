@@ -25,10 +25,9 @@ import net.bhl.cdt.paxelerate.util.math.Vector2D;
  */
 public class AgentFunctions {
 
-	
 	/** The Constant PIXELS_FOR_SCANNING_AT_DOOR. */
 	public static final int PIXELS_FOR_SCANNING_AT_DOOR = 3;
-	
+
 	/**
 	 * Someone already in this part of the row.
 	 *
@@ -39,9 +38,11 @@ public class AgentFunctions {
 	public static boolean someoneAlreadyInThisPartOfTheRow(Agent agent) {
 		Row row = agent.getPassenger().getSeat().getRow();
 		for (Seat checkSeat : row.getSeats()) {
+			/* check for blocked seats in my part of the row */
 			if (checkSeat.isOccupied()) {
 				if (sameSideOfAisle(checkSeat,
 						agent.getPassenger().getSeat())) {
+					/* identify passengers which have to stand up for me */
 					if (otherSeatCloserToAisle(checkSeat,
 							agent.getPassenger().getSeat())) {
 						agent.otherPassengersInRowBlockingMe
@@ -54,9 +55,6 @@ public class AgentFunctions {
 		return false;
 	}
 
-	/*
-	 * TODO: ONLY APPLICABLE FOR 3-3 CONFIGURATIONS OR BELOW!
-	 */
 	/**
 	 * Same side of aisle.
 	 *
@@ -68,22 +66,87 @@ public class AgentFunctions {
 	 */
 	private static boolean sameSideOfAisle(Seat checkSeat, Seat mySeat) {
 
-		if ("ABC".contains(checkSeat.getLetter())) {
-			if ("ABC".contains(mySeat.getLetter())) {
+		int seatAbrest = checkSeatAbrest(mySeat);
+
+		switch (seatAbrest) {
+		
+		default:
+			return false;
+		case 4:
+			/* AC - DF */
+			if (checkSeatLocation(checkSeat, mySeat, "AC")
+					| checkSeatLocation(checkSeat, mySeat, "DF")) {
 				return true;
 			}
+			break;
+		case 5:
+			/* AC - DEF */
+			if (checkSeatLocation(checkSeat, mySeat, "AC")
+					| checkSeatLocation(checkSeat, mySeat, "DEF")) {
+				return true;
+			}
+			break;
+		case 6:
+			/* ABC - DEF */
+			if (checkSeatLocation(checkSeat, mySeat, "ABC")
+					| checkSeatLocation(checkSeat, mySeat, "DEF")) {
+				return true;
+			}
+			break;
+		case 7:
+			/* AB - DEF - JK */
+			if (checkSeatLocation(checkSeat, mySeat, "AB")
+					| checkSeatLocation(checkSeat, mySeat, "DEF")
+					| checkSeatLocation(checkSeat, mySeat, "JK")) {
+				return true;
+			}
+			break;
+		case 8:
+			/* AB - DEFG - JK */
+			if (checkSeatLocation(checkSeat, mySeat, "AB")
+					| checkSeatLocation(checkSeat, mySeat, "DEFG")
+					| checkSeatLocation(checkSeat, mySeat, "JK")) {
+				return true;
+			}
+			break;
+		case 9:
+			/* ABC - DEF - HJK */
+			if (checkSeatLocation(checkSeat, mySeat, "ABC")
+					| checkSeatLocation(checkSeat, mySeat, "DEF")
+					| checkSeatLocation(checkSeat, mySeat, "HJK")) {
+				return true;
+			}
+			break;
+		case 10:
+			/* ABC - DEFG - HJK */
+			if (checkSeatLocation(checkSeat, mySeat, "ABC")
+					| checkSeatLocation(checkSeat, mySeat, "DEFG")
+					| checkSeatLocation(checkSeat, mySeat, "HJK")) {
+				return true;
+			}
+			break;
 		}
-		if ("DEF".contains(checkSeat.getLetter())) {
-			if ("DEF".contains(mySeat.getLetter())) {
+
+		return false;
+	}
+
+	private static int checkSeatAbrest(Seat seat) {
+		return ModelHelper.getParent(Row.class, seat).getSeats()
+				.lastIndexOf(seat);
+	}
+
+	private static boolean checkSeatLocation(Seat checkSeat, Seat mySeat,
+			String letter) {
+
+		if (letter.contains(checkSeat.getLetter())) {
+			if (letter.contains(mySeat.getLetter())) {
 				return true;
 			}
 		}
 		return false;
-	}
-	
-	
 
-	// TODO: this only works for a ONE AISLE configuration!
+	}
+
 	/**
 	 * Other seat closer to aisle.
 	 *
@@ -96,19 +159,55 @@ public class AgentFunctions {
 	public static boolean otherSeatCloserToAisle(Seat otherSeat,
 			Seat thisSeat) {
 
-		int middleOfCabinX = (int) (ModelHelper.getParent(Cabin.class, thisSeat)
-				.getYDimension() / 2.0);
+		int middleOfAisleY = determineClosestAisle(thisSeat);
 
-		int otherSeatToAisleDistanceX = Math.abs(otherSeat.getYPosition()
-				+ otherSeat.getYDimension() / 2 - middleOfCabinX);
+		int otherSeatToAisleDistanceY = Math.abs(otherSeat.getYPosition()
+				+ otherSeat.getYDimension() / 2 - middleOfAisleY);
 
-		int mySeatToAisleDistanceX = Math.abs(thisSeat.getYPosition()
-				+ thisSeat.getYDimension() / 2 - middleOfCabinX);
+		int mySeatToAisleDistanceY = Math.abs(thisSeat.getYPosition()
+				+ thisSeat.getYDimension() / 2 - middleOfAisleY);
 
-		if (otherSeatToAisleDistanceX < mySeatToAisleDistanceX) {
+		if (otherSeatToAisleDistanceY < mySeatToAisleDistanceY) {
 			return true;
 		}
 		return false;
+	}
+
+	// TODO: arbitrary seat abreast
+	public static int determineClosestAisle(Seat mySeat) {
+
+		int seatAbrest = checkSeatAbrest(mySeat);
+		
+		int middleOfAisleY = 0;
+
+		switch (seatAbrest) {
+		
+		default:
+			break;
+			
+		case 4:
+		case 6:
+			middleOfAisleY = (int) (ModelHelper.getParent(Cabin.class, mySeat)
+					.getYDimension() / 2.0);
+			break;
+		case 5:
+		case 7:
+			/* AB - DEF - JK */
+			break;
+		case 8:
+			/* AB - DEFG - JK */
+			break;
+		case 9:
+			/* ABC - DEF - HJK */
+			break;
+		case 10:
+			/* ABC - DEFG - HJK */
+			break;
+		}
+
+
+		return middleOfAisleY;
+
 	}
 
 	/**
@@ -139,7 +238,6 @@ public class AgentFunctions {
 		}
 		return angle;
 	}
-
 
 	/**
 	 * Doorway blocked.
