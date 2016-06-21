@@ -1279,9 +1279,8 @@ public class Agent extends Subject implements Runnable {
 
 					/* Perform the correct behavior */
 					collision.handle();
-					
-					//
 
+					increaseTotalWaitingTime((long) waitingTimeAfterCollision);
 					/*
 					 * the main loop is quit, if there is a new path calculated
 					 */
