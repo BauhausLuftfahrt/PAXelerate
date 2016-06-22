@@ -166,12 +166,17 @@ public class Path {
 		return newPath;
 	}
 
-	public int getCost() {
+	public int getCost() throws ArithmeticException {
 
 		int cost = 0;
 		for (Node node : waypoints) {
 			cost += node.getCostFromStart();
 		}
-		return cost;
+		if (cost < 0) {
+			throw new ArithmeticException(
+					"Path cost is smaller than zero! -> " + cost);
+		} else {
+			return cost;
+		}
 	}
 }

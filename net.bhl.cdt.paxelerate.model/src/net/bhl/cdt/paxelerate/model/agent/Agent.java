@@ -65,7 +65,7 @@ public class Agent extends Subject implements Runnable {
 	/** The way making skipped. */
 	private int wayMakingSkipped = 0;
 	private int wayMakingFoldableSeatSkipped = 0;
-	
+
 	private long totalWaitingTime = 0;
 
 	/** The moved once. */
@@ -403,8 +403,8 @@ public class Agent extends Subject implements Runnable {
 	public boolean didMoveOnce() {
 		return movedOnce;
 	}
-	
-	private void increaseTotalWaitingTime(long time){
+
+	private void increaseTotalWaitingTime(long time) {
 		totalWaitingTime = totalWaitingTime + time;
 	}
 
@@ -735,6 +735,8 @@ public class Agent extends Subject implements Runnable {
 	 */
 	public void findNewPath() throws NullPointerException {
 
+		int oldPathCost = 0;
+
 		/* starts the StopWatch - used for performance testing */
 		stopwatch.start();
 
@@ -746,6 +748,9 @@ public class Agent extends Subject implements Runnable {
 
 		/* this is only run if its not the initial path finding process */
 		if (currentPosition != null) {
+
+			/* store the old path cost for further calculations */
+			oldPathCost = path.getCost();
 
 			/* this sets the new start of the A* to the current position */
 			start = currentPosition;
@@ -760,6 +765,9 @@ public class Agent extends Subject implements Runnable {
 
 		/* retrieve the path information */
 		path = astar.getBestPath();
+
+		System.out.println("old: " + oldPathCost + ", new: " + path.getCost()
+				+ " diff in %: " + oldPathCost / path.getCost() * 100.0);
 
 		/*
 		 * setting the new desired and current positions. This causes a
@@ -1052,20 +1060,20 @@ public class Agent extends Subject implements Runnable {
 			if (waitingAtAisleSeat) {
 				sleepTime = AStarHelper.time(GaussianRandom.gaussianRandom(
 						simSettings.getPassengerProperties()
-						.getSeatInterferenceProcessTimeFoldingSeatMean(),
-				GaussOptions.PERCENT_95,
-				simSettings.getPassengerProperties()
-						.getSeatInterferenceProcessTimeFoldingSeatDeviation()));
+								.getSeatInterferenceProcessTimeFoldingSeatMean(),
+						GaussOptions.PERCENT_95,
+						simSettings.getPassengerProperties()
+								.getSeatInterferenceProcessTimeFoldingSeatDeviation()));
 				Thread.sleep(sleepTime);
 				increaseTotalWaitingTime(sleepTime);
 				wayMakingFoldableSeatSkipped++;
 			} else {
 				sleepTime = AStarHelper.time(GaussianRandom.gaussianRandom(
 						simSettings.getPassengerProperties()
-						.getSeatInterferenceProcessTimeMean(),
-				GaussOptions.PERCENT_95,
-				simSettings.getPassengerProperties()
-						.getSeatInterferenceProcessTimeDeviation()));
+								.getSeatInterferenceProcessTimeMean(),
+						GaussOptions.PERCENT_95,
+						simSettings.getPassengerProperties()
+								.getSeatInterferenceProcessTimeDeviation()));
 				Thread.sleep(sleepTime);
 				increaseTotalWaitingTime(sleepTime);
 				wayMakingSkipped++;
@@ -1341,7 +1349,8 @@ public class Agent extends Subject implements Runnable {
 					setCurrentState(State.WAITING_FOR_ROW_CLEARING);
 
 					while (waymakingAllowed() == false) {
-						increaseTotalWaitingTime(simSettings.getThreadSleepTimeDefault());
+						increaseTotalWaitingTime(
+								simSettings.getThreadSleepTimeDefault());
 						Thread.sleep(simSettings.getThreadSleepTimeDefault());
 					}
 
@@ -1368,7 +1377,8 @@ public class Agent extends Subject implements Runnable {
 					// already in the row!
 
 					while (waymakingAllowed() == false) {
-						increaseTotalWaitingTime(simSettings.getThreadSleepTimeDefault());
+						increaseTotalWaitingTime(
+								simSettings.getThreadSleepTimeDefault());
 						Thread.sleep(simSettings.getThreadSleepTimeDefault());
 					}
 
@@ -1380,12 +1390,13 @@ public class Agent extends Subject implements Runnable {
 									"waymaking skipped. Delay simulated!");
 						}
 
-						long sleepTime = AStarHelper.time(GaussianRandom.gaussianRandom(
-								simSettings.getPassengerProperties()
-								.getSeatInterferenceProcessTimeMean(),
-						GaussOptions.PERCENT_95,
-						simSettings.getPassengerProperties()
-								.getSeatInterferenceProcessTimeDeviation()));
+						long sleepTime = AStarHelper
+								.time(GaussianRandom.gaussianRandom(
+										simSettings.getPassengerProperties()
+												.getSeatInterferenceProcessTimeMean(),
+										GaussOptions.PERCENT_95,
+										simSettings.getPassengerProperties()
+												.getSeatInterferenceProcessTimeDeviation()));
 						increaseTotalWaitingTime(sleepTime);
 						Thread.sleep(sleepTime);
 						wayMakingSkipped++;
