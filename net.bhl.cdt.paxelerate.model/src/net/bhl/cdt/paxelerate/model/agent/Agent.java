@@ -735,7 +735,8 @@ public class Agent extends Subject implements Runnable {
 	 */
 	public void findNewPath() throws NullPointerException {
 
-		int oldPathCost = 0;
+		// Path oldPath = null;
+		// double pathFindingDecisionFactor = 1.1;
 
 		/* starts the StopWatch - used for performance testing */
 		stopwatch.start();
@@ -749,8 +750,9 @@ public class Agent extends Subject implements Runnable {
 		/* this is only run if its not the initial path finding process */
 		if (currentPosition != null) {
 
-			/* store the old path cost for further calculations */
-			oldPathCost = path.getCost();
+			// // TODO: is this only a "pointer"?
+			// /* store the old path */
+			// oldPath = path;
 
 			/* this sets the new start of the A* to the current position */
 			start = currentPosition;
@@ -766,8 +768,26 @@ public class Agent extends Subject implements Runnable {
 		/* retrieve the path information */
 		path = astar.getBestPath();
 
-		System.out.println("old: " + oldPathCost + ", new: " + path.getCost()
-				+ " diff in %: " + oldPathCost / path.getCost() * 100.0);
+		// System.out.println("old: " + oldPath.getCost() + ", new: "
+		// + path.getCost() + " diff in %: "
+		// + oldPath.getCost() / path.getCost() * 100.0);
+
+		// /* this is only run if its not the initial path finding process */
+		// if (currentPosition != null) {
+		//
+		// /* check if the new path is way more expensive than the old one */
+		//
+		// // TODO: Calulate only the part of the path lying ahead!
+		// if (oldPath.getCost() * pathFindingDecisionFactor <= path
+		// .getCost()) {
+		//
+		// /* if so, return to the old path */
+		// path = oldPath;
+		//
+		// /* exit the function */
+		// return;
+		// }
+		// }
 
 		/*
 		 * setting the new desired and current positions. This causes a
@@ -777,7 +797,9 @@ public class Agent extends Subject implements Runnable {
 		desiredPosition = path.get(0).getPosition();
 
 		/* this is only run if its not the initial path finding process */
-		if (currentPosition != null) {
+		if (currentPosition != null)
+
+		{
 			blockArea(currentPosition, false, false, null);
 		}
 
@@ -785,10 +807,11 @@ public class Agent extends Subject implements Runnable {
 			currentPosition = new Vector2D(0, 0);
 		}
 
+		/* apply cost the the passenger element */
+		passenger.setCostOfPath(path.getCost());
+
 		/* ends the stop watch performance logging */
 		stopwatch.stop();
-
-		passenger.setCostOfPath(path.getCost());
 	}
 
 	/**
