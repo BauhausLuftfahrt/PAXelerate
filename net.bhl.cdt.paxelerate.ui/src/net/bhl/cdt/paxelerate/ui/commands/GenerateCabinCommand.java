@@ -39,7 +39,7 @@ public class GenerateCabinCommand extends CDTCommand {
 	 * @param cabin
 	 *            is the input cabin
 	 */
-	public GenerateCabinCommand(Cabin cabin) {
+	public GenerateCabinCommand(final Cabin cabin) {
 		this.cabin = cabin;
 		if (cabin.getSimulationSettings().isUsePresetSettings()) {
 			switch (cabin.getAircraftType()) {

@@ -38,7 +38,7 @@ public class ImageImporter {
 	/**
 	 * Maps image paths to images.
 	 */
-	private static Map<String, Image> m_imageMap = new HashMap<String, Image>();
+	private static Map<String, Image> imageMap = new HashMap<String, Image>();
 
 	/**
 	 * Returns an {@link Image} encoded by the specified {@link InputStream}.
@@ -68,14 +68,14 @@ public class ImageImporter {
 	 * @return the {@link Image} stored in the file at the specified path
 	 */
 	public static Image getImage(String path) {
-		Image image = m_imageMap.get(path);
+		Image image = imageMap.get(path);
 		if (image == null) {
 			try {
 				image = getImage(new FileInputStream(path));
-				m_imageMap.put(path, image);
+				imageMap.put(path, image);
 			} catch (Exception e) {
 				image = getMissingImage();
-				m_imageMap.put(path, image);
+				imageMap.put(path, image);
 			}
 		}
 		return image;
@@ -93,14 +93,14 @@ public class ImageImporter {
 	 */
 	public static Image getImage(Class<?> clazz, String path) {
 		String key = clazz.getName() + '|' + path;
-		Image image = m_imageMap.get(key);
+		Image image = imageMap.get(key);
 		if (image == null) {
 			try {
 				image = getImage(clazz.getResourceAsStream(path));
-				m_imageMap.put(key, image);
+				imageMap.put(key, image);
 			} catch (Exception e) {
 				image = getMissingImage();
-				m_imageMap.put(key, image);
+				imageMap.put(key, image);
 			}
 		}
 		return image;
@@ -132,9 +132,9 @@ public class ImageImporter {
 	 * Dispose all of the cached {@link Image}'s.
 	 */
 	public static void disposeImages() {
-		for (Image image : m_imageMap.values())
+		for (Image image : imageMap.values())
 			image.dispose();
-		m_imageMap.clear();
+		imageMap.clear();
 	}
 
 }

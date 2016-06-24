@@ -57,7 +57,7 @@ public class DrawCabinCommand extends CDTCommand {
 	 * @param cabin
 	 *            the cabin
 	 */
-	public DrawCabinCommand(Cabin cabin) {
+	public DrawCabinCommand(final Cabin cabin) {
 		this.cabin = cabin;
 	}
 

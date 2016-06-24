@@ -67,7 +67,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 	 * @param cabin
 	 *            is the input parameter
 	 */
-	public GeneratePassengersCommand(Cabin cabin) {
+	public GeneratePassengersCommand(final Cabin cabin) {
 		this.cabin = cabin;
 	}
 	
@@ -84,7 +84,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 	 *            is the passenger to whom the door is assigned to.
 	 * @return the door
 	 */
-	private Door getDoor(Passenger pass) {
+	private Door getDoor(final Passenger pass) {
 
 		ArrayList<Door> sdoorage = new ArrayList<Door>();
 
@@ -207,7 +207,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 		Job job = new Job("Generate Passengers Thread") {
 			@Override
-			protected IStatus run(IProgressMonitor monitor) {
+			protected IStatus run(final IProgressMonitor monitor) {
 
 				Log.add(this, "Passenger generation started...");
 

@@ -19,7 +19,7 @@ import org.eclipse.swt.widgets.Display;
 public class FontHelper {
 	
 	/** The font displaying device/component. */
-	private static final Device d = Display.getCurrent();
+	private static final Device disp = Display.getCurrent();
 	
 	/** Font Name. */
 	private static final String fontName = "Helvetica Neue";
@@ -27,12 +27,12 @@ public class FontHelper {
 	/** All Paxelerate font styles. */
 	public static final Font
 			// Heading styles
-			HEADING1 = new Font(d, fontName, 9, SWT.BOLD),
-			HEADING2 = new Font(d, fontName, 9, SWT.NORMAL),
-			HEADING3 = new Font(d, fontName, 8, SWT.NORMAL),
+			HEADING1 = new Font(disp, fontName, 9, SWT.BOLD),
+			HEADING2 = new Font(disp, fontName, 9, SWT.NORMAL),
+			HEADING3 = new Font(disp, fontName, 8, SWT.NORMAL),
 			
 			// Paragraph styles
-			PARAGRAPH = new Font(d, fontName, 6, SWT.NORMAL);
+			PARAGRAPH = new Font(disp, fontName, 6, SWT.NORMAL);
 
 	/**
 	 * Singleton constructor for a FontHelper instance.

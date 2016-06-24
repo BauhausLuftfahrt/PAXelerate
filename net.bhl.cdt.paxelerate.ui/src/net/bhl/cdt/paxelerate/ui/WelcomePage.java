@@ -31,7 +31,7 @@ public class WelcomePage extends IntroPart implements IIntroPart {
 	 * @see org.eclipse.ui.part.IntroPart#createPartControl(org.eclipse.swt.widgets.Composite)
 	 */
 	@Override
-	public void createPartControl(Composite parent) {
+	public void createPartControl(final Composite parent) {
 		Composite outerContainer = new Composite(parent, SWT.NONE);
 		GridLayout gridLayout = new GridLayout();
 		gridLayout.marginLeft = gridLayout.marginTop = gridLayout.marginRight = gridLayout.marginBottom = 10;
@@ -65,7 +65,7 @@ public class WelcomePage extends IntroPart implements IIntroPart {
 		newProjectButton.addSelectionListener(new SelectionListener() {
 
 			@Override
-			public void widgetSelected(SelectionEvent e) {
+			public void widgetSelected(final SelectionEvent e) {
 				dispose();
 
 				ECPHandlerHelper.createProject(PlatformUI.getWorkbench().getDisplay().getActiveShell());
@@ -73,7 +73,7 @@ public class WelcomePage extends IntroPart implements IIntroPart {
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
+			public void widgetDefaultSelected(final SelectionEvent e) {
 				// do nothing
 			}
 		});
@@ -123,7 +123,7 @@ public class WelcomePage extends IntroPart implements IIntroPart {
 	 * @see org.eclipse.ui.intro.IIntroPart#standbyStateChanged(boolean)
 	 */
 	@Override
-	public void standbyStateChanged(boolean standby) {
+	public void standbyStateChanged(final boolean standby) {
 		// Auto-generated method stub
 
 	}

@@ -70,7 +70,8 @@ public class ECPModelImporter extends CDTCommand {
 	 * @throws ECPProjectWithNameExistsException
 	 *             the ECP project with name exists exception
 	 */
-	private Cabin loadXMIModel(String folderName, String fileName) throws ECPProjectWithNameExistsException {
+	private Cabin loadXMIModel(final String folderName, final String fileName)
+			throws ECPProjectWithNameExistsException {
 		/* Create a resource set */
 		ResourceSet resourceSet = new ResourceSetImpl();
 
@@ -99,7 +100,7 @@ public class ECPModelImporter extends CDTCommand {
 	 * @throws ECPProjectWithNameExistsException
 	 *             the ECP project with name exists exception
 	 */
-	private ECPProject createNewProject(String projectName) throws ECPProjectWithNameExistsException {
+	private ECPProject createNewProject(final String projectName) throws ECPProjectWithNameExistsException {
 		ECPProject refProject = ECPUtil.getECPProjectManager().createProject(getProvider(), projectName,
 				ECPUtil.createProperties());
 		return refProject;
@@ -113,7 +114,7 @@ public class ECPModelImporter extends CDTCommand {
 	 * @param cabin
 	 *            the cabin
 	 */
-	private void addXMIModelToProject(ECPProject refProject, Cabin cabin) {
+	private void addXMIModelToProject(final ECPProject refProject, final Cabin cabin) {
 		/* add the imported xmi model to the default project */
 		refProject.getEditingDomain().getCommandStack().execute(new ChangeCommand(cabin) {
 			@Override
@@ -159,7 +160,7 @@ public class ECPModelImporter extends CDTCommand {
 			 * IProgressMonitor)
 			 */
 			@Override
-			protected IStatus run(IProgressMonitor monitor) {
+			protected IStatus run(final IProgressMonitor monitor) {
 
 				try {
 					Log.add(this, "Loading cabin from file...");
@@ -174,7 +175,7 @@ public class ECPModelImporter extends CDTCommand {
 				} catch (ECPProjectWithNameExistsException e) {
 					e.printStackTrace();
 				}
-				
+
 				// report finished
 				return Status.OK_STATUS;
 
@@ -183,11 +184,12 @@ public class ECPModelImporter extends CDTCommand {
 		};
 
 		job.addJobChangeListener(new JobChangeAdapter() {
-			public void done(IJobChangeEvent event) {
-				if (event.getResult().isOK())
+			public void done(final IJobChangeEvent event) {
+				if (event.getResult().isOK()) {
 					Log.add(this, "ECP model import completed");
-				else
+				} else {
 					Log.add(this, "ECP model import failed");
+				}
 			}
 		});
 

@@ -54,7 +54,7 @@ public class DefineBatchSimulationInput extends CDTCommand {
 			 * IProgressMonitor)
 			 */
 			@Override
-			protected IStatus run(IProgressMonitor monitor) {
+			protected IStatus run(final IProgressMonitor monitor) {
 
 				Log.add(this, "Initializing batch simulation ...");
 
@@ -96,11 +96,12 @@ public class DefineBatchSimulationInput extends CDTCommand {
 		};
 
 		job.addJobChangeListener(new JobChangeAdapter() {
-			public void done(IJobChangeEvent event) {
-				if (event.getResult().isOK())
+			public void done(final IJobChangeEvent event) {
+				if (event.getResult().isOK()) {
 					Log.add(this, "Simulation parameters set");
-				else
+				} else {
 					Log.add(this, "Setting simulation parameters failed");
+				}
 			}
 		});
 

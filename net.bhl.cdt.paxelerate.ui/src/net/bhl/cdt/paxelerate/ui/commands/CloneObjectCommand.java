@@ -29,7 +29,7 @@ public class CloneObjectCommand extends CDTCommand {
 	 * @param obj
 	 *            the obj
 	 */
-	public CloneObjectCommand(Object obj) {
+	public CloneObjectCommand(final Object obj) {
 
 		if (obj instanceof Row) {
 			row = (Row) obj;
