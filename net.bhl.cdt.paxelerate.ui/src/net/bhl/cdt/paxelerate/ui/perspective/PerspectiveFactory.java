@@ -22,14 +22,13 @@ public class PerspectiveFactory implements IPerspectiveFactory {
 	 * @see org.eclipse.ui.IPerspectiveFactory#createInitialLayout(org.eclipse.ui.IPageLayout)
 	 */
 	@Override
-	public void createInitialLayout(IPageLayout layout) {
+	public final void createInitialLayout(final IPageLayout layout) {
 
 		IFolderLayout topLeft = layout.createFolder("topLeft", IPageLayout.LEFT, 0.25f, layout.getEditorArea());
 		topLeft.addView(ModelExplorerView.ID);
 
 		IFolderLayout bottomLeft = layout.createFolder("bottomLeft", IPageLayout.BOTTOM, 0.5f, "topLeft");
 		bottomLeft.addView("net.bhl.cdt.paxelerate.ui.propertyview");
-		;
 
 		IFolderLayout right = layout.createFolder("right", IPageLayout.RIGHT, 0.7f, layout.getEditorArea());
 		right.addView("net.bhl.cdt.paxelerate.ui.views.cabinview");

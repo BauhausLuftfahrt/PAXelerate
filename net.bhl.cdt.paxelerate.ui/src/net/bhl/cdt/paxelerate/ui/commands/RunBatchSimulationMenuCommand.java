@@ -30,7 +30,7 @@ public class RunBatchSimulationMenuCommand extends CDTCommand {
 	 * This method runs the simulate boarding command.
 	 */
 	@Override
-	protected void doRun() {
+	protected final void doRun() {
 
 		Log.add(this, "Batch simulation command ...");
 

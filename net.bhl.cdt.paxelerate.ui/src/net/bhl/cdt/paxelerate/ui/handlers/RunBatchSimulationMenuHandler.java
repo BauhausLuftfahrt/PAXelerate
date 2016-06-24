@@ -29,7 +29,7 @@ public class RunBatchSimulationMenuHandler extends AbstractHandler {
 	 * @throws ExecutionException             Exception
 	 */
 	@Override
-	public Object execute(ExecutionEvent event) throws ExecutionException {
+	public final Object execute(final ExecutionEvent event) throws ExecutionException {
 		
 		new RunBatchSimulationMenuCommand().execute();
 		

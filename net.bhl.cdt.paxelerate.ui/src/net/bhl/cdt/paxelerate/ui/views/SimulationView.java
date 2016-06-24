@@ -95,7 +95,7 @@ public class SimulationView extends JPanel implements MouseListener {
 
 		leftButton.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(final ActionEvent e) {
 				if (pointZero >= STEP_SIZE) {
 					pointZero -= STEP_SIZE;
 				}
@@ -108,7 +108,7 @@ public class SimulationView extends JPanel implements MouseListener {
 
 		rightButton.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(final ActionEvent e) {
 				if (pointZero < areamap.getDimensions().getY() - (BOX_WIDTH / FONT_SIZE) - STEP_SIZE) {
 					pointZero += STEP_SIZE;
 				}
@@ -125,7 +125,7 @@ public class SimulationView extends JPanel implements MouseListener {
 	 * @param areamap
 	 *            the new areamap
 	 */
-	public void setAreamap(Areamap areamap) {
+	public final void setAreamap(final Areamap areamap) {
 		this.areamap = areamap;
 	}
 
@@ -136,7 +136,7 @@ public class SimulationView extends JPanel implements MouseListener {
 	 *            the state
 	 * @return the color
 	 */
-	public Color switchColor(Agent.State state) {
+	public final Color switchColor(final Agent.State state) {
 		switch (state) {
 		case FOLLOWING_PATH:
 			return Color.DARK_GRAY;
@@ -163,7 +163,7 @@ public class SimulationView extends JPanel implements MouseListener {
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
 	 */
 	@Override
-	public synchronized void paintComponent(Graphics g) {
+	public final synchronized void paintComponent(final Graphics g) {
 
 		try {
 			FONT_SIZE = (int) (getSize().height / cabinWidth);
@@ -301,7 +301,7 @@ public class SimulationView extends JPanel implements MouseListener {
 	 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
 	 */
 	@Override
-	public void mouseClicked(MouseEvent e) {
+	public final void mouseClicked(final MouseEvent e) {
 
 		if (getMousePosition() != null) {
 
@@ -324,7 +324,7 @@ public class SimulationView extends JPanel implements MouseListener {
 	 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
 	 */
 	@Override
-	public void mouseEntered(MouseEvent e) {
+	public void mouseEntered(final MouseEvent e) {
 		//
 	}
 
@@ -334,7 +334,7 @@ public class SimulationView extends JPanel implements MouseListener {
 	 * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
 	 */
 	@Override
-	public void mouseExited(MouseEvent e) {
+	public void mouseExited(final MouseEvent e) {
 		//
 	}
 
@@ -344,7 +344,7 @@ public class SimulationView extends JPanel implements MouseListener {
 	 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
 	 */
 	@Override
-	public void mousePressed(MouseEvent e) {
+	public void mousePressed(final MouseEvent e) {
 		//
 	}
 
@@ -355,11 +355,14 @@ public class SimulationView extends JPanel implements MouseListener {
 	 * java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
 	 */
 	@Override
-	public void mouseReleased(MouseEvent e) {
+	public void mouseReleased(final MouseEvent e) {
 		//
 	}
 	
-	public void resetSimulationView(){
+	/**
+	 * Reset simulation view.
+	 */
+	public final void resetSimulationView() {
 		areamap = null;
 	}
 }

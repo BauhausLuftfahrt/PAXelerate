@@ -55,6 +55,8 @@ public class GenerateCabinCommand extends CDTCommand {
 				cabin.setYDimension(650);
 				cabin.setXDimension(4440);
 				break;
+			default:
+				break;
 			}
 		}
 	}
@@ -65,7 +67,7 @@ public class GenerateCabinCommand extends CDTCommand {
 	 * command.
 	 */
 	@Override
-	protected void doRun() {
+	protected final void doRun() {
 
 		Log.add(this, "Initializing cabin generation ...");
 

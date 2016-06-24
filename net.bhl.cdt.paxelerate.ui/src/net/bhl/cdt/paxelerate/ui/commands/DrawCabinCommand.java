@@ -65,7 +65,7 @@ public class DrawCabinCommand extends CDTCommand {
 	 * This method executed the right click command. The cabin view is updated.
 	 */
 	@Override
-	protected void doRun() {
+	protected final void doRun() {
 
 		int countedPax = 0;
 		for (TravelClass tc : cabin.getClasses()) {

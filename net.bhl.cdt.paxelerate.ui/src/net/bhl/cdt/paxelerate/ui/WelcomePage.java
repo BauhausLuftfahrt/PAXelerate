@@ -31,7 +31,7 @@ public class WelcomePage extends IntroPart implements IIntroPart {
 	 * @see org.eclipse.ui.part.IntroPart#createPartControl(org.eclipse.swt.widgets.Composite)
 	 */
 	@Override
-	public void createPartControl(final Composite parent) {
+	public final void createPartControl(final Composite parent) {
 		Composite outerContainer = new Composite(parent, SWT.NONE);
 		GridLayout gridLayout = new GridLayout();
 		gridLayout.marginLeft = gridLayout.marginTop = gridLayout.marginRight = gridLayout.marginBottom = 10;
@@ -51,16 +51,16 @@ public class WelcomePage extends IntroPart implements IIntroPart {
 	    gridData = new GridData(SWT.CENTER, SWT.TOP, true, false);
 	    group1.setLayoutData(gridData);
 	    
-		Label label1 = new Label (group1, SWT.NONE);
+		Label label1 = new Label(group1, SWT.NONE);
 		label1.setText("To get started, create a new project and select EMF Store as a provider. ");
-		label1.setLocation(10,20);
+		label1.setLocation(10, 20);
 		label1.pack();
 		
 		Button newProjectButton = new Button(group1, SWT.PUSH);
 		newProjectButton.setText("New Project");
 		newProjectButton.setLayoutData(gridData);
 		newProjectButton.computeSize(SWT.DEFAULT, SWT.DEFAULT);
-		newProjectButton.setLocation(150,40);
+		newProjectButton.setLocation(150, 40);
 		
 		newProjectButton.addSelectionListener(new SelectionListener() {
 
@@ -87,25 +87,25 @@ public class WelcomePage extends IntroPart implements IIntroPart {
 	    gridData = new GridData(SWT.CENTER, SWT.TOP, true, false);
 	    group2.setLayoutData(gridData);
 	    
-	    Label label2 = new Label (group2, SWT.NONE);
+	    Label label2 = new Label(group2, SWT.NONE);
 		label2.setText("1. Add a new Cabin model element with a right click on the aircraft project folder.");
-		label2.setLocation(20,20);
+		label2.setLocation(20, 20);
 		label2.pack();
-		label2 = new Label (group2, SWT.NONE);
+		label2 = new Label(group2, SWT.NONE);
 		label2.setText("2 Use the Generate New Cabin function to create a first layout.");
-		label2.setLocation(20,40);
+		label2.setLocation(20, 40);
 		label2.pack();
-		label2 = new Label (group2, SWT.NONE);
+		label2 = new Label(group2, SWT.NONE);
 		label2.setText("3. Add passenger with Generate Passengers");
-		label2.setLocation(20,60);
+		label2.setLocation(20, 60);
 		label2.pack();
-		label2 = new Label (group2, SWT.NONE);
+		label2 = new Label(group2, SWT.NONE);
 		label2.setText("4. And finally start the boarding simulation");
-		label2.setLocation(20,80);
+		label2.setLocation(20, 80);
 		label2.pack();
-		label2 = new Label (group2, SWT.NONE);
+		label2 = new Label(group2, SWT.NONE);
 		label2.setText("A more detailed tutorial is provided on the PAXelerate website");
-		label2.setLocation(10,100);
+		label2.setLocation(10, 100);
 		label2.pack();
 		group2.pack();			
 	}
@@ -132,7 +132,7 @@ public class WelcomePage extends IntroPart implements IIntroPart {
 	 * @see org.eclipse.ui.part.IntroPart#dispose()
 	 */
 	@Override
-	public void dispose() {
+	public final void dispose() {
 		super.dispose();
 		this.getIntroSite().getWorkbenchWindow().getWorkbench().getIntroManager().closeIntro(this);
 	}

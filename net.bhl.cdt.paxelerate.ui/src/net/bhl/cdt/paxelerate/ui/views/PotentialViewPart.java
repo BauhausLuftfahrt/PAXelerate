@@ -50,13 +50,13 @@ public class PotentialViewPart extends ViewPart {
 	 *            is the parent element
 	 */
 	@Override
-	public void createPartControl(final Composite parent) {
+	public final void createPartControl(final Composite parent) {
 		this.parent = parent;
 		canvas = new Canvas(parent, SWT.DOUBLE_BUFFERED);
 
 		parent.addListener(SWT.Resize, new Listener() {
 			@Override
-			public void handleEvent(Event e) {
+			public void handleEvent(final Event e) {
 				dim.setX(parent.getSize().x);
 				dim.setY(parent.getSize().y);
 			}

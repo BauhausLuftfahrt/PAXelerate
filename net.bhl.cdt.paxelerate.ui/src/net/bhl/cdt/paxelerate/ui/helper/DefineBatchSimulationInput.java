@@ -17,20 +17,22 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.ui.commands.DrawCabinCommand;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
+/**
+ * The Class DefineBatchSimulationInput.
+ */
 public class DefineBatchSimulationInput extends CDTCommand {
 
 	/** The cabin. */
 	private Cabin cabin;
 
+	/** The sim settings. */
 	private SimulationProperties simSettings;
 
-	final JobScheduleRule jobRule = new JobScheduleRule();
+	/** The job rule. */
+	private final JobScheduleRule jobRule = new JobScheduleRule();
 
 	/**
 	 * This is the constructor method of the SimulateBoardingCommand.
-	 * 
-	 * @param cabin
-	 *            the cabin object
 	 */
 	public DefineBatchSimulationInput() {
 
@@ -43,7 +45,7 @@ public class DefineBatchSimulationInput extends CDTCommand {
 	 * This method runs the simulate boarding command.
 	 */
 	@Override
-	protected void doRun() {
+	public final void doRun() {
 		// Create separate thread
 		Job job = new Job("ECP Importer Thread") {
 			/*

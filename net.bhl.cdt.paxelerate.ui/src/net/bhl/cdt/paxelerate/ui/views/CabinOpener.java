@@ -28,7 +28,7 @@ public class CabinOpener extends EditorModelElementOpener {
 	 */
 	@SuppressWarnings("restriction")
 	@Override
-	public void openModelElement(Object element, ECPProject ecpProject) {
+	public final void openModelElement(final Object element, final ECPProject ecpProject) {
 		new DrawCabinCommand((Cabin) element).execute();
 		super.openModelElement(element, ecpProject);
 	}

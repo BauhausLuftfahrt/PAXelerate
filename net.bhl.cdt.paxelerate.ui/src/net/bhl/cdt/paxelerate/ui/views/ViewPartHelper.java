@@ -25,8 +25,9 @@ public class ViewPartHelper {
 		for (IWorkbenchWindow window : windows) {
 			IWorkbenchPage page = window.getActivePage();
 			CabinViewPart found = (CabinViewPart) page.findView("net.bhl.cdt.paxelerate.ui.views.cabinview");
-			if (found != null)
+			if (found != null) {
 				return found;
+			}
 		}
 		return null;
 	}
@@ -41,8 +42,9 @@ public class ViewPartHelper {
 		for (IWorkbenchWindow window : windows) {
 			IWorkbenchPage page = window.getActivePage();
 			HeatmapPart found = (HeatmapPart) page.findView("net.bhl.cdt.paxelerate.ui.heatmap");
-			if (found != null)
+			if (found != null) {
 				return found;
+			}
 		}
 		return null;
 	}
@@ -57,8 +59,9 @@ public class ViewPartHelper {
 		for (IWorkbenchWindow window : windows) {
 			IWorkbenchPage page = window.getActivePage();
 			PropertyViewPart found = (PropertyViewPart) page.findView("net.bhl.cdt.paxelerate.ui.propertyview");
-			if (found != null)
+			if (found != null) {
 				return found;
+			}
 		}
 		return null;
 	}

@@ -42,7 +42,7 @@ public class ExportDataCommand extends CDTCommand {
 	private Cabin cabin;
 
 	/** The default fileName. */
-	String fileName = "export";
+	private String fileName = "export";
 
 	/** The property store. */
 	private StorageHandler propertyStore = new StorageHandler();
@@ -50,9 +50,17 @@ public class ExportDataCommand extends CDTCommand {
 	/** The exporter. */
 	private ExcelExport exporter;
 
-	public static enum PassengerProperty {
+	/**
+	 * The Enum PassengerProperty.
+	 */
+	public enum PassengerProperty {
 
-		DISTANCE_WALKED, NUMBER_WAITS, TIME_WAITED
+		/** The distance walked. */
+		DISTANCE_WALKED,
+		/** The number waits. */
+		NUMBER_WAITS,
+		/** The time waited. */
+		TIME_WAITED
 	}
 
 	/**
@@ -61,7 +69,7 @@ public class ExportDataCommand extends CDTCommand {
 	 * @param cabin
 	 *            the cabin
 	 */
-	public ExportDataCommand(Cabin cabin) {
+	public ExportDataCommand(final Cabin cabin) {
 		this.cabin = cabin;
 	}
 
@@ -73,7 +81,7 @@ public class ExportDataCommand extends CDTCommand {
 	 * @param exporter
 	 *            the exporter
 	 */
-	public ExportDataCommand(Cabin cabin, ExcelExport exporter) {
+	public ExportDataCommand(final Cabin cabin, final ExcelExport exporter) {
 		// super();
 		this.cabin = cabin;
 		this.exporter = exporter;
@@ -88,7 +96,7 @@ public class ExportDataCommand extends CDTCommand {
 	 * @throws FileNotFoundException
 	 *             the file not found exception
 	 */
-	public boolean getPassengerData() throws IOException, FileNotFoundException {
+	public final boolean getPassengerData() throws IOException, FileNotFoundException {
 		/** Create file header **/
 		exporter.addColumnElement("ID");
 		exporter.addColumnElement("Sex");
@@ -139,7 +147,14 @@ public class ExportDataCommand extends CDTCommand {
 		return true;
 	}
 
-	public int getAverageOfPassengerProperty(PassengerProperty property) {
+	/**
+	 * Gets the average of passenger property.
+	 *
+	 * @param property
+	 *            the property
+	 * @return the average of passenger property
+	 */
+	public final int getAverageOfPassengerProperty(final PassengerProperty property) {
 		EList<Passenger> paxList = cabin.getPassengers();
 		int number = 0;
 
@@ -171,7 +186,7 @@ public class ExportDataCommand extends CDTCommand {
 	 * @throws FileNotFoundException
 	 *             the file not found exception
 	 */
-	public boolean getSimulationPropertiesData() throws IOException, FileNotFoundException {
+	public final boolean getSimulationPropertiesData() throws IOException, FileNotFoundException {
 
 		/** SimulationProperties **/
 		SimulationProperties settings = cabin.getSimulationSettings();
@@ -227,7 +242,7 @@ public class ExportDataCommand extends CDTCommand {
 	 * @throws FileNotFoundException
 	 *             the file not found exception
 	 */
-	public boolean getStudySettings() throws IOException, FileNotFoundException {
+	public final boolean getStudySettings() throws IOException, FileNotFoundException {
 
 		LuggageProperties luggageSettings = cabin.getSimulationSettings().getLuggageProperties();
 		EList<TravelClass> tcList = cabin.getClasses();
@@ -268,7 +283,7 @@ public class ExportDataCommand extends CDTCommand {
 	 * @throws FileNotFoundException
 	 *             the file not found exception
 	 */
-	public boolean getResultData() throws IOException, FileNotFoundException {
+	public final boolean getResultData() throws IOException, FileNotFoundException {
 
 		exporter.addColumnElement("Loop ID");
 		exporter.addColumnElement("Passengers");
@@ -303,7 +318,7 @@ public class ExportDataCommand extends CDTCommand {
 	 * @throws FileNotFoundException
 	 *             the file not found exception
 	 */
-	public void generateDistributionFile() throws IOException, FileNotFoundException {
+	public final void generateDistributionFile() throws IOException, FileNotFoundException {
 
 		propertyStore.clear();
 		for (Passenger pax : cabin.getPassengers()) {
@@ -347,7 +362,8 @@ public class ExportDataCommand extends CDTCommand {
 	 * @throws FileNotFoundException
 	 *             the file not found exception
 	 */
-	private void writeGaussian(GaussianStorage storage, String name) throws IOException, FileNotFoundException {
+	private void writeGaussian(final GaussianStorage storage, final String name)
+			throws IOException, FileNotFoundException {
 
 		exporter.addColumnElement(name);
 		exporter.addColumnElement(str(storage.getMaximum(Sex.FEMALE)));
@@ -370,7 +386,7 @@ public class ExportDataCommand extends CDTCommand {
 	 *            the value
 	 * @return the string
 	 */
-	private static String str(double value) {
+	private static String str(final double value) {
 		DecimalFormat df = new DecimalFormat("#.##");
 		return df.format(value);
 	}
@@ -381,7 +397,7 @@ public class ExportDataCommand extends CDTCommand {
 	 * @see net.bhl.cdt.commands.CDTCommand#doRun()
 	 */
 	@Override
-	protected void doRun() {
+	protected final void doRun() {
 		Input input = new Input(WindowType.EXPORT_DATA, "Enter the filename.", IMessageProvider.INFORMATION);
 
 		String fileName = input.getStringValue();

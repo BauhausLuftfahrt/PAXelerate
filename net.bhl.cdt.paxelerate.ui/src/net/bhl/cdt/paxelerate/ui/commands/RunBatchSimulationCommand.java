@@ -16,8 +16,8 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
- * 
- * 
+ * The Class RunBatchSimulationCommand.
+ *
  * @author michael.schmidt
  */
 
@@ -26,6 +26,7 @@ public class RunBatchSimulationCommand extends CDTCommand {
 	/** The cabin. */
 	private Cabin cabin;
 
+	/** The sim settings. */
 	private SimulationProperties simSettings;
 
 	/**
@@ -34,7 +35,7 @@ public class RunBatchSimulationCommand extends CDTCommand {
 	 * @param cabin
 	 *            the cabin object
 	 */
-	public RunBatchSimulationCommand(Cabin cabin) {
+	public RunBatchSimulationCommand(final Cabin cabin) {
 		//this.cabin = EcoreUtil.copy(cabin);
 		//this.simSettings = this.cabin.getSimulationSettings();
 		this.cabin = cabin;
@@ -45,7 +46,7 @@ public class RunBatchSimulationCommand extends CDTCommand {
 	 * This method runs the simulate boarding command.
 	 */
 	@Override
-	protected void doRun() {
+	protected final void doRun() {
 
 		Log.add(this, "Initializing batch simulation ...");
 

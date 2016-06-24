@@ -50,7 +50,8 @@ public class ECPModelImporter extends CDTCommand {
 	/** The default project. */
 	private static String DEFAULT_PROJECT = "reference";
 
-	final JobScheduleRule jobRule = new JobScheduleRule();
+	/** The job rule. */
+	private final JobScheduleRule jobRule = new JobScheduleRule();
 
 	/**
 	 * This is the constructor method of the RunBatchSimulationMenuCommand.
@@ -149,7 +150,7 @@ public class ECPModelImporter extends CDTCommand {
 	 * This method runs the simulate boarding command.
 	 */
 	@Override
-	protected void doRun() {
+	public final void doRun() {
 		// Create separate thread
 		Job job = new Job("ECP Importer Thread") {
 			/*

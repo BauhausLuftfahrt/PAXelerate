@@ -41,7 +41,7 @@ public class CloneObjectCommand extends CDTCommand {
 	 * This method executed the right click command.
 	 */
 	@Override
-	protected void doRun() {
+	protected final void doRun() {
 
 		Input input = new Input(WindowType.CLONE_OBJECT, "Enter the number of rows you want to add (integer values).",
 				IMessageProvider.INFORMATION);

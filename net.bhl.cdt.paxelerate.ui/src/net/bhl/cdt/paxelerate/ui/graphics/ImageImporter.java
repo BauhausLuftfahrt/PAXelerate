@@ -47,7 +47,7 @@ public class ImageImporter {
 	 * @return the {@link Image} encoded by the specified input stream
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	protected static Image getImage(InputStream stream) throws IOException {
+	protected static Image getImage(final InputStream stream) throws IOException {
 		try {
 			Display display = Display.getCurrent();
 			ImageData data = new ImageData(stream);
@@ -67,7 +67,7 @@ public class ImageImporter {
 	 *            the path to the image file
 	 * @return the {@link Image} stored in the file at the specified path
 	 */
-	public static Image getImage(String path) {
+	public static Image getImage(final String path) {
 		Image image = imageMap.get(path);
 		if (image == null) {
 			try {
@@ -91,7 +91,7 @@ public class ImageImporter {
 	 *            the path to the image file, if starts with <code>'/'</code>
 	 * @return the {@link Image} stored in the file at the specified path
 	 */
-	public static Image getImage(Class<?> clazz, String path) {
+	public static Image getImage(final Class<?> clazz, final String path) {
 		String key = clazz.getName() + '|' + path;
 		Image image = imageMap.get(key);
 		if (image == null) {
@@ -132,8 +132,9 @@ public class ImageImporter {
 	 * Dispose all of the cached {@link Image}'s.
 	 */
 	public static void disposeImages() {
-		for (Image image : imageMap.values())
+		for (Image image : imageMap.values()) {
 			image.dispose();
+		}
 		imageMap.clear();
 	}
 

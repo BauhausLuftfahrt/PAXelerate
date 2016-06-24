@@ -61,7 +61,7 @@ public class PropertyViewPart extends ViewPart {
 	private StorageHandler propertyStore = new StorageHandler();
 
 	/** The Constant HEADER_SPACE. */
-	private final static int BAR_HEIGHT = 15, DEVIATION_BAR_HEIGHT = 2, ITEM_SPACE = 30, HEADER_SPACE = 20;
+	private static final int BAR_HEIGHT = 15, DEVIATION_BAR_HEIGHT = 2, ITEM_SPACE = 30, HEADER_SPACE = 20;
 
 	/** The Constant AVG_VALUE. */
 	private static final double AVG_VALUE = 0.25;
@@ -80,14 +80,14 @@ public class PropertyViewPart extends ViewPart {
 	 *            is the parent element
 	 */
 	@Override
-	public void createPartControl(final Composite parent) {
+	public final void createPartControl(final Composite parent) {
 		this.parent = parent;
 		cabin = CabinFactory.eINSTANCE.createCabin();
 		canvas = new Canvas(parent, SWT.DOUBLE_BUFFERED);
 
 		parent.addListener(SWT.Resize, new Listener() {
 			@Override
-			public void handleEvent(Event e) {
+			public void handleEvent(final Event e) {
 				dim.setX(parent.getSize().x);
 				dim.setY(parent.getSize().y);
 			}
@@ -221,7 +221,7 @@ public class PropertyViewPart extends ViewPart {
 	 * @param headline
 	 *            the headline
 	 */
-	private void addHeadline(PaintEvent e, String headline) {
+	private void addHeadline(final PaintEvent e, final String headline) {
 		e.gc.drawText(headline, 5, pos, true);
 		pos += HEADER_SPACE;
 	}
@@ -236,7 +236,7 @@ public class PropertyViewPart extends ViewPart {
 	 * @param store
 	 *            the store
 	 */
-	public void createFunctionBlock(String headline, PaintEvent e, AgeStorage store) {
+	public final void createFunctionBlock(final String headline, final PaintEvent e, final AgeStorage store) {
 
 		addHeadline(e, headline);
 
@@ -276,7 +276,8 @@ public class PropertyViewPart extends ViewPart {
 	 * @param max
 	 *            the max
 	 */
-	private void drawFunction(PaintEvent e, AgeStorage store, Sex sex, int steps, int min, int max) {
+	private void drawFunction(final PaintEvent e, final AgeStorage store, final Sex sex, final int steps, final int min,
+			final int max) {
 
 		int maximum = store.getMaximumAmount(sex), i = 0, x1 = 0, y1 = pos, x2 = 0, y2 = 0;
 		if (maximum == 0) {
@@ -316,7 +317,7 @@ public class PropertyViewPart extends ViewPart {
 	 * @param store
 	 *            the store
 	 */
-	private void createDeviationBlock(String headline, PaintEvent e, GaussianStorage store) {
+	private void createDeviationBlock(final String headline, final PaintEvent e, final GaussianStorage store) {
 
 		addHeadline(e, headline);
 
@@ -357,7 +358,8 @@ public class PropertyViewPart extends ViewPart {
 	 * @param offset
 	 *            the offset
 	 */
-	private void addLabel(PaintEvent e, double labelValue, double relativePosition, LabelClass labelClass, int offset) {
+	private void addLabel(final PaintEvent e, final double labelValue, final double relativePosition,
+			final LabelClass labelClass, final int offset) {
 
 		e.gc.setFont(FontHelper.PARAGRAPH);
 
@@ -392,8 +394,8 @@ public class PropertyViewPart extends ViewPart {
 	 * @param leftLabel
 	 *            the left label
 	 */
-	private void createDeviationLine(PaintEvent e, double leftFactor, double rightFactor, double rightLabel,
-			double leftLabel) {
+	private void createDeviationLine(final PaintEvent e, final double leftFactor, final double rightFactor,
+			final double rightLabel, final double leftLabel) {
 
 		e.gc.setForeground(ColorHelper.GREY_DARK);
 		e.gc.setLineWidth(2);
@@ -418,7 +420,7 @@ public class PropertyViewPart extends ViewPart {
 	 * @param cabin
 	 *            the cabin
 	 */
-	public void updateUI(Cabin cabin) {
+	public final void updateUI(final Cabin cabin) {
 		this.cabin = cabin;
 		loopPassengers();
 		doTheDraw();

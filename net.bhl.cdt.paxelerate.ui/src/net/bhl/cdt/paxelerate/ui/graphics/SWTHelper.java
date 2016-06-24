@@ -17,7 +17,7 @@ public class SWTHelper {
 	 * @param gc the gc
 	 * @return the quality settings
 	 */
-	public static GC getQualitySettings(GC gc) {
+	public static GC getQualitySettings(final GC gc) {
 		gc.setAntialias(SWT.ON);
 		gc.setTextAntialias(SWT.ON);
 		gc.setInterpolation(SWT.HIGH);

@@ -16,7 +16,7 @@ import org.eclipse.swt.widgets.Display;
  *
  * @author raoul.rothfeld
  */
-public class FontHelper {
+public final class FontHelper {
 	
 	/** The font displaying device/component. */
 	private static final Device disp = Display.getCurrent();

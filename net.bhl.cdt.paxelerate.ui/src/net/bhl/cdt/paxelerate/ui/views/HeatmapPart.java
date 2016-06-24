@@ -48,20 +48,37 @@ public class HeatmapPart extends ViewPart {
 	/** The img. */
 	private static Image img;
 
+	/** The width. */
 	private double width;
 
+	/** The maphandler. */
 	private AreamapHandler maphandler;
 
+	/** The costmap. */
 	private Costmap costmap;
 
+	/** The dimensions. */
 	private Vector dimensions;
 
+	/** The mouse down. */
 	private boolean mouseDown = false;
 
+	/**
+	 * The Enum DrawingMode.
+	 */
 	private enum DrawingMode {
-		FLOOR, HOLE, OBSTACLE, GRADIENT;
+
+		/** The floor. */
+		FLOOR,
+		/** The hole. */
+		HOLE,
+		/** The obstacle. */
+		OBSTACLE,
+		/** The gradient. */
+		GRADIENT;
 	}
 
+	/** The mode. */
 	private DrawingMode mode = DrawingMode.FLOOR;
 
 	/**
@@ -72,7 +89,7 @@ public class HeatmapPart extends ViewPart {
 	 *            is the parent element
 	 */
 	@Override
-	public void createPartControl(Composite parent) {
+	public final void createPartControl(final Composite parent) {
 		this.parent = parent;
 
 		canvas = new Canvas(parent, SWT.DOUBLE_BUFFERED);
@@ -80,7 +97,7 @@ public class HeatmapPart extends ViewPart {
 		canvas.addKeyListener(new org.eclipse.swt.events.KeyAdapter() {
 
 			@Override
-			public void keyPressed(KeyEvent e) {
+			public void keyPressed(final KeyEvent e) {
 				if (e.keyCode == 49) { // 1
 					mode = DrawingMode.HOLE;
 				}
@@ -111,7 +128,7 @@ public class HeatmapPart extends ViewPart {
 		canvas.addMouseMoveListener(new MouseMoveListener() {
 
 			@Override
-			public void mouseMove(MouseEvent e) {
+			public void mouseMove(final MouseEvent e) {
 				if (mouseDown) {
 					System.out.println(e.x + " / " + e.y);
 				}
@@ -122,14 +139,14 @@ public class HeatmapPart extends ViewPart {
 		canvas.addMouseListener(new MouseListener() {
 
 			@Override
-			public void mouseUp(MouseEvent e) {
+			public void mouseUp(final MouseEvent e) {
 
 				mouseDown = false;
 
 			}
 
 			@Override
-			public void mouseDown(MouseEvent e) {
+			public void mouseDown(final MouseEvent e) {
 
 				mouseDown = true;
 
@@ -139,7 +156,6 @@ public class HeatmapPart extends ViewPart {
 				case FLOOR:
 					value = AreamapHandler.DEFAULT_VALUE;
 					break;
-
 				case HOLE:
 					value = AreamapHandler.HOLE_VALUE;
 					break;
@@ -148,6 +164,8 @@ public class HeatmapPart extends ViewPart {
 					break;
 				case OBSTACLE:
 					value = Integer.MAX_VALUE;
+					break;
+				default:
 					break;
 
 				}
@@ -165,7 +183,7 @@ public class HeatmapPart extends ViewPart {
 			}
 
 			@Override
-			public void mouseDoubleClick(MouseEvent e) {
+			public void mouseDoubleClick(final MouseEvent e) {
 
 			}
 		});
@@ -177,7 +195,7 @@ public class HeatmapPart extends ViewPart {
 	 *
 	 * @return the cabin
 	 */
-	public Cabin getCabin() {
+	public final Cabin getCabin() {
 		return cabin;
 	}
 
@@ -187,7 +205,7 @@ public class HeatmapPart extends ViewPart {
 	 * @param cabin
 	 *            is the caught cabin
 	 */
-	public void setCabin(Cabin cabin) {
+	public final void setCabin(final Cabin cabin) {
 
 		this.cabin = cabin;
 
@@ -201,7 +219,10 @@ public class HeatmapPart extends ViewPart {
 		drawCostmap();
 	}
 
-	public void drawObstaclemap() {
+	/**
+	 * Draw obstaclemap.
+	 */
+	public final void drawObstaclemap() {
 
 		Image image = new Image(parent.getDisplay(), canvas.getBounds().width, canvas.getBounds().height);
 
@@ -247,7 +268,10 @@ public class HeatmapPart extends ViewPart {
 		redraw();
 	}
 
-	public void drawCostmap() {
+	/**
+	 * Draw costmap.
+	 */
+	public final void drawCostmap() {
 
 		Image image = null;
 		try {

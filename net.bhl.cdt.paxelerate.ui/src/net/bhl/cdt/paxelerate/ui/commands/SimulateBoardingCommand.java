@@ -11,7 +11,6 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Map;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -34,7 +33,6 @@ import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.agent.Agent.AgentMode;
-import net.bhl.cdt.paxelerate.model.astar.Costmap;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.model.util.SimulationResultLogger;
 import net.bhl.cdt.paxelerate.ui.helper.MapExportHelper;
@@ -63,9 +61,11 @@ public class SimulateBoardingCommand extends CDTCommand {
 	/** The simulation frame. */
 	private JFrame simulationFrame;
 
+	/** The developer mode. */
 	private boolean developerMode;
 
-	final JobScheduleRule jobRule = new JobScheduleRule();
+	/** The job rule. */
+	private final JobScheduleRule jobRule = new JobScheduleRule();
 
 	/**
 	 * This is the constructor method of the SimulateBoardingCommand.
@@ -73,11 +73,14 @@ public class SimulateBoardingCommand extends CDTCommand {
 	 * @param cabin
 	 *            the cabin object
 	 */
-	public SimulateBoardingCommand(Cabin cabin) {
+	public SimulateBoardingCommand(final Cabin cabin) {
 		this.cabin = cabin;
 		this.developerMode = cabin.getSimulationSettings().isDeveloperMode();
 	}
 
+	/**
+	 * Instantiates a new simulate boarding command.
+	 */
 	public SimulateBoardingCommand() {
 		if (ECPUtil.getECPProjectManager().getProjects() != null) {
 			Cabin cabinModel = (Cabin) ECPUtil.getECPProjectManager().getProject("reference").getContents().get(0);
@@ -89,7 +92,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 	 * This method runs the simulate boarding command.
 	 */
 	@Override
-	protected void doRun() {
+	protected final void doRun() {
 
 		// Create separate thread
 		Job job = new Job("Simulate Boarding Thread") {
@@ -101,7 +104,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 			 * IProgressMonitor)
 			 */
 			@Override
-			protected IStatus run(IProgressMonitor monitor) {
+			protected IStatus run(final IProgressMonitor monitor) {
 
 				int simulationLoopIndex = 1;
 				Log.add(this, "Initializing new simulation run ...");
@@ -129,6 +132,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 						break;
 					case REAR_TO_FRONT:
 						value = 1;
+						break;
+					default:
 						break;
 					}
 					if (value != 0) {
@@ -314,11 +319,12 @@ public class SimulateBoardingCommand extends CDTCommand {
 		};
 
 		job.addJobChangeListener(new JobChangeAdapter() {
-			public void done(IJobChangeEvent event) {
-				if (event.getResult().isOK())
+			public void done(final IJobChangeEvent event) {
+				if (event.getResult().isOK()) {
 					Log.add(this, "Simulation run completed");
-				else
+				} else {
 					Log.add(this, "Simulation run failed!");
+				}
 			}
 		});
 
@@ -345,7 +351,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 				WindowListener exitListener = new WindowAdapter() {
 					@Override
-					public void windowClosing(WindowEvent e) {
+					public void windowClosing(final WindowEvent e) {
 						simulationView.resetSimulationView();
 						SimulationHandler.reset();
 					}

@@ -39,6 +39,7 @@ import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 import net.bhl.cdt.paxelerate.util.string.StringHelper;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
+// TODO: Auto-generated Javadoc
 /**
  * 
  * This command creates the passengers.
@@ -59,7 +60,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 	/** The cabinview. */
 	private CabinViewPart cabinview;
 
-	final JobScheduleRule jobRule = new JobScheduleRule();
+	/** The job rule. */
+	private final JobScheduleRule jobRule = new JobScheduleRule();
 
 	/**
 	 * This method submits the cabin to be used in the file.
@@ -71,6 +73,9 @@ public class GeneratePassengersCommand extends CDTCommand {
 		this.cabin = cabin;
 	}
 	
+	/**
+	 * Instantiates a new generate passengers command.
+	 */
 	public GeneratePassengersCommand() {
 		if (ECPUtil.getECPProjectManager().getProjects() != null) {
 			this.cabin = (Cabin) ECPUtil.getECPProjectManager().getProject("reference").getContents().get(0);
@@ -122,7 +127,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 	 *            the passenger
 	 * @return the seat which is linked to the passenger
 	 */
-	private Seat getSeat(Passenger passenger) {
+	private Seat getSeat(final Passenger passenger) {
 
 		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
 			if ((seat.getId() == passenger.getSeatID())) {
@@ -142,7 +147,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 	 * @param tc
 	 *            the tc
 	 */
-	private synchronized void generatePassengers(TravelClass tc) {
+	private synchronized void generatePassengers(final TravelClass tc) {
 
 		int numberOfPassengers = tc.getPassengers();
 		int numberOfSeats = tc.getAvailableSeats();
@@ -202,7 +207,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 	 * This method runs the passenger generation command.
 	 */
 	@Override
-	protected void doRun() {
+	protected final void doRun() {
 		/* Create separate thread */
 
 		Job job = new Job("Generate Passengers Thread") {
@@ -268,11 +273,12 @@ public class GeneratePassengersCommand extends CDTCommand {
 		};
 
 		job.addJobChangeListener(new JobChangeAdapter() {
-			public void done(IJobChangeEvent event) {
-				if (event.getResult().isOK())
+			public void done(final IJobChangeEvent event) {
+				if (event.getResult().isOK()) {
 					Log.add(this, "Passenger generation completed");
-				else
+				} else {
 					Log.add(this, "Job did not complete successfully");
+				}
 			}
 		});
 

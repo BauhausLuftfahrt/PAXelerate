@@ -15,7 +15,7 @@ import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.output.ExcelExport;
 
 /**
- * This class exports the costmap and obstacle map
+ * This class exports the costmap and obstacle map.
  *
  * @author marc.engelmann, michael.schmidt
  * @version 1.0
@@ -24,20 +24,31 @@ import net.bhl.cdt.paxelerate.util.output.ExcelExport;
 public class MapExportHelper {
 
 	/** The default fileName. */
-	String fileName = "export";
+	private String fileName = "export";
 
+	/** The areamap exporter. */
 	private static ExcelExport areamapExporter;
 
 	/**
 	 * This method saves the whole cost map in a text file to the documents
 	 * folder.
+	 *
+	 * @param exporter the exporter
 	 */
 
-	public MapExportHelper(ExcelExport exporter) {
+	public MapExportHelper(final ExcelExport exporter) {
 		areamapExporter = exporter;
 	}
 
-	public void saveCostmapToFile(Map<Integer, Costmap> map, Vector dimensions)
+	/**
+	 * Save costmap to file.
+	 *
+	 * @param map the map
+	 * @param dimensions the dimensions
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException the file not found exception
+	 */
+	public final void saveCostmapToFile(final Map<Integer, Costmap> map, final Vector dimensions)
 			throws IOException, FileNotFoundException {
 
 		for (Costmap costmap : ((Map<Integer, Costmap>) map).values()) {
@@ -60,9 +71,14 @@ public class MapExportHelper {
 	/**
 	 * This method saves the whole obstacle map in a text file to the documents
 	 * folder.
+	 *
+	 * @param areamap the areamap
+	 * @param dimensions the dimensions
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException the file not found exception
 	 */
 
-	public void saveObstacleToFile(Areamap areamap, Vector dimensions) throws IOException, FileNotFoundException {
+	public final void saveObstacleToFile(final Areamap areamap, final Vector dimensions) throws IOException, FileNotFoundException {
 
 		for (int x = 0; x < dimensions.getX(); x++) {
 			for (int y = 0; y < dimensions.getY(); y++) {

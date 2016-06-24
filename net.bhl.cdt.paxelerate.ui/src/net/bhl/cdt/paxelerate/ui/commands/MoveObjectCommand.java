@@ -33,25 +33,25 @@ public class MoveObjectCommand extends CDTCommand {
 
 	/** The cabin. */
 	private Cabin cabin;
-	
+
 	/** The scale vector. */
 	private Vector movementVector, scaleVector;
-	
+
 	/** The rowlist. */
 	private ArrayList<Row> rowlist = new ArrayList<Row>();
-	
+
 	/** The seatlist. */
 	private ArrayList<Seat> seatlist = new ArrayList<Seat>();
-	
+
 	/** The galleylist. */
 	private ArrayList<Galley> galleylist = new ArrayList<Galley>();
-	
+
 	/** The lavatorylist. */
 	private ArrayList<Lavatory> lavatorylist = new ArrayList<Lavatory>();
-	
+
 	/** The curtainlist. */
 	private ArrayList<Curtain> curtainlist = new ArrayList<Curtain>();
-	
+
 	/** The scaling desired. */
 	private boolean scalingDesired = false;
 
@@ -73,8 +73,9 @@ public class MoveObjectCommand extends CDTCommand {
 	 * @param curtainlist
 	 *            is the list of curtain objects
 	 */
-	public MoveObjectCommand(Cabin cabin, ArrayList<Row> rowlist, ArrayList<Seat> seatlist,
-			ArrayList<Galley> galleylist, ArrayList<Lavatory> lavatorylist, ArrayList<Curtain> curtainlist) {
+	public MoveObjectCommand(final Cabin cabin, final ArrayList<Row> rowlist, final ArrayList<Seat> seatlist,
+			final ArrayList<Galley> galleylist, final ArrayList<Lavatory> lavatorylist,
+			final ArrayList<Curtain> curtainlist) {
 		this.rowlist = rowlist;
 		this.seatlist = seatlist;
 		this.galleylist = galleylist;
@@ -87,7 +88,7 @@ public class MoveObjectCommand extends CDTCommand {
 	 * This method executed the right click command. The cabin view is updated.
 	 */
 	@Override
-	protected void doRun() {
+	protected final void doRun() {
 
 		/**
 		 * Main method.
@@ -97,13 +98,14 @@ public class MoveObjectCommand extends CDTCommand {
 		 */
 
 		Input input = new Input(WindowType.MOVE_OBJECT,
-				"All values must be entered in [cm]. Please use positive and negative digits only.", IMessageProvider.INFORMATION);
+				"All values must be entered in [cm]. Please use positive and negative digits only.",
+				IMessageProvider.INFORMATION);
 
 		movementVector = input.getVectorValue();
-/*		scaleVector = input.getSecondVectorValue();
-		if (scaleVector.getX() != 0 && scaleVector.getY() != 0) {
-			scalingDesired = true;
-		}*/
+		/*
+		 * scaleVector = input.getSecondVectorValue(); if (scaleVector.getX() !=
+		 * 0 && scaleVector.getY() != 0) { scalingDesired = true; }
+		 */
 
 		int xMovement = movementVector.getX();
 		int yMovement = movementVector.getY();
@@ -115,10 +117,11 @@ public class MoveObjectCommand extends CDTCommand {
 						for (Seat seat : compareRow.getSeats()) {
 							seat.setYPosition(seat.getYPosition() + yMovement);
 							seat.setXPosition(seat.getXPosition() + xMovement);
-/*							if (scalingDesired) {
-								seat.setYDimension(scaleVector.getY());
-								seat.setXDimension(scaleVector.getX());
-							}*/
+							/*
+							 * if (scalingDesired) {
+							 * seat.setYDimension(scaleVector.getY());
+							 * seat.setXDimension(scaleVector.getX()); }
+							 */
 
 						}
 					}
@@ -131,10 +134,11 @@ public class MoveObjectCommand extends CDTCommand {
 					if (seat.getId() == compareSeat.getId()) {
 						compareSeat.setYPosition(compareSeat.getYPosition() + yMovement);
 						compareSeat.setXPosition(compareSeat.getXPosition() + xMovement);
-/*						if (scalingDesired) {
-							compareSeat.setYDimension(scaleVector.getX());
-							compareSeat.setXDimension(scaleVector.getY());
-						}*/
+						/*
+						 * if (scalingDesired) {
+						 * compareSeat.setYDimension(scaleVector.getX());
+						 * compareSeat.setXDimension(scaleVector.getY()); }
+						 */
 					}
 				}
 			}
@@ -145,10 +149,11 @@ public class MoveObjectCommand extends CDTCommand {
 					if (galley.getId() == compareGalley.getId()) {
 						galley.setYPosition(galley.getYPosition() + yMovement);
 						galley.setXPosition(galley.getXPosition() + xMovement);
-/*						if (scalingDesired) {
-							galley.setYDimension(scaleVector.getY());
-							galley.setXDimension(scaleVector.getX());
-						}*/
+						/*
+						 * if (scalingDesired) {
+						 * galley.setYDimension(scaleVector.getY());
+						 * galley.setXDimension(scaleVector.getX()); }
+						 */
 					}
 				}
 			}
@@ -159,10 +164,11 @@ public class MoveObjectCommand extends CDTCommand {
 					if (lavatory.getId() == compareLavatory.getId()) {
 						compareLavatory.setYPosition(compareLavatory.getYPosition() + yMovement);
 						compareLavatory.setXPosition(compareLavatory.getXPosition() + xMovement);
-/*						if (scalingDesired) {
-							compareLavatory.setYDimension(scaleVector.getY());
-							compareLavatory.setXDimension(scaleVector.getX());
-						}*/
+						/*
+						 * if (scalingDesired) {
+						 * compareLavatory.setYDimension(scaleVector.getY());
+						 * compareLavatory.setXDimension(scaleVector.getX()); }
+						 */
 					}
 				}
 			}
@@ -173,10 +179,11 @@ public class MoveObjectCommand extends CDTCommand {
 					if (curtain.getId() == compareCurtain.getId()) {
 						compareCurtain.setYPosition(compareCurtain.getYPosition() + yMovement);
 						compareCurtain.setXPosition(compareCurtain.getXPosition() + xMovement);
-/*						if (scalingDesired) {
-							compareCurtain.setYDimension(scaleVector.getY());
-							compareCurtain.setXDimension(scaleVector.getX());
-						}*/
+						/*
+						 * if (scalingDesired) {
+						 * compareCurtain.setYDimension(scaleVector.getY());
+						 * compareCurtain.setXDimension(scaleVector.getX()); }
+						 */
 					}
 				}
 			}

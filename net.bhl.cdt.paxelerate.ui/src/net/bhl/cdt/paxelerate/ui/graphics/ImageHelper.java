@@ -14,13 +14,17 @@ public class ImageHelper {
 	/**
 	 * This method resizes an image.
 	 *
-	 * @param image            the image
-	 * @param width            the desired width
-	 * @param height            the desired height
-	 * @param parent the parent
+	 * @param image
+	 *            the image
+	 * @param width
+	 *            the desired width
+	 * @param height
+	 *            the desired height
+	 * @param parent
+	 *            the parent
 	 * @return the scaled image
 	 */
-	public static Image resize(Image image, int width, int height, Composite parent) {
+	public static Image resize(final Image image, final int width, final int height, final Composite parent) {
 
 		if (width == 0 || height == 0) {
 			return image;

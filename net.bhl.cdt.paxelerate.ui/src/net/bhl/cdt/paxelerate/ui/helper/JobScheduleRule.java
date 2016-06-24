@@ -8,7 +8,6 @@ package net.bhl.cdt.paxelerate.ui.helper;
 
 import org.eclipse.core.runtime.jobs.ISchedulingRule;
 
-
 /**
  * The Class JobScheduleRule.
  * 
@@ -22,14 +21,14 @@ public class JobScheduleRule implements ISchedulingRule {
 	/* (non-Javadoc)
 	 * @see org.eclipse.core.runtime.jobs.ISchedulingRule#contains(org.eclipse.core.runtime.jobs.ISchedulingRule)
 	 */
-	public boolean contains(ISchedulingRule rule) {
+	public final boolean contains(final ISchedulingRule rule) {
 		return this == rule;
 	}
 
 	/* (non-Javadoc)
 	 * @see org.eclipse.core.runtime.jobs.ISchedulingRule#isConflicting(org.eclipse.core.runtime.jobs.ISchedulingRule)
 	 */
-	public boolean isConflicting(ISchedulingRule rule) {
+	public final boolean isConflicting(final ISchedulingRule rule) {
 		return rule instanceof JobScheduleRule;
 	}
 }

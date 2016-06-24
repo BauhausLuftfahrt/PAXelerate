@@ -112,7 +112,7 @@ public class CabinViewPart extends ViewPart {
 	 *            is the parent element
 	 */
 	@Override
-	public void createPartControl(Composite parent) {
+	public final void createPartControl(final Composite parent) {
 		this.parent = parent;
 		cabin = CabinFactory.eINSTANCE.createCabin();
 
@@ -159,7 +159,7 @@ public class CabinViewPart extends ViewPart {
 	 *
 	 * @return the cabin
 	 */
-	public Cabin getCabin() {
+	public final Cabin getCabin() {
 		return cabin;
 	}
 
@@ -304,6 +304,8 @@ public class CabinViewPart extends ViewPart {
 			case PASSIVE:
 				gc.setBackground(ColorHelper.GREEN);
 				break;
+			default:
+				break;
 			}
 
 			int yPos = seat.getYPosition();
@@ -340,7 +342,7 @@ public class CabinViewPart extends ViewPart {
 	 * 
 	 * @return true or false
 	 */
-	public boolean isInitialBoot() {
+	public final boolean isInitialBoot() {
 		return initialBoot;
 	}
 
@@ -359,6 +361,9 @@ public class CabinViewPart extends ViewPart {
 
 		case NARROWBODY:
 			return ImageImporter.getImage(getClass(), "/images/aircraft/continental.png");
+			
+		default:
+			break;
 		}
 		return null;
 	}
@@ -372,7 +377,7 @@ public class CabinViewPart extends ViewPart {
 	 *            the height
 	 * @return the image
 	 */
-	private Image resizeAC(int width, int height) {
+	private Image resizeAC(final int width, final int height) {
 		Image scaledImage = new Image(parent.getDisplay(), width, height);
 		GC gc = new GC(scaledImage);
 
@@ -399,7 +404,7 @@ public class CabinViewPart extends ViewPart {
 	 * @param cabin
 	 *            is the caught cabin
 	 */
-	public void setCabin(Cabin cabin) {
+	public final void setCabin(final Cabin cabin) {
 		try {
 			initialBoot = false;
 			this.cabin = cabin;
@@ -473,7 +478,7 @@ public class CabinViewPart extends ViewPart {
 	 * This method synchronizes the cabin view with the cabin object by
 	 * listening to its change events.
 	 */
-	public void syncViewer() {
+	public final void syncViewer() {
 		if ((cabinAdapter != null) && (!cabin.eAdapters().contains(cabinAdapter))) {
 			cabin.eAdapters().add(cabinAdapter);
 		}
@@ -484,7 +489,7 @@ public class CabinViewPart extends ViewPart {
 	 * This method unsyncs the Cabin view with the cabin object by removing the
 	 * event listener form the cabin object.
 	 */
-	public void unsyncViewer() {
+	public final void unsyncViewer() {
 		if ((cabinAdapter != null) && (cabin.eAdapters().contains(cabinAdapter))) {
 
 			cabin.eAdapters().remove(cabinAdapter);
@@ -498,7 +503,7 @@ public class CabinViewPart extends ViewPart {
 	 *            is the obstacle map
 	 * @return returns the obstacle map as an image
 	 */
-	public Image submitObstacleMap(final int[][] map) {
+	public final Image submitObstacleMap(final int[][] map) {
 		Image image = new Image(parent.getDisplay(), imageX, imageY);
 		final int overLapOfRect = 2;
 		GC gc = new GC(image);
@@ -546,7 +551,7 @@ public class CabinViewPart extends ViewPart {
 	 * @param agentList
 	 *            the agent list
 	 */
-	public void submitAgents(final List<Agent> agentList) {
+	public final void submitAgents(final List<Agent> agentList) {
 		canvas.redraw();
 
 		canvas.addPaintListener(new PaintListener() {
@@ -585,7 +590,7 @@ public class CabinViewPart extends ViewPart {
 	 * @param paxCabin
 	 *            the cabin object
 	 */
-	public void submitPassengerCoordinates(final Cabin paxCabin) {
+	public final void submitPassengerCoordinates(final Cabin paxCabin) {
 		canvas.redraw();
 		canvas.addPaintListener(new PaintListener() {
 			@Override
@@ -601,6 +606,8 @@ public class CabinViewPart extends ViewPart {
 							break;
 						case PASSIVE:
 							e.gc.setBackground(ColorHelper.GREEN);
+							break;
+						default:
 							break;
 						}
 					} else {
@@ -632,7 +639,7 @@ public class CabinViewPart extends ViewPart {
 	 * @param obstacleImage
 	 *            the obstacle map image
 	 */
-	public void printObstacleMap(final Image obstacleImage) {
+	public final void printObstacleMap(final Image obstacleImage) {
 		canvas.redraw();
 		canvas.addPaintListener(new PaintListener() {
 			@Override
@@ -715,7 +722,7 @@ public class CabinViewPart extends ViewPart {
 	 *            the passenger
 	 * @return the direction vector
 	 */
-	private Vector getDirectionVector(Passenger passenger) {
+	private Vector getDirectionVector(final Passenger passenger) {
 		int rotation = (int) passenger.getOrientationInDegree();
 		int factor = 5;
 		if (rotation == 0) {
@@ -755,7 +762,7 @@ public class CabinViewPart extends ViewPart {
 	 *            the value
 	 * @return the int
 	 */
-	private int adapt(double value) {
+	private int adapt(final double value) {
 		return (int) (value / factor);
 	}
 
@@ -768,7 +775,7 @@ public class CabinViewPart extends ViewPart {
 	 *            the value
 	 * @return the int
 	 */
-	private int adapt(Axis axis, double value) {
+	private int adapt(final Axis axis, final double value) {
 		switch (axis) {
 		case X:
 			return xZero + (int) (value / factor);
@@ -796,7 +803,7 @@ public class CabinViewPart extends ViewPart {
 	/**
 	 * This method disposes all SWT objects created with SWTResourceManager.
 	 */
-	public void clearCache() {
+	public final void clearCache() {
 		ImageImporter.disposeImages();
 	}
 }

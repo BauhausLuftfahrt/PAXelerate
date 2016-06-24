@@ -51,7 +51,7 @@ public class SortPassengersCommand extends CDTCommand {
 	 * @param cabin
 	 *            the cabin
 	 */
-	public SortPassengersCommand(Cabin cabin) {
+	public SortPassengersCommand(final Cabin cabin) {
 		this.cabin = cabin;
 	}
 
@@ -63,7 +63,7 @@ public class SortPassengersCommand extends CDTCommand {
 	 * @param value
 	 *            the value
 	 */
-	public void setPropertiesManually(boolean showDialog, int value) {
+	public final void setPropertiesManually(final boolean showDialog, final int value) {
 		this.showDialog = showDialog;
 		this.value = value;
 	}
@@ -73,7 +73,7 @@ public class SortPassengersCommand extends CDTCommand {
 	 *
 	 * @return the cabin
 	 */
-	public Cabin returnCabin() {
+	public final Cabin returnCabin() {
 		return cabin;
 	}
 
@@ -83,7 +83,7 @@ public class SortPassengersCommand extends CDTCommand {
 	 * @see net.bhl.cdt.commands.CDTCommand#doRun()
 	 */
 	@Override
-	protected synchronized void doRun() {
+	protected final synchronized void doRun() {
 
 		CabinViewPart cabinViewPart = ViewPartHelper.getCabinView();
 
@@ -214,6 +214,7 @@ public class SortPassengersCommand extends CDTCommand {
 						Passenger otherPax = paxList.get(i + 1);
 						if (AgentFunctions.otherSeatCloserToAisle(thisPax.getSeat(), otherPax.getSeat())) {
 							if (thisPax.getSeat().getXPosition() > otherPax.getSeat().getXPosition()) {
+								//TODO:
 							}
 						}
 					}
@@ -270,7 +271,7 @@ public class SortPassengersCommand extends CDTCommand {
 	 *            the pax
 	 * @return the double
 	 */
-	private synchronized double calculateDelay(Passenger pax) {
+	private synchronized double calculateDelay(final Passenger pax) {
 		double delay = 0;
 		double clocking = cabin.getSimulationSettings().getPassengersBoardingPerMinute();
 

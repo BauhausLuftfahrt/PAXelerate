@@ -71,7 +71,7 @@ public class Activator extends AbstractUIPlugin {
 	 *
 	 * @return the message console stream
 	 */
-	public MessageConsoleStream getMessageConsoleStream() {
+	public final MessageConsoleStream getMessageConsoleStream() {
 		return cabinMessageStream;
 	}
 
@@ -80,7 +80,7 @@ public class Activator extends AbstractUIPlugin {
 	 *
 	 * @return the message console
 	 */
-	public MessageConsole getMessageConsole() {
+	public final MessageConsole getMessageConsole() {
 		return cabinConsole;
 	}
 

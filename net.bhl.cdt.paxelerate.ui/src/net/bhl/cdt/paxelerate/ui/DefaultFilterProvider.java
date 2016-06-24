@@ -24,7 +24,7 @@ public class DefaultFilterProvider implements ECPFilterProvider {
 	 * @see org.eclipse.emf.ecp.core.util.ECPFilterProvider#getHiddenPackages()
 	 */
 	@Override
-	public Set<String> getHiddenPackages() {
+	public final Set<String> getHiddenPackages() {
 		Set<String> relevantURIs = new HashSet<String>(Registry.INSTANCE.keySet());
 				
 		relevantURIs.remove("http://net.bhl.cdt.paxelerate.model/");

@@ -17,7 +17,7 @@ import org.eclipse.swt.widgets.Display;
  *
  * @author marc.engelmann, raoul.rothfeld
  */
-public class ColorHelper {
+public final class ColorHelper {
 
 	/** The color displaying device/component. */
 	private static final Device disp = Display.getCurrent();
@@ -41,7 +41,7 @@ public class ColorHelper {
 			LUGGAGE_MEDIUM = new Color(disp, 204, 97, 0), LUGGAGE_LARGE = new Color(disp, 127, 61, 0),
 			
 			// Mood
-			MOOD_AGGRESSIVE = new Color(disp, 127, 61, 0) , MODD_PASSIVE = new Color(disp, 127, 112, 99),
+			MOOD_AGGRESSIVE = new Color(disp, 127, 61, 0), MODD_PASSIVE = new Color(disp, 127, 112, 99),
 		
 
 			// Aircraft colors
