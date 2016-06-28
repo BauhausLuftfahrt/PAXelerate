@@ -226,8 +226,9 @@ public class Node implements Comparable<Node> {
 	public Node(Vector vector) {
 
 		this.position = vector;
-		this.distanceFromStart = 0;
-		this.costFromStart = 0;
+		// value 0 causes a strange path for the first agent
+		this.distanceFromStart = Integer.MAX_VALUE; 
+		this.costFromStart = Integer.MAX_VALUE;
 		property = Property.DEFAULT;
 		linkedPassenger = CabinFactory.eINSTANCE.createPassenger();
 		linkedPassenger.setId(Integer.MAX_VALUE);
