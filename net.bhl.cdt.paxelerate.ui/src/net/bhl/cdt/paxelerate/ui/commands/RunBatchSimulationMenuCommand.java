@@ -18,11 +18,9 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
  */
 
 public class RunBatchSimulationMenuCommand extends CDTCommand {
-	
-	private HandLuggageCase handLuggageStudy;
-	
-	private static int numberOfIterations = 30;
-	
+
+	private static int numberOfIterations = 10;
+
 	/**
 	 * This is the constructor method of the RunBatchSimulationMenuCommand.
 	 */
@@ -38,12 +36,16 @@ public class RunBatchSimulationMenuCommand extends CDTCommand {
 
 		Log.add(this, "Batch simulation command ...");
 
-		for (int simulationLoopIndex = 1; simulationLoopIndex <= numberOfIterations; simulationLoopIndex++) {
+		for (HandLuggageCase handLuggageCase : HandLuggageCase.values()) {
+			for (int loadFactorIndex = 60; loadFactorIndex <= 100; loadFactorIndex += 10) {
+				for (int simulationLoopIndex = 1; simulationLoopIndex <= numberOfIterations; simulationLoopIndex++) {
+					new ECPModelImporter().doRun();
+					new DefineBatchSimulationInput(handLuggageCase, loadFactorIndex).doRun();
+					new GeneratePassengersCommand().execute();
+					new SimulateBoardingCommand(simulationLoopIndex).execute();
+				}
+			}
 
-			new ECPModelImporter().doRun();
-			new DefineBatchSimulationInput(handLuggageStudy.NO_HL, 60).doRun();
-			new GeneratePassengersCommand().execute();
-			new SimulateBoardingCommand(simulationLoopIndex).execute();
 		}
 
 	}

@@ -30,9 +30,9 @@ public class DefineBatchSimulationInput extends CDTCommand {
 
 	private static String DEFAULT_PROJECT_NAME = "reference";
 
-	private HandLuggageCase handLuggageStudy;
+	private static HandLuggageCase handLuggageStudy;
 
-	public enum HandLuggageCase {
+	public static enum HandLuggageCase {
 		NO_HL, USUAL_HL_LOW, USUAL_HL_HIGH, BULKY_HL
 	}
 
@@ -53,7 +53,6 @@ public class DefineBatchSimulationInput extends CDTCommand {
 		} catch (NullPointerException e) {
 			Log.add(this, "Could not load model!");
 		}
-
 	}
 
 	/**
