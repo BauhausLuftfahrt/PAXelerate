@@ -36,7 +36,6 @@ import net.bhl.cdt.paxelerate.model.agent.Agent.AgentMode;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.model.util.SimulationResultLogger;
 import net.bhl.cdt.paxelerate.ui.helper.MapExportHelper;
-import net.bhl.cdt.paxelerate.ui.helper.JobScheduleRule;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.SimulationView;
 import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
@@ -63,9 +62,6 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 	/** The developer mode. */
 	private boolean developerMode;
-
-	/** The job rule. */
-	private final JobScheduleRule jobRule = new JobScheduleRule();
 
 	/**
 	 * This is the constructor method of the SimulateBoardingCommand.
@@ -318,6 +314,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 		};
 
+		/* report job status to console */
 		job.addJobChangeListener(new JobChangeAdapter() {
 			public void done(final IJobChangeEvent event) {
 				if (event.getResult().isOK()) {
@@ -328,9 +325,14 @@ public class SimulateBoardingCommand extends CDTCommand {
 			}
 		});
 
-		job.setRule(jobRule);
-		// Start the Job
+		/* Start the Job */
 		job.schedule();
+		try {
+			/* schedule job after previous is finished */
+			job.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**

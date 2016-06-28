@@ -8,7 +8,6 @@ package net.bhl.cdt.paxelerate.ui.commands;
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.paxelerate.ui.helper.DefineBatchSimulationInput;
 import net.bhl.cdt.paxelerate.ui.helper.ECPModelImporter;
-
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
@@ -19,6 +18,8 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 public class RunBatchSimulationMenuCommand extends CDTCommand {
 
+	private static int numberOfIterations = 30;
+	
 	/**
 	 * This is the constructor method of the RunBatchSimulationMenuCommand.
 	 */
@@ -34,12 +35,12 @@ public class RunBatchSimulationMenuCommand extends CDTCommand {
 
 		Log.add(this, "Batch simulation command ...");
 
-		for (int simulationLoopIndex = 1; simulationLoopIndex <= 5; simulationLoopIndex++) {
+		for (int simulationLoopIndex = 1; simulationLoopIndex <= numberOfIterations; simulationLoopIndex++) {
 
 			new ECPModelImporter().doRun();
 			new DefineBatchSimulationInput().doRun();
-			new GeneratePassengersCommand().doRun();
-			new SimulateBoardingCommand().doRun();
+			new GeneratePassengersCommand().execute();
+			new SimulateBoardingCommand().execute();
 		}
 
 	}

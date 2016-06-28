@@ -28,26 +28,29 @@ public class DefineBatchSimulationInput extends CDTCommand {
 	/** The sim settings. */
 	private SimulationProperties simSettings;
 
-	/** The job rule. */
-	private final JobScheduleRule jobRule = new JobScheduleRule();
-
 	/**
 	 * This is the constructor method of the SimulateBoardingCommand.
 	 */
 	public DefineBatchSimulationInput() {
 
-		if (ECPUtil.getECPProjectManager().getProjects() != null) {
-			this.cabin = (Cabin) ECPUtil.getECPProjectManager().getProject("reference").getContents().get(0);
+		try {
+			if (ECPUtil.getECPProjectManager().getProjects() != null) {
+				this.cabin = (Cabin) ECPUtil.getECPProjectManager().getProject("reference").getContents().get(0);
+				this.simSettings = this.cabin.getSimulationSettings();
+				Log.add(this, "Cabin set ...");
+			}
+		} catch (NullPointerException e) {
+			Log.add(this, "Could not load model!");
 		}
+
 	}
 
 	/**
 	 * This method runs the simulate boarding command.
 	 */
-	@Override
 	public final void doRun() {
 		// Create separate thread
-		Job job = new Job("ECP Importer Thread") {
+		Job job = new Job("Define Simulation Input Thread") {
 			/*
 			 * (non-Javadoc)
 			 * 
@@ -58,7 +61,7 @@ public class DefineBatchSimulationInput extends CDTCommand {
 			@Override
 			protected IStatus run(final IProgressMonitor monitor) {
 
-				Log.add(this, "Initializing batch simulation ...");
+				Log.add(this, "Setting study parameters ...");
 
 				Display.getDefault().syncExec(new Runnable() {
 					@Override
@@ -72,12 +75,12 @@ public class DefineBatchSimulationInput extends CDTCommand {
 				// 0 20 30 50
 
 				simSettings.setSimulationSpeedFactor(2);
-				simSettings.setNumberOfSimulationLoops(20);
-				simSettings.getLuggageProperties().setPercentageOfPassengersWithNoLuggage(10);
-				simSettings.getLuggageProperties().setPercentageOfPassengersWithSmallLuggage(30);
-				simSettings.getLuggageProperties().setPercentageOfPassengersWithMediumLuggage(40);
-				simSettings.getLuggageProperties().setPercentageOfPassengersWithBigLuggage(20);
+				simSettings.getLuggageProperties().setPercentageOfPassengersWithNoLuggage(0);
+				simSettings.getLuggageProperties().setPercentageOfPassengersWithSmallLuggage(20);
+				simSettings.getLuggageProperties().setPercentageOfPassengersWithMediumLuggage(30);
+				simSettings.getLuggageProperties().setPercentageOfPassengersWithBigLuggage(50);
 				simSettings.setLayoutConcept(LayoutConcept.DEFAULT);
+				simSettings.setSimulateWithoutUI(true);
 
 				Display.getDefault().syncExec(new Runnable() {
 					@Override
@@ -88,7 +91,7 @@ public class DefineBatchSimulationInput extends CDTCommand {
 				// 70 - 126
 				// 90 - 162
 				for (TravelClass travelclass : cabin.getClasses()) {
-					travelclass.setPassengers(180);
+					travelclass.setPassengers(162);
 				}
 
 				// report finished
@@ -97,6 +100,7 @@ public class DefineBatchSimulationInput extends CDTCommand {
 			}
 		};
 
+		/* report job status to console */
 		job.addJobChangeListener(new JobChangeAdapter() {
 			public void done(final IJobChangeEvent event) {
 				if (event.getResult().isOK()) {
@@ -107,8 +111,13 @@ public class DefineBatchSimulationInput extends CDTCommand {
 			}
 		});
 
-		job.setRule(jobRule);
-		// Start the Job
+		/* Start the Job */
 		job.schedule();
+		try {
+			/* schedule job after previous is finished */
+			job.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -24,7 +24,6 @@ import org.eclipse.emf.edit.command.ChangeCommand;
 
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.paxelerate.model.Cabin;
-import net.bhl.cdt.paxelerate.model.SimulationProperties;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
@@ -35,12 +34,6 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 public class ECPModelImporter extends CDTCommand {
 
-	/** The cabin. */
-	private Cabin cabinModel;
-
-	/** The sim settings. */
-	private SimulationProperties simSettings;
-
 	/** The default xmi folder. */
 	private static String DEFAULT_XMI_FOLDER = "T:/PAXelerate/data/";
 
@@ -49,9 +42,6 @@ public class ECPModelImporter extends CDTCommand {
 
 	/** The default project. */
 	private static String DEFAULT_PROJECT = "reference";
-
-	/** The job rule. */
-	private final JobScheduleRule jobRule = new JobScheduleRule();
 
 	/**
 	 * This is the constructor method of the RunBatchSimulationMenuCommand.
@@ -149,7 +139,6 @@ public class ECPModelImporter extends CDTCommand {
 	/**
 	 * This method runs the simulate boarding command.
 	 */
-	@Override
 	public final void doRun() {
 		// Create separate thread
 		Job job = new Job("ECP Importer Thread") {
@@ -184,6 +173,7 @@ public class ECPModelImporter extends CDTCommand {
 
 		};
 
+		/* report job status to console */
 		job.addJobChangeListener(new JobChangeAdapter() {
 			public void done(final IJobChangeEvent event) {
 				if (event.getResult().isOK()) {
@@ -194,8 +184,13 @@ public class ECPModelImporter extends CDTCommand {
 			}
 		});
 
-		job.setRule(jobRule);
-		// Start the Job
+		/* Start the Job */
 		job.schedule();
+		try {
+			/* schedule job after previous is finished */
+			job.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 }

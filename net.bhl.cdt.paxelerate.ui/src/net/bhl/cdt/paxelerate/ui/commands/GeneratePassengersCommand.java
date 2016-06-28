@@ -31,7 +31,6 @@ import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.util.PassengerGenerator;
 import net.bhl.cdt.paxelerate.model.util.PassengerPropertyGenerator;
-import net.bhl.cdt.paxelerate.ui.helper.JobScheduleRule;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
 import net.bhl.cdt.paxelerate.util.input.Input;
@@ -39,7 +38,6 @@ import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 import net.bhl.cdt.paxelerate.util.string.StringHelper;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
-// TODO: Auto-generated Javadoc
 /**
  * 
  * This command creates the passengers.
@@ -60,9 +58,6 @@ public class GeneratePassengersCommand extends CDTCommand {
 	/** The cabinview. */
 	private CabinViewPart cabinview;
 
-	/** The job rule. */
-	private final JobScheduleRule jobRule = new JobScheduleRule();
-
 	/**
 	 * This method submits the cabin to be used in the file.
 	 * 
@@ -72,7 +67,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 	public GeneratePassengersCommand(final Cabin cabin) {
 		this.cabin = cabin;
 	}
-	
+
 	/**
 	 * Instantiates a new generate passengers command.
 	 */
@@ -221,6 +216,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 							"You can not continue without generating and activating at least one door!",
 							IMessageProvider.ERROR);
 					Log.add(this, "Passenger generation aborted");
+					return Status.CANCEL_STATUS;
 				} else {
 
 					Display.getDefault().syncExec(new Runnable() {
@@ -272,6 +268,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 			}
 		};
 
+		/* report job status to console */
 		job.addJobChangeListener(new JobChangeAdapter() {
 			public void done(final IJobChangeEvent event) {
 				if (event.getResult().isOK()) {
@@ -282,8 +279,13 @@ public class GeneratePassengersCommand extends CDTCommand {
 			}
 		});
 
-		job.setRule(jobRule);
 		/* Start the Job */
 		job.schedule();
+		try {
+			/* schedule job after previous is finished */
+			job.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 }
