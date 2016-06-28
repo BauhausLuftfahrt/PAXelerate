@@ -74,9 +74,10 @@ public class AgentFunctions {
 		default:
 			return false;
 		case 4:
+			// TODO: temporary mods
 			/* AC - DF */
-			if (checkSeatLocation(checkSeat, mySeat, "AC")
-					| checkSeatLocation(checkSeat, mySeat, "DF")) {
+			if (checkSeatLocation(checkSeat, mySeat, "AB")
+					| checkSeatLocation(checkSeat, mySeat, "CD")) {
 				return true;
 			}
 			break;
@@ -212,7 +213,27 @@ public class AgentFunctions {
 	
 	// TODO: arbitrary seat abreast
 	public static int checkSeatFoldingStatusInRow(Passenger agent) {
-		for (Seat seat : agent.getSeat().getRow().getSeats()) {
+		
+		int seatAbrest = checkSeatAbrest(agent.getSeat());
+		
+switch (seatAbrest) {
+		
+		default:
+			return 0;
+			
+		case 4:
+			for (Seat seat : agent.getSeat().getRow().getSeats()) {
+				if (!seat.isOccupied() && "B".contains(seat.getLetter())
+						&& "AB".contains(agent.getSeat().getLetter())) {
+					return 1;
+				} else if (!seat.isOccupied() && "C".contains(seat.getLetter())
+						&& "CD".contains(agent.getSeat().getLetter())) {
+					return 2;
+				}
+			}
+			
+		case 6:
+			for (Seat seat : agent.getSeat().getRow().getSeats()) {
 			if (!seat.isOccupied() && "C".contains(seat.getLetter())
 					&& "ABC".contains(agent.getSeat().getLetter())) {
 				return 1;
@@ -221,7 +242,10 @@ public class AgentFunctions {
 				return 2;
 			}
 		}
+		
+}
 		return 0;
+		
 	}
 
 	/**
