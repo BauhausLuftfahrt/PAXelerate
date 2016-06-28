@@ -8,6 +8,7 @@ package net.bhl.cdt.paxelerate.ui.commands;
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.paxelerate.ui.helper.DefineBatchSimulationInput;
 import net.bhl.cdt.paxelerate.ui.helper.ECPModelImporter;
+import net.bhl.cdt.paxelerate.ui.helper.DefineBatchSimulationInput.HandLuggageCase;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
@@ -17,7 +18,9 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
  */
 
 public class RunBatchSimulationMenuCommand extends CDTCommand {
-
+	
+	private HandLuggageCase handLuggageStudy;
+	
 	private static int numberOfIterations = 30;
 	
 	/**
@@ -38,9 +41,9 @@ public class RunBatchSimulationMenuCommand extends CDTCommand {
 		for (int simulationLoopIndex = 1; simulationLoopIndex <= numberOfIterations; simulationLoopIndex++) {
 
 			new ECPModelImporter().doRun();
-			new DefineBatchSimulationInput().doRun();
+			new DefineBatchSimulationInput(handLuggageStudy.NO_HL, 60).doRun();
 			new GeneratePassengersCommand().execute();
-			new SimulateBoardingCommand().execute();
+			new SimulateBoardingCommand(simulationLoopIndex).execute();
 		}
 
 	}

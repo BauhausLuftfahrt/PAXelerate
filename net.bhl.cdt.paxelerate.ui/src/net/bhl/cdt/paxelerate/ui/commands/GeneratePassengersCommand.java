@@ -264,7 +264,6 @@ public class GeneratePassengersCommand extends CDTCommand {
 				}
 				/* report finished */
 				return Status.OK_STATUS;
-
 			}
 		};
 
@@ -274,7 +273,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 				if (event.getResult().isOK()) {
 					Log.add(this, "Passenger generation completed");
 				} else {
-					Log.add(this, "Job did not complete successfully");
+					Log.add(this, "Passenger generation failed!");
 				}
 			}
 		});

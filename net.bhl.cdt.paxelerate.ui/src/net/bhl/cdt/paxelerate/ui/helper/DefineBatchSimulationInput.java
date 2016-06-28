@@ -28,16 +28,27 @@ public class DefineBatchSimulationInput extends CDTCommand {
 	/** The sim settings. */
 	private SimulationProperties simSettings;
 
+	private static String DEFAULT_PROJECT_NAME = "reference";
+
+	private HandLuggageCase handLuggageStudy;
+
+	public enum HandLuggageCase {
+		NO_HL, USUAL_HL_LOW, USUAL_HL_HIGH, BULKY_HL
+	}
+
+	private int loadFactor;
+
 	/**
 	 * This is the constructor method of the SimulateBoardingCommand.
 	 */
-	public DefineBatchSimulationInput() {
-
+	public DefineBatchSimulationInput(HandLuggageCase handLuggageStudy, int loadFactor) {
 		try {
 			if (ECPUtil.getECPProjectManager().getProjects() != null) {
-				this.cabin = (Cabin) ECPUtil.getECPProjectManager().getProject("reference").getContents().get(0);
+				this.cabin = (Cabin) ECPUtil.getECPProjectManager().getProject(DEFAULT_PROJECT_NAME).getContents()
+						.get(0);
 				this.simSettings = this.cabin.getSimulationSettings();
-				Log.add(this, "Cabin set ...");
+				this.handLuggageStudy = handLuggageStudy;
+				this.loadFactor = loadFactor;
 			}
 		} catch (NullPointerException e) {
 			Log.add(this, "Could not load model!");
@@ -51,6 +62,7 @@ public class DefineBatchSimulationInput extends CDTCommand {
 	public final void doRun() {
 		// Create separate thread
 		Job job = new Job("Define Simulation Input Thread") {
+
 			/*
 			 * (non-Javadoc)
 			 * 
@@ -70,17 +82,45 @@ public class DefineBatchSimulationInput extends CDTCommand {
 					}
 				});
 
-				// 10 50 30 10
-				// 10 30 40 20
-				// 0 20 30 50
-
 				simSettings.setSimulationSpeedFactor(2);
-				simSettings.getLuggageProperties().setPercentageOfPassengersWithNoLuggage(0);
-				simSettings.getLuggageProperties().setPercentageOfPassengersWithSmallLuggage(20);
-				simSettings.getLuggageProperties().setPercentageOfPassengersWithMediumLuggage(30);
-				simSettings.getLuggageProperties().setPercentageOfPassengersWithBigLuggage(50);
 				simSettings.setLayoutConcept(LayoutConcept.DEFAULT);
 				simSettings.setSimulateWithoutUI(true);
+				simSettings.setSidewaysFoldabeSeatPopupTimeDeviation(0);
+				simSettings.setLiftingSeatPanPopupTimeDeviation(0);
+				simSettings.getPassengerProperties().setSeatInterferenceProcessTimeFoldingSeatDeviation(0);
+				simSettings.getPassengerProperties().setSeatInterferenceProcessTimeDeviation(0);
+
+				switch (handLuggageStudy) {
+				case NO_HL:
+					simSettings.getLuggageProperties().setPercentageOfPassengersWithNoLuggage(100);
+					simSettings.getLuggageProperties().setPercentageOfPassengersWithSmallLuggage(0);
+					simSettings.getLuggageProperties().setPercentageOfPassengersWithMediumLuggage(0);
+					simSettings.getLuggageProperties().setPercentageOfPassengersWithBigLuggage(0);
+					break;
+					
+				case USUAL_HL_LOW:
+					simSettings.getLuggageProperties().setPercentageOfPassengersWithNoLuggage(10);
+					simSettings.getLuggageProperties().setPercentageOfPassengersWithSmallLuggage(50);
+					simSettings.getLuggageProperties().setPercentageOfPassengersWithMediumLuggage(30);
+					simSettings.getLuggageProperties().setPercentageOfPassengersWithBigLuggage(10);
+					break;
+					
+				case USUAL_HL_HIGH:
+					simSettings.getLuggageProperties().setPercentageOfPassengersWithNoLuggage(10);
+					simSettings.getLuggageProperties().setPercentageOfPassengersWithSmallLuggage(30);
+					simSettings.getLuggageProperties().setPercentageOfPassengersWithMediumLuggage(40);
+					simSettings.getLuggageProperties().setPercentageOfPassengersWithBigLuggage(20);
+					break;
+					
+				case BULKY_HL:
+					simSettings.getLuggageProperties().setPercentageOfPassengersWithNoLuggage(0);
+					simSettings.getLuggageProperties().setPercentageOfPassengersWithSmallLuggage(20);
+					simSettings.getLuggageProperties().setPercentageOfPassengersWithMediumLuggage(30);
+					simSettings.getLuggageProperties().setPercentageOfPassengersWithBigLuggage(50);
+					break;
+				default:
+					break;
+				}
 
 				Display.getDefault().syncExec(new Runnable() {
 					@Override
@@ -88,10 +128,39 @@ public class DefineBatchSimulationInput extends CDTCommand {
 						new DrawCabinCommand(cabin).execute();
 					}
 				});
-				// 70 - 126
-				// 90 - 162
-				for (TravelClass travelclass : cabin.getClasses()) {
-					travelclass.setPassengers(162);
+
+				switch (loadFactor) {
+				case 60:
+					for (TravelClass travelclass : cabin.getClasses()) {
+						travelclass.setPassengers(108);
+					}
+					break;
+					
+				case 70:
+					for (TravelClass travelclass : cabin.getClasses()) {
+						travelclass.setPassengers(126);
+					}
+					break;
+					
+				case 80:
+					for (TravelClass travelclass : cabin.getClasses()) {
+						travelclass.setPassengers(144);
+					}
+					break;
+					
+				case 90:
+					for (TravelClass travelclass : cabin.getClasses()) {
+						travelclass.setPassengers(162);
+					}
+					break;
+					
+				case 100:
+					for (TravelClass travelclass : cabin.getClasses()) {
+						travelclass.setPassengers(180);
+					}
+					break;
+				default:
+					break;
 				}
 
 				// report finished
