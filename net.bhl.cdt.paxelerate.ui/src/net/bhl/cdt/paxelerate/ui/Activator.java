@@ -5,6 +5,7 @@
  ***************************************************************************************/
 package net.bhl.cdt.paxelerate.ui;
 
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.ui.console.MessageConsole;
 import org.eclipse.ui.console.MessageConsoleStream;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -24,6 +25,18 @@ public class Activator extends AbstractUIPlugin {
 	
 	/** The cabin message stream. */
 	private MessageConsoleStream cabinMessageStream;
+	
+	// The identifiers for the preferences
+		public static final String PROJECT_NAME_PREFERENCE = "projectName";
+		public static final String XMI_FILE_PREFERENCE = "xmiFile";
+		public static final String RESULT_FILE_NAME_PREFERENCE = "resultFile";
+		public static final String EXPORT_PATH_PREFERENCE = "exportPath";
+
+		// The default values for the preferences
+		public static final String DEFAULT_PROJECT_NAME = "reference";
+		public static final String DEFAULT_XMI_FILE = "Reference_Cabin_v2.xmi";
+		public static final String DEFAULT_RESULT_FILE_NAME = "results_0179";
+		public static final String DEFAULT_EXPORT_PATH = System.getProperty("user.home") + "/Documents/paxelerate/";
 
 	/** The plugin. */
 	// The shared instance
@@ -82,6 +95,21 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	public final MessageConsole getMessageConsole() {
 		return cabinConsole;
+	}
+	
+	/**
+	 * Initializes a preference store with default preference values for this
+	 * plug-in.
+	 * 
+	 * @param store
+	 *            the preference store to fill
+	 */
+	protected void initializeDefaultPreferences(IPreferenceStore store) {
+		store.setDefault(PROJECT_NAME_PREFERENCE, DEFAULT_PROJECT_NAME);
+		store.setDefault(XMI_FILE_PREFERENCE, DEFAULT_XMI_FILE);
+		store.setDefault(RESULT_FILE_NAME_PREFERENCE, DEFAULT_RESULT_FILE_NAME);
+		store.setDefault(EXPORT_PATH_PREFERENCE, DEFAULT_EXPORT_PATH);
+
 	}
 
 }

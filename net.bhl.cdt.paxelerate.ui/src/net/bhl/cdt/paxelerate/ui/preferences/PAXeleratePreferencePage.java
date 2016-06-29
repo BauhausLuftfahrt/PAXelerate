@@ -12,7 +12,8 @@ import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
-import net.bhl.cdt.paxelerate.core.PAXeleratePlugin;
+import net.bhl.cdt.paxelerate.ui.Activator;
+
 
 /**
  * This is the PreferencePage of PAXelerate
@@ -30,7 +31,7 @@ public class PAXeleratePreferencePage extends FieldEditorPreferencePage implemen
 	// The default values for the preferences
 	public static final String DEFAULT_PROJECT_NAME = "reference";
 	public static final String DEFAULT_XMI_FILE = "Reference_Cabin_v2.xmi";
-	public static final String DEFAULT_RESULT_FILE_NAME = "reference";
+	public static final String DEFAULT_RESULT_FILE_NAME = "results_0179";
 	public static final String DEFAULT_EXPORT_PATH = System.getProperty("user.home") + "/Documents/paxelerate/";
 
 	/**
@@ -39,13 +40,13 @@ public class PAXeleratePreferencePage extends FieldEditorPreferencePage implemen
 	public PAXeleratePreferencePage() {
 		super(GRID);
 		/* Set the preference store for the preference page. */
-		IPreferenceStore store = PAXeleratePlugin.getDefault().getPreferenceStore();
+		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
 		setPreferenceStore(store);
 
 	}
 
 	protected IPreferenceStore doGetPreferenceStore() {
-		return PAXeleratePlugin.getDefault().getPreferenceStore();
+		return Activator.getDefault().getPreferenceStore();
 	}
 
 	/**
@@ -86,7 +87,7 @@ public class PAXeleratePreferencePage extends FieldEditorPreferencePage implemen
 	 */
 	@Override
 	public void init(IWorkbench workbench) {
-		setPreferenceStore(PAXeleratePlugin.getDefault().getPreferenceStore());
+		setPreferenceStore(Activator.getDefault().getPreferenceStore());
 		setDescription("Default values for file names and paths");
 	}
 

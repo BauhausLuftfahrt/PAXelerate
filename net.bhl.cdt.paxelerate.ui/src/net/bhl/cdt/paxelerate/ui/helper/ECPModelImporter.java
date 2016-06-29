@@ -191,6 +191,9 @@ public class ECPModelImporter extends CDTCommand {
 			job.join();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+			System.out.println("InterruptedException @ thread "
+					+ Thread.currentThread().getName());
+			Thread.currentThread().interrupt();
 		}
 	}
 }

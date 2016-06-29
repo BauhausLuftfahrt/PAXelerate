@@ -15,6 +15,7 @@ import net.bhl.cdt.paxelerate.model.LayoutConcept;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
 import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.ui.commands.DrawCabinCommand;
+import net.bhl.cdt.paxelerate.ui.preferences.PAXeleratePreferencePage;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
@@ -27,8 +28,6 @@ public class DefineBatchSimulationInput extends CDTCommand {
 
 	/** The sim settings. */
 	private SimulationProperties simSettings;
-
-	private static String DEFAULT_PROJECT_NAME = "reference";
 
 	private static HandLuggageCase handLuggageStudy;
 
@@ -44,14 +43,15 @@ public class DefineBatchSimulationInput extends CDTCommand {
 	public DefineBatchSimulationInput(HandLuggageCase handLuggageStudy, int loadFactor) {
 		try {
 			if (ECPUtil.getECPProjectManager().getProjects() != null) {
-				this.cabin = (Cabin) ECPUtil.getECPProjectManager().getProject(DEFAULT_PROJECT_NAME).getContents()
-						.get(0);
+				this.cabin = (Cabin) ECPUtil.getECPProjectManager()
+						.getProject(PAXeleratePreferencePage.DEFAULT_PROJECT_NAME).getContents().get(0);
 				this.simSettings = this.cabin.getSimulationSettings();
 				this.handLuggageStudy = handLuggageStudy;
 				this.loadFactor = loadFactor;
 			}
 		} catch (NullPointerException e) {
 			Log.add(this, "Could not load model!");
+			e.printStackTrace();
 		}
 	}
 
@@ -82,8 +82,8 @@ public class DefineBatchSimulationInput extends CDTCommand {
 				});
 
 				simSettings.setSimulationSpeedFactor(2);
-				simSettings.setLayoutConcept(LayoutConcept.DEFAULT);
-				simSettings.setSimulateWithoutUI(true);
+				simSettings.setLayoutConcept(LayoutConcept.LIFTING_SEAT_PAN_SEATS);
+				simSettings.setSimulateWithoutUI(false);
 				simSettings.setSidewaysFoldabeSeatPopupTimeDeviation(0);
 				simSettings.setLiftingSeatPanPopupTimeDeviation(0);
 				simSettings.getPassengerProperties().setSeatInterferenceProcessTimeFoldingSeatDeviation(0);
@@ -96,21 +96,21 @@ public class DefineBatchSimulationInput extends CDTCommand {
 					simSettings.getLuggageProperties().setPercentageOfPassengersWithMediumLuggage(0);
 					simSettings.getLuggageProperties().setPercentageOfPassengersWithBigLuggage(0);
 					break;
-					
+
 				case USUAL_HL_LOW:
 					simSettings.getLuggageProperties().setPercentageOfPassengersWithNoLuggage(10);
 					simSettings.getLuggageProperties().setPercentageOfPassengersWithSmallLuggage(50);
 					simSettings.getLuggageProperties().setPercentageOfPassengersWithMediumLuggage(30);
 					simSettings.getLuggageProperties().setPercentageOfPassengersWithBigLuggage(10);
 					break;
-					
+
 				case USUAL_HL_HIGH:
 					simSettings.getLuggageProperties().setPercentageOfPassengersWithNoLuggage(10);
 					simSettings.getLuggageProperties().setPercentageOfPassengersWithSmallLuggage(30);
 					simSettings.getLuggageProperties().setPercentageOfPassengersWithMediumLuggage(40);
 					simSettings.getLuggageProperties().setPercentageOfPassengersWithBigLuggage(20);
 					break;
-					
+
 				case BULKY_HL:
 					simSettings.getLuggageProperties().setPercentageOfPassengersWithNoLuggage(0);
 					simSettings.getLuggageProperties().setPercentageOfPassengersWithSmallLuggage(20);
@@ -134,25 +134,25 @@ public class DefineBatchSimulationInput extends CDTCommand {
 						travelclass.setPassengers(108);
 					}
 					break;
-					
+
 				case 70:
 					for (TravelClass travelclass : cabin.getClasses()) {
 						travelclass.setPassengers(126);
 					}
 					break;
-					
+
 				case 80:
 					for (TravelClass travelclass : cabin.getClasses()) {
 						travelclass.setPassengers(144);
 					}
 					break;
-					
+
 				case 90:
 					for (TravelClass travelclass : cabin.getClasses()) {
 						travelclass.setPassengers(162);
 					}
 					break;
-					
+
 				case 100:
 					for (TravelClass travelclass : cabin.getClasses()) {
 						travelclass.setPassengers(180);
@@ -186,6 +186,8 @@ public class DefineBatchSimulationInput extends CDTCommand {
 			job.join();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+			System.out.println("InterruptedException @ thread " + Thread.currentThread().getName());
+			Thread.currentThread().interrupt();
 		}
 	}
 }

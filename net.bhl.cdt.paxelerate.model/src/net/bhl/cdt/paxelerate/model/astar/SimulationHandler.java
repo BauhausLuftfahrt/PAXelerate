@@ -447,7 +447,7 @@ public class SimulationHandler {
 			agentList.add(agent);
 		}
 
-		if (OS.isWindows()) {
+		if (OS.isWindows() && !cabin.getSimulationSettings().isSimulateWithoutUI()) {
 			javax.swing.SwingUtilities.invokeLater(new Runnable() {
 				@Override
 				public void run() {
@@ -493,7 +493,7 @@ public class SimulationHandler {
 
 				/* Warn if no path can be found */
 			} catch (NullPointerException e) {
-
+				e.printStackTrace();
 				System.out.println("Passenger " + agent.getPassenger().getName()
 						+ " can not find a path to the seat at "
 						+ agent.getGoal().getX() + " / "
@@ -516,9 +516,14 @@ public class SimulationHandler {
 	 */
 	public static void stopSimulation() {
 		for (Agent agent : agentList) {
-			// agent.resetAgent();
-			if (agent.getThread().isInterrupted())
-				agent.getThread().interrupt();
+			agent.getThread().interrupt();
+			/*try {
+				agent.getThread().join();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}*/
+			agent.resetAgent();
+			//if (agent.getThread().isInterrupted())
 			// agent = null;
 		}
 	}

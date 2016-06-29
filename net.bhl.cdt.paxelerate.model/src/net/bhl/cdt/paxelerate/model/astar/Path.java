@@ -160,6 +160,7 @@ public class Path {
 				}
 				i++;
 			} catch (IndexOutOfBoundsException e) {
+				e.printStackTrace();
 				break;
 			}
 		}

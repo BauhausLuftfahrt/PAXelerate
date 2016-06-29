@@ -92,6 +92,7 @@ public class LuggageStorage {
 				return bigLuggageCount / (double) counter;
 			}
 		} catch (ArithmeticException e) {
+			e.printStackTrace();
 			return 0;
 		}
 	}

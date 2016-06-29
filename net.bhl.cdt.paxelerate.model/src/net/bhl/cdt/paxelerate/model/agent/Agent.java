@@ -1029,6 +1029,9 @@ public class Agent extends Subject implements Runnable {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 			System.out.println("Sleeping not possible!");
+			System.out.println("InterruptedException @ thread "
+					+ Thread.currentThread().getName());
+			Thread.currentThread().interrupt();
 		}
 	}
 
@@ -1103,8 +1106,10 @@ public class Agent extends Subject implements Runnable {
 			}
 
 		} catch (InterruptedException e) {
-
 			e.printStackTrace();
+			System.out.println("InterruptedException @ thread "
+					+ Thread.currentThread().getName());
+			Thread.currentThread().interrupt();
 		}
 
 		waitingCompleted = true;
@@ -1123,6 +1128,9 @@ public class Agent extends Subject implements Runnable {
 			increaseTotalWaitingTime(sleepTime);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+			System.out.println("InterruptedException @ thread "
+					+ Thread.currentThread().getName());
+			Thread.currentThread().interrupt();
 		}
 		/* notify everyone that the luggage is now stowed */
 		alreadyStowed = true;
@@ -1191,7 +1199,10 @@ public class Agent extends Subject implements Runnable {
 			increaseTotalWaitingTime(AStarHelper.time(d));
 			Thread.sleep(AStarHelper.time(d));
 		} catch (InterruptedException e) {
-			//
+			e.printStackTrace();
+			System.out.println("InterruptedException @ thread "
+					+ Thread.currentThread().getName());
+			Thread.currentThread().interrupt();
 		}
 	}
 
@@ -1508,6 +1519,9 @@ public class Agent extends Subject implements Runnable {
 			/* catch possible interruptions */
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+			System.out.println("InterruptedException @ thread "
+					+ Thread.currentThread().getName());
+			Thread.currentThread().interrupt();
 		} catch (ConcurrentModificationException e) {
 			e.printStackTrace();
 		}
@@ -1673,6 +1687,9 @@ public class Agent extends Subject implements Runnable {
 
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+			System.out.println("InterruptedException @ thread "
+					+ Thread.currentThread().getName());
+			Thread.currentThread().interrupt();
 		} catch (ConcurrentModificationException e) {
 			e.printStackTrace();
 		}

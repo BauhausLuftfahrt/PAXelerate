@@ -75,6 +75,9 @@ public class SimulationView extends JPanel implements MouseListener {
 						Thread.sleep(1000 / fps);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
+						System.out.println("InterruptedException @ thread "
+								+ Thread.currentThread().getName());
+						Thread.currentThread().interrupt();
 					}
 				}
 			}

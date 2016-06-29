@@ -61,7 +61,9 @@ public class IssueScanner extends Subject implements Runnable {
 
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
-
+				e.printStackTrace();
+				System.out.println("InterruptedException @ thread " + Thread.currentThread().getName());
+				Thread.currentThread().interrupt();
 			}
 		}
 	}

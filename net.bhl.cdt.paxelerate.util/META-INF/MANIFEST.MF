@@ -16,4 +16,3 @@ Export-Package: net.bhl.cdt.paxelerate.util,
  net.bhl.cdt.paxelerate.util.string,
  net.bhl.cdt.paxelerate.util.time,
  net.bhl.cdt.paxelerate.util.toOpenCDT
-

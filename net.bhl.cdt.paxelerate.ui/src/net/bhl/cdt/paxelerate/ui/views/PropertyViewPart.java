@@ -209,7 +209,7 @@ public class PropertyViewPart extends ViewPart {
 			});
 		} catch (IllegalArgumentException e) {
 			System.out.println("illegal argument exception!");
-
+			e.printStackTrace();
 		}
 	}
 

@@ -133,6 +133,7 @@ public class DrawCabinCommand extends CDTCommand {
 			propertyViewPart.updateUI(cabin);
 		} catch (NullPointerException e) {
 			Log.add(this, "No property view is visible!");
+			e.printStackTrace();
 		}
 
 		try {
@@ -140,6 +141,7 @@ public class DrawCabinCommand extends CDTCommand {
 			Log.add(this, "Cabin view checked and updated");
 		} catch (NullPointerException e) {
 			Log.add(this, "No cabin view is visible!");
+			e.printStackTrace();
 		}
 
 		/* This stores the cabin as an .XMI file into the local storage. */

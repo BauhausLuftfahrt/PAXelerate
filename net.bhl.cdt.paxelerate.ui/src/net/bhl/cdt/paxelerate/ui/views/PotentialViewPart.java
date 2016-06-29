@@ -178,6 +178,7 @@ public class PotentialViewPart extends ViewPart {
 
 		IllegalArgumentException e) {
 			System.out.println("illegal argument exception!");
+			e.printStackTrace();
 
 		}
 	}

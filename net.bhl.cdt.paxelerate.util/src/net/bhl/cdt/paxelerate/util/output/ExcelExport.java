@@ -22,13 +22,10 @@ public class ExcelExport {
 
 	/** The writer. */
 	private FileWriter writer;
+	
+	private String fileName;
 
-	/** The Constant FILE_PATH. */
-	private static final String FOLDER_NAME = "paxelerate",
-			FILE_PATH = System.getProperty("user.home") + "/Documents/" + FOLDER_NAME + "/";
-
-	/** The default fileName. */
-	String fileName = "export";
+	private Object filePath;
 
 	/**
 	 * Instantiates a new excel export.
@@ -36,8 +33,9 @@ public class ExcelExport {
 	 * @param filename
 	 *            the filename
 	 */
-	public ExcelExport(String filename) {
-		this.fileName = filename;
+	public ExcelExport(String fileName, String filePath) {
+		this.fileName = fileName;
+		this.filePath = filePath;
 	}
 
 	/**
@@ -50,9 +48,9 @@ public class ExcelExport {
 	public void createFile() throws IOException, FileNotFoundException {
 		Log.add(this, "Start data export...");
 
-		File dir = new File(FILE_PATH);
+		File dir = new File(fileName);
 		dir.mkdir();
-		this.writer = new FileWriter(FILE_PATH + fileName + ".xls", true);
+		this.writer = new FileWriter(fileName + filePath + ".xls", true);
 	}
 
 	/**

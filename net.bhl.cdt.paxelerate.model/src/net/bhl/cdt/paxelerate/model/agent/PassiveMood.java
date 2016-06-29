@@ -41,6 +41,10 @@ public class PassiveMood extends AgentMood implements Strategy {
 			super.getAgent().getThread().sleep(AStarHelper
 					.time(super.getAgent().getWaitingTimeAfterCollision()));
 		} catch (InterruptedException e) {
+			e.printStackTrace();
+			System.out.println("InterruptedException @ thread "
+					+ Thread.currentThread().getName());
+			Thread.currentThread().interrupt();
 		}
 		super.getAgent().setExitPathLoop(false);
 

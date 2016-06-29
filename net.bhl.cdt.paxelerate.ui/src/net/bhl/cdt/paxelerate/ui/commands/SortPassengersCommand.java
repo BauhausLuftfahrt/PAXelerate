@@ -261,6 +261,7 @@ public class SortPassengersCommand extends CDTCommand {
 
 		} catch (NullPointerException e) {
 			Log.add(this, "No cabin view is visible!");
+			e.printStackTrace();
 		}
 	}
 

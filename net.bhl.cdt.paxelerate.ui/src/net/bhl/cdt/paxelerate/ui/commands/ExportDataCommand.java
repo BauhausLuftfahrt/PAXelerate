@@ -41,9 +41,6 @@ public class ExportDataCommand extends CDTCommand {
 	/** The cabin. */
 	private Cabin cabin;
 
-	/** The default fileName. */
-	private String fileName = "export";
-
 	/** The property store. */
 	private StorageHandler propertyStore = new StorageHandler();
 
@@ -407,6 +404,7 @@ public class ExportDataCommand extends CDTCommand {
 			getSimulationPropertiesData();
 			exporter.closeFile();
 		} catch (IOException e) {
+			e.printStackTrace();
 			Log.add(this, "Data export failed!");
 		}
 	}

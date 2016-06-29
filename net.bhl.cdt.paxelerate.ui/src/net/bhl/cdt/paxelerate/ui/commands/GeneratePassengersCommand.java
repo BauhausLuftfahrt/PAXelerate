@@ -245,6 +245,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 								ViewPartHelper.getPropertyView().updateUI(cabin);
 							} catch (NullPointerException e) {
 								Log.add(this, "No property view is visible!");
+								e.printStackTrace();
 							}
 
 							try {
@@ -252,12 +253,14 @@ public class GeneratePassengersCommand extends CDTCommand {
 								cabinview.setCabin(cabin);
 							} catch (NullPointerException e) {
 								Log.add(this, "Cabin View not visible!");
+								e.printStackTrace();
 							}
 
 							try {
 								new DrawCabinCommand(cabin).doRun();
 							} catch (NullPointerException e) {
 								Log.add(this, "Cabin View could not be refreshed");
+								e.printStackTrace();
 							}
 						}
 					});
@@ -285,6 +288,9 @@ public class GeneratePassengersCommand extends CDTCommand {
 			job.join();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+			System.out.println("InterruptedException @ thread "
+					+ Thread.currentThread().getName());
+			Thread.currentThread().interrupt();
 		}
 	}
 }

@@ -84,6 +84,7 @@ public class MoodStorage {
 
 			}
 		} catch (ArithmeticException e) {
+			e.printStackTrace();
 			return 0;
 		}
 	}

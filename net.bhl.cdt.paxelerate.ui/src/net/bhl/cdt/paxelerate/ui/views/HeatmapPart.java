@@ -280,6 +280,7 @@ public class HeatmapPart extends ViewPart {
 
 		} catch (IllegalArgumentException e) {
 			image = new Image(parent.getDisplay(), 10, 10);
+			e.printStackTrace();
 		}
 
 		final double overlap = 2.5;
@@ -364,6 +365,7 @@ public class HeatmapPart extends ViewPart {
 
 		} catch (IllegalArgumentException e) {
 			System.out.println("illegal argument exception!");
+			e.printStackTrace();
 
 		}
 	}

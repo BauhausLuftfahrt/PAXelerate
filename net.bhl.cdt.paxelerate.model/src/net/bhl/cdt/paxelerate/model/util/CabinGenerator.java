@@ -223,6 +223,7 @@ public class CabinGenerator {
 				obj.setXDimension(xDimension);
 			} catch (NullPointerException e) {
 				Log.add(this, "Define the seat dimensions");
+				e.printStackTrace();
 			}
 			
 			
@@ -232,6 +233,7 @@ public class CabinGenerator {
 						* (tc.getYDimensionOfSeats() + seatHelper)
 						+ seatHelper);
 			} catch (NullPointerException e) {
+				e.printStackTrace();
 				obj.setYDimension((cabin.getYDimension()
 						- numberOfAisles * cabin.getAisleWidth())
 						/ (numberOfAisles + 1));

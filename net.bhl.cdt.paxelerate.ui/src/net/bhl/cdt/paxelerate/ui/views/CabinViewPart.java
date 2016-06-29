@@ -150,6 +150,7 @@ public class CabinViewPart extends ViewPart {
 			try {
 				storageFolder.mkdir();
 			} catch (SecurityException se) {
+				se.printStackTrace();
 			}
 		}
 	}
@@ -540,6 +541,7 @@ public class CabinViewPart extends ViewPart {
 			loader.save(FILE_PATH + "obstaclemap.png", SWT.IMAGE_PNG);
 		} catch (Exception e) {
 			Log.add(this, "The obstacle map could not be saved! Directory problem.");
+			e.printStackTrace();
 		}
 		disposeAll();
 		return image;
@@ -710,6 +712,7 @@ public class CabinViewPart extends ViewPart {
 			disposeAll();
 		} catch (IllegalArgumentException e) {
 			System.out.println("illegal argument exception!");
+			e.printStackTrace();
 
 		}
 	}
