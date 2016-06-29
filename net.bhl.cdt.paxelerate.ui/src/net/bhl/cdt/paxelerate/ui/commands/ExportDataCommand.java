@@ -33,7 +33,8 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
  * This command exports important data from the EMF meta-model.
  *
  * @author michael.schmidt
- * @version 0.5
+ * @version 1.0
+ * @since 0.7
  */
 
 public class ExportDataCommand extends CDTCommand {

@@ -7,6 +7,7 @@ import net.bhl.cdt.paxelerate.model.PassengerMood;
  * 
  * @author michael.schmidt
  * @version 1.0
+ * @since 0.7
  *
  */
 public class MoodStorage {
@@ -24,7 +25,7 @@ public class MoodStorage {
 	/**
 	 * Adds the value.
 	 *
-	 * @param size the size
+	 * @param type the type
 	 */
 	public void addValue(PassengerMood type) {
 		counter++;
@@ -47,7 +48,7 @@ public class MoodStorage {
 	/**
 	 * Gets the mood count.
 	 *
-	 * @param size the size
+	 * @param type the type
 	 * @return the mood count
 	 */
 	public int getMoodCount(PassengerMood type) {
@@ -67,7 +68,7 @@ public class MoodStorage {
 	/**
 	 * Gets the mood percentage.
 	 *
-	 * @param size the size
+	 * @param type the type
 	 * @return the mood percentage
 	 */
 	public double getMoodPercentage(PassengerMood type) {

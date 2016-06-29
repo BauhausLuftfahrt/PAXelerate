@@ -30,6 +30,8 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.ProgressHandler;
  * This class runs and handles the a star algorithm an simulation.
  * 
  * @author marc.engelmann, michael.schmidt
+ * @version 1.0
+ * @since 0.5
  *
  */
 public class SimulationHandler {
@@ -95,11 +97,9 @@ public class SimulationHandler {
 	/**
 	 * This method constructs the RunAStar algorithm.
 	 *
-	 * @param dimensions
-	 *            is the dimension vector
-	 * @param cabin
-	 *            is the cabin
-	 * @param simulationLoopIndex
+	 * @param dimensions            is the dimension vector
+	 * @param cabin            is the cabin
+	 * @param simulationLoopIndex the simulation loop index
 	 */
 	public SimulationHandler(Vector dimensions, Cabin cabin,
 			int simulationLoopIndex) {

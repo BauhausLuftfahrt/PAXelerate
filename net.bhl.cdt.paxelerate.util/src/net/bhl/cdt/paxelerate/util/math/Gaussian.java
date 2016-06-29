@@ -9,6 +9,11 @@ import java.util.ArrayList;
 
 /**
  * The Class Gaussian.
+ * 
+ * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
+ * 
  */
 public class Gaussian {
 
@@ -22,7 +27,8 @@ public class Gaussian {
 	/**
 	 * Sum up.
 	 *
-	 * @param listlist the listlist
+	 * @param listlist
+	 *            the listlist
 	 * @return the double
 	 */
 	private static double sumUp(ArrayList<Double> listlist) {
@@ -49,7 +55,8 @@ public class Gaussian {
 	/**
 	 * Average.
 	 *
-	 * @param listit the listit
+	 * @param listit
+	 *            the listit
 	 * @return the double
 	 */
 	private static double average(ArrayList<Double> listit) {
@@ -59,7 +66,8 @@ public class Gaussian {
 	/**
 	 * The main method.
 	 *
-	 * @param args the arguments
+	 * @param args
+	 *            the arguments
 	 */
 	public static void main(String[] args) {
 		for (int j = 0; j < 1000; j++) {

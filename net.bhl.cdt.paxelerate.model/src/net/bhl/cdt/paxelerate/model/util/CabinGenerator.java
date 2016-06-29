@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2009-2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  *******************************************************************************/
@@ -35,6 +35,8 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
  * You can construct every single part of cabin on its own.
  *
  * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  * @see GenerateCabinCommand.java for implementation example.
  */
 public class CabinGenerator {

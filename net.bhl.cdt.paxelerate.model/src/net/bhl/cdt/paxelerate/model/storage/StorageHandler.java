@@ -10,6 +10,10 @@ import net.bhl.cdt.paxelerate.model.Sex;
 
 /**
  * The Class StorageHandler.
+ * 
+ * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  */
 public class StorageHandler {
 
@@ -22,6 +26,7 @@ public class StorageHandler {
 	/** The age store. */
 	AgeStorage ageStore = new AgeStorage();
 	
+	/** The mood store. */
 	MoodStorage moodStore = new MoodStorage();
 
 	/** The luggage store. */
@@ -69,6 +74,11 @@ public class StorageHandler {
 		}
 	}
 
+	/**
+	 * Gets the storage data.
+	 *
+	 * @return the storage data
+	 */
 	public Object[] getStorageData() {
 		Object[] storageData = { weightStore, heightStore, depthStore,
 				widthStore, ageStore, luggageStore, numberOfPassengers, moodStore };
@@ -137,6 +147,11 @@ public class StorageHandler {
 	}
 
 	
+	/**
+	 * Gets the mood store.
+	 *
+	 * @return the mood store
+	 */
 	public MoodStorage getMoodStore() {
 		return moodStore;
 	}
@@ -156,6 +171,8 @@ public class StorageHandler {
 		DEPTH,
 		/** The age. */
 		AGE,
+		
+		/** The mood. */
 		/* mood */
 		MOOD
 	}

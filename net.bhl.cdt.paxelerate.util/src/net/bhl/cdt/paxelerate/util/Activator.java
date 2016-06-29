@@ -10,6 +10,10 @@ import org.osgi.framework.BundleContext;
 
 /**
  * The activator class controls the plug-in life cycle.
+ * 
+ * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  */
 public class Activator extends AbstractUIPlugin {
 

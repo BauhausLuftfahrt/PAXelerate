@@ -9,16 +9,23 @@ import java.util.Random;
 
 /**
  * The Class GaussianRandom.
+ * 
+ * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  */
 public class GaussianRandom {
-	
+
 	/**
 	 * Use this function to generate a value according to gaussian normal
 	 * distribution.
 	 *
-	 * @param average            is the average value of the distribution
-	 * @param gauss            is the option you want to choose.
-	 * @param deviation            is the deviation at the chosen option.
+	 * @param average
+	 *            is the average value of the distribution
+	 * @param gauss
+	 *            is the option you want to choose.
+	 * @param deviation
+	 *            is the deviation at the chosen option.
 	 * @return the double
 	 */
 	public static double gaussianRandom(double average, GaussOptions gauss, double deviation) {

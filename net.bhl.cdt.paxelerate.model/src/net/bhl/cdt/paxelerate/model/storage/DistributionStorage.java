@@ -10,6 +10,10 @@ import net.bhl.cdt.paxelerate.model.Sex;
 
 /**
  * The Class DistributionStorage.
+ * 
+ * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  */
 public class DistributionStorage {
 

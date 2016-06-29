@@ -26,29 +26,29 @@ public class PAXeleratePreferencePage extends FieldEditorPreferencePage implemen
 	/** The Constant PROJECT_NAME_PREFERENCE. */
 	// The identifiers for the preferences
 	public static final String PROJECT_NAME_PREFERENCE = "projectName";
-	
+
 	/** The Constant XMI_FILE_PREFERENCE. */
 	public static final String XMI_FILE_PREFERENCE = "xmiFile";
-	
+
 	/** The Constant RESULT_FILE_NAME_PREFERENCE. */
 	public static final String RESULT_FILE_NAME_PREFERENCE = "resultFile";
-	
+
 	/** The Constant EXPORT_PATH_PREFERENCE. */
 	public static final String EXPORT_PATH_PREFERENCE = "exportPath";
 
 	/** The Constant DEFAULT_PROJECT_NAME. */
 	// The default values for the preferences
 	public static final String DEFAULT_PROJECT_NAME = "reference";
-	
+
 	/** The Constant DEFAULT_XMI_FILE. */
 	public static final String DEFAULT_XMI_FILE = "Reference_Cabin_v2.xmi";
-	
+
 	/** The Constant DEFAULT_XMI_FOLDER. */
 	public static final String DEFAULT_XMI_FOLDER = System.getProperty("user.home") + "/Documents/paxelerate/";
-	
+
 	/** The Constant DEFAULT_RESULT_FILE_NAME. */
 	public static final String DEFAULT_RESULT_FILE_NAME = "results_0179";
-	
+
 	/** The Constant DEFAULT_EXPORT_PATH. */
 	public static final String DEFAULT_EXPORT_PATH = System.getProperty("user.home") + "/Documents/paxelerate/";
 
@@ -63,7 +63,9 @@ public class PAXeleratePreferencePage extends FieldEditorPreferencePage implemen
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.jface.preference.PreferencePage#doGetPreferenceStore()
 	 */
 	protected IPreferenceStore doGetPreferenceStore() {

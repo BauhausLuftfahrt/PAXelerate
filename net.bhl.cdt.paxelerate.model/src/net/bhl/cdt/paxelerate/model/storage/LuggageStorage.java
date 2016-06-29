@@ -9,6 +9,10 @@ import net.bhl.cdt.paxelerate.model.LuggageSize;
 
 /**
  * The Class LuggageStorage.
+ * 
+ * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  */
 public class LuggageStorage {
 

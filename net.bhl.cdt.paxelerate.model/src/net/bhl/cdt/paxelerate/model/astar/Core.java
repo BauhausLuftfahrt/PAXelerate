@@ -15,6 +15,8 @@ import net.bhl.cdt.paxelerate.util.math.MathHelper;
  * This class is the A* algorithm.
  * 
  * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  *
  */
 public class Core {

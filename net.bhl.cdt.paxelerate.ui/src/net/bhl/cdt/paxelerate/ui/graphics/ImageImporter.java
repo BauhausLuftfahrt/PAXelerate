@@ -43,9 +43,11 @@ public class ImageImporter {
 	/**
 	 * Returns an {@link Image} encoded by the specified {@link InputStream}.
 	 *
-	 * @param stream            the {@link InputStream} encoding the image data
+	 * @param stream
+	 *            the {@link InputStream} encoding the image data
 	 * @return the {@link Image} encoded by the specified input stream
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 */
 	protected static Image getImage(final InputStream stream) throws IOException {
 		try {

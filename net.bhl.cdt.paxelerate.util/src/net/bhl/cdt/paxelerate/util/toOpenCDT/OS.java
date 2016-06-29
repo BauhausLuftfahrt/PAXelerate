@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2009-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ******************************************************************************/
@@ -9,9 +9,9 @@ package net.bhl.cdt.paxelerate.util.toOpenCDT;
 /**
  * Identification class for host's operating system.
  * 
- * TODO michael.shamiyeh, shift to OpenCDT
- * 
  * @author marc.engelmann, raoul.rothfeld
+ * @version 1.0
+ * @since 0.5
  */
 public final class OS {
 
@@ -21,29 +21,31 @@ public final class OS {
 	 * @author raoul.rothfeld
 	 */
 	public enum OSType {
-		
+
 		/** The Windows. */
-		Windows, 
- /** The Mac os. */
- MacOS, 
- /** The Linux. */
- Linux, 
- /** The Solaris. */
- Solaris, 
- /** The Other. */
- Other
+		Windows,
+		/** The Mac os. */
+		MacOS,
+		/** The Linux. */
+		Linux,
+		/** The Solaris. */
+		Solaris,
+		/** The Other. */
+		Other
 	}
-	
+
 	/**
 	 * Set class constructor to private to enforce singleton use.
 	 */
-	private OS() {}
+	private OS() {
+	}
 
 	/** Instance variable storing the active OS type enumerator. */
 	private static OSType activeOS;
 
 	/**
-	 * Private population of the OS type instance variable to one-time OS retrieval from host system.
+	 * Private population of the OS type instance variable to one-time OS
+	 * retrieval from host system.
 	 *
 	 * @author marc.engelmann, raoul.rothfeld
 	 * @return active OS type enumerator

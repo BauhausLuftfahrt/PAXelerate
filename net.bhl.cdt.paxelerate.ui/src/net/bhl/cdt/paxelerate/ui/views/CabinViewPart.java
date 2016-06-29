@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2009-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ******************************************************************************/
@@ -48,6 +48,8 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
  * This class represents the cabin view. All graphics generation is done here.
  * 
  * @author marc.engelmann, raoul.rothfeld
+ * @version 1.0
+ * @since 0.5
  */
 
 public class CabinViewPart extends ViewPart {
@@ -362,7 +364,7 @@ public class CabinViewPart extends ViewPart {
 
 		case NARROWBODY:
 			return ImageImporter.getImage(getClass(), "/images/aircraft/continental.png");
-			
+
 		default:
 			break;
 		}

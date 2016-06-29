@@ -12,6 +12,10 @@ import net.bhl.cdt.paxelerate.util.math.Vector;
 
 /**
  * The Class AgentMover.
+ * 
+ * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  */
 public class AgentMover {
 	

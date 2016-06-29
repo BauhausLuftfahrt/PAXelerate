@@ -11,6 +11,8 @@ import net.bhl.cdt.paxelerate.model.astar.Node.Property;
  * The Class AgressiveMood.
  *
  * @author marc.engelmann, tobias.bruegge-zobel
+ * @version 1.0
+ * @since 0.5
  */
 public class AggressiveMood extends AgentMood implements Strategy {
 

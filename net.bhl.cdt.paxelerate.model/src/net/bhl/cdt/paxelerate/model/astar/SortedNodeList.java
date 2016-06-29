@@ -12,6 +12,8 @@ import java.util.Collections;
  * This class is a sorted node list.
  * 
  * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  *
  */
 public class SortedNodeList {

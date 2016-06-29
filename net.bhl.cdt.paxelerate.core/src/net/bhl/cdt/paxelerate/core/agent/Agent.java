@@ -9,6 +9,8 @@ package net.bhl.cdt.paxelerate.core.agent;
  * The Class Agent.
  *
  * @author raoul.rothfeld
+ * @version 1.0
+ * @since 0.5
  */
 public class Agent {
 

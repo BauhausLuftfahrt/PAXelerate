@@ -19,6 +19,8 @@ import net.bhl.cdt.paxelerate.util.math.Vector2D;
  * for the path finding algorithm.
  * 
  * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  *
  */
 public class Node implements Comparable<Node> {
@@ -72,16 +74,18 @@ public class Node implements Comparable<Node> {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Gets the distance to closest obstacle.
+	 *
+	 * @return the distance to closest obstacle
 	 */
 	public double getDistanceToClosestObstacle() {
 		return distanceToClosestObstacle;
 	}
 
 	/**
-	 * 
-	 * @param distanceToClosestObstacle
+	 * Sets the distance to closest obstacle.
+	 *
+	 * @param distanceToClosestObstacle the new distance to closest obstacle
 	 */
 	public void setDistanceToClosestObstacle(double distanceToClosestObstacle) {
 		this.distanceToClosestObstacle = distanceToClosestObstacle;
@@ -490,10 +494,20 @@ public class Node implements Comparable<Node> {
 		}
 	}
 
+	/**
+	 * Gets the cost from start.
+	 *
+	 * @return the cost from start
+	 */
 	public int getCostFromStart() {
 		return costFromStart;
 	}
 
+	/**
+	 * Sets the cost from start.
+	 *
+	 * @param cost the new cost from start
+	 */
 	public void setCostFromStart(int cost) {
 		costFromStart = cost;
 	}

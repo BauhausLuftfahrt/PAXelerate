@@ -24,6 +24,7 @@ import net.bhl.cdt.paxelerate.util.math.Vector3D;
  *
  * @author marc.engelmann
  * @version 1.3
+ * @since 0.5
  * @see net.bhl.cdt.model.astar/AreaMap.java
  * @see net.bhl.cdt.model.astar/Node.java
  */
@@ -342,6 +343,11 @@ public class Costmap {
 		return sortedList;
 	}
 
+	/**
+	 * Gets the maximum cost.
+	 *
+	 * @return the maximum cost
+	 */
 	public int getMaximumCost() {
 		int maximum = 0;
 		for (int i = 0; i < size.getX(); i++) {

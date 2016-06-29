@@ -21,7 +21,9 @@ import net.bhl.cdt.paxelerate.util.math.Vector2D;
 /**
  * The Class AgentFunctions.
  *
- * @author marc.engelmann
+ * @author marc.engelmann, michael.schmidt
+ * @version 1.1
+ * @since 0.5
  */
 public class AgentFunctions {
 
@@ -132,10 +134,24 @@ public class AgentFunctions {
 		return false;
 	}
 
+	/**
+	 * Check seat abrest.
+	 *
+	 * @param seat the seat
+	 * @return the int
+	 */
 	private static int checkSeatAbrest(Seat seat) {
 		return ModelHelper.getParent(Row.class, seat).getSeats().size();
 	}
 
+	/**
+	 * Check seat location.
+	 *
+	 * @param checkSeat the check seat
+	 * @param mySeat the my seat
+	 * @param letter the letter
+	 * @return true, if successful
+	 */
 	private static boolean checkSeatLocation(Seat checkSeat, Seat mySeat,
 			String letter) {
 
@@ -174,6 +190,12 @@ public class AgentFunctions {
 		return false;
 	}
 
+	/**
+	 * Determine closest aisle.
+	 *
+	 * @param mySeat the my seat
+	 * @return the int
+	 */
 	// TODO: arbitrary seat abreast
 	public static int determineClosestAisle(Seat mySeat) {
 
@@ -211,6 +233,12 @@ public class AgentFunctions {
 
 	}
 	
+	/**
+	 * Check seat folding status in row.
+	 *
+	 * @param agent the agent
+	 * @return the int
+	 */
 	// TODO: arbitrary seat abreast
 	public static int checkSeatFoldingStatusInRow(Passenger agent) {
 		

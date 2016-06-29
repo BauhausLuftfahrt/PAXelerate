@@ -7,11 +7,12 @@ package net.bhl.cdt.paxelerate.model.agent;
 
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 
-
 /**
  * The Interface Strategy.
  *
  * @author marc.engelmann, tobias.bruegge-zobel
+ * @version 1.0
+ * @since 0.5
  */
 public interface Strategy {
 

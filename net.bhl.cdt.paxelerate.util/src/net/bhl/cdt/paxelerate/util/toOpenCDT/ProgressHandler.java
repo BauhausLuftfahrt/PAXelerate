@@ -18,28 +18,33 @@ import org.eclipse.swt.widgets.Shell;
 
 /**
  * The Class ProgressHandler.
+ * 
+ * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  */
 public class ProgressHandler {
 
 	/** The display. */
 	private Display display;
-	
+
 	/** The shell. */
 	private Shell shell;
-	
+
 	/** The indicator. */
 	private ProgressIndicator indicator;
-	
+
 	/** The current. */
 	private int current;
-	
+
 	/** The label. */
 	private Label label;
 
 	/**
 	 * Report progress.
 	 *
-	 * @param value the value
+	 * @param value
+	 *            the value
 	 */
 	public void reportProgress(int value) {
 		indicator.worked(result(value));
@@ -49,7 +54,8 @@ public class ProgressHandler {
 	/**
 	 * Result.
 	 *
-	 * @param value the value
+	 * @param value
+	 *            the value
 	 * @return the int
 	 */
 	private int result(int value) {
@@ -72,7 +78,8 @@ public class ProgressHandler {
 	/**
 	 * Update text.
 	 *
-	 * @param text the text
+	 * @param text
+	 *            the text
 	 */
 	public void updateText(String text) {
 		label.setText(text);
@@ -81,7 +88,8 @@ public class ProgressHandler {
 	/**
 	 * Instantiates a new progress handler.
 	 *
-	 * @param max the max
+	 * @param max
+	 *            the max
 	 */
 	public ProgressHandler(int max) {
 
@@ -114,7 +122,8 @@ public class ProgressHandler {
 	/**
 	 * Spin.
 	 *
-	 * @param display the display
+	 * @param display
+	 *            the display
 	 */
 	private static void spin(Display display) {
 		long endTime = System.currentTimeMillis() + 10;

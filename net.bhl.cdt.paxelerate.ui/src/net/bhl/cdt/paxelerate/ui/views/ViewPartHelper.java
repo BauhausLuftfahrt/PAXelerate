@@ -12,6 +12,10 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * The Class ViewPartHelper.
+ * 
+ * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  */
 public class ViewPartHelper {
 

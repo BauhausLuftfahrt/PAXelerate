@@ -24,6 +24,8 @@ import net.bhl.cdt.paxelerate.util.string.StringHelper;
  * to the user. You decide.
  * 
  * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  *
  */
 public class Input extends TitleAreaDialog {
@@ -57,7 +59,8 @@ public class Input extends TitleAreaDialog {
 		CLONE_OBJECT,
 		/** The move object. */
 		MOVE_OBJECT,
-		/** The export data object **/
+
+		/** The export data object *. */
 		EXPORT_DATA
 	}
 

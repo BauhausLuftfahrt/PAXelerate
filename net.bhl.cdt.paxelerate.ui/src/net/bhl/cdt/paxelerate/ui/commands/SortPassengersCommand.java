@@ -28,6 +28,8 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
  * predefined criteria.
  * 
  * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  *
  */
 
@@ -214,7 +216,7 @@ public class SortPassengersCommand extends CDTCommand {
 						Passenger otherPax = paxList.get(i + 1);
 						if (AgentFunctions.otherSeatCloserToAisle(thisPax.getSeat(), otherPax.getSeat())) {
 							if (thisPax.getSeat().getXPosition() > otherPax.getSeat().getXPosition()) {
-								//TODO:
+								// TODO:
 							}
 						}
 					}

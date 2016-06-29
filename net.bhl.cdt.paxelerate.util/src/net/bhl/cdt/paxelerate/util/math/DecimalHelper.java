@@ -11,6 +11,8 @@ import java.math.BigDecimal;
  * This utility class rounds a decimal number.
  * 
  * @author www.codejava.net
+ * @version 1.0
+ * @since 0.5
  *
  */
 public class DecimalHelper {
@@ -25,8 +27,10 @@ public class DecimalHelper {
 	/**
 	 * Round.
 	 *
-	 * @param value the value
-	 * @param numberOfDigitsAfterDecimalPoint the number of digits after decimal point
+	 * @param value
+	 *            the value
+	 * @param numberOfDigitsAfterDecimalPoint
+	 *            the number of digits after decimal point
 	 * @return the double
 	 */
 	public static double round(double value, int numberOfDigitsAfterDecimalPoint) {
@@ -38,8 +42,10 @@ public class DecimalHelper {
 	/**
 	 * Percentage.
 	 *
-	 * @param value the value
-	 * @param maximumValue the maximum value
+	 * @param value
+	 *            the value
+	 * @param maximumValue
+	 *            the maximum value
 	 * @return the int
 	 */
 	public static int percentage(double value, double maximumValue) {

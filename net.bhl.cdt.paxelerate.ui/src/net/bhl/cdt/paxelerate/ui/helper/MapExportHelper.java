@@ -34,7 +34,8 @@ public class MapExportHelper {
 	 * This method saves the whole cost map in a text file to the documents
 	 * folder.
 	 *
-	 * @param exporter the exporter
+	 * @param exporter
+	 *            the exporter
 	 */
 
 	public MapExportHelper(final ExcelExport exporter) {
@@ -44,10 +45,14 @@ public class MapExportHelper {
 	/**
 	 * Save costmap to file.
 	 *
-	 * @param map the map
-	 * @param dimensions the dimensions
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 * @throws FileNotFoundException the file not found exception
+	 * @param map
+	 *            the map
+	 * @param dimensions
+	 *            the dimensions
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException
+	 *             the file not found exception
 	 */
 	public final void saveCostmapToFile(final Map<Integer, Costmap> map, final Vector dimensions)
 			throws IOException, FileNotFoundException {
@@ -73,13 +78,18 @@ public class MapExportHelper {
 	 * This method saves the whole obstacle map in a text file to the documents
 	 * folder.
 	 *
-	 * @param areamap the areamap
-	 * @param dimensions the dimensions
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 * @throws FileNotFoundException the file not found exception
+	 * @param areamap
+	 *            the areamap
+	 * @param dimensions
+	 *            the dimensions
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException
+	 *             the file not found exception
 	 */
 
-	public final void saveObstacleToFile(final Areamap areamap, final Vector dimensions) throws IOException, FileNotFoundException {
+	public final void saveObstacleToFile(final Areamap areamap, final Vector dimensions)
+			throws IOException, FileNotFoundException {
 
 		for (int x = 0; x < dimensions.getX(); x++) {
 			for (int y = 0; y < dimensions.getY(); y++) {

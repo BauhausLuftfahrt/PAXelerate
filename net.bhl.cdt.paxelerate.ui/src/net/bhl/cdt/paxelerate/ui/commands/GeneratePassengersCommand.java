@@ -44,6 +44,7 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
  * 
  * @author marc.engelmann, michael.schmidt
  * @version 1.0
+ * @since 0.5
  *
  */
 
@@ -288,8 +289,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 			job.join();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-			System.out.println("InterruptedException @ thread "
-					+ Thread.currentThread().getName());
+			System.out.println("InterruptedException @ thread " + Thread.currentThread().getName());
 			Thread.currentThread().interrupt();
 		}
 	}

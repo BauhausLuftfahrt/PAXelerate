@@ -20,6 +20,8 @@ import net.bhl.cdt.paxelerate.util.math.Vector;
  * The Class AreamapHandler.
  *
  * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  */
 public class AreamapHandler {
 
@@ -130,10 +132,10 @@ public class AreamapHandler {
 	}
 
 	/**
-	 * This function calculates the minimum distance to an obstacle
-	 * 
-	 * @param node
-	 *            the node which's distance is calculated
+	 * This function calculates the minimum distance to an obstacle.
+	 *
+	 * @param node            the node which's distance is calculated
+	 * @param obstacles the obstacles
 	 * @return the minimum distance
 	 */
 	public static double minimumDistanceToObstacle(Node node,

@@ -11,6 +11,8 @@ import net.bhl.cdt.paxelerate.model.astar.Node.Property;
  * This class defines the property values of a node.
  *
  * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  * @see node.java
  */
 public class NodeProperty {

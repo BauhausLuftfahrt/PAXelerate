@@ -20,6 +20,8 @@ import net.bhl.cdt.paxelerate.ui.commands.DrawCabinCommand;
  * The Class DrawCabinHandler.
  *
  * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  */
 
 public class DrawCabinHandler extends AbstractHandler {
@@ -27,9 +29,11 @@ public class DrawCabinHandler extends AbstractHandler {
 	/**
 	 * Get selected Element.
 	 *
-	 * @param event            Selected Element
+	 * @param event
+	 *            Selected Element
 	 * @return null
-	 * @throws ExecutionException             Exception
+	 * @throws ExecutionException
+	 *             Exception
 	 */
 	@Override
 	public final Object execute(final ExecutionEvent event) throws ExecutionException {

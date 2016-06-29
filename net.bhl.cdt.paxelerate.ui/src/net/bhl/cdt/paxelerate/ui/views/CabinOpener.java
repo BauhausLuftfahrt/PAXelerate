@@ -13,6 +13,10 @@ import net.bhl.cdt.paxelerate.ui.commands.DrawCabinCommand;
 
 /**
  * The Class CabinOpener.
+ * 
+ * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  */
 public class CabinOpener extends EditorModelElementOpener {
 
@@ -23,8 +27,12 @@ public class CabinOpener extends EditorModelElementOpener {
 		// Auto-generated constructor stub
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.emf.ecp.explorereditorbridge.internal.EditorModelElementOpener#openModelElement(java.lang.Object, org.eclipse.emf.ecp.core.ECPProject)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.ecp.explorereditorbridge.internal.
+	 * EditorModelElementOpener#openModelElement(java.lang.Object,
+	 * org.eclipse.emf.ecp.core.ECPProject)
 	 */
 	@SuppressWarnings("restriction")
 	@Override

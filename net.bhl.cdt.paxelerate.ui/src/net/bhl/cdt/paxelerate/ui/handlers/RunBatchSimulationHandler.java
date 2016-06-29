@@ -17,9 +17,11 @@ import net.bhl.cdt.paxelerate.model.util.EMFModelLoader;
 import net.bhl.cdt.paxelerate.ui.commands.RunBatchSimulationCommand;
 
 /**
- * The Class SimulateBoardingHandler.
+ * The Class RunBatchSimulationHandler.
  *
  * @author michael.schmidt
+ * @version 1.0
+ * @since 0.7
  */
 
 public class RunBatchSimulationHandler extends AbstractHandler {
@@ -27,9 +29,11 @@ public class RunBatchSimulationHandler extends AbstractHandler {
 	/**
 	 * Get selected Element.
 	 *
-	 * @param event            Selected Element
+	 * @param event
+	 *            Selected Element
 	 * @return null
-	 * @throws ExecutionException             Exception
+	 * @throws ExecutionException
+	 *             Exception
 	 */
 	@Override
 	public final Object execute(final ExecutionEvent event) throws ExecutionException {

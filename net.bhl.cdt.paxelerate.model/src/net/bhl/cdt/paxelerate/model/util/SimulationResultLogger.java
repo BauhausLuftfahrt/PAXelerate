@@ -1,3 +1,8 @@
+/*******************************************************************************
+ * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
+ *******************************************************************************/
 package net.bhl.cdt.paxelerate.model.util;
 
 import java.text.DecimalFormat;
@@ -18,6 +23,8 @@ import net.bhl.cdt.paxelerate.util.time.TimeHelper;
  * This class is used to handle passenger data and to analyze and export it.
  * 
  * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  *
  */
 
@@ -51,6 +58,8 @@ public class SimulationResultLogger {
 	 * @param cabin the cabin
 	 * @param runNumber the run number
 	 * @param time the time
+	 * @param waymakingSkipped the waymaking skipped
+	 * @param waymakingCompleted the waymaking completed
 	 * @return the simulation data
 	 */
 	public void getSimulationData(Cabin cabin, int runNumber, double time, int waymakingSkipped, int waymakingCompleted) {

@@ -27,6 +27,8 @@ import net.bhl.cdt.paxelerate.ui.commands.MoveObjectCommand;
  * The Class MoveObjectHandler.
  *
  * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  */
 
 public class MoveObjectHandler extends AbstractHandler {
@@ -37,24 +39,28 @@ public class MoveObjectHandler extends AbstractHandler {
 	 * @return null
 	 */
 	private Cabin cabin;
-	
+
 	/** The rowlist. */
 	private ArrayList<Row> rowlist = new ArrayList<Row>();
-	
+
 	/** The seatlist. */
 	private ArrayList<Seat> seatlist = new ArrayList<Seat>();
-	
+
 	/** The galleylist. */
 	private ArrayList<Galley> galleylist = new ArrayList<Galley>();
-	
+
 	/** The lavatorylist. */
 	private ArrayList<Lavatory> lavatorylist = new ArrayList<Lavatory>();
-	
+
 	/** The curtainlist. */
 	private ArrayList<Curtain> curtainlist = new ArrayList<Curtain>();
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.core.commands.IHandler#execute(org.eclipse.core.commands.ExecutionEvent)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.core.commands.IHandler#execute(org.eclipse.core.commands.
+	 * ExecutionEvent)
 	 */
 	@Override
 	public final Object execute(final ExecutionEvent event) throws ExecutionException {

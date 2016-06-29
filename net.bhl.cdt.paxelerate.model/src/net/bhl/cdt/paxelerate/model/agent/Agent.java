@@ -40,6 +40,8 @@ import net.bhl.cdt.paxelerate.util.time.StopWatch;
  * reacts to obstacles occurring on the go.
  * 
  * @author marc.engelmann, michael.schmidt
+ * @version 1.2
+ * @since 0.5
  *
  */
 public class Agent extends Subject implements Runnable {
@@ -64,8 +66,11 @@ public class Agent extends Subject implements Runnable {
 
 	/** The way making skipped. */
 	private int wayMakingSkipped = 0;
+	
+	/** The way making foldable seat skipped. */
 	private int wayMakingFoldableSeatSkipped = 0;
 
+	/** The total waiting time. */
 	private long totalWaitingTime = 0;
 
 	/** The moved once. */
@@ -100,7 +105,7 @@ public class Agent extends Subject implements Runnable {
 	/** The developer mode. */
 	private final boolean developerMode;
 
-	/**  */
+	/** The waiting time after collision. */
 	private final double waitingTimeAfterCollision;
 
 	/** The mode. */
@@ -176,6 +181,11 @@ public class Agent extends Subject implements Runnable {
 		return lastMoveTime;
 	}
 
+	/**
+	 * Gets the waiting time after collision.
+	 *
+	 * @return the waiting time after collision
+	 */
 	public double getWaitingTimeAfterCollision() {
 		return waitingTimeAfterCollision;
 	}
@@ -268,6 +278,9 @@ public class Agent extends Subject implements Runnable {
 		}
 	}
 
+	/**
+	 * Reset agent.
+	 */
 	public void resetAgent() {
 		thread = null;
 		path = null;
@@ -404,6 +417,11 @@ public class Agent extends Subject implements Runnable {
 		return movedOnce;
 	}
 
+	/**
+	 * Increase total waiting time.
+	 *
+	 * @param time the time
+	 */
 	private void increaseTotalWaitingTime(long time) {
 		totalWaitingTime = totalWaitingTime + time;
 	}
@@ -442,6 +460,11 @@ public class Agent extends Subject implements Runnable {
 				desiredPosition.getX() * scale, getLuggageStowDistance()));
 	}
 
+	/**
+	 * Passenger stows luggage at aisle seat.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean passengerStowsLuggageAtAisleSeat() {
 		int yCoordAisleSeat = 0;
 		int distanceToAisleSeat = 1;
@@ -464,6 +487,11 @@ public class Agent extends Subject implements Runnable {
 				yCoordAisleSeat, distanceToAisleSeat));
 	}
 
+	/**
+	 * Passenger wait at aisle seat.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean passengerWaitAtAisleSeat() {
 		int yCoordAisleSeat = 0;
 		int distanceToAisleSeat = 1;
@@ -489,12 +517,9 @@ public class Agent extends Subject implements Runnable {
 	/**
 	 * Checks if is in x/y range equal.
 	 *
-	 * @param position
-	 *            the position
-	 * @param range
-	 *            the range
-	 * @param print
-	 *            the print
+	 * @param position            the position
+	 * @param desiredPosition the desired position
+	 * @param range            the range
 	 * @return true, if is in x/y range equal
 	 */
 	private boolean isInRangeEqual(int position, int desiredPosition,
@@ -509,12 +534,9 @@ public class Agent extends Subject implements Runnable {
 	/**
 	 * Checks if is in x/y range smaller.
 	 *
-	 * @param position
-	 *            the position
-	 * @param range
-	 *            the range
-	 * @param print
-	 *            the print
+	 * @param position            the position
+	 * @param desiredPosition the desired position
+	 * @param range            the range
 	 * @return true, if is in x/y range smaller
 	 */
 	private boolean isInRangeSmaller(int position, int desiredPosition,
@@ -1075,6 +1097,9 @@ public class Agent extends Subject implements Runnable {
 
 	}
 
+	/**
+	 * Waymaking skipped.
+	 */
 	private void waymakingSkipped() {
 
 		if (developerMode) {
@@ -1116,6 +1141,9 @@ public class Agent extends Subject implements Runnable {
 
 	}
 
+	/**
+	 * Stow luggage.
+	 */
 	private void stowLuggage() {
 
 		setCurrentState(State.STOWING_LUGGAGE);
@@ -1137,6 +1165,9 @@ public class Agent extends Subject implements Runnable {
 
 	}
 
+	/**
+	 * Unfolding seat procedure.
+	 */
 	private void unfoldingSeatProcedure() {
 
 		setCurrentState(State.UNFOLDING_SEAT);
@@ -1235,6 +1266,9 @@ public class Agent extends Subject implements Runnable {
 		this.thread = thread;
 	}
 
+	/**
+	 * Stop thread.
+	 */
 	public void stopThread() {
 		thread.interrupt();
 	}

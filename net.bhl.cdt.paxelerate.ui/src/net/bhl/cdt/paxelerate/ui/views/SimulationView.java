@@ -34,6 +34,9 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Screen;
  * The Class SimulationView.
  *
  * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
+ * 
  */
 public class SimulationView extends JPanel implements MouseListener {
 
@@ -75,8 +78,7 @@ public class SimulationView extends JPanel implements MouseListener {
 						Thread.sleep(1000 / fps);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
-						System.out.println("InterruptedException @ thread "
-								+ Thread.currentThread().getName());
+						System.out.println("InterruptedException @ thread " + Thread.currentThread().getName());
 						Thread.currentThread().interrupt();
 					}
 				}
@@ -361,7 +363,7 @@ public class SimulationView extends JPanel implements MouseListener {
 	public void mouseReleased(final MouseEvent e) {
 		//
 	}
-	
+
 	/**
 	 * Reset simulation view.
 	 */

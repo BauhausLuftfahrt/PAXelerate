@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2009-2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  *******************************************************************************/
@@ -10,6 +10,7 @@ package net.bhl.cdt.paxelerate.util.math;
  * 
  * @author marc.engelmann
  * @version 1.0
+ * @since 0.6
  */
 public abstract class Vector implements Comparable<Vector> {
 
@@ -197,7 +198,8 @@ public abstract class Vector implements Comparable<Vector> {
 	/**
 	 * This method compares two vectors for equality.
 	 *
-	 * @param object the object
+	 * @param object
+	 *            the object
 	 * @return vectors are equal or not
 	 */
 	@Override

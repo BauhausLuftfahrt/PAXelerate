@@ -7,6 +7,9 @@ package net.bhl.cdt.paxelerate.model.observer;
 
 /**
  * TODO: Description
+ * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  */
 import java.util.ArrayList;
 import java.util.List;

@@ -19,12 +19,18 @@ import net.bhl.cdt.paxelerate.ui.commands.SortPassengersCommand;
  * The Class SortPassengersHandler.
  *
  * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  */
 
 public class SortPassengersHandler extends AbstractHandler {
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.core.commands.IHandler#execute(org.eclipse.core.commands.ExecutionEvent)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.core.commands.IHandler#execute(org.eclipse.core.commands.
+	 * ExecutionEvent)
 	 */
 	@Override
 	public final Object execute(final ExecutionEvent event) throws ExecutionException {

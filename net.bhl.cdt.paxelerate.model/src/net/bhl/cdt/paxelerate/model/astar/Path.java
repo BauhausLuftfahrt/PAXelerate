@@ -14,6 +14,8 @@ import net.bhl.cdt.paxelerate.util.math.Vector;
  * Path is a list of nodes which represent the calculated shortest path.
  * 
  * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  *
  */
 
@@ -167,6 +169,12 @@ public class Path {
 		return newPath;
 	}
 
+	/**
+	 * Gets the cost.
+	 *
+	 * @return the cost
+	 * @throws ArithmeticException the arithmetic exception
+	 */
 	public int getCost() throws ArithmeticException {
 
 		int cost = 0;

@@ -7,17 +7,21 @@ package net.bhl.cdt.paxelerate.util.math;
 
 /**
  * The Enum GaussOptions.
+ * 
+ * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  */
 public enum GaussOptions {
-	
+
 	/** The PERCEN t_99. */
-	PERCENT_99(2.576), 
- /** The PERCEN t_95. */
- PERCENT_95(1.960), 
- /** The PERCEN t_90. */
- PERCENT_90(1.645), 
- /** The PERCEN t_50. */
- PERCENT_50(0.675);
+	PERCENT_99(2.576),
+	/** The PERCEN t_95. */
+	PERCENT_95(1.960),
+	/** The PERCEN t_90. */
+	PERCENT_90(1.645),
+	/** The PERCEN t_50. */
+	PERCENT_50(0.675);
 
 	/** The sigma. */
 	private final double sigma;
@@ -25,7 +29,8 @@ public enum GaussOptions {
 	/**
 	 * Instantiates a new gauss options.
 	 *
-	 * @param sigma the sigma
+	 * @param sigma
+	 *            the sigma
 	 */
 	GaussOptions(double sigma) {
 		this.sigma = sigma;

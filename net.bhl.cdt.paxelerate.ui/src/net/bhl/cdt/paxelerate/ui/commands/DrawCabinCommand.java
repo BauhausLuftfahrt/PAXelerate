@@ -34,6 +34,8 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
  * layout of the cabin and warns the user.
  * 
  * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  *
  */
 

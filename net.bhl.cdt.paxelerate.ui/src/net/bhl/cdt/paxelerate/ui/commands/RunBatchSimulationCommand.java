@@ -19,6 +19,8 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
  * The Class RunBatchSimulationCommand.
  *
  * @author michael.schmidt
+ * @version 1.0
+ * @since 0.7
  */
 
 public class RunBatchSimulationCommand extends CDTCommand {
@@ -36,8 +38,8 @@ public class RunBatchSimulationCommand extends CDTCommand {
 	 *            the cabin object
 	 */
 	public RunBatchSimulationCommand(final Cabin cabin) {
-		//this.cabin = EcoreUtil.copy(cabin);
-		//this.simSettings = this.cabin.getSimulationSettings();
+		// this.cabin = EcoreUtil.copy(cabin);
+		// this.simSettings = this.cabin.getSimulationSettings();
 		this.cabin = cabin;
 		this.simSettings = cabin.getSimulationSettings();
 	}
@@ -57,9 +59,9 @@ public class RunBatchSimulationCommand extends CDTCommand {
 			}
 		});
 
-		// 10 	50	30	10
-		// 10	30	40	20
-		// 0	20	30	50
+		// 10 50 30 10
+		// 10 30 40 20
+		// 0 20 30 50
 
 		simSettings.setSimulationSpeedFactor(10);
 		simSettings.setNumberOfSimulationLoops(30);
@@ -83,7 +85,7 @@ public class RunBatchSimulationCommand extends CDTCommand {
 
 		for (int simulationLoopIndex = 1; simulationLoopIndex <= cabin.getSimulationSettings()
 				.getNumberOfSimulationLoops(); simulationLoopIndex++) {
-			
+
 			new GeneratePassengersCommand(cabin).doRun();
 			new SimulateBoardingCommand(cabin).doRun();
 

@@ -11,12 +11,12 @@ import org.eclipse.core.commands.ExecutionException;
 
 import net.bhl.cdt.paxelerate.ui.commands.RunBatchSimulationMenuCommand;
 
-
-
 /**
- * The Class SimulateBoardingHandler.
+ * The Class RunBatchSimulationMenuHandler.
  *
  * @author michael.schmidt
+ * @version 1.0
+ * @since 0.7
  */
 
 public class RunBatchSimulationMenuHandler extends AbstractHandler {
@@ -24,15 +24,17 @@ public class RunBatchSimulationMenuHandler extends AbstractHandler {
 	/**
 	 * Get selected Element.
 	 *
-	 * @param event            Selected Element
+	 * @param event
+	 *            Selected Element
 	 * @return null
-	 * @throws ExecutionException             Exception
+	 * @throws ExecutionException
+	 *             Exception
 	 */
 	@Override
 	public final Object execute(final ExecutionEvent event) throws ExecutionException {
-		
+
 		new RunBatchSimulationMenuCommand().execute();
-		
+
 		return null;
 	}
 }

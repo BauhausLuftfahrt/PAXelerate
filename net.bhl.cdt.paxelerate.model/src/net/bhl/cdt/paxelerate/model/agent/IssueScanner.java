@@ -17,6 +17,8 @@ import net.bhl.cdt.paxelerate.util.time.StopWatch;
  * The Class IssueScanner.
  *
  * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  */
 
 public class IssueScanner extends Subject implements Runnable {

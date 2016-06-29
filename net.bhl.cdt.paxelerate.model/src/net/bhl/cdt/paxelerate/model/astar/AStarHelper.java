@@ -10,11 +10,12 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 import net.bhl.cdt.paxelerate.model.Passenger;
 
-
 /**
  * This class is a helper class for the A* Algorithm.
  *
  * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  */
 public class AStarHelper {
 	

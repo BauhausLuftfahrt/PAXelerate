@@ -37,6 +37,7 @@ import net.bhl.cdt.paxelerate.util.math.Vector2D;
  * 
  * @author marc.engelmann, michael.schmidt
  * @version 1.0
+ * @since 0.5
  *
  */
 

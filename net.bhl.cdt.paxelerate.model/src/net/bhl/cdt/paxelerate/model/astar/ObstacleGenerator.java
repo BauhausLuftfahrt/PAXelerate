@@ -22,12 +22,13 @@ import net.bhl.cdt.paxelerate.util.math.MathHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector3D;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
-// TODO: Auto-generated Javadoc
 /**
  * This class represents an obstacle map. Every point in the two dimensional
  * array has a specific value which represents the strength of the obstacle.
  * 
  * @author marc.engelmann, michael.schmidt
+ * @version 1.1
+ * @since 0.5
  *
  */
 
