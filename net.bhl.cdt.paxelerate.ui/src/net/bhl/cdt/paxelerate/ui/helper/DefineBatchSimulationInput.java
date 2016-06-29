@@ -20,6 +20,10 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * The Class DefineBatchSimulationInput.
+ * 
+ * @author michael.schmidt
+ * @version 1.0
+ * @since 0.7
  */
 public class DefineBatchSimulationInput extends CDTCommand {
 
@@ -29,16 +33,34 @@ public class DefineBatchSimulationInput extends CDTCommand {
 	/** The sim settings. */
 	private SimulationProperties simSettings;
 
+	/** The hand luggage study. */
 	private static HandLuggageCase handLuggageStudy;
 
+	/**
+	 * The Enum HandLuggageCase.
+	 */
 	public static enum HandLuggageCase {
-		NO_HL, USUAL_HL_LOW, USUAL_HL_HIGH, BULKY_HL
+
+		/** The no hl. */
+		NO_HL,
+		/** The usual hl low. */
+		USUAL_HL_LOW,
+		/** The usual hl high. */
+		USUAL_HL_HIGH,
+		/** The bulky hl. */
+		BULKY_HL
 	}
 
+	/** The load factor. */
 	private int loadFactor;
 
 	/**
 	 * This is the constructor method of the SimulateBoardingCommand.
+	 *
+	 * @param handLuggageStudy
+	 *            the hand luggage study
+	 * @param loadFactor
+	 *            the load factor
 	 */
 	public DefineBatchSimulationInput(HandLuggageCase handLuggageStudy, int loadFactor) {
 		try {

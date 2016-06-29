@@ -19,6 +19,7 @@ import net.bhl.cdt.paxelerate.util.output.ExcelExport;
  *
  * @author marc.engelmann, michael.schmidt
  * @version 1.0
+ * @since 0.6
  */
 
 public class MapExportHelper {

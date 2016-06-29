@@ -15,23 +15,28 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
  * This command exports data from the EMF meta-model.
  *
  * @author michael.schmidt
- * @version 0.5
+ * @version 1.0
+ * @since 0.7
  */
 
 public class ExcelExport {
 
 	/** The writer. */
 	private FileWriter writer;
-	
+
+	/** The file name. */
 	private String fileName;
 
+	/** The file path. */
 	private Object filePath;
 
 	/**
 	 * Instantiates a new excel export.
 	 *
-	 * @param filename
-	 *            the filename
+	 * @param fileName
+	 *            the file name
+	 * @param filePath
+	 *            the file path
 	 */
 	public ExcelExport(String fileName, String filePath) {
 		this.fileName = fileName;
@@ -44,13 +49,15 @@ public class ExcelExport {
 	 * @return true, if successful
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException
+	 *             the file not found exception
 	 */
 	public void createFile() throws IOException, FileNotFoundException {
 		Log.add(this, "Start data export...");
 
 		File dir = new File(fileName);
 		dir.mkdir();
-		this.writer = new FileWriter(fileName + filePath + ".xls", true);
+		this.writer = new FileWriter(filePath + fileName + ".xls", true);
 	}
 
 	/**
@@ -59,6 +66,8 @@ public class ExcelExport {
 	 * @return true, if successful
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException
+	 *             the file not found exception
 	 */
 	public void closeFile() throws IOException, FileNotFoundException {
 		this.writer.flush();
@@ -74,6 +83,8 @@ public class ExcelExport {
 	 *            the par string value
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException
+	 *             the file not found exception
 	 */
 	public void addColumnElement(String parStringValue) throws IOException, FileNotFoundException {
 		this.writer.append("" + parStringValue);
@@ -87,6 +98,8 @@ public class ExcelExport {
 	 *            the par int value
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException
+	 *             the file not found exception
 	 */
 	public void addColumnElement(int parIntValue) throws IOException, FileNotFoundException {
 		this.writer.append("" + parIntValue);
@@ -100,6 +113,8 @@ public class ExcelExport {
 	 *            the par double value
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException
+	 *             the file not found exception
 	 */
 	public void addColumnElement(double parDoubleValue) throws IOException, FileNotFoundException {
 		writer.append("" + parDoubleValue);
@@ -111,6 +126,8 @@ public class ExcelExport {
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException
+	 *             the file not found exception
 	 */
 	public void addNewLine() throws IOException, FileNotFoundException {
 		this.writer.append("\n");

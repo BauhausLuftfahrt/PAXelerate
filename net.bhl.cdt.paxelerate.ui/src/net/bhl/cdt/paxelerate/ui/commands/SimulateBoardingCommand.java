@@ -51,6 +51,8 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
  * This command starts the boarding simulation.
  * 
  * @author marc.engelmann, michael.schmidt
+ * @version 1.0
+ * @since 0.5
  */
 
 public class SimulateBoardingCommand extends CDTCommand {
@@ -58,8 +60,10 @@ public class SimulateBoardingCommand extends CDTCommand {
 	/** The cabin. */
 	private Cabin cabin;
 
+	/** The dimensions. */
 	private Vector dimensions;
 
+	/** The simulation loop. */
 	private int simulationLoop;
 
 	/** The simulation frame. */
@@ -81,7 +85,10 @@ public class SimulateBoardingCommand extends CDTCommand {
 	}
 
 	/**
-	 * Instantiates a new simulate boarding command.
+	 * This is the constructor method of the SimulateBoardingCommand.
+	 *
+	 * @param simulationLoop
+	 *            the simulation loop
 	 */
 	public SimulateBoardingCommand(int simulationLoop) {
 		if (ECPUtil.getECPProjectManager().getProjects() != null) {
@@ -101,6 +108,15 @@ public class SimulateBoardingCommand extends CDTCommand {
 		}
 	}
 
+	/**
+	 * Agent sleep check.
+	 *
+	 * @return true, if successful
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @throws NullPointerException
+	 *             the null pointer exception
+	 */
 	private boolean agentSleepCheck() throws InterruptedException, NullPointerException {
 		// TODO: send UI update to ViewPart
 		System.out.println("sleep check");
@@ -145,6 +161,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 		return false;
 	}
 
+	/**
+	 * Sort passengers.
+	 */
 	private void sortPassengers() {
 		// sorts the passenger according to selected method
 		SortPassengersCommand sort = new SortPassengersCommand(cabin);
@@ -174,6 +193,14 @@ public class SimulateBoardingCommand extends CDTCommand {
 		}
 	}
 
+	/**
+	 * Export result data.
+	 *
+	 * @throws FileNotFoundException
+	 *             the file not found exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
 	private void exportResultData() throws FileNotFoundException, IOException {
 
 		ExcelExport exporterResults = new ExcelExport(PAXeleratePreferencePage.DEFAULT_RESULT_FILE_NAME,

@@ -24,27 +24,21 @@ import org.eclipse.emf.edit.command.ChangeCommand;
 
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.paxelerate.model.Cabin;
+import net.bhl.cdt.paxelerate.ui.preferences.PAXeleratePreferencePage;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
- * The Class RunBatchSimulationMenuCommand.
+ * The Class ECPModelImporter.
  *
  * @author michael.schmidt
+ * @version 1.0
+ * @since 0.7
  */
 
 public class ECPModelImporter extends CDTCommand {
 
-	/** The default xmi folder. */
-	private static String DEFAULT_XMI_FOLDER = "T:/PAXelerate/data/";
-
-	/** The default xmi filename. */
-	private static String DEFAULT_XMI_FILENAME = "Reference_Cabin_v2.xmi";
-
-	/** The default project. */
-	private static String DEFAULT_PROJECT = "reference";
-
 	/**
-	 * This is the constructor method of the RunBatchSimulationMenuCommand.
+	 * This is the constructor method of the ECPModelImporter.
 	 */
 	public ECPModelImporter() {
 
@@ -137,7 +131,7 @@ public class ECPModelImporter extends CDTCommand {
 	}
 
 	/**
-	 * This method runs the simulate boarding command.
+	 * This method runs the ECPModelImporter.
 	 */
 	public final void doRun() {
 		// Create separate thread
@@ -156,8 +150,9 @@ public class ECPModelImporter extends CDTCommand {
 					Log.add(this, "Loading cabin from file...");
 
 					deleteExistingProjects();
-					ECPProject project = createNewProject(DEFAULT_PROJECT);
-					Cabin cabin = loadXMIModel(DEFAULT_XMI_FOLDER, DEFAULT_XMI_FILENAME);
+					ECPProject project = createNewProject(PAXeleratePreferencePage.DEFAULT_PROJECT_NAME);
+					Cabin cabin = loadXMIModel(PAXeleratePreferencePage.DEFAULT_XMI_FOLDER,
+							PAXeleratePreferencePage.DEFAULT_XMI_FILE);
 					addXMIModelToProject(project, cabin);
 					// cabinModel = EcoreUtil.copy(cabin);
 					Log.add(this, "...cabin loaded!");
@@ -191,8 +186,7 @@ public class ECPModelImporter extends CDTCommand {
 			job.join();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-			System.out.println("InterruptedException @ thread "
-					+ Thread.currentThread().getName());
+			System.out.println("InterruptedException @ thread " + Thread.currentThread().getName());
 			Thread.currentThread().interrupt();
 		}
 	}

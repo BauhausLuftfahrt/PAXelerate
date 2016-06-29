@@ -13,6 +13,10 @@ import org.osgi.framework.BundleContext;
 
 /**
  * The activator class controls the plug-in life cycle.
+ * 
+ * @author marc.engelmann, michael.schmidt
+ * @version 1.0
+ * @since 0.5
  */
 public class Activator extends AbstractUIPlugin {
 
@@ -35,6 +39,7 @@ public class Activator extends AbstractUIPlugin {
 		// The default values for the preferences
 		public static final String DEFAULT_PROJECT_NAME = "reference";
 		public static final String DEFAULT_XMI_FILE = "Reference_Cabin_v2.xmi";
+		public static final String DEFAULT_XMI_FOLDER = System.getProperty("user.home") + "/Documents/paxelerate/";
 		public static final String DEFAULT_RESULT_FILE_NAME = "results_0179";
 		public static final String DEFAULT_EXPORT_PATH = System.getProperty("user.home") + "/Documents/paxelerate/";
 
