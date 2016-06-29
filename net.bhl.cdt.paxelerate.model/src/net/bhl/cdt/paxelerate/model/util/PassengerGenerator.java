@@ -1,3 +1,8 @@
+/*******************************************************************************
+ * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
+ *******************************************************************************/
 package net.bhl.cdt.paxelerate.model.util;
 
 import java.util.Map;
@@ -12,6 +17,7 @@ import net.bhl.cdt.paxelerate.model.Passenger;
  *
  * @author marc.engelmann, michael.schmidt
  * @version 1.1
+ * @since 0.5
  */
 
 public class PassengerGenerator {
