@@ -94,6 +94,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 			this.cabin = EcoreUtil.copy(cabinModel);
 			this.developerMode = this.cabin.getSimulationSettings().isDeveloperMode();
 			this.simulationLoop = simulationLoop;
+			
+			/* IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
+      preferenceStore.getString(PluginPreferencesPage.FIELD_STRING_ID);*/
 		}
 	}
 

@@ -340,4 +340,18 @@
             sequence="M1+L">
       </key>
    </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="net.bhl.cdt.paxelerate.ui.preferences.PAXeleratePreferencePage"
+            id="net.bhl.cdt.paxelerate.ui.paxelerate"
+            name="PAXelerate">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="net.bhl.cdt.paxelerate.ui.preferences.PluginPreferenceInitializer">
+      </initializer>
+   </extension>
 </plugin>
