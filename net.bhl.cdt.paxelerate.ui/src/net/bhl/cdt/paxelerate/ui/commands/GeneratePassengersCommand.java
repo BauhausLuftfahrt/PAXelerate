@@ -97,10 +97,15 @@ public class GeneratePassengersCommand extends CDTCommand {
 		/**
 		 * Check if active doors exist otherwise throw a NullPointerException
 		 **/
+		// TODO: check if no door is generated
 		if (sdoorage.size() == 0) {
-			Log.add(this, "Please activate at least one door which can be assigned to passengers.");
-			throw new NullPointerException();
-		}
+			Log.add(this, "No active door is found. First available door is activated.");
+			for (Door door : cabin.getDoors()) {
+				door.setIsActive(true);
+				sdoorage.add(door);
+				}
+			}
+			
 		int seatPos = pass.getSeat().getXPosition();
 
 		int current = Integer.MAX_VALUE;

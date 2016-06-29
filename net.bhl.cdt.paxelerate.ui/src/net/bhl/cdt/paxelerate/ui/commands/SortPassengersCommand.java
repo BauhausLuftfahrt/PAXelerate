@@ -234,7 +234,7 @@ public class SortPassengersCommand extends CDTCommand {
 			}
 		}
 
-		System.out.println("Sorting completed.");
+		Log.add(this, "Sorting completed.");
 
 		int counter = 1;
 

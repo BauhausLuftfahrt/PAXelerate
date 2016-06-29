@@ -361,6 +361,7 @@ public class ObstacleGenerator {
 							absolutePositionY);
 
 					/* check if the node is already an obstacle! */
+					// TODO: catch NullPointerException
 					if (node.isObstacle()) {
 
 						Log.add(this,

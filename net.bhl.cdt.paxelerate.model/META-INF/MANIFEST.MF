@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: PAXelerate - ModelS
 Bundle-SymbolicName: net.bhl.cdt.paxelerate.model;singleton:=true
-Bundle-Version: 0.6.0.qualifier
+Bundle-Version: 0.7.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: http://www.paxelerate.com/
 Bundle-Localization: plugin
@@ -16,7 +16,7 @@ Require-Bundle: javax.inject,
  org.eclipse.ui.intro,
  net.bhl.cdt.ui;bundle-version="0.1.0",
  net.bhl.cdt.model;visibility:=reexport,
- net.bhl.cdt.paxelerate.util;bundle-version="0.6.0"
+ net.bhl.cdt.paxelerate.util;bundle-version="0.7.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: net.bhl.cdt.paxelerate.model,

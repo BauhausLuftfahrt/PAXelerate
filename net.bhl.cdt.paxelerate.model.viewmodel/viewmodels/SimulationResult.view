@@ -35,6 +35,16 @@
           <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationResult/passengers"/>
         </domainModelReference>
       </children>
+      <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_8gSoYD4MEeakGoA8-zfUrQ" name="Control waymakingSkipped">
+        <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_8gSoYT4MEeakGoA8-zfUrQ">
+          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationResult/waymakingSkipped"/>
+        </domainModelReference>
+      </children>
+      <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_8hPDkD4MEeakGoA8-zfUrQ" name="Control waymakingCompleted">
+        <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_8hPDkT4MEeakGoA8-zfUrQ">
+          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationResult/waymakingCompleted"/>
+        </domainModelReference>
+      </children>
     </children>
   </children>
 </org.eclipse.emf.ecp.view.model:View>
