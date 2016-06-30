@@ -10,7 +10,7 @@ Welcome to the repository of [PAXelerate](http://www.paxelerate.com) - an open s
 
 **Client Version**
 
-1. Download and unpack the latest client version [Alpha 0.7] (https://github.com/BauhausLuftfahrt/PAXelerate/releases/tag/alpha-0.7) (2016-07-01)
+1. Download and unpack the latest client version [Alpha 0.7] (https://github.com/BauhausLuftfahrt/PAXelerate/releases/tag/alpha-0.7) (2016-07-01) [![DOI](https://zenodo.org/badge/23058/BauhausLuftfahrt/PAXelerate.svg)](https://zenodo.org/badge/latestdoi/23058/BauhausLuftfahrt/PAXelerate)
 2. Start `PAXelerate.exe`
 
 **Software Developer Kit**
