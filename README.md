@@ -1,8 +1,8 @@
-# README #
+﻿# README #
 
 Welcome to the repository of [PAXelerate](http://www.paxelerate.com) - an open source passenger flow simulation framework for advanced aircraft cabin layouts! 
 
-* Currently version *Alpha 0.7* is under developement and scheduled for 2016-07-01
+* Currently version *Alpha 0.8* is under developement and scheduled for 2016-09-01
 * The implementation began in November 2014
 
 
@@ -10,7 +10,7 @@ Welcome to the repository of [PAXelerate](http://www.paxelerate.com) - an open s
 
 **Client Version**
 
-1. Download and unpack the latest client version [Alpha 0.6] (https://github.com/BauhausLuftfahrt/PAXelerate/releases/tag/alpha-0.6) (2016-03-31)
+1. Download and unpack the latest client version [Alpha 0.7] (https://github.com/BauhausLuftfahrt/PAXelerate/releases/tag/alpha-0.7) (2016-07-01)
 2. Start `PAXelerate.exe`
 
 **Software Developer Kit**

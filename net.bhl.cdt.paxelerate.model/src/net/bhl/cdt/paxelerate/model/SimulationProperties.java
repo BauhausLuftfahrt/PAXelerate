@@ -124,7 +124,7 @@ public interface SimulationProperties extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Number Of Simulation Loops</b></em>' attribute.
-	 * The default value is <code>"10"</code>.
+	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Number Of Simulation Loops</em>' attribute isn't clear,
@@ -134,7 +134,7 @@ public interface SimulationProperties extends EObject {
 	 * @return the value of the '<em>Number Of Simulation Loops</em>' attribute.
 	 * @see #setNumberOfSimulationLoops(int)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_NumberOfSimulationLoops()
-	 * @model default="10"
+	 * @model default="1"
 	 * @generated
 	 */
 	int getNumberOfSimulationLoops();

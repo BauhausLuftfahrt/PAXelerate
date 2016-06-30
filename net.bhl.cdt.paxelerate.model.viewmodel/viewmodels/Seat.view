@@ -33,8 +33,8 @@
                 <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Seat/occupied"/>
               </domainModelReference>
             </children>
-            <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_ZSuPMC7pEeaDtpihYZ-4CQ" name="Control layoutConcept">
-              <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_W2pYEC8aEeaJE-oZ8qaNEQ">
+            <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_vXYb4D7REeaMd6ncihyvAw" name="Control layoutConcept">
+              <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_vXYb4T7REeaMd6ncihyvAw">
                 <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Seat/layoutConcept"/>
               </domainModelReference>
             </children>

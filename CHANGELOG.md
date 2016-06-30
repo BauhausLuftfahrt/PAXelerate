@@ -1,5 +1,53 @@
 # Changelog #
 
+
+
+
+## PAXelerate - Version Alpha 0.7 / 2016-07-01 ##
+
+This release focused on stability and performance issues, especially in terms of batch simulation capabilities. Improvements on the thread handling allows to run multiple iterations with the SDK version. 
+
+**Fixed bugs**
+- #140 Error in CreatePassengers
+- #119 Passenger sorting options do not work
+- #141 Walking speed correcting
+
+**UI improvements**
+- #80 UI viewmodel descriptions and repositioning
+- #49 Enforce threading for UI & pathfinding calculations
+- #124 When refreshing the cabin, the delays for the passengers are not recalculated 
+- #69 Detect overlap of objects 
+- #122 Implement Load Factor as Double Value
+
+**Model improvements**
+- #87 Merge different TravelClasses and Doors into on single Class
+- #77 Simultaneous door entry with multiple doors 
+- #5 Refine potential generation around obstacle 
+- #48 Pathfinding with more than one aisle
+- #72 Merge Obstacle Map and AreaMap
+- #86 Evaluate agent behaviour and tasks
+- #120 Remove Static Potential Gradient in Aisle and Door Area to support multiple aisles and unconventional cabin layouts 
+- #123 When making way for a passenger boarding from the rear entrance, the blocking line blocks the passenger itself
+- #125 Calculate agent waiting time 
+- #127 Way making procedure for more then one passenger sitting
+- #132 checkPassengerAssignments: recalculate the delay
+- Agent behaviour for foldable seats (SDK version)
+
+**Misc improvements**
+- #26 Create JavaDoc
+- #28 Ensure compatibility with MacOS
+- #1 Terminate threads after simulation to reduce CPU load
+- #142 Implementation of data export functionalities
+- Batch simulation capabilities (SDK version)
+- Result data mining during simulation
+- Introduces developer mode with enhanced functions and output
+
+
+We are happy to receive your feedback. If you discover any bugs, please attach the log file stored in `workspace/.metadata/` to your [bug report](https://github.com/BauhausLuftfahrt/PAXelerate/issues/new).
+
+---
+
+
 ## PAXelerate - Version Alpha 0.6 / 2016-03-31 ##
 
 This release focused on additional functionalities as well as more stability. The passenger generation and simulation views are now unsynced from the main GUI which prohibits the GUI from freezing during calculations. Enhancements can be found in the UI and workflow.

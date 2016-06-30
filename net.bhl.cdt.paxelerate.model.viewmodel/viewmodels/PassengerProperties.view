@@ -105,6 +105,36 @@
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//PassengerProperties/passengerAggressiveMoodShare"/>
           </domainModelReference>
         </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_H0xNUD4NEeakGoA8-zfUrQ" name="Control seatInterferenceStandingUpPassengerWaitingTime">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_H0xNUT4NEeakGoA8-zfUrQ">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//PassengerProperties/seatInterferenceStandingUpPassengerWaitingTime"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_H2oOgD4NEeakGoA8-zfUrQ" name="Control seatInterferenceProcessTimeMean">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_H2oOgT4NEeakGoA8-zfUrQ">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//PassengerProperties/seatInterferenceProcessTimeMean"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_H4gd0D4NEeakGoA8-zfUrQ" name="Control seatInterferenceProcessTimeDeviation">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_H4gd0T4NEeakGoA8-zfUrQ">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//PassengerProperties/seatInterferenceProcessTimeDeviation"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_H6XfAD4NEeakGoA8-zfUrQ" name="Control passivePassengerWaitingTimeAfterCollision">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_H6XfAT4NEeakGoA8-zfUrQ">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//PassengerProperties/passivePassengerWaitingTimeAfterCollision"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_nK90ED7REeaMd6ncihyvAw" name="Control seatInterferenceProcessTimeFoldingSeatMean">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_nK-bID7REeaMd6ncihyvAw">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//PassengerProperties/seatInterferenceProcessTimeFoldingSeatMean"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_nLLPcD7REeaMd6ncihyvAw" name="Control seatInterferenceProcessTimeFoldingSeatDeviation">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_nLLPcT7REeaMd6ncihyvAw">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//PassengerProperties/seatInterferenceProcessTimeFoldingSeatDeviation"/>
+          </domainModelReference>
+        </children>
       </children>
     </children>
     <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_lO-9UCyuEeaGtfBfHfcYsw"/>

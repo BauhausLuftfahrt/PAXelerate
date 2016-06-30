@@ -1,6 +1,6 @@
 # PAXelerate Plug-ins
 
-Based on PAXelerate release: Alpha 0.6 (04/01/2016)
+Based on PAXelerate release: Alpha 0.7 (07/01/2016)
 
 `net.bhl.cdt.paxelerate.core`
 This plug-in contains the product file and bit by bit core functionalities will be transferred.
