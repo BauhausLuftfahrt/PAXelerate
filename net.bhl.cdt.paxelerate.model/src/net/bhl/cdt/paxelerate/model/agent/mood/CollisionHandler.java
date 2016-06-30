@@ -5,7 +5,7 @@
  ***************************************************************************************/
 package net.bhl.cdt.paxelerate.model.agent.mood;
 
-import net.bhl.cdt.paxelerate.model.astar.Node.Property;
+import net.bhl.cdt.paxelerate.model.astar.node.Node.Property;
 
 /**
  * The Interface Strategy.
@@ -21,6 +21,7 @@ public interface CollisionHandler {
 	 * @param property
 	 *            the property
 	 */
+
 	public void reactToCollision(Property property);
 
 }

@@ -16,7 +16,7 @@ import net.bhl.cdt.paxelerate.model.agent.Agent;
 public abstract class AgentMood implements CollisionHandler {
 
 	/** The agent. */
-	private Agent agent;
+	protected Agent agent;
 
 	/**
 	 * Instantiates a new agent mood.

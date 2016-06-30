@@ -20,8 +20,10 @@ Require-Bundle: javax.inject,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: net.bhl.cdt.paxelerate.model,
- net.bhl.cdt.paxelerate.model.impl,
  net.bhl.cdt.paxelerate.model.agent,
+ net.bhl.cdt.paxelerate.model.agent.enums,
  net.bhl.cdt.paxelerate.model.astar,
+ net.bhl.cdt.paxelerate.model.astar.node,
+ net.bhl.cdt.paxelerate.model.impl,
  net.bhl.cdt.paxelerate.model.storage,
  net.bhl.cdt.paxelerate.model.util

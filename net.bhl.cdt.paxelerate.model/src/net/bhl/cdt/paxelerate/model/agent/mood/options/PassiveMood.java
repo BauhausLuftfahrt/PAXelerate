@@ -8,7 +8,7 @@ package net.bhl.cdt.paxelerate.model.agent.mood.options;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.agent.mood.AgentMood;
 import net.bhl.cdt.paxelerate.model.astar.AStarHelper;
-import net.bhl.cdt.paxelerate.model.astar.Node.Property;
+import net.bhl.cdt.paxelerate.model.astar.node.Node.Property;
 
 /**
  * The Class PassiveMood.
@@ -35,21 +35,22 @@ public class PassiveMood extends AgentMood {
 	 * net.bhl.cdt.paxelerate.model.agent.AgentMood#reactToCollision(net.bhl.cdt
 	 * .paxelerate.model.astar.Node.Property)
 	 */
+
 	@SuppressWarnings("static-access")
 	@Override
 	public void reactToCollision(Property property) {
 
 		try {
 			/* agent waits for specific time before he continues walking */
-			super.getAgent().getThread().sleep(AStarHelper
-					.time(super.getAgent().getWaitingTimeAfterCollision()));
+			agent.getThread().sleep(
+					AStarHelper.time(agent.getWaitingTimeAfterCollision()));
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 			System.out.println("InterruptedException @ thread "
 					+ Thread.currentThread().getName());
 			Thread.currentThread().interrupt();
 		}
-		super.getAgent().setExitPathLoop(false);
+		agent.setExitPathLoop(false);
 
 	}
 

@@ -9,8 +9,6 @@ package net.bhl.cdt.paxelerate.model.agent;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 
-import org.eclipse.swt.SWTException;
-
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
 import net.bhl.cdt.paxelerate.model.LayoutConcept;
@@ -19,25 +17,27 @@ import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.PassengerMood;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
+import net.bhl.cdt.paxelerate.model.agent.enums.AgentMode;
+import net.bhl.cdt.paxelerate.model.agent.enums.State;
 import net.bhl.cdt.paxelerate.model.agent.mood.AgentMood;
-import net.bhl.cdt.paxelerate.model.agent.mood.Collision;
 import net.bhl.cdt.paxelerate.model.agent.mood.options.AggressiveMood;
 import net.bhl.cdt.paxelerate.model.agent.mood.options.PassiveMood;
 import net.bhl.cdt.paxelerate.model.agent.movement.Movement;
 import net.bhl.cdt.paxelerate.model.agent.movement.MovementType;
 import net.bhl.cdt.paxelerate.model.agent.movement.options.Step;
+import net.bhl.cdt.paxelerate.model.agent.movement.options.StowLuggage;
+import net.bhl.cdt.paxelerate.model.agent.movement.options.Wait;
+import net.bhl.cdt.paxelerate.model.agent.movement.options.WaitForClearing;
 import net.bhl.cdt.paxelerate.model.astar.AStarHelper;
-import net.bhl.cdt.paxelerate.model.astar.Core;
 import net.bhl.cdt.paxelerate.model.astar.Costmap;
-import net.bhl.cdt.paxelerate.model.astar.Node;
-import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 import net.bhl.cdt.paxelerate.model.astar.Path;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
+import net.bhl.cdt.paxelerate.model.astar.node.Node;
+import net.bhl.cdt.paxelerate.model.astar.node.Node.Property;
 import net.bhl.cdt.paxelerate.model.observer.Subject;
 import net.bhl.cdt.paxelerate.model.util.Rotator;
 import net.bhl.cdt.paxelerate.util.math.GaussOptions;
 import net.bhl.cdt.paxelerate.util.math.GaussianRandom;
-import net.bhl.cdt.paxelerate.util.math.MathHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.time.StopWatch;
@@ -65,9 +65,6 @@ public class Agent extends Subject implements Runnable {
 	/** The current position. */
 	private Vector start, goal, desiredPosition, currentPosition;
 
-	/** The mutable cost map. */
-	private Costmap mutableCostMap;
-
 	/** The dim. */
 	private int numbOfInterupts = 0, waycounter = 0, dim = 2;
 
@@ -82,9 +79,9 @@ public class Agent extends Subject implements Runnable {
 
 	/** The moved once. */
 	private boolean alreadyStowed = false, waitingCompleted = false,
-			initialized = false, exitTheMainLoop = false, movedOnce = false,
-			foldingSeats = false, stowingAtAisleSeat = false,
-			waitingAtAisleSeat = false, aisleSeat = false;
+			exitTheMainLoop = false, movedOnce = false, foldingSeats = false,
+			stowingAtAisleSeat = false, waitingAtAisleSeat = false,
+			aisleSeat = false;
 
 	/** The stopwatch. */
 	private StopWatch stopwatch = new StopWatch();
@@ -140,46 +137,6 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * The Enum AgentMode.
-	 *
-	 * @author marc.engelmann
-	 */
-	public static enum AgentMode {
-
-		/** The go to seat. */
-		GO_TO_SEAT,
-		/** The make way. */
-		MAKE_WAY
-	}
-
-	/**
-	 * The Enum State.
-	 *
-	 * @author marc.engelmann
-	 */
-	public static enum State {
-
-		/** The following path. */
-		FOLLOWING_PATH,
-		/** The waiting for row clearing. */
-		WAITING_FOR_ROW_CLEARING,
-		/** The clearing row. */
-		CLEARING_ROW,
-		/** The stowing luggage. */
-		STOWING_LUGGAGE,
-		/** The unfold seat. */
-		UNFOLDING_SEAT,
-		/** The preparing. */
-		PREPARING,
-		/** The queueing up. */
-		QUEUEING_UP,
-		/** The waiting for other passenger to seat. */
-		WAITING_FOR_OTHER_PASSENGER_TO_SEAT,
-		/** The returning to seat. */
-		RETURNING_TO_SEAT;
-	}
-
-	/**
 	 * Gets the last move timestamp.
 	 *
 	 * @return the last move timestamp
@@ -193,8 +150,8 @@ public class Agent extends Subject implements Runnable {
 	 *
 	 * @return the waiting time after collision
 	 */
-	public double getWaitingTimeAfterCollision() {
-		return waitingTimeAfterCollision;
+	public long getWaitingTimeAfterCollision() {
+		return (long) waitingTimeAfterCollision;
 	}
 
 	/**
@@ -295,7 +252,6 @@ public class Agent extends Subject implements Runnable {
 		goal = null;
 		desiredPosition = null;
 		currentPosition = null;
-		mutableCostMap = null;
 		thePassengerILetInTheRow = null;
 		simSettings = null;
 
@@ -348,25 +304,6 @@ public class Agent extends Subject implements Runnable {
 	 */
 	public Agent getBlockingAgent() {
 		return blockingAgent;
-	}
-
-	/**
-	 * Checks if is initialized.
-	 *
-	 * @return true, if is initialized
-	 */
-	public boolean isInitialized() {
-		return initialized;
-	}
-
-	/**
-	 * Sets the initialized.
-	 *
-	 * @param initialized
-	 *            the new initialized
-	 */
-	public void setInitialized(boolean initialized) {
-		this.initialized = initialized;
 	}
 
 	/**
@@ -430,7 +367,7 @@ public class Agent extends Subject implements Runnable {
 	 * @param time
 	 *            the time
 	 */
-	private void increaseTotalWaitingTime(long time) {
+	public void increaseTotalWaitingTime(long time) {
 		totalWaitingTime = totalWaitingTime + time;
 	}
 
@@ -611,7 +548,7 @@ public class Agent extends Subject implements Runnable {
 	 *            is the specific angle
 	 */
 
-	private synchronized void blockArea(Vector vector, boolean occupy,
+	synchronized void blockArea(Vector vector, boolean occupy,
 			boolean rotateOnly, Integer rotation) {
 
 		/*
@@ -710,7 +647,7 @@ public class Agent extends Subject implements Runnable {
 	 * @param degrees
 	 *            is the rotation in degrees
 	 */
-	private void rotateAgent(int degrees) {
+	public void rotateAgent(int degrees) {
 		if (rotationAllowed()) {
 			blockArea(currentPosition, false, false, null);
 			blockArea(currentPosition, true, true, degrees);
@@ -743,7 +680,7 @@ public class Agent extends Subject implements Runnable {
 		pathlist.remove(pathhelper);
 
 		/* cut the path up to the current location */
-		pathhelper = pathhelper.cutToPoint(pathhelper, currentPosition);
+		pathhelper = pathhelper.cutToPosition(pathhelper, currentPosition);
 
 		/* add the path back to the list */
 		pathlist.add(pathhelper);
@@ -760,94 +697,8 @@ public class Agent extends Subject implements Runnable {
 		passenger.setCostOfPath(costOfPaths);
 	}
 
-	/**
-	 * This method finds a new path. The <b>finalCostmap</b> is needed so that
-	 * there is no overlapping of different agent positions over time. The cost
-	 * map is always modified based on the non-editable final cost map
-	 * calculated at the beginning.
-	 *
-	 * @throws NullPointerException
-	 *             the null pointer exception
-	 */
-	public void findNewPath() throws NullPointerException {
-
-		// Path oldPath = null;
-		// double pathFindingDecisionFactor = 1.1;
-
-		/* starts the StopWatch - used for performance testing */
-		stopwatch.start();
-
-		/* reset the mutable CostMap to the original cost map */
-		mutableCostMap = finalCostmap;
-
-		SimulationHandler.getAreamapHandler().setStartLocation(currentPosition,
-				this);
-
-		/* this is only run if its not the initial path finding process */
-		if (currentPosition != null) {
-
-			// // TODO: is this only a "pointer"?
-			// /* store the old path */
-			// oldPath = path;
-
-			/* this sets the new start of the A* to the current position */
-			start = currentPosition;
-
-			/* this declares the area around agents as high cost terrain */
-			mutableCostMap = AgentFunctions.updateCostmap(this);
-		}
-
-		/* run the path finding algorithm */
-		Core astar = new Core(SimulationHandler.getAreamapHandler(),
-				mutableCostMap, this);
-
-		/* retrieve the path information */
-		path = astar.getBestPath();
-
-		// System.out.println("old: " + oldPath.getCost() + ", new: "
-		// + path.getCost() + " diff in %: "
-		// + oldPath.getCost() / path.getCost() * 100.0);
-
-		// /* this is only run if its not the initial path finding process */
-		// if (currentPosition != null) {
-		//
-		// /* check if the new path is way more expensive than the old one */
-		//
-		// // TODO: Calulate only the part of the path lying ahead!
-		// if (oldPath.getCost() * pathFindingDecisionFactor <= path
-		// .getCost()) {
-		//
-		// /* if so, return to the old path */
-		// path = oldPath;
-		//
-		// /* exit the function */
-		// return;
-		// }
-		// }
-
-		/*
-		 * setting the new desired and current positions. This causes a
-		 * NullPointerException if no path is found!
-		 */
-
-		desiredPosition = path.get(0).getPosition();
-
-		/* this is only run if its not the initial path finding process */
-		if (currentPosition != null)
-
-		{
-			blockArea(currentPosition, false, false, null);
-		}
-
-		if (!initialized) {
-			currentPosition = new Vector2D(0, 0);
-		}
-
-		/* apply cost the the passenger element */
-		passenger.setCostOfPath(path.getCost());
-
-		/* ends the stop watch performance logging */
-		stopwatch.stop();
+	boolean firstPathCalculation() {
+		return pathlist.isEmpty();
 	}
 
 	/**
@@ -963,7 +814,7 @@ public class Agent extends Subject implements Runnable {
 	 *
 	 * @return true, if successful
 	 */
-	private boolean waymakingAllowed() {
+	public boolean waymakingAllowed() {
 		if (SimulationHandler.waymakingInRange(passenger)) {
 			waycounter++;
 			if (waycounter < 30) {
@@ -995,7 +846,7 @@ public class Agent extends Subject implements Runnable {
 	/**
 	 * Occupy one step ahead.
 	 */
-	private synchronized void occupyOneStepAhead() {
+	public synchronized void occupyOneStepAhead() {
 		blockArea(currentPosition, false, false, null);
 		blockArea(desiredPosition, true, false, null);
 		SimulationHandler.getMap().get(desiredPosition)
@@ -1156,30 +1007,6 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * Stow luggage.
-	 */
-	private void stowLuggage() {
-
-		setCurrentState(State.STOWING_LUGGAGE);
-		rotateAgent(90);
-
-		/* sleep the thread as long as the luggage is stowed */
-		long sleepTime = AStarHelper.time(passenger.getLuggageStowTime());
-		try {
-			Thread.sleep(sleepTime);
-			increaseTotalWaitingTime(sleepTime);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-			System.out.println("InterruptedException @ thread "
-					+ Thread.currentThread().getName());
-			Thread.currentThread().interrupt();
-		}
-		/* notify everyone that the luggage is now stowed */
-		alreadyStowed = true;
-
-	}
-
-	/**
 	 * Unfolding seat procedure.
 	 */
 	private void unfoldingSeatProcedure() {
@@ -1333,10 +1160,6 @@ public class Agent extends Subject implements Runnable {
 			/* run the path up to its end */
 			while (stepIndex < path.getLength()) {
 
-				MovementType moveType = new Step();
-				Movement movement = new Movement(moveType);
-				movement.perform();
-
 				/*
 				 * at the first step, there is no current location but only a
 				 * desired first location. So ignore this at the first loop.
@@ -1359,29 +1182,15 @@ public class Agent extends Subject implements Runnable {
 
 				/* check if the desired next step is blocked by someone else */
 				Property property = nodeBlocked(desiredPosition);
+
 				if (property != null) {
 
-					setCurrentState(State.QUEUEING_UP);
+					/* **************************************************** */
+					MovementType moveType = new Wait(this, scale, property);
+					new Movement(moveType).perform();
+					/* **************************************************** */
 
-					/* raise the interrupts counter up by one */
-					numbOfInterupts++;
-					SimulationHandler.getMap().get(currentPosition)
-							.raiseNumberOfInterrupts();
-
-					/* get the correct behavior for an obstacle avoidance */
-					Collision collision = new Collision(agentMood, property);
-
-					/* Perform the correct behavior */
-					collision.handle();
-
-					increaseTotalWaitingTime((long) waitingTimeAfterCollision);
-					/*
-					 * the main loop is quit, if there is a new path calculated
-					 */
 					if (exitTheMainLoop) {
-
-						/* cut the old path and add the new one to the list */
-						redefinePathLayout();
 
 						/* exit this loop */
 						break mainloop;
@@ -1411,13 +1220,19 @@ public class Agent extends Subject implements Runnable {
 						stowingAtAisleSeat = true;
 					} else {
 
-						stowLuggage();
+						/* ************************************************* */
+						MovementType moveType = new StowLuggage(this, scale);
+						new Movement(moveType).perform();
+						/* ************************************************* */
 					}
 
 				} else if (!alreadyStowed && !stowingAtAisleSeat
 						&& passengerStowsLuggage()) {
 
-					stowLuggage();
+					/* **************************************************** */
+					MovementType moveType = new StowLuggage(this, scale);
+					new Movement(moveType).perform();
+					/* **************************************************** */
 
 					/*
 					 * if there is no obstacle or luggage stowing required, run
@@ -1427,7 +1242,10 @@ public class Agent extends Subject implements Runnable {
 				} else if (!alreadyStowed && stowingAtAisleSeat
 						&& passengerStowsLuggageAtAisleSeat()) {
 
-					stowLuggage();
+					/* **************************************************** */
+					MovementType moveType = new StowLuggage(this, scale);
+					new Movement(moveType).perform();
+					/* **************************************************** */
 
 				} else if (foldingSeats && !waitingCompleted
 						&& waitingForClearingOfRow()) {
@@ -1457,108 +1275,20 @@ public class Agent extends Subject implements Runnable {
 
 				} else if (!waitingCompleted && waitingForClearingOfRow()) {
 
-					setCurrentState(State.WAITING_FOR_ROW_CLEARING);
-
-					// TODO: only one passenger is detected, even if there are 2
-					// already in the row!
-
-					while (waymakingAllowed() == false) {
-						increaseTotalWaitingTime(
-								simSettings.getThreadSleepTimeDefault());
-						Thread.sleep(simSettings.getThreadSleepTimeDefault());
-					}
-
-					/* way making procedure is skipped */
-					// if (anyoneNearMe()) {
-					if (!waitingCompleted) {
-						if (developerMode) {
-							System.out.println(
-									"waymaking skipped. Delay simulated!");
-						}
-
-						long sleepTime = AStarHelper
-								.time(GaussianRandom.gaussianRandom(
-										simSettings.getPassengerProperties()
-												.getSeatInterferenceProcessTimeMean(),
-										GaussOptions.PERCENT_95,
-										simSettings.getPassengerProperties()
-												.getSeatInterferenceProcessTimeDeviation()));
-						increaseTotalWaitingTime(sleepTime);
-						Thread.sleep(sleepTime);
-						wayMakingSkipped++;
-						waitingCompleted = true;
-						// continue;
-					}
-
-					// way making works as planned
-					/*
-					 * if (!waitingCompleted) {
-					 * 
-					 * for (Passenger pax : otherPassengersInRowBlockingMe) {
-					 * 
-					 * SimulationHandler.launchWaymakingAgent(pax,
-					 * this.passenger);
-					 * 
-					 * }
-					 * 
-					 * while (!otherPassengerStoodUp()) { Thread.sleep(
-					 * simSettings.getThreadSleepTimeDefault()); }
-					 * 
-					 * // TODO: calculate the waiting time!
-					 * Thread.sleep(AStarHelper.time(simSettings
-					 * .getSeatInterferenceStandingUpPassengerWaitingTime()));
-					 * 
-					 * waitingCompleted = true; }
-					 */
+					/* **************************************************** */
+					MovementType moveType = new WaitForClearing(this, scale);
+					new Movement(moveType).perform();
+					/* **************************************************** */
 
 				} else {
 
-					setCurrentState(State.FOLLOWING_PATH);
-
-					/*
-					 * Go one step ahead. Do this by unblocking the current
-					 * position and blocking the next position.
-					 */
-					occupyOneStepAhead();
-
-					if (currentPosition.getX() != 0
-							&& currentPosition.getY() != 0
-							&& desiredPosition.getX() != 0
-							&& desiredPosition.getY() != 0) {
-
-						/* update the walked distance */
-						passenger.setDistanceWalked(passenger
-								.getDistanceWalked()
-								+ (int) (MathHelper.distanceBetween(
-										desiredPosition, currentPosition)
-										* scale));
-					}
-
-					/* notify next step */
-					lastMoveTime = System.currentTimeMillis();
+					/* **************************************************** */
+					MovementType moveType = new Step(this, scale);
+					new Movement(moveType).perform();
+					/* **************************************************** */
 
 					/* then perform the step */
 					stepIndex++;
-
-					/* try to submit the properties back to the passenger */
-					try {
-
-						/* submit the agents position */
-						passenger.setPositionX(desiredPosition.getX() * scale);
-						passenger.setPositionY(desiredPosition.getY() * scale);
-
-						/* submit the agents orientation */
-						passenger.setOrientationInDegree(
-								AgentFunctions.getRotation(this));
-
-						/* catch possible errors */
-					} catch (ConcurrentModificationException e) {
-						e.printStackTrace();
-					} catch (ArrayIndexOutOfBoundsException a) {
-						a.printStackTrace();
-					} catch (SWTException swt) {
-						swt.printStackTrace();
-					}
 
 					/* sleep as long as one step takes */
 					Thread.sleep((int) (1000 / SimulationHandler.getCabin()
@@ -1570,10 +1300,11 @@ public class Agent extends Subject implements Runnable {
 
 			/* catch possible interruptions */
 		} catch (InterruptedException e) {
+			e = new InterruptedException(
+					" @ thread " + Thread.currentThread().getName());
 			e.printStackTrace();
-			System.out.println("InterruptedException @ thread "
-					+ Thread.currentThread().getName());
 			Thread.currentThread().interrupt();
+
 		} catch (ConcurrentModificationException e) {
 			e.printStackTrace();
 		}
@@ -1747,4 +1478,55 @@ public class Agent extends Subject implements Runnable {
 		}
 	}
 
+	public void setLastMoveTime(long currentTimeMillis) {
+		lastMoveTime = currentTimeMillis;
+
+	}
+
+	public AgentMood getMood() {
+		return agentMood;
+	}
+
+	public void raiseNumberOfInterrupts() {
+		numbOfInterupts++;
+	}
+
+	public void setAlreadyStowed(boolean stowed) {
+		alreadyStowed = stowed;
+
+	}
+
+	public boolean getWaitingCompleted() {
+		return waitingCompleted;
+	}
+
+	public void raiseNumberOfSkippedWaymakings() {
+		wayMakingSkipped++;
+	}
+
+	public void setWaitingCompleted(boolean b) {
+		waitingCompleted = true;
+	}
+
+	public void setCurrentPosition(Vector2D vector2d) {
+		currentPosition = new Vector2D(vector2d.getX(), vector2d.getY());
+
+	}
+
+	public void setDesiredPosition(Vector position) {
+		desiredPosition = new Vector2D(position.getX(), position.getY());
+	}
+
+	public void setStartPosition(Vector vector) {
+		start = new Vector2D(vector.getX(), vector.getY());
+
+	}
+
+	public Path getCurrentPath() {
+		return path;
+	}
+
+	public void setPath(Path bestPath) {
+		path = bestPath;
+	}
 }

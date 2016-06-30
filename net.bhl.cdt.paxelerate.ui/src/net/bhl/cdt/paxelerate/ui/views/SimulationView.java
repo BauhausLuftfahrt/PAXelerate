@@ -21,11 +21,12 @@ import javax.swing.JPanel;
 
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
+import net.bhl.cdt.paxelerate.model.agent.enums.State;
 import net.bhl.cdt.paxelerate.model.astar.Areamap;
-import net.bhl.cdt.paxelerate.model.astar.Node;
-import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 import net.bhl.cdt.paxelerate.model.astar.Path;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
+import net.bhl.cdt.paxelerate.model.astar.node.Node;
+import net.bhl.cdt.paxelerate.model.astar.node.Node.Property;
 import net.bhl.cdt.paxelerate.util.math.DecimalHelper;
 import net.bhl.cdt.paxelerate.util.time.TimeHelper;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Screen;
@@ -141,7 +142,7 @@ public class SimulationView extends JPanel implements MouseListener {
 	 *            the state
 	 * @return the color
 	 */
-	public final Color switchColor(final Agent.State state) {
+	public final Color switchColor(final State state) {
 		switch (state) {
 		case FOLLOWING_PATH:
 			return Color.DARK_GRAY;

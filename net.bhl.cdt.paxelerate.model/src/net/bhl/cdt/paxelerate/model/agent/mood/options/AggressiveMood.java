@@ -6,8 +6,9 @@
 package net.bhl.cdt.paxelerate.model.agent.mood.options;
 
 import net.bhl.cdt.paxelerate.model.agent.Agent;
+import net.bhl.cdt.paxelerate.model.agent.PathFinder;
 import net.bhl.cdt.paxelerate.model.agent.mood.AgentMood;
-import net.bhl.cdt.paxelerate.model.astar.Node.Property;
+import net.bhl.cdt.paxelerate.model.astar.node.Node.Property;
 
 /**
  * The Class AgressiveMood.
@@ -31,12 +32,11 @@ public class AggressiveMood extends AgentMood {
 	@Override
 	public void reactToCollision(Property property) {
 		/* only pass if other passenger is stowing luggage */
-		if (super.getAgent().getBlockingAgent().passengerStowsLuggage()
-				|| super.getAgent().getBlockingAgent().passengerUnfoldsSeat()) {
+		if (agent.getBlockingAgent().passengerStowsLuggage()
+				|| agent.getBlockingAgent().passengerUnfoldsSeat()) {
 
-			super.getAgent().findNewPath();
-			super.getAgent().setExitPathLoop(true);
+			new PathFinder().findNewPath(agent);
+			agent.setExitPathLoop(true);
 		}
-
 	}
 }

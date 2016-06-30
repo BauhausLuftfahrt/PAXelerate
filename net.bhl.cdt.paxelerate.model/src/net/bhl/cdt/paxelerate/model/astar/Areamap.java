@@ -8,6 +8,7 @@ package net.bhl.cdt.paxelerate.model.astar;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.bhl.cdt.paxelerate.model.astar.node.Node;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 

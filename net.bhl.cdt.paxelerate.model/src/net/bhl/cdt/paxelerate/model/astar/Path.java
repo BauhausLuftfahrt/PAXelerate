@@ -8,6 +8,7 @@ package net.bhl.cdt.paxelerate.model.astar;
 
 import java.util.ArrayList;
 
+import net.bhl.cdt.paxelerate.model.astar.node.Node;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 
 /**
@@ -47,6 +48,17 @@ public class Path {
 	 * The Path constructor.
 	 */
 	public Path() {
+	}
+
+	/**
+	 * Create a path object from another path
+	 * 
+	 * @param path
+	 */
+	public Path(Path path) {
+		for (Node node : path.getWaypoints()) {
+			this.waypoints.add(node);
+		}
 	}
 
 	/**
@@ -149,7 +161,7 @@ public class Path {
 	 *            the point
 	 * @return the path
 	 */
-	public Path cutToPoint(Path path, Vector point) {
+	public Path cutToPosition(Path path, Vector point) {
 		/* get the last node */
 		Path newPath = new Path();
 		int i = 0;
@@ -173,7 +185,8 @@ public class Path {
 	 * Gets the cost.
 	 *
 	 * @return the cost
-	 * @throws ArithmeticException the arithmetic exception
+	 * @throws ArithmeticException
+	 *             the arithmetic exception
 	 */
 	public int getCost() throws ArithmeticException {
 
