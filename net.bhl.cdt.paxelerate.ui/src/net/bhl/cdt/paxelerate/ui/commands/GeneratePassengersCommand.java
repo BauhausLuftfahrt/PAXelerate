@@ -26,11 +26,13 @@ import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
 import net.bhl.cdt.paxelerate.model.Door;
+import net.bhl.cdt.paxelerate.model.DoorOption;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.util.PassengerGenerator;
 import net.bhl.cdt.paxelerate.model.util.PassengerPropertyGenerator;
+import net.bhl.cdt.paxelerate.ui.preferences.PAXeleratePreferencePage;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
 import net.bhl.cdt.paxelerate.util.input.Input;
@@ -74,7 +76,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 	 */
 	public GeneratePassengersCommand() {
 		if (ECPUtil.getECPProjectManager().getProjects() != null) {
-			this.cabin = (Cabin) ECPUtil.getECPProjectManager().getProject("reference").getContents().get(0);
+			this.cabin = (Cabin) ECPUtil.getECPProjectManager()
+					.getProject(PAXeleratePreferencePage.DEFAULT_PROJECT_NAME).getContents().get(0);
 		}
 	}
 
@@ -89,36 +92,43 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 		ArrayList<Door> sdoorage = new ArrayList<Door>();
 
-		for (Door door : cabin.getDoors()) {
-			if (door.isIsActive()) {
-				sdoorage.add(door);
-			}
-		}
-		/**
-		 * Check if active doors exist otherwise throw a NullPointerException
-		 **/
-		// TODO: check if no door is generated
-		if (sdoorage.size() == 0) {
-			Log.add(this, "No active door is found. First available door is activated.");
+		if (cabin.getDoors().size() == 0) {
+			Log.add(this, "No doors found. Please add a least one door!");
+			return null;
+			
+		} else {
 			for (Door door : cabin.getDoors()) {
-				door.setIsActive(true);
-				sdoorage.add(door);
+				if (door.isIsActive()) {
+					sdoorage.add(door);
 				}
 			}
-			
-		int seatPos = pass.getSeat().getXPosition();
-
-		int current = Integer.MAX_VALUE;
-		Door bestDoor = null;
-
-		for (Door door : sdoorage) {
-			int diff = Math.abs(door.getXPosition() - seatPos);
-			if (diff < current) {
-				current = diff;
-				bestDoor = door;
+			/* Check if active doors exist */
+			if (sdoorage.size() == 0) {
+				Log.add(this, "No active door is found. First available main door is activated.");
+				for (Door door : cabin.getDoors()) {
+					if (door.getDoorOption() == DoorOption.MAIN_DOOR) {
+						door.setIsActive(true);
+						sdoorage.add(door);
+						break;
+					}
+				}
 			}
+
+			int seatPos = pass.getSeat().getXPosition();
+
+			int current = Integer.MAX_VALUE;
+			Door bestDoor = null;
+
+			for (Door door : sdoorage) {
+				int diff = Math.abs(door.getXPosition() - seatPos);
+				if (diff < current) {
+					current = diff;
+					bestDoor = door;
+				}
+			}
+			return bestDoor;
 		}
-		return bestDoor;
+
 	}
 
 	/**
@@ -182,8 +192,13 @@ public class GeneratePassengersCommand extends CDTCommand {
 							passenger.setName(passenger.getId() + " (" + getSeat(passenger).getName() + ")");
 							passenger.setSeat(getSeat(passenger));
 							passenger.setTravelClass(passenger.getSeat().getTravelClass());
-							passenger.setDoor(getDoor(passenger));
-
+							
+							if (!(getDoor(passenger) == null)) {
+								passenger.setDoor(getDoor(passenger));
+							} else {
+								throw new NullPointerException();
+							}
+							
 							PassengerGenerator.applyDelay(passenger, delays);
 
 							PassengerPropertyGenerator generator = new PassengerPropertyGenerator(passenger);
@@ -193,6 +208,9 @@ public class GeneratePassengersCommand extends CDTCommand {
 
 						} catch (ConcurrentModificationException e) {
 							e.printStackTrace();
+						} catch (NullPointerException e) {
+							e.printStackTrace();
+							Log.add(this, "Passenger generation aborted!");
 						}
 
 					}
