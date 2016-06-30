@@ -24,6 +24,7 @@ import net.bhl.cdt.paxelerate.model.Curtain;
  */
 public class CurtainItemProvider 
 	extends PhysicalObjectItemProvider {
+	
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

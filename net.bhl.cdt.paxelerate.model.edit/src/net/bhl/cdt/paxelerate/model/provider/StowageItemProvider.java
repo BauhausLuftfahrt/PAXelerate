@@ -20,6 +20,7 @@ import net.bhl.cdt.paxelerate.model.Stowage;
  */
 public class StowageItemProvider 
 	extends PhysicalObjectItemProvider {
+	
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

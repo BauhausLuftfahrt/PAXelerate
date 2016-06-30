@@ -142,7 +142,10 @@ public enum ClassType implements Enumerator {
 	 * Returns the '<em><b>Class Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param literal the literal
+	 * @return the class type
+	 * @generated 
 	 */
 	public static ClassType get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
@@ -158,7 +161,10 @@ public enum ClassType implements Enumerator {
 	 * Returns the '<em><b>Class Type</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param name the name
+	 * @return the by name
+	 * @generated 
 	 */
 	public static ClassType getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
@@ -174,7 +180,10 @@ public enum ClassType implements Enumerator {
 	 * Returns the '<em><b>Class Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param value the value
+	 * @return the class type
+	 * @generated 
 	 */
 	public static ClassType get(int value) {
 		switch (value) {
@@ -188,22 +197,25 @@ public enum ClassType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	private final String literal;
 
@@ -211,7 +223,11 @@ public enum ClassType implements Enumerator {
 	 * Only this class can construct instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @param value the value
+	 * @param name the name
+	 * @param literal the literal
+	 * @generated 
 	 */
 	private ClassType(int value, String name, String literal) {
 		this.value = value;
@@ -221,8 +237,10 @@ public enum ClassType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the value
+	 * @generated 
 	 */
 	public int getValue() {
 	  return value;
@@ -230,8 +248,10 @@ public enum ClassType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the name
+	 * @generated 
 	 */
 	public String getName() {
 	  return name;
@@ -239,8 +259,10 @@ public enum ClassType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the literal
+	 * @generated 
 	 */
 	public String getLiteral() {
 	  return literal;
@@ -250,7 +272,9 @@ public enum ClassType implements Enumerator {
 	 * Returns the literal value of the enumerator, which is its string representation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 *
+	 * @return the string
+	 * @generated 
 	 */
 	@Override
 	public String toString() {

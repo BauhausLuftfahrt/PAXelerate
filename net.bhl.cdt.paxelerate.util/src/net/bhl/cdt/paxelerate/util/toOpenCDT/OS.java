@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2009-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ******************************************************************************/
@@ -9,34 +9,46 @@ package net.bhl.cdt.paxelerate.util.toOpenCDT;
 /**
  * Identification class for host's operating system.
  * 
- * TODO michael.shamiyeh, shift to OpenCDT
- * 
  * @author marc.engelmann, raoul.rothfeld
+ * @version 1.0
+ * @since 0.5
  */
 public final class OS {
 
 	/**
-	 * OS type categorization
+	 * OS type categorization.
+	 *
 	 * @author raoul.rothfeld
 	 */
 	public enum OSType {
-		Windows, MacOS, Linux, Solaris, Other
+
+		/** The Windows. */
+		Windows,
+		/** The Mac os. */
+		MacOS,
+		/** The Linux. */
+		Linux,
+		/** The Solaris. */
+		Solaris,
+		/** The Other. */
+		Other
 	}
-	
-	/**
-	 * Set class constructor to private to enforce singleton use
-	 */
-	private OS() {}
 
 	/**
-	 * Instance variable storing the active OS type enumerator
+	 * Set class constructor to private to enforce singleton use.
 	 */
+	private OS() {
+	}
+
+	/** Instance variable storing the active OS type enumerator. */
 	private static OSType activeOS;
 
 	/**
-	 * Private population of the OS type instance variable to one-time OS retrieval from host system
-	 * @return active OS type enumerator
+	 * Private population of the OS type instance variable to one-time OS
+	 * retrieval from host system.
+	 *
 	 * @author marc.engelmann, raoul.rothfeld
+	 * @return active OS type enumerator
 	 */
 	private static OSType getActiveOS() {
 		if (activeOS == null) {
@@ -57,7 +69,8 @@ public final class OS {
 	}
 
 	/**
-	 * Retrieve active OS type
+	 * Retrieve active OS type.
+	 *
 	 * @return active OS type enumerator
 	 */
 	public static OSType getOSType() {
@@ -65,7 +78,8 @@ public final class OS {
 	}
 
 	/**
-	 * Test if OS type is Windows
+	 * Test if OS type is Windows.
+	 *
 	 * @return whether OS type is Windows
 	 */
 	public static boolean isWindows() {
@@ -73,7 +87,8 @@ public final class OS {
 	}
 
 	/**
-	 * Test if OS type is MacOS
+	 * Test if OS type is MacOS.
+	 *
 	 * @return whether OS type is MacOS
 	 */
 	public static boolean isMac() {
@@ -81,7 +96,8 @@ public final class OS {
 	}
 
 	/**
-	 * Test if OS type is Linux
+	 * Test if OS type is Linux.
+	 *
 	 * @return whether OS type is Linux
 	 */
 	public static boolean isUnix() {
@@ -89,7 +105,8 @@ public final class OS {
 	}
 
 	/**
-	 * Test if OS type is Solaris
+	 * Test if OS type is Solaris.
+	 *
 	 * @return whether OS type is Solaris
 	 */
 	public static boolean isSolaris() {

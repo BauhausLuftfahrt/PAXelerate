@@ -9,12 +9,10 @@ import org.eclipse.jface.dialogs.IMessageProvider;
 
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.paxelerate.model.Cabin;
-import net.bhl.cdt.paxelerate.model.EmergencyExit;
-import net.bhl.cdt.paxelerate.model.MainDoor;
+import net.bhl.cdt.paxelerate.model.DoorOption;
 import net.bhl.cdt.paxelerate.model.ObjectOption;
-import net.bhl.cdt.paxelerate.model.StandardDoor;
 import net.bhl.cdt.paxelerate.model.TravelOption;
-import net.bhl.cdt.paxelerate.model.util.ConstructionLibrary;
+import net.bhl.cdt.paxelerate.model.util.CabinGenerator;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
 import net.bhl.cdt.paxelerate.util.input.Input;
@@ -27,14 +25,14 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
  * 
  * @author marc.engelmann
  * @version 1.3
+ * @since 0.5
  *
  */
 
 public class GenerateCabinCommand extends CDTCommand {
 
+	/** The cabin. */
 	private Cabin cabin;
-	private CabinViewPart cabinViewPart;
-	private ConstructionLibrary constructor;
 
 	/**
 	 * Creates a cabin.
@@ -42,9 +40,9 @@ public class GenerateCabinCommand extends CDTCommand {
 	 * @param cabin
 	 *            is the input cabin
 	 */
-	public GenerateCabinCommand(Cabin cabin) {
+	public GenerateCabinCommand(final Cabin cabin) {
 		this.cabin = cabin;
-		if (cabin.isUsePresetSettings()) {
+		if (cabin.getSimulationSettings().isUsePresetSettings()) {
 			switch (cabin.getAircraftType()) {
 			case REGIONAL:
 				cabin.setYDimension(300);
@@ -58,6 +56,8 @@ public class GenerateCabinCommand extends CDTCommand {
 				cabin.setYDimension(650);
 				cabin.setXDimension(4440);
 				break;
+			default:
+				break;
 			}
 		}
 	}
@@ -68,10 +68,12 @@ public class GenerateCabinCommand extends CDTCommand {
 	 * command.
 	 */
 	@Override
-	protected void doRun() {
+	protected final void doRun() {
+
 		Log.add(this, "Initializing cabin generation ...");
 
-		cabinViewPart = ViewPartHelper.getCabinView();
+		CabinViewPart cabinViewPart = ViewPartHelper.getCabinView();
+		cabinViewPart.unsyncViewer();
 
 		Input input = new Input(WindowType.GET_BOOLEAN, "Warning! The existing cabin will be deleted. Continue?",
 				IMessageProvider.WARNING);
@@ -79,36 +81,35 @@ public class GenerateCabinCommand extends CDTCommand {
 		if (input.getBooleanValue()) {
 
 			/* ------- Cabin Construction starts here! --------- */
-			constructor = new ConstructionLibrary(cabin);
-			constructor.clearCabin();
-			constructor.createDoor(EmergencyExit.class, true, 3, 935);
-			constructor.createDoor(EmergencyExit.class, true, 4, 1228);
-			constructor.createPhysicalObject(ObjectOption.LAVATORY, 100);
-			constructor.createDoor(MainDoor.class, true, 1, -1);
-			constructor.createPhysicalObject(ObjectOption.GALLEY, 100);
+			CabinGenerator generator = new CabinGenerator(cabin);
+			generator.clearCabin();
+			generator.createDoor(DoorOption.EMERGENCY_EXIT, true, 3, 935);
+			generator.createDoor(DoorOption.EMERGENCY_EXIT, true, 4, 1228);
+			generator.createPhysicalObject(ObjectOption.LAVATORY, 100);
+			generator.createDoor(DoorOption.MAIN_DOOR, true, 1, -1);
+			generator.createPhysicalObject(ObjectOption.GALLEY, 100);
 
 			/*
 			 * Note that the classes are generated in the order that they are
 			 * defined in in the enum
 			 */
 			for (TravelOption option : TravelOption.VALUES) {
-				constructor.createClass(option);
+				generator.createClass(option);
 			}
 
-			constructor.createPhysicalObject(ObjectOption.GALLEY, 100);
-			constructor.createDoor(StandardDoor.class, true, 2, -1);
-			constructor.createPhysicalObject(ObjectOption.LAVATORY, 100);
-			cabin = constructor.getCabin();
-			cabin.setUsePresetSettings(false);
+			generator.createPhysicalObject(ObjectOption.GALLEY, 100);
+			generator.createDoor(DoorOption.STANDARD_DOOR, true, 2, -1);
+			generator.createPhysicalObject(ObjectOption.LAVATORY, 100);
+			cabin = generator.getCabin();
+			cabin.getSimulationSettings().setUsePresetSettings(false);
 			/* ------- Cabin Construction ends here! ----------- */
 
 			Log.add(this, "Cabin generation completed");
-			try {
-				cabinViewPart.setCabin(cabin);
-				cabinViewPart.syncViewer();
-			} catch (NullPointerException e) {
-				Log.add(this, "The cabin or info view is not visible.");
-			}
+
+			new DrawCabinCommand(cabin).doRun();
+
+			cabinViewPart.syncViewer();
+
 		} else {
 			Log.add(this, "Cabin generation aborted");
 		}

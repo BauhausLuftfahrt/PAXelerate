@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2009-2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  *******************************************************************************/
@@ -10,9 +10,11 @@ package net.bhl.cdt.paxelerate.util.math;
  * 
  * @author marc.engelmann
  * @version 1.0
+ * @since 0.6
  */
 public abstract class Vector implements Comparable<Vector> {
 
+	/** The z value. */
 	protected int dimensions, xValue, yValue, zValue;
 
 	/**
@@ -195,14 +197,21 @@ public abstract class Vector implements Comparable<Vector> {
 
 	/**
 	 * This method compares two vectors for equality.
-	 * 
-	 * @param the
-	 *            object being compared to the node
-	 * 
+	 *
+	 * @param object
+	 *            the object
 	 * @return vectors are equal or not
 	 */
-	public boolean equals(Vector vec) {
-		return vec != null && dimensions == vec.getNumberOfDimensions() && xValue == vec.getX() && yValue == vec.getY()
-				&& zValue == vec.getZ();
+	@Override
+	public boolean equals(Object object) {
+
+		if (!(object instanceof Vector)) {
+			return super.equals(object);
+		} else {
+
+			Vector vec = (Vector) object;
+			return vec != null && dimensions == vec.getNumberOfDimensions() && xValue == vec.getX()
+					&& yValue == vec.getY() && zValue == vec.getZ();
+		}
 	}
 }

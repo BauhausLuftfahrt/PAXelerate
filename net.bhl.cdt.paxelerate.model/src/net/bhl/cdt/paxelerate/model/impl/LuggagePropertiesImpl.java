@@ -20,8 +20,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.LuggagePropertiesImpl#getLuggageStowingDistanceFromSeatMean <em>Luggage Stowing Distance From Seat Mean</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.LuggagePropertiesImpl#getLuggageStowingDistanceFromSeatDeviation <em>Luggage Stowing Distance From Seat Deviation</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.LuggagePropertiesImpl#getLuggageStowDistanceFromSeatMean <em>Luggage Stow Distance From Seat Mean</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.LuggagePropertiesImpl#getLuggageStowDistanceFromSeatDeviation <em>Luggage Stow Distance From Seat Deviation</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.LuggagePropertiesImpl#getPercentageOfPassengersWithNoLuggage <em>Percentage Of Passengers With No Luggage</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.LuggagePropertiesImpl#getPercentageOfPassengersWithSmallLuggage <em>Percentage Of Passengers With Small Luggage</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.LuggagePropertiesImpl#getPercentageOfPassengersWithMediumLuggage <em>Percentage Of Passengers With Medium Luggage</em>}</li>
@@ -38,44 +38,44 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implements LuggageProperties {
 	/**
-	 * The default value of the '{@link #getLuggageStowingDistanceFromSeatMean() <em>Luggage Stowing Distance From Seat Mean</em>}' attribute.
+	 * The default value of the '{@link #getLuggageStowDistanceFromSeatMean() <em>Luggage Stow Distance From Seat Mean</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLuggageStowingDistanceFromSeatMean()
+	 * @see #getLuggageStowDistanceFromSeatMean()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN_EDEFAULT = 80.0;
+	protected static final double LUGGAGE_STOW_DISTANCE_FROM_SEAT_MEAN_EDEFAULT = 80.0;
 
 	/**
-	 * The cached value of the '{@link #getLuggageStowingDistanceFromSeatMean() <em>Luggage Stowing Distance From Seat Mean</em>}' attribute.
+	 * The cached value of the '{@link #getLuggageStowDistanceFromSeatMean() <em>Luggage Stow Distance From Seat Mean</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLuggageStowingDistanceFromSeatMean()
+	 * @see #getLuggageStowDistanceFromSeatMean()
 	 * @generated
 	 * @ordered
 	 */
-	protected double luggageStowingDistanceFromSeatMean = LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN_EDEFAULT;
+	protected double luggageStowDistanceFromSeatMean = LUGGAGE_STOW_DISTANCE_FROM_SEAT_MEAN_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getLuggageStowingDistanceFromSeatDeviation() <em>Luggage Stowing Distance From Seat Deviation</em>}' attribute.
+	 * The default value of the '{@link #getLuggageStowDistanceFromSeatDeviation() <em>Luggage Stow Distance From Seat Deviation</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLuggageStowingDistanceFromSeatDeviation()
+	 * @see #getLuggageStowDistanceFromSeatDeviation()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION_EDEFAULT = 10.0;
+	protected static final double LUGGAGE_STOW_DISTANCE_FROM_SEAT_DEVIATION_EDEFAULT = 10.0;
 
 	/**
-	 * The cached value of the '{@link #getLuggageStowingDistanceFromSeatDeviation() <em>Luggage Stowing Distance From Seat Deviation</em>}' attribute.
+	 * The cached value of the '{@link #getLuggageStowDistanceFromSeatDeviation() <em>Luggage Stow Distance From Seat Deviation</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLuggageStowingDistanceFromSeatDeviation()
+	 * @see #getLuggageStowDistanceFromSeatDeviation()
 	 * @generated
 	 * @ordered
 	 */
-	protected double luggageStowingDistanceFromSeatDeviation = LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION_EDEFAULT;
+	protected double luggageStowDistanceFromSeatDeviation = LUGGAGE_STOW_DISTANCE_FROM_SEAT_DEVIATION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getPercentageOfPassengersWithNoLuggage() <em>Percentage Of Passengers With No Luggage</em>}' attribute.
@@ -85,7 +85,7 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE_EDEFAULT = 0.0;
+	protected static final double PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE_EDEFAULT = 100.0;
 
 	/**
 	 * The cached value of the '{@link #getPercentageOfPassengersWithNoLuggage() <em>Percentage Of Passengers With No Luggage</em>}' attribute.
@@ -279,8 +279,9 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	protected LuggagePropertiesImpl() {
 		super();
@@ -288,8 +289,10 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the e class
+	 * @generated 
 	 */
 	@Override
 	protected EClass eStaticClass() {
@@ -301,8 +304,8 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getLuggageStowingDistanceFromSeatMean() {
-		return luggageStowingDistanceFromSeatMean;
+	public double getLuggageStowDistanceFromSeatMean() {
+		return luggageStowDistanceFromSeatMean;
 	}
 
 	/**
@@ -310,11 +313,11 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLuggageStowingDistanceFromSeatMean(double newLuggageStowingDistanceFromSeatMean) {
-		double oldLuggageStowingDistanceFromSeatMean = luggageStowingDistanceFromSeatMean;
-		luggageStowingDistanceFromSeatMean = newLuggageStowingDistanceFromSeatMean;
+	public void setLuggageStowDistanceFromSeatMean(double newLuggageStowDistanceFromSeatMean) {
+		double oldLuggageStowDistanceFromSeatMean = luggageStowDistanceFromSeatMean;
+		luggageStowDistanceFromSeatMean = newLuggageStowDistanceFromSeatMean;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN, oldLuggageStowingDistanceFromSeatMean, luggageStowingDistanceFromSeatMean));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_MEAN, oldLuggageStowDistanceFromSeatMean, luggageStowDistanceFromSeatMean));
 	}
 
 	/**
@@ -322,8 +325,8 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getLuggageStowingDistanceFromSeatDeviation() {
-		return luggageStowingDistanceFromSeatDeviation;
+	public double getLuggageStowDistanceFromSeatDeviation() {
+		return luggageStowDistanceFromSeatDeviation;
 	}
 
 	/**
@@ -331,17 +334,19 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLuggageStowingDistanceFromSeatDeviation(double newLuggageStowingDistanceFromSeatDeviation) {
-		double oldLuggageStowingDistanceFromSeatDeviation = luggageStowingDistanceFromSeatDeviation;
-		luggageStowingDistanceFromSeatDeviation = newLuggageStowingDistanceFromSeatDeviation;
+	public void setLuggageStowDistanceFromSeatDeviation(double newLuggageStowDistanceFromSeatDeviation) {
+		double oldLuggageStowDistanceFromSeatDeviation = luggageStowDistanceFromSeatDeviation;
+		luggageStowDistanceFromSeatDeviation = newLuggageStowDistanceFromSeatDeviation;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION, oldLuggageStowingDistanceFromSeatDeviation, luggageStowingDistanceFromSeatDeviation));
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_DEVIATION, oldLuggageStowDistanceFromSeatDeviation, luggageStowDistanceFromSeatDeviation));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the percentage of passengers with no luggage
+	 * @generated 
 	 */
 	public double getPercentageOfPassengersWithNoLuggage() {
 		return percentageOfPassengersWithNoLuggage;
@@ -349,8 +354,10 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPercentageOfPassengersWithNoLuggage the new percentage of passengers with no luggage
+	 * @generated 
 	 */
 	public void setPercentageOfPassengersWithNoLuggage(double newPercentageOfPassengersWithNoLuggage) {
 		double oldPercentageOfPassengersWithNoLuggage = percentageOfPassengersWithNoLuggage;
@@ -361,8 +368,10 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the percentage of passengers with small luggage
+	 * @generated 
 	 */
 	public double getPercentageOfPassengersWithSmallLuggage() {
 		return percentageOfPassengersWithSmallLuggage;
@@ -370,8 +379,10 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPercentageOfPassengersWithSmallLuggage the new percentage of passengers with small luggage
+	 * @generated 
 	 */
 	public void setPercentageOfPassengersWithSmallLuggage(double newPercentageOfPassengersWithSmallLuggage) {
 		double oldPercentageOfPassengersWithSmallLuggage = percentageOfPassengersWithSmallLuggage;
@@ -382,8 +393,10 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the percentage of passengers with medium luggage
+	 * @generated 
 	 */
 	public double getPercentageOfPassengersWithMediumLuggage() {
 		return percentageOfPassengersWithMediumLuggage;
@@ -391,8 +404,10 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPercentageOfPassengersWithMediumLuggage the new percentage of passengers with medium luggage
+	 * @generated 
 	 */
 	public void setPercentageOfPassengersWithMediumLuggage(double newPercentageOfPassengersWithMediumLuggage) {
 		double oldPercentageOfPassengersWithMediumLuggage = percentageOfPassengersWithMediumLuggage;
@@ -403,8 +418,10 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the percentage of passengers with big luggage
+	 * @generated 
 	 */
 	public double getPercentageOfPassengersWithBigLuggage() {
 		return percentageOfPassengersWithBigLuggage;
@@ -412,8 +429,10 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPercentageOfPassengersWithBigLuggage the new percentage of passengers with big luggage
+	 * @generated 
 	 */
 	public void setPercentageOfPassengersWithBigLuggage(double newPercentageOfPassengersWithBigLuggage) {
 		double oldPercentageOfPassengersWithBigLuggage = percentageOfPassengersWithBigLuggage;
@@ -424,8 +443,10 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger small luggage stow time mean
+	 * @generated 
 	 */
 	public double getPassengerSmallLuggageStowTimeMean() {
 		return passengerSmallLuggageStowTimeMean;
@@ -433,8 +454,10 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerSmallLuggageStowTimeMean the new passenger small luggage stow time mean
+	 * @generated 
 	 */
 	public void setPassengerSmallLuggageStowTimeMean(double newPassengerSmallLuggageStowTimeMean) {
 		double oldPassengerSmallLuggageStowTimeMean = passengerSmallLuggageStowTimeMean;
@@ -445,8 +468,10 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger small luggage stow time deviation
+	 * @generated 
 	 */
 	public double getPassengerSmallLuggageStowTimeDeviation() {
 		return passengerSmallLuggageStowTimeDeviation;
@@ -454,8 +479,10 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerSmallLuggageStowTimeDeviation the new passenger small luggage stow time deviation
+	 * @generated 
 	 */
 	public void setPassengerSmallLuggageStowTimeDeviation(double newPassengerSmallLuggageStowTimeDeviation) {
 		double oldPassengerSmallLuggageStowTimeDeviation = passengerSmallLuggageStowTimeDeviation;
@@ -466,8 +493,10 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger medium luggage stow time mean
+	 * @generated 
 	 */
 	public double getPassengerMediumLuggageStowTimeMean() {
 		return passengerMediumLuggageStowTimeMean;
@@ -475,8 +504,10 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerMediumLuggageStowTimeMean the new passenger medium luggage stow time mean
+	 * @generated 
 	 */
 	public void setPassengerMediumLuggageStowTimeMean(double newPassengerMediumLuggageStowTimeMean) {
 		double oldPassengerMediumLuggageStowTimeMean = passengerMediumLuggageStowTimeMean;
@@ -487,8 +518,10 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger medium luggage stow time deviation
+	 * @generated 
 	 */
 	public double getPassengerMediumLuggageStowTimeDeviation() {
 		return passengerMediumLuggageStowTimeDeviation;
@@ -496,8 +529,10 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerMediumLuggageStowTimeDeviation the new passenger medium luggage stow time deviation
+	 * @generated 
 	 */
 	public void setPassengerMediumLuggageStowTimeDeviation(double newPassengerMediumLuggageStowTimeDeviation) {
 		double oldPassengerMediumLuggageStowTimeDeviation = passengerMediumLuggageStowTimeDeviation;
@@ -508,8 +543,10 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger big luggage stow time mean
+	 * @generated 
 	 */
 	public double getPassengerBigLuggageStowTimeMean() {
 		return passengerBigLuggageStowTimeMean;
@@ -517,8 +554,10 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerBigLuggageStowTimeMean the new passenger big luggage stow time mean
+	 * @generated 
 	 */
 	public void setPassengerBigLuggageStowTimeMean(double newPassengerBigLuggageStowTimeMean) {
 		double oldPassengerBigLuggageStowTimeMean = passengerBigLuggageStowTimeMean;
@@ -529,8 +568,10 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger big luggage stow time deviation
+	 * @generated 
 	 */
 	public double getPassengerBigLuggageStowTimeDeviation() {
 		return passengerBigLuggageStowTimeDeviation;
@@ -538,8 +579,10 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerBigLuggageStowTimeDeviation the new passenger big luggage stow time deviation
+	 * @generated 
 	 */
 	public void setPassengerBigLuggageStowTimeDeviation(double newPassengerBigLuggageStowTimeDeviation) {
 		double oldPassengerBigLuggageStowTimeDeviation = passengerBigLuggageStowTimeDeviation;
@@ -550,16 +593,21 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param resolve the resolve
+	 * @param coreType the core type
+	 * @return the object
+	 * @generated 
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN:
-				return getLuggageStowingDistanceFromSeatMean();
-			case CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION:
-				return getLuggageStowingDistanceFromSeatDeviation();
+			case CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_MEAN:
+				return getLuggageStowDistanceFromSeatMean();
+			case CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_DEVIATION:
+				return getLuggageStowDistanceFromSeatDeviation();
 			case CabinPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE:
 				return getPercentageOfPassengersWithNoLuggage();
 			case CabinPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE:
@@ -586,17 +634,20 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param newValue the new value
+	 * @generated 
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN:
-				setLuggageStowingDistanceFromSeatMean((Double)newValue);
+			case CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_MEAN:
+				setLuggageStowDistanceFromSeatMean((Double)newValue);
 				return;
-			case CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION:
-				setLuggageStowingDistanceFromSeatDeviation((Double)newValue);
+			case CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_DEVIATION:
+				setLuggageStowDistanceFromSeatDeviation((Double)newValue);
 				return;
 			case CabinPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE:
 				setPercentageOfPassengersWithNoLuggage((Double)newValue);
@@ -634,17 +685,19 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @generated 
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN:
-				setLuggageStowingDistanceFromSeatMean(LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN_EDEFAULT);
+			case CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_MEAN:
+				setLuggageStowDistanceFromSeatMean(LUGGAGE_STOW_DISTANCE_FROM_SEAT_MEAN_EDEFAULT);
 				return;
-			case CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION:
-				setLuggageStowingDistanceFromSeatDeviation(LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION_EDEFAULT);
+			case CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_DEVIATION:
+				setLuggageStowDistanceFromSeatDeviation(LUGGAGE_STOW_DISTANCE_FROM_SEAT_DEVIATION_EDEFAULT);
 				return;
 			case CabinPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE:
 				setPercentageOfPassengersWithNoLuggage(PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE_EDEFAULT);
@@ -682,16 +735,19 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @return true, if successful
+	 * @generated 
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN:
-				return luggageStowingDistanceFromSeatMean != LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN_EDEFAULT;
-			case CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION:
-				return luggageStowingDistanceFromSeatDeviation != LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION_EDEFAULT;
+			case CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_MEAN:
+				return luggageStowDistanceFromSeatMean != LUGGAGE_STOW_DISTANCE_FROM_SEAT_MEAN_EDEFAULT;
+			case CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_DEVIATION:
+				return luggageStowDistanceFromSeatDeviation != LUGGAGE_STOW_DISTANCE_FROM_SEAT_DEVIATION_EDEFAULT;
 			case CabinPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE:
 				return percentageOfPassengersWithNoLuggage != PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE_EDEFAULT;
 			case CabinPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE:
@@ -718,18 +774,20 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the string
+	 * @generated 
 	 */
 	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (luggageStowingDistanceFromSeatMean: ");
-		result.append(luggageStowingDistanceFromSeatMean);
-		result.append(", luggageStowingDistanceFromSeatDeviation: ");
-		result.append(luggageStowingDistanceFromSeatDeviation);
+		result.append(" (luggageStowDistanceFromSeatMean: ");
+		result.append(luggageStowDistanceFromSeatMean);
+		result.append(", luggageStowDistanceFromSeatDeviation: ");
+		result.append(luggageStowDistanceFromSeatDeviation);
 		result.append(", percentageOfPassengersWithNoLuggage: ");
 		result.append(percentageOfPassengersWithNoLuggage);
 		result.append(", percentageOfPassengersWithSmallLuggage: ");

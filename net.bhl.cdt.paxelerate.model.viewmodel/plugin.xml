@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?eclipse version="3.4"?><plugin>
    <extension point="org.eclipse.emf.ecp.view.model.provider.xmi.file">
-      <file
-            filePath="viewmodels/Cabin.view">
-      </file>
+<file filePath="viewmodels/Door.view"/>
 
+<file filePath="viewmodels/TravelClass.view"/>
 
-
-
-
-
+<file filePath="viewmodels/Cabin.view"/>
 
 <file filePath="viewmodels/Seat.view"/>
 
@@ -17,68 +13,19 @@
 
 <file filePath="viewmodels/Passenger.view"/>
 
-
 <file filePath="viewmodels/Lavatory.view"/>
 
 <file filePath="viewmodels/Galley.view"/>
 
-
-
 <file filePath="viewmodels/Curtain.view"/>
 
+<file filePath="viewmodels/SimulationProperties.view"/>
 
+<file filePath="viewmodels/PassengerProperties.view"/>
 
+<file filePath="viewmodels/LuggageProperties.view"/>
 
-
-
-
-
-
-
-<file filePath="viewmodels/StandardDoor.view"/>
-<file
-      filePath="viewmodels/EmergencyExit.view">
-</file>
-<file
-      filePath="viewmodels/MainDoor.view">
-</file>
-
-<file filePath="viewmodels/EmergencyExit.view"/>
-<file
-      filePath="viewmodels/TravelClass.view">
-</file>
-
-
-<file filePath="viewmodels/FirstClass.view"/>
-
-<file filePath="viewmodels/BusinessClass.view"/>
-<file
-      filePath="viewmodels/PremiumEconomyClass.view">
-</file>
-<file
-      filePath="viewmodels/EconomyClass.view">
-</file>
-<file
-      filePath="viewmodels/SimulationProperties.view">
-</file>
-<file
-      filePath="viewmodels/PassengerProperties.view">
-</file>
-<file
-      filePath="viewmodels/LuggageProperties.view">
-</file>
-<file
-      filePath="viewmodels/SimulationResult.view">
-</file>
-
-
-
-
-
-
-
-
-
+<file filePath="viewmodels/SimulationResult.view"/>
 
    </extension>
 </plugin>

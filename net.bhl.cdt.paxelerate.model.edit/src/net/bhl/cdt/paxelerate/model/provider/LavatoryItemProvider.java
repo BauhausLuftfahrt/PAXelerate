@@ -20,6 +20,7 @@ import net.bhl.cdt.paxelerate.model.Lavatory;
  */
 public class LavatoryItemProvider 
 	extends PhysicalObjectItemProvider {
+	
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

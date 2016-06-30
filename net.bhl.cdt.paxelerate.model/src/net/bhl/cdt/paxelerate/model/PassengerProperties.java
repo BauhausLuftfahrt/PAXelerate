@@ -30,6 +30,13 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerHeightDeviationFemale <em>Passenger Height Deviation Female</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerDepthMeanFemale <em>Passenger Depth Mean Female</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerDepthDeviationFemale <em>Passenger Depth Deviation Female</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerAggressiveMoodShare <em>Passenger Aggressive Mood Share</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceStandingUpPassengerWaitingTime <em>Seat Interference Standing Up Passenger Waiting Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceProcessTimeMean <em>Seat Interference Process Time Mean</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceProcessTimeDeviation <em>Seat Interference Process Time Deviation</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceProcessTimeFoldingSeatMean <em>Seat Interference Process Time Folding Seat Mean</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceProcessTimeFoldingSeatDeviation <em>Seat Interference Process Time Folding Seat Deviation</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassivePassengerWaitingTimeAfterCollision <em>Passive Passenger Waiting Time After Collision</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassengerProperties()
@@ -309,7 +316,7 @@ public interface PassengerProperties extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Passenger Width Deviation Female</b></em>' attribute.
-	 * The default value is <code>"2.8"</code>.
+	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Passenger Width Deviation Female</em>' attribute isn't clear,
@@ -319,7 +326,7 @@ public interface PassengerProperties extends EObject {
 	 * @return the value of the '<em>Passenger Width Deviation Female</em>' attribute.
 	 * @see #setPassengerWidthDeviationFemale(double)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassengerProperties_PassengerWidthDeviationFemale()
-	 * @model default="2.8"
+	 * @model default="1"
 	 * @generated
 	 */
 	double getPassengerWidthDeviationFemale();
@@ -495,5 +502,194 @@ public interface PassengerProperties extends EObject {
 	 * @generated
 	 */
 	void setPassengerDepthDeviationFemale(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Passenger Aggressive Mood Share</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Passenger Aggressive Mood Share</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Passenger Aggressive Mood Share</em>' attribute.
+	 * @see #setPassengerAggressiveMoodShare(int)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassengerProperties_PassengerAggressiveMoodShare()
+	 * @model default="0"
+	 * @generated
+	 */
+	int getPassengerAggressiveMoodShare();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerAggressiveMoodShare <em>Passenger Aggressive Mood Share</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Passenger Aggressive Mood Share</em>' attribute.
+	 * @see #getPassengerAggressiveMoodShare()
+	 * @generated
+	 */
+	void setPassengerAggressiveMoodShare(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Seat Interference Standing Up Passenger Waiting Time</b></em>' attribute.
+	 * The default value is <code>"3"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seat Interference Standing Up Passenger Waiting Time</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seat Interference Standing Up Passenger Waiting Time</em>' attribute.
+	 * @see #setSeatInterferenceStandingUpPassengerWaitingTime(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassengerProperties_SeatInterferenceStandingUpPassengerWaitingTime()
+	 * @model default="3"
+	 * @generated
+	 */
+	double getSeatInterferenceStandingUpPassengerWaitingTime();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceStandingUpPassengerWaitingTime <em>Seat Interference Standing Up Passenger Waiting Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seat Interference Standing Up Passenger Waiting Time</em>' attribute.
+	 * @see #getSeatInterferenceStandingUpPassengerWaitingTime()
+	 * @generated
+	 */
+	void setSeatInterferenceStandingUpPassengerWaitingTime(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Seat Interference Process Time Mean</b></em>' attribute.
+	 * The default value is <code>"7"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seat Interference Process Time Mean</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seat Interference Process Time Mean</em>' attribute.
+	 * @see #setSeatInterferenceProcessTimeMean(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassengerProperties_SeatInterferenceProcessTimeMean()
+	 * @model default="7"
+	 * @generated
+	 */
+	double getSeatInterferenceProcessTimeMean();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceProcessTimeMean <em>Seat Interference Process Time Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seat Interference Process Time Mean</em>' attribute.
+	 * @see #getSeatInterferenceProcessTimeMean()
+	 * @generated
+	 */
+	void setSeatInterferenceProcessTimeMean(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Seat Interference Process Time Deviation</b></em>' attribute.
+	 * The default value is <code>"1.5"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seat Interference Process Time Deviation</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seat Interference Process Time Deviation</em>' attribute.
+	 * @see #setSeatInterferenceProcessTimeDeviation(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassengerProperties_SeatInterferenceProcessTimeDeviation()
+	 * @model default="1.5"
+	 * @generated
+	 */
+	double getSeatInterferenceProcessTimeDeviation();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceProcessTimeDeviation <em>Seat Interference Process Time Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seat Interference Process Time Deviation</em>' attribute.
+	 * @see #getSeatInterferenceProcessTimeDeviation()
+	 * @generated
+	 */
+	void setSeatInterferenceProcessTimeDeviation(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Seat Interference Process Time Folding Seat Mean</b></em>' attribute.
+	 * The default value is <code>"5"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seat Interference Process Time Folding Seat Mean</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seat Interference Process Time Folding Seat Mean</em>' attribute.
+	 * @see #setSeatInterferenceProcessTimeFoldingSeatMean(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassengerProperties_SeatInterferenceProcessTimeFoldingSeatMean()
+	 * @model default="5"
+	 * @generated
+	 */
+	double getSeatInterferenceProcessTimeFoldingSeatMean();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceProcessTimeFoldingSeatMean <em>Seat Interference Process Time Folding Seat Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seat Interference Process Time Folding Seat Mean</em>' attribute.
+	 * @see #getSeatInterferenceProcessTimeFoldingSeatMean()
+	 * @generated
+	 */
+	void setSeatInterferenceProcessTimeFoldingSeatMean(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Seat Interference Process Time Folding Seat Deviation</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seat Interference Process Time Folding Seat Deviation</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seat Interference Process Time Folding Seat Deviation</em>' attribute.
+	 * @see #setSeatInterferenceProcessTimeFoldingSeatDeviation(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassengerProperties_SeatInterferenceProcessTimeFoldingSeatDeviation()
+	 * @model default="1"
+	 * @generated
+	 */
+	double getSeatInterferenceProcessTimeFoldingSeatDeviation();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceProcessTimeFoldingSeatDeviation <em>Seat Interference Process Time Folding Seat Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seat Interference Process Time Folding Seat Deviation</em>' attribute.
+	 * @see #getSeatInterferenceProcessTimeFoldingSeatDeviation()
+	 * @generated
+	 */
+	void setSeatInterferenceProcessTimeFoldingSeatDeviation(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Passive Passenger Waiting Time After Collision</b></em>' attribute.
+	 * The default value is <code>"0.3"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Passive Passenger Waiting Time After Collision</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Passive Passenger Waiting Time After Collision</em>' attribute.
+	 * @see #setPassivePassengerWaitingTimeAfterCollision(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassengerProperties_PassivePassengerWaitingTimeAfterCollision()
+	 * @model default="0.3"
+	 * @generated
+	 */
+	double getPassivePassengerWaitingTimeAfterCollision();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassivePassengerWaitingTimeAfterCollision <em>Passive Passenger Waiting Time After Collision</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Passive Passenger Waiting Time After Collision</em>' attribute.
+	 * @see #getPassivePassengerWaitingTimeAfterCollision()
+	 * @generated
+	 */
+	void setPassivePassengerWaitingTimeAfterCollision(double value);
 
 } // PassengerProperties

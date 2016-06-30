@@ -1,3 +1,4 @@
 eclipse.preferences.version=1
 encoding//model/cabin.ecore=UTF-8
 encoding//model/cabin.ecorediag=UTF-8
+encoding//src/net/bhl/cdt/paxelerate/model/astar/ObstacleGenerator.java=UTF-8

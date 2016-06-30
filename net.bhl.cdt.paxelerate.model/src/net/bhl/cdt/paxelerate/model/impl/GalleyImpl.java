@@ -15,10 +15,12 @@ import net.bhl.cdt.paxelerate.model.Galley;
  * @generated
  */
 public class GalleyImpl extends PhysicalObjectImpl implements Galley {
+	
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	protected GalleyImpl() {
 		super();
@@ -26,8 +28,10 @@ public class GalleyImpl extends PhysicalObjectImpl implements Galley {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the e class
+	 * @generated 
 	 */
 	@Override
 	protected EClass eStaticClass() {

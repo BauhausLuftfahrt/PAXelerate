@@ -29,6 +29,11 @@
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/passengerMood"/>
           </domainModelReference>
         </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C4qS8EeWGjpaobu8CIA" name="Control startBoardingAfterDelay" readonly="true">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C46S8EeWGjpaobu8CIA">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/startBoardingAfterDelay"/>
+          </domainModelReference>
+        </children>
       </children>
     </children>
     <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_6jUysKS8EeWGjpaobu8CIA">
@@ -62,6 +67,20 @@
     </children>
   </children>
   <children xsi:type="org.eclipse.emf.ecp.view.horizontal.model:HorizontalLayout" xmi:id="_KOK68KS9EeWGjpaobu8CIA">
+    <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_K7y18KS9EeWGjpaobu8CIA">
+      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_o3bBQC7rEeaDtpihYZ-4CQ" name="Luggage">
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C5qS8EeWGjpaobu8CIA" name="Control luggageStowTime">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C56S8EeWGjpaobu8CIA">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/luggageStowTime"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_Ktf6ENV3EeWEPo3DdOyvxA" name="Control luggageStowingDistance">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_GbSCQAvCEea80ODWa5LXGQ">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/luggageStowDistance"/>
+          </domainModelReference>
+        </children>
+      </children>
+    </children>
     <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_KrizcKS9EeWGjpaobu8CIA">
       <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_Lrje8KS9EeWGjpaobu8CIA" name="Seat">
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C6KS8EeWGjpaobu8CIA" name="Control travelClass">
@@ -74,70 +93,63 @@
             <domainModelEFeature xsi:type="ecore:EReference" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/door"/>
           </domainModelReference>
         </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C0qS8EeWGjpaobu8CIA" name="Control seatRef">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C06S8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EReference" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/seatRef"/>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C0qS8EeWGjpaobu8CIA" name="Control seatID" readonly="true">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_H4nPUPvREeWgxr1RUqWG5A">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/seatID"/>
           </domainModelReference>
         </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235CzKS8EeWGjpaobu8CIA" name="Control seat">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235CzaS8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/seat"/>
-          </domainModelReference>
-        </children>
-      </children>
-    </children>
-    <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_K7y18KS9EeWGjpaobu8CIA">
-      <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_MAwS4KS9EeWGjpaobu8CIA" name="Results">
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C0KS8EeWGjpaobu8CIA" name="Control boardingTime">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C0aS8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/boardingTime"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C5KS8EeWGjpaobu8CIA" name="Control numberOfWaits">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C5aS8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/numberOfWaits"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C5qS8EeWGjpaobu8CIA" name="Control luggageStowTime">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C56S8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/luggageStowTime"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_Ktf6ENV3EeWEPo3DdOyvxA" name="Control luggageStowingDistance">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_Ktf6EdV3EeWEPo3DdOyvxA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/luggageStowingDistance"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C4qS8EeWGjpaobu8CIA" name="Control startBoardingAfterDelay">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C46S8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/startBoardingAfterDelay"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C3qS8EeWGjpaobu8CIA" name="Control isSeated">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C36S8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/isSeated"/>
-          </domainModelReference>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C7KS8EeWGjpaobu8CIA" name="makeWay" readonly="true">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C7aS8EeWGjpaobu8CIA">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/numberOfMakeWayOperations"/>
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_SBYPEPvREeWgxr1RUqWG5A">
+            <domainModelEFeature xsi:type="ecore:EReference" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/seat"/>
           </domainModelReference>
         </children>
       </children>
     </children>
   </children>
+  <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_MAwS4KS9EeWGjpaobu8CIA" name="Results" readonly="true">
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C0KS8EeWGjpaobu8CIA" name="Control boardingTime" readonly="true">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C0aS8EeWGjpaobu8CIA">
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/boardingTime"/>
+      </domainModelReference>
+    </children>
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C5KS8EeWGjpaobu8CIA" name="Control numberOfWaits" readonly="true">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C5aS8EeWGjpaobu8CIA">
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/numberOfWaits"/>
+      </domainModelReference>
+    </children>
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C3qS8EeWGjpaobu8CIA" name="Control isSeated" readonly="true">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C36S8EeWGjpaobu8CIA">
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/isSeated"/>
+      </domainModelReference>
+    </children>
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C7KS8EeWGjpaobu8CIA" name="makeWay" readonly="true">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C7aS8EeWGjpaobu8CIA">
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/numberOfMakeWayOperations"/>
+      </domainModelReference>
+    </children>
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_yxeB4BgpEea5Out9NOphMg" name="Control distanceWalked" readonly="true">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_1539QBgpEea5Out9NOphMg">
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/distanceWalked"/>
+      </domainModelReference>
+    </children>
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_nwYmEDFvEeawfa8UF_72Dg" name="Control CostOfPath" readonly="true">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_qZCqYDFvEeawfa8UF_72Dg">
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/costOfPath"/>
+      </domainModelReference>
+    </children>
+  </children>
   <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_YjHAMKS9EeWGjpaobu8CIA" name="Live Data">
-    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C2KS8EeWGjpaobu8CIA" name="Control orientationInDegree">
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C2KS8EeWGjpaobu8CIA" name="Control orientationInDegree" readonly="true">
       <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C2aS8EeWGjpaobu8CIA">
         <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/orientationInDegree"/>
       </domainModelReference>
     </children>
-    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C2qS8EeWGjpaobu8CIA" name="Control positionX">
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C2qS8EeWGjpaobu8CIA" name="Control positionX" readonly="true">
       <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C26S8EeWGjpaobu8CIA">
         <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/positionX"/>
       </domainModelReference>
     </children>
-    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C3KS8EeWGjpaobu8CIA" name="Control positionY">
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_235C3KS8EeWGjpaobu8CIA" name="Control positionY" readonly="true">
       <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_235C3aS8EeWGjpaobu8CIA">
         <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Passenger/positionY"/>
       </domainModelReference>

@@ -7,6 +7,8 @@ package net.bhl.cdt.paxelerate.model.astar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -16,70 +18,136 @@ import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.agent.AgentFunctions;
+import net.bhl.cdt.paxelerate.util.math.DecimalHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.time.StopWatch;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.OS;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.ProgressHandler;
 
 /**
  * This class runs and handles the a star algorithm an simulation.
  * 
- * @author marc.engelmann
+ * @author marc.engelmann, michael.schmidt
+ * @version 1.0
+ * @since 0.5
  *
  */
 public class SimulationHandler {
+
+	/** The cabin. */
 	private static Cabin cabin;
+
+	/** The simulation done. */
 	private static Boolean simulationDone = false;
+
+	/** The areamap handler. */
+	private static AreamapHandler areamaphandler;
+
+	/* Lists & Maps */
+
+	/** The way making list. */
 	private static ArrayList<Passenger> finishedList = new ArrayList<Passenger>(),
 			activeList = new ArrayList<Passenger>(),
 			waymakingList = new ArrayList<Passenger>();
 
-	private static HashMap<Door, Double> lastDoorRelease = new HashMap<Door, Double>();
+	/** The agent list. */
 
-	private static AreaMap areamap;
-	private static CostMap costmap;
-	private static ArrayList<Agent> agentList = new ArrayList<Agent>();
+	private static List<Agent> agentList = new ArrayList<Agent>();
+
+	/** The access pending. */
 	private static HashMap<Passenger, Integer> accessPending = new HashMap<Passenger, Integer>();
-	private static StopWatch watch = new StopWatch();
+
+	/* ************ */
+
+	/** The watch. */
+	private static StopWatch master_boarding_time = new StopWatch();
+
+	/** The dimensions. */
 	private Vector dimensions;
 
+	/** The scale. */
+	private static int scale = 1;
+
+	/** The simulation loop index. */
+	private static int simulationLoopIndex;
+
+	/**
+	 * Gets the simulation loop index.
+	 *
+	 * @return the simulation loop index
+	 */
+	public static int getSimulationLoopIndex() {
+		return simulationLoopIndex;
+	}
+
+	/** The Constant SHOW_AREAMAP_ANIMATION. */
 	public static final boolean SHOW_AREAMAP_ANIMATION = true;
 
+	/** The progress. */
 	private static ProgressHandler progress;
-	private static int progressValue = 0;
-	private static int percent = 0;
+
+	/** The costmaps. */
+	private static Map<Integer, Costmap> costmaps = new HashMap<>();
+
+	/** The progress value. */
+	private static int percent = 0, progressvalue = 0;
 
 	/**
 	 * This method constructs the RunAStar algorithm.
-	 * 
-	 * @param obstaclemap
-	 *            is the obstacle map
-	 * @param dimensions
-	 *            is the dimension vector
-	 * @param cabin
-	 *            is the cabin
+	 *
+	 * @param dimensions            is the dimension vector
+	 * @param cabin            is the cabin
+	 * @param simulationLoopIndex the simulation loop index
 	 */
-	public SimulationHandler(Vector dimensions, Cabin cabin) {
+	public SimulationHandler(Vector dimensions, Cabin cabin,
+			int simulationLoopIndex) {
 		this.dimensions = dimensions;
+		this.simulationLoopIndex = simulationLoopIndex;
 		Log.add(this, "Cabin initializing...");
-		areamap = new AreaMap(this.dimensions, cabin);
+		areamaphandler = new AreamapHandler(this.dimensions, cabin);
 		SimulationHandler.cabin = cabin;
+		scale = cabin.getSimulationSettings().getScale();
 		run();
 	}
 
+	/**
+	 * Gets the number of seated passengers.
+	 *
+	 * @return the number of seated passengers
+	 */
 	public static int getNumberOfSeatedPassengers() {
 		return finishedList.size();
 	}
 
+	/**
+	 * Adds the to waymaking list.
+	 *
+	 * @param pax
+	 *            the pax
+	 */
 	public static void addToWaymakingList(Passenger pax) {
 		waymakingList.add(pax);
 	}
 
+	/**
+	 * Removes the from waymaking list.
+	 *
+	 * @param pax
+	 *            the pax
+	 */
 	public static void removeFromWaymakingList(Passenger pax) {
 		waymakingList.remove(pax);
 	}
 
+	/**
+	 * Waymaking in range.
+	 *
+	 * @param pax
+	 *            the pax
+	 * @return true, if successful
+	 */
 	public static boolean waymakingInRange(Passenger pax) {
 		for (Passenger pass : waymakingList) {
 			if (Math.abs(pass.getPositionY() - pax.getPositionY()) < 10) {
@@ -94,10 +162,17 @@ public class SimulationHandler {
 	 *
 	 * @return the area map
 	 */
-	public static AreaMap getMap() {
-		return areamap;
+	public synchronized static Areamap getMap() {
+		return areamaphandler.getAreamap();
 	}
 
+	/**
+	 * Gets the agent by passenger.
+	 *
+	 * @param pax
+	 *            the pax
+	 * @return the agent by passenger
+	 */
 	public static synchronized Agent getAgentByPassenger(Passenger pax) {
 		for (Agent agent : agentList) {
 			if (agent.getPassenger().getId() == pax.getId()) {
@@ -108,23 +183,20 @@ public class SimulationHandler {
 	}
 
 	/**
-	 * This method sets the value for simulationDone.
-	 * 
-	 * @param bool
-	 *            is the boolean
+	 * Gets the cabin.
+	 *
+	 * @return the cabin
 	 */
-	public static void setSimulationDone(Boolean bool) {
-		simulationDone = bool;
-	}
-
 	public static Cabin getCabin() {
 		return cabin;
 	}
 
-	public static CostMap getCostMap() {
-		return costmap;
-	}
-
+	/**
+	 * Removes the passenger.
+	 *
+	 * @param pax
+	 *            the pax
+	 */
 	public static synchronized void removePassenger(Passenger pax) {
 		Agent agent = getAgentByPassenger(pax);
 		agent.remove();
@@ -139,35 +211,53 @@ public class SimulationHandler {
 		return simulationDone;
 	}
 
-	public static ArrayList<Agent> getAgentList() {
+	/**
+	 * Sets the simulation status.
+	 *
+	 * @param status the new simulation status
+	 */
+	public static void setSimulationStatus(boolean status) {
+		simulationDone = status;
+	}
+
+	/**
+	 * Gets the agent list.
+	 *
+	 * @return the agent list
+	 */
+	public static List<Agent> getAgentList() {
 		return agentList;
 	}
 
+	/**
+	 * Reset.
+	 */
 	public static synchronized void reset() {
+
+		stopSimulation();
+
 		cabin = null;
+		areamaphandler = null;
 		simulationDone = false;
 		finishedList.clear();
 		activeList.clear();
-
-		areamap = null;
-		costmap = null;
+		waymakingList.clear();
 		agentList.clear();
 		accessPending.clear();
-		watch.reset();
-
+		master_boarding_time.reset();
 		progress = null;
 
-		progressValue = 0;
-		percent = 0;
 		System.out.println("Simulation Handler resetted!");
 	}
 
 	/**
 	 * This method signals that a passengers has found his seat. This is done by
 	 * adding him to the finishedList ArrayList element.
-	 * 
+	 *
 	 * @param passenger
 	 *            is the passenger
+	 * @param setSeated
+	 *            the set seated
 	 */
 	public static synchronized void setPassengerSeated(Passenger passenger,
 			boolean setSeated) {
@@ -178,43 +268,45 @@ public class SimulationHandler {
 		} else {
 			finishedList.remove(passenger);
 		}
-		if (finishedList.size() >= (cabin.getPassengers().size() - 1)) {
-			setSimulationDone(true);
+		if (finishedList.size() == cabin.getPassengers().size()) {
+			simulationDone = true;
+
+			/* stop the boarding time when the last passenger is seated */
+			master_boarding_time.stop();
+
+			System.out.println("Simulation done!");
 		}
 
 	}
 
 	/**
-	 * This method returns the passenger locations.
-	 * 
-	 * @return This is done by submitting the whole cabin.
+	 * Launch waymaking agent.
+	 *
+	 * @param pax
+	 *            the pax
+	 * @param myself
+	 *            the myself
 	 */
-	public synchronized Cabin getPassengerLocations() {
-		return cabin;
-	}
-
 	public static synchronized void launchWaymakingAgent(Passenger pax,
 			Passenger myself) {
-		Seat seat = pax.getSeatRef();
+		Seat seat = pax.getSeat();
 
 		int offset = 5;
 
 		Vector start = new Vector2D(seat.getXPosition() - 2,
-				seat.getYPosition() + seat.getYDimension() / 2,
-				cabin.getScale());
+				seat.getYPosition() + seat.getYDimension() / 2, scale);
 
-		if (pax.getSeatRef().getXPosition() < pax.getDoor().getXPosition()) {
+		if (pax.getSeat().getXPosition() < pax.getDoor().getXPosition()) {
 			offset = -(offset + 2);
 			System.out.println("offset mirrored");
 		}
 
-		Vector goal = new Vector2D(
-				seat.getXPosition() + offset * cabin.getScale(),
-				cabin.getYDimension() / 2.0, cabin.getScale());
+		Vector goal = new Vector2D(seat.getXPosition() + offset * scale,
+				cabin.getYDimension() / 2.0, scale);
 
 		Agent agent = new Agent(pax, start, goal,
-				SimulationHandler.getCostMap(), Agent.AgentMode.MAKE_WAY,
-				myself);
+				getAgentByPassenger(myself).getCostMap(),
+				Agent.AgentMode.MAKE_WAY, myself);
 		agent.findNewPath();
 		agent.start();
 		pax.setNumberOfMakeWayOperations(
@@ -226,25 +318,20 @@ public class SimulationHandler {
 	}
 
 	/**
-	 * 
-	 * @param agentList
+	 * Gets the active passengers.
+	 *
+	 * @return the active passengers
 	 */
-	public static synchronized void setAgentList(ArrayList<Agent> agentList) {
-		SimulationHandler.agentList = agentList;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public static synchronized int getNumberOfPassengersInCabin() {
+	public static synchronized int getActivePassengers() {
 		return activeList.size();
 	}
 
 	/**
-	 * 
+	 * Cabin access granted.
+	 *
 	 * @param pax
-	 * @return
+	 *            the pax
+	 * @return true, if successful
 	 */
 	public synchronized static boolean CabinAccessGranted(Passenger pax) {
 
@@ -252,7 +339,7 @@ public class SimulationHandler {
 
 		/* add the passenger to the waiting list of the specific door */
 		if (!waitingList.contains(pax)) {
-			pax.getDoor().getWaitingPassengers().add(pax);
+			waitingList.add(pax);
 		}
 
 		if (pax.getId() == waitingList.get(0).getId()) {
@@ -260,46 +347,30 @@ public class SimulationHandler {
 			/* check if doorway is clear. */
 			if (!AgentFunctions.doorwayBlocked(pax)) {
 
-				/* check if time has passed since releasing last one */
-				if (enoughTimePassed(pax)) {
-					waitingList.remove(pax);
-					return true;
-				}
+				waitingList.remove(pax);
+				return true;
+
 			}
 		}
 
-		// TODO: insert minimum delays between launches!
 		return false;
 	}
 
 	/**
-	 * 
+	 * Sets the passenger active.
+	 *
 	 * @param pax
-	 * @return
-	 */
-	private static boolean enoughTimePassed(Passenger pax) {
-		Door door = pax.getDoor();
-		if (!lastDoorRelease.containsKey(door)) {
-			lastDoorRelease.put(door, 0.0);
-			return true;
-		}
-
-		// TODO: Do not use a static time stamp but consider the simulation
-		// speed!
-		double time = watch.getElapsedTimeTens();
-		if (Math.abs(lastDoorRelease.get(door) - time) > (AStarHelper.time(0.15)
-				/ 1000.0)) {
-			lastDoorRelease.put(door, time);
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * 
-	 * @param pax
+	 *            the new passenger active
 	 */
 	public synchronized static void setPassengerActive(Passenger pax) {
+
+		/*
+		 * start the master_boarding_time when the first passenger is set active
+		 */
+
+		if (activeList.isEmpty() && finishedList.isEmpty()) {
+			master_boarding_time.start();
+		}
 
 		if (!AStarHelper.PassengerAlreadyInList(pax, activeList)) {
 			activeList.add(pax);
@@ -307,64 +378,111 @@ public class SimulationHandler {
 	}
 
 	/**
+	 * Gets the master boarding time.
+	 *
+	 * @return the master boarding time
+	 */
+	public static StopWatch getMasterBoardingTime() {
+		return master_boarding_time;
+	}
+
+	/**
 	 * This method executes the path finding simulation of the agents.
 	 */
 	public void run() {
-		watch.start();
-		costmap = null;
-		Boolean doItOnce = true;
 
-		for (Passenger passenger : cabin.getPassengers()) {
-			Seat seat = passenger.getSeatRef();
-			Door door = passenger.getDoor();
-			Vector start = new Vector2D(
-					(door.getXPosition() + door.getWidth() / 2), 0,
-					cabin.getScale());
+		/*
+		 * Every active door needs its own CostMap.java for path calculations!
+		 * The CostMap.java objects are stored in the HashMap.java and can be
+		 * accessed by the ID of the corresponding door.
+		 */
+		for (Door door : cabin.getDoors()) {
 
-			Vector goal = new Vector2D((seat.getXPosition()) - 1,
-					seat.getYPosition() + seat.getYDimension() / 2,
-					cabin.getScale());
+			/* check if the door is active */
+			if (door.isIsActive()) {
 
-			if (doItOnce) {
-				/* This line generates a costmap which is used for all agents */
-				costmap = new CostMap(dimensions, start, areamap, null, false);
-				costmap.saveMapToFile();
-				doItOnce = false;
+				/* get the 2D position of the door object */
+				Vector doorPosition = new Vector2D(
+						(door.getXPosition() + door.getWidth() / 2), 0, scale);
+
+				/* generate a new cost map */
+				Costmap costmap = new Costmap(dimensions, doorPosition,
+						areamaphandler.getAreamap(), null, false);
+
+				/* add it to the list of CostMaps */
+				costmaps.put(door.getId(), costmap);
 			}
+		}
 
-			Agent agent = new Agent(passenger, start, goal, costmap,
-					Agent.AgentMode.GO_TO_SEAT, null);
+		/* loop through all passengers and create their respective agent */
+		for (Passenger passenger : cabin.getPassengers()) {
 
-			// list of all agents
+			/* get objects assigned to the passenger */
+			Seat seat = passenger.getSeat();
+			Door door = passenger.getDoor();
+
+			/*
+			 * create the start location - this is the position of the door
+			 * which the passenger will use to board the plane
+			 */
+			Vector start = new Vector2D(
+					(door.getXPosition() + door.getWidth() / 2), 0, scale);
+
+			/*
+			 * create the goal location. this is the position of the passengers
+			 * seat. The goal is one "PIXEL" in front of the center of the seat.
+			 */
+			Vector goal = new Vector2D((seat.getXPosition()) - 1,
+					seat.getYPosition() + seat.getYDimension() / 2, scale);
+
+			/*
+			 * Create an agent object for path finding purposes. The cost map is
+			 * loaded from the list of cost maps accordingly
+			 */
+			Agent agent = new Agent(passenger, start, goal,
+					costmaps.get(door.getId()), Agent.AgentMode.GO_TO_SEAT,
+					null);
+
+			/* add the agent to the list */
 			agentList.add(agent);
 		}
 
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				progress = new ProgressHandler(agentList.size());
-				while (progressValue < agentList.size() - 1) {
-					progress.reportProgress(progressValue);
-					percent = percentage(progressValue, agentList.size());
+		if (OS.isWindows() && !cabin.getSimulationSettings().isSimulateWithoutUI()) {
+			javax.swing.SwingUtilities.invokeLater(new Runnable() {
+				@Override
+				public void run() {
+					progress = new ProgressHandler(agentList.size());
+					while (progressvalue < agentList.size() - 1) {
+						progress.reportProgress(progressvalue);
 
-					// TODO: real progress indications for calculation of
-					// cost map could be implemented!
+						percent = DecimalHelper.percentage(progressvalue,
+								agentList.size());
 
-					if (percent < 10) {
-						progress.updateText(
-								"Initializing Path finding algorithms ...");
-					} else if (percent < 30) {
-						progress.updateText("Creating the agent objects ...");
-					} else if (percent < 90) {
-						progress.updateText(
-								"Calculating the paths for every passenger ...");
-					} else {
-						progress.updateText("Finishing calculations ...");
+						// TODO: real progress indications for calculation of
+						// cost map could be implemented!
+
+						if (percent < 10) {
+							progress.updateText(
+									"Initializing Path finding algorithms ...");
+						} else if (percent < 30) {
+							progress.updateText(
+									"Creating the agent objects ...");
+						} else if (percent < 90) {
+							progress.updateText(
+									"Calculating the paths for every passenger ...");
+						} else {
+							progress.updateText("Finishing calculations ...");
+						}
 					}
+					progress.done();
 				}
-				progress.done();
-			}
-		});
+			});
+		} else if (OS.isMac()) {
+			// TODO: implement eclipse progress bar
+			Log.add(this, "Initializing Path finding algorithms ...");
+			Log.add(this, "Creating the agent objects ...");
+			Log.add(this, "Calculating the paths for every passenger ...");
+		}
 
 		/* First generate all paths ... */
 		for (Agent agent : agentList) {
@@ -375,14 +493,15 @@ public class SimulationHandler {
 
 				/* Warn if no path can be found */
 			} catch (NullPointerException e) {
-				System.out.println("Passenger " + agent.getPassenger().getId()
-						+ " for Seat "
-						+ agent.getPassenger().getSeatRef().getName()
-						+ " can not find a path to the seat!");
+				e.printStackTrace();
+				System.out.println("Passenger " + agent.getPassenger().getName()
+						+ " can not find a path to the seat at "
+						+ agent.getGoal().getX() + " / "
+						+ agent.getGoal().getY());
 			}
 
 			/* return information to the progress bar */
-			progressValue++;
+			progressvalue++;
 		}
 
 		/* ... then start the simulations simultaneously */
@@ -392,15 +511,66 @@ public class SimulationHandler {
 		}
 	}
 
-	private int percentage(double now, double max) {
-		return (int) ((now / max) * 100.0);
-	}
-	
-	public void stopSimulation() {
-		// TODO
-		// This is just a quick fix
+	/**
+	 * Stop simulation.
+	 */
+	public static void stopSimulation() {
 		for (Agent agent : agentList) {
-			agent.getThread().stop();
+			agent.getThread().interrupt();
+			/*try {
+				agent.getThread().join();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}*/
+			agent.resetAgent();
+			//if (agent.getThread().isInterrupted())
+			// agent = null;
 		}
 	}
+
+	/**
+	 * Gets the areamap handler.
+	 *
+	 * @return the areamap handler
+	 */
+	public static AreamapHandler getAreamapHandler() {
+		return areamaphandler;
+	}
+
+	/**
+	 * Gets the used costmaps.
+	 *
+	 * @return the used costmaps
+	 */
+	public static Map<Integer, Costmap> getUsedCostmaps() {
+		return costmaps;
+	}
+
+	/**
+	 * Gets the number waymaking skipped.
+	 *
+	 * @return the number waymaking skipped
+	 */
+	public static int getNumberWaymakingSkipped() {
+		int numberSkipped = 0;
+		for (Agent agent : agentList) {
+			numberSkipped = numberSkipped + agent.getNumberWayMakingSkipped();
+		}
+		return numberSkipped;
+	}
+
+	/**
+	 * Gets the number waymaking completed.
+	 *
+	 * @return the number waymaking completed
+	 */
+	public static int getNumberWaymakingCompleted() {
+		int numberCompleted = 0;
+		for (Passenger pax : finishedList) {
+			numberCompleted = numberCompleted
+					+ pax.getNumberOfMakeWayOperations();
+		}
+		return numberCompleted;
+	}
+
 }

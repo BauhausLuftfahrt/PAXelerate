@@ -31,11 +31,13 @@ import net.bhl.cdt.paxelerate.model.SimulationResult;
 public class SimulationResultItemProvider extends ItemProviderAdapter implements
 		IEditingDomainItemProvider, IStructuredItemContentProvider,
 		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param adapterFactory the adapter factory
+	 * @generated 
 	 */
 	public SimulationResultItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
@@ -44,8 +46,10 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param object the object
+	 * @return the property descriptors
+	 * @generated 
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
@@ -58,6 +62,9 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 			addIdPropertyDescriptor(object);
 			addDatePropertyDescriptor(object);
 			addBoardingTimeStringPropertyDescriptor(object);
+			addWaymakingSkippedPropertyDescriptor(object);
+			addWaymakingCompletedPropertyDescriptor(object);
+			addLayoutConceptTypePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -65,8 +72,9 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 	/**
 	 * This adds a property descriptor for the Boarding Time feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addBoardingTimePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -87,8 +95,9 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 	/**
 	 * This adds a property descriptor for the Passengers feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPassengersPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -195,6 +204,72 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 	}
 
 	/**
+	 * This adds a property descriptor for the Waymaking Skipped feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addWaymakingSkippedPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationResult_waymakingSkipped_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_waymakingSkipped_feature", "_UI_SimulationResult_type"),
+				 CabinPackage.Literals.SIMULATION_RESULT__WAYMAKING_SKIPPED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Waymaking Completed feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addWaymakingCompletedPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationResult_waymakingCompleted_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_waymakingCompleted_feature", "_UI_SimulationResult_type"),
+				 CabinPackage.Literals.SIMULATION_RESULT__WAYMAKING_COMPLETED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Layout Concept Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLayoutConceptTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationResult_layoutConceptType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_layoutConceptType_feature", "_UI_SimulationResult_type"),
+				 CabinPackage.Literals.SIMULATION_RESULT__LAYOUT_CONCEPT_TYPE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns SimulationResult.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -208,7 +283,9 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 	/**
 	 * This returns the label text for the adapted class. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
+	 * @param object the object
+	 * @return the text
 	 * @generated NOT
 	 */
 	@Override
@@ -236,6 +313,9 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 			case CabinPackage.SIMULATION_RESULT__ID:
 			case CabinPackage.SIMULATION_RESULT__DATE:
 			case CabinPackage.SIMULATION_RESULT__BOARDING_TIME_STRING:
+			case CabinPackage.SIMULATION_RESULT__WAYMAKING_SKIPPED:
+			case CabinPackage.SIMULATION_RESULT__WAYMAKING_COMPLETED:
+			case CabinPackage.SIMULATION_RESULT__LAYOUT_CONCEPT_TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
@@ -246,8 +326,10 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @param newChildDescriptors the new child descriptors
+	 * @param object the object
+	 * @generated 
 	 */
 	@Override
 	protected void collectNewChildDescriptors(
@@ -258,8 +340,9 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 	/**
 	 * Return the resource locator for this item provider's resources. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 *
+	 * @return the resource locator
+	 * @generated 
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {

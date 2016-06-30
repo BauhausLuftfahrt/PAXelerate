@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import net.bhl.cdt.paxelerate.model.CabinPackage;
 import net.bhl.cdt.paxelerate.model.Door;
+import net.bhl.cdt.paxelerate.model.DoorOption;
 import net.bhl.cdt.paxelerate.model.Passenger;
 
 /**
@@ -30,11 +31,12 @@ import net.bhl.cdt.paxelerate.model.Passenger;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.DoorImpl#getNumberOfSimultaneousPassengers <em>Number Of Simultaneous Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.DoorImpl#isIsActive <em>Is Active</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.DoorImpl#getWaitingPassengers <em>Waiting Passengers</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.DoorImpl#getDoorOption <em>Door Option</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class DoorImpl extends MinimalEObjectImpl.Container implements Door {
+public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	/**
 	 * The default value of the '{@link #getXPosition() <em>XPosition</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -166,9 +168,30 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 	protected EList<Passenger> waitingPassengers;
 
 	/**
+	 * The default value of the '{@link #getDoorOption() <em>Door Option</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see #getDoorOption()
 	 * @generated
+	 * @ordered
+	 */
+	protected static final DoorOption DOOR_OPTION_EDEFAULT = DoorOption.STANDARD_DOOR;
+
+	/**
+	 * The cached value of the '{@link #getDoorOption() <em>Door Option</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDoorOption()
+	 * @generated
+	 * @ordered
+	 */
+	protected DoorOption doorOption = DOOR_OPTION_EDEFAULT;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	protected DoorImpl() {
 		super();
@@ -176,8 +199,10 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the e class
+	 * @generated 
 	 */
 	@Override
 	protected EClass eStaticClass() {
@@ -186,8 +211,10 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the x position
+	 * @generated 
 	 */
 	public int getXPosition() {
 		return xPosition;
@@ -195,8 +222,10 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newXPosition the new x position
+	 * @generated 
 	 */
 	public void setXPosition(int newXPosition) {
 		int oldXPosition = xPosition;
@@ -207,8 +236,10 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return true, if is on both sides
+	 * @generated 
 	 */
 	public boolean isOnBothSides() {
 		return onBothSides;
@@ -216,8 +247,10 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newOnBothSides the new on both sides
+	 * @generated 
 	 */
 	public void setOnBothSides(boolean newOnBothSides) {
 		boolean oldOnBothSides = onBothSides;
@@ -228,8 +261,10 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the width
+	 * @generated 
 	 */
 	public int getWidth() {
 		return width;
@@ -237,8 +272,10 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newWidth the new width
+	 * @generated 
 	 */
 	public void setWidth(int newWidth) {
 		int oldWidth = width;
@@ -249,8 +286,10 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the id
+	 * @generated 
 	 */
 	public int getId() {
 		return id;
@@ -258,8 +297,10 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newId the new id
+	 * @generated 
 	 */
 	public void setId(int newId) {
 		int oldId = id;
@@ -270,8 +311,10 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the number of simultaneous passengers
+	 * @generated 
 	 */
 	public int getNumberOfSimultaneousPassengers() {
 		return numberOfSimultaneousPassengers;
@@ -279,8 +322,10 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newNumberOfSimultaneousPassengers the new number of simultaneous passengers
+	 * @generated 
 	 */
 	public void setNumberOfSimultaneousPassengers(int newNumberOfSimultaneousPassengers) {
 		int oldNumberOfSimultaneousPassengers = numberOfSimultaneousPassengers;
@@ -291,8 +336,10 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return true, if is checks if is active
+	 * @generated 
 	 */
 	public boolean isIsActive() {
 		return isActive;
@@ -300,8 +347,10 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newIsActive the new checks if is active
+	 * @generated 
 	 */
 	public void setIsActive(boolean newIsActive) {
 		boolean oldIsActive = isActive;
@@ -312,8 +361,10 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the waiting passengers
+	 * @generated 
 	 */
 	public EList<Passenger> getWaitingPassengers() {
 		if (waitingPassengers == null) {
@@ -324,8 +375,38 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the door option
+	 * @generated 
+	 */
+	public DoorOption getDoorOption() {
+		return doorOption;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newDoorOption the new door option
+	 * @generated 
+	 */
+	public void setDoorOption(DoorOption newDoorOption) {
+		DoorOption oldDoorOption = doorOption;
+		doorOption = newDoorOption == null ? DOOR_OPTION_EDEFAULT : newDoorOption;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.DOOR__DOOR_OPTION, oldDoorOption, doorOption));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param resolve the resolve
+	 * @param coreType the core type
+	 * @return the object
+	 * @generated 
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
@@ -344,14 +425,19 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 				return isIsActive();
 			case CabinPackage.DOOR__WAITING_PASSENGERS:
 				return getWaitingPassengers();
+			case CabinPackage.DOOR__DOOR_OPTION:
+				return getDoorOption();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param newValue the new value
+	 * @generated 
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
@@ -379,14 +465,19 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 				getWaitingPassengers().clear();
 				getWaitingPassengers().addAll((Collection<? extends Passenger>)newValue);
 				return;
+			case CabinPackage.DOOR__DOOR_OPTION:
+				setDoorOption((DoorOption)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @generated 
 	 */
 	@Override
 	public void eUnset(int featureID) {
@@ -412,14 +503,20 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 			case CabinPackage.DOOR__WAITING_PASSENGERS:
 				getWaitingPassengers().clear();
 				return;
+			case CabinPackage.DOOR__DOOR_OPTION:
+				setDoorOption(DOOR_OPTION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @return true, if successful
+	 * @generated 
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
@@ -438,14 +535,18 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 				return isActive != IS_ACTIVE_EDEFAULT;
 			case CabinPackage.DOOR__WAITING_PASSENGERS:
 				return waitingPassengers != null && !waitingPassengers.isEmpty();
+			case CabinPackage.DOOR__DOOR_OPTION:
+				return doorOption != DOOR_OPTION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the string
+	 * @generated 
 	 */
 	@Override
 	public String toString() {
@@ -464,6 +565,8 @@ public abstract class DoorImpl extends MinimalEObjectImpl.Container implements D
 		result.append(numberOfSimultaneousPassengers);
 		result.append(", isActive: ");
 		result.append(isActive);
+		result.append(", doorOption: ");
+		result.append(doorOption);
 		result.append(')');
 		return result.toString();
 	}

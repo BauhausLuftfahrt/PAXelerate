@@ -1,12 +1,11 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2009-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ******************************************************************************/
 package net.bhl.cdt.paxelerate.ui.views;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -22,30 +21,25 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 
 import net.bhl.cdt.model.util.ModelHelper;
-import net.bhl.cdt.paxelerate.model.BusinessClass;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
 import net.bhl.cdt.paxelerate.model.Curtain;
 import net.bhl.cdt.paxelerate.model.Door;
-import net.bhl.cdt.paxelerate.model.FirstClass;
-import net.bhl.cdt.paxelerate.model.Galley;
-import net.bhl.cdt.paxelerate.model.Lavatory;
 import net.bhl.cdt.paxelerate.model.ObjectOption;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.PhysicalObject;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.TravelClass;
-import net.bhl.cdt.paxelerate.model.TravelOption;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
-import net.bhl.cdt.paxelerate.model.astar.ObstacleMap;
+import net.bhl.cdt.paxelerate.model.astar.AreamapHandler;
 import net.bhl.cdt.paxelerate.model.astar.Path;
-import net.bhl.cdt.paxelerate.model.util.TCHelper;
-import net.bhl.cdt.paxelerate.ui.color.ColorHelper;
-import net.bhl.cdt.paxelerate.ui.font.FontHelper;
+import net.bhl.cdt.paxelerate.model.util.POHelper;
+import net.bhl.cdt.paxelerate.ui.graphics.ColorHelper;
+import net.bhl.cdt.paxelerate.ui.graphics.FontHelper;
+import net.bhl.cdt.paxelerate.ui.graphics.ImageHelper;
+import net.bhl.cdt.paxelerate.ui.graphics.ImageImporter;
 import net.bhl.cdt.paxelerate.ui.graphics.SWTHelper;
-import net.bhl.cdt.paxelerate.ui.image.ImageHelper;
-import net.bhl.cdt.paxelerate.ui.image.ImageImporter;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
@@ -54,33 +48,62 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
  * This class represents the cabin view. All graphics generation is done here.
  * 
  * @author marc.engelmann, raoul.rothfeld
+ * @version 1.0
+ * @since 0.5
  */
 
 public class CabinViewPart extends ViewPart {
+
+	/** The cabin. */
 	private Cabin cabin;
+
+	/** The canvas height. */
 	private double factor, canvasHeight;
+
+	/** The parent. */
 	private Composite parent;
 
+	/** The initial boot. */
 	private static boolean initialBoot = true;
 
 	/********************* graphical settings. *************************/
 	private static final int OFFSET_OF_DOOR = 0, CABIN_WIDTH_IN_PIXELS = 123, DOOR_DEPTH = 2, ICON_SIZE_IN_PIXELS = 15;
+
+	/** The Constant PAX_SIZE. */
 	private static final double PAX_SIZE = 0.5;
+
+	/** The Constant MATCH_PASSENGER_COLORS_TO_MOOD. */
 	private static final boolean MATCH_PASSENGER_COLORS_TO_MOOD = true;
 
+	/** The image y. */
 	private static int xZero = 139, yZero = 75, imageX = 400, imageY = 1000;
-	/*******************************************************************/
 
-	private Image economySeat, businessSeat, firstSeat, galleyIcon, lavatoryIcon;
+	/** ****************************************************************. */
+
+	private Image economySeatDefault, economySeatBack, economySeatSide, businessSeat, firstSeat, galleyIcon,
+			lavatoryIcon;
+
+	/** The canvas. */
 	private Canvas canvas;
+
+	/** The cabin adapter. */
 	private Adapter cabinAdapter;
+
+	/** The loader. */
 	private ImageLoader loader;
+
+	/** The img. */
 	private static Image img;
+
+	/** The Constant IMAGE_PATH. */
 	private static final String FOLDER_NAME = "paxelerate",
 			FILE_PATH = System.getProperty("user.home") + "/.cdt/" + FOLDER_NAME + "/",
 			IMAGE_PATH = "/images/aircraft/interior/";
+
+	/** The storage folder. */
 	private static File storageFolder = new File(FILE_PATH);
 
+	/** The scaled y. */
 	private int scaledX, scaledY;
 
 	/**
@@ -91,13 +114,15 @@ public class CabinViewPart extends ViewPart {
 	 *            is the parent element
 	 */
 	@Override
-	public void createPartControl(Composite parent) {
+	public final void createPartControl(final Composite parent) {
 		this.parent = parent;
 		cabin = CabinFactory.eINSTANCE.createCabin();
 
 		factor = cabin.getYDimension() / (double) CABIN_WIDTH_IN_PIXELS;
 
-		economySeat = ImageImporter.getImage(getClass(), IMAGE_PATH + "economy_seat.png");
+		economySeatDefault = ImageImporter.getImage(getClass(), IMAGE_PATH + "economy_seat.png");
+		economySeatSide = ImageImporter.getImage(getClass(), IMAGE_PATH + "economy_seat_folded_2.png");
+		economySeatBack = ImageImporter.getImage(getClass(), IMAGE_PATH + "economy_seat_folded_1.png");
 		businessSeat = ImageImporter.getImage(getClass(), IMAGE_PATH + "business_seat.png");
 		firstSeat = ImageImporter.getImage(getClass(), IMAGE_PATH + "first_seat.png");
 		galleyIcon = ImageImporter.getImage(getClass(), IMAGE_PATH + "coffee.png");
@@ -127,73 +152,33 @@ public class CabinViewPart extends ViewPart {
 			try {
 				storageFolder.mkdir();
 			} catch (SecurityException se) {
+				se.printStackTrace();
 			}
 		}
 	}
 
 	/**
-	 * 
-	 * @param obj
-	 * @return
+	 * Gets the cabin.
+	 *
+	 * @return the cabin
 	 */
-	private Image switchIcon(PhysicalObject obj) {
-
-		if (obj instanceof Lavatory) {
-			return lavatoryIcon;
-		} else if (obj instanceof Galley) {
-			return galleyIcon;
-		}
-		return null;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public Cabin getCabin() {
+	public final Cabin getCabin() {
 		return cabin;
 	}
 
 	/**
-	 * 
-	 * @param gc
-	 * @param obj
-	 */
-	private void drawObject(GC gc, PhysicalObject obj) {
-		gc.fillRectangle(get(obj, Axis.X), get(obj, Axis.Y), adapt(obj.getYDimension()), adapt(obj.getXDimension()));
-		gc.drawImage(switchIcon(obj),
-				adapt(Axis.X,
-						obj.getYPosition() + obj.getYDimension() / 2 - switchIcon(obj).getBounds().width / 2 * factor),
-				adapt(Axis.Y, obj.getXPosition() + obj.getXDimension() / 2
-						- switchIcon(obj).getBounds().height / 2 * factor));
-	}
-
-	/**
-	 * 
-	 * @author marc.engelmann
+	 * The Enum Axis.
 	 *
+	 * @author marc.engelmann
 	 */
 	private enum Axis {
-		X, Y, Z
-	}
 
-	/**
-	 * 
-	 * @param obj
-	 * @param dir
-	 * @return
-	 */
-	private int get(PhysicalObject obj, Axis dir) {
-		switch (dir) {
-		case X:
-			return adapt(Axis.X, obj.getYPosition());
-
-		case Y:
-			return adapt(Axis.Y, obj.getXPosition());
-
-		default:
-			return 0;
-		}
+		/** The x. */
+		X,
+		/** The y. */
+		Y,
+		/** The z. */
+		Z
 	}
 
 	/**
@@ -215,16 +200,6 @@ public class CabinViewPart extends ViewPart {
 		gc.drawLine(xZero, adapt(Axis.Y, cabin.getXDimension()), adapt(Axis.X, cabin.getYDimension()),
 				adapt(Axis.Y, cabin.getXDimension()));
 
-		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
-			if (seat.getTravelClass() instanceof FirstClass) {
-				gc.drawImage(firstSeat, get(seat, Axis.X), get(seat, Axis.Y));
-			} else if (seat.getTravelClass() instanceof BusinessClass) {
-				gc.drawImage(businessSeat, get(seat, Axis.X), get(seat, Axis.Y));
-			} else {
-				gc.drawImage(economySeat, get(seat, Axis.X), get(seat, Axis.Y));
-			}
-		}
-
 		for (Row row : ModelHelper.getChildrenByClass(cabin, Row.class)) {
 			int positionY = adapt((row.getSeats().get(0).getXPosition()));
 			int positionX = adapt((cabin.getYDimension() / 2));
@@ -244,14 +219,75 @@ public class CabinViewPart extends ViewPart {
 					adapt(door.getWidth()));
 		}
 
-		for (Lavatory lavatory : cabin.getLavatories()) {
-			gc.setBackground(ColorHelper.AIRCRAFT_LAVATORY);
-			drawObject(gc, lavatory);
-		}
+		for (ObjectOption option : ObjectOption.VALUES) {
 
-		for (Galley galley : cabin.getGalleys()) {
-			gc.setBackground(ColorHelper.GREEN);
-			drawObject(gc, galley);
+			objectLoop: for (PhysicalObject obj : POHelper.getObjectsByOption(option, cabin)) {
+
+				Image icon;
+
+				switch (option) {
+				case LAVATORY:
+					gc.setBackground(ColorHelper.AIRCRAFT_LAVATORY);
+					icon = lavatoryIcon;
+					break;
+
+				case GALLEY:
+					gc.setBackground(ColorHelper.GREEN);
+					icon = galleyIcon;
+					break;
+
+				case SEAT:
+
+					Seat seat = (Seat) obj;
+
+					switch (seat.getTravelClass().getTravelOption()) {
+					case FIRST_CLASS:
+						icon = firstSeat;
+						break;
+
+					case BUSINESS_CLASS:
+						icon = businessSeat;
+						break;
+
+					default:
+						switch (seat.getLayoutConcept()) {
+						case SIDWAYS_FOLDABLE_SEAT:
+							icon = economySeatSide;
+							break;
+						case LIFTING_SEAT_PAN_SEATS:
+							icon = economySeatBack;
+							break;
+						default:
+							icon = economySeatDefault;
+							break;
+						}
+						break;
+					}
+
+					gc.drawImage(icon, adapt(Axis.X, obj.getYPosition()), adapt(Axis.Y, obj.getXPosition()));
+
+					break;
+
+				case CURTAIN:
+					break objectLoop;
+
+				default:
+					gc.setBackground(ColorHelper.RED);
+					icon = galleyIcon;
+					break;
+				}
+
+				if (option != ObjectOption.SEAT) {
+					gc.fillRectangle(adapt(Axis.X, obj.getYPosition()), adapt(Axis.Y, obj.getXPosition()),
+							adapt(obj.getYDimension()), adapt(obj.getXDimension()));
+
+					gc.drawImage(icon,
+							adapt(Axis.X,
+									obj.getYPosition() + obj.getYDimension() / 2 - icon.getBounds().width / 2 * factor),
+							adapt(Axis.Y, obj.getXPosition() + obj.getXDimension() / 2
+									- icon.getBounds().height / 2 * factor));
+				}
+			}
 		}
 
 		for (Curtain curtain : cabin.getCurtains()) {
@@ -259,35 +295,38 @@ public class CabinViewPart extends ViewPart {
 			gc.fillRectangle(adapt(Axis.X, curtain.getYPosition()), adapt(Axis.Y, curtain.getXPosition()),
 					adapt(curtain.getYDimension()), adapt(curtain.getXDimension()));
 		}
-		if (!cabin.getPassengers().isEmpty()) {
-			for (Passenger passenger : cabin.getPassengers()) {
-				Seat seat = passenger.getSeatRef();
 
-				switch (passenger.getPassengerMood()) {
-				case AGRESSIVE:
-					gc.setBackground(ColorHelper.RED);
-					break;
-				case PASSIVE:
-					gc.setBackground(ColorHelper.GREEN);
-					break;
-				}
+		for (Passenger passenger : cabin.getPassengers()) {
 
-				int yPos = seat.getYPosition();
-				int xPos = seat.getXPosition();
-				int yDim = seat.getYDimension();
-				int xDim = seat.getXDimension();
+			Seat seat = passenger.getSeat();
 
-				if (xDim < yDim) {
-					gc.fillOval(adapt(Axis.X, yPos + yDim / 2 - xDim * PAX_SIZE / 2),
-							adapt(Axis.Y, xPos + (1 - PAX_SIZE) * xDim / 2), adapt(PAX_SIZE * xDim),
-							adapt(PAX_SIZE * xDim));
-				} else {
-					gc.fillOval(adapt(Axis.X, yPos + (1 - PAX_SIZE) * yDim / 2),
-							adapt(Axis.Y, xPos + xDim / 2 - yDim * PAX_SIZE / 2), adapt(PAX_SIZE * yDim),
-							adapt(PAX_SIZE * yDim));
-				}
+			switch (passenger.getPassengerMood()) {
+			case AGGRESSIVE:
+				gc.setBackground(ColorHelper.RED);
+				break;
+			case PASSIVE:
+				gc.setBackground(ColorHelper.GREEN);
+				break;
+			default:
+				break;
+			}
+
+			int yPos = seat.getYPosition();
+			int xPos = seat.getXPosition();
+			int yDim = seat.getYDimension();
+			int xDim = seat.getXDimension();
+
+			if (xDim < yDim) {
+				gc.fillOval(adapt(Axis.X, yPos + yDim / 2 - xDim * PAX_SIZE / 2),
+						adapt(Axis.Y, xPos + (1 - PAX_SIZE) * xDim / 2), adapt(PAX_SIZE * xDim),
+						adapt(PAX_SIZE * xDim));
+			} else {
+				gc.fillOval(adapt(Axis.X, yPos + (1 - PAX_SIZE) * yDim / 2),
+						adapt(Axis.Y, xPos + xDim / 2 - yDim * PAX_SIZE / 2), adapt(PAX_SIZE * yDim),
+						adapt(PAX_SIZE * yDim));
 			}
 		}
+
 		gc.dispose();
 		// Temporarily do not save image
 		// loader = new ImageLoader();
@@ -306,13 +345,14 @@ public class CabinViewPart extends ViewPart {
 	 * 
 	 * @return true or false
 	 */
-	public boolean isInitialBoot() {
+	public final boolean isInitialBoot() {
 		return initialBoot;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Switch aircraft image.
+	 *
+	 * @return the image
 	 */
 	private Image switchAircraftImage() {
 		switch (cabin.getAircraftType()) {
@@ -324,19 +364,23 @@ public class CabinViewPart extends ViewPart {
 
 		case NARROWBODY:
 			return ImageImporter.getImage(getClass(), "/images/aircraft/continental.png");
+
 		default:
-			Log.add(this, "There is a problem with the aircraft type definition.");
-			return null;
+			break;
 		}
+		return null;
 	}
 
 	/**
-	 * 
+	 * Resize ac.
+	 *
 	 * @param width
+	 *            the width
 	 * @param height
-	 * @return
+	 *            the height
+	 * @return the image
 	 */
-	private Image resizeAC(int width, int height) {
+	private Image resizeAC(final int width, final int height) {
 		Image scaledImage = new Image(parent.getDisplay(), width, height);
 		GC gc = new GC(scaledImage);
 
@@ -349,8 +393,9 @@ public class CabinViewPart extends ViewPart {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Try aircraft switch.
+	 *
+	 * @return the image
 	 */
 	private Image tryAircraftSwitch() {
 		return resizeAC((int) (imageX * canvasHeight / imageY), (int) (imageY * canvasHeight / imageY));
@@ -362,7 +407,7 @@ public class CabinViewPart extends ViewPart {
 	 * @param cabin
 	 *            is the caught cabin
 	 */
-	public void setCabin(Cabin cabin) {
+	public final void setCabin(final Cabin cabin) {
 		try {
 			initialBoot = false;
 			this.cabin = cabin;
@@ -378,21 +423,21 @@ public class CabinViewPart extends ViewPart {
 			 * the dimensions of the first element are used for scaling
 			 **/
 
-			for (TravelOption option : TravelOption.VALUES) {
-				List<TravelClass> list = TCHelper.getClassesByOption(option, cabin);
+			for (TravelClass tc : cabin.getClasses()) {
 
-				if (!list.isEmpty()) {
-					int dim = adapt(list.get(0).getYDimensionOfSeats());
+				int dimY = adapt(tc.getYDimensionOfSeats());
+				int dimX = adapt(tc.getXDimensionOfSeats());
 
-					switch (option) {
-					case FIRST_CLASS:
-						firstSeat = ImageHelper.resize(firstSeat, dim, dim, parent);
-					case BUSINESS_CLASS:
-						businessSeat = ImageHelper.resize(businessSeat, dim, dim, parent);
-					case ECONOMY_CLASS:
-						economySeat = ImageHelper.resize(economySeat, dim, dim, parent);
-					default:
-					}
+				switch (tc.getTravelOption()) {
+				case FIRST_CLASS:
+					firstSeat = ImageHelper.resize(firstSeat, dimY, dimX, parent);
+				case BUSINESS_CLASS:
+					businessSeat = ImageHelper.resize(businessSeat, dimY, dimX, parent);
+				case ECONOMY_CLASS:
+					economySeatDefault = ImageHelper.resize(economySeatDefault, dimY, dimX, parent);
+					economySeatSide = ImageHelper.resize(economySeatSide, dimY, dimX, parent);
+					economySeatBack = ImageHelper.resize(economySeatBack, dimY, dimX, parent);
+				default:
 				}
 			}
 
@@ -436,7 +481,7 @@ public class CabinViewPart extends ViewPart {
 	 * This method synchronizes the cabin view with the cabin object by
 	 * listening to its change events.
 	 */
-	public void syncViewer() {
+	public final void syncViewer() {
 		if ((cabinAdapter != null) && (!cabin.eAdapters().contains(cabinAdapter))) {
 			cabin.eAdapters().add(cabinAdapter);
 		}
@@ -447,7 +492,7 @@ public class CabinViewPart extends ViewPart {
 	 * This method unsyncs the Cabin view with the cabin object by removing the
 	 * event listener form the cabin object.
 	 */
-	public void unsyncViewer() {
+	public final void unsyncViewer() {
 		if ((cabinAdapter != null) && (cabin.eAdapters().contains(cabinAdapter))) {
 
 			cabin.eAdapters().remove(cabinAdapter);
@@ -461,7 +506,7 @@ public class CabinViewPart extends ViewPart {
 	 *            is the obstacle map
 	 * @return returns the obstacle map as an image
 	 */
-	public Image submitObstacleMap(final int[][] map) {
+	public final Image submitObstacleMap(final int[][] map) {
 		Image image = new Image(parent.getDisplay(), imageX, imageY);
 		final int overLapOfRect = 2;
 		GC gc = new GC(image);
@@ -470,20 +515,17 @@ public class CabinViewPart extends ViewPart {
 
 		gc.drawImage(img, 0, 0);
 		gc.setAlpha(100);
-		for (int i = 0; i < cabin.getXDimension() / cabin.getScale(); i++) {
-			for (int j = 0; j < cabin.getYDimension() / cabin.getScale(); j++) {
+		for (int i = 0; i < cabin.getXDimension() / cabin.getSimulationSettings().getScale(); i++) {
+			for (int j = 0; j < cabin.getYDimension() / cabin.getSimulationSettings().getScale(); j++) {
 
-				if (map[i][j] <= ObstacleMap.getHoleValue()) {
+				if (map[i][j] <= AreamapHandler.HOLE_VALUE) {
 					gc.setBackground(ColorHelper.GREEN);
 
-				} else if (map[i][j] <= ObstacleMap.getBasicValue()) {
+				} else if (map[i][j] <= AreamapHandler.DEFAULT_VALUE) {
 					gc.setBackground(ColorHelper.GREEN_LIGHT);
 
-				} else if (map[i][j] < ObstacleMap.getPotentialValue()) {
+				} else if (map[i][j] <= AreamapHandler.GRADIENT_UPPER_BOUND) {
 					gc.setBackground(ColorHelper.YELLOW);
-
-				} else if (map[i][j] == ObstacleMap.getPotentialValue()) {
-					gc.setBackground(ColorHelper.ORANGE);
 
 				} else {
 					gc.setBackground(ColorHelper.RED);
@@ -501,6 +543,7 @@ public class CabinViewPart extends ViewPart {
 			loader.save(FILE_PATH + "obstaclemap.png", SWT.IMAGE_PNG);
 		} catch (Exception e) {
 			Log.add(this, "The obstacle map could not be saved! Directory problem.");
+			e.printStackTrace();
 		}
 		disposeAll();
 		return image;
@@ -508,11 +551,11 @@ public class CabinViewPart extends ViewPart {
 
 	/**
 	 * This method gets the paths.
-	 * 
-	 * @param pathList
-	 *            the list of paths
+	 *
+	 * @param agentList
+	 *            the agent list
 	 */
-	public void submitAgents(final ArrayList<Agent> agentList) {
+	public final void submitAgents(final List<Agent> agentList) {
 		canvas.redraw();
 
 		canvas.addPaintListener(new PaintListener() {
@@ -551,7 +594,7 @@ public class CabinViewPart extends ViewPart {
 	 * @param paxCabin
 	 *            the cabin object
 	 */
-	public void submitPassengerCoordinates(final Cabin paxCabin) {
+	public final void submitPassengerCoordinates(final Cabin paxCabin) {
 		canvas.redraw();
 		canvas.addPaintListener(new PaintListener() {
 			@Override
@@ -562,11 +605,13 @@ public class CabinViewPart extends ViewPart {
 				for (Passenger passenger : paxCabin.getPassengers()) {
 					if (MATCH_PASSENGER_COLORS_TO_MOOD) {
 						switch (passenger.getPassengerMood()) {
-						case AGRESSIVE:
+						case AGGRESSIVE:
 							e.gc.setBackground(ColorHelper.RED);
 							break;
 						case PASSIVE:
 							e.gc.setBackground(ColorHelper.GREEN);
+							break;
+						default:
 							break;
 						}
 					} else {
@@ -598,7 +643,7 @@ public class CabinViewPart extends ViewPart {
 	 * @param obstacleImage
 	 *            the obstacle map image
 	 */
-	public void printObstacleMap(final Image obstacleImage) {
+	public final void printObstacleMap(final Image obstacleImage) {
 		canvas.redraw();
 		canvas.addPaintListener(new PaintListener() {
 			@Override
@@ -669,6 +714,7 @@ public class CabinViewPart extends ViewPart {
 			disposeAll();
 		} catch (IllegalArgumentException e) {
 			System.out.println("illegal argument exception!");
+			e.printStackTrace();
 
 		}
 	}
@@ -676,11 +722,12 @@ public class CabinViewPart extends ViewPart {
 	/**
 	 * NOTE: FACTORS ARE SCALED BY 100, YOU NEED TO DIVIDE IT BY 100 IN ORDER TO
 	 * GET THE REAL FACTORS.
-	 * 
+	 *
 	 * @param passenger
-	 * @return
+	 *            the passenger
+	 * @return the direction vector
 	 */
-	private Vector getDirectionVector(Passenger passenger) {
+	private Vector getDirectionVector(final Passenger passenger) {
 		int rotation = (int) passenger.getOrientationInDegree();
 		int factor = 5;
 		if (rotation == 0) {
@@ -705,29 +752,35 @@ public class CabinViewPart extends ViewPart {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Scale.
+	 *
+	 * @return the double
 	 */
 	private double scale() {
-		return cabin.getScale() / factor;
+		return cabin.getSimulationSettings().getScale() / factor;
 	}
 
 	/**
-	 * 
+	 * Adapt.
+	 *
 	 * @param value
-	 * @return
+	 *            the value
+	 * @return the int
 	 */
-	private int adapt(double value) {
+	private int adapt(final double value) {
 		return (int) (value / factor);
 	}
 
 	/**
-	 * 
+	 * Adapt.
+	 *
 	 * @param axis
+	 *            the axis
 	 * @param value
-	 * @return
+	 *            the value
+	 * @return the int
 	 */
-	private int adapt(Axis axis, double value) {
+	private int adapt(final Axis axis, final double value) {
 		switch (axis) {
 		case X:
 			return xZero + (int) (value / factor);
@@ -746,7 +799,7 @@ public class CabinViewPart extends ViewPart {
 	}
 
 	/**
-	 * 
+	 * Dispose all.
 	 */
 	private void disposeAll() {
 		super.dispose();
@@ -755,7 +808,7 @@ public class CabinViewPart extends ViewPart {
 	/**
 	 * This method disposes all SWT objects created with SWTResourceManager.
 	 */
-	public void clearCache() {
+	public final void clearCache() {
 		ImageImporter.disposeImages();
 	}
 }

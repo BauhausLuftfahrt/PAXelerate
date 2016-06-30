@@ -17,24 +17,26 @@ import net.bhl.cdt.paxelerate.model.util.EMFModelLoader;
 import net.bhl.cdt.paxelerate.ui.commands.GenerateCabinCommand;
 
 /**
- * 
- * @author marc.engelmann
+ * The Class GenerateCabinHandler.
  *
+ * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  */
 
 public class GenerateCabinHandler extends AbstractHandler {
 
 	/**
 	 * Get selected Element.
-	 * 
+	 *
 	 * @param event
 	 *            Selected Element
+	 * @return null
 	 * @throws ExecutionException
 	 *             Exception
-	 * @return null
 	 */
 	@Override
-	public Object execute(ExecutionEvent event) throws ExecutionException {
+	public final Object execute(final ExecutionEvent event) throws ExecutionException {
 		ISelection sel = HandlerUtil.getActiveMenuSelection(event);
 		IStructuredSelection selection = (IStructuredSelection) sel;
 

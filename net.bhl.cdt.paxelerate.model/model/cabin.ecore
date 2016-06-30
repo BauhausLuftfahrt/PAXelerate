@@ -9,12 +9,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rowNonexistent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="aisleWidth" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="64"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="framesPerSecond" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        defaultValueLiteral="5"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfDecks" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="aircraftType" lowerBound="1"
+        eType="#//AircraftType" defaultValueLiteral="narrowbody"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="simulationSettings" lowerBound="1"
-        eType="#//SimulationProperties"/>
+        eType="#//SimulationProperties" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="simulationResults" eType="#//SimulationResult"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="classes" lowerBound="1"
         upperBound="-1" eType="#//TravelClass" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="doors" lowerBound="1" upperBound="-1"
@@ -31,20 +33,13 @@
         eType="#//Stowage" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="passengers" upperBound="-1"
         eType="#//Passenger" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scale" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        defaultValueLiteral="10"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="aircraftType" eType="#//AircraftType"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="usePresetSettings" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="speedFactor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Row">
     <eStructuralFeatures xsi:type="ecore:EReference" name="seats" lowerBound="1" upperBound="-1"
         eType="#//Seat" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rowNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="offsetInRow" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TravelClass" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="TravelClass">
     <eOperations name="tooManyPassengers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="chain" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context">
@@ -80,13 +75,11 @@
         defaultValueLiteral="Placeholder String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rowStructure" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="3-3"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="loadFactor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="loadFactor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="travelOption" lowerBound="1"
+        eType="#//TravelOption" defaultValueLiteral="EconomyClass"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BusinessClass" eSuperTypes="#//TravelClass"/>
-  <eClassifiers xsi:type="ecore:EClass" name="FirstClass" eSuperTypes="#//TravelClass"/>
-  <eClassifiers xsi:type="ecore:EClass" name="EconomyClass" eSuperTypes="#//TravelClass"/>
-  <eClassifiers xsi:type="ecore:EClass" name="PremiumEconomyClass" eSuperTypes="#//TravelClass"/>
   <eClassifiers xsi:type="ecore:EClass" name="Seat" eSuperTypes="#//PhysicalObject">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatBlocked" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="crewSeat" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -96,8 +89,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="row" lowerBound="1" eType="#//Row"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="occupied" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="passenger" eType="#//Passenger"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentlyFolded" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="layoutConcept" lowerBound="1"
+        eType="#//LayoutConcept" defaultValueLiteral="Default"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Passenger">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -106,12 +99,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="age" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="weight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="door" lowerBound="1" eType="#//Door"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seat" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="Mr. Placeholder"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="boardingTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="seatRef" lowerBound="1"
-        eType="#//Seat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="boardingTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="seat" lowerBound="1" eType="#//Seat"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="depth" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="orientationInDegree" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
@@ -123,19 +115,24 @@
         defaultValueLiteral="2.0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="startBoardingAfterDelay"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="1.0"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfWaits" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        defaultValueLiteral="0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="luggageStowTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         defaultValueLiteral="1.0"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="luggageStowingDistance"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="luggageStowDistance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="travelClass" lowerBound="1"
         eType="#//TravelClass"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerMood" lowerBound="1"
         eType="#//PassengerMood"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfWaits" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfMakeWayOperations"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distanceWalked" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="luggage" eType="#//LuggageSize"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="costOfPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="totalTimeWaited" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CrewMember">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -169,7 +166,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="curtainOpen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Stowage" eSuperTypes="#//PhysicalObject"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Door" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="Door">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="xPosition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="onBothSides" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -180,10 +177,9 @@
         defaultValueLiteral="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="waitingPassengers" upperBound="-1"
         eType="#//Passenger"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="doorOption" lowerBound="1"
+        eType="#//DoorOption" defaultValueLiteral="StandardDoor"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MainDoor" eSuperTypes="#//Door"/>
-  <eClassifiers xsi:type="ecore:EClass" name="EmergencyExit" eSuperTypes="#//Door"/>
-  <eClassifiers xsi:type="ecore:EClass" name="StandardDoor" eSuperTypes="#//Door"/>
   <eClassifiers xsi:type="ecore:EEnum" name="Sex">
     <eLiterals name="male" value="1"/>
     <eLiterals name="female"/>
@@ -198,33 +194,12 @@
     <eLiterals name="widebody" value="2" literal="widebody"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="PassengerMood">
-    <eLiterals name="agressive"/>
+    <eLiterals name="aggressive" literal="aggressive"/>
     <eLiterals name="passive" value="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SimulationProperties">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="simulateWithoutUI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfSimulationLoops"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="1"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="randomSortBetweenLoops"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="useFoldableSeats" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bringYourOwnSeat" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="results" upperBound="-1"
         eType="#//SimulationResult"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sorting" eType="#//SortingStyle"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="simulationSpeedFactor"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="10"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatInterferenceStandingUpPassengerWaitingTime"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="3"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatInterferenceProcessTime"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="7"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="threadSleepTimeDefault"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="10"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="developerMode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="luggageProperties" lowerBound="1"
         eType="#//LuggageProperties" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="passengerProperties" lowerBound="1"
@@ -232,20 +207,51 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengersBoardingPerMinute"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         defaultValueLiteral="18"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="layoutConcept" lowerBound="1"
+        eType="#//LayoutConcept" defaultValueLiteral="Default"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scale" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="10"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="simulationSpeedFactor"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="5"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="usePresetSettings" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="simulateWithoutUI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfSimulationLoops"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="developerMode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataExport" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayMap" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sortPassengerBetweenLoops"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sorting" eType="#//SortingStyle"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="threadSleepTimeDefault"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="10"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sidewaysFoldabeSeatPopupTimeMean"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="5"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sidewaysFoldabeSeatPopupTimeDeviation"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="liftingSeatPanPopupTimeMean"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="2"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="liftingSeatPanPopupTimeDeviation"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="0.5"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LuggageProperties">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="luggageStowingDistanceFromSeatMean"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="luggageStowDistanceFromSeatMean"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="80"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="luggageStowingDistanceFromSeatDeviation"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="luggageStowDistanceFromSeatDeviation"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="10"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="percentageOfPassengersWithNoLuggage"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="100"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="percentageOfPassengersWithSmallLuggage"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="percentageOfPassengersWithMediumLuggage"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="percentageOfPassengersWithBigLuggage"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerSmallLuggageStowTimeMean"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="10"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerSmallLuggageStowTimeDeviation"
@@ -266,6 +272,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="boardingTimeString" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="waymakingSkipped" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="waymakingCompleted" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="layoutConceptType" lowerBound="1"
+        eType="#//LayoutConcept" defaultValueLiteral="Default"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="LuggageSize">
     <eLiterals name="small"/>
@@ -300,7 +310,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerWidthMeanFemale"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="41.4"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerWidthDeviationFemale"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="2.8"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="1"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerWeightMeanFemale"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="60"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerWeightDeviationFemale"
@@ -313,6 +323,20 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="27"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerDepthDeviationFemale"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="3"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerAggressiveMoodShare"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatInterferenceStandingUpPassengerWaitingTime"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="3"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatInterferenceProcessTimeMean"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="7"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatInterferenceProcessTimeDeviation"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="1.5"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatInterferenceProcessTimeFoldingSeatMean"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="5"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatInterferenceProcessTimeFoldingSeatDeviation"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="passivePassengerWaitingTimeAfterCollision"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="0.3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="TravelOption">
     <eLiterals name="FirstClass"/>
@@ -327,5 +351,16 @@
     <eLiterals name="Stairway" value="3"/>
     <eLiterals name="Curtain" value="4"/>
     <eLiterals name="Stowage" value="5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DoorOption">
+    <eLiterals name="MainDoor"/>
+    <eLiterals name="StandardDoor" value="1"/>
+    <eLiterals name="EmergencyExit" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LayoutConcept">
+    <eLiterals name="Default"/>
+    <eLiterals name="SidwaysFoldableSeat" value="1"/>
+    <eLiterals name="LiftingSeatPanSeats" value="2"/>
+    <eLiterals name="bringYourOwnSeat" value="3"/>
   </eClassifiers>
 </ecore:EPackage>

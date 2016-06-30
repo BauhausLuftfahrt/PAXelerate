@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  * @generated
  */
 public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
+	
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
@@ -48,18 +49,18 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param eClass the e class
+	 * @return the e object
+	 * @generated 
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case CabinPackage.CABIN: return createCabin();
 			case CabinPackage.ROW: return createRow();
-			case CabinPackage.BUSINESS_CLASS: return createBusinessClass();
-			case CabinPackage.FIRST_CLASS: return createFirstClass();
-			case CabinPackage.ECONOMY_CLASS: return createEconomyClass();
-			case CabinPackage.PREMIUM_ECONOMY_CLASS: return createPremiumEconomyClass();
+			case CabinPackage.TRAVEL_CLASS: return createTravelClass();
 			case CabinPackage.SEAT: return createSeat();
 			case CabinPackage.PASSENGER: return createPassenger();
 			case CabinPackage.CREW_MEMBER: return createCrewMember();
@@ -68,9 +69,7 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 			case CabinPackage.STAIRWAY: return createStairway();
 			case CabinPackage.CURTAIN: return createCurtain();
 			case CabinPackage.STOWAGE: return createStowage();
-			case CabinPackage.MAIN_DOOR: return createMainDoor();
-			case CabinPackage.EMERGENCY_EXIT: return createEmergencyExit();
-			case CabinPackage.STANDARD_DOOR: return createStandardDoor();
+			case CabinPackage.DOOR: return createDoor();
 			case CabinPackage.SIMULATION_PROPERTIES: return createSimulationProperties();
 			case CabinPackage.LUGGAGE_PROPERTIES: return createLuggageProperties();
 			case CabinPackage.SIMULATION_RESULT: return createSimulationResult();
@@ -82,8 +81,12 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param eDataType the e data type
+	 * @param initialValue the initial value
+	 * @return the object
+	 * @generated 
 	 */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
@@ -104,6 +107,10 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return createTravelOptionFromString(eDataType, initialValue);
 			case CabinPackage.OBJECT_OPTION:
 				return createObjectOptionFromString(eDataType, initialValue);
+			case CabinPackage.DOOR_OPTION:
+				return createDoorOptionFromString(eDataType, initialValue);
+			case CabinPackage.LAYOUT_CONCEPT:
+				return createLayoutConceptFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -111,8 +118,12 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param eDataType the e data type
+	 * @param instanceValue the instance value
+	 * @return the string
+	 * @generated 
 	 */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
@@ -133,6 +144,10 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return convertTravelOptionToString(eDataType, instanceValue);
 			case CabinPackage.OBJECT_OPTION:
 				return convertObjectOptionToString(eDataType, instanceValue);
+			case CabinPackage.DOOR_OPTION:
+				return convertDoorOptionToString(eDataType, instanceValue);
+			case CabinPackage.LAYOUT_CONCEPT:
+				return convertLayoutConceptToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -140,8 +155,10 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the cabin
+	 * @generated 
 	 */
 	public Cabin createCabin() {
 		CabinImpl cabin = new CabinImpl();
@@ -150,8 +167,10 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the row
+	 * @generated 
 	 */
 	public Row createRow() {
 		RowImpl row = new RowImpl();
@@ -160,48 +179,22 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the travel class
+	 * @generated 
 	 */
-	public BusinessClass createBusinessClass() {
-		BusinessClassImpl businessClass = new BusinessClassImpl();
-		return businessClass;
+	public TravelClass createTravelClass() {
+		TravelClassImpl travelClass = new TravelClassImpl();
+		return travelClass;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public FirstClass createFirstClass() {
-		FirstClassImpl firstClass = new FirstClassImpl();
-		return firstClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EconomyClass createEconomyClass() {
-		EconomyClassImpl economyClass = new EconomyClassImpl();
-		return economyClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public PremiumEconomyClass createPremiumEconomyClass() {
-		PremiumEconomyClassImpl premiumEconomyClass = new PremiumEconomyClassImpl();
-		return premiumEconomyClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the seat
+	 * @generated 
 	 */
 	public Seat createSeat() {
 		SeatImpl seat = new SeatImpl();
@@ -210,8 +203,10 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger
+	 * @generated 
 	 */
 	public Passenger createPassenger() {
 		PassengerImpl passenger = new PassengerImpl();
@@ -220,8 +215,10 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the crew member
+	 * @generated 
 	 */
 	public CrewMember createCrewMember() {
 		CrewMemberImpl crewMember = new CrewMemberImpl();
@@ -230,8 +227,10 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the lavatory
+	 * @generated 
 	 */
 	public Lavatory createLavatory() {
 		LavatoryImpl lavatory = new LavatoryImpl();
@@ -240,8 +239,10 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the galley
+	 * @generated 
 	 */
 	public Galley createGalley() {
 		GalleyImpl galley = new GalleyImpl();
@@ -250,8 +251,10 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the stairway
+	 * @generated 
 	 */
 	public Stairway createStairway() {
 		StairwayImpl stairway = new StairwayImpl();
@@ -260,8 +263,10 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the curtain
+	 * @generated 
 	 */
 	public Curtain createCurtain() {
 		CurtainImpl curtain = new CurtainImpl();
@@ -270,8 +275,10 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the stowage
+	 * @generated 
 	 */
 	public Stowage createStowage() {
 		StowageImpl stowage = new StowageImpl();
@@ -280,38 +287,22 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the door
+	 * @generated 
 	 */
-	public MainDoor createMainDoor() {
-		MainDoorImpl mainDoor = new MainDoorImpl();
-		return mainDoor;
+	public Door createDoor() {
+		DoorImpl door = new DoorImpl();
+		return door;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EmergencyExit createEmergencyExit() {
-		EmergencyExitImpl emergencyExit = new EmergencyExitImpl();
-		return emergencyExit;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public StandardDoor createStandardDoor() {
-		StandardDoorImpl standardDoor = new StandardDoorImpl();
-		return standardDoor;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the simulation properties
+	 * @generated 
 	 */
 	public SimulationProperties createSimulationProperties() {
 		SimulationPropertiesImpl simulationProperties = new SimulationPropertiesImpl();
@@ -320,8 +311,10 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the luggage properties
+	 * @generated 
 	 */
 	public LuggageProperties createLuggageProperties() {
 		LuggagePropertiesImpl luggageProperties = new LuggagePropertiesImpl();
@@ -330,8 +323,10 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the simulation result
+	 * @generated 
 	 */
 	public SimulationResult createSimulationResult() {
 		SimulationResultImpl simulationResult = new SimulationResultImpl();
@@ -340,8 +335,10 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger properties
+	 * @generated 
 	 */
 	public PassengerProperties createPassengerProperties() {
 		PassengerPropertiesImpl passengerProperties = new PassengerPropertiesImpl();
@@ -350,8 +347,12 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param eDataType the e data type
+	 * @param initialValue the initial value
+	 * @return the stairway direction
+	 * @generated 
 	 */
 	public StairwayDirection createStairwayDirectionFromString(EDataType eDataType, String initialValue) {
 		StairwayDirection result = StairwayDirection.get(initialValue);
@@ -361,8 +362,12 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param eDataType the e data type
+	 * @param instanceValue the instance value
+	 * @return the string
+	 * @generated 
 	 */
 	public String convertStairwayDirectionToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
@@ -370,8 +375,12 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param eDataType the e data type
+	 * @param initialValue the initial value
+	 * @return the aircraft type
+	 * @generated 
 	 */
 	public AircraftType createAircraftTypeFromString(EDataType eDataType, String initialValue) {
 		AircraftType result = AircraftType.get(initialValue);
@@ -381,8 +390,12 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param eDataType the e data type
+	 * @param instanceValue the instance value
+	 * @return the string
+	 * @generated 
 	 */
 	public String convertAircraftTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
@@ -390,8 +403,12 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param eDataType the e data type
+	 * @param initialValue the initial value
+	 * @return the passenger mood
+	 * @generated 
 	 */
 	public PassengerMood createPassengerMoodFromString(EDataType eDataType, String initialValue) {
 		PassengerMood result = PassengerMood.get(initialValue);
@@ -401,8 +418,12 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param eDataType the e data type
+	 * @param instanceValue the instance value
+	 * @return the string
+	 * @generated 
 	 */
 	public String convertPassengerMoodToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
@@ -410,8 +431,12 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param eDataType the e data type
+	 * @param initialValue the initial value
+	 * @return the luggage size
+	 * @generated 
 	 */
 	public LuggageSize createLuggageSizeFromString(EDataType eDataType, String initialValue) {
 		LuggageSize result = LuggageSize.get(initialValue);
@@ -421,8 +446,12 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param eDataType the e data type
+	 * @param instanceValue the instance value
+	 * @return the string
+	 * @generated 
 	 */
 	public String convertLuggageSizeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
@@ -430,8 +459,12 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param eDataType the e data type
+	 * @param initialValue the initial value
+	 * @return the sorting style
+	 * @generated 
 	 */
 	public SortingStyle createSortingStyleFromString(EDataType eDataType, String initialValue) {
 		SortingStyle result = SortingStyle.get(initialValue);
@@ -441,8 +474,12 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param eDataType the e data type
+	 * @param instanceValue the instance value
+	 * @return the string
+	 * @generated 
 	 */
 	public String convertSortingStyleToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
@@ -450,8 +487,12 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param eDataType the e data type
+	 * @param initialValue the initial value
+	 * @return the travel option
+	 * @generated 
 	 */
 	public TravelOption createTravelOptionFromString(EDataType eDataType, String initialValue) {
 		TravelOption result = TravelOption.get(initialValue);
@@ -461,8 +502,12 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param eDataType the e data type
+	 * @param instanceValue the instance value
+	 * @return the string
+	 * @generated 
 	 */
 	public String convertTravelOptionToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
@@ -470,8 +515,12 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param eDataType the e data type
+	 * @param initialValue the initial value
+	 * @return the object option
+	 * @generated 
 	 */
 	public ObjectOption createObjectOptionFromString(EDataType eDataType, String initialValue) {
 		ObjectOption result = ObjectOption.get(initialValue);
@@ -481,10 +530,42 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param eDataType the e data type
+	 * @param instanceValue the instance value
+	 * @return the string
+	 * @generated 
 	 */
 	public String convertObjectOptionToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param eDataType the e data type
+	 * @param initialValue the initial value
+	 * @return the door option
+	 * @generated 
+	 */
+	public DoorOption createDoorOptionFromString(EDataType eDataType, String initialValue) {
+		DoorOption result = DoorOption.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param eDataType the e data type
+	 * @param instanceValue the instance value
+	 * @return the string
+	 * @generated 
+	 */
+	public String convertDoorOptionToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -493,8 +574,8 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Sex createSexFromString(EDataType eDataType, String initialValue) {
-		Sex result = Sex.get(initialValue);
+	public LayoutConcept createLayoutConceptFromString(EDataType eDataType, String initialValue) {
+		LayoutConcept result = LayoutConcept.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -504,14 +585,44 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String convertLayoutConceptToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param eDataType the e data type
+	 * @param initialValue the initial value
+	 * @return the sex
+	 * @generated 
+	 */
+	public Sex createSexFromString(EDataType eDataType, String initialValue) {
+		Sex result = Sex.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param eDataType the e data type
+	 * @param instanceValue the instance value
+	 * @return the string
+	 * @generated 
+	 */
 	public String convertSexToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the cabin package
+	 * @generated 
 	 */
 	public CabinPackage getCabinPackage() {
 		return (CabinPackage)getEPackage();
@@ -519,9 +630,11 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the package
+	 * @deprecated 
+	 * @generated 
 	 */
 	@Deprecated
 	public static CabinPackage getPackage() {

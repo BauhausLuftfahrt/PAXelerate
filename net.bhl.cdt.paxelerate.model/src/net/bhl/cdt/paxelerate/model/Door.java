@@ -21,10 +21,11 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.Door#getNumberOfSimultaneousPassengers <em>Number Of Simultaneous Passengers</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Door#isIsActive <em>Is Active</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Door#getWaitingPassengers <em>Waiting Passengers</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Door#getDoorOption <em>Door Option</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getDoor()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface Door extends EObject {
@@ -200,5 +201,35 @@ public interface Door extends EObject {
 	 * @generated
 	 */
 	EList<Passenger> getWaitingPassengers();
+
+	/**
+	 * Returns the value of the '<em><b>Door Option</b></em>' attribute.
+	 * The default value is <code>"StandardDoor"</code>.
+	 * The literals are from the enumeration {@link net.bhl.cdt.paxelerate.model.DoorOption}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Door Option</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Door Option</em>' attribute.
+	 * @see net.bhl.cdt.paxelerate.model.DoorOption
+	 * @see #setDoorOption(DoorOption)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getDoor_DoorOption()
+	 * @model default="StandardDoor" required="true"
+	 * @generated
+	 */
+	DoorOption getDoorOption();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Door#getDoorOption <em>Door Option</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Door Option</em>' attribute.
+	 * @see net.bhl.cdt.paxelerate.model.DoorOption
+	 * @see #getDoorOption()
+	 * @generated
+	 */
+	void setDoorOption(DoorOption value);
 
 } // Door

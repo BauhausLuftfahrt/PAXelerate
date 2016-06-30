@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import net.bhl.cdt.paxelerate.model.CabinPackage;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.TravelClass;
+import net.bhl.cdt.paxelerate.model.TravelOption;
 import net.bhl.cdt.paxelerate.model.util.CabinValidator;
 import net.bhl.cdt.paxelerate.util.input.InputChecker;
 
@@ -42,11 +43,12 @@ import net.bhl.cdt.paxelerate.util.input.InputChecker;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.TravelClassImpl#getName <em>Name</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.TravelClassImpl#getRowStructure <em>Row Structure</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.TravelClassImpl#getLoadFactor <em>Load Factor</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.TravelClassImpl#getTravelOption <em>Travel Option</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class TravelClassImpl extends MinimalEObjectImpl.Container implements
+public class TravelClassImpl extends MinimalEObjectImpl.Container implements
 		TravelClass {
 	/**
 	 * The cached value of the '{@link #getRows() <em>Rows</em>}' containment reference list.
@@ -217,7 +219,7 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int LOAD_FACTOR_EDEFAULT = 0;
+	protected static final double LOAD_FACTOR_EDEFAULT = 0.0;
 
 	/**
 	 * The cached value of the '{@link #getLoadFactor() <em>Load Factor</em>}' attribute.
@@ -227,19 +229,42 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 	 * @generated
 	 * @ordered
 	 */
-	protected int loadFactor = LOAD_FACTOR_EDEFAULT;
+	protected double loadFactor = LOAD_FACTOR_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getTravelOption() <em>Travel Option</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTravelOption()
 	 * @generated
+	 * @ordered
+	 */
+	protected static final TravelOption TRAVEL_OPTION_EDEFAULT = TravelOption.ECONOMY_CLASS;
+
+	/**
+	 * The cached value of the '{@link #getTravelOption() <em>Travel Option</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTravelOption()
+	 * @generated
+	 * @ordered
+	 */
+	protected TravelOption travelOption = TRAVEL_OPTION_EDEFAULT;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	protected TravelClassImpl() {
 		super();
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the e class
+	 * @generated 
 	 */
 	@Override
 	protected EClass eStaticClass() {
@@ -247,8 +272,10 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the rows
+	 * @generated 
 	 */
 	public EList<Row> getRows() {
 		if (rows == null) {
@@ -258,16 +285,20 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the sequence
+	 * @generated 
 	 */
 	public int getSequence() {
 		return sequence;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newSequence the new sequence
+	 * @generated 
 	 */
 	public void setSequence(int newSequence) {
 		int oldSequence = sequence;
@@ -277,16 +308,20 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the passengers
+	 * @generated 
 	 */
 	public int getPassengers() {
 		return passengers;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newPassengers the new passengers
+	 * @generated 
 	 */
 	public void setPassengers(int newPassengers) {
 		int oldPassengers = passengers;
@@ -296,16 +331,20 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the available seats
+	 * @generated 
 	 */
 	public int getAvailableSeats() {
 		return availableSeats;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newAvailableSeats the new available seats
+	 * @generated 
 	 */
 	public void setAvailableSeats(int newAvailableSeats) {
 		int oldAvailableSeats = availableSeats;
@@ -315,16 +354,20 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the seat pitch
+	 * @generated 
 	 */
 	public int getSeatPitch() {
 		return seatPitch;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newSeatPitch the new seat pitch
+	 * @generated 
 	 */
 	public void setSeatPitch(int newSeatPitch) {
 		int oldSeatPitch = seatPitch;
@@ -335,8 +378,10 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the x dimension of seats
+	 * @generated 
 	 */
 	public int getXDimensionOfSeats() {
 		return xDimensionOfSeats;
@@ -344,8 +389,10 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newXDimensionOfSeats the new x dimension of seats
+	 * @generated 
 	 */
 	public void setXDimensionOfSeats(int newXDimensionOfSeats) {
 		int oldXDimensionOfSeats = xDimensionOfSeats;
@@ -356,8 +403,10 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the y dimension of seats
+	 * @generated 
 	 */
 	public int getYDimensionOfSeats() {
 		return yDimensionOfSeats;
@@ -365,8 +414,10 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newYDimensionOfSeats the new y dimension of seats
+	 * @generated 
 	 */
 	public void setYDimensionOfSeats(int newYDimensionOfSeats) {
 		int oldYDimensionOfSeats = yDimensionOfSeats;
@@ -376,16 +427,20 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the name
+	 * @generated 
 	 */
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newName the new name
+	 * @generated 
 	 */
 	public void setName(String newName) {
 		String oldName = name;
@@ -395,16 +450,20 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the row structure
+	 * @generated 
 	 */
 	public String getRowStructure() {
 		return rowStructure;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newRowStructure the new row structure
+	 * @generated 
 	 */
 	public void setRowStructure(String newRowStructure) {
 		String oldRowStructure = rowStructure;
@@ -415,37 +474,63 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the load factor
+	 * @generated 
 	 */
-	public int getLoadFactor() {
+	public double getLoadFactor() {
 		return loadFactor;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newLoadFactor the new load factor
+	 * @generated 
 	 */
-	public void setLoadFactor(int newLoadFactor) {
-		int oldLoadFactor = loadFactor;
+	public void setLoadFactor(double newLoadFactor) {
+		double oldLoadFactor = loadFactor;
 		loadFactor = newLoadFactor;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.TRAVEL_CLASS__LOAD_FACTOR, oldLoadFactor, loadFactor));
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the travel option
+	 * @generated 
+	 */
+	public TravelOption getTravelOption() {
+		return travelOption;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newTravelOption the new travel option
+	 * @generated 
+	 */
+	public void setTravelOption(TravelOption newTravelOption) {
+		TravelOption oldTravelOption = travelOption;
+		travelOption = newTravelOption == null ? TRAVEL_OPTION_EDEFAULT : newTravelOption;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.TRAVEL_CLASS__TRAVEL_OPTION, oldTravelOption, travelOption));
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param chain the chain
+	 * @param context the context
+	 * @return true, if successful
 	 * @generated NOT
 	 */
 	public boolean tooManyPassengers(DiagnosticChain chain, Map<?, ?> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and
-		// message
-		// Ensure that you remove @generated or mark it @generated NOT
-
 		if (getAvailableSeats() < getPassengers()) {
 			if (chain != null) {
 				chain.add(new BasicDiagnostic(Diagnostic.ERROR,
@@ -463,16 +548,14 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param chain the chain
+	 * @param context the context
+	 * @return true, if successful
 	 * @generated NOT
 	 */
 	public boolean wrongRowStructure(DiagnosticChain chain, Map<?, ?> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and
-		// message
-		// Ensure that you remove @generated or mark it @generated NOT
 		if (!InputChecker.noIssuesDetected(getRowStructure())) {
 			if (chain != null) {
 				chain.add(new BasicDiagnostic(Diagnostic.ERROR,
@@ -490,8 +573,13 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param otherEnd the other end
+	 * @param featureID the feature id
+	 * @param msgs the msgs
+	 * @return the notification chain
+	 * @generated 
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
@@ -504,8 +592,13 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param resolve the resolve
+	 * @param coreType the core type
+	 * @return the object
+	 * @generated 
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
@@ -530,13 +623,18 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 				return getRowStructure();
 			case CabinPackage.TRAVEL_CLASS__LOAD_FACTOR:
 				return getLoadFactor();
+			case CabinPackage.TRAVEL_CLASS__TRAVEL_OPTION:
+				return getTravelOption();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param newValue the new value
+	 * @generated 
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
@@ -571,15 +669,20 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 				setRowStructure((String)newValue);
 				return;
 			case CabinPackage.TRAVEL_CLASS__LOAD_FACTOR:
-				setLoadFactor((Integer)newValue);
+				setLoadFactor((Double)newValue);
+				return;
+			case CabinPackage.TRAVEL_CLASS__TRAVEL_OPTION:
+				setTravelOption((TravelOption)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @generated 
 	 */
 	@Override
 	public void eUnset(int featureID) {
@@ -614,13 +717,19 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.TRAVEL_CLASS__LOAD_FACTOR:
 				setLoadFactor(LOAD_FACTOR_EDEFAULT);
 				return;
+			case CabinPackage.TRAVEL_CLASS__TRAVEL_OPTION:
+				setTravelOption(TRAVEL_OPTION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @return true, if successful
+	 * @generated 
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
@@ -645,13 +754,20 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 				return ROW_STRUCTURE_EDEFAULT == null ? rowStructure != null : !ROW_STRUCTURE_EDEFAULT.equals(rowStructure);
 			case CabinPackage.TRAVEL_CLASS__LOAD_FACTOR:
 				return loadFactor != LOAD_FACTOR_EDEFAULT;
+			case CabinPackage.TRAVEL_CLASS__TRAVEL_OPTION:
+				return travelOption != TRAVEL_OPTION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param operationID the operation id
+	 * @param arguments the arguments
+	 * @return the object
+	 * @throws InvocationTargetException the invocation target exception
+	 * @generated 
 	 */
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments)
@@ -666,8 +782,10 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the string
+	 * @generated 
 	 */
 	@Override
 	public String toString() {
@@ -692,6 +810,8 @@ public abstract class TravelClassImpl extends MinimalEObjectImpl.Container imple
 		result.append(rowStructure);
 		result.append(", loadFactor: ");
 		result.append(loadFactor);
+		result.append(", travelOption: ");
+		result.append(travelOption);
 		result.append(')');
 		return result.toString();
 	}

@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Row#getSeats <em>Seats</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Row#getRowNumber <em>Row Number</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Row#isOffsetInRow <em>Offset In Row</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getRow()
@@ -65,31 +64,5 @@ public interface Row extends EObject {
 	 * @generated
 	 */
 	void setRowNumber(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Offset In Row</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Offset In Row</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Offset In Row</em>' attribute.
-	 * @see #setOffsetInRow(boolean)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getRow_OffsetInRow()
-	 * @model
-	 * @generated
-	 */
-	boolean isOffsetInRow();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Row#isOffsetInRow <em>Offset In Row</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Offset In Row</em>' attribute.
-	 * @see #isOffsetInRow()
-	 * @generated
-	 */
-	void setOffsetInRow(boolean value);
 
 } // Row

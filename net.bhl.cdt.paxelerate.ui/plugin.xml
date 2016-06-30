@@ -5,6 +5,7 @@
          point="org.eclipse.ui.views">
       <view
             allowMultiple="false"
+            category="net.bhl.cdt.paxelerate.ui.categoryPAXelerate"
             class="net.bhl.cdt.paxelerate.ui.views.CabinViewPart"
             icon="images/icons/cabin.png"
             id="net.bhl.cdt.paxelerate.ui.views.cabinview"
@@ -13,12 +14,35 @@
       </view>
       <view
             allowMultiple="false"
+            category="net.bhl.cdt.paxelerate.ui.categoryPAXelerate"
             class="net.bhl.cdt.paxelerate.ui.views.PropertyViewPart"
             icon="images/icons/passenger.png"
             id="net.bhl.cdt.paxelerate.ui.propertyview"
             name="Passenger Properties"
             restorable="true">
       </view>
+      <view
+      		allowMultiple="false"
+            category="net.bhl.cdt.paxelerate.ui.categoryPAXelerate"
+            class="net.bhl.cdt.paxelerate.ui.views.PotentialViewPart"
+            icon="images/icons/cabin.png"
+            id="net.bhl.cdt.paxelerate.ui.gradient"
+            name="Potential Gradient"
+            restorable="true">
+      </view>
+      <view
+            allowMultiple="false"
+            category="net.bhl.cdt.paxelerate.ui.categoryPAXelerate"
+            class="net.bhl.cdt.paxelerate.ui.views.HeatmapPart"
+            icon="images/icons/cabin.png"
+            id="net.bhl.cdt.paxelerate.ui.heatmap"
+            name="HeatMap"
+            restorable="true">
+      </view>
+      <category
+            id="net.bhl.cdt.paxelerate.ui.categoryPAXelerate"
+            name="PAXelerate">
+      </category>
    </extension>
    <extension
          point="org.eclipse.ui.perspectives">
@@ -64,6 +88,16 @@
             defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.CloneObjectHandler"
             id="net.bhl.cdt.paxelerate.ui.cloneObject"
             name="Clone Object">
+      </command>
+      <command
+            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.ExportDataHandler"
+            id="net.bhl.cdt.paxelerate.ui.exportData"
+            name="Export Data">
+      </command>
+      <command
+            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.RunBatchSimulationMenuHandler"
+            id="net.bhl.cdt.paxelerate.ui.runBatchSimulationMenu"
+            name="Run Batch Simulation Menu">
       </command>
    </extension>
    <extension
@@ -183,6 +217,20 @@
                </iterate>
             </visibleWhen>
          </command>
+         <command
+               commandId="net.bhl.cdt.paxelerate.ui.exportData"
+               icon="images/icons/export.png"
+               label="Export Data..."
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate>
+                  <instanceof
+                        value="net.bhl.cdt.paxelerate.model.Cabin">
+                  </instanceof>
+               </iterate>
+            </visibleWhen>
+         </command>
          <separator
                name="net.bhl.cdt.paxelerate.ui.separator2"
                visible="true">
@@ -216,6 +264,11 @@
                   style="push">
             </command>
          </menu>
+         <command
+               commandId="net.bhl.cdt.paxelerate.ui.runBatchSimulationMenu"
+               label="Run Batch Simulation"
+               style="push">
+         </command>
       </menuContribution>
    </extension>
    <extension
@@ -227,17 +280,6 @@
                priority="2">
          </staticTester>
       </modelElementOpener>
-   </extension>
-   <extension
-         point="org.eclipse.ui.splashHandlers">
-      <splashHandler
-            class="net.bhl.cdt.paxelerate.ui.splashHandlers.ExtensibleSplashHandler"
-            id="net.bhl.cdt.paxelerate.ui.splashHandlers.extensible">
-      </splashHandler>
-      <splashHandler
-            class="net.bhl.cdt.paxelerate.ui.splashHandlers.BrowserSplashHandler"
-            id="net.bhl.cdt.paxelerate.ui.splashHandlers.browser">
-      </splashHandler>
    </extension>
    <extension
          point="org.eclipse.emf.ecp.core.filters">

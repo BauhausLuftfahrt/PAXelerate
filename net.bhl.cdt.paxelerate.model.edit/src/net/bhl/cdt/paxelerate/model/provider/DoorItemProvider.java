@@ -2,7 +2,6 @@
  */
 package net.bhl.cdt.paxelerate.model.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -22,6 +21,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import net.bhl.cdt.paxelerate.model.CabinPackage;
 import net.bhl.cdt.paxelerate.model.Door;
+import net.bhl.cdt.paxelerate.util.string.StringHelper;
 
 /**
  * This is the item provider adapter for a {@link net.bhl.cdt.paxelerate.model.Door} object.
@@ -29,29 +29,27 @@ import net.bhl.cdt.paxelerate.model.Door;
  * <!-- end-user-doc -->
  * @generated
  */
-public class DoorItemProvider 
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+public class DoorItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This constructs an instance from a factory and a notifier. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param adapterFactory the adapter factory
+	 * @generated 
 	 */
 	public DoorItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This returns the property descriptors for the adapted class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param object the object
+	 * @return the property descriptors
+	 * @generated 
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
@@ -65,15 +63,17 @@ public class DoorItemProvider
 			addNumberOfSimultaneousPassengersPropertyDescriptor(object);
 			addIsActivePropertyDescriptor(object);
 			addWaitingPassengersPropertyDescriptor(object);
+			addDoorOptionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the XPosition feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This adds a property descriptor for the XPosition feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addXPositionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -92,10 +92,11 @@ public class DoorItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the On Both Sides feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This adds a property descriptor for the On Both Sides feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addOnBothSidesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -114,10 +115,11 @@ public class DoorItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Width feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This adds a property descriptor for the Width feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addWidthPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -137,8 +139,8 @@ public class DoorItemProvider
 
 	/**
 	 * This adds a property descriptor for the Id feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addIdPropertyDescriptor(Object object) {
@@ -159,8 +161,7 @@ public class DoorItemProvider
 
 	/**
 	 * This adds a property descriptor for the Number Of Simultaneous Passengers feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addNumberOfSimultaneousPassengersPropertyDescriptor(Object object) {
@@ -180,10 +181,11 @@ public class DoorItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Is Active feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This adds a property descriptor for the Is Active feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addIsActivePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -202,10 +204,11 @@ public class DoorItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Waiting Passengers feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This adds a property descriptor for the Waiting Passengers feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addWaitingPassengersPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -224,34 +227,69 @@ public class DoorItemProvider
 	}
 
 	/**
-	 * This returns Door.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This adds a property descriptor for the Door Option feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
-	@Override
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Door"));
+	protected void addDoorOptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Door_doorOption_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Door_doorOption_feature", "_UI_Door_type"),
+				 CabinPackage.Literals.DOOR__DOOR_OPTION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This returns Door.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param object the object
+	 * @return the image
+	 * @generated NOT
+	 */
+	@Override
+	public Object getImage(Object object) {
+		switch (((Door) object).getDoorOption()) {
+		case EMERGENCY_EXIT:
+			return overlayImage(object, getResourceLocator().getImage("full/obj16/EmergencyExit"));
+		default:
+			return overlayImage(object, getResourceLocator().getImage("full/obj16/Door"));
+		}
+
+	}
+
+	/**
+	 * This returns the label text for the adapted class. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 *
+	 * @param object the object
+	 * @return the text
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		Door door = (Door)object;
-		return getString("_UI_Door_type") + " " + door.getId();
+		Door door = (Door) object;
+		String correct = "✗";
+		if (door.isIsActive()) {
+			correct = "✓";
+		}
+		return StringHelper.splitCamelCase(door.getDoorOption().getName() + " (" + correct + ")");
 	}
-	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -265,6 +303,7 @@ public class DoorItemProvider
 			case CabinPackage.DOOR__ID:
 			case CabinPackage.DOOR__NUMBER_OF_SIMULTANEOUS_PASSENGERS:
 			case CabinPackage.DOOR__IS_ACTIVE:
+			case CabinPackage.DOOR__DOOR_OPTION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
@@ -272,11 +311,13 @@ public class DoorItemProvider
 	}
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
+	 * describing the children that can be created under this object. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param newChildDescriptors the new child descriptors
+	 * @param object the object
+	 * @generated 
 	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -284,10 +325,11 @@ public class DoorItemProvider
 	}
 
 	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * Return the resource locator for this item provider's resources. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @return the resource locator
+	 * @generated 
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {

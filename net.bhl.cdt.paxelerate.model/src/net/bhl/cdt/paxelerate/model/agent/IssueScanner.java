@@ -14,19 +14,30 @@ import net.bhl.cdt.paxelerate.util.math.Vector3D;
 import net.bhl.cdt.paxelerate.util.time.StopWatch;
 
 /**
- * 
- * @author marc.engelmann
+ * The Class IssueScanner.
  *
+ * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  */
 
 public class IssueScanner extends Subject implements Runnable {
 
+	/** The thread. */
 	private Thread thread;
+	
+	/** The watch. */
 	private StopWatch watch;
+	
+	/** The init. */
 	private boolean init = true;
 
+	/** The position tracker. */
 	private HashMap<Integer, Vector3D> positionTracker = new HashMap<Integer, Vector3D>();
 
+	/* (non-Javadoc)
+	 * @see java.lang.Runnable#run()
+	 */
 	@Override
 	public void run() {
 
@@ -52,11 +63,18 @@ public class IssueScanner extends Subject implements Runnable {
 
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
-
+				e.printStackTrace();
+				System.out.println("InterruptedException @ thread " + Thread.currentThread().getName());
+				Thread.currentThread().interrupt();
 			}
 		}
 	}
 
+	/**
+	 * Check movement.
+	 *
+	 * @param pax the pax
+	 */
 	private void checkMovement(Passenger pax) {
 		Vector3D data = positionTracker.get(pax.getId());
 		if (noMovementDetected(pax)) {
@@ -67,12 +85,21 @@ public class IssueScanner extends Subject implements Runnable {
 		}
 	}
 
+	/**
+	 * No movement detected.
+	 *
+	 * @param pax the pax
+	 * @return true, if successful
+	 */
 	private boolean noMovementDetected(Passenger pax) {
 		Vector3D data = positionTracker.get(pax.getId());
 		return (pax.getPositionX() == data.getX() && pax.getPositionY() == data
 				.getY());
 	}
 
+	/**
+	 * Update map.
+	 */
 	private void updateMap() {
 		for (Passenger pax : SimulationHandler.getCabin().getPassengers()) {
 			int time = (int) watch.getElapsedTimeSecs();

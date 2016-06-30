@@ -1,3 +1,8 @@
+/*******************************************************************************
+ * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
+ ***************************************************************************************/
 package net.bhl.cdt.paxelerate.ui.commands;
 
 import org.eclipse.jface.dialogs.IMessageProvider;
@@ -13,20 +18,25 @@ import net.bhl.cdt.paxelerate.util.input.Input;
 import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 
 /**
- * 
- * @author marc.engelmann
+ * The Class CloneObjectCommand.
  *
+ * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  */
 
 public class CloneObjectCommand extends CDTCommand {
 
+	/** The row. */
 	private Row row;
 
 	/**
-	 * 
+	 * Instantiates a new clone object command.
+	 *
 	 * @param obj
+	 *            the obj
 	 */
-	public CloneObjectCommand(Object obj) {
+	public CloneObjectCommand(final Object obj) {
 
 		if (obj instanceof Row) {
 			row = (Row) obj;
@@ -38,7 +48,7 @@ public class CloneObjectCommand extends CDTCommand {
 	 * This method executed the right click command.
 	 */
 	@Override
-	protected void doRun() {
+	protected final void doRun() {
 
 		Input input = new Input(WindowType.CLONE_OBJECT, "Enter the number of rows you want to add (integer values).",
 				IMessageProvider.INFORMATION);
@@ -57,7 +67,7 @@ public class CloneObjectCommand extends CDTCommand {
 
 				Seat newSeat = CabinFactory.eINSTANCE.createSeat();
 
-				newSeat.setXPosition(seat.getXPosition() + travelclass.getSeatPitch());
+				newSeat.setXPosition(seat.getXPosition() + seat.getXDimension() + travelclass.getSeatPitch());
 				newSeat.setYPosition(seat.getYPosition());
 				newSeat.setXDimension(seat.getXDimension());
 				newSeat.setYDimension(seat.getYDimension());

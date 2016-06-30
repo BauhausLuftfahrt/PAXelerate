@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2009-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ******************************************************************************/
@@ -12,21 +12,29 @@ import org.eclipse.ui.IPerspectiveFactory;
 import org.eclipse.ui.console.IConsoleConstants;
 
 /**
- * 
- * @author raoul.rothfeld, Michael Schmidt
+ * A factory for creating Perspective objects.
  *
+ * @author raoul.rothfeld, michael.schmidt
+ * @version 1.0
+ * @since 0.5
  */
 public class PerspectiveFactory implements IPerspectiveFactory {
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.ui.IPerspectiveFactory#createInitialLayout(org.eclipse.ui.
+	 * IPageLayout)
+	 */
 	@Override
-	public void createInitialLayout(IPageLayout layout) {
+	public final void createInitialLayout(final IPageLayout layout) {
 
 		IFolderLayout topLeft = layout.createFolder("topLeft", IPageLayout.LEFT, 0.25f, layout.getEditorArea());
 		topLeft.addView(ModelExplorerView.ID);
 
 		IFolderLayout bottomLeft = layout.createFolder("bottomLeft", IPageLayout.BOTTOM, 0.5f, "topLeft");
 		bottomLeft.addView("net.bhl.cdt.paxelerate.ui.propertyview");
-		;
 
 		IFolderLayout right = layout.createFolder("right", IPageLayout.RIGHT, 0.7f, layout.getEditorArea());
 		right.addView("net.bhl.cdt.paxelerate.ui.views.cabinview");

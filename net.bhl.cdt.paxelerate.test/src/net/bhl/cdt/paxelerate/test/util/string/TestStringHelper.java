@@ -25,9 +25,13 @@ import net.bhl.cdt.paxelerate.util.string.StringHelper;
  */
 public class TestStringHelper {
 
+	/** The rand. */
 	// Provide random Integer generator
 	private static Random rand = new Random();
 
+	/**
+	 * Checks if is integer test.
+	 */
 	@Test
 	public void isIntegerTest() {
 		// Create and test non-Integer Strings
@@ -42,6 +46,9 @@ public class TestStringHelper {
 			assertTrue(number + " falsely rejected as Text.", StringHelper.isInteger(number));
 	}
 
+	/**
+	 * Checks if is positive integer test.
+	 */
 	@Test
 	public void isPositiveIntegerTest() {
 		// Create and test negative Integer
@@ -55,6 +62,9 @@ public class TestStringHelper {
 				StringHelper.isPositiveInteger(positiveInteger));
 	}
 
+	/**
+	 * To string test.
+	 */
 	@Test
 	public void toStringTest() {
 		assertNull("0 falsely converted to char.", StringHelper.toString(0));
@@ -64,6 +74,9 @@ public class TestStringHelper {
 		assertNull("27 falsely converted to char.", StringHelper.toString(27));
 	}
 
+	/**
+	 * Split camel case test.
+	 */
 	@Test
 	public void splitCamelCaseTest() {
 		String[] tests = { "lowercase", "Class", "MyClassTestTesterText", "HTML", "PDFLoader", "AString", "SimpleXMLParser",

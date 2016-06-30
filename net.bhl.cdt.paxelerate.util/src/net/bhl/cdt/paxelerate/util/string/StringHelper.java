@@ -1,20 +1,21 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2009-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ******************************************************************************/
-
 package net.bhl.cdt.paxelerate.util.string;
 
 /**
- * 
- * @author marc.engelmann, raoul.rothfeld
+ * The Class StringHelper.
  *
+ * @author marc.engelmann, raoul.rothfeld
+ * @version 1.0
+ * @since 0.5
  */
 public class StringHelper {
 
 	/**
-	 * Protect constructor since it is a static only class
+	 * Protect constructor since it is a static only class.
 	 */
 	protected StringHelper() {
 	}
@@ -32,16 +33,19 @@ public class StringHelper {
 	}
 
 	/**
+	 * Checks if is integer.
+	 *
+	 * @param str
+	 *            the str
+	 * @return true, if is integer
 	 * @see <a href=
 	 *      "http://stackoverflow.com/questions/237159/whats-the-best-way-to-check-to-see-if-a-string-represents-an-integer-in-java">
 	 *      Stackoverflow question on faster options to Integer.parseInt()</a>
-	 * @param str
-	 * @return
 	 */
 	public static boolean isInteger(String str) {
 		if (str.isEmpty())
 			return false;
-		
+
 		int length = str.length(), i = 0;
 		if (str.charAt(0) == '-') {
 			if (length == 1) {
@@ -52,8 +56,8 @@ public class StringHelper {
 		for (; i < length; i++) {
 			char c = str.charAt(i);
 			if (c < '0' || c > '9') {
-				if(c != '-') {
-				return false;
+				if (c != '-') {
+					return false;
 				}
 			}
 		}
@@ -61,11 +65,14 @@ public class StringHelper {
 	}
 
 	/**
+	 * Checks if is positive integer.
+	 *
+	 * @param str
+	 *            the str
+	 * @return true, if is positive integer
 	 * @see <a href=
 	 *      "http://stackoverflow.com/questions/237159/whats-the-best-way-to-check-to-see-if-a-string-represents-an-integer-in-java">
 	 *      Stackoverflow question on faster options to Integer.parseInt()</a>
-	 * @param str
-	 * @return
 	 */
 	public static boolean isPositiveInteger(String str) {
 		if (str.isEmpty())

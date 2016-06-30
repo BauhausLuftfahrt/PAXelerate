@@ -24,6 +24,8 @@ import net.bhl.cdt.paxelerate.util.string.StringHelper;
  * to the user. You decide.
  * 
  * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  *
  */
 public class Input extends TitleAreaDialog {
@@ -38,16 +40,52 @@ public class Input extends TitleAreaDialog {
 		/**
 		 * Access the different types using WindowType.CHOOSE_TYPE.
 		 */
-		INFORMATION, GET_STRING, GET_INTEGER, GET_VECTOR, WARNING, OPTIONS, GET_BOOLEAN, GET_TWO_VECTORS, CLONE_OBJECT, MOVE_OBJECT
+		INFORMATION,
+		/** The get string. */
+		GET_STRING,
+		/** The get integer. */
+		GET_INTEGER,
+		/** The get vector. */
+		GET_VECTOR,
+		/** The warning. */
+		WARNING,
+		/** The options. */
+		OPTIONS,
+		/** The get boolean. */
+		GET_BOOLEAN,
+		/** The get two vectors. */
+		GET_TWO_VECTORS,
+		/** The clone object. */
+		CLONE_OBJECT,
+		/** The move object. */
+		MOVE_OBJECT,
+
+		/** The export data object *. */
+		EXPORT_DATA
 	}
 
+	/** The window type. */
 	private WindowType windowType;
+
+	/** The string value. */
 	private String descriptionText, descriptionText2, descriptionText3, descriptionText4, titleString, stringValue;
+
+	/** The text4. */
 	private Text text, text2, text3, text4;
+
+	/** The integer value. */
 	private int integerValue;
+
+	/** The vector value2. */
 	private Vector vectorValue, vectorValue2;
+
+	/** The boolean value. */
 	private Boolean booleanValue;
+
+	/** The container. */
 	private Composite container;
+
+	/** The warning label. */
 	private Label warningLabel;
 
 	/**
@@ -98,7 +136,6 @@ public class Input extends TitleAreaDialog {
 			titleString = "Please choose one of the following options!";
 			descriptionText = "Options:";
 			break;
-
 		case CLONE_OBJECT:
 			titleString = "Duplicate rows";
 			descriptionText = "Number of rows";
@@ -107,6 +144,10 @@ public class Input extends TitleAreaDialog {
 			titleString = "Move object";
 			descriptionText = "X displacement:";
 			descriptionText2 = "Y displacement:";
+			break;
+		case EXPORT_DATA:
+			titleString = "Export Data";
+			descriptionText = "Filename";
 			break;
 
 		default:
@@ -121,6 +162,13 @@ public class Input extends TitleAreaDialog {
 		this.open();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.jface.dialogs.TitleAreaDialog#createDialogArea(org.eclipse.
+	 * swt.widgets.Composite)
+	 */
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		Composite area = (Composite) super.createDialogArea(parent);
@@ -148,6 +196,12 @@ public class Input extends TitleAreaDialog {
 		return area;
 	}
 
+	/**
+	 * Creates the input field.
+	 *
+	 * @param container
+	 *            the container
+	 */
 	private void createInputField(Composite container) {
 		Label label = new Label(container, SWT.NONE);
 		label.setText(descriptionText);
@@ -160,6 +214,12 @@ public class Input extends TitleAreaDialog {
 
 	}
 
+	/**
+	 * Creates the another input field.
+	 *
+	 * @param container
+	 *            the container
+	 */
 	private void createAnotherInputField(Composite container) {
 		Label label = new Label(container, SWT.NONE);
 		label.setText(descriptionText2);
@@ -171,6 +231,12 @@ public class Input extends TitleAreaDialog {
 		text2.setLayoutData(gridData);
 	}
 
+	/**
+	 * Creates the third input field.
+	 *
+	 * @param container
+	 *            the container
+	 */
 	private void createThirdInputField(Composite container) {
 		Label label = new Label(container, SWT.NONE);
 		label.setText(descriptionText3);
@@ -182,6 +248,12 @@ public class Input extends TitleAreaDialog {
 		text3.setLayoutData(gridData);
 	}
 
+	/**
+	 * Creates the fourth input field.
+	 *
+	 * @param container
+	 *            the container
+	 */
 	private void createFourthInputField(Composite container) {
 		Label label = new Label(container, SWT.NONE);
 		label.setText(descriptionText4);
@@ -193,6 +265,12 @@ public class Input extends TitleAreaDialog {
 		text4.setLayoutData(gridData);
 	}
 
+	/**
+	 * Creates the warning label.
+	 *
+	 * @param container
+	 *            the container
+	 */
 	private void createWarningLabel(Composite container) {
 		warningLabel = new Label(container, SWT.NONE);
 		warningLabel.setText("You entered a character that is not allowed here.");
@@ -201,6 +279,11 @@ public class Input extends TitleAreaDialog {
 		warningLabel.setForeground(new org.eclipse.swt.graphics.Color(null, 255, 0, 0));
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.jface.dialogs.TitleAreaDialog#getInitialSize()
+	 */
 	@Override
 	protected Point getInitialSize() {
 		switch (windowType) {
@@ -214,6 +297,11 @@ public class Input extends TitleAreaDialog {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.jface.dialogs.Dialog#isResizable()
+	 */
 	@Override
 	protected boolean isResizable() {
 		return false;
@@ -231,6 +319,7 @@ public class Input extends TitleAreaDialog {
 			integerValue = Integer.parseInt(text.getText());
 			break;
 		case GET_STRING:
+		case EXPORT_DATA:
 			stringValue = text.getText();
 			break;
 		case GET_VECTOR:
@@ -276,6 +365,11 @@ public class Input extends TitleAreaDialog {
 		return integerValue;
 	}
 
+	/**
+	 * Gets the boolean value.
+	 *
+	 * @return the boolean value
+	 */
 	public boolean getBooleanValue() {
 		return booleanValue;
 	}
@@ -298,7 +392,7 @@ public class Input extends TitleAreaDialog {
 		switch (windowType) {
 		case CLONE_OBJECT:
 		case GET_INTEGER:
-			if (text.getText() != "") {
+			if (text.getText() != null && !text.getText().isEmpty()) {
 				if (StringHelper.isInteger(text.getText())) {
 					return true;
 				} else {
@@ -312,7 +406,7 @@ public class Input extends TitleAreaDialog {
 				return false;
 			}
 		case OPTIONS:
-			if (text.getText() != "") {
+			if (text.getText() != null && !text.getText().isEmpty()) {
 				if (StringHelper.isInteger(text.getText())) {
 					return true;
 				} else {
@@ -326,7 +420,7 @@ public class Input extends TitleAreaDialog {
 				return false;
 			}
 		case GET_STRING:
-			if (text.getText() != "") {
+			if (text.getText() != null && !text.getText().isEmpty()) {
 				return true;
 			} else {
 				warningLabel.setText("Please enter a string.");
@@ -335,7 +429,8 @@ public class Input extends TitleAreaDialog {
 			}
 		case GET_VECTOR:
 		case MOVE_OBJECT:
-			if (text.getText() != "" && text2.getText() != "") {
+			if ((text.getText() != null && !text.getText().isEmpty())
+					&& (text2.getText() != null && !text2.getText().isEmpty())) {
 				if (StringHelper.isInteger(text.getText()) && StringHelper.isInteger(text2.getText())) {
 					return true;
 				} else {
@@ -349,7 +444,10 @@ public class Input extends TitleAreaDialog {
 				return false;
 			}
 		case GET_TWO_VECTORS:
-			if (text.getText() != "" && text2.getText() != "" && text3.getText() != "" && text4.getText() != "") {
+			if ((text.getText() != null && !text.getText().isEmpty())
+					&& (text2.getText() != null && !text2.getText().isEmpty())
+					&& (text3.getText() != null && !text3.getText().isEmpty())
+					&& (text4.getText() != null && !text4.getText().isEmpty())) {
 				if (StringHelper.isInteger(text.getText()) && StringHelper.isInteger(text2.getText())
 						&& StringHelper.isInteger(text3.getText()) && StringHelper.isInteger(text4.getText())) {
 					return true;
@@ -370,6 +468,11 @@ public class Input extends TitleAreaDialog {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.jface.dialogs.Dialog#okPressed()
+	 */
 	@Override
 	protected void okPressed() {
 		if (inputCheckOK()) {

@@ -14,21 +14,26 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isSimulateWithoutUI <em>Simulate Without UI</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getNumberOfSimulationLoops <em>Number Of Simulation Loops</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isRandomSortBetweenLoops <em>Random Sort Between Loops</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUseFoldableSeats <em>Use Foldable Seats</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isBringYourOwnSeat <em>Bring Your Own Seat</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getResults <em>Results</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSorting <em>Sorting</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceStandingUpPassengerWaitingTime <em>Seat Interference Standing Up Passenger Waiting Time</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTime <em>Seat Interference Process Time</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getThreadSleepTimeDefault <em>Thread Sleep Time Default</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDeveloperMode <em>Developer Mode</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageProperties <em>Luggage Properties</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerProperties <em>Passenger Properties</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLayoutConcept <em>Layout Concept</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getScale <em>Scale</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUsePresetSettings <em>Use Preset Settings</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isSimulateWithoutUI <em>Simulate Without UI</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getNumberOfSimulationLoops <em>Number Of Simulation Loops</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDeveloperMode <em>Developer Mode</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDataExport <em>Data Export</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDisplayMap <em>Display Map</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isSortPassengerBetweenLoops <em>Sort Passenger Between Loops</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSorting <em>Sorting</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getThreadSleepTimeDefault <em>Thread Sleep Time Default</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSidewaysFoldabeSeatPopupTimeMean <em>Sideways Foldabe Seat Popup Time Mean</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSidewaysFoldabeSeatPopupTimeDeviation <em>Sideways Foldabe Seat Popup Time Deviation</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLiftingSeatPanPopupTimeMean <em>Lifting Seat Pan Popup Time Mean</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLiftingSeatPanPopupTimeDeviation <em>Lifting Seat Pan Popup Time Deviation</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties()
@@ -36,6 +41,60 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface SimulationProperties extends EObject {
+	/**
+	 * Returns the value of the '<em><b>Scale</b></em>' attribute.
+	 * The default value is <code>"10"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Scale</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Scale</em>' attribute.
+	 * @see #setScale(int)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_Scale()
+	 * @model default="10"
+	 * @generated
+	 */
+	int getScale();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getScale <em>Scale</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Scale</em>' attribute.
+	 * @see #getScale()
+	 * @generated
+	 */
+	void setScale(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Use Preset Settings</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Use Preset Settings</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Use Preset Settings</em>' attribute.
+	 * @see #setUsePresetSettings(boolean)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_UsePresetSettings()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isUsePresetSettings();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUsePresetSettings <em>Use Preset Settings</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Use Preset Settings</em>' attribute.
+	 * @see #isUsePresetSettings()
+	 * @generated
+	 */
+	void setUsePresetSettings(boolean value);
+
 	/**
 	 * Returns the value of the '<em><b>Simulate Without UI</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
@@ -91,87 +150,6 @@ public interface SimulationProperties extends EObject {
 	void setNumberOfSimulationLoops(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Random Sort Between Loops</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Random Sort Between Loops</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Random Sort Between Loops</em>' attribute.
-	 * @see #setRandomSortBetweenLoops(boolean)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_RandomSortBetweenLoops()
-	 * @model default="true"
-	 * @generated
-	 */
-	boolean isRandomSortBetweenLoops();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isRandomSortBetweenLoops <em>Random Sort Between Loops</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Random Sort Between Loops</em>' attribute.
-	 * @see #isRandomSortBetweenLoops()
-	 * @generated
-	 */
-	void setRandomSortBetweenLoops(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Use Foldable Seats</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Use Foldable Seats</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Use Foldable Seats</em>' attribute.
-	 * @see #setUseFoldableSeats(boolean)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_UseFoldableSeats()
-	 * @model default="false"
-	 * @generated
-	 */
-	boolean isUseFoldableSeats();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUseFoldableSeats <em>Use Foldable Seats</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Use Foldable Seats</em>' attribute.
-	 * @see #isUseFoldableSeats()
-	 * @generated
-	 */
-	void setUseFoldableSeats(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Bring Your Own Seat</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Bring Your Own Seat</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Bring Your Own Seat</em>' attribute.
-	 * @see #setBringYourOwnSeat(boolean)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_BringYourOwnSeat()
-	 * @model default="false"
-	 * @generated
-	 */
-	boolean isBringYourOwnSeat();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isBringYourOwnSeat <em>Bring Your Own Seat</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Bring Your Own Seat</em>' attribute.
-	 * @see #isBringYourOwnSeat()
-	 * @generated
-	 */
-	void setBringYourOwnSeat(boolean value);
-
-	/**
 	 * Returns the value of the '<em><b>Results</b></em>' reference list.
 	 * The list contents are of type {@link net.bhl.cdt.paxelerate.model.SimulationResult}.
 	 * <!-- begin-user-doc -->
@@ -218,7 +196,7 @@ public interface SimulationProperties extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Simulation Speed Factor</b></em>' attribute.
-	 * The default value is <code>"10"</code>.
+	 * The default value is <code>"5"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Simulation Speed Factor</em>' attribute isn't clear,
@@ -228,7 +206,7 @@ public interface SimulationProperties extends EObject {
 	 * @return the value of the '<em>Simulation Speed Factor</em>' attribute.
 	 * @see #setSimulationSpeedFactor(int)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_SimulationSpeedFactor()
-	 * @model default="10"
+	 * @model default="5"
 	 * @generated
 	 */
 	int getSimulationSpeedFactor();
@@ -242,60 +220,6 @@ public interface SimulationProperties extends EObject {
 	 * @generated
 	 */
 	void setSimulationSpeedFactor(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Seat Interference Standing Up Passenger Waiting Time</b></em>' attribute.
-	 * The default value is <code>"3"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Seat Interference Standing Up Passenger Waiting Time</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Seat Interference Standing Up Passenger Waiting Time</em>' attribute.
-	 * @see #setSeatInterferenceStandingUpPassengerWaitingTime(int)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_SeatInterferenceStandingUpPassengerWaitingTime()
-	 * @model default="3"
-	 * @generated
-	 */
-	int getSeatInterferenceStandingUpPassengerWaitingTime();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceStandingUpPassengerWaitingTime <em>Seat Interference Standing Up Passenger Waiting Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Seat Interference Standing Up Passenger Waiting Time</em>' attribute.
-	 * @see #getSeatInterferenceStandingUpPassengerWaitingTime()
-	 * @generated
-	 */
-	void setSeatInterferenceStandingUpPassengerWaitingTime(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Seat Interference Process Time</b></em>' attribute.
-	 * The default value is <code>"7"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Seat Interference Process Time</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Seat Interference Process Time</em>' attribute.
-	 * @see #setSeatInterferenceProcessTime(int)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_SeatInterferenceProcessTime()
-	 * @model default="7"
-	 * @generated
-	 */
-	int getSeatInterferenceProcessTime();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSeatInterferenceProcessTime <em>Seat Interference Process Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Seat Interference Process Time</em>' attribute.
-	 * @see #getSeatInterferenceProcessTime()
-	 * @generated
-	 */
-	void setSeatInterferenceProcessTime(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Thread Sleep Time Default</b></em>' attribute.
@@ -326,7 +250,7 @@ public interface SimulationProperties extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Developer Mode</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
+	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Developer Mode</em>' attribute isn't clear,
@@ -336,7 +260,7 @@ public interface SimulationProperties extends EObject {
 	 * @return the value of the '<em>Developer Mode</em>' attribute.
 	 * @see #setDeveloperMode(boolean)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_DeveloperMode()
-	 * @model default="false"
+	 * @model default="true"
 	 * @generated
 	 */
 	boolean isDeveloperMode();
@@ -350,6 +274,33 @@ public interface SimulationProperties extends EObject {
 	 * @generated
 	 */
 	void setDeveloperMode(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Sort Passenger Between Loops</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Sort Passenger Between Loops</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Sort Passenger Between Loops</em>' attribute.
+	 * @see #setSortPassengerBetweenLoops(boolean)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_SortPassengerBetweenLoops()
+	 * @model default="true"
+	 * @generated
+	 */
+	boolean isSortPassengerBetweenLoops();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isSortPassengerBetweenLoops <em>Sort Passenger Between Loops</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Sort Passenger Between Loops</em>' attribute.
+	 * @see #isSortPassengerBetweenLoops()
+	 * @generated
+	 */
+	void setSortPassengerBetweenLoops(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Luggage Properties</b></em>' containment reference.
@@ -429,5 +380,197 @@ public interface SimulationProperties extends EObject {
 	 * @generated
 	 */
 	void setPassengersBoardingPerMinute(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Data Export</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Data Export</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Data Export</em>' attribute.
+	 * @see #setDataExport(boolean)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_DataExport()
+	 * @model default="true"
+	 * @generated
+	 */
+	boolean isDataExport();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDataExport <em>Data Export</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Data Export</em>' attribute.
+	 * @see #isDataExport()
+	 * @generated
+	 */
+	void setDataExport(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Display Map</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Display Map</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Display Map</em>' attribute.
+	 * @see #setDisplayMap(boolean)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_DisplayMap()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isDisplayMap();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDisplayMap <em>Display Map</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Display Map</em>' attribute.
+	 * @see #isDisplayMap()
+	 * @generated
+	 */
+	void setDisplayMap(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Sideways Foldabe Seat Popup Time Mean</b></em>' attribute.
+	 * The default value is <code>"5"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Sideways Foldabe Seat Popup Time Mean</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Sideways Foldabe Seat Popup Time Mean</em>' attribute.
+	 * @see #setSidewaysFoldabeSeatPopupTimeMean(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_SidewaysFoldabeSeatPopupTimeMean()
+	 * @model default="5"
+	 * @generated
+	 */
+	double getSidewaysFoldabeSeatPopupTimeMean();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSidewaysFoldabeSeatPopupTimeMean <em>Sideways Foldabe Seat Popup Time Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Sideways Foldabe Seat Popup Time Mean</em>' attribute.
+	 * @see #getSidewaysFoldabeSeatPopupTimeMean()
+	 * @generated
+	 */
+	void setSidewaysFoldabeSeatPopupTimeMean(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Sideways Foldabe Seat Popup Time Deviation</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Sideways Foldabe Seat Popup Time Deviation</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Sideways Foldabe Seat Popup Time Deviation</em>' attribute.
+	 * @see #setSidewaysFoldabeSeatPopupTimeDeviation(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_SidewaysFoldabeSeatPopupTimeDeviation()
+	 * @model default="1"
+	 * @generated
+	 */
+	double getSidewaysFoldabeSeatPopupTimeDeviation();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSidewaysFoldabeSeatPopupTimeDeviation <em>Sideways Foldabe Seat Popup Time Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Sideways Foldabe Seat Popup Time Deviation</em>' attribute.
+	 * @see #getSidewaysFoldabeSeatPopupTimeDeviation()
+	 * @generated
+	 */
+	void setSidewaysFoldabeSeatPopupTimeDeviation(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Lifting Seat Pan Popup Time Mean</b></em>' attribute.
+	 * The default value is <code>"2"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Lifting Seat Pan Popup Time Mean</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Lifting Seat Pan Popup Time Mean</em>' attribute.
+	 * @see #setLiftingSeatPanPopupTimeMean(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_LiftingSeatPanPopupTimeMean()
+	 * @model default="2"
+	 * @generated
+	 */
+	double getLiftingSeatPanPopupTimeMean();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLiftingSeatPanPopupTimeMean <em>Lifting Seat Pan Popup Time Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Lifting Seat Pan Popup Time Mean</em>' attribute.
+	 * @see #getLiftingSeatPanPopupTimeMean()
+	 * @generated
+	 */
+	void setLiftingSeatPanPopupTimeMean(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Lifting Seat Pan Popup Time Deviation</b></em>' attribute.
+	 * The default value is <code>"0.5"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Lifting Seat Pan Popup Time Deviation</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Lifting Seat Pan Popup Time Deviation</em>' attribute.
+	 * @see #setLiftingSeatPanPopupTimeDeviation(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_LiftingSeatPanPopupTimeDeviation()
+	 * @model default="0.5"
+	 * @generated
+	 */
+	double getLiftingSeatPanPopupTimeDeviation();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLiftingSeatPanPopupTimeDeviation <em>Lifting Seat Pan Popup Time Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Lifting Seat Pan Popup Time Deviation</em>' attribute.
+	 * @see #getLiftingSeatPanPopupTimeDeviation()
+	 * @generated
+	 */
+	void setLiftingSeatPanPopupTimeDeviation(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Layout Concept</b></em>' attribute.
+	 * The default value is <code>"Default"</code>.
+	 * The literals are from the enumeration {@link net.bhl.cdt.paxelerate.model.LayoutConcept}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Layout Concept</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Layout Concept</em>' attribute.
+	 * @see net.bhl.cdt.paxelerate.model.LayoutConcept
+	 * @see #setLayoutConcept(LayoutConcept)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_LayoutConcept()
+	 * @model default="Default" required="true"
+	 * @generated
+	 */
+	LayoutConcept getLayoutConcept();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLayoutConcept <em>Layout Concept</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Layout Concept</em>' attribute.
+	 * @see net.bhl.cdt.paxelerate.model.LayoutConcept
+	 * @see #getLayoutConcept()
+	 * @generated
+	 */
+	void setLayoutConcept(LayoutConcept value);
 
 } // SimulationProperties

@@ -196,22 +196,25 @@ public enum TravelOption implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	private final String literal;
 
@@ -229,8 +232,10 @@ public enum TravelOption implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the value
+	 * @generated 
 	 */
 	public int getValue() {
 	  return value;
@@ -238,8 +243,10 @@ public enum TravelOption implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the name
+	 * @generated 
 	 */
 	public String getName() {
 	  return name;
@@ -247,8 +254,10 @@ public enum TravelOption implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the literal
+	 * @generated 
 	 */
 	public String getLiteral() {
 	  return literal;

@@ -10,8 +10,14 @@ import org.eclipse.ui.views.properties.IPropertySource;
 
 import net.bhl.cdt.paxelerate.model.Cabin;
 
+/**
+ * A factory for creating CabinAdapter objects.
+ */
 public class CabinAdapterFactory implements IAdapterFactory {
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.core.runtime.IAdapterFactory#getAdapter(java.lang.Object, java.lang.Class)
+	 */
 	@Override
 	public Object getAdapter(Object adaptableObject, Class adapterType) {
 		if (adapterType == IPropertySource.class && adaptableObject instanceof Cabin) {
@@ -20,9 +26,12 @@ public class CabinAdapterFactory implements IAdapterFactory {
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.core.runtime.IAdapterFactory#getAdapterList()
+	 */
 	@Override
 	public Class[] getAdapterList() {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 		return null;
 	}
 

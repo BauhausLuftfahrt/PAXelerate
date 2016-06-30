@@ -8,6 +8,13 @@ package net.bhl.cdt.paxelerate.util.math;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * The Class RandomHelper.
+ * 
+ * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
+ */
 public class RandomHelper {
 	/**
 	 * This method generates a unique random number for a specific list.

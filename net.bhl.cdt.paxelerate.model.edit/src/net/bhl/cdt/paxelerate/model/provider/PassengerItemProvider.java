@@ -37,6 +37,7 @@ public class PassengerItemProvider
 		ITreeItemContentProvider,
 		IItemLabelProvider,
 		IItemPropertySource {
+	
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -64,10 +65,10 @@ public class PassengerItemProvider
 			addAgePropertyDescriptor(object);
 			addWeightPropertyDescriptor(object);
 			addDoorPropertyDescriptor(object);
-			addSeatPropertyDescriptor(object);
+			addSeatIDPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 			addBoardingTimePropertyDescriptor(object);
-			addSeatRefPropertyDescriptor(object);
+			addSeatPropertyDescriptor(object);
 			addWidthPropertyDescriptor(object);
 			addDepthPropertyDescriptor(object);
 			addOrientationInDegreePropertyDescriptor(object);
@@ -76,13 +77,16 @@ public class PassengerItemProvider
 			addIsSeatedPropertyDescriptor(object);
 			addWalkingSpeedPropertyDescriptor(object);
 			addStartBoardingAfterDelayPropertyDescriptor(object);
-			addNumberOfWaitsPropertyDescriptor(object);
 			addLuggageStowTimePropertyDescriptor(object);
-			addLuggageStowingDistancePropertyDescriptor(object);
+			addLuggageStowDistancePropertyDescriptor(object);
 			addTravelClassPropertyDescriptor(object);
 			addPassengerMoodPropertyDescriptor(object);
+			addNumberOfWaitsPropertyDescriptor(object);
 			addNumberOfMakeWayOperationsPropertyDescriptor(object);
+			addDistanceWalkedPropertyDescriptor(object);
 			addLuggagePropertyDescriptor(object);
+			addCostOfPathPropertyDescriptor(object);
+			addTotalTimeWaitedPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -148,7 +152,7 @@ public class PassengerItemProvider
 				 true,
 				 false,
 				 true,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
 				 null,
 				 null));
 	}
@@ -192,29 +196,7 @@ public class PassengerItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Seat Ref feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSeatRefPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Passenger_seatRef_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_seatRef_feature", "_UI_Passenger_type"),
-				 CabinPackage.Literals.PASSENGER__SEAT_REF,
-				 true,
-				 false,
-				 true,
-				 null,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -440,19 +422,19 @@ public class PassengerItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Luggage Stowing Distance feature.
+	 * This adds a property descriptor for the Luggage Stow Distance feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addLuggageStowingDistancePropertyDescriptor(Object object) {
+	protected void addLuggageStowDistancePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Passenger_luggageStowingDistance_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_luggageStowingDistance_feature", "_UI_Passenger_type"),
-				 CabinPackage.Literals.PASSENGER__LUGGAGE_STOWING_DISTANCE,
+				 getString("_UI_Passenger_luggageStowDistance_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_luggageStowDistance_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__LUGGAGE_STOW_DISTANCE,
 				 true,
 				 false,
 				 false,
@@ -550,6 +532,72 @@ public class PassengerItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Distance Walked feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDistanceWalkedPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_distanceWalked_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_distanceWalked_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__DISTANCE_WALKED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Cost Of Path feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCostOfPathPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_costOfPath_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_costOfPath_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__COST_OF_PATH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Total Time Waited feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTotalTimeWaitedPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_totalTimeWaited_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_totalTimeWaited_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__TOTAL_TIME_WAITED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Height feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -638,6 +686,28 @@ public class PassengerItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Seat ID feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSeatIDPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Passenger_seatID_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Passenger_seatID_feature", "_UI_Passenger_type"),
+				 CabinPackage.Literals.PASSENGER__SEAT_ID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Passenger.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -679,6 +749,7 @@ public class PassengerItemProvider
 			case CabinPackage.PASSENGER__HEIGHT:
 			case CabinPackage.PASSENGER__AGE:
 			case CabinPackage.PASSENGER__WEIGHT:
+			case CabinPackage.PASSENGER__SEAT_ID:
 			case CabinPackage.PASSENGER__NAME:
 			case CabinPackage.PASSENGER__BOARDING_TIME:
 			case CabinPackage.PASSENGER__WIDTH:
@@ -689,12 +760,15 @@ public class PassengerItemProvider
 			case CabinPackage.PASSENGER__IS_SEATED:
 			case CabinPackage.PASSENGER__WALKING_SPEED:
 			case CabinPackage.PASSENGER__START_BOARDING_AFTER_DELAY:
-			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
 			case CabinPackage.PASSENGER__LUGGAGE_STOW_TIME:
-			case CabinPackage.PASSENGER__LUGGAGE_STOWING_DISTANCE:
+			case CabinPackage.PASSENGER__LUGGAGE_STOW_DISTANCE:
 			case CabinPackage.PASSENGER__PASSENGER_MOOD:
+			case CabinPackage.PASSENGER__NUMBER_OF_WAITS:
 			case CabinPackage.PASSENGER__NUMBER_OF_MAKE_WAY_OPERATIONS:
+			case CabinPackage.PASSENGER__DISTANCE_WALKED:
 			case CabinPackage.PASSENGER__LUGGAGE:
+			case CabinPackage.PASSENGER__COST_OF_PATH:
+			case CabinPackage.PASSENGER__TOTAL_TIME_WAITED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

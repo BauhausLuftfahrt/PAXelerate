@@ -39,6 +39,7 @@ public class RowItemProvider
 		ITreeItemContentProvider,
 		IItemLabelProvider,
 		IItemPropertySource {
+	
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -61,7 +62,6 @@ public class RowItemProvider
 			super.getPropertyDescriptors(object);
 
 			addRowNumberPropertyDescriptor(object);
-			addOffsetInRowPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -89,28 +89,6 @@ public class RowItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Offset In Row feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOffsetInRowPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Row_offsetInRow_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Row_offsetInRow_feature", "_UI_Row_type"),
-				 CabinPackage.Literals.ROW__OFFSET_IN_ROW,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -129,8 +107,12 @@ public class RowItemProvider
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param object the object
+	 * @param child the child
+	 * @return the child feature
+	 * @generated 
 	 */
 	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
@@ -176,7 +158,6 @@ public class RowItemProvider
 
 		switch (notification.getFeatureID(Row.class)) {
 			case CabinPackage.ROW__ROW_NUMBER:
-			case CabinPackage.ROW__OFFSET_IN_ROW:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CabinPackage.ROW__SEATS:

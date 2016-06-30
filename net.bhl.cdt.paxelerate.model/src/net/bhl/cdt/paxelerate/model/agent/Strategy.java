@@ -7,14 +7,20 @@ package net.bhl.cdt.paxelerate.model.agent;
 
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 
-
 /**
- * 
- * @author marc.engelmann, tobias.bruegge-zobel
+ * The Interface Strategy.
  *
+ * @author marc.engelmann, tobias.bruegge-zobel
+ * @version 1.0
+ * @since 0.5
  */
 public interface Strategy {
 
+	/**
+	 * React to collision.
+	 *
+	 * @param property the property
+	 */
 	public void reactToCollision(Property property);
 
 }

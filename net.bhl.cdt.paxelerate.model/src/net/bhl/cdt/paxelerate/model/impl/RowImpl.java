@@ -28,7 +28,6 @@ import net.bhl.cdt.paxelerate.model.Seat;
  * <ul>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.RowImpl#getSeats <em>Seats</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.RowImpl#getRowNumber <em>Row Number</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.RowImpl#isOffsetInRow <em>Offset In Row</em>}</li>
  * </ul>
  *
  * @generated
@@ -65,29 +64,10 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 	protected int rowNumber = ROW_NUMBER_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isOffsetInRow() <em>Offset In Row</em>}' attribute.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isOffsetInRow()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean OFFSET_IN_ROW_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isOffsetInRow() <em>Offset In Row</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isOffsetInRow()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean offsetInRow = OFFSET_IN_ROW_EDEFAULT;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	protected RowImpl() {
 		super();
@@ -95,8 +75,10 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the e class
+	 * @generated 
 	 */
 	@Override
 	protected EClass eStaticClass() {
@@ -105,8 +87,10 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the seats
+	 * @generated 
 	 */
 	public EList<Seat> getSeats() {
 		if (seats == null) {
@@ -117,8 +101,10 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the row number
+	 * @generated 
 	 */
 	public int getRowNumber() {
 		return rowNumber;
@@ -126,8 +112,10 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newRowNumber the new row number
+	 * @generated 
 	 */
 	public void setRowNumber(int newRowNumber) {
 		int oldRowNumber = rowNumber;
@@ -138,29 +126,13 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isOffsetInRow() {
-		return offsetInRow;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOffsetInRow(boolean newOffsetInRow) {
-		boolean oldOffsetInRow = offsetInRow;
-		offsetInRow = newOffsetInRow;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.ROW__OFFSET_IN_ROW, oldOffsetInRow, offsetInRow));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param otherEnd the other end
+	 * @param featureID the feature id
+	 * @param msgs the msgs
+	 * @return the notification chain
+	 * @generated 
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -173,8 +145,13 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param resolve the resolve
+	 * @param coreType the core type
+	 * @return the object
+	 * @generated 
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
@@ -183,16 +160,17 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 				return getSeats();
 			case CabinPackage.ROW__ROW_NUMBER:
 				return getRowNumber();
-			case CabinPackage.ROW__OFFSET_IN_ROW:
-				return isOffsetInRow();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param newValue the new value
+	 * @generated 
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
@@ -205,17 +183,16 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 			case CabinPackage.ROW__ROW_NUMBER:
 				setRowNumber((Integer)newValue);
 				return;
-			case CabinPackage.ROW__OFFSET_IN_ROW:
-				setOffsetInRow((Boolean)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @generated 
 	 */
 	@Override
 	public void eUnset(int featureID) {
@@ -226,17 +203,17 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 			case CabinPackage.ROW__ROW_NUMBER:
 				setRowNumber(ROW_NUMBER_EDEFAULT);
 				return;
-			case CabinPackage.ROW__OFFSET_IN_ROW:
-				setOffsetInRow(OFFSET_IN_ROW_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @return true, if successful
+	 * @generated 
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
@@ -245,16 +222,16 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 				return seats != null && !seats.isEmpty();
 			case CabinPackage.ROW__ROW_NUMBER:
 				return rowNumber != ROW_NUMBER_EDEFAULT;
-			case CabinPackage.ROW__OFFSET_IN_ROW:
-				return offsetInRow != OFFSET_IN_ROW_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the string
+	 * @generated 
 	 */
 	@Override
 	public String toString() {
@@ -263,8 +240,6 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (rowNumber: ");
 		result.append(rowNumber);
-		result.append(", offsetInRow: ");
-		result.append(offsetInRow);
 		result.append(')');
 		return result.toString();
 	}

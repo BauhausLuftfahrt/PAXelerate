@@ -14,11 +14,14 @@ import net.bhl.cdt.paxelerate.util.math.Vector;
  * Path is a list of nodes which represent the calculated shortest path.
  * 
  * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  *
  */
 
 public class Path {
 
+	/** The waypoints. */
 	private ArrayList<Node> waypoints = new ArrayList<Node>();
 
 	/**
@@ -118,7 +121,7 @@ public class Path {
 	}
 
 	/**
-	 * 
+	 * Invert.
 	 */
 	public void invert() {
 
@@ -138,10 +141,13 @@ public class Path {
 	}
 
 	/**
-	 * 
+	 * Cut to point.
+	 *
 	 * @param path
+	 *            the path
 	 * @param point
-	 * @return
+	 *            the point
+	 * @return the path
 	 */
 	public Path cutToPoint(Path path, Vector point) {
 		/* get the last node */
@@ -156,10 +162,30 @@ public class Path {
 				}
 				i++;
 			} catch (IndexOutOfBoundsException e) {
+				e.printStackTrace();
 				break;
 			}
 		}
 		return newPath;
 	}
 
+	/**
+	 * Gets the cost.
+	 *
+	 * @return the cost
+	 * @throws ArithmeticException the arithmetic exception
+	 */
+	public int getCost() throws ArithmeticException {
+
+		int cost = 0;
+		for (Node node : waypoints) {
+			cost += node.getCostFromStart();
+		}
+		if (cost < 0) {
+			throw new ArithmeticException(
+					"Path cost is smaller than zero! -> " + cost);
+		} else {
+			return cost;
+		}
+	}
 }

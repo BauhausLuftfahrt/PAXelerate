@@ -5,13 +5,13 @@
     <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_zI1P0OeTEeWmCN7fuSm0Sw">
       <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_0hj9UOeTEeWmCN7fuSm0Sw" name="Stowing Distance">
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_oRi9MOeTEeWmCN7fuSm0Sw" name="Control luggageStowingDistanceFromSeatMean">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_oRi9MeeTEeWmCN7fuSm0Sw">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//LuggageProperties/luggageStowingDistanceFromSeatMean"/>
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_KJxGMAvCEea80ODWa5LXGQ">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//LuggageProperties/luggageStowDistanceFromSeatMean"/>
           </domainModelReference>
         </children>
         <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_oRi9MueTEeWmCN7fuSm0Sw" name="Control luggageStowingDistanceFromSeatDeviation">
-          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_oRi9M-eTEeWmCN7fuSm0Sw">
-            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//LuggageProperties/luggageStowingDistanceFromSeatDeviation"/>
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_LPf_MAvCEea80ODWa5LXGQ">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//LuggageProperties/luggageStowDistanceFromSeatDeviation"/>
           </domainModelReference>
         </children>
       </children>

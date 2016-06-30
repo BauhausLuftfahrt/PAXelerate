@@ -15,10 +15,12 @@ import net.bhl.cdt.paxelerate.model.Lavatory;
  * @generated
  */
 public class LavatoryImpl extends PhysicalObjectImpl implements Lavatory {
+	
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	protected LavatoryImpl() {
 		super();
@@ -26,8 +28,10 @@ public class LavatoryImpl extends PhysicalObjectImpl implements Lavatory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the e class
+	 * @generated 
 	 */
 	@Override
 	protected EClass eStaticClass() {

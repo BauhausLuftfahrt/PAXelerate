@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2009-2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  *******************************************************************************/
@@ -9,10 +9,16 @@ package net.bhl.cdt.paxelerate.util.time;
  * This class represents a stop watch.
  * 
  * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  */
 
 public class StopWatch {
+
+	/** The stop time. */
 	private long startTime, stopTime;
+
+	/** The running. */
 	private boolean running;
 
 	/**
@@ -24,6 +30,9 @@ public class StopWatch {
 		running = false;
 	}
 
+	/**
+	 * Reset.
+	 */
 	public void reset() {
 		startTime = 0;
 		stopTime = 0;
@@ -62,8 +71,9 @@ public class StopWatch {
 	}
 
 	/**
-	 * TODO
-	 * @return
+	 * This method returns the elapsed time in seconds.
+	 * 
+	 * @return the elapsed time in seconds
 	 */
 	public double getElapsedTimeTens() {
 		return getElapsedTime() / 1000.0;
@@ -77,9 +87,9 @@ public class StopWatch {
 	public long getElapsedTimeSecs() {
 		long elapsed;
 		if (running) {
-			elapsed = (int) ((System.currentTimeMillis() - startTime) / 1000);
+			elapsed = (System.currentTimeMillis() - startTime) / 1000;
 		} else {
-			elapsed = (int) ((stopTime - startTime) / 1000);
+			elapsed = (stopTime - startTime) / 1000;
 		}
 		return elapsed;
 	}

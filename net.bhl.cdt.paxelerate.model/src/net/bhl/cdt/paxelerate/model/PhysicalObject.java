@@ -188,9 +188,13 @@ public interface PhysicalObject extends EObject {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param chain the chain
+	 * @param context the context
+	 * @return true, if successful
+	 * @model 
+	 * @generated 
 	 */
 	boolean outOfBounds(DiagnosticChain chain, Map<?, ?> context);
 

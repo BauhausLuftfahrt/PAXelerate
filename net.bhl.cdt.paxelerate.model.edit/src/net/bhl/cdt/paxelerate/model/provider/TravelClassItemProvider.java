@@ -2,7 +2,6 @@
  */
 package net.bhl.cdt.paxelerate.model.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -24,36 +23,35 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
 import net.bhl.cdt.paxelerate.model.CabinPackage;
 import net.bhl.cdt.paxelerate.model.TravelClass;
+import net.bhl.cdt.paxelerate.util.string.StringHelper;
 
 /**
  * This is the item provider adapter for a {@link net.bhl.cdt.paxelerate.model.TravelClass} object.
- * <!-- begin-user-doc -->
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc
+ * --> <!-- end-user-doc -->
  * @generated
  */
-public class TravelClassItemProvider 
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+public class TravelClassItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This constructs an instance from a factory and a notifier. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param adapterFactory the adapter factory
+	 * @generated 
 	 */
 	public TravelClassItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This returns the property descriptors for the adapted class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param object the object
+	 * @return the property descriptors
+	 * @generated 
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
@@ -69,15 +67,17 @@ public class TravelClassItemProvider
 			addNamePropertyDescriptor(object);
 			addRowStructurePropertyDescriptor(object);
 			addLoadFactorPropertyDescriptor(object);
+			addTravelOptionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Sequence feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This adds a property descriptor for the Sequence feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addSequencePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -96,10 +96,11 @@ public class TravelClassItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Passengers feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This adds a property descriptor for the Passengers feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addPassengersPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -118,10 +119,11 @@ public class TravelClassItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Available Seats feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This adds a property descriptor for the Available Seats feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addAvailableSeatsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -140,10 +142,11 @@ public class TravelClassItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Seat Pitch feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This adds a property descriptor for the Seat Pitch feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addSeatPitchPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -162,10 +165,11 @@ public class TravelClassItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the XDimension Of Seats feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This adds a property descriptor for the XDimension Of Seats feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addXDimensionOfSeatsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -184,10 +188,11 @@ public class TravelClassItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the YDimension Of Seats feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This adds a property descriptor for the YDimension Of Seats feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addYDimensionOfSeatsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -207,8 +212,8 @@ public class TravelClassItemProvider
 
 	/**
 	 * This adds a property descriptor for the Name feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
@@ -228,10 +233,11 @@ public class TravelClassItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Row Structure feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This adds a property descriptor for the Row Structure feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addRowStructurePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -250,10 +256,11 @@ public class TravelClassItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Load Factor feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This adds a property descriptor for the Load Factor feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param object the object
+	 * @generated 
 	 */
 	protected void addLoadFactorPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -266,7 +273,29 @@ public class TravelClassItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Travel Option feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTravelOptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TravelClass_travelOption_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TravelClass_travelOption_feature", "_UI_TravelClass_type"),
+				 CabinPackage.Literals.TRAVEL_CLASS__TRAVEL_OPTION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -275,8 +304,7 @@ public class TravelClassItemProvider
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -289,9 +317,12 @@ public class TravelClassItemProvider
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param object the object
+	 * @param child the child
+	 * @return the child feature
+	 * @generated 
 	 */
 	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
@@ -302,36 +333,49 @@ public class TravelClassItemProvider
 	}
 
 	/**
-	 * This returns TravelClass.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This returns TravelClass.gif. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 *
+	 * @param object the object
+	 * @return the image
+	 * @generated NOT
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/TravelClass"));
+		switch (((TravelClass) object).getTravelOption()) {
+		case FIRST_CLASS:
+			return overlayImage(object, getResourceLocator().getImage("full/obj16/FirstClass"));
+		case BUSINESS_CLASS:
+			return overlayImage(object, getResourceLocator().getImage("full/obj16/BusinessClass"));
+		case PREMIUM_ECONOMY_CLASS:
+			return overlayImage(object, getResourceLocator().getImage("full/obj16/PremiumEconomyClass"));
+		case ECONOMY_CLASS:
+			return overlayImage(object, getResourceLocator().getImage("full/obj16/EconomyClass"));
+		default:
+			return overlayImage(object, getResourceLocator().getImage("full/obj16/TravelClass"));
+		}
 	}
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This returns the label text for the adapted class. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 *
+	 * @param object the object
+	 * @return the text
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((TravelClass)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_TravelClass_type") :
-			getString("_UI_TravelClass_type") + " " + label;
+		String label = ((TravelClass) object).getTravelOption().getName();
+		return StringHelper.splitCamelCase(label);
+
 	}
-	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -348,6 +392,7 @@ public class TravelClassItemProvider
 			case CabinPackage.TRAVEL_CLASS__NAME:
 			case CabinPackage.TRAVEL_CLASS__ROW_STRUCTURE:
 			case CabinPackage.TRAVEL_CLASS__LOAD_FACTOR:
+			case CabinPackage.TRAVEL_CLASS__TRAVEL_OPTION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CabinPackage.TRAVEL_CLASS__ROWS:
@@ -358,11 +403,13 @@ public class TravelClassItemProvider
 	}
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
+	 * describing the children that can be created under this object. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param newChildDescriptors the new child descriptors
+	 * @param object the object
+	 * @generated 
 	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -375,10 +422,11 @@ public class TravelClassItemProvider
 	}
 
 	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * Return the resource locator for this item provider's resources. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @return the resource locator
+	 * @generated 
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {

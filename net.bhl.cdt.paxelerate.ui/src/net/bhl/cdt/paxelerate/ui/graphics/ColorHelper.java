@@ -1,0 +1,68 @@
+/*******************************************************************************
+ * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
+ ******************************************************************************/
+
+package net.bhl.cdt.paxelerate.ui.graphics;
+
+import java.util.Random;
+
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Device;
+import org.eclipse.swt.widgets.Display;
+
+/**
+ * Unified coloring system for Paxelerate.
+ *
+ * @author marc.engelmann, raoul.rothfeld
+ * @version 1.0
+ * @since 0.5
+ */
+public final class ColorHelper {
+
+	/** The color displaying device/component. */
+	private static final Device disp = Display.getCurrent();
+
+	/** All Paxelerate colors. */
+	public static final Color
+	// General colors
+	BLACK = new Color(disp, 0, 0, 0), GREY_DARK = new Color(disp, 51, 51, 51),
+			GREY_LIGHT = new Color(disp, 193, 193, 193), RED = new Color(disp, 255, 0, 0),
+			ORANGE = new Color(disp, 255, 122, 0), YELLOW = new Color(disp, 255, 255, 0),
+			GREEN = new Color(disp, 0, 255, 0), GREEN_LIGHT = new Color(disp, 122, 255, 0),
+			BLUE = new Color(disp, 0, 0, 255), WHITE = new Color(disp, 255, 255, 255),
+
+			// Program colors
+			ERROR = new Color(disp, 255, 51, 51),
+
+			// Passenger colors
+			PASSENGER_MALE = new Color(disp, 51, 153, 255), PASSEMGER_FEMALE = new Color(disp, 255, 153, 255),
+
+			// Luggage colors
+			LUGGAGE_NONE = new Color(disp, 127, 112, 99), LUGGAGE_SMALL = new Color(disp, 255, 162, 76),
+			LUGGAGE_MEDIUM = new Color(disp, 204, 97, 0), LUGGAGE_LARGE = new Color(disp, 127, 61, 0),
+
+			// Mood
+			MOOD_AGGRESSIVE = new Color(disp, 127, 61, 0), MODD_PASSIVE = new Color(disp, 127, 112, 99),
+
+			// Aircraft colors
+			AIRCRAFT_FLOOR = new Color(disp, 237, 243, 245), AIRCRAFT_LAVATORY = new Color(disp, 255, 160, 122);
+
+	/**
+	 * Singleton constructor for a ColorHelper instance.
+	 */
+	private ColorHelper() {
+	}
+
+	/**
+	 * Returns a random color.
+	 *
+	 * @return the random color
+	 */
+	public static Color getRandomColor() {
+		Random r = new Random();
+		return new Color(disp, r.nextInt(256), r.nextInt(256), r.nextInt(256));
+	}
+
+}

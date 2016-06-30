@@ -16,15 +16,24 @@ import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.ui.commands.SortPassengersCommand;
 
 /**
- * 
- * @author marc.engelmann
+ * The Class SortPassengersHandler.
  *
+ * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  */
 
 public class SortPassengersHandler extends AbstractHandler {
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.core.commands.IHandler#execute(org.eclipse.core.commands.
+	 * ExecutionEvent)
+	 */
 	@Override
-	public Object execute(ExecutionEvent event) throws ExecutionException {
+	public final Object execute(final ExecutionEvent event) throws ExecutionException {
 
 		ISelection sel = HandlerUtil.getActiveMenuSelection(event);
 		IStructuredSelection selection = (IStructuredSelection) sel;

@@ -10,46 +10,47 @@ import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 
+/**
+ * The Class AgentMover.
+ * 
+ * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
+ */
 public class AgentMover {
+	
 	/**
 	 * This method blocks the agents position if the rotation is rectangular.
-	 * 
-	 * @param vector
-	 *            is the vector of the agents position
-	 * @param occupy
-	 *            occupy or deoccupy the node
-	 * @param property
-	 *            set the property of the node
+	 *
+	 * @param vector            is the vector of the agents position
+	 * @param occupy            occupy or deoccupy the node
+	 * @param property            set the property of the node
+	 * @param passenger the passenger
 	 */
 	public static void blockNode(Vector vector, boolean occupy,
 			Property property, Passenger passenger) {
 
 		/* check if the desired node is out of bounds */
-		if (SimulationHandler.getMap().getNodeByCoordinate(vector.getX(),
-				vector.getY()) != null
-				&& SimulationHandler.getMap()
-						.getNodeByCoordinate(vector.getX(), vector.getY())
+		if (SimulationHandler.getMap().get(vector.getX(), vector.getY()) != null
+				&& SimulationHandler.getMap().get(vector.getX(), vector.getY())
 						.getPassenger() != null) {
 
 			/* check if the agent itself blocked the node */
-			if (SimulationHandler.getMap()
-					.getNodeByCoordinate(vector.getX(), vector.getY())
+			if (SimulationHandler.getMap().get(vector.getX(), vector.getY())
 					.getPassenger().getId() == passenger.getId()
 					|| SimulationHandler.getMap()
-							.getNodeByCoordinate(vector.getX(), vector.getY())
+							.get(vector.getX(), vector.getY())
 							.getProperty() != Property.AGENT) {
 
 				/* check if the node is no obstacle */
-				if (SimulationHandler.getMap()
-						.getNodeByCoordinate(vector.getX(), vector.getY())
-						.getProperty() != Property.OBSTACLE) {
+				if (!SimulationHandler.getMap()
+						.get(vector.getX(), vector.getY()).isObstacle()) {
 
 					/*
 					 * set the node to the desired property and link the agent
 					 * id
 					 */
-					SimulationHandler.getMap()
-							.getNodeByCoordinate(vector.getX(), vector.getY())
+					SimulationHandler.getMap().get(vector.getX(), vector.getY())
 							.setProperty(property, passenger);
 				}
 			}

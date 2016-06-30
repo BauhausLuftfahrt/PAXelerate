@@ -8,29 +8,6 @@ import org.eclipse.emf.ecore.util.Switch;
 
 import net.bhl.cdt.model.NamedElement;
 import net.bhl.cdt.paxelerate.model.*;
-import net.bhl.cdt.paxelerate.model.BusinessClass;
-import net.bhl.cdt.paxelerate.model.Cabin;
-import net.bhl.cdt.paxelerate.model.CabinPackage;
-import net.bhl.cdt.paxelerate.model.CrewMember;
-import net.bhl.cdt.paxelerate.model.Curtain;
-import net.bhl.cdt.paxelerate.model.Door;
-import net.bhl.cdt.paxelerate.model.EconomyClass;
-import net.bhl.cdt.paxelerate.model.EmergencyExit;
-import net.bhl.cdt.paxelerate.model.FirstClass;
-import net.bhl.cdt.paxelerate.model.Galley;
-import net.bhl.cdt.paxelerate.model.Lavatory;
-import net.bhl.cdt.paxelerate.model.MainDoor;
-import net.bhl.cdt.paxelerate.model.Passenger;
-import net.bhl.cdt.paxelerate.model.PhysicalObject;
-import net.bhl.cdt.paxelerate.model.PremiumEconomyClass;
-import net.bhl.cdt.paxelerate.model.Row;
-import net.bhl.cdt.paxelerate.model.Seat;
-import net.bhl.cdt.paxelerate.model.SimulationProperties;
-import net.bhl.cdt.paxelerate.model.SimulationResult;
-import net.bhl.cdt.paxelerate.model.Stairway;
-import net.bhl.cdt.paxelerate.model.StandardDoor;
-import net.bhl.cdt.paxelerate.model.Stowage;
-import net.bhl.cdt.paxelerate.model.TravelClass;
 
 /**
  * <!-- begin-user-doc -->
@@ -46,11 +23,13 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
  * @generated
  */
 public class CabinSwitch<T> extends Switch<T> {
+	
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	protected static CabinPackage modelPackage;
 
@@ -105,34 +84,6 @@ public class CabinSwitch<T> extends Switch<T> {
 			case CabinPackage.TRAVEL_CLASS: {
 				TravelClass travelClass = (TravelClass)theEObject;
 				T result = caseTravelClass(travelClass);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CabinPackage.BUSINESS_CLASS: {
-				BusinessClass businessClass = (BusinessClass)theEObject;
-				T result = caseBusinessClass(businessClass);
-				if (result == null) result = caseTravelClass(businessClass);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CabinPackage.FIRST_CLASS: {
-				FirstClass firstClass = (FirstClass)theEObject;
-				T result = caseFirstClass(firstClass);
-				if (result == null) result = caseTravelClass(firstClass);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CabinPackage.ECONOMY_CLASS: {
-				EconomyClass economyClass = (EconomyClass)theEObject;
-				T result = caseEconomyClass(economyClass);
-				if (result == null) result = caseTravelClass(economyClass);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CabinPackage.PREMIUM_ECONOMY_CLASS: {
-				PremiumEconomyClass premiumEconomyClass = (PremiumEconomyClass)theEObject;
-				T result = casePremiumEconomyClass(premiumEconomyClass);
-				if (result == null) result = caseTravelClass(premiumEconomyClass);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -199,27 +150,6 @@ public class CabinSwitch<T> extends Switch<T> {
 			case CabinPackage.DOOR: {
 				Door door = (Door)theEObject;
 				T result = caseDoor(door);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CabinPackage.MAIN_DOOR: {
-				MainDoor mainDoor = (MainDoor)theEObject;
-				T result = caseMainDoor(mainDoor);
-				if (result == null) result = caseDoor(mainDoor);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CabinPackage.EMERGENCY_EXIT: {
-				EmergencyExit emergencyExit = (EmergencyExit)theEObject;
-				T result = caseEmergencyExit(emergencyExit);
-				if (result == null) result = caseDoor(emergencyExit);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CabinPackage.STANDARD_DOOR: {
-				StandardDoor standardDoor = (StandardDoor)theEObject;
-				T result = caseStandardDoor(standardDoor);
-				if (result == null) result = caseDoor(standardDoor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -293,66 +223,6 @@ public class CabinSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTravelClass(TravelClass object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Business Class</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Business Class</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseBusinessClass(BusinessClass object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>First Class</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>First Class</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseFirstClass(FirstClass object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Economy Class</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Economy Class</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEconomyClass(EconomyClass object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Premium Economy Class</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Premium Economy Class</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePremiumEconomyClass(PremiumEconomyClass object) {
 		return null;
 	}
 
@@ -488,51 +358,6 @@ public class CabinSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseStowage(Stowage object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Main Door</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Main Door</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseMainDoor(MainDoor object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Emergency Exit</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Emergency Exit</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEmergencyExit(EmergencyExit object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Standard Door</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Standard Door</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseStandardDoor(StandardDoor object) {
 		return null;
 	}
 

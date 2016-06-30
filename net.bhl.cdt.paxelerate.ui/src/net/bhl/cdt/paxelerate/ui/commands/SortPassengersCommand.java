@@ -7,11 +7,14 @@ package net.bhl.cdt.paxelerate.ui.commands;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.swt.widgets.Display;
 
 import net.bhl.cdt.commands.CDTCommand;
+import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.Door;
 import net.bhl.cdt.paxelerate.model.Passenger;
+import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.agent.AgentFunctions;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
@@ -21,131 +24,224 @@ import net.bhl.cdt.paxelerate.util.math.RandomHelper;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
- * This class refreshed the cabin view without modifying anything. It checks the
- * layout of the cabin and warns the user.
+ * This class is used for sorting the Passenger.class objects depending on
+ * predefined criteria.
  * 
  * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  *
  */
 
 public class SortPassengersCommand extends CDTCommand {
 
-	private static final int NUMBER_OF_LOOPS = 10;
+	/** The cabin. */
 	private Cabin cabin;
-	private CabinViewPart cabinViewPart;
+
+	/** The show dialog. */
 	private boolean showDialog = true;
+
+	/** The value. */
 	private int value = 0;
 
-	public SortPassengersCommand(Cabin cabin) {
+	/** The Constant INPUT_STRING. */
+	private static final String INPUT_STRING = "Please choose a sorting algorithm. [0]: Random, [1]: RTF, [2]: FTR, [3]: WTA, [4]: WTA & RTF, [5]: WTA & FTR";
+
+	/**
+	 * Instantiates a new sort passengers command.
+	 *
+	 * @param cabin
+	 *            the cabin
+	 */
+	public SortPassengersCommand(final Cabin cabin) {
 		this.cabin = cabin;
 	}
 
-	public void setPropertiesManually(boolean showDialog, int value) {
+	/**
+	 * Sets the properties manually.
+	 *
+	 * @param showDialog
+	 *            the show dialog
+	 * @param value
+	 *            the value
+	 */
+	public final void setPropertiesManually(final boolean showDialog, final int value) {
 		this.showDialog = showDialog;
 		this.value = value;
 	}
 
-	public Cabin returnCabin() {
+	/**
+	 * Return cabin.
+	 *
+	 * @return the cabin
+	 */
+	public final Cabin returnCabin() {
 		return cabin;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.bhl.cdt.commands.CDTCommand#doRun()
+	 */
 	@Override
-	protected void doRun() {
+	protected final synchronized void doRun() {
 
-		cabinViewPart = ViewPartHelper.getCabinView();
+		CabinViewPart cabinViewPart = ViewPartHelper.getCabinView();
 
 		cabinViewPart.unsyncViewer();
 
 		if (showDialog) {
-			Input input = new Input(WindowType.OPTIONS,
-					"Please choose a sorting algorithm. [0]: Random, [1]: RTF, [2]: FTR, [3]: WTA, [4]: WTA & RTF, [5]: WTA & FTR",
-					IMessageProvider.INFORMATION);
 
+			Input input = new Input(WindowType.OPTIONS, INPUT_STRING, IMessageProvider.INFORMATION);
 			value = input.getIntegerValue();
 		}
+
 		EList<Passenger> paxList = cabin.getPassengers();
 
-		System.out.println("Sorting passengers ...");
+		Log.add(this, "Sorting passengers ...");
 
-		switch (value) {
+		/*
+		 * The number of loops needs to be this high because the algorithm only
+		 * compares two neighboring elements. In order to sort an element from
+		 * the last to the first position, there are as much iterations needed
+		 * as there are elements in the list.
+		 */
 
-		// TODO: decrease number of sorting loops!
+		int numberOfLoops = cabin.getPassengers().size();
 
-		// Random
-		case 0:
+		int numberOfRows = ModelHelper.getChildrenByClass(cabin, Row.class).size();
 
-			for (int i = 0; i < paxList.size(); i++) {
-				Passenger pax = paxList.get(i);
-				paxList.move(RandomHelper.randomValue(0, paxList.size()), pax);
-			}
+		synchronized (paxList) {
+			switch (value) {
 
-			break;
-		// Rear to front (RTF)
-		case 1:
-			for (int j = 0; j < NUMBER_OF_LOOPS; j++) {
-				for (int i = 0; i < paxList.size() - 1; i++) {
-					Passenger pax1 = paxList.get(i);
-					Passenger pax2 = paxList.get(i + 1);
-					if (pax1.getSeatRef().getXPosition() < pax2.getSeatRef().getXPosition()) {
-						paxList.move(i, pax2);
+			// Random
+			case 0:
+
+				for (int i = 0; i < numberOfLoops; i++) {
+					Passenger pax = paxList.get(i);
+					paxList.move(RandomHelper.randomValue(0, paxList.size()), pax);
+				}
+				break;
+
+			// Rear to front (RTF)
+			case 1:
+				for (int j = 0; j < numberOfLoops; j++) {
+					for (int i = 0; i < paxList.size() - 1; i++) {
+						Passenger pax1 = paxList.get(i);
+						Passenger pax2 = paxList.get(i + 1);
+						if (pax1.getSeat().getXPosition() < pax2.getSeat().getXPosition()) {
+							paxList.move(i, pax2);
+						}
 					}
 				}
-			}
-			break;
-		// Front to rear (FTR)
-		case 2:
-			for (int j = 0; j < NUMBER_OF_LOOPS; j++) {
-				for (int i = 0; i < paxList.size() - 1; i++) {
-					Passenger pax1 = paxList.get(i);
-					Passenger pax2 = paxList.get(i + 1);
-					if (pax1.getSeatRef().getXPosition() > pax2.getSeatRef().getXPosition()) {
-						paxList.move(i, pax2);
+				break;
+
+			// Front to rear (FTR)
+			case 2:
+				for (int j = 0; j < numberOfLoops; j++) {
+					for (int i = 0; i < paxList.size() - 1; i++) {
+						Passenger pax1 = paxList.get(i);
+						Passenger pax2 = paxList.get(i + 1);
+						if (pax1.getSeat().getXPosition() > pax2.getSeat().getXPosition()) {
+							paxList.move(i, pax2);
+						}
 					}
 				}
-			}
-			break;
-		// Window to aisle (WTA)
-		case 3:
-			for (int j = 0; j < NUMBER_OF_LOOPS; j++) {
-				for (int i = 0; i < paxList.size() - 1; i++) {
-					Passenger thisPax = paxList.get(i);
-					Passenger otherPax = paxList.get(i + 1);
-					if (AgentFunctions.otherSeatCloserToAisle(thisPax.getSeatRef(), otherPax.getSeatRef())) {
-						paxList.move(i, otherPax);
-					}
-				}
-			}
-			break;
-		// Window to aisle and rear to front (WTA + RTF)
-		case 4:
-			for (int j = 0; j < NUMBER_OF_LOOPS; j++) {
-				for (int i = 0; i < paxList.size() - 1; i++) {
-					Passenger thisPax = paxList.get(i);
-					Passenger otherPax = paxList.get(i + 1);
-					if (AgentFunctions.otherSeatCloserToAisle(thisPax.getSeatRef(), otherPax.getSeatRef())) {
-						if (thisPax.getSeatRef().getXPosition() < otherPax.getSeatRef().getXPosition()) {
+				break;
+
+			// Window to aisle (WTA)
+			case 3:
+				for (int j = 0; j < numberOfLoops; j++) {
+					for (int i = 0; i < paxList.size() - 1; i++) {
+						Passenger thisPax = paxList.get(i);
+						Passenger otherPax = paxList.get(i + 1);
+						if (AgentFunctions.otherSeatCloserToAisle(thisPax.getSeat(), otherPax.getSeat())) {
 							paxList.move(i, otherPax);
 						}
 					}
 				}
+				break;
+
+			// Window to aisle and rear to front (WTA + RTF)
+			case 4:
+				for (int j = 0; j < numberOfLoops; j++) {
+					for (int i = 0; i < paxList.size() - 1; i++) {
+						Passenger thisPax = paxList.get(i);
+						Passenger otherPax = paxList.get(i + 1);
+						if (AgentFunctions.otherSeatCloserToAisle(thisPax.getSeat(), otherPax.getSeat())) {
+							if (thisPax.getSeat().getXPosition() < otherPax.getSeat().getXPosition()) {
+								paxList.move(i, otherPax);
+							}
+						}
+					}
+				}
+				break;
+
+			// Window to aisle and front to rear (WTA + FTR)
+			case 5:
+				for (int j = 0; j < numberOfLoops; j++) {
+					for (int i = 0; i < paxList.size() - 1; i++) {
+						Passenger thisPax = paxList.get(i);
+						Passenger otherPax = paxList.get(i + 1);
+						if (AgentFunctions.otherSeatCloserToAisle(thisPax.getSeat(), otherPax.getSeat())) {
+							if (thisPax.getSeat().getXPosition() > otherPax.getSeat().getXPosition()) {
+								paxList.move(i, otherPax);
+							}
+						}
+					}
+				}
+				break;
+
+			// Group/block boarding: create blocks with 10 rows each and
+			// distribute
+			// the passengers randomly
+			case 6:
+				int blocks = (numberOfRows / 10);
+				int paxPerBlock = numberOfLoops / blocks;
+				for (int j = 0; j < numberOfLoops; j++) {
+					for (int i = 0; i < paxList.size(); i++) {
+						Passenger pax = paxList.get(i);
+
+						paxList.move(RandomHelper.randomValue(0, paxList.size()), pax);
+					}
+				}
+				break;
+
+			// Steffen method: window every second row left and right
+			case 7:
+				for (int j = 0; j < numberOfLoops; j++) {
+					for (int i = 0; i < paxList.size() - 1; i++) {
+						Passenger thisPax = paxList.get(i);
+						Passenger otherPax = paxList.get(i + 1);
+						if (AgentFunctions.otherSeatCloserToAisle(thisPax.getSeat(), otherPax.getSeat())) {
+							if (thisPax.getSeat().getXPosition() > otherPax.getSeat().getXPosition()) {
+								// TODO:
+							}
+						}
+					}
+				}
+				break;
+
+			// Milne/Kelly method: based on number of carried bags
+			case 8:
+				// TODO
+				break;
+
+			default:
+				Log.add(this, "Wrong Input!");
+				break;
 			}
-			break;
-		// Window to aisle and front to rear (WTA + FTR)
-		case 5:
-			// TODO
-			break;
-		default:
-			break;
 		}
 
-		System.out.println("Sorting completed.");
+		Log.add(this, "Sorting completed.");
 
 		int counter = 1;
 
 		for (Passenger pax : cabin.getPassengers()) {
 			pax.setStartBoardingAfterDelay(calculateDelay(pax));
 			pax.setId(counter);
-			pax.setName(counter + "(" + pax.getSeatRef().getName() + ")");
+			pax.setName(counter + "(" + pax.getSeat().getName() + ")");
 			counter++;
 		}
 
@@ -156,14 +252,29 @@ public class SortPassengersCommand extends CDTCommand {
 		cabinViewPart.syncViewer();
 
 		try {
-			cabinViewPart.setCabin(cabin);
-			Log.add(this, "Cabin view checked and updated");
+			Display.getDefault().syncExec(new Runnable() {
+
+				@Override
+				public void run() {
+					cabinViewPart.setCabin(cabin);
+					Log.add(this, "Cabin view checked and updated");
+				}
+			});
+
 		} catch (NullPointerException e) {
 			Log.add(this, "No cabin view is visible!");
+			e.printStackTrace();
 		}
 	}
 
-	private double calculateDelay(Passenger pax) {
+	/**
+	 * Calculate delay.
+	 *
+	 * @param pax
+	 *            the pax
+	 * @return the double
+	 */
+	private synchronized double calculateDelay(final Passenger pax) {
 		double delay = 0;
 		double clocking = cabin.getSimulationSettings().getPassengersBoardingPerMinute();
 

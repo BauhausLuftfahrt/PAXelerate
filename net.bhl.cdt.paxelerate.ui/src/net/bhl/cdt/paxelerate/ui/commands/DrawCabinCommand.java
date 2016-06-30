@@ -6,15 +6,14 @@
 package net.bhl.cdt.paxelerate.ui.commands;
 
 import java.util.ArrayList;
-
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PlatformUI;
+import java.util.HashMap;
+import java.util.Map;
 
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
+import net.bhl.cdt.paxelerate.model.LayoutConcept;
 import net.bhl.cdt.paxelerate.model.LuggageProperties;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.PassengerProperties;
@@ -23,7 +22,7 @@ import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
 import net.bhl.cdt.paxelerate.model.TravelClass;
-import net.bhl.cdt.paxelerate.model.util.EMFModelStore;
+import net.bhl.cdt.paxelerate.model.util.PassengerGenerator;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.PropertyViewPart;
 import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
@@ -35,14 +34,23 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
  * layout of the cabin and warns the user.
  * 
  * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  *
  */
 
 public class DrawCabinCommand extends CDTCommand {
 
+	/** The cabin. */
 	private Cabin cabin;
+
+	/** The cabin view part. */
 	private CabinViewPart cabinViewPart;
+
+	/** The property view part. */
 	private PropertyViewPart propertyViewPart;
+
+	/** The error strings. */
 	private ArrayList<String> errorStrings = new ArrayList<String>();
 
 	/**
@@ -51,7 +59,7 @@ public class DrawCabinCommand extends CDTCommand {
 	 * @param cabin
 	 *            the cabin
 	 */
-	public DrawCabinCommand(Cabin cabin) {
+	public DrawCabinCommand(final Cabin cabin) {
 		this.cabin = cabin;
 	}
 
@@ -59,7 +67,16 @@ public class DrawCabinCommand extends CDTCommand {
 	 * This method executed the right click command. The cabin view is updated.
 	 */
 	@Override
-	protected void doRun() {
+	protected final void doRun() {
+
+		int countedPax = 0;
+		for (TravelClass tc : cabin.getClasses()) {
+			countedPax += tc.getPassengers();
+		}
+
+		if (countedPax != cabin.getPassengers().size()) {
+			new GeneratePassengersCommand(cabin).doRun();
+		}
 
 		/**
 		 * Main method.
@@ -70,8 +87,11 @@ public class DrawCabinCommand extends CDTCommand {
 		SimulationProperties settings = cabin.getSimulationSettings();
 
 		if (settings == null) {
+
+			System.out.println("no settings found!");
 			settings = CabinFactory.eINSTANCE.createSimulationProperties();
 			cabin.setSimulationSettings(settings);
+
 		}
 
 		LuggageProperties luggageSettings = cabin.getSimulationSettings().getLuggageProperties();
@@ -88,13 +108,12 @@ public class DrawCabinCommand extends CDTCommand {
 			cabin.getSimulationSettings().setPassengerProperties(paxSettings);
 		}
 
-		double[] luggagemodel = { luggageSettings.getPercentageOfPassengersWithNoLuggage(),
-				luggageSettings.getPercentageOfPassengersWithSmallLuggage(),
-				luggageSettings.getPercentageOfPassengersWithMediumLuggage(),
-				luggageSettings.getPercentageOfPassengersWithBigLuggage() };
-
-		if ((luggagemodel[0] + luggagemodel[1] + luggagemodel[2] + luggagemodel[3]) == 0) {
-			cabin.getSimulationSettings().getLuggageProperties().setPercentageOfPassengersWithNoLuggage(100);
+		int count = 1;
+		for (TravelClass tc : cabin.getClasses()) {
+			if (tc.getName().isEmpty()) {
+				tc.setName(StringHelper.splitCamelCase(tc.getTravelOption().getName()) + " #" + count);
+			}
+			count++;
 		}
 
 		cabinViewPart = ViewPartHelper.getCabinView();
@@ -116,6 +135,7 @@ public class DrawCabinCommand extends CDTCommand {
 			propertyViewPart.updateUI(cabin);
 		} catch (NullPointerException e) {
 			Log.add(this, "No property view is visible!");
+			e.printStackTrace();
 		}
 
 		try {
@@ -123,12 +143,20 @@ public class DrawCabinCommand extends CDTCommand {
 			Log.add(this, "Cabin view checked and updated");
 		} catch (NullPointerException e) {
 			Log.add(this, "No cabin view is visible!");
+			e.printStackTrace();
 		}
 
 		/* This stores the cabin as an .XMI file into the local storage. */
-		EMFModelStore.store(cabin);
+		// TODO: DEACTIVATED
+		// EMFModelStore.store(cabin);
+
+		// HeatmapPart heatmap = ViewPartHelper.getHeatView();
+		// heatmap.setCabin(cabin);
 	}
 
+	/**
+	 * Repair boarding class assignments.
+	 */
 	private void repairBoardingClassAssignments() {
 		int i = 1;
 		for (TravelClass tc : cabin.getClasses()) {
@@ -137,22 +165,45 @@ public class DrawCabinCommand extends CDTCommand {
 		}
 	}
 
+	/**
+	 * Check foldable seats.
+	 */
 	private void checkFoldableSeats() {
 		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
-			if (cabin.getSimulationSettings().isBringYourOwnSeat()) {
-				seat.setCurrentlyFolded(true);
-			} else if (cabin.getSimulationSettings().isUseFoldableSeats()) {
-				if (seat.getLetter().contains("D")) {
-					seat.setCurrentlyFolded(true);
+
+			/* Bring your own seat */
+			if (cabin.getSimulationSettings().getLayoutConcept() == LayoutConcept.BRING_YOUR_OWN_SEAT) {
+				seat.setLayoutConcept(LayoutConcept.SIDWAYS_FOLDABLE_SEAT);
+
+				/* Sideways foldable seat */
+			} else if (cabin.getSimulationSettings().getLayoutConcept() == LayoutConcept.SIDWAYS_FOLDABLE_SEAT) {
+				/* Aisle seats are set foldable */
+				if (seat.getLetter().contains("C")) {
+					seat.setLayoutConcept(LayoutConcept.SIDWAYS_FOLDABLE_SEAT);
+				} else if (seat.getLetter().contains("D")) {
+					seat.setLayoutConcept(LayoutConcept.SIDWAYS_FOLDABLE_SEAT);
 				} else {
-					seat.setCurrentlyFolded(false);
+					seat.setLayoutConcept(LayoutConcept.DEFAULT);
+				}
+				/* Lifting seat pan */
+			} else if (cabin.getSimulationSettings().getLayoutConcept() == LayoutConcept.LIFTING_SEAT_PAN_SEATS) {
+				/* Aisle seats are set foldable */
+				if (seat.getLetter().contains("C")) {
+					seat.setLayoutConcept(LayoutConcept.LIFTING_SEAT_PAN_SEATS);
+				} else if (seat.getLetter().contains("D")) {
+					seat.setLayoutConcept(LayoutConcept.LIFTING_SEAT_PAN_SEATS);
+				} else {
+					seat.setLayoutConcept(LayoutConcept.DEFAULT);
 				}
 			} else {
-				seat.setCurrentlyFolded(false);
+				seat.setLayoutConcept(LayoutConcept.DEFAULT);
 			}
 		}
 	}
 
+	/**
+	 * Update travel class properties.
+	 */
 	private void updateTravelClassProperties() {
 		for (TravelClass travelclass : cabin.getClasses()) {
 
@@ -167,12 +218,15 @@ public class DrawCabinCommand extends CDTCommand {
 				travelclass.setPassengers(numberOfPax);
 			} else {
 
-				int loadFactor = (int) (travelclass.getPassengers() * 100.0 / travelclass.getAvailableSeats());
+				double loadFactor = Math.round(travelclass.getPassengers() * 100.0 / travelclass.getAvailableSeats());
 				travelclass.setLoadFactor(loadFactor);
 			}
 		}
 	}
 
+	/**
+	 * Repair row assignments.
+	 */
 	private void repairRowAssignments() {
 		int i = 1;
 		for (Row row : ModelHelper.getChildrenByClass(cabin, Row.class)) {
@@ -182,24 +236,51 @@ public class DrawCabinCommand extends CDTCommand {
 		}
 	}
 
+	/**
+	 * Check passenger assignments.
+	 */
 	private void checkPassengerAssignments() {
-		double passengersPerMinute = 30;
-		int i = 0;
+
+		Map<Integer, Double> delays = new HashMap<>();
+
 		for (Passenger passenger : cabin.getPassengers()) {
-			Seat seat = passenger.getSeatRef();
+			Seat seat = passenger.getSeat();
 
 			seat.setPassenger(passenger);
 
-			if (passenger.getSeat() != seat.getId()) {
-				passenger.setSeat(seat.getId());
+			if (passenger.getSeatID() != seat.getId()) {
+				passenger.setSeatID(seat.getId());
 				passenger.setName(passenger.getId() + " (" + seat.getName() + ")");
 			}
 			passenger.setTravelClass(ModelHelper.getParent(TravelClass.class, seat));
-			passenger.setStartBoardingAfterDelay(i * 60 / passengersPerMinute);
-			i++;
+
+			PassengerGenerator.applyDelay(passenger, delays);
+
+			// TODO: CONTINUE THIS!
+			// LuggageProperties lugg =
+			// cabin.getSimulationSettings().getLuggageProperties();
+			// double time = passenger.getLuggageStowTime();
+			//
+			// switch (passenger.getLuggage()) {
+			//
+			// case BIG:
+			// if (time != lugg.)
+			// break;
+			// case MEDIUM:
+			// break;
+			// case SMALL:
+			// break;
+			// case NONE:
+			// break;
+			//
+			// }
+
 		}
 	}
 
+	/**
+	 * Repair seat assignments.
+	 */
 	private void repairSeatAssignments() {
 
 		int seatCount = 1;
@@ -232,6 +313,11 @@ public class DrawCabinCommand extends CDTCommand {
 		System.out.println("Seat IDs reassigned.");
 	}
 
+	/**
+	 * Check cabin out of bounds.
+	 *
+	 * @return the boolean
+	 */
 	private Boolean checkCabinOutOfBounds() {
 		for (PhysicalObject object : ModelHelper.getChildrenByClass(cabin, PhysicalObject.class)) {
 			if (object.getYPosition() < 0 || object.getXPosition() < 0
@@ -243,6 +329,9 @@ public class DrawCabinCommand extends CDTCommand {
 		return false;
 	}
 
+	/**
+	 * Check too many seats in row.
+	 */
 	private void checkTooManySeatsInRow() {
 
 		for (Row row : ModelHelper.getChildrenByClass(cabin, Row.class)) {
@@ -266,6 +355,9 @@ public class DrawCabinCommand extends CDTCommand {
 		}
 	}
 
+	/**
+	 * Check for construction errors.
+	 */
 	private void checkForConstructionErrors() {
 
 		if (checkCabinOutOfBounds()) {

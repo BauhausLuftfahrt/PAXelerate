@@ -7,22 +7,32 @@ package net.bhl.cdt.paxelerate.model.observer;
 
 /**
  * TODO: Description
+ * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  */
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The Class Subject.
+ */
 public class Subject {
+	
+	/** The observers. */
 	private List<Observer> observers = new ArrayList<Observer>();
 	
 	/**
-	 * TODO: Description
+	 * TODO: Description.
 	 */
 	public Subject() {
 
 	}
 	
 	/**
-	 * TODO: Description
+	 * TODO: Description.
+	 *
+	 * @param o the o
 	 */
 	public void subscribe(Observer o)
 	{
@@ -31,7 +41,9 @@ public class Subject {
 	}
 	
 	/**
-	 * TODO: Description
+	 * TODO: Description.
+	 *
+	 * @param o the o
 	 */
 	public void unsubscribe(Observer o)
 	{
@@ -39,7 +51,9 @@ public class Subject {
 	}
 
 	/**
-	 * TODO: Description
+	 * TODO: Description.
+	 *
+	 * @param i the i
 	 */
 	public void notifyObservers(int i){
 		for (Observer o : observers) {

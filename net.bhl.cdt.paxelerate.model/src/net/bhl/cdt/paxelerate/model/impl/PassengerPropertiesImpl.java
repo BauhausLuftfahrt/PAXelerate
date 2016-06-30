@@ -37,6 +37,13 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getPassengerHeightDeviationFemale <em>Passenger Height Deviation Female</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getPassengerDepthMeanFemale <em>Passenger Depth Mean Female</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getPassengerDepthDeviationFemale <em>Passenger Depth Deviation Female</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getPassengerAggressiveMoodShare <em>Passenger Aggressive Mood Share</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getSeatInterferenceStandingUpPassengerWaitingTime <em>Seat Interference Standing Up Passenger Waiting Time</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getSeatInterferenceProcessTimeMean <em>Seat Interference Process Time Mean</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getSeatInterferenceProcessTimeDeviation <em>Seat Interference Process Time Deviation</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getSeatInterferenceProcessTimeFoldingSeatMean <em>Seat Interference Process Time Folding Seat Mean</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getSeatInterferenceProcessTimeFoldingSeatDeviation <em>Seat Interference Process Time Folding Seat Deviation</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getPassivePassengerWaitingTimeAfterCollision <em>Passive Passenger Waiting Time After Collision</em>}</li>
  * </ul>
  *
  * @generated
@@ -250,7 +257,7 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double PASSENGER_WIDTH_DEVIATION_FEMALE_EDEFAULT = 2.8;
+	protected static final double PASSENGER_WIDTH_DEVIATION_FEMALE_EDEFAULT = 1.0;
 
 	/**
 	 * The cached value of the '{@link #getPassengerWidthDeviationFemale() <em>Passenger Width Deviation Female</em>}' attribute.
@@ -383,9 +390,150 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 	protected double passengerDepthDeviationFemale = PASSENGER_DEPTH_DEVIATION_FEMALE_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getPassengerAggressiveMoodShare() <em>Passenger Aggressive Mood Share</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see #getPassengerAggressiveMoodShare()
 	 * @generated
+	 * @ordered
+	 */
+	protected static final int PASSENGER_AGGRESSIVE_MOOD_SHARE_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getPassengerAggressiveMoodShare() <em>Passenger Aggressive Mood Share</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassengerAggressiveMoodShare()
+	 * @generated
+	 * @ordered
+	 */
+	protected int passengerAggressiveMoodShare = PASSENGER_AGGRESSIVE_MOOD_SHARE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSeatInterferenceStandingUpPassengerWaitingTime() <em>Seat Interference Standing Up Passenger Waiting Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceStandingUpPassengerWaitingTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME_EDEFAULT = 3.0;
+
+	/**
+	 * The cached value of the '{@link #getSeatInterferenceStandingUpPassengerWaitingTime() <em>Seat Interference Standing Up Passenger Waiting Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceStandingUpPassengerWaitingTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected double seatInterferenceStandingUpPassengerWaitingTime = SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSeatInterferenceProcessTimeMean() <em>Seat Interference Process Time Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTimeMean()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double SEAT_INTERFERENCE_PROCESS_TIME_MEAN_EDEFAULT = 7.0;
+
+	/**
+	 * The cached value of the '{@link #getSeatInterferenceProcessTimeMean() <em>Seat Interference Process Time Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTimeMean()
+	 * @generated
+	 * @ordered
+	 */
+	protected double seatInterferenceProcessTimeMean = SEAT_INTERFERENCE_PROCESS_TIME_MEAN_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSeatInterferenceProcessTimeDeviation() <em>Seat Interference Process Time Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTimeDeviation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION_EDEFAULT = 1.5;
+
+	/**
+	 * The cached value of the '{@link #getSeatInterferenceProcessTimeDeviation() <em>Seat Interference Process Time Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTimeDeviation()
+	 * @generated
+	 * @ordered
+	 */
+	protected double seatInterferenceProcessTimeDeviation = SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSeatInterferenceProcessTimeFoldingSeatMean() <em>Seat Interference Process Time Folding Seat Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTimeFoldingSeatMean()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN_EDEFAULT = 5.0;
+
+	/**
+	 * The cached value of the '{@link #getSeatInterferenceProcessTimeFoldingSeatMean() <em>Seat Interference Process Time Folding Seat Mean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTimeFoldingSeatMean()
+	 * @generated
+	 * @ordered
+	 */
+	protected double seatInterferenceProcessTimeFoldingSeatMean = SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSeatInterferenceProcessTimeFoldingSeatDeviation() <em>Seat Interference Process Time Folding Seat Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTimeFoldingSeatDeviation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION_EDEFAULT = 1.0;
+
+	/**
+	 * The cached value of the '{@link #getSeatInterferenceProcessTimeFoldingSeatDeviation() <em>Seat Interference Process Time Folding Seat Deviation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceProcessTimeFoldingSeatDeviation()
+	 * @generated
+	 * @ordered
+	 */
+	protected double seatInterferenceProcessTimeFoldingSeatDeviation = SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPassivePassengerWaitingTimeAfterCollision() <em>Passive Passenger Waiting Time After Collision</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassivePassengerWaitingTimeAfterCollision()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION_EDEFAULT = 0.3;
+
+	/**
+	 * The cached value of the '{@link #getPassivePassengerWaitingTimeAfterCollision() <em>Passive Passenger Waiting Time After Collision</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassivePassengerWaitingTimeAfterCollision()
+	 * @generated
+	 * @ordered
+	 */
+	protected double passivePassengerWaitingTimeAfterCollision = PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION_EDEFAULT;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	protected PassengerPropertiesImpl() {
 		super();
@@ -393,8 +541,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the e class
+	 * @generated 
 	 */
 	@Override
 	protected EClass eStaticClass() {
@@ -403,8 +553,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger width mean male
+	 * @generated 
 	 */
 	public double getPassengerWidthMeanMale() {
 		return passengerWidthMeanMale;
@@ -412,8 +564,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerWidthMeanMale the new passenger width mean male
+	 * @generated 
 	 */
 	public void setPassengerWidthMeanMale(double newPassengerWidthMeanMale) {
 		double oldPassengerWidthMeanMale = passengerWidthMeanMale;
@@ -424,8 +578,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger width deviation male
+	 * @generated 
 	 */
 	public double getPassengerWidthDeviationMale() {
 		return passengerWidthDeviationMale;
@@ -433,8 +589,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerWidthDeviationMale the new passenger width deviation male
+	 * @generated 
 	 */
 	public void setPassengerWidthDeviationMale(double newPassengerWidthDeviationMale) {
 		double oldPassengerWidthDeviationMale = passengerWidthDeviationMale;
@@ -445,8 +603,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger weight mean male
+	 * @generated 
 	 */
 	public double getPassengerWeightMeanMale() {
 		return passengerWeightMeanMale;
@@ -454,8 +614,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerWeightMeanMale the new passenger weight mean male
+	 * @generated 
 	 */
 	public void setPassengerWeightMeanMale(double newPassengerWeightMeanMale) {
 		double oldPassengerWeightMeanMale = passengerWeightMeanMale;
@@ -466,8 +628,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger weight deviation male
+	 * @generated 
 	 */
 	public double getPassengerWeightDeviationMale() {
 		return passengerWeightDeviationMale;
@@ -475,8 +639,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerWeightDeviationMale the new passenger weight deviation male
+	 * @generated 
 	 */
 	public void setPassengerWeightDeviationMale(double newPassengerWeightDeviationMale) {
 		double oldPassengerWeightDeviationMale = passengerWeightDeviationMale;
@@ -487,8 +653,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger height mean male
+	 * @generated 
 	 */
 	public double getPassengerHeightMeanMale() {
 		return passengerHeightMeanMale;
@@ -496,8 +664,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerHeightMeanMale the new passenger height mean male
+	 * @generated 
 	 */
 	public void setPassengerHeightMeanMale(double newPassengerHeightMeanMale) {
 		double oldPassengerHeightMeanMale = passengerHeightMeanMale;
@@ -508,8 +678,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger height deviation male
+	 * @generated 
 	 */
 	public double getPassengerHeightDeviationMale() {
 		return passengerHeightDeviationMale;
@@ -517,8 +689,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerHeightDeviationMale the new passenger height deviation male
+	 * @generated 
 	 */
 	public void setPassengerHeightDeviationMale(double newPassengerHeightDeviationMale) {
 		double oldPassengerHeightDeviationMale = passengerHeightDeviationMale;
@@ -529,8 +703,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger depth mean male
+	 * @generated 
 	 */
 	public double getPassengerDepthMeanMale() {
 		return passengerDepthMeanMale;
@@ -538,8 +714,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerDepthMeanMale the new passenger depth mean male
+	 * @generated 
 	 */
 	public void setPassengerDepthMeanMale(double newPassengerDepthMeanMale) {
 		double oldPassengerDepthMeanMale = passengerDepthMeanMale;
@@ -550,8 +728,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger depth deviation male
+	 * @generated 
 	 */
 	public double getPassengerDepthDeviationMale() {
 		return passengerDepthDeviationMale;
@@ -559,8 +739,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerDepthDeviationMale the new passenger depth deviation male
+	 * @generated 
 	 */
 	public void setPassengerDepthDeviationMale(double newPassengerDepthDeviationMale) {
 		double oldPassengerDepthDeviationMale = passengerDepthDeviationMale;
@@ -571,8 +753,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the percentage of women
+	 * @generated 
 	 */
 	public double getPercentageOfWomen() {
 		return percentageOfWomen;
@@ -580,8 +764,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPercentageOfWomen the new percentage of women
+	 * @generated 
 	 */
 	public void setPercentageOfWomen(double newPercentageOfWomen) {
 		double oldPercentageOfWomen = percentageOfWomen;
@@ -592,8 +778,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger width mean female
+	 * @generated 
 	 */
 	public double getPassengerWidthMeanFemale() {
 		return passengerWidthMeanFemale;
@@ -601,8 +789,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerWidthMeanFemale the new passenger width mean female
+	 * @generated 
 	 */
 	public void setPassengerWidthMeanFemale(double newPassengerWidthMeanFemale) {
 		double oldPassengerWidthMeanFemale = passengerWidthMeanFemale;
@@ -613,8 +803,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger width deviation female
+	 * @generated 
 	 */
 	public double getPassengerWidthDeviationFemale() {
 		return passengerWidthDeviationFemale;
@@ -622,8 +814,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerWidthDeviationFemale the new passenger width deviation female
+	 * @generated 
 	 */
 	public void setPassengerWidthDeviationFemale(double newPassengerWidthDeviationFemale) {
 		double oldPassengerWidthDeviationFemale = passengerWidthDeviationFemale;
@@ -634,8 +828,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger weight mean female
+	 * @generated 
 	 */
 	public double getPassengerWeightMeanFemale() {
 		return passengerWeightMeanFemale;
@@ -643,8 +839,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerWeightMeanFemale the new passenger weight mean female
+	 * @generated 
 	 */
 	public void setPassengerWeightMeanFemale(double newPassengerWeightMeanFemale) {
 		double oldPassengerWeightMeanFemale = passengerWeightMeanFemale;
@@ -655,8 +853,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger weight deviation female
+	 * @generated 
 	 */
 	public double getPassengerWeightDeviationFemale() {
 		return passengerWeightDeviationFemale;
@@ -664,8 +864,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerWeightDeviationFemale the new passenger weight deviation female
+	 * @generated 
 	 */
 	public void setPassengerWeightDeviationFemale(double newPassengerWeightDeviationFemale) {
 		double oldPassengerWeightDeviationFemale = passengerWeightDeviationFemale;
@@ -676,8 +878,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger height mean female
+	 * @generated 
 	 */
 	public double getPassengerHeightMeanFemale() {
 		return passengerHeightMeanFemale;
@@ -685,8 +889,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerHeightMeanFemale the new passenger height mean female
+	 * @generated 
 	 */
 	public void setPassengerHeightMeanFemale(double newPassengerHeightMeanFemale) {
 		double oldPassengerHeightMeanFemale = passengerHeightMeanFemale;
@@ -697,8 +903,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger height deviation female
+	 * @generated 
 	 */
 	public double getPassengerHeightDeviationFemale() {
 		return passengerHeightDeviationFemale;
@@ -706,8 +914,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerHeightDeviationFemale the new passenger height deviation female
+	 * @generated 
 	 */
 	public void setPassengerHeightDeviationFemale(double newPassengerHeightDeviationFemale) {
 		double oldPassengerHeightDeviationFemale = passengerHeightDeviationFemale;
@@ -718,8 +928,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger depth mean female
+	 * @generated 
 	 */
 	public int getPassengerDepthMeanFemale() {
 		return passengerDepthMeanFemale;
@@ -727,8 +939,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerDepthMeanFemale the new passenger depth mean female
+	 * @generated 
 	 */
 	public void setPassengerDepthMeanFemale(int newPassengerDepthMeanFemale) {
 		int oldPassengerDepthMeanFemale = passengerDepthMeanFemale;
@@ -739,8 +953,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the passenger depth deviation female
+	 * @generated 
 	 */
 	public double getPassengerDepthDeviationFemale() {
 		return passengerDepthDeviationFemale;
@@ -748,8 +964,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newPassengerDepthDeviationFemale the new passenger depth deviation female
+	 * @generated 
 	 */
 	public void setPassengerDepthDeviationFemale(double newPassengerDepthDeviationFemale) {
 		double oldPassengerDepthDeviationFemale = passengerDepthDeviationFemale;
@@ -762,6 +980,158 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
+	 */
+	public int getPassengerAggressiveMoodShare() {
+		return passengerAggressiveMoodShare;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPassengerAggressiveMoodShare(int newPassengerAggressiveMoodShare) {
+		int oldPassengerAggressiveMoodShare = passengerAggressiveMoodShare;
+		passengerAggressiveMoodShare = newPassengerAggressiveMoodShare;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER_PROPERTIES__PASSENGER_AGGRESSIVE_MOOD_SHARE, oldPassengerAggressiveMoodShare, passengerAggressiveMoodShare));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getSeatInterferenceStandingUpPassengerWaitingTime() {
+		return seatInterferenceStandingUpPassengerWaitingTime;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatInterferenceStandingUpPassengerWaitingTime(double newSeatInterferenceStandingUpPassengerWaitingTime) {
+		double oldSeatInterferenceStandingUpPassengerWaitingTime = seatInterferenceStandingUpPassengerWaitingTime;
+		seatInterferenceStandingUpPassengerWaitingTime = newSeatInterferenceStandingUpPassengerWaitingTime;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME, oldSeatInterferenceStandingUpPassengerWaitingTime, seatInterferenceStandingUpPassengerWaitingTime));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getSeatInterferenceProcessTimeMean() {
+		return seatInterferenceProcessTimeMean;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatInterferenceProcessTimeMean(double newSeatInterferenceProcessTimeMean) {
+		double oldSeatInterferenceProcessTimeMean = seatInterferenceProcessTimeMean;
+		seatInterferenceProcessTimeMean = newSeatInterferenceProcessTimeMean;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN, oldSeatInterferenceProcessTimeMean, seatInterferenceProcessTimeMean));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getSeatInterferenceProcessTimeDeviation() {
+		return seatInterferenceProcessTimeDeviation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatInterferenceProcessTimeDeviation(double newSeatInterferenceProcessTimeDeviation) {
+		double oldSeatInterferenceProcessTimeDeviation = seatInterferenceProcessTimeDeviation;
+		seatInterferenceProcessTimeDeviation = newSeatInterferenceProcessTimeDeviation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION, oldSeatInterferenceProcessTimeDeviation, seatInterferenceProcessTimeDeviation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getSeatInterferenceProcessTimeFoldingSeatMean() {
+		return seatInterferenceProcessTimeFoldingSeatMean;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatInterferenceProcessTimeFoldingSeatMean(double newSeatInterferenceProcessTimeFoldingSeatMean) {
+		double oldSeatInterferenceProcessTimeFoldingSeatMean = seatInterferenceProcessTimeFoldingSeatMean;
+		seatInterferenceProcessTimeFoldingSeatMean = newSeatInterferenceProcessTimeFoldingSeatMean;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN, oldSeatInterferenceProcessTimeFoldingSeatMean, seatInterferenceProcessTimeFoldingSeatMean));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getSeatInterferenceProcessTimeFoldingSeatDeviation() {
+		return seatInterferenceProcessTimeFoldingSeatDeviation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeatInterferenceProcessTimeFoldingSeatDeviation(double newSeatInterferenceProcessTimeFoldingSeatDeviation) {
+		double oldSeatInterferenceProcessTimeFoldingSeatDeviation = seatInterferenceProcessTimeFoldingSeatDeviation;
+		seatInterferenceProcessTimeFoldingSeatDeviation = newSeatInterferenceProcessTimeFoldingSeatDeviation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION, oldSeatInterferenceProcessTimeFoldingSeatDeviation, seatInterferenceProcessTimeFoldingSeatDeviation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getPassivePassengerWaitingTimeAfterCollision() {
+		return passivePassengerWaitingTimeAfterCollision;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPassivePassengerWaitingTimeAfterCollision(double newPassivePassengerWaitingTimeAfterCollision) {
+		double oldPassivePassengerWaitingTimeAfterCollision = passivePassengerWaitingTimeAfterCollision;
+		passivePassengerWaitingTimeAfterCollision = newPassivePassengerWaitingTimeAfterCollision;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.PASSENGER_PROPERTIES__PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION, oldPassivePassengerWaitingTimeAfterCollision, passivePassengerWaitingTimeAfterCollision));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param resolve the resolve
+	 * @param coreType the core type
+	 * @return the object
+	 * @generated 
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
@@ -800,14 +1170,31 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 				return getPassengerDepthMeanFemale();
 			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE:
 				return getPassengerDepthDeviationFemale();
+			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_AGGRESSIVE_MOOD_SHARE:
+				return getPassengerAggressiveMoodShare();
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
+				return getSeatInterferenceStandingUpPassengerWaitingTime();
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN:
+				return getSeatInterferenceProcessTimeMean();
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION:
+				return getSeatInterferenceProcessTimeDeviation();
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN:
+				return getSeatInterferenceProcessTimeFoldingSeatMean();
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION:
+				return getSeatInterferenceProcessTimeFoldingSeatDeviation();
+			case CabinPackage.PASSENGER_PROPERTIES__PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION:
+				return getPassivePassengerWaitingTimeAfterCollision();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param newValue the new value
+	 * @generated 
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
@@ -863,14 +1250,37 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE:
 				setPassengerDepthDeviationFemale((Double)newValue);
 				return;
+			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_AGGRESSIVE_MOOD_SHARE:
+				setPassengerAggressiveMoodShare((Integer)newValue);
+				return;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
+				setSeatInterferenceStandingUpPassengerWaitingTime((Double)newValue);
+				return;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN:
+				setSeatInterferenceProcessTimeMean((Double)newValue);
+				return;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION:
+				setSeatInterferenceProcessTimeDeviation((Double)newValue);
+				return;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN:
+				setSeatInterferenceProcessTimeFoldingSeatMean((Double)newValue);
+				return;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION:
+				setSeatInterferenceProcessTimeFoldingSeatDeviation((Double)newValue);
+				return;
+			case CabinPackage.PASSENGER_PROPERTIES__PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION:
+				setPassivePassengerWaitingTimeAfterCollision((Double)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @generated 
 	 */
 	@Override
 	public void eUnset(int featureID) {
@@ -926,14 +1336,38 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE:
 				setPassengerDepthDeviationFemale(PASSENGER_DEPTH_DEVIATION_FEMALE_EDEFAULT);
 				return;
+			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_AGGRESSIVE_MOOD_SHARE:
+				setPassengerAggressiveMoodShare(PASSENGER_AGGRESSIVE_MOOD_SHARE_EDEFAULT);
+				return;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
+				setSeatInterferenceStandingUpPassengerWaitingTime(SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME_EDEFAULT);
+				return;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN:
+				setSeatInterferenceProcessTimeMean(SEAT_INTERFERENCE_PROCESS_TIME_MEAN_EDEFAULT);
+				return;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION:
+				setSeatInterferenceProcessTimeDeviation(SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION_EDEFAULT);
+				return;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN:
+				setSeatInterferenceProcessTimeFoldingSeatMean(SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN_EDEFAULT);
+				return;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION:
+				setSeatInterferenceProcessTimeFoldingSeatDeviation(SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION_EDEFAULT);
+				return;
+			case CabinPackage.PASSENGER_PROPERTIES__PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION:
+				setPassivePassengerWaitingTimeAfterCollision(PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @return true, if successful
+	 * @generated 
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
@@ -972,14 +1406,30 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 				return passengerDepthMeanFemale != PASSENGER_DEPTH_MEAN_FEMALE_EDEFAULT;
 			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_DEPTH_DEVIATION_FEMALE:
 				return passengerDepthDeviationFemale != PASSENGER_DEPTH_DEVIATION_FEMALE_EDEFAULT;
+			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_AGGRESSIVE_MOOD_SHARE:
+				return passengerAggressiveMoodShare != PASSENGER_AGGRESSIVE_MOOD_SHARE_EDEFAULT;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME:
+				return seatInterferenceStandingUpPassengerWaitingTime != SEAT_INTERFERENCE_STANDING_UP_PASSENGER_WAITING_TIME_EDEFAULT;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_MEAN:
+				return seatInterferenceProcessTimeMean != SEAT_INTERFERENCE_PROCESS_TIME_MEAN_EDEFAULT;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION:
+				return seatInterferenceProcessTimeDeviation != SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION_EDEFAULT;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN:
+				return seatInterferenceProcessTimeFoldingSeatMean != SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN_EDEFAULT;
+			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION:
+				return seatInterferenceProcessTimeFoldingSeatDeviation != SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION_EDEFAULT;
+			case CabinPackage.PASSENGER_PROPERTIES__PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION:
+				return passivePassengerWaitingTimeAfterCollision != PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the string
+	 * @generated 
 	 */
 	@Override
 	public String toString() {
@@ -1020,6 +1470,20 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 		result.append(passengerDepthMeanFemale);
 		result.append(", passengerDepthDeviationFemale: ");
 		result.append(passengerDepthDeviationFemale);
+		result.append(", passengerAggressiveMoodShare: ");
+		result.append(passengerAggressiveMoodShare);
+		result.append(", seatInterferenceStandingUpPassengerWaitingTime: ");
+		result.append(seatInterferenceStandingUpPassengerWaitingTime);
+		result.append(", seatInterferenceProcessTimeMean: ");
+		result.append(seatInterferenceProcessTimeMean);
+		result.append(", seatInterferenceProcessTimeDeviation: ");
+		result.append(seatInterferenceProcessTimeDeviation);
+		result.append(", seatInterferenceProcessTimeFoldingSeatMean: ");
+		result.append(seatInterferenceProcessTimeFoldingSeatMean);
+		result.append(", seatInterferenceProcessTimeFoldingSeatDeviation: ");
+		result.append(seatInterferenceProcessTimeFoldingSeatDeviation);
+		result.append(", passivePassengerWaitingTimeAfterCollision: ");
+		result.append(passivePassengerWaitingTimeAfterCollision);
 		result.append(')');
 		return result.toString();
 	}

@@ -59,8 +59,9 @@ public class CrewMemberImpl extends MinimalEObjectImpl.Container implements Crew
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	protected CrewMemberImpl() {
 		super();
@@ -68,8 +69,10 @@ public class CrewMemberImpl extends MinimalEObjectImpl.Container implements Crew
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the e class
+	 * @generated 
 	 */
 	@Override
 	protected EClass eStaticClass() {
@@ -78,8 +81,10 @@ public class CrewMemberImpl extends MinimalEObjectImpl.Container implements Crew
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the id
+	 * @generated 
 	 */
 	public int getId() {
 		return id;
@@ -87,8 +92,10 @@ public class CrewMemberImpl extends MinimalEObjectImpl.Container implements Crew
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newId the new id
+	 * @generated 
 	 */
 	public void setId(int newId) {
 		int oldId = id;
@@ -99,8 +106,10 @@ public class CrewMemberImpl extends MinimalEObjectImpl.Container implements Crew
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the seat
+	 * @generated 
 	 */
 	public Seat getSeat() {
 		if (seat != null && seat.eIsProxy()) {
@@ -116,8 +125,10 @@ public class CrewMemberImpl extends MinimalEObjectImpl.Container implements Crew
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the seat
+	 * @generated 
 	 */
 	public Seat basicGetSeat() {
 		return seat;
@@ -125,8 +136,10 @@ public class CrewMemberImpl extends MinimalEObjectImpl.Container implements Crew
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param newSeat the new seat
+	 * @generated 
 	 */
 	public void setSeat(Seat newSeat) {
 		Seat oldSeat = seat;
@@ -137,8 +150,13 @@ public class CrewMemberImpl extends MinimalEObjectImpl.Container implements Crew
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param resolve the resolve
+	 * @param coreType the core type
+	 * @return the object
+	 * @generated 
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
@@ -154,8 +172,11 @@ public class CrewMemberImpl extends MinimalEObjectImpl.Container implements Crew
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param newValue the new value
+	 * @generated 
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
@@ -172,8 +193,10 @@ public class CrewMemberImpl extends MinimalEObjectImpl.Container implements Crew
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @generated 
 	 */
 	@Override
 	public void eUnset(int featureID) {
@@ -190,8 +213,11 @@ public class CrewMemberImpl extends MinimalEObjectImpl.Container implements Crew
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @return true, if successful
+	 * @generated 
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
@@ -206,8 +232,10 @@ public class CrewMemberImpl extends MinimalEObjectImpl.Container implements Crew
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @return the string
+	 * @generated 
 	 */
 	@Override
 	public String toString() {

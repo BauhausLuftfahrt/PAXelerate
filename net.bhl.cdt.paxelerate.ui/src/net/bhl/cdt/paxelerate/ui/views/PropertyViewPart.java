@@ -20,13 +20,14 @@ import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
 import net.bhl.cdt.paxelerate.model.LuggageSize;
 import net.bhl.cdt.paxelerate.model.Passenger;
+import net.bhl.cdt.paxelerate.model.PassengerMood;
 import net.bhl.cdt.paxelerate.model.Sex;
 import net.bhl.cdt.paxelerate.model.storage.AgeStorage;
 import net.bhl.cdt.paxelerate.model.storage.GaussianStorage;
 import net.bhl.cdt.paxelerate.model.storage.StorageHandler;
 import net.bhl.cdt.paxelerate.model.storage.StorageHandler.StoreType;
-import net.bhl.cdt.paxelerate.ui.color.ColorHelper;
-import net.bhl.cdt.paxelerate.ui.font.FontHelper;
+import net.bhl.cdt.paxelerate.ui.graphics.ColorHelper;
+import net.bhl.cdt.paxelerate.ui.graphics.FontHelper;
 import net.bhl.cdt.paxelerate.ui.graphics.SWTHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
@@ -34,26 +35,42 @@ import net.bhl.cdt.paxelerate.util.math.Vector2D;
 /**
  * This class represents the cabin view. All graphics generation is done here.
  * 
- * @author marc.engelmann
+ * @author marc.engelmann, michael.schmidt
  * @version 1.0
+ * @since 0.5
  *
  */
 
 public class PropertyViewPart extends ViewPart {
 
+	/** The names. */
 	private String[] names = { "M,", "F" };
+
+	/** The names. */
+	private String[] moods = { "passive", "aggressive" };
+
+	/** The parent. */
 	private Composite parent;
+
+	/** The canvas. */
 	private Canvas canvas;
+
+	/** The cabin. */
 	private Cabin cabin;
 
+	/** The property store. */
 	private StorageHandler propertyStore = new StorageHandler();
 
-	private final static int BAR_HEIGHT = 15, DEVIATION_BAR_HEIGHT = 2, ITEM_SPACE = 30, HEADER_SPACE = 20;
+	/** The Constant HEADER_SPACE. */
+	private static final int BAR_HEIGHT = 15, DEVIATION_BAR_HEIGHT = 2, ITEM_SPACE = 30, HEADER_SPACE = 20;
 
+	/** The Constant AVG_VALUE. */
 	private static final double AVG_VALUE = 0.25;
 
+	/** The pos. */
 	private int pos = 0;
 
+	/** The dim. */
 	private Vector dim = new Vector2D(0, 0);
 
 	/**
@@ -64,14 +81,14 @@ public class PropertyViewPart extends ViewPart {
 	 *            is the parent element
 	 */
 	@Override
-	public void createPartControl(final Composite parent) {
+	public final void createPartControl(final Composite parent) {
 		this.parent = parent;
 		cabin = CabinFactory.eINSTANCE.createCabin();
 		canvas = new Canvas(parent, SWT.DOUBLE_BUFFERED);
 
 		parent.addListener(SWT.Resize, new Listener() {
 			@Override
-			public void handleEvent(Event e) {
+			public void handleEvent(final Event e) {
 				dim.setX(parent.getSize().x);
 				dim.setY(parent.getSize().y);
 			}
@@ -112,18 +129,34 @@ public class PropertyViewPart extends ViewPart {
 
 					e.gc.setBackground(ColorHelper.PASSENGER_MALE);
 
-					e.gc.fillRectangle(0, pos,
-							(int) (dim.getX() * propertyStore.getPercentageOfPassengers(Sex.MALE)), BAR_HEIGHT);
+					e.gc.fillRectangle(0, pos, (int) (dim.getX() * propertyStore.getPercentageOfPassengers(Sex.MALE)),
+							BAR_HEIGHT);
 					e.gc.drawText(names[0], 5, pos, true);
 
 					e.gc.setBackground(ColorHelper.PASSEMGER_FEMALE);
-					e.gc.fillRectangle((int) (dim.getX() * propertyStore.getPercentageOfPassengers(Sex.MALE)),
-							pos, (int) (dim.getX() * propertyStore.getPercentageOfPassengers(Sex.FEMALE)),
-							BAR_HEIGHT);
+					e.gc.fillRectangle((int) (dim.getX() * propertyStore.getPercentageOfPassengers(Sex.MALE)), pos,
+							(int) (dim.getX() * propertyStore.getPercentageOfPassengers(Sex.FEMALE)), BAR_HEIGHT);
 					e.gc.drawText(names[1], (dim.getX()) - e.gc.textExtent(names[1]).x - 5, pos, true);
-
 					addLabel(e, propertyStore.getPercentageOfPassengers(Sex.MALE) * 100,
 							propertyStore.getPercentageOfPassengers(Sex.MALE), LabelClass.PERCENTAGE, 0);
+
+					/* ********************************************* */
+					pos += ITEM_SPACE;
+					addHeadline(e, "Mood");
+
+					double passiveShare = propertyStore.getMoodStore().getMoodPercentage(PassengerMood.PASSIVE);
+					double aggressiveShare = propertyStore.getMoodStore().getMoodPercentage(PassengerMood.AGGRESSIVE);
+
+					e.gc.setBackground(ColorHelper.MODD_PASSIVE);
+					e.gc.fillRectangle(0, pos, (int) (dim.getX() * passiveShare), BAR_HEIGHT);
+					e.gc.drawText(moods[0], 5, pos, true);
+
+					e.gc.setBackground(ColorHelper.MOOD_AGGRESSIVE);
+					e.gc.fillRectangle((int) (dim.getX() * passiveShare), pos, (int) (dim.getX() * (aggressiveShare)),
+							BAR_HEIGHT);
+					e.gc.drawText(moods[1], (dim.getX()) - e.gc.textExtent(moods[1]).x - 5, pos, true);
+
+					addLabel(e, passiveShare * 100, passiveShare, LabelClass.PERCENTAGE, 0);
 
 					/* ********************************************* */
 					pos += ITEM_SPACE;
@@ -141,18 +174,15 @@ public class PropertyViewPart extends ViewPart {
 					e.gc.fillRectangle(0, pos, (int) (dim.getX() * noLug), BAR_HEIGHT);
 
 					e.gc.setBackground(ColorHelper.LUGGAGE_SMALL);
-					e.gc.fillRectangle((int) (dim.getX() * noLug), pos, (int) (dim.getX() * smallLug),
-							BAR_HEIGHT);
+					e.gc.fillRectangle((int) (dim.getX() * noLug), pos, (int) (dim.getX() * smallLug), BAR_HEIGHT);
 
 					e.gc.setBackground(ColorHelper.LUGGAGE_MEDIUM);
 					e.gc.fillRectangle((int) (dim.getX() * noLug + dim.getX() * smallLug), pos,
 							(int) (dim.getX() * medLug), BAR_HEIGHT);
 
 					e.gc.setBackground(ColorHelper.LUGGAGE_LARGE);
-					e.gc.fillRectangle(
-							(int) (dim.getX() * noLug + dim.getX() * medLug
-									+ dim.getX() * smallLug),
-							pos, (int) (dim.getX() * bigLug), BAR_HEIGHT);
+					e.gc.fillRectangle((int) (dim.getX() * noLug + dim.getX() * medLug + dim.getX() * smallLug), pos,
+							(int) (dim.getX() * bigLug), BAR_HEIGHT);
 
 					addLabel(e, noLug * 100, noLug, LabelClass.PERCENTAGE, 0);
 					addLabel(e, (noLug + smallLug) * 100, smallLug + noLug, LabelClass.PERCENTAGE, 0);
@@ -180,16 +210,34 @@ public class PropertyViewPart extends ViewPart {
 			});
 		} catch (IllegalArgumentException e) {
 			System.out.println("illegal argument exception!");
-
+			e.printStackTrace();
 		}
 	}
 
-	private void addHeadline(PaintEvent e, String headline) {
+	/**
+	 * Adds the headline.
+	 *
+	 * @param e
+	 *            the e
+	 * @param headline
+	 *            the headline
+	 */
+	private void addHeadline(final PaintEvent e, final String headline) {
 		e.gc.drawText(headline, 5, pos, true);
 		pos += HEADER_SPACE;
 	}
 
-	public void createFunctionBlock(String headline, PaintEvent e, AgeStorage store) {
+	/**
+	 * Creates the function block.
+	 *
+	 * @param headline
+	 *            the headline
+	 * @param e
+	 *            the e
+	 * @param store
+	 *            the store
+	 */
+	public final void createFunctionBlock(final String headline, final PaintEvent e, final AgeStorage store) {
 
 		addHeadline(e, headline);
 
@@ -213,7 +261,24 @@ public class PropertyViewPart extends ViewPart {
 		addLabel(e, store.getAverageAge(null), (store.getAverageAge(null) - min) / steps, LabelClass.VALUE, -10);
 	}
 
-	private void drawFunction(PaintEvent e, AgeStorage store, Sex sex, int steps, int min, int max) {
+	/**
+	 * Draw function.
+	 *
+	 * @param e
+	 *            the e
+	 * @param store
+	 *            the store
+	 * @param sex
+	 *            the sex
+	 * @param steps
+	 *            the steps
+	 * @param min
+	 *            the min
+	 * @param max
+	 *            the max
+	 */
+	private void drawFunction(final PaintEvent e, final AgeStorage store, final Sex sex, final int steps, final int min,
+			final int max) {
 
 		int maximum = store.getMaximumAmount(sex), i = 0, x1 = 0, y1 = pos, x2 = 0, y2 = 0;
 		if (maximum == 0) {
@@ -243,7 +308,17 @@ public class PropertyViewPart extends ViewPart {
 		e.gc.setForeground(ColorHelper.BLACK);
 	}
 
-	private void createDeviationBlock(String headline, PaintEvent e, GaussianStorage store) {
+	/**
+	 * Creates the deviation block.
+	 *
+	 * @param headline
+	 *            the headline
+	 * @param e
+	 *            the e
+	 * @param store
+	 *            the store
+	 */
+	private void createDeviationBlock(final String headline, final PaintEvent e, final GaussianStorage store) {
 
 		addHeadline(e, headline);
 
@@ -270,7 +345,22 @@ public class PropertyViewPart extends ViewPart {
 				store.getMinimum(Sex.FEMALE), store.getMaximum(Sex.FEMALE));
 	}
 
-	private void addLabel(PaintEvent e, double labelValue, double relativePosition, LabelClass labelClass, int offset) {
+	/**
+	 * Adds the label.
+	 *
+	 * @param e
+	 *            the e
+	 * @param labelValue
+	 *            the label value
+	 * @param relativePosition
+	 *            the relative position
+	 * @param labelClass
+	 *            the label class
+	 * @param offset
+	 *            the offset
+	 */
+	private void addLabel(final PaintEvent e, final double labelValue, final double relativePosition,
+			final LabelClass labelClass, final int offset) {
 
 		e.gc.setFont(FontHelper.PARAGRAPH);
 
@@ -291,14 +381,28 @@ public class PropertyViewPart extends ViewPart {
 		e.gc.setFont(FontHelper.HEADING3);
 	}
 
-	private void createDeviationLine(PaintEvent e, double leftFactor, double rightFactor, double rightLabel,
-			double leftLabel) {
+	/**
+	 * Creates the deviation line.
+	 *
+	 * @param e
+	 *            the e
+	 * @param leftFactor
+	 *            the left factor
+	 * @param rightFactor
+	 *            the right factor
+	 * @param rightLabel
+	 *            the right label
+	 * @param leftLabel
+	 *            the left label
+	 */
+	private void createDeviationLine(final PaintEvent e, final double leftFactor, final double rightFactor,
+			final double rightLabel, final double leftLabel) {
 
 		e.gc.setForeground(ColorHelper.GREY_DARK);
 		e.gc.setLineWidth(2);
 
-		e.gc.drawLine((int) (dim.getX() * leftFactor), pos + BAR_HEIGHT / 2,
-				(int) (dim.getX() * rightFactor), pos + BAR_HEIGHT / 2);
+		e.gc.drawLine((int) (dim.getX() * leftFactor), pos + BAR_HEIGHT / 2, (int) (dim.getX() * rightFactor),
+				pos + BAR_HEIGHT / 2);
 		e.gc.drawLine((int) (dim.getX() * leftFactor), pos + BAR_HEIGHT / 2 - DEVIATION_BAR_HEIGHT,
 				(int) (dim.getX() * leftFactor), pos + BAR_HEIGHT / 2 + DEVIATION_BAR_HEIGHT);
 		e.gc.drawLine((int) (dim.getX() * rightFactor), pos + BAR_HEIGHT / 2 - DEVIATION_BAR_HEIGHT,
@@ -311,12 +415,21 @@ public class PropertyViewPart extends ViewPart {
 		e.gc.setForeground(ColorHelper.BLACK);
 	}
 
-	public void updateUI(Cabin cabin) {
+	/**
+	 * Update ui.
+	 *
+	 * @param cabin
+	 *            the cabin
+	 */
+	public final void updateUI(final Cabin cabin) {
 		this.cabin = cabin;
 		loopPassengers();
 		doTheDraw();
 	}
 
+	/**
+	 * Loop passengers.
+	 */
 	private void loopPassengers() {
 
 		propertyStore.clear();
@@ -326,13 +439,25 @@ public class PropertyViewPart extends ViewPart {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.ui.part.WorkbenchPart#setFocus()
+	 */
 	@Override
 	public void setFocus() {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
+	/**
+	 * The Enum LabelClass.
+	 */
 	private enum LabelClass {
-		PERCENTAGE, VALUE
+
+		/** The percentage. */
+		PERCENTAGE,
+		/** The value. */
+		VALUE
 	}
 }

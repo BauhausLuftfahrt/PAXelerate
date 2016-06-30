@@ -19,10 +19,10 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getAge <em>Age</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getWeight <em>Weight</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getDoor <em>Door</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getSeat <em>Seat</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getSeatID <em>Seat ID</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getName <em>Name</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getBoardingTime <em>Boarding Time</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getSeatRef <em>Seat Ref</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getSeat <em>Seat</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getWidth <em>Width</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getDepth <em>Depth</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getOrientationInDegree <em>Orientation In Degree</em>}</li>
@@ -31,13 +31,16 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#isIsSeated <em>Is Seated</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getWalkingSpeed <em>Walking Speed</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getStartBoardingAfterDelay <em>Start Boarding After Delay</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getNumberOfWaits <em>Number Of Waits</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getLuggageStowTime <em>Luggage Stow Time</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getLuggageStowingDistance <em>Luggage Stowing Distance</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getLuggageStowDistance <em>Luggage Stow Distance</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getTravelClass <em>Travel Class</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getPassengerMood <em>Passenger Mood</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getNumberOfWaits <em>Number Of Waits</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getNumberOfMakeWayOperations <em>Number Of Make Way Operations</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getDistanceWalked <em>Distance Walked</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getLuggage <em>Luggage</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getCostOfPath <em>Cost Of Path</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Passenger#getTotalTimeWaited <em>Total Time Waited</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassenger()
@@ -101,30 +104,30 @@ public interface Passenger extends EObject {
 	void setSex(Sex value);
 
 	/**
-	 * Returns the value of the '<em><b>Seat</b></em>' attribute.
+	 * Returns the value of the '<em><b>Seat</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Seat</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Seat</em>' attribute.
-	 * @see #setSeat(int)
+	 * @return the value of the '<em>Seat</em>' reference.
+	 * @see #setSeat(Seat)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassenger_Seat()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
-	int getSeat();
+	Seat getSeat();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Passenger#getSeat <em>Seat</em>}' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Passenger#getSeat <em>Seat</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Seat</em>' attribute.
+	 * @param value the new value of the '<em>Seat</em>' reference.
 	 * @see #getSeat()
 	 * @generated
 	 */
-	void setSeat(int value);
+	void setSeat(Seat value);
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -162,12 +165,12 @@ public interface Passenger extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Boarding Time</em>' attribute.
-	 * @see #setBoardingTime(int)
+	 * @see #setBoardingTime(double)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassenger_BoardingTime()
 	 * @model
 	 * @generated
 	 */
-	int getBoardingTime();
+	double getBoardingTime();
 
 	/**
 	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Passenger#getBoardingTime <em>Boarding Time</em>}' attribute.
@@ -177,33 +180,7 @@ public interface Passenger extends EObject {
 	 * @see #getBoardingTime()
 	 * @generated
 	 */
-	void setBoardingTime(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Seat Ref</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Seat Ref</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Seat Ref</em>' reference.
-	 * @see #setSeatRef(Seat)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassenger_SeatRef()
-	 * @model required="true"
-	 * @generated
-	 */
-	Seat getSeatRef();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Passenger#getSeatRef <em>Seat Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Seat Ref</em>' reference.
-	 * @see #getSeatRef()
-	 * @generated
-	 */
-	void setSeatRef(Seat value);
+	void setBoardingTime(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Width</b></em>' attribute.
@@ -471,30 +448,30 @@ public interface Passenger extends EObject {
 	void setLuggageStowTime(double value);
 
 	/**
-	 * Returns the value of the '<em><b>Luggage Stowing Distance</b></em>' attribute.
+	 * Returns the value of the '<em><b>Luggage Stow Distance</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Luggage Stowing Distance</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Luggage Stow Distance</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Luggage Stowing Distance</em>' attribute.
-	 * @see #setLuggageStowingDistance(double)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassenger_LuggageStowingDistance()
+	 * @return the value of the '<em>Luggage Stow Distance</em>' attribute.
+	 * @see #setLuggageStowDistance(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassenger_LuggageStowDistance()
 	 * @model
 	 * @generated
 	 */
-	double getLuggageStowingDistance();
+	double getLuggageStowDistance();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Passenger#getLuggageStowingDistance <em>Luggage Stowing Distance</em>}' attribute.
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Passenger#getLuggageStowDistance <em>Luggage Stow Distance</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Luggage Stowing Distance</em>' attribute.
-	 * @see #getLuggageStowingDistance()
+	 * @param value the new value of the '<em>Luggage Stow Distance</em>' attribute.
+	 * @see #getLuggageStowDistance()
 	 * @generated
 	 */
-	void setLuggageStowingDistance(double value);
+	void setLuggageStowDistance(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Travel Class</b></em>' reference.
@@ -608,6 +585,87 @@ public interface Passenger extends EObject {
 	void setLuggage(LuggageSize value);
 
 	/**
+	 * Returns the value of the '<em><b>Distance Walked</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Distance Walked</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Distance Walked</em>' attribute.
+	 * @see #setDistanceWalked(int)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassenger_DistanceWalked()
+	 * @model default="0"
+	 * @generated
+	 */
+	int getDistanceWalked();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Passenger#getDistanceWalked <em>Distance Walked</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Distance Walked</em>' attribute.
+	 * @see #getDistanceWalked()
+	 * @generated
+	 */
+	void setDistanceWalked(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Cost Of Path</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Cost Of Path</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Cost Of Path</em>' attribute.
+	 * @see #setCostOfPath(int)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassenger_CostOfPath()
+	 * @model default="0"
+	 * @generated
+	 */
+	int getCostOfPath();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Passenger#getCostOfPath <em>Cost Of Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cost Of Path</em>' attribute.
+	 * @see #getCostOfPath()
+	 * @generated
+	 */
+	void setCostOfPath(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Total Time Waited</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Total Time Waited</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Total Time Waited</em>' attribute.
+	 * @see #setTotalTimeWaited(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassenger_TotalTimeWaited()
+	 * @model default="0"
+	 * @generated
+	 */
+	double getTotalTimeWaited();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Passenger#getTotalTimeWaited <em>Total Time Waited</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Total Time Waited</em>' attribute.
+	 * @see #getTotalTimeWaited()
+	 * @generated
+	 */
+	void setTotalTimeWaited(double value);
+
+	/**
 	 * Returns the value of the '<em><b>Height</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -710,5 +768,31 @@ public interface Passenger extends EObject {
 	 * @generated
 	 */
 	void setDoor(Door value);
+
+	/**
+	 * Returns the value of the '<em><b>Seat ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Seat ID</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Seat ID</em>' attribute.
+	 * @see #setSeatID(int)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassenger_SeatID()
+	 * @model
+	 * @generated
+	 */
+	int getSeatID();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Passenger#getSeatID <em>Seat ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Seat ID</em>' attribute.
+	 * @see #getSeatID()
+	 * @generated
+	 */
+	void setSeatID(int value);
 
 } // Passenger

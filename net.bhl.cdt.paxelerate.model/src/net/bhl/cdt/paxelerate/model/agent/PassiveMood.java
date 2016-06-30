@@ -9,23 +9,44 @@ import net.bhl.cdt.paxelerate.model.astar.AStarHelper;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 
 /**
- * 
- * @author marc.engelmann, tobias.bruegge-zobel
+ * The Class PassiveMood.
  *
+ * @author marc.engelmann, tobias.bruegge-zobel, michael.schmidt
+ * @version 1.1
+ * @since 0.5
  */
 public class PassiveMood extends AgentMood implements Strategy {
 
+	/**
+	 * Instantiates a new passive mood.
+	 *
+	 * @param agent
+	 *            the agent
+	 */
 	public PassiveMood(Agent agent) {
 		super(agent);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.bhl.cdt.paxelerate.model.agent.AgentMood#reactToCollision(net.bhl.cdt
+	 * .paxelerate.model.astar.Node.Property)
+	 */
 	@SuppressWarnings("static-access")
 	@Override
 	public void reactToCollision(Property property) {
 
 		try {
-			super.getAgent().getThread().sleep(AStarHelper.time(1));
+			/* agent waits for specific time before he continues walking */
+			super.getAgent().getThread().sleep(AStarHelper
+					.time(super.getAgent().getWaitingTimeAfterCollision()));
 		} catch (InterruptedException e) {
+			e.printStackTrace();
+			System.out.println("InterruptedException @ thread "
+					+ Thread.currentThread().getName());
+			Thread.currentThread().interrupt();
 		}
 		super.getAgent().setExitPathLoop(false);
 

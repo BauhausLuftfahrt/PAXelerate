@@ -19,9 +19,10 @@ import net.bhl.cdt.model.NamedElement;
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getYDimension <em>YDimension</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getRowNonexistent <em>Row Nonexistent</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getAisleWidth <em>Aisle Width</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getFramesPerSecond <em>Frames Per Second</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getNumberOfDecks <em>Number Of Decks</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getAircraftType <em>Aircraft Type</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getSimulationSettings <em>Simulation Settings</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getSimulationResults <em>Simulation Results</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getClasses <em>Classes</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getDoors <em>Doors</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getLavatories <em>Lavatories</em>}</li>
@@ -30,10 +31,6 @@ import net.bhl.cdt.model.NamedElement;
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getCurtains <em>Curtains</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getStowages <em>Stowages</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getPassengers <em>Passengers</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getScale <em>Scale</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getAircraftType <em>Aircraft Type</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#isUsePresetSettings <em>Use Preset Settings</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.Cabin#getSpeedFactor <em>Speed Factor</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getCabin()
@@ -193,60 +190,6 @@ public interface Cabin extends NamedElement {
 	EList<Stowage> getStowages();
 
 	/**
-	 * Returns the value of the '<em><b>Scale</b></em>' attribute.
-	 * The default value is <code>"10"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Scale</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Scale</em>' attribute.
-	 * @see #setScale(int)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getCabin_Scale()
-	 * @model default="10"
-	 * @generated
-	 */
-	int getScale();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Cabin#getScale <em>Scale</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Scale</em>' attribute.
-	 * @see #getScale()
-	 * @generated
-	 */
-	void setScale(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Frames Per Second</b></em>' attribute.
-	 * The default value is <code>"5"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Frames Per Second</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Frames Per Second</em>' attribute.
-	 * @see #setFramesPerSecond(int)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getCabin_FramesPerSecond()
-	 * @model default="5"
-	 * @generated
-	 */
-	int getFramesPerSecond();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Cabin#getFramesPerSecond <em>Frames Per Second</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Frames Per Second</em>' attribute.
-	 * @see #getFramesPerSecond()
-	 * @generated
-	 */
-	void setFramesPerSecond(int value);
-
-	/**
 	 * Returns the value of the '<em><b>Passengers</b></em>' containment reference list.
 	 * The list contents are of type {@link net.bhl.cdt.paxelerate.model.Passenger}.
 	 * <!-- begin-user-doc -->
@@ -261,6 +204,32 @@ public interface Cabin extends NamedElement {
 	 * @generated
 	 */
 	EList<Passenger> getPassengers();
+
+	/**
+	 * Returns the value of the '<em><b>Simulation Results</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Simulation Results</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Simulation Results</em>' containment reference.
+	 * @see #setSimulationResults(SimulationResult)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getCabin_SimulationResults()
+	 * @model containment="true"
+	 * @generated
+	 */
+	SimulationResult getSimulationResults();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Cabin#getSimulationResults <em>Simulation Results</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Simulation Results</em>' containment reference.
+	 * @see #getSimulationResults()
+	 * @generated
+	 */
+	void setSimulationResults(SimulationResult value);
 
 	/**
 	 * Returns the value of the '<em><b>Number Of Decks</b></em>' attribute.
@@ -291,6 +260,7 @@ public interface Cabin extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Aircraft Type</b></em>' attribute.
+	 * The default value is <code>"narrowbody"</code>.
 	 * The literals are from the enumeration {@link net.bhl.cdt.paxelerate.model.AircraftType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -302,7 +272,7 @@ public interface Cabin extends NamedElement {
 	 * @see net.bhl.cdt.paxelerate.model.AircraftType
 	 * @see #setAircraftType(AircraftType)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getCabin_AircraftType()
-	 * @model
+	 * @model default="narrowbody" required="true"
 	 * @generated
 	 */
 	AircraftType getAircraftType();
@@ -319,79 +289,26 @@ public interface Cabin extends NamedElement {
 	void setAircraftType(AircraftType value);
 
 	/**
-	 * Returns the value of the '<em><b>Use Preset Settings</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Use Preset Settings</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Use Preset Settings</em>' attribute.
-	 * @see #setUsePresetSettings(boolean)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getCabin_UsePresetSettings()
-	 * @model default="false"
-	 * @generated
-	 */
-	boolean isUsePresetSettings();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Cabin#isUsePresetSettings <em>Use Preset Settings</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Use Preset Settings</em>' attribute.
-	 * @see #isUsePresetSettings()
-	 * @generated
-	 */
-	void setUsePresetSettings(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Speed Factor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Speed Factor</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Speed Factor</em>' attribute.
-	 * @see #setSpeedFactor(int)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getCabin_SpeedFactor()
-	 * @model
-	 * @generated
-	 */
-	int getSpeedFactor();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Cabin#getSpeedFactor <em>Speed Factor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Speed Factor</em>' attribute.
-	 * @see #getSpeedFactor()
-	 * @generated
-	 */
-	void setSpeedFactor(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Simulation Settings</b></em>' reference.
+	 * Returns the value of the '<em><b>Simulation Settings</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Simulation Settings</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Simulation Settings</em>' reference.
+	 * @return the value of the '<em>Simulation Settings</em>' containment reference.
 	 * @see #setSimulationSettings(SimulationProperties)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getCabin_SimulationSettings()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	SimulationProperties getSimulationSettings();
 
 	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Cabin#getSimulationSettings <em>Simulation Settings</em>}' reference.
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.Cabin#getSimulationSettings <em>Simulation Settings</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Simulation Settings</em>' reference.
+	 * @param value the new value of the '<em>Simulation Settings</em>' containment reference.
 	 * @see #getSimulationSettings()
 	 * @generated
 	 */

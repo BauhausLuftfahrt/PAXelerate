@@ -1,3 +1,2 @@
 eclipse.preferences.version=1
-encoding//src/net/bhl/cdt/paxelerate/model/provider/MainDoorItemProvider.java=UTF-8
-encoding//src/net/bhl/cdt/paxelerate/model/provider/StandardDoorItemProvider.java=UTF-8
+encoding//src/net/bhl/cdt/paxelerate/model/provider/DoorItemProvider.java=UTF-8

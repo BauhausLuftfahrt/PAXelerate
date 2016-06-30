@@ -23,6 +23,7 @@ import net.bhl.cdt.paxelerate.model.Galley;
 import net.bhl.cdt.paxelerate.model.Lavatory;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
+import net.bhl.cdt.paxelerate.model.SimulationResult;
 import net.bhl.cdt.paxelerate.model.Stairway;
 import net.bhl.cdt.paxelerate.model.Stowage;
 import net.bhl.cdt.paxelerate.model.TravelClass;
@@ -38,9 +39,10 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getYDimension <em>YDimension</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getRowNonexistent <em>Row Nonexistent</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getAisleWidth <em>Aisle Width</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getFramesPerSecond <em>Frames Per Second</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getNumberOfDecks <em>Number Of Decks</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getAircraftType <em>Aircraft Type</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getSimulationSettings <em>Simulation Settings</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getSimulationResults <em>Simulation Results</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getClasses <em>Classes</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getDoors <em>Doors</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getLavatories <em>Lavatories</em>}</li>
@@ -49,10 +51,6 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getCurtains <em>Curtains</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getStowages <em>Stowages</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getPassengers <em>Passengers</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getScale <em>Scale</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getAircraftType <em>Aircraft Type</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#isUsePresetSettings <em>Use Preset Settings</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.CabinImpl#getSpeedFactor <em>Speed Factor</em>}</li>
  * </ul>
  *
  * @generated
@@ -125,24 +123,6 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 */
 	protected int aisleWidth = AISLE_WIDTH_EDEFAULT;
 	/**
-	 * The default value of the '{@link #getFramesPerSecond() <em>Frames Per Second</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @see #getFramesPerSecond()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int FRAMES_PER_SECOND_EDEFAULT = 5;
-	/**
-	 * The cached value of the '{@link #getFramesPerSecond() <em>Frames Per Second</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @see #getFramesPerSecond()
-	 * @generated
-	 * @ordered
-	 */
-	protected int framesPerSecond = FRAMES_PER_SECOND_EDEFAULT;
-	/**
 	 * The default value of the '{@link #getNumberOfDecks() <em>Number Of Decks</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -161,7 +141,24 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 */
 	protected int numberOfDecks = NUMBER_OF_DECKS_EDEFAULT;
 	/**
-	 * The cached value of the '{@link #getSimulationSettings() <em>Simulation Settings</em>}' reference.
+	 * The default value of the '{@link #getAircraftType() <em>Aircraft Type</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * @see #getAircraftType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final AircraftType AIRCRAFT_TYPE_EDEFAULT = AircraftType.NARROWBODY;
+	/**
+	 * The cached value of the '{@link #getAircraftType() <em>Aircraft Type</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #getAircraftType()
+	 * @generated
+	 * @ordered
+	 */
+	protected AircraftType aircraftType = AIRCRAFT_TYPE_EDEFAULT;
+	/**
+	 * The cached value of the '{@link #getSimulationSettings() <em>Simulation Settings</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @see #getSimulationSettings()
@@ -169,6 +166,15 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @ordered
 	 */
 	protected SimulationProperties simulationSettings;
+	/**
+	 * The cached value of the '{@link #getSimulationResults() <em>Simulation Results</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimulationResults()
+	 * @generated
+	 * @ordered
+	 */
+	protected SimulationResult simulationResults;
 	/**
 	 * The cached value of the '{@link #getClasses() <em>Classes</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -233,85 +239,21 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	 * @ordered
 	 */
 	protected EList<Passenger> passengers;
-	/**
-	 * The default value of the '{@link #getScale() <em>Scale</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getScale()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int SCALE_EDEFAULT = 10;
-	/**
-	 * The cached value of the '{@link #getScale() <em>Scale</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getScale()
-	 * @generated
-	 * @ordered
-	 */
-	protected int scale = SCALE_EDEFAULT;
-	/**
-	 * The default value of the '{@link #getAircraftType() <em>Aircraft Type</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @see #getAircraftType()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final AircraftType AIRCRAFT_TYPE_EDEFAULT = AircraftType.REGIONAL;
-	/**
-	 * The cached value of the '{@link #getAircraftType() <em>Aircraft Type</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getAircraftType()
-	 * @generated
-	 * @ordered
-	 */
-	protected AircraftType aircraftType = AIRCRAFT_TYPE_EDEFAULT;
-	/**
-	 * The default value of the '{@link #isUsePresetSettings() <em>Use Preset Settings</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @see #isUsePresetSettings()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean USE_PRESET_SETTINGS_EDEFAULT = false;
-	/**
-	 * The cached value of the '{@link #isUsePresetSettings() <em>Use Preset Settings</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @see #isUsePresetSettings()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean usePresetSettings = USE_PRESET_SETTINGS_EDEFAULT;
-	/**
-	 * The default value of the '{@link #getSpeedFactor() <em>Speed Factor</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getSpeedFactor()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int SPEED_FACTOR_EDEFAULT = 0;
-	/**
-	 * The cached value of the '{@link #getSpeedFactor() <em>Speed Factor</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getSpeedFactor()
-	 * @generated
-	 * @ordered
-	 */
-	protected int speedFactor = SPEED_FACTOR_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	protected CabinImpl() {
 		super();
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the e class
+	 * @generated 
 	 */
 	@Override
 	protected EClass eStaticClass() {
@@ -319,8 +261,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the x dimension
+	 * @generated 
 	 */
 	@Override
 	public int getXDimension() {
@@ -328,8 +272,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newXDimension the new x dimension
+	 * @generated 
 	 */
 	@Override
 	public void setXDimension(int newXDimension) {
@@ -340,8 +286,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the y dimension
+	 * @generated 
 	 */
 	@Override
 	public int getYDimension() {
@@ -349,8 +297,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newYDimension the new y dimension
+	 * @generated 
 	 */
 	@Override
 	public void setYDimension(int newYDimension) {
@@ -361,8 +311,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the doors
+	 * @generated 
 	 */
 	@Override
 	public EList<Door> getDoors() {
@@ -373,8 +325,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the lavatories
+	 * @generated 
 	 */
 	@Override
 	public EList<Lavatory> getLavatories() {
@@ -385,8 +339,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the galleys
+	 * @generated 
 	 */
 	@Override
 	public EList<Galley> getGalleys() {
@@ -397,8 +353,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the stairways
+	 * @generated 
 	 */
 	@Override
 	public EList<Stairway> getStairways() {
@@ -409,8 +367,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the curtains
+	 * @generated 
 	 */
 	@Override
 	public EList<Curtain> getCurtains() {
@@ -421,8 +381,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the stowages
+	 * @generated 
 	 */
 	@Override
 	public EList<Stowage> getStowages() {
@@ -433,50 +395,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int getScale() {
-		return scale;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setScale(int newScale) {
-		int oldScale = scale;
-		scale = newScale;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SCALE, oldScale, scale));
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int getFramesPerSecond() {
-		return framesPerSecond;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setFramesPerSecond(int newFramesPerSecond) {
-		int oldFramesPerSecond = framesPerSecond;
-		framesPerSecond = newFramesPerSecond;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__FRAMES_PER_SECOND, oldFramesPerSecond, framesPerSecond));
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the passengers
+	 * @generated 
 	 */
 	@Override
 	public EList<Passenger> getPassengers() {
@@ -487,8 +409,53 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
+	 */
+	public SimulationResult getSimulationResults() {
+		return simulationResults;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSimulationResults(SimulationResult newSimulationResults, NotificationChain msgs) {
+		SimulationResult oldSimulationResults = simulationResults;
+		simulationResults = newSimulationResults;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SIMULATION_RESULTS, oldSimulationResults, newSimulationResults);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSimulationResults(SimulationResult newSimulationResults) {
+		if (newSimulationResults != simulationResults) {
+			NotificationChain msgs = null;
+			if (simulationResults != null)
+				msgs = ((InternalEObject)simulationResults).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CabinPackage.CABIN__SIMULATION_RESULTS, null, msgs);
+			if (newSimulationResults != null)
+				msgs = ((InternalEObject)newSimulationResults).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CabinPackage.CABIN__SIMULATION_RESULTS, null, msgs);
+			msgs = basicSetSimulationResults(newSimulationResults, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SIMULATION_RESULTS, newSimulationResults, newSimulationResults));
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the number of decks
+	 * @generated 
 	 */
 	@Override
 	public int getNumberOfDecks() {
@@ -496,8 +463,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newNumberOfDecks the new number of decks
+	 * @generated 
 	 */
 	@Override
 	public void setNumberOfDecks(int newNumberOfDecks) {
@@ -508,8 +477,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the aircraft type
+	 * @generated 
 	 */
 	@Override
 	public AircraftType getAircraftType() {
@@ -517,8 +488,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newAircraftType the new aircraft type
+	 * @generated 
 	 */
 	@Override
 	public void setAircraftType(AircraftType newAircraftType) {
@@ -529,88 +502,58 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean isUsePresetSettings() {
-		return usePresetSettings;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setUsePresetSettings(boolean newUsePresetSettings) {
-		boolean oldUsePresetSettings = usePresetSettings;
-		usePresetSettings = newUsePresetSettings;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__USE_PRESET_SETTINGS, oldUsePresetSettings, usePresetSettings));
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int getSpeedFactor() {
-		return speedFactor;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setSpeedFactor(int newSpeedFactor) {
-		int oldSpeedFactor = speedFactor;
-		speedFactor = newSpeedFactor;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SPEED_FACTOR, oldSpeedFactor, speedFactor));
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the simulation settings
+	 * @generated 
 	 */
 	@Override
 	public SimulationProperties getSimulationSettings() {
-		if (simulationSettings != null && simulationSettings.eIsProxy()) {
-			InternalEObject oldSimulationSettings = (InternalEObject)simulationSettings;
-			simulationSettings = (SimulationProperties)eResolveProxy(oldSimulationSettings);
-			if (simulationSettings != oldSimulationSettings) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CabinPackage.CABIN__SIMULATION_SETTINGS, oldSimulationSettings, simulationSettings));
-			}
-		}
 		return simulationSettings;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SimulationProperties basicGetSimulationSettings() {
-		return simulationSettings;
+	public NotificationChain basicSetSimulationSettings(SimulationProperties newSimulationSettings, NotificationChain msgs) {
+		SimulationProperties oldSimulationSettings = simulationSettings;
+		simulationSettings = newSimulationSettings;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SIMULATION_SETTINGS, oldSimulationSettings, newSimulationSettings);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newSimulationSettings the new simulation settings
+	 * @generated 
 	 */
 	@Override
 	public void setSimulationSettings(
 			SimulationProperties newSimulationSettings) {
-		SimulationProperties oldSimulationSettings = simulationSettings;
-		simulationSettings = newSimulationSettings;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SIMULATION_SETTINGS, oldSimulationSettings, simulationSettings));
+		if (newSimulationSettings != simulationSettings) {
+			NotificationChain msgs = null;
+			if (simulationSettings != null)
+				msgs = ((InternalEObject)simulationSettings).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CabinPackage.CABIN__SIMULATION_SETTINGS, null, msgs);
+			if (newSimulationSettings != null)
+				msgs = ((InternalEObject)newSimulationSettings).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CabinPackage.CABIN__SIMULATION_SETTINGS, null, msgs);
+			msgs = basicSetSimulationSettings(newSimulationSettings, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.CABIN__SIMULATION_SETTINGS, newSimulationSettings, newSimulationSettings));
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the classes
+	 * @generated 
 	 */
 	@Override
 	public EList<TravelClass> getClasses() {
@@ -621,8 +564,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the row nonexistent
+	 * @generated 
 	 */
 	@Override
 	public int getRowNonexistent() {
@@ -630,8 +575,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newRowNonexistent the new row nonexistent
+	 * @generated 
 	 */
 	@Override
 	public void setRowNonexistent(int newRowNonexistent) {
@@ -642,8 +589,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the aisle width
+	 * @generated 
 	 */
 	@Override
 	public int getAisleWidth() {
@@ -651,8 +600,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param newAisleWidth the new aisle width
+	 * @generated 
 	 */
 	@Override
 	public void setAisleWidth(int newAisleWidth) {
@@ -663,13 +614,22 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param otherEnd the other end
+	 * @param featureID the feature id
+	 * @param msgs the msgs
+	 * @return the notification chain
+	 * @generated 
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case CabinPackage.CABIN__SIMULATION_SETTINGS:
+				return basicSetSimulationSettings(null, msgs);
+			case CabinPackage.CABIN__SIMULATION_RESULTS:
+				return basicSetSimulationResults(null, msgs);
 			case CabinPackage.CABIN__CLASSES:
 				return ((InternalEList<?>)getClasses()).basicRemove(otherEnd, msgs);
 			case CabinPackage.CABIN__DOORS:
@@ -691,8 +651,13 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param resolve the resolve
+	 * @param coreType the core type
+	 * @return the object
+	 * @generated 
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
@@ -705,13 +670,14 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return getRowNonexistent();
 			case CabinPackage.CABIN__AISLE_WIDTH:
 				return getAisleWidth();
-			case CabinPackage.CABIN__FRAMES_PER_SECOND:
-				return getFramesPerSecond();
 			case CabinPackage.CABIN__NUMBER_OF_DECKS:
 				return getNumberOfDecks();
+			case CabinPackage.CABIN__AIRCRAFT_TYPE:
+				return getAircraftType();
 			case CabinPackage.CABIN__SIMULATION_SETTINGS:
-				if (resolve) return getSimulationSettings();
-				return basicGetSimulationSettings();
+				return getSimulationSettings();
+			case CabinPackage.CABIN__SIMULATION_RESULTS:
+				return getSimulationResults();
 			case CabinPackage.CABIN__CLASSES:
 				return getClasses();
 			case CabinPackage.CABIN__DOORS:
@@ -728,21 +694,16 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return getStowages();
 			case CabinPackage.CABIN__PASSENGERS:
 				return getPassengers();
-			case CabinPackage.CABIN__SCALE:
-				return getScale();
-			case CabinPackage.CABIN__AIRCRAFT_TYPE:
-				return getAircraftType();
-			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
-				return isUsePresetSettings();
-			case CabinPackage.CABIN__SPEED_FACTOR:
-				return getSpeedFactor();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @param newValue the new value
+	 * @generated 
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
@@ -760,14 +721,17 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__AISLE_WIDTH:
 				setAisleWidth((Integer)newValue);
 				return;
-			case CabinPackage.CABIN__FRAMES_PER_SECOND:
-				setFramesPerSecond((Integer)newValue);
-				return;
 			case CabinPackage.CABIN__NUMBER_OF_DECKS:
 				setNumberOfDecks((Integer)newValue);
 				return;
+			case CabinPackage.CABIN__AIRCRAFT_TYPE:
+				setAircraftType((AircraftType)newValue);
+				return;
 			case CabinPackage.CABIN__SIMULATION_SETTINGS:
 				setSimulationSettings((SimulationProperties)newValue);
+				return;
+			case CabinPackage.CABIN__SIMULATION_RESULTS:
+				setSimulationResults((SimulationResult)newValue);
 				return;
 			case CabinPackage.CABIN__CLASSES:
 				getClasses().clear();
@@ -801,25 +765,15 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				getPassengers().clear();
 				getPassengers().addAll((Collection<? extends Passenger>)newValue);
 				return;
-			case CabinPackage.CABIN__SCALE:
-				setScale((Integer)newValue);
-				return;
-			case CabinPackage.CABIN__AIRCRAFT_TYPE:
-				setAircraftType((AircraftType)newValue);
-				return;
-			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
-				setUsePresetSettings((Boolean)newValue);
-				return;
-			case CabinPackage.CABIN__SPEED_FACTOR:
-				setSpeedFactor((Integer)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @generated 
 	 */
 	@Override
 	public void eUnset(int featureID) {
@@ -836,14 +790,17 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__AISLE_WIDTH:
 				setAisleWidth(AISLE_WIDTH_EDEFAULT);
 				return;
-			case CabinPackage.CABIN__FRAMES_PER_SECOND:
-				setFramesPerSecond(FRAMES_PER_SECOND_EDEFAULT);
-				return;
 			case CabinPackage.CABIN__NUMBER_OF_DECKS:
 				setNumberOfDecks(NUMBER_OF_DECKS_EDEFAULT);
 				return;
+			case CabinPackage.CABIN__AIRCRAFT_TYPE:
+				setAircraftType(AIRCRAFT_TYPE_EDEFAULT);
+				return;
 			case CabinPackage.CABIN__SIMULATION_SETTINGS:
 				setSimulationSettings((SimulationProperties)null);
+				return;
+			case CabinPackage.CABIN__SIMULATION_RESULTS:
+				setSimulationResults((SimulationResult)null);
 				return;
 			case CabinPackage.CABIN__CLASSES:
 				getClasses().clear();
@@ -869,25 +826,16 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 			case CabinPackage.CABIN__PASSENGERS:
 				getPassengers().clear();
 				return;
-			case CabinPackage.CABIN__SCALE:
-				setScale(SCALE_EDEFAULT);
-				return;
-			case CabinPackage.CABIN__AIRCRAFT_TYPE:
-				setAircraftType(AIRCRAFT_TYPE_EDEFAULT);
-				return;
-			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
-				setUsePresetSettings(USE_PRESET_SETTINGS_EDEFAULT);
-				return;
-			case CabinPackage.CABIN__SPEED_FACTOR:
-				setSpeedFactor(SPEED_FACTOR_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @param featureID the feature id
+	 * @return true, if successful
+	 * @generated 
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
@@ -900,12 +848,14 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return rowNonexistent != ROW_NONEXISTENT_EDEFAULT;
 			case CabinPackage.CABIN__AISLE_WIDTH:
 				return aisleWidth != AISLE_WIDTH_EDEFAULT;
-			case CabinPackage.CABIN__FRAMES_PER_SECOND:
-				return framesPerSecond != FRAMES_PER_SECOND_EDEFAULT;
 			case CabinPackage.CABIN__NUMBER_OF_DECKS:
 				return numberOfDecks != NUMBER_OF_DECKS_EDEFAULT;
+			case CabinPackage.CABIN__AIRCRAFT_TYPE:
+				return aircraftType != AIRCRAFT_TYPE_EDEFAULT;
 			case CabinPackage.CABIN__SIMULATION_SETTINGS:
 				return simulationSettings != null;
+			case CabinPackage.CABIN__SIMULATION_RESULTS:
+				return simulationResults != null;
 			case CabinPackage.CABIN__CLASSES:
 				return classes != null && !classes.isEmpty();
 			case CabinPackage.CABIN__DOORS:
@@ -922,21 +872,15 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 				return stowages != null && !stowages.isEmpty();
 			case CabinPackage.CABIN__PASSENGERS:
 				return passengers != null && !passengers.isEmpty();
-			case CabinPackage.CABIN__SCALE:
-				return scale != SCALE_EDEFAULT;
-			case CabinPackage.CABIN__AIRCRAFT_TYPE:
-				return aircraftType != AIRCRAFT_TYPE_EDEFAULT;
-			case CabinPackage.CABIN__USE_PRESET_SETTINGS:
-				return usePresetSettings != USE_PRESET_SETTINGS_EDEFAULT;
-			case CabinPackage.CABIN__SPEED_FACTOR:
-				return speedFactor != SPEED_FACTOR_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 *
+	 * @return the string
+	 * @generated 
 	 */
 	@Override
 	public String toString() {
@@ -951,18 +895,10 @@ public class CabinImpl extends NamedElementImpl implements Cabin {
 		result.append(rowNonexistent);
 		result.append(", aisleWidth: ");
 		result.append(aisleWidth);
-		result.append(", framesPerSecond: ");
-		result.append(framesPerSecond);
 		result.append(", numberOfDecks: ");
 		result.append(numberOfDecks);
-		result.append(", scale: ");
-		result.append(scale);
 		result.append(", aircraftType: ");
 		result.append(aircraftType);
-		result.append(", usePresetSettings: ");
-		result.append(usePresetSettings);
-		result.append(", speedFactor: ");
-		result.append(speedFactor);
 		result.append(')');
 		return result.toString();
 	}

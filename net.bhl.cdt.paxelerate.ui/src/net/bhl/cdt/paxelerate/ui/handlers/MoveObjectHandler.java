@@ -24,31 +24,46 @@ import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.ui.commands.MoveObjectCommand;
 
 /**
- * 
- * @author marc.engelmann
+ * The Class MoveObjectHandler.
  *
+ * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  */
 
 public class MoveObjectHandler extends AbstractHandler {
 
 	/**
 	 * Get selected Element.
-	 * 
-	 * @param event
-	 *            Selected Element
-	 * @throws ExecutionException
-	 *             Exception
+	 *
 	 * @return null
 	 */
 	private Cabin cabin;
+
+	/** The rowlist. */
 	private ArrayList<Row> rowlist = new ArrayList<Row>();
+
+	/** The seatlist. */
 	private ArrayList<Seat> seatlist = new ArrayList<Seat>();
+
+	/** The galleylist. */
 	private ArrayList<Galley> galleylist = new ArrayList<Galley>();
+
+	/** The lavatorylist. */
 	private ArrayList<Lavatory> lavatorylist = new ArrayList<Lavatory>();
+
+	/** The curtainlist. */
 	private ArrayList<Curtain> curtainlist = new ArrayList<Curtain>();
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.core.commands.IHandler#execute(org.eclipse.core.commands.
+	 * ExecutionEvent)
+	 */
 	@Override
-	public Object execute(ExecutionEvent event) throws ExecutionException {
+	public final Object execute(final ExecutionEvent event) throws ExecutionException {
 		ISelection sel = HandlerUtil.getActiveMenuSelection(event);
 		IStructuredSelection selection = (IStructuredSelection) sel;
 

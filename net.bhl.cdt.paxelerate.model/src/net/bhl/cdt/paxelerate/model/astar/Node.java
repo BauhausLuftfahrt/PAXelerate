@@ -6,8 +6,10 @@
 package net.bhl.cdt.paxelerate.model.astar;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 import net.bhl.cdt.paxelerate.model.CabinFactory;
+import net.bhl.cdt.paxelerate.model.ObjectOption;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
@@ -17,61 +19,206 @@ import net.bhl.cdt.paxelerate.util.math.Vector2D;
  * for the path finding algorithm.
  * 
  * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  *
  */
 public class Node implements Comparable<Node> {
+
+	/** The previous node. */
 	private Node north, northEast, east, southEast, south, southWest, west,
 			northWest, previousNode;
-	private ArrayList<Node> neighborList;
-	private double distanceFromStart;
-	private int costFromStart, cost,
-			numberOfOccupations = 0, numberOfInterrupts = 0;
 
-	private Vector position = new Vector2D(0, 0);
+	/** The distance from start. */
+	private double distanceFromStart, distanceToClosestObstacle;
+
+	/** The obstacle value. */
+	private int costFromStart, numberOfOccupations = 0, numberOfInterrupts = 0,
+			obstacleValue = 0;
+
+	/** The property. */
 	private Property property;
+
+	/** The hidden. */
 	private boolean hidden = false;
+
+	/** The linked passenger. */
 	private Passenger linkedPassenger;
+
+	/** The start list. */
 	private ArrayList<NodeProperty> startList = new ArrayList<NodeProperty>();
 
+	/** The position. */
+	private Vector position = new Vector2D(0, 0);
+
+	/** The obstacle type. */
+	private ObjectOption obstacleType;
+
+	/**
+	 * Gets the obstacle type.
+	 *
+	 * @return the obstacle type
+	 */
+	public ObjectOption getObstacleType() {
+		return obstacleType;
+	}
+
+	/**
+	 * Sets the obstacle type.
+	 *
+	 * @param obstacleType
+	 *            the new obstacle type
+	 */
+	public void setObstacleType(ObjectOption obstacleType) {
+		this.obstacleType = obstacleType;
+	}
+
+	/**
+	 * Gets the distance to closest obstacle.
+	 *
+	 * @return the distance to closest obstacle
+	 */
+	public double getDistanceToClosestObstacle() {
+		return distanceToClosestObstacle;
+	}
+
+	/**
+	 * Sets the distance to closest obstacle.
+	 *
+	 * @param distanceToClosestObstacle the new distance to closest obstacle
+	 */
+	public void setDistanceToClosestObstacle(double distanceToClosestObstacle) {
+		this.distanceToClosestObstacle = distanceToClosestObstacle;
+	}
+
+	/**
+	 * Gets the obstacle value.
+	 *
+	 * @return the obstacle value
+	 */
+	public int getObstacleValue() {
+		return obstacleValue;
+	}
+
+	/**
+	 * Sets the obstacle value.
+	 *
+	 * @param obstacleValue
+	 *            the new obstacle value
+	 */
+	public void setObstacleValue(int obstacleValue) {
+		this.obstacleValue = obstacleValue;
+	}
+
+	/**
+	 * Gets the number of interrupts.
+	 *
+	 * @return the number of interrupts
+	 */
 	public int getNumberOfInterrupts() {
 		return numberOfInterrupts;
 	}
 
+	/**
+	 * Raise number of interrupts.
+	 */
 	public void raiseNumberOfInterrupts() {
 		this.numberOfInterrupts++;
 	}
 
+	/**
+	 * Gets the number of occupations.
+	 *
+	 * @return the number of occupations
+	 */
 	public int getNumberOfOccupations() {
 		return numberOfOccupations;
 	}
 
+	/**
+	 * Raise number of occupations.
+	 */
 	public void raiseNumberOfOccupations() {
 		this.numberOfOccupations++;
 	}
 
+	/**
+	 * Gets the start list.
+	 *
+	 * @return the start list
+	 */
 	public ArrayList<NodeProperty> getStartList() {
 		return startList;
 	}
 
+	/**
+	 * Checks if is hidden.
+	 *
+	 * @return true, if is hidden
+	 */
 	public boolean isHidden() {
 		return this.hidden;
 	}
 
+	/**
+	 * Sets the hidden.
+	 */
 	public void setHidden() {
 		this.hidden = true;
 	}
 
+	/**
+	 * Sets the start list.
+	 *
+	 * @param startList
+	 *            the new start list
+	 */
 	public void setStartList(ArrayList<NodeProperty> startList) {
 		this.startList = startList;
 	}
 
 	/**
-	 * 
-	 * @author marc.engelmann
+	 * The Enum Property.
 	 *
+	 * @author marc.engelmann
 	 */
 	public enum Property {
-		OBSTACLE, AGENT, DEFAULT, START, GOAL
+
+		/** The obstacle. */
+		OBSTACLE,
+		/** The agent. */
+		AGENT,
+		/** The default. */
+		DEFAULT,
+		/** The start. */
+		START,
+		/** The goal. */
+		GOAL
+	}
+
+	/**
+	 * The Enum Direction.
+	 *
+	 * @author marc.engelmann
+	 */
+	public enum Direction {
+
+		/** The north. */
+		NORTH,
+		/** The north east. */
+		NORTH_EAST,
+		/** The east. */
+		EAST,
+		/** The south east. */
+		SOUTH_EAST,
+		/** The south. */
+		SOUTH,
+		/** The south west. */
+		SOUTH_WEST,
+		/** The west. */
+		WEST,
+		/** The north west. */
+		NORTH_WEST;
 	}
 
 	/**
@@ -81,37 +228,54 @@ public class Node implements Comparable<Node> {
 	 *            is the position vector
 	 */
 	public Node(Vector vector) {
-		neighborList = new ArrayList<Node>();
-		position = vector;
-		this.distanceFromStart = Integer.MAX_VALUE;
+
+		this.position = vector;
+		// value 0 causes a strange path for the first agent
+		this.distanceFromStart = Integer.MAX_VALUE; 
 		this.costFromStart = Integer.MAX_VALUE;
 		property = Property.DEFAULT;
 		linkedPassenger = CabinFactory.eINSTANCE.createPassenger();
 		linkedPassenger.setId(Integer.MAX_VALUE);
+		this.obstacleType = null;
 	}
 
 	/**
-	 * This method returns the cost of the node.
-	 * 
-	 * @return the cost
+	 * Gets the property.
+	 *
+	 * @return the property
 	 */
-	public int getCost() {
-		return cost;
-	}
-
-	public Property getProperty() {
+	public synchronized Property getProperty() {
 		return property;
 	}
 
+	/**
+	 * Gets the passenger.
+	 *
+	 * @return the passenger
+	 */
 	public Passenger getPassenger() {
 		return linkedPassenger;
 	}
 
+	/**
+	 * Sets the property.
+	 *
+	 * @param property
+	 *            the property
+	 * @param agentID
+	 *            the agent id
+	 */
 	public synchronized void setProperty(Property property, Passenger agentID) {
 		this.property = property;
 		this.linkedPassenger = agentID;
 	}
 
+	/**
+	 * Removes the item by id.
+	 *
+	 * @param id
+	 *            the id
+	 */
 	public synchronized void removeItemById(int id) {
 		NodeProperty theCulprit = null;
 		for (NodeProperty property : startList) {
@@ -124,15 +288,10 @@ public class Node implements Comparable<Node> {
 	}
 
 	/**
-	 * This method sets the cost of the node.
-	 * 
-	 * @param cost
-	 *            the cost
+	 * Gets the type for printing.
+	 *
+	 * @return the type for printing
 	 */
-	public void setCost(int cost) {
-		this.cost = cost;
-	}
-
 	public String getTypeForPrinting() {
 		switch (property) {
 		case OBSTACLE:
@@ -155,136 +314,48 @@ public class Node implements Comparable<Node> {
 	}
 
 	/**
-	 * This method sets the corresponding node.
-	 * 
-	 * @param north
-	 *            is the node
+	 * Adds the neighbor.
+	 *
+	 * @param node
+	 *            the node
+	 * @param direction
+	 *            the direction
 	 */
-	public void setNorth(Node north) {
-		// replace the old Node with the new one in the neighborList
-		if (neighborList.contains(this.north)) {
-			neighborList.remove(this.north);
+	public void addNeighbor(Node node, Direction direction) {
+
+		switch (direction) {
+		case NORTH:
+			this.north = node;
+			break;
+
+		case NORTH_EAST:
+			this.northEast = node;
+			break;
+
+		case EAST:
+			this.east = node;
+			break;
+
+		case SOUTH_EAST:
+			this.southEast = node;
+			break;
+
+		case SOUTH:
+			this.south = node;
+			break;
+
+		case SOUTH_WEST:
+			this.southWest = node;
+			break;
+
+		case WEST:
+			this.west = node;
+			break;
+
+		case NORTH_WEST:
+			this.northWest = node;
+			break;
 		}
-		neighborList.add(north);
-
-		// set the new Node
-		this.north = north;
-	}
-
-	/**
-	 * This method sets the corresponding node.
-	 * 
-	 * @param northEast
-	 *            is the node
-	 */
-	public void setNorthEast(Node northEast) {
-		// replace the old Node with the new one in the neighborList
-		if (neighborList.contains(this.northEast)) {
-			neighborList.remove(this.northEast);
-		}
-		neighborList.add(northEast);
-
-		// set the new Node
-		this.northEast = northEast;
-	}
-
-	/**
-	 * This method sets the corresponding node.
-	 * 
-	 * @param east
-	 *            is the node
-	 */
-	public void setEast(Node east) {
-		// replace the old Node with the new one in the neighborList
-		if (neighborList.contains(this.east)) {
-			neighborList.remove(this.east);
-		}
-		neighborList.add(east);
-
-		// set the new Node
-		this.east = east;
-	}
-
-	/**
-	 * This method sets the corresponding node.
-	 * 
-	 * @param southEast
-	 *            is the node
-	 */
-	public void setSouthEast(Node southEast) {
-		// replace the old Node with the new one in the neighborList
-		if (neighborList.contains(this.southEast)) {
-			neighborList.remove(this.southEast);
-		}
-		neighborList.add(southEast);
-
-		// set the new Node
-		this.southEast = southEast;
-	}
-
-	/**
-	 * This method sets the corresponding node.
-	 * 
-	 * @param south
-	 *            is the node
-	 */
-	public void setSouth(Node south) {
-		// replace the old Node with the new one in the neighborList
-		if (neighborList.contains(this.south)) {
-			neighborList.remove(this.south);
-		}
-		neighborList.add(south);
-
-		// set the new Node
-		this.south = south;
-	}
-
-	/**
-	 * This method sets the corresponding node.
-	 * 
-	 * @param southWest
-	 *            is the node
-	 */
-	public void setSouthWest(Node southWest) {
-		if (neighborList.contains(this.southWest)) {
-			neighborList.remove(this.southWest);
-		}
-		neighborList.add(southWest);
-		this.southWest = southWest;
-	}
-
-	/**
-	 * This method sets the corresponding node.
-	 * 
-	 * @param west
-	 *            is the node
-	 */
-	public void setWest(Node west) {
-		// replace the old Node with the new one in the neighborList
-		if (neighborList.contains(this.west)) {
-			neighborList.remove(this.west);
-		}
-		neighborList.add(west);
-
-		// set the new Node
-		this.west = west;
-	}
-
-	/**
-	 * This method sets the corresponding node.
-	 * 
-	 * @param northWest
-	 *            is the node.
-	 */
-	public void setNorthWest(Node northWest) {
-		// replace the old Node with the new one in the neighborList
-		if (neighborList.contains(this.northWest)) {
-			neighborList.remove(this.northWest);
-		}
-		neighborList.add(northWest);
-
-		// set the new Node
-		this.northWest = northWest;
 	}
 
 	/**
@@ -294,7 +365,25 @@ public class Node implements Comparable<Node> {
 	 */
 	public ArrayList<Node> getNeighborList() {
 
-		return neighborList;
+		ArrayList<Node> neighbors = new ArrayList<>();
+
+		neighbors.add(north);
+		neighbors.add(northEast);
+		neighbors.add(east);
+		neighbors.add(southEast);
+		neighbors.add(south);
+		neighbors.add(southWest);
+		neighbors.add(west);
+		neighbors.add(northWest);
+
+		ListIterator<Node> iterator = neighbors.listIterator();
+		while (iterator.hasNext()) {
+			if (iterator.next() == null) {
+				iterator.remove();
+			}
+		}
+
+		return neighbors;
 	}
 
 	/**
@@ -308,9 +397,9 @@ public class Node implements Comparable<Node> {
 
 	/**
 	 * This method sets the distance to the start.
-	 * 
-	 * @param f
-	 *            the distance
+	 *
+	 * @param distance
+	 *            the new distance from start
 	 */
 	public void setDistanceFromStart(double distance) {
 		this.distanceFromStart = distance;
@@ -345,16 +434,6 @@ public class Node implements Comparable<Node> {
 	}
 
 	/**
-	 * This method returns the cost from the start.
-	 * 
-	 * @param costFromStart
-	 *            is the cost from the start
-	 */
-	public void setCostFromStart(int costFromStart) {
-		this.costFromStart = costFromStart;
-	}
-
-	/**
 	 * This method checks for equality with another node.
 	 * 
 	 * @param node
@@ -367,39 +446,69 @@ public class Node implements Comparable<Node> {
 	}
 
 	/**
+	 * Checks if is obstacle.
+	 *
+	 * @return true, if is obstacle
+	 */
+	public boolean isObstacle() {
+		return property == Property.OBSTACLE;
+	}
+
+	/**
 	 * This method compares two nodes.
 	 * 
 	 * @param otherNode
 	 *            the other node
 	 * @return returns the better node value
 	 */
+	@Override
 	public synchronized int compareTo(Node otherNode) {
 		int better = -1;
 		int equal = 0;
 		int worse = 1;
-		
-		/* if this node is cheaper, it is better */ 
+
+		/* if this node is cheaper, it is better */
 		if (costFromStart < otherNode.costFromStart) {
 			return better;
-			
-			/* if the other node is cheaper, this one is worse  */
+
+			/* if the other node is cheaper, this one is worse */
 		} else if (costFromStart > otherNode.costFromStart) {
 			return worse;
-			
+
 			/* if they are equally expensive, check the distance */
 		} else {
-			
-			/* if this node is closer to the start, it is better */ 
-			if(distanceFromStart < otherNode.distanceFromStart) {
+
+			/* if this node is closer to the start, it is better */
+			if (distanceFromStart < otherNode.distanceFromStart) {
 				return better;
 				/* if the distance is greater, it is worse */
-			} else if(distanceFromStart > otherNode.distanceFromStart) {
+			} else if (distanceFromStart > otherNode.distanceFromStart) {
 				return worse;
-				
-				/* else the nodes are equal (concerning the criteria used here) */ 
+
+				/*
+				 * else the nodes are equal (concerning the criteria used here)
+				 */
 			} else {
 				return equal;
 			}
 		}
+	}
+
+	/**
+	 * Gets the cost from start.
+	 *
+	 * @return the cost from start
+	 */
+	public int getCostFromStart() {
+		return costFromStart;
+	}
+
+	/**
+	 * Sets the cost from start.
+	 *
+	 * @param cost the new cost from start
+	 */
+	public void setCostFromStart(int cost) {
+		costFromStart = cost;
 	}
 }

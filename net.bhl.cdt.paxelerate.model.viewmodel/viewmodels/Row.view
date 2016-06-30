@@ -7,10 +7,5 @@
         <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Row/rowNumber"/>
       </domainModelReference>
     </children>
-    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_rtDFhKS9EeWGjpaobu8CIA" name="Control offsetInRow">
-      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_rtDFhaS9EeWGjpaobu8CIA">
-        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//Row/offsetInRow"/>
-      </domainModelReference>
-    </children>
   </children>
 </org.eclipse.emf.ecp.view.model:View>

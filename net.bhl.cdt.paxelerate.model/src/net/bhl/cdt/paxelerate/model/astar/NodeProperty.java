@@ -9,20 +9,25 @@ import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 
 /**
  * This class defines the property values of a node.
- * 
- * @see node.java
- * @author marc.engelmann
  *
+ * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
+ * @see node.java
  */
 public class NodeProperty {
 	
+	/** The agent id. */
 	private int agentID;
+	
+	/** The property. */
 	private Property property;
 	
 	/**
-	 * 
-	 * @param agentID
-	 * @param property
+	 * Instantiates a new node property.
+	 *
+	 * @param agentID the agent id
+	 * @param property the property
 	 */
 	public NodeProperty(int agentID, Property property) {
 		this.agentID = agentID;
@@ -30,32 +35,36 @@ public class NodeProperty {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Gets the agent id.
+	 *
+	 * @return the agent id
 	 */
 	public int getAgentID() {
 		return agentID;
 	}
 
 	/**
-	 * 
-	 * @param agentID
+	 * Sets the agent id.
+	 *
+	 * @param agentID the new agent id
 	 */
 	public void setAgentID(int agentID) {
 		this.agentID = agentID;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Gets the property.
+	 *
+	 * @return the property
 	 */
 	public Property getProperty() {
 		return property;
 	}
 
 	/**
-	 * 
-	 * @param property
+	 * Sets the property.
+	 *
+	 * @param property the new property
 	 */
 	public void setProperty(Property property) {
 		this.property = property;

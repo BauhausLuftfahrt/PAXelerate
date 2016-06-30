@@ -11,7 +11,7 @@ import net.bhl.cdt.paxelerate.model.Door;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
-import net.bhl.cdt.paxelerate.model.astar.CostMap;
+import net.bhl.cdt.paxelerate.model.astar.Costmap;
 import net.bhl.cdt.paxelerate.model.astar.Node;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
@@ -19,72 +19,268 @@ import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
 /**
- * 
- * @author marc.engelmann
+ * The Class AgentFunctions.
  *
+ * @author marc.engelmann, michael.schmidt
+ * @version 1.1
+ * @since 0.5
  */
 public class AgentFunctions {
 
+	/** The Constant PIXELS_FOR_SCANNING_AT_DOOR. */
 	public static final int PIXELS_FOR_SCANNING_AT_DOOR = 3;
 
+	/**
+	 * Someone already in this part of the row.
+	 *
+	 * @param agent
+	 *            the agent
+	 * @return true, if successful
+	 */
 	public static boolean someoneAlreadyInThisPartOfTheRow(Agent agent) {
-		Row row = agent.getPassenger().getSeatRef().getRow();
+		boolean rowOccupied = false;
+		Row row = agent.getPassenger().getSeat().getRow();
 		for (Seat checkSeat : row.getSeats()) {
+			/* check for blocked seats in my part of the row */
 			if (checkSeat.isOccupied()) {
 				if (sameSideOfAisle(checkSeat,
-						agent.getPassenger().getSeatRef())) {
+						agent.getPassenger().getSeat())) {
+					/* identify passengers which have to stand up for me */
 					if (otherSeatCloserToAisle(checkSeat,
-							agent.getPassenger().getSeatRef())) {
+							agent.getPassenger().getSeat())) {
 						agent.otherPassengersInRowBlockingMe
 								.add(checkSeat.getPassenger());
-						return true;
+						rowOccupied = true;
 					}
 				}
 			}
 		}
-		return false;
+		return rowOccupied;
 	}
 
-	/*
-	 * TODO: ONLY APPLICABLE FOR 3-3 CONFIGURATIONS OR BELOW!
+	/**
+	 * Same side of aisle.
+	 *
+	 * @param checkSeat
+	 *            the check seat
+	 * @param mySeat
+	 *            the my seat
+	 * @return true, if successful
 	 */
 	private static boolean sameSideOfAisle(Seat checkSeat, Seat mySeat) {
 
-		if ("ABC".contains(checkSeat.getLetter())) {
-			if ("ABC".contains(mySeat.getLetter())) {
+		int seatAbrest = checkSeatAbrest(mySeat);
+
+		switch (seatAbrest) {
+		
+		default:
+			return false;
+		case 4:
+			// TODO: temporary mods
+			/* AC - DF */
+			if (checkSeatLocation(checkSeat, mySeat, "AB")
+					| checkSeatLocation(checkSeat, mySeat, "CD")) {
 				return true;
 			}
+			break;
+		case 5:
+			/* AC - DEF */
+			if (checkSeatLocation(checkSeat, mySeat, "AC")
+					| checkSeatLocation(checkSeat, mySeat, "DEF")) {
+				return true;
+			}
+			break;
+		case 6:
+			/* ABC - DEF */
+			if (checkSeatLocation(checkSeat, mySeat, "ABC")
+					| checkSeatLocation(checkSeat, mySeat, "DEF")) {
+				return true;
+			}
+			break;
+		case 7:
+			/* AB - DEF - JK */
+			if (checkSeatLocation(checkSeat, mySeat, "AB")
+					| checkSeatLocation(checkSeat, mySeat, "DEF")
+					| checkSeatLocation(checkSeat, mySeat, "JK")) {
+				return true;
+			}
+			break;
+		case 8:
+			/* AB - DEFG - JK */
+			if (checkSeatLocation(checkSeat, mySeat, "AB")
+					| checkSeatLocation(checkSeat, mySeat, "DEFG")
+					| checkSeatLocation(checkSeat, mySeat, "JK")) {
+				return true;
+			}
+			break;
+		case 9:
+			/* ABC - DEF - HJK */
+			if (checkSeatLocation(checkSeat, mySeat, "ABC")
+					| checkSeatLocation(checkSeat, mySeat, "DEF")
+					| checkSeatLocation(checkSeat, mySeat, "HJK")) {
+				return true;
+			}
+			break;
+		case 10:
+			/* ABC - DEFG - HJK */
+			if (checkSeatLocation(checkSeat, mySeat, "ABC")
+					| checkSeatLocation(checkSeat, mySeat, "DEFG")
+					| checkSeatLocation(checkSeat, mySeat, "HJK")) {
+				return true;
+			}
+			break;
 		}
-		if ("DEF".contains(checkSeat.getLetter())) {
-			if ("DEF".contains(mySeat.getLetter())) {
+
+		return false;
+	}
+
+	/**
+	 * Check seat abrest.
+	 *
+	 * @param seat the seat
+	 * @return the int
+	 */
+	private static int checkSeatAbrest(Seat seat) {
+		return ModelHelper.getParent(Row.class, seat).getSeats().size();
+	}
+
+	/**
+	 * Check seat location.
+	 *
+	 * @param checkSeat the check seat
+	 * @param mySeat the my seat
+	 * @param letter the letter
+	 * @return true, if successful
+	 */
+	private static boolean checkSeatLocation(Seat checkSeat, Seat mySeat,
+			String letter) {
+
+		if (letter.contains(checkSeat.getLetter())) {
+			if (letter.contains(mySeat.getLetter())) {
 				return true;
 			}
 		}
 		return false;
+
 	}
 
-	// TODO: this only works for a ONE AISLE configuration!
+	/**
+	 * Other seat closer to aisle.
+	 *
+	 * @param otherSeat
+	 *            the other seat
+	 * @param thisSeat
+	 *            the this seat
+	 * @return true, if successful
+	 */
 	public static boolean otherSeatCloserToAisle(Seat otherSeat,
 			Seat thisSeat) {
 
-		int middleOfCabinX = (int) (ModelHelper.getParent(Cabin.class, thisSeat)
-				.getYDimension() / 2.0);
+		int middleOfAisleY = determineClosestAisle(thisSeat);
 
-		int otherSeatToAisleDistanceX = Math.abs(otherSeat.getYPosition()
-				+ otherSeat.getYDimension() / 2 - middleOfCabinX);
+		int otherSeatToAisleDistanceY = Math.abs(otherSeat.getYPosition()
+				+ otherSeat.getYDimension() / 2 - middleOfAisleY);
 
-		int mySeatToAisleDistanceX = Math.abs(thisSeat.getYPosition()
-				+ thisSeat.getYDimension() / 2 - middleOfCabinX);
+		int mySeatToAisleDistanceY = Math.abs(thisSeat.getYPosition()
+				+ thisSeat.getYDimension() / 2 - middleOfAisleY);
 
-		if (otherSeatToAisleDistanceX < mySeatToAisleDistanceX) {
+		if (otherSeatToAisleDistanceY < mySeatToAisleDistanceY) {
 			return true;
 		}
 		return false;
 	}
 
 	/**
+	 * Determine closest aisle.
+	 *
+	 * @param mySeat the my seat
+	 * @return the int
+	 */
+	// TODO: arbitrary seat abreast
+	public static int determineClosestAisle(Seat mySeat) {
+
+		int seatAbrest = checkSeatAbrest(mySeat);
+		
+		int middleOfAisleY = 0;
+
+		switch (seatAbrest) {
+		
+		default:
+			break;
+			
+		case 4:
+		case 6:
+			middleOfAisleY = (int) (ModelHelper.getParent(Cabin.class, mySeat)
+					.getYDimension() / 2.0);
+			break;
+		case 5:
+		case 7:
+			/* AB - DEF - JK */
+			break;
+		case 8:
+			/* AB - DEFG - JK */
+			break;
+		case 9:
+			/* ABC - DEF - HJK */
+			break;
+		case 10:
+			/* ABC - DEFG - HJK */
+			break;
+		}
+
+
+		return middleOfAisleY;
+
+	}
+	
+	/**
+	 * Check seat folding status in row.
+	 *
+	 * @param agent the agent
+	 * @return the int
+	 */
+	// TODO: arbitrary seat abreast
+	public static int checkSeatFoldingStatusInRow(Passenger agent) {
+		
+		int seatAbrest = checkSeatAbrest(agent.getSeat());
+		
+switch (seatAbrest) {
+		
+		default:
+			return 0;
+			
+		case 4:
+			for (Seat seat : agent.getSeat().getRow().getSeats()) {
+				if (!seat.isOccupied() && "B".contains(seat.getLetter())
+						&& "AB".contains(agent.getSeat().getLetter())) {
+					return 1;
+				} else if (!seat.isOccupied() && "C".contains(seat.getLetter())
+						&& "CD".contains(agent.getSeat().getLetter())) {
+					return 2;
+				}
+			}
+			
+		case 6:
+			for (Seat seat : agent.getSeat().getRow().getSeats()) {
+			if (!seat.isOccupied() && "C".contains(seat.getLetter())
+					&& "ABC".contains(agent.getSeat().getLetter())) {
+				return 1;
+			} else if (!seat.isOccupied() && "D".contains(seat.getLetter())
+					&& "DEF".contains(agent.getSeat().getLetter())) {
+				return 2;
+			}
+		}
+		
+}
+		return 0;
+		
+	}
+
+	/**
 	 * Rotation from 0 to 359 degrees. Only 45 degree steps. North is zero.
-	 * 
+	 *
+	 * @param agent
+	 *            the agent
 	 * @return the rotation in degrees.
 	 */
 	public static int getRotation(Agent agent) {
@@ -109,41 +305,62 @@ public class AgentFunctions {
 		return angle;
 	}
 
+	/**
+	 * Doorway blocked.
+	 *
+	 * @param passenger
+	 *            the passenger
+	 * @return true, if successful
+	 */
 	public synchronized static boolean doorwayBlocked(Passenger passenger) {
-		boolean detectedBlocker = false;
+
+		/* get the door of the passenger */
 		Door door = passenger.getDoor();
+
+		/* get the scale of the cabin */
+		int scale = SimulationHandler.getCabin().getSimulationSettings()
+				.getScale();
+
+		/*
+		 * loop through the area defined by the width of the door and a certain
+		 * size for the first step into the cabin
+		 */
 		for (int i = 0; i <= PIXELS_FOR_SCANNING_AT_DOOR; i++) {
-			for (int j = 0; j < door.getWidth()
-					/ SimulationHandler.getCabin().getScale(); j++) {
+			for (int j = 0; j < door.getWidth() / scale; j++) {
+
+				/* get the corresponding node */
 				Node node = SimulationHandler.getMap()
-						.getNodeByCoordinate(door.getXPosition()
-								/ SimulationHandler.getCabin().getScale() + j,
-								i);
+						.get(door.getXPosition() / scale + j, i);
+
+				/* check if the node is an agent */
 				if (node.getProperty() == Property.AGENT) {
+
+					/* check if it is not the agent itself */
 					if (node.getPassenger().getId() != passenger.getId()) {
-						detectedBlocker = true;
+						return true;
 					}
 				}
 			}
 		}
-		if (detectedBlocker) {
-			return true;
-		} else {
-			// System.out.println("Doorway is now clear.");
-			return false;
-		}
+		return false;
 	}
+	
+
 
 	/**
 	 * This method takes a cost map and adds a huge cost to the location and the
 	 * area around agents. The agent triggering this method is ignored.
+	 *
+	 * @param agent
+	 *            the agent
+	 * @return the costmap
 	 */
-	public static CostMap updateCostmap(Agent agent) {
+	public static Costmap updateCostmap(Agent agent) {
 
 		/*
 		 * The cost map is flooded from the agents current location to his seat
 		 */
-		CostMap costmap = new CostMap(
+		Costmap costmap = new Costmap(
 				SimulationHandler.getMap().getDimensions(), agent.getStart(),
 				SimulationHandler.getMap(), agent, true);
 
@@ -159,7 +376,7 @@ public class AgentFunctions {
 				agent.getCurrentPosition().getX() - squareDimension,
 				agent.getCurrentPosition().getX() + squareDimension);
 
-		/* this is the expansion in the x Direction */
+		/* this is the expansion in the y Direction */
 		Vector yVector = new Vector2D(
 				agent.getCurrentPosition().getY() - squareDimension,
 				agent.getCurrentPosition().getY() + squareDimension);
@@ -178,10 +395,13 @@ public class AgentFunctions {
 				/* prevent out of bounds exceptions */
 				if (xCoordinate > 0 && yCoordinate > 0) {
 
+					Node node = SimulationHandler.getMap().get(xCoordinate,
+							yCoordinate);
+
 					/* find all nodes occupied by agents */
-					if (SimulationHandler.getMap()
-							.getNodeByCoordinate(xCoordinate, yCoordinate)
-							.getProperty() == Property.AGENT) {
+					if (node.getProperty() == Property.AGENT
+							&& node.getPassenger().getId() != agent
+									.getPassenger().getId()) {
 
 						/*
 						 * additionally to the surrounding points of the agents,
@@ -192,10 +412,7 @@ public class AgentFunctions {
 						for (int stepsAhead = 0; stepsAhead < 6; stepsAhead++) {
 
 							/* the current agents position is excluded here! */
-							if (!SimulationHandler.getMap()
-									.getNodeByCoordinate(xCoordinate,
-											yCoordinate)
-									.getPosition()
+							if (!node.getPosition()
 									.equals(agent.getCurrentPosition())) {
 
 								/* the surrounding points are calculated */
@@ -204,11 +421,9 @@ public class AgentFunctions {
 												yCoordinate + stepsAhead)) {
 
 									/* the surrounding costs are assigned */
-									if (SimulationHandler.getMap()
-											.getNode(point)
-											.getProperty() != Property.OBSTACLE) {
-										costmap.setCost(point.getX(),
-												point.getY(), 5000);
+									if (!SimulationHandler.getMap().get(point)
+											.isObstacle()) {
+										costmap.setCost(point, 5000);
 									}
 
 								}

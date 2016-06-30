@@ -24,6 +24,11 @@ import net.bhl.cdt.paxelerate.util.time.TimeHelper;
  */
 public class TestTimeHelper {
 	
+	/**
+	 * Gets the current time of day test.
+	 *
+	 * @return the current time of day test
+	 */
 	@Test
 	public void getCurrentTimeOfDayTest() {
 		// Retrieve current date and define time of day format
@@ -33,6 +38,9 @@ public class TestTimeHelper {
 		assertEquals("Wrong time format.", dateFormat.format(date), TimeHelper.getCurrentTimeOfDay());
 	}
 	
+	/**
+	 * To time of day test.
+	 */
 	@Test
 	public void toTimeOfDayTest() {
 		// Maximum number of seconds in a day

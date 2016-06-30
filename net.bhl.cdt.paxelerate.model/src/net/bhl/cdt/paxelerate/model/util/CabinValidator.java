@@ -9,36 +9,6 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EObjectValidator;
 
-import net.bhl.cdt.paxelerate.model.AircraftType;
-import net.bhl.cdt.paxelerate.model.BusinessClass;
-import net.bhl.cdt.paxelerate.model.Cabin;
-import net.bhl.cdt.paxelerate.model.CabinPackage;
-import net.bhl.cdt.paxelerate.model.CrewMember;
-import net.bhl.cdt.paxelerate.model.Curtain;
-import net.bhl.cdt.paxelerate.model.Door;
-import net.bhl.cdt.paxelerate.model.EconomyClass;
-import net.bhl.cdt.paxelerate.model.EmergencyExit;
-import net.bhl.cdt.paxelerate.model.FirstClass;
-import net.bhl.cdt.paxelerate.model.Galley;
-import net.bhl.cdt.paxelerate.model.Lavatory;
-import net.bhl.cdt.paxelerate.model.LuggageSize;
-import net.bhl.cdt.paxelerate.model.MainDoor;
-import net.bhl.cdt.paxelerate.model.Passenger;
-import net.bhl.cdt.paxelerate.model.PassengerMood;
-import net.bhl.cdt.paxelerate.model.PhysicalObject;
-import net.bhl.cdt.paxelerate.model.PremiumEconomyClass;
-import net.bhl.cdt.paxelerate.model.Row;
-import net.bhl.cdt.paxelerate.model.Seat;
-import net.bhl.cdt.paxelerate.model.Sex;
-import net.bhl.cdt.paxelerate.model.SimulationProperties;
-import net.bhl.cdt.paxelerate.model.SimulationResult;
-import net.bhl.cdt.paxelerate.model.SortingStyle;
-import net.bhl.cdt.paxelerate.model.Stairway;
-import net.bhl.cdt.paxelerate.model.StairwayDirection;
-import net.bhl.cdt.paxelerate.model.StandardDoor;
-import net.bhl.cdt.paxelerate.model.Stowage;
-import net.bhl.cdt.paxelerate.model.TravelClass;
-
 /**
  * <!-- begin-user-doc -->
  * The <b>Validator</b> for the model.
@@ -47,11 +17,13 @@ import net.bhl.cdt.paxelerate.model.TravelClass;
  * @generated
  */
 public class CabinValidator extends EObjectValidator {
+	
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @generated 
 	 */
 	public static final CabinValidator INSTANCE = new CabinValidator();
 
@@ -141,14 +113,6 @@ public class CabinValidator extends EObjectValidator {
 				return validateRow((Row)value, diagnostics, context);
 			case CabinPackage.TRAVEL_CLASS:
 				return validateTravelClass((TravelClass)value, diagnostics, context);
-			case CabinPackage.BUSINESS_CLASS:
-				return validateBusinessClass((BusinessClass)value, diagnostics, context);
-			case CabinPackage.FIRST_CLASS:
-				return validateFirstClass((FirstClass)value, diagnostics, context);
-			case CabinPackage.ECONOMY_CLASS:
-				return validateEconomyClass((EconomyClass)value, diagnostics, context);
-			case CabinPackage.PREMIUM_ECONOMY_CLASS:
-				return validatePremiumEconomyClass((PremiumEconomyClass)value, diagnostics, context);
 			case CabinPackage.SEAT:
 				return validateSeat((Seat)value, diagnostics, context);
 			case CabinPackage.PASSENGER:
@@ -169,12 +133,6 @@ public class CabinValidator extends EObjectValidator {
 				return validateStowage((Stowage)value, diagnostics, context);
 			case CabinPackage.DOOR:
 				return validateDoor((Door)value, diagnostics, context);
-			case CabinPackage.MAIN_DOOR:
-				return validateMainDoor((MainDoor)value, diagnostics, context);
-			case CabinPackage.EMERGENCY_EXIT:
-				return validateEmergencyExit((EmergencyExit)value, diagnostics, context);
-			case CabinPackage.STANDARD_DOOR:
-				return validateStandardDoor((StandardDoor)value, diagnostics, context);
 			case CabinPackage.SIMULATION_PROPERTIES:
 				return validateSimulationProperties((SimulationProperties)value, diagnostics, context);
 			case CabinPackage.LUGGAGE_PROPERTIES:
@@ -199,6 +157,10 @@ public class CabinValidator extends EObjectValidator {
 				return validateTravelOption((TravelOption)value, diagnostics, context);
 			case CabinPackage.OBJECT_OPTION:
 				return validateObjectOption((ObjectOption)value, diagnostics, context);
+			case CabinPackage.DOOR_OPTION:
+				return validateDoorOption((DoorOption)value, diagnostics, context);
+			case CabinPackage.LAYOUT_CONCEPT:
+				return validateLayoutConcept((LayoutConcept)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -206,8 +168,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param cabin the cabin
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateCabin(Cabin cabin, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(cabin, diagnostics, context);
@@ -215,8 +182,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param row the row
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateRow(Row row, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(row, diagnostics, context);
@@ -224,8 +196,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param travelClass the travel class
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateTravelClass(TravelClass travelClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(travelClass, diagnostics, context)) return false;
@@ -264,88 +241,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateBusinessClass(BusinessClass businessClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(businessClass, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(businessClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(businessClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(businessClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(businessClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(businessClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(businessClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(businessClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(businessClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTravelClass_tooManyPassengers(businessClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTravelClass_wrongRowStructure(businessClass, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateFirstClass(FirstClass firstClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(firstClass, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(firstClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(firstClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(firstClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(firstClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(firstClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(firstClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(firstClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(firstClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTravelClass_tooManyPassengers(firstClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTravelClass_wrongRowStructure(firstClass, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateEconomyClass(EconomyClass economyClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(economyClass, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(economyClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(economyClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(economyClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(economyClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(economyClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(economyClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(economyClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(economyClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTravelClass_tooManyPassengers(economyClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTravelClass_wrongRowStructure(economyClass, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validatePremiumEconomyClass(PremiumEconomyClass premiumEconomyClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(premiumEconomyClass, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(premiumEconomyClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(premiumEconomyClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(premiumEconomyClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(premiumEconomyClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(premiumEconomyClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(premiumEconomyClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(premiumEconomyClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(premiumEconomyClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTravelClass_tooManyPassengers(premiumEconomyClass, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTravelClass_wrongRowStructure(premiumEconomyClass, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param seat the seat
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateSeat(Seat seat, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(seat, diagnostics, context)) return false;
@@ -363,8 +265,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param passenger the passenger
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validatePassenger(Passenger passenger, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(passenger, diagnostics, context);
@@ -372,8 +279,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param crewMember the crew member
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateCrewMember(CrewMember crewMember, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(crewMember, diagnostics, context);
@@ -381,8 +293,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param physicalObject the physical object
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validatePhysicalObject(PhysicalObject physicalObject, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(physicalObject, diagnostics, context)) return false;
@@ -410,8 +327,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param lavatory the lavatory
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateLavatory(Lavatory lavatory, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(lavatory, diagnostics, context)) return false;
@@ -429,8 +351,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param galley the galley
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateGalley(Galley galley, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(galley, diagnostics, context)) return false;
@@ -448,8 +375,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param stairway the stairway
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateStairway(Stairway stairway, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(stairway, diagnostics, context)) return false;
@@ -467,8 +399,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param curtain the curtain
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateCurtain(Curtain curtain, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(curtain, diagnostics, context)) return false;
@@ -486,8 +423,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param stowage the stowage
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateStowage(Stowage stowage, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(stowage, diagnostics, context)) return false;
@@ -505,8 +447,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param door the door
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateDoor(Door door, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(door, diagnostics, context);
@@ -514,35 +461,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateMainDoor(MainDoor mainDoor, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(mainDoor, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateEmergencyExit(EmergencyExit emergencyExit, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(emergencyExit, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateStandardDoor(StandardDoor standardDoor, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(standardDoor, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param simulationProperties the simulation properties
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateSimulationProperties(SimulationProperties simulationProperties, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(simulationProperties, diagnostics, context);
@@ -550,8 +475,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param luggageProperties the luggage properties
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateLuggageProperties(LuggageProperties luggageProperties, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(luggageProperties, diagnostics, context);
@@ -559,8 +489,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param simulationResult the simulation result
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateSimulationResult(SimulationResult simulationResult, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(simulationResult, diagnostics, context);
@@ -568,8 +503,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param passengerProperties the passenger properties
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validatePassengerProperties(PassengerProperties passengerProperties, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(passengerProperties, diagnostics, context);
@@ -577,8 +517,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param sex the sex
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateSex(Sex sex, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
@@ -586,8 +531,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param stairwayDirection the stairway direction
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateStairwayDirection(StairwayDirection stairwayDirection, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
@@ -595,8 +545,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param aircraftType the aircraft type
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateAircraftType(AircraftType aircraftType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
@@ -604,8 +559,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param passengerMood the passenger mood
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validatePassengerMood(PassengerMood passengerMood, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
@@ -613,8 +573,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param luggageSize the luggage size
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateLuggageSize(LuggageSize luggageSize, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
@@ -622,8 +587,13 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param sortingStyle the sorting style
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateSortingStyle(SortingStyle sortingStyle, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
@@ -631,10 +601,43 @@ public class CabinValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param travelOption the travel option
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
 	 */
 	public boolean validateTravelOption(TravelOption travelOption, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param objectOption the object option
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
+	 */
+	public boolean validateObjectOption(ObjectOption objectOption, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->.
+	 *
+	 * @param doorOption the door option
+	 * @param diagnostics the diagnostics
+	 * @param context the context
+	 * @return true, if successful
+	 * @generated 
+	 */
+	public boolean validateDoorOption(DoorOption doorOption, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -643,7 +646,7 @@ public class CabinValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateObjectOption(ObjectOption objectOption, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateLayoutConcept(LayoutConcept layoutConcept, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

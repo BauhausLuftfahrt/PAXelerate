@@ -39,6 +39,7 @@ public class LuggagePropertiesItemProvider
 		ITreeItemContentProvider,
 		IItemLabelProvider,
 		IItemPropertySource {
+	
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -60,8 +61,8 @@ public class LuggagePropertiesItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addLuggageStowingDistanceFromSeatMeanPropertyDescriptor(object);
-			addLuggageStowingDistanceFromSeatDeviationPropertyDescriptor(object);
+			addLuggageStowDistanceFromSeatMeanPropertyDescriptor(object);
+			addLuggageStowDistanceFromSeatDeviationPropertyDescriptor(object);
 			addPercentageOfPassengersWithNoLuggagePropertyDescriptor(object);
 			addPercentageOfPassengersWithSmallLuggagePropertyDescriptor(object);
 			addPercentageOfPassengersWithMediumLuggagePropertyDescriptor(object);
@@ -77,19 +78,19 @@ public class LuggagePropertiesItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Luggage Stowing Distance From Seat Mean feature.
+	 * This adds a property descriptor for the Luggage Stow Distance From Seat Mean feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addLuggageStowingDistanceFromSeatMeanPropertyDescriptor(Object object) {
+	protected void addLuggageStowDistanceFromSeatMeanPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_LuggageProperties_luggageStowingDistanceFromSeatMean_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LuggageProperties_luggageStowingDistanceFromSeatMean_feature", "_UI_LuggageProperties_type"),
-				 CabinPackage.Literals.LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN,
+				 getString("_UI_LuggageProperties_luggageStowDistanceFromSeatMean_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LuggageProperties_luggageStowDistanceFromSeatMean_feature", "_UI_LuggageProperties_type"),
+				 CabinPackage.Literals.LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_MEAN,
 				 true,
 				 false,
 				 false,
@@ -99,19 +100,19 @@ public class LuggagePropertiesItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Luggage Stowing Distance From Seat Deviation feature.
+	 * This adds a property descriptor for the Luggage Stow Distance From Seat Deviation feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addLuggageStowingDistanceFromSeatDeviationPropertyDescriptor(Object object) {
+	protected void addLuggageStowDistanceFromSeatDeviationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_LuggageProperties_luggageStowingDistanceFromSeatDeviation_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LuggageProperties_luggageStowingDistanceFromSeatDeviation_feature", "_UI_LuggageProperties_type"),
-				 CabinPackage.Literals.LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION,
+				 getString("_UI_LuggageProperties_luggageStowDistanceFromSeatDeviation_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LuggageProperties_luggageStowDistanceFromSeatDeviation_feature", "_UI_LuggageProperties_type"),
+				 CabinPackage.Literals.LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_DEVIATION,
 				 true,
 				 false,
 				 false,
@@ -355,6 +356,9 @@ public class LuggagePropertiesItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
+	 * @param object the object
+	 * @return the text
 	 * @generated NOT
 	 */
 	@Override
@@ -376,8 +380,8 @@ public class LuggagePropertiesItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(LuggageProperties.class)) {
-			case CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_MEAN:
-			case CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOWING_DISTANCE_FROM_SEAT_DEVIATION:
+			case CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_MEAN:
+			case CabinPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_DEVIATION:
 			case CabinPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_NO_LUGGAGE:
 			case CabinPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_LUGGAGE:
 			case CabinPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_LUGGAGE:

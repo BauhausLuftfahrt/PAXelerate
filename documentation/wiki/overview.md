@@ -1,6 +1,6 @@
-# A Functional Overview
+﻿# A Functional Overview
 
-Based on PAXelerate release: Alpha 0.6 (04/01/2016)
+Based on PAXelerate release: Alpha 0.7 (07/01/2016)
 
 PAXelerate is based on a microscopic approach applying agent-based modelling techniques. Each passenger is represented as an agent with individual properties such as body dimensions, walking speed, target seat or type of carry-on luggage.
 

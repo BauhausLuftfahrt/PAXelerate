@@ -40,40 +40,13 @@ public interface CabinFactory extends EFactory {
 	Row createRow();
 
 	/**
-	 * Returns a new object of class '<em>Business Class</em>'.
+	 * Returns a new object of class '<em>Travel Class</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Business Class</em>'.
+	 * @return a new object of class '<em>Travel Class</em>'.
 	 * @generated
 	 */
-	BusinessClass createBusinessClass();
-
-	/**
-	 * Returns a new object of class '<em>First Class</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>First Class</em>'.
-	 * @generated
-	 */
-	FirstClass createFirstClass();
-
-	/**
-	 * Returns a new object of class '<em>Economy Class</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Economy Class</em>'.
-	 * @generated
-	 */
-	EconomyClass createEconomyClass();
-
-	/**
-	 * Returns a new object of class '<em>Premium Economy Class</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Premium Economy Class</em>'.
-	 * @generated
-	 */
-	PremiumEconomyClass createPremiumEconomyClass();
+	TravelClass createTravelClass();
 
 	/**
 	 * Returns a new object of class '<em>Seat</em>'.
@@ -148,31 +121,13 @@ public interface CabinFactory extends EFactory {
 	Stowage createStowage();
 
 	/**
-	 * Returns a new object of class '<em>Main Door</em>'.
+	 * Returns a new object of class '<em>Door</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Main Door</em>'.
+	 * @return a new object of class '<em>Door</em>'.
 	 * @generated
 	 */
-	MainDoor createMainDoor();
-
-	/**
-	 * Returns a new object of class '<em>Emergency Exit</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Emergency Exit</em>'.
-	 * @generated
-	 */
-	EmergencyExit createEmergencyExit();
-
-	/**
-	 * Returns a new object of class '<em>Standard Door</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Standard Door</em>'.
-	 * @generated
-	 */
-	StandardDoor createStandardDoor();
+	Door createDoor();
 
 	/**
 	 * Returns a new object of class '<em>Simulation Properties</em>'.

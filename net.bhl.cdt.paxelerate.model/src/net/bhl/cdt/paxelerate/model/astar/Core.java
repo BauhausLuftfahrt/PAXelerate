@@ -9,30 +9,49 @@ import java.util.ArrayList;
 
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
+import net.bhl.cdt.paxelerate.util.math.MathHelper;
 
 /**
  * This class is the A* algorithm.
  * 
  * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  *
  */
 public class Core {
-	private AreaMap map;
-	private CostMap costmap;
+
+	/** The areamap. */
+	private Areamap areamap;
+
+	/** The costmap. */
+	private Costmap costmap;
+
+	/** The best path. */
 	private Path bestPath;
+
+	/** The closed list. */
 	private ArrayList<Node> closedList;
+
+	/** The open list. */
 	private SortedNodeList openList;
+
+	/** The agent. */
 	private Agent agent;
 
 	/**
 	 * This method constructs the Core.
-	 * 
-	 * @param map
-	 *            is the AreaMap that is fed into the algorithm
+	 *
+	 * @param maphandler
+	 *            the maphandler
+	 * @param costmap
+	 *            the costmap
+	 * @param agent
+	 *            the agent
 	 */
-	public Core(AreaMap map, CostMap costmap, Agent agent) {
+	public Core(AreamapHandler maphandler, Costmap costmap, Agent agent) {
 
-		this.map = map;
+		this.areamap = maphandler.getAreamap();
 		this.agent = agent;
 		this.costmap = costmap;
 		closedList = new ArrayList<Node>();
@@ -43,29 +62,25 @@ public class Core {
 
 	/**
 	 * This method calculates the shortest path.
-	 * 
-	 * @param start
-	 *            is the start vector
-	 * @param goal
-	 *            is the goal vector
+	 *
 	 * @return returns the shortest path
 	 */
 	private void calculateShortestPath() {
 
 		/* mark start and goal node */
-		map.getNode(agent.getGoal()).setProperty(Property.GOAL,
+		areamap.get(agent.getGoal()).setProperty(Property.GOAL,
 				agent.getPassenger());
-		map.getNode(agent.getStart()).setProperty(Property.START,
+		areamap.get(agent.getStart()).setProperty(Property.START,
 				agent.getPassenger());
 
 		/* reset the properties of the start node */
-		map.getNode(agent.getStart()).setDistanceFromStart(0);
-		map.getNode(agent.getStart()).setCostFromStart(0);
+		areamap.get(agent.getStart()).setDistanceFromStart(0);
+		areamap.get(agent.getStart()).setCostFromStart(0);
 
 		/* reset the lists */
 		closedList.clear();
 		openList.clear();
-		openList.add(map.getNode(agent.getStart()));
+		openList.add(areamap.get(agent.getStart()));
 
 		/* while we haven't reached the goal yet */
 		while (openList.size() != 0) {
@@ -83,8 +98,8 @@ public class Core {
 			if (current.getPosition().equals(agent.getGoal())) {
 
 				/* the start node does never have a previous node! */
-				if (map.getNode(agent.getStart()) != null) {
-					map.getNode(agent.getStart()).setPreviousNode(null);
+				if (areamap.get(agent.getStart()) != null) {
+					areamap.get(agent.getStart()).setPreviousNode(null);
 				}
 
 				/* if there is a path found, reconstruct it */
@@ -113,16 +128,49 @@ public class Core {
 					continue;
 				}
 
+				/*
+				 * if the distance to the closest obstacle is smaller than half
+				 * of the diameter of the agent, it will not be able to pass
+				 * through
+				 */
+
+				// TODO: This is a problem concerning the design: the seats are
+				// much closer to each other than the passengers width!
+
+				// DEACTIVATED INTENTIONALLY
+				// if (false && neighbor.getDistanceToClosestObstacle() != 0) {
+				// if (neighbor.getDistanceToClosestObstacle() <= agent
+				// .getPassenger().getWidth()
+				// / (double) SimulationHandler.getCabin()
+				// .getSimulationSettings().getScale()) {
+				//
+				// System.out.println(neighbor
+				// .getDistanceToClosestObstacle()
+				// + " <= "
+				// + agent.getPassenger().getDepth()
+				// / (double) SimulationHandler.getCabin()
+				// .getSimulationSettings()
+				// .getScale()
+				// + " -> agent does not fit through!");
+				// continue;
+				// }
+				// }
+
 				/* also just continue if the neighbor is an obstacle */
-				if (neighbor.getProperty() != Property.OBSTACLE) {
+				if (!neighbor.isObstacle()) {
 
 					/* calculate the neighbors distance from start */
-					double neighborDistanceFromStart = map.getDistanceBetween(
-							map.getNode(agent.getStart()), neighbor);
+					double neighborDistanceFromStart = MathHelper
+							.distanceBetween(
+									areamap.get(agent.getStart()).getPosition(),
+									neighbor.getPosition());
 
 					/* calculate the neighbors distance from start */
-					double currentDistanceFromStart = map.getDistanceBetween(
-							map.getNode(agent.getStart()), current);
+					double currentDistanceFromStart = MathHelper
+							.distanceBetween(
+									(areamap.get(agent.getStart())
+											.getPosition()),
+									current.getPosition());
 
 					/* calculate the neighbors cost */
 					int neighborCostFromStart = costmap
@@ -156,9 +204,6 @@ public class Core {
 						neighborIsBetter = false;
 					}
 
-					// TODO: check if passenger dimensions allow this specific
-					// node.
-
 					/* set neighbors parameters if it is better */
 					if (neighborIsBetter) {
 						neighbor.setPreviousNode(current);
@@ -191,7 +236,7 @@ public class Core {
 	 */
 	private synchronized Path reconstructPath(Node node) {
 		Path path = new Path();
-		while (node.getPreviousNode() != null && node != null) {
+		while (node.getPreviousNode() != null) {
 			path.prependWayPoint(node);
 			node = node.getPreviousNode();
 		}

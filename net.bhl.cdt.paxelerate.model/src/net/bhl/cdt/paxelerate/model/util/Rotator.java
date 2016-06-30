@@ -1,3 +1,8 @@
+/*******************************************************************************
+ * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
+ *******************************************************************************/
 package net.bhl.cdt.paxelerate.model.util;
 
 import net.bhl.cdt.paxelerate.util.math.Vector;
@@ -7,10 +12,19 @@ import net.bhl.cdt.paxelerate.util.math.Vector2D;
  * This class is used to rotate an array or part of an array.
  * 
  * @author marc.engelmann
+ * @version 1.0
+ * @since 0.5
  *
  */
 public class Rotator {
 
+	/**
+	 * Round index to point.
+	 *
+	 * @param index the index
+	 * @param radius the radius
+	 * @return the vector
+	 */
 	private static Vector RoundIndexToPoint(int index, int radius) {
 		if (radius == 0)
 			return new Vector2D(0, 0);
@@ -113,6 +127,12 @@ public class Rotator {
 	// return false;
 	// }
 
+	/**
+	 * Rotate45.
+	 *
+	 * @param array the array
+	 * @return the int[][]
+	 */
 	private static int[][] rotate45(int[][] array) {
 
 		int dim = Math.max(array[0].length, array.length);
@@ -147,6 +167,13 @@ public class Rotator {
 		return result;
 	}
 
+	/**
+	 * Rotate.
+	 *
+	 * @param degrees the degrees
+	 * @param array the array
+	 * @return the int[][]
+	 */
 	public static int[][] rotate(int degrees, int[][] array) {
 		if (degrees == 0 || degrees % 45 != 0) {
 			return null;

@@ -4,24 +4,51 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ******************************************************************************/
 package net.bhl.cdt.paxelerate.util.math;
- 
+
 import java.math.BigDecimal;
- 
+
 /**
  * This utility class rounds a decimal number.
+ * 
  * @author www.codejava.net
+ * @version 1.0
+ * @since 0.5
  *
  */
 public class DecimalHelper {
-	
-	protected DecimalHelper () {
-		
+
+	/**
+	 * Instantiates a new decimal helper.
+	 */
+	protected DecimalHelper() {
+
 	}
- 
-    public static double round(double value, int numberOfDigitsAfterDecimalPoint) {
-        BigDecimal bigDecimal = new BigDecimal(value);
-        bigDecimal = bigDecimal.setScale(numberOfDigitsAfterDecimalPoint,
-                BigDecimal.ROUND_HALF_UP);
-        return bigDecimal.doubleValue();
-    }
+
+	/**
+	 * Round.
+	 *
+	 * @param value
+	 *            the value
+	 * @param numberOfDigitsAfterDecimalPoint
+	 *            the number of digits after decimal point
+	 * @return the double
+	 */
+	public static double round(double value, int numberOfDigitsAfterDecimalPoint) {
+		BigDecimal bigDecimal = new BigDecimal(value);
+		bigDecimal = bigDecimal.setScale(numberOfDigitsAfterDecimalPoint, BigDecimal.ROUND_HALF_UP);
+		return bigDecimal.doubleValue();
+	}
+
+	/**
+	 * Percentage.
+	 *
+	 * @param value
+	 *            the value
+	 * @param maximumValue
+	 *            the maximum value
+	 * @return the int
+	 */
+	public static int percentage(double value, double maximumValue) {
+		return (int) ((value / maximumValue) * 100.0);
+	}
 }
