@@ -21,7 +21,7 @@ A release candidate branch `release-0.X` will be produced for testing and bug fi
     * Eclipse workbench
         * Project generation (import, export --> not working so far)
         * Child: export, import
-    * EMFStore  (from 0.7 on)
+    * EMFStore
 * PAXelerate
     * Cabin models
         * Automatic cabin generation
@@ -46,6 +46,7 @@ A release candidate branch `release-0.X` will be produced for testing and bug fi
     * Simulation
         * Different settings
         * Compatibility: A320 model
+	* Batch simulation
 	
 Basic information about the operating environment should be noted
 

@@ -9,7 +9,7 @@
 
 **User Version**
 
-1. Download and unpack the latest client version [Alpha 0.6](https://github.com/BauhausLuftfahrt/PAXelerate/releases/tag/alpha-0.6)
+1. Download and unpack the latest client version [Alpha 0.7](https://github.com/BauhausLuftfahrt/PAXelerate/releases/tag/alpha-0.7)
 2. Start `PAXelerate.exe`
 
 **Developer Version**
