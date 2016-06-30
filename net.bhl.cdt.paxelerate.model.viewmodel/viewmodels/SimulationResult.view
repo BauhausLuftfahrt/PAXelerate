@@ -18,6 +18,11 @@
           <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationResult/id"/>
         </domainModelReference>
       </children>
+      <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="__ejTwD7REeaMd6ncihyvAw" name="Control layoutConceptType">
+        <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="__ejTwT7REeaMd6ncihyvAw">
+          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationResult/layoutConceptType"/>
+        </domainModelReference>
+      </children>
     </children>
     <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_CrAusKTBEeWGjpaobu8CIA" name="Results" readonly="true">
       <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_A3I9UKTBEeWGjpaobu8CIA" name="Control boardingTime">

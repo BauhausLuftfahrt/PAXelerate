@@ -125,6 +125,16 @@
             <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//PassengerProperties/passivePassengerWaitingTimeAfterCollision"/>
           </domainModelReference>
         </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_nK90ED7REeaMd6ncihyvAw" name="Control seatInterferenceProcessTimeFoldingSeatMean">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_nK-bID7REeaMd6ncihyvAw">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//PassengerProperties/seatInterferenceProcessTimeFoldingSeatMean"/>
+          </domainModelReference>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_nLLPcD7REeaMd6ncihyvAw" name="Control seatInterferenceProcessTimeFoldingSeatDeviation">
+          <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_nLLPcT7REeaMd6ncihyvAw">
+            <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//PassengerProperties/seatInterferenceProcessTimeFoldingSeatDeviation"/>
+          </domainModelReference>
+        </children>
       </children>
     </children>
     <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_lO-9UCyuEeaGtfBfHfcYsw"/>
