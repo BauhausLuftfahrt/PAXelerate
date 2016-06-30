@@ -402,12 +402,6 @@ public class ObstacleGenerator {
 				if (node.getPosition().getY() == 1 || node.getPosition()
 						.getY() == areamap.getDimensions().getY() - 2) {
 
-					if (developerMode) {
-						System.out.println(
-								"detected: " + node.getPosition().getX() + " / "
-										+ node.getPosition().getY());
-					}
-
 					/* check if the other node is not yet an obstacle */
 					if (!areamap.get(node.getPosition().getX(), 0)
 							.isObstacle()) {

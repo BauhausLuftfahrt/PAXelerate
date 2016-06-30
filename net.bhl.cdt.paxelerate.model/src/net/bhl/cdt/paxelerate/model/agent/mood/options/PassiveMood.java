@@ -3,8 +3,10 @@
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ***************************************************************************************/
-package net.bhl.cdt.paxelerate.model.agent;
+package net.bhl.cdt.paxelerate.model.agent.mood.options;
 
+import net.bhl.cdt.paxelerate.model.agent.Agent;
+import net.bhl.cdt.paxelerate.model.agent.mood.AgentMood;
 import net.bhl.cdt.paxelerate.model.astar.AStarHelper;
 import net.bhl.cdt.paxelerate.model.astar.Node.Property;
 
@@ -12,10 +14,9 @@ import net.bhl.cdt.paxelerate.model.astar.Node.Property;
  * The Class PassiveMood.
  *
  * @author marc.engelmann, tobias.bruegge-zobel, michael.schmidt
- * @version 1.1
- * @since 0.5
+ * 
  */
-public class PassiveMood extends AgentMood implements Strategy {
+public class PassiveMood extends AgentMood {
 
 	/**
 	 * Instantiates a new passive mood.

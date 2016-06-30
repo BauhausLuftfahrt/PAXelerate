@@ -19,6 +19,13 @@ import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.PassengerMood;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
+import net.bhl.cdt.paxelerate.model.agent.mood.AgentMood;
+import net.bhl.cdt.paxelerate.model.agent.mood.Collision;
+import net.bhl.cdt.paxelerate.model.agent.mood.options.AggressiveMood;
+import net.bhl.cdt.paxelerate.model.agent.mood.options.PassiveMood;
+import net.bhl.cdt.paxelerate.model.agent.movement.Movement;
+import net.bhl.cdt.paxelerate.model.agent.movement.MovementType;
+import net.bhl.cdt.paxelerate.model.agent.movement.options.Step;
 import net.bhl.cdt.paxelerate.model.astar.AStarHelper;
 import net.bhl.cdt.paxelerate.model.astar.Core;
 import net.bhl.cdt.paxelerate.model.astar.Costmap;
@@ -66,7 +73,7 @@ public class Agent extends Subject implements Runnable {
 
 	/** The way making skipped. */
 	private int wayMakingSkipped = 0;
-	
+
 	/** The way making foldable seat skipped. */
 	private int wayMakingFoldableSeatSkipped = 0;
 
@@ -420,7 +427,8 @@ public class Agent extends Subject implements Runnable {
 	/**
 	 * Increase total waiting time.
 	 *
-	 * @param time the time
+	 * @param time
+	 *            the time
 	 */
 	private void increaseTotalWaitingTime(long time) {
 		totalWaitingTime = totalWaitingTime + time;
@@ -517,9 +525,12 @@ public class Agent extends Subject implements Runnable {
 	/**
 	 * Checks if is in x/y range equal.
 	 *
-	 * @param position            the position
-	 * @param desiredPosition the desired position
-	 * @param range            the range
+	 * @param position
+	 *            the position
+	 * @param desiredPosition
+	 *            the desired position
+	 * @param range
+	 *            the range
 	 * @return true, if is in x/y range equal
 	 */
 	private boolean isInRangeEqual(int position, int desiredPosition,
@@ -534,9 +545,12 @@ public class Agent extends Subject implements Runnable {
 	/**
 	 * Checks if is in x/y range smaller.
 	 *
-	 * @param position            the position
-	 * @param desiredPosition the desired position
-	 * @param range            the range
+	 * @param position
+	 *            the position
+	 * @param desiredPosition
+	 *            the desired position
+	 * @param range
+	 *            the range
 	 * @return true, if is in x/y range smaller
 	 */
 	private boolean isInRangeSmaller(int position, int desiredPosition,
@@ -1310,34 +1324,38 @@ public class Agent extends Subject implements Runnable {
 		mainloop: try {
 
 			/*
-			 * i represents the number of steps taken as well as the current
-			 * step count. The actual position is one step behind i, so i is the
-			 * desired step.
+			 * stepIndex represents the number of steps taken as well as the
+			 * current step count. The actual position is one step behind
+			 * stepIndex, so stepIndex is the desired step.
 			 */
-			int i = 0;
+			int stepIndex = 0;
 
 			/* run the path up to its end */
-			while (i < path.getLength()) {
+			while (stepIndex < path.getLength()) {
+
+				MovementType moveType = new Step();
+				Movement movement = new Movement(moveType);
+				movement.perform();
 
 				/*
 				 * at the first step, there is no current location but only a
 				 * desired first location. So ignore this at the first loop.
 				 */
-				if (i != 0) {
+				if (stepIndex != 0) {
 
 					/*
 					 * the current position is the last taken step in the path
 					 */
-					currentPosition = path.get(i - 1).getPosition();
+					currentPosition = path.get(stepIndex - 1).getPosition();
 
 				}
 
-				if (i == 2) {
+				if (stepIndex == 2) {
 					movedOnce = true;
 				}
 
 				/* the new planned location is current step in the path */
-				desiredPosition = path.get(i).getPosition();
+				desiredPosition = path.get(stepIndex).getPosition();
 
 				/* check if the desired next step is blocked by someone else */
 				Property property = nodeBlocked(desiredPosition);
@@ -1351,7 +1369,7 @@ public class Agent extends Subject implements Runnable {
 							.raiseNumberOfInterrupts();
 
 					/* get the correct behavior for an obstacle avoidance */
-					Situation collision = new Situation(agentMood, property);
+					Collision collision = new Collision(agentMood, property);
 
 					/* Perform the correct behavior */
 					collision.handle();
@@ -1520,7 +1538,7 @@ public class Agent extends Subject implements Runnable {
 					lastMoveTime = System.currentTimeMillis();
 
 					/* then perform the step */
-					i++;
+					stepIndex++;
 
 					/* try to submit the properties back to the passenger */
 					try {

@@ -3,18 +3,17 @@
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ***************************************************************************************/
-package net.bhl.cdt.paxelerate.model.agent;
+package net.bhl.cdt.paxelerate.model.agent.mood;
 
-import net.bhl.cdt.paxelerate.model.astar.Node.Property;
+import net.bhl.cdt.paxelerate.model.agent.Agent;
 
 /**
  * The Class AgentMood.
  *
  * @author marc.engelmann, tobias.bruegge-zobel
- * @version 1.0
- * @since 0.5
+ * 
  */
-public abstract class AgentMood implements Strategy {
+public abstract class AgentMood implements CollisionHandler {
 
 	/** The agent. */
 	private Agent agent;
@@ -22,16 +21,12 @@ public abstract class AgentMood implements Strategy {
 	/**
 	 * Instantiates a new agent mood.
 	 *
-	 * @param agent the agent
+	 * @param agent
+	 *            the agent
 	 */
-	public AgentMood(Agent agent) {
-		this.setAgent(agent);
+	protected AgentMood(Agent agent) {
+		this.agent = agent;
 	}
-
-	/* (non-Javadoc)
-	 * @see net.bhl.cdt.paxelerate.model.agent.Strategy#reactToCollision(net.bhl.cdt.paxelerate.model.astar.Node.Property)
-	 */
-	public abstract void reactToCollision(Property property);
 
 	/**
 	 * Gets the agent.
@@ -40,14 +35,5 @@ public abstract class AgentMood implements Strategy {
 	 */
 	public Agent getAgent() {
 		return agent;
-	}
-
-	/**
-	 * Sets the agent.
-	 *
-	 * @param agent the new agent
-	 */
-	public void setAgent(Agent agent) {
-		this.agent = agent;
 	}
 }
