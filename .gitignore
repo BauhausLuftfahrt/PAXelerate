@@ -2,3 +2,5 @@ archive/
 .DS_Store
 Thumbs.db
 *.class
+
+*.ecore
