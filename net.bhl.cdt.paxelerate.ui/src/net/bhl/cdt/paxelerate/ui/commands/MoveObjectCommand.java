@@ -17,6 +17,8 @@ import net.bhl.cdt.paxelerate.model.Galley;
 import net.bhl.cdt.paxelerate.model.Lavatory;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
+import net.bhl.cdt.paxelerate.model.command.helper.CloneObject;
+import net.bhl.cdt.paxelerate.model.command.helper.MoveObject;
 import net.bhl.cdt.paxelerate.util.input.Input;
 import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 import net.bhl.cdt.paxelerate.util.math.Vector;
@@ -27,7 +29,7 @@ import net.bhl.cdt.paxelerate.util.math.Vector;
  * 
  * @author marc.engelmann
  * @version 1.0
- * @since 0.5 
+ * @since 0.5
  *
  */
 
@@ -53,9 +55,6 @@ public class MoveObjectCommand extends CDTCommand {
 
 	/** The curtainlist. */
 	private ArrayList<Curtain> curtainlist = new ArrayList<Curtain>();
-
-	/** The scaling desired. */
-	private boolean scalingDesired = false;
 
 	/**
 	 * This command gets all physical object elements that are selected by the
@@ -104,92 +103,9 @@ public class MoveObjectCommand extends CDTCommand {
 				IMessageProvider.INFORMATION);
 
 		movementVector = input.getVectorValue();
-		/*
-		 * scaleVector = input.getSecondVectorValue(); if (scaleVector.getX() !=
-		 * 0 && scaleVector.getY() != 0) { scalingDesired = true; }
-		 */
 
-		int xMovement = movementVector.getX();
-		int yMovement = movementVector.getY();
-
-		if (!rowlist.isEmpty()) {
-			for (Row row : rowlist) {
-				for (Row compareRow : ModelHelper.getChildrenByClass(cabin, Row.class)) {
-					if (row.getRowNumber() == compareRow.getRowNumber()) {
-						for (Seat seat : compareRow.getSeats()) {
-							seat.setYPosition(seat.getYPosition() + yMovement);
-							seat.setXPosition(seat.getXPosition() + xMovement);
-							/*
-							 * if (scalingDesired) {
-							 * seat.setYDimension(scaleVector.getY());
-							 * seat.setXDimension(scaleVector.getX()); }
-							 */
-
-						}
-					}
-				}
-			}
-		}
-		if (!seatlist.isEmpty()) {
-			for (Seat seat : seatlist) {
-				for (Seat compareSeat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
-					if (seat.getId() == compareSeat.getId()) {
-						compareSeat.setYPosition(compareSeat.getYPosition() + yMovement);
-						compareSeat.setXPosition(compareSeat.getXPosition() + xMovement);
-						/*
-						 * if (scalingDesired) {
-						 * compareSeat.setYDimension(scaleVector.getX());
-						 * compareSeat.setXDimension(scaleVector.getY()); }
-						 */
-					}
-				}
-			}
-		}
-		if (!galleylist.isEmpty()) {
-			for (Galley galley : galleylist) {
-				for (Galley compareGalley : cabin.getGalleys()) {
-					if (galley.getId() == compareGalley.getId()) {
-						galley.setYPosition(galley.getYPosition() + yMovement);
-						galley.setXPosition(galley.getXPosition() + xMovement);
-						/*
-						 * if (scalingDesired) {
-						 * galley.setYDimension(scaleVector.getY());
-						 * galley.setXDimension(scaleVector.getX()); }
-						 */
-					}
-				}
-			}
-		}
-		if (!lavatorylist.isEmpty()) {
-			for (Lavatory lavatory : lavatorylist) {
-				for (Lavatory compareLavatory : cabin.getLavatories()) {
-					if (lavatory.getId() == compareLavatory.getId()) {
-						compareLavatory.setYPosition(compareLavatory.getYPosition() + yMovement);
-						compareLavatory.setXPosition(compareLavatory.getXPosition() + xMovement);
-						/*
-						 * if (scalingDesired) {
-						 * compareLavatory.setYDimension(scaleVector.getY());
-						 * compareLavatory.setXDimension(scaleVector.getX()); }
-						 */
-					}
-				}
-			}
-		}
-		if (!curtainlist.isEmpty()) {
-			for (Curtain curtain : curtainlist) {
-				for (Curtain compareCurtain : cabin.getCurtains()) {
-					if (curtain.getId() == compareCurtain.getId()) {
-						compareCurtain.setYPosition(compareCurtain.getYPosition() + yMovement);
-						compareCurtain.setXPosition(compareCurtain.getXPosition() + xMovement);
-						/*
-						 * if (scalingDesired) {
-						 * compareCurtain.setYDimension(scaleVector.getY());
-						 * compareCurtain.setXDimension(scaleVector.getX()); }
-						 */
-					}
-				}
-			}
-		}
+		new MoveObject(cabin, rowlist, seatlist, galleylist, lavatorylist, curtainlist, movementVector)
+				.performMoveObject();
 
 		new DrawCabinCommand(cabin).execute();
 	}

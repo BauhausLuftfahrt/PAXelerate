@@ -24,6 +24,7 @@ Export-Package: net.bhl.cdt.paxelerate.model,
  net.bhl.cdt.paxelerate.model.agent.enums,
  net.bhl.cdt.paxelerate.model.astar,
  net.bhl.cdt.paxelerate.model.astar.node,
+ net.bhl.cdt.paxelerate.model.command.helper,
  net.bhl.cdt.paxelerate.model.impl,
  net.bhl.cdt.paxelerate.model.storage,
  net.bhl.cdt.paxelerate.model.util
