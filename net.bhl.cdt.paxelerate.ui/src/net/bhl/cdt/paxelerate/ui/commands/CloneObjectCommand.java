@@ -13,8 +13,8 @@ import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.model.command.helper.CloneObject;
-import net.bhl.cdt.paxelerate.util.input.Input;
-import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
+import net.bhl.cdt.paxelerate.ui.helper.Input;
+import net.bhl.cdt.paxelerate.ui.helper.Input.WindowType;
 
 /**
  * The Class CloneObjectCommand.

@@ -19,8 +19,8 @@ import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.command.helper.CloneObject;
 import net.bhl.cdt.paxelerate.model.command.helper.MoveObject;
-import net.bhl.cdt.paxelerate.util.input.Input;
-import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
+import net.bhl.cdt.paxelerate.ui.helper.Input;
+import net.bhl.cdt.paxelerate.ui.helper.Input.WindowType;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 
 /**

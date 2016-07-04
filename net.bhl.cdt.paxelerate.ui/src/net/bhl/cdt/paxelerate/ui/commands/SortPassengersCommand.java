@@ -18,10 +18,10 @@ import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.agent.AgentFunctions;
 import net.bhl.cdt.paxelerate.model.command.helper.CloneObject;
 import net.bhl.cdt.paxelerate.model.command.helper.SortPassengers;
+import net.bhl.cdt.paxelerate.ui.helper.Input;
+import net.bhl.cdt.paxelerate.ui.helper.Input.WindowType;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
-import net.bhl.cdt.paxelerate.util.input.Input;
-import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 import net.bhl.cdt.paxelerate.util.math.RandomHelper;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
