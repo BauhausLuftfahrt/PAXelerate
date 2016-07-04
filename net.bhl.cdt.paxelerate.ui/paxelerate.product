@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="PAXelerate" uid="paxelerate" id="net.bhl.cdt.paxelerate.core.paxelerateProduct" application="net.bhl.cdt.client.application" version="1.0.0.qualifier" useFeatures="false" includeLaunchers="true">
+<product name="PAXelerate" uid="paxelerate" id="net.bhl.cdt.paxelerate.ui.paxelerateProduct" application="net.bhl.cdt.client.application" version="0.7.0.qualifier" useFeatures="false" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/net.bhl.cdt.paxelerate.ui/images/about.png"/>
@@ -21,7 +21,7 @@
    <windowImages/>
 
    <splash
-      location="net.bhl.cdt.paxelerate.core" />
+      location="net.bhl.cdt.paxelerate.ui" />
    <launcher name="PAXelerate">
       <solaris/>
       <win useIco="true">
@@ -385,7 +385,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
 
 
    <repositories>
-      <repository location="http://https://github.com/BauhausLuftfahrt/PAXelerate.git" enabled="true" />
+      <repository location="http://github.com/BauhausLuftfahrt/PAXelerate.git" enabled="true" />
    </repositories>
 
    <preferencesInfo>

@@ -107,6 +107,6 @@ public class MoveObjectCommand extends CDTCommand {
 		new MoveObject(cabin, rowlist, seatlist, galleylist, lavatorylist, curtainlist, movementVector)
 				.performMoveObject();
 
-		new DrawCabinCommand(cabin).execute();
+		new RefreshCabinViewCommand(cabin).execute();
 	}
 }

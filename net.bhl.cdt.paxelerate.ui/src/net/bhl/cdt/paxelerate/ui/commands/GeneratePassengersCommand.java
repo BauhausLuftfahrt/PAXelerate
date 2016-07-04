@@ -124,7 +124,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 							}
 
 							try {
-								new DrawCabinCommand(cabin).doRun();
+								new RefreshCabinViewCommand(cabin).doRun();
 							} catch (NullPointerException e) {
 								Log.add(this, "Cabin View could not be refreshed");
 								e.printStackTrace();

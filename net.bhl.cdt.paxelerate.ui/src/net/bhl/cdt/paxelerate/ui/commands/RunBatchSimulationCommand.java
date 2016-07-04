@@ -55,7 +55,7 @@ public class RunBatchSimulationCommand extends CDTCommand {
 		Display.getDefault().syncExec(new Runnable() {
 			@Override
 			public void run() {
-				new DrawCabinCommand(cabin).doRun();
+				new RefreshCabinViewCommand(cabin).doRun();
 			}
 		});
 
@@ -74,7 +74,7 @@ public class RunBatchSimulationCommand extends CDTCommand {
 		Display.getDefault().syncExec(new Runnable() {
 			@Override
 			public void run() {
-				new DrawCabinCommand(cabin).doRun();
+				new RefreshCabinViewCommand(cabin).doRun();
 			}
 		});
 		// 70 - 126

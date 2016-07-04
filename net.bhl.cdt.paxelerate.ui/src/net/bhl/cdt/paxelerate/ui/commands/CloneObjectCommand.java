@@ -59,7 +59,7 @@ public class CloneObjectCommand extends CDTCommand {
 		
 		new CloneObject(travelclass, numberOfRows).performCloneObject();
 
-		new DrawCabinCommand(cabin).execute();
+		new RefreshCabinViewCommand(cabin).execute();
 
 	}
 
