@@ -17,17 +17,17 @@ import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.PassengerMood;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
+import net.bhl.cdt.paxelerate.model.agent.action.AgentAction;
+import net.bhl.cdt.paxelerate.model.agent.action.AgentActionType;
+import net.bhl.cdt.paxelerate.model.agent.action.options.Step;
+import net.bhl.cdt.paxelerate.model.agent.action.options.StowLuggage;
+import net.bhl.cdt.paxelerate.model.agent.action.options.Wait;
+import net.bhl.cdt.paxelerate.model.agent.action.options.WaitForClearing;
 import net.bhl.cdt.paxelerate.model.agent.enums.AgentMode;
 import net.bhl.cdt.paxelerate.model.agent.enums.State;
 import net.bhl.cdt.paxelerate.model.agent.mood.AgentMood;
 import net.bhl.cdt.paxelerate.model.agent.mood.options.AggressiveMood;
 import net.bhl.cdt.paxelerate.model.agent.mood.options.PassiveMood;
-import net.bhl.cdt.paxelerate.model.agent.movement.Movement;
-import net.bhl.cdt.paxelerate.model.agent.movement.MovementType;
-import net.bhl.cdt.paxelerate.model.agent.movement.options.Step;
-import net.bhl.cdt.paxelerate.model.agent.movement.options.StowLuggage;
-import net.bhl.cdt.paxelerate.model.agent.movement.options.Wait;
-import net.bhl.cdt.paxelerate.model.agent.movement.options.WaitForClearing;
 import net.bhl.cdt.paxelerate.model.astar.AStarHelper;
 import net.bhl.cdt.paxelerate.model.astar.Costmap;
 import net.bhl.cdt.paxelerate.model.astar.Path;
@@ -70,6 +70,7 @@ public class Agent extends Subject implements Runnable {
 
 	/** The way making skipped. */
 	private int wayMakingSkipped = 0;
+	private int wayMakingCompleted = 0;
 
 	/** The way making foldable seat skipped. */
 	private int wayMakingFoldableSeatSkipped = 0;
@@ -1134,12 +1135,12 @@ public class Agent extends Subject implements Runnable {
 	 *
 	 * @return the number way making skipped
 	 */
-	/*
-	 * public int getNumberWayMakingSkipped() { return wayMakingSkipped; }
-	 */
 
 	public int getNumberWayMakingSkipped() {
 		return wayMakingSkipped;
+	}
+	public int getNumberWayMakingCompleted() {
+		return wayMakingCompleted;
 	}
 
 	/**
@@ -1186,8 +1187,9 @@ public class Agent extends Subject implements Runnable {
 				if (property != null) {
 
 					/* **************************************************** */
-					MovementType moveType = new Wait(this, scale, property);
-					new Movement(moveType).perform();
+					AgentActionType actionType = new Wait(this, scale,
+							property);
+					new AgentAction(actionType).perform();
 					/* **************************************************** */
 
 					if (exitTheMainLoop) {
@@ -1221,8 +1223,9 @@ public class Agent extends Subject implements Runnable {
 					} else {
 
 						/* ************************************************* */
-						MovementType moveType = new StowLuggage(this, scale);
-						new Movement(moveType).perform();
+						AgentActionType actionType = new StowLuggage(this,
+								scale, simSettings);
+						new AgentAction(actionType).perform();
 						/* ************************************************* */
 					}
 
@@ -1230,8 +1233,9 @@ public class Agent extends Subject implements Runnable {
 						&& passengerStowsLuggage()) {
 
 					/* **************************************************** */
-					MovementType moveType = new StowLuggage(this, scale);
-					new Movement(moveType).perform();
+					AgentActionType actionType = new StowLuggage(this, scale,
+							simSettings);
+					new AgentAction(actionType).perform();
 					/* **************************************************** */
 
 					/*
@@ -1243,8 +1247,9 @@ public class Agent extends Subject implements Runnable {
 						&& passengerStowsLuggageAtAisleSeat()) {
 
 					/* **************************************************** */
-					MovementType moveType = new StowLuggage(this, scale);
-					new Movement(moveType).perform();
+					AgentActionType actionType = new StowLuggage(this, scale,
+							simSettings);
+					new AgentAction(actionType).perform();
 					/* **************************************************** */
 
 				} else if (foldingSeats && !waitingCompleted
@@ -1276,15 +1281,16 @@ public class Agent extends Subject implements Runnable {
 				} else if (!waitingCompleted && waitingForClearingOfRow()) {
 
 					/* **************************************************** */
-					MovementType moveType = new WaitForClearing(this, scale);
-					new Movement(moveType).perform();
+					AgentActionType actionType = new WaitForClearing(this,
+							scale, simSettings, passenger);
+					new AgentAction(actionType).perform();
 					/* **************************************************** */
 
 				} else {
 
 					/* **************************************************** */
-					MovementType moveType = new Step(this, scale);
-					new Movement(moveType).perform();
+					AgentActionType actionType = new Step(this, scale);
+					new AgentAction(actionType).perform();
 					/* **************************************************** */
 
 					/* then perform the step */
@@ -1478,6 +1484,12 @@ public class Agent extends Subject implements Runnable {
 		}
 	}
 
+	/**
+	 * Sets the last move time.
+	 *
+	 * @param currentTimeMillis
+	 *            the new last move time
+	 */
 	public void setLastMoveTime(long currentTimeMillis) {
 		lastMoveTime = currentTimeMillis;
 
@@ -1502,6 +1514,9 @@ public class Agent extends Subject implements Runnable {
 
 	public void raiseNumberOfSkippedWaymakings() {
 		wayMakingSkipped++;
+	}
+	public void raiseNumberOfCompletedWaymakings() {
+		wayMakingCompleted++;
 	}
 
 	public void setWaitingCompleted(boolean b) {
@@ -1529,4 +1544,9 @@ public class Agent extends Subject implements Runnable {
 	public void setPath(Path bestPath) {
 		path = bestPath;
 	}
+
+	public boolean getOtherPassengerStoodUp() {
+		return otherPassengerStoodUp();
+	}
+
 }

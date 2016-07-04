@@ -14,6 +14,8 @@ import net.bhl.cdt.paxelerate.model.astar.node.Node.Property;
  * The Class PassiveMood.
  *
  * @author marc.engelmann, tobias.bruegge-zobel, michael.schmidt
+ * @version 1.0
+ * @since 0.5
  * 
  */
 public class PassiveMood extends AgentMood {

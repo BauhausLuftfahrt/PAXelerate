@@ -11,6 +11,8 @@ import net.bhl.cdt.paxelerate.model.agent.Agent;
  * The Class AgentMood.
  *
  * @author marc.engelmann, tobias.bruegge-zobel
+ * @version 1.0
+ * @since 0.5
  * 
  */
 public abstract class AgentMood implements CollisionHandler {

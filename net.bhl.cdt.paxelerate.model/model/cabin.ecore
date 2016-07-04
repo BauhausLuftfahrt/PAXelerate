@@ -209,6 +209,10 @@
         defaultValueLiteral="18"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="layoutConcept" lowerBound="1"
         eType="#//LayoutConcept" defaultValueLiteral="Default"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="luggageModelOption" lowerBound="1"
+        eType="#//LuggageModelOption" defaultValueLiteral="SimpleModel"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="agentMovementModel" lowerBound="1"
+        eType="#//AgentMovementModel" defaultValueLiteral="SimpleModel"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="scale" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="10"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="simulationSpeedFactor"
@@ -361,6 +365,14 @@
     <eLiterals name="Default"/>
     <eLiterals name="SidwaysFoldableSeat" value="1"/>
     <eLiterals name="LiftingSeatPanSeats" value="2"/>
-    <eLiterals name="bringYourOwnSeat" value="3"/>
+    <eLiterals name="BringYourOwnSeat" value="3" literal="BringYourOwnSeat"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LuggageModelOption">
+    <eLiterals name="SimpleModel" literal="SimpleModel"/>
+    <eLiterals name="AdvancedModel" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AgentMovementModel">
+    <eLiterals name="SimpleModel" literal="SimpleModel"/>
+    <eLiterals name="AdvancedModel" value="1"/>
   </eClassifiers>
 </ecore:EPackage>

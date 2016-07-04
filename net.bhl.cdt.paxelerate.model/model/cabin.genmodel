@@ -62,7 +62,15 @@
       <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//LayoutConcept/Default"/>
       <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//LayoutConcept/SidwaysFoldableSeat"/>
       <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//LayoutConcept/LiftingSeatPanSeats"/>
-      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//LayoutConcept/bringYourOwnSeat"/>
+      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//LayoutConcept/BringYourOwnSeat"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cabin.ecore#//LuggageModelOption">
+      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//LuggageModelOption/SimpleModel"/>
+      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//LuggageModelOption/AdvancedModel"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cabin.ecore#//AgentMovementModel">
+      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//AgentMovementModel/SimpleModel"/>
+      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//AgentMovementModel/AdvancedModel"/>
     </genEnums>
     <genClasses ecoreClass="cabin.ecore#//Cabin">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/xDimension"/>
@@ -190,6 +198,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//SimulationProperties/passengerProperties"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/passengersBoardingPerMinute"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/layoutConcept"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/luggageModelOption"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/agentMovementModel"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/scale"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/simulationSpeedFactor"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/usePresetSettings"/>

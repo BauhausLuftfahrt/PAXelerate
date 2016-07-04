@@ -11,6 +11,8 @@ import net.bhl.cdt.paxelerate.model.astar.node.Node.Property;
  * The Interface Strategy.
  *
  * @author marc.engelmann, tobias.bruegge-zobel
+ * @version 1.0
+ * @since 0.5
  * 
  */
 public interface CollisionHandler {

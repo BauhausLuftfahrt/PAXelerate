@@ -3,7 +3,7 @@
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ***************************************************************************************/
-package net.bhl.cdt.paxelerate.model.agent.enums;
+package net.bhl.cdt.paxelerate.model.agent.action;
 
 /**
  * 
@@ -12,11 +12,25 @@ package net.bhl.cdt.paxelerate.model.agent.enums;
  * @since 0.8
  *
  */
-public enum AgentMode {
+public class AgentAction {
 
-	/** The go to seat. */
-	GO_TO_SEAT,
-	/** The make way. */
-	MAKE_WAY
+	/**
+	 * 
+	 */
+	private AgentActionHandler strategy;
 
+	/**
+	 * 
+	 * @param strategy
+	 */
+	public AgentAction(AgentActionHandler strategy) {
+		this.strategy = strategy;
+	}
+
+	/**
+	 * 
+	 */
+	public void perform() {
+		this.strategy.performNextAction();
+	}
 }

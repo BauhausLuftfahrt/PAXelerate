@@ -62,6 +62,8 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 			addResultsPropertyDescriptor(object);
 			addPassengersBoardingPerMinutePropertyDescriptor(object);
 			addLayoutConceptPropertyDescriptor(object);
+			addLuggageModelOptionPropertyDescriptor(object);
+			addAgentMovementModelPropertyDescriptor(object);
 			addScalePropertyDescriptor(object);
 			addSimulationSpeedFactorPropertyDescriptor(object);
 			addUsePresetSettingsPropertyDescriptor(object);
@@ -478,6 +480,50 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	}
 
 	/**
+	 * This adds a property descriptor for the Luggage Model Option feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLuggageModelOptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_luggageModelOption_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_luggageModelOption_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__LUGGAGE_MODEL_OPTION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Agent Movement Model feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAgentMovementModelPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_agentMovementModel_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_agentMovementModel_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__AGENT_MOVEMENT_MODEL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -551,6 +597,8 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 		switch (notification.getFeatureID(SimulationProperties.class)) {
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
+			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_MODEL_OPTION:
+			case CabinPackage.SIMULATION_PROPERTIES__AGENT_MOVEMENT_MODEL:
 			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
 			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
 			case CabinPackage.SIMULATION_PROPERTIES__USE_PRESET_SETTINGS:

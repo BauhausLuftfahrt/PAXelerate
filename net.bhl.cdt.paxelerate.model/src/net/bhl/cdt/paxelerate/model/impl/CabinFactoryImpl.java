@@ -111,6 +111,10 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return createDoorOptionFromString(eDataType, initialValue);
 			case CabinPackage.LAYOUT_CONCEPT:
 				return createLayoutConceptFromString(eDataType, initialValue);
+			case CabinPackage.LUGGAGE_MODEL_OPTION:
+				return createLuggageModelOptionFromString(eDataType, initialValue);
+			case CabinPackage.AGENT_MOVEMENT_MODEL:
+				return createAgentMovementModelFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -148,6 +152,10 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 				return convertDoorOptionToString(eDataType, instanceValue);
 			case CabinPackage.LAYOUT_CONCEPT:
 				return convertLayoutConceptToString(eDataType, instanceValue);
+			case CabinPackage.LUGGAGE_MODEL_OPTION:
+				return convertLuggageModelOptionToString(eDataType, instanceValue);
+			case CabinPackage.AGENT_MOVEMENT_MODEL:
+				return convertAgentMovementModelToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -586,6 +594,46 @@ public class CabinFactoryImpl extends EFactoryImpl implements CabinFactory {
 	 * @generated
 	 */
 	public String convertLayoutConceptToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LuggageModelOption createLuggageModelOptionFromString(EDataType eDataType, String initialValue) {
+		LuggageModelOption result = LuggageModelOption.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertLuggageModelOptionToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AgentMovementModel createAgentMovementModelFromString(EDataType eDataType, String initialValue) {
+		AgentMovementModel result = AgentMovementModel.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertAgentMovementModelToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
