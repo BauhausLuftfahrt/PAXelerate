@@ -21,6 +21,7 @@ import net.bhl.cdt.paxelerate.model.agent.action.AgentAction;
 import net.bhl.cdt.paxelerate.model.agent.action.AgentActionType;
 import net.bhl.cdt.paxelerate.model.agent.action.options.Step;
 import net.bhl.cdt.paxelerate.model.agent.action.options.StowLuggage;
+import net.bhl.cdt.paxelerate.model.agent.action.options.UnfoldSeat;
 import net.bhl.cdt.paxelerate.model.agent.action.options.Wait;
 import net.bhl.cdt.paxelerate.model.agent.action.options.WaitForClearing;
 import net.bhl.cdt.paxelerate.model.agent.enums.AgentMode;
@@ -1007,77 +1008,7 @@ public class Agent extends Subject implements Runnable {
 
 	}
 
-	/**
-	 * Unfolding seat procedure.
-	 */
-	private void unfoldingSeatProcedure() {
-
-		setCurrentState(State.UNFOLDING_SEAT);
-
-		/* Unfold seat if necessary */
-		/* Sideways foldable seat */
-		if (passenger.getSeat()
-				.getLayoutConcept() == LayoutConcept.SIDWAYS_FOLDABLE_SEAT) {
-			unfoldSeat(GaussianRandom.gaussianRandom(
-					simSettings.getSidewaysFoldabeSeatPopupTimeMean(),
-					GaussOptions.PERCENT_95,
-					simSettings.getSidewaysFoldabeSeatPopupTimeDeviation()));
-
-			/* Lifting seat pan */
-		} else if (passenger.getSeat()
-				.getLayoutConcept() == LayoutConcept.LIFTING_SEAT_PAN_SEATS) {
-			unfoldSeat(GaussianRandom.gaussianRandom(
-					simSettings.getLiftingSeatPanPopupTimeMean(),
-					GaussOptions.PERCENT_95,
-					simSettings.getLiftingSeatPanPopupTimeDeviation()));
-		}
-	}
-
-	/**
-	 * Unfold sideways foldable seat or lifting seat pan seat.
-	 *
-	 * @param d
-	 *            the seat popup time
-	 */
-	private void unfoldSeat(double d) {
-
-		Seat seat = passenger.getSeat();
-		seat.setLayoutConcept(LayoutConcept.DEFAULT);
-
-		int width = seat.getYDimension() / scale;
-		int length = seat.getXDimension() / scale;
-		int yPosition = seat.getYPosition() / scale;
-		int xPosition = seat.getXPosition() / scale;
-
-		if (developerMode) {
-			System.out.println("Passenger " + passenger.getId()
-					+ " unfolds Seat " + seat.getName());
-		}
-
-		for (int i = 0; i < width; i++) {
-			for (int j = 0; j < length; j++) {
-				int k = yPosition + i;
-				int l = xPosition + j;
-				if (k < SimulationHandler.getMap().getDimensions().getY()
-						&& l < SimulationHandler.getMap().getDimensions()
-								.getX()) {
-					SimulationHandler.getMap().get(l, k)
-							.setProperty(Property.OBSTACLE, null);
-				}
-			}
-		}
-
-		/* Pauses the agent for the seat pop up time */
-		try {
-			increaseTotalWaitingTime(AStarHelper.time(d));
-			Thread.sleep(AStarHelper.time(d));
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-			System.out.println("InterruptedException @ thread "
-					+ Thread.currentThread().getName());
-			Thread.currentThread().interrupt();
-		}
-	}
+	
 
 	/**
 	 * This method starts the agent.
@@ -1468,7 +1399,11 @@ public class Agent extends Subject implements Runnable {
 
 			//
 			if (foldingSeats && aisleSeat) {
-				unfoldingSeatProcedure();
+				/* **************************************************** */
+				AgentActionType actionType = new UnfoldSeat(this, scale,
+						simSettings, passenger);
+				new AgentAction(actionType).perform();
+				/* **************************************************** */
 			}
 
 			//
