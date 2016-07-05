@@ -161,6 +161,10 @@ public class CabinValidator extends EObjectValidator {
 				return validateDoorOption((DoorOption)value, diagnostics, context);
 			case CabinPackage.LAYOUT_CONCEPT:
 				return validateLayoutConcept((LayoutConcept)value, diagnostics, context);
+			case CabinPackage.LUGGAGE_MODEL_OPTION:
+				return validateLuggageModelOption((LuggageModelOption)value, diagnostics, context);
+			case CabinPackage.AGENT_MOVEMENT_MODEL:
+				return validateAgentMovementModel((AgentMovementModel)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -647,6 +651,24 @@ public class CabinValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateLayoutConcept(LayoutConcept layoutConcept, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateLuggageModelOption(LuggageModelOption luggageModelOption, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAgentMovementModel(AgentMovementModel agentMovementModel, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

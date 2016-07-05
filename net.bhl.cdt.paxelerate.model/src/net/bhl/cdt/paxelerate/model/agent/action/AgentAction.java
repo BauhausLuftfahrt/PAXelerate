@@ -3,15 +3,34 @@
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ***************************************************************************************/
-package net.bhl.cdt.paxelerate.model.agent;
+package net.bhl.cdt.paxelerate.model.agent.action;
 
 /**
- * The Class AgentPathFinder.
  * 
  * @author marc.engelmann
  * @version 1.0
- * @since 0.5
+ * @since 0.8
+ *
  */
-public class AgentPathFinder {
+public class AgentAction {
 
+	/**
+	 * 
+	 */
+	private AgentActionHandler strategy;
+
+	/**
+	 * 
+	 * @param strategy
+	 */
+	public AgentAction(AgentActionHandler strategy) {
+		this.strategy = strategy;
+	}
+
+	/**
+	 * 
+	 */
+	public void perform() {
+		this.strategy.performNextAction();
+	}
 }

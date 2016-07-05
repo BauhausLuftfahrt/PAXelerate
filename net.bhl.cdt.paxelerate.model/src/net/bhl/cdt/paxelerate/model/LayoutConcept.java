@@ -56,7 +56,7 @@ public enum LayoutConcept implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	BRING_YOUR_OWN_SEAT(3, "bringYourOwnSeat", "bringYourOwnSeat");
+	BRING_YOUR_OWN_SEAT(3, "BringYourOwnSeat", "BringYourOwnSeat");
 
 	/**
 	 * The '<em><b>Default</b></em>' literal value.
@@ -112,7 +112,7 @@ public enum LayoutConcept implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #BRING_YOUR_OWN_SEAT
-	 * @model name="bringYourOwnSeat"
+	 * @model name="BringYourOwnSeat"
 	 * @generated
 	 * @ordered
 	 */

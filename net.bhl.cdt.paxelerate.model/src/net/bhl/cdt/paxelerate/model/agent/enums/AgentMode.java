@@ -3,24 +3,20 @@
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
  ***************************************************************************************/
-package net.bhl.cdt.paxelerate.model.agent;
-
-import net.bhl.cdt.paxelerate.model.astar.Node.Property;
+package net.bhl.cdt.paxelerate.model.agent.enums;
 
 /**
- * The Interface Strategy.
- *
- * @author marc.engelmann, tobias.bruegge-zobel
+ * 
+ * @author marc.engelmann
  * @version 1.0
- * @since 0.5
+ * @since 0.8
+ *
  */
-public interface Strategy {
+public enum AgentMode {
 
-	/**
-	 * React to collision.
-	 *
-	 * @param property the property
-	 */
-	public void reactToCollision(Property property);
+	/** The go to seat. */
+	GO_TO_SEAT,
+	/** The make way. */
+	MAKE_WAY
 
 }

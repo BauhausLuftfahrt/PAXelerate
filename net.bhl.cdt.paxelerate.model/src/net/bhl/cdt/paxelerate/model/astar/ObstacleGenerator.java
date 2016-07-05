@@ -16,7 +16,8 @@ import net.bhl.cdt.paxelerate.model.PhysicalObject;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.TravelClass;
-import net.bhl.cdt.paxelerate.model.astar.Node.Property;
+import net.bhl.cdt.paxelerate.model.astar.node.Node;
+import net.bhl.cdt.paxelerate.model.astar.node.Node.Property;
 import net.bhl.cdt.paxelerate.model.util.POHelper;
 import net.bhl.cdt.paxelerate.util.math.MathHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector3D;
@@ -402,12 +403,6 @@ public class ObstacleGenerator {
 				 */
 				if (node.getPosition().getY() == 1 || node.getPosition()
 						.getY() == areamap.getDimensions().getY() - 2) {
-
-					if (developerMode) {
-						System.out.println(
-								"detected: " + node.getPosition().getX() + " / "
-										+ node.getPosition().getY());
-					}
 
 					/* check if the other node is not yet an obstacle */
 					if (!areamap.get(node.getPosition().getX(), 0)

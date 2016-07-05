@@ -6,8 +6,9 @@
 package net.bhl.cdt.paxelerate.model.agent;
 
 import java.util.HashMap;
+
 import net.bhl.cdt.paxelerate.model.Passenger;
-import net.bhl.cdt.paxelerate.model.agent.Agent.State;
+import net.bhl.cdt.paxelerate.model.agent.enums.State;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.model.observer.Subject;
 import net.bhl.cdt.paxelerate.util.math.Vector3D;
@@ -21,21 +22,25 @@ import net.bhl.cdt.paxelerate.util.time.StopWatch;
  * @since 0.5
  */
 
+// TODO: IS THIS USED?
+@Deprecated
 public class IssueScanner extends Subject implements Runnable {
 
 	/** The thread. */
 	private Thread thread;
-	
+
 	/** The watch. */
 	private StopWatch watch;
-	
+
 	/** The init. */
 	private boolean init = true;
 
 	/** The position tracker. */
 	private HashMap<Integer, Vector3D> positionTracker = new HashMap<Integer, Vector3D>();
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Runnable#run()
 	 */
 	@Override
@@ -64,7 +69,8 @@ public class IssueScanner extends Subject implements Runnable {
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
-				System.out.println("InterruptedException @ thread " + Thread.currentThread().getName());
+				System.out.println("InterruptedException @ thread "
+						+ Thread.currentThread().getName());
 				Thread.currentThread().interrupt();
 			}
 		}
@@ -73,14 +79,15 @@ public class IssueScanner extends Subject implements Runnable {
 	/**
 	 * Check movement.
 	 *
-	 * @param pax the pax
+	 * @param pax
+	 *            the pax
 	 */
 	private void checkMovement(Passenger pax) {
 		Vector3D data = positionTracker.get(pax.getId());
 		if (noMovementDetected(pax)) {
 			if (Math.abs(watch.getElapsedTimeSecs() - data.getZ()) > 5) {
-				System.out.println(pax.getId() + " NOT MOVING! Time: "
-						+ data.getZ());
+				System.out.println(
+						pax.getId() + " NOT MOVING! Time: " + data.getZ());
 			}
 		}
 	}
@@ -88,13 +95,14 @@ public class IssueScanner extends Subject implements Runnable {
 	/**
 	 * No movement detected.
 	 *
-	 * @param pax the pax
+	 * @param pax
+	 *            the pax
 	 * @return true, if successful
 	 */
 	private boolean noMovementDetected(Passenger pax) {
 		Vector3D data = positionTracker.get(pax.getId());
-		return (pax.getPositionX() == data.getX() && pax.getPositionY() == data
-				.getY());
+		return (pax.getPositionX() == data.getX()
+				&& pax.getPositionY() == data.getY());
 	}
 
 	/**
@@ -109,10 +117,8 @@ public class IssueScanner extends Subject implements Runnable {
 					time = positionTracker.get(pax.getId()).getZ();
 				}
 			}
-			positionTracker.put(
-					pax.getId(),
-					new Vector3D((int) pax.getPositionX(), (int) pax
-							.getPositionY(), time));
+			positionTracker.put(pax.getId(), new Vector3D(
+					(int) pax.getPositionX(), (int) pax.getPositionY(), time));
 		}
 		init = false;
 	}

@@ -14,11 +14,13 @@ import org.eclipse.ui.console.IConsoleConstants;
 /**
  * A factory for creating Perspective objects.
  *
- * @author raoul.rothfeld, michael.schmidt
- * @version 1.0
+ * @author michael.schmidt, raoul.rothfeld 
+ * @version 1.1
  * @since 0.5
  */
 public class PerspectiveFactory implements IPerspectiveFactory {
+
+	private boolean devMode = false;
 
 	/*
 	 * (non-Javadoc)
@@ -29,20 +31,25 @@ public class PerspectiveFactory implements IPerspectiveFactory {
 	 */
 	@Override
 	public final void createInitialLayout(final IPageLayout layout) {
+		
+		if(!devMode) {
+			IFolderLayout topLeft = layout.createFolder("topLeft", IPageLayout.LEFT, 0.25f, layout.getEditorArea());
+			topLeft.addView(ModelExplorerView.ID);
 
-		IFolderLayout topLeft = layout.createFolder("topLeft", IPageLayout.LEFT, 0.25f, layout.getEditorArea());
-		topLeft.addView(ModelExplorerView.ID);
+			IFolderLayout bottomLeft = layout.createFolder("bottomLeft", IPageLayout.BOTTOM, 0.5f, "topLeft");
+			bottomLeft.addView("net.bhl.cdt.paxelerate.ui.propertyview");
 
-		IFolderLayout bottomLeft = layout.createFolder("bottomLeft", IPageLayout.BOTTOM, 0.5f, "topLeft");
-		bottomLeft.addView("net.bhl.cdt.paxelerate.ui.propertyview");
+			IFolderLayout right = layout.createFolder("right", IPageLayout.RIGHT, 0.7f, layout.getEditorArea());
+			right.addView("net.bhl.cdt.paxelerate.ui.views.cabinview");
 
-		IFolderLayout right = layout.createFolder("right", IPageLayout.RIGHT, 0.7f, layout.getEditorArea());
-		right.addView("net.bhl.cdt.paxelerate.ui.views.cabinview");
+			// TODO: is it possible to freeze the aspect ratio here?
 
-		// TODO: is it possible to freeze the aspect ratio here?
-
-		IFolderLayout bottom = layout.createFolder("bottom", IPageLayout.BOTTOM, 0.70f, layout.getEditorArea());
-		bottom.addView(IConsoleConstants.ID_CONSOLE_VIEW);
+			IFolderLayout bottom = layout.createFolder("bottom", IPageLayout.BOTTOM, 0.70f, layout.getEditorArea());
+			bottom.addView(IConsoleConstants.ID_CONSOLE_VIEW);
+			
+		} else {
+			IFolderLayout bottom = layout.createFolder("top", IPageLayout.TOP, 1.0f, layout.getEditorArea());
+			bottom.addView(IConsoleConstants.ID_CONSOLE_VIEW);
+		}		
 	}
-
 }

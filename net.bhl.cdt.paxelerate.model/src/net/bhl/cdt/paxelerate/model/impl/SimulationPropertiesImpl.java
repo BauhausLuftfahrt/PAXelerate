@@ -4,6 +4,7 @@ package net.bhl.cdt.paxelerate.model.impl;
 
 import java.util.Collection;
 
+import net.bhl.cdt.paxelerate.model.AgentMovementModel;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -14,6 +15,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import net.bhl.cdt.paxelerate.model.CabinPackage;
 import net.bhl.cdt.paxelerate.model.LayoutConcept;
+import net.bhl.cdt.paxelerate.model.LuggageModelOption;
 import net.bhl.cdt.paxelerate.model.LuggageProperties;
 import net.bhl.cdt.paxelerate.model.PassengerProperties;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
@@ -33,6 +35,8 @@ import net.bhl.cdt.paxelerate.model.SortingStyle;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerProperties <em>Passenger Properties</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getLayoutConcept <em>Layout Concept</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getLuggageModelOption <em>Luggage Model Option</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getAgentMovementModel <em>Agent Movement Model</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getScale <em>Scale</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isUsePresetSettings <em>Use Preset Settings</em>}</li>
@@ -122,6 +126,46 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * @ordered
 	 */
 	protected LayoutConcept layoutConcept = LAYOUT_CONCEPT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLuggageModelOption() <em>Luggage Model Option</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLuggageModelOption()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final LuggageModelOption LUGGAGE_MODEL_OPTION_EDEFAULT = LuggageModelOption.SIMPLE_MODEL;
+
+	/**
+	 * The cached value of the '{@link #getLuggageModelOption() <em>Luggage Model Option</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLuggageModelOption()
+	 * @generated
+	 * @ordered
+	 */
+	protected LuggageModelOption luggageModelOption = LUGGAGE_MODEL_OPTION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getAgentMovementModel() <em>Agent Movement Model</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAgentMovementModel()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final AgentMovementModel AGENT_MOVEMENT_MODEL_EDEFAULT = AgentMovementModel.SIMPLE_MODEL;
+
+	/**
+	 * The cached value of the '{@link #getAgentMovementModel() <em>Agent Movement Model</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAgentMovementModel()
+	 * @generated
+	 * @ordered
+	 */
+	protected AgentMovementModel agentMovementModel = AGENT_MOVEMENT_MODEL_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getScale() <em>Scale</em>}' attribute.
@@ -956,6 +1000,48 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LuggageModelOption getLuggageModelOption() {
+		return luggageModelOption;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLuggageModelOption(LuggageModelOption newLuggageModelOption) {
+		LuggageModelOption oldLuggageModelOption = luggageModelOption;
+		luggageModelOption = newLuggageModelOption == null ? LUGGAGE_MODEL_OPTION_EDEFAULT : newLuggageModelOption;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_MODEL_OPTION, oldLuggageModelOption, luggageModelOption));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AgentMovementModel getAgentMovementModel() {
+		return agentMovementModel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAgentMovementModel(AgentMovementModel newAgentMovementModel) {
+		AgentMovementModel oldAgentMovementModel = agentMovementModel;
+		agentMovementModel = newAgentMovementModel == null ? AGENT_MOVEMENT_MODEL_EDEFAULT : newAgentMovementModel;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__AGENT_MOVEMENT_MODEL, oldAgentMovementModel, agentMovementModel));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->.
 	 *
 	 * @param otherEnd the other end
@@ -998,6 +1084,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return getPassengersBoardingPerMinute();
 			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
 				return getLayoutConcept();
+			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_MODEL_OPTION:
+				return getLuggageModelOption();
+			case CabinPackage.SIMULATION_PROPERTIES__AGENT_MOVEMENT_MODEL:
+				return getAgentMovementModel();
 			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
 				return getScale();
 			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
@@ -1059,6 +1149,12 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
 				setLayoutConcept((LayoutConcept)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_MODEL_OPTION:
+				setLuggageModelOption((LuggageModelOption)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__AGENT_MOVEMENT_MODEL:
+				setAgentMovementModel((AgentMovementModel)newValue);
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
 				setScale((Integer)newValue);
@@ -1134,6 +1230,12 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
 				setLayoutConcept(LAYOUT_CONCEPT_EDEFAULT);
 				return;
+			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_MODEL_OPTION:
+				setLuggageModelOption(LUGGAGE_MODEL_OPTION_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__AGENT_MOVEMENT_MODEL:
+				setAgentMovementModel(AGENT_MOVEMENT_MODEL_EDEFAULT);
+				return;
 			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
 				setScale(SCALE_EDEFAULT);
 				return;
@@ -1204,6 +1306,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return passengersBoardingPerMinute != PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
 				return layoutConcept != LAYOUT_CONCEPT_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_MODEL_OPTION:
+				return luggageModelOption != LUGGAGE_MODEL_OPTION_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__AGENT_MOVEMENT_MODEL:
+				return agentMovementModel != AGENT_MOVEMENT_MODEL_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
 				return scale != SCALE_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
@@ -1254,6 +1360,10 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 		result.append(passengersBoardingPerMinute);
 		result.append(", layoutConcept: ");
 		result.append(layoutConcept);
+		result.append(", luggageModelOption: ");
+		result.append(luggageModelOption);
+		result.append(", agentMovementModel: ");
+		result.append(agentMovementModel);
 		result.append(", scale: ");
 		result.append(scale);
 		result.append(", simulationSpeedFactor: ");

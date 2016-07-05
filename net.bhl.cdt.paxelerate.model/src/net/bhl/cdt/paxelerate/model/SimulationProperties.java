@@ -19,6 +19,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerProperties <em>Passenger Properties</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLayoutConcept <em>Layout Concept</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageModelOption <em>Luggage Model Option</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getAgentMovementModel <em>Agent Movement Model</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getScale <em>Scale</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUsePresetSettings <em>Use Preset Settings</em>}</li>
@@ -572,5 +574,65 @@ public interface SimulationProperties extends EObject {
 	 * @generated
 	 */
 	void setLayoutConcept(LayoutConcept value);
+
+	/**
+	 * Returns the value of the '<em><b>Luggage Model Option</b></em>' attribute.
+	 * The default value is <code>"SimpleModel"</code>.
+	 * The literals are from the enumeration {@link net.bhl.cdt.paxelerate.model.LuggageModelOption}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Luggage Model Option</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Luggage Model Option</em>' attribute.
+	 * @see net.bhl.cdt.paxelerate.model.LuggageModelOption
+	 * @see #setLuggageModelOption(LuggageModelOption)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_LuggageModelOption()
+	 * @model default="SimpleModel" required="true"
+	 * @generated
+	 */
+	LuggageModelOption getLuggageModelOption();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageModelOption <em>Luggage Model Option</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Luggage Model Option</em>' attribute.
+	 * @see net.bhl.cdt.paxelerate.model.LuggageModelOption
+	 * @see #getLuggageModelOption()
+	 * @generated
+	 */
+	void setLuggageModelOption(LuggageModelOption value);
+
+	/**
+	 * Returns the value of the '<em><b>Agent Movement Model</b></em>' attribute.
+	 * The default value is <code>"SimpleModel"</code>.
+	 * The literals are from the enumeration {@link net.bhl.cdt.paxelerate.model.AgentMovementModel}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Agent Movement Model</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Agent Movement Model</em>' attribute.
+	 * @see net.bhl.cdt.paxelerate.model.AgentMovementModel
+	 * @see #setAgentMovementModel(AgentMovementModel)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_AgentMovementModel()
+	 * @model default="SimpleModel" required="true"
+	 * @generated
+	 */
+	AgentMovementModel getAgentMovementModel();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getAgentMovementModel <em>Agent Movement Model</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Agent Movement Model</em>' attribute.
+	 * @see net.bhl.cdt.paxelerate.model.AgentMovementModel
+	 * @see #getAgentMovementModel()
+	 * @generated
+	 */
+	void setAgentMovementModel(AgentMovementModel value);
 
 } // SimulationProperties

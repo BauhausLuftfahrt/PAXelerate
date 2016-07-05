@@ -14,7 +14,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.util.EMFModelLoader;
-import net.bhl.cdt.paxelerate.ui.commands.DrawCabinCommand;
+import net.bhl.cdt.paxelerate.ui.commands.RefreshCabinViewCommand;
 
 /**
  * The Class DrawCabinHandler.
@@ -53,7 +53,7 @@ public class DrawCabinHandler extends AbstractHandler {
 		}
 
 		if (firstElement instanceof Cabin) {
-			new DrawCabinCommand((Cabin) firstElement).execute();
+			new RefreshCabinViewCommand((Cabin) firstElement).execute();
 		}
 
 		return null;

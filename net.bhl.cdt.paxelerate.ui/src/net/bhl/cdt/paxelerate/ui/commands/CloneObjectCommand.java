@@ -10,12 +10,11 @@ import org.eclipse.jface.dialogs.IMessageProvider;
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
-import net.bhl.cdt.paxelerate.model.CabinFactory;
 import net.bhl.cdt.paxelerate.model.Row;
-import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.TravelClass;
-import net.bhl.cdt.paxelerate.util.input.Input;
-import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
+import net.bhl.cdt.paxelerate.model.command.helper.CloneObject;
+import net.bhl.cdt.paxelerate.ui.helper.Input;
+import net.bhl.cdt.paxelerate.ui.helper.Input.WindowType;
 
 /**
  * The Class CloneObjectCommand.
@@ -57,28 +56,10 @@ public class CloneObjectCommand extends CDTCommand {
 
 		TravelClass travelclass = ModelHelper.getParent(TravelClass.class, row);
 		Cabin cabin = ModelHelper.getParent(Cabin.class, row);
+		
+		new CloneObject(travelclass, numberOfRows).performCloneObject();
 
-		for (int i = 0; i < numberOfRows; i++) {
-
-			Row newRow = CabinFactory.eINSTANCE.createRow();
-			travelclass.getRows().add(newRow);
-
-			for (Seat seat : row.getSeats()) {
-
-				Seat newSeat = CabinFactory.eINSTANCE.createSeat();
-
-				newSeat.setXPosition(seat.getXPosition() + seat.getXDimension() + travelclass.getSeatPitch());
-				newSeat.setYPosition(seat.getYPosition());
-				newSeat.setXDimension(seat.getXDimension());
-				newSeat.setYDimension(seat.getYDimension());
-
-				newRow.getSeats().add(newSeat);
-			}
-
-			row = newRow;
-		}
-
-		new DrawCabinCommand(cabin).execute();
+		new RefreshCabinViewCommand(cabin).execute();
 
 	}
 

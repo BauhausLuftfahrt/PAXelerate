@@ -32,16 +32,15 @@ import net.bhl.cdt.model.util.ModelHelper;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Seat;
-import net.bhl.cdt.paxelerate.model.agent.Agent.AgentMode;
+import net.bhl.cdt.paxelerate.model.agent.enums.AgentMode;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.model.util.SimulationResultLogger;
-import net.bhl.cdt.paxelerate.ui.helper.MapExportHelper;
+import net.bhl.cdt.paxelerate.ui.helper.Input;
+import net.bhl.cdt.paxelerate.ui.helper.Input.WindowType;
 import net.bhl.cdt.paxelerate.ui.preferences.PAXeleratePreferencePage;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
 import net.bhl.cdt.paxelerate.ui.views.SimulationView;
 import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
-import net.bhl.cdt.paxelerate.util.input.Input;
-import net.bhl.cdt.paxelerate.util.input.Input.WindowType;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.output.ExcelExport;
@@ -371,6 +370,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 		/* report job status to console */
 		job.addJobChangeListener(new JobChangeAdapter() {
+			@Override
 			public void done(final IJobChangeEvent event) {
 				if (event.getResult().isOK()) {
 					Log.add(this, "Simulation run completed");

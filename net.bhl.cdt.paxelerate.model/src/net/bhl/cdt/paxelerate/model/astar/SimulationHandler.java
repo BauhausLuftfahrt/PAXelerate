@@ -18,6 +18,8 @@ import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.agent.AgentFunctions;
+import net.bhl.cdt.paxelerate.model.agent.PathFinder;
+import net.bhl.cdt.paxelerate.model.agent.enums.AgentMode;
 import net.bhl.cdt.paxelerate.util.math.DecimalHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
@@ -97,9 +99,12 @@ public class SimulationHandler {
 	/**
 	 * This method constructs the RunAStar algorithm.
 	 *
-	 * @param dimensions            is the dimension vector
-	 * @param cabin            is the cabin
-	 * @param simulationLoopIndex the simulation loop index
+	 * @param dimensions
+	 *            is the dimension vector
+	 * @param cabin
+	 *            is the cabin
+	 * @param simulationLoopIndex
+	 *            the simulation loop index
 	 */
 	public SimulationHandler(Vector dimensions, Cabin cabin,
 			int simulationLoopIndex) {
@@ -214,7 +219,8 @@ public class SimulationHandler {
 	/**
 	 * Sets the simulation status.
 	 *
-	 * @param status the new simulation status
+	 * @param status
+	 *            the new simulation status
 	 */
 	public static void setSimulationStatus(boolean status) {
 		simulationDone = status;
@@ -305,9 +311,9 @@ public class SimulationHandler {
 				cabin.getYDimension() / 2.0, scale);
 
 		Agent agent = new Agent(pax, start, goal,
-				getAgentByPassenger(myself).getCostMap(),
-				Agent.AgentMode.MAKE_WAY, myself);
-		agent.findNewPath();
+				getAgentByPassenger(myself).getCostMap(), AgentMode.MAKE_WAY,
+				myself);
+		new PathFinder().findNewPath(agent);
 		agent.start();
 		pax.setNumberOfMakeWayOperations(
 				pax.getNumberOfMakeWayOperations() + 1);
@@ -440,14 +446,14 @@ public class SimulationHandler {
 			 * loaded from the list of cost maps accordingly
 			 */
 			Agent agent = new Agent(passenger, start, goal,
-					costmaps.get(door.getId()), Agent.AgentMode.GO_TO_SEAT,
-					null);
+					costmaps.get(door.getId()), AgentMode.GO_TO_SEAT, null);
 
 			/* add the agent to the list */
 			agentList.add(agent);
 		}
 
-		if (OS.isWindows() && !cabin.getSimulationSettings().isSimulateWithoutUI()) {
+		if (OS.isWindows()
+				&& !cabin.getSimulationSettings().isSimulateWithoutUI()) {
 			javax.swing.SwingUtilities.invokeLater(new Runnable() {
 				@Override
 				public void run() {
@@ -489,15 +495,16 @@ public class SimulationHandler {
 
 			/* try to find a path! */
 			try {
-				agent.findNewPath();
+
+				new PathFinder().findNewPath(agent);
 
 				/* Warn if no path can be found */
 			} catch (NullPointerException e) {
-				e.printStackTrace();
 				System.out.println("Passenger " + agent.getPassenger().getName()
 						+ " can not find a path to the seat at "
 						+ agent.getGoal().getX() + " / "
 						+ agent.getGoal().getY());
+				new PathFinder().findNewPath(agent);
 			}
 
 			/* return information to the progress bar */
@@ -507,7 +514,6 @@ public class SimulationHandler {
 		/* ... then start the simulations simultaneously */
 		for (Agent agent : agentList) {
 			agent.start();
-			agent.setInitialized(true);
 		}
 	}
 
@@ -517,13 +523,12 @@ public class SimulationHandler {
 	public static void stopSimulation() {
 		for (Agent agent : agentList) {
 			agent.getThread().interrupt();
-			/*try {
-				agent.getThread().join();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}*/
+			/*
+			 * try { agent.getThread().join(); } catch (InterruptedException e)
+			 * { e.printStackTrace(); }
+			 */
 			agent.resetAgent();
-			//if (agent.getThread().isInterrupted())
+			// if (agent.getThread().isInterrupted())
 			// agent = null;
 		}
 	}

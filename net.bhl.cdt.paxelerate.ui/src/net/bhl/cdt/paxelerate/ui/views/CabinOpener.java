@@ -9,7 +9,7 @@ import org.eclipse.emf.ecp.core.ECPProject;
 import org.eclipse.emf.ecp.explorereditorbridge.internal.EditorModelElementOpener;
 
 import net.bhl.cdt.paxelerate.model.Cabin;
-import net.bhl.cdt.paxelerate.ui.commands.DrawCabinCommand;
+import net.bhl.cdt.paxelerate.ui.commands.RefreshCabinViewCommand;
 
 /**
  * The Class CabinOpener.
@@ -37,7 +37,7 @@ public class CabinOpener extends EditorModelElementOpener {
 	@SuppressWarnings("restriction")
 	@Override
 	public final void openModelElement(final Object element, final ECPProject ecpProject) {
-		new DrawCabinCommand((Cabin) element).execute();
+		new RefreshCabinViewCommand((Cabin) element).execute();
 		super.openModelElement(element, ecpProject);
 	}
 }

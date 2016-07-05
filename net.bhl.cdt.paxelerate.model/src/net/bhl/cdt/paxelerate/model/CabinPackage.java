@@ -1651,13 +1651,31 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_PROPERTIES__LAYOUT_CONCEPT = 4;
 
 	/**
+	 * The feature id for the '<em><b>Luggage Model Option</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__LUGGAGE_MODEL_OPTION = 5;
+
+	/**
+	 * The feature id for the '<em><b>Agent Movement Model</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__AGENT_MOVEMENT_MODEL = 6;
+
+	/**
 	 * The feature id for the '<em><b>Scale</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SCALE = 5;
+	int SIMULATION_PROPERTIES__SCALE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Simulation Speed Factor</b></em>' attribute.
@@ -1666,7 +1684,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR = 6;
+	int SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR = 8;
 
 	/**
 	 * The feature id for the '<em><b>Use Preset Settings</b></em>' attribute.
@@ -1675,7 +1693,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__USE_PRESET_SETTINGS = 7;
+	int SIMULATION_PROPERTIES__USE_PRESET_SETTINGS = 9;
 
 	/**
 	 * The feature id for the '<em><b>Simulate Without UI</b></em>' attribute.
@@ -1684,7 +1702,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI = 8;
+	int SIMULATION_PROPERTIES__SIMULATE_WITHOUT_UI = 10;
 
 	/**
 	 * The feature id for the '<em><b>Number Of Simulation Loops</b></em>' attribute.
@@ -1693,7 +1711,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS = 9;
+	int SIMULATION_PROPERTIES__NUMBER_OF_SIMULATION_LOOPS = 11;
 
 	/**
 	 * The feature id for the '<em><b>Developer Mode</b></em>' attribute.
@@ -1702,7 +1720,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__DEVELOPER_MODE = 10;
+	int SIMULATION_PROPERTIES__DEVELOPER_MODE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Data Export</b></em>' attribute.
@@ -1711,7 +1729,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__DATA_EXPORT = 11;
+	int SIMULATION_PROPERTIES__DATA_EXPORT = 13;
 
 	/**
 	 * The feature id for the '<em><b>Display Map</b></em>' attribute.
@@ -1720,7 +1738,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__DISPLAY_MAP = 12;
+	int SIMULATION_PROPERTIES__DISPLAY_MAP = 14;
 
 	/**
 	 * The feature id for the '<em><b>Sort Passenger Between Loops</b></em>' attribute.
@@ -1729,7 +1747,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SORT_PASSENGER_BETWEEN_LOOPS = 13;
+	int SIMULATION_PROPERTIES__SORT_PASSENGER_BETWEEN_LOOPS = 15;
 
 	/**
 	 * The feature id for the '<em><b>Sorting</b></em>' attribute.
@@ -1738,7 +1756,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SORTING = 14;
+	int SIMULATION_PROPERTIES__SORTING = 16;
 
 	/**
 	 * The feature id for the '<em><b>Thread Sleep Time Default</b></em>' attribute.
@@ -1747,7 +1765,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT = 15;
+	int SIMULATION_PROPERTIES__THREAD_SLEEP_TIME_DEFAULT = 17;
 
 	/**
 	 * The feature id for the '<em><b>Sideways Foldabe Seat Popup Time Mean</b></em>' attribute.
@@ -1756,7 +1774,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_MEAN = 16;
+	int SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_MEAN = 18;
 
 	/**
 	 * The feature id for the '<em><b>Sideways Foldabe Seat Popup Time Deviation</b></em>' attribute.
@@ -1765,7 +1783,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_DEVIATION = 17;
+	int SIMULATION_PROPERTIES__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_DEVIATION = 19;
 
 	/**
 	 * The feature id for the '<em><b>Lifting Seat Pan Popup Time Mean</b></em>' attribute.
@@ -1774,7 +1792,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_MEAN = 18;
+	int SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_MEAN = 20;
 
 	/**
 	 * The feature id for the '<em><b>Lifting Seat Pan Popup Time Deviation</b></em>' attribute.
@@ -1783,7 +1801,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_DEVIATION = 19;
+	int SIMULATION_PROPERTIES__LIFTING_SEAT_PAN_POPUP_TIME_DEVIATION = 21;
 
 	/**
 	 * The number of structural features of the '<em>Simulation Properties</em>' class.
@@ -1792,7 +1810,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES_FEATURE_COUNT = 20;
+	int SIMULATION_PROPERTIES_FEATURE_COUNT = 22;
 
 	/**
 	 * The number of operations of the '<em>Simulation Properties</em>' class.
@@ -2381,6 +2399,26 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	int LAYOUT_CONCEPT = 26;
+
+	/**
+	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.LuggageModelOption <em>Luggage Model Option</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.paxelerate.model.LuggageModelOption
+	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getLuggageModelOption()
+	 * @generated
+	 */
+	int LUGGAGE_MODEL_OPTION = 27;
+
+	/**
+	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.AgentMovementModel <em>Agent Movement Model</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.bhl.cdt.paxelerate.model.AgentMovementModel
+	 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getAgentMovementModel()
+	 * @generated
+	 */
+	int AGENT_MOVEMENT_MODEL = 28;
 
 	/**
 	 * The meta object id for the '{@link net.bhl.cdt.paxelerate.model.Sex <em>Sex</em>}' enum.
@@ -3622,6 +3660,28 @@ public interface CabinPackage extends EPackage {
 	EAttribute getSimulationProperties_LayoutConcept();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageModelOption <em>Luggage Model Option</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Luggage Model Option</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageModelOption()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_LuggageModelOption();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getAgentMovementModel <em>Agent Movement Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Agent Movement Model</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getAgentMovementModel()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_AgentMovementModel();
+
+	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.LuggageProperties <em>Luggage Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4321,6 +4381,26 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getLayoutConcept();
+
+	/**
+	 * Returns the meta object for enum '{@link net.bhl.cdt.paxelerate.model.LuggageModelOption <em>Luggage Model Option</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Luggage Model Option</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.LuggageModelOption
+	 * @generated
+	 */
+	EEnum getLuggageModelOption();
+
+	/**
+	 * Returns the meta object for enum '{@link net.bhl.cdt.paxelerate.model.AgentMovementModel <em>Agent Movement Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Agent Movement Model</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.AgentMovementModel
+	 * @generated
+	 */
+	EEnum getAgentMovementModel();
 
 	/**
 	 * Returns the meta object for enum '{@link net.bhl.cdt.paxelerate.model.Sex <em>Sex</em>}'.
@@ -5174,6 +5254,20 @@ public interface CabinPackage extends EPackage {
 		 */
 		EAttribute SIMULATION_PROPERTIES__LAYOUT_CONCEPT = eINSTANCE.getSimulationProperties_LayoutConcept();
 		/**
+		 * The meta object literal for the '<em><b>Luggage Model Option</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__LUGGAGE_MODEL_OPTION = eINSTANCE.getSimulationProperties_LuggageModelOption();
+		/**
+		 * The meta object literal for the '<em><b>Agent Movement Model</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__AGENT_MOVEMENT_MODEL = eINSTANCE.getSimulationProperties_AgentMovementModel();
+		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.LuggagePropertiesImpl <em>Luggage Properties</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5654,6 +5748,24 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum LAYOUT_CONCEPT = eINSTANCE.getLayoutConcept();
+		/**
+		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.LuggageModelOption <em>Luggage Model Option</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.bhl.cdt.paxelerate.model.LuggageModelOption
+		 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getLuggageModelOption()
+		 * @generated
+		 */
+		EEnum LUGGAGE_MODEL_OPTION = eINSTANCE.getLuggageModelOption();
+		/**
+		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.AgentMovementModel <em>Agent Movement Model</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.bhl.cdt.paxelerate.model.AgentMovementModel
+		 * @see net.bhl.cdt.paxelerate.model.impl.CabinPackageImpl#getAgentMovementModel()
+		 * @generated
+		 */
+		EEnum AGENT_MOVEMENT_MODEL = eINSTANCE.getAgentMovementModel();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.Sex <em>Sex</em>}' enum.
 		 * <!-- begin-user-doc -->

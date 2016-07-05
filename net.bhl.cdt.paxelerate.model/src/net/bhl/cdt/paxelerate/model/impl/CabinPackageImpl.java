@@ -248,6 +248,20 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum luggageModelOptionEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum agentMovementModelEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->.
 	 *
 	 * @generated 
@@ -1384,7 +1398,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EAttribute getSimulationProperties_Scale() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(5);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -1395,7 +1409,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EAttribute getSimulationProperties_UsePresetSettings() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(7);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -1406,7 +1420,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EAttribute getSimulationProperties_SimulateWithoutUI() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(8);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -1417,7 +1431,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EAttribute getSimulationProperties_NumberOfSimulationLoops() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(9);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -1439,7 +1453,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EAttribute getSimulationProperties_Sorting() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(14);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(16);
 	}
 
 	/**
@@ -1450,7 +1464,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EAttribute getSimulationProperties_SimulationSpeedFactor() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(6);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -1461,7 +1475,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EAttribute getSimulationProperties_ThreadSleepTimeDefault() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(15);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(17);
 	}
 
 	/**
@@ -1472,7 +1486,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated 
 	 */
 	public EAttribute getSimulationProperties_DeveloperMode() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(10);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -1481,7 +1495,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getSimulationProperties_SortPassengerBetweenLoops() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(13);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(15);
 	}
 
 	/**
@@ -1523,7 +1537,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getSimulationProperties_DataExport() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(11);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -1532,7 +1546,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getSimulationProperties_DisplayMap() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(12);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(14);
 	}
 
 	/**
@@ -1541,24 +1555,6 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getSimulationProperties_SidewaysFoldabeSeatPopupTimeMean() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(16);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_SidewaysFoldabeSeatPopupTimeDeviation() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(17);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSimulationProperties_LiftingSeatPanPopupTimeMean() {
         return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(18);
 	}
 
@@ -1567,8 +1563,26 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimulationProperties_LiftingSeatPanPopupTimeDeviation() {
+	public EAttribute getSimulationProperties_SidewaysFoldabeSeatPopupTimeDeviation() {
         return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(19);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_LiftingSeatPanPopupTimeMean() {
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(20);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_LiftingSeatPanPopupTimeDeviation() {
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(21);
 	}
 
 	/**
@@ -1578,6 +1592,24 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 */
 	public EAttribute getSimulationProperties_LayoutConcept() {
         return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_LuggageModelOption() {
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_AgentMovementModel() {
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -2306,6 +2338,30 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 			layoutConceptEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(26);
 		}
 		return layoutConceptEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getLuggageModelOption() {
+		if (luggageModelOptionEEnum == null) {
+			luggageModelOptionEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(27);
+		}
+		return luggageModelOptionEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getAgentMovementModel() {
+		if (agentMovementModelEEnum == null) {
+			agentMovementModelEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(CabinPackage.eNS_URI).getEClassifiers().get(28);
+		}
+		return agentMovementModelEEnum;
 	}
 
 	/**

@@ -21,8 +21,6 @@
               <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/usePresetSettings"/>
             </domainModelReference>
           </children>
-        </children>
-        <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_vX_bUKS_EeWGjpaobu8CIA">
           <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_145NoCjDEeayboTXRwGmOA" name="Control displayMap">
             <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_145NoSjDEeayboTXRwGmOA">
               <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/displayMap"/>
@@ -31,6 +29,18 @@
           <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_1408MCjDEeayboTXRwGmOA" name="Control dataExport">
             <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_1408MSjDEeayboTXRwGmOA">
               <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/dataExport"/>
+            </domainModelReference>
+          </children>
+        </children>
+        <children xsi:type="org.eclipse.emf.ecp.view.vertical.model:VerticalLayout" xmi:id="_vX_bUKS_EeWGjpaobu8CIA">
+          <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_PdqHoEH6EeaISt1hcdDqHw" name="Control luggageModelOption">
+            <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_PdqHoUH6EeaISt1hcdDqHw">
+              <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/luggageModelOption"/>
+            </domainModelReference>
+          </children>
+          <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_PdvnMEH6EeaISt1hcdDqHw" name="Control agentMovementModel">
+            <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_PdvnMUH6EeaISt1hcdDqHw">
+              <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/agentMovementModel"/>
             </domainModelReference>
           </children>
         </children>
@@ -74,6 +84,11 @@
       </children>
     </children>
     <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_681cED7REeaMd6ncihyvAw" name="Layout">
+      <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_Su85QEH6EeaISt1hcdDqHw" name="Control layoutConcept">
+        <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_Su85QUH6EeaISt1hcdDqHw">
+          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/layoutConcept"/>
+        </domainModelReference>
+      </children>
       <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_0svXAD7REeaMd6ncihyvAw" name="Control sidewaysFoldabeSeatPopupTimeMean">
         <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_0svXAT7REeaMd6ncihyvAw">
           <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/sidewaysFoldabeSeatPopupTimeMean"/>
