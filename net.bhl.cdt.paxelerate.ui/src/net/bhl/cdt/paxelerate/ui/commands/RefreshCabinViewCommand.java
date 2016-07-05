@@ -36,12 +36,6 @@ public class RefreshCabinViewCommand extends CDTCommand {
 	/** The cabin. */
 	private Cabin cabin;
 
-	/** The cabin view part. */
-	private CabinViewPart cabinViewPart;
-
-	/** The property view part. */
-	private PropertyViewPart propertyViewPart;
-
 	/** The error strings. */
 	private ArrayList<String> errorStrings = new ArrayList<String>();
 
@@ -106,7 +100,7 @@ public class RefreshCabinViewCommand extends CDTCommand {
 			Log.add(this, str);
 		}
 		
-		propertyViewPart = ViewPartHelper.getPropertyView();
+		PropertyViewPart propertyViewPart = ViewPartHelper.getPropertyView();
 		if (propertyViewPart != null) {
 			try {
 				propertyViewPart.updateUI(cabin);
@@ -116,7 +110,7 @@ public class RefreshCabinViewCommand extends CDTCommand {
 			}
 		}
 
-		cabinViewPart = ViewPartHelper.getCabinView();
+		CabinViewPart cabinViewPart = ViewPartHelper.getCabinView();
 		if (cabinViewPart != null) {
 			try {
 				cabinViewPart.setCabin(cabin);

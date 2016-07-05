@@ -24,6 +24,7 @@ import net.bhl.cdt.paxelerate.ui.helper.Input;
 import net.bhl.cdt.paxelerate.ui.helper.Input.WindowType;
 import net.bhl.cdt.paxelerate.ui.preferences.PAXeleratePreferencePage;
 import net.bhl.cdt.paxelerate.ui.views.CabinViewPart;
+import net.bhl.cdt.paxelerate.ui.views.PropertyViewPart;
 import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
@@ -43,7 +44,9 @@ public class GeneratePassengersCommand extends CDTCommand {
 	private Cabin cabin;
 
 	/** The cabinview. */
-	private CabinViewPart cabinview;
+	private CabinViewPart cabinViewPart;
+	
+	private PropertyViewPart propertyViewPart;
 
 	/**
 	 * This method submits the cabin to be used in the file.
@@ -84,14 +87,21 @@ public class GeneratePassengersCommand extends CDTCommand {
 							IMessageProvider.ERROR);
 					Log.add(this, "Passenger generation aborted");
 					return Status.CANCEL_STATUS;
+					
 				} else {
-
 					Display.getDefault().syncExec(new Runnable() {
 						@Override
 						public void run() {
-							cabinview = ViewPartHelper.getCabinView();
-							cabinview.unsyncViewer();
-
+							
+							cabinViewPart = ViewPartHelper.getCabinView();
+							if (cabinViewPart != null) {
+								try {
+									cabinViewPart.unsyncViewer();
+								} catch (NullPointerException e) {
+									Log.add(this, "No property view is visible!");
+									e.printStackTrace();
+								}
+							}
 							cabin.getPassengers().clear();
 						}
 					});
@@ -106,23 +116,31 @@ public class GeneratePassengersCommand extends CDTCommand {
 					/* PUBLISH */
 					Log.add(this, "Updating GUI...");
 					Display.getDefault().syncExec(new Runnable() {
+
 						@Override
 						public void run() {
-							try {
-								ViewPartHelper.getPropertyView().updateUI(cabin);
-							} catch (NullPointerException e) {
-								Log.add(this, "No property view is visible!");
-								e.printStackTrace();
+							
+							propertyViewPart = ViewPartHelper.getPropertyView();
+							if (propertyViewPart != null) {
+								try {
+									propertyViewPart.updateUI(cabin);
+								} catch (NullPointerException e) {
+									Log.add(this, "No property view is visible!");
+									e.printStackTrace();
+								}
 							}
-
-							try {
-								cabinview.syncViewer();
-								cabinview.setCabin(cabin);
-							} catch (NullPointerException e) {
-								Log.add(this, "Cabin View not visible!");
-								e.printStackTrace();
+							
+							cabinViewPart = ViewPartHelper.getCabinView();
+							if (cabinViewPart != null) {
+								try {
+									cabinViewPart.syncViewer();
+									cabinViewPart.setCabin(cabin);
+								} catch (NullPointerException e) {
+									Log.add(this, "No cabin view is visible!");
+									e.printStackTrace();
+								}
 							}
-
+							
 							try {
 								new RefreshCabinViewCommand(cabin).doRun();
 							} catch (NullPointerException e) {

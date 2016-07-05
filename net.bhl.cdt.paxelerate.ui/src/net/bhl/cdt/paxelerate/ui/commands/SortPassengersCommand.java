@@ -91,7 +91,14 @@ public class SortPassengersCommand extends CDTCommand {
 
 		CabinViewPart cabinViewPart = ViewPartHelper.getCabinView();
 
-		cabinViewPart.unsyncViewer();
+		if (cabinViewPart != null) {
+			try {
+				cabinViewPart.unsyncViewer();
+			} catch (NullPointerException e) {
+				Log.add(this, "No cabin view is visible!");
+				e.printStackTrace();
+			}
+		}
 
 		if (showDialog) {
 
@@ -109,7 +116,6 @@ public class SortPassengersCommand extends CDTCommand {
 		// TODO: where is the paxList returned to the cabin object?
 		paxList = new SortPassengers(paxList, value, numberOfLoops, numberOfRows).performSortPassengers();
 
-		
 		Log.add(this, "Sorting completed.");
 
 		int counter = 1;
@@ -125,15 +131,24 @@ public class SortPassengersCommand extends CDTCommand {
 			door.getWaitingPassengers().clear();
 		}
 
-		cabinViewPart.syncViewer();
+		if (cabinViewPart != null) {
+			try {
+				cabinViewPart.syncViewer();
+			} catch (NullPointerException e) {
+				Log.add(this, "No cabin view is visible!");
+				e.printStackTrace();
+			}
+		}
 
 		try {
 			Display.getDefault().syncExec(new Runnable() {
 
 				@Override
 				public void run() {
-					cabinViewPart.setCabin(cabin);
-					Log.add(this, "Cabin view checked and updated");
+					if (cabinViewPart != null) {
+						cabinViewPart.setCabin(cabin);
+						Log.add(this, "Cabin view checked and updated");
+					}
 				}
 			});
 

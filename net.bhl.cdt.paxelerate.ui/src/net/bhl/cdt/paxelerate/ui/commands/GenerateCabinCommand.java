@@ -70,7 +70,14 @@ public class GenerateCabinCommand extends CDTCommand {
 		Log.add(this, "Initializing cabin generation ...");
 
 		CabinViewPart cabinViewPart = ViewPartHelper.getCabinView();
-		cabinViewPart.unsyncViewer();
+		if (cabinViewPart != null) {
+			try {
+				cabinViewPart.unsyncViewer();
+			} catch (NullPointerException e) {
+				Log.add(this, "No cabin view is visible!");
+				e.printStackTrace();
+			}
+		}		
 
 		Input input = new Input(WindowType.GET_BOOLEAN, "Warning! The existing cabin will be deleted. Continue?",
 				IMessageProvider.WARNING);
@@ -80,7 +87,15 @@ public class GenerateCabinCommand extends CDTCommand {
 			new GenerateCabin(cabin).performGenerateCabin();;
 			Log.add(this, "Cabin generation completed");
 			new RefreshCabinViewCommand(cabin).doRun();
-			cabinViewPart.syncViewer();
+			
+			if (cabinViewPart != null) {
+				try {
+					cabinViewPart.syncViewer();
+				} catch (NullPointerException e) {
+					Log.add(this, "No cabin view is visible!");
+					e.printStackTrace();
+				}
+			}
 
 		} else {
 			Log.add(this, "Cabin generation aborted");
