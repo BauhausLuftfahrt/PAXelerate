@@ -52,6 +52,12 @@ public class PAXeleratePreferencePage extends FieldEditorPreferencePage implemen
 	/** The Constant DEFAULT_EXPORT_PATH. */
 	public static final String DEFAULT_EXPORT_PATH = System.getProperty("user.home") + "/Documents/paxelerate/";
 
+	/** The Constant DEFAULT_IMPORT_FILE_NAME. */
+	public static final String DEFAULT_IMPORT_FILE_NAME = "study_import";
+
+	/** The Constant DEFAULT_IMPORT_PATH. */
+	public static final String DEFAULT_IMPORT_PATH = System.getProperty("user.home") + "/Documents/paxelerate/";
+
 	/**
 	 * The constructor of the PreferencePage.
 	 */

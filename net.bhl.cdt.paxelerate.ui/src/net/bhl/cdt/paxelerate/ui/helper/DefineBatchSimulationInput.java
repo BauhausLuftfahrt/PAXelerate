@@ -5,7 +5,7 @@
  ******************************************************************************/
 package net.bhl.cdt.paxelerate.ui.helper;
 
-import java.io.IOException;
+import java.util.ArrayList;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -23,7 +23,6 @@ import net.bhl.cdt.paxelerate.model.SimulationProperties;
 import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.ui.commands.RefreshCabinViewCommand;
 import net.bhl.cdt.paxelerate.ui.preferences.PAXeleratePreferencePage;
-import net.bhl.cdt.paxelerate.util.input.CSVImport;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
@@ -43,7 +42,8 @@ public class DefineBatchSimulationInput extends CDTCommand {
 
 	/** The hand luggage study. */
 	private static HandLuggageCase handLuggageStudy;
-	
+
+	/** The csv import. */
 	private boolean csvImport = false;
 
 	/**
@@ -64,7 +64,8 @@ public class DefineBatchSimulationInput extends CDTCommand {
 	/** The load factor. */
 	private int loadFactor;
 
-	private String filePath;
+	/** The study parameters. */
+	private ArrayList studyParameters;
 
 	/**
 	 * This is the constructor method of the SimulateBoardingCommand.
@@ -84,27 +85,32 @@ public class DefineBatchSimulationInput extends CDTCommand {
 				this.loadFactor = loadFactor;
 			}
 		} catch (NullPointerException e) {
-			Log.add(this, "Could find any project or model!");
+			Log.add(this, "Could not find any project or model!");
 			e.printStackTrace();
 		}
 	}
-	
-	public DefineBatchSimulationInput(boolean csvImport) {
+
+	/**
+	 * Instantiates a new define batch simulation input.
+	 *
+	 * @param study
+	 *            the study
+	 */
+	public DefineBatchSimulationInput(ArrayList study) {
 		try {
 			if (ECPUtil.getECPProjectManager().getProjects() != null) {
 				this.cabin = (Cabin) ECPUtil.getECPProjectManager()
 						.getProject(PAXeleratePreferencePage.DEFAULT_PROJECT_NAME).getContents().get(0);
 				this.simSettings = this.cabin.getSimulationSettings();
-				this.csvImport = csvImport;
+				this.studyParameters = study;
+				this.csvImport = true;
 			}
 		} catch (NullPointerException e) {
-			Log.add(this, "Could find any project or model!");
+			Log.add(this, "Could not find any project or model!");
 			e.printStackTrace();
 		}
 	}
 
-	
-	
 	/**
 	 * This method runs the simulate boarding command.
 	 */
@@ -130,33 +136,55 @@ public class DefineBatchSimulationInput extends CDTCommand {
 						new RefreshCabinViewCommand(cabin).execute();
 					}
 				});
-				
-				if(csvImport) {
-					
-					simSettings.setSimulationSpeedFactor(2);
-					simSettings.setSimulateWithoutUI(false);
-					simSettings.getLuggageProperties().setPercentageOfPassengersWithNoLuggage(100);
-					simSettings.getLuggageProperties().setPercentageOfPassengersWithSmallLuggage(0);
-					simSettings.getLuggageProperties().setPercentageOfPassengersWithMediumLuggage(0);
-					simSettings.getLuggageProperties().setPercentageOfPassengersWithBigLuggage(0);
-					simSettings.setLayoutConcept(LayoutConcept.LIFTING_SEAT_PAN_SEATS);
-					
+
+				if (csvImport) {
+
+					simSettings.setSimulationSpeedFactor(Integer.parseInt((String) studyParameters.get(2)));
+
+					if ((String) studyParameters.get(3) == "false") {
+						simSettings.setSimulateWithoutUI(false);
+					} else {
+						simSettings.setSimulateWithoutUI(true);
+					}
+					simSettings.getLuggageProperties().setPercentageOfPassengersWithNoLuggage(
+							(Integer.parseInt((String) studyParameters.get(5))));
+					simSettings.getLuggageProperties().setPercentageOfPassengersWithSmallLuggage(
+							(Integer.parseInt((String) studyParameters.get(6))));
+					simSettings.getLuggageProperties().setPercentageOfPassengersWithMediumLuggage(
+							(Integer.parseInt((String) studyParameters.get(7))));
+					simSettings.getLuggageProperties().setPercentageOfPassengersWithBigLuggage(
+							(Integer.parseInt((String) studyParameters.get(8))));
+
+					switch ((String) studyParameters.get(9)) {
+
+					case "Default":
+						simSettings.setLayoutConcept(LayoutConcept.DEFAULT);
+						break;
+
+					case "LiftingSeatPanSeats":
+						simSettings.setLayoutConcept(LayoutConcept.LIFTING_SEAT_PAN_SEATS);
+						break;
+
+					case "SidewaysFoldableSeat":
+						simSettings.setLayoutConcept(LayoutConcept.SIDWAYS_FOLDABLE_SEAT);
+						break;
+					}
+
 					Display.getDefault().syncExec(new Runnable() {
 						@Override
 						public void run() {
 							new RefreshCabinViewCommand(cabin).execute();
 						}
 					});
-					
+
 					for (TravelClass travelclass : cabin.getClasses()) {
-						travelclass.setPassengers(108);
+						travelclass.setPassengers((Integer.parseInt((String) studyParameters.get(4))));
 					}
-					
-					
+
 				} else {
-					simSettings.setSimulationSpeedFactor(2);
-					simSettings.setLayoutConcept(LayoutConcept.LIFTING_SEAT_PAN_SEATS);
-					simSettings.setSimulateWithoutUI(false);
+					simSettings.setSimulationSpeedFactor(10);
+					simSettings.setLayoutConcept(LayoutConcept.DEFAULT);
+					simSettings.setSimulateWithoutUI(true);
 					simSettings.setSidewaysFoldabeSeatPopupTimeDeviation(0);
 					simSettings.setLiftingSeatPanPopupTimeDeviation(0);
 					simSettings.getPassengerProperties().setSeatInterferenceProcessTimeFoldingSeatDeviation(0);
@@ -235,8 +263,6 @@ public class DefineBatchSimulationInput extends CDTCommand {
 						break;
 					}
 				}
-
-				
 
 				// report finished
 				return Status.OK_STATUS;

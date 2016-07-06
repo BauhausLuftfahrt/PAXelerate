@@ -6,6 +6,7 @@
 package net.bhl.cdt.paxelerate.ui.commands;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import net.bhl.cdt.commands.CDTCommand;
 import net.bhl.cdt.paxelerate.ui.helper.DefineBatchSimulationInput;
@@ -34,20 +35,21 @@ public class RunBatchSimulationMenuCommand extends CDTCommand {
 	public RunBatchSimulationMenuCommand() {
 
 	}
-	
+
 	/**
 	 * Import csv study.
 	 *
-	 * @param fileName the file name
 	 * @return the string[][]
 	 */
-	public String[][] importCSVStudy() { 
-		String[][] data = null;
+	public ArrayList<ArrayList> importCSVStudy() {
+		ArrayList<ArrayList> data = null;
 		try {
-			CSVImport importer = new CSVImport ("study_import", PAXeleratePreferencePage.DEFAULT_EXPORT_PATH);
+			CSVImport importer = new CSVImport(PAXeleratePreferencePage.DEFAULT_IMPORT_FILE_NAME,
+					PAXeleratePreferencePage.DEFAULT_IMPORT_PATH);
 			importer.openSpecificFile();
 			data = importer.readData();
 			importer.closeFile();
+			Log.add(this, "Study data import completed");
 		} catch (IOException e) {
 			Log.add(this, "Data import failed!");
 		}
@@ -61,32 +63,27 @@ public class RunBatchSimulationMenuCommand extends CDTCommand {
 	protected final void doRun() {
 
 		Log.add(this, "Batch simulation command ...");
-		
-		String[][] data = importCSVStudy();
-		
-		int i=1;
-		/* first value is the number of studies */
-		while (data[i][0] != null) {
 
-				for (int simulationLoopIndex = 1; simulationLoopIndex <= numberOfIterations; simulationLoopIndex++) {
-					new ECPModelImporter().doRun();
-					new DefineBatchSimulationInput().doRun();
-					new GeneratePassengersCommand().execute();
-					new SimulateBoardingCommand(simulationLoopIndex).execute();
-				}
-			i++;
-		}
-		
+		ArrayList<ArrayList> data = importCSVStudy();
 
-		/*for (HandLuggageCase handLuggageCase : HandLuggageCase.values()) {
-			for (int loadFactorIndex = 80; loadFactorIndex <= 100; loadFactorIndex += 10) {
-				for (int simulationLoopIndex = 1; simulationLoopIndex <= numberOfIterations; simulationLoopIndex++) {
-					new ECPModelImporter().doRun();
-					new DefineBatchSimulationInput(HandLuggageCase.BULKY_HL, loadFactorIndex).doRun();
-					new GeneratePassengersCommand().execute();
-					new SimulateBoardingCommand(simulationLoopIndex).execute();
-				}
+		// first value is the number of studies
+		for (ArrayList<ArrayList> study : data) {
+			for (int simulationLoopIndex = 1; simulationLoopIndex <= numberOfIterations; simulationLoopIndex++) {
+				new ECPModelImporter().doRun();
+				new DefineBatchSimulationInput(study).doRun();
+				new GeneratePassengersCommand().execute();
+				new SimulateBoardingCommand(simulationLoopIndex).execute();
 			}
-		}*/
-	}
+		}
+
+		/*
+		 * //for (HandLuggageCase handLuggageCase : HandLuggageCase.values()) {
+		 * for (int loadFactorIndex = 60; loadFactorIndex <= 100;
+		 * loadFactorIndex += 10) { for (int simulationLoopIndex = 1;
+		 * simulationLoopIndex <= numberOfIterations; simulationLoopIndex++) {
+		 * new ECPModelImporter().doRun(); new
+		 * DefineBatchSimulationInput(HandLuggageCase.BULKY_HL,
+		 * loadFactorIndex).doRun(); new GeneratePassengersCommand().execute();
+		 * new SimulateBoardingCommand(simulationLoopIndex).execute(); } } //}
+		 */ }
 }

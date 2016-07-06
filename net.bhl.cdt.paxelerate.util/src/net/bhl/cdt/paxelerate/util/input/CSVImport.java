@@ -9,6 +9,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
@@ -16,7 +18,8 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
  * This command imports data from an external source.
  *
  * @author michael.schmidt
- * @version 0.5
+ * @version 1.0
+ * @since 0.8
  */
 
 public class CSVImport {
@@ -25,15 +28,24 @@ public class CSVImport {
 	private BufferedReader fileReader;
 
 	/** The default fileName. */
-	String fileName = "import";
+	private String fileName = "import";
 
+	/** The file path. */
 	private String filePath;
+
+	/** The line. */
+	private String line = "";
+
+	/** The cvs split by. */
+	private String cvsSplitBy = ";";
 
 	/**
 	 * Instantiates a new excel import.
 	 *
 	 * @param filename
 	 *            the filename
+	 * @param filePath
+	 *            the file path
 	 */
 	public CSVImport(String filename, String filePath) {
 		this.fileName = filename;
@@ -47,25 +59,37 @@ public class CSVImport {
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	public String[][] readData() throws IOException {
-		String[][] data = new String[10][10];
-		String nextLine;
-		int i = 0;
-		while ((nextLine = fileReader.readLine()) != null) {
-			String[] line = nextLine.split(";");
-			for (int j = 0; j < line.length; j++) {
-				data[i][j] = line[j];
+	public ArrayList<ArrayList> readData() throws IOException {
+		ArrayList<ArrayList> lineList = new ArrayList<ArrayList>();
+		// skip first two header rows
+		fileReader.readLine();
+		fileReader.readLine();
+		while ((line = fileReader.readLine()) != null) {
+			ArrayList<String> strList = new ArrayList<String>();
+
+			while (line.length() > 0) {
+				int nextDelimPo = line.indexOf(cvsSplitBy);
+				if (nextDelimPo == -1) {
+					strList.add(line);
+					line = "";
+				} else {
+					strList.add(line.substring(0, nextDelimPo));
+					line = line.substring(nextDelimPo + 1);
+				}
 			}
-			i++;
+
+			Collections.addAll(lineList, strList);
 		}
-		return data;
+		return lineList;
 	}
 
 	/**
 	 * Open specific file.
 	 *
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException
+	 *             the file not found exception
 	 */
 	public void openSpecificFile() throws IOException, FileNotFoundException {
 		Log.add(this, "Start data import...");
@@ -76,8 +100,10 @@ public class CSVImport {
 	/**
 	 * Open first file.
 	 *
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws FileNotFoundException
+	 *             the file not found exception
 	 */
 	public void openFirstFile() throws IOException, FileNotFoundException {
 		Log.add(this, "Start data import...");
@@ -93,7 +119,8 @@ public class CSVImport {
 	/**
 	 * Close file.
 	 *
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 */
 	public void closeFile() throws IOException {
 		fileReader.close();

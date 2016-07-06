@@ -309,6 +309,11 @@ public class SimulateBoardingCommand extends CDTCommand {
 						System.out.println("InterruptedException @ thread " + Thread.currentThread().getName());
 						Thread.currentThread().interrupt();
 					}
+
+					if (!cabin.getSimulationSettings().isSimulateWithoutUI() && simulationFrame == null) {
+						SimulationHandler.setSimulationStatus(true);
+						SimulationHandler.reset();
+					}
 				}
 
 				/* closes the simulation view after completion */
