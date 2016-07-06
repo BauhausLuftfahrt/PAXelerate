@@ -48,12 +48,11 @@ public class CSVImport {
 	 *             Signals that an I/O exception has occurred.
 	 */
 	public String[][] readData() throws IOException {
-		/* currently limited to 5 variables and 100 iterations */
-		String[][] data = new String[5][101];
+		String[][] data = new String[10][10];
 		String nextLine;
 		int i = 0;
 		while ((nextLine = fileReader.readLine()) != null) {
-			String[] line = nextLine.split(",");
+			String[] line = nextLine.split(";");
 			for (int j = 0; j < line.length; j++) {
 				data[i][j] = line[j];
 			}
