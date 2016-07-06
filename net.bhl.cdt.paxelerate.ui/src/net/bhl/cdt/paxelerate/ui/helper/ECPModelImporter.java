@@ -37,26 +37,40 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 public class ECPModelImporter extends CDTCommand {
 
+	/** The folder name. */
+	private String folderName;
+
+	/** The file name. */
+	private String fileName;
+
 	/**
 	 * This is the constructor method of the ECPModelImporter.
 	 */
 	public ECPModelImporter() {
+		this.folderName = PAXeleratePreferencePage.DEFAULT_XMI_FOLDER;
+		this.fileName = PAXeleratePreferencePage.DEFAULT_XMI_FILE;
 
+	}
+
+	/**
+	 * Instantiates a new ECP model importer.
+	 *
+	 * @param fileName
+	 *            the file name
+	 */
+	public ECPModelImporter(String fileName) {
+		this.folderName = PAXeleratePreferencePage.DEFAULT_XMI_FOLDER;
+		this.fileName = fileName;
 	}
 
 	/**
 	 * Load xmi model.
 	 *
-	 * @param folderName
-	 *            the folder name
-	 * @param fileName
-	 *            the file name
 	 * @return the cabin
 	 * @throws ECPProjectWithNameExistsException
 	 *             the ECP project with name exists exception
 	 */
-	private Cabin loadXMIModel(final String folderName, final String fileName)
-			throws ECPProjectWithNameExistsException {
+	private Cabin loadXMIModel() throws ECPProjectWithNameExistsException {
 		/* Create a resource set */
 		ResourceSet resourceSet = new ResourceSetImpl();
 
@@ -65,7 +79,7 @@ public class ECPModelImporter extends CDTCommand {
 				.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
 
 		/* Get the URI of the model file */
-		URI uri = URI.createFileURI(folderName + fileName);
+		URI uri = URI.createFileURI(folderName + fileName + ".xmi");
 
 		/* Demand load the resource for this file */
 		Resource resource = resourceSet.getResource(uri, true);
@@ -151,10 +165,8 @@ public class ECPModelImporter extends CDTCommand {
 
 					deleteExistingProjects();
 					ECPProject project = createNewProject(PAXeleratePreferencePage.DEFAULT_PROJECT_NAME);
-					Cabin cabin = loadXMIModel(PAXeleratePreferencePage.DEFAULT_XMI_FOLDER,
-							PAXeleratePreferencePage.DEFAULT_XMI_FILE);
+					Cabin cabin = loadXMIModel();
 					addXMIModelToProject(project, cabin);
-					// cabinModel = EcoreUtil.copy(cabin);
 					Log.add(this, "...cabin loaded!");
 
 				} catch (ECPProjectWithNameExistsException e) {
@@ -172,9 +184,9 @@ public class ECPModelImporter extends CDTCommand {
 		job.addJobChangeListener(new JobChangeAdapter() {
 			public void done(final IJobChangeEvent event) {
 				if (event.getResult().isOK()) {
-					Log.add(this, "ECP model import completed");
+					Log.add(this, "Cabin import from xmi file completed");
 				} else {
-					Log.add(this, "ECP model import failed");
+					Log.add(this, "Cabin import failed");
 				}
 			}
 		});

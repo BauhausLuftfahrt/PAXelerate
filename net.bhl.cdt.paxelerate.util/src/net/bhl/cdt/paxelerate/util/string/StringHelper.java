@@ -8,8 +8,8 @@ package net.bhl.cdt.paxelerate.util.string;
 /**
  * The Class StringHelper.
  *
- * @author marc.engelmann, raoul.rothfeld
- * @version 1.0
+ * @author marc.engelmann, raoul.rothfeld, michael.schmidt
+ * @version 1.1
  * @since 0.5
  */
 public class StringHelper {
@@ -94,5 +94,15 @@ public class StringHelper {
 	public static String toString(int i) {
 		return i > 0 && i < 27 ? "" + (char) (i + 'A' - 1) : null;
 	}
+	
+	/**
+	 * Empty.
+	 *
+	 * @param s the s
+	 * @return true, if successful
+	 */
+	public static boolean empty( final String s ) {
+		    return s == null || s.trim().isEmpty();
+		}
 
 }

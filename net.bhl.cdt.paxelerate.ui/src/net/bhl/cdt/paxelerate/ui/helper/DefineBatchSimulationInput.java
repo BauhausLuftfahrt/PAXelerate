@@ -23,6 +23,7 @@ import net.bhl.cdt.paxelerate.model.SimulationProperties;
 import net.bhl.cdt.paxelerate.model.TravelClass;
 import net.bhl.cdt.paxelerate.ui.commands.RefreshCabinViewCommand;
 import net.bhl.cdt.paxelerate.ui.preferences.PAXeleratePreferencePage;
+import net.bhl.cdt.paxelerate.util.string.StringHelper;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
@@ -65,7 +66,7 @@ public class DefineBatchSimulationInput extends CDTCommand {
 	private int loadFactor;
 
 	/** The study parameters. */
-	private ArrayList studyParameters;
+	private ArrayList<String> studyParameters;
 
 	/**
 	 * This is the constructor method of the SimulateBoardingCommand.
@@ -81,13 +82,13 @@ public class DefineBatchSimulationInput extends CDTCommand {
 				this.cabin = (Cabin) ECPUtil.getECPProjectManager()
 						.getProject(PAXeleratePreferencePage.DEFAULT_PROJECT_NAME).getContents().get(0);
 				this.simSettings = this.cabin.getSimulationSettings();
-				this.handLuggageStudy = handLuggageStudy;
-				this.loadFactor = loadFactor;
 			}
 		} catch (NullPointerException e) {
 			Log.add(this, "Could not find any project or model!");
 			e.printStackTrace();
 		}
+		this.handLuggageStudy = handLuggageStudy;
+		this.loadFactor = loadFactor;
 	}
 
 	/**
@@ -96,19 +97,19 @@ public class DefineBatchSimulationInput extends CDTCommand {
 	 * @param study
 	 *            the study
 	 */
-	public DefineBatchSimulationInput(ArrayList study) {
+	public DefineBatchSimulationInput(ArrayList<String> study) {
 		try {
 			if (ECPUtil.getECPProjectManager().getProjects() != null) {
 				this.cabin = (Cabin) ECPUtil.getECPProjectManager()
 						.getProject(PAXeleratePreferencePage.DEFAULT_PROJECT_NAME).getContents().get(0);
 				this.simSettings = this.cabin.getSimulationSettings();
-				this.studyParameters = study;
-				this.csvImport = true;
 			}
 		} catch (NullPointerException e) {
 			Log.add(this, "Could not find any project or model!");
 			e.printStackTrace();
 		}
+		this.studyParameters = study;
+		this.csvImport = true;
 	}
 
 	/**
@@ -139,35 +140,69 @@ public class DefineBatchSimulationInput extends CDTCommand {
 
 				if (csvImport) {
 
-					simSettings.setSimulationSpeedFactor(Integer.parseInt((String) studyParameters.get(2)));
-
-					if ((String) studyParameters.get(3) == "false") {
-						simSettings.setSimulateWithoutUI(false);
-					} else {
-						simSettings.setSimulateWithoutUI(true);
+					if (!StringHelper.empty(studyParameters.get(2))) {
+						simSettings.setSimulationSpeedFactor(Integer.parseInt(studyParameters.get(2)));
 					}
-					simSettings.getLuggageProperties().setPercentageOfPassengersWithNoLuggage(
-							(Integer.parseInt((String) studyParameters.get(5))));
-					simSettings.getLuggageProperties().setPercentageOfPassengersWithSmallLuggage(
-							(Integer.parseInt((String) studyParameters.get(6))));
-					simSettings.getLuggageProperties().setPercentageOfPassengersWithMediumLuggage(
-							(Integer.parseInt((String) studyParameters.get(7))));
-					simSettings.getLuggageProperties().setPercentageOfPassengersWithBigLuggage(
-							(Integer.parseInt((String) studyParameters.get(8))));
 
-					switch ((String) studyParameters.get(9)) {
+					if (!StringHelper.empty(studyParameters.get(3))) {
+						if (studyParameters.get(3) == "false") {
+							simSettings.setSimulateWithoutUI(false);
+						} else {
+							simSettings.setSimulateWithoutUI(true);
+						}
+					}
 
-					case "Default":
-						simSettings.setLayoutConcept(LayoutConcept.DEFAULT);
-						break;
+					if (!StringHelper.empty(studyParameters.get(5))) {
+						simSettings.getLuggageProperties()
+								.setPercentageOfPassengersWithNoLuggage((Integer.parseInt(studyParameters.get(5))));
+					}
+					if (!StringHelper.empty(studyParameters.get(6))) {
+						simSettings.getLuggageProperties()
+								.setPercentageOfPassengersWithSmallLuggage((Integer.parseInt(studyParameters.get(6))));
+					}
+					if (!StringHelper.empty(studyParameters.get(7))) {
+						simSettings.getLuggageProperties()
+								.setPercentageOfPassengersWithMediumLuggage((Integer.parseInt(studyParameters.get(7))));
+					}
+					if (!StringHelper.empty(studyParameters.get(8))) {
+						simSettings.getLuggageProperties()
+								.setPercentageOfPassengersWithBigLuggage((Integer.parseInt(studyParameters.get(8))));
+					}
+					if (!StringHelper.empty(studyParameters.get(11))) {
+						simSettings.setPassengersBoardingPerMinute(Integer.parseInt(studyParameters.get(11)));
+					}
 
-					case "LiftingSeatPanSeats":
-						simSettings.setLayoutConcept(LayoutConcept.LIFTING_SEAT_PAN_SEATS);
-						break;
+					if (!StringHelper.empty(studyParameters.get(9))) {
+						switch (studyParameters.get(9)) {
 
-					case "SidewaysFoldableSeat":
-						simSettings.setLayoutConcept(LayoutConcept.SIDWAYS_FOLDABLE_SEAT);
-						break;
+						case "Default":
+							simSettings.setLayoutConcept(LayoutConcept.DEFAULT);
+							simSettings.getPassengerProperties().setSeatInterferenceProcessTimeMean(0);
+							simSettings.getPassengerProperties().setSeatInterferenceProcessTimeDeviation(0);
+							break;
+
+						case "LiftingSeatPanSeats":
+							simSettings.setLayoutConcept(LayoutConcept.LIFTING_SEAT_PAN_SEATS);
+							simSettings.setLiftingSeatPanPopupTimeMean(0);
+							simSettings.setLiftingSeatPanPopupTimeDeviation(0);
+							simSettings.getPassengerProperties().setSeatInterferenceProcessTimeFoldingSeatMean(0);
+							simSettings.getPassengerProperties().setSeatInterferenceProcessTimeFoldingSeatDeviation(0);
+							break;
+
+						case "SidewaysFoldableSeat":
+							simSettings.setLayoutConcept(LayoutConcept.SIDWAYS_FOLDABLE_SEAT);
+							simSettings.setSidewaysFoldabeSeatPopupTimeMean(0);
+							simSettings.setSidewaysFoldabeSeatPopupTimeDeviation(0);
+							simSettings.getPassengerProperties().setSeatInterferenceProcessTimeFoldingSeatMean(0);
+							simSettings.getPassengerProperties().setSeatInterferenceProcessTimeFoldingSeatDeviation(0);
+							break;
+
+						default:
+							simSettings.setLayoutConcept(LayoutConcept.DEFAULT);
+							simSettings.getPassengerProperties().setSeatInterferenceProcessTimeMean(0);
+							simSettings.getPassengerProperties().setSeatInterferenceProcessTimeDeviation(0);
+							break;
+						}
 					}
 
 					Display.getDefault().syncExec(new Runnable() {
@@ -177,8 +212,10 @@ public class DefineBatchSimulationInput extends CDTCommand {
 						}
 					});
 
-					for (TravelClass travelclass : cabin.getClasses()) {
-						travelclass.setPassengers((Integer.parseInt((String) studyParameters.get(4))));
+					if (!StringHelper.empty(studyParameters.get(4))) {
+						for (TravelClass travelclass : cabin.getClasses()) {
+							travelclass.setPassengers((Integer.parseInt((String) studyParameters.get(4))));
+						}
 					}
 
 				} else {

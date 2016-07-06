@@ -59,8 +59,8 @@ public class CSVImport {
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	public ArrayList<ArrayList> readData() throws IOException {
-		ArrayList<ArrayList> lineList = new ArrayList<ArrayList>();
+	public ArrayList<ArrayList<String>> readData() throws IOException {
+		ArrayList<ArrayList<String>> lineList = new ArrayList<ArrayList<String>>();
 		// skip first two header rows
 		fileReader.readLine();
 		fileReader.readLine();

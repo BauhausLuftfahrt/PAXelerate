@@ -41,7 +41,7 @@ public class PAXeleratePreferencePage extends FieldEditorPreferencePage implemen
 	public static final String DEFAULT_PROJECT_NAME = "reference";
 
 	/** The Constant DEFAULT_XMI_FILE. */
-	public static final String DEFAULT_XMI_FILE = "Reference_Cabin_v2.xmi";
+	public static final String DEFAULT_XMI_FILE = "Reference_Cabin_v2";
 
 	/** The Constant DEFAULT_XMI_FOLDER. */
 	public static final String DEFAULT_XMI_FOLDER = System.getProperty("user.home") + "/Documents/paxelerate/";

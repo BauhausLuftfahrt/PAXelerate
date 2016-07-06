@@ -26,9 +26,6 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 public class RunBatchSimulationMenuCommand extends CDTCommand {
 
-	/** The number of iterations. */
-	private static int numberOfIterations = 10;
-
 	/**
 	 * This is the constructor method of the RunBatchSimulationMenuCommand.
 	 */
@@ -39,10 +36,10 @@ public class RunBatchSimulationMenuCommand extends CDTCommand {
 	/**
 	 * Import csv study.
 	 *
-	 * @return the string[][]
+	 * @return the ArrayList<ArrayList<String>>
 	 */
-	public ArrayList<ArrayList> importCSVStudy() {
-		ArrayList<ArrayList> data = null;
+	public ArrayList<ArrayList<String>> importCSVStudy() {
+		ArrayList<ArrayList<String>> data = null;
 		try {
 			CSVImport importer = new CSVImport(PAXeleratePreferencePage.DEFAULT_IMPORT_FILE_NAME,
 					PAXeleratePreferencePage.DEFAULT_IMPORT_PATH);
@@ -62,19 +59,27 @@ public class RunBatchSimulationMenuCommand extends CDTCommand {
 	@Override
 	protected final void doRun() {
 
-		Log.add(this, "Batch simulation command ...");
+		Log.add(this, "Start batch simulation ...");
 
-		ArrayList<ArrayList> data = importCSVStudy();
+		ArrayList<ArrayList<String>> data = importCSVStudy();
 
-		// first value is the number of studies
-		for (ArrayList<ArrayList> study : data) {
-			for (int simulationLoopIndex = 1; simulationLoopIndex <= numberOfIterations; simulationLoopIndex++) {
-				new ECPModelImporter().doRun();
+		int i = 1;
+		int y = 1;
+
+		for (ArrayList<String> study : data) {
+			for (int simulationLoopIndex = 1; simulationLoopIndex <= (Integer
+					.parseInt(study.get(1))); simulationLoopIndex++) {
+				new ECPModelImporter(study.get(10)).doRun();
 				new DefineBatchSimulationInput(study).doRun();
 				new GeneratePassengersCommand().execute();
 				new SimulateBoardingCommand(simulationLoopIndex).execute();
+				Log.add(this, "Iteration " + simulationLoopIndex + "/" + Integer.parseInt(study.get(1))
+						+ " completed. Study " + i + "/" + data.size());
+				y++;
 			}
+			i++;
 		}
+		Log.add(this, "... batch simulation completed: " + y + " iterations in " + data.size() + " studies.");
 
 		/*
 		 * //for (HandLuggageCase handLuggageCase : HandLuggageCase.values()) {
