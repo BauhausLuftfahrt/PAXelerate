@@ -71,6 +71,8 @@ public class SimulateBoardingCommand extends CDTCommand {
 	/** The developer mode. */
 	private boolean developerMode;
 
+	protected boolean runSuccessful;
+
 	/**
 	 * This is the constructor method of the SimulateBoardingCommand.
 	 * 
@@ -105,6 +107,15 @@ public class SimulateBoardingCommand extends CDTCommand {
 			 * preferenceStore.getString(PluginPreferencesPage.FIELD_STRING_ID);
 			 */
 		}
+	}
+	
+	/**
+	 * Gets the simulation status.
+	 *
+	 * @return the simulation status
+	 */
+	public boolean getSimulationStatus() {
+		return runSuccessful;
 	}
 
 	/**
@@ -378,8 +389,10 @@ public class SimulateBoardingCommand extends CDTCommand {
 			@Override
 			public void done(final IJobChangeEvent event) {
 				if (event.getResult().isOK()) {
+					runSuccessful = true;
 					Log.add(this, "Simulation run completed");
 				} else {
+					runSuccessful = false;
 					Log.add(this, "Simulation run failed!");
 				}
 			}

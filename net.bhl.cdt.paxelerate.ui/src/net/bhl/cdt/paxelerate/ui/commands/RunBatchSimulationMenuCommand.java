@@ -14,17 +14,27 @@ import net.bhl.cdt.paxelerate.ui.helper.ECPModelImporter;
 import net.bhl.cdt.paxelerate.ui.preferences.PAXeleratePreferencePage;
 import net.bhl.cdt.paxelerate.ui.helper.DefineBatchSimulationInput.HandLuggageCase;
 import net.bhl.cdt.paxelerate.util.input.CSVImport;
+import net.bhl.cdt.paxelerate.util.time.StopWatch;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * The Class RunBatchSimulationMenuCommand.
  *
  * @author michael.schmidt
- * @version 1.0
+ * @version 0.8
  * @since 0.7
  */
 
 public class RunBatchSimulationMenuCommand extends CDTCommand {
+
+	/** The stopwatch. */
+	private StopWatch stopwatch = new StopWatch();
+
+	/** The iteration completed. */
+	private int iterationCompleted;
+
+	/** The iteration failed. */
+	private int iterationFailed;
 
 	/**
 	 * This is the constructor method of the RunBatchSimulationMenuCommand.
@@ -61,6 +71,8 @@ public class RunBatchSimulationMenuCommand extends CDTCommand {
 
 		Log.add(this, "Start batch simulation ...");
 
+		stopwatch.start();
+
 		ArrayList<ArrayList<String>> data = importCSVStudy();
 
 		int i = 1;
@@ -72,14 +84,23 @@ public class RunBatchSimulationMenuCommand extends CDTCommand {
 				new ECPModelImporter(study.get(10)).doRun();
 				new DefineBatchSimulationInput(study).doRun();
 				new GeneratePassengersCommand().execute();
-				new SimulateBoardingCommand(simulationLoopIndex).execute();
-				Log.add(this, "Iteration " + simulationLoopIndex + "/" + Integer.parseInt(study.get(1))
-						+ " completed. Study " + i + "/" + data.size());
+				SimulateBoardingCommand simulation = new SimulateBoardingCommand(simulationLoopIndex);
+				simulation.execute();
+				if (simulation.getSimulationStatus()) {
+					iterationCompleted++;
+				} else {
+					iterationFailed++;
+				}
+				Log.add(this, "Iteration " + simulationLoopIndex + "/" + Integer.parseInt(study.get(1)) + " Study " + i
+						+ "/" + data.size());
 				y++;
 			}
 			i++;
 		}
-		Log.add(this, "... batch simulation completed: " + y + " iterations in " + data.size() + " studies.");
+		stopwatch.stop();
+		Log.add(this, "... batch simulation completed: " + Math.round(stopwatch.getElapsedTimeHours() * 100) / 100
+				+ " h, " + y + " iterations in " + data.size() + " studies.");
+		Log.add(this, "Iterations: " + iterationCompleted + " completed / " + iterationFailed + " failed");
 
 		/*
 		 * //for (HandLuggageCase handLuggageCase : HandLuggageCase.values()) {

@@ -8,8 +8,8 @@ package net.bhl.cdt.paxelerate.util.time;
 /**
  * This class represents a stop watch.
  * 
- * @author marc.engelmann
- * @version 1.0
+ * @author marc.engelmann, michael.schmidt
+ * @version 0.8
  * @since 0.5
  */
 
@@ -75,22 +75,26 @@ public class StopWatch {
 	 * 
 	 * @return the elapsed time in seconds
 	 */
-	public double getElapsedTimeTens() {
+	public double getElapsedTimeSecs() {
 		return getElapsedTime() / 1000.0;
 	}
-
+	
 	/**
-	 * This method returns the elapsed time in seconds.
+	 * This method returns the elapsed time in minutes.
 	 * 
-	 * @return the time in milliseconds
+	 * @return the elapsed time in minutes
 	 */
-	public long getElapsedTimeSecs() {
-		long elapsed;
-		if (running) {
-			elapsed = (System.currentTimeMillis() - startTime) / 1000;
-		} else {
-			elapsed = (stopTime - startTime) / 1000;
-		}
-		return elapsed;
+	public double getElapsedTimeMins() {
+		return  getElapsedTimeSecs() / 60;
 	}
+	
+	/**
+	 * This method returns the elapsed time in hours.
+	 * 
+	 * @return the elapsed time in hours
+	 */
+	public double getElapsedTimeHours() {
+		return  getElapsedTimeMins() / 60;
+	}
+
 }
