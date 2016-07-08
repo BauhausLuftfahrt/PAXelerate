@@ -616,7 +616,7 @@ public class Agent extends Subject implements Runnable {
 		 */
 		dim = (int) (dimension / 2);
 
-		/* loop through the whole passenger area in the whole area map */
+		/* loop through the whole passenger area in the area map */
 		for (int x = -dim; x <= dim; x++) {
 			for (int y = -dim; y <= dim; y++) {
 
@@ -731,28 +731,49 @@ public class Agent extends Subject implements Runnable {
 	 */
 	private Property nodeBlocked(Vector vector) {
 
-		for (int x = -dim; x <= dim; x++) {
+		/*
+		 * loop through values from - dimension to + dimension (hard coded : 2)
+		 */
+		for (int y = -dim; y <= dim; y++) {
 
-			int y = dim;
+			/* only use the positive y direction */
+			int x = dim;
 
+			/*
+			 * if the door is behind the seat, the scanning will be in the
+			 * opposite direction
+			 */
 			if (passenger.getSeat().getXPosition() < passenger.getDoor()
 					.getXPosition()) {
-				y = -(y + 1);
+				x = -(x + 1);
 			}
 
+			/* get the node at the requested location */
 			Node checkNode = SimulationHandler.getMap().get(vector.getX() + x,
 					vector.getY() + y);
+
 			if (checkNode != null) {
+
+				/* check if the node is already blocked */
 				if (checkNode.getProperty() == Property.AGENT) {
 
 					/* check if its was not this agent who blocked it */
 					if (checkNode.getPassenger().getId() != this.passenger
 							.getId()) {
 
+						/*
+						 * determine the passenger who currently blocks the path
+						 */
 						for (Agent agent : SimulationHandler.getAgentList()) {
 
+							/*
+							 * compare the agent id with the id linked to the
+							 * blocked node
+							 */
 							if (agent.getPassenger().getId() == checkNode
 									.getPassenger().getId()) {
+
+								/* find the blocking agent */
 								this.blockingAgent = agent;
 							}
 						}
@@ -1008,8 +1029,6 @@ public class Agent extends Subject implements Runnable {
 
 	}
 
-	
-
 	/**
 	 * This method starts the agent.
 	 */
@@ -1070,6 +1089,7 @@ public class Agent extends Subject implements Runnable {
 	public int getNumberWayMakingSkipped() {
 		return wayMakingSkipped;
 	}
+
 	public int getNumberWayMakingCompleted() {
 		return wayMakingCompleted;
 	}
@@ -1450,6 +1470,7 @@ public class Agent extends Subject implements Runnable {
 	public void raiseNumberOfSkippedWaymakings() {
 		wayMakingSkipped++;
 	}
+
 	public void raiseNumberOfCompletedWaymakings() {
 		wayMakingCompleted++;
 	}
