@@ -6,8 +6,8 @@
 package net.bhl.cdt.paxelerate.model.agent;
 
 import net.bhl.cdt.paxelerate.model.Passenger;
+import net.bhl.cdt.paxelerate.model.agent.enums.Property;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
-import net.bhl.cdt.paxelerate.model.astar.node.Node.Property;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 
 /**
@@ -18,14 +18,18 @@ import net.bhl.cdt.paxelerate.util.math.Vector;
  * @since 0.5
  */
 public class AgentMover {
-	
+
 	/**
 	 * This method blocks the agents position if the rotation is rectangular.
 	 *
-	 * @param vector            is the vector of the agents position
-	 * @param occupy            occupy or deoccupy the node
-	 * @param property            set the property of the node
-	 * @param passenger the passenger
+	 * @param vector
+	 *            is the vector of the agents position
+	 * @param occupy
+	 *            occupy or deoccupy the node
+	 * @param property
+	 *            set the property of the node
+	 * @param passenger
+	 *            the passenger
 	 */
 	public static void blockNode(Vector vector, boolean occupy,
 			Property property, Passenger passenger) {

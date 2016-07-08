@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import net.bhl.cdt.paxelerate.model.agent.Agent;
+import net.bhl.cdt.paxelerate.model.agent.enums.Property;
 import net.bhl.cdt.paxelerate.model.astar.node.Node;
-import net.bhl.cdt.paxelerate.model.astar.node.Node.Property;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.math.Vector3D;
@@ -98,8 +98,12 @@ public class Costmap {
 	 * @param value
 	 *            the value
 	 */
-	public void setCost(Vector position, int value) {
+	public void setCost(Vector position, int value) throws ArithmeticException {
 		map[position.getX()][position.getY()] = value;
+
+		if (value < -1) {
+			throw new ArithmeticException("set cost < -1 : " + value);
+		}
 	}
 
 	/**
@@ -110,11 +114,14 @@ public class Costmap {
 			for (int j = 0; j < size.getY(); j++) {
 				if (map[i][j] == -1) {
 					System.out.print("X\t");
-				} else if (i == goalPoint.getX() && j == goalPoint.getY()) {
-					System.out.print("G\t");
-				} else if (i == startPoint.getX() && j == startPoint.getY()) {
-					System.out.print("S\t");
-				} else {
+				}
+				// else if (i == goalPoint.getX() && j == goalPoint.getY()) {
+				// System.out.print("G\t");
+				// } else if (i == startPoint.getX() && j == startPoint.getY())
+				// {
+				// System.out.print("S\t");
+				// }
+				else {
 					System.out.print(getCostForCoordinates(i, j) + "\t");
 				}
 			}
@@ -277,7 +284,7 @@ public class Costmap {
 					|| point.getY() >= size.getY())) {
 				if (!isObstacle(point)) {
 					if (!(checkForPoint(visitedPoints, point))) {
-						setCost(point, getCost(middlePoint) + getCost(point));
+						setCost(point, (getCost(middlePoint) + getCost(point)));
 						visitedPoints.add(point);
 						getPointParkingHelper().add(point);
 					}
@@ -295,15 +302,12 @@ public class Costmap {
 	 * @return the cost at the specific point
 	 */
 	public int getCost(Vector point) {
-		try {
-			return map[point.getX()][point.getY()];
-		} catch (ArrayIndexOutOfBoundsException e) {
-			e.printStackTrace();
-			System.out.println(
-					"###### !ArrayIndexOutOfBoundsException ERROR! ###### !COSTMAP - getCost()! ######");
-			return Integer.MAX_VALUE;
-		}
 
+		if (map[point.getX()][point.getY()] < -1) {
+			throw new ArithmeticException(
+					"set cost < -1 : " + map[point.getX()][point.getY()]);
+		}
+		return map[point.getX()][point.getY()];
 	}
 
 	/**
@@ -317,18 +321,14 @@ public class Costmap {
 	 * @return returns the cost for a specific coordinate
 	 */
 
-	private int getCostForCoordinates(int xCord, int yCord) {
-		try {
-			if (xCord >= 0 && yCord >= 0 && xCord < size.getX()
-					&& yCord < size.getY()) {
-				return map[xCord][yCord];
-			}
-			return Integer.MAX_VALUE;
-		} catch (ArrayIndexOutOfBoundsException e) {
-			e.printStackTrace();
-			System.out.println(
-					"###### !ArrayIndexOutOfBoundsException ERROR! ###### !COSTMAP - getCostForCoordinate()! ######");
-			return Integer.MAX_VALUE;
+	private int getCostForCoordinates(int xCord, int yCord)
+			throws ArrayIndexOutOfBoundsException {
+		if (xCord >= 0 && yCord >= 0 && xCord < size.getX()
+				&& yCord < size.getY()) {
+			return map[xCord][yCord];
+		} else {
+			throw new ArrayIndexOutOfBoundsException(
+					"xCord = " + xCord + ", yCord = " + yCord);
 		}
 	}
 
@@ -387,18 +387,39 @@ public class Costmap {
 	 */
 	public ArrayList<Vector> getSurroundingPoints(int x, int y) {
 		ArrayList<Vector> neighbors = new ArrayList<Vector>();
-		neighbors.add(new Vector3D(x, y - 1, getCostForCoordinates(x, y - 1)));
-		neighbors.add(new Vector3D(x + 1, y - 1,
-				getCostForCoordinates(x + 1, y - 1)));
-		neighbors.add(new Vector3D(x + 1, y, getCostForCoordinates(x + 1, y)));
-		neighbors.add(new Vector3D(x + 1, y + 1,
-				getCostForCoordinates(x + 1, y + 1)));
-		neighbors.add(new Vector3D(x, y + 1, getCostForCoordinates(x, y + 1)));
-		neighbors.add(new Vector3D(x - 1, y + 1,
-				getCostForCoordinates(x - 1, y + 1)));
-		neighbors.add(new Vector3D(x - 1, y, getCostForCoordinates(x - 1, y)));
-		neighbors.add(new Vector3D(x - 1, y - 1,
-				getCostForCoordinates(x - 1, y - 1)));
+
+		if (y >= 1) {
+			neighbors.add(
+					new Vector3D(x, y - 1, getCostForCoordinates(x, y - 1)));
+		}
+		if ((y >= 1) && (x < size.getX() - 1)) {
+			neighbors.add(new Vector3D(x + 1, y - 1,
+					getCostForCoordinates(x + 1, y - 1)));
+		}
+		if (x < size.getX() - 1) {
+			neighbors.add(
+					new Vector3D(x + 1, y, getCostForCoordinates(x + 1, y)));
+		}
+		if ((y < size.getY() - 1) && (x < size.getX() - 1)) {
+			neighbors.add(new Vector3D(x + 1, y + 1,
+					getCostForCoordinates(x + 1, y + 1)));
+		}
+		if (y < size.getY() - 1) {
+			neighbors.add(
+					new Vector3D(x, y + 1, getCostForCoordinates(x, y + 1)));
+		}
+		if ((x >= 1) && (y < size.getY() - 1)) {
+			neighbors.add(new Vector3D(x - 1, y + 1,
+					getCostForCoordinates(x - 1, y + 1)));
+		}
+		if (x >= 1) {
+			neighbors.add(
+					new Vector3D(x - 1, y, getCostForCoordinates(x - 1, y)));
+		}
+		if ((y >= 1) && (x >= 1)) {
+			neighbors.add(new Vector3D(x - 1, y - 1,
+					getCostForCoordinates(x - 1, y - 1)));
+		}
 
 		return neighbors;
 	}

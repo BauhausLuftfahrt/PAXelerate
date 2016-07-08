@@ -36,10 +36,10 @@ public class PathFinder {
 
 		StopWatch pathTimer = new StopWatch();
 
-		/* */
+		/* storage for the old path before the new calculation */
 		Path oldPath = null;
 
-		/* */
+		/* criteria when to choose the new path */
 		double pathFindingDecisionFactor = 1.1;
 
 		/* starts the StopWatch - used for performance testing */
@@ -54,6 +54,10 @@ public class PathFinder {
 		/* this is only run if its not the initial path finding process */
 		if (!agent.firstPathCalculation()) {
 
+			if (true) {
+				System.out.println("Path is not first path ..");
+			}
+
 			/* store the old path */
 			oldPath = new Path(agent.getCurrentPath());
 
@@ -63,6 +67,8 @@ public class PathFinder {
 			/* this declares the area around agents as high cost terrain */
 			mutableCostMap = AgentFunctions.updateCostmap(agent);
 		}
+
+		mutableCostMap.printMapToConsole();
 
 		/* run the path finding algorithm */
 		Core astar = new Core(SimulationHandler.getAreamapHandler(),
@@ -78,18 +84,18 @@ public class PathFinder {
 							* 100.0);
 		}
 
-		// /* this is only run if its not the initial path finding process */
+		/* this is only run if its not the initial path finding process */
 		// if (currentPosition != null) {
 		//
 		//
-		// // TODO: Calulate only the part of the path lying ahead!
+		// TODO: Calulate only the part of the path lying ahead!
 		// if (oldPath.getCost() * pathFindingDecisionFactor <= path
 		// .getCost()) {
 		//
-		// /* if so, return to the old path */
+		/* if so, return to the old path */
 		// path = oldPath;
 		//
-		// /* exit the function */
+		/* exit the function */
 		// return;
 		// }
 		// }

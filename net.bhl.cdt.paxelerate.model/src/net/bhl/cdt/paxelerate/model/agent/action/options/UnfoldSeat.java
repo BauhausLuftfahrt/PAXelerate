@@ -11,10 +11,10 @@ import net.bhl.cdt.paxelerate.model.Seat;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.agent.action.AgentActionType;
+import net.bhl.cdt.paxelerate.model.agent.enums.Property;
 import net.bhl.cdt.paxelerate.model.agent.enums.State;
 import net.bhl.cdt.paxelerate.model.astar.AStarHelper;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
-import net.bhl.cdt.paxelerate.model.astar.node.Node.Property;
 import net.bhl.cdt.paxelerate.util.math.GaussOptions;
 import net.bhl.cdt.paxelerate.util.math.GaussianRandom;
 
@@ -30,8 +30,8 @@ public class UnfoldSeat extends AgentActionType {
 	private SimulationProperties simSettings;
 	private Passenger myself;
 
-	public UnfoldSeat(Agent agent, int scale,
-			SimulationProperties simSettings, Passenger myself) {
+	public UnfoldSeat(Agent agent, int scale, SimulationProperties simSettings,
+			Passenger myself) {
 		super(agent, scale);
 		this.simSettings = simSettings;
 		this.myself = myself;
@@ -50,7 +50,7 @@ public class UnfoldSeat extends AgentActionType {
 					GaussOptions.PERCENT_95,
 					simSettings.getSidewaysFoldabeSeatPopupTimeDeviation()));
 
-		/* Lifting seat pan */
+			/* Lifting seat pan */
 		} else if (myself.getSeat()
 				.getLayoutConcept() == LayoutConcept.LIFTING_SEAT_PAN_SEATS) {
 			unfoldSeat(GaussianRandom.gaussianRandom(
@@ -58,12 +58,9 @@ public class UnfoldSeat extends AgentActionType {
 					GaussOptions.PERCENT_95,
 					simSettings.getLiftingSeatPanPopupTimeDeviation()));
 		}
-		
-		
-		
 
 	}
-	
+
 	private void unfoldSeat(double d) {
 
 		Seat seat = myself.getSeat();
@@ -75,8 +72,8 @@ public class UnfoldSeat extends AgentActionType {
 		int xPosition = seat.getXPosition() / scale;
 
 		if (simSettings.isDeveloperMode()) {
-			System.out.println("Passenger " + myself.getId()
-					+ " unfolds Seat " + seat.getName());
+			System.out.println("Passenger " + myself.getId() + " unfolds Seat "
+					+ seat.getName());
 		}
 
 		for (int i = 0; i < width; i++) {

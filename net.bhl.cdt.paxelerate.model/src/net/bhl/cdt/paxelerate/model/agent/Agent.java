@@ -25,6 +25,7 @@ import net.bhl.cdt.paxelerate.model.agent.action.options.UnfoldSeat;
 import net.bhl.cdt.paxelerate.model.agent.action.options.Wait;
 import net.bhl.cdt.paxelerate.model.agent.action.options.WaitForClearing;
 import net.bhl.cdt.paxelerate.model.agent.enums.AgentMode;
+import net.bhl.cdt.paxelerate.model.agent.enums.Property;
 import net.bhl.cdt.paxelerate.model.agent.enums.State;
 import net.bhl.cdt.paxelerate.model.agent.mood.AgentMood;
 import net.bhl.cdt.paxelerate.model.agent.mood.options.AggressiveMood;
@@ -34,7 +35,6 @@ import net.bhl.cdt.paxelerate.model.astar.Costmap;
 import net.bhl.cdt.paxelerate.model.astar.Path;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.model.astar.node.Node;
-import net.bhl.cdt.paxelerate.model.astar.node.Node.Property;
 import net.bhl.cdt.paxelerate.model.observer.Subject;
 import net.bhl.cdt.paxelerate.model.util.Rotator;
 import net.bhl.cdt.paxelerate.util.math.GaussOptions;
@@ -816,6 +816,7 @@ public class Agent extends Subject implements Runnable {
 	 *
 	 * @return true, if successful
 	 */
+	@Deprecated
 	private boolean anyoneNearMe() {
 		for (Passenger pax : SimulationHandler.getCabin().getPassengers()) {
 			if (!pax.isIsSeated()) {

@@ -11,6 +11,8 @@ import java.util.ListIterator;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
 import net.bhl.cdt.paxelerate.model.ObjectOption;
 import net.bhl.cdt.paxelerate.model.Passenger;
+import net.bhl.cdt.paxelerate.model.agent.enums.Direction;
+import net.bhl.cdt.paxelerate.model.agent.enums.Property;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
@@ -85,7 +87,8 @@ public class Node implements Comparable<Node> {
 	/**
 	 * Sets the distance to closest obstacle.
 	 *
-	 * @param distanceToClosestObstacle the new distance to closest obstacle
+	 * @param distanceToClosestObstacle
+	 *            the new distance to closest obstacle
 	 */
 	public void setDistanceToClosestObstacle(double distanceToClosestObstacle) {
 		this.distanceToClosestObstacle = distanceToClosestObstacle;
@@ -178,50 +181,6 @@ public class Node implements Comparable<Node> {
 	}
 
 	/**
-	 * The Enum Property.
-	 *
-	 * @author marc.engelmann
-	 */
-	public enum Property {
-
-		/** The obstacle. */
-		OBSTACLE,
-		/** The agent. */
-		AGENT,
-		/** The default. */
-		DEFAULT,
-		/** The start. */
-		START,
-		/** The goal. */
-		GOAL
-	}
-
-	/**
-	 * The Enum Direction.
-	 *
-	 * @author marc.engelmann
-	 */
-	public enum Direction {
-
-		/** The north. */
-		NORTH,
-		/** The north east. */
-		NORTH_EAST,
-		/** The east. */
-		EAST,
-		/** The south east. */
-		SOUTH_EAST,
-		/** The south. */
-		SOUTH,
-		/** The south west. */
-		SOUTH_WEST,
-		/** The west. */
-		WEST,
-		/** The north west. */
-		NORTH_WEST;
-	}
-
-	/**
 	 * this method constructs the Node.
 	 * 
 	 * @param vector
@@ -230,8 +189,7 @@ public class Node implements Comparable<Node> {
 	public Node(Vector vector) {
 
 		this.position = vector;
-		// value 0 causes a strange path for the first agent
-		this.distanceFromStart = Integer.MAX_VALUE; 
+		this.distanceFromStart = Integer.MAX_VALUE;
 		this.costFromStart = Integer.MAX_VALUE;
 		property = Property.DEFAULT;
 		linkedPassenger = CabinFactory.eINSTANCE.createPassenger();
@@ -506,9 +464,16 @@ public class Node implements Comparable<Node> {
 	/**
 	 * Sets the cost from start.
 	 *
-	 * @param cost the new cost from start
+	 * @param cost
+	 *            the new cost from start
 	 */
-	public void setCostFromStart(int cost) {
+	public void setCostFromStart(int cost) throws ArithmeticException {
 		costFromStart = cost;
+		if (cost < -1) {
+			throw new ArithmeticException("Node (" + this.getPosition().getX()
+					+ "/" + this.getPosition().getY()
+					+ ") cost is smaller than zero and not minus one! -> "
+					+ cost);
+		}
 	}
 }

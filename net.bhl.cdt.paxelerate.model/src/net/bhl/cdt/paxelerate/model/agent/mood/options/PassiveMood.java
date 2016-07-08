@@ -6,9 +6,9 @@
 package net.bhl.cdt.paxelerate.model.agent.mood.options;
 
 import net.bhl.cdt.paxelerate.model.agent.Agent;
+import net.bhl.cdt.paxelerate.model.agent.enums.Property;
 import net.bhl.cdt.paxelerate.model.agent.mood.AgentMood;
 import net.bhl.cdt.paxelerate.model.astar.AStarHelper;
-import net.bhl.cdt.paxelerate.model.astar.node.Node.Property;
 
 /**
  * The Class PassiveMood.

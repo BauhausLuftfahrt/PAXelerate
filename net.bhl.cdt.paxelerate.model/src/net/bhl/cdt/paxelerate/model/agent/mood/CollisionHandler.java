@@ -5,7 +5,7 @@
  ***************************************************************************************/
 package net.bhl.cdt.paxelerate.model.agent.mood;
 
-import net.bhl.cdt.paxelerate.model.astar.node.Node.Property;
+import net.bhl.cdt.paxelerate.model.agent.enums.Property;
 
 /**
  * The Interface Strategy.

@@ -8,9 +8,9 @@ package net.bhl.cdt.paxelerate.model.astar;
 import java.util.ArrayList;
 
 import net.bhl.cdt.paxelerate.model.agent.Agent;
+import net.bhl.cdt.paxelerate.model.agent.enums.Property;
 import net.bhl.cdt.paxelerate.model.astar.node.Node;
 import net.bhl.cdt.paxelerate.model.astar.node.SortedNodeList;
-import net.bhl.cdt.paxelerate.model.astar.node.Node.Property;
 import net.bhl.cdt.paxelerate.util.math.MathHelper;
 
 /**

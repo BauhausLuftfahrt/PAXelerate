@@ -5,13 +5,12 @@
  ***************************************************************************************/
 package net.bhl.cdt.paxelerate.model.agent.action.options;
 
-import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.agent.action.AgentActionType;
+import net.bhl.cdt.paxelerate.model.agent.enums.Property;
 import net.bhl.cdt.paxelerate.model.agent.enums.State;
 import net.bhl.cdt.paxelerate.model.agent.mood.Collision;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
-import net.bhl.cdt.paxelerate.model.astar.node.Node.Property;
 
 /**
  * 

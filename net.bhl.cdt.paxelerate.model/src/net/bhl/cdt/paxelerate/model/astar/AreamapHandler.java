@@ -10,11 +10,11 @@ import java.util.ArrayList;
 
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.agent.Agent;
+import net.bhl.cdt.paxelerate.model.agent.enums.Direction;
+import net.bhl.cdt.paxelerate.model.agent.enums.Property;
 import net.bhl.cdt.paxelerate.model.astar.ObstacleGenerator.GradientOption;
 import net.bhl.cdt.paxelerate.model.astar.node.Node;
 import net.bhl.cdt.paxelerate.model.astar.node.NodeProperty;
-import net.bhl.cdt.paxelerate.model.astar.node.Node.Direction;
-import net.bhl.cdt.paxelerate.model.astar.node.Node.Property;
 import net.bhl.cdt.paxelerate.util.math.MathHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 
@@ -136,8 +136,10 @@ public class AreamapHandler {
 	/**
 	 * This function calculates the minimum distance to an obstacle.
 	 *
-	 * @param node            the node which's distance is calculated
-	 * @param obstacles the obstacles
+	 * @param node
+	 *            the node which's distance is calculated
+	 * @param obstacles
+	 *            the obstacles
 	 * @return the minimum distance
 	 */
 	public static double minimumDistanceToObstacle(Node node,

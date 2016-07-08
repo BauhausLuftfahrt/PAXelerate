@@ -11,10 +11,10 @@ import net.bhl.cdt.paxelerate.model.Door;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.Row;
 import net.bhl.cdt.paxelerate.model.Seat;
+import net.bhl.cdt.paxelerate.model.agent.enums.Property;
 import net.bhl.cdt.paxelerate.model.astar.Costmap;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.model.astar.node.Node;
-import net.bhl.cdt.paxelerate.model.astar.node.Node.Property;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 
@@ -72,7 +72,7 @@ public class AgentFunctions {
 		int seatAbrest = checkSeatAbrest(mySeat);
 
 		switch (seatAbrest) {
-		
+
 		default:
 			return false;
 		case 4:
@@ -137,7 +137,8 @@ public class AgentFunctions {
 	/**
 	 * Check seat abrest.
 	 *
-	 * @param seat the seat
+	 * @param seat
+	 *            the seat
 	 * @return the int
 	 */
 	private static int checkSeatAbrest(Seat seat) {
@@ -147,9 +148,12 @@ public class AgentFunctions {
 	/**
 	 * Check seat location.
 	 *
-	 * @param checkSeat the check seat
-	 * @param mySeat the my seat
-	 * @param letter the letter
+	 * @param checkSeat
+	 *            the check seat
+	 * @param mySeat
+	 *            the my seat
+	 * @param letter
+	 *            the letter
 	 * @return true, if successful
 	 */
 	private static boolean checkSeatLocation(Seat checkSeat, Seat mySeat,
@@ -193,21 +197,22 @@ public class AgentFunctions {
 	/**
 	 * Determine closest aisle.
 	 *
-	 * @param mySeat the my seat
+	 * @param mySeat
+	 *            the my seat
 	 * @return the int
 	 */
 	// TODO: arbitrary seat abreast
 	public static int determineClosestAisle(Seat mySeat) {
 
 		int seatAbrest = checkSeatAbrest(mySeat);
-		
+
 		int middleOfAisleY = 0;
 
 		switch (seatAbrest) {
-		
+
 		default:
 			break;
-			
+
 		case 4:
 		case 6:
 			middleOfAisleY = (int) (ModelHelper.getParent(Cabin.class, mySeat)
@@ -228,27 +233,27 @@ public class AgentFunctions {
 			break;
 		}
 
-
 		return middleOfAisleY;
 
 	}
-	
+
 	/**
 	 * Check seat folding status in row.
 	 *
-	 * @param agent the agent
+	 * @param agent
+	 *            the agent
 	 * @return the int
 	 */
 	// TODO: arbitrary seat abreast
 	public static int checkSeatFoldingStatusInRow(Passenger agent) {
-		
+
 		int seatAbrest = checkSeatAbrest(agent.getSeat());
-		
-switch (seatAbrest) {
-		
+
+		switch (seatAbrest) {
+
 		default:
 			return 0;
-			
+
 		case 4:
 			for (Seat seat : agent.getSeat().getRow().getSeats()) {
 				if (!seat.isOccupied() && "B".contains(seat.getLetter())
@@ -259,21 +264,21 @@ switch (seatAbrest) {
 					return 2;
 				}
 			}
-			
+
 		case 6:
 			for (Seat seat : agent.getSeat().getRow().getSeats()) {
-			if (!seat.isOccupied() && "C".contains(seat.getLetter())
-					&& "ABC".contains(agent.getSeat().getLetter())) {
-				return 1;
-			} else if (!seat.isOccupied() && "D".contains(seat.getLetter())
-					&& "DEF".contains(agent.getSeat().getLetter())) {
-				return 2;
+				if (!seat.isOccupied() && "C".contains(seat.getLetter())
+						&& "ABC".contains(agent.getSeat().getLetter())) {
+					return 1;
+				} else if (!seat.isOccupied() && "D".contains(seat.getLetter())
+						&& "DEF".contains(agent.getSeat().getLetter())) {
+					return 2;
+				}
 			}
+
 		}
-		
-}
 		return 0;
-		
+
 	}
 
 	/**
@@ -344,8 +349,6 @@ switch (seatAbrest) {
 		}
 		return false;
 	}
-	
-
 
 	/**
 	 * This method takes a cost map and adds a huge cost to the location and the
