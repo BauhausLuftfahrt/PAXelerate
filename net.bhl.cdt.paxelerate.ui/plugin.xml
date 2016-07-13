@@ -116,7 +116,7 @@
             name="Export Data">
       </command>
       <command
-            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.RunBatchSimulationMenuHandler"
+            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.RunBatchSimulationHandler"
             id="net.bhl.cdt.paxelerate.ui.runBatchSimulationMenu"
             name="Run Batch Simulation Menu">
       </command>

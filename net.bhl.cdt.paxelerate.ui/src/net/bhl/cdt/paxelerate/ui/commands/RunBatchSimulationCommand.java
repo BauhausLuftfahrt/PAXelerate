@@ -1,47 +1,66 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
- * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
- * and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
- ***************************************************************************************/
-
+* <copyright> Copyright (c) 2014-2016 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+* materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
+* and is available at http://www.eclipse.org/legal/epl-v10.html </copyright>
+***************************************************************************************/
 package net.bhl.cdt.paxelerate.ui.commands;
 
-import org.eclipse.swt.widgets.Display;
+import java.io.IOException;
+import java.util.ArrayList;
 
 import net.bhl.cdt.commands.CDTCommand;
-import net.bhl.cdt.paxelerate.model.Cabin;
-import net.bhl.cdt.paxelerate.model.LayoutConcept;
-import net.bhl.cdt.paxelerate.model.SimulationProperties;
-import net.bhl.cdt.paxelerate.model.TravelClass;
+import net.bhl.cdt.paxelerate.ui.helper.DefineBatchSimulationInput;
+import net.bhl.cdt.paxelerate.ui.helper.ECPModelImporter;
+import net.bhl.cdt.paxelerate.ui.preferences.PAXeleratePreferencePage;
+import net.bhl.cdt.paxelerate.ui.helper.DefineBatchSimulationInput.HandLuggageCase;
+import net.bhl.cdt.paxelerate.util.input.CSVImport;
+import net.bhl.cdt.paxelerate.util.time.StopWatch;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
- * The Class RunBatchSimulationCommand.
+ * The Class RunBatchSimulationMenuCommand.
  *
  * @author michael.schmidt
- * @version 1.0
+ * @version 0.8
  * @since 0.7
  */
 
 public class RunBatchSimulationCommand extends CDTCommand {
 
-	/** The cabin. */
-	private Cabin cabin;
+	/** The stopwatch. */
+	private StopWatch stopwatch = new StopWatch();
 
-	/** The sim settings. */
-	private SimulationProperties simSettings;
+	/** The iteration completed. */
+	private int iterationCompleted;
+
+	/** The iteration failed. */
+	private int iterationFailed;
 
 	/**
-	 * This is the constructor method of the SimulateBoardingCommand.
-	 * 
-	 * @param cabin
-	 *            the cabin object
+	 * This is the constructor method of the RunBatchSimulationMenuCommand.
 	 */
-	public RunBatchSimulationCommand(final Cabin cabin) {
-		// this.cabin = EcoreUtil.copy(cabin);
-		// this.simSettings = this.cabin.getSimulationSettings();
-		this.cabin = cabin;
-		this.simSettings = cabin.getSimulationSettings();
+	public RunBatchSimulationCommand() {
+
+	}
+
+	/**
+	 * Import csv study.
+	 *
+	 * @return the ArrayList<ArrayList<String>>
+	 */
+	public ArrayList<ArrayList<String>> importCSVStudy() {
+		ArrayList<ArrayList<String>> data = null;
+		try {
+			CSVImport importer = new CSVImport(PAXeleratePreferencePage.DEFAULT_IMPORT_FILE_NAME,
+					PAXeleratePreferencePage.DEFAULT_IMPORT_PATH);
+			importer.openSpecificFile();
+			data = importer.readData();
+			importer.closeFile();
+			Log.add(this, "Study data import completed");
+		} catch (IOException e) {
+			Log.add(this, "Data import failed!");
+		}
+		return data;
 	}
 
 	/**
@@ -50,45 +69,38 @@ public class RunBatchSimulationCommand extends CDTCommand {
 	@Override
 	protected final void doRun() {
 
-		Log.add(this, "Initializing batch simulation ...");
+		Log.add(this, "Start batch simulation ...");
 
-		Display.getDefault().syncExec(new Runnable() {
-			@Override
-			public void run() {
-				new RefreshCabinViewCommand(cabin).doRun();
+		stopwatch.start();
+
+		ArrayList<ArrayList<String>> data = importCSVStudy();
+
+		int studyNumb = 1;
+		int iterationNumb = 1;
+
+		for (ArrayList<String> study : data) {
+			for (int simulationLoopIndex = 1; simulationLoopIndex <= (Integer
+					.parseInt(study.get(1))); simulationLoopIndex++) {
+				new ECPModelImporter(study.get(10)).doRun();
+				new DefineBatchSimulationInput(study).doRun();
+				new GeneratePassengersCommand().execute();
+				SimulateBoardingCommand simulation = new SimulateBoardingCommand(simulationLoopIndex);
+				simulation.execute();
+				if (simulation.getSimulationStatus()) {
+					iterationCompleted++;
+				} else {
+					iterationFailed++;
+				}
+				Log.add(this, "Iteration " + simulationLoopIndex + "/" + Integer.parseInt(study.get(1)) + " Study "
+						+ studyNumb + "/" + data.size());
+				iterationNumb++;
 			}
-		});
-
-		// 10 50 30 10
-		// 10 30 40 20
-		// 0 20 30 50
-
-		simSettings.setSimulationSpeedFactor(10);
-		simSettings.setNumberOfSimulationLoops(30);
-		simSettings.getLuggageProperties().setPercentageOfPassengersWithNoLuggage(10);
-		simSettings.getLuggageProperties().setPercentageOfPassengersWithSmallLuggage(50);
-		simSettings.getLuggageProperties().setPercentageOfPassengersWithMediumLuggage(30);
-		simSettings.getLuggageProperties().setPercentageOfPassengersWithBigLuggage(10);
-		simSettings.setLayoutConcept(LayoutConcept.SIDWAYS_FOLDABLE_SEAT);
-
-		Display.getDefault().syncExec(new Runnable() {
-			@Override
-			public void run() {
-				new RefreshCabinViewCommand(cabin).doRun();
-			}
-		});
-		// 70 - 126
-		// 90 - 162
-		for (TravelClass travelclass : cabin.getClasses()) {
-			travelclass.setPassengers(127);
+			studyNumb++;
 		}
+		stopwatch.stop();
+		Log.add(this, "... batch simulation completed: " + Math.round(stopwatch.getElapsedTimeHours() * 100) / 100
+				+ " h, " + iterationNumb + " iterations in " + data.size() + " studies.");
+		Log.add(this, "Iterations: " + iterationCompleted + " completed / " + iterationFailed + " failed");
 
-		for (int simulationLoopIndex = 1; simulationLoopIndex <= cabin.getSimulationSettings()
-				.getNumberOfSimulationLoops(); simulationLoopIndex++) {
-
-			new GeneratePassengersCommand(cabin).doRun();
-			new SimulateBoardingCommand(cabin).doRun();
-
-		}
 	}
 }
