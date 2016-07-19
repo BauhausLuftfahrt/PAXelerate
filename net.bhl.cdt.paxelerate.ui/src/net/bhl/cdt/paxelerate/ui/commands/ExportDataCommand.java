@@ -246,14 +246,13 @@ public class ExportDataCommand extends CDTCommand {
 		EList<TravelClass> tcList = cabin.getClasses();
 		EList<Door> doorList = cabin.getDoors();
 
-		/*exporter.addColumnElement("No Luggage");
-		exporter.addColumnElement("Small Luggage");
-		exporter.addColumnElement("Medium Luggage");
-		exporter.addColumnElement("Big Luggage");
-		exporter.addColumnElement("Load Factor");
-		exporter.addColumnElement("Active Door ID");
-		exporter.addColumnElement("Layout Concept");
-		exporter.addNewLine();*/
+		/*
+		 * exporter.addColumnElement("No Luggage"); exporter.addColumnElement(
+		 * "Small Luggage"); exporter.addColumnElement("Medium Luggage");
+		 * exporter.addColumnElement("Big Luggage"); exporter.addColumnElement(
+		 * "Load Factor"); exporter.addColumnElement("Active Door ID");
+		 * exporter.addColumnElement("Layout Concept"); exporter.addNewLine();
+		 */
 		exporter.addColumnElement(luggageSettings.getPercentageOfPassengersWithNoLuggage());
 		exporter.addColumnElement(luggageSettings.getPercentageOfPassengersWithSmallLuggage());
 		exporter.addColumnElement(luggageSettings.getPercentageOfPassengersWithMediumLuggage());
@@ -267,7 +266,9 @@ public class ExportDataCommand extends CDTCommand {
 			}
 		}
 		exporter.addColumnElement(cabin.getSimulationSettings().getLayoutConcept().getLiteral());
-		//exporter.addNewLine();
+		exporter.addColumnElement(
+				cabin.getSimulationSettings().getPassengerProperties().getPassengerWalkingSpeedFactor());
+		// exporter.addNewLine();
 
 		return true;
 	}
@@ -283,15 +284,16 @@ public class ExportDataCommand extends CDTCommand {
 	 */
 	public final boolean getResultData() throws IOException, FileNotFoundException {
 
-		/*exporter.addColumnElement("Loop ID");
-		exporter.addColumnElement("Passengers");
-		exporter.addColumnElement("Time");
-		exporter.addColumnElement("Skipped Way Making");
-		exporter.addColumnElement("Completed Way Making");
-		exporter.addColumnElement("Average number of waiting");
-		exporter.addColumnElement("Average PAX waiting time");
-		exporter.addColumnElement("Average distance walked");
-		exporter.addNewLine();*/
+		/*
+		 * exporter.addColumnElement("Loop ID");
+		 * exporter.addColumnElement("Passengers");
+		 * exporter.addColumnElement("Time"); exporter.addColumnElement(
+		 * "Skipped Way Making"); exporter.addColumnElement(
+		 * "Completed Way Making"); exporter.addColumnElement(
+		 * "Average number of waiting"); exporter.addColumnElement(
+		 * "Average PAX waiting time"); exporter.addColumnElement(
+		 * "Average distance walked"); exporter.addNewLine();
+		 */
 
 		for (SimulationResult result : cabin.getSimulationSettings().getResults()) {
 			exporter.addColumnElement(result.getId());

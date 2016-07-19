@@ -171,6 +171,9 @@ public class DefineBatchSimulationInput extends CDTCommand {
 					if (!StringHelper.empty(studyParameters.get(11))) {
 						simSettings.setPassengersBoardingPerMinute(Integer.parseInt(studyParameters.get(11)));
 					}
+					if (!StringHelper.empty(studyParameters.get(12))) {
+						simSettings.getPassengerProperties().setPassengerWalkingSpeedFactor(Double.parseDouble(studyParameters.get(12)));
+					}
 
 					if (!StringHelper.empty(studyParameters.get(9))) {
 						switch (studyParameters.get(9)) {
