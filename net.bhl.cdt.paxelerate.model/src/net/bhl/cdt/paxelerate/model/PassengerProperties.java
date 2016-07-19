@@ -37,6 +37,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceProcessTimeFoldingSeatMean <em>Seat Interference Process Time Folding Seat Mean</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceProcessTimeFoldingSeatDeviation <em>Seat Interference Process Time Folding Seat Deviation</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassivePassengerWaitingTimeAfterCollision <em>Passive Passenger Waiting Time After Collision</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerWalkingSpeedFactor <em>Passenger Walking Speed Factor</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassengerProperties()
@@ -691,5 +692,32 @@ public interface PassengerProperties extends EObject {
 	 * @generated
 	 */
 	void setPassivePassengerWaitingTimeAfterCollision(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Passenger Walking Speed Factor</b></em>' attribute.
+	 * The default value is <code>"1.0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Passenger Walking Speed Factor</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Passenger Walking Speed Factor</em>' attribute.
+	 * @see #setPassengerWalkingSpeedFactor(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassengerProperties_PassengerWalkingSpeedFactor()
+	 * @model default="1.0"
+	 * @generated
+	 */
+	double getPassengerWalkingSpeedFactor();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerWalkingSpeedFactor <em>Passenger Walking Speed Factor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Passenger Walking Speed Factor</em>' attribute.
+	 * @see #getPassengerWalkingSpeedFactor()
+	 * @generated
+	 */
+	void setPassengerWalkingSpeedFactor(double value);
 
 } // PassengerProperties

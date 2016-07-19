@@ -238,20 +238,6 @@
                </iterate>
             </visibleWhen>
          </command>
-         <command
-               commandId="net.bhl.cdt.paxelerate.ui.exportData"
-               icon="images/icons/export.png"
-               label="Export Data..."
-               style="push">
-            <visibleWhen
-                  checkEnabled="false">
-               <iterate>
-                  <instanceof
-                        value="net.bhl.cdt.paxelerate.model.Cabin">
-                  </instanceof>
-               </iterate>
-            </visibleWhen>
-         </command>
          <separator
                name="net.bhl.cdt.paxelerate.ui.separator2"
                visible="true">

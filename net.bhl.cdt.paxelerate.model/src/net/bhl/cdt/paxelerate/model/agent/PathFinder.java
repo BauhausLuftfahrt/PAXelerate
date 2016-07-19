@@ -68,7 +68,7 @@ public class PathFinder {
 			mutableCostMap = AgentFunctions.updateCostmap(agent);
 		}
 
-		mutableCostMap.printMapToConsole();
+		//mutableCostMap.printMapToConsole();
 
 		/* run the path finding algorithm */
 		Core astar = new Core(SimulationHandler.getAreamapHandler(),

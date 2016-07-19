@@ -85,6 +85,7 @@ public class PassengerPropertiesItemProvider
 			addSeatInterferenceProcessTimeFoldingSeatMeanPropertyDescriptor(object);
 			addSeatInterferenceProcessTimeFoldingSeatDeviationPropertyDescriptor(object);
 			addPassivePassengerWaitingTimeAfterCollisionPropertyDescriptor(object);
+			addPassengerWalkingSpeedFactorPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -618,6 +619,28 @@ public class PassengerPropertiesItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Passenger Walking Speed Factor feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPassengerWalkingSpeedFactorPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PassengerProperties_passengerWalkingSpeedFactor_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PassengerProperties_passengerWalkingSpeedFactor_feature", "_UI_PassengerProperties_type"),
+				 CabinPackage.Literals.PASSENGER_PROPERTIES__PASSENGER_WALKING_SPEED_FACTOR,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns PassengerProperties.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -680,6 +703,7 @@ public class PassengerPropertiesItemProvider
 			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN:
 			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION:
 			case CabinPackage.PASSENGER_PROPERTIES__PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION:
+			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_WALKING_SPEED_FACTOR:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

@@ -39,6 +39,8 @@ public class PassengerPropertyGenerator {
 	/** The luggage settings. */
 	private LuggageProperties luggageSettings;
 
+	private double walkingSpeedFactor;
+
 	/**
 	 * This array contains two values, first the age of the passenger and second
 	 * the corresponding speed.
@@ -77,11 +79,14 @@ public class PassengerPropertyGenerator {
 		luggageSettings = ModelHelper.getParent(Cabin.class, pax)
 				.getSimulationSettings().getLuggageProperties();
 
+		walkingSpeedFactor = paxSettings.getPassengerWalkingSpeedFactor();
+
 		/* At first. decide for the sex. */
 		passenger.setSex(switchRandomSex(paxSettings.getPercentageOfWomen()));
 
 		/* Define the mood of the passenger **/
-		passenger.setPassengerMood(switchRandomMood(paxSettings.getPassengerAggressiveMoodShare()));
+		passenger.setPassengerMood(switchRandomMood(
+				paxSettings.getPassengerAggressiveMoodShare()));
 
 		/* Define the age according to age distribution **/
 		passenger.setAge(adaptAge());
@@ -149,7 +154,9 @@ public class PassengerPropertyGenerator {
 		if (index <= 0) {
 			index = 1;
 		}
-		return speedmodel[index - 1][1];
+		return Math
+				.round((speedmodel[index - 1][1] * walkingSpeedFactor) * 100.0)
+				/ 100.0;
 	}
 
 	/**
@@ -309,16 +316,18 @@ public class PassengerPropertyGenerator {
 		return Sex.MALE;
 
 	}
-	
+
 	/**
 	 * This method switches the mood of the passengers according to the
 	 * probability of aggressive agents.
 	 *
-	 * @param percentageOfAggressiveAgents the percentage of aggressive agents
+	 * @param percentageOfAggressiveAgents
+	 *            the percentage of aggressive agents
 	 * @return returns the sex.
 	 */
 
-	private PassengerMood switchRandomMood(double percentageOfAggressiveAgents) {
+	private PassengerMood switchRandomMood(
+			double percentageOfAggressiveAgents) {
 		if (RandomHelper.randomValue(0, 100) < percentageOfAggressiveAgents) {
 			return PassengerMood.AGGRESSIVE;
 		}
