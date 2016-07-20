@@ -77,6 +77,7 @@ public class MoveObject {
 		this.lavatorylist = lavatorylist;
 		this.curtainlist = curtainlist;
 		this.cabin = cabin;
+		this.movementVector = movementVector;
 	}
 
 	/**

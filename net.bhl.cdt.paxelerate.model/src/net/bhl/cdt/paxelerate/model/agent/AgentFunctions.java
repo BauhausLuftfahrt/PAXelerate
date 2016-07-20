@@ -79,53 +79,53 @@ public class AgentFunctions {
 			// TODO: temporary mods
 			/* AC - DF */
 			if (checkSeatLocation(checkSeat, mySeat, "AB")
-					| checkSeatLocation(checkSeat, mySeat, "CD")) {
+					|| checkSeatLocation(checkSeat, mySeat, "CD")) {
 				return true;
 			}
 			break;
 		case 5:
 			/* AC - DEF */
 			if (checkSeatLocation(checkSeat, mySeat, "AC")
-					| checkSeatLocation(checkSeat, mySeat, "DEF")) {
+					|| checkSeatLocation(checkSeat, mySeat, "DEF")) {
 				return true;
 			}
 			break;
 		case 6:
 			/* ABC - DEF */
 			if (checkSeatLocation(checkSeat, mySeat, "ABC")
-					| checkSeatLocation(checkSeat, mySeat, "DEF")) {
+					|| checkSeatLocation(checkSeat, mySeat, "DEF")) {
 				return true;
 			}
 			break;
 		case 7:
 			/* AB - DEF - JK */
 			if (checkSeatLocation(checkSeat, mySeat, "AB")
-					| checkSeatLocation(checkSeat, mySeat, "DEF")
-					| checkSeatLocation(checkSeat, mySeat, "JK")) {
+					|| checkSeatLocation(checkSeat, mySeat, "DEF")
+					|| checkSeatLocation(checkSeat, mySeat, "JK")) {
 				return true;
 			}
 			break;
 		case 8:
 			/* AB - DEFG - JK */
 			if (checkSeatLocation(checkSeat, mySeat, "AB")
-					| checkSeatLocation(checkSeat, mySeat, "DEFG")
-					| checkSeatLocation(checkSeat, mySeat, "JK")) {
+					|| checkSeatLocation(checkSeat, mySeat, "DEFG")
+					|| checkSeatLocation(checkSeat, mySeat, "JK")) {
 				return true;
 			}
 			break;
 		case 9:
 			/* ABC - DEF - HJK */
 			if (checkSeatLocation(checkSeat, mySeat, "ABC")
-					| checkSeatLocation(checkSeat, mySeat, "DEF")
-					| checkSeatLocation(checkSeat, mySeat, "HJK")) {
+					|| checkSeatLocation(checkSeat, mySeat, "DEF")
+					|| checkSeatLocation(checkSeat, mySeat, "HJK")) {
 				return true;
 			}
 			break;
 		case 10:
 			/* ABC - DEFG - HJK */
 			if (checkSeatLocation(checkSeat, mySeat, "ABC")
-					| checkSeatLocation(checkSeat, mySeat, "DEFG")
-					| checkSeatLocation(checkSeat, mySeat, "HJK")) {
+					|| checkSeatLocation(checkSeat, mySeat, "DEFG")
+					|| checkSeatLocation(checkSeat, mySeat, "HJK")) {
 				return true;
 			}
 			break;

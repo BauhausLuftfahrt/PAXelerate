@@ -28,7 +28,7 @@ public class MapExportHelper {
 	private String fileName = "export";
 
 	/** The areamap exporter. */
-	private static ExcelExport areamapExporter;
+	private ExcelExport areamapExporter;
 
 	/**
 	 * This method saves the whole cost map in a text file to the documents

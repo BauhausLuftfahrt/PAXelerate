@@ -43,8 +43,6 @@ public class Step extends AgentActionType {
 		agent.occupyOneStepAhead();
 
 		if (agent.getCurrentPosition().getX() != 0
-				&& agent.getCurrentPosition().getY() != 0
-				&& agent.getCurrentPosition().getX() != 0
 				&& agent.getCurrentPosition().getY() != 0) {
 
 			/* update the walked distance */

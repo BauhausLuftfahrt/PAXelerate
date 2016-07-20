@@ -110,9 +110,11 @@ public class CSVImport {
 		File path = new File(filePath);
 		if (path.exists()) {
 			File[] files = path.listFiles();
-			fileReader = new BufferedReader(new FileReader(files[0]));
-			// dev mode
-			files[0].delete();
+			if (files != null) {
+				fileReader = new BufferedReader(new FileReader(files[0]));
+				files[0].delete();
+			}
+			
 		}
 	}
 

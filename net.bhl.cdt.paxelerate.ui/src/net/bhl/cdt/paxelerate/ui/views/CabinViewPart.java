@@ -9,6 +9,8 @@ import java.io.File;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
@@ -64,7 +66,7 @@ public class CabinViewPart extends ViewPart {
 	private Composite parent;
 
 	/** The initial boot. */
-	private static boolean initialBoot = true;
+	private boolean initialBoot = true;
 
 	/********************* graphical settings. *************************/
 	private static final int OFFSET_OF_DOOR = 0, CABIN_WIDTH_IN_PIXELS = 123, DOOR_DEPTH = 2, ICON_SIZE_IN_PIXELS = 15;
@@ -76,7 +78,7 @@ public class CabinViewPart extends ViewPart {
 	private static final boolean MATCH_PASSENGER_COLORS_TO_MOOD = true;
 
 	/** The image y. */
-	private static int xZero = 139, yZero = 75, imageX = 400, imageY = 1000;
+	private int xZero = 139, yZero = 75, imageX = 400, imageY = 1000;
 
 	/** ****************************************************************. */
 
@@ -459,14 +461,14 @@ public class CabinViewPart extends ViewPart {
 			// automatic redraws when changing the EMF model in the explorer.
 			// Should be reactivated soon!
 
-			// cabinAdapter = new AdapterImpl() {
-			// @Override
-			// public void notifyChanged(Notification notification) {
-			// if (!notification.isTouch()) {
-			// doTheDraw();
-			// }
-			// }
-			// };
+			/*cabinAdapter = new AdapterImpl() {
+				@Override
+				public void notifyChanged(Notification notification) {
+					if (!notification.isTouch()) {
+						doTheDraw();
+					}
+				}
+			};*/
 
 			img = createImage();
 			syncViewer();
@@ -494,7 +496,6 @@ public class CabinViewPart extends ViewPart {
 	 */
 	public final void unsyncViewer() {
 		if ((cabinAdapter != null) && (cabin.eAdapters().contains(cabinAdapter))) {
-
 			cabin.eAdapters().remove(cabinAdapter);
 		}
 	}

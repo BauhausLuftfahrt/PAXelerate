@@ -24,41 +24,6 @@ public class Activator extends AbstractUIPlugin {
 	// The plug-in ID
 	public static final String PLUGIN_ID = "net.bhl.cdt.paxelerate.ui"; //$NON-NLS-1$
 
-	/** The cabin console. */
-	private MessageConsole cabinConsole;
-
-	/** The cabin message stream. */
-	private MessageConsoleStream cabinMessageStream;
-
-	/** The Constant PROJECT_NAME_PREFERENCE. */
-	// The identifiers for the preferences
-	public static final String PROJECT_NAME_PREFERENCE = "projectName";
-
-	/** The Constant XMI_FILE_PREFERENCE. */
-	public static final String XMI_FILE_PREFERENCE = "xmiFile";
-
-	/** The Constant RESULT_FILE_NAME_PREFERENCE. */
-	public static final String RESULT_FILE_NAME_PREFERENCE = "resultFile";
-
-	/** The Constant EXPORT_PATH_PREFERENCE. */
-	public static final String EXPORT_PATH_PREFERENCE = "exportPath";
-
-	/** The Constant DEFAULT_PROJECT_NAME. */
-	// The default values for the preferences
-	public static final String DEFAULT_PROJECT_NAME = "reference";
-
-	/** The Constant DEFAULT_XMI_FILE. */
-	public static final String DEFAULT_XMI_FILE = "Reference_Cabin_v2.xmi";
-
-	/** The Constant DEFAULT_XMI_FOLDER. */
-	public static final String DEFAULT_XMI_FOLDER = System.getProperty("user.home") + "/Documents/paxelerate/";
-
-	/** The Constant DEFAULT_RESULT_FILE_NAME. */
-	public static final String DEFAULT_RESULT_FILE_NAME = "results_0179";
-
-	/** The Constant DEFAULT_EXPORT_PATH. */
-	public static final String DEFAULT_EXPORT_PATH = System.getProperty("user.home") + "/Documents/paxelerate/";
-
 	/** The plugin. */
 	// The shared instance
 	private static Activator plugin;
@@ -98,39 +63,6 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	public static Activator getDefault() {
 		return plugin;
-	}
-
-	/**
-	 * Gets the message console stream.
-	 *
-	 * @return the message console stream
-	 */
-	public final MessageConsoleStream getMessageConsoleStream() {
-		return cabinMessageStream;
-	}
-
-	/**
-	 * Gets the message console.
-	 *
-	 * @return the message console
-	 */
-	public final MessageConsole getMessageConsole() {
-		return cabinConsole;
-	}
-
-	/**
-	 * Initializes a preference store with default preference values for this
-	 * plug-in.
-	 * 
-	 * @param store
-	 *            the preference store to fill
-	 */
-	protected void initializeDefaultPreferences(IPreferenceStore store) {
-		store.setDefault(PROJECT_NAME_PREFERENCE, DEFAULT_PROJECT_NAME);
-		store.setDefault(XMI_FILE_PREFERENCE, DEFAULT_XMI_FILE);
-		store.setDefault(RESULT_FILE_NAME_PREFERENCE, DEFAULT_RESULT_FILE_NAME);
-		store.setDefault(EXPORT_PATH_PREFERENCE, DEFAULT_EXPORT_PATH);
-
 	}
 
 }
