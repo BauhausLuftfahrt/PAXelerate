@@ -26,9 +26,10 @@ public class CloneObject {
 	private TravelClass travelClass;
 	private int numberOfRows;
 
-	public CloneObject(final TravelClass travelClass, int numberOfRows) {
+	public CloneObject(final TravelClass travelClass, int numberOfRows, Row row) {
 		this.travelClass = travelClass;
 		this.numberOfRows = numberOfRows;
+		this.row = row;
 	}
 
 	public void performCloneObject() {

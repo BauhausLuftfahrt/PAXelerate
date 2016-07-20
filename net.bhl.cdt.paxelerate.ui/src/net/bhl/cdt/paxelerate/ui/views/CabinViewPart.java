@@ -49,8 +49,8 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 /**
  * This class represents the cabin view. All graphics generation is done here.
  * 
- * @author marc.engelmann, raoul.rothfeld
- * @version 1.0
+ * @author marc.engelmann, michael.schmidt, raoul.rothfeld
+ * @version 0.8
  * @since 0.5
  */
 
@@ -69,7 +69,8 @@ public class CabinViewPart extends ViewPart {
 	private boolean initialBoot = true;
 
 	/********************* graphical settings. *************************/
-	private static final int OFFSET_OF_DOOR = 0, CABIN_WIDTH_IN_PIXELS = 123, DOOR_DEPTH = 2, ICON_SIZE_IN_PIXELS = 15;
+	private static final int OFFSET_OF_DOOR = 0, CABIN_WIDTH_IN_PIXELS = 123, CABIN_HEIGHT_IN_PIXELS = 843,
+			DOOR_DEPTH = 2, ICON_SIZE_IN_PIXELS = 15;
 
 	/** The Constant PAX_SIZE. */
 	private static final double PAX_SIZE = 0.5;
@@ -78,7 +79,7 @@ public class CabinViewPart extends ViewPart {
 	private static final boolean MATCH_PASSENGER_COLORS_TO_MOOD = true;
 
 	/** The image y. */
-	private int xZero = 139, yZero = 75, imageX = 400, imageY = 1000;
+	private int xZero = 139, yZero = 75, imageX = 1000, imageY = 400;
 
 	/** ****************************************************************. */
 
@@ -400,7 +401,7 @@ public class CabinViewPart extends ViewPart {
 	 * @return the image
 	 */
 	private Image tryAircraftSwitch() {
-		return resizeAC((int) (imageX * canvasHeight / imageY), (int) (imageY * canvasHeight / imageY));
+		return resizeAC((int) (imageY * canvasHeight / imageX), (int) (imageX * canvasHeight / imageX));
 	}
 
 	/**
@@ -416,9 +417,9 @@ public class CabinViewPart extends ViewPart {
 			xZero = 139;
 			yZero = 75;
 			canvasHeight = canvas.getBounds().height;
-			factor = (double) cabin.getYDimension() / (double) CABIN_WIDTH_IN_PIXELS / (canvasHeight / imageY);
-			xZero = (int) (xZero * (canvasHeight / imageY));
-			yZero = (int) (yZero * (canvasHeight / imageY));
+			factor = getImageScalingFactor();
+			xZero = (int) (xZero * (canvasHeight / imageX));
+			yZero = (int) (yZero * (canvasHeight / imageX));
 
 			/**
 			 * NOTE: if there is more than one subclass of the same type, only
@@ -461,14 +462,12 @@ public class CabinViewPart extends ViewPart {
 			// automatic redraws when changing the EMF model in the explorer.
 			// Should be reactivated soon!
 
-			/*cabinAdapter = new AdapterImpl() {
-				@Override
-				public void notifyChanged(Notification notification) {
-					if (!notification.isTouch()) {
-						doTheDraw();
-					}
-				}
-			};*/
+			/*
+			 * cabinAdapter = new AdapterImpl() {
+			 * 
+			 * @Override public void notifyChanged(Notification notification) {
+			 * if (!notification.isTouch()) { doTheDraw(); } } };
+			 */
 
 			img = createImage();
 			syncViewer();
@@ -508,7 +507,7 @@ public class CabinViewPart extends ViewPart {
 	 * @return returns the obstacle map as an image
 	 */
 	public final Image submitObstacleMap(final int[][] map) {
-		Image image = new Image(parent.getDisplay(), imageX, imageY);
+		Image image = new Image(parent.getDisplay(), imageY, imageX);
 		final int overLapOfRect = 2;
 		GC gc = new GC(image);
 
@@ -675,18 +674,18 @@ public class CabinViewPart extends ViewPart {
 					/*
 					 * always maintain the correct aspect ratio of the image
 					 */
-					float scale = canvas.getBounds().width / (float) imageX;
-					scaledX = (int) (imageX * scale);
-					scaledY = (int) (imageY * scale);
+					float scale = canvas.getBounds().width / (float) imageY;
+					scaledX = (int) (imageY * scale);
+					scaledY = (int) (imageX * scale);
 
 					/*
 					 * if the scaling causes the image to overflow the canvas,
 					 * it is scaled differently
 					 */
 					if (canvas.getBounds().height < scaledY) {
-						scale = canvas.getBounds().height / (float) imageY;
-						scaledX = (int) (imageX * scale);
-						scaledY = (int) (imageY * scale);
+						scale = canvas.getBounds().height / (float) imageX;
+						scaledX = (int) (imageY * scale);
+						scaledY = (int) (imageX * scale);
 					}
 
 					if (!initialBoot) {
@@ -791,6 +790,25 @@ public class CabinViewPart extends ViewPart {
 			return 0;
 		}
 
+	}
+
+	/**
+	 * Gets the image scaling factor.
+	 *
+	 * @return the image scaling factor
+	 */
+	private double getImageScalingFactor() {
+
+		double imageScalingWidth = (double) cabin.getYDimension() / (double) CABIN_WIDTH_IN_PIXELS
+				/ (canvasHeight / imageX);
+		double imageScalingHeight = (double) cabin.getXDimension() / (double) CABIN_HEIGHT_IN_PIXELS
+				/ (canvasHeight / imageX);
+
+		if (imageScalingWidth < imageScalingHeight) {
+			return imageScalingHeight;
+		} else {
+			return imageScalingWidth;
+		}
 	}
 
 	/** * Passing the focus request to the viewer's control. */

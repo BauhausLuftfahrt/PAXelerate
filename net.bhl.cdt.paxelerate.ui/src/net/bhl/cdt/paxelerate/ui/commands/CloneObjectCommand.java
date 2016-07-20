@@ -57,7 +57,7 @@ public class CloneObjectCommand extends CDTCommand {
 		TravelClass travelclass = ModelHelper.getParent(TravelClass.class, row);
 		Cabin cabin = ModelHelper.getParent(Cabin.class, row);
 		
-		new CloneObject(travelclass, numberOfRows).performCloneObject();
+		new CloneObject(travelclass, numberOfRows, row).performCloneObject();
 
 		new RefreshCabinViewCommand(cabin).execute();
 
