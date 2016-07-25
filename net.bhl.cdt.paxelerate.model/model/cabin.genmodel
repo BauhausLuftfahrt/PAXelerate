@@ -267,6 +267,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//PassengerProperties/seatInterferenceProcessTimeFoldingSeatDeviation"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//PassengerProperties/passivePassengerWaitingTimeAfterCollision"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//PassengerProperties/passengerWalkingSpeedFactor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//PassengerProperties/seatInterferenceMultiPassengerFactor"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

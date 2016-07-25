@@ -243,6 +243,10 @@ public class Agent extends Subject implements Runnable {
 			return null;
 		}
 	}
+	
+	public int getNumberOfBlockingPax() {
+		return otherPassengersInRowBlockingMe.size();
+	}
 
 	/**
 	 * Reset agent.
@@ -987,50 +991,6 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	/**
-	 * Waymaking skipped.
-	 */
-	private void waymakingSkipped() {
-
-		if (developerMode) {
-			System.out.println("waymaking skipped. Delay simulated!");
-		}
-
-		long sleepTime = 0;
-		try {
-			if (waitingAtAisleSeat) {
-				sleepTime = AStarHelper.time(GaussianRandom.gaussianRandom(
-						simSettings.getPassengerProperties()
-								.getSeatInterferenceProcessTimeFoldingSeatMean(),
-						GaussOptions.PERCENT_95,
-						simSettings.getPassengerProperties()
-								.getSeatInterferenceProcessTimeFoldingSeatDeviation()));
-				Thread.sleep(sleepTime);
-				increaseTotalWaitingTime(sleepTime);
-				wayMakingFoldableSeatSkipped++;
-			} else {
-				sleepTime = AStarHelper.time(GaussianRandom.gaussianRandom(
-						simSettings.getPassengerProperties()
-								.getSeatInterferenceProcessTimeMean(),
-						GaussOptions.PERCENT_95,
-						simSettings.getPassengerProperties()
-								.getSeatInterferenceProcessTimeDeviation()));
-				Thread.sleep(sleepTime);
-				increaseTotalWaitingTime(sleepTime);
-				wayMakingSkipped++;
-			}
-
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-			System.out.println("InterruptedException @ thread "
-					+ Thread.currentThread().getName());
-			Thread.currentThread().interrupt();
-		}
-
-		waitingCompleted = true;
-
-	}
-
-	/**
 	 * This method starts the agent.
 	 */
 	public void start() {
@@ -1223,11 +1183,16 @@ public class Agent extends Subject implements Runnable {
 									&& "DEF".contains(
 											passenger.getSeat().getLetter()))) {
 						waitingAtAisleSeat = true;
-						waymakingSkipped();
+						
+						AgentActionType actionType = new WaitForClearing(this,
+								scale, simSettings, passenger);
+						new AgentAction(actionType).perform();
 
 					} else {
 
-						waymakingSkipped();
+						AgentActionType actionType = new WaitForClearing(this,
+								scale, simSettings, passenger);
+						new AgentAction(actionType).perform();
 					}
 
 				} else if (!waitingCompleted && waitingForClearingOfRow()) {

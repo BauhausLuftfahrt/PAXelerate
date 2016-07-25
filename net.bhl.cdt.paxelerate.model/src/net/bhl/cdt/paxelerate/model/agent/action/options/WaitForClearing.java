@@ -19,7 +19,7 @@ import net.bhl.cdt.paxelerate.util.math.GaussianRandom;
 /**
  * 
  * @author marc.engelmann, michael.schmidt
- * @version 1.0
+ * @version 0.8
  * @since 0.8
  *
  */
@@ -27,12 +27,15 @@ public class WaitForClearing extends AgentActionType {
 
 	private SimulationProperties simSettings;
 	private Passenger myself;
+	private double multiPaxFactor;
 
 	public WaitForClearing(Agent agent, int scale,
 			SimulationProperties simSettings, Passenger myself) {
 		super(agent, scale);
 		this.simSettings = simSettings;
 		this.myself = myself;
+		this.multiPaxFactor = simSettings.getPassengerProperties()
+				.getSeatInterferenceMultiPassengerFactor();
 	}
 
 	@SuppressWarnings("static-access")
@@ -43,9 +46,6 @@ public class WaitForClearing extends AgentActionType {
 				.getLuggageModelOption() == LuggageModelOption.SIMPLE_MODEL) {
 
 			agent.setCurrentState(State.WAITING_FOR_ROW_CLEARING);
-
-			// TODO: only one passenger is detected, even if there are 2
-			// already in the row!
 
 			while (agent.waymakingAllowed() == false) {
 				agent.increaseTotalWaitingTime(
@@ -58,19 +58,20 @@ public class WaitForClearing extends AgentActionType {
 				}
 			}
 
-			/* way making procedure is skipped */
-			// if (anyoneNearMe()) {
 			if (!agent.getWaitingCompleted()) {
 				if (simSettings.isDeveloperMode()) {
-					System.out.println("waymaking skipped. Delay simulated!");
+					System.out.println("Seat interference with " + multiPaxFactor + " passengers");
 				}
 
-				long sleepTime = AStarHelper.time(GaussianRandom.gaussianRandom(
-						simSettings.getPassengerProperties()
-								.getSeatInterferenceProcessTimeMean(),
-						GaussOptions.PERCENT_95,
-						simSettings.getPassengerProperties()
-								.getSeatInterferenceProcessTimeDeviation()));
+				long sleepTime = AStarHelper
+						.time((GaussianRandom.gaussianRandom(
+								simSettings.getPassengerProperties()
+										.getSeatInterferenceProcessTimeMean(),
+								GaussOptions.PERCENT_95,
+								simSettings.getPassengerProperties()
+										.getSeatInterferenceProcessTimeDeviation()))
+								* agent.getNumberOfBlockingPax()
+								* multiPaxFactor);
 				agent.increaseTotalWaitingTime(sleepTime);
 				try {
 					agent.getThread().sleep(sleepTime);
@@ -79,11 +80,10 @@ public class WaitForClearing extends AgentActionType {
 				}
 				agent.raiseNumberOfSkippedWaymakings();
 				agent.setWaitingCompleted(true);
-				// continue;
 			}
 
 		} else if (simSettings
-		.getLuggageModelOption() == LuggageModelOption.ADVANCED_MODEL){
+				.getLuggageModelOption() == LuggageModelOption.ADVANCED_MODEL) {
 
 			if (!agent.getWaitingCompleted()) {
 
@@ -92,16 +92,18 @@ public class WaitForClearing extends AgentActionType {
 				}
 
 				while (!agent.getOtherPassengerStoodUp()) {
-					agent.increaseTotalWaitingTime(simSettings.getThreadSleepTimeDefault());
+					agent.increaseTotalWaitingTime(
+							simSettings.getThreadSleepTimeDefault());
 					try {
 						Thread.sleep(simSettings.getThreadSleepTimeDefault());
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
 				}
-				
-				long sleepTime = AStarHelper.time(simSettings.getPassengerProperties()
-						.getSeatInterferenceProcessTimeDeviation());
+
+				long sleepTime = AStarHelper
+						.time(simSettings.getPassengerProperties()
+								.getSeatInterferenceProcessTimeDeviation());
 				agent.increaseTotalWaitingTime(sleepTime);
 				try {
 					agent.getThread().sleep(sleepTime);

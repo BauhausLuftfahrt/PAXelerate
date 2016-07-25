@@ -22,7 +22,7 @@ import net.bhl.cdt.paxelerate.util.math.Vector2D;
  * The Class AgentFunctions.
  *
  * @author marc.engelmann, michael.schmidt
- * @version 1.1
+ * @version 0.8
  * @since 0.5
  */
 public class AgentFunctions {
@@ -70,47 +70,134 @@ public class AgentFunctions {
 	private static boolean sameSideOfAisle(Seat checkSeat, Seat mySeat) {
 
 		int seatAbrest = checkSeatAbrest(mySeat);
+		int rowStructure = checkRowStructure(mySeat);
 
 		switch (seatAbrest) {
 
 		default:
 			return false;
 		case 4:
-			// TODO: temporary mods
-			/* AC - DF */
-			if (checkSeatLocation(checkSeat, mySeat, "AB")
-					|| checkSeatLocation(checkSeat, mySeat, "CD")) {
-				return true;
+			switch (rowStructure) {
+			case 1:
+				if (checkSeatLocation(checkSeat, mySeat, "A")
+						|| checkSeatLocation(checkSeat, mySeat, "BCD")) {
+					return true;
+				}
+				break;
+			case 2:
+				if (checkSeatLocation(checkSeat, mySeat, "AB")
+						|| checkSeatLocation(checkSeat, mySeat, "CD")) {
+					return true;
+				}
+				break;
+			case 3:
+				if (checkSeatLocation(checkSeat, mySeat, "ABC")
+						|| checkSeatLocation(checkSeat, mySeat, "D")) {
+					return true;
+				}
+				break;
+			/*
+			 * AC - DF if (checkSeatLocation(checkSeat, mySeat, "AC") ||
+			 * checkSeatLocation(checkSeat, mySeat, "DE")) { return true; }
+			 */
 			}
 			break;
 		case 5:
-			/* AC - DEF */
-			if (checkSeatLocation(checkSeat, mySeat, "AC")
-					|| checkSeatLocation(checkSeat, mySeat, "DEF")) {
-				return true;
+			/*
+			 * AC - DEF if (checkSeatLocation(checkSeat, mySeat, "AC") ||
+			 * checkSeatLocation(checkSeat, mySeat, "DEF")) { return true; }
+			 */
+			switch (rowStructure) {
+			case 1:
+				if (checkSeatLocation(checkSeat, mySeat, "A")
+						|| checkSeatLocation(checkSeat, mySeat, "BCDE")) {
+					return true;
+				}
+				break;
+			case 2:
+				if (checkSeatLocation(checkSeat, mySeat, "AB")
+						|| checkSeatLocation(checkSeat, mySeat, "CDE")) {
+					return true;
+				}
+				break;
+			case 3:
+				if (checkSeatLocation(checkSeat, mySeat, "ABC")
+						|| checkSeatLocation(checkSeat, mySeat, "DE")) {
+					return true;
+				}
+				break;
+			case 4:
+				if (checkSeatLocation(checkSeat, mySeat, "ABCD")
+						|| checkSeatLocation(checkSeat, mySeat, "E")) {
+					return true;
+				}
+				break;
 			}
 			break;
 		case 6:
-			/* ABC - DEF */
-			if (checkSeatLocation(checkSeat, mySeat, "ABC")
-					|| checkSeatLocation(checkSeat, mySeat, "DEF")) {
-				return true;
+			switch (rowStructure) {
+			case 2:
+				if (checkSeatLocation(checkSeat, mySeat, "AB")
+						|| checkSeatLocation(checkSeat, mySeat, "CDEF")) {
+					return true;
+				}
+				break;
+			case 3:
+				/* ABC - DEF */
+				if (checkSeatLocation(checkSeat, mySeat, "ABC")
+						|| checkSeatLocation(checkSeat, mySeat, "DEF")) {
+					return true;
+				}
+				break;
+			case 4:
+				if (checkSeatLocation(checkSeat, mySeat, "ABCD")
+						|| checkSeatLocation(checkSeat, mySeat, "EF")) {
+					return true;
+				}
+				break;
 			}
 			break;
 		case 7:
-			/* AB - DEF - JK */
-			if (checkSeatLocation(checkSeat, mySeat, "AB")
-					|| checkSeatLocation(checkSeat, mySeat, "DEF")
-					|| checkSeatLocation(checkSeat, mySeat, "JK")) {
-				return true;
+			switch (rowStructure) {
+			case 2:
+				/* AB - DEF - JK */
+				if (checkSeatLocation(checkSeat, mySeat, "AB")
+						|| checkSeatLocation(checkSeat, mySeat, "DEF")
+						|| checkSeatLocation(checkSeat, mySeat, "JK")) {
+					return true;
+				}
+				break;
+			case 3:
+				if (checkSeatLocation(checkSeat, mySeat, "ABC")
+						|| checkSeatLocation(checkSeat, mySeat, "DEFG")) {
+					return true;
+				}
+				break;
+			case 4:
+				if (checkSeatLocation(checkSeat, mySeat, "ABCD")
+						|| checkSeatLocation(checkSeat, mySeat, "EFG")) {
+					return true;
+				}
+				break;
 			}
 			break;
 		case 8:
-			/* AB - DEFG - JK */
-			if (checkSeatLocation(checkSeat, mySeat, "AB")
-					|| checkSeatLocation(checkSeat, mySeat, "DEFG")
-					|| checkSeatLocation(checkSeat, mySeat, "JK")) {
-				return true;
+			switch (rowStructure) {
+			case 2:
+				/* AB - DEFG - JK */
+				if (checkSeatLocation(checkSeat, mySeat, "AB")
+						|| checkSeatLocation(checkSeat, mySeat, "DEFG")
+						|| checkSeatLocation(checkSeat, mySeat, "JK")) {
+					return true;
+				}
+				break;
+
+			case 4:
+				if (checkSeatLocation(checkSeat, mySeat, "ABCD")
+						|| checkSeatLocation(checkSeat, mySeat, "EFGH")) {
+					return true;
+				}
+				break;
 			}
 			break;
 		case 9:
@@ -143,6 +230,20 @@ public class AgentFunctions {
 	 */
 	private static int checkSeatAbrest(Seat seat) {
 		return ModelHelper.getParent(Row.class, seat).getSeats().size();
+	}
+
+	/**
+	 * Check row structure.
+	 *
+	 * @param seat
+	 *            the seat
+	 * @return the string[]
+	 */
+	private static int checkRowStructure(Seat seat) {
+		String rowString = ModelHelper.getParent(Row.class, seat).getSeats()
+				.get(0).getTravelClass().getRowStructure();
+		String[] rowParts = rowString.split("-");
+		return Integer.parseInt(rowParts[0]);
 	}
 
 	/**
@@ -205,7 +306,7 @@ public class AgentFunctions {
 	public static int determineClosestAisle(Seat mySeat) {
 
 		int seatAbrest = checkSeatAbrest(mySeat);
-
+		int rowStructure = checkRowStructure(mySeat);
 		int middleOfAisleY = 0;
 
 		switch (seatAbrest) {
@@ -214,15 +315,55 @@ public class AgentFunctions {
 			break;
 
 		case 4:
-		case 6:
-			middleOfAisleY = (int) (ModelHelper.getParent(Cabin.class, mySeat)
-					.getYDimension() / 2.0);
+			switch (rowStructure) {
+			case 2:
+				middleOfAisleY = (int) (ModelHelper
+						.getParent(Cabin.class, mySeat).getYDimension() / 2.0);
+				break;
+			case 1:
+			case 3:
+				middleOfAisleY = mySeat.getYDimension() * rowStructure;
+				break;
+			}
 			break;
 		case 5:
-		case 7:
-			/* AB - DEF - JK */
+			switch (rowStructure) {
+			case 1:
+			case 2:
+			case 3:
+			case 4:
+				middleOfAisleY = mySeat.getYDimension() * rowStructure;
+				break;
+			}
 			break;
+
+		case 6:
+			switch (rowStructure) {
+			case 2:
+			case 4:
+				middleOfAisleY = mySeat.getYDimension() * rowStructure;
+				break;
+			case 3:
+				middleOfAisleY = (int) (ModelHelper
+						.getParent(Cabin.class, mySeat).getYDimension() / 2.0);
+				break;
+			}
+			break;
+		case 7:
+			switch (rowStructure) {
+			case 3:
+			case 4:
+				middleOfAisleY = mySeat.getYDimension() * rowStructure;
+				break;
+			}
+			break;
+		/* AB - DEF - JK */
 		case 8:
+			switch (rowStructure) {
+			case 4:
+				middleOfAisleY = mySeat.getYDimension() * rowStructure;
+				break;
+			}
 			/* AB - DEFG - JK */
 			break;
 		case 9:

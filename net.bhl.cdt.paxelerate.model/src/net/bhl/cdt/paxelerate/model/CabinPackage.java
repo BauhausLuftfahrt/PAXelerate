@@ -2302,13 +2302,22 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER_PROPERTIES__PASSENGER_WALKING_SPEED_FACTOR = 24;
 
 	/**
+	 * The feature id for the '<em><b>Seat Interference Multi Passenger Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__SEAT_INTERFERENCE_MULTI_PASSENGER_FACTOR = 25;
+
+	/**
 	 * The number of structural features of the '<em>Passenger Properties</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES_FEATURE_COUNT = 25;
+	int PASSENGER_PROPERTIES_FEATURE_COUNT = 26;
 
 	/**
 	 * The number of operations of the '<em>Passenger Properties</em>' class.
@@ -4227,6 +4236,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getPassengerProperties_PassengerWalkingSpeedFactor();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceMultiPassengerFactor <em>Seat Interference Multi Passenger Factor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Seat Interference Multi Passenger Factor</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceMultiPassengerFactor()
+	 * @see #getPassengerProperties()
+	 * @generated
+	 */
+	EAttribute getPassengerProperties_SeatInterferenceMultiPassengerFactor();
+
+	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.PhysicalObject <em>Physical Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5636,6 +5656,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PASSENGER_PROPERTIES__PASSENGER_WALKING_SPEED_FACTOR = eINSTANCE.getPassengerProperties_PassengerWalkingSpeedFactor();
+		/**
+		 * The meta object literal for the '<em><b>Seat Interference Multi Passenger Factor</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_PROPERTIES__SEAT_INTERFERENCE_MULTI_PASSENGER_FACTOR = eINSTANCE.getPassengerProperties_SeatInterferenceMultiPassengerFactor();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.PhysicalObjectImpl <em>Physical Object</em>}' class.
 		 * <!-- begin-user-doc -->
