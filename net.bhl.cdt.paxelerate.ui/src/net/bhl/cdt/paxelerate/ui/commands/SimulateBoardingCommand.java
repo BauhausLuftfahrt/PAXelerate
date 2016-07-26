@@ -11,6 +11,8 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -71,6 +73,10 @@ public class SimulateBoardingCommand extends CDTCommand {
 	/** The developer mode. */
 	private boolean developerMode;
 
+	/** The boarding status. */
+	private List<ArrayList<Integer>> boardingStatus = new ArrayList<ArrayList<Integer>>();
+
+	/** The run successful. */
 	protected boolean runSuccessful;
 
 	/**
@@ -108,7 +114,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 			 */
 		}
 	}
-	
+
 	/**
 	 * Gets the simulation status.
 	 *
@@ -122,14 +128,10 @@ public class SimulateBoardingCommand extends CDTCommand {
 	 * Agent sleep check.
 	 *
 	 * @return true, if successful
-	 * @throws InterruptedException
-	 *             the interrupted exception
-	 * @throws NullPointerException
-	 *             the null pointer exception
 	 */
-	private boolean agentSleepCheck() throws InterruptedException, NullPointerException {
+	private boolean agentSleepCheck() {
 		// TODO: send UI update to ViewPart
-		System.out.println("sleep check");
+		System.out.println("Checks agents for interuptions...");
 
 		for (Passenger sleepyPassenger : cabin.getPassengers()) {
 
@@ -167,8 +169,25 @@ public class SimulateBoardingCommand extends CDTCommand {
 				}
 			}
 		}
-		Thread.sleep(50000);
 		return false;
+	}
+
+	/**
+	 * Simulation status.
+	 *
+	 */
+	private void simulationStatus() {
+
+		double time = SimulationHandler.getMasterBoardingTime().getElapsedTimeSecs()
+				* SimulationHandler.getCabin().getSimulationSettings().getSimulationSpeedFactor();
+
+		ArrayList<Integer> timeStamp = new ArrayList<Integer>();
+		timeStamp.add((int) time);
+		timeStamp.add(SimulationHandler.getNumberOfSeatedPassengers());
+		timeStamp
+				.add(SimulationHandler.getNumberOfActivePassengers() - SimulationHandler.getNumberOfSeatedPassengers());
+
+		boardingStatus.add(timeStamp);
 	}
 
 	/**
@@ -222,7 +241,14 @@ public class SimulateBoardingCommand extends CDTCommand {
 		exportDataResults.getStudySettings();
 		// }
 		exportDataResults.getResultData();
+
 		exporterResults.closeFile();
+
+		ExcelExport exporterFilling = new ExcelExport("filling", PAXeleratePreferencePage.DEFAULT_EXPORT_PATH);
+		exporterFilling.createFile();
+		ExportDataCommand exportFilling = new ExportDataCommand(cabin, exporterFilling);
+		exportFilling.getSimulationProgress(boardingStatus);
+		exporterFilling.closeFile();
 
 		/*
 		 * if (developerMode) { // save the CostMap and ObstacleMap to the local
@@ -311,10 +337,14 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 				/* checks if an agent is in freezing mode */
 				while (!SimulationHandler.isSimulationDone()) {
+
+					simulationStatus();
+					if (agentSleepCheck()) {
+						return Status.CANCEL_STATUS;
+					}
+
 					try {
-						if (agentSleepCheck()) {
-							return Status.CANCEL_STATUS;
-						}
+						Thread.sleep(10000 / cabin.getSimulationSettings().getSimulationSpeedFactor());
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 						System.out.println("InterruptedException @ thread " + Thread.currentThread().getName());

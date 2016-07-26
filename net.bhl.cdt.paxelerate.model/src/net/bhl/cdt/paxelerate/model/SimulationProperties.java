@@ -228,8 +228,7 @@ public interface SimulationProperties extends EObject {
 	 * The default value is <code>"10"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Thread Sleep Time Default</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * This value is measured in ms.
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Thread Sleep Time Default</em>' attribute.

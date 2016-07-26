@@ -78,7 +78,6 @@ public class WaitForClearing extends AgentActionType {
 					sleepTime = AStarHelper.time(time);
 				}
 				
-				System.out.println("Interference time " + sleepTime);
 				agent.increaseTotalWaitingTime(sleepTime);
 				try {
 					agent.getThread().sleep(sleepTime);

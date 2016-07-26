@@ -73,10 +73,10 @@ public class PassengerPropertyGenerator {
 
 		passenger = pax;
 
-		paxSettings = ModelHelper.getParent(Cabin.class, pax)
+		paxSettings = ModelHelper.getParent(Cabin.class, passenger)
 				.getSimulationSettings().getPassengerProperties();
 
-		luggageSettings = ModelHelper.getParent(Cabin.class, pax)
+		luggageSettings = ModelHelper.getParent(Cabin.class, passenger)
 				.getSimulationSettings().getLuggageProperties();
 
 		walkingSpeedFactor = paxSettings.getPassengerWalkingSpeedFactor();

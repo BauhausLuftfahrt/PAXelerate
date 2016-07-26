@@ -75,15 +75,6 @@ public class SimulationHandler {
 	/** The simulation loop index. */
 	private static int simulationLoopIndex;
 
-	/**
-	 * Gets the simulation loop index.
-	 *
-	 * @return the simulation loop index
-	 */
-	public static int getSimulationLoopIndex() {
-		return simulationLoopIndex;
-	}
-
 	/** The Constant SHOW_AREAMAP_ANIMATION. */
 	public static final boolean SHOW_AREAMAP_ANIMATION = true;
 
@@ -116,6 +107,15 @@ public class SimulationHandler {
 		scale = cabin.getSimulationSettings().getScale();
 		run();
 	}
+	
+	/**
+	 * Gets the simulation loop index.
+	 *
+	 * @return the simulation loop index
+	 */
+	public static int getSimulationLoopIndex() {
+		return simulationLoopIndex;
+	}
 
 	/**
 	 * Gets the number of seated passengers.
@@ -124,6 +124,15 @@ public class SimulationHandler {
 	 */
 	public static int getNumberOfSeatedPassengers() {
 		return finishedList.size();
+	}
+	
+	/**
+	 * Gets the number of active passengers.
+	 *
+	 * @return the number of active passengers
+	 */
+	public static int getNumberOfActivePassengers() {
+		return activeList.size();
 	}
 
 	/**

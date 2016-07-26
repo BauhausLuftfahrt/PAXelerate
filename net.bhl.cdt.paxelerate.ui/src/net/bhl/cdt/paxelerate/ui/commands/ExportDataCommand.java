@@ -8,6 +8,8 @@ package net.bhl.cdt.paxelerate.ui.commands;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.jface.dialogs.IMessageProvider;
@@ -25,6 +27,7 @@ import net.bhl.cdt.paxelerate.model.storage.GaussianStorage;
 import net.bhl.cdt.paxelerate.model.storage.StorageHandler;
 import net.bhl.cdt.paxelerate.ui.helper.Input;
 import net.bhl.cdt.paxelerate.ui.helper.Input.WindowType;
+import net.bhl.cdt.paxelerate.ui.preferences.PAXeleratePreferencePage;
 import net.bhl.cdt.paxelerate.util.output.ExcelExport;
 import net.bhl.cdt.paxelerate.util.time.TimeHelper;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
@@ -246,13 +249,6 @@ public class ExportDataCommand extends CDTCommand {
 		EList<TravelClass> tcList = cabin.getClasses();
 		EList<Door> doorList = cabin.getDoors();
 
-		/*
-		 * exporter.addColumnElement("No Luggage"); exporter.addColumnElement(
-		 * "Small Luggage"); exporter.addColumnElement("Medium Luggage");
-		 * exporter.addColumnElement("Big Luggage"); exporter.addColumnElement(
-		 * "Load Factor"); exporter.addColumnElement("Active Door ID");
-		 * exporter.addColumnElement("Layout Concept"); exporter.addNewLine();
-		 */
 		exporter.addColumnElement(luggageSettings.getPercentageOfPassengersWithNoLuggage());
 		exporter.addColumnElement(luggageSettings.getPercentageOfPassengersWithSmallLuggage());
 		exporter.addColumnElement(luggageSettings.getPercentageOfPassengersWithMediumLuggage());
@@ -266,9 +262,7 @@ public class ExportDataCommand extends CDTCommand {
 			}
 		}
 		exporter.addColumnElement(cabin.getSimulationSettings().getLayoutConcept().getLiteral());
-		exporter.addColumnElement(
-				cabin.getSimulationSettings().getPassengerProperties().getPassengerWalkingSpeedFactor());
-		// exporter.addNewLine();
+		exporter.addColumnElement(PAXeleratePreferencePage.DEFAULT_XMI_FILE);
 
 		return true;
 	}
@@ -302,11 +296,23 @@ public class ExportDataCommand extends CDTCommand {
 			exporter.addColumnElement(result.getWaymakingSkipped());
 			exporter.addColumnElement(result.getWaymakingCompleted());
 			exporter.addColumnElement(getAverageOfPassengerProperty(PassengerProperty.NUMBER_WAITS));
-			exporter.addColumnElement(getAverageOfPassengerProperty(PassengerProperty.TIME_WAITED));
-			exporter.addColumnElement(getAverageOfPassengerProperty(PassengerProperty.DISTANCE_WALKED));
+			exporter.addColumnElement(getAverageOfPassengerProperty(PassengerProperty.TIME_WAITED) / 1000);
+			exporter.addColumnElement(getAverageOfPassengerProperty(PassengerProperty.DISTANCE_WALKED) / 100);
 			exporter.addNewLine();
 		}
 
+		return true;
+	}
+
+	public final boolean getSimulationProgress(List<ArrayList<Integer>> boardingStatus)
+			throws IOException, FileNotFoundException {
+
+		for (ArrayList<Integer> timeStamp : boardingStatus) {
+			for (int value : timeStamp) {
+				exporter.addColumnElement(value);
+			}
+			exporter.addNewLine();
+		}
 		return true;
 	}
 

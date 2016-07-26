@@ -15,7 +15,7 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
  * This command exports data from the EMF meta-model.
  *
  * @author michael.schmidt
- * @version 1.0
+ * @version 0.7
  * @since 0.7
  */
 
@@ -120,7 +120,7 @@ public class ExcelExport {
 		writer.append("" + parDoubleValue);
 		writer.append("\t");
 	}
-
+	
 	/**
 	 * Adds the new line.
 	 *
