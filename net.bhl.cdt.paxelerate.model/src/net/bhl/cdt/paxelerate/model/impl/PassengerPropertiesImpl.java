@@ -44,8 +44,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getSeatInterferenceProcessTimeFoldingSeatMean <em>Seat Interference Process Time Folding Seat Mean</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getSeatInterferenceProcessTimeFoldingSeatDeviation <em>Seat Interference Process Time Folding Seat Deviation</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getPassivePassengerWaitingTimeAfterCollision <em>Passive Passenger Waiting Time After Collision</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getPassengerWalkingSpeedFactor <em>Passenger Walking Speed Factor</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getSeatInterferenceMultiPassengerFactor <em>Seat Interference Multi Passenger Factor</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl#getPassengerWalkingSpeedFactor <em>Passenger Walking Speed Factor</em>}</li>
  * </ul>
  *
  * @generated
@@ -532,6 +532,26 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 	protected double passivePassengerWaitingTimeAfterCollision = PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getSeatInterferenceMultiPassengerFactor() <em>Seat Interference Multi Passenger Factor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceMultiPassengerFactor()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double SEAT_INTERFERENCE_MULTI_PASSENGER_FACTOR_EDEFAULT = 0.7;
+
+	/**
+	 * The cached value of the '{@link #getSeatInterferenceMultiPassengerFactor() <em>Seat Interference Multi Passenger Factor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSeatInterferenceMultiPassengerFactor()
+	 * @generated
+	 * @ordered
+	 */
+	protected double seatInterferenceMultiPassengerFactor = SEAT_INTERFERENCE_MULTI_PASSENGER_FACTOR_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getPassengerWalkingSpeedFactor() <em>Passenger Walking Speed Factor</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -550,26 +570,6 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 	 * @ordered
 	 */
 	protected double passengerWalkingSpeedFactor = PASSENGER_WALKING_SPEED_FACTOR_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getSeatInterferenceMultiPassengerFactor() <em>Seat Interference Multi Passenger Factor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatInterferenceMultiPassengerFactor()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double SEAT_INTERFERENCE_MULTI_PASSENGER_FACTOR_EDEFAULT = 1.0;
-
-	/**
-	 * The cached value of the '{@link #getSeatInterferenceMultiPassengerFactor() <em>Seat Interference Multi Passenger Factor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeatInterferenceMultiPassengerFactor()
-	 * @generated
-	 * @ordered
-	 */
-	protected double seatInterferenceMultiPassengerFactor = SEAT_INTERFERENCE_MULTI_PASSENGER_FACTOR_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1268,10 +1268,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 				return getSeatInterferenceProcessTimeFoldingSeatDeviation();
 			case CabinPackage.PASSENGER_PROPERTIES__PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION:
 				return getPassivePassengerWaitingTimeAfterCollision();
-			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_WALKING_SPEED_FACTOR:
-				return getPassengerWalkingSpeedFactor();
 			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_MULTI_PASSENGER_FACTOR:
 				return getSeatInterferenceMultiPassengerFactor();
+			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_WALKING_SPEED_FACTOR:
+				return getPassengerWalkingSpeedFactor();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1359,11 +1359,11 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 			case CabinPackage.PASSENGER_PROPERTIES__PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION:
 				setPassivePassengerWaitingTimeAfterCollision((Double)newValue);
 				return;
-			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_WALKING_SPEED_FACTOR:
-				setPassengerWalkingSpeedFactor((Double)newValue);
-				return;
 			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_MULTI_PASSENGER_FACTOR:
 				setSeatInterferenceMultiPassengerFactor((Double)newValue);
+				return;
+			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_WALKING_SPEED_FACTOR:
+				setPassengerWalkingSpeedFactor((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1451,11 +1451,11 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 			case CabinPackage.PASSENGER_PROPERTIES__PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION:
 				setPassivePassengerWaitingTimeAfterCollision(PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION_EDEFAULT);
 				return;
-			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_WALKING_SPEED_FACTOR:
-				setPassengerWalkingSpeedFactor(PASSENGER_WALKING_SPEED_FACTOR_EDEFAULT);
-				return;
 			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_MULTI_PASSENGER_FACTOR:
 				setSeatInterferenceMultiPassengerFactor(SEAT_INTERFERENCE_MULTI_PASSENGER_FACTOR_EDEFAULT);
+				return;
+			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_WALKING_SPEED_FACTOR:
+				setPassengerWalkingSpeedFactor(PASSENGER_WALKING_SPEED_FACTOR_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -1520,10 +1520,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 				return seatInterferenceProcessTimeFoldingSeatDeviation != SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION_EDEFAULT;
 			case CabinPackage.PASSENGER_PROPERTIES__PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION:
 				return passivePassengerWaitingTimeAfterCollision != PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION_EDEFAULT;
-			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_WALKING_SPEED_FACTOR:
-				return passengerWalkingSpeedFactor != PASSENGER_WALKING_SPEED_FACTOR_EDEFAULT;
 			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_MULTI_PASSENGER_FACTOR:
 				return seatInterferenceMultiPassengerFactor != SEAT_INTERFERENCE_MULTI_PASSENGER_FACTOR_EDEFAULT;
+			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_WALKING_SPEED_FACTOR:
+				return passengerWalkingSpeedFactor != PASSENGER_WALKING_SPEED_FACTOR_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1588,10 +1588,10 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 		result.append(seatInterferenceProcessTimeFoldingSeatDeviation);
 		result.append(", passivePassengerWaitingTimeAfterCollision: ");
 		result.append(passivePassengerWaitingTimeAfterCollision);
-		result.append(", passengerWalkingSpeedFactor: ");
-		result.append(passengerWalkingSpeedFactor);
 		result.append(", seatInterferenceMultiPassengerFactor: ");
 		result.append(seatInterferenceMultiPassengerFactor);
+		result.append(", passengerWalkingSpeedFactor: ");
+		result.append(passengerWalkingSpeedFactor);
 		result.append(')');
 		return result.toString();
 	}

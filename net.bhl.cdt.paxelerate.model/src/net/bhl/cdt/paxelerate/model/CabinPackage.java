@@ -2293,22 +2293,22 @@ public interface CabinPackage extends EPackage {
 	int PASSENGER_PROPERTIES__PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION = 23;
 
 	/**
-	 * The feature id for the '<em><b>Passenger Walking Speed Factor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PASSENGER_PROPERTIES__PASSENGER_WALKING_SPEED_FACTOR = 24;
-
-	/**
 	 * The feature id for the '<em><b>Seat Interference Multi Passenger Factor</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__SEAT_INTERFERENCE_MULTI_PASSENGER_FACTOR = 25;
+	int PASSENGER_PROPERTIES__SEAT_INTERFERENCE_MULTI_PASSENGER_FACTOR = 24;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Walking Speed Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_PROPERTIES__PASSENGER_WALKING_SPEED_FACTOR = 25;
 
 	/**
 	 * The number of structural features of the '<em>Passenger Properties</em>' class.

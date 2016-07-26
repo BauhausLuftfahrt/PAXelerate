@@ -180,8 +180,6 @@ public class DefineBatchSimulationInput extends CDTCommand {
 
 						case "Default":
 							simSettings.setLayoutConcept(LayoutConcept.DEFAULT);
-							simSettings.getPassengerProperties().setSeatInterferenceProcessTimeMean(0);
-							simSettings.getPassengerProperties().setSeatInterferenceProcessTimeDeviation(0);
 							break;
 
 						case "LiftingSeatPanSeats":
@@ -202,8 +200,6 @@ public class DefineBatchSimulationInput extends CDTCommand {
 
 						default:
 							simSettings.setLayoutConcept(LayoutConcept.DEFAULT);
-							simSettings.getPassengerProperties().setSeatInterferenceProcessTimeMean(0);
-							simSettings.getPassengerProperties().setSeatInterferenceProcessTimeDeviation(0);
 							break;
 						}
 					}

@@ -59,19 +59,26 @@ public class WaitForClearing extends AgentActionType {
 			}
 
 			if (!agent.getWaitingCompleted()) {
+				int blockingPax = agent.getNumberOfBlockingPax();
 				if (simSettings.isDeveloperMode()) {
-					System.out.println("Seat interference with " + multiPaxFactor + " passengers");
+					System.out.println("Seat interference with " + blockingPax + " passenger(s)");
 				}
-
-				long sleepTime = AStarHelper
-						.time((GaussianRandom.gaussianRandom(
+				
+				double time = GaussianRandom.gaussianRandom(
 								simSettings.getPassengerProperties()
 										.getSeatInterferenceProcessTimeMean(),
 								GaussOptions.PERCENT_95,
 								simSettings.getPassengerProperties()
-										.getSeatInterferenceProcessTimeDeviation()))
-								* agent.getNumberOfBlockingPax()
-								* multiPaxFactor);
+										.getSeatInterferenceProcessTimeDeviation());
+				
+				long sleepTime;
+				if (blockingPax > 1) {
+					sleepTime = AStarHelper.time(time * blockingPax * multiPaxFactor);
+				} else {
+					sleepTime = AStarHelper.time(time);
+				}
+				
+				System.out.println("Interference time " + sleepTime);
 				agent.increaseTotalWaitingTime(sleepTime);
 				try {
 					agent.getThread().sleep(sleepTime);

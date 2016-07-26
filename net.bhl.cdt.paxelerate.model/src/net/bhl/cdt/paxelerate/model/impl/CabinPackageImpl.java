@@ -2131,7 +2131,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerWalkingSpeedFactor() {
-        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(24);
+        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(25);
 	}
 
 	/**
@@ -2140,7 +2140,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_SeatInterferenceMultiPassengerFactor() {
-        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(25);
+        return (EAttribute)getPassengerProperties().getEStructuralFeatures().get(24);
 	}
 
 	/**

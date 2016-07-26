@@ -37,8 +37,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceProcessTimeFoldingSeatMean <em>Seat Interference Process Time Folding Seat Mean</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceProcessTimeFoldingSeatDeviation <em>Seat Interference Process Time Folding Seat Deviation</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassivePassengerWaitingTimeAfterCollision <em>Passive Passenger Waiting Time After Collision</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerWalkingSpeedFactor <em>Passenger Walking Speed Factor</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getSeatInterferenceMultiPassengerFactor <em>Seat Interference Multi Passenger Factor</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.PassengerProperties#getPassengerWalkingSpeedFactor <em>Passenger Walking Speed Factor</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassengerProperties()
@@ -723,7 +723,7 @@ public interface PassengerProperties extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Seat Interference Multi Passenger Factor</b></em>' attribute.
-	 * The default value is <code>"1.0"</code>.
+	 * The default value is <code>"0.7"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Seat Interference Multi Passenger Factor</em>' attribute isn't clear,
@@ -733,7 +733,7 @@ public interface PassengerProperties extends EObject {
 	 * @return the value of the '<em>Seat Interference Multi Passenger Factor</em>' attribute.
 	 * @see #setSeatInterferenceMultiPassengerFactor(double)
 	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getPassengerProperties_SeatInterferenceMultiPassengerFactor()
-	 * @model default="1.0"
+	 * @model default="0.7"
 	 * @generated
 	 */
 	double getSeatInterferenceMultiPassengerFactor();

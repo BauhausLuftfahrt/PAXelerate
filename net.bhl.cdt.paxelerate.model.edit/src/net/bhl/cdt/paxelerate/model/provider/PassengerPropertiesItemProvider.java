@@ -85,8 +85,8 @@ public class PassengerPropertiesItemProvider
 			addSeatInterferenceProcessTimeFoldingSeatMeanPropertyDescriptor(object);
 			addSeatInterferenceProcessTimeFoldingSeatDeviationPropertyDescriptor(object);
 			addPassivePassengerWaitingTimeAfterCollisionPropertyDescriptor(object);
-			addPassengerWalkingSpeedFactorPropertyDescriptor(object);
 			addSeatInterferenceMultiPassengerFactorPropertyDescriptor(object);
+			addPassengerWalkingSpeedFactorPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -726,8 +726,8 @@ public class PassengerPropertiesItemProvider
 			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_MEAN:
 			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_PROCESS_TIME_FOLDING_SEAT_DEVIATION:
 			case CabinPackage.PASSENGER_PROPERTIES__PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION:
-			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_WALKING_SPEED_FACTOR:
 			case CabinPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_MULTI_PASSENGER_FACTOR:
+			case CabinPackage.PASSENGER_PROPERTIES__PASSENGER_WALKING_SPEED_FACTOR:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
