@@ -204,15 +204,14 @@
         eType="#//LuggageProperties" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="passengerProperties" lowerBound="1"
         eType="#//PassengerProperties" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengersBoardingPerMinute"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
-        defaultValueLiteral="18"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="layoutConcept" lowerBound="1"
         eType="#//LayoutConcept" defaultValueLiteral="Default"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="luggageModelOption" lowerBound="1"
         eType="#//LuggageModelOption" defaultValueLiteral="SimpleModel"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="agentMovementModel" lowerBound="1"
         eType="#//AgentMovementModel" defaultValueLiteral="SimpleModel"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengersBoardingDoor"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="18"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="scale" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="10"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="simulationSpeedFactor"

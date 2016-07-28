@@ -167,7 +167,7 @@ public class SortPassengersCommand extends CDTCommand {
 	 */
 	private synchronized double calculateDelay(final Passenger pax) {
 		double delay = 0;
-		double clocking = cabin.getSimulationSettings().getPassengersBoardingPerMinute();
+		double clocking = cabin.getSimulationSettings().getPassengersBoardingDoor();
 
 		pax.getDoor().getWaitingPassengers().add(pax);
 

@@ -107,7 +107,7 @@ public class SimulationHandler {
 		scale = cabin.getSimulationSettings().getScale();
 		run();
 	}
-	
+
 	/**
 	 * Gets the simulation loop index.
 	 *
@@ -125,7 +125,7 @@ public class SimulationHandler {
 	public static int getNumberOfSeatedPassengers() {
 		return finishedList.size();
 	}
-	
+
 	/**
 	 * Gets the number of active passengers.
 	 *
@@ -322,7 +322,15 @@ public class SimulationHandler {
 		Agent agent = new Agent(pax, start, goal,
 				getAgentByPassenger(myself).getCostMap(), AgentMode.MAKE_WAY,
 				myself);
-		new PathFinder().findNewPath(agent);
+		
+		PathFinder pathFinder = new PathFinder(agent);
+		pathFinder.start();
+		try {
+			pathFinder.getThread().join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
 		agent.start();
 		pax.setNumberOfMakeWayOperations(
 				pax.getNumberOfMakeWayOperations() + 1);
@@ -498,14 +506,21 @@ public class SimulationHandler {
 			Log.add(this, "Creating the agent objects ...");
 			Log.add(this, "Calculating the paths for every passenger ...");
 		}
-
+		
 		/* First generate all paths ... */
+		StopWatch pathTimer = new StopWatch();
+		pathTimer.start();
+		Thread pathfindingThreads[] = new Thread[agentList.size()];
+		int i = 0;
+		
 		for (Agent agent : agentList) {
 
 			/* try to find a path! */
 			try {
 
-				new PathFinder().findNewPath(agent);
+				PathFinder pathFinder = new PathFinder(agent);
+				pathFinder.start();
+				pathfindingThreads[i] = pathFinder.getThread();
 
 				/* Warn if no path can be found */
 			} catch (NullPointerException e) {
@@ -513,11 +528,27 @@ public class SimulationHandler {
 						+ " can not find a path to the seat at "
 						+ agent.getGoal().getX() + " / "
 						+ agent.getGoal().getY());
-				new PathFinder().findNewPath(agent);
-			}
 
+				PathFinder pathFinder = new PathFinder(agent);
+				pathFinder.start();
+				pathfindingThreads[i] = pathFinder.getThread();
+			}
+			i++;
 			/* return information to the progress bar */
 			progressvalue++;
+		}
+		for (Thread thread : pathfindingThreads) {
+			try {
+				thread.join();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		pathTimer.stop();
+		if (SimulationHandler.getCabin().getSimulationSettings()
+				.isDeveloperMode()) {
+			System.out.println("Pathfinding calculations took "
+					+ pathTimer.getElapsedTime() + " ms.");
 		}
 
 		/* ... then start the simulations simultaneously */

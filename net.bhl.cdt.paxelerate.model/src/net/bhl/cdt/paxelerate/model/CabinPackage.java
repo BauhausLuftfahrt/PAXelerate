@@ -1633,22 +1633,13 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_PROPERTIES__PASSENGER_PROPERTIES = 2;
 
 	/**
-	 * The feature id for the '<em><b>Passengers Boarding Per Minute</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = 3;
-
-	/**
 	 * The feature id for the '<em><b>Layout Concept</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__LAYOUT_CONCEPT = 4;
+	int SIMULATION_PROPERTIES__LAYOUT_CONCEPT = 3;
 
 	/**
 	 * The feature id for the '<em><b>Luggage Model Option</b></em>' attribute.
@@ -1657,7 +1648,7 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__LUGGAGE_MODEL_OPTION = 5;
+	int SIMULATION_PROPERTIES__LUGGAGE_MODEL_OPTION = 4;
 
 	/**
 	 * The feature id for the '<em><b>Agent Movement Model</b></em>' attribute.
@@ -1666,7 +1657,16 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_PROPERTIES__AGENT_MOVEMENT_MODEL = 6;
+	int SIMULATION_PROPERTIES__AGENT_MOVEMENT_MODEL = 5;
+
+	/**
+	 * The feature id for the '<em><b>Passengers Boarding Door</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_PROPERTIES__PASSENGERS_BOARDING_DOOR = 6;
 
 	/**
 	 * The feature id for the '<em><b>Scale</b></em>' attribute.
@@ -3590,17 +3590,6 @@ public interface CabinPackage extends EPackage {
 	EReference getSimulationProperties_PassengerProperties();
 
 	/**
-	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Passengers Boarding Per Minute</em>'.
-	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengersBoardingPerMinute()
-	 * @see #getSimulationProperties()
-	 * @generated
-	 */
-	EAttribute getSimulationProperties_PassengersBoardingPerMinute();
-
-	/**
 	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isDataExport <em>Data Export</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3698,6 +3687,17 @@ public interface CabinPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSimulationProperties_AgentMovementModel();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengersBoardingDoor <em>Passengers Boarding Door</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Passengers Boarding Door</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengersBoardingDoor()
+	 * @see #getSimulationProperties()
+	 * @generated
+	 */
+	EAttribute getSimulationProperties_PassengersBoardingDoor();
 
 	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.LuggageProperties <em>Luggage Properties</em>}'.
@@ -5238,13 +5238,6 @@ public interface CabinPackage extends EPackage {
 		 */
 		EReference SIMULATION_PROPERTIES__PASSENGER_PROPERTIES = eINSTANCE.getSimulationProperties_PassengerProperties();
 		/**
-		 * The meta object literal for the '<em><b>Passengers Boarding Per Minute</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE = eINSTANCE.getSimulationProperties_PassengersBoardingPerMinute();
-		/**
 		 * The meta object literal for the '<em><b>Data Export</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5307,6 +5300,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SIMULATION_PROPERTIES__AGENT_MOVEMENT_MODEL = eINSTANCE.getSimulationProperties_AgentMovementModel();
+		/**
+		 * The meta object literal for the '<em><b>Passengers Boarding Door</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_PROPERTIES__PASSENGERS_BOARDING_DOOR = eINSTANCE.getSimulationProperties_PassengersBoardingDoor();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.LuggagePropertiesImpl <em>Luggage Properties</em>}' class.
 		 * <!-- begin-user-doc -->

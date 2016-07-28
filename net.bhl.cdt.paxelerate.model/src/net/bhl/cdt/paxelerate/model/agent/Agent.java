@@ -420,6 +420,7 @@ public class Agent extends Subject implements Runnable {
 		int yCoordAisleSeat = 0;
 		int distanceToAisleSeat = 1;
 
+		// TODO: arbitrary seat abreast
 		for (Seat seat : passenger.getSeat().getRow().getSeats()) {
 			if ("ABC".contains(passenger.getSeat().getLetter())) {
 				if ("C".contains(seat.getLetter())) {
@@ -447,6 +448,7 @@ public class Agent extends Subject implements Runnable {
 		int yCoordAisleSeat = 0;
 		int distanceToAisleSeat = 1;
 
+		// TODO: arbitrary seat abreast
 		for (Seat seat : passenger.getSeat().getRow().getSeats()) {
 			if ("ABC".contains(passenger.getSeat().getLetter())) {
 				if ("C".contains(seat.getLetter())) {
@@ -1124,6 +1126,7 @@ public class Agent extends Subject implements Runnable {
 					 * unfolded in the meantime
 					 */
 
+					// TODO: arbitrary seat abreast
 					if ((AgentFunctions
 							.checkSeatFoldingStatusInRow(passenger) == 1
 							&& "ABC".contains(passenger.getSeat().getLetter()))
@@ -1175,6 +1178,7 @@ public class Agent extends Subject implements Runnable {
 						Thread.sleep(simSettings.getThreadSleepTimeDefault());
 					}
 
+					// TODO: arbitrary seat abreast
 					if ((AgentFunctions
 							.checkSeatFoldingStatusInRow(passenger) == 1
 							&& "ABC".contains(passenger.getSeat().getLetter()))

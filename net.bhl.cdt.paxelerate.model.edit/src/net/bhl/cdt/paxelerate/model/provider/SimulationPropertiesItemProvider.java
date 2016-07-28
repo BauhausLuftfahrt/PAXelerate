@@ -60,10 +60,10 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 			super.getPropertyDescriptors(object);
 
 			addResultsPropertyDescriptor(object);
-			addPassengersBoardingPerMinutePropertyDescriptor(object);
 			addLayoutConceptPropertyDescriptor(object);
 			addLuggageModelOptionPropertyDescriptor(object);
 			addAgentMovementModelPropertyDescriptor(object);
+			addPassengersBoardingDoorPropertyDescriptor(object);
 			addScalePropertyDescriptor(object);
 			addSimulationSpeedFactorPropertyDescriptor(object);
 			addUsePresetSettingsPropertyDescriptor(object);
@@ -304,28 +304,6 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	}
 
 	/**
-	 * This adds a property descriptor for the Passengers Boarding Per Minute feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPassengersBoardingPerMinutePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimulationProperties_passengersBoardingPerMinute_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengersBoardingPerMinute_feature", "_UI_SimulationProperties_type"),
-				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Data Export feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -524,6 +502,28 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 	}
 
 	/**
+	 * This adds a property descriptor for the Passengers Boarding Door feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPassengersBoardingDoorPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationProperties_passengersBoardingDoor_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationProperties_passengersBoardingDoor_feature", "_UI_SimulationProperties_type"),
+				 CabinPackage.Literals.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_DOOR,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -595,10 +595,10 @@ public class SimulationPropertiesItemProvider extends ItemProviderAdapter
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SimulationProperties.class)) {
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
 			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
 			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_MODEL_OPTION:
 			case CabinPackage.SIMULATION_PROPERTIES__AGENT_MOVEMENT_MODEL:
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_DOOR:
 			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
 			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
 			case CabinPackage.SIMULATION_PROPERTIES__USE_PRESET_SETTINGS:

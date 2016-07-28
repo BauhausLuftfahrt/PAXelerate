@@ -33,10 +33,10 @@ import net.bhl.cdt.paxelerate.model.SortingStyle;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getResults <em>Results</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getLuggageProperties <em>Luggage Properties</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengerProperties <em>Passenger Properties</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getLayoutConcept <em>Layout Concept</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getLuggageModelOption <em>Luggage Model Option</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getAgentMovementModel <em>Agent Movement Model</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getPassengersBoardingDoor <em>Passengers Boarding Door</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getScale <em>Scale</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationPropertiesImpl#isUsePresetSettings <em>Use Preset Settings</em>}</li>
@@ -86,26 +86,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * @ordered
 	 */
 	protected PassengerProperties passengerProperties;
-
-	/**
-	 * The default value of the '{@link #getPassengersBoardingPerMinute() <em>Passengers Boarding Per Minute</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPassengersBoardingPerMinute()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT = 18.0;
-
-	/**
-	 * The cached value of the '{@link #getPassengersBoardingPerMinute() <em>Passengers Boarding Per Minute</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPassengersBoardingPerMinute()
-	 * @generated
-	 * @ordered
-	 */
-	protected double passengersBoardingPerMinute = PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getLayoutConcept() <em>Layout Concept</em>}' attribute.
@@ -166,6 +146,26 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 	 * @ordered
 	 */
 	protected AgentMovementModel agentMovementModel = AGENT_MOVEMENT_MODEL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPassengersBoardingDoor() <em>Passengers Boarding Door</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassengersBoardingDoor()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double PASSENGERS_BOARDING_DOOR_EDEFAULT = 18.0;
+
+	/**
+	 * The cached value of the '{@link #getPassengersBoardingDoor() <em>Passengers Boarding Door</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassengersBoardingDoor()
+	 * @generated
+	 * @ordered
+	 */
+	protected double passengersBoardingDoor = PASSENGERS_BOARDING_DOOR_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getScale() <em>Scale</em>}' attribute.
@@ -828,31 +828,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->.
-	 *
-	 * @return the passengers boarding per minute
-	 * @generated 
-	 */
-	public double getPassengersBoardingPerMinute() {
-		return passengersBoardingPerMinute;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->.
-	 *
-	 * @param newPassengersBoardingPerMinute the new passengers boarding per minute
-	 * @generated 
-	 */
-	public void setPassengersBoardingPerMinute(double newPassengersBoardingPerMinute) {
-		double oldPassengersBoardingPerMinute = passengersBoardingPerMinute;
-		passengersBoardingPerMinute = newPassengersBoardingPerMinute;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE, oldPassengersBoardingPerMinute, passengersBoardingPerMinute));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1042,6 +1017,27 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getPassengersBoardingDoor() {
+		return passengersBoardingDoor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPassengersBoardingDoor(double newPassengersBoardingDoor) {
+		double oldPassengersBoardingDoor = passengersBoardingDoor;
+		passengersBoardingDoor = newPassengersBoardingDoor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_DOOR, oldPassengersBoardingDoor, passengersBoardingDoor));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->.
 	 *
 	 * @param otherEnd the other end
@@ -1080,14 +1076,14 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return getLuggageProperties();
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_PROPERTIES:
 				return getPassengerProperties();
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
-				return getPassengersBoardingPerMinute();
 			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
 				return getLayoutConcept();
 			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_MODEL_OPTION:
 				return getLuggageModelOption();
 			case CabinPackage.SIMULATION_PROPERTIES__AGENT_MOVEMENT_MODEL:
 				return getAgentMovementModel();
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_DOOR:
+				return getPassengersBoardingDoor();
 			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
 				return getScale();
 			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
@@ -1144,9 +1140,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_PROPERTIES:
 				setPassengerProperties((PassengerProperties)newValue);
 				return;
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
-				setPassengersBoardingPerMinute((Double)newValue);
-				return;
 			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
 				setLayoutConcept((LayoutConcept)newValue);
 				return;
@@ -1155,6 +1148,9 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__AGENT_MOVEMENT_MODEL:
 				setAgentMovementModel((AgentMovementModel)newValue);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_DOOR:
+				setPassengersBoardingDoor((Double)newValue);
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
 				setScale((Integer)newValue);
@@ -1224,9 +1220,6 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_PROPERTIES:
 				setPassengerProperties((PassengerProperties)null);
 				return;
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
-				setPassengersBoardingPerMinute(PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT);
-				return;
 			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
 				setLayoutConcept(LAYOUT_CONCEPT_EDEFAULT);
 				return;
@@ -1235,6 +1228,9 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__AGENT_MOVEMENT_MODEL:
 				setAgentMovementModel(AGENT_MOVEMENT_MODEL_EDEFAULT);
+				return;
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_DOOR:
+				setPassengersBoardingDoor(PASSENGERS_BOARDING_DOOR_EDEFAULT);
 				return;
 			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
 				setScale(SCALE_EDEFAULT);
@@ -1302,14 +1298,14 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 				return luggageProperties != null;
 			case CabinPackage.SIMULATION_PROPERTIES__PASSENGER_PROPERTIES:
 				return passengerProperties != null;
-			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_PER_MINUTE:
-				return passengersBoardingPerMinute != PASSENGERS_BOARDING_PER_MINUTE_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__LAYOUT_CONCEPT:
 				return layoutConcept != LAYOUT_CONCEPT_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__LUGGAGE_MODEL_OPTION:
 				return luggageModelOption != LUGGAGE_MODEL_OPTION_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__AGENT_MOVEMENT_MODEL:
 				return agentMovementModel != AGENT_MOVEMENT_MODEL_EDEFAULT;
+			case CabinPackage.SIMULATION_PROPERTIES__PASSENGERS_BOARDING_DOOR:
+				return passengersBoardingDoor != PASSENGERS_BOARDING_DOOR_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__SCALE:
 				return scale != SCALE_EDEFAULT;
 			case CabinPackage.SIMULATION_PROPERTIES__SIMULATION_SPEED_FACTOR:
@@ -1356,14 +1352,14 @@ public class SimulationPropertiesImpl extends MinimalEObjectImpl.Container imple
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (passengersBoardingPerMinute: ");
-		result.append(passengersBoardingPerMinute);
-		result.append(", layoutConcept: ");
+		result.append(" (layoutConcept: ");
 		result.append(layoutConcept);
 		result.append(", luggageModelOption: ");
 		result.append(luggageModelOption);
 		result.append(", agentMovementModel: ");
 		result.append(agentMovementModel);
+		result.append(", passengersBoardingDoor: ");
+		result.append(passengersBoardingDoor);
 		result.append(", scale: ");
 		result.append(scale);
 		result.append(", simulationSpeedFactor: ");

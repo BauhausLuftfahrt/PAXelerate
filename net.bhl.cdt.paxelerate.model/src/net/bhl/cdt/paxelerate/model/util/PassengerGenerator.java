@@ -38,7 +38,7 @@ public class PassengerGenerator {
 
 		/* calculate the step size for the delay */
 		double stepsize = 60.0 / cabin.getSimulationSettings()
-				.getPassengersBoardingPerMinute();
+				.getPassengersBoardingDoor();
 
 		/* get the linked door of the passenger */
 		Door door = passenger.getDoor();

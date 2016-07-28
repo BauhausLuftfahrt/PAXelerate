@@ -1522,17 +1522,6 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->.
-	 *
-	 * @return the simulation properties_ passengers boarding per minute
-	 * @generated 
-	 */
-	public EAttribute getSimulationProperties_PassengersBoardingPerMinute() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1591,7 +1580,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getSimulationProperties_LayoutConcept() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(4);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1600,7 +1589,7 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getSimulationProperties_LuggageModelOption() {
-        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(5);
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1609,6 +1598,15 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 	 * @generated
 	 */
 	public EAttribute getSimulationProperties_AgentMovementModel() {
+        return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationProperties_PassengersBoardingDoor() {
         return (EAttribute)getSimulationProperties().getEStructuralFeatures().get(6);
 	}
 

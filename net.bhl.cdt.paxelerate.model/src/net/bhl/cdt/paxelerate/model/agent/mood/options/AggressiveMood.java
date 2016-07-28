@@ -37,7 +37,7 @@ public class AggressiveMood extends AgentMood {
 		if (agent.getBlockingAgent().passengerStowsLuggage()
 				|| agent.getBlockingAgent().passengerUnfoldsSeat()) {
 
-			new PathFinder().findNewPath(agent);
+			new PathFinder(agent).start();
 			agent.setExitPathLoop(true);
 		}
 	}

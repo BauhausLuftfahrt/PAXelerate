@@ -17,10 +17,10 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getResults <em>Results</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageProperties <em>Luggage Properties</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengerProperties <em>Passenger Properties</em>}</li>
- *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLayoutConcept <em>Layout Concept</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getLuggageModelOption <em>Luggage Model Option</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getAgentMovementModel <em>Agent Movement Model</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengersBoardingDoor <em>Passengers Boarding Door</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getScale <em>Scale</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationProperties#isUsePresetSettings <em>Use Preset Settings</em>}</li>
@@ -356,33 +356,6 @@ public interface SimulationProperties extends EObject {
 	void setPassengerProperties(PassengerProperties value);
 
 	/**
-	 * Returns the value of the '<em><b>Passengers Boarding Per Minute</b></em>' attribute.
-	 * The default value is <code>"18"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Passengers Boarding Per Minute</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Passengers Boarding Per Minute</em>' attribute.
-	 * @see #setPassengersBoardingPerMinute(double)
-	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_PassengersBoardingPerMinute()
-	 * @model default="18" required="true"
-	 * @generated
-	 */
-	double getPassengersBoardingPerMinute();
-
-	/**
-	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengersBoardingPerMinute <em>Passengers Boarding Per Minute</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Passengers Boarding Per Minute</em>' attribute.
-	 * @see #getPassengersBoardingPerMinute()
-	 * @generated
-	 */
-	void setPassengersBoardingPerMinute(double value);
-
-	/**
 	 * Returns the value of the '<em><b>Data Export</b></em>' attribute.
 	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
@@ -633,5 +606,32 @@ public interface SimulationProperties extends EObject {
 	 * @generated
 	 */
 	void setAgentMovementModel(AgentMovementModel value);
+
+	/**
+	 * Returns the value of the '<em><b>Passengers Boarding Door</b></em>' attribute.
+	 * The default value is <code>"18"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Passengers Boarding Door</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Passengers Boarding Door</em>' attribute.
+	 * @see #setPassengersBoardingDoor(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationProperties_PassengersBoardingDoor()
+	 * @model default="18"
+	 * @generated
+	 */
+	double getPassengersBoardingDoor();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationProperties#getPassengersBoardingDoor <em>Passengers Boarding Door</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Passengers Boarding Door</em>' attribute.
+	 * @see #getPassengersBoardingDoor()
+	 * @generated
+	 */
+	void setPassengersBoardingDoor(double value);
 
 } // SimulationProperties

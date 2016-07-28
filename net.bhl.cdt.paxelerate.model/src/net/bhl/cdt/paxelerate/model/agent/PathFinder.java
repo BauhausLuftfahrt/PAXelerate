@@ -9,6 +9,7 @@ import net.bhl.cdt.paxelerate.model.astar.Core;
 import net.bhl.cdt.paxelerate.model.astar.Costmap;
 import net.bhl.cdt.paxelerate.model.astar.Path;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
+import net.bhl.cdt.paxelerate.model.observer.Subject;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.time.StopWatch;
 
@@ -21,18 +22,35 @@ import net.bhl.cdt.paxelerate.util.time.StopWatch;
  * 
  */
 
-public class PathFinder {
+public class PathFinder extends Subject implements Runnable {
+
+	private Thread thread;
+	private Agent agent;
 
 	/**
 	 * This method finds a new path. The <b>finalCostmap</b> is needed so that
 	 * there is no overlapping of different agent positions over time. The cost
 	 * map is always modified based on the non-editable final cost map
 	 * calculated at the beginning.
+	 * @param agent 
 	 *
 	 * @throws NullPointerException
 	 *             the null pointer exception
 	 */
-	public void findNewPath(Agent agent) throws NullPointerException {
+	
+
+	public PathFinder(Agent agent) {
+		this.agent = agent;
+	}
+
+
+	@Override
+	public void run() {
+		findNewPath();
+	}
+	
+	
+	public void findNewPath() throws NullPointerException {
 
 		StopWatch pathTimer = new StopWatch();
 
@@ -129,12 +147,48 @@ public class PathFinder {
 		/* ends the stop watch performance logging */
 		pathTimer.stop();
 
-		if (SimulationHandler.getCabin().getSimulationSettings()
+		/*if (SimulationHandler.getCabin().getSimulationSettings()
 				.isDeveloperMode()) {
 			System.out.println("Pathfinding calculations for Agent "
 					+ agent.getPassenger().getName() + " took "
 					+ pathTimer.getElapsedTime() + " ms.");
+		}*/
+	}
+	
+	/**
+	 * This method starts the agent.
+	 */
+	public void start() {
+		if (getThread() == null) {
+			setThread(new Thread(this, agent.getPassenger().getName()));
+			getThread().start();
 		}
+	}
+
+	/**
+	 * This method returns the thread.
+	 * 
+	 * @return the thread
+	 */
+	public Thread getThread() {
+		return thread;
+	}
+
+	/**
+	 * This method sets the thread.
+	 * 
+	 * @param thread
+	 *            the thread
+	 */
+	public void setThread(Thread thread) {
+		this.thread = thread;
+	}
+
+	/**
+	 * Stop thread.
+	 */
+	public void stopThread() {
+		thread.interrupt();
 	}
 
 }

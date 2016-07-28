@@ -206,7 +206,7 @@ public class ExportDataCommand extends CDTCommand {
 
 		/** General passenger properties **/
 		exporter.addColumnElement("PassengersBoardingPerMinute");
-		exporter.addColumnElement(settings.getPassengersBoardingPerMinute());
+		exporter.addColumnElement(settings.getPassengersBoardingDoor());
 		exporter.addNewLine();
 
 		exporter.addColumnElement("SeatInterferenceProcessTimeMean");

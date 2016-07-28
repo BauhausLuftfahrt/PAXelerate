@@ -196,10 +196,10 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cabin.ecore#//SimulationProperties/results"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//SimulationProperties/luggageProperties"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cabin.ecore#//SimulationProperties/passengerProperties"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/passengersBoardingPerMinute"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/layoutConcept"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/luggageModelOption"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/agentMovementModel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/passengersBoardingDoor"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/scale"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/simulationSpeedFactor"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/usePresetSettings"/>

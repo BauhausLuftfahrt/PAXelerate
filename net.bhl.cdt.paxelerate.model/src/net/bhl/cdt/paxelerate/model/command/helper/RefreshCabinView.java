@@ -82,6 +82,7 @@ public class RefreshCabinView {
 			if (cabin.getSimulationSettings().getLayoutConcept() == LayoutConcept.BRING_YOUR_OWN_SEAT) {
 				seat.setLayoutConcept(LayoutConcept.SIDWAYS_FOLDABLE_SEAT);
 
+			// TODO: arbitrary seat abreast
 				/* Sideways foldable seat */
 			} else if (cabin.getSimulationSettings().getLayoutConcept() == LayoutConcept.SIDWAYS_FOLDABLE_SEAT) {
 				/* Aisle seats are set foldable */
