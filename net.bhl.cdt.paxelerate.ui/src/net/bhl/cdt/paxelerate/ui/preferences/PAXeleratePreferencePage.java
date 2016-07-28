@@ -18,8 +18,8 @@ import net.bhl.cdt.paxelerate.ui.Activator;
  * This is the PreferencePage of PAXelerate.
  *
  * @author michael.schmidt
- * @version 0.5
- * @since 0.7
+ * @version 0.8
+ * @since 0.5
  */
 public class PAXeleratePreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
@@ -41,7 +41,7 @@ public class PAXeleratePreferencePage extends FieldEditorPreferencePage implemen
 	public static final String DEFAULT_PROJECT_NAME = "reference";
 
 	/** The Constant DEFAULT_XMI_FILE. */
-	public static final String DEFAULT_XMI_FILE = "Reference_Cabin_v2";
+	public static String DEFAULT_XMI_FILE = "Reference_Cabin_v2";
 
 	/** The Constant DEFAULT_XMI_FOLDER. */
 	public static final String DEFAULT_XMI_FOLDER = System.getProperty("user.home") + "/Documents/paxelerate/";

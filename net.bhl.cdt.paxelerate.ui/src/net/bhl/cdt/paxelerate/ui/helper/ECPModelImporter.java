@@ -61,6 +61,7 @@ public class ECPModelImporter extends CDTCommand {
 	public ECPModelImporter(String fileName) {
 		this.folderName = PAXeleratePreferencePage.DEFAULT_XMI_FOLDER;
 		this.fileName = fileName;
+		PAXeleratePreferencePage.DEFAULT_XMI_FILE = fileName;
 	}
 
 	/**
