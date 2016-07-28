@@ -28,7 +28,7 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
  * array has a specific value which represents the strength of the obstacle.
  * 
  * @author marc.engelmann, michael.schmidt
- * @version 1.1
+ * @version 0.8
  * @since 0.5
  *
  */
@@ -279,12 +279,18 @@ public class ObstacleGenerator {
 									+ aisle.getZ(); y++) {
 
 						/* check if there might be an obstacle somewhere */
-						if (!areamap.get(x, y).isObstacle()) {
+						if (areamap.get(x, y) != null) {
+							if (!areamap.get(x, y).isObstacle()) {
 
-							/* apply the hole value */
-							areamap.get(x, y).setObstacleValue(
-									AreamapHandler.HOLE_VALUE);
+								/* apply the hole value */
+								areamap.get(x, y).setObstacleValue(
+										AreamapHandler.HOLE_VALUE);
+							}
+						} else {
+							Log.add(this,
+									"Check cabin dimensions! Margin for fwd and aft exit is required.");
 						}
+
 					}
 				}
 				/* for debugging, output the found aisles */
