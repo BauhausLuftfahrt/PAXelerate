@@ -13,7 +13,7 @@
          </property>
          <property
                name="aboutImage"
-               value="platform:/plugin/net.bhl.cdt.paxelerate.ui/images/about.png">
+               value="images/about.png">
          </property>
          <property
                name="aboutText"
