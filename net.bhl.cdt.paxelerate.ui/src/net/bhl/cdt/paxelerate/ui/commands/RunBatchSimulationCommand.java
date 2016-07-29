@@ -57,10 +57,12 @@ public class RunBatchSimulationCommand extends CDTCommand {
 			data = importer.readData();
 			importer.closeFile();
 			Log.add(this, "Study data import completed");
+			return data;
 		} catch (IOException e) {
 			Log.add(this, "Data import failed!");
+			return null;
 		}
-		return data;
+		
 	}
 
 	/**
@@ -78,29 +80,30 @@ public class RunBatchSimulationCommand extends CDTCommand {
 		int studyNumb = 1;
 		int iterationNumb = 1;
 
-		for (ArrayList<String> study : data) {
-			for (int simulationLoopIndex = 1; simulationLoopIndex <= (Integer
-					.parseInt(study.get(1))); simulationLoopIndex++) {
-				new ECPModelImporter(study.get(10)).doRun();
-				new DefineBatchSimulationInput(study).doRun();
-				new GeneratePassengersCommand().execute();
-				SimulateBoardingCommand simulation = new SimulateBoardingCommand(simulationLoopIndex);
-				simulation.execute();
-				if (simulation.getSimulationStatus()) {
-					iterationCompleted++;
-				} else {
-					iterationFailed++;
+		if (data != null) {
+			for (ArrayList<String> study : data) {
+				for (int simulationLoopIndex = 1; simulationLoopIndex <= (Integer
+						.parseInt(study.get(1))); simulationLoopIndex++) {
+					new ECPModelImporter(study.get(10)).doRun();
+					new DefineBatchSimulationInput(study).doRun();
+					new GeneratePassengersCommand().execute();
+					SimulateBoardingCommand simulation = new SimulateBoardingCommand(simulationLoopIndex);
+					simulation.execute();
+					if (simulation.getSimulationStatus()) {
+						iterationCompleted++;
+					} else {
+						iterationFailed++;
+					}
+					Log.add(this, "Iteration " + simulationLoopIndex + "/" + Integer.parseInt(study.get(1)) + " Study "
+							+ studyNumb + "/" + data.size());
+					iterationNumb++;
 				}
-				Log.add(this, "Iteration " + simulationLoopIndex + "/" + Integer.parseInt(study.get(1)) + " Study "
-						+ studyNumb + "/" + data.size());
-				iterationNumb++;
+				studyNumb++;
 			}
-			studyNumb++;
+			stopwatch.stop();
+			Log.add(this, "... batch simulation completed: " + Math.round(stopwatch.getElapsedTimeMins()) + " mins, "
+					+ iterationNumb + " iterations in " + data.size() + " studies.");
+			Log.add(this, "Iterations: " + iterationCompleted + " completed / " + iterationFailed + " failed");
 		}
-		stopwatch.stop();
-		Log.add(this, "... batch simulation completed: " + Math.round(stopwatch.getElapsedTimeHours() * 100) / 100
-				+ " h, " + iterationNumb + " iterations in " + data.size() + " studies.");
-		Log.add(this, "Iterations: " + iterationCompleted + " completed / " + iterationFailed + " failed");
-
 	}
 }

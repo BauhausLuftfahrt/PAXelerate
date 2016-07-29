@@ -240,6 +240,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationResult/waymakingSkipped"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationResult/waymakingCompleted"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationResult/layoutConceptType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationResult/simulationTime"/>
     </genClasses>
     <genClasses ecoreClass="cabin.ecore#//PassengerProperties">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//PassengerProperties/passengerWidthMeanMale"/>

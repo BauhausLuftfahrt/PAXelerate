@@ -31,7 +31,7 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
  * The Class ECPModelImporter.
  *
  * @author michael.schmidt
- * @version 1.0
+ * @version 0.8
  * @since 0.7
  */
 
@@ -172,6 +172,7 @@ public class ECPModelImporter extends CDTCommand {
 
 				} catch (ECPProjectWithNameExistsException e) {
 					e.printStackTrace();
+					return Status.CANCEL_STATUS;
 				}
 
 				// report finished

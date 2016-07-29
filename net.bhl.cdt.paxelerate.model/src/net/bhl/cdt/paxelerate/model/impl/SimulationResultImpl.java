@@ -30,6 +30,7 @@ import net.bhl.cdt.paxelerate.model.SimulationResult;
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationResultImpl#getWaymakingSkipped <em>Waymaking Skipped</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationResultImpl#getWaymakingCompleted <em>Waymaking Completed</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationResultImpl#getLayoutConceptType <em>Layout Concept Type</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.impl.SimulationResultImpl#getSimulationTime <em>Simulation Time</em>}</li>
  * </ul>
  *
  * @generated
@@ -214,6 +215,26 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected LayoutConcept layoutConceptType = LAYOUT_CONCEPT_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSimulationTime() <em>Simulation Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimulationTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double SIMULATION_TIME_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getSimulationTime() <em>Simulation Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimulationTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected double simulationTime = SIMULATION_TIME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -452,6 +473,27 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getSimulationTime() {
+		return simulationTime;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSimulationTime(double newSimulationTime) {
+		double oldSimulationTime = simulationTime;
+		simulationTime = newSimulationTime;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CabinPackage.SIMULATION_RESULT__SIMULATION_TIME, oldSimulationTime, simulationTime));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->.
 	 *
 	 * @param featureID the feature id
@@ -481,6 +523,8 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 				return getWaymakingCompleted();
 			case CabinPackage.SIMULATION_RESULT__LAYOUT_CONCEPT_TYPE:
 				return getLayoutConceptType();
+			case CabinPackage.SIMULATION_RESULT__SIMULATION_TIME:
+				return getSimulationTime();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -523,6 +567,9 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 			case CabinPackage.SIMULATION_RESULT__LAYOUT_CONCEPT_TYPE:
 				setLayoutConceptType((LayoutConcept)newValue);
 				return;
+			case CabinPackage.SIMULATION_RESULT__SIMULATION_TIME:
+				setSimulationTime((Double)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -564,6 +611,9 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 			case CabinPackage.SIMULATION_RESULT__LAYOUT_CONCEPT_TYPE:
 				setLayoutConceptType(LAYOUT_CONCEPT_TYPE_EDEFAULT);
 				return;
+			case CabinPackage.SIMULATION_RESULT__SIMULATION_TIME:
+				setSimulationTime(SIMULATION_TIME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -597,6 +647,8 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 				return waymakingCompleted != WAYMAKING_COMPLETED_EDEFAULT;
 			case CabinPackage.SIMULATION_RESULT__LAYOUT_CONCEPT_TYPE:
 				return layoutConceptType != LAYOUT_CONCEPT_TYPE_EDEFAULT;
+			case CabinPackage.SIMULATION_RESULT__SIMULATION_TIME:
+				return simulationTime != SIMULATION_TIME_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -631,6 +683,8 @@ public class SimulationResultImpl extends MinimalEObjectImpl.Container implement
 		result.append(waymakingCompleted);
 		result.append(", layoutConceptType: ");
 		result.append(layoutConceptType);
+		result.append(", simulationTime: ");
+		result.append(simulationTime);
 		result.append(')');
 		return result.toString();
 	}

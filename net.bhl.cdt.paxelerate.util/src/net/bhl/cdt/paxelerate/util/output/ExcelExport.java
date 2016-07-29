@@ -15,7 +15,7 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
  * This command exports data from the EMF meta-model.
  *
  * @author michael.schmidt
- * @version 0.7
+ * @version 0.8
  * @since 0.7
  */
 
@@ -57,7 +57,12 @@ public class ExcelExport {
 
 		File dir = new File(fileName);
 		dir.mkdir();
-		this.writer = new FileWriter(filePath + fileName + ".xls", true);
+		try {
+			this.writer = new FileWriter(filePath + fileName + ".xls", true);
+		} catch (IOException e) {
+			e.printStackTrace();
+			Log.add(this, "Cannot open file!");
+		}
 	}
 
 	/**

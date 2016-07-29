@@ -22,8 +22,8 @@ import net.bhl.cdt.paxelerate.util.time.TimeHelper;
 /**
  * This class is used to handle passenger data and to analyze and export it.
  * 
- * @author marc.engelmann
- * @version 1.0
+ * @author marc.engelmann, michael.schmidt
+ * @version 0.8
  * @since 0.5
  *
  */
@@ -58,11 +58,12 @@ public class SimulationResultLogger {
 	 * @param cabin the cabin
 	 * @param runNumber the run number
 	 * @param time the time
+	 * @param simTime the sim time
 	 * @param waymakingSkipped the waymaking skipped
 	 * @param waymakingCompleted the waymaking completed
 	 * @return the simulation data
 	 */
-	public void getSimulationData(Cabin cabin, int runNumber, double time, int waymakingSkipped, int waymakingCompleted) {
+	public void getSimulationData(Cabin cabin, int runNumber, double time, double simTime, int waymakingSkipped, int waymakingCompleted) {
 		SimulationResult result = CabinFactory.eINSTANCE
 				.createSimulationResult();
 
@@ -71,6 +72,7 @@ public class SimulationResultLogger {
 
 		result.setPassengers(cabin.getPassengers().size());
 		result.setBoardingTime(time);
+		result.setSimulationTime(simTime);
 		result.setId(SimulationHandler.getCabin().getSimulationSettings()
 				.getResults().size() + 1);
 		result.setName(dateFormat.format(date));

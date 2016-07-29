@@ -35,12 +35,6 @@ import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
  */
 public class DefineBatchSimulationInput extends CDTCommand {
 
-	/** The cabin. */
-	private Cabin cabin;
-
-	/** The sim settings. */
-	private SimulationProperties simSettings;
-
 	/** The hand luggage study. */
 	private static HandLuggageCase handLuggageStudy;
 
@@ -76,17 +70,7 @@ public class DefineBatchSimulationInput extends CDTCommand {
 	 * @param loadFactor
 	 *            the load factor
 	 */
-	public DefineBatchSimulationInput(HandLuggageCase handLuggageStudy, int loadFactor) {
-		try {
-			if (ECPUtil.getECPProjectManager().getProjects() != null) {
-				this.cabin = (Cabin) ECPUtil.getECPProjectManager()
-						.getProject(PAXeleratePreferencePage.DEFAULT_PROJECT_NAME).getContents().get(0);
-				this.simSettings = this.cabin.getSimulationSettings();
-			}
-		} catch (NullPointerException e) {
-			Log.add(this, "Could not find any project or model!");
-			e.printStackTrace();
-		}
+	public DefineBatchSimulationInput(HandLuggageCase handLuggageStudy, int loadFactor) {	
 		this.handLuggageStudy = handLuggageStudy;
 		this.loadFactor = loadFactor;
 	}
@@ -98,16 +82,6 @@ public class DefineBatchSimulationInput extends CDTCommand {
 	 *            the study
 	 */
 	public DefineBatchSimulationInput(ArrayList<String> study) {
-		try {
-			if (ECPUtil.getECPProjectManager().getProjects() != null) {
-				this.cabin = (Cabin) ECPUtil.getECPProjectManager()
-						.getProject(PAXeleratePreferencePage.DEFAULT_PROJECT_NAME).getContents().get(0);
-				this.simSettings = this.cabin.getSimulationSettings();
-			}
-		} catch (NullPointerException e) {
-			Log.add(this, "Could not find any project or model!");
-			e.printStackTrace();
-		}
 		this.studyParameters = study;
 		this.csvImport = true;
 	}
@@ -118,6 +92,9 @@ public class DefineBatchSimulationInput extends CDTCommand {
 	public final void doRun() {
 		// Create separate thread
 		Job job = new Job("Define Simulation Input Thread") {
+
+			private Cabin cabin;
+			private SimulationProperties simSettings;
 
 			/*
 			 * (non-Javadoc)
@@ -130,6 +107,19 @@ public class DefineBatchSimulationInput extends CDTCommand {
 			protected IStatus run(final IProgressMonitor monitor) {
 
 				Log.add(this, "Setting study parameters ...");
+				
+				try {
+					if (ECPUtil.getECPProjectManager().getProjects() != null) {
+						cabin = (Cabin) ECPUtil.getECPProjectManager()
+								.getProject(PAXeleratePreferencePage.DEFAULT_PROJECT_NAME).getContents().get(0);
+						simSettings = cabin.getSimulationSettings();
+					}
+				} catch (NullPointerException e) {
+					Log.add(this, "Could not find any project or model!");
+					e.printStackTrace();
+					return Status.CANCEL_STATUS;
+				}
+				
 
 				Display.getDefault().syncExec(new Runnable() {
 					@Override

@@ -1861,6 +1861,15 @@ public class CabinPackageImpl extends EPackageImpl implements CabinPackage {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationResult_SimulationTime() {
+        return (EAttribute)getSimulationResult().getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->.
 	 *
 	 * @return the passenger properties

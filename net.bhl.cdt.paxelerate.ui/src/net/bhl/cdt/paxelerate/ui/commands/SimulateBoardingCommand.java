@@ -46,13 +46,14 @@ import net.bhl.cdt.paxelerate.ui.views.ViewPartHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.output.ExcelExport;
+import net.bhl.cdt.paxelerate.util.time.StopWatch;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * This command starts the boarding simulation.
  * 
  * @author marc.engelmann, michael.schmidt
- * @version 1.0
+ * @version 0.8
  * @since 0.5
  */
 
@@ -149,7 +150,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 					/* records the failed simulation run */
 					if (developerMode) {
 						SimulationResultLogger results = new SimulationResultLogger();
-						results.getSimulationData(cabin, simulationLoop, 0, 0, 0);
+						results.getSimulationData(cabin, simulationLoop, 0, 0, 0, 0);
 
 						try {
 							exportResultData();
@@ -293,6 +294,9 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 				Log.add(this, "Initializing new simulation run " + simulationLoop);
 
+				StopWatch simTimer = new StopWatch();
+				simTimer.start();
+
 				CabinViewPart cabinViewPart = ViewPartHelper.getCabinView();
 
 				/* reset simulation in case of previous existing objects. */
@@ -340,6 +344,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 
 					simulationStatus();
 					if (agentSleepCheck()) {
+						simTimer.stop();
 						return Status.CANCEL_STATUS;
 					}
 
@@ -362,13 +367,16 @@ public class SimulateBoardingCommand extends CDTCommand {
 					simulationFrame.dispose();
 				}
 
+				simTimer.stop();
+
 				/* saves results to results model element */
 				SimulationResultLogger results = new SimulationResultLogger();
 
 				results.getSimulationData(cabin, simulationLoop,
 						SimulationHandler.getMasterBoardingTime().getElapsedTime()
 								* cabin.getSimulationSettings().getSimulationSpeedFactor() / 1000,
-						SimulationHandler.getNumberWaymakingSkipped(), SimulationHandler.getNumberWaymakingCompleted());
+						simTimer.getElapsedTimeMins(), SimulationHandler.getNumberWaymakingSkipped(),
+						SimulationHandler.getNumberWaymakingCompleted());
 
 				/* data export */
 				if (cabin.getSimulationSettings().isDataExport()) {

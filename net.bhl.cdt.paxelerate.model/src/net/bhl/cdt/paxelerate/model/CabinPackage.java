@@ -2049,13 +2049,22 @@ public interface CabinPackage extends EPackage {
 	int SIMULATION_RESULT__LAYOUT_CONCEPT_TYPE = 8;
 
 	/**
+	 * The feature id for the '<em><b>Simulation Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_RESULT__SIMULATION_TIME = 9;
+
+	/**
 	 * The number of structural features of the '<em>Simulation Result</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMULATION_RESULT_FEATURE_COUNT = 9;
+	int SIMULATION_RESULT_FEATURE_COUNT = 10;
 
 	/**
 	 * The number of operations of the '<em>Simulation Result</em>' class.
@@ -3951,6 +3960,17 @@ public interface CabinPackage extends EPackage {
 	EAttribute getSimulationResult_LayoutConceptType();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.bhl.cdt.paxelerate.model.SimulationResult#getSimulationTime <em>Simulation Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Simulation Time</em>'.
+	 * @see net.bhl.cdt.paxelerate.model.SimulationResult#getSimulationTime()
+	 * @see #getSimulationResult()
+	 * @generated
+	 */
+	EAttribute getSimulationResult_SimulationTime();
+
+	/**
 	 * Returns the meta object for class '{@link net.bhl.cdt.paxelerate.model.PassengerProperties <em>Passenger Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5472,6 +5492,13 @@ public interface CabinPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SIMULATION_RESULT__LAYOUT_CONCEPT_TYPE = eINSTANCE.getSimulationResult_LayoutConceptType();
+		/**
+		 * The meta object literal for the '<em><b>Simulation Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_RESULT__SIMULATION_TIME = eINSTANCE.getSimulationResult_SimulationTime();
 		/**
 		 * The meta object literal for the '{@link net.bhl.cdt.paxelerate.model.impl.PassengerPropertiesImpl <em>Passenger Properties</em>}' class.
 		 * <!-- begin-user-doc -->

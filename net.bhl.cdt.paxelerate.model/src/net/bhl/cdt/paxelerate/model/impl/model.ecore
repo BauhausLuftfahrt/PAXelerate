@@ -279,6 +279,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="waymakingCompleted" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="layoutConceptType" lowerBound="1"
         eType="#//LayoutConcept" defaultValueLiteral="Default"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="simulationTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="LuggageSize">
     <eLiterals name="small"/>

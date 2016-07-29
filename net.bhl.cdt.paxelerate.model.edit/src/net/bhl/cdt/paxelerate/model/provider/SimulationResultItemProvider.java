@@ -65,6 +65,7 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 			addWaymakingSkippedPropertyDescriptor(object);
 			addWaymakingCompletedPropertyDescriptor(object);
 			addLayoutConceptTypePropertyDescriptor(object);
+			addSimulationTimePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -270,6 +271,28 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 	}
 
 	/**
+	 * This adds a property descriptor for the Simulation Time feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSimulationTimePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimulationResult_simulationTime_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimulationResult_simulationTime_feature", "_UI_SimulationResult_type"),
+				 CabinPackage.Literals.SIMULATION_RESULT__SIMULATION_TIME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns SimulationResult.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -316,6 +339,7 @@ public class SimulationResultItemProvider extends ItemProviderAdapter implements
 			case CabinPackage.SIMULATION_RESULT__WAYMAKING_SKIPPED:
 			case CabinPackage.SIMULATION_RESULT__WAYMAKING_COMPLETED:
 			case CabinPackage.SIMULATION_RESULT__LAYOUT_CONCEPT_TYPE:
+			case CabinPackage.SIMULATION_RESULT__SIMULATION_TIME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

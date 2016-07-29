@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationResult#getWaymakingSkipped <em>Waymaking Skipped</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationResult#getWaymakingCompleted <em>Waymaking Completed</em>}</li>
  *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationResult#getLayoutConceptType <em>Layout Concept Type</em>}</li>
+ *   <li>{@link net.bhl.cdt.paxelerate.model.SimulationResult#getSimulationTime <em>Simulation Time</em>}</li>
  * </ul>
  *
  * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationResult()
@@ -268,5 +269,32 @@ public interface SimulationResult extends EObject {
 	 * @generated
 	 */
 	void setLayoutConceptType(LayoutConcept value);
+
+	/**
+	 * Returns the value of the '<em><b>Simulation Time</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Simulation Time</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Simulation Time</em>' attribute.
+	 * @see #setSimulationTime(double)
+	 * @see net.bhl.cdt.paxelerate.model.CabinPackage#getSimulationResult_SimulationTime()
+	 * @model default="0"
+	 * @generated
+	 */
+	double getSimulationTime();
+
+	/**
+	 * Sets the value of the '{@link net.bhl.cdt.paxelerate.model.SimulationResult#getSimulationTime <em>Simulation Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Simulation Time</em>' attribute.
+	 * @see #getSimulationTime()
+	 * @generated
+	 */
+	void setSimulationTime(double value);
 
 } // SimulationResult

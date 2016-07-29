@@ -290,7 +290,7 @@ public class ExportDataCommand extends CDTCommand {
 		 */
 
 		for (SimulationResult result : cabin.getSimulationSettings().getResults()) {
-			exporter.addColumnElement(result.getId());
+			exporter.addColumnElement(result.getSimulationTime());
 			exporter.addColumnElement(result.getPassengers());
 			exporter.addColumnElement(TimeHelper.toTimeOfDay(result.getBoardingTime()));
 			exporter.addColumnElement(result.getWaymakingSkipped());
