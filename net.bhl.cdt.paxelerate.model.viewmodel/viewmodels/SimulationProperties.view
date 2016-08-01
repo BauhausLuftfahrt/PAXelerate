@@ -53,8 +53,8 @@
     </children>
     <children xsi:type="org.eclipse.emf.ecp.view.group.model:Group" xmi:id="_QMcK0Ot3EeWI07VLAZFAFw" name="Passenger">
       <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAveWqS_EeWGjpaobu8CIA" name="Control passengersBoardingPerMinute">
-        <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_cJLw0NVWEeWEPo3DdOyvxA">
-          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/passengersBoardingPerMinute"/>
+        <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference" xmi:id="_ctyCQFflEeakjKXJ66se_Q">
+          <domainModelEFeature xsi:type="ecore:EAttribute" href="http://net.bhl.cdt.paxelerate.model/#//SimulationProperties/passengersBoardingDoor"/>
         </domainModelReference>
       </children>
       <children xsi:type="org.eclipse.emf.ecp.view.model:Control" xmi:id="_NAwFjqS_EeWGjpaobu8CIA" name="Control sorting">
