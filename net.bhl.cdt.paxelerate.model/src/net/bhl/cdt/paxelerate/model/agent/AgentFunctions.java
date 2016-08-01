@@ -260,13 +260,12 @@ public class AgentFunctions {
 	private static boolean checkSeatLocation(Seat checkSeat, Seat mySeat,
 			String letter) {
 
-		if (letter.contains(checkSeat.getLetter())) {
-			if (letter.contains(mySeat.getLetter())) {
-				return true;
-			}
+		if (letter.contains(checkSeat.getLetter())
+				&& letter.contains(mySeat.getLetter())) {
+			return true;
+		} else {
+			return false;
 		}
-		return false;
-
 	}
 
 	/**
