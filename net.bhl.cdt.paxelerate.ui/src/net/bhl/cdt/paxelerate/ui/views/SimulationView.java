@@ -29,6 +29,7 @@ import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.model.astar.node.Node;
 import net.bhl.cdt.paxelerate.util.math.DecimalHelper;
 import net.bhl.cdt.paxelerate.util.time.TimeHelper;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 import net.bhl.cdt.paxelerate.util.toOpenCDT.Screen;
 
 /**
@@ -75,11 +76,10 @@ public class SimulationView extends JPanel implements MouseListener {
 				while (true) {
 					try {
 						repaint();
-
 						Thread.sleep(1000 / fps);
 					} catch (InterruptedException e) {
-						e.printStackTrace();
-						System.out.println("InterruptedException @ thread " + Thread.currentThread().getName());
+						Log.add(this, "SimulationView: InterruptedException @ thread " + Thread.currentThread().getName());
+						e.printStackTrace();						
 						Thread.currentThread().interrupt();
 					}
 				}
@@ -294,8 +294,10 @@ public class SimulationView extends JPanel implements MouseListener {
 			}
 
 		} catch (NullPointerException e) {
+			Log.add(this, "SimulationView: NullPointerException");
 			e.printStackTrace();
 		} catch (ConcurrentModificationException e) {
+			Log.add(this, "SimulationView: ConcurrentModificationException");
 			e.printStackTrace();
 		}
 

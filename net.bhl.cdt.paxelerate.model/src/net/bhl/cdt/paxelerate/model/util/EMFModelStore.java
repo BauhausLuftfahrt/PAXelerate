@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.SimulationProperties;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * This class is used to store data locally by using the EMF Persistence API.
@@ -41,7 +42,7 @@ public class EMFModelStore {
 	 * @param submittedCabin
 	 *            The cabin object which should be stored.
 	 */
-	public static synchronized void store(Cabin submittedCabin) {
+	public synchronized void store(Cabin submittedCabin) {
 
 		/* The cabin object is copied for local storage first */
 		Cabin cabin = EcoreUtil.copy(submittedCabin);
@@ -76,6 +77,7 @@ public class EMFModelStore {
 			System.out.println("Cabin has been saved locally.");
 
 		} catch (IOException e) {
+			Log.add(this, "EMFModelStore: Cabin could not been saved locally - IOException");
 			e.printStackTrace();
 		}
 	}

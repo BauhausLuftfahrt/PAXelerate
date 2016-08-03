@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import net.bhl.cdt.paxelerate.model.astar.node.Node;
 import net.bhl.cdt.paxelerate.util.math.Vector;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * Path is a list of nodes which represent the calculated shortest path.
@@ -174,6 +175,7 @@ public class Path {
 				}
 				i++;
 			} catch (IndexOutOfBoundsException e) {
+				Log.add(this, "Path: IndexOutOfBoundsException");
 				e.printStackTrace();
 				break;
 			}

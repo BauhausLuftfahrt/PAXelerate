@@ -150,12 +150,13 @@ public class CabinViewPart extends ViewPart {
 	/**
 	 * This method creates a new directors if it does not exist yet.
 	 */
-	public static void makeDirectory() {
+	public void makeDirectory() {
 		if (!storageFolder.exists()) {
 			try {
 				storageFolder.mkdir();
-			} catch (SecurityException se) {
-				se.printStackTrace();
+			} catch (SecurityException e) {
+				Log.add(this, "SecurityException");
+				e.printStackTrace();
 			}
 		}
 	}
@@ -713,7 +714,7 @@ public class CabinViewPart extends ViewPart {
 			System.out.println("redraw!");
 			disposeAll();
 		} catch (IllegalArgumentException e) {
-			System.out.println("illegal argument exception!");
+			Log.add(this, "CabinViewPart: IllegalArgumentException");
 			e.printStackTrace();
 
 		}

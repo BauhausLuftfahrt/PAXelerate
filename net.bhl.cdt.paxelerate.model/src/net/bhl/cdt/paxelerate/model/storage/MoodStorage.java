@@ -1,6 +1,7 @@
 package net.bhl.cdt.paxelerate.model.storage;
 
 import net.bhl.cdt.paxelerate.model.PassengerMood;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * The Class MoodStorage.
@@ -85,6 +86,7 @@ public class MoodStorage {
 
 			}
 		} catch (ArithmeticException e) {
+			Log.add(this, "Storage: ArithmeticException");
 			e.printStackTrace();
 			return 0;
 		}

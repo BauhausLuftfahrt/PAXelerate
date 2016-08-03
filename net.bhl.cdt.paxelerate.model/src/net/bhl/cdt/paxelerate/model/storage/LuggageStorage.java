@@ -5,7 +5,10 @@
  ******************************************************************************/
 package net.bhl.cdt.paxelerate.model.storage;
 
+import java.util.ConcurrentModificationException;
+
 import net.bhl.cdt.paxelerate.model.LuggageSize;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * The Class LuggageStorage.
@@ -96,6 +99,7 @@ public class LuggageStorage {
 				return bigLuggageCount / (double) counter;
 			}
 		} catch (ArithmeticException e) {
+			Log.add(this, "Storage: ArithmeticException");
 			e.printStackTrace();
 			return 0;
 		}

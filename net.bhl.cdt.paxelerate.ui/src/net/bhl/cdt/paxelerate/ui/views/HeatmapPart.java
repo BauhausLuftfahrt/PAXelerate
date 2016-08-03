@@ -27,6 +27,7 @@ import net.bhl.cdt.paxelerate.ui.graphics.ColorHelper;
 import net.bhl.cdt.paxelerate.ui.graphics.SWTHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * This class represents the heat map view.
@@ -282,6 +283,7 @@ public class HeatmapPart extends ViewPart {
 
 		} catch (IllegalArgumentException e) {
 			image = new Image(parent.getDisplay(), 10, 10);
+			Log.add(this, "Heatmap: IllegalArgumentException");
 			e.printStackTrace();
 		}
 
@@ -366,7 +368,7 @@ public class HeatmapPart extends ViewPart {
 			disposeAll();
 
 		} catch (IllegalArgumentException e) {
-			System.out.println("illegal argument exception!");
+			Log.add(this, "Heatmap: IllegalArgumentException");
 			e.printStackTrace();
 
 		}

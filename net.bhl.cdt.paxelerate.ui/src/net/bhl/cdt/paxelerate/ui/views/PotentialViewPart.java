@@ -21,6 +21,7 @@ import net.bhl.cdt.paxelerate.ui.graphics.FontHelper;
 import net.bhl.cdt.paxelerate.ui.graphics.SWTHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * This class represents the potential view. All graphics generation is done
@@ -175,10 +176,8 @@ public class PotentialViewPart extends ViewPart {
 
 				}
 			});
-		} catch (
-
-		IllegalArgumentException e) {
-			System.out.println("illegal argument exception!");
+		} catch (IllegalArgumentException e) {
+			Log.add(this, "PotentialView: IllegalArgumentException");
 			e.printStackTrace();
 
 		}

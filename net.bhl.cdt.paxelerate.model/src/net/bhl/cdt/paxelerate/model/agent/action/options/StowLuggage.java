@@ -11,6 +11,7 @@ import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.agent.action.AgentActionType;
 import net.bhl.cdt.paxelerate.model.agent.enums.State;
 import net.bhl.cdt.paxelerate.model.astar.AStarHelper;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * 
@@ -45,7 +46,7 @@ public class StowLuggage extends AgentActionType {
 				agent.increaseTotalWaitingTime(sleepTime);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
-				System.out.println("InterruptedException @ thread "
+				Log.add(this,"InterruptedException @ thread "
 						+ Thread.currentThread().getName());
 				Thread.currentThread().interrupt();
 			}

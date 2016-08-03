@@ -224,8 +224,8 @@ public class CabinGenerator {
 			try {
 				obj.setXDimension(xDimension);
 			} catch (NullPointerException e) {
-				Log.add(this, "Define the seat dimensions");
-				//e.printStackTrace();
+				Log.add(this, "Cabin generator: Define the seat dimensions - NullPointerException");
+				e.printStackTrace();
 			}
 			
 			
@@ -235,7 +235,8 @@ public class CabinGenerator {
 						* (tc.getYDimensionOfSeats() + seatHelper)
 						+ seatHelper);
 			} catch (NullPointerException e) {
-				//e.printStackTrace();
+				Log.add(this, "Cabin generator: seat position - NullPointerException");
+				e.printStackTrace();
 				obj.setYDimension((cabin.getYDimension()
 						- numberOfAisles * cabin.getAisleWidth())
 						/ (numberOfAisles + 1));

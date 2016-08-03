@@ -15,6 +15,7 @@ import net.bhl.cdt.paxelerate.model.agent.AgentFunctions;
 import net.bhl.cdt.paxelerate.model.agent.action.AgentActionType;
 import net.bhl.cdt.paxelerate.model.agent.enums.State;
 import net.bhl.cdt.paxelerate.util.math.MathHelper;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * 
@@ -67,11 +68,14 @@ public class Step extends AgentActionType {
 
 			/* catch possible errors */
 		} catch (ConcurrentModificationException e) {
+			Log.add(this, "Agent action: ConcurrentModificationException");
 			e.printStackTrace();
-		} catch (ArrayIndexOutOfBoundsException a) {
-			a.printStackTrace();
-		} catch (SWTException swt) {
-			swt.printStackTrace();
+		} catch (ArrayIndexOutOfBoundsException e) {
+			Log.add(this, "Agent action: ArrayIndexOutOfBoundsException");
+			e.printStackTrace();
+		} catch (SWTException e) {
+			Log.add(this, "Agent action: SWTException");
+			e.printStackTrace();
 		}
 
 	}

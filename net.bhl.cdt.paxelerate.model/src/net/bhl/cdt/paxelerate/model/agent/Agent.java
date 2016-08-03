@@ -42,6 +42,7 @@ import net.bhl.cdt.paxelerate.util.math.GaussianRandom;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.time.StopWatch;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * This class is the agent object. It walks a specific calculated path and
@@ -945,8 +946,8 @@ public class Agent extends Subject implements Runnable {
 			System.out.println("Sleeping!");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-			System.out.println("Sleeping not possible!");
-			System.out.println("InterruptedException @ thread "
+			Log.add(this, "Agent: Sleeping not possible!");
+			Log.add(this, "InterruptedException @ thread "
 					+ Thread.currentThread().getName());
 			Thread.currentThread().interrupt();
 		}
@@ -1229,10 +1230,12 @@ public class Agent extends Subject implements Runnable {
 		} catch (InterruptedException e) {
 			e = new InterruptedException(
 					" @ thread " + Thread.currentThread().getName());
+			Log.add(this, "Agent: InterruptedException @ thread " + Thread.currentThread().getName());
 			e.printStackTrace();
 			Thread.currentThread().interrupt();
 
 		} catch (ConcurrentModificationException e) {
+			Log.add(this, "Agent: ConcurrentModificationException");
 			e.printStackTrace();
 		}
 	}
@@ -1400,11 +1403,12 @@ public class Agent extends Subject implements Runnable {
 			performFinalElements();
 
 		} catch (InterruptedException e) {
-			e.printStackTrace();
-			System.out.println("InterruptedException @ thread "
+			Log.add(this, "Agent: InterruptedException @ thread "
 					+ Thread.currentThread().getName());
+			e.printStackTrace();
 			Thread.currentThread().interrupt();
 		} catch (ConcurrentModificationException e) {
+			Log.add(this, "Agent: ConcurrentModificationException");
 			e.printStackTrace();
 		}
 	}

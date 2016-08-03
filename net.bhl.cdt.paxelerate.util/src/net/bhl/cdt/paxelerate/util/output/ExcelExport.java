@@ -60,8 +60,9 @@ public class ExcelExport {
 		try {
 			this.writer = new FileWriter(filePath + fileName + ".xls", true);
 		} catch (IOException e) {
+			Log.add(this, "File export: Cannot open file - IOException");
 			e.printStackTrace();
-			Log.add(this, "Cannot open file!");
+			
 		}
 	}
 

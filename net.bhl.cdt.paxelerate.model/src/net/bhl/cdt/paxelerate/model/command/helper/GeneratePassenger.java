@@ -181,10 +181,11 @@ public class GeneratePassenger {
 							totalCount++;
 
 						} catch (ConcurrentModificationException e) {
+							Log.add(this, "ConcurrentModificationException: Passenger generation aborted!");
 							e.printStackTrace();
 						} catch (NullPointerException e) {
+							Log.add(this, "NullPointerException: Passenger generation aborted!");
 							e.printStackTrace();
-							Log.add(this, "Passenger generation aborted!");
 						}
 
 					}

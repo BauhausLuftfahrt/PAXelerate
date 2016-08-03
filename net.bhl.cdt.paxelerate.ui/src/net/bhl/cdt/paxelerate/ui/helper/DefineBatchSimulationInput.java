@@ -314,7 +314,7 @@ public class DefineBatchSimulationInput extends CDTCommand {
 			job.join();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-			System.out.println("InterruptedException @ thread " + Thread.currentThread().getName());
+			Log.add(this, "InterruptedException @ thread " + Thread.currentThread().getName());
 			Thread.currentThread().interrupt();
 		}
 	}

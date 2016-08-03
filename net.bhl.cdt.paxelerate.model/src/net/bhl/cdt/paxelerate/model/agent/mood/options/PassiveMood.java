@@ -9,6 +9,7 @@ import net.bhl.cdt.paxelerate.model.agent.Agent;
 import net.bhl.cdt.paxelerate.model.agent.enums.Property;
 import net.bhl.cdt.paxelerate.model.agent.mood.AgentMood;
 import net.bhl.cdt.paxelerate.model.astar.AStarHelper;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * The Class PassiveMood.
@@ -48,7 +49,7 @@ public class PassiveMood extends AgentMood {
 					AStarHelper.time(agent.getWaitingTimeAfterCollision()));
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-			System.out.println("InterruptedException @ thread "
+			Log.add(this, "Agent mood: InterruptedException @ thread "
 					+ Thread.currentThread().getName());
 			Thread.currentThread().interrupt();
 		}

@@ -15,6 +15,7 @@ import net.bhl.cdt.paxelerate.model.astar.AStarHelper;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.util.math.GaussOptions;
 import net.bhl.cdt.paxelerate.util.math.GaussianRandom;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * 
@@ -54,6 +55,7 @@ public class WaitForClearing extends AgentActionType {
 					agent.getThread()
 							.sleep((simSettings.getThreadSleepTimeDefault()));
 				} catch (InterruptedException e) {
+					Log.add(this, "Agent action: InterruptedException");
 					e.printStackTrace();
 				}
 			}
@@ -82,6 +84,7 @@ public class WaitForClearing extends AgentActionType {
 				try {
 					agent.getThread().sleep(sleepTime);
 				} catch (InterruptedException e) {
+					Log.add(this, "Agent action: InterruptedException");
 					e.printStackTrace();
 				}
 				agent.raiseNumberOfSkippedWaymakings();
@@ -103,6 +106,7 @@ public class WaitForClearing extends AgentActionType {
 					try {
 						Thread.sleep(simSettings.getThreadSleepTimeDefault());
 					} catch (InterruptedException e) {
+						Log.add(this, "Agent action: InterruptedException");
 						e.printStackTrace();
 					}
 				}
@@ -114,6 +118,7 @@ public class WaitForClearing extends AgentActionType {
 				try {
 					agent.getThread().sleep(sleepTime);
 				} catch (InterruptedException e) {
+					Log.add(this, "Agent action: InterruptedException");
 					e.printStackTrace();
 				}
 				agent.raiseNumberOfCompletedWaymakings();

@@ -74,7 +74,7 @@ public class GenerateCabinCommand extends CDTCommand {
 			try {
 				cabinViewPart.unsyncViewer();
 			} catch (NullPointerException e) {
-				Log.add(this, "No cabin view is visible!");
+				Log.add(this, "NullPointerException: No cabin view is visible!");
 				e.printStackTrace();
 			}
 		}		
@@ -92,7 +92,7 @@ public class GenerateCabinCommand extends CDTCommand {
 				try {
 					cabinViewPart.syncViewer();
 				} catch (NullPointerException e) {
-					Log.add(this, "No cabin view is visible!");
+					Log.add(this, "NullPointerException: No cabin view is visible!");
 					e.printStackTrace();
 				}
 			}

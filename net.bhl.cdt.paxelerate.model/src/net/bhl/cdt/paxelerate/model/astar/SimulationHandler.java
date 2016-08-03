@@ -328,6 +328,7 @@ public class SimulationHandler {
 		try {
 			pathFinder.getThread().join();
 		} catch (InterruptedException e) {
+			//Log.add(this, "SimulationHandler: InterruptedException");
 			e.printStackTrace();
 		}
 		
@@ -524,7 +525,7 @@ public class SimulationHandler {
 
 				/* Warn if no path can be found */
 			} catch (NullPointerException e) {
-				System.out.println("Passenger " + agent.getPassenger().getName()
+				Log.add(this, "Passenger " + agent.getPassenger().getName()
 						+ " can not find a path to the seat at "
 						+ agent.getGoal().getX() + " / "
 						+ agent.getGoal().getY());
@@ -541,6 +542,7 @@ public class SimulationHandler {
 			try {
 				thread.join();
 			} catch (InterruptedException e) {
+				Log.add(this, "SimulationHandler: InterruptedException");
 				e.printStackTrace();
 			}
 		}

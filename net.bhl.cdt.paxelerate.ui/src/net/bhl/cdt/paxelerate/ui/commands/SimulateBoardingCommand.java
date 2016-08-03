@@ -155,6 +155,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 						try {
 							exportResultData();
 						} catch (IOException e) {
+							Log.add(this, "IOException: results export failed");
 							e.printStackTrace();
 						}
 					}
@@ -352,7 +353,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 						Thread.sleep(10000 / cabin.getSimulationSettings().getSimulationSpeedFactor());
 					} catch (InterruptedException e) {
 						e.printStackTrace();
-						System.out.println("InterruptedException @ thread " + Thread.currentThread().getName());
+						Log.add(this, "InterruptedException @ thread " + Thread.currentThread().getName());
 						Thread.currentThread().interrupt();
 					}
 
@@ -383,6 +384,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 					try {
 						exportResultData();
 					} catch (IOException e) {
+						Log.add(this, "IOException: results export failed");
 						e.printStackTrace();
 					}
 				}
@@ -443,7 +445,7 @@ public class SimulateBoardingCommand extends CDTCommand {
 			job.join();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-			System.out.println("InterruptedException @ thread " + Thread.currentThread().getName());
+			Log.add(this, "InterruptedException @ thread " + Thread.currentThread().getName());
 			Thread.currentThread().interrupt();
 		}
 	}

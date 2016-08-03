@@ -59,7 +59,7 @@ public class RunBatchSimulationCommand extends CDTCommand {
 			Log.add(this, "Study data import completed");
 			return data;
 		} catch (IOException e) {
-			Log.add(this, "Data import failed!");
+			Log.add(this, "IOException: Data import failed!");
 			return null;
 		}
 		

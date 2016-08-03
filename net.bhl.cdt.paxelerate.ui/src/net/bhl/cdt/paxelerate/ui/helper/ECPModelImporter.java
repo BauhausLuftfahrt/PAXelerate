@@ -171,6 +171,7 @@ public class ECPModelImporter extends CDTCommand {
 					Log.add(this, "...cabin loaded!");
 
 				} catch (ECPProjectWithNameExistsException e) {
+					Log.add(this, "ECPProjectWithNameExistsException");
 					e.printStackTrace();
 					return Status.CANCEL_STATUS;
 				}
@@ -199,8 +200,8 @@ public class ECPModelImporter extends CDTCommand {
 			/* schedule job after previous is finished */
 			job.join();
 		} catch (InterruptedException e) {
-			e.printStackTrace();
-			System.out.println("InterruptedException @ thread " + Thread.currentThread().getName());
+			Log.add(this, "InterruptedException @ thread " + Thread.currentThread().getName());
+			e.printStackTrace();			
 			Thread.currentThread().interrupt();
 		}
 	}

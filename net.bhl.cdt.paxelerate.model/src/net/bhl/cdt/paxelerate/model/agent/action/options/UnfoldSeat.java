@@ -17,6 +17,7 @@ import net.bhl.cdt.paxelerate.model.astar.AStarHelper;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.util.math.GaussOptions;
 import net.bhl.cdt.paxelerate.util.math.GaussianRandom;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * 
@@ -95,7 +96,7 @@ public class UnfoldSeat extends AgentActionType {
 			Thread.sleep(AStarHelper.time(d));
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-			System.out.println("InterruptedException @ thread "
+			Log.add(this,"InterruptedException @ thread "
 					+ Thread.currentThread().getName());
 			Thread.currentThread().interrupt();
 		}

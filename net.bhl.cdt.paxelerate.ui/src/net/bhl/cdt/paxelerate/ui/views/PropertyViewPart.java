@@ -31,6 +31,7 @@ import net.bhl.cdt.paxelerate.ui.graphics.FontHelper;
 import net.bhl.cdt.paxelerate.ui.graphics.SWTHelper;
 import net.bhl.cdt.paxelerate.util.math.Vector;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * This class represents the cabin view. All graphics generation is done here.
@@ -209,7 +210,10 @@ public class PropertyViewPart extends ViewPart {
 				}
 			});
 		} catch (IllegalArgumentException e) {
-			System.out.println("illegal argument exception!");
+			Log.add(this,"IllegalArgumentException: could not update property view.");
+			e.printStackTrace();
+		} catch (ArrayIndexOutOfBoundsException e) {
+			Log.add(this,"ArrayIndexOutOfBoundsException: could not update property view.");
 			e.printStackTrace();
 		}
 	}

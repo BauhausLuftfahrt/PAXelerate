@@ -413,8 +413,8 @@ public class ExportDataCommand extends CDTCommand {
 			getSimulationPropertiesData();
 			exporter.closeFile();
 		} catch (IOException e) {
-			e.printStackTrace();
-			Log.add(this, "Data export failed!");
+			Log.add(this, "IOException: Data export failed!");
+			e.printStackTrace();			
 		}
 	}
 

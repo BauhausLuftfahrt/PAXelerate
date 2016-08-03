@@ -98,7 +98,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 								try {
 									cabinViewPart.unsyncViewer();
 								} catch (NullPointerException e) {
-									Log.add(this, "No property view is visible!");
+									Log.add(this, "NullPointerException: No property view is visible!");
 									e.printStackTrace();
 								}
 							}
@@ -125,7 +125,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 								try {
 									propertyViewPart.updateUI(cabin);
 								} catch (NullPointerException e) {
-									Log.add(this, "No property view is visible!");
+									Log.add(this, "NullPointerException: No property view is visible!");
 									e.printStackTrace();
 								}
 							}
@@ -136,7 +136,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 									cabinViewPart.syncViewer();
 									cabinViewPart.setCabin(cabin);
 								} catch (NullPointerException e) {
-									Log.add(this, "No cabin view is visible!");
+									Log.add(this, "NullPointerException: No cabin view is visible!");
 									e.printStackTrace();
 								}
 							}
@@ -144,7 +144,7 @@ public class GeneratePassengersCommand extends CDTCommand {
 							try {
 								new RefreshCabinViewCommand(cabin).doRun();
 							} catch (NullPointerException e) {
-								Log.add(this, "Cabin View could not be refreshed");
+								Log.add(this, "NullPointerException: Cabin View could not be refreshed");
 								e.printStackTrace();
 							}
 						}
@@ -172,8 +172,8 @@ public class GeneratePassengersCommand extends CDTCommand {
 			/* schedule job after previous is finished */
 			job.join();
 		} catch (InterruptedException e) {
+			Log.add(this, "InterruptedException @ thread " + Thread.currentThread().getName());
 			e.printStackTrace();
-			System.out.println("InterruptedException @ thread " + Thread.currentThread().getName());
 			Thread.currentThread().interrupt();
 		}
 	}

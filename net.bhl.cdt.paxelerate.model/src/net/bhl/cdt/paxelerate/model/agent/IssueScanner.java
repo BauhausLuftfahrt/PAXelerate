@@ -13,6 +13,7 @@ import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.model.observer.Subject;
 import net.bhl.cdt.paxelerate.util.math.Vector3D;
 import net.bhl.cdt.paxelerate.util.time.StopWatch;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * The Class IssueScanner.
@@ -69,7 +70,7 @@ public class IssueScanner extends Subject implements Runnable {
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
-				System.out.println("InterruptedException @ thread "
+				Log.add(this, "Issue scanner: InterruptedException @ thread "
 						+ Thread.currentThread().getName());
 				Thread.currentThread().interrupt();
 			}
