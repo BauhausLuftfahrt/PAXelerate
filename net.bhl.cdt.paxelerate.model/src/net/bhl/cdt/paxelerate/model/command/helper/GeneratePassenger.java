@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.ConcurrentModificationException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import net.bhl.cdt.model.util.ModelHelper;
@@ -110,17 +111,19 @@ public class GeneratePassenger {
 	 * @return the seat which is linked to the passenger
 	 */
 	private Seat getSeat(final Passenger passenger) {
-
-		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
-			if ((seat.getId() == passenger.getSeatID())) {
-				seat.setPassenger(passenger);
-				return seat;
+		List<Seat> seats = ModelHelper.getChildrenByClass(cabin, Seat.class);
+		if (seats.size() == 0) {
+			Log.add(this, "No seats found!");
+			return null;
+		} else {
+			for (Seat seat : seats) {
+				if ((seat.getId() == passenger.getSeatID())) {
+					seat.setPassenger(passenger);
+					return seat;
+				}
 			}
+			return null;
 		}
-
-		Log.add(this, "No seat found!");
-
-		return null;
 	}
 
 	/**
@@ -181,10 +184,12 @@ public class GeneratePassenger {
 							totalCount++;
 
 						} catch (ConcurrentModificationException e) {
-							Log.add(this, "ConcurrentModificationException: Passenger generation aborted!");
+							Log.add(this,
+									"ConcurrentModificationException: Passenger generation aborted!");
 							e.printStackTrace();
 						} catch (NullPointerException e) {
-							Log.add(this, "NullPointerException: Passenger generation aborted!");
+							Log.add(this,
+									"NullPointerException: Passenger generation aborted!");
 							e.printStackTrace();
 						}
 

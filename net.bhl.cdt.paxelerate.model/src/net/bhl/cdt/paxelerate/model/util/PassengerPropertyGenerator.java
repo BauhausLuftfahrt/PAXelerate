@@ -78,8 +78,9 @@ public class PassengerPropertyGenerator {
 
 		luggageSettings = ModelHelper.getParent(Cabin.class, passenger)
 				.getSimulationSettings().getLuggageProperties();
-
-		walkingSpeedFactor = paxSettings.getPassengerWalkingSpeedFactor();
+		
+		if(paxSettings != null && luggageSettings != null) {
+			walkingSpeedFactor = paxSettings.getPassengerWalkingSpeedFactor();
 
 		/* At first. decide for the sex. */
 		passenger.setSex(switchRandomSex(paxSettings.getPercentageOfWomen()));
@@ -130,6 +131,9 @@ public class PassengerPropertyGenerator {
 		/* Define the luggage distance from seat randomly **/
 		passenger.setLuggageStowDistance(
 				DecimalHelper.round(defineLuggageStowDistance(), 2));
+		} else {
+			Log.add(this, "PassengerPropertyGenerator: could not identify cabin model element!");
+		}	
 	}
 
 	/**

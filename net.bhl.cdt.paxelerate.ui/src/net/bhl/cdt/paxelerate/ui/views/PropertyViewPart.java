@@ -210,10 +210,10 @@ public class PropertyViewPart extends ViewPart {
 				}
 			});
 		} catch (IllegalArgumentException e) {
-			Log.add(this,"IllegalArgumentException: could not update property view.");
+			Log.add(this, "IllegalArgumentException: could not update property view.");
 			e.printStackTrace();
 		} catch (ArrayIndexOutOfBoundsException e) {
-			Log.add(this,"ArrayIndexOutOfBoundsException: could not update property view.");
+			Log.add(this, "ArrayIndexOutOfBoundsException: could not update property view.");
 			e.printStackTrace();
 		}
 	}
@@ -284,32 +284,38 @@ public class PropertyViewPart extends ViewPart {
 	private void drawFunction(final PaintEvent e, final AgeStorage store, final Sex sex, final int steps, final int min,
 			final int max) {
 
-		int maximum = store.getMaximumAmount(sex), i = 0, x1 = 0, y1 = pos, x2 = 0, y2 = 0;
-		if (maximum == 0) {
-			maximum = 1;
+		try {
+			int maximum = store.getMaximumAmount(sex), i = 0, x1 = 0, y1 = pos, x2 = 0, y2 = 0;
+			if (maximum == 0) {
+				maximum = 1;
+			}
+
+			int maxHeight = maximum * 4; // TODO remove magic numbers
+
+			if (sex == Sex.MALE) {
+				e.gc.setForeground(ColorHelper.PASSENGER_MALE);
+			} else if (sex == Sex.FEMALE) {
+				e.gc.setForeground(ColorHelper.PASSEMGER_FEMALE);
+			} else {
+				e.gc.setForeground(ColorHelper.ERROR);
+			}
+
+			for (int k = min; k < max; k++) {
+				int value = store.getData(sex)[k];
+				x2 = i * dim.getX() / steps;
+				y2 = pos - (int) (((double) value / (double) maximum) * maxHeight);
+				e.gc.drawLine(x1, y1, x2, y2);
+				x1 = x2;
+				y1 = y2;
+				i++;
+			}
+
+			e.gc.setForeground(ColorHelper.BLACK);
+
+		} catch (ArrayIndexOutOfBoundsException ex) {
+			Log.add(this, "Property view part: ArrayIndexOutOfBoundsException");
+			ex.printStackTrace();
 		}
-
-		int maxHeight = maximum * 4; // TODO remove magic numbers
-
-		if (sex == Sex.MALE) {
-			e.gc.setForeground(ColorHelper.PASSENGER_MALE);
-		} else if (sex == Sex.FEMALE) {
-			e.gc.setForeground(ColorHelper.PASSEMGER_FEMALE);
-		} else {
-			e.gc.setForeground(ColorHelper.ERROR);
-		}
-
-		for (int k = min; k < max; k++) {
-			int value = store.getData(sex)[k];
-			x2 = i * dim.getX() / steps;
-			y2 = pos - (int) (((double) value / (double) maximum) * maxHeight);
-			e.gc.drawLine(x1, y1, x2, y2);
-			x1 = x2;
-			y1 = y2;
-			i++;
-		}
-
-		e.gc.setForeground(ColorHelper.BLACK);
 	}
 
 	/**
