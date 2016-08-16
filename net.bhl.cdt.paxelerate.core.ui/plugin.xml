@@ -337,4 +337,24 @@
             sequence="M1+L">
       </key>
    </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="net.bhl.cdt.client.application"
+            name="PAXelerate">
+         <property
+               name="aboutText"
+               value="PAXelerate.com (c) Bauhaus Luftfahrt e.V. 2014 - 2016">
+         </property>
+         <property
+               name="aboutImage"
+               value="/net.bhl.cdt.paxelerate.ui/images/about.png">
+         </property>
+         <property
+               name="appName"
+               value="PAXelerate">
+         </property>
+      </product>
+   </extension>
 </plugin>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="PAXelerate" uid="paxelerate" id="net.bhl.cdt.paxelerate.core.ui.paxelerateProduct" application="net.bhl.cdt.client.application" version="0.7.0.qualifier" useFeatures="false" includeLaunchers="true">
+<product name="PAXelerate" uid="paxelerate" id="net.bhl.cdt.paxelerate.core.ui.product" application="net.bhl.cdt.client.application" version="0.7.0.qualifier" useFeatures="false" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/net.bhl.cdt.paxelerate.ui/images/about.png"/>
@@ -111,13 +111,11 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <plugin id="net.bhl.cdt.client"/>
       <plugin id="net.bhl.cdt.model"/>
       <plugin id="net.bhl.cdt.model.edit"/>
-      <plugin id="net.bhl.cdt.paxelerate.core"/>
-      <plugin id="net.bhl.cdt.paxelerate.model"/>
-      <plugin id="net.bhl.cdt.paxelerate.model.edit"/>
-      <plugin id="net.bhl.cdt.paxelerate.model.viewmodel"/>
-      <plugin id="net.bhl.cdt.paxelerate.test"/>
-      <plugin id="net.bhl.cdt.paxelerate.ui"/>
-      <plugin id="net.bhl.cdt.paxelerate.util"/>
+      <plugin id="net.bhl.cdt.paxelerate.core.model"/>
+      <plugin id="net.bhl.cdt.paxelerate.core.model.edit"/>
+      <plugin id="net.bhl.cdt.paxelerate.core.model.viewmodel"/>
+      <plugin id="net.bhl.cdt.paxelerate.core.ui"/>
+      <plugin id="net.bhl.cdt.paxelerate.core.util"/>
       <plugin id="net.bhl.cdt.ui"/>
       <plugin id="org.apache.batik.css"/>
       <plugin id="org.apache.batik.util"/>
