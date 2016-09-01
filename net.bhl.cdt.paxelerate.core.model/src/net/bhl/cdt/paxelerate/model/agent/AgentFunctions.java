@@ -506,7 +506,7 @@ public class AgentFunctions {
 		Costmap costmap = new Costmap(
 				SimulationHandler.getMap().getDimensions(), agent.getStart(),
 				SimulationHandler.getMap(), agent, true);
-
+		
 		/*
 		 * define the square dimension around the passenger that should be
 		 * scanned. This is the default dimension in each direction from the

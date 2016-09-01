@@ -153,7 +153,7 @@ public class SeatImpl extends PhysicalObjectImpl implements Seat {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final LayoutConcept LAYOUT_CONCEPT_EDEFAULT = LayoutConcept.DEFAULT;
+	protected static final LayoutConcept LAYOUT_CONCEPT_EDEFAULT = LayoutConcept.DEFAULT; 
 
 	/**
 	 * The cached value of the '{@link #getLayoutConcept() <em>Layout Concept</em>}' attribute.

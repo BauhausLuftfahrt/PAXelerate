@@ -68,6 +68,7 @@ public class Core {
 	 * @return returns the shortest path
 	 */
 	private void calculateShortestPath() {
+		
 
 		/* mark start and goal node */
 		areamap.get(agent.getGoal()).setProperty(Property.GOAL,
@@ -86,7 +87,6 @@ public class Core {
 
 		/* while we haven't reached the goal yet */
 		while (openList.size() != 0) {
-
 			/*
 			 * get the first Node from non-searched Node list, sorted by lowest
 			 * distance from our goal as guessed by our heuristic
@@ -181,7 +181,7 @@ public class Core {
 					/* calculate the current cost from start for comparison */
 					int currentCostFromStart = costmap
 							.getCost(current.getPosition());
-
+					
 					/* add neighbor to the open list if it is not there */
 					if (!openList.contains(neighbor)) {
 						openList.add(neighbor);

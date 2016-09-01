@@ -63,14 +63,15 @@ public class Costmap {
 	 *            the only flood to seat
 	 */
 	public Costmap(Vector size, Vector start, Areamap areamap, Agent agent,
-			boolean OnlyFloodToSeat) {
+			boolean OnlyFloodToSeat) { 
+		
 		this.size = size;
 		this.startPoint = start;
 
 		if (OnlyFloodToSeat) {
 			this.goalPoint = agent.getGoal();
 		} else {
-			this.goalPoint = new Vector2D(size.getX() - 1, size.getY() / 2);
+				this.goalPoint = new Vector2D(0, size.getY() / 2);
 		}
 
 		map = new int[size.getX()][size.getY()];
@@ -88,6 +89,71 @@ public class Costmap {
 		map[startPoint.getX()][startPoint.getY()] = 0;
 		visitedPoints.add(startPoint);
 		floodMap();
+		//printMapToConsole();
+	}
+	
+	/*new costmap*/
+	public Costmap(Vector size, Vector start, Areamap areamap, Agent agent,
+			boolean OnlyFloodToSeat,int indicatorDoor) { 
+		this.size = size;
+		this.startPoint = start;
+		
+		
+		
+		if (OnlyFloodToSeat) {
+			this.goalPoint = agent.getGoal();
+		} else {
+			
+			if(indicatorDoor == 0){
+				
+				this.goalPoint = new Vector2D(size.getX() - 1, size.getY() / 2); //size.getX() - 1
+				
+				
+			} else{
+
+				this.goalPoint = new Vector2D(1, size.getY() / 2);
+				
+			}
+		}
+
+		map = new int[size.getX()][size.getY()];
+		
+		
+		for (Node node : areamap.getNodes()) {
+
+			if (node.isObstacle()) {
+
+				setCost(node.getPosition(), -1);
+			} else {
+				setCost(node.getPosition(), node.getObstacleValue());
+			}
+		}
+		
+		/*test for Pop-up seats,hide the seat*/ 
+//		for (Node node : areamap.getNodes()) {
+//
+//			if (node.isObstacle()) {
+//				
+//				if(node.getObstacleType().getValue() == 0){
+//					setCost(node.getPosition(),AreamapHandler.DEFAULT_VALUE);
+//					}
+//				else{
+//					setCost(node.getPosition(), -1);	
+//				}
+//	
+//			} else {
+//				setCost(node.getPosition(), node.getObstacleValue());
+//			}
+//		}		
+
+		map[startPoint.getX()][startPoint.getY()] = 0;
+		visitedPoints.add(startPoint);
+		printMapToConsole();
+		System.out.print("\n");
+		floodMap();
+		printMapToConsole();
+		System.out.print("\n");
+		
 	}
 
 	/**
@@ -100,7 +166,6 @@ public class Costmap {
 	 */
 	public void setCost(Vector position, int value) throws ArithmeticException {
 		map[position.getX()][position.getY()] = value;
-
 		if (value < -1) {
 			throw new ArithmeticException("set cost < -1 : " + value);
 		}
@@ -191,7 +256,7 @@ public class Costmap {
 		copyPoints();
 		for (Vector newPoint : getPointParking()) {
 			createSurroundingCosts(newPoint);
-		}
+		}		
 	}
 
 	/**

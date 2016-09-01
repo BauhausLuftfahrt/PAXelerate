@@ -46,6 +46,11 @@ public class SimulationHandler {
 
 	/** The areamap handler. */
 	private static AreamapHandler areamaphandler;
+	
+	/**Sanghun*/
+	private static AreamapHandler areamaphandlerForRear;
+	
+	
 
 	/* Lists & Maps */
 
@@ -83,6 +88,12 @@ public class SimulationHandler {
 
 	/** The costmaps. */
 	private static Map<Integer, Costmap> costmaps = new HashMap<>();
+	
+	/** The costmapsForRearDoor. */
+	private static Map<Integer, Costmap> costmapsForRearDoor = new HashMap<>();
+	
+	/** The indicator for costmaps & costmapsForRearDoor */
+	private static int front = 0, rear = 1;
 
 	/** The progress value. */
 	private static int percent = 0, progressvalue = 0;
@@ -103,6 +114,7 @@ public class SimulationHandler {
 		this.simulationLoopIndex = simulationLoopIndex;
 		Log.add(this, "Cabin initializing...");
 		areamaphandler = new AreamapHandler(this.dimensions, cabin);
+		areamaphandlerForRear = new AreamapHandler(this.dimensions, cabin); //Sanghun
 		SimulationHandler.cabin = cabin;
 		scale = cabin.getSimulationSettings().getScale();
 		run();
@@ -430,11 +442,20 @@ public class SimulationHandler {
 						(door.getXPosition() + door.getWidth() / 2), 0, scale);
 
 				/* generate a new cost map */
+				//Costmap costmap = new Costmap(dimensions, doorPosition,
+					//	areamaphandler.getAreamap(), null, false);
+		
+				/*two new costmap*/
 				Costmap costmap = new Costmap(dimensions, doorPosition,
-						areamaphandler.getAreamap(), null, false);
+						areamaphandler.getAreamap(), null, false,front);
+				
+				Costmap costmapForRearDoor = new Costmap(dimensions, doorPosition,
+						areamaphandler.getAreamap(), null, false, rear);
 
 				/* add it to the list of CostMaps */
 				costmaps.put(door.getId(), costmap);
+				
+				costmapsForRearDoor.put(door.getId(), costmapForRearDoor);
 			}
 		}
 
@@ -458,16 +479,28 @@ public class SimulationHandler {
 			 */
 			Vector goal = new Vector2D((seat.getXPosition()) - 1,
 					seat.getYPosition() + seat.getYDimension() / 2, scale);
-
-			/*
-			 * Create an agent object for path finding purposes. The cost map is
-			 * loaded from the list of cost maps accordingly
-			 */
-			Agent agent = new Agent(passenger, start, goal,
-					costmaps.get(door.getId()), AgentMode.GO_TO_SEAT, null);
-
-			/* add the agent to the list */
-			agentList.add(agent);
+			
+			/*Sanghun*/
+			//form North to South 
+			if(seat.getXPosition() > door.getXPosition()){
+				Agent agent = new Agent(passenger, start, goal,
+						costmaps.get(door.getId()), AgentMode.GO_TO_SEAT, null);
+				agentList.add(agent);
+			}else{
+				Agent agent = new Agent(passenger, start, goal,
+						costmapsForRearDoor.get(door.getId()), AgentMode.GO_TO_SEAT, null);
+				agentList.add(agent);
+			}
+			
+//			/*
+//			 * Create an agent object for path finding purposes. The cost map is
+//			 * loaded from the list of cost maps accordingly
+//			 */
+//			Agent agent = new Agent(passenger, start, goal,
+//					costmaps.get(door.getId()), AgentMode.GO_TO_SEAT, null);
+//
+//			/* add the agent to the list */
+//			agentList.add(agent);
 		}
 
 		if (OS.isWindows()

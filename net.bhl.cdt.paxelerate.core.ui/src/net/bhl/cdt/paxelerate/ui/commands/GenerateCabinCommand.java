@@ -50,8 +50,8 @@ public class GenerateCabinCommand extends CDTCommand {
 				cabin.setXDimension(2460);
 				break;
 			case WIDEBODY:
-				cabin.setYDimension(650);
-				cabin.setXDimension(4440);
+				cabin.setYDimension(600); //650
+				cabin.setXDimension(4440);//4440
 				break;
 			default:
 				break;

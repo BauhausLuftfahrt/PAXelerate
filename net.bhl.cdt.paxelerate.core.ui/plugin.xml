@@ -120,6 +120,11 @@
             id="net.bhl.cdt.paxelerate.ui.runBatchSimulationMenu"
             name="Run Batch Simulation Menu">
       </command>
+      <command
+            defaultHandler="net.bhl.cdt.paxelerate.ui.handlers.SanghunHandler"
+            id="net.bhl.cdt.paxelerate.core.ui.sanghuncommand"
+            name="Sanghun">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -242,6 +247,11 @@
                name="net.bhl.cdt.paxelerate.ui.separator2"
                visible="true">
          </separator>
+         <command
+               commandId="net.bhl.cdt.paxelerate.core.ui.sanghuncommand"
+               label="Sanghun"
+               style="push">
+         </command>
       </menuContribution>
       <menuContribution
             allPopups="false"

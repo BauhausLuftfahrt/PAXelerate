@@ -53,7 +53,7 @@ public class PathFinder extends Subject implements Runnable {
 	public void findNewPath() throws NullPointerException {
 
 		StopWatch pathTimer = new StopWatch();
-
+		
 		/* storage for the old path before the new calculation */
 		Path oldPath = null;
 

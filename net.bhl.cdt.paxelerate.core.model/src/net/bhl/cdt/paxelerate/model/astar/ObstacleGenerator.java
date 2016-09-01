@@ -49,6 +49,11 @@ public class ObstacleGenerator {
 
 	/** a list of all obstacle nodes. */
 	private ArrayList<Node> obstacles = new ArrayList<>();
+	
+	//Sanghun
+	private ArrayList<Node> aircraftBody = new ArrayList<>();
+
+	private ArrayList<Node> transparentAisle = new ArrayList<>();
 
 	/** The gradient. */
 	private GradientOption gradient;
@@ -102,10 +107,18 @@ public class ObstacleGenerator {
 		generatePotentialGradient();
 
 		/* generate a depression in the potential for the paths */
-		generateDoorDepressions();
+		//generateDoorDepressions();
 
 		/* generate a depression in the potential for the aisles */
 		generateAisleDepressions();
+		
+		
+		/*function for twin-aisle*/
+		generateHoleForGalley();
+		
+		/*function for popup-seat*/
+		//generateGradientForBody();
+		//generateTranceparentAisle();
 
 	}
 
@@ -127,7 +140,7 @@ public class ObstacleGenerator {
 				/* calculate the distance to the closest obstacle node */
 				double distanceToClosestObstacle = AreamapHandler
 						.minimumDistanceToObstacle(node, obstacles);
-
+				
 				/*
 				 * check if the distance is smaller than the maximum allowed
 				 * gradient width
@@ -138,12 +151,88 @@ public class ObstacleGenerator {
 					node.setObstacleValue(getDistanceByOption(
 							distanceToClosestObstacle, gradient));
 					node.setDistanceToClosestObstacle(
-							distanceToClosestObstacle);
+							distanceToClosestObstacle);	
 				}
 			}
 		}
 	}
+	/*the methode for twin-aisle*/
+	private void generateHoleForGalley() {
 
+		/* loop through all nodes */
+		for (Node node : areamap.getNodes()) {
+
+			
+			if (!node.isObstacle() && node
+					.getObstacleValue() == AreamapHandler.DEFAULT_VALUE) {
+			
+				for (Node obstacle : obstacles) {
+
+					double distance = MathHelper.distanceBetween(node.getPosition(),
+							obstacle.getPosition());
+					
+					if(obstacle.getObstacleType().getValue() == 1)
+					{ 
+						if( distance >= 3 && distance < 5 ){
+							node.setObstacleValue(2); //AreamapHandler.HOLE_VALUE
+						}
+					}			
+
+				}
+			}		
+		}
+	}
+	
+	/*the methode for pop up seat*/
+	private void generateGradientForBody() {
+
+		/* loop through all nodes */
+		for (Node node : areamap.getNodes()) {
+
+			
+			if ( (node.getPosition().getY() == 0) || (node.getPosition().getY() == cabin.getYDimension()) ){
+				
+				aircraftBody.add(node);
+			
+				for (Node aircraftWall : aircraftBody) {
+
+					double distance = MathHelper.distanceBetween(node.getPosition(),
+							aircraftWall.getPosition());
+					
+						if( distance >= 0 && distance < 3 ){
+							node.setObstacleValue(5); //AreamapHandler.HOLE_VALUE
+						}
+					}			
+
+				}
+			}
+	}
+	/*the methode for pop up seat*/
+	private void generateTranceparentAisle() {
+
+		/* loop through all nodes */
+		for (Node node : areamap.getNodes()) {
+
+			if (!node.isObstacle() && node
+					.getObstacleValue() == AreamapHandler.DEFAULT_VALUE) {
+				
+				for (Node obstacle : obstacles) {
+					
+					if(obstacle.getObstacleType().getValue() == 1){
+						
+						double distance = Math.abs(node.getPosition().getY() - obstacle.getPosition().getY());
+						if( distance == 1){
+							node.setObstacleValue(5);
+						}
+						
+					}
+				}			
+
+			}
+		}
+	}
+
+	
 	/**
 	 * This function calculates the gradient value at a specific position within
 	 * an integer array.

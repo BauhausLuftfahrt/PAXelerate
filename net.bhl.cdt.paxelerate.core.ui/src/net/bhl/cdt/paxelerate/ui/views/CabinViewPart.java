@@ -191,6 +191,7 @@ public class CabinViewPart extends ViewPart {
 	 * @return the background image
 	 */
 	private Image createImage() {
+		
 		Image image = new Image(parent.getDisplay(), scaledX, scaledY);
 		Image newAircraft = tryAircraftSwitch();
 		GC gc = new GC(image);

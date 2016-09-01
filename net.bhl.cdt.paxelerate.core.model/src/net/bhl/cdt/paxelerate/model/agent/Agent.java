@@ -559,7 +559,7 @@ public class Agent extends Subject implements Runnable {
 
 	synchronized void blockArea(Vector vector, boolean occupy,
 			boolean rotateOnly, Integer rotation) {
-
+		
 		/*
 		 * switch the property depending on whether a node is blocked or release
 		 */
@@ -588,7 +588,6 @@ public class Agent extends Subject implements Runnable {
 			/* if you want to rotate only, you can specify the rotation angle */
 			if (rotateOnly) {
 				rotatedFootprint = Rotator.rotate(rotation, footprint);
-
 				/* if you want to do auto rotation, this method is called. */
 			} else {
 				if (rotationAllowed()) {
@@ -616,20 +615,36 @@ public class Agent extends Subject implements Runnable {
 
 		double dimension = Math.max(rotatedFootprint.length,
 				rotatedFootprint[1].length);
+		
 
 		/*
 		 * this is the dimension you need to go in every direction from the
 		 * starting point. It is half the way back in every dimension.
 		 */
 		dim = (int) (dimension / 2);
-
+		
+		
 		/* loop through the whole passenger area in the area map */
 		for (int x = -dim; x <= dim; x++) {
 			for (int y = -dim; y <= dim; y++) {
-
-				/* the location currently under investigation */
-				Vector location = new Vector2D(vector.getX() + x,
-						vector.getY() + y);
+				
+				/*two criterion for location*/
+				Vector location=null ;
+				if( this.getGoal().getX() > this.getStart().getX() ){
+					
+						location = new Vector2D(vector.getX() + x,
+							vector.getY() + y);
+					
+					}else{
+						
+						location = new Vector2D(vector.getX() + x,
+								vector.getY() + y+1);
+					}
+				
+//				/* the location currently under investigation */
+//				Vector location = new Vector2D(vector.getX() + x,
+//						vector.getY() + y);
+//				
 
 				/* if the point is within the bounds of the passenger area */
 				if (x + dim < rotatedFootprint.length
@@ -641,6 +656,7 @@ public class Agent extends Subject implements Runnable {
 					 */
 					if (rotatedFootprint[x + dim][y + dim] == 1) {
 
+						
 						/* block or deblock the specific node */
 						AgentMover.blockNode(location, occupy, property,
 								this.passenger);

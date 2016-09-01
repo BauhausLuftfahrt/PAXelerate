@@ -54,7 +54,8 @@ public class RefreshCabinViewCommand extends CDTCommand {
 	 */
 	@Override
 	protected final void doRun() {
-
+		
+		
 		int countedPax = 0;
 		for (TravelClass tc : cabin.getClasses()) {
 			countedPax += tc.getPassengers();
