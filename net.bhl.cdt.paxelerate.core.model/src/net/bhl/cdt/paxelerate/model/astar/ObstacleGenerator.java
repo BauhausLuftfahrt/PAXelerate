@@ -50,10 +50,10 @@ public class ObstacleGenerator {
 	/** a list of all obstacle nodes. */
 	private ArrayList<Node> obstacles = new ArrayList<>();
 	
-	//Sanghun
+	/** a list of all node aircraft cabin exterior*/
 	private ArrayList<Node> aircraftBody = new ArrayList<>();
-
-	private ArrayList<Node> transparentAisle = new ArrayList<>();
+	
+	//private ArrayList<Integer> transparentAisle = new ArrayList<>();
 
 	/** The gradient. */
 	private GradientOption gradient;
@@ -102,12 +102,15 @@ public class ObstacleGenerator {
 		}
 
 		checkForGaps();
+		
+		/* change the oder of this method */
+		generateDoorDepressions();
 
 		/* generate the potential gradient around all obstacles */
 		generatePotentialGradient();
 
 		/* generate a depression in the potential for the paths */
-		//generateDoorDepressions();
+		generateDoorDepressions();
 
 		/* generate a depression in the potential for the aisles */
 		generateAisleDepressions();
@@ -115,8 +118,9 @@ public class ObstacleGenerator {
 		
 		/*function for twin-aisle*/
 		generateHoleForGalley();
+		generateTwinAisleDepressions();
 		
-		/*function for popup-seat*/
+		/*function for Pop-Up seats*/
 		//generateGradientForBody();
 		//generateTranceparentAisle();
 
@@ -156,25 +160,29 @@ public class ObstacleGenerator {
 			}
 		}
 	}
-	/*the methode for twin-aisle*/
+	/*the method for twin-aisle and creates the gradient around Galley*/
 	private void generateHoleForGalley() {
 
 		/* loop through all nodes */
 		for (Node node : areamap.getNodes()) {
 
-			
-			if (!node.isObstacle() && node
-					.getObstacleValue() == AreamapHandler.DEFAULT_VALUE) {
+			/*
+			 * only consider the ones which are no obstacle and have not been
+			 * calculated before
+			 */
+			if (!node.isObstacle() && node.getObstacleValue() != AreamapHandler.DEFAULT_VALUE) {
 			
 				for (Node obstacle : obstacles) {
 
 					double distance = MathHelper.distanceBetween(node.getPosition(),
 							obstacle.getPosition());
 					
+					/*if the obstacle is Galley,the value of node,which is 
+					 * near the Galley,is set as 2.*/ 
 					if(obstacle.getObstacleType().getValue() == 1)
 					{ 
-						if( distance >= 3 && distance < 5 ){
-							node.setObstacleValue(2); //AreamapHandler.HOLE_VALUE
+						if( distance >= 1 && distance < 2 ){
+							node.setObstacleValue(12);
 						}
 					}			
 
@@ -200,14 +208,14 @@ public class ObstacleGenerator {
 							aircraftWall.getPosition());
 					
 						if( distance >= 0 && distance < 3 ){
-							node.setObstacleValue(5); //AreamapHandler.HOLE_VALUE
+							node.setObstacleValue(5); //TODO:the value should be constant
 						}
 					}			
 
 				}
 			}
 	}
-	/*the methode for pop up seat*/
+	/*the method for pop up seat*/
 	private void generateTranceparentAisle() {
 
 		/* loop through all nodes */
@@ -222,7 +230,7 @@ public class ObstacleGenerator {
 						
 						double distance = Math.abs(node.getPosition().getY() - obstacle.getPosition().getY());
 						if( distance == 1){
-							node.setObstacleValue(5);
+							node.setObstacleValue(5); //TODO:the value should be constant
 						}
 						
 					}
@@ -295,13 +303,67 @@ public class ObstacleGenerator {
 					if (x >= entryMin && x <= entryMax && !node.isObstacle()) {
 
 						/* create a potential hole within the area map */
-						node.setObstacleValue(AreamapHandler.HOLE_VALUE);
+						node.setObstacleValue(2);//AreamapHandler.HOLE_VALUE
 					}
 				}
 			}
 		}
 	}
-
+	/**
+	 * increase the value,where the areamap of twin-aisle,
+	 * in middle of the aisle between the row of seat.
+	 * 
+	 */
+	private void generateTwinAisleDepressions() {
+		
+		/*the middle value of cabin width and used to the position 
+		 * of tranceparent wall for center of seats*/
+		int centerOfRow = cabin.getYDimension() / (int) scale / 2;
+		
+		/* loop through every class */
+		for (TravelClass travelclass : cabin.getClasses()) {
+			
+			/*pitch value of seats*/
+			int seatPitch =  travelclass.getSeatPitch() / (int) scale ;
+			
+			/*it makes the tranceparent wall,which change the value of areamap,
+			 *  on aisle and let the passenger use the twin-aisle 
+			 *  rather than the space between seats*/
+			int	lastPosition = 0;
+					
+			/* loop through every row */
+				for (Row row : travelclass.getRows()) {
+					/* it starts from first-row */
+					int startPosition = ( row.getSeats().get(0).getXPosition() / (int) scale ) 
+							+ ( row.getSeats().get(0).getXDimension() / (int) scale);
+					/* it compares with two row,
+					 * if difference is smaller and same than pitch value,then makes the wall*/
+					if( (startPosition - lastPosition - ( row.getSeats().get(0).getXDimension() / (int) scale) ) <= seatPitch)
+					{	
+						/*the range of increased the value is 
+						 * according to the pitch*/ 
+						for(int i=0; i< seatPitch ;i++){
+							
+							if (areamap.get(lastPosition, centerOfRow) != null) {
+								
+								if (!areamap.get(lastPosition, centerOfRow).isObstacle()) {
+									areamap.get(lastPosition, centerOfRow).setObstacleValue(
+											AreamapHandler.TRANSPARENT_WALL_VALUE);
+								lastPosition++;
+								}
+						
+							}
+						}
+					
+					lastPosition = startPosition + (row.getSeats().get(0).getXDimension() /(int) scale);
+					}
+				lastPosition = startPosition;
+				
+			}
+		}
+	}
+	
+			
 	/**
 	 * Generate a hole in the potential of the area map where the aisle is
 	 * located.
@@ -405,7 +467,7 @@ public class ObstacleGenerator {
 		/* first loop through every physical object within the cabin */
 		for (PhysicalObject obj : POHelper.getObjectsByOption(option, cabin)) {
 
-			/* define the dimension and position of the object */
+		/* define the dimension and position of the object */
 			int xDimension = obj.getXDimension() / (int) scale;
 			int xPosition = obj.getXPosition() / (int) scale;
 
