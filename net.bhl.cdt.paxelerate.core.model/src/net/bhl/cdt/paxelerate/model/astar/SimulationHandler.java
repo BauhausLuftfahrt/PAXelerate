@@ -114,7 +114,6 @@ public class SimulationHandler {
 		this.simulationLoopIndex = simulationLoopIndex;
 		Log.add(this, "Cabin initializing...");
 		areamaphandler = new AreamapHandler(this.dimensions, cabin);
-		areamaphandlerFromRear = new AreamapHandler(this.dimensions, cabin); //Sanghun
 		SimulationHandler.cabin = cabin;
 		scale = cabin.getSimulationSettings().getScale();
 		run();
@@ -193,14 +192,6 @@ public class SimulationHandler {
 	}
 	
 	/**
-	 * This method returns the area map.
-	 *
-	 * @return the area map
-	 */
-	public synchronized static Areamap getMapRear() {
-		return areamaphandlerFromRear.getAreamap();
-	}
-	/**
 	 * Gets the agent by passenger.
 	 *
 	 * @param pax
@@ -273,7 +264,6 @@ public class SimulationHandler {
 
 		cabin = null;
 		areamaphandler = null;
-		areamaphandlerFromRear = null;
 		simulationDone = false;
 		finishedList.clear();
 		activeList.clear();
@@ -444,8 +434,6 @@ public class SimulationHandler {
 		int d=0;
 		for (Door door : cabin.getDoors()) {
 			
-			System.out.print("Door Position " + door.getXPosition() + "\n");
-			
 			door.setId(d);
 			d++;
 
@@ -460,7 +448,8 @@ public class SimulationHandler {
 				//Costmap costmap = new Costmap(dimensions, doorPosition,
 					//	areamaphandler.getAreamap(), null, false);
 		
-				/*two new costmap,fromFront = 0, fromRear = 1;*/
+				/*every passenger has own Costmap according to the position of bborading door
+				 *fromFront = 0, fromRear = 1;*/
 				Costmap costmap = new Costmap(dimensions, doorPosition,
 						areamaphandler.getAreamap(), null, false, fromFront);
 				
@@ -470,11 +459,7 @@ public class SimulationHandler {
 				/* add it to the list of CostMaps */
 				costmaps.put(door.getId(), costmap);
 				
-				System.out.print("costmap "+ door.getId() + "\n");
-				
 				costmapsFromRear.put(door.getId(), costmapFromRear);
-				
-				System.out.print("FromRear "+ door.getId() + "\n");
 			}
 		}
 
@@ -484,8 +469,6 @@ public class SimulationHandler {
 			/* get objects assigned to the passenger */
 			Seat seat = passenger.getSeat();
 			Door door = passenger.getDoor();
-			
-			System.out.print("DoorID =  "+ door.getId() + "\n");
 
 			/*
 			 * create the start location - this is the position of the door
@@ -503,20 +486,12 @@ public class SimulationHandler {
 		
 			if( start.getX() < goal.getX() ){
 				
-				System.out.print("StartF "+ start.getX() + "\n");
-				System.out.print("goal "+ goal.getX()   +  "\n");
-				
 				Agent agent = new Agent(passenger, start, goal,
 						costmaps.get(door.getId()), AgentMode.GO_TO_SEAT, null);
 				
-//				costmaps.get(door.getId()).printMapToConsole();
-//				System.out.print("Simulation  \n");
 				agentList.add(agent);
 				
 			}else{
-				
-				System.out.print("StartR "+ start.getX() + "\n");
-				System.out.print("goal "+ goal.getX()   +  "\n");
 				
 				Agent agent = new Agent(passenger, start, goal,
 						costmapsFromRear.get(door.getId()), AgentMode.GO_TO_SEAT, null);
