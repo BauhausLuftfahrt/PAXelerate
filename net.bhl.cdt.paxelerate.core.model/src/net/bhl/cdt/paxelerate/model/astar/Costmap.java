@@ -92,7 +92,7 @@ public class Costmap {
 		//printMapToConsole();
 	}
 	
-	/*new costmap*/
+	/*new costmap,fromFront = 0, FromRear = 1;*/
 	public Costmap(Vector size, Vector start, Areamap areamap, Agent agent,
 			boolean OnlyFloodToSeat,int indicatorDoor) { 
 		this.size = size;
@@ -105,9 +105,8 @@ public class Costmap {
 		} else {
 			
 			if(indicatorDoor == 0){
-				
-				this.goalPoint = new Vector2D(size.getX() - 1, size.getY() / 2); //size.getX() - 1
-				
+
+				this.goalPoint = new Vector2D(size.getX() - 1, size.getY() / 2);		
 				
 			} else{
 
@@ -148,11 +147,8 @@ public class Costmap {
 
 		map[startPoint.getX()][startPoint.getY()] = 0;
 		visitedPoints.add(startPoint);
-		printMapToConsole();
-		System.out.print("\n");
 		floodMap();
-		printMapToConsole();
-		System.out.print("\n");
+		
 		
 	}
 

@@ -35,8 +35,8 @@ public class AreamapHandler {
 			HOLE_VALUE = 1, NARROWING_OF_DOOR_PATH_IN_PIXELS = 2,
 			GRADIENT_LOWER_BOUND = 6, GRADIENT_UPPER_BOUND = 12,//GRADIENT_UPPER_BOUND = 10 for one-aisle,12 is for two-aisle
 			GRADIENT_WIDTH = 3, NARROWING_OF_AISLE_PATH_IN_PIXELS = 1, //GRADIENT_WIDTH = 2 for one-aisle,3 is for two-aisle
-			AISLE_OVERLAP_FRONT_AND_REAR = 0,//AISLE_OVERLAP_FRONT_AND_REAR = 10 for one-aisle,5 is for two-aisle
-			TRANSPARENT_WALL_VALUE = 500;
+			AISLE_OVERLAP_FRONT_AND_REAR = 0,//AISLE_OVERLAP_FRONT_AND_REAR = 10 for one-aisle,0 is for two-aisle
+			TRANSPARENT_WALL_VALUE = 100;//500
 
 	/**
 	 * This is the area map constructor.

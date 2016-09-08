@@ -53,8 +53,6 @@ public class ObstacleGenerator {
 	/** a list of all node aircraft cabin exterior*/
 	private ArrayList<Node> aircraftBody = new ArrayList<>();
 	
-	//private ArrayList<Integer> transparentAisle = new ArrayList<>();
-
 	/** The gradient. */
 	private GradientOption gradient;
 

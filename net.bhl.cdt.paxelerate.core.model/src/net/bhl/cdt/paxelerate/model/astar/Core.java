@@ -52,7 +52,7 @@ public class Core {
 	 *            the agent
 	 */
 	public Core(AreamapHandler maphandler, Costmap costmap, Agent agent) {
-
+		
 		this.areamap = maphandler.getAreamap();
 		this.agent = agent;
 		this.costmap = costmap;
@@ -69,7 +69,7 @@ public class Core {
 	 */
 	private void calculateShortestPath() {
 		
-
+		
 		/* mark start and goal node */
 		areamap.get(agent.getGoal()).setProperty(Property.GOAL,
 				agent.getPassenger());
@@ -79,12 +79,12 @@ public class Core {
 		/* reset the properties of the start node */
 		areamap.get(agent.getStart()).setDistanceFromStart(0);
 		areamap.get(agent.getStart()).setCostFromStart(0);
-
+		
 		/* reset the lists */
 		closedList.clear();
 		openList.clear();
 		openList.add(areamap.get(agent.getStart()));
-
+		
 		/* while we haven't reached the goal yet */
 		while (openList.size() != 0) {
 			/*
@@ -92,25 +92,25 @@ public class Core {
 			 * distance from our goal as guessed by our heuristic
 			 */
 			Node current = openList.getFirst();
-
+			
 			/*
 			 * check if our current Node location is the goal Node. If it is, we
 			 * are done.
 			 */
 			if (current.getPosition().equals(agent.getGoal())) {
-
+						
 				/* the start node does never have a previous node! */
 				if (areamap.get(agent.getStart()) != null) {
 					areamap.get(agent.getStart()).setPreviousNode(null);
 				}
-
+				
 				/* if there is a path found, reconstruct it */
 				if (reconstructPath(current) != null) {
 					bestPath = reconstructPath(current);
 				}
 				return;
 			}
-
+			
 			/* move current Node to the closed (already searched) list */
 			openList.remove(current);
 			closedList.add(current);
@@ -121,7 +121,7 @@ public class Core {
 			 */
 			for (Node neighbor : current.getNeighborList()) {
 				boolean neighborIsBetter = false;
-
+				
 				/*
 				 * if we have already searched this Node, don't bother and
 				 * continue to the next one
@@ -160,7 +160,7 @@ public class Core {
 
 				/* also just continue if the neighbor is an obstacle */
 				if (!neighbor.isObstacle()) {
-
+										
 					/* calculate the neighbors distance from start */
 					double neighborDistanceFromStart = MathHelper
 							.distanceBetween(

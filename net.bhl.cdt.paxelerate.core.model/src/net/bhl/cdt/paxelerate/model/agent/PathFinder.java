@@ -12,6 +12,7 @@ import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
 import net.bhl.cdt.paxelerate.model.observer.Subject;
 import net.bhl.cdt.paxelerate.util.math.Vector2D;
 import net.bhl.cdt.paxelerate.util.time.StopWatch;
+import net.bhl.cdt.paxelerate.util.toOpenCDT.Log;
 
 /**
  * The Class AgentPathFinder.
@@ -62,10 +63,12 @@ public class PathFinder extends Subject implements Runnable {
 
 		/* starts the StopWatch - used for performance testing */
 		pathTimer.start();
-
+		
 		/* reset the mutable CostMap to the original cost map */
 		Costmap mutableCostMap = agent.getCostMap();
-
+		
+		//mutableCostMap.printMapToConsole();
+		
 		SimulationHandler.getAreamapHandler()
 				.setStartLocation(agent.getCurrentPosition(), agent);
 
@@ -81,7 +84,7 @@ public class PathFinder extends Subject implements Runnable {
 
 			/* this sets the new start of the A* to the current position */
 			agent.setStartPosition(agent.getCurrentPosition());
-
+			
 			/* this declares the area around agents as high cost terrain */
 			mutableCostMap = AgentFunctions.updateCostmap(agent);
 		}

@@ -48,7 +48,7 @@ public class SimulationHandler {
 	private static AreamapHandler areamaphandler;
 	
 	/**Sanghun*/
-	private static AreamapHandler areamaphandlerForRear;
+	private static AreamapHandler areamaphandlerFromRear;
 	
 	
 
@@ -90,10 +90,10 @@ public class SimulationHandler {
 	private static Map<Integer, Costmap> costmaps = new HashMap<>();
 	
 	/** The costmapsForRearDoor. */
-	private static Map<Integer, Costmap> costmapsForRearDoor = new HashMap<>();
+	private static Map<Integer, Costmap> costmapsFromRear = new HashMap<>();
 	
 	/** The indicator for costmaps & costmapsForRearDoor */
-	private static int front = 0, rear = 1;
+	private static int fromFront = 0, fromRear = 1;
 
 	/** The progress value. */
 	private static int percent = 0, progressvalue = 0;
@@ -114,7 +114,7 @@ public class SimulationHandler {
 		this.simulationLoopIndex = simulationLoopIndex;
 		Log.add(this, "Cabin initializing...");
 		areamaphandler = new AreamapHandler(this.dimensions, cabin);
-		areamaphandlerForRear = new AreamapHandler(this.dimensions, cabin); //Sanghun
+		areamaphandlerFromRear = new AreamapHandler(this.dimensions, cabin); //Sanghun
 		SimulationHandler.cabin = cabin;
 		scale = cabin.getSimulationSettings().getScale();
 		run();
@@ -191,7 +191,15 @@ public class SimulationHandler {
 	public synchronized static Areamap getMap() {
 		return areamaphandler.getAreamap();
 	}
-
+	
+	/**
+	 * This method returns the area map.
+	 *
+	 * @return the area map
+	 */
+	public synchronized static Areamap getMapRear() {
+		return areamaphandlerFromRear.getAreamap();
+	}
 	/**
 	 * Gets the agent by passenger.
 	 *
@@ -265,6 +273,7 @@ public class SimulationHandler {
 
 		cabin = null;
 		areamaphandler = null;
+		areamaphandlerFromRear = null;
 		simulationDone = false;
 		finishedList.clear();
 		activeList.clear();
@@ -330,7 +339,7 @@ public class SimulationHandler {
 
 		Vector goal = new Vector2D(seat.getXPosition() + offset * scale,
 				cabin.getYDimension() / 2.0, scale);
-
+		
 		Agent agent = new Agent(pax, start, goal,
 				getAgentByPassenger(myself).getCostMap(), AgentMode.MAKE_WAY,
 				myself);
@@ -432,7 +441,13 @@ public class SimulationHandler {
 		 * The CostMap.java objects are stored in the HashMap.java and can be
 		 * accessed by the ID of the corresponding door.
 		 */
+		int d=0;
 		for (Door door : cabin.getDoors()) {
+			
+			System.out.print("Door Position " + door.getXPosition() + "\n");
+			
+			door.setId(d);
+			d++;
 
 			/* check if the door is active */
 			if (door.isIsActive()) {
@@ -445,17 +460,21 @@ public class SimulationHandler {
 				//Costmap costmap = new Costmap(dimensions, doorPosition,
 					//	areamaphandler.getAreamap(), null, false);
 		
-				/*two new costmap*/
+				/*two new costmap,fromFront = 0, fromRear = 1;*/
 				Costmap costmap = new Costmap(dimensions, doorPosition,
-						areamaphandler.getAreamap(), null, false,front);
+						areamaphandler.getAreamap(), null, false, fromFront);
 				
-				Costmap costmapForRearDoor = new Costmap(dimensions, doorPosition,
-						areamaphandler.getAreamap(), null, false, rear);
+				Costmap costmapFromRear = new Costmap(dimensions, doorPosition,
+						areamaphandler.getAreamap(), null, false, fromRear);
 
 				/* add it to the list of CostMaps */
 				costmaps.put(door.getId(), costmap);
 				
-				costmapsForRearDoor.put(door.getId(), costmapForRearDoor);
+				System.out.print("costmap "+ door.getId() + "\n");
+				
+				costmapsFromRear.put(door.getId(), costmapFromRear);
+				
+				System.out.print("FromRear "+ door.getId() + "\n");
 			}
 		}
 
@@ -465,6 +484,8 @@ public class SimulationHandler {
 			/* get objects assigned to the passenger */
 			Seat seat = passenger.getSeat();
 			Door door = passenger.getDoor();
+			
+			System.out.print("DoorID =  "+ door.getId() + "\n");
 
 			/*
 			 * create the start location - this is the position of the door
@@ -479,18 +500,38 @@ public class SimulationHandler {
 			 */
 			Vector goal = new Vector2D((seat.getXPosition()) - 1,
 					seat.getYPosition() + seat.getYDimension() / 2, scale);
-			
-			/*Sanghun*/
-			//form North to South 
-			if(seat.getXPosition() > door.getXPosition()){
+		
+			if( start.getX() < goal.getX() ){
+				
+				System.out.print("StartF "+ start.getX() + "\n");
+				System.out.print("goal "+ goal.getX()   +  "\n");
+				
 				Agent agent = new Agent(passenger, start, goal,
 						costmaps.get(door.getId()), AgentMode.GO_TO_SEAT, null);
+				
+//				costmaps.get(door.getId()).printMapToConsole();
+//				System.out.print("Simulation  \n");
 				agentList.add(agent);
+				
 			}else{
+				
+				System.out.print("StartR "+ start.getX() + "\n");
+				System.out.print("goal "+ goal.getX()   +  "\n");
+				
 				Agent agent = new Agent(passenger, start, goal,
-						costmapsForRearDoor.get(door.getId()), AgentMode.GO_TO_SEAT, null);
+						costmapsFromRear.get(door.getId()), AgentMode.GO_TO_SEAT, null);
 				agentList.add(agent);
 			}
+			
+//			if(seat.getXPosition() > door.getXPosition()){
+//				Agent agent = new Agent(passenger, start, goal,
+//						costmaps.get(door.getId()), AgentMode.GO_TO_SEAT, null);
+//				agentList.add(agent);
+//			}else{
+//				Agent agent = new Agent(passenger, start, goal,
+//						costmapsFromRear.get(door.getId()), AgentMode.GO_TO_SEAT, null);
+//				agentList.add(agent);
+//			}
 			
 //			/*
 //			 * Create an agent object for path finding purposes. The cost map is
@@ -551,10 +592,15 @@ public class SimulationHandler {
 
 			/* try to find a path! */
 			try {
-
 				PathFinder pathFinder = new PathFinder(agent);
 				pathFinder.start();
 				pathfindingThreads[i] = pathFinder.getThread();
+				try {
+					pathFinder.getThread().join();
+				} catch (InterruptedException e) {
+					Log.add(this, "SimulationHandler: InterruptedException");
+					e.printStackTrace();
+				}
 
 				/* Warn if no path can be found */
 			} catch (NullPointerException e) {
@@ -571,14 +617,14 @@ public class SimulationHandler {
 			/* return information to the progress bar */
 			progressvalue++;
 		}
-		for (Thread thread : pathfindingThreads) {
-			try {
-				thread.join();
-			} catch (InterruptedException e) {
-				Log.add(this, "SimulationHandler: InterruptedException");
-				e.printStackTrace();
-			}
-		}
+//		for (Thread thread : pathfindingThreads) {
+//			try {
+//				thread.join();
+//			} catch (InterruptedException e) {
+//				Log.add(this, "SimulationHandler: InterruptedException");
+//				e.printStackTrace();
+//			}
+//		}
 		pathTimer.stop();
 		if (SimulationHandler.getCabin().getSimulationSettings()
 				.isDeveloperMode()) {
