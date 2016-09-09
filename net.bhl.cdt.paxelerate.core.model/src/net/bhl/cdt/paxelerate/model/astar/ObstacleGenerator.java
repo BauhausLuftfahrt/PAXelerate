@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.Door;
 import net.bhl.cdt.paxelerate.model.DoorOption;
+import net.bhl.cdt.paxelerate.model.Galley;
 import net.bhl.cdt.paxelerate.model.LayoutConcept;
 import net.bhl.cdt.paxelerate.model.ObjectOption;
 import net.bhl.cdt.paxelerate.model.PhysicalObject;
@@ -68,6 +69,8 @@ public class ObstacleGenerator {
 		/** The exponential. */
 		EXPONENTIAL;
 	}
+	private int xPosition,yPosition,xDimension,yDimension;
+	
 
 	/**
 	 * This method generates a new obstacle generator.
@@ -160,34 +163,63 @@ public class ObstacleGenerator {
 	}
 	/*the method for twin-aisle and creates the gradient around Galley*/
 	private void generateHoleForGalley() {
+		
+//		for (ObjectOption option : ObjectOption.VALUES) {
+//			
+//			for (PhysicalObject obj : POHelper.getObjectsByOption(option, cabin)) {
+				for ( Galley obj : cabin.getGalleys() ){
+		
+					int xPosition = obj.getXPosition() / (int) scale;
+					int yPosition = obj.getYPosition() / (int) scale;
+					int xDimension = obj.getXDimension() / (int) scale;
+					int yDimension = obj.getYDimension() / (int) scale;
 
-		/* loop through all nodes */
-		for (Node node : areamap.getNodes()) {
+					/* loop through all nodes */
+					for (Node node : areamap.getNodes()){
+						/*
+						 * only consider the ones which are no obstacle and have not been
+						 * calculated before
+						 */
+						if (!node.isObstacle()){
 
-			/*
-			 * only consider the ones which are no obstacle and have not been
-			 * calculated before
-			 */
-			if (!node.isObstacle() && node.getObstacleValue() != AreamapHandler.DEFAULT_VALUE) {
-			
-				for (Node obstacle : obstacles) {
-
-					double distance = MathHelper.distanceBetween(node.getPosition(),
-							obstacle.getPosition());
-					
-					/*if the obstacle is Galley,the value of node,which is 
-					 * near the Galley,is set as 2.*/ 
-					if(obstacle.getObstacleType().getValue() == 1)
-					{ 
-						if( distance >= 1 && distance < 2 ){
-							node.setObstacleValue(12);
+							int distanceX = xPosition - node.getPosition().getX();
+							int distanceXX = (xPosition + xDimension) - node.getPosition().getX();
+							
+							if( distanceX >=2 && distanceX <=3 ){
+								if(node.getPosition().getY() >= yPosition -1 && node.getPosition().getY() <= yPosition + yDimension +1 ){
+									node.setObstacleValue(1);
+								}
+							}
+							if( Math.abs(distanceXX) >=1 && Math.abs(distanceXX) <=2 ){
+								if(node.getPosition().getY() >= yPosition -1 && node.getPosition().getY() <= yPosition + yDimension +1 ){
+									node.setObstacleValue(1);
+								}
+							}
+						
 						}
-					}			
+						if (!node.isObstacle() && node.getObstacleValue() != AreamapHandler.DEFAULT_VALUE) {
+							
+							for (Node obstacle : obstacles) {
+
+								double distance = MathHelper.distanceBetween(node.getPosition(),
+										obstacle.getPosition());
+								
+								/*if the obstacle is Galley,the value of node,which is 
+								 * near the Galley,is set as 2.*/ 
+								if(obstacle.getObstacleType().getValue() == 1)
+								{ 
+									if( distance >= 1 && distance < 2 ){
+										node.setObstacleValue(12);
+									}
+								}			
+
+							}
+						}		
+						
+					}
 
 				}
-			}		
-		}
-	}
+			}
 	
 	/*the methode for pop up seat*/
 	private void generateGradientForBody() {
@@ -279,29 +311,63 @@ public class ObstacleGenerator {
 		/* Create the door paths for every door */
 		for (Door door : cabin.getDoors()) {
 
+			boolean obstacle = false;
 			/* do not make a hole for emergency exits */
 			if (door.getDoorOption() != DoorOption.EMERGENCY_EXIT) {
 
 				/* get the borders of the door within the area map */
 				int entryMin = (int) (door.getXPosition() / scale)
 						+ AreamapHandler.NARROWING_OF_DOOR_PATH_IN_PIXELS;
+				
 				int entryMax = (door.getXPosition() + door.getWidth())
 						/ (int) scale
 						- AreamapHandler.NARROWING_OF_DOOR_PATH_IN_PIXELS;
+				
+				for (ObjectOption option : ObjectOption.VALUES) {
+				
+					for (PhysicalObject obj : POHelper.getObjectsByOption(option, cabin)) {
+	
+						/* define the dimension and position of the object */
+						if(entryMin > (obj.getXPosition() / (int) scale) && 
+								(obj.getXPosition() / (int) scale) + (obj.getXDimension() / (int) scale) > entryMax){
+							 xDimension = obj.getXDimension() / (int) scale; 
+							 yDimension = obj.getYDimension() / (int) scale;
+							 xPosition = obj.getXPosition() / (int) scale;
+							 yPosition = obj.getYPosition() / (int) scale;
+							 obstacle = true;
+							}
+						 
+						}
+				}
 
 				/* loop through all nodes */
 				for (Node node : areamap.getNodes()) {
 
 					/* get the x position of the node */
 					int x = node.getPosition().getX();
-
-					/*
-					 * check if the node is within the door area and no obstacle
-					 */
-					if (x >= entryMin && x <= entryMax && !node.isObstacle()) {
-
-						/* create a potential hole within the area map */
-						node.setObstacleValue(2);//AreamapHandler.HOLE_VALUE
+					int y = node.getPosition().getY();
+					
+					if (x >= door.getXPosition() / scale && x <= (door.getXPosition() / scale ) + (door.getWidth() / scale)){
+						
+						if(obstacle){
+							/*the creating hole value stops at the obstacle*/
+							if(!node.isObstacle() && y < yPosition){
+									if (x >= entryMin-1 && x <= entryMax){
+									/* create a potential hole within the area map */
+										node.setObstacleValue(AreamapHandler.NARROWING_OF_DOOR_PATH_IN_PIXELS);
+									}
+									else{}
+							}
+							else if(!node.isObstacle() && y > (yPosition +  yDimension)){
+								node.setObstacleValue(AreamapHandler.NARROWING_OF_DOOR_PATH_AFTER_OBSTACLE);
+							}
+							else{					
+							}
+						}
+						else{
+							node.setObstacleValue(AreamapHandler.NARROWING_OF_DOOR_PATH_IN_PIXELS);
+						}
+					
 					}
 				}
 			}
@@ -425,7 +491,7 @@ public class ObstacleGenerator {
 							+ AreamapHandler.NARROWING_OF_AISLE_PATH_IN_PIXELS; y < aisle
 									.getY()
 									- AreamapHandler.NARROWING_OF_AISLE_PATH_IN_PIXELS
-									+ aisle.getZ(); y++) {
+									+ aisle.getZ()-1; y++) {
 
 						/* check if there might be an obstacle somewhere */
 						if (areamap.get(x, y) != null) {

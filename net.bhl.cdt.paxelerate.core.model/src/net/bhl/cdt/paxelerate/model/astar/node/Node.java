@@ -333,7 +333,8 @@ public class Node implements Comparable<Node> {
 		neighbors.add(southWest);
 		neighbors.add(west);
 		neighbors.add(northWest);
-
+		
+		
 		ListIterator<Node> iterator = neighbors.listIterator();
 		while (iterator.hasNext()) {
 			if (iterator.next() == null) {

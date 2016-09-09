@@ -93,27 +93,30 @@ public class Costmap {
 	}
 	
 	/*new costmap for front & rear boarding door,fromFront = 0, FromRear = 1;*/
-	public Costmap(Vector size, Vector start, Areamap areamap, Agent agent,
+	public Costmap(Vector size, Vector start, Areamap areamap,Vector goal, //, Agent agent
 			boolean OnlyFloodToSeat,int indicatorDoor) { 
 		this.size = size;
 		this.startPoint = start;
+		this.goalPoint = goal;
 		
-		if (OnlyFloodToSeat) {
-			this.goalPoint = agent.getGoal();
-		} else {
-			
-			/*the position of seat is located more rear than the boarding door*/ 
-			if(indicatorDoor == 0){
-
-				this.goalPoint = new Vector2D(size.getX() - 1, size.getY() / 2);		
-			
-			/*the position of seat is located more front than the boarding door & indicatorDoor = 1*/ 
-			} else{
-
-				this.goalPoint = new Vector2D(1, size.getY() / 2);
-				
-			}
-		}
+//		if (OnlyFloodToSeat) {
+//			this.goalPoint = agent.getGoal();
+//		} else {
+//			
+//			/*the position of seat is located more rear 
+//			 * than the boarding door*/ 
+//			if(indicatorDoor == 0){
+//
+//				this.goalPoint = new Vector2D(size.getX() - 1, size.getY() / 2);		
+//			
+//			/*the position of seat is located more front 
+//			 * than the boarding door & indicatorDoor = 1*/ 
+//			} else{
+//
+//				this.goalPoint = new Vector2D(1, size.getY() / 2);
+//				
+//			}
+//		}
 
 		map = new int[size.getX()][size.getY()];
 		
@@ -123,6 +126,7 @@ public class Costmap {
 			if (node.isObstacle()) {
 
 				setCost(node.getPosition(), -1);
+				
 			} else {
 				setCost(node.getPosition(), node.getObstacleValue());
 			}
@@ -147,7 +151,12 @@ public class Costmap {
 
 		map[startPoint.getX()][startPoint.getY()] = 0;
 		visitedPoints.add(startPoint);
+		printMapToConsole();
+		System.out.print("\n");
 		floodMap();
+		System.out.print("\n");
+		//printMapToConsole();
+		System.out.print("\n");
 		
 		
 	}

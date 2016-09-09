@@ -163,10 +163,6 @@ public class Agent extends Subject implements Runnable {
 	 * @return the cost map
 	 */
 	public Costmap getCostMap() {
-		
-		
-		finalCostmap.printMapToConsole();
-		System.out.print("getCostmap \n");
 		return finalCostmap;
 	}
 

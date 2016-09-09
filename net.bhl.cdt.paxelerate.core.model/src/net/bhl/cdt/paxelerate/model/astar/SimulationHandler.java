@@ -424,63 +424,63 @@ public class SimulationHandler {
 	/**
 	 * This method executes the path finding simulation of the agents.
 	 */
-	public void run() {
+/*	public void run() {
 
-		/*
+		
 		 * Every active door needs its own CostMap.java for path calculations!
 		 * The CostMap.java objects are stored in the HashMap.java and can be
 		 * accessed by the ID of the corresponding door.
-		 */
+		 
 		int d=0;
 		for (Door door : cabin.getDoors()) {
 			
 			door.setId(d);
 			d++;
 
-			/* check if the door is active */
+			 check if the door is active 
 			if (door.isIsActive()) {
 
-				/* get the 2D position of the door object */
+				 get the 2D position of the door object 
 				Vector doorPosition = new Vector2D(
 						(door.getXPosition() + door.getWidth() / 2), 0, scale);
 
-				/* generate a new cost map */
+				 generate a new cost map 
 				//Costmap costmap = new Costmap(dimensions, doorPosition,
 					//	areamaphandler.getAreamap(), null, false);
 		
-				/*every passenger has own Costmap according to the position of bborading door
-				 *fromFront = 0, fromRear = 1;*/
+				every passenger has own Costmap according to the position of bborading door
+				 *fromFront = 0, fromRear = 1;
 				Costmap costmap = new Costmap(dimensions, doorPosition,
 						areamaphandler.getAreamap(), null, false, fromFront);
 				
 				Costmap costmapFromRear = new Costmap(dimensions, doorPosition,
 						areamaphandler.getAreamap(), null, false, fromRear);
 
-				/* add it to the list of CostMaps */
+				 add it to the list of CostMaps 
 				costmaps.put(door.getId(), costmap);
 				
 				costmapsFromRear.put(door.getId(), costmapFromRear);
 			}
 		}
 
-		/* loop through all passengers and create their respective agent */
+		 loop through all passengers and create their respective agent 
 		for (Passenger passenger : cabin.getPassengers()) {
 
-			/* get objects assigned to the passenger */
+			 get objects assigned to the passenger 
 			Seat seat = passenger.getSeat();
 			Door door = passenger.getDoor();
 
-			/*
+			
 			 * create the start location - this is the position of the door
 			 * which the passenger will use to board the plane
-			 */
+			 
 			Vector start = new Vector2D(
 					(door.getXPosition() + door.getWidth() / 2), 0, scale);
 
-			/*
+			
 			 * create the goal location. this is the position of the passengers
 			 * seat. The goal is one "PIXEL" in front of the center of the seat.
-			 */
+			 
 			Vector goal = new Vector2D((seat.getXPosition()) - 1,
 					seat.getYPosition() + seat.getYDimension() / 2, scale);
 		
@@ -517,7 +517,75 @@ public class SimulationHandler {
 //
 //			/* add the agent to the list */
 //			agentList.add(agent);
-		}
+	//	}*/
+
+
+		public void run() {
+
+
+//			int d=0;
+//			for (Door door : cabin.getDoors()) {
+//				
+//				door.setId(d);
+//				d++;
+//
+//				
+//			if (door.isIsActive()) {
+//
+//				
+//					Vector doorPosition = new Vector2D(
+//							(door.getXPosition() + door.getWidth() / 2), 0, scale);
+//
+//						Costmap costmap = new Costmap(dimensions, doorPosition,
+//							areamaphandler.getAreamap(), null, false, fromFront);
+//					
+//					Costmap costmapFromRear = new Costmap(dimensions, doorPosition,
+//							areamaphandler.getAreamap(), null, false, fromRear);
+//					
+//					costmaps.put(door.getId(), costmap);
+//					
+//					costmapsFromRear.put(door.getId(), costmapFromRear);
+//				}
+//			}
+
+			
+			for (Passenger passenger : cabin.getPassengers()) {
+
+				
+				Seat seat = passenger.getSeat();
+				Door door = passenger.getDoor();
+				
+				Vector start = new Vector2D(
+						(door.getXPosition() + door.getWidth() / 2), 0, scale);
+			
+				Vector goal = new Vector2D((seat.getXPosition()) - 1,
+						seat.getYPosition() + seat.getYDimension() / 2, scale);
+				
+				
+			
+				if( start.getX() < goal.getX() ){
+					
+					Costmap costmap = new Costmap(dimensions, start,
+							areamaphandler.getAreamap(),goal, true, fromFront);
+					
+					Agent agent = new Agent(passenger, start, goal,
+							costmap, AgentMode.GO_TO_SEAT, null);
+					
+					agentList.add(agent);
+					
+				}else{
+					
+					Costmap costmap = new Costmap(dimensions, start,
+							areamaphandler.getAreamap(),goal, true, fromRear);
+					
+					
+					Agent agent = new Agent(passenger, start, goal,
+							costmap, AgentMode.GO_TO_SEAT, null);
+					agentList.add(agent);
+				}
+				
+			}
+		
 
 		if (OS.isWindows()
 				&& !cabin.getSimulationSettings().isSimulateWithoutUI()) {
@@ -569,16 +637,28 @@ public class SimulationHandler {
 			try {
 				PathFinder pathFinder = new PathFinder(agent);
 				pathFinder.start();
-				pathfindingThreads[i] = pathFinder.getThread();
 				try {
 					pathFinder.getThread().join();
 				} catch (InterruptedException e) {
-					Log.add(this, "SimulationHandler: InterruptedException");
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				pathfindingThreads[i] = pathFinder.getThread();
+				
+				}
+//			try {
+//				PathFinder pathFinder = new PathFinder(agent);
+//				pathFinder.start();
+//				pathfindingThreads[i] = pathFinder.getThread();
+//				try {
+//					pathFinder.getThread().join();
+//				} catch (InterruptedException e) {
+//					Log.add(this, "SimulationHandler: InterruptedException");
+//					e.printStackTrace();
+//				}
 
 				/* Warn if no path can be found */
-			} catch (NullPointerException e) {
+			 catch (NullPointerException e) {
 				Log.add(this, "Passenger " + agent.getPassenger().getName()
 						+ " can not find a path to the seat at "
 						+ agent.getGoal().getX() + " / "

@@ -93,6 +93,9 @@ public class Core {
 			 */
 			Node current = openList.getFirst();
 			
+//			System.out.print("Node position X = " + current.getPosition().getX() + 
+//					", Node position Y = " +current.getPosition().getY()+ "\n");
+			
 			/*
 			 * check if our current Node location is the goal Node. If it is, we
 			 * are done.
@@ -241,6 +244,7 @@ public class Core {
 		while (node.getPreviousNode() != null) {
 			path.prependWayPoint(node);
 			node = node.getPreviousNode();
+			
 		}
 		return path;
 	}
