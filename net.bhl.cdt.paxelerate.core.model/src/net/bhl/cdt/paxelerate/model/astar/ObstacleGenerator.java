@@ -161,12 +161,15 @@ public class ObstacleGenerator {
 			}
 		}
 	}
-	/*the method for twin-aisle and creates the gradient around Galley*/
+
+	/*The method is for twin-aisle and creates the gradient around the Galley 
+	 * It supposed as the Galley is in front of the boarding-door.
+	 * It effects that the passensgers walk around the Galley smoothly.
+	 * If the Galley is located in other position or the Lavatory is located in front of boarding-door
+	 * ,then this method must be extended with the Lavatory and the Position of the Galley and the Lavatory */
 	private void generateHoleForGalley() {
 		
-//		for (ObjectOption option : ObjectOption.VALUES) {
-//			
-//			for (PhysicalObject obj : POHelper.getObjectsByOption(option, cabin)) {
+				/*check whether the obstacle is Galley*/
 				for ( Galley obj : cabin.getGalleys() ){
 		
 					int xPosition = obj.getXPosition() / (int) scale;
@@ -181,18 +184,24 @@ public class ObstacleGenerator {
 						 * calculated before
 						 */
 						if (!node.isObstacle()){
-
+							
+							/*the distance value on the x-axis between the above side of the Galley and
+							 *  the node of areamap*/
 							int distanceX = xPosition - node.getPosition().getX();
+							/*the distance value on the x-axis between the below side of the Galley and
+							 *  the node of areamap*/
 							int distanceXX = (xPosition + xDimension) - node.getPosition().getX();
 							
 							if( distanceX >=2 && distanceX <=3 ){
+								/*the width of HOLE_VALUE on the y-axis the above of the Galley*/
 								if(node.getPosition().getY() >= yPosition -1 && node.getPosition().getY() <= yPosition + yDimension +1 ){
-									node.setObstacleValue(1);
+									node.setObstacleValue(AreamapHandler.HOLE_VALUE);
 								}
 							}
-							if( Math.abs(distanceXX) >=1 && Math.abs(distanceXX) <=2 ){
+							/*the width of HOLE_VALUE on the y-axis the below of the Galley*/
+							if( Math.abs(distanceXX) >= 1 && Math.abs(distanceXX) <= 2 ){
 								if(node.getPosition().getY() >= yPosition -1 && node.getPosition().getY() <= yPosition + yDimension +1 ){
-									node.setObstacleValue(1);
+									node.setObstacleValue(AreamapHandler.HOLE_VALUE);
 								}
 							}
 						
@@ -205,7 +214,8 @@ public class ObstacleGenerator {
 										obstacle.getPosition());
 								
 								/*if the obstacle is Galley,the value of node,which is 
-								 * near the Galley,is set as 2.*/ 
+								 * near the Galley with distance 1,is set as 12.It has effected that 
+								 * passenger walk around the Galley with distance 1*/ 
 								if(obstacle.getObstacleType().getValue() == 1)
 								{ 
 									if( distance >= 1 && distance < 2 ){
@@ -375,12 +385,12 @@ public class ObstacleGenerator {
 	}
 	/**
 	 * increase the value,where the areamap of twin-aisle,
-	 * in middle of the aisle between the row of seat.
-	 * 
+	 * in middle of the aisle between the row of seat
+	 * in order to avoid that passenger go through the aisle of four seats
 	 */
 	private void generateTwinAisleDepressions() {
 		
-		/*the middle value of cabin width and used to the position 
+		/*this is the middle value of cabin width and used to the position 
 		 * of tranceparent wall for center of seats*/
 		int centerOfRow = cabin.getYDimension() / (int) scale / 2;
 		

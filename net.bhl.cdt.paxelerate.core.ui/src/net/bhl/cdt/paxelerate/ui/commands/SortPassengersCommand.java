@@ -119,11 +119,26 @@ public class SortPassengersCommand extends CDTCommand {
 		Log.add(this, "Sorting completed.");
 
 		int counter = 1;
+		
+		int frontDoorPos = cabin.getDoors().get(0).getXPosition();
+		int rearDoorPos = cabin.getDoors().get(1).getXPosition();
+		
 
 		for (Passenger pax : cabin.getPassengers()) {
+			
 			pax.setStartBoardingAfterDelay(calculateDelay(pax));
 			pax.setId(counter);
 			pax.setName(counter + "(" + pax.getSeat().getName() + ")");
+		
+				int seatPos = pax.getSeat().getXPosition();
+				
+				
+					if(frontDoorPos <= seatPos && seatPos <= rearDoorPos){
+						pax.setDoor(cabin.getDoors().get(0));
+					}else if(rearDoorPos <= seatPos){
+						pax.setDoor(cabin.getDoors().get(1));
+					}else{}
+			
 			counter++;
 		}
 
