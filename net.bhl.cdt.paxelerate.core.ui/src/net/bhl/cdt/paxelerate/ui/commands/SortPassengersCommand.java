@@ -120,7 +120,7 @@ public class SortPassengersCommand extends CDTCommand {
 
 		int counter = 1;
 		
-		/*the passenger,whose seat is located between the front-door and th rear-door,board through the 
+		/*the passenger,whose seat is located between the front-door and the rear-door,board through the 
 		 * front-door. The other passenger board through rear-door*/
 //		int frontDoorPos = cabin.getDoors().get(0).getXPosition();
 //		int rearDoorPos = cabin.getDoors().get(1).getXPosition();

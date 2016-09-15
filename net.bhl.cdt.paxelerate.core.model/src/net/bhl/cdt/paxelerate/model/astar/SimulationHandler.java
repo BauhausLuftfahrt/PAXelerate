@@ -420,121 +420,25 @@ public class SimulationHandler {
 
 	/**
 	 * This method executes the path finding simulation of the agents.
-	 */
-	/*	public void run() {
+	 */	
+	public void run(){
 
-	
-	 * Every active door needs its own CostMap.java for path calculations!
-	 * The CostMap.java objects are stored in the HashMap.java and can be
-	 * accessed by the ID of the corresponding door.
-	 
-	int d=0;
-	for (Door door : cabin.getDoors()) {
-		
-		door.setId(d);
-		d++;
 
-		 check if the door is active 
-		if (door.isIsActive()) {
-
-			 get the 2D position of the door object 
-			Vector doorPosition = new Vector2D(
-					(door.getXPosition() + door.getWidth() / 2), 0, scale);
-
-			 generate a new cost map 
-			//Costmap costmap = new Costmap(dimensions, doorPosition,
-				//	areamaphandler.getAreamap(), null, false);
-	
-			every passenger has own Costmap according to the position of borading door
-			 *fromFront = 0, fromRear = 1;
-			Costmap costmap = new Costmap(dimensions, doorPosition,
-					areamaphandler.getAreamap(), null, false, fromFront);
+		int d=0;
+		for (Door door : cabin.getDoors()){
 			
-			Costmap costmapFromRear = new Costmap(dimensions, doorPosition,
-					areamaphandler.getAreamap(), null, false, fromRear);
-
-			 add it to the list of CostMaps 
-			costmaps.put(door.getId(), costmap);
+			door.setId(d);
+			d++;
 			
-			costmapsFromRear.put(door.getId(), costmapFromRear);
-		}
-	}
-
-	 loop through all passengers and create their respective agent 
-	for (Passenger passenger : cabin.getPassengers()) {
-
-		 get objects assigned to the passenger 
-		Seat seat = passenger.getSeat();
-		Door door = passenger.getDoor();
-
-		
-		 * create the start location - this is the position of the door
-		 * which the passenger will use to board the plane
-		 
-		Vector start = new Vector2D(
-				(door.getXPosition() + door.getWidth() / 2), 0, scale);
-
-		
-		 * create the goal location. this is the position of the passengers
-		 * seat. The goal is one "PIXEL" in front of the center of the seat.
-		 
-		Vector goal = new Vector2D((seat.getXPosition()) - 1,
-				seat.getYPosition() + seat.getYDimension() / 2, scale);
-	
-		if( start.getX() < goal.getX() ){
-			
-			Agent agent = new Agent(passenger, start, goal,
-					costmaps.get(door.getId()), AgentMode.GO_TO_SEAT, null);
-			
-			agentList.add(agent);
-			
-		}else{
-			
-			Agent agent = new Agent(passenger, start, goal,
-					costmapsFromRear.get(door.getId()), AgentMode.GO_TO_SEAT, null);
-			agentList.add(agent);
-		}
-		
-//		if(seat.getXPosition() > door.getXPosition()){
-//			Agent agent = new Agent(passenger, start, goal,
-//					costmaps.get(door.getId()), AgentMode.GO_TO_SEAT, null);
-//			agentList.add(agent);
-//		}else{
-//			Agent agent = new Agent(passenger, start, goal,
-//					costmapsFromRear.get(door.getId()), AgentMode.GO_TO_SEAT, null);
-//			agentList.add(agent);
-//		}
-		
-//		/*
-//		 * Create an agent object for path finding purposes. The cost map is
-//		 * loaded from the list of cost maps accordingly
-//		 */
-//		Agent agent = new Agent(passenger, start, goal,
-//				costmaps.get(door.getId()), AgentMode.GO_TO_SEAT, null);
-//
-//		/* add the agent to the list */
-//		agentList.add(agent);
-//	}*/
-	
-public void run(){
-
-
-			int d=0;
-			for (Door door : cabin.getDoors()){
-				
-				door.setId(d);
-				d++;
-
-				
 			if (door.isIsActive()) {
 
 				
 					Vector doorPosition = new Vector2D( (door.getXPosition()+ 
 							door.getWidth() / 2), 0, scale);
-
+					/*for passenger,who board through front-door*/
 					Costmap costmap = new Costmap(dimensions, doorPosition,
 							areamaphandler.getAreamap(), null, false, fromFront);
-							
+					/*for passenger,who board through rear-door*/		
 					Costmap costmapFromRear = new Costmap(dimensions, doorPosition,
 							areamaphandler.getAreamap(), null, false, fromRear);
 					
@@ -551,6 +455,7 @@ public void run(){
 				
 				Seat seat = passenger.getSeat();
 				Door door = passenger.getDoor();
+				
 				
 				Vector start = new Vector2D(
 						(door.getXPosition() + door.getWidth() / 2), 0, scale);
@@ -621,7 +526,10 @@ public void run(){
 		
 		for (Agent agent : agentList) {
 
-			/* try to find a path! */
+			/* try to find a path! 
+			 * here generate the thread & join-method for his thread together.
+			 * the previous version join-method is added after all thread are generated.This makes
+			 * breakdown with two-boarding door running */
 			try {
 				PathFinder pathFinder = new PathFinder(agent);
 				pathFinder.start();
@@ -634,6 +542,7 @@ public void run(){
 				pathfindingThreads[i] = pathFinder.getThread();
 				
 				}
+			
 //			try {
 //				PathFinder pathFinder = new PathFinder(agent);
 //				pathFinder.start();

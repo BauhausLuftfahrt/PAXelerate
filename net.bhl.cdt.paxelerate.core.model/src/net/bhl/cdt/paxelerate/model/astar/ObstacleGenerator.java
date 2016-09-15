@@ -452,7 +452,7 @@ public class ObstacleGenerator {
 	private void generateAisleDepressions() {
 
 		/* the minimum aisle width for automatic detection */
-		int minimumAisleWidth = 3;//previous 4
+		int minimumAisleWidth = 3;//previous value 4
 
 		/* loop through every class */
 		for (TravelClass travelclass : cabin.getClasses()) {

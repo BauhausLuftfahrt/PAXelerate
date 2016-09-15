@@ -92,9 +92,10 @@ public class Costmap {
 		//printMapToConsole();
 	}
 	
-	/*new costmap for front & rear boarding door,fromFront = 0, FromRear = 1;*/
+	/*new costmap for front & rear boarding door,
+	 * fromFrontToRear = 0, FromReartoFront = 1*/
 	public Costmap(Vector size, Vector start, Areamap areamap, Agent agent, 
-			boolean OnlyFloodToSeat, int indicatorDoor) { 
+			boolean OnlyFloodToSeat, int posDoor) { 
 		this.size = size;
 		this.startPoint = start;
 		
@@ -105,14 +106,19 @@ public class Costmap {
 			
 			/*the position of seat is located more rear 
 			 * than the boarding door*/ 
-			if(indicatorDoor == 0){
+			if(posDoor == 0){
 				
+			/*	At the position of ( size.getX() - 1, size.getY() / 2 ) must not be 
+			 * located something obstacle.
+				It makes infinite-loop for bestPath*/
 				this.goalPoint = new Vector2D(size.getX() - 1, size.getY() / 2);
 			
 			/*the position of seat is located more front 
 			 * than the boarding door & indicatorDoor = 1*/ 
 			} else{
-
+				/*	At the position of ( 1, size.getY() / 2 ) must not be 
+				 * located something obstacle.
+					It makes infinite-loop for bestPath*/
 				this.goalPoint = new Vector2D(1, size.getY() / 2);
 				
 			}
@@ -160,39 +166,6 @@ public class Costmap {
 		
 		
 	}
-//	/*new costmap for front & rear boarding door,fromFront = 0, FromRear = 1;*
-//	 *every passenger has the his own costmap */
-//	public Costmap(Vector size, Vector start, Areamap areamap,Vector goal, //, Agent agent
-//			boolean OnlyFloodToSeat,int indicatorDoor) { 
-//		this.size = size;
-//		this.startPoint = start;
-//		this.goalPoint = goal;
-//	
-//
-//		map = new int[size.getX()][size.getY()];
-//		
-//		
-//		for (Node node : areamap.getNodes()) {
-//
-//			if (node.isObstacle()) {
-//
-//				setCost(node.getPosition(), -1);
-//				
-//			} else {
-//				setCost(node.getPosition(), node.getObstacleValue());
-//			}
-//		}
-//	
-//
-//		map[startPoint.getX()][startPoint.getY()] = 0;
-//		visitedPoints.add(startPoint);
-//		printMapToConsole();
-//		System.out.print("\n");
-//		floodMap();
-//		System.out.print("\n");
-//		//printMapToConsole();
-//		System.out.print("\n");	
-//	}
 
 	/**
 	 * Sets the cost.
