@@ -75,6 +75,7 @@ public class Core {
 				agent.getPassenger());
 		areamap.get(agent.getStart()).setProperty(Property.START,
 				agent.getPassenger());
+		
 
 		/* reset the properties of the start node */
 		areamap.get(agent.getStart()).setDistanceFromStart(0);
@@ -92,9 +93,6 @@ public class Core {
 			 * distance from our goal as guessed by our heuristic
 			 */
 			Node current = openList.getFirst();
-			
-//			System.out.print("Node position X = " + current.getPosition().getX() + 
-//					", Node position Y = " +current.getPosition().getY()+ "\n");
 			
 			/*
 			 * check if our current Node location is the goal Node. If it is, we

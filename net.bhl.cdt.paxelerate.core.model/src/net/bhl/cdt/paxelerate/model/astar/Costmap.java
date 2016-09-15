@@ -100,12 +100,14 @@ public class Costmap {
 		
 		if (OnlyFloodToSeat) {
 			this.goalPoint = agent.getGoal();
+			
 		} else {
 			
 			/*the position of seat is located more rear 
 			 * than the boarding door*/ 
 			if(indicatorDoor == 0){
-				this.goalPoint = new Vector2D(size.getX() - 1, size.getY() / 2);		
+				
+				this.goalPoint = new Vector2D(size.getX() - 1, size.getY() / 2);
 			
 			/*the position of seat is located more front 
 			 * than the boarding door & indicatorDoor = 1*/ 
@@ -131,29 +133,29 @@ public class Costmap {
 		}
 		
 		/*test for Pop-up seats,hide the seat*/ 
-		for (Node node : areamap.getNodes()) {
-
-			if (node.isObstacle()) {
-				
-				if(node.getObstacleType().getValue() == 0){
-					setCost(node.getPosition(),AreamapHandler.DEFAULT_VALUE);
-					}
-				else{
-					setCost(node.getPosition(), -1);	
-				}
-	
-			} else {
-				setCost(node.getPosition(), node.getObstacleValue());
-			}
-		}		
+//		for (Node node : areamap.getNodes()) {
+//
+//			if (node.isObstacle()) {
+//				
+//				if(node.getObstacleType().getValue() == 0){
+//					setCost(node.getPosition(),AreamapHandler.DEFAULT_VALUE);
+//					}
+//				else{
+//					setCost(node.getPosition(), -1);	
+//				}
+//	
+//			} else {
+//				setCost(node.getPosition(), node.getObstacleValue());
+//			}
+//		}		
 
 		map[startPoint.getX()][startPoint.getY()] = 0;
 		visitedPoints.add(startPoint);
-		printMapToConsole();
-		System.out.print("\n");
+		//printMapToConsole();
+		System.out.print("\n");		
 		floodMap();
 		System.out.print("\n");
-		//printMapToConsole();
+		printMapToConsole();
 		System.out.print("\n");
 		
 		
@@ -283,11 +285,12 @@ public class Costmap {
 	 */
 	private void floodMap() {
 		createSurroundingCosts(startPoint);
-		while (!goalReached()) {
+		while (!goalReached()){
 			copyPoints();
 			for (Vector newPoint : getPointParking()) {
 				createSurroundingCosts(newPoint);
 			}
+			
 		}
 		copyPoints();
 		for (Vector newPoint : getPointParking()) {

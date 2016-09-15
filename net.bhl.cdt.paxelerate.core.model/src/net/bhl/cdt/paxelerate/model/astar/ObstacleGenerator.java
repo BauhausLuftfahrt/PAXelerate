@@ -386,7 +386,7 @@ public class ObstacleGenerator {
 	/**
 	 * increase the value,where the areamap of twin-aisle,
 	 * in middle of the aisle between the row of seat
-	 * in order to avoid that passenger go through the aisle of four seats
+	 * in order to avoid that passenger go through the aisle of four or three seats
 	 */
 	private void generateTwinAisleDepressions() {
 		
@@ -401,25 +401,32 @@ public class ObstacleGenerator {
 			int seatPitch =  travelclass.getSeatPitch() / (int) scale ;
 			
 			/*it makes the tranceparent wall,which change the value of areamap,
-			 *  on aisle and let the passenger use the twin-aisle 
-			 *  rather than the space between seats*/
+			 *  on the aisle and let the passenger use the twin-aisle 
+			 *  rather than going to through the space between seats*/
 			int	lastPosition = 0;
 					
 			/* loop through every row */
 				for (Row row : travelclass.getRows()) {
-					/* it starts from first-row */
+					/* it starts from first-row
+					 *  */
 					int startPosition = ( row.getSeats().get(0).getXPosition() / (int) scale ) 
 							+ ( row.getSeats().get(0).getXDimension() / (int) scale);
 					/* it compares with two row,
-					 * if difference is smaller and same than pitch value,then makes the wall*/
+					 * if difference is smaller and same than pitch value,then makes the tranceparent wall*/
 					if( (startPosition - lastPosition - ( row.getSeats().get(0).getXDimension() / (int) scale) ) <= seatPitch)
 					{	
 						/*the range of increased the value is 
-						 * according to the pitch*/ 
+						 * according to the length of pitch. 
+						 * The pitch value should be increased by every 10,because
+						 * the number of pitch point on the areamap & costmap is 
+						 * represented differently per rows of seats(the value is rounded by int-value) */ 
 						for(int i=0; i< seatPitch ;i++){
 							
 							if (areamap.get(lastPosition, centerOfRow) != null) {
 								
+								/*the value of constant TRANSPARENT_WALL_VALUE should be 
+								 * as high as the value of costmap,where
+								the goal is located around.*/
 								if (!areamap.get(lastPosition, centerOfRow).isObstacle()) {
 									areamap.get(lastPosition, centerOfRow).setObstacleValue(
 											AreamapHandler.TRANSPARENT_WALL_VALUE);
@@ -445,7 +452,7 @@ public class ObstacleGenerator {
 	private void generateAisleDepressions() {
 
 		/* the minimum aisle width for automatic detection */
-		int minimumAisleWidth = 4;
+		int minimumAisleWidth = 3;//previous 4
 
 		/* loop through every class */
 		for (TravelClass travelclass : cabin.getClasses()) {
@@ -501,7 +508,7 @@ public class ObstacleGenerator {
 							+ AreamapHandler.NARROWING_OF_AISLE_PATH_IN_PIXELS; y < aisle
 									.getY()
 									- AreamapHandler.NARROWING_OF_AISLE_PATH_IN_PIXELS
-									+ aisle.getZ()-1; y++) {
+									+ aisle.getZ(); y++) {
 
 						/* check if there might be an obstacle somewhere */
 						if (areamap.get(x, y) != null) {

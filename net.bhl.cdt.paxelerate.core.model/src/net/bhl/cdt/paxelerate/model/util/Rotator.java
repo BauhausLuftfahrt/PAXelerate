@@ -180,7 +180,6 @@ public class Rotator {
 		}
 		for (int i = 0; i < (degrees / 45); i++) {
 			array = rotate45(array);
-			//System.out.print("rotate45\n");
 		}
 		return array;
 	}

@@ -589,6 +589,7 @@ public class Agent extends Subject implements Runnable {
 			if (rotateOnly) {
 				rotatedFootprint = Rotator.rotate(rotation, footprint);
 				/* if you want to do auto rotation, this method is called. */
+				
 			} else {
 				if (rotationAllowed()) {
 					rotatedFootprint = Rotator.rotate(

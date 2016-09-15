@@ -442,6 +442,7 @@ public class AgentFunctions {
 
 		/* transform from radian to degree */
 		int angle = (int) Math.toDegrees(theta);
+		
 
 		/* if degree is smaller than 0, convert it */
 		if (angle < 0) {

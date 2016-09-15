@@ -120,8 +120,10 @@ public class SortPassengersCommand extends CDTCommand {
 
 		int counter = 1;
 		
-		int frontDoorPos = cabin.getDoors().get(0).getXPosition();
-		int rearDoorPos = cabin.getDoors().get(1).getXPosition();
+		/*the passenger,whose seat is located between the front-door and th rear-door,board through the 
+		 * front-door. The other passenger board through rear-door*/
+//		int frontDoorPos = cabin.getDoors().get(0).getXPosition();
+//		int rearDoorPos = cabin.getDoors().get(1).getXPosition();
 		
 
 		for (Passenger pax : cabin.getPassengers()) {
@@ -130,15 +132,16 @@ public class SortPassengersCommand extends CDTCommand {
 			pax.setId(counter);
 			pax.setName(counter + "(" + pax.getSeat().getName() + ")");
 		
-				int seatPos = pax.getSeat().getXPosition();
+			/*the passenger,whose seat is located between the front-door and th rear-door,board through the 
+			 * front-door. The other passenger board through rear-door*/
+//			int seatPos = pax.getSeat().getXPosition();
+//				
+//				if(frontDoorPos <= seatPos && seatPos <= rearDoorPos){
+//					pax.setDoor(cabin.getDoors().get(0));
+//				}else if(rearDoorPos <= seatPos){
+//					pax.setDoor(cabin.getDoors().get(1));
+//				}else{}
 				
-				
-					if(frontDoorPos <= seatPos && seatPos <= rearDoorPos){
-						pax.setDoor(cabin.getDoors().get(0));
-					}else if(rearDoorPos <= seatPos){
-						pax.setDoor(cabin.getDoors().get(1));
-					}else{}
-			
 			counter++;
 		}
 
