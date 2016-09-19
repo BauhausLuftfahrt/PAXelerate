@@ -588,6 +588,12 @@ public class ObstacleGenerator {
 					/*
 					 * check for folding seat pans and if it is currently folded
 					 */
+				} else if(cabin.getSimulationSettings()
+						.getLayoutConcept() == LayoutConcept.BRING_YOUR_OWN_SEAT
+						&& seat.getLayoutConcept() == LayoutConcept.BRING_YOUR_OWN_SEAT) {
+
+					/* if so, do not create an obstacle for that seat */
+					continue;
 				} else if (cabin.getSimulationSettings()
 						.getLayoutConcept() == LayoutConcept.LIFTING_SEAT_PAN_SEATS
 						&& seat.getLayoutConcept() == LayoutConcept.LIFTING_SEAT_PAN_SEATS) {

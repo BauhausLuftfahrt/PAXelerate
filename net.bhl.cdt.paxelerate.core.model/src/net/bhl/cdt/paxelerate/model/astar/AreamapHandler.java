@@ -168,41 +168,6 @@ public class AreamapHandler {
 		return minimum;
 	}
 
-	/*the methode for twin-aisle*/
-//	public static double minimumDistanceToObstacle(Node node,
-//			ArrayList<Node> obstacles) {
-//
-//		/* set the minimum as high as possible */
-//		double minimum = Integer.MAX_VALUE;
-//
-//		/* loop through all obstacles */
-//		for (Node obstacle : obstacles) {
-//
-//			/* calculate the distance using z = root(x² + y²) */
-//			double distance = MathHelper.distanceBetween(node.getPosition(),
-//					obstacle.getPosition());
-//			
-//			/*if obstacle is Galley,set the minimum distance smaller than 2,Sanghun*/
-//			if(obstacle.getObstacleType().getValue() == 1)
-//			{ 
-//				if(distance <= 2){
-//					minimum = distance;
-//				}
-//			}			
-//			else{
-//				/* check if there is a distance smaller than the current one */
-//			if (distance < minimum){
-//	
-//			/* if so, define it as the new smallest distance */
-//				minimum = distance;
-//					}
-//			}
-//		}
-//
-//		/* return the distance */
-//		return minimum;
-//	}
-
 	/**
 	 * This map sets the start location of an agent.
 	 *

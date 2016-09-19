@@ -84,7 +84,7 @@ public class Agent extends Subject implements Runnable {
 	private boolean alreadyStowed = false, waitingCompleted = false,
 			exitTheMainLoop = false, movedOnce = false, foldingSeats = false,
 			stowingAtAisleSeat = false, waitingAtAisleSeat = false,
-			aisleSeat = false;
+			aisleSeat = false,popUpSeats = false;
 
 	/** The stopwatch. */
 	private StopWatch stopwatch = new StopWatch();
@@ -207,6 +207,7 @@ public class Agent extends Subject implements Runnable {
 				|| simSettings
 						.getLayoutConcept() == LayoutConcept.LIFTING_SEAT_PAN_SEATS);
 		this.aisleSeat = "CD".contains(passenger.getSeat().getLetter());
+		this.popUpSeats = (simSettings.getLayoutConcept() == LayoutConcept.BRING_YOUR_OWN_SEAT);
 		this.waitingTimeAfterCollision = simSettings.getPassengerProperties()
 				.getPassivePassengerWaitingTimeAfterCollision();
 
@@ -1414,6 +1415,13 @@ public class Agent extends Subject implements Runnable {
 						simSettings, passenger);
 				new AgentAction(actionType).perform();
 				/* **************************************************** */
+			}else if(popUpSeats){
+				/* **************************************************** */
+				AgentActionType actionType = new UnfoldSeat(this, scale,
+						simSettings, passenger);
+				new AgentAction(actionType).perform();
+				/* **************************************************** */
+				
 			}
 
 			//

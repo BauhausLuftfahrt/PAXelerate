@@ -60,6 +60,10 @@ public class UnfoldSeat extends AgentActionType {
 					simSettings.getLiftingSeatPanPopupTimeDeviation()));
 			
 		} else if (myself.getSeat().getLayoutConcept() == LayoutConcept.BRING_YOUR_OWN_SEAT) {
+			unfoldSeat(GaussianRandom.gaussianRandom(
+					simSettings.getLiftingSeatPanPopupTimeMean(),
+					GaussOptions.PERCENT_95,
+					simSettings.getLiftingSeatPanPopupTimeDeviation()));		
 		}
 
 	}

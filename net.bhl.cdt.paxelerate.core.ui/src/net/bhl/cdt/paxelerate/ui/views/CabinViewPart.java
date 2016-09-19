@@ -84,7 +84,7 @@ public class CabinViewPart extends ViewPart {
 
 	/** ****************************************************************. */
 
-	private Image economySeatDefault, economySeatBack,econmomySeatPop, economySeatSide, businessSeat, firstSeat, galleyIcon,
+	private Image economySeatDefault, economySeatBack,ecomomySeatPop, economySeatSide, businessSeat, firstSeat, galleyIcon,
 			lavatoryIcon;
 
 	/** The canvas. */
@@ -127,7 +127,7 @@ public class CabinViewPart extends ViewPart {
 		economySeatDefault = ImageImporter.getImage(getClass(), IMAGE_PATH + "economy_seat.png");
 		economySeatSide = ImageImporter.getImage(getClass(), IMAGE_PATH + "economy_seat_folded_2.png");
 		economySeatBack = ImageImporter.getImage(getClass(), IMAGE_PATH + "economy_seat_folded_1.png");
-		ecomomySeatPop = ImageImporter.getImage(getClass(), IMAGE_PATH + "economy_seat_popup");
+		ecomomySeatPop = ImageImporter.getImage(getClass(), IMAGE_PATH + "economy_seat_popup.png");
 		businessSeat = ImageImporter.getImage(getClass(), IMAGE_PATH + "business_seat.png");
 		firstSeat = ImageImporter.getImage(getClass(), IMAGE_PATH + "first_seat.png");
 		galleyIcon = ImageImporter.getImage(getClass(), IMAGE_PATH + "coffee.png");
@@ -265,7 +265,7 @@ public class CabinViewPart extends ViewPart {
 							icon = economySeatBack;
 							break;
 						case BRING_YOUR_OWN_SEAT:
-							icon = ecomonySeatPop;
+							icon = ecomomySeatPop;
 							break;
 						default:
 							icon = economySeatDefault;
@@ -447,7 +447,7 @@ public class CabinViewPart extends ViewPart {
 					economySeatDefault = ImageHelper.resize(economySeatDefault, dimY, dimX, parent);
 					economySeatSide = ImageHelper.resize(economySeatSide, dimY, dimX, parent);
 					economySeatBack = ImageHelper.resize(economySeatBack, dimY, dimX, parent);
-					economySeatPop = ImageHelper.resize(economySeatPop, dimY, dimX, parent);
+					ecomomySeatPop = ImageHelper.resize(ecomomySeatPop, dimY, dimX, parent);
 				default:
 				}
 			}
