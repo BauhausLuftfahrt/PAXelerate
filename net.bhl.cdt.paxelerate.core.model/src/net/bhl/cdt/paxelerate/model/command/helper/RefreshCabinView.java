@@ -93,6 +93,7 @@ public class RefreshCabinView {
 				} else {
 					seat.setLayoutConcept(LayoutConcept.DEFAULT);
 				}
+
 				/* Lifting seat pan */
 			} else if (cabin.getSimulationSettings().getLayoutConcept() == LayoutConcept.LIFTING_SEAT_PAN_SEATS) {
 				/* Aisle seats are set foldable */

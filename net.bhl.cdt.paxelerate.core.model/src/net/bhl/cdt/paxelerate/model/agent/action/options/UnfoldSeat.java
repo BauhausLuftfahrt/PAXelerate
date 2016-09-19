@@ -51,13 +51,15 @@ public class UnfoldSeat extends AgentActionType {
 					GaussOptions.PERCENT_95,
 					simSettings.getSidewaysFoldabeSeatPopupTimeDeviation()));
 
-			/* Lifting seat pan */
+		/* Lifting seat pan */
 		} else if (myself.getSeat()
 				.getLayoutConcept() == LayoutConcept.LIFTING_SEAT_PAN_SEATS) {
 			unfoldSeat(GaussianRandom.gaussianRandom(
 					simSettings.getLiftingSeatPanPopupTimeMean(),
 					GaussOptions.PERCENT_95,
 					simSettings.getLiftingSeatPanPopupTimeDeviation()));
+			
+		} else if (myself.getSeat().getLayoutConcept() == LayoutConcept.BRING_YOUR_OWN_SEAT) {
 		}
 
 	}

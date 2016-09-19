@@ -114,15 +114,17 @@ public class ObstacleGenerator {
 		generateDoorDepressions();
 
 		/* generate a depression in the potential for the aisles */
-		generateAisleDepressions();
+		//generateAisleDepressions();
 		
 		
 		/*function for twin-aisle*/
-		generateHoleForGalley();
-		generateTwinAisleDepressions();
+		//generateHoleForGalley();
+		
+		//TODO it should be changed to depend on the layout-concept
+		//generateTwinAisleDepressions();  
 		
 		/*function for Pop-Up seats*/
-		//generateGradientForBody();
+		generateGradientForBody();
 		//generateTranceparentAisle();
 
 	}
@@ -233,27 +235,38 @@ public class ObstacleGenerator {
 	
 	/*the methode for pop up seat*/
 	private void generateGradientForBody() {
-
+			
 		/* loop through all nodes */
 		for (Node node : areamap.getNodes()) {
 
-			
-			if ( (node.getPosition().getY() == 0) || (node.getPosition().getY() == cabin.getYDimension()) ){
-				
-				aircraftBody.add(node);
-			
-				for (Node aircraftWall : aircraftBody) {
-
-					double distance = MathHelper.distanceBetween(node.getPosition(),
-							aircraftWall.getPosition());
+			//if(!node.isObstacle()){
+				if ( (node.getPosition().getY() == 0) || 
+						(node.getPosition().getY() == (cabin.getYDimension() / (int) scale) )){
 					
-						if( distance >= 0 && distance < 3 ){
-							node.setObstacleValue(5); //TODO:the value should be constant
-						}
-					}			
+//					int xPos = node.getPosition().getX();
+//					for(Door door : cabin.getDoors()){
+//						
+//						if(xPos < ( (int) door.getXPosition()/scale ) - AreamapHandler.NARROWING_OF_DOOR_PATH_IN_PIXELS 
+//								&& xPos > ( (int) door.getXPosition()/scale ) + ((int)(door.getWidth() / scale)) 
+//								- AreamapHandler.NARROWING_OF_DOOR_PATH_IN_PIXELS ){
+				
+				
+			
+							aircraftBody.add(node);
+			
+						for(Node aircraftWall : aircraftBody) {
 
-				}
-			}
+							int distance = Math.abs(node.getPosition().getY()-aircraftWall.getPosition().getY());
+					
+								if( distance >= 0 && distance < 1 ){
+								node.setObstacleValue(5); //TODO:the value should be constant
+								}
+							}				
+						}
+					}
+				
+//			}		
+//		}
 	}
 	/*the method for pop up seat*/
 	private void generateTranceparentAisle() {

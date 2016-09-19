@@ -27,6 +27,7 @@ import net.bhl.cdt.paxelerate.model.Cabin;
 import net.bhl.cdt.paxelerate.model.CabinFactory;
 import net.bhl.cdt.paxelerate.model.Curtain;
 import net.bhl.cdt.paxelerate.model.Door;
+import net.bhl.cdt.paxelerate.model.LayoutConcept;
 import net.bhl.cdt.paxelerate.model.ObjectOption;
 import net.bhl.cdt.paxelerate.model.Passenger;
 import net.bhl.cdt.paxelerate.model.PhysicalObject;
@@ -83,7 +84,7 @@ public class CabinViewPart extends ViewPart {
 
 	/** ****************************************************************. */
 
-	private Image economySeatDefault, economySeatBack, economySeatSide, businessSeat, firstSeat, galleyIcon,
+	private Image economySeatDefault, economySeatBack,econmomySeatPop, economySeatSide, businessSeat, firstSeat, galleyIcon,
 			lavatoryIcon;
 
 	/** The canvas. */
@@ -126,6 +127,7 @@ public class CabinViewPart extends ViewPart {
 		economySeatDefault = ImageImporter.getImage(getClass(), IMAGE_PATH + "economy_seat.png");
 		economySeatSide = ImageImporter.getImage(getClass(), IMAGE_PATH + "economy_seat_folded_2.png");
 		economySeatBack = ImageImporter.getImage(getClass(), IMAGE_PATH + "economy_seat_folded_1.png");
+		ecomomySeatPop = ImageImporter.getImage(getClass(), IMAGE_PATH + "economy_seat_popup");
 		businessSeat = ImageImporter.getImage(getClass(), IMAGE_PATH + "business_seat.png");
 		firstSeat = ImageImporter.getImage(getClass(), IMAGE_PATH + "first_seat.png");
 		galleyIcon = ImageImporter.getImage(getClass(), IMAGE_PATH + "coffee.png");
@@ -261,6 +263,9 @@ public class CabinViewPart extends ViewPart {
 							break;
 						case LIFTING_SEAT_PAN_SEATS:
 							icon = economySeatBack;
+							break;
+						case BRING_YOUR_OWN_SEAT:
+							icon = ecomonySeatPop;
 							break;
 						default:
 							icon = economySeatDefault;
@@ -442,6 +447,7 @@ public class CabinViewPart extends ViewPart {
 					economySeatDefault = ImageHelper.resize(economySeatDefault, dimY, dimX, parent);
 					economySeatSide = ImageHelper.resize(economySeatSide, dimY, dimX, parent);
 					economySeatBack = ImageHelper.resize(economySeatBack, dimY, dimX, parent);
+					economySeatPop = ImageHelper.resize(economySeatPop, dimY, dimX, parent);
 				default:
 				}
 			}
