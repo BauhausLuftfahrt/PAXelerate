@@ -120,12 +120,15 @@ public class ObstacleGenerator {
 		/*function for twin-aisle*/
 		//generateHoleForGalley();
 		
-		//TODO it should be changed to depend on the layout-concept
+		//TODO it should be changed to depend on the layout-concept & Aisle-conception 
 		//generateTwinAisleDepressions();  
 		
 		/*function for Pop-Up seats*/
-		generateGradientForBody();
-		//generateTranceparentAisle();
+		if(cabin.getSimulationSettings().getLayoutConcept() == LayoutConcept.BRING_YOUR_OWN_SEAT){
+			generateGradientForBody();
+			generateTranceparentAisle();
+		}
+		
 
 	}
 
@@ -270,25 +273,16 @@ public class ObstacleGenerator {
 	}
 	/*the method for pop up seat*/
 	private void generateTranceparentAisle() {
+		
+		int middleOfCabin = ( cabin.getYDimension() / (int) scale ) / 2;
 
 		/* loop through all nodes */
 		for (Node node : areamap.getNodes()) {
-
-			if (!node.isObstacle() && node
-					.getObstacleValue() == AreamapHandler.DEFAULT_VALUE) {
-				
-				for (Node obstacle : obstacles) {
-					
-					if(obstacle.getObstacleType().getValue() == 1){
-						
-						double distance = Math.abs(node.getPosition().getY() - obstacle.getPosition().getY());
-						if( distance == 1){
-							node.setObstacleValue(5); //TODO:the value should be constant
-						}
-						
-					}
-				}			
-
+			
+			
+			if(node.getPosition().getY() >= ( middleOfCabin - AreamapHandler.NARROWING_OF_AISLE_PATH_IN_PIXELS) 
+					&& node.getPosition().getY() <= ( middleOfCabin - AreamapHandler.NARROWING_OF_AISLE_PATH_IN_PIXELS) ){
+				node.setObstacleValue(AreamapHandler.HOLE_VALUE);
 			}
 		}
 	}

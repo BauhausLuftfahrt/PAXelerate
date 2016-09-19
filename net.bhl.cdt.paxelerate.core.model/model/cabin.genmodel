@@ -72,6 +72,10 @@
       <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//AgentMovementModel/SimpleModel"/>
       <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//AgentMovementModel/AdvancedModel"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cabin.ecore#//AisleConcept">
+      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//AisleConcept/OneAisle"/>
+      <genEnumLiterals ecoreEnumLiteral="cabin.ecore#//AisleConcept/TwinAisle"/>
+    </genEnums>
     <genClasses ecoreClass="cabin.ecore#//Cabin">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/xDimension"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//Cabin/yDimension"/>
@@ -215,6 +219,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/sidewaysFoldabeSeatPopupTimeDeviation"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/liftingSeatPanPopupTimeMean"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/liftingSeatPanPopupTimeDeviation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//SimulationProperties/aisleConcept"/>
     </genClasses>
     <genClasses ecoreClass="cabin.ecore#//LuggageProperties">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cabin.ecore#//LuggageProperties/luggageStowDistanceFromSeatMean"/>
