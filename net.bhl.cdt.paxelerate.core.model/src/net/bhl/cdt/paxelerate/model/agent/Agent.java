@@ -876,35 +876,36 @@ public class Agent extends Subject implements Runnable {
 						return Property.AGENT;
 					}
 				}
-				else{
-					
-					int checkWay = stepIndex;
-					while(checkWay < path.getLength()){
-						
-						int xPos = path.get(checkWay).getPosition().getX();
-						int yPos = path.get(checkWay).getPosition().getY();
-						
-						Node checkNodeSeat = SimulationHandler.getMap().get(xPos,
-								yPos);
-						if(checkNodeSeat.isSeat()){	
-							
-							System.out.print("Seat found\n");
-							return Property.SEAT;
-						}
-						checkWay++;
-					}
-					return null;
-				}
 //				else if(checkNode.isSeat()){
-//					if(checkNode.getProperty() == Property.SEAT)
-//					return Property.SEAT;
-				
-					
+//					
+//					int checkWay = stepIndex;
+//					while(checkWay < path.getLength()){
+//						
+//						int xPos = path.get(checkWay).getPosition().getX();
+//						int yPos = path.get(checkWay).getPosition().getY();
+//						
+//						Node checkNodeSeat = SimulationHandler.getMap().get(xPos,
+//								yPos);
+//						if(checkNodeSeat.isSeat()){	
+//							
+//							System.out.print("Seat found\n");
+//							return Property.SEAT;
+//						}
+//						checkWay++;
+//					}
+//					return null;
+//				}
+				else if(checkNode.isSeat()){
+					if(checkNode.getProperty() == Property.SEAT)
+					return Property.SEAT;
+				else{}
 		}
 		
 	}
+		
+		}
 		return null;
-}
+	}
 
 	/**
 	 * Gets the path list.
@@ -1185,9 +1186,34 @@ public class Agent extends Subject implements Runnable {
 			 * stepIndex, so stepIndex is the desired step.
 			 */
 			stepIndex = 0; //int stepIndex = 0;
+							
+				int checkWay = stepIndex;
+				
+				while(checkWay < path.getLength()){
+					
+					int xPos = path.get(checkWay).getPosition().getX();
+					int yPos = path.get(checkWay).getPosition().getY();
+					
+					Node checkNodeSeat = SimulationHandler.getMap().get(xPos,yPos);
+					if(checkNodeSeat.isSeat()){	
+						
+						blockArea(currentPosition, false, false, null);
+						
+						this.setStartPosition(currentPosition);
+						
+						SimulationHandler.getAreamapHandler().getNewAreamap().
+								get(currentPosition).setProperty(Property.START, this.getPassenger());
+						Costmap updateCostMap = new Costmap(SimulationHandler.getDimension(),currentPosition,
+								SimulationHandler.getAreamapHandler().getNewAreamap(), this, true,0);
+						
+						Core aStar = new Core(SimulationHandler.getAreamapHandler(),updateCostMap, this);
+						this.setPath(aStar.getBestPath());
+					}
+					checkWay++;
+				}
 
 			/* run the path up to its end */
-			while (stepIndex < path.getLength()) {
+			while (stepIndex < path.getLength()){
 
 				/*
 				 * at the first step, there is no current location but only a
@@ -1240,14 +1266,17 @@ public class Agent extends Subject implements Runnable {
 						/* exit this loop */
 						break mainloop;}
 					
-					}
+				}
 				else if (property == Property.SEAT){
 					
 
 						if(!update){
+					
 						/* **************************************************** */
 							
 						blockArea(currentPosition, false, false, null);
+							
+			
 						
 						this.setStartPosition(currentPosition);
 						
@@ -1278,6 +1307,7 @@ public class Agent extends Subject implements Runnable {
 						setUpdatePath();
 						
 						}
+				}
 						
 						AgentActionType actionType = new Step(this, scale);
 						new AgentAction(actionType).perform();
@@ -1297,8 +1327,8 @@ public class Agent extends Subject implements Runnable {
 					 * if there is no obstacle in the way, check if the luggage
 					 * should be stowed now next
 					 */
-					}
-				} else if (foldingSeats && !stowingAtAisleSeat && !alreadyStowed
+				}
+				else if (foldingSeats && !stowingAtAisleSeat && !alreadyStowed
 						&& passengerStowsLuggage()) {
 
 					/*
@@ -1405,10 +1435,11 @@ public class Agent extends Subject implements Runnable {
 							/ passenger.getWalkingSpeed() / (100 / scale)));
 
 				}
+			
 			}
-
+		}
 			/* catch possible interruptions */
-		} catch (InterruptedException e) {
+		 catch (InterruptedException e) {
 			e = new InterruptedException(
 					" @ thread " + Thread.currentThread().getName());
 			Log.add(this, "Agent: InterruptedException @ thread " + Thread.currentThread().getName());

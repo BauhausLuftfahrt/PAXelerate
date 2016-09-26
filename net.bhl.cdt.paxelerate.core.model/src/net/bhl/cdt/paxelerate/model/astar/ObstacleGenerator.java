@@ -52,6 +52,8 @@ public class ObstacleGenerator {
 	/** a list of all obstacle nodes. */
 	private ArrayList<Node> obstacles = new ArrayList<>();
 	
+
+	
 	/** The gradient. */
 	private GradientOption gradient;
 
@@ -128,9 +130,6 @@ public class ObstacleGenerator {
 		//generateTwinAisleDepressions();  
 		
 		/*function for Pop-Up seats*/
-		
-		
-		
 
 	}
 	
@@ -168,6 +167,7 @@ public class ObstacleGenerator {
 			}
 		}
 	}
+	
 
 	/*The method is for twin-aisle and creates the gradient around the Galley 
 	 * It supposed as the Galley is in front of the boarding-door.
@@ -697,6 +697,80 @@ public class ObstacleGenerator {
 	 */
 	public Areamap returnMap() {
 		return areamap;
+	}
+	
+public void generateSeatGradient() {
+
+	 ArrayList<Node> leftSeats = new ArrayList<>();
+	 ArrayList<Node> rightSeats = new ArrayList<>();
+		int middleOfCabin = ( cabin.getYDimension() / (int) scale ) / 2;
+
+
+		for (Node node : areamap.getNodes()) {
+			if(node.isSeat())
+			{
+				if(node.getPosition().getY() < middleOfCabin){
+					leftSeats.add(node);
+				}else{
+				rightSeats.add(node);
+				}
+			}
+		}
+			
+		
+		
+		
+		
+		/* loop through all nodes */
+		for (Node node : areamap.getNodes()) {
+			
+			
+			if(node.getPosition().getY() < middleOfCabin){
+				
+				if(!node.isObstacle() && !node.isSeat()){
+					
+					for (Node seat : leftSeats) {
+						if( (node.getPosition().getX() == seat.getPosition().getX() ) 
+								&& ( node.getPosition().getY() < seat.getPosition().getY()) ){
+									node.setObstacleValue(30);
+						}
+					
+					}
+				}
+			}
+			else{
+				if(!node.isObstacle() && !node.isSeat()){
+					
+					for (Node seat : rightSeats) {
+						if( (node.getPosition().getX() == seat.getPosition().getX() ) 
+								&& ( node.getPosition().getY() > seat.getPosition().getY()) ){
+									node.setObstacleValue(30);
+						}
+					
+				}
+					
+			}
+		}
+
+//			if (!node.isObstacle() && !node.isSeat()) {
+//
+//				/* calculate the distance to the closest obstacle node */
+//				double distanceToClosestSeat = AreamapHandler
+//						.minimumDistanceToSeat(node, seats);
+//				
+//				/*
+//				 * check if the distance is smaller than the maximum allowed
+//				 * gradient width
+//				 */
+//				if (distanceToClosestSeat <= AreamapHandler.GRADIENT_WIDTH) {
+//
+//					/* calculate the gradient value and apply it to the node */
+//					node.setObstacleValue(getDistanceByOption(
+//							distanceToClosestSeat, gradient));
+//					
+//				}
+//			}
+		}
 	}
 	
 }

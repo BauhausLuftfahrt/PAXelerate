@@ -32,6 +32,8 @@ public class AreamapHandler {
 	private Areamap areamap;
 	
 	private Cabin cabin;
+	
+	private ObstacleGenerator g;
 		
 	/** The Constant NARROWING_OF_DOOR_PATH_IN_PIXELS. */
 	public static final int DEFAULT_VALUE = 3, OBSTACLE_RANGE_IN_CM = 20,
@@ -58,10 +60,14 @@ public class AreamapHandler {
 		defineNeighboringNodes();
 
 		/* apply obstacle values to the area map */
-		areamap = new ObstacleGenerator(areamap, cabin, GradientOption.LINEAR)
-				.returnMap();
-
+//		areamap = new ObstacleGenerator(areamap, cabin, GradientOption.LINEAR)
+//				.returnMap();
 		
+		
+		g = new ObstacleGenerator(areamap, cabin, GradientOption.LINEAR);
+			
+		areamap = g.returnMap();
+
 		this.cabin=cabin;
 		
 	}
@@ -142,6 +148,8 @@ public class AreamapHandler {
 
 	public Areamap getNewAreamap() {
 		
+		
+		g.generateSeatGradient();
 		return areamap;
 	}
 	/**
@@ -165,6 +173,31 @@ public class AreamapHandler {
 			/* calculate the distance using z = root(x² + y²) */
 			double distance = MathHelper.distanceBetween(node.getPosition(),
 					obstacle.getPosition());
+
+				/* check if there is a distance smaller than the current one */
+			if (distance < minimum){
+	
+			/* if so, define it as the new smallest distance */
+				minimum = distance;
+					}
+		}
+
+		/* return the distance */
+		return minimum;
+	}
+	
+	public static double minimumDistanceToSeat(Node node,
+			ArrayList<Node> seats) {
+
+		/* set the minimum as high as possible */
+		double minimum = Integer.MAX_VALUE;
+
+		/* loop through all obstacles */
+		for (Node seat : seats) {
+
+			/* calculate the distance using z = root(x² + y²) */
+			double distance = MathHelper.distanceBetween(node.getPosition(),
+					seat.getPosition());
 
 				/* check if there is a distance smaller than the current one */
 			if (distance < minimum){
@@ -234,6 +267,9 @@ public class AreamapHandler {
 
 		/* redefine all neighboring nodes */
 		defineNeighboringNodes();
+	}
+	public ObstacleGenerator getGenerator(){
+		return g;
 	}
 
 }
