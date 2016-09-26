@@ -76,12 +76,12 @@ public class RefreshCabinView {
 	 * Check foldable seats.
 	 */
 	private void checkFoldableSeats() {
+		
 		for (Seat seat : ModelHelper.getChildrenByClass(cabin, Seat.class)) {
 
 			/* Bring your own seat */
 			if (cabin.getSimulationSettings().getLayoutConcept() == LayoutConcept.BRING_YOUR_OWN_SEAT){
-				seat.setLayoutConcept(LayoutConcept.BRING_YOUR_OWN_SEAT);
-				
+					seat.setLayoutConcept(LayoutConcept.BRING_YOUR_OWN_SEAT);
 			// TODO: arbitrary seat abreast
 				/* Sideways foldable seat */
 			} else if (cabin.getSimulationSettings().getLayoutConcept() == LayoutConcept.SIDWAYS_FOLDABLE_SEAT) {

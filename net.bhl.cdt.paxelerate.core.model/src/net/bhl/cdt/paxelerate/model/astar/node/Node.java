@@ -266,6 +266,8 @@ public class Node implements Comparable<Node> {
 			return "G";
 		case START:
 			return "S";
+		case SEAT :
+			return "Y";
 		default:
 			return "?";
 		}
@@ -412,6 +414,11 @@ public class Node implements Comparable<Node> {
 	public boolean isObstacle() {
 		return property == Property.OBSTACLE;
 	}
+	
+	public boolean isSeat() {
+		return property == Property.SEAT;
+	}
+	
 
 	/**
 	 * This method compares two nodes.

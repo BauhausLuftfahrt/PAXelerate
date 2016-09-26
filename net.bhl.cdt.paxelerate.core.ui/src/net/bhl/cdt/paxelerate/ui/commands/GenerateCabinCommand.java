@@ -88,6 +88,7 @@ public class GenerateCabinCommand extends CDTCommand {
 			Log.add(this, "Cabin generation completed");
 			new RefreshCabinViewCommand(cabin).doRun();
 			
+			
 			if (cabinViewPart != null) {
 				try {
 					cabinViewPart.syncViewer();

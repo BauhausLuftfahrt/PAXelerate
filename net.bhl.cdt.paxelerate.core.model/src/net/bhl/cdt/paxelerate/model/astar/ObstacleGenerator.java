@@ -41,6 +41,7 @@ public class ObstacleGenerator {
 
 	/** The developer mode. */
 	private boolean developerMode;
+	private boolean update = false;
 
 	/** The areamap. */
 	private Areamap areamap;
@@ -50,9 +51,6 @@ public class ObstacleGenerator {
 
 	/** a list of all obstacle nodes. */
 	private ArrayList<Node> obstacles = new ArrayList<>();
-	
-	/** a list of all node aircraft cabin exterior*/
-	private ArrayList<Node> aircraftBody = new ArrayList<>();
 	
 	/** The gradient. */
 	private GradientOption gradient;
@@ -104,6 +102,12 @@ public class ObstacleGenerator {
 
 		checkForGaps();
 		
+		if(cabin.getSimulationSettings().getLayoutConcept() 
+				== LayoutConcept.BRING_YOUR_OWN_SEAT){
+			generateGradientForBody();
+			generateTranceparentAisle();
+		}
+		
 		/* change the oder of this method */
 		generateDoorDepressions();
 
@@ -124,13 +128,12 @@ public class ObstacleGenerator {
 		//generateTwinAisleDepressions();  
 		
 		/*function for Pop-Up seats*/
-		if(cabin.getSimulationSettings().getLayoutConcept() == LayoutConcept.BRING_YOUR_OWN_SEAT){
-			generateGradientForBody();
-			generateTranceparentAisle();
-		}
+		
+		
 		
 
 	}
+	
 
 	/**
 	 * This method creates the potential gradient around obstacle.
@@ -144,8 +147,7 @@ public class ObstacleGenerator {
 			 * only consider the ones which are no obstacle and have not been
 			 * calculated before
 			 */
-			if (!node.isObstacle() && node
-					.getObstacleValue() == AreamapHandler.DEFAULT_VALUE) {
+			if (!node.isObstacle() && node.getObstacleValue() == AreamapHandler.DEFAULT_VALUE) {//
 
 				/* calculate the distance to the closest obstacle node */
 				double distanceToClosestObstacle = AreamapHandler
@@ -241,36 +243,38 @@ public class ObstacleGenerator {
 			
 		/* loop through all nodes */
 		for (Node node : areamap.getNodes()) {
-
-			//if(!node.isObstacle()){
-				if ( (node.getPosition().getY() == 0) || 
-						(node.getPosition().getY() == (cabin.getYDimension() / (int) scale) )){
-					
-//					int xPos = node.getPosition().getX();
-//					for(Door door : cabin.getDoors()){
-//						
-//						if(xPos < ( (int) door.getXPosition()/scale ) - AreamapHandler.NARROWING_OF_DOOR_PATH_IN_PIXELS 
-//								&& xPos > ( (int) door.getXPosition()/scale ) + ((int)(door.getWidth() / scale)) 
-//								- AreamapHandler.NARROWING_OF_DOOR_PATH_IN_PIXELS ){
-				
-				
 			
-							aircraftBody.add(node);
-			
-						for(Node aircraftWall : aircraftBody) {
+			int leftBody = 0;
+			int rightBody = (cabin.getYDimension() / (int) scale) -1;
 
-							int distance = Math.abs(node.getPosition().getY()-aircraftWall.getPosition().getY());
-					
-								if( distance >= 0 && distance < 1 ){
-								node.setObstacleValue(5); //TODO:the value should be constant
-								}
-							}				
-						}
-					}
+			if(!node.isObstacle()){	
+
 				
-//			}		
-//		}
+				if ( Math.abs(node.getPosition().getY() - leftBody) <= AreamapHandler.GRADIENT_WIDTH_POPUP_SEAT){
+					
+					
+					int distanceFromBody = Math.abs(node.getPosition().getY()-0);
+					int value = (int) MathHelper.linearInterpolation(
+							AreamapHandler.GRADIENT_UPPER_BOUND,
+							AreamapHandler.GRADIENT_LOWER_BOUND,
+							(AreamapHandler.GRADIENT_WIDTH_POPUP_SEAT - 1), (distanceFromBody - 1));
+					
+					node.setObstacleValue(value);
+		
+				}else if(Math.abs(rightBody - node.getPosition().getY()) <= AreamapHandler.GRADIENT_WIDTH_POPUP_SEAT ){
+					
+					int distanceFromBody = Math.abs(rightBody-node.getPosition().getY());
+					int value = (int) MathHelper.linearInterpolation(
+							AreamapHandler.GRADIENT_UPPER_BOUND,
+							AreamapHandler.GRADIENT_LOWER_BOUND,
+							(AreamapHandler.GRADIENT_WIDTH_POPUP_SEAT - 1), (distanceFromBody - 1));
+					
+					node.setObstacleValue(value);
+				}
+			}
+		}
 	}
+		
 	/*the method for pop up seat*/
 	private void generateTranceparentAisle() {
 		
@@ -280,8 +284,8 @@ public class ObstacleGenerator {
 		for (Node node : areamap.getNodes()) {
 			
 			
-			if(node.getPosition().getY() >= ( middleOfCabin - AreamapHandler.NARROWING_OF_AISLE_PATH_IN_PIXELS) 
-					&& node.getPosition().getY() <= ( middleOfCabin - AreamapHandler.NARROWING_OF_AISLE_PATH_IN_PIXELS) ){
+			if(node.getPosition().getY() >= ( middleOfCabin - AreamapHandler.NARROWING_OF_AISLE_PATH_IN_PIXELS-1) 
+					&& node.getPosition().getY() <= ( middleOfCabin - AreamapHandler.NARROWING_OF_AISLE_PATH_IN_PIXELS + 1) ){
 				node.setObstacleValue(AreamapHandler.HOLE_VALUE);
 			}
 		}
@@ -588,6 +592,7 @@ public class ObstacleGenerator {
 
 					/* if so, do not create an obstacle for that seat */
 					continue;
+					
 				} else if (cabin.getSimulationSettings()
 						.getLayoutConcept() == LayoutConcept.LIFTING_SEAT_PAN_SEATS
 						&& seat.getLayoutConcept() == LayoutConcept.LIFTING_SEAT_PAN_SEATS) {
@@ -636,7 +641,7 @@ public class ObstacleGenerator {
 			}
 		}
 	}
-
+	
 	/**
 	 * Check for gaps.
 	 */
@@ -693,4 +698,5 @@ public class ObstacleGenerator {
 	public Areamap returnMap() {
 		return areamap;
 	}
+	
 }

@@ -68,6 +68,7 @@ public class IssueScanner extends Subject implements Runnable {
 				updateMap();
 
 				Thread.sleep(200);
+				
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 				Log.add(this, "Issue scanner: InterruptedException @ thread "

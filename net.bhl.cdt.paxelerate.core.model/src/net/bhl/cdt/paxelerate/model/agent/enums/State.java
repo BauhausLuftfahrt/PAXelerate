@@ -32,5 +32,6 @@ public enum State {
 	/** The waiting for other passenger to seat. */
 	WAITING_FOR_OTHER_PASSENGER_TO_SEAT,
 	/** The returning to seat. */
-	RETURNING_TO_SEAT;
+	RETURNING_TO_SEAT,
+	AREADY_SAT;
 }

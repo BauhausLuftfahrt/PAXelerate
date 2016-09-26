@@ -16,5 +16,6 @@ public enum Property {
 	/** The start. */
 	START,
 	/** The goal. */
-	GOAL
+	GOAL,
+	SEAT
 }

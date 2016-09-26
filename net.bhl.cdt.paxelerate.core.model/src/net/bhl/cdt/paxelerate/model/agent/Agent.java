@@ -31,6 +31,7 @@ import net.bhl.cdt.paxelerate.model.agent.mood.AgentMood;
 import net.bhl.cdt.paxelerate.model.agent.mood.options.AggressiveMood;
 import net.bhl.cdt.paxelerate.model.agent.mood.options.PassiveMood;
 import net.bhl.cdt.paxelerate.model.astar.AStarHelper;
+import net.bhl.cdt.paxelerate.model.astar.Core;
 import net.bhl.cdt.paxelerate.model.astar.Costmap;
 import net.bhl.cdt.paxelerate.model.astar.Path;
 import net.bhl.cdt.paxelerate.model.astar.SimulationHandler;
@@ -68,7 +69,7 @@ public class Agent extends Subject implements Runnable {
 	private Vector start, goal, desiredPosition, currentPosition;
 
 	/** The dim. */
-	private int numbOfInterupts = 0, waycounter = 0, dim = 2;
+	private int numbOfInterupts = 0, waycounter = 0, dim = 2;//2
 
 	/** The way making skipped. */
 	private int wayMakingSkipped = 0;
@@ -84,7 +85,7 @@ public class Agent extends Subject implements Runnable {
 	private boolean alreadyStowed = false, waitingCompleted = false,
 			exitTheMainLoop = false, movedOnce = false, foldingSeats = false,
 			stowingAtAisleSeat = false, waitingAtAisleSeat = false,
-			aisleSeat = false,popUpSeats = false;
+			aisleSeat = false,popUpSeats = false,update = false;
 
 	/** The stopwatch. */
 	private StopWatch stopwatch = new StopWatch();
@@ -129,6 +130,8 @@ public class Agent extends Subject implements Runnable {
 
 	/** The last move time. */
 	private long lastMoveTime;
+	
+	private int stepIndex;
 
 	/**
 	 * Gets the the passenger i let in the row.
@@ -727,6 +730,13 @@ public class Agent extends Subject implements Runnable {
 	boolean firstPathCalculation() {
 		return pathlist.isEmpty();
 	}
+	boolean getUpdatePath() {
+		return update;
+	}
+	public void setUpdatePath() {
+		update = true;
+	}
+	
 
 	/**
 	 * This method returns the current position of the agent.
@@ -754,15 +764,75 @@ public class Agent extends Subject implements Runnable {
 	 *            the specific vector
 	 * @return if the node is blocked by someone else
 	 */
-	private Property nodeBlocked(Vector vector) {
+//	private Property nodeBlocked(Vector vector) {
+//
+//		/*
+//		 * loop through values from - dimension to + dimension (hard coded : 2)
+//		 */
+//		for (int y = -dim; y <= dim; y++) {
+//
+//			/* only use the positive y direction */
+//			int x = dim;
+//
+//			/*
+//			 * if the door is behind the seat, the scanning will be in the
+//			 * opposite direction
+//			 */
+//			if (passenger.getSeat().getXPosition() < passenger.getDoor()
+//					.getXPosition()) {
+//				x = -(x + 1);
+//			}
+//
+//			/* get the node at the requested location */
+//			Node checkNode = SimulationHandler.getMap().get(vector.getX() + x,
+//					vector.getY() + y);
+//
+//			if (checkNode != null) {
+//
+//				/* check if the node is already blocked */
+//				if (checkNode.getProperty() == Property.AGENT) {
+//
+//					/* check if its was not this agent who blocked it */
+//					if (checkNode.getPassenger().getId() != this.passenger
+//							.getId()) {
+//
+//						/*
+//						 * determine the passenger who currently blocks the path
+//						 */
+//						for (Agent agent : SimulationHandler.getAgentList()) {
+//
+//							/*
+//							 * compare the agent id with the id linked to the
+//							 * blocked node
+//							 */
+//							if (agent.getPassenger().getId() == checkNode
+//									.getPassenger().getId()) {
+//
+//								/* find the blocking agent */
+//								this.blockingAgent = agent;
+//							}
+//						}
+//						return Property.AGENT;
+//					}
+//				}
+//				if (checkNode.isObstacle()) {
+//					return null;
+//				}
+//			}
+//		}
+//		return null;
+//	}
+	
+	private Property nodeBlocked(Vector vector) {//vector - desired position
 
 		/*
 		 * loop through values from - dimension to + dimension (hard coded : 2)
 		 */
-		for (int y = -dim; y <= dim; y++) {
+		for (int y = -dim; y <= dim; y++){
 
 			/* only use the positive y direction */
 			int x = dim;
+			
 
 			/*
 			 * if the door is behind the seat, the scanning will be in the
@@ -781,6 +851,7 @@ public class Agent extends Subject implements Runnable {
 
 				/* check if the node is already blocked */
 				if (checkNode.getProperty() == Property.AGENT) {
+					
 
 					/* check if its was not this agent who blocked it */
 					if (checkNode.getPassenger().getId() != this.passenger
@@ -805,13 +876,35 @@ public class Agent extends Subject implements Runnable {
 						return Property.AGENT;
 					}
 				}
-				if (checkNode.isObstacle()) {
+				else{
+					
+					int checkWay = stepIndex;
+					while(checkWay < path.getLength()){
+						
+						int xPos = path.get(checkWay).getPosition().getX();
+						int yPos = path.get(checkWay).getPosition().getY();
+						
+						Node checkNodeSeat = SimulationHandler.getMap().get(xPos,
+								yPos);
+						if(checkNodeSeat.isSeat()){	
+							
+							System.out.print("Seat found\n");
+							return Property.SEAT;
+						}
+						checkWay++;
+					}
 					return null;
 				}
-			}
+//				else if(checkNode.isSeat()){
+//					if(checkNode.getProperty() == Property.SEAT)
+//					return Property.SEAT;
+				
+					
 		}
-		return null;
+		
 	}
+		return null;
+}
 
 	/**
 	 * Gets the path list.
@@ -922,6 +1015,8 @@ public class Agent extends Subject implements Runnable {
 		/* when the goal is reached, the passenger is defined seated */
 		passenger.setIsSeated(isSeated);
 
+		this.setCurrentState(State.AREADY_SAT);
+		
 		/* then the assigned seat is declared occupied */
 		passenger.getSeat().setOccupied(isSeated);
 
@@ -1089,7 +1184,7 @@ public class Agent extends Subject implements Runnable {
 			 * current step count. The actual position is one step behind
 			 * stepIndex, so stepIndex is the desired step.
 			 */
-			int stepIndex = 0;
+			stepIndex = 0; //int stepIndex = 0;
 
 			/* run the path up to its end */
 			while (stepIndex < path.getLength()) {
@@ -1103,7 +1198,7 @@ public class Agent extends Subject implements Runnable {
 					/*
 					 * the current position is the last taken step in the path
 					 */
-					currentPosition = path.get(stepIndex - 1).getPosition();
+					currentPosition = path.get(stepIndex - 1).getPosition();					
 
 				}
 
@@ -1117,7 +1212,22 @@ public class Agent extends Subject implements Runnable {
 				/* check if the desired next step is blocked by someone else */
 				Property property = nodeBlocked(desiredPosition);
 
-				if (property != null) {
+//				if (property != null) {
+//
+//					/* **************************************************** */
+//					AgentActionType actionType = new Wait(this, scale,
+//							property);
+//					new AgentAction(actionType).perform();
+//					/* **************************************************** */
+//
+//					if (exitTheMainLoop) {
+//
+//						/* exit this loop */
+//						break mainloop;
+//					}
+//			
+			if(property != null){
+				if (property == Property.AGENT) {
 
 					/* **************************************************** */
 					AgentActionType actionType = new Wait(this, scale,
@@ -1128,13 +1238,66 @@ public class Agent extends Subject implements Runnable {
 					if (exitTheMainLoop) {
 
 						/* exit this loop */
-						break mainloop;
+						break mainloop;}
+					
 					}
+				else if (property == Property.SEAT){
+					
 
+						if(!update){
+						/* **************************************************** */
+							
+						blockArea(currentPosition, false, false, null);
+						
+						this.setStartPosition(currentPosition);
+						
+						SimulationHandler.getAreamapHandler().getNewAreamap().
+								get(currentPosition).setProperty(Property.START, this.getPassenger());
+							
+						Costmap updateCostMap = new Costmap(SimulationHandler.getDimension(),currentPosition,
+								SimulationHandler.getAreamapHandler().getNewAreamap(), this, true,0);
+						
+						Core aStar = new Core(SimulationHandler.getAreamapHandler(),updateCostMap, this);
+						this.setPath(aStar.getBestPath());
+						
+//						System.out.print("current : " + currentPosition.getX() + ", "+currentPosition.getY() + "\n");
+//						System.out.print("desired : " + desiredPosition.getX() + ", "+desiredPosition.getY() + "\n");
+			
+						int goalX = this.getGoal().getX();
+						int goalY = this.getGoal().getY();
+						
+//						System.out.print("goalX,goalY : " + goalX + ", " + goalY + "\n");
+						
+//						int step = stepIndex;
+//						while(path.get(step).getPosition().getX() != goalX && path.get(step).getPosition().getY() != goalY){
+//									System.out.print("next : " + path.get(step).getPosition().getX() + ", "+
+//												path.get(step).getPosition().getY() + "\n");
+//									step++;
+//								}
+						stepIndex = 0;
+						setUpdatePath();
+						
+						}
+						
+						AgentActionType actionType = new Step(this, scale);
+						new AgentAction(actionType).perform();
+						
+						
+						stepIndex++;
+						
+						
+						/* sleep as long as one step takes */
+						Thread.sleep((int) (1000 / SimulationHandler.getCabin()
+								.getSimulationSettings().getSimulationSpeedFactor()
+								/ passenger.getWalkingSpeed() / (100 / scale)));
+
+						
+						
 					/*
 					 * if there is no obstacle in the way, check if the luggage
 					 * should be stowed now next
 					 */
+					}
 				} else if (foldingSeats && !stowingAtAisleSeat && !alreadyStowed
 						&& passengerStowsLuggage()) {
 
@@ -1416,12 +1579,13 @@ public class Agent extends Subject implements Runnable {
 				new AgentAction(actionType).perform();
 				/* **************************************************** */
 			}else if(popUpSeats){
+				
+				System.out.print("unfold\n ");
 				/* **************************************************** */
 				AgentActionType actionType = new UnfoldSeat(this, scale,
 						simSettings, passenger);
 				new AgentAction(actionType).perform();
-				/* **************************************************** */
-				
+				/* **************************************************** */		
 			}
 
 			//
@@ -1497,6 +1661,7 @@ public class Agent extends Subject implements Runnable {
 	}
 
 	public void setPath(Path bestPath) {
+		System.out.print("Best Path\n");
 		path = bestPath;
 	}
 

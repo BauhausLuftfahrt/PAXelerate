@@ -89,7 +89,7 @@ public class Costmap {
 		map[startPoint.getX()][startPoint.getY()] = 0;
 		visitedPoints.add(startPoint);
 		floodMap();
-		//printMapToConsole();
+		printMapToConsole();
 	}
 	
 	/*new costmap for front & rear boarding door,
@@ -129,7 +129,7 @@ public class Costmap {
 		
 		for (Node node : areamap.getNodes()) {
 
-			if (node.isObstacle()) {
+			if (node.isObstacle() || node.isSeat()) {
 
 				setCost(node.getPosition(), -1);
 				
@@ -191,8 +191,8 @@ public class Costmap {
 				if (map[i][j] == -1) {
 					System.out.print("X\t");
 				}
-				// else if (i == goalPoint.getX() && j == goalPoint.getY()) {
-				// System.out.print("G\t");
+				 else if (i == goalPoint.getX() && j == goalPoint.getY()) {
+				 System.out.print("G\t");}
 				// } else if (i == startPoint.getX() && j == startPoint.getY())
 				// {
 				// System.out.print("S\t");
@@ -297,6 +297,9 @@ public class Costmap {
 	private boolean isObstacle(Vector point) {
 		return map[point.getX()][point.getY()] == -1;
 	}
+	private boolean isSeat(Vector point) {
+		return map[point.getX()][point.getY()] == -1;
+	}
 
 	/**
 	 * This function checks whether there is a specific point in a specific list
@@ -359,7 +362,7 @@ public class Costmap {
 			if (!(point.getX() < 0 || point.getY() < 0
 					|| point.getX() >= size.getX()
 					|| point.getY() >= size.getY())) {
-				if (!isObstacle(point)) {
+				if (!isObstacle(point) || !isSeat(point)) {
 					if (!(checkForPoint(visitedPoints, point))) {
 						setCost(point, (getCost(middlePoint) + getCost(point)));
 						visitedPoints.add(point);

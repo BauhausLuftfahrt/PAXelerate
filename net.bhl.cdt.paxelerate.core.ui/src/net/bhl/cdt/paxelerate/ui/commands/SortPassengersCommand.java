@@ -165,7 +165,7 @@ public class SortPassengersCommand extends CDTCommand {
 				public void run() {
 					if (cabinViewPart != null) {
 						cabinViewPart.setCabin(cabin);
-						Log.add(this, "Cabin view checked and updated");
+						Log.add(this, "Cabin view checked and updated_2");
 					}
 				}
 			});

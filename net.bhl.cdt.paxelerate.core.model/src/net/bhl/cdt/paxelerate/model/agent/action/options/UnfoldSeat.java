@@ -91,10 +91,11 @@ public class UnfoldSeat extends AgentActionType {
 						&& l < SimulationHandler.getMap().getDimensions()
 								.getX()) {
 					SimulationHandler.getMap().get(l, k)
-							.setProperty(Property.OBSTACLE, null);
+							.setProperty(Property.SEAT, null);//SEAT
 				}
 			}
 		}
+		
 
 		/* Pauses the agent for the seat pop up time */
 		try {

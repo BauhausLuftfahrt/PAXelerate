@@ -69,7 +69,7 @@ public class SimulationHandler {
 	private static StopWatch master_boarding_time = new StopWatch();
 
 	/** The dimensions. */
-	private Vector dimensions;
+	private static Vector dimensions;//previous non-static
 
 	/** The scale. */
 	private static int scale = 1;
@@ -649,6 +649,9 @@ public class SimulationHandler {
 					+ pax.getNumberOfMakeWayOperations();
 		}
 		return numberCompleted;
+	}
+	public static Vector getDimension(){
+		return dimensions;
 	}
 
 }

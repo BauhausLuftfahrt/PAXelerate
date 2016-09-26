@@ -187,6 +187,14 @@ public class DefineBatchSimulationInput extends CDTCommand {
 							simSettings.getPassengerProperties().setSeatInterferenceProcessTimeFoldingSeatMean(0);
 							simSettings.getPassengerProperties().setSeatInterferenceProcessTimeFoldingSeatDeviation(0);
 							break;
+							
+						case "BringYourOwnSeat":
+							simSettings.setLayoutConcept(LayoutConcept.BRING_YOUR_OWN_SEAT);
+							simSettings.setSidewaysFoldabeSeatPopupTimeMean(0);
+							simSettings.setSidewaysFoldabeSeatPopupTimeDeviation(0);
+							simSettings.getPassengerProperties().setSeatInterferenceProcessTimeFoldingSeatMean(0);
+							simSettings.getPassengerProperties().setSeatInterferenceProcessTimeFoldingSeatDeviation(0);
+							break;
 
 						default:
 							simSettings.setLayoutConcept(LayoutConcept.DEFAULT);
