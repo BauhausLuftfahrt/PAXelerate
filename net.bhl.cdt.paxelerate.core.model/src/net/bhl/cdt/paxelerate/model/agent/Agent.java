@@ -877,31 +877,8 @@ public class Agent extends Subject implements Runnable {
 						return Property.AGENT;
 					}
 				}
-//				else if(checkNode.isSeat()){
-//					
-//					int checkWay = stepIndex;
-//					while(checkWay < path.getLength()){
-//						
-//						int xPos = path.get(checkWay).getPosition().getX();
-//						int yPos = path.get(checkWay).getPosition().getY();
-//						
-//						Node checkNodeSeat = SimulationHandler.getMap().get(xPos,
-//								yPos);
-//						if(checkNodeSeat.isSeat()){	
-//							
-//							System.out.print("Seat found\n");
-//							return Property.SEAT;
-//						}
-//						checkWay++;
-//					}
-//					return null;
-//				}
 				if (checkNode.isObstacle()) {
 					return null;
-				}
-				if(checkNode.isSeat()){
-					if(checkNode.getProperty() == Property.SEAT)
-					{return Property.SEAT;}
 				}
 			}
 		}
@@ -1206,9 +1183,9 @@ public class Agent extends Subject implements Runnable {
 							
 					
 				
-				int checkWay = stepIndex;
+			int checkWay = stepIndex;
 				
-				while(checkWay < path.getLength()){
+			while(checkWay < path.getLength()){
 					
 					int xPos = path.get(checkWay).getPosition().getX();
 					int yPos = path.get(checkWay).getPosition().getY();
@@ -1258,29 +1235,11 @@ public class Agent extends Subject implements Runnable {
 				
 				/* check if the desired next step is blocked by someone else */
 				Property property = nodeBlocked(desiredPosition);
-
-//				if (property != null) {
-//
-//					/* **************************************************** */
-//					AgentActionType actionType = new Wait(this, scale,
-//							property);
-//					new AgentAction(actionType).perform();
-//					/* **************************************************** */
-//
-//					if (exitTheMainLoop) {
-//
-//						/* exit this loop */
-//						break mainloop;
-//					}
-//			
+		
 			if(property != null){
 				if (property == Property.AGENT) {
 
-					/* **************************************************** */
-//					AgentActionType actionType = new Wait(this, scale,
-//							property);
-//					new AgentAction(actionType).perform();
-					
+					/* **************************************************** */			
 					Thread.sleep((int) (2000 / SimulationHandler.getCabin()
 							.getSimulationSettings().getSimulationSpeedFactor()
 							/ passenger.getWalkingSpeed() / (100 / scale)));
@@ -1292,30 +1251,6 @@ public class Agent extends Subject implements Runnable {
 						break mainloop;}
 					
 				}
-					
-//				else if (property == Property.SEAT){
-//					
-//
-//						if(!update){
-//					
-//						/* **************************************************** */
-//							
-//						blockArea(currentPosition, false, false, null);
-//						
-//						SimulationHandler.getAreamapHandler().getNewAreamap().
-//								get(currentPosition).setProperty(Property.START, this.getPassenger());
-//							
-//						Costmap updateCostMap = new Costmap(SimulationHandler.getDimension(),currentPosition,
-//								SimulationHandler.getAreamapHandler().getNewAreamap(), this, true,0);
-//						
-//						Core aStar = new Core(SimulationHandler.getAreamapHandler(),updateCostMap, this);
-//						this.setPath(aStar.getBestPath());
-//						}
-//						stepIndex = 0;
-//						setUpdatePath();
-//						
-//						}
-//				}
 						
 						AgentActionType actionType = new Step(this, scale);
 						new AgentAction(actionType).perform();

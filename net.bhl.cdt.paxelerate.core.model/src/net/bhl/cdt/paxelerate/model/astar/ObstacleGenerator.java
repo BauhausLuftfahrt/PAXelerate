@@ -106,8 +106,9 @@ public class ObstacleGenerator {
 		
 		if(cabin.getSimulationSettings().getLayoutConcept() 
 				== LayoutConcept.BRING_YOUR_OWN_SEAT){
-			generateGradientForBody();
 			generateTranceparentAisle();
+			generateGradientForBody();
+			
 		}
 		
 		/* change the oder of this method */
@@ -120,7 +121,7 @@ public class ObstacleGenerator {
 		generateDoorDepressions();
 
 		/* generate a depression in the potential for the aisles */
-		generateAisleDepressions();
+		//generateAisleDepressions();
 		
 		
 		/*function for twin-aisle*/
@@ -253,7 +254,7 @@ public class ObstacleGenerator {
 				if ( Math.abs(node.getPosition().getY() - leftBody) <= AreamapHandler.GRADIENT_WIDTH_POPUP_SEAT){
 					
 					
-					int distanceFromBody = Math.abs(node.getPosition().getY()-0);
+					int distanceFromBody = Math.abs(node.getPosition().getY()- 0);
 					int value = (int) MathHelper.linearInterpolation(
 							AreamapHandler.GRADIENT_UPPER_BOUND,
 							AreamapHandler.GRADIENT_LOWER_BOUND,
@@ -284,8 +285,11 @@ public class ObstacleGenerator {
 		for (Node node : areamap.getNodes()) {
 			
 			
-			if(node.getPosition().getY() >= ( middleOfCabin - AreamapHandler.NARROWING_OF_AISLE_PATH_IN_PIXELS-1) 
-					&& node.getPosition().getY() <= ( middleOfCabin - AreamapHandler.NARROWING_OF_AISLE_PATH_IN_PIXELS + 1) ){
+//			if(node.getPosition().getY() >= ( middleOfCabin - AreamapHandler.NARROWING_OF_AISLE_PATH_IN_PIXELS) 
+//					&& node.getPosition().getY() <= ( middleOfCabin - AreamapHandler.NARROWING_OF_AISLE_PATH_IN_PIXELS) ){
+				
+				if(node.getPosition().getY() == middleOfCabin){
+				
 				node.setObstacleValue(AreamapHandler.HOLE_VALUE);
 			}
 		}
