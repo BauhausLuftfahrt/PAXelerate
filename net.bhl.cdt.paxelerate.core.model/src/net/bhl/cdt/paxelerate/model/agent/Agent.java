@@ -871,6 +871,7 @@ public class Agent extends Subject implements Runnable {
 
 								/* find the blocking agent */
 								this.blockingAgent = agent;
+								System.out.print("Agent found!!\n");
 							}
 						}
 						return Property.AGENT;
@@ -895,17 +896,33 @@ public class Agent extends Subject implements Runnable {
 //					}
 //					return null;
 //				}
-				else if(checkNode.isSeat()){
+				if (checkNode.isObstacle()) {
+					return null;
+				}
+				if(checkNode.isSeat()){
 					if(checkNode.getProperty() == Property.SEAT)
-					return Property.SEAT;
-				else{}
-		}
-		
-	}
-		
+					{return Property.SEAT;}
+				}
+			}
 		}
 		return null;
 	}
+
+				
+				
+				
+				
+//				else if(checkNode.isSeat()){
+//					if(checkNode.getProperty() == Property.SEAT)
+//					return Property.SEAT;
+//				else{}
+//		}
+//		
+//	}
+//		
+//		}
+//		return null;
+//	}
 
 	/**
 	 * Gets the path list.
@@ -1187,6 +1204,8 @@ public class Agent extends Subject implements Runnable {
 			 */
 			stepIndex = 0; //int stepIndex = 0;
 							
+					
+				
 				int checkWay = stepIndex;
 				
 				while(checkWay < path.getLength()){
@@ -1208,6 +1227,7 @@ public class Agent extends Subject implements Runnable {
 						
 						Core aStar = new Core(SimulationHandler.getAreamapHandler(),updateCostMap, this);
 						this.setPath(aStar.getBestPath());
+						break;
 					}
 					checkWay++;
 				}
@@ -1232,9 +1252,10 @@ public class Agent extends Subject implements Runnable {
 					movedOnce = true;
 				}
 
+
 				/* the new planned location is current step in the path */
 				desiredPosition = path.get(stepIndex).getPosition();
-
+				
 				/* check if the desired next step is blocked by someone else */
 				Property property = nodeBlocked(desiredPosition);
 
@@ -1256,9 +1277,13 @@ public class Agent extends Subject implements Runnable {
 				if (property == Property.AGENT) {
 
 					/* **************************************************** */
-					AgentActionType actionType = new Wait(this, scale,
-							property);
-					new AgentAction(actionType).perform();
+//					AgentActionType actionType = new Wait(this, scale,
+//							property);
+//					new AgentAction(actionType).perform();
+					
+					Thread.sleep((int) (2000 / SimulationHandler.getCabin()
+							.getSimulationSettings().getSimulationSpeedFactor()
+							/ passenger.getWalkingSpeed() / (100 / scale)));
 					/* **************************************************** */
 
 					if (exitTheMainLoop) {
@@ -1267,47 +1292,30 @@ public class Agent extends Subject implements Runnable {
 						break mainloop;}
 					
 				}
-				else if (property == Property.SEAT){
 					
-
-						if(!update){
-					
-						/* **************************************************** */
-							
-						blockArea(currentPosition, false, false, null);
-							
-			
-						
-						this.setStartPosition(currentPosition);
-						
-						SimulationHandler.getAreamapHandler().getNewAreamap().
-								get(currentPosition).setProperty(Property.START, this.getPassenger());
-							
-						Costmap updateCostMap = new Costmap(SimulationHandler.getDimension(),currentPosition,
-								SimulationHandler.getAreamapHandler().getNewAreamap(), this, true,0);
-						
-						Core aStar = new Core(SimulationHandler.getAreamapHandler(),updateCostMap, this);
-						this.setPath(aStar.getBestPath());
-						
-//						System.out.print("current : " + currentPosition.getX() + ", "+currentPosition.getY() + "\n");
-//						System.out.print("desired : " + desiredPosition.getX() + ", "+desiredPosition.getY() + "\n");
-			
-						int goalX = this.getGoal().getX();
-						int goalY = this.getGoal().getY();
-						
-//						System.out.print("goalX,goalY : " + goalX + ", " + goalY + "\n");
-						
-//						int step = stepIndex;
-//						while(path.get(step).getPosition().getX() != goalX && path.get(step).getPosition().getY() != goalY){
-//									System.out.print("next : " + path.get(step).getPosition().getX() + ", "+
-//												path.get(step).getPosition().getY() + "\n");
-//									step++;
-//								}
-						stepIndex = 0;
-						setUpdatePath();
-						
-						}
-				}
+//				else if (property == Property.SEAT){
+//					
+//
+//						if(!update){
+//					
+//						/* **************************************************** */
+//							
+//						blockArea(currentPosition, false, false, null);
+//						
+//						SimulationHandler.getAreamapHandler().getNewAreamap().
+//								get(currentPosition).setProperty(Property.START, this.getPassenger());
+//							
+//						Costmap updateCostMap = new Costmap(SimulationHandler.getDimension(),currentPosition,
+//								SimulationHandler.getAreamapHandler().getNewAreamap(), this, true,0);
+//						
+//						Core aStar = new Core(SimulationHandler.getAreamapHandler(),updateCostMap, this);
+//						this.setPath(aStar.getBestPath());
+//						}
+//						stepIndex = 0;
+//						setUpdatePath();
+//						
+//						}
+//				}
 						
 						AgentActionType actionType = new Step(this, scale);
 						new AgentAction(actionType).perform();
@@ -1420,6 +1428,35 @@ public class Agent extends Subject implements Runnable {
 					/* **************************************************** */
 
 				} else {
+					
+					if(Math.abs( this.getGoal().getX()-currentPosition.getX()) == 15){
+					checkWay = stepIndex;
+					
+					while(checkWay < path.getLength()){
+						
+						int xPos = path.get(checkWay).getPosition().getX();
+						int yPos = path.get(checkWay).getPosition().getY();
+						
+						Node checkNodeSeat = SimulationHandler.getMap().get(xPos,yPos);
+						if(checkNodeSeat.isSeat()){	
+							
+							blockArea(currentPosition, false, false, null);
+							
+							this.setStartPosition(currentPosition);
+							
+							SimulationHandler.getAreamapHandler().getNewAreamap().
+									get(currentPosition).setProperty(Property.START, this.getPassenger());
+							Costmap updateCostMap = new Costmap(SimulationHandler.getDimension(),currentPosition,
+									SimulationHandler.getAreamapHandler().getNewAreamap(), this, true,0);
+							
+							Core aStar = new Core(SimulationHandler.getAreamapHandler(),updateCostMap, this);
+							this.setPath(aStar.getBestPath());
+							break;
+						}
+						checkWay++;
+						}
+					}
+					
 
 					/* **************************************************** */
 					AgentActionType actionType = new Step(this, scale);

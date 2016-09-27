@@ -120,7 +120,7 @@ public class ObstacleGenerator {
 		generateDoorDepressions();
 
 		/* generate a depression in the potential for the aisles */
-		//generateAisleDepressions();
+		generateAisleDepressions();
 		
 		
 		/*function for twin-aisle*/
@@ -642,6 +642,60 @@ public class ObstacleGenerator {
 		}
 	}
 	
+	public void generateObstaclesSeat() {
+
+		for (ObjectOption option : ObjectOption.VALUES) {
+			
+		
+		/* first loop through every physical object within the cabin */
+		for (PhysicalObject obj : POHelper.getObjectsByOption(option, cabin)) {
+
+			if( obj instanceof Seat ){
+		/* define the dimension and position of the object */
+			int xDimension = obj.getXDimension() / (int) scale;
+			int xPosition = obj.getXPosition() / (int) scale;
+
+			int yDimension = obj.getYDimension() / (int) scale;
+			int yPosition = obj.getYPosition() / (int) scale;
+
+
+			/* loop from 0 to the dimension of the object */
+			for (int relativePositionX = 0; relativePositionX < xDimension; relativePositionX++) {
+				for (int relativePositionY = 0; relativePositionY < yDimension; relativePositionY++) {
+
+					/* begin at the top left corner */
+					int absolutePositionX = xPosition + relativePositionX;
+					int absolutePositionY = yPosition + relativePositionY;
+
+					/* get the node at the current position */
+					Node node = areamap.get(absolutePositionX,
+							absolutePositionY);
+
+					/* check if the node is already an obstacle! */
+					// TODO: catch NullPointerException
+					if (node.isObstacle()) {
+
+						Log.add(this,
+
+								"WARNING! Overlap between 2 objects at x: "
+										+ node.getPosition().getX() + ", y: "
+										+ node.getPosition().getY());
+
+					} else {
+
+						/* define the attributes to the current position */
+						node.setObstacleValue(500);
+						//node.setProperty(Property.SEAT, null);
+						node.setObstacleType(option);
+
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	
 	/**
 	 * Check for gaps.
 	 */
@@ -732,7 +786,7 @@ public void generateSeatGradient() {
 					for (Node seat : leftSeats) {
 						if( (node.getPosition().getX() == seat.getPosition().getX() ) 
 								&& ( node.getPosition().getY() < seat.getPosition().getY()) ){
-									node.setObstacleValue(30);
+									node.setObstacleValue(100);
 						}
 					
 					}
@@ -744,7 +798,7 @@ public void generateSeatGradient() {
 					for (Node seat : rightSeats) {
 						if( (node.getPosition().getX() == seat.getPosition().getX() ) 
 								&& ( node.getPosition().getY() > seat.getPosition().getY()) ){
-									node.setObstacleValue(30);
+									node.setObstacleValue(100);
 						}
 					
 				}

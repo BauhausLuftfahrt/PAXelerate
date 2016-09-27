@@ -25,5 +25,7 @@ public interface CollisionHandler {
 	 */
 
 	public void reactToCollision(Property property);
+	
+	
 
 }
