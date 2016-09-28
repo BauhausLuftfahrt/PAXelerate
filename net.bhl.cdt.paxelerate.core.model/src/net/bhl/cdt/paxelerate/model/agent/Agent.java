@@ -1364,7 +1364,7 @@ public class Agent extends Subject implements Runnable {
 
 				} else {
 					
-					if(Math.abs( this.getGoal().getX()-currentPosition.getX()) == 15){
+					if(Math.abs( this.getGoal().getX()-currentPosition.getX()) == 18){
 					checkWay = stepIndex;
 					
 					while(checkWay < path.getLength()){

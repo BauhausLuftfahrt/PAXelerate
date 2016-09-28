@@ -32,7 +32,7 @@ public class Node implements Comparable<Node> {
 			northWest, previousNode;
 
 	/** The distance from start. */
-	private double distanceFromStart, distanceToClosestObstacle;
+	private double distanceFromStart, distanceToClosestObstacle,distanceToGoal;
 
 	/** The obstacle value. */
 	private int costFromStart, numberOfOccupations = 0, numberOfInterrupts = 0,
@@ -365,6 +365,9 @@ public class Node implements Comparable<Node> {
 	public void setDistanceFromStart(double distance) {
 		this.distanceFromStart = distance;
 	}
+	public void setDistanceToGoal(double distanceG) {
+		this.distanceToGoal = distanceG;
+	}
 
 	/**
 	 * This method returns the previous node.
@@ -426,7 +429,40 @@ public class Node implements Comparable<Node> {
 	 * @param otherNode
 	 *            the other node
 	 * @return returns the better node value
-	 */
+	 */	
+//	@Override
+//	public synchronized int compareTo(Node otherNode) {
+//		int better = -1;
+//		int equal = 0;
+//		int worse = 1;
+//
+//		/* if this node is cheaper, it is better */
+//		if (costFromStart < otherNode.costFromStart) {
+//			return better;
+//
+//			/* if the other node is cheaper, this one is worse */
+//		} else if (costFromStart > otherNode.costFromStart) {
+//			return worse;
+//
+//			/* if they are equally expensive, check the distance */
+//		} else {
+//
+//			/* if this node is closer to the start, it is better */
+//			if (distanceFromStart < otherNode.distanceFromStart) {
+//				return better;
+//				/* if the distance is greater, it is worse */
+//			} else if (distanceFromStart > otherNode.distanceFromStart) {
+//				return worse;
+//
+//				/*
+//				 * else the nodes are equal (concerning the criteria used here)
+//				 */
+//			} else {
+//				return equal;
+//			}
+//		}
+//	}
+	
 	@Override
 	public synchronized int compareTo(Node otherNode) {
 		int better = -1;
@@ -444,11 +480,10 @@ public class Node implements Comparable<Node> {
 			/* if they are equally expensive, check the distance */
 		} else {
 
-			/* if this node is closer to the start, it is better */
-			if (distanceFromStart < otherNode.distanceFromStart) {
+			if (distanceToGoal < otherNode.distanceToGoal) {
 				return better;
 				/* if the distance is greater, it is worse */
-			} else if (distanceFromStart > otherNode.distanceFromStart) {
+			} else if (distanceToGoal > otherNode.distanceToGoal) {
 				return worse;
 
 				/*

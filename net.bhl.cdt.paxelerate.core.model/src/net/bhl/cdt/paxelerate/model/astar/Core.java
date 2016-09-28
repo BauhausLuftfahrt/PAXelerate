@@ -159,20 +159,21 @@ public class Core {
 				// continue;
 				// }
 				// }
-
-				/* also just continue if the neighbor is an obstacle */
-				if (!neighbor.isObstacle() && !neighbor.isSeat()) { //added && !neighbor.isSeat()
-										
+				
+				/* calculate new distance to the goal*/
+				if (!neighbor.isObstacle() && !neighbor.isSeat()) { //It was added from SH to && !neighbor.isSeat()
+									
+					
 					/* calculate the neighbors distance from start */
-					double neighborDistanceFromStart = MathHelper
+					double neighborDistanceToGoal = MathHelper
 							.distanceBetween(
-									areamap.get(agent.getStart()).getPosition(),
+									areamap.get(agent.getGoal()).getPosition(),
 									neighbor.getPosition());
 
 					/* calculate the neighbors distance from start */
-					double currentDistanceFromStart = MathHelper
+					double currentDistanceToGoal = MathHelper
 							.distanceBetween(
-									(areamap.get(agent.getStart())
+									(areamap.get(agent.getGoal())
 											.getPosition()),
 									current.getPosition());
 
@@ -199,7 +200,7 @@ public class Core {
 						 */
 					} else if (neighborCostFromStart == currentCostFromStart) {
 
-						if (neighborDistanceFromStart < currentDistanceFromStart) {
+						if (neighborDistanceToGoal < currentDistanceToGoal) {
 							neighborIsBetter = true;
 						}
 
@@ -212,10 +213,67 @@ public class Core {
 					if (neighborIsBetter) {
 						neighbor.setPreviousNode(current);
 						neighbor.setCostFromStart(neighborCostFromStart);
-						neighbor.setDistanceFromStart(
-								neighborDistanceFromStart);
+						neighbor.setDistanceToGoal(
+								neighborDistanceToGoal);
 					}
 				}
+
+//				/* also just continue if the neighbor is an obstacle */
+//				if (!neighbor.isObstacle() && !neighbor.isSeat()) { //It was added from SH to && !neighbor.isSeat()
+//										
+//					/* calculate the neighbors distance from start */
+//					double neighborDistanceFromStart = MathHelper
+//							.distanceBetween(
+//									areamap.get(agent.getStart()).getPosition(),
+//									neighbor.getPosition());
+//
+//					/* calculate the neighbors distance from start */
+//					double currentDistanceFromStart = MathHelper
+//							.distanceBetween(
+//									(areamap.get(agent.getStart())
+//											.getPosition()),
+//									current.getPosition());
+//
+//					/* calculate the neighbors cost */
+//					int neighborCostFromStart = costmap
+//							.getCost(neighbor.getPosition());
+//
+//					/* calculate the current cost from start for comparison */
+//					int currentCostFromStart = costmap
+//							.getCost(current.getPosition());
+//					
+//					/* add neighbor to the open list if it is not there */
+//					if (!openList.contains(neighbor)) {
+//						openList.add(neighbor);
+//						neighborIsBetter = true;
+//
+//						/* it is better if the other node is cheaper */
+//					} else if (neighborCostFromStart < currentCostFromStart) {
+//						neighborIsBetter = true;
+//
+//						/*
+//						 * it is better if the other node is closer if they have
+//						 * the same cost
+//						 */
+//					} else if (neighborCostFromStart == currentCostFromStart) {
+//
+//						if (neighborDistanceFromStart < currentDistanceFromStart) {
+//							neighborIsBetter = true;
+//						}
+//
+//						/* if no criteria is matched, the node is worse */
+//					} else {
+//						neighborIsBetter = false;
+//					}
+//
+//					/* set neighbors parameters if it is better */
+//					if (neighborIsBetter) {
+//						neighbor.setPreviousNode(current);
+//						neighbor.setCostFromStart(neighborCostFromStart);
+//						neighbor.setDistanceFromStart(
+//								neighborDistanceFromStart);
+//					}
+//				}
 			}
 		}
 		bestPath = null;

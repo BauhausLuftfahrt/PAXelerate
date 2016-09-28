@@ -111,14 +111,12 @@ public class ObstacleGenerator {
 			
 		}
 		
-		/* change the oder of this method */
-		generateDoorDepressions();
-
 		/* generate the potential gradient around all obstacles */
 		generatePotentialGradient();
 
 		/* generate a depression in the potential for the paths */
-		generateDoorDepressions();
+		//generateDoorDepressions();
+		generateDoorDepressionsForPopping();
 
 		/* generate a depression in the potential for the aisles */
 		//generateAisleDepressions();
@@ -373,13 +371,12 @@ public class ObstacleGenerator {
 					int y = node.getPosition().getY();
 					
 					if (x >= door.getXPosition() / scale && x <= (door.getXPosition() / scale ) + (door.getWidth() / scale)){
-						
-						if(obstacle){
+							if(obstacle){
 							/*the creating hole value stops at the obstacle*/
 							if(!node.isObstacle() && y < yPosition){
 									if (x >= entryMin-1 && x <= entryMax){
 									/* create a potential hole within the area map */
-										node.setObstacleValue(AreamapHandler.NARROWING_OF_DOOR_PATH_IN_PIXELS);
+										node.setObstacleValue(AreamapHandler.HOLE_VALUE);
 									}
 									else{}
 							}
@@ -390,7 +387,77 @@ public class ObstacleGenerator {
 							}
 						}
 						else{
-							node.setObstacleValue(AreamapHandler.NARROWING_OF_DOOR_PATH_IN_PIXELS);
+							node.setObstacleValue(AreamapHandler.HOLE_VALUE);
+						}
+					
+					}
+				}
+			}
+		}
+	}
+	
+	
+	private void generateDoorDepressionsForPopping() {
+
+		/* Create the door paths for every door */
+		for (Door door : cabin.getDoors()) {
+
+			boolean obstacle = false;
+			/* do not make a hole for emergency exits */
+			if (door.getDoorOption() != DoorOption.EMERGENCY_EXIT) {
+
+				/* get the borders of the door within the area map */
+				int entryMin = (int) (door.getXPosition() / scale)
+						+ AreamapHandler.NARROWING_OF_DOOR_PATH_IN_PIXELS;
+				
+				int entryMax = (door.getXPosition() + door.getWidth())
+						/ (int) scale
+						- AreamapHandler.NARROWING_OF_DOOR_PATH_IN_PIXELS;
+				
+				for (ObjectOption option : ObjectOption.VALUES) {
+				
+					for (PhysicalObject obj : POHelper.getObjectsByOption(option, cabin)) {
+	
+						/* define the dimension and position of the object */
+						if(entryMin > (obj.getXPosition() / (int) scale) && 
+								(obj.getXPosition() / (int) scale) + (obj.getXDimension() / (int) scale) > entryMax){
+							 xDimension = obj.getXDimension() / (int) scale; 
+							 yDimension = obj.getYDimension() / (int) scale;
+							 xPosition = obj.getXPosition() / (int) scale;
+							 yPosition = obj.getYPosition() / (int) scale;
+							 obstacle = true;
+							}
+						 
+						}
+				}
+
+				/* loop through all nodes */
+				for (Node node : areamap.getNodes()) {
+
+					/* get the x position of the node */
+					int x = node.getPosition().getX();
+					int y = node.getPosition().getY();
+					int doorPos = ( door.getXPosition() + (door.getWidth()/2) ) / (int) scale;
+					int middleOfCabin = ( cabin.getYDimension() / (int) scale ) / 2;
+					
+					if (x == doorPos && y < ( middleOfCabin / 2 ) ){
+							if(obstacle){
+							/*the creating hole value stops at the obstacle*/
+								if(!node.isObstacle() && y < yPosition){
+									if (x >= entryMin-1 && x <= entryMax){
+									/* create a potential hole within the area map */
+										node.setObstacleValue(AreamapHandler.HOLE_VALUE);
+									}
+									else{}
+							}
+							else if(!node.isObstacle() && y > (yPosition +  yDimension)){
+								node.setObstacleValue(AreamapHandler.NARROWING_OF_DOOR_PATH_AFTER_OBSTACLE);
+							}
+							else{					
+							}
+						}
+						else{
+							node.setObstacleValue(AreamapHandler.HOLE_VALUE);
 						}
 					
 					}
@@ -688,7 +755,7 @@ public class ObstacleGenerator {
 					} else {
 
 						/* define the attributes to the current position */
-						node.setObstacleValue(500);
+						node.setObstacleValue(1000);
 						//node.setProperty(Property.SEAT, null);
 						node.setObstacleType(option);
 

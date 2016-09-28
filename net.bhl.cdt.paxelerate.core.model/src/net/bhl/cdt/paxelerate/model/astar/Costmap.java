@@ -157,7 +157,7 @@ public class Costmap {
 
 		map[startPoint.getX()][startPoint.getY()] = 0;
 		visitedPoints.add(startPoint);
-		//printMapToConsole();
+		printMapToConsole();
 		System.out.print("\n");		
 		floodMap();
 		System.out.print("\n");
