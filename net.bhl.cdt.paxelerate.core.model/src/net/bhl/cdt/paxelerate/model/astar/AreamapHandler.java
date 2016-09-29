@@ -29,7 +29,7 @@ import net.bhl.cdt.paxelerate.util.math.Vector;
 public class AreamapHandler {
 
 	/** The areamap. */
-	private Areamap areamap;
+	private Areamap areamap,newAreamap;
 	
 	private Cabin cabin;
 	
@@ -38,10 +38,10 @@ public class AreamapHandler {
 	/** The Constant NARROWING_OF_DOOR_PATH_IN_PIXELS. */
 	public static final int DEFAULT_VALUE = 3, OBSTACLE_RANGE_IN_CM = 20,
 			HOLE_VALUE = 1, NARROWING_OF_DOOR_PATH_IN_PIXELS = 1,NARROWING_OF_DOOR_PATH_AFTER_OBSTACLE = 6,
-			GRADIENT_LOWER_BOUND = 6, GRADIENT_UPPER_BOUND = 15,//GRADIENT_UPPER_BOUND = 10 for one-aisle,12 is for two-aisle
+			GRADIENT_LOWER_BOUND = 8, GRADIENT_UPPER_BOUND = 12,//GRADIENT_UPPER_BOUND = 10 for one-aisle,12 is for two-aisle
 			GRADIENT_WIDTH = 3, NARROWING_OF_AISLE_PATH_IN_PIXELS = 1, //GRADIENT_WIDTH = 2 for one-aisle,3 is for two-aisle
 			AISLE_OVERLAP_FRONT_AND_REAR = 0,//AISLE_OVERLAP_FRONT_AND_REAR = 10 for one-aisle 
-			TRANSPARENT_WALL_VALUE = 500,GRADIENT_WIDTH_POPUP_SEAT = 16;
+			TRANSPARENT_WALL_VALUE = 500,GRADIENT_WIDTH_POPUP_SEAT = 12;
 
 	/**
 	 * This is the area map constructor.
@@ -67,6 +67,9 @@ public class AreamapHandler {
 		g = new ObstacleGenerator(areamap, cabin, GradientOption.LINEAR);
 			
 		areamap = g.returnMap();
+		
+		g.generateObstaclesSeat();
+		newAreamap = g.returnMap();
 
 		this.cabin=cabin;
 		
@@ -142,16 +145,17 @@ public class AreamapHandler {
 	 * 
 	 * @return the area map
 	 */
-	public Areamap getAreamap() {
-		return areamap;
+	public  Areamap getAreamap() {
+		return this.areamap;
 	}
 
-	public Areamap getNewAreamap() {
+	public  Areamap getNewAreamap() {
 		
 		
 		//g.generateSeatGradient();
-		g.generateObstaclesSeat();
-		return areamap;
+//		g.generateObstaclesSeat();
+//		this.areamap = g.returnMap();
+		return newAreamap;
 	}
 	/**
 	 * This function calculates the minimum distance to an obstacle.

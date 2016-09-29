@@ -107,7 +107,7 @@ public class ObstacleGenerator {
 		if(cabin.getSimulationSettings().getLayoutConcept() 
 				== LayoutConcept.BRING_YOUR_OWN_SEAT){
 			generateTranceparentAisle();
-			generateGradientForBody();
+			//generateGradientForBody();
 			
 		}
 		
@@ -440,7 +440,8 @@ public class ObstacleGenerator {
 					int doorPos = ( door.getXPosition() + (door.getWidth()/2) ) / (int) scale;
 					int middleOfCabin = ( cabin.getYDimension() / (int) scale ) / 2;
 					
-					if (x == doorPos && y < ( middleOfCabin / 2 ) ){
+					//if (x == doorPos && y < ( middleOfCabin / 2 ) ){
+						if (x == doorPos && y < middleOfCabin ){	
 							if(obstacle){
 							/*the creating hole value stops at the obstacle*/
 								if(!node.isObstacle() && y < yPosition){

@@ -170,16 +170,16 @@ public class GeneratePassenger {
 									passenger.getSeat().getTravelClass());
 							
 							
-							int seatPos = passenger.getSeat().getXPosition();
-							int frontDoorPos = cabin.getDoors().get(0).getXPosition();
-							int rearDoorPos = cabin.getDoors().get(1).getXPosition();
-							
-							
-								if(frontDoorPos <= seatPos && seatPos <= rearDoorPos){
-									passenger.setDoor(cabin.getDoors().get(0));
-								}else if(rearDoorPos <= seatPos){
-									passenger.setDoor(cabin.getDoors().get(1));
-								}else{}
+//							int seatPos = passenger.getSeat().getXPosition();
+//							int frontDoorPos = cabin.getDoors().get(0).getXPosition();
+//							int rearDoorPos = cabin.getDoors().get(1).getXPosition();
+//							
+//							
+//								if(frontDoorPos <= seatPos && seatPos <= rearDoorPos){
+//									passenger.setDoor(cabin.getDoors().get(0));
+//								}else if(rearDoorPos <= seatPos){
+//									passenger.setDoor(cabin.getDoors().get(1));
+//								}else{}
 
 
 							if (!(getDoor(passenger) == null)) {

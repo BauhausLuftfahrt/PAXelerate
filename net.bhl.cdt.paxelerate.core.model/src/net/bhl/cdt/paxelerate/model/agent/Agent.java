@@ -165,6 +165,9 @@ public class Agent extends Subject implements Runnable {
 	 *
 	 * @return the cost map
 	 */
+//	public Costmap getCostMap() {
+//		return finalCostmap;
+//	}
 	public Costmap getCostMap() {
 		return finalCostmap;
 	}
@@ -871,7 +874,6 @@ public class Agent extends Subject implements Runnable {
 
 								/* find the blocking agent */
 								this.blockingAgent = agent;
-								System.out.print("Agent found!!\n");
 							}
 						}
 						return Property.AGENT;
@@ -1009,8 +1011,6 @@ public class Agent extends Subject implements Runnable {
 
 		/* when the goal is reached, the passenger is defined seated */
 		passenger.setIsSeated(isSeated);
-
-		this.setCurrentState(State.AREADY_SAT);
 		
 		/* then the assigned seat is declared occupied */
 		passenger.getSeat().setOccupied(isSeated);
@@ -1199,11 +1199,13 @@ public class Agent extends Subject implements Runnable {
 						
 						SimulationHandler.getAreamapHandler().getNewAreamap().
 								get(currentPosition).setProperty(Property.START, this.getPassenger());
+						
 						Costmap updateCostMap = new Costmap(SimulationHandler.getDimension(),currentPosition,
 								SimulationHandler.getAreamapHandler().getNewAreamap(), this, true,0);
-						
-						Core aStar = new Core(SimulationHandler.getAreamapHandler(),updateCostMap, this);
+						Core aStar = new Core(SimulationHandler.getAreamapHandler(), updateCostMap, this);
 						this.setPath(aStar.getBestPath());
+						System.out.print("New Costmap \n");
+						System.out.print("Goal "+ this.getGoal().getX()+"\n");
 						break;
 					}
 					checkWay++;
@@ -1211,7 +1213,8 @@ public class Agent extends Subject implements Runnable {
 
 			/* run the path up to its end */
 			while (stepIndex < path.getLength()){
-
+				
+				
 				/*
 				 * at the first step, there is no current location but only a
 				 * desired first location. So ignore this at the first loop.
@@ -1250,22 +1253,17 @@ public class Agent extends Subject implements Runnable {
 						/* exit this loop */
 						break mainloop;}
 					
-				}
-						
+				}				
 						AgentActionType actionType = new Step(this, scale);
 						new AgentAction(actionType).perform();
-						
-						
+							
 						stepIndex++;
-						
-						
+								
 						/* sleep as long as one step takes */
 						Thread.sleep((int) (1000 / SimulationHandler.getCabin()
 								.getSimulationSettings().getSimulationSpeedFactor()
 								/ passenger.getWalkingSpeed() / (100 / scale)));
 
-						
-						
 					/*
 					 * if there is no obstacle in the way, check if the luggage
 					 * should be stowed now next
@@ -1592,6 +1590,10 @@ public class Agent extends Subject implements Runnable {
 			}
 
 			//
+//			System.out.print("Goal "+ this.getGoal().getX()+"\n");
+//			finalCostmap.printMapPathToConsole(path,SimulationHandler.getAreamapHandler().getAreamap() ,this);
+//			System.out.print("Gaol " + this.getGoal().getX() + " ," + this.getGoal().getY() + "\n");
+//			System.out.print("\n");
 			performFinalElements();
 
 		} catch (InterruptedException e) {

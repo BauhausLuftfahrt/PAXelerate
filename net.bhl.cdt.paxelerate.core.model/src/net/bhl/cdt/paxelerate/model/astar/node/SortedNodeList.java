@@ -73,7 +73,7 @@ public class SortedNodeList {
 	 * @param n            the node which is checked
 	 * @return true, if successful
 	 */
-	public boolean contains(Node n) {
+	public  boolean contains(Node n) {
 		return list.contains(n);
 	}
 }

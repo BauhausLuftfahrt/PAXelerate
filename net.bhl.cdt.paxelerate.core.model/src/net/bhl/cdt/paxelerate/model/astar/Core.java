@@ -53,7 +53,7 @@ public class Core {
 	 */
 	public Core(AreamapHandler maphandler, Costmap costmap, Agent agent) {
 		
-		this.areamap = maphandler.getNewAreamap();
+		this.areamap = maphandler.getAreamap();
 		this.agent = agent;
 		this.costmap = costmap;
 		closedList = new ArrayList<Node>();
@@ -218,7 +218,7 @@ public class Core {
 					}
 				}
 
-//				/* also just continue if the neighbor is an obstacle */
+				/* also just continue if the neighbor is an obstacle */
 //				if (!neighbor.isObstacle() && !neighbor.isSeat()) { //It was added from SH to && !neighbor.isSeat()
 //										
 //					/* calculate the neighbors distance from start */

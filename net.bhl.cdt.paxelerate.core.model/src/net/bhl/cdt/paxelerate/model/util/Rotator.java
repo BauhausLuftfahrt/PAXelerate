@@ -174,7 +174,9 @@ public class Rotator {
 	 * @param array the array
 	 * @return the int[][]
 	 */
-	public static int[][] rotate(int degrees, int[][] array) {
+	public  static int[][] rotate(int degrees, int[][] array) {
+
+		
 		if (degrees == 0 || degrees % 45 != 0) {
 			return null;
 		}

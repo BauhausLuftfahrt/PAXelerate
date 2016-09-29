@@ -157,13 +157,12 @@ public class Costmap {
 
 		map[startPoint.getX()][startPoint.getY()] = 0;
 		visitedPoints.add(startPoint);
-		printMapToConsole();
+		//printMapToConsole();
 		System.out.print("\n");		
 		floodMap();
 		System.out.print("\n");
 		printMapToConsole();
 		System.out.print("\n");
-		
 		
 	}
 
@@ -233,6 +232,8 @@ public class Costmap {
 					System.out.print("I");
 				} else if (areamap.get(i, j).getProperty() == Property.AGENT) {
 					System.out.print("A");
+				} else if (areamap.get(i, j).getProperty() == Property.SEAT) {
+					System.out.print("T");
 				} else if (foundNode) {
 					System.out.print(">");
 				} else if (map[i][j] == -1) {
