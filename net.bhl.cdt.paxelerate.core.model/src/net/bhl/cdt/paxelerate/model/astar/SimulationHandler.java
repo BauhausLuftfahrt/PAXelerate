@@ -86,6 +86,8 @@ public class SimulationHandler {
 	/** The costmaps. */
 	private static Map<Integer, Costmap> costmaps = new HashMap<>();
 	
+	private static Costmap costmapSeat;
+	private static Costmap costmapSeatRear;
 	/** The costmapsForRearDoor. */
 	private static Map<Integer, Costmap> costmapsFromRear = new HashMap<>();
 	
@@ -329,7 +331,7 @@ public class SimulationHandler {
 		
 		Agent agent = new Agent(pax, start, goal,
 				getAgentByPassenger(myself).getCostMap(), AgentMode.MAKE_WAY,
-				myself);
+				myself,costmapSeat);
 		
 		PathFinder pathFinder = new PathFinder(agent);
 		pathFinder.start();
@@ -435,19 +437,46 @@ public class SimulationHandler {
 				
 					Vector doorPosition = new Vector2D( (door.getXPosition()+ 
 							door.getWidth() / 2), 0, scale);
-					/*for passenger,who board through front-door*/
+					/*for passenger,who walks from start-position to rear*/
 					Costmap costmap = new Costmap(dimensions, doorPosition,
 							areamaphandler.getAreamap(), null, false, fromFront);
-					/*for passenger,who board through rear-door*/		
+					/*for passenger,who walks from start-position to front*/		
 					Costmap costmapFromRear = new Costmap(dimensions, doorPosition,
 							areamaphandler.getAreamap(), null, false, fromRear);
 					
+//					SimulationHandler.getAreamapHandler().setNewAreamap();
+//					
+//					costmapSeat = new Costmap(dimensions, doorPosition,
+//							areamaphandler.getNewAreamap(), null, false, fromFront);
+//					
+//					costmapSeatRear = new Costmap(dimensions, doorPosition,
+//							areamaphandler.getNewAreamap(), null, false, fromRear);		
 					
 					costmaps.put(door.getId(), costmap);
 					
 					costmapsFromRear.put(door.getId(), costmapFromRear);
 				}
 			}
+		
+		for (Door door : cabin.getDoors()){
+
+			
+			if (door.isIsActive()) {
+				
+				Vector doorPosition = new Vector2D( (door.getXPosition()+ 
+						door.getWidth() / 2), 0, scale);
+	
+					SimulationHandler.getAreamapHandler().setNewAreamap();
+					
+					costmapSeat = new Costmap(dimensions, doorPosition,
+							areamaphandler.getNewAreamap(), null, false, fromFront);
+					
+					costmapSeatRear = new Costmap(dimensions, doorPosition,
+							areamaphandler.getNewAreamap(), null, false, fromRear);		
+				
+				}
+			}
+
 
 			
 			for (Passenger passenger : cabin.getPassengers()) {
@@ -463,17 +492,13 @@ public class SimulationHandler {
 				Vector goal = new Vector2D((seat.getXPosition()) - 1,
 						seat.getYPosition() + seat.getYDimension() / 2, scale);
 				
-				
-			
 				if( start.getX() < goal.getX() ){	
-					Agent agent = new Agent(passenger, start, goal,costmaps.get(door.getId()), 
-							AgentMode.GO_TO_SEAT, null);
+					Agent agent = new Agent(passenger, start, goal,costmaps.get(door.getId()),AgentMode.GO_TO_SEAT, null,costmapSeat);
 					agentList.add(agent);
 					
-				}else{
+				}else if(start.getX() > goal.getX()){
 						
-					Agent agent = new Agent(passenger, start, goal,costmapsFromRear.get(door.getId()), 
-							AgentMode.GO_TO_SEAT, null);
+					Agent agent = new Agent(passenger, start, goal,costmapsFromRear.get(door.getId()),AgentMode.GO_TO_SEAT, null,costmapSeatRear);
 					agentList.add(agent);
 				}
 				
@@ -611,7 +636,7 @@ public class SimulationHandler {
 	 *
 	 * @return the areamap handler
 	 */
-	public static AreamapHandler getAreamapHandler() {
+	public static  AreamapHandler getAreamapHandler() {
 		return areamaphandler;
 	}
 

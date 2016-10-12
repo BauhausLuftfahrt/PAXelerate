@@ -63,13 +63,13 @@ public class AreamapHandler {
 //		areamap = new ObstacleGenerator(areamap, cabin, GradientOption.LINEAR)
 //				.returnMap();
 		
-		
+		/* apply obstacle values to the area map */
 		g = new ObstacleGenerator(areamap, cabin, GradientOption.LINEAR);
 			
 		areamap = g.returnMap();
 		
-		g.generateObstaclesSeat();
-		newAreamap = g.returnMap();
+//		g.generateObstaclesSeat();
+//		newAreamap = g.returnMap();
 
 		this.cabin=cabin;
 		
@@ -145,17 +145,17 @@ public class AreamapHandler {
 	 * 
 	 * @return the area map
 	 */
-	public  Areamap getAreamap() {
-		return this.areamap;
+	public Areamap getAreamap() {
+		return areamap;
 	}
 
-	public  Areamap getNewAreamap() {
-		
-		
-		//g.generateSeatGradient();
-//		g.generateObstaclesSeat();
-//		this.areamap = g.returnMap();
-		return newAreamap;
+	public synchronized Areamap getNewAreamap() {
+		return areamap;
+	}
+	public void setNewAreamap(){
+		g.generateSeatGradient();
+		g.generateObstaclesSeat();
+		this.areamap = g.returnMap();
 	}
 	/**
 	 * This function calculates the minimum distance to an obstacle.

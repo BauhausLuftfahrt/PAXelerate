@@ -101,9 +101,9 @@ public class Agent extends Subject implements Runnable {
 
 	/** The final costmap. */
 	/* constant values */
-
 	private final Costmap finalCostmap;
-
+	private final Costmap newCostmap;
+	
 	/** The passenger. */
 	private final Passenger passenger;
 
@@ -165,9 +165,6 @@ public class Agent extends Subject implements Runnable {
 	 *
 	 * @return the cost map
 	 */
-//	public Costmap getCostMap() {
-//		return finalCostmap;
-//	}
 	public Costmap getCostMap() {
 		return finalCostmap;
 	}
@@ -190,16 +187,19 @@ public class Agent extends Subject implements Runnable {
 	 *            the mode
 	 * @param thePassengerILetInTheRow
 	 *            the the passenger i let in the row
+	 * @param newCostmap 
+	 * @param newCostmap 
 	 */
 	public Agent(Passenger passenger, Vector start, Vector goal,
 			Costmap costmap, AgentMode mode,
-			Passenger thePassengerILetInTheRow) {
+			Passenger thePassengerILetInTheRow,Costmap newCostmap) {
 
 		/* assign the initializer values to the objects values */
 		this.mode = mode;
 		this.passenger = passenger;
 		this.start = start;
 		this.goal = goal;
+		this.newCostmap = newCostmap;
 
 		this.scale = SimulationHandler.getCabin().getSimulationSettings()
 				.getScale();
@@ -1170,6 +1170,9 @@ public class Agent extends Subject implements Runnable {
 	 * This method is the main path following loop for the agent.
 	 */
 	private void followPath() {
+		
+		//SimulationHandler.getAreamapHandler().setNewAreamap();
+		
 
 		/* define the try catch loop as main loop */
 		mainloop: try {
@@ -1184,7 +1187,7 @@ public class Agent extends Subject implements Runnable {
 					
 				
 			int checkWay = stepIndex;
-				
+			
 			while(checkWay < path.getLength()){
 					
 					int xPos = path.get(checkWay).getPosition().getX();
@@ -1200,12 +1203,12 @@ public class Agent extends Subject implements Runnable {
 						SimulationHandler.getAreamapHandler().getNewAreamap().
 								get(currentPosition).setProperty(Property.START, this.getPassenger());
 						
-						Costmap updateCostMap = new Costmap(SimulationHandler.getDimension(),currentPosition,
-								SimulationHandler.getAreamapHandler().getNewAreamap(), this, true,0);
-						Core aStar = new Core(SimulationHandler.getAreamapHandler(), updateCostMap, this);
+//						Costmap updateCostMap = new Costmap(SimulationHandler.getDimension(), currentPosition,
+//								SimulationHandler.getAreamapHandler().getNewAreamap(), this, true,this.getDoorID());
+						
+						Core aStar = new Core(SimulationHandler.getAreamapHandler(),newCostmap, this);
+						
 						this.setPath(aStar.getBestPath());
-						System.out.print("New Costmap \n");
-						System.out.print("Goal "+ this.getGoal().getX()+"\n");
 						break;
 					}
 					checkWay++;
@@ -1365,29 +1368,33 @@ public class Agent extends Subject implements Runnable {
 					if(Math.abs( this.getGoal().getX()-currentPosition.getX()) == 18){
 					checkWay = stepIndex;
 					
-					while(checkWay < path.getLength()){
-						
-						int xPos = path.get(checkWay).getPosition().getX();
-						int yPos = path.get(checkWay).getPosition().getY();
-						
-						Node checkNodeSeat = SimulationHandler.getMap().get(xPos,yPos);
-						if(checkNodeSeat.isSeat()){	
-							
-							blockArea(currentPosition, false, false, null);
-							
-							this.setStartPosition(currentPosition);
-							
-							SimulationHandler.getAreamapHandler().getNewAreamap().
-									get(currentPosition).setProperty(Property.START, this.getPassenger());
-							Costmap updateCostMap = new Costmap(SimulationHandler.getDimension(),currentPosition,
-									SimulationHandler.getAreamapHandler().getNewAreamap(), this, true,0);
-							
-							Core aStar = new Core(SimulationHandler.getAreamapHandler(),updateCostMap, this);
-							this.setPath(aStar.getBestPath());
-							break;
-						}
-						checkWay++;
-						}
+//					while(checkWay < path.getLength()){
+//						
+//						int xPos = path.get(checkWay).getPosition().getX();
+//						int yPos = path.get(checkWay).getPosition().getY();
+//						
+//						Node checkNodeSeat = SimulationHandler.getMap().get(xPos,yPos);
+//						if(checkNodeSeat.isSeat()){	
+//							
+//							blockArea(currentPosition, false, false, null);
+//							
+//							this.setStartPosition(currentPosition);
+//														
+//							SimulationHandler.getAreamapHandler().getNewAreamap().
+//									get(currentPosition).setProperty(Property.START, this.getPassenger());
+//							
+//							
+//							Costmap updateCostMap = new Costmap(SimulationHandler.getDimension(),currentPosition,
+//									SimulationHandler.getAreamapHandler().getNewAreamap(), this, true,this.getDoorID());
+//							
+//							Core aStar = new Core(SimulationHandler.getAreamapHandler(),updateCostMap, this);
+//							this.setPath(aStar.getBestPath());
+//							System.out.print("New Costmap in front of row\n");
+//
+//							break;
+//						}
+//						checkWay++;
+//						}
 					}
 					
 
@@ -1658,20 +1665,20 @@ public class Agent extends Subject implements Runnable {
 
 	public void setStartPosition(Vector vector) {
 		start = new Vector2D(vector.getX(), vector.getY());
-
 	}
-
 	public Path getCurrentPath() {
 		return path;
 	}
 
 	public void setPath(Path bestPath) {
-		System.out.print("Best Path\n");
 		path = bestPath;
 	}
 
 	public boolean getOtherPassengerStoodUp() {
 		return otherPassengerStoodUp();
+	}
+	public int getDoorID(){
+		return passenger.getDoor().getId();
 	}
 
 }
