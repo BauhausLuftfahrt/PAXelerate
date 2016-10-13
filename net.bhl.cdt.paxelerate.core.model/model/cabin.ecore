@@ -241,8 +241,6 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="2"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="liftingSeatPanPopupTimeDeviation"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="0.5"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="aisleConcept" lowerBound="1"
-        eType="#//AisleConcept" defaultValueLiteral="OneAisle"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LuggageProperties">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="luggageStowDistanceFromSeatMean"
@@ -381,9 +379,5 @@
   <eClassifiers xsi:type="ecore:EEnum" name="AgentMovementModel">
     <eLiterals name="SimpleModel" literal="SimpleModel"/>
     <eLiterals name="AdvancedModel" value="1"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="AisleConcept">
-    <eLiterals name="OneAisle"/>
-    <eLiterals name="TwinAisle" value="1"/>
   </eClassifiers>
 </ecore:EPackage>

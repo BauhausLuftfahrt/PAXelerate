@@ -168,18 +168,6 @@ public class GeneratePassenger {
 							passenger.setSeat(getSeat(passenger));
 							passenger.setTravelClass(
 									passenger.getSeat().getTravelClass());
-							
-							
-//							int seatPos = passenger.getSeat().getXPosition();
-//							int frontDoorPos = cabin.getDoors().get(0).getXPosition();
-//							int rearDoorPos = cabin.getDoors().get(1).getXPosition();
-//							
-//							
-//								if(frontDoorPos <= seatPos && seatPos <= rearDoorPos){
-//									passenger.setDoor(cabin.getDoors().get(0));
-//								}else if(rearDoorPos <= seatPos){
-//									passenger.setDoor(cabin.getDoors().get(1));
-//								}else{}
 
 
 							if (!(getDoor(passenger) == null)) {
@@ -219,83 +207,3 @@ public class GeneratePassenger {
 
 }
 
-
-//	/**
-//	 * This method generates the passengers.
-//	 */
-//	public synchronized void performGeneratePassengers() {
-//
-//		int numberOfPassengers = travelClass.getPassengers();
-//		int numberOfSeats = travelClass.getAvailableSeats();
-//
-//		if (numberOfPassengers != 0) {
-//			if (numberOfPassengers <= numberOfSeats) {
-//
-//				int firstSeatNumber = ModelHelper
-//						.getChildrenByClass(travelClass, Seat.class).get(0)
-//						.getId();
-//
-//				/* Create random list */
-//
-//				ArrayList<Integer> randomSeatId = new ArrayList<Integer>();
-//
-//				for (int i = 0; i < numberOfSeats; i++) {
-//					randomSeatId.add(firstSeatNumber + i);
-//				}
-//
-//				Collections.shuffle(randomSeatId);
-//
-//				Map<Integer, Double> delays = new HashMap<>();
-//
-//				for (int i = 0; i < numberOfPassengers; i++) {
-//					synchronized (this) {
-//						try {
-//							Passenger passenger = CabinFactory.eINSTANCE
-//									.createPassenger();
-//
-//							cabin.getPassengers().add(passenger);
-//
-//							passenger.setId(totalCount);
-//							passenger.setSeatID(randomSeatId.get(i));
-//							passenger.setName(passenger.getId() + " ("
-//									+ getSeat(passenger).getName() + ")");
-//							passenger.setSeat(getSeat(passenger));
-//							passenger.setTravelClass(
-//									passenger.getSeat().getTravelClass());
-//
-//							if (!(getDoor(passenger) == null)) {
-//								passenger.setDoor(getDoor(passenger));
-//							} else {
-//								throw new NullPointerException();
-//							}
-//
-//							PassengerGenerator.applyDelay(passenger, delays);
-//
-//							PassengerPropertyGenerator generator = new PassengerPropertyGenerator(
-//									passenger);
-//							passenger = generator.getPassenger();
-//
-//							totalCount++;
-//
-//						} catch (ConcurrentModificationException e) {
-//							Log.add(this,
-//									"ConcurrentModificationException: Passenger generation aborted!");
-//							e.printStackTrace();
-//						} catch (NullPointerException e) {
-//							Log.add(this,
-//									"NullPointerException: Passenger generation aborted!");
-//							e.printStackTrace();
-//						}
-//
-//					}
-//				}
-//				Log.add(this, "successfully created " + numberOfPassengers
-//						+ " passengers in " + travelClass.getName());
-//			} else {
-//				Log.add(this, "Too many passengers in "
-//						+ StringHelper.splitCamelCase(travelClass.getName()));
-//			}
-//		}
-//	}
-//
-//}

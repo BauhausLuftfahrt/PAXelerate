@@ -33,7 +33,7 @@ public class AreamapHandler {
 	
 	private Cabin cabin;
 	
-	private ObstacleGenerator g;
+	private ObstacleGenerator obstacleGenerator;
 		
 	/** The Constant NARROWING_OF_DOOR_PATH_IN_PIXELS. */
 	public static final int DEFAULT_VALUE = 3, OBSTACLE_RANGE_IN_CM = 20,
@@ -64,9 +64,9 @@ public class AreamapHandler {
 //				.returnMap();
 		
 		/* apply obstacle values to the area map */
-		g = new ObstacleGenerator(areamap, cabin, GradientOption.LINEAR);
+		obstacleGenerator = new ObstacleGenerator(areamap, cabin, GradientOption.LINEAR);
 			
-		areamap = g.returnMap();
+		areamap = obstacleGenerator.returnMap();
 		
 //		g.generateObstaclesSeat();
 //		newAreamap = g.returnMap();
@@ -153,8 +153,8 @@ public class AreamapHandler {
 		return areamap;
 	}
 	public void setNewAreamap(){
-		g.generateObstaclesSeat();
-		this.areamap = g.returnMap();
+		obstacleGenerator.generateObstaclesSeat();
+		this.areamap = obstacleGenerator.returnMap();
 	}
 	/**
 	 * This function calculates the minimum distance to an obstacle.
@@ -273,7 +273,7 @@ public class AreamapHandler {
 		defineNeighboringNodes();
 	}
 	public ObstacleGenerator getGenerator(){
-		return g;
+		return obstacleGenerator;
 	}
 
 }
