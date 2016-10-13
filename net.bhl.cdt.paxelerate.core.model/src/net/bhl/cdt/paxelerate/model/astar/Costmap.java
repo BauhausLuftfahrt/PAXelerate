@@ -89,7 +89,6 @@ public class Costmap {
 		map[startPoint.getX()][startPoint.getY()] = 0;
 		visitedPoints.add(startPoint);
 		floodMap();
-		printMapToConsole();
 	}
 	
 	/*new costmap for front & rear boarding door,
@@ -136,33 +135,11 @@ public class Costmap {
 			} else {
 				setCost(node.getPosition(), node.getObstacleValue());
 			}
-		}
-		
-		/*test for Pop-up seats,hide the seat*/ 
-//		for (Node node : areamap.getNodes()) {
-//
-//			if (node.isObstacle()) {
-//				
-//				if(node.getObstacleType().getValue() == 0){
-//					setCost(node.getPosition(),AreamapHandler.DEFAULT_VALUE);
-//					}
-//				else{
-//					setCost(node.getPosition(), -1);	
-//				}
-//	
-//			} else {
-//				setCost(node.getPosition(), node.getObstacleValue());
-//			}
-//		}		
+		}	
 
 		map[startPoint.getX()][startPoint.getY()] = 0;
 		visitedPoints.add(startPoint);
-		//printMapToConsole();
-		System.out.print("\n");		
 		floodMap();
-		System.out.print("\n");
-		printMapToConsole();
-		System.out.print("\n");
 		
 	}
 

@@ -443,15 +443,7 @@ public class SimulationHandler {
 					/*for passenger,who walks from start-position to front*/		
 					Costmap costmapFromRear = new Costmap(dimensions, doorPosition,
 							areamaphandler.getAreamap(), null, false, fromRear);
-					
-//					SimulationHandler.getAreamapHandler().setNewAreamap();
-//					
-//					costmapSeat = new Costmap(dimensions, doorPosition,
-//							areamaphandler.getNewAreamap(), null, false, fromFront);
-//					
-//					costmapSeatRear = new Costmap(dimensions, doorPosition,
-//							areamaphandler.getNewAreamap(), null, false, fromRear);		
-					
+
 					costmaps.put(door.getId(), costmap);
 					
 					costmapsFromRear.put(door.getId(), costmapFromRear);
@@ -468,17 +460,19 @@ public class SimulationHandler {
 	
 					SimulationHandler.getAreamapHandler().setNewAreamap();
 					
+					if(door.getXPosition() < (cabin.getXDimension() / 2)){
+					
 					costmapSeat = new Costmap(dimensions, doorPosition,
 							areamaphandler.getNewAreamap(), null, false, fromFront);
+					}else{
 					
 					costmapSeatRear = new Costmap(dimensions, doorPosition,
-							areamaphandler.getNewAreamap(), null, false, fromRear);		
+							areamaphandler.getNewAreamap(), null, false, fromRear);	
+					}
 				
 				}
 			}
-
-
-			
+		
 			for (Passenger passenger : cabin.getPassengers()) {
 
 				
@@ -567,17 +561,6 @@ public class SimulationHandler {
 				pathfindingThreads[i] = pathFinder.getThread();
 				
 				}
-			
-//			try {
-//				PathFinder pathFinder = new PathFinder(agent);
-//				pathFinder.start();
-//				pathfindingThreads[i] = pathFinder.getThread();
-//				try {
-//					pathFinder.getThread().join();
-//				} catch (InterruptedException e) {
-//					Log.add(this, "SimulationHandler: InterruptedException");
-//					e.printStackTrace();
-//				}
 
 				/* Warn if no path can be found */
 			 catch (NullPointerException e) {
@@ -594,14 +577,7 @@ public class SimulationHandler {
 			/* return information to the progress bar */
 			progressvalue++;
 		}
-//		for (Thread thread : pathfindingThreads) {
-//			try {
-//				thread.join();
-//			} catch (InterruptedException e) {
-//				Log.add(this, "SimulationHandler: InterruptedException");
-//				e.printStackTrace();
-//			}
-//		}
+
 		pathTimer.stop();
 		if (SimulationHandler.getCabin().getSimulationSettings()
 				.isDeveloperMode()) {

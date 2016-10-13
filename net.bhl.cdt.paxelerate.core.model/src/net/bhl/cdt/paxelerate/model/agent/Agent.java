@@ -1203,9 +1203,6 @@ public class Agent extends Subject implements Runnable {
 						SimulationHandler.getAreamapHandler().getNewAreamap().
 								get(currentPosition).setProperty(Property.START, this.getPassenger());
 						
-//						Costmap updateCostMap = new Costmap(SimulationHandler.getDimension(), currentPosition,
-//								SimulationHandler.getAreamapHandler().getNewAreamap(), this, true,this.getDoorID());
-						
 						Core aStar = new Core(SimulationHandler.getAreamapHandler(),newCostmap, this);
 						
 						this.setPath(aStar.getBestPath());
@@ -1368,33 +1365,27 @@ public class Agent extends Subject implements Runnable {
 					if(Math.abs( this.getGoal().getX()-currentPosition.getX()) == 18){
 					checkWay = stepIndex;
 					
-//					while(checkWay < path.getLength()){
-//						
-//						int xPos = path.get(checkWay).getPosition().getX();
-//						int yPos = path.get(checkWay).getPosition().getY();
-//						
-//						Node checkNodeSeat = SimulationHandler.getMap().get(xPos,yPos);
-//						if(checkNodeSeat.isSeat()){	
-//							
-//							blockArea(currentPosition, false, false, null);
-//							
-//							this.setStartPosition(currentPosition);
-//														
-//							SimulationHandler.getAreamapHandler().getNewAreamap().
-//									get(currentPosition).setProperty(Property.START, this.getPassenger());
-//							
-//							
-//							Costmap updateCostMap = new Costmap(SimulationHandler.getDimension(),currentPosition,
-//									SimulationHandler.getAreamapHandler().getNewAreamap(), this, true,this.getDoorID());
-//							
-//							Core aStar = new Core(SimulationHandler.getAreamapHandler(),updateCostMap, this);
-//							this.setPath(aStar.getBestPath());
-//							System.out.print("New Costmap in front of row\n");
-//
-//							break;
-//						}
-//						checkWay++;
-//						}
+					while(checkWay < path.getLength()){
+						
+						int xPos = path.get(checkWay).getPosition().getX();
+						int yPos = path.get(checkWay).getPosition().getY();
+						
+						Node checkNodeSeat = SimulationHandler.getMap().get(xPos,yPos);
+						if(checkNodeSeat.isSeat()){	
+							
+							blockArea(currentPosition, false, false, null);
+							
+							this.setStartPosition(currentPosition);
+														
+							SimulationHandler.getAreamapHandler().getNewAreamap().
+									get(currentPosition).setProperty(Property.START, this.getPassenger());
+							
+							Core aStar = new Core(SimulationHandler.getAreamapHandler(),newCostmap, this);
+							this.setPath(aStar.getBestPath());
+							break;
+						}
+						checkWay++;
+						}
 					}
 					
 
@@ -1596,11 +1587,6 @@ public class Agent extends Subject implements Runnable {
 				/* **************************************************** */		
 			}
 
-			//
-//			System.out.print("Goal "+ this.getGoal().getX()+"\n");
-//			finalCostmap.printMapPathToConsole(path,SimulationHandler.getAreamapHandler().getAreamap() ,this);
-//			System.out.print("Gaol " + this.getGoal().getX() + " ," + this.getGoal().getY() + "\n");
-//			System.out.print("\n");
 			performFinalElements();
 
 		} catch (InterruptedException e) {
