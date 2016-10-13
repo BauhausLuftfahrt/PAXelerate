@@ -108,28 +108,23 @@ public class ObstacleGenerator {
 				== LayoutConcept.BRING_YOUR_OWN_SEAT){
 			generateTranceparentAisle();
 			//generateGradientForBody();
+			generatePotentialGradient();
+			generateDoorDepressionsForPopping();
+
 			
-		}
+		}else{
 		
 		/* generate the potential gradient around all obstacles */
 		generatePotentialGradient();
-
 		/* generate a depression in the potential for the paths */
-		//generateDoorDepressions();
-		generateDoorDepressionsForPopping();
-
+		generateDoorDepressions();
 		/* generate a depression in the potential for the aisles */
-		//generateAisleDepressions();
-		
-		
+		generateAisleDepressions();
 		/*function for twin-aisle*/
 		//generateHoleForGalley();
-		
-		//TODO it should be changed to depend on the layout-concept & Aisle-conception 
 		//generateTwinAisleDepressions();  
+		}
 		
-		/*function for Pop-Up seats*/
-
 	}
 	
 
@@ -237,7 +232,9 @@ public class ObstacleGenerator {
 				}
 			}
 	
-	/*the methode for pop up seat*/
+	/*the methode is for popping-seat
+	 * This creates the potential gradient on the cabin and
+	 *  the value is relative high besides craftbody,low value on aisle*/
 	private void generateGradientForBody() {
 			
 		/* loop through all nodes */
@@ -274,17 +271,16 @@ public class ObstacleGenerator {
 		}
 	}
 		
-	/*the method for pop up seat*/
+	/*the methode is for popping-seat
+	 * it make the low-value of areamap and 
+	 * let the passenger follow the center of the aisle */
 	private void generateTranceparentAisle() {
 		
+		/*the y-value of the center of aisle*/
 		int middleOfCabin = ( cabin.getYDimension() / (int) scale ) / 2;
 
 		/* loop through all nodes */
 		for (Node node : areamap.getNodes()) {
-			
-			
-//			if(node.getPosition().getY() >= ( middleOfCabin - AreamapHandler.NARROWING_OF_AISLE_PATH_IN_PIXELS) 
-//					&& node.getPosition().getY() <= ( middleOfCabin - AreamapHandler.NARROWING_OF_AISLE_PATH_IN_PIXELS) ){
 				
 				if(node.getPosition().getY() == middleOfCabin){
 				
@@ -440,8 +436,7 @@ public class ObstacleGenerator {
 					int doorPos = ( door.getXPosition() + (door.getWidth()/2) ) / (int) scale;
 					int middleOfCabin = ( cabin.getYDimension() / (int) scale ) / 2;
 					
-					//if (x == doorPos && y < ( middleOfCabin / 2 ) ){
-						if (x == doorPos && y < middleOfCabin ){	
+					if (x == doorPos && y < middleOfCabin ){	
 							if(obstacle){
 							/*the creating hole value stops at the obstacle*/
 								if(!node.isObstacle() && y < yPosition){
@@ -822,81 +817,7 @@ public class ObstacleGenerator {
 	 * @return the areamap
 	 */
 	public Areamap returnMap() {
-		return areamap;
-	}
-	
-public void generateSeatGradient() {
-
-	 ArrayList<Node> leftSeats = new ArrayList<>();
-	 ArrayList<Node> rightSeats = new ArrayList<>();
-		int middleOfCabin = ( cabin.getYDimension() / (int) scale ) / 2;
-
-
-		for (Node node : areamap.getNodes()) {
-			if(node.isSeat())
-			{
-				if(node.getPosition().getY() < middleOfCabin){
-					leftSeats.add(node);
-				}else{
-				rightSeats.add(node);
-				}
-			}
-		}
-			
-		
-		
-		
-		
-		/* loop through all nodes */
-		for (Node node : areamap.getNodes()) {
-			
-			
-			if(node.getPosition().getY() < middleOfCabin){
-				
-				if(!node.isObstacle() && !node.isSeat()){
-					
-					for (Node seat : leftSeats) {
-						if( (node.getPosition().getX() == seat.getPosition().getX() ) 
-								&& ( node.getPosition().getY() < seat.getPosition().getY()) ){
-									node.setObstacleValue(100);
-						}
-					
-					}
-				}
-			}
-			else{
-				if(!node.isObstacle() && !node.isSeat()){
-					
-					for (Node seat : rightSeats) {
-						if( (node.getPosition().getX() == seat.getPosition().getX() ) 
-								&& ( node.getPosition().getY() > seat.getPosition().getY()) ){
-									node.setObstacleValue(100);
-						}
-					
-				}
-					
-			}
-		}
-
-//			if (!node.isObstacle() && !node.isSeat()) {
-//
-//				/* calculate the distance to the closest obstacle node */
-//				double distanceToClosestSeat = AreamapHandler
-//						.minimumDistanceToSeat(node, seats);
-//				
-//				/*
-//				 * check if the distance is smaller than the maximum allowed
-//				 * gradient width
-//				 */
-//				if (distanceToClosestSeat <= AreamapHandler.GRADIENT_WIDTH) {
-//
-//					/* calculate the gradient value and apply it to the node */
-//					node.setObstacleValue(getDistanceByOption(
-//							distanceToClosestSeat, gradient));
-//					
-//				}
-//			}
-		}
+			return areamap;
 	}
 	
 }

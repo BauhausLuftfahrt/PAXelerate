@@ -81,6 +81,7 @@ public class Costmap {
 			if (node.isObstacle()) {
 
 				setCost(node.getPosition(), -1);
+				
 			} else {
 				setCost(node.getPosition(), node.getObstacleValue());
 			}

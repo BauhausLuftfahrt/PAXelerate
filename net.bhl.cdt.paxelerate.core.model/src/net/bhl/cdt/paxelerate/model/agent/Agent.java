@@ -767,65 +767,6 @@ public class Agent extends Subject implements Runnable {
 	 *            the specific vector
 	 * @return if the node is blocked by someone else
 	 */
-//	private Property nodeBlocked(Vector vector) {
-//
-//		/*
-//		 * loop through values from - dimension to + dimension (hard coded : 2)
-//		 */
-//		for (int y = -dim; y <= dim; y++) {
-//
-//			/* only use the positive y direction */
-//			int x = dim;
-//
-//			/*
-//			 * if the door is behind the seat, the scanning will be in the
-//			 * opposite direction
-//			 */
-//			if (passenger.getSeat().getXPosition() < passenger.getDoor()
-//					.getXPosition()) {
-//				x = -(x + 1);
-//			}
-//
-//			/* get the node at the requested location */
-//			Node checkNode = SimulationHandler.getMap().get(vector.getX() + x,
-//					vector.getY() + y);
-//
-//			if (checkNode != null) {
-//
-//				/* check if the node is already blocked */
-//				if (checkNode.getProperty() == Property.AGENT) {
-//
-//					/* check if its was not this agent who blocked it */
-//					if (checkNode.getPassenger().getId() != this.passenger
-//							.getId()) {
-//
-//						/*
-//						 * determine the passenger who currently blocks the path
-//						 */
-//						for (Agent agent : SimulationHandler.getAgentList()) {
-//
-//							/*
-//							 * compare the agent id with the id linked to the
-//							 * blocked node
-//							 */
-//							if (agent.getPassenger().getId() == checkNode
-//									.getPassenger().getId()) {
-//
-//								/* find the blocking agent */
-//								this.blockingAgent = agent;
-//							}
-//						}
-//						return Property.AGENT;
-//					}
-//				}
-//				if (checkNode.isObstacle()) {
-//					return null;
-//				}
-//			}
-//		}
-//		return null;
-//	}
-	
 	private Property nodeBlocked(Vector vector) {//vector - desired position
 
 		/*
@@ -886,23 +827,6 @@ public class Agent extends Subject implements Runnable {
 		}
 		return null;
 	}
-
-				
-				
-				
-				
-//				else if(checkNode.isSeat()){
-//					if(checkNode.getProperty() == Property.SEAT)
-//					return Property.SEAT;
-//				else{}
-//		}
-//		
-//	}
-//		
-//		}
-//		return null;
-//	}
-
 	/**
 	 * Gets the path list.
 	 *
@@ -1169,10 +1093,7 @@ public class Agent extends Subject implements Runnable {
 	/**
 	 * This method is the main path following loop for the agent.
 	 */
-	private void followPath() {
-		
-		//SimulationHandler.getAreamapHandler().setNewAreamap();
-		
+	private void followPath() {		
 
 		/* define the try catch loop as main loop */
 		mainloop: try {
@@ -1185,29 +1106,35 @@ public class Agent extends Subject implements Runnable {
 			stepIndex = 0; //int stepIndex = 0;
 							
 					
-				
+			/*checkWay follows the his optimal way*/
 			int checkWay = stepIndex;
-			
+			/*before start the each passenger calculates the his optimal way,whether 
+			 * there are already the seat of other passenger on the his way */
 			while(checkWay < path.getLength()){
-					
+					/*in oder to test it calculated the x & y position of optimal way*/
 					int xPos = path.get(checkWay).getPosition().getX();
 					int yPos = path.get(checkWay).getPosition().getY();
 					
 					Node checkNodeSeat = SimulationHandler.getMap().get(xPos,yPos);
+					/*if there is already the seat on his optimal way*/ 
 					if(checkNodeSeat.isSeat()){	
 						
-						blockArea(currentPosition, false, false, null);
-						
+						/*this makes fluent joint with old-moving of passenger and new-moving */
+						//blockArea(currentPosition, false, false, null);
+						/*the current position as starting point has set on the areamap*/   
 						this.setStartPosition(currentPosition);
-						
+						/*the new costmap has calculated again*/
 						SimulationHandler.getAreamapHandler().getNewAreamap().
 								get(currentPosition).setProperty(Property.START, this.getPassenger());
-						
+						/*the new optimal way has calculated again*/
 						Core aStar = new Core(SimulationHandler.getAreamapHandler(),newCostmap, this);
-						
+						/*the best way has changed*/
 						this.setPath(aStar.getBestPath());
+						/*while loop has ended,when the best way has changed*/
 						break;
 					}
+					/*if there no seat on the his best way,then it will 
+					 * check the next poin of the best way*/
 					checkWay++;
 				}
 
@@ -1360,30 +1287,41 @@ public class Agent extends Subject implements Runnable {
 					new AgentAction(actionType).perform();
 					/* **************************************************** */
 
-				} else {
+				}/*the passenger tests the his optimal way,whether 
+				 *there are already the seat on the his way*/    
+				else {
 					
+					/*the test starts,if the distance is 18 
+					 * between the position of the passenger and the row of seat*/
 					if(Math.abs( this.getGoal().getX()-currentPosition.getX()) == 18){
+					/*checkWay follows the his optimal way*/
 					checkWay = stepIndex;
-					
 					while(checkWay < path.getLength()){
 						
+						/*in oder to test it calculated the x & y position of optimal way*/
 						int xPos = path.get(checkWay).getPosition().getX();
 						int yPos = path.get(checkWay).getPosition().getY();
 						
 						Node checkNodeSeat = SimulationHandler.getMap().get(xPos,yPos);
+						/*if there is already the seat on his optimal way*/ 
 						if(checkNodeSeat.isSeat()){	
 							
 							blockArea(currentPosition, false, false, null);
-							
+							/*the current position as starting point has set on the areamap*/   
 							this.setStartPosition(currentPosition);
-														
+							
+							/*the new costmap has calculated again*/
 							SimulationHandler.getAreamapHandler().getNewAreamap().
 									get(currentPosition).setProperty(Property.START, this.getPassenger());
-							
+							/*the new optimal way has calculated again*/
 							Core aStar = new Core(SimulationHandler.getAreamapHandler(),newCostmap, this);
+							/*the best way has changed*/
 							this.setPath(aStar.getBestPath());
+							/*while loop has ended,when the best way has changed*/
 							break;
 						}
+						/*if there no seat on the his best way,then it will 
+						 * check the next poin of the best way*/
 						checkWay++;
 						}
 					}

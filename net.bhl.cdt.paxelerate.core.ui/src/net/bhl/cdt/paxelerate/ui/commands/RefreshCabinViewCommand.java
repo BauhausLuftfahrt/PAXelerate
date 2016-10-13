@@ -115,7 +115,7 @@ public class RefreshCabinViewCommand extends CDTCommand {
 		if (cabinViewPart != null) {
 			try {
 				cabinViewPart.setCabin(cabin);
-				Log.add(this, "Cabin view checked and updated_1");
+				Log.add(this, "Cabin view checked and updated");
 			} catch (NullPointerException e) {
 				Log.add(this, "NullPointerException: No cabin view is visible!");
 				e.printStackTrace();

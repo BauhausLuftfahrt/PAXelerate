@@ -427,14 +427,11 @@ public class SimulationHandler {
 
 
 		int d=0;
-		for (Door door : cabin.getDoors()){
-			
+		for (Door door : cabin.getDoors()){		
 			door.setId(d);
-			d++;
-			
+			d++;		
 			if (door.isIsActive()) {
-
-				
+		
 					Vector doorPosition = new Vector2D( (door.getXPosition()+ 
 							door.getWidth() / 2), 0, scale);
 					/*for passenger,who walks from start-position to rear*/
@@ -443,29 +440,33 @@ public class SimulationHandler {
 					/*for passenger,who walks from start-position to front*/		
 					Costmap costmapFromRear = new Costmap(dimensions, doorPosition,
 							areamaphandler.getAreamap(), null, false, fromRear);
-
+					/*costmaps includes the two costmap without seats,which the cost 
+					 * has calculated from front -to rear direction of areamap*/
 					costmaps.put(door.getId(), costmap);
-					
+					/*costmapsFromRear includes the two costmap without seats,which the cost 
+					 * has calculated from rear- to front direction of areamap*/
 					costmapsFromRear.put(door.getId(), costmapFromRear);
 				}
 			}
 		
 		for (Door door : cabin.getDoors()){
 
-			
 			if (door.isIsActive()) {
 				
 				Vector doorPosition = new Vector2D( (door.getXPosition()+ 
 						door.getWidth() / 2), 0, scale);
-	
+					
+					/*it makes seats on the cabin*/
 					SimulationHandler.getAreamapHandler().setNewAreamap();
 					
 					if(door.getXPosition() < (cabin.getXDimension() / 2)){
-					
+						/*costmaps includes the two costmap with seats,which the cost 
+						 * has calculated from front -to rear direction of areamap*/
 					costmapSeat = new Costmap(dimensions, doorPosition,
 							areamaphandler.getNewAreamap(), null, false, fromFront);
 					}else{
-					
+						/*costmapsFromRear includes the two costmap with seats,which the cost 
+						 * has calculated from rear- to front direction of areamap*/
 					costmapSeatRear = new Costmap(dimensions, doorPosition,
 							areamaphandler.getNewAreamap(), null, false, fromRear);	
 					}
@@ -474,24 +475,23 @@ public class SimulationHandler {
 			}
 		
 			for (Passenger passenger : cabin.getPassengers()) {
-
 				
 				Seat seat = passenger.getSeat();
 				Door door = passenger.getDoor();
-				
-				
+						
 				Vector start = new Vector2D(
 						(door.getXPosition() + door.getWidth() / 2), 0, scale);
 			
 				Vector goal = new Vector2D((seat.getXPosition()) - 1,
 						seat.getYPosition() + seat.getYDimension() / 2, scale);
-				
+				/*When the start position of passenger is located at the front of cabin,then the passenger uses the costmap,
+				 * which has calculated from front to rear direction of areamap*/
 				if( start.getX() < goal.getX() ){	
 					Agent agent = new Agent(passenger, start, goal,costmaps.get(door.getId()),AgentMode.GO_TO_SEAT, null,costmapSeat);
 					agentList.add(agent);
-					
+				/*When the start position of passenger is located relative at the rear of cabin or the middle of the cabin,
+				*then the passenger uses the costmap,which has calculated from rear- to front direction of areamap*/
 				}else if(start.getX() > goal.getX()){
-						
 					Agent agent = new Agent(passenger, start, goal,costmapsFromRear.get(door.getId()),AgentMode.GO_TO_SEAT, null,costmapSeatRear);
 					agentList.add(agent);
 				}

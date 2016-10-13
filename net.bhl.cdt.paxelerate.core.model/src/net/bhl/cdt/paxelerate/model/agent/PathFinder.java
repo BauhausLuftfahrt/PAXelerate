@@ -66,9 +66,7 @@ public class PathFinder extends Subject implements Runnable {
 		
 		/* reset the mutable CostMap to the original cost map */
 		Costmap mutableCostMap = agent.getCostMap();
-		
-		//mutableCostMap.printMapToConsole();
-		
+				
 		SimulationHandler.getAreamapHandler()
 				.setStartLocation(agent.getCurrentPosition(), agent);
 

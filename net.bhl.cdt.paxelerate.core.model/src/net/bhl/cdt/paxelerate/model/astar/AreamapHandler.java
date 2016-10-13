@@ -153,7 +153,6 @@ public class AreamapHandler {
 		return areamap;
 	}
 	public void setNewAreamap(){
-		g.generateSeatGradient();
 		g.generateObstaclesSeat();
 		this.areamap = g.returnMap();
 	}
