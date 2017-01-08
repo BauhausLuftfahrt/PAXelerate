@@ -1621,6 +1621,13 @@
         font-weight: bold;
 	}
 
+    h3.team {
+		font-size: 1.15em;
+		letter-spacing: 0.025em;
+        font-weight: bold;
+        margin-bottom: 0em;
+	}
+
 	sub {
 		font-size: 0.8em;
 		position: relative;
@@ -2490,6 +2497,31 @@
 		padding-top: 5em;
 	}
 
+/* Pubs */
+
+	#pubs {
+		background-attachment: scroll, scroll, scroll, fixed;
+		background-color: #8D9AB5;
+		/* background-image: url("images/overlay.png"), url("../../images/banner.jpg"); */
+        /* background-image: url("images/light-tl.svg"), url("images/light-tr.svg"), url("images/overlay.png"), url("../../images/banner.jpg"); */
+		background-position: top left, top right, top left, bottom center;
+		background-repeat: no-repeat, no-repeat, repeat, no-repeat;
+		background-size: 25em, 25em, auto, cover;
+		color: #fff;
+		padding: 5em;
+		text-align: center;
+	}
+
+		#pubs header {
+			margin-bottom: 2em;
+		}
+        #pubs a {
+					color: inherit;
+					font-weight: 400;
+					text-decoration: none;
+				}
+
+
 /* CTA */
 
 	#cta {
@@ -2544,6 +2576,72 @@
 					padding: 0;
 					border: 0;
 				}
+/* Slide Show */
+
+.top{
+    padding-top: 10em;
+}
+
+.slideshow{
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+figure.slideshow{
+  position: absolute;
+  opacity: 0;
+  transition: 1s opacity;
+}
+
+figure.show{
+  opacity: 1;
+  position: static;
+  transition: 1s opacity; 
+}
+figcaption.slideshow{
+  position: absolute;
+  font-family: sans-serif;
+  font-size: .8em;
+  bottom: .75em;
+  right: .35em;
+  padding: .25em;
+  color: #fff;
+  background: rgba(0,0,0, .25);
+  border-radius: 2px;
+}
+figcaption.slideshow a{
+  color: #fff;
+}
+
+.next, .prev{
+  color: #fff;
+  position: absolute;
+  background: rgba(0,0,0, .6);
+  top: 50%;
+  z-index: 1;
+  font-size: 2em;
+  margin-top: -.75em;
+  opacity: .3;
+  user-select: none;
+}
+.next:hover, .prev:hover{
+  cursor: pointer;
+  opacity: 1;
+}
+.next{
+  right: 0;
+  padding: 10px 5px 15px 10px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.prev{
+  left: 0;
+  padding: 10px 10px 15px 5px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
 
 /* Wide */
 
