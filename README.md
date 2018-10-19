@@ -32,9 +32,9 @@ Welcome to the repository of [PAXelerate](http://www.paxelerate.com) - an open s
 ### Contributors ###
 
 * Marc Engelmann ***(active)***
-* Raoul Rothfeld ***(active)***
 * Michael Schmidt ***(active)***
-* Michael Shamiyeh ***(active)***
+* Raoul Rothfeld
+* Michael Shamiyeh 
 * Martin Glas 
 * Tobias Brügge-Zobel
 * Stefan Weber
@@ -43,4 +43,4 @@ Welcome to the repository of [PAXelerate](http://www.paxelerate.com) - an open s
 
 ### About ###
 
-Copyright (c) 2014-2016 [Bauhaus Luftfahrt e.V.](http://www.bauhaus-luftfahrt.net/?set_language=en) All rights reserved. [PAXelerate](http://www.paxelerate.com) and the accompanying materials are made available under the terms of the [Eclipse Public License (EPL) v1.0](http://www.eclipse.org/legal/epl-v10.html) which accompanies this distribution.
+Copyright (c) 2014-2018 [Bauhaus Luftfahrt e.V.](http://www.bauhaus-luftfahrt.net/?set_language=en) All rights reserved. [PAXelerate](http://www.paxelerate.com) and the accompanying materials are made available under the terms of the [Eclipse Public License (EPL) v1.0](http://www.eclipse.org/legal/epl-v10.html) which accompanies this distribution.
