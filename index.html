@@ -8,11 +8,7 @@
     <head>
         <title>PAXelerate</title>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
         <link rel="stylesheet" href="assets/css/main.css" />
-        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
     </head>
     <body class="index">
         <div id="page-wrapper">
@@ -116,85 +112,87 @@
                         <h2>PAXelerates <strong>features</strong></h2>
                     </header>
 
-                    <div class="row">
-                        <div class="6u 12u(narrower)">
-                            <section>
-                                <span class="image featured"><img src="images/feat_simulation.png" alt="" /></span>
-                                <header>
-                                    <h3>Agent-based simulation</h3>
-                                </header>
-                                <p>
-                                    The 2D agent-based simulation module is the core of the passenger flow framework where agents represent the passengers searching for the shortest and cost efficient path to their assigned seat using an
-                                    A-Star path-finding algorithm. Thereby, each agent individually assesses its current situation and makes decisions on the basis of a set of rules, such as stowing luggage or clearing the way for another
-                                    agent.
-                                </p>
-                            </section>
+                    <div class="features">
+                        <div class="row">
+                            <div class="6u 12u(narrower)">
+                                <section>
+                                    <span class="image featured"><img src="images/feat_simulation.png" alt="" /></span>
+                                    <header>
+                                        <h3>Agent-based simulation</h3>
+                                    </header>
+                                    <p>
+                                        The 2D agent-based simulation module is the core of the passenger flow framework where agents represent the passengers searching for the shortest and cost efficient path to their assigned seat using an
+                                        A-Star path-finding algorithm. Thereby, each agent individually assesses its current situation and makes decisions on the basis of a set of rules, such as stowing luggage or clearing the way for another
+                                        agent.
+                                    </p>
+                                </section>
+                            </div>
+                            <div class="6u 12u(narrower)">
+                                <section>
+                                    <span class="image featured"><img src="images/feat_thread.jpg" alt="" /></span>
+                                    <header>
+                                        <h3>Parallel thread processing</h3>
+                                    </header>
+                                    <p>
+                                        Building upon Java as a programming language enables to apply parallel thread processing techniques. Each agent process runs on a single thread within the CPU and thus allows realistic real time agent
+                                        interaction.
+                                    </p>
+                                </section>
+                            </div>
                         </div>
-                        <div class="6u 12u(narrower)">
-                            <section>
-                                <span class="image featured"><img src="images/feat_thread.jpg" alt="" /></span>
-                                <header>
-                                    <h3>Parallel thread processing</h3>
-                                </header>
-                                <p>
-                                    Building upon Java as a programming language enables to apply parallel thread processing techniques. Each agent process runs on a single thread within the CPU and thus allows realistic real time agent
-                                    interaction.
-                                </p>
-                            </section>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="6u 12u(narrower)">
-                            <section>
-                                <span class="image featured"><img src="images/feat_cabin.jpg" alt="" /></span>
-                                <header>
-                                    <h3>Cabin layout designer</h3>
-                                </header>
-                                <p>
-                                    After defining cabin top-level characteristics, such as the overall lengths and width as well as the number of decks, a selection of a predefined aircraft configuration enables the usage of implemented
-                                    design algorithms which are based on current cabin architectures.The cabin structure containing seating class with assigned rows and seats, doors and emergency exist, and all other cabin monuments is
-                                    specified in the EMF meta model and can be flexible adjusted according the requirements of novel architectures. A live graphical update enables short feedback loops during the layout definition.
-                                </p>
-                            </section>
-                        </div>
-                        <div class="6u 12u(narrower)">
-                            <section>
-                                <span class="image featured"><img src="images/feat_agent.jpg" alt="" /></span>
-                                <header>
-                                    <h3>Agent builder</h3>
-                                </header>
-                                <p>
-                                    The agents anthropometric properties such as shoulder width, body depth and walking speed, are determined using a normal distribution between minimum and maximum values which can be adapted to reflect
-                                    different regions worldwide. Dynamic agents reactions are enabled by their mood and environment changes. Optional carried hand luggage has an impact on the walking speed and requires the additional
-                                    stowing task to be performed before seating. With the implemented characteristics it is feasible to define various passengers patterns, such as business or leisure traveler.
-                                </p>
-                            </section>
-                        </div>
-                        <div class="6u 12u(narrower)">
-                            <section>
-                                <span class="image featured"><img src="images/feat_repository.jpg" alt="" /></span>
-                                <header>
-                                    <h3>Use case repository</h3>
-                                </header>
-                                <p>
-                                    The OpenCDT framework provides enhanced import and export capabilities to exchange the created cabin layouts. Moreover, whole projects including cabin layout, agent properties, simulation settings and
-                                    results can be saved. Using a model repository, such as EMFStore, collaborative editing, versioning of models data sharing within the community becomes feasible.
-                                </p>
-                            </section>
-                        </div>
+                        <div class="row">
+                            <div class="6u 12u(narrower)">
+                                <section>
+                                    <span class="image featured"><img src="images/feat_cabin.jpg" alt="" /></span>
+                                    <header>
+                                        <h3>Cabin layout designer</h3>
+                                    </header>
+                                    <p>
+                                        After defining cabin top-level characteristics, such as the overall lengths and width as well as the number of decks, a selection of a predefined aircraft configuration enables the usage of implemented
+                                        design algorithms which are based on current cabin architectures.The cabin structure containing seating class with assigned rows and seats, doors and emergency exist, and all other cabin monuments is
+                                        specified in the EMF meta model and can be flexible adjusted according the requirements of novel architectures. A live graphical update enables short feedback loops during the layout definition.
+                                    </p>
+                                </section>
+                            </div>
+                            <div class="6u 12u(narrower)">
+                                <section>
+                                    <span class="image featured"><img src="images/feat_agent.jpg" alt="" /></span>
+                                    <header>
+                                        <h3>Agent builder</h3>
+                                    </header>
+                                    <p>
+                                        The agents anthropometric properties such as shoulder width, body depth and walking speed, are determined using a normal distribution between minimum and maximum values which can be adapted to reflect
+                                        different regions worldwide. Dynamic agents reactions are enabled by their mood and environment changes. Optional carried hand luggage has an impact on the walking speed and requires the additional
+                                        stowing task to be performed before seating. With the implemented characteristics it is feasible to define various passengers patterns, such as business or leisure traveler.
+                                    </p>
+                                </section>
+                            </div>
+                            <div class="6u 12u(narrower)">
+                                <section>
+                                    <span class="image featured"><img src="images/feat_repository.jpg" alt="" /></span>
+                                    <header>
+                                        <h3>Use case repository</h3>
+                                    </header>
+                                    <p>
+                                        The OpenCDT framework provides enhanced import and export capabilities to exchange the created cabin layouts. Moreover, whole projects including cabin layout, agent properties, simulation settings and
+                                        results can be saved. Using a model repository, such as EMFStore, collaborative editing, versioning of models data sharing within the community becomes feasible.
+                                    </p>
+                                </section>
+                            </div>
 
-                        <div class="6u 12u(narrower)">
-                            <section>
-                                <span class="image featured"><img src="images/feat_opencdt.png" alt="" /></span>
-                                <header>
-                                    <h3>Fully integrated into OpenCDT</h3>
-                                </header>
-                                <p>
-                                    PAXelerate is based on the Eclipse Modeling Framework (EMF) which is a modeling framework using a structured data model. The core EMF framework includes a meta model (Ecore) for describing models and
-                                    runtime support for them. Integrated into OpenCDT being an open source framework for conceptual aircraft design, PAXcelerate enables the assessment of cabin layouts during the early stages of an aircraft
-                                    program.
-                                </p>
-                            </section>
+                            <div class="6u 12u(narrower)">
+                                <section>
+                                    <span class="image featured"><img src="images/feat_opencdt.png" alt="" /></span>
+                                    <header>
+                                        <h3>Fully integrated into OpenCDT</h3>
+                                    </header>
+                                    <p>
+                                        PAXelerate is based on the Eclipse Modeling Framework (EMF) which is a modeling framework using a structured data model. The core EMF framework includes a meta model (Ecore) for describing models and
+                                        runtime support for them. Integrated into OpenCDT being an open source framework for conceptual aircraft design, PAXcelerate enables the assessment of cabin layouts during the early stages of an aircraft
+                                        program.
+                                    </p>
+                                </section>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -267,7 +265,7 @@
             </section>
 
             <!-- Team -->
-            <article id="main">
+            <article id="team">
                 <section class="wrapper style3 container special">
                     <h2>The <strong>PAXelerate </strong> Team</h2>
                     <p>The PAXelerate developer community currently consists of active members from Bauhaus Luftfahrt, Munich Aerospace and Technische Universität München.</p>
@@ -357,9 +355,8 @@
         <script src="assets/js/jquery.dropotron.min.js"></script>
         <script src="assets/js/jquery.scrolly.min.js"></script>
         <script src="assets/js/jquery.scrollgress.min.js"></script>
-        <script src="assets/js/skel.min.js"></script>
+        <!-- <script src="assets/js/skel.min.js"></script> -->
         <script src="assets/js/util.js"></script>
-        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
         <script src="assets/js/main.js"></script>
         <script src="assets/js/slideshow.js"></script>
     </body>
