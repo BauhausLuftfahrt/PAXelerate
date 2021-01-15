@@ -29,6 +29,7 @@ Welcome to the repository of [PAXelerate](http://www.paxelerate.com) - an open s
 ### Contributors ###
 
 * Marc Engelmann ***(active)***
+* Tim Kleinheinz
 * Michael Schmidt 
 * Raoul Rothfeld
 * Michael Shamiyeh 
