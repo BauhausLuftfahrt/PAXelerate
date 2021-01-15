@@ -707,6 +707,8 @@ body {
 
 body {
     background: #f3f6fa;
+    max-width:1200px;
+    margin:auto;
 }
 
 body.is-loading *,
@@ -1380,11 +1382,13 @@ input[type="reset"].small,
     color: inherit;
     cursor: default;
     font-size: 0.8em;
-    left: 0;
+    /*left: 0;
     padding: 1em 1.5em;
-    position: fixed;
+    /*position: fixed;*/
     top: 0;
     width: 100%;
+    max-width:1200px;
+    margin:auto;
     z-index: 10000;
 }
 
@@ -1729,7 +1733,7 @@ body.index #team {
 /* Footer */
 
 #footer {
-    background: #e8eef4;
+   /*  background: #e8eef4; */
     color: #7c8081;
     padding: 1em 1em 1em 1em;
     text-align: center;
