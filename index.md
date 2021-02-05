@@ -1,63 +1,50 @@
 # PAXelerate
                    
-An open source passenger flow  simulation framework for advanced aircraft cabin layouts
-[Bauhaus Luftfahrt](http://www.bauhaus-luftfahrt.net).
-                  
-Based on [Eclipse](http://www.eclipse.org) and released under [EPL v1.0](http://www.eclipse.org/legal/epl-v10.html) on [Github](https://github.com/BauhausLuftfahrt/PAXelerate).
+An open source passenger flow  simulation framework for advanced aircraft cabin layouts [Bauhaus Luftfahrt](http://www.bauhaus-luftfahrt.net). Based on [Eclipse](http://www.eclipse.org) and released under [EPL v1.0](http://www.eclipse.org/legal/epl-v10.html) on [Github](https://github.com/BauhausLuftfahrt/PAXelerate).
                
 ## PAXelerate comes with many useful features
                            
-The PAXelerate framework being a two-dimensional agent-based passenger flow simulation is especially designed to assess novel cabin architectures including on-demand adaptable cabins during boarding.
-
-Combining the cabin layout designer and agent builder enables to investigate customised case studies. Applying parallel thread processing allows to conduct several trade studies in an efficient manner.                      
+The PAXelerate framework being a two-dimensional agent-based passenger flow simulation is especially designed to assess novel cabin architectures including on-demand adaptable cabins during boarding. Combining the cabin layout designer and agent builder enables to investigate customised case studies. Applying parallel thread processing allows to conduct several trade studies in an efficient manner.                      
                     
 ![](old/images/slideshow-overview.png)
                                         
 ## PAXelerates features
                    
+### Agent-based simulation
+
 ![](old/images/feat_simulation.png)
 
-### Agent-based simulation
 The 2D agent-based simulation module is the core of the passenger flow framework where agents represent the passengers searching for the shortest and cost efficient path to their assigned seat using an A-Star path-finding algorithm. Thereby, each agent individually assesses its current situation and makes decisions on the basis of a set of rules, such as stowing luggage or clearing the way for another agent.
-
-![](old/images/feat_thread.jpg)
 
 ### Parallel thread processing
 
-Building upon Java as a programming language enables to apply parallel thread processing techniques. Each agent process runs on a single thread within the CPU and thus allows realistic real time agent
-interaction.
+![](old/images/feat_thread.jpg)
 
-![](old/images/feat_cabin.jpg)
+Building upon Java as a programming language enables to apply parallel thread processing techniques. Each agent process runs on a single thread within the CPU and thus allows realistic real time agent interaction.
 
 ### Cabin layout designer
 
-After defining cabin top-level characteristics, such as the overall lengths and width as well as the number of decks, a selection of a predefined aircraft configuration enables the usage of implemented
-design algorithms which are based on current cabin architectures.The cabin structure containing seating class with assigned rows and seats, doors and emergency exist, and all other cabin monuments is
-specified in the EMF meta model and can be flexible adjusted according the requirements of novel architectures. A live graphical update enables short feedback loops during the layout definition.
+![](old/images/feat_cabin.jpg)
 
-![](old/images/feat_agent.jpg)
+After defining cabin top-level characteristics, such as the overall lengths and width as well as the number of decks, a selection of a predefined aircraft configuration enables the usage of implemented design algorithms which are based on current cabin architectures.The cabin structure containing seating class with assigned rows and seats, doors and emergency exist, and all other cabin monuments is specified in the EMF meta model and can be flexible adjusted according the requirements of novel architectures. A live graphical update enables short feedback loops during the layout definition.
 
 ### Agent builder
 
-The agents anthropometric properties such as shoulder width, body depth and walking speed, are determined using a normal distribution between minimum and maximum values which can be adapted to reflect
-different regions worldwide. Dynamic agents reactions are enabled by their mood and environment changes. Optional carried hand luggage has an impact on the walking speed and requires the additional
-stowing task to be performed before seating. With the implemented characteristics it is feasible to define various passengers patterns, such as business or leisure traveler.
+![](old/images/feat_agent.jpg)
 
-![](old/images/feat_repository.jpg)
+The agents anthropometric properties such as shoulder width, body depth and walking speed, are determined using a normal distribution between minimum and maximum values which can be adapted to reflect different regions worldwide. Dynamic agents reactions are enabled by their mood and environment changes. Optional carried hand luggage has an impact on the walking speed and requires the additional stowing task to be performed before seating. With the implemented characteristics it is feasible to define various passengers patterns, such as business or leisure traveler.
 
 ### Use case repository
 
-The OpenCDT framework provides enhanced import and export capabilities to exchange the created cabin layouts. Moreover, whole projects including cabin layout, agent properties, simulation settings and
-results can be saved. Using a model repository, such as EMFStore, collaborative editing, versioning of models data sharing within the community becomes feasible.
+![](old/images/feat_repository.jpg)
 
-![](old/images/feat_opencdt.png)
+The OpenCDT framework provides enhanced import and export capabilities to exchange the created cabin layouts. Moreover, whole projects including cabin layout, agent properties, simulation settings and results can be saved. Using a model repository, such as EMFStore, collaborative editing, versioning of models data sharing within the community becomes feasible.
 
 ### Fully integrated into OpenCDT
 
-PAXelerate is based on the Eclipse Modeling Framework (EMF) which is a modeling framework using a structured data model. The core EMF framework includes a meta model (Ecore) for describing models and
-runtime support for them. Integrated into OpenCDT being an open source framework for conceptual aircraft design, PAXcelerate enables the assessment of cabin layouts during the early stages of an aircraft
-program.
+![](old/images/feat_opencdt.png)
 
+PAXelerate is based on the Eclipse Modeling Framework (EMF) which is a modeling framework using a structured data model. The core EMF framework includes a meta model (Ecore) for describing models and runtime support for them. Integrated into OpenCDT being an open source framework for conceptual aircraft design, PAXcelerate enables the assessment of cabin layouts during the early stages of an aircraft program.
 
 ## PAXelerate publications
 [Visit ResearchGate](https://www.researchgate.net/project/PAXelerate-An-open-source-passenger-flow-simulation-framework-for-advanced-aircraft-cabin-layouts)             
@@ -74,9 +61,9 @@ program.
 
 ### 2018
 
-* Schmidt, M.: [Ground-Operational Assessment of Novel Aircraft Cabin Configurations](https://mediatum.ub.tum.de/?id=1381821), Dissertation, Technical University of Munich, 2018.</p>
+* Schmidt, M.: [Ground-Operational Assessment of Novel Aircraft Cabin Configurations](https://mediatum.ub.tum.de/?id=1381821), Dissertation, Technical University of Munich, 2018.
 
-* Schultz, M. and Schmidt, M.: Advancements in passenger processes at airports – An aircraft perspective, Transportation Research Arena (TRA), Vienna, Austria, 2018.</p>
+* Schultz, M. and Schmidt, M.: Advancements in passenger processes at airports – An aircraft perspective, Transportation Research Arena (TRA), Vienna, Austria, 2018.
 
 * Yildiz, B., Förster, P., Feuerle, T., Hecker, P., Bugow, S., and Helber, S.: [A Generic Approach to Analyze the Impact of a Future Aircraft Design on the Boarding Process](http://www.mdpi.com/1996-1073/11/2/303), Energies, vol. 11, 2018, p. 303.
 
@@ -85,31 +72,23 @@ program.
 * Schmidt, M.: [A review of aircraft turnaround operations and simulations](http://www.sciencedirect.com/science/article/pii/S0376042117300039), Progress in Aerospace Sciences, Volume 92, July 2017,
 Pages 25-38. doi: 10.1016/j.paerosci.2017.05.002
 
+* Schmidt, M. and Heinemann, P.: [Improving the Boarding Performance of Regional Aircraft](https://arc.aiaa.org/doi/abs/10.2514/6.2017-3424), AIAA Aviation, American Institute of Aeronautics and Astronautics Denver, Colorado, USA, 2017.
 
-* Schmidt, M. and Heinemann, P.: [Improving the Boarding Performance of Regional Aircraft](https://arc.aiaa.org/doi/abs/10.2514/6.2017-3424), AIAA Aviation, American Institute of Aeronautics and
-Astronautics Denver, Colorado, USA, 2017.
-
-
-* Schmidt, M., Heinemann, P. and Hornung, M.: [Boarding and Turnaround Process Assessment of Single- and Twin-Aisle Aircraft](https://arc.aiaa.org/doi/abs/10.2514/6.2017-1856), 55th AIAA Aerospace
-Sciences Meeting, American Institute of Aeronautics and Astronautics, Grapevine, Texas, USA, 2017. doi:10.2514/6.2017-1856
-
+* Schmidt, M., Heinemann, P. and Hornung, M.: [Boarding and Turnaround Process Assessment of Single- and Twin-Aisle Aircraft](https://arc.aiaa.org/doi/abs/10.251 /6.2017-1856), 55th AIAA Aerospace Sciences Meeting, American Institute of Aeronautics and Astronautics, Grapevine, Texas, USA, 2017. doi:10.2514/6.2017-1856
 
 ### 2016
 
-* Schmidt, M., Engelmann, M., Rothfeld, R. and Hornung, M.: [Boarding Process Assessment of Novel Aircraft Cabin Concepts](http://www.icas.org/ICAS_ARCHIVE/ICAS2016/data/papers/2016_0218_paper.pdf),
-30th International Congress of the Aeronautical Sciences (ICAS), Daejeon, South Korea, 2016.
+* Schmidt, M., Engelmann, M., Rothfeld, R. and Hornung, M.: [Boarding Process Assessment of Novel Aircraft Cabin Concepts](http://www.icas.org/ICAS_ARCHIVE/ICAS2016/data/papers/2016_0218_paper.pdf), 30th International Congress of the Aeronautical Sciences (ICAS), Daejeon, South Korea, 2016.
 
 * Schmidt, M., Engelmann, M., Brügge-Zobel, T., Hornung, M., and Glas, M.:
-[PAXelerate - An Open Source Passenger Flow Simulation Framework for Advanced Aircraft Cabin Layouts](https://arc.aiaa.org/doi/abs/10.2514/6.2016-1284), 54th AIAA Aerospace Sciences Meeting,
-American Institute of Aeronautics and Astronautics, San Diego, California, USA, 2016. doi:10.2514/6.2016-1284
-
+[PAXelerate - An Open Source Passenger Flow Simulation Framework for Advanced Aircraft Cabin Layouts](https://arc.aiaa.org/doi/abs/10.2514/6.2016-1284), 54th AIAA Aerospace Sciences Meeting, American Institute of Aeronautics and Astronautics, San Diego, California, USA, 2016. doi:10.2514/6.2016-1284
                        
 ## The PAXelerate  Team
 The PAXelerate developer community currently consists of active members from Bauhaus Luftfahrt, Munich Aerospace and Technische Universität München.
 
 ![Marc Engelmann](old/images/team_marc.jpg)
 
-Marc Engelmann
+Marc Engelmann, 
 
 Bauhaus Luftfahrt e.V.
 
