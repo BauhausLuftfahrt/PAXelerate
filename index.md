@@ -20,7 +20,7 @@ Use case repository | Fully integrated into OpenCDT
 :---: | :---:
 The OpenCDT framework provides enhanced import and export capabilities to exchange the created cabin layouts. Moreover, whole projects including cabin layout, agent properties, simulation settings and results can be saved. Using a model repository, such as EMFStore, collaborative editing, versioning of models data sharing within the community becomes feasible. | PAXelerate is based on the Eclipse Modeling Framework (EMF) which is a modeling framework using a structured data model. The core EMF framework includes a meta model (Ecore) for describing models and runtime support for them. Integrated into OpenCDT being an open source framework for conceptual aircraft design, PAXcelerate enables the assessment of cabin layouts during the early stages of an aircraft program.
 
-### PAXelerate publications
+### Publications
 Following is a list of research publications related to PAXelerate. An overview of the PAXelerate research project progess can be found on [ResearchGate](https://www.researchgate.net/project/PAXelerate-An-open-source-passenger-flow-simulation-framework-for-advanced-aircraft-cabin-layouts).
 
 #### 2020
