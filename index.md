@@ -111,6 +111,3 @@ Willy Messerschmitt-Straße 1
 +49 (0)89 30 74-8490 
 
 contact at paxelerate dot com
-
-## Legal 
-(c) 2014-2020 Bauhaus Luftfahrt e.V. - All rights reserved - [Privacy](old/privacy.html) - [Imprint](old/imprint.html)
