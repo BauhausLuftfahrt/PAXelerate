@@ -10,15 +10,15 @@ The PAXelerate framework being a two-dimensional agent-based passenger flow simu
                                         
 ## PAXelerates features
   
-### Agent-based simulation | ### Parallel thread processing           
+Agent-based simulation | Parallel thread processing           
 :---: | :---:
 ![](old/images/feat_simulation.png) | ![](old/images/feat_thread.jpg)
 The 2D agent-based simulation module is the core of the passenger flow framework where agents represent the passengers searching for the shortest and cost efficient path to their assigned seat using an A-Star path-finding algorithm. Thereby, each agent individually assesses its current situation and makes decisions on the basis of a set of rules, such as stowing luggage or clearing the way for another agent.| Building upon Java as a programming language enables to apply parallel thread processing techniques. Each agent process runs on a single thread within the CPU and thus allows realistic real time agent interaction.
 
 ### Cabin layout designer
 
-:---: | :---:
 ![](old/images/feat_cabin.jpg)|After defining cabin top-level characteristics, such as the overall lengths and width as well as the number of decks, a selection of a predefined aircraft configuration enables the usage of implemented design algorithms which are based on current cabin architectures.The cabin structure containing seating class with assigned rows and seats, doors and emergency exist, and all other cabin monuments is specified in the EMF meta model and can be flexible adjusted according the requirements of novel architectures. A live graphical update enables short feedback loops during the layout definition.
+:---: | :---:
 
 ### Agent builder
 
