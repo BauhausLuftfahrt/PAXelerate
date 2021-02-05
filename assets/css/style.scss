@@ -10,10 +10,6 @@ $section-headings-color: #d7801c;
 
 @import "{{ site.theme }}";
 
-h1, h2, h3 {
-  text-align: center;
-}
-
 table, th, tr, td{
   border: none !important;
 }
