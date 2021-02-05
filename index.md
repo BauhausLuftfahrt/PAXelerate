@@ -8,34 +8,20 @@ The PAXelerate framework being a two-dimensional agent-based passenger flow simu
                                         
 ## PAXelerates features  
 
-<!---![](old/images/feat_simulation.png)  --->
-
 Agent-based simulation | Parallel thread processing   
---- | ---
+*---* | *---*
 The 2D agent-based simulation module is the core of the passenger flow framework where agents represent the passengers searching for the shortest and cost efficient path to their assigned seat using an A-Star path-finding algorithm. Thereby, each agent individually assesses its current situation and makes decisions on the basis of a set of rules, such as stowing luggage or clearing the way for another agent. | Building upon Java as a programming language enables to apply parallel thread processing techniques. Each agent process runs on a single thread within the CPU and thus allows realistic real time agent interaction.
 
-<!---![](old/images/feat_thread.jpg)--->
+
+Cabin layout designer | Agent builder
+*---* | *---*
+After defining cabin top-level characteristics, such as the overall lengths and width as well as the number of decks, a selection of a predefined aircraft configuration enables the usage of implemented design algorithms which are based on current cabin architectures.The cabin structure containing seating class with assigned rows and seats, doors and emergency exist, and all other cabin monuments is specified in the EMF meta model and can be flexible adjusted according the requirements of novel architectures. A live graphical update enables short feedback loops during the layout definition.|The agents anthropometric properties such as shoulder width, body depth and walking speed, are determined using a normal distribution between minimum and maximum values which can be adapted to reflect different regions worldwide. Dynamic agents reactions are enabled by their mood and environment changes. Optional carried hand luggage has an impact on the walking speed and requires the additional stowing task to be performed before seating. With the implemented characteristics it is feasible to define various passengers patterns, such as business or leisure traveler.
 
 
-<!---![](old/images/feat_cabin.jpg)--->
 
-### Cabin layout designer
-After defining cabin top-level characteristics, such as the overall lengths and width as well as the number of decks, a selection of a predefined aircraft configuration enables the usage of implemented design algorithms which are based on current cabin architectures.The cabin structure containing seating class with assigned rows and seats, doors and emergency exist, and all other cabin monuments is specified in the EMF meta model and can be flexible adjusted according the requirements of novel architectures. A live graphical update enables short feedback loops during the layout definition.
-
-<!---![](old/images/feat_agent.jpg)--->
-
-### Agent builder
-The agents anthropometric properties such as shoulder width, body depth and walking speed, are determined using a normal distribution between minimum and maximum values which can be adapted to reflect different regions worldwide. Dynamic agents reactions are enabled by their mood and environment changes. Optional carried hand luggage has an impact on the walking speed and requires the additional stowing task to be performed before seating. With the implemented characteristics it is feasible to define various passengers patterns, such as business or leisure traveler.
-
-<!---![](old/images/feat_repository.jpg)--->
-
-### Use case repository
-The OpenCDT framework provides enhanced import and export capabilities to exchange the created cabin layouts. Moreover, whole projects including cabin layout, agent properties, simulation settings and results can be saved. Using a model repository, such as EMFStore, collaborative editing, versioning of models data sharing within the community becomes feasible.
-
-<!---![](old/images/feat_opencdt.png)--->
-
-### Fully integrated into OpenCDT
-PAXelerate is based on the Eclipse Modeling Framework (EMF) which is a modeling framework using a structured data model. The core EMF framework includes a meta model (Ecore) for describing models and runtime support for them. Integrated into OpenCDT being an open source framework for conceptual aircraft design, PAXcelerate enables the assessment of cabin layouts during the early stages of an aircraft program.
+Use case repository | Fully integrated into OpenCDT
+*---* | *---*
+The OpenCDT framework provides enhanced import and export capabilities to exchange the created cabin layouts. Moreover, whole projects including cabin layout, agent properties, simulation settings and results can be saved. Using a model repository, such as EMFStore, collaborative editing, versioning of models data sharing within the community becomes feasible. | PAXelerate is based on the Eclipse Modeling Framework (EMF) which is a modeling framework using a structured data model. The core EMF framework includes a meta model (Ecore) for describing models and runtime support for them. Integrated into OpenCDT being an open source framework for conceptual aircraft design, PAXcelerate enables the assessment of cabin layouts during the early stages of an aircraft program.
 
 ## PAXelerate publications
 Following is a list of research publications related to PAXelerate. An overview of the PAXelerate research project progess can be found on [ResearchGate](https://www.researchgate.net/project/PAXelerate-An-open-source-passenger-flow-simulation-framework-for-advanced-aircraft-cabin-layouts).
