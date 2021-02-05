@@ -1,5 +1,5 @@
                
-An open source passenger flow  simulation framework for advanced aircraft cabin layouts [Bauhaus Luftfahrt](http://www.bauhaus-luftfahrt.net). Based on [Eclipse (http://www.eclipse.org) and released under [EPL v1.0](http://www.eclipse.org/legal/epl-v10.html) on [Github](https://github.com/BauhausLuftfahrt/PAXelerate).
+An open source passenger flow  simulation framework for advanced aircraft cabin layouts [Bauhaus Luftfahrt](http://www.bauhaus-luftfahrt.net). Based on [Eclipse] (http://www.eclipse.org) and released under [EPL v1.0](http://www.eclipse.org/legal/epl-v10.html) on [Github](https://github.com/BauhausLuftfahrt/PAXelerate).
                
 ## PAXelerate comes with many useful features                        
 The PAXelerate framework being a two-dimensional agent-based passenger flow simulation is especially designed to assess novel cabin architectures including on-demand adaptable cabins during boarding. Combining the cabin layout designer and agent builder enables to investigate customised case studies. Applying parallel thread processing allows to conduct several trade studies in an efficient manner.                      
