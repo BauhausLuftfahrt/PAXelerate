@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<!--
+	Twenty by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+    <head>
+        <title>PAXelerate</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+    </head>
+    <body class="index">
+        <div id="page-wrapper">
+            <!-- Header -->
+            <header id="header" class="alt">
+                <h1 id="logo">
+                    <a href="index.html">PAXelerate <span>by Bauhaus Luftfahrt</span></a>
+                </h1>
+                <nav id="nav">
+                    <ul>
+                        <li class="current"><a href="index.html">Home</a></li>
+                        <li class="current"><a href="#download">Download</a></li>
+                        <li class="current"><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <!-- Banner -->
+            <section id="banner">
+                <div class="inner">
+                    <header>
+                        <h2>PAXelerate</h2>
+                    </header>
+                    <p>
+                        An open source passenger flow <br />
+                        simulation framework for <br />
+                        advanced aircraft cabin layouts <br />
+                        by <a href="http://www.bauhaus-luftfahrt.net">Bauhaus Luftfahrt</a>.
+                    </p>
+                    <br />
+                    <p>
+                        Based on <a href="http://www.eclipse.org">Eclipse</a> and <a href="https://github.com/BauhausLuftfahrt/OpenCDT">OpenCDT</a> <br />
+                        released under <a href="http://www.eclipse.org/legal/epl-v10.html">EPL v1.0</a> on <a href="https://github.com/BauhausLuftfahrt/PAXelerate">Github</a>
+                    </p>
+                    <footer>
+                        <ul class="buttons vertical">
+                            <li><a href="#main" class="button fit scrolly">Tell Me More</a></li>
+                        </ul>
+                    </footer>
+                </div>
+            </section>
+
+            <!-- Main -->
+            <article id="main">
+                <!-- One -->
+                <section class="wrapper style2 container special-alt" id="download">
+                    <div class="row 50%">
+                        <div class="6u 12u(narrower)">
+                            <header>
+                                <h2><strong>PAXelerate</strong> comes with many useful features</h2>
+                            </header>
+                            <p>
+                                The PAXelerate framework being a two-dimensional agent-based passenger flow simulation is especially designed to assess novel cabin architectures including on-demand adaptable cabins during boarding.
+                                Combining the cabin layout designer and agent builder enables to investigate customised case studies. Applying parallel thread processing allows to conduct several trade studies in an efficient manner.
+                            </p>
+                        </div>
+                        <div class="6u 12u(narrower) important(narrower)">
+                            <a href="#" class="image featured"><img src="images/gui.png" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="row 50%">
+                        <div class="12u 12u(narrower)">
+                            <footer>
+                                <ul class="buttons">
+                                    <li><a href="https://github.com/BauhausLuftfahrt/PAXelerate/releases/tag/alpha-0.7" class="button">Get Client (v0.7)</a></li>
+                                    <li><a href="https://github.com/BauhausLuftfahrt/PAXelerate" class="button">Source Code</a></li>
+                                </ul>
+                            </footer>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Features -->
+                <section class="wrapper style1 container special">
+                    <header class="major">
+                        <h2>PAXelerates <strong>user interface</strong></h2>
+                    </header>
+
+                    <div class="slideshow">
+                        <figure class="slideshow show">
+                            <img src="images/slideshow-overview.png" width="100%" />
+                            <figcaption class="slideshow">PAXelerate user interface</figcaption>
+                        </figure>
+                        <figure class="slideshow">
+                            <img src="images/slideshow-passenger.png" width="30%" />
+                            <figcaption class="slideshow">Passenger properties</figcaption>
+                        </figure>
+                        <figure class="slideshow">
+                            <img src="images/slideshow-cabin.png" width="20%" />
+                            <figcaption class="slideshow">Cabin representation</figcaption>
+                        </figure>
+                        <figure class="slideshow">
+                            <img src="images/slideshow-model.png" width="30%" />
+                            <figcaption class="slideshow">Cabin meta-model</figcaption>
+                        </figure>
+                        <span class="prev">&laquo;</span>
+                        <span class="next">&raquo;</span>
+                    </div>
+
+                    <header class="major top">
+                        <h2>PAXelerates <strong>features</strong></h2>
+                    </header>
+
+                    <div class="features">
+                        <div class="row">
+                            <div class="6u 12u(narrower) feature-item">
+                                <section>
+                                    <span class="image featured"><img src="images/feat_simulation.png" alt="" /></span>
+                                    <header>
+                                        <h3>Agent-based simulation</h3>
+                                    </header>
+                                    <p>
+                                        The 2D agent-based simulation module is the core of the passenger flow framework where agents represent the passengers searching for the shortest and cost efficient path to their assigned seat using an
+                                        A-Star path-finding algorithm. Thereby, each agent individually assesses its current situation and makes decisions on the basis of a set of rules, such as stowing luggage or clearing the way for another
+                                        agent.
+                                    </p>
+                                </section>
+                            </div>
+                            <div class="6u 12u(narrower) feature-item">
+                                <section>
+                                    <span class="image featured"><img src="images/feat_thread.jpg" alt="" /></span>
+                                    <header>
+                                        <h3>Parallel thread processing</h3>
+                                    </header>
+                                    <p>
+                                        Building upon Java as a programming language enables to apply parallel thread processing techniques. Each agent process runs on a single thread within the CPU and thus allows realistic real time agent
+                                        interaction.
+                                    </p>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="6u 12u(narrower) feature-item">
+                                <section>
+                                    <span class="image featured"><img src="images/feat_cabin.jpg" alt="" /></span>
+                                    <header>
+                                        <h3>Cabin layout designer</h3>
+                                    </header>
+                                    <p>
+                                        After defining cabin top-level characteristics, such as the overall lengths and width as well as the number of decks, a selection of a predefined aircraft configuration enables the usage of implemented
+                                        design algorithms which are based on current cabin architectures.The cabin structure containing seating class with assigned rows and seats, doors and emergency exist, and all other cabin monuments is
+                                        specified in the EMF meta model and can be flexible adjusted according the requirements of novel architectures. A live graphical update enables short feedback loops during the layout definition.
+                                    </p>
+                                </section>
+                            </div>
+                            <div class="6u 12u(narrower) feature-item">
+                                <section>
+                                    <span class="image featured"><img src="images/feat_agent.jpg" alt="" /></span>
+                                    <header>
+                                        <h3>Agent builder</h3>
+                                    </header>
+                                    <p>
+                                        The agents anthropometric properties such as shoulder width, body depth and walking speed, are determined using a normal distribution between minimum and maximum values which can be adapted to reflect
+                                        different regions worldwide. Dynamic agents reactions are enabled by their mood and environment changes. Optional carried hand luggage has an impact on the walking speed and requires the additional
+                                        stowing task to be performed before seating. With the implemented characteristics it is feasible to define various passengers patterns, such as business or leisure traveler.
+                                    </p>
+                                </section>
+                            </div>
+                            <div class="6u 12u(narrower) feature-item">
+                                <section>
+                                    <span class="image featured"><img src="images/feat_repository.jpg" alt="" /></span>
+                                    <header>
+                                        <h3>Use case repository</h3>
+                                    </header>
+                                    <p>
+                                        The OpenCDT framework provides enhanced import and export capabilities to exchange the created cabin layouts. Moreover, whole projects including cabin layout, agent properties, simulation settings and
+                                        results can be saved. Using a model repository, such as EMFStore, collaborative editing, versioning of models data sharing within the community becomes feasible.
+                                    </p>
+                                </section>
+                            </div>
+
+                            <div class="6u 12u(narrower) feature-item">
+                                <section>
+                                    <span class="image featured"><img src="images/feat_opencdt.png" alt="" /></span>
+                                    <header>
+                                        <h3>Fully integrated into OpenCDT</h3>
+                                    </header>
+                                    <p>
+                                        PAXelerate is based on the Eclipse Modeling Framework (EMF) which is a modeling framework using a structured data model. The core EMF framework includes a meta model (Ecore) for describing models and
+                                        runtime support for them. Integrated into OpenCDT being an open source framework for conceptual aircraft design, PAXcelerate enables the assessment of cabin layouts during the early stages of an aircraft
+                                        program.
+                                    </p>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Publications -->
+            <section id="pubs">
+                <header class="major">
+                    <h2>PAXelerate <strong>publications</strong></h2>
+                    <p><a href="https://www.researchgate.net/project/PAXelerate-An-open-source-passenger-flow-simulation-framework-for-advanced-aircraft-cabin-layouts">Visit ResearchGate</a></p>
+                </header>
+
+                <div class="row">
+                    <div>
+                        <section>
+
+                            <h3>2020</h3>
+                            <p>
+                                M. Engelmann, T. Kleinheinz, and M. Hornung, <a href="https://www.mdpi.com/2226-4310/7/12/182">“Advanced Passenger Movement Model Depending On the Aircraft Cabin Geometry”</a>, Aerospace, vol. 7, no. 12, p.
+                                182, Dec. 2020.
+                            </p>
+
+                            <p>
+                                Engelmann, M.; Drust, D.; Hornung, M. (2020):
+                                <a href="https://publikationen.dglr.de/?tx_dglrpublications_pi1%5bdocument_id%5d=530014">Automated 3D cabin generation with PAXelerate and Blender using the CPACS file format.</a> Deutsche Gesellschaft für
+                                Luft- und Raumfahrt - Lilienthal-Oberth e.V.. (Text). https://doi.org/10.25967/530014. urn:nbn:de:101:1-2020100914023283185396.
+                            </p>
+                            <h3>2019</h3>
+                            <p>
+                                Engelmann, M.; Hornung, M. (2019): <a href="https://publikationen.dglr.de/?tx_dglrpublications_pi1%5bdocument_id%5d=490049">Boarding Process Assessment of the AVACON Research Baseline Aircraft.</a> Deutsche
+                                Gesellschaft für Luft- und Raumfahrt - Lilienthal-Oberth e.V.. (Text). https://doi.org/10.25967/490049. urn:nbn:de:101:1-2019111311543699382787.
+                            </p>
+                            <h3>2018</h3>
+                            <p>Schmidt, M.: <a href="https://mediatum.ub.tum.de/?id=1381821">Ground-Operational Assessment of Novel Aircraft Cabin Configurations</a>, Dissertation, Technical University of Munich, 2018.</p>
+
+                            <p>Schultz, M. and Schmidt, M.: Advancements in passenger processes at airports – An aircraft perspective, Transportation Research Arena (TRA), Vienna, Austria, 2018.</p>
+
+                            <p>
+                                Yildiz, B., Förster, P., Feuerle, T., Hecker, P., Bugow, S., and Helber, S.:
+                                <a href="http://www.mdpi.com/1996-1073/11/2/303">A Generic Approach to Analyze the Impact of a Future Aircraft Design on the Boarding Process</a>, Energies, vol. 11, 2018, p. 303.
+                            </p>
+                            <h3>2017</h3>
+                            <p>
+                                Schmidt, M.: <a href="http://www.sciencedirect.com/science/article/pii/S0376042117300039">A review of aircraft turnaround operations and simulations</a>, Progress in Aerospace Sciences, Volume 92, July 2017,
+                                Pages 25-38. doi: 10.1016/j.paerosci.2017.05.002
+                            </p>
+
+                            <p>
+                                Schmidt, M. and Heinemann, P.: <a href="https://arc.aiaa.org/doi/abs/10.2514/6.2017-3424">Improving the Boarding Performance of Regional Aircraft</a>, AIAA Aviation, American Institute of Aeronautics and
+                                Astronautics Denver, Colorado, USA, 2017.
+                            </p>
+
+                            <p>
+                                Schmidt, M., Heinemann, P. and Hornung, M.: <a href="https://arc.aiaa.org/doi/abs/10.2514/6.2017-1856">Boarding and Turnaround Process Assessment of Single- and Twin-Aisle Aircraft</a>, 55th AIAA Aerospace
+                                Sciences Meeting, American Institute of Aeronautics and Astronautics, Grapevine, Texas, USA, 2017. doi:10.2514/6.2017-1856
+                            </p>
+
+                            <h3>2016</h3>
+                            <p>
+                                Schmidt, M., Engelmann, M., Rothfeld, R. and Hornung, M.: <a href="http://www.icas.org/ICAS_ARCHIVE/ICAS2016/data/papers/2016_0218_paper.pdf">Boarding Process Assessment of Novel Aircraft Cabin Concepts</a>,
+                                30th International Congress of the Aeronautical Sciences (ICAS), Daejeon, South Korea, 2016.
+                            </p>
+
+                            <p>
+                                Schmidt, M., Engelmann, M., Brügge-Zobel, T., Hornung, M., and Glas, M.:
+                                <a href="https://arc.aiaa.org/doi/abs/10.2514/6.2016-1284">PAXelerate - An Open Source Passenger Flow Simulation Framework for Advanced Aircraft Cabin Layouts</a>, 54th AIAA Aerospace Sciences Meeting,
+                                American Institute of Aeronautics and Astronautics, San Diego, California, USA, 2016. doi:10.2514/6.2016-1284
+                            </p>
+                        </section>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Team -->
+            <article id="team">
+                <section class="wrapper style3 container special">
+                    <h2>The <strong>PAXelerate </strong> Team</h2>
+                    <p>The PAXelerate developer community currently consists of active members from Bauhaus Luftfahrt, Munich Aerospace and Technische Universität München.</p>
+                    <div class="row">
+                        <div class="6u 12u(narrower)">
+                            <section>
+                                <span class="image"><img src="images/team_marc.jpg" alt="" /></span>
+                                <header class="major">
+                                    <h3 class="team">Marc Engelmann</h3>
+                                    <b>Bauhaus Luftfahrt e.V.</b>
+                                </header>
+                                <p><a href="https://www.researchgate.net/profile/Marc_Engelmann2">Visit ResearchGate profile</a></p>
+                            </section>
+                        </div>
+                        <div class="6u 12u(narrower)">
+                            <section>
+                                <span class="image"><img src="images/team_michael.jpg" alt="" /></span>
+                                <header class="major">
+                                    <h3 class="team">Michael Schmidt</h3>
+                                    <b>Munich Aerospace</b>
+                                </header>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- CTA -->
+            <section id="cta">
+                <header>
+                    <h2><strong>Get in touch with us</strong></h2>
+                    <p>
+                        If you have a question which is not covered in the documentation, <br />
+                        please create an issue on our <a href="https://github.com/BauhausLuftfahrt/PAXelerate">GitHub page</a> or use write an email.
+                    </p>
+                </header>
+
+                <!-- One -->
+                <div class="75%">
+                    <div class="row 50%">
+                        <div class="2u 12u(narrower)">
+                            <section></section>
+                        </div>
+                        <div class="4u 12u(narrower)">
+                            <section>
+                                <p>
+                                    <strong>Our Office</strong> <br />
+                                    PAXelerate Team <br />
+                                    Bauhaus Luftfahrt e.V. <br />
+                                    Willy Messerschmitt-Straße 1 <br />
+                                    82024 Taufkirchen, Germany
+                                </p>
+                            </section>
+                        </div>
+                        <div class="4u 12u(narrower)">
+                            <section>
+                                <p>
+                                    <strong>Contact Us</strong> <br />
+                                    +49 (0)89 30 74-8490 <br />
+                                    contact at paxelerate dot com
+                                </p>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer id="footer">
+                <ul class="icons">
+                    <li>
+                        <a href="https://github.com/BauhausLuftfahrt/PAXelerate" class="icon circle fa-github"><span class="label">Github</span></a>
+                    </li>
+                </ul>
+
+                <ul class="copyright">
+                    <li>2014-2020 Bauhaus Luftfahrt e.V. - All rights reserved</li>
+                    <li><a href="privacy.html">Privacy</a></li>
+                    <li><a href="imprint.html">Impressum</a></li>
+                    <li>Powered by <a href="http://html5up.net">HTML5 UP</a> and <a href="https://stocksnap.io/">Stocksnap Pictures</a></li>
+                </ul>
+            </footer>
+        </div>
+    </body>
+</html>
