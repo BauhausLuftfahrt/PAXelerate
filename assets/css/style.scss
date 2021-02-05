@@ -9,3 +9,7 @@ $header-bg-color-secondary: #6ab9ec;
 $section-headings-color: #d7801c;
 
 @import "{{ site.theme }}";
+
+table {
+  border: none;
+}
