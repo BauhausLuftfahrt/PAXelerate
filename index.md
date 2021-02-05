@@ -43,6 +43,7 @@ Following is a list of research publications related to PAXelerate. An overview 
 
 ### 2020
 * M. Engelmann, T. Kleinheinz, and M. Hornung, [Advanced Passenger Movement Model Depending On the Aircraft Cabin Geometry](https://www.mdpi.com/2226-4310/7/12/182), Aerospace, vol. 7, no. 12, p. 182, Dec. 2020.
+
 * Engelmann, M.; Drust, D.; Hornung, M. (2020): [Automated 3D cabin generation with PAXelerate and Blender using the CPACS file format.](https://publikationen.dglr.de/?tx_dglrpublications_pi1%5bdocument_id%5d=530014) Deutsche Gesellschaft fürLuft- und Raumfahrt - Lilienthal-Oberth e.V.. (Text). https://doi.org/10.25967/530014.
 
 ### 2019
@@ -70,16 +71,13 @@ Pages 25-38. doi: 10.1016/j.paerosci.2017.05.002
 [PAXelerate - An Open Source Passenger Flow Simulation Framework for Advanced Aircraft Cabin Layouts](https://arc.aiaa.org/doi/abs/10.2514/6.2016-1284), 54th AIAA Aerospace Sciences Meeting, American Institute of Aeronautics and Astronautics, San Diego, California, USA, 2016. doi:10.2514/6.2016-1284
                        
 ## The PAXelerate  Team
-The PAXelerate developer community currently consists of active members from Bauhaus Luftfahrt, Munich Aerospace and Technische Universität München.
+The PAXelerate developer community currently consists of active members from Bauhaus Luftfahrt, Munich Aerospace and Technische Universität München. If you have a question which is not covered in the documentation, please create an issue on our [GitHub page](https://github.com/BauhausLuftfahrt/PAXelerate) or use write an email. Otherwise, feel free to contact us via phone: +49 (0)89 30 74-8490 or email: contact at paxelerate dot com.
 
 ![Marc Engelmann](old/images/team_marc.jpg) | ![Michael Schmidt](old/images/team_michael.jpg)
 :---: | :---:
 Marc Engelmann | Michael Schmidt 
 Bauhaus Luftfahrt e.V. | Munich Aerospace 
 [Visit ResearchGate profile](https://www.researchgate.net/profile/Marc_Engelmann2) | [Visit ResearchGate profile](https://www.researchgate.net/profile/Michael_Schmidt38)
-
-## Get in touch with us
-If you have a question which is not covered in the documentation, please create an issue on our [GitHub page](https://github.com/BauhausLuftfahrt/PAXelerate) or use write an email. Otherwise, feel free to contact us via phone: +49 (0)89 30 74-8490 or email: contact at paxelerate dot com.
 
 ## Legal
 Powered by [Stocksnap Pictures](https://stocksnap.io/).
