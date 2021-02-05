@@ -22,7 +22,7 @@ The PAXelerate developer community currently consists of active members from Bau
 ![Marc Engelmann](old/images/team_marc.jpg) | ![Michael Schmidt](old/images/team_michael.jpg)
 :---: | :---:
 **Marc Engelmann** | **Michael Schmidt**
-At Bauhaus Luftfahrt e.V. since 2014. First as Master's student, now as researcher and PhD candidate. Visit [ResearchGate](https://www.researchgate.net/profile/Marc_Engelmann2) for an overview of publications or contact on [LinkedIn](https://de.linkedin.com/in/marc-engelmann). | Former Munich Aerospace scholar in cooperation with Bauhaus Luftfahrt, now at Munich airport. For more information on publications, see [ResearchGate](https://www.researchgate.net/profile/Michael_Schmidt38).
+At Bauhaus Luftfahrt e.V. since 2014. First as Master's student, now as researcher. Visit [ResearchGate](https://www.researchgate.net/profile/Marc_Engelmann2) for an overview of publications or contact on [LinkedIn](https://de.linkedin.com/in/marc-engelmann). | Former Munich Aerospace scholar in cooperation with Bauhaus Luftfahrt, now Terminal planning at Munich airport. For more information on publications, see [ResearchGate](https://www.researchgate.net/profile/Michael_Schmidt38).
 
 ## Publications
 Following is a list of research publications related to PAXelerate. An overview of the PAXelerate research project progess can be found on [ResearchGate](https://www.researchgate.net/project/PAXelerate-An-open-source-passenger-flow-simulation-framework-for-advanced-aircraft-cabin-layouts).
