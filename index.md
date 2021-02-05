@@ -9,24 +9,16 @@ The PAXelerate framework being a two-dimensional agent-based passenger flow simu
 ![](old/images/slideshow-overview.png)
                                         
 ## PAXelerates features
-                   
-### Agent-based simulation
-
-![](old/images/feat_simulation.png)
-
-The 2D agent-based simulation module is the core of the passenger flow framework where agents represent the passengers searching for the shortest and cost efficient path to their assigned seat using an A-Star path-finding algorithm. Thereby, each agent individually assesses its current situation and makes decisions on the basis of a set of rules, such as stowing luggage or clearing the way for another agent.
-
-### Parallel thread processing
-
-![](old/images/feat_thread.jpg)
-
-Building upon Java as a programming language enables to apply parallel thread processing techniques. Each agent process runs on a single thread within the CPU and thus allows realistic real time agent interaction.
+  
+### Agent-based simulation | ### Parallel thread processing           
+:---: | :---:
+![](old/images/feat_simulation.png) | ![](old/images/feat_thread.jpg)
+The 2D agent-based simulation module is the core of the passenger flow framework where agents represent the passengers searching for the shortest and cost efficient path to their assigned seat using an A-Star path-finding algorithm. Thereby, each agent individually assesses its current situation and makes decisions on the basis of a set of rules, such as stowing luggage or clearing the way for another agent.| Building upon Java as a programming language enables to apply parallel thread processing techniques. Each agent process runs on a single thread within the CPU and thus allows realistic real time agent interaction.
 
 ### Cabin layout designer
 
-![](old/images/feat_cabin.jpg)
-
-After defining cabin top-level characteristics, such as the overall lengths and width as well as the number of decks, a selection of a predefined aircraft configuration enables the usage of implemented design algorithms which are based on current cabin architectures.The cabin structure containing seating class with assigned rows and seats, doors and emergency exist, and all other cabin monuments is specified in the EMF meta model and can be flexible adjusted according the requirements of novel architectures. A live graphical update enables short feedback loops during the layout definition.
+:---: | :---:
+![](old/images/feat_cabin.jpg)|After defining cabin top-level characteristics, such as the overall lengths and width as well as the number of decks, a selection of a predefined aircraft configuration enables the usage of implemented design algorithms which are based on current cabin architectures.The cabin structure containing seating class with assigned rows and seats, doors and emergency exist, and all other cabin monuments is specified in the EMF meta model and can be flexible adjusted according the requirements of novel architectures. A live graphical update enables short feedback loops during the layout definition.
 
 ### Agent builder
 
@@ -53,7 +45,7 @@ PAXelerate is based on the Eclipse Modeling Framework (EMF) which is a modeling 
 
 * M. Engelmann, T. Kleinheinz, and M. Hornung, [Advanced Passenger Movement Model Depending On the Aircraft Cabin Geometry](https://www.mdpi.com/2226-4310/7/12/182), Aerospace, vol. 7, no. 12, p. 182, Dec. 2020.
 
-* Engelmann, M.; Drust, D.; Hornung, M. (2020):[Automated 3D cabin generation with PAXelerate and Blender using the CPACS file format.](https://publikationen.dglr.de/?tx_dglrpublications_pi1%5bdocument_id%5d=530014) Deutsche Gesellschaft fürLuft- und Raumfahrt - Lilienthal-Oberth e.V.. (Text). https://doi.org/10.25967/530014.
+* Engelmann, M.; Drust, D.; Hornung, M. (2020): [Automated 3D cabin generation with PAXelerate and Blender using the CPACS file format.](https://publikationen.dglr.de/?tx_dglrpublications_pi1%5bdocument_id%5d=530014) Deutsche Gesellschaft fürLuft- und Raumfahrt - Lilienthal-Oberth e.V.. (Text). https://doi.org/10.25967/530014.
 
 ### 2019
 
