@@ -1,7 +1,11 @@
 ---
 ---
 
-$header-bg-color: #0a3a5a !default;
-$header-bg-color-secondary: #6ab9ec !default;
+// Header background
+$header-bg-color: #0a3a5a;
+$header-bg-color-secondary: #6ab9ec;
+
+// Heading color
+$section-headings-color: #d7801c;
 
 @import "{{ site.theme }}";
