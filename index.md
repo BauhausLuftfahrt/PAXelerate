@@ -94,4 +94,7 @@ Bauhaus Luftfahrt e.V. | Munich Aerospace
 
 ## Get in touch with us
 
-If you have a question which is not covered in the documentation, please create an issue on our [GitHub page](https://github.com/BauhausLuftfahrt/PAXelerate) or use write an email. Otherwise, feel free to contact us via phone: +49 (0)89 30 74-8490 or email: contact at paxelerate dot com
+If you have a question which is not covered in the documentation, please create an issue on our [GitHub page](https://github.com/BauhausLuftfahrt/PAXelerate) or use write an email. Otherwise, feel free to contact us via phone: +49 (0)89 30 74-8490 or email: contact at paxelerate dot com.
+
+## Legal
+Powered by [Stocksnap Pictures](https://stocksnap.io/).
