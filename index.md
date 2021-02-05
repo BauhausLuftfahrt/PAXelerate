@@ -4,19 +4,18 @@ An open source passenger flow  simulation framework for advanced aircraft cabin 
 ## PAXelerate comes with many useful features                        
 The PAXelerate framework being a two-dimensional agent-based passenger flow simulation is especially designed to assess novel cabin architectures including on-demand adaptable cabins during boarding. Combining the cabin layout designer and agent builder enables to investigate customised case studies. Applying parallel thread processing allows to conduct several trade studies in an efficient manner.                      
                     
-<!---![](old/images/slideshow-overview.png)--->
+![](old/images/slideshow-overview.png)
                                         
 ## PAXelerates features  
 
 <!---![](old/images/feat_simulation.png)  --->
 
-### Agent-based simulation      
-The 2D agent-based simulation module is the core of the passenger flow framework where agents represent the passengers searching for the shortest and cost efficient path to their assigned seat using an A-Star path-finding algorithm. Thereby, each agent individually assesses its current situation and makes decisions on the basis of a set of rules, such as stowing luggage or clearing the way for another agent.
+Agent-based simulation | Parallel thread processing   
+--- | ---
+The 2D agent-based simulation module is the core of the passenger flow framework where agents represent the passengers searching for the shortest and cost efficient path to their assigned seat using an A-Star path-finding algorithm. Thereby, each agent individually assesses its current situation and makes decisions on the basis of a set of rules, such as stowing luggage or clearing the way for another agent. | Building upon Java as a programming language enables to apply parallel thread processing techniques. Each agent process runs on a single thread within the CPU and thus allows realistic real time agent interaction.
 
 <!---![](old/images/feat_thread.jpg)--->
 
-### Parallel thread processing  
-Building upon Java as a programming language enables to apply parallel thread processing techniques. Each agent process runs on a single thread within the CPU and thus allows realistic real time agent interaction.
 
 <!---![](old/images/feat_cabin.jpg)--->
 
@@ -78,6 +77,3 @@ The PAXelerate developer community currently consists of active members from Bau
 Marc Engelmann | Michael Schmidt 
 Bauhaus Luftfahrt e.V. | Munich Aerospace 
 [Visit ResearchGate profile](https://www.researchgate.net/profile/Marc_Engelmann2) | [Visit ResearchGate profile](https://www.researchgate.net/profile/Michael_Schmidt38)
-
-## Legal
-Powered by [Stocksnap Pictures](https://stocksnap.io/).
