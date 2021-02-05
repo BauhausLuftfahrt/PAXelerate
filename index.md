@@ -73,11 +73,13 @@ Pages 25-38. doi: 10.1016/j.paerosci.2017.05.002
 ## The PAXelerate  Team
 The PAXelerate developer community currently consists of active members from Bauhaus Luftfahrt, Munich Aerospace and Technische Universität München. If you have a question which is not covered in the documentation, please create an issue on our [GitHub page](https://github.com/BauhausLuftfahrt/PAXelerate) or use write an email. Otherwise, feel free to contact us via phone: +49 (0)89 30 74-8490 or email: contact at paxelerate dot com.
 
+<div align="center">
 ![Marc Engelmann](old/images/team_marc.jpg) | ![Michael Schmidt](old/images/team_michael.jpg)
 :---: | :---:
 Marc Engelmann | Michael Schmidt 
 Bauhaus Luftfahrt e.V. | Munich Aerospace 
 [Visit ResearchGate profile](https://www.researchgate.net/profile/Marc_Engelmann2) | [Visit ResearchGate profile](https://www.researchgate.net/profile/Michael_Schmidt38)
+</div>
 
 ## Legal
 Powered by [Stocksnap Pictures](https://stocksnap.io/).
