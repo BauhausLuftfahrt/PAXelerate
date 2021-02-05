@@ -128,13 +128,19 @@ Munich Aerospace
 If you have a question which is not covered in the documentation, please create an issue on our [GitHub page](https://github.com/BauhausLuftfahrt/PAXelerate) or use write an email.
 
 ### Our Office
+
 PAXelerate Team
+
 Bauhaus Luftfahrt e.V.
+
 Willy Messerschmitt-Straße 1
+
 82024 Taufkirchen, Germany
 
 ### Contact Us
+
 +49 (0)89 30 74-8490 
+
 contact at paxelerate dot com
 
 ## Legal 
