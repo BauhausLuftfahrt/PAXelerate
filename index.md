@@ -87,7 +87,7 @@ Pages 25-38. doi: 10.1016/j.paerosci.2017.05.002
 The PAXelerate developer community currently consists of active members from Bauhaus Luftfahrt, Munich Aerospace and Technische Universität München.
 
 ![Marc Engelmann](old/images/team_marc.jpg) | ![Michael Schmidt](old/images/team_michael.jpg)
---- | ---
+:---: | :---:
 Marc Engelmann | Michael Schmidt 
 Bauhaus Luftfahrt e.V. | Munich Aerospace 
 [Visit ResearchGate profile](https://www.researchgate.net/profile/Marc_Engelmann2) | [Visit ResearchGate profile](https://www.researchgate.net/profile/Michael_Schmidt38)
