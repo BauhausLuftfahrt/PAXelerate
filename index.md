@@ -12,9 +12,13 @@ Agent-based simulation | Parallel thread processing
 :---: | :---:
 The 2D agent-based simulation module is the core of the passenger flow framework where agents represent the passengers searching for the shortest and cost efficient path to their assigned seat using an A-Star path-finding algorithm. Thereby, each agent individually assesses its current situation and makes decisions on the basis of a set of rules, such as stowing luggage or clearing the way for another agent. | Building upon Java as a programming language enables to apply parallel thread processing techniques. Each agent process runs on a single thread within the CPU and thus allows realistic real time agent interaction.
 
+
+
 Cabin layout designer | Agent builder
 :---: | :---:
 After defining cabin top-level characteristics, such as the overall lengths and width as well as the number of decks, a selection of a predefined aircraft configuration enables the usage of implemented design algorithms which are based on current cabin architectures.The cabin structure containing seating class with assigned rows and seats, doors and emergency exist, and all other cabin monuments is specified in the EMF meta model and can be flexible adjusted according the requirements of novel architectures. A live graphical update enables short feedback loops during the layout definition.|The agents anthropometric properties such as shoulder width, body depth and walking speed, are determined using a normal distribution between minimum and maximum values which can be adapted to reflect different regions worldwide. Dynamic agents reactions are enabled by their mood and environment changes. Optional carried hand luggage has an impact on the walking speed and requires the additional stowing task to be performed before seating. With the implemented characteristics it is feasible to define various passengers patterns, such as business or leisure traveler.
+
+
 
 Use case repository | Fully integrated into OpenCDT
 :---: | :---:
@@ -24,14 +28,17 @@ The OpenCDT framework provides enhanced import and export capabilities to exchan
 Following is a list of research publications related to PAXelerate. An overview of the PAXelerate research project progess can be found on [ResearchGate](https://www.researchgate.net/project/PAXelerate-An-open-source-passenger-flow-simulation-framework-for-advanced-aircraft-cabin-layouts).
 
 ### 2020
+
 * M. Engelmann, T. Kleinheinz, and M. Hornung, [Advanced Passenger Movement Model Depending On the Aircraft Cabin Geometry](https://www.mdpi.com/2226-4310/7/12/182), Aerospace, vol. 7, no. 12, p. 182, Dec. 2020.
 
 * Engelmann, M.; Drust, D.; Hornung, M. (2020): [Automated 3D cabin generation with PAXelerate and Blender using the CPACS file format.](https://publikationen.dglr.de/?tx_dglrpublications_pi1%5bdocument_id%5d=530014) Deutsche Gesellschaft fürLuft- und Raumfahrt - Lilienthal-Oberth e.V.. (Text). https://doi.org/10.25967/530014.
 
 ### 2019
+
 * Engelmann, M.; Hornung, M. (2019): [Boarding Process Assessment of the AVACON Research Baseline Aircraft](https://publikationen.dglr.de/?tx_dglrpublications_pi1%5bdocument_id%5d=490049) Deutsche Gesellschaft für Luft- und Raumfahrt - Lilienthal-Oberth e.V.. (Text). https://doi.org/10.25967/490049.
 
 ### 2018
+
 * Schmidt, M.: [Ground-Operational Assessment of Novel Aircraft Cabin Configurations](https://mediatum.ub.tum.de/?id=1381821), Dissertation, Technical University of Munich, 2018.
 
 * Schultz, M. and Schmidt, M.: Advancements in passenger processes at airports – An aircraft perspective, Transportation Research Arena (TRA), Vienna, Austria, 2018.
@@ -39,6 +46,7 @@ Following is a list of research publications related to PAXelerate. An overview 
 * Yildiz, B., Förster, P., Feuerle, T., Hecker, P., Bugow, S., and Helber, S.: [A Generic Approach to Analyze the Impact of a Future Aircraft Design on the Boarding Process](http://www.mdpi.com/1996-1073/11/2/303), Energies, vol. 11, 2018, p. 303.
 
 ### 2017
+
 * Schmidt, M.: [A review of aircraft turnaround operations and simulations](http://www.sciencedirect.com/science/article/pii/S0376042117300039), Progress in Aerospace Sciences, Volume 92, July 2017,
 Pages 25-38. doi: 10.1016/j.paerosci.2017.05.002
 
@@ -47,6 +55,7 @@ Pages 25-38. doi: 10.1016/j.paerosci.2017.05.002
 * Schmidt, M., Heinemann, P. and Hornung, M.: [Boarding and Turnaround Process Assessment of Single- and Twin-Aisle Aircraft](https://arc.aiaa.org/doi/abs/10.251 /6.2017-1856), 55th AIAA Aerospace Sciences Meeting, American Institute of Aeronautics and Astronautics, Grapevine, Texas, USA, 2017. doi:10.2514/6.2017-1856
 
 ### 2016
+
 * Schmidt, M., Engelmann, M., Rothfeld, R. and Hornung, M.: [Boarding Process Assessment of Novel Aircraft Cabin Concepts](http://www.icas.org/ICAS_ARCHIVE/ICAS2016/data/papers/2016_0218_paper.pdf), 30th International Congress of the Aeronautical Sciences (ICAS), Daejeon, South Korea, 2016.
 
 * Schmidt, M., Engelmann, M., Brügge-Zobel, T., Hornung, M., and Glas, M.:
