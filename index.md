@@ -8,10 +8,8 @@ Based on [Eclipse](http://www.eclipse.org) and released under [EPL v1.0](http://
 ## PAXelerate comes with many useful features
                            
 The PAXelerate framework being a two-dimensional agent-based passenger flow simulation is especially designed to assess novel cabin architectures including on-demand adaptable cabins during boarding.
+
 Combining the cabin layout designer and agent builder enables to investigate customised case studies. Applying parallel thread processing allows to conduct several trade studies in an efficient manner.                      
-![](old/images/gui.png)
-                                     
-## PAXelerate user interface
                     
 ![](old/images/slideshow-overview.png)
                                         
@@ -19,10 +17,8 @@ Combining the cabin layout designer and agent builder enables to investigate cus
                    
 ![](old/images/feat_simulation.png)
 
-###Agent-based simulation
-The 2D agent-based simulation module is the core of the passenger flow framework where agents represent the passengers searching for the shortest and cost efficient path to their assigned seat using an
-A-Star path-finding algorithm. Thereby, each agent individually assesses its current situation and makes decisions on the basis of a set of rules, such as stowing luggage or clearing the way for another
-agent.
+### Agent-based simulation
+The 2D agent-based simulation module is the core of the passenger flow framework where agents represent the passengers searching for the shortest and cost efficient path to their assigned seat using an A-Star path-finding algorithm. Thereby, each agent individually assesses its current situation and makes decisions on the basis of a set of rules, such as stowing luggage or clearing the way for another agent.
 
 ![](old/images/feat_thread.jpg)
 
@@ -70,11 +66,11 @@ program.
 
 * M. Engelmann, T. Kleinheinz, and M. Hornung, [Advanced Passenger Movement Model Depending On the Aircraft Cabin Geometry](https://www.mdpi.com/2226-4310/7/12/182), Aerospace, vol. 7, no. 12, p. 182, Dec. 2020.
 
-* Engelmann, M.; Drust, D.; Hornung, M. (2020):[Automated 3D cabin generation with PAXelerate and Blender using the CPACS file format.](https://publikationen.dglr.de/?tx_dglrpublications_pi1%5bdocument_id%5d=530014) Deutsche Gesellschaft fürLuft- und Raumfahrt - Lilienthal-Oberth e.V.. (Text). https://doi.org/10.25967/530014. urn:nbn:de:101:1-2020100914023283185396.
+* Engelmann, M.; Drust, D.; Hornung, M. (2020):[Automated 3D cabin generation with PAXelerate and Blender using the CPACS file format.](https://publikationen.dglr.de/?tx_dglrpublications_pi1%5bdocument_id%5d=530014) Deutsche Gesellschaft fürLuft- und Raumfahrt - Lilienthal-Oberth e.V.. (Text). https://doi.org/10.25967/530014.
 
 ### 2019
 
-* Engelmann, M.; Hornung, M. (2019): [Boarding Process Assessment of the AVACON Research Baseline Aircraft](https://publikationen.dglr.de/?tx_dglrpublications_pi1%5bdocument_id%5d=490049) Deutsche Gesellschaft für Luft- und Raumfahrt - Lilienthal-Oberth e.V.. (Text). https://doi.org/10.25967/490049. urn:nbn:de:101:1-2019111311543699382787.
+* Engelmann, M.; Hornung, M. (2019): [Boarding Process Assessment of the AVACON Research Baseline Aircraft](https://publikationen.dglr.de/?tx_dglrpublications_pi1%5bdocument_id%5d=490049) Deutsche Gesellschaft für Luft- und Raumfahrt - Lilienthal-Oberth e.V.. (Text). https://doi.org/10.25967/490049.
 
 ### 2018
 
@@ -143,10 +139,4 @@ contact at paxelerate dot com
 
 * * * 
 
-(c) 2014-2020 Bauhaus Luftfahrt e.V. - All rights reserved
-
-[Privacy](old/privacy.html)
-
-[Imprint](old/imprint.html)
-
-* * * 
+(c) 2014-2020 Bauhaus Luftfahrt e.V. - All rights reserved | [Privacy](old/privacy.html) | [Imprint](old/imprint.html)
