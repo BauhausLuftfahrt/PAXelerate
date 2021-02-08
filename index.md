@@ -4,7 +4,7 @@ An open source passenger flow  simulation framework for advanced aircraft cabin 
 ## Introduction                     
 The PAXelerate framework being a two-dimensional agent-based passenger flow simulation is especially designed to assess novel cabin architectures including on-demand adaptable cabins during boarding. Combining the cabin layout designer and agent builder enables to investigate customised case studies. Applying parallel thread processing allows to conduct several trade studies in an efficient manner.                      
                     
-![](old/images/slideshow-overview.png)
+![](images/slideshow-overview.png)
                                         
 ## Feature Overview
 
@@ -19,7 +19,7 @@ The agents anthropometric properties such as shoulder width, body depth and walk
 ## The PAXelerate  Team
 The PAXelerate developer community currently consists of active members from Bauhaus Luftfahrt, Munich Aerospace and Technische Universität München. If you have a question which is not covered in the documentation, please create an issue on our [GitHub page](https://github.com/BauhausLuftfahrt/PAXelerate) or use write an email. Otherwise, feel free to contact us via phone: +49 (0)89 30 74-8490 or email: contact at paxelerate dot com.
 
-![Marc Engelmann](old/images/team_marc.jpg) | ![Michael Schmidt](old/images/team_michael.jpg)
+![Marc Engelmann](images/team_marc.jpg) | ![Michael Schmidt](images/team_michael.jpg)
 :---: | :---:
 **Marc Engelmann** | **Michael Schmidt**
 At Bauhaus Luftfahrt e.V. since 2014. First as Master's student, now as researcher. Visit [ResearchGate](https://www.researchgate.net/profile/Marc_Engelmann2) for an overview of publications or contact on [LinkedIn](https://de.linkedin.com/in/marc-engelmann). | Former Munich Aerospace scholar in cooperation with Bauhaus Luftfahrt, now Terminal planning at Munich airport. For more information on publications, see [ResearchGate](https://www.researchgate.net/profile/Michael_Schmidt38).
