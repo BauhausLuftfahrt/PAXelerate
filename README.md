@@ -13,7 +13,7 @@ Due to the reworking of the entire project, there is currently no client version
 
 ## Installation
 
-1. Install the latest version of the [Eclipse modelling tools](http://www.eclipse.org/downloads/) and Java 8 or later.
+1. Install the latest version of the [Eclipse modelling tools](http://www.eclipse.org/downloads/) and Java JDK 8 or later.
 2. Checkout [PAXelerate](http://github.com/BauhausLuftfahrt/PAXelerate) from the main branch
 3. Checkout [Java CPACS Parser](https://github.com/BauhausLuftfahrt/Java-CPACS-Parser) from the main branch
 4. Checkout [Java Toolbox](https://github.com/BauhausLuftfahrt/BHLJavaToolbox) from the main branch
