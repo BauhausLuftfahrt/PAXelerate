@@ -26,4 +26,4 @@ Import-Package: com.paxelerate.model,
  org.eclipse.jface.window,
  org.eclipse.swt.graphics,
  org.eclipse.swt.widgets
-Bundle-RequiredExecutionEnvironment: JavaSE-14
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
