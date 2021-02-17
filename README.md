@@ -1,16 +1,14 @@
-﻿# README #
+# Welcome to PAXelerate
 
 Welcome to the repository of [PAXelerate](http://www.paxelerate.com) - an open source passenger flow simulation framework for advanced aircraft cabin layouts! 
 
+## Quick Guide
 
-### Quick Guide ###
+### Client Version
 
-**Client Version**
+**Currently, there is no client version available due to the reworking of the entire project.**
 
-1. Download and unpack the latest client version [Alpha 0.7] (https://github.com/BauhausLuftfahrt/PAXelerate/releases/tag/alpha-0.7) (2016-07-01) [![DOI](https://zenodo.org/badge/23058/BauhausLuftfahrt/PAXelerate.svg)](https://zenodo.org/badge/latestdoi/23058/BauhausLuftfahrt/PAXelerate)
-2. Start `PAXelerate.exe`
-
-**Software Developer Kit**
+### Software Developer Kit
 
 1. Install the latest version of the [Eclipse modelling tools](http://www.eclipse.org/downloads/) and Java 8 or later.
 2. Checkout [PAXelerate](http://github.com/BauhausLuftfahrt/PAXelerate) from the main branch
@@ -18,7 +16,7 @@ Welcome to the repository of [PAXelerate](http://www.paxelerate.com) - an open s
 4. Checkout [Java Toolbox](https://github.com/BauhausLuftfahrt/BHLJavaToolbox) from the main branch
 5. Launch `StartPAXelerate.java` in `com.paxelerate.execution`
 
-### Contributors ###
+## Contributors 
 
 * Marc Engelmann ***(active)***
 * Tim Kleinheinz
@@ -31,6 +29,6 @@ Welcome to the repository of [PAXelerate](http://www.paxelerate.com) - an open s
 * Pedro Martinez
 * Philipp Osterrieder
 
-### About ###
+## About
 
 Copyright (c) 2014-2021 [Bauhaus Luftfahrt e.V.](http://www.bauhaus-luftfahrt.net/?set_language=en) All rights reserved. [PAXelerate](http://www.paxelerate.com) and the accompanying materials are made available under the terms of the [Eclipse Public License (EPL) v2.0](http://www.eclipse.org/legal/epl-v20.html) which accompanies this distribution.
