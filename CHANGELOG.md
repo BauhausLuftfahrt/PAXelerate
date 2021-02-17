@@ -2,8 +2,6 @@
 
 ## PAXelerate - Rework in progress
 
-Recent Changes
-
 Due to the reworking of the entire project, there is currently no client version available. Feel free to check out the source code and discover all the changes of the latest release:
 
 * Removal of all openCDT dependencies
