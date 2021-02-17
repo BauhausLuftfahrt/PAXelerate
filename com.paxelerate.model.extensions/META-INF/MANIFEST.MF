@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Extensions
+Bundle-SymbolicName: com.paxelerate.model.extensions
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Bauhaus Luftfahrt e.V.
+Automatic-Module-Name: com.paxelerate.model.extensions
+Require-Bundle: com.paxelerate.model,
+ net.bhl.opensource.cpacs.model,
+ net.bhl.opensource.cpacs.functions,
+ net.bhl.opensource.toolbox,
+ net.bhl.opensource.toolbox.emf,
+ net.bhl.opensource.cpacs.model.extensions
+Export-Package: com.paxelerate.model.extensions
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

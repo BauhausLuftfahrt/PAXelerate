@@ -1,0 +1,51 @@
+/**
+ */
+package com.paxelerate.model.agent;
+
+import org.eclipse.emf.ecore.EFactory;
+
+/**
+ * <!-- begin-user-doc -->
+ * The <b>Factory</b> for the model.
+ * It provides a create method for each non-abstract class of the model.
+ * <!-- end-user-doc -->
+ * @see com.paxelerate.model.agent.AgentPackage
+ * @generated
+ */
+public interface AgentFactory extends EFactory {
+	/**
+	 * The singleton instance of the factory.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	AgentFactory eINSTANCE = com.paxelerate.model.agent.impl.AgentFactoryImpl.init();
+
+	/**
+	 * Returns a new object of class '<em>Passenger</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Passenger</em>'.
+	 * @generated
+	 */
+	Passenger createPassenger();
+
+	/**
+	 * Returns a new object of class '<em>Luggage</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Luggage</em>'.
+	 * @generated
+	 */
+	Luggage createLuggage();
+
+	/**
+	 * Returns the package supported by this factory.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the package supported by this factory.
+	 * @generated
+	 */
+	AgentPackage getAgentPackage();
+
+} //AgentFactory

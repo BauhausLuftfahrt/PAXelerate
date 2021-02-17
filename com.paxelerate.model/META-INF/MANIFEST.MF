@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: com.paxelerate.model;singleton:=true
+Automatic-Module-Name: com.paxelerate.model
+Bundle-Version: 0.1.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: Bauhaus Luftfahrt e.V.
+Bundle-Localization: plugin
+Export-Package: com.paxelerate.model,
+ com.paxelerate.model.agent,
+ com.paxelerate.model.agent.impl,
+ com.paxelerate.model.agent.util,
+ com.paxelerate.model.enums,
+ com.paxelerate.model.enums.impl,
+ com.paxelerate.model.impl,
+ com.paxelerate.model.monuments,
+ com.paxelerate.model.monuments.impl,
+ com.paxelerate.model.monuments.util,
+ com.paxelerate.model.settings,
+ com.paxelerate.model.settings.impl,
+ com.paxelerate.model.settings.util,
+ com.paxelerate.model.util
+Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

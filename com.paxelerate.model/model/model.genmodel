@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/com.paxelerate.model/src" creationIcons="false"
+    editDirectory="/com.paxelerate.model.edit/src" editorDirectory="/com.paxelerate.model.editor/src"
+    modelPluginID="com.paxelerate.model" modelName="Model" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>model.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Model" basePackage="com.paxelerate" disposableProviderFactory="true"
+      ecorePackage="model.ecore#/">
+    <genClasses ecoreClass="model.ecore#//SimulationResult">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//SimulationResult/boardingTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//SimulationResult/passengers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//SimulationResult/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//SimulationResult/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//SimulationResult/date"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//SimulationResult/boardingTimeString"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//SimulationResult/waymakingSkipped"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//SimulationResult/waymakingCompleted"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//SimulationResult/layoutConceptType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//SimulationResult/simulationTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//SimulationResult/notStoredLuggageItems"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//SimulationResult/luggageStorageFillingDegree"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//SimulationResult/totalLargeBagsStowed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//SimulationResult/totalStorageVolume"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//SimulationResult/passengersLookingForLuggageSpot"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//SimulationResult/volumeOfNotStoredLuggageItems"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//SimulationResult/maxNumberOfActivePassengers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//SimulationResult/averageNumberOfActivePassengers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//SimulationResult/averageNumberOfBags"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//EPoint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//EPoint/x"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//EPoint/y"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//EPoint/z"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//Deck">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Deck/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Deck/height"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//Deck/rows"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//Deck/obstacles"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//Deck/doors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//Deck/aisles"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//Deck/shapeFloor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//Deck/passengers"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//Model/deck"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Model/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//Model/settings"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//Model/simulationResults"/>
+    </genClasses>
+    <nestedGenPackages prefix="Agent" disposableProviderFactory="true" ecorePackage="model.ecore#//agent">
+      <genClasses ecoreClass="model.ecore#//agent/Passenger">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/id"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/gender"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/height"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/age"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/weight"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference model.ecore#//agent/Passenger/door"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/boardingTime"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference model.ecore#//agent/Passenger/seat"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/width"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/depth"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/isSeated"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/walkingSpeed"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/startBoardingAfterDelay"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/passengerMood"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/numberOfWaits"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/numberOfMakeWayOperations"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/distanceWalked"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/costOfPath"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/totalTimeWaited"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//agent/Passenger/luggage"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/passingDecisionCostFactor"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//agent/Passenger/path"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/speedOnPath"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//agent/Passenger/currentPosition"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//agent/Passenger/desiredPosition"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//agent/Passenger/startPosition"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//agent/Passenger/goalPosition"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/state"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/widthBottom"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/widthMiddle"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/widthTop"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/depthBottom"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/depthMiddle"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/depthTop"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/heightBottom"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/heightMiddle"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/heightTop"/>
+      </genClasses>
+      <genClasses ecoreClass="model.ecore#//agent/Luggage">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Luggage/id"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Luggage/stowTime"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Luggage/stowDistance"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Luggage/type"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Luggage/volume"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Settings" disposableProviderFactory="true" ecorePackage="model.ecore#//settings">
+      <genClasses ecoreClass="model.ecore#//settings/Settings">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//settings/Settings/luggageProperties"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//settings/Settings/passengerProperties"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/Settings/simulationType"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/Settings/displaySimulation"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/Settings/useCenterLuggageStorage"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/Settings/seatType"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/Settings/simulationGridResolution"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/Settings/simulationSpeedFactor"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/Settings/passengerSortingScheme"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/Settings/threadSleepTimeDefault"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/Settings/sidewaysFoldabeSeatPopupTimeMean"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/Settings/sidewaysFoldabeSeatPopupTimeDeviation"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/Settings/liftingSeatPanPopupTimeMean"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/Settings/liftingSeatPanPopupTimeDeviation"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/Settings/boardingConformanceRate"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/Settings/numberOfBoardingBlocks"/>
+      </genClasses>
+      <genClasses ecoreClass="model.ecore#//settings/LuggageProperties">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/maxNumberOfLuggageItemsPerPax"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/percentageOfPassengersWithJacket"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/percentageOfPassengersWithSmallBag"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/percentageOfPassengersWithMediumBag"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/percentageOfPassengersWithLargeBag"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/luggageStowDistanceFromSeatMean"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/luggageStowDistanceFromSeatDeviation"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/jacketStowTimeDeviation"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/jacketStowTimeMean"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/smallBagStowTimeMean"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/smallBagStowTimeDeviation"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/mediumBagStowTimeMean"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/mediumBagStowTimeDeviation"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/largeBagStowTimeMean"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/largeBagStowTimeDeviation"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/jacketVolume"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/smallBagVolume"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/mediumBagVolume"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/largeBagVolume"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/jacketBulkiness"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/smallBagBulkiness"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/mediumBagBulkiness"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/largeBagBulkiness"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/jacketWalkingSpeedFactor"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/smallBagWalkingSpeedFactor"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/mediumBagWalkingSpeedFactor"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/largeBagWalkingSpeedFactor"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/luggageStorageScaling"/>
+      </genClasses>
+      <genClasses ecoreClass="model.ecore#//settings/PassengerProperties">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerWidthMeanMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerWidthDeviationMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerWeightMeanMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerWeightDeviationMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerHeightMeanMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerHeightDeviationMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerDepthMeanMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerDepthDeviationMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerWidthMeanFemale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerWidthDeviationFemale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerWeightMeanFemale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerWeightDeviationFemale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerHeightMeanFemale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerHeightDeviationFemale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerDepthMeanFemale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerDepthDeviationFemale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerAggressiveMoodShare"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/seatInterferenceProcessTimeMean"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/seatInterferenceProcessTimeDeviation"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/seatInterferenceProcessTimeFoldingSeatMean"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/seatInterferenceProcessTimeFoldingSeatDeviation"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passivePassengerWaitingTimeAfterCollision"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/seatInterferenceMultiPassengerFactor"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerWalkingSpeedFactor"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/doorSelection"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/groupPercentage"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//settings/PassengerProperties/ageSpeedDependency"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//settings/PassengerProperties/ageDistribution"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerKneeWidthMeanMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerKneeWidthDeviationMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerKneeWidthMeanFemale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerKneeWidthDeviationFemale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerKneeDepthMeanMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerKneeDepthDeviationMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerKneeDepthMeanFemale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerKneeDepthDeviationFemale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerKneeHeightMeanMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerKneeHeightDeviationMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerKneeHeightMeanFemale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerKneeHeightDeviationFemale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerHipWidthMeanMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerHipWidthDeviationMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerHipWidthMeanFemale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerHipWidthDeviationFemale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerHipDepthMeanMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerHipDepthDeviationMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerHipDepthMeanFemale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerHipDepthDeviationFemale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerHipHeightMeanMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerHipHeightDeviationMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerHipHeightMeanFemale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerHipHeightDeviationFemale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerShoulderWidthMeanMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerShoulderWidthDeviationMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerShoulderWidthMeanFemale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerShoulderWidthDeviationFemale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerShoulderDepthMeanMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerShoulderDepthDeviationMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerShoulderDepthMeanFemale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerShoulderDepthDeviationFemale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerShoulderHeightMeanMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerShoulderHeightDeviationMale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerShoulderHeightMeanFemale"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerShoulderHeightDeviationFemale"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Monuments" disposableProviderFactory="true" ecorePackage="model.ecore#//monuments">
+      <genClasses ecoreClass="model.ecore#//monuments/Row">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//monuments/Row/seatGroups"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="model.ecore#//monuments/Monument">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//monuments/Monument/position"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//monuments/Monument/size"/>
+      </genClasses>
+      <genClasses ecoreClass="model.ecore#//monuments/SeatGroup">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//monuments/SeatGroup/seats"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//monuments/SeatGroup/travelClass"/>
+      </genClasses>
+      <genClasses ecoreClass="model.ecore#//monuments/Obstacle">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//monuments/Obstacle/seats"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//monuments/Obstacle/travelClass"/>
+      </genClasses>
+      <genClasses ecoreClass="model.ecore#//monuments/Seat">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//monuments/Seat/letter"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//monuments/Seat/seatType"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//monuments/Seat/seatLocation"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//monuments/Seat/id"/>
+      </genClasses>
+      <genClasses ecoreClass="model.ecore#//monuments/Door">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//monuments/Door/passengerThroughputPerMinute"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//monuments/Door/active"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference model.ecore#//monuments/Door/waitingPassengers"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//monuments/Door/side"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//monuments/Door/xPosition"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//monuments/Door/id"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//monuments/Door/emergencyOnly"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//monuments/Door/type"/>
+      </genClasses>
+      <genClasses ecoreClass="model.ecore#//monuments/Aisle">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//monuments/Aisle/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//monuments/Aisle/id"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//monuments/Aisle/ignoreForSimulation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//monuments/Aisle/path"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//monuments/Aisle/width"/>
+      </genClasses>
+      <genClasses ecoreClass="model.ecore#//monuments/OverheadBin"/>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Enums" disposableProviderFactory="true" ecorePackage="model.ecore#//enums">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//enums/DoorSide">
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/DoorSide/PORT"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/DoorSide/STARBOARD"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//enums/SeatType">
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/SeatType/DEFAULT"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/SeatType/SIDEWAYS_FOLDABLE"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/SeatType/LIFTING_SEAT_PAN"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/SeatType/BRING_YOUR_OWN"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//enums/SeatLocation">
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/SeatLocation/WINDOW"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/SeatLocation/MIDDLE"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/SeatLocation/AISLE"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//enums/DoorSelection">
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/DoorSelection/CLOSEST"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/DoorSelection/CLOSEST_BEHIND"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/DoorSelection/CLOSEST_IN_FRONT"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/DoorSelection/RANDOM"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//enums/SortingScheme">
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/SortingScheme/RANDOM"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/SortingScheme/RTF"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/SortingScheme/FTR"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/SortingScheme/WTA"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/SortingScheme/WTA_RTF"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/SortingScheme/WTA_FTR"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/SortingScheme/BLOCK"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/SortingScheme/BOARDING_CLASS"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/SortingScheme/STEFFEN"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/SortingScheme/MILNE_KELLY"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/SortingScheme/BIG_BAGS_AFT"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/SortingScheme/BIG_BAGS_FRONT"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/SortingScheme/MAX_BAGS_AFT"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/SortingScheme/MAX_BAGS_FRONT"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//enums/SimulationType">
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/SimulationType/BOARDING"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/SimulationType/DEBOARDING"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/SimulationType/EMERGENCY"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//enums/Gender">
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/Gender/FEMALE"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/Gender/MALE"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//enums/LuggageType">
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/LuggageType/JACKET"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/LuggageType/SMALL_BAG"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/LuggageType/MEDIUM_BAG"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/LuggageType/LARGE_BAG"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//enums/PassengerMood">
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/PassengerMood/AGGRESSIVE"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/PassengerMood/PASSIVE"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//enums/State">
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/State/FOLLOW_PATH"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/State/WAIT_FOR_ROW_CLEARING"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/State/CLEAR_ROW"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/State/STOW_LUGGAGE"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/State/RETRIEVE_LUGGAGE"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/State/UNFOLD_SEAT"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/State/PREPARE"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/State/QUEUE_UP"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/State/WAIT_FOR_OTHER_PASSENGER_TO_SEAT"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/State/RETURN_TO_SEAT"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/State/SEATED"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/State/CALCULATE_NEW_PATH"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/State/CABIN_LEFT"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/State/NOT_ACTIVE"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//enums/TravelClass">
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/TravelClass/ECONOMY"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/TravelClass/PREMIUM_ECONOMY"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/TravelClass/BUSINESS"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/TravelClass/FIRST"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//enums/DoorType">
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/DoorType/I"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/DoorType/II"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/DoorType/III"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/DoorType/IV"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/DoorType/A"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/DoorType/B"/>
+        <genEnumLiterals ecoreEnumLiteral="model.ecore#//enums/DoorType/C"/>
+      </genEnums>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

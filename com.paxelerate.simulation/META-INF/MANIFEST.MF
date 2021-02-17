@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: PAXeleate - Core Simulation
+Bundle-SymbolicName: com.paxelerate.simulation
+Bundle-Version: 1.0.0.qualifier
+Export-Package: com.paxelerate.core.sim.agent,
+ com.paxelerate.core.sim.agent.action,
+ com.paxelerate.core.sim.astar
+Automatic-Module-Name: com.paxelerate.core.sim
+Bundle-RequiredExecutionEnvironment: JavaSE-14
+Require-Bundle: com.paxelerate.model,
+ com.paxelerate.model.extensions,
+ net.bhl.opensource.toolbox,
+ net.bhl.opensource.toolbox.emf
