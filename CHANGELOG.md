@@ -1,9 +1,17 @@
-# Changelog #
+# Changelog
 
+## PAXelerate - Rework in progress
 
+Recent Changes
 
+Due to the reworking of the entire project, there is currently no client version available. Feel free to check out the source code and discover all the changes of the latest release:
 
-## PAXelerate - Version Alpha 0.7 / 2016-07-01 ##
+* Removal of all openCDT dependencies
+* Removal of custom EMF aircraft model library
+* Introduction of CPACS as input data structure
+* Focus on boarding simulation, hence removal of UI and cabin configuration options for now
+
+## PAXelerate - Version Alpha 0.7 / 2016-07-01
 
 This release focused on stability and performance issues, especially in terms of batch simulation capabilities. Improvements on the thread handling allows to run multiple iterations with the SDK version. 
 
@@ -48,7 +56,7 @@ We are happy to receive your feedback. If you discover any bugs, please attach t
 ---
 
 
-## PAXelerate - Version Alpha 0.6 / 2016-03-31 ##
+## PAXelerate - Version Alpha 0.6 / 2016-03-31
 
 This release focused on additional functionalities as well as more stability. The passenger generation and simulation views are now unsynced from the main GUI which prohibits the GUI from freezing during calculations. Enhancements can be found in the UI and workflow.
 
