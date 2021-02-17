@@ -17,7 +17,7 @@ Due to the reworking of the entire project, there is currently no client version
 2. Checkout [PAXelerate](http://github.com/BauhausLuftfahrt/PAXelerate) from the main branch
 3. Checkout [Java CPACS Parser](https://github.com/BauhausLuftfahrt/Java-CPACS-Parser) from the main branch
 4. Checkout [Java Toolbox](https://github.com/BauhausLuftfahrt/BHLJavaToolbox) from the main branch
-5. Launch `StartPAXelerate.java` in `com.paxelerate.execution`
+5. Launch `StartPAXelerate.java` in `com.paxelerate.execution` -> `main`
 
 ## Usage
 
@@ -25,7 +25,7 @@ Due to the reworking of the entire project, there is currently no client version
 
 ## Contributors 
 
-Marc Engelmann ***(active)***, Tim Kleinheinz, Michael Schmidt, Raoul Rothfeld, Michael Shamiyeh , Martin Glas, Tobias Brügge-Zobel, Stefan Weber, Pedro Martinez, Philipp Osterrieder
+Marc Engelmann, Tim Kleinheinz, Michael Schmidt, Raoul Rothfeld, Michael Shamiyeh , Martin Glas, Tobias Brügge-Zobel, Stefan Weber, Pedro Martinez and Philipp Osterrieder.
 
 ## About
 
