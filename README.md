@@ -22,15 +22,13 @@ Due to the reworking of the entire project, there is currently no client version
 ## Usage
 
 1. Be sure to make yourself familiar with CPACS and the "deck" and "toolspecific" node.
-2. Take a look at the `example.xml` file in the example folder. You will find 
-	* the aircraft and deck node
-	* the toolspecific node
-3. In the deck node, all cabin definition is done. Manipulate this node to change the cabin layout itself.
-4. In the toolspecific node, all properties which are required for the simulation can be found.
-5. Run `StartPAXelerate.java` in the `com.paxelerate.execution` package under execution -> main.
-6. Select the CPACS cabin file you want to simulate and run it.
-7. Wait for the simulation to complete.
-8. Take a look at the data output under your personal documents folder at `<user-path>/documents/paxelerate/`.
+2. Take a look at the `example.xml` file in the example folder. You will find the
+	* *deck node*: In this node, all cabin definition is done. Manipulate this node to change the cabin layout itself.
+	* *toolspecific node*: In this node, all properties which are required for the simulation can be found.
+3. Run `StartPAXelerate.java` in the `com.paxelerate.execution` package under execution -> main.
+4. Select the CPACS cabin file you want to simulate and run it.
+5. Wait for the simulation to complete.
+6. Take a look at the data output under your personal documents folder at `<user-path>/documents/paxelerate/`.
 
 ## Contributors 
 
