@@ -1,4 +1,4 @@
-﻿elcome to PAXelerate
+﻿# PAXelerate Boarding Simulation
 
 Welcome to the repository of [PAXelerate](http://www.paxelerate.com) - an open source passenger flow simulation framework for advanced aircraft cabin layouts! 
 
