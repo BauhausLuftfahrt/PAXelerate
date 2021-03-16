@@ -33,6 +33,7 @@ Due to the reworking of the entire project, there is currently no client version
 ## Contributors 
 
 Marc Engelmann, Tim Kleinheinz, Michael Schmidt, Raoul Rothfeld, Michael Shamiyeh , Martin Glas, Tobias Brügge-Zobel, Stefan Weber, Pedro Martinez and Philipp Osterrieder.
+*(listed in order of activity)*
 
 ## About
 
