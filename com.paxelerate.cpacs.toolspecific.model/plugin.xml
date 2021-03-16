@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated paxelerateTS -->
+      <package
+            uri="http://www.paxelerate.com/cpacs/toolspecific"
+            class="toolspecific.ToolspecificPackage"
+            genModel="model/paxelerateTS.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated paxelerateTS -->
+      <parser
+            type="toolspecific"
+            class="toolspecific.util.ToolspecificResourceFactoryImpl"/>
+   </extension>
+
+</plugin>

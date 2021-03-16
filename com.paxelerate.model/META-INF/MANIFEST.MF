@@ -5,7 +5,7 @@ Bundle-SymbolicName: com.paxelerate.model;singleton:=true
 Automatic-Module-Name: com.paxelerate.model
 Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .
-Bundle-Vendor: Bauhaus Luftfahrt e.V.
+Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: com.paxelerate.model,
  com.paxelerate.model.agent,

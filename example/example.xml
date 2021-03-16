@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cpacs>
+    <header>
+        <name>Demo CPACS cabin created with "CAFE - Cabin and Fuselage Desiner" by Bauhaus Luftfahrt</name>
+        <creator>Marc Engelmann</creator>
+        <timestamp>2021-03-16T15:17:11.696</timestamp>
+        <version>1.0</version>
+        <cpacsVersion>3.2</cpacsVersion>
+    </header>
+    <vehicles>
+        <aircraft>
+            <model uID="paxelerate_cpacs_demo">
+                <name>PAXelerate demo aircraft</name>
+                <fuselages>
+                    <fuselage>
+                        <decks>
+                            <deck uID="main_deck">
+                                <name>Main Deck</name>
+                                <x0>0.0</x0>
+                                <z0>0.0</z0>
+                                <cabGeometry>
+                                    <name>Main Deck</name>
+                                    <x mapType="vector">0.0;14.23</x>
+                                    <z mapType="vector">0.0;2.15</z>
+                                    <yZ1 mapType="vector">1.35;1.35</yZ1>
+                                </cabGeometry>
+                                <aisles>
+                                    <aisle uID="aisle_693543">
+                                        <name>main aisle</name>
+                                        <x mapType="vector">0.55;12.55</x>
+                                        <y mapType="vector">0.0;0.0</y>
+                                    </aisle>
+                                </aisles>
+                                <doors>
+                                    <door uID="door_1">
+                                        <name>Type B</name>
+                                        <x>0.215</x>
+                                        <z>0.0</z>
+                                        <width>0.8128</width>
+                                        <height>1.8288</height>
+                                        <side>port</side>
+                                        <type>boarding</type>
+                                    </door>
+                                    <door uID="door_2">
+                                        <name>Type B</name>
+                                        <x>0.215</x>
+                                        <z>0.0</z>
+                                        <width>0.8128</width>
+                                        <height>1.8288</height>
+                                        <side>starboard</side>
+                                        <type>boarding</type>
+                                    </door>
+                                    <door uID="door_3">
+                                        <name>Type B</name>
+                                        <x>12.224</x>
+                                        <z>0.0</z>
+                                        <width>0.8128</width>
+                                        <height>1.8288</height>
+                                        <side>starboard</side>
+                                        <type>boarding</type>
+                                    </door>
+                                    <door uID="door_4">
+                                        <name>Type B</name>
+                                        <x>12.253</x>
+                                        <z>0.0</z>
+                                        <width>0.8128</width>
+                                        <height>1.8288</height>
+                                        <side>port</side>
+                                        <type>boarding</type>
+                                    </door>
+                                </doors>
+                                <seatElements>
+                                    <seatElement uID="seatGroup_263738">
+                                        <name>Seats_1AB</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>1.144</x>
+                                        <y>-0.755</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_546015">
+                                        <name>Seats_1CD</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>1.144</x>
+                                        <y>0.755</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_707271">
+                                        <name>Seats_2AB</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>1.892</x>
+                                        <y>-0.755</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_458593">
+                                        <name>Seats_2CD</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>1.892</x>
+                                        <y>0.755</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_297519">
+                                        <name>Seats_3AB</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>2.641</x>
+                                        <y>-0.755</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_115764">
+                                        <name>Seats_3CD</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>2.641</x>
+                                        <y>0.755</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_567447">
+                                        <name>Seats_4AB</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>3.39</x>
+                                        <y>-0.755</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_201905">
+                                        <name>Seats_4CD</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>3.39</x>
+                                        <y>0.755</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_190501">
+                                        <name>Seats_5AB</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>4.139</x>
+                                        <y>-0.755</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_400696">
+                                        <name>Seats_5CD</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>4.139</x>
+                                        <y>0.755</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_380898">
+                                        <name>Seats_6AB</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>4.887</x>
+                                        <y>-0.755</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_827269">
+                                        <name>Seats_6CD</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>4.887</x>
+                                        <y>0.755</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_535973">
+                                        <name>Seats_7AB</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>5.636</x>
+                                        <y>-0.755</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_844245">
+                                        <name>Seats_7CD</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>5.636</x>
+                                        <y>0.755</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_19273">
+                                        <name>Seats_8AB</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>6.385</x>
+                                        <y>-0.755</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_708357">
+                                        <name>Seats_8CD</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>6.385</x>
+                                        <y>0.755</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_378654">
+                                        <name>Seats_9AB</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>7.134</x>
+                                        <y>-0.755</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_903487">
+                                        <name>Seats_9CD</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>7.134</x>
+                                        <y>0.755</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_418633">
+                                        <name>Seats_10AB</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>7.883</x>
+                                        <y>-0.7320000000000001</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_959353">
+                                        <name>Seats_10CD</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>7.883</x>
+                                        <y>0.755</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_177508">
+                                        <name>Seats_11AB</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>8.631</x>
+                                        <y>-0.721</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_778181">
+                                        <name>Seats_11CD</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>8.631</x>
+                                        <y>0.755</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_769959">
+                                        <name>Seats_12AB</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>9.38</x>
+                                        <y>-0.7440000000000001</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_441428">
+                                        <name>Seats_12CD</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>9.38</x>
+                                        <y>0.755</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_312168">
+                                        <name>Seats_13AB</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>10.129</x>
+                                        <y>-0.7440000000000001</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_152543">
+                                        <name>Seats_13CD</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>10.129</x>
+                                        <y>0.755</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_747442">
+                                        <name>Seats_14AB</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>10.878</x>
+                                        <y>-0.7440000000000001</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_431530">
+                                        <name>Seats_14CD</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>10.878</x>
+                                        <y>0.755</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_713480">
+                                        <name>Seats_15AB</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>11.627</x>
+                                        <y>-0.755</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                    <seatElement uID="seatGroup_220652">
+                                        <name>Seats_15CD</name>
+                                        <nSeats>2</nSeats>
+                                        <type>economy</type>
+                                        <x>11.627</x>
+                                        <y>0.755</y>
+                                        <length>0.5</length>
+                                        <width>1.09</width>
+                                        <height>1.09</height>
+                                    </seatElement>
+                                </seatElements>
+                                <floorElements>
+                                    <floorElement uID="floorElement_464004">
+                                        <type>kitchen</type>
+                                        <x>13.133</x>
+                                        <y>-0.65</y>
+                                        <length>1.1</length>
+                                        <width>1.3</width>
+                                        <height>2.15</height>
+                                    </floorElement>
+                                    <floorElement uID="floorElement_449123">
+                                        <type>toilet</type>
+                                        <x>13.133</x>
+                                        <y>0.65</y>
+                                        <length>1.1</length>
+                                        <width>1.3</width>
+                                        <height>2.15</height>
+                                    </floorElement>
+                                </floorElements>
+                            </deck>
+                        </decks>
+                    </fuselage>
+                </fuselages>
+            </model>
+        </aircraft>
+    </vehicles>
+    <toolspecific>
+        <tool>
+            <name>PAXelerate Boarding Simulation</name>
+            <version>1.0</version>
+            <input uID="paxelerate_input">      
+                <loadFactor>1.0</loadFactor>
+                <activeDoorUIDs>1</activeDoorUIDs>
+                <iterations>10</iterations> 
+                <simulationType>BOARDING</simulationType> 
+                <displaySimulation>True</displaySimulation>
+                <seatType>DEFAULT</seatType>
+                <luggageModel>SIMPLE</luggageModel>
+                <simulationGridResolution>0.1</simulationGridResolution>
+                <simulationSpeedFactor>40</simulationSpeedFactor>
+                <passengerSortingScheme>RANDOM</passengerSortingScheme>
+                <passengerAgressiveMoodShare>0.0</passengerAgressiveMoodShare>
+                <seatInterferenceProcessTimeMean>8</seatInterferenceProcessTimeMean>
+                <seatInterferenceProcessTimeDeviation>3</seatInterferenceProcessTimeDeviation>
+                <doorSelection>CLOSEST</doorSelection>
+                <percentageOfPassengersWithJackets>0</percentageOfPassengersWithJackets>
+                <percentageOfPassengersWithSmallBags>20</percentageOfPassengersWithSmallBags>
+                <percentageOfPassengersWithMediumBags>50</percentageOfPassengersWithMediumBags>   
+                <percentageOfPassengersWithLargeBags>30</percentageOfPassengersWithLargeBags> 
+            </input>
+        </tool>
+    </toolspecific>
+</cpacs>

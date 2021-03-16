@@ -3,9 +3,7 @@
 package com.paxelerate.model.settings.impl;
 
 import com.paxelerate.model.EPoint;
-
 import com.paxelerate.model.enums.DoorSelection;
-
 import com.paxelerate.model.settings.PassengerProperties;
 import com.paxelerate.model.settings.SettingsPackage;
 

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/com.paxelerate.cpacs.toolspecific.model/src-gen"
+    creationIcons="false" editDirectory="/com.paxelerate.cpacs.toolspecific.model.edit/src-gen"
+    editorDirectory="/com.paxelerate.cpacs.toolspecific.model.editor/src-gen" modelPluginID="com.paxelerate.cpacs.toolspecific.model"
+    modelName="PaxelerateTS" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.xsd.ecore.importer" complianceLevel="5.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>file:/C:/Users/marc.engelmann/Documents/GitHub/PAXelerate/schema/toolspecific.xsd</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Toolspecific" resource="XML" disposableProviderFactory="true"
+      ecorePackage="paxelerateTS.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="paxelerateTS.ecore#//RelationalOperatorType">
+      <genEnumLiterals ecoreEnumLiteral="paxelerateTS.ecore#//RelationalOperatorType/lt"/>
+      <genEnumLiterals ecoreEnumLiteral="paxelerateTS.ecore#//RelationalOperatorType/le"/>
+      <genEnumLiterals ecoreEnumLiteral="paxelerateTS.ecore#//RelationalOperatorType/eq"/>
+      <genEnumLiterals ecoreEnumLiteral="paxelerateTS.ecore#//RelationalOperatorType/ne"/>
+      <genEnumLiterals ecoreEnumLiteral="paxelerateTS.ecore#//RelationalOperatorType/gt"/>
+      <genEnumLiterals ecoreEnumLiteral="paxelerateTS.ecore#//RelationalOperatorType/ge"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="paxelerateTS.ecore#//SymmetryType">
+      <genEnumLiterals ecoreEnumLiteral="paxelerateTS.ecore#//SymmetryType/def"/>
+      <genEnumLiterals ecoreEnumLiteral="paxelerateTS.ecore#//SymmetryType/symm"/>
+      <genEnumLiterals ecoreEnumLiteral="paxelerateTS.ecore#//SymmetryType/full"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="paxelerateTS.ecore#//UncertaintyFunctionType">
+      <genEnumLiterals ecoreEnumLiteral="paxelerateTS.ecore#//UncertaintyFunctionType/GaussianNormalDistribution"/>
+      <genEnumLiterals ecoreEnumLiteral="paxelerateTS.ecore#//UncertaintyFunctionType/ExponentialDistribution"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="paxelerateTS.ecore#//RelationalOperatorTypeObject"/>
+    <genDataTypes ecoreDataType="paxelerateTS.ecore#//SymmetryTypeObject"/>
+    <genDataTypes ecoreDataType="paxelerateTS.ecore#//UncertaintyFunctionTypeObject"/>
+    <genClasses ecoreClass="paxelerateTS.ecore#//BooleanBaseType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//BooleanBaseType/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//BooleanBaseType/externalDataDirectory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//BooleanBaseType/externalDataNodePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//BooleanBaseType/externalFileName"/>
+    </genClasses>
+    <genClasses ecoreClass="paxelerateTS.ecore#//ComplexBaseType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//ComplexBaseType/externalDataDirectory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//ComplexBaseType/externalDataNodePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//ComplexBaseType/externalFileName"/>
+    </genClasses>
+    <genClasses ecoreClass="paxelerateTS.ecore#//DateBaseType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//DateBaseType/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//DateBaseType/externalDataDirectory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//DateBaseType/externalDataNodePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//DateBaseType/externalFileName"/>
+    </genClasses>
+    <genClasses ecoreClass="paxelerateTS.ecore#//DateTimeBaseType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//DateTimeBaseType/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//DateTimeBaseType/externalDataDirectory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//DateTimeBaseType/externalDataNodePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//DateTimeBaseType/externalFileName"/>
+    </genClasses>
+    <genClasses ecoreClass="paxelerateTS.ecore#//DocumentRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference paxelerateTS.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference paxelerateTS.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//DocumentRoot/paxelerateType"/>
+    </genClasses>
+    <genClasses ecoreClass="paxelerateTS.ecore#//DoorSelectionType"/>
+    <genClasses ecoreClass="paxelerateTS.ecore#//DoubleBaseType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//DoubleBaseType/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//DoubleBaseType/a"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//DoubleBaseType/b"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//DoubleBaseType/c"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//DoubleBaseType/delta"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//DoubleBaseType/externalDataDirectory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//DoubleBaseType/externalDataNodePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//DoubleBaseType/externalFileName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//DoubleBaseType/mu"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//DoubleBaseType/uncertaintyFunctionName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//DoubleBaseType/v"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//DoubleBaseType/w"/>
+    </genClasses>
+    <genClasses ecoreClass="paxelerateTS.ecore#//DoubleConstraintBaseType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//DoubleConstraintBaseType/relationalOperator"/>
+    </genClasses>
+    <genClasses ecoreClass="paxelerateTS.ecore#//IntegerBaseType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//IntegerBaseType/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//IntegerBaseType/externalDataDirectory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//IntegerBaseType/externalDataNodePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//IntegerBaseType/externalFileName"/>
+    </genClasses>
+    <genClasses ecoreClass="paxelerateTS.ecore#//PassengerSortingSchemeType"/>
+    <genClasses ecoreClass="paxelerateTS.ecore#//PaxelerateInputType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/loadFactor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/activeDoorUIDs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/iterations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/simulationType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/displaySimulation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/seatType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/simulationGridResolution"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/simulationSpeedFactor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/passengerSortingScheme"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/passengerAgressiveMoodShare"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/seatInterferenceProcessTimeMean"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/seatInterferenceProcessTimeDeviation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/doorSelection"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/percentageOfPassengersWithJackets"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/percentageOfPassengersWithSmallBags"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/percentageOfPassengersWithMediumBags"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/percentageOfPassengersWithLargeBags"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//PaxelerateInputType/uID"/>
+    </genClasses>
+    <genClasses ecoreClass="paxelerateTS.ecore#//PaxelerateType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateType/input"/>
+    </genClasses>
+    <genClasses ecoreClass="paxelerateTS.ecore#//SeatTypeType"/>
+    <genClasses ecoreClass="paxelerateTS.ecore#//SimulationTypeType"/>
+    <genClasses ecoreClass="paxelerateTS.ecore#//StringArrayBaseType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//StringArrayBaseType/mapType"/>
+    </genClasses>
+    <genClasses ecoreClass="paxelerateTS.ecore#//StringBaseType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//StringBaseType/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//StringBaseType/externalDataDirectory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//StringBaseType/externalDataNodePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//StringBaseType/externalFileName"/>
+    </genClasses>
+    <genClasses ecoreClass="paxelerateTS.ecore#//StringUIDBaseType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//StringUIDBaseType/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//StringUIDBaseType/isLink"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//StringUIDBaseType/symmetry"/>
+    </genClasses>
+    <genClasses ecoreClass="paxelerateTS.ecore#//StringVectorBaseType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//StringVectorBaseType/a"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//StringVectorBaseType/b"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//StringVectorBaseType/c"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//StringVectorBaseType/delta"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//StringVectorBaseType/mapType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//StringVectorBaseType/mu"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//StringVectorBaseType/uncertaintyFunctionName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//StringVectorBaseType/v"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//StringVectorBaseType/w"/>
+    </genClasses>
+    <genClasses ecoreClass="paxelerateTS.ecore#//TimeBaseType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//TimeBaseType/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//TimeBaseType/externalDataDirectory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//TimeBaseType/externalDataNodePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//TimeBaseType/externalFileName"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

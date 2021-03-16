@@ -5,7 +5,6 @@ package com.paxelerate.model.settings.impl;
 import com.paxelerate.model.enums.SeatType;
 import com.paxelerate.model.enums.SimulationType;
 import com.paxelerate.model.enums.SortingScheme;
-
 import com.paxelerate.model.settings.LuggageProperties;
 import com.paxelerate.model.settings.PassengerProperties;
 import com.paxelerate.model.settings.Settings;

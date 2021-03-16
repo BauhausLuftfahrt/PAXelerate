@@ -5,7 +5,6 @@ package com.paxelerate.model.settings;
 import com.paxelerate.model.enums.SeatType;
 import com.paxelerate.model.enums.SimulationType;
 import com.paxelerate.model.enums.SortingScheme;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**

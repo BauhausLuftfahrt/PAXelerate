@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+        xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" 
+        xmlns:html="http://www.w3.org/1999/xhtml" 
+        xmlns:sd="http://schemas.xsddoc.codeplex.com/schemaDoc/2009/3" 
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        targetNamespace="http://www.paxelerate.com/cpacs/toolspecific"
+        xmlns="http://www.paxelerate.com/cpacs/toolspecific"
+        elementFormDefault="qualified">
+
+    <!-- This schema is a template that can be used as a starting point for your own 
+         tool-specific schema. We recommend that you use the CPACS base-types (copy 
+         & paste them into this file) and adopt the schema version attribute.  -->
+
+    <!-- Global element -->
+    <xsd:element name="paxelerateType" type="paxelerateType"/>
+
+    <!-- Base types -->
+   <xsd:complexType name="complexBaseType">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <sd:schemaDoc>
+                    <ddue:summary>
+                        <ddue:para>complexBaseType</ddue:para>
+                    </ddue:summary>
+                    <ddue:remarks>
+                        <ddue:para>Base type for complex nodes (including external data
+                            attributes)</ddue:para>
+                    </ddue:remarks>
+                </sd:schemaDoc>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:attribute name="externalDataNodePath" type="xsd:string"/>
+        <xsd:attribute name="externalFileName" type="xsd:string"/>
+        <xsd:attribute name="externalDataDirectory" type="xsd:string"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="stringBaseType">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <sd:schemaDoc>
+                    <ddue:summary>
+                        <ddue:para>stringBaseType</ddue:para>
+                    </ddue:summary>
+                    <ddue:remarks>
+                        <ddue:para>Base type for string nodes (including external data
+                            attributes)</ddue:para>
+                    </ddue:remarks>
+                </sd:schemaDoc>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="externalDataNodePath" type="xsd:string"/>
+                <xsd:attribute name="externalFileName" type="xsd:string"/>
+                <xsd:attribute name="externalDataDirectory" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="stringUIDBaseType">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <sd:schemaDoc>
+                    <ddue:summary>
+                        <ddue:para>stringUIDBaseType</ddue:para>
+                    </ddue:summary>
+                    <ddue:remarks>
+                        <ddue:para>This is the base type that links to other components. It should always contain a UID.</ddue:para>
+                        <ddue:para>This node has an additional attribute isLink that will be used if a stringBaseType refers to a uID. TIXI can then
+                            perform automatic validation for the existence of the referenced uID. </ddue:para>
+                        <ddue:para>Furthermore this node contains an additional attribute symmetry. The symmetry attribute may take three values: symm, def, full </ddue:para>
+                        <ddue:para>def: The element refers to the geometric component that has a symmetry attribute and refers only to the defined side of the geometric component.</ddue:para>
+                        <ddue:para>symm: The element refers to the geometric component that has a symmetry attribute and refers only to the symmetric side of the geometric component. (Similar to the previous _symm solution)</ddue:para>
+                        <ddue:para>full: The element refers to the geometric component that has a symmetry attribute and refers to the complete component. (This is the default behaviour)</ddue:para>
+                    </ddue:remarks>
+                </sd:schemaDoc>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:IDREF">
+                <xsd:attribute name="isLink" default="True" type="xsd:string"/>
+                <xsd:attribute name="symmetry">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                            <xsd:enumeration value="def"/>
+                            <xsd:enumeration value="symm"/>
+                            <xsd:enumeration value="full"/>
+                        </xsd:restriction>
+                    </xsd:simpleType>
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="stringVectorBaseType">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <sd:schemaDoc>
+                    <ddue:summary>
+                        <ddue:para>stringVectorBaseType</ddue:para>
+                    </ddue:summary>
+                    <ddue:remarks>
+                        <ddue:content>
+                            <ddue:para>Base type for string vector nodes (including maptype
+                                vector attribute)</ddue:para>
+                            <ddue:para>The vector base type can include optional uncertainty
+                                information. The description of uncertainties is placed in
+                                addtional attributes. First, it is described by an attribute that
+                                describes the type of uncertainty function called functionName.
+                                The functionName attribute includes the tag name of the
+                                distribution function which is listened in the table shown below.
+                                Each uncertainty function is further describes by a set of
+                                parameters that are described in the table below.</ddue:para>
+                            <ddue:para>If the uncertainty values change for the elements of
+                                the vector than the attribute may be written as a list of values
+                                separated by semicolons</ddue:para>
+                            <ddue:mediaLink>
+                                <ddue:image xlink:href="uncertaintyFunctions"/>
+                            </ddue:mediaLink>
+                        </ddue:content>
+                    </ddue:remarks>
+                </sd:schemaDoc>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="stringBaseType">
+                <xsd:attribute fixed="vector" name="mapType" type="xsd:string" use="required"/>
+                <xsd:attribute name="uncertaintyFunctionName" type="uncertaintyFunctionType"/>
+                <xsd:attribute name="mu" type="xsd:string"/>
+                <xsd:attribute name="delta" type="xsd:string"/>
+                <xsd:attribute name="a" type="xsd:string"/>
+                <xsd:attribute name="b" type="xsd:string"/>
+                <xsd:attribute name="c" type="xsd:string"/>
+                <xsd:attribute name="v" type="xsd:string"/>
+                <xsd:attribute name="w" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="stringArrayBaseType">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <sd:schemaDoc>
+                    <ddue:summary>
+                        <ddue:para>stringArrayBaseType</ddue:para>
+                    </ddue:summary>
+                    <ddue:remarks>
+                        <ddue:para>Base type for string array nodes (including maptype
+                            array attribute)</ddue:para>
+                    </ddue:remarks>
+                </sd:schemaDoc>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="stringBaseType">
+                <xsd:attribute fixed="array" name="mapType" type="xsd:string" use="required"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="doubleBaseType">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <sd:schemaDoc>
+                    <ddue:summary>
+                        <ddue:para>doubleBaseType</ddue:para>
+                    </ddue:summary>
+                    <ddue:remarks>
+                        <ddue:content>
+                            <ddue:para>
+                                Base type for double nodes (including
+                                external data attributes)
+                            </ddue:para>
+                            <ddue:para>
+                                The double base type can include
+                                optional uncertainty information. The
+                                description of uncertainties is placed
+                                in addtional attributes. First, it is
+                                described by an attribute that describes
+                                the type of uncertainty function called
+                                functionName. The functionName attribute
+                                includes the tag name of the
+                                distribution function which is listened
+                                in the table shown below. Each
+                                uncertainty function is further
+                                describes by a set of parameters that
+                                are described in the table below.
+                            </ddue:para>
+                            <ddue:mediaLink>
+                                <ddue:image
+                                    xlink:href="uncertaintyFunctions" />
+                            </ddue:mediaLink>
+                        </ddue:content>
+                    </ddue:remarks>
+                </sd:schemaDoc>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:double">
+                <xsd:attribute name="externalDataNodePath"
+                    type="xsd:string" />
+                <xsd:attribute name="externalFileName"
+                    type="xsd:string" />
+                <xsd:attribute name="externalDataDirectory"
+                    type="xsd:string" />
+                <xsd:attribute name="uncertaintyFunctionName"
+                    type="uncertaintyFunctionType" />
+                <xsd:attribute name="mu" type="xsd:double" />
+                <xsd:attribute name="delta" type="xsd:double" />
+                <xsd:attribute name="a" type="xsd:double" />
+                <xsd:attribute name="b" type="xsd:double" />
+                <xsd:attribute name="c" type="xsd:double" />
+                <xsd:attribute name="v" type="xsd:double" />
+                <xsd:attribute name="w" type="xsd:double" />
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="doubleConstraintBaseType">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <sd:schemaDoc>
+                    <ddue:summary>
+                        <ddue:para>doubleConstraintBaseType</ddue:para>
+                    </ddue:summary>
+                    <ddue:remarks>
+                        <ddue:content>
+                            <ddue:para>Base type for double nodes including a relational operator attribute indicating valid constraint region</ddue:para>
+                            <ddue:para>The doubleConstraintBaseType extends the doubleBaseType and thus inherits all its attributes.</ddue:para>
+                        </ddue:content>
+                    </ddue:remarks>
+                </sd:schemaDoc>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="doubleBaseType">
+                <xsd:attribute name="relationalOperator" use="required">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                            <xsd:enumeration value="lt"/>
+                            <xsd:enumeration value="le"/>
+                            <xsd:enumeration value="eq"/>
+                            <xsd:enumeration value="ne"/>
+                            <xsd:enumeration value="gt"/>
+                            <xsd:enumeration value="ge"/>
+                        </xsd:restriction>
+                    </xsd:simpleType>
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="integerBaseType">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <sd:schemaDoc>
+                    <ddue:summary>
+                        <ddue:para>integerBaseType</ddue:para>
+                    </ddue:summary>
+                    <ddue:remarks>
+                        <ddue:para>
+                            Base type for integer nodes (including
+                            external data attributes)
+                        </ddue:para>
+                    </ddue:remarks>
+                </sd:schemaDoc>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:integer">
+                <xsd:attribute name="externalDataNodePath"
+                    type="xsd:string" />
+                <xsd:attribute name="externalFileName"
+                    type="xsd:string" />
+                <xsd:attribute name="externalDataDirectory"
+                    type="xsd:string" />
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="booleanBaseType">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <sd:schemaDoc>
+                    <ddue:summary>
+                        <ddue:para>booleanBaseType</ddue:para>
+                    </ddue:summary>
+                    <ddue:remarks>
+                        <ddue:para>Base type for boolean nodes (including external data
+                            attributes)</ddue:para>
+                    </ddue:remarks>
+                </sd:schemaDoc>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:boolean">
+                <xsd:attribute name="externalDataNodePath" type="xsd:string"/>
+                <xsd:attribute name="externalFileName" type="xsd:string"/>
+                <xsd:attribute name="externalDataDirectory" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="dateTimeBaseType">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <sd:schemaDoc>
+                    <ddue:summary>
+                        <ddue:para>dateTimeBaseType</ddue:para>
+                    </ddue:summary>
+                    <ddue:remarks>
+                        <ddue:para>Base type for dateTime nodes (including external data
+                            attributes)</ddue:para>
+                    </ddue:remarks>
+                </sd:schemaDoc>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:dateTime">
+                <xsd:attribute name="externalDataNodePath" type="xsd:string"/>
+                <xsd:attribute name="externalFileName" type="xsd:string"/>
+                <xsd:attribute name="externalDataDirectory" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="timeBaseType">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <sd:schemaDoc>
+                    <ddue:summary>
+                        <ddue:para>timeBaseType</ddue:para>
+                    </ddue:summary>
+                    <ddue:remarks>
+                        <ddue:para>Base type for time nodes (including external data attributes)
+                            This time type is based on the xsd:time definition.
+                            "To specify a time zone, you can either enter a time in UTC time by adding a "Z" behind the time - like this: 09:30:10Z
+                            or you can specify an offset from the UTC time by adding a positive or negative time behind the time - like this:
+                            09:30:10-06:00
+                            or
+                            09:30:10+06:00" (description taken from http://www.w3schools.com/xml/schema_dtypes_date.asp)</ddue:para>
+                    </ddue:remarks>
+                </sd:schemaDoc>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:time">
+                <xsd:attribute name="externalDataNodePath" type="xsd:string"/>
+                <xsd:attribute name="externalFileName" type="xsd:string"/>
+                <xsd:attribute name="externalDataDirectory" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="dateBaseType">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <sd:schemaDoc>
+                    <ddue:summary>
+                        <ddue:para>dateBaseType</ddue:para>
+                    </ddue:summary>
+                    <ddue:remarks>
+                        <ddue:para>Base type for date nodes (including external data attributes).
+                            This date type is based on the xsd:date definition.
+                            "To specify a time zone, you can either enter a date in UTC time by adding a "Z" behind the date - like this: 2002-09-24Z
+                            or you can specify an offset from the UTC time by adding a positive or negative time behind the date - like this:
+                            2002-09-24-06:00
+                            or
+                            2002-09-24+06:00" (description taken from http://www.w3schools.com/xml/schema_dtypes_date.asp)
+                        </ddue:para>
+                    </ddue:remarks>
+                </sd:schemaDoc>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:date">
+                <xsd:attribute name="externalDataNodePath" type="xsd:string"/>
+                <xsd:attribute name="externalFileName" type="xsd:string"/>
+                <xsd:attribute name="externalDataDirectory" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:simpleType name="uncertaintyFunctionType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="GaussianNormalDistribution"/>
+            <xsd:enumeration value="ExponentialDistribution"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!-- Bauhaus Luftfahrt ToolSpecific Collection  -->
+    
+    <xsd:complexType name="paxelerateType">
+        <xsd:complexContent>
+            <xsd:extension base="complexBaseType">
+                <xsd:sequence>
+                    <xsd:element name="input" type="paxelerateInputType"></xsd:element>
+                    <!--<xsd:element name="output" type="paxelerateOutputType"></xsd:element>-->            
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="paxelerateInputType">
+        <xsd:complexContent>
+            <xsd:extension base="complexBaseType">
+                <xsd:all>
+                    <xsd:element name="loadFactor" type="doubleBaseType" />
+                    <xsd:element name="activeDoorUIDs" type="stringVectorBaseType" />
+                    <xsd:element name="iterations" type="integerBaseType" />
+                    <xsd:element name="simulationType">
+                        <xsd:complexType>
+                            <xsd:simpleContent>
+                                <xsd:restriction
+                                    base="stringBaseType">
+                                    <xsd:enumeration value="BOARDING" />
+                                    <xsd:enumeration value="DEBOARDING" />
+                                    <xsd:enumeration value="EMERGENCY" />
+                                </xsd:restriction>
+                            </xsd:simpleContent>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="displaySimulation" type="booleanBaseType" />
+                    <xsd:element name="seatType">
+                        <xsd:complexType>
+                            <xsd:simpleContent>
+                                <xsd:restriction
+                                    base="stringBaseType">
+                                    <xsd:enumeration value="DEFAULT" />
+                                    <xsd:enumeration value="SIDEWAYS_FOLDABLE" />
+                                    <xsd:enumeration value="LIFTING_SEAT_PAN" />
+                                    <xsd:enumeration value="BRING_YOUR_OWN" />
+                                </xsd:restriction>
+                            </xsd:simpleContent>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="simulationGridResolution" type="doubleBaseType" />
+                    <xsd:element name="simulationSpeedFactor" type="doubleBaseType" />
+                    <xsd:element name="passengerSortingScheme">
+                        <xsd:complexType>
+                            <xsd:simpleContent>
+                                <xsd:restriction
+                                    base="stringBaseType">
+                                    <xsd:enumeration value="RANDOM" />
+                                    <xsd:enumeration value="RTF" />
+                                    <xsd:enumeration value="FTR" />
+                                    <xsd:enumeration value="WTA" />
+                                    <xsd:enumeration value="WTA_RTF" />
+                                    <xsd:enumeration value="WTA_FTR" />
+                                    <xsd:enumeration value="BLOCK" />
+                                    <xsd:enumeration value="BOARDING_CLASS_RANDOM" />
+                                    <xsd:enumeration value="STEFFEN" />
+                                    <xsd:enumeration value="MILNE_KELLY" />
+                                    <xsd:enumeration value="BIG_BAGS_AFT" />
+                                    <xsd:enumeration value="BIG_BAGS_FRONT" />
+                                    <xsd:enumeration value="MAX_BAGS_AFT" />
+                                    <xsd:enumeration value="MAX_BAGS_FRONT" />
+                                </xsd:restriction>
+                            </xsd:simpleContent>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="passengerAgressiveMoodShare" type="doubleBaseType" />
+                    <xsd:element name="seatInterferenceProcessTimeMean" type="doubleBaseType" />
+                    <xsd:element name="seatInterferenceProcessTimeDeviation" type="doubleBaseType" />
+                    <xsd:element name="doorSelection">
+                        <xsd:complexType>
+                            <xsd:simpleContent>
+                                <xsd:restriction
+                                    base="stringBaseType">
+                                    <xsd:enumeration value="CLOSEST" />
+                                    <xsd:enumeration value="CLOSEST_BEHIND" />
+                                    <xsd:enumeration value="CLOSEST_FRONT" />
+                                    <xsd:enumeration value="RANDOM" />
+                                </xsd:restriction>
+                            </xsd:simpleContent>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="percentageOfPassengersWithJackets" type="doubleBaseType" />
+                    <xsd:element name="percentageOfPassengersWithSmallBags" type="doubleBaseType" />
+                    <xsd:element name="percentageOfPassengersWithMediumBags" type="doubleBaseType" />
+                    <xsd:element name="percentageOfPassengersWithLargeBags" type="doubleBaseType" />
+                </xsd:all>
+                <xsd:attribute name="uID" type="xsd:ID" use="required"/>
+            </xsd:extension> 
+        </xsd:complexContent>
+    </xsd:complexType>
+    <!--
+    <xsd:complexType name="paxelerateOutputType">
+        <xsd:complexContent>
+            <xsd:extension base="complexBaseType">
+                <xsd:all>
+                    <xsd:element name="simulationSuccess" type="booleanBaseType" />
+                </xsd:all>
+                <xsd:attribute name="uID" type="xsd:ID" use="required"/>
+            </xsd:extension> 
+        </xsd:complexContent>
+    </xsd:complexType>
+    -->
+</xsd:schema>
+

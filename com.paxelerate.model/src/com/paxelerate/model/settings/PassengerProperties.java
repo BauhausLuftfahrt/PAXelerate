@@ -3,9 +3,7 @@
 package com.paxelerate.model.settings;
 
 import com.paxelerate.model.EPoint;
-
 import com.paxelerate.model.enums.DoorSelection;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
