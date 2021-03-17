@@ -175,7 +175,6 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/seatInterferenceProcessTimeFoldingSeatDeviation"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passivePassengerWaitingTimeAfterCollision"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/seatInterferenceMultiPassengerFactor"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/passengerWalkingSpeedFactor"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/doorSelection"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/PassengerProperties/groupPercentage"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//settings/PassengerProperties/ageSpeedDependency"/>

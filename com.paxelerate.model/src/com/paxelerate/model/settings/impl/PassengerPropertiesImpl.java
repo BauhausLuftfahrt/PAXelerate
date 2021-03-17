@@ -54,7 +54,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.paxelerate.model.settings.impl.PassengerPropertiesImpl#getSeatInterferenceProcessTimeFoldingSeatDeviation <em>Seat Interference Process Time Folding Seat Deviation</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.impl.PassengerPropertiesImpl#getPassivePassengerWaitingTimeAfterCollision <em>Passive Passenger Waiting Time After Collision</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.impl.PassengerPropertiesImpl#getSeatInterferenceMultiPassengerFactor <em>Seat Interference Multi Passenger Factor</em>}</li>
- *   <li>{@link com.paxelerate.model.settings.impl.PassengerPropertiesImpl#getPassengerWalkingSpeedFactor <em>Passenger Walking Speed Factor</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.impl.PassengerPropertiesImpl#getDoorSelection <em>Door Selection</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.impl.PassengerPropertiesImpl#getGroupPercentage <em>Group Percentage</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.impl.PassengerPropertiesImpl#getAgeSpeedDependency <em>Age Speed Dependency</em>}</li>
@@ -559,26 +558,6 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 	 * @ordered
 	 */
 	protected double seatInterferenceMultiPassengerFactor = SEAT_INTERFERENCE_MULTI_PASSENGER_FACTOR_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getPassengerWalkingSpeedFactor() <em>Passenger Walking Speed Factor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPassengerWalkingSpeedFactor()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double PASSENGER_WALKING_SPEED_FACTOR_EDEFAULT = 1.0;
-
-	/**
-	 * The cached value of the '{@link #getPassengerWalkingSpeedFactor() <em>Passenger Walking Speed Factor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPassengerWalkingSpeedFactor()
-	 * @generated
-	 * @ordered
-	 */
-	protected double passengerWalkingSpeedFactor = PASSENGER_WALKING_SPEED_FACTOR_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getDoorSelection() <em>Door Selection</em>}' attribute.
@@ -1915,29 +1894,6 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getPassengerWalkingSpeedFactor() {
-		return passengerWalkingSpeedFactor;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPassengerWalkingSpeedFactor(double newPassengerWalkingSpeedFactor) {
-		double oldPassengerWalkingSpeedFactor = passengerWalkingSpeedFactor;
-		passengerWalkingSpeedFactor = newPassengerWalkingSpeedFactor;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					SettingsPackage.PASSENGER_PROPERTIES__PASSENGER_WALKING_SPEED_FACTOR,
-					oldPassengerWalkingSpeedFactor, passengerWalkingSpeedFactor));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public DoorSelection getDoorSelection() {
 		return doorSelection;
 	}
@@ -2901,8 +2857,6 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 			return getPassivePassengerWaitingTimeAfterCollision();
 		case SettingsPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_MULTI_PASSENGER_FACTOR:
 			return getSeatInterferenceMultiPassengerFactor();
-		case SettingsPackage.PASSENGER_PROPERTIES__PASSENGER_WALKING_SPEED_FACTOR:
-			return getPassengerWalkingSpeedFactor();
 		case SettingsPackage.PASSENGER_PROPERTIES__DOOR_SELECTION:
 			return getDoorSelection();
 		case SettingsPackage.PASSENGER_PROPERTIES__GROUP_PERCENTAGE:
@@ -3064,9 +3018,6 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 			return;
 		case SettingsPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_MULTI_PASSENGER_FACTOR:
 			setSeatInterferenceMultiPassengerFactor((Double) newValue);
-			return;
-		case SettingsPackage.PASSENGER_PROPERTIES__PASSENGER_WALKING_SPEED_FACTOR:
-			setPassengerWalkingSpeedFactor((Double) newValue);
 			return;
 		case SettingsPackage.PASSENGER_PROPERTIES__DOOR_SELECTION:
 			setDoorSelection((DoorSelection) newValue);
@@ -3272,9 +3223,6 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 		case SettingsPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_MULTI_PASSENGER_FACTOR:
 			setSeatInterferenceMultiPassengerFactor(SEAT_INTERFERENCE_MULTI_PASSENGER_FACTOR_EDEFAULT);
 			return;
-		case SettingsPackage.PASSENGER_PROPERTIES__PASSENGER_WALKING_SPEED_FACTOR:
-			setPassengerWalkingSpeedFactor(PASSENGER_WALKING_SPEED_FACTOR_EDEFAULT);
-			return;
 		case SettingsPackage.PASSENGER_PROPERTIES__DOOR_SELECTION:
 			setDoorSelection(DOOR_SELECTION_EDEFAULT);
 			return;
@@ -3453,8 +3401,6 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 			return passivePassengerWaitingTimeAfterCollision != PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION_EDEFAULT;
 		case SettingsPackage.PASSENGER_PROPERTIES__SEAT_INTERFERENCE_MULTI_PASSENGER_FACTOR:
 			return seatInterferenceMultiPassengerFactor != SEAT_INTERFERENCE_MULTI_PASSENGER_FACTOR_EDEFAULT;
-		case SettingsPackage.PASSENGER_PROPERTIES__PASSENGER_WALKING_SPEED_FACTOR:
-			return passengerWalkingSpeedFactor != PASSENGER_WALKING_SPEED_FACTOR_EDEFAULT;
 		case SettingsPackage.PASSENGER_PROPERTIES__DOOR_SELECTION:
 			return doorSelection != DOOR_SELECTION_EDEFAULT;
 		case SettingsPackage.PASSENGER_PROPERTIES__GROUP_PERCENTAGE:
@@ -3596,8 +3542,6 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 		result.append(passivePassengerWaitingTimeAfterCollision);
 		result.append(", seatInterferenceMultiPassengerFactor: ");
 		result.append(seatInterferenceMultiPassengerFactor);
-		result.append(", passengerWalkingSpeedFactor: ");
-		result.append(passengerWalkingSpeedFactor);
 		result.append(", doorSelection: ");
 		result.append(doorSelection);
 		result.append(", groupPercentage: ");

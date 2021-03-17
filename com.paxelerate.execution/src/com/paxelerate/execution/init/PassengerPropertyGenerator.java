@@ -195,7 +195,6 @@ public interface PassengerPropertyGenerator {
 						options.getPassengerKneeHeightMeanFemale(), options.getPassengerKneeHeightDeviationFemale()));
 
 		// Define the walking speed according to age and carried luggage
-		pax.setWalkingSpeed(adaptSpeed(pax, options) * adaptWalkingSpeedWithLuggage(pax, lugOpt)
-				* options.getPassengerWalkingSpeedFactor());
+		pax.setWalkingSpeed(adaptSpeed(pax, options) * adaptWalkingSpeedWithLuggage(pax, lugOpt));
 	}
 }

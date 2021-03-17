@@ -784,7 +784,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPassengerProperties_PassengerWalkingSpeedFactor() {
+	public EAttribute getPassengerProperties_DoorSelection() {
 		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(23);
 	}
 
@@ -793,7 +793,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPassengerProperties_DoorSelection() {
+	public EAttribute getPassengerProperties_GroupPercentage() {
 		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(24);
 	}
 
@@ -802,17 +802,8 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPassengerProperties_GroupPercentage() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(25);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getPassengerProperties_AgeSpeedDependency() {
-		return (EReference) passengerPropertiesEClass.getEStructuralFeatures().get(26);
+		return (EReference) passengerPropertiesEClass.getEStructuralFeatures().get(25);
 	}
 
 	/**
@@ -821,7 +812,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EReference getPassengerProperties_AgeDistribution() {
-		return (EReference) passengerPropertiesEClass.getEStructuralFeatures().get(27);
+		return (EReference) passengerPropertiesEClass.getEStructuralFeatures().get(26);
 	}
 
 	/**
@@ -830,7 +821,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerKneeWidthMeanMale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(28);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(27);
 	}
 
 	/**
@@ -839,7 +830,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerKneeWidthDeviationMale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(29);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(28);
 	}
 
 	/**
@@ -848,7 +839,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerKneeWidthMeanFemale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(30);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(29);
 	}
 
 	/**
@@ -857,7 +848,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerKneeWidthDeviationFemale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(31);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(30);
 	}
 
 	/**
@@ -866,7 +857,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerKneeDepthMeanMale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(32);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(31);
 	}
 
 	/**
@@ -875,7 +866,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerKneeDepthDeviationMale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(33);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(32);
 	}
 
 	/**
@@ -884,7 +875,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerKneeDepthMeanFemale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(34);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(33);
 	}
 
 	/**
@@ -893,7 +884,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerKneeDepthDeviationFemale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(35);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(34);
 	}
 
 	/**
@@ -902,7 +893,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerKneeHeightMeanMale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(36);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(35);
 	}
 
 	/**
@@ -911,7 +902,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerKneeHeightDeviationMale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(37);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(36);
 	}
 
 	/**
@@ -920,7 +911,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerKneeHeightMeanFemale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(38);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(37);
 	}
 
 	/**
@@ -929,7 +920,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerKneeHeightDeviationFemale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(39);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(38);
 	}
 
 	/**
@@ -938,7 +929,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerHipWidthMeanMale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(40);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(39);
 	}
 
 	/**
@@ -947,7 +938,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerHipWidthDeviationMale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(41);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(40);
 	}
 
 	/**
@@ -956,7 +947,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerHipWidthMeanFemale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(42);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(41);
 	}
 
 	/**
@@ -965,7 +956,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerHipWidthDeviationFemale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(43);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(42);
 	}
 
 	/**
@@ -974,7 +965,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerHipDepthMeanMale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(44);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(43);
 	}
 
 	/**
@@ -983,7 +974,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerHipDepthDeviationMale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(45);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(44);
 	}
 
 	/**
@@ -992,7 +983,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerHipDepthMeanFemale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(46);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(45);
 	}
 
 	/**
@@ -1001,7 +992,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerHipDepthDeviationFemale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(47);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(46);
 	}
 
 	/**
@@ -1010,7 +1001,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerHipHeightMeanMale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(48);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(47);
 	}
 
 	/**
@@ -1019,7 +1010,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerHipHeightDeviationMale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(49);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(48);
 	}
 
 	/**
@@ -1028,7 +1019,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerHipHeightMeanFemale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(50);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(49);
 	}
 
 	/**
@@ -1037,7 +1028,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerHipHeightDeviationFemale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(51);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(50);
 	}
 
 	/**
@@ -1046,7 +1037,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerShoulderWidthMeanMale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(52);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(51);
 	}
 
 	/**
@@ -1055,7 +1046,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerShoulderWidthDeviationMale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(53);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(52);
 	}
 
 	/**
@@ -1064,7 +1055,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerShoulderWidthMeanFemale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(54);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(53);
 	}
 
 	/**
@@ -1073,7 +1064,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerShoulderWidthDeviationFemale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(55);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(54);
 	}
 
 	/**
@@ -1082,7 +1073,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerShoulderDepthMeanMale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(56);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(55);
 	}
 
 	/**
@@ -1091,7 +1082,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerShoulderDepthDeviationMale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(57);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(56);
 	}
 
 	/**
@@ -1100,7 +1091,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerShoulderDepthMeanFemale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(58);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(57);
 	}
 
 	/**
@@ -1109,7 +1100,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerShoulderDepthDeviationFemale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(59);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(58);
 	}
 
 	/**
@@ -1118,7 +1109,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerShoulderHeightMeanMale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(60);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(59);
 	}
 
 	/**
@@ -1127,7 +1118,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerShoulderHeightDeviationMale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(61);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(60);
 	}
 
 	/**
@@ -1136,7 +1127,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerShoulderHeightMeanFemale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(62);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(61);
 	}
 
 	/**
@@ -1145,7 +1136,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * @generated
 	 */
 	public EAttribute getPassengerProperties_PassengerShoulderHeightDeviationFemale() {
-		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(63);
+		return (EAttribute) passengerPropertiesEClass.getEStructuralFeatures().get(62);
 	}
 
 	/**
@@ -1252,7 +1243,6 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 		createEAttribute(passengerPropertiesEClass,
 				PASSENGER_PROPERTIES__PASSIVE_PASSENGER_WAITING_TIME_AFTER_COLLISION);
 		createEAttribute(passengerPropertiesEClass, PASSENGER_PROPERTIES__SEAT_INTERFERENCE_MULTI_PASSENGER_FACTOR);
-		createEAttribute(passengerPropertiesEClass, PASSENGER_PROPERTIES__PASSENGER_WALKING_SPEED_FACTOR);
 		createEAttribute(passengerPropertiesEClass, PASSENGER_PROPERTIES__DOOR_SELECTION);
 		createEAttribute(passengerPropertiesEClass, PASSENGER_PROPERTIES__GROUP_PERCENTAGE);
 		createEReference(passengerPropertiesEClass, PASSENGER_PROPERTIES__AGE_SPEED_DEPENDENCY);
@@ -1539,9 +1529,6 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 		initEAttribute(getPassengerProperties_SeatInterferenceMultiPassengerFactor(), ecorePackage.getEDouble(),
 				"seatInterferenceMultiPassengerFactor", "0.7", 0, 1, PassengerProperties.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPassengerProperties_PassengerWalkingSpeedFactor(), ecorePackage.getEDouble(),
-				"passengerWalkingSpeedFactor", "1.0", 0, 1, PassengerProperties.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPassengerProperties_DoorSelection(), theEnumsPackage.getDoorSelection(), "doorSelection",
 				null, 0, 1, PassengerProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
 				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

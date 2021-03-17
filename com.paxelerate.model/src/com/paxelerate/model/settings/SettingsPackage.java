@@ -726,22 +726,13 @@ public interface SettingsPackage extends EPackage {
 	int PASSENGER_PROPERTIES__SEAT_INTERFERENCE_MULTI_PASSENGER_FACTOR = 22;
 
 	/**
-	 * The feature id for the '<em><b>Passenger Walking Speed Factor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PASSENGER_PROPERTIES__PASSENGER_WALKING_SPEED_FACTOR = 23;
-
-	/**
 	 * The feature id for the '<em><b>Door Selection</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__DOOR_SELECTION = 24;
+	int PASSENGER_PROPERTIES__DOOR_SELECTION = 23;
 
 	/**
 	 * The feature id for the '<em><b>Group Percentage</b></em>' attribute.
@@ -750,7 +741,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__GROUP_PERCENTAGE = 25;
+	int PASSENGER_PROPERTIES__GROUP_PERCENTAGE = 24;
 
 	/**
 	 * The feature id for the '<em><b>Age Speed Dependency</b></em>' containment reference list.
@@ -759,7 +750,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__AGE_SPEED_DEPENDENCY = 26;
+	int PASSENGER_PROPERTIES__AGE_SPEED_DEPENDENCY = 25;
 
 	/**
 	 * The feature id for the '<em><b>Age Distribution</b></em>' containment reference list.
@@ -768,7 +759,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__AGE_DISTRIBUTION = 27;
+	int PASSENGER_PROPERTIES__AGE_DISTRIBUTION = 26;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Knee Width Mean Male</b></em>' attribute.
@@ -777,7 +768,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_KNEE_WIDTH_MEAN_MALE = 28;
+	int PASSENGER_PROPERTIES__PASSENGER_KNEE_WIDTH_MEAN_MALE = 27;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Knee Width Deviation Male</b></em>' attribute.
@@ -786,7 +777,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_KNEE_WIDTH_DEVIATION_MALE = 29;
+	int PASSENGER_PROPERTIES__PASSENGER_KNEE_WIDTH_DEVIATION_MALE = 28;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Knee Width Mean Female</b></em>' attribute.
@@ -795,7 +786,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_KNEE_WIDTH_MEAN_FEMALE = 30;
+	int PASSENGER_PROPERTIES__PASSENGER_KNEE_WIDTH_MEAN_FEMALE = 29;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Knee Width Deviation Female</b></em>' attribute.
@@ -804,7 +795,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_KNEE_WIDTH_DEVIATION_FEMALE = 31;
+	int PASSENGER_PROPERTIES__PASSENGER_KNEE_WIDTH_DEVIATION_FEMALE = 30;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Knee Depth Mean Male</b></em>' attribute.
@@ -813,7 +804,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_KNEE_DEPTH_MEAN_MALE = 32;
+	int PASSENGER_PROPERTIES__PASSENGER_KNEE_DEPTH_MEAN_MALE = 31;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Knee Depth Deviation Male</b></em>' attribute.
@@ -822,7 +813,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_KNEE_DEPTH_DEVIATION_MALE = 33;
+	int PASSENGER_PROPERTIES__PASSENGER_KNEE_DEPTH_DEVIATION_MALE = 32;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Knee Depth Mean Female</b></em>' attribute.
@@ -831,7 +822,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_KNEE_DEPTH_MEAN_FEMALE = 34;
+	int PASSENGER_PROPERTIES__PASSENGER_KNEE_DEPTH_MEAN_FEMALE = 33;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Knee Depth Deviation Female</b></em>' attribute.
@@ -840,7 +831,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_KNEE_DEPTH_DEVIATION_FEMALE = 35;
+	int PASSENGER_PROPERTIES__PASSENGER_KNEE_DEPTH_DEVIATION_FEMALE = 34;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Knee Height Mean Male</b></em>' attribute.
@@ -849,7 +840,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_KNEE_HEIGHT_MEAN_MALE = 36;
+	int PASSENGER_PROPERTIES__PASSENGER_KNEE_HEIGHT_MEAN_MALE = 35;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Knee Height Deviation Male</b></em>' attribute.
@@ -858,7 +849,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_KNEE_HEIGHT_DEVIATION_MALE = 37;
+	int PASSENGER_PROPERTIES__PASSENGER_KNEE_HEIGHT_DEVIATION_MALE = 36;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Knee Height Mean Female</b></em>' attribute.
@@ -867,7 +858,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_KNEE_HEIGHT_MEAN_FEMALE = 38;
+	int PASSENGER_PROPERTIES__PASSENGER_KNEE_HEIGHT_MEAN_FEMALE = 37;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Knee Height Deviation Female</b></em>' attribute.
@@ -876,7 +867,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_KNEE_HEIGHT_DEVIATION_FEMALE = 39;
+	int PASSENGER_PROPERTIES__PASSENGER_KNEE_HEIGHT_DEVIATION_FEMALE = 38;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Hip Width Mean Male</b></em>' attribute.
@@ -885,7 +876,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_HIP_WIDTH_MEAN_MALE = 40;
+	int PASSENGER_PROPERTIES__PASSENGER_HIP_WIDTH_MEAN_MALE = 39;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Hip Width Deviation Male</b></em>' attribute.
@@ -894,7 +885,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_HIP_WIDTH_DEVIATION_MALE = 41;
+	int PASSENGER_PROPERTIES__PASSENGER_HIP_WIDTH_DEVIATION_MALE = 40;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Hip Width Mean Female</b></em>' attribute.
@@ -903,7 +894,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_HIP_WIDTH_MEAN_FEMALE = 42;
+	int PASSENGER_PROPERTIES__PASSENGER_HIP_WIDTH_MEAN_FEMALE = 41;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Hip Width Deviation Female</b></em>' attribute.
@@ -912,7 +903,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_HIP_WIDTH_DEVIATION_FEMALE = 43;
+	int PASSENGER_PROPERTIES__PASSENGER_HIP_WIDTH_DEVIATION_FEMALE = 42;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Hip Depth Mean Male</b></em>' attribute.
@@ -921,7 +912,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_HIP_DEPTH_MEAN_MALE = 44;
+	int PASSENGER_PROPERTIES__PASSENGER_HIP_DEPTH_MEAN_MALE = 43;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Hip Depth Deviation Male</b></em>' attribute.
@@ -930,7 +921,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_HIP_DEPTH_DEVIATION_MALE = 45;
+	int PASSENGER_PROPERTIES__PASSENGER_HIP_DEPTH_DEVIATION_MALE = 44;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Hip Depth Mean Female</b></em>' attribute.
@@ -939,7 +930,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_HIP_DEPTH_MEAN_FEMALE = 46;
+	int PASSENGER_PROPERTIES__PASSENGER_HIP_DEPTH_MEAN_FEMALE = 45;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Hip Depth Deviation Female</b></em>' attribute.
@@ -948,7 +939,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_HIP_DEPTH_DEVIATION_FEMALE = 47;
+	int PASSENGER_PROPERTIES__PASSENGER_HIP_DEPTH_DEVIATION_FEMALE = 46;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Hip Height Mean Male</b></em>' attribute.
@@ -957,7 +948,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_HIP_HEIGHT_MEAN_MALE = 48;
+	int PASSENGER_PROPERTIES__PASSENGER_HIP_HEIGHT_MEAN_MALE = 47;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Hip Height Deviation Male</b></em>' attribute.
@@ -966,7 +957,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_HIP_HEIGHT_DEVIATION_MALE = 49;
+	int PASSENGER_PROPERTIES__PASSENGER_HIP_HEIGHT_DEVIATION_MALE = 48;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Hip Height Mean Female</b></em>' attribute.
@@ -975,7 +966,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_HIP_HEIGHT_MEAN_FEMALE = 50;
+	int PASSENGER_PROPERTIES__PASSENGER_HIP_HEIGHT_MEAN_FEMALE = 49;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Hip Height Deviation Female</b></em>' attribute.
@@ -984,7 +975,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_HIP_HEIGHT_DEVIATION_FEMALE = 51;
+	int PASSENGER_PROPERTIES__PASSENGER_HIP_HEIGHT_DEVIATION_FEMALE = 50;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Shoulder Width Mean Male</b></em>' attribute.
@@ -993,7 +984,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_SHOULDER_WIDTH_MEAN_MALE = 52;
+	int PASSENGER_PROPERTIES__PASSENGER_SHOULDER_WIDTH_MEAN_MALE = 51;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Shoulder Width Deviation Male</b></em>' attribute.
@@ -1002,7 +993,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_SHOULDER_WIDTH_DEVIATION_MALE = 53;
+	int PASSENGER_PROPERTIES__PASSENGER_SHOULDER_WIDTH_DEVIATION_MALE = 52;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Shoulder Width Mean Female</b></em>' attribute.
@@ -1011,7 +1002,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_SHOULDER_WIDTH_MEAN_FEMALE = 54;
+	int PASSENGER_PROPERTIES__PASSENGER_SHOULDER_WIDTH_MEAN_FEMALE = 53;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Shoulder Width Deviation Female</b></em>' attribute.
@@ -1020,7 +1011,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_SHOULDER_WIDTH_DEVIATION_FEMALE = 55;
+	int PASSENGER_PROPERTIES__PASSENGER_SHOULDER_WIDTH_DEVIATION_FEMALE = 54;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Shoulder Depth Mean Male</b></em>' attribute.
@@ -1029,7 +1020,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_SHOULDER_DEPTH_MEAN_MALE = 56;
+	int PASSENGER_PROPERTIES__PASSENGER_SHOULDER_DEPTH_MEAN_MALE = 55;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Shoulder Depth Deviation Male</b></em>' attribute.
@@ -1038,7 +1029,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_SHOULDER_DEPTH_DEVIATION_MALE = 57;
+	int PASSENGER_PROPERTIES__PASSENGER_SHOULDER_DEPTH_DEVIATION_MALE = 56;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Shoulder Depth Mean Female</b></em>' attribute.
@@ -1047,7 +1038,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_SHOULDER_DEPTH_MEAN_FEMALE = 58;
+	int PASSENGER_PROPERTIES__PASSENGER_SHOULDER_DEPTH_MEAN_FEMALE = 57;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Shoulder Depth Deviation Female</b></em>' attribute.
@@ -1056,7 +1047,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_SHOULDER_DEPTH_DEVIATION_FEMALE = 59;
+	int PASSENGER_PROPERTIES__PASSENGER_SHOULDER_DEPTH_DEVIATION_FEMALE = 58;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Shoulder Height Mean Male</b></em>' attribute.
@@ -1065,7 +1056,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_SHOULDER_HEIGHT_MEAN_MALE = 60;
+	int PASSENGER_PROPERTIES__PASSENGER_SHOULDER_HEIGHT_MEAN_MALE = 59;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Shoulder Height Deviation Male</b></em>' attribute.
@@ -1074,7 +1065,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_SHOULDER_HEIGHT_DEVIATION_MALE = 61;
+	int PASSENGER_PROPERTIES__PASSENGER_SHOULDER_HEIGHT_DEVIATION_MALE = 60;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Shoulder Height Mean Female</b></em>' attribute.
@@ -1083,7 +1074,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_SHOULDER_HEIGHT_MEAN_FEMALE = 62;
+	int PASSENGER_PROPERTIES__PASSENGER_SHOULDER_HEIGHT_MEAN_FEMALE = 61;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Shoulder Height Deviation Female</b></em>' attribute.
@@ -1092,7 +1083,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES__PASSENGER_SHOULDER_HEIGHT_DEVIATION_FEMALE = 63;
+	int PASSENGER_PROPERTIES__PASSENGER_SHOULDER_HEIGHT_DEVIATION_FEMALE = 62;
 
 	/**
 	 * The number of structural features of the '<em>Passenger Properties</em>' class.
@@ -1101,7 +1092,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_PROPERTIES_FEATURE_COUNT = 64;
+	int PASSENGER_PROPERTIES_FEATURE_COUNT = 63;
 
 	/**
 	 * The number of operations of the '<em>Passenger Properties</em>' class.
@@ -1878,17 +1869,6 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPassengerProperties_SeatInterferenceMultiPassengerFactor();
-
-	/**
-	 * Returns the meta object for the attribute '{@link com.paxelerate.model.settings.PassengerProperties#getPassengerWalkingSpeedFactor <em>Passenger Walking Speed Factor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Passenger Walking Speed Factor</em>'.
-	 * @see com.paxelerate.model.settings.PassengerProperties#getPassengerWalkingSpeedFactor()
-	 * @see #getPassengerProperties()
-	 * @generated
-	 */
-	EAttribute getPassengerProperties_PassengerWalkingSpeedFactor();
 
 	/**
 	 * Returns the meta object for the attribute '{@link com.paxelerate.model.settings.PassengerProperties#getDoorSelection <em>Door Selection</em>}'.
@@ -2960,15 +2940,6 @@ public interface SettingsPackage extends EPackage {
 		 */
 		EAttribute PASSENGER_PROPERTIES__SEAT_INTERFERENCE_MULTI_PASSENGER_FACTOR = eINSTANCE
 				.getPassengerProperties_SeatInterferenceMultiPassengerFactor();
-
-		/**
-		 * The meta object literal for the '<em><b>Passenger Walking Speed Factor</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PASSENGER_PROPERTIES__PASSENGER_WALKING_SPEED_FACTOR = eINSTANCE
-				.getPassengerProperties_PassengerWalkingSpeedFactor();
 
 		/**
 		 * The meta object literal for the '<em><b>Door Selection</b></em>' attribute feature.

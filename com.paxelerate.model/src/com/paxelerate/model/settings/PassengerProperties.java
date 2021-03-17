@@ -40,7 +40,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.paxelerate.model.settings.PassengerProperties#getSeatInterferenceProcessTimeFoldingSeatDeviation <em>Seat Interference Process Time Folding Seat Deviation</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.PassengerProperties#getPassivePassengerWaitingTimeAfterCollision <em>Passive Passenger Waiting Time After Collision</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.PassengerProperties#getSeatInterferenceMultiPassengerFactor <em>Seat Interference Multi Passenger Factor</em>}</li>
- *   <li>{@link com.paxelerate.model.settings.PassengerProperties#getPassengerWalkingSpeedFactor <em>Passenger Walking Speed Factor</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.PassengerProperties#getDoorSelection <em>Door Selection</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.PassengerProperties#getGroupPercentage <em>Group Percentage</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.PassengerProperties#getAgeSpeedDependency <em>Age Speed Dependency</em>}</li>
@@ -616,29 +615,6 @@ public interface PassengerProperties extends EObject {
 	 * @generated
 	 */
 	void setSeatInterferenceMultiPassengerFactor(double value);
-
-	/**
-	 * Returns the value of the '<em><b>Passenger Walking Speed Factor</b></em>' attribute.
-	 * The default value is <code>"1.0"</code>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Passenger Walking Speed Factor</em>' attribute.
-	 * @see #setPassengerWalkingSpeedFactor(double)
-	 * @see com.paxelerate.model.settings.SettingsPackage#getPassengerProperties_PassengerWalkingSpeedFactor()
-	 * @model default="1.0"
-	 * @generated
-	 */
-	double getPassengerWalkingSpeedFactor();
-
-	/**
-	 * Sets the value of the '{@link com.paxelerate.model.settings.PassengerProperties#getPassengerWalkingSpeedFactor <em>Passenger Walking Speed Factor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Passenger Walking Speed Factor</em>' attribute.
-	 * @see #getPassengerWalkingSpeedFactor()
-	 * @generated
-	 */
-	void setPassengerWalkingSpeedFactor(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Door Selection</b></em>' attribute.
