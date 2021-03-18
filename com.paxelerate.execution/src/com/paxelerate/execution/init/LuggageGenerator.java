@@ -40,9 +40,9 @@ public interface LuggageGenerator {
 
 		// Determine the percentages
 		double jackets = input.getPercentageOfPassengersWithJackets().getValue();
-		double largeBags = input.getPercentageOfPassengersWithJackets().getValue();
-		double mediumBags = input.getPercentageOfPassengersWithJackets().getValue();
-		double smallBags = input.getPercentageOfPassengersWithJackets().getValue();
+		double largeBags = input.getPercentageOfPassengersWithSmallBags().getValue();
+		double mediumBags = input.getPercentageOfPassengersWithMediumBags().getValue();
+		double smallBags = input.getPercentageOfPassengersWithLargeBags().getValue();
 
 		// Calculate the no luggage percentage
 		if (100.0 - (jackets + smallBags + mediumBags + largeBags) < 0.0) {
