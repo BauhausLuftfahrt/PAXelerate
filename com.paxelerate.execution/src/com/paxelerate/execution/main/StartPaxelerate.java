@@ -10,6 +10,7 @@ import java.awt.SystemTray;
 import java.awt.Toolkit;
 import java.awt.TrayIcon;
 import java.awt.TrayIcon.MessageType;
+import java.io.File;
 
 import com.paxelerate.execution.actions.BatchSimulationAction;
 
@@ -39,7 +40,24 @@ public class StartPaxelerate {
 
 		Log.createHead(NAME, "1.0", AUTHORS, 2015);
 
-		FilePicker.getFile(DEFAULT_PATH, FILE_FORMAT).ifPresent(BatchSimulationAction::run);
+		if (args.length > 0) {
+
+			Log.printInfoLine("Launch arguments detected.", null);
+
+			File file = new File(args[0]);
+			if (file.exists()) {
+
+				Log.printInfoLine("CPACS input file launch argument detected.", null);
+				BatchSimulationAction.run(file);
+			} else {
+
+				Log.printInfoLine("Launch arguments error! Could not find file.", "TERMINATED");
+				System.exit(-1);
+			}
+
+		} else {
+			FilePicker.getFile(DEFAULT_PATH, FILE_FORMAT).ifPresent(BatchSimulationAction::run);
+		}
 
 		try {
 			TrayIcon mainTrayIcon = new TrayIcon(Toolkit.getDefaultToolkit().getImage(""));
