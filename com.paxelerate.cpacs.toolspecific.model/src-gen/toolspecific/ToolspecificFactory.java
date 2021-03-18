@@ -184,6 +184,24 @@ public interface ToolspecificFactory extends EFactory {
 	StringVectorBaseType createStringVectorBaseType();
 
 	/**
+	 * Returns a new object of class '<em>Studies Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Studies Type</em>'.
+	 * @generated
+	 */
+	StudiesType createStudiesType();
+
+	/**
+	 * Returns a new object of class '<em>Study Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Study Type</em>'.
+	 * @generated
+	 */
+	StudyType createStudyType();
+
+	/**
 	 * Returns a new object of class '<em>Time Base Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

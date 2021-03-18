@@ -8,7 +8,6 @@ package com.paxelerate.execution.actions;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +20,6 @@ import org.eclipse.emf.common.util.ECollections;
 
 import com.paxelerate.core.sim.astar.Areamap;
 import com.paxelerate.core.sim.astar.SimulationHandler;
-import com.paxelerate.execution.keys.DataKeys;
 import com.paxelerate.execution.ui.SimulationView;
 import com.paxelerate.model.Deck;
 import com.paxelerate.model.Model;
@@ -34,6 +32,7 @@ import net.bhl.opensource.toolbox.emf.CSVExport;
 import net.bhl.opensource.toolbox.emf.EObjectHelper;
 import net.bhl.opensource.toolbox.io.DataSet;
 import net.bhl.opensource.toolbox.time.StopWatch;
+import toolspecific.StudyType;
 
 /**
  * This command starts the boarding simulation.
@@ -50,13 +49,20 @@ public class SimulateBoardingAction {
 	/**
 	 * Export result data.
 	 *
-	 * @throws FileNotFoundException the file not found exception
-	 * @throws IOException           Signals that an I/O exception has occurred.
+	 * @param iteration
+	 * @param deck
+	 * @param fileName
+	 * @param studyName
 	 */
-	private static void exportResultData(Integer iteration, Deck deck) {
+	private static void exportResultData(Integer iteration, Deck deck, String fileName, String studyName) {
+
+		String exportPath = System.getProperty("user.home") + "\\Documents\\paxelerate\\" + fileName.replace(".", "_")
+				+ "\\" + studyName + "\\";
+
+		String outputFileName = "study_" + studyName;
 
 		try {
-			CSVExport csv = new CSVExport(DataKeys.RESULT_FILE_NAME, DataKeys.EXPORT_PATH, false);
+			CSVExport csv = new CSVExport(outputFileName, exportPath, false);
 
 			csv.addHead(iteration);
 			csv.addAll(EObjectHelper.getParent(Model.class, deck).getSettings());
@@ -77,20 +83,17 @@ public class SimulateBoardingAction {
 
 				int id = 1;
 
-				File file = new File(DataKeys.EXPORT_PATH + DataKeys.RESULT_FILE_NAME + "_PAX_" + iteration + "_thread_"
-						+ id + ".csv");
+				File file = new File(exportPath + outputFileName + "_PAX_" + iteration + "_thread_" + id + ".csv");
 
 				while (file.exists()) {
 
 					id++;
 
-					file = new File(DataKeys.EXPORT_PATH + DataKeys.RESULT_FILE_NAME + "_PAX_" + iteration + "_thread_"
-							+ id + ".csv");
+					file = new File(exportPath + outputFileName + "_PAX_" + iteration + "_thread_" + id + ".csv");
 
 				}
 
-				CSVExport csv = new CSVExport(DataKeys.RESULT_FILE_NAME + "_PAX_" + iteration + "_thread_" + id,
-						DataKeys.EXPORT_PATH, true);
+				CSVExport csv = new CSVExport(outputFileName + "_PAX_" + iteration + "_thread_" + id, exportPath, true);
 
 				ECollections.sort(deck.getPassengers(), (p1, p2) -> Integer.valueOf(p1.getGender().toString().charAt(0))
 						.compareTo((int) p2.getGender().toString().charAt(0)));
@@ -112,10 +115,13 @@ public class SimulateBoardingAction {
 	}
 
 	/**
-	 *
-	 * @param cabin
+	 * @param deck
+	 * @param iteration
+	 * @param map
+	 * @param fileName
+	 * @param study
 	 */
-	public SimulateBoardingAction(final Deck deck, int iteration, Areamap map) {
+	public SimulateBoardingAction(final Deck deck, int iteration, Areamap map, String fileName, StudyType study) {
 
 		Settings settings = EObjectHelper.getParent(Model.class, deck).getSettings();
 
@@ -130,7 +136,7 @@ public class SimulateBoardingAction {
 		SimulationHandler handler = new SimulationHandler(deck, false, map);
 
 		/* Show WIP simulation view */
-		if (settings.isDisplaySimulation()) {
+		if (study.getDisplaySimulation().isValue()) {
 			runAreaMapWindow(handler);
 		}
 
@@ -155,13 +161,13 @@ public class SimulateBoardingAction {
 				e.printStackTrace();
 			}
 
-			if (settings.isDisplaySimulation() && frame == null) {
+			if (study.getDisplaySimulation().isValue() && frame == null) {
 				handler.reset();
 			}
 		}
 
 		/* closes the simulation view after completion */
-		if (settings.isDisplaySimulation() && frame != null) {
+		if (study.getDisplaySimulation().isValue() && frame != null) {
 			frame.dispose();
 		}
 
@@ -171,7 +177,7 @@ public class SimulateBoardingAction {
 				simTimer.getElapsedTimeSecs());
 
 		// data export
-		exportResultData(iteration, deck);
+		exportResultData(iteration, deck, fileName, study.getUID());
 		handler.reset();
 		boardingStatus.clear();
 

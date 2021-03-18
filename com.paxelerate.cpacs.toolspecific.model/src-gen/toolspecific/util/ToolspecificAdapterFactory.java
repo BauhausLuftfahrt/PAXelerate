@@ -157,6 +157,16 @@ public class ToolspecificAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseStudiesType(StudiesType object) {
+			return createStudiesTypeAdapter();
+		}
+
+		@Override
+		public Adapter caseStudyType(StudyType object) {
+			return createStudyTypeAdapter();
+		}
+
+		@Override
 		public Adapter caseTimeBaseType(TimeBaseType object) {
 			return createTimeBaseTypeAdapter();
 		}
@@ -429,6 +439,34 @@ public class ToolspecificAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStringVectorBaseTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link toolspecific.StudiesType <em>Studies Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see toolspecific.StudiesType
+	 * @generated
+	 */
+	public Adapter createStudiesTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link toolspecific.StudyType <em>Study Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see toolspecific.StudyType
+	 * @generated
+	 */
+	public Adapter createStudyTypeAdapter() {
 		return null;
 	}
 

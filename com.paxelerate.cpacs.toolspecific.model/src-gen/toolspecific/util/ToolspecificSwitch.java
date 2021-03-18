@@ -210,6 +210,24 @@ public class ToolspecificSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case ToolspecificPackage.STUDIES_TYPE: {
+			StudiesType studiesType = (StudiesType) theEObject;
+			T result = caseStudiesType(studiesType);
+			if (result == null)
+				result = caseComplexBaseType(studiesType);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case ToolspecificPackage.STUDY_TYPE: {
+			StudyType studyType = (StudyType) theEObject;
+			T result = caseStudyType(studyType);
+			if (result == null)
+				result = caseComplexBaseType(studyType);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case ToolspecificPackage.TIME_BASE_TYPE: {
 			TimeBaseType timeBaseType = (TimeBaseType) theEObject;
 			T result = caseTimeBaseType(timeBaseType);
@@ -489,6 +507,36 @@ public class ToolspecificSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseStringVectorBaseType(StringVectorBaseType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Studies Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Studies Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStudiesType(StudiesType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Study Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Study Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStudyType(StudyType object) {
 		return null;
 	}
 

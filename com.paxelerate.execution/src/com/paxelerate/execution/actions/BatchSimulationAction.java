@@ -6,7 +6,6 @@
 package com.paxelerate.execution.actions;
 
 import java.io.File;
-import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +14,6 @@ import java.util.stream.Collectors;
 
 import com.paxelerate.core.sim.astar.Areamap;
 import com.paxelerate.execution.init.BoardingDelayCalculator;
-import com.paxelerate.execution.keys.DataKeys;
 import com.paxelerate.model.Model;
 import com.paxelerate.model.ModelFactory;
 import com.paxelerate.model.enums.DoorSelection;
@@ -33,7 +31,7 @@ import net.bhl.opensource.cpacs.functions.CPACSInitializer;
 import net.bhl.opensource.toolbox.emf.EObjectHelper;
 import net.bhl.opensource.toolbox.io.Log;
 import net.bhl.opensource.toolbox.time.StopWatch;
-import toolspecific.PaxelerateInputType;
+import toolspecific.StudyType;
 import toolspecific.ToolspecificFactory;
 
 /**
@@ -59,122 +57,77 @@ public interface BatchSimulationAction {
 		CpacsType cpacs = CPACSInitializer.runWithToolspecific(cpacsFile,
 				ToolspecificFactory.eINSTANCE.createPaxelerateType());
 
-		// Get the tool specific input
-		PaxelerateInputType input;
+		// Loop through the tool specific input studies
+		for (StudyType study : EObjectHelper.getChildren(cpacs.getToolspecific(), StudyType.class)) {
 
-		try {
-			input = EObjectHelper.getFilteredChildren(cpacs.getToolspecific(), PaxelerateInputType.class,
-					e -> e.getIterations() != null).get(0);
+			// Initialize model
+			Model model = ModelFactory.eINSTANCE.createModel();
+			InitializeFromCPACSAction.run(cpacs, model);
 
-		} catch (IndexOutOfBoundsException e) {
+			// Initialize settings
+			model.setSettings(SettingsFactory.eINSTANCE.createSettings());
+			model.getSettings().setLuggageProperties(SettingsFactory.eINSTANCE.createLuggageProperties());
+			model.getSettings().setPassengerProperties(PassengerPropertiesExtensions.create());
 
-			// If there is no tool-specfic input, apply default values instead.
-			input = ToolspecificFactory.eINSTANCE.createPaxelerateInputType();
+			// Set values from the CPACS input here
+			model.getSettings().setSimulationType(SimulationType.get(study.getSimulationType().getValue()));
+			model.getSettings().setSeatType(SeatType.get(study.getSeatType().getValue()));
+			model.getSettings().setSimulationGridResolution(study.getSimulationGridResolution().getValue());
+			model.getSettings().setSimulationSpeedFactor((int) study.getSimulationSpeedFactor().getValue());
 
-			input.setIterations(ToolspecificFactory.eINSTANCE.createIntegerBaseType());
-			input.getIterations().setValue(BigInteger.valueOf(1));
-			input.setLoadFactor(ToolspecificFactory.eINSTANCE.createDoubleBaseType());
-			input.getLoadFactor().setValue(1);
-			input.setActiveDoorUIDs(ToolspecificFactory.eINSTANCE.createStringVectorBaseType());
-			input.getActiveDoorUIDs().setValue("1");
+			model.getSettings().getPassengerProperties()
+					.setDoorSelection(DoorSelection.get(study.getDoorSelection().getValue()));
 
-		}
+			// Number of iterations
+			int iterations = study.getIterations().getValue().intValue();
 
-		// Initialize model
-		Model model = ModelFactory.eINSTANCE.createModel();
+			// Match data from CSV to EMF model and load passenger distribution
+			Map<TravelClass, Integer> amounts = new HashMap<>();
 
-		// Initialize settings
-		model.setSettings(SettingsFactory.eINSTANCE.createSettings());
-		model.getSettings().setLuggageProperties(SettingsFactory.eINSTANCE.createLuggageProperties());
-		model.getSettings().setPassengerProperties(PassengerPropertiesExtensions.create());
+			for (TravelClass tc : DeckExtensions.getExistingClasses(model.getDeck())) {
+				amounts.put(tc, (int) Math
+						.round(study.getLoadFactor().getValue() * DeckExtensions.getSeatPerClass(model.getDeck(), tc)));
+			}
 
-		// Set all values from the CPACS input here
-		// TODO: Remove values from model and use CPACS object values instead
-		model.getSettings().setSimulationType(SimulationType.get(input.getSimulationType().getValue()));
-		model.getSettings().setDisplaySimulation(input.getDisplaySimulation().isValue());
-		model.getSettings().setSeatType(SeatType.get(input.getSeatType().getValue()));
-//		model.getSettings().setLuggageModel(null);
-		model.getSettings().setSimulationGridResolution(input.getSimulationGridResolution().getValue());
-		model.getSettings().setSimulationSpeedFactor((int) input.getSimulationSpeedFactor().getValue());
-		model.getSettings().setPassengerSortingScheme(SortingScheme.get(input.getPassengerSortingScheme().getValue()));
+			// Read the door IDs into a integer list.
+			List<Integer> activeDoors = Arrays.asList(String.valueOf(study.getActiveDoorUIDs().getValue()).split(";"))
+					.stream().mapToInt(Integer::valueOf).boxed().collect(Collectors.toList());
 
-		// TODO: fix share being an integer here
-		model.getSettings().getPassengerProperties()
-				.setPassengerAggressiveMoodShare((int) (input.getPassengerAgressiveMoodShare().getValue() * 100.0));
-		model.getSettings().getPassengerProperties()
-				.setSeatInterferenceProcessTimeMean(input.getSeatInterferenceProcessTimeMean().getValue());
-		model.getSettings().getPassengerProperties()
-				.setSeatInterferenceProcessTimeDeviation(input.getSeatInterferenceProcessTimeDeviation().getValue());
-		model.getSettings().getPassengerProperties()
-				.setDoorSelection(DoorSelection.get(input.getDoorSelection().getValue()));
+			// Loop through all the doors and look for the door IDs.
+			for (Door door : model.getDeck().getDoors()) {
+				door.setActive(activeDoors.contains(door.getId()));
+			}
 
-		model.getSettings().getLuggageProperties()
-				.setPercentageOfPassengersWithJacket(input.getPercentageOfPassengersWithJackets().getValue());
-		model.getSettings().getLuggageProperties()
-				.setPercentageOfPassengersWithSmallBag(input.getPercentageOfPassengersWithSmallBags().getValue());
-		model.getSettings().getLuggageProperties()
-				.setPercentageOfPassengersWithMediumBag(input.getPercentageOfPassengersWithMediumBags().getValue());
-		model.getSettings().getLuggageProperties()
-				.setPercentageOfPassengersWithLargeBag(input.getPercentageOfPassengersWithLargeBags().getValue());
+			// Create the area map
+			Areamap map = new Areamap(model.getDeck());
 
-		InitializeFromCPACSAction.run(cpacs, model);
+			// Loop through the iterations of the same simulation variant
+			for (int i = 1; i <= iterations; i++) {
 
-		DataKeys.RESULT_FILE_NAME = "results_" + DataKeys.IMPORT_FILE_NAME;
+				System.out.println(Log.DIVIDER);
 
-		// Number of iterations
-		int iterations = input.getIterations().getValue().intValue();
-		double loadFactor = input.getLoadFactor().getValue();
-		String activeDoorIDs = input.getActiveDoorUIDs().getValue();
+				Log.startWithNoEnd("Loop " + i + "/" + iterations + " of '" + study.getUID() + "'");
 
-		SortingScheme passengerSortingScheme = SortingScheme.RANDOM;
+				StopWatch simTimer = new StopWatch();
 
-		DataKeys.EXPORT_PATH = DataKeys.IMPORT_PATH + "\\" + model.getName() + "_" + passengerSortingScheme + "_doors_"
-				+ activeDoorIDs + "\\";
+				// Generate the passengers
+				GeneratePassengersAction.run(model.getDeck(), amounts, study);
 
-		// Match data from CSV to EMF model and load passenger distribution
-		Map<TravelClass, Integer> amounts = new HashMap<>();
+				// Sort the passengers
+				SortPassengersAction.sort(model.getDeck(),
+						SortingScheme.get(study.getPassengerSortingScheme().getValue()));
 
-		for (TravelClass tc : DeckExtensions.getExistingClasses(model.getDeck())) {
-			amounts.put(tc, (int) Math.round(loadFactor * DeckExtensions.getSeatPerClass(model.getDeck(), tc)));
-		}
+				// Apply delay to all passengers
+				BoardingDelayCalculator.calculateDelay(model.getDeck().getDoors(), model.getDeck().getPassengers());
 
-		// Read the door IDs into a integer list.
-		List<Integer> activeDoors = Arrays.asList(String.valueOf(activeDoorIDs).split(";")).stream()
-				.mapToInt(Integer::valueOf).boxed().collect(Collectors.toList());
+				// Run the simulation
+				new SimulateBoardingAction(model.getDeck(), i, map, cpacsFile.getName(), study);
 
-		// Loop through all the doors and look for the door IDs.
-		for (Door door : model.getDeck().getDoors()) {
-			door.setActive(activeDoors.contains(door.getId()));
-		}
-
-		// Create the area map
-		Areamap map = new Areamap(model.getDeck());
-
-		// Loop through the iterations of the same simulation variant
-		for (int i = 1; i <= iterations; i++) {
-
+				simTimer.stop();
+				Log.endWithNoStart(simTimer);
+			}
 			System.out.println(Log.DIVIDER);
-
-			Log.startWithNoEnd("Loop " + i + "/" + iterations + " of '" + model.getName() + "'");
-
-			StopWatch simTimer = new StopWatch();
-
-			// Generate the passengers
-			GeneratePassengersAction.run(model.getDeck(), amounts);
-
-			// Sort the passengers
-			SortPassengersAction.sort(model.getDeck(), model.getSettings().getPassengerSortingScheme());
-
-			// Apply delay to all passengers
-			BoardingDelayCalculator.calculateDelay(model.getDeck().getDoors(), model.getDeck().getPassengers());
-
-			// Run the simulation
-			new SimulateBoardingAction(model.getDeck(), i, map);
-
-			simTimer.stop();
-			Log.endWithNoStart(simTimer);
 		}
-		System.out.println(Log.DIVIDER);
 
 		time.stop();
 		Log.start("All Completed");

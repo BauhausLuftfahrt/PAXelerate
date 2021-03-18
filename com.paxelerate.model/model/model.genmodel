@@ -107,12 +107,10 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//settings/Settings/luggageProperties"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//settings/Settings/passengerProperties"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/Settings/simulationType"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/Settings/displaySimulation"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/Settings/useCenterLuggageStorage"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/Settings/seatType"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/Settings/simulationGridResolution"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/Settings/simulationSpeedFactor"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/Settings/passengerSortingScheme"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/Settings/threadSleepTimeDefault"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/Settings/sidewaysFoldabeSeatPopupTimeMean"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/Settings/sidewaysFoldabeSeatPopupTimeDeviation"/>
@@ -123,10 +121,6 @@
       </genClasses>
       <genClasses ecoreClass="model.ecore#//settings/LuggageProperties">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/maxNumberOfLuggageItemsPerPax"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/percentageOfPassengersWithJacket"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/percentageOfPassengersWithSmallBag"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/percentageOfPassengersWithMediumBag"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/percentageOfPassengersWithLargeBag"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/luggageStowDistanceFromSeatMean"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/luggageStowDistanceFromSeatDeviation"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//settings/LuggageProperties/jacketStowTimeDeviation"/>

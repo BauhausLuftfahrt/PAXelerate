@@ -21,10 +21,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link com.paxelerate.model.settings.impl.LuggagePropertiesImpl#getMaxNumberOfLuggageItemsPerPax <em>Max Number Of Luggage Items Per Pax</em>}</li>
- *   <li>{@link com.paxelerate.model.settings.impl.LuggagePropertiesImpl#getPercentageOfPassengersWithJacket <em>Percentage Of Passengers With Jacket</em>}</li>
- *   <li>{@link com.paxelerate.model.settings.impl.LuggagePropertiesImpl#getPercentageOfPassengersWithSmallBag <em>Percentage Of Passengers With Small Bag</em>}</li>
- *   <li>{@link com.paxelerate.model.settings.impl.LuggagePropertiesImpl#getPercentageOfPassengersWithMediumBag <em>Percentage Of Passengers With Medium Bag</em>}</li>
- *   <li>{@link com.paxelerate.model.settings.impl.LuggagePropertiesImpl#getPercentageOfPassengersWithLargeBag <em>Percentage Of Passengers With Large Bag</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.impl.LuggagePropertiesImpl#getLuggageStowDistanceFromSeatMean <em>Luggage Stow Distance From Seat Mean</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.impl.LuggagePropertiesImpl#getLuggageStowDistanceFromSeatDeviation <em>Luggage Stow Distance From Seat Deviation</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.impl.LuggagePropertiesImpl#getJacketStowTimeDeviation <em>Jacket Stow Time Deviation</em>}</li>
@@ -72,86 +68,6 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 	 * @ordered
 	 */
 	protected int maxNumberOfLuggageItemsPerPax = MAX_NUMBER_OF_LUGGAGE_ITEMS_PER_PAX_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getPercentageOfPassengersWithJacket() <em>Percentage Of Passengers With Jacket</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPercentageOfPassengersWithJacket()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double PERCENTAGE_OF_PASSENGERS_WITH_JACKET_EDEFAULT = 0.0;
-
-	/**
-	 * The cached value of the '{@link #getPercentageOfPassengersWithJacket() <em>Percentage Of Passengers With Jacket</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPercentageOfPassengersWithJacket()
-	 * @generated
-	 * @ordered
-	 */
-	protected double percentageOfPassengersWithJacket = PERCENTAGE_OF_PASSENGERS_WITH_JACKET_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getPercentageOfPassengersWithSmallBag() <em>Percentage Of Passengers With Small Bag</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPercentageOfPassengersWithSmallBag()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double PERCENTAGE_OF_PASSENGERS_WITH_SMALL_BAG_EDEFAULT = 0.0;
-
-	/**
-	 * The cached value of the '{@link #getPercentageOfPassengersWithSmallBag() <em>Percentage Of Passengers With Small Bag</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPercentageOfPassengersWithSmallBag()
-	 * @generated
-	 * @ordered
-	 */
-	protected double percentageOfPassengersWithSmallBag = PERCENTAGE_OF_PASSENGERS_WITH_SMALL_BAG_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getPercentageOfPassengersWithMediumBag() <em>Percentage Of Passengers With Medium Bag</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPercentageOfPassengersWithMediumBag()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_BAG_EDEFAULT = 0.0;
-
-	/**
-	 * The cached value of the '{@link #getPercentageOfPassengersWithMediumBag() <em>Percentage Of Passengers With Medium Bag</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPercentageOfPassengersWithMediumBag()
-	 * @generated
-	 * @ordered
-	 */
-	protected double percentageOfPassengersWithMediumBag = PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_BAG_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getPercentageOfPassengersWithLargeBag() <em>Percentage Of Passengers With Large Bag</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPercentageOfPassengersWithLargeBag()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double PERCENTAGE_OF_PASSENGERS_WITH_LARGE_BAG_EDEFAULT = 0.0;
-
-	/**
-	 * The cached value of the '{@link #getPercentageOfPassengersWithLargeBag() <em>Percentage Of Passengers With Large Bag</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPercentageOfPassengersWithLargeBag()
-	 * @generated
-	 * @ordered
-	 */
-	protected double percentageOfPassengersWithLargeBag = PERCENTAGE_OF_PASSENGERS_WITH_LARGE_BAG_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getLuggageStowDistanceFromSeatMean() <em>Luggage Stow Distance From Seat Mean</em>}' attribute.
@@ -653,98 +569,6 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 			eNotify(new ENotificationImpl(this, Notification.SET,
 					SettingsPackage.LUGGAGE_PROPERTIES__MAX_NUMBER_OF_LUGGAGE_ITEMS_PER_PAX,
 					oldMaxNumberOfLuggageItemsPerPax, maxNumberOfLuggageItemsPerPax));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public double getPercentageOfPassengersWithJacket() {
-		return percentageOfPassengersWithJacket;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPercentageOfPassengersWithJacket(double newPercentageOfPassengersWithJacket) {
-		double oldPercentageOfPassengersWithJacket = percentageOfPassengersWithJacket;
-		percentageOfPassengersWithJacket = newPercentageOfPassengersWithJacket;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					SettingsPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_JACKET,
-					oldPercentageOfPassengersWithJacket, percentageOfPassengersWithJacket));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public double getPercentageOfPassengersWithSmallBag() {
-		return percentageOfPassengersWithSmallBag;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPercentageOfPassengersWithSmallBag(double newPercentageOfPassengersWithSmallBag) {
-		double oldPercentageOfPassengersWithSmallBag = percentageOfPassengersWithSmallBag;
-		percentageOfPassengersWithSmallBag = newPercentageOfPassengersWithSmallBag;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					SettingsPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_BAG,
-					oldPercentageOfPassengersWithSmallBag, percentageOfPassengersWithSmallBag));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public double getPercentageOfPassengersWithMediumBag() {
-		return percentageOfPassengersWithMediumBag;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPercentageOfPassengersWithMediumBag(double newPercentageOfPassengersWithMediumBag) {
-		double oldPercentageOfPassengersWithMediumBag = percentageOfPassengersWithMediumBag;
-		percentageOfPassengersWithMediumBag = newPercentageOfPassengersWithMediumBag;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					SettingsPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_BAG,
-					oldPercentageOfPassengersWithMediumBag, percentageOfPassengersWithMediumBag));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public double getPercentageOfPassengersWithLargeBag() {
-		return percentageOfPassengersWithLargeBag;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPercentageOfPassengersWithLargeBag(double newPercentageOfPassengersWithLargeBag) {
-		double oldPercentageOfPassengersWithLargeBag = percentageOfPassengersWithLargeBag;
-		percentageOfPassengersWithLargeBag = newPercentageOfPassengersWithLargeBag;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					SettingsPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_LARGE_BAG,
-					oldPercentageOfPassengersWithLargeBag, percentageOfPassengersWithLargeBag));
 	}
 
 	/**
@@ -1279,14 +1103,6 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 		switch (featureID) {
 		case SettingsPackage.LUGGAGE_PROPERTIES__MAX_NUMBER_OF_LUGGAGE_ITEMS_PER_PAX:
 			return getMaxNumberOfLuggageItemsPerPax();
-		case SettingsPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_JACKET:
-			return getPercentageOfPassengersWithJacket();
-		case SettingsPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_BAG:
-			return getPercentageOfPassengersWithSmallBag();
-		case SettingsPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_BAG:
-			return getPercentageOfPassengersWithMediumBag();
-		case SettingsPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_LARGE_BAG:
-			return getPercentageOfPassengersWithLargeBag();
 		case SettingsPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_MEAN:
 			return getLuggageStowDistanceFromSeatMean();
 		case SettingsPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_DEVIATION:
@@ -1347,18 +1163,6 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 		switch (featureID) {
 		case SettingsPackage.LUGGAGE_PROPERTIES__MAX_NUMBER_OF_LUGGAGE_ITEMS_PER_PAX:
 			setMaxNumberOfLuggageItemsPerPax((Integer) newValue);
-			return;
-		case SettingsPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_JACKET:
-			setPercentageOfPassengersWithJacket((Double) newValue);
-			return;
-		case SettingsPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_BAG:
-			setPercentageOfPassengersWithSmallBag((Double) newValue);
-			return;
-		case SettingsPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_BAG:
-			setPercentageOfPassengersWithMediumBag((Double) newValue);
-			return;
-		case SettingsPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_LARGE_BAG:
-			setPercentageOfPassengersWithLargeBag((Double) newValue);
 			return;
 		case SettingsPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_MEAN:
 			setLuggageStowDistanceFromSeatMean((Double) newValue);
@@ -1444,18 +1248,6 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 		case SettingsPackage.LUGGAGE_PROPERTIES__MAX_NUMBER_OF_LUGGAGE_ITEMS_PER_PAX:
 			setMaxNumberOfLuggageItemsPerPax(MAX_NUMBER_OF_LUGGAGE_ITEMS_PER_PAX_EDEFAULT);
 			return;
-		case SettingsPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_JACKET:
-			setPercentageOfPassengersWithJacket(PERCENTAGE_OF_PASSENGERS_WITH_JACKET_EDEFAULT);
-			return;
-		case SettingsPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_BAG:
-			setPercentageOfPassengersWithSmallBag(PERCENTAGE_OF_PASSENGERS_WITH_SMALL_BAG_EDEFAULT);
-			return;
-		case SettingsPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_BAG:
-			setPercentageOfPassengersWithMediumBag(PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_BAG_EDEFAULT);
-			return;
-		case SettingsPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_LARGE_BAG:
-			setPercentageOfPassengersWithLargeBag(PERCENTAGE_OF_PASSENGERS_WITH_LARGE_BAG_EDEFAULT);
-			return;
 		case SettingsPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_MEAN:
 			setLuggageStowDistanceFromSeatMean(LUGGAGE_STOW_DISTANCE_FROM_SEAT_MEAN_EDEFAULT);
 			return;
@@ -1539,14 +1331,6 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 		switch (featureID) {
 		case SettingsPackage.LUGGAGE_PROPERTIES__MAX_NUMBER_OF_LUGGAGE_ITEMS_PER_PAX:
 			return maxNumberOfLuggageItemsPerPax != MAX_NUMBER_OF_LUGGAGE_ITEMS_PER_PAX_EDEFAULT;
-		case SettingsPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_JACKET:
-			return percentageOfPassengersWithJacket != PERCENTAGE_OF_PASSENGERS_WITH_JACKET_EDEFAULT;
-		case SettingsPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_BAG:
-			return percentageOfPassengersWithSmallBag != PERCENTAGE_OF_PASSENGERS_WITH_SMALL_BAG_EDEFAULT;
-		case SettingsPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_BAG:
-			return percentageOfPassengersWithMediumBag != PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_BAG_EDEFAULT;
-		case SettingsPackage.LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_LARGE_BAG:
-			return percentageOfPassengersWithLargeBag != PERCENTAGE_OF_PASSENGERS_WITH_LARGE_BAG_EDEFAULT;
 		case SettingsPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_MEAN:
 			return luggageStowDistanceFromSeatMean != LUGGAGE_STOW_DISTANCE_FROM_SEAT_MEAN_EDEFAULT;
 		case SettingsPackage.LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_DEVIATION:
@@ -1610,14 +1394,6 @@ public class LuggagePropertiesImpl extends MinimalEObjectImpl.Container implemen
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (maxNumberOfLuggageItemsPerPax: ");
 		result.append(maxNumberOfLuggageItemsPerPax);
-		result.append(", percentageOfPassengersWithJacket: ");
-		result.append(percentageOfPassengersWithJacket);
-		result.append(", percentageOfPassengersWithSmallBag: ");
-		result.append(percentageOfPassengersWithSmallBag);
-		result.append(", percentageOfPassengersWithMediumBag: ");
-		result.append(percentageOfPassengersWithMediumBag);
-		result.append(", percentageOfPassengersWithLargeBag: ");
-		result.append(percentageOfPassengersWithLargeBag);
 		result.append(", luggageStowDistanceFromSeatMean: ");
 		result.append(luggageStowDistanceFromSeatMean);
 		result.append(", luggageStowDistanceFromSeatDeviation: ");

@@ -17,7 +17,6 @@ Require-Bundle: org.eclipse.emf.common,
  com.paxelerate.cpacs.toolspecific.model
 Export-Package: com.paxelerate.execution.actions,
  com.paxelerate.execution.init,
- com.paxelerate.execution.keys,
  com.paxelerate.execution.main,
  com.paxelerate.execution.ui
 Automatic-Module-Name: com.paxelerate.core

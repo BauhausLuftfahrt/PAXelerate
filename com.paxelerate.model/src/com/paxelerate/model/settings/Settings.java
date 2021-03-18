@@ -4,7 +4,6 @@ package com.paxelerate.model.settings;
 
 import com.paxelerate.model.enums.SeatType;
 import com.paxelerate.model.enums.SimulationType;
-import com.paxelerate.model.enums.SortingScheme;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -19,12 +18,10 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.paxelerate.model.settings.Settings#getLuggageProperties <em>Luggage Properties</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.Settings#getPassengerProperties <em>Passenger Properties</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.Settings#getSimulationType <em>Simulation Type</em>}</li>
- *   <li>{@link com.paxelerate.model.settings.Settings#isDisplaySimulation <em>Display Simulation</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.Settings#isUseCenterLuggageStorage <em>Use Center Luggage Storage</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.Settings#getSeatType <em>Seat Type</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.Settings#getSimulationGridResolution <em>Simulation Grid Resolution</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.Settings#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}</li>
- *   <li>{@link com.paxelerate.model.settings.Settings#getPassengerSortingScheme <em>Passenger Sorting Scheme</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.Settings#getThreadSleepTimeDefault <em>Thread Sleep Time Default</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.Settings#getSidewaysFoldabeSeatPopupTimeMean <em>Sideways Foldabe Seat Popup Time Mean</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.Settings#getSidewaysFoldabeSeatPopupTimeDeviation <em>Sideways Foldabe Seat Popup Time Deviation</em>}</li>
@@ -107,29 +104,6 @@ public interface Settings extends EObject {
 	 * @generated
 	 */
 	void setSimulationType(SimulationType value);
-
-	/**
-	 * Returns the value of the '<em><b>Display Simulation</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Display Simulation</em>' attribute.
-	 * @see #setDisplaySimulation(boolean)
-	 * @see com.paxelerate.model.settings.SettingsPackage#getSettings_DisplaySimulation()
-	 * @model default="true"
-	 * @generated
-	 */
-	boolean isDisplaySimulation();
-
-	/**
-	 * Sets the value of the '{@link com.paxelerate.model.settings.Settings#isDisplaySimulation <em>Display Simulation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Display Simulation</em>' attribute.
-	 * @see #isDisplaySimulation()
-	 * @generated
-	 */
-	void setDisplaySimulation(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Use Center Luggage Storage</b></em>' attribute.
@@ -223,31 +197,6 @@ public interface Settings extends EObject {
 	 * @generated
 	 */
 	void setSimulationSpeedFactor(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Passenger Sorting Scheme</b></em>' attribute.
-	 * The literals are from the enumeration {@link com.paxelerate.model.enums.SortingScheme}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Passenger Sorting Scheme</em>' attribute.
-	 * @see com.paxelerate.model.enums.SortingScheme
-	 * @see #setPassengerSortingScheme(SortingScheme)
-	 * @see com.paxelerate.model.settings.SettingsPackage#getSettings_PassengerSortingScheme()
-	 * @model
-	 * @generated
-	 */
-	SortingScheme getPassengerSortingScheme();
-
-	/**
-	 * Sets the value of the '{@link com.paxelerate.model.settings.Settings#getPassengerSortingScheme <em>Passenger Sorting Scheme</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Passenger Sorting Scheme</em>' attribute.
-	 * @see com.paxelerate.model.enums.SortingScheme
-	 * @see #getPassengerSortingScheme()
-	 * @generated
-	 */
-	void setPassengerSortingScheme(SortingScheme value);
 
 	/**
 	 * Returns the value of the '<em><b>Thread Sleep Time Default</b></em>' attribute.

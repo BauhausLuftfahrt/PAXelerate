@@ -94,22 +94,13 @@ public interface SettingsPackage extends EPackage {
 	int SETTINGS__SIMULATION_TYPE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Display Simulation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SETTINGS__DISPLAY_SIMULATION = 3;
-
-	/**
 	 * The feature id for the '<em><b>Use Center Luggage Storage</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SETTINGS__USE_CENTER_LUGGAGE_STORAGE = 4;
+	int SETTINGS__USE_CENTER_LUGGAGE_STORAGE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Seat Type</b></em>' attribute.
@@ -118,7 +109,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SETTINGS__SEAT_TYPE = 5;
+	int SETTINGS__SEAT_TYPE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Simulation Grid Resolution</b></em>' attribute.
@@ -127,7 +118,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SETTINGS__SIMULATION_GRID_RESOLUTION = 6;
+	int SETTINGS__SIMULATION_GRID_RESOLUTION = 5;
 
 	/**
 	 * The feature id for the '<em><b>Simulation Speed Factor</b></em>' attribute.
@@ -136,16 +127,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SETTINGS__SIMULATION_SPEED_FACTOR = 7;
-
-	/**
-	 * The feature id for the '<em><b>Passenger Sorting Scheme</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SETTINGS__PASSENGER_SORTING_SCHEME = 8;
+	int SETTINGS__SIMULATION_SPEED_FACTOR = 6;
 
 	/**
 	 * The feature id for the '<em><b>Thread Sleep Time Default</b></em>' attribute.
@@ -154,7 +136,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SETTINGS__THREAD_SLEEP_TIME_DEFAULT = 9;
+	int SETTINGS__THREAD_SLEEP_TIME_DEFAULT = 7;
 
 	/**
 	 * The feature id for the '<em><b>Sideways Foldabe Seat Popup Time Mean</b></em>' attribute.
@@ -163,7 +145,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SETTINGS__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_MEAN = 10;
+	int SETTINGS__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_MEAN = 8;
 
 	/**
 	 * The feature id for the '<em><b>Sideways Foldabe Seat Popup Time Deviation</b></em>' attribute.
@@ -172,7 +154,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SETTINGS__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_DEVIATION = 11;
+	int SETTINGS__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_DEVIATION = 9;
 
 	/**
 	 * The feature id for the '<em><b>Lifting Seat Pan Popup Time Mean</b></em>' attribute.
@@ -181,7 +163,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SETTINGS__LIFTING_SEAT_PAN_POPUP_TIME_MEAN = 12;
+	int SETTINGS__LIFTING_SEAT_PAN_POPUP_TIME_MEAN = 10;
 
 	/**
 	 * The feature id for the '<em><b>Lifting Seat Pan Popup Time Deviation</b></em>' attribute.
@@ -190,7 +172,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SETTINGS__LIFTING_SEAT_PAN_POPUP_TIME_DEVIATION = 13;
+	int SETTINGS__LIFTING_SEAT_PAN_POPUP_TIME_DEVIATION = 11;
 
 	/**
 	 * The feature id for the '<em><b>Boarding Conformance Rate</b></em>' attribute.
@@ -199,7 +181,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SETTINGS__BOARDING_CONFORMANCE_RATE = 14;
+	int SETTINGS__BOARDING_CONFORMANCE_RATE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Number Of Boarding Blocks</b></em>' attribute.
@@ -208,7 +190,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SETTINGS__NUMBER_OF_BOARDING_BLOCKS = 15;
+	int SETTINGS__NUMBER_OF_BOARDING_BLOCKS = 13;
 
 	/**
 	 * The number of structural features of the '<em>Settings</em>' class.
@@ -217,7 +199,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SETTINGS_FEATURE_COUNT = 16;
+	int SETTINGS_FEATURE_COUNT = 14;
 
 	/**
 	 * The number of operations of the '<em>Settings</em>' class.
@@ -248,49 +230,13 @@ public interface SettingsPackage extends EPackage {
 	int LUGGAGE_PROPERTIES__MAX_NUMBER_OF_LUGGAGE_ITEMS_PER_PAX = 0;
 
 	/**
-	 * The feature id for the '<em><b>Percentage Of Passengers With Jacket</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_JACKET = 1;
-
-	/**
-	 * The feature id for the '<em><b>Percentage Of Passengers With Small Bag</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_BAG = 2;
-
-	/**
-	 * The feature id for the '<em><b>Percentage Of Passengers With Medium Bag</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_BAG = 3;
-
-	/**
-	 * The feature id for the '<em><b>Percentage Of Passengers With Large Bag</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_LARGE_BAG = 4;
-
-	/**
 	 * The feature id for the '<em><b>Luggage Stow Distance From Seat Mean</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_MEAN = 5;
+	int LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_MEAN = 1;
 
 	/**
 	 * The feature id for the '<em><b>Luggage Stow Distance From Seat Deviation</b></em>' attribute.
@@ -299,7 +245,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_DEVIATION = 6;
+	int LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_DEVIATION = 2;
 
 	/**
 	 * The feature id for the '<em><b>Jacket Stow Time Deviation</b></em>' attribute.
@@ -308,7 +254,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES__JACKET_STOW_TIME_DEVIATION = 7;
+	int LUGGAGE_PROPERTIES__JACKET_STOW_TIME_DEVIATION = 3;
 
 	/**
 	 * The feature id for the '<em><b>Jacket Stow Time Mean</b></em>' attribute.
@@ -317,7 +263,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES__JACKET_STOW_TIME_MEAN = 8;
+	int LUGGAGE_PROPERTIES__JACKET_STOW_TIME_MEAN = 4;
 
 	/**
 	 * The feature id for the '<em><b>Small Bag Stow Time Mean</b></em>' attribute.
@@ -326,7 +272,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES__SMALL_BAG_STOW_TIME_MEAN = 9;
+	int LUGGAGE_PROPERTIES__SMALL_BAG_STOW_TIME_MEAN = 5;
 
 	/**
 	 * The feature id for the '<em><b>Small Bag Stow Time Deviation</b></em>' attribute.
@@ -335,7 +281,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES__SMALL_BAG_STOW_TIME_DEVIATION = 10;
+	int LUGGAGE_PROPERTIES__SMALL_BAG_STOW_TIME_DEVIATION = 6;
 
 	/**
 	 * The feature id for the '<em><b>Medium Bag Stow Time Mean</b></em>' attribute.
@@ -344,7 +290,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES__MEDIUM_BAG_STOW_TIME_MEAN = 11;
+	int LUGGAGE_PROPERTIES__MEDIUM_BAG_STOW_TIME_MEAN = 7;
 
 	/**
 	 * The feature id for the '<em><b>Medium Bag Stow Time Deviation</b></em>' attribute.
@@ -353,7 +299,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES__MEDIUM_BAG_STOW_TIME_DEVIATION = 12;
+	int LUGGAGE_PROPERTIES__MEDIUM_BAG_STOW_TIME_DEVIATION = 8;
 
 	/**
 	 * The feature id for the '<em><b>Large Bag Stow Time Mean</b></em>' attribute.
@@ -362,7 +308,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES__LARGE_BAG_STOW_TIME_MEAN = 13;
+	int LUGGAGE_PROPERTIES__LARGE_BAG_STOW_TIME_MEAN = 9;
 
 	/**
 	 * The feature id for the '<em><b>Large Bag Stow Time Deviation</b></em>' attribute.
@@ -371,7 +317,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES__LARGE_BAG_STOW_TIME_DEVIATION = 14;
+	int LUGGAGE_PROPERTIES__LARGE_BAG_STOW_TIME_DEVIATION = 10;
 
 	/**
 	 * The feature id for the '<em><b>Jacket Volume</b></em>' attribute.
@@ -380,7 +326,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES__JACKET_VOLUME = 15;
+	int LUGGAGE_PROPERTIES__JACKET_VOLUME = 11;
 
 	/**
 	 * The feature id for the '<em><b>Small Bag Volume</b></em>' attribute.
@@ -389,7 +335,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES__SMALL_BAG_VOLUME = 16;
+	int LUGGAGE_PROPERTIES__SMALL_BAG_VOLUME = 12;
 
 	/**
 	 * The feature id for the '<em><b>Medium Bag Volume</b></em>' attribute.
@@ -398,7 +344,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES__MEDIUM_BAG_VOLUME = 17;
+	int LUGGAGE_PROPERTIES__MEDIUM_BAG_VOLUME = 13;
 
 	/**
 	 * The feature id for the '<em><b>Large Bag Volume</b></em>' attribute.
@@ -407,7 +353,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES__LARGE_BAG_VOLUME = 18;
+	int LUGGAGE_PROPERTIES__LARGE_BAG_VOLUME = 14;
 
 	/**
 	 * The feature id for the '<em><b>Jacket Bulkiness</b></em>' attribute.
@@ -416,7 +362,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES__JACKET_BULKINESS = 19;
+	int LUGGAGE_PROPERTIES__JACKET_BULKINESS = 15;
 
 	/**
 	 * The feature id for the '<em><b>Small Bag Bulkiness</b></em>' attribute.
@@ -425,7 +371,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES__SMALL_BAG_BULKINESS = 20;
+	int LUGGAGE_PROPERTIES__SMALL_BAG_BULKINESS = 16;
 
 	/**
 	 * The feature id for the '<em><b>Medium Bag Bulkiness</b></em>' attribute.
@@ -434,7 +380,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES__MEDIUM_BAG_BULKINESS = 21;
+	int LUGGAGE_PROPERTIES__MEDIUM_BAG_BULKINESS = 17;
 
 	/**
 	 * The feature id for the '<em><b>Large Bag Bulkiness</b></em>' attribute.
@@ -443,7 +389,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES__LARGE_BAG_BULKINESS = 22;
+	int LUGGAGE_PROPERTIES__LARGE_BAG_BULKINESS = 18;
 
 	/**
 	 * The feature id for the '<em><b>Jacket Walking Speed Factor</b></em>' attribute.
@@ -452,7 +398,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES__JACKET_WALKING_SPEED_FACTOR = 23;
+	int LUGGAGE_PROPERTIES__JACKET_WALKING_SPEED_FACTOR = 19;
 
 	/**
 	 * The feature id for the '<em><b>Small Bag Walking Speed Factor</b></em>' attribute.
@@ -461,7 +407,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES__SMALL_BAG_WALKING_SPEED_FACTOR = 24;
+	int LUGGAGE_PROPERTIES__SMALL_BAG_WALKING_SPEED_FACTOR = 20;
 
 	/**
 	 * The feature id for the '<em><b>Medium Bag Walking Speed Factor</b></em>' attribute.
@@ -470,7 +416,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES__MEDIUM_BAG_WALKING_SPEED_FACTOR = 25;
+	int LUGGAGE_PROPERTIES__MEDIUM_BAG_WALKING_SPEED_FACTOR = 21;
 
 	/**
 	 * The feature id for the '<em><b>Large Bag Walking Speed Factor</b></em>' attribute.
@@ -479,7 +425,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES__LARGE_BAG_WALKING_SPEED_FACTOR = 26;
+	int LUGGAGE_PROPERTIES__LARGE_BAG_WALKING_SPEED_FACTOR = 22;
 
 	/**
 	 * The feature id for the '<em><b>Luggage Storage Scaling</b></em>' attribute.
@@ -488,7 +434,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES__LUGGAGE_STORAGE_SCALING = 27;
+	int LUGGAGE_PROPERTIES__LUGGAGE_STORAGE_SCALING = 23;
 
 	/**
 	 * The number of structural features of the '<em>Luggage Properties</em>' class.
@@ -497,7 +443,7 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LUGGAGE_PROPERTIES_FEATURE_COUNT = 28;
+	int LUGGAGE_PROPERTIES_FEATURE_COUNT = 24;
 
 	/**
 	 * The number of operations of the '<em>Luggage Properties</em>' class.
@@ -1147,17 +1093,6 @@ public interface SettingsPackage extends EPackage {
 	EAttribute getSettings_SimulationType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.paxelerate.model.settings.Settings#isDisplaySimulation <em>Display Simulation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Display Simulation</em>'.
-	 * @see com.paxelerate.model.settings.Settings#isDisplaySimulation()
-	 * @see #getSettings()
-	 * @generated
-	 */
-	EAttribute getSettings_DisplaySimulation();
-
-	/**
 	 * Returns the meta object for the attribute '{@link com.paxelerate.model.settings.Settings#isUseCenterLuggageStorage <em>Use Center Luggage Storage</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1200,17 +1135,6 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSettings_SimulationSpeedFactor();
-
-	/**
-	 * Returns the meta object for the attribute '{@link com.paxelerate.model.settings.Settings#getPassengerSortingScheme <em>Passenger Sorting Scheme</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Passenger Sorting Scheme</em>'.
-	 * @see com.paxelerate.model.settings.Settings#getPassengerSortingScheme()
-	 * @see #getSettings()
-	 * @generated
-	 */
-	EAttribute getSettings_PassengerSortingScheme();
 
 	/**
 	 * Returns the meta object for the attribute '{@link com.paxelerate.model.settings.Settings#getThreadSleepTimeDefault <em>Thread Sleep Time Default</em>}'.
@@ -1309,50 +1233,6 @@ public interface SettingsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getLuggageProperties_MaxNumberOfLuggageItemsPerPax();
-
-	/**
-	 * Returns the meta object for the attribute '{@link com.paxelerate.model.settings.LuggageProperties#getPercentageOfPassengersWithJacket <em>Percentage Of Passengers With Jacket</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Percentage Of Passengers With Jacket</em>'.
-	 * @see com.paxelerate.model.settings.LuggageProperties#getPercentageOfPassengersWithJacket()
-	 * @see #getLuggageProperties()
-	 * @generated
-	 */
-	EAttribute getLuggageProperties_PercentageOfPassengersWithJacket();
-
-	/**
-	 * Returns the meta object for the attribute '{@link com.paxelerate.model.settings.LuggageProperties#getPercentageOfPassengersWithSmallBag <em>Percentage Of Passengers With Small Bag</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Percentage Of Passengers With Small Bag</em>'.
-	 * @see com.paxelerate.model.settings.LuggageProperties#getPercentageOfPassengersWithSmallBag()
-	 * @see #getLuggageProperties()
-	 * @generated
-	 */
-	EAttribute getLuggageProperties_PercentageOfPassengersWithSmallBag();
-
-	/**
-	 * Returns the meta object for the attribute '{@link com.paxelerate.model.settings.LuggageProperties#getPercentageOfPassengersWithMediumBag <em>Percentage Of Passengers With Medium Bag</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Percentage Of Passengers With Medium Bag</em>'.
-	 * @see com.paxelerate.model.settings.LuggageProperties#getPercentageOfPassengersWithMediumBag()
-	 * @see #getLuggageProperties()
-	 * @generated
-	 */
-	EAttribute getLuggageProperties_PercentageOfPassengersWithMediumBag();
-
-	/**
-	 * Returns the meta object for the attribute '{@link com.paxelerate.model.settings.LuggageProperties#getPercentageOfPassengersWithLargeBag <em>Percentage Of Passengers With Large Bag</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Percentage Of Passengers With Large Bag</em>'.
-	 * @see com.paxelerate.model.settings.LuggageProperties#getPercentageOfPassengersWithLargeBag()
-	 * @see #getLuggageProperties()
-	 * @generated
-	 */
-	EAttribute getLuggageProperties_PercentageOfPassengersWithLargeBag();
 
 	/**
 	 * Returns the meta object for the attribute '{@link com.paxelerate.model.settings.LuggageProperties#getLuggageStowDistanceFromSeatMean <em>Luggage Stow Distance From Seat Mean</em>}'.
@@ -2368,14 +2248,6 @@ public interface SettingsPackage extends EPackage {
 		EAttribute SETTINGS__SIMULATION_TYPE = eINSTANCE.getSettings_SimulationType();
 
 		/**
-		 * The meta object literal for the '<em><b>Display Simulation</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SETTINGS__DISPLAY_SIMULATION = eINSTANCE.getSettings_DisplaySimulation();
-
-		/**
 		 * The meta object literal for the '<em><b>Use Center Luggage Storage</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2406,14 +2278,6 @@ public interface SettingsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SETTINGS__SIMULATION_SPEED_FACTOR = eINSTANCE.getSettings_SimulationSpeedFactor();
-
-		/**
-		 * The meta object literal for the '<em><b>Passenger Sorting Scheme</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SETTINGS__PASSENGER_SORTING_SCHEME = eINSTANCE.getSettings_PassengerSortingScheme();
 
 		/**
 		 * The meta object literal for the '<em><b>Thread Sleep Time Default</b></em>' attribute feature.
@@ -2492,42 +2356,6 @@ public interface SettingsPackage extends EPackage {
 		 */
 		EAttribute LUGGAGE_PROPERTIES__MAX_NUMBER_OF_LUGGAGE_ITEMS_PER_PAX = eINSTANCE
 				.getLuggageProperties_MaxNumberOfLuggageItemsPerPax();
-
-		/**
-		 * The meta object literal for the '<em><b>Percentage Of Passengers With Jacket</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_JACKET = eINSTANCE
-				.getLuggageProperties_PercentageOfPassengersWithJacket();
-
-		/**
-		 * The meta object literal for the '<em><b>Percentage Of Passengers With Small Bag</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_BAG = eINSTANCE
-				.getLuggageProperties_PercentageOfPassengersWithSmallBag();
-
-		/**
-		 * The meta object literal for the '<em><b>Percentage Of Passengers With Medium Bag</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_BAG = eINSTANCE
-				.getLuggageProperties_PercentageOfPassengersWithMediumBag();
-
-		/**
-		 * The meta object literal for the '<em><b>Percentage Of Passengers With Large Bag</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_LARGE_BAG = eINSTANCE
-				.getLuggageProperties_PercentageOfPassengersWithLargeBag();
 
 		/**
 		 * The meta object literal for the '<em><b>Luggage Stow Distance From Seat Mean</b></em>' attribute feature.

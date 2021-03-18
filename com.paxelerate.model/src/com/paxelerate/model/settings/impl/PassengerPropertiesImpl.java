@@ -447,7 +447,7 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double SEAT_INTERFERENCE_PROCESS_TIME_MEAN_EDEFAULT = 7.0;
+	protected static final double SEAT_INTERFERENCE_PROCESS_TIME_MEAN_EDEFAULT = 8.0;
 
 	/**
 	 * The cached value of the '{@link #getSeatInterferenceProcessTimeMean() <em>Seat Interference Process Time Mean</em>}' attribute.
@@ -467,7 +467,7 @@ public class PassengerPropertiesImpl extends MinimalEObjectImpl.Container implem
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION_EDEFAULT = 1.5;
+	protected static final double SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION_EDEFAULT = 3.0;
 
 	/**
 	 * The cached value of the '{@link #getSeatInterferenceProcessTimeDeviation() <em>Seat Interference Process Time Deviation</em>}' attribute.

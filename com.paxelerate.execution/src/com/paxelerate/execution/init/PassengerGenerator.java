@@ -31,6 +31,7 @@ import com.paxelerate.model.settings.PassengerProperties;
 
 import net.bhl.opensource.toolbox.emf.EObjectHelper;
 import net.bhl.opensource.toolbox.math.random.RandomHelper;
+import toolspecific.StudyType;
 
 /**
  * @author Marc.Engelmann, Michael.Schmidt
@@ -42,7 +43,7 @@ public interface PassengerGenerator {
 	 *
 	 * @param cabin
 	 */
-	static void createAll(Deck deck, Map<TravelClass, Integer> amounts) {
+	static void createAll(Deck deck, Map<TravelClass, Integer> amounts, StudyType input) {
 
 		// ---------------------------------------------------------------------------
 		// Age distribution calculation
@@ -133,7 +134,7 @@ public interface PassengerGenerator {
 		});
 
 		// Determine the luggage distribution
-		List<Luggage> luggageList = LuggageGenerator.create(deck);
+		List<Luggage> luggageList = LuggageGenerator.create(deck, input);
 
 		// Loop through luggage list
 		for (int i = 0; i < luggageList.size(); i++) {

@@ -190,7 +190,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSettings_DisplaySimulation() {
+	public EAttribute getSettings_UseCenterLuggageStorage() {
 		return (EAttribute) settingsEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -199,7 +199,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSettings_UseCenterLuggageStorage() {
+	public EAttribute getSettings_SeatType() {
 		return (EAttribute) settingsEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -208,7 +208,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSettings_SeatType() {
+	public EAttribute getSettings_SimulationGridResolution() {
 		return (EAttribute) settingsEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -217,7 +217,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSettings_SimulationGridResolution() {
+	public EAttribute getSettings_SimulationSpeedFactor() {
 		return (EAttribute) settingsEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -226,7 +226,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSettings_SimulationSpeedFactor() {
+	public EAttribute getSettings_ThreadSleepTimeDefault() {
 		return (EAttribute) settingsEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -235,7 +235,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSettings_PassengerSortingScheme() {
+	public EAttribute getSettings_SidewaysFoldabeSeatPopupTimeMean() {
 		return (EAttribute) settingsEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -244,7 +244,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSettings_ThreadSleepTimeDefault() {
+	public EAttribute getSettings_SidewaysFoldabeSeatPopupTimeDeviation() {
 		return (EAttribute) settingsEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -253,7 +253,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSettings_SidewaysFoldabeSeatPopupTimeMean() {
+	public EAttribute getSettings_LiftingSeatPanPopupTimeMean() {
 		return (EAttribute) settingsEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -262,7 +262,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSettings_SidewaysFoldabeSeatPopupTimeDeviation() {
+	public EAttribute getSettings_LiftingSeatPanPopupTimeDeviation() {
 		return (EAttribute) settingsEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -271,7 +271,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSettings_LiftingSeatPanPopupTimeMean() {
+	public EAttribute getSettings_BoardingConformanceRate() {
 		return (EAttribute) settingsEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -280,26 +280,8 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSettings_LiftingSeatPanPopupTimeDeviation() {
-		return (EAttribute) settingsEClass.getEStructuralFeatures().get(13);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSettings_BoardingConformanceRate() {
-		return (EAttribute) settingsEClass.getEStructuralFeatures().get(14);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getSettings_NumberOfBoardingBlocks() {
-		return (EAttribute) settingsEClass.getEStructuralFeatures().get(15);
+		return (EAttribute) settingsEClass.getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -325,7 +307,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLuggageProperties_PercentageOfPassengersWithJacket() {
+	public EAttribute getLuggageProperties_LuggageStowDistanceFromSeatMean() {
 		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -334,7 +316,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLuggageProperties_PercentageOfPassengersWithSmallBag() {
+	public EAttribute getLuggageProperties_LuggageStowDistanceFromSeatDeviation() {
 		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -343,7 +325,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLuggageProperties_PercentageOfPassengersWithMediumBag() {
+	public EAttribute getLuggageProperties_JacketStowTimeDeviation() {
 		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -352,7 +334,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLuggageProperties_PercentageOfPassengersWithLargeBag() {
+	public EAttribute getLuggageProperties_JacketStowTimeMean() {
 		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -361,7 +343,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLuggageProperties_LuggageStowDistanceFromSeatMean() {
+	public EAttribute getLuggageProperties_SmallBagStowTimeMean() {
 		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -370,7 +352,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLuggageProperties_LuggageStowDistanceFromSeatDeviation() {
+	public EAttribute getLuggageProperties_SmallBagStowTimeDeviation() {
 		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -379,7 +361,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLuggageProperties_JacketStowTimeDeviation() {
+	public EAttribute getLuggageProperties_MediumBagStowTimeMean() {
 		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -388,7 +370,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLuggageProperties_JacketStowTimeMean() {
+	public EAttribute getLuggageProperties_MediumBagStowTimeDeviation() {
 		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -397,7 +379,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLuggageProperties_SmallBagStowTimeMean() {
+	public EAttribute getLuggageProperties_LargeBagStowTimeMean() {
 		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -406,7 +388,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLuggageProperties_SmallBagStowTimeDeviation() {
+	public EAttribute getLuggageProperties_LargeBagStowTimeDeviation() {
 		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -415,7 +397,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLuggageProperties_MediumBagStowTimeMean() {
+	public EAttribute getLuggageProperties_JacketVolume() {
 		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -424,7 +406,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLuggageProperties_MediumBagStowTimeDeviation() {
+	public EAttribute getLuggageProperties_SmallBagVolume() {
 		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -433,7 +415,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLuggageProperties_LargeBagStowTimeMean() {
+	public EAttribute getLuggageProperties_MediumBagVolume() {
 		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(13);
 	}
 
@@ -442,7 +424,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLuggageProperties_LargeBagStowTimeDeviation() {
+	public EAttribute getLuggageProperties_LargeBagVolume() {
 		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(14);
 	}
 
@@ -451,7 +433,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLuggageProperties_JacketVolume() {
+	public EAttribute getLuggageProperties_JacketBulkiness() {
 		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(15);
 	}
 
@@ -460,7 +442,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLuggageProperties_SmallBagVolume() {
+	public EAttribute getLuggageProperties_SmallBagBulkiness() {
 		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(16);
 	}
 
@@ -469,7 +451,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLuggageProperties_MediumBagVolume() {
+	public EAttribute getLuggageProperties_MediumBagBulkiness() {
 		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(17);
 	}
 
@@ -478,7 +460,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLuggageProperties_LargeBagVolume() {
+	public EAttribute getLuggageProperties_LargeBagBulkiness() {
 		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(18);
 	}
 
@@ -487,7 +469,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLuggageProperties_JacketBulkiness() {
+	public EAttribute getLuggageProperties_JacketWalkingSpeedFactor() {
 		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(19);
 	}
 
@@ -496,7 +478,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLuggageProperties_SmallBagBulkiness() {
+	public EAttribute getLuggageProperties_SmallBagWalkingSpeedFactor() {
 		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(20);
 	}
 
@@ -505,7 +487,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLuggageProperties_MediumBagBulkiness() {
+	public EAttribute getLuggageProperties_MediumBagWalkingSpeedFactor() {
 		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(21);
 	}
 
@@ -514,7 +496,7 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLuggageProperties_LargeBagBulkiness() {
+	public EAttribute getLuggageProperties_LargeBagWalkingSpeedFactor() {
 		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(22);
 	}
 
@@ -523,44 +505,8 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLuggageProperties_JacketWalkingSpeedFactor() {
-		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(23);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getLuggageProperties_SmallBagWalkingSpeedFactor() {
-		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(24);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getLuggageProperties_MediumBagWalkingSpeedFactor() {
-		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(25);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getLuggageProperties_LargeBagWalkingSpeedFactor() {
-		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(26);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getLuggageProperties_LuggageStorageScaling() {
-		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(27);
+		return (EAttribute) luggagePropertiesEClass.getEStructuralFeatures().get(23);
 	}
 
 	/**
@@ -1172,12 +1118,10 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 		createEReference(settingsEClass, SETTINGS__LUGGAGE_PROPERTIES);
 		createEReference(settingsEClass, SETTINGS__PASSENGER_PROPERTIES);
 		createEAttribute(settingsEClass, SETTINGS__SIMULATION_TYPE);
-		createEAttribute(settingsEClass, SETTINGS__DISPLAY_SIMULATION);
 		createEAttribute(settingsEClass, SETTINGS__USE_CENTER_LUGGAGE_STORAGE);
 		createEAttribute(settingsEClass, SETTINGS__SEAT_TYPE);
 		createEAttribute(settingsEClass, SETTINGS__SIMULATION_GRID_RESOLUTION);
 		createEAttribute(settingsEClass, SETTINGS__SIMULATION_SPEED_FACTOR);
-		createEAttribute(settingsEClass, SETTINGS__PASSENGER_SORTING_SCHEME);
 		createEAttribute(settingsEClass, SETTINGS__THREAD_SLEEP_TIME_DEFAULT);
 		createEAttribute(settingsEClass, SETTINGS__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_MEAN);
 		createEAttribute(settingsEClass, SETTINGS__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_DEVIATION);
@@ -1188,10 +1132,6 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 
 		luggagePropertiesEClass = createEClass(LUGGAGE_PROPERTIES);
 		createEAttribute(luggagePropertiesEClass, LUGGAGE_PROPERTIES__MAX_NUMBER_OF_LUGGAGE_ITEMS_PER_PAX);
-		createEAttribute(luggagePropertiesEClass, LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_JACKET);
-		createEAttribute(luggagePropertiesEClass, LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_BAG);
-		createEAttribute(luggagePropertiesEClass, LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_BAG);
-		createEAttribute(luggagePropertiesEClass, LUGGAGE_PROPERTIES__PERCENTAGE_OF_PASSENGERS_WITH_LARGE_BAG);
 		createEAttribute(luggagePropertiesEClass, LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_MEAN);
 		createEAttribute(luggagePropertiesEClass, LUGGAGE_PROPERTIES__LUGGAGE_STOW_DISTANCE_FROM_SEAT_DEVIATION);
 		createEAttribute(luggagePropertiesEClass, LUGGAGE_PROPERTIES__JACKET_STOW_TIME_DEVIATION);
@@ -1331,9 +1271,6 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 		initEAttribute(getSettings_SimulationType(), theEnumsPackage.getSimulationType(), "simulationType", null, 0, 1,
 				Settings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSettings_DisplaySimulation(), ecorePackage.getEBoolean(), "displaySimulation", "true", 0, 1,
-				Settings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSettings_UseCenterLuggageStorage(), ecorePackage.getEBoolean(), "useCenterLuggageStorage",
 				null, 0, 1, Settings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1345,9 +1282,6 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 		initEAttribute(getSettings_SimulationSpeedFactor(), ecorePackage.getEInt(), "simulationSpeedFactor", "5", 0, 1,
 				Settings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSettings_PassengerSortingScheme(), theEnumsPackage.getSortingScheme(),
-				"passengerSortingScheme", null, 0, 1, Settings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSettings_ThreadSleepTimeDefault(), ecorePackage.getEInt(), "threadSleepTimeDefault", "10", 0,
 				1, Settings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
@@ -1374,18 +1308,6 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 				IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLuggageProperties_MaxNumberOfLuggageItemsPerPax(), ecorePackage.getEInt(),
 				"maxNumberOfLuggageItemsPerPax", "1", 0, 1, LuggageProperties.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLuggageProperties_PercentageOfPassengersWithJacket(), ecorePackage.getEDouble(),
-				"percentageOfPassengersWithJacket", "0", 0, 1, LuggageProperties.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLuggageProperties_PercentageOfPassengersWithSmallBag(), ecorePackage.getEDouble(),
-				"percentageOfPassengersWithSmallBag", "0", 0, 1, LuggageProperties.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLuggageProperties_PercentageOfPassengersWithMediumBag(), ecorePackage.getEDouble(),
-				"percentageOfPassengersWithMediumBag", "0", 0, 1, LuggageProperties.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLuggageProperties_PercentageOfPassengersWithLargeBag(), ecorePackage.getEDouble(),
-				"percentageOfPassengersWithLargeBag", "0", 0, 1, LuggageProperties.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLuggageProperties_LuggageStowDistanceFromSeatMean(), ecorePackage.getEDouble(),
 				"luggageStowDistanceFromSeatMean", "0.8", 0, 1, LuggageProperties.class, !IS_TRANSIENT, !IS_VOLATILE,
@@ -1511,10 +1433,10 @@ public class SettingsPackageImpl extends EPackageImpl implements SettingsPackage
 				"passengerAggressiveMoodShare", "0", 0, 1, PassengerProperties.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPassengerProperties_SeatInterferenceProcessTimeMean(), ecorePackage.getEDouble(),
-				"seatInterferenceProcessTimeMean", "7", 0, 1, PassengerProperties.class, !IS_TRANSIENT, !IS_VOLATILE,
+				"seatInterferenceProcessTimeMean", "8", 0, 1, PassengerProperties.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPassengerProperties_SeatInterferenceProcessTimeDeviation(), ecorePackage.getEDouble(),
-				"seatInterferenceProcessTimeDeviation", "1.5", 0, 1, PassengerProperties.class, !IS_TRANSIENT,
+				"seatInterferenceProcessTimeDeviation", "3", 0, 1, PassengerProperties.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPassengerProperties_SeatInterferenceProcessTimeFoldingSeatMean(), ecorePackage.getEDouble(),
 				"seatInterferenceProcessTimeFoldingSeatMean", "5", 0, 1, PassengerProperties.class, !IS_TRANSIENT,

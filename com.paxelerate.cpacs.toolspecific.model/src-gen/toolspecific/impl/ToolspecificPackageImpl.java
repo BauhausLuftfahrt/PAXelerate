@@ -32,6 +32,8 @@ import toolspecific.StringArrayBaseType;
 import toolspecific.StringBaseType;
 import toolspecific.StringUIDBaseType;
 import toolspecific.StringVectorBaseType;
+import toolspecific.StudiesType;
+import toolspecific.StudyType;
 import toolspecific.SymmetryType;
 import toolspecific.TimeBaseType;
 import toolspecific.ToolspecificFactory;
@@ -170,6 +172,20 @@ public class ToolspecificPackageImpl extends EPackageImpl implements Toolspecifi
 	 * @generated
 	 */
 	private EClass stringVectorBaseTypeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass studiesTypeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass studyTypeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -715,161 +731,8 @@ public class ToolspecificPackageImpl extends EPackageImpl implements Toolspecifi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPaxelerateInputType_LoadFactor() {
+	public EReference getPaxelerateInputType_Studies() {
 		return (EReference) paxelerateInputTypeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPaxelerateInputType_ActiveDoorUIDs() {
-		return (EReference) paxelerateInputTypeEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPaxelerateInputType_Iterations() {
-		return (EReference) paxelerateInputTypeEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPaxelerateInputType_SimulationType() {
-		return (EReference) paxelerateInputTypeEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPaxelerateInputType_DisplaySimulation() {
-		return (EReference) paxelerateInputTypeEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPaxelerateInputType_SeatType() {
-		return (EReference) paxelerateInputTypeEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPaxelerateInputType_SimulationGridResolution() {
-		return (EReference) paxelerateInputTypeEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPaxelerateInputType_SimulationSpeedFactor() {
-		return (EReference) paxelerateInputTypeEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPaxelerateInputType_PassengerSortingScheme() {
-		return (EReference) paxelerateInputTypeEClass.getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPaxelerateInputType_PassengerAgressiveMoodShare() {
-		return (EReference) paxelerateInputTypeEClass.getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPaxelerateInputType_SeatInterferenceProcessTimeMean() {
-		return (EReference) paxelerateInputTypeEClass.getEStructuralFeatures().get(10);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPaxelerateInputType_SeatInterferenceProcessTimeDeviation() {
-		return (EReference) paxelerateInputTypeEClass.getEStructuralFeatures().get(11);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPaxelerateInputType_DoorSelection() {
-		return (EReference) paxelerateInputTypeEClass.getEStructuralFeatures().get(12);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPaxelerateInputType_PercentageOfPassengersWithJackets() {
-		return (EReference) paxelerateInputTypeEClass.getEStructuralFeatures().get(13);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPaxelerateInputType_PercentageOfPassengersWithSmallBags() {
-		return (EReference) paxelerateInputTypeEClass.getEStructuralFeatures().get(14);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPaxelerateInputType_PercentageOfPassengersWithMediumBags() {
-		return (EReference) paxelerateInputTypeEClass.getEStructuralFeatures().get(15);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPaxelerateInputType_PercentageOfPassengersWithLargeBags() {
-		return (EReference) paxelerateInputTypeEClass.getEStructuralFeatures().get(16);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getPaxelerateInputType_UID() {
-		return (EAttribute) paxelerateInputTypeEClass.getEStructuralFeatures().get(17);
 	}
 
 	/**
@@ -1102,6 +965,168 @@ public class ToolspecificPackageImpl extends EPackageImpl implements Toolspecifi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getStudiesType() {
+		return studiesTypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStudiesType_Study() {
+		return (EReference) studiesTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getStudyType() {
+		return studyTypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStudyType_LoadFactor() {
+		return (EReference) studyTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStudyType_ActiveDoorUIDs() {
+		return (EReference) studyTypeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStudyType_Iterations() {
+		return (EReference) studyTypeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStudyType_SimulationType() {
+		return (EReference) studyTypeEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStudyType_DisplaySimulation() {
+		return (EReference) studyTypeEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStudyType_SeatType() {
+		return (EReference) studyTypeEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStudyType_SimulationGridResolution() {
+		return (EReference) studyTypeEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStudyType_SimulationSpeedFactor() {
+		return (EReference) studyTypeEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStudyType_PassengerSortingScheme() {
+		return (EReference) studyTypeEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStudyType_DoorSelection() {
+		return (EReference) studyTypeEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStudyType_PercentageOfPassengersWithJackets() {
+		return (EReference) studyTypeEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStudyType_PercentageOfPassengersWithSmallBags() {
+		return (EReference) studyTypeEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStudyType_PercentageOfPassengersWithMediumBags() {
+		return (EReference) studyTypeEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStudyType_PercentageOfPassengersWithLargeBags() {
+		return (EReference) studyTypeEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getStudyType_UID() {
+		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTimeBaseType() {
 		return timeBaseTypeEClass;
 	}
@@ -1282,24 +1307,7 @@ public class ToolspecificPackageImpl extends EPackageImpl implements Toolspecifi
 		passengerSortingSchemeTypeEClass = createEClass(PASSENGER_SORTING_SCHEME_TYPE);
 
 		paxelerateInputTypeEClass = createEClass(PAXELERATE_INPUT_TYPE);
-		createEReference(paxelerateInputTypeEClass, PAXELERATE_INPUT_TYPE__LOAD_FACTOR);
-		createEReference(paxelerateInputTypeEClass, PAXELERATE_INPUT_TYPE__ACTIVE_DOOR_UI_DS);
-		createEReference(paxelerateInputTypeEClass, PAXELERATE_INPUT_TYPE__ITERATIONS);
-		createEReference(paxelerateInputTypeEClass, PAXELERATE_INPUT_TYPE__SIMULATION_TYPE);
-		createEReference(paxelerateInputTypeEClass, PAXELERATE_INPUT_TYPE__DISPLAY_SIMULATION);
-		createEReference(paxelerateInputTypeEClass, PAXELERATE_INPUT_TYPE__SEAT_TYPE);
-		createEReference(paxelerateInputTypeEClass, PAXELERATE_INPUT_TYPE__SIMULATION_GRID_RESOLUTION);
-		createEReference(paxelerateInputTypeEClass, PAXELERATE_INPUT_TYPE__SIMULATION_SPEED_FACTOR);
-		createEReference(paxelerateInputTypeEClass, PAXELERATE_INPUT_TYPE__PASSENGER_SORTING_SCHEME);
-		createEReference(paxelerateInputTypeEClass, PAXELERATE_INPUT_TYPE__PASSENGER_AGRESSIVE_MOOD_SHARE);
-		createEReference(paxelerateInputTypeEClass, PAXELERATE_INPUT_TYPE__SEAT_INTERFERENCE_PROCESS_TIME_MEAN);
-		createEReference(paxelerateInputTypeEClass, PAXELERATE_INPUT_TYPE__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION);
-		createEReference(paxelerateInputTypeEClass, PAXELERATE_INPUT_TYPE__DOOR_SELECTION);
-		createEReference(paxelerateInputTypeEClass, PAXELERATE_INPUT_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_JACKETS);
-		createEReference(paxelerateInputTypeEClass, PAXELERATE_INPUT_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_BAGS);
-		createEReference(paxelerateInputTypeEClass, PAXELERATE_INPUT_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_BAGS);
-		createEReference(paxelerateInputTypeEClass, PAXELERATE_INPUT_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_LARGE_BAGS);
-		createEAttribute(paxelerateInputTypeEClass, PAXELERATE_INPUT_TYPE__UID);
+		createEReference(paxelerateInputTypeEClass, PAXELERATE_INPUT_TYPE__STUDIES);
 
 		paxelerateTypeEClass = createEClass(PAXELERATE_TYPE);
 		createEReference(paxelerateTypeEClass, PAXELERATE_TYPE__INPUT);
@@ -1332,6 +1340,26 @@ public class ToolspecificPackageImpl extends EPackageImpl implements Toolspecifi
 		createEAttribute(stringVectorBaseTypeEClass, STRING_VECTOR_BASE_TYPE__UNCERTAINTY_FUNCTION_NAME);
 		createEAttribute(stringVectorBaseTypeEClass, STRING_VECTOR_BASE_TYPE__V);
 		createEAttribute(stringVectorBaseTypeEClass, STRING_VECTOR_BASE_TYPE__W);
+
+		studiesTypeEClass = createEClass(STUDIES_TYPE);
+		createEReference(studiesTypeEClass, STUDIES_TYPE__STUDY);
+
+		studyTypeEClass = createEClass(STUDY_TYPE);
+		createEReference(studyTypeEClass, STUDY_TYPE__LOAD_FACTOR);
+		createEReference(studyTypeEClass, STUDY_TYPE__ACTIVE_DOOR_UI_DS);
+		createEReference(studyTypeEClass, STUDY_TYPE__ITERATIONS);
+		createEReference(studyTypeEClass, STUDY_TYPE__SIMULATION_TYPE);
+		createEReference(studyTypeEClass, STUDY_TYPE__DISPLAY_SIMULATION);
+		createEReference(studyTypeEClass, STUDY_TYPE__SEAT_TYPE);
+		createEReference(studyTypeEClass, STUDY_TYPE__SIMULATION_GRID_RESOLUTION);
+		createEReference(studyTypeEClass, STUDY_TYPE__SIMULATION_SPEED_FACTOR);
+		createEReference(studyTypeEClass, STUDY_TYPE__PASSENGER_SORTING_SCHEME);
+		createEReference(studyTypeEClass, STUDY_TYPE__DOOR_SELECTION);
+		createEReference(studyTypeEClass, STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_JACKETS);
+		createEReference(studyTypeEClass, STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_BAGS);
+		createEReference(studyTypeEClass, STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_BAGS);
+		createEReference(studyTypeEClass, STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_LARGE_BAGS);
+		createEAttribute(studyTypeEClass, STUDY_TYPE__UID);
 
 		timeBaseTypeEClass = createEClass(TIME_BASE_TYPE);
 		createEAttribute(timeBaseTypeEClass, TIME_BASE_TYPE__VALUE);
@@ -1392,6 +1420,8 @@ public class ToolspecificPackageImpl extends EPackageImpl implements Toolspecifi
 		simulationTypeTypeEClass.getESuperTypes().add(this.getStringBaseType());
 		stringArrayBaseTypeEClass.getESuperTypes().add(this.getStringBaseType());
 		stringVectorBaseTypeEClass.getESuperTypes().add(this.getStringBaseType());
+		studiesTypeEClass.getESuperTypes().add(this.getComplexBaseType());
+		studyTypeEClass.getESuperTypes().add(this.getComplexBaseType());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(booleanBaseTypeEClass, BooleanBaseType.class, "BooleanBaseType", !IS_ABSTRACT, !IS_INTERFACE,
@@ -1527,64 +1557,9 @@ public class ToolspecificPackageImpl extends EPackageImpl implements Toolspecifi
 
 		initEClass(paxelerateInputTypeEClass, PaxelerateInputType.class, "PaxelerateInputType", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPaxelerateInputType_LoadFactor(), this.getDoubleBaseType(), null, "loadFactor", null, 1, 1,
+		initEReference(getPaxelerateInputType_Studies(), this.getStudiesType(), null, "studies", null, 1, 1,
 				PaxelerateInputType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPaxelerateInputType_ActiveDoorUIDs(), this.getStringVectorBaseType(), null, "activeDoorUIDs",
-				null, 1, 1, PaxelerateInputType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPaxelerateInputType_Iterations(), this.getIntegerBaseType(), null, "iterations", null, 1, 1,
-				PaxelerateInputType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPaxelerateInputType_SimulationType(), this.getSimulationTypeType(), null, "simulationType",
-				null, 1, 1, PaxelerateInputType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPaxelerateInputType_DisplaySimulation(), this.getBooleanBaseType(), null, "displaySimulation",
-				null, 1, 1, PaxelerateInputType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPaxelerateInputType_SeatType(), this.getSeatTypeType(), null, "seatType", null, 1, 1,
-				PaxelerateInputType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPaxelerateInputType_SimulationGridResolution(), this.getDoubleBaseType(), null,
-				"simulationGridResolution", null, 1, 1, PaxelerateInputType.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPaxelerateInputType_SimulationSpeedFactor(), this.getDoubleBaseType(), null,
-				"simulationSpeedFactor", null, 1, 1, PaxelerateInputType.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPaxelerateInputType_PassengerSortingScheme(), this.getPassengerSortingSchemeType(), null,
-				"passengerSortingScheme", null, 1, 1, PaxelerateInputType.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPaxelerateInputType_PassengerAgressiveMoodShare(), this.getDoubleBaseType(), null,
-				"passengerAgressiveMoodShare", null, 1, 1, PaxelerateInputType.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPaxelerateInputType_SeatInterferenceProcessTimeMean(), this.getDoubleBaseType(), null,
-				"seatInterferenceProcessTimeMean", null, 1, 1, PaxelerateInputType.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPaxelerateInputType_SeatInterferenceProcessTimeDeviation(), this.getDoubleBaseType(), null,
-				"seatInterferenceProcessTimeDeviation", null, 1, 1, PaxelerateInputType.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEReference(getPaxelerateInputType_DoorSelection(), this.getDoorSelectionType(), null, "doorSelection", null,
-				1, 1, PaxelerateInputType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPaxelerateInputType_PercentageOfPassengersWithJackets(), this.getDoubleBaseType(), null,
-				"percentageOfPassengersWithJackets", null, 1, 1, PaxelerateInputType.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPaxelerateInputType_PercentageOfPassengersWithSmallBags(), this.getDoubleBaseType(), null,
-				"percentageOfPassengersWithSmallBags", null, 1, 1, PaxelerateInputType.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEReference(getPaxelerateInputType_PercentageOfPassengersWithMediumBags(), this.getDoubleBaseType(), null,
-				"percentageOfPassengersWithMediumBags", null, 1, 1, PaxelerateInputType.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEReference(getPaxelerateInputType_PercentageOfPassengersWithLargeBags(), this.getDoubleBaseType(), null,
-				"percentageOfPassengersWithLargeBags", null, 1, 1, PaxelerateInputType.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEAttribute(getPaxelerateInputType_UID(), theXMLTypePackage.getID(), "uID", null, 1, 1,
-				PaxelerateInputType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(paxelerateTypeEClass, PaxelerateType.class, "PaxelerateType", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1660,6 +1635,59 @@ public class ToolspecificPackageImpl extends EPackageImpl implements Toolspecifi
 		initEAttribute(getStringVectorBaseType_W(), theXMLTypePackage.getString(), "w", null, 0, 1,
 				StringVectorBaseType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(studiesTypeEClass, StudiesType.class, "StudiesType", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getStudiesType_Study(), this.getStudyType(), null, "study", null, 1, -1, StudiesType.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(studyTypeEClass, StudyType.class, "StudyType", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getStudyType_LoadFactor(), this.getDoubleBaseType(), null, "loadFactor", null, 1, 1,
+				StudyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStudyType_ActiveDoorUIDs(), this.getStringVectorBaseType(), null, "activeDoorUIDs", null, 1,
+				1, StudyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStudyType_Iterations(), this.getIntegerBaseType(), null, "iterations", null, 1, 1,
+				StudyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStudyType_SimulationType(), this.getSimulationTypeType(), null, "simulationType", null, 1, 1,
+				StudyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStudyType_DisplaySimulation(), this.getBooleanBaseType(), null, "displaySimulation", null, 1,
+				1, StudyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStudyType_SeatType(), this.getSeatTypeType(), null, "seatType", null, 1, 1, StudyType.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStudyType_SimulationGridResolution(), this.getDoubleBaseType(), null,
+				"simulationGridResolution", null, 1, 1, StudyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStudyType_SimulationSpeedFactor(), this.getDoubleBaseType(), null, "simulationSpeedFactor",
+				null, 1, 1, StudyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStudyType_PassengerSortingScheme(), this.getPassengerSortingSchemeType(), null,
+				"passengerSortingScheme", null, 1, 1, StudyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStudyType_DoorSelection(), this.getDoorSelectionType(), null, "doorSelection", null, 1, 1,
+				StudyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStudyType_PercentageOfPassengersWithJackets(), this.getDoubleBaseType(), null,
+				"percentageOfPassengersWithJackets", null, 1, 1, StudyType.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStudyType_PercentageOfPassengersWithSmallBags(), this.getDoubleBaseType(), null,
+				"percentageOfPassengersWithSmallBags", null, 1, 1, StudyType.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStudyType_PercentageOfPassengersWithMediumBags(), this.getDoubleBaseType(), null,
+				"percentageOfPassengersWithMediumBags", null, 1, 1, StudyType.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStudyType_PercentageOfPassengersWithLargeBags(), this.getDoubleBaseType(), null,
+				"percentageOfPassengersWithLargeBags", null, 1, 1, StudyType.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStudyType_UID(), theXMLTypePackage.getID(), "uID", null, 1, 1, StudyType.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(timeBaseTypeEClass, TimeBaseType.class, "TimeBaseType", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1827,41 +1855,8 @@ public class ToolspecificPackageImpl extends EPackageImpl implements Toolspecifi
 				new String[] { "name", "passengerSortingScheme_._type", "kind", "simple" });
 		addAnnotation(paxelerateInputTypeEClass, source,
 				new String[] { "name", "paxelerateInputType", "kind", "elementOnly" });
-		addAnnotation(getPaxelerateInputType_LoadFactor(), source,
-				new String[] { "kind", "element", "name", "loadFactor", "namespace", "##targetNamespace" });
-		addAnnotation(getPaxelerateInputType_ActiveDoorUIDs(), source,
-				new String[] { "kind", "element", "name", "activeDoorUIDs", "namespace", "##targetNamespace" });
-		addAnnotation(getPaxelerateInputType_Iterations(), source,
-				new String[] { "kind", "element", "name", "iterations", "namespace", "##targetNamespace" });
-		addAnnotation(getPaxelerateInputType_SimulationType(), source,
-				new String[] { "kind", "element", "name", "simulationType", "namespace", "##targetNamespace" });
-		addAnnotation(getPaxelerateInputType_DisplaySimulation(), source,
-				new String[] { "kind", "element", "name", "displaySimulation", "namespace", "##targetNamespace" });
-		addAnnotation(getPaxelerateInputType_SeatType(), source,
-				new String[] { "kind", "element", "name", "seatType", "namespace", "##targetNamespace" });
-		addAnnotation(getPaxelerateInputType_SimulationGridResolution(), source, new String[] { "kind", "element",
-				"name", "simulationGridResolution", "namespace", "##targetNamespace" });
-		addAnnotation(getPaxelerateInputType_SimulationSpeedFactor(), source,
-				new String[] { "kind", "element", "name", "simulationSpeedFactor", "namespace", "##targetNamespace" });
-		addAnnotation(getPaxelerateInputType_PassengerSortingScheme(), source,
-				new String[] { "kind", "element", "name", "passengerSortingScheme", "namespace", "##targetNamespace" });
-		addAnnotation(getPaxelerateInputType_PassengerAgressiveMoodShare(), source, new String[] { "kind", "element",
-				"name", "passengerAgressiveMoodShare", "namespace", "##targetNamespace" });
-		addAnnotation(getPaxelerateInputType_SeatInterferenceProcessTimeMean(), source, new String[] { "kind",
-				"element", "name", "seatInterferenceProcessTimeMean", "namespace", "##targetNamespace" });
-		addAnnotation(getPaxelerateInputType_SeatInterferenceProcessTimeDeviation(), source, new String[] { "kind",
-				"element", "name", "seatInterferenceProcessTimeDeviation", "namespace", "##targetNamespace" });
-		addAnnotation(getPaxelerateInputType_DoorSelection(), source,
-				new String[] { "kind", "element", "name", "doorSelection", "namespace", "##targetNamespace" });
-		addAnnotation(getPaxelerateInputType_PercentageOfPassengersWithJackets(), source, new String[] { "kind",
-				"element", "name", "percentageOfPassengersWithJackets", "namespace", "##targetNamespace" });
-		addAnnotation(getPaxelerateInputType_PercentageOfPassengersWithSmallBags(), source, new String[] { "kind",
-				"element", "name", "percentageOfPassengersWithSmallBags", "namespace", "##targetNamespace" });
-		addAnnotation(getPaxelerateInputType_PercentageOfPassengersWithMediumBags(), source, new String[] { "kind",
-				"element", "name", "percentageOfPassengersWithMediumBags", "namespace", "##targetNamespace" });
-		addAnnotation(getPaxelerateInputType_PercentageOfPassengersWithLargeBags(), source, new String[] { "kind",
-				"element", "name", "percentageOfPassengersWithLargeBags", "namespace", "##targetNamespace" });
-		addAnnotation(getPaxelerateInputType_UID(), source, new String[] { "kind", "attribute", "name", "uID" });
+		addAnnotation(getPaxelerateInputType_Studies(), source,
+				new String[] { "kind", "element", "name", "studies", "namespace", "##targetNamespace" });
 		addAnnotation(paxelerateTypeEClass, source, new String[] { "name", "paxelerateType", "kind", "elementOnly" });
 		addAnnotation(getPaxelerateType_Input(), source,
 				new String[] { "kind", "element", "name", "input", "namespace", "##targetNamespace" });
@@ -1901,6 +1896,39 @@ public class ToolspecificPackageImpl extends EPackageImpl implements Toolspecifi
 				new String[] { "kind", "attribute", "name", "uncertaintyFunctionName" });
 		addAnnotation(getStringVectorBaseType_V(), source, new String[] { "kind", "attribute", "name", "v" });
 		addAnnotation(getStringVectorBaseType_W(), source, new String[] { "kind", "attribute", "name", "w" });
+		addAnnotation(studiesTypeEClass, source, new String[] { "name", "studiesType", "kind", "elementOnly" });
+		addAnnotation(getStudiesType_Study(), source,
+				new String[] { "kind", "element", "name", "study", "namespace", "##targetNamespace" });
+		addAnnotation(studyTypeEClass, source, new String[] { "name", "studyType", "kind", "elementOnly" });
+		addAnnotation(getStudyType_LoadFactor(), source,
+				new String[] { "kind", "element", "name", "loadFactor", "namespace", "##targetNamespace" });
+		addAnnotation(getStudyType_ActiveDoorUIDs(), source,
+				new String[] { "kind", "element", "name", "activeDoorUIDs", "namespace", "##targetNamespace" });
+		addAnnotation(getStudyType_Iterations(), source,
+				new String[] { "kind", "element", "name", "iterations", "namespace", "##targetNamespace" });
+		addAnnotation(getStudyType_SimulationType(), source,
+				new String[] { "kind", "element", "name", "simulationType", "namespace", "##targetNamespace" });
+		addAnnotation(getStudyType_DisplaySimulation(), source,
+				new String[] { "kind", "element", "name", "displaySimulation", "namespace", "##targetNamespace" });
+		addAnnotation(getStudyType_SeatType(), source,
+				new String[] { "kind", "element", "name", "seatType", "namespace", "##targetNamespace" });
+		addAnnotation(getStudyType_SimulationGridResolution(), source, new String[] { "kind", "element", "name",
+				"simulationGridResolution", "namespace", "##targetNamespace" });
+		addAnnotation(getStudyType_SimulationSpeedFactor(), source,
+				new String[] { "kind", "element", "name", "simulationSpeedFactor", "namespace", "##targetNamespace" });
+		addAnnotation(getStudyType_PassengerSortingScheme(), source,
+				new String[] { "kind", "element", "name", "passengerSortingScheme", "namespace", "##targetNamespace" });
+		addAnnotation(getStudyType_DoorSelection(), source,
+				new String[] { "kind", "element", "name", "doorSelection", "namespace", "##targetNamespace" });
+		addAnnotation(getStudyType_PercentageOfPassengersWithJackets(), source, new String[] { "kind", "element",
+				"name", "percentageOfPassengersWithJackets", "namespace", "##targetNamespace" });
+		addAnnotation(getStudyType_PercentageOfPassengersWithSmallBags(), source, new String[] { "kind", "element",
+				"name", "percentageOfPassengersWithSmallBags", "namespace", "##targetNamespace" });
+		addAnnotation(getStudyType_PercentageOfPassengersWithMediumBags(), source, new String[] { "kind", "element",
+				"name", "percentageOfPassengersWithMediumBags", "namespace", "##targetNamespace" });
+		addAnnotation(getStudyType_PercentageOfPassengersWithLargeBags(), source, new String[] { "kind", "element",
+				"name", "percentageOfPassengersWithLargeBags", "namespace", "##targetNamespace" });
+		addAnnotation(getStudyType_UID(), source, new String[] { "kind", "attribute", "name", "uID" });
 		addAnnotation(symmetryTypeEEnum, source, new String[] { "name", "symmetry_._type" });
 		addAnnotation(symmetryTypeObjectEDataType, source,
 				new String[] { "name", "symmetry_._type:Object", "baseType", "symmetry_._type" });

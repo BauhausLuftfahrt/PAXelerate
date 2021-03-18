@@ -4,7 +4,6 @@ package com.paxelerate.model.settings.impl;
 
 import com.paxelerate.model.enums.SeatType;
 import com.paxelerate.model.enums.SimulationType;
-import com.paxelerate.model.enums.SortingScheme;
 import com.paxelerate.model.settings.LuggageProperties;
 import com.paxelerate.model.settings.PassengerProperties;
 import com.paxelerate.model.settings.Settings;
@@ -30,12 +29,10 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link com.paxelerate.model.settings.impl.SettingsImpl#getLuggageProperties <em>Luggage Properties</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.impl.SettingsImpl#getPassengerProperties <em>Passenger Properties</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.impl.SettingsImpl#getSimulationType <em>Simulation Type</em>}</li>
- *   <li>{@link com.paxelerate.model.settings.impl.SettingsImpl#isDisplaySimulation <em>Display Simulation</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.impl.SettingsImpl#isUseCenterLuggageStorage <em>Use Center Luggage Storage</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.impl.SettingsImpl#getSeatType <em>Seat Type</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.impl.SettingsImpl#getSimulationGridResolution <em>Simulation Grid Resolution</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.impl.SettingsImpl#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}</li>
- *   <li>{@link com.paxelerate.model.settings.impl.SettingsImpl#getPassengerSortingScheme <em>Passenger Sorting Scheme</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.impl.SettingsImpl#getThreadSleepTimeDefault <em>Thread Sleep Time Default</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.impl.SettingsImpl#getSidewaysFoldabeSeatPopupTimeMean <em>Sideways Foldabe Seat Popup Time Mean</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.impl.SettingsImpl#getSidewaysFoldabeSeatPopupTimeDeviation <em>Sideways Foldabe Seat Popup Time Deviation</em>}</li>
@@ -87,26 +84,6 @@ public class SettingsImpl extends MinimalEObjectImpl.Container implements Settin
 	 * @ordered
 	 */
 	protected SimulationType simulationType = SIMULATION_TYPE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isDisplaySimulation() <em>Display Simulation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isDisplaySimulation()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean DISPLAY_SIMULATION_EDEFAULT = true;
-
-	/**
-	 * The cached value of the '{@link #isDisplaySimulation() <em>Display Simulation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isDisplaySimulation()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean displaySimulation = DISPLAY_SIMULATION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isUseCenterLuggageStorage() <em>Use Center Luggage Storage</em>}' attribute.
@@ -187,26 +164,6 @@ public class SettingsImpl extends MinimalEObjectImpl.Container implements Settin
 	 * @ordered
 	 */
 	protected int simulationSpeedFactor = SIMULATION_SPEED_FACTOR_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getPassengerSortingScheme() <em>Passenger Sorting Scheme</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPassengerSortingScheme()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final SortingScheme PASSENGER_SORTING_SCHEME_EDEFAULT = SortingScheme.RANDOM;
-
-	/**
-	 * The cached value of the '{@link #getPassengerSortingScheme() <em>Passenger Sorting Scheme</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPassengerSortingScheme()
-	 * @generated
-	 * @ordered
-	 */
-	protected SortingScheme passengerSortingScheme = PASSENGER_SORTING_SCHEME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getThreadSleepTimeDefault() <em>Thread Sleep Time Default</em>}' attribute.
@@ -495,28 +452,6 @@ public class SettingsImpl extends MinimalEObjectImpl.Container implements Settin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isDisplaySimulation() {
-		return displaySimulation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDisplaySimulation(boolean newDisplaySimulation) {
-		boolean oldDisplaySimulation = displaySimulation;
-		displaySimulation = newDisplaySimulation;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SettingsPackage.SETTINGS__DISPLAY_SIMULATION,
-					oldDisplaySimulation, displaySimulation));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean isUseCenterLuggageStorage() {
 		return useCenterLuggageStorage;
 	}
@@ -598,29 +533,6 @@ public class SettingsImpl extends MinimalEObjectImpl.Container implements Settin
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, SettingsPackage.SETTINGS__SIMULATION_SPEED_FACTOR,
 					oldSimulationSpeedFactor, simulationSpeedFactor));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SortingScheme getPassengerSortingScheme() {
-		return passengerSortingScheme;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPassengerSortingScheme(SortingScheme newPassengerSortingScheme) {
-		SortingScheme oldPassengerSortingScheme = passengerSortingScheme;
-		passengerSortingScheme = newPassengerSortingScheme == null ? PASSENGER_SORTING_SCHEME_EDEFAULT
-				: newPassengerSortingScheme;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SettingsPackage.SETTINGS__PASSENGER_SORTING_SCHEME,
-					oldPassengerSortingScheme, passengerSortingScheme));
 	}
 
 	/**
@@ -811,8 +723,6 @@ public class SettingsImpl extends MinimalEObjectImpl.Container implements Settin
 			return getPassengerProperties();
 		case SettingsPackage.SETTINGS__SIMULATION_TYPE:
 			return getSimulationType();
-		case SettingsPackage.SETTINGS__DISPLAY_SIMULATION:
-			return isDisplaySimulation();
 		case SettingsPackage.SETTINGS__USE_CENTER_LUGGAGE_STORAGE:
 			return isUseCenterLuggageStorage();
 		case SettingsPackage.SETTINGS__SEAT_TYPE:
@@ -821,8 +731,6 @@ public class SettingsImpl extends MinimalEObjectImpl.Container implements Settin
 			return getSimulationGridResolution();
 		case SettingsPackage.SETTINGS__SIMULATION_SPEED_FACTOR:
 			return getSimulationSpeedFactor();
-		case SettingsPackage.SETTINGS__PASSENGER_SORTING_SCHEME:
-			return getPassengerSortingScheme();
 		case SettingsPackage.SETTINGS__THREAD_SLEEP_TIME_DEFAULT:
 			return getThreadSleepTimeDefault();
 		case SettingsPackage.SETTINGS__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_MEAN:
@@ -858,9 +766,6 @@ public class SettingsImpl extends MinimalEObjectImpl.Container implements Settin
 		case SettingsPackage.SETTINGS__SIMULATION_TYPE:
 			setSimulationType((SimulationType) newValue);
 			return;
-		case SettingsPackage.SETTINGS__DISPLAY_SIMULATION:
-			setDisplaySimulation((Boolean) newValue);
-			return;
 		case SettingsPackage.SETTINGS__USE_CENTER_LUGGAGE_STORAGE:
 			setUseCenterLuggageStorage((Boolean) newValue);
 			return;
@@ -872,9 +777,6 @@ public class SettingsImpl extends MinimalEObjectImpl.Container implements Settin
 			return;
 		case SettingsPackage.SETTINGS__SIMULATION_SPEED_FACTOR:
 			setSimulationSpeedFactor((Integer) newValue);
-			return;
-		case SettingsPackage.SETTINGS__PASSENGER_SORTING_SCHEME:
-			setPassengerSortingScheme((SortingScheme) newValue);
 			return;
 		case SettingsPackage.SETTINGS__THREAD_SLEEP_TIME_DEFAULT:
 			setThreadSleepTimeDefault((Integer) newValue);
@@ -918,9 +820,6 @@ public class SettingsImpl extends MinimalEObjectImpl.Container implements Settin
 		case SettingsPackage.SETTINGS__SIMULATION_TYPE:
 			setSimulationType(SIMULATION_TYPE_EDEFAULT);
 			return;
-		case SettingsPackage.SETTINGS__DISPLAY_SIMULATION:
-			setDisplaySimulation(DISPLAY_SIMULATION_EDEFAULT);
-			return;
 		case SettingsPackage.SETTINGS__USE_CENTER_LUGGAGE_STORAGE:
 			setUseCenterLuggageStorage(USE_CENTER_LUGGAGE_STORAGE_EDEFAULT);
 			return;
@@ -932,9 +831,6 @@ public class SettingsImpl extends MinimalEObjectImpl.Container implements Settin
 			return;
 		case SettingsPackage.SETTINGS__SIMULATION_SPEED_FACTOR:
 			setSimulationSpeedFactor(SIMULATION_SPEED_FACTOR_EDEFAULT);
-			return;
-		case SettingsPackage.SETTINGS__PASSENGER_SORTING_SCHEME:
-			setPassengerSortingScheme(PASSENGER_SORTING_SCHEME_EDEFAULT);
 			return;
 		case SettingsPackage.SETTINGS__THREAD_SLEEP_TIME_DEFAULT:
 			setThreadSleepTimeDefault(THREAD_SLEEP_TIME_DEFAULT_EDEFAULT);
@@ -975,8 +871,6 @@ public class SettingsImpl extends MinimalEObjectImpl.Container implements Settin
 			return passengerProperties != null;
 		case SettingsPackage.SETTINGS__SIMULATION_TYPE:
 			return simulationType != SIMULATION_TYPE_EDEFAULT;
-		case SettingsPackage.SETTINGS__DISPLAY_SIMULATION:
-			return displaySimulation != DISPLAY_SIMULATION_EDEFAULT;
 		case SettingsPackage.SETTINGS__USE_CENTER_LUGGAGE_STORAGE:
 			return useCenterLuggageStorage != USE_CENTER_LUGGAGE_STORAGE_EDEFAULT;
 		case SettingsPackage.SETTINGS__SEAT_TYPE:
@@ -985,8 +879,6 @@ public class SettingsImpl extends MinimalEObjectImpl.Container implements Settin
 			return simulationGridResolution != SIMULATION_GRID_RESOLUTION_EDEFAULT;
 		case SettingsPackage.SETTINGS__SIMULATION_SPEED_FACTOR:
 			return simulationSpeedFactor != SIMULATION_SPEED_FACTOR_EDEFAULT;
-		case SettingsPackage.SETTINGS__PASSENGER_SORTING_SCHEME:
-			return passengerSortingScheme != PASSENGER_SORTING_SCHEME_EDEFAULT;
 		case SettingsPackage.SETTINGS__THREAD_SLEEP_TIME_DEFAULT:
 			return threadSleepTimeDefault != THREAD_SLEEP_TIME_DEFAULT_EDEFAULT;
 		case SettingsPackage.SETTINGS__SIDEWAYS_FOLDABE_SEAT_POPUP_TIME_MEAN:
@@ -1018,8 +910,6 @@ public class SettingsImpl extends MinimalEObjectImpl.Container implements Settin
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (simulationType: ");
 		result.append(simulationType);
-		result.append(", displaySimulation: ");
-		result.append(displaySimulation);
 		result.append(", useCenterLuggageStorage: ");
 		result.append(useCenterLuggageStorage);
 		result.append(", seatType: ");
@@ -1028,8 +918,6 @@ public class SettingsImpl extends MinimalEObjectImpl.Container implements Settin
 		result.append(simulationGridResolution);
 		result.append(", simulationSpeedFactor: ");
 		result.append(simulationSpeedFactor);
-		result.append(", passengerSortingScheme: ");
-		result.append(passengerSortingScheme);
 		result.append(", threadSleepTimeDefault: ");
 		result.append(threadSleepTimeDefault);
 		result.append(", sidewaysFoldabeSeatPopupTimeMean: ");

@@ -395,7 +395,7 @@
         <xsd:complexContent>
             <xsd:extension base="complexBaseType">
                 <xsd:sequence>
-                    <xsd:element name="input" type="paxelerateInputType"></xsd:element>
+                    <xsd:element name="input" type="paxelerateInputType"/>
                     <!--<xsd:element name="output" type="paxelerateOutputType"></xsd:element>-->            
                 </xsd:sequence>
             </xsd:extension>
@@ -403,6 +403,26 @@
     </xsd:complexType>
 
     <xsd:complexType name="paxelerateInputType">
+        <xsd:complexContent>
+            <xsd:extension base="complexBaseType">
+                <xsd:sequence>
+                    <xsd:element name="studies" type="studiesType"/>         
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="studiesType">
+        <xsd:complexContent>
+            <xsd:extension base="complexBaseType">
+                <xsd:sequence>
+                    <xsd:element name="study" type="studyType" maxOccurs="unbounded"/>          
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="studyType">
         <xsd:complexContent>
             <xsd:extension base="complexBaseType">
                 <xsd:all>
@@ -460,9 +480,6 @@
                             </xsd:simpleContent>
                         </xsd:complexType>
                     </xsd:element>
-                    <xsd:element name="passengerAgressiveMoodShare" type="doubleBaseType" />
-                    <xsd:element name="seatInterferenceProcessTimeMean" type="doubleBaseType" />
-                    <xsd:element name="seatInterferenceProcessTimeDeviation" type="doubleBaseType" />
                     <xsd:element name="doorSelection">
                         <xsd:complexType>
                             <xsd:simpleContent>

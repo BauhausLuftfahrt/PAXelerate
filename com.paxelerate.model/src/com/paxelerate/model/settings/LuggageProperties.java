@@ -14,10 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link com.paxelerate.model.settings.LuggageProperties#getMaxNumberOfLuggageItemsPerPax <em>Max Number Of Luggage Items Per Pax</em>}</li>
- *   <li>{@link com.paxelerate.model.settings.LuggageProperties#getPercentageOfPassengersWithJacket <em>Percentage Of Passengers With Jacket</em>}</li>
- *   <li>{@link com.paxelerate.model.settings.LuggageProperties#getPercentageOfPassengersWithSmallBag <em>Percentage Of Passengers With Small Bag</em>}</li>
- *   <li>{@link com.paxelerate.model.settings.LuggageProperties#getPercentageOfPassengersWithMediumBag <em>Percentage Of Passengers With Medium Bag</em>}</li>
- *   <li>{@link com.paxelerate.model.settings.LuggageProperties#getPercentageOfPassengersWithLargeBag <em>Percentage Of Passengers With Large Bag</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.LuggageProperties#getLuggageStowDistanceFromSeatMean <em>Luggage Stow Distance From Seat Mean</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.LuggageProperties#getLuggageStowDistanceFromSeatDeviation <em>Luggage Stow Distance From Seat Deviation</em>}</li>
  *   <li>{@link com.paxelerate.model.settings.LuggageProperties#getJacketStowTimeDeviation <em>Jacket Stow Time Deviation</em>}</li>
@@ -70,98 +66,6 @@ public interface LuggageProperties extends EObject {
 	 * @generated
 	 */
 	void setMaxNumberOfLuggageItemsPerPax(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Percentage Of Passengers With Jacket</b></em>' attribute.
-	 * The default value is <code>"0"</code>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Percentage Of Passengers With Jacket</em>' attribute.
-	 * @see #setPercentageOfPassengersWithJacket(double)
-	 * @see com.paxelerate.model.settings.SettingsPackage#getLuggageProperties_PercentageOfPassengersWithJacket()
-	 * @model default="0"
-	 * @generated
-	 */
-	double getPercentageOfPassengersWithJacket();
-
-	/**
-	 * Sets the value of the '{@link com.paxelerate.model.settings.LuggageProperties#getPercentageOfPassengersWithJacket <em>Percentage Of Passengers With Jacket</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Percentage Of Passengers With Jacket</em>' attribute.
-	 * @see #getPercentageOfPassengersWithJacket()
-	 * @generated
-	 */
-	void setPercentageOfPassengersWithJacket(double value);
-
-	/**
-	 * Returns the value of the '<em><b>Percentage Of Passengers With Small Bag</b></em>' attribute.
-	 * The default value is <code>"0"</code>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Percentage Of Passengers With Small Bag</em>' attribute.
-	 * @see #setPercentageOfPassengersWithSmallBag(double)
-	 * @see com.paxelerate.model.settings.SettingsPackage#getLuggageProperties_PercentageOfPassengersWithSmallBag()
-	 * @model default="0"
-	 * @generated
-	 */
-	double getPercentageOfPassengersWithSmallBag();
-
-	/**
-	 * Sets the value of the '{@link com.paxelerate.model.settings.LuggageProperties#getPercentageOfPassengersWithSmallBag <em>Percentage Of Passengers With Small Bag</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Percentage Of Passengers With Small Bag</em>' attribute.
-	 * @see #getPercentageOfPassengersWithSmallBag()
-	 * @generated
-	 */
-	void setPercentageOfPassengersWithSmallBag(double value);
-
-	/**
-	 * Returns the value of the '<em><b>Percentage Of Passengers With Medium Bag</b></em>' attribute.
-	 * The default value is <code>"0"</code>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Percentage Of Passengers With Medium Bag</em>' attribute.
-	 * @see #setPercentageOfPassengersWithMediumBag(double)
-	 * @see com.paxelerate.model.settings.SettingsPackage#getLuggageProperties_PercentageOfPassengersWithMediumBag()
-	 * @model default="0"
-	 * @generated
-	 */
-	double getPercentageOfPassengersWithMediumBag();
-
-	/**
-	 * Sets the value of the '{@link com.paxelerate.model.settings.LuggageProperties#getPercentageOfPassengersWithMediumBag <em>Percentage Of Passengers With Medium Bag</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Percentage Of Passengers With Medium Bag</em>' attribute.
-	 * @see #getPercentageOfPassengersWithMediumBag()
-	 * @generated
-	 */
-	void setPercentageOfPassengersWithMediumBag(double value);
-
-	/**
-	 * Returns the value of the '<em><b>Percentage Of Passengers With Large Bag</b></em>' attribute.
-	 * The default value is <code>"0"</code>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Percentage Of Passengers With Large Bag</em>' attribute.
-	 * @see #setPercentageOfPassengersWithLargeBag(double)
-	 * @see com.paxelerate.model.settings.SettingsPackage#getLuggageProperties_PercentageOfPassengersWithLargeBag()
-	 * @model default="0"
-	 * @generated
-	 */
-	double getPercentageOfPassengersWithLargeBag();
-
-	/**
-	 * Sets the value of the '{@link com.paxelerate.model.settings.LuggageProperties#getPercentageOfPassengersWithLargeBag <em>Percentage Of Passengers With Large Bag</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Percentage Of Passengers With Large Bag</em>' attribute.
-	 * @see #getPercentageOfPassengersWithLargeBag()
-	 * @generated
-	 */
-	void setPercentageOfPassengersWithLargeBag(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Luggage Stow Distance From Seat Mean</b></em>' attribute.

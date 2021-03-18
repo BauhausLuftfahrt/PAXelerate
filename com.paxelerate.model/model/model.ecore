@@ -144,8 +144,6 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="passengerProperties"
           lowerBound="1" eType="#//settings/PassengerProperties" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="simulationType" eType="#//enums/SimulationType"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="displaySimulation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-          defaultValueLiteral="true"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="useCenterLuggageStorage"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatType" lowerBound="1"
@@ -155,8 +153,6 @@
           defaultValueLiteral="0.1"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="simulationSpeedFactor"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="5"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerSortingScheme"
-          eType="#//enums/SortingScheme"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="threadSleepTimeDefault"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="10"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="sidewaysFoldabeSeatPopupTimeMean"
@@ -180,18 +176,6 @@
     <eClassifiers xsi:type="ecore:EClass" name="LuggageProperties">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxNumberOfLuggageItemsPerPax"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="1"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="percentageOfPassengersWithJacket"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
-          defaultValueLiteral="0"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="percentageOfPassengersWithSmallBag"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
-          defaultValueLiteral="0"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="percentageOfPassengersWithMediumBag"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
-          defaultValueLiteral="0"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="percentageOfPassengersWithLargeBag"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
-          defaultValueLiteral="0"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="luggageStowDistanceFromSeatMean"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
           defaultValueLiteral="0.8"/>
@@ -306,10 +290,10 @@
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatInterferenceProcessTimeMean"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
-          defaultValueLiteral="7"/>
+          defaultValueLiteral="8"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatInterferenceProcessTimeDeviation"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
-          defaultValueLiteral="1.5"/>
+          defaultValueLiteral="3"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="seatInterferenceProcessTimeFoldingSeatMean"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
           defaultValueLiteral="5"/>

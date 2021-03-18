@@ -480,13 +480,13 @@ public interface PassengerProperties extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Seat Interference Process Time Mean</b></em>' attribute.
-	 * The default value is <code>"7"</code>.
+	 * The default value is <code>"8"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Seat Interference Process Time Mean</em>' attribute.
 	 * @see #setSeatInterferenceProcessTimeMean(double)
 	 * @see com.paxelerate.model.settings.SettingsPackage#getPassengerProperties_SeatInterferenceProcessTimeMean()
-	 * @model default="7"
+	 * @model default="8"
 	 * @generated
 	 */
 	double getSeatInterferenceProcessTimeMean();
@@ -503,13 +503,13 @@ public interface PassengerProperties extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Seat Interference Process Time Deviation</b></em>' attribute.
-	 * The default value is <code>"1.5"</code>.
+	 * The default value is <code>"3"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Seat Interference Process Time Deviation</em>' attribute.
 	 * @see #setSeatInterferenceProcessTimeDeviation(double)
 	 * @see com.paxelerate.model.settings.SettingsPackage#getPassengerProperties_SeatInterferenceProcessTimeDeviation()
-	 * @model default="1.5"
+	 * @model default="3"
 	 * @generated
 	 */
 	double getSeatInterferenceProcessTimeDeviation();

@@ -93,6 +93,10 @@ public class ToolspecificFactoryImpl extends EFactoryImpl implements Toolspecifi
 			return createStringUIDBaseType();
 		case ToolspecificPackage.STRING_VECTOR_BASE_TYPE:
 			return createStringVectorBaseType();
+		case ToolspecificPackage.STUDIES_TYPE:
+			return createStudiesType();
+		case ToolspecificPackage.STUDY_TYPE:
+			return createStudyType();
 		case ToolspecificPackage.TIME_BASE_TYPE:
 			return createTimeBaseType();
 		default:
@@ -328,6 +332,26 @@ public class ToolspecificFactoryImpl extends EFactoryImpl implements Toolspecifi
 	public StringVectorBaseType createStringVectorBaseType() {
 		StringVectorBaseTypeImpl stringVectorBaseType = new StringVectorBaseTypeImpl();
 		return stringVectorBaseType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StudiesType createStudiesType() {
+		StudiesTypeImpl studiesType = new StudiesTypeImpl();
+		return studiesType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StudyType createStudyType() {
+		StudyTypeImpl studyType = new StudyTypeImpl();
+		return studyType;
 	}
 
 	/**

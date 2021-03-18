@@ -86,24 +86,7 @@
     </genClasses>
     <genClasses ecoreClass="paxelerateTS.ecore#//PassengerSortingSchemeType"/>
     <genClasses ecoreClass="paxelerateTS.ecore#//PaxelerateInputType">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/loadFactor"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/activeDoorUIDs"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/iterations"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/simulationType"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/displaySimulation"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/seatType"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/simulationGridResolution"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/simulationSpeedFactor"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/passengerSortingScheme"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/passengerAgressiveMoodShare"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/seatInterferenceProcessTimeMean"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/seatInterferenceProcessTimeDeviation"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/doorSelection"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/percentageOfPassengersWithJackets"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/percentageOfPassengersWithSmallBags"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/percentageOfPassengersWithMediumBags"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/percentageOfPassengersWithLargeBags"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//PaxelerateInputType/uID"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateInputType/studies"/>
     </genClasses>
     <genClasses ecoreClass="paxelerateTS.ecore#//PaxelerateType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//PaxelerateType/input"/>
@@ -134,6 +117,26 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//StringVectorBaseType/uncertaintyFunctionName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//StringVectorBaseType/v"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//StringVectorBaseType/w"/>
+    </genClasses>
+    <genClasses ecoreClass="paxelerateTS.ecore#//StudiesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//StudiesType/study"/>
+    </genClasses>
+    <genClasses ecoreClass="paxelerateTS.ecore#//StudyType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//StudyType/loadFactor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//StudyType/activeDoorUIDs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//StudyType/iterations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//StudyType/simulationType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//StudyType/displaySimulation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//StudyType/seatType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//StudyType/simulationGridResolution"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//StudyType/simulationSpeedFactor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//StudyType/passengerSortingScheme"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//StudyType/doorSelection"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//StudyType/percentageOfPassengersWithJackets"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//StudyType/percentageOfPassengersWithSmallBags"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//StudyType/percentageOfPassengersWithMediumBags"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerateTS.ecore#//StudyType/percentageOfPassengersWithLargeBags"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//StudyType/uID"/>
     </genClasses>
     <genClasses ecoreClass="paxelerateTS.ecore#//TimeBaseType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerateTS.ecore#//TimeBaseType/value"/>

@@ -15,6 +15,7 @@ import com.paxelerate.model.monuments.Door;
 
 import net.bhl.opensource.toolbox.io.Log;
 import net.bhl.opensource.toolbox.time.StopWatch;
+import toolspecific.StudyType;
 
 /**
  *
@@ -31,7 +32,7 @@ public interface GeneratePassengersAction {
 	 *
 	 * @param cabin is the input parameter
 	 */
-	static void run(Deck deck, Map<TravelClass, Integer> amounts) {
+	static void run(Deck deck, Map<TravelClass, Integer> amounts, StudyType input) {
 
 		StopWatch watch = new StopWatch();
 
@@ -50,7 +51,7 @@ public interface GeneratePassengersAction {
 			/* remove current passengers and set seats free */
 			deck.getPassengers().clear();
 
-			PassengerGenerator.createAll(deck, amounts);
+			PassengerGenerator.createAll(deck, amounts, input);
 			watch.stop();
 			Log.end(watch);
 		}

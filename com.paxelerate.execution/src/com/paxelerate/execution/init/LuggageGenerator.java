@@ -19,6 +19,7 @@ import com.paxelerate.model.settings.LuggageProperties;
 
 import net.bhl.opensource.toolbox.emf.EObjectHelper;
 import net.bhl.opensource.toolbox.math.random.RandomHelper;
+import toolspecific.StudyType;
 
 /**
  * The Luggage Generator.
@@ -29,7 +30,7 @@ import net.bhl.opensource.toolbox.math.random.RandomHelper;
 
 public interface LuggageGenerator {
 
-	static List<Luggage> create(Deck deck) {
+	static List<Luggage> create(Deck deck, StudyType input) {
 
 		// Create a luggage percentage list
 		List<Luggage> luggageList = new ArrayList<>();
@@ -38,10 +39,10 @@ public interface LuggageGenerator {
 		int pax = deck.getPassengers().size();
 
 		// Determine the percentages
-		double jackets = settings.getPercentageOfPassengersWithJacket();
-		double largeBags = settings.getPercentageOfPassengersWithLargeBag();
-		double mediumBags = settings.getPercentageOfPassengersWithMediumBag();
-		double smallBags = settings.getPercentageOfPassengersWithSmallBag();
+		double jackets = input.getPercentageOfPassengersWithJackets().getValue();
+		double largeBags = input.getPercentageOfPassengersWithJackets().getValue();
+		double mediumBags = input.getPercentageOfPassengersWithJackets().getValue();
+		double smallBags = input.getPercentageOfPassengersWithJackets().getValue();
 
 		// Calculate the no luggage percentage
 		if (100.0 - (jackets + smallBags + mediumBags + largeBags) < 0.0) {

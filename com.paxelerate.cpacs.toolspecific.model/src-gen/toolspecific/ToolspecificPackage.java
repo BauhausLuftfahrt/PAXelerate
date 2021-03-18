@@ -974,166 +974,13 @@ public interface ToolspecificPackage extends EPackage {
 	int PAXELERATE_INPUT_TYPE__EXTERNAL_FILE_NAME = COMPLEX_BASE_TYPE__EXTERNAL_FILE_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Load Factor</b></em>' containment reference.
+	 * The feature id for the '<em><b>Studies</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PAXELERATE_INPUT_TYPE__LOAD_FACTOR = COMPLEX_BASE_TYPE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Active Door UI Ds</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAXELERATE_INPUT_TYPE__ACTIVE_DOOR_UI_DS = COMPLEX_BASE_TYPE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Iterations</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAXELERATE_INPUT_TYPE__ITERATIONS = COMPLEX_BASE_TYPE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Simulation Type</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAXELERATE_INPUT_TYPE__SIMULATION_TYPE = COMPLEX_BASE_TYPE_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Display Simulation</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAXELERATE_INPUT_TYPE__DISPLAY_SIMULATION = COMPLEX_BASE_TYPE_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Seat Type</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAXELERATE_INPUT_TYPE__SEAT_TYPE = COMPLEX_BASE_TYPE_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Simulation Grid Resolution</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAXELERATE_INPUT_TYPE__SIMULATION_GRID_RESOLUTION = COMPLEX_BASE_TYPE_FEATURE_COUNT + 6;
-
-	/**
-	 * The feature id for the '<em><b>Simulation Speed Factor</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAXELERATE_INPUT_TYPE__SIMULATION_SPEED_FACTOR = COMPLEX_BASE_TYPE_FEATURE_COUNT + 7;
-
-	/**
-	 * The feature id for the '<em><b>Passenger Sorting Scheme</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAXELERATE_INPUT_TYPE__PASSENGER_SORTING_SCHEME = COMPLEX_BASE_TYPE_FEATURE_COUNT + 8;
-
-	/**
-	 * The feature id for the '<em><b>Passenger Agressive Mood Share</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAXELERATE_INPUT_TYPE__PASSENGER_AGRESSIVE_MOOD_SHARE = COMPLEX_BASE_TYPE_FEATURE_COUNT + 9;
-
-	/**
-	 * The feature id for the '<em><b>Seat Interference Process Time Mean</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAXELERATE_INPUT_TYPE__SEAT_INTERFERENCE_PROCESS_TIME_MEAN = COMPLEX_BASE_TYPE_FEATURE_COUNT + 10;
-
-	/**
-	 * The feature id for the '<em><b>Seat Interference Process Time Deviation</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAXELERATE_INPUT_TYPE__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION = COMPLEX_BASE_TYPE_FEATURE_COUNT + 11;
-
-	/**
-	 * The feature id for the '<em><b>Door Selection</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAXELERATE_INPUT_TYPE__DOOR_SELECTION = COMPLEX_BASE_TYPE_FEATURE_COUNT + 12;
-
-	/**
-	 * The feature id for the '<em><b>Percentage Of Passengers With Jackets</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAXELERATE_INPUT_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_JACKETS = COMPLEX_BASE_TYPE_FEATURE_COUNT + 13;
-
-	/**
-	 * The feature id for the '<em><b>Percentage Of Passengers With Small Bags</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAXELERATE_INPUT_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_BAGS = COMPLEX_BASE_TYPE_FEATURE_COUNT + 14;
-
-	/**
-	 * The feature id for the '<em><b>Percentage Of Passengers With Medium Bags</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAXELERATE_INPUT_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_BAGS = COMPLEX_BASE_TYPE_FEATURE_COUNT + 15;
-
-	/**
-	 * The feature id for the '<em><b>Percentage Of Passengers With Large Bags</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAXELERATE_INPUT_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_LARGE_BAGS = COMPLEX_BASE_TYPE_FEATURE_COUNT + 16;
-
-	/**
-	 * The feature id for the '<em><b>UID</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAXELERATE_INPUT_TYPE__UID = COMPLEX_BASE_TYPE_FEATURE_COUNT + 17;
+	int PAXELERATE_INPUT_TYPE__STUDIES = COMPLEX_BASE_TYPE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Paxelerate Input Type</em>' class.
@@ -1142,7 +989,7 @@ public interface ToolspecificPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAXELERATE_INPUT_TYPE_FEATURE_COUNT = COMPLEX_BASE_TYPE_FEATURE_COUNT + 18;
+	int PAXELERATE_INPUT_TYPE_FEATURE_COUNT = COMPLEX_BASE_TYPE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Paxelerate Input Type</em>' class.
@@ -1589,6 +1436,260 @@ public interface ToolspecificPackage extends EPackage {
 	int STRING_VECTOR_BASE_TYPE_OPERATION_COUNT = STRING_BASE_TYPE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link toolspecific.impl.StudiesTypeImpl <em>Studies Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see toolspecific.impl.StudiesTypeImpl
+	 * @see toolspecific.impl.ToolspecificPackageImpl#getStudiesType()
+	 * @generated
+	 */
+	int STUDIES_TYPE = 18;
+
+	/**
+	 * The feature id for the '<em><b>External Data Directory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDIES_TYPE__EXTERNAL_DATA_DIRECTORY = COMPLEX_BASE_TYPE__EXTERNAL_DATA_DIRECTORY;
+
+	/**
+	 * The feature id for the '<em><b>External Data Node Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDIES_TYPE__EXTERNAL_DATA_NODE_PATH = COMPLEX_BASE_TYPE__EXTERNAL_DATA_NODE_PATH;
+
+	/**
+	 * The feature id for the '<em><b>External File Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDIES_TYPE__EXTERNAL_FILE_NAME = COMPLEX_BASE_TYPE__EXTERNAL_FILE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Study</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDIES_TYPE__STUDY = COMPLEX_BASE_TYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Studies Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDIES_TYPE_FEATURE_COUNT = COMPLEX_BASE_TYPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Studies Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDIES_TYPE_OPERATION_COUNT = COMPLEX_BASE_TYPE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link toolspecific.impl.StudyTypeImpl <em>Study Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see toolspecific.impl.StudyTypeImpl
+	 * @see toolspecific.impl.ToolspecificPackageImpl#getStudyType()
+	 * @generated
+	 */
+	int STUDY_TYPE = 19;
+
+	/**
+	 * The feature id for the '<em><b>External Data Directory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_TYPE__EXTERNAL_DATA_DIRECTORY = COMPLEX_BASE_TYPE__EXTERNAL_DATA_DIRECTORY;
+
+	/**
+	 * The feature id for the '<em><b>External Data Node Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_TYPE__EXTERNAL_DATA_NODE_PATH = COMPLEX_BASE_TYPE__EXTERNAL_DATA_NODE_PATH;
+
+	/**
+	 * The feature id for the '<em><b>External File Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_TYPE__EXTERNAL_FILE_NAME = COMPLEX_BASE_TYPE__EXTERNAL_FILE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Load Factor</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_TYPE__LOAD_FACTOR = COMPLEX_BASE_TYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Active Door UI Ds</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_TYPE__ACTIVE_DOOR_UI_DS = COMPLEX_BASE_TYPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Iterations</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_TYPE__ITERATIONS = COMPLEX_BASE_TYPE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Simulation Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_TYPE__SIMULATION_TYPE = COMPLEX_BASE_TYPE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Display Simulation</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_TYPE__DISPLAY_SIMULATION = COMPLEX_BASE_TYPE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Seat Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_TYPE__SEAT_TYPE = COMPLEX_BASE_TYPE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Simulation Grid Resolution</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_TYPE__SIMULATION_GRID_RESOLUTION = COMPLEX_BASE_TYPE_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Simulation Speed Factor</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_TYPE__SIMULATION_SPEED_FACTOR = COMPLEX_BASE_TYPE_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Passenger Sorting Scheme</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_TYPE__PASSENGER_SORTING_SCHEME = COMPLEX_BASE_TYPE_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Door Selection</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_TYPE__DOOR_SELECTION = COMPLEX_BASE_TYPE_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>Percentage Of Passengers With Jackets</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_JACKETS = COMPLEX_BASE_TYPE_FEATURE_COUNT + 10;
+
+	/**
+	 * The feature id for the '<em><b>Percentage Of Passengers With Small Bags</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_BAGS = COMPLEX_BASE_TYPE_FEATURE_COUNT + 11;
+
+	/**
+	 * The feature id for the '<em><b>Percentage Of Passengers With Medium Bags</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_BAGS = COMPLEX_BASE_TYPE_FEATURE_COUNT + 12;
+
+	/**
+	 * The feature id for the '<em><b>Percentage Of Passengers With Large Bags</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_LARGE_BAGS = COMPLEX_BASE_TYPE_FEATURE_COUNT + 13;
+
+	/**
+	 * The feature id for the '<em><b>UID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_TYPE__UID = COMPLEX_BASE_TYPE_FEATURE_COUNT + 14;
+
+	/**
+	 * The number of structural features of the '<em>Study Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_TYPE_FEATURE_COUNT = COMPLEX_BASE_TYPE_FEATURE_COUNT + 15;
+
+	/**
+	 * The number of operations of the '<em>Study Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_TYPE_OPERATION_COUNT = COMPLEX_BASE_TYPE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link toolspecific.impl.TimeBaseTypeImpl <em>Time Base Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1596,7 +1697,7 @@ public interface ToolspecificPackage extends EPackage {
 	 * @see toolspecific.impl.ToolspecificPackageImpl#getTimeBaseType()
 	 * @generated
 	 */
-	int TIME_BASE_TYPE = 18;
+	int TIME_BASE_TYPE = 20;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1660,7 +1761,7 @@ public interface ToolspecificPackage extends EPackage {
 	 * @see toolspecific.impl.ToolspecificPackageImpl#getRelationalOperatorType()
 	 * @generated
 	 */
-	int RELATIONAL_OPERATOR_TYPE = 19;
+	int RELATIONAL_OPERATOR_TYPE = 21;
 
 	/**
 	 * The meta object id for the '{@link toolspecific.SymmetryType <em>Symmetry Type</em>}' enum.
@@ -1670,7 +1771,7 @@ public interface ToolspecificPackage extends EPackage {
 	 * @see toolspecific.impl.ToolspecificPackageImpl#getSymmetryType()
 	 * @generated
 	 */
-	int SYMMETRY_TYPE = 20;
+	int SYMMETRY_TYPE = 22;
 
 	/**
 	 * The meta object id for the '{@link toolspecific.UncertaintyFunctionType <em>Uncertainty Function Type</em>}' enum.
@@ -1680,7 +1781,7 @@ public interface ToolspecificPackage extends EPackage {
 	 * @see toolspecific.impl.ToolspecificPackageImpl#getUncertaintyFunctionType()
 	 * @generated
 	 */
-	int UNCERTAINTY_FUNCTION_TYPE = 21;
+	int UNCERTAINTY_FUNCTION_TYPE = 23;
 
 	/**
 	 * The meta object id for the '<em>Relational Operator Type Object</em>' data type.
@@ -1690,7 +1791,7 @@ public interface ToolspecificPackage extends EPackage {
 	 * @see toolspecific.impl.ToolspecificPackageImpl#getRelationalOperatorTypeObject()
 	 * @generated
 	 */
-	int RELATIONAL_OPERATOR_TYPE_OBJECT = 22;
+	int RELATIONAL_OPERATOR_TYPE_OBJECT = 24;
 
 	/**
 	 * The meta object id for the '<em>Symmetry Type Object</em>' data type.
@@ -1700,7 +1801,7 @@ public interface ToolspecificPackage extends EPackage {
 	 * @see toolspecific.impl.ToolspecificPackageImpl#getSymmetryTypeObject()
 	 * @generated
 	 */
-	int SYMMETRY_TYPE_OBJECT = 23;
+	int SYMMETRY_TYPE_OBJECT = 25;
 
 	/**
 	 * The meta object id for the '<em>Uncertainty Function Type Object</em>' data type.
@@ -1710,7 +1811,7 @@ public interface ToolspecificPackage extends EPackage {
 	 * @see toolspecific.impl.ToolspecificPackageImpl#getUncertaintyFunctionTypeObject()
 	 * @generated
 	 */
-	int UNCERTAINTY_FUNCTION_TYPE_OBJECT = 24;
+	int UNCERTAINTY_FUNCTION_TYPE_OBJECT = 26;
 
 	/**
 	 * Returns the meta object for class '{@link toolspecific.BooleanBaseType <em>Boolean Base Type</em>}'.
@@ -2219,202 +2320,15 @@ public interface ToolspecificPackage extends EPackage {
 	EClass getPaxelerateInputType();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link toolspecific.PaxelerateInputType#getLoadFactor <em>Load Factor</em>}'.
+	 * Returns the meta object for the containment reference '{@link toolspecific.PaxelerateInputType#getStudies <em>Studies</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Load Factor</em>'.
-	 * @see toolspecific.PaxelerateInputType#getLoadFactor()
+	 * @return the meta object for the containment reference '<em>Studies</em>'.
+	 * @see toolspecific.PaxelerateInputType#getStudies()
 	 * @see #getPaxelerateInputType()
 	 * @generated
 	 */
-	EReference getPaxelerateInputType_LoadFactor();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link toolspecific.PaxelerateInputType#getActiveDoorUIDs <em>Active Door UI Ds</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Active Door UI Ds</em>'.
-	 * @see toolspecific.PaxelerateInputType#getActiveDoorUIDs()
-	 * @see #getPaxelerateInputType()
-	 * @generated
-	 */
-	EReference getPaxelerateInputType_ActiveDoorUIDs();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link toolspecific.PaxelerateInputType#getIterations <em>Iterations</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Iterations</em>'.
-	 * @see toolspecific.PaxelerateInputType#getIterations()
-	 * @see #getPaxelerateInputType()
-	 * @generated
-	 */
-	EReference getPaxelerateInputType_Iterations();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link toolspecific.PaxelerateInputType#getSimulationType <em>Simulation Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Simulation Type</em>'.
-	 * @see toolspecific.PaxelerateInputType#getSimulationType()
-	 * @see #getPaxelerateInputType()
-	 * @generated
-	 */
-	EReference getPaxelerateInputType_SimulationType();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link toolspecific.PaxelerateInputType#getDisplaySimulation <em>Display Simulation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Display Simulation</em>'.
-	 * @see toolspecific.PaxelerateInputType#getDisplaySimulation()
-	 * @see #getPaxelerateInputType()
-	 * @generated
-	 */
-	EReference getPaxelerateInputType_DisplaySimulation();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link toolspecific.PaxelerateInputType#getSeatType <em>Seat Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Seat Type</em>'.
-	 * @see toolspecific.PaxelerateInputType#getSeatType()
-	 * @see #getPaxelerateInputType()
-	 * @generated
-	 */
-	EReference getPaxelerateInputType_SeatType();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link toolspecific.PaxelerateInputType#getSimulationGridResolution <em>Simulation Grid Resolution</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Simulation Grid Resolution</em>'.
-	 * @see toolspecific.PaxelerateInputType#getSimulationGridResolution()
-	 * @see #getPaxelerateInputType()
-	 * @generated
-	 */
-	EReference getPaxelerateInputType_SimulationGridResolution();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link toolspecific.PaxelerateInputType#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Simulation Speed Factor</em>'.
-	 * @see toolspecific.PaxelerateInputType#getSimulationSpeedFactor()
-	 * @see #getPaxelerateInputType()
-	 * @generated
-	 */
-	EReference getPaxelerateInputType_SimulationSpeedFactor();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link toolspecific.PaxelerateInputType#getPassengerSortingScheme <em>Passenger Sorting Scheme</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Passenger Sorting Scheme</em>'.
-	 * @see toolspecific.PaxelerateInputType#getPassengerSortingScheme()
-	 * @see #getPaxelerateInputType()
-	 * @generated
-	 */
-	EReference getPaxelerateInputType_PassengerSortingScheme();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link toolspecific.PaxelerateInputType#getPassengerAgressiveMoodShare <em>Passenger Agressive Mood Share</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Passenger Agressive Mood Share</em>'.
-	 * @see toolspecific.PaxelerateInputType#getPassengerAgressiveMoodShare()
-	 * @see #getPaxelerateInputType()
-	 * @generated
-	 */
-	EReference getPaxelerateInputType_PassengerAgressiveMoodShare();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link toolspecific.PaxelerateInputType#getSeatInterferenceProcessTimeMean <em>Seat Interference Process Time Mean</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Seat Interference Process Time Mean</em>'.
-	 * @see toolspecific.PaxelerateInputType#getSeatInterferenceProcessTimeMean()
-	 * @see #getPaxelerateInputType()
-	 * @generated
-	 */
-	EReference getPaxelerateInputType_SeatInterferenceProcessTimeMean();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link toolspecific.PaxelerateInputType#getSeatInterferenceProcessTimeDeviation <em>Seat Interference Process Time Deviation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Seat Interference Process Time Deviation</em>'.
-	 * @see toolspecific.PaxelerateInputType#getSeatInterferenceProcessTimeDeviation()
-	 * @see #getPaxelerateInputType()
-	 * @generated
-	 */
-	EReference getPaxelerateInputType_SeatInterferenceProcessTimeDeviation();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link toolspecific.PaxelerateInputType#getDoorSelection <em>Door Selection</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Door Selection</em>'.
-	 * @see toolspecific.PaxelerateInputType#getDoorSelection()
-	 * @see #getPaxelerateInputType()
-	 * @generated
-	 */
-	EReference getPaxelerateInputType_DoorSelection();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link toolspecific.PaxelerateInputType#getPercentageOfPassengersWithJackets <em>Percentage Of Passengers With Jackets</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Percentage Of Passengers With Jackets</em>'.
-	 * @see toolspecific.PaxelerateInputType#getPercentageOfPassengersWithJackets()
-	 * @see #getPaxelerateInputType()
-	 * @generated
-	 */
-	EReference getPaxelerateInputType_PercentageOfPassengersWithJackets();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link toolspecific.PaxelerateInputType#getPercentageOfPassengersWithSmallBags <em>Percentage Of Passengers With Small Bags</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Percentage Of Passengers With Small Bags</em>'.
-	 * @see toolspecific.PaxelerateInputType#getPercentageOfPassengersWithSmallBags()
-	 * @see #getPaxelerateInputType()
-	 * @generated
-	 */
-	EReference getPaxelerateInputType_PercentageOfPassengersWithSmallBags();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link toolspecific.PaxelerateInputType#getPercentageOfPassengersWithMediumBags <em>Percentage Of Passengers With Medium Bags</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Percentage Of Passengers With Medium Bags</em>'.
-	 * @see toolspecific.PaxelerateInputType#getPercentageOfPassengersWithMediumBags()
-	 * @see #getPaxelerateInputType()
-	 * @generated
-	 */
-	EReference getPaxelerateInputType_PercentageOfPassengersWithMediumBags();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link toolspecific.PaxelerateInputType#getPercentageOfPassengersWithLargeBags <em>Percentage Of Passengers With Large Bags</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Percentage Of Passengers With Large Bags</em>'.
-	 * @see toolspecific.PaxelerateInputType#getPercentageOfPassengersWithLargeBags()
-	 * @see #getPaxelerateInputType()
-	 * @generated
-	 */
-	EReference getPaxelerateInputType_PercentageOfPassengersWithLargeBags();
-
-	/**
-	 * Returns the meta object for the attribute '{@link toolspecific.PaxelerateInputType#getUID <em>UID</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>UID</em>'.
-	 * @see toolspecific.PaxelerateInputType#getUID()
-	 * @see #getPaxelerateInputType()
-	 * @generated
-	 */
-	EAttribute getPaxelerateInputType_UID();
+	EReference getPaxelerateInputType_Studies();
 
 	/**
 	 * Returns the meta object for class '{@link toolspecific.PaxelerateType <em>Paxelerate Type</em>}'.
@@ -2683,6 +2597,202 @@ public interface ToolspecificPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getStringVectorBaseType_W();
+
+	/**
+	 * Returns the meta object for class '{@link toolspecific.StudiesType <em>Studies Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Studies Type</em>'.
+	 * @see toolspecific.StudiesType
+	 * @generated
+	 */
+	EClass getStudiesType();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link toolspecific.StudiesType#getStudy <em>Study</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Study</em>'.
+	 * @see toolspecific.StudiesType#getStudy()
+	 * @see #getStudiesType()
+	 * @generated
+	 */
+	EReference getStudiesType_Study();
+
+	/**
+	 * Returns the meta object for class '{@link toolspecific.StudyType <em>Study Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Study Type</em>'.
+	 * @see toolspecific.StudyType
+	 * @generated
+	 */
+	EClass getStudyType();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link toolspecific.StudyType#getLoadFactor <em>Load Factor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Load Factor</em>'.
+	 * @see toolspecific.StudyType#getLoadFactor()
+	 * @see #getStudyType()
+	 * @generated
+	 */
+	EReference getStudyType_LoadFactor();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link toolspecific.StudyType#getActiveDoorUIDs <em>Active Door UI Ds</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Active Door UI Ds</em>'.
+	 * @see toolspecific.StudyType#getActiveDoorUIDs()
+	 * @see #getStudyType()
+	 * @generated
+	 */
+	EReference getStudyType_ActiveDoorUIDs();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link toolspecific.StudyType#getIterations <em>Iterations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Iterations</em>'.
+	 * @see toolspecific.StudyType#getIterations()
+	 * @see #getStudyType()
+	 * @generated
+	 */
+	EReference getStudyType_Iterations();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link toolspecific.StudyType#getSimulationType <em>Simulation Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Simulation Type</em>'.
+	 * @see toolspecific.StudyType#getSimulationType()
+	 * @see #getStudyType()
+	 * @generated
+	 */
+	EReference getStudyType_SimulationType();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link toolspecific.StudyType#getDisplaySimulation <em>Display Simulation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Display Simulation</em>'.
+	 * @see toolspecific.StudyType#getDisplaySimulation()
+	 * @see #getStudyType()
+	 * @generated
+	 */
+	EReference getStudyType_DisplaySimulation();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link toolspecific.StudyType#getSeatType <em>Seat Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Seat Type</em>'.
+	 * @see toolspecific.StudyType#getSeatType()
+	 * @see #getStudyType()
+	 * @generated
+	 */
+	EReference getStudyType_SeatType();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link toolspecific.StudyType#getSimulationGridResolution <em>Simulation Grid Resolution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Simulation Grid Resolution</em>'.
+	 * @see toolspecific.StudyType#getSimulationGridResolution()
+	 * @see #getStudyType()
+	 * @generated
+	 */
+	EReference getStudyType_SimulationGridResolution();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link toolspecific.StudyType#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Simulation Speed Factor</em>'.
+	 * @see toolspecific.StudyType#getSimulationSpeedFactor()
+	 * @see #getStudyType()
+	 * @generated
+	 */
+	EReference getStudyType_SimulationSpeedFactor();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link toolspecific.StudyType#getPassengerSortingScheme <em>Passenger Sorting Scheme</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Passenger Sorting Scheme</em>'.
+	 * @see toolspecific.StudyType#getPassengerSortingScheme()
+	 * @see #getStudyType()
+	 * @generated
+	 */
+	EReference getStudyType_PassengerSortingScheme();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link toolspecific.StudyType#getDoorSelection <em>Door Selection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Door Selection</em>'.
+	 * @see toolspecific.StudyType#getDoorSelection()
+	 * @see #getStudyType()
+	 * @generated
+	 */
+	EReference getStudyType_DoorSelection();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link toolspecific.StudyType#getPercentageOfPassengersWithJackets <em>Percentage Of Passengers With Jackets</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Percentage Of Passengers With Jackets</em>'.
+	 * @see toolspecific.StudyType#getPercentageOfPassengersWithJackets()
+	 * @see #getStudyType()
+	 * @generated
+	 */
+	EReference getStudyType_PercentageOfPassengersWithJackets();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link toolspecific.StudyType#getPercentageOfPassengersWithSmallBags <em>Percentage Of Passengers With Small Bags</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Percentage Of Passengers With Small Bags</em>'.
+	 * @see toolspecific.StudyType#getPercentageOfPassengersWithSmallBags()
+	 * @see #getStudyType()
+	 * @generated
+	 */
+	EReference getStudyType_PercentageOfPassengersWithSmallBags();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link toolspecific.StudyType#getPercentageOfPassengersWithMediumBags <em>Percentage Of Passengers With Medium Bags</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Percentage Of Passengers With Medium Bags</em>'.
+	 * @see toolspecific.StudyType#getPercentageOfPassengersWithMediumBags()
+	 * @see #getStudyType()
+	 * @generated
+	 */
+	EReference getStudyType_PercentageOfPassengersWithMediumBags();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link toolspecific.StudyType#getPercentageOfPassengersWithLargeBags <em>Percentage Of Passengers With Large Bags</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Percentage Of Passengers With Large Bags</em>'.
+	 * @see toolspecific.StudyType#getPercentageOfPassengersWithLargeBags()
+	 * @see #getStudyType()
+	 * @generated
+	 */
+	EReference getStudyType_PercentageOfPassengersWithLargeBags();
+
+	/**
+	 * Returns the meta object for the attribute '{@link toolspecific.StudyType#getUID <em>UID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>UID</em>'.
+	 * @see toolspecific.StudyType#getUID()
+	 * @see #getStudyType()
+	 * @generated
+	 */
+	EAttribute getStudyType_UID();
 
 	/**
 	 * Returns the meta object for class '{@link toolspecific.TimeBaseType <em>Time Base Type</em>}'.
@@ -3227,158 +3337,12 @@ public interface ToolspecificPackage extends EPackage {
 		EClass PAXELERATE_INPUT_TYPE = eINSTANCE.getPaxelerateInputType();
 
 		/**
-		 * The meta object literal for the '<em><b>Load Factor</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Studies</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PAXELERATE_INPUT_TYPE__LOAD_FACTOR = eINSTANCE.getPaxelerateInputType_LoadFactor();
-
-		/**
-		 * The meta object literal for the '<em><b>Active Door UI Ds</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PAXELERATE_INPUT_TYPE__ACTIVE_DOOR_UI_DS = eINSTANCE.getPaxelerateInputType_ActiveDoorUIDs();
-
-		/**
-		 * The meta object literal for the '<em><b>Iterations</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PAXELERATE_INPUT_TYPE__ITERATIONS = eINSTANCE.getPaxelerateInputType_Iterations();
-
-		/**
-		 * The meta object literal for the '<em><b>Simulation Type</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PAXELERATE_INPUT_TYPE__SIMULATION_TYPE = eINSTANCE.getPaxelerateInputType_SimulationType();
-
-		/**
-		 * The meta object literal for the '<em><b>Display Simulation</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PAXELERATE_INPUT_TYPE__DISPLAY_SIMULATION = eINSTANCE.getPaxelerateInputType_DisplaySimulation();
-
-		/**
-		 * The meta object literal for the '<em><b>Seat Type</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PAXELERATE_INPUT_TYPE__SEAT_TYPE = eINSTANCE.getPaxelerateInputType_SeatType();
-
-		/**
-		 * The meta object literal for the '<em><b>Simulation Grid Resolution</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PAXELERATE_INPUT_TYPE__SIMULATION_GRID_RESOLUTION = eINSTANCE
-				.getPaxelerateInputType_SimulationGridResolution();
-
-		/**
-		 * The meta object literal for the '<em><b>Simulation Speed Factor</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PAXELERATE_INPUT_TYPE__SIMULATION_SPEED_FACTOR = eINSTANCE
-				.getPaxelerateInputType_SimulationSpeedFactor();
-
-		/**
-		 * The meta object literal for the '<em><b>Passenger Sorting Scheme</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PAXELERATE_INPUT_TYPE__PASSENGER_SORTING_SCHEME = eINSTANCE
-				.getPaxelerateInputType_PassengerSortingScheme();
-
-		/**
-		 * The meta object literal for the '<em><b>Passenger Agressive Mood Share</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PAXELERATE_INPUT_TYPE__PASSENGER_AGRESSIVE_MOOD_SHARE = eINSTANCE
-				.getPaxelerateInputType_PassengerAgressiveMoodShare();
-
-		/**
-		 * The meta object literal for the '<em><b>Seat Interference Process Time Mean</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PAXELERATE_INPUT_TYPE__SEAT_INTERFERENCE_PROCESS_TIME_MEAN = eINSTANCE
-				.getPaxelerateInputType_SeatInterferenceProcessTimeMean();
-
-		/**
-		 * The meta object literal for the '<em><b>Seat Interference Process Time Deviation</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PAXELERATE_INPUT_TYPE__SEAT_INTERFERENCE_PROCESS_TIME_DEVIATION = eINSTANCE
-				.getPaxelerateInputType_SeatInterferenceProcessTimeDeviation();
-
-		/**
-		 * The meta object literal for the '<em><b>Door Selection</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PAXELERATE_INPUT_TYPE__DOOR_SELECTION = eINSTANCE.getPaxelerateInputType_DoorSelection();
-
-		/**
-		 * The meta object literal for the '<em><b>Percentage Of Passengers With Jackets</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PAXELERATE_INPUT_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_JACKETS = eINSTANCE
-				.getPaxelerateInputType_PercentageOfPassengersWithJackets();
-
-		/**
-		 * The meta object literal for the '<em><b>Percentage Of Passengers With Small Bags</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PAXELERATE_INPUT_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_BAGS = eINSTANCE
-				.getPaxelerateInputType_PercentageOfPassengersWithSmallBags();
-
-		/**
-		 * The meta object literal for the '<em><b>Percentage Of Passengers With Medium Bags</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PAXELERATE_INPUT_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_BAGS = eINSTANCE
-				.getPaxelerateInputType_PercentageOfPassengersWithMediumBags();
-
-		/**
-		 * The meta object literal for the '<em><b>Percentage Of Passengers With Large Bags</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PAXELERATE_INPUT_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_LARGE_BAGS = eINSTANCE
-				.getPaxelerateInputType_PercentageOfPassengersWithLargeBags();
-
-		/**
-		 * The meta object literal for the '<em><b>UID</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PAXELERATE_INPUT_TYPE__UID = eINSTANCE.getPaxelerateInputType_UID();
+		EReference PAXELERATE_INPUT_TYPE__STUDIES = eINSTANCE.getPaxelerateInputType_Studies();
 
 		/**
 		 * The meta object literal for the '{@link toolspecific.impl.PaxelerateTypeImpl <em>Paxelerate Type</em>}' class.
@@ -3594,6 +3558,158 @@ public interface ToolspecificPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute STRING_VECTOR_BASE_TYPE__W = eINSTANCE.getStringVectorBaseType_W();
+
+		/**
+		 * The meta object literal for the '{@link toolspecific.impl.StudiesTypeImpl <em>Studies Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see toolspecific.impl.StudiesTypeImpl
+		 * @see toolspecific.impl.ToolspecificPackageImpl#getStudiesType()
+		 * @generated
+		 */
+		EClass STUDIES_TYPE = eINSTANCE.getStudiesType();
+
+		/**
+		 * The meta object literal for the '<em><b>Study</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STUDIES_TYPE__STUDY = eINSTANCE.getStudiesType_Study();
+
+		/**
+		 * The meta object literal for the '{@link toolspecific.impl.StudyTypeImpl <em>Study Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see toolspecific.impl.StudyTypeImpl
+		 * @see toolspecific.impl.ToolspecificPackageImpl#getStudyType()
+		 * @generated
+		 */
+		EClass STUDY_TYPE = eINSTANCE.getStudyType();
+
+		/**
+		 * The meta object literal for the '<em><b>Load Factor</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STUDY_TYPE__LOAD_FACTOR = eINSTANCE.getStudyType_LoadFactor();
+
+		/**
+		 * The meta object literal for the '<em><b>Active Door UI Ds</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STUDY_TYPE__ACTIVE_DOOR_UI_DS = eINSTANCE.getStudyType_ActiveDoorUIDs();
+
+		/**
+		 * The meta object literal for the '<em><b>Iterations</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STUDY_TYPE__ITERATIONS = eINSTANCE.getStudyType_Iterations();
+
+		/**
+		 * The meta object literal for the '<em><b>Simulation Type</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STUDY_TYPE__SIMULATION_TYPE = eINSTANCE.getStudyType_SimulationType();
+
+		/**
+		 * The meta object literal for the '<em><b>Display Simulation</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STUDY_TYPE__DISPLAY_SIMULATION = eINSTANCE.getStudyType_DisplaySimulation();
+
+		/**
+		 * The meta object literal for the '<em><b>Seat Type</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STUDY_TYPE__SEAT_TYPE = eINSTANCE.getStudyType_SeatType();
+
+		/**
+		 * The meta object literal for the '<em><b>Simulation Grid Resolution</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STUDY_TYPE__SIMULATION_GRID_RESOLUTION = eINSTANCE.getStudyType_SimulationGridResolution();
+
+		/**
+		 * The meta object literal for the '<em><b>Simulation Speed Factor</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STUDY_TYPE__SIMULATION_SPEED_FACTOR = eINSTANCE.getStudyType_SimulationSpeedFactor();
+
+		/**
+		 * The meta object literal for the '<em><b>Passenger Sorting Scheme</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STUDY_TYPE__PASSENGER_SORTING_SCHEME = eINSTANCE.getStudyType_PassengerSortingScheme();
+
+		/**
+		 * The meta object literal for the '<em><b>Door Selection</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STUDY_TYPE__DOOR_SELECTION = eINSTANCE.getStudyType_DoorSelection();
+
+		/**
+		 * The meta object literal for the '<em><b>Percentage Of Passengers With Jackets</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_JACKETS = eINSTANCE
+				.getStudyType_PercentageOfPassengersWithJackets();
+
+		/**
+		 * The meta object literal for the '<em><b>Percentage Of Passengers With Small Bags</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_BAGS = eINSTANCE
+				.getStudyType_PercentageOfPassengersWithSmallBags();
+
+		/**
+		 * The meta object literal for the '<em><b>Percentage Of Passengers With Medium Bags</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_BAGS = eINSTANCE
+				.getStudyType_PercentageOfPassengersWithMediumBags();
+
+		/**
+		 * The meta object literal for the '<em><b>Percentage Of Passengers With Large Bags</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_LARGE_BAGS = eINSTANCE
+				.getStudyType_PercentageOfPassengersWithLargeBags();
+
+		/**
+		 * The meta object literal for the '<em><b>UID</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STUDY_TYPE__UID = eINSTANCE.getStudyType_UID();
 
 		/**
 		 * The meta object literal for the '{@link toolspecific.impl.TimeBaseTypeImpl <em>Time Base Type</em>}' class.
