@@ -1,6 +1,6 @@
 # Changelog
 
-## PAXelerate - Rework in progress / 2021-02-17
+## PAXelerate - Version 1.0 / 2021-03-18
 
 Due to the reworking of the entire project, there is currently no client version available. Feel free to check out the source code and discover all the changes of the latest release:
 
