@@ -39,13 +39,13 @@ Parameter                           |   Description                             
 loadFactor                          |   Share of occupied seats                     |   double  |   0.0 - 1.0
 activeDoorUIDs                      |   uIDs of boarding doors                      |   string  |   minimum 1 door     
 iterations                          |   Number of boarding iterations               |   int     |   > 1
-simulationType                      |   Type of the simulated scenario              |   enum    |   BOARDING, DEBOARDING or EMERGENCY 
-displaySimulation                   |   Show simulation UI or not                   |   boolean |   -
-seatType (**non-functional!**)      |   Seat type used                              |   enum    |   DEFAULT, SIDEWAYS_FOLDABLE, LIFTING_SEAT_PAN or BRING_YOUR_OWN 
+simulationType                      |   Type of the simulated scenario              |   enum    |   BOARDING, DEBOARDING *or* EMERGENCY 
+displaySimulation                   |   Show simulation UI or not                   |   boolean |   True *or* False
+seatType (**non-functional!**)      |   Seat type used                              |   enum    |   DEFAULT, SIDEWAYS_FOLDABLE, LIFTING_SEAT_PAN *or* BRING_YOUR_OWN 
 simulationGridResolution            |   Grid resolution in x by x meters per node   |   double  |   > 0.1m 
 simulationSpeedFactor               |   Simulation speed factor (1.0 is realtime)   |   double  |   > 0.0
-passengerSortingScheme (*see below*)|   Sorted boarding order                       |   enum    |   RANDOM, RTF, FTR, WTA, WTA_RTF, WTA_FTR, BLOCK, BOARDING_CLASS_RANDOM, STEFFEN, MILNE_KELLY, BIG_BAGS_AFT, BIG_BAGS_FRONT, MAX_BAGS_AFT or MAX_BAGS_FRONT
-doorSelection                       |   Door assignment for passengers              |   enum    |   CLOSEST, CLOSEST_BEHIND, CLOSEST_FRONT or RANDOM
+passengerSortingScheme (*see below*)|   Sorted boarding order                       |   enum    |   RANDOM, RTF, FTR, WTA, WTA_RTF, WTA_FTR, BLOCK, BOARDING_CLASS_RANDOM, STEFFEN, MILNE_KELLY, BIG_BAGS_AFT, BIG_BAGS_FRONT, MAX_BAGS_AFT *or* MAX_BAGS_FRONT
+doorSelection                       |   Door assignment for passengers              |   enum    |   CLOSEST, CLOSEST_BEHIND, CLOSEST_FRONT *or* RANDOM
 percentageOfPassengersWithJackets   |   Share of passengers with jackets only       |   double  |   % from 0 - 100 (total < 100, 100 - total = noLuggage) 
 percentageOfPassengersWithSmallBags |   Share of passengers with small luggage only |   double  |   % from 0 - 100 (total < 100, 100 - total = noLuggage) 
 percentageOfPassengersWithMediumBags|   Share of passengers with medium luggage only|   double  |   % from 0 - 100 (total < 100, 100 - total = noLuggage) 
@@ -65,7 +65,7 @@ BLOCK                   |   Boarding in blocks, with number of blocks is defined
 BOARDING_CLASS_RANDOM   |   Boarding by class with a random order within
 STEFFEN                 |   Boarding according to the custom sequence invented by Steffen
 MILNE_KELLY             |   Boarding according to the custom sequence invented by Milne and Kelly
-BIG_BAGS_AFT            |   Boarding with a ascending luggage volume towards the rear
+BIG_BAGS_AFT            |   Boarding with an ascending luggage volume towards the rear
 BIG_BAGS_FRONT          |   Boarding with a descending luggage volume towards the rear
-MAX_BAGS_AFT            |   Boarding with a ascending luggage count towards the rear
+MAX_BAGS_AFT            |   Boarding with an ascending luggage count towards the rear
 MAX_BAGS_FRONT          |   Boarding with a descending luggage count towards the rear
