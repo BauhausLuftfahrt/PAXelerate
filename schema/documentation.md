@@ -34,22 +34,22 @@ The CPACS toolspecific node for PAXelerate looks like the following:
 
 Check out the following table for a detailed view of all input parameters for a study and their meaning.
 
-Parameter                           |   Description                     |   Input type
----                                 |   ---                             |   ---
-loadFactor                          |   Share of occupied seats         |   double from 0.0 - 1.0
-activeDoorUIDs                      |   uIDs of boarding doors          |   string        
-iterations                          |   Number of boarding iterations   |   int
-simulationType                      |   Type of the simulated scenario  |   BOARDING, DEBOARDING or EMERGENCY 
-displaySimulation                   |   Show simulation UI or not       |   boolean
-seatType (**non-functional!**)      |   Seat type used                  |   DEFAULT, SIDEWAYS_FOLDABLE, LIFTING_SEAT_PAN or BRING_YOUR_OWN 
-simulationGridResolution            |   Cabin grid resolution           |   double, resolution in x by x meters per node
-simulationSpeedFactor               |   Simulation speed factor         |   double, 1 is real time, 2 is double speed etc.
-passengerSortingScheme (*see below*)|   Sorted boarding order           |   RANDOM, RTF, FTR, WTA, WTA_RTF, WTA_FTR, BLOCK, BOARDING_CLASS_RANDOM, STEFFEN, MILNE_KELLY, BIG_BAGS_AFT, BIG_BAGS_FRONT, MAX_BAGS_AFT or MAX_BAGS_FRONT
-doorSelection                       |   Door assignment for passengers  |   CLOSEST, CLOSEST_BEHIND, CLOSEST_FRONT or RANDOM
-percentageOfPassengersWithJackets   |   Share of pax with luggage type  |   double in % from 0 - 100 (*total rest is pax with no luggage!*)
-percentageOfPassengersWithSmallBags |   Share of pax with luggage type  |   double in % from 0 - 100 (*total rest is pax with no luggage!*)
-percentageOfPassengersWithMediumBags|   Share of pax with luggage type  |   double in % from 0 - 100 (*total rest is pax with no luggage!*)
-percentageOfPassengersWithLargeBags |   Share of pax with luggage type  |   double in % from 0 - 100 (*total rest is pax with no luggage!*)
+Parameter                           |   Description                                 |   Type    |   Allowed values
+---                                 |   ---                                         |   ---     |   ---
+loadFactor                          |   Share of occupied seats                     |   double  |   0.0 - 1.0
+activeDoorUIDs                      |   uIDs of boarding doors                      |   string  |   minimum 1 door     
+iterations                          |   Number of boarding iterations               |   int     |   > 1
+simulationType                      |   Type of the simulated scenario              |   enum    |   BOARDING, DEBOARDING or EMERGENCY 
+displaySimulation                   |   Show simulation UI or not                   |   boolean |   -
+seatType (**non-functional!**)      |   Seat type used                              |   enum    |   DEFAULT, SIDEWAYS_FOLDABLE, LIFTING_SEAT_PAN or BRING_YOUR_OWN 
+simulationGridResolution            |   Grid resolution in x by x meters per node   |   double  |   > 0.1m 
+simulationSpeedFactor               |   Simulation speed factor (1.0 is realtime)   |   double  |   > 0.0
+passengerSortingScheme (*see below*)|   Sorted boarding order                       |   enum    |   RANDOM, RTF, FTR, WTA, WTA_RTF, WTA_FTR, BLOCK, BOARDING_CLASS_RANDOM, STEFFEN, MILNE_KELLY, BIG_BAGS_AFT, BIG_BAGS_FRONT, MAX_BAGS_AFT or MAX_BAGS_FRONT
+doorSelection                       |   Door assignment for passengers              |   enum    |   CLOSEST, CLOSEST_BEHIND, CLOSEST_FRONT or RANDOM
+percentageOfPassengersWithJackets   |   Share of passengers with jackets only       |   double  |   % from 0 - 100 (total < 100, 100 - total = noLuggage) 
+percentageOfPassengersWithSmallBags |   Share of passengers with small luggage only |   double  |   % from 0 - 100 (total < 100, 100 - total = noLuggage) 
+percentageOfPassengersWithMediumBags|   Share of passengers with medium luggage only|   double  |   % from 0 - 100 (total < 100, 100 - total = noLuggage) 
+percentageOfPassengersWithLargeBags |   Share of passengers with big luggage only   |   double  |   % from 0 - 100 (total < 100, 100 - total = noLuggage) 
 
 ## Boarding sequence sorting options
 
