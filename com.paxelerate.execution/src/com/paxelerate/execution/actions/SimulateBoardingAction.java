@@ -20,6 +20,7 @@ import org.eclipse.emf.common.util.ECollections;
 
 import com.paxelerate.core.sim.astar.Areamap;
 import com.paxelerate.core.sim.astar.SimulationHandler;
+import com.paxelerate.execution.main.StartPaxelerate;
 import com.paxelerate.execution.ui.SimulationView;
 import com.paxelerate.model.Deck;
 import com.paxelerate.model.Model;
@@ -56,10 +57,10 @@ public class SimulateBoardingAction {
 	 */
 	private static void exportResultData(Integer iteration, Deck deck, String fileName, String studyName) {
 
-		String exportPath = System.getProperty("user.home") + "\\Documents\\paxelerate\\" + fileName.replace(".", "_")
-				+ "\\" + studyName + "\\";
+		String exportPath = StartPaxelerate.CORE_FILE_SAVE_PATH + fileName.replace(".xml", "") + "\\" + studyName
+				+ "\\";
 
-		String outputFileName = "study_" + studyName;
+		String outputFileName = "results_" + studyName;
 
 		try {
 			CSVExport csv = new CSVExport(outputFileName, exportPath, false);

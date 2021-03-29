@@ -27,6 +27,7 @@ public class StartPaxelerate {
 
 	public static String DEFAULT_PATH = System.getProperty("user.home") + "/git/cpacs/aircraft/cabins";
 	public static String FILE_FORMAT = "xml";
+	public static String CORE_FILE_SAVE_PATH = System.getProperty("user.home") + "\\Documents\\paxelerate\\";
 
 	private static String AUTHORS = "Marc Engelmann & Michael Schmidt";
 	private static String NAME = "PAXelerate - Headless";
