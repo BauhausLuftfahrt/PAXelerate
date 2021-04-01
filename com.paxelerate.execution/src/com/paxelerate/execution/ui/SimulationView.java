@@ -1,7 +1,7 @@
 /*******************************************************************************
  * <copyright> Copyright (c) 2014 - 2021 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
- * materials are made available under the terms of the Eclipse Public License v2.0 which accompanies this distribution,
- * and is available at https://www.eclipse.org/legal/epl-v20.html </copyright>
+ * materials are made available under the terms of the GNU General Public License v3.0 which accompanies this distribution,
+ * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
 package com.paxelerate.execution.ui;
 
