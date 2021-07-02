@@ -26,4 +26,8 @@ public class ContactTracer {
 	private HashMap<Double, Double> distanceTracker = null;
 	private boolean currentlyActive = false;
 
+	public ContactTracer() {
+
+	}
+
 }
