@@ -81,6 +81,9 @@ public class Agent implements Runnable {
 	private List<Double> speedOnPath = new ArrayList<>();
 	private SimulationHandler handler;
 
+	// Track contacts here.
+	private List<ContactTracer> contactList = new ArrayList<>();
+
 	/**
 	 * Creates an agent handler object
 	 *
