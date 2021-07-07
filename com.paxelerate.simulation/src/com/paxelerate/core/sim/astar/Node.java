@@ -43,6 +43,8 @@ public class Node {
 	private Map<Layer, Property> properties = new HashMap<>();
 	public ConcurrentHashMap<Agent, Integer> influencingPassengers = new ConcurrentHashMap<>();
 
+	public ConcurrentHashMap<Agent, Integer> covidMap = new ConcurrentHashMap<>();
+
 	private double standardCeilingHeight = 2.235; // A320 cabin interior height
 	private double ceilingHeight = standardCeilingHeight;
 

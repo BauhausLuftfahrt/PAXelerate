@@ -17,8 +17,6 @@ import com.paxelerate.core.sim.agent.action.UnfoldSeat;
 import com.paxelerate.core.sim.agent.action.WaitForClearing;
 import com.paxelerate.core.sim.astar.Costmap;
 import com.paxelerate.core.sim.astar.Node;
-import com.paxelerate.core.sim.astar.Node.Layer;
-import com.paxelerate.core.sim.astar.Node.Property;
 import com.paxelerate.core.sim.astar.Path;
 import com.paxelerate.core.sim.astar.SimulationHandler;
 import com.paxelerate.model.EPoint;
@@ -58,6 +56,8 @@ public class Agent implements Runnable {
 	public final static double INFLUENCE_AREA_SITTING = 0.2; // meters
 	public final static double ADDING_DEPTH_SITTING = 0.4; // meters (adding shape representing legs while sitting)
 
+	public final static double COVID_EXPOSURE_TRESHOLD = 2.0; // meters
+
 	private final static int PIXELS_FOR_WAY = 7;
 
 	private int overheadBinFull = 0, stepIndex = 0;
@@ -81,8 +81,7 @@ public class Agent implements Runnable {
 	private List<Double> speedOnPath = new ArrayList<>();
 	private SimulationHandler handler;
 
-	// Track contacts here.
-	private List<ContactTracer> contactList = new ArrayList<>();
+	public ContactTracer tracer;
 
 	/**
 	 * Creates an agent handler object
@@ -111,6 +110,9 @@ public class Agent implements Runnable {
 
 		/* Generate the shapes and calculate the resulting areas for each layer */
 		shapeHandler = new AgentShapeHandler(this);
+
+		tracer = new ContactTracer(passenger.getId());
+
 	}
 
 	/**
@@ -244,85 +246,13 @@ public class Agent implements Runnable {
 			}
 		}
 
-		/*
-		 * this is the dimension you need to go in every direction from the starting
-		 * point. It is half the way back in every dimension.
-		 */
-		int scanDimension = (int) (Math.max(shapeHandler.getModifiedShape().length,
-				shapeHandler.getModifiedShape()[0].length) / 2.0);
+		AgentFunctions.blockShape(shapeHandler.getModifiedShape(), vector, occupy, changePosition, this);
 
-		/* loop through the whole passenger area in the area map */
-		for (int x = -scanDimension; x <= scanDimension; x++) {
-			for (int y = -scanDimension; y <= scanDimension; y++) {
+//		shapeHandler.setModifiedShape(Rotator.rotate(PassengerExtensions.getRotation(passenger),
+//				shapeHandler.getInfluenceArea(Influence.COVID)));
 
-				/* the location currently under investigation */
-				IntVector location = new IntVector(BHLMath.toInt(vector.getX()) + x, BHLMath.toInt(vector.getY()) + y);
-
-				/* if the point is within the bounds of the passenger area */
-				if (x + scanDimension < shapeHandler.getModifiedShape().length
-						&& y + scanDimension < shapeHandler.getModifiedShape()[0].length) {
-
-					/*
-					 * if the passenger area has a passenger located on this specific node
-					 */
-					if (shapeHandler.getModifiedShape()[x + scanDimension][y + scanDimension] == 100
-							&& changePosition) {
-
-						handler.getMap().get(location).ifPresent(node -> {
-
-							/* check if the node is no obstacle */
-							if (node.getProperty(Layer.ASTAR) == Property.FREE) {
-
-								if (node.getPassenger() == null || node.getPassenger().getId() == passenger.getId()) {
-
-									/* block or unblock the node */
-									if (occupy) {
-
-										/* check if the node is empty */
-										node.setPassenger(passenger);
-
-									} else {
-
-										/* During unblocking, check if the node is empty */
-										node.setProperty(Property.FREE, Layer.ASTAR);
-										node.setPassenger(null);
-									}
-								}
-							}
-						});
-
-						/*
-						 * if the passenger area has an influence value on this specific node
-						 */
-					} else if (shapeHandler.getModifiedShape()[x + scanDimension][y + scanDimension] != 0
-							&& shapeHandler.getModifiedShape()[x + scanDimension][y + scanDimension] != 100) {
-
-						if (handler.getMap().get(location).isPresent()) {
-
-							Node node = handler.getMap().get(location).get();
-
-							/* check if the node is no obstacle */
-							if (node.getProperty(Layer.ASTAR) == Property.FREE) {
-
-								/* add or remove the influence value */
-								if (occupy) {
-
-									// create an new influencer object and add it to the node
-
-									node.influencingPassengers.put(this,
-											shapeHandler.getModifiedShape()[x + scanDimension][y + scanDimension]);
-
-								} else {
-									// remove the influencer object from the nodes list
-									node.influencingPassengers.remove(this);
-								}
-							}
-						}
-
-					}
-				}
-			}
-		}
+//		AgentFunctions.blockCovidDistance(shapeHandler.getInfluenceArea(Influence.COVID), vector, occupy,
+//				changePosition, this);
 	}
 
 	/**
@@ -745,7 +675,9 @@ public class Agent implements Runnable {
 				passenger.getSpeedOnPath().clear();
 				passenger.getSpeedOnPath().addAll(speedOnPath);
 				stopBoardingStatistics();
+
 				return true;
+
 			}
 
 		} else {

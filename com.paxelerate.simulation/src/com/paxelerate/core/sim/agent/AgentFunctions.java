@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.Optional;
 
 import com.paxelerate.core.sim.astar.Node;
+import com.paxelerate.core.sim.astar.Node.Layer;
+import com.paxelerate.core.sim.astar.Node.Property;
+import com.paxelerate.model.EPoint;
 import com.paxelerate.model.Model;
 import com.paxelerate.model.agent.Passenger;
 import com.paxelerate.model.enums.SeatLocation;
@@ -23,7 +26,9 @@ import com.paxelerate.model.monuments.Seat;
 import com.paxelerate.model.monuments.SeatGroup;
 
 import net.bhl.opensource.toolbox.emf.EObjectHelper;
+import net.bhl.opensource.toolbox.math.BHLMath;
 import net.bhl.opensource.toolbox.math.Distance;
+import net.bhl.opensource.toolbox.math.vector.IntVector;
 
 /**
  * The Class AgentFunctions.
@@ -210,5 +215,95 @@ public interface AgentFunctions {
 			}
 		}
 		return false;
+	}
+
+	/**
+	 * @param shape
+	 * @param vector
+	 * @param occupy
+	 * @param changePosition
+	 */
+	static void blockShape(int[][] shape, EPoint vector, boolean occupy, boolean changePosition, Agent agent) {
+
+		/*
+		 * this is the dimension you need to go in every direction from the starting
+		 * point. It is half the way back in every dimension.
+		 */
+		int scanDimension = (int) (Math.max(shape.length, shape[0].length) / 2.0);
+
+		/* loop through the whole passenger area in the area map */
+		for (int x = -scanDimension; x <= scanDimension; x++) {
+			for (int y = -scanDimension; y <= scanDimension; y++) {
+
+				/* the location currently under investigation */
+				IntVector location = new IntVector(BHLMath.toInt(vector.getX()) + x, BHLMath.toInt(vector.getY()) + y);
+
+				/* if the point is within the bounds of the passenger area */
+				if (x + scanDimension < shape.length && y + scanDimension < shape[0].length) {
+
+					// Check for passenger shape itself
+					if (shape[x + scanDimension][y + scanDimension] == 100 && changePosition) {
+
+						if (agent.getHandler().getMap().get(location).isPresent()) {
+
+							Node node = agent.getHandler().getMap().get(location).get();
+
+							/* check if the node is no obstacle */
+							if (node.getProperty(Layer.ASTAR) == Property.FREE) {
+
+								if (node.getPassenger() == null
+										|| node.getPassenger().getId() == agent.getPassenger().getId()) {
+
+									/* block or unblock the node */
+									if (occupy) {
+
+										/* check if the node is empty */
+										node.setPassenger(agent.getPassenger());
+										node.covidMap.put(agent, shape[x + scanDimension][y + scanDimension]);
+
+									} else {
+
+										/* During unblocking, check if the node is empty */
+										node.setProperty(Property.FREE, Layer.ASTAR);
+										node.setPassenger(null);
+										node.covidMap.remove(agent);
+									}
+								}
+							}
+						}
+
+						// Check for influence area
+					} else if (shape[x + scanDimension][y + scanDimension] != 0
+							&& shape[x + scanDimension][y + scanDimension] != 100) {
+
+						if (agent.getHandler().getMap().get(location).isPresent()) {
+
+							Node node = agent.getHandler().getMap().get(location).get();
+
+							/* add or remove the influence value */
+							if (occupy) {
+								/* check if the node is no obstacle */
+								if (node.getProperty(Layer.ASTAR) == Property.FREE) {
+									// create an new influencer object and add it to the node
+									node.influencingPassengers.put(agent, shape[x + scanDimension][y + scanDimension]);
+								}
+
+								node.covidMap.put(agent, shape[x + scanDimension][y + scanDimension]);
+
+							} else {
+								// remove the influencer object from the nodes list
+								/* check if the node is no obstacle */
+								if (node.getProperty(Layer.ASTAR) == Property.FREE) {
+									node.influencingPassengers.remove(agent);
+								}
+
+								node.covidMap.remove(agent);
+							}
+
+						}
+					}
+				}
+			}
+		}
 	}
 }

@@ -109,13 +109,14 @@ public class SimulationView extends JPanel {
 				g.setColor(Color.LIGHT_GRAY);
 				g.fillRect(x * FONT_SIZE, y * FONT_SIZE, FONT_SIZE, FONT_SIZE);
 
+			} else if (!node.covidMap.isEmpty()) {
+
+				g.setColor(Color.GREEN);
+				g.fillRect(x * FONT_SIZE, y * FONT_SIZE, FONT_SIZE, FONT_SIZE);
+//					g.drawString("" + node.covidMap.size(), x * FONT_SIZE, y * FONT_SIZE);
+
 			}
 
-//			else if (!node.influencingPassengers.isEmpty()) {
-//
-//				g.setColor(Color.GREEN);
-//				g.fillRect(x * FONT_SIZE, y * FONT_SIZE, FONT_SIZE, FONT_SIZE);
-//			}
 		}
 
 		for (Passenger passenger : handler.getPassengersByState(State.SEATED, false)) {

@@ -5,6 +5,8 @@
  *******************************************************************************/
 package com.paxelerate.core.sim.agent.action;
 
+import java.util.Map.Entry;
+
 import com.paxelerate.core.sim.agent.Agent;
 import com.paxelerate.model.agent.Passenger;
 import com.paxelerate.model.enums.State;
@@ -43,5 +45,25 @@ public interface Step {
 		// try to submit the properties back to the passenger submit the agents position
 		passenger.getCurrentPosition().setX(passenger.getDesiredPosition().getX() * scale);
 		passenger.getCurrentPosition().setY(passenger.getDesiredPosition().getY() * scale);
+
+		evaluateCovidDistances(agent);
+	}
+
+	/**
+	 * @param agent
+	 */
+	static void evaluateCovidDistances(Agent agent) {
+
+		agent.getHandler().getMap().get(agent.getPassenger().getCurrentPosition()).ifPresent(node -> {
+
+			for (Entry<Agent, Integer> entry : node.covidMap.entrySet()) {
+
+				agent.tracer.addContact(entry.getKey().getPassenger(), agent.getHandler().getMasterBoardingTime(),
+						entry.getValue() * agent.getHandler().getSettings().getSimulationGridResolution());
+
+			}
+
+		});
+
 	}
 }
