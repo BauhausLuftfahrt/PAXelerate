@@ -103,7 +103,7 @@ public class SimulateBoardingAction {
 					passenger.getSpeedOnPath().clear();
 					csv.addAll(passenger);
 					DataSet ds = new DataSet();
-					ds.put("Seat", passenger.getSeat());
+					ds.put("Seat", passenger.getSeat().getId());
 					ds.put("Door", passenger.getDoor().getId());
 					csv.add(ds, false);
 				}

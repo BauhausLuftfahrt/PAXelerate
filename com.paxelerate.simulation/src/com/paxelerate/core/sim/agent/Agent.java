@@ -111,7 +111,7 @@ public class Agent implements Runnable {
 		/* Generate the shapes and calculate the resulting areas for each layer */
 		shapeHandler = new AgentShapeHandler(this);
 
-		tracer = new ContactTracer(passenger.getId());
+		tracer = new ContactTracer(passenger);
 
 	}
 
@@ -675,6 +675,8 @@ public class Agent implements Runnable {
 				passenger.getSpeedOnPath().clear();
 				passenger.getSpeedOnPath().addAll(speedOnPath);
 				stopBoardingStatistics();
+
+				tracer.evaluateContactTracing(handler.getSettings().getSimulationSpeedFactor());
 
 				return true;
 

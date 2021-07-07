@@ -5,7 +5,10 @@
  *******************************************************************************/
 package com.paxelerate.core.sim.agent;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -24,15 +27,15 @@ public class ContactTracer {
 
 		private final Map<Double, Double> trackingList = new HashMap<>();
 
-		public Tracker(double time, double distance) {
+		Tracker(double time, double distance) {
 			trackingList.put(time, distance);
 		}
 
-		public void add(double time, double distance) {
+		void add(double time, double distance) {
 			trackingList.put(time, distance);
 		}
 
-		public Map<Double, Double> getList() {
+		Map<Double, Double> getList() {
 			return trackingList;
 		}
 	}
@@ -41,10 +44,13 @@ public class ContactTracer {
 //	public static double TRACING_TRIGGER_TIME = 10.0; // seconds
 
 	private Map<Passenger, Tracker> contactMap = new HashMap<>();
-	private int mySelf;
+	private Passenger mySelf;
+	private boolean isTracing = false;
 
-	public ContactTracer(int paxID) {
-		mySelf = paxID;
+	public ContactTracer(Passenger pax) {
+		mySelf = pax;
+
+		isTracing = true;
 	}
 
 	/**
@@ -54,7 +60,11 @@ public class ContactTracer {
 	 */
 	public void addContact(Passenger passenger, double time, double distance) {
 
-		if (passenger.getId() == mySelf) {
+		if (!isTracing) {
+			System.err.println("Contact tracing for passenger " + passenger.getId() + " has been completed.");
+		}
+
+		if (passenger.getId() == mySelf.getId()) {
 			return;
 		}
 
@@ -84,4 +94,65 @@ public class ContactTracer {
 			}
 		}
 	}
+
+	/**
+	 * @return
+	 */
+	public Map<Passenger, Tracker> getAllContacts() {
+		return contactMap;
+	}
+
+	/**
+	 * Run the final contact evaluation. Only do this when the tracing is finished!
+	 *
+	 * @param passenger
+	 * @param speedfactor
+	 */
+	public void evaluateContactTracing(double speedfactor) {
+
+		if (mySelf.getId() == 1) {
+			toConsole();
+		}
+
+		isTracing = false;
+
+		double totalContactCounter = 0;
+
+		List<Double> distances = new ArrayList<>();
+		List<Double> durations = new ArrayList<>();
+
+		for (Entry<Passenger, Tracker> paxList : getAllContacts().entrySet()) {
+
+			totalContactCounter++;
+
+			List<Double> contactDistances = new ArrayList<>();
+			List<Double> contactTimeStamps = new ArrayList<>();
+
+			for (Entry<Double, Double> list : paxList.getValue().getList().entrySet()) {
+
+				contactDistances.add(list.getValue());
+				contactTimeStamps.add(list.getKey());
+
+			}
+
+			distances.add(contactDistances.stream().mapToDouble(d -> d).average().getAsDouble());
+
+			contactTimeStamps.sort(Comparator.comparing(ts -> ts));
+			durations.add((contactTimeStamps.get(contactTimeStamps.size() - 1) - contactTimeStamps.get(0)) * speedfactor
+					/ 1000.0);
+
+		}
+
+		// Copy the results into the data model
+
+		mySelf.setCovidAverageDistanceToPassengers(distances.stream().mapToDouble(d -> d).average().orElse(0.0));
+		mySelf.setCovidMinimumDistanceToPassengers(distances.stream().mapToDouble(d -> d).min().orElse(0.0));
+
+		mySelf.setCovidAverageDurationOfContacts(durations.stream().mapToDouble(d -> d).average().orElse(0.0));
+		mySelf.setCovidMaximumDurationOfContact(durations.stream().mapToDouble(d -> d).max().orElse(0.0));
+
+		mySelf.setCovidTotalNumberOfContacts(totalContactCounter);
+
+	}
+
 }
