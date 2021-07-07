@@ -93,6 +93,11 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/heightBottom"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/heightMiddle"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/heightTop"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/covidTotalNumberOfContacts"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/covidAverageDistanceToPassengers"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/covidMinimumDistanceToPassengers"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/covidAverageDurationOfContacts"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Passenger/covidMaximumDurationOfContact"/>
       </genClasses>
       <genClasses ecoreClass="model.ecore#//agent/Luggage">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//agent/Luggage/id"/>

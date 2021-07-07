@@ -24,7 +24,7 @@ import net.bhl.opensource.toolbox.time.TimeHelper;
  * @since 22.08.2019
  *
  */
-public class SimulationResultLogger {
+public class ExportResultsAction {
 
 	/**
 	 *

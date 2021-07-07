@@ -173,7 +173,7 @@ public class SimulateBoardingAction {
 		}
 
 		/* saves results to results model element */
-		SimulationResultLogger.setSimulationData(handler, EObjectHelper.getParent(Model.class, deck), boardingStatus,
+		ExportResultsAction.setSimulationData(handler, EObjectHelper.getParent(Model.class, deck), boardingStatus,
 				handler.getMasterBoardingTime() * settings.getSimulationSpeedFactor() / 1000,
 				simTimer.getElapsedTimeSecs());
 

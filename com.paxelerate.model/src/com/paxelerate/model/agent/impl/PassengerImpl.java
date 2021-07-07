@@ -77,6 +77,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.paxelerate.model.agent.impl.PassengerImpl#getHeightBottom <em>Height Bottom</em>}</li>
  *   <li>{@link com.paxelerate.model.agent.impl.PassengerImpl#getHeightMiddle <em>Height Middle</em>}</li>
  *   <li>{@link com.paxelerate.model.agent.impl.PassengerImpl#getHeightTop <em>Height Top</em>}</li>
+ *   <li>{@link com.paxelerate.model.agent.impl.PassengerImpl#getCovidTotalNumberOfContacts <em>Covid Total Number Of Contacts</em>}</li>
+ *   <li>{@link com.paxelerate.model.agent.impl.PassengerImpl#getCovidAverageDistanceToPassengers <em>Covid Average Distance To Passengers</em>}</li>
+ *   <li>{@link com.paxelerate.model.agent.impl.PassengerImpl#getCovidMinimumDistanceToPassengers <em>Covid Minimum Distance To Passengers</em>}</li>
+ *   <li>{@link com.paxelerate.model.agent.impl.PassengerImpl#getCovidAverageDurationOfContacts <em>Covid Average Duration Of Contacts</em>}</li>
+ *   <li>{@link com.paxelerate.model.agent.impl.PassengerImpl#getCovidMaximumDurationOfContact <em>Covid Maximum Duration Of Contact</em>}</li>
  * </ul>
  *
  * @generated
@@ -731,6 +736,106 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * @ordered
 	 */
 	protected double heightTop = HEIGHT_TOP_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCovidTotalNumberOfContacts() <em>Covid Total Number Of Contacts</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCovidTotalNumberOfContacts()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double COVID_TOTAL_NUMBER_OF_CONTACTS_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getCovidTotalNumberOfContacts() <em>Covid Total Number Of Contacts</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCovidTotalNumberOfContacts()
+	 * @generated
+	 * @ordered
+	 */
+	protected double covidTotalNumberOfContacts = COVID_TOTAL_NUMBER_OF_CONTACTS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCovidAverageDistanceToPassengers() <em>Covid Average Distance To Passengers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCovidAverageDistanceToPassengers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double COVID_AVERAGE_DISTANCE_TO_PASSENGERS_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getCovidAverageDistanceToPassengers() <em>Covid Average Distance To Passengers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCovidAverageDistanceToPassengers()
+	 * @generated
+	 * @ordered
+	 */
+	protected double covidAverageDistanceToPassengers = COVID_AVERAGE_DISTANCE_TO_PASSENGERS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCovidMinimumDistanceToPassengers() <em>Covid Minimum Distance To Passengers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCovidMinimumDistanceToPassengers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double COVID_MINIMUM_DISTANCE_TO_PASSENGERS_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getCovidMinimumDistanceToPassengers() <em>Covid Minimum Distance To Passengers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCovidMinimumDistanceToPassengers()
+	 * @generated
+	 * @ordered
+	 */
+	protected double covidMinimumDistanceToPassengers = COVID_MINIMUM_DISTANCE_TO_PASSENGERS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCovidAverageDurationOfContacts() <em>Covid Average Duration Of Contacts</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCovidAverageDurationOfContacts()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double COVID_AVERAGE_DURATION_OF_CONTACTS_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getCovidAverageDurationOfContacts() <em>Covid Average Duration Of Contacts</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCovidAverageDurationOfContacts()
+	 * @generated
+	 * @ordered
+	 */
+	protected double covidAverageDurationOfContacts = COVID_AVERAGE_DURATION_OF_CONTACTS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCovidMaximumDurationOfContact() <em>Covid Maximum Duration Of Contact</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCovidMaximumDurationOfContact()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double COVID_MAXIMUM_DURATION_OF_CONTACT_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getCovidMaximumDurationOfContact() <em>Covid Maximum Duration Of Contact</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCovidMaximumDurationOfContact()
+	 * @generated
+	 * @ordered
+	 */
+	protected double covidMaximumDurationOfContact = COVID_MAXIMUM_DURATION_OF_CONTACT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1678,6 +1783,121 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public double getCovidTotalNumberOfContacts() {
+		return covidTotalNumberOfContacts;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCovidTotalNumberOfContacts(double newCovidTotalNumberOfContacts) {
+		double oldCovidTotalNumberOfContacts = covidTotalNumberOfContacts;
+		covidTotalNumberOfContacts = newCovidTotalNumberOfContacts;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					AgentPackage.PASSENGER__COVID_TOTAL_NUMBER_OF_CONTACTS, oldCovidTotalNumberOfContacts,
+					covidTotalNumberOfContacts));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getCovidAverageDistanceToPassengers() {
+		return covidAverageDistanceToPassengers;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCovidAverageDistanceToPassengers(double newCovidAverageDistanceToPassengers) {
+		double oldCovidAverageDistanceToPassengers = covidAverageDistanceToPassengers;
+		covidAverageDistanceToPassengers = newCovidAverageDistanceToPassengers;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					AgentPackage.PASSENGER__COVID_AVERAGE_DISTANCE_TO_PASSENGERS, oldCovidAverageDistanceToPassengers,
+					covidAverageDistanceToPassengers));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getCovidMinimumDistanceToPassengers() {
+		return covidMinimumDistanceToPassengers;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCovidMinimumDistanceToPassengers(double newCovidMinimumDistanceToPassengers) {
+		double oldCovidMinimumDistanceToPassengers = covidMinimumDistanceToPassengers;
+		covidMinimumDistanceToPassengers = newCovidMinimumDistanceToPassengers;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					AgentPackage.PASSENGER__COVID_MINIMUM_DISTANCE_TO_PASSENGERS, oldCovidMinimumDistanceToPassengers,
+					covidMinimumDistanceToPassengers));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getCovidAverageDurationOfContacts() {
+		return covidAverageDurationOfContacts;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCovidAverageDurationOfContacts(double newCovidAverageDurationOfContacts) {
+		double oldCovidAverageDurationOfContacts = covidAverageDurationOfContacts;
+		covidAverageDurationOfContacts = newCovidAverageDurationOfContacts;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					AgentPackage.PASSENGER__COVID_AVERAGE_DURATION_OF_CONTACTS, oldCovidAverageDurationOfContacts,
+					covidAverageDurationOfContacts));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getCovidMaximumDurationOfContact() {
+		return covidMaximumDurationOfContact;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCovidMaximumDurationOfContact(double newCovidMaximumDurationOfContact) {
+		double oldCovidMaximumDurationOfContact = covidMaximumDurationOfContact;
+		covidMaximumDurationOfContact = newCovidMaximumDurationOfContact;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					AgentPackage.PASSENGER__COVID_MAXIMUM_DURATION_OF_CONTACT, oldCovidMaximumDurationOfContact,
+					covidMaximumDurationOfContact));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -1783,6 +2003,16 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 			return getHeightMiddle();
 		case AgentPackage.PASSENGER__HEIGHT_TOP:
 			return getHeightTop();
+		case AgentPackage.PASSENGER__COVID_TOTAL_NUMBER_OF_CONTACTS:
+			return getCovidTotalNumberOfContacts();
+		case AgentPackage.PASSENGER__COVID_AVERAGE_DISTANCE_TO_PASSENGERS:
+			return getCovidAverageDistanceToPassengers();
+		case AgentPackage.PASSENGER__COVID_MINIMUM_DISTANCE_TO_PASSENGERS:
+			return getCovidMinimumDistanceToPassengers();
+		case AgentPackage.PASSENGER__COVID_AVERAGE_DURATION_OF_CONTACTS:
+			return getCovidAverageDurationOfContacts();
+		case AgentPackage.PASSENGER__COVID_MAXIMUM_DURATION_OF_CONTACT:
+			return getCovidMaximumDurationOfContact();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1910,6 +2140,21 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 		case AgentPackage.PASSENGER__HEIGHT_TOP:
 			setHeightTop((Double) newValue);
 			return;
+		case AgentPackage.PASSENGER__COVID_TOTAL_NUMBER_OF_CONTACTS:
+			setCovidTotalNumberOfContacts((Double) newValue);
+			return;
+		case AgentPackage.PASSENGER__COVID_AVERAGE_DISTANCE_TO_PASSENGERS:
+			setCovidAverageDistanceToPassengers((Double) newValue);
+			return;
+		case AgentPackage.PASSENGER__COVID_MINIMUM_DISTANCE_TO_PASSENGERS:
+			setCovidMinimumDistanceToPassengers((Double) newValue);
+			return;
+		case AgentPackage.PASSENGER__COVID_AVERAGE_DURATION_OF_CONTACTS:
+			setCovidAverageDurationOfContacts((Double) newValue);
+			return;
+		case AgentPackage.PASSENGER__COVID_MAXIMUM_DURATION_OF_CONTACT:
+			setCovidMaximumDurationOfContact((Double) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -2033,6 +2278,21 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 		case AgentPackage.PASSENGER__HEIGHT_TOP:
 			setHeightTop(HEIGHT_TOP_EDEFAULT);
 			return;
+		case AgentPackage.PASSENGER__COVID_TOTAL_NUMBER_OF_CONTACTS:
+			setCovidTotalNumberOfContacts(COVID_TOTAL_NUMBER_OF_CONTACTS_EDEFAULT);
+			return;
+		case AgentPackage.PASSENGER__COVID_AVERAGE_DISTANCE_TO_PASSENGERS:
+			setCovidAverageDistanceToPassengers(COVID_AVERAGE_DISTANCE_TO_PASSENGERS_EDEFAULT);
+			return;
+		case AgentPackage.PASSENGER__COVID_MINIMUM_DISTANCE_TO_PASSENGERS:
+			setCovidMinimumDistanceToPassengers(COVID_MINIMUM_DISTANCE_TO_PASSENGERS_EDEFAULT);
+			return;
+		case AgentPackage.PASSENGER__COVID_AVERAGE_DURATION_OF_CONTACTS:
+			setCovidAverageDurationOfContacts(COVID_AVERAGE_DURATION_OF_CONTACTS_EDEFAULT);
+			return;
+		case AgentPackage.PASSENGER__COVID_MAXIMUM_DURATION_OF_CONTACT:
+			setCovidMaximumDurationOfContact(COVID_MAXIMUM_DURATION_OF_CONTACT_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -2119,6 +2379,16 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 			return heightMiddle != HEIGHT_MIDDLE_EDEFAULT;
 		case AgentPackage.PASSENGER__HEIGHT_TOP:
 			return heightTop != HEIGHT_TOP_EDEFAULT;
+		case AgentPackage.PASSENGER__COVID_TOTAL_NUMBER_OF_CONTACTS:
+			return covidTotalNumberOfContacts != COVID_TOTAL_NUMBER_OF_CONTACTS_EDEFAULT;
+		case AgentPackage.PASSENGER__COVID_AVERAGE_DISTANCE_TO_PASSENGERS:
+			return covidAverageDistanceToPassengers != COVID_AVERAGE_DISTANCE_TO_PASSENGERS_EDEFAULT;
+		case AgentPackage.PASSENGER__COVID_MINIMUM_DISTANCE_TO_PASSENGERS:
+			return covidMinimumDistanceToPassengers != COVID_MINIMUM_DISTANCE_TO_PASSENGERS_EDEFAULT;
+		case AgentPackage.PASSENGER__COVID_AVERAGE_DURATION_OF_CONTACTS:
+			return covidAverageDurationOfContacts != COVID_AVERAGE_DURATION_OF_CONTACTS_EDEFAULT;
+		case AgentPackage.PASSENGER__COVID_MAXIMUM_DURATION_OF_CONTACT:
+			return covidMaximumDurationOfContact != COVID_MAXIMUM_DURATION_OF_CONTACT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -2192,6 +2462,16 @@ public class PassengerImpl extends MinimalEObjectImpl.Container implements Passe
 		result.append(heightMiddle);
 		result.append(", heightTop: ");
 		result.append(heightTop);
+		result.append(", covidTotalNumberOfContacts: ");
+		result.append(covidTotalNumberOfContacts);
+		result.append(", covidAverageDistanceToPassengers: ");
+		result.append(covidAverageDistanceToPassengers);
+		result.append(", covidMinimumDistanceToPassengers: ");
+		result.append(covidMinimumDistanceToPassengers);
+		result.append(", covidAverageDurationOfContacts: ");
+		result.append(covidAverageDurationOfContacts);
+		result.append(", covidMaximumDurationOfContact: ");
+		result.append(covidMaximumDurationOfContact);
 		result.append(')');
 		return result.toString();
 	}

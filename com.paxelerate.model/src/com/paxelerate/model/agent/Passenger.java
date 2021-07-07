@@ -61,6 +61,11 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.paxelerate.model.agent.Passenger#getHeightBottom <em>Height Bottom</em>}</li>
  *   <li>{@link com.paxelerate.model.agent.Passenger#getHeightMiddle <em>Height Middle</em>}</li>
  *   <li>{@link com.paxelerate.model.agent.Passenger#getHeightTop <em>Height Top</em>}</li>
+ *   <li>{@link com.paxelerate.model.agent.Passenger#getCovidTotalNumberOfContacts <em>Covid Total Number Of Contacts</em>}</li>
+ *   <li>{@link com.paxelerate.model.agent.Passenger#getCovidAverageDistanceToPassengers <em>Covid Average Distance To Passengers</em>}</li>
+ *   <li>{@link com.paxelerate.model.agent.Passenger#getCovidMinimumDistanceToPassengers <em>Covid Minimum Distance To Passengers</em>}</li>
+ *   <li>{@link com.paxelerate.model.agent.Passenger#getCovidAverageDurationOfContacts <em>Covid Average Duration Of Contacts</em>}</li>
+ *   <li>{@link com.paxelerate.model.agent.Passenger#getCovidMaximumDurationOfContact <em>Covid Maximum Duration Of Contact</em>}</li>
  * </ul>
  *
  * @see com.paxelerate.model.agent.AgentPackage#getPassenger()
@@ -869,5 +874,115 @@ public interface Passenger extends EObject {
 	 * @generated
 	 */
 	void setHeightTop(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Covid Total Number Of Contacts</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Covid Total Number Of Contacts</em>' attribute.
+	 * @see #setCovidTotalNumberOfContacts(double)
+	 * @see com.paxelerate.model.agent.AgentPackage#getPassenger_CovidTotalNumberOfContacts()
+	 * @model
+	 * @generated
+	 */
+	double getCovidTotalNumberOfContacts();
+
+	/**
+	 * Sets the value of the '{@link com.paxelerate.model.agent.Passenger#getCovidTotalNumberOfContacts <em>Covid Total Number Of Contacts</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Covid Total Number Of Contacts</em>' attribute.
+	 * @see #getCovidTotalNumberOfContacts()
+	 * @generated
+	 */
+	void setCovidTotalNumberOfContacts(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Covid Average Distance To Passengers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Covid Average Distance To Passengers</em>' attribute.
+	 * @see #setCovidAverageDistanceToPassengers(double)
+	 * @see com.paxelerate.model.agent.AgentPackage#getPassenger_CovidAverageDistanceToPassengers()
+	 * @model
+	 * @generated
+	 */
+	double getCovidAverageDistanceToPassengers();
+
+	/**
+	 * Sets the value of the '{@link com.paxelerate.model.agent.Passenger#getCovidAverageDistanceToPassengers <em>Covid Average Distance To Passengers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Covid Average Distance To Passengers</em>' attribute.
+	 * @see #getCovidAverageDistanceToPassengers()
+	 * @generated
+	 */
+	void setCovidAverageDistanceToPassengers(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Covid Minimum Distance To Passengers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Covid Minimum Distance To Passengers</em>' attribute.
+	 * @see #setCovidMinimumDistanceToPassengers(double)
+	 * @see com.paxelerate.model.agent.AgentPackage#getPassenger_CovidMinimumDistanceToPassengers()
+	 * @model
+	 * @generated
+	 */
+	double getCovidMinimumDistanceToPassengers();
+
+	/**
+	 * Sets the value of the '{@link com.paxelerate.model.agent.Passenger#getCovidMinimumDistanceToPassengers <em>Covid Minimum Distance To Passengers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Covid Minimum Distance To Passengers</em>' attribute.
+	 * @see #getCovidMinimumDistanceToPassengers()
+	 * @generated
+	 */
+	void setCovidMinimumDistanceToPassengers(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Covid Average Duration Of Contacts</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Covid Average Duration Of Contacts</em>' attribute.
+	 * @see #setCovidAverageDurationOfContacts(double)
+	 * @see com.paxelerate.model.agent.AgentPackage#getPassenger_CovidAverageDurationOfContacts()
+	 * @model
+	 * @generated
+	 */
+	double getCovidAverageDurationOfContacts();
+
+	/**
+	 * Sets the value of the '{@link com.paxelerate.model.agent.Passenger#getCovidAverageDurationOfContacts <em>Covid Average Duration Of Contacts</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Covid Average Duration Of Contacts</em>' attribute.
+	 * @see #getCovidAverageDurationOfContacts()
+	 * @generated
+	 */
+	void setCovidAverageDurationOfContacts(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Covid Maximum Duration Of Contact</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Covid Maximum Duration Of Contact</em>' attribute.
+	 * @see #setCovidMaximumDurationOfContact(double)
+	 * @see com.paxelerate.model.agent.AgentPackage#getPassenger_CovidMaximumDurationOfContact()
+	 * @model
+	 * @generated
+	 */
+	double getCovidMaximumDurationOfContact();
+
+	/**
+	 * Sets the value of the '{@link com.paxelerate.model.agent.Passenger#getCovidMaximumDurationOfContact <em>Covid Maximum Duration Of Contact</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Covid Maximum Duration Of Contact</em>' attribute.
+	 * @see #getCovidMaximumDurationOfContact()
+	 * @generated
+	 */
+	void setCovidMaximumDurationOfContact(double value);
 
 } // Passenger

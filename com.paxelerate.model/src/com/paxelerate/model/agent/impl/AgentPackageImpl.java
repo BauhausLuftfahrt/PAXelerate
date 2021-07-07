@@ -488,6 +488,51 @@ public class AgentPackageImpl extends EPackageImpl implements AgentPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getPassenger_CovidTotalNumberOfContacts() {
+		return (EAttribute) passengerEClass.getEStructuralFeatures().get(37);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassenger_CovidAverageDistanceToPassengers() {
+		return (EAttribute) passengerEClass.getEStructuralFeatures().get(38);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassenger_CovidMinimumDistanceToPassengers() {
+		return (EAttribute) passengerEClass.getEStructuralFeatures().get(39);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassenger_CovidAverageDurationOfContacts() {
+		return (EAttribute) passengerEClass.getEStructuralFeatures().get(40);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPassenger_CovidMaximumDurationOfContact() {
+		return (EAttribute) passengerEClass.getEStructuralFeatures().get(41);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getLuggage() {
 		return luggageEClass;
 	}
@@ -604,6 +649,11 @@ public class AgentPackageImpl extends EPackageImpl implements AgentPackage {
 		createEAttribute(passengerEClass, PASSENGER__HEIGHT_BOTTOM);
 		createEAttribute(passengerEClass, PASSENGER__HEIGHT_MIDDLE);
 		createEAttribute(passengerEClass, PASSENGER__HEIGHT_TOP);
+		createEAttribute(passengerEClass, PASSENGER__COVID_TOTAL_NUMBER_OF_CONTACTS);
+		createEAttribute(passengerEClass, PASSENGER__COVID_AVERAGE_DISTANCE_TO_PASSENGERS);
+		createEAttribute(passengerEClass, PASSENGER__COVID_MINIMUM_DISTANCE_TO_PASSENGERS);
+		createEAttribute(passengerEClass, PASSENGER__COVID_AVERAGE_DURATION_OF_CONTACTS);
+		createEAttribute(passengerEClass, PASSENGER__COVID_MAXIMUM_DURATION_OF_CONTACT);
 
 		luggageEClass = createEClass(LUGGAGE);
 		createEAttribute(luggageEClass, LUGGAGE__ID);
@@ -750,6 +800,21 @@ public class AgentPackageImpl extends EPackageImpl implements AgentPackage {
 				!IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPassenger_HeightTop(), ecorePackage.getEDouble(), "heightTop", null, 0, 1, Passenger.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPassenger_CovidTotalNumberOfContacts(), ecorePackage.getEDouble(),
+				"covidTotalNumberOfContacts", null, 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPassenger_CovidAverageDistanceToPassengers(), ecorePackage.getEDouble(),
+				"covidAverageDistanceToPassengers", null, 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPassenger_CovidMinimumDistanceToPassengers(), ecorePackage.getEDouble(),
+				"covidMinimumDistanceToPassengers", null, 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPassenger_CovidAverageDurationOfContacts(), ecorePackage.getEDouble(),
+				"covidAverageDurationOfContacts", null, 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPassenger_CovidMaximumDurationOfContact(), ecorePackage.getEDouble(),
+				"covidMaximumDurationOfContact", null, 0, 1, Passenger.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(luggageEClass, Luggage.class, "Luggage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLuggage_Id(), ecorePackage.getEInt(), "id", null, 0, 1, Luggage.class, !IS_TRANSIENT,
