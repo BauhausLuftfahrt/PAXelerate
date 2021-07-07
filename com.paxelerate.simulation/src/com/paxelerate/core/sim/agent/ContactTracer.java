@@ -125,17 +125,17 @@ public class ContactTracer {
 
 			totalContactCounter++;
 
-			List<Double> contactDistances = new ArrayList<>();
+//			List<Double> contactDistances = new ArrayList<>();
 			List<Double> contactTimeStamps = new ArrayList<>();
 
 			for (Entry<Double, Double> list : paxList.getValue().getList().entrySet()) {
 
-				contactDistances.add(list.getValue());
+				distances.add(list.getValue());
 				contactTimeStamps.add(list.getKey());
 
 			}
 
-			distances.add(contactDistances.stream().mapToDouble(d -> d).average().getAsDouble());
+//			distances.add(contactDistances.stream().mapToDouble(d -> d).average().getAsDouble());
 
 			contactTimeStamps.sort(Comparator.comparing(ts -> ts));
 			durations.add((contactTimeStamps.get(contactTimeStamps.size() - 1) - contactTimeStamps.get(0)) * speedfactor
