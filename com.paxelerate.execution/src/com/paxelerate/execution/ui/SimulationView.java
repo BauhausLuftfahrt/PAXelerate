@@ -101,11 +101,7 @@ public class SimulationView extends JPanel {
 
 			if (node.getPassenger() != null) {
 
-				if (node.getPassenger().getId() == 1) {
-					g.setColor(Color.RED);
-				} else {
-					g.setColor(switchColor(node.getPassenger().getState()));
-				}
+				g.setColor(switchColor(node.getPassenger().getState()));
 				g.fillRect(x * FONT_SIZE, y * FONT_SIZE, FONT_SIZE, FONT_SIZE);
 
 			} else if (node.getProperty(Layer.ASTAR) != Property.FREE) {
@@ -113,10 +109,10 @@ public class SimulationView extends JPanel {
 				g.setColor(Color.LIGHT_GRAY);
 				g.fillRect(x * FONT_SIZE, y * FONT_SIZE, FONT_SIZE, FONT_SIZE);
 
-			} else if (!node.getContactTracingMap().isEmpty()) {
+//			} else if (!node.getContactTracingMap().isEmpty()) {
 
-				g.setColor(Color.GREEN);
-				g.fillRect(x * FONT_SIZE, y * FONT_SIZE, FONT_SIZE, FONT_SIZE);
+//				g.setColor(Color.GREEN);
+//				g.fillRect(x * FONT_SIZE, y * FONT_SIZE, FONT_SIZE, FONT_SIZE);
 //					g.drawString("" + node.covidMap.size(), x * FONT_SIZE, y * FONT_SIZE);
 
 			}

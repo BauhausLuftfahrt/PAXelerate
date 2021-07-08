@@ -21,10 +21,26 @@ public class ContactTracingMap extends HashMap<Double, ContactTracingEvent> {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Create a new contact tracing map
+	 *
+	 * @param timestamp
+	 * @param duration
+	 * @param distance
+	 * @param state
+	 */
 	ContactTracingMap(double timestamp, double duration, double distance, State state) {
 		put(timestamp, new ContactTracingEvent(duration, distance, state));
 	}
 
+	/**
+	 * Add an element to the contact tracing map
+	 *
+	 * @param timestamp
+	 * @param duration
+	 * @param distance
+	 * @param state
+	 */
 	void add(double timestamp, double duration, double distance, State state) {
 		put(timestamp, new ContactTracingEvent(duration, distance, state));
 	}

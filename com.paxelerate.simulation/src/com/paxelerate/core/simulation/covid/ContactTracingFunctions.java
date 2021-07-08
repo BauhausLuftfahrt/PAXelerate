@@ -20,7 +20,10 @@ import com.paxelerate.model.agent.Passenger;
 public interface ContactTracingFunctions {
 
 	/**
+	 * Evaluate the distances to other passengers at the current time.
+	 *
 	 * @param agent
+	 * @param stepTime
 	 */
 	static void evaluateCovidDistances(Agent agent, double stepTime) {
 

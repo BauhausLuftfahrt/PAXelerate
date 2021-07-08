@@ -21,6 +21,11 @@ public class ContactTracingEvent {
 	private double duration = 0;
 	private State state = null;
 
+	/**
+	 * @param duration
+	 * @param distance
+	 * @param state
+	 */
 	public ContactTracingEvent(double duration, double distance, State state) {
 
 		this.distance = distance;
@@ -29,14 +34,23 @@ public class ContactTracingEvent {
 
 	}
 
+	/**
+	 * @return
+	 */
 	public double getDistance() {
 		return distance;
 	}
 
+	/**
+	 * @return
+	 */
 	public double getDuration() {
 		return duration;
 	}
 
+	/**
+	 * @return
+	 */
 	public State getState() {
 		return state;
 	}

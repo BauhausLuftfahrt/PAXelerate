@@ -93,10 +93,6 @@ public class ContactTracingHandler {
 	 */
 	public void evaluateContactTracing(double speedfactor) {
 
-		if (mySelf.getId() == 1) {
-			toConsole();
-		}
-
 		isTracing = false;
 
 		double totalContactCounter = 0;
