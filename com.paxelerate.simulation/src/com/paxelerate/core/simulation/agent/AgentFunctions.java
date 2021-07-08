@@ -337,10 +337,11 @@ public interface AgentFunctions {
 
 							/* add or remove the influence value */
 							if (occupy) {
-								node.getContactTracingMap().put(agent, shape[x + scanDimension][y + scanDimension]);
+								node.getContactTracingMap().put(agent.getPassenger(),
+										shape[x + scanDimension][y + scanDimension]);
 
 							} else {
-								node.getContactTracingMap().remove(agent);
+								node.getContactTracingMap().remove(agent.getPassenger());
 							}
 						}
 					}

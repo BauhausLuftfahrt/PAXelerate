@@ -43,7 +43,7 @@ public class Node {
 	private Map<Layer, Property> properties = new HashMap<>();
 
 	public ConcurrentHashMap<Agent, Integer> influencingPassengers = new ConcurrentHashMap<>();
-	private final ConcurrentHashMap<Agent, Integer> contactTracingMap = new ConcurrentHashMap<>();
+	private final ConcurrentHashMap<Passenger, Integer> contactTracingMap = new ConcurrentHashMap<>();
 
 	private double standardCeilingHeight = 2.235; // A320 cabin interior height
 	private double ceilingHeight = standardCeilingHeight;
@@ -199,7 +199,7 @@ public class Node {
 		return super.equals(arg0);
 	}
 
-	public ConcurrentHashMap<Agent, Integer> getContactTracingMap() {
+	public ConcurrentHashMap<Passenger, Integer> getContactTracingMap() {
 		return contactTracingMap;
 	}
 }

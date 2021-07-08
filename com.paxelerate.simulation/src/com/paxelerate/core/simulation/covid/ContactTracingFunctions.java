@@ -8,6 +8,7 @@ package com.paxelerate.core.simulation.covid;
 import java.util.Map.Entry;
 
 import com.paxelerate.core.simulation.agent.Agent;
+import com.paxelerate.model.agent.Passenger;
 
 /**
  * Additional static functions for the contact tracing
@@ -25,11 +26,10 @@ public interface ContactTracingFunctions {
 
 		agent.getHandler().getMap().get(agent.getPassenger().getCurrentPosition()).ifPresent(node -> {
 
-			for (Entry<Agent, Integer> entry : node.getContactTracingMap().entrySet()) {
+			for (Entry<Passenger, Integer> entry : node.getContactTracingMap().entrySet()) {
 
-				agent.getContactTracingHandler().addContact(entry.getKey().getPassenger(),
-						agent.getHandler().getMasterBoardingTime(), stepTime,
-						entry.getValue() * agent.getHandler().getSettings().getSimulationGridResolution(),
+				agent.getContactTracingHandler().addContact(entry.getKey(), agent.getHandler().getMasterBoardingTime(),
+						stepTime, entry.getValue() * agent.getHandler().getSettings().getSimulationGridResolution(),
 						agent.getPassenger().getState());
 
 			}
