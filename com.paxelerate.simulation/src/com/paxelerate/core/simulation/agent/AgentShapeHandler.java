@@ -68,7 +68,6 @@ public class AgentShapeHandler {
 	private Map<Influence, int[][]> influences = new HashMap<>();
 
 	private int[][] modifiedShape, currentShape;
-	private int[][] modifiedContactTracingShape, contactTracingShape;
 
 	/**
 	 * @param agent
@@ -398,34 +397,6 @@ public class AgentShapeHandler {
 	 */
 	public void setCurrentShape(int[][] currentShape) {
 		this.currentShape = currentShape;
-	}
-
-	/**
-	 * @return the contactTracingShape
-	 */
-	public int[][] getContactTracingShape() {
-		return contactTracingShape;
-	}
-
-	/**
-	 * @param contactTracingShape the contactTracingShape to set
-	 */
-	public void setContactTracingShape(int[][] contactTracingShape) {
-		this.contactTracingShape = contactTracingShape;
-	}
-
-	/**
-	 * @return the modifiedContactTracingShape
-	 */
-	public int[][] getModifiedContactTracingShape() {
-		return modifiedContactTracingShape;
-	}
-
-	/**
-	 * @param modifiedContactTracingShape the modifiedContactTracingShape to set
-	 */
-	public void setModifiedContactTracingShape(int[][] modifiedContactTracingShape) {
-		this.modifiedContactTracingShape = modifiedContactTracingShape;
 	}
 
 	/**

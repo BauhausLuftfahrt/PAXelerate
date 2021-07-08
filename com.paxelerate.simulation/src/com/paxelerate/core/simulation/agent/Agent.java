@@ -9,6 +9,7 @@ package com.paxelerate.core.simulation.agent;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.paxelerate.core.simulation.agent.AgentShapeHandler.Influence;
 import com.paxelerate.core.simulation.agent.action.Collision;
 import com.paxelerate.core.simulation.agent.action.Step;
 import com.paxelerate.core.simulation.agent.action.StowLuggage;
@@ -126,9 +127,7 @@ public class Agent implements Runnable {
 		AgentFunctions.adaptShape(stepIndex, occupy, changePosition, this);
 		AgentFunctions.blockShape(shapeHandler.getModifiedShape(), vector, occupy, changePosition, this);
 
-		AgentFunctions.adaptContactTracingShape(stepIndex, occupy, changePosition, this);
-		AgentFunctions.blockContactTracingShape(shapeHandler.getModifiedContactTracingShape(), vector, occupy,
-				changePosition, this);
+		AgentFunctions.blockContactTracingShape(shapeHandler.getInfluenceArea(Influence.COVID), vector, occupy, this);
 	}
 
 	/**
