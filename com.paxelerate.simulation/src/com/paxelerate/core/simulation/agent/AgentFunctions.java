@@ -263,14 +263,15 @@ public interface AgentFunctions {
 
 										/* check if the node is empty */
 										node.setPassenger(agent.getPassenger());
-										node.covidMap.put(agent, shape[x + scanDimension][y + scanDimension]);
+										node.getContactTracingMap().put(agent,
+												shape[x + scanDimension][y + scanDimension]);
 
 									} else {
 
 										/* During unblocking, check if the node is empty */
 										node.setProperty(Property.FREE, Layer.ASTAR);
 										node.setPassenger(null);
-										node.covidMap.remove(agent);
+										node.getContactTracingMap().remove(agent);
 									}
 								}
 							}
@@ -292,7 +293,7 @@ public interface AgentFunctions {
 									node.influencingPassengers.put(agent, shape[x + scanDimension][y + scanDimension]);
 								}
 
-								node.covidMap.put(agent, shape[x + scanDimension][y + scanDimension]);
+//								node.getContactTracingMap().put(agent, shape[x + scanDimension][y + scanDimension]);
 
 							} else {
 								// remove the influencer object from the nodes list
@@ -301,7 +302,99 @@ public interface AgentFunctions {
 									node.influencingPassengers.remove(agent);
 								}
 
-								node.covidMap.remove(agent);
+//								node.getContactTracingMap().remove(agent);
+							}
+
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * @param shape
+	 * @param vector
+	 * @param occupy
+	 * @param changePosition
+	 */
+	static void blockContactTracingShape(int[][] shape, EPoint vector, boolean occupy, boolean changePosition,
+			Agent agent) {
+
+		/*
+		 * this is the dimension you need to go in every direction from the starting
+		 * point. It is half the way back in every dimension.
+		 */
+		int scanDimension = (int) (Math.max(shape.length, shape[0].length) / 2.0);
+
+		/* loop through the whole passenger area in the area map */
+		for (int x = -scanDimension; x <= scanDimension; x++) {
+			for (int y = -scanDimension; y <= scanDimension; y++) {
+
+				/* the location currently under investigation */
+				IntVector location = new IntVector(BHLMath.toInt(vector.getX()) + x, BHLMath.toInt(vector.getY()) + y);
+
+				/* if the point is within the bounds of the passenger area */
+				if (x + scanDimension < shape.length && y + scanDimension < shape[0].length) {
+
+					// Check for passenger shape itself
+					if (shape[x + scanDimension][y + scanDimension] == 100 && changePosition) {
+
+						if (agent.getHandler().getMap().get(location).isPresent()) {
+
+							Node node = agent.getHandler().getMap().get(location).get();
+
+							/* check if the node is no obstacle */
+							if (node.getProperty(Layer.ASTAR) == Property.FREE) {
+
+								if (node.getPassenger() == null
+										|| node.getPassenger().getId() == agent.getPassenger().getId()) {
+
+									/* block or unblock the node */
+									if (occupy) {
+
+										/* check if the node is empty */
+//										node.setPassenger(agent.getPassenger());
+										node.getContactTracingMap().put(agent,
+												shape[x + scanDimension][y + scanDimension]);
+
+									} else {
+
+										/* During unblocking, check if the node is empty */
+//										node.setProperty(Property.FREE, Layer.ASTAR);
+//										node.setPassenger(null);
+										node.getContactTracingMap().remove(agent);
+									}
+								}
+							}
+						}
+
+						// Check for influence area
+					} else if (shape[x + scanDimension][y + scanDimension] != 0
+							&& shape[x + scanDimension][y + scanDimension] != 100) {
+
+						if (agent.getHandler().getMap().get(location).isPresent()) {
+
+							Node node = agent.getHandler().getMap().get(location).get();
+
+							/* add or remove the influence value */
+							if (occupy) {
+								/* check if the node is no obstacle */
+//								if (node.getProperty(Layer.ASTAR) == Property.FREE) {
+//									// create an new influencer object and add it to the node
+//									node.influencingPassengers.put(agent, shape[x + scanDimension][y + scanDimension]);
+//								}
+
+								node.getContactTracingMap().put(agent, shape[x + scanDimension][y + scanDimension]);
+
+							} else {
+								// remove the influencer object from the nodes list
+								/* check if the node is no obstacle */
+//								if (node.getProperty(Layer.ASTAR) == Property.FREE) {
+//									node.influencingPassengers.remove(agent);
+//								}
+
+								node.getContactTracingMap().remove(agent);
 							}
 
 						}
@@ -433,5 +526,84 @@ public interface AgentFunctions {
 				agent.getShapeHandler().setModifiedShape(agent.getShapeHandler().getInfluenceArea(Influence.WALKING));
 			}
 		}
+	}
+
+	/**
+	 * @param stepIndex
+	 * @param occupy
+	 * @param changePosition
+	 * @param agent
+	 */
+	static void adaptContactTracingShape(int stepIndex, boolean occupy, boolean changePosition, Agent agent) {
+
+		/*
+		 * makes sure that the shape of the passenger is blocked too when luggage is
+		 * stowed on the first step
+		 */
+		if (stepIndex == 0 && occupy == true) {
+			changePosition = true;
+		}
+
+		// Apply rotation and shape
+		if (occupy) {
+
+			agent.getShapeHandler().setContactTracingShape(agent.getShapeHandler().getInfluenceArea(Influence.COVID));
+
+			if (stepIndex <= 1 && agent.getHandler().getSettings().getSimulationType() == SimulationType.BOARDING) {
+
+				// rotate the shape if for the first two steps, assign the rotation between the
+				// first two points to avoid door blocking 1.
+				agent.getShapeHandler()
+						.setModifiedContactTracingShape(Rotator.rotate(
+								PassengerExtensions.getRotation(
+										EPointExtensions.transformIntVector(agent.getPath().get(0).getPosition()),
+										EPointExtensions.transformIntVector(agent.getPath().get(1).getPosition())),
+								agent.getShapeHandler().getContactTracingShape()));
+
+			} else if (changePosition) {
+
+				// else if standard rotating process while walking 2
+				agent.getShapeHandler().setModifiedContactTracingShape(
+						Rotator.rotate(PassengerExtensions.getRotation(agent.getPassenger()),
+								agent.getShapeHandler().getContactTracingShape()));
+
+			} else if (agent.getPassenger().getState() != State.SEATED) {
+
+				// else if rotating process when only the influence area gets changed
+				agent.getShapeHandler()
+						.setModifiedContactTracingShape(
+								Rotator.rotate(
+										PassengerExtensions.getRotation(
+												EPointExtensions.transformIntVector(
+														agent.getPath().get(stepIndex - 2).getPosition()),
+												agent.getPassenger().getCurrentPosition()),
+										agent.getShapeHandler().getContactTracingShape()));
+
+			} else {
+
+				// else influence area sitting (The influence area is symmetric, so the
+				// orientation of the seat does not matter.
+				agent.getShapeHandler().setModifiedContactTracingShape(
+						Rotator.rotate(90, agent.getShapeHandler().getContactTracingShape()));
+			}
+		}
+
+		// if no rotation is needed or possible, skip the rotation process and assign
+		// the basic layout to the object.
+
+//		if (agent.getShapeHandler().getModifiedContactTracingShape() == null) {
+//			if (Math.max(agent.getShapeHandler().getInfluenceArea(Influence.COVID).length,
+//					agent.getShapeHandler().getInfluenceArea(Influence.COVID)[0].length) > Math.max(
+//							agent.getShapeHandler().getInfluenceArea(Influence.COVID).length,
+//							agent.getShapeHandler().getInfluenceArea(Influence.COVID)[0].length)) {
+//
+//				agent.getShapeHandler()
+//						.setModifiedContactTracingShape(agent.getShapeHandler().getInfluenceArea(Influence.COVID));
+//
+//			} else {
+//				agent.getShapeHandler()
+//						.setModifiedContactTracingShape(agent.getShapeHandler().getInfluenceArea(Influence.COVID));
+//			}
+//		}
 	}
 }

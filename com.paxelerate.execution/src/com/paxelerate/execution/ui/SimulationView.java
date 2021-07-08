@@ -15,9 +15,9 @@ import javax.swing.JPanel;
 
 import com.paxelerate.core.simulation.astar.Areamap;
 import com.paxelerate.core.simulation.astar.Node;
-import com.paxelerate.core.simulation.astar.SimulationHandler;
 import com.paxelerate.core.simulation.astar.Node.Layer;
 import com.paxelerate.core.simulation.astar.Node.Property;
+import com.paxelerate.core.simulation.astar.SimulationHandler;
 import com.paxelerate.model.Model;
 import com.paxelerate.model.agent.Passenger;
 import com.paxelerate.model.enums.State;
@@ -113,7 +113,7 @@ public class SimulationView extends JPanel {
 				g.setColor(Color.LIGHT_GRAY);
 				g.fillRect(x * FONT_SIZE, y * FONT_SIZE, FONT_SIZE, FONT_SIZE);
 
-			} else if (!node.covidMap.isEmpty()) {
+			} else if (!node.getContactTracingMap().isEmpty()) {
 
 				g.setColor(Color.GREEN);
 				g.fillRect(x * FONT_SIZE, y * FONT_SIZE, FONT_SIZE, FONT_SIZE);

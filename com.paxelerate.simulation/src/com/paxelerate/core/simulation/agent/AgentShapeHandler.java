@@ -11,8 +11,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.paxelerate.core.simulation.astar.ObstacleGenerator;
 import com.paxelerate.core.simulation.astar.Node.Layer;
+import com.paxelerate.core.simulation.astar.ObstacleGenerator;
 import com.paxelerate.model.agent.Passenger;
 
 import net.bhl.opensource.toolbox.math.BHLMath;
@@ -68,6 +68,7 @@ public class AgentShapeHandler {
 	private Map<Influence, int[][]> influences = new HashMap<>();
 
 	private int[][] modifiedShape, currentShape;
+	private int[][] modifiedContactTracingShape, contactTracingShape;
 
 	/**
 	 * @param agent
@@ -397,6 +398,34 @@ public class AgentShapeHandler {
 	 */
 	public void setCurrentShape(int[][] currentShape) {
 		this.currentShape = currentShape;
+	}
+
+	/**
+	 * @return the contactTracingShape
+	 */
+	public int[][] getContactTracingShape() {
+		return contactTracingShape;
+	}
+
+	/**
+	 * @param contactTracingShape the contactTracingShape to set
+	 */
+	public void setContactTracingShape(int[][] contactTracingShape) {
+		this.contactTracingShape = contactTracingShape;
+	}
+
+	/**
+	 * @return the modifiedContactTracingShape
+	 */
+	public int[][] getModifiedContactTracingShape() {
+		return modifiedContactTracingShape;
+	}
+
+	/**
+	 * @param modifiedContactTracingShape the modifiedContactTracingShape to set
+	 */
+	public void setModifiedContactTracingShape(int[][] modifiedContactTracingShape) {
+		this.modifiedContactTracingShape = modifiedContactTracingShape;
 	}
 
 	/**

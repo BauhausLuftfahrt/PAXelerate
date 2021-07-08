@@ -124,14 +124,11 @@ public class Agent implements Runnable {
 	public void blockArea(EPoint vector, boolean occupy, boolean changePosition) {
 
 		AgentFunctions.adaptShape(stepIndex, occupy, changePosition, this);
-
 		AgentFunctions.blockShape(shapeHandler.getModifiedShape(), vector, occupy, changePosition, this);
 
-//		shapeHandler.setModifiedShape(Rotator.rotate(PassengerExtensions.getRotation(passenger),
-//				shapeHandler.getInfluenceArea(Influence.COVID)));
-
-//		AgentFunctions.blockCovidDistance(shapeHandler.getInfluenceArea(Influence.COVID), vector, occupy,
-//				changePosition, this);
+		AgentFunctions.adaptContactTracingShape(stepIndex, occupy, changePosition, this);
+		AgentFunctions.blockContactTracingShape(shapeHandler.getModifiedContactTracingShape(), vector, occupy,
+				changePosition, this);
 	}
 
 	/**

@@ -25,7 +25,7 @@ public interface ContactTracingFunctions {
 
 		agent.getHandler().getMap().get(agent.getPassenger().getCurrentPosition()).ifPresent(node -> {
 
-			for (Entry<Agent, Integer> entry : node.covidMap.entrySet()) {
+			for (Entry<Agent, Integer> entry : node.getContactTracingMap().entrySet()) {
 
 				agent.getContactTracingHandler().addContact(entry.getKey().getPassenger(),
 						agent.getHandler().getMasterBoardingTime(), stepTime,
