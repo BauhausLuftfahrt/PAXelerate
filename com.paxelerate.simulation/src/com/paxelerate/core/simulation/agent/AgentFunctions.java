@@ -3,19 +3,22 @@
  * materials are made available under the terms of the GNU General Public License v3.0 which accompanies this distribution,
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
-package com.paxelerate.core.sim.agent;
+package com.paxelerate.core.simulation.agent;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import com.paxelerate.core.sim.astar.Node;
-import com.paxelerate.core.sim.astar.Node.Layer;
-import com.paxelerate.core.sim.astar.Node.Property;
+import com.paxelerate.core.simulation.agent.AgentShapeHandler.Influence;
+import com.paxelerate.core.simulation.astar.Node;
+import com.paxelerate.core.simulation.astar.Node.Layer;
+import com.paxelerate.core.simulation.astar.Node.Property;
 import com.paxelerate.model.EPoint;
 import com.paxelerate.model.Model;
 import com.paxelerate.model.agent.Passenger;
 import com.paxelerate.model.enums.SeatLocation;
+import com.paxelerate.model.enums.SimulationType;
+import com.paxelerate.model.enums.State;
 import com.paxelerate.model.extensions.DeckExtensions;
 import com.paxelerate.model.extensions.DoorExtensions;
 import com.paxelerate.model.extensions.EPointExtensions;
@@ -28,6 +31,7 @@ import com.paxelerate.model.monuments.SeatGroup;
 import net.bhl.opensource.toolbox.emf.EObjectHelper;
 import net.bhl.opensource.toolbox.math.BHLMath;
 import net.bhl.opensource.toolbox.math.Distance;
+import net.bhl.opensource.toolbox.math.Rotator;
 import net.bhl.opensource.toolbox.math.vector.IntVector;
 
 /**
@@ -303,6 +307,130 @@ public interface AgentFunctions {
 						}
 					}
 				}
+			}
+		}
+	}
+
+	static void adaptShape(int stepIndex, boolean occupy, boolean changePosition, Agent agent) {
+
+		/*
+		 * makes sure that the shape of the passenger is blocked too when luggage is
+		 * stowed on the first step
+		 */
+		if (stepIndex == 0 && occupy == true) {
+			changePosition = true;
+		}
+
+		// Apply rotation and shape
+		if (occupy) {
+
+			switch (agent.getPassenger().getState()) {
+			case CABIN_LEFT:
+				break;
+
+			case CALCULATE_NEW_PATH:
+				break;
+
+			case CLEAR_ROW:
+				break;
+
+			case FOLLOW_PATH:
+				agent.getShapeHandler().setCurrentShape(agent.getShapeHandler().getInfluenceArea(Influence.WALKING));
+				break;
+
+			case NOT_ACTIVE:
+				break;
+
+			case PREPARE:
+				break;
+
+			case QUEUE_UP:
+				agent.getShapeHandler().setCurrentShape(agent.getShapeHandler().getInfluenceArea(Influence.STANDING));
+				break;
+
+			case RETRIEVE_LUGGAGE:
+				agent.getShapeHandler().setCurrentShape(agent.getShapeHandler().getInfluenceArea(Influence.STANDING));
+				break;
+
+			case RETURN_TO_SEAT:
+				break;
+
+			case SEATED:
+				agent.getShapeHandler().setCurrentShape(agent.getShapeHandler().getInfluenceArea(Influence.SITTING));
+				break;
+
+			case STOW_LUGGAGE:
+				agent.getShapeHandler().setCurrentShape(agent.getShapeHandler().getInfluenceArea(Influence.STANDING));
+				break;
+
+			case UNFOLD_SEAT:
+				agent.getShapeHandler().setCurrentShape(agent.getShapeHandler().getInfluenceArea(Influence.STANDING));
+				break;
+
+			case WAIT_FOR_OTHER_PASSENGER_TO_SEAT:
+				agent.getShapeHandler().setCurrentShape(agent.getShapeHandler().getInfluenceArea(Influence.STANDING));
+				break;
+
+			case WAIT_FOR_ROW_CLEARING:
+				agent.getShapeHandler().setCurrentShape(agent.getShapeHandler().getInfluenceArea(Influence.STANDING));
+				break;
+
+			default:
+				break;
+
+			}
+
+			if (stepIndex <= 1 && agent.getHandler().getSettings().getSimulationType() == SimulationType.BOARDING) {
+
+				// rotate the shape if for the first two steps, assign the rotation between the
+				// first two points to avoid door blocking 1.
+				agent.getShapeHandler()
+						.setModifiedShape(Rotator.rotate(
+								PassengerExtensions.getRotation(
+										EPointExtensions.transformIntVector(agent.getPath().get(0).getPosition()),
+										EPointExtensions.transformIntVector(agent.getPath().get(1).getPosition())),
+								agent.getShapeHandler().getCurrentShape()));
+
+			} else if (changePosition) {
+
+				// else if standard rotating process while walking 2
+				agent.getShapeHandler()
+						.setModifiedShape(Rotator.rotate(PassengerExtensions.getRotation(agent.getPassenger()),
+								agent.getShapeHandler().getCurrentShape()));
+
+			} else if (agent.getPassenger().getState() != State.SEATED) {
+
+				// else if rotating process when only the influence area gets changed
+				agent.getShapeHandler()
+						.setModifiedShape(
+								Rotator.rotate(
+										PassengerExtensions.getRotation(
+												EPointExtensions.transformIntVector(
+														agent.getPath().get(stepIndex - 2).getPosition()),
+												agent.getPassenger().getCurrentPosition()),
+										agent.getShapeHandler().getCurrentShape()));
+
+			} else {
+
+				// else influence area sitting (The influence area is symmetric, so the
+				// orientation of the seat does not matter.
+				agent.getShapeHandler().setModifiedShape(Rotator.rotate(90, agent.getShapeHandler().getCurrentShape()));
+			}
+		}
+
+		// if no rotation is needed or possible, skip the rotation process and assign
+		// the basic layout to the object.
+
+		if (agent.getShapeHandler().getModifiedShape() == null) {
+			if (Math.max(agent.getShapeHandler().getInfluenceArea(Influence.STANDING).length,
+					agent.getShapeHandler().getInfluenceArea(Influence.STANDING)[0].length) > Math.max(
+							agent.getShapeHandler().getInfluenceArea(Influence.WALKING).length,
+							agent.getShapeHandler().getInfluenceArea(Influence.WALKING)[0].length)) {
+
+				agent.getShapeHandler().setModifiedShape(agent.getShapeHandler().getInfluenceArea(Influence.STANDING));
+
+			} else {
+				agent.getShapeHandler().setModifiedShape(agent.getShapeHandler().getInfluenceArea(Influence.WALKING));
 			}
 		}
 	}

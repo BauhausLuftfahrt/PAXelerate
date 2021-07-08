@@ -3,11 +3,10 @@
  * materials are made available under the terms of the GNU General Public License v3.0 which accompanies this distribution,
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
-package com.paxelerate.core.sim.agent.action;
+package com.paxelerate.core.simulation.agent.action;
 
-import java.util.Map.Entry;
-
-import com.paxelerate.core.sim.agent.Agent;
+import com.paxelerate.core.simulation.agent.Agent;
+import com.paxelerate.core.simulation.covid.ContactTracingFunctions;
 import com.paxelerate.model.agent.Passenger;
 import com.paxelerate.model.enums.State;
 import com.paxelerate.model.extensions.EPointExtensions;
@@ -21,7 +20,7 @@ import net.bhl.opensource.toolbox.math.Distance;
  */
 public interface Step {
 
-	static void run(Agent agent) {
+	static void run(Agent agent, double stepTime) {
 
 		Passenger passenger = agent.getPassenger();
 
@@ -46,24 +45,7 @@ public interface Step {
 		passenger.getCurrentPosition().setX(passenger.getDesiredPosition().getX() * scale);
 		passenger.getCurrentPosition().setY(passenger.getDesiredPosition().getY() * scale);
 
-		evaluateCovidDistances(agent);
+		ContactTracingFunctions.evaluateCovidDistances(agent, stepTime);
 	}
 
-	/**
-	 * @param agent
-	 */
-	static void evaluateCovidDistances(Agent agent) {
-
-		agent.getHandler().getMap().get(agent.getPassenger().getCurrentPosition()).ifPresent(node -> {
-
-			for (Entry<Agent, Integer> entry : node.covidMap.entrySet()) {
-
-				agent.tracer.addContact(entry.getKey().getPassenger(), agent.getHandler().getMasterBoardingTime(),
-						entry.getValue() * agent.getHandler().getSettings().getSimulationGridResolution());
-
-			}
-
-		});
-
-	}
 }

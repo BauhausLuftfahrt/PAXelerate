@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.paxelerate.core.sim.astar.SimulationHandler;
+import com.paxelerate.core.simulation.astar.SimulationHandler;
 import com.paxelerate.model.Deck;
 import com.paxelerate.model.Model;
 import com.paxelerate.model.ModelFactory;

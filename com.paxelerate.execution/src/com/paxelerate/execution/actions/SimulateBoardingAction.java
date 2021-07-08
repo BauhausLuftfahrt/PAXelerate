@@ -18,8 +18,8 @@ import javax.swing.WindowConstants;
 
 import org.eclipse.emf.common.util.ECollections;
 
-import com.paxelerate.core.sim.astar.Areamap;
-import com.paxelerate.core.sim.astar.SimulationHandler;
+import com.paxelerate.core.simulation.astar.Areamap;
+import com.paxelerate.core.simulation.astar.SimulationHandler;
 import com.paxelerate.execution.main.StartPaxelerate;
 import com.paxelerate.execution.ui.SimulationView;
 import com.paxelerate.model.Deck;

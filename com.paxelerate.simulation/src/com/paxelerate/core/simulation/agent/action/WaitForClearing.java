@@ -3,13 +3,14 @@
  * materials are made available under the terms of the GNU General Public License v3.0 which accompanies this distribution,
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
-package com.paxelerate.core.sim.agent.action;
+package com.paxelerate.core.simulation.agent.action;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.paxelerate.core.sim.agent.Agent;
-import com.paxelerate.core.sim.agent.AgentFunctions;
+import com.paxelerate.core.simulation.agent.Agent;
+import com.paxelerate.core.simulation.agent.AgentFunctions;
+import com.paxelerate.core.simulation.covid.ContactTracingFunctions;
 import com.paxelerate.model.enums.State;
 import com.paxelerate.model.extensions.PassengerExtensions;
 import com.paxelerate.model.monuments.Seat;
@@ -64,13 +65,18 @@ public interface WaitForClearing {
 			}
 
 			try {
-				Thread.sleep(agent.time(sleepTime));
+
+				ContactTracingFunctions.evaluateCovidDistances(agent, sleepTime);
+
+				Thread.sleep(agent.getSimulationTimeFor(sleepTime));
+
 			} catch (InterruptedException e) {
 				System.out.println("Agent action: InterruptedException");
 				// e.printStackTrace();
 			}
 
-			agent.getPassenger().setTotalTimeWaited(agent.getPassenger().getTotalTimeWaited() + agent.time(sleepTime));
+			agent.getPassenger().setTotalTimeWaited(
+					agent.getPassenger().getTotalTimeWaited() + agent.getSimulationTimeFor(sleepTime));
 			// agent.raiseNumberOfSkippedWaymakings();
 			agent.setWaitingCompleted(true);
 		}

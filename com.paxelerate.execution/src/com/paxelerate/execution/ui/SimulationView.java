@@ -13,11 +13,11 @@ import java.awt.GraphicsEnvironment;
 
 import javax.swing.JPanel;
 
-import com.paxelerate.core.sim.astar.Areamap;
-import com.paxelerate.core.sim.astar.Node;
-import com.paxelerate.core.sim.astar.Node.Layer;
-import com.paxelerate.core.sim.astar.Node.Property;
-import com.paxelerate.core.sim.astar.SimulationHandler;
+import com.paxelerate.core.simulation.astar.Areamap;
+import com.paxelerate.core.simulation.astar.Node;
+import com.paxelerate.core.simulation.astar.SimulationHandler;
+import com.paxelerate.core.simulation.astar.Node.Layer;
+import com.paxelerate.core.simulation.astar.Node.Property;
 import com.paxelerate.model.Model;
 import com.paxelerate.model.agent.Passenger;
 import com.paxelerate.model.enums.State;
@@ -101,7 +101,11 @@ public class SimulationView extends JPanel {
 
 			if (node.getPassenger() != null) {
 
-				g.setColor(switchColor(node.getPassenger().getState()));
+				if (node.getPassenger().getId() == 1) {
+					g.setColor(Color.RED);
+				} else {
+					g.setColor(switchColor(node.getPassenger().getState()));
+				}
 				g.fillRect(x * FONT_SIZE, y * FONT_SIZE, FONT_SIZE, FONT_SIZE);
 
 			} else if (node.getProperty(Layer.ASTAR) != Property.FREE) {

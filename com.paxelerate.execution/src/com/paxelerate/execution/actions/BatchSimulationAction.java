@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.paxelerate.core.sim.astar.Areamap;
+import com.paxelerate.core.simulation.astar.Areamap;
 import com.paxelerate.execution.init.BoardingDelayCalculator;
 import com.paxelerate.model.Model;
 import com.paxelerate.model.ModelFactory;

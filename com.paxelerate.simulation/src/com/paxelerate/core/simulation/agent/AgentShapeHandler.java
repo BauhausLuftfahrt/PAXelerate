@@ -4,15 +4,15 @@
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
 
-package com.paxelerate.core.sim.agent;
+package com.paxelerate.core.simulation.agent;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.paxelerate.core.sim.astar.Node.Layer;
-import com.paxelerate.core.sim.astar.ObstacleGenerator;
+import com.paxelerate.core.simulation.astar.ObstacleGenerator;
+import com.paxelerate.core.simulation.astar.Node.Layer;
 import com.paxelerate.model.agent.Passenger;
 
 import net.bhl.opensource.toolbox.math.BHLMath;

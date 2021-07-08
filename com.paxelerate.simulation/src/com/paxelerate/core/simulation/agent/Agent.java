@@ -4,21 +4,21 @@
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
 
-package com.paxelerate.core.sim.agent;
+package com.paxelerate.core.simulation.agent;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.paxelerate.core.sim.agent.AgentShapeHandler.Influence;
-import com.paxelerate.core.sim.agent.action.Collision;
-import com.paxelerate.core.sim.agent.action.Step;
-import com.paxelerate.core.sim.agent.action.StowLuggage;
-import com.paxelerate.core.sim.agent.action.UnfoldSeat;
-import com.paxelerate.core.sim.agent.action.WaitForClearing;
-import com.paxelerate.core.sim.astar.Costmap;
-import com.paxelerate.core.sim.astar.Node;
-import com.paxelerate.core.sim.astar.Path;
-import com.paxelerate.core.sim.astar.SimulationHandler;
+import com.paxelerate.core.simulation.agent.action.Collision;
+import com.paxelerate.core.simulation.agent.action.Step;
+import com.paxelerate.core.simulation.agent.action.StowLuggage;
+import com.paxelerate.core.simulation.agent.action.UnfoldSeat;
+import com.paxelerate.core.simulation.agent.action.WaitForClearing;
+import com.paxelerate.core.simulation.astar.Costmap;
+import com.paxelerate.core.simulation.astar.Node;
+import com.paxelerate.core.simulation.astar.Path;
+import com.paxelerate.core.simulation.astar.SimulationHandler;
+import com.paxelerate.core.simulation.covid.ContactTracingHandler;
 import com.paxelerate.model.EPoint;
 import com.paxelerate.model.Model;
 import com.paxelerate.model.agent.Passenger;
@@ -27,13 +27,11 @@ import com.paxelerate.model.enums.SeatType;
 import com.paxelerate.model.enums.SimulationType;
 import com.paxelerate.model.enums.State;
 import com.paxelerate.model.extensions.EPointExtensions;
-import com.paxelerate.model.extensions.PassengerExtensions;
 import com.paxelerate.model.extensions.SeatExtensions;
 
 import net.bhl.opensource.toolbox.emf.EObjectHelper;
 import net.bhl.opensource.toolbox.math.BHLMath;
 import net.bhl.opensource.toolbox.math.Distance;
-import net.bhl.opensource.toolbox.math.Rotator;
 import net.bhl.opensource.toolbox.math.vector.IntVector;
 import net.bhl.opensource.toolbox.time.StopWatch;
 
@@ -71,9 +69,6 @@ public class Agent implements Runnable {
 	private Thread thread;
 	private Path path;
 
-	private final double scale;
-	private final double waitingTimeAfterCollision;
-
 	private final Passenger passenger;
 	private Passenger blocker;
 	private AgentShapeHandler shapeHandler;
@@ -81,7 +76,7 @@ public class Agent implements Runnable {
 	private List<Double> speedOnPath = new ArrayList<>();
 	private SimulationHandler handler;
 
-	public ContactTracer tracer;
+	private final ContactTracingHandler contactTracingHandler;
 
 	/**
 	 * Creates an agent handler object
@@ -100,18 +95,13 @@ public class Agent implements Runnable {
 		this.passenger = passenger;
 		this.passenger.setState(State.NOT_ACTIVE);
 
-		scale = handler.getSettings().getSimulationGridResolution();
-
 		this.passenger.setStartPosition(start);
 		this.passenger.setGoalPosition(goal);
-
-		waitingTimeAfterCollision = handler.getSettings().getPassengerProperties()
-				.getPassivePassengerWaitingTimeAfterCollision();
 
 		/* Generate the shapes and calculate the resulting areas for each layer */
 		shapeHandler = new AgentShapeHandler(this);
 
-		tracer = new ContactTracer(passenger);
+		contactTracingHandler = new ContactTracingHandler(passenger);
 
 	}
 
@@ -133,118 +123,7 @@ public class Agent implements Runnable {
 
 	public void blockArea(EPoint vector, boolean occupy, boolean changePosition) {
 
-		/*
-		 * makes sure that the shape of the passenger is blocked too when luggage is
-		 * stowed on the first step
-		 */
-		if (stepIndex == 0 && occupy == true) {
-			changePosition = true;
-		}
-
-		// Apply rotation and shape
-		if (occupy) {
-
-			switch (passenger.getState()) {
-			case CABIN_LEFT:
-				break;
-
-			case CALCULATE_NEW_PATH:
-				break;
-
-			case CLEAR_ROW:
-				break;
-
-			case FOLLOW_PATH:
-				shapeHandler.setCurrentShape(shapeHandler.getInfluenceArea(Influence.WALKING));
-				break;
-
-			case NOT_ACTIVE:
-				break;
-
-			case PREPARE:
-				break;
-
-			case QUEUE_UP:
-				shapeHandler.setCurrentShape(shapeHandler.getInfluenceArea(Influence.STANDING));
-				break;
-
-			case RETRIEVE_LUGGAGE:
-				shapeHandler.setCurrentShape(shapeHandler.getInfluenceArea(Influence.STANDING));
-				break;
-
-			case RETURN_TO_SEAT:
-				break;
-
-			case SEATED:
-				shapeHandler.setCurrentShape(shapeHandler.getInfluenceArea(Influence.SITTING));
-				break;
-
-			case STOW_LUGGAGE:
-				shapeHandler.setCurrentShape(shapeHandler.getInfluenceArea(Influence.STANDING));
-				break;
-
-			case UNFOLD_SEAT:
-				shapeHandler.setCurrentShape(shapeHandler.getInfluenceArea(Influence.STANDING));
-				break;
-
-			case WAIT_FOR_OTHER_PASSENGER_TO_SEAT:
-				shapeHandler.setCurrentShape(shapeHandler.getInfluenceArea(Influence.STANDING));
-				break;
-
-			case WAIT_FOR_ROW_CLEARING:
-				shapeHandler.setCurrentShape(shapeHandler.getInfluenceArea(Influence.STANDING));
-				break;
-
-			default:
-				break;
-
-			}
-
-			if (stepIndex <= 1 && handler.getSettings().getSimulationType() == SimulationType.BOARDING) {
-
-				// rotate the shape if for the first two steps, assign the rotation between the
-				// first two points to avoid door blocking 1.
-				shapeHandler.setModifiedShape(Rotator.rotate(
-						PassengerExtensions.getRotation(EPointExtensions.transformIntVector(path.get(0).getPosition()),
-								EPointExtensions.transformIntVector(path.get(1).getPosition())),
-						shapeHandler.getCurrentShape()));
-
-			} else if (changePosition) {
-
-				// else if standard rotating process while walking 2
-				shapeHandler.setModifiedShape(
-						Rotator.rotate(PassengerExtensions.getRotation(passenger), shapeHandler.getCurrentShape()));
-
-			} else if (passenger.getState() != State.SEATED) {
-
-				// else if rotating process when only the influence area gets changed
-				shapeHandler.setModifiedShape(Rotator.rotate(PassengerExtensions.getRotation(
-						EPointExtensions.transformIntVector(path.get(stepIndex - 2).getPosition()),
-						passenger.getCurrentPosition()), shapeHandler.getCurrentShape()));
-
-			} else {
-
-				// else influence area sitting (The influence area is symmetric, so the
-				// orientation of the seat does not matter.
-				shapeHandler.setModifiedShape(Rotator.rotate(90, shapeHandler.getCurrentShape()));
-			}
-		}
-
-		// if no rotation is needed or possible, skip the rotation process and assign
-		// the basic layout to the object.
-
-		if (shapeHandler.getModifiedShape() == null) {
-			if (Math.max(shapeHandler.getInfluenceArea(Influence.STANDING).length,
-					shapeHandler.getInfluenceArea(Influence.STANDING)[0].length) > Math.max(
-							shapeHandler.getInfluenceArea(Influence.WALKING).length,
-							shapeHandler.getInfluenceArea(Influence.WALKING)[0].length)) {
-
-				shapeHandler.setModifiedShape(shapeHandler.getInfluenceArea(Influence.STANDING));
-
-			} else {
-				shapeHandler.setModifiedShape(shapeHandler.getInfluenceArea(Influence.WALKING));
-			}
-		}
+		AgentFunctions.adaptShape(stepIndex, occupy, changePosition, this);
 
 		AgentFunctions.blockShape(shapeHandler.getModifiedShape(), vector, occupy, changePosition, this);
 
@@ -373,11 +252,14 @@ public class Agent implements Runnable {
 				 * walking speed) which is equal to a standard step length)
 				 */
 				if (accelerationFactor < 1.0) {
-					accelerationFactor += scale;
+					accelerationFactor += handler.getSettings().getSimulationGridResolution();
 				}
 
+				double stepDuration = 1.0 / (currentWalkingSpeed * accelerationFactor)
+						* handler.getSettings().getSimulationGridResolution();
+
 				// if there is no obstacle or luggage stowing required, run the default step
-				Step.run(this);
+				Step.run(this, stepDuration);
 
 				// then perform the step
 				stepIndex++;
@@ -389,7 +271,7 @@ public class Agent implements Runnable {
 				speedOnPath.add(currentWalkingSpeed / passenger.getWalkingSpeed());
 
 				// sleep as long as one step takes
-				Thread.sleep(time(1 / (currentWalkingSpeed * accelerationFactor) * scale));
+				Thread.sleep(getSimulationTimeFor(stepDuration));
 
 			}
 
@@ -575,15 +457,6 @@ public class Agent implements Runnable {
 	}
 
 	/**
-	 * Gets the waiting time after collision.
-	 *
-	 * @return the waiting time after collision
-	 */
-	public double getWaitingTimeAfterCollision() {
-		return waitingTimeAfterCollision;
-	}
-
-	/**
 	 * Goal reached.
 	 *
 	 * @return true
@@ -642,8 +515,11 @@ public class Agent implements Runnable {
 	 *         seat
 	 */
 	public boolean isPassengerReadyToStowLuggageInRow() {
-		return Distance.distanceBetween(SeatExtensions.getPosition(passenger.getSeat()).getX() / scale, 0,
-				passenger.getDesiredPosition().getX(), 0) <= passenger.getLuggage().get(0).getStowDistance() / scale;
+		return Distance.distanceBetween(
+				SeatExtensions.getPosition(passenger.getSeat()).getX()
+						/ handler.getSettings().getSimulationGridResolution(),
+				0, passenger.getDesiredPosition().getX(), 0) <= passenger.getLuggage().get(0).getStowDistance()
+						/ handler.getSettings().getSimulationGridResolution();
 	}
 
 	/**
@@ -654,8 +530,11 @@ public class Agent implements Runnable {
 	public boolean isPassengerReadyToUnfoldsSeat() {
 		return (passenger.getSeat().getSeatType() == SeatType.SIDEWAYS_FOLDABLE
 				|| passenger.getSeat().getSeatType() == SeatType.LIFTING_SEAT_PAN)
-				&& Distance.distanceBetween(SeatExtensions.getPosition(passenger.getSeat()).getX() / scale, 0,
-						passenger.getDesiredPosition().getX(), 0) <= 10 / scale;
+				&& Distance.distanceBetween(
+						SeatExtensions.getPosition(passenger.getSeat()).getX()
+								/ handler.getSettings().getSimulationGridResolution(),
+						0, passenger.getDesiredPosition().getX(),
+						0) <= 10 / handler.getSettings().getSimulationGridResolution();
 	}
 
 	/**
@@ -676,7 +555,7 @@ public class Agent implements Runnable {
 				passenger.getSpeedOnPath().addAll(speedOnPath);
 				stopBoardingStatistics();
 
-				tracer.evaluateContactTracing(handler.getSettings().getSimulationSpeedFactor());
+				contactTracingHandler.evaluateContactTracing(handler.getSettings().getSimulationSpeedFactor());
 
 				return true;
 
@@ -746,7 +625,7 @@ public class Agent implements Runnable {
 
 		// sleep the thread as long as the boarding delay requires it
 		if (passenger.getStartBoardingAfterDelay() != 0) {
-			Thread.sleep(time(passenger.getStartBoardingAfterDelay()));
+			Thread.sleep(getSimulationTimeFor(passenger.getStartBoardingAfterDelay()));
 		}
 
 		// Check if access is granted
@@ -967,8 +846,10 @@ public class Agent implements Runnable {
 	 */
 	private boolean waitingForClearingOfRow() {
 
-		if ((int) Distance.distanceBetween(SeatExtensions.getPosition(passenger.getSeat()).getX() / scale, 0,
-				passenger.getDesiredPosition().getX(), 0) == Agent.PIXELS_FOR_WAY) {
+		if ((int) Distance.distanceBetween(
+				SeatExtensions.getPosition(passenger.getSeat()).getX()
+						/ handler.getSettings().getSimulationGridResolution(),
+				0, passenger.getDesiredPosition().getX(), 0) == Agent.PIXELS_FOR_WAY) {
 
 			return AgentFunctions.someoneAlreadyInThisPartOfTheRow(this);
 		}
@@ -976,13 +857,13 @@ public class Agent implements Runnable {
 	}
 
 	/**
-	 * @param timeInSeconds
+	 * @param realTimeInSeconds
 	 * @return
 	 */
-	public int time(double timeInSeconds) {
+	public int getSimulationTimeFor(double realTimeInSeconds) {
 
 		// Calculate delay in milliseconds
-		double real = timeInSeconds * 1000.0 / handler.getSettings().getSimulationSpeedFactor();
+		double real = realTimeInSeconds * 1000.0 / handler.getSettings().getSimulationSpeedFactor();
 
 		// Check if delay is so small that it cannot be differentiated anymore
 		if (real < 1.5) {
@@ -1021,4 +902,7 @@ public class Agent implements Runnable {
 		return shapeHandler;
 	}
 
+	public ContactTracingHandler getContactTracingHandler() {
+		return contactTracingHandler;
+	}
 }

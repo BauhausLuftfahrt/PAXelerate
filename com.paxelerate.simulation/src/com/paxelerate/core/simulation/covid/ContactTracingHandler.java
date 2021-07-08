@@ -3,51 +3,32 @@
  * materials are made available under the terms of the GNU General Public License v3.0 which accompanies this distribution,
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
-package com.paxelerate.core.sim.agent;
+package com.paxelerate.core.simulation.covid;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.paxelerate.core.simulation.agent.Agent;
 import com.paxelerate.model.agent.Passenger;
+import com.paxelerate.model.enums.State;
 
 /**
- * A class for the contact tracing model.
+ * Handle all contact tracing related functionality.
  *
  * @author Marc.Engelmann
  * @since 02.07.2021
  *
  */
-public class ContactTracer {
+public class ContactTracingHandler {
 
-	class Tracker {
-
-		private final Map<Double, Double> trackingList = new HashMap<>();
-
-		Tracker(double time, double distance) {
-			trackingList.put(time, distance);
-		}
-
-		void add(double time, double distance) {
-			trackingList.put(time, distance);
-		}
-
-		Map<Double, Double> getList() {
-			return trackingList;
-		}
-	}
-
-//	public static double TRACING_TRIGGER_RADIUS = 0.5; // meters
-//	public static double TRACING_TRIGGER_TIME = 10.0; // seconds
-
-	private Map<Passenger, Tracker> contactMap = new HashMap<>();
+	private Map<Passenger, ContactTracingMap> contactMap = new HashMap<>();
 	private Passenger mySelf;
 	private boolean isTracing = false;
 
-	public ContactTracer(Passenger pax) {
+	public ContactTracingHandler(Passenger pax) {
 		mySelf = pax;
 
 		isTracing = true;
@@ -58,24 +39,31 @@ public class ContactTracer {
 	 * @param time
 	 * @param distance
 	 */
-	public void addContact(Passenger passenger, double time, double distance) {
+	public void addContact(Passenger passenger, double timestamp, double duration, double distance, State state) {
 
+		// Don't tracking if the tracking has been completed already.
 		if (!isTracing) {
 			System.err.println("Contact tracing for passenger " + passenger.getId() + " has been completed.");
+			return;
 		}
 
+		// Don't add the contact if the resulting distance is larger than allowed
+		if (distance > Agent.COVID_EXPOSURE_TRESHOLD) {
+			return;
+		}
+
+		// Don't track the distance to yourself
 		if (passenger.getId() == mySelf.getId()) {
 			return;
 		}
 
+		// Add an entry to the tracker map or create a new one
 		if (contactMap.containsKey(passenger)) {
-			contactMap.get(passenger).add(time, distance);
+			contactMap.get(passenger).add(timestamp, duration, distance, state);
+
 		} else {
-
-			contactMap.put(passenger, new Tracker(time, distance));
-
+			contactMap.put(passenger, new ContactTracingMap(timestamp, duration, distance, state));
 		}
-
 	}
 
 	/**
@@ -83,23 +71,18 @@ public class ContactTracer {
 	 */
 	public void toConsole() {
 
-		for (Entry<Passenger, Tracker> paxList : contactMap.entrySet()) {
+		for (Entry<Passenger, ContactTracingMap> paxList : contactMap.entrySet()) {
 
 			System.out.println("Contact with passenger " + paxList.getKey().getId());
 
-			for (Entry<Double, Double> list : paxList.getValue().getList().entrySet()) {
+			for (Entry<Double, ContactTracingEvent> list : paxList.getValue().entrySet()) {
 
-				System.out.println(list.getKey() + ": " + list.getValue());
+				System.out.println("TimeStamp =  " + list.getKey() + "ms, duration = " + list.getValue().getDuration()
+						+ "s, distance =  " + list.getValue().getDistance() + "m, state = "
+						+ list.getValue().getState());
 
 			}
 		}
-	}
-
-	/**
-	 * @return
-	 */
-	public Map<Passenger, Tracker> getAllContacts() {
-		return contactMap;
 	}
 
 	/**
@@ -121,25 +104,20 @@ public class ContactTracer {
 		List<Double> distances = new ArrayList<>();
 		List<Double> durations = new ArrayList<>();
 
-		for (Entry<Passenger, Tracker> paxList : getAllContacts().entrySet()) {
+		for (Entry<Passenger, ContactTracingMap> paxList : contactMap.entrySet()) {
 
 			totalContactCounter++;
 
-//			List<Double> contactDistances = new ArrayList<>();
-			List<Double> contactTimeStamps = new ArrayList<>();
+			List<Double> contactDurations = new ArrayList<>();
 
-			for (Entry<Double, Double> list : paxList.getValue().getList().entrySet()) {
+			for (Entry<Double, ContactTracingEvent> list : paxList.getValue().entrySet()) {
 
-				distances.add(list.getValue());
-				contactTimeStamps.add(list.getKey());
+				distances.add(list.getValue().getDistance());
+				contactDurations.add(list.getValue().getDuration());
 
 			}
 
-//			distances.add(contactDistances.stream().mapToDouble(d -> d).average().getAsDouble());
-
-			contactTimeStamps.sort(Comparator.comparing(ts -> ts));
-			durations.add((contactTimeStamps.get(contactTimeStamps.size() - 1) - contactTimeStamps.get(0)) * speedfactor
-					/ 1000.0);
+			durations.add(contactDurations.stream().mapToDouble(d -> d).sum());
 
 		}
 
