@@ -19,18 +19,20 @@ public class ContactTracingEvent {
 
 	private double distance = 0;
 	private double duration = 0;
-	private State state = null;
+	private State myState = null;
+	private State contactState = null;
 
 	/**
 	 * @param duration
 	 * @param distance
 	 * @param state
 	 */
-	public ContactTracingEvent(double duration, double distance, State state) {
+	public ContactTracingEvent(double duration, double distance, State myState, State contactState) {
 
 		this.distance = distance;
 		this.duration = duration;
-		this.state = state;
+		this.myState = contactState;
+		this.contactState = myState;
 
 	}
 
@@ -51,8 +53,15 @@ public class ContactTracingEvent {
 	/**
 	 * @return
 	 */
-	public State getState() {
-		return state;
+	public State getMyState() {
+		return myState;
+	}
+
+	/**
+	 * @return
+	 */
+	public State getContactState() {
+		return contactState;
 	}
 
 }

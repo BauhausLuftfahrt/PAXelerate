@@ -31,9 +31,10 @@ public interface ContactTracingFunctions {
 
 			for (Entry<Passenger, Integer> entry : node.getContactTracingMap().entrySet()) {
 
-				agent.getContactTracingHandler().addContact(entry.getKey(), agent.getHandler().getMasterBoardingTime(),
-						stepTime, entry.getValue() * agent.getHandler().getSettings().getSimulationGridResolution(),
-						agent.getPassenger().getState());
+				agent.getContactTracingHandler().addContact(entry.getKey().getId(),
+						agent.getHandler().getMasterBoardingTime(), stepTime,
+						entry.getValue() * agent.getHandler().getSettings().getSimulationGridResolution(),
+						agent.getPassenger().getState(), entry.getKey().getState());
 
 			}
 

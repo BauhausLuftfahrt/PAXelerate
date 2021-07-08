@@ -29,8 +29,8 @@ public class ContactTracingMap extends HashMap<Double, ContactTracingEvent> {
 	 * @param distance
 	 * @param state
 	 */
-	ContactTracingMap(double timestamp, double duration, double distance, State state) {
-		put(timestamp, new ContactTracingEvent(duration, distance, state));
+	ContactTracingMap(double timestamp, double duration, double distance, State myState, State contactState) {
+		put(timestamp, new ContactTracingEvent(duration, distance, myState, contactState));
 	}
 
 	/**
@@ -41,8 +41,8 @@ public class ContactTracingMap extends HashMap<Double, ContactTracingEvent> {
 	 * @param distance
 	 * @param state
 	 */
-	void add(double timestamp, double duration, double distance, State state) {
-		put(timestamp, new ContactTracingEvent(duration, distance, state));
+	void add(double timestamp, double duration, double distance, State myState, State contactState) {
+		put(timestamp, new ContactTracingEvent(duration, distance, myState, contactState));
 	}
 
 }

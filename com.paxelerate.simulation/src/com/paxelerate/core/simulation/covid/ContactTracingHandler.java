@@ -24,13 +24,15 @@ import com.paxelerate.model.enums.State;
  */
 public class ContactTracingHandler {
 
-	private Map<Passenger, ContactTracingMap> contactMap = new HashMap<>();
-	private Passenger mySelf;
+	private Map<Integer, ContactTracingMap> contactMap = new HashMap<>();
+	private Passenger myself;
 	private boolean isTracing = false;
 
-	public ContactTracingHandler(Passenger pax) {
-		mySelf = pax;
-
+	/**
+	 * @param myID
+	 */
+	public ContactTracingHandler(Passenger me) {
+		myself = me;
 		isTracing = true;
 	}
 
@@ -39,11 +41,12 @@ public class ContactTracingHandler {
 	 * @param time
 	 * @param distance
 	 */
-	public void addContact(Passenger passenger, double timestamp, double duration, double distance, State state) {
+	public void addContact(int passengerID, double timestamp, double duration, double distance, State myState,
+			State contactState) {
 
 		// Don't tracking if the tracking has been completed already.
 		if (!isTracing) {
-			System.err.println("Contact tracing for passenger " + passenger.getId() + " has been completed.");
+			System.err.println("Contact tracing for passenger " + passengerID + " has been completed.");
 			return;
 		}
 
@@ -53,16 +56,16 @@ public class ContactTracingHandler {
 		}
 
 		// Don't track the distance to yourself
-		if (passenger.getId() == mySelf.getId()) {
+		if (passengerID == myself.getId()) {
 			return;
 		}
 
 		// Add an entry to the tracker map or create a new one
-		if (contactMap.containsKey(passenger)) {
-			contactMap.get(passenger).add(timestamp, duration, distance, state);
+		if (contactMap.containsKey(passengerID)) {
+			contactMap.get(passengerID).add(timestamp, duration, distance, myState, contactState);
 
 		} else {
-			contactMap.put(passenger, new ContactTracingMap(timestamp, duration, distance, state));
+			contactMap.put(passengerID, new ContactTracingMap(timestamp, duration, distance, myState, contactState));
 		}
 	}
 
@@ -71,15 +74,15 @@ public class ContactTracingHandler {
 	 */
 	public void toConsole() {
 
-		for (Entry<Passenger, ContactTracingMap> paxList : contactMap.entrySet()) {
+		for (Entry<Integer, ContactTracingMap> paxList : contactMap.entrySet()) {
 
-			System.out.println("Contact with passenger " + paxList.getKey().getId());
+			System.out.println("Contact with passenger " + paxList.getKey());
 
 			for (Entry<Double, ContactTracingEvent> list : paxList.getValue().entrySet()) {
 
 				System.out.println("TimeStamp =  " + list.getKey() + "ms, duration = " + list.getValue().getDuration()
 						+ "s, distance =  " + list.getValue().getDistance() + "m, state = "
-						+ list.getValue().getState());
+						+ list.getValue().getMyState() + ", contactState = " + list.getValue().getContactState());
 
 			}
 		}
@@ -100,7 +103,7 @@ public class ContactTracingHandler {
 		List<Double> distances = new ArrayList<>();
 		List<Double> durations = new ArrayList<>();
 
-		for (Entry<Passenger, ContactTracingMap> paxList : contactMap.entrySet()) {
+		for (Entry<Integer, ContactTracingMap> paxList : contactMap.entrySet()) {
 
 			totalContactCounter++;
 
@@ -119,13 +122,13 @@ public class ContactTracingHandler {
 
 		// Copy the results into the data model
 
-		mySelf.setCovidAverageDistanceToPassengers(distances.stream().mapToDouble(d -> d).average().orElse(0.0));
-		mySelf.setCovidMinimumDistanceToPassengers(distances.stream().mapToDouble(d -> d).min().orElse(0.0));
+		myself.setCovidAverageDistanceToPassengers(distances.stream().mapToDouble(d -> d).average().orElse(0.0));
+		myself.setCovidMinimumDistanceToPassengers(distances.stream().mapToDouble(d -> d).min().orElse(0.0));
 
-		mySelf.setCovidAverageDurationOfContacts(durations.stream().mapToDouble(d -> d).average().orElse(0.0));
-		mySelf.setCovidMaximumDurationOfContact(durations.stream().mapToDouble(d -> d).max().orElse(0.0));
+		myself.setCovidAverageDurationOfContacts(durations.stream().mapToDouble(d -> d).average().orElse(0.0));
+		myself.setCovidMaximumDurationOfContact(durations.stream().mapToDouble(d -> d).max().orElse(0.0));
 
-		mySelf.setCovidTotalNumberOfContacts(totalContactCounter);
+		myself.setCovidTotalNumberOfContacts(totalContactCounter);
 
 	}
 
