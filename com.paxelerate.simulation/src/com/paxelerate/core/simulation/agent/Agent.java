@@ -57,6 +57,8 @@ public class Agent implements Runnable {
 
 	public final static double COVID_EXPOSURE_TRESHOLD = 2.0; // meters
 
+	public final static boolean ACTIVATE_CONTACT_TRACING = true;
+
 	private final static int PIXELS_FOR_WAY = 7;
 
 	private int overheadBinFull = 0, stepIndex = 0;
@@ -102,7 +104,7 @@ public class Agent implements Runnable {
 		/* Generate the shapes and calculate the resulting areas for each layer */
 		shapeHandler = new AgentShapeHandler(this);
 
-		contactTracingHandler = new ContactTracingHandler(passenger);
+		contactTracingHandler = ACTIVATE_CONTACT_TRACING ? new ContactTracingHandler(passenger) : null;
 
 	}
 
@@ -127,7 +129,10 @@ public class Agent implements Runnable {
 		AgentFunctions.adaptShape(stepIndex, occupy, changePosition, this);
 		AgentFunctions.blockShape(shapeHandler.getModifiedShape(), vector, occupy, changePosition, this);
 
-		AgentFunctions.blockContactTracingShape(shapeHandler.getInfluenceArea(Influence.COVID), vector, occupy, this);
+		if (ACTIVATE_CONTACT_TRACING) {
+			AgentFunctions.blockContactTracingShape(shapeHandler.getInfluenceArea(Influence.COVID), vector, occupy,
+					this);
+		}
 	}
 
 	/**
@@ -551,7 +556,9 @@ public class Agent implements Runnable {
 				passenger.getSpeedOnPath().addAll(speedOnPath);
 				stopBoardingStatistics();
 
-				contactTracingHandler.evaluateContactTracing(handler.getSettings().getSimulationSpeedFactor());
+				if (ACTIVATE_CONTACT_TRACING) {
+					contactTracingHandler.evaluateContactTracing(handler.getSettings().getSimulationSpeedFactor());
+				}
 
 				return true;
 

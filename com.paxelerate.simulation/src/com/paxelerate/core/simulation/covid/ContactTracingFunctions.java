@@ -27,6 +27,10 @@ public interface ContactTracingFunctions {
 	 */
 	static void evaluateCovidDistances(Agent agent, double stepTime) {
 
+		if (!Agent.ACTIVATE_CONTACT_TRACING) {
+			return;
+		}
+
 		agent.getHandler().getMap().get(agent.getPassenger().getCurrentPosition()).ifPresent(node -> {
 
 			for (Entry<Passenger, Integer> entry : node.getContactTracingMap().entrySet()) {
