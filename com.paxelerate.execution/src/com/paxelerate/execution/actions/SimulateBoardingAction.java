@@ -18,6 +18,7 @@ import javax.swing.WindowConstants;
 
 import org.eclipse.emf.common.util.ECollections;
 
+import com.paxelerate.core.simulation.agent.Agent;
 import com.paxelerate.core.simulation.astar.Areamap;
 import com.paxelerate.core.simulation.astar.SimulationHandler;
 import com.paxelerate.execution.main.StartPaxelerate;
@@ -71,6 +72,23 @@ public class SimulateBoardingAction {
 			csv.addAll(EObjectHelper.getParent(Model.class, deck).getSettings().getLuggageProperties());
 			csv.addAll(EObjectHelper.getParent(Model.class, deck).getSimulationResults().get(0));
 
+			if (Agent.ACTIVATE_CONTACT_TRACING) {
+
+				csv.add("COVID Average Average Distance", deck.getPassengers().stream()
+						.mapToDouble(Passenger::getCovidAverageDistanceToPassengers).average().orElse(0));
+				csv.add("COVID Average Min Distance", deck.getPassengers().stream()
+						.mapToDouble(Passenger::getCovidMinimumDistanceToPassengers).average().orElse(0));
+				csv.add("COVID Average Average Duration", deck.getPassengers().stream()
+						.mapToDouble(Passenger::getCovidAverageDurationOfContacts).average().orElse(0));
+				csv.add("COVID Average Max Duration", deck.getPassengers().stream()
+						.mapToDouble(Passenger::getCovidMaximumDurationOfContact).average().orElse(0));
+				csv.add("COVID Average Amount", deck.getPassengers().stream()
+						.mapToDouble(Passenger::getCovidTotalNumberOfContacts).average().orElse(0));
+				csv.add("COVID Total Amount",
+						deck.getPassengers().stream().mapToDouble(Passenger::getCovidTotalNumberOfContacts).sum());
+
+			}
+
 			EObjectHelper.getParent(Model.class, deck).getSimulationResults().clear();
 			csv.saveFile(true);
 
@@ -122,7 +140,8 @@ public class SimulateBoardingAction {
 	 * @param fileName
 	 * @param study
 	 */
-	public SimulateBoardingAction(final Deck deck, int iteration, Areamap map, String fileName, StudyType study) {
+	public SimulateBoardingAction(final Deck deck, int iteration, Areamap map, String fileName, StudyType study,
+			int iMax) {
 
 		Settings settings = EObjectHelper.getParent(Model.class, deck).getSettings();
 
@@ -138,7 +157,7 @@ public class SimulateBoardingAction {
 
 		/* Show WIP simulation view */
 		if (study.getDisplaySimulation().isValue()) {
-			runAreaMapWindow(handler);
+			runAreaMapWindow(handler, iteration, iMax);
 		}
 
 		// Log the current state of the simulation every 10 "simulation seconds".
@@ -151,7 +170,7 @@ public class SimulateBoardingAction {
 				Thread.sleep(10000 / settings.getSimulationSpeedFactor());
 
 				// Terminate if boarding time exceeds limit
-				if (handler.getMasterBoardingTime() * settings.getSimulationSpeedFactor() / 1000.0 > 2.0 * 60.0
+				if (handler.getMasterBoardingTime() * settings.getSimulationSpeedFactor() / 1000.0 > 1.0 * 60.0
 						* 60.0) {
 
 					System.err.println("\nSimulateBoardingAction: Simulation terminated due to inactivity.");
@@ -189,7 +208,7 @@ public class SimulateBoardingAction {
 	/**
 	 *
 	 */
-	private void runAreaMapWindow(SimulationHandler handler) {
+	private void runAreaMapWindow(SimulationHandler handler, int i, int iMax) {
 		SwingUtilities.invokeLater(() -> {
 
 			try {
@@ -197,7 +216,7 @@ public class SimulateBoardingAction {
 				frame = new JFrame("Simulation View");
 
 				SimulationView simulationView = new SimulationView(handler);
-				simulationView.setAreamap(handler.getMap());
+				simulationView.setAreamap(handler.getMap(), i, iMax);
 
 				frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 				frame.setContentPane(simulationView);

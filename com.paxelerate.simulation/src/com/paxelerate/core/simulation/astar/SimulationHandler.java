@@ -131,6 +131,8 @@ public class SimulationHandler {
 			}
 		}
 		deck = null;
+		areamap.getNodes().forEach(n -> n.influencingPassengers.clear());
+		areamap.getNodes().forEach(n -> n.getContactTracingMap().clear());
 		areamap = null;
 		settings = null;
 		agentList.clear();

@@ -121,7 +121,7 @@ public interface BatchSimulationAction {
 				BoardingDelayCalculator.calculateDelay(model.getDeck().getDoors(), model.getDeck().getPassengers());
 
 				// Run the simulation
-				new SimulateBoardingAction(model.getDeck(), i, map, cpacsFile.getName(), study);
+				new SimulateBoardingAction(model.getDeck(), i, map, cpacsFile.getName(), study, iterations);
 
 				simTimer.stop();
 				Log.endWithNoStart(simTimer);

@@ -45,6 +45,8 @@ public class SimulationView extends JPanel {
 	private Areamap areamap;
 	private int FONT_SIZE = 10;
 	private SimulationHandler handler;
+	private int currentIteration = 0;
+	private int totalIterations = 0;
 
 	/*
 	 * Instantiates a new simulation view.
@@ -99,6 +101,13 @@ public class SimulationView extends JPanel {
 
 			g.setColor(Color.LIGHT_GRAY);
 
+//			if (!node.getContactTracingMap().isEmpty()) {
+//
+//				g.setColor(Color.GREEN);
+//				g.fillRect(x * FONT_SIZE, y * FONT_SIZE, FONT_SIZE, FONT_SIZE);
+//
+//			} else 
+
 			if (node.getPassenger() != null) {
 
 				g.setColor(switchColor(node.getPassenger().getState()));
@@ -108,12 +117,6 @@ public class SimulationView extends JPanel {
 
 				g.setColor(Color.LIGHT_GRAY);
 				g.fillRect(x * FONT_SIZE, y * FONT_SIZE, FONT_SIZE, FONT_SIZE);
-
-//			} else if (!node.getContactTracingMap().isEmpty()) {
-
-//				g.setColor(Color.GREEN);
-//				g.fillRect(x * FONT_SIZE, y * FONT_SIZE, FONT_SIZE, FONT_SIZE);
-//					g.drawString("" + node.covidMap.size(), x * FONT_SIZE, y * FONT_SIZE);
 
 			}
 
@@ -142,6 +145,7 @@ public class SimulationView extends JPanel {
 		g.drawString("Passengers: " + handler.getPassengersByState(State.NOT_ACTIVE, true).size() + " / "
 				+ handler.getPassengersByState(State.SEATED, false).size() + " / "
 				+ handler.getPassengersByState(null, false).size(), 10, 60);
+		g.drawString("Iteration: " + currentIteration + " / " + totalIterations, 10, 80);
 
 	}
 
@@ -157,8 +161,10 @@ public class SimulationView extends JPanel {
 	 *
 	 * @param areamap the new areamap
 	 */
-	public final void setAreamap(final Areamap areamap) {
+	public final void setAreamap(final Areamap areamap, int iteration, int totalIteration) {
 		this.areamap = areamap;
+		currentIteration = iteration;
+		totalIterations = totalIteration;
 	}
 
 	/**

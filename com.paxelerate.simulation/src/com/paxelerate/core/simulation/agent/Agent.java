@@ -235,6 +235,8 @@ public class Agent implements Runnable {
 				// if the walking speed is zero, run collision as long as it remains zero
 				double currentWalkingSpeed = AgentSpeedHandler.getSpeed(this);
 
+				int counter = 0;
+
 				while (currentWalkingSpeed <= 0) {
 
 					Collision.run(this);
@@ -245,6 +247,14 @@ public class Agent implements Runnable {
 
 					accelerationFactor = 0.4;
 					currentWalkingSpeed = AgentSpeedHandler.getSpeed(this);
+
+					if (counter > 100) {
+						currentWalkingSpeed = 0.01;
+						System.err.println("\n--------- Force stop waiting of agent! ---------");
+						break;
+					}
+
+					counter++;
 				}
 
 				/*
