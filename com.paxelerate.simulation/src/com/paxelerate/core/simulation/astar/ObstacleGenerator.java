@@ -3,13 +3,13 @@
  * materials are made available under the terms of the GNU General Public License v3.0 which accompanies this distribution,
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
-package com.paxelerate.core.sim.astar;
+package com.paxelerate.core.simulation.astar;
 
 import java.util.List;
 
-import com.paxelerate.core.sim.agent.AgentSpeedHandler;
-import com.paxelerate.core.sim.astar.Node.Layer;
-import com.paxelerate.core.sim.astar.Node.Property;
+import com.paxelerate.core.simulation.agent.AgentSpeedHandler;
+import com.paxelerate.core.simulation.astar.Node.Layer;
+import com.paxelerate.core.simulation.astar.Node.Property;
 import com.paxelerate.model.Deck;
 import com.paxelerate.model.EPoint;
 import com.paxelerate.model.Model;

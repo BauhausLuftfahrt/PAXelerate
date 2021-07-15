@@ -4,18 +4,19 @@
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
 
-package com.paxelerate.core.sim.agent;
+package com.paxelerate.core.simulation.agent;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.paxelerate.core.sim.astar.Node.Layer;
-import com.paxelerate.core.sim.astar.ObstacleGenerator;
+import com.paxelerate.core.simulation.astar.Node.Layer;
+import com.paxelerate.core.simulation.astar.ObstacleGenerator;
 import com.paxelerate.model.agent.Passenger;
 
 import net.bhl.opensource.toolbox.math.BHLMath;
+import net.bhl.opensource.toolbox.math.Distance;
 import net.bhl.opensource.toolbox.math.vector.DoubleVector;
 
 /**
@@ -61,7 +62,7 @@ public class AgentShapeHandler {
 //	}
 
 	public enum Influence {
-		WALKING, STANDING, SITTING;
+		WALKING, STANDING, SITTING, COVID;
 	}
 
 	private Map<Layer, int[][]> shapes = new HashMap<>();
@@ -275,6 +276,27 @@ public class AgentShapeHandler {
 							- (influences.get(Influence.STANDING)[0].length - 1 - j); i++) {
 				influences.get(Influence.STANDING)[i][j] = BHLMath.toInt(Agent.INFLUENCE_AREA_DEPTH / scale)
 						- (influences.get(Influence.STANDING)[0].length - 1 - j);
+			}
+		}
+
+		// ----------------------------------------------------------------------
+		/*
+		 * Generate the circular influence area of the agent for contact tracing.
+		 */
+
+		influences.put(Influence.COVID, new int[// shapes.get(Layer.ASTAR).length +
+		2 * BHLMath.toInt(Agent.COVID_EXPOSURE_TRESHOLD / scale)][ // shapes.get(Layer.ASTAR)[0].length+
+		2 * BHLMath.toInt(Agent.COVID_EXPOSURE_TRESHOLD / scale)]);
+
+		for (int i = 0; i < influences.get(Influence.COVID).length; i++) {
+			for (int j = 0; j < influences.get(Influence.COVID)[0].length; j++) {
+
+				int distance = BHLMath.toInt(Distance.distanceBetween(i, j,
+						influences.get(Influence.COVID).length / 2.0, influences.get(Influence.COVID)[0].length / 2.0));
+
+				influences.get(Influence.COVID)[i][j] = distance > BHLMath.toInt(Agent.COVID_EXPOSURE_TRESHOLD / scale)
+						? 0
+						: distance;
 			}
 		}
 

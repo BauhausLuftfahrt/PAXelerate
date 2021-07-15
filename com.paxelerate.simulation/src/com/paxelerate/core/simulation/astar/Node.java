@@ -3,7 +3,7 @@
  * materials are made available under the terms of the GNU General Public License v3.0 which accompanies this distribution,
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
-package com.paxelerate.core.sim.astar;
+package com.paxelerate.core.simulation.astar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.paxelerate.core.sim.agent.Agent;
+import com.paxelerate.core.simulation.agent.Agent;
 import com.paxelerate.model.agent.Passenger;
 
 import net.bhl.opensource.toolbox.math.vector.IntVector;
@@ -41,7 +41,9 @@ public class Node {
 
 	private Map<Layer, Integer> gradients = new HashMap<>();
 	private Map<Layer, Property> properties = new HashMap<>();
+
 	public ConcurrentHashMap<Agent, Integer> influencingPassengers = new ConcurrentHashMap<>();
+	private final ConcurrentHashMap<Passenger, Integer> contactTracingMap = new ConcurrentHashMap<>();
 
 	private double standardCeilingHeight = 2.235; // A320 cabin interior height
 	private double ceilingHeight = standardCeilingHeight;
@@ -195,5 +197,9 @@ public class Node {
 			return ((Node) arg0).getPosition() == getPosition();
 		}
 		return super.equals(arg0);
+	}
+
+	public ConcurrentHashMap<Passenger, Integer> getContactTracingMap() {
+		return contactTracingMap;
 	}
 }

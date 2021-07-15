@@ -3,9 +3,9 @@
  * materials are made available under the terms of the GNU General Public License v3.0 which accompanies this distribution,
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
-package com.paxelerate.core.sim.agent.action;
+package com.paxelerate.core.simulation.agent.action;
 
-import com.paxelerate.core.sim.agent.Agent;
+import com.paxelerate.core.simulation.agent.Agent;
 import com.paxelerate.model.enums.State;
 
 import net.bhl.opensource.toolbox.math.gaussian.Gaussian;

@@ -4,18 +4,18 @@
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
 
-package com.paxelerate.core.sim.agent;
+package com.paxelerate.core.simulation.agent;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map.Entry;
 
-import com.paxelerate.core.sim.astar.Node;
-import com.paxelerate.core.sim.astar.Node.Layer;
-import com.paxelerate.core.sim.astar.Node.Property;
-import com.paxelerate.core.sim.astar.ObstacleGenerator;
-import com.paxelerate.core.sim.astar.Path;
-import com.paxelerate.core.sim.astar.SimulationHandler;
+import com.paxelerate.core.simulation.astar.Node;
+import com.paxelerate.core.simulation.astar.ObstacleGenerator;
+import com.paxelerate.core.simulation.astar.Path;
+import com.paxelerate.core.simulation.astar.SimulationHandler;
+import com.paxelerate.core.simulation.astar.Node.Layer;
+import com.paxelerate.core.simulation.astar.Node.Property;
 import com.paxelerate.model.agent.Passenger;
 import com.paxelerate.model.enums.State;
 import com.paxelerate.model.extensions.EPointExtensions;
@@ -40,7 +40,7 @@ public interface AgentSpeedHandler {
 	double BIN_HEIGHT = 1.65;
 
 	// Layers considered in the obstacle effects
-	List<Layer> OBTACLE_LAYERS = Arrays.asList(Layer.BOTTOM, Layer.MIDDLE, Layer.TOP);
+	List<Layer> OBSTACLE_LAYERS = Arrays.asList(Layer.BOTTOM, Layer.MIDDLE, Layer.TOP);
 
 	/**
 	 * This function calculates the walking speed depending on obstacle and
@@ -253,8 +253,8 @@ public interface AgentSpeedHandler {
 		// OBSTACLE INFLUENCE
 
 		// mean effect per node
-		obstacleEffects = OBTACLE_LAYERS.stream().mapToDouble(l -> AgentSpeedHandler.getObstacleEffects(agent, l)).sum()
-				/ OBTACLE_LAYERS.stream().mapToDouble(l -> agent.getShapeHandler().getArea(l)).sum();
+		obstacleEffects = OBSTACLE_LAYERS.stream().mapToDouble(l -> AgentSpeedHandler.getObstacleEffects(agent, l))
+				.sum() / OBSTACLE_LAYERS.stream().mapToDouble(l -> agent.getShapeHandler().getArea(l)).sum();
 
 		// divided by 1.5 times areaTop because the function calculates two effects for
 		// this area (not divided by two times areaTop because one effect is calculated

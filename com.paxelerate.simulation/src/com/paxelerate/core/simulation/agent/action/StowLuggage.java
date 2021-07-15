@@ -3,9 +3,10 @@
  * materials are made available under the terms of the GNU General Public License v3.0 which accompanies this distribution,
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
-package com.paxelerate.core.sim.agent.action;
+package com.paxelerate.core.simulation.agent.action;
 
-import com.paxelerate.core.sim.agent.Agent;
+import com.paxelerate.core.simulation.agent.Agent;
+import com.paxelerate.core.simulation.covid.ContactTracingFunctions;
 import com.paxelerate.model.enums.State;
 import com.paxelerate.model.extensions.PassengerExtensions;
 
@@ -25,18 +26,7 @@ public interface StowLuggage {
 
 		// Skip luggage stowing and just add a time penalty
 
-		StowLuggage.sleepAgentThread(PassengerExtensions.getLuggageStowingTime(agent.getPassenger()), agent);
-
-		agent.setAlreadyStowed(true);
-
-	}
-
-	/**
-	 * Sleep agent thread.
-	 *
-	 * @param time the time
-	 */
-	static void sleepAgentThread(double sleepTime, Agent agent) {
+		double sleepTime = PassengerExtensions.getLuggageStowingTime(agent.getPassenger());
 
 		// change state
 		agent.getPassenger().setState(State.STOW_LUGGAGE);
@@ -48,10 +38,18 @@ public interface StowLuggage {
 		// agent.rotateTo(180);
 
 		try {
-			Thread.sleep(agent.time(sleepTime));
-			agent.getPassenger().setTotalTimeWaited(agent.getPassenger().getTotalTimeWaited() + agent.time(sleepTime));
+			Thread.sleep(agent.getSimulationTimeFor(sleepTime));
+
+			ContactTracingFunctions.evaluateCovidDistances(agent, sleepTime);
+
+			agent.getPassenger().setTotalTimeWaited(
+					agent.getPassenger().getTotalTimeWaited() + agent.getSimulationTimeFor(sleepTime));
+
 		} catch (InterruptedException e) {
 			System.out.println("Agent action: InterruptedException");
 		}
+
+		agent.setAlreadyStowed(true);
+
 	}
 }
