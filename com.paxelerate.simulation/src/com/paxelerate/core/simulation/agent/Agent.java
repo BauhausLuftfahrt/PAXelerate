@@ -59,7 +59,7 @@ public class Agent implements Runnable {
 
 	public final static double COVID_EXPOSURE_TRESHOLD = 2.0; // meters
 
-	public final static boolean ACTIVATE_CONTACT_TRACING = true;
+	public final static boolean ACTIVATE_CONTACT_TRACING = false;
 
 	private final static int PIXELS_FOR_WAY = 7;
 
