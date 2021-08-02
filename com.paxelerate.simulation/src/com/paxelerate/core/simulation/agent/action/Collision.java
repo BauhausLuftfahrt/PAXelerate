@@ -3,10 +3,10 @@
  * materials are made available under the terms of the GNU General Public License v3.0 which accompanies this distribution,
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
-package com.paxelerate.core.sim.agent.action;
+package com.paxelerate.core.simulation.agent.action;
 
-import com.paxelerate.core.sim.agent.Agent;
-import com.paxelerate.core.sim.agent.PathFinder;
+import com.paxelerate.core.simulation.agent.Agent;
+import com.paxelerate.core.simulation.covid.ContactTracingFunctions;
 import com.paxelerate.model.agent.Passenger;
 import com.paxelerate.model.enums.State;
 
@@ -19,37 +19,37 @@ import com.paxelerate.model.enums.State;
  */
 public interface Collision {
 
-	/**
-	 *
-	 * @param agent
-	 */
-	static void pass(Agent agent) {
-
-		if (!agent.isOvertakingBlocked()) {
-
-			// only pass other passenger, if they stow luggage or unfold a seat
-			State blockingAgentState = agent.getBlocker().getState();
-			if (blockingAgentState == State.STOW_LUGGAGE || blockingAgentState == State.UNFOLD_SEAT) {
-
-				// Calculate new path around blocking agent
-				PathFinder pathfinder = new PathFinder(agent);
-				pathfinder.start();
-
-				while (agent.isCurrentlySearchingForPath()) {
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-
-				// abort if agent is not blocked anymore
-				if (!agent.isOvertakingBlocked()) {
-					agent.setExitPathLoop(true);
-				}
-			}
-		}
-	}
+//	/**
+//	 *
+//	 * @param agent
+//	 */
+//	static void pass(Agent agent) {
+//
+//		if (!agent.isOvertakingBlocked()) {
+//
+//			// only pass other passenger, if they stow luggage or unfold a seat
+//			State blockingAgentState = agent.getBlocker().getState();
+//			if (blockingAgentState == State.STOW_LUGGAGE || blockingAgentState == State.UNFOLD_SEAT) {
+//
+//				// Calculate new path around blocking agent
+//				PathFinder pathfinder = new PathFinder(agent);
+//				pathfinder.start();
+//
+//				while (agent.isCurrentlySearchingForPath()) {
+//					try {
+//						Thread.sleep(100);
+//					} catch (InterruptedException e) {
+//						e.printStackTrace();
+//					}
+//				}
+//
+//				// abort if agent is not blocked anymore
+//				if (!agent.isOvertakingBlocked()) {
+//					agent.setExitPathLoop(true);
+//				}
+//			}
+//		}
+//	}
 
 	static void run(Agent agent) {
 
@@ -78,16 +78,17 @@ public interface Collision {
 		// Perform action depending on passenger mood
 		switch (passenger.getPassengerMood()) {
 
-		case AGGRESSIVE:
-			Collision.pass(agent);
-			break;
+//		case AGGRESSIVE:
+//			Collision.pass(agent);
+//			break;
 
 		case PASSIVE:
 			Collision.wait(agent);
 			break;
 		}
 
-		passenger.setTotalTimeWaited(passenger.getTotalTimeWaited() + (long) agent.getWaitingTimeAfterCollision());
+		passenger.setTotalTimeWaited(passenger.getTotalTimeWaited() + (long) agent.getHandler().getSettings()
+				.getPassengerProperties().getPassivePassengerWaitingTimeAfterCollision());
 	}
 
 	/**
@@ -97,8 +98,15 @@ public interface Collision {
 	static void wait(Agent agent) {
 
 		try {
+
+			double waitTime = agent.getHandler().getSettings().getPassengerProperties()
+					.getPassivePassengerWaitingTimeAfterCollision();
+
+			ContactTracingFunctions.evaluateCovidDistances(agent, waitTime);
+
 			// agent waits for specific time before he continues walking
-			Thread.sleep(agent.time(agent.getWaitingTimeAfterCollision()));
+			Thread.sleep(agent.getSimulationTimeFor(waitTime));
+
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 			Thread.currentThread().interrupt();

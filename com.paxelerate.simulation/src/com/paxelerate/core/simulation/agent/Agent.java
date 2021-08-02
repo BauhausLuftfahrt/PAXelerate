@@ -4,23 +4,22 @@
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
 
-package com.paxelerate.core.sim.agent;
+package com.paxelerate.core.simulation.agent;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.paxelerate.core.sim.agent.AgentShapeHandler.Influence;
-import com.paxelerate.core.sim.agent.action.Collision;
-import com.paxelerate.core.sim.agent.action.Step;
-import com.paxelerate.core.sim.agent.action.StowLuggage;
-import com.paxelerate.core.sim.agent.action.UnfoldSeat;
-import com.paxelerate.core.sim.agent.action.WaitForClearing;
-import com.paxelerate.core.sim.astar.Costmap;
-import com.paxelerate.core.sim.astar.Node;
-import com.paxelerate.core.sim.astar.Node.Layer;
-import com.paxelerate.core.sim.astar.Node.Property;
-import com.paxelerate.core.sim.astar.Path;
-import com.paxelerate.core.sim.astar.SimulationHandler;
+import com.paxelerate.core.simulation.agent.AgentShapeHandler.Influence;
+import com.paxelerate.core.simulation.agent.action.Collision;
+import com.paxelerate.core.simulation.agent.action.Step;
+import com.paxelerate.core.simulation.agent.action.StowLuggage;
+import com.paxelerate.core.simulation.agent.action.UnfoldSeat;
+import com.paxelerate.core.simulation.agent.action.WaitForClearing;
+import com.paxelerate.core.simulation.astar.Costmap;
+import com.paxelerate.core.simulation.astar.Node;
+import com.paxelerate.core.simulation.astar.Path;
+import com.paxelerate.core.simulation.astar.SimulationHandler;
+import com.paxelerate.core.simulation.covid.ContactTracingHandler;
 import com.paxelerate.model.EPoint;
 import com.paxelerate.model.Model;
 import com.paxelerate.model.agent.Passenger;
@@ -29,13 +28,11 @@ import com.paxelerate.model.enums.SeatType;
 import com.paxelerate.model.enums.SimulationType;
 import com.paxelerate.model.enums.State;
 import com.paxelerate.model.extensions.EPointExtensions;
-import com.paxelerate.model.extensions.PassengerExtensions;
 import com.paxelerate.model.extensions.SeatExtensions;
 
 import net.bhl.opensource.toolbox.emf.EObjectHelper;
 import net.bhl.opensource.toolbox.math.BHLMath;
 import net.bhl.opensource.toolbox.math.Distance;
-import net.bhl.opensource.toolbox.math.Rotator;
 import net.bhl.opensource.toolbox.math.vector.IntVector;
 import net.bhl.opensource.toolbox.time.StopWatch;
 
@@ -58,6 +55,12 @@ public class Agent implements Runnable {
 	public final static double INFLUENCE_AREA_SITTING = 0.2; // meters
 	public final static double ADDING_DEPTH_SITTING = 0.4; // meters (adding shape representing legs while sitting)
 
+	public final static double WAITING_BUG_THRESHOLD_COUNTER = 100; // number of waiting elements before skipping.
+
+	public final static double COVID_EXPOSURE_TRESHOLD = 2.0; // meters
+
+	public final static boolean ACTIVATE_CONTACT_TRACING = false;
+
 	private final static int PIXELS_FOR_WAY = 7;
 
 	private int overheadBinFull = 0, stepIndex = 0;
@@ -71,15 +74,14 @@ public class Agent implements Runnable {
 	private Thread thread;
 	private Path path;
 
-	private final double scale;
-	private final double waitingTimeAfterCollision;
-
 	private final Passenger passenger;
 	private Passenger blocker;
 	private AgentShapeHandler shapeHandler;
 
 	private List<Double> speedOnPath = new ArrayList<>();
 	private SimulationHandler handler;
+
+	private final ContactTracingHandler contactTracingHandler;
 
 	/**
 	 * Creates an agent handler object
@@ -98,16 +100,14 @@ public class Agent implements Runnable {
 		this.passenger = passenger;
 		this.passenger.setState(State.NOT_ACTIVE);
 
-		scale = handler.getSettings().getSimulationGridResolution();
-
 		this.passenger.setStartPosition(start);
 		this.passenger.setGoalPosition(goal);
 
-		waitingTimeAfterCollision = handler.getSettings().getPassengerProperties()
-				.getPassivePassengerWaitingTimeAfterCollision();
-
 		/* Generate the shapes and calculate the resulting areas for each layer */
 		shapeHandler = new AgentShapeHandler(this);
+
+		contactTracingHandler = ACTIVATE_CONTACT_TRACING ? new ContactTracingHandler(passenger) : null;
+
 	}
 
 	/**
@@ -128,197 +128,12 @@ public class Agent implements Runnable {
 
 	public void blockArea(EPoint vector, boolean occupy, boolean changePosition) {
 
-		/*
-		 * makes sure that the shape of the passenger is blocked too when luggage is
-		 * stowed on the first step
-		 */
-		if (stepIndex == 0 && occupy == true) {
-			changePosition = true;
-		}
+		AgentFunctions.adaptShape(stepIndex, occupy, changePosition, this);
+		AgentFunctions.blockShape(shapeHandler.getModifiedShape(), vector, occupy, changePosition, this);
 
-		// Apply rotation and shape
-		if (occupy) {
-
-			switch (passenger.getState()) {
-			case CABIN_LEFT:
-				break;
-
-			case CALCULATE_NEW_PATH:
-				break;
-
-			case CLEAR_ROW:
-				break;
-
-			case FOLLOW_PATH:
-				shapeHandler.setCurrentShape(shapeHandler.getInfluenceArea(Influence.WALKING));
-				break;
-
-			case NOT_ACTIVE:
-				break;
-
-			case PREPARE:
-				break;
-
-			case QUEUE_UP:
-				shapeHandler.setCurrentShape(shapeHandler.getInfluenceArea(Influence.STANDING));
-				break;
-
-			case RETRIEVE_LUGGAGE:
-				shapeHandler.setCurrentShape(shapeHandler.getInfluenceArea(Influence.STANDING));
-				break;
-
-			case RETURN_TO_SEAT:
-				break;
-
-			case SEATED:
-				shapeHandler.setCurrentShape(shapeHandler.getInfluenceArea(Influence.SITTING));
-				break;
-
-			case STOW_LUGGAGE:
-				shapeHandler.setCurrentShape(shapeHandler.getInfluenceArea(Influence.STANDING));
-				break;
-
-			case UNFOLD_SEAT:
-				shapeHandler.setCurrentShape(shapeHandler.getInfluenceArea(Influence.STANDING));
-				break;
-
-			case WAIT_FOR_OTHER_PASSENGER_TO_SEAT:
-				shapeHandler.setCurrentShape(shapeHandler.getInfluenceArea(Influence.STANDING));
-				break;
-
-			case WAIT_FOR_ROW_CLEARING:
-				shapeHandler.setCurrentShape(shapeHandler.getInfluenceArea(Influence.STANDING));
-				break;
-
-			default:
-				break;
-
-			}
-
-			if (stepIndex <= 1 && handler.getSettings().getSimulationType() == SimulationType.BOARDING) {
-
-				// rotate the shape if for the first two steps, assign the rotation between the
-				// first two points to avoid door blocking 1.
-				shapeHandler.setModifiedShape(Rotator.rotate(
-						PassengerExtensions.getRotation(EPointExtensions.transformIntVector(path.get(0).getPosition()),
-								EPointExtensions.transformIntVector(path.get(1).getPosition())),
-						shapeHandler.getCurrentShape()));
-
-			} else if (changePosition) {
-
-				// else if standard rotating process while walking 2
-				shapeHandler.setModifiedShape(
-						Rotator.rotate(PassengerExtensions.getRotation(passenger), shapeHandler.getCurrentShape()));
-
-			} else if (passenger.getState() != State.SEATED) {
-
-				// else if rotating process when only the influence area gets changed
-				shapeHandler.setModifiedShape(Rotator.rotate(PassengerExtensions.getRotation(
-						EPointExtensions.transformIntVector(path.get(stepIndex - 2).getPosition()),
-						passenger.getCurrentPosition()), shapeHandler.getCurrentShape()));
-
-			} else {
-
-				// else influence area sitting (The influence area is symmetric, so the
-				// orientation of the seat does not matter.
-				shapeHandler.setModifiedShape(Rotator.rotate(90, shapeHandler.getCurrentShape()));
-			}
-		}
-
-		// if no rotation is needed or possible, skip the rotation process and assign
-		// the basic layout to the object.
-
-		if (shapeHandler.getModifiedShape() == null) {
-			if (Math.max(shapeHandler.getInfluenceArea(Influence.STANDING).length,
-					shapeHandler.getInfluenceArea(Influence.STANDING)[0].length) > Math.max(
-							shapeHandler.getInfluenceArea(Influence.WALKING).length,
-							shapeHandler.getInfluenceArea(Influence.WALKING)[0].length)) {
-
-				shapeHandler.setModifiedShape(shapeHandler.getInfluenceArea(Influence.STANDING));
-
-			} else {
-				shapeHandler.setModifiedShape(shapeHandler.getInfluenceArea(Influence.WALKING));
-			}
-		}
-
-		/*
-		 * this is the dimension you need to go in every direction from the starting
-		 * point. It is half the way back in every dimension.
-		 */
-		int scanDimension = (int) (Math.max(shapeHandler.getModifiedShape().length,
-				shapeHandler.getModifiedShape()[0].length) / 2.0);
-
-		/* loop through the whole passenger area in the area map */
-		for (int x = -scanDimension; x <= scanDimension; x++) {
-			for (int y = -scanDimension; y <= scanDimension; y++) {
-
-				/* the location currently under investigation */
-				IntVector location = new IntVector(BHLMath.toInt(vector.getX()) + x, BHLMath.toInt(vector.getY()) + y);
-
-				/* if the point is within the bounds of the passenger area */
-				if (x + scanDimension < shapeHandler.getModifiedShape().length
-						&& y + scanDimension < shapeHandler.getModifiedShape()[0].length) {
-
-					/*
-					 * if the passenger area has a passenger located on this specific node
-					 */
-					if (shapeHandler.getModifiedShape()[x + scanDimension][y + scanDimension] == 100
-							&& changePosition) {
-
-						handler.getMap().get(location).ifPresent(node -> {
-
-							/* check if the node is no obstacle */
-							if (node.getProperty(Layer.ASTAR) == Property.FREE) {
-
-								if (node.getPassenger() == null || node.getPassenger().getId() == passenger.getId()) {
-
-									/* block or unblock the node */
-									if (occupy) {
-
-										/* check if the node is empty */
-										node.setPassenger(passenger);
-
-									} else {
-
-										/* During unblocking, check if the node is empty */
-										node.setProperty(Property.FREE, Layer.ASTAR);
-										node.setPassenger(null);
-									}
-								}
-							}
-						});
-
-						/*
-						 * if the passenger area has an influence value on this specific node
-						 */
-					} else if (shapeHandler.getModifiedShape()[x + scanDimension][y + scanDimension] != 0
-							&& shapeHandler.getModifiedShape()[x + scanDimension][y + scanDimension] != 100) {
-
-						if (handler.getMap().get(location).isPresent()) {
-
-							Node node = handler.getMap().get(location).get();
-
-							/* check if the node is no obstacle */
-							if (node.getProperty(Layer.ASTAR) == Property.FREE) {
-
-								/* add or remove the influence value */
-								if (occupy) {
-
-									// create an new influencer object and add it to the node
-
-									node.influencingPassengers.put(this,
-											shapeHandler.getModifiedShape()[x + scanDimension][y + scanDimension]);
-
-								} else {
-									// remove the influencer object from the nodes list
-									node.influencingPassengers.remove(this);
-								}
-							}
-						}
-
-					}
-				}
-			}
+		if (ACTIVATE_CONTACT_TRACING) {
+			AgentFunctions.blockContactTracingShape(shapeHandler.getInfluenceArea(Influence.COVID), vector, occupy,
+					this);
 		}
 	}
 
@@ -422,6 +237,8 @@ public class Agent implements Runnable {
 				// if the walking speed is zero, run collision as long as it remains zero
 				double currentWalkingSpeed = AgentSpeedHandler.getSpeed(this);
 
+				int counter = 0;
+
 				while (currentWalkingSpeed <= 0) {
 
 					Collision.run(this);
@@ -432,6 +249,14 @@ public class Agent implements Runnable {
 
 					accelerationFactor = 0.4;
 					currentWalkingSpeed = AgentSpeedHandler.getSpeed(this);
+
+					if (counter > WAITING_BUG_THRESHOLD_COUNTER) {
+						currentWalkingSpeed = 0.01;
+						System.err.println("\n--------- Force stop waiting of agent! ---------");
+						break;
+					}
+
+					counter++;
 				}
 
 				/*
@@ -440,11 +265,14 @@ public class Agent implements Runnable {
 				 * walking speed) which is equal to a standard step length)
 				 */
 				if (accelerationFactor < 1.0) {
-					accelerationFactor += scale;
+					accelerationFactor += handler.getSettings().getSimulationGridResolution();
 				}
 
+				double stepDuration = 1.0 / (currentWalkingSpeed * accelerationFactor)
+						* handler.getSettings().getSimulationGridResolution();
+
 				// if there is no obstacle or luggage stowing required, run the default step
-				Step.run(this);
+				Step.run(this, stepDuration);
 
 				// then perform the step
 				stepIndex++;
@@ -456,7 +284,7 @@ public class Agent implements Runnable {
 				speedOnPath.add(currentWalkingSpeed / passenger.getWalkingSpeed());
 
 				// sleep as long as one step takes
-				Thread.sleep(time(1 / (currentWalkingSpeed * accelerationFactor) * scale));
+				Thread.sleep(getSimulationTimeFor(stepDuration));
 
 			}
 
@@ -642,15 +470,6 @@ public class Agent implements Runnable {
 	}
 
 	/**
-	 * Gets the waiting time after collision.
-	 *
-	 * @return the waiting time after collision
-	 */
-	public double getWaitingTimeAfterCollision() {
-		return waitingTimeAfterCollision;
-	}
-
-	/**
 	 * Goal reached.
 	 *
 	 * @return true
@@ -709,8 +528,11 @@ public class Agent implements Runnable {
 	 *         seat
 	 */
 	public boolean isPassengerReadyToStowLuggageInRow() {
-		return Distance.distanceBetween(SeatExtensions.getPosition(passenger.getSeat()).getX() / scale, 0,
-				passenger.getDesiredPosition().getX(), 0) <= passenger.getLuggage().get(0).getStowDistance() / scale;
+		return Distance.distanceBetween(
+				SeatExtensions.getPosition(passenger.getSeat()).getX()
+						/ handler.getSettings().getSimulationGridResolution(),
+				0, passenger.getDesiredPosition().getX(), 0) <= passenger.getLuggage().get(0).getStowDistance()
+						/ handler.getSettings().getSimulationGridResolution();
 	}
 
 	/**
@@ -721,8 +543,11 @@ public class Agent implements Runnable {
 	public boolean isPassengerReadyToUnfoldsSeat() {
 		return (passenger.getSeat().getSeatType() == SeatType.SIDEWAYS_FOLDABLE
 				|| passenger.getSeat().getSeatType() == SeatType.LIFTING_SEAT_PAN)
-				&& Distance.distanceBetween(SeatExtensions.getPosition(passenger.getSeat()).getX() / scale, 0,
-						passenger.getDesiredPosition().getX(), 0) <= 10 / scale;
+				&& Distance.distanceBetween(
+						SeatExtensions.getPosition(passenger.getSeat()).getX()
+								/ handler.getSettings().getSimulationGridResolution(),
+						0, passenger.getDesiredPosition().getX(),
+						0) <= 10 / handler.getSettings().getSimulationGridResolution();
 	}
 
 	/**
@@ -742,7 +567,13 @@ public class Agent implements Runnable {
 				passenger.getSpeedOnPath().clear();
 				passenger.getSpeedOnPath().addAll(speedOnPath);
 				stopBoardingStatistics();
+
+				if (ACTIVATE_CONTACT_TRACING) {
+					contactTracingHandler.evaluateContactTracing(handler.getSettings().getSimulationSpeedFactor());
+				}
+
 				return true;
+
 			}
 
 		} else {
@@ -809,7 +640,7 @@ public class Agent implements Runnable {
 
 		// sleep the thread as long as the boarding delay requires it
 		if (passenger.getStartBoardingAfterDelay() != 0) {
-			Thread.sleep(time(passenger.getStartBoardingAfterDelay()));
+			Thread.sleep(getSimulationTimeFor(passenger.getStartBoardingAfterDelay()));
 		}
 
 		// Check if access is granted
@@ -1030,8 +861,10 @@ public class Agent implements Runnable {
 	 */
 	private boolean waitingForClearingOfRow() {
 
-		if ((int) Distance.distanceBetween(SeatExtensions.getPosition(passenger.getSeat()).getX() / scale, 0,
-				passenger.getDesiredPosition().getX(), 0) == Agent.PIXELS_FOR_WAY) {
+		if ((int) Distance.distanceBetween(
+				SeatExtensions.getPosition(passenger.getSeat()).getX()
+						/ handler.getSettings().getSimulationGridResolution(),
+				0, passenger.getDesiredPosition().getX(), 0) == Agent.PIXELS_FOR_WAY) {
 
 			return AgentFunctions.someoneAlreadyInThisPartOfTheRow(this);
 		}
@@ -1039,13 +872,13 @@ public class Agent implements Runnable {
 	}
 
 	/**
-	 * @param timeInSeconds
+	 * @param realTimeInSeconds
 	 * @return
 	 */
-	public int time(double timeInSeconds) {
+	public int getSimulationTimeFor(double realTimeInSeconds) {
 
 		// Calculate delay in milliseconds
-		double real = timeInSeconds * 1000.0 / handler.getSettings().getSimulationSpeedFactor();
+		double real = realTimeInSeconds * 1000.0 / handler.getSettings().getSimulationSpeedFactor();
 
 		// Check if delay is so small that it cannot be differentiated anymore
 		if (real < 1.5) {
@@ -1084,4 +917,7 @@ public class Agent implements Runnable {
 		return shapeHandler;
 	}
 
+	public ContactTracingHandler getContactTracingHandler() {
+		return contactTracingHandler;
+	}
 }

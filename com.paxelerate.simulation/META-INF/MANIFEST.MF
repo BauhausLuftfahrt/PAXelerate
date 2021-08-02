@@ -3,9 +3,9 @@ Bundle-ManifestVersion: 2
 Bundle-Name: PAXeleate - Core Simulation
 Bundle-SymbolicName: com.paxelerate.simulation
 Bundle-Version: 1.0.0.qualifier
-Export-Package: com.paxelerate.core.sim.agent,
- com.paxelerate.core.sim.agent.action,
- com.paxelerate.core.sim.astar
+Export-Package: com.paxelerate.core.simulation.agent,
+ com.paxelerate.core.simulation.agent.action,
+ com.paxelerate.core.simulation.astar
 Automatic-Module-Name: com.paxelerate.core.sim
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: com.paxelerate.model,

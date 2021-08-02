@@ -4,7 +4,7 @@
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
 
-package com.paxelerate.core.sim.astar;
+package com.paxelerate.core.simulation.astar;
 
 import java.util.ArrayList;
 import java.util.Collections;

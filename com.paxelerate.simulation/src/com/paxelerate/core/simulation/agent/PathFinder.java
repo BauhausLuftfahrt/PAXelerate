@@ -3,12 +3,12 @@
  * materials are made available under the terms of the GNU General Public License v3.0 which accompanies this distribution,
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
-package com.paxelerate.core.sim.agent;
+package com.paxelerate.core.simulation.agent;
 
-import com.paxelerate.core.sim.astar.AStar;
-import com.paxelerate.core.sim.astar.Areamap;
-import com.paxelerate.core.sim.astar.Costmap;
-import com.paxelerate.core.sim.astar.Path;
+import com.paxelerate.core.simulation.astar.AStar;
+import com.paxelerate.core.simulation.astar.Areamap;
+import com.paxelerate.core.simulation.astar.Costmap;
+import com.paxelerate.core.simulation.astar.Path;
 import com.paxelerate.model.enums.State;
 import com.paxelerate.model.extensions.EPointExtensions;
 

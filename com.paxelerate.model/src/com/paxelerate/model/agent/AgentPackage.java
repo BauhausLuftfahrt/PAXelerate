@@ -400,13 +400,58 @@ public interface AgentPackage extends EPackage {
 	int PASSENGER__HEIGHT_TOP = 36;
 
 	/**
+	 * The feature id for the '<em><b>Covid Total Number Of Contacts</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__COVID_TOTAL_NUMBER_OF_CONTACTS = 37;
+
+	/**
+	 * The feature id for the '<em><b>Covid Average Distance To Passengers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__COVID_AVERAGE_DISTANCE_TO_PASSENGERS = 38;
+
+	/**
+	 * The feature id for the '<em><b>Covid Minimum Distance To Passengers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__COVID_MINIMUM_DISTANCE_TO_PASSENGERS = 39;
+
+	/**
+	 * The feature id for the '<em><b>Covid Average Duration Of Contacts</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__COVID_AVERAGE_DURATION_OF_CONTACTS = 40;
+
+	/**
+	 * The feature id for the '<em><b>Covid Maximum Duration Of Contact</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER__COVID_MAXIMUM_DURATION_OF_CONTACT = 41;
+
+	/**
 	 * The number of structural features of the '<em>Passenger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PASSENGER_FEATURE_COUNT = 37;
+	int PASSENGER_FEATURE_COUNT = 42;
 
 	/**
 	 * The number of operations of the '<em>Passenger</em>' class.
@@ -908,6 +953,61 @@ public interface AgentPackage extends EPackage {
 	EAttribute getPassenger_HeightTop();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.paxelerate.model.agent.Passenger#getCovidTotalNumberOfContacts <em>Covid Total Number Of Contacts</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Covid Total Number Of Contacts</em>'.
+	 * @see com.paxelerate.model.agent.Passenger#getCovidTotalNumberOfContacts()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_CovidTotalNumberOfContacts();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.paxelerate.model.agent.Passenger#getCovidAverageDistanceToPassengers <em>Covid Average Distance To Passengers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Covid Average Distance To Passengers</em>'.
+	 * @see com.paxelerate.model.agent.Passenger#getCovidAverageDistanceToPassengers()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_CovidAverageDistanceToPassengers();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.paxelerate.model.agent.Passenger#getCovidMinimumDistanceToPassengers <em>Covid Minimum Distance To Passengers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Covid Minimum Distance To Passengers</em>'.
+	 * @see com.paxelerate.model.agent.Passenger#getCovidMinimumDistanceToPassengers()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_CovidMinimumDistanceToPassengers();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.paxelerate.model.agent.Passenger#getCovidAverageDurationOfContacts <em>Covid Average Duration Of Contacts</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Covid Average Duration Of Contacts</em>'.
+	 * @see com.paxelerate.model.agent.Passenger#getCovidAverageDurationOfContacts()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_CovidAverageDurationOfContacts();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.paxelerate.model.agent.Passenger#getCovidMaximumDurationOfContact <em>Covid Maximum Duration Of Contact</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Covid Maximum Duration Of Contact</em>'.
+	 * @see com.paxelerate.model.agent.Passenger#getCovidMaximumDurationOfContact()
+	 * @see #getPassenger()
+	 * @generated
+	 */
+	EAttribute getPassenger_CovidMaximumDurationOfContact();
+
+	/**
 	 * Returns the meta object for class '{@link com.paxelerate.model.agent.Luggage <em>Luggage</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1300,6 +1400,50 @@ public interface AgentPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PASSENGER__HEIGHT_TOP = eINSTANCE.getPassenger_HeightTop();
+
+		/**
+		 * The meta object literal for the '<em><b>Covid Total Number Of Contacts</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__COVID_TOTAL_NUMBER_OF_CONTACTS = eINSTANCE.getPassenger_CovidTotalNumberOfContacts();
+
+		/**
+		 * The meta object literal for the '<em><b>Covid Average Distance To Passengers</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__COVID_AVERAGE_DISTANCE_TO_PASSENGERS = eINSTANCE
+				.getPassenger_CovidAverageDistanceToPassengers();
+
+		/**
+		 * The meta object literal for the '<em><b>Covid Minimum Distance To Passengers</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__COVID_MINIMUM_DISTANCE_TO_PASSENGERS = eINSTANCE
+				.getPassenger_CovidMinimumDistanceToPassengers();
+
+		/**
+		 * The meta object literal for the '<em><b>Covid Average Duration Of Contacts</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__COVID_AVERAGE_DURATION_OF_CONTACTS = eINSTANCE
+				.getPassenger_CovidAverageDurationOfContacts();
+
+		/**
+		 * The meta object literal for the '<em><b>Covid Maximum Duration Of Contact</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER__COVID_MAXIMUM_DURATION_OF_CONTACT = eINSTANCE
+				.getPassenger_CovidMaximumDurationOfContact();
 
 		/**
 		 * The meta object literal for the '{@link com.paxelerate.model.agent.impl.LuggageImpl <em>Luggage</em>}' class.

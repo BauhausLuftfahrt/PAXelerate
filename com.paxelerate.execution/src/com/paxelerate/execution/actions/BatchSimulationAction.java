@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.paxelerate.core.sim.astar.Areamap;
+import com.paxelerate.core.simulation.astar.Areamap;
 import com.paxelerate.execution.init.BoardingDelayCalculator;
 import com.paxelerate.model.Model;
 import com.paxelerate.model.ModelFactory;
@@ -121,7 +121,7 @@ public interface BatchSimulationAction {
 				BoardingDelayCalculator.calculateDelay(model.getDeck().getDoors(), model.getDeck().getPassengers());
 
 				// Run the simulation
-				new SimulateBoardingAction(model.getDeck(), i, map, cpacsFile.getName(), study);
+				new SimulateBoardingAction(model.getDeck(), i, map, cpacsFile.getName(), study, iterations);
 
 				simTimer.stop();
 				Log.endWithNoStart(simTimer);
