@@ -157,7 +157,7 @@ public class SimulateBoardingAction {
 
 		/* Show WIP simulation view */
 		if (study.getDisplaySimulation().isValue()) {
-			runAreaMapWindow(handler, iteration, iMax);
+			runAreaMapWindow(handler, iteration, iMax, study.getUID());
 		}
 
 		// Log the current state of the simulation every 10 "simulation seconds".
@@ -208,12 +208,12 @@ public class SimulateBoardingAction {
 	/**
 	 *
 	 */
-	private void runAreaMapWindow(SimulationHandler handler, int i, int iMax) {
+	private void runAreaMapWindow(SimulationHandler handler, int i, int iMax, String name) {
 		SwingUtilities.invokeLater(() -> {
 
 			try {
 
-				frame = new JFrame("Simulation View");
+				frame = new JFrame("PAXelerate Boarding Simulation (\"" + name + "\")");
 
 				SimulationView simulationView = new SimulationView(handler);
 				simulationView.setAreamap(handler.getMap(), i, iMax);

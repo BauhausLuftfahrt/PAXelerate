@@ -55,6 +55,8 @@ public class Agent implements Runnable {
 	public final static double INFLUENCE_AREA_SITTING = 0.2; // meters
 	public final static double ADDING_DEPTH_SITTING = 0.4; // meters (adding shape representing legs while sitting)
 
+	public final static double WAITING_BUG_THRESHOLD_COUNTER = 100; // number of waiting elements before skipping.
+
 	public final static double COVID_EXPOSURE_TRESHOLD = 2.0; // meters
 
 	public final static boolean ACTIVATE_CONTACT_TRACING = true;
@@ -248,7 +250,7 @@ public class Agent implements Runnable {
 					accelerationFactor = 0.4;
 					currentWalkingSpeed = AgentSpeedHandler.getSpeed(this);
 
-					if (counter > 100) {
+					if (counter > WAITING_BUG_THRESHOLD_COUNTER) {
 						currentWalkingSpeed = 0.01;
 						System.err.println("\n--------- Force stop waiting of agent! ---------");
 						break;
