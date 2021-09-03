@@ -28,6 +28,7 @@ import com.paxelerate.model.Model;
 import com.paxelerate.model.agent.Passenger;
 import com.paxelerate.model.enums.SimulationType;
 import com.paxelerate.model.enums.State;
+import com.paxelerate.model.extensions.SeatExtensions;
 import com.paxelerate.model.settings.Settings;
 
 import net.bhl.opensource.toolbox.emf.CSVExport;
@@ -121,7 +122,7 @@ public class SimulateBoardingAction {
 					passenger.getSpeedOnPath().clear();
 					csv.addAll(passenger);
 					DataSet ds = new DataSet();
-					ds.put("Seat", passenger.getSeat().getId());
+					ds.put("Seat", SeatExtensions.getName(passenger.getSeat()));
 					ds.put("Door", passenger.getDoor().getId());
 					csv.add(ds, false);
 				}

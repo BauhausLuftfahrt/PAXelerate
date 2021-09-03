@@ -9,6 +9,7 @@ import com.paxelerate.model.EPoint;
 import com.paxelerate.model.enums.SeatLocation;
 import com.paxelerate.model.enums.TravelClass;
 import com.paxelerate.model.monuments.MonumentsFactory;
+import com.paxelerate.model.monuments.Row;
 import com.paxelerate.model.monuments.Seat;
 import com.paxelerate.model.monuments.SeatGroup;
 
@@ -39,6 +40,14 @@ public interface SeatExtensions {
 		seat.setLetter(letter);
 		seat.setSeatLocation(location);
 		return seat;
+	}
+
+	/**
+	 * @param seat
+	 * @return
+	 */
+	static String getName(Seat seat) {
+		return RowExtensions.getRowNumber(EObjectHelper.getParent(Row.class, seat)) + "" + seat.getLetter();
 	}
 
 	/**
