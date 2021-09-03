@@ -10,6 +10,7 @@ Due to the reworking of the entire project, there is currently no client version
 * Removal of custom EMF aircraft model library
 * Introduction of CPACS as input data structure
 * Focus on boarding simulation, hence removal of UI and cabin configuration options for now
+* Introduction of COVID-19 exposure tracking
 
 ## Installation
 
@@ -32,7 +33,7 @@ Due to the reworking of the entire project, there is currently no client version
 
 ## Contributors 
 
-Marc Engelmann, Tim Kleinheinz, Michael Schmidt, Raoul Rothfeld, Michael Shamiyeh , Martin Glas, Tobias Brügge-Zobel, Stefan Weber, Pedro Martinez and Philipp Osterrieder. *(listed in order of activity)*
+Marc Engelmann, Tim Kleinheinz, Michael Schmidt, Raoul Rothfeld, Michael Shamiyeh, Martin Glas, Tobias Brügge-Zobel, Stefan Weber, Pedro Martinez and Philipp Osterrieder. *(listed in order of activity)*
 
 ## About
 

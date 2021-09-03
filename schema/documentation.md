@@ -44,7 +44,7 @@ displaySimulation                   |   Show simulation UI or not               
 seatType (**non-functional!**)      |   Seat type used                              |   enum    |   DEFAULT, SIDEWAYS_FOLDABLE, LIFTING_SEAT_PAN *or* BRING_YOUR_OWN 
 simulationGridResolution            |   Grid resolution in x by x meters per node   |   double  |   > 0.1m 
 simulationSpeedFactor               |   Simulation speed factor (1.0 is realtime)   |   double  |   > 0.0
-passengerSortingScheme (*see below*)|   Sorted boarding order                       |   enum    |   RANDOM, RTF, FTR, WTA, WTA_RTF, WTA_FTR, BLOCK, BOARDING_CLASS_RANDOM, STEFFEN, MILNE_KELLY, BIG_BAGS_AFT, BIG_BAGS_FRONT, MAX_BAGS_AFT *or* MAX_BAGS_FRONT
+passengerSortingScheme (*see below*)|   Sorted boarding order                       |   enum    |   RANDOM, RTF, FTR, WTA, WTA_RTF, WTA_FTR, BLOCK, BOARDING_CLASS, STEFFEN, MILNE_KELLY, BIG_BAGS_AFT, BIG_BAGS_FRONT, MAX_BAGS_AFT *or* MAX_BAGS_FRONT
 doorSelection                       |   Door assignment for passengers              |   enum    |   CLOSEST, CLOSEST_BEHIND, CLOSEST_FRONT *or* RANDOM
 percentageOfPassengersWithJackets   |   Share of passengers with jackets only       |   double  |   % from 0 - 100 (total < 100, 100 - total = noLuggage) 
 percentageOfPassengersWithSmallBags |   Share of passengers with small luggage only |   double  |   % from 0 - 100 (total < 100, 100 - total = noLuggage) 
@@ -62,7 +62,7 @@ WTA                     |   Boarding from **w**indow **t**o **a**isle, with sequ
 WTA_RTF                 |   Boarding from window to aisle combined with rear to front 
 WTA_FTR                 |   Boarding from window to aisle combined with front to rear
 BLOCK                   |   Boarding in blocks, with number of blocks is defined in the simulation settings
-BOARDING_CLASS_RANDOM   |   Boarding by class with a random order within
+BOARDING_CLASS          |   Boarding by class with a random order within
 STEFFEN                 |   Boarding according to the custom sequence invented by Steffen
 MILNE_KELLY             |   Boarding according to the custom sequence invented by Milne and Kelly
 BIG_BAGS_AFT            |   Boarding with an ascending luggage volume towards the rear
