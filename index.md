@@ -28,7 +28,7 @@ At Bauhaus Luftfahrt e.V. since 2014. First as Master's student, now as research
 Following is a list of research publications related to PAXelerate. An overview of the PAXelerate research project progess can be found on [ResearchGate](https://www.researchgate.net/project/PAXelerate-An-open-source-passenger-flow-simulation-framework-for-advanced-aircraft-cabin-layouts).
 
 ### 2021
-* Engelmann, M.; Hornung, M. (2021): [Boarding Assessment and COVID-19 Considerations for the AVACON Aircraft Cabin Concepts](https://publikationen.dglr.de/?tx_dglrpublications_pi1%5bdocument_id%5d=550012). Deutsche Gesellschaft für Luft- und Raumfahrt - Lilienthal-Oberth e.V.. (Text). https://doi.org/10.25967/550012. urn:nbn:de:101:1-2021100112424971649169. 
+* Engelmann, M.; Hornung, M. (2021): [Boarding Assessment and COVID-19 Considerations for the AVACON Aircraft Cabin Concepts](https://publikationen.dglr.de/?tx_dglrpublications_pi1%5bdocument_id%5d=550012). Deutsche Gesellschaft für Luft- und Raumfahrt - Lilienthal-Oberth e.V.. (Text). https://doi.org/10.25967/550012
 
 ### 2020
 
