@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description">
-  <viewpoint:DAnalysis uid="_aiZi0Bq3EeuvjdfF_b6f9w" selectedViews="_akfNgBq3EeuvjdfF_b6f9w" version="14.3.1.202003261200">
+  <viewpoint:DAnalysis uid="_aiZi0Bq3EeuvjdfF_b6f9w" selectedViews="_akfNgBq3EeuvjdfF_b6f9w" version="14.5.1.202106111100">
     <semanticResources>model.ecore</semanticResources>
     <semanticResources>model.genmodel</semanticResources>
+    <semanticResources>toolspecific.xsd</semanticResources>
+    <semanticResources>bundleentry://842.fwk736164800/cache/www.w3.org/2001/XMLSchema-instance.xsd</semanticResources>
+    <semanticResources>bundleentry://842.fwk736164800/cache/www.w3.org/2001/XMLSchema.xsd</semanticResources>
+    <semanticResources>http://www.w3.org/2001/xml.xsd</semanticResources>
+    <semanticResources>bundleentry://842.fwk736164800/cache/www.w3.org/2001/MagicXMLSchema.xsd</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_akfNgBq3EeuvjdfF_b6f9w">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_aoEtARq3EeuvjdfF_b6f9w" name="model" repPath="#_alQCgBq3EeuvjdfF_b6f9w" changeId="fb859670-d448-4e71-a6a7-9714ab0e7e52">

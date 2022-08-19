@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<cpacs>
+<cpacs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="file:c:/blade/cpacs-schema/bhl_cpacs_schema.xsd"
+       xsi:schemaLocation="paxelerate ../cpacs_schema/toolspecific.xsd">
     <header>
-        <name>Demo CPACS cabin created with "CAFE - Cabin and Fuselage Desiner" by Bauhaus Luftfahrt</name>
+        <name>Demo CPACS cabin created with "CAFE - Cabin and Fuselage Environment" by Bauhaus Luftfahrt</name>
         <creator>Marc Engelmann</creator>
         <timestamp>2021-03-16T15:17:11.696</timestamp>
         <version>1.0</version>
@@ -12,17 +13,17 @@
             <model uID="paxelerate_cpacs_demo">
                 <name>PAXelerate demo aircraft</name>
                 <fuselages>
-                    <fuselage>
+                    <fuselage uID="MainFuselage">
                         <decks>
                             <deck uID="main_deck">
                                 <name>Main Deck</name>
                                 <x0>0.0</x0>
                                 <z0>0.0</z0>
-                                <cabGeometry>
+                                <cabGeometry uID="main_deck_shape">
                                     <name>Main Deck</name>
                                     <x mapType="vector">0.0;14.23</x>
                                     <z mapType="vector">0.0;2.15</z>
-                                    <yZ1 mapType="vector">1.35;1.35</yZ1>
+                                    <y mapType="vector">1.35;1.35</y>
                                 </cabGeometry>
                                 <aisles>
                                     <aisle uID="aisle_693543">
@@ -398,44 +399,46 @@
     </vehicles>
     <toolspecific>
         <tool>
-            <name>PAXelerate Boarding Simulation</name>
+            <name>paxelerate</name>
             <version>1.0</version>
-            <input>
-                <studies>
-                    <study uID="random">      
-                        <loadFactor>1.0</loadFactor>
-                        <activeDoorUIDs>1</activeDoorUIDs>
-                        <iterations>1</iterations> 
-                        <simulationType>BOARDING</simulationType> 
-                        <displaySimulation>True</displaySimulation>
-                        <seatType>DEFAULT</seatType>
-                        <simulationGridResolution>0.1</simulationGridResolution>
-                        <simulationSpeedFactor>40</simulationSpeedFactor>
-                        <passengerSortingScheme>RANDOM</passengerSortingScheme>
-                        <doorSelection>CLOSEST</doorSelection>
-                        <percentageOfPassengersWithJackets>0</percentageOfPassengersWithJackets>
-                        <percentageOfPassengersWithSmallBags>20</percentageOfPassengersWithSmallBags>
-                        <percentageOfPassengersWithMediumBags>50</percentageOfPassengersWithMediumBags>   
-                        <percentageOfPassengersWithLargeBags>30</percentageOfPassengersWithLargeBags> 
-                    </study>
-                    <study uID="front_to_rear">      
-                        <loadFactor>1.0</loadFactor>
-                        <activeDoorUIDs>1</activeDoorUIDs>
-                        <iterations>1</iterations> 
-                        <simulationType>BOARDING</simulationType> 
-                        <displaySimulation>True</displaySimulation>
-                        <seatType>DEFAULT</seatType>
-                        <simulationGridResolution>0.1</simulationGridResolution>
-                        <simulationSpeedFactor>40</simulationSpeedFactor>
-                        <passengerSortingScheme>FTR</passengerSortingScheme>
-                        <doorSelection>CLOSEST</doorSelection>
-                        <percentageOfPassengersWithJackets>0</percentageOfPassengersWithJackets>
-                        <percentageOfPassengersWithSmallBags>0</percentageOfPassengersWithSmallBags>
-                        <percentageOfPassengersWithMediumBags>0</percentageOfPassengersWithMediumBags>   
-                        <percentageOfPassengersWithLargeBags>0</percentageOfPassengersWithLargeBags> 
-                    </study>
-                </studies>
-            </input>
+            <content xmlns="paxelerate">
+                <input>
+                    <studies>
+                        <study uID="random">
+                            <loadFactor>1.0</loadFactor>
+                            <activeDoorUIDs>1</activeDoorUIDs>
+                            <iterations>1</iterations>
+                            <simulationType>BOARDING</simulationType>
+                            <displaySimulation>true</displaySimulation>
+                            <seatType>DEFAULT</seatType>
+                            <simulationGridResolution>0.1</simulationGridResolution>
+                            <simulationSpeedFactor>40</simulationSpeedFactor>
+                            <passengerSortingScheme>RANDOM</passengerSortingScheme>
+                            <doorSelection>CLOSEST</doorSelection>
+                            <percentageOfPassengersWithJackets>0</percentageOfPassengersWithJackets>
+                            <percentageOfPassengersWithSmallBags>20</percentageOfPassengersWithSmallBags>
+                            <percentageOfPassengersWithMediumBags>50</percentageOfPassengersWithMediumBags>
+                            <percentageOfPassengersWithLargeBags>30</percentageOfPassengersWithLargeBags>
+                        </study>
+                        <study uID="front_to_rear">
+                            <loadFactor>1.0</loadFactor>
+                            <activeDoorUIDs>1</activeDoorUIDs>
+                            <iterations>1</iterations>
+                            <simulationType>BOARDING</simulationType>
+                            <displaySimulation>true</displaySimulation>
+                            <seatType>DEFAULT</seatType>
+                            <simulationGridResolution>0.1</simulationGridResolution>
+                            <simulationSpeedFactor>40</simulationSpeedFactor>
+                            <passengerSortingScheme>FTR</passengerSortingScheme>
+                            <doorSelection>CLOSEST</doorSelection>
+                            <percentageOfPassengersWithJackets>0</percentageOfPassengersWithJackets>
+                            <percentageOfPassengersWithSmallBags>0</percentageOfPassengersWithSmallBags>
+                            <percentageOfPassengersWithMediumBags>0</percentageOfPassengersWithMediumBags>
+                            <percentageOfPassengersWithLargeBags>0</percentageOfPassengersWithLargeBags>
+                        </study>
+                    </studies>
+                </input>
+            </content>
         </tool>
     </toolspecific>
 </cpacs>

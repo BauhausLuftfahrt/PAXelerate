@@ -31,7 +31,7 @@ import com.paxelerate.model.settings.PassengerProperties;
 
 import net.bhl.opensource.toolbox.emf.EObjectHelper;
 import net.bhl.opensource.toolbox.math.random.RandomHelper;
-import toolspecific.StudyType;
+import paxelerate.StudyType;
 
 /**
  * @author Marc.Engelmann, Michael.Schmidt

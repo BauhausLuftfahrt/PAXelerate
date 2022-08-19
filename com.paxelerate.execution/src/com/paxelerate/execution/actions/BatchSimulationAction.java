@@ -28,11 +28,12 @@ import com.paxelerate.model.settings.SettingsFactory;
 
 import Cpacs.CpacsType;
 import net.bhl.opensource.cpacs.functions.CPACSInitializer;
-import net.bhl.opensource.toolbox.emf.EObjectHelper;
+import net.bhl.opensource.cpacs.functions.CPACSWriter;
 import net.bhl.opensource.toolbox.io.Log;
 import net.bhl.opensource.toolbox.time.StopWatch;
-import toolspecific.StudyType;
-import toolspecific.ToolspecificFactory;
+import paxelerate.PaxelerateFactory;
+import paxelerate.PaxelerateType;
+import paxelerate.StudyType;
 
 /**
  * This interface runs a batch simulation by loading data from a CPACS and
@@ -53,12 +54,15 @@ public interface BatchSimulationAction {
 		Log.startWithNoEnd("Initializing");
 		StopWatch time = new StopWatch();
 
+		PaxelerateType tool = PaxelerateFactory.eINSTANCE.createPaxelerateType();
+
 		// Initialize the CPACS model
-		CpacsType cpacs = CPACSInitializer.runWithToolspecific(cpacsFile,
-				ToolspecificFactory.eINSTANCE.createPaxelerateType());
+		CpacsType cpacs = CPACSInitializer.runWithToolspecific(cpacsFile, tool);
+
+		System.out.println(CPACSWriter.toString(cpacs));
 
 		// Loop through the tool specific input studies
-		for (StudyType study : EObjectHelper.getChildren(cpacs.getToolspecific(), StudyType.class)) {
+		for (StudyType study : tool.getInput().getStudies().getStudy()) {
 
 			// Initialize model
 			Model model = ModelFactory.eINSTANCE.createModel();
@@ -72,26 +76,26 @@ public interface BatchSimulationAction {
 			// Set values from the CPACS input here
 			model.getSettings().setSimulationType(SimulationType.get(study.getSimulationType().getValue()));
 			model.getSettings().setSeatType(SeatType.get(study.getSeatType().getValue()));
-			model.getSettings().setSimulationGridResolution(study.getSimulationGridResolution().getValue());
-			model.getSettings().setSimulationSpeedFactor((int) study.getSimulationSpeedFactor().getValue());
+			model.getSettings().setSimulationGridResolution(study.getSimulationGridResolution());
+			model.getSettings().setSimulationSpeedFactor((int) study.getSimulationSpeedFactor());
 
 			model.getSettings().getPassengerProperties()
 					.setDoorSelection(DoorSelection.get(study.getDoorSelection().getValue()));
 
 			// Number of iterations
-			int iterations = study.getIterations().getValue().intValue();
+			int iterations = study.getIterations();
 
 			// Match data from CSV to EMF model and load passenger distribution
 			Map<TravelClass, Integer> amounts = new HashMap<>();
 
 			for (TravelClass tc : DeckExtensions.getExistingClasses(model.getDeck())) {
-				amounts.put(tc, (int) Math
-						.round(study.getLoadFactor().getValue() * DeckExtensions.getSeatPerClass(model.getDeck(), tc)));
+				amounts.put(tc,
+						(int) Math.round(study.getLoadFactor() * DeckExtensions.getSeatPerClass(model.getDeck(), tc)));
 			}
 
 			// Read the door IDs into a integer list.
-			List<Integer> activeDoors = Arrays.asList(String.valueOf(study.getActiveDoorUIDs().getValue()).split(";"))
-					.stream().mapToInt(Integer::valueOf).boxed().collect(Collectors.toList());
+			List<Integer> activeDoors = Arrays.asList(String.valueOf(study.getActiveDoorUIDs()).split(";")).stream()
+					.mapToInt(Integer::valueOf).boxed().collect(Collectors.toList());
 
 			// Loop through all the doors and look for the door IDs.
 			for (Door door : model.getDeck().getDoors()) {

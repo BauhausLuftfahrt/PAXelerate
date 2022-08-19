@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description">
-  <viewpoint:DAnalysis uid="_23gsUHKdEeuXIrhpyDm9qA" selectedViews="_3EbuAHKdEeuXIrhpyDm9qA" version="14.3.1.202003261200">
-    <semanticResources>paxelerateTS.ecore</semanticResources>
+  <viewpoint:DAnalysis uid="_23gsUHKdEeuXIrhpyDm9qA" selectedViews="_3EbuAHKdEeuXIrhpyDm9qA" version="15.0.0.202201261500">
     <semanticResources>paxelerateTS.genmodel</semanticResources>
+    <semanticResources>paxelerate.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_3EbuAHKdEeuXIrhpyDm9qA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_3GeVYHKdEeuXIrhpyDm9qA" name="paxelerateTS" repPath="#_3F01IHKdEeuXIrhpyDm9qA" changeId="e82eb62b-5acb-4ee7-a415-3735d09bc7ee">

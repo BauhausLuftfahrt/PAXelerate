@@ -15,7 +15,7 @@ import com.paxelerate.model.monuments.Door;
 
 import net.bhl.opensource.toolbox.io.Log;
 import net.bhl.opensource.toolbox.time.StopWatch;
-import toolspecific.StudyType;
+import paxelerate.StudyType;
 
 /**
  *

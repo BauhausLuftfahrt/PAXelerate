@@ -159,7 +159,7 @@ public interface DeckExtensions {
 		List<Double> geometryX = StringVectorExtensions.toDoubleList(deckType.getCabGeometry().getX());
 		List<Double> geometryZ = deckType.getCabGeometry().getZ() == null ? null
 				: StringVectorExtensions.toDoubleList(deckType.getCabGeometry().getZ());
-		List<Double> geometryYZ1 = StringVectorExtensions.toDoubleList(deckType.getCabGeometry().getYZ1());
+		List<Double> geometryYZ1 = StringVectorExtensions.toDoubleList(deckType.getCabGeometry().getY());
 
 		for (int j = 0; j < geometryX.size(); j++) {
 

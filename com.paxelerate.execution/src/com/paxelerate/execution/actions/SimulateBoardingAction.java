@@ -35,7 +35,7 @@ import net.bhl.opensource.toolbox.emf.CSVExport;
 import net.bhl.opensource.toolbox.emf.EObjectHelper;
 import net.bhl.opensource.toolbox.io.DataSet;
 import net.bhl.opensource.toolbox.time.StopWatch;
-import toolspecific.StudyType;
+import paxelerate.StudyType;
 
 /**
  * This command starts the boarding simulation.
@@ -157,7 +157,7 @@ public class SimulateBoardingAction {
 		SimulationHandler handler = new SimulationHandler(deck, false, map);
 
 		/* Show WIP simulation view */
-		if (study.getDisplaySimulation().isValue()) {
+		if (study.isDisplaySimulation()) {
 			runAreaMapWindow(handler, iteration, iMax, study.getUID());
 		}
 
@@ -182,13 +182,13 @@ public class SimulateBoardingAction {
 				e.printStackTrace();
 			}
 
-			if (study.getDisplaySimulation().isValue() && frame == null) {
+			if (study.isDisplaySimulation() && frame == null) {
 				handler.reset();
 			}
 		}
 
 		/* closes the simulation view after completion */
-		if (study.getDisplaySimulation().isValue() && frame != null) {
+		if (study.isDisplaySimulation() && frame != null) {
 			frame.dispose();
 		}
 

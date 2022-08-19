@@ -9,16 +9,15 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated paxelerateTS -->
       <package
-            uri="http://www.paxelerate.com/cpacs/toolspecific"
-            class="toolspecific.ToolspecificPackage"
+            uri="paxelerate"
+            class="paxelerate.PaxeleratePackage"
             genModel="model/paxelerateTS.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.extension_parser">
       <!-- @generated paxelerateTS -->
       <parser
-            type="toolspecific"
-            class="toolspecific.util.ToolspecificResourceFactoryImpl"/>
+            type="paxelerate"
+            class="paxelerate.util.PaxelerateResourceFactoryImpl"/>
    </extension>
-
 </plugin>

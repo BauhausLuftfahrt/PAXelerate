@@ -26,8 +26,8 @@ import net.bhl.opensource.toolbox.math.BHLMath;
 import net.bhl.opensource.toolbox.time.TimeHelper;
 import net.bhl.opensource.toolbox.ui.FilePicker;
 import net.bhl.opensource.toolbox.ui.LoggerView;
-import toolspecific.StudyType;
-import toolspecific.ToolspecificFactory;
+import paxelerate.PaxelerateFactory;
+import paxelerate.StudyType;
 
 /**
  * @author Marc.Engelmann
@@ -67,7 +67,7 @@ public class StartProgressMonitor {
 
 			// Initialize the CPACS model
 			CpacsType cpacs = CPACSInitializer.runWithToolspecific(f,
-					ToolspecificFactory.eINSTANCE.createPaxelerateType());
+					PaxelerateFactory.eINSTANCE.createPaxelerateType());
 
 			studies.addAll(EObjectHelper.getChildren(cpacs.getToolspecific(), StudyType.class));
 
@@ -93,7 +93,7 @@ public class StartProgressMonitor {
 
 				statusLine.put(id, study.getUID());
 				statusLine.put(procedure, study.getPassengerSortingScheme().getValue());
-				statusLine.put(doors, study.getActiveDoorUIDs().getValue());
+				statusLine.put(doors, study.getActiveDoorUIDs());
 
 				if (folder.exists()) {
 

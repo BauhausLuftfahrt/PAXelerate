@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="paxelerate toolspecific.xsd" xmlns="paxelerate">
+    <input>
+        <studies>
+            <study uID="study_name">
+                <loadFactor>1.0</loadFactor>
+                <activeDoorUIDs>door_id_1;door_id_2</activeDoorUIDs>
+                <iterations>1</iterations>
+                <simulationType>BOARDING</simulationType>
+                <displaySimulation>true</displaySimulation>
+                <seatType>DEFAULT</seatType>
+                <simulationGridResolution>0.1</simulationGridResolution>
+                <simulationSpeedFactor>1</simulationSpeedFactor>
+                <passengerSortingScheme>RANDOM</passengerSortingScheme>
+                <doorSelection>CLOSEST</doorSelection>
+                <percentageOfPassengersWithJackets>25</percentageOfPassengersWithJackets>
+                <percentageOfPassengersWithSmallBags>25</percentageOfPassengersWithSmallBags>
+                <percentageOfPassengersWithMediumBags>25</percentageOfPassengersWithMediumBags>
+                <percentageOfPassengersWithLargeBags>25</percentageOfPassengersWithLargeBags>
+            </study>
+        </studies>
+    </input>
+</content>
