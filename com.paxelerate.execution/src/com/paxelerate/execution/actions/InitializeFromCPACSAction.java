@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2014 - 2021 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) since 2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the GNU General Public License v3.0 which accompanies this distribution,
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
@@ -23,6 +23,7 @@ import com.paxelerate.model.monuments.Seat;
 
 import Cpacs.AircraftModelType;
 import Cpacs.CpacsType;
+import Cpacs.DeckElementsType;
 import Cpacs.DeckType;
 import net.bhl.opensource.toolbox.emf.EObjectHelper;
 import net.bhl.opensource.toolbox.io.Log;
@@ -54,6 +55,8 @@ public interface InitializeFromCPACSAction {
 
 		model.setName(modelType.getUID());
 
+		DeckElementsType deckElements = cpacs.getVehicles().getDeckElements();
+
 		switch (EObjectHelper.getChildren(modelType, DeckType.class).size()) {
 
 		case 0:
@@ -62,7 +65,7 @@ public interface InitializeFromCPACSAction {
 
 		case 1:
 			model.setDeck(InitializeFromCPACSAction
-					.performInitialization(EObjectHelper.getChildren(modelType, DeckType.class).get(0)));
+					.performInitialization(EObjectHelper.getChildren(modelType, DeckType.class).get(0), deckElements));
 			break;
 
 		default:
@@ -75,9 +78,13 @@ public interface InitializeFromCPACSAction {
 			IOptionSelector
 					.getValue(ids,
 							"Select deck ...")
-					.ifPresent(result -> model.setDeck(InitializeFromCPACSAction.performInitialization(EObjectHelper
-							.getFilteredChildren(modelType, DeckType.class, d -> d.getUID().contentEquals(result))
-							.get(0))));
+					.ifPresent(
+							result -> model
+									.setDeck(
+											InitializeFromCPACSAction.performInitialization(
+													EObjectHelper.getFilteredChildren(modelType, DeckType.class,
+															d -> d.getUID().contentEquals(result)).get(0),
+													deckElements)));
 			break;
 
 		}
@@ -93,17 +100,45 @@ public interface InitializeFromCPACSAction {
 	 * @param element
 	 * @return
 	 */
-	static Deck performInitialization(DeckType deckType) {
+	static Deck performInitialization(DeckType deckType, DeckElementsType deckElements) {
 
 		Deck deck = DeckExtensions.fromCPACS(deckType);
 
 		// Deck geometry
 		DeckExtensions.geometryFromCPACS(deck, deckType);
 
-		deckType.getSeatElements().getSeatElement().forEach(s -> SeatGroupExtensions.fromCPACS(deck, s));
-		deckType.getFloorElements().getFloorElement().forEach(f -> MonumentExtensions.fromCPACS(deck, f));
-		deckType.getDoors().getDoor().forEach(d -> DoorExtensions.fromCPACS(deck, d));
-		deckType.getAisles().getAisle().forEach(a -> AisleExtensions.fromCPACS(deck, a));
+		if (deckType.getSeatModules() != null) {
+			deckType.getSeatModules().getSeatModule()
+					.forEach(s -> SeatGroupExtensions.fromCPACS(deck, s, deckElements.getSeatElements()));
+		}
+
+		if (deckType.getGalleys() != null) {
+			deckType.getGalleys().getGalley()
+					.forEach(f -> MonumentExtensions.galleyfromCPACS(deck, f, deckElements.getGalleyElements()));
+		}
+
+		if (deckType.getLavatories() != null) {
+			deckType.getLavatories().getLavatory()
+					.forEach(f -> MonumentExtensions.lavatoryFromCPACS(deck, f, deckElements.getLavatoryElements()));
+		}
+
+		if (deckType.getLuggageCompartments() != null) {
+			deckType.getLuggageCompartments().getLuggageCompartment().forEach(
+					f -> MonumentExtensions.luggageFromCPACS(deck, f, deckElements.getLuggageCompartmentElements()));
+		}
+
+		if (deckType.getClassDividers() != null) {
+			deckType.getClassDividers().getClassDivider()
+					.forEach(f -> MonumentExtensions.dividerFromCPACS(deck, f, deckElements.getClassDividerElements()));
+		}
+
+		if (deckType.getDeckDoors() != null) {
+			deckType.getDeckDoors().getDeckDoor().forEach(d -> DoorExtensions.fromCPACS(deck, d));
+		}
+
+		if (deckType.getAisles() != null) {
+			deckType.getAisles().getAisle().forEach(a -> AisleExtensions.fromCPACS(deck, a));
+		}
 
 		// Sort seat groups per row
 		for (Row row : EObjectHelper.getChildren(deck, Row.class)) {

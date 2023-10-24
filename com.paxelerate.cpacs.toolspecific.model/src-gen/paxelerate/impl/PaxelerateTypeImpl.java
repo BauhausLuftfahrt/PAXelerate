@@ -9,9 +9,12 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import paxelerate.PaxelerateInputType;
+import paxelerate.PaxelerateOutputType;
 import paxelerate.PaxeleratePackage;
+import paxelerate.PaxelerateSettingsType;
 import paxelerate.PaxelerateType;
 
 /**
@@ -23,11 +26,13 @@ import paxelerate.PaxelerateType;
  * </p>
  * <ul>
  *   <li>{@link paxelerate.impl.PaxelerateTypeImpl#getInput <em>Input</em>}</li>
+ *   <li>{@link paxelerate.impl.PaxelerateTypeImpl#getOutput <em>Output</em>}</li>
+ *   <li>{@link paxelerate.impl.PaxelerateTypeImpl#getSettings <em>Settings</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class PaxelerateTypeImpl extends ComplexBaseTypeImpl implements PaxelerateType {
+public class PaxelerateTypeImpl extends MinimalEObjectImpl.Container implements PaxelerateType {
 	/**
 	 * The cached value of the '{@link #getInput() <em>Input</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -37,6 +42,26 @@ public class PaxelerateTypeImpl extends ComplexBaseTypeImpl implements Paxelerat
 	 * @ordered
 	 */
 	protected PaxelerateInputType input;
+
+	/**
+	 * The cached value of the '{@link #getOutput() <em>Output</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutput()
+	 * @generated
+	 * @ordered
+	 */
+	protected PaxelerateOutputType output;
+
+	/**
+	 * The cached value of the '{@link #getSettings() <em>Settings</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSettings()
+	 * @generated
+	 * @ordered
+	 */
+	protected PaxelerateSettingsType settings;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -112,11 +137,115 @@ public class PaxelerateTypeImpl extends ComplexBaseTypeImpl implements Paxelerat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public PaxelerateOutputType getOutput() {
+		return output;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOutput(PaxelerateOutputType newOutput, NotificationChain msgs) {
+		PaxelerateOutputType oldOutput = output;
+		output = newOutput;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					PaxeleratePackage.PAXELERATE_TYPE__OUTPUT, oldOutput, newOutput);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOutput(PaxelerateOutputType newOutput) {
+		if (newOutput != output) {
+			NotificationChain msgs = null;
+			if (output != null)
+				msgs = ((InternalEObject) output).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - PaxeleratePackage.PAXELERATE_TYPE__OUTPUT, null, msgs);
+			if (newOutput != null)
+				msgs = ((InternalEObject) newOutput).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - PaxeleratePackage.PAXELERATE_TYPE__OUTPUT, null, msgs);
+			msgs = basicSetOutput(newOutput, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PaxeleratePackage.PAXELERATE_TYPE__OUTPUT, newOutput,
+					newOutput));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PaxelerateSettingsType getSettings() {
+		return settings;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSettings(PaxelerateSettingsType newSettings, NotificationChain msgs) {
+		PaxelerateSettingsType oldSettings = settings;
+		settings = newSettings;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					PaxeleratePackage.PAXELERATE_TYPE__SETTINGS, oldSettings, newSettings);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSettings(PaxelerateSettingsType newSettings) {
+		if (newSettings != settings) {
+			NotificationChain msgs = null;
+			if (settings != null)
+				msgs = ((InternalEObject) settings).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - PaxeleratePackage.PAXELERATE_TYPE__SETTINGS, null, msgs);
+			if (newSettings != null)
+				msgs = ((InternalEObject) newSettings).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - PaxeleratePackage.PAXELERATE_TYPE__SETTINGS, null, msgs);
+			msgs = basicSetSettings(newSettings, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PaxeleratePackage.PAXELERATE_TYPE__SETTINGS,
+					newSettings, newSettings));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case PaxeleratePackage.PAXELERATE_TYPE__INPUT:
 			return basicSetInput(null, msgs);
+		case PaxeleratePackage.PAXELERATE_TYPE__OUTPUT:
+			return basicSetOutput(null, msgs);
+		case PaxeleratePackage.PAXELERATE_TYPE__SETTINGS:
+			return basicSetSettings(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -131,6 +260,10 @@ public class PaxelerateTypeImpl extends ComplexBaseTypeImpl implements Paxelerat
 		switch (featureID) {
 		case PaxeleratePackage.PAXELERATE_TYPE__INPUT:
 			return getInput();
+		case PaxeleratePackage.PAXELERATE_TYPE__OUTPUT:
+			return getOutput();
+		case PaxeleratePackage.PAXELERATE_TYPE__SETTINGS:
+			return getSettings();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -145,6 +278,12 @@ public class PaxelerateTypeImpl extends ComplexBaseTypeImpl implements Paxelerat
 		switch (featureID) {
 		case PaxeleratePackage.PAXELERATE_TYPE__INPUT:
 			setInput((PaxelerateInputType) newValue);
+			return;
+		case PaxeleratePackage.PAXELERATE_TYPE__OUTPUT:
+			setOutput((PaxelerateOutputType) newValue);
+			return;
+		case PaxeleratePackage.PAXELERATE_TYPE__SETTINGS:
+			setSettings((PaxelerateSettingsType) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -161,6 +300,12 @@ public class PaxelerateTypeImpl extends ComplexBaseTypeImpl implements Paxelerat
 		case PaxeleratePackage.PAXELERATE_TYPE__INPUT:
 			setInput((PaxelerateInputType) null);
 			return;
+		case PaxeleratePackage.PAXELERATE_TYPE__OUTPUT:
+			setOutput((PaxelerateOutputType) null);
+			return;
+		case PaxeleratePackage.PAXELERATE_TYPE__SETTINGS:
+			setSettings((PaxelerateSettingsType) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -175,6 +320,10 @@ public class PaxelerateTypeImpl extends ComplexBaseTypeImpl implements Paxelerat
 		switch (featureID) {
 		case PaxeleratePackage.PAXELERATE_TYPE__INPUT:
 			return input != null;
+		case PaxeleratePackage.PAXELERATE_TYPE__OUTPUT:
+			return output != null;
+		case PaxeleratePackage.PAXELERATE_TYPE__SETTINGS:
+			return settings != null;
 		}
 		return super.eIsSet(featureID);
 	}

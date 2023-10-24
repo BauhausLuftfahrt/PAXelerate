@@ -13,17 +13,22 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
-import paxelerate.ComplexBaseType;
 import paxelerate.DocumentRoot;
 import paxelerate.DoorSelectionType;
 import paxelerate.PassengerSortingSchemeType;
 import paxelerate.PaxelerateFactory;
 import paxelerate.PaxelerateInputType;
+import paxelerate.PaxelerateOutputType;
 import paxelerate.PaxeleratePackage;
+import paxelerate.PaxelerateSettingsType;
 import paxelerate.PaxelerateType;
 import paxelerate.SeatTypeType;
 import paxelerate.SimulationTypeType;
+import paxelerate.StudiesOutputType;
 import paxelerate.StudiesType;
+import paxelerate.StudyIterationOutputType;
+import paxelerate.StudyIterationsOutputType;
+import paxelerate.StudyOutputType;
 import paxelerate.StudyType;
 
 /**
@@ -33,13 +38,6 @@ import paxelerate.StudyType;
  * @generated
  */
 public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePackage {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass complexBaseTypeEClass = null;
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -59,6 +57,20 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass paxelerateOutputTypeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass paxelerateSettingsTypeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass paxelerateTypeEClass = null;
 
 	/**
@@ -66,7 +78,35 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass studiesOutputTypeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass studiesTypeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass studyIterationOutputTypeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass studyIterationsOutputTypeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass studyOutputTypeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -203,42 +243,6 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getComplexBaseType() {
-		return complexBaseTypeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getComplexBaseType_ExternalDataDirectory() {
-		return (EAttribute) complexBaseTypeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getComplexBaseType_ExternalDataNodePath() {
-		return (EAttribute) complexBaseTypeEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getComplexBaseType_ExternalFileName() {
-		return (EAttribute) complexBaseTypeEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getDocumentRoot() {
 		return documentRootEClass;
 	}
@@ -302,6 +306,42 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getPaxelerateOutputType() {
+		return paxelerateOutputTypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPaxelerateOutputType_StudiesOutput() {
+		return (EReference) paxelerateOutputTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPaxelerateSettingsType() {
+		return paxelerateSettingsTypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPaxelerateSettingsType_DisplaySimulation() {
+		return (EAttribute) paxelerateSettingsTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPaxelerateType() {
 		return paxelerateTypeEClass;
 	}
@@ -320,6 +360,42 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getPaxelerateType_Output() {
+		return (EReference) paxelerateTypeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPaxelerateType_Settings() {
+		return (EReference) paxelerateTypeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getStudiesOutputType() {
+		return studiesOutputTypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStudiesOutputType_StudyOutput() {
+		return (EReference) studiesOutputTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getStudiesType() {
 		return studiesTypeEClass;
 	}
@@ -331,6 +407,78 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 */
 	public EReference getStudiesType_Study() {
 		return (EReference) studiesTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getStudyIterationOutputType() {
+		return studyIterationOutputTypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getStudyIterationOutputType_BoardingTime() {
+		return (EAttribute) studyIterationOutputTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getStudyIterationsOutputType() {
+		return studyIterationsOutputTypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStudyIterationsOutputType_StudyIterationOutput() {
+		return (EReference) studyIterationsOutputTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getStudyOutputType() {
+		return studyOutputTypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getStudyOutputType_AverageBoardingTime() {
+		return (EAttribute) studyOutputTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStudyOutputType_StudyIterationsOutput() {
+		return (EReference) studyOutputTypeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getStudyOutputType_LinkedStudyUID() {
+		return (EAttribute) studyOutputTypeEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -383,7 +531,7 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStudyType_DisplaySimulation() {
+	public EAttribute getStudyType_SeatType() {
 		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -392,7 +540,7 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStudyType_SeatType() {
+	public EAttribute getStudyType_SimulationGridResolution() {
 		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -401,7 +549,7 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStudyType_SimulationGridResolution() {
+	public EAttribute getStudyType_SimulationSpeedFactor() {
 		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -410,7 +558,7 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStudyType_SimulationSpeedFactor() {
+	public EAttribute getStudyType_PassengerSortingScheme() {
 		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -419,7 +567,7 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStudyType_PassengerSortingScheme() {
+	public EAttribute getStudyType_DoorSelection() {
 		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -428,7 +576,7 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStudyType_DoorSelection() {
+	public EAttribute getStudyType_PercentageOfPassengersWithJackets() {
 		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -437,7 +585,7 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStudyType_PercentageOfPassengersWithJackets() {
+	public EAttribute getStudyType_PercentageOfPassengersWithSmallBags() {
 		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -446,7 +594,7 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStudyType_PercentageOfPassengersWithSmallBags() {
+	public EAttribute getStudyType_PercentageOfPassengersWithMediumBags() {
 		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -455,7 +603,7 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStudyType_PercentageOfPassengersWithMediumBags() {
+	public EAttribute getStudyType_PercentageOfPassengersWithLargeBags() {
 		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -464,17 +612,8 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStudyType_PercentageOfPassengersWithLargeBags() {
-		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(13);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getStudyType_UID() {
-		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(14);
+		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -578,11 +717,6 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 		isCreated = true;
 
 		// Create classes and their features
-		complexBaseTypeEClass = createEClass(COMPLEX_BASE_TYPE);
-		createEAttribute(complexBaseTypeEClass, COMPLEX_BASE_TYPE__EXTERNAL_DATA_DIRECTORY);
-		createEAttribute(complexBaseTypeEClass, COMPLEX_BASE_TYPE__EXTERNAL_DATA_NODE_PATH);
-		createEAttribute(complexBaseTypeEClass, COMPLEX_BASE_TYPE__EXTERNAL_FILE_NAME);
-
 		documentRootEClass = createEClass(DOCUMENT_ROOT);
 		createEAttribute(documentRootEClass, DOCUMENT_ROOT__MIXED);
 		createEReference(documentRootEClass, DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
@@ -592,18 +726,39 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 		paxelerateInputTypeEClass = createEClass(PAXELERATE_INPUT_TYPE);
 		createEReference(paxelerateInputTypeEClass, PAXELERATE_INPUT_TYPE__STUDIES);
 
+		paxelerateOutputTypeEClass = createEClass(PAXELERATE_OUTPUT_TYPE);
+		createEReference(paxelerateOutputTypeEClass, PAXELERATE_OUTPUT_TYPE__STUDIES_OUTPUT);
+
+		paxelerateSettingsTypeEClass = createEClass(PAXELERATE_SETTINGS_TYPE);
+		createEAttribute(paxelerateSettingsTypeEClass, PAXELERATE_SETTINGS_TYPE__DISPLAY_SIMULATION);
+
 		paxelerateTypeEClass = createEClass(PAXELERATE_TYPE);
 		createEReference(paxelerateTypeEClass, PAXELERATE_TYPE__INPUT);
+		createEReference(paxelerateTypeEClass, PAXELERATE_TYPE__OUTPUT);
+		createEReference(paxelerateTypeEClass, PAXELERATE_TYPE__SETTINGS);
+
+		studiesOutputTypeEClass = createEClass(STUDIES_OUTPUT_TYPE);
+		createEReference(studiesOutputTypeEClass, STUDIES_OUTPUT_TYPE__STUDY_OUTPUT);
 
 		studiesTypeEClass = createEClass(STUDIES_TYPE);
 		createEReference(studiesTypeEClass, STUDIES_TYPE__STUDY);
+
+		studyIterationOutputTypeEClass = createEClass(STUDY_ITERATION_OUTPUT_TYPE);
+		createEAttribute(studyIterationOutputTypeEClass, STUDY_ITERATION_OUTPUT_TYPE__BOARDING_TIME);
+
+		studyIterationsOutputTypeEClass = createEClass(STUDY_ITERATIONS_OUTPUT_TYPE);
+		createEReference(studyIterationsOutputTypeEClass, STUDY_ITERATIONS_OUTPUT_TYPE__STUDY_ITERATION_OUTPUT);
+
+		studyOutputTypeEClass = createEClass(STUDY_OUTPUT_TYPE);
+		createEAttribute(studyOutputTypeEClass, STUDY_OUTPUT_TYPE__AVERAGE_BOARDING_TIME);
+		createEReference(studyOutputTypeEClass, STUDY_OUTPUT_TYPE__STUDY_ITERATIONS_OUTPUT);
+		createEAttribute(studyOutputTypeEClass, STUDY_OUTPUT_TYPE__LINKED_STUDY_UID);
 
 		studyTypeEClass = createEClass(STUDY_TYPE);
 		createEAttribute(studyTypeEClass, STUDY_TYPE__LOAD_FACTOR);
 		createEAttribute(studyTypeEClass, STUDY_TYPE__ACTIVE_DOOR_UI_DS);
 		createEAttribute(studyTypeEClass, STUDY_TYPE__ITERATIONS);
 		createEAttribute(studyTypeEClass, STUDY_TYPE__SIMULATION_TYPE);
-		createEAttribute(studyTypeEClass, STUDY_TYPE__DISPLAY_SIMULATION);
 		createEAttribute(studyTypeEClass, STUDY_TYPE__SEAT_TYPE);
 		createEAttribute(studyTypeEClass, STUDY_TYPE__SIMULATION_GRID_RESOLUTION);
 		createEAttribute(studyTypeEClass, STUDY_TYPE__SIMULATION_SPEED_FACTOR);
@@ -661,24 +816,8 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		paxelerateInputTypeEClass.getESuperTypes().add(this.getComplexBaseType());
-		paxelerateTypeEClass.getESuperTypes().add(this.getComplexBaseType());
-		studiesTypeEClass.getESuperTypes().add(this.getComplexBaseType());
-		studyTypeEClass.getESuperTypes().add(this.getComplexBaseType());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(complexBaseTypeEClass, ComplexBaseType.class, "ComplexBaseType", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getComplexBaseType_ExternalDataDirectory(), theXMLTypePackage.getString(),
-				"externalDataDirectory", null, 0, 1, ComplexBaseType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComplexBaseType_ExternalDataNodePath(), theXMLTypePackage.getString(), "externalDataNodePath",
-				null, 0, 1, ComplexBaseType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComplexBaseType_ExternalFileName(), theXMLTypePackage.getString(), "externalFileName", null,
-				0, 1, ComplexBaseType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(documentRootEClass, DocumentRoot.class, "DocumentRoot", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDocumentRoot_Mixed(), ecorePackage.getEFeatureMapEntry(), "mixed", null, 0, -1, null,
@@ -700,10 +839,34 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 				PaxelerateInputType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(paxelerateOutputTypeEClass, PaxelerateOutputType.class, "PaxelerateOutputType", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPaxelerateOutputType_StudiesOutput(), this.getStudiesOutputType(), null, "studiesOutput",
+				null, 1, 1, PaxelerateOutputType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(paxelerateSettingsTypeEClass, PaxelerateSettingsType.class, "PaxelerateSettingsType", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPaxelerateSettingsType_DisplaySimulation(), theXMLTypePackage.getBoolean(),
+				"displaySimulation", null, 1, 1, PaxelerateSettingsType.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(paxelerateTypeEClass, PaxelerateType.class, "PaxelerateType", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPaxelerateType_Input(), this.getPaxelerateInputType(), null, "input", null, 1, 1,
 				PaxelerateType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPaxelerateType_Output(), this.getPaxelerateOutputType(), null, "output", null, 0, 1,
+				PaxelerateType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPaxelerateType_Settings(), this.getPaxelerateSettingsType(), null, "settings", null, 1, 1,
+				PaxelerateType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(studiesOutputTypeEClass, StudiesOutputType.class, "StudiesOutputType", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getStudiesOutputType_StudyOutput(), this.getStudyOutputType(), null, "studyOutput", null, 1, -1,
+				StudiesOutputType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(studiesTypeEClass, StudiesType.class, "StudiesType", !IS_ABSTRACT, !IS_INTERFACE,
@@ -711,6 +874,30 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 		initEReference(getStudiesType_Study(), this.getStudyType(), null, "study", null, 1, -1, StudiesType.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(studyIterationOutputTypeEClass, StudyIterationOutputType.class, "StudyIterationOutputType",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStudyIterationOutputType_BoardingTime(), theXMLTypePackage.getDouble(), "boardingTime", null,
+				1, 1, StudyIterationOutputType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(studyIterationsOutputTypeEClass, StudyIterationsOutputType.class, "StudyIterationsOutputType",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getStudyIterationsOutputType_StudyIterationOutput(), this.getStudyIterationOutputType(), null,
+				"studyIterationOutput", null, 1, -1, StudyIterationsOutputType.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(studyOutputTypeEClass, StudyOutputType.class, "StudyOutputType", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStudyOutputType_AverageBoardingTime(), theXMLTypePackage.getDouble(), "averageBoardingTime",
+				null, 1, 1, StudyOutputType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStudyOutputType_StudyIterationsOutput(), this.getStudyIterationsOutputType(), null,
+				"studyIterationsOutput", null, 1, 1, StudyOutputType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStudyOutputType_LinkedStudyUID(), theXMLTypePackage.getString(), "linkedStudyUID", null, 1, 1,
+				StudyOutputType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(studyTypeEClass, StudyType.class, "StudyType", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -724,9 +911,6 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStudyType_SimulationType(), this.getSimulationTypeType(), "simulationType", null, 1, 1,
 				StudyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStudyType_DisplaySimulation(), theXMLTypePackage.getBoolean(), "displaySimulation", null, 1,
-				1, StudyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStudyType_SeatType(), this.getSeatTypeType(), "seatType", null, 1, 1, StudyType.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -817,13 +1001,6 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 */
 	protected void createExtendedMetaDataAnnotations() {
 		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";
-		addAnnotation(complexBaseTypeEClass, source, new String[] { "name", "complexBaseType", "kind", "empty" });
-		addAnnotation(getComplexBaseType_ExternalDataDirectory(), source,
-				new String[] { "kind", "attribute", "name", "externalDataDirectory" });
-		addAnnotation(getComplexBaseType_ExternalDataNodePath(), source,
-				new String[] { "kind", "attribute", "name", "externalDataNodePath" });
-		addAnnotation(getComplexBaseType_ExternalFileName(), source,
-				new String[] { "kind", "attribute", "name", "externalFileName" });
 		addAnnotation(documentRootEClass, source, new String[] { "name", "", "kind", "mixed" });
 		addAnnotation(getDocumentRoot_Mixed(), source, new String[] { "kind", "elementWildcard", "name", ":mixed" });
 		addAnnotation(getDocumentRoot_XMLNSPrefixMap(), source,
@@ -843,18 +1020,49 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 				new String[] { "name", "paxelerateInputType", "kind", "elementOnly" });
 		addAnnotation(getPaxelerateInputType_Studies(), source,
 				new String[] { "kind", "element", "name", "studies", "namespace", "##targetNamespace" });
+		addAnnotation(paxelerateOutputTypeEClass, source,
+				new String[] { "name", "paxelerateOutputType", "kind", "elementOnly" });
+		addAnnotation(getPaxelerateOutputType_StudiesOutput(), source,
+				new String[] { "kind", "element", "name", "studiesOutput", "namespace", "##targetNamespace" });
+		addAnnotation(paxelerateSettingsTypeEClass, source,
+				new String[] { "name", "paxelerateSettingsType", "kind", "elementOnly" });
+		addAnnotation(getPaxelerateSettingsType_DisplaySimulation(), source,
+				new String[] { "kind", "element", "name", "displaySimulation", "namespace", "##targetNamespace" });
 		addAnnotation(paxelerateTypeEClass, source, new String[] { "name", "paxelerateType", "kind", "elementOnly" });
 		addAnnotation(getPaxelerateType_Input(), source,
 				new String[] { "kind", "element", "name", "input", "namespace", "##targetNamespace" });
+		addAnnotation(getPaxelerateType_Output(), source,
+				new String[] { "kind", "element", "name", "output", "namespace", "##targetNamespace" });
+		addAnnotation(getPaxelerateType_Settings(), source,
+				new String[] { "kind", "element", "name", "settings", "namespace", "##targetNamespace" });
 		addAnnotation(seatTypeTypeEEnum, source, new String[] { "name", "seatType_._type" });
 		addAnnotation(seatTypeTypeObjectEDataType, source,
 				new String[] { "name", "seatType_._type:Object", "baseType", "seatType_._type" });
 		addAnnotation(simulationTypeTypeEEnum, source, new String[] { "name", "simulationType_._type" });
 		addAnnotation(simulationTypeTypeObjectEDataType, source,
 				new String[] { "name", "simulationType_._type:Object", "baseType", "simulationType_._type" });
+		addAnnotation(studiesOutputTypeEClass, source,
+				new String[] { "name", "studiesOutputType", "kind", "elementOnly" });
+		addAnnotation(getStudiesOutputType_StudyOutput(), source,
+				new String[] { "kind", "element", "name", "studyOutput", "namespace", "##targetNamespace" });
 		addAnnotation(studiesTypeEClass, source, new String[] { "name", "studiesType", "kind", "elementOnly" });
 		addAnnotation(getStudiesType_Study(), source,
 				new String[] { "kind", "element", "name", "study", "namespace", "##targetNamespace" });
+		addAnnotation(studyIterationOutputTypeEClass, source,
+				new String[] { "name", "studyIterationOutputType", "kind", "elementOnly" });
+		addAnnotation(getStudyIterationOutputType_BoardingTime(), source,
+				new String[] { "kind", "element", "name", "boardingTime", "namespace", "##targetNamespace" });
+		addAnnotation(studyIterationsOutputTypeEClass, source,
+				new String[] { "name", "studyIterationsOutputType", "kind", "elementOnly" });
+		addAnnotation(getStudyIterationsOutputType_StudyIterationOutput(), source,
+				new String[] { "kind", "element", "name", "studyIterationOutput", "namespace", "##targetNamespace" });
+		addAnnotation(studyOutputTypeEClass, source, new String[] { "name", "studyOutputType", "kind", "elementOnly" });
+		addAnnotation(getStudyOutputType_AverageBoardingTime(), source,
+				new String[] { "kind", "element", "name", "averageBoardingTime", "namespace", "##targetNamespace" });
+		addAnnotation(getStudyOutputType_StudyIterationsOutput(), source,
+				new String[] { "kind", "element", "name", "studyIterationsOutput", "namespace", "##targetNamespace" });
+		addAnnotation(getStudyOutputType_LinkedStudyUID(), source,
+				new String[] { "kind", "attribute", "name", "linkedStudyUID" });
 		addAnnotation(studyTypeEClass, source, new String[] { "name", "studyType", "kind", "elementOnly" });
 		addAnnotation(getStudyType_LoadFactor(), source,
 				new String[] { "kind", "element", "name", "loadFactor", "namespace", "##targetNamespace" });
@@ -864,8 +1072,6 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 				new String[] { "kind", "element", "name", "iterations", "namespace", "##targetNamespace" });
 		addAnnotation(getStudyType_SimulationType(), source,
 				new String[] { "kind", "element", "name", "simulationType", "namespace", "##targetNamespace" });
-		addAnnotation(getStudyType_DisplaySimulation(), source,
-				new String[] { "kind", "element", "name", "displaySimulation", "namespace", "##targetNamespace" });
 		addAnnotation(getStudyType_SeatType(), source,
 				new String[] { "kind", "element", "name", "seatType", "namespace", "##targetNamespace" });
 		addAnnotation(getStudyType_SimulationGridResolution(), source, new String[] { "kind", "element", "name",

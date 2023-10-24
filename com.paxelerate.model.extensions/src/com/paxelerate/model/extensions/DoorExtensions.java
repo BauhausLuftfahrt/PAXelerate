@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2014 - 2021 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) since 2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the GNU General Public License v3.0 which accompanies this distribution,
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
@@ -19,7 +19,8 @@ import com.paxelerate.model.enums.DoorType;
 import com.paxelerate.model.monuments.Door;
 import com.paxelerate.model.monuments.MonumentsFactory;
 
-import Cpacs.CabinDoorType;
+import Cpacs.DeckDoorType;
+import Cpacs.DoorOpeningLegacyType;
 import net.bhl.opensource.toolbox.emf.EObjectHelper;
 import net.bhl.opensource.toolbox.math.Distance;
 import net.bhl.opensource.toolbox.math.GlobalUnits;
@@ -76,28 +77,31 @@ public interface DoorExtensions {
 	 * @param cabin
 	 * @param values
 	 */
-	static void fromCPACS(Deck deck, CabinDoorType doorType) {
+	static void fromCPACS(Deck deck, DeckDoorType doorType) {
 
-		String typeStr = doorType.getName().getValue();
+		String typeStr = doorType.getName().getValue() == null ? DoorType.A.getLiteral()
+				: doorType.getName().getValue();
 
 		DoorType type = DoorType.get(typeStr.replace("Type ", ""));
 
-		double xPosition = doorType.getX().getValue();
-		double zPosition = doorType.getZ() != null ? doorType.getZ().getValue() : 0.0;
-		double width = doorType.getWidth().getValue();
+		DoorOpeningLegacyType doorOpening = doorType.getOpening().getDoorOpeningLegacy();
 
-		boolean emergency = doorType.getType().getValue().contentEquals(CPACS_DOOR_TYPE_EMERGENCY_LITERAL)
-				|| doorType.getType().getValue().contains("emergency");
+		double xPosition = doorOpening.getX().getValue();
+		double zPosition = doorOpening.getZ() != null ? doorOpening.getZ().getValue() : 0.0;
+		double width = doorOpening.getWidth().getValue();
+
+		boolean emergency = doorType.getDoorType().getValue().contentEquals(CPACS_DOOR_TYPE_EMERGENCY_LITERAL)
+				|| doorType.getDoorType().getValue().contains("emergency");
 
 		DoorSide side = DoorSide.PORT;
 
-		if (doorType.getSide().getValue().contentEquals(CPACS_DOOR_SIDE_STARBOARD_LITERAL)) {
+		if (doorOpening.getSide().getValue().contentEquals(CPACS_DOOR_SIDE_STARBOARD_LITERAL)) {
 			side = DoorSide.STARBOARD;
 		}
 
 		// Multiply by 100 because of different units. (CPACS: Meters, PAXelerate:
 		// Centimeters). Minus xZero as the position is referenced to global CoSy.
-		DoorExtensions.create(deck, type, xPosition, width, side, emergency, zPosition);
+		DoorExtensions.create(deck, type, xPosition, width, side, emergency, zPosition); // - deck.getX0()
 	}
 
 	/**

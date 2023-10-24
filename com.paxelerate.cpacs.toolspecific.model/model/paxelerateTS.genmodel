@@ -48,11 +48,6 @@
     <genDataTypes ecoreDataType="paxelerate.ecore#//PassengerSortingSchemeTypeObject"/>
     <genDataTypes ecoreDataType="paxelerate.ecore#//SeatTypeTypeObject"/>
     <genDataTypes ecoreDataType="paxelerate.ecore#//SimulationTypeTypeObject"/>
-    <genClasses ecoreClass="paxelerate.ecore#//ComplexBaseType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerate.ecore#//ComplexBaseType/externalDataDirectory"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerate.ecore#//ComplexBaseType/externalDataNodePath"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerate.ecore#//ComplexBaseType/externalFileName"/>
-    </genClasses>
     <genClasses ecoreClass="paxelerate.ecore#//DocumentRoot">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute paxelerate.ecore#//DocumentRoot/mixed"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference paxelerate.ecore#//DocumentRoot/xMLNSPrefixMap"/>
@@ -62,18 +57,39 @@
     <genClasses ecoreClass="paxelerate.ecore#//PaxelerateInputType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerate.ecore#//PaxelerateInputType/studies"/>
     </genClasses>
+    <genClasses ecoreClass="paxelerate.ecore#//PaxelerateOutputType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerate.ecore#//PaxelerateOutputType/studiesOutput"/>
+    </genClasses>
+    <genClasses ecoreClass="paxelerate.ecore#//PaxelerateSettingsType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerate.ecore#//PaxelerateSettingsType/displaySimulation"/>
+    </genClasses>
     <genClasses ecoreClass="paxelerate.ecore#//PaxelerateType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerate.ecore#//PaxelerateType/input"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerate.ecore#//PaxelerateType/output"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerate.ecore#//PaxelerateType/settings"/>
+    </genClasses>
+    <genClasses ecoreClass="paxelerate.ecore#//StudiesOutputType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerate.ecore#//StudiesOutputType/studyOutput"/>
     </genClasses>
     <genClasses ecoreClass="paxelerate.ecore#//StudiesType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerate.ecore#//StudiesType/study"/>
+    </genClasses>
+    <genClasses ecoreClass="paxelerate.ecore#//StudyIterationOutputType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerate.ecore#//StudyIterationOutputType/boardingTime"/>
+    </genClasses>
+    <genClasses ecoreClass="paxelerate.ecore#//StudyIterationsOutputType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerate.ecore#//StudyIterationsOutputType/studyIterationOutput"/>
+    </genClasses>
+    <genClasses ecoreClass="paxelerate.ecore#//StudyOutputType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerate.ecore#//StudyOutputType/averageBoardingTime"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerate.ecore#//StudyOutputType/studyIterationsOutput"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerate.ecore#//StudyOutputType/linkedStudyUID"/>
     </genClasses>
     <genClasses ecoreClass="paxelerate.ecore#//StudyType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerate.ecore#//StudyType/loadFactor"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerate.ecore#//StudyType/activeDoorUIDs"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerate.ecore#//StudyType/iterations"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerate.ecore#//StudyType/simulationType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerate.ecore#//StudyType/displaySimulation"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerate.ecore#//StudyType/seatType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerate.ecore#//StudyType/simulationGridResolution"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerate.ecore#//StudyType/simulationSpeedFactor"/>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2014 - 2021 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) since 2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the GNU General Public License v3.0 which accompanies this distribution,
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
@@ -39,7 +39,7 @@ public class StartPaxelerate {
 	 */
 	public static void main(String[] args) {
 
-		Log.createHead(NAME, "1.0", AUTHORS, 2015);
+		Log.createHead(NAME, "1.0", AUTHORS, 2014);
 
 		if (args.length > 0) {
 

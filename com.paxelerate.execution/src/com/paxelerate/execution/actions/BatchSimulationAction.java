@@ -1,11 +1,12 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2014 - 2021 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) since 2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the GNU General Public License v3.0 which accompanies this distribution,
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
 package com.paxelerate.execution.actions;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -26,6 +27,7 @@ import com.paxelerate.model.extensions.PassengerPropertiesExtensions;
 import com.paxelerate.model.monuments.Door;
 import com.paxelerate.model.settings.SettingsFactory;
 
+import Cpacs.CpacsFactory;
 import Cpacs.CpacsType;
 import net.bhl.opensource.cpacs.functions.CPACSInitializer;
 import net.bhl.opensource.cpacs.functions.CPACSWriter;
@@ -33,6 +35,8 @@ import net.bhl.opensource.toolbox.io.Log;
 import net.bhl.opensource.toolbox.time.StopWatch;
 import paxelerate.PaxelerateFactory;
 import paxelerate.PaxelerateType;
+import paxelerate.StudyIterationOutputType;
+import paxelerate.StudyOutputType;
 import paxelerate.StudyType;
 
 /**
@@ -51,18 +55,30 @@ public interface BatchSimulationAction {
 	 */
 	static void run(File cpacsFile) {
 
+		PaxelerateType tool = PaxelerateFactory.eINSTANCE.createPaxelerateType();
+		CpacsType cpacs = CPACSInitializer.runWithToolspecific(cpacsFile, tool);
+		run(cpacs, tool, cpacsFile.getName());
+		Log.startWithNoEnd("Exporting to input file location.");
+		CPACSWriter.run(cpacsFile.getAbsolutePath().replace(".xml", "") + "_out.xml", cpacs);
+
+	}
+
+	static void run(CpacsType cpacs, PaxelerateType tool, String exportFolderName) {
+
 		Log.startWithNoEnd("Initializing");
 		StopWatch time = new StopWatch();
 
-		PaxelerateType tool = PaxelerateFactory.eINSTANCE.createPaxelerateType();
-
-		// Initialize the CPACS model
-		CpacsType cpacs = CPACSInitializer.runWithToolspecific(cpacsFile, tool);
-
-		System.out.println(CPACSWriter.toString(cpacs));
+		// Add output structure
+		tool.setOutput(PaxelerateFactory.eINSTANCE.createPaxelerateOutputType());
+		tool.getOutput().setStudiesOutput(PaxelerateFactory.eINSTANCE.createStudiesOutputType());
 
 		// Loop through the tool specific input studies
 		for (StudyType study : tool.getInput().getStudies().getStudy()) {
+
+			StudyOutputType studyOutput = PaxelerateFactory.eINSTANCE.createStudyOutputType();
+			studyOutput.setLinkedStudyUID(study.getUID());
+			studyOutput.setStudyIterationsOutput(PaxelerateFactory.eINSTANCE.createStudyIterationsOutputType());
+			tool.getOutput().getStudiesOutput().getStudyOutput().add(studyOutput);
 
 			// Initialize model
 			Model model = ModelFactory.eINSTANCE.createModel();
@@ -105,6 +121,8 @@ public interface BatchSimulationAction {
 			// Create the area map
 			Areamap map = new Areamap(model.getDeck());
 
+			List<Double> boardingTimes = new ArrayList<>();
+
 			// Loop through the iterations of the same simulation variant
 			for (int i = 1; i <= iterations; i++) {
 
@@ -125,16 +143,46 @@ public interface BatchSimulationAction {
 				BoardingDelayCalculator.calculateDelay(model.getDeck().getDoors(), model.getDeck().getPassengers());
 
 				// Run the simulation
-				new SimulateBoardingAction(model.getDeck(), i, map, cpacsFile.getName(), study, iterations);
+				SimulateBoardingAction simulation = new SimulateBoardingAction(model.getDeck(), i, map,
+						exportFolderName, study, iterations, tool.getSettings().isDisplaySimulation());
 
 				simTimer.stop();
 				Log.endWithNoStart(simTimer);
+
+				StudyIterationOutputType studyIterationOutput = PaxelerateFactory.eINSTANCE
+						.createStudyIterationOutputType();
+				studyIterationOutput.setBoardingTime(simulation.boardingTime);
+				boardingTimes.add(simulation.boardingTime);
+
+				studyOutput.getStudyIterationsOutput().getStudyIterationOutput().add(studyIterationOutput);
+
 			}
+
+			studyOutput.setAverageBoardingTime(boardingTimes.stream().mapToDouble(t -> t).average().getAsDouble());
+
 			System.out.println(Log.DIVIDER);
+
 		}
 
 		time.stop();
 		Log.start("All Completed");
 		Log.end(time);
+
+	}
+
+	static void main(String[] args) {
+
+		PaxelerateType toolInitial = PaxelerateFactory.eINSTANCE.createPaxelerateType();
+
+		CpacsType cpacsInitial = CPACSInitializer
+				.runWithToolspecific(new File("C:\\Users\\marc.engelmann\\desktop\\example.xml"), toolInitial);
+
+		String cpacsStr = CPACSWriter.toString(cpacsInitial);
+
+		CpacsType cpacs = CpacsFactory.eINSTANCE.createCpacsType();
+
+		PaxelerateType tool = PaxelerateFactory.eINSTANCE.createPaxelerateType();
+		CPACSInitializer.initFromStringWithToolspecific(cpacs, cpacsStr, tool);
+		BatchSimulationAction.run(cpacs, tool, null);
 	}
 }

@@ -67,11 +67,6 @@ public class PaxelerateAdapterFactory extends AdapterFactoryImpl {
 	 */
 	protected PaxelerateSwitch<Adapter> modelSwitch = new PaxelerateSwitch<Adapter>() {
 		@Override
-		public Adapter caseComplexBaseType(ComplexBaseType object) {
-			return createComplexBaseTypeAdapter();
-		}
-
-		@Override
 		public Adapter caseDocumentRoot(DocumentRoot object) {
 			return createDocumentRootAdapter();
 		}
@@ -82,13 +77,43 @@ public class PaxelerateAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter casePaxelerateOutputType(PaxelerateOutputType object) {
+			return createPaxelerateOutputTypeAdapter();
+		}
+
+		@Override
+		public Adapter casePaxelerateSettingsType(PaxelerateSettingsType object) {
+			return createPaxelerateSettingsTypeAdapter();
+		}
+
+		@Override
 		public Adapter casePaxelerateType(PaxelerateType object) {
 			return createPaxelerateTypeAdapter();
 		}
 
 		@Override
+		public Adapter caseStudiesOutputType(StudiesOutputType object) {
+			return createStudiesOutputTypeAdapter();
+		}
+
+		@Override
 		public Adapter caseStudiesType(StudiesType object) {
 			return createStudiesTypeAdapter();
+		}
+
+		@Override
+		public Adapter caseStudyIterationOutputType(StudyIterationOutputType object) {
+			return createStudyIterationOutputTypeAdapter();
+		}
+
+		@Override
+		public Adapter caseStudyIterationsOutputType(StudyIterationsOutputType object) {
+			return createStudyIterationsOutputTypeAdapter();
+		}
+
+		@Override
+		public Adapter caseStudyOutputType(StudyOutputType object) {
+			return createStudyOutputTypeAdapter();
 		}
 
 		@Override
@@ -113,20 +138,6 @@ public class PaxelerateAdapterFactory extends AdapterFactoryImpl {
 	@Override
 	public Adapter createAdapter(Notifier target) {
 		return modelSwitch.doSwitch((EObject) target);
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link paxelerate.ComplexBaseType <em>Complex Base Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see paxelerate.ComplexBaseType
-	 * @generated
-	 */
-	public Adapter createComplexBaseTypeAdapter() {
-		return null;
 	}
 
 	/**
@@ -158,6 +169,34 @@ public class PaxelerateAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link paxelerate.PaxelerateOutputType <em>Output Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see paxelerate.PaxelerateOutputType
+	 * @generated
+	 */
+	public Adapter createPaxelerateOutputTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link paxelerate.PaxelerateSettingsType <em>Settings Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see paxelerate.PaxelerateSettingsType
+	 * @generated
+	 */
+	public Adapter createPaxelerateSettingsTypeAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link paxelerate.PaxelerateType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -172,6 +211,20 @@ public class PaxelerateAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link paxelerate.StudiesOutputType <em>Studies Output Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see paxelerate.StudiesOutputType
+	 * @generated
+	 */
+	public Adapter createStudiesOutputTypeAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link paxelerate.StudiesType <em>Studies Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -182,6 +235,48 @@ public class PaxelerateAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStudiesTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link paxelerate.StudyIterationOutputType <em>Study Iteration Output Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see paxelerate.StudyIterationOutputType
+	 * @generated
+	 */
+	public Adapter createStudyIterationOutputTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link paxelerate.StudyIterationsOutputType <em>Study Iterations Output Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see paxelerate.StudyIterationsOutputType
+	 * @generated
+	 */
+	public Adapter createStudyIterationsOutputTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link paxelerate.StudyOutputType <em>Study Output Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see paxelerate.StudyOutputType
+	 * @generated
+	 */
+	public Adapter createStudyOutputTypeAdapter() {
 		return null;
 	}
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2014 - 2021 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) since 2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the GNU General Public License v3.0 which accompanies this distribution,
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
@@ -13,7 +13,9 @@ import com.paxelerate.model.monuments.MonumentsFactory;
 import com.paxelerate.model.monuments.Row;
 import com.paxelerate.model.monuments.SeatGroup;
 
-import Cpacs.CabinSeatElementType;
+import Cpacs.DeckComponent2DBaseType;
+import Cpacs.SeatElementType;
+import Cpacs.SeatElementsType;
 import net.bhl.opensource.toolbox.emf.EObjectHelper;
 
 /**
@@ -117,19 +119,14 @@ public interface SeatGroupExtensions {
 	 * @param values
 	 */
 
-	static void fromCPACS(Deck deck, CabinSeatElementType seatType) {
+	static void fromCPACS(Deck deck, DeckComponent2DBaseType seatType, SeatElementsType seatTemplates) {
 
-		String className = seatType.getType().getValue();
+		SeatElementType template = seatTemplates.getSeatElement().stream()
+				.filter(s -> s.getUID().contentEquals(seatType.getDeckElementUID().getValue())).findFirst().get();
 
-		double x = seatType.getX().getValue();
-		double y = seatType.getY().getValue();
+		double x = seatType.getTransformation().getTranslation().getX().getValue();
+		double y = seatType.getTransformation().getTranslation().getY().getValue();
 
-		double width = seatType.getWidth().getValue();
-		double length = seatType.getLength().getValue();
-
-		double height = seatType.getHeight().getValue();
-
-		int numberOfSeats = seatType.getNSeats().getValue().intValue();
 		String seatDefinition = seatType.getName().getValue().substring(6);
 
 		int rowValue = 0;
@@ -149,8 +146,6 @@ public interface SeatGroupExtensions {
 			}
 		}
 
-		TravelClass tc = TravelClassExtensions.getClassByCPACSLiteral(className);
-
 		// Create all yet not existing rows
 		for (int i = 0; i < rowValue; i++) {
 			try {
@@ -160,15 +155,19 @@ public interface SeatGroupExtensions {
 			}
 		}
 
-		// Multiply by 100 because of different units. (CPACS: Meters, PAXelerate:
-		// Centimeters). Move half the AC diameter to the right to prevent negative
-		// values
-		EPoint groupPosition = EPointExtensions.create(x, y - width / 2.0);
-		EPoint groupSize = EPointExtensions.create(length, width, height);
+		EPoint groupPosition = EPointExtensions.create(x, y);
+
+		EPoint groupSize = EPointExtensions.create(template.getGeometry().getBoundingBox().getDeltaX().getValue(),
+				template.getGeometry().getBoundingBox().getDeltaY().getValue(),
+				template.getGeometry().getBoundingBox().getDeltaZ().getValue());
+
+		TravelClass tc = TravelClassExtensions.getClassByCPACSLiteral(template.getDescription().getValue());
+
+		int numberOfSeats = template.getNumberOfSeats().getValue().intValue();
 
 		SeatGroup group = SeatGroupExtensions.create(deck.getRows().get(rowValue - 1), groupPosition, groupSize,
 				seatDefinition, tc, numberOfSeats, letters.charAt(0));
-		// initSeats(numberOfSeats, letters.charAt(0), group);
+
 	}
 
 }

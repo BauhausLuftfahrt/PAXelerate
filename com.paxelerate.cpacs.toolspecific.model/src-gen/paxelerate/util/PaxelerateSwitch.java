@@ -66,13 +66,6 @@ public class PaxelerateSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-		case PaxeleratePackage.COMPLEX_BASE_TYPE: {
-			ComplexBaseType complexBaseType = (ComplexBaseType) theEObject;
-			T result = caseComplexBaseType(complexBaseType);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
 		case PaxeleratePackage.DOCUMENT_ROOT: {
 			DocumentRoot documentRoot = (DocumentRoot) theEObject;
 			T result = caseDocumentRoot(documentRoot);
@@ -84,7 +77,19 @@ public class PaxelerateSwitch<T> extends Switch<T> {
 			PaxelerateInputType paxelerateInputType = (PaxelerateInputType) theEObject;
 			T result = casePaxelerateInputType(paxelerateInputType);
 			if (result == null)
-				result = caseComplexBaseType(paxelerateInputType);
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PaxeleratePackage.PAXELERATE_OUTPUT_TYPE: {
+			PaxelerateOutputType paxelerateOutputType = (PaxelerateOutputType) theEObject;
+			T result = casePaxelerateOutputType(paxelerateOutputType);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PaxeleratePackage.PAXELERATE_SETTINGS_TYPE: {
+			PaxelerateSettingsType paxelerateSettingsType = (PaxelerateSettingsType) theEObject;
+			T result = casePaxelerateSettingsType(paxelerateSettingsType);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -93,7 +98,12 @@ public class PaxelerateSwitch<T> extends Switch<T> {
 			PaxelerateType paxelerateType = (PaxelerateType) theEObject;
 			T result = casePaxelerateType(paxelerateType);
 			if (result == null)
-				result = caseComplexBaseType(paxelerateType);
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PaxeleratePackage.STUDIES_OUTPUT_TYPE: {
+			StudiesOutputType studiesOutputType = (StudiesOutputType) theEObject;
+			T result = caseStudiesOutputType(studiesOutputType);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -102,7 +112,26 @@ public class PaxelerateSwitch<T> extends Switch<T> {
 			StudiesType studiesType = (StudiesType) theEObject;
 			T result = caseStudiesType(studiesType);
 			if (result == null)
-				result = caseComplexBaseType(studiesType);
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PaxeleratePackage.STUDY_ITERATION_OUTPUT_TYPE: {
+			StudyIterationOutputType studyIterationOutputType = (StudyIterationOutputType) theEObject;
+			T result = caseStudyIterationOutputType(studyIterationOutputType);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PaxeleratePackage.STUDY_ITERATIONS_OUTPUT_TYPE: {
+			StudyIterationsOutputType studyIterationsOutputType = (StudyIterationsOutputType) theEObject;
+			T result = caseStudyIterationsOutputType(studyIterationsOutputType);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PaxeleratePackage.STUDY_OUTPUT_TYPE: {
+			StudyOutputType studyOutputType = (StudyOutputType) theEObject;
+			T result = caseStudyOutputType(studyOutputType);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -111,29 +140,12 @@ public class PaxelerateSwitch<T> extends Switch<T> {
 			StudyType studyType = (StudyType) theEObject;
 			T result = caseStudyType(studyType);
 			if (result == null)
-				result = caseComplexBaseType(studyType);
-			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
 		default:
 			return defaultCase(theEObject);
 		}
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Complex Base Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Complex Base Type</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseComplexBaseType(ComplexBaseType object) {
-		return null;
 	}
 
 	/**
@@ -167,6 +179,36 @@ public class PaxelerateSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Output Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Output Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePaxelerateOutputType(PaxelerateOutputType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Settings Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Settings Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePaxelerateSettingsType(PaxelerateSettingsType object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -182,6 +224,21 @@ public class PaxelerateSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Studies Output Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Studies Output Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStudiesOutputType(StudiesOutputType object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Studies Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -193,6 +250,51 @@ public class PaxelerateSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseStudiesType(StudiesType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Study Iteration Output Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Study Iteration Output Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStudyIterationOutputType(StudyIterationOutputType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Study Iterations Output Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Study Iterations Output Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStudyIterationsOutputType(StudyIterationsOutputType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Study Output Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Study Output Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStudyOutputType(StudyOutputType object) {
 		return null;
 	}
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2014 - 2021 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) since 2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the GNU General Public License v3.0 which accompanies this distribution,
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
@@ -12,6 +12,8 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import com.paxelerate.core.simulation.astar.Node.Layer;
+import com.paxelerate.core.simulation.astar.Node.Property;
 import com.paxelerate.model.Deck;
 import com.paxelerate.model.EPoint;
 import com.paxelerate.model.extensions.DeckExtensions;
@@ -135,5 +137,22 @@ public class Areamap {
 	 */
 	public List<Node> getNodes() {
 		return Arrays.stream(structure).flatMap(Arrays::stream).collect(Collectors.toList());
+	}
+
+	@Override
+	public String toString() {
+		String output = "";
+
+		Layer layer = Layer.ASTAR;
+
+		for (int x = 0; x < size.getX(); x++) {
+			for (int y = 0; y < size.getY(); y++) {
+				String flag = structure[x][y].getProperty(layer) == Property.FREE ? " " : "x";
+				output += flag;
+			}
+			output += "\n";
+		}
+
+		return output;
 	}
 }

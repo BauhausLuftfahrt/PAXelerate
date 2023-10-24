@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2014 - 2021 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) since 2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the GNU General Public License v3.0 which accompanies this distribution,
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
@@ -32,7 +32,7 @@ public interface BoardingDelayCalculator {
 
 		StopWatch watch = new StopWatch();
 
-		Log.start("Distibuting doors & delay");
+		Log.start("Distributing doors & delay");
 
 		// Loop through all doors
 		for (Door door : list) {

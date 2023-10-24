@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2014 - 2021 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) since 2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the GNU General Public License v3.0 which accompanies this distribution,
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
@@ -20,6 +20,7 @@ import com.paxelerate.model.monuments.Seat;
 import com.paxelerate.model.monuments.SeatGroup;
 
 import Cpacs.DeckType;
+import net.bhl.opensource.cpacs.model.extensions.basetype.DoubleVectorExtensions;
 import net.bhl.opensource.cpacs.model.extensions.basetype.StringVectorExtensions;
 import net.bhl.opensource.toolbox.emf.EObjectHelper;
 import net.bhl.opensource.toolbox.math.BHLMath;
@@ -156,19 +157,18 @@ public interface DeckExtensions {
 	 */
 	static void geometryFromCPACS(Deck deck, DeckType deckType) {
 
-		List<Double> geometryX = StringVectorExtensions.toDoubleList(deckType.getCabGeometry().getX());
-		List<Double> geometryZ = deckType.getCabGeometry().getZ() == null ? null
-				: StringVectorExtensions.toDoubleList(deckType.getCabGeometry().getZ());
-		List<Double> geometryYZ1 = StringVectorExtensions.toDoubleList(deckType.getCabGeometry().getY());
+		List<Double> geometryX = StringVectorExtensions.toDoubleList(deckType.getCabinGeometry().getX());
+		Double geometryZ = deckType.getCabinGeometry().getContours().getContour().get(0).getZ().getValue();
+		List<Double> geometryYZ1 = DoubleVectorExtensions
+				.toDoubleList(deckType.getCabinGeometry().getContours().getContour().get(0).getY());
 
 		for (int j = 0; j < geometryX.size(); j++) {
 
 			EPoint vec = ModelFactory.eINSTANCE.createEPoint();
 			vec.setX(geometryX.get(j));
 			vec.setY(geometryYZ1.get(j));
-			vec.setZ(geometryZ != null ? geometryZ.get(0) : 0.0);
+			vec.setZ(geometryZ);
 			deck.getShapeFloor().add(vec);
 		}
 	}
-
 }

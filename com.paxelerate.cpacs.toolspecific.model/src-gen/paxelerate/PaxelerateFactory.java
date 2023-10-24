@@ -22,15 +22,6 @@ public interface PaxelerateFactory extends EFactory {
 	PaxelerateFactory eINSTANCE = paxelerate.impl.PaxelerateFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Complex Base Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Complex Base Type</em>'.
-	 * @generated
-	 */
-	ComplexBaseType createComplexBaseType();
-
-	/**
 	 * Returns a new object of class '<em>Document Root</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -49,6 +40,24 @@ public interface PaxelerateFactory extends EFactory {
 	PaxelerateInputType createPaxelerateInputType();
 
 	/**
+	 * Returns a new object of class '<em>Output Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Output Type</em>'.
+	 * @generated
+	 */
+	PaxelerateOutputType createPaxelerateOutputType();
+
+	/**
+	 * Returns a new object of class '<em>Settings Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Settings Type</em>'.
+	 * @generated
+	 */
+	PaxelerateSettingsType createPaxelerateSettingsType();
+
+	/**
 	 * Returns a new object of class '<em>Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -58,6 +67,15 @@ public interface PaxelerateFactory extends EFactory {
 	PaxelerateType createPaxelerateType();
 
 	/**
+	 * Returns a new object of class '<em>Studies Output Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Studies Output Type</em>'.
+	 * @generated
+	 */
+	StudiesOutputType createStudiesOutputType();
+
+	/**
 	 * Returns a new object of class '<em>Studies Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -65,6 +83,33 @@ public interface PaxelerateFactory extends EFactory {
 	 * @generated
 	 */
 	StudiesType createStudiesType();
+
+	/**
+	 * Returns a new object of class '<em>Study Iteration Output Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Study Iteration Output Type</em>'.
+	 * @generated
+	 */
+	StudyIterationOutputType createStudyIterationOutputType();
+
+	/**
+	 * Returns a new object of class '<em>Study Iterations Output Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Study Iterations Output Type</em>'.
+	 * @generated
+	 */
+	StudyIterationsOutputType createStudyIterationsOutputType();
+
+	/**
+	 * Returns a new object of class '<em>Study Output Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Study Output Type</em>'.
+	 * @generated
+	 */
+	StudyOutputType createStudyOutputType();
 
 	/**
 	 * Returns a new object of class '<em>Study Type</em>'.

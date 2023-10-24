@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2014 - 2021 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) since 2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the GNU General Public License v3.0 which accompanies this distribution,
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
@@ -48,6 +48,7 @@ public class SimulateBoardingAction {
 	private JFrame frame;
 	static boolean simulationFailed = false;
 	private static List<ArrayList<Integer>> boardingStatus = new ArrayList<>();
+	public final double boardingTime;
 
 	/**
 	 * Export result data.
@@ -142,7 +143,7 @@ public class SimulateBoardingAction {
 	 * @param study
 	 */
 	public SimulateBoardingAction(final Deck deck, int iteration, Areamap map, String fileName, StudyType study,
-			int iMax) {
+			int iMax, boolean displaySimulation) {
 
 		Settings settings = EObjectHelper.getParent(Model.class, deck).getSettings();
 
@@ -157,7 +158,7 @@ public class SimulateBoardingAction {
 		SimulationHandler handler = new SimulationHandler(deck, false, map);
 
 		/* Show WIP simulation view */
-		if (study.isDisplaySimulation()) {
+		if (displaySimulation) {
 			runAreaMapWindow(handler, iteration, iMax, study.getUID());
 		}
 
@@ -182,15 +183,17 @@ public class SimulateBoardingAction {
 				e.printStackTrace();
 			}
 
-			if (study.isDisplaySimulation() && frame == null) {
+			if (displaySimulation && frame == null) {
 				handler.reset();
 			}
 		}
 
 		/* closes the simulation view after completion */
-		if (study.isDisplaySimulation() && frame != null) {
+		if (displaySimulation && frame != null) {
 			frame.dispose();
 		}
+
+		boardingTime = handler.getMasterBoardingTime() * settings.getSimulationSpeedFactor() / 1000.0;
 
 		/* saves results to results model element */
 		ExportResultsAction.setSimulationData(handler, EObjectHelper.getParent(Model.class, deck), boardingStatus,
@@ -198,7 +201,10 @@ public class SimulateBoardingAction {
 				simTimer.getElapsedTimeSecs());
 
 		// data export
-		exportResultData(iteration, deck, fileName, study.getUID());
+		if (fileName != null) {
+			exportResultData(iteration, deck, fileName, study.getUID());
+		}
+
 		handler.reset();
 		boardingStatus.clear();
 

@@ -2,6 +2,8 @@
  */
 package paxelerate;
 
+import org.eclipse.emf.ecore.EObject;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Study Type</b></em>'.
@@ -15,7 +17,6 @@ package paxelerate;
  *   <li>{@link paxelerate.StudyType#getActiveDoorUIDs <em>Active Door UI Ds</em>}</li>
  *   <li>{@link paxelerate.StudyType#getIterations <em>Iterations</em>}</li>
  *   <li>{@link paxelerate.StudyType#getSimulationType <em>Simulation Type</em>}</li>
- *   <li>{@link paxelerate.StudyType#isDisplaySimulation <em>Display Simulation</em>}</li>
  *   <li>{@link paxelerate.StudyType#getSeatType <em>Seat Type</em>}</li>
  *   <li>{@link paxelerate.StudyType#getSimulationGridResolution <em>Simulation Grid Resolution</em>}</li>
  *   <li>{@link paxelerate.StudyType#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}</li>
@@ -32,7 +33,7 @@ package paxelerate;
  * @model extendedMetaData="name='studyType' kind='elementOnly'"
  * @generated
  */
-public interface StudyType extends ComplexBaseType {
+public interface StudyType extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Load Factor</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -208,56 +209,6 @@ public interface StudyType extends ComplexBaseType {
 	 * @generated
 	 */
 	boolean isSetSimulationType();
-
-	/**
-	 * Returns the value of the '<em><b>Display Simulation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Display Simulation</em>' attribute.
-	 * @see #isSetDisplaySimulation()
-	 * @see #unsetDisplaySimulation()
-	 * @see #setDisplaySimulation(boolean)
-	 * @see paxelerate.PaxeleratePackage#getStudyType_DisplaySimulation()
-	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Boolean" required="true"
-	 *        extendedMetaData="kind='element' name='displaySimulation' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	boolean isDisplaySimulation();
-
-	/**
-	 * Sets the value of the '{@link paxelerate.StudyType#isDisplaySimulation <em>Display Simulation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Display Simulation</em>' attribute.
-	 * @see #isSetDisplaySimulation()
-	 * @see #unsetDisplaySimulation()
-	 * @see #isDisplaySimulation()
-	 * @generated
-	 */
-	void setDisplaySimulation(boolean value);
-
-	/**
-	 * Unsets the value of the '{@link paxelerate.StudyType#isDisplaySimulation <em>Display Simulation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetDisplaySimulation()
-	 * @see #isDisplaySimulation()
-	 * @see #setDisplaySimulation(boolean)
-	 * @generated
-	 */
-	void unsetDisplaySimulation();
-
-	/**
-	 * Returns whether the value of the '{@link paxelerate.StudyType#isDisplaySimulation <em>Display Simulation</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Display Simulation</em>' attribute is set.
-	 * @see #unsetDisplaySimulation()
-	 * @see #isDisplaySimulation()
-	 * @see #setDisplaySimulation(boolean)
-	 * @generated
-	 */
-	boolean isSetDisplaySimulation();
 
 	/**
 	 * Returns the value of the '<em><b>Seat Type</b></em>' attribute.

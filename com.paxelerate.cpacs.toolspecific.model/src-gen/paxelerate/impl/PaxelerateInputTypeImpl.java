@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import paxelerate.PaxelerateInputType;
 import paxelerate.PaxeleratePackage;
@@ -27,7 +28,7 @@ import paxelerate.StudiesType;
  *
  * @generated
  */
-public class PaxelerateInputTypeImpl extends ComplexBaseTypeImpl implements PaxelerateInputType {
+public class PaxelerateInputTypeImpl extends MinimalEObjectImpl.Container implements PaxelerateInputType {
 	/**
 	 * The cached value of the '{@link #getStudies() <em>Studies</em>}' containment reference.
 	 * <!-- begin-user-doc -->

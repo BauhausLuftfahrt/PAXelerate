@@ -4,6 +4,8 @@ package paxelerate;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EObject;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Studies Type</b></em>'.
@@ -20,7 +22,7 @@ import org.eclipse.emf.common.util.EList;
  * @model extendedMetaData="name='studiesType' kind='elementOnly'"
  * @generated
  */
-public interface StudiesType extends ComplexBaseType {
+public interface StudiesType extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Study</b></em>' containment reference list.
 	 * The list contents are of type {@link paxelerate.StudyType}.

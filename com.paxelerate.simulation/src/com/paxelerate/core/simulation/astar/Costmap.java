@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright> Copyright (c) 2014 - 2021 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
+ * <copyright> Copyright (c) since 2014 Bauhaus Luftfahrt e.V.. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the GNU General Public License v3.0 which accompanies this distribution,
  * and is available at https://www.gnu.org/licenses/gpl-3.0.html.en </copyright>
  *******************************************************************************/
@@ -59,13 +59,15 @@ public class Costmap {
 
 		for (IntVector goal : goals) {
 
-			areamap.get(goal).ifPresentOrElse(node -> {
+			if (areamap.get(goal).isPresent()) {
+				Node node = areamap.get(goal).get();
 				while (node.getProperty(Layer.ASTAR) != Property.FREE) {
 					goal.setX(goal.getX() - 1);
 				}
-			}, () -> {
+
+			} else {
 				throw new NullPointerException("CostMap: Goal Node " + goal.toString() + " does not exist!");
-			});
+			}
 
 		}
 

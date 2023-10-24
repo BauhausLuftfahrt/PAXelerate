@@ -59,61 +59,6 @@ public interface PaxeleratePackage extends EPackage {
 	PaxeleratePackage eINSTANCE = paxelerate.impl.PaxeleratePackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link paxelerate.impl.ComplexBaseTypeImpl <em>Complex Base Type</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see paxelerate.impl.ComplexBaseTypeImpl
-	 * @see paxelerate.impl.PaxeleratePackageImpl#getComplexBaseType()
-	 * @generated
-	 */
-	int COMPLEX_BASE_TYPE = 0;
-
-	/**
-	 * The feature id for the '<em><b>External Data Directory</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPLEX_BASE_TYPE__EXTERNAL_DATA_DIRECTORY = 0;
-
-	/**
-	 * The feature id for the '<em><b>External Data Node Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPLEX_BASE_TYPE__EXTERNAL_DATA_NODE_PATH = 1;
-
-	/**
-	 * The feature id for the '<em><b>External File Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPLEX_BASE_TYPE__EXTERNAL_FILE_NAME = 2;
-
-	/**
-	 * The number of structural features of the '<em>Complex Base Type</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPLEX_BASE_TYPE_FEATURE_COUNT = 3;
-
-	/**
-	 * The number of operations of the '<em>Complex Base Type</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPLEX_BASE_TYPE_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link paxelerate.impl.DocumentRootImpl <em>Document Root</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -121,7 +66,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getDocumentRoot()
 	 * @generated
 	 */
-	int DOCUMENT_ROOT = 1;
+	int DOCUMENT_ROOT = 0;
 
 	/**
 	 * The feature id for the '<em><b>Mixed</b></em>' attribute list.
@@ -185,34 +130,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getPaxelerateInputType()
 	 * @generated
 	 */
-	int PAXELERATE_INPUT_TYPE = 2;
-
-	/**
-	 * The feature id for the '<em><b>External Data Directory</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAXELERATE_INPUT_TYPE__EXTERNAL_DATA_DIRECTORY = COMPLEX_BASE_TYPE__EXTERNAL_DATA_DIRECTORY;
-
-	/**
-	 * The feature id for the '<em><b>External Data Node Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAXELERATE_INPUT_TYPE__EXTERNAL_DATA_NODE_PATH = COMPLEX_BASE_TYPE__EXTERNAL_DATA_NODE_PATH;
-
-	/**
-	 * The feature id for the '<em><b>External File Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAXELERATE_INPUT_TYPE__EXTERNAL_FILE_NAME = COMPLEX_BASE_TYPE__EXTERNAL_FILE_NAME;
+	int PAXELERATE_INPUT_TYPE = 1;
 
 	/**
 	 * The feature id for the '<em><b>Studies</b></em>' containment reference.
@@ -221,7 +139,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAXELERATE_INPUT_TYPE__STUDIES = COMPLEX_BASE_TYPE_FEATURE_COUNT + 0;
+	int PAXELERATE_INPUT_TYPE__STUDIES = 0;
 
 	/**
 	 * The number of structural features of the '<em>Input Type</em>' class.
@@ -230,7 +148,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAXELERATE_INPUT_TYPE_FEATURE_COUNT = COMPLEX_BASE_TYPE_FEATURE_COUNT + 1;
+	int PAXELERATE_INPUT_TYPE_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>Input Type</em>' class.
@@ -239,7 +157,81 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAXELERATE_INPUT_TYPE_OPERATION_COUNT = COMPLEX_BASE_TYPE_OPERATION_COUNT + 0;
+	int PAXELERATE_INPUT_TYPE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link paxelerate.impl.PaxelerateOutputTypeImpl <em>Output Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see paxelerate.impl.PaxelerateOutputTypeImpl
+	 * @see paxelerate.impl.PaxeleratePackageImpl#getPaxelerateOutputType()
+	 * @generated
+	 */
+	int PAXELERATE_OUTPUT_TYPE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Studies Output</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAXELERATE_OUTPUT_TYPE__STUDIES_OUTPUT = 0;
+
+	/**
+	 * The number of structural features of the '<em>Output Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAXELERATE_OUTPUT_TYPE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Output Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAXELERATE_OUTPUT_TYPE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link paxelerate.impl.PaxelerateSettingsTypeImpl <em>Settings Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see paxelerate.impl.PaxelerateSettingsTypeImpl
+	 * @see paxelerate.impl.PaxeleratePackageImpl#getPaxelerateSettingsType()
+	 * @generated
+	 */
+	int PAXELERATE_SETTINGS_TYPE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Display Simulation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAXELERATE_SETTINGS_TYPE__DISPLAY_SIMULATION = 0;
+
+	/**
+	 * The number of structural features of the '<em>Settings Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAXELERATE_SETTINGS_TYPE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Settings Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAXELERATE_SETTINGS_TYPE_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link paxelerate.impl.PaxelerateTypeImpl <em>Type</em>}' class.
@@ -249,34 +241,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getPaxelerateType()
 	 * @generated
 	 */
-	int PAXELERATE_TYPE = 3;
-
-	/**
-	 * The feature id for the '<em><b>External Data Directory</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAXELERATE_TYPE__EXTERNAL_DATA_DIRECTORY = COMPLEX_BASE_TYPE__EXTERNAL_DATA_DIRECTORY;
-
-	/**
-	 * The feature id for the '<em><b>External Data Node Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAXELERATE_TYPE__EXTERNAL_DATA_NODE_PATH = COMPLEX_BASE_TYPE__EXTERNAL_DATA_NODE_PATH;
-
-	/**
-	 * The feature id for the '<em><b>External File Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAXELERATE_TYPE__EXTERNAL_FILE_NAME = COMPLEX_BASE_TYPE__EXTERNAL_FILE_NAME;
+	int PAXELERATE_TYPE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Input</b></em>' containment reference.
@@ -285,7 +250,25 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAXELERATE_TYPE__INPUT = COMPLEX_BASE_TYPE_FEATURE_COUNT + 0;
+	int PAXELERATE_TYPE__INPUT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Output</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAXELERATE_TYPE__OUTPUT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Settings</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAXELERATE_TYPE__SETTINGS = 2;
 
 	/**
 	 * The number of structural features of the '<em>Type</em>' class.
@@ -294,7 +277,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAXELERATE_TYPE_FEATURE_COUNT = COMPLEX_BASE_TYPE_FEATURE_COUNT + 1;
+	int PAXELERATE_TYPE_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Type</em>' class.
@@ -303,7 +286,44 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAXELERATE_TYPE_OPERATION_COUNT = COMPLEX_BASE_TYPE_OPERATION_COUNT + 0;
+	int PAXELERATE_TYPE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link paxelerate.impl.StudiesOutputTypeImpl <em>Studies Output Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see paxelerate.impl.StudiesOutputTypeImpl
+	 * @see paxelerate.impl.PaxeleratePackageImpl#getStudiesOutputType()
+	 * @generated
+	 */
+	int STUDIES_OUTPUT_TYPE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Study Output</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDIES_OUTPUT_TYPE__STUDY_OUTPUT = 0;
+
+	/**
+	 * The number of structural features of the '<em>Studies Output Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDIES_OUTPUT_TYPE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Studies Output Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDIES_OUTPUT_TYPE_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link paxelerate.impl.StudiesTypeImpl <em>Studies Type</em>}' class.
@@ -313,34 +333,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getStudiesType()
 	 * @generated
 	 */
-	int STUDIES_TYPE = 4;
-
-	/**
-	 * The feature id for the '<em><b>External Data Directory</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STUDIES_TYPE__EXTERNAL_DATA_DIRECTORY = COMPLEX_BASE_TYPE__EXTERNAL_DATA_DIRECTORY;
-
-	/**
-	 * The feature id for the '<em><b>External Data Node Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STUDIES_TYPE__EXTERNAL_DATA_NODE_PATH = COMPLEX_BASE_TYPE__EXTERNAL_DATA_NODE_PATH;
-
-	/**
-	 * The feature id for the '<em><b>External File Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STUDIES_TYPE__EXTERNAL_FILE_NAME = COMPLEX_BASE_TYPE__EXTERNAL_FILE_NAME;
+	int STUDIES_TYPE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Study</b></em>' containment reference list.
@@ -349,7 +342,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDIES_TYPE__STUDY = COMPLEX_BASE_TYPE_FEATURE_COUNT + 0;
+	int STUDIES_TYPE__STUDY = 0;
 
 	/**
 	 * The number of structural features of the '<em>Studies Type</em>' class.
@@ -358,7 +351,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDIES_TYPE_FEATURE_COUNT = COMPLEX_BASE_TYPE_FEATURE_COUNT + 1;
+	int STUDIES_TYPE_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>Studies Type</em>' class.
@@ -367,7 +360,136 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDIES_TYPE_OPERATION_COUNT = COMPLEX_BASE_TYPE_OPERATION_COUNT + 0;
+	int STUDIES_TYPE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link paxelerate.impl.StudyIterationOutputTypeImpl <em>Study Iteration Output Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see paxelerate.impl.StudyIterationOutputTypeImpl
+	 * @see paxelerate.impl.PaxeleratePackageImpl#getStudyIterationOutputType()
+	 * @generated
+	 */
+	int STUDY_ITERATION_OUTPUT_TYPE = 7;
+
+	/**
+	 * The feature id for the '<em><b>Boarding Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_ITERATION_OUTPUT_TYPE__BOARDING_TIME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Study Iteration Output Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_ITERATION_OUTPUT_TYPE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Study Iteration Output Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_ITERATION_OUTPUT_TYPE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link paxelerate.impl.StudyIterationsOutputTypeImpl <em>Study Iterations Output Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see paxelerate.impl.StudyIterationsOutputTypeImpl
+	 * @see paxelerate.impl.PaxeleratePackageImpl#getStudyIterationsOutputType()
+	 * @generated
+	 */
+	int STUDY_ITERATIONS_OUTPUT_TYPE = 8;
+
+	/**
+	 * The feature id for the '<em><b>Study Iteration Output</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_ITERATIONS_OUTPUT_TYPE__STUDY_ITERATION_OUTPUT = 0;
+
+	/**
+	 * The number of structural features of the '<em>Study Iterations Output Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_ITERATIONS_OUTPUT_TYPE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Study Iterations Output Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_ITERATIONS_OUTPUT_TYPE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link paxelerate.impl.StudyOutputTypeImpl <em>Study Output Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see paxelerate.impl.StudyOutputTypeImpl
+	 * @see paxelerate.impl.PaxeleratePackageImpl#getStudyOutputType()
+	 * @generated
+	 */
+	int STUDY_OUTPUT_TYPE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Average Boarding Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_OUTPUT_TYPE__AVERAGE_BOARDING_TIME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Study Iterations Output</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_OUTPUT_TYPE__STUDY_ITERATIONS_OUTPUT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Linked Study UID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_OUTPUT_TYPE__LINKED_STUDY_UID = 2;
+
+	/**
+	 * The number of structural features of the '<em>Study Output Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_OUTPUT_TYPE_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Study Output Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_OUTPUT_TYPE_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link paxelerate.impl.StudyTypeImpl <em>Study Type</em>}' class.
@@ -377,34 +499,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getStudyType()
 	 * @generated
 	 */
-	int STUDY_TYPE = 5;
-
-	/**
-	 * The feature id for the '<em><b>External Data Directory</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STUDY_TYPE__EXTERNAL_DATA_DIRECTORY = COMPLEX_BASE_TYPE__EXTERNAL_DATA_DIRECTORY;
-
-	/**
-	 * The feature id for the '<em><b>External Data Node Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STUDY_TYPE__EXTERNAL_DATA_NODE_PATH = COMPLEX_BASE_TYPE__EXTERNAL_DATA_NODE_PATH;
-
-	/**
-	 * The feature id for the '<em><b>External File Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STUDY_TYPE__EXTERNAL_FILE_NAME = COMPLEX_BASE_TYPE__EXTERNAL_FILE_NAME;
+	int STUDY_TYPE = 10;
 
 	/**
 	 * The feature id for the '<em><b>Load Factor</b></em>' attribute.
@@ -413,7 +508,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__LOAD_FACTOR = COMPLEX_BASE_TYPE_FEATURE_COUNT + 0;
+	int STUDY_TYPE__LOAD_FACTOR = 0;
 
 	/**
 	 * The feature id for the '<em><b>Active Door UI Ds</b></em>' attribute.
@@ -422,7 +517,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__ACTIVE_DOOR_UI_DS = COMPLEX_BASE_TYPE_FEATURE_COUNT + 1;
+	int STUDY_TYPE__ACTIVE_DOOR_UI_DS = 1;
 
 	/**
 	 * The feature id for the '<em><b>Iterations</b></em>' attribute.
@@ -431,7 +526,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__ITERATIONS = COMPLEX_BASE_TYPE_FEATURE_COUNT + 2;
+	int STUDY_TYPE__ITERATIONS = 2;
 
 	/**
 	 * The feature id for the '<em><b>Simulation Type</b></em>' attribute.
@@ -440,16 +535,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__SIMULATION_TYPE = COMPLEX_BASE_TYPE_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Display Simulation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STUDY_TYPE__DISPLAY_SIMULATION = COMPLEX_BASE_TYPE_FEATURE_COUNT + 4;
+	int STUDY_TYPE__SIMULATION_TYPE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Seat Type</b></em>' attribute.
@@ -458,7 +544,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__SEAT_TYPE = COMPLEX_BASE_TYPE_FEATURE_COUNT + 5;
+	int STUDY_TYPE__SEAT_TYPE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Simulation Grid Resolution</b></em>' attribute.
@@ -467,7 +553,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__SIMULATION_GRID_RESOLUTION = COMPLEX_BASE_TYPE_FEATURE_COUNT + 6;
+	int STUDY_TYPE__SIMULATION_GRID_RESOLUTION = 5;
 
 	/**
 	 * The feature id for the '<em><b>Simulation Speed Factor</b></em>' attribute.
@@ -476,7 +562,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__SIMULATION_SPEED_FACTOR = COMPLEX_BASE_TYPE_FEATURE_COUNT + 7;
+	int STUDY_TYPE__SIMULATION_SPEED_FACTOR = 6;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Sorting Scheme</b></em>' attribute.
@@ -485,7 +571,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__PASSENGER_SORTING_SCHEME = COMPLEX_BASE_TYPE_FEATURE_COUNT + 8;
+	int STUDY_TYPE__PASSENGER_SORTING_SCHEME = 7;
 
 	/**
 	 * The feature id for the '<em><b>Door Selection</b></em>' attribute.
@@ -494,7 +580,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__DOOR_SELECTION = COMPLEX_BASE_TYPE_FEATURE_COUNT + 9;
+	int STUDY_TYPE__DOOR_SELECTION = 8;
 
 	/**
 	 * The feature id for the '<em><b>Percentage Of Passengers With Jackets</b></em>' attribute.
@@ -503,7 +589,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_JACKETS = COMPLEX_BASE_TYPE_FEATURE_COUNT + 10;
+	int STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_JACKETS = 9;
 
 	/**
 	 * The feature id for the '<em><b>Percentage Of Passengers With Small Bags</b></em>' attribute.
@@ -512,7 +598,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_BAGS = COMPLEX_BASE_TYPE_FEATURE_COUNT + 11;
+	int STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_BAGS = 10;
 
 	/**
 	 * The feature id for the '<em><b>Percentage Of Passengers With Medium Bags</b></em>' attribute.
@@ -521,7 +607,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_BAGS = COMPLEX_BASE_TYPE_FEATURE_COUNT + 12;
+	int STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_BAGS = 11;
 
 	/**
 	 * The feature id for the '<em><b>Percentage Of Passengers With Large Bags</b></em>' attribute.
@@ -530,7 +616,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_LARGE_BAGS = COMPLEX_BASE_TYPE_FEATURE_COUNT + 13;
+	int STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_LARGE_BAGS = 12;
 
 	/**
 	 * The feature id for the '<em><b>UID</b></em>' attribute.
@@ -539,7 +625,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__UID = COMPLEX_BASE_TYPE_FEATURE_COUNT + 14;
+	int STUDY_TYPE__UID = 13;
 
 	/**
 	 * The number of structural features of the '<em>Study Type</em>' class.
@@ -548,7 +634,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE_FEATURE_COUNT = COMPLEX_BASE_TYPE_FEATURE_COUNT + 15;
+	int STUDY_TYPE_FEATURE_COUNT = 14;
 
 	/**
 	 * The number of operations of the '<em>Study Type</em>' class.
@@ -557,7 +643,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE_OPERATION_COUNT = COMPLEX_BASE_TYPE_OPERATION_COUNT + 0;
+	int STUDY_TYPE_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link paxelerate.DoorSelectionType <em>Door Selection Type</em>}' enum.
@@ -567,7 +653,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getDoorSelectionType()
 	 * @generated
 	 */
-	int DOOR_SELECTION_TYPE = 6;
+	int DOOR_SELECTION_TYPE = 11;
 
 	/**
 	 * The meta object id for the '{@link paxelerate.PassengerSortingSchemeType <em>Passenger Sorting Scheme Type</em>}' enum.
@@ -577,7 +663,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getPassengerSortingSchemeType()
 	 * @generated
 	 */
-	int PASSENGER_SORTING_SCHEME_TYPE = 7;
+	int PASSENGER_SORTING_SCHEME_TYPE = 12;
 
 	/**
 	 * The meta object id for the '{@link paxelerate.SeatTypeType <em>Seat Type Type</em>}' enum.
@@ -587,7 +673,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getSeatTypeType()
 	 * @generated
 	 */
-	int SEAT_TYPE_TYPE = 8;
+	int SEAT_TYPE_TYPE = 13;
 
 	/**
 	 * The meta object id for the '{@link paxelerate.SimulationTypeType <em>Simulation Type Type</em>}' enum.
@@ -597,7 +683,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getSimulationTypeType()
 	 * @generated
 	 */
-	int SIMULATION_TYPE_TYPE = 9;
+	int SIMULATION_TYPE_TYPE = 14;
 
 	/**
 	 * The meta object id for the '<em>Door Selection Type Object</em>' data type.
@@ -607,7 +693,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getDoorSelectionTypeObject()
 	 * @generated
 	 */
-	int DOOR_SELECTION_TYPE_OBJECT = 10;
+	int DOOR_SELECTION_TYPE_OBJECT = 15;
 
 	/**
 	 * The meta object id for the '<em>Passenger Sorting Scheme Type Object</em>' data type.
@@ -617,7 +703,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getPassengerSortingSchemeTypeObject()
 	 * @generated
 	 */
-	int PASSENGER_SORTING_SCHEME_TYPE_OBJECT = 11;
+	int PASSENGER_SORTING_SCHEME_TYPE_OBJECT = 16;
 
 	/**
 	 * The meta object id for the '<em>Seat Type Type Object</em>' data type.
@@ -627,7 +713,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getSeatTypeTypeObject()
 	 * @generated
 	 */
-	int SEAT_TYPE_TYPE_OBJECT = 12;
+	int SEAT_TYPE_TYPE_OBJECT = 17;
 
 	/**
 	 * The meta object id for the '<em>Simulation Type Type Object</em>' data type.
@@ -637,50 +723,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getSimulationTypeTypeObject()
 	 * @generated
 	 */
-	int SIMULATION_TYPE_TYPE_OBJECT = 13;
-
-	/**
-	 * Returns the meta object for class '{@link paxelerate.ComplexBaseType <em>Complex Base Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Complex Base Type</em>'.
-	 * @see paxelerate.ComplexBaseType
-	 * @generated
-	 */
-	EClass getComplexBaseType();
-
-	/**
-	 * Returns the meta object for the attribute '{@link paxelerate.ComplexBaseType#getExternalDataDirectory <em>External Data Directory</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>External Data Directory</em>'.
-	 * @see paxelerate.ComplexBaseType#getExternalDataDirectory()
-	 * @see #getComplexBaseType()
-	 * @generated
-	 */
-	EAttribute getComplexBaseType_ExternalDataDirectory();
-
-	/**
-	 * Returns the meta object for the attribute '{@link paxelerate.ComplexBaseType#getExternalDataNodePath <em>External Data Node Path</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>External Data Node Path</em>'.
-	 * @see paxelerate.ComplexBaseType#getExternalDataNodePath()
-	 * @see #getComplexBaseType()
-	 * @generated
-	 */
-	EAttribute getComplexBaseType_ExternalDataNodePath();
-
-	/**
-	 * Returns the meta object for the attribute '{@link paxelerate.ComplexBaseType#getExternalFileName <em>External File Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>External File Name</em>'.
-	 * @see paxelerate.ComplexBaseType#getExternalFileName()
-	 * @see #getComplexBaseType()
-	 * @generated
-	 */
-	EAttribute getComplexBaseType_ExternalFileName();
+	int SIMULATION_TYPE_TYPE_OBJECT = 18;
 
 	/**
 	 * Returns the meta object for class '{@link paxelerate.DocumentRoot <em>Document Root</em>}'.
@@ -758,6 +801,48 @@ public interface PaxeleratePackage extends EPackage {
 	EReference getPaxelerateInputType_Studies();
 
 	/**
+	 * Returns the meta object for class '{@link paxelerate.PaxelerateOutputType <em>Output Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Output Type</em>'.
+	 * @see paxelerate.PaxelerateOutputType
+	 * @generated
+	 */
+	EClass getPaxelerateOutputType();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link paxelerate.PaxelerateOutputType#getStudiesOutput <em>Studies Output</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Studies Output</em>'.
+	 * @see paxelerate.PaxelerateOutputType#getStudiesOutput()
+	 * @see #getPaxelerateOutputType()
+	 * @generated
+	 */
+	EReference getPaxelerateOutputType_StudiesOutput();
+
+	/**
+	 * Returns the meta object for class '{@link paxelerate.PaxelerateSettingsType <em>Settings Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Settings Type</em>'.
+	 * @see paxelerate.PaxelerateSettingsType
+	 * @generated
+	 */
+	EClass getPaxelerateSettingsType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link paxelerate.PaxelerateSettingsType#isDisplaySimulation <em>Display Simulation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Display Simulation</em>'.
+	 * @see paxelerate.PaxelerateSettingsType#isDisplaySimulation()
+	 * @see #getPaxelerateSettingsType()
+	 * @generated
+	 */
+	EAttribute getPaxelerateSettingsType_DisplaySimulation();
+
+	/**
 	 * Returns the meta object for class '{@link paxelerate.PaxelerateType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -779,6 +864,49 @@ public interface PaxeleratePackage extends EPackage {
 	EReference getPaxelerateType_Input();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link paxelerate.PaxelerateType#getOutput <em>Output</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Output</em>'.
+	 * @see paxelerate.PaxelerateType#getOutput()
+	 * @see #getPaxelerateType()
+	 * @generated
+	 */
+	EReference getPaxelerateType_Output();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link paxelerate.PaxelerateType#getSettings <em>Settings</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Settings</em>'.
+	 * @see paxelerate.PaxelerateType#getSettings()
+	 * @see #getPaxelerateType()
+	 * @generated
+	 */
+	EReference getPaxelerateType_Settings();
+
+	/**
+	 * Returns the meta object for class '{@link paxelerate.StudiesOutputType <em>Studies Output Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Studies Output Type</em>'.
+	 * @see paxelerate.StudiesOutputType
+	 * @generated
+	 */
+	EClass getStudiesOutputType();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link paxelerate.StudiesOutputType#getStudyOutput <em>Study Output</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Study Output</em>'.
+	 * @see paxelerate.StudiesOutputType#getStudyOutput()
+	 * @see #getStudiesOutputType()
+	 * @generated
+	 */
+	EReference getStudiesOutputType_StudyOutput();
+
+	/**
 	 * Returns the meta object for class '{@link paxelerate.StudiesType <em>Studies Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -798,6 +926,91 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getStudiesType_Study();
+
+	/**
+	 * Returns the meta object for class '{@link paxelerate.StudyIterationOutputType <em>Study Iteration Output Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Study Iteration Output Type</em>'.
+	 * @see paxelerate.StudyIterationOutputType
+	 * @generated
+	 */
+	EClass getStudyIterationOutputType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link paxelerate.StudyIterationOutputType#getBoardingTime <em>Boarding Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Boarding Time</em>'.
+	 * @see paxelerate.StudyIterationOutputType#getBoardingTime()
+	 * @see #getStudyIterationOutputType()
+	 * @generated
+	 */
+	EAttribute getStudyIterationOutputType_BoardingTime();
+
+	/**
+	 * Returns the meta object for class '{@link paxelerate.StudyIterationsOutputType <em>Study Iterations Output Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Study Iterations Output Type</em>'.
+	 * @see paxelerate.StudyIterationsOutputType
+	 * @generated
+	 */
+	EClass getStudyIterationsOutputType();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link paxelerate.StudyIterationsOutputType#getStudyIterationOutput <em>Study Iteration Output</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Study Iteration Output</em>'.
+	 * @see paxelerate.StudyIterationsOutputType#getStudyIterationOutput()
+	 * @see #getStudyIterationsOutputType()
+	 * @generated
+	 */
+	EReference getStudyIterationsOutputType_StudyIterationOutput();
+
+	/**
+	 * Returns the meta object for class '{@link paxelerate.StudyOutputType <em>Study Output Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Study Output Type</em>'.
+	 * @see paxelerate.StudyOutputType
+	 * @generated
+	 */
+	EClass getStudyOutputType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link paxelerate.StudyOutputType#getAverageBoardingTime <em>Average Boarding Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Average Boarding Time</em>'.
+	 * @see paxelerate.StudyOutputType#getAverageBoardingTime()
+	 * @see #getStudyOutputType()
+	 * @generated
+	 */
+	EAttribute getStudyOutputType_AverageBoardingTime();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link paxelerate.StudyOutputType#getStudyIterationsOutput <em>Study Iterations Output</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Study Iterations Output</em>'.
+	 * @see paxelerate.StudyOutputType#getStudyIterationsOutput()
+	 * @see #getStudyOutputType()
+	 * @generated
+	 */
+	EReference getStudyOutputType_StudyIterationsOutput();
+
+	/**
+	 * Returns the meta object for the attribute '{@link paxelerate.StudyOutputType#getLinkedStudyUID <em>Linked Study UID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Linked Study UID</em>'.
+	 * @see paxelerate.StudyOutputType#getLinkedStudyUID()
+	 * @see #getStudyOutputType()
+	 * @generated
+	 */
+	EAttribute getStudyOutputType_LinkedStudyUID();
 
 	/**
 	 * Returns the meta object for class '{@link paxelerate.StudyType <em>Study Type</em>}'.
@@ -852,17 +1065,6 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getStudyType_SimulationType();
-
-	/**
-	 * Returns the meta object for the attribute '{@link paxelerate.StudyType#isDisplaySimulation <em>Display Simulation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Display Simulation</em>'.
-	 * @see paxelerate.StudyType#isDisplaySimulation()
-	 * @see #getStudyType()
-	 * @generated
-	 */
-	EAttribute getStudyType_DisplaySimulation();
 
 	/**
 	 * Returns the meta object for the attribute '{@link paxelerate.StudyType#getSeatType <em>Seat Type</em>}'.
@@ -1086,40 +1288,6 @@ public interface PaxeleratePackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link paxelerate.impl.ComplexBaseTypeImpl <em>Complex Base Type</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see paxelerate.impl.ComplexBaseTypeImpl
-		 * @see paxelerate.impl.PaxeleratePackageImpl#getComplexBaseType()
-		 * @generated
-		 */
-		EClass COMPLEX_BASE_TYPE = eINSTANCE.getComplexBaseType();
-
-		/**
-		 * The meta object literal for the '<em><b>External Data Directory</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPLEX_BASE_TYPE__EXTERNAL_DATA_DIRECTORY = eINSTANCE.getComplexBaseType_ExternalDataDirectory();
-
-		/**
-		 * The meta object literal for the '<em><b>External Data Node Path</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPLEX_BASE_TYPE__EXTERNAL_DATA_NODE_PATH = eINSTANCE.getComplexBaseType_ExternalDataNodePath();
-
-		/**
-		 * The meta object literal for the '<em><b>External File Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPLEX_BASE_TYPE__EXTERNAL_FILE_NAME = eINSTANCE.getComplexBaseType_ExternalFileName();
-
-		/**
 		 * The meta object literal for the '{@link paxelerate.impl.DocumentRootImpl <em>Document Root</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1180,6 +1348,43 @@ public interface PaxeleratePackage extends EPackage {
 		EReference PAXELERATE_INPUT_TYPE__STUDIES = eINSTANCE.getPaxelerateInputType_Studies();
 
 		/**
+		 * The meta object literal for the '{@link paxelerate.impl.PaxelerateOutputTypeImpl <em>Output Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see paxelerate.impl.PaxelerateOutputTypeImpl
+		 * @see paxelerate.impl.PaxeleratePackageImpl#getPaxelerateOutputType()
+		 * @generated
+		 */
+		EClass PAXELERATE_OUTPUT_TYPE = eINSTANCE.getPaxelerateOutputType();
+
+		/**
+		 * The meta object literal for the '<em><b>Studies Output</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PAXELERATE_OUTPUT_TYPE__STUDIES_OUTPUT = eINSTANCE.getPaxelerateOutputType_StudiesOutput();
+
+		/**
+		 * The meta object literal for the '{@link paxelerate.impl.PaxelerateSettingsTypeImpl <em>Settings Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see paxelerate.impl.PaxelerateSettingsTypeImpl
+		 * @see paxelerate.impl.PaxeleratePackageImpl#getPaxelerateSettingsType()
+		 * @generated
+		 */
+		EClass PAXELERATE_SETTINGS_TYPE = eINSTANCE.getPaxelerateSettingsType();
+
+		/**
+		 * The meta object literal for the '<em><b>Display Simulation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PAXELERATE_SETTINGS_TYPE__DISPLAY_SIMULATION = eINSTANCE
+				.getPaxelerateSettingsType_DisplaySimulation();
+
+		/**
 		 * The meta object literal for the '{@link paxelerate.impl.PaxelerateTypeImpl <em>Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1198,6 +1403,40 @@ public interface PaxeleratePackage extends EPackage {
 		EReference PAXELERATE_TYPE__INPUT = eINSTANCE.getPaxelerateType_Input();
 
 		/**
+		 * The meta object literal for the '<em><b>Output</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PAXELERATE_TYPE__OUTPUT = eINSTANCE.getPaxelerateType_Output();
+
+		/**
+		 * The meta object literal for the '<em><b>Settings</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PAXELERATE_TYPE__SETTINGS = eINSTANCE.getPaxelerateType_Settings();
+
+		/**
+		 * The meta object literal for the '{@link paxelerate.impl.StudiesOutputTypeImpl <em>Studies Output Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see paxelerate.impl.StudiesOutputTypeImpl
+		 * @see paxelerate.impl.PaxeleratePackageImpl#getStudiesOutputType()
+		 * @generated
+		 */
+		EClass STUDIES_OUTPUT_TYPE = eINSTANCE.getStudiesOutputType();
+
+		/**
+		 * The meta object literal for the '<em><b>Study Output</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STUDIES_OUTPUT_TYPE__STUDY_OUTPUT = eINSTANCE.getStudiesOutputType_StudyOutput();
+
+		/**
 		 * The meta object literal for the '{@link paxelerate.impl.StudiesTypeImpl <em>Studies Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1214,6 +1453,77 @@ public interface PaxeleratePackage extends EPackage {
 		 * @generated
 		 */
 		EReference STUDIES_TYPE__STUDY = eINSTANCE.getStudiesType_Study();
+
+		/**
+		 * The meta object literal for the '{@link paxelerate.impl.StudyIterationOutputTypeImpl <em>Study Iteration Output Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see paxelerate.impl.StudyIterationOutputTypeImpl
+		 * @see paxelerate.impl.PaxeleratePackageImpl#getStudyIterationOutputType()
+		 * @generated
+		 */
+		EClass STUDY_ITERATION_OUTPUT_TYPE = eINSTANCE.getStudyIterationOutputType();
+
+		/**
+		 * The meta object literal for the '<em><b>Boarding Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STUDY_ITERATION_OUTPUT_TYPE__BOARDING_TIME = eINSTANCE.getStudyIterationOutputType_BoardingTime();
+
+		/**
+		 * The meta object literal for the '{@link paxelerate.impl.StudyIterationsOutputTypeImpl <em>Study Iterations Output Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see paxelerate.impl.StudyIterationsOutputTypeImpl
+		 * @see paxelerate.impl.PaxeleratePackageImpl#getStudyIterationsOutputType()
+		 * @generated
+		 */
+		EClass STUDY_ITERATIONS_OUTPUT_TYPE = eINSTANCE.getStudyIterationsOutputType();
+
+		/**
+		 * The meta object literal for the '<em><b>Study Iteration Output</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STUDY_ITERATIONS_OUTPUT_TYPE__STUDY_ITERATION_OUTPUT = eINSTANCE
+				.getStudyIterationsOutputType_StudyIterationOutput();
+
+		/**
+		 * The meta object literal for the '{@link paxelerate.impl.StudyOutputTypeImpl <em>Study Output Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see paxelerate.impl.StudyOutputTypeImpl
+		 * @see paxelerate.impl.PaxeleratePackageImpl#getStudyOutputType()
+		 * @generated
+		 */
+		EClass STUDY_OUTPUT_TYPE = eINSTANCE.getStudyOutputType();
+
+		/**
+		 * The meta object literal for the '<em><b>Average Boarding Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STUDY_OUTPUT_TYPE__AVERAGE_BOARDING_TIME = eINSTANCE.getStudyOutputType_AverageBoardingTime();
+
+		/**
+		 * The meta object literal for the '<em><b>Study Iterations Output</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STUDY_OUTPUT_TYPE__STUDY_ITERATIONS_OUTPUT = eINSTANCE.getStudyOutputType_StudyIterationsOutput();
+
+		/**
+		 * The meta object literal for the '<em><b>Linked Study UID</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STUDY_OUTPUT_TYPE__LINKED_STUDY_UID = eINSTANCE.getStudyOutputType_LinkedStudyUID();
 
 		/**
 		 * The meta object literal for the '{@link paxelerate.impl.StudyTypeImpl <em>Study Type</em>}' class.
@@ -1256,14 +1566,6 @@ public interface PaxeleratePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute STUDY_TYPE__SIMULATION_TYPE = eINSTANCE.getStudyType_SimulationType();
-
-		/**
-		 * The meta object literal for the '<em><b>Display Simulation</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute STUDY_TYPE__DISPLAY_SIMULATION = eINSTANCE.getStudyType_DisplaySimulation();
 
 		/**
 		 * The meta object literal for the '<em><b>Seat Type</b></em>' attribute feature.

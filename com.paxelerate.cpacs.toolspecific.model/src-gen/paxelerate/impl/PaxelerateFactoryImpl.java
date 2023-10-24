@@ -57,16 +57,26 @@ public class PaxelerateFactoryImpl extends EFactoryImpl implements PaxelerateFac
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-		case PaxeleratePackage.COMPLEX_BASE_TYPE:
-			return createComplexBaseType();
 		case PaxeleratePackage.DOCUMENT_ROOT:
 			return createDocumentRoot();
 		case PaxeleratePackage.PAXELERATE_INPUT_TYPE:
 			return createPaxelerateInputType();
+		case PaxeleratePackage.PAXELERATE_OUTPUT_TYPE:
+			return createPaxelerateOutputType();
+		case PaxeleratePackage.PAXELERATE_SETTINGS_TYPE:
+			return createPaxelerateSettingsType();
 		case PaxeleratePackage.PAXELERATE_TYPE:
 			return createPaxelerateType();
+		case PaxeleratePackage.STUDIES_OUTPUT_TYPE:
+			return createStudiesOutputType();
 		case PaxeleratePackage.STUDIES_TYPE:
 			return createStudiesType();
+		case PaxeleratePackage.STUDY_ITERATION_OUTPUT_TYPE:
+			return createStudyIterationOutputType();
+		case PaxeleratePackage.STUDY_ITERATIONS_OUTPUT_TYPE:
+			return createStudyIterationsOutputType();
+		case PaxeleratePackage.STUDY_OUTPUT_TYPE:
+			return createStudyOutputType();
 		case PaxeleratePackage.STUDY_TYPE:
 			return createStudyType();
 		default:
@@ -137,16 +147,6 @@ public class PaxelerateFactoryImpl extends EFactoryImpl implements PaxelerateFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ComplexBaseType createComplexBaseType() {
-		ComplexBaseTypeImpl complexBaseType = new ComplexBaseTypeImpl();
-		return complexBaseType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public DocumentRoot createDocumentRoot() {
 		DocumentRootImpl documentRoot = new DocumentRootImpl();
 		return documentRoot;
@@ -167,6 +167,26 @@ public class PaxelerateFactoryImpl extends EFactoryImpl implements PaxelerateFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public PaxelerateOutputType createPaxelerateOutputType() {
+		PaxelerateOutputTypeImpl paxelerateOutputType = new PaxelerateOutputTypeImpl();
+		return paxelerateOutputType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PaxelerateSettingsType createPaxelerateSettingsType() {
+		PaxelerateSettingsTypeImpl paxelerateSettingsType = new PaxelerateSettingsTypeImpl();
+		return paxelerateSettingsType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public PaxelerateType createPaxelerateType() {
 		PaxelerateTypeImpl paxelerateType = new PaxelerateTypeImpl();
 		return paxelerateType;
@@ -177,9 +197,49 @@ public class PaxelerateFactoryImpl extends EFactoryImpl implements PaxelerateFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public StudiesOutputType createStudiesOutputType() {
+		StudiesOutputTypeImpl studiesOutputType = new StudiesOutputTypeImpl();
+		return studiesOutputType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public StudiesType createStudiesType() {
 		StudiesTypeImpl studiesType = new StudiesTypeImpl();
 		return studiesType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StudyIterationOutputType createStudyIterationOutputType() {
+		StudyIterationOutputTypeImpl studyIterationOutputType = new StudyIterationOutputTypeImpl();
+		return studyIterationOutputType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StudyIterationsOutputType createStudyIterationsOutputType() {
+		StudyIterationsOutputTypeImpl studyIterationsOutputType = new StudyIterationsOutputTypeImpl();
+		return studyIterationsOutputType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StudyOutputType createStudyOutputType() {
+		StudyOutputTypeImpl studyOutputType = new StudyOutputTypeImpl();
+		return studyOutputType;
 	}
 
 	/**

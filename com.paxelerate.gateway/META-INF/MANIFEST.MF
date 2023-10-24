@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Gateway
+Bundle-SymbolicName: com.paxelerate.gateway
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: PAXELERATE
+Automatic-Module-Name: com.paxelerate.gateway
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: com.paxelerate.execution,
+ com.paxelerate.cpacs.toolspecific.model,
+ net.bhl.opensource.cpacs.functions,
+ net.bhl.opensource.cpacs.model

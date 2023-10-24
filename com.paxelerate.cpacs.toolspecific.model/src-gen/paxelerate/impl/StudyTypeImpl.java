@@ -7,6 +7,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import paxelerate.DoorSelectionType;
 import paxelerate.PassengerSortingSchemeType;
@@ -27,7 +28,6 @@ import paxelerate.StudyType;
  *   <li>{@link paxelerate.impl.StudyTypeImpl#getActiveDoorUIDs <em>Active Door UI Ds</em>}</li>
  *   <li>{@link paxelerate.impl.StudyTypeImpl#getIterations <em>Iterations</em>}</li>
  *   <li>{@link paxelerate.impl.StudyTypeImpl#getSimulationType <em>Simulation Type</em>}</li>
- *   <li>{@link paxelerate.impl.StudyTypeImpl#isDisplaySimulation <em>Display Simulation</em>}</li>
  *   <li>{@link paxelerate.impl.StudyTypeImpl#getSeatType <em>Seat Type</em>}</li>
  *   <li>{@link paxelerate.impl.StudyTypeImpl#getSimulationGridResolution <em>Simulation Grid Resolution</em>}</li>
  *   <li>{@link paxelerate.impl.StudyTypeImpl#getSimulationSpeedFactor <em>Simulation Speed Factor</em>}</li>
@@ -42,7 +42,7 @@ import paxelerate.StudyType;
  *
  * @generated
  */
-public class StudyTypeImpl extends ComplexBaseTypeImpl implements StudyType {
+public class StudyTypeImpl extends MinimalEObjectImpl.Container implements StudyType {
 	/**
 	 * The default value of the '{@link #getLoadFactor() <em>Load Factor</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -149,35 +149,6 @@ public class StudyTypeImpl extends ComplexBaseTypeImpl implements StudyType {
 	 * @ordered
 	 */
 	protected boolean simulationTypeESet;
-
-	/**
-	 * The default value of the '{@link #isDisplaySimulation() <em>Display Simulation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isDisplaySimulation()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean DISPLAY_SIMULATION_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isDisplaySimulation() <em>Display Simulation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isDisplaySimulation()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean displaySimulation = DISPLAY_SIMULATION_EDEFAULT;
-
-	/**
-	 * This is true if the Display Simulation attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean displaySimulationESet;
 
 	/**
 	 * The default value of the '{@link #getSeatType() <em>Seat Type</em>}' attribute.
@@ -643,54 +614,6 @@ public class StudyTypeImpl extends ComplexBaseTypeImpl implements StudyType {
 	 */
 	public boolean isSetSimulationType() {
 		return simulationTypeESet;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isDisplaySimulation() {
-		return displaySimulation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDisplaySimulation(boolean newDisplaySimulation) {
-		boolean oldDisplaySimulation = displaySimulation;
-		displaySimulation = newDisplaySimulation;
-		boolean oldDisplaySimulationESet = displaySimulationESet;
-		displaySimulationESet = true;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PaxeleratePackage.STUDY_TYPE__DISPLAY_SIMULATION,
-					oldDisplaySimulation, displaySimulation, !oldDisplaySimulationESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetDisplaySimulation() {
-		boolean oldDisplaySimulation = displaySimulation;
-		boolean oldDisplaySimulationESet = displaySimulationESet;
-		displaySimulation = DISPLAY_SIMULATION_EDEFAULT;
-		displaySimulationESet = false;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, PaxeleratePackage.STUDY_TYPE__DISPLAY_SIMULATION,
-					oldDisplaySimulation, DISPLAY_SIMULATION_EDEFAULT, oldDisplaySimulationESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetDisplaySimulation() {
-		return displaySimulationESet;
 	}
 
 	/**
@@ -1184,8 +1107,6 @@ public class StudyTypeImpl extends ComplexBaseTypeImpl implements StudyType {
 			return getIterations();
 		case PaxeleratePackage.STUDY_TYPE__SIMULATION_TYPE:
 			return getSimulationType();
-		case PaxeleratePackage.STUDY_TYPE__DISPLAY_SIMULATION:
-			return isDisplaySimulation();
 		case PaxeleratePackage.STUDY_TYPE__SEAT_TYPE:
 			return getSeatType();
 		case PaxeleratePackage.STUDY_TYPE__SIMULATION_GRID_RESOLUTION:
@@ -1229,9 +1150,6 @@ public class StudyTypeImpl extends ComplexBaseTypeImpl implements StudyType {
 			return;
 		case PaxeleratePackage.STUDY_TYPE__SIMULATION_TYPE:
 			setSimulationType((SimulationTypeType) newValue);
-			return;
-		case PaxeleratePackage.STUDY_TYPE__DISPLAY_SIMULATION:
-			setDisplaySimulation((Boolean) newValue);
 			return;
 		case PaxeleratePackage.STUDY_TYPE__SEAT_TYPE:
 			setSeatType((SeatTypeType) newValue);
@@ -1287,9 +1205,6 @@ public class StudyTypeImpl extends ComplexBaseTypeImpl implements StudyType {
 		case PaxeleratePackage.STUDY_TYPE__SIMULATION_TYPE:
 			unsetSimulationType();
 			return;
-		case PaxeleratePackage.STUDY_TYPE__DISPLAY_SIMULATION:
-			unsetDisplaySimulation();
-			return;
 		case PaxeleratePackage.STUDY_TYPE__SEAT_TYPE:
 			unsetSeatType();
 			return;
@@ -1341,8 +1256,6 @@ public class StudyTypeImpl extends ComplexBaseTypeImpl implements StudyType {
 			return isSetIterations();
 		case PaxeleratePackage.STUDY_TYPE__SIMULATION_TYPE:
 			return isSetSimulationType();
-		case PaxeleratePackage.STUDY_TYPE__DISPLAY_SIMULATION:
-			return isSetDisplaySimulation();
 		case PaxeleratePackage.STUDY_TYPE__SEAT_TYPE:
 			return isSetSeatType();
 		case PaxeleratePackage.STUDY_TYPE__SIMULATION_GRID_RESOLUTION:
@@ -1393,11 +1306,6 @@ public class StudyTypeImpl extends ComplexBaseTypeImpl implements StudyType {
 		result.append(", simulationType: ");
 		if (simulationTypeESet)
 			result.append(simulationType);
-		else
-			result.append("<unset>");
-		result.append(", displaySimulation: ");
-		if (displaySimulationESet)
-			result.append(displaySimulation);
 		else
 			result.append("<unset>");
 		result.append(", seatType: ");

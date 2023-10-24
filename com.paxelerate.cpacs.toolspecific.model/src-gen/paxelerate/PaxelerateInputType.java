@@ -2,6 +2,8 @@
  */
 package paxelerate;
 
+import org.eclipse.emf.ecore.EObject;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Input Type</b></em>'.
@@ -18,7 +20,7 @@ package paxelerate;
  * @model extendedMetaData="name='paxelerateInputType' kind='elementOnly'"
  * @generated
  */
-public interface PaxelerateInputType extends ComplexBaseType {
+public interface PaxelerateInputType extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Studies</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

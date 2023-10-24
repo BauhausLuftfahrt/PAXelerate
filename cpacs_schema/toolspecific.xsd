@@ -7,129 +7,129 @@
     <!-- Global element -->
     <xsd:element name="content" type="paxelerateType"/>
 
-
-    <!-- Base types -->
-    <xsd:complexType name="complexBaseType">
-        <xsd:attribute name="externalDataNodePath" type="xsd:string"/>
-        <xsd:attribute name="externalFileName" type="xsd:string"/>
-        <xsd:attribute name="externalDataDirectory" type="xsd:string"/>
-    </xsd:complexType>
-
-
     <!-- Type of the global tool element -->
-
     <xsd:complexType name="paxelerateType">
-        <xsd:complexContent>
-            <xsd:extension base="complexBaseType">
-                <xsd:all>
-                    <xsd:element name="input" type="paxelerateInputType"/>
-                    <!--<xsd:element name="output" type="paxelerateOutputType"></xsd:element>-->
-                </xsd:all>
-            </xsd:extension>
-        </xsd:complexContent>
+        <xsd:sequence>
+            <xsd:element name="input" type="paxelerateInputType"/>
+            <xsd:element name="output" type="paxelerateOutputType" minOccurs="0"/>
+            <xsd:element name="settings" type="paxelerateSettingsType"/>
+        </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="paxelerateInputType">
-        <xsd:complexContent>
-            <xsd:extension base="complexBaseType">
-                <xsd:all>
-                    <xsd:element name="studies" type="studiesType"/>
-                </xsd:all>
-            </xsd:extension>
-        </xsd:complexContent>
+        <xsd:sequence>
+            <xsd:element name="studies" type="studiesType"/>
+        </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="studiesType">
-        <xsd:complexContent>
-            <xsd:extension base="complexBaseType">
-                <xsd:sequence>
-                    <xsd:element name="study" type="studyType" maxOccurs="unbounded"/>
-                </xsd:sequence>
-            </xsd:extension>
-        </xsd:complexContent>
+        <xsd:sequence>
+            <xsd:element name="study" type="studyType" maxOccurs="unbounded"/>
+        </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="studyType">
-        <xsd:complexContent>
-            <xsd:extension base="complexBaseType">
-                <xsd:all>
-                    <xsd:element name="loadFactor" type="xsd:double"/>
-                    <xsd:element name="activeDoorUIDs" type="xsd:string"/>
-                    <xsd:element name="iterations" type="xsd:int"/>
-                    <xsd:element name="simulationType">
-                        <xsd:simpleType>
-                            <xsd:restriction
-                                    base="xsd:string">
-                                <xsd:enumeration value="BOARDING"/>
-                                <xsd:enumeration value="DEBOARDING"/>
-                                <xsd:enumeration value="EMERGENCY"/>
-                            </xsd:restriction>
-                        </xsd:simpleType>
-                    </xsd:element>
-                    <xsd:element name="displaySimulation" type="xsd:boolean"/>
-                    <xsd:element name="seatType">
-                        <xsd:simpleType>
-                            <xsd:restriction base="xsd:string">
-                                <xsd:enumeration value="DEFAULT"/>
-                                <xsd:enumeration value="SIDEWAYS_FOLDABLE"/>
-                                <xsd:enumeration value="LIFTING_SEAT_PAN"/>
-                                <xsd:enumeration value="BRING_YOUR_OWN"/>
-                            </xsd:restriction>
-                        </xsd:simpleType>
-                    </xsd:element>
-                    <xsd:element name="simulationGridResolution" type="xsd:double"/>
-                    <xsd:element name="simulationSpeedFactor" type="xsd:double"/>
-                    <xsd:element name="passengerSortingScheme">
-                        <xsd:simpleType>
-                            <xsd:restriction base="xsd:string">
-                                <xsd:enumeration value="RANDOM"/>
-                                <xsd:enumeration value="RTF"/>
-                                <xsd:enumeration value="FTR"/>
-                                <xsd:enumeration value="WTA"/>
-                                <xsd:enumeration value="WTA_RTF"/>
-                                <xsd:enumeration value="WTA_FTR"/>
-                                <xsd:enumeration value="BLOCK"/>
-                                <xsd:enumeration value="BOARDING_CLASS_RANDOM"/>
-                                <xsd:enumeration value="STEFFEN"/>
-                                <xsd:enumeration value="MILNE_KELLY"/>
-                                <xsd:enumeration value="BIG_BAGS_AFT"/>
-                                <xsd:enumeration value="BIG_BAGS_FRONT"/>
-                                <xsd:enumeration value="MAX_BAGS_AFT"/>
-                                <xsd:enumeration value="MAX_BAGS_FRONT"/>
-                            </xsd:restriction>
-                        </xsd:simpleType>
-                    </xsd:element>
-                    <xsd:element name="doorSelection">
-                        <xsd:simpleType>
-                                <xsd:restriction
-                                        base="xsd:string">
-                                    <xsd:enumeration value="CLOSEST"/>
-                                    <xsd:enumeration value="CLOSEST_BEHIND"/>
-                                    <xsd:enumeration value="CLOSEST_FRONT"/>
-                                    <xsd:enumeration value="RANDOM"/>
-                                </xsd:restriction>
-                        </xsd:simpleType>
-                    </xsd:element>
-                    <xsd:element name="percentageOfPassengersWithJackets" type="xsd:double"/>
-                    <xsd:element name="percentageOfPassengersWithSmallBags" type="xsd:double"/>
-                    <xsd:element name="percentageOfPassengersWithMediumBags" type="xsd:double"/>
-                    <xsd:element name="percentageOfPassengersWithLargeBags" type="xsd:double"/>
-                </xsd:all>
-                <xsd:attribute name="uID" type="xsd:ID" use="required"/>
-            </xsd:extension>
-        </xsd:complexContent>
+        <xsd:sequence>
+            <xsd:element name="loadFactor" type="xsd:double"/>
+            <xsd:element name="activeDoorUIDs" type="xsd:string"/>
+            <xsd:element name="iterations" type="xsd:int"/>
+            <xsd:element name="simulationType">
+                <xsd:simpleType>
+                    <xsd:restriction
+                            base="xsd:string">
+                        <xsd:enumeration value="BOARDING"/>
+                        <xsd:enumeration value="DEBOARDING"/>
+                        <xsd:enumeration value="EMERGENCY"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="seatType">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="DEFAULT"/>
+                        <xsd:enumeration value="SIDEWAYS_FOLDABLE"/>
+                        <xsd:enumeration value="LIFTING_SEAT_PAN"/>
+                        <xsd:enumeration value="BRING_YOUR_OWN"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="simulationGridResolution" type="xsd:double"/>
+            <xsd:element name="simulationSpeedFactor" type="xsd:double"/>
+            <xsd:element name="passengerSortingScheme">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="RANDOM"/>
+                        <xsd:enumeration value="RTF"/>
+                        <xsd:enumeration value="FTR"/>
+                        <xsd:enumeration value="WTA"/>
+                        <xsd:enumeration value="WTA_RTF"/>
+                        <xsd:enumeration value="WTA_FTR"/>
+                        <xsd:enumeration value="BLOCK"/>
+                        <xsd:enumeration value="BOARDING_CLASS_RANDOM"/>
+                        <xsd:enumeration value="STEFFEN"/>
+                        <xsd:enumeration value="MILNE_KELLY"/>
+                        <xsd:enumeration value="BIG_BAGS_AFT"/>
+                        <xsd:enumeration value="BIG_BAGS_FRONT"/>
+                        <xsd:enumeration value="MAX_BAGS_AFT"/>
+                        <xsd:enumeration value="MAX_BAGS_FRONT"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="doorSelection">
+                <xsd:simpleType>
+                    <xsd:restriction
+                            base="xsd:string">
+                        <xsd:enumeration value="CLOSEST"/>
+                        <xsd:enumeration value="CLOSEST_BEHIND"/>
+                        <xsd:enumeration value="CLOSEST_FRONT"/>
+                        <xsd:enumeration value="RANDOM"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="percentageOfPassengersWithJackets" type="xsd:double"/>
+            <xsd:element name="percentageOfPassengersWithSmallBags" type="xsd:double"/>
+            <xsd:element name="percentageOfPassengersWithMediumBags" type="xsd:double"/>
+            <xsd:element name="percentageOfPassengersWithLargeBags" type="xsd:double"/>
+        </xsd:sequence>
+        <xsd:attribute name="uID" type="xsd:ID" use="required"/>
     </xsd:complexType>
-    <!--
+
+    <xsd:complexType name="paxelerateSettingsType">
+        <xsd:sequence>
+            <xsd:element name="displaySimulation" type="xsd:boolean"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
     <xsd:complexType name="paxelerateOutputType">
-        <xsd:complexContent>
-            <xsd:extension base="complexBaseType">
-                <xsd:all>
-                    <xsd:element name="simulationSuccess" type="booleanBaseType" />
-                </xsd:all>
-                <xsd:attribute name="uID" type="xsd:ID" use="required"/>
-            </xsd:extension> 
-        </xsd:complexContent>
+        <xsd:sequence>
+            <xsd:element name="studiesOutput" type="studiesOutputType"/>
+        </xsd:sequence>
     </xsd:complexType>
-    -->
+
+    <xsd:complexType name="studiesOutputType">
+        <xsd:sequence>
+            <xsd:element name="studyOutput" type="studyOutputType" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="studyOutputType">
+        <xsd:sequence>
+            <xsd:element name="averageBoardingTime" type="xsd:double"/>
+            <xsd:element name="studyIterationsOutput" type="studyIterationsOutputType"/>
+        </xsd:sequence>
+        <xsd:attribute name="linkedStudyUID" type="xsd:string" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="studyIterationsOutputType">
+        <xsd:sequence>
+            <xsd:element name="studyIterationOutput" type="studyIterationOutputType" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="studyIterationOutputType">
+        <xsd:sequence>
+            <xsd:element name="boardingTime" type="xsd:double"/>
+        </xsd:sequence>
+    </xsd:complexType>
 </xsd:schema>
 
