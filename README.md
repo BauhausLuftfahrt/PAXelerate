@@ -11,6 +11,7 @@ Due to the reworking of the entire project, there is currently no client version
 * Introduction of CPACS as input data structure
 * Focus on boarding simulation, hence removal of UI and cabin configuration options for now
 * Introduction of COVID-19 exposure tracking
+* Transition to CPACS 3.4
 
 ## Installation
 
@@ -25,7 +26,7 @@ Due to the reworking of the entire project, there is currently no client version
 1. Be sure to make yourself familiar with CPACS and the "deck" and "toolspecific" node.
 2. Take a look at the `example.xml` file in the example folder. You will find the
 	* *deck node*: In this node, all cabin definition is done. Manipulate this node to change the cabin layout itself.
-	* *toolspecific node*: In this node, all properties which are required for the simulation can be found ([details](schema/documentation.md)).
+	* *toolspecific node*: In this node, all properties which are required for the simulation can be found ([details](cpacs_schema/documentation.md)). Also take a look into the .xsd file for possible input restrictions.
 3. Run `StartPAXelerate.java` in the `com.paxelerate.execution` package under execution -> main.
 4. Select the CPACS cabin file you want to simulate and run it.
 5. Wait for the simulation to complete.
@@ -37,4 +38,4 @@ Marc Engelmann, Tim Kleinheinz, Michael Schmidt, Raoul Rothfeld, Michael Shamiye
 
 ## About
 
-Copyright (c) 2014-2021 [Bauhaus Luftfahrt e.V.](http://www.bauhaus-luftfahrt.net/?set_language=en) All rights reserved. [PAXelerate](http://www.paxelerate.com) and the accompanying materials are made available under the terms of the GNU General Public License v3.0 which accompanies this distribution, and is available at https://www.gnu.org/licenses/gpl-3.0.html.en.
+Copyright (c) since 2014 [Bauhaus Luftfahrt e.V.](http://www.bauhaus-luftfahrt.net/?set_language=en) All rights reserved. [PAXelerate](http://www.paxelerate.com) and the accompanying materials are made available under the terms of the GNU General Public License v3.0 which accompanies this distribution, and is available at https://www.gnu.org/licenses/gpl-3.0.html.en.
