@@ -22,6 +22,24 @@ public interface PaxelerateFactory extends EFactory {
 	PaxelerateFactory eINSTANCE = paxelerate.impl.PaxelerateFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Boarding Time Per Door Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Boarding Time Per Door Type</em>'.
+	 * @generated
+	 */
+	BoardingTimePerDoorType createBoardingTimePerDoorType();
+
+	/**
+	 * Returns a new object of class '<em>Boarding Times Per Door Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Boarding Times Per Door Type</em>'.
+	 * @generated
+	 */
+	BoardingTimesPerDoorType createBoardingTimesPerDoorType();
+
+	/**
 	 * Returns a new object of class '<em>Document Root</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

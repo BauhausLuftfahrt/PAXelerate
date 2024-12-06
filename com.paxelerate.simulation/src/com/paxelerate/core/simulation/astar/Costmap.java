@@ -46,23 +46,30 @@ public class Costmap {
 	 * @param passenger
 	 * @param agentRange
 	 */
-	public Costmap(final IntVector start, List<IntVector> goals, Areamap areamap, Passenger passenger, int agentRange) {
+	public Costmap(final IntVector start, List<IntVector> inputGoals, Areamap areamap, Passenger passenger,
+			int agentRange) {
 
 		size = areamap.getDimensions();
 
 		// ---------------------------------------------------------------------
 		// Check for errors
 
-		if (goals.isEmpty()) {
+		if (inputGoals.isEmpty()) {
 			throw new NullPointerException("CostMap: Goal Node List is empty!");
 		}
 
-		for (IntVector goal : goals) {
+		for (IntVector goal : inputGoals) {
 
 			if (areamap.get(goal).isPresent()) {
-				Node node = areamap.get(goal).get();
-				while (node.getProperty(Layer.ASTAR) != Property.FREE) {
+
+				while (areamap.get(goal).get().getProperty(Layer.ASTAR) != Property.FREE) {
+
 					goal.setX(goal.getX() - 1);
+
+					if (areamap.get(goal).isEmpty()) {
+						throw new NullPointerException("CostMap: Goal Node " + goal.toString() + " does not exist!");
+					}
+
 				}
 
 			} else {
@@ -92,6 +99,11 @@ public class Costmap {
 			} else {
 				setCost(node.getPosition(), node.getObstacleGradientValue(Layer.ASTAR));
 			}
+		}
+
+		ArrayList<IntVector> goals = new ArrayList<>();
+		for (IntVector gl : inputGoals) {
+			goals.add(new IntVector(gl.getX(), gl.getY()));
 		}
 
 		// ---------------------------------------------------------------------
@@ -147,13 +159,16 @@ public class Costmap {
 				createSurroundingCosts(point);
 
 				// Try removing. If list does not contain value, nothing happens
-				goals.remove(point);
+				goals.removeIf(p -> p.getX() == point.getX() && p.getY() == point.getY());
 			}
 		}
 
 		for (IntVector point : selectNext()) {
 			createSurroundingCosts(point);
 		}
+
+//		System.out.println(this.toString());
+
 	}
 
 	/**
@@ -271,6 +286,10 @@ public class Costmap {
 			// Consider the point as next step
 			considerNext.add(point);
 		}
+
+		if (considerNext.isEmpty()) {
+			throw new NullPointerException("No next points in cost map available. Algorithm is flawed!");
+		}
 	}
 
 	/**
@@ -328,4 +347,22 @@ public class Costmap {
 	private void setCost(IntVector point, Integer costValue) {
 		cost[point.getX()][point.getY()] = costValue;
 	}
+
+	@Override
+	public String toString() {
+		String output = "";
+
+		for (int x = 0; x < size.getX(); x++) {
+			output += ("" + x + "\t");
+			for (int y = 0; y < size.getY(); y++) {
+
+				output += cost[x][y] == null ? "x\t" : cost[x][y] + "\t";
+
+			}
+			output += "\n";
+		}
+
+		return output;
+	}
+
 }

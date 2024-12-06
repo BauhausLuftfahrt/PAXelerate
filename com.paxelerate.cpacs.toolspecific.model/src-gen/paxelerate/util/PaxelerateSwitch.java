@@ -66,6 +66,20 @@ public class PaxelerateSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+		case PaxeleratePackage.BOARDING_TIME_PER_DOOR_TYPE: {
+			BoardingTimePerDoorType boardingTimePerDoorType = (BoardingTimePerDoorType) theEObject;
+			T result = caseBoardingTimePerDoorType(boardingTimePerDoorType);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PaxeleratePackage.BOARDING_TIMES_PER_DOOR_TYPE: {
+			BoardingTimesPerDoorType boardingTimesPerDoorType = (BoardingTimesPerDoorType) theEObject;
+			T result = caseBoardingTimesPerDoorType(boardingTimesPerDoorType);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case PaxeleratePackage.DOCUMENT_ROOT: {
 			DocumentRoot documentRoot = (DocumentRoot) theEObject;
 			T result = caseDocumentRoot(documentRoot);
@@ -146,6 +160,36 @@ public class PaxelerateSwitch<T> extends Switch<T> {
 		default:
 			return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Boarding Time Per Door Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Boarding Time Per Door Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBoardingTimePerDoorType(BoardingTimePerDoorType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Boarding Times Per Door Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Boarding Times Per Door Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBoardingTimesPerDoorType(BoardingTimesPerDoorType object) {
+		return null;
 	}
 
 	/**

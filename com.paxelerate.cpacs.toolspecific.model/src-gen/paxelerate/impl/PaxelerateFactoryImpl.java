@@ -57,6 +57,10 @@ public class PaxelerateFactoryImpl extends EFactoryImpl implements PaxelerateFac
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+		case PaxeleratePackage.BOARDING_TIME_PER_DOOR_TYPE:
+			return createBoardingTimePerDoorType();
+		case PaxeleratePackage.BOARDING_TIMES_PER_DOOR_TYPE:
+			return createBoardingTimesPerDoorType();
 		case PaxeleratePackage.DOCUMENT_ROOT:
 			return createDocumentRoot();
 		case PaxeleratePackage.PAXELERATE_INPUT_TYPE:
@@ -140,6 +144,26 @@ public class PaxelerateFactoryImpl extends EFactoryImpl implements PaxelerateFac
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BoardingTimePerDoorType createBoardingTimePerDoorType() {
+		BoardingTimePerDoorTypeImpl boardingTimePerDoorType = new BoardingTimePerDoorTypeImpl();
+		return boardingTimePerDoorType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BoardingTimesPerDoorType createBoardingTimesPerDoorType() {
+		BoardingTimesPerDoorTypeImpl boardingTimesPerDoorType = new BoardingTimesPerDoorTypeImpl();
+		return boardingTimesPerDoorType;
 	}
 
 	/**

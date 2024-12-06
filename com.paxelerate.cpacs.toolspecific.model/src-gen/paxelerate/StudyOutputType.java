@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link paxelerate.StudyOutputType#getAverageBoardingTime <em>Average Boarding Time</em>}</li>
+ *   <li>{@link paxelerate.StudyOutputType#getAverageBoardingTimesPerDoor <em>Average Boarding Times Per Door</em>}</li>
  *   <li>{@link paxelerate.StudyOutputType#getStudyIterationsOutput <em>Study Iterations Output</em>}</li>
  *   <li>{@link paxelerate.StudyOutputType#getLinkedStudyUID <em>Linked Study UID</em>}</li>
  * </ul>
@@ -27,6 +28,11 @@ public interface StudyOutputType extends EObject {
 	 * Returns the value of the '<em><b>Average Boarding Time</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * 
+	 *                         The average boarding time of all iterations of this study. [s]
+	 *                     
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Average Boarding Time</em>' attribute.
 	 * @see #isSetAverageBoardingTime()
 	 * @see #unsetAverageBoardingTime()
@@ -72,6 +78,29 @@ public interface StudyOutputType extends EObject {
 	 * @generated
 	 */
 	boolean isSetAverageBoardingTime();
+
+	/**
+	 * Returns the value of the '<em><b>Average Boarding Times Per Door</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Average Boarding Times Per Door</em>' containment reference.
+	 * @see #setAverageBoardingTimesPerDoor(BoardingTimesPerDoorType)
+	 * @see paxelerate.PaxeleratePackage#getStudyOutputType_AverageBoardingTimesPerDoor()
+	 * @model containment="true" required="true"
+	 *        extendedMetaData="kind='element' name='averageBoardingTimesPerDoor' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	BoardingTimesPerDoorType getAverageBoardingTimesPerDoor();
+
+	/**
+	 * Sets the value of the '{@link paxelerate.StudyOutputType#getAverageBoardingTimesPerDoor <em>Average Boarding Times Per Door</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Average Boarding Times Per Door</em>' containment reference.
+	 * @see #getAverageBoardingTimesPerDoor()
+	 * @generated
+	 */
+	void setAverageBoardingTimesPerDoor(BoardingTimesPerDoorType value);
 
 	/**
 	 * Returns the value of the '<em><b>Study Iterations Output</b></em>' containment reference.

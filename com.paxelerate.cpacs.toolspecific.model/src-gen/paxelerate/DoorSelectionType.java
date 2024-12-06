@@ -14,7 +14,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * @see paxelerate.PaxeleratePackage#getDoorSelectionType()
- * @model extendedMetaData="name='doorSelection_._type'"
+ * @model extendedMetaData="name='doorSelectionType'"
  * @generated
  */
 public enum DoorSelectionType implements Enumerator {

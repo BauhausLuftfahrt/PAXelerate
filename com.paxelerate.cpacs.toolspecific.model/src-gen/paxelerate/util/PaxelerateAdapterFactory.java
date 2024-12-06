@@ -67,6 +67,16 @@ public class PaxelerateAdapterFactory extends AdapterFactoryImpl {
 	 */
 	protected PaxelerateSwitch<Adapter> modelSwitch = new PaxelerateSwitch<Adapter>() {
 		@Override
+		public Adapter caseBoardingTimePerDoorType(BoardingTimePerDoorType object) {
+			return createBoardingTimePerDoorTypeAdapter();
+		}
+
+		@Override
+		public Adapter caseBoardingTimesPerDoorType(BoardingTimesPerDoorType object) {
+			return createBoardingTimesPerDoorTypeAdapter();
+		}
+
+		@Override
 		public Adapter caseDocumentRoot(DocumentRoot object) {
 			return createDocumentRootAdapter();
 		}
@@ -138,6 +148,34 @@ public class PaxelerateAdapterFactory extends AdapterFactoryImpl {
 	@Override
 	public Adapter createAdapter(Notifier target) {
 		return modelSwitch.doSwitch((EObject) target);
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link paxelerate.BoardingTimePerDoorType <em>Boarding Time Per Door Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see paxelerate.BoardingTimePerDoorType
+	 * @generated
+	 */
+	public Adapter createBoardingTimePerDoorTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link paxelerate.BoardingTimesPerDoorType <em>Boarding Times Per Door Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see paxelerate.BoardingTimesPerDoorType
+	 * @generated
+	 */
+	public Adapter createBoardingTimesPerDoorTypeAdapter() {
+		return null;
 	}
 
 	/**

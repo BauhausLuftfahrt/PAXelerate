@@ -32,7 +32,7 @@ public class PaxelerateGateway {
 	 * @param target_path
 	 */
 	public String run_paxelerate(String completeCpacsString) {
-		System.out.println("PAXelerate: Executing boarding simulation.");
+		System.out.println("[paxelerate]: Executing boarding simulation.");
 
 		CpacsType cpacs = CpacsFactory.eINSTANCE.createCpacsType();
 
@@ -44,13 +44,18 @@ public class PaxelerateGateway {
 		return CPACSWriter.toString(cpacs);
 	}
 
+	public void terminate() {
+		System.out.println("[paxelerate]: Gateway server terminated.");
+		System.exit(0);
+	}
+
 	public static void main(String[] args) {
 
 		PaxelerateGateway app = new PaxelerateGateway();
 		ClientServer server = new ClientServer(app);
 		server.startServer();
 
-		System.out.println("PAXelerate: Gateway server started.");
+		System.out.println("[paxelerate]: Gateway server started.");
 
 	}
 }

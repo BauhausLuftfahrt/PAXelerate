@@ -7,7 +7,7 @@
     modelName="PaxelerateTS" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     codeFormatting="true" importerID="org.eclipse.xsd.ecore.importer" complianceLevel="5.0"
     copyrightFields="false" operationReflection="true" importOrganizing="true">
-  <foreignModel>file:/C:/Users/marc.engelmann/Documents/GitHub/PAXelerate/cpacs_schema/toolspecific.xsd</foreignModel>
+  <foreignModel>file:/C:/Users/marc.engelmann/git/paxelerate/cpacs_schema/toolspecific.xsd</foreignModel>
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="Paxelerate" resource="XML" disposableProviderFactory="true"
       ecorePackage="paxelerate.ecore#/">
@@ -48,6 +48,13 @@
     <genDataTypes ecoreDataType="paxelerate.ecore#//PassengerSortingSchemeTypeObject"/>
     <genDataTypes ecoreDataType="paxelerate.ecore#//SeatTypeTypeObject"/>
     <genDataTypes ecoreDataType="paxelerate.ecore#//SimulationTypeTypeObject"/>
+    <genClasses ecoreClass="paxelerate.ecore#//BoardingTimePerDoorType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerate.ecore#//BoardingTimePerDoorType/time"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerate.ecore#//BoardingTimePerDoorType/doorUID"/>
+    </genClasses>
+    <genClasses ecoreClass="paxelerate.ecore#//BoardingTimesPerDoorType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerate.ecore#//BoardingTimesPerDoorType/boardingTimePerDoor"/>
+    </genClasses>
     <genClasses ecoreClass="paxelerate.ecore#//DocumentRoot">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute paxelerate.ecore#//DocumentRoot/mixed"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference paxelerate.ecore#//DocumentRoot/xMLNSPrefixMap"/>
@@ -65,8 +72,8 @@
     </genClasses>
     <genClasses ecoreClass="paxelerate.ecore#//PaxelerateType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerate.ecore#//PaxelerateType/input"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerate.ecore#//PaxelerateType/output"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerate.ecore#//PaxelerateType/settings"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerate.ecore#//PaxelerateType/output"/>
     </genClasses>
     <genClasses ecoreClass="paxelerate.ecore#//StudiesOutputType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerate.ecore#//StudiesOutputType/studyOutput"/>
@@ -82,10 +89,12 @@
     </genClasses>
     <genClasses ecoreClass="paxelerate.ecore#//StudyOutputType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerate.ecore#//StudyOutputType/averageBoardingTime"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerate.ecore#//StudyOutputType/averageBoardingTimesPerDoor"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference paxelerate.ecore#//StudyOutputType/studyIterationsOutput"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerate.ecore#//StudyOutputType/linkedStudyUID"/>
     </genClasses>
     <genClasses ecoreClass="paxelerate.ecore#//StudyType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerate.ecore#//StudyType/targetDeckUID"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerate.ecore#//StudyType/loadFactor"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerate.ecore#//StudyType/activeDoorUIDs"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute paxelerate.ecore#//StudyType/iterations"/>

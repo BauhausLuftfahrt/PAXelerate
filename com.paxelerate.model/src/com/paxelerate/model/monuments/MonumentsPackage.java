@@ -414,13 +414,22 @@ public interface MonumentsPackage extends EPackage {
 	int DOOR__TYPE = 7;
 
 	/**
+	 * The feature id for the '<em><b>Time In Use</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOOR__TIME_IN_USE = 8;
+
+	/**
 	 * The number of structural features of the '<em>Door</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOOR_FEATURE_COUNT = 8;
+	int DOOR_FEATURE_COUNT = 9;
 
 	/**
 	 * The number of operations of the '<em>Door</em>' class.
@@ -820,6 +829,17 @@ public interface MonumentsPackage extends EPackage {
 	EAttribute getDoor_Type();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.paxelerate.model.monuments.Door#getTimeInUse <em>Time In Use</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Time In Use</em>'.
+	 * @see com.paxelerate.model.monuments.Door#getTimeInUse()
+	 * @see #getDoor()
+	 * @generated
+	 */
+	EAttribute getDoor_TimeInUse();
+
+	/**
 	 * Returns the meta object for class '{@link com.paxelerate.model.monuments.Aisle <em>Aisle</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1128,6 +1148,14 @@ public interface MonumentsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DOOR__TYPE = eINSTANCE.getDoor_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Time In Use</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOOR__TIME_IN_USE = eINSTANCE.getDoor_TimeInUse();
 
 		/**
 		 * The meta object literal for the '{@link com.paxelerate.model.monuments.impl.AisleImpl <em>Aisle</em>}' class.

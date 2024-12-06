@@ -14,8 +14,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link paxelerate.PaxelerateType#getInput <em>Input</em>}</li>
- *   <li>{@link paxelerate.PaxelerateType#getOutput <em>Output</em>}</li>
  *   <li>{@link paxelerate.PaxelerateType#getSettings <em>Settings</em>}</li>
+ *   <li>{@link paxelerate.PaxelerateType#getOutput <em>Output</em>}</li>
  * </ul>
  *
  * @see paxelerate.PaxeleratePackage#getPaxelerateType()

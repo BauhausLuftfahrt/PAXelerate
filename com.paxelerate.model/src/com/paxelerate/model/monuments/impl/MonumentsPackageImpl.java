@@ -419,6 +419,15 @@ public class MonumentsPackageImpl extends EPackageImpl implements MonumentsPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getDoor_TimeInUse() {
+		return (EAttribute) doorEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAisle() {
 		return aisleEClass;
 	}
@@ -536,6 +545,7 @@ public class MonumentsPackageImpl extends EPackageImpl implements MonumentsPacka
 		createEAttribute(doorEClass, DOOR__ID);
 		createEAttribute(doorEClass, DOOR__EMERGENCY_ONLY);
 		createEAttribute(doorEClass, DOOR__TYPE);
+		createEAttribute(doorEClass, DOOR__TIME_IN_USE);
 
 		aisleEClass = createEClass(AISLE);
 		createEAttribute(aisleEClass, AISLE__NAME);
@@ -641,12 +651,14 @@ public class MonumentsPackageImpl extends EPackageImpl implements MonumentsPacka
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDoor_XPosition(), ecorePackage.getEDouble(), "xPosition", null, 0, 1, Door.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDoor_Id(), ecorePackage.getEInt(), "id", "0", 0, 1, Door.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDoor_Id(), ecorePackage.getEString(), "id", "0", 0, 1, Door.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDoor_EmergencyOnly(), ecorePackage.getEBoolean(), "emergencyOnly", "false", 0, 1, Door.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDoor_Type(), theEnumsPackage.getDoorType(), "type", null, 0, 1, Door.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDoor_TimeInUse(), ecorePackage.getEDouble(), "timeInUse", "0", 0, 1, Door.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(aisleEClass, Aisle.class, "Aisle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAisle_Name(), ecorePackage.getEString(), "name", null, 0, 1, Aisle.class, !IS_TRANSIENT,

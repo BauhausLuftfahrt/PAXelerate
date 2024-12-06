@@ -5,9 +5,7 @@
  *******************************************************************************/
 package com.paxelerate.execution.actions;
 
-import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
 
 import org.eclipse.emf.common.util.ECollections;
 
@@ -28,7 +26,6 @@ import Cpacs.DeckType;
 import net.bhl.opensource.toolbox.emf.EObjectHelper;
 import net.bhl.opensource.toolbox.io.Log;
 import net.bhl.opensource.toolbox.time.StopWatch;
-import net.bhl.opensource.toolbox.ui.IOptionSelector;
 
 /**
  * This class generates a cabin from a CPACS file.
@@ -44,10 +41,10 @@ public interface InitializeFromCPACSAction {
 	 * @param filepath
 	 * @return
 	 */
-	static void run(CpacsType cpacs, Model model) {
+	static void run(CpacsType cpacs, Model model, String deckUID) {
 
 		StopWatch watch = new StopWatch();
-		Log.start("Loading Model");
+		Log.start("Loading '" + deckUID + "'.");
 
 		// create new cabin object where monuments are added to at first
 
@@ -57,37 +54,10 @@ public interface InitializeFromCPACSAction {
 
 		DeckElementsType deckElements = cpacs.getVehicles().getDeckElements();
 
-		switch (EObjectHelper.getChildren(modelType, DeckType.class).size()) {
+		DeckType deck = EObjectHelper.getFilteredChildren(cpacs, DeckType.class, d -> d.getUID().contentEquals(deckUID))
+				.get(0);
 
-		case 0:
-
-			throw new NullPointerException("No CPACS deck node found!");
-
-		case 1:
-			model.setDeck(InitializeFromCPACSAction
-					.performInitialization(EObjectHelper.getChildren(modelType, DeckType.class).get(0), deckElements));
-			break;
-
-		default:
-			List<String> ids = new ArrayList<>();
-
-			for (DeckType deckType : EObjectHelper.getChildren(modelType, DeckType.class)) {
-				ids.add(deckType.getUID());
-			}
-
-			IOptionSelector
-					.getValue(ids,
-							"Select deck ...")
-					.ifPresent(
-							result -> model
-									.setDeck(
-											InitializeFromCPACSAction.performInitialization(
-													EObjectHelper.getFilteredChildren(modelType, DeckType.class,
-															d -> d.getUID().contentEquals(result)).get(0),
-													deckElements)));
-			break;
-
-		}
+		model.setDeck(InitializeFromCPACSAction.performInitialization(deck, deckElements));
 
 		watch.stop();
 		Log.end(watch);
@@ -147,6 +117,11 @@ public interface InitializeFromCPACSAction {
 			row.getSeatGroups().forEach(g -> ECollections.sort(g.getSeats(), Comparator.comparing(Seat::getLetter)));
 
 			ECollections.sort(row.getSeatGroups(), Comparator.comparing(s -> s.getPosition().getY()));
+
+			if (row.getSeatGroups().isEmpty()) {
+				deck.getRows().remove(row);
+				// TODO: This should not happen!
+			}
 		}
 
 		// Sort rows per class

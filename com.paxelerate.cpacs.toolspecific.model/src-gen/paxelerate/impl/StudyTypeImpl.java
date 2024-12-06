@@ -24,6 +24,7 @@ import paxelerate.StudyType;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link paxelerate.impl.StudyTypeImpl#getTargetDeckUID <em>Target Deck UID</em>}</li>
  *   <li>{@link paxelerate.impl.StudyTypeImpl#getLoadFactor <em>Load Factor</em>}</li>
  *   <li>{@link paxelerate.impl.StudyTypeImpl#getActiveDoorUIDs <em>Active Door UI Ds</em>}</li>
  *   <li>{@link paxelerate.impl.StudyTypeImpl#getIterations <em>Iterations</em>}</li>
@@ -43,6 +44,26 @@ import paxelerate.StudyType;
  * @generated
  */
 public class StudyTypeImpl extends MinimalEObjectImpl.Container implements StudyType {
+	/**
+	 * The default value of the '{@link #getTargetDeckUID() <em>Target Deck UID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargetDeckUID()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TARGET_DECK_UID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTargetDeckUID() <em>Target Deck UID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargetDeckUID()
+	 * @generated
+	 * @ordered
+	 */
+	protected String targetDeckUID = TARGET_DECK_UID_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getLoadFactor() <em>Load Factor</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -448,6 +469,28 @@ public class StudyTypeImpl extends MinimalEObjectImpl.Container implements Study
 	@Override
 	protected EClass eStaticClass() {
 		return PaxeleratePackage.Literals.STUDY_TYPE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTargetDeckUID() {
+		return targetDeckUID;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTargetDeckUID(String newTargetDeckUID) {
+		String oldTargetDeckUID = targetDeckUID;
+		targetDeckUID = newTargetDeckUID;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PaxeleratePackage.STUDY_TYPE__TARGET_DECK_UID,
+					oldTargetDeckUID, targetDeckUID));
 	}
 
 	/**
@@ -1099,6 +1142,8 @@ public class StudyTypeImpl extends MinimalEObjectImpl.Container implements Study
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+		case PaxeleratePackage.STUDY_TYPE__TARGET_DECK_UID:
+			return getTargetDeckUID();
 		case PaxeleratePackage.STUDY_TYPE__LOAD_FACTOR:
 			return getLoadFactor();
 		case PaxeleratePackage.STUDY_TYPE__ACTIVE_DOOR_UI_DS:
@@ -1139,6 +1184,9 @@ public class StudyTypeImpl extends MinimalEObjectImpl.Container implements Study
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+		case PaxeleratePackage.STUDY_TYPE__TARGET_DECK_UID:
+			setTargetDeckUID((String) newValue);
+			return;
 		case PaxeleratePackage.STUDY_TYPE__LOAD_FACTOR:
 			setLoadFactor((Double) newValue);
 			return;
@@ -1193,6 +1241,9 @@ public class StudyTypeImpl extends MinimalEObjectImpl.Container implements Study
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+		case PaxeleratePackage.STUDY_TYPE__TARGET_DECK_UID:
+			setTargetDeckUID(TARGET_DECK_UID_EDEFAULT);
+			return;
 		case PaxeleratePackage.STUDY_TYPE__LOAD_FACTOR:
 			unsetLoadFactor();
 			return;
@@ -1247,6 +1298,9 @@ public class StudyTypeImpl extends MinimalEObjectImpl.Container implements Study
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case PaxeleratePackage.STUDY_TYPE__TARGET_DECK_UID:
+			return TARGET_DECK_UID_EDEFAULT == null ? targetDeckUID != null
+					: !TARGET_DECK_UID_EDEFAULT.equals(targetDeckUID);
 		case PaxeleratePackage.STUDY_TYPE__LOAD_FACTOR:
 			return isSetLoadFactor();
 		case PaxeleratePackage.STUDY_TYPE__ACTIVE_DOOR_UI_DS:
@@ -1291,7 +1345,9 @@ public class StudyTypeImpl extends MinimalEObjectImpl.Container implements Study
 			return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (loadFactor: ");
+		result.append(" (targetDeckUID: ");
+		result.append(targetDeckUID);
+		result.append(", loadFactor: ");
 		if (loadFactorESet)
 			result.append(loadFactor);
 		else

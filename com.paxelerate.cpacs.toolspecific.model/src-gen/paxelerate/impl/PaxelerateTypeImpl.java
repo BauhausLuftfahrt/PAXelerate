@@ -26,8 +26,8 @@ import paxelerate.PaxelerateType;
  * </p>
  * <ul>
  *   <li>{@link paxelerate.impl.PaxelerateTypeImpl#getInput <em>Input</em>}</li>
- *   <li>{@link paxelerate.impl.PaxelerateTypeImpl#getOutput <em>Output</em>}</li>
  *   <li>{@link paxelerate.impl.PaxelerateTypeImpl#getSettings <em>Settings</em>}</li>
+ *   <li>{@link paxelerate.impl.PaxelerateTypeImpl#getOutput <em>Output</em>}</li>
  * </ul>
  *
  * @generated
@@ -44,16 +44,6 @@ public class PaxelerateTypeImpl extends MinimalEObjectImpl.Container implements 
 	protected PaxelerateInputType input;
 
 	/**
-	 * The cached value of the '{@link #getOutput() <em>Output</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOutput()
-	 * @generated
-	 * @ordered
-	 */
-	protected PaxelerateOutputType output;
-
-	/**
 	 * The cached value of the '{@link #getSettings() <em>Settings</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -62,6 +52,16 @@ public class PaxelerateTypeImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected PaxelerateSettingsType settings;
+
+	/**
+	 * The cached value of the '{@link #getOutput() <em>Output</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutput()
+	 * @generated
+	 * @ordered
+	 */
+	protected PaxelerateOutputType output;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -242,10 +242,10 @@ public class PaxelerateTypeImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 		case PaxeleratePackage.PAXELERATE_TYPE__INPUT:
 			return basicSetInput(null, msgs);
-		case PaxeleratePackage.PAXELERATE_TYPE__OUTPUT:
-			return basicSetOutput(null, msgs);
 		case PaxeleratePackage.PAXELERATE_TYPE__SETTINGS:
 			return basicSetSettings(null, msgs);
+		case PaxeleratePackage.PAXELERATE_TYPE__OUTPUT:
+			return basicSetOutput(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -260,10 +260,10 @@ public class PaxelerateTypeImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 		case PaxeleratePackage.PAXELERATE_TYPE__INPUT:
 			return getInput();
-		case PaxeleratePackage.PAXELERATE_TYPE__OUTPUT:
-			return getOutput();
 		case PaxeleratePackage.PAXELERATE_TYPE__SETTINGS:
 			return getSettings();
+		case PaxeleratePackage.PAXELERATE_TYPE__OUTPUT:
+			return getOutput();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -279,11 +279,11 @@ public class PaxelerateTypeImpl extends MinimalEObjectImpl.Container implements 
 		case PaxeleratePackage.PAXELERATE_TYPE__INPUT:
 			setInput((PaxelerateInputType) newValue);
 			return;
-		case PaxeleratePackage.PAXELERATE_TYPE__OUTPUT:
-			setOutput((PaxelerateOutputType) newValue);
-			return;
 		case PaxeleratePackage.PAXELERATE_TYPE__SETTINGS:
 			setSettings((PaxelerateSettingsType) newValue);
+			return;
+		case PaxeleratePackage.PAXELERATE_TYPE__OUTPUT:
+			setOutput((PaxelerateOutputType) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -300,11 +300,11 @@ public class PaxelerateTypeImpl extends MinimalEObjectImpl.Container implements 
 		case PaxeleratePackage.PAXELERATE_TYPE__INPUT:
 			setInput((PaxelerateInputType) null);
 			return;
-		case PaxeleratePackage.PAXELERATE_TYPE__OUTPUT:
-			setOutput((PaxelerateOutputType) null);
-			return;
 		case PaxeleratePackage.PAXELERATE_TYPE__SETTINGS:
 			setSettings((PaxelerateSettingsType) null);
+			return;
+		case PaxeleratePackage.PAXELERATE_TYPE__OUTPUT:
+			setOutput((PaxelerateOutputType) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -320,10 +320,10 @@ public class PaxelerateTypeImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 		case PaxeleratePackage.PAXELERATE_TYPE__INPUT:
 			return input != null;
-		case PaxeleratePackage.PAXELERATE_TYPE__OUTPUT:
-			return output != null;
 		case PaxeleratePackage.PAXELERATE_TYPE__SETTINGS:
 			return settings != null;
+		case PaxeleratePackage.PAXELERATE_TYPE__OUTPUT:
+			return output != null;
 		}
 		return super.eIsSet(featureID);
 	}

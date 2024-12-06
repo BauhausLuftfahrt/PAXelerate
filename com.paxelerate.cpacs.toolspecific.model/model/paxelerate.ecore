@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="paxelerate" nsURI="paxelerate" nsPrefix="paxelerate">
+  <eClassifiers xsi:type="ecore:EClass" name="BoardingTimePerDoorType">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="boardingTimePerDoorType"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Double"
+        unsettable="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="time"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="doorUID" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="doorUID"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BoardingTimesPerDoorType">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="boardingTimesPerDoorType"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="boardingTimePerDoor" lowerBound="1"
+        upperBound="-1" eType="#//BoardingTimePerDoorType" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="boardingTimePerDoor"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DocumentRoot">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value=""/>
@@ -41,7 +75,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="DoorSelectionType">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="name" value="doorSelection_._type"/>
+      <details key="name" value="doorSelectionType"/>
     </eAnnotations>
     <eLiterals name="CLOSEST"/>
     <eLiterals name="CLOSESTBEHIND" value="1" literal="CLOSEST_BEHIND"/>
@@ -50,13 +84,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="DoorSelectionTypeObject" instanceClassName="org.eclipse.emf.common.util.Enumerator">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="name" value="doorSelection_._type:Object"/>
-      <details key="baseType" value="doorSelection_._type"/>
+      <details key="name" value="doorSelectionType:Object"/>
+      <details key="baseType" value="doorSelectionType"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="PassengerSortingSchemeType">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="name" value="passengerSortingScheme_._type"/>
+      <details key="name" value="passengerSortingSchemeType"/>
     </eAnnotations>
     <eLiterals name="RANDOM"/>
     <eLiterals name="RTF" value="1"/>
@@ -76,8 +110,8 @@
   <eClassifiers xsi:type="ecore:EDataType" name="PassengerSortingSchemeTypeObject"
       instanceClassName="org.eclipse.emf.common.util.Enumerator">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="name" value="passengerSortingScheme_._type:Object"/>
-      <details key="baseType" value="passengerSortingScheme_._type"/>
+      <details key="name" value="passengerSortingSchemeType:Object"/>
+      <details key="baseType" value="passengerSortingSchemeType"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PaxelerateInputType">
@@ -136,14 +170,6 @@
         <details key="namespace" value="##targetNamespace"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="output" eType="#//PaxelerateOutputType"
-        containment="true" resolveProxies="false">
-      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-        <details key="kind" value="element"/>
-        <details key="name" value="output"/>
-        <details key="namespace" value="##targetNamespace"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="settings" lowerBound="1"
         eType="#//PaxelerateSettingsType" containment="true" resolveProxies="false">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
@@ -152,10 +178,18 @@
         <details key="namespace" value="##targetNamespace"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output" eType="#//PaxelerateOutputType"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="output"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="SeatTypeType">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="name" value="seatType_._type"/>
+      <details key="name" value="seatTypeType"/>
     </eAnnotations>
     <eLiterals name="DEFAULT"/>
     <eLiterals name="SIDEWAYSFOLDABLE" value="1" literal="SIDEWAYS_FOLDABLE"/>
@@ -164,13 +198,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="SeatTypeTypeObject" instanceClassName="org.eclipse.emf.common.util.Enumerator">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="name" value="seatType_._type:Object"/>
-      <details key="baseType" value="seatType_._type"/>
+      <details key="name" value="seatTypeType:Object"/>
+      <details key="baseType" value="seatTypeType"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="SimulationTypeType">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="name" value="simulationType_._type"/>
+      <details key="name" value="simulationTypeType"/>
     </eAnnotations>
     <eLiterals name="BOARDING"/>
     <eLiterals name="DEBOARDING" value="1"/>
@@ -178,8 +212,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="SimulationTypeTypeObject" instanceClassName="org.eclipse.emf.common.util.Enumerator">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="name" value="simulationType_._type:Object"/>
-      <details key="baseType" value="simulationType_._type"/>
+      <details key="name" value="simulationTypeType:Object"/>
+      <details key="baseType" value="simulationTypeType"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StudiesOutputType">
@@ -217,6 +251,9 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="boardingTime" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Double" unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;                        The boarding time of the particular iteration of this study. [s]&#xA;                    "/>
+      </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="boardingTime"/>
@@ -245,9 +282,20 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="averageBoardingTime" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Double" unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;                        The average boarding time of all iterations of this study. [s]&#xA;                    "/>
+      </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="averageBoardingTime"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="averageBoardingTimesPerDoor"
+        lowerBound="1" eType="#//BoardingTimesPerDoorType" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="averageBoardingTimesPerDoor"/>
         <details key="namespace" value="##targetNamespace"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -272,8 +320,22 @@
       <details key="name" value="studyType"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetDeckUID" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;                        The target deck uID in the CPACS file for which to perform the study.&#xA;                    "/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="targetDeckUID"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="loadFactor" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Double" unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;                        The load factor represents the share of the maximum possible amount of passengers that should be used for the boarding simulation. [-]&#xA;                    "/>
+      </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="loadFactor"/>
@@ -324,6 +386,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="simulationSpeedFactor"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Double"
         unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;                        The speed factor with which the simulation should be performed. [-]&#xA;                    "/>
+      </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="simulationSpeedFactor"/>
@@ -332,6 +397,9 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerSortingScheme"
         lowerBound="1" eType="#//PassengerSortingSchemeType" unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;                        Define the sorting sequence in which passengers enter the aircraft.&#xA;                    "/>
+      </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="passengerSortingScheme"/>
@@ -340,6 +408,9 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="doorSelection" lowerBound="1"
         eType="#//DoorSelectionType" unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;                        Define the door selection option by which passengers will select a boarding door.&#xA;                    "/>
+      </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="doorSelection"/>

@@ -13,6 +13,8 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
+import paxelerate.BoardingTimePerDoorType;
+import paxelerate.BoardingTimesPerDoorType;
 import paxelerate.DocumentRoot;
 import paxelerate.DoorSelectionType;
 import paxelerate.PassengerSortingSchemeType;
@@ -38,6 +40,20 @@ import paxelerate.StudyType;
  * @generated
  */
 public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass boardingTimePerDoorTypeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass boardingTimesPerDoorTypeEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -243,6 +259,51 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getBoardingTimePerDoorType() {
+		return boardingTimePerDoorTypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getBoardingTimePerDoorType_Time() {
+		return (EAttribute) boardingTimePerDoorTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getBoardingTimePerDoorType_DoorUID() {
+		return (EAttribute) boardingTimePerDoorTypeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getBoardingTimesPerDoorType() {
+		return boardingTimesPerDoorTypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getBoardingTimesPerDoorType_BoardingTimePerDoor() {
+		return (EReference) boardingTimesPerDoorTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDocumentRoot() {
 		return documentRootEClass;
 	}
@@ -361,7 +422,7 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * @generated
 	 */
 	public EReference getPaxelerateType_Output() {
-		return (EReference) paxelerateTypeEClass.getEStructuralFeatures().get(1);
+		return (EReference) paxelerateTypeEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -370,7 +431,7 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * @generated
 	 */
 	public EReference getPaxelerateType_Settings() {
-		return (EReference) paxelerateTypeEClass.getEStructuralFeatures().get(2);
+		return (EReference) paxelerateTypeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -468,7 +529,7 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getStudyOutputType_StudyIterationsOutput() {
+	public EReference getStudyOutputType_AverageBoardingTimesPerDoor() {
 		return (EReference) studyOutputTypeEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -477,8 +538,17 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getStudyOutputType_StudyIterationsOutput() {
+		return (EReference) studyOutputTypeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getStudyOutputType_LinkedStudyUID() {
-		return (EAttribute) studyOutputTypeEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) studyOutputTypeEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -495,7 +565,7 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStudyType_LoadFactor() {
+	public EAttribute getStudyType_TargetDeckUID() {
 		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -504,7 +574,7 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStudyType_ActiveDoorUIDs() {
+	public EAttribute getStudyType_LoadFactor() {
 		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -513,7 +583,7 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStudyType_Iterations() {
+	public EAttribute getStudyType_ActiveDoorUIDs() {
 		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -522,7 +592,7 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStudyType_SimulationType() {
+	public EAttribute getStudyType_Iterations() {
 		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -531,7 +601,7 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStudyType_SeatType() {
+	public EAttribute getStudyType_SimulationType() {
 		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -540,7 +610,7 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStudyType_SimulationGridResolution() {
+	public EAttribute getStudyType_SeatType() {
 		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -549,7 +619,7 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStudyType_SimulationSpeedFactor() {
+	public EAttribute getStudyType_SimulationGridResolution() {
 		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -558,7 +628,7 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStudyType_PassengerSortingScheme() {
+	public EAttribute getStudyType_SimulationSpeedFactor() {
 		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -567,7 +637,7 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStudyType_DoorSelection() {
+	public EAttribute getStudyType_PassengerSortingScheme() {
 		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -576,7 +646,7 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStudyType_PercentageOfPassengersWithJackets() {
+	public EAttribute getStudyType_DoorSelection() {
 		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -585,7 +655,7 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStudyType_PercentageOfPassengersWithSmallBags() {
+	public EAttribute getStudyType_PercentageOfPassengersWithJackets() {
 		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -594,7 +664,7 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStudyType_PercentageOfPassengersWithMediumBags() {
+	public EAttribute getStudyType_PercentageOfPassengersWithSmallBags() {
 		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -603,7 +673,7 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStudyType_PercentageOfPassengersWithLargeBags() {
+	public EAttribute getStudyType_PercentageOfPassengersWithMediumBags() {
 		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -612,8 +682,17 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStudyType_UID() {
+	public EAttribute getStudyType_PercentageOfPassengersWithLargeBags() {
 		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getStudyType_UID() {
+		return (EAttribute) studyTypeEClass.getEStructuralFeatures().get(14);
 	}
 
 	/**
@@ -717,6 +796,13 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 		isCreated = true;
 
 		// Create classes and their features
+		boardingTimePerDoorTypeEClass = createEClass(BOARDING_TIME_PER_DOOR_TYPE);
+		createEAttribute(boardingTimePerDoorTypeEClass, BOARDING_TIME_PER_DOOR_TYPE__TIME);
+		createEAttribute(boardingTimePerDoorTypeEClass, BOARDING_TIME_PER_DOOR_TYPE__DOOR_UID);
+
+		boardingTimesPerDoorTypeEClass = createEClass(BOARDING_TIMES_PER_DOOR_TYPE);
+		createEReference(boardingTimesPerDoorTypeEClass, BOARDING_TIMES_PER_DOOR_TYPE__BOARDING_TIME_PER_DOOR);
+
 		documentRootEClass = createEClass(DOCUMENT_ROOT);
 		createEAttribute(documentRootEClass, DOCUMENT_ROOT__MIXED);
 		createEReference(documentRootEClass, DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
@@ -734,8 +820,8 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 
 		paxelerateTypeEClass = createEClass(PAXELERATE_TYPE);
 		createEReference(paxelerateTypeEClass, PAXELERATE_TYPE__INPUT);
-		createEReference(paxelerateTypeEClass, PAXELERATE_TYPE__OUTPUT);
 		createEReference(paxelerateTypeEClass, PAXELERATE_TYPE__SETTINGS);
+		createEReference(paxelerateTypeEClass, PAXELERATE_TYPE__OUTPUT);
 
 		studiesOutputTypeEClass = createEClass(STUDIES_OUTPUT_TYPE);
 		createEReference(studiesOutputTypeEClass, STUDIES_OUTPUT_TYPE__STUDY_OUTPUT);
@@ -751,10 +837,12 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 
 		studyOutputTypeEClass = createEClass(STUDY_OUTPUT_TYPE);
 		createEAttribute(studyOutputTypeEClass, STUDY_OUTPUT_TYPE__AVERAGE_BOARDING_TIME);
+		createEReference(studyOutputTypeEClass, STUDY_OUTPUT_TYPE__AVERAGE_BOARDING_TIMES_PER_DOOR);
 		createEReference(studyOutputTypeEClass, STUDY_OUTPUT_TYPE__STUDY_ITERATIONS_OUTPUT);
 		createEAttribute(studyOutputTypeEClass, STUDY_OUTPUT_TYPE__LINKED_STUDY_UID);
 
 		studyTypeEClass = createEClass(STUDY_TYPE);
+		createEAttribute(studyTypeEClass, STUDY_TYPE__TARGET_DECK_UID);
 		createEAttribute(studyTypeEClass, STUDY_TYPE__LOAD_FACTOR);
 		createEAttribute(studyTypeEClass, STUDY_TYPE__ACTIVE_DOOR_UI_DS);
 		createEAttribute(studyTypeEClass, STUDY_TYPE__ITERATIONS);
@@ -818,6 +906,21 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 		// Add supertypes to classes
 
 		// Initialize classes, features, and operations; add parameters
+		initEClass(boardingTimePerDoorTypeEClass, BoardingTimePerDoorType.class, "BoardingTimePerDoorType",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBoardingTimePerDoorType_Time(), theXMLTypePackage.getDouble(), "time", null, 1, 1,
+				BoardingTimePerDoorType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBoardingTimePerDoorType_DoorUID(), theXMLTypePackage.getString(), "doorUID", null, 0, 1,
+				BoardingTimePerDoorType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(boardingTimesPerDoorTypeEClass, BoardingTimesPerDoorType.class, "BoardingTimesPerDoorType",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBoardingTimesPerDoorType_BoardingTimePerDoor(), this.getBoardingTimePerDoorType(), null,
+				"boardingTimePerDoor", null, 1, -1, BoardingTimesPerDoorType.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(documentRootEClass, DocumentRoot.class, "DocumentRoot", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDocumentRoot_Mixed(), ecorePackage.getEFeatureMapEntry(), "mixed", null, 0, -1, null,
@@ -856,10 +959,10 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 		initEReference(getPaxelerateType_Input(), this.getPaxelerateInputType(), null, "input", null, 1, 1,
 				PaxelerateType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPaxelerateType_Output(), this.getPaxelerateOutputType(), null, "output", null, 0, 1,
+		initEReference(getPaxelerateType_Settings(), this.getPaxelerateSettingsType(), null, "settings", null, 1, 1,
 				PaxelerateType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPaxelerateType_Settings(), this.getPaxelerateSettingsType(), null, "settings", null, 1, 1,
+		initEReference(getPaxelerateType_Output(), this.getPaxelerateOutputType(), null, "output", null, 0, 1,
 				PaxelerateType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -892,6 +995,9 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 		initEAttribute(getStudyOutputType_AverageBoardingTime(), theXMLTypePackage.getDouble(), "averageBoardingTime",
 				null, 1, 1, StudyOutputType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStudyOutputType_AverageBoardingTimesPerDoor(), this.getBoardingTimesPerDoorType(), null,
+				"averageBoardingTimesPerDoor", null, 1, 1, StudyOutputType.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStudyOutputType_StudyIterationsOutput(), this.getStudyIterationsOutputType(), null,
 				"studyIterationsOutput", null, 1, 1, StudyOutputType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
 				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -901,6 +1007,9 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 
 		initEClass(studyTypeEClass, StudyType.class, "StudyType", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStudyType_TargetDeckUID(), theXMLTypePackage.getString(), "targetDeckUID", null, 1, 1,
+				StudyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStudyType_LoadFactor(), theXMLTypePackage.getDouble(), "loadFactor", null, 1, 1,
 				StudyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
@@ -1001,6 +1110,16 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 	 */
 	protected void createExtendedMetaDataAnnotations() {
 		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";
+		addAnnotation(boardingTimePerDoorTypeEClass, source,
+				new String[] { "name", "boardingTimePerDoorType", "kind", "elementOnly" });
+		addAnnotation(getBoardingTimePerDoorType_Time(), source,
+				new String[] { "kind", "element", "name", "time", "namespace", "##targetNamespace" });
+		addAnnotation(getBoardingTimePerDoorType_DoorUID(), source,
+				new String[] { "kind", "attribute", "name", "doorUID" });
+		addAnnotation(boardingTimesPerDoorTypeEClass, source,
+				new String[] { "name", "boardingTimesPerDoorType", "kind", "elementOnly" });
+		addAnnotation(getBoardingTimesPerDoorType_BoardingTimePerDoor(), source,
+				new String[] { "kind", "element", "name", "boardingTimePerDoor", "namespace", "##targetNamespace" });
 		addAnnotation(documentRootEClass, source, new String[] { "name", "", "kind", "mixed" });
 		addAnnotation(getDocumentRoot_Mixed(), source, new String[] { "kind", "elementWildcard", "name", ":mixed" });
 		addAnnotation(getDocumentRoot_XMLNSPrefixMap(), source,
@@ -1009,13 +1128,12 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 				new String[] { "kind", "attribute", "name", "xsi:schemaLocation" });
 		addAnnotation(getDocumentRoot_Content(), source,
 				new String[] { "kind", "element", "name", "content", "namespace", "##targetNamespace" });
-		addAnnotation(doorSelectionTypeEEnum, source, new String[] { "name", "doorSelection_._type" });
+		addAnnotation(doorSelectionTypeEEnum, source, new String[] { "name", "doorSelectionType" });
 		addAnnotation(doorSelectionTypeObjectEDataType, source,
-				new String[] { "name", "doorSelection_._type:Object", "baseType", "doorSelection_._type" });
-		addAnnotation(passengerSortingSchemeTypeEEnum, source,
-				new String[] { "name", "passengerSortingScheme_._type" });
-		addAnnotation(passengerSortingSchemeTypeObjectEDataType, source, new String[] { "name",
-				"passengerSortingScheme_._type:Object", "baseType", "passengerSortingScheme_._type" });
+				new String[] { "name", "doorSelectionType:Object", "baseType", "doorSelectionType" });
+		addAnnotation(passengerSortingSchemeTypeEEnum, source, new String[] { "name", "passengerSortingSchemeType" });
+		addAnnotation(passengerSortingSchemeTypeObjectEDataType, source,
+				new String[] { "name", "passengerSortingSchemeType:Object", "baseType", "passengerSortingSchemeType" });
 		addAnnotation(paxelerateInputTypeEClass, source,
 				new String[] { "name", "paxelerateInputType", "kind", "elementOnly" });
 		addAnnotation(getPaxelerateInputType_Studies(), source,
@@ -1031,16 +1149,16 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 		addAnnotation(paxelerateTypeEClass, source, new String[] { "name", "paxelerateType", "kind", "elementOnly" });
 		addAnnotation(getPaxelerateType_Input(), source,
 				new String[] { "kind", "element", "name", "input", "namespace", "##targetNamespace" });
-		addAnnotation(getPaxelerateType_Output(), source,
-				new String[] { "kind", "element", "name", "output", "namespace", "##targetNamespace" });
 		addAnnotation(getPaxelerateType_Settings(), source,
 				new String[] { "kind", "element", "name", "settings", "namespace", "##targetNamespace" });
-		addAnnotation(seatTypeTypeEEnum, source, new String[] { "name", "seatType_._type" });
+		addAnnotation(getPaxelerateType_Output(), source,
+				new String[] { "kind", "element", "name", "output", "namespace", "##targetNamespace" });
+		addAnnotation(seatTypeTypeEEnum, source, new String[] { "name", "seatTypeType" });
 		addAnnotation(seatTypeTypeObjectEDataType, source,
-				new String[] { "name", "seatType_._type:Object", "baseType", "seatType_._type" });
-		addAnnotation(simulationTypeTypeEEnum, source, new String[] { "name", "simulationType_._type" });
+				new String[] { "name", "seatTypeType:Object", "baseType", "seatTypeType" });
+		addAnnotation(simulationTypeTypeEEnum, source, new String[] { "name", "simulationTypeType" });
 		addAnnotation(simulationTypeTypeObjectEDataType, source,
-				new String[] { "name", "simulationType_._type:Object", "baseType", "simulationType_._type" });
+				new String[] { "name", "simulationTypeType:Object", "baseType", "simulationTypeType" });
 		addAnnotation(studiesOutputTypeEClass, source,
 				new String[] { "name", "studiesOutputType", "kind", "elementOnly" });
 		addAnnotation(getStudiesOutputType_StudyOutput(), source,
@@ -1059,11 +1177,15 @@ public class PaxeleratePackageImpl extends EPackageImpl implements PaxeleratePac
 		addAnnotation(studyOutputTypeEClass, source, new String[] { "name", "studyOutputType", "kind", "elementOnly" });
 		addAnnotation(getStudyOutputType_AverageBoardingTime(), source,
 				new String[] { "kind", "element", "name", "averageBoardingTime", "namespace", "##targetNamespace" });
+		addAnnotation(getStudyOutputType_AverageBoardingTimesPerDoor(), source, new String[] { "kind", "element",
+				"name", "averageBoardingTimesPerDoor", "namespace", "##targetNamespace" });
 		addAnnotation(getStudyOutputType_StudyIterationsOutput(), source,
 				new String[] { "kind", "element", "name", "studyIterationsOutput", "namespace", "##targetNamespace" });
 		addAnnotation(getStudyOutputType_LinkedStudyUID(), source,
 				new String[] { "kind", "attribute", "name", "linkedStudyUID" });
 		addAnnotation(studyTypeEClass, source, new String[] { "name", "studyType", "kind", "elementOnly" });
+		addAnnotation(getStudyType_TargetDeckUID(), source,
+				new String[] { "kind", "element", "name", "targetDeckUID", "namespace", "##targetNamespace" });
 		addAnnotation(getStudyType_LoadFactor(), source,
 				new String[] { "kind", "element", "name", "loadFactor", "namespace", "##targetNamespace" });
 		addAnnotation(getStudyType_ActiveDoorUIDs(), source,

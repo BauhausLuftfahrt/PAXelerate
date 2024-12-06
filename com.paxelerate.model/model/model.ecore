@@ -474,11 +474,13 @@
           eType="#//agent/Passenger"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="side" eType="#//enums/DoorSide"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="xPosition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           defaultValueLiteral="0"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="emergencyOnly" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
           defaultValueLiteral="false"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//enums/DoorType"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeInUse" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+          defaultValueLiteral="0"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Aisle">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

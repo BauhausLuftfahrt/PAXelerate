@@ -14,7 +14,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * @see paxelerate.PaxeleratePackage#getSeatTypeType()
- * @model extendedMetaData="name='seatType_._type'"
+ * @model extendedMetaData="name='seatTypeType'"
  * @generated
  */
 public enum SeatTypeType implements Enumerator {

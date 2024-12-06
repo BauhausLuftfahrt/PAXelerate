@@ -25,6 +25,11 @@ public interface StudyIterationOutputType extends EObject {
 	 * Returns the value of the '<em><b>Boarding Time</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * 
+	 *                         The boarding time of the particular iteration of this study. [s]
+	 *                     
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Boarding Time</em>' attribute.
 	 * @see #isSetBoardingTime()
 	 * @see #unsetBoardingTime()

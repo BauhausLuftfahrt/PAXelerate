@@ -14,7 +14,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * @see paxelerate.PaxeleratePackage#getSimulationTypeType()
- * @model extendedMetaData="name='simulationType_._type'"
+ * @model extendedMetaData="name='simulationTypeType'"
  * @generated
  */
 public enum SimulationTypeType implements Enumerator {

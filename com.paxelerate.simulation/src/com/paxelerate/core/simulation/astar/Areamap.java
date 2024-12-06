@@ -13,7 +13,6 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import com.paxelerate.core.simulation.astar.Node.Layer;
-import com.paxelerate.core.simulation.astar.Node.Property;
 import com.paxelerate.model.Deck;
 import com.paxelerate.model.EPoint;
 import com.paxelerate.model.extensions.DeckExtensions;
@@ -146,8 +145,21 @@ public class Areamap {
 		Layer layer = Layer.ASTAR;
 
 		for (int x = 0; x < size.getX(); x++) {
+			output += ("" + x + "\t");
 			for (int y = 0; y < size.getY(); y++) {
-				String flag = structure[x][y].getProperty(layer) == Property.FREE ? " " : "x";
+				String flag = "";
+				switch (structure[x][y].getProperty(layer)) {
+				case FREE:
+					flag = " ";
+					break;
+				case OBJECT:
+					flag = "O";
+					break;
+				case FUSELAGE:
+					flag = "F";
+					break;
+				}
+
 				output += flag;
 			}
 			output += "\n";

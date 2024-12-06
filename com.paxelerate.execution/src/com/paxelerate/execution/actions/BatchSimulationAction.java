@@ -23,6 +23,7 @@ import com.paxelerate.model.enums.SimulationType;
 import com.paxelerate.model.enums.SortingScheme;
 import com.paxelerate.model.enums.TravelClass;
 import com.paxelerate.model.extensions.DeckExtensions;
+import com.paxelerate.model.extensions.DoorExtensions;
 import com.paxelerate.model.extensions.PassengerPropertiesExtensions;
 import com.paxelerate.model.monuments.Door;
 import com.paxelerate.model.settings.SettingsFactory;
@@ -33,6 +34,7 @@ import net.bhl.opensource.cpacs.functions.CPACSInitializer;
 import net.bhl.opensource.cpacs.functions.CPACSWriter;
 import net.bhl.opensource.toolbox.io.Log;
 import net.bhl.opensource.toolbox.time.StopWatch;
+import paxelerate.BoardingTimePerDoorType;
 import paxelerate.PaxelerateFactory;
 import paxelerate.PaxelerateType;
 import paxelerate.StudyIterationOutputType;
@@ -78,11 +80,12 @@ public interface BatchSimulationAction {
 			StudyOutputType studyOutput = PaxelerateFactory.eINSTANCE.createStudyOutputType();
 			studyOutput.setLinkedStudyUID(study.getUID());
 			studyOutput.setStudyIterationsOutput(PaxelerateFactory.eINSTANCE.createStudyIterationsOutputType());
+			studyOutput.setAverageBoardingTimesPerDoor(PaxelerateFactory.eINSTANCE.createBoardingTimesPerDoorType());
 			tool.getOutput().getStudiesOutput().getStudyOutput().add(studyOutput);
 
 			// Initialize model
 			Model model = ModelFactory.eINSTANCE.createModel();
-			InitializeFromCPACSAction.run(cpacs, model);
+			InitializeFromCPACSAction.run(cpacs, model, study.getTargetDeckUID());
 
 			// Initialize settings
 			model.setSettings(SettingsFactory.eINSTANCE.createSettings());
@@ -110,8 +113,8 @@ public interface BatchSimulationAction {
 			}
 
 			// Read the door IDs into a integer list.
-			List<Integer> activeDoors = Arrays.asList(String.valueOf(study.getActiveDoorUIDs()).split(";")).stream()
-					.mapToInt(Integer::valueOf).boxed().collect(Collectors.toList());
+			List<String> activeDoors = Arrays.asList(String.valueOf(study.getActiveDoorUIDs()).split(";")).stream()
+					.collect(Collectors.toList());
 
 			// Loop through all the doors and look for the door IDs.
 			for (Door door : model.getDeck().getDoors()) {
@@ -121,7 +124,10 @@ public interface BatchSimulationAction {
 			// Create the area map
 			Areamap map = new Areamap(model.getDeck());
 
+//			System.out.println(map.toString());
+
 			List<Double> boardingTimes = new ArrayList<>();
+			Map<String, List<Double>> boardingTimesPerDoorMap = new HashMap<>();
 
 			// Loop through the iterations of the same simulation variant
 			for (int i = 1; i <= iterations; i++) {
@@ -156,9 +162,25 @@ public interface BatchSimulationAction {
 
 				studyOutput.getStudyIterationsOutput().getStudyIterationOutput().add(studyIterationOutput);
 
+				for (Door door : DoorExtensions.getActiveDoors(model.getDeck())) {
+
+					if (boardingTimesPerDoorMap.get(door.getId()) == null) {
+						boardingTimesPerDoorMap.put(door.getId(), new ArrayList<>());
+					}
+
+					boardingTimesPerDoorMap.get(door.getId()).add(door.getTimeInUse());
+				}
 			}
 
 			studyOutput.setAverageBoardingTime(boardingTimes.stream().mapToDouble(t -> t).average().getAsDouble());
+			for (Door door : DoorExtensions.getActiveDoors(model.getDeck())) {
+				BoardingTimePerDoorType boardingTimePerDoor = PaxelerateFactory.eINSTANCE
+						.createBoardingTimePerDoorType();
+				boardingTimePerDoor.setTime(
+						boardingTimesPerDoorMap.get(door.getId()).stream().mapToDouble(t -> t).average().getAsDouble());
+				boardingTimePerDoor.setDoorUID(door.getId());
+				studyOutput.getAverageBoardingTimesPerDoor().getBoardingTimePerDoor().add(boardingTimePerDoor);
+			}
 
 			System.out.println(Log.DIVIDER);
 

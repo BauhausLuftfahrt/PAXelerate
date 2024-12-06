@@ -14,7 +14,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * @see paxelerate.PaxeleratePackage#getPassengerSortingSchemeType()
- * @model extendedMetaData="name='passengerSortingScheme_._type'"
+ * @model extendedMetaData="name='passengerSortingSchemeType'"
  * @generated
  */
 public enum PassengerSortingSchemeType implements Enumerator {

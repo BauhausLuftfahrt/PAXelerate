@@ -59,6 +59,89 @@ public interface PaxeleratePackage extends EPackage {
 	PaxeleratePackage eINSTANCE = paxelerate.impl.PaxeleratePackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link paxelerate.impl.BoardingTimePerDoorTypeImpl <em>Boarding Time Per Door Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see paxelerate.impl.BoardingTimePerDoorTypeImpl
+	 * @see paxelerate.impl.PaxeleratePackageImpl#getBoardingTimePerDoorType()
+	 * @generated
+	 */
+	int BOARDING_TIME_PER_DOOR_TYPE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOARDING_TIME_PER_DOOR_TYPE__TIME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Door UID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOARDING_TIME_PER_DOOR_TYPE__DOOR_UID = 1;
+
+	/**
+	 * The number of structural features of the '<em>Boarding Time Per Door Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOARDING_TIME_PER_DOOR_TYPE_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Boarding Time Per Door Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOARDING_TIME_PER_DOOR_TYPE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link paxelerate.impl.BoardingTimesPerDoorTypeImpl <em>Boarding Times Per Door Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see paxelerate.impl.BoardingTimesPerDoorTypeImpl
+	 * @see paxelerate.impl.PaxeleratePackageImpl#getBoardingTimesPerDoorType()
+	 * @generated
+	 */
+	int BOARDING_TIMES_PER_DOOR_TYPE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Boarding Time Per Door</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOARDING_TIMES_PER_DOOR_TYPE__BOARDING_TIME_PER_DOOR = 0;
+
+	/**
+	 * The number of structural features of the '<em>Boarding Times Per Door Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOARDING_TIMES_PER_DOOR_TYPE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Boarding Times Per Door Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOARDING_TIMES_PER_DOOR_TYPE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link paxelerate.impl.DocumentRootImpl <em>Document Root</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -66,7 +149,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getDocumentRoot()
 	 * @generated
 	 */
-	int DOCUMENT_ROOT = 0;
+	int DOCUMENT_ROOT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Mixed</b></em>' attribute list.
@@ -130,7 +213,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getPaxelerateInputType()
 	 * @generated
 	 */
-	int PAXELERATE_INPUT_TYPE = 1;
+	int PAXELERATE_INPUT_TYPE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Studies</b></em>' containment reference.
@@ -167,7 +250,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getPaxelerateOutputType()
 	 * @generated
 	 */
-	int PAXELERATE_OUTPUT_TYPE = 2;
+	int PAXELERATE_OUTPUT_TYPE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Studies Output</b></em>' containment reference.
@@ -204,7 +287,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getPaxelerateSettingsType()
 	 * @generated
 	 */
-	int PAXELERATE_SETTINGS_TYPE = 3;
+	int PAXELERATE_SETTINGS_TYPE = 5;
 
 	/**
 	 * The feature id for the '<em><b>Display Simulation</b></em>' attribute.
@@ -241,7 +324,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getPaxelerateType()
 	 * @generated
 	 */
-	int PAXELERATE_TYPE = 4;
+	int PAXELERATE_TYPE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Input</b></em>' containment reference.
@@ -253,22 +336,22 @@ public interface PaxeleratePackage extends EPackage {
 	int PAXELERATE_TYPE__INPUT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Output</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAXELERATE_TYPE__OUTPUT = 1;
-
-	/**
 	 * The feature id for the '<em><b>Settings</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PAXELERATE_TYPE__SETTINGS = 2;
+	int PAXELERATE_TYPE__SETTINGS = 1;
+
+	/**
+	 * The feature id for the '<em><b>Output</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAXELERATE_TYPE__OUTPUT = 2;
 
 	/**
 	 * The number of structural features of the '<em>Type</em>' class.
@@ -296,7 +379,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getStudiesOutputType()
 	 * @generated
 	 */
-	int STUDIES_OUTPUT_TYPE = 5;
+	int STUDIES_OUTPUT_TYPE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Study Output</b></em>' containment reference list.
@@ -333,7 +416,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getStudiesType()
 	 * @generated
 	 */
-	int STUDIES_TYPE = 6;
+	int STUDIES_TYPE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Study</b></em>' containment reference list.
@@ -370,7 +453,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getStudyIterationOutputType()
 	 * @generated
 	 */
-	int STUDY_ITERATION_OUTPUT_TYPE = 7;
+	int STUDY_ITERATION_OUTPUT_TYPE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Boarding Time</b></em>' attribute.
@@ -407,7 +490,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getStudyIterationsOutputType()
 	 * @generated
 	 */
-	int STUDY_ITERATIONS_OUTPUT_TYPE = 8;
+	int STUDY_ITERATIONS_OUTPUT_TYPE = 10;
 
 	/**
 	 * The feature id for the '<em><b>Study Iteration Output</b></em>' containment reference list.
@@ -444,7 +527,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getStudyOutputType()
 	 * @generated
 	 */
-	int STUDY_OUTPUT_TYPE = 9;
+	int STUDY_OUTPUT_TYPE = 11;
 
 	/**
 	 * The feature id for the '<em><b>Average Boarding Time</b></em>' attribute.
@@ -456,13 +539,22 @@ public interface PaxeleratePackage extends EPackage {
 	int STUDY_OUTPUT_TYPE__AVERAGE_BOARDING_TIME = 0;
 
 	/**
+	 * The feature id for the '<em><b>Average Boarding Times Per Door</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_OUTPUT_TYPE__AVERAGE_BOARDING_TIMES_PER_DOOR = 1;
+
+	/**
 	 * The feature id for the '<em><b>Study Iterations Output</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_OUTPUT_TYPE__STUDY_ITERATIONS_OUTPUT = 1;
+	int STUDY_OUTPUT_TYPE__STUDY_ITERATIONS_OUTPUT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Linked Study UID</b></em>' attribute.
@@ -471,7 +563,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_OUTPUT_TYPE__LINKED_STUDY_UID = 2;
+	int STUDY_OUTPUT_TYPE__LINKED_STUDY_UID = 3;
 
 	/**
 	 * The number of structural features of the '<em>Study Output Type</em>' class.
@@ -480,7 +572,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_OUTPUT_TYPE_FEATURE_COUNT = 3;
+	int STUDY_OUTPUT_TYPE_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Study Output Type</em>' class.
@@ -499,7 +591,16 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getStudyType()
 	 * @generated
 	 */
-	int STUDY_TYPE = 10;
+	int STUDY_TYPE = 12;
+
+	/**
+	 * The feature id for the '<em><b>Target Deck UID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDY_TYPE__TARGET_DECK_UID = 0;
 
 	/**
 	 * The feature id for the '<em><b>Load Factor</b></em>' attribute.
@@ -508,7 +609,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__LOAD_FACTOR = 0;
+	int STUDY_TYPE__LOAD_FACTOR = 1;
 
 	/**
 	 * The feature id for the '<em><b>Active Door UI Ds</b></em>' attribute.
@@ -517,7 +618,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__ACTIVE_DOOR_UI_DS = 1;
+	int STUDY_TYPE__ACTIVE_DOOR_UI_DS = 2;
 
 	/**
 	 * The feature id for the '<em><b>Iterations</b></em>' attribute.
@@ -526,7 +627,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__ITERATIONS = 2;
+	int STUDY_TYPE__ITERATIONS = 3;
 
 	/**
 	 * The feature id for the '<em><b>Simulation Type</b></em>' attribute.
@@ -535,7 +636,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__SIMULATION_TYPE = 3;
+	int STUDY_TYPE__SIMULATION_TYPE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Seat Type</b></em>' attribute.
@@ -544,7 +645,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__SEAT_TYPE = 4;
+	int STUDY_TYPE__SEAT_TYPE = 5;
 
 	/**
 	 * The feature id for the '<em><b>Simulation Grid Resolution</b></em>' attribute.
@@ -553,7 +654,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__SIMULATION_GRID_RESOLUTION = 5;
+	int STUDY_TYPE__SIMULATION_GRID_RESOLUTION = 6;
 
 	/**
 	 * The feature id for the '<em><b>Simulation Speed Factor</b></em>' attribute.
@@ -562,7 +663,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__SIMULATION_SPEED_FACTOR = 6;
+	int STUDY_TYPE__SIMULATION_SPEED_FACTOR = 7;
 
 	/**
 	 * The feature id for the '<em><b>Passenger Sorting Scheme</b></em>' attribute.
@@ -571,7 +672,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__PASSENGER_SORTING_SCHEME = 7;
+	int STUDY_TYPE__PASSENGER_SORTING_SCHEME = 8;
 
 	/**
 	 * The feature id for the '<em><b>Door Selection</b></em>' attribute.
@@ -580,7 +681,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__DOOR_SELECTION = 8;
+	int STUDY_TYPE__DOOR_SELECTION = 9;
 
 	/**
 	 * The feature id for the '<em><b>Percentage Of Passengers With Jackets</b></em>' attribute.
@@ -589,7 +690,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_JACKETS = 9;
+	int STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_JACKETS = 10;
 
 	/**
 	 * The feature id for the '<em><b>Percentage Of Passengers With Small Bags</b></em>' attribute.
@@ -598,7 +699,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_BAGS = 10;
+	int STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_SMALL_BAGS = 11;
 
 	/**
 	 * The feature id for the '<em><b>Percentage Of Passengers With Medium Bags</b></em>' attribute.
@@ -607,7 +708,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_BAGS = 11;
+	int STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_MEDIUM_BAGS = 12;
 
 	/**
 	 * The feature id for the '<em><b>Percentage Of Passengers With Large Bags</b></em>' attribute.
@@ -616,7 +717,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_LARGE_BAGS = 12;
+	int STUDY_TYPE__PERCENTAGE_OF_PASSENGERS_WITH_LARGE_BAGS = 13;
 
 	/**
 	 * The feature id for the '<em><b>UID</b></em>' attribute.
@@ -625,7 +726,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE__UID = 13;
+	int STUDY_TYPE__UID = 14;
 
 	/**
 	 * The number of structural features of the '<em>Study Type</em>' class.
@@ -634,7 +735,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STUDY_TYPE_FEATURE_COUNT = 14;
+	int STUDY_TYPE_FEATURE_COUNT = 15;
 
 	/**
 	 * The number of operations of the '<em>Study Type</em>' class.
@@ -653,7 +754,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getDoorSelectionType()
 	 * @generated
 	 */
-	int DOOR_SELECTION_TYPE = 11;
+	int DOOR_SELECTION_TYPE = 13;
 
 	/**
 	 * The meta object id for the '{@link paxelerate.PassengerSortingSchemeType <em>Passenger Sorting Scheme Type</em>}' enum.
@@ -663,7 +764,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getPassengerSortingSchemeType()
 	 * @generated
 	 */
-	int PASSENGER_SORTING_SCHEME_TYPE = 12;
+	int PASSENGER_SORTING_SCHEME_TYPE = 14;
 
 	/**
 	 * The meta object id for the '{@link paxelerate.SeatTypeType <em>Seat Type Type</em>}' enum.
@@ -673,7 +774,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getSeatTypeType()
 	 * @generated
 	 */
-	int SEAT_TYPE_TYPE = 13;
+	int SEAT_TYPE_TYPE = 15;
 
 	/**
 	 * The meta object id for the '{@link paxelerate.SimulationTypeType <em>Simulation Type Type</em>}' enum.
@@ -683,7 +784,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getSimulationTypeType()
 	 * @generated
 	 */
-	int SIMULATION_TYPE_TYPE = 14;
+	int SIMULATION_TYPE_TYPE = 16;
 
 	/**
 	 * The meta object id for the '<em>Door Selection Type Object</em>' data type.
@@ -693,7 +794,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getDoorSelectionTypeObject()
 	 * @generated
 	 */
-	int DOOR_SELECTION_TYPE_OBJECT = 15;
+	int DOOR_SELECTION_TYPE_OBJECT = 17;
 
 	/**
 	 * The meta object id for the '<em>Passenger Sorting Scheme Type Object</em>' data type.
@@ -703,7 +804,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getPassengerSortingSchemeTypeObject()
 	 * @generated
 	 */
-	int PASSENGER_SORTING_SCHEME_TYPE_OBJECT = 16;
+	int PASSENGER_SORTING_SCHEME_TYPE_OBJECT = 18;
 
 	/**
 	 * The meta object id for the '<em>Seat Type Type Object</em>' data type.
@@ -713,7 +814,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getSeatTypeTypeObject()
 	 * @generated
 	 */
-	int SEAT_TYPE_TYPE_OBJECT = 17;
+	int SEAT_TYPE_TYPE_OBJECT = 19;
 
 	/**
 	 * The meta object id for the '<em>Simulation Type Type Object</em>' data type.
@@ -723,7 +824,60 @@ public interface PaxeleratePackage extends EPackage {
 	 * @see paxelerate.impl.PaxeleratePackageImpl#getSimulationTypeTypeObject()
 	 * @generated
 	 */
-	int SIMULATION_TYPE_TYPE_OBJECT = 18;
+	int SIMULATION_TYPE_TYPE_OBJECT = 20;
+
+	/**
+	 * Returns the meta object for class '{@link paxelerate.BoardingTimePerDoorType <em>Boarding Time Per Door Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Boarding Time Per Door Type</em>'.
+	 * @see paxelerate.BoardingTimePerDoorType
+	 * @generated
+	 */
+	EClass getBoardingTimePerDoorType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link paxelerate.BoardingTimePerDoorType#getTime <em>Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Time</em>'.
+	 * @see paxelerate.BoardingTimePerDoorType#getTime()
+	 * @see #getBoardingTimePerDoorType()
+	 * @generated
+	 */
+	EAttribute getBoardingTimePerDoorType_Time();
+
+	/**
+	 * Returns the meta object for the attribute '{@link paxelerate.BoardingTimePerDoorType#getDoorUID <em>Door UID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Door UID</em>'.
+	 * @see paxelerate.BoardingTimePerDoorType#getDoorUID()
+	 * @see #getBoardingTimePerDoorType()
+	 * @generated
+	 */
+	EAttribute getBoardingTimePerDoorType_DoorUID();
+
+	/**
+	 * Returns the meta object for class '{@link paxelerate.BoardingTimesPerDoorType <em>Boarding Times Per Door Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Boarding Times Per Door Type</em>'.
+	 * @see paxelerate.BoardingTimesPerDoorType
+	 * @generated
+	 */
+	EClass getBoardingTimesPerDoorType();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link paxelerate.BoardingTimesPerDoorType#getBoardingTimePerDoor <em>Boarding Time Per Door</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Boarding Time Per Door</em>'.
+	 * @see paxelerate.BoardingTimesPerDoorType#getBoardingTimePerDoor()
+	 * @see #getBoardingTimesPerDoorType()
+	 * @generated
+	 */
+	EReference getBoardingTimesPerDoorType_BoardingTimePerDoor();
 
 	/**
 	 * Returns the meta object for class '{@link paxelerate.DocumentRoot <em>Document Root</em>}'.
@@ -991,6 +1145,17 @@ public interface PaxeleratePackage extends EPackage {
 	EAttribute getStudyOutputType_AverageBoardingTime();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link paxelerate.StudyOutputType#getAverageBoardingTimesPerDoor <em>Average Boarding Times Per Door</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Average Boarding Times Per Door</em>'.
+	 * @see paxelerate.StudyOutputType#getAverageBoardingTimesPerDoor()
+	 * @see #getStudyOutputType()
+	 * @generated
+	 */
+	EReference getStudyOutputType_AverageBoardingTimesPerDoor();
+
+	/**
 	 * Returns the meta object for the containment reference '{@link paxelerate.StudyOutputType#getStudyIterationsOutput <em>Study Iterations Output</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1021,6 +1186,17 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getStudyType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link paxelerate.StudyType#getTargetDeckUID <em>Target Deck UID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Target Deck UID</em>'.
+	 * @see paxelerate.StudyType#getTargetDeckUID()
+	 * @see #getStudyType()
+	 * @generated
+	 */
+	EAttribute getStudyType_TargetDeckUID();
 
 	/**
 	 * Returns the meta object for the attribute '{@link paxelerate.StudyType#getLoadFactor <em>Load Factor</em>}'.
@@ -1223,7 +1399,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @return the meta object for data type '<em>Door Selection Type Object</em>'.
 	 * @see paxelerate.DoorSelectionType
 	 * @model instanceClass="paxelerate.DoorSelectionType"
-	 *        extendedMetaData="name='doorSelection_._type:Object' baseType='doorSelection_._type'"
+	 *        extendedMetaData="name='doorSelectionType:Object' baseType='doorSelectionType'"
 	 * @generated
 	 */
 	EDataType getDoorSelectionTypeObject();
@@ -1235,7 +1411,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @return the meta object for data type '<em>Passenger Sorting Scheme Type Object</em>'.
 	 * @see paxelerate.PassengerSortingSchemeType
 	 * @model instanceClass="paxelerate.PassengerSortingSchemeType"
-	 *        extendedMetaData="name='passengerSortingScheme_._type:Object' baseType='passengerSortingScheme_._type'"
+	 *        extendedMetaData="name='passengerSortingSchemeType:Object' baseType='passengerSortingSchemeType'"
 	 * @generated
 	 */
 	EDataType getPassengerSortingSchemeTypeObject();
@@ -1247,7 +1423,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @return the meta object for data type '<em>Seat Type Type Object</em>'.
 	 * @see paxelerate.SeatTypeType
 	 * @model instanceClass="paxelerate.SeatTypeType"
-	 *        extendedMetaData="name='seatType_._type:Object' baseType='seatType_._type'"
+	 *        extendedMetaData="name='seatTypeType:Object' baseType='seatTypeType'"
 	 * @generated
 	 */
 	EDataType getSeatTypeTypeObject();
@@ -1259,7 +1435,7 @@ public interface PaxeleratePackage extends EPackage {
 	 * @return the meta object for data type '<em>Simulation Type Type Object</em>'.
 	 * @see paxelerate.SimulationTypeType
 	 * @model instanceClass="paxelerate.SimulationTypeType"
-	 *        extendedMetaData="name='simulationType_._type:Object' baseType='simulationType_._type'"
+	 *        extendedMetaData="name='simulationTypeType:Object' baseType='simulationTypeType'"
 	 * @generated
 	 */
 	EDataType getSimulationTypeTypeObject();
@@ -1287,6 +1463,51 @@ public interface PaxeleratePackage extends EPackage {
 	 * @generated
 	 */
 	interface Literals {
+		/**
+		 * The meta object literal for the '{@link paxelerate.impl.BoardingTimePerDoorTypeImpl <em>Boarding Time Per Door Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see paxelerate.impl.BoardingTimePerDoorTypeImpl
+		 * @see paxelerate.impl.PaxeleratePackageImpl#getBoardingTimePerDoorType()
+		 * @generated
+		 */
+		EClass BOARDING_TIME_PER_DOOR_TYPE = eINSTANCE.getBoardingTimePerDoorType();
+
+		/**
+		 * The meta object literal for the '<em><b>Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BOARDING_TIME_PER_DOOR_TYPE__TIME = eINSTANCE.getBoardingTimePerDoorType_Time();
+
+		/**
+		 * The meta object literal for the '<em><b>Door UID</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BOARDING_TIME_PER_DOOR_TYPE__DOOR_UID = eINSTANCE.getBoardingTimePerDoorType_DoorUID();
+
+		/**
+		 * The meta object literal for the '{@link paxelerate.impl.BoardingTimesPerDoorTypeImpl <em>Boarding Times Per Door Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see paxelerate.impl.BoardingTimesPerDoorTypeImpl
+		 * @see paxelerate.impl.PaxeleratePackageImpl#getBoardingTimesPerDoorType()
+		 * @generated
+		 */
+		EClass BOARDING_TIMES_PER_DOOR_TYPE = eINSTANCE.getBoardingTimesPerDoorType();
+
+		/**
+		 * The meta object literal for the '<em><b>Boarding Time Per Door</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BOARDING_TIMES_PER_DOOR_TYPE__BOARDING_TIME_PER_DOOR = eINSTANCE
+				.getBoardingTimesPerDoorType_BoardingTimePerDoor();
+
 		/**
 		 * The meta object literal for the '{@link paxelerate.impl.DocumentRootImpl <em>Document Root</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -1510,6 +1731,15 @@ public interface PaxeleratePackage extends EPackage {
 		EAttribute STUDY_OUTPUT_TYPE__AVERAGE_BOARDING_TIME = eINSTANCE.getStudyOutputType_AverageBoardingTime();
 
 		/**
+		 * The meta object literal for the '<em><b>Average Boarding Times Per Door</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STUDY_OUTPUT_TYPE__AVERAGE_BOARDING_TIMES_PER_DOOR = eINSTANCE
+				.getStudyOutputType_AverageBoardingTimesPerDoor();
+
+		/**
 		 * The meta object literal for the '<em><b>Study Iterations Output</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1534,6 +1764,14 @@ public interface PaxeleratePackage extends EPackage {
 		 * @generated
 		 */
 		EClass STUDY_TYPE = eINSTANCE.getStudyType();
+
+		/**
+		 * The meta object literal for the '<em><b>Target Deck UID</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STUDY_TYPE__TARGET_DECK_UID = eINSTANCE.getStudyType_TargetDeckUID();
 
 		/**
 		 * The meta object literal for the '<em><b>Load Factor</b></em>' attribute feature.

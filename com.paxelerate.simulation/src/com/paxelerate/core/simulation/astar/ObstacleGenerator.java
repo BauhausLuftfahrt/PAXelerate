@@ -95,7 +95,6 @@ public class ObstacleGenerator {
 		// other layers
 		generateDoorDepressions(Layer.ASTAR);
 		generateAisleDepressions(Layer.ASTAR);
-
 	}
 
 	/**
@@ -133,8 +132,9 @@ public class ObstacleGenerator {
 			}
 
 			if (node.getPosition().getY() >= 2) {
-				if (Seat.class.isInstance(areamap.get(BHLMath.toInt(node.getPosition().getX()),
-						BHLMath.toInt(node.getPosition().getY() - 2)))
+				if (Seat.class
+						.isInstance(areamap.get(BHLMath.toInt(node.getPosition().getX()),
+								BHLMath.toInt(node.getPosition().getY() - 2)))
 						&& areamap
 								.get(BHLMath.toInt(node.getPosition().getX()),
 										BHLMath.toInt(node.getPosition().getY() - 1))

@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link paxelerate.StudyType#getTargetDeckUID <em>Target Deck UID</em>}</li>
  *   <li>{@link paxelerate.StudyType#getLoadFactor <em>Load Factor</em>}</li>
  *   <li>{@link paxelerate.StudyType#getActiveDoorUIDs <em>Active Door UI Ds</em>}</li>
  *   <li>{@link paxelerate.StudyType#getIterations <em>Iterations</em>}</li>
@@ -35,9 +36,42 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface StudyType extends EObject {
 	/**
+	 * Returns the value of the '<em><b>Target Deck UID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * 
+	 *                         The target deck uID in the CPACS file for which to perform the study.
+	 *                     
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Target Deck UID</em>' attribute.
+	 * @see #setTargetDeckUID(String)
+	 * @see paxelerate.PaxeleratePackage#getStudyType_TargetDeckUID()
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 *        extendedMetaData="kind='element' name='targetDeckUID' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	String getTargetDeckUID();
+
+	/**
+	 * Sets the value of the '{@link paxelerate.StudyType#getTargetDeckUID <em>Target Deck UID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Target Deck UID</em>' attribute.
+	 * @see #getTargetDeckUID()
+	 * @generated
+	 */
+	void setTargetDeckUID(String value);
+
+	/**
 	 * Returns the value of the '<em><b>Load Factor</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * 
+	 *                         The load factor represents the share of the maximum possible amount of passengers that should be used for the boarding simulation. [-]
+	 *                     
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Load Factor</em>' attribute.
 	 * @see #isSetLoadFactor()
 	 * @see #unsetLoadFactor()
@@ -317,6 +351,11 @@ public interface StudyType extends EObject {
 	 * Returns the value of the '<em><b>Simulation Speed Factor</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * 
+	 *                         The speed factor with which the simulation should be performed. [-]
+	 *                     
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Simulation Speed Factor</em>' attribute.
 	 * @see #isSetSimulationSpeedFactor()
 	 * @see #unsetSimulationSpeedFactor()
@@ -368,6 +407,11 @@ public interface StudyType extends EObject {
 	 * The literals are from the enumeration {@link paxelerate.PassengerSortingSchemeType}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * 
+	 *                         Define the sorting sequence in which passengers enter the aircraft.
+	 *                     
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Passenger Sorting Scheme</em>' attribute.
 	 * @see paxelerate.PassengerSortingSchemeType
 	 * @see #isSetPassengerSortingScheme()
@@ -421,6 +465,11 @@ public interface StudyType extends EObject {
 	 * The literals are from the enumeration {@link paxelerate.DoorSelectionType}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * 
+	 *                         Define the door selection option by which passengers will select a boarding door.
+	 *                     
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Door Selection</em>' attribute.
 	 * @see paxelerate.DoorSelectionType
 	 * @see #isSetDoorSelection()

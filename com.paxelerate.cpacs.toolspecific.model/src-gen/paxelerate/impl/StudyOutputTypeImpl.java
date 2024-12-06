@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import paxelerate.BoardingTimesPerDoorType;
 import paxelerate.PaxeleratePackage;
 import paxelerate.StudyIterationsOutputType;
 import paxelerate.StudyOutputType;
@@ -24,6 +25,7 @@ import paxelerate.StudyOutputType;
  * </p>
  * <ul>
  *   <li>{@link paxelerate.impl.StudyOutputTypeImpl#getAverageBoardingTime <em>Average Boarding Time</em>}</li>
+ *   <li>{@link paxelerate.impl.StudyOutputTypeImpl#getAverageBoardingTimesPerDoor <em>Average Boarding Times Per Door</em>}</li>
  *   <li>{@link paxelerate.impl.StudyOutputTypeImpl#getStudyIterationsOutput <em>Study Iterations Output</em>}</li>
  *   <li>{@link paxelerate.impl.StudyOutputTypeImpl#getLinkedStudyUID <em>Linked Study UID</em>}</li>
  * </ul>
@@ -59,6 +61,16 @@ public class StudyOutputTypeImpl extends MinimalEObjectImpl.Container implements
 	 * @ordered
 	 */
 	protected boolean averageBoardingTimeESet;
+
+	/**
+	 * The cached value of the '{@link #getAverageBoardingTimesPerDoor() <em>Average Boarding Times Per Door</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAverageBoardingTimesPerDoor()
+	 * @generated
+	 * @ordered
+	 */
+	protected BoardingTimesPerDoorType averageBoardingTimesPerDoor;
 
 	/**
 	 * The cached value of the '{@link #getStudyIterationsOutput() <em>Study Iterations Output</em>}' containment reference.
@@ -164,6 +176,61 @@ public class StudyOutputTypeImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public BoardingTimesPerDoorType getAverageBoardingTimesPerDoor() {
+		return averageBoardingTimesPerDoor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetAverageBoardingTimesPerDoor(
+			BoardingTimesPerDoorType newAverageBoardingTimesPerDoor, NotificationChain msgs) {
+		BoardingTimesPerDoorType oldAverageBoardingTimesPerDoor = averageBoardingTimesPerDoor;
+		averageBoardingTimesPerDoor = newAverageBoardingTimesPerDoor;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					PaxeleratePackage.STUDY_OUTPUT_TYPE__AVERAGE_BOARDING_TIMES_PER_DOOR,
+					oldAverageBoardingTimesPerDoor, newAverageBoardingTimesPerDoor);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAverageBoardingTimesPerDoor(BoardingTimesPerDoorType newAverageBoardingTimesPerDoor) {
+		if (newAverageBoardingTimesPerDoor != averageBoardingTimesPerDoor) {
+			NotificationChain msgs = null;
+			if (averageBoardingTimesPerDoor != null)
+				msgs = ((InternalEObject) averageBoardingTimesPerDoor).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - PaxeleratePackage.STUDY_OUTPUT_TYPE__AVERAGE_BOARDING_TIMES_PER_DOOR,
+						null, msgs);
+			if (newAverageBoardingTimesPerDoor != null)
+				msgs = ((InternalEObject) newAverageBoardingTimesPerDoor).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - PaxeleratePackage.STUDY_OUTPUT_TYPE__AVERAGE_BOARDING_TIMES_PER_DOOR,
+						null, msgs);
+			msgs = basicSetAverageBoardingTimesPerDoor(newAverageBoardingTimesPerDoor, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					PaxeleratePackage.STUDY_OUTPUT_TYPE__AVERAGE_BOARDING_TIMES_PER_DOOR,
+					newAverageBoardingTimesPerDoor, newAverageBoardingTimesPerDoor));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public StudyIterationsOutputType getStudyIterationsOutput() {
 		return studyIterationsOutput;
 	}
@@ -244,6 +311,8 @@ public class StudyOutputTypeImpl extends MinimalEObjectImpl.Container implements
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+		case PaxeleratePackage.STUDY_OUTPUT_TYPE__AVERAGE_BOARDING_TIMES_PER_DOOR:
+			return basicSetAverageBoardingTimesPerDoor(null, msgs);
 		case PaxeleratePackage.STUDY_OUTPUT_TYPE__STUDY_ITERATIONS_OUTPUT:
 			return basicSetStudyIterationsOutput(null, msgs);
 		}
@@ -260,6 +329,8 @@ public class StudyOutputTypeImpl extends MinimalEObjectImpl.Container implements
 		switch (featureID) {
 		case PaxeleratePackage.STUDY_OUTPUT_TYPE__AVERAGE_BOARDING_TIME:
 			return getAverageBoardingTime();
+		case PaxeleratePackage.STUDY_OUTPUT_TYPE__AVERAGE_BOARDING_TIMES_PER_DOOR:
+			return getAverageBoardingTimesPerDoor();
 		case PaxeleratePackage.STUDY_OUTPUT_TYPE__STUDY_ITERATIONS_OUTPUT:
 			return getStudyIterationsOutput();
 		case PaxeleratePackage.STUDY_OUTPUT_TYPE__LINKED_STUDY_UID:
@@ -278,6 +349,9 @@ public class StudyOutputTypeImpl extends MinimalEObjectImpl.Container implements
 		switch (featureID) {
 		case PaxeleratePackage.STUDY_OUTPUT_TYPE__AVERAGE_BOARDING_TIME:
 			setAverageBoardingTime((Double) newValue);
+			return;
+		case PaxeleratePackage.STUDY_OUTPUT_TYPE__AVERAGE_BOARDING_TIMES_PER_DOOR:
+			setAverageBoardingTimesPerDoor((BoardingTimesPerDoorType) newValue);
 			return;
 		case PaxeleratePackage.STUDY_OUTPUT_TYPE__STUDY_ITERATIONS_OUTPUT:
 			setStudyIterationsOutput((StudyIterationsOutputType) newValue);
@@ -300,6 +374,9 @@ public class StudyOutputTypeImpl extends MinimalEObjectImpl.Container implements
 		case PaxeleratePackage.STUDY_OUTPUT_TYPE__AVERAGE_BOARDING_TIME:
 			unsetAverageBoardingTime();
 			return;
+		case PaxeleratePackage.STUDY_OUTPUT_TYPE__AVERAGE_BOARDING_TIMES_PER_DOOR:
+			setAverageBoardingTimesPerDoor((BoardingTimesPerDoorType) null);
+			return;
 		case PaxeleratePackage.STUDY_OUTPUT_TYPE__STUDY_ITERATIONS_OUTPUT:
 			setStudyIterationsOutput((StudyIterationsOutputType) null);
 			return;
@@ -320,6 +397,8 @@ public class StudyOutputTypeImpl extends MinimalEObjectImpl.Container implements
 		switch (featureID) {
 		case PaxeleratePackage.STUDY_OUTPUT_TYPE__AVERAGE_BOARDING_TIME:
 			return isSetAverageBoardingTime();
+		case PaxeleratePackage.STUDY_OUTPUT_TYPE__AVERAGE_BOARDING_TIMES_PER_DOOR:
+			return averageBoardingTimesPerDoor != null;
 		case PaxeleratePackage.STUDY_OUTPUT_TYPE__STUDY_ITERATIONS_OUTPUT:
 			return studyIterationsOutput != null;
 		case PaxeleratePackage.STUDY_OUTPUT_TYPE__LINKED_STUDY_UID:

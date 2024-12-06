@@ -6,6 +6,7 @@
 package com.paxelerate.core.simulation.astar;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -16,6 +17,7 @@ import com.paxelerate.core.simulation.agent.AgentFunctions;
 import com.paxelerate.core.simulation.agent.PathFinder;
 import com.paxelerate.core.simulation.astar.Node.Layer;
 import com.paxelerate.model.Deck;
+import com.paxelerate.model.EPoint;
 import com.paxelerate.model.Model;
 import com.paxelerate.model.agent.Passenger;
 import com.paxelerate.model.enums.DoorSide;
@@ -25,11 +27,14 @@ import com.paxelerate.model.extensions.DeckExtensions;
 import com.paxelerate.model.extensions.DoorExtensions;
 import com.paxelerate.model.extensions.EPointExtensions;
 import com.paxelerate.model.extensions.PassengerExtensions;
+import com.paxelerate.model.extensions.SeatExtensions;
 import com.paxelerate.model.monuments.Door;
+import com.paxelerate.model.monuments.Seat;
 import com.paxelerate.model.settings.Settings;
 
 import net.bhl.opensource.toolbox.emf.EObjectHelper;
 import net.bhl.opensource.toolbox.io.Log;
+import net.bhl.opensource.toolbox.math.BHLMath;
 import net.bhl.opensource.toolbox.math.vector.IntVector;
 import net.bhl.opensource.toolbox.time.StopWatch;
 
@@ -64,9 +69,15 @@ public class SimulationHandler {
 			if (!AgentFunctions.doorwayBlocked(agent, agent.getShapeHandler().getShape(Layer.ASTAR)[0].length + 4)) {
 
 				pax.getDoor().getWaitingPassengers().remove(pax);
+
+//				if (pax.getDoor().getWaitingPassengers().isEmpty() && pax.getDoor().getTimeInUse() == 0) {
+//					pax.getDoor().setTimeInUse(getMasterBoardingTime() * settings.getSimulationSpeedFactor() / 1000.0);
+//				}
+
 				return true;
 			}
 		}
+
 		return false;
 	}
 
@@ -165,6 +176,15 @@ public class SimulationHandler {
 		passenger.getPath().clear();
 		passenger.getPath().addAll(path.asEList());
 
+		// Save the current boarding time for a specific door as soon as all passengers
+		// that entered through a specific door have reached their seat.
+		if (getPassengersByState(State.SEATED, true).stream()
+				.filter(p -> p.getDoor().getId() == passenger.getDoor().getId()).toList().isEmpty()
+				&& passenger.getDoor().getTimeInUse() == 0) {
+			passenger.getDoor().setTimeInUse(getMasterBoardingTime() * settings.getSimulationSpeedFactor() / 1000.0);
+			Log.end(boarding_watch);
+		}
+
 		// When simulation is done
 		if (getPassengersByState(State.SEATED, true).isEmpty()) {
 
@@ -192,6 +212,8 @@ public class SimulationHandler {
 			p.setDesiredPosition(EPointExtensions.create(0, 0));
 			p.setState(null);
 		});
+
+		deck.getDoors().forEach(d -> d.setTimeInUse(0));
 
 		settings = EObjectHelper.getParent(Model.class, deck).getSettings();
 
@@ -295,17 +317,30 @@ public class SimulationHandler {
 			/* get the 2D position of the door object */
 			IntVector start = SimulationFunctions.determineStartForDoor(door);
 
+			HashMap<Passenger, IntVector> goals = new HashMap<>();
+
+			EPoint deckSize = DeckExtensions.getMaximumSize(deck);
+			double gridSize = settings.getSimulationGridResolution();
+
+			for (Passenger passenger : door.getWaitingPassengers()) {
+
+				Seat seat = passenger.getSeat();
+				goals.put(passenger, new IntVector(
+						BHLMath.toInt(SeatExtensions.getPosition(seat).getX() / gridSize - 1),
+						BHLMath.toInt((SeatExtensions.getCenter(seat).getY() + deckSize.getY() / 2.0) / gridSize)));
+			}
+
 			/* generate a new cost map */
-			Costmap costmap = new Costmap(start, SimulationFunctions.determineGoalForObject(door), areamap, null, 0);
+			Costmap costmap = new Costmap(start, goals.values().stream().toList(), areamap, null, 0);
 
 			for (Passenger passenger : door.getWaitingPassengers()) {
 
 				// Determine start and goal positions
-				IntVector goal = SimulationFunctions.determineGoalForObject(passenger.getSeat()).get(0);
+//				IntVector goal = SimulationFunctions.determineGoalForObject(passenger.getSeat()).get(0);
 
 				// Create an agent object for path finding purposes.
 				Agent agent = new Agent(passenger, EPointExtensions.transformIntVector(start),
-						EPointExtensions.transformIntVector(goal), this);
+						EPointExtensions.transformIntVector(goals.get(passenger)), this);
 
 				// The cost map is loaded from the list of cost maps accordingly
 				agent.setCostMap(costmap);

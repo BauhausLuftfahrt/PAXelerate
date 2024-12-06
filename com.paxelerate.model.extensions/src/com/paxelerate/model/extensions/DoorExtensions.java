@@ -47,14 +47,14 @@ public interface DoorExtensions {
 	 * @param side
 	 */
 	static Door create(Deck deck, DoorType type, double xPosition, double width, DoorSide side, boolean emergency,
-			double zPosition) {
+			double zPosition, String uid) {
 
 		Door door = MonumentsFactory.eINSTANCE.createDoor();
 		door.setEmergencyOnly(emergency);
 
 		door.setType(type);
 		door.setSide(side);
-		door.setId(deck.getDoors().size() + 1);
+		door.setId(uid);
 		door.setXPosition(xPosition);
 		door.setPassengerThroughputPerMinute(18);
 
@@ -101,7 +101,8 @@ public interface DoorExtensions {
 
 		// Multiply by 100 because of different units. (CPACS: Meters, PAXelerate:
 		// Centimeters). Minus xZero as the position is referenced to global CoSy.
-		DoorExtensions.create(deck, type, xPosition, width, side, emergency, zPosition); // - deck.getX0()
+		DoorExtensions.create(deck, type, xPosition, width, side, emergency, zPosition, doorType.getUID()); // -
+																											// deck.getX0()
 	}
 
 	/**
@@ -119,8 +120,7 @@ public interface DoorExtensions {
 	 * @return
 	 */
 	static List<Door> getActiveDoors(Deck deck) {
-		return deck.getDoors().stream().filter(door -> !door.isEmergencyOnly()).filter(Door::isActive)
-				.sorted((d1, d2) -> Integer.valueOf(d1.getId()).compareTo(d2.getId())).collect(Collectors.toList());
+		return deck.getDoors().stream().filter(Door::isActive).collect(Collectors.toList());
 	}
 
 	/**

@@ -248,6 +248,7 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//monuments/Door/id"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//monuments/Door/emergencyOnly"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//monuments/Door/type"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//monuments/Door/timeInUse"/>
       </genClasses>
       <genClasses ecoreClass="model.ecore#//monuments/Aisle">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//monuments/Aisle/name"/>

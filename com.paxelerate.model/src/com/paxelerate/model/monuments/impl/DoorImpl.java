@@ -39,6 +39,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link com.paxelerate.model.monuments.impl.DoorImpl#getId <em>Id</em>}</li>
  *   <li>{@link com.paxelerate.model.monuments.impl.DoorImpl#isEmergencyOnly <em>Emergency Only</em>}</li>
  *   <li>{@link com.paxelerate.model.monuments.impl.DoorImpl#getType <em>Type</em>}</li>
+ *   <li>{@link com.paxelerate.model.monuments.impl.DoorImpl#getTimeInUse <em>Time In Use</em>}</li>
  * </ul>
  *
  * @generated
@@ -142,7 +143,7 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int ID_EDEFAULT = 0;
+	protected static final String ID_EDEFAULT = "0";
 
 	/**
 	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
@@ -152,7 +153,7 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	 * @generated
 	 * @ordered
 	 */
-	protected int id = ID_EDEFAULT;
+	protected String id = ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isEmergencyOnly() <em>Emergency Only</em>}' attribute.
@@ -193,6 +194,26 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	 * @ordered
 	 */
 	protected DoorType type = TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTimeInUse() <em>Time In Use</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTimeInUse()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double TIME_IN_USE_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getTimeInUse() <em>Time In Use</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTimeInUse()
+	 * @generated
+	 * @ordered
+	 */
+	protected double timeInUse = TIME_IN_USE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -318,7 +339,7 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -327,8 +348,8 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setId(int newId) {
-		int oldId = id;
+	public void setId(String newId) {
+		String oldId = id;
 		id = newId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, MonumentsPackage.DOOR__ID, oldId, id));
@@ -382,6 +403,28 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public double getTimeInUse() {
+		return timeInUse;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTimeInUse(double newTimeInUse) {
+		double oldTimeInUse = timeInUse;
+		timeInUse = newTimeInUse;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MonumentsPackage.DOOR__TIME_IN_USE, oldTimeInUse,
+					timeInUse));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -401,6 +444,8 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 			return isEmergencyOnly();
 		case MonumentsPackage.DOOR__TYPE:
 			return getType();
+		case MonumentsPackage.DOOR__TIME_IN_USE:
+			return getTimeInUse();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -431,13 +476,16 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 			setXPosition((Double) newValue);
 			return;
 		case MonumentsPackage.DOOR__ID:
-			setId((Integer) newValue);
+			setId((String) newValue);
 			return;
 		case MonumentsPackage.DOOR__EMERGENCY_ONLY:
 			setEmergencyOnly((Boolean) newValue);
 			return;
 		case MonumentsPackage.DOOR__TYPE:
 			setType((DoorType) newValue);
+			return;
+		case MonumentsPackage.DOOR__TIME_IN_USE:
+			setTimeInUse((Double) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -475,6 +523,9 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 		case MonumentsPackage.DOOR__TYPE:
 			setType(TYPE_EDEFAULT);
 			return;
+		case MonumentsPackage.DOOR__TIME_IN_USE:
+			setTimeInUse(TIME_IN_USE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -498,11 +549,13 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 		case MonumentsPackage.DOOR__XPOSITION:
 			return xPosition != XPOSITION_EDEFAULT;
 		case MonumentsPackage.DOOR__ID:
-			return id != ID_EDEFAULT;
+			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		case MonumentsPackage.DOOR__EMERGENCY_ONLY:
 			return emergencyOnly != EMERGENCY_ONLY_EDEFAULT;
 		case MonumentsPackage.DOOR__TYPE:
 			return type != TYPE_EDEFAULT;
+		case MonumentsPackage.DOOR__TIME_IN_USE:
+			return timeInUse != TIME_IN_USE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -532,6 +585,8 @@ public class DoorImpl extends MinimalEObjectImpl.Container implements Door {
 		result.append(emergencyOnly);
 		result.append(", type: ");
 		result.append(type);
+		result.append(", timeInUse: ");
+		result.append(timeInUse);
 		result.append(')');
 		return result.toString();
 	}

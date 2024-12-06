@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.paxelerate.model.monuments.Door#getId <em>Id</em>}</li>
  *   <li>{@link com.paxelerate.model.monuments.Door#isEmergencyOnly <em>Emergency Only</em>}</li>
  *   <li>{@link com.paxelerate.model.monuments.Door#getType <em>Type</em>}</li>
+ *   <li>{@link com.paxelerate.model.monuments.Door#getTimeInUse <em>Time In Use</em>}</li>
  * </ul>
  *
  * @see com.paxelerate.model.monuments.MonumentsPackage#getDoor()
@@ -145,12 +146,12 @@ public interface Door extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Id</em>' attribute.
-	 * @see #setId(int)
+	 * @see #setId(String)
 	 * @see com.paxelerate.model.monuments.MonumentsPackage#getDoor_Id()
 	 * @model default="0"
 	 * @generated
 	 */
-	int getId();
+	String getId();
 
 	/**
 	 * Sets the value of the '{@link com.paxelerate.model.monuments.Door#getId <em>Id</em>}' attribute.
@@ -160,7 +161,7 @@ public interface Door extends EObject {
 	 * @see #getId()
 	 * @generated
 	 */
-	void setId(int value);
+	void setId(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Emergency Only</b></em>' attribute.
@@ -209,5 +210,28 @@ public interface Door extends EObject {
 	 * @generated
 	 */
 	void setType(DoorType value);
+
+	/**
+	 * Returns the value of the '<em><b>Time In Use</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Time In Use</em>' attribute.
+	 * @see #setTimeInUse(double)
+	 * @see com.paxelerate.model.monuments.MonumentsPackage#getDoor_TimeInUse()
+	 * @model default="0"
+	 * @generated
+	 */
+	double getTimeInUse();
+
+	/**
+	 * Sets the value of the '{@link com.paxelerate.model.monuments.Door#getTimeInUse <em>Time In Use</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Time In Use</em>' attribute.
+	 * @see #getTimeInUse()
+	 * @generated
+	 */
+	void setTimeInUse(double value);
 
 } // Door
