@@ -16,6 +16,7 @@ import Cpacs.DeckComponentBaseType;
 import Cpacs.DeckElementBaseType;
 import Cpacs.GalleyElementType;
 import Cpacs.GalleyElementsType;
+import Cpacs.GenericFloorElementsType;
 import Cpacs.LavatoryElementsType;
 import Cpacs.LuggageCompartmentElementsType;
 
@@ -25,6 +26,39 @@ import Cpacs.LuggageCompartmentElementsType;
  *
  */
 public interface MonumentExtensions {
+
+	/**
+	 *
+	 * @param cabin
+	 * @param values
+	 */
+	static void genericsfromCPACS(Deck deck, DeckComponent2DBaseType floorType, GenericFloorElementsType templates) {
+
+		DeckElementBaseType template = templates.getGenericFloorElement().stream()
+				.filter(s -> s.getUID().contentEquals(floorType.getDeckElementUID().getValue())).findFirst().get();
+
+		double x = floorType.getTransformation().getTranslation().getX().getValue();
+		double y = floorType.getTransformation().getTranslation().getY().getValue();
+
+		double width = template.getGeometry().getBoundingBox().getDeltaY().getValue();
+		double length = template.getGeometry().getBoundingBox().getDeltaX().getValue();
+		double height = template.getGeometry().getBoundingBox().getDeltaZ().getValue();
+
+		EPoint position = EPointExtensions.create(x, y);
+		EPoint size = EPointExtensions.create(length, width, height);
+
+		// Objects that are smaller than the simulation grid size must be enlarged
+		if (size.getX() < 0.10) {
+			size.setX(0.10);
+		}
+
+		Obstacle obstacle = MonumentsFactory.eINSTANCE.createObstacle();
+		deck.getObstacles().add(obstacle);
+
+		obstacle.setPosition(position);
+		obstacle.setSize(size);
+
+	}
 
 	/**
 	 *

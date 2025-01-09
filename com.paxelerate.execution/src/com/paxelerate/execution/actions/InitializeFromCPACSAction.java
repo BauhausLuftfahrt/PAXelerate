@@ -21,6 +21,7 @@ import com.paxelerate.model.monuments.Seat;
 
 import Cpacs.AircraftModelType;
 import Cpacs.CpacsType;
+import Cpacs.DeckComponentBaseType;
 import Cpacs.DeckElementsType;
 import Cpacs.DeckType;
 import net.bhl.opensource.toolbox.emf.EObjectHelper;
@@ -87,14 +88,23 @@ public interface InitializeFromCPACSAction {
 					.forEach(f -> MonumentExtensions.galleyfromCPACS(deck, f, deckElements.getGalleyElements()));
 		}
 
+		if (deckType.getGenericFloorModules() != null) {
+			deckType.getGenericFloorModules().getGenericFloorModule().forEach(
+					f -> MonumentExtensions.genericsfromCPACS(deck, f, deckElements.getGenericFloorElements()));
+		}
+
 		if (deckType.getLavatories() != null) {
 			deckType.getLavatories().getLavatory()
 					.forEach(f -> MonumentExtensions.lavatoryFromCPACS(deck, f, deckElements.getLavatoryElements()));
 		}
 
 		if (deckType.getLuggageCompartments() != null) {
-			deckType.getLuggageCompartments().getLuggageCompartment().forEach(
-					f -> MonumentExtensions.luggageFromCPACS(deck, f, deckElements.getLuggageCompartmentElements()));
+			for (DeckComponentBaseType lug : deckType.getLuggageCompartments().getLuggageCompartment()) {
+				if (lug.getTransformation().getTranslation().getZ().getValue() > 0) {
+					continue; // This is an overhead bin
+				}
+				MonumentExtensions.luggageFromCPACS(deck, lug, deckElements.getLuggageCompartmentElements());
+			}
 		}
 
 		if (deckType.getClassDividers() != null) {

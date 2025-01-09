@@ -124,7 +124,7 @@ public interface BatchSimulationAction {
 			// Create the area map
 			Areamap map = new Areamap(model.getDeck());
 
-//			System.out.println(map.toString());
+			// System.out.println(map.toString());
 
 			List<Double> boardingTimes = new ArrayList<>();
 			Map<String, List<Double>> boardingTimesPerDoorMap = new HashMap<>();
